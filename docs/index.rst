@@ -14,7 +14,14 @@ Introduction
 ============
 VyOS is an open source network operating system based on Debian GNU/Linux.
 
-VyOS provides a free routing platform that competes directly with other commercially available solutions from well known network providers. Because VyOS is run on standard amd64, i586 and ARM systems, it is able to be used as a router and firewall platform for cloud deployments.
+VyOS provides a free routing platform that competes directly with other
+commercially available solutions from well known network providers. Because
+VyOS is run on standard amd64, i586 and ARM systems, it is able to be used
+as a router and firewall platform for cloud deployments.
+
+.. include:: ch01-install.rst
+
+.. include:: ch02-cli.rst
 
 Indices and tables
 ==================
