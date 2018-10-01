@@ -23,6 +23,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch02-cli.rst
 
+.. include:: ch03-quick-start.rst
+
 Indices and tables
 ==================
 
