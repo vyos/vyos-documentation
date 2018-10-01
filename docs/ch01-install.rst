@@ -1,7 +1,7 @@
 Installation
 ============
 
-The latest ISO image for VyOS can be downloaded at www.vyos.net.
+The latest ISO image for VyOS can be downloaded at https://www.vyos.net.
 
 The recommended system requirements are 512MB RAM and 2GB storage.
 
