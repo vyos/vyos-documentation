@@ -65,6 +65,7 @@ Ethernet interfaces allow for the configuration of speed, duplex, and hw-id
 Resulting in:
 
 .. code-block:: sh
+
   ethernet eth1 {
       address 192.168.0.1/24
       description INSIDE
