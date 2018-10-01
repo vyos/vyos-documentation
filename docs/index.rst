@@ -25,6 +25,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch03-quick-start.rst
 
+.. include:: ch04-configuration-overview.rst
+
 Indices and tables
 ==================
 
