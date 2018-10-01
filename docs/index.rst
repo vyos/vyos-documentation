@@ -27,6 +27,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch04-configuration-overview.rst
 
+.. include:: ch05-network-interfaces.rst
+
 Indices and tables
 ==================
 
