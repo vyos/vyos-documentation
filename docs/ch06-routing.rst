@@ -250,7 +250,7 @@ Route filter can be applied using a route-map:
 We could expand on this and also deny link local and multicast in the rule 20 action deny. 
 
 Policy Routing
-^^^^^^^^^^^^^^
+==============
 
 VyOS supports Policy Routing, allowing traffic to be assigned to a different routing table. Traffic can be matched using standard 5-tuple matching (source address, destination address, protocol, source port, destination port).
 
