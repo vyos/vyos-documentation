@@ -50,8 +50,8 @@ reserving an average of 200-300 sessions per host system.
 Example: For an ~8,000 host network a source NAT pool of 32 IP addresses is
 recommended.
 
-A pool of addresses can be defined by using a **-** in the **set nat source
-rule [n] translation address** statement.
+A pool of addresses can be defined by using a **-** in the `set nat source
+rule [n] translation address` statement.
 
 .. code-block:: sh
 
@@ -176,8 +176,8 @@ Which would generate the following NAT destination configuration:
   }
 
 Note that if forwarding traffic to a different port than it is arriving on,
-you may also configure the translation port using **set nat destination rule
-[n] translation port**.
+you may also configure the translation port using `set nat destination rule
+[n] translation port`.
 
 This establishes our Port Forward rule, but if we created a firewall policy it
 will likely block the traffic.
