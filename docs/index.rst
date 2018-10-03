@@ -45,6 +45,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch13-ipv6.rst
 
+.. include:: ch14-clustering.rst
+
 Indices and tables
 ==================
 
