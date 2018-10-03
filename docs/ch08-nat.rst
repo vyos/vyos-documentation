@@ -57,7 +57,7 @@ rule [n] translation address` statement.
 
   set nat source rule 100 translation address '203.0.113.32-203.0.113.63'
 
-**Note:** Avoiding "leaky" NAT
+**NOTE:** Avoiding "leaky" NAT
 
 Linux netfilter will not NAT traffic marked as INVALID. This often confuses
 people into thinking that Linux (or specifically VyOS) has a broken NAT
@@ -82,7 +82,7 @@ protocol behavior. For this reason, VyOS does not globally drop invalid state
 traffic, instead allowing the operator to make the determination on how the
 traffic is handled.
 
-**Note:** Avoiding NAT breakage in the absence of split-DNS
+**NOTE:** Avoiding NAT breakage in the absence of split-DNS
 
 A typical problem with using NAT and hosting public servers is the ability for
 internal systems to reach an internal server using it's external IP address.

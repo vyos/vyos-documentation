@@ -28,7 +28,7 @@ version if something breaks after upgrade. Every version is contained in its
 own squashfs image that is mounted in a union filesystem together with a
 directory for mutable data (configs etc.).
 
-**Note:** older versions used to support non-image installation (`install
+**NOTE:** older versions used to support non-image installation (`install
 system` command). It's been deprecated since the time image installation was
 introduced (long before the fork), and does not provide any version management
 capabilities. You **should not** use it for new installations even if it's still
