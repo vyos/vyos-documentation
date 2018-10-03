@@ -49,6 +49,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch15-image-mgmt.rst
 
+.. include:: ch16-troubleshooting.rst
+
 Indices and tables
 ==================
 
