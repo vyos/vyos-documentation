@@ -864,6 +864,9 @@ configuration by:
 
   set service broadcast-relay disable
 
+**NOTE:** You can run the UDP broadcast relay service on multiple routers
+connected to a subnet. There is **NO** UDP broadcast relay packet storm!
+
 .. _ddclient: http://sourceforge.net/p/ddclient/wiki/Home/
 .. _RFC2136: https://www.ietf.org/rfc/rfc2136.txt
 .. _`Multicast DNS`: https://en.wikipedia.org/wiki/Multicast_DNS
