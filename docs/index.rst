@@ -37,6 +37,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch09-vpn.rst
 
+.. include:: ch10-qos.rst
+
 Indices and tables
 ==================
 
