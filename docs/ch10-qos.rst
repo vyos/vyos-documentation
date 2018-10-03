@@ -182,8 +182,8 @@ Matching rules
   <match name>`
 
 * Add a description:
- :code:`set traffic-policy limiter <policy name> class <class ID> match
- <match name> description <description>`
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> description <description>`
 
 * Specify the priority of a matching rule to set the order in which the rules
   are evaluated, the higher the number the lower the priority, range 0...20
@@ -266,11 +266,12 @@ Available commands:
   :code:`set traffic-policy network-emulator <policy name>`
 
 * Add a description:
- :code:`set traffic-policy network-emulator <policy name> description <description>`
+  :code:`set traffic-policy network-emulator <policy name> description <description>`
 
 * Specify a bandwidth limit in kbit/s:
   :code:`set traffic-policy network-emulator <policy name> bandwidth <rate>`
   Available suffixes:
+
  * kbit (kilobits per second, default)
  * mbit (megabits per second)
  * gbit (gigabits per second)
@@ -281,6 +282,7 @@ Available commands:
 * Set a burst size, the maximum amount of traffic that can be sent, in bytes:
   :code:`set traffic-policy network-emulator <policy name> burst <burst size>`
   Available suffixes:
+
  * kb (kilobytes)
  * mb (megabytes)
  * gb (gigabytes)
@@ -288,13 +290,14 @@ Available commands:
 * Define a delay between packets:
   :code:`set traffic-policy network-emulator <policy name> network-delay <delay>`
   Available suffixes:
+
  * secs (seconds)
  * ms (milliseconds, default)
  * us (microseconds)
 
 * Set a percentage of corrupted of packets (one bit flip, unchanged checksum):
- :code:`set traffic-policy network-emulator <policy name> packet-corruption
- <percent>`
+  :code:`set traffic-policy network-emulator <policy name> packet-corruption
+  <percent>`
 
 * Set a percentage of random packet loss:
   :code:`set traffic-policy network-emulator <policy name> packet-loss <percent>`
@@ -304,7 +307,7 @@ Available commands:
   <percent>`
 
 * Set a queue length limit in packets, range 0...4294967295, default 127:
- :code:`set traffic-policy network-emulator <policy name> queue-limit <limit>`
+  :code:`set traffic-policy network-emulator <policy name> queue-limit <limit>`
 
 Priority queue
 ^^^^^^^^^^^^^^
@@ -318,10 +321,10 @@ transmitted after traffic volume from higher priority queues decreases.
 Available commands:
 
 * Define a priority queue:
- :code:`set traffic-policy priority-queue <policy name>`
+  :code:`set traffic-policy priority-queue <policy name>`
 
 * Add a description:
- :code:`set traffic-policy priority-queue <policy name> description <description>`
+  :code:`set traffic-policy priority-queue <policy name> description <description>`
 
 Traffic classes
 ***************
@@ -338,25 +341,29 @@ Traffic classes
   queue-limit <limit>`
 
 * Specify a queue type for a traffic class, available queue types:
+
  * drop-tail
  * fair-queue
  * random-detect
+
   :code:`set traffic-policy priority-queue <policy name> class <class ID>
   queue-type <type>`
 
 **Default class**
 
 * Define a default priority queue:
- :code:`set traffic-policy priority-queue <policy name> default`
+  :code:`set traffic-policy priority-queue <policy name> default`
 
 * Define a maximum queue length for the default traffic class in packets:
- :code:`set traffic-policy priority-queue <policy name> default queue-limit
- <limit>`
+  :code:`set traffic-policy priority-queue <policy name> default queue-limit
+  <limit>`
 
 * Specify the queuing type for the default traffic class, available queue types:
+
  * drop-tail
  * fair-queue
  * random-detect
+
   :code:`set traffic-policy priority-queue <policy name> default queue-type <type>`
 
 Matching rules
@@ -462,6 +469,7 @@ Available commands:
 * Set a bandwidth limit, default auto:
   :code:`set traffic-policy random-detect <policy name> bandwidth <rate>`
   Available suffixes:</u>
+
  * auto (bandwidth limit based on interface speed, default)
  * kbit (kilobits per second)
  * mbit (megabits per second)
@@ -584,6 +592,7 @@ Available commands:
 * Specify a bandwidth limit in kbits/s:
   :code:`set traffic-policy rate-control <policy-name> bandwidth <rate>`
   Available suffixes:</u>
+
  * kbit (kilobits per second, default)
  * mbit (megabits per second)
  * gbit (gigabits per second)
@@ -594,6 +603,7 @@ Available commands:
 * Specify a burst size in bytes, default 15 kilobytes:
   :code:`set traffic-policy rate-control <policy-name> burst <burst-size>`
   Available suffixes:
+
  * kb (kilobytes)
  * mb (megabytes)
  * gb (gigabytes)
@@ -602,6 +612,7 @@ Available commands:
   allowed to wait in the queue, default 50 milliseconds:
   :code:`set traffic-policy rate-control <policy-name> latency`
   Available suffixes:
+
  * secs (seconds)
  * ms (milliseconds, default)
  * us (microseconds)
@@ -615,13 +626,13 @@ classes.
 Available commands:
 
 * Define a round robin policy:
- :code:`set traffic-policy round-robin <policy-name>`
+  :code:`set traffic-policy round-robin <policy-name>`
 
 * Add a description:
- :code:`set traffic-policy round-robin <policy-name> description <description>`
+  :code:`set traffic-policy round-robin <policy-name> description <description>`
 
 * Define a traffic class ID, range 2...4095:
- :code:`set traffic-policy round-robin <policy-name> class <class>`
+  :code:`set traffic-policy round-robin <policy-name> class <class>`
 
 **Default policy:**
 
@@ -635,9 +646,11 @@ Available commands:
   :code:`set traffic-policy round-robin <policy name> default queue-limit <limit>`
 
 * Specify the queuing type for the default policy, available queue types:
+
  * drop-tail
  * fair-queue
  * priority (based on the DSCP values in the ToS byte)
+
   :code:`set traffic-policy round-robin <policy name> default queue-type <type>`
 
 Matching rules
@@ -741,6 +754,7 @@ Avialable commands:
   default 100%:
   :code:`set traffic-policy shaper <policy-name> bandwidth <rate>`
   Available suffixes:
+
  * %    (percentage of total bandwidth)
  * kbit (kilobits per second)
  * mbit (megabits per second)
@@ -750,7 +764,7 @@ Avialable commands:
  * gbps (gigabytes per second)
 
 Traffic classes
-***************
+^^^^^^^^^^^^^^^
 
 * Define a traffic class for a shaper policy, range for class ID is 2...4095:
   :code:`set traffic-policy shaper <policy-name> class <class ID>`
@@ -762,6 +776,7 @@ Traffic classes
 * Specify a bandwidth limit for a class, in kbit/s:
   :code:`set traffic-policy shaper <policy-name> class <class ID> bandwidth <rate>`
   Available suffixes:
+
  * kbit (kilobits per second, default)
  * mbit (megabits per second)
  * gbit (gigabits per second)
@@ -772,6 +787,7 @@ Traffic classes
 * Set a burst size for a class, the maximum amount of traffic that can be sent,
   in bytes: :code:`set traffic-policy shaper <policy-name> class <class ID>
   burst <burst-size>` Available suffixes:
+
  * kb (kilobytes)
  * mb (megabytes)
  * gb (gigabytes)
@@ -779,6 +795,7 @@ Traffic classes
 * Set a bandwidth ceiling for a class in kbit/s:
   :code:`set traffic-policy shaper <policy-name> class <class ID> ceiling <rate>`
   Available suffixes:
+
  * %    (percentage of total bandwidth)
  * kbit (kilobits per second)
  * mbit (megabits per second)
@@ -795,10 +812,12 @@ Traffic classes
 
 * Specify a queue type for a traffic class, default fair-queue. Available
   queue types:
+
  * drop-tail
  * fair-queue
  * random-detect
  * priority
+
   :code:`set traffic-policy shaper <policy name> class <class ID> queue-type <type>`
 
 * Modify DSCP field; the DSCP field value of packets in a class can be
@@ -842,7 +861,7 @@ Traffic classes
   +---------+------------+--------+------------------------------+
 
 Matching rules
-**************
+^^^^^^^^^^^^^^
 
 * Define a class matching rule:
   :code:`set traffic-policy shaper <policy name> class <class ID> match
