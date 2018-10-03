@@ -814,6 +814,53 @@ mDNS repeater can be temporarily disabled without deleting the service using
 
   set service mdns repeater disable
 
+UDP broadcast relay
+===================
+
+Certain vendors use broadcasts to identify their equipemnt within one ethernet
+segment. Unfortunately if you split your network with multiple VLANs you loose
+the ability of identifying your equiment.
+
+This is where "UDP broadcast relay" comes into play! It will forward received
+broadcasts to other configured networks.
+
+Every UDP port which will be forward requires one unique ID. Currently we
+support 99 IDs!
+
+To Forward broadcasts on port 1900 for eth3, eth4 and eth5 configure the service
+as follows:
+
+.. code-block:: sh
+
+  set service broadcast-relay id 1 description 'SONOS'
+  set service broadcast-relay id 1 interface 'eth3'
+  set service broadcast-relay id 1 interface 'eth4'
+  set service broadcast-relay id 1 interface 'eth5'
+  set service broadcast-relay id 1 port '1900'
+
+Forward broadcasts on port 6969 for eth3, eth4
+
+.. code-block:: sh
+
+  set service broadcast-relay id 2 description 'SONOS MGMT'
+  set service broadcast-relay id 2 interface 'eth3'
+  set service broadcast-relay id 2 interface 'eth4'
+  set service broadcast-relay id 2 port '6969'
+
+Each broadcast relay instance can be individually disabled without deleting the
+configured node by:
+
+.. code-block:: sh
+
+  set service broadcast-relay id <n> disable
+
+In addition you can also disable the whole service without removing the
+configuration by:
+
+.. code-block:: sh
+
+  set service broadcast-relay disable
+
 .. _ddclient: http://sourceforge.net/p/ddclient/wiki/Home/
 .. _RFC2136: https://www.ietf.org/rfc/rfc2136.txt
 .. _`Multicast DNS`: https://en.wikipedia.org/wiki/Multicast_DNS
