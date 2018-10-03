@@ -1,23 +1,28 @@
 Routing
 =======
 
-VyOS is a "router first" network operating system. It supports static routing, policy routing, and dynamic routing using standard protocols (RIP, OSPF, and BGP).
+VyOS is a "router first" network operating system. It supports static routing,
+policy routing, and dynamic routing using standard protocols (RIP, OSPF, and
+BGP).
 
 Static
 ------
 
 Static routes are manually configured network routes.
 
-A typical use for a static route is a static default route for systems that do not make use of DHCP or dynamic routing protocols: 
+A typical use for a static route is a static default route for systems that do
+not make use of DHCP or dynamic routing protocols:
 
 .. code-block:: sh
 
   set protocols static route 0.0.0.0/0 next-hop 10.1.1.1 distance '1'
 
-Another common use of static routes is to blackhole (drop) traffic.
-In the example below, RFC 1918 private IP networks are set as blackhole routes.
-This does not prevent networks within these segments from being used, since the most specific route is always used.
-It does, however, prevent traffic to unknown private networks from leaving the router. Commonly refereed to as leaking.
+Another common use of static routes is to blackhole (drop) traffic. In the
+example below, RFC 1918 private IP networks are set as blackhole routes. This
+does not prevent networks within these segments from being used, since the
+most specific route is always used. It does, however, prevent traffic to
+unknown private networks from leaving the router. Commonly refereed to as
+leaking.
 
 .. code-block:: sh
 
@@ -25,14 +30,15 @@ It does, however, prevent traffic to unknown private networks from leaving the r
   set protocols static route 172.16.0.0/12 blackhole distance '254'
   set protocols static route 192.168.0.0/16 blackhole distance '254'
 
-Note that routes with a distance of 255 are effectively disabled and not installed into the kernel.
+Note that routes with a distance of 255 are effectively disabled and not
+installed into the kernel.
 
 RIP
 ---
 
 Simple RIP configuration using 2 nodes and redistributing connected interfaces.
 
-**Node 1:** 
+**Node 1:**
 
 .. code-block:: sh
 
@@ -54,7 +60,8 @@ OSPF
 IPv4
 ^^^^
 
-A typical configuration using 2 nodes, redistribute loopback address and the node 1 sending the default route:
+A typical configuration using 2 nodes, redistribute loopback address and the
+node 1 sending the default route:
 
 **Node 1:**
 
@@ -139,7 +146,9 @@ A simple eBGP configuration:
   set protocols bgp 65535 parameters router-id '192.168.0.2'
 
 
-Don't forget, the CIDR declared in the network statement MUST **exist in your routing table (dynamic or static), the best way to make sure that is true is creating a static route:**
+Don't forget, the CIDR declared in the network statement MUST **exist in your
+routing table (dynamic or static), the best way to make sure that is true is
+creating a static route:**
 
 **Node 1:**
 
@@ -181,8 +190,9 @@ A simple BGP configuration via IPv6.
   set protocols bgp 65535 address-family ipv6-unicast network '2001:db8:2::/48'
   set protocols bgp 65535 parameters router-id '10.1.1.2'
 
-
-Don't forget, the CIDR declared in the network statement **MUST exist in your routing table (dynamic or static), the best way to make sure that is true is creating a static route:**
+Don't forget, the CIDR declared in the network statement **MUST exist in your
+routing table (dynamic or static), the best way to make sure that is true is
+creating a static route:**
 
 **Node 1:**
 
@@ -247,14 +257,18 @@ Route filter can be applied using a route-map:
   set protocols bgp 65535 neighbor 2001:db8::1 route-map export 'AS65534-OUT'
   set protocols bgp 65535 neighbor 2001:db8::1 route-map import 'AS65534-IN'
 
-We could expand on this and also deny link local and multicast in the rule 20 action deny. 
+We could expand on this and also deny link local and multicast in the rule 20
+action deny.
 
 Policy Routing
 ==============
 
-VyOS supports Policy Routing, allowing traffic to be assigned to a different routing table. Traffic can be matched using standard 5-tuple matching (source address, destination address, protocol, source port, destination port).
+VyOS supports Policy Routing, allowing traffic to be assigned to a different
+routing table. Traffic can be matched using standard 5-tuple matching (source
+address, destination address, protocol, source port, destination port).
 
-The following example will show how VyOS can be used to redirect web traffic to an external transparent proxy:
+The following example will show how VyOS can be used to redirect web traffic to
+an external transparent proxy:
 
 .. code-block:: sh
 
@@ -262,9 +276,12 @@ The following example will show how VyOS can be used to redirect web traffic to 
   set policy route FILTER-WEB rule 1000 protocol tcp
   set policy route FILTER-WEB rule 1000 set table 100
 
-This creates a route policy called FILTER-WEB with one rule to set the routing table for matching traffic (TCP port 80) to table ID 100 instead of the default routing table.
+This creates a route policy called FILTER-WEB with one rule to set the routing
+table for matching traffic (TCP port 80) to table ID 100 instead of the
+default routing table.
 
-To create routing table 100 and add a new default gateway to be used by traffic matching our route policy:
+To create routing table 100 and add a new default gateway to be used by
+traffic matching our route policy:
 
 .. code-block:: sh
 
@@ -272,12 +289,18 @@ To create routing table 100 and add a new default gateway to be used by traffic 
 
 This can be confirmed using the show ip route table 100 operational command.
 
-Finally, to apply the policy route to ingress traffic on our LAN interface, we use:
+Finally, to apply the policy route to ingress traffic on our LAN interface,
+we use:
 
 .. code-block:: sh
 
   set interfaces ethernet eth1 policy route FILTER-WEB
 
-The route policy functionality in VyOS can also be used to rewrite TCP MSS using the set policy route <name> rule <rule> set tcp-mss <value> directive, modify DSCP value using [...] set dscp <value>, or mark the traffic with an internal ID using [...] set mark <value> for further processing (e.g. QOS) on a per-rule basis for matching traffic.
+The route policy functionality in VyOS can also be used to rewrite TCP MSS
+using the set policy route <name> rule <rule> `set tcp-mss <value>` directive,
+modify DSCP value using `set dscp <value>`, or mark the traffic with an
+internal ID using `set mark <value>` for further processing (e.g. QOS) on a
+per-rule basis for matching traffic.
 
-In addition to 5-tuple matching, additional options such as time-based rules, are available. See the built-in help for a complete list of options. 
+In addition to 5-tuple matching, additional options such as time-based rules,
+are available. See the built-in help for a complete list of options.
