@@ -13,14 +13,17 @@ site-to-site connections.
 
 The advantages of OpenVPN are:
 * It uses a single TCP or UDP connection and does not rely on packet source
-  addresses, so it will work even through a double NAT: perfect for public
-  hotspots and such
+addresses, so it will work even through a double NAT: perfect for public
+hotspots and such
+
 * It's easy to setup and offers very flexible split tunneling
+
 * There's a variety of client GUI frontends for any platform
 
 The disadvantages are:
 * It's slower than IPsec due to higher protocol overhead and the fact it runs
-  in user mode while IPsec, on Linux, is in kernel mode
+in user mode while IPsec, on Linux, is in kernel mode
+
 * None of the operating systems have client software installed by default
 
 In the VyOS CLI, a key point often overlooked is that rather than being
@@ -302,7 +305,7 @@ Site-to-Site IPsec
 Example:
 * eth1 is WAN interface
 * left subnet: 192.168.0.0/24 #s ite1, server side (i.e. locality, actually
-  there is no client or server roles)
+there is no client or server roles)
 * left local_ip: 1.1.1.1 # server side WAN IP
 * right subnet: 10.0.0.0/24  # site2,remote office side
 * right local_ip: 2.2.2.2 # remote office side WAN IP
