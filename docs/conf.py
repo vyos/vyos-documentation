@@ -24,9 +24,10 @@ copyright = u'2018, VyOS maintainers and contributors'
 author = u'VyOS maintainers and contributors'
 
 # The short X.Y version
-version = u''
+version = u'1.2.0'
+
 # The full version, including alpha/beta/rc tags
-release = u''
+release = u'1.2.0-beta'
 
 
 # -- General configuration ---------------------------------------------------
