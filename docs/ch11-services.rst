@@ -72,8 +72,8 @@ Static mappings MAC/IP
 
 .. code-block:: sh
 
-  set service dhcp‐server shared‐network‐name dhcpexample subnet 172.16.17.0/24 static‐mapping static-mapping-01 ip‐address 172.16.17.10
-  set service dhcp‐server shared‐network‐name dhcpexample subnet 172.16.17.0/24 static‐mapping static-mapping-01 mac‐address ff:ff:ff:ff:ff:ff
+  set service dhcp-server shared-network-name dhcpexample subnet 172.16.17.0/24 static-mapping static-mapping-01 ip-address 172.16.17.10
+  set service dhcp-server shared-network-name dhcpexample subnet 172.16.17.0/24 static-mapping static-mapping-01 mac-address ff:ff:ff:ff:ff:ff
 
 Explanation
 ^^^^^^^^^^^
