@@ -43,6 +43,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch12-system.rst
 
+.. include:: ch13-ipv6.rst
+
 Indices and tables
 ==================
 
