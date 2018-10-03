@@ -445,7 +445,7 @@ The tunnel will be set to mGRE if for encapsulation `gre` is set, and no
 `remote-ip` is set. If the public ip is provided by DHCP the tunnel `local-ip`
 can be set to "0.0.0.0"
 
-.. figure:: images/Baseline-DMVPN-Topology.png
+.. figure:: images/vpn_dmvpn_topology01.png
    :scale: 40 %
    :alt: Baseline DMVPN topology
 
