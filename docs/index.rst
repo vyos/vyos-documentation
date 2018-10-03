@@ -41,6 +41,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch11-services.rst
 
+.. include:: ch12-system.rst
+
 Indices and tables
 ==================
 
