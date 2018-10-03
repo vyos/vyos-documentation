@@ -357,31 +357,40 @@ Results in:
 Wireguard VPN Interface
 -----------------------
 
-WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
-See https://www.wireguard.com for mor information.
+WireGuard is an extremely simple yet fast and modern VPN that utilizes
+state-of-the-art cryptography. See https://www.wireguard.com for more
+information.
 
 Configuration
 ^^^^^^^^^^^^^
 
-Generate the keypair, which creates a public and private part and stores it within vyos.
+Generate the keypair, which creates a public and private part and stores it
+within vyos.
 
 .. code-block:: sh
 
   wg01:~$ configure
   wg01# run generate wireguard keypair
 
-The public key is being shared with your peer(s), your peer will encrypt all traffic to your system using this public key.
+The public key is being shared with your peer(s), your peer will encrypt all
+traffic to your system using this public key.
 
 .. code-block:: sh
 
-  wg01#run show wireguard pubkey
+  wg01# run show wireguard pubkey
   u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk=
 
-The next step is to configure your local side as well as the policy based trusted destination addresses.
-If you only initiate a connection, the listen port and endpoint is optional, if you however act as a server and endpoints initiate the connections to your system, you need to define a port your clients can connect to, otherwise it's randomly chosen and may make it difficult with firewall rules, since the port may be a different one when you reboot your system.
+The next step is to configure your local side as well as the policy based
+trusted destination addresses. If you only initiate a connection, the listen
+port and endpoint is optional, if you however act as a server and endpoints
+initiate the connections to your system, you need to define a port your clients
+can connect to, otherwise it's randomly chosen and may make it difficult with
+firewall rules, since the port may be a different one when you reboot your
+system.
 
-You will also need the public key of your peer as well as the network(s) you want to tunnel (allowed-ips) to configure a wireguard tunnel.
-The public key below is always the public key from your peer, not your local one.
+You will also need the public key of your peer as well as the network(s) you
+want to tunnel (allowed-ips) to configure a wireguard tunnel. The public key
+below is always the public key from your peer, not your local one.
 
 **local side**
 
@@ -395,8 +404,10 @@ The public key below is always the public key from your peer, not your local one
   set interfaces wireguard wg01 port '12345'
   set protocols static interface-route 10.2.0.0/24 next-hop-interface wg01
 
-The last step is to define an interface route for 10.2.0.0/24 to get through the wireguard interface wg01.
-Multiple IPs or networks can be defined and routed, the last check is allowed-ips which either prevents or allows the traffic.
+The last step is to define an interface route for 10.2.0.0/24 to get through
+the wireguard interface `wg01`. Multiple IPs or networks can be defined and
+routed, the last check is allowed-ips which either prevents or allows the
+traffic.
 
 **remote side**
 
@@ -410,7 +421,8 @@ Multiple IPs or networks can be defined and routed, the last check is allowed-ip
   set interfaces wireguard wg01 port '12345'
   set protocols static interface-route 10.1.0.0/24 next-hop-interface wg01
 
-Assure that your firewall rules allow the traffic, in which case you have a working VPN using wireguard.
+Assure that your firewall rules allow the traffic, in which case you have a
+working VPN using wireguard.
 
 .. code-block:: sh
 
@@ -424,19 +436,19 @@ Assure that your firewall rules allow the traffic, in which case you have a work
   64 bytes from 10.1.0.1: icmp_seq=1 ttl=64 time=4.40 ms
   64 bytes from 10.1.0.1: icmp_seq=2 ttl=64 time=1.02 ms
 
-An additional layer of symmetric-key crypto can be used on top of the asymmetric crypto, which is optional.
+An additional layer of symmetric-key crypto can be used on top of the
+asymmetric crypto, which is optional.
 
 .. code-block:: sh
 
   wg01# run generate wireguard preshared-key
   rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc=
 
-Copy the key, it is not stored on the local file system.
-Make sure you distribute that key in a safe manner, it's a symmatric key, so only you and your peer should have knowledge if its content.
+Copy the key, it is not stored on the local file system. Make sure you
+distribute that key in a safe manner, it's a symmatric key, so only you and
+your peer should have knowledge if its content.
 
 .. code-block:: sh
 
   wg01# set interfaces wireguard wg01 peer to-wg02 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
   wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
-
-
