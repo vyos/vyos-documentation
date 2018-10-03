@@ -33,6 +33,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch07-firewall.rst
 
+.. include:: ch08-nat.rst
+
 Indices and tables
 ==================
 
