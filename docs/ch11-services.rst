@@ -790,7 +790,7 @@ address for the response. ddclient_ will skip any address located before the
 string set in `[skip]`.
 
 mDNS Repeater
-=============
+-------------
 
 Starting with VyOS 1.2 a `Multicast DNS`_ (mDNS) repeater functionality is
 provided.
@@ -818,7 +818,7 @@ mDNS repeater can be temporarily disabled without deleting the service using
 launched in a subnet you will experience the mDNS packet storm death!
 
 UDP broadcast relay
-===================
+-------------------
 
 Certain vendors use broadcasts to identify their equipemnt within one ethernet
 segment. Unfortunately if you split your network with multiple VLANs you loose
