@@ -35,6 +35,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch08-nat.rst
 
+.. include:: ch09-vpn.rst
+
 Indices and tables
 ==================
 
