@@ -31,6 +31,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch06-routing.rst
 
+.. include:: ch07-firewall.rst
+
 Indices and tables
 ==================
 
