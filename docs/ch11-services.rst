@@ -814,6 +814,9 @@ mDNS repeater can be temporarily disabled without deleting the service using
 
   set service mdns repeater disable
 
+**NOTE**: You can not run this in a VRRP setup, if multiple mDNS repeaters are
+launched in a subnet you will experience the mDNS packet storm death!
+
 UDP broadcast relay
 ===================
 
