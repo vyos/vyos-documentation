@@ -67,28 +67,25 @@ remote system:
   loadkey jsmith scp://devuser@dev001.vyos.net/home/devuser/.ssh/dev.pub
 
 Syslog
-======
+------
 
-Per default vyos has minimal syslog logging enabled which is stored and rotated locally.
-Errors will be always logged to a local file, which includes local7 error messages, emergency messages will be sent to the console too.
-
-Configuration
--------------
+Per default VyOSs has minimal syslog logging enabled which is stored and
+rotated locally. Errors will be always logged to a local file, which includes
+`local7` error messages, emergency messages will be sent to the console, too.
 
 To configure syslog, you need to switch into configuration mode.
-
 
 Logging to serial console
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The below would log all messages to /dev/console.
+The below would log all messages to :code:`/dev/console`.
 
 .. code-block:: sh
 
   set system syslog console facility all level all
 
-
-Use the <tab> function to display all facilities and levels which can be configured.
+Use the **[tab]** function to display all facilities and levels which can
+be configured.
 
 .. code-block:: sh
 
@@ -130,26 +127,30 @@ Use the <tab> function to display all facilities and levels which can be configu
    debug        Debug messages
    all          Log everything
 
+
 Logging to a custom file
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Logging to a custom file, rotation size and the number of rotate files left on the system can be configured. 
+Logging to a custom file, rotation size and the number of rotate files left
+on the system can be configured.
 
 .. code-block:: sh
 
-  set system syslog file <FILENAME> facility <FACILITY>  level <LEVEL> 
+  set system syslog file <FILENAME> facility <FACILITY>  level <LEVEL>
   set system syslog file <FILENAME> archive file <NUMBER OF FILES>
   set system syslog file FILENAME archive size <FILESIZE>
 
-The very same setting can be applied to the global configuration, to modify the defaults for the global logging.
+The very same setting can be applied to the global configuration, to modify
+the defaults for the global logging.
 
 Logging to a remote host
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Logging to a remote host leaves the local logging configuration intact, it can be configured in parallel.
-You can log ro multiple hosts at the same time, using either tcp or udp. The default is sending the messages via udp.
+Logging to a remote host leaves the local logging configuration intact, it
+can be configured in parallel. You can log ro multiple hosts at the same time,
+using either TCP or UDP. The default is sending the messages via UDP.
 
-**Logging to a remote host using udp**
+**UDP**
 
 .. code-block:: sh
 
@@ -158,21 +159,20 @@ You can log ro multiple hosts at the same time, using either tcp or udp. The def
   set system syslog host 10.1.1.1 facility all protocol udp
 
 
-**Logging to a remote host using tcp**
+**TCP**
 
 .. code-block:: sh
 
   set system syslog host 10.1.1.2 facility all level all
   set system syslog host 10.1.1.2 facility all protocol tcp
 
-
 Logging to a local user account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If logging to a local useraccount is configured, all defined log messages are display on the console if the local user is logged in, 
-if the user is not logged in, no messages are being displayed.
+If logging to a local useraccount is configured, all defined log messages are
+display on the console if the local user is logged in, if the user is not
+logged in, no messages are being displayed.
 
 .. code-block:: sh
 
   set system syslog user <LOCAL_USERNAME> facility <FACILITY> level <LEVEL>
-
