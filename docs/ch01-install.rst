@@ -33,7 +33,8 @@ system` command). It's been deprecated since the time image installation was
 introduced (long before the fork), and does not provide any version management
 capabilities. You **should not** use it for new installations even if it's still
 available in new versions. You should not worry about older systems installed
-that way though, they can be upgraded with "add system image".
+that way though, they can be upgraded with "add system image". In addition the
+`install system` command has been removed in VyOS 1.2 (Crux).
 
 To install VyOS, run ``install image``.
 
