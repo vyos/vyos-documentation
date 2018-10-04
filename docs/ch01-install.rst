@@ -19,7 +19,7 @@ to the system, use the default username ``vyos`` with password ``vyos``.
   vyos@vyos:~$
 
   vyos@vyos:~$ uname -a
-  Linux vyos 4.18.8-amd64-vyos #22 SMP Wed Sep 19 18:24:39 CEST 2018 x86_64 GNU/Linux
+  Linux vyos 4.18.11-amd64-vyos #23 SMP Mon Oct 1 17:29:22 CEST 2018 x86_64 GNU/Linux
 
 Unlike general purpose Linux distributions, VyOS uses "image installation"
 that mimics the user experience of traditional hardware routers and allows
