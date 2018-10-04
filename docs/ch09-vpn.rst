@@ -290,6 +290,9 @@ needed as well.
   set vpn l2tp remote-access dns-servers server-1 '8.8.8.8'
   set vpn l2tp remote-access dns-servers server-2 '8.8.4.4'
 
+**NOTE:** Those are the `Google public DNS`_ servers. You can also use the
+public available servers from Quad9_ (9.9.9.9) or Cloudflare_ (1.1.1.1).
+
 Established sessions can be viewed using the **show vpn remote-access**
 operational command.
 
@@ -852,6 +855,9 @@ SPOKE2 Example Configuration
   set protocols static route 192.168.1.0/24 next-hop 10.0.0.1
   set protocols static route 192.168.2.0/24 next-hop 10.0.0.2
 
+.. _`Google Public DNS`: https://developers.google.com/speed/public-dns
+.. _Quad9: https://quad9.net
+.. _CloudFlare: https://blog.cloudflare.com/announcing-1111
 .. _RADIUS: https://en.wikipedia.org/wiki/RADIUS
 .. _FreeRADIUS: https://freeradius.org
 .. _`Network Policy Server`: https://en.wikipedia.org/wiki/Network_Policy_Server
