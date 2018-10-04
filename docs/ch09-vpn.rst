@@ -299,6 +299,40 @@ operational command.
   ----            ----- -----     ---------       ------- -------  ----
   vyos            L2TP  l2tp0     192.168.255.1      3.2K    8.0K  00h06m13s
 
+RADIUS authentication
+^^^^^^^^^^^^^^^^^^^^^
+
+The above configuration made use of local accounts on the VyOS router for
+authenticating L2TP/IPSec clients. In bigger environments usually something
+like RADIUS_ (FreeRADIUS_ or Microsoft `Network Policy Server`_, NPS) is used.
+
+VyOS supports either `local` or `radius` user authentication:
+
+.. code-block:: sh
+
+  set vpn l2tp remote-access authentication mode <local|radius>
+
+In addition one or more RADIUS_ servers can be configured to server for user
+authentication. This is done using the `radius-server` and `key` nodes:
+
+.. code-block:: sh
+
+  set vpn l2tp remote-access authentication radius-server 1.1.1.1 key 'foo'
+  set vpn l2tp remote-access authentication radius-server 2.2.2.2 key 'foo'
+
+**NOTE:** Some RADIUS_ severs make use of an access control list who is allowed
+to query the server. Please configure your VyOS router in the allowed client
+list.
+
+RADIUS source address
+*********************
+
+Yet there is no way to configure the used RADIUS_ client source IP address on
+the VyOS router, this is work in progres, see https://phabricator.vyos.net/T828.
+
+The IP address nearest to the radius server is currently used. If in doubt,
+configure all IP addresses from the VyOS router in question.
+
 Site-to-Site IPsec
 ------------------
 
@@ -816,6 +850,9 @@ SPOKE2 Example Configuration
   set protocols static route 192.168.1.0/24 next-hop 10.0.0.1
   set protocols static route 192.168.2.0/24 next-hop 10.0.0.2
 
+.. _RADIUS: https://en.wikipedia.org/wiki/RADIUS
+.. _FreeRADIUS: https://freeradius.org
+.. _`Network Policy Server`: https://en.wikipedia.org/wiki/Network_Policy_Server
 .. _RFC2332: https://tools.ietf.org/html/rfc2332
 .. _RFC1702: https://tools.ietf.org/html/rfc1702
 .. _RFC4301: https://tools.ietf.org/html/rfc4301
