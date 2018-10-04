@@ -365,7 +365,7 @@ Configuration
 ^^^^^^^^^^^^^
 
 Generate the keypair, which creates a public and private part and stores it
-within vyos.
+within VyOS.
 
 .. code-block:: sh
 
