@@ -285,6 +285,8 @@ will need to add the appropriate source NAT rules to your configuration.
 To be able to resolve when connected to the VPN, the following DNS rules are
 needed as well.
 
+.. code-block:: sh
+
   set vpn l2tp remote-access dns-servers server-1 '8.8.8.8'
   set vpn l2tp remote-access dns-servers server-2 '8.8.4.4'
 
