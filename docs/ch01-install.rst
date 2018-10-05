@@ -3,7 +3,7 @@ Installation
 
 The latest ISO image for VyOS can be downloaded at https://www.vyos.net.
 
-The recommended system requirements are 512MB RAM and 2GB storage.
+The recommended system requirements are 512 MiB RAM and 2 GiB storage.
 
 The VyOS ISO is a Live CD and will boot to a functional VyOS image. To login
 to the system, use the default username ``vyos`` with password ``vyos``.
