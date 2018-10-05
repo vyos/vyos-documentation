@@ -72,8 +72,7 @@ To enter configuration mode use the `configure` command:
   [edit]
   vyos@vyos:~#
 
-Note that the prompt changes from `$` to `#`. To exit configuration mode, type
-`exit`.
+.. note:: Prompt changes from `$` to `#`. To exit configuration mode, type `exit`.
 
 .. code-block:: sh
 

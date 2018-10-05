@@ -139,8 +139,8 @@ The command is `set interfaces $type $name ipv6 address autoconf`. Examples:
   set interfaces ethernet eth0 vif 90 ipv6 address autoconf
   set interfaces bridge br0 ipv6 address autoconf
 
-**NOTE:** This method automatically disables IPv6 traffic forwarding on the
-interface in question.
+.. note:: This method automatically disables IPv6 traffic forwarding on the
+   interface in question.
 
 EUI-64
 ******
@@ -314,8 +314,8 @@ Example Result:
 In addition to normal IP interface configuration, bridge interfaces support
 Spanning-Tree Protocol. STP is disabled by default.
 
-**NOTE:** Please use caution when introducing spanning-tree protocol on a
-network as it may result in topology changes.
+.. note:: Please use caution when introducing spanning-tree protocol on a
+   network as it may result in topology changes.
 
 To enable spanning-tree use the `set interfaces bridge <name> stp true` command:
 

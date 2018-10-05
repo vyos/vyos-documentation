@@ -57,7 +57,7 @@ rule [n] translation address` statement.
 
   set nat source rule 100 translation address '203.0.113.32-203.0.113.63'
 
-**NOTE:** Avoiding "leaky" NAT
+.. note:: Avoiding "leaky" NAT
 
 Linux netfilter will not NAT traffic marked as INVALID. This often confuses
 people into thinking that Linux (or specifically VyOS) has a broken NAT
@@ -82,7 +82,7 @@ protocol behavior. For this reason, VyOS does not globally drop invalid state
 traffic, instead allowing the operator to make the determination on how the
 traffic is handled.
 
-**NOTE:** Avoiding NAT breakage in the absence of split-DNS
+.. note:: Avoiding NAT breakage in the absence of split-DNS
 
 A typical problem with using NAT and hosting public servers is the ability for
 internal systems to reach an internal server using it's external IP address.
@@ -175,9 +175,9 @@ Which would generate the following NAT destination configuration:
       }
   }
 
-Note that if forwarding traffic to a different port than it is arriving on,
-you may also configure the translation port using `set nat destination rule
-[n] translation port`.
+.. note:: If forwarding traffic to a different port than it is arriving on,
+   you may also configure the translation port using `set nat destination rule
+   [n] translation port`.
 
 This establishes our Port Forward rule, but if we created a firewall policy it
 will likely block the traffic.
@@ -213,8 +213,10 @@ This would generate the following configuration:
       }
   }
 
-**NOTE**: If you have configured the `INSIDE-OUT` policy, you will need to add
-additional rules to permit inbound NAT traffic.
+.. note::
+
+  If you have configured the `INSIDE-OUT` policy, you will need to add
+  additional rules to permit inbound NAT traffic.
 
 1-to-1 NAT
 ----------

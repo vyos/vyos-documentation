@@ -92,12 +92,12 @@ configuration.
   We need 344880 KB, but we only have 17480 KB.
   Exiting...
 
-**NOTE #1:** Rolling releases are not GPG signed, only the real release build
-will have a proper GPG signature.
+.. note:: Rolling releases are not GPG signed, only the real release build
+   will have a proper GPG signature.
 
-**NOTE #2:** VyOS configuration is associated to each image, and each image has
-a unique copy of its configuration. This is different than a traditional
-network router where the configuration is shared across all images.
+.. note:: VyOS configuration is associated to each image, and each image has
+   a unique copy of its configuration. This is different than a traditional
+   network router where the configuration is shared across all images.
 
 If you need some files from a previous images - take a look inside a
 :code:`/live` directory.

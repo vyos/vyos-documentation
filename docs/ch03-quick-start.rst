@@ -154,8 +154,8 @@ interface-level traffic-policy directive:
   set interfaces ethernet eth0 traffic-policy out 'WAN-OUT'
   set interfaces ethernet eth1 traffic-policy out 'LAN-OUT'
 
-Note that a traffic policy can also be defined to match specific traffic
-flows using class statements.
+.. note:: A traffic policy can also be defined to match specific traffic
+   flows using class statements.
 
 VyOS 1.2 (Crux) also supports HFSC (:code:`set traffic-policy shaper-hfsc`)
 

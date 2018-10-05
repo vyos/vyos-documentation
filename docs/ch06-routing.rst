@@ -30,8 +30,8 @@ leaking.
   set protocols static route 172.16.0.0/12 blackhole distance '254'
   set protocols static route 192.168.0.0/16 blackhole distance '254'
 
-Note that routes with a distance of 255 are effectively disabled and not
-installed into the kernel.
+.. note:: Routes with a distance of 255 are effectively disabled and not
+   installed into the kernel.
 
 RIP
 ---

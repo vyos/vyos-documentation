@@ -49,7 +49,7 @@ VyOS provides support for DHCP failover:
   set service dhcp-server shared-network-name 'LAN' subnet '192.168.0.0/24' failover name 'foo'
   set service dhcp-server shared-network-name 'LAN' subnet '192.168.0.0/24' failover peer-address '192.168.0.2'
 
-**NOTE:** `name` must be identical on both sides!
+.. note:: `name` must be identical on both sides!
 
 The primary and secondary statements determines whether the server is primary or secondary
 
@@ -63,9 +63,9 @@ or
 
   set service dhcp-server shared-network-name 'LAN' subnet '192.168.0.0/24' failover status 'secondary'
 
-**NOTE:** In order for the primary and the secondary DHCP server to keep their
-lease tables in sync, they must be able to reach each other on TCP port 647.
-If you have firewall rules in effect, adjust them accordingly.
+.. note:: In order for the primary and the secondary DHCP server to keep
+   their lease tables in sync, they must be able to reach each other on TCP
+   port 647. If you have firewall rules in effect, adjust them accordingly.
 
 Static mappings MAC/IP
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -378,8 +378,10 @@ Example 1: Static IPv6 MAC-based mapping
 
 IPv6 address `2001:db8:100::101` shall be statically mapped to a device with
 MAC address `00:15:c5:b7:5e:23`, this host-specific mapping shall be named
-`client1`. **NOTE:** The MAC address identifier is defined by the last 4 byte
-of the MAC address.
+`client1`.
+
+.. note:: The MAC address identifier is defined by the last 4 byte of the
+   MAC address.
 
 .. code-block:: sh
 
@@ -814,8 +816,8 @@ mDNS repeater can be temporarily disabled without deleting the service using
 
   set service mdns repeater disable
 
-**NOTE**: You can not run this in a VRRP setup, if multiple mDNS repeaters are
-launched in a subnet you will experience the mDNS packet storm death!
+.. note:: You can not run this in a VRRP setup, if multiple mDNS repeaters
+   are launched in a subnet you will experience the mDNS packet storm death!
 
 UDP broadcast relay
 -------------------
@@ -864,8 +866,8 @@ configuration by:
 
   set service broadcast-relay disable
 
-**NOTE:** You can run the UDP broadcast relay service on multiple routers
-connected to a subnet. There is **NO** UDP broadcast relay packet storm!
+.. note:: You can run the UDP broadcast relay service on multiple routers
+   connected to a subnet. There is **NO** UDP broadcast relay packet storm!
 
 .. _ddclient: http://sourceforge.net/p/ddclient/wiki/Home/
 .. _RFC2136: https://www.ietf.org/rfc/rfc2136.txt

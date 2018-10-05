@@ -1239,9 +1239,10 @@ source
 tcp
 ###
 
-**NOTE:** you must set ip protocol to TCP to use the TCP filters.
-**NOTE#2**: This filter will only match packets with an IPv4 header length of
-20 bytes (which is the majority of IPv4 packets anyway).
+.. note:: You must set ip protocol to TCP to use the TCP filters.
+
+.. note:: This filter will only match packets with an IPv4 header length of
+   20 bytes (which is the majority of IPv4 packets anyway).
 
 .. code-block:: sh
 
@@ -1304,9 +1305,11 @@ source
 tcp
 ###
 
-**NOTE**: you must set ipv6 protocol to TCP to use the TCP filters.
-**NOTE#2**: This filter will only match IPv6 packets with no header extension
-(http://en.wikipedia.org/wiki/IPv6_packet#Extension_headers no header extension).
+.. note:: You must set ipv6 protocol to TCP to use the TCP filters.
+
+.. note:: This filter will only match IPv6 packets with no header extension, see
+   http://en.wikipedia.org/wiki/IPv6_packet#Extension_headers for no header
+   extension.
 
 .. code-block:: sh
 

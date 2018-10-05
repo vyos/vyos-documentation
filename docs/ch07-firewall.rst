@@ -32,8 +32,9 @@ Groups
 Firewall groups represent collections of IP addresses, networks, or ports. Once
 created, a group can be referenced by firewall rules as either a source or
 destination. Members can be added or removed from a group without changes to
-or the need to reload individual firewall rules.  Note that groups can also
-be referenced by NAT configuration.
+or the need to reload individual firewall rules.
+
+.. note:: Groups can also be referenced by NAT configuration.
 
 While network groups accept IP networks in CIDR notation, specific IP addresses
 can be added as a 32-bit prefix. If you foresee the need to add a mix of
@@ -81,9 +82,10 @@ Example of a rule-set to filter traffic to the internal network:
 Applying a Rule-Set to an Interface
 -----------------------------------
 
-Once a rule-set is created, it can be applied to an interface. Note only one
-rule-set can be applied to each interface for `in`, `out`, or `local` traffic
-for each protocol (IPv4 and IPv6).
+Once a rule-set is created, it can be applied to an interface.
+
+.. note:: Only one rule-set can be applied to each interface for `in`, `out`,
+   or `local` traffic for each protocol (IPv4 and IPv6).
 
 .. code-block:: sh
 

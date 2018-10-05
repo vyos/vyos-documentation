@@ -29,7 +29,7 @@ Set a system host name:
 
   set system host-name <hostname>
 
-**NOTE:** Only letters, numbers and hyphens are allowed.
+.. note:: Only letters, numbers and hyphens are allowed.
 
 Show host name:
 
@@ -64,7 +64,7 @@ Set the system's domain:
 
   set system domain-name <domain>
 
-**NOTE:** Only letters, numbers, hyphens and periods are allowed.
+.. note:: Only letters, numbers, hyphens and periods are allowed.
 
 Show domain:
 
@@ -235,9 +235,9 @@ The following command will load the public key `dev.pub` for user `jsmith`
 
   loadkey jsmith dev.pub
 
-**NOTE:** This requires uploading the `dev.pub` public key to the VyOS router
-first. As an alternative you can also load the SSH public key directly from a
-remote system:
+.. note:: This requires uploading the `dev.pub` public key to the VyOS router
+   first. As an alternative you can also load the SSH public key directly
+   from a remote system:
 
 .. code-block:: sh
 

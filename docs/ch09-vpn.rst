@@ -204,9 +204,10 @@ installing that route on clients.
 
 Since it's a HQ and branch offices setup, we will want all clients to have
 fixed addresses and we will route traffic to specific subnets through them. We
-need configuration for each client to achieve this. Note that clients are
-identified by the CN field of their x.509 certificates, in this example the CN
-is client0:
+need configuration for each client to achieve this.
+
+.. note:: Clients are identified by the CN field of their x.509 certificates,
+   in this example the CN is ``client0``:
 
 .. code-block:: sh
 
@@ -290,8 +291,8 @@ needed as well.
   set vpn l2tp remote-access dns-servers server-1 '8.8.8.8'
   set vpn l2tp remote-access dns-servers server-2 '8.8.4.4'
 
-**NOTE:** Those are the `Google public DNS`_ servers. You can also use the
-public available servers from Quad9_ (9.9.9.9) or Cloudflare_ (1.1.1.1).
+.. note:: Those are the `Google public DNS`_ servers. You can also use the
+   public available servers from Quad9_ (9.9.9.9) or Cloudflare_ (1.1.1.1).
 
 Established sessions can be viewed using the **show vpn remote-access**
 operational command.
@@ -325,9 +326,9 @@ authentication. This is done using the `radius-server` and `key` nodes:
   set vpn l2tp remote-access authentication radius-server 1.1.1.1 key 'foo'
   set vpn l2tp remote-access authentication radius-server 2.2.2.2 key 'foo'
 
-**NOTE:** Some RADIUS_ severs make use of an access control list who is allowed
-to query the server. Please configure your VyOS router in the allowed client
-list.
+.. note:: Some RADIUS_ severs make use of an access control list who is allowed
+   to query the server. Please configure your VyOS router in the allowed client
+   list.
 
 RADIUS source address
 *********************
@@ -468,9 +469,9 @@ In short, DMVPN provides the capability for creating a dynamic-mesh VPN
 network without having to pre-configure (static) all possible tunnel end-point
 peers.
 
-**NOTE:** DMVPN only automates the tunnel endpoint discovery and setup. A
-complete solution also incorporates the use of a routing protocol. BGP is
-particularly well suited for use with DMVPN.
+.. note:: DMVPN only automates the tunnel endpoint discovery and setup. A
+   complete solution also incorporates the use of a routing protocol. BGP is
+   particularly well suited for use with DMVPN.
 
 Baseline Configuration:
 
