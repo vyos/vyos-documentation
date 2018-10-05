@@ -14,13 +14,16 @@ nodes for the following shaping/queueing/policing disciplines:
 * TBF
 * DRR
 
+Configuration nodes
+-------------------
+
 VyOS QoS configuration is done in two steps. The first one consists in setting
 up your classes/queues and traffic filters to distribute traffic amongst them.
 The second step is to apply such traffic policy to an interface ingress or
 egress.
 
 Creating a traffic policy
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Such configuration takes place under the `traffic-policy` tree.
 
@@ -40,7 +43,7 @@ Available subtrees :
   set traffic-policy shaper-hfsc NAME
 
 Apply traffic policy to an interface
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Once a traffic-policy is created, you can apply it to an interface :
 
@@ -124,7 +127,7 @@ Available commands:
   :code:`set traffic-policy limiter <policy-name> description <description>`
 
 Traffic classes
-^^^^^^^^^^^^^^^
+***************
 
 * Define a traffic class for a limiter policy, range for class ID is 1...4095:
 
@@ -162,7 +165,7 @@ Traffic classes
  * gb (gigabytes)
 
 Default class
-^^^^^^^^^^^^^
+#############
 
 * Define a default class for a limiter policy that applies to traffic not
   matching any other classes for this policy:
@@ -200,7 +203,7 @@ Default class
   :code:`set traffic-policy limiter <policy name> default priority <priority>`
 
 Matching rules
-^^^^^^^^^^^^^^
+**************
 
 * Define a traffic class matching rule:
 
@@ -411,7 +414,8 @@ Traffic classes
   :code:`set traffic-policy priority-queue <policy name> class <class ID>
   queue-type <type>`
 
-**Default class**
+Default class
+#############
 
 * Define a default priority queue:
 
@@ -431,7 +435,7 @@ Traffic classes
   :code:`set traffic-policy priority-queue <policy name> default queue-type <type>`
 
 Matching rules
-^^^^^^^^^^^^^^
+**************
 
 * Define a class matching rule:
 
@@ -851,7 +855,7 @@ Matching rules
   <match name> ipv6 protocol <proto>`
 
 Traffic shaper
---------------
+^^^^^^^^^^^^^^
 
 The shaper policy uses the Hierarchical Token Bucket algorithm to allocate
 different amounts of bandwidth to different traffic classes. In contrast to
@@ -884,7 +888,7 @@ Avialable commands:
  * gbps (gigabytes per second)
 
 Traffic classes
-^^^^^^^^^^^^^^^
+***************
 
 * Define a traffic class for a shaper policy, range for class ID is 2...4095:
 
@@ -995,7 +999,7 @@ Traffic classes
   +---------+------------+--------+------------------------------+
 
 Matching rules
-^^^^^^^^^^^^^^
+**************
 
 * Define a class matching rule:
 
@@ -1092,7 +1096,12 @@ Matching rules
   <match name> ipv6 protocol <proto>`
 
 shaper-hfsc (HFSC_ + sfq)
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+TBD
+
+Ingress shaping
+---------------
 
 The case of ingress shaping. Only a **limiter** policy can be applied directly
 for ingress traffic on an interface. It is possible though to use what is
@@ -1167,13 +1176,13 @@ ether
   edit traffic-policy shaper SHAPER class 30 match MATCH ether
 
 destination
-***********
+###########
 
 protocol
-********
+########
 
 source
-******
+######
 
 interface
 *********
@@ -1189,7 +1198,7 @@ ip
   edit traffic-policy shaper SHAPER class 30 match MATCH ip
 
 destination
-***********
+###########
 
 .. code-block:: sh
 
@@ -1197,14 +1206,14 @@ destination
  set destination port U32-PORT
 
 dscp
-****
+####
 
 .. code-block:: sh
 
   set dscp DSCPVALUE
 
 max-length
-**********
+##########
 
 .. code-block:: sh
 
@@ -1213,13 +1222,14 @@ max-length
 Will match ipv4 packets with a total length lesser than set value.
 
 protocol
-********
+########
+
 .. code-block:: sh
 
   set protocol <IP PROTOCOL>
 
 source
-******
+######
 
 .. code-block:: sh
 
@@ -1227,7 +1237,7 @@ source
   set source port U32-PORT
 
 tcp
-***
+###
 
 **NOTE:** you must set ip protocol to TCP to use the TCP filters.
 **NOTE#2**: This filter will only match packets with an IPv4 header length of
@@ -1253,7 +1263,7 @@ ipv6
   edit traffic-policy shaper SHAPER class 30 match MATCH ipv6
 
 destination
-***********
+###########
 
  .. code-block:: sh
 
@@ -1261,14 +1271,14 @@ destination
   set destination port U32-PORT
 
 dscp
-****
+####
 
 .. code-block:: sh
 
   set dscp DSCPVALUE
 
 max-length
-**********
+##########
 
 .. code-block:: sh
 
@@ -1277,14 +1287,14 @@ max-length
 Will match ipv6 packets with a payload length lesser than set value.
 
 protocol
-********
+########
 
 .. code-block:: sh
 
   set protocol IPPROTOCOL
 
 source
-******
+######
 
 .. code-block:: sh
 
@@ -1292,7 +1302,7 @@ source
   set source port U32-PORT
 
 tcp
-***
+###
 
 **NOTE**: you must set ipv6 protocol to TCP to use the TCP filters.
 **NOTE#2**: This filter will only match IPv6 packets with no header extension
@@ -1324,60 +1334,10 @@ vif
 
   set traffic-policy shaper SHAPER class 30 match MATCH vif **vlan-tag**
 
-
-
-Examples:
----------
-
-One common use of traffic policy is to limit bandwidth for an interface. In
-the example below we limit bandwidth for our LAN connection to 200 Mbit
-download and out WAN connection to 50 Mbit upload:
-
-.. code-block:: sh
-
-  set traffic-policy shaper WAN-OUT bandwidth '50Mbit'
-  set traffic-policy shaper WAN-OUT default bandwidth '50%'
-  set traffic-policy shaper WAN-OUT default ceiling '100%'
-  set traffic-policy shaper WAN-OUT default queue-type 'fair-queue'
-
-  set traffic-policy shaper LAN-OUT bandwidth '200Mbit'
-  set traffic-policy shaper LAN-OUT default bandwidth '50%'
-  set traffic-policy shaper LAN-OUT default ceiling '100%'
-  set traffic-policy shaper LAN-OUT default queue-type 'fair-queue'
-
-Resulting in the following configuration:
-
-.. code-block:: sh
-
-  traffic-policy {
-      shaper WAN-OUT {
-          bandwidth 50Mbit
-          default {
-              bandwidth 50%
-              ceiling 100%
-              queue-type fair-queue
-          }
-      }
-      shaper LAN-OUT {
-          bandwidth 200Mbit
-          default {
-              bandwidth 50%
-              ceiling 100%
-              queue-type fair-queue
-          }
-      }
-  }
-
-Once defined, a traffic policy can be applied to each interface using the
-interface-level `traffic-policy` directive:
-
 .. code-block:: sh
 
   set interfaces ethernet eth0 traffic-policy out 'WAN-OUT'
   set interfaces ethernet eth1 traffic-policy out 'LAN-OUT'
-
-Note that a traffic policy can also be defined to match specific traffic flows
-using class statements.
 
 .. _tc: http://en.wikipedia.org/wiki/Tc_(Linux)
 .. _RFC791: https://tools.ietf.org/html/rfc791
