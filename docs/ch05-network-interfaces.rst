@@ -35,7 +35,10 @@ command.
           257276       1890          0          0          0          0
   vyos@vyos:~$
 
-Each interface can be configured with a description and address.
+Each interface can be configured with a description and address. Interface
+addresses might be a static address like `172.16.51.129/24`, `dhcp` (to
+retrieve the actual interface address from a DHCP server) or an IPv6 address
+like `2001:db8:1::ffff/64`.
 
 .. code-block:: sh
 
@@ -58,6 +61,7 @@ Ethernet interfaces allow for the configuration of speed, duplex, and hw-id
 .. code-block:: sh
 
   set interfaces ethernet eth1 address '192.168.0.1/24'
+  set interfaces ethernet eth1 address '2001:db8:1::ffff/64'
   set interfaces ethernet eth1 description 'INSIDE'
   set interfaces ethernet eth1 duplex 'auto'
   set interfaces ethernet eth1 speed 'auto'
@@ -68,6 +72,7 @@ Resulting in:
 
   ethernet eth1 {
       address 192.168.0.1/24
+      address 2001:db8:1::ffff/64
       description INSIDE
       duplex auto
       hw-id 00:0c:29:44:3b:19
@@ -127,13 +132,15 @@ vif <vlan-id>`.
 
   set interfaces ethernet eth1 vif 100 description 'VLAN 100'
   set interfaces ethernet eth1 vif 100 address '192.168.100.1/24'
+  set interfaces ethernet eth1 vif 100 address '2001:db8:100::1/64'
 
 Resulting in:
 
 .. code-block:: sh
 
   ethernet eth1 {
-      address 192.168.0.1/24
+      address 192.168.100.1/24
+      address 2001:db8:100::1/64
       description INSIDE
       duplex auto
       hw-id 00:0c:29:44:3b:19
@@ -145,7 +152,7 @@ Resulting in:
       }
   }
 
-VLAN interfaces are shown as <name>.<vlan-id>, e.g. eth1.100:
+VLAN interfaces are shown as `<name>.<vlan-id>`, e.g. `eth1.100`:
 
 .. code-block:: sh
 
@@ -157,7 +164,7 @@ VLAN interfaces are shown as <name>.<vlan-id>, e.g. eth1.100:
   eth1             192.168.0.1/24                    u/u  INSIDE
   eth1.100         192.168.100.1/24                  u/u  VLAN 100
   lo               127.0.0.1/8                       u/u
-                  ::1/128
+                   ::1/128
 
 Bridging
 --------
@@ -180,6 +187,7 @@ normal interface.
 .. code-block:: sh
 
   set interfaces bridge br100 address '192.168.100.1/24'
+  set interfaces bridge br100 address '2001:db8:100::1/64'
 
 Example Result:
 
@@ -187,6 +195,7 @@ Example Result:
 
   bridge br100 {
       address 192.168.100.1/24
+      address 2001:db8:100::1/64
   }
   [...]
   ethernet eth1 {
@@ -266,6 +275,7 @@ You can combine (aggregate) 2 or more physical interfaces into a single
 logical one. It's called bonding, or LAG, or ether-channel, or port-channel.
 
 Create interface bondX, where X is just a number:
+
 .. code-block:: sh
 
   set interfaces bonding bond0 description 'my-sw1 int 23 and 24'
@@ -342,15 +352,16 @@ Set Virtual Tunnel interface
 .. code-block:: sh
 
   set interfaces vti vti0 address 192.168.2.249/30
+  set interfaces vti vti0 address 2001:db8:2::249/64
 
 Results in:
 
 .. code-block:: sh
 
-
   vyos@vyos# show interfaces vti
   vti vti0 {
       address 192.168.2.249/30
+      address 2001:db8:2::249/64
       description "Description"
   }
 
