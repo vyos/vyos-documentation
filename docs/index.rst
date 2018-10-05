@@ -49,6 +49,8 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: apxA-troubleshooting.rst
 
+.. include:: apxB-examples.rst
+
 Indices and tables
 ==================
 
