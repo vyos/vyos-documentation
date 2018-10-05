@@ -1,4 +1,4 @@
-Appendix 1 - Configuration Examples
+Appendix B - Configuration Examples
 ===================================
 
 VyOS DMVPN Hub
