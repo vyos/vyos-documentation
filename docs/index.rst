@@ -47,7 +47,7 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch14-image-mgmt.rst
 
-.. include:: ch15-troubleshooting.rst
+.. include:: apxA-troubleshooting.rst
 
 Indices and tables
 ==================
