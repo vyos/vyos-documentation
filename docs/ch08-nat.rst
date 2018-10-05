@@ -308,15 +308,15 @@ Resulting in the following ip6tables rules:
 .. code-block:: sh
 
   Chain VYOS_DNPT_HOOK (1 references)
-   pkts bytes target     prot opt in     out     source               destination
-      0     0 DNPT       all      eth1   any     anywhere             2001:db8:e1::/48    src-pfx 2001:db8:e1::/48 dst-pfx fc00:dead:beef::/48
-      0     0 DNPT       all      eth2   any     anywhere             2001:db8:e2::/48    src-pfx 2001:db8:e2::/48 dst-pfx fc00:dead:beef::/48
-      0     0 RETURN     all      any    any     anywhere             anywhere
+   pkts bytes target   prot opt in   out   source              destination
+      0     0 DNPT     all    eth1   any   anywhere            2001:db8:e1::/48  src-pfx 2001:db8:e1::/48 dst-pfx fc00:dead:beef::/48
+      0     0 DNPT     all    eth2   any   anywhere            2001:db8:e2::/48  src-pfx 2001:db8:e2::/48 dst-pfx fc00:dead:beef::/48
+      0     0 RETURN   all    any    any   anywhere            anywhere
   Chain VYOS_SNPT_HOOK (1 references)
-   pkts bytes target     prot opt in     out     source               destination
-      0     0 SNPT       all      any    eth1    fc00:dead:beef::/48  anywhere            src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e1::/48
-      0     0 SNPT       all      any    eth2    fc00:dead:beef::/48  anywhere            src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e2::/48
-      0     0 RETURN     all      any    any     anywhere             anywhere
+   pkts bytes target   prot opt in   out   source              destination
+      0     0 SNPT     all    any    eth1  fc00:dead:beef::/48 anywhere          src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e1::/48
+      0     0 SNPT     all    any    eth2  fc00:dead:beef::/48 anywhere          src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e2::/48
+      0     0 RETURN   all    any    any   anywhere            anywhere
 
 .. _RFC6296: https://tools.ietf.org/html/rfc6296
 .. _ULAs: http://en.wikipedia.org/wiki/Unique_local_address
