@@ -43,13 +43,11 @@ as a router and firewall platform for cloud deployments.
 
 .. include:: ch12-system.rst
 
-.. include:: ch13-ipv6.rst
+.. include:: ch13-clustering.rst
 
-.. include:: ch14-clustering.rst
+.. include:: ch14-image-mgmt.rst
 
-.. include:: ch15-image-mgmt.rst
-
-.. include:: ch16-troubleshooting.rst
+.. include:: ch15-troubleshooting.rst
 
 Indices and tables
 ==================
