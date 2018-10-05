@@ -66,14 +66,17 @@ to outbound traffic only.
 Available commands:
 
 * Define a drop-tail policy (unique name, exclusive to this policy):
+
   :code:`set traffic-policy drop-tail <policy name>`
 
 * Add a description:
+
   :code:`set traffic-policy drop-tail <policy name> description <description>`
 
 * Set the queue length limit (max. number of packets in queue), range
-  0...4294967295 packets: :code:`set traffic-policy drop-tail <policy name>
-  queue-limit <limit>`
+  0...4294967295 packets:
+
+  :code:`set traffic-policy drop-tail <policy name> queue-limit <limit>`
 
 Fair queue (SFQ)
 ^^^^^^^^^^^^^^^^
@@ -86,20 +89,24 @@ airness Queuing algorithm. Applicable to outbound traffic only.
 Available commands:
 
 * Define a fair queue policy:
+
   :code:`set traffic-policy fair-queue <policy name>`
 
 * Add a description:
+
   :code:`set traffic-policy fair-queue <policy name> description <description>`
 
 * Set hash update interval; the algorithm used is stochastic and thus not
   'truly' fair, hash collisions can occur, in which case traffic flows may be
   put into the same bucket. To mitigate this, the hashes can be updated at a
-  set interval, Range 0...4294967295 seconds: :code:`set traffic-policy
-  fair-queue <policy name> hash-interval <seconds>`
+  set interval, Range 0...4294967295 seconds:
+
+  :code:`set traffic-policy fair-queue <policy name> hash-interval <seconds>`
 
 * Set the queue-limit (max. number of packets in queue), range 0...4294967295
-  packets, default 127: :code:`set traffic-policy fair-queue <policy name>
-  queue-limit <limit>`
+  packets, default 127:
+
+  :code:`set traffic-policy fair-queue <policy name> queue-limit <limit>`
 
 Limiter
 ^^^^^^^
@@ -120,13 +127,20 @@ Traffic classes
 ^^^^^^^^^^^^^^^
 
 * Define a traffic class for a limiter policy, range for class ID is 1...4095:
+
   :code:`set traffic-policy limiter <policy-name> class <class ID>`
+
 * Add a class description:
+
   :code:`set traffic-policy limiter <policy-name> class <class ID> description
   <description>`
+
 * Specify a bandwidth limit for a class, in kbit/s:
+
   :code:`set traffic-policy limiter <policy-name> class <class ID> bandwidth
-  <rate>`. Available suffixes:
+  <rate>`.
+
+  Available suffixes:
 
  * kbit (kilobits per second, default)
  * mbit (megabits per second)
@@ -136,8 +150,12 @@ Traffic classes
  * gbps (gigabytes per second)
 
 * Set a burst size for a class, the maximum amount of traffic that can be sent,
-  in bytes: :code:`set traffic-policy limiter <policy-name> class <class ID>
-  burst <burst-size>`. Available suffixes:
+  in bytes:
+
+  :code:`set traffic-policy limiter <policy-name> class <class ID>
+  burst <burst-size>`.
+
+  Available suffixes:
 
  * kb (kilobytes)
  * mb (megabytes)
@@ -147,12 +165,15 @@ Default class
 ^^^^^^^^^^^^^
 
 * Define a default class for a limiter policy that applies to traffic not
-  matching any other classes for this policy: :code:`set traffic-policy limiter
-  <policy name> default`
+  matching any other classes for this policy:
 
-* Specify a bandwidth limit for the default class, in kbit/s: :code:`set
-  traffic-policy limiter <policy name> default bandwidth <rate>`. Available
-  suffixes:
+  :code:`set traffic-policy limiter <policy name> default`
+
+* Specify a bandwidth limit for the default class, in kbit/s:
+
+  :code:`set traffic-policy limiter <policy name> default bandwidth <rate>`.
+
+  Available suffixes:
 
  * kbit (kilobits per second, default)
  * mbit (megabits per second)
@@ -162,8 +183,11 @@ Default class
  * gbps (gigabytes per second)
 
 * Set a burst size for the default class, the maximum amount of traffic that
-  can be sent, in bytes: :code:`set traffic-policy limiter <policy-name>
-  default burst <burst-size>`. Available suffixes:
+  can be sent, in bytes:
+
+  :code:`set traffic-policy limiter <policy-name> default burst <burst-size>`.
+
+  Available suffixes:
 
  * kb (kilobytes)
  * mb (megabytes)
@@ -171,88 +195,108 @@ Default class
 
 * Specify the priority of the default class to set the order in which the rules
   are evaluated, the higher the number the lower the priority, range 0...20
-  (default 20): :code:`set traffic-policy limiter <policy name> default
-  priority <priority>`
+  (default 20):
+
+  :code:`set traffic-policy limiter <policy name> default priority <priority>`
 
 Matching rules
 ^^^^^^^^^^^^^^
 
 * Define a traffic class matching rule:
+
   :code:`set traffic-policy limiter <policy name> class <class ID> match
   <match name>`
 
 * Add a description:
+
   :code:`set traffic-policy limiter <policy name> class <class ID> match
   <match name> description <description>`
 
 * Specify the priority of a matching rule to set the order in which the rules
   are evaluated, the higher the number the lower the priority, range 0...20
-  (default 20): :code:`set traffic-policy limiter <policy name> class
-  <class ID> priority <priority>`
+  (default 20):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID>
+  priority <priority>`
 
 * Specify a match criterion based on a **destination MAC address**
-  (format: xx:xx:xx:xx:xx:xx): :code:`set traffic-policy limiter <policy name>
-  class <class ID> match <match name> ether destination <MAC address>`
+  (format: xx:xx:xx:xx:xx:xx):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ether destination <MAC address>`
 
 * Specify a match criterion based on a **source MAC address** (format:
-  xx:xx:xx:xx:xx:xx): :code:`set traffic-policy limiter <policy name> class
-  <class ID> match <match name> ether source <MAC address>`
+  xx:xx:xx:xx:xx:xx):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ether source <MAC address>`
 
 * Specify a match criterion based on **packet type/protocol**, range 0...65535:
+
   :code:`set traffic-policy limiter <policy name> class <class ID> match
   <match name> ether protocol <number>`
 
 * Specify a match criterion based on the **fwmark field**, range 0....4294967295:
+
   :code:`set traffic-policy limiter <policy name> class <class ID> match
   <match name> mark <fwmark>`
 
 * Specify a match criterion based on **VLAN ID**, range 1...4096:
+
   :code:`set traffic-policy limiter <policy name> class <class ID> match
   <match name> vif <VLAN ID>`
 
 **IPv4**
 
 * Specify a match criterion based on **destination IPv4 address** and/or port,
-  port may be specified as number or service name (i.e. ssh): :code:`set
-  traffic-policy limiter <policy name> class <class ID> match <match name> ip
-  destination <IPv4 address|port>`
+  port may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID>
+  match <match name> ip destination <IPv4 address|port>`
 
 * Specify a match criterion based on **source IPv4 address** and/or port, port
-  may be specified as number or service name (i.e. ssh): :code:`set
-  traffic-policy limiter <policy name> class <class ID> match <match name> ip
-  source <IPv4 address|port>`
+  may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID>
+  match <match name> ip source <IPv4 address|port>`
 
 * Specify a match criterion based on **DSCP (Differentiated Services Code Point)
   value**, DSCP value may be specified as decimal or hexadecimal number:
+
   :code:`set traffic-policy limiter <policy name> class <class ID> match
   <match name> ip dscp <DSCP value>`
 
 * Specify a match criterion based on **IPv4 protocol**, protocol may be
-  specified by name (i.e. icmp) or IANA-assigned number: :code:`set
-  traffic-policy limiter <policy name> class <class ID> match <match name> ip
-  protocol <proto>`
+  specified by name (i.e. icmp) or IANA-assigned number:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ip protocol <proto>`
 
 **IPv6**
 
 * Specify a match criterion based on **destination IPv6 address and/or port**,
-  port may be specified as number or service name (i.e. ssh): :code:`set
-  traffic-policy limiter <policy name> class <class ID> match <match name>
-  ipv6 destination <IPv6 address|port>`
+  port may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ipv6 destination <IPv6 address|port>`
 
 * Specify a match criterion based on **source IPv6 address and/or port**, port
-  may be specified as number or service name (i.e. ssh): :code:`set
-  traffic-policy limiter <policy name> class <class ID> match <match name>
-  ipv6 source <IPv6 address|port>`
+  may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ipv6 source <IPv6 address|port>`
 
 * Specify a match criterion based on **DSCP (Differentiated Services Code
   Point) value**, DSCP value may be specified as decimal or hexadecimal number:
+
   :code:`set traffic-policy limiter <policy name> class <class ID> match
   <match name> ipv6 dscp <DSCP value>`
 
 * Specify a match criterion based on **IPv6 protocol**, protocol may be
-  specified by name (i.e. icmp) or IANA-assigned number: :code:`set
-  traffic-policy limiter <policy name> class <class ID> match <match name>
-  ipv6 protocol <proto>`
+  specified by name (i.e. icmp) or IANA-assigned number:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ipv6 protocol <proto>`
 
 Network emulator
 ^^^^^^^^^^^^^^^^
@@ -263,13 +307,17 @@ purposes. Applicable to outbound traffic only.
 Available commands:
 
 * Define a network emulator policy:
+
   :code:`set traffic-policy network-emulator <policy name>`
 
 * Add a description:
+
   :code:`set traffic-policy network-emulator <policy name> description <description>`
 
 * Specify a bandwidth limit in kbit/s:
+
   :code:`set traffic-policy network-emulator <policy name> bandwidth <rate>`
+
   Available suffixes:
 
  * kbit (kilobits per second, default)
@@ -280,7 +328,9 @@ Available commands:
  * gbps (gigabytes per second)
 
 * Set a burst size, the maximum amount of traffic that can be sent, in bytes:
+
   :code:`set traffic-policy network-emulator <policy name> burst <burst size>`
+
   Available suffixes:
 
  * kb (kilobytes)
@@ -288,7 +338,9 @@ Available commands:
  * gb (gigabytes)
 
 * Define a delay between packets:
+
   :code:`set traffic-policy network-emulator <policy name> network-delay <delay>`
+
   Available suffixes:
 
  * secs (seconds)
@@ -296,17 +348,21 @@ Available commands:
  * us (microseconds)
 
 * Set a percentage of corrupted of packets (one bit flip, unchanged checksum):
+
   :code:`set traffic-policy network-emulator <policy name> packet-corruption
   <percent>`
 
 * Set a percentage of random packet loss:
+
   :code:`set traffic-policy network-emulator <policy name> packet-loss <percent>`
 
 * Set a percentage of packets for random reordering:
+
   :code:`set traffic-policy network-emulator <policy name> packet-reordering
   <percent>`
 
 * Set a queue length limit in packets, range 0...4294967295, default 127:
+
   :code:`set traffic-policy network-emulator <policy name> queue-limit <limit>`
 
 Priority queue
@@ -321,22 +377,28 @@ transmitted after traffic volume from higher priority queues decreases.
 Available commands:
 
 * Define a priority queue:
+
   :code:`set traffic-policy priority-queue <policy name>`
 
 * Add a description:
+
   :code:`set traffic-policy priority-queue <policy name> description <description>`
 
 Traffic classes
 ***************
 
 * Define a traffic class, each class is a separate queue, range for class ID
-  is 1...7, while 1 being the lowest priority: :code:`set traffic-policy
-  priority-queue <policy name> class <class ID>`
+  is 1...7, while 1 being the lowest priority:
 
-* Add a class description: :code:`set traffic-policy priority-queue
-  <policy name> class <class ID> description <description>`
+  :code:`set traffic-policy  priority-queue <policy name> class <class ID>`
+
+* Add a class description:
+
+  :code:`set traffic-policy priority-queue <policy name> class <class ID>
+  description <description>`
 
 * Set a queue length limit in packets, default 1000:
+
   :code:`set traffic-policy priority-queue <policy name> class <class ID>
   queue-limit <limit>`
 
@@ -352,9 +414,11 @@ Traffic classes
 **Default class**
 
 * Define a default priority queue:
+
   :code:`set traffic-policy priority-queue <policy name> default`
 
 * Define a maximum queue length for the default traffic class in packets:
+
   :code:`set traffic-policy priority-queue <policy name> default queue-limit
   <limit>`
 
@@ -370,80 +434,97 @@ Matching rules
 ^^^^^^^^^^^^^^
 
 * Define a class matching rule:
+
   :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name>`
 
 * Add a match rule description:
+
   :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> description <description>`
 
 * Specify a match criterion based on a **destination MAC address**
-  (format: xx:xx:xx:xx:xx:xx): :code:`set traffic-policy priority-queue
-  <policy name> class <class ID> match <match name> ether destination
-  <MAC address>`
+  (format: xx:xx:xx:xx:xx:xx):
+
+  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
+  <match name> ether destination <MAC address>`
 
 * Specify a match criterion based on a **source MAC address**
-  (format: xx:xx:xx:xx:xx:xx): :code:`set traffic-policy priority-queue
-  <policy name> class <class ID> match <match name> ether source <MAC address>`
+  (format: xx:xx:xx:xx:xx:xx):
+
+  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
+  <match name> ether source <MAC address>`
 
 * Specify a match criterion based on **packet type/protocol**, range 0...65535:
+
   :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> ether protocol <number>`
 
 * Specify a match criterion based on **ingress interface**:
+
   :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> interface <interface>`
 
 * Specify a match criterion based on the **fwmark field**, range 0....4294967295:
+
   :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> mark <fwmark>`
 
 * Specify a match criterion based on **VLAN ID**, range 1...4096:
+
   :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> vif <VLAN ID>`
 
 **IPv4**
 
 * Specify a match criterion based on **destination IPv4 address and/or port**,
-  port may be specified as number or service name (i.e. ssh): :code:`set
-  traffic-policy priority-queue <policy name> class <class ID> match
+  port may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> ip destination <IPv4 address|port>`
 
 * Specify a match criterion based on **source IPv4 address and/or port**, port
-  may be specified as number or service name (i.e. ssh): :code:`set
-  traffic-policy priority-queue <policy name> class <class ID> match
+  may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> ip source <IPv4 address|port>`
 
 * Specify a match criterion based on **DSCP (Differentiated Services Code Point)
   value**, DSCP value may be specified as decimal or hexadecimal number:
+
   :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> ip dscp <DSCP value>`
 
 * Specify a match criterion based on **IPv4 protocol**, protocol may be
-  specified by name (i.e. icmp) or IANA-assigned number: :code:`set
-  traffic-policy priority-queue <policy name> class <class ID> match
+  specified by name (i.e. icmp) or IANA-assigned number:
+
+  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> ip protocol <proto>`
 
 **IPv6**
 
 * Specify a match criterion based on **destination IPv6 address and/or port**,
-  port may be specified as number or service name (i.e. ssh): :code:`set
-  traffic-policy priority-queue <policy name> class <class ID> match
+  port may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> ipv6 destination <IPv6 address|port>`
 
 * Specify a match criterion based on **source IPv6 address and/or port**, port
-  may be specified as number or service name (i.e. ssh): :code:`set
-  traffic-policy priority-queue <policy name> class <class ID> match
+  may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> ipv6 source <IPv6 address|port>`
 
 * Specify a match criterion based on **DSCP (Differentiated Services Code Point)
   value**, DSCP value may be specified as decimal or hexadecimal number:
+
   :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> ipv6 dscp <DSCP value>`
 
 * Specify a match criterion based on **IPv6 protocol**, protocol may be
-  specified by name (i.e. icmp) or IANA-assigned number: :code:`set
-  traffic-policy priority-queue <policy name> class <class ID> match
+  specified by name (i.e. icmp) or IANA-assigned number:
+
+  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
   <match name> ipv6 protocol <proto>`
 
 Random Early Detection (RED/WRED)
@@ -461,13 +542,17 @@ synchronisation. Applicable to outbound traffic only.
 Available commands:
 
 * Define a RED policy:
+
   :code:`set traffic-policy random-detect <policy name>`
 
 * Add a description:
+
   :code:`set traffic-policy random-detect <policy name> description <description>`
 
 * Set a bandwidth limit, default auto:
+
   :code:`set traffic-policy random-detect <policy name> bandwidth <rate>`
+
   Available suffixes:</u>
 
  * auto (bandwidth limit based on interface speed, default)
@@ -570,6 +655,7 @@ Possible values for WRED parameters:
   value, default 4*<code>max-threshold</code>.
 
 Usage:
+
 :code:`set traffic-policy random-detect <policy-name> precedence
 <precedence> [average-packet <bytes> | mark-probability <probability> |
 max-threshold <max> | min-threshold <min> | queue-limit <packets>]`
@@ -584,13 +670,17 @@ Applicable to outbound traffic only.
 Available commands:
 
 * Define a rate control policy:
+
   :code:`set traffic-policy rate-control <policy-name>`
 
 * Add a description:
+
   :code:`set traffic-policy rate-control <policy-name> description <description>`
 
 * Specify a bandwidth limit in kbits/s:
+
   :code:`set traffic-policy rate-control <policy-name> bandwidth <rate>`
+
   Available suffixes:</u>
 
  * kbit (kilobits per second, default)
@@ -601,7 +691,9 @@ Available commands:
  * gbps (gigabytes per second)
 
 * Specify a burst size in bytes, default 15 kilobytes:
+
   :code:`set traffic-policy rate-control <policy-name> burst <burst-size>`
+
   Available suffixes:
 
  * kb (kilobytes)
@@ -610,7 +702,9 @@ Available commands:
 
 * Specify a latency in milliseconds; the maximum amount of time packets are
   allowed to wait in the queue, default 50 milliseconds:
+
   :code:`set traffic-policy rate-control <policy-name> latency`
+
   Available suffixes:
 
  * secs (seconds)
@@ -626,23 +720,29 @@ classes.
 Available commands:
 
 * Define a round robin policy:
+
   :code:`set traffic-policy round-robin <policy-name>`
 
 * Add a description:
+
   :code:`set traffic-policy round-robin <policy-name> description <description>`
 
 * Define a traffic class ID, range 2...4095:
+
   :code:`set traffic-policy round-robin <policy-name> class <class>`
 
 **Default policy:**
 
 * Define a default priority queue:
+
   :code:`set traffic-policy round-robin <policy name> default`
 
 * Set the number of packets that can be sent per scheduling quantum:
+
   :code:`set traffic-policy round-robin <policy name> default quantum <packets>`
 
 * Define a maximum queue lenght for the default policy in packets:
+
   :code:`set traffic-policy round-robin <policy name> default queue-limit <limit>`
 
 * Specify the queuing type for the default policy, available queue types:
@@ -657,36 +757,44 @@ Matching rules
 **************
 
 * Define a class matching rule:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name>`
 
 * Add a match rule description:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> description <description>`
 
 * Specify a match criterion based on a **destination MAC address** (format:
   xx:xx:xx:xx:xx:xx):
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ether destination <MAC address>`
 
 * Specify a match criterion based on a **source MAC address** (format:
   xx:xx:xx:xx:xx:xx):
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ether source <MAC address>`
 
 * Specify a match criterion based on **packet type/protocol**, range 0...65535:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ether protocol <number>`
 
 * Specify a match criterion based on **ingress interface**:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> interface <interface>`
 
 * Specify a match criterion based on the **fwmark field**, range 0....4294967295:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> mark <fwmark>`
 
 * Specify a match criterion based on **VLAN ID**, range 1...4096:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> vif <VLAN ID>*`
 
@@ -694,21 +802,25 @@ Matching rules
 
 * Specify a match criterion based on **destination IPv4 address and/or port**,
   port may be specified as number or service name (i.e. ssh):
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ip destination <IPv4 address|port>`
 
 * Specify a match criterion based on **source IPv4 address and/or port**, port
   may be specified as number or service name (i.e. ssh):
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ip source <IPv4 address|port>`
 
 * Specify a match criterion based on **DSCP (Differentiated Services Code Point)
   value**, DSCP value may be specified as decimal or hexadecimal number:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ip dscp <DSCP value>`
 
 * Specify a match criterion based on **IPv4 protocol**, protocol may be
   specified by name (i.e. icmp) or IANA-assigned number:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ip protocol <proto>`
 
@@ -716,21 +828,25 @@ Matching rules
 
 * Specify a match criterion based on **destination IPv6 address and/or port**,
   port may be specified as number or service name (i.e. ssh):
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ipv6 destination <IPv6 address|port>`
 
 * Specify a match criterion based on **source IPv6 address and/or port**, port
   may be specified as number or service name (i.e. ssh):
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ipv6 source <IPv6 address|port>`
 
 * Specify a match criterion based on **DSCP (Differentiated Services Code Point)
   value**, DSCP value may be specified as decimal or hexadecimal number:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ipv6 dscp <DSCP value>`
 
 * Specify a match criterion based on **IPv6 protocol**, protocol may be
   specified by name (i.e. icmp) or IANA-assigned number:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> ipv6 protocol <proto>`
 
@@ -745,14 +861,18 @@ robin divides the total available bandwidth between classes.
 Avialable commands:
 
 * Define a shaper policy:
+
   :code:`set traffic-policy shaper <policy-name>`
 
 * Add a description:
+
   :code:`set traffic-policy shaper <policy-name> description <description>`
 
 * Set the available bandwidth for all combined traffic of this policy in kbit/s,
   default 100%:
+
   :code:`set traffic-policy shaper <policy-name> bandwidth <rate>`
+
   Available suffixes:
 
  * %    (percentage of total bandwidth)
@@ -767,14 +887,18 @@ Traffic classes
 ^^^^^^^^^^^^^^^
 
 * Define a traffic class for a shaper policy, range for class ID is 2...4095:
+
   :code:`set traffic-policy shaper <policy-name> class <class ID>`
 
 * Add a class description:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> description
   <description>`
 
 * Specify a bandwidth limit for a class, in kbit/s:
+
   :code:`set traffic-policy shaper <policy-name> class <class ID> bandwidth <rate>`
+
   Available suffixes:
 
  * kbit (kilobits per second, default)
@@ -785,15 +909,21 @@ Traffic classes
  * gbps (gigabytes per second)
 
 * Set a burst size for a class, the maximum amount of traffic that can be sent,
-  in bytes: :code:`set traffic-policy shaper <policy-name> class <class ID>
-  burst <burst-size>` Available suffixes:
+  in bytes:
+
+  :code:`set traffic-policy shaper <policy-name> class <class ID>
+  burst <burst-size>`
+
+  Available suffixes:
 
  * kb (kilobytes)
  * mb (megabytes)
  * gb (gigabytes)
 
 * Set a bandwidth ceiling for a class in kbit/s:
+
   :code:`set traffic-policy shaper <policy-name> class <class ID> ceiling <rate>`
+
   Available suffixes:
 
  * %    (percentage of total bandwidth)
@@ -803,10 +933,13 @@ Traffic classes
 
 * Set the priority of a class for allocation of additional bandwidth, if unused
   bandwidth is available. Range 0...7, lowest number has lowest priority,
-  default 0: :code:`set traffic-policy shaper <policy-name> class <class ID>
+  default 0:
+
+  :code:`set traffic-policy shaper <policy-name> class <class ID>
   priority <priority>`
 
 * Set a queue length limit in packets:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> queue-limit
   <limit>`
 
@@ -822,8 +955,9 @@ Traffic classes
 
 * Modify DSCP field; the DSCP field value of packets in a class can be
   rewritten to change the forwarding behaviour and allow for traffic
-  conditioning: :code:`set traffic-policy shaper <policy name> class <class ID>
-  set-dscp <value>`
+  conditioning:
+
+  :code:`set traffic-policy shaper <policy name> class <class ID> set-dscp <value>`
 
   DSCP values as per RFC2474_ and RFC4595_:
 
@@ -864,36 +998,44 @@ Matching rules
 ^^^^^^^^^^^^^^
 
 * Define a class matching rule:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name>`
 
 * Add a match rule description:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> description <description>`
 
 * Specify a match criterion based on a **destination MAC address**
   (format: xx:xx:xx:xx:xx:xx):
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ether destination <MAC address>`
 
 * Specify a match criterion based on a **source MAC address**
   (format: xx:xx:xx:xx:xx:xx):
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ether source <MAC address>`
 
 * Specify a match criterion based on **packet type/protocol**, range 0...65535:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ether protocol <number>`
 
 * Specify a match criterion based on **ingress interface**:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> interface <interface>`
 
 * Specify a match criterion based on the **fwmark field**, range 0....4294967295:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> mark <fwmark>`
 
 * Specify a match criterion based on **VLAN ID**, range 1...4096:
+
   :code:`set traffic-policy round-robin <policy name> class <class ID> match
   <match name> vif <VLAN ID>`
 
@@ -901,21 +1043,25 @@ Matching rules
 
 * Specify a match criterion based on **destination IPv4 address and/or port**,
   port may be specified as number or service name (i.e. ssh):
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ip destination <IPv4 address|port>`
 
 * Specify a match criterion based on **source IPv4 address and/or port**, port
   may be specified as number or service name (i.e. ssh):
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ip source <IPv4 address|port>`
 
 * Specify a match criterion based on **DSCP (Differentiated Services Code Point)
   value**, DSCP value may be specified as decimal or hexadecimal number:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ip dscp <DSCP value>`
 
 * Specify a match criterion based on **IPv4 protocol**, protocol may be
   specified by name (i.e. icmp) or IANA-assigned number:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ip protocol <proto>`
 
@@ -923,21 +1069,25 @@ Matching rules
 
 * Specify a match criterion based on **destination IPv6 address and/or port**,
   port may be specified as number or service name (i.e. ssh):
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ipv6 destination <IPv6 address|port>`
 
 * Specify a match criterion based on **source IPv6 address and/or port**,
   port may be specified as number or service name (i.e. ssh):
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ipv6 source <IPv6 address|port>`
 
 * Specify a match criterion based on **DSCP (Differentiated Services Code Point)
   value**, DSCP value may be specified as decimal or hexadecimal number:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ipv6 dscp <DSCP value>`
 
 * Specify a match criterion based on **IPv6 protocol**, protocol may be
   specified by name (i.e. icmp) or IANA-assigned number:
+
   :code:`set traffic-policy shaper <policy name> class <class ID> match
   <match name> ipv6 protocol <proto>`
 
@@ -952,23 +1102,19 @@ on the ingress traffic.
 Let's assume eth0 is your WAN link. You created two traffic-policies: `WAN-IN`
 and `WAN-OUT`.
 
-First, create the IFB:
+Steps to do:
 
-.. code-block:: sh
+* First, create the IFB:
 
-  set interfaces input ifb0 description "WAN Input"
+  :code:`set interfaces input ifb0 description "WAN Input"`
 
-Apply the `WAN-OUT` traffic-policy to ifb0 input.
+* Apply the `WAN-OUT` traffic-policy to ifb0 input.
 
-.. code-block:: sh
+  :code:`set interfaces input ifb0 traffic-policy in WAN-IN`
 
-  set interfaces input ifb0 traffic-policy in WAN-IN
+* Redirect traffic from eth0 to ifb0
 
-Redirect traffic from eth0 to ifb0
-
-.. code-block:: sh
-
-  set interfaces ethernet eth0 redirect ifb0
+  :code:`set interfaces ethernet eth0 redirect ifb0`
 
 Classful policies and traffic matching
 --------------------------------------
@@ -977,9 +1123,7 @@ Classful policies and traffic matching
 distribute traffic into different classes with different options. In VyOS,
 classes are numbered and work like firewall rules. e.g:
 
-.. code-block:: sh
-
-  set traffic-policy shaper SHAPER class 30
+:code:`set traffic-policy shaper SHAPER class 30`
 
 Matching traffic
 ^^^^^^^^^^^^^^^^
@@ -1094,6 +1238,7 @@ tcp
  set tcp ack
 
 Will match tcp packets with ACK flag set.
+
 .. code-block:: sh
 
   set tcp syn
