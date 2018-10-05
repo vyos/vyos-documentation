@@ -365,10 +365,10 @@ Results in:
       description "Description"
   }
 
-Wireguard VPN Interface
+WireGuard VPN Interface
 -----------------------
 
-WireGuard is an extremely simple yet fast and modern VPN that utilizes
+WireGuard_ is an extremely simple yet fast and modern VPN that utilizes
 state-of-the-art cryptography. See https://www.wireguard.com for more
 information.
 
@@ -463,3 +463,5 @@ your peer should have knowledge if its content.
 
   wg01# set interfaces wireguard wg01 peer to-wg02 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
   wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
+
+.. _WireGuard: https://www.wireguard.com
