@@ -422,7 +422,7 @@ https://wiki.vyos.net/wiki/Network_address_setup.
 DHCP relay example
 ^^^^^^^^^^^^^^^^^^
 
-.. figure:: images/service_dhcp-relay01.png
+.. figure:: _static/images/service_dhcp-relay01.png
    :scale: 80 %
    :alt: DHCP relay example
 
@@ -477,7 +477,7 @@ The DHCP relay agent can be restarted with:
 DHCPv6 relay example
 ^^^^^^^^^^^^^^^^^^^^
 
-.. figure:: images/service_dhcpv6-relay01.png
+.. figure:: _static/images/service_dhcpv6-relay01.png
    :scale: 80 %
    :alt: DHCPv6 relay example
 
