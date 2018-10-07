@@ -1,3 +1,5 @@
+.. _troubleshooting:
+
 Appendix A - Troubleshooting
 ============================
 

@@ -1,0 +1,56 @@
+.wy-nav-content {
+  max-width : none;
+}
+
+.wy-tray-container li.wy-tray-item-info {
+  background : #409ad5;
+}
+
+.wy-table-responsive {
+  overflow : visible !important;
+}
+
+.wy-table-responsive table td {
+  white-space : normal !important;
+}
+
+.wy-menu-vertical header,
+.wy-menu-vertical p.caption {
+  color : #ffcc00 !important;
+}
+
+.wy-menu-vertical li.current a {
+  color : #040077 !important;
+}
+
+.wy-menu-vertical li ul li a {
+  color : #ffffff !important;
+}
+
+.wy-menu-vertical a {
+  color : #ffffff !important;
+}
+
+.wy-menu-vertical a:active {
+  background-color : #409ad5 !important;
+}
+
+.wy-side-nav-search {
+  background-color : #FF0000 !important;
+}
+
+.wy-side-nav-search img {
+  background-color : #FF0000 !important;
+}
+
+.wy-side-nav-search > div.version {
+  color : rgba(255, 255, 255, 0.7) !important;
+}
+
+.wy-nav-top {
+  background-color : #FF0000 !important;
+}
+
+.wy-nav-top img {
+  background-color : #FF0000 !important;
+}

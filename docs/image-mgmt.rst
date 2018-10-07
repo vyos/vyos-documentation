@@ -1,3 +1,5 @@
+.. _image-mgmt:
+
 System Image Management
 =======================
 

@@ -1,3 +1,5 @@
+.. _qos:
+
 QoS and Traffic Policy
 ======================
 

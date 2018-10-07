@@ -1,3 +1,5 @@
+.. _system:
+
 System
 ======
 

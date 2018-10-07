@@ -1,3 +1,5 @@
+.. _examples:
+
 Appendix B - Configuration Examples
 ===================================
 
