@@ -834,8 +834,8 @@ broadcasts to other configured networks.
 Every UDP port which will be forward requires one unique ID. Currently we
 support 99 IDs!
 
-To Forward broadcasts on port 1900 for eth3, eth4 and eth5 configure the service
-as follows:
+Example #1: To forward all broadcast packets received on `UDP port 1900` on
+`eth3`, `eth4` or `eth5` to all other interfaces in this configuration.
 
 .. code-block:: sh
 
@@ -845,7 +845,8 @@ as follows:
   set service broadcast-relay id 1 interface 'eth5'
   set service broadcast-relay id 1 port '1900'
 
-Forward broadcasts on port 6969 for eth3, eth4
+Example #2: To Forward all broadcasts packets received on `UDP port 6969` on
+`eth3` or `eth4` to the other interface in this configuration.
 
 .. code-block:: sh
 
@@ -854,8 +855,11 @@ Forward broadcasts on port 6969 for eth3, eth4
   set service broadcast-relay id 2 interface 'eth4'
   set service broadcast-relay id 2 port '6969'
 
+Disable Instance(s)
+^^^^^^^^^^^^^^^^^^^
+
 Each broadcast relay instance can be individually disabled without deleting the
-configured node by:
+configured node by using the following command:
 
 .. code-block:: sh
 
