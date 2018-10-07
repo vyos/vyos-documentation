@@ -11,7 +11,7 @@ VyOS is run on standard amd64, i586 and ARM systems, it is able to be used
 as a router and firewall platform for cloud deployments.
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
     :caption: Contents:
 
     install.rst
