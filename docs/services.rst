@@ -705,7 +705,7 @@ This will generate the following ddclient config blocks:
   protocol=nsupdate
   password=/config/dyndns/mydnsserver.rndc.key
   ttl=600
-  zone=mydomain.com 
+  zone=mydomain.com
   dyn
   server=dns.mydomain.com
   protocol=nsupdate
