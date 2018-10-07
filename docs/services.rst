@@ -1484,8 +1484,6 @@ as the ``vyos`` user using their own keys.
   set system login user vyos authentication public-keys 'xrobau' key "AAAAQ39x...."
   set system login user vyos authentication public-keys 'xrobau' type ssh-rsa
 
-
-
 TFTP
 ----
 
@@ -1528,6 +1526,103 @@ The resulting configuration will look like:
       listen-address 10.10.1.1
    }
 
+Webproxy
+--------
+
+The proxy service in VyOS is based on Squid3 and some related modules.
+
+Squid is a caching and forwarding HTTP web proxy. It has a wide variety of uses,
+including speeding up a web server by caching repeated requests, caching web,
+DNS and other computer network lookups for a group of people sharing network
+resources, and aiding security by filtering traffic. Although primarily used
+for HTTP and FTP, Squid includes limited support for several other protocols
+including Internet Gopher, SSL,[6] TLS and HTTPS. Squid does not support the
+SOCKS protocol.
+
+All examples here assumes that your inside ip address is ``192.168.0.1``.
+Replace with your own where applicable.
+
+URL Filtering is provided by Squidguard_.
+
+Configuration
+^^^^^^^^^^^^^^
+
+.. code-block:: sh
+
+  # Enable proxy service
+  set service webproxy listen-address 192.168.0.1
+
+  # By default it will listen to port 3128. If you wan't something else you have to define that.
+  set service webproxy listen-address 192.168.0.1 port 2050
+
+  # By default the transparent proxy on that interface is enabled. To disable that you simply
+  set service webproxy listen-address 192.168.0.1 disable-transparent
+
+  # Block specific urls
+  set service webproxy url-filtering squidguard local-block myspace.com
+
+  # If you want to you can log these blocks
+  set service webproxy url-filtering squidguard log local-block
+
+
+Options
+*******
+
+Filtering by category
+^^^^^^^^^^^^^^^^^^^^^
+
+If you wan't to use existing blacklists you have to create/download a database
+first. Otherwise you will not be able to commit the config changes.
+
+.. code-block:: sh
+
+  vyos@vyos# commit
+  [ service webproxy ]
+  Warning: no blacklists installed
+  Unknown block-category [ads] for policy [default]
+
+  [[service webproxy]] failed
+  Commit failed
+
+* Download/Update complete blacklist
+
+  :code:`update webproxy blacklists`
+
+* Download/Update partial blacklist
+
+  :code:`update webproxy blacklists category ads`
+
+  Use tab completion to get a list of categories.
+
+* To auto update the blacklist files
+
+  :code:`set service webproxy url-filtering squidguard auto-update update-hour 23`
+
+* To configure blocking add the following to the configuration
+
+  :code:`set service webproxy url-filtering squidguard block-category ads`
+
+  :code:`set service webproxy url-filtering squidguard block-category malware`
+
+Authentication
+^^^^^^^^^^^^^^
+
+TBD: https://wiki.vyos.net/wiki/Web_proxy_LDAP_authentication
+
+Adjusting cache size
+^^^^^^^^^^^^^^^^^^^^
+
+The size of the proxy cache can be adjusted by the user.
+
+.. code-block:: sh
+
+  set service webproxy cache-size
+   Possible completions:
+     <0-4294967295>
+                  Disk cache size in MB (default 100)
+     0            Disable disk caching
+     100
+
 .. _ddclient: http://sourceforge.net/p/ddclient/wiki/Home/
 .. _RFC2136: https://www.ietf.org/rfc/rfc2136.txt
 .. _`Cisco Discovery Protocol`: https://en.wikipedia.org/wiki/Cisco_Discovery_Protocol
@@ -1539,3 +1634,5 @@ The resulting configuration will look like:
 .. _SNMPv3: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_3
 .. _MIB: https://en.wikipedia.org/wiki/Management_information_base
 .. _TFTP: https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol
+.. _Squid3: http://www.squid-cache.org/
+.. _Squidguard: http://www.squidguard.org/
