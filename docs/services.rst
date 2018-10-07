@@ -80,31 +80,38 @@ Static mappings MAC/IP
 Explanation
 ^^^^^^^^^^^
 
-:code:`set service dhcp-server shared-network-name dhcpexample authoritative`
-This says that this device is the only DHCP server for this network. If other
-devices are trying to offer DHCP leases, this machine will send 'DHCPNAK' to
-any device trying to request an IP address that is not valid for this network.
+* :code:`set service dhcp-server shared-network-name dhcpexample authoritative`
 
-:code:`set service dhcp-server shared-network-name dhcpexample subnet
-172.16.17.0/24 default-router 172.16.17.1` This is a configuration parameter
-for the subnet, saying that as part of the response, tell the client that I am
-the default router for this network
+  This says that this device is the only DHCP server for this network. If other
+  devices are trying to offer DHCP leases, this machine will send 'DHCPNAK' to
+  any device trying to request an IP address that is not valid for this network.
 
-:code:`set service dhcp-server shared-network-name dhcpexample subnet
-172.16.17.0/24 dns-server 172.16.17.1` This is a configuration parameter for
-the subnet, saying that as part of the response, tell the client that I am the
-DNS server for this network. If you do not want to run a DNS server, you could
-also provide one of the public DNS servers, such as google's. You can add
-multiple entries by repeating the line.
+* :code:`set service dhcp-server shared-network-name dhcpexample subnet
+  172.16.17.0/24 default-router 172.16.17.1`
 
-:code:`set service dhcp-server shared-network-name dhcpexample subnet
-172.16.17.0/24 lease 86400` Assign the IP address to this machine for 24
-hours. It is unlikely you'd need to shorten this period, unless you are running
-a network with lots of devices appearing and disappearing.
+  This is a configuration parameter for the subnet, saying that as part of the
+  response, tell the client that I am the default router for this network
 
-:code:`set service dhcp-server shared-network-name dhcpexample subnet
-172.16.17.0/24 start 172.16.17.100 stop 172.16.17.199` Make the IP Addresses
-between .100 and .199 available for clients.
+* :code:`set service dhcp-server shared-network-name dhcpexample subnet
+  172.16.17.0/24 dns-server 172.16.17.1`
+
+  This is a configuration parameter for the subnet, saying that as part of the
+  response, tell the client that I am the DNS server for this network. If you
+  do not want to run a DNS server, you could also provide one of the public
+  DNS servers, such as google's. You can add multiple entries by repeating the
+  line.
+
+* :code:`set service dhcp-server shared-network-name dhcpexample subnet
+  172.16.17.0/24 lease 86400`
+
+  Assign the IP address to this machine for 24 hours. It is unlikely you'd need
+  to shorten this period, unless you are running a network with lots of devices
+  appearing and disappearing.
+
+* :code:`set service dhcp-server shared-network-name dhcpexample subnet
+  172.16.17.0/24 start 172.16.17.100 stop 172.16.17.199`
+
+  Make the IP Addresses between .100 and .199 available for clients.
 
 DHCPv6 server
 -------------
