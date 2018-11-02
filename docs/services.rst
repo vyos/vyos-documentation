@@ -733,12 +733,6 @@ relay agent information. Range 64...1400, default 576.
 
 * :code:`set service dhcp-relay relay-options max-size 'size'`
 
-Set the port used to relay DHCP client messages. Range 1...65535, default 67.
-After setting a different port, requests are still accepted on port 67 but
-replies are forwarded to 255.255.255.255 port 0 instead of 68.
-
-* :code:`set service dhcp-relay relay-options port 'port'`
-
 Four policies for reforwarding DHCP packets exist:
 
 * **append:** The relay agent is allowed to append its own relay information
@@ -758,10 +752,6 @@ Four policies for reforwarding DHCP packets exist:
 
 DHCPv6 relay agent options
 **************************
-
-Set listening port for DHCPv6 requests. Default: 547.
-
-* :code:`set service dhcpv6-relay listen-port 'port'`
 
 Set maximum hop count before packets are discarded. Default: 10.
 
