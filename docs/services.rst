@@ -1105,7 +1105,7 @@ VyOS utilizes `accel-ppp`_ to provide PPPoE server functionality. It can be used
 Configuration
 ^^^^^^^^^^^^^
 
-The example below uses ACN as access-concentrator name, assigns an address from the pool 10.1.1.100-111, terminates at the local endpoint 10.1.1.1 and serves only requests in the interface eth1.
+The example below uses ACN as access-concentrator name, assigns an address from the pool 10.1.1.100-111, terminates at the local endpoint 10.1.1.1 and serves requests only on eth1.
 
 .. code-block:: sh
 
