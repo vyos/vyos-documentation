@@ -1683,3 +1683,24 @@ The size of the proxy cache can be adjusted by the user.
 .. _Squid3: http://www.squid-cache.org/
 .. _Squidguard: http://www.squidguard.org/
 .. _`accel-ppp`: https://accel-ppp.org/
+
+Bypassing the webproxy
+^^^^^^^^^^^^^^^^^^^^^^
+
+Some services don't work correctly when being handled via a web proxy.
+So sometimes it is useful to bypass a transparent proxy:
+
+* To bypass the proxy for every request that is directed to a specific destination:
+
+  :code:`set service webproxy whitelist destination-address 1.2.3.4`
+
+  :code:`set service webproxy whitelist destination-address 4.5.6.0/24`
+
+
+* To bypass the proxy for every request that is coming from a specific source:
+
+  :code:`set service webproxy whitelist source-address 192.168.1.2`
+
+  :code:`set service webproxy whitelist source-address 192.168.2.0/24`
+
+  (This can be useful when a called service has many and/or often changing destination addresses - e.g. Netflix.)
