@@ -1098,14 +1098,19 @@ mDNS repeater can be temporarily disabled without deleting the service using
 PPPoE server
 ------------
 
-VyOS utilizes `accel-ppp`_ to provide PPPoE server functionality. It can be used with local authentication or a connected RADIUS server. 
+VyOS utilizes `accel-ppp`_ to provide PPPoE server functionality. It can be
+used with local authentication or a connected RADIUS server. 
 
-**Please be aware, due to an upstream bug, config changes/commits will restart the ppp daemon and will reset existing PPPoE connections from connected users, in order to become effective.**
+.. note:: Please be aware, due to an upstream bug, config changes/commits
+   will restart the ppp daemon and will reset existing PPPoE connections from
+   connected users, in order to become effective.**
 
 Configuration
 ^^^^^^^^^^^^^
 
-The example below uses ACN as access-concentrator name, assigns an address from the pool 10.1.1.100-111, terminates at the local endpoint 10.1.1.1 and serves requests only on eth1.
+The example below uses ACN as access-concentrator name, assigns an address
+from the pool 10.1.1.100-111, terminates at the local endpoint 10.1.1.1 and
+serves requests only on eth1.
 
 .. code-block:: sh
 
@@ -1130,8 +1135,9 @@ Connections can be locally checked via the command
   ppp0   | foo      | 08:00:27:fa:3e:50 | 10.1.1.100 | pppoe |      | active | 00:04:15
 
 
-To use a radius server, you need to switch to authentication mode radius and of course need to specify an IP for the server. You can have multiple RADIUS server configured, if you wish to
-achieve redundancy. 
+To use a radius server, you need to switch to authentication mode radius and
+of course need to specify an IP for the server. You can have multiple RADIUS
+server configured, if you wish to achieve redundancy. 
 
 .. code-block:: sh
 
@@ -1259,7 +1265,8 @@ network.
    :scale: 20 %
    :alt: Principle of SNMP Communication
 
-   Image thankfully borrowed from https://en.wikipedia.org/wiki/File:SNMP_communication_principles_diagram.PNG
+   Image thankfully borrowed from
+   https://en.wikipedia.org/wiki/File:SNMP_communication_principles_diagram.PNG
    which is under the GNU Free Documentation License
 
 .. note:: VyOS SNMP supports both IPv4 and IPv6.
@@ -1343,8 +1350,8 @@ Example
 
 After commit the resulting configuration will look like:
 
-.. note:: SNMPv3 keys won't we stored in plaintext. On ``commit`` the keys will
-   be encrypted and the encrypted key is based on the engineid!
+.. note:: SNMPv3 keys won't we stored in plaintext. On ``commit`` the keys
+   will be encrypted and the encrypted key is based on the engineid!
 
 .. code-block:: sh
 
