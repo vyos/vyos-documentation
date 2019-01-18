@@ -28,8 +28,14 @@ $ docker build -t vyos-docu - < Dockerfile
 
 ### Build Documentation
 
+Linux
 ```bash
 $ docker run -v `pwd`:`pwd` -w `pwd`/docs -i -t --rm vyos-docu bash
+```
+
+Windows PowerShell
+```powershell
+docker run -v "$($pwd.path):/vyos" -w "/vyos/docs" -i -t --rm vyos-docu bash
 ```
 
 Inside the container you can the build the documentation as stated above
