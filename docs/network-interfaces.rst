@@ -904,6 +904,23 @@ your peer should have knowledge if its content.
   wg01# set interfaces wireguard wg01 peer to-wg02 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
   wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
 
+**operational commands**
+
+.. code-block:: sh
+
+  vyos@wg01# show interfaces wireguard wg01
+
+  interface: wg01
+  public key: xHvgSJC8RTClfvjc0oX6OALxU6GGLapjthjw7x82CSw=
+  private key: (hidden)
+  listening port: 12345
+
+  peer: 9Ek3R30mG6Vk+GHsENtPF0b9Ul+ftxx4dDBa1bdBxX8=
+  endpoint: 192.168.0.142:12345
+  allowed ips: 10.2.0.0/24
+  latest handshake: 4 minutes, 22 seconds ago
+  transfer: 860 B received, 948 B sent
+
 .. _RFC4862: https://tools.ietf.org/html/rfc4862
 .. _RFC4291: http://tools.ietf.org/html/rfc4291#section-2.5.1
 .. _RFC7348: https://datatracker.ietf.org/doc/rfc7348/
