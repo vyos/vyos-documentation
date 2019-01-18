@@ -289,10 +289,17 @@ Explanation
   to shorten this period, unless you are running a network with lots of devices
   appearing and disappearing.
 
-* :code:`set service dhcp-server shared-network-name dhcpexample subnet
-  172.16.17.0/24 start 172.16.17.100 stop 172.16.17.199`
 
-  Make the IP Addresses between .100 and .199 available for clients.
+* :code:`set service dhcp-server shared-network-name dhcpexample subnet
+  172.16.17.0/24 range 0 start 172.16.17.100`
+
+  Make a range of addresses available for clients starting from .100 [...]
+
+* :code:`set service dhcp-server shared-network-name dhcpexample subnet
+  172.16.17.0/24 range 0 stop 172.16.17.199`
+
+  [...] and ending at .199
+
 
 DHCPv6 server
 -------------
