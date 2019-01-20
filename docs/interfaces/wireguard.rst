@@ -114,7 +114,5 @@ your peer should have knowledge if its content.
   latest handshake: 4 minutes, 22 seconds ago
   transfer: 860 B received, 948 B sent
 
-.. _RFC4862: https://tools.ietf.org/html/rfc4862
-.. _RFC4291: http://tools.ietf.org/html/rfc4291#section-2.5.1
-.. _RFC7348: https://datatracker.ietf.org/doc/rfc7348/
+
 .. _WireGuard: https://www.wireguard.com

@@ -3,8 +3,8 @@
 System
 ======
 
-After a basic system setup by setting up `Interface Addresses`_, VyOS should
-be ready for further configuration which is described in this chapter.
+After a basic system setup by setting up :ref:`interfaces-addresses`, VyOS
+should be ready for further configuration which is described in this chapter.
 
 Host Information
 ----------------
@@ -92,9 +92,9 @@ Example: Set system domain to example.com:
 Static host mappings
 ^^^^^^^^^^^^^^^^^^^^
 
-How to assign IPs to interfaces is described in chapter `Interface Addresses`_.
-This section shows how to statically map a system IP to its host name for
-local (meaning on this VyOS instance) DNS resolution:
+How to assign IPs to interfaces is described in chapter
+:ref:`interfaces-addresses`. This section shows how to statically map a system
+IP to its host name for local (meaning on this VyOS instance) DNS resolution:
 
 .. code-block:: sh
 
