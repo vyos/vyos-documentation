@@ -867,3 +867,6 @@ SPOKE2 Example Configuration
 .. _RFC2332: https://tools.ietf.org/html/rfc2332
 .. _RFC1702: https://tools.ietf.org/html/rfc1702
 .. _RFC4301: https://tools.ietf.org/html/rfc4301
+
+
+.. include:: interfaces/wireguard.rst
