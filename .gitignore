@@ -1,0 +1,5 @@
+# python virtualenv
+venv/
+
+# put various editor ignores here
+.vscode/
