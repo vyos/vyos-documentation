@@ -162,6 +162,6 @@ interface-level traffic-policy directive:
 
 VyOS 1.2 (Crux) also supports HFSC (:code:`set traffic-policy shaper-hfsc`)
 
-See further information in the `QoS and Traffic Policy`_ chapter.
+See further information in the :ref:`qos` chapter.
 
 .. _tc: http://en.wikipedia.org/wiki/Tc_(Linux)

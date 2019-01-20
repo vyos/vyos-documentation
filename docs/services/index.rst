@@ -8,6 +8,7 @@ Services
 This chapter descriptes the available system/network services provided by VyOS.
 
 .. toctree::
+   :hidden:
 
    conntrack
    dhcp

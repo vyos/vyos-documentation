@@ -6,7 +6,7 @@ Appendix B - Configuration Examples
 VyOS DMVPN Hub
 --------------
 
-General infomration can be found in the DMVPN_ chapter.
+General infomration can be found in the :ref:`vpn-dmvpn` chapter.
 
 Configuration
 ^^^^^^^^^^^^^
