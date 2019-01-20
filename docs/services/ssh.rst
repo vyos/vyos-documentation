@@ -147,4 +147,4 @@ as the ``vyos`` user using their own keys.
   set system login user vyos authentication public-keys 'xrobau' type ssh-rsa
 
 
-.. _SSH: https://en.wikipedia.org/wiki/Secure_Shell
+

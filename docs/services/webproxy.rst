@@ -118,6 +118,4 @@ So sometimes it is useful to bypass a transparent proxy:
   (This can be useful when a called service has many and/or often changing
   destination addresses - e.g. Netflix.)
 
-
-.. _Squid3: http://www.squid-cache.org/
-.. _Squidguard: http://www.squidguard.org/
+.. include:: references.rst

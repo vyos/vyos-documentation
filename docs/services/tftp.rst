@@ -40,5 +40,3 @@ The resulting configuration will look like:
       listen-address 10.10.1.1
    }
 
-
-.. _TFTP: https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol

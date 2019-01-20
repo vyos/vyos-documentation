@@ -149,5 +149,4 @@ address for the response. ddclient_ will skip any address located before the
 string set in `[skip]`.
 
 
-.. _ddclient: http://sourceforge.net/p/ddclient/wiki/Home/
-.. _RFC2136: https://www.ietf.org/rfc/rfc2136.txt
+.. include:: references.rst

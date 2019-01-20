@@ -177,7 +177,4 @@ After commit the resulting configuration will look like:
    }
 
 
-.. _SNMP: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol
-.. _SNMPv2: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_2
-.. _SNMPv3: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_3
-.. _MIB: https://en.wikipedia.org/wiki/Management_information_base
+.. include:: references.rst
