@@ -321,12 +321,13 @@ VyOS supports either `local` or `radius` user authentication:
   set vpn l2tp remote-access authentication mode <local|radius>
 
 In addition one or more RADIUS_ servers can be configured to server for user
-authentication. This is done using the `radius-server` and `key` nodes:
+authentication. This is done using the `radius server` and `radius server key`
+nodes:
 
 .. code-block:: sh
 
-  set vpn l2tp remote-access authentication radius-server 1.1.1.1 key 'foo'
-  set vpn l2tp remote-access authentication radius-server 2.2.2.2 key 'foo'
+  set vpn l2tp remote-access authentication radius server 1.1.1.1 key 'foo'
+  set vpn l2tp remote-access authentication radius server 2.2.2.2 key 'foo'
 
 .. note:: Some RADIUS_ severs make use of an access control list who is allowed
    to query the server. Please configure your VyOS router in the allowed client
@@ -335,11 +336,16 @@ authentication. This is done using the `radius-server` and `key` nodes:
 RADIUS source address
 *********************
 
-Yet there is no way to configure the used RADIUS_ client source IP address on
-the VyOS router, this is work in progres, see https://phabricator.vyos.net/T828.
+If you are using e.g. OSPF as IGP always the nearest interface facing the RADIUS
+server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests to a
+single source IP e.g. the loopback interface.
 
-The IP address nearest to the radius server is currently used. If in doubt,
-configure all IP addresses from the VyOS router in question.
+.. code-block:: sh
+
+  set vpn l2tp remote-access authentication radius source-address 3.3.3.3
+
+Above command will use `3.3.3.3` as source IPv4 address for all RADIUS queries
+on this NAS.
 
 Site-to-Site IPsec
 ------------------
