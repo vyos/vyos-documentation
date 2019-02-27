@@ -134,7 +134,7 @@ A simple eBGP configuration:
   set protocols bgp 65534 neighbor 192.168.0.2 ebgp-multihop '2'
   set protocols bgp 65534 neighbor 192.168.0.2 remote-as '65535'
   set protocols bgp 65534 neighbor 192.168.0.2 update-source '192.168.0.1'
-  set protocols bgp 65534 network '172.16.0.0/16'
+  set protocols bgp 65534 address-family ipv4-unicast network '172.16.0.0/16'
   set protocols bgp 65534 parameters router-id '192.168.0.1'
 
 **Node 2:**
@@ -144,7 +144,7 @@ A simple eBGP configuration:
   set protocols bgp 65535 neighbor 192.168.0.1 ebgp-multihop '2'
   set protocols bgp 65535 neighbor 192.168.0.1 remote-as '65534'
   set protocols bgp 65535 neighbor 192.168.0.1 update-source '192.168.0.2'
-  set protocols bgp 65535 network '172.17.0.0/16'
+  set protocols bgp 65535 address-family ipv4-unicast network '172.17.0.0/16'
   set protocols bgp 65535 parameters router-id '192.168.0.2'
 
 
