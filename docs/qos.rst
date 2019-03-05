@@ -53,6 +53,68 @@ Once a traffic-policy is created, you can apply it to an interface :
 
   set interfaces ethernet eth0 traffic-policy in WAN-IN
   set interfaces etherhet eth0 traffic-policy out WAN-OUT
+  
+A Real-World Example
+^^^^^^^^^^^^^^^^^^^^
+
+This policy sets download and upload bandwidth maximums (roughly 90% of the speeds possible), then divvies
+up the traffic into buckets of importance, giving guaranteed bandwidth chunks to types of 
+traffic that are necessary for general interactive internet use, like web browsing, streaming, or gaming.
+
+After identifying and prioritizing that traffic, it drops the remaining traffic into a general-priority
+bucket, which it gives a lower priority than what is required for real-time use. If there is no real-time
+traffic that needs the bandwidth, the lower-priority traffic can use most of the connection. This ensures
+that the connection can be used fully by whatever wants it, without suffocating real-time traffic or 
+throttling background traffic too much.
+
+.. code-block:: sh
+
+  set traffic-policy shaper download bandwidth '175mbit'
+  set traffic-policy shaper download class 10 bandwidth '10%'
+  set traffic-policy shaper download class 10 burst '15k'
+  set traffic-policy shaper download class 10 ceiling '100%'
+  set traffic-policy shaper download class 10 match dns ip source port '53'
+  set traffic-policy shaper download class 10 match icmp ip protocol 'icmp'
+  set traffic-policy shaper download class 10 match ssh ip source port '22'
+  set traffic-policy shaper download class 10 priority '5'
+  set traffic-policy shaper download class 10 queue-type 'fair-queue'
+  set traffic-policy shaper download class 20 bandwidth '10%'
+  set traffic-policy shaper download class 20 burst '15k'
+  set traffic-policy shaper download class 20 ceiling '100%'
+  set traffic-policy shaper download class 20 match http ip source port '80'
+  set traffic-policy shaper download class 20 match https ip source port '443'
+  set traffic-policy shaper download class 20 priority '4'
+  set traffic-policy shaper download class 20 queue-type 'fair-queue'
+  set traffic-policy shaper download default bandwidth '70%'
+  set traffic-policy shaper download default burst '15k'
+  set traffic-policy shaper download default ceiling '100%'
+  set traffic-policy shaper download default priority '3'
+  set traffic-policy shaper download default queue-type 'fair-queue'
+  set traffic-policy shaper upload bandwidth '18mbit'
+  set traffic-policy shaper upload class 2 bandwidth '10%'
+  set traffic-policy shaper upload class 2 burst '15k'
+  set traffic-policy shaper upload class 2 ceiling '100%'
+  set traffic-policy shaper upload class 2 match ack ip tcp ack
+  set traffic-policy shaper upload class 2 match dns ip destination port '53'
+  set traffic-policy shaper upload class 2 match icmp ip protocol 'icmp'
+  set traffic-policy shaper upload class 2 match ssh ip destination port '22'
+  set traffic-policy shaper upload class 2 match syn ip tcp syn
+  set traffic-policy shaper upload class 2 priority '5'
+  set traffic-policy shaper upload class 2 queue-limit '16'
+  set traffic-policy shaper upload class 2 queue-type 'fair-queue'
+  set traffic-policy shaper upload class 5 bandwidth '10%'
+  set traffic-policy shaper upload class 5 burst '15k'
+  set traffic-policy shaper upload class 5 ceiling '100%'
+  set traffic-policy shaper upload class 5 match http ip destination port '80'
+  set traffic-policy shaper upload class 5 match https ip destination port '443'
+  set traffic-policy shaper upload class 5 priority '4'
+  set traffic-policy shaper upload class 5 queue-type 'fair-queue'
+  set traffic-policy shaper upload default bandwidth '60%'
+  set traffic-policy shaper upload default burst '15k'
+  set traffic-policy shaper upload default ceiling '100%'
+  set traffic-policy shaper upload default priority '3'
+  set traffic-policy shaper upload default queue-type 'fair-queue'
+
 
 Traffic policies in VyOS
 ------------------------
