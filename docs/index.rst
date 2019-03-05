@@ -13,12 +13,13 @@ as a router and firewall platform for cloud deployments.
 .. toctree::
     :maxdepth: 2
     :caption: Contents:
+    :includehidden:
 
     install.rst
     cli.rst
     quick-start.rst
     configuration-overview.rst
-    network-interfaces.rst
+    interfaces/index.rst
     routing.rst
     firewall.rst
     nat.rst
