@@ -455,6 +455,8 @@ rules. (if you used the default configuration at the top of this page)
   set firewall name OUTSIDE-LOCAL rule 32 action 'accept'
   set firewall name OUTSIDE-LOCAL rule 32 source address '192.168.0.0/24'
 
+.. _vpn-dmvpn:
+
 DMVPN
 -----
 
