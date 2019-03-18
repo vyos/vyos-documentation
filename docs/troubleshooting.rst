@@ -12,7 +12,7 @@ Basic Connectivity Verification
 
 Verifying connectivity can be done with the familiar `ping` and `traceroute`
 commands. The options for each are shown (the options for each command were
-displayed using the built-in help as described in the `Command-Line Interface`_
+displayed using the built-in help as described in the :ref:`cli`
 section and are omitted from the output here):
 
 .. code-block:: sh
