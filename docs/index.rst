@@ -26,7 +26,7 @@ as a router and firewall platform for cloud deployments.
     vpn.rst
     qos.rst
     services/index.rst
-    system.rst
+    system/index.rst
     clustering.rst
     image-mgmt.rst
     troubleshooting.rst
