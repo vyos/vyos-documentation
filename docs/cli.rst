@@ -3,7 +3,7 @@
 Command-Line Interface
 ======================
 
-The VyOS CLI comprises an **operational mode** and a **configuration mode**.
+The VyOS CLI comprises an :ref:`commandtree_operationmode` and a  :ref:`commandtree_configmode`.
 
 Operational mode allows for commands to perform operational system tasks and
 view system and service status, while configuration mode allows for the
