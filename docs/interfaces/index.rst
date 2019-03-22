@@ -50,6 +50,7 @@ respective sections.
    :hidden:
 
    addresses
+   dummy
    ethernet
    wireless
    bridging
