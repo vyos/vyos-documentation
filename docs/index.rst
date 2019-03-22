@@ -28,7 +28,7 @@ as a router and firewall platform for cloud deployments.
     services/index.rst
     system/index.rst
     clustering.rst
-    image-mgmt.rst    
+    image-mgmt.rst
     troubleshooting.rst
     examples.rst
     commandtree/index.rst
