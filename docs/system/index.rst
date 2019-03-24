@@ -12,6 +12,7 @@ should be ready for further configuration which is described in this chapter.
    :hidden:
    
    eventhandler
+   flowaccounting
    host-information
    systemusers
    syslog
