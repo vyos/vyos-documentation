@@ -38,4 +38,4 @@ Windows PowerShell
 docker run -v "$($pwd.path):/vyos" -w "/vyos/docs" -i -t --rm vyos-docu bash
 ```
 
-Inside the container you can the build the documentation as stated above
+Inside the container you can then build the documentation as stated above.
