@@ -57,5 +57,6 @@ respective sections.
    bonding
    vti
    vlan
+   qinq
    vxlan
    wireguard
