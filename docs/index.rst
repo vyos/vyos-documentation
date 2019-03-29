@@ -33,3 +33,11 @@ as a router and firewall platform for cloud deployments.
     examples.rst
     commandtree/index.rst
 
+.. toctree::
+    :maxdepth: 2
+    :caption: Contributing:
+    :includehidden:
+
+    contributing/index.rst
+
+
