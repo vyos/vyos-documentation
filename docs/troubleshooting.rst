@@ -161,6 +161,50 @@ The `unlimited` keyword is used to specify that an unlimited number of packets
 can be captured (by default, 1,000 packets are captured and you're returned to
 the VyOS command prompt).
 
+Clear Command
+-------------
+
+Sometimes you need to clear counters or statistics to troubleshoot better.
+
+To do this use the ``clear`` command in Operational mode.
+
+to clear the console output
+
+.. code-block:: sh
+
+  vyos@vyos:~$ clear console
+
+to clear interface counters
+
+.. code-block:: sh
+
+  # clear all interfaces
+  vyos@vyos:~$ clear interface ethernet counters  
+  # clear specific interface
+  vyos@vyos:~$ clear interface ehternet eth0 counters
+
+The command follow the same logic as the ``set`` command in configuration mode.
+
+.. code-block:: sh
+
+  # clear all counters of a interface type
+  vyos@vyos:~$ clear interface <interface_type> counters
+  # clear counter of a interface in interface_type
+  vyos@vyos:~$ clear interface <interface_type> <interace_name> counters
+  
+
+to clear counters on firewall rulesets or single rules
+
+.. code-block:: sh
+
+  vyos@vyos:~$ clear firewall name <ipv4 ruleset name> counters
+  vyos@vyos:~$ clear firewall name <ipv4 ruleset name> rule <rule#> counters
+
+  vyos@vyos:~$ clear firewall ipv6-name <ipv6 ruleset name> counters
+  vyos@vyos:~$ clear firewall ipv6-name <ipv6 ruleset name> rule <rule#> counters
+
+  
+
 .. _mtr: http://www.bitwizard.nl/mtr/
 .. _tshark: https://www.wireshark.org/docs/man-pages/tshark.html
 .. _`PCAP filter expressions`: http://www.tcpdump.org/manpages/pcap-filter.7.html
