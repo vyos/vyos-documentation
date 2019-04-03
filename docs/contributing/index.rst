@@ -26,8 +26,8 @@ Feature Request
 To send a Feature Request please search in Phabricator if there is already a Feature Request. You can enhance it or if you don't find one create a new one by use the quick link in the left side under the specific project.
 
 
-Develoment
-==========
+Development
+===========
 
 The source code is hosted on github under VyOS organization: `github.com/vyos`_
 
