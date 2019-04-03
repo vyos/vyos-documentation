@@ -85,8 +85,11 @@ Several options are available for changing the display output. Press `h` to
 invoke the built in help system. To quit, just press `q` and you'll be returned
 to the VyOS command prompt.
 
-Monitoring Network Interfaces
------------------------------
+Monitoring
+----------
+
+Network Interfaces
+^^^^^^^^^^^^^^^^^^
 
 It's possible to monitor network traffic, either at the flow level or protocol
 level. This can be useful when troubleshooting a variety of protocols and
@@ -160,6 +163,73 @@ and udp"). The `save` keyword allows you to save the traffic dump to a file.
 The `unlimited` keyword is used to specify that an unlimited number of packets
 can be captured (by default, 1,000 packets are captured and you're returned to
 the VyOS command prompt).
+
+Interface Bandwith
+^^^^^^^^^^^^^^^^^^
+
+to take a quick view on the used bandwith of an interface use the ``monitor bandwith`` command
+
+.. code-block:: sh
+
+  vyos@vyos:~$ monitor bandwidth interface eth0
+
+show the following:
+
+.. code-block:: sh
+  
+   eth0                                                                                                          bmon 3.5
+  Interfaces                     │ RX bps       pps     %│ TX bps       pps     %
+   >eth0                         │    141B        2      │    272B        1
+  ───────────────────────────────┴───────────────────────┴────────────────────────────────────────────────────────────────
+         B                      (RX Bytes/second)
+    198.00 .|....|.....................................................
+    165.00 .|....|.....................................................
+    132.00 ||..|.|.....................................................
+     99.00 ||..|.|.....................................................
+     66.00 |||||||.....................................................
+     33.00 |||||||.....................................................
+           1   5   10   15   20   25   30   35   40   45   50   55   60
+       KiB                      (TX Bytes/second)
+      3.67 ......|.....................................................
+      3.06 ......|.....................................................
+      2.45 ......|.....................................................
+      1.84 ......|.....................................................
+      1.22 ......|.....................................................
+      0.61 :::::||.....................................................
+           1   5   10   15   20   25   30   35   40   45   50   55   60
+  
+  ───────────────────────────────────────── Press d to enable detailed statistics ────────────────────────────────────────
+  ─────────────────────────────────────── Press i to enable additional information ───────────────────────────────────────
+   Wed Apr  3 14:46:59 2019                                                                              Press ? for help
+
+| Press ``d`` for more detailed informations or ``i`` for additional information.
+| To exit press ``q`` and than ``y``
+
+Interface performance
+^^^^^^^^^^^^^^^^^^^^^
+
+To take a look on the network bandwith between two nodes, the ``monitor bandwidth-test`` command is used to run iperf.
+
+.. code-block:: sh
+
+  vyos@vyos:~$ monitor bandwidth-test
+  Possible completions:
+    accept        Wait for bandwidth test connections (port TCP/5001)
+    initiate      Initiate a bandwidth test
+
+| The ``accept`` command open a listen iperf server on TCP Port 5001
+| The ``initiate`` command conncet to this server.
+
+.. code-block:: sh
+
+  vyos@vyos:~$ monitor bandwidth-test initiate
+  Possible completions:
+    <hostname>    Initiate a bandwidth test to specified host (port TCP/5001)
+    <x.x.x.x>
+    <h:h:h:h:h:h:h:h>
+
+
+
 
 Clear Command
 -------------
