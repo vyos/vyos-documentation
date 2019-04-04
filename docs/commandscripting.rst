@@ -50,7 +50,7 @@ Unlike a normal configuration sessions, all operational commands must be prepend
 
   exit
 
-Ohter script language
+Other script language
 ---------------------
 
 If you want to script the configs in a language other than bash you can have your script output commands and then source them in a bash script.
