@@ -4,7 +4,8 @@
 Task scheduler
 --------------
 
-Task scheduler — allows scheduled task execution. Note that scripts excecuted this way are executed as root user - this may be dangerous.
+| Task scheduler — allows scheduled task execution. Note that scripts excecuted this way are executed as root user - this may be dangerous.
+| Together with :ref:`commandscripting` this can be used for automating configuration.
 
 .. code-block:: sh
 

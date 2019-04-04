@@ -30,6 +30,7 @@ as a router and firewall platform for cloud deployments.
     high-availability.rst
     clustering.rst
     image-mgmt.rst
+    commandscripting.rst
     troubleshooting.rst
     examples.rst
     commandtree/index.rst
