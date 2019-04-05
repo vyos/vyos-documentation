@@ -3,31 +3,21 @@
 System Users
 ------------
 
-VyOS supports two levels of users: admin and operator.
+The default vyos user account, as well as newly created user accounts, have all capabilities to configure the system.
+All accounts have sudo capabilities and therefore can operate as root on the system.
+Setting the level to admin is optional, all accounts on the system 
+will have admin privileges.
 
-The operator level restricts a user to operational commands and prevents
-changes to system configuration. This is useful for gathering information
-about the state of the system (dhcp leases, vpn connections, routing tables,
-etc...) and for manipulating state of the system, such as resetting
-connections, clearing counters and bringing up and taking down connection
-oriented interfaces.
-
-The admin level has all of the capabilities of the operator level, plus the
-ability to change system configuration. The admin level also enables a user
-to use the sudo command, which essentially means the user has root access to
-the system.
 
 Creating Login User Accounts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create user account `jsmith`, with `admin` level access and the password
-`mypassword`
+Create user account `jsmith` and the password `mypassword`.
 
 .. code-block:: sh
 
   set system login user jsmith full-name "Johan Smith"
   set system login user jsmith authentication plaintext-password mypassword
-  set system login user jsmith level admin
 
 The command:
 
