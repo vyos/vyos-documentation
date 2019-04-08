@@ -229,7 +229,31 @@ To take a look on the network bandwith between two nodes, the ``monitor bandwidt
     <h:h:h:h:h:h:h:h>
 
 
+Monitor command
+^^^^^^^^^^^^^^^
 
+The ``monitor command`` command allows you to repeatedly run a command to view a continuously refreshed output.
+The command is run and output every 2 seconds, allowing you to monitor the output continuously without having to re-run the command. This can be useful to follow routing adjacency formation.
+
+.. code-block:: sh
+
+  vyos@router:~$ monitor command "show interfaces"
+
+Will clear the screen and show you the output of ``show interfaces`` every 2 seconds.
+
+.. code-block:: sh
+
+  Every 2.0s: /opt/vyatta/bin/vyatta-op-cmd-wrapper s...  Sun Mar 26 02:49:46 2019
+
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  Interface        IP Address                        S/L  Description
+  ---------        ----------                        ---  -----------
+  eth0             192.168.1.1/24                    u/u
+  eth0.5           198.51.100.4/24                   u/u  WAN
+  lo               127.0.0.1/8                       u/u
+                   ::1/128
+  vti0             172.32.254.2/30                   u/u
+  vti1             172.32.254.9/30                   u/u
 
 Clear Command
 -------------
