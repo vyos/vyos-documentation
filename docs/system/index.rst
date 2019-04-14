@@ -14,7 +14,9 @@ should be ready for further configuration which is described in this chapter.
    eventhandler
    flowaccounting
    host-information
+   serialconsole
    systemusers
    syslog
    task-scheduler
    config-management
+   time-zone
