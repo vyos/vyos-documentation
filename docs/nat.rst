@@ -13,12 +13,15 @@ host systems communicate to the Internet using a single or subset of IP
 addresses.
 
 To setup SNAT, we need to know:
-* The internal IP addresses we want to translate
-* The outgoing interface to perform the translation on
-* The external IP address to translate to
+
+* The internal IP addresses we want to translate;
+* The outgoing interface to perform the translation on;
+* The external IP address to translate to.
 
 In the example used for the Quick Start configuration above, we demonstrate
 the following configuration:
+
+.. code-block:: sh
 
   set nat source rule 100 outbound-interface 'eth0'
   set nat source rule 100 source address '192.168.0.0/24'
@@ -139,9 +142,10 @@ In this example, we will be using the example Quick Start configuration above
 as a starting point.
 
 To setup a destination NAT rule we need to gather:
-* The interface traffic will be coming in on
-* The protocol and port we wish to forward
-* The IP address of the internal system we wish to forward traffic to
+
+* The interface traffic will be coming in on;
+* The protocol and port we wish to forward;
+* The IP address of the internal system we wish to forward traffic to.
 
 In our example, we will be forwarding web server traffic to an internal web
 server on 192.168.0.100. HTTP traffic makes use of the TCP protocol on port 80.
