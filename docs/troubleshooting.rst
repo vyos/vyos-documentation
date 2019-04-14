@@ -85,8 +85,11 @@ Several options are available for changing the display output. Press `h` to
 invoke the built in help system. To quit, just press `q` and you'll be returned
 to the VyOS command prompt.
 
-Monitoring Network Interfaces
------------------------------
+Monitoring
+----------
+
+Network Interfaces
+^^^^^^^^^^^^^^^^^^
 
 It's possible to monitor network traffic, either at the flow level or protocol
 level. This can be useful when troubleshooting a variety of protocols and
@@ -160,6 +163,141 @@ and udp"). The `save` keyword allows you to save the traffic dump to a file.
 The `unlimited` keyword is used to specify that an unlimited number of packets
 can be captured (by default, 1,000 packets are captured and you're returned to
 the VyOS command prompt).
+
+Interface Bandwith
+^^^^^^^^^^^^^^^^^^
+
+to take a quick view on the used bandwith of an interface use the ``monitor bandwith`` command
+
+.. code-block:: sh
+
+  vyos@vyos:~$ monitor bandwidth interface eth0
+
+show the following:
+
+.. code-block:: sh
+  
+   eth0                                                                                                          bmon 3.5
+  Interfaces                     │ RX bps       pps     %│ TX bps       pps     %
+   >eth0                         │    141B        2      │    272B        1
+  ───────────────────────────────┴───────────────────────┴────────────────────────────────────────────────────────────────
+         B                      (RX Bytes/second)
+    198.00 .|....|.....................................................
+    165.00 .|....|.....................................................
+    132.00 ||..|.|.....................................................
+     99.00 ||..|.|.....................................................
+     66.00 |||||||.....................................................
+     33.00 |||||||.....................................................
+           1   5   10   15   20   25   30   35   40   45   50   55   60
+       KiB                      (TX Bytes/second)
+      3.67 ......|.....................................................
+      3.06 ......|.....................................................
+      2.45 ......|.....................................................
+      1.84 ......|.....................................................
+      1.22 ......|.....................................................
+      0.61 :::::||.....................................................
+           1   5   10   15   20   25   30   35   40   45   50   55   60
+  
+  ───────────────────────────────────────── Press d to enable detailed statistics ────────────────────────────────────────
+  ─────────────────────────────────────── Press i to enable additional information ───────────────────────────────────────
+   Wed Apr  3 14:46:59 2019                                                                              Press ? for help
+
+| Press ``d`` for more detailed informations or ``i`` for additional information.
+| To exit press ``q`` and than ``y``
+
+Interface performance
+^^^^^^^^^^^^^^^^^^^^^
+
+To take a look on the network bandwith between two nodes, the ``monitor bandwidth-test`` command is used to run iperf.
+
+.. code-block:: sh
+
+  vyos@vyos:~$ monitor bandwidth-test
+  Possible completions:
+    accept        Wait for bandwidth test connections (port TCP/5001)
+    initiate      Initiate a bandwidth test
+
+| The ``accept`` command open a listen iperf server on TCP Port 5001
+| The ``initiate`` command conncet to this server.
+
+.. code-block:: sh
+
+  vyos@vyos:~$ monitor bandwidth-test initiate
+  Possible completions:
+    <hostname>    Initiate a bandwidth test to specified host (port TCP/5001)
+    <x.x.x.x>
+    <h:h:h:h:h:h:h:h>
+
+
+Monitor command
+^^^^^^^^^^^^^^^
+
+The ``monitor command`` command allows you to repeatedly run a command to view a continuously refreshed output.
+The command is run and output every 2 seconds, allowing you to monitor the output continuously without having to re-run the command. This can be useful to follow routing adjacency formation.
+
+.. code-block:: sh
+
+  vyos@router:~$ monitor command "show interfaces"
+
+Will clear the screen and show you the output of ``show interfaces`` every 2 seconds.
+
+.. code-block:: sh
+
+  Every 2.0s: /opt/vyatta/bin/vyatta-op-cmd-wrapper s...  Sun Mar 26 02:49:46 2019
+
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  Interface        IP Address                        S/L  Description
+  ---------        ----------                        ---  -----------
+  eth0             192.168.1.1/24                    u/u
+  eth0.5           198.51.100.4/24                   u/u  WAN
+  lo               127.0.0.1/8                       u/u
+                   ::1/128
+  vti0             172.32.254.2/30                   u/u
+  vti1             172.32.254.9/30                   u/u
+
+Clear Command
+-------------
+
+Sometimes you need to clear counters or statistics to troubleshoot better.
+
+To do this use the ``clear`` command in Operational mode.
+
+to clear the console output
+
+.. code-block:: sh
+
+  vyos@vyos:~$ clear console
+
+to clear interface counters
+
+.. code-block:: sh
+
+  # clear all interfaces
+  vyos@vyos:~$ clear interface ethernet counters  
+  # clear specific interface
+  vyos@vyos:~$ clear interface ehternet eth0 counters
+
+The command follow the same logic as the ``set`` command in configuration mode.
+
+.. code-block:: sh
+
+  # clear all counters of a interface type
+  vyos@vyos:~$ clear interface <interface_type> counters
+  # clear counter of a interface in interface_type
+  vyos@vyos:~$ clear interface <interface_type> <interace_name> counters
+  
+
+to clear counters on firewall rulesets or single rules
+
+.. code-block:: sh
+
+  vyos@vyos:~$ clear firewall name <ipv4 ruleset name> counters
+  vyos@vyos:~$ clear firewall name <ipv4 ruleset name> rule <rule#> counters
+
+  vyos@vyos:~$ clear firewall ipv6-name <ipv6 ruleset name> counters
+  vyos@vyos:~$ clear firewall ipv6-name <ipv6 ruleset name> rule <rule#> counters
+
+  
 
 .. _mtr: http://www.bitwizard.nl/mtr/
 .. _tshark: https://www.wireshark.org/docs/man-pages/tshark.html

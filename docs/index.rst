@@ -27,9 +27,19 @@ as a router and firewall platform for cloud deployments.
     qos.rst
     services/index.rst
     system/index.rst
+    high-availability.rst
     clustering.rst
     image-mgmt.rst
+    commandscripting.rst
     troubleshooting.rst
     examples.rst
     commandtree/index.rst
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Contributing:
+    :includehidden:
+
+    contributing/index.rst
+
 

@@ -112,3 +112,66 @@ logged in, no messages are being displayed.
 .. code-block:: sh
 
   set system syslog user <LOCAL_USERNAME> facility <FACILITY> level <LEVEL>
+
+Show logs
+^^^^^^^^^
+
+Display log files on the console
+
+.. code-block:: sh
+
+  vyos@vyos:~$ show log
+  Possible completions:
+    <Enter>       Execute the current command
+    all           Show contents of all master log files
+    authorization Show listing of authorization attempts
+    cluster       Show log for Cluster
+    conntrack-sync
+                  Show log for Conntrack-sync
+    dhcp          Show log for Dynamic Host Control Protocol (DHCP)
+    directory     Show listing of user-defined log files
+    dns           Show log for Domain Name Service (DNS)
+    file          Show contents of user-defined log file
+    firewall      Show log for Firewall
+    https         Show log for Https
+    image         Show logs from an image
+    lldp          Show log for Lldp
+    nat           Show log for Network Address Translation (NAT)
+    openvpn       Show log for Openvpn
+    snmp          Show log for Simple Network Monitoring Protocol (SNMP)
+    tail          Monitor last lines of messages file
+    vpn           Show log for Virtual Private Network (VPN)
+    vrrp          Show log for Virtual Router Redundancy Protocol (VRRP)
+    webproxy      Show log for Webproxy
+
+Show contents of a log file in an image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Log messages from a specified image can be displayed on the console:
+
+.. code-block:: sh
+
+  $ show log image <image name>
+  $ show log image <image name> [all | authorization | directory | file <file name> | tail <lines>]
+
+Details of allowed parameters:
+
+.. list-table::
+   :widths: 25 75
+   :header-rows: 0
+
+   * - all
+     - Display contents of all master log files of the specified image
+   * - authorization
+     - Display all authorization attempts of the specified image
+   * - directory
+     - Display list of all user-defined log files of the specified image
+   * - file <file name>
+     - Display contents of a specified user-defined log file of the specified image
+   * - tail
+     - Display last lines of the system log of the specified image
+   * - <lines>
+     - Number of lines to be displayed, default 10
+
+
+When no options/parameters are used, the contents of the main syslog file are displayed.

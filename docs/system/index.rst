@@ -16,4 +16,5 @@ should be ready for further configuration which is described in this chapter.
    host-information
    systemusers
    syslog
+   task-scheduler
    config-management
