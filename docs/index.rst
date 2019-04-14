@@ -34,6 +34,7 @@ as a router and firewall platform for cloud deployments.
     troubleshooting.rst
     examples.rst
     commandtree/index.rst
+    releasenotes.rst
 
 .. toctree::
     :maxdepth: 2
