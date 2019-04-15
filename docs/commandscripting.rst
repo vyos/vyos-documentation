@@ -105,3 +105,22 @@ To make sure that a script is not accidentally called without the ``vyattacfg`` 
   if [ "$(id -g -n)" != 'vyattacfg' ] ; then
       exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
   fi
+
+Postconfig on boot
+------------------
+
+The ``/config/scripts/vyos-postconfig-bootup.script`` script is called on boot after the VyOS configuration is fully applied.
+
+Any modifications done to work around unfixed bugs and implement enhancements which are not complete in the VyOS system can be placed here.
+
+The default file looks like this:
+
+.. code-block:: sh
+
+  #!/bin/sh
+  # This script is executed at boot time after VyOS configuration is fully applied.
+  # Any modifications required to work around unfixed bugs
+  # or use services not available through the VyOS CLI system can be placed here.
+
+.. hint::
+  For configuration/upgrade management issues, modification of this script should be the last option. Always try to find solutions based on CLI commands first.
