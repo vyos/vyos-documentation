@@ -3,6 +3,78 @@
 Tunnel Interfaces
 =================
 
+This article touches on 'classic' IP tunneling protocols.
+
+GRE is often seen as a one size fits all solution when it comes to classic IP tunneling protocols, and for a good reason.
+However, there are more specialized options, and many of them are supported by VyOS. There are also rather obscure GRE options that can be useful.
+
+All those protocols are grouped under 'interfaces tunnel' in VyOS. Let's take a closer look at the protocols and options currently supported by VyOS.
+
+IPIP
+----
+
+This is the simplest tunneling protocol in existence. It is defined by RFC2003_.
+It simply takes an IPv4 packet and sends it as a payload of another IPv4 packet. For this reason it doesn't really have any configuration options by itself.
+
+An example:
+
+.. code-block:: sh
+
+  set interfaces tunnel tun0 encapsulation ipip
+  set interfaces tunnel tun0 local-ip 192.0.2.10
+  set interfaces tunnel tun0 remote-ip 203.0.113.20
+  set interfaces tunnel tun0 address 192.168.100.200
+
+IP6IP6
+------
+
+This is the IPv6 counterpart of IPIP. I'm not aware of an RFC that defines this encapsulation specifically, but it's a natural specific case of IPv6 encapsulation mechanisms described in RFC2473_.
+
+It's not likely that anyone will need it any time soon, but it does exist.
+
+An example:
+
+.. code-block:: sh
+
+  set interfaces tunnel tun0 encapsulation ipip
+  set interfaces tunnel tun0 local-ip 2001:db8:aa::1/64
+  set interfaces tunnel tun0 remote-ip 2001:db8:aa::2/64
+  set interfaces tunnel tun0 address 2001:db8:bb::1/64
+
+IPIP6
+-----
+
+In the future this is expected to be a very useful protocol (though there are `other proposals`_).
+
+As the name implies, it's IPv4 encapsulated in IPv6, as simple as that.
+
+An example:
+
+.. code-block:: sh
+
+  set interfaces tunnel tun0 encapsulation ipip6
+  set interfaces tunnel tun0 local-ip 2001:db8:aa::1/64
+  set interfaces tunnel tun0 remote-ip 2001:db8:aa::2/64
+  set interfaces tunnel tun0 address 192.168.70.80
+
+6in4 (SIT)
+----------
+
+
+6in4 uses tunneling to encapsulate IPv6 traffic over IPv4 links as defined in RFC4213_.
+The 6in4 traffic is sent over IPv4 inside IPv4 packets whose IP headers have the IP protocol number set to 41.
+This protocol number is specifically designated for IPv6 encapsulation, the IPv4 packet header is immediately followed by the IPv6 packet being carried.
+qThe encapsulation overhead is the size of the IPv4 header of 20 bytes, therefore with an MTU of 1500 bytes, IPv6 packets of 1480 bytes can be sent without fragmentation. This tunneling technique is frequently used by IPv6 tunnel brokers like `Hurricane Electric`_.
+
+An example:
+
+.. code-block:: sh
+
+  set interfaces tunnel tun0 encapsulation sit
+  set interfaces tunnel tun0 local-ip 192.0.2.10
+  set interfaces tunnel tun0 remote-ip 192.0.2.20
+  set interfaces tunnel tun0 address 2001:db8:bb::1/64
+
 Generic Routing Encapsulation (GRE)
 -----------------------------------
 
@@ -113,3 +185,10 @@ Results in:
       address 2001:db8:2::249/64
       description "Description"
   }
+
+
+.. _RFC2003: https://tools.ietf.org/html/rfc2003
+.. _RFC2473: https://tools.ietf.org/html/rfc2473
+.. _`other proposals`: https://www.isc.org/downloads/aftr
+.. _RFC4213: https://tools.ietf.org/html/rfc4213
+.. _`Hurricane Electric`: https://tunnelbroker.net/
