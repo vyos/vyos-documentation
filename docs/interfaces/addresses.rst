@@ -59,7 +59,7 @@ Static Address
 This method is supported on all interfaces, apart from OpenVPN that uses
 different syntax and wireless modems that are always autoconfigured through
 PPP. Static IPv6 addresses are supported on all interfaces
-except :ref:`interfaces-vti`.
+except :ref:`interfaces-tunnel`.
 
 The command is `set interfaces $type $name address $address`. Examples:
 

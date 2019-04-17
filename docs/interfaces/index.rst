@@ -55,7 +55,7 @@ respective sections.
    wireless
    bridging
    bonding
-   vti
+   tunnel
    vlan
    qinq
    vxlan
