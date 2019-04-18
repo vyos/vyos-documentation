@@ -3,10 +3,10 @@
 System Users
 ------------
 
-The default vyos user account, as well as newly created user accounts, have all capabilities to configure the system.
-All accounts have sudo capabilities and therefore can operate as root on the system.
-Setting the level to admin is optional, all accounts on the system 
-will have admin privileges.
+The default vyos user account, as well as newly created user accounts, have all
+capabilities to configure the system. All accounts have sudo capabilities and
+therefore can operate as root on the system. Setting the level to admin is
+optional, all accounts on the system will have admin privileges.
 
 
 Creating Login User Accounts
@@ -54,3 +54,34 @@ The following command will load the public key `dev.pub` for user `jsmith`
 .. code-block:: sh
 
   loadkey jsmith scp://devuser@dev001.vyos.net/home/devuser/.ssh/dev.pub
+
+RADIUS authentication backend
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+VyOS supports using one or more RADIUS servers as backend for user authentication.
+
+The following command sets up two servers for RADIUS authentication, one with a
+discrete timeout of `5` seconds and a discrete port of `1812` and the other using
+a default timeout and port.
+
+.. code-block:: sh
+
+  set system login radius server 192.168.1.2 secret 's3cr3t0815'
+  set system login radius server 192.168.1.2 timeout '5'
+  set system login radius server 192.168.1.2 port '1812'
+  set system login radius server 192.168.1.3 secret 's3cr3t0816'
+
+This configuration results in:
+
+.. code-block:: sh
+
+  show system login radius
+   server 192.168.1.2 {
+       secret s3cr3t0815
+       timeout 5
+       port 1812
+   }
+   server 192.168.1.3 {
+       secret s3cr3t0816
+   }
+
