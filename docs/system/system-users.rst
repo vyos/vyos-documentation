@@ -85,3 +85,16 @@ This configuration results in:
        secret s3cr3t0816
    }
 
+RADIUS Source Address
+*********************
+
+If you are using e.g. OSPF as IGP always the nearest interface facing the RADIUS
+server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests to a
+single source IP e.g. the loopback interface.
+
+.. code-block:: sh
+
+  set system login radius source-address 3.3.3.3
+
+Above command will use `3.3.3.3` as source IPv4 address for all queries originating
+from this NAS.
