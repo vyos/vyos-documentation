@@ -1,16 +1,18 @@
 .. _systemusers:
 
-System Users
-------------
+Login
+-----
 
-The default vyos user account, as well as newly created user accounts, have all
-capabilities to configure the system. All accounts have sudo capabilities and
-therefore can operate as root on the system. Setting the level to admin is
+The default VyOS user account (`vyos`), as well as newly created user accounts,
+have all capabilities to configure the system. All accounts have sudo capabilities
+and therefore can operate as root on the system. Setting the level to admin is
 optional, all accounts on the system will have admin privileges.
 
+Both local administered and remote administered RADIUS (Remote Authentication
+Dial-In User Service) accounts are supported.
 
-Creating Login User Accounts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Local
+^^^^^
 
 Create user account `jsmith` and the password `mypassword`.
 
@@ -38,8 +40,8 @@ will show the contents of :code:`system login` configuration node:
       level admin
   }
 
-SSH Access using Shared Public Keys
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SSH with Public Keys
+********************
 
 The following command will load the public key `dev.pub` for user `jsmith`
 
@@ -55,8 +57,17 @@ The following command will load the public key `dev.pub` for user `jsmith`
 
   loadkey jsmith scp://devuser@dev001.vyos.net/home/devuser/.ssh/dev.pub
 
-RADIUS authentication backend
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In addition SSH public keys can be fully added using the CLI. Each key can be
+given a unique identifier, `calypso` is used oin the example below to id an SSH
+key.
+
+.. code-block:: sh
+
+  set system login user jsmith authentication public-keys callisto key 'AAAAB3Hso...Q=='
+  set system login user jsmith authentication public-keys callisto type 'ssh-rsa'
+
+RADIUS
+^^^^^^
 
 VyOS supports using one or more RADIUS servers as backend for user authentication.
 
