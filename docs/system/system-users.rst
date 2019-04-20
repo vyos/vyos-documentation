@@ -77,35 +77,21 @@ a default timeout and port.
 
 .. code-block:: sh
 
-  set system login radius server 192.168.1.2 secret 's3cr3t0815'
-  set system login radius server 192.168.1.2 timeout '5'
-  set system login radius server 192.168.1.2 port '1812'
-  set system login radius server 192.168.1.3 secret 's3cr3t0816'
+  set system login radius-server 192.168.1.2 secret 's3cr3t0815'
+  set system login radius-server 192.168.1.2 timeout '5'
+  set system login radius-server 192.168.1.2 port '1812'
+  set system login radius-server 192.168.1.3 secret 's3cr3t0816'
 
 This configuration results in:
 
 .. code-block:: sh
 
-  show system login radius
-   server 192.168.1.2 {
+  show system login
+   radius-server 192.168.1.2 {
        secret s3cr3t0815
        timeout 5
        port 1812
    }
-   server 192.168.1.3 {
+   radius-server 192.168.1.3 {
        secret s3cr3t0816
    }
-
-RADIUS Source Address
-*********************
-
-If you are using e.g. OSPF as IGP always the nearest interface facing the RADIUS
-server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests to a
-single source IP e.g. the loopback interface.
-
-.. code-block:: sh
-
-  set system login radius source-address 3.3.3.3
-
-Above command will use `3.3.3.3` as source IPv4 address for all queries originating
-from this NAS.
