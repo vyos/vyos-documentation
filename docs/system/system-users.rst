@@ -77,10 +77,10 @@ a default timeout and port.
 
 .. code-block:: sh
 
-  set system login radius server 192.168.1.2 secret 's3cr3t0815'
+  set system login radius server 192.168.1.2 key 's3cr3t0815'
   set system login radius server 192.168.1.2 timeout '5'
   set system login radius server 192.168.1.2 port '1812'
-  set system login radius server 192.168.1.3 secret 's3cr3t0816'
+  set system login radius server 192.168.1.3 key 's3cr3t0816'
 
 This configuration results in:
 
@@ -88,12 +88,12 @@ This configuration results in:
 
   show system login radius
    server 192.168.1.2 {
-       secret s3cr3t0815
+       key s3cr3t0815
        timeout 5
        port 1812
    }
    server 192.168.1.3 {
-       secret s3cr3t0816
+       key s3cr3t0816
    }
 
 RADIUS Source Address
