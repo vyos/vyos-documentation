@@ -20,22 +20,18 @@ Required Debian Packages:
 
 ## Docker
 
-## Create Container
+Using our [Dockerfile](docker/Dockerfile) you create your own Docker container
+that is used to build a VyOS documentation.
+
+## Setup
 
 ```bash
-$ docker build -t vyos-docu - < Dockerfile
+$ docker build -t vyos-docu docker
 ```
 
-### Build Documentation
+### Build
 
 Linux
 ```bash
-$ docker run -v `pwd`:`pwd` -w `pwd`/docs -i -t --rm vyos-docu bash
+$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos-docu make html
 ```
-
-Windows PowerShell
-```powershell
-docker run -v "$($pwd.path):/vyos" -w "/vyos/docs" -i -t --rm vyos-docu bash
-```
-
-Inside the container you can then build the documentation as stated above.
