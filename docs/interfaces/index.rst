@@ -52,6 +52,7 @@ respective sections.
    addresses
    dummy
    ethernet
+   pppoe
    wireless
    bridging
    bonding
