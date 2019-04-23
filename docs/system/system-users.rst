@@ -95,3 +95,16 @@ This configuration results in:
    radius-server 192.168.1.3 {
        secret s3cr3t0816
    }
+
+Source Address
+**************
+
+RADIUS servers could be hardened by only allowing certain IP addresses to connect.
+As of this the source address of each RADIUS query can be configured. If this is
+not set incoming connections to the RADIUS server will use the nearest interface
+address pointing towards the RADIUS server - making it error prone on e.g. OSPF
+networks when a link fails.
+
+.. code-block:: sh
+
+  set system login radius-source-address 192.168.1.254
