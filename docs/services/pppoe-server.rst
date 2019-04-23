@@ -91,9 +91,9 @@ Once the user is connected, the user session is using the set limits and can be 
 RADIUS shaper setup
 ===================
 
-The current attribute 'Filter-ID' is being used as default and can be setup within RADIUS:
+The current attribute 'Filter-Id' is being used as default and can be setup within RADIUS:
 
-Filter-ID=2000/3000 (means 2000Kbit down-stream rate and 3000Kbit up-stream rate)
+Filter-Id=2000/3000 (means 2000Kbit down-stream rate and 3000Kbit up-stream rate)
 
 The command below enables it, assuming the RADIUS connection has been setup and is working.
 
