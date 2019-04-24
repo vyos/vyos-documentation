@@ -55,6 +55,6 @@ Windows
 docker run --rm -it -v "$(pwd):/vyos" -w /vyos/docs vyos-docu make html
 
 # sphinx autobuild
-docker run --rm -it -p 8000:8000 -v "$(pwd):/vyos" -w /vyos/docs vyos-docu vyos-docu make livehtml
+docker run --rm -it -p 8000:8000 -v "$(pwd):/vyos" -w /vyos/docs vyos-docu make livehtml
 ```
 
