@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     mc \
     make \
     python3-sphinx \
+    python3-pip \
     python-sphinx-rtd-theme \
     latexmk \
     texlive-latex-recommended \
@@ -24,8 +25,12 @@ RUN apt-get update && apt-get install -y \
     sudo \
     gosu
 
+RUN pip3 install sphinx-autobuild
+
 # Cleanup
 RUN rm -rf /var/lib/apt/lists/*
+
+EXPOSE 8000
 
 # Allow password-less 'sudo' for all users in group 'sudo'
 RUN sed "s/^%sudo.*/%sudo\tALL=(ALL) NOPASSWD:ALL/g" -i /etc/sudoers && \

@@ -18,6 +18,17 @@ Required Debian Packages:
 * `texlive-fonts-recommended`
 * `texlive-latex-extra`
 
+### sphinx-autobuild
+Required extra setup procedure on Debian:
+```bash
+sudo apt-get install python-pip
+sudo pip install sphinx-autobuild
+```
+
+To build and run a webeserver, inside the `docs` folder:
+* `make livehtml` and browse to http://localhost:8000
+
+
 ## Docker
 
 Using our [Dockerfile](docker/Dockerfile) you create your own Docker container
@@ -34,4 +45,16 @@ $ docker build -t vyos-docu docker
 Linux
 ```bash
 $ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos-docu make html
+
+# sphinx autobuild
+$ docker run --rm -it -p 8000:8000 -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos-docu make livehtml
 ```
+
+Windows
+```powershell
+docker run --rm -it -v "$(pwd):/vyos" -w /vyos/docs vyos-docu make html
+
+# sphinx autobuild
+docker run --rm -it -p 8000:8000 -v "$(pwd):/vyos" -w /vyos/docs vyos-docu vyos-docu make livehtml
+```
+
