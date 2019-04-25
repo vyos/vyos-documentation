@@ -26,7 +26,7 @@ belong to the same security zone. Instead of applying to rulesets to interfaces
 they are applied to source zone-destination zone pairs.
 
 An introduction to zone-based firewalls can be found [[A primer to Zone Based
-Firewall|here]]. For an example see [[Zone-policy_example|Zone-policy example]].
+Firewall|here]]. For an example see :ref:`examples-zone-policy`.
 
 Groups
 ------
