@@ -32,7 +32,7 @@ as a router and firewall platform for cloud deployments.
     image-mgmt.rst
     commandscripting.rst
     troubleshooting.rst
-    examples.rst
+    examples/index.rst
     commandtree/index.rst
     releasenotes.rst
 

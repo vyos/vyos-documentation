@@ -1,7 +1,5 @@
-.. _examples:
 
-Appendix B - Configuration Examples
-===================================
+.. _examples-dmvpn:
 
 VyOS DMVPN Hub
 --------------
