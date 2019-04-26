@@ -1,3 +1,5 @@
+This is a playground for a new VyOS documentation starting for VyOS 1.2 (Crux) release.
+
 # Build
 
 ## Native
@@ -24,7 +26,6 @@ that is used to build a VyOS documentation.
 
 ```bash
 $ docker build -t vyos-docu docker
-$ test 3 4
 ```
 
 ### Build
