@@ -8,6 +8,10 @@ SPHINXPROJ    = VyOS
 SOURCEDIR     = .
 BUILDDIR      = _build
 
+AUTOHOST      =0.0.0.0
+AUTOPORT      =8000
+AUTOOPTS      =--poll
+
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
@@ -18,3 +22,7 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+livehtml:
+	sphinx-autobuild --host $(AUTOHOST) --port $(AUTOPORT) $(AUTOOPTS) \
+		"$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
