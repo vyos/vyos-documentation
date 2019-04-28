@@ -40,7 +40,6 @@ Configure a DHCP Server:
 
 .. code-block:: sh
 
-  set service dhcp-server disabled 'false'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 default-router '192.168.0.1'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 dns-server '192.168.0.1'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 domain-name 'internal-network'
