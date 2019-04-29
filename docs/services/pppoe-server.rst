@@ -4,7 +4,7 @@ PPPoE server
 VyOS utilizes `accel-ppp`_ to provide PPPoE server functionality. It can be
 used with local authentication or a connected RADIUS server.
 
-.. note:: Please be aware, due to an upstream bug, config changes/commits
+.. note:: **Please be aware, due to an upstream bug, config changes/commits
    will restart the ppp daemon and will reset existing PPPoE connections from
    connected users, in order to become effective.**
 
@@ -38,6 +38,33 @@ Connections can be locally checked via the command
   ppp0   | foo      | 10.1.1.100 | 08:00:27:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B     
 
 
+Client IP address pools
+=======================
+
+To automatically assign the client an IP address as tunnel endpoint, a client IP pool is needed. The source can be either RADIUS or a local suhbnet or IP range defintion.
+
+Once the local tunnel endpoint ``set service pppoe-server local-ip '10.1.1.2'`` has been defined, the client IP pool can be either defined as a range or as subnet using CIDR notation.
+If the CIDR notation is used, multiple subnets can be setup which are used sequentially.
+
+**Client IP address via IP range defintion**
+
+.. code-block:: sh
+
+  set service pppoe-server client-ip-pool start '10.1.1.100'
+  set service pppoe-server client-ip-pool stop '10.1.1.111'
+
+
+**Client IP subnets via CIDR notation**
+
+.. code-block:: sh
+
+  set service pppoe-server client-ip-pool subnet '10.1.1.0/24'
+  set service pppoe-server client-ip-pool subnet '10.1.2.0/24'
+  set service pppoe-server client-ip-pool subnet '10.1.3.0/24'
+
+
+
+**RADIUS based IP pools (Framed-IP-Address)**
 
 To use a radius server, you need to switch to authentication mode radius and
 of course need to specify an IP for the server. You can have multiple RADIUS
@@ -54,12 +81,12 @@ server configured, if you wish to achieve redundancy.
 RADIUS provides the IP addresses in the example above via Framed-IP-Address.
 
 Bandwidth Shaping
-=================
+^^^^^^^^^^^^^^^^^
 
 Bandwidth rate limits can be set for local users or RADIUS based attributes.
 
-Local user setup
-================
+Bandwidth Shaping for local users 
+=================================
 
 The rate-limit is set in kbit/sec.
 
@@ -88,8 +115,8 @@ Once the user is connected, the user session is using the set limits and can be 
   ppp0   | foo      | 10.1.1.100 | 08:00:27:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 
 
-RADIUS shaper setup
-===================
+RADIUS based shaper setup
+=========================
 
 The current attribute 'Filter-Id' is being used as default and can be setup within RADIUS:
 
