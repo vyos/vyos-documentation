@@ -117,6 +117,64 @@ Examples:
   set interfaces pseudo-ethernet peth0 ipv6 address eui64 2001:db8:aa::/64
 
 
+Router Advertisements
+*********************
 
+Router advertisements are described in `RFC4861 section 4.2`_. They are part of what is known as SLAAC (Stateless Address Autoconfiguration). 
+
+To enable or disable, use:
+
+.. code-block:: sh
+
+  set interfaces <interface> ipv6 router-advert send-advert <true or false>
+
+
+To set the options described in "Router Advertisement Message Format":
+
+.. code-block:: sh
+
+  vyos@vyos#  set interfaces <interface> ipv6 router-advert
+  Possible completions:
+    cur-hop-limit         Value to be placed in the "Current Hop Limit" field in RAs
+    default-lifetime      Value to be placed in "Router Lifetime" field in RAs
+    default-preference    Default router preference
+    link-mtu              Value of link MTU to place in RAs
+    managed-flag          Value for "managed address configuration" flag in RAs
+    max-interval          Maximum interval between unsolicited multicast RAs
+    min-interval          Minimum interval between unsolicited multicast RAs
+  +  name-server          IPv6 address of a Recursive DNS Server
+    other-config-flag     Value to be placed in the "other configuration" flag in RAs
+  +> prefix               IPv6 prefix to be advertised in Router Advertisements (RAs)
+    reachable-time        Value to be placed in "Reachable Time" field in RAs
+    retrans-timer         Value to place in "Retrans Timer" field in RAs.
+    send-advert           Enable/disable sending RAs
+
+
+**Prefix Information**
+
+Prefix information is described in `RFC4861 section 4.6.2`_
+
+.. code-block:: sh
+
+  vyos@vyos# set interfaces <interface> ipv6 router-advert prefix <h:h:h:h:h:h:h:h/x>
+  Possible completions:
+    autonomous-flag       Whether prefix can be used for address auto-configuration
+    on-link-flag          Flag that prefix can be used for on-link determination
+    preferred-lifetime    Time in seconds that the prefix will remain preferred
+    valid-lifetime        Time in seconds that the prefix will remain valid
+
+**Receiving Router Advertisements**
+
+To receive and accept RAs on an interface, you need to enable it via sysctl with the following command (as root):
+
+``sysctl -w net.ipv6.conf.<interface>.accept_ra=2``
+
+The change is not reboot-persistent, so it either needs to be redone every time or added via ``set system sysctl ...`` to configuration
+
+
+
+
+.. _`RFC4861 section 4.6.2`: https://tools.ietf.org/html/rfc4861#section-4.6.2
+.. _`RFC4861 section 4.2`: https://tools.ietf.org/html/rfc4861#section-4.2
 .. _RFC4862: https://tools.ietf.org/html/rfc4862
 .. _RFC4291: http://tools.ietf.org/html/rfc4291#section-2.5.1
