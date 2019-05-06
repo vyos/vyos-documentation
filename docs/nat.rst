@@ -55,8 +55,8 @@ reserving an average of 200-300 sessions per host system.
 Example: For an ~8,000 host network a source NAT pool of 32 IP addresses is
 recommended.
 
-A pool of addresses can be defined by using a **-** in the `set nat source
-rule [n] translation address` statement.
+A pool of addresses can be defined by using a **-** in the 
+`set nat source rule [n] translation address` statement.
 
 .. code-block:: sh
 
@@ -182,8 +182,8 @@ Which would generate the following NAT destination configuration:
   }
 
 .. note:: If forwarding traffic to a different port than it is arriving on,
-   you may also configure the translation port using `set nat destination rule
-   [n] translation port`.
+   you may also configure the translation port using
+   `set nat destination rule [n] translation port`.
 
 This establishes our Port Forward rule, but if we created a firewall policy it
 will likely block the traffic.
@@ -270,7 +270,7 @@ NPTv6 stands for Network Prefix Translation. It's a form of NAT for IPv6. It's
 described in RFC6296_. NPTv6 is supported in linux kernel since version 3.13.
 
 Usage
------
+*****
 
 NPTv6 is very useful for IPv6 multihoming. Let's assume the following network
 configuration:
@@ -295,7 +295,7 @@ their address to the right subnet when going through your router.
 * eth2 addr : 2001:db8:e2::1/48
 
 VyOS Support
-------------
+************
 
 NPTv6 support has been added in VyOS 1.2 (Crux) and is available through
 `nat nptv6` configuration nodes.
