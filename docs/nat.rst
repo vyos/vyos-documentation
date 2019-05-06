@@ -270,7 +270,7 @@ NPTv6 stands for Network Prefix Translation. It's a form of NAT for IPv6. It's
 described in RFC6296_. NPTv6 is supported in linux kernel since version 3.13.
 
 Usage
-*****
+^^^^^
 
 NPTv6 is very useful for IPv6 multihoming. Let's assume the following network
 configuration:
@@ -295,7 +295,7 @@ their address to the right subnet when going through your router.
 * eth2 addr : 2001:db8:e2::1/48
 
 VyOS Support
-************
+^^^^^^^^^^^^
 
 NPTv6 support has been added in VyOS 1.2 (Crux) and is available through
 `nat nptv6` configuration nodes.
@@ -323,6 +323,148 @@ Resulting in the following ip6tables rules:
       0     0 SNPT     all    any    eth1  fc00:dead:beef::/48 anywhere          src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e1::/48
       0     0 SNPT     all    any    eth2  fc00:dead:beef::/48 anywhere          src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e2::/48
       0     0 RETURN   all    any    any   anywhere            anywhere
+
+
+NAT before VPN
+--------------
+
+Some application service providers (ASPs) operate a VPN gateway to provide access to their internal resources,
+and require that a connecting organisation translate all traffic to the service provider network to a source address provided by the ASP.
+
+Example Network
+^^^^^^^^^^^^^^^
+
+Here's one example of a network environment for an ASP.
+The ASP requests that all connections from this company should come from 172.29.41.89 - an address that is assigned by the ASP and not in use at the customer site.
+
+.. figure:: _static/images/nat_befor_vpn_topology.png
+   :scale: 100 %
+   :alt: NAT before VPN Topology
+
+   NAT before VPN Topology
+
+
+Configuration
+^^^^^^^^^^^^^
+
+The required configuration can be broken down into 4 major pieces:
+
+* A dummy interface for the provider-assigned IP;
+* NAT (specifically, Source NAT);
+* IPSec IKE and ESP Groups;
+* IPSec VPN tunnels.
+
+
+Dummy interface
+***************
+
+The dummy interface allows us to have an equivalent of the Cisco IOS Loopback interface - a router-internal interface we can use for IP addresses the router must know about,
+but which are not actually assigned to a real network.
+
+We only need a single step for this interface:
+
+.. code-block:: sh
+
+  set interfaces dummy dum0 address '172.29.41.89/32'
+
+NAT Configuration
+*****************
+
+.. code-block:: sh
+
+  set nat source rule 110 description 'Internal to ASP'
+  set nat source rule 110 destination address '172.27.1.0/24'
+  set nat source rule 110 outbound-interface 'any'
+  set nat source rule 110 source address '192.168.43.0/24'
+  set nat source rule 110 translation address '172.29.41.89'
+  set nat source rule 120 description 'Internal to ASP'
+  set nat source rule 120 destination address '10.125.0.0/16'
+  set nat source rule 120 outbound-interface 'any'
+  set nat source rule 120 source address '192.168.43.0/24'
+  set nat source rule 120 translation address '172.29.41.89'
+
+IPSec IKE and ESP
+*****************
+
+
+The ASP has documented their IPSec requirements:
+
+* IKE Phase:
+
+  * aes256 Encryption
+  * sha256 Hashes
+
+* ESP Phase:
+
+  * aes256 Encryption
+  * sha256 Hashes
+  * DH Group 14
+
+
+Additionally, we want to use VPNs only on our eth1 interface (the external interface in the image above)
+
+.. code-block:: sh
+
+  set vpn ipsec ike-group my-ike ikev2-reauth 'no'
+  set vpn ipsec ike-group my-ike key-exchange 'ikev1'
+  set vpn ipsec ike-group my-ike lifetime '7800'
+  set vpn ipsec ike-group my-ike proposal 1 dh-group '14'
+  set vpn ipsec ike-group my-ike proposal 1 encryption 'aes256'
+  set vpn ipsec ike-group my-ike proposal 1 hash 'sha256'
+
+  set vpn ipsec esp-group my-esp compression 'disable'
+  set vpn ipsec esp-group my-esp lifetime '3600'
+  set vpn ipsec esp-group my-esp mode 'tunnel'
+  set vpn ipsec esp-group my-esp pfs 'disable'
+  set vpn ipsec esp-group my-esp proposal 1 encryption 'aes256'
+  set vpn ipsec esp-group my-esp proposal 1 hash 'sha256'
+
+  set vpn ipsec ipsec-interfaces interface 'eth1'
+
+IPSec VPN Tunnels
+*****************
+
+We'll use the IKE and ESP groups created above for this VPN. 
+Because we need access to 2 different subnets on the far side, we will need two different tunnels.
+If you changed the names of the ESP group and IKE group in the previous step, make sure you use the correct names here too.
+
+.. code-block:: sh
+
+  set vpn ipsec site-to-site peer 198.51.100.243 authentication mode 'pre-shared-secret'
+  set vpn ipsec site-to-site peer 198.51.100.243 authentication pre-shared-secret 'PASSWORD IS HERE'
+  set vpn ipsec site-to-site peer 198.51.100.243 connection-type 'initiate'
+  set vpn ipsec site-to-site peer 198.51.100.243 default-esp-group 'my-esp'
+  set vpn ipsec site-to-site peer 198.51.100.243 ike-group 'my-ike'
+  set vpn ipsec site-to-site peer 198.51.100.243 ikev2-reauth 'inherit'
+  set vpn ipsec site-to-site peer 198.51.100.243 local-address '203.0.113.46'
+  set vpn ipsec site-to-site peer 198.51.100.243 tunnel 0 local prefix '172.29.41.89/32'
+  set vpn ipsec site-to-site peer 198.51.100.243 tunnel 0 remote prefix '172.27.1.0/24'
+  set vpn ipsec site-to-site peer 198.51.100.243 tunnel 1 local prefix '172.29.41.89/32'
+  set vpn ipsec site-to-site peer 198.51.100.243 tunnel 1 remote prefix '10.125.0.0/16'
+
+Testing and Validation
+^^^^^^^^^^^^^^^^^^^^^^
+
+If you've completed all the above steps you no doubt want to see if it's all working.
+
+Start by checking for IPSec SAs (Security Associations) with:
+
+.. code-block:: sh
+
+  $ show vpn ipsec sa
+
+  Peer ID / IP                            Local ID / IP
+  ------------                            -------------
+  198.51.100.243                          203.0.113.46
+
+      Tunnel  State  Bytes Out/In   Encrypt  Hash    NAT-T  A-Time  L-Time  Proto
+      ------  -----  -------------  -------  ----    -----  ------  ------  -----
+      0       up     0.0/0.0        aes256   sha256  no     1647    3600    all
+      1       up     0.0/0.0        aes256   sha256  no     865     3600    all
+
+That looks good - we defined 2 tunnels and they're both up and running.
+
+
 
 .. _RFC6296: https://tools.ietf.org/html/rfc6296
 .. _ULAs: http://en.wikipedia.org/wiki/Unique_local_address
