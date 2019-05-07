@@ -108,3 +108,18 @@ networks when a link fails.
 .. code-block:: sh
 
   set system login radius-source-address 192.168.1.254
+
+Login Banner
+^^^^^^^^^^^^
+
+You are able to set post-login or pre-login messages with the following lines:
+
+.. code-block:: sh
+
+  set system login banner pre-login "UNAUTHORIZED USE OF THIS SYSTEM IS PROHIBITED\n"
+  set system login banner post-login "Welcome to VyOS"
+
+the **\\n** create a newline.
+
+
+
