@@ -3,7 +3,7 @@
 Firewall
 ========
 
-VyOS makes use of Linux [http://netfilter.org/ netfilter] for packet filtering.
+VyOS makes use of Linux [netfilter](http://netfilter.org/) for packet filtering.
 
 The firewall supports the creation of groups for ports, addresses, and networks
 (implemented using netfilter ipset) and the option of interface or zone based
@@ -211,5 +211,5 @@ To achieve the same for IPv6 please use:
   set firewall options interface pppoe0 adjust-mss6 '1280'
   set firewall options interface wg02 adjust-mss6 '1280'
 
-[https://www.xfinity.com/support/internet/list-of-blocked-ports/ XFinity Blocked Port List]
+[XFinity Blocked Port List](https://www.xfinity.com/support/internet/list-of-blocked-ports/)
 
