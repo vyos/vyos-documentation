@@ -165,13 +165,11 @@ Prefix information is described in `RFC4861 section 4.6.2`_
 
 **Receiving Router Advertisements**
 
-To receive and accept RAs on an interface, you need to enable it via sysctl with the following command (as root):
+To receive and accept RAs on an interface, you need to enable it with the following configuration command
 
-``sysctl -w net.ipv6.conf.<interface>.accept_ra=2``
+.. code-block:: sh
 
-The change is not reboot-persistent, so it either needs to be redone every time or added via ``set system sysctl ...`` to configuration
-
-
+  vyos@vyos# set system sysctl custom net.ipv6.conf.<interface name>.accept_ra value 2
 
 
 .. _`RFC4861 section 4.6.2`: https://tools.ietf.org/html/rfc4861#section-4.6.2
