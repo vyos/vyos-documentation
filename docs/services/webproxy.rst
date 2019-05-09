@@ -79,7 +79,32 @@ first. Otherwise you will not be able to commit the config changes.
 Authentication
 ^^^^^^^^^^^^^^
 
-TBD: https://wiki.vyos.net/wiki/Web_proxy_LDAP_authentication
+The embedded Squid proxy can use LDAP to authenticate users against a company
+wide directory. The following configuration is an example of how to use Active
+Directory as authentication backend. Queries are done via LDAP.
+
+.. code-block:: sh
+
+  vyos@vyos# show service webproxy
+   authentication {
+       children 5
+       credentials-ttl 60
+       ldap {
+           base-dn DC=rgtest,DC=local
+           bind-dn CN=proxyuser,CN=Users,DC=rgtest,DC=local
+           filter-expression (cn=%s)
+           password Qwert1234
+           server 192.168.188.201
+           username-attribute cn
+       }
+       method ldap
+       realm "VyOS Webproxy"
+   }
+   cache-size 100
+   default-port 3128
+   listen-address 192.168.188.103 {
+       disable-transparent
+   }
 
 Adjusting cache size
 ^^^^^^^^^^^^^^^^^^^^
