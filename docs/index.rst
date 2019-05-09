@@ -34,6 +34,7 @@ as a router and firewall platform for cloud deployments.
     troubleshooting.rst
     examples/index.rst
     commandtree/index.rst
+    vyos-on-baremetal.rst
     releasenotes.rst
 
 .. toctree::
