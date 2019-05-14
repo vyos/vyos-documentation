@@ -52,6 +52,7 @@ respective sections.
    addresses
    dummy
    ethernet
+   l2tpv3
    pppoe
    wireless
    bridging
