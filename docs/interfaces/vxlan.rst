@@ -296,7 +296,7 @@ Let's change the Multicast example from above:
   # leaf3
   set interface vxlan vxlan241 remote 10.1.2.2
 
-The default port udp is set to 8472 by the kernel. 
+The default port udp is set to 8472. 
 It can be changed with ``set interface vxlan <vxlanN> remote-port <port>``
 
 
