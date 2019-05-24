@@ -155,5 +155,11 @@ The example below covers a dual-stack configuration via pppoe-server.
 
 The client, once successfully authenticated, will receive an IPv4 and an IPv6 /64 address, to terminate the pppoe endpoint on the client side and a /56 subnet for the clients internal use.
 
+.. code-block:: sh
+
+  vyos@pppoe-server:~$ sh pppoe-server sessions 
+   ifname | username |     ip      |            ip6           |       ip6-dp        |    calling-sid    | rate-limit | state  |  uptime  | rx-bytes | tx-bytes 
+  --------+----------+-------------+--------------------------+---------------------+-------------------+------------+--------+----------+----------+----------
+   ppp0   | test     | 192.168.0.1 | 2001:db8:8002:0:200::/64 | 2001:db8:8003::1/56 | 08:00:27:12:42:eb |            | active | 00:00:49 | 875 B    | 2.1 KiB
 
 .. _`accel-ppp`: https://accel-ppp.org/
