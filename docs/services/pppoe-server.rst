@@ -130,4 +130,30 @@ The command below enables it, assuming the RADIUS connection has been setup and 
 
 Other attributes can be used, but they have to be in one of the dictionaries in /usr/share/accel-ppp/radius.
 
+
+Practical Configuration Examples
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Dual-stack provisioning with IPv6 PD via pppoe
+==============================================
+
+The example below covers a dual-stack configuration via pppoe-server.
+
+.. code-block:: sh
+
+  set service pppoe-server authentication local-users username test password 'test'
+  set service pppoe-server authentication mode 'local'
+  set service pppoe-server client-ip-pool start '192.168.0.1'
+  set service pppoe-server client-ip-pool stop '192.168.0.10'
+  set service pppoe-server client-ipv6-pool delegate-prefix '2001:db8:8003::1/48,56'
+  set service pppoe-server client-ipv6-pool prefix '2001:db8:8002::1/48,64'
+  set service pppoe-server dns-servers server-1 '8.8.8.8'
+  set service pppoe-server dnsv6-servers server-1 '2001:4860:4860::8888'
+  set service pppoe-server interface 'eth2'
+  set service pppoe-server local-ip '10.100.100.1'
+
+
+The client, once successfully authenticated, will receive an IPv4 and an IPv6 /64 address, to terminate the pppoe endpoint on the client side and a /56 subnet for the clients internal use.
+
+
 .. _`accel-ppp`: https://accel-ppp.org/
