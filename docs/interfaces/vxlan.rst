@@ -277,6 +277,28 @@ gateway. You can add an IP to a bridge-group to create a gateway.
        }
   }
 
+Unicast VXLAN
+^^^^^^^^^^^^^
+
+Alternative to multicast, the remote IPv4 address of the VXLAN tunnel can set directly.
+Let's change the Multicast example from above:
+
+
+.. code-block:: sh
+
+  # leaf2 and leaf3
+  delete interfaces vxlan vxlan241 group '239.0.0.241'
+  delete interfaces vxlan vxlan241 link 'eth0'
+
+  # leaf2
+  set interface vxlan vxlan241 remote 10.1.3.3
+
+  # leaf3
+  set interface vxlan vxlan241 remote 10.1.2.2
+
+The default port udp is set to 8472. 
+It can be changed with ``set interface vxlan <vxlanN> remote-port <port>``
+
 
 .. target-notes::
 
