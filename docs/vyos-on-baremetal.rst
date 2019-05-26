@@ -51,3 +51,19 @@ Pictures
 .. figure:: /_static/images/1u_vyos_front_open_3.jpg
    :scale: 25 %
    :alt: CSE-505-203B Open 3
+
+.. figure:: /_static/images/1u_vyos_front_10ge_open_1.jpg
+   :scale: 25 %
+   :alt: CSE-505-203B w/ 10GE Open 1
+
+.. figure:: /_static/images/1u_vyos_front_10ge_open_2.jpg
+   :scale: 25 %
+   :alt: CSE-505-203B w/ 10GE Open 2
+
+.. figure:: /_static/images/1u_vyos_front_10ge_open_3.jpg
+   :scale: 25 %
+   :alt: CSE-505-203B w/ 10GE Open 3
+
+.. figure:: /_static/images/1u_vyos_front_10ge_open_4.jpg
+   :scale: 25 %
+   :alt: CSE-505-203B w/ 10GE Open 
