@@ -1,7 +1,7 @@
 .. _commandtree:
 
-Appendix C - Command tree
-=========================
+Command tree
+============
 
 See the the full Command tree in Operational mode and Configuration mode
 

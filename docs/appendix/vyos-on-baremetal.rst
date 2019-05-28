@@ -1,7 +1,10 @@
 .. _vyosonbaremetal:
 
-Appendix D - Running on Bare Metal
-##################################
+Running on Bare Metal
+#####################
+
+Intel Atom C3000
+****************
 
 I opted to get one of the new Intel Atom C3000 CPUs to spawn VyOS on it.
 Running VyOS on an UEFI only device is supported as of VyOS release 1.2.
@@ -66,4 +69,4 @@ Pictures
 
 .. figure:: /_static/images/1u_vyos_front_10ge_open_4.jpg
    :scale: 25 %
-   :alt: CSE-505-203B w/ 10GE Open 
+   :alt: CSE-505-203B w/ 10GE Open

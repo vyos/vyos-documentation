@@ -1,7 +1,7 @@
 .. _examples:
 
-Appendix B - Configuration Examples
-===================================
+Configuration Examples
+======================
 
 This chapter contains various configuration Examples
 

@@ -31,11 +31,17 @@ as a router and firewall platform for cloud deployments.
     clustering.rst
     image-mgmt.rst
     commandscripting.rst
-    troubleshooting.rst
-    examples/index.rst
-    commandtree/index.rst
-    vyos-on-baremetal.rst
-    releasenotes.rst
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Appendix:
+    :includehidden:
+
+    appendix/releasenotes.rst
+    appendix/troubleshooting.rst
+    appendix/examples/index.rst
+    appendix/commandtree/index.rst
+    appendix/vyos-on-baremetal.rst
 
 .. toctree::
     :maxdepth: 2

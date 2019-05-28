@@ -1,7 +1,7 @@
 .. _releasenotes:
 
-Appendix E - Release notes
-##########################
+Release notes
+#############
 
 1.2 (Crux)
 ==========
