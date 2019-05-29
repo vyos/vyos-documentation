@@ -23,5 +23,4 @@ This chapter descriptes the available system/network services provided by VyOS.
    snmp
    ssh
    tftp
-   udp-broadcast-relay
    webproxy
