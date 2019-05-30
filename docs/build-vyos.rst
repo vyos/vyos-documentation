@@ -47,6 +47,7 @@ Running the container and building the ISO
 
   user@build:~$ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos-builder bash
   root@d4220bb519a0:/vyos# ./configure --architecture amd64 --build-by "your@email.tld" --build-type release --version 1.2.0
+  root@d4220bb519a0:/vyos# make iso
   
   
 You may use these options to customize you ISO
