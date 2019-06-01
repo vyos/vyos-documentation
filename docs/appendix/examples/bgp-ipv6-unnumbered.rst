@@ -3,7 +3,7 @@
 VyOS BGP ipv6 unnumbered with extended nexthop
 ----------------------------------------------
 
-General infomration can be found in the :ref:`Routing-BGP` chapter.
+General infomration can be found in the :ref:`routing-bgp` chapter.
 
 Configuration
 ^^^^^^^^^^^^^
