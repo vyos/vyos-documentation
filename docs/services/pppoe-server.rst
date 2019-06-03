@@ -41,7 +41,7 @@ Connections can be locally checked via the command
 Client IP address pools
 =======================
 
-To automatically assign the client an IP address as tunnel endpoint, a client IP pool is needed. The source can be either RADIUS or a local suhbnet or IP range defintion.
+To automatically assign the client an IP address as tunnel endpoint, a client IP pool is needed. The source can be either RADIUS or a local subnet or IP range defintion.
 
 Once the local tunnel endpoint ``set service pppoe-server local-ip '10.1.1.2'`` has been defined, the client IP pool can be either defined as a range or as subnet using CIDR notation.
 If the CIDR notation is used, multiple subnets can be setup which are used sequentially.
