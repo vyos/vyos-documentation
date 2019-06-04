@@ -56,6 +56,9 @@ Simple RIP configuration using 2 nodes and redistributing connected interfaces.
   set protocols rip network 192.168.0.0/24
   set protocols rip redistribute connected
 
+
+.. _routing-ospf:
+
 OSPF
 ----
 
@@ -118,6 +121,8 @@ A typical configuration using 2 nodes.
   set protocols ospfv3 area 0.0.0.0 range 2001:db8:2::/64
   set protocols ospfv3 parameters router-id 192.168.2.1
   set protocols ospfv3 redistribute connected
+
+.. _routing-bgp:
 
 BGP
 ---

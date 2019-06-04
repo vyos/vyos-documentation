@@ -3,7 +3,7 @@
 VyOS OSPF unnumbered with ecmp
 ----------------------------------------------
 
-General infomration can be found in the :ref:`Routing-OSPF` chapter.
+General infomration can be found in the :ref:`routing-ospf` chapter.
 
 Configuration
 ^^^^^^^^^^^^^
