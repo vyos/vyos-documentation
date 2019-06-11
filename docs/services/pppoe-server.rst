@@ -81,6 +81,7 @@ server configured, if you wish to achieve redundancy.
 RADIUS provides the IP addresses in the example above via Framed-IP-Address.
 
 **RADIUS sessions management DM/CoA**
+
 For remotely disconnect sessions and change some authentication parameters you can configure dae-server
 
 .. code-block:: sh
