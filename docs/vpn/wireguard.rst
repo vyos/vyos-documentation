@@ -1,3 +1,5 @@
+.. _wireguard:
+
 WireGuard VPN Interface
 -----------------------
 

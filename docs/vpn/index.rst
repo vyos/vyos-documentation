@@ -15,3 +15,4 @@ This chapter descriptes the available VPN services provided by VyOS.
    site2site_ipsec
    dmvpn
    pptp
+   wireguard
