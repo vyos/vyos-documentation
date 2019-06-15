@@ -61,4 +61,3 @@ respective sections.
    vlan
    qinq
    vxlan
-   wireguard

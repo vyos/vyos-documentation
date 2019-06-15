@@ -3,7 +3,7 @@
 WireGuard VPN Interface
 -----------------------
 
-WireGuard_ is an extremely simple yet fast and modern VPN that utilizes
+WireGuard is an extremely simple yet fast and modern VPN that utilizes
 state-of-the-art cryptography. See https://www.wireguard.com for more
 information.
 
@@ -115,6 +115,3 @@ your peer should have knowledge if its content.
   allowed ips: 10.2.0.0/24
   latest handshake: 4 minutes, 22 seconds ago
   transfer: 860 B received, 948 B sent
-
-
-.. _WireGuard: https://www.wireguard.com
