@@ -29,6 +29,7 @@ as a router and firewall platform for cloud deployments.
     system/index.rst
     high-availability.rst
     clustering.rst
+    load-balancing.rst
     image-mgmt.rst
     commandscripting.rst
 
