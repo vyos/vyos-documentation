@@ -23,7 +23,7 @@ as a router and firewall platform for cloud deployments.
     routing.rst
     firewall.rst
     nat.rst
-    vpn.rst
+    vpn/index.rst
     qos.rst
     services/index.rst
     system/index.rst

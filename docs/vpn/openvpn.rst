@@ -1,0 +1,222 @@
+.. _openvpn:
+
+OpenVPN
+-------
+
+Traditionally hardware routers implement IPsec exclusively due to relative
+ease of implementing it in hardware and insufficient CPU power for doing
+encryption in software. Since VyOS is a software router, this is less of a
+concern. OpenVPN has been widely used on UNIX platform for a long time and is
+a popular option for remote access VPN, though it's also capable of
+site-to-site connections.
+
+The advantages of OpenVPN are:
+* It uses a single TCP or UDP connection and does not rely on packet source
+addresses, so it will work even through a double NAT: perfect for public
+hotspots and such
+
+* It's easy to setup and offers very flexible split tunneling
+
+* There's a variety of client GUI frontends for any platform
+
+The disadvantages are:
+* It's slower than IPsec due to higher protocol overhead and the fact it runs
+in user mode while IPsec, on Linux, is in kernel mode
+
+* None of the operating systems have client software installed by default
+
+In the VyOS CLI, a key point often overlooked is that rather than being
+configured using the `set vpn` stanza, OpenVPN is configured as a network
+interface using `set interfaces openvpn`.
+
+OpenVPN Site-To-Site
+^^^^^^^^^^^^^^^^^^^^
+
+While many are aware of OpenVPN as a Client VPN solution, it is often
+overlooked as a site-to-site VPN solution due to lack of support for this mode
+in many router platforms.
+
+Site-to-site mode supports x.509 but doesn't require it and can also work with
+static keys, which is simpler in many cases. In this example, we'll configure
+a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared key.
+
+First, one one of the systems generate the key using the operational command
+`generate openvpn key <filename>`. This will generate a key with the name
+provided in the `/config/auth/` directory. Once generated, you will need to
+copy this key to the remote router.
+
+In our example, we used the filename `openvpn-1.key` which we will reference
+in our configuration.
+
+* The public IP address of the local side of the VPN will be 198.51.100.10
+* The remote will be 203.0.113.11
+* The tunnel will use 10.255.1.1 for the local IP and 10.255.1.2 for the remote.
+* OpenVPN allows for either TCP or UDP. UDP will provide the lowest latency,
+  while TCP will work better for lossy connections; generally UDP is preferred
+  when possible.
+* The official port for OpenVPN is 1194, which we reserve for client VPN; we
+  will use 1195 for site-to-site VPN.
+* The `persistent-tunnel` directive will allow us to configure tunnel-related
+  attributes, such as firewall policy as we would on any normal network
+  interface.
+* If known, the IP of the remote router can be configured using the
+  `remote-host` directive; if unknown, it can be omitted. We will assume a
+  dynamic IP for our remote router.
+
+Local Configuration:
+
+.. code-block:: sh
+
+  set interfaces openvpn vtun1 mode site-to-site
+  set interfaces openvpn vtun1 protocol udp
+  set interfaces openvpn vtun1 persistent-tunnel
+  set interfaces openvpn vtun1 local-host '198.51.100.10'
+  set interfaces openvpn vtun1 local-port '1195'
+  set interfaces openvpn vtun1 remote-port '1195'
+  set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
+  set interfaces openvpn vtun1 local-address '10.255.1.1'
+  set interfaces openvpn vtun1 remote-address '10.255.1.2'
+
+Remote Configuration:
+
+.. code-block:: sh
+
+  set interfaces openvpn vtun1 mode site-to-site
+  set interfaces openvpn vtun1 protocol udp
+  set interfaces openvpn vtun1 persistent-tunnel
+  set interfaces openvpn vtun1 remote-host '198.51.100.10'
+  set interfaces openvpn vtun1 local-port '1195'
+  set interfaces openvpn vtun1 remote-port '1195'
+  set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
+  set interfaces openvpn vtun1 local-address '10.255.1.2'
+  set interfaces openvpn vtun1 remote-address '10.255.1.1'
+
+The configurations above will default to using 128-bit Blowfish in CBC mode
+for encryption and SHA-1 for HMAC authentication. These are both considered
+weak, but a number of other encryption and hashing algorithms are available:
+
+For Encryption:
+
+.. code-block:: sh
+
+  vyos@vyos# set interfaces openvpn vtun1 encryption
+  Possible completions:
+    des          DES algorithm
+    3des         DES algorithm with triple encryption
+    bf128        Blowfish algorithm with 128-bit key
+    bf256        Blowfish algorithm with 256-bit key
+    aes128       AES algorithm with 128-bit key
+    aes192       AES algorithm with 192-bit key
+    aes256       AES algorithm with 256-bit key
+
+For Hashing:
+
+.. code-block:: sh
+
+  vyos@vyos# set interfaces openvpn vtun1 hash
+  Possible completions:
+    md5          MD5 algorithm
+    sha1         SHA-1 algorithm
+    sha256       SHA-256 algorithm
+    sha512       SHA-512 algorithm
+
+If you change the default encryption and hashing algorithms, be sure that the
+local and remote ends have matching configurations, otherwise the tunnel will
+not come up.
+
+Static routes can be configured referencing the tunnel interface; for example,
+the local router will use a network of 10.0.0.0/16, while the remote has a
+network of 10.1.0.0/16:
+
+Local Configuration:
+
+.. code-block:: sh
+
+  set protocols static interface-route 10.1.0.0/16 next-hop-interface vtun1
+
+Remote Configuration:
+
+.. code-block:: sh
+
+  set protocols static interface-route 10.0.0.0/16 next-hop-interface vtun1
+
+Firewall policy can also be applied to the tunnel interface for `local`, `in`,
+and `out` directions and function identically to ethernet interfaces.
+
+If making use of multiple tunnels, OpenVPN must have a way to distinguish
+between different tunnels aside from the pre-shared-key. This is either by
+referencing IP address or port number. One option is to dedicate a public IP
+to each tunnel. Another option is to dedicate a port number to each tunnel
+(e.g. 1195,1196,1197...).
+
+OpenVPN status can be verified using the `show openvpn` operational commands.
+See the built-in help for a complete list of options.
+
+OpenVPN Server
+^^^^^^^^^^^^^^
+
+Multi-client server is the most popular OpenVPN mode on routers. It always uses
+x.509 authentication and therefore requires a PKI setup. This guide assumes you
+have already setup a PKI and have a CA certificate, a server certificate and
+key, a certificate revokation list, a Diffie-Hellman key exchange parameters
+file. You do not need client certificates and keys for the server setup.
+
+In this example we will use the most complicated case: a setup where each
+client is a router that has its own subnet (think HQ and branch offices), since
+simpler setups are subsets of it.
+
+Suppose you want to use 10.23.1.0/24 network for client tunnel endpoints and
+all client subnets belong to 10.23.0.0/20. All clients need access to the
+192.168.0.0/16 network.
+
+First we need to specify the basic settings. 1194/UDP is the default. The
+`persistent-tunnel` option is recommended, it prevents the TUN/TAP device from
+closing on connection resets or daemon reloads.
+
+.. code-block:: sh
+
+  set interfaces openvpn vtun10 mode server
+  set interfaces openvpn vtun10 local-port 1194
+  set interfaces openvpn vtun10 persistent-tunnel
+  set interfaces openvpn vtun10 protocol udp
+
+Then we need to specify the location of the cryptographic materials. Suppose
+you keep the files in `/config/auth/openvpn`
+
+.. code-block:: sh
+
+  set interfaces openvpn vtun10 tls ca-cert-file /config/auth/openvpn/ca.crt
+  set interfaces openvpn vtun10 tls cert-file /config/auth/openvpn/server.crt
+  set interfaces openvpn vtun10 tls key-file /config/auth/openvpn/server.key
+  set interfaces openvpn vtun10 tls crl-file /config/auth/openvpn/crl.pem
+  set interfaces openvpn vtun10 tls dh-file /config/auth/openvpn/dh2048.pem
+
+Now we need to specify the server network settings. In all cases we need to
+specify the subnet for client tunnel endpoints. Since we want clients to access
+a specific network behind out router, we will use a push-route option for
+installing that route on clients.
+
+.. code-block:: sh
+
+  set interfaces openvpn vtun10 server push-route 192.168.0.0/16
+  set interfaces openvpn vtun10 server subnet 10.23.1.0/24
+
+Since it's a HQ and branch offices setup, we will want all clients to have
+fixed addresses and we will route traffic to specific subnets through them. We
+need configuration for each client to achieve this.
+
+.. note:: Clients are identified by the CN field of their x.509 certificates,
+   in this example the CN is ``client0``:
+
+.. code-block:: sh
+
+  set interfaces openvpn vtun10 server client client0 ip 10.23.1.10
+  set interfaces openvpn vtun10 server client client0 subnet 10.23.2.0/25
+
+OpenVPN **will not** automatically create routes in the kernel for client
+subnets when they connect and will only use client-subnet association
+internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
+
+.. code-block:: sh
+
+  set protocols static interface-route 10.23.0.0/20 next-hop-interface vtun10
