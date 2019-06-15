@@ -10,18 +10,20 @@ concern. OpenVPN has been widely used on UNIX platform for a long time and is
 a popular option for remote access VPN, though it's also capable of
 site-to-site connections.
 
-The advantages of OpenVPN are:
+Advantages of OpenVPN are:
+
 * It uses a single TCP or UDP connection and does not rely on packet source
-addresses, so it will work even through a double NAT: perfect for public
-hotspots and such
+  addresses, so it will work even through a double NAT: perfect for public
+  hotspots and such
 
 * It's easy to setup and offers very flexible split tunneling
 
 * There's a variety of client GUI frontends for any platform
 
-The disadvantages are:
+Disadvantages are:
+
 * It's slower than IPsec due to higher protocol overhead and the fact it runs
-in user mode while IPsec, on Linux, is in kernel mode
+  in user mode while IPsec, on Linux, is in kernel mode
 
 * None of the operating systems have client software installed by default
 
@@ -220,3 +222,72 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
 .. code-block:: sh
 
   set protocols static interface-route 10.23.0.0/20 next-hop-interface vtun10
+
+LDAP Authentication
+*******************
+
+Enterprise installations usually ship a kind of directory service which is used
+to have a single password store for all employes. VyOS and OpenVPN support using
+LDAP/AD as single user backend.
+
+Authentication is done by using the ``openvpn-auth-ldap.so`` plugin which is
+shiped with every VyOS installation. A dedicated configuration file is required.
+It is best practise to store it in ``/config`` to survive image updates
+
+.. code-block:: sh
+
+  set interfaces openvpn openvpn vtun0 openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
+
+The required config file may look like:
+
+.. code-block:: sh
+
+  <LDAP>
+  # LDAP server URL
+  URL             ldap://ldap.example.com
+  # Bind DN (If your LDAP server doesn't support anonymous binds)
+  BindDN          cn=Manager,dc=example,dc=com
+  # Bind Password password
+  Password        S3cr3t
+  # Network timeout (in seconds)
+  Timeout         15
+  </LDAP>
+
+  <Authorization>
+  # Base DN
+  BaseDN          "ou=people,dc=example,dc=com"
+  # User Search Filter
+  SearchFilter    "(&(uid=%u)(objectClass=shadowAccount))"
+  # Require Group Membership
+  RequireGroup    false
+  </Authorization>
+
+A complete LDAP auth OpenVPN configuration could look like the following example:
+
+.. code-block:: sh
+
+  vyos@vyos# show interfaces openvpn
+   openvpn vtun0 {
+       mode server
+       openvpn-option "--tun-mtu 1500 --fragment 1300 --mssfix"
+       openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
+       openvpn-option "--push redirect-gateway"
+       openvpn-option --duplicate-cn
+       openvpn-option --client-cert-not-required
+       openvpn-option --comp-lzo
+       openvpn-option --persist-key
+       openvpn-option --persist-tun
+       server {
+           domain-name example.com
+           max-connections 5
+           name-server 1.1.1.1
+           name-server 9.9.9.9
+           subnet 172.18.100.128/29
+       }
+       tls {
+           ca-cert-file /config/auth/ca.crt
+           cert-file /config/auth/server.crt
+           dh-file /config/auth/dh1024.pem
+           key-file /config/auth/server.key
+       }
+   }
