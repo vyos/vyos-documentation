@@ -1181,9 +1181,9 @@ Steps to do:
 
   :code:`set interfaces input ifb0 description "WAN Input"`
 
-* Apply the `WAN-OUT` traffic-policy to ifb0 input.
+* Apply the `WAN-IN` traffic-policy to ifb0 input.
 
-  :code:`set interfaces input ifb0 traffic-policy in WAN-IN`
+  :code:`set interfaces input ifb0 traffic-policy out WAN-IN`
 
 * Redirect traffic from eth0 to ifb0
 
