@@ -61,7 +61,7 @@ You can make a pull request on `github.com/vyos`_.
 .. _github.com/vyos: https://github.com/vyos
 
 Find the package
-==================
+^^^^^^^^^^^^^^^^
 Suppose you want to make a change in the webproxy script.
 
 You can find its package with "dpkg -S":
