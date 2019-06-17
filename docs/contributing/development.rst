@@ -11,8 +11,8 @@ under a single repository would be very inconvenient and slow. There is now an
 ongoing effort to consolidate all VyOS-specific packages into vyos-1x package,
 but the basic structure is going to stay the same, just with fewer submodules.
 
-The repository that contains the ISO build script is `vyos-build_`. The README will
-guide you to use the this toplevel repository.
+The repository that contains the ISO build script is `vyos-build`_. The README will
+guide you to use the this top level repository.
 
 .. _github.com/vyos: https://github.com/vyos
 .. _vyos-build: https://github.com/vyos/vyos-build
@@ -25,26 +25,26 @@ You should follow some procedures and guidelines though.
 
 Before you make a patch
 ^^^^^^^^^^^^^^^^^^^^^^^
-In a big system, such as VyOS, that is comprised of multiple components, it's impossible to keep track of all the changes and bugs/feature requests in one's head. We use a `bugtracker_` for it ("issue tracker" would be a better term, but this one stuck).
+In a big system, such as VyOS, that is comprised of multiple components, it's impossible to keep track of all the changes and bugs/feature requests in one's head. We use a `bugtracker`_ for it ("issue tracker" would be a better term, but this one stuck).
 
 This information is used in two ways:
-* Keep track of the progress (what we've already done in this branch and what we still need to do).
-* Prepare release notes.
+  * Keep track of the progress (what we've already done in this branch and what we still need to do).
+  * Prepare release notes.
 
 To make this approach work, every change must be associated with a bug number.
-If there is no bug/enhancement request for the changes you are going to make, you must create a bugtracker entry first.
-Once there is a `bugtracker_` entry about it, you should reference in your commit message, as in:
+If there is no bug/enhancement request for the changes you are going to make, you must create a `bugtracker`_ entry first.
+Once there is a `bugtracker`_ entry about it, you should reference in your commit message, as in:
 
 .. code-block:: sh
 
   T1327: add serial console (115200,8n1) to ISO kernel command-line
   T1397: Rewrite the config merge script
 
-If there is no reference to an item in our `bugtracker_` the pull request will be rejected.
+If there is no reference to an item in our `bugtracker`_ the pull request will be rejected.
 
 Patch limits:
-* If there is a bug that has multiple tasks than it is ok to reference multiple items in a commit and pull request.
-* Multiple bugs can not be fixed in one patch if they have no reference to each other.
+  * If there is a bug that has multiple tasks than it is ok to reference multiple items in a commit and pull request.
+  * Multiple bugs can not be fixed in one patch if they have no reference to each other.
 
 .. _bugtracker: https://phabricator.vyos.net
 
@@ -52,7 +52,7 @@ How to make a patch
 ^^^^^^^^^^^^^^^^^^^
 We only accept patches in git format, because traditional UNIX patch is only good if the code it's going to be applied to doesn't change. If the code changes, merge will fail and the patch will need manual editing, even if there are no real conflicting changes.
 
-Git keeps more information and uses more sophisticated merge algorithms, which makes a fake conflict a rare occurence. For the same reason you should always make a patch against the latest current branch.
+Git keeps more information and uses more sophisticated merge algorithms, which makes a fake conflict a rare occurrence. For the same reason you should always make a patch against the latest current branch.
 
 You can make a pull request on `github.com/vyos`_. 
 
@@ -62,13 +62,14 @@ Find the package
 ==================
 Suppose you want to make a change in the webproxy script.
 
-You can find its package with "dpkg -S": 
+You can find its package with "dpkg -S":
+
 .. code-block:: sh
 
   # dpkg -S /opt/vyatta/sbin/vyatta-update-webproxy.pl 
   vyatta-webproxy: /opt/vyatta/sbin/vyatta-update-webproxy.pl
 
-This means it's in `vyatta-webproxy_` package.
+This means it's in `vyatta-webproxy`_ package.
 
 .. _vyatta-webproxy: https://github.com/vyos/vyatta-webproxy
 
