@@ -8,8 +8,8 @@ The source code is hosted on GitHub under VyOS organization `github.com/vyos`_
 The code is split into modules. VyOS is composed of multiple individual packages,
 some of them are periodically synced with upstream, so keeping the whole source
 under a single repository would be very inconvenient and slow. There is now an
-ongoing effort to consolidate all VyOS-specific packages into vyos-1x package,
-but the basic structure is going to stay the same, just with fewer submodules.
+ongoing effort to consolidate all VyOS-specific framework/config packages into vyos-1x package,
+but the basic structure is going to stay the same, just with fewer packages.
 
 The repository that contains the ISO build script is `vyos-build`_. The README will
 guide you to use the this top level repository.
@@ -31,20 +31,22 @@ This information is used in two ways:
   * Keep track of the progress (what we've already done in this branch and what we still need to do).
   * Prepare release notes.
 
-To make this approach work, every change must be associated with a bug number.
+To make this approach work, every change must be associated with a bug number and componant.
 If there is no bug/enhancement request for the changes you are going to make, you must create a `bugtracker`_ entry first.
 Once there is a `bugtracker`_ entry about it, you should reference in your commit message, as in:
 
 .. code-block:: sh
 
-  T1327: add serial console (115200,8n1) to ISO kernel command-line
-  T1397: Rewrite the config merge script
+  [vyos build] T1327: add serial console (115200,8n1) to ISO kernel command-line
+  [vyos config] T1397: Rewrite the config merge script
 
 If there is no reference to an item in our `bugtracker`_ the pull request will be rejected.
 
 Patch limits:
   * If there is a bug that has multiple tasks than it is ok to reference multiple items in a commit and pull request.
   * Multiple bugs can not be fixed in one patch if they have no reference to each other.
+  * We only accept bugfixes in packages other than vyos-1x.
+  * No new functionality should use old style templates and perl/shell code, use python.
 
 .. _bugtracker: https://phabricator.vyos.net
 
