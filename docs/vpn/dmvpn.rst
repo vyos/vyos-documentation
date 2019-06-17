@@ -408,3 +408,8 @@ SPOKE2 Example Configuration
 
   set protocols static route 192.168.1.0/24 next-hop 10.0.0.1
   set protocols static route 192.168.2.0/24 next-hop 10.0.0.2
+
+
+.. _RFC2332: https://tools.ietf.org/html/rfc2332
+.. _RFC1702: https://tools.ietf.org/html/rfc1702
+.. _RFC4301: https://tools.ietf.org/html/rfc4301
