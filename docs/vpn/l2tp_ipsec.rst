@@ -122,3 +122,11 @@ single source IP e.g. the loopback interface.
 
 Above command will use `3.3.3.3` as source IPv4 address for all RADIUS queries
 on this NAS.
+
+
+.. _`Google Public DNS`: https://developers.google.com/speed/public-dns
+.. _Quad9: https://quad9.net
+.. _CloudFlare: https://blog.cloudflare.com/announcing-1111
+.. _RADIUS: https://en.wikipedia.org/wiki/RADIUS
+.. _FreeRADIUS: https://freeradius.org
+.. _`Network Policy Server`: https://en.wikipedia.org/wiki/Network_Policy_Server
