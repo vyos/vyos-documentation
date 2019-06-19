@@ -13,6 +13,7 @@ This chapter descriptes the available VPN services provided by VyOS.
    openvpn
    l2tp_ipsec
    site2site_ipsec
+   gre-ipsec
    dmvpn
    pptp
    wireguard
