@@ -91,7 +91,7 @@ VyOS 1.2 (crux)
 ---------------
 
 Depending on the VyOS versions you intend to install there is a difference in
-the serial port settings (see https://phabricator.vyos.net/T1327).
+the serial port settings (T1327_).
 
 Create a bootable USB pendrive using e.g. Rufus_ on a Windows machine.
 
@@ -170,4 +170,14 @@ Use the following command to adjust the :ref:`serial-console` settings:
      speed 115200
    }
 
+VyOS 1.2 (rolling)
+------------------
+
+Installing the rolling release on an APU2 board does not require any change
+on the serial console from your host side as T1327_ was successfully
+implemented.
+
+Simply proceed with a regular image installation as described in :ref:`installation`.
+
 .. _Rufus: https://rufus.ie/
+.. _T1327: https://phabricator.vyos.net/T1327
