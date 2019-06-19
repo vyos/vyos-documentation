@@ -30,14 +30,15 @@ version if something breaks after upgrade. Every version is contained in its
 own squashfs image that is mounted in a union filesystem together with a
 directory for mutable data (configs etc.).
 
-.. note:: Older versions used to support non-image installation (`install system` command).
-   It's been deprecated since the time image installation
+.. note:: Older versions used to support non-image installation (`install system` command). 
+   Support for this is removed from VyOS 1.2 (crux) and newer releases
+
+   This installation method has been deprecated since the time image installation
    was introduced (long before the fork), and does not provide any version
    management capabilities. You **should not** use it for new installations
    even if it's still available in new versions. You should not worry about
    older systems installed that way though, they can be upgraded with ``add
-   system image``. In addition the ``install system`` command has been
-   removed in VyOS 1.2 (Crux).
+   system image``. 
 
 To install VyOS, run ``install image``.
 
