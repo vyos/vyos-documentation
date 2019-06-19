@@ -15,6 +15,7 @@ as a router and firewall platform for cloud deployments.
     :caption: Contents:
     :includehidden:
 
+    history.rst
     install.rst
     cli.rst
     quick-start.rst
