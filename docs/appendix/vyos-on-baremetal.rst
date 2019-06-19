@@ -9,7 +9,7 @@ Intel Atom C3000
 I opted to get one of the new Intel Atom C3000 CPUs to spawn VyOS on it.
 Running VyOS on an UEFI only device is supported as of VyOS release 1.2.
 
-Shopping Card
+Shopping Cart
 -------------
 
 * 1x Supermicro CSE-505-203B (19" 1U chassis, inkl. 200W PSU)
