@@ -1,7 +1,7 @@
 .. _routing-arp:
 
-ARP
----
+Address Resolution Protocol (ARP)
+---------------------------------
 
 To manipulate or display ARP_ table entries, the following commands are implemented.
 

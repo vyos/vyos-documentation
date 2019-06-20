@@ -1,7 +1,7 @@
 .. _routing-bgp:
 
-BGP
----
+Border Gateway Protocol (BGP)
+-----------------------------
 
 IPv4
 ^^^^

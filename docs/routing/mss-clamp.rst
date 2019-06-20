@@ -1,7 +1,7 @@
 .. _routing-mss-clamp:
 
-MSS Clamping
-------------
+TCP-MSS Clamping
+----------------
 
 As Internet wide PMTU discovery rarely works we sometimes need to clamp our TCP
 MSS value to a specific value. Starting with VyOS 1.2 there is a firewall option

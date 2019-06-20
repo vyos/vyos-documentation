@@ -1,7 +1,7 @@
 .. _routing-ospf:
 
-OSPF
-----
+Open Shortest Path First (OSPF)
+-------------------------------
 
 IPv4
 ^^^^

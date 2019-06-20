@@ -1,7 +1,7 @@
 .. _routing-rip:
 
-RIP
----
+Routing Information Protocol (RIP)
+----------------------------------
 
 Simple RIP configuration using 2 nodes and redistributing connected interfaces.
 
