@@ -20,7 +20,7 @@ as a router and firewall platform for cloud deployments.
     quick-start.rst
     configuration-overview.rst
     interfaces/index.rst
-    routing.rst
+    routing/index.rst
     firewall.rst
     nat.rst
     vpn/index.rst
