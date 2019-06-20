@@ -300,12 +300,15 @@ display arp table entries
   10.1.1.100               ether   08:00:27:de:23:aa   CM                    eth1
 
 
-Policy Routing
-==============
+Policy-Based Routing (PBR)
+--------------------------
 
 VyOS supports Policy Routing, allowing traffic to be assigned to a different
 routing table. Traffic can be matched using standard 5-tuple matching (source
 address, destination address, protocol, source port, destination port).
+
+Transparent Proxy
+^^^^^^^^^^^^^^^^^
 
 The following example will show how VyOS can be used to redirect web traffic to
 an external transparent proxy:
@@ -335,6 +338,64 @@ we use:
 .. code-block:: sh
 
   set interfaces ethernet eth1 policy route FILTER-WEB
+
+
+Multiple Uplinks
+^^^^^^^^^^^^^^^^
+
+VyOS Policy-Based Routing (PBR) works by matching source IP address ranges and
+forwarding the traffic using different routing tables.
+
+Routing tables that will be used in this example are:
+
+* ``table 10`` Routing tabled used for VLAN 10 (192.168.188.0/24)
+* ``table 11`` Routing tabled used for VLAN 11 (192.168.189.0/24)
+* ``main`` Routing table used by VyOS and other interfaces not paritipating in PBR
+
+.. figure:: _static/images/pbr_example_1.png
+   :scale: 80 %
+   :alt: PBR multiple uplinks
+
+   Policy-Based Routing with multiple ISP uplinks (source ./draw.io/pbr_example_1.drawio)
+
+Add default routes for routing ``table 10`` and ``table 11``
+
+.. code-block:: sh
+
+  set protocols static table 10 route 0.0.0.0/0 next-hop 192.0.1.1
+  set protocols static table 11 route 0.0.0.0/0 next-hop 192.0.2.2
+
+Add policy route matching VLAN source addresses
+
+.. code-block:: sh
+
+  set policy route PBR rule 20 set table '10'
+  set policy route PBR rule 20 description 'Route VLAN10 traffic to table 10'
+  set policy route PBR rule 20 source address '192.168.188.0/24'
+
+  set policy route PBR rule 20 set table '11'
+  set policy route PBR rule 20 description 'Route VLAN11 traffic to table 11'
+  set policy route PBR rule 20 source address '192.168.189.0/24'
+
+Apply routing policy to **inbound** direction of out VLAN interfaces
+
+.. code-block:: sh
+
+  set interfaces ethernet eth0 vif 10 policy route 'PBR'
+  set interfaces ethernet eth0 vif 11 policy route 'PBR'
+
+
+**OPTIONAL:** Exclude Inter-VLAN traffic (between VLAN10 and VLAN11) from PBR
+
+.. code-block:: sh
+
+  set policy route PBR rule 10 description 'VLAN10 <-> VLAN11 shortcut'
+  set policy route PBR rule 10 destination address '192.168.188.0/24'
+  set policy route PBR rule 10 destination address '192.168.189.0/24'
+  set policy route PBR rule 10 set table 'main'
+
+.. note:: Allows the VLAN10 and VLAN20 hosts to communicate with each other using the
+   main routing table.
 
 MSS Clamping
 ============
