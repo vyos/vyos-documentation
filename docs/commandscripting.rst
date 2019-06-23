@@ -67,7 +67,7 @@ Here is a simple example:
 
 .. code-block:: sh
 
-  #!bin/vbash
+  #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
   
   configure 
