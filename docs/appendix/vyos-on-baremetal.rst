@@ -72,8 +72,8 @@ Pictures
    :alt: CSE-505-203B w/ 10GE Open
 
 
-PC Engines APU
-**************
+PC Engines APU4
+***************
 
 As this platform seems to be quiet common in terms of noise, cost, power and
 performance it makes sense to write a small installation manual.
@@ -86,6 +86,14 @@ This guide was developed using an APU4C4 board with the following specs:
 * About 6 to 10W of 12V DC power depending on CPU load
 * 2 miniPCI express (one with SIM socket for 3G modem).
 * 4 Gigabit Ethernet channels using Intel i211AT NICs
+
+The board can be powered via 12V from the front or via a 5V onboard connector.
+
+Shopping Cart
+-------------
+
+* 1x apu4c4 = 4 i211AT LAN / AMD GX-412TC CPU / 4 GB DRAM / dual SIM
+* 1x Kingston SUV500MS/120G
 
 VyOS 1.2 (crux)
 ---------------
@@ -178,6 +186,25 @@ on the serial console from your host side as T1327_ was successfully
 implemented.
 
 Simply proceed with a regular image installation as described in :ref:`installation`.
+
+Pictures
+--------
+
+.. figure:: /_static/images/apu4c4_rack_1.jpg
+   :scale: 25 %
+   :alt: APU4C4 rack closed
+
+.. figure:: /_static/images/apu4c4_rack_2.jpg
+   :scale: 25 %
+   :alt: APU4C4 rack front
+
+.. figure:: /_static/images/apu4c4_rack_3.jpg
+   :scale: 25 %
+   :alt: APU4C4 rack module #1
+
+.. figure:: /_static/images/apu4c4_rack_4.jpg
+   :scale: 25 %
+   :alt: APU4C4 rack module #2
 
 .. _Rufus: https://rufus.ie/
 .. _T1327: https://phabricator.vyos.net/T1327
