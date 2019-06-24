@@ -94,6 +94,10 @@ Shopping Cart
 
 * 1x apu4c4 = 4 i211AT LAN / AMD GX-412TC CPU / 4 GB DRAM / dual SIM
 * 1x Kingston SUV500MS/120G
+* 1x VARIA Group Item 326745 10" dual rack rack for APU4
+
+The 19" enclosure can accomodate two APU4 boards - there is a single and dual
+cover.
 
 VyOS 1.2 (crux)
 ---------------
