@@ -15,6 +15,7 @@ as a router and firewall platform for cloud deployments.
     :caption: Contents:
     :includehidden:
 
+    history.rst
     install.rst
     cli.rst
     quick-start.rst
@@ -43,6 +44,7 @@ as a router and firewall platform for cloud deployments.
     appendix/examples/index.rst
     appendix/commandtree/index.rst
     appendix/vyos-on-baremetal.rst
+    appendix/migrate-from-vyatta.rst
 
 .. toctree::
     :maxdepth: 2
