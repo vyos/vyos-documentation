@@ -229,3 +229,69 @@ The chassis is a U-shaped alu extrusion with removable I/O plates and removable 
 There are WDT options and auto-boot on power enable, which is great for remote setups. Firmware is reasonably secure (no backdoors found, BootGuard is enabled in enforcement mode, which is good but also means no coreboot option), yet has most options available to configure (so it's not locked out like most firmwares are).
 
 An external RS232 serial port is available, internally a GPIO header as well. It does have Realtek based audio on board for some reason, but you can disable that. Booting works on both USB2 and USB3 ports. Switching between serial BIOS mode and HDMI BIOS mode depends on what is connected at startup; it goes into serial mode if you disconnect HDMI and plug in serial, in all other cases it's HDMI mode.
+
+
+Partaker i5
+***********
+.. figure:: ../_static/images/600px-Partaker-i5.jpg
+
+I believe this is actually the same hardware as the Protectli. I purchased it from `Amazon <https://www.amazon.com/gp/product/B073F9GHKL/>`_ in June 2018. It came pre-loaded with pfSense. `Manufacturer product page <http://www.inctel.com.cn/product/detail/338.html>`_.
+
+Installation
+------------
+* Write the official ISO to a USB drive of some sort.
+* Plug in VGA, power, USB keyboard, and USB drive.
+* Press the "SW" button on the front (this is the power button; I don't know what "SW" is supposed to mean).
+* Begin rapidly pressing Delete on the keyboard. The boot prompt is very quick, but with a few tries you should be able to get into the BIOS.
+* Chipset > South Bridge > USB Configuration: set XHCI to Disabled and USB 2.0 (EHCI) to Enabled. Without doing this, the USB drive won't boot.
+* Boot to the VyOS installer and install as usual.
+Warning the interface labels on my device are backwards; the left-most "LAN4" port is eth0 and the right-most "LAN1" port is eth3.
+
+
+Acrosser AND-J190N1
+*******************
+
+.. figure:: ../_static/images/480px-Acrosser_ANDJ190N1_Front.jpg
+
+.. figure:: ../_static/images/480px-Acrosser_ANDJ190N1_Back.jpg
+
+11/22/2016. This microbox network appliance was build to create OpenVPN bridges. It can saturate a 100Mbps link.
+
+It is a small (serial console only) PC with 6 Gb LAN http://www.acrosser.com/upload/AND-J190_J180N1-2.pdf
+
+You may have to add your own RAM and HDD/SSD. There is no VGA connector. But Acrosser provides a DB25 adapter for the VGA header on the motherboard (not used).
+
+BIOS Settings:
+--------------
+
+First thing you want to do is getting a more user friendly console to configure BIOS. Default VT100 brings a lot of issues. Configure VT100+ instead.
+
+For practical issues change speed from 115200 to 9600. 9600 is the default speed at which both linux kernel and VyOS will reconfigure the serial port when loading.
+
+Connect to serial (115200bps). Power on the appliance and press Del in the console when requested to enter BIOS settings.
+
+Advanced > Serial Port Console Redirection > Console Redirection Settings:
+
+* Terminal Type : VT100+
+* Bits per second : 9600
+Then save, reboot and change serial speed to 9600 on your client.
+
+
+Some options have to be changed for VyOS to boot correctly. With XHCI enabled the installer can’t access the USB key. Enable EHCI instead.
+
+Reboot inside the BIOS,
+
+Chipset > South Bridge > USB Configuration:
+
+* Disable XHCI
+* Enable USB 2.0 (EHCI) Support
+
+Install VyOS:
+-------------
+Create a VyOS bootable USB key. I Used the 64bits iso (VyOS 1.1.7) and live usb installer (http://www.linuxliveusb.com/)
+
+I'm not sure if it helps the process but I changed default option to live-serial (line “default xxxx”) on the USB key under syslinux/syslinux.cfg.
+
+I connected the key to one black USB port on the back and powered on. The first VyOS screen has some readability issues. Press enter to continue.
+
+Then VyOS should boot and you can perform the "install image"
