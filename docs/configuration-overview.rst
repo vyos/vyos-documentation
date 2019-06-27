@@ -321,3 +321,56 @@ Command completeion and syntax help with `?` and `[tab]` wil also work.
   Interface        IP Address                        S/L  Description
   ---------        ----------                        ---  -----------
   eth0             0.0.0.0/0                         u/u  
+
+
+Configuration archive
+---------------------
+
+VyOS has built-in config archiving and versionin that renders tools like rancid largely unnecessary.
+
+This feature was available in Vyatta Core since 6.3
+
+Local archive and revisions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Revisions are stored on disk, you can view them, compare them, and rollback to previous revisions if anything goes wrong.
+To view existing revisions, use "show system commit" operational mode command.
+
+.. code-block:: sh
+  vyos@vyos-test-2# run show system commit 
+  0   2015-03-30 08:53:03 by vyos via cli
+  1   2015-03-30 08:52:20 by vyos via cli
+  2   2015-03-26 21:26:01 by root via boot-config-loader
+  3   2015-03-26 20:43:18 by root via boot-config-loader
+  4   2015-03-25 11:06:14 by root via boot-config-loader
+  5   2015-03-25 01:04:28 by root via boot-config-loader
+  6   2015-03-25 00:16:47 by vyos via cli
+  7   2015-03-24 23:43:45 by root via boot-config-loader
+
+You can compare revisions with "compare X Y" command where X and Y are revision numbers.
+
+.. code-block:: sh
+  vyos@vyos-test-2# compare 0 6
+  [edit interfaces]
+  +dummy dum1 {
+  +    address 10.189.0.1/31
+  +}
+  [edit interfaces ethernet eth0]
+  +vif 99 {
+  +    address 10.199.0.1/31
+  +}
+  -vif 900 {
+  -    address 192.0.2.4/24
+  -}
+
+You can rollback to a previous revision with "rollback X", where X is a revision number. Your system will reboot and load the config from the archive.
+
+Configuring the archive size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can specify the number of revisions stored on disk with "set system config-management commit-revisions X", where X is a number between 0 and 65535. When the number of revisions exceeds that number, the oldest revision is removed.
+
+Remote archive
+~~~~~~~~~~~~~~
+VyOS can copy the config to a remote location after each commit. TFTP, FTP, and SFTP servers are supported.
+
+You can specify the location with "set system config-management commit-archive location URL" command, e.g. "set system config-management commit-archive location tftp://10.0.0.1/vyos".
