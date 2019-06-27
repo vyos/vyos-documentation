@@ -212,3 +212,20 @@ Pictures
 
 .. _Rufus: https://rufus.ie/
 .. _T1327: https://phabricator.vyos.net/T1327
+
+
+Qotom Q355G4
+************
+
+The install on this Q355G4 box is pretty much plug and play. The port numbering the OS does might differ from the labels on the outside, but the UEFI firmware has a port blink test built in with MAC adresses so you can very quickly identify which is which. MAC labels are on the inside as well, and this test can be done from VyOS or plain Linux too. Default settings in the UEFI will make it boot, but depending on your installation wishes (i.e. storage type, boot type, console type) you might want to adjust them. This Qotom company seems to be the real OEM/ODM for many other relabelling companies like Protectli.
+
+Hardware
+--------
+
+There are a number of other options, but they all seem to be close to Intel reference designs, with added features like more serial ports, more network interfaces and the likes. Because they don't deviate too much from standard designs all the hardware is well-supported by mainline. It accepts one LPDDR3 SO-DIMM, but chances are that if you need more than that, you'll also want something even beefier than an i5. There are options for antenna holes, and SIM slots, so you could in theory add an LTE/Cell modem (not tested so far).
+
+The chassis is a U-shaped alu extrusion with removable I/O plates and removable bottom plate. Cooling is completely passive with a heatsink on the SoC with internal and external fins, a flat interface surface, thermal pad on top of that, which then directly attaches to the chassis, which has fins as well. It comes with mounting hardware and rubber feet, so you could place it like a desktop model or mount it on a VESA mount, or even wall mount it with the provided mounting plate. The closing plate doubles as internal 2.5" mounting place for an HDD or SSD, and comes supplied with a small SATA cable and SATA power cable. Power supply is a 12VDC barrel jack, and included switching power supply. (which is why SATA power regulation is on-board) Internally it has a NUC-board-style on-board 12V input header as well, the molex locking style.
+
+There are WDT options and auto-boot on power enable, which is great for remote setups. Firmware is reasonably secure (no backdoors found, BootGuard is enabled in enforcement mode, which is good but also means no coreboot option), yet has most options available to configure (so it's not locked out like most firmwares are).
+
+An external RS232 serial port is available, internally a GPIO header as well. It does have Realtek based audio on board for some reason, but you can disable that. Booting works on both USB2 and USB3 ports. Switching between serial BIOS mode and HDMI BIOS mode depends on what is connected at startup; it goes into serial mode if you disconnect HDMI and plug in serial, in all other cases it's HDMI mode.
