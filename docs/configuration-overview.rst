@@ -337,6 +337,7 @@ Revisions are stored on disk, you can view them, compare them, and rollback to p
 To view existing revisions, use "show system commit" operational mode command.
 
 .. code-block:: sh
+
   vyos@vyos-test-2# run show system commit 
   0   2015-03-30 08:53:03 by vyos via cli
   1   2015-03-30 08:52:20 by vyos via cli
@@ -350,6 +351,7 @@ To view existing revisions, use "show system commit" operational mode command.
 You can compare revisions with "compare X Y" command where X and Y are revision numbers.
 
 .. code-block:: sh
+
   vyos@vyos-test-2# compare 0 6
   [edit interfaces]
   +dummy dum1 {
