@@ -162,7 +162,7 @@ emulator to 9600 8N1 and after a while your console will show:
 You can now proceed with a regular image installation as described in
 :ref:`installation`.
 
-As the APU board itself still used a serial setting of 115200 8N1 it is strongly
+^As the APU board itself still used a serial setting of 115200 8N1 it is strongly
 recommended that you change the VyOS serial interface settings after your first
 successful boot.
 
@@ -194,6 +194,11 @@ Simply proceed with a regular image installation as described in :ref:`installat
 Pictures
 --------
 
+.. note:: Both device types operate without any moving parts and emit zero noise.
+
+Rack Mount
+^^^^^^^^^^
+
 .. figure:: /_static/images/apu4c4_rack_1.jpg
    :scale: 25 %
    :alt: APU4C4 rack closed
@@ -209,6 +214,25 @@ Pictures
 .. figure:: /_static/images/apu4c4_rack_4.jpg
    :scale: 25 %
    :alt: APU4C4 rack module #2
+
+Desktop
+^^^^^^^
+
+.. figure:: /_static/images/apu4c4_desk_1.jpg
+   :scale: 25 %
+   :alt: APU4C4 desktop closed
+
+.. figure:: /_static/images/apu4c4_desk_2.jpg
+   :scale: 25 %
+   :alt: APU4C4 desktop closed
+
+.. figure:: /_static/images/apu4c4_desk_3.jpg
+   :scale: 25 %
+   :alt: APU4C4 desktop back
+
+.. figure:: /_static/images/apu4c4_desk_4.jpg
+   :scale: 25 %
+   :alt: APU4C4 desktop back
 
 .. _Rufus: https://rufus.ie/
 .. _T1327: https://phabricator.vyos.net/T1327
