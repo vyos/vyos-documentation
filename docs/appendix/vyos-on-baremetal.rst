@@ -269,8 +269,8 @@ Installation
 * Begin rapidly pressing Delete on the keyboard. The boot prompt is very quick, but with a few tries you should be able to get into the BIOS.
 * Chipset > South Bridge > USB Configuration: set XHCI to Disabled and USB 2.0 (EHCI) to Enabled. Without doing this, the USB drive won't boot.
 * Boot to the VyOS installer and install as usual.
-Warning the interface labels on my device are backwards; the left-most "LAN4" port is eth0 and the right-most "LAN1" port is eth3.
 
+Warning the interface labels on my device are backwards; the left-most "LAN4" port is eth0 and the right-most "LAN1" port is eth3.
 
 Acrosser AND-J190N1
 *******************
@@ -298,6 +298,7 @@ Advanced > Serial Port Console Redirection > Console Redirection Settings:
 
 * Terminal Type : VT100+
 * Bits per second : 9600
+
 Then save, reboot and change serial speed to 9600 on your client.
 
 
