@@ -38,8 +38,9 @@ Next, we can add the VyOS image.
 
 
 .. note:: Vyatta doesn't support HTTP redirects for ``add system image`` and
-http://mirror.vyos.net HTTP load-balancer links will not work. Instead, choose
-one of the `mirrors <https://wiki.vyos.net/wiki/Mirrors>`_ and get a direct link.
+   http://mirror.vyos.net HTTP load-balancer links will not work. Instead,
+   choose one of the `mirrors <https://wiki.vyos.net/wiki/Mirrors>`_ and get
+   a direct link.
 
 This example uses 1.0.0 image, however, it's better to install the latest release.
 
