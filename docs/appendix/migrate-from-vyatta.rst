@@ -1,7 +1,7 @@
 .. _migrate_from_vyatta:
 
-Migrate from vyatta
-===================
+Migrate from Vyatta Core
+========================
 
 VyOS 1.x.x line aims to preserve backward compatibility and provide a safe upgrade path for existing Vyatta Core users. You may think of 1.0.0 as VC7.0.
 
