@@ -61,7 +61,7 @@ command.
 Update VyOS Installation
 ------------------------
 
-Finally, new system images can be added using the `add system image` command.
+Finally, new system images can be added using the :code:`add system image` command.
 The add image command will extract the image from the release ISO (either on
 the local filesystem or remotely if a URL is provided). The image install
 process will prompt you to use the current system configuration and SSH
@@ -104,3 +104,24 @@ configuration.
 If you need some files from a previous images - take a look inside a
 :code:`/live` directory.
 
+After reboot you might want to verify the version you are running with :code:`show version`
+
+.. code-block:: sh
+
+  vyos@vyos:~$ show version
+  Version:          VyOS 1.2.0-rolling+201810030440
+  Built by:         autobuild@vyos.net
+  Built on:         Mon 10 Mar 2018 03:37 UTC
+  Build UUID:       2ed16684-875c-4a19-8a34-1b03099eed35
+  Build Commit ID:  3305dca496d814
+
+  Architecture:     x86_64
+  Boot via:         installed image
+  System type:      Microsoft Hyper-V guest
+
+  Hardware vendor:  Microsoft Corporation
+  Hardware model:   Virtual Machine
+  Hardware S/N:     9705-6585-6578-0429-1204-0427-62
+  Hardware UUID:    5260b1ce-4028-4d9c-bc5d-4f8425e5c056
+
+  Copyright:        VyOS maintainers and contributors
