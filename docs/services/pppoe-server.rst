@@ -112,6 +112,25 @@ Example for changing rate-limit via RADIUS CoA
 Filter-Id=5000/4000 (means 5000Kbit down-stream rate and 4000Kbit up-stream rate)
 If attribute Filter-Id redefined, replace it in radius coa request
 
+
+Automatic VLAN creation
+=======================
+
+VLAN's can be created by accel-ppp on the fly if via the use of the kernel module vlan_mon, which is monitoring incoming vlans and creates the neccessary VLAN if required and allowed.
+VyOS supports the use of either VLAN ID's or entire ranges, both values can be defined at the same time for an interface.
+
+.. code-block:: sh
+
+  set service pppoe-server interface eth3 vlan-id 100
+  set service pppoe-server interface eth3 vlan-id 200
+  set service pppoe-server interface eth3 vlan-range 500-1000
+  set service pppoe-server interface eth3 vlan-range 2000-3000
+
+
+The pppoe-server will now create these VLANs if required and once the user session has been cancelled, and the VLAN is not neccessary anymore, it will remove it again.
+
+
+
 Bandwidth Shaping
 ^^^^^^^^^^^^^^^^^
 
