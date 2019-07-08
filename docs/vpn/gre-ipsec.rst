@@ -1,9 +1,9 @@
 .. _gre-ipsec:
 
-Gre/IPsec
+GRE/IPsec
 ---------
 
-**GRE/IPsec** (or IPIP/IPsec, SIT/IPsec, or any other stateless tunnel protocol over IPsec) is the usual way to protect the traffic inside a tunnel.
+Generic Routing Encapsulation (GRE), GRE/IPsec (or IPIP/IPsec, SIT/IPsec, or any other stateless tunnel protocol over IPsec) is the usual way to protect the traffic inside a tunnel.
 
 An advantage of this scheme is that you get a real interface with its own address, which makes it easier to setup static routes or use dynamic routing protocols without having to modify IPsec policies. The other advantage is that it greatly simplifies router to router communication, which can be tricky with plain IPsec because the external outgoing address of the router usually doesn't match the IPsec policy of typical site-to-site setup and you need to add special configuration for it, or adjust the source address for outgoing traffic of your applications. GRE/IPsec has no such problem and is completely transparent for the applications.
 
