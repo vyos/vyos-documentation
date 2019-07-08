@@ -69,6 +69,20 @@ The clients cpe can now communicate via IPv4 or IPv6. All devices behind ``2001:
 globally communicate without the need of any NAT rules.
 
 
+Automatic VLAN creation
+=======================
+
+To create VLANs per user during runtime, the follwing settings are required on a per interface basis. VLAN ID and VLAN range can be present in the configuration at the same time.
+
+.. code-block:: sh
+
+  set service ipoe-server interface eth2 network vlan
+  set service ipoe-server interface eth2 vlan-id 100
+  set service ipoe-server interface eth2 vlan-id 200
+  set service ipoe-server interface eth2 vlan-range 1000-2000
+  set service ipoe-server interface eth2 vlan-range 2500-2700
+
+
 RADIUS Setup
 ^^^^^^^^^^^^
 
