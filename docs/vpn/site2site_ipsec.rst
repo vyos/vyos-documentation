@@ -4,12 +4,13 @@ Site-to-Site IPsec
 ------------------
 
 Example:
-* eth1 is WAN interface
-* left subnet: 192.168.0.0/24 #s ite1, server side (i.e. locality, actually
-there is no client or server roles)
-* left local_ip: 1.1.1.1 # server side WAN IP
-* right subnet: 10.0.0.0/24  # site2,remote office side
-* right local_ip: 2.2.2.2 # remote office side WAN IP
+
+* WAN interface on `eth1`
+* left subnet: `192.168.0.0/24` site1, server side (i.e. locality, actually
+  there is no client or server roles)
+* left local_ip: `1.1.1.1` # server side WAN IP
+* right subnet: `10.0.0.0/24` site2,remote office side
+* right local_ip: `2.2.2.2` # remote office side WAN IP
 
 .. code-block:: sh
 
