@@ -1,7 +1,10 @@
 .. _size2site_ipsec:
 
-Site-to-Site IPsec
-------------------
+Site-to-Site
+------------
+
+IKEv1
+^^^^^
 
 Example:
 
@@ -108,3 +111,39 @@ rules. (if you used the default configuration at the top of this page)
   # remote office side
   set firewall name OUTSIDE-LOCAL rule 32 action 'accept'
   set firewall name OUTSIDE-LOCAL rule 32 source address '192.168.0.0/24'
+
+IKEv2
+^^^^^
+
+.. note:: This is just a preliminary config which should be extended!
+
+.. code-block:: sh
+
+  set interfaces vti vti10 address '10.0.0.1/30'
+
+  set vpn ipsec esp-group ESP_DEFAULT compression 'disable'
+  set vpn ipsec esp-group ESP_DEFAULT lifetime '3600'
+  set vpn ipsec esp-group ESP_DEFAULT mode 'tunnel'
+  set vpn ipsec esp-group ESP_DEFAULT pfs 'dh-group19'
+  set vpn ipsec esp-group ESP_DEFAULT proposal 10 encryption 'aes256gcm128'
+  set vpn ipsec esp-group ESP_DEFAULT proposal 10 hash 'sha256'
+  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection action 'hold'
+  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection interval '30'
+  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection timeout '120'
+  set vpn ipsec ike-group IKEv2_DEFAULT ikev2-reauth 'no'
+  set vpn ipsec ike-group IKEv2_DEFAULT key-exchange 'ikev2'
+  set vpn ipsec ike-group IKEv2_DEFAULT lifetime '10800'
+  set vpn ipsec ike-group IKEv2_DEFAULT mobike 'disable'
+  set vpn ipsec ike-group IKEv2_DEFAULT proposal 10 dh-group '19'
+  set vpn ipsec ike-group IKEv2_DEFAULT proposal 10 encryption 'aes256gcm128'
+  set vpn ipsec ike-group IKEv2_DEFAULT proposal 10 hash 'sha256'
+  set vpn ipsec site-to-site peer 2.2.2.2 authentication id '1.1.1.1'
+  set vpn ipsec site-to-site peer 2.2.2.2 authentication mode 'pre-shared-secret'
+  set vpn ipsec site-to-site peer 2.2.2.2 authentication pre-shared-secret 'secretkey'
+  set vpn ipsec site-to-site peer 2.2.2.2 authentication remote-id '2.2.2.2'
+  set vpn ipsec site-to-site peer 2.2.2.2 connection-type 'initiate'
+  set vpn ipsec site-to-site peer 2.2.2.2 ike-group 'IKEv2_DEFAULT'
+  set vpn ipsec site-to-site peer 2.2.2.2 ikev2-reauth 'inherit'
+  set vpn ipsec site-to-site peer 2.2.2.2 local-address '1.1.1.1'
+  set vpn ipsec site-to-site peer 2.2.2.2 vti bind 'vti10'
+  set vpn ipsec site-to-site peer 2.2.2.2 vti esp-group 'ESP_DEFAULT'
