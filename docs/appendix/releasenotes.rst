@@ -6,6 +6,45 @@ Release notes
 1.2 (Crux)
 ==========
 
+1.2.2
+-----
+
+1.2.2 is a maintenance release made in July 2019.
+
+New features
+^^^^^^^^^^^^
+
+* Options for per-interface MSS clamping.
+* BGP extended next-hop capability
+* Relaxed BGP multipath option
+* Internal and external options for "remote-as" (accept any AS as long as it's the same to this router or different, respectively)
+* "Unnumbered" (interface-based) BGP peers
+* BGP no-prepend option
+* Additive BGP community option
+* OSPFv3 network type option
+* Custom arguments for VRRP scripts
+* A script for querying values from config files
+
+Resolved issues
+^^^^^^^^^^^^^^^
+
+* Linux kernel 4.19.54, including a fix for the TCP SACK vulnerability
+* VRRP health-check scripts now can use arguments (T1371)
+* DNS server addresses coming from a DHCP server are now correctly propagated to resolv.conf (T1497)
+* Domain-specific name servers in DNS forwarding are now used for recursive queries (T1469)
+* “run show dhcpv6 server leases” now display leases correctly (T1433)
+* Deleting “firewall options” node no longer causes errors (T1461)
+* Correct hostname is sent to remote syslog again (T1458)
+* Board serial number from DMI is correctly displayed in “show version” (T1438)
+* Multiple corrections in remote syslog config (T1358, T1355, T1294)
+* Fixed missing newline in /etc/hosts (T1255)
+* “system domain-name” is correctly included in /etc/resolv.conf (T1174)
+* Fixed priority inversion in “interfaces vti vtiX ip” settings (T1465)
+* Fixed errors when installing with RAID1 on UEFI machines (T1446)
+* Fixed an error on disabling an interfaces that has no address (T1387)
+* Fixed deleting VLAN interface with non-default MTU (T1367)
+* vyos.config return_effective_values() function now correctly returns a list rather than a string (T1505)
+
 1.2.1
 -----
 
