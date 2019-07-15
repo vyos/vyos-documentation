@@ -10,4 +10,4 @@
 .. _Squid3: http://www.squid-cache.org/
 .. _Squidguard: http://www.squidguard.org/
 .. _TFTP: https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol
-
+.. _`arbitrary extension commands`: http://net-snmp.sourceforge.net/docs/man/snmpd.conf.html#lbAZ

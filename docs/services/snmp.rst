@@ -176,5 +176,31 @@ After commit the resulting configuration will look like:
        }
    }
 
+SNMPv3 Extensions
+^^^^^^^^^^^^^^^^^
+
+To extend SNMP agent functionality, custom scripts can be executed every time the agent is being called.
+This can be achieved by using `arbitrary extension commands`_.
+The first step is to create a functional script of course, then upload it to your VyOS instance via the command ``scp your_script.sh vyos@your_router:/config/user-data``.
+Once the script is uploaded, it needs to be configured via the command below.
+
+
+.. code-block:: sh
+
+  set service snmp script-extensions extension-name my-extension script your_script.sh
+  commit
+
+
+The OID ``.1.3.6.1.4.1.8072.1.3.2.3.1.1.4.116.101.115.116``, once called, will contain the output of the extension.
+
+.. code-block:: sh
+
+  root@vyos:/home/vyos# snmpwalk -v2c  -c public 127.0.0.1 nsExtendOutput1
+  NET-SNMP-EXTEND-MIB::nsExtendOutput1Line."my-extension" = STRING: hello
+  NET-SNMP-EXTEND-MIB::nsExtendOutputFull."my-extension" = STRING: hello
+  NET-SNMP-EXTEND-MIB::nsExtendOutNumLines."my-extension" = INTEGER: 1
+  NET-SNMP-EXTEND-MIB::nsExtendResult."my-extension" = INTEGER: 0
+
+
 
 .. include:: references.rst
