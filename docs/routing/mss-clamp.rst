@@ -37,3 +37,5 @@ To achieve the same for IPv6 please use:
   set firewall options interface pppoe0 adjust-mss6 '1280'
   set firewall options interface wg02 adjust-mss6 '1280'
 
+.. note:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in 1452
+          bytes on a 1492 byte MTU.

@@ -46,25 +46,6 @@ Once you have an Ethernet device connected, i.e. eth0, then you can configure it
 * The largest MTU size you can use with DSL is 1492 due to PPPoE overhead. If you are switching from a DHCP based ISP like cable then be aware that things like VPN links may need to have their MTU sizes adjusted to work within this limit.
 * With the ``default-route`` option set to ``auto``, VyOS will only add the Default Gateway you receive from your DSL ISP to the routing table if you have no other WAN connections. If you wish to use a Dual WAN connection, change the ``default-route`` option to ``force``.
 
-
-TCP MSS clamping
-----------------
-
-After creating PPPoE connection, you also need to setup TCP MSS clamping of outgoing connections from your LAN, otherwise you will find that you can ping the Internet but fail to load most of websites. Here is the configuration (assuming eth1 is the LAN port):
-
-.. code-block:: sh
-
-  set policy route MSS description "TCP MSS clamping for PPPoE"
-  set policy route MSS rule 5 protocol tcp
-  set policy route MSS rule 5 tcp flags SYN
-  set policy route MSS rule 5 set tcp-mss 1452
-  set interface ethernet eth0 pppoe 0 policy route MSS
-  set interface ethernet eth1 policy route MSS
-
-.. hint::
-  The value of tcp-mss is 1452 = 1492 - 20 (IP header) - 20 (TCP header)
-
-
 Handling and troubleshooting
 ----------------------------
 
