@@ -236,7 +236,7 @@ It is best practise to store it in ``/config`` to survive image updates
 
 .. code-block:: sh
 
-  set interfaces openvpn openvpn vtun0 openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
+  set interfaces openvpn vtun0 openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
 
 The required config file may look like:
 
