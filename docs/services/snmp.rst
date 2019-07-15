@@ -176,8 +176,8 @@ After commit the resulting configuration will look like:
        }
    }
 
-SNMPv3 Extensions
-^^^^^^^^^^^^^^^^^
+SNMP Extensions
+^^^^^^^^^^^^^^^
 
 To extend SNMP agent functionality, custom scripts can be executed every time the agent is being called.
 This can be achieved by using `arbitrary extension commands`_.
