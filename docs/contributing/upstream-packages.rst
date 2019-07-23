@@ -100,7 +100,11 @@ TBD
 accel-ppp
 ---------
 
-TBD
+accel-ppp has been packaged for the use with vyos, due to the kernel dependencies for its modules.
+
+* https://github.com/vyos/vyos-accel-ppp
+
+Build instructions are being kept up to date on the repos Readme.
 
 hvinfo
 ------
