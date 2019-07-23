@@ -19,3 +19,4 @@ BGP).
    static
    mss-clamp
    routing-policy
+   igmp-proxy
