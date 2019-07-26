@@ -88,6 +88,7 @@ Use this configuration on your Cisco device:
   crypto ipsec profile DMVPN
    set security-association idle-time 720
    set transform-set DMVPN-AES256
+   set isakmp-profile DMVPN
   !
   interface Tunnel10
    description Tunnel to DMVPN HUB
