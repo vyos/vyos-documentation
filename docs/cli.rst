@@ -7,8 +7,7 @@ The VyOS CLI comprises an :ref:`commandtree_operationmode` and a  :ref:`commandt
 
 Operational mode allows for commands to perform operational system tasks and
 view system and service status, while configuration mode allows for the
-modification of system configuration. The command tree page lists available
-commands and their functions.
+modification of system configuration. The :ref:`command tree page<commandtree>` lists available commands and their functions.
 
 The CLI provides a built-in help system. In the CLI the **[?]** key may be used
 to display available commands. The **[tab]** key can be used to auto-complete
@@ -52,6 +51,8 @@ Example showing possible show commands:
     incoming      Show ethernet input-policy information
   : q
   vyos@vyos:~$
+
+You can scroll up with the keys [Shift]+[PageUp] and sroll down with [Shift]+[PageDown].
 
 When the output of a command results in more lines than can be displayed on the
 terminal screen the output is paginated as indicated by a : prompt.
