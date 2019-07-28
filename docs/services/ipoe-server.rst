@@ -14,7 +14,7 @@ Configuration
 IPoE can be configure on different interfaces, it will depend on each specific situation which interface will provide IPoE to clients.
 The clients mac address and the incoming interface is being used as control parameter, to authenticate a client.
 
-The example comnfiguration below will assign an IP to the client on the incoming interface eth2 with the client mac address 08:00:27:2f:d8:06.
+The example configuration below will assign an IP to the client on the incoming interface eth2 with the client mac address 08:00:27:2f:d8:06.
 Other DHCP discovery requests will be ignored, unless the client mac has been enabled in the configuration.
 
 .. code-block:: sh
@@ -26,7 +26,7 @@ Other DHCP discovery requests will be ignored, unless the client mac has been en
   set service ipoe-server interface eth2 client-subnet '192.168.0.0/24'
 
 
-The first address of the paramter ``client-subnet``, will be used as the default gateway. 
+The first address of the parameter ``client-subnet``, will be used as the default gateway. 
 Connected sessions can be checked via the ``show ipoe-server sessions`` command.
 
 .. code-block:: sh
@@ -72,7 +72,7 @@ globally communicate without the need of any NAT rules.
 Automatic VLAN creation
 =======================
 
-To create VLANs per user during runtime, the follwing settings are required on a per interface basis. VLAN ID and VLAN range can be present in the configuration at the same time.
+To create VLANs per user during runtime, the following settings are required on a per interface basis. VLAN ID and VLAN range can be present in the configuration at the same time.
 
 .. code-block:: sh
 
