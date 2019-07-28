@@ -3,7 +3,7 @@
 PPTP-Server
 -----------
 
-The Point-to-Point Tunneling Protocol (PPTP) has been implemented in VyOS only for backwards compatibility.
+The Point-to-Point Tunneling Protocol (PPTP_) has been implemented in VyOS only for backwards compatibility.
 PPTP has many well known security issues and you should use one of the many other new VPN implementations.
 
 As per default and if not otherwise defined, mschap-v2 is being used for authentication and mppe 128-bit (stateless) for encryption.
