@@ -63,7 +63,7 @@ The current active configuration -aka running configuration- can be viewed using
   }
   vyos@vyos:~$
 
-By default the configuration is displayed in a hierarchy like the example above, 
+By default the configuration is displayed in a hierarchy like the example above,
 this is only one of the possible ways to display the configuration.
 
 When the configuration is generated and the device is configured, changes are added through a collection of `set` and `delete` commands. You can see that collection of commands by entering `show configuration commands`, which is another way of seeing the running configuration.
@@ -97,7 +97,7 @@ A VyOS system has three major types of configurations:
 
 Active or running configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The active or running configuration is the system configuration that is loaded and currently being used by VyOS. Any change in the configuration will have to be committed to belong to the active/running configuration. 
+The active or running configuration is the system configuration that is loaded and currently being used by VyOS. Any change in the configuration will have to be committed to belong to the active/running configuration.
 
 Working configuration
 ^^^^^^^^^^^^^^^^^^^^^
@@ -108,7 +108,7 @@ Saved configuration
 A saved configuration is a configuration saved to a file using the `save` command. It allowes you to keep safe a configuration for future uses. There can be multiple configuration files. The default or "boot" configuration is saved and loaded from the file config.boot.
 
 
-Navigating in Configuration Mode 
+Navigating in Configuration Mode
 ---------------------------------
 When entering the configuration mode you are navigating inside the tree structure exported in the overview above,
 to enter configuration mode enter the command `configure` when in operational mode
@@ -117,7 +117,7 @@ to enter configuration mode enter the command `configure` when in operational mo
 
   vyos@vyos$ configure
   [edit]
-  cyos@vyos# 
+  cyos@vyos#
 
 .. note:: When going into configuration mode, prompt changes from *$* to *#*. To exit configuration mode, type `exit`.
 
@@ -126,46 +126,52 @@ All commands executed here are relative to the configuration level you have ente
 To change the current hierarchy level use the command: `edit`
 
 .. code-block:: sh
-  
+
   [edit]
-  vyos@vyos# edit interfaces ethernet eth0 
+  vyos@vyos# edit interfaces ethernet eth0
 
   [edit interfaces ethernet eth0]
-  vyos@vyos# 
+  vyos@vyos#
 
-You are now in a sublevel relative to `interfaces ethernet eth0`, 
+You are now in a sublevel relative to `interfaces ethernet eth0`,
 all commands executed from this point on are relative to this sublevel.
 Use either the `top` or `exit` command to go back to the top of the hierarchy.
-	
+
 
 The `show` command within configuration mode will show the working configuration
-indicating line changes with a + for additions and a - for deletions.
+indicating line changes with `+` for additions, `>` for replacements and `-` for deletions.
 
 
 .. code-block:: sh
 
-  vyos@vyos:~$ configure
-  [edit]
-  vyos@vyos# show interfaces
-    ethernet eth0 {
-        address dhcp
-        hw-id 00:0c:29:44:3b:0f
-    }
-    loopback lo {
-    }
-  [edit]
-  vyos@vyos# set interfaces ethernet eth0 description 'OUTSIDE'
-  [edit]
-  vyos@vyos# show interfaces
-   ethernet eth0 {
-       address dhcp
-  +    description OUTSIDE
-       hw-id 00:0c:29:44:3b:0f
-   }
-   loopback lo {
-   }
-  [edit]
-  vyos@vyos#
+ vyos@vyos:~$ configure
+ [edit]
+ vyos@vyos# show interfaces
+  ethernet eth0 {
+      description MY_OLD_DESCRIPTION
+      disable
+      hw-id 52:54:00:0e:82:d9
+  }
+  loopback lo {
+  }
+ [edit]
+ vyos@vyos# set interfaces ethernet eth0 address dhcp
+ [edit]
+ vyos@vyos# set interfaces ethernet eth0 description MY_NEW_DESCRIPTION
+ [edit]
+ vyos@vyos# delete interfaces ethernet eth0 disable
+ [edit]
+ vyos@vyos# show interfaces
+  ethernet eth0 {
+ +    address dhcp
+ >    description MY_NEW_DESCRIPTION
+ -    disable
+      hw-id 52:54:00:0e:82:d9
+  }
+  loopback lo {
+  }
+ [edit]
+ vyos@vyos#
 
 It is also possible to display all `set` commands within configuration mode using `show | commands`
 
@@ -213,7 +219,7 @@ These commands are also relative to the level where they are executed and all re
   [edit interfaces ethernet eth0]
   vyos@vyos# set address 1.2.3.4/24
 
-These two commands above are essentially the same, just executed from different levels in the hierarchy. 
+These two commands above are essentially the same, just executed from different levels in the hierarchy.
 
 To delete a configuration entry use the `delete` command, this also deletes all sub-levels under the current level you've specified in the `delete` command.
 Deleting an entry could also mean to reset it back to its default value if the element is mandatory, in each case it will be removed from the configuration file.
@@ -245,7 +251,7 @@ configuration mode.
   [edit]
   vyos@vyos#
 
- 
+
 Configuration mode can not be exited while uncommitted changes exist. To exit
 configuration mode without applying changes, the exit discard command can be
 used.
@@ -329,13 +335,13 @@ From this command you will have access to everything accessible from operational
 Command completion and syntax help with `?` and `[tab]` will also work.
 
 .. code-block:: sh
-  
+
   [edit]
   vyos@vyos# run show interfaces
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
   ---------        ----------                        ---  -----------
-  eth0             0.0.0.0/0                         u/u  
+  eth0             0.0.0.0/0                         u/u
 
 
 Configuration archive
@@ -353,7 +359,7 @@ To view existing revisions, use `show system commit` operational mode command.
 
 .. code-block:: sh
 
-  vyos@vyos-test-2# run show system commit 
+  vyos@vyos-test-2# run show system commit
   0   2015-03-30 08:53:03 by vyos via cli
   1   2015-03-30 08:52:20 by vyos via cli
   2   2015-03-26 21:26:01 by root via boot-config-loader
