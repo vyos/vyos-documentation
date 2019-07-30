@@ -3,7 +3,7 @@
 Firewall
 ========
 
-VyOS makes use of Linux [netfilter](http://netfilter.org/) for packet filtering.
+VyOS makes use of Linux `netfilter <http://netfilter.org/>`_ for packet filtering.
 
 The firewall supports the creation of groups for ports, addresses, and networks
 (implemented using netfilter ipset) and the option of interface or zone based
@@ -25,8 +25,7 @@ firewall can be created to simplify configuration when multiple interfaces
 belong to the same security zone. Instead of applying to rulesets to interfaces
 they are applied to source zone-destination zone pairs.
 
-An introduction to zone-based firewalls can be found [[A primer to Zone Based
-Firewall|here]]. For an example see :ref:`examples-zone-policy`.
+An example to zone-based firewalls can be found here: :ref:`examples-zone-policy`.
 
 Groups
 ------
@@ -173,6 +172,3 @@ Example Partial Config
          }
      }
   }
-
-[XFinity Blocked Port List](https://www.xfinity.com/support/internet/list-of-blocked-ports/)
-
