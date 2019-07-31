@@ -352,7 +352,7 @@ VyOS has built-in config archiving and versioning that renders tools like rancid
 This feature was available in Vyatta Core since 6.3
 
 Local archive and revisions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 Revisions are stored on disk, you can view them, compare them, and rollback to previous revisions if anything goes wrong.
 To view existing revisions, use `show system commit` operational mode command.
@@ -390,11 +390,13 @@ You can compare revisions with `compare X Y` command, where X and Y are revision
 You can rollback to a previous revision with `rollback X`, where X is a revision number. Your system will reboot and load the config from the archive.
 
 Configuring the archive size
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
+
 You can specify the number of revisions stored on disk with `set system config-management commit-revisions X`, where X is a number between 0 and 65535. When the number of revisions exceeds that number, the oldest revision is removed.
 
 Remote archive
-~~~~~~~~~~~~~~
+--------------
+
 VyOS can copy the config to a remote location after each commit. TFTP, FTP, and SFTP servers are supported.
 
 You can specify the location with `set system config-management commit-archive location URL` command, e.g. `set system config-management commit-archive location tftp://10.0.0.1/vyos`.

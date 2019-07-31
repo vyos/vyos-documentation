@@ -8,3 +8,4 @@
    development
    vyos_cli
    coding_guidelines
+   upstream-packages
