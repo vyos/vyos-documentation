@@ -18,8 +18,9 @@ This chapter descriptes the available system/network services provided by VyOS.
    dynamic-dns
    lldp
    mdns-repeater
-   pppoe-server
    ipoe-server
+   pppoe-server
+   sstp-server
    udp-broadcast-relay
    snmp
    ssh
