@@ -16,8 +16,8 @@ Download
 The latest ISO image for VyOS can be downloaded from https://vyos.io/
 
 
-Verifying digital signatures
-----------------------------
+Preparing software verification
+--------------------------------
 
 We sign our packages with our private key. So, if you have our public key, you will be able to verify the authenticity of the package.
 
@@ -25,9 +25,7 @@ First you need to install GPG or another OpenPGP implementation.
 On most GNU+Linux distributions it is installed by default because package managers use it to verify package signatures.
 On other systems you may need to find and install the package.
 
-Then you need our public key.
-
-If you don't have it yet, you can get it from a key server. 
+Then you need our public key. If you already have it, you can jump to :ref:`gpg-verification`. If you don't have it yet, you can get it from a key server. 
 
 ``gpg --recv-keys FD220285A0FE6D7E``
 
@@ -96,7 +94,7 @@ Or from this block below.
 
 Then you can paste that text in a new file, and import the file into GPG:
 
-``gpg --import your_file_with_our_public_key``
+``gpg --import file_with_the_public_key``
  
 
 You can now check your GPG software has our public key.
@@ -111,7 +109,16 @@ You can now check your GPG software has our public key.
   sub   rsa4096 2015-08-12 [E]
 
 
-And finally verify signatures. The signature is that little .asc file you should download along with your chosen VyOS software.
+.. _gpg-verification:
+
+GPG verification
+----------------
+
+As you have our public key, you just need the signature of the software you want to verify.
+
+.. note:: **In order to get the signature, go to your web browser and append *.asc* to the URL of your dowloaded VyOS image**. You will download a small *.asc* file, that's the signature of your image.
+
+So finally you can verify the authenticity of your image.
 
 .. code-block:: sh
 
