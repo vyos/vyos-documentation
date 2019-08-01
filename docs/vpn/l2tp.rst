@@ -106,8 +106,8 @@ Example for configuring LNS:
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
 In the example above an external IP of 203.0.113.2 is assumed. nexthop IP address 192.168.255.1 uses as client tunnel termination point.
-LAC often require authentication by tunnel password, in example above was set `lns shared-secret 'secret'`. 
-Also LAC often works without CCP (Compression Control Protocol), it will be disabled next command `set vpn l2tp remote-access ccp-disable`.
+LAC often require authentication by tunnel password, in example above was set ``lns shared-secret 'secret'``. 
+Also LAC often works without CCP (Compression Control Protocol), it will be disabled next command ``set vpn l2tp remote-access ccp-disable``.
 
 Bandwidth Shaping
 =================
@@ -182,14 +182,14 @@ Received RADIUS attributes has more priority than params defined by cli, explain
 Allocation clients ip addresses by RADIUS
 *****************************************
 
-If RADIUS server send attribute `Framed-IP-Address` then this ip address will be allocated to client and ip-pool will be ignored.
+If RADIUS server send attribute ``Framed-IP-Address`` then this ip address will be allocated to client and ip-pool will be ignored.
 
 Renaming clients interfaces by RADIUS
 *************************************
 
-If RADIUS server recieve attribute `NAS-Port-Id`, ppp tunnels will be renamed.
+If RADIUS server recieve attribute ``NAS-Port-Id``, ppp tunnels will be renamed.
 
-.. note:: Value of `NAS-Port-Id` must be less than 16 characters, otherwise interface won't renamed.
+.. note:: Value of ``NAS-Port-Id`` must be less than 16 characters, otherwise interface won't renamed.
 
 
 .. _`Google Public DNS`: https://developers.google.com/speed/public-dns
