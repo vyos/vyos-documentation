@@ -153,8 +153,8 @@ nodes:
 
 .. code-block:: sh
 
-  set vpn l2tp remote-access authentication radius server 1.1.1.1 key 'foo'
-  set vpn l2tp remote-access authentication radius server 2.2.2.2 key 'foo'
+  set vpn l2tp remote-access authentication radius server 10.0.0.1 key 'foo'
+  set vpn l2tp remote-access authentication radius server 10.0.0.2 key 'foo'
 
 .. note:: Some RADIUS_ severs make use of an access control list who is allowed
    to query the server. Please configure your VyOS router in the allowed client
@@ -169,11 +169,14 @@ single source IP e.g. the loopback interface.
 
 .. code-block:: sh
 
-  set vpn l2tp remote-access authentication radius source-address 3.3.3.3
+  set vpn l2tp remote-access authentication radius source-address 10.0.0.3
 
-Above command will use `3.3.3.3` as source IPv4 address for all RADIUS queries
+Above command will use `10.0.0.3` as source IPv4 address for all RADIUS queries
 on this NAS.
 
+.. note::
+  The ``source-address`` must be configured on one of VyOS interface.
+  
 RADIUS advanced features
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Received RADIUS attributes has more priority than params defined by cli, explained below.
