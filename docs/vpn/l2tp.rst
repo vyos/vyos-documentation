@@ -176,7 +176,24 @@ on this NAS.
 
 .. note::
   The ``source-address`` must be configured on one of VyOS interface.
-  
+
+RADIUS bandwidth shaping attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For enabling bandwidth shaping via RADIUS attribute you must set command on *CLI*:
+
+.. code-block:: sh
+
+  set vpn l2tp remote-access authentication radius rate-limit enable
+
+Default RADIUS attribute for rate limiting is ``Filter-Id``, but you may redefine it:
+
+.. code-block:: sh
+
+  set vpn l2tp remote-access authentication radius rate-limit attribute Download-Speed
+
+.. note:: If you set custom RADIUS attributes you must define it on both dictionaries for RADIUS server and client. RADIUS dictionary in VyOS located at ``/usr/share/accel-ppp/radius/``
+
 RADIUS advanced features
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Received RADIUS attributes has more priority than params defined by cli, explained below.
