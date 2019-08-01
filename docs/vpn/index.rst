@@ -11,8 +11,9 @@ This chapter descriptes the available VPN services provided by VyOS.
    :hidden:
 
    openvpn
-   l2tp_ipsec
+   l2tp
    site2site_ipsec
+   l2tp_ipsec
    gre-ipsec
    dmvpn
    pptp
