@@ -17,7 +17,7 @@ with native Windows and Mac VPN clients):
   set vpn ipsec nat-traversal enable
   set vpn ipsec nat-networks allowed-network 0.0.0.0/0
 
-  set vpn l2tp remote-access outside-address 203.0.113.2
+  set vpn l2tp remote-access outside-address 192.0.2.2
   set vpn l2tp remote-access outside-nexthop 192.168.255.1
   set vpn l2tp remote-access client-ip-pool start 192.168.255.2
   set vpn l2tp remote-access client-ip-pool stop 192.168.255.254
@@ -26,16 +26,16 @@ with native Windows and Mac VPN clients):
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
-In the example above an external IP of 203.0.113.2 is assumed. Nexthop IP address 192.168.255.1 uses as client tunnel termination point.
+In the example above an external IP of 192.0.2.2 is assumed. Nexthop IP address 192.168.255.1 uses as client tunnel termination point.
 
 If a local firewall policy is in place on your external interface you will need
-to open:
+to allow the ports below:
 
 * UDP port 500 (IKE)
 * IP protocol number 50 (ESP)
 * UDP port 1701 for IPsec
 
-When the VPN client detects NAT, ESP is encapsulated in UDP for NAT-traversal:
+As well as the below to allow NAT-traversal:
 
 * UDP port 4500 (NAT-T)
 
@@ -56,8 +56,8 @@ Example:
   set firewall name OUTSIDE-LOCAL rule 43 ipsec 'match-ipsec'
   set firewall name OUTSIDE-LOCAL rule 43 protocol 'udp'
 
-If you wish to allow the VPN-Clients to use external access you,
-will need to add the appropriate source NAT rules to your configuration.
+To allow VPN-clients access via your external address, a NAT rule is required:
+
 
 .. code-block:: sh
 
@@ -65,8 +65,8 @@ will need to add the appropriate source NAT rules to your configuration.
   set nat source rule 110 source address '192.168.255.0/24'
   set nat source rule 110 translation address masquerade
 
-To be able to resolve when connected to the VPN, the following DNS rules are
-needed as well.
+
+VPN-clients will request configuration parameters, optionally you can DNS parameter to the client.
 
 .. code-block:: sh
 
@@ -90,12 +90,13 @@ operational command, or **show l2tp-server sessions**
 LNS (L2TP Network Server)
 =========================
 
-LNS often used for connecting LAC (L2TP Access Concentrator). 
-Example for configuring LNS:
+LNS are often used to connect to a LAC (L2TP Access Concentrator). 
+
+Below is an example to configure a LNS:
 
 .. code-block:: sh
 
-  set vpn l2tp remote-access outside-address 203.0.113.2
+  set vpn l2tp remote-access outside-address 192.0.2.2
   set vpn l2tp remote-access outside-nexthop 192.168.255.1
   set vpn l2tp remote-access client-ip-pool start 192.168.255.2
   set vpn l2tp remote-access client-ip-pool stop 192.168.255.254
@@ -104,14 +105,15 @@ Example for configuring LNS:
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
-In the example above an external IP of 203.0.113.2 is assumed. Nexthop IP address 192.168.255.1 uses as client tunnel termination point.
-LAC often require authentication by tunnel password, in the example above it was set to ``lns shared-secret 'secret'``. 
-Also LAC often works without CCP (Compression Control Protocol), it will be disabled by this command ``set vpn l2tp remote-access ccp-disable``.
+The example above uses 192.0.2.2 as external IP address, the nexthop is supposed to be 192.168.255.1 and is used as client termination point.
+A LAC normally requires an authentication password, which is set in the example configuration to ``lns shared-secret 'secret'``.
+This setup requires the Compression Control Protocol (CCP_ being disabled, the command ``set vpn l2tp remote-access ccp-disable`` accomplishes that. 
+
 
 Bandwidth Shaping
 =================
 
-Bandwidth rate limits can be set for local users or RADIUS based attributes.
+Bandwidth rate limits can be set for local users or via RADIUS based attributes.
 
 Bandwidth Shaping for local users 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -120,7 +122,7 @@ The rate-limit is set in kbit/sec.
 
 .. code-block:: sh
 
-  set vpn l2tp remote-access outside-address 203.0.113.2
+  set vpn l2tp remote-access outside-address 192.0.2.2
   set vpn l2tp remote-access outside-nexthop 192.168.255.1
   set vpn l2tp remote-access client-ip-pool start 192.168.255.2
   set vpn l2tp remote-access client-ip-pool stop 192.168.255.254
@@ -137,33 +139,28 @@ The rate-limit is set in kbit/sec.
 RADIUS authentication
 ======================
 
-The above configuration local accounts are uesed on the VyOS router for
-authenticating L2TP/IPSec clients or LAC. In bigger environments usually something
-like RADIUS_ (FreeRADIUS_ or Microsoft `Network Policy Server`_, NPS) is used.
-
-VyOS supports either `local` or `radius` user authentication:
+To enable RADIUS based authentication, the authentication mode needs to be changed withing the configuration.
+Previous settings like the local users, still exists within the configuration, however they are not used if the mode
+has been changed from local to radius. Once changed back to local, it will use all local accounts again.
 
 .. code-block:: sh
 
   set vpn l2tp remote-access authentication mode <local|radius>
 
-In addition one or more RADIUS_ servers can be configured for user
-authentication. This is done using the `radius server` and `radius server key`
-nodes:
+Since the RADIUS server would be a single point of failure, multiple RADIUS server can be setup and will be used subsequentially. 
 
 .. code-block:: sh
 
   set vpn l2tp remote-access authentication radius server 10.0.0.1 key 'foo'
   set vpn l2tp remote-access authentication radius server 10.0.0.2 key 'foo'
 
-.. note:: Some RADIUS_ severs make use of an access control list who is allowed
-   to query the server. Please configure your VyOS router in the allowed client
-   list.
+.. note:: Some RADIUS_ severs use an access control list which allows or denies queries,  
+   make sure to add your VyOS router to the allowed client list.
 
 RADIUS source address
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you are using e.g. OSPF as IGP always the nearest interface facing the RADIUS
+If you are using OSPF as IGP always the closets interface connected to the RADIUS
 server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests to a
 single source IP e.g. the loopback interface.
 
@@ -180,35 +177,36 @@ on this NAS.
 RADIUS bandwidth shaping attribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For enabling bandwidth shaping via RADIUS attribute you must set command on *CLI*:
+To enable bandwidth shaping via RADIUS, the option rate-limit needs to be enabled.
 
 .. code-block:: sh
 
   set vpn l2tp remote-access authentication radius rate-limit enable
 
-Default RADIUS attribute for rate limiting is ``Filter-Id``, but you may redefine it:
+The default RADIUS attribute for rate limiting is ``Filter-Id``, but you may also redefine it.
 
 .. code-block:: sh
 
   set vpn l2tp remote-access authentication radius rate-limit attribute Download-Speed
 
-.. note:: If you set custom RADIUS attributes you must define it on both dictionaries for RADIUS server and client. RADIUS dictionary in VyOS located at ``/usr/share/accel-ppp/radius/``
+.. note:: If you set a custom RADIUS attribute you must define it on both dictionaries at RADIUS server and client, which is the vyos router in our example.
+The  RADIUS dictionaries in VyOS are located at ``/usr/share/accel-ppp/radius/``
 
 RADIUS advanced features
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Received RADIUS attributes has more priority than params defined by cli, explained below.
+Received RADIUS attributes have a higher priority than parameters defined withm the cli configuration, refer to the explanation below.
 
 Allocation clients ip addresses by RADIUS
 *****************************************
 
-If RADIUS server send attribute ``Framed-IP-Address`` then this ip address will be allocated to the client and the ip-pool will be ignored.
+If the RADIUS server sends the attribute ``Framed-IP-Address`` then this IP address will be allocated to the client and the option ip-pool within the cli config is being ignored.
 
 Renaming clients interfaces by RADIUS
 *************************************
 
-If RADIUS server recieve attribute ``NAS-Port-Id``, ppp tunnels will be renamed.
+If the RADIUS server uses the attribute ``NAS-Port-Id``, ppp tunnels will be renamed.
 
-.. note:: Value of ``NAS-Port-Id`` must be less than 16 characters, otherwise interface won't renamed.
+.. note:: The value of the attribute ``NAS-Port-Id`` must be less than 16 characters, otherwise the interface won't be renamed.
 
 
 .. _`Google Public DNS`: https://developers.google.com/speed/public-dns
