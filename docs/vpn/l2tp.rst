@@ -26,7 +26,7 @@ with native Windows and Mac VPN clients):
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
-In the example above an external IP of 203.0.113.2 is assumed. nexthop IP address 192.168.255.1 uses as client tunnel termination point.
+In the example above an external IP of 203.0.113.2 is assumed. Nexthop IP address 192.168.255.1 uses as client tunnel termination point.
 
 If a local firewall policy is in place on your external interface you will need
 to open:
@@ -35,8 +35,7 @@ to open:
 * IP protocol number 50 (ESP)
 * UDP port 1701 for IPsec
 
-In addition when NAT is detected by the VPN client ESP is encapsulated in UDP
-for NAT-traversal:
+When the VPN client detects NAT, ESP is encapsulated in UDP for NAT-traversal:
 
 * UDP port 4500 (NAT-T)
 
@@ -57,7 +56,7 @@ Example:
   set firewall name OUTSIDE-LOCAL rule 43 ipsec 'match-ipsec'
   set firewall name OUTSIDE-LOCAL rule 43 protocol 'udp'
 
-Also note that if you wish to allow the VPN to be used for external access you
+If you wish to allow the VPN-Clients to use external access you,
 will need to add the appropriate source NAT rules to your configuration.
 
 .. code-block:: sh
@@ -105,9 +104,9 @@ Example for configuring LNS:
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
-In the example above an external IP of 203.0.113.2 is assumed. nexthop IP address 192.168.255.1 uses as client tunnel termination point.
-LAC often require authentication by tunnel password, in example above was set ``lns shared-secret 'secret'``. 
-Also LAC often works without CCP (Compression Control Protocol), it will be disabled next command ``set vpn l2tp remote-access ccp-disable``.
+In the example above an external IP of 203.0.113.2 is assumed. Nexthop IP address 192.168.255.1 uses as client tunnel termination point.
+LAC often require authentication by tunnel password, in the example above it was set to ``lns shared-secret 'secret'``. 
+Also LAC often works without CCP (Compression Control Protocol), it will be disabled by this command ``set vpn l2tp remote-access ccp-disable``.
 
 Bandwidth Shaping
 =================
@@ -138,7 +137,7 @@ The rate-limit is set in kbit/sec.
 RADIUS authentication
 ======================
 
-The above configuration made use of local accounts on the VyOS router for
+The above configuration local accounts are uesed on the VyOS router for
 authenticating L2TP/IPSec clients or LAC. In bigger environments usually something
 like RADIUS_ (FreeRADIUS_ or Microsoft `Network Policy Server`_, NPS) is used.
 
@@ -148,7 +147,7 @@ VyOS supports either `local` or `radius` user authentication:
 
   set vpn l2tp remote-access authentication mode <local|radius>
 
-In addition one or more RADIUS_ servers can be configured to server for user
+In addition one or more RADIUS_ servers can be configured for user
 authentication. This is done using the `radius server` and `radius server key`
 nodes:
 
@@ -182,7 +181,7 @@ Received RADIUS attributes has more priority than params defined by cli, explain
 Allocation clients ip addresses by RADIUS
 *****************************************
 
-If RADIUS server send attribute ``Framed-IP-Address`` then this ip address will be allocated to client and ip-pool will be ignored.
+If RADIUS server send attribute ``Framed-IP-Address`` then this ip address will be allocated to the client and the ip-pool will be ignored.
 
 Renaming clients interfaces by RADIUS
 *************************************
