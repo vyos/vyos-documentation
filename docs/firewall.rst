@@ -113,12 +113,11 @@ Example Partial Config
      config-trap disable
      group {
          network-group BAD-NETWORKS {
-             network 1.2.3.0/24
-             network 1.2.4.0/24
+             network 198.51.100.0/24
+             network 203.0.113.0/24
          }
          network-group GOOD-NETWORKS {
-             network 4.5.6.0/24
-             network 4.5.7.0/24
+             network 192.0.2.0/24
          }
          port-group BAD-PORTS {
              port 65535

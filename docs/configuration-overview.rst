@@ -214,10 +214,10 @@ These commands are also relative to the level where they are executed and all re
 .. code-block:: sh
 
   [edit]
-  vyos@vyos# set interface ethernet eth0 address 1.2.3.4/24
+  vyos@vyos# set interface ethernet eth0 address 203.0.113.6/24
 
   [edit interfaces ethernet eth0]
-  vyos@vyos# set address 1.2.3.4/24
+  vyos@vyos# set address 203.0.113.6/24
 
 These two commands above are essentially the same, just executed from different levels in the hierarchy.
 
@@ -227,7 +227,7 @@ Deleting an entry could also mean to reset it back to its default value if the e
 .. code-block:: sh
 
   [edit interfaces ethernet eth0]
-  vyos@vyos#  delete address 1.2.3.4/24
+  vyos@vyos#  delete address 203.0.113.6/24
 
 Any change you do on the configuration, will not take effect until committed using the `commit` command in configuration mode.
 

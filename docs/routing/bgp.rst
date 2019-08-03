@@ -37,13 +37,13 @@ creating a static route:**
 
 .. code-block:: sh
 
-  set protocols static route 1.0.0.0/16 blackhole distance '254'
+  set protocols static route 172.16.0.0/16 blackhole distance '254'
 
 **Node 2:**
 
 .. code-block:: sh
 
-  set protocols static route 2.0.0.0/16 blackhole distance '254'
+  set protocols static route 172.17.0.0/16 blackhole distance '254'
 
 
 IPv6
@@ -81,7 +81,7 @@ creating a static route:**
 
 .. code-block:: sh
 
-  set protocols static route6 2a001:100:1::/48 blackhole distance '254'
+  set protocols static route6 2001:db8:1::/48 blackhole distance '254'
 
 **Node 2:**
 

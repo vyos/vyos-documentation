@@ -249,16 +249,16 @@ one external interface:
 
   set interfaces ethernet eth0 address '192.168.1.1/24'
   set interfaces ethernet eth0 description 'Inside interface'
-  set interfaces ethernet eth1 address '1.2.3.4/24'
+  set interfaces ethernet eth1 address '192.0.2.30/24'
   set interfaces ethernet eth1 description 'Outside interface'
   set nat destination rule 2000 description '1-to-1 NAT example'
-  set nat destination rule 2000 destination address '1.2.3.4'
+  set nat destination rule 2000 destination address '192.0.2.30'
   set nat destination rule 2000 inbound-interface 'eth1'
   set nat destination rule 2000 translation address '192.168.1.10'
   set nat source rule 2000 description '1-to-1 NAT example'
   set nat source rule 2000 outbound-interface 'eth1'
   set nat source rule 2000 source address '192.168.1.10'
-  set nat source rule 2000 translation address '1.2.3.4'
+  set nat source rule 2000 translation address '192.0.2.30'
 
 Firewall rules are written as normal, using the internal IP address as the
 source of outbound rules and the destination of inbound rules.

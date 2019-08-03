@@ -98,8 +98,8 @@ The Cisco router defaults to 'gre ip' otherwise it would have to be configured a
 
   set interfaces tunnel tun100 address '10.0.0.1/30'
   set interfaces tunnel tun100 encapsulation 'gre'
-  set interfaces tunnel tun100 local-ip '198.18.0.2'
-  set interfaces tunnel tun100 remote-ip '198.18.2.2'
+  set interfaces tunnel tun100 local-ip '198.51.100.2'
+  set interfaces tunnel tun100 remote-ip '203.0.113.10'
 
 **Cisco IOS Router:**
 
@@ -107,8 +107,8 @@ The Cisco router defaults to 'gre ip' otherwise it would have to be configured a
 
   interface Tunnel100
   ip address 10.0.0.2 255.255.255.252
-  tunnel source 198.18.2.2
-  tunnel destination 198.18.0.2
+  tunnel source 203.0.113.10
+  tunnel destination 198.51.100.2
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
@@ -122,14 +122,14 @@ configurations that are discarding IP protocol 47 or blocking your source/desint
 
 .. code-block:: sh
 
-  vyos@vyos:~$ ping 198.18.2.2 interface 198.18.0.2 count 4
-  PING 198.18.2.2 (198.18.2.2) from 198.18.0.2 : 56(84) bytes of data.
-  64 bytes from 198.18.2.2: icmp_seq=1 ttl=254 time=0.807 ms
-  64 bytes from 198.18.2.2: icmp_seq=2 ttl=254 time=1.50 ms
-  64 bytes from 198.18.2.2: icmp_seq=3 ttl=254 time=0.624 ms
-  64 bytes from 198.18.2.2: icmp_seq=4 ttl=254 time=1.41 ms
+  vyos@vyos:~$ ping 203.0.113.10 interface 198.51.100.2 count 4
+  PING 203.0.113.10 (203.0.113.10) from 198.51.100.2 : 56(84) bytes of data.
+  64 bytes from 203.0.113.10: icmp_seq=1 ttl=254 time=0.807 ms
+  64 bytes from 203.0.113.10: icmp_seq=2 ttl=254 time=1.50 ms
+  64 bytes from 203.0.113.10: icmp_seq=3 ttl=254 time=0.624 ms
+  64 bytes from 203.0.113.10: icmp_seq=4 ttl=254 time=1.41 ms
 
-  --- 198.18.2.2 ping statistics ---
+  --- 203.0.113.10 ping statistics ---
   4 packets transmitted, 4 received, 0% packet loss, time 3007ms
   rtt min/avg/max/mdev = 0.624/1.087/1.509/0.381 ms
 
@@ -139,7 +139,7 @@ configurations that are discarding IP protocol 47 or blocking your source/desint
 
   vyos@vyos:~$ show interfaces tunnel tun100
   tun100@NONE: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1476 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/gre 198.18.0.2 peer 198.18.2.2
+    link/gre 198.51.100.2 peer 203.0.113.10
     inet 10.0.0.1/30 brd 10.0.0.3 scope global tun100
        valid_lft forever preferred_lft forever
     inet6 fe80::5efe:c612:2/64 scope link
