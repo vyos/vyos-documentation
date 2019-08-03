@@ -121,13 +121,13 @@ HUB Example Configuration:
 
 .. code-block:: sh
 
-  set interfaces ethernet eth0 address '1.1.1.1/30'
+  set interfaces ethernet eth0 address '198.51.100.41/30'
   set interfaces ethernet eth1 address '192.168.1.1/24'
   set system host-name 'HUB'
 
   set interfaces tunnel tun0 address 10.0.0.1/24
   set interfaces tunnel tun0 encapsulation gre
-  set interfaces tunnel tun0 local-ip 1.1.1.1
+  set interfaces tunnel tun0 local-ip 198.51.100.41
   set interfaces tunnel tun0 multicast enable
   set interfaces tunnel tun0 parameters ip key 1
 
@@ -256,7 +256,7 @@ SPOKE1 Example Configuration
   set interfaces tunnel tun0 parameters ip key 1
 
   set protocols nhrp tunnel tun0 cisco-authentication 'SECRET'
-  set protocols nhrp tunnel tun0 map 10.0.0.1/24 nbma-address 1.1.1.1
+  set protocols nhrp tunnel tun0 map 10.0.0.1/24 nbma-address 198.51.100.41
   set protocols nhrp tunnel tun0 map 10.0.0.1/24 'register'
   set protocols nhrp tunnel tun0 multicast 'nhs'
   set protocols nhrp tunnel tun0 'redirect'
@@ -379,7 +379,7 @@ SPOKE2 Example Configuration
   set interfaces tunnel tun0 parameters ip key 1
 
   set protocols nhrp tunnel tun0 cisco-authentication SECRET
-  set protocols nhrp tunnel tun0 map 10.0.0.1/24 nbma-address 1.1.1.1
+  set protocols nhrp tunnel tun0 map 10.0.0.1/24 nbma-address 198.51.100.41
   set protocols nhrp tunnel tun0 map 10.0.0.1/24 register
   set protocols nhrp tunnel tun0 multicast nhs
   set protocols nhrp tunnel tun0 redirect

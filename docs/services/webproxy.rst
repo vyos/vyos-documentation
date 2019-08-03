@@ -135,9 +135,9 @@ So sometimes it is useful to bypass a transparent proxy:
 * To bypass the proxy for every request that is directed to a specific
   destination:
 
-  :code:`set service webproxy whitelist destination-address 1.2.3.4`
+  :code:`set service webproxy whitelist destination-address 198.51.100.33`
 
-  :code:`set service webproxy whitelist destination-address 4.5.6.0/24`
+  :code:`set service webproxy whitelist destination-address 192.0.2.0/24`
 
 
 * To bypass the proxy for every request that is coming from a specific source:

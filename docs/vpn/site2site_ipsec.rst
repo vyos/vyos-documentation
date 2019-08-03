@@ -11,9 +11,9 @@ Example:
 * WAN interface on `eth1`
 * left subnet: `192.168.0.0/24` site1, server side (i.e. locality, actually
   there is no client or server roles)
-* left local_ip: `1.1.1.1` # server side WAN IP
+* left local_ip: `198.51.100.3` # server side WAN IP
 * right subnet: `10.0.0.0/24` site2,remote office side
-* right local_ip: `2.2.2.2` # remote office side WAN IP
+* right local_ip: `203.0.113.2` # remote office side WAN IP
 
 .. code-block:: sh
 
@@ -30,15 +30,15 @@ Example:
   set vpn ipsec ike-group office-srv-ike proposal 1 encryption 'aes256'
   set vpn ipsec ike-group office-srv-ike proposal 1 hash 'sha1'
   set vpn ipsec ipsec-interfaces interface 'eth1'
-  set vpn ipsec site-to-site peer 2.2.2.2 authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer 2.2.2.2 authentication pre-shared-secret 'SomePreSharedKey'
-  set vpn ipsec site-to-site peer 2.2.2.2 ike-group 'office-srv-ike'
-  set vpn ipsec site-to-site peer 2.2.2.2 local-address '1.1.1.1'
-  set vpn ipsec site-to-site peer 2.2.2.2 tunnel 0 allow-nat-networks 'disable'
-  set vpn ipsec site-to-site peer 2.2.2.2 tunnel 0 allow-public-networks 'disable'
-  set vpn ipsec site-to-site peer 2.2.2.2 tunnel 0 esp-group 'office-srv-esp'
-  set vpn ipsec site-to-site peer 2.2.2.2 tunnel 0 local prefix '192.168.0.0/24'
-  set vpn ipsec site-to-site peer 2.2.2.2 tunnel 0 remote prefix '10.0.0.0/21'
+  set vpn ipsec site-to-site peer 203.0.113.2 authentication mode 'pre-shared-secret'
+  set vpn ipsec site-to-site peer 203.0.113.2 authentication pre-shared-secret 'SomePreSharedKey'
+  set vpn ipsec site-to-site peer 203.0.113.2 ike-group 'office-srv-ike'
+  set vpn ipsec site-to-site peer 203.0.113.2 local-address '198.51.100.3'
+  set vpn ipsec site-to-site peer 203.0.113.2 tunnel 0 allow-nat-networks 'disable'
+  set vpn ipsec site-to-site peer 203.0.113.2 tunnel 0 allow-public-networks 'disable'
+  set vpn ipsec site-to-site peer 203.0.113.2 tunnel 0 esp-group 'office-srv-esp'
+  set vpn ipsec site-to-site peer 203.0.113.2 tunnel 0 local prefix '192.168.0.0/24'
+  set vpn ipsec site-to-site peer 203.0.113.2 tunnel 0 remote prefix '10.0.0.0/21'
 
   # remote office config
   set vpn ipsec esp-group office-srv-esp compression 'disable'
@@ -53,15 +53,15 @@ Example:
   set vpn ipsec ike-group office-srv-ike proposal 1 encryption 'aes256'
   set vpn ipsec ike-group office-srv-ike proposal 1 hash 'sha1'
   set vpn ipsec ipsec-interfaces interface 'eth1'
-  set vpn ipsec site-to-site peer 1.1.1.1 authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer 1.1.1.1 authentication pre-shared-secret 'SomePreSharedKey'
-  set vpn ipsec site-to-site peer 1.1.1.1 ike-group 'office-srv-ike'
-  set vpn ipsec site-to-site peer 1.1.1.1 local-address '2.2.2.2'
-  set vpn ipsec site-to-site peer 1.1.1.1 tunnel 0 allow-nat-networks 'disable'
-  set vpn ipsec site-to-site peer 1.1.1.1 tunnel 0 allow-public-networks 'disable'
-  set vpn ipsec site-to-site peer 1.1.1.1 tunnel 0 esp-group 'office-srv-esp'
-  set vpn ipsec site-to-site peer 1.1.1.1 tunnel 0 local prefix '10.0.0.0/21'
-  set vpn ipsec site-to-site peer 1.1.1.1 tunnel 0 remote prefix '192.168.0.0/24'
+  set vpn ipsec site-to-site peer 198.51.100.3 authentication mode 'pre-shared-secret'
+  set vpn ipsec site-to-site peer 198.51.100.3 authentication pre-shared-secret 'SomePreSharedKey'
+  set vpn ipsec site-to-site peer 198.51.100.3 ike-group 'office-srv-ike'
+  set vpn ipsec site-to-site peer 198.51.100.3 local-address '203.0.113.2'
+  set vpn ipsec site-to-site peer 198.51.100.3 tunnel 0 allow-nat-networks 'disable'
+  set vpn ipsec site-to-site peer 198.51.100.3 tunnel 0 allow-public-networks 'disable'
+  set vpn ipsec site-to-site peer 198.51.100.3 tunnel 0 esp-group 'office-srv-esp'
+  set vpn ipsec site-to-site peer 198.51.100.3 tunnel 0 local prefix '10.0.0.0/21'
+  set vpn ipsec site-to-site peer 198.51.100.3 tunnel 0 remote prefix '192.168.0.0/24'
 
 Show status of new setup:
 
@@ -70,7 +70,7 @@ Show status of new setup:
   vyos@srv-gw0:~$ show vpn ike sa
   Peer ID / IP                            Local ID / IP
   ------------                            -------------
-  2.2.2.2                                 1.1.1.1
+  203.0.113.2                                 198.51.100.3
      State  Encrypt  Hash    D-H Grp  NAT-T  A-Time  L-Time
      -----  -------  ----    -------  -----  ------  ------
      up     aes256   sha1    5        no     734     3600
@@ -78,7 +78,7 @@ Show status of new setup:
   vyos@srv-gw0:~$ show vpn ipsec sa
   Peer ID / IP                            Local ID / IP
   ------------                            -------------
-  2.2.2.2                                 1.1.1.1
+  203.0.113.2                                 198.51.100.3
      Tunnel  State  Bytes Out/In   Encrypt  Hash    NAT-T  A-Time  L-Time  Proto
      ------  -----  -------------  -------  ----    -----  ------  ------  -----
      0       up     7.5M/230.6K    aes256   sha1    no     567     1800    all
