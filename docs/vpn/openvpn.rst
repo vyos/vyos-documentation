@@ -246,7 +246,7 @@ The required config file may look like:
   # LDAP server URL
   URL             ldap://ldap.example.com
   # Bind DN (If your LDAP server doesn't support anonymous binds)
-  BindDN          cn=Manager,dc=example,dc=com
+  BindDN          cn=LDAPUser,dc=example,dc=com
   # Bind Password password
   Password        S3cr3t
   # Network timeout (in seconds)
@@ -258,9 +258,46 @@ The required config file may look like:
   BaseDN          "ou=people,dc=example,dc=com"
   # User Search Filter
   SearchFilter    "(&(uid=%u)(objectClass=shadowAccount))"
-  # Require Group Membership
+  # Require Group Membership - allow all users
   RequireGroup    false
   </Authorization>
+
+Active Directory
+****************
+
+Despite the fact that AD is a superset of LDAP
+
+.. code-block:: sh
+
+  <LDAP>
+  # LDAP server URL
+  URL ldap://dc01.example.com
+  # Bind DN (If your LDAP server doesn’t support anonymous binds)
+  BindDN CN=LDAPUser,DC=example,DC=com
+  # Bind Password
+  Password mysecretpassword
+  # Network timeout (in seconds)
+  Timeout  15
+  # Enable Start TLS
+  TLSEnable no
+  # Follow LDAP Referrals (anonymously)
+  FollowReferrals no
+  </LDAP>
+
+  <Authorization>
+  # Base DN
+  BaseDN        "DC=example,DC=com"
+  # User Search Filter, user must be a member of the VPN AD group
+  SearchFilter  "(&(sAMAccountName=%u)(memberOf=CN=VPN,OU=Groups,DC=example,DC=com))"
+  # Require Group Membership
+  RequireGroup    false # already handled by SearchFilter
+  <Group>
+  BaseDN        "OU=Groups,DC=example,DC=com"
+  SearchFilter  "(|(cn=VPN))"
+  MemberAttribute  memberOf
+  </Group>
+  </Authorization>
+
 
 A complete LDAP auth OpenVPN configuration could look like the following example:
 
