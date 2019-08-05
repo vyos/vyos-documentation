@@ -95,14 +95,14 @@ Bridge:
   # remote side in this example:
   # set interfaces bridge br0 address '172.16.30.18/30'
   set interfaces bridge br0 address '172.16.30.17/30'
-  set interfaces ethernet eth0 bridge-group bridge 'br0'
+  set interfaces bridge br0 member interface eth0
   set interfaces ethernet eth0 description 'L2 VPN Physical port'
 
 L2TPv3:
 
 .. code-block:: sh
 
-  set interfaces l2tpv3 l2tpeth0 bridge-group bridge 'br0'
+  set interfaces bridge br0 member interface 'l2tpeth0'
   set interfaces l2tpv3 l2tpeth0 description 'L2 VPN Tunnel'
   set interfaces l2tpv3 l2tpeth0 destination-port '5000'
   set interfaces l2tpv3 l2tpeth0 encapsulation 'ip'
