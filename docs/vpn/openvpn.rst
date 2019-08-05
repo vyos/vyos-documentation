@@ -270,34 +270,53 @@ Despite the fact that AD is a superset of LDAP
 .. code-block:: sh
 
   <LDAP>
-  # LDAP server URL
-  URL ldap://dc01.example.com
-  # Bind DN (If your LDAP server doesn’t support anonymous binds)
-  BindDN CN=LDAPUser,DC=example,DC=com
-  # Bind Password
-  Password mysecretpassword
-  # Network timeout (in seconds)
-  Timeout  15
-  # Enable Start TLS
-  TLSEnable no
-  # Follow LDAP Referrals (anonymously)
-  FollowReferrals no
+    # LDAP server URL
+    URL ldap://dc01.example.com
+    # Bind DN (If your LDAP server doesn’t support anonymous binds)
+    BindDN CN=LDAPUser,DC=example,DC=com
+    # Bind Password
+    Password mysecretpassword
+    # Network timeout (in seconds)
+    Timeout  15
+    # Enable Start TLS
+    TLSEnable no
+    # Follow LDAP Referrals (anonymously)
+    FollowReferrals no
   </LDAP>
 
   <Authorization>
-  # Base DN
-  BaseDN        "DC=example,DC=com"
-  # User Search Filter, user must be a member of the VPN AD group
-  SearchFilter  "(&(sAMAccountName=%u)(memberOf=CN=VPN,OU=Groups,DC=example,DC=com))"
-  # Require Group Membership
-  RequireGroup    false # already handled by SearchFilter
-  <Group>
-  BaseDN        "OU=Groups,DC=example,DC=com"
-  SearchFilter  "(|(cn=VPN))"
-  MemberAttribute  memberOf
-  </Group>
+    # Base DN
+    BaseDN        "DC=example,DC=com"
+    # User Search Filter, user must be a member of the VPN AD group
+    SearchFilter  "(&(sAMAccountName=%u)(memberOf=CN=VPN,OU=Groups,DC=example,DC=com))"
+    # Require Group Membership
+    RequireGroup    false # already handled by SearchFilter
+    <Group>
+      BaseDN        "OU=Groups,DC=example,DC=com"
+      SearchFilter  "(|(cn=VPN))"
+      MemberAttribute  memberOf
+    </Group>
   </Authorization>
 
+If you only wan't to check if the user account is enabled and can authenticate
+(against the primary group) the following snipped is sufficient:
+
+.. code-block:: sh
+
+  <LDAP>
+    URL ldap://ds0001.gefoekom.de
+    BindDN CN=SA_OPENVPN,OU=ServiceAccounts,OU=GS,OU=GeFoekoM,DC=gefoekom,DC=de
+    Password g7LjfjmlPhhHnvmal75hbfdknms-44
+    Timeout  15
+    TLSEnable no
+    FollowReferrals no
+  </LDAP>
+
+  <Authorization>
+    BaseDN          "OU=GeFoekoM,DC=gefoekom,DC=de"
+    SearchFilter    "sAMAccountName=%u"
+    RequireGroup    false
+  </Authorization>
 
 A complete LDAP auth OpenVPN configuration could look like the following example:
 
