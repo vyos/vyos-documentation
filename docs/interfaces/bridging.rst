@@ -5,14 +5,23 @@ Interfaces in VyOS can be bridged together to provide software switching of
 Layer-2 traffic.
 
 A bridge is created when a bridge interface is defined. In the example below
-we will be creating a bridge for VLAN 100 and assigning a VIF to the bridge.
+we create a bridge named br100 with eth1 and eth2 as the bridge member ports.
 
 .. code-block:: sh
 
   set interfaces bridge 'br100'
-  set interfaces ethernet eth1 vif 100 bridge-group bridge br100
+  set interfaces bridge br100 member interface eth1
+  set interfaces bridge br100 member interface eth2
 
-Interfaces assigned to a bridge-group do not have address configuration. An IP
+Each bridge member can be assiged a port cost and priority using the following
+commands:
+
+.. code-block:: sh
+
+  set interfaces bridge br100 member interface eth1 cost 10
+  set interfaces bridge br100 member interface eth1 priority 1024
+
+Interfaces assigned to a bridge do not have address configuration. An IP
 address can be assigned to the bridge interface itself, however, like any
 normal interface.
 
@@ -28,16 +37,17 @@ Example Result:
   bridge br100 {
       address 192.168.100.1/24
       address 2001:db8:100::1/64
-  }
-  [...]
-  ethernet eth1 {
-  [...]
-      vif 100 {
-          bridge-group {
-              bridge br100
+      member {
+          interface eth1 {
+              cost 10
+              priority 1024
+          }
+          interface eth2 {
           }
       }
+
   }
+  [...]
 
 In addition to normal IP interface configuration, bridge interfaces support
 Spanning-Tree Protocol. STP is disabled by default.
@@ -45,19 +55,15 @@ Spanning-Tree Protocol. STP is disabled by default.
 .. note:: Please use caution when introducing spanning-tree protocol on a
    network as it may result in topology changes.
 
-To enable spanning-tree use the
-`set interfaces bridge <name> stp true` command:
+To enable spanning-tree use the `set interfaces bridge <name> stp` command:
 
 .. code-block:: sh
 
-  set interfaces bridge br100 stp true
+  set interfaces bridge br100 stp
 
 STP `priority`, `forwarding-delay`, `hello-time`, and `max-age` can be
-configured for the bridge-group. The MAC aging time can also be configured
+configured for the bridge. The MAC aging time can also be configured
 using the `aging` directive.
-
-For member interfaces, the bridge-group `priority` and `cost` can be
-configured.
 
 The `show bridge` operational command can be used to display configured
 bridges:
