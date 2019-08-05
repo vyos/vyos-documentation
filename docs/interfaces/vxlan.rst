@@ -49,7 +49,6 @@ Configuration commands
   interfaces
     vxlan <vxlan[0-16777215]>
       address          # IP address of the VXLAN interface
-      bridge-group     # Configure a L2 bridge-group
       description      # Description
       group <ipv4>     # IPv4 Multicast group address (required)
       ip               # IPv4 routing options
@@ -120,16 +119,18 @@ Leaf2 configuration:
 
   ! Our first vxlan interface
   set interfaces bridge br241 address '172.16.241.1/24'
-  set interfaces ethernet eth1 vif 241 bridge-group bridge 'br241'
-  set interfaces vxlan vxlan241 bridge-group bridge 'br241'
+  set interfaces bridge br241 member interface 'eth1.241'
+  set interfaces bridge br241 member interface 'vxlan241'
+
   set interfaces vxlan vxlan241 group '239.0.0.241'
   set interfaces vxlan vxlan241 link 'eth0'
   set interfaces vxlan vxlan241 vni '241'
 
   ! Our seconds vxlan interface
   set interfaces bridge br242 address '172.16.242.1/24'
-  set interfaces ethernet eth1 vif 242 bridge-group bridge 'br242'
-  set interfaces vxlan vxlan242 bridge-group bridge 'br242'
+  set interfaces bridge br242 member interface 'eth1.242'
+  set interfaces bridge br242 member interface 'vxlan242'
+
   set interfaces vxlan vxlan242 group '239.0.0.242'
   set interfaces vxlan vxlan242 link 'eth0'
   set interfaces vxlan vxlan242 vni '242'
@@ -143,16 +144,18 @@ Leaf3 configuration:
 
   ! Our first vxlan interface
   set interfaces bridge br241 address '172.16.241.1/24'
-  set interfaces ethernet eth1 vif 241 bridge-group bridge 'br241'
-  set interfaces vxlan vxlan241 bridge-group bridge 'br241'
+  set interfaces bridge br241 member interface 'eth1.241'
+  set interfaces bridge br241 member interface 'vxlan241'
+
   set interfaces vxlan vxlan241 group '239.0.0.241'
   set interfaces vxlan vxlan241 link 'eth0'
   set interfaces vxlan vxlan241 vni '241'
 
   ! Our seconds vxlan interface
   set interfaces bridge br242 address '172.16.242.1/24'
-  set interfaces ethernet eth1 vif 242 bridge-group bridge 'br242'
-  set interfaces vxlan vxlan242 bridge-group bridge 'br242'
+  set interfaces bridge br242 member interface 'eth1.242'
+  set interfaces bridge br242 member interface 'vxlan242'
+
   set interfaces vxlan vxlan242 group '239.0.0.242'
   set interfaces vxlan vxlan242 link 'eth0'
   set interfaces vxlan vxlan242 vni '242'
@@ -175,11 +178,11 @@ advertised.
 
 .. code-block:: sh
 
-  set interfaces ethernet eth1 vif 241 bridge-group bridge 'br241'
-  set interfaces vxlan vxlan241 bridge-group bridge 'br241'
+  set interfaces bridge br241 member interface 'eth1.241'
+  set interfaces bridge br241 member interface 'vxlan241'
 
-Binds eth1 vif 241 and vxlan241 to each other by putting them in the same
-bridge-group. Internal VyOS requirement.
+Binds eth1.241 and vxlan241 to each other by making them both member interfaces of
+the same bridge.
 
 .. code-block:: sh
 
@@ -221,6 +224,10 @@ vxlan interface as routing interface.
 
   interfaces {
        bridge br0 {
+           member {
+               interface vxlan0 {
+               }
+           }
        }
        ethernet eth0 {
            address dhcp
@@ -228,9 +235,6 @@ vxlan interface as routing interface.
        loopback lo {
        }
        vxlan vxlan0 {
-           bridge-group {
-               bridge br0
-           }
            group 239.0.0.1
            vni 0
        }
@@ -246,22 +250,23 @@ Here is a working configuration that creates a VXLAN between two routers. Each
 router has a VLAN interface (26) facing the client devices and a VLAN interface
 (30) that connects it to the other routers. With this configuration, traffic
 can flow between both routers' VLAN 26, but can't escape since there is no L3
-gateway. You can add an IP to a bridge-group to create a gateway.
+gateway. You can add an IP to a bridge to create a gateway.
 
 .. code-block:: sh
 
   interfaces {
        bridge br0 {
+           member {
+               interface eth0.26 {
+               }
+               interface vxlan0 {
+               }
+           }
        }
        ethernet eth0 {
            duplex auto
            smp-affinity auto
            speed auto
-           vif 26 {
-               bridge-group {
-                   bridge br0
-               }
-           }
            vif 30 {
                address 10.7.50.6/24
            }
@@ -269,9 +274,6 @@ gateway. You can add an IP to a bridge-group to create a gateway.
        loopback lo {
        }
        vxlan vxlan0 {
-           bridge-group {
-               bridge br0
-           }
            group 239.0.0.241
            vni 241
        }
