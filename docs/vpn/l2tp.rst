@@ -3,7 +3,7 @@
 L2TP
 -----------
 
-VyOS utilizes accel-ppp_ to provide SSTP server functionality. It can be used
+VyOS utilizes accel-ppp_ to provide L2TP server functionality. It can be used
 with local authentication or a connected RADIUS server.
 
 L2TP over IPsec
