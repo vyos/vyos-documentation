@@ -1,7 +1,7 @@
 .. _installation:
 
-Getting the software
-====================
+Installation
+============
 
 
 Requirements
@@ -10,22 +10,29 @@ Requirements
 The recommended system requirements are 512 MiB RAM and 2 GiB storage.
 
 
-Download
---------
+Getting the software
+---------------------
 
-The latest ISO image for VyOS can be downloaded from https://vyos.io/
+Registered subscribers can download stable release (LTS) images. If you log into https://support.vyos.io/ as a registered subscriber, you will see the "Downloads" link there.
+
+Non-subscribers can get the LTS release by building it from source. Just follow the instructions in
+https://github.com/vyos/vyos-build
+
+Everyone can dowload VyOS rolling images from https://downloads.vyos.io/
 
 
 Preparing software verification
---------------------------------
+-------------------------------
 
-We sign our packages with our private key. So, if you have our public key, you will be able to verify the authenticity of the package.
+This subsection and the following one applies to dowloaded LTS images, for other cases please jump to :ref:`Install`.
+
+LTS images are signed by VyOS lead package-maintainer private key. If you have our public key, you will be able to verify the authenticity of the package.
 
 First you need to install GPG or another OpenPGP implementation.
 On most GNU+Linux distributions it is installed by default because package managers use it to verify package signatures.
 On other systems you may need to find and install the package.
 
-Then you need our public key. If you already have it, you can jump to :ref:`gpg-verification`. If you don't have it yet, you can get it from a key server. 
+Then you need VyOS public key. If you already have it, you can jump to :ref:`gpg-verification`. If you don't have it yet, you can get it from a key server. 
 
 ``gpg --recv-keys FD220285A0FE6D7E``
 
@@ -129,9 +136,10 @@ So finally you can verify the authenticity of your image.
   Primary key fingerprint: 0694 A923 0F51 39BF 834B  A458 FD22 0285 A0FE 6D7E
 
 
+.. _Install:
 
-Installation
-------------
+Install
+-------
 
 
 The VyOS ISO is a Live CD and will boot to a functional VyOS image. To login
