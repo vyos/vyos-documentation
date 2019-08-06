@@ -20,14 +20,14 @@
 # -- Project information -----------------------------------------------------
 
 project = u'VyOS'
-copyright = u'2018, VyOS maintainers and contributors'
+copyright = u'2019, VyOS maintainers and contributors'
 author = u'VyOS maintainers and contributors'
 
 # The short X.Y version
-version = u'1.3.0'
+version = u'1.2'
 
 # The full version, including alpha/beta/rc tags
-release = u'current'
+release = u'crux'
 
 
 # -- General configuration ---------------------------------------------------
