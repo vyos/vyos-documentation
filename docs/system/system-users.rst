@@ -33,7 +33,7 @@ will show the contents of :code:`system login` configuration node:
 
   user jsmith {
       authentication {
-          encrypted-password $6$0OQHjuQ8M$AYXVn7jufdfqPrSk4/XXsDBw99JBtNsETkQKDgVLptXogHA2bU9BWlvViOFPBoFxIi.iqjqrvsQdQ./cfiiPT.
+          encrypted-password $6$0OQH[...]vViOFPBoFxIi.iqjqrvsQdQ./cfiiPT.
           plaintext-password ""
       }
       full-name "Johan Smith"
@@ -63,7 +63,7 @@ key.
 
 .. code-block:: sh
 
-  set system login user jsmith authentication public-keys callisto key 'AAAAB3Hso...Q=='
+  set system login user jsmith authentication public-keys callisto key 'AAAABo..Q=='
   set system login user jsmith authentication public-keys callisto type 'ssh-rsa'
 
 RADIUS
@@ -77,23 +77,25 @@ a default timeout and port.
 
 .. code-block:: sh
 
-  set system login radius-server 192.168.1.2 secret 's3cr3t0815'
-  set system login radius-server 192.168.1.2 timeout '5'
-  set system login radius-server 192.168.1.2 port '1812'
-  set system login radius-server 192.168.1.3 secret 's3cr3t0816'
+  set system login radius server 192.168.1.2 secret 's3cr3t0815'
+  set system login radius server 192.168.1.2 timeout '5'
+  set system login radius server 192.168.1.2 port '1812'
+  set system login radius server 192.168.1.3 secret 's3cr3t0816'
 
 This configuration results in:
 
 .. code-block:: sh
 
   show system login
-   radius-server 192.168.1.2 {
-       secret s3cr3t0815
-       timeout 5
-       port 1812
-   }
-   radius-server 192.168.1.3 {
-       secret s3cr3t0816
+   radius {
+       server 192.168.1.2 {
+           secret s3cr3t0815
+           timeout 5
+           port 1812
+       }
+       server 192.168.1.3 {
+           secret s3cr3t0816
+       }
    }
 
 Source Address
@@ -107,7 +109,7 @@ networks when a link fails.
 
 .. code-block:: sh
 
-  set system login radius-source-address 192.168.1.254
+  set system login radius source-address 192.168.1.254
 
 Login Banner
 ^^^^^^^^^^^^
@@ -119,7 +121,4 @@ You are able to set post-login or pre-login messages with the following lines:
   set system login banner pre-login "UNAUTHORIZED USE OF THIS SYSTEM IS PROHIBITED\n"
   set system login banner post-login "Welcome to VyOS"
 
-the **\\n** create a newline.
-
-
-
+**\\n** create a newline.
