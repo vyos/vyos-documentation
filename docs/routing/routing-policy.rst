@@ -22,8 +22,8 @@ Routing Policy Example
   set policy route-map setmet rule 2 set as-path-prepend '2 2 2'  
   
   #Apply policy to BGP
-  set protocols bgp 1 neighbor 1.1.1.2 route-map import 'setmet'
-  set protocols bgp 1 neighbor 1.1.1.2 soft-reconfiguration 'inbound' <<<< *** 
+  set protocols bgp 1 neighbor 1.1.1.2 address-family ipv4-unicast route-map import 'setmet'
+  set protocols bgp 1 neighbor 1.1.1.2 address-family ipv4-unicast soft-reconfiguration 'inbound' <<<< *** 
   
   *** get policy update without bouncing the neighbor
 
