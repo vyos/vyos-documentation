@@ -135,8 +135,7 @@ To change the current hierarchy level use the command: `edit`
 
 You are now in a sublevel relative to `interfaces ethernet eth0`,
 all commands executed from this point on are relative to this sublevel.
-Use either the `top` or `exit` command to go back to the top of the hierarchy.
-
+Use either the `top` or `exit` command to go back to the top of the hierarchy. You can also use the `up` command to move only one level up at a time.
 
 The `show` command within configuration mode will show the working configuration
 indicating line changes with `+` for additions, `>` for replacements and `-` for deletions.
