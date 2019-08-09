@@ -62,9 +62,8 @@ non-existing device which needs to be created:
 
 If a device creation has been successful, the return code is ``0`` otherwise ``None``.
 
-
-set_alias(alias=None)
-^^^^^^^^^^^^^^^^^^^^^
+Interface alias
+^^^^^^^^^^^^^^^
 An interfaces ifalias variable is empty by default, but the variable is used for example by snmp. The parameter is optional and if not set, the default behavior is to use the interfacename of the instance, if set it uses the name set in the parameter.
 
 .. code-block:: sh
@@ -74,25 +73,27 @@ An interfaces ifalias variable is empty by default, but the variable is used for
   from vyos.interfaceconfig import Interface
 
   interface_instance = Interface("eth2")
-  interface_instance.set_alias()
+  interface_instance.ifalias = "interface_alias"
+  print (interface_instance.ifalias)
+  print (interface_instance.get_alias())
 
 
 .. code-block:: sh
 
   4: eth2: <BROADCAST,MULTICAST> mtu 1500 qdisc pfifo_fast state DOWN mode DEFAULT group default qlen 1000
     link/ether 08:00:27:70:9c:a3 brd ff:ff:ff:ff:ff:ff
-    alias eth2
+    alias interface_alias 
 
 get_alias()
-^^^^^^^^^^^
+~~~~~~~~~~~
 Reads the ifalias variable directly from the /sys/class/net/<interface>/ifalias and can be used to determine in a config a new value and what value is set in in the system.
 
 del_alias()
-^^^^^^^^^^^
+~~~~~~~~~~~
 Removes any content from the ifalias variable.
 
-set_link_state(state="up")
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Interface link state
+^^^^^^^^^^^^^^^^^^^^
 Sets an interface state either to adminitrativly up or down, regardless of the real connection status. If called without parameter, the default function is up, valid parameters are ``up`` or ``down``.
 
 
@@ -109,7 +110,9 @@ Sets an interface state either to adminitrativly up or down, regardless of the r
   from vyos.interfaceconfig import Interface
 
   interface_instance = Interface("eth2")
-  interface_instance.set_link_state()
+  interface_instance.linkstate = 'up'
+  print (interface_instance.linkstate)
+  print (interface_instance.get_link_state())
   
 
 .. code-block:: sh
@@ -118,7 +121,7 @@ Sets an interface state either to adminitrativly up or down, regardless of the r
   4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
 
 get_link_state()
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 Returns the link status of an interface which can be either ``up``, ``down`` or ``unknown``. The link status ``unknown`` is often visible on uninitialized wireguard interfaces, once traffic was successfully sent and received it will change to state ``up``. However, it is not recommended to assume that wireguard is correctly configured by the interface status, since multiple peers can be configured on a single interface and if only 1 out of 10 is working, the interface status will shown as ``up``.
 
 
@@ -126,20 +129,29 @@ remove_interface()
 ^^^^^^^^^^^^^^^^^^
 Removes an interface from the system, given as parameter of the objects instance.  
 
-set_macaddr(mac)
-^^^^^^^^^^^^^^^^
+Interface macaddress
+^^^^^^^^^^^^^^^^^^^^
 Sets the mac address on a network interface.
 
+.. code-block:: sh
+
+  interface_instance.linkstate = 'up'
+
 get_macaddr()
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 Returns the mac address of a network interface.
 
-set_mtu(mtu=None)
-^^^^^^^^^^^^^^^^^
+Interface MTU
+^^^^^^^^^^^^^
 Sets the MTU on a network interface.
 
+.. code-block:: sh
+
+  interface_instance.mtu = 9000
+
+
 get_mtu(self)
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 Returns the MTU of a network interface.
 
 
