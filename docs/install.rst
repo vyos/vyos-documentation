@@ -123,7 +123,7 @@ GPG verification
 
 As you have our public key, you just need the signature of the software you want to verify.
 
-.. note:: **In order to get the signature, go to your web browser and append *.asc* to the URL of your dowloaded VyOS image**. You will download a small *.asc* file, that's the signature of your image.
+.. note:: **In order to get the signature, go to your web browser and append .asc to the URL of your dowloaded VyOS image**. You will download a small *.asc* file, that's the signature of your image.
 
 So finally you can verify the authenticity of your image.
 
