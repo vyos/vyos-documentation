@@ -3,11 +3,11 @@
 1. fork the project on GitHub https://github.com/vyos/vyos-documentation
 2. clone the fork to your local machine
     ```shell
-    git clone https://github.com/YOUR_USERNAME/vyos-documentation
+    $ git clone https://github.com/YOUR_USERNAME/vyos-documentation
 3. cd to your new local directory vyos-documentation
 4. create a a new branch for your work. You can use a name that describes what you do.
     ```shell
-    git checkout -b fix-vxlan-typo
+   $ git checkout -b fix-vxlan-typo
     ```
 5. make your changes.
 
@@ -28,27 +28,27 @@
 
 6. Check your changes by locally building the documentation
 	```shell
-	cd docs
-	make html
+	$ cd docs
+	$ make html
 	```
     Sphinx will build the html files in the docs/_build folder
 
 7. add the modified files
     ```shell
-    git add path/to/filname
+    $ git add path/to/filname
     ```
     or add all unstaged files
     ```shell
-    git add .
+    $ git add .
     ````
 8. commit your changes
     ```shell
-    git commit -m "rename vxlan set syntax"
+    $ git commit -m "rename vxlan set syntax"
     ```
 9. push your commits to your GitHub project:
 
     ```shell
-    git push -u origin fix-vxlan-typo
+    $ git push -u origin fix-vxlan-typo
     ```
 10. submit a pull request.
 
@@ -57,12 +57,12 @@
     
 11. once pull resquests have been approved, you may want to locally update your forked repository too. First you'll have to add the remote upstream repository.
 	```shell
-	git remote add upstream https://github.com/vyos/vyos-documentation.git
+	$ git remote add upstream https://github.com/vyos/vyos-documentation.git
 	```
     
     Check your configured remote repositories.
 	```shell
-	git remote -v
+	$ git remote -v
 	origin    https://github.com/YOUR_USERNAME/vyos-documentation.git (fetch)
 	origin    https://github.com/YOUR_USERNAME/vyos.documentation.git (push)
 	upstream  https://github.com/vyos/vyos-documentation.git (fetch)
@@ -73,12 +73,12 @@
 
     Now you can locally update your forked repo.
 	```shell
-	git fetch upstream
-	git checkout master
-	git merge upstream/master
+	$ git fetch upstream
+	$ git checkout master
+	$ git merge upstream/master
 	```
     If you want to update your fork on Github too:
 	```shell
-	git push origin master
+	$ git push origin master
 	```
 
