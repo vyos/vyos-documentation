@@ -223,8 +223,12 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
 
   set protocols static interface-route 10.23.0.0/20 next-hop-interface vtun10
 
-LDAP Authentication
-*******************
+
+Client Authentication
+*********************
+
+OpenLDAP
+========
 
 Enterprise installations usually ship a kind of directory service which is used
 to have a single password store for all employes. VyOS and OpenVPN support using
@@ -263,7 +267,7 @@ The required config file may look like:
   </Authorization>
 
 Active Directory
-****************
+================
 
 Despite the fact that AD is a superset of LDAP
 
@@ -347,3 +351,57 @@ A complete LDAP auth OpenVPN configuration could look like the following example
            key-file /config/auth/server.key
        }
    }
+
+OpenVPN Client
+^^^^^^^^^^^^^^
+
+VyOS can not only act as an OpenVPN site-to-site or Server for multiple clients.
+You can indeed also configure any VyOS OpenVPN interface as an OpenVPN client
+connecting to a VyOS OpenVPN server or any other OpenVPN server.
+
+Given the following example we have one VyOS router acting as OpenVPN server
+and another VyOS router acting as OpenVPN client. The Server also pushes a
+static client IP address to the OpenVPN client. Remember, clients are identified
+using their CN attribute in the SSL certificate.
+
+
+Server
+******
+
+.. code-block:: sh
+
+  set interfaces openvpn vtun10 encryption 'aes256'
+  set interfaces openvpn vtun10 hash 'sha512'
+  set interfaces openvpn vtun10 local-host '172.18.201.10'
+  set interfaces openvpn vtun10 local-port '1194'
+  set interfaces openvpn vtun10 mode 'server'
+  set interfaces openvpn vtun10 persistent-tunnel
+  set interfaces openvpn vtun10 protocol 'udp'
+  set interfaces openvpn vtun10 server client client1 ip '10.10.0.10'
+  set interfaces openvpn vtun10 server domain-name 'vyos.net'
+  set interfaces openvpn vtun10 server max-connections '250'
+  set interfaces openvpn vtun10 server name-server '172.16.254.30'
+  set interfaces openvpn vtun10 server subnet '10.10.0.0/24'
+  set interfaces openvpn vtun10 server topology 'subnet'
+  set interfaces openvpn vtun10 tls ca-cert-file '/config/auth/ca.crt'
+  set interfaces openvpn vtun10 tls cert-file '/config/auth/server.crt'
+  set interfaces openvpn vtun10 tls dh-file '/config/auth/dh.pem'
+  set interfaces openvpn vtun10 tls key-file '/config/auth/server.key'
+  set interfaces openvpn vtun10 use-lzo-compression
+
+Client
+******
+
+.. code-block:: sh
+
+  set interfaces openvpn vtun10 encryption 'aes256'
+  set interfaces openvpn vtun10 hash 'sha512'
+  set interfaces openvpn vtun10 mode 'client'
+  set interfaces openvpn vtun10 persistent-tunnel
+  set interfaces openvpn vtun10 protocol 'udp'
+  set interfaces openvpn vtun10 remote-host '172.18.201.10'
+  set interfaces openvpn vtun10 remote-port '1194'
+  set interfaces openvpn vtun10 tls ca-cert-file '/config/auth/ca.crt'
+  set interfaces openvpn vtun10 tls cert-file '/config/auth/client1.crt'
+  set interfaces openvpn vtun10 tls key-file '/config/auth/client1.key'
+  set interfaces openvpn vtun10 use-lzo-compression
