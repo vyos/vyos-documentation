@@ -215,6 +215,11 @@ Rack Mount
    :scale: 25 %
    :alt: APU4C4 rack module #2
 
+.. figure:: /_static/images/apu4c4_rack_4.jpg
+   :scale: 25 %
+   :alt: APU4C4 rack module #3 with PSU
+
+
 Desktop
 ^^^^^^^
 
