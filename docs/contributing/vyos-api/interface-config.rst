@@ -75,7 +75,6 @@ An interfaces ifalias variable is empty by default, but the variable is used for
   interface_instance = Interface("eth2")
   interface_instance.ifalias = "interface_alias"
   print (interface_instance.ifalias)
-  print (interface_instance.get_alias())
 
 
 .. code-block:: sh
@@ -83,10 +82,6 @@ An interfaces ifalias variable is empty by default, but the variable is used for
   4: eth2: <BROADCAST,MULTICAST> mtu 1500 qdisc pfifo_fast state DOWN mode DEFAULT group default qlen 1000
     link/ether 08:00:27:70:9c:a3 brd ff:ff:ff:ff:ff:ff
     alias interface_alias 
-
-get_alias()
-~~~~~~~~~~~
-Reads the ifalias variable directly from the /sys/class/net/<interface>/ifalias and can be used to determine in a config a new value and what value is set in in the system.
 
 del_alias()
 ~~~~~~~~~~~
@@ -135,11 +130,9 @@ Sets the mac address on a network interface.
 
 .. code-block:: sh
 
-  interface_instance.linkstate = 'up'
-
-get_macaddr()
-~~~~~~~~~~~~~
-Returns the mac address of a network interface.
+  interface_instance.macaddr = '08:00:27:0e:6d:16'
+  ''' show current mac address set on the interface '''
+  print(interface_instance.macaddr)
 
 Interface MTU
 ^^^^^^^^^^^^^
@@ -148,11 +141,8 @@ Sets the MTU on a network interface.
 .. code-block:: sh
 
   interface_instance.mtu = 9000
-
-
-get_mtu(self)
-~~~~~~~~~~~~~
-Returns the MTU of a network interface.
+  ''' read mtu from interfacr
+  print(interface_instance.mtu)
 
 
 add_ipv4_addr(ipaddr=[]):
