@@ -107,18 +107,13 @@ Sets an interface state either to adminitrativly up or down, regardless of the r
   interface_instance = Interface("eth2")
   interface_instance.linkstate = 'up'
   print (interface_instance.linkstate)
-  print (interface_instance.get_link_state())
+  print (interface_instance.linkstate)
   
 
 .. code-block:: sh
 
   ip link show dev eth2
   4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-
-get_link_state()
-~~~~~~~~~~~~~~~~
-Returns the link status of an interface which can be either ``up``, ``down`` or ``unknown``. The link status ``unknown`` is often visible on uninitialized wireguard interfaces, once traffic was successfully sent and received it will change to state ``up``. However, it is not recommended to assume that wireguard is correctly configured by the interface status, since multiple peers can be configured on a single interface and if only 1 out of 10 is working, the interface status will shown as ``up``.
-
 
 remove_interface()
 ^^^^^^^^^^^^^^^^^^
@@ -141,7 +136,7 @@ Sets the MTU on a network interface.
 .. code-block:: sh
 
   interface_instance.mtu = 9000
-  ''' read mtu from interfacr
+  ''' read mtu from interface '''
   print(interface_instance.mtu)
 
 
