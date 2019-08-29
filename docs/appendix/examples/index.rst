@@ -13,3 +13,5 @@ This chapter contains various configuration Examples
    zone-policy
    bgp-ipv6-unnumbered
    ospf-unnumbered
+   azure-vpn-bgp
+   azure-vpn-dual-bgp
