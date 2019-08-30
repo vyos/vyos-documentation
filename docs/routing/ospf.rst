@@ -15,8 +15,21 @@ OSPF is a widely used IGP in large enterprise networks.
 OSPFv2 (IPv4)
 ^^^^^^^^^^^^^
 
-A typical configuration using 2 nodes, redistribute loopback address and the
-node 1 sending the default route:
+In order to have a VyOS system exchanging routes with OSPF neighbors, you will at least need to configure the area and a network,
+
+.. code-block:: sh
+
+  set protocols ospf area 0 network 192.168.0.0/24
+
+as well as the router ID.
+
+.. code-block:: sh
+
+  set protocols ospf parameters router-id 10.1.1.1
+ 
+That is the minimum configuration you will need.
+
+Below you can see a typical configuration using 2 nodes, redistribute loopback address and the node 1 sending the default route:
 
 **Node 1**
 
