@@ -3,7 +3,7 @@
 Building VyOS using Docker
 ==========================
 
-This will guide you though the process of building a VyOS ISO yourself using Docker and works best on a fresh installation of Debain 9 (Stretch).
+This will guide you though the process of building a VyOS ISO yourself using Docker and works best on a fresh installation of Debain 8 (Jessie).
 
 .. note:: Starting with VyOS 1.2 the developers have decided to change their release model. 
    VyOS is now **free as in speech, but not as in beer**, meaning that while VyOS is still an open source project, the release      ISO's are no longer free and can only be obtained via subscription, or by contributing to the community. 
