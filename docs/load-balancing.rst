@@ -11,9 +11,9 @@ The load balancer automatically adds routes for each path to the routing table a
 In a minimal, configuration the following must be provided:
 
  * a interface with a nexthop
- * one rule with a LAN (inbound-interface) and the WAN (interace).
+ * one rule with a LAN (inbound-interface) and the WAN (interface).
 
-lets asume we have two dhcp wan interfaces a one LAN (eth2)
+lets assume we have two dhcp WAN interfaces and one LAN (eth2)
 
 .. code-block:: sh
 
@@ -50,7 +50,7 @@ Create a load balancing rule, rule can be a number between 0...4294967295:
 Interface weight
 ****************
 
-Let's expand the example from above an add a weight to the interfaces. The bandwith from eth0 is larger than eth1.
+Let's expand the example from above and add a weight to the interfaces. The bandwidth from eth0 is larger than eth1.
 Per default outbound traffic is distributed randomly across available interfaces. Weights can be assigned to interfaces to influence the balancing.
 
 .. code-block:: sh
@@ -58,7 +58,7 @@ Per default outbound traffic is distributed randomly across available interfaces
     set load-balancing wan rule 0 interface eth0 weight 2
     set load-balancing wan rule 0 interface eth1 weight 1
 
-66 % traffic is routed to eth0 and eth1 get 33% of traffic.
+66% traffic is routed to eth0 and eth1 get 33% of traffic.
 
 Rate limit
 **********
@@ -80,7 +80,7 @@ Flow and packet-based balancing
 
 Outgoing traffic is balanced in a flow-based manner. 
 A connection tracking table is used to track flows by their source address, destination address and port.
-Each flow is assingned to an interface according to the defined balancing rules and subsequent packets are sent through the same interface.
+Each flow is assigned to an interface according to the defined balancing rules and subsequent packets are sent through the same interface.
 This has the advantage that packets always arrive in order if links with different speeds are in use.
 
 Packet-based balancing can lead to a better balance across interfaces when out of order packets are no issue. Per-packet-based balancing can be set for a balancing rule with:
@@ -92,7 +92,7 @@ Packet-based balancing can lead to a better balance across interfaces when out o
 Exclude traffic
 ***************
 
-To exclude traffic from load blalancing, traffic matching an exclude rule is not balanced but routed through the system routing table instead:
+To exclude traffic from load balancing, traffic matching an exclude rule is not balanced but routed through the system routing table instead:
 
 .. code-block:: sh
 
@@ -102,7 +102,7 @@ To exclude traffic from load blalancing, traffic matching an exclude rule is not
 Health checks
 -------------
 
-The health of interfaces and paths assingned to the load balancer is periodically checked by sending ICMP packets (ping) to remote destinations, a TTL test or the execution of a user defined script.
+The health of interfaces and paths assigned to the load balancer is periodically checked by sending ICMP packets (ping) to remote destinations, a TTL test or the execution of a user defined script.
 If an interface fails the health check it is removed from the load balancer's pool of interfaces. To enable health checking for an interface:
 
 .. code-block:: sh
@@ -118,7 +118,7 @@ Specify nexthop on the path to destination, ``ipv4-address`` can be set to ``dhc
 
 .. code-block:: sh
 
-    set load-balancing wan interface-health <interace> nexthop <ipv4-address>
+    set load-balancing wan interface-health <interface> nexthop <ipv4-address>
 
 Set the number of health check failures before an interface is marked as unavailable, range for number is 1 to 10, default 1.
 Or set the number of successful health checks before an interface is added back to the interface pool, range for number is 1 to 10, default 1.
