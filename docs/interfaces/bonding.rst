@@ -54,10 +54,8 @@ Now bond some physical interfaces into bond0:
 
 .. code-block:: sh
 
-  set interfaces ethernet eth0 bond-group 'bond0'
-  set interfaces ethernet eth0 description 'member of bond0'
-  set interfaces ethernet eth1 bond-group 'bond0'
-  set interfaces ethernet eth1 description 'member of bond0'
+  set interfaces bonding bond0 member interface eth0
+  set interfaces bonding bond0 member interface eth1
 
 After a commit you may treat bond0 as almost a physical interface (you can't
 change its` duplex, for example) and assign IPs or VIFs on it.
