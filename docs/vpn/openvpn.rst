@@ -420,6 +420,16 @@ options to OpenVPN.
 
   set interfaces openvpn vtun10 openvpn-option 'persistent-key'
 
-Will add `persistent-key` at the end of the generated OpenVPN configuration.
+Will add ``persistent-key`` at the end of the generated OpenVPN configuration.
 Please use this only as last resort - things might break and OpenVPN won't start
 if you pass invalid options/syntax.
+
+Sometimes option lines in the generated OpenVPN configurarion require quotes.
+This is done through a hack on our config generator. You can pass Quotes using
+the ``&quot;`` statement.
+
+.. code-block:: sh
+
+  set interfaces openvpn vtun10 openvpn-option 'push &quot;keepalive 1 10&quot;'
+
+Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
