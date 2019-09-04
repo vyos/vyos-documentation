@@ -405,3 +405,21 @@ Client
   set interfaces openvpn vtun10 tls cert-file '/config/auth/client1.crt'
   set interfaces openvpn vtun10 tls key-file '/config/auth/client1.key'
   set interfaces openvpn vtun10 use-lzo-compression
+
+Options
+^^^^^^^
+
+We do not have CLI nodes for every single OpenVPN options. If an option is
+missing, a feature request should be opened at https://phabricator.vyos.net so
+all users can benefit from it.
+
+If you are a hacker or want to try on your own we support passing raw OpenVPN
+options to OpenVPN.
+
+.. code-block:: sh
+
+  set interfaces openvpn vtun10 openvpn-option 'persistent-key'
+
+Will add `persistent-key` at the end of the generated OpenVPN configuration.
+Please use this only as last resort - things might break and OpenVPN won't start
+if you pass invalid options/syntax.
