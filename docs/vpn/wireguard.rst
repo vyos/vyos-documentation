@@ -178,5 +178,6 @@ Operational commands
 **Delete wireguard keypairs**
 
 .. code-block:: sh
+
   vyos@wg01# wireguard keypair default
 
