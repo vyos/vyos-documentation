@@ -10,8 +10,16 @@ information.
 Configuration
 ^^^^^^^^^^^^^
 
+Wireguard requires the generation of a keypair, a private key which will decrypt
+incoming traffic and a public key, which the peer(s) will use to encrypt traffic.
+
+Generate a keypair
+~~~~~~~~~~~~~~~~~~
+
 Generate the keypair, which creates a public and private part and stores it
 within VyOS.
+It will be used per default on any configured wireguard interface, even if
+multiple interfaces are being configured.
 
 .. code-block:: sh
 
@@ -25,6 +33,27 @@ traffic to your system using this public key.
 
   wg01# run show wireguard pubkey
   u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk=
+
+
+Generate named keypairs
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Named keypairs can be used on a interface basis, if configured.
+If multiple wireguard interfaces are being configured, each can have
+their own keypairs.
+
+The commands below will generate 2 keypairs, which are not releated 
+to each other.
+
+.. code-block:: sh
+
+  wg01:~$ configure
+  wg01# run generate wireguard named-keypairs KP01
+  wg01# run generate wireguard named-keypairs KP02
+
+
+Wireguard Interface configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The next step is to configure your local side as well as the policy based
 trusted destination addresses. If you only initiate a connection, the listen
@@ -54,6 +83,18 @@ The last step is to define an interface route for 10.2.0.0/24 to get through
 the wireguard interface `wg01`. Multiple IPs or networks can be defined and
 routed, the last check is allowed-ips which either prevents or allows the
 traffic.
+
+
+To use a named key on an interface, the option private-key needs to be set.
+
+.. code-block:: sh
+
+  set interfaces wireguard wg01 private-key KP01
+  set interfaces wireguard wg02 private-key KP02
+
+The command ``run show wireguard named-keypairs pubkey KP01`` will then show the public key,
+which needs to be shared with the peer.
+
 
 **remote side**
 
@@ -99,11 +140,14 @@ your peer should have knowledge if its content.
   wg01# set interfaces wireguard wg01 peer to-wg02 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
   wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
 
-**operational commands**
+Operational commands
+~~~~~~~~~~~~~~~~~~~~
+
+**Show interface status**
 
 .. code-block:: sh
 
-  vyos@wg01# show interfaces wireguard wg01
+  vyos@wg01# run show interfaces wireguard wg01
 
   interface: wg01
   public key: xHvgSJC8RTClfvjc0oX6OALxU6GGLapjthjw7x82CSw=
@@ -115,3 +159,24 @@ your peer should have knowledge if its content.
   allowed ips: 10.2.0.0/24
   latest handshake: 4 minutes, 22 seconds ago
   transfer: 860 B received, 948 B sent
+
+**Show public key of the default key**
+
+.. code-block:: sh
+
+  vyos@wg01# run show wireguard keypair pubkey default
+  FAXCPb6EbTlSH5200J5zTopt9AYXneBthAySPBLbZwM=
+
+**Show public key of a named key**
+
+.. code-block:: sh
+
+  vyos@wg01# run show wireguard keypair pubkey KP01
+  HUtsu198toEnm1poGoRTyqkUKfKUdyh54f45dtcahDM=
+
+
+**Delete wireguard keypairs**
+
+.. code-block:: sh
+  vyos@wg01# wireguard keypair default
+
