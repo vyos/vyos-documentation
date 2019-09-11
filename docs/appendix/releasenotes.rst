@@ -6,6 +6,57 @@ Release notes
 1.2 (Crux)
 ==========
 
+1.2.3
+-----
+
+1.2.3 is a maintenance and feature backport release made in September 2019.
+
+New features
+^^^^^^^^^^^^
+
+* HTTP API
+* "set service dns forwarding allow-from <IPv4 net|IPv6 net>" option for limiting queries to specific client networks (T1524)
+* Functions for checking if a commit is in progress (T1503)
+* "set system contig-mangement commit-archive source-address" option (T1543)
+* Intel NIC drivers now support receive side scaling and multiqueue (T1554)
+
+Resolved issues
+^^^^^^^^^^^^^^^
+
+* OSPF max-metric values over 100 no longer causes commit errors (T1209)
+* Fixes issue with DNS forwarding not performing recursive lookups on domain specific forwarders (T1333)
+* Special characters in VRRP passwords are handled correctly (T1362)
+* BGP weight is applied properly (T1377)
+* Fixed permission for log files (T1420)
+* Wireguard interfaces now support /31 addresses (T1425)
+* Wireguard correctly handles firewall marks (T1428)
+* DHCPv6 static mappings now work correctly (T1439)
+* Flood ping commands now works correctly (T1450)
+* Op mode "show firewall" commands now support counters longer than 8 digits (T1460)
+* Fixed priority inversion in VTI commands (T1465)
+* Fixed remote-as check in the BGP route-reflector-client option (T1468)
+* It's now possible to re-create VRRP groups with RFC compatibility mode enabled (T1472)
+* Fixed a typo in DHCPv6 server help strings  (T1527)
+* Unnumbered BGP peers now support VLAN interfaces (T1529)
+* Fixed "set system syslog global archive file" command (T1530)
+* Multiple fixes in cluster configuration scripts (T1531)
+* Fixed missing help text for "service dns" (T1537)
+* Fixed input validation in DHCPv6 relay options (T1541)
+* It's now possible to create a QinQ interface and a firewall assigned to it in one commit (T1551)
+* URL filtering now uses correct rule database path and works again (T1559)
+* "show log vpn ipsec" command works again (T1579)
+* "show arp interface <intf>" command works again (T1576)
+* Fixed regression in L2TP/IPsec server (T1605)
+* Netflow/sFlow captures IPv6 traffic correctly (T1613)
+* "renew dhcpv6" command now works from op mode (T1616)
+* BGP remove-private-as option iBGP vs eBGP check works correctly now (T1642)
+* Multiple improvements in name servers and hosts configuration handling (T1540, T1360, T1264, T1623)
+
+Internals
+^^^^^^^^^
+
+/etc/resolv.conf and /etc/hosts files are now managed by the vyos-hostsd service that listens on a ZMQ socket for update messages.
+
 1.2.2
 -----
 
