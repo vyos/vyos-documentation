@@ -308,16 +308,16 @@ If you only wan't to check if the user account is enabled and can authenticate
 .. code-block:: sh
 
   <LDAP>
-    URL ldap://ds0001.gefoekom.de
-    BindDN CN=SA_OPENVPN,OU=ServiceAccounts,OU=GS,OU=GeFoekoM,DC=gefoekom,DC=de
-    Password g7LjfjmlPhhHnvmal75hbfdknms-44
+    URL ldap://dc01.example.com
+    BindDN CN=SA_OPENVPN,OU=ServiceAccounts,DC=example,DC=com
+    Password ThisIsTopSecret
     Timeout  15
     TLSEnable no
     FollowReferrals no
   </LDAP>
 
   <Authorization>
-    BaseDN          "OU=GeFoekoM,DC=gefoekom,DC=de"
+    BaseDN          "DC=example,DC=com"
     SearchFilter    "sAMAccountName=%u"
     RequireGroup    false
   </Authorization>
