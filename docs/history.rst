@@ -20,7 +20,7 @@ Vyatta was based upon).
 
 Vyatta changed to the Quagga routing engine for release 4.0.
 
-VyOS changed the routing enging to `FRRoution <https://frrouting.org/>`_ in
+VyOS changed the routing engine to `FRRouting <https://frrouting.org/>`_ in
 version 1.2.0
 
 **How it's different from other router distros?**
