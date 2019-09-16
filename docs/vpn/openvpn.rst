@@ -175,6 +175,10 @@ First we need to specify the basic settings. 1194/UDP is the default. The
 `persistent-tunnel` option is recommended, it prevents the TUN/TAP device from
 closing on connection resets or daemon reloads.
 
+
+.. note:: Using **openvpn-option -reneg-sec** can be tricky. This option is used to renegotiate data channel after n seconds. When used at both server and client, the lower value will trigger the renegotiation. If you set it to 0 on one side of the connection (to disable it), the chosen value on the other side will determine when the renegotiation will occur.
+
+
 .. code-block:: sh
 
   set interfaces openvpn vtun10 mode server
