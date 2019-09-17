@@ -102,6 +102,27 @@ first be created):
 
   set zone-policy zone INSIDE from OUTSIDE firewall name INSIDE-OUT
 
+How VyOS replies when being pinged
+----------------------------------
+
+By default, when VyOS receives an ICMP echo request packet destined for itself, it will answer with an ICMP echo reply, unless you avoid it through its firewall.
+
+With the firewall you can set rules to accept, drop or reject ICMP in, out or local traffic. You can also use the general **firewall all-ping** command. This command affects only to LOCAL (packets destined for your VyOS system), not to IN or OUT traffic.
+
+.. note:: **firewall all-ping** affects only to LOCAL and it always behaves in the most restrictive way
+
+.. code-block:: sh
+
+  set firewall all-ping enable
+
+When the command above is set, VyOS will answer every ICMP echo request addressed to itself, but that will only happen if no other rule is applied droping or rejecting local echo requests. In case of conflict, VyOS will not answer ICMP echo requests.
+
+.. code-block:: sh
+
+  set firewall all-ping disable
+
+When the comand above is set, VyOS will answer no ICMP echo request addressed to itself at all, no matter where it comes from or whether more specific rules are being applied to accept them.
+
 Example Partial Config
 ----------------------
 
