@@ -131,9 +131,9 @@ asymmetric crypto, which is optional.
   wg01# run generate wireguard preshared-key
   rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc=
 
-Copy the key, it is not stored on the local file system. Make sure you
-distribute that key in a safe manner, it's a symmatric key, so only you and
-your peer should have knowledge if its content.
+Copy the key, as it is not stored on the local file system. Make sure you
+distribute that key in a safe manner, it's a symmetric key, so only you and
+your peer should have knowledge of its content.
 
 .. code-block:: sh
 
@@ -141,7 +141,7 @@ your peer should have knowledge if its content.
   wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
 
 Operational commands
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 **Show interface status**
 

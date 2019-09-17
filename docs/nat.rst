@@ -87,6 +87,9 @@ protocol behavior. For this reason, VyOS does not globally drop invalid state
 traffic, instead allowing the operator to make the determination on how the
 traffic is handled.
 
+NAT Reflection/Hairpin NAT
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. note:: Avoiding NAT breakage in the absence of split-DNS
 
 A typical problem with using NAT and hosting public servers is the ability for
@@ -96,7 +99,7 @@ systems to the internal address when requests are made internally. Because
 many smaller networks lack DNS infrastructure, a work-around is commonly
 deployed to facilitate the traffic by NATing the request from internal hosts
 to the source address of the internal interface on the firewall. This technique
-is commonly reffered to as **NAT Reflection**, or **Hairpin NAT**.
+is commonly referred to as **NAT Reflection**, or **Hairpin NAT**.
 
 In this example, we will be using the example Quick Start configuration above
 as a starting point.
@@ -272,8 +275,10 @@ described in RFC6296_. NPTv6 is supported in linux kernel since version 3.13.
 Usage
 ^^^^^
 
-NPTv6 is very useful for IPv6 multihoming. Let's assume the following network
-configuration:
+NPTv6 is very useful for IPv6 multihoming. It is also commonly used when the external IPv6 prefix is dynamic,
+as it prevents the need for renumbering of internal hosts when the extern prefix changes.
+
+Let's assume the following network configuration:
 
 * eth0 : LAN
 * eth1 : WAN1, with 2001:db8:e1::/48 routed towards it

@@ -15,3 +15,4 @@ This chapter contains various configuration Examples
    ospf-unnumbered
    azure-vpn-bgp
    azure-vpn-dual-bgp
+   tunnelbroker-ipv6
