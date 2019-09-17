@@ -7,7 +7,7 @@ VRRP (Virtual Redundancy Protocol) provides active/backup redundancy for routers
 Every VRRP router has a physical IP/IPv6 address, and a virtual address.
 On startup, routers elect the master, and the router with the highest priority becomes the master and assigns the virtual address to its interface.
 All routers with lower priorities become backup routers. The master then starts sending keepalive packets to notify other routers that it's available.
-If the master fails and stops sending keepalive packets, router with the next highest priority becomes the new master and takes over the virtual address.
+If the master fails and stops sending keepalive packets, the router with the next highest priority becomes the new master and takes over the virtual address.
 
 VRRP keepalive packets use multicast, and VRRP setups are limited to a single datalink layer segment.
 You can setup multiple VRRP groups (also called virtual routers). Virtual routers are identified by a VRID (Virtual Router IDentifier).
@@ -19,7 +19,7 @@ Basic setup
 VRRP groups are created with the ``set high-availability vrrp group $GROUP_NAME`` commands.
 The required parameters are interface, vrid, and virtual-address.
 
-mininmal config
+minimal config
 
 .. code-block:: sh
 
