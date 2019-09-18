@@ -8,8 +8,9 @@ There are two main ways to setup VyOS to connect over a PPPoE internet connectio
 
 **First Method:** (Common for Homes)
 
-In this method, the DSL Modem/Router connects to the DSL ISP for you with your credentials preprogrammed into the device and it gives you a local IP address such as 192.168.1.0/24 be default.
-For home networks this is usually fine and saves you trouble but if you want to run a configuration of your own controlled by VyOS, this would mean a Double Firewall, a Double NAT, and double Router as both the DSL Modem/Router and the VyOS would act as firewalls, NATs, and Routers and if you try to do more then just browse Web Sites this will usually cause you trouble.
+In this method, the DSL Modem/Router connects to the ISP for you with your credentials preprogrammed into the device.  This gives you an RFC1918_ address, such as 192.168.1.0/24 by default.
+
+For a simple home network using just the ISP's equipment, this is usually desirable.  But if you want to run VyOS as your firewall and router, this will result in having a double NAT and firewall setup. This results in a few extra layers of complexity, particularly if you use some NAT or tunnel features.
 
 **Second Method:** (Common for Businesses)
 
@@ -77,3 +78,5 @@ This command shows the same log as without the 'tail' option but only starts wit
 .. code-block:: sh
 
   show interfaces pppoe 0 log tail
+
+.. _RFC1918: https://tools.ietf.org/html/rfc1918

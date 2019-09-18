@@ -13,8 +13,8 @@ All those protocols are grouped under 'interfaces tunnel' in VyOS. Let's take a 
 IPIP
 ----
 
-This is the simplest tunneling protocol in existence. It is defined by RFC2003_.
-It simply takes an IPv4 packet and sends it as a payload of another IPv4 packet. For this reason it doesn't really have any configuration options by itself.
+This is one of the simplest types of tunnels, as defined by RFC2003_.
+It takes an IPv4 packet and sends it as a payload of another IPv4 packet. For this reason, there are no other configuration options for this kind of tunnel.
 
 An example:
 
@@ -64,7 +64,7 @@ An example:
 6in4 uses tunneling to encapsulate IPv6 traffic over IPv4 links as defined in RFC4213_.
 The 6in4 traffic is sent over IPv4 inside IPv4 packets whose IP headers have the IP protocol number set to 41.
 This protocol number is specifically designated for IPv6 encapsulation, the IPv4 packet header is immediately followed by the IPv6 packet being carried.
-qThe encapsulation overhead is the size of the IPv4 header of 20 bytes, therefore with an MTU of 1500 bytes, IPv6 packets of 1480 bytes can be sent without fragmentation. This tunneling technique is frequently used by IPv6 tunnel brokers like `Hurricane Electric`_.
+The encapsulation overhead is the size of the IPv4 header of 20 bytes, therefore with an MTU of 1500 bytes, IPv6 packets of 1480 bytes can be sent without fragmentation. This tunneling technique is frequently used by IPv6 tunnel brokers like `Hurricane Electric`_. 
 
 An example:
 
@@ -74,6 +74,8 @@ An example:
   set interfaces tunnel tun0 local-ip 192.0.2.10
   set interfaces tunnel tun0 remote-ip 192.0.2.20
   set interfaces tunnel tun0 address 2001:db8:bb::1/64
+
+A full example of a Tunnelbroker.net config can be found at :ref:`here <examples-tunnelbroker-ipv6>`.
 
 Generic Routing Encapsulation (GRE)
 -----------------------------------

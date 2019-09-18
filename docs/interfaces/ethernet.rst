@@ -28,10 +28,12 @@ Resulting in:
       speed auto
   }
 
-In addition, Ethernet interfaces provide the extended operational commands
-`show interfaces ethernet <name> physical` and
-`show interfaces ethernet <name> statistics`. Statistics available are driver
-dependent.
+In addition, Ethernet interfaces provide the extended operational commands:
+
+* `show interfaces ethernet <name> physical`
+* `show interfaces ethernet <name> statistics` 
+
+Statistics available are driver dependent.
 
 .. code-block:: sh
 
