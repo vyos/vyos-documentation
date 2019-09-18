@@ -51,8 +51,8 @@ Example: Set system hostname to 'RT01':
 Domain Name
 ^^^^^^^^^^^
 
-A domainname is the label (name) assigned to a computer network and is thus
-unique!
+A domain name is the label (name) assigned to a computer network and is thus
+unique.
 
 Set the system's domain:
 
@@ -158,7 +158,7 @@ It is replaced by inserting a static route into the routing table using:
 
   set protocols static route 0.0.0.0/0 next-hop <gateway ip>
 
-Delete default route fomr the system
+Delete the default route from the system
 
 .. code-block:: sh
 
