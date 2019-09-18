@@ -73,9 +73,9 @@ Add policy route matching VLAN source addresses
   set policy route PBR rule 20 description 'Route VLAN10 traffic to table 10'
   set policy route PBR rule 20 source address '192.168.188.0/24'
 
-  set policy route PBR rule 20 set table '11'
-  set policy route PBR rule 20 description 'Route VLAN11 traffic to table 11'
-  set policy route PBR rule 20 source address '192.168.189.0/24'
+  set policy route PBR rule 30 set table '11'
+  set policy route PBR rule 30 description 'Route VLAN11 traffic to table 11'
+  set policy route PBR rule 30 source address '192.168.189.0/24'
 
 Apply routing policy to **inbound** direction of out VLAN interfaces
 
