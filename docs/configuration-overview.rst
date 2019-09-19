@@ -117,7 +117,7 @@ to enter configuration mode enter the command `configure` when in operational mo
 
   vyos@vyos$ configure
   [edit]
-  cyos@vyos#
+  vyos@vyos#
 
 .. note:: When going into configuration mode, prompt changes from *$* to *#*. To exit configuration mode, type `exit`.
 
@@ -292,8 +292,8 @@ configuration revisions in configuration mode, use the compare command:
   [edit]
   vyos@vyos#
 
-You can rollback configuration using the rollback command, however this
-command will currently trigger a system reboot.
+You can rollback configuration using the rollback command.  This 
+command will apply the selected revision and trigger a system reboot.
 
 .. code-block:: sh
 
@@ -328,8 +328,9 @@ or TFTP.
 Operational info from config mode
 ---------------------------------
 
-When inside configuration mode you are not directly able to execute operational commands,
-access to these commands are possible trough the use of the `run [command]` command.
+When inside configuration mode you are not directly able to execute operational commands.
+
+Access to these commands are possible through the use of the `run [command]` command.
 From this command you will have access to everything accessible from operational mode.
 Command completion and syntax help with `?` and `[tab]` will also work.
 
@@ -353,7 +354,8 @@ This feature was available in Vyatta Core since 6.3
 Local archive and revisions
 ---------------------------
 
-Revisions are stored on disk, you can view them, compare them, and rollback to previous revisions if anything goes wrong.
+Revisions are stored on disk. You can view them, compare them, and rollback to previous revisions if anything goes wrong.
+
 To view existing revisions, use `show system commit` operational mode command.
 
 .. code-block:: sh
@@ -398,4 +400,8 @@ Remote archive
 
 VyOS can copy the config to a remote location after each commit. TFTP, FTP, and SFTP servers are supported.
 
-You can specify the location with `set system config-management commit-archive location URL` command, e.g. `set system config-management commit-archive location tftp://10.0.0.1/vyos`.
+You can specify the location with: 
+
+* `set system config-management commit-archive location URL` 
+
+For example, `set system config-management commit-archive location tftp://10.0.0.1/vyos`.
