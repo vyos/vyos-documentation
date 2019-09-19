@@ -399,3 +399,16 @@ Remote archive
 VyOS can copy the config to a remote location after each commit. TFTP, FTP, and SFTP servers are supported.
 
 You can specify the location with `set system config-management commit-archive location URL` command, e.g. `set system config-management commit-archive location tftp://10.0.0.1/vyos`.
+
+
+Wipe config and restore default
+-------------------------------
+
+In the case you want to completely delete your configuration and restore the default one, you can enter the following command in configuration mode:
+
+.. code-block:: sh
+
+  load /opt/vyatta/etc/config.boot.default
+
+.. note:: If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config.
+
