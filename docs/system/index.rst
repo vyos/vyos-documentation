@@ -14,6 +14,7 @@ should be ready for further configuration which is described in this chapter.
    eventhandler
    flowaccounting
    host-information
+   ntp
    serialconsole
    system-users
    syslog
