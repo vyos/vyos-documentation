@@ -16,7 +16,7 @@ Memory Contention Considerations
 When the underlying ESXi host is approaching ~92% memory utilisation it will start the balloon process in s a 'soft' state to start reclaiming memory from guest operating systems. 
 This causes an artifical pressure using the vmmemctl driver on memory usage on the virtual guest. As VyOS by default does not have a swap file, this vmmemctl pressure is unable to
 force processes to move in memory data to the paging file, and blindly consumes memory forcing the virtual guest into a low memory state with no way to escape. The balloon can expand to 65% of 
-guest allocated memory, so a VyOS guest running >35% of memory usage, can encoutner an out of memory situation, and trigger the kernel oom_kill process. At this point a weighted 
+guest allocated memory, so a VyOS guest running >35% of memory usage, can encounter an out of memory situation, and trigger the kernel oom_kill process. At this point a weighted 
 lottery favouring memory hungry processes will be run with the unlucky winner being terminated by the kernel.
 
 It is advised that VyOS routers are configured in a resource group with adequate memory reservations so that ballooning is not inflicted on virtual VyOS guests.
