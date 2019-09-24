@@ -1,10 +1,10 @@
 .. _vyosonvmware:
 
 Running on VMWare ESXi
-#####################
+######################
 
 ESXi 5.5 or later
-****************
+*****************
 
 .ova files are available for supporting users, and a VyOS can also be stood up using a generic Linux instance, and attaching the bootable ISO file and installing from the ISO 
 using the normal process around `install image`.
