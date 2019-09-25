@@ -43,6 +43,7 @@ as a router and firewall platform for cloud deployments.
     appendix/troubleshooting.rst
     appendix/examples/index.rst
     appendix/commandtree/index.rst
+    appendix/vyos-on-vmware.rst
     appendix/vyos-on-baremetal.rst
     appendix/migrate-from-vyatta.rst
 
