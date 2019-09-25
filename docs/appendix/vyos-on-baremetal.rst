@@ -372,6 +372,6 @@ I'm not sure if it helps the process but I changed default option to live-serial
 (line “default xxxx”) on the USB key under syslinux/syslinux.cfg.
 
 I connected the key to one black USB port on the back and powered on. The first
-VyOS screen has some readability issues. Press enter to continue.
+VyOS screen has some readability issues. Press :kbd:`Enter` to continue.
 
 Then VyOS should boot and you can perform the ``install image``
