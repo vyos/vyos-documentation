@@ -365,7 +365,7 @@ Reboot into BIOS, Chipset > South Bridge > USB Configuration:
 Install VyOS:
 -------------
 
-Create a VyOS bootable USB key. I Used the 64bits iso (VyOS 1.1.7) and `LinuxLive
+Create a VyOS bootable USB key. I used the 64-bit ISO (VyOS 1.1.7) and `LinuxLive
 USB Creator <http://www.linuxliveusb.com/>`_.
 
 I'm not sure if it helps the process but I changed default option to live-serial
