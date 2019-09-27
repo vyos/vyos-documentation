@@ -28,6 +28,12 @@ Setting a forwarding DNS server for a specific domain:
 .. code-block:: sh
 
   set service dns forwarding domain example.com server 192.0.2.1
+  
+Set which networks or clients are allowed to query the DNS Server. Allow from all:
+
+.. code-block:: sh
+
+  set service dns forwarding allow-from 0.0.0.0/0
 
 Example 1
 ^^^^^^^^^
@@ -44,6 +50,7 @@ Router with two interfaces eth0 (WAN link) and eth1 (LAN). Split DNS for example
   set service dns forwarding name-server 8.8.8.8
   set service dns forwarding name-server 8.8.4.4
   set service dns forwarding listen-address 192.168.0.1
+  set service dns forwarding allow-from 0.0.0.0/0
 
 Example 2
 ^^^^^^^^^
@@ -62,3 +69,4 @@ The IP addresses for the LAN interface are 192.168.0.1 and 2001:db8::1
   set service dns forwarding name-server 2001:4860:4860::8844
   set service dns forwarding listen-address 2001:db8::1
   set service dns forwarding listen-address 192.168.0.1 
+  set service dns forwarding allow-from 0.0.0.0/0
