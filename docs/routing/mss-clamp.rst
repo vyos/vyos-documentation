@@ -7,7 +7,7 @@ As Internet wide PMTU discovery rarely works we sometimes need to clamp our TCP
 MSS value to a specific value. Starting with VyOS 1.2 there is a firewall option
 to clamp your TCP MSS value for IPv4 and IPv6.
 
-Clamping can be disabled per interface using the `disable` keywork:
+Clamping can be disabled per interface using the `disable` keyword:
 
 .. code-block:: sh
 

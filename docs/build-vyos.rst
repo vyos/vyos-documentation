@@ -13,7 +13,7 @@ Docker and works best on a fresh installation of Debain 8 (Jessie).
    the community. Since the source code is still public you can build your own
    ISO using the process described here.
 
-Installing Docker and it's prequisites
+Installing Docker and it's prerequisites
 
 .. code-block:: sh
 

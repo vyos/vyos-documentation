@@ -31,7 +31,7 @@ This information is used in two ways:
   * Keep track of the progress (what we've already done in this branch and what we still need to do).
   * Prepare release notes.
 
-To make this approach work, every change must be associated with a bug number and componant.
+To make this approach work, every change must be associated with a bug number and component.
 If there is no bug/enhancement request for the changes you are going to make, you must create a `bugtracker`_ entry first.
 Once there is a `bugtracker`_ entry about it, you should reference in your commit message, as in:
 

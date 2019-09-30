@@ -3,7 +3,7 @@
 Clustering
 ==========
 
-The cluster feature allows 2 vyos routers to share IP adresses and various services.
+The cluster feature allows 2 vyos routers to share IP addresses and various services.
 
 VyOS supports multicast clustering.
 

@@ -92,6 +92,6 @@ Exemple:
 Troubleshooting
 ^^^^^^^^^^^^^^^
 
-Use operationnal command ``show log lldp`` to display logs.
+Use operational command ``show log lldp`` to display logs.
 
 .. include:: references.rst

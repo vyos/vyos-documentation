@@ -18,13 +18,13 @@ Registered subscribers can download stable release (LTS) images. If you log into
 Non-subscribers can get the LTS release by building it from source. Just follow the instructions in
 https://github.com/vyos/vyos-build
 
-Everyone can dowload VyOS rolling images from https://downloads.vyos.io/
+Everyone can download VyOS rolling images from https://downloads.vyos.io/
 
 
 Preparing software verification
 -------------------------------
 
-This subsection and the following one applies to dowloaded LTS images, for other cases please jump to :ref:`Install`.
+This subsection and the following one applies to downloaded LTS images, for other cases please jump to :ref:`Install`.
 
 LTS images are signed by VyOS lead package-maintainer private key. If you have our public key, you will be able to verify the authenticity of the package.
 
@@ -123,7 +123,7 @@ GPG verification
 
 As you have our public key, you just need the signature of the software you want to verify.
 
-.. note:: **In order to get the signature, go to your web browser and append .asc to the URL of your dowloaded VyOS image**. You will download a small *.asc* file, that's the signature of your image.
+.. note:: **In order to get the signature, go to your web browser and append .asc to the URL of your downloaded VyOS image**. You will download a small *.asc* file, that's the signature of your image.
 
 So finally you can verify the authenticity of your image.
 

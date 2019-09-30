@@ -61,12 +61,12 @@ VRRP priority can be set with ``priority`` option:
 
   set high-availability vrrp group Foo priority 200
 
-The priority must be an interger number from 1 to 255. Higher priority value increases router's precedence in the master elections.
+The priority must be an integer number from 1 to 255. Higher priority value increases router's precedence in the master elections.
 
 Preemption
 ----------
 
-VRRP can use two modes: preemptive and non-preemptive. In the preemptive mode, if a router with a higher priority fails and then comes back, routers with lower priority will give up their master status. In non-preemptive mode, the newly elected master will keep the master status and the virtual address indenfinitely.
+VRRP can use two modes: preemptive and non-preemptive. In the preemptive mode, if a router with a higher priority fails and then comes back, routers with lower priority will give up their master status. In non-preemptive mode, the newly elected master will keep the master status and the virtual address indefinitely.
 
 By default VRRP uses preemption. You can disable it with the "no-preempt" option:
 

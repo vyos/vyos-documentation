@@ -41,12 +41,12 @@ Connections can be locally checked via the command
 Client IP address pools
 =======================
 
-To automatically assign the client an IP address as tunnel endpoint, a client IP pool is needed. The source can be either RADIUS or a local subnet or IP range defintion.
+To automatically assign the client an IP address as tunnel endpoint, a client IP pool is needed. The source can be either RADIUS or a local subnet or IP range definition.
 
 Once the local tunnel endpoint ``set service pppoe-server local-ip '10.1.1.2'`` has been defined, the client IP pool can be either defined as a range or as subnet using CIDR notation.
 If the CIDR notation is used, multiple subnets can be setup which are used sequentially.
 
-**Client IP address via IP range defintion**
+**Client IP address via IP range definition**
 
 .. code-block:: sh
 
@@ -116,7 +116,7 @@ If attribute Filter-Id redefined, replace it in radius coa request
 Automatic VLAN creation
 =======================
 
-VLAN's can be created by accel-ppp on the fly if via the use of the kernel module vlan_mon, which is monitoring incoming vlans and creates the neccessary VLAN if required and allowed.
+VLAN's can be created by accel-ppp on the fly if via the use of the kernel module vlan_mon, which is monitoring incoming vlans and creates the necessary VLAN if required and allowed.
 VyOS supports the use of either VLAN ID's or entire ranges, both values can be defined at the same time for an interface.
 
 .. code-block:: sh
@@ -127,7 +127,7 @@ VyOS supports the use of either VLAN ID's or entire ranges, both values can be d
   set service pppoe-server interface eth3 vlan-range 2000-3000
 
 
-The pppoe-server will now create these VLANs if required and once the user session has been cancelled, and the VLAN is not neccessary anymore, it will remove it again.
+The pppoe-server will now create these VLANs if required and once the user session has been cancelled, and the VLAN is not necessary anymore, it will remove it again.
 
 
 

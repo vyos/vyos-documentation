@@ -809,7 +809,7 @@ Available commands:
 
   :code:`set traffic-policy round-robin <policy name> default quantum <packets>`
 
-* Define a maximum queue lenght for the default policy in packets:
+* Define a maximum queue length for the default policy in packets:
 
   :code:`set traffic-policy round-robin <policy name> default queue-limit <limit>`
 
@@ -926,7 +926,7 @@ different amounts of bandwidth to different traffic classes. In contrast to
 round robin, shaper limits bandwidth allocation by traffic class whereas round
 robin divides the total available bandwidth between classes.
 
-Avialable commands:
+Available commands:
 
 * Define a shaper policy:
 
