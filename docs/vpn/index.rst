@@ -5,7 +5,7 @@
 VPN
 ===
 
-This chapter descriptes the available VPN services provided by VyOS.
+This chapter describes the available VPN services provided by VyOS.
 
 .. toctree::
    :hidden:

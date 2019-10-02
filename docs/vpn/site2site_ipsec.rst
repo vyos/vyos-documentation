@@ -41,7 +41,7 @@ Each site-to-site peer has the next options:
 
   * ``cert-file`` - certificate file, which will be used for authenticating local router on remote peer;
 
-  * ``crl-file`` - file with the Certificate Revocation List. Using to check if a certificate for the remote peer is valid or revocated;
+  * ``crl-file`` - file with the Certificate Revocation List. Using to check if a certificate for the remote peer is valid or revoked;
 
   * ``key`` - a private key, which will be used for authenticating local router on remote peer:
 

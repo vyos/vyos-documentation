@@ -42,7 +42,7 @@ Named keypairs can be used on a interface basis, if configured.
 If multiple wireguard interfaces are being configured, each can have
 their own keypairs.
 
-The commands below will generate 2 keypairs, which are not releated 
+The commands below will generate 2 keypairs, which are not related 
 to each other.
 
 .. code-block:: sh

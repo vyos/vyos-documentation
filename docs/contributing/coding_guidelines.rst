@@ -54,7 +54,7 @@ The **get_config()** function must convert the VyOS config to an abstract intern
 representation. No other function is allowed to call ``vyos.config.Config`` object
 methods directly. The rationale for it is that when config reads are mixed with
 other logic, it's very hard to change the config syntax since you need to weed
-out every occurence of the old syntax. If syntax-specific code is confined to a
+out every occurrence of the old syntax. If syntax-specific code is confined to a
 single function, the rest of the code can be left untouched as long as the
 internal representation remains compatible.
 
@@ -75,7 +75,7 @@ The **apply()** function applies the generated configuration to the live system.
 It should use non-disruptive reload whenever possible. It may execute disruptive
 operations such as daemon process restart if a particular component does not
 support non-disruptive reload, or when the expected service degradation is minimal
-(for example, in case of auxillary services such as LLDPd). In case of high impact
+(for example, in case of auxiliary services such as LLDPd). In case of high impact
 services such as VPN daemon and routing protocols, when non-disruptive reload is
 supported for some but not all types of configuration changes, scripts authors
 should make effort to determine if a configuration change can be done in a

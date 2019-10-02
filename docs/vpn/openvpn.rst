@@ -160,7 +160,7 @@ OpenVPN Server
 Multi-client server is the most popular OpenVPN mode on routers. It always uses
 x.509 authentication and therefore requires a PKI setup. This guide assumes you
 have already setup a PKI and have a CA certificate, a server certificate and
-key, a certificate revokation list, a Diffie-Hellman key exchange parameters
+key, a certificate revocation list, a Diffie-Hellman key exchange parameters
 file. You do not need client certificates and keys for the server setup.
 
 In this example we will use the most complicated case: a setup where each
@@ -235,11 +235,11 @@ OpenLDAP
 ========
 
 Enterprise installations usually ship a kind of directory service which is used
-to have a single password store for all employes. VyOS and OpenVPN support using
+to have a single password store for all employees. VyOS and OpenVPN support using
 LDAP/AD as single user backend.
 
 Authentication is done by using the ``openvpn-auth-ldap.so`` plugin which is
-shiped with every VyOS installation. A dedicated configuration file is required.
+shipped with every VyOS installation. A dedicated configuration file is required.
 It is best practise to store it in ``/config`` to survive image updates
 
 .. code-block:: sh
@@ -306,7 +306,7 @@ Despite the fact that AD is a superset of LDAP
     </Group>
   </Authorization>
 
-If you only wan't to check if the user account is enabled and can authenticate
+If you only want to check if the user account is enabled and can authenticate
 (against the primary group) the following snipped is sufficient:
 
 .. code-block:: sh

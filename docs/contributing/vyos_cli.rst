@@ -5,8 +5,8 @@ VyOS CLI
 
 The bash completion in VyOS is defined in *templates*. Templates are text files
 stored in a directory tree, where directory names define command names, and
-template files define command behaviour. Befor VyOS 1.2.x this files were created
-by hand. After a complex redesing process_ the new style template are in XML.
+template files define command behaviour. Before VyOS 1.2.x this files were created
+by hand. After a complex redesign process_ the new style template are in XML.
 
 XML interface definitions for VyOS come with a RelaxNG schema and are located
 in the vyos-1x_ module. This schema is a slightly modified schema from VyConf_

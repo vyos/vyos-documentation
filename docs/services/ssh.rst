@@ -44,13 +44,13 @@ Options
 
 * Allow ``root`` login, this can be set to allow ``root`` logins on SSH
   connections, however it is not advisable to use this setting as this bears
-  serious security risks. The default system user posesses all required
+  serious security risks. The default system user possesses all required
   privileges.
 
   :code:`set service ssh allow-root`
 
 * Allowed ciphers - A number of allowed ciphers can be specified, use multiple
-  occurances to allow multiple ciphers.
+  occurrences to allow multiple ciphers.
 
   :code:`set service ssh ciphers <cipher>`
 
@@ -70,7 +70,7 @@ Options
  * `cast128-cbc`
 
 * Disable password authentication - If SSH key authentication is set up,
-  password-based user authetication can be disabled. This hardens security!
+  password-based user authentication can be disabled. This hardens security!
 
   :code:`set service ssh disable-password-authentication`
 

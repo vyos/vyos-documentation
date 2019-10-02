@@ -5,7 +5,7 @@
 Services
 ========
 
-This chapter descriptes the available system/network services provided by VyOS.
+This chapter describes the available system/network services provided by VyOS.
 
 .. toctree::
    :maxdepth: 1

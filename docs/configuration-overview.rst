@@ -105,7 +105,7 @@ The working configuration is the configuration which is currently being modified
 
 Saved configuration
 ^^^^^^^^^^^^^^^^^^^
-A saved configuration is a configuration saved to a file using the `save` command. It allowes you to keep safe a configuration for future uses. There can be multiple configuration files. The default or "boot" configuration is saved and loaded from the file config.boot.
+A saved configuration is a configuration saved to a file using the `save` command. It allows you to keep safe a configuration for future uses. There can be multiple configuration files. The default or "boot" configuration is saved and loaded from the file config.boot.
 
 
 Navigating in Configuration Mode
@@ -206,7 +206,7 @@ Managing the configuration
 --------------------------
 
 The configuration is managed by the use of `set` and `delete` commands from within configuration mode.
-Configuration commands are flattend from the tree into 'one-liner' commands shown in `show configuration commands` from operation mode.
+Configuration commands are flattened from the tree into 'one-liner' commands shown in `show configuration commands` from operation mode.
 
 These commands are also relative to the level where they are executed and all redundant information from the current level is removed from the command entered.
 
@@ -370,7 +370,7 @@ To view existing revisions, use `show system commit` operational mode command.
   6   2015-03-25 00:16:47 by vyos via cli
   7   2015-03-24 23:43:45 by root via boot-config-loader
 
-You can compare revisions with `compare X Y` command, where X and Y are revision numbers. The output will describe how the configuration X is when comparted to Y, indicating with a plus sign (**+**) the additional parts X has when compared to y, and indicating with a minus sign (**-**) the lacking parts x misses when compared to y.
+You can compare revisions with `compare X Y` command, where X and Y are revision numbers. The output will describe how the configuration X is when compared to Y, indicating with a plus sign (**+**) the additional parts X has when compared to y, and indicating with a minus sign (**-**) the lacking parts x misses when compared to y.
 
 .. code-block:: sh
 
