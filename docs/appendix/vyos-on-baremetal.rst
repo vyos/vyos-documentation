@@ -94,10 +94,10 @@ Shopping Cart
 
 * 1x apu4c4 = 4 i211AT LAN / AMD GX-412TC CPU / 4 GB DRAM / dual SIM
 * 1x Kingston SUV500MS/120G
-* 1x VARIA Group Item 326745 10" dual rack rack for APU4
+* 1x VARIA Group Item 326745 19" dual rack rack for APU4
 
-The 19" enclosure can accomodate two APU4 boards - there is a single and dual
-cover.
+The 19" enclosure can accomodate up to two APU4 boards - there is a single and
+dual front cover.
 
 VyOS 1.2 (crux)
 ---------------
@@ -162,7 +162,7 @@ emulator to 9600 8N1 and after a while your console will show:
 You can now proceed with a regular image installation as described in
 :ref:`installation`.
 
-^As the APU board itself still used a serial setting of 115200 8N1 it is strongly
+As the APU board itself still used a serial setting of 115200 8N1 it is strongly
 recommended that you change the VyOS serial interface settings after your first
 successful boot.
 
