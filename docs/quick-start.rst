@@ -28,10 +28,8 @@ Enable SSH for remote management:
 
   set service ssh port '22'
 
-
-
 Configure DHCP Server and DNS
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: sh
 
