@@ -79,6 +79,8 @@ below is always the public key from your peer, not your local one.
   set interfaces wireguard wg01 port '12345'
   set protocols static interface-route 10.2.0.0/24 next-hop-interface wg01
 
+.. note:: The `endpoint` must be an IP and not a fully qualified domain name (FQDN). Using a FQDN will result in unexpected behavior.
+
 The last step is to define an interface route for 10.2.0.0/24 to get through
 the wireguard interface `wg01`. Multiple IPs or networks can be defined and
 routed, the last check is allowed-ips which either prevents or allows the
