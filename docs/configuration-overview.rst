@@ -221,7 +221,7 @@ These commands are also relative to the level where they are executed and all re
 These two commands above are essentially the same, just executed from different levels in the hierarchy.
 
 To delete a configuration entry use the `delete` command, this also deletes all sub-levels under the current level you've specified in the `delete` command.
-Deleting an entry could also mean to reset it back to its default value if the element is mandatory, in each case it will be removed from the configuration file.
+Deleting an entry would also result in the element reverting back to its default value if one exist.
 
 .. code-block:: sh
 
@@ -265,8 +265,67 @@ used.
   exit
   vyos@vyos:~$
 
-VyOS automatically maintains backups of previous configurations. To compare
-configuration revisions in configuration mode, use the compare command:
+
+
+.. code-block:: sh
+
+  vyos@vyos# save [tab]
+  Possible completions:
+    <Enter>       Save to system config file
+    <file>        Save to file on local machine
+    scp://<user>:<passwd>@<host>/<file> Save to file on remote machine
+    ftp://<user>:<passwd>@<host>/<file> Save to file on remote machine
+    tftp://<host>/<file>      Save to file on remote machine
+  vyos@vyos# save tftp://192.168.0.100/vyos-test.config.boot
+  Saving configuration to 'tftp://192.168.0.100/vyos-test.config.boot'...
+  ######################################################################## 100.0%
+  Done
+
+Operational info from config mode
+---------------------------------
+
+When inside configuration mode you are not directly able to execute operational commands.
+
+Access to these commands are possible through the use of the `run [command]` command.
+From this command you will have access to everything accessible from operational mode.
+
+Command completion and syntax help with `?` and `[tab]` will also work.
+
+.. code-block:: sh
+
+  [edit]
+  vyos@vyos# run show interfaces
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  Interface        IP Address                        S/L  Description
+  ---------        ----------                        ---  -----------
+  eth0             0.0.0.0/0                         u/u
+
+
+Configuration archive
+---------------------
+
+VyOS automatically maintains backups of previous configurations.
+
+Local archive and revisions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Revisions are stored on disk. You can view them, compare them, and rollback to previous revisions if anything goes wrong.
+
+To view existing revisions, use `show system commit` operational mode command.
+
+.. code-block:: sh
+
+  vyos@vyos-test-2# run show system commit
+  0   2015-03-30 08:53:03 by vyos via cli
+  1   2015-03-30 08:52:20 by vyos via cli
+  2   2015-03-26 21:26:01 by root via boot-config-loader
+  3   2015-03-26 20:43:18 by root via boot-config-loader
+  4   2015-03-25 11:06:14 by root via boot-config-loader
+  5   2015-03-25 01:04:28 by root via boot-config-loader
+  6   2015-03-25 00:16:47 by vyos via cli
+  7   2015-03-24 23:43:45 by root via boot-config-loader
+
+To compare configuration revisions in configuration mode, use the compare command:
 
 .. code-block:: sh
 
@@ -292,84 +351,6 @@ configuration revisions in configuration mode, use the compare command:
   [edit]
   vyos@vyos#
 
-You can rollback configuration using the rollback command.  This 
-command will apply the selected revision and trigger a system reboot.
-
-.. code-block:: sh
-
-  vyos@vyos# compare 1
-  [edit system]
-  >host-name vyos-1
-  [edit]
-  vyos@vyos# rollback 1
-  Proceed with reboot? [confirm][y]
-  Broadcast message from root@vyos-1 (pts/0) (Tue Dec 17 21:07:45 2013):
-  The system is going down for reboot NOW!
-  [edit]
-  vyos@vyos#
-
-VyOS also supports saving and loading configuration remotely using SCP, FTP,
-or TFTP.
-
-.. code-block:: sh
-
-  vyos@vyos# save [tab]
-  Possible completions:
-    <Enter>       Save to system config file
-    <file>        Save to file on local machine
-    scp://<user>:<passwd>@<host>/<file> Save to file on remote machine
-    ftp://<user>:<passwd>@<host>/<file> Save to file on remote machine
-    tftp://<host>/<file>      Save to file on remote machine
-  vyos@vyos# save tftp://192.168.0.100/vyos-test.config.boot
-  Saving configuration to 'tftp://192.168.0.100/vyos-test.config.boot'...
-  ######################################################################## 100.0%
-  Done
-
-Operational info from config mode
----------------------------------
-
-When inside configuration mode you are not directly able to execute operational commands.
-
-Access to these commands are possible through the use of the `run [command]` command.
-From this command you will have access to everything accessible from operational mode.
-Command completion and syntax help with `?` and `[tab]` will also work.
-
-.. code-block:: sh
-
-  [edit]
-  vyos@vyos# run show interfaces
-  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
-  Interface        IP Address                        S/L  Description
-  ---------        ----------                        ---  -----------
-  eth0             0.0.0.0/0                         u/u
-
-
-Configuration archive
----------------------
-
-VyOS has built-in config archiving and versioning that renders tools like rancid, largely unnecessary.
-
-This feature was available in Vyatta Core since 6.3
-
-Local archive and revisions
----------------------------
-
-Revisions are stored on disk. You can view them, compare them, and rollback to previous revisions if anything goes wrong.
-
-To view existing revisions, use `show system commit` operational mode command.
-
-.. code-block:: sh
-
-  vyos@vyos-test-2# run show system commit
-  0   2015-03-30 08:53:03 by vyos via cli
-  1   2015-03-30 08:52:20 by vyos via cli
-  2   2015-03-26 21:26:01 by root via boot-config-loader
-  3   2015-03-26 20:43:18 by root via boot-config-loader
-  4   2015-03-25 11:06:14 by root via boot-config-loader
-  5   2015-03-25 01:04:28 by root via boot-config-loader
-  6   2015-03-25 00:16:47 by vyos via cli
-  7   2015-03-24 23:43:45 by root via boot-config-loader
-
 You can compare revisions with `compare X Y` command, where X and Y are revision numbers. The output will describe how the configuration X is when compared to Y, indicating with a plus sign (**+**) the additional parts X has when compared to y, and indicating with a minus sign (**-**) the lacking parts x misses when compared to y.
 
 .. code-block:: sh
@@ -388,15 +369,29 @@ You can compare revisions with `compare X Y` command, where X and Y are revision
   -}
 
 
-You can rollback to a previous revision with `rollback X`, where X is a revision number. Your system will reboot and load the config from the archive.
+You can rollback configuration using the rollback command.  This 
+command will apply the selected revision and trigger a system reboot.
+
+.. code-block:: sh
+
+  vyos@vyos# compare 1
+  [edit system]
+  >host-name vyos-1
+  [edit]
+  vyos@vyos# rollback 1
+  Proceed with reboot? [confirm][y]
+  Broadcast message from root@vyos-1 (pts/0) (Tue Dec 17 21:07:45 2013):
+  The system is going down for reboot NOW!
+  [edit]
+  vyos@vyos#
 
 Configuring the archive size
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can specify the number of revisions stored on disk with `set system config-management commit-revisions X`, where X is a number between 0 and 65535. When the number of revisions exceeds that number, the oldest revision is removed.
 
 Remote archive
---------------
+^^^^^^^^^^^^^^
 
 VyOS can copy the config to a remote location after each commit. TFTP, FTP, and SFTP servers are supported.
 
