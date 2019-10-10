@@ -23,7 +23,7 @@ Interface Configuration
 
 .. code-block:: sh
 
- set interface eth1 address 172.16.17.1/24
+ set interface ethernet eth1 address 172.16.17.1/24
 
 Multiple ranges can be defined and can contain holes.
 
