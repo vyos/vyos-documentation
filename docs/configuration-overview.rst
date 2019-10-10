@@ -221,7 +221,7 @@ These commands are also relative to the level where they are executed and all re
 These two commands above are essentially the same, just executed from different levels in the hierarchy.
 
 To delete a configuration entry use the `delete` command, this also deletes all sub-levels under the current level you've specified in the `delete` command.
-Deleting an entry would also result in the element reverting back to its default value if one exist.
+Deleting an entry will also result in the element reverting back to its default value if one exists.
 
 .. code-block:: sh
 
@@ -351,6 +351,9 @@ To compare configuration revisions in configuration mode, use the compare comman
   [edit]
   vyos@vyos#
 
+Comparing Revisions
+"""""""""""""""""""
+
 You can compare revisions with `compare X Y` command, where X and Y are revision numbers. The output will describe how the configuration X is when compared to Y, indicating with a plus sign (**+**) the additional parts X has when compared to y, and indicating with a minus sign (**-**) the lacking parts x misses when compared to y.
 
 .. code-block:: sh
@@ -368,6 +371,8 @@ You can compare revisions with `compare X Y` command, where X and Y are revision
   -    address 192.0.2.4/24
   -}
 
+Rolling Back Changes
+""""""""""""""""""""
 
 You can rollback configuration using the rollback command.  This 
 command will apply the selected revision and trigger a system reboot.
@@ -386,7 +391,7 @@ command will apply the selected revision and trigger a system reboot.
   vyos@vyos#
 
 Configuring the archive size
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""
 
 You can specify the number of revisions stored on disk with `set system config-management commit-revisions X`, where X is a number between 0 and 65535. When the number of revisions exceeds that number, the oldest revision is removed.
 
