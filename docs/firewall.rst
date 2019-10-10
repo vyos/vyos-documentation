@@ -37,7 +37,7 @@ or the need to reload individual firewall rules.
 
 .. note:: Groups can also be referenced by NAT configuration.
 
-While network groups accept IP networks in CIDR notation, specific IP addresses
+While **network groups** accept IP networks in CIDR notation, specific IP addresses
 can be added as a 32-bit prefix. If you foresee the need to add a mix of
 addresses and networks, the network group is recommended.
 
@@ -49,7 +49,15 @@ internal network:
   set firewall group network-group NET-INSIDE network 192.168.0.0/24
   set firewall group network-group NET-INSIDE network 192.168.1.0/24
 
-A port group represents only port numbers, not the protocol. Port groups can
+Groups need to have unique names. Even though some contain IPv4 addresses and others contain IPv6 addresses, they still need to have unique names, so you may want to append "-v4" or "-v6" to your group names.
+
+.. code-block:: sh
+
+  set firewall group network-group NET-INSIDE-v4 network 192.168.1.0/24
+  set firewall group ipv6-network-group NET-INSIDE-v6 network 2001:db8::/64
+
+
+A **port group** represents only port numbers, not the protocol. Port groups can
 be referenced for either TCP or UDP. It is recommended that TCP and UDP groups
 are created separately to avoid accidentally filtering unnecessary ports.
 Ranges of ports can be specified by using `-`.
