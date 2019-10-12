@@ -13,12 +13,27 @@ The recommended system requirements are 512 MiB RAM and 2 GiB storage.
 Getting the software
 ---------------------
 
-Registered subscribers can download stable release (LTS) images. If you log into https://support.vyos.io/ as a registered subscriber, you will see the "Downloads" link there.
+Registered subscribers
+^^^^^^^^^^^^^^^^^^^^^^
 
-Non-subscribers can get the LTS release by building it from source. Just follow the instructions in
+A registered subscriber can log into https://support.vyos.io/ to have access to a variety of different downloads via the "Downloads" link.  
+These downloads include LTS releases and associated hot-fixes, early public access releases, pre-built VM images, as well as device specific installation ISOs.
+
+.. figure:: /_static/images/vyos-downloads.png
+
+Building from source
+^^^^^^^^^^^^^^^^^^^^
+
+Non-subscribers can get the LTS release by building it from source. The instructions for building from source can be found at:
+
 https://github.com/vyos/vyos-build
 
-Everyone can download VyOS rolling images from https://downloads.vyos.io/
+Rolling releases
+^^^^^^^^^^^^^^^^
+
+Non-subscribers and subscribers can download bleeding-edge VyOS rolling images from:
+
+https://downloads.vyos.io/
 
 
 Preparing software verification
@@ -26,20 +41,23 @@ Preparing software verification
 
 This subsection and the following one applies to downloaded LTS images, for other cases please jump to :ref:`Install`.
 
-LTS images are signed by VyOS lead package-maintainer private key. If you have our public key, you will be able to verify the authenticity of the package.
+LTS images are signed by VyOS lead package-maintainer private key. With the official public key, the authenticity of the package can be verified.
 
-First you need to install GPG or another OpenPGP implementation.
-On most GNU+Linux distributions it is installed by default because package managers use it to verify package signatures.
-On other systems you may need to find and install the package.
+First, install GPG or another OpenPGP implementation.
+On most GNU+Linux distributions it is installed by default as package managers use it to verify package signatures.
+If not pre-installed, it will need to be downloaded and installed.
 
-Then you need VyOS public key. If you already have it, you can jump to :ref:`gpg-verification`. If you don't have it yet, you can get it from a key server. 
+The offical VyOS public key can be retrieved in a number of ways. Skip to :ref:`gpg-verification` if the key is already present. 
+
+It can be retrieved directly from a key server:
 
 ``gpg --recv-keys FD220285A0FE6D7E``
 
-Or open your web browser, visit a key server and copy our public key from there: https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E
+Or it can be accessed from a key server via a web browser:
 
-Or from this block below.
+https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E
 
+Or from the following block: 
 
 
 .. code-block:: sh
@@ -98,13 +116,11 @@ Or from this block below.
   -----END PGP PUBLIC KEY BLOCK-----
 
 
-
-Then you can paste that text in a new file, and import the file into GPG:
+The key is then pasted into a new text file and imported into GPG:
 
 ``gpg --import file_with_the_public_key``
  
-
-You can now check your GPG software has our public key.
+The import can be verified with:
 
 .. code-block:: sh
 
@@ -121,11 +137,11 @@ You can now check your GPG software has our public key.
 GPG verification
 ----------------
 
-As you have our public key, you just need the signature of the software you want to verify.
+With the public key imported, the signature for the desired image needs to be downloaded.
 
-.. note:: **In order to get the signature, go to your web browser and append .asc to the URL of your downloaded VyOS image**. You will download a small *.asc* file, that's the signature of your image.
+.. note:: The signature can be downloaded by appending `.asc` to the URL of the downloaded VyOS image. The small *.asc* is the signature for the associated image.
 
-So finally you can verify the authenticity of your image.
+Finally, verify the authencity of the downloaded image:
 
 .. code-block:: sh
 
@@ -142,8 +158,9 @@ Install
 -------
 
 
-The VyOS ISO is a Live CD and will boot to a functional VyOS image. To login
-to the system, use the default username ``vyos`` with password ``vyos``.
+The VyOS ISO is a Live CD and will boot to a functional VyOS image. 
+
+To login to the system, use the default username ``vyos`` with password ``vyos``.
 
 .. code-block:: sh
 
@@ -160,20 +177,15 @@ to the system, use the default username ``vyos`` with password ``vyos``.
 
 Unlike general purpose Linux distributions, VyOS uses "image installation"
 that mimics the user experience of traditional hardware routers and allows
-you to keep multiple VyOS versions on the same machine and switch to a previous
-version if something breaks after upgrade. Every version is contained in its
-own squashfs image that is mounted in a union filesystem together with a
-directory for mutable data (configs etc.).
+keeping multiple VyOS versions installed simultaneously. This makes it possible to switch to a previous
+version if something breaks after an upgrade. 
 
-.. note:: Older versions used to support non-image installation (`install system` command). 
-   Support for this is removed from VyOS 1.2 (crux) and newer releases
+Every version is contained in its own squashfs image that is mounted in a union filesystem together with a
+directory for mutable data such as configurations, keys, or custom scripts.
 
-   This installation method has been deprecated since the time image installation
-   was introduced (long before the fork), and does not provide any version
-   management capabilities. You **should not** use it for new installations
-   even if it's still available in new versions. You should not worry about
-   older systems installed that way though, they can be upgraded with ``add
-   system image``. 
+.. note:: Older versions used to support non-image installation (``install system`` command). 
+   Support for this is removed from VyOS 1.2 (crux) and newer releases.  Older releases can still be upgraded
+   via ``add system image <image_path>``
 
 To install VyOS, run ``install image``.
 
