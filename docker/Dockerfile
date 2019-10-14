@@ -38,8 +38,8 @@ RUN sed "s/^%sudo.*/%sudo\tALL=(ALL) NOPASSWD:ALL/g" -i /etc/sudoers && \
     chmod a+s /usr/sbin/useradd /usr/sbin/groupadd /usr/sbin/gosu /usr/sbin/usermod
 
 # vale
-# RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v1.7.1
-RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.0.0-beta.2
+RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v1.7.1
+
 
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
