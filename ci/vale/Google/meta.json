@@ -1,0 +1,16 @@
+{
+  "author": "Joseph Kato",
+  "description": "A Vale-compatible implementation of the Microsoft Writing Style Guide.",
+  "email": "support@errata.ai",
+  "lang": "en",
+  "url": "https://github.com/errata-ai/Google/releases/latest/download/Google.zip",
+  "feed": "https://github.com/errata-ai/Google/releases.atom",
+  "issues": "https://github.com/errata-ai/Google/issues/new",
+  "license": "MIT",
+  "name": "Google",
+  "sources": [
+    "https://developers.google.com/style/"
+  ],
+  "vale_version": ">=1.0.0",
+  "coverage": 0.0
+}

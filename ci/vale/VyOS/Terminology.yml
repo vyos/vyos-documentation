@@ -1,0 +1,9 @@
+extends: substitution
+message: Prefer '%s' over '%s'
+ignorecase: false
+level: warning
+swap:
+  vyos: VyOS
+  Vyos: VyOS
+  VYOS: VyOS
+  Gre: GRE

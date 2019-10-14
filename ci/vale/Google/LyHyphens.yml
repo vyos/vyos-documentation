@@ -1,0 +1,8 @@
+extends: existence
+message: "'%s' doesn't need a hyphen."
+link: 'https://developers.google.com/style/hyphens'
+level: error
+ignorecase: false
+nonword: true
+tokens:
+  - '\s[^\s-]+ly-'
