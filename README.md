@@ -58,3 +58,17 @@ docker run --rm -it -v "$(pwd):/vyos" -w /vyos/docs vyos-docu make html
 docker run --rm -it -p 8000:8000 -v "$(pwd):/vyos" -w /vyos/docs vyos-docu make livehtml
 ```
 
+### Test the docs
+
+discuss in this Task: [T1731](https://phabricator.vyos.net/T1731)
+
+to test all files:
+
+```bash
+$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos-docu vale .
+```
+
+to test a specific file e.g. clustering.rst
+```bash
+$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos-docu vale clustering.rst
+```

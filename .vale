@@ -1,0 +1,34 @@
+StylesPath = ci/vale
+MinAlertLevel = suggestion
+
+[*.rst]
+BasedOnStyles = VyOS
+
+Google.DateFormat = YES
+vale.GenderBias = NO
+vale.Hedging = NO
+vale.Redundancy = NO
+vale.Repetition = YES
+vale.Uncomparables = NO
+proselint.GenderBias = YES
+
+# Custom block scoping (see the regex101 links for unit tests):
+#
+# Rule #1 (https://regex101.com/r/TJQLJ4/2/tests): Ignore `{%comment%}` blocks. This
+# keeps Vale from flagging 'endcomment' as a spelling mistake.
+#
+# Rule #2 (https://regex101.com/r/7VA2lV/2/tests): Ignore `<div>`s and `<section>`s
+# that specify `markdown="1"` since it isn't supported by Vale's Markdown
+# parser (https://github.com/russross/blackfriday/issues/184).
+#
+# Rule #3 (https://regex101.com/r/NxFflU/1/tests): Ignore `{% include %}`-codeblock
+# pairs.
+BlockIgnores = (?s)({%\s?comment\s?%}.+?{%\s?endcomment\s?%}), \
+(?s)(<(?:div|section)[^>]*markdown="1"[^>]*>.*?</(?:div|section)>), \
+(?s)((?: *{% include [^%]+ %}\n)? *~~~.*?~~~~?)
+
+# Custom inline scoping (see the regex101 links for unit tests):
+#
+# Rule #1 (https://regex101.com/r/cTiITH/2/tests): Ignore `{% include %}`s, which
+# contain file paths.
+TokenIgnores = ({%\s?include\s? {{ [^}]+ }}[^%]+\s?%})
