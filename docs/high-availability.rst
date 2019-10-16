@@ -63,6 +63,44 @@ VRRP priority can be set with ``priority`` option:
 
 The priority must be an integer number from 1 to 255. Higher priority value increases router's precedence in the master elections.
 
+Sync groups
+-----------
+
+A sync group allows VRRP groups to transition together.  
+
+.. code-block:: sh
+
+    edit high-availability
+    set sync-group MAIN member VLAN9
+    set sync-group MAIN member VLAN20
+
+In the following example, when VLAN9 transitions, VLAN20 will also transition:
+
+.. code-block:: sh
+
+    vrrp {
+        group VLAN9 {
+            interface eth0.9
+            virtual-address 10.9.1.1/24
+            priority 200
+            vrid 9
+        }
+        group VLAN20 {
+            interface eth0.20
+            priority 200
+            virtual-address 10.20.20.1/24
+            vrid 20
+        }
+        sync-group MAIN {
+            member VLAN20
+            member VLAN9
+        }
+    }
+
+
+.. warning:: All items in a sync group should be similarly configured.  If one VRRP group is set to a different premption delay or priority, it would result in an endless transition loop.
+
+
 Preemption
 ----------
 
