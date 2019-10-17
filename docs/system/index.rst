@@ -16,7 +16,7 @@ should be ready for further configuration which is described in this chapter.
    host-information
    ntp
    serialconsole
-   system-users
+   login-users
    syslog
    task-scheduler
    config-management

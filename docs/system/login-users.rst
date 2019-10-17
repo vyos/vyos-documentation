@@ -96,6 +96,10 @@ This configuration results in:
        secret s3cr3t0816
    }
 
+.. note:: If you wan't to have admin users to authenticate via RADIUS it is
+   essential to sent the ``Cisco-AV-Pair shell:priv-lvl=15`` attribute. Without
+   the attribute you will only get regular, non privilegued, system users.
+
 Source Address
 **************
 
