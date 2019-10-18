@@ -35,6 +35,10 @@ Non-subscribers and subscribers can download bleeding-edge VyOS rolling images f
 
 https://downloads.vyos.io/
 
+The following link will always fetch the most updated AMD64 image of the current branch:
+
+https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+
 
 Preparing software verification
 -------------------------------
@@ -139,7 +143,7 @@ GPG verification
 
 With the public key imported, the signature for the desired image needs to be downloaded.
 
-.. note:: The signature can be downloaded by appending `.asc` to the URL of the downloaded VyOS image. The small *.asc* is the signature for the associated image.
+.. note:: The signature can be downloaded by appending `.asc` to the URL of the downloaded VyOS image. That small *.asc* file is the signature for the associated image.
 
 Finally, verify the authencity of the downloaded image:
 
@@ -250,3 +254,134 @@ After the installation is complete, remove the Live CD and reboot the system:
 
 
 
+
+.. _PXE Install:
+
+PXE Install
+-----------
+
+VyOS can also be installed through PXE. This is a more complex installation method which allows deploying VyOS through the network. 
+
+
+Requirements
+^^^^^^^^^^^^
+
+* **Clients** (where VyOS is to be installed) **with a PXE-enabled NIC**
+* A **DHCP server** 
+* A **TFTP server**
+* A **HTTP server** (this is optional but we will use it to speed up our intallation)
+* The **VyOS ISO** image to be installed (Do not use images prior to 1.2.3)
+* The **pxelinux.0** and **ldlinux.c32** `files from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_
+
+Step 1: DHCP
+^^^^^^^^^^^^
+
+Configure a DHCP server so that it gives the client
+
+	- An **IP address**
+	- The **TFTP server address** (DHCP option 66). Sometimes named *Boot server*
+	- The **bootfile name** (DHCP option 67), which is **pxelinux.0**
+
+In this example we configured an existent VyOS as the DHCP server:
+
+.. code-block:: sh
+
+  vyos@vyos# show service dhcp-server 
+   shared-network-name mydhcp {
+       subnet 192.168.1.0/24 {
+           bootfile-name pxelinux.0
+           bootfile-server 192.168.1.50
+           default-router 192.168.1.50
+           range 0 {
+               start 192.168.1.70
+               stop 192.168.1.100
+           }
+       }
+   }
+  [edit]
+  vyos@vyos# 
+
+
+.. _tftp-server:
+
+Step 2: TFTP
+^^^^^^^^^^^^
+
+Configure a TFTP server so that it serves the following:
+	
+	+ The file **pxelinux.0** from the *Syslinux* distribution
+	+ The file **ldlinux.c32** from the *Syslinux* distribution
+	+ The kernel of the VyOS software you want to deploy. That is the **vmlinuz** file inside the *live* directory of the extracted contents from the ISO file.
+	+ The initial ramdisk of the VyOS ISO you want to deploy. That is the **initrd.img** file inside the *live* directory of the extracted contents from the ISO file. Do not use an empty (0 bytes) initrd.img file you might find, the correct file may have a longer name.
+	+ **A directory named pxelinux.cfg which must contain the configuration file**. We will use the `configuration file <https://wiki.syslinux.org/wiki/index.php?title=Config>`_ shown below, which we named `default <https://wiki.syslinux.org/wiki/index.php?title=PXELINUX#Configuration>`_. 
+
+
+In the example we configured our existent VyOS as the TFTP server too:
+
+.. code-block:: sh
+
+  vyos@vyos# show service tftp-server 
+   directory /config/tftpboot
+   listen-address 192.168.1.50
+  [edit]
+  vyos@vyos#
+  
+  
+Example of the contents of the TFTP server:
+
+.. code-block:: sh
+
+  vyos@vyos# ls -hal /config/tftpboot/
+  total 29M
+  drwxr-sr-x 3 tftp tftp      4.0K Oct 14 00:23 .
+  drwxrwsr-x 9 root vyattacfg 4.0K Oct 18 00:05 ..
+  -r--r--r-- 1 root vyattacfg  25M Oct 13 23:24 initrd.img-4.19.54-amd64-vyos
+  -rwxr-xr-x 1 root vyattacfg 120K Oct 13 23:44 ldlinux.c32
+  -rw-r--r-- 1 root vyattacfg  46K Oct 13 23:24 pxelinux.0
+  drwxr-xr-x 2 root vyattacfg 4.0K Oct 14 01:10 pxelinux.cfg
+  -r--r--r-- 1 root vyattacfg 3.7M Oct 13 23:24 vmlinuz
+  [edit]
+  vyos@vyos# 
+  [edit]
+  vyos@vyos# ls -hal /config/tftpboot/pxelinux.cfg
+  total 12K
+  drwxr-xr-x 2 root vyattacfg 4.0K Oct 14 01:10 .
+  drwxr-sr-x 3 tftp tftp      4.0K Oct 14 00:23 ..
+  -rw-r--r-- 1 root root       191 Oct 14 01:10 default
+  [edit]
+  vyos@vyos# 
+  
+
+Example of simple (no menu) configuration file:
+
+.. code-block:: sh
+  
+  vyos@vyos# cat /config/tftpboot/pxelinux.cfg/default 
+  DEFAULT VyOS123
+  
+  LABEL VyOS123
+   KERNEL vmlinuz
+   APPEND initrd=initrd.img-4.19.54-amd64-vyos boot=live nopersistence noautologin nonetworking fetch=http://192.168.1.2:8000/filesystem.squashfs
+  [edit]
+  vyos@vyos# 
+  
+  
+
+Step 3: HTTP
+^^^^^^^^^^^^
+
+	a) As you can read in the configuration file, we are sending *filesystem.squashfs* through HTTP. As that is a heavy file, we choose HTTP to speed up its transfer. **Run a web server** --you can use a simple one like `Python's SimpleHTTPServer <https://docs.python.org/2/library/simplehttpserver.html>`_-- **and start serving the filesystem.squashfs file**. The file can be found inside the *live* directory of the extracted contents of the ISO file.
+
+
+	b) Edit the configuration file at the :ref:`tftp-server` so that it shows the correct URL at *fetch=http://address_of_your_HTTP_server/filesystem.squashfs*. Then restart the TFTP service. If you are using VyOS as your TFTP Server, you can restart the service with ``sudo service tftpd-hpa restart``.
+
+
+.. note::  Make sure the available directories and files in both TFTP server and HTTP server have the right permissions to be accessed from the booting clients.
+
+
+Step 4: Boot the clients
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Turn on the PXE-enabled client or clients. They will automatically get an IP address from the DHCP server and start booting into VyOS live from the files automatically taken from the TFTP and HTTP servers.
+
+Once finished you will be able to proceed with the ``install image`` command as in a normal VyOS installation.
