@@ -62,6 +62,7 @@ Use <tab> to setup the ``set sstp-settings ssl-certs ...``, it automatically loo
 
 .. code-block:: sh
 
+  edit service sstp-server
   set authentication local-users username foo password 'bar'
   set authentication mode 'local'
   set network-settings client-ip-settings gateway-address '10.100.100.1'
