@@ -27,7 +27,7 @@ public key.
 
 .. code-block:: sh
 
-  vyatta@vyatta:~$ '''wget http://vyos.net/so3group_maintainers.key'''
+  vyatta@vyatta:~$ '''wget http://wiki.vyos.net/so3group_maintainers.key'''
   Connecting to vyos.net (x.x.x.x:80)
   so3group_maintainers 100% |******************************|  3125  --:--:-- ETA
   vyatta@vyatta:~$ '''sudo apt-key add so3group_maintainers.key'''
