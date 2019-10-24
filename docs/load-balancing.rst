@@ -19,9 +19,9 @@ lets assume we have two dhcp WAN interfaces and one LAN (eth2)
 
     set load-balancing wan interface-health eth0 nexthop 'dhcp'
     set load-balancing wan interface-health eth1 nexthop 'dhcp'
-    set load-balancing wan rule 0 inbound-interface 'eth2'
-    set load-balancing wan rule 0 interface eth0
-    set load-balancing wan rule 0 interface eth1
+    set load-balancing wan rule 1 inbound-interface 'eth2'
+    set load-balancing wan rule 1 interface eth0
+    set load-balancing wan rule 1 interface eth1
 
 Balancing Rules
 ---------------
@@ -30,11 +30,11 @@ Interfaces, their weight and the type of traffic to be balanced are defined in n
 The rule sets are executed in numerical order against outgoing packets. In case of a match the packet is sent through an interface specified in the matching rule.
 If a packet doesn't match any rule it is sent by using the system routing table. Rule numbers can't be changed.
 
-Create a load balancing rule, rule can be a number between 0...4294967295:
+Create a load balancing rule, rule can be a number between 1 and 9999:
 
 .. code-block:: sh
 
-    vyos@vyos# set load-balancing wan rule 0
+    vyos@vyos# set load-balancing wan rule 1
     Possible completions:
     description             Description for this rule
     > destination           Destination
@@ -55,8 +55,8 @@ Per default outbound traffic is distributed randomly across available interfaces
 
 .. code-block:: sh
 
-    set load-balancing wan rule 0 interface eth0 weight 2
-    set load-balancing wan rule 0 interface eth1 weight 1
+    set load-balancing wan rule 1 interface eth0 weight 2
+    set load-balancing wan rule 1 interface eth1 weight 1
 
 66% traffic is routed to eth0 and eth1 get 33% of traffic.
 
