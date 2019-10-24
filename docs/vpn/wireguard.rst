@@ -148,17 +148,26 @@ Operational commands
 .. code-block:: sh
 
   vyos@wg01# run show interfaces wireguard wg01
-
-  interface: wg01
-  public key: xHvgSJC8RTClfvjc0oX6OALxU6GGLapjthjw7x82CSw=
-  private key: (hidden)
-  listening port: 12345
-
-  peer: 9Ek3R30mG6Vk+GHsENtPF0b9Ul+ftxx4dDBa1bdBxX8=
-  endpoint: 192.168.0.142:12345
-  allowed ips: 10.2.0.0/24
-  latest handshake: 4 minutes, 22 seconds ago
-  transfer: 860 B received, 948 B sent
+  interface: wg1
+      description: VPN-to-wg01 
+      address: 10.2.0.1/24'
+      public key: RIbtUTCfgzNjnLNPQ/asldkfjhaERDFl2H/xUfbyjc=
+      private key: (hidden)
+      listening port: 53665
+      peer: to-wg02
+          public key: u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk=
+          latest handshake: 0:01:20
+          status: active
+          endpoint: 192.168.0.124:12345
+          allowed ips: 10.2.0.0/24
+          transfer: 42 GB received, 487 MB sent
+          persistent keepalive: every 15 seconds
+      RX:
+              bytes    packets    errors    dropped    overrun    mcast
+      45252407916   31192260         0     244493          0        0
+      TX:
+          bytes    packets    errors    dropped    carrier    collisions
+      511649780    5129601     24465          0          0             0
 
 **Show public key of the default key**
 
