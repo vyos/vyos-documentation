@@ -33,10 +33,8 @@ agent which reports information via SNMP to the manager.
 An SNMP-managed network consists of three key components:
 
 * Managed devices
-
-* Agent – software which runs on managed devices
-
-* Network management station (NMS) – software which runs on the manager
+* Agent - software which runs on managed devices
+* Network management station (NMS) - software which runs on the manager
 
 A managed device is a network node that implements an SNMP interface that
 allows unidirectional (read-only) or bidirectional (read and write) access to
@@ -179,10 +177,12 @@ After commit the resulting configuration will look like:
 SNMP Extensions
 ^^^^^^^^^^^^^^^
 
-To extend SNMP agent functionality, custom scripts can be executed every time the agent is being called.
-This can be achieved by using `arbitrary extension commands`_.
-The first step is to create a functional script of course, then upload it to your VyOS instance via the command ``scp your_script.sh vyos@your_router:/config/user-data``.
-Once the script is uploaded, it needs to be configured via the command below.
+To extend SNMP agent functionality, custom scripts can be executed every time
+the agent is being called. This can be achieved by using ``arbitrary extension
+commands``_. The first step is to create a functional script of course, then
+upload it to your VyOS instance via the command ``scp your_script.sh
+vyos@your_router:/config/user-data``. Once the script is uploaded, it needs to
+be configured via the command below.
 
 
 .. code-block:: sh
@@ -191,7 +191,8 @@ Once the script is uploaded, it needs to be configured via the command below.
   commit
 
 
-The OID ``.1.3.6.1.4.1.8072.1.3.2.3.1.1.4.116.101.115.116``, once called, will contain the output of the extension.
+The OID ``.1.3.6.1.4.1.8072.1.3.2.3.1.1.4.116.101.115.116``, once called, will
+contain the output of the extension.
 
 .. code-block:: sh
 
