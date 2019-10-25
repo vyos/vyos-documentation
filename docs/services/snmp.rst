@@ -202,6 +202,29 @@ contain the output of the extension.
   NET-SNMP-EXTEND-MIB::nsExtendOutNumLines."my-extension" = INTEGER: 1
   NET-SNMP-EXTEND-MIB::nsExtendResult."my-extension" = INTEGER: 0
 
+SolarWinds
+^^^^^^^^^^
 
+If you happen to use SolarWinds Orion as NMS you can also use the Device
+Templates Management. A template for VyOS can be easily imported.
+
+Create a file named ``VyOS-1.3.6.1.4.1.44641.ConfigMgmt-Commands`` using the
+following content:
+
+.. code-block:: sh
+
+  <Configuration-Management Device="VyOS" SystemOID="1.3.6.1.4.1.44641">
+      <Commands>
+          <Command Name="Reset" Value="set terminal width 0${CRLF}set terminal length 0"/>
+          <Command Name="Reboot" Value="reboot${CRLF}Yes"/>
+          <Command Name="EnterConfigMode" Value="configure"/>
+          <Command Name="ExitConfigMode" Value="commit${CRLF}exit"/>
+          <Command Name="DownloadConfig" Value="show configuration commands"/>
+          <Command Name="SaveConfig" Value="commit${CRLF}save"/>
+          <Command Name="Version" Value="show version"/>
+          <Command Name="MenuBased" Value="False"/>
+          <Command Name="VirtualPrompt" Value=":~"/>
+      </Commands>
+  </Configuration-Management>
 
 .. include:: references.rst
