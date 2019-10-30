@@ -36,7 +36,7 @@ Baseline Configuration:
 
 The tunnel will be set to mGRE if for encapsulation `gre` is set, and no
 `remote-ip` is set. If the public ip is provided by DHCP the tunnel `local-ip`
-can be set to "0.0.0.0"
+can be set to "0.0.0.0". If you do set the `remote-ip` directive at any point, the interface will need to be `delete`'d from the config and recreated without the `remote-ip` config ever being set.
 
 .. figure:: ../_static/images/vpn_dmvpn_topology01.png
    :scale: 40 %
@@ -160,6 +160,11 @@ HUB Example Configuration:
   set protocols static route 0.0.0.0/0 next-hop 1.1.1.2
   set protocols static route 192.168.2.0/24 next-hop 10.0.0.2
   set protocols static route 192.168.3.0/24 next-hop 10.0.0.3
+  
+HUB on AWS Configuration Specifics
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Setting this up on AWS will require a "Custom Protocol Rule" for protocol number "47" (GRE) Allow Rule in TWO places. Firstly on the VPC Network ACL, and secondly on the security group network ACL attached to the EC2 instance. This has been tested as working for the offical AMI image on the AWS Marketplace. (Locate the correct VPC and security group by navigating through the details pane below your EC2 instance in the AWS console)
 
 SPOKE Configuration
 ^^^^^^^^^^^^^^^^^^^
