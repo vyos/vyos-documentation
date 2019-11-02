@@ -418,4 +418,9 @@ In the case you want to completely delete your configuration and restore the def
 
   load /opt/vyatta/etc/config.boot.default
 
+
+You will be asked if you want to continue. If you accept, you will have to use `commit` if you want to make the changes active.
+
+Then you  may want to `save` in order to delete the saved configuration too.
+
 .. note:: If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config.
