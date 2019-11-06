@@ -7,13 +7,11 @@ can determine things such as the source and destination of traffic, class of
 service, and the causes of congestion. A typical flow monitoring setup (using
 NetFlow) consists of three main components:
 
-- Flow exporter: aggregates packets into flows and exports flow records towards
+* Flow exporter: aggregates packets into flows and exports flow records towards
   one or more flow collectors
-
-- Flow collector: responsible for reception, storage and pre-processing of flow
+* Flow collector: responsible for reception, storage and pre-processing of flow
   data received from a flow exporter
-
-- Analysis application: analyzes received flow data in the context of intrusion
+* Analysis application: analyzes received flow data in the context of intrusion
   detection or traffic profiling, for example
 
 For connectionless protocols as like ICMP and UDP, a flow is considered complete
