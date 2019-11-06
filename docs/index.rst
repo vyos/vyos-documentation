@@ -52,7 +52,6 @@ as a router and firewall platform for cloud deployments.
     :caption: Contributing:
     :includehidden:
 
-    build-vyos.rst
     contributing/index.rst
 
 
