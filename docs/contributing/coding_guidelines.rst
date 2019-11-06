@@ -28,6 +28,14 @@ interface.
 Configuration script structure and behaviour
 --------------------------------------------
 
+Your configuration script or operation mode script which is also written in
+Python3 should have a line break on 80 characters. This seems to be a bit odd
+nowadays but as some people also work remotly or programm using vi(m) this is
+a fair good standard which I hope we can rely on.
+
+In addition this also helps when browsing the GitHub codebase on a mobile
+device if you happen to be a crazy scientist.
+
 .. code-block:: python
 
   #!/usr/bin/env python3
