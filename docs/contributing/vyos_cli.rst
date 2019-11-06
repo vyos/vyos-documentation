@@ -1,12 +1,14 @@
 .. _vyos_cli:
 
-VyOS CLI
-========
+The VyOS CLI
+============
 
-The bash completion in VyOS is defined in *templates*. Templates are text files
-stored in a directory tree, where directory names define command names, and
-template files define command behaviour. Before VyOS 1.2.x this files were created
-by hand. After a complex redesign process_ the new style template are in XML.
+The bash (or better vbash) completion in VyOS is defined in *templates*.
+Templates are text files (called ``node.def``) stored in a directory tree. The
+directory names define the command names, and template files define the command
+behaviour. Before VyOS 1.2 (crux) this files were created by hand. After a
+complex redesign process_ the new style template are automatically generated
+from a XML input file.
 
 XML interface definitions for VyOS come with a RelaxNG schema and are located
 in the vyos-1x_ module. This schema is a slightly modified schema from VyConf_
@@ -113,15 +115,15 @@ Command syntax guidelines
 Use of numbers
 ^^^^^^^^^^^^^^
 
-Use of numbers in command names **should** be avoided unless a number is a part
-of a protocol name or similar. Thus, ``protocols ospfv3`` is perfectly fine, but
-something like ``server-1`` is questionable at best.
+Use of numbers in command names **should** be avoided unless a number is a
+part of a protocol name or similar. Thus, ``protocols ospfv3`` is perfectly
+fine, but something like ``server-1`` is questionable at best.
 
 Help string guidelines
 **********************
 
-To ensure uniform look and feel, and improve readability, we should follow a set
-of guidelines consistently.
+To ensure uniform look and feel, and improve readability, we should follow a
+set of guidelines consistently.
 
 Capitalization and punctuation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,10 +136,10 @@ a good aesthetic compromise.
 
 Examples:
 
- * Good: "Frobnication algorithm"
- * Bad: "frobnication algorithm"
- * Bad: "Frobnication algorithm."
- * Horrible: "frobnication algorithm."
+* Good: "Frobnication algorithm"
+* Bad: "frobnication algorithm"
+* Bad: "Frobnication algorithm."
+* Horrible: "frobnication algorithm."
 
 Use of abbreviations and acronyms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -146,29 +148,29 @@ Abbreviations and acronyms **must** be capitalized.
 
 Examples:
 
- * Good: "TCP connection timeout"
- * Bad: "tcp connection timeout"
- * Horrible: "Tcp connectin timeout"
+* Good: "TCP connection timeout"
+* Bad: "tcp connection timeout"
+* Horrible: "Tcp connectin timeout"
 
 Acronyms also **must** be capitalized to visually distinguish them from normal
 words:
 
 Examples:
 
- * Good: RADIUS (as in remote authentication for dial-in user services)
- * Bad: radius (unless it's about the distance between a center of a circle and
-   any of its points)
+* Good: RADIUS (as in remote authentication for dial-in user services)
+* Bad: radius (unless it's about the distance between a center of a circle and
+  any of its points)
 
 Some abbreviations are traditionally written in mixed case. Generally, if it
-contains words "over" or "version", the letter **should** be lowercase. If there's
-an accepted spelling (especially if defined by an RFC or another standard), it
-**must** be followed.
+contains words "over" or "version", the letter **should** be lowercase. If
+there's an accepted spelling (especially if defined by an RFC or another
+standard), it **must** be followed.
 
 Examples:
 
- * Good: PPPoE, IPsec
- * Bad: PPPOE, IPSEC
- * Bad: pppoe, ipsec
+* Good: PPPoE, IPsec
+* Bad: PPPOE, IPSEC
+* Bad: pppoe, ipsec
 
 Use of verbs
 ^^^^^^^^^^^^
@@ -177,12 +179,12 @@ Verbs **should** be avoided. If a verb can be omitted, omit it.
 
 Examples:
 
- * Good: "TCP connection timeout"
- * Bad: "Set TCP connection timeout"
+* Good: "TCP connection timeout"
+* Bad: "Set TCP connection timeout"
 
-If a verb is essential, keep it. For example, in the help text of `set system ipv6
-disable-forwarding`, "Disable IPv6 forwarding on all interfaces" is a perfectly
-justified wording.
+If a verb is essential, keep it. For example, in the help text of ``set system
+ipv6 disable-forwarding`, "Disable IPv6 forwarding on all interfaces" is a
+perfectly justified wording.
 
 Prefer infinitives
 ^^^^^^^^^^^^^^^^^^
@@ -191,8 +193,8 @@ Verbs, when they are necessary, **should** be in their infinitive form.
 
 Examples:
 
- * Good: "Disable IPv6 forwarding"
- * Bad: "Disables IPv6 forwarding"
+* Good: "Disable IPv6 forwarding"
+* Bad: "Disables IPv6 forwarding"
 
 Mapping old node.def style to new XML definitions
 -------------------------------------------------
@@ -261,4 +263,3 @@ Mapping old node.def style to new XML definitions
 .. _process: https://blog.vyos.io/vyos-development-digest-10
 .. _vyos-1x: https://github.com/vyos/vyos-1x/blob/current/schema/
 .. _VyConf: https://github.com/vyos/vyconf/blob/master/data/schemata
-
