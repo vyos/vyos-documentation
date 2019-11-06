@@ -93,27 +93,50 @@ No special build procedure is required.
 Linux kernel
 ------------
 
-TBD
+In the past a fork of the Kernel source code was kept at the well-known
+location of https://github.com/vyos/vyos-kernel - where it is kept for history.
+
+Nowadays the Kernel we use is the upstream source code which is patched
+with two additional patches from the good old Vyatta times which never made it
+into the mainstream Kernel. The patches can be found here:
+https://github.com/vyos/vyos-build-kernel/tree/current/patches/kernel and are
+automatically applied to the Kernel by the Jenkins Pipeline which is used to
+generate the Kernel binaries.
+
+The Pipeline script not only builds the Kernel with the configuration named
+``x86_64_vyos_defconfig`` which is located in the vyos-build-kernel repository,
+too - but in addition also builds some Intel out-of-tree drivers, WireGuard
+(as long it is not upstreamed) and Accel-PPP.
+
+The ``Jenkinsfile`` tries to be as verbose as possible on each individual build
+step.
 
 Linux firmware
 --------------
 
-TBD
+More and more hardware cards require an additional firmware which is not open
+source. The Kernel community hosts a special linux-firmware Git repository
+with all available binary files which can be loaded by the Kernel.
+
+The ``vyos-build`` repository fetches a specific commit of the linux-firmware
+repository and embeds those binaries into the resulting ISO image. This step is
+done in the ``data/live-build-config/hooks/live/40-linux-firmware.chroot`` file.
+
+If the firmware needs to be updated it is sufficient to just exchange the Git
+commit id we reference in our build.
 
 Intel drivers
 -------------
 
-TBD
+Are build as part of the Kernel Pipeline - read above.
 
-accel-ppp
+Accel-PPP
 ---------
 
-accel-ppp has been packaged for the use with vyos, due to the kernel
-dependencies for its modules.
+Accel-PPP used to be an upstream fork for quiet some time but now has been
+converted to make use of the upstream source code and build system.
 
-* https://github.com/vyos/vyos-accel-ppp
-
-Build instructions are being kept up to date on the repos Readme.
+It is build as part of the Kernel Pipeline - read above.
 
 hvinfo
 ------
