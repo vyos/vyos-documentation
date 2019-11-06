@@ -56,10 +56,15 @@ yourself directly from the source:
    found on your local machine when the below command is executed - so no
    worries.
 
-Build iso inside container
+.. note: We require one container per build branch, this means that the used
+   container in ``crux`` and ``current`` can and will differ once we make the
+   move towards Debian (10) Buster.
+
+
+Build ISO inside container
 --------------------------
 
-After generating the container - or fetching it pre-build from Dockerhub you
+After generating the container - or fetching it pre-build from DockerHub you
 are all set to invoke yourself a fresh build of a VyOS ISO.
 
 .. code-block:: sh
@@ -69,6 +74,15 @@ are all set to invoke yourself a fresh build of a VyOS ISO.
                                --build-by "your@email.tld" \
                                --build-type release --version 1.2.0
   vyos_bld@d4220bb519a0:/vyos# sudo make iso
+
+To select the container you want to run you need to specify the branch you are
+interested in, this can be easily done by selecting the appropriate container
+image:
+
+* For VyOS 1.2 (crux) use ``vyos/vyos-build:crux``
+* For VyOS 1.3 (equuleus) use ``vyos/vyos-build:crux``
+* For our VyOS rolling release you should use ``vyos/vyos-build`` which will
+  always refer to the latest image.
 
 You may use these options to customize you ISO. You can list yourself all
 options by calling ``./configure --help``:
