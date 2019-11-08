@@ -77,13 +77,13 @@ Contributing
 .. toctree::
    :maxdepth: 2
 
+   contributing/build-vyos
    contributing/issues_features
    contributing/development
    contributing/vyos_cli
    contributing/coding_guidelines
    contributing/upstream-packages
-   contributing/build-vyos
-
+   contribution/documentation
 
 ################
 Copyright Notice
