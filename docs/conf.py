@@ -29,7 +29,6 @@ version = u'1.2'
 # The full version, including alpha/beta/rc tags
 release = u'crux'
 
-
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -101,6 +100,14 @@ html_static_path = ['_static']
 #
 # html_sidebars = {}
 
+# The name of an image file (relative to this directory) to place at the top
+# of the sidebar.
+html_logo = '_static/images/vyos-logo.png'
+
+# The name of an image file (within the static path) to use as favicon of the
+# docs. This file should be a Windows icon file (.ico) being 16x16 or 32x32
+# pixels large.
+html_favicon = '_static/images/vyos-logo-icon.png'
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
@@ -108,7 +115,7 @@ html_static_path = ['_static']
 htmlhelp_basename = 'VyOSdoc'
 
 
-# -- Options for LaTeX output ------------------------------------------------
+# -- Options fo_r LaTeX output ------------------------------------------------
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
@@ -136,6 +143,9 @@ latex_documents = [
      u'VyOS maintainers and contributors', 'manual'),
 ]
 
+# The name of an image file (relative to this directory) to place at the top of
+# the title page.
+latex_logo = '_static/images/vyos-logo.png'
 
 # -- Options for manual page output ------------------------------------------
 
