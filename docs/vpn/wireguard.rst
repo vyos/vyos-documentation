@@ -152,7 +152,7 @@ Operational commands
   vyos@wg01# run show interfaces wireguard wg01
   interface: wg1
       description: VPN-to-wg01
-      address: 10.2.0.1/24'
+      address: 10.2.0.1/24
       public key: RIbtUTCfgzNjnLNPQ/asldkfjhaERDFl2H/xUfbyjc=
       private key: (hidden)
       listening port: 53665
