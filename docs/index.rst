@@ -31,24 +31,24 @@ Introduction
 .. toctree::
    :maxdepth: 2
 
-   history.rst
-   install.rst
-   cli.rst
-   quick-start.rst
-   configuration-overview.rst
-   interfaces/index.rst
-   routing/index.rst
-   firewall.rst
-   nat.rst
-   vpn/index.rst
-   qos.rst
-   services/index.rst
-   system/index.rst
-   high-availability.rst
-   clustering.rst
-   load-balancing.rst
-   image-mgmt.rst
-   commandscripting.rst
+   history
+   install
+   cli
+   quick-start
+   configuration-overview
+   interfaces/index
+   routing/index
+   firewall
+   nat
+   vpn/index
+   qos
+   services/index
+   system/index
+   high-availability
+   clustering
+   load-balancing
+   image-mgmt
+   commandscripting
 .. modules
 
 
@@ -60,13 +60,13 @@ Appendix
 .. toctree::
    :maxdepth: 2
 
-   appendix/releasenotes.rst
-   appendix/troubleshooting.rst
-   appendix/examples/index.rst
-   appendix/commandtree/index.rst
-   appendix/vyos-on-vmware.rst
-   appendix/vyos-on-baremetal.rst
-   appendix/migrate-from-vyatta.rst
+   appendix/releasenotes
+   appendix/troubleshooting
+   appendix/examples/index
+   appendix/commandtree/index
+   appendix/vyos-on-vmware
+   appendix/vyos-on-baremetal
+   appendix/migrate-from-vyatta
 
 
 ############
