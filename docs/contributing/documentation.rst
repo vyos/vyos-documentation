@@ -1,4 +1,4 @@
-.. _build:
+.. _documentation:
 
 Documentation
 =============
@@ -25,9 +25,9 @@ This requires you already have a GitHub account.
 3. Change to your new local directory vyos-documentation
 4. Create a new branch for your work. You can use a name that describes what
    you do
-    ```shell
+   ```shell
    $ git checkout -b fix-vxlan-typo
-    ```
+   ```
 5. Make all your changes - please keep out commit rules in mind. This mainly
    applies to a proper commit message describing your change. Please check the
    documentation if you aren't familiar with
