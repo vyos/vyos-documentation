@@ -10,49 +10,79 @@ commercially available solutions from well known network providers. Because
 VyOS is run on standard amd64, i586 and ARM systems, it is able to be used
 as a router and firewall platform for cloud deployments.
 
+#####
+About
+#####
+
+We use multiple live versions of our manual hosted thankfully by
+https://readthedocs.org. We will provide one version of the manual for every
+VyOS major version starting with VyOS 1.2 which will receive Long-term support
+(LTS).
+
+The manual version is selected/specified by it's Git branch name. You can
+switch between versions of the documentation by selecting the appropriate
+branch on the bottom left corner.
+
+############
+Introduction
+############
+
+.. _introduction:
 .. toctree::
-    :maxdepth: 2
-    :caption: Contents:
-    :includehidden:
+   :maxdepth: 2
 
-    history.rst
-    install.rst
-    cli.rst
-    quick-start.rst
-    configuration-overview.rst
-    interfaces/index.rst
-    routing/index.rst
-    firewall.rst
-    nat.rst
-    vpn/index.rst
-    qos.rst
-    services/index.rst
-    system/index.rst
-    high-availability.rst
-    clustering.rst
-    load-balancing.rst
-    image-mgmt.rst
-    commandscripting.rst
+   history.rst
+   install.rst
+   cli.rst
+   quick-start.rst
+   configuration-overview.rst
+   interfaces/index.rst
+   routing/index.rst
+   firewall.rst
+   nat.rst
+   vpn/index.rst
+   qos.rst
+   services/index.rst
+   system/index.rst
+   high-availability.rst
+   clustering.rst
+   load-balancing.rst
+   image-mgmt.rst
+   commandscripting.rst
+.. modules
 
+
+########
+Appendix
+########
+
+.. _appendix:
 .. toctree::
-    :maxdepth: 2
-    :caption: Appendix:
-    :includehidden:
+   :maxdepth: 2
 
-    appendix/releasenotes.rst
-    appendix/troubleshooting.rst
-    appendix/examples/index.rst
-    appendix/commandtree/index.rst
-    appendix/vyos-on-vmware.rst
-    appendix/vyos-on-baremetal.rst
-    appendix/migrate-from-vyatta.rst
+   appendix/releasenotes.rst
+   appendix/troubleshooting.rst
+   appendix/examples/index.rst
+   appendix/commandtree/index.rst
+   appendix/vyos-on-vmware.rst
+   appendix/vyos-on-baremetal.rst
+   appendix/migrate-from-vyatta.rst
 
+
+############
+Contributing
+############
+
+.. _contributing:
 .. toctree::
-    :maxdepth: 2
-    :caption: Contributing:
-    :includehidden:
+   :maxdepth: 2
 
-    contributing/index.rst
+   contributing/issues_features
+   contributing/development
+   contributing/vyos_cli
+   contributing/coding_guidelines
+   contributing/upstream-packages
+   contributing/build-vyos
 
 
 ################
