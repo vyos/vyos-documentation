@@ -36,39 +36,41 @@ that is used to build a VyOS documentation.
 
 ## Setup
 
+You can either build the container on your own or directly fetch it prebuild
+from Dockerhub. If you want to build it for yourself, use the following command.
+
 ```bash
 $ docker build -t vyos-docu docker
 ```
 
-### Build
+### Build documentation
 
-Linux
+If the `vyos/vyos-documentation` container could not be found locally it will be
+automatically fetched from Dockerhub.
+
 ```bash
-$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos-docu make html
+$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs \
+  -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation make html
 
 # sphinx autobuild
-$ docker run --rm -it -p 8000:8000 -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos-docu make livehtml
-```
-
-Windows
-```powershell
-docker run --rm -it -v "$(pwd):/vyos" -w /vyos/docs vyos-docu make html
-
-# sphinx autobuild
-docker run --rm -it -p 8000:8000 -v "$(pwd):/vyos" -w /vyos/docs vyos-docu make livehtml
+$ docker run --rm -it -p 8000:8000 -v "$(pwd)":/vyos -w /vyos/docs -e \
+  GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation make livehtml
 ```
 
 ### Test the docs
 
-discuss in this Task: [T1731](https://phabricator.vyos.net/T1731)
+Discuss in this Phabricator task: [T1731](https://phabricator.vyos.net/T1731)
 
-to test all files:
+To test all files run:
 
 ```bash
-$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos-docu vale .
+$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs \
+  -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation vale .
 ```
 
-to test a specific file e.g. clustering.rst
+to test a specific file e.g. `clustering.rst`
+
 ```bash
-$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos-docu vale clustering.rst
+$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) \
+  -e GOSU_GID=$(id -g) vyos/vyos-documentation vale clustering.rst
 ```
