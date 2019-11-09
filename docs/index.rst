@@ -29,6 +29,7 @@ Introduction
 
 .. _introduction:
 .. toctree::
+   :caption: Introduction
    :maxdepth: 2
 
    history
@@ -58,6 +59,7 @@ Appendix
 
 .. _appendix:
 .. toctree::
+   :caption: Appendix
    :maxdepth: 2
 
    appendix/releasenotes
@@ -75,6 +77,7 @@ Contributing
 
 .. _contributing:
 .. toctree::
+   :caption: Contributing
    :maxdepth: 2
 
    contributing/build-vyos
