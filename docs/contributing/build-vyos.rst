@@ -3,19 +3,20 @@
 Building VyOS
 =============
 
-This will guide you though the process of building a VyOS ISO using
-Docker_.  This process has been tested on clean installs of Debian Jessie, Stretch, and Buster. 
+This will guide you though the process of building a VyOS ISO using Docker_.
+This process has been tested on clean installs of Debian Jessie, Stretch, and
+Buster.
 
-.. note:: Starting with VyOS 1.2 the release model of VyOS has changed. 
+.. note:: Starting with VyOS 1.2 the release model of VyOS has changed.
    VyOS is now **free as in speech, but not as in beer**. This means
    that while VyOS is still an open source project, the release ISOs are no
    longer free and can only be obtained via subscription, or by contributing to
-   the community. 
-   
+   the community.
+
    The source code remains public and an ISO can be built
    using the process outlined here.
 
-Installing Docker_ and prerequisites
+Installing Docker_ and prerequisites:
 
 .. code-block:: sh
 
@@ -34,16 +35,16 @@ To be able to use Docker_, the current non-root user should be added to the
 .. note:: It is recommended to use that non-root user for the remaining steps.
 
 .. note:: The build process needs to be built on a local file system, building
-          on SMB or NFS shares will result in the container failing to build properly!
+   on SMB or NFS shares will result in the container failing to build properly!
 
 
 Generating the container
 ----------------------
 
-The container can built by hand or by fetching the pre-built one from
-DockerHub. Using the pre-built VyOS DockerHub organisation (https://hub.docker.com/u/vyos) will
-ensure that the container is always up-to-date. A rebuild is triggered once the
-container changes (please note this will take 2-3 hours after pushing to
+The container can built by hand or by fetching the pre-built one from DockerHub.
+Using the pre-built VyOS DockerHub organisation (https://hub.docker.com/u/vyos)
+will ensure that the container is always up-to-date. A rebuild is triggered once
+the container changes (please note this will take 2-3 hours after pushing to
 the vyos-build repository).
 
 The container can always be built directly from source:
@@ -57,9 +58,8 @@ The container can always be built directly from source:
    found on your local machine when the below command is executed.
 
 .. note: We require one container per build branch, this means that the used
-   container in ``crux`` and ``current`` can and will differ once VyOS makes the 
-   move towards Debian (10) Buster.
-
+   container in ``crux`` and ``current`` can and will differ once VyOS makes
+   the move towards Debian (10) Buster.
 
 Build ISO inside container
 --------------------------
@@ -84,7 +84,7 @@ image:
 * For our VyOS rolling release you should use ``vyos/vyos-build`` which will
   always refer to the latest image.
 
-This ISO can be customized with the following list of configure options. 
+This ISO can be customized with the following list of configure options.
 The full and current list can be generated with ``./configure --help``:
 
 .. code-block:: sh
@@ -112,11 +112,12 @@ The full and current list can be generated with ``./configure --help``:
   --custom-apt-key CUSTOM_APT_KEY
                         Custom APT key file
 
-The successfully built ISO should now be in the `build/` directory. 
+The successfully built ISO should now be in the `build/` directory.
 
 Good luck!
 
-.. note: The build process does not differentiate when building a ``crux`` ISO or ``rolling``
-   image. Make sure to choose the matching container for the version of VyOS that is being built.
+.. note:: The build process does not differentiate when building a ``crux`` ISO
+   or ``rolling`` image. Make sure to choose the matching container for the
+   version of VyOS that is being built.
 
 .. _Docker: https://www.docker.com
