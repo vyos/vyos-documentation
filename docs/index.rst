@@ -85,8 +85,8 @@ Contributing
    contributing/development
    contributing/vyos_cli
    contributing/coding_guidelines
+   contributing/documentation
    contributing/upstream-packages
-   contribution/documentation
 
 ################
 Copyright Notice
