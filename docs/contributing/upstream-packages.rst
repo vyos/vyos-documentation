@@ -1,4 +1,4 @@
-.. _development_pkgs:
+.. _upstream_packages:
 
 Upstream packages
 =================
