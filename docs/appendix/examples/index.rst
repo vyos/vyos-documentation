@@ -16,3 +16,4 @@ This chapter contains various configuration Examples
    azure-vpn-bgp
    azure-vpn-dual-bgp
    tunnelbroker-ipv6
+   ha
