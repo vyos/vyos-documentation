@@ -103,17 +103,25 @@ Now configure conntrack-sync service on ``router1`` **and** ``router2``
 
   set service conntrack-sync accept-protocol 'tcp,udp,icmp'
   set service conntrack-sync event-listen-queue-size '8'
-  set service conntrack-sync failover-mechanism cluster group 'GROUP' # Or VRRP
+  set service conntrack-sync failover-mechanism cluster group 'GROUP'
   set service conntrack-sync interface 'eth0'
   set service conntrack-sync mcast-group '225.0.0.50'
   set service conntrack-sync sync-queue-size '8'
+
+If you are using VRRP, you need to define a VRRP sync-group, and use ``vrrp sync-group`` instead of ``cluster group``.
+
+.. code-block:: sh
+
+  set high-availablilty vrrp group internal virtual-address ... etc ...
+  set high-availability vrrp sync-group syncgrp member 'internal'
+  set service conntrack-sync failover-mechanism vrrp sync-group 'syncgrp'
+
 
 On the active router, you should have informations in the internal-cache of
 conntrack-sync. The same current active connections number should be shown in
 the external-cache of the standby router
 
 On active router run:
-
 
 .. code-block:: sh
 
