@@ -30,9 +30,8 @@ This requires you already have a GitHub account.
    ```
 5. Make all your changes - please keep out commit rules in mind. This mainly
    applies to a proper commit message describing your change. Please check the
-   documentation if you aren't familiar with
-   [sphinx-doc](http://http://www.sphinx-doc.org) or
-   [reStructuredText](http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html)
+   documentation if you aren't familiar with `sphinx-doc <https://www.sphinx-doc.org>`_ or
+   `reStructuredText <http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
 
    Note the following RFCs, which describe the reserved public IP addresses and
    autonomous system numbers for the documentation: RFC5737_, RFC3849_,
@@ -50,9 +49,10 @@ This requires you already have a GitHub account.
    Please don't use other public address space.
 
 6. Check your changes by locally building the documentation
-	```shell
-	$ cd docs; make html
-	```
+    ```shell
+    $ cd docs; make html
+    ```
+
     Sphinx will build the html files in the ``docs/_build`` folder
 
 7. Add modified files to Git index
