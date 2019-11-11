@@ -81,12 +81,9 @@ Contributing
    :maxdepth: 2
 
    contributing/build-vyos
-   contributing/issues_features
+   contributing/issues-features
    contributing/development
-   contributing/vyos_cli
-   contributing/coding_guidelines
    contributing/documentation
-   contributing/upstream-packages
 
 ################
 Copyright Notice

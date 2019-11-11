@@ -1,10 +1,10 @@
 .. _issues_features:
 
-Issues and Feature requests
-===========================
+Issues/Feature requests
+=======================
 
-Bug Report / Issue
-------------------
+Bug Report/Issue
+----------------
 Issues or bugs are found in any software project. VyOS is not an exception.
 
 All issues should be reported to the developers. This lets the developers know
@@ -51,7 +51,7 @@ Report a Bug
 
 Create an account on VyOS Phabricator_. Phabricator_ is located at
 https://phabricator.vyos.net. To create a bug-report use the quick link in the
-left side under the specific project. 
+left side under the specific project.
 
 * Provide as much information as you can
 * Which version of VyOS are you using? ``run show version``

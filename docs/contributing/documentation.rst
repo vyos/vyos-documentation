@@ -10,6 +10,10 @@ benefical four you (when reading something up) but also for the whole world.
 If you are willing to contribute to our documentation this is the definate
 guid how to do so.
 
+.. note: In contrast to submitting code patches there is no requirement that
+   you open up a Phabricator_ task prior to submitting a Pull-Request to the
+   documentation.
+
 Guide
 -----
 
@@ -17,102 +21,81 @@ Updates to our documentation should be delivered by a GitHub pull-request. In
 order to create a pull-request you need to fork our documentation code first.
 This requires you already have a GitHub account.
 
-1. Fork the project on GitHub https://github.com/vyos/vyos-documentation/fork
-2. Clone your fork to your local machine
-    ```shell
-    $ git clone https://github.com/YOUR_USERNAME/vyos-documentation
-    ```
-3. Change to your new local directory vyos-documentation
-4. Create a new branch for your work. You can use a name that describes what
-   you do
-   ```shell
-   $ git checkout -b fix-vxlan-typo
-   ```
-5. Make all your changes - please keep out commit rules in mind. This mainly
-   applies to a proper commit message describing your change. Please check the
-   documentation if you aren't familiar with `sphinx-doc <https://www.sphinx-doc.org>`_ or
-   `reStructuredText <http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
+* Fork the project on GitHub https://github.com/vyos/vyos-documentation/fork
 
-   Note the following RFCs, which describe the reserved public IP addresses and
-   autonomous system numbers for the documentation: RFC5737_, RFC3849_,
-   RFC5389_ and RFC7042_:
+* Clone fork to local machine
 
-   * 192.0.2.0/24
-   * 198.51.100.0/24
-   * 203.0.113.0/24
-   * 2001:db8::/32
-   * 16bit ASN: 64496 - 64511
-   * 32bit ASN: 65536 - 65551
-   * Unicast MAC Addresses: 00-53-00 to 00-53-FF
-   * Multicast MAC-Addresses: 90-10-00 to 90-10-FF
+* Change to your new local directory vyos-documentation
 
-   Please don't use other public address space.
+* Create new branch for your work, use a descriptive name of your work:
+  ``$ git checkout -b fix-vxlan-typo``
 
-6. Check your changes by locally building the documentation
-    ```shell
-    $ cd docs; make html
-    ```
+* Make all your changes - please keep out commit rules in mind
+  (:ref:`prepare_commit`). This mainly applies to a proper commit message
+  describing your change. Please check the documentation if you aren't familiar
+  with Sphinx-doc_ or reStructuredText_.
 
-    Sphinx will build the html files in the ``docs/_build`` folder
+  Note the following RFCs (RFC5737_, RFC3849_, RFC5389_ and RFC7042_), which
+  describe the reserved public IP addresses and autonomous system numbers for
+  the documentation:
 
-7. Add modified files to Git index
-    ```shell
-    $ git add path/to/filname
-    ```
-    or add all unstaged files
-    ```shell
-    $ git add .
-    ````
+  * ``192.0.2.0/24``
+  * ``198.51.100.0/24``
+  * ``203.0.113.0/24``
+  * ``2001:db8::/32``
+  * 16bit ASN: ``64496 - 64511``
+  * 32bit ASN: ``65536 - 65551``
+  * Unicast MAC Addresses: ``00-53-00`` to ``00-53-FF``
+  * Multicast MAC-Addresses: ``90-10-00`` to ``90-10-FF``
 
-8. Commit your changes
-    ```shell
-    $ git commit -m "rename vxlan set syntax"
-    ```
+  Please don't use other public address space.
 
-9. Push your commits to your GitHub project:
-    ```shell
-    $ git push -u origin fix-vxlan-typo
-    ```
+* Check your changes by locally building the documentation ``$ make html``
+  Sphinx will build the html files in the ``docs/_build`` folder
 
-10. Submit pull-request.
-    In GitHub visit the main repository and you should see a banner suggesting
-    to make a pull request. Fill out the form and describe what you do.
+* Add modified files to Git index ``$ git add path/to/filname`` or add all
+  unstaged files ``$ git add .``
 
-11. Once pull resquests have been approved, you may want to locally update your
-    forked repository too. First you'll have to add the remote upstream
-    repository.
+* Commit your changes ``$ git commit -m "vxlan: rework CLI syntax"``
 
-	```shell
-	$ git remote add upstream https://github.com/vyos/vyos-documentation.git
-	```
+* Push your commits to your GitHub project: ``$ git push -u origin
+  fix-vxlan-typo``
 
-    Check your configured remote repositories.
-	```shell
-	$ git remote -v
-	origin    https://github.com/YOUR_USERNAME/vyos-documentation.git (fetch)
-	origin    https://github.com/YOUR_USERNAME/vyos.documentation.git (push)
-	upstream  https://github.com/vyos/vyos-documentation.git (fetch)
-	upstream  https://github.com/vyos/vyos-documentation.git (push)
-	```
+* Submit pull-request. In GitHub visit the main repository and you should
+  see a banner suggesting to make a pull request. Fill out the form and
+  describe what you do.
 
-    Your remote repo on Github is called Origin, while the original repo you
-    have forked is called Upstream.
+* Once pull resquests have been approved, you may want to locally update
+  your forked repository too. First you'll have to add the remote upstream
+  repository. ``$ git remote add upstream
+  https://github.com/vyos/vyos-documentation.git``
 
-    Now you can locally update your forked repo.
-	```shell
-	$ git fetch upstream
-	$ git checkout master
-	$ git merge upstream/master
-	```
+  Check your configured remote repositories:
 
-    If you want to update your fork on GitHub, too use the following:
+  .. code-block:: sh
 
-	```shell
-	$ git push origin master
-	```
+    $ git remote -v
+    origin    https://github.com/YOUR_USERNAME/vyos-documentation.git (fetch)
+    origin    https://github.com/YOUR_USERNAME/vyos.documentation.git (push)
+    upstream  https://github.com/vyos/vyos-documentation.git (fetch)
+    upstream  https://github.com/vyos/vyos-documentation.git (push)``
+
+  Your remote repo on Github is called Origin, while the original repo you
+  have forked is called Upstream. Now you can locally update your forked repo.
+
+  .. code-block:: sh
+
+    $ git fetch upstream
+    $ git checkout master
+    $ git merge upstream/master``
+
+  If you want to update your fork on GitHub, too use the following:
+  ``$ git push origin master``
 
 .. _RFC5737: https://tools.ietf.org/html/rfc5737
 .. _RFC3849: https://tools.ietf.org/html/rfc3849
 .. _RFC5389: https://tools.ietf.org/html/rfc5398
-.. _RFC7042: https://tools.ietf.org/html/rfc7042
-
+.. _RFC7042: https://tools.ietf.org/html/
+.. _Sphinx-doc: https://www.sphinx-doc.org
+.. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
+.. _Phabricator: https://phabricator.vyos.net
