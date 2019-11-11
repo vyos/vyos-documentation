@@ -10,7 +10,7 @@ benefical four you (when reading something up) but also for the whole world.
 If you are willing to contribute to our documentation this is the definate
 guid how to do so.
 
-.. note: In contrast to submitting code patches there is no requirement that
+.. note:: In contrast to submitting code patches there is no requirement that
    you open up a Phabricator_ task prior to submitting a Pull-Request to the
    documentation.
 
