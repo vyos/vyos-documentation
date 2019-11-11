@@ -93,23 +93,47 @@ Remote Configuration:
   set interfaces openvpn vtun1 local-address '10.255.1.2'
   set interfaces openvpn vtun1 remote-address '10.255.1.1'
 
-The configurations above will default to using 128-bit Blowfish in CBC mode
-for encryption and SHA-1 for HMAC authentication. These are both considered
-weak, but a number of other encryption and hashing algorithms are available:
+The configurations above will default to using 256-bit AES in GCM mode
+for encryption (if both sides supports NCP) and SHA-1 for HMAC authentication.
+SHA-1 is considered weak, but other hashing algorithms are available, as are
+encryption algorithms:
 
 For Encryption:
 
+This sets the cipher when NCP (Negotiable Crypto Parameters) is disabled or
+OpenVPN version < 2.4.0.
+
 .. code-block:: sh
 
-  vyos@vyos# set interfaces openvpn vtun1 encryption
+  vyos@vyos# set interfaces openvpn vtun1 encryption cipher
   Possible completions:
     des          DES algorithm
     3des         DES algorithm with triple encryption
     bf128        Blowfish algorithm with 128-bit key
     bf256        Blowfish algorithm with 256-bit key
-    aes128       AES algorithm with 128-bit key
-    aes192       AES algorithm with 192-bit key
-    aes256       AES algorithm with 256-bit key
+    aes128       AES algorithm with 128-bit key CBC
+    aes128gcm    AES algorithm with 128-bit key GCM
+    aes192       AES algorithm with 192-bit key CBC
+    aes192gcm    AES algorithm with 192-bit key GCM
+    aes256       AES algorithm with 256-bit key CBC
+    aes256gcm    AES algorithm with 256-bit key GCM
+
+This sets the accepted ciphers to use when version => 2.4.0 and NCP is
+enabled (which is default). Default NCP cipher for versions >= 2.4.0 is
+aes256gcm. The first cipher in this list is what server pushes to clients.
+
+.. code-block:: sh
+
+  vyos@vyos# set int open vtun0 encryption ncp-ciphers
+  Possible completions:
+    des          DES algorithm
+    3des         DES algorithm with triple encryption
+    aes128       AES algorithm with 128-bit key CBC
+    aes128gcm    AES algorithm with 128-bit key GCM
+    aes192       AES algorithm with 192-bit key CBC
+    aes192gcm    AES algorithm with 192-bit key GCM
+    aes256       AES algorithm with 256-bit key CBC
+    aes256gcm    AES algorithm with 256-bit key GCM
 
 For Hashing:
 
@@ -374,7 +398,7 @@ Server
 
 .. code-block:: sh
 
-  set interfaces openvpn vtun10 encryption 'aes256'
+  set interfaces openvpn vtun10 encryption cipher 'aes256'
   set interfaces openvpn vtun10 hash 'sha512'
   set interfaces openvpn vtun10 local-host '172.18.201.10'
   set interfaces openvpn vtun10 local-port '1194'
@@ -398,7 +422,7 @@ Client
 
 .. code-block:: sh
 
-  set interfaces openvpn vtun10 encryption 'aes256'
+  set interfaces openvpn vtun10 encryption cipher 'aes256'
   set interfaces openvpn vtun10 hash 'sha512'
   set interfaces openvpn vtun10 mode 'client'
   set interfaces openvpn vtun10 persistent-tunnel
