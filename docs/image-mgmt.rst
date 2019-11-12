@@ -57,9 +57,10 @@ command in operational mode.
 Images no longer needed can be removed using the :code:`delete system image`
 command.
 
+.. _update_vyos:
 
-Update VyOS Installation
-------------------------
+Update VyOS
+-----------
 
 Finally, new system images can be added using the :code:`add system image` command.
 The add image command will extract the image from the release ISO (either on
