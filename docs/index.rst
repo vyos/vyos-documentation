@@ -23,10 +23,6 @@ The manual version is selected/specified by it's Git branch name. You can
 switch between versions of the documentation by selecting the appropriate
 branch on the bottom left corner.
 
-############
-Introduction
-############
-
 .. _introduction:
 .. toctree::
    :caption: Introduction
@@ -53,10 +49,6 @@ Introduction
 .. modules
 
 
-########
-Appendix
-########
-
 .. _appendix:
 .. toctree::
    :caption: Appendix
@@ -70,10 +62,6 @@ Appendix
    appendix/vyos-on-baremetal
    appendix/migrate-from-vyatta
 
-
-############
-Contributing
-############
 
 .. _contributing:
 .. toctree::
