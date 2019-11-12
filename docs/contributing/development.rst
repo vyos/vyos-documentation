@@ -617,8 +617,28 @@ Migrating old CLI
      - None
      - All logic should be in the scripts
 
+Continous Integration
+---------------------
+
+VyOS makes use of Jenkins_ as our Continous Integration (CI) service. Our CI
+server is publicly accessible here: https://ci.vyos.net. You can get a brief
+overview of all required components shipped in a VyOS ISO.
+
+To build our modules we utilize a CI/CD Pipeline script. Each and every VyOS
+component comes with it's own ``Jenkinsfile`` which is (more or less) a copy.
+The Pipeline utilizes the Docker container from the :ref:`build_iso` section -
+but instead of building it from source on every run, we rather always fetch a
+fresh copy (if needed) from Dockerhub_.
+
+Each module is build on demand if a new commit on the branch in question is
+found. After a successfull run the resulting Debian Package(s) will be deployed
+to our Debian repository which is used during build time. It is located here:
+http://dev.packages.vyos.net/repositories/.
+
 .. _process: https://blog.vyos.io/vyos-development-digest-10
 .. _VyConf: https://github.com/vyos/vyconf/blob/master/data/schemata
 .. _vyos-1x: https://github.com/vyos/vyos-1x/blob/current/schema/
 .. _Jinja2: https://jinja.palletsprojects.com/
-.. _Phabricator: https://phabricator.vyos.net
+.. _Phabricator: https://phabricator.vyos.net/
+.. _Jenkins: https://jenkins.io/
+.. _Dockerhub: https://hub.docker.com/u/vyos/

@@ -37,7 +37,6 @@ To be able to use Docker_, the current non-root user should be added to the
 .. note:: The build process needs to be built on a local file system, building
    on SMB or NFS shares will result in the container failing to build properly!
 
-
 Build Docker Container
 ----------------------
 
@@ -60,6 +59,8 @@ The container can always be built directly from source:
 .. note: We require one container per build branch, this means that the used
    container in ``crux`` and ``current`` can and will differ once VyOS makes
    the move towards Debian (10) Buster.
+
+.. _build_iso:
 
 Build ISO
 ---------
