@@ -118,8 +118,23 @@ Example
 SNMPv3
 ^^^^^^
 
-SNMPv3 is an updated version that, among other things, supports encryption and
-cryptographic authentication of clients.
+SNMPv3 (version 3 of the SNMP protocol) introduced a whole slew of new security
+related features that have been missing from the previous versions. Security
+was one of the biggest weakness of SNMP until v3. Authentication in SNMP
+Versions 1 and 2 amounts to nothing more than a password (community string)
+sent in clear text between a manager and agent. Each SNMPv3 message contains
+security parameters which are encoded as an octet string. The meaning of these
+security parameters depends on the security model being used.
+
+The securityapproach in v3 targets:
+
+* Confidentiality – Encryption of packets to prevent snooping by an
+  unauthorized source.
+
+* Integrity – Message integrity to ensure that a packet has not been tampered
+  while in transit including an optional packet replay protection mechanism.
+
+* Authentication – to verify that the message is from a valid source.
 
 Example
 *******
