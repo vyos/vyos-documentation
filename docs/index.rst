@@ -23,6 +23,12 @@ The manual version is selected/specified by it's Git branch name. You can
 switch between versions of the documentation by selecting the appropriate
 branch on the bottom left corner.
 
+VyOS CLI syntax may change between major (and sometimes minor) versions. Please
+always refer to the documentation matching your current, running installation.
+If a change in the CLI is required, VyOS will ship a so called migration script
+which will take care of adjusting the synatax. No action needs to be taken by
+you.
+
 .. _introduction:
 .. toctree::
    :caption: Introduction
