@@ -1,3 +1,4 @@
+.. _sstp_server:
 
 SSTP server
 ------------
@@ -12,15 +13,16 @@ used with local authentication or a connected RADIUS server.
 Configuration
 ^^^^^^^^^^^^^
 
-The `Secure Socket Tunneling Protocol`_ (SSTP), provides ppp via a SSL/TLS channel.
-Using publically signed certificates as well a by private PKI, is fully supported.
-All certificates should be stored on VyOS under ``/config/user-data/sstp``.
-
+The `Secure Socket Tunneling Protocol`_ (SSTP), provides ppp via a SSL/TLS
+channel. Using publically signed certificates as well a by private PKI, is
+fully supported. All certificates should be stored on VyOS under
+``/config/user-data/sstp``.
 
 Self Signed CA and server certificates
 ======================================
 
-To generate the CA, the server private key and certificates the following commands can be used.
+To generate the CA, the server private key and certificates the following
+commands can be used.
 
 .. code-block:: sh
 
@@ -52,13 +54,11 @@ To generate the CA, the server private key and certificates the following comman
   Organizational Unit Name (eg, section) []:
   Common Name (e.g. server FQDN or YOUR name) []:
   Email Address []:
-  [edit]
-  vyos@vyos# 
-
 
 The example below will answer configuration request for the user user ``foo``.
 
-Use <tab> to setup the ``set sstp-settings ssl-certs ...``, it automatically looks for all files and directories in ``/config/user-data/sstp``. 
+Use <tab> to setup the ``set sstp-settings ssl-certs ...``, it automatically
+looks for all files and directories in ``/config/user-data/sstp``.
 
 .. code-block:: sh
 
@@ -72,6 +72,5 @@ Use <tab> to setup the ``set sstp-settings ssl-certs ...``, it automatically loo
   set sstp-settings ssl-certs ca 'ca.crt'
   set sstp-settings ssl-certs server-cert 'server.crt'
   set sstp-settings ssl-certs server-key 'server.key'
-
 
 .. include:: references.rst
