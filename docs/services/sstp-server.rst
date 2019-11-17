@@ -55,7 +55,7 @@ commands can be used.
   Common Name (e.g. server FQDN or YOUR name) []:
   Email Address []:
 
-The example below will answer configuration request for the user user ``foo``.
+The example below will answer configuration request for the user ``foo``.
 
 Use <tab> to setup the ``set sstp-settings ssl-certs ...``, it automatically
 looks for all files and directories in ``/config/user-data/sstp``.
