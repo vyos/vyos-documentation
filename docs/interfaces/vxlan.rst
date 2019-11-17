@@ -1,8 +1,7 @@
 VXLAN
 -----
 
-VXLAN is an overlaying Ethernet over IP protocol.
-It is described in RFC7348_.
+VXLAN is an overlaying Ethernet over IP protocol, it's described in :rfc:`7348`.
 
 If configuring VXLAN in a VyOS virtual machine, ensure that MAC spoofing
 (Hyper-V) or Forged Transmits (ESX) are permitted, otherwise forwarded frames
@@ -300,8 +299,3 @@ Let's change the Multicast example from above:
 
 The default port udp is set to 8472. 
 It can be changed with ``set interface vxlan <vxlanN> remote-port <port>``
-
-
-.. target-notes::
-
-.. _RFC7348: https://datatracker.ietf.org/doc/rfc7348/

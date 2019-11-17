@@ -87,7 +87,7 @@ The command is `set interfaces $type $name address dhcpv6`. Examples:
 Autoconfiguration (SLAAC)
 *************************
 
-SLAAC is specified in RFC4862_. This method is supported on all physical
+SLAAC is specified in :rfc:`4862`. This method is supported on all physical
 interfaces, and those that are directly connected to a physical interface
 (ethernet, VLAN, bridge, bond, pseudo-ethernet, wireless).
 
@@ -104,7 +104,7 @@ The command is `set interfaces $type $name ipv6 address autoconf`. Examples:
 EUI-64
 ******
 
-EUI-64 (64-Bit Extended Unique Identifier) as specified in RFC4291_. IPv6
+EUI-64 (64-Bit Extended Unique Identifier) as specified in :rfc:`4291`. IPv6
 addresses in /64 networks can be automatically generated from the prefix and
 MAC address, if you specify the prefix.
 
@@ -120,7 +120,7 @@ Examples:
 Router Advertisements
 *********************
 
-Router advertisements are described in `RFC4861 section 4.2`_. They are part of what is known as SLAAC (Stateless Address Autoconfiguration). 
+Router advertisements are described in :rfc:`4861` section 4.2. They are part of what is known as SLAAC (Stateless Address Autoconfiguration). 
 
 To enable or disable, use:
 
@@ -152,7 +152,7 @@ To set the options described in "Router Advertisement Message Format":
 
 **Prefix Information**
 
-Prefix information is described in `RFC4861 section 4.6.2`_
+Prefix information is described in :rfc:`4861` section 4.6.2.
 
 .. code-block:: sh
 
@@ -171,8 +171,3 @@ To receive and accept RAs on an interface, you need to enable it with the follow
 
   vyos@vyos# set system sysctl custom net.ipv6.conf.<interface name>.accept_ra value 2
 
-
-.. _`RFC4861 section 4.6.2`: https://tools.ietf.org/html/rfc4861#section-4.6.2
-.. _`RFC4861 section 4.2`: https://tools.ietf.org/html/rfc4861#section-4.2
-.. _RFC4862: https://tools.ietf.org/html/rfc4862
-.. _RFC4291: http://tools.ietf.org/html/rfc4291#section-2.5.1

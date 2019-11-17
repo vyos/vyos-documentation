@@ -13,7 +13,7 @@ not make use of DHCP or dynamic routing protocols:
   set protocols static route 0.0.0.0/0 next-hop 10.1.1.1 distance '1'
 
 Another common use of static routes is to blackhole (drop) traffic. In the
-example below, RFC1918_ networks are set as blackhole routes. 
+example below, :rfc:`1918` networks are set as blackhole routes.
 
 This prevents these networks leaking out public interfaces, but it does not prevent
 them from being used as the most specific route has the highest priority.
@@ -26,5 +26,3 @@ them from being used as the most specific route has the highest priority.
 
 .. note:: Routes with a distance of 255 are effectively disabled and not
    installed into the kernel.
-
-.. _RFC1918: https://tools.ietf.org/html/rfc1918

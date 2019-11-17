@@ -35,9 +35,9 @@ This requires you already have a GitHub account.
   describing your change. Please check the documentation if you aren't familiar
   with Sphinx-doc_ or reStructuredText_.
 
-  Note the following RFCs (RFC5737_, RFC3849_, RFC5389_ and RFC7042_), which
-  describe the reserved public IP addresses and autonomous system numbers for
-  the documentation:
+  Note the following RFCs (:rfc:`5737`, :rfc:`3849`, :rfc:`5389` and
+  :rfc:`7042`), which describe the reserved public IP addresses and autonomous
+  system numbers for the documentation:
 
   * ``192.0.2.0/24``
   * ``198.51.100.0/24``
@@ -92,10 +92,6 @@ This requires you already have a GitHub account.
   If you want to update your fork on GitHub, too use the following:
   ``$ git push origin master``
 
-.. _RFC5737: https://tools.ietf.org/html/rfc5737
-.. _RFC3849: https://tools.ietf.org/html/rfc3849
-.. _RFC5389: https://tools.ietf.org/html/rfc5398
-.. _RFC7042: https://tools.ietf.org/html/
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
 .. _Phabricator: https://phabricator.vyos.net

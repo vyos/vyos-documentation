@@ -6,7 +6,7 @@ address. In order to do so, VyOS includes ddclient_, a perl script written for
 this exact purpose.
 
 ddclient_ uses two methods to update a DNS record. The first one will send
-updates directly to the DNS daemon, in compliance with RFC2136_. The second
+updates directly to the DNS daemon, in compliance with :rfc:`2136`. The second
 one involves a third party service, like DynDNS.com or any other similar
 website. This method uses HTTP requests to transmit the new IP address. You
 can configure both in VyOS.
@@ -14,7 +14,7 @@ can configure both in VyOS.
 VyOS CLI and RFC2136
 ^^^^^^^^^^^^^^^^^^^^
 
-First, create an RFC2136_ config node :
+First, create an :rfc:`2136` config node :
 
 .. code-block:: sh
 
@@ -147,6 +147,5 @@ by these two options:
 ddclient_ will load the webpage at `[url]` and will try to extract an IP
 address for the response. ddclient_ will skip any address located before the
 string set in `[skip]`.
-
 
 .. include:: references.rst

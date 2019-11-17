@@ -13,7 +13,7 @@ All those protocols are grouped under 'interfaces tunnel' in VyOS. Let's take a 
 IPIP
 ----
 
-This is one of the simplest types of tunnels, as defined by RFC2003_.
+This is one of the simplest types of tunnels, as defined by :rfc:`2003`.
 It takes an IPv4 packet and sends it as a payload of another IPv4 packet. For this reason, there are no other configuration options for this kind of tunnel.
 
 An example:
@@ -28,7 +28,7 @@ An example:
 IP6IP6
 ------
 
-This is the IPv6 counterpart of IPIP. I'm not aware of an RFC that defines this encapsulation specifically, but it's a natural specific case of IPv6 encapsulation mechanisms described in RFC2473_.
+This is the IPv6 counterpart of IPIP. I'm not aware of an RFC that defines this encapsulation specifically, but it's a natural specific case of IPv6 encapsulation mechanisms described in :rfc:2473`.
 
 It's not likely that anyone will need it any time soon, but it does exist.
 
@@ -61,7 +61,7 @@ An example:
 ----------
 
 
-6in4 uses tunneling to encapsulate IPv6 traffic over IPv4 links as defined in RFC4213_.
+6in4 uses tunneling to encapsulate IPv6 traffic over IPv4 links as defined in :rfc:`4213`.
 The 6in4 traffic is sent over IPv4 inside IPv4 packets whose IP headers have the IP protocol number set to 41.
 This protocol number is specifically designated for IPv6 encapsulation, the IPv4 packet header is immediately followed by the IPv6 packet being carried.
 The encapsulation overhead is the size of the IPv4 header of 20 bytes, therefore with an MTU of 1500 bytes, IPv6 packets of 1480 bytes can be sent without fragmentation. This tunneling technique is frequently used by IPv6 tunnel brokers like `Hurricane Electric`_. 
@@ -188,9 +188,5 @@ Results in:
       description "Description"
   }
 
-
-.. _RFC2003: https://tools.ietf.org/html/rfc2003
-.. _RFC2473: https://tools.ietf.org/html/rfc2473
 .. _`other proposals`: https://www.isc.org/downloads/aftr
-.. _RFC4213: https://tools.ietf.org/html/rfc4213
 .. _`Hurricane Electric`: https://tunnelbroker.net/

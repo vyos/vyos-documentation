@@ -266,11 +266,11 @@ one external interface:
 Firewall rules are written as normal, using the internal IP address as the
 source of outbound rules and the destination of inbound rules.
 
-NPTv6 (RFC6296)
----------------
+NPTv6
+-----
 
 NPTv6 stands for Network Prefix Translation. It's a form of NAT for IPv6. It's
-described in RFC6296_. NPTv6 is supported in linux kernel since version 3.13.
+described in :rfc:`6296`. NPTv6 is supported in linux kernel since version 3.13.
 
 Usage
 ^^^^^
@@ -469,7 +469,4 @@ Start by checking for IPSec SAs (Security Associations) with:
 
 That looks good - we defined 2 tunnels and they're both up and running.
 
-
-
-.. _RFC6296: https://tools.ietf.org/html/rfc6296
 .. _ULAs: http://en.wikipedia.org/wiki/Unique_local_address

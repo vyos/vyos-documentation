@@ -9,9 +9,9 @@ DMVPN is a dynamic VPN technology originally developed by Cisco. While their
 implementation was somewhat proprietary, the underlying technologies are
 actually standards based. The three technologies are:
 
-* **NHRP** - NBMA Next Hop Resolution Protocol RFC2332_
-* **mGRE** - Multipoint Generic Routing Encapsulation / mGRE RFC1702_
-* **IPSec** - IP Security (too many RFCs to list, but start with RFC4301_)
+* **NHRP** - NBMA Next Hop Resolution Protocol :rfc:`2332`
+* **mGRE** - Multipoint Generic Routing Encapsulation / mGRE :rfc:`1702`
+* **IPSec** - IP Security (too many RFCs to list, but start with :rfc:`4301`)
 
 NHRP provides the dynamic tunnel endpoint discovery mechanism (endpoint
 registration, and endpoint discovery/lookup), mGRE provides the tunnel
@@ -413,8 +413,3 @@ SPOKE2 Example Configuration
 
   set protocols static route 192.168.1.0/24 next-hop 10.0.0.1
   set protocols static route 192.168.2.0/24 next-hop 10.0.0.2
-
-
-.. _RFC2332: https://tools.ietf.org/html/rfc2332
-.. _RFC1702: https://tools.ietf.org/html/rfc1702
-.. _RFC4301: https://tools.ietf.org/html/rfc4301

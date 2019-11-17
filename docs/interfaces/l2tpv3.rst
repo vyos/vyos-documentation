@@ -3,7 +3,7 @@
 L2TPv3 Interfaces
 -----------------
 
-L2TPv3 is a pseudowire protocol, you can read more about here `Wikipedia L2TPv3`_ or `RFC3921`_
+L2TPv3 is a pseudowire protocol, you can read more about here `Wikipedia L2TPv3`_ or :rfc:`3921`
 
 L2TPv3 can transport any traffic including ethernet frames. L2TPv2 is limited to PPP.
 
@@ -116,4 +116,3 @@ L2TPv3:
   set interfaces l2tpv3 l2tpeth0 tunnel-id '10'
 
 .. _`Wikipedia L2TPv3`: http://en.wikipedia.org/wiki/L2TPv3
-.. _`RFC3921`: https://tools.ietf.org/html/rfc3931

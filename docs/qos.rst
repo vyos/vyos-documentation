@@ -664,7 +664,7 @@ In principle, values must be :code:`min-threshold` < :code:`max-threshold` <
 Possible values for WRED parameters:
 
 * precedence - IP precedence, first three bits of the ToS field as defined in
-  RFC791_.
+  :rfc:`791`.
 
  +------------+----------------------+
  | Precedence |      Priority        |
@@ -1027,7 +1027,7 @@ Traffic classes
 
   :code:`set traffic-policy shaper <policy name> class <class ID> set-dscp <value>`
 
-  DSCP values as per RFC2474_ and RFC4595_:
+  DSCP values as per :rfc:`2474` and :rfc:`4595`:
 
   +---------+------------+--------+------------------------------+
   | Binary  | Configured |  Drop  | Description                  |
@@ -1407,9 +1407,6 @@ vif
   set interfaces ethernet eth1 traffic-policy out 'LAN-OUT'
 
 .. _tc: http://en.wikipedia.org/wiki/Tc_(Linux)
-.. _RFC791: https://tools.ietf.org/html/rfc791
 .. _TBF: https://en.wikipedia.org/wiki/Token_bucket
-.. _RFC2474: https://tools.ietf.org/html/rfc2474#page-7
-.. _RFC4595: https://tools.ietf.org/html/rfc4594#page-19
 .. _HFSC: https://en.wikipedia.org/wiki/Hierarchical_fair-service_curve
 .. _IFB: http://www.linuxfoundation.org/collaborate/workgroups/networking/ifb

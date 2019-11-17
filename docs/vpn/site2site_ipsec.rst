@@ -225,8 +225,9 @@ Imagine the following topology
    IPSec IKEv2 site2site VPN (source ./draw.io/vpn_s2s_ikev2.drawio)
 
 
-.. note:: Don't get confused about the used /31 tunnel subnet. RFC3031_ gives
-   you additional information for using /31 subnets on point-to-point links.
+.. note:: Don't get confused about the used /31 tunnel subnet. :rfc:`3031`
+   gives you additional information for using /31 subnets on point-to-point
+   links.
 
 **left**
 
@@ -295,5 +296,3 @@ Imagine the following topology
   set vpn ipsec site-to-site peer 172.18.201.10 local-address '172.18.202.10'
   set vpn ipsec site-to-site peer 172.18.201.10 vti bind 'vti10'
   set vpn ipsec site-to-site peer 172.18.201.10 vti esp-group 'ESP_DEFAULT'
-
-.. _RFC3031:  https://tools.ietf.org/html/rfc3021

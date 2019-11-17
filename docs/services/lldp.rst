@@ -17,7 +17,7 @@ Information gathered
 
 Information gathered with LLDP is stored in the device as a management
 information database (MIB_) and can be queried with the Simple Network
-Management Protocol (SNMP_) as specified in RFC 2922. The topology of an
+Management Protocol (SNMP_) as specified in :rfc:`2922`. The topology of an
 LLDP-enabled network can be discovered by crawling the hosts and querying this
 database. Information that may be retrieved include:
 
