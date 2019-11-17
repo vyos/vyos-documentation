@@ -50,7 +50,7 @@ The container can always be built directly from source:
 
 .. code-block:: sh
 
-  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
+  $ git clone -b current --single-branch https://github.com/vyos/vyos-build
   $ docker build -t vyos/vyos-build docker
 
 .. note: The container is automatically downloaded from Dockerhub if it is not
@@ -81,7 +81,7 @@ interested in, this can be easily done by selecting the appropriate container
 image:
 
 * For VyOS 1.2 (crux) use ``vyos/vyos-build:crux``
-* For VyOS 1.3 (equuleus) use ``vyos/vyos-build:crux``
+* For VyOS 1.3 (equuleus) use ``vyos/vyos-build:equuleus``
 * For our VyOS rolling release you should use ``vyos/vyos-build`` which will
   always refer to the latest image.
 
