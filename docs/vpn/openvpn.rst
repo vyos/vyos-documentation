@@ -42,7 +42,7 @@ Site-to-site mode supports x.509 but doesn't require it and can also work with
 static keys, which is simpler in many cases. In this example, we'll configure
 a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared key.
 
-First, one one of the systems generate the key using the operational command
+First, one of the systems generate the key using the operational command
 `generate openvpn key <filename>`. This will generate a key with the name
 provided in the `/config/auth/` directory. Once generated, you will need to
 copy this key to the remote router.
