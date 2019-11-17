@@ -5,16 +5,20 @@ Tunnel Interfaces
 
 This article touches on 'classic' IP tunneling protocols.
 
-GRE is often seen as a one size fits all solution when it comes to classic IP tunneling protocols, and for a good reason.
-However, there are more specialized options, and many of them are supported by VyOS. There are also rather obscure GRE options that can be useful.
+GRE is often seen as a one size fits all solution when it comes to classic IP
+tunneling protocols, and for a good reason. However, there are more specialized
+options, and many of them are supported by VyOS. There are also rather obscure
+GRE options that can be useful.
 
-All those protocols are grouped under 'interfaces tunnel' in VyOS. Let's take a closer look at the protocols and options currently supported by VyOS.
+All those protocols are grouped under ``interfaces tunnel`` in VyOS. Let's take
+a closer look at the protocols and options currently supported by VyOS.
 
 IPIP
 ----
 
 This is one of the simplest types of tunnels, as defined by :rfc:`2003`.
-It takes an IPv4 packet and sends it as a payload of another IPv4 packet. For this reason, there are no other configuration options for this kind of tunnel.
+It takes an IPv4 packet and sends it as a payload of another IPv4 packet. For
+this reason, there are no other configuration options for this kind of tunnel.
 
 An example:
 
@@ -28,7 +32,9 @@ An example:
 IP6IP6
 ------
 
-This is the IPv6 counterpart of IPIP. I'm not aware of an RFC that defines this encapsulation specifically, but it's a natural specific case of IPv6 encapsulation mechanisms described in :rfc:2473`.
+This is the IPv6 counterpart of IPIP. I'm not aware of an RFC that defines this
+encapsulation specifically, but it's a natural specific case of IPv6
+encapsulation mechanisms described in :rfc:2473`.
 
 It's not likely that anyone will need it any time soon, but it does exist.
 
@@ -44,7 +50,8 @@ An example:
 IPIP6
 -----
 
-In the future this is expected to be a very useful protocol (though there are `other proposals`_).
+In the future this is expected to be a very useful protocol (though there are
+`other proposals`_).
 
 As the name implies, it's IPv4 encapsulated in IPv6, as simple as that.
 
@@ -60,11 +67,15 @@ An example:
 6in4 (SIT)
 ----------
 
-
-6in4 uses tunneling to encapsulate IPv6 traffic over IPv4 links as defined in :rfc:`4213`.
-The 6in4 traffic is sent over IPv4 inside IPv4 packets whose IP headers have the IP protocol number set to 41.
-This protocol number is specifically designated for IPv6 encapsulation, the IPv4 packet header is immediately followed by the IPv6 packet being carried.
-The encapsulation overhead is the size of the IPv4 header of 20 bytes, therefore with an MTU of 1500 bytes, IPv6 packets of 1480 bytes can be sent without fragmentation. This tunneling technique is frequently used by IPv6 tunnel brokers like `Hurricane Electric`_. 
+6in4 uses tunneling to encapsulate IPv6 traffic over IPv4 links as defined in
+:rfc:`4213`. The 6in4 traffic is sent over IPv4 inside IPv4 packets whose IP
+headers have the IP protocol number set to 41. This protocol number is
+specifically designated for IPv6 encapsulation, the IPv4 packet header is
+immediately followed by the IPv6 packet being carried. The encapsulation
+overhead is the size of the IPv4 header of 20 bytes, therefore with an MTU of
+1500 bytes, IPv6 packets of 1480 bytes can be sent without fragmentation. This
+tunneling technique is frequently used by IPv6 tunnel brokers like `Hurricane
+Electric`_.
 
 An example:
 
@@ -80,19 +91,20 @@ A full example of a Tunnelbroker.net config can be found at :ref:`here <examples
 Generic Routing Encapsulation (GRE)
 -----------------------------------
 
-A GRE tunnel operates at layer 3 of the OSI model and is repsented by IP protocol 47.  The 
-main benefit of a GRE tunnel is that you are able to route traffic across disparate networks.  
-GRE also supports multicast traffic and supports routing protocols that leverage multicast to 
-form neighbor adjacencies.
+A GRE tunnel operates at layer 3 of the OSI model and is repsented by IP
+protocol 47.The main benefit of a GRE tunnel is that you are able to route
+traffic across disparate networks. GRE also supports multicast traffic and
+supports routing protocols that leverage multicast to form neighbor adjacencies.
 
 Configuration
 ^^^^^^^^^^^^^
 
-A basic configuration requires a tunnel source (local-ip), a tunnel destination (remote-ip), 
-an encapsulation type (gre), and an address (ipv4/ipv6).  Below is a configuration example 
-taken from a VyOS router and a Cisco IOS router.  The main difference between these two 
-configurations is that VyOS requires you explicitly configure the encapsulation type.  
-The Cisco router defaults to 'gre ip' otherwise it would have to be configured as well.
+A basic configuration requires a tunnel source (local-ip), a tunnel destination
+(remote-ip), an encapsulation type (gre), and an address (ipv4/ipv6).Below is a
+configuration example taken from a VyOS router and a Cisco IOS router. The main
+difference between these two configurations is that VyOS requires you
+explicitly configure the encapsulation type. The Cisco router defaults to gre
+ip otherwise it would have to be configured as well.
 
 **VyOS Router:**
 
@@ -115,10 +127,11 @@ The Cisco router defaults to 'gre ip' otherwise it would have to be configured a
 Troubleshooting
 ^^^^^^^^^^^^^^^
 
-GRE is a well defined standard that is common in most networks.  While not inherently difficult 
-to configure there are a couple of things to keep in mind to make sure the configuration performs 
-as expected.  A common cause for GRE tunnels to fail to come up correctly include ACL or Firewall 
-configurations that are discarding IP protocol 47 or blocking your source/desintation traffic.
+GRE is a well defined standard that is common in most networks. While not
+inherently difficult to configure there are a couple of things to keep in mind
+to make sure the configuration performs as expected. A common cause for GRE
+tunnels to fail to come up correctly include ACL or Firewall configurations
+that are discarding IP protocol 47 or blocking your source/desintation traffic.
 
 **1. Confirm IP connectivity between tunnel local-ip and remote-ip:**
 
