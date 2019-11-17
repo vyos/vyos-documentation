@@ -43,11 +43,11 @@ static keys, which is simpler in many cases. In this example, we'll configure
 a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared key.
 
 First, one of the systems generate the key using the operational command
-`generate openvpn key <filename>`. This will generate a key with the name
-provided in the `/config/auth/` directory. Once generated, you will need to
+``generate openvpn key <filename>``. This will generate a key with the name
+provided in the ``/config/auth/`` directory. Once generated, you will need to
 copy this key to the remote router.
 
-In our example, we used the filename `openvpn-1.key` which we will reference
+In our example, we used the filename ``openvpn-1.key`` which we will reference
 in our configuration.
 
 * The public IP address of the local side of the VPN will be 198.51.100.10
@@ -58,11 +58,11 @@ in our configuration.
   when possible.
 * The official port for OpenVPN is 1194, which we reserve for client VPN; we
   will use 1195 for site-to-site VPN.
-* The `persistent-tunnel` directive will allow us to configure tunnel-related
+* The ``persistent-tunnel`` directive will allow us to configure tunnel-related
   attributes, such as firewall policy as we would on any normal network
   interface.
 * If known, the IP of the remote router can be configured using the
-  `remote-host` directive; if unknown, it can be omitted. We will assume a
+  ``remote-host`` directive; if unknown, it can be omitted. We will assume a
   dynamic IP for our remote router.
 
 Local Configuration:
@@ -196,12 +196,14 @@ all client subnets belong to 10.23.0.0/20. All clients need access to the
 192.168.0.0/16 network.
 
 First we need to specify the basic settings. 1194/UDP is the default. The
-`persistent-tunnel` option is recommended, it prevents the TUN/TAP device from
+``persistent-tunnel`` option is recommended, it prevents the TUN/TAP device from
 closing on connection resets or daemon reloads.
 
-
-.. note:: Using **openvpn-option -reneg-sec** can be tricky. This option is used to renegotiate data channel after n seconds. When used at both server and client, the lower value will trigger the renegotiation. If you set it to 0 on one side of the connection (to disable it), the chosen value on the other side will determine when the renegotiation will occur.
-
+.. note:: Using **openvpn-option -reneg-sec** can be tricky. This option is
+   used to renegotiate data channel after n seconds. When used at both server
+   and client, the lower value will trigger the renegotiation. If you set it to
+   0 on one side of the connection (to disable it), the chosen value on the
+   other side will determine when the renegotiation will occur.
 
 .. code-block:: sh
 
