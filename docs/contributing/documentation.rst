@@ -25,7 +25,7 @@ This requires you already have a GitHub account.
 
 * Clone fork to local machine
 
-* Change to your new local directory vyos-documentation
+* Change to your new local directory ``vyos-documentation``
 
 * Create new branch for your work, use a descriptive name of your work:
   ``$ git checkout -b fix-vxlan-typo``
