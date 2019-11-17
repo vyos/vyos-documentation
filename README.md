@@ -1,7 +1,12 @@
-This is a playground for a new VyOS documentation starting for VyOS 1.2 (Crux)
-release.
+Starting with VyOS 1.2 (`crux`) documentation will be migrated from the old wiki
+to ReadTheDocs. Documentation can be accessed via the following URLs:
+
+* https://docs.vyos.io
+* https://vyos.readthedocs.org
 
 # Build
+
+[![Documentation Status](https://readthedocs.org/projects/vyos/badge/?version=latest)](https://docs.vyos.io/en/latest/?badge=latest)
 
 ## Native
 
