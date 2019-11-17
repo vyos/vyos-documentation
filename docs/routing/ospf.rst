@@ -1,21 +1,23 @@
 .. _routing-ospf:
 
-Open Shortest Path First (OSPF)
--------------------------------
+OSPF
+----
 
-Open Shortest Path First (OSPF) is a routing protocol for Internet Protocol
-(IP) networks. It uses a link state routing (LSR) algorithm and falls into the
-group of interior gateway protocols (IGPs), operating within a single autonomous
-system (AS). It is defined as OSPF Version 2 in RFC2328_ (1998) for IPv4. Updates
-for IPv6 are specified as OSPF Version 3 in RFC5340_ (2008). OSPF supports the
-Classless Inter-Domain Routing (CIDR) addressing model.
+:abbr:`OSPF (Open Shortest Path First)` is a routing protocol for Internet
+Protocol (IP) networks. It uses a link state routing (LSR) algorithm and falls
+into the group of interior gateway protocols (IGPs), operating within a single
+autonomous system (AS). It is defined as OSPF Version 2 in :rfc:`2328` (1998)
+for IPv4. Updates for IPv6 are specified as OSPF Version 3 in :rfc:`5340`
+(2008). OSPF supports the :abbr:`CIDR (Classless Inter-Domain Routing)`
+addressing model.
 
 OSPF is a widely used IGP in large enterprise networks.
 
 OSPFv2 (IPv4)
 ^^^^^^^^^^^^^
 
-In order to have a VyOS system exchanging routes with OSPF neighbors, you will at least need to configure the area and a network,
+In order to have a VyOS system exchanging routes with OSPF neighbors, you will
+at least need to configure the area and a network,
 
 .. code-block:: sh
 
@@ -26,10 +28,11 @@ as well as the router ID.
 .. code-block:: sh
 
   set protocols ospf parameters router-id 10.1.1.1
- 
+
 That is the minimum configuration you will need.
 
-Below you can see a typical configuration using 2 nodes, redistribute loopback address and the node 1 sending the default route:
+Below you can see a typical configuration using 2 nodes, redistribute loopback
+address and the node 1 sending the default route:
 
 **Node 1**
 
@@ -133,7 +136,5 @@ Example configuration for WireGuard interfaces:
   Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]
   192.168.0.1       1    00:00:39     Full/PointToPoint    00:19:44 wg01[PointToPoint]
 
-.. _RFC2328: https://tools.ietf.org/html/rfc2328
-.. _RFC5340: https://tools.ietf.org/html/rfc2340
 .. _T1483: https://phabricator.vyos.net/T1483
 
