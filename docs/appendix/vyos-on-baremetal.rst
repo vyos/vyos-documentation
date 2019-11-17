@@ -94,7 +94,7 @@ Shopping Cart
 
 * 1x apu4c4 = 4 i211AT LAN / AMD GX-412TC CPU / 4 GB DRAM / dual SIM
 * 1x Kingston SUV500MS/120G
-* 1x VARIA Group Item 326745 19" dual rack rack for APU4
+* 1x VARIA Group Item 326745 19" dual rack for APU4
 * 1x Compex WLE900VX (Optional mini PCIe WiFi module)
 
 The 19" enclosure can accomodate up to two APU4 boards - there is a single and
