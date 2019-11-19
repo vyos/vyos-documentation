@@ -1,5 +1,7 @@
-Bridging
---------
+.. _bridge:
+
+Interface Bridge
+----------------
 
 Interfaces in VyOS can be bridged together to provide software switching of
 Layer-2 traffic.
