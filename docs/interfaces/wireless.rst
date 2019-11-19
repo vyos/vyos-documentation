@@ -38,6 +38,7 @@ you must specify unique IP addresses, channels, Network IDs commonly refered
 to as :addr:`SSID (Service Set Identifier), and MAC addresses.
 
 The WAP in this example has the following characteristics:
+
 * IP address ``192.0.2.1/24``
 * Network ID (SSID) ``TEST``
 * WPA passphrase ``12345678``
