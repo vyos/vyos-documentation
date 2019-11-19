@@ -1,10 +1,10 @@
 .. _routing-pbr:
 
-Policy-Based Routing (PBR)
---------------------------
+PBR
+---
 
-VyOS supports Policy Routing, allowing traffic to be assigned to a different
-routing table. Traffic can be matched using standard 5-tuple matching (source
+:abbr:`PBR (Policy-Based Routing)` allowing traffic to be assigned to different
+routing tables. Traffic can be matched using standard 5-tuple matching (source
 address, destination address, protocol, source port, destination port).
 
 Transparent Proxy
@@ -50,13 +50,15 @@ Routing tables that will be used in this example are:
 
 * ``table 10`` Routing tabled used for VLAN 10 (192.168.188.0/24)
 * ``table 11`` Routing tabled used for VLAN 11 (192.168.189.0/24)
-* ``main`` Routing table used by VyOS and other interfaces not paritipating in PBR
+* ``main`` Routing table used by VyOS and other interfaces not paritipating in
+  PBR
 
 .. figure:: ../_static/images/pbr_example_1.png
    :scale: 80 %
    :alt: PBR multiple uplinks
 
-   Policy-Based Routing with multiple ISP uplinks (source ./draw.io/pbr_example_1.drawio)
+   Policy-Based Routing with multiple ISP uplinks
+   (source ./draw.io/pbr_example_1.drawio)
 
 Add default routes for routing ``table 10`` and ``table 11``
 
@@ -94,5 +96,5 @@ Apply routing policy to **inbound** direction of out VLAN interfaces
   set policy route PBR rule 10 destination address '192.168.189.0/24'
   set policy route PBR rule 10 set table 'main'
 
-.. note:: Allows the VLAN10 and VLAN20 hosts to communicate with each other using the
-   main routing table.
+.. note:: Allows the VLAN10 and VLAN20 hosts to communicate with each other
+   using the main routing table.
