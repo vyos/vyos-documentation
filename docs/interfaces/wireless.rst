@@ -50,6 +50,7 @@ The WAP in this example has the following characteristics:
   set interfaces wireless wlan0 address '192.0.2.1/24'
   set interfaces wireless wlan0 type access-point
   set interfaces wireless wlan0 channel 1
+  set interfaces wireless wlan0 mode n
   set interfaces wireless wlan0 ssid 'TEST'
   set interfaces wireless wlan0 security wpa mode wpa2
   set interfaces wireless wlan0 security wpa cipher CCMP
@@ -64,7 +65,7 @@ Resulting in
     wireless wlan0 {
           address 192.0.2.1/24
           channel 1
-          mode g
+          mode n
           security {
               wpa {
                   cipher CCMP
