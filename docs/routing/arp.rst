@@ -15,30 +15,35 @@ provided by the Neighbor Discovery Protocol (NDP).
 To manipulate or display ARP_ table entries, the following commands are
 implemented.
 
+Add static ARP entry
+^^^^^^^^^^^^^^^^^^^^
+
 .. option:: set protocols static arp 10.1.1.100 hwaddr 08:00:27:de:23:aa
 
-   adding a static arp entry
+Display ARP entries
+^^^^^^^^^^^^^^^^^^^
 
 .. option:: show protocols static arp
 
-   In operational level, display all known ARP table entries
-   ..
+Display all known ARP table entries spanning accross all interfaces
 
-     vyos@vyos:~$ show protocols static arp
-     Address                  HWtype  HWaddress           Flags Mask     Iface
-     10.1.1.1                 ether   08:00:27:de:23:2e   C              eth1
-     10.1.1.100               ether   08:00:27:de:23:aa   CM             eth1
+.. code-block:: sh
+
+  vyos@vyos:~$ show protocols static arp
+  Address                  HWtype  HWaddress           Flags Mask     Iface
+  10.1.1.1                 ether   08:00:27:de:23:2e   C              eth1
+  10.1.1.100               ether   08:00:27:de:23:aa   CM             eth1
+
 
 .. option:: show protocols static arp interface eth1
 
-   In operational level, display all known ARP table entries on a specific
-   interface.
-  
-   ..
+Display all known ARP table entries on a given interface only (`eth1`):
 
-     vyos@vyos:~$ show protocols static arp interface eth1
-     Address                  HWtype  HWaddress           Flags Mask     Iface
-     10.1.1.1                 ether   08:00:27:de:23:2e   C              eth1
-     10.1.1.100               ether   08:00:27:de:23:aa   CM             eth1
+.. code-block:: sh
+
+  vyos@vyos:~$ show protocols static arp interface eth1
+  Address                  HWtype  HWaddress           Flags Mask     Iface
+  10.1.1.1                 ether   08:00:27:de:23:2e   C              eth1
+  10.1.1.100               ether   08:00:27:de:23:aa   CM             eth1
 
 .. _ARP: https://en.wikipedia.org/wiki/Address_Resolution_Protocol
