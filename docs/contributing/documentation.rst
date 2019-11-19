@@ -78,7 +78,7 @@ This requires you already have a GitHub account.
     origin    https://github.com/YOUR_USERNAME/vyos-documentation.git (fetch)
     origin    https://github.com/YOUR_USERNAME/vyos.documentation.git (push)
     upstream  https://github.com/vyos/vyos-documentation.git (fetch)
-    upstream  https://github.com/vyos/vyos-documentation.git (push)``
+    upstream  https://github.com/vyos/vyos-documentation.git (push)
 
   Your remote repo on Github is called Origin, while the original repo you
   have forked is called Upstream. Now you can locally update your forked repo.
@@ -87,7 +87,7 @@ This requires you already have a GitHub account.
 
     $ git fetch upstream
     $ git checkout master
-    $ git merge upstream/master``
+    $ git merge upstream/master
 
   If you want to update your fork on GitHub, too use the following:
   ``$ git push origin master``
