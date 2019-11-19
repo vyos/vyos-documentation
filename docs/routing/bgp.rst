@@ -3,10 +3,10 @@
 BGP
 ---
 
-:abbr:`BGP` stands for Border Gateway Protocol. The latest BGP version is 4.
-BGP-4 is one of the Exterior Gateway Protocols and the de facto standard
-interdomain routing protocol. BGP-4 is described in :rfc:`1771` and updated by
-:rfc:`4271`. :rfc:`2858` adds multiprotocol support to BGP-4.
+:abbr:`BGP (Border Gateway Protocol) is one of the Exterior Gateway Protocols
+and the de facto standard interdomain routing protocol. The latest BGP version
+is 4. BGP-4 is described in :rfc:`1771` and updated by :rfc:`4271`. :rfc:`2858`
+adds multiprotocol support to BGP.
 
 IPv4
 ^^^^
