@@ -87,6 +87,73 @@ to set up a DHCP server to work with that network. You can - of course - also
 bridge the Wireless interface with any configured bridge (:ref:`bridge`) on
 the system.
 
+WPA/WPA2 enterprise
+*******************
+
+:abbr:`WPA (Wi-Fi Protected Access)` and WPA2 Enterprise in combination with
+802.1x based authentication can be used to authenticate users or computers
+in a domain.
+
+The wireless client (supplicant) authenticates against the RADIUS server
+(authentication server) using an :abbr:`EAP (Extensible Authentication
+Protocol)`  method configured on the RADIUS server. The WAP (also referred
+to as authenticator) role is to send all authentication messages between the
+supplicant and the configured authentication server, thus the RADIUS server
+is responsible for authenticating the users.
+
+The WAP in this example has the following characteristics:
+
+* IP address ``192.0.2.1/24``
+* Network ID (SSID) ``Enterprise-TEST``
+* WPA passphrase ``12345678``
+* Use 802.11n protocol
+* Wireless channel ``1``
+* RADIUS server at ``192.0.3.10`` with shared-secret ``VyOSPassword``
+
+.. code-block:: sh
+
+  set interfaces wireless wlan0 address '192.0.2.1/24'
+  set interfaces wireless wlan0 type access-point
+  set interfaces wireless wlan0 channel 1
+  set interfaces wireless wlan0 mode n
+  set interfaces wireless wlan0 ssid 'TEST'
+  set interfaces wireless wlan0 security wpa mode wpa2
+  set interfaces wireless wlan0 security wpa cipher CCMP
+  set interfaces wireless wlan0 security wpa radius server 192.0.3.10 key 'VyOSPassword'
+  set interfaces wireless wlan0 security wpa radius server 192.0.3.10 port 1812
+
+Resulting in
+
+.. code-block:: sh
+
+  interfaces {
+    [...]
+    wireless wlan0 {
+          address 192.0.2.1/24
+          channel 1
+          mode n
+          security {
+              wpa {
+                  cipher CCMP
+                  mode wpa2
+                  radius {
+                      server 192.0.3.10 {
+                          key 'VyOSPassword'
+                          port 1812
+                      }
+                  }
+              }
+          }
+          ssid "Enterprise-TEST"
+          type access-point
+      }
+  }
+  system {
+    [...]
+    wifi-regulatory-domain DE
+  }
+
+
 Configuring Wireless Station
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -116,7 +183,7 @@ Resulting in
       }
       ssid TEST
       type station
-	}
+    }
 
 Operational Commands
 ^^^^^^^^^^^^^^^^^^^^
