@@ -133,6 +133,7 @@ about all wireless interfaces.
   mon.wlan0   monitor     ?                ?
   wlan0       AP          testing          3
 
+
 .. option:: show interfaces wireless detail
 
 Use this command to view operational status and detailes wireless-specific
@@ -142,8 +143,69 @@ information about all wireless interfaces.
 
   vyos@vyos:~$ show interfaces wireless detail
   wlan0: <NO?CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN0
-    link/ether 00:21:91:d1:18:ca brd ff:ff:ff:ff:ff:ff
-    RX: bytes   packets   errors   dropped   overrun      mcast
-            0         0        0         0         0          0
-    TX: bytes   packets   errors   dropped   carrier collisions
-            0         0        0         0         0          0
+      link/ether 00:21:91:d1:18:ca brd ff:ff:ff:ff:ff:ff
+      RX: bytes   packets   errors   dropped   overrun      mcast
+              0         0        0         0         0          0
+      TX: bytes   packets   errors   dropped   carrier collisions
+              0         0        0         0         0          0
+
+
+.. option:: show interfaces wireless <wlanX>
+
+This command shows both status and statistics on the specified wireless interface.
+The wireless interface identifier can range from wlan0 to wlan999.
+
+.. code-block:: sh
+
+  vyos@vyos:~$ show interfaces wireless wlan0
+  wlan0: <NO?CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN0
+      link/ether 00:21:91:d1:18:ca brd ff:ff:ff:ff:ff:ff
+      RX: bytes   packets   errors   dropped   overrun      mcast
+              0         0        0         0         0          0
+      TX: bytes   packets   errors   dropped   carrier collisions
+              0         0        0         0         0          0
+
+
+.. option:: show interfaces wireless <wlanX> brief
+
+This command gives a brief status overview of a specified wireless interface.
+The wireless interface identifier can range from wlan0 to wlan999.
+
+.. code-block:: sh
+
+  vyos@vyos:~$ show interfaces wireless wlan0 brief
+  Interface   IP Address         State   Link   Description
+  wlan0       192.168.40.1/24    up      up
+
+
+.. option:: show interfaces wireless <wlanX> queue
+
+Use this command to view wireless interface queue information.
+The wireless interface identifier can range from wlan0 to wlan999.
+
+
+.. code-block:: sh
+
+  vyos@vyos:~$ show interfaces wireless wlan0 queue
+  qdisc pfifo_fast 0: root bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+   Sent 810323 bytes 6016 pkt (dropped 0, overlimits 0 requeues 0)
+   rate 0bit 0pps backlog 0b 0p requeues 0
+
+
+.. option:: show interfaces wireless <wlanX> scan
+
+This command is used to retrive information about WAP within the range of your
+wireless interface. This command is usefull on wireless interfaces configured
+in station mode.
+
+.. note:: Scanning is not supported on all wireless drivers and wireless
+   hardware. Refer to your driver and wireless hardware documentation for
+   further details.
+
+.. code-block:: sh
+
+  vyos@vyos:~$ show interfaces wireless wlan0 scan
+  Access-point       SSID             Chan    Signal (dbm)
+  00:53:00:b5:8b:d6  VyOS-TEST-NET    1       -77
+  00:53:29:10:45:03  GUESTS           11      -67
+  00:53:ab:20:45:03  Hotspot          10      -68
