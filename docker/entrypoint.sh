@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+exec "$@"
 
 USER_NAME="vyos_bld"
 NEW_UID=$(stat -c "%u" .)

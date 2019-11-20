@@ -12,7 +12,7 @@ There are three modes of operation for a wireless interface:
 
 * :abbr:`WAP (Wireless Access-Point)` provides network access to connecting
   stations if the physical hardware supports acting as a WAP
-  
+
 * A station acts as a Wi-Fi client accessing the network through an available
   WAP
 
@@ -28,7 +28,7 @@ regulatory domain with the country code of your locaion.
 .. option:: set system wifi-regulatory-domain DE
 
    Configure system wide Wi-Fi regulatory domain. A reboot is required for this
-   change to be enabled.   
+   change to be enabled.
 
 Configuring Access-Point
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -117,3 +117,33 @@ Resulting in
       ssid TEST
       type station
 	}
+
+Operational Commands
+^^^^^^^^^^^^^^^^^^^^
+
+.. option:: show interfaces wireless info
+
+Use this command to view operational status and wireless-specific information
+about all wireless interfaces.
+
+.. code-block:: sh
+
+  vyos@vyos:~$ show interfaces wireless info
+  Interface   Type        SSID             Channel
+  mon.wlan0   monitor     ?                ?
+  wlan0       AP          testing          3
+
+.. option:: show interfaces wireless detail
+
+Use this command to view operational status and detailes wireless-specific
+information about all wireless interfaces.
+
+.. code-block:: sh
+
+  vyos@vyos:~$ show interfaces wireless detail
+  wlan0: <NO?CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN0
+    link/ether 00:21:91:d1:18:ca brd ff:ff:ff:ff:ff:ff
+    RX: bytes   packets   errors   dropped   overrun      mcast
+            0         0        0         0         0          0
+    TX: bytes   packets   errors   dropped   carrier collisions
+            0         0        0         0         0          0
