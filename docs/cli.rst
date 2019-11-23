@@ -1,27 +1,29 @@
 .. _cli:
 
-Command-Line Interface
-======================
+###
+CLI
+###
 
-The VyOS CLI comprises an :ref:`commandtree_operationmode` and a  :ref:`commandtree_configmode`.
+The VyOS :abbr:`CLI (Command-Line Interface)` comprises an
+:ref:`commandtree_operationmode` and a :ref:`commandtree_configmode`.
 
 Operational mode allows for commands to perform operational system tasks and
 view system and service status, while configuration mode allows for the
-modification of system configuration. The :ref:`command tree page<commandtree>` lists available commands and their functions.
+modification of system configuration. The :ref:`command tree page<commandtree>`
+lists available commands and their functions.
 
-The CLI provides a built-in help system. In the CLI the **[?]** key may be used
-to display available commands. The **[tab]** key can be used to auto-complete
+The CLI provides a built-in help system. In the CLI the ``?`` key may be used
+to display available commands. The ``TAB`` key can be used to auto-complete
 commands and will present the help system upon a conflict or unknown value.
 
-For example typing `sh` followed by the **[tab]** key will complete to `show`.
-Pressing **[tab]** a second time will display the possible sub-commands of the
-`show` command.
+For example typing ``sh`` followed by the ``TAB`` key will complete to
+``show``. Pressing ``TAB`` a second time will display the possible
+sub-commands of the ``show`` command.
 
 .. code-block:: sh
 
   vyos@vyos:~$ s[tab]
   set   show
-  vyos@vyos:~$
 
 Example showing possible show commands:
 
@@ -50,24 +52,24 @@ Example showing possible show commands:
     host          Show host information
     incoming      Show ethernet input-policy information
   : q
-  vyos@vyos:~$
 
-You can scroll up with the keys [Shift]+[PageUp] and sroll down with [Shift]+[PageDown].
+You can scroll up with the keys ``[Shift]+[PageUp]`` and scroll down with
+``[Shift]+[PageDown]``.
 
 When the output of a command results in more lines than can be displayed on the
-terminal screen the output is paginated as indicated by a : prompt.
+terminal screen the output is paginated as indicated by a ``:`` prompt.
 
 When viewing in page mode the following commands are available:
- * **[q]** key can be used to cancel output
- * **[space]** will scroll down one page
- * **[b]** will scroll back one page
- * **[return]** will scroll down one line
- * **[up-arrow]** and **[down-arrow]** will scroll up or down one line at a
+ * ``q`` key can be used to cancel output
+ * ``space`` will scroll down one page
+ * ``b`` will scroll back one page
+ * ``return`` will scroll down one line
+ * ``up-arrow`` and ``down-arrow`` will scroll up or down one line at a
    time respectively
- * **[left-arrow]** and **[right-arrow]** can be used to scroll left or right
+ * ``left-arrow`` and ``right-arrow`` can be used to scroll left or right
    in the event that the output has lines which exceed the terminal size.
 
-To enter configuration mode use the `configure` command:
+To enter configuration mode use the ``configure`` command:
 
 .. code-block:: sh
 
@@ -75,7 +77,8 @@ To enter configuration mode use the `configure` command:
   [edit]
   vyos@vyos:~#
 
-.. note:: Prompt changes from `$` to `#`. To exit configuration mode, type `exit`.
+.. note:: Prompt changes from ``$`` to ``#``. To exit configuration mode,
+   type ``exit``.
 
 .. code-block:: sh
 

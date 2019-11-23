@@ -1,20 +1,21 @@
 .. _installation:
 
+############
 Installation
-============
+############
 
 Requirements
-------------
+============
 
 The recommended system requirements are 512 MiB RAM and 2 GiB storage. Depending
 on your use you might need additional RAM and CPU resources e.g. when having
 multiple BGP full tables in your system.
 
 Getting the software
----------------------
+====================
 
 Registered subscribers
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 Registered subscribers can log into https://support.vyos.io/ to have access to
 a variety of different downloads via the "Downloads" link. These downloads
@@ -25,15 +26,14 @@ ISOs.
 .. figure:: /_static/images/vyos-downloads.png
 
 Building from source
-^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 Non-subscribers can get the LTS release by building it from source. Instruction
-can be found here: :ref:`build`
+can be found here: :ref:`build` and the source repository is available
+for everyone at https://github.com/vyos/vyos-build.
 
-https://github.com/vyos/vyos-build
-
-Rolling releases
-^^^^^^^^^^^^^^^^
+Rolling Release
+---------------
 
 Non-subscribers and subscribers can download bleeding-edge VyOS rolling images
 from: https://downloads.vyos.io/
@@ -43,14 +43,15 @@ current branch:
 https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 
 
-Preparing software verification
--------------------------------
+Software verification
+=====================
 
 This subsection and the following one applies to downloaded LTS images, for
 other versions please jump to :ref:`Install`.
 
 LTS images are signed by VyOS lead package-maintainer private key. With the
 official public key, the authenticity of the package can be verified.
+:abbr:`GPG (GNU Privacy Guard)` is used for verification.
 
 First, install GPG or another OpenPGP implementation. On most GNU+Linux
 distributions it is installed by default as package managers use it to verify
@@ -141,8 +142,8 @@ The import can be verified with:
 
 .. _gpg-verification:
 
-GPG verification
-----------------
+GPG
+---
 
 With the public key imported, the signature for the desired image needs to be
 downloaded.
@@ -164,7 +165,7 @@ Finally, verify the authencity of the downloaded image:
 .. _Install:
 
 Install
--------
+=======
 
 VyOS ISO is a Live CD and will boot to a functional VyOS image.
 
@@ -324,7 +325,7 @@ Configure a TFTP server so that it serves the following:
 * The initial ramdisk of the VyOS ISO you want to deploy. That is the
   ``initrd.img`` file inside the ``/live`` directory of the extracted contents
   from the ISO file. Do not use an empty (0 bytes) initrd.img file you might
-  find, the correct file may have a longer name. 
+  find, the correct file may have a longer name.
 * A directory named pxelinux.cfg which must contain the configuration file:
   We will use the configuration_ file shown below, which we named default_
 

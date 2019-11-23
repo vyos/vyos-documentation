@@ -1,7 +1,8 @@
 .. _history:
 
+#######
 History
-=======
+#######
 
 VyOS is a Linux-based network operating system that provides software-based
 network routing, firewall, and VPN functionality.
@@ -18,9 +19,8 @@ syntax and :ref:`cli` are loosely derived from Juniper JUNOS as modelled by the
 `XORP project <http://www.xorp.org/>`_, which was the original routing engine
 for Vyatta.
 
-In the 4.0 release of Vyatta, the routing engine was changed to Quagga.
-
-As of version 1.2, VyOS now uses `FRRouting <https://frrouting.org/>`_ as the
+In the 4.0 release of Vyatta, the routing engine was changed to Quagga. As of
+VyOS version 1.2, VyOS now uses `FRRouting <https://frrouting.org/>`_ as the
 routing engine.
 
 How is VyOS different from any other router distributions and platform?

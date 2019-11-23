@@ -1,7 +1,8 @@
 .. _quick-start:
 
-Quick Start Guide
-=================
+###########
+Quick Start
+###########
 
 Below is a very basic configuration example that will provide a NAT gateway
 for a device with two interfaces.
