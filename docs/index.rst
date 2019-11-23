@@ -3,9 +3,6 @@
 VyOS User Guide
 ===============
 
-############
-Introduction
-############
 
 .. toctree::
    :caption: Introduction
@@ -18,9 +15,6 @@ Introduction
    cli
    quick-start
 
-######
-Basics
-######
 
 .. toctree::
    :caption: Basics
@@ -32,9 +26,6 @@ Basics
    system/index
    image-mgmt
 
-########
-Advanced
-########
 
 .. toctree::
    :caption: Advanced
@@ -53,9 +44,6 @@ Advanced
    commandscripting
    troubleshooting
 
-########
-Appendix
-########
 
 .. toctree::
    :caption: Appendix
@@ -69,9 +57,6 @@ Appendix
    appendix/vyos-on-baremetal
    appendix/migrate-from-vyatta
 
-############
-Contributing
-############
 
 .. toctree::
    :caption: Contributing
