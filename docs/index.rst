@@ -39,6 +39,7 @@ Basics
    load-balancing
    image-mgmt
    commandscripting
+   troubleshooting
 
 ########
 Appendix
@@ -49,7 +50,6 @@ Appendix
    :maxdepth: 2
 
    appendix/releasenotes
-   appendix/troubleshooting
    appendix/examples/index
    appendix/commandtree/index
    appendix/vyos-on-vmware
