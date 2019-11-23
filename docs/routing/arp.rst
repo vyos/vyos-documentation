@@ -18,12 +18,12 @@ implemented.
 Add static ARP entry
 ^^^^^^^^^^^^^^^^^^^^
 
-.. option:: set protocols static arp 10.1.1.100 hwaddr 08:00:27:de:23:aa
+.. cfcmd:: set protocols static arp 10.1.1.100 hwaddr 08:00:27:de:23:aa
 
 Display ARP entries
 ^^^^^^^^^^^^^^^^^^^
 
-.. option:: show protocols static arp
+.. opcmd:: show protocols static arp
 
 Display all known ARP table entries spanning accross all interfaces
 
@@ -35,7 +35,7 @@ Display all known ARP table entries spanning accross all interfaces
   10.1.1.100               ether   08:00:27:de:23:aa   CM             eth1
 
 
-.. option:: show protocols static arp interface eth1
+.. opcmd:: show protocols static arp interface eth1
 
 Display all known ARP table entries on a given interface only (`eth1`):
 

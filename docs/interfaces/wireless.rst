@@ -25,7 +25,7 @@ its MAC address) and configured to run in monitor mode.
 To be able to use the wireless interfaces you will first need to set a
 regulatory domain with the country code of your locaion.
 
-.. option:: set system wifi-regulatory-domain DE
+.. cfcmd:: set system wifi-regulatory-domain DE
 
    Configure system wide Wi-Fi regulatory domain. A reboot is required for this
    change to be enabled.
@@ -188,7 +188,7 @@ Resulting in
 Operational Commands
 ^^^^^^^^^^^^^^^^^^^^
 
-.. option:: show interfaces wireless info
+.. opcmd:: show interfaces wireless info
 
 Use this command to view operational status and wireless-specific information
 about all wireless interfaces.
@@ -199,7 +199,7 @@ about all wireless interfaces.
   Interface  Type          SSID                         Channel
   wlan0      access-point  VyOS-TEST-0                        1
 
-.. option:: show interfaces wireless detail
+.. opcmd:: show interfaces wireless detail
 
 Use this command to view operational status and detailes wireless-specific
 information about all wireless interfaces.
@@ -231,7 +231,7 @@ information about all wireless interfaces.
       TX:  bytes    packets     errors    dropped    carrier collisions
            183413      5430          0          0          0          0
 
-.. option:: show interfaces wireless <wlanX>
+.. opcmd:: show interfaces wireless <wlanX>
 
 This command shows both status and statistics on the specified wireless interface.
 The wireless interface identifier can range from wlan0 to wlan999.
@@ -252,7 +252,7 @@ The wireless interface identifier can range from wlan0 to wlan999.
            83413        430          0          0          0          0
 
 
-.. option:: show interfaces wireless <wlanX> brief
+.. opcmd:: show interfaces wireless <wlanX> brief
 
 This command gives a brief status overview of a specified wireless interface.
 The wireless interface identifier can range from wlan0 to wlan999.
@@ -266,7 +266,7 @@ The wireless interface identifier can range from wlan0 to wlan999.
   wlan0            192.0.2.254/24                    u/u
 
 
-.. option:: show interfaces wireless <wlanX> queue
+.. opcmd:: show interfaces wireless <wlanX> queue
 
 Use this command to view wireless interface queue information.
 The wireless interface identifier can range from wlan0 to wlan999.
@@ -279,7 +279,7 @@ The wireless interface identifier can range from wlan0 to wlan999.
    rate 0bit 0pps backlog 0b 0p requeues 0
 
 
-.. option:: show interfaces wireless <wlanX> scan
+.. opcmd:: show interfaces wireless <wlanX> scan
 
 This command is used to retrive information about WAP within the range of your
 wireless interface. This command is usefull on wireless interfaces configured
