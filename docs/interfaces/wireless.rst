@@ -1,7 +1,7 @@
-.. _wireless:
+.. _wireless-interface:
 
-Wireless Interfaces
--------------------
+Wireless (Wi-Fi)
+----------------
 
 :abbr:`WLAN (Wireless LAN)` interface provide 802.11 (a/b/g/n/ac) wireless
 support (commonly referred to as Wi-Fi) by means of compatible hardware. If your
@@ -35,7 +35,7 @@ Configuring Access-Point
 
 The following example creates a WAP. When configuring multiple WAP interfaces,
 you must specify unique IP addresses, channels, Network IDs commonly refered
-to as :addr:`SSID (Service Set Identifier), and MAC addresses.
+to as :abbr:`SSID (Service Set Identifier)`, and MAC addresses.
 
 The WAP in this example has the following characteristics:
 
@@ -84,8 +84,8 @@ Resulting in
 
 To get it to work as a access point with this configuration you will need
 to set up a DHCP server to work with that network. You can - of course - also
-bridge the Wireless interface with any configured bridge (:ref:`bridge`) on
-the system.
+bridge the Wireless interface with any configured bridge
+(:ref:`bridge-interface`) on the system.
 
 WPA/WPA2 enterprise
 *******************
@@ -196,10 +196,8 @@ about all wireless interfaces.
 .. code-block:: sh
 
   vyos@vyos:~$ show interfaces wireless info
-  Interface   Type        SSID             Channel
-  mon.wlan0   monitor     ?                ?
-  wlan0       AP          testing          3
-
+  Interface  Type          SSID                         Channel
+  wlan0      access-point  VyOS-TEST-0                        1
 
 .. option:: show interfaces wireless detail
 
@@ -209,13 +207,29 @@ information about all wireless interfaces.
 .. code-block:: sh
 
   vyos@vyos:~$ show interfaces wireless detail
-  wlan0: <NO?CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN0
-      link/ether 00:21:91:d1:18:ca brd ff:ff:ff:ff:ff:ff
-      RX: bytes   packets   errors   dropped   overrun      mcast
-              0         0        0         0         0          0
-      TX: bytes   packets   errors   dropped   carrier collisions
-              0         0        0         0         0          0
+  wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+      link/ether XX:XX:XX:XX:XX:c3 brd XX:XX:XX:XX:XX:ff
+      inet xxx.xxx.99.254/24 scope global wlan0
+         valid_lft forever preferred_lft forever
+      inet6 fe80::xxxx:xxxx:fe54:2fc3/64 scope link
+         valid_lft forever preferred_lft forever
 
+      RX:  bytes    packets     errors    dropped    overrun      mcast
+           66072        282          0          0          0          0
+      TX:  bytes    packets     errors    dropped    carrier collisions
+           83413        430          0          0          0          0
+
+  wlan1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+      link/ether XX:XX:XX:XX:XX:c3 brd XX:XX:XX:XX:XX:ff
+      inet xxx.xxx.100.254/24 scope global wlan0
+         valid_lft forever preferred_lft forever
+      inet6 fe80::xxxx:xxxx:ffff:2ed3/64 scope link
+         valid_lft forever preferred_lft forever
+
+      RX:  bytes    packets     errors    dropped    overrun      mcast
+           166072      5282          0          0          0          0
+      TX:  bytes    packets     errors    dropped    carrier collisions
+           183413      5430          0          0          0          0
 
 .. option:: show interfaces wireless <wlanX>
 
@@ -225,12 +239,17 @@ The wireless interface identifier can range from wlan0 to wlan999.
 .. code-block:: sh
 
   vyos@vyos:~$ show interfaces wireless wlan0
-  wlan0: <NO?CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN0
-      link/ether 00:21:91:d1:18:ca brd ff:ff:ff:ff:ff:ff
-      RX: bytes   packets   errors   dropped   overrun      mcast
-              0         0        0         0         0          0
-      TX: bytes   packets   errors   dropped   carrier collisions
-              0         0        0         0         0          0
+  wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+      link/ether XX:XX:XX:XX:XX:c3 brd XX:XX:XX:XX:XX:ff
+      inet xxx.xxx.99.254/24 scope global wlan0
+         valid_lft forever preferred_lft forever
+      inet6 fe80::xxxx:xxxx:fe54:2fc3/64 scope link
+         valid_lft forever preferred_lft forever
+
+      RX:  bytes    packets     errors    dropped    overrun      mcast
+           66072        282          0          0          0          0
+      TX:  bytes    packets     errors    dropped    carrier collisions
+           83413        430          0          0          0          0
 
 
 .. option:: show interfaces wireless <wlanX> brief
@@ -241,15 +260,16 @@ The wireless interface identifier can range from wlan0 to wlan999.
 .. code-block:: sh
 
   vyos@vyos:~$ show interfaces wireless wlan0 brief
-  Interface   IP Address         State   Link   Description
-  wlan0       192.168.40.1/24    up      up
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  Interface        IP Address                        S/L  Description
+  ---------        ----------                        ---  -----------
+  wlan0            192.0.2.254/24                    u/u
 
 
 .. option:: show interfaces wireless <wlanX> queue
 
 Use this command to view wireless interface queue information.
 The wireless interface identifier can range from wlan0 to wlan999.
-
 
 .. code-block:: sh
 
@@ -272,7 +292,19 @@ in station mode.
 .. code-block:: sh
 
   vyos@vyos:~$ show interfaces wireless wlan0 scan
-  Access-point       SSID             Chan    Signal (dbm)
-  00:53:00:b5:8b:d6  VyOS-TEST-NET    1       -77
-  00:53:29:10:45:03  GUESTS           11      -67
-  00:53:ab:20:45:03  Hotspot          10      -68
+  Address            SSID                          Channel  Signal (dbm)
+  00:53:3b:88:6e:d8  WLAN-576405                         1  -64.00
+  00:53:3b:88:6e:da  Telekom_FON                         1  -64.00
+  00:53:00:f2:c2:a4  BabyView_F2C2A4                     6  -60.00
+  00:53:3b:88:6e:d6  Telekom_FON                       100  -72.00
+  00:53:3b:88:6e:d4  WLAN-576405                       100  -71.00
+  00:53:44:a4:96:ec  KabelBox-4DC8                      56  -81.00
+  00:53:d9:7a:67:c2  WLAN-741980                         1  -75.00
+  00:53:7c:99:ce:76  Vodafone Homespot                   1  -86.00
+  00:53:44:a4:97:21  KabelBox-4DC8                       1  -78.00
+  00:53:44:a4:97:21  Vodafone Hotspot                    1  -79.00
+  00:53:44:a4:97:21  Vodafone Homespot                   1  -79.00
+  00:53:86:40:30:da  Telekom_FON                         1  -86.00
+  00:53:7c:99:ce:76  Vodafone Hotspot                    1  -86.00
+  00:53:44:46:d2:0b  Vodafone Hotspot                    1  -87.00
+

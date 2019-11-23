@@ -1,5 +1,7 @@
-Bonding
--------
+.. _bond-interface:
+
+Bond
+----
 
 You can combine (aggregate) 2 or more physical interfaces into a single
 logical one. It's called bonding, or LAG, or ether-channel, or port-channel.

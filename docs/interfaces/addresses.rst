@@ -6,10 +6,10 @@ Interface Addresses
 Each interface can be configured with a description and address. Interface
 addresses might be:
 
-* Static IPv4 `address 172.16.51.129/24`
-* Static IPv6 `address 2001:db8:1::ffff/64`
-* DHCP IPv4 `address dhcp`
-* DHCP IPv6 `address dhcpv6`
+* Static IPv4 ``address 172.16.51.129/24``
+* Static IPv6 ``address 2001:db8:1::ffff/64``
+* DHCP IPv4 ``address dhcp``
+* DHCP IPv6 ``address dhcpv6``
 
 An interface description is assigned using the following command:
 
@@ -27,7 +27,7 @@ This method is supported on all interfaces, apart from OpenVPN that uses
 different syntax and wireless modems that are always autoconfigured through
 PPP.
 
-The command is `set interfaces $type $name address $address`. Examples:
+The command is ``set interfaces $type $name address $address``. Examples:
 
 .. code-block:: sh
 
@@ -40,10 +40,10 @@ DHCP
 ****
 
 This method is supported on all physical interfaces, and those that are
-directly connected to a physical interface (ethernet, VLAN, bridge, bond,
-pseudo-ethernet, wireless).
+directly connected to a physical interface (Ethernet, VLAN, Bridge, Bond,
+Pseudo-ethernet, Wireless).
 
-The command is `set interfaces $type $name address dhcp`. Examples:
+The command is ``set interfaces $type $name address dhcp``. Examples:
 
 .. code-block:: sh
 
@@ -59,9 +59,9 @@ Static Address
 This method is supported on all interfaces, apart from OpenVPN that uses
 different syntax and wireless modems that are always autoconfigured through
 PPP. Static IPv6 addresses are supported on all interfaces
-except :ref:`interfaces-tunnel`.
+except :ref:`tunnel-interface`.
 
-The command is `set interfaces $type $name address $address`. Examples:
+The command is ``set interfaces $type $name address $address``. Examples:
 
 .. code-block:: sh
 
@@ -74,8 +74,8 @@ DHCP
 ****
 
 This method is supported on all physical interfaces, and those that are
-directly connected to a physical interface (ethernet, VLAN, bridge, bond,
-pseudo-ethernet, wireless).
+directly connected to a physical interface (Ethernet, VLAN, Bridge, Bond,
+Pseudo-ethernet, Wireless).
 
 The command is `set interfaces $type $name address dhcpv6`. Examples:
 
@@ -89,9 +89,9 @@ Autoconfiguration (SLAAC)
 
 SLAAC is specified in :rfc:`4862`. This method is supported on all physical
 interfaces, and those that are directly connected to a physical interface
-(ethernet, VLAN, bridge, bond, pseudo-ethernet, wireless).
+(Ethernet, VLAN, Bridge, Bond, Pseudo-ethernet, Wireless).
 
-The command is `set interfaces $type $name ipv6 address autoconf`. Examples:
+The command is ``set interfaces $type $name ipv6 address autoconf``. Examples:
 
 .. code-block:: sh
 
@@ -120,13 +120,14 @@ Examples:
 Router Advertisements
 *********************
 
-Router advertisements are described in :rfc:`4861` section 4.2. They are part of what is known as SLAAC (Stateless Address Autoconfiguration). 
+Router advertisements are described in :rfc:`4861` section 4.2. They are part
+of what is known as SLAAC (Stateless Address Autoconfiguration).
 
 To enable or disable, use:
 
 .. code-block:: sh
 
-  set interfaces <interface> ipv6 router-advert send-advert <true or false>
+  set interfaces <interface> ipv6 router-advert send-advert <true|false>
 
 
 To set the options described in "Router Advertisement Message Format":
@@ -135,22 +136,23 @@ To set the options described in "Router Advertisement Message Format":
 
   vyos@vyos#  set interfaces <interface> ipv6 router-advert
   Possible completions:
-    cur-hop-limit         Value to be placed in the "Current Hop Limit" field in RAs
-    default-lifetime      Value to be placed in "Router Lifetime" field in RAs
-    default-preference    Default router preference
-    link-mtu              Value of link MTU to place in RAs
-    managed-flag          Value for "managed address configuration" flag in RAs
-    max-interval          Maximum interval between unsolicited multicast RAs
-    min-interval          Minimum interval between unsolicited multicast RAs
-  +  name-server          IPv6 address of a Recursive DNS Server
-    other-config-flag     Value to be placed in the "other configuration" flag in RAs
-  +> prefix               IPv6 prefix to be advertised in Router Advertisements (RAs)
-    reachable-time        Value to be placed in "Reachable Time" field in RAs
-    retrans-timer         Value to place in "Retrans Timer" field in RAs.
-    send-advert           Enable/disable sending RAs
+     cur-hop-limit         Value to be placed in the "Current Hop Limit" field in RAs
+     default-lifetime      Value to be placed in "Router Lifetime" field in RAs
+     default-preference    Default router preference
+     link-mtu              Value of link MTU to place in RAs
+     managed-flag          Value for "managed address configuration" flag in RAs
+     max-interval          Maximum interval between unsolicited multicast RAs
+     min-interval          Minimum interval between unsolicited multicast RAs
+  +  name-server           IPv6 address of a Recursive DNS Server
+     other-config-flag     Value to be placed in the "other configuration" flag in RAs
+  +> prefix                IPv6 prefix to be advertised in Router Advertisements (RAs)
+     reachable-time        Value to be placed in "Reachable Time" field in RAs
+     retrans-timer         Value to place in "Retrans Timer" field in RAs.
+     send-advert           Enable/disable sending RAs
 
 
-**Prefix Information**
+Prefix Information
+~~~~~~~~~~~~~~~~~~
 
 Prefix information is described in :rfc:`4861` section 4.6.2.
 
@@ -163,11 +165,13 @@ Prefix information is described in :rfc:`4861` section 4.6.2.
     preferred-lifetime    Time in seconds that the prefix will remain preferred
     valid-lifetime        Time in seconds that the prefix will remain valid
 
-**Receiving Router Advertisements**
+Receiving Router Advertisements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To receive and accept RAs on an interface, you need to enable it with the following configuration command
+To receive and accept RAs on an interface, you need to enable it with the
+following configuration command
 
 .. code-block:: sh
 
-  vyos@vyos# set system sysctl custom net.ipv6.conf.<interface name>.accept_ra value 2
+  vyos@vyos# set system sysctl custom net.ipv6.conf.<interface>.accept_ra value 2
 

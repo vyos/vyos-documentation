@@ -52,8 +52,8 @@ respective sections.
    l2tpv3
    pppoe
    wireless
-   bridging
-   bonding
+   bridge
+   bond
    tunnel
    vlan
    qinq

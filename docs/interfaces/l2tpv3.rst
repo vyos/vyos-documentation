@@ -1,19 +1,20 @@
 .. _l2tpv3-interface:
 
-L2TPv3 Interfaces
------------------
+L2TPv3
+------
 
-L2TPv3 is a pseudowire protocol, you can read more about here `Wikipedia L2TPv3`_ or :rfc:`3921`
+L2TPv3 is a pseudowire protocol, you can read more about on `Wikipedia L2TPv3`_
+or in :rfc:`3921`
 
-L2TPv3 can transport any traffic including ethernet frames. L2TPv2 is limited to PPP.
+L2TPv3 can transport any traffic including ethernet frames. L2TPv2 is limited
+to PPP.
 
-
-L2TPv3 over IP
-^^^^^^^^^^^^^^
+Over IP
+^^^^^^^
 
 .. code-block:: sh
 
-  # show interfaces l2tpv3 
+  # show interfaces l2tpv3
   l2tpv3 l2tpeth10 {
       address 192.168.37.1/27
       encapsulation ip
@@ -27,8 +28,8 @@ L2TPv3 over IP
 
 Inverse configuration has to be applied to the remote side.
 
-L2TPv3 over UDP
-^^^^^^^^^^^^^^^
+Over UDP
+^^^^^^^^
 
 UDP mode works better with NAT:
 
@@ -37,7 +38,7 @@ UDP mode works better with NAT:
 
 .. code-block:: sh
 
-  # show interfaces l2tpv3 
+  # show interfaces l2tpv3
   l2tpv3 l2tpeth10 {
       address 192.168.37.1/27
       destination-port 9001
@@ -54,10 +55,11 @@ UDP mode works better with NAT:
 To create more than one tunnel, use distinct UDP ports.
 
 
-L2TPv3 over IPSec, L2 VPN (bridge)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Over IPSec, L2 VPN (bridge)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is the LAN extension use case. The eth0 port of the distant VPN peers will be directly connected like if there was a switch between them.
+This is the LAN extension use case. The eth0 port of the distant VPN peers
+will be directly connected like if there was a switch between them.
 
 IPSec:
 

@@ -1,11 +1,36 @@
+.. _vxlan-interface:
+
 VXLAN
 -----
 
-VXLAN is an overlaying Ethernet over IP protocol, it's described in :rfc:`7348`.
+:abbr:`VXLAN (Virtual Extensible LAN)` is a network virtualization technology
+that attempts to address the scalability problems associated with large cloud
+computing deployments. It uses a VLAN-like encapsulation technique to
+encapsulate OSI layer 2 Ethernet frames within layer 4 UDP datagrams, using
+4789 as the default IANA-assigned destination UDP port number. VXLAN
+endpoints, which terminate VXLAN tunnels and may be either virtual or physical
+switch ports, are known as :abbr:`VTEPs (VXLAN tunnel endpoints)`.
+
+VXLAN is an evolution of efforts to standardize on an overlay encapsulation
+protocol. It increases scalability up to 16 million logical networks and
+allows for layer 2 adjacency across IP networks. Multicast or unicast with
+head-end replication (HER) is used to flood broadcast, unknown unicast,
+and multicast (BUM) traffic.
+
+The VXLAN specification was originally created by VMware, Arista Networks
+and Cisco. Other backers of the VXLAN technology include Huawei, Broadcom,
+Citrix, Pica8, Big Switch Networks, Cumulus Networks, Dell EMC, Ericsson,
+Mellanox, FreeBSD, OpenBSD, Red Hat, Joyent, and Juniper Networks.
+
+VXLAN was officially documented by the IETF in :rfc:`7348`.
 
 If configuring VXLAN in a VyOS virtual machine, ensure that MAC spoofing
 (Hyper-V) or Forged Transmits (ESX) are permitted, otherwise forwarded frames
 may be blocked by the hypervisor.
+
+.. note:: As VyOS is based on Linux and there was no official IANA port assigned
+   for VXLAN, VyOS uses a default port of 8472. You can change the port on a
+   per VXLAN interface basis to get it working accross multiple vendors.
 
 Multicast VXLAN
 ^^^^^^^^^^^^^^^^
@@ -297,5 +322,5 @@ Let's change the Multicast example from above:
   # leaf3
   set interface vxlan vxlan241 remote 10.1.2.2
 
-The default port udp is set to 8472. 
+The default port udp is set to 8472.
 It can be changed with ``set interface vxlan <vxlanN> remote-port <port>``

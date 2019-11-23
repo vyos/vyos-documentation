@@ -1,7 +1,7 @@
+.. _ethernet-interface:
 
-Ethernet Interfaces
--------------------
-.. _interfaces-ethernet:
+Ethernet
+--------
 
 Ethernet interfaces allow for the configuration of speed, duplex, and hw-id
 (MAC address). Below is an example configuration:
@@ -30,8 +30,8 @@ Resulting in:
 
 In addition, Ethernet interfaces provide the extended operational commands:
 
-* `show interfaces ethernet <name> physical`
-* `show interfaces ethernet <name> statistics` 
+* ``show interfaces ethernet <name> physical``
+* ``show interfaces ethernet <name> statistics``
 
 Statistics available are driver dependent.
 

@@ -1,7 +1,7 @@
-.. _interfaces-tunnel:
+.. _tunnel-interface:
 
-Tunnel Interfaces
-=================
+Tunnel
+======
 
 This article touches on 'classic' IP tunneling protocols.
 
