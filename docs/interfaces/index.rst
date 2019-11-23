@@ -4,7 +4,7 @@ Network Interfaces
 ==================
 
 Configured interfaces on a VyOS system can be displayed using the
-`show interfaces` command.
+``show interfaces`` command.
 
 .. code-block:: sh
 
@@ -16,9 +16,8 @@ Configured interfaces on a VyOS system can be displayed using the
   eth1             192.168.0.1/24                    u/u  INSIDE
   lo               127.0.0.1/8                       u/u
                    ::1/128
-  vyos@vyos:~$
 
-A specific interface can be shown using the `show interfaces <type> <name>`
+A specific interface can be shown using the ``show interfaces <type> <name>``
 command.
 
 .. code-block:: sh
@@ -35,7 +34,6 @@ command.
           274397       3064          0          0          0          0
       TX:  bytes    packets     errors    dropped    carrier collisions
           257276       1890          0          0          0          0
-  vyos@vyos:~$
 
 Different network interfaces provide type-specific configuration. Ethernet
 interfaces, for example, allow the configuration of speed and duplex.
@@ -47,7 +45,6 @@ respective sections.
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
 
    addresses
    dummy
