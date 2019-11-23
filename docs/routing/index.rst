@@ -1,12 +1,8 @@
 .. _routing:
 
-########
-Advanced
-########
-
-*******
+#######
 Routing
-*******
+#######
 
 .. toctree::
    :maxdepth: 1

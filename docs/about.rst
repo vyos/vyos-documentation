@@ -1,12 +1,8 @@
 .. _about:
 
-############
-Introduction
-############
-
-*****
+#####
 About
-*****
+#####
 
 VyOS is an open source network operating system based on Debian GNU/Linux.
 

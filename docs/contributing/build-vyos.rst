@@ -1,10 +1,5 @@
 .. _build:
 
-
-############
-Contributing
-############
-
 Building VyOS
 =============
 
