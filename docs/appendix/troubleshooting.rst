@@ -167,7 +167,8 @@ the VyOS command prompt).
 Interface Bandwith
 ^^^^^^^^^^^^^^^^^^
 
-to take a quick view on the used bandwith of an interface use the ``monitor bandwith`` command
+to take a quick view on the used bandwith of an interface use the ``monitor
+bandwith`` command
 
 .. code-block:: sh
 
@@ -176,11 +177,7 @@ to take a quick view on the used bandwith of an interface use the ``monitor band
 show the following:
 
 .. code-block:: sh
-  
-   eth0                                                                                                          bmon 3.5
-  Interfaces                     │ RX bps       pps     %│ TX bps       pps     %
-   >eth0                         │    141B        2      │    272B        1
-  ───────────────────────────────┴───────────────────────┴────────────────────────────────────────────────────────────────
+
          B                      (RX Bytes/second)
     198.00 .|....|.....................................................
     165.00 .|....|.....................................................
@@ -189,6 +186,7 @@ show the following:
      66.00 |||||||.....................................................
      33.00 |||||||.....................................................
            1   5   10   15   20   25   30   35   40   45   50   55   60
+
        KiB                      (TX Bytes/second)
       3.67 ......|.....................................................
       3.06 ......|.....................................................
@@ -197,18 +195,12 @@ show the following:
       1.22 ......|.....................................................
       0.61 :::::||.....................................................
            1   5   10   15   20   25   30   35   40   45   50   55   60
-  
-  ───────────────────────────────────────── Press d to enable detailed statistics ────────────────────────────────────────
-  ─────────────────────────────────────── Press i to enable additional information ───────────────────────────────────────
-   Wed Apr  3 14:46:59 2019                                                                              Press ? for help
-
-| Press ``d`` for more detailed informations or ``i`` for additional information.
-| To exit press ``q`` and than ``y``
 
 Interface performance
 ^^^^^^^^^^^^^^^^^^^^^
 
-To take a look on the network bandwith between two nodes, the ``monitor bandwidth-test`` command is used to run iperf.
+To take a look on the network bandwith between two nodes, the ``monitor
+bandwidth-test`` command is used to run iperf.
 
 .. code-block:: sh
 
@@ -217,8 +209,8 @@ To take a look on the network bandwith between two nodes, the ``monitor bandwidt
     accept        Wait for bandwidth test connections (port TCP/5001)
     initiate      Initiate a bandwidth test
 
-| The ``accept`` command open a listen iperf server on TCP Port 5001
-| The ``initiate`` command conncet to this server.
+* The ``accept`` command open a listen iperf server on TCP Port 5001
+* The ``initiate`` command conncet to this server.
 
 .. code-block:: sh
 
@@ -232,18 +224,21 @@ To take a look on the network bandwith between two nodes, the ``monitor bandwidt
 Monitor command
 ^^^^^^^^^^^^^^^
 
-The ``monitor command`` command allows you to repeatedly run a command to view a continuously refreshed output.
-The command is run and output every 2 seconds, allowing you to monitor the output continuously without having to re-run the command. This can be useful to follow routing adjacency formation.
+The ``monitor command`` command allows you to repeatedly run a command to view
+a continuously refreshed output. The command is run and output every 2 seconds,
+allowing you to monitor the output continuously without having to re-run the
+command. This can be useful to follow routing adjacency formation.
 
 .. code-block:: sh
 
   vyos@router:~$ monitor command "show interfaces"
 
-Will clear the screen and show you the output of ``show interfaces`` every 2 seconds.
+Will clear the screen and show you the output of ``show interfaces`` every
+2 seconds.
 
 .. code-block:: sh
 
-  Every 2.0s: /opt/vyatta/bin/vyatta-op-cmd-wrapper s...  Sun Mar 26 02:49:46 2019
+  Every 2.0s: /opt/vyatta/bin/vyatta-op-cmd-wrapper    Sun Mar 26 02:49:46 2019
 
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
@@ -273,7 +268,7 @@ to clear interface counters
 .. code-block:: sh
 
   # clear all interfaces
-  vyos@vyos:~$ clear interface ethernet counters  
+  vyos@vyos:~$ clear interface ethernet counters
   # clear specific interface
   vyos@vyos:~$ clear interface ehternet eth0 counters
 
@@ -285,7 +280,7 @@ The command follow the same logic as the ``set`` command in configuration mode.
   vyos@vyos:~$ clear interface <interface_type> counters
   # clear counter of a interface in interface_type
   vyos@vyos:~$ clear interface <interface_type> <interace_name> counters
-  
+
 
 to clear counters on firewall rulesets or single rules
 
@@ -304,31 +299,41 @@ Basic System Information
 Boot steps
 ^^^^^^^^^^
 
-VyOS 1.2.0+ uses `Debian Jessie`_ as the base Linux operating system.
-Jessie was the first version of Debian that uses `systemd`_ as the default init system.
+VyOS 1.2 uses `Debian Jessie`_ as the base Linux operating system. Jessie was
+the first version of Debian that uses systemd_ as the default init system.
 
-These are the boot steps for VyOS 1.2.0+
+These are the boot steps for VyOS 1.2
 
 1. The BIOS loads Grub (or isolinux for the Live CD)
 2. Grub then starts the Linux boot and loads the Linux Kernel ``/boot/vmlinuz``
 3. Kernel Launches Systemd ``/lib/systemd/systemd``
-4. Systemd loads the VyOS service file ``/lib/systemd/system/vyos-router.service``
-5. The service file launches the VyOS router init script ``/usr/libexec/vyos/init/vyos-router`` - this is part of the `vyatta-cfg`_ Debian package
+4. Systemd loads the VyOS service file
+   ``/lib/systemd/system/vyos-router.service``
+5. The service file launches the VyOS router init script
+   ``/usr/libexec/vyos/init/vyos-router`` - this is part of the vyatta-cfg_
+   Debian package
 
-  1. Starts FRR_ - successor to `GNU Zebra`_ and `Quagga`_
+  1. Starts FRR_ - successor to `GNU Zebra`_ and Quagga_
 
-  2. Initialises the boot configuration file - copies over ``config.boot.default`` if there is no configuration
-  3. Runs the configuration migration, if the configuration is for an older version of VyOS
-  4. Runs The pre-config script, if there is one ``/config/scripts/vyos-preconfig-bootup.script``
-  5. If the config file was upgraded, runs any post upgrade scripts ``/config/scripts/post-upgrade.d``
-  6. Starts **rl-system** and **firewall**
+  2. Initialises the boot configuration file - copies over
+     ``config.boot.default`` if there is no configuration
+  3. Runs the configuration migration, if the configuration is for an older
+     version of VyOS
+  4. Runs The pre-config script, if there is one
+     ``/config/scripts/vyos-preconfig-bootup.script``
+  5. If the config file was upgraded, runs any post upgrade scripts
+     ``/config/scripts/post-upgrade.d``
+  6. Starts ``rl-system`` and ``firewall``
   7. Mounts the ``/boot`` partition
-  8. The boot configuration file is then applied by ``/opt/vyatta/sbin/vyatta-boot-config-loader /opt/vyatta/etc/config/config.boot``
-  
-    1. The config loader script writes log entries to ``/var/log/vyatta-config-loader.log``
-  
+  8. The boot configuration file is then applied by ``/opt/vyatta/sbin/
+     vyatta-boot-config-loader/opt/vyatta/etc/config/config.boot``
+
+    1. The config loader script writes log entries to
+       ``/var/log/vyatta-config-loader.log``
+
   10. Runs ``telinit q`` to tell the init system to reload ``/etc/inittab``
-  11. Finally it runs the post-config script ``/config/scripts/vyos-postconfig-bootup.script``
+  11. Finally it runs the post-config script
+      ``/config/scripts/vyos-postconfig-bootup.script``
 
 .. _Quagga: http://www.quagga.net/
 .. _`GNU Zebra`: https://www.gnu.org/software/zebra/
