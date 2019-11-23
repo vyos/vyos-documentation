@@ -1,15 +1,11 @@
 .. _system:
 
-System
-======
-
-After a basic system setup by setting up :ref:`interfaces-addresses`, VyOS
-should be ready for further configuration which is described in this chapter.
-
+####################
+System Configuration
+####################
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
 
    config-management
    eventhandler

@@ -7,8 +7,9 @@ VyOS User Guide
 Introduction
 ############
 
-.. _introduction:
 .. toctree::
+   :caption: Introduction
+   :name: intro
    :maxdepth: 2
 
    about
@@ -21,8 +22,9 @@ Introduction
 Basics
 ######
 
-.. _introduction:
 .. toctree::
+   :caption: Basics
+   :name: basics
    :maxdepth: 2
 
    configuration-overview
@@ -34,8 +36,9 @@ Basics
 Advanced
 ########
 
-.. _introduction:
 .. toctree::
+   :caption: Advanced
+   :name: advanced
    :maxdepth: 2
 
    routing/index
@@ -44,7 +47,6 @@ Advanced
    vpn/index
    qos
    services/index
-
    high-availability
    clustering
    load-balancing
@@ -55,8 +57,9 @@ Advanced
 Appendix
 ########
 
-.. _appendix:
 .. toctree::
+   :caption: Appendix
+   :name: appendix
    :maxdepth: 2
 
    appendix/releasenotes
@@ -70,8 +73,9 @@ Appendix
 Contributing
 ############
 
-.. _contributing:
 .. toctree::
+   :caption: Contributing
+   :name: contributing
    :maxdepth: 2
 
    contributing/build-vyos

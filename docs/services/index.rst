@@ -2,8 +2,9 @@
 
 .. include:: references.rst
 
+########
 Services
-========
+########
 
 This chapter describes the available system/network services provided by VyOS.
 

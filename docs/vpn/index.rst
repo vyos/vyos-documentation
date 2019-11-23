@@ -1,9 +1,8 @@
 .. _vpn:
 
-.. include:: references.rst
-
+###
 VPN
-===
+###
 
 .. toctree::
    :maxdepth: 2
