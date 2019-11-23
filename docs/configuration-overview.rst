@@ -1,13 +1,15 @@
 .. _configuration-overview:
 
+######################
 Configuration Overview
-======================
+######################
 
 VyOS makes use of a unified configuration file for all system configuration:
 `config.boot`. This allows for easy template creation, backup, and replication
 of system configuration.
 
-The current active configuration -aka running configuration- can be viewed using the show configuration command.
+The current active configuration -aka running configuration- can be viewed
+using the show configuration command.
 
 .. code-block:: sh
 
@@ -64,10 +66,14 @@ The current active configuration -aka running configuration- can be viewed using
   vyos@vyos:~$
 
 By default the configuration is displayed in a hierarchy like the example above,
-this is only one of the possible ways to display the configuration.
+this is only one of the possible ways to display the configuration. When the
+configuration is generated and the device is configured, changes are added
+through a collection of ``set`` and ``delete`` commands.
 
-When the configuration is generated and the device is configured, changes are added through a collection of `set` and `delete` commands. You can see that collection of commands by entering `show configuration commands`, which is another way of seeing the running configuration.
+.. opcmd:: show configuration commands
 
+Get a collection of all the set commands required which led to this
+running configuration.
 
 .. code-block:: sh
 
@@ -85,33 +91,45 @@ When the configuration is generated and the device is configured, changes are ad
   set system ntp server '2.pool.ntp.org'
   set system syslog global facility all level 'notice'
   set system syslog global facility protocols level 'debug'
-  vyos@vyos:~$
 
-Both these commands should be executed when in operational mode, they do not work in configuration mode.
+Both these commands should be executed when in operational mode, they do not
+work in configuration mode.
 
-
-Configuration terminology
--------------------------
+Terminology
+===========
 
 A VyOS system has three major types of configurations:
 
-Active or running configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The active or running configuration is the system configuration that is loaded and currently being used by VyOS. Any change in the configuration will have to be committed to belong to the active/running configuration.
+Active/Running
+--------------
 
-Working configuration
-^^^^^^^^^^^^^^^^^^^^^
-The working configuration is the configuration which is currently being modified in configuration mode. Changes made to the working configuration do not go into effect until the changes are committed with the `commit` command. At which time the working configuration will become the active or running configuration.
+The active or running configuration is the system configuration that is loaded
+and currently being used by VyOS. Any change in the configuration will have to
+be committed to belong to the active/running configuration.
 
-Saved configuration
-^^^^^^^^^^^^^^^^^^^
-A saved configuration is a configuration saved to a file using the `save` command. It allows you to keep safe a configuration for future uses. There can be multiple configuration files. The default or "boot" configuration is saved and loaded from the file config.boot.
+Working
+-------
 
+The working configuration is the configuration which is currently being
+modified in configuration mode. Changes made to the working configuration do
+not go into effect until the changes are committed with the `commit` command.
+At which time the working configuration will become the active or running
+configuration.
 
-Navigating in Configuration Mode
----------------------------------
-When entering the configuration mode you are navigating inside the tree structure exported in the overview above,
-to enter configuration mode enter the command `configure` when in operational mode
+Saved
+-----
+
+A saved configuration is a configuration saved to a file using the ``save``
+command. It allows you to keep safe a configuration for future uses. There can
+be multiple configuration files. The default or "boot" configuration is saved
+and loaded from the file config.boot.
+
+Navigating
+==========
+
+When entering the configuration mode you are navigating inside the tree
+structure exported in the overview above, to enter configuration mode enter
+the command ``configure`` when in operational mode.
 
 .. code-block:: sh
 
@@ -119,11 +137,14 @@ to enter configuration mode enter the command `configure` when in operational mo
   [edit]
   vyos@vyos#
 
-.. note:: When going into configuration mode, prompt changes from *$* to *#*. To exit configuration mode, type `exit`.
+.. note:: When going into configuration mode, prompt changes from *$* to *#*.
+   To exit configuration mode, type `exit`.
 
-All commands executed here are relative to the configuration level you have entered. You can do everything from the top level, but commands will be quite lengthy when manually typing them.
+All commands executed here are relative to the configuration level you have
+entered. You can do everything from the top level, but commands will be quite
+lengthy when manually typing them.
 
-To change the current hierarchy level use the command: `edit`
+To change the current hierarchy level use the command: ``edit``
 
 .. code-block:: sh
 
@@ -133,13 +154,14 @@ To change the current hierarchy level use the command: `edit`
   [edit interfaces ethernet eth0]
   vyos@vyos#
 
-You are now in a sublevel relative to `interfaces ethernet eth0`,
-all commands executed from this point on are relative to this sublevel.
-Use either the `top` or `exit` command to go back to the top of the hierarchy. You can also use the `up` command to move only one level up at a time.
+You are now in a sublevel relative to ``interfaces ethernet eth0``, all
+commands executed from this point on are relative to this sublevel. Use either
+the ``top`` or ``exit`` command to go back to the top of the hierarchy. You can
+also use the ``up`` command to move only one level up at a time.
 
-The `show` command within configuration mode will show the working configuration
-indicating line changes with `+` for additions, `>` for replacements and `-` for deletions.
-
+The ``show`` command within configuration mode will show the working
+configuration indicating line changes with ``+`` for additions, ``>`` for
+replacements and ``-`` for deletions.
 
 .. code-block:: sh
 
@@ -172,7 +194,8 @@ indicating line changes with `+` for additions, `>` for replacements and `-` for
  [edit]
  vyos@vyos#
 
-It is also possible to display all `set` commands within configuration mode using `show | commands`
+It is also possible to display all `set` commands within configuration mode
+using ``show | commands`
 
 .. code-block:: sh
 
@@ -180,7 +203,8 @@ It is also possible to display all `set` commands within configuration mode usin
   set address dhcp
   set hw-id 00:0c:29:44:3b:0f
 
-These commands are also relative to the level you are inside and only relevant configuration blocks will be displayed when entering a sub-level.
+These commands are also relative to the level you are inside and only relevant
+configuration blocks will be displayed when entering a sub-level.
 
 .. code-block:: sh
 
@@ -189,7 +213,9 @@ These commands are also relative to the level you are inside and only relevant c
    address dhcp
    hw-id 00:0c:29:44:3b:0f
 
-Exiting from the configuration mode is done via the `exit` command from the top level, executing `exit` from within a sub-level takes you back to the top level.
+Exiting from the configuration mode is done via the ``exit`` command from the
+top level, executing `exit` from within a sub-level takes you back to the top
+level.
 
 .. code-block:: sh
 
@@ -201,34 +227,41 @@ Exiting from the configuration mode is done via the `exit` command from the top 
   vyos@vyos:~$
 
 
+Managing
+========
 
-Managing the configuration
---------------------------
+The configuration is managed by the use of ``set`` and ``delete`` commands from
+within configuration mode. Configuration commands are flattened from the tree
+into 'one-liner' commands shown in ``show configuration commands`` from
+operation mode.
 
-The configuration is managed by the use of `set` and `delete` commands from within configuration mode.
-Configuration commands are flattened from the tree into 'one-liner' commands shown in `show configuration commands` from operation mode.
-
-These commands are also relative to the level where they are executed and all redundant information from the current level is removed from the command entered.
+These commands are also relative to the level where they are executed and all
+redundant information from the current level is removed from the command
+entered.
 
 .. code-block:: sh
 
   [edit]
-  vyos@vyos# set interface ethernet eth0 address 203.0.113.6/24
+  vyos@vyos# set interface ethernet eth0 address 192.0.2.100/24
 
   [edit interfaces ethernet eth0]
   vyos@vyos# set address 203.0.113.6/24
 
-These two commands above are essentially the same, just executed from different levels in the hierarchy.
+These two commands above are essentially the same, just executed from different
+levels in the hierarchy.
 
-To delete a configuration entry use the `delete` command, this also deletes all sub-levels under the current level you've specified in the `delete` command.
-Deleting an entry will also result in the element reverting back to its default value if one exists.
+To delete a configuration entry use the ``delete`` command, this also deletes
+all sub-levels under the current level you've specified in the ``delete``
+command. Deleting an entry will also result in the element reverting back to
+its default value if one exists.
 
 .. code-block:: sh
 
   [edit interfaces ethernet eth0]
-  vyos@vyos#  delete address 203.0.113.6/24
+  vyos@vyos#  delete address 192.0.2.100/24
 
-Any change you do on the configuration, will not take effect until committed using the `commit` command in configuration mode.
+Any change you do on the configuration, will not take effect until committed
+using the ``commit`` command in configuration mode.
 
 .. code-block:: sh
 
@@ -239,7 +272,7 @@ Any change you do on the configuration, will not take effect until committed usi
   vyos@vyos:~$
 
 In order to preserve configuration changes upon reboot, the configuration must
-also be saved once applied. This is done using the `save` command in
+also be saved once applied. This is done using the ``save`` command in
 configuration mode.
 
 .. code-block:: sh
@@ -265,8 +298,6 @@ used.
   exit
   vyos@vyos:~$
 
-
-
 .. code-block:: sh
 
   vyos@vyos# save [tab]
@@ -281,15 +312,17 @@ used.
   ######################################################################## 100.0%
   Done
 
-Operational info from config mode
----------------------------------
+Access from config mode
+=======================
 
-When inside configuration mode you are not directly able to execute operational commands.
+When inside configuration mode you are not directly able to execute operational
+commands.
 
-Access to these commands are possible through the use of the `run [command]` command.
-From this command you will have access to everything accessible from operational mode.
+Access to these commands are possible through the use of the ``run [command]``
+command. From this command you will have access to everything accessible from
+operational mode.
 
-Command completion and syntax help with `?` and `[tab]` will also work.
+Command completion and syntax help with ``?`` and ``[tab]`` will also work.
 
 .. code-block:: sh
 
@@ -301,17 +334,18 @@ Command completion and syntax help with `?` and `[tab]` will also work.
   eth0             0.0.0.0/0                         u/u
 
 
-Configuration archive
----------------------
+Archive
+=======
 
 VyOS automatically maintains backups of previous configurations.
 
 Local archive and revisions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Revisions are stored on disk. You can view them, compare them, and rollback to previous revisions if anything goes wrong.
+Revisions are stored on disk. You can view them, compare them, and rollback to
+previous revisions if anything goes wrong.
 
-To view existing revisions, use `show system commit` operational mode command.
+To view existing revisions, use ``show system commit`` operational mode command.
 
 .. code-block:: sh
 
@@ -325,7 +359,8 @@ To view existing revisions, use `show system commit` operational mode command.
   6   2015-03-25 00:16:47 by vyos via cli
   7   2015-03-24 23:43:45 by root via boot-config-loader
 
-To compare configuration revisions in configuration mode, use the compare command:
+To compare configuration revisions in configuration mode, use the compare
+command:
 
 .. code-block:: sh
 
@@ -354,7 +389,11 @@ To compare configuration revisions in configuration mode, use the compare comman
 Comparing Revisions
 """""""""""""""""""
 
-You can compare revisions with `compare X Y` command, where X and Y are revision numbers. The output will describe how the configuration X is when compared to Y, indicating with a plus sign (**+**) the additional parts X has when compared to y, and indicating with a minus sign (**-**) the lacking parts x misses when compared to y.
+You can compare revisions with ``compare X Y`` command, where X and Y are
+revision numbers. The output will describe how the configuration X is when
+compared to Y, indicating with a plus sign (``+``) the additional parts X has
+when compared to y, and indicating with a minus sign (``-``) the lacking parts
+x misses when compared to y.
 
 .. code-block:: sh
 
@@ -374,8 +413,8 @@ You can compare revisions with `compare X Y` command, where X and Y are revision
 Rolling Back Changes
 """"""""""""""""""""
 
-You can rollback configuration using the rollback command.  This 
-command will apply the selected revision and trigger a system reboot.
+You can rollback configuration using the rollback command. This command will
+apply the selected revision and trigger a system reboot.
 
 .. code-block:: sh
 
@@ -393,34 +432,42 @@ command will apply the selected revision and trigger a system reboot.
 Configuring the archive size
 """"""""""""""""""""""""""""
 
-You can specify the number of revisions stored on disk with `set system config-management commit-revisions X`, where X is a number between 0 and 65535. When the number of revisions exceeds that number, the oldest revision is removed.
+You can specify the number of revisions stored on disk with ``set system
+config-management commit-revisions X``, where X is a number between 0 and 65535.
+When the number of revisions exceeds that number, the oldest revision is
+removed.
 
 Remote archive
 ^^^^^^^^^^^^^^
 
-VyOS can copy the config to a remote location after each commit. TFTP, FTP, and SFTP servers are supported.
+VyOS can copy the config to a remote location after each commit. TFTP, FTP,
+and SFTP servers are supported.
 
+You can specify the location with:
 
-You can specify the location with: 
+* ``set system config-management commit-archive location URL``
 
-* `set system config-management commit-archive location URL` 
+For example, ``set system config-management commit-archive location tftp://10.0.0.1/vyos`.
 
-For example, `set system config-management commit-archive location tftp://10.0.0.1/vyos`.
+You can specify the location with ``set system config-management commit-archive
+location URL`` command, e.g. ``set system config-management commit-archive
+location tftp://10.0.0.1/vyos``.
 
-You can specify the location with `set system config-management commit-archive location URL` command, e.g. `set system config-management commit-archive location tftp://10.0.0.1/vyos`.
+Restore Default
+===============
 
-Wipe config and restore default
--------------------------------
-
-In the case you want to completely delete your configuration and restore the default one, you can enter the following command in configuration mode:
+In the case you want to completely delete your configuration and restore the
+default one, you can enter the following command in configuration mode:
 
 .. code-block:: sh
 
   load /opt/vyatta/etc/config.boot.default
 
+You will be asked if you want to continue. If you accept, you will have to use
+``commit`` if you want to make the changes active.
 
-You will be asked if you want to continue. If you accept, you will have to use `commit` if you want to make the changes active.
+Then you may want to ``save`` in order to delete the saved configuration too.
 
-Then you  may want to `save` in order to delete the saved configuration too.
-
-.. note:: If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config.
+.. note:: If you are remotely connected, you will lose your connection. You may
+   want to copy first the config, edit it to ensure connectivity, and load the
+   edited config.
