@@ -83,8 +83,8 @@ This requires you already have a GitHub account.
 Style Guide
 -----------
 
-Adress space
-^^^^^^^^^^^^
+Address space
+^^^^^^^^^^^^^
 
 Note the following RFCs (:rfc:`5737`, :rfc:`3849`, :rfc:`5389` and
 :rfc:`7042`), which describe the reserved public IP addresses and autonomous
