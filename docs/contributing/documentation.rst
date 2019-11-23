@@ -112,13 +112,11 @@ Under the command a short exlaination should be provide.
 
 Example:
 
-.. code-block::
+.. code-block:: sh
 
   .. opcmd:: show protocols static arp
 
   Display all known ARP table entries spanning accross all interfaces
-
-
 
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
