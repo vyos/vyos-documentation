@@ -339,7 +339,7 @@ These are the boot steps for VyOS 1.2
 .. _`GNU Zebra`: https://www.gnu.org/software/zebra/
 .. _FRR: https://frrouting.org/
 .. _vyatta-cfg: https://github.com/vyos/vyatta-cfg
-.. _systemd: _https://freedesktop.org/wiki/Software/systemd/
+.. _systemd: https://freedesktop.org/wiki/Software/systemd/
 .. _`Debian Jessie`: https://www.debian.org/releases/jessie/
 .. _mtr: http://www.bitwizard.nl/mtr/
 .. _tshark: https://www.wireshark.org/docs/man-pages/tshark.html
