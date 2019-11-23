@@ -1,12 +1,12 @@
 LLDP
 ----
 
-The Link Layer Discovery Protocol (LLDP) is a vendor-neutral
-link layer protocol in the Internet Protocol Suite used by network devices for
-advertising their identity, capabilities, and neighbors on an IEEE 802 local
-area network, principally wired Ethernet.[1] The protocol is formally referred
-to by the IEEE as Station and Media Access Control Connectivity Discovery
-specified in IEEE 802.1AB and IEEE 802.3-2012 section 6 clause 79.
+:abbr:`LLDP (Link Layer Discovery Protocol)` is a vendor-neutral link layer
+protocol in the Internet Protocol Suite used by network devices for advertising
+their identity, capabilities, and neighbors on an IEEE 802 local area network,
+principally wired Ethernet.[1] The protocol is formally referred to by the IEEE
+as Station and Media Access Control Connectivity Discovery specified in IEEE
+802.1AB and IEEE 802.3-2012 section 6 clause 79.
 
 LLDP performs functions similar to several proprietary protocols, such as
 `Cisco Discovery Protocol`_, `Foundry Discovery Protocol`_,
