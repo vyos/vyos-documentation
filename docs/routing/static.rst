@@ -1,7 +1,8 @@
 .. _routing-static:
 
-Static
-------
+#############
+Static Routes
+#############
 
 Static routes are manually configured network routes.
 

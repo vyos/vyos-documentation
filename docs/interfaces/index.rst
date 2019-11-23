@@ -1,7 +1,8 @@
 .. _network-interfaces:
 
+##################
 Network Interfaces
-==================
+##################
 
 Configured interfaces on a VyOS system can be displayed using the
 ``show interfaces`` command.

@@ -1,7 +1,8 @@
 .. _image-mgmt:
 
-System Image Management
-=======================
+################
+Image Management
+################
 
 The VyOS image-based installation is implemented by creating a directory for
 each image on the storage device selected during the install process.
@@ -45,14 +46,6 @@ command in operational mode.
      2: 1.2.0-rolling+201810021217
      3: 1.2.0-rolling+201809280337
      4: 1.2.0-rolling+201809252218
-     5: 1.2.0-rolling+201809192034
-     6: 1.2.0-rolling+201809191744
-     7: 1.2.0-rolling+201809150337
-     8: 1.2.0-rolling+201809141130
-     9: 1.2.0-rolling+201809140949
-    10: 1.2.0-rolling+201809131722
-
-  vyos@vyos:~$
 
 Images no longer needed can be removed using the :code:`delete system image`
 command.
@@ -60,12 +53,12 @@ command.
 .. _update_vyos:
 
 Update VyOS
------------
+===========
 
-Finally, new system images can be added using the :code:`add system image` command.
-The add image command will extract the image from the release ISO (either on
-the local filesystem or remotely if a URL is provided). The image install
-process will prompt you to use the current system configuration and SSH
+Finally, new system images can be added using the :code:`add system image`
+command. The add image command will extract the image from the release ISO
+(either on the local filesystem or remotely if a URL is provided). The image
+install process will prompt you to use the current system configuration and SSH
 security keys, allowing for the new image to boot using the current
 configuration.
 

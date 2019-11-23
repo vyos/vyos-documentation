@@ -27,17 +27,27 @@ Basics
 
    configuration-overview
    interfaces/index
+   system/index
+   image-mgmt
+
+########
+Advanced
+########
+
+.. _introduction:
+.. toctree::
+   :maxdepth: 2
+
    routing/index
    firewall
    nat
    vpn/index
    qos
    services/index
-   system/index
+
    high-availability
    clustering
    load-balancing
-   image-mgmt
    commandscripting
    troubleshooting
 

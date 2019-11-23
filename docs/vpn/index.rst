@@ -5,10 +5,8 @@
 VPN
 ===
 
-This chapter describes the available VPN services provided by VyOS.
-
 .. toctree::
-   :hidden:
+   :maxdepth: 2
 
    openvpn
    l2tp

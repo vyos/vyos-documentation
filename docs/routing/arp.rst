@@ -1,7 +1,8 @@
 .. _routing-arp:
 
+###
 ARP
----
+###
 
 :abbr:`ARP (Address Resolution Protocol)` is a communication protocol used for
 discovering the link layer address, such as a MAC address, associated with a
@@ -15,13 +16,16 @@ provided by the Neighbor Discovery Protocol (NDP).
 To manipulate or display ARP_ table entries, the following commands are
 implemented.
 
-Add static ARP entry
-^^^^^^^^^^^^^^^^^^^^
+Configure
+=========
 
-.. cfcmd:: set protocols static arp 10.1.1.100 hwaddr 08:00:27:de:23:aa
+.. cfcmd:: set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
 
-Display ARP entries
-^^^^^^^^^^^^^^^^^^^
+This will configure a static ARP entry always resolving `192.0.2.100` to
+`00:53:27:de:23:aa`
+
+Operation
+=========
 
 .. opcmd:: show protocols static arp
 
