@@ -16,7 +16,7 @@ predominately via the PAP protocol and less often via CHAP.
 Operating Modes
 ---------------
 
-VyOS supports setting up PPPoe in two different ways to a PPPoE internet
+VyOS supports setting up PPPoE in two different ways to a PPPoE internet
 connection. This is due to most ISPs provide a modem that is also a wireless
 router.
 
@@ -97,9 +97,9 @@ assigning it to the pppoe0 itself as shown here:
 VLAN Example
 ++++++++++++
 
-Some recent ISPs require you to build the PPPoe connection through a VLAN
+Some recent ISPs require you to build the PPPoE connection through a VLAN
 interface. One of those ISPs is e.g. Deutsche Telekom in Germany. VyOS
-can easily create a PPPoe session through an encapsulated VLAN interface.
+can easily create a PPPoE session through an encapsulated VLAN interface.
 The following configuration will run your PPPoE connection through VLAN7
 which is the default VLAN for Deutsche Telekom:
 
@@ -118,46 +118,28 @@ which is the default VLAN for Deutsche Telekom:
 Troubleshooting
 ---------------
 
-Connect/Disconnect
-******************
+.. opcmd:: disconnect interface <interface>
 
-You can test connecting and disconnecting with the below commands issued
-on the operational level of your VyOS isntallation:
+Test disconnecting given connection-oriented interface. `<interface>` can be
+``pppoe0`` as example.
 
-.. code-block:: sh
+.. opcmd:: connect interface <interface>
 
-  disconnect interface 0
-  connect interface 0
+Test connecting given connection-oriented interface. `<interface>` can be
+``pppoe0`` as example.
 
-Logs
-****
+.. opcmd:: show interfaces pppoe <interface>
 
-You can check the PPPoE connection logs with the following command which
-shows the current statistics, status and some of the settings (i.e. MTU)
-for the current connection on pppoe0.
+Check PPPoE connection logs with the following command which shows the current
+statistics, status and some of the settings (i.e. MTU) for the current
+connection on <interface> (e.g. ``pppoe0``)
 
-.. code-block:: sh
+.. opcmd:: show interfaces pppoe <interface> log
 
-  show interfaces pppoe 0
+Show entire log for the PPPoE connection starting with the oldest data. Scroll
+down with the <space> key to reach the end where the current data is.
 
-Full Log
-~~~~~~~~
+.. opcmd::  show interfaces pppoe <interface> log tail
 
-This command shows the entire log for the PPPoE connection starting with the
-oldest data. Scroll down with the <space> key to reach the end where the
-current data is.
-
-.. code-block:: sh
-
-  show interfaces pppoe 0 log
-
-Recent Log
-~~~~~~~~~~
-
-This command shows the same log as without the 'tail' option but only starts
-with the last few lines and continues to show added lines until you exit with
-``Ctrl + x``
-
-.. code-block:: sh
-
-  show interfaces pppoe 0 log tail
+Shows the same log as without the 'tail' option but start with the last few
+lines and continues to show added lines until you exit with ``Ctrl + x``
