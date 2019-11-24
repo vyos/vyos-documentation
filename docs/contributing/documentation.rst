@@ -83,6 +83,33 @@ This requires you already have a GitHub account.
 Style Guide
 -----------
 
+Sections
+^^^^^^^^
+
+We use the following syntax for Headlines.
+
+.. code-block:: sh
+
+  #####
+  Parts
+  #####
+  
+  ********
+  Chapters
+  ********
+
+  Sections
+  ========
+
+  Subsections
+  -----------
+
+  Subsubsections
+  ^^^^^^^^^^^^^^
+
+  Paragraphs
+  """"""""""
+
 Address space
 ^^^^^^^^^^^^^
 
