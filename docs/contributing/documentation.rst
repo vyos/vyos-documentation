@@ -132,7 +132,7 @@ Please don't use other public address space.
 Specific Sphinx-doc Markup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When documenting CLI commands use the ``.. cfcmd::`` directive for
+When documenting CLI commands use the ``.. cfgcmd::`` directive for
 the configuration mode and the ``.. opcmd::`` directive for operational mode
 commands.
 Under the command a short exlaination should be provide.

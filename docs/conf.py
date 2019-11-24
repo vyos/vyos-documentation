@@ -170,4 +170,4 @@ texinfo_documents = [
 
 def setup(app):
     app.add_object_type('opcmd', 'opcmd')
-    app.add_object_type('cfcmd', 'cfcmd')
+    app.add_object_type('cfgcmd', 'cfgcmd')

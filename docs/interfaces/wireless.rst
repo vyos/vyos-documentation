@@ -25,7 +25,7 @@ its MAC address) and configured to run in monitor mode.
 To be able to use the wireless interfaces you will first need to set a
 regulatory domain with the country code of your locaion.
 
-.. cfcmd:: set system wifi-regulatory-domain DE
+.. cfgcmd:: set system wifi-regulatory-domain DE
 
    Configure system wide Wi-Fi regulatory domain. A reboot is required for this
    change to be enabled.
