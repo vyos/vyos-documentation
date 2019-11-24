@@ -195,7 +195,7 @@ replacements and ``-`` for deletions.
  vyos@vyos#
 
 It is also possible to display all `set` commands within configuration mode
-using ``show | commands`
+using ``show | commands``
 
 .. code-block:: sh
 
@@ -340,7 +340,7 @@ Archive
 VyOS automatically maintains backups of previous configurations.
 
 Local archive and revisions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 Revisions are stored on disk. You can view them, compare them, and rollback to
 previous revisions if anything goes wrong.
@@ -387,7 +387,7 @@ command:
   vyos@vyos#
 
 Comparing Revisions
-"""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^
 
 You can compare revisions with ``compare X Y`` command, where X and Y are
 revision numbers. The output will describe how the configuration X is when
@@ -411,7 +411,7 @@ x misses when compared to y.
   -}
 
 Rolling Back Changes
-""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^
 
 You can rollback configuration using the rollback command. This command will
 apply the selected revision and trigger a system reboot.
@@ -430,7 +430,7 @@ apply the selected revision and trigger a system reboot.
   vyos@vyos#
 
 Configuring the archive size
-""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can specify the number of revisions stored on disk with ``set system
 config-management commit-revisions X``, where X is a number between 0 and 65535.
@@ -447,7 +447,7 @@ You can specify the location with:
 
 * ``set system config-management commit-archive location URL``
 
-For example, ``set system config-management commit-archive location tftp://10.0.0.1/vyos`.
+For example, ``set system config-management commit-archive location tftp://10.0.0.1/vyos``.
 
 You can specify the location with ``set system config-management commit-archive
 location URL`` command, e.g. ``set system config-management commit-archive
