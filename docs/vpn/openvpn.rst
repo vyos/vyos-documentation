@@ -446,13 +446,13 @@ all users can benefit from it.
 If you are a hacker or want to try on your own we support passing raw OpenVPN
 options to OpenVPN.
 
-.. cfcmd:: set interfaces openvpn vtun10 openvpn-option 'persistent-key'
+.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option 'persistent-key'
 
 Will add ``persistent-key`` at the end of the generated OpenVPN configuration.
 Please use this only as last resort - things might break and OpenVPN won't start
 if you pass invalid options/syntax.
 
-.. cfcmd:: set interfaces openvpn vtun10 openvpn-option 'push &quot;keepalive 1 10&quot;'
+.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option 'push &quot;keepalive 1 10&quot;'
 
 Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
 
