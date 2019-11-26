@@ -142,6 +142,66 @@ your peer should have knowledge of its content.
   wg01# set interfaces wireguard wg01 peer to-wg02 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
   wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
 
+Road Warrior Example
+~~~~~~~~~~~~~~~~~~~~
+
+With WireGuard, a Road Warrior VPN config is similar to a site-to-site VPN.  It just lacks the ``endpoint`` address.
+
+In the following example, the IPs for the remote clients are defined in the peers.  This would allow the peers to interact with one another.
+
+.. code-block:: sh
+
+    wireguard wg0 {
+        address 10.172.24.1/24
+        address 2001:DB8:470:22::1/64
+        description RoadWarrior
+        peer MacBook {
+            allowed-ips 10.172.24.30/32
+            allowed-ips 2001:DB8:470:22::30/128
+            persistent-keepalive 15
+            pubkey F5MbW7ye7DsoxdOaixjdrudshjjxN5UdNV+pGFHqehc=
+        }
+        peer iPhone {
+            allowed-ips 10.172.24.20/32
+            allowed-ips 2001:DB8:470:22::30/128
+            persistent-keepalive 15
+            pubkey BknHcLFo8nOo8Dwq2CjaC/TedchKQ0ebxC7GYn7Al00=
+        }
+        port 2224
+    }
+
+The following is the config for the iPhone peer above.  It's important to note that the ``AllowedIPs`` setting 
+directs all IPv4 and IPv6 traffic through the connection.
+
+.. code-block:: sh
+
+    [Interface]
+    PrivateKey = ARAKLSDJsadlkfjasdfiowqeruriowqeuasdf=
+    Address = 10.172.24.20/24, 2001:DB8:470:22::20/64
+    DNS = 10.0.0.53, 10.0.0.54
+
+    [Peer]
+    PublicKey = RIbtUTCfgzNjnLNPQ/ulkGnnB2vMWHm7l2H/xUfbyjc=
+    AllowedIPs = 0.0.0.0/0, ::/0
+    Endpoint = 192.0.2.1:2224
+    PersistentKeepalive = 25
+
+
+This MacBook peer is doing split-tunneling, where only the subnets local to the server go over the connection.
+
+.. code-block:: sh
+
+    [Interface]
+    PrivateKey = 8Iasdfweirousd1EVGUk5XsT+wYFZ9mhPnQhmjzaJE6Go=
+    Address = 10.172.24.30/24, 2001:DB8:470:22::30/64
+
+    [Peer]
+    PublicKey = RIbtUTCfgzNjnLNPQ/ulkGnnB2vMWHm7l2H/xUfbyjc=
+    AllowedIPs = 10.172.24.30/24, 2001:DB8:470:22::/64
+    Endpoint = 192.0.2.1:2224
+    PersistentKeepalive = 25
+
+
 Operational commands
 ^^^^^^^^^^^^^^^^^^^^
 
