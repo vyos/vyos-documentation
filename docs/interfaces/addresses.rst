@@ -1,7 +1,7 @@
 .. _interfaces-addresses:
 
-Interface Addresses
--------------------
+Addresses
+---------
 
 Each interface can be configured with a description and address. Interface
 addresses might be:
@@ -11,11 +11,9 @@ addresses might be:
 * DHCP IPv4 ``address dhcp``
 * DHCP IPv6 ``address dhcpv6``
 
+.. cfgcmd:: set interfaces ethernet eth0 description 'OUTSIDE'
+
 An interface description is assigned using the following command:
-
-.. code-block:: sh
-
-  set interfaces ethernet eth0 description 'OUTSIDE'
 
 IPv4
 ^^^^
@@ -120,7 +118,7 @@ Examples:
 Router Advertisements
 *********************
 
-Router advertisements are described in :rfc:`4861` section 4.2. They are part
+Router advertisements are described in :rfc:`4861#section-4.6.2`. They are part
 of what is known as SLAAC (Stateless Address Autoconfiguration).
 
 To enable or disable, use:
@@ -154,7 +152,7 @@ To set the options described in "Router Advertisement Message Format":
 Prefix Information
 ~~~~~~~~~~~~~~~~~~
 
-Prefix information is described in :rfc:`4861` section 4.6.2.
+Prefix information is described in :rfc:`4861#section-4.6.2`.
 
 .. code-block:: sh
 
