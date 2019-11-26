@@ -13,7 +13,6 @@ This chapter describes the available system/network services provided by VyOS.
 
    conntrack
    dhcp
-   dhcpv6
    dhcp-relay
    dns-forwarding
    dynamic-dns
