@@ -1,8 +1,8 @@
 .. _dhcp:
 
-########
-DHCP(v6)
-########
+#############
+DHCP / DHCPv6
+#############
 
 VyOS uses ISC DHCPd for both IPv4 and IPv6 address assignment.
 
@@ -249,7 +249,7 @@ be created. The following example explains the process.
 * Device MAC address will be ``00:53:c5:b7:5e:23``
 * Host specific mapping shall be named ``client1``
 
-.. nhint:: The MAC address identifier is defined by the last 4 byte of the
+.. hint:: The MAC address identifier is defined by the last 4 byte of the
    MAC address.
 
 .. code-block:: sh
@@ -293,3 +293,158 @@ To show the current status of the DHCPv6 server.
 
 Show statuses of all assigned leases:
 
+
+DHCP Relay
+==========
+
+If you want your router to forward DHCP requests to an external DHCP server
+you can configure the system to act as a DHCP relay agent. The DHCP relay
+agent works with IPv4 and IPv6 addresses.
+
+All interfaces used for the DHCP relay must be configured. See
+https://wiki.vyos.net/wiki/Network_address_setup.
+
+
+Configuration
+-------------
+
+.. cfgcmd:: set service dhcp-relay interface '<interface>'
+
+Enable the DHCP relay service on the given interface.
+
+.. cfgcmd:: set service dhcp-relay server 10.0.1.4
+
+Configure IP address of the DHCP server
+
+.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packets discard
+
+The router should discard DHCP packages already containing relay agent
+information to ensure that only requests from DHCP clients are forwarded.
+
+Example
+-------
+
+* Use interfaces ``eth1`` and ``eth2`` for DHCP relay
+* Router receives DHCP client requests on ``eth1`` and relays them through
+  ``eth2``
+* DHCP server is located at IPv4 address 10.0.1.4.
+
+.. figure:: /_static/images/service_dhcp-relay01.png
+   :scale: 80 %
+   :alt: DHCP relay example
+
+   DHCP relay example
+
+The generated configuration will look like:
+
+.. code-block:: sh
+
+  show service dhcp-relay
+      interface eth1
+      interface eth2
+      server 10.0.1.4
+      relay-options {
+         relay-agents-packets discard
+      }
+
+Options
+-------
+
+.. cfgcmd:: set service dhcp-relay relay-options hop-count 'count'
+
+Set the maximum hop count before packets are discarded. Range 0...255,
+default 10.
+
+.. cfgcmd:: set service dhcp-relay relay-options max-size 'size'
+
+Set maximum size of DHCP packets including relay agent information. If a
+DHCP packet size surpasses this value it will be forwarded without appending
+relay agent information. Range 64...1400, default 576.
+
+.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packet 'policy'
+
+Four policies for reforwarding DHCP packets exist:
+
+* **append:** The relay agent is allowed to append its own relay information
+  to a received DHCP packet, disregarding relay information already present in
+  the packet.
+
+* **discard:** Received packets which already contain relay information will
+  be discarded.
+
+* **forward:** All packets are forwarded, relay information already present
+  will be ignored.
+
+* **replace:** Relay information already present in a packet is stripped and
+  replaced with the router's own relay information set.
+
+Operation
+---------
+
+.. opcmd:: restart dhcp relay-agent
+
+Restart DHCP relay service
+
+DHCPv6 relay
+============
+
+Configuration
+-------------
+
+.. cfgcmd:: set service dhcpv6-relay listen-interface eth1
+
+Set eth1 to be the listening interface for the DHCPv6 relay:
+
+.. cfgcmd:: set service dhcpv6-relay upstream-interface eth2 address 2001:db8:100::4
+
+Set eth2 to be the upstream interface and specify the IPv6 address of
+the DHCPv6 server:
+
+
+Example
+^^^^^^^
+
+* DHCPv6 requests are received by the router on `listening interface` ``eth1``
+* Requests are forwarded through ``eth2`` as the `upstream interface`
+* External DHCPv6 server is at 2001:db8:100::4
+
+.. figure:: /_static/images/service_dhcpv6-relay01.png
+   :scale: 80 %
+   :alt: DHCPv6 relay example
+
+   DHCPv6 relay example
+
+The generated configuration will look like:
+
+.. code-block:: sh
+
+  commit
+  show service dhcpv6-relay
+      listen-interface eth1 {
+      }
+      upstream-interface eth2 {
+         address 2001:db8:100::4
+      }
+
+Options
+-------
+
+.. cfgcmd:: set service dhcpv6-relay max-hop-count 'count'
+
+Set maximum hop count before packets are discarded, default: 10
+
+.. cfgcmd:: set service dhcpv6-relay use-interface-id-option
+
+If this is set the relay agent will insert the interface ID. This option is
+set automatically if more than one listening interfaces are in use.
+
+Operation
+---------
+
+.. opcmd:: show dhcpv6 relay-agent status
+
+Show the current status of the DHCPv6 relay agent:
+
+.. opcmd:: restart dhcpv6 relay-agent
+
+Restart DHCPv6 relay agent immediately.
