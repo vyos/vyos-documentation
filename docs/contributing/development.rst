@@ -271,7 +271,7 @@ device if you happen to be a crazy scientist.
   import sys
 
   from vyos.config import Config
-  from vyos.util import ConfigError
+  from vyos import ConfigError
 
   def get_config():
       vc = Config()
