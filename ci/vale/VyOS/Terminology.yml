@@ -1,7 +1,7 @@
 extends: substitution
 message: Prefer '%s' over '%s'
 ignorecase: false
-level: warning
+level: error
 swap:
   vyos: VyOS
   Vyos: VyOS
