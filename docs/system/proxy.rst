@@ -4,16 +4,20 @@ System Proxy
 ============
 
 Some IT environments require the use of a proxy to connect to the Internet.
-The option allowes to set a HTTP proxy and if necessary, supports `basic auth`_.  
+The ``system proxy`` option sets the configuration for a proxy, and if necessary, supports `basic auth`_.  
 
-The code example below sets a proxy for all HTTP, HTTPS and FTP (anonymous ftp) connections, initiated by vyos. 
+This example sets a proxy for all connections initiated by VyOS, including HTTP, HTTPS, and FTP (anonymous ftp).
 
 .. code-block:: console
 
   set system proxy url http://10.100.100.1
   set system proxy port 8080
 
-That enables the update of a system image if the vyos system operates behind a proxy.
+  # If a username and password are required
+  set system proxy username vyosuser 
+  set system proxy password vyosuser-password
+
+That enables the update of a system image if the VyOS system operates behind a proxy.
 
 .. code-block:: console
 
