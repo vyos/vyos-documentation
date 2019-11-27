@@ -27,7 +27,7 @@ author = u'VyOS maintainers and contributors'
 version = u'1.3'
 
 # The full version, including alpha/beta/rc tags
-release = u'equuleus'
+release = u'1.3.x (equuleus)'
 
 # -- General configuration ---------------------------------------------------
 
