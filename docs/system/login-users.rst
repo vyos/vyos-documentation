@@ -16,20 +16,20 @@ Local
 
 Create user account `jsmith` and the password `mypassword`.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system login user jsmith full-name "Johan Smith"
   set system login user jsmith authentication plaintext-password mypassword
 
 The command:
 
-.. code-block:: sh
+.. code-block:: console
 
   show system login
 
 will show the contents of :code:`system login` configuration node:
 
-.. code-block:: sh
+.. code-block:: console
 
   user jsmith {
       authentication {
@@ -45,7 +45,7 @@ SSH with Public Keys
 
 The following command will load the public key `dev.pub` for user `jsmith`
 
-.. code-block:: sh
+.. code-block:: console
 
   loadkey jsmith dev.pub
 
@@ -53,7 +53,7 @@ The following command will load the public key `dev.pub` for user `jsmith`
    first. As an alternative you can also load the SSH public key directly
    from a remote system:
 
-.. code-block:: sh
+.. code-block:: console
 
   loadkey jsmith scp://devuser@dev001.vyos.net/home/devuser/.ssh/dev.pub
 
@@ -61,7 +61,7 @@ In addition SSH public keys can be fully added using the CLI. Each key can be
 given a unique identifier, `calypso` is used oin the example below to id an SSH
 key.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system login user jsmith authentication public-keys callisto key 'AAAABo..Q=='
   set system login user jsmith authentication public-keys callisto type 'ssh-rsa'
@@ -75,7 +75,7 @@ The following command sets up two servers for RADIUS authentication, one with a
 discrete timeout of `5` seconds and a discrete port of `1812` and the other using
 a default timeout and port.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system login radius server 192.168.1.2 secret 's3cr3t0815'
   set system login radius server 192.168.1.2 timeout '5'
@@ -84,7 +84,7 @@ a default timeout and port.
 
 This configuration results in:
 
-.. code-block:: sh
+.. code-block:: console
 
   show system login
    radius {
@@ -111,7 +111,7 @@ not set incoming connections to the RADIUS server will use the nearest interface
 address pointing towards the RADIUS server - making it error prone on e.g. OSPF
 networks when a link fails.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system login radius source-address 192.168.1.254
 
@@ -120,7 +120,7 @@ Login Banner
 
 You are able to set post-login or pre-login messages with the following lines:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system login banner pre-login "UNAUTHORIZED USE OF THIS SYSTEM IS PROHIBITED\n"
   set system login banner post-login "Welcome to VyOS"

@@ -10,7 +10,7 @@ Configuration
 
 - Router A:
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols bgp 65020 address-family ipv4-unicast redistribute connected
   set protocols bgp 65020 address-family ipv6-unicast redistribute connected
@@ -29,7 +29,7 @@ Configuration
 
 - Router B:
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols bgp 65021 address-family ipv4-unicast redistribute connected
   set protocols bgp 65021 address-family ipv6-unicast redistribute connected
@@ -51,7 +51,7 @@ Results
 
 - Router A:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show interfaces
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -64,7 +64,7 @@ Results
                    192.168.0.1/32
                    ::1/128
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show ip route
   Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -79,7 +79,7 @@ Results
   B>* 192.168.0.2/32 [20/0] via fe80::a00:27ff:fe3b:7ed2, eth2, 00:05:07
     *                       via fe80::a00:27ff:fe7b:4000, eth1, 00:05:07
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ ping 192.168.0.2
   PING 192.168.0.2 (192.168.0.2) 56(84) bytes of data.
@@ -93,7 +93,7 @@ Results
   5 packets transmitted, 5 received, 0% packet loss, time 4086ms
   rtt min/avg/max/mdev = 0.575/0.612/0.682/0.047 ms
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show ip bgp summary
 
@@ -112,7 +112,7 @@ Results
 
 - Router B:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show interfaces
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -125,7 +125,7 @@ Results
                    192.168.0.2/32
                    ::1/128
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show ip route
   Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -140,7 +140,7 @@ Results
     *                       via fe80::a00:27ff:fe93:e142, eth2, 00:06:18
   C>* 192.168.0.2/32 is directly connected, lo, 00:44:11
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ ping 192.168.0.1
   PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.
@@ -153,7 +153,7 @@ Results
   4 packets transmitted, 4 received, 0% packet loss, time 3051ms
   rtt min/avg/max/mdev = 0.427/0.598/0.782/0.155 ms
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show ip bgp summary
   IPv4 Unicast Summary:

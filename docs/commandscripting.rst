@@ -9,7 +9,7 @@ from shell scripts.
 To include VyOS specific functions and aliases you need to ``source
 /opt/vyatta/etc/functions/script-template`` files at the top of your script.
 
-.. code-block:: sh
+.. code-block:: console
 
   #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
@@ -21,7 +21,7 @@ Run configuration commands
 Configuration commands are executed just like from a normal config session. For
 example, if you want to disable a BGP peer on VRRP transition to backup:
 
-.. code-block:: sh
+.. code-block:: console
 
   #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
@@ -36,7 +36,7 @@ Run operational commands
 Unlike a normal configuration sessions, all operational commands must be
 prepended with ``run``, even if you haven't created a session with configure.
 
-.. code-block:: sh
+.. code-block:: console
 
   #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
@@ -59,7 +59,7 @@ Here is a simple example:
   print "set firewall group address-group somehosts address '1.1.1.2'"
 
 
-.. code-block:: sh
+.. code-block:: console
 
   #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
@@ -79,7 +79,7 @@ On VyOS this will cause the following problem: After modifying the configuration
 via script like this once, it is not possible to manually modify the config
 anymore:
 
-.. code-block:: sh
+.. code-block:: console
 
   sudo ./myscript.sh # Modifies config
   configure
@@ -91,14 +91,14 @@ a reboot is required to be able to edit the config manually again.
 To avoid these problems, the proper way is to call a script with the
 ``vyattacfg`` group, e.g., by using the ``sg`` (switch group) command:
 
-.. code-block:: sh
+.. code-block:: console
 
   sg vyattacfg -c ./myscript.sh
 
 To make sure that a script is not accidentally called without the ``vyattacfg``
 group, the script can be safeguarded like this:
 
-.. code-block:: sh
+.. code-block:: console
 
   if [ "$(id -g -n)" != 'vyattacfg' ] ; then
       exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
@@ -115,7 +115,7 @@ which are not complete in the VyOS system can be placed here.
 
 The default file looks like this:
 
-.. code-block:: sh
+.. code-block:: console
 
   #!/bin/sh
   # This script is executed at boot time after VyOS configuration is fully

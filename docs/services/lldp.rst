@@ -74,7 +74,7 @@ Display neighbors
 
 Exemple:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~# show lldp neighbors
   Capability Codes: R - Router, B - Bridge, W - Wlan r - Repeater, S - Station

@@ -19,13 +19,13 @@ OSPFv2 (IPv4)
 In order to have a VyOS system exchanging routes with OSPF neighbors, you will
 at least need to configure the area and a network,
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols ospf area 0 network 192.168.0.0/24
 
 as well as the router ID.
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols ospf parameters router-id 10.1.1.1
 
@@ -36,7 +36,7 @@ address and the node 1 sending the default route:
 
 **Node 1**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces loopback lo address 10.1.1.1/32
   set protocols ospf area 0 network 192.168.0.0/24
@@ -53,7 +53,7 @@ address and the node 1 sending the default route:
 
 **Node 2**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces loopback lo address 10.2.2.2/32
   set protocols ospf area 0 network 192.168.0.0/24
@@ -72,7 +72,7 @@ A typical configuration using 2 nodes.
 
 **Node 1:**
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols ospfv3 area 0.0.0.0 interface eth1
   set protocols ospfv3 area 0.0.0.0 range 2001:db8:1::/64
@@ -81,7 +81,7 @@ A typical configuration using 2 nodes.
 
 **Node 2:**
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols ospfv3 area 0.0.0.0 interface eth1
   set protocols ospfv3 area 0.0.0.0 range 2001:db8:2::/64
@@ -96,7 +96,7 @@ Example configuration for WireGuard interfaces:
 
 **Node 1**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces wireguard wg01 address 'fe80::216:3eff:fe51:fd8c/64'
   set interfaces wireguard wg01 address '192.168.0.1/24'
@@ -111,7 +111,7 @@ Example configuration for WireGuard interfaces:
 
 **Node 2**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces wireguard wg01 address 'fe80::216:3eff:fe0a:7ada/64'
   set interfaces wireguard wg01 address '192.168.0.2/24'
@@ -126,7 +126,7 @@ Example configuration for WireGuard interfaces:
 
 **Status**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@ospf01:~$ sh ipv6 ospfv3 neighbor
   Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]

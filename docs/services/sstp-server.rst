@@ -24,7 +24,7 @@ Self Signed CA and server certificates
 To generate the CA, the server private key and certificates the following
 commands can be used.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ conf
   [edit]
@@ -60,7 +60,7 @@ The example below will answer configuration request for the user ``foo``.
 Use <tab> to setup the ``set sstp-settings ssl-certs ...``, it automatically
 looks for all files and directories in ``/config/user-data/sstp``.
 
-.. code-block:: sh
+.. code-block:: console
 
   edit service sstp-server
   set authentication local-users username foo password 'bar'

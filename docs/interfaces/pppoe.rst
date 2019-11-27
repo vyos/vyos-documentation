@@ -72,7 +72,7 @@ Requirements:
   nameservers your ISP sens you and thus you can fully rely on the ones you
   have configured statically.
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 description "DSL Modem"
   set interfaces ethernet eth0 duplex auto
@@ -88,7 +88,7 @@ Requirements:
 You should add a firewall to your configuration above as well by
 assigning it to the pppoe0 itself as shown here:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 pppoe 0 firewall in name NET-IN
   set interfaces ethernet eth0 pppoe 0 firewall local name NET-LOCAL
@@ -103,7 +103,7 @@ can easily create a PPPoE session through an encapsulated VLAN interface.
 The following configuration will run your PPPoE connection through VLAN7
 which is the default VLAN for Deutsche Telekom:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 description "DSL Modem"
   set interfaces ethernet eth0 duplex auto

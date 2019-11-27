@@ -31,7 +31,7 @@ Such configuration takes place under the `traffic-policy` tree.
 
 Available subtrees :
 
-.. code-block:: sh
+.. code-block:: console
 
   set traffic-policy drop-tail NAME
   set traffic-policy fair-queue NAME
@@ -49,7 +49,7 @@ Apply traffic policy to an interface
 
 Once a traffic-policy is created, you can apply it to an interface :
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 traffic-policy in WAN-IN
   set interfaces etherhet eth0 traffic-policy out WAN-OUT
@@ -67,7 +67,7 @@ traffic that needs the bandwidth, the lower-priority traffic can use most of the
 that the connection can be used fully by whatever wants it, without suffocating real-time traffic or 
 throttling background traffic too much.
 
-.. code-block:: sh
+.. code-block:: console
 
   set traffic-policy shaper download bandwidth '175mbit'
   set traffic-policy shaper download class 10 bandwidth '10%'
@@ -1203,13 +1203,13 @@ Matching traffic
 
 A class can have multiple match filters:
 
-.. code-block:: sh
+.. code-block:: console
 
   set traffic-policy <POLICY> <POLICY-NAME> class N match MATCH-FILTER-NAME
 
 Example:
 
-.. code-block:: sh
+.. code-block:: console
 
   set traffic-policy shaper SHAPER class 30 match HTTP
   set traffic-policy shaper SHAPER class 30 match HTTPs
@@ -1218,7 +1218,7 @@ A match filter contains multiple criteria and will match traffic if all those cr
 
 For example:
 
-.. code-block:: sh
+.. code-block:: console
 
   set traffic-policy shaper SHAPER class 30 match HTTP ip protocol tcp
   set traffic-policy shaper SHAPER class 30 match HTTP ip source port 80
@@ -1228,14 +1228,14 @@ This will match tcp traffic with source port 80.
 description
 ***********
 
-.. code-block:: sh
+.. code-block:: console
 
   set traffic-policy shaper SHAPER class 30 match MATCH description "match filter description"
 
 ether
 *****
 
-.. code-block:: sh
+.. code-block:: console
 
   edit traffic-policy shaper SHAPER class 30 match MATCH ether
 
@@ -1251,20 +1251,20 @@ source
 interface
 *********
 
-.. code-block:: sh
+.. code-block:: console
 
   edit traffic-policy shaper SHAPER class 30 match MATCH interface <interface-name>
 
 ip
 **
-.. code-block:: sh
+.. code-block:: console
 
   edit traffic-policy shaper SHAPER class 30 match MATCH ip
 
 destination
 ###########
 
-.. code-block:: sh
+.. code-block:: console
 
  set destination address IPv4-SUBNET
  set destination port U32-PORT
@@ -1272,14 +1272,14 @@ destination
 dscp
 ####
 
-.. code-block:: sh
+.. code-block:: console
 
   set dscp DSCPVALUE
 
 max-length
 ##########
 
-.. code-block:: sh
+.. code-block:: console
 
   set max-length U32-MAXLEN
 
@@ -1288,14 +1288,14 @@ Will match ipv4 packets with a total length lesser than set value.
 protocol
 ########
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocol <IP PROTOCOL>
 
 source
 ######
 
-.. code-block:: sh
+.. code-block:: console
 
   set source address IPv4-SUBNET
   set source port U32-PORT
@@ -1308,13 +1308,13 @@ tcp
 .. note:: This filter will only match packets with an IPv4 header length of
    20 bytes (which is the majority of IPv4 packets anyway).
 
-.. code-block:: sh
+.. code-block:: console
 
  set tcp ack
 
 Will match tcp packets with ACK flag set.
 
-.. code-block:: sh
+.. code-block:: console
 
   set tcp syn
 
@@ -1323,14 +1323,14 @@ Will match tcp packets with SYN flag set.
 ipv6
 ****
 
-.. code-block:: sh
+.. code-block:: console
 
   edit traffic-policy shaper SHAPER class 30 match MATCH ipv6
 
 destination
 ###########
 
- .. code-block:: sh
+ .. code-block:: console
 
   set destination address IPv6-SUBNET
   set destination port U32-PORT
@@ -1338,14 +1338,14 @@ destination
 dscp
 ####
 
-.. code-block:: sh
+.. code-block:: console
 
   set dscp DSCPVALUE
 
 max-length
 ##########
 
-.. code-block:: sh
+.. code-block:: console
 
   set max-length U32-MAXLEN
 
@@ -1354,14 +1354,14 @@ Will match ipv6 packets with a payload length lesser than set value.
 protocol
 ########
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocol IPPROTOCOL
 
 source
 ######
 
-.. code-block:: sh
+.. code-block:: console
 
   set source address IPv6-SUBNET
   set source port U32-PORT
@@ -1375,13 +1375,13 @@ tcp
    http://en.wikipedia.org/wiki/IPv6_packet#Extension_headers for no header
    extension.
 
-.. code-block:: sh
+.. code-block:: console
 
   set tcp ack
 
 Will match tcp packets with ACK flag set.
 
-.. code-block:: sh
+.. code-block:: console
 
   set tcp syn
 
@@ -1390,18 +1390,18 @@ Will match tcp packets with SYN flag set.
 mark
 ****
 
-.. code-block:: sh
+.. code-block:: console
 
   set traffic-policy shaper SHAPER class 30 match MATCH mark **firewall-mark**
 
 vif
 ***
 
-.. code-block:: sh
+.. code-block:: console
 
   set traffic-policy shaper SHAPER class 30 match MATCH vif **vlan-tag**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 traffic-policy out 'WAN-OUT'
   set interfaces ethernet eth1 traffic-policy out 'LAN-OUT'

@@ -30,7 +30,7 @@ accomplished using the configuration command:
 
 To assign a vif 100 using the VLAN 100 tag to physical interface eth1 use:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth1 vif 100 description 'VLAN 100'
   set interfaces ethernet eth1 vif 100 address '192.168.100.1/24'
@@ -38,7 +38,7 @@ To assign a vif 100 using the VLAN 100 tag to physical interface eth1 use:
 
 Resulting in:
 
-.. code-block:: sh
+.. code-block:: console
 
   ethernet eth1 {
       address 192.168.100.1/24
@@ -56,7 +56,7 @@ Resulting in:
 
 VLAN interfaces are shown as `<name>.<vlan-id>`, e.g. `eth1.100`:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show interfaces
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down

@@ -21,7 +21,7 @@ To setup SNAT, we need to know:
 In the example used for the Quick Start configuration above, we demonstrate
 the following configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   set nat source rule 100 outbound-interface 'eth0'
   set nat source rule 100 source address '192.168.0.0/24'
@@ -29,7 +29,7 @@ the following configuration:
 
 Which generates the following configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   rule 100 {
       outbound-interface eth0
@@ -58,7 +58,7 @@ recommended.
 A pool of addresses can be defined by using a **-** in the 
 `set nat source rule [n] translation address` statement.
 
-.. code-block:: sh
+.. code-block:: console
 
   set nat source rule 100 translation address '203.0.113.32-203.0.113.63'
 
@@ -108,7 +108,7 @@ To setup a NAT reflection rule, we need to create a rule to NAT connections
 from the internal network to the same internal network to use the source
 address of the internal interface.
 
-.. code-block:: sh
+.. code-block:: console
 
   set nat source rule 110 description 'NAT Reflection: INSIDE'
   set nat source rule 110 destination address '192.168.0.0/24'
@@ -118,7 +118,7 @@ address of the internal interface.
 
 Which results in a configuration of:
 
-.. code-block:: sh
+.. code-block:: console
 
   rule 110 {
       description "NAT Reflection: INSIDE"
@@ -156,7 +156,7 @@ For other common port numbers, see: http://en.wikipedia.org/wiki/List_of_TCP_and
 
 Our configuration commands would be:
 
-.. code-block:: sh
+.. code-block:: console
 
   set nat destination rule 10 description 'Port Forward: HTTP to 192.168.0.100'
   set nat destination rule 10 destination port '80'
@@ -166,7 +166,7 @@ Our configuration commands would be:
 
 Which would generate the following NAT destination configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   nat {
       destination {
@@ -198,7 +198,7 @@ the destination address has already been translated to 192.168.0.100.
 So in our firewall policy, we want to allow traffic coming in on the outside
 interface, destined for TCP port 80 and the IP address of 192.168.0.100.
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall name OUTSIDE-IN rule 20 action 'accept'
   set firewall name OUTSIDE-IN rule 20 destination address '192.168.0.100'
@@ -208,7 +208,7 @@ interface, destined for TCP port 80 and the IP address of 192.168.0.100.
 
 This would generate the following configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   rule 20 {
       action accept
@@ -248,7 +248,7 @@ notion of ports, such as GRE.
 Here's an extract of a simple 1-to-1 NAT configuration with one internal and
 one external interface:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 address '192.168.1.1/24'
   set interfaces ethernet eth0 description 'Inside interface'
@@ -305,7 +305,7 @@ VyOS Support
 NPTv6 support has been added in VyOS 1.2 (Crux) and is available through
 `nat nptv6` configuration nodes.
 
-.. code-block:: sh
+.. code-block:: console
 
   set rule 10 inside-prefix 'fc00:dead:beef::/48'
   set rule 10 outside-interface 'eth1'
@@ -316,7 +316,7 @@ NPTv6 support has been added in VyOS 1.2 (Crux) and is available through
 
 Resulting in the following ip6tables rules:
 
-.. code-block:: sh
+.. code-block:: console
 
   Chain VYOS_DNPT_HOOK (1 references)
    pkts bytes target   prot opt in   out   source              destination
@@ -368,14 +368,14 @@ but which are not actually assigned to a real network.
 
 We only need a single step for this interface:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces dummy dum0 address '172.29.41.89/32'
 
 NAT Configuration
 *****************
 
-.. code-block:: sh
+.. code-block:: console
 
   set nat source rule 110 description 'Internal to ASP'
   set nat source rule 110 destination address '172.27.1.0/24'
@@ -408,7 +408,7 @@ The ASP has documented their IPSec requirements:
 
 Additionally, we want to use VPNs only on our eth1 interface (the external interface in the image above)
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn ipsec ike-group my-ike ikev2-reauth 'no'
   set vpn ipsec ike-group my-ike key-exchange 'ikev1'
@@ -433,7 +433,7 @@ We'll use the IKE and ESP groups created above for this VPN.
 Because we need access to 2 different subnets on the far side, we will need two different tunnels.
 If you changed the names of the ESP group and IKE group in the previous step, make sure you use the correct names here too.
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn ipsec site-to-site peer 198.51.100.243 authentication mode 'pre-shared-secret'
   set vpn ipsec site-to-site peer 198.51.100.243 authentication pre-shared-secret 'PASSWORD IS HERE'
@@ -454,7 +454,7 @@ If you've completed all the above steps you no doubt want to see if it's all wor
 
 Start by checking for IPSec SAs (Security Associations) with:
 
-.. code-block:: sh
+.. code-block:: console
 
   $ show vpn ipsec sa
 

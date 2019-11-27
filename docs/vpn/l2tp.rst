@@ -12,7 +12,7 @@ L2TP over IPsec
 Example for configuring a simple L2TP over IPsec VPN for remote access (works
 with native Windows and Mac VPN clients):
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn ipsec ipsec-interfaces interface eth0
   set vpn ipsec nat-traversal enable
@@ -43,7 +43,7 @@ As well as the below to allow NAT-traversal:
 
 Example:
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall name OUTSIDE-LOCAL rule 40 action 'accept'
   set firewall name OUTSIDE-LOCAL rule 40 protocol 'esp'
@@ -61,7 +61,7 @@ Example:
 To allow VPN-clients access via your external address, a NAT rule is required:
 
 
-.. code-block:: sh
+.. code-block:: console
 
   set nat source rule 110 outbound-interface 'eth0'
   set nat source rule 110 source address '192.168.255.0/24'
@@ -71,7 +71,7 @@ To allow VPN-clients access via your external address, a NAT rule is required:
 VPN-clients will request configuration parameters, optionally you can DNS
 parameter to the client.
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn l2tp remote-access dns-servers server-1 '8.8.8.8'
   set vpn l2tp remote-access dns-servers server-2 '8.8.4.4'
@@ -82,7 +82,7 @@ parameter to the client.
 Established sessions can be viewed using the **show vpn remote-access**
 operational command, or **show l2tp-server sessions**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show vpn remote-access
    ifname | username | calling-sid  |      ip       | rate-limit | type | comp | state  |  uptime
@@ -97,7 +97,7 @@ LNS are often used to connect to a LAC (L2TP Access Concentrator).
 
 Below is an example to configure a LNS:
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn l2tp remote-access outside-address 192.0.2.2
   set vpn l2tp remote-access outside-nexthop 192.168.255.1
@@ -126,7 +126,7 @@ Bandwidth Shaping for local users
 
 The rate-limit is set in kbit/sec.
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn l2tp remote-access outside-address 192.0.2.2
   set vpn l2tp remote-access outside-nexthop 192.168.255.1
@@ -151,14 +151,14 @@ exists within the configuration, however they are not used if the mode has been
 changed from local to radius. Once changed back to local, it will use all local
 accounts again.
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn l2tp remote-access authentication mode <local|radius>
 
 Since the RADIUS server would be a single point of failure, multiple RADIUS
 servers can be setup and will be used subsequentially.
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn l2tp remote-access authentication radius server 10.0.0.1 key 'foo'
   set vpn l2tp remote-access authentication radius server 10.0.0.2 key 'foo'
@@ -173,7 +173,7 @@ If you are using OSPF as IGP always the closets interface connected to the RADIU
 server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests to a
 single source IP e.g. the loopback interface.
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn l2tp remote-access authentication radius source-address 10.0.0.3
 
@@ -188,14 +188,14 @@ RADIUS bandwidth shaping attribute
 
 To enable bandwidth shaping via RADIUS, the option rate-limit needs to be enabled.
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn l2tp remote-access authentication radius rate-limit enable
 
 The default RADIUS attribute for rate limiting is ``Filter-Id``, but you may also
 redefine it.
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn l2tp remote-access authentication radius rate-limit attribute Download-Speed
 

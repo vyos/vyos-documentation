@@ -11,7 +11,7 @@ of system configuration.
 The current active configuration -aka running configuration- can be viewed
 using the show configuration command.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show configuration
   interfaces {
@@ -75,7 +75,7 @@ through a collection of ``set`` and ``delete`` commands.
 Get a collection of all the set commands required which led to this
 running configuration.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show configuration commands
   set interfaces ethernet eth0 address 'dhcp'
@@ -131,7 +131,7 @@ When entering the configuration mode you are navigating inside the tree
 structure exported in the overview above, to enter configuration mode enter
 the command ``configure`` when in operational mode.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos$ configure
   [edit]
@@ -146,7 +146,7 @@ lengthy when manually typing them.
 
 To change the current hierarchy level use the command: ``edit``
 
-.. code-block:: sh
+.. code-block:: console
 
   [edit]
   vyos@vyos# edit interfaces ethernet eth0
@@ -163,7 +163,7 @@ The ``show`` command within configuration mode will show the working
 configuration indicating line changes with ``+`` for additions, ``>`` for
 replacements and ``-`` for deletions.
 
-.. code-block:: sh
+.. code-block:: console
 
  vyos@vyos:~$ configure
  [edit]
@@ -197,7 +197,7 @@ replacements and ``-`` for deletions.
 It is also possible to display all `set` commands within configuration mode
 using ``show | commands``
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# show interfaces ethernet eth0 | commands
   set address dhcp
@@ -206,7 +206,7 @@ using ``show | commands``
 These commands are also relative to the level you are inside and only relevant
 configuration blocks will be displayed when entering a sub-level.
 
-.. code-block:: sh
+.. code-block:: console
 
   [edit interfaces ethernet eth0]
   vyos@vyos# show
@@ -217,7 +217,7 @@ Exiting from the configuration mode is done via the ``exit`` command from the
 top level, executing `exit` from within a sub-level takes you back to the top
 level.
 
-.. code-block:: sh
+.. code-block:: console
 
   [edit interfaces ethernet eth0]
   vyos@vyos# exit
@@ -239,7 +239,7 @@ These commands are also relative to the level where they are executed and all
 redundant information from the current level is removed from the command
 entered.
 
-.. code-block:: sh
+.. code-block:: console
 
   [edit]
   vyos@vyos# set interface ethernet eth0 address 192.0.2.100/24
@@ -255,7 +255,7 @@ all sub-levels under the current level you've specified in the ``delete``
 command. Deleting an entry will also result in the element reverting back to
 its default value if one exists.
 
-.. code-block:: sh
+.. code-block:: console
 
   [edit interfaces ethernet eth0]
   vyos@vyos#  delete address 192.0.2.100/24
@@ -263,7 +263,7 @@ its default value if one exists.
 Any change you do on the configuration, will not take effect until committed
 using the ``commit`` command in configuration mode.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# commit
   [edit]
@@ -275,7 +275,7 @@ In order to preserve configuration changes upon reboot, the configuration must
 also be saved once applied. This is done using the ``save`` command in
 configuration mode.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# save
   Saving configuration to '/config/config.boot'...
@@ -288,7 +288,7 @@ Configuration mode can not be exited while uncommitted changes exist. To exit
 configuration mode without applying changes, the exit discard command can be
 used.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# exit
   Cannot exit: configuration modified.
@@ -298,7 +298,7 @@ used.
   exit
   vyos@vyos:~$
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# save [tab]
   Possible completions:
@@ -324,7 +324,7 @@ operational mode.
 
 Command completion and syntax help with ``?`` and ``[tab]`` will also work.
 
-.. code-block:: sh
+.. code-block:: console
 
   [edit]
   vyos@vyos# run show interfaces
@@ -347,7 +347,7 @@ previous revisions if anything goes wrong.
 
 To view existing revisions, use ``show system commit`` operational mode command.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos-test-2# run show system commit
   0   2015-03-30 08:53:03 by vyos via cli
@@ -362,7 +362,7 @@ To view existing revisions, use ``show system commit`` operational mode command.
 To compare configuration revisions in configuration mode, use the compare
 command:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# compare [tab]
   Possible completions:
@@ -395,7 +395,7 @@ compared to Y, indicating with a plus sign (``+``) the additional parts X has
 when compared to y, and indicating with a minus sign (``-``) the lacking parts
 x misses when compared to y.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos-test-2# compare 0 6
   [edit interfaces]
@@ -416,7 +416,7 @@ Rolling Back Changes
 You can rollback configuration using the rollback command. This command will
 apply the selected revision and trigger a system reboot.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# compare 1
   [edit system]
@@ -459,7 +459,7 @@ Restore Default
 In the case you want to completely delete your configuration and restore the
 default one, you can enter the following command in configuration mode:
 
-.. code-block:: sh
+.. code-block:: console
 
   load /opt/vyatta/etc/config.boot.default
 

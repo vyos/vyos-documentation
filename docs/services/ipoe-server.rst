@@ -17,7 +17,7 @@ The clients mac address and the incoming interface is being used as control para
 The example configuration below will assign an IP to the client on the incoming interface eth2 with the client mac address 08:00:27:2f:d8:06.
 Other DHCP discovery requests will be ignored, unless the client mac has been enabled in the configuration.
 
-.. code-block:: sh
+.. code-block:: console
 
   set service ipoe-server authentication interface eth2 mac-address 08:00:27:2f:d8:06
   set service ipoe-server authentication mode 'local'
@@ -29,7 +29,7 @@ Other DHCP discovery requests will be ignored, unless the client mac has been en
 The first address of the parameter ``client-subnet``, will be used as the default gateway. 
 Connected sessions can be checked via the ``show ipoe-server sessions`` command.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show ipoe-server sessions
 
@@ -46,7 +46,7 @@ for devices routed via the clients cpe.
 
 IPv6 DNS addresses are optional.
 
-.. code-block:: sh
+.. code-block:: console
 
   set service ipoe-server authentication interface eth3 mac-address 08:00:27:2F:D8:06
   set service ipoe-server authentication mode 'local'
@@ -57,7 +57,7 @@ IPv6 DNS addresses are optional.
   set service ipoe-server dnsv6-server server-3 '2001:db8:bbb::'
   set service ipoe-server interface eth3 client-subnet '192.168.1.0/24'
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@ipoe-server# run sh ipoe-server sessions 
   ifname | called-sid |    calling-sid    |     ip      |               ip6               | ip6-dp          | rate-limit | state  |  uptime  |        sid       
@@ -74,7 +74,7 @@ Automatic VLAN creation
 
 To create VLANs per user during runtime, the following settings are required on a per interface basis. VLAN ID and VLAN range can be present in the configuration at the same time.
 
-.. code-block:: sh
+.. code-block:: console
 
   set service ipoe-server interface eth2 network vlan
   set service ipoe-server interface eth2 vlan-id 100
@@ -88,7 +88,7 @@ RADIUS Setup
 
 To use a RADIUS server for authentication and bandwidth-shaping, the following example configuration can be used.
 
-.. code-block:: sh
+.. code-block:: console
 
   set service ipoe-server authentication mode 'radius'
   set service ipoe-server authentication radius-server 10.100.100.1 secret 'password'
@@ -105,7 +105,7 @@ Bandwidth Shaping for local users
 
 The rate-limit is set in kbit/sec.
 
-.. code-block:: sh
+.. code-block:: console
 
   set service ipoe-server authentication interface eth2 mac-address 08:00:27:2f:d8:06 rate-limit download '500'
   set service ipoe-server authentication interface eth2 mac-address 08:00:27:2f:d8:06 rate-limit upload '500'
@@ -115,7 +115,7 @@ The rate-limit is set in kbit/sec.
   set service ipoe-server interface eth2 client-subnet '192.168.0.0/24'
 
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# run show ipoe-server sessions 
 

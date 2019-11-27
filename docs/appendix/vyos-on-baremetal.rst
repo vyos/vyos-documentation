@@ -114,7 +114,7 @@ Create a bootable USB pendrive using e.g. Rufus_ on a Windows machine.
 Connect serial port to a PC through null modem cable (RXD / TXD crossed over).
 Set terminal emulator to 115200 8N1.
 
-.. code-block:: sh
+.. code-block:: console
 
   PC Engines apu4
   coreboot build 20171130
@@ -135,7 +135,7 @@ Now boot from the ``USB MSC Drive Generic Flash Disk 8.07`` media by pressing
 ``2``, the VyOS boot menu will appear, just wait 10 seconds or press ``Enter``
 to continue.
 
-.. code-block:: sh
+.. code-block:: console
 
   lqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqk
   x                      VyOS - Boot Menu                      x
@@ -147,7 +147,7 @@ to continue.
 
 The image will be loaded and the last lines you will get will be:
 
-.. code-block:: sh
+.. code-block:: console
 
   Loading /live/vmlinuz... ok
   Loading /live/initrd.img...
@@ -155,7 +155,7 @@ The image will be loaded and the last lines you will get will be:
 The Kernel will now spin up using a different console setting. Set terminal
 emulator to 9600 8N1 and after a while your console will show:
 
-.. code-block:: sh
+.. code-block:: console
 
   Loading /live/vmlinuz... ok
   Loading /live/initrd.img...
@@ -172,14 +172,14 @@ your first successful boot.
 
 Use the following command to adjust the :ref:`serial-console` settings:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system console device ttyS0 speed 115200
 
 .. note:: Once you ``commit`` the above changes access to the serial interface
    is lost until you set your terminal emulator to 115200 8N1 again.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# show system console
    device ttyS0 {

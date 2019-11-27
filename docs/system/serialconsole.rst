@@ -8,7 +8,7 @@ Serial console
 Configuring Console
 -------------------
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# set system console
   Possible completions:

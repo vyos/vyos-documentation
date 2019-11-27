@@ -44,14 +44,14 @@ addresses and networks, the network group is recommended.
 Here is an example of a network group for the IP networks that make up the
 internal network:
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall group network-group NET-INSIDE network 192.168.0.0/24
   set firewall group network-group NET-INSIDE network 192.168.1.0/24
 
 Groups need to have unique names. Even though some contain IPv4 addresses and others contain IPv6 addresses, they still need to have unique names, so you may want to append "-v4" or "-v6" to your group names.
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall group network-group NET-INSIDE-v4 network 192.168.1.0/24
   set firewall group ipv6-network-group NET-INSIDE-v6 network 2001:db8::/64
@@ -64,7 +64,7 @@ Ranges of ports can be specified by using `-`.
 
 Here is an example of a port group a server:
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall group port-group PORT-TCP-SERVER1 port 80
   set firewall group port-group PORT-TCP-SERVER1 port 443
@@ -79,7 +79,7 @@ is matched, and the ability to specify the criteria to match.
 
 Example of a rule-set to filter traffic to the internal network:
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall name INSIDE-OUT default-action drop
   set firewall name INSIDE-OUT rule 1010 action accept
@@ -96,7 +96,7 @@ Once a rule-set is created, it can be applied to an interface.
 .. note:: Only one rule-set can be applied to each interface for `in`, `out`,
    or `local` traffic for each protocol (IPv4 and IPv6).
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth1 firewall out name INSIDE-OUT
 
@@ -106,7 +106,7 @@ Applying a Rule-Set to a Zone
 A named rule-set can also be applied to a zone relationship (note, zones must
 first be created):
 
-.. code-block:: sh
+.. code-block:: console
 
   set zone-policy zone INSIDE from OUTSIDE firewall name INSIDE-OUT
 
@@ -119,13 +119,13 @@ With the firewall you can set rules to accept, drop or reject ICMP in, out or lo
 
 .. note:: **firewall all-ping** affects only to LOCAL and it always behaves in the most restrictive way
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall all-ping enable
 
 When the command above is set, VyOS will answer every ICMP echo request addressed to itself, but that will only happen if no other rule is applied droping or rejecting local echo requests. In case of conflict, VyOS will not answer ICMP echo requests.
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall all-ping disable
 
@@ -134,7 +134,7 @@ When the comand above is set, VyOS will answer no ICMP echo request addressed to
 Example Partial Config
 ----------------------
 
-.. code-block:: sh
+.. code-block:: console
 
   firewall {
      all-ping enable

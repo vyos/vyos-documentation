@@ -30,7 +30,7 @@ In order for flow accounting information to be collected and displayed for an
 interface, the interface must be configured for flow accounting. The following
 example shows how to configure ``eth0`` and ``bond3`` for flow accounting.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system flow-accounting interface eth0
   set system flow-accounting interface bond3
@@ -41,7 +41,7 @@ VyOS supports version 5, 9 and 10 (IPFIX - IP Flow Information Export)
 
 NetFlow v5 example:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system flow-accounting netflow engine-id 100
   set system flow-accounting netflow version 5
@@ -55,7 +55,7 @@ display captured network traffic information for all configured interfaces.
 
 The following op-mode command shows flow accounting for eth0.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show flow-accounting interface eth0
   flow-accounting for [eth0]

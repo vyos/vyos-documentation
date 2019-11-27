@@ -30,7 +30,7 @@ You just use ``add system image``, as if it was a new VC release (see
 is to verify the new images digital signature. You will have to add the public
 key manually once as it is not shipped the first time.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyatta@vyatta:~$ wget http://wiki.vyos.net/so3group_maintainers.key
   Connecting to vyos.net (x.x.x.x:80)
@@ -41,7 +41,7 @@ key manually once as it is not shipped the first time.
 
 For completion the key below corresponds to the key listed in the URL above.
 
-.. code-block:: sh
+.. code-block:: console
 
   -----BEGIN PGP PUBLIC KEY BLOCK-----
   Version: GnuPG v1.4.12 (GNU/Linux)
@@ -101,7 +101,7 @@ Next add the VyOS image.
 This example uses VyOS 1.0.0, however, it's better to install the latest
 release.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyatta@vyatta:~$ show system image
   The system currently has the following image(s) installed:

@@ -20,7 +20,7 @@ fabric. Sometimes termed "leaf and spine" or "fat tree" topologies.
 
 Geneve Header:
 
-.. code-block:: sh
+.. code-block:: console
 
   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
   |Ver|  Opt Len  |O|C|    Rsvd.  |          Protocol Type        |

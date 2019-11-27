@@ -115,7 +115,7 @@ which of the many VyOS packages ship this file. You can determine the VyOS
 package name in question by using Debians ``dpkg -S`` command of your running
 VyOS installation.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~ dpkg -S /opt/vyatta/sbin/vyatta-update-webproxy.pl
   vyatta-webproxy: /opt/vyatta/sbin/vyatta-update-webproxy.pl
@@ -144,7 +144,7 @@ In order to record you as the author of the fix please indentify yourself to Git
 by setting up your name and email. This can be done local for this one and only
 repository ``git config`` or globally using ``git config --global``.
 
-.. code-block:: sh
+.. code-block:: console
 
   git config --global user.name "J. Random Hacker"
   git config --global user.email "jrhacker@example.net"

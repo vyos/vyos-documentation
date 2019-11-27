@@ -31,7 +31,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
 
 Configuration commands:
 
-.. code-block:: sh
+.. code-block:: console
 
   interfaces
       ethernet <eth[0-999]>
@@ -65,7 +65,7 @@ Configuration commands:
 
 Example:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 vif-s 333
   set interfaces ethernet eth0 vif-s 333 address 192.0.2.10/32

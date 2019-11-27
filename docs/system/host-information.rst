@@ -21,7 +21,7 @@ or over the internet.
 
 Set a system host name:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system host-name <hostname>
 
@@ -29,19 +29,19 @@ Set a system host name:
 
 Show host name:
 
-.. code-block:: sh
+.. code-block:: console
 
   show system host-name
 
 Delete host name:
 
-.. code-block:: sh
+.. code-block:: console
 
   delete system host-name <hostname>
 
 Example: Set system hostname to 'RT01':
 
-.. code-block:: sh
+.. code-block:: console
 
   set system host-name RT01
   commit
@@ -56,7 +56,7 @@ unique.
 
 Set the system's domain:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system domain-name <domain>
 
@@ -64,19 +64,19 @@ Set the system's domain:
 
 Show domain:
 
-.. code-block:: sh
+.. code-block:: console
 
   show system domain-name
 
 Remove domain name:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system delete domain-name <domain>
 
 Example: Set system domain to example.com:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system domain-name example.com
   commit
@@ -90,20 +90,20 @@ How to assign IPs to interfaces is described in chapter
 :ref:`interfaces-addresses`. This section shows how to statically map a system
 IP to its host name for local (meaning on this VyOS instance) DNS resolution:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system static-host-mapping host-name <hostname> inet <IP address>
 
 Show static mapping:
 
-.. code-block:: sh
+.. code-block:: console
 
   show system static-host-mapping
 
 Example: Create a static mapping between the system's hostname `RT01` and
 IP address `10.20.30.41`:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system static-host-mapping host-name RT01 inet 10.20.30.41
   commit
@@ -117,25 +117,25 @@ Aliases
 
 One or more system aliases (static mappings) can be defined:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system static-host-mapping host-name <hostname> alias <alias>
 
 Show aliases:
 
-.. code-block:: sh
+.. code-block:: console
 
   show system static-mapping
 
 Delete alias:
 
-.. code-block:: sh
+.. code-block:: console
 
   delete system static-host-mapping host-name <hostname> alias <alias>
 
 Example: Set alias `router1` for system with hostname `RT01`:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system static-host-mapping host-name RT01 alias router1
   commit
@@ -154,19 +154,19 @@ existing configurations are migrated to the new CLI commands.
 
 It is replaced by inserting a static route into the routing table using:
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols static route 0.0.0.0/0 next-hop <gateway ip>
 
 Delete the default route from the system
 
-.. code-block:: sh
+.. code-block:: console
 
   delete protocols static route 0.0.0.0/0
 
 Show default route:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos$ show ip route 0.0.0.0
   Routing entry for 0.0.0.0/0
