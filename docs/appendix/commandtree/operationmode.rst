@@ -8,7 +8,7 @@ After this is the first view after the login.
 Please see :ref:`cli` for navigation in the CLI
 
 
-.. code-block:: sh
+.. code-block:: console
 
 
   vyos@vyos:~$ [tab]
@@ -44,7 +44,7 @@ Please see :ref:`cli` for navigation in the CLI
 Add
 ^^^
 
-.. code-block:: sh
+.. code-block:: console
 
  raid         Add a RAID set element
  system       Add an item to a system facility
@@ -52,7 +52,7 @@ Add
 Clear
 ^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   console            Clear screen
   firewall           Clear firewall statistics
@@ -69,13 +69,13 @@ Clone
 The ``clone`` command allows you to clone a configuration from a system image to another one, or from the running config to another system image.
 To clone the running config to a system image:
 
-.. code-block:: sh
+.. code-block:: console
 
   clone system config <system-image> from running
 
 To clone from system image A to system image B:
 
-.. code-block:: sh
+.. code-block:: console
 
   clone system config <system-image-B> from <system-image-A>
 
@@ -85,7 +85,7 @@ Configure
 
 The ``configure`` command allows you to enter configuration mode.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ configure
   [edit]
@@ -97,7 +97,7 @@ Connect
 
 The ``connect`` command allows you to bring up a connection oriented interface, like a pppoe interface.
 
-.. code-block:: sh
+.. code-block:: console
 
   connect interface <interface>
 
@@ -108,7 +108,7 @@ The ``copy`` command allows you to copy a file to your running config or over im
 
 It can look like this example:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$  copy file [tab]
   Possible completions:
@@ -127,7 +127,7 @@ It can look like this example:
 
 To copy from file A to file B:
 
-.. code-block:: sh
+.. code-block:: console
 
   copy <file A> to <file B>
 
@@ -135,7 +135,7 @@ To copy from file A to file B:
 Delete
 ^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   conntrack     Delete Conntrack entries
   file          Delete files in a particular image
@@ -149,14 +149,14 @@ Disconnect
 
 The ``disconnect`` command allows you to take down a connection oriented interface, like a pppoe interface.
 
-.. code-block:: sh
+.. code-block:: console
 
   disconnect interface <interface>
 
 Force
 ^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   arp           Send gratuitous ARP request or reply
   cluster       Force a cluster state transition
@@ -167,14 +167,14 @@ Format
 
 The ``format`` command allows you to format a disk the same way as another one.
 
-.. code-block:: sh
+.. code-block:: console
 
   format disk <target> like <source>
 
 Generate
 ^^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   openvpn       OpenVPN key generation tool
   ssh-server-key
@@ -188,7 +188,7 @@ Install
 
 The ``install`` command allows you to install the system image on the disk.
 
-.. code-block:: sh
+.. code-block:: console
 
   install image
 
@@ -198,7 +198,7 @@ Monitor
 
 ``monitor`` can be used to continually view what is happening on the router.
 
-.. code-block:: sh
+.. code-block:: console
 
   bandwidth     Monitor interface bandwidth in real time
   bandwidth-test
@@ -232,7 +232,7 @@ Ping
 
 The ``ping`` command allows you to send an ICMP-EchoRequest packet and display the ICMP-EchoReply received.
 
-.. code-block:: sh
+.. code-block:: console
 
   <hostname>    Send Internet Control Message Protocol (ICMP) echo request
   <x.x.x.x>
@@ -244,7 +244,7 @@ Poweroff
 
 The ``poweroff`` command allows you to properly shut down the VyOS instance. Without any modifier, the command is executed immediately.
 
-.. code-block:: sh
+.. code-block:: console
 
   <Enter>       Execute the current command
   at            Poweroff at a specific time
@@ -256,7 +256,7 @@ Reboot
 ^^^^^^
 The ``reboot`` command allows you to properly restart the VyOS instance. Without any modifier, the command is executed immediately.
 
-.. code-block:: sh
+.. code-block:: console
 
   <Enter>       Execute the current command
   at            Poweroff at a specific time
@@ -269,7 +269,7 @@ Release
 
 The ``release`` command allows you to release a DHCP or DHCPv6 lease.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ release dhcp interface <int>
   vyos@vyos:~$ release dhcpv6 interface <int>
@@ -280,7 +280,7 @@ Rename
 
 The ``rename`` command allows you to rename a system image.
 
-.. code-block:: sh
+.. code-block:: console
 
  rename system image <currentname> <newname>
 
@@ -290,7 +290,7 @@ Renew
 
 The ``renew`` command allows you to renew a DHCP or DHCPv6 lease.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ renew dhcp interface <int>
   vyos@vyos:~$ renew dhcpv6 interface <int>
@@ -298,7 +298,7 @@ The ``renew`` command allows you to renew a DHCP or DHCPv6 lease.
 Reset
 ^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   conntrack     Reset all currently tracked connections
   conntrack-sync
@@ -315,7 +315,7 @@ Reset
 Restart
 ^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   cluster       Restart cluster node
   conntrack-sync
@@ -335,7 +335,7 @@ Restart
 Set
 ^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   <OPTION>      Bash builtin set command
   console       Control console behaviors
@@ -346,7 +346,7 @@ Set
 Show
 ^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   arp           Show Address Resolution Protocol (ARP) information
   bridge        Show bridging information
@@ -410,7 +410,7 @@ In the past the ``telnet`` command allowed you to connect remotely to another de
 Telnet is unencrypted and should not use anymore. But its nice to test if an TCP Port to a host is open.
 
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ telnet 192.168.1.3 443
   Trying 192.168.1.3...
@@ -426,7 +426,7 @@ Traceroute
 
 The ``traceroute`` command allows you to trace the path taken to a particular device.
 
-.. code-block:: sh
+.. code-block:: console
 
   <hostname>    Track network path to specified node
   <x.x.x.x>
@@ -438,7 +438,7 @@ The ``traceroute`` command allows you to trace the path taken to a particular de
 Update
 ^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   dns           Update DNS information
   webproxy      Update webproxy

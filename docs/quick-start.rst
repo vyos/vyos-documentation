@@ -8,14 +8,14 @@ for a device with two interfaces.
 
 Enter configuration mode:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos$ configure
   vyos@vyos#
 
 Configure network interfaces:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 address dhcp
   set interfaces ethernet eth0 description 'OUTSIDE'
@@ -24,14 +24,14 @@ Configure network interfaces:
 
 Enable SSH for remote management:
 
-.. code-block:: sh
+.. code-block:: console
 
   set service ssh port '22'
 
 Configure DHCP Server and DNS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 default-router '192.168.0.1'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 dns-server '192.168.0.1'
@@ -42,7 +42,7 @@ Configure DHCP Server and DNS
 
 And a DNS forwarder:
 
-.. code-block:: sh
+.. code-block:: console
 
   set service dns forwarding cache-size '0'
   set service dns forwarding listen-address '192.168.0.1'
@@ -54,7 +54,7 @@ NAT and Firewall
 
 Configure Source NAT for our "Inside" network.
 
-.. code-block:: sh
+.. code-block:: console
 
   set nat source rule 100 outbound-interface 'eth0'
   set nat source rule 100 source address '192.168.0.0/24'
@@ -64,7 +64,7 @@ Add a set of firewall policies for our "Outside" interface.
 
 This configuration creates a proper stateful firewall that blocks all traffic:
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall name OUTSIDE-IN default-action 'drop'
   set firewall name OUTSIDE-IN rule 10 action 'accept'
@@ -83,7 +83,7 @@ If you wanted to enable SSH access to your firewall from the the Internet, you c
 
 These rules allow SSH traffic and rate limit it to 4 requests per minute. This blocks brute-forcing attempts:
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall name OUTSIDE-LOCAL rule 30 action 'drop'
   set firewall name OUTSIDE-LOCAL rule 30 destination port '22'
@@ -98,14 +98,14 @@ These rules allow SSH traffic and rate limit it to 4 requests per minute. This b
 
 Apply the firewall policies:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 firewall in name 'OUTSIDE-IN'
   set interfaces ethernet eth0 firewall local name 'OUTSIDE-LOCAL'
 
 Commit changes, save the configuration, and exit configuration mode:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# commit
   vyos@vyos# save
@@ -124,7 +124,7 @@ One common use of traffic policy is to limit bandwidth for an interface. In
 the example below we limit bandwidth for our LAN connection to 200 Mbit download
 and out WAN connection to 50 Mbit upload:
 
-.. code-block:: sh
+.. code-block:: console
 
   set traffic-policy shaper WAN-OUT bandwidth '50Mbit'
   set traffic-policy shaper WAN-OUT default bandwidth '50%'
@@ -137,7 +137,7 @@ and out WAN connection to 50 Mbit upload:
 
 Resulting in the following configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   traffic-policy {
       shaper WAN-OUT {
@@ -161,7 +161,7 @@ Resulting in the following configuration:
 Once defined, a traffic policy can be applied to each interface using the
 interface-level traffic-policy directive:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 traffic-policy out 'WAN-OUT'
   set interfaces ethernet eth1 traffic-policy out 'LAN-OUT'
@@ -180,14 +180,14 @@ Especially if you are allowing SSH access from the Internet, there are a few add
 
 Create a user to replace the default `vyos` user:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system login user myvyosuser level admin
   set system login user myvyosuser authentication plaintext-password mysecurepassword
 
 Set up SSH key based authentication.  For example, on Linux you'd want to run `ssh-keygen -t rsa`.  Then the contents of `id_rsa.pub` would be used below:
 
-.. code-block:: sh
+.. code-block:: console
 
   set system login user myvyosuser authentication public-keys myusername@mydesktop type ssh-rsa
   set system login user myvyosuser authentication public-keys myusername@mydesktop key contents_of_id_rsa.pub
@@ -198,7 +198,7 @@ Finally, try and ssh into the VyOS install as your new user.
 
 Once you have confirmed that your new user can access your server, without a password, delete the original `vyos` user and disable password authentication into SSH:
 
-.. code-block:: sh
+.. code-block:: console
 
   delete system login user vyos
   set service ssh disable-password-authentication

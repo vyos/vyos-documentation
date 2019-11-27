@@ -5,7 +5,7 @@ Time Zone
 
 To set the system time zone type:
 
-.. code-block:: sh
+.. code-block:: console
 
   [edit]
   vyos@vyos# set system time-zone [time-zone]

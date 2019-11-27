@@ -14,7 +14,7 @@ support 99 IDs!
 Example #1: To forward all broadcast packets received on `UDP port 1900` on
 `eth3`, `eth4` or `eth5` to all other interfaces in this configuration.
 
-.. code-block:: sh
+.. code-block:: console
 
   set service broadcast-relay id 1 description 'SONOS'
   set service broadcast-relay id 1 interface 'eth3'
@@ -25,7 +25,7 @@ Example #1: To forward all broadcast packets received on `UDP port 1900` on
 Example #2: To Forward all broadcasts packets received on `UDP port 6969` on
 `eth3` or `eth4` to the other interface in this configuration.
 
-.. code-block:: sh
+.. code-block:: console
 
   set service broadcast-relay id 2 description 'SONOS MGMT'
   set service broadcast-relay id 2 interface 'eth3'
@@ -38,14 +38,14 @@ Disable Instance(s)
 Each broadcast relay instance can be individually disabled without deleting the
 configured node by using the following command:
 
-.. code-block:: sh
+.. code-block:: console
 
   set service broadcast-relay id <n> disable
 
 In addition you can also disable the whole service without removing the
 configuration by:
 
-.. code-block:: sh
+.. code-block:: console
 
   set service broadcast-relay disable
 

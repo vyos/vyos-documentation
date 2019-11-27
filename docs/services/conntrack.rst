@@ -27,7 +27,7 @@ will be mandatorily defragmented.
 Configuration
 ^^^^^^^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   # Protocols only for which local conntrack entries will be synced (tcp, udp, icmp, sctp)
   set service conntrack-sync accept-protocol
@@ -69,20 +69,20 @@ The next exemple is a simple configuration of conntrack-sync.
 
 First of all, make sure conntrack is enabled by running
 
-.. code-block:: sh
+.. code-block:: console
 
   show conntrack table ipv4
 
 If the table is empty and you have a warning message, it means conntrack is not
 enabled. To enable conntrack, just create a NAT or a firewall rule.
 
-.. code-block:: sh
+.. code-block:: console
 
   set firewall state-policy established action accept
 
 You now should have a conntrack table
 
-.. code-block:: sh
+.. code-block:: console
 
   $ show conntrack table ipv4
   TCP state codes: SS - SYN SENT, SR - SYN RECEIVED, ES - ESTABLISHED,
@@ -99,7 +99,7 @@ You now should have a conntrack table
 
 Now configure conntrack-sync service on ``router1`` **and** ``router2``
 
-.. code-block:: sh
+.. code-block:: console
 
   set service conntrack-sync accept-protocol 'tcp,udp,icmp'
   set service conntrack-sync event-listen-queue-size '8'
@@ -115,7 +115,7 @@ the external-cache of the standby router
 On active router run:
 
 
-.. code-block:: sh
+.. code-block:: console
 
   $ show conntrack-sync statistics
 

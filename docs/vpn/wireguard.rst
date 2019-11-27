@@ -21,7 +21,7 @@ within VyOS.
 It will be used per default on any configured wireguard interface, even if
 multiple interfaces are being configured.
 
-.. code-block:: sh
+.. code-block:: console
 
   wg01:~$ configure
   wg01# run generate wireguard keypair
@@ -29,7 +29,7 @@ multiple interfaces are being configured.
 The public key is being shared with your peer(s), your peer will encrypt all
 traffic to your system using this public key.
 
-.. code-block:: sh
+.. code-block:: console
 
   wg01# run show wireguard pubkey
   u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk=
@@ -45,7 +45,7 @@ their own keypairs.
 The commands below will generate 2 keypairs, which are not related 
 to each other.
 
-.. code-block:: sh
+.. code-block:: console
 
   wg01:~$ configure
   wg01# run generate wireguard named-keypairs KP01
@@ -69,7 +69,7 @@ below is always the public key from your peer, not your local one.
 
 **local side**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces wireguard wg01 address '10.1.0.1/24'
   set interfaces wireguard wg01 description 'VPN-to-wg02'
@@ -89,7 +89,7 @@ traffic.
 
 To use a named key on an interface, the option private-key needs to be set.
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces wireguard wg01 private-key KP01
   set interfaces wireguard wg02 private-key KP02
@@ -100,7 +100,7 @@ which needs to be shared with the peer.
 
 **remote side**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces wireguard wg01 address '10.2.0.1/24'
   set interfaces wireguard wg01 description 'VPN-to-wg01'
@@ -113,7 +113,7 @@ which needs to be shared with the peer.
 Assure that your firewall rules allow the traffic, in which case you have a
 working VPN using wireguard.
 
-.. code-block:: sh
+.. code-block:: console
 
   wg01# ping 10.2.0.1
   PING 10.2.0.1 (10.2.0.1) 56(84) bytes of data.
@@ -128,7 +128,7 @@ working VPN using wireguard.
 An additional layer of symmetric-key crypto can be used on top of the
 asymmetric crypto, which is optional.
 
-.. code-block:: sh
+.. code-block:: console
 
   wg01# run generate wireguard preshared-key
   rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc=
@@ -137,7 +137,7 @@ Copy the key, as it is not stored on the local file system. Make sure you
 distribute that key in a safe manner, it's a symmetric key, so only you and
 your peer should have knowledge of its content.
 
-.. code-block:: sh
+.. code-block:: console
 
   wg01# set interfaces wireguard wg01 peer to-wg02 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
   wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
@@ -147,7 +147,7 @@ Operational commands
 
 **Show interface status**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@wg01# run show interfaces wireguard wg01
 
@@ -164,14 +164,14 @@ Operational commands
 
 **Show public key of the default key**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@wg01# run show wireguard keypair pubkey default
   FAXCPb6EbTlSH5200J5zTopt9AYXneBthAySPBLbZwM=
 
 **Show public key of a named key**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@wg01# run show wireguard keypair pubkey KP01
   HUtsu198toEnm1poGoRTyqkUKfKUdyh54f45dtcahDM=
@@ -179,7 +179,7 @@ Operational commands
 
 **Delete wireguard keypairs**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@wg01# wireguard keypair default
 

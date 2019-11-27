@@ -9,7 +9,7 @@ General infomration can be found in the :ref:`vpn-dmvpn` chapter.
 Configuration
 ^^^^^^^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces tunnel tun100 address '172.16.253.134/29'
   set interfaces tunnel tun100 encapsulation 'gre'
@@ -54,7 +54,7 @@ Cisco IOS Spoke
 This example is verified with a Cisco 2811 platform running IOS 15.1(4)M9 and
 VyOS 1.1.7 (helium) up to VyOS 1.2 (Crux).
 
-.. code-block:: sh
+.. code-block:: console
 
   Cisco IOS Software, 2800 Software (C2800NM-ADVENTERPRISEK9-M), Version 15.1(4)M9, RELEASE SOFTWARE (fc3)
   Technical Support: http://www.cisco.com/techsupport
@@ -65,7 +65,7 @@ VyOS 1.1.7 (helium) up to VyOS 1.2 (Crux).
 
 Use this configuration on your Cisco device:
 
-.. code-block:: sh
+.. code-block:: console
 
   crypto pki token default removal timeout 0
   crypto keyring DMVPN

@@ -17,7 +17,7 @@ Setting up the initial tunnel
 
 - Set up the initial IPv6 tunnel. Replace the field below from the fields on the `Tunnelbroker.net <https://www.tunnelbroker.net/>`_ tunnel information page.
 
-.. code-block:: sh
+.. code-block:: console
 
     conf
     set interfaces tunnel tun0 address Client_IPv6_from_Tunnelbroker    # This will be your VyOS install's public IPv6 address
@@ -34,7 +34,7 @@ Setting up the initial tunnel
 
 - At this point you should be able to ping an IPv6 address. Try pinging Google:
 
-.. code-block:: sh
+.. code-block:: console
 
    ping6 -c2 2001:4860:4860::8888
 
@@ -47,7 +47,7 @@ Setting up the initial tunnel
 
 - Assuming the pings are successful, you need to add some DNS servers. Some options:
 
-.. code-block:: sh
+.. code-block:: console
 
    set system name-server 2001:4860:4860::8888  # Google
    set system name-server 2001:4860:4860::8844  # Google
@@ -57,7 +57,7 @@ Setting up the initial tunnel
 
 - You should now be able to ping something by IPv6 DNS name:
 
-.. code-block:: sh
+.. code-block:: console
 
    # ping6 -c2 one.one.one.one
    PING one.one.one.one(one.one.one.one) 56 data bytes
@@ -87,7 +87,7 @@ Single LAN Setup
 
 Single LAN setup where eth1 is your LAN interface.  Use the /64 (all the xxxx should be replaced with the information from your `Routed /64` tunnel):
 
-.. code-block:: sh
+.. code-block:: console
 
    set interfaces ethernet eth1 address '2001:470:xxxx:xxxx::1/64'    
    set interfaces ethernet eth1 ipv6 router-advert name-server '2001:4860:4860::8888'
@@ -118,7 +118,7 @@ In the above examples, 1,2,ffff are all chosen by you.  You can use 1-ffff (1-65
 
 So, when your LAN is eth1, your DMZ is eth2, your cameras live on eth3, etc:
 
-.. code-block:: sh
+.. code-block:: console
 
    set interfaces ethernet eth1 address '2001:470:xxxx:1::1/64'
    set interfaces ethernet eth1 ipv6 router-advert name-server '2001:4860:4860::8888'

@@ -6,13 +6,13 @@ logical one. It's called bonding, or LAG, or ether-channel, or port-channel.
 
 Create interface bondX, where X is just a number:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces bonding bond0 description 'my-sw1 int 23 and 24'
 
 You are able to choose a hash policy:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# set interfaces bonding bond0 hash-policy
   Possible completions:
@@ -22,20 +22,20 @@ You are able to choose a hash policy:
 
 For example:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces bonding bond0 hash-policy 'layer2'
 
 You may want to set IEEE 802.3ad Dynamic link aggregation (802.3ad) AKA LACP
 (don't forget to setup it on the other end of these links):
 
-.. code-block:: sh
+.. code-block:: console
 
  set interfaces bonding bond0 mode '802.3ad'
 
 or some other modes:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# set interfaces bonding bond0 mode
   Possible completions:
@@ -52,7 +52,7 @@ or some other modes:
 
 Now bond some physical interfaces into bond0:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 bond-group 'bond0'
   set interfaces ethernet eth0 description 'member of bond0'
@@ -64,7 +64,7 @@ change its` duplex, for example) and assign IPs or VIFs on it.
 
 You may check the result:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# run sh interfaces bonding
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down

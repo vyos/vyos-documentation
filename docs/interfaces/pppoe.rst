@@ -22,7 +22,7 @@ Once you have an Ethernet device connected, i.e. eth0, then you can configure it
 
 **Here is an example configuration:**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interface ethernet eth0 description "DSL Modem"
   set interface ethernet eth0 duplex auto
@@ -37,7 +37,7 @@ Once you have an Ethernet device connected, i.e. eth0, then you can configure it
 
 * You should add a firewall to your configuration above as well by assigning it to the pppoe0 itself as shown here:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interface ethernet eth0 pppoe 0 firewall in name NET-IN
   set interface ethernet eth0 pppoe 0 firewall local name NET-LOCAL
@@ -52,7 +52,7 @@ Handling and troubleshooting
 
 You can test connecting and disconnecting with the below commands:
 
-.. code-block:: sh
+.. code-block:: console
 
   disconnect interface 0
   connect interface 0
@@ -62,20 +62,20 @@ You can check the PPPoE connection logs with the following:
 
 This command shows the current statistics, status and some of the settings (i.e. MTU) for the current connection on pppoe0.
 
-.. code-block:: sh
+.. code-block:: console
 
   show interfaces pppoe 0
 
 This command shows the entire log for the PPPoE connection starting with the oldest data. Scroll down with the <space> key to reach the end where the current data is.
 
-.. code-block:: sh
+.. code-block:: console
 
   show interfaces pppoe 0 log
 
 
 This command shows the same log as without the 'tail' option but only starts with the last few lines and continues to show added lines until you exit with ``Ctrl + x``
 
-.. code-block:: sh
+.. code-block:: console
 
   show interfaces pppoe 0 log tail
 

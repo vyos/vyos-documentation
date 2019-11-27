@@ -7,7 +7,7 @@ Task scheduler
 | Task scheduler — allows scheduled task execution. Note that scripts excecuted this way are executed as root user - this may be dangerous.
 | Together with :ref:`commandscripting` this can be used for automating configuration.
 
-.. code-block:: sh
+.. code-block:: console
 
   system
       task-scheduler
@@ -24,7 +24,7 @@ Interval
 
 You are able to set the time as an time interval.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system task-scheduler task <name> interval <value><suffix>
 
@@ -38,14 +38,14 @@ If suffix is omitted, minutes are implied.
 
 Or set the execution time in common cron time.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system task-scheduler task TEST crontab-spec "* * * 1 *"
 
 Example
 *******
 
-.. code-block:: sh
+.. code-block:: console
 
   system
       task-scheduler

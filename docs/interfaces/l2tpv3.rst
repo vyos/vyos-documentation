@@ -11,7 +11,7 @@ L2TPv3 can transport any traffic including ethernet frames. L2TPv2 is limited to
 L2TPv3 over IP
 ^^^^^^^^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   # show interfaces l2tpv3 
   l2tpv3 l2tpeth10 {
@@ -35,7 +35,7 @@ UDP mode works better with NAT:
 * Set local-ip to your local IP (LAN).
 * Add a forwarding rule matching UDP port on your internet router.
 
-.. code-block:: sh
+.. code-block:: console
 
   # show interfaces l2tpv3 
   l2tpv3 l2tpeth10 {
@@ -61,7 +61,7 @@ This is the LAN extension use case. The eth0 port of the distant VPN peers will 
 
 IPSec:
 
-.. code-block:: sh
+.. code-block:: console
 
   set vpn ipsec ipsec-interfaces <VPN-interface>
   set vpn ipsec esp-group test-ESP-1 compression 'disable'
@@ -89,7 +89,7 @@ IPSec:
 
 Bridge:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces bridge br0 description 'L2 VPN Bridge'
   # remote side in this example:
@@ -100,7 +100,7 @@ Bridge:
 
 L2TPv3:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces l2tpv3 l2tpeth0 bridge-group bridge 'br0'
   set interfaces l2tpv3 l2tpeth0 description 'L2 VPN Tunnel'

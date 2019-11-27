@@ -13,7 +13,7 @@ Transparent Proxy
 The following example will show how VyOS can be used to redirect web traffic to
 an external transparent proxy:
 
-.. code-block:: sh
+.. code-block:: console
 
   set policy route FILTER-WEB rule 1000 destination port 80
   set policy route FILTER-WEB rule 1000 protocol tcp
@@ -26,7 +26,7 @@ default routing table.
 To create routing table 100 and add a new default gateway to be used by
 traffic matching our route policy:
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols static table 100 route 0.0.0.0/0 next-hop 10.255.0.2
 
@@ -35,7 +35,7 @@ This can be confirmed using the show ip route table 100 operational command.
 Finally, to apply the policy route to ingress traffic on our LAN interface,
 we use:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth1 policy route FILTER-WEB
 
@@ -60,14 +60,14 @@ Routing tables that will be used in this example are:
 
 Add default routes for routing ``table 10`` and ``table 11``
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols static table 10 route 0.0.0.0/0 next-hop 192.0.1.1
   set protocols static table 11 route 0.0.0.0/0 next-hop 192.0.2.2
 
 Add policy route matching VLAN source addresses
 
-.. code-block:: sh
+.. code-block:: console
 
   set policy route PBR rule 20 set table '10'
   set policy route PBR rule 20 description 'Route VLAN10 traffic to table 10'
@@ -79,7 +79,7 @@ Add policy route matching VLAN source addresses
 
 Apply routing policy to **inbound** direction of out VLAN interfaces
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 vif 10 policy route 'PBR'
   set interfaces ethernet eth0 vif 11 policy route 'PBR'
@@ -87,7 +87,7 @@ Apply routing policy to **inbound** direction of out VLAN interfaces
 
 **OPTIONAL:** Exclude Inter-VLAN traffic (between VLAN10 and VLAN11) from PBR
 
-.. code-block:: sh
+.. code-block:: console
 
   set policy route PBR rule 10 description 'VLAN10 <-> VLAN11 shortcut'
   set policy route PBR rule 10 destination address '192.168.188.0/24'

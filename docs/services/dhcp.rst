@@ -21,13 +21,13 @@ on `pppoe0`
 Interface Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
  set interface ethernet eth1 address 172.16.17.1/24
 
 Multiple ranges can be defined and can contain holes.
 
-.. code-block:: sh
+.. code-block:: console
 
   set service dhcp-server shared-network-name dhcpexample authoritative
   set service dhcp-server shared-network-name dhcpexample subnet 172.16.17.0/24 default-router 172.16.17.1
@@ -86,7 +86,7 @@ Failover
 
 VyOS provides support for DHCP failover:
 
-.. code-block:: sh
+.. code-block:: console
 
   set service dhcp-server shared-network-name 'LAN' subnet '192.168.0.0/24' failover local-address '192.168.0.1'
   set service dhcp-server shared-network-name 'LAN' subnet '192.168.0.0/24' failover name 'foo'
@@ -97,13 +97,13 @@ VyOS provides support for DHCP failover:
 The primary and secondary statements determines whether the server is
 primary or secondary
 
-.. code-block:: sh
+.. code-block:: console
 
   set service dhcp-server shared-network-name 'LAN' subnet '192.168.0.0/24' failover status 'primary'
 
 or
 
-.. code-block:: sh
+.. code-block:: console
 
   set service dhcp-server shared-network-name 'LAN' subnet '192.168.0.0/24' failover status 'secondary'
 
@@ -114,7 +114,7 @@ or
 Static mappings MAC/IP
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   set service dhcp-server shared-network-name dhcpexample subnet 172.16.17.0/24 static-mapping static-mapping-01 ip-address 172.16.17.10
   set service dhcp-server shared-network-name dhcpexample subnet 172.16.17.0/24 static-mapping static-mapping-01 mac-address ff:ff:ff:ff:ff:ff

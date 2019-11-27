@@ -44,7 +44,7 @@ support this.
 Configuration commands
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   interfaces
     vxlan <vxlan[0-16777215]>
@@ -74,7 +74,7 @@ This topology was built using GNS3.
 
 Topology:
 
-.. code-block:: sh
+.. code-block:: console
 
   Spine1:
   fa0/2 towards Leaf2, IP-address: 10.1.2.1/24
@@ -90,7 +90,7 @@ Topology:
 
 Spine1 Configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   conf t
   ip multicast-routing
@@ -113,7 +113,7 @@ from.
 
 Leaf2 configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 address '10.1.2.2/24'
   set protocols ospf area 0 network '10.0.0.0/8'
@@ -136,7 +136,7 @@ Leaf2 configuration:
 
 Leaf3 configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 address '10.1.3.3/24'
   set protocols ospf area 0 network '10.0.0.0/8'
@@ -161,7 +161,7 @@ As you can see, Leaf2 and Leaf3 configuration is almost identical. There are
 lots of commands above, I'll try to into more detail below, command
 descriptions are placed under the command boxes:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces bridge br241 address '172.16.241.1/24'
 
@@ -173,7 +173,7 @@ so that the Spine will learn how to reach it. To do this you need to change the
 OSPF network from '10.0.0.0/8' to '0.0.0.0/0' to allow 172.16/12-networks to be
 advertised.
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth1 vif 241 bridge-group bridge 'br241'
   set interfaces vxlan vxlan241 bridge-group bridge 'br241'
@@ -181,28 +181,28 @@ advertised.
 Binds eth1 vif 241 and vxlan241 to each other by putting them in the same
 bridge-group. Internal VyOS requirement.
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces vxlan vxlan241 group '239.0.0.241'
 
 The multicast-group used by all Leafs for this vlan extension. Has to be the
 same on all Leafs that has this interface.
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces vxlan vxlan241 link 'eth0'
 
 Sets the interface to listen for multicast packets on. Could be a loopback, not
 yet tested.
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces vxlan vxlan241 vni '241'
 
 Sets the unique id for this vxlan-interface. Not sure how it correlates with
 multicast-address.
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces vxlan vxlan241 remote-port 12345
 
@@ -217,7 +217,7 @@ Older Examples
 Example for bridging normal L2 segment and vxlan overlay network, and using a
 vxlan interface as routing interface.
 
-.. code-block:: sh
+.. code-block:: console
 
   interfaces {
        bridge br0 {
@@ -248,7 +248,7 @@ router has a VLAN interface (26) facing the client devices and a VLAN interface
 can flow between both routers' VLAN 26, but can't escape since there is no L3
 gateway. You can add an IP to a bridge-group to create a gateway.
 
-.. code-block:: sh
+.. code-block:: console
 
   interfaces {
        bridge br0 {
@@ -284,7 +284,7 @@ Alternative to multicast, the remote IPv4 address of the VXLAN tunnel can set di
 Let's change the Multicast example from above:
 
 
-.. code-block:: sh
+.. code-block:: console
 
   # leaf2 and leaf3
   delete interfaces vxlan vxlan241 group '239.0.0.241'

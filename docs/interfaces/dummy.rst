@@ -8,7 +8,7 @@ Dummy interfaces can be used as interfaces that always stay up (in the same fash
 
 Configuration commands:
 
-.. code-block:: sh
+.. code-block:: console
 
     interfaces
         dummy <dum[0-999]>

@@ -16,14 +16,14 @@ Logging to serial console
 
 The below would log all messages to :code:`/dev/console`.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system syslog console facility all level all
 
 Use the **[tab]** function to display all facilities and levels which can
 be configured.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# set system syslog console facility <TAB>
   Possible completions:
@@ -70,7 +70,7 @@ Logging to a custom file
 Logging to a custom file, rotation size and the number of rotate files left
 on the system can be configured.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system syslog file <FILENAME> facility <FACILITY>  level <LEVEL>
   set system syslog file <FILENAME> archive file <NUMBER OF FILES>
@@ -88,7 +88,7 @@ using either TCP or UDP. The default is sending the messages via UDP.
 
 **UDP**
 
-.. code-block:: sh
+.. code-block:: console
 
   set system syslog host 10.1.1.1 facility all level all
   <optional>
@@ -97,7 +97,7 @@ using either TCP or UDP. The default is sending the messages via UDP.
 
 **TCP**
 
-.. code-block:: sh
+.. code-block:: console
 
   set system syslog host 10.1.1.2 facility all level all
   set system syslog host 10.1.1.2 facility all protocol tcp
@@ -109,7 +109,7 @@ If logging to a local useraccount is configured, all defined log messages are
 display on the console if the local user is logged in, if the user is not
 logged in, no messages are being displayed.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system syslog user <LOCAL_USERNAME> facility <FACILITY> level <LEVEL>
 
@@ -118,7 +118,7 @@ Show logs
 
 Display log files on the console
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show log
   Possible completions:
@@ -149,7 +149,7 @@ Show contents of a log file in an image
 
 Log messages from a specified image can be displayed on the console:
 
-.. code-block:: sh
+.. code-block:: console
 
   $ show log image <image name>
   $ show log image <image name> [all | authorization | directory | file <file name> | tail <lines>]

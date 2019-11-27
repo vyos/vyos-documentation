@@ -18,7 +18,7 @@ It takes an IPv4 packet and sends it as a payload of another IPv4 packet. For th
 
 An example:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces tunnel tun0 encapsulation ipip
   set interfaces tunnel tun0 local-ip 192.0.2.10
@@ -34,7 +34,7 @@ It's not likely that anyone will need it any time soon, but it does exist.
 
 An example:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces tunnel tun0 encapsulation ipip
   set interfaces tunnel tun0 local-ip 2001:db8:aa::1/64
@@ -50,7 +50,7 @@ As the name implies, it's IPv4 encapsulated in IPv6, as simple as that.
 
 An example:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces tunnel tun0 encapsulation ipip6
   set interfaces tunnel tun0 local-ip 2001:db8:aa::1/64
@@ -68,7 +68,7 @@ The encapsulation overhead is the size of the IPv4 header of 20 bytes, therefore
 
 An example:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces tunnel tun0 encapsulation sit
   set interfaces tunnel tun0 local-ip 192.0.2.10
@@ -96,7 +96,7 @@ The Cisco router defaults to 'gre ip' otherwise it would have to be configured a
 
 **VyOS Router:**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces tunnel tun100 address '10.0.0.1/30'
   set interfaces tunnel tun100 encapsulation 'gre'
@@ -105,7 +105,7 @@ The Cisco router defaults to 'gre ip' otherwise it would have to be configured a
 
 **Cisco IOS Router:**
 
-.. code-block:: sh
+.. code-block:: console
 
   interface Tunnel100
   ip address 10.0.0.2 255.255.255.252
@@ -122,7 +122,7 @@ configurations that are discarding IP protocol 47 or blocking your source/desint
 
 **1. Confirm IP connectivity between tunnel local-ip and remote-ip:**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ ping 203.0.113.10 interface 198.51.100.2 count 4
   PING 203.0.113.10 (203.0.113.10) from 198.51.100.2 : 56(84) bytes of data.
@@ -137,7 +137,7 @@ configurations that are discarding IP protocol 47 or blocking your source/desint
 
 **2. Confirm the link type has been set to GRE:**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show interfaces tunnel tun100
   tun100@NONE: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1476 qdisc noqueue state UNKNOWN group default qlen 1000
@@ -154,7 +154,7 @@ configurations that are discarding IP protocol 47 or blocking your source/desint
 
 **3. Confirm IP connectivity across the tunnel:**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ ping 10.0.0.2 interface 10.0.0.1 count 4
   PING 10.0.0.2 (10.0.0.2) from 10.0.0.1 : 56(84) bytes of data.
@@ -172,14 +172,14 @@ Virtual Tunnel Interface (VTI)
 
 Set Virtual Tunnel Interface
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces vti vti0 address 192.168.2.249/30
   set interfaces vti vti0 address 2001:db8:2::249/64
 
 Results in:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# show interfaces vti
   vti vti0 {

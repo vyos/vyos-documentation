@@ -116,7 +116,7 @@ Example:
 * right subnet: `10.0.0.0/24` site2,remote office side
 * right local_ip: `203.0.113.2` # remote office side WAN IP
 
-.. code-block:: sh
+.. code-block:: console
 
   # server config
   set vpn ipsec esp-group office-srv-esp compression 'disable'
@@ -166,7 +166,7 @@ Example:
 
 Show status of new setup:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@srv-gw0:~$ show vpn ike sa
   Peer ID / IP                            Local ID / IP
@@ -186,7 +186,7 @@ Show status of new setup:
 
 If there is SNAT rules on eth1, need to add exclude rule
 
-.. code-block:: sh
+.. code-block:: console
 
   # server side
   set nat source rule 10 destination address '10.0.0.0/24'
@@ -203,7 +203,7 @@ If there is SNAT rules on eth1, need to add exclude rule
 To allow traffic to pass through to clients, you need to add the following
 rules. (if you used the default configuration at the top of this page)
 
-.. code-block:: sh
+.. code-block:: console
 
   # server side
   set firewall name OUTSIDE-LOCAL rule 32 action 'accept'
@@ -230,7 +230,7 @@ Imagine the following topology
 
 **left**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces vti vti10 address '10.0.0.2/31'
 
@@ -264,7 +264,7 @@ Imagine the following topology
 
 **right**
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces vti vti10 address '10.0.0.3/31'
 

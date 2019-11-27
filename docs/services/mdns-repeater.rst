@@ -12,14 +12,14 @@ multiple VLANs.
 To enable mDNS repeater you need to configure at least two interfaces. To re-
 broadcast all mDNS packets from `eth0` to `eth1` and vice versa run:
 
-.. code-block:: sh
+.. code-block:: console
 
   set service mdns repeater interface eth0
   set service mdns repeater interface eth1
 
 mDNS repeater can be temporarily disabled without deleting the service using
 
-.. code-block:: sh
+.. code-block:: console
 
   set service mdns repeater disable
 

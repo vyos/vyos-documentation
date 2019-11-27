@@ -67,7 +67,7 @@ in our configuration.
 
 Local Configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
@@ -81,7 +81,7 @@ Local Configuration:
 
 Remote Configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
@@ -99,7 +99,7 @@ weak, but a number of other encryption and hashing algorithms are available:
 
 For Encryption:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# set interfaces openvpn vtun1 encryption
   Possible completions:
@@ -113,7 +113,7 @@ For Encryption:
 
 For Hashing:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# set interfaces openvpn vtun1 hash
   Possible completions:
@@ -132,13 +132,13 @@ network of 10.1.0.0/16:
 
 Local Configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols static interface-route 10.1.0.0/16 next-hop-interface vtun1
 
 Remote Configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols static interface-route 10.0.0.0/16 next-hop-interface vtun1
 
@@ -179,7 +179,7 @@ closing on connection resets or daemon reloads.
 .. note:: Using **openvpn-option -reneg-sec** can be tricky. This option is used to renegotiate data channel after n seconds. When used at both server and client, the lower value will trigger the renegotiation. If you set it to 0 on one side of the connection (to disable it), the chosen value on the other side will determine when the renegotiation will occur.
 
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces openvpn vtun10 mode server
   set interfaces openvpn vtun10 local-port 1194
@@ -189,7 +189,7 @@ closing on connection resets or daemon reloads.
 Then we need to specify the location of the cryptographic materials. Suppose
 you keep the files in `/config/auth/openvpn`
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces openvpn vtun10 tls ca-cert-file /config/auth/openvpn/ca.crt
   set interfaces openvpn vtun10 tls cert-file /config/auth/openvpn/server.crt
@@ -202,7 +202,7 @@ specify the subnet for client tunnel endpoints. Since we want clients to access
 a specific network behind out router, we will use a push-route option for
 installing that route on clients.
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces openvpn vtun10 server push-route 192.168.0.0/16
   set interfaces openvpn vtun10 server subnet 10.23.1.0/24
@@ -214,7 +214,7 @@ need configuration for each client to achieve this.
 .. note:: Clients are identified by the CN field of their x.509 certificates,
    in this example the CN is ``client0``:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces openvpn vtun10 server client client0 ip 10.23.1.10
   set interfaces openvpn vtun10 server client client0 subnet 10.23.2.0/25
@@ -223,7 +223,7 @@ OpenVPN **will not** automatically create routes in the kernel for client
 subnets when they connect and will only use client-subnet association
 internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
 
-.. code-block:: sh
+.. code-block:: console
 
   set protocols static interface-route 10.23.0.0/20 next-hop-interface vtun10
 
@@ -242,13 +242,13 @@ Authentication is done by using the ``openvpn-auth-ldap.so`` plugin which is
 shipped with every VyOS installation. A dedicated configuration file is required.
 It is best practise to store it in ``/config`` to survive image updates
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces openvpn vtun0 openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
 
 The required config file may look like:
 
-.. code-block:: sh
+.. code-block:: console
 
   <LDAP>
   # LDAP server URL
@@ -275,7 +275,7 @@ Active Directory
 
 Despite the fact that AD is a superset of LDAP
 
-.. code-block:: sh
+.. code-block:: console
 
   <LDAP>
     # LDAP server URL
@@ -309,7 +309,7 @@ Despite the fact that AD is a superset of LDAP
 If you only want to check if the user account is enabled and can authenticate
 (against the primary group) the following snipped is sufficient:
 
-.. code-block:: sh
+.. code-block:: console
 
   <LDAP>
     URL ldap://dc01.example.com
@@ -328,7 +328,7 @@ If you only want to check if the user account is enabled and can authenticate
 
 A complete LDAP auth OpenVPN configuration could look like the following example:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# show interfaces openvpn
    openvpn vtun0 {
@@ -372,7 +372,7 @@ using their CN attribute in the SSL certificate.
 Server
 ******
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces openvpn vtun10 encryption 'aes256'
   set interfaces openvpn vtun10 hash 'sha512'
@@ -396,7 +396,7 @@ Server
 Client
 ******
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces openvpn vtun10 encryption 'aes256'
   set interfaces openvpn vtun10 hash 'sha512'
@@ -420,7 +420,7 @@ all users can benefit from it.
 If you are a hacker or want to try on your own we support passing raw OpenVPN
 options to OpenVPN.
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces openvpn vtun10 openvpn-option 'persistent-key'
 

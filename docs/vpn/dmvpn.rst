@@ -47,7 +47,7 @@ can be set to "0.0.0.0". If you do set the `remote-ip` directive at any point, t
 HUB Configuration
 ^^^^^^^^^^^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
   interfaces
       tunnel <tunN> {
@@ -119,7 +119,7 @@ HUB Configuration
 
 HUB Example Configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 address '198.51.100.41/30'
   set interfaces ethernet eth1 address '192.168.1.1/24'
@@ -171,7 +171,7 @@ SPOKE Configuration
 
 SPOKE1 Configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
   interfaces
       tunnel <tunN> {
@@ -248,7 +248,7 @@ SPOKE1 Configuration:
 
 SPOKE1 Example Configuration
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 address 'dhcp'
   set interfaces ethernet eth1 address '192.168.2.1/24'
@@ -294,7 +294,7 @@ SPOKE1 Example Configuration
 
 SPOKE2 Configuration
 
-.. code-block:: sh
+.. code-block:: console
 
   interfaces
       tunnel <tunN> {
@@ -371,7 +371,7 @@ SPOKE2 Configuration
 
 SPOKE2 Example Configuration
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces ethernet eth0 address 'dhcp'
   set interfaces ethernet eth1 address '192.168.3.1/24'

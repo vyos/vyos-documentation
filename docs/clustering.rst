@@ -17,7 +17,7 @@ General cluster configuration
 In the general cluster configuration the network interfaces used for monitoring and negotiation of the cluster health is defined.
 Additionally, the communication interval settings, multicast group (for sending/receiving heartbeat messages), and pre-shared secret used in this monitoring is defined.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# set cluster
   Possible completions:
@@ -35,7 +35,7 @@ Cluster group configuration
 For the cluster group configuration, the group name must be defined before the groups configuration can be set (See Example below).
 After the group name is defined, the specific service to be clustered between primary and secondary nodes is configured.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# set cluster group GROUPNAME
   Possible completions:
@@ -48,7 +48,7 @@ After the group name is defined, the specific service to be clustered between pr
 Review cluster status
 ---------------------
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ show cluster status
 
@@ -58,7 +58,7 @@ Example
 
 In the example below SSH is clustered between two nodes.
 
-.. code-block:: sh
+.. code-block:: console
 
   cluster {
       dead-interval 20000

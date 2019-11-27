@@ -15,7 +15,7 @@ Routing Policy Example
 
 **Policy definition:**
 
-.. code-block:: sh
+.. code-block:: console
 
   #Create policy
   set policy route-map setmet rule 2 action 'permit'
@@ -29,7 +29,7 @@ Routing Policy Example
 
 **Routes learned before routing policy applied:**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vos1:~$ show ip bgp
   BGP table version is 0, local router ID is 192.168.56.101
@@ -44,7 +44,7 @@ Routing Policy Example
 
 **Routes learned after routing policy applied:**
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vos1:~$ sho ip b
   BGP table version is 0, local router ID is 192.168.56.101

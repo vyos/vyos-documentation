@@ -9,13 +9,13 @@ If your device is configurable it will appear as `wlan` in `show interfaces`.
 To be able to use the wireless interfaces you will first need to set a
 regulatory domain with the country code of your locaion.
 
-.. code-block:: sh
+.. code-block:: console
 
   set system wifi-regulatory-domain SE
 
 An example on how to set it up as an access point:
 
-.. code-block:: sh
+.. code-block:: console
 
   set interfaces wireless wlan0 address '192.168.99.1/24'
   set interfaces wireless wlan0 type access-point
@@ -27,7 +27,7 @@ An example on how to set it up as an access point:
 
 Resulting in
 
-.. code-block:: sh
+.. code-block:: console
 
   interfaces {
     [...]

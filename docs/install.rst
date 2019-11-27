@@ -64,7 +64,7 @@ https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E
 Or from the following block: 
 
 
-.. code-block:: sh
+.. code-block:: console
 
   -----BEGIN PGP PUBLIC KEY BLOCK-----
   Version: GnuPG v1.4.12 (GNU/Linux)
@@ -126,7 +126,7 @@ The key is then pasted into a new text file and imported into GPG:
  
 The import can be verified with:
 
-.. code-block:: sh
+.. code-block:: console
 
   $ gpg --list-keys
   ...
@@ -147,7 +147,7 @@ With the public key imported, the signature for the desired image needs to be do
 
 Finally, verify the authencity of the downloaded image:
 
-.. code-block:: sh
+.. code-block:: console
 
   $ gpg2 --verify vyos-1.2.1-amd64.iso.asc  vyos-1.2.1-amd64.iso
   gpg: Signature made So 14 Apr 12:58:07 2019 CEST
@@ -166,7 +166,7 @@ The VyOS ISO is a Live CD and will boot to a functional VyOS image.
 
 To login to the system, use the default username ``vyos`` with password ``vyos``.
 
-.. code-block:: sh
+.. code-block:: console
 
   The programs included with the Debian GNU/Linux system are free software;
   the exact distribution terms for each program are described in the
@@ -193,7 +193,7 @@ directory for mutable data such as configurations, keys, or custom scripts.
 
 To install VyOS, run ``install image``.
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ install image
   Welcome to the VyOS install program.  This script
@@ -247,7 +247,7 @@ To install VyOS, run ``install image``.
 
 After the installation is complete, remove the Live CD and reboot the system:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos:~$ reboot
   Proceed with reboot? (Yes/No) [No] Yes
@@ -284,7 +284,7 @@ Configure a DHCP server so that it gives the client
 
 In this example we configured an existent VyOS as the DHCP server:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# show service dhcp-server 
    shared-network-name mydhcp {
@@ -318,7 +318,7 @@ Configure a TFTP server so that it serves the following:
 
 In the example we configured our existent VyOS as the TFTP server too:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# show service tftp-server 
    directory /config/tftpboot
@@ -329,7 +329,7 @@ In the example we configured our existent VyOS as the TFTP server too:
   
 Example of the contents of the TFTP server:
 
-.. code-block:: sh
+.. code-block:: console
 
   vyos@vyos# ls -hal /config/tftpboot/
   total 29M
@@ -354,7 +354,7 @@ Example of the contents of the TFTP server:
 
 Example of simple (no menu) configuration file:
 
-.. code-block:: sh
+.. code-block:: console
   
   vyos@vyos# cat /config/tftpboot/pxelinux.cfg/default 
   DEFAULT VyOS123
