@@ -27,7 +27,7 @@ author = u'VyOS maintainers and contributors'
 version = u'1.2'
 
 # The full version, including alpha/beta/rc tags
-release = u'crux'
+release = u'1.2.x (crux)'
 
 # -- General configuration ---------------------------------------------------
 
