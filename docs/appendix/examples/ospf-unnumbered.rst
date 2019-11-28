@@ -60,8 +60,6 @@ Results
   lo               127.0.0.1/8                       u/u
                    192.168.0.1/32
                    ::1/128
-  vyos@vyos:~$
-
 
 .. code-block:: console
 
@@ -82,8 +80,6 @@ Results
   C>* 192.168.0.1/32 is directly connected, lo, 00:57:36
   O>* 192.168.0.2/32 [110/1] via 192.168.0.2, eth1 onlink, 00:29:03
     *                        via 192.168.0.2, eth2 onlink, 00:29:03
-  vyos@vyos:~$
-
 
 - Router B:
 
@@ -99,8 +95,6 @@ Results
   lo               127.0.0.1/8                       u/u
                    192.168.0.2/32
                    ::1/128
-  vyos@vyos:~$
-
 
 .. code-block:: console
 
@@ -121,5 +115,3 @@ Results
   C>* 192.168.0.2/32 is directly connected, lo, 00:57:36
   O>* 192.168.0.1/32 [110/1] via 192.168.0.1, eth1 onlink, 00:29:03
     *                        via 192.168.0.1, eth2 onlink, 00:29:03
-  vyos@vyos:~$
-

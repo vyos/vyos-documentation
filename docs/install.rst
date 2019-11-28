@@ -181,9 +181,6 @@ To login to the system, use the default username and password will be: ``vyos``
   permitted by applicable law.
   vyos@vyos:~$
 
-  vyos@vyos:~$ uname -a
-  Linux vyos 4.19.79-amd64-vyos #23 SMP Mon Oct 1 17:29:22 CEST 2018 x86_64 GNU/Linux
-
 Unlike general purpose Linux distributions, VyOS uses "image installation" that
 mimics the user experience of traditional hardware routers and allows keeping
 multiple VyOS versions installed simultaneously. This makes it possible to
@@ -253,7 +250,6 @@ the provided default credentials.
 
   Setting up grub: OK
   Done!
-  vyos@vyos:~$
 
 After the installation is complete, remove the Live CD and reboot the system:
 
@@ -261,7 +257,6 @@ After the installation is complete, remove the Live CD and reboot the system:
 
   vyos@vyos:~$ reboot
   Proceed with reboot? (Yes/No) [No] Yes
-
 
 .. _PXE Install:
 
@@ -307,8 +302,6 @@ In this example we configured an existent VyOS as the DHCP server:
            }
        }
    }
-  [edit]
-  vyos@vyos#
 
 .. _tftp-server:
 
@@ -339,8 +332,6 @@ In the example we configured our existent VyOS as the TFTP server too:
   vyos@vyos# show service tftp-server
    directory /config/tftpboot
    listen-address 192.168.1.50
-  [edit]
-  vyos@vyos#
 
 Example of the contents of the TFTP server:
 

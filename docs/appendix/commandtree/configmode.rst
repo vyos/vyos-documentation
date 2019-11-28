@@ -259,8 +259,6 @@ Exiting from a configuration level:
 
   [edit interfaces ethernet eth0]
   vyos@vyos# exit
-  [edit]
-  vyos@vyos#
 
 Exiting from configuration mode:
 
@@ -285,8 +283,6 @@ Error message when trying to exit with uncommitted changes:
   vyos@vyos# exit
   Cannot exit: configuration modified.
   Use 'exit discard' to discard the changes and exit.
-  [edit]
-  vyos@vyos#
 
 
 Warning message when exiting with unsaved changes:
@@ -296,8 +292,6 @@ Warning message when exiting with unsaved changes:
   [edit]
   vyos@vyos# exit
   Warning: configuration changes have not been saved.
-  exit
-  vyos@vyos:~$
 
 Load
 ^^^^
@@ -358,8 +352,6 @@ In the example below exist a ``default-firewall.config`` file with some common f
   Loading configuration from '/config/default-firewall.config'...
 
   Merge complete.  Use 'commit' to make changes active.
-  [edit]
-  vyos@vyos#
 
   vyos@vyos# show firewall
   +all-ping enable
@@ -418,7 +410,6 @@ See here how to move the configuration entrys from vlanid 3 to 2
   -    address 10.4.4.4/32
   -}
   [edit interfaces ethernet eth1]
-  vyos@vyos#
 
 
 Rollback
@@ -439,8 +430,6 @@ Use the compare command to verify the configuration you want to rollback to.
   Broadcast message from root@vyos-1 (pts/0) (Tue Dec 17 21:07:45 2018):
 
   The system is going down for reboot NOW!
-  [edit]
-  vyos@vyos#
 
 Run
 ^^^

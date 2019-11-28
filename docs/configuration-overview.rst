@@ -63,7 +63,6 @@ using the show configuration command.
           }
       }
   }
-  vyos@vyos:~$
 
 By default the configuration is displayed in a hierarchy like the example above,
 this is only one of the possible ways to display the configuration. When the
@@ -191,8 +190,6 @@ replacements and ``-`` for deletions.
   }
   loopback lo {
   }
- [edit]
- vyos@vyos#
 
 It is also possible to display all `set` commands within configuration mode
 using ``show | commands``
@@ -224,8 +221,6 @@ level.
   [edit]
   vyos@vyos# exit
   Warning: configuration changes have not been saved.
-  vyos@vyos:~$
-
 
 Managing
 ========
@@ -280,9 +275,6 @@ configuration mode.
   vyos@vyos# save
   Saving configuration to '/config/config.boot'...
   Done
-  [edit]
-  vyos@vyos#
-
 
 Configuration mode can not be exited while uncommitted changes exist. To exit
 configuration mode without applying changes, the exit discard command can be
@@ -295,8 +287,6 @@ used.
   Use 'exit discard' to discard the changes and exit.
   [edit]
   vyos@vyos# exit discard
-  exit
-  vyos@vyos:~$
 
 .. code-block:: console
 
@@ -332,7 +322,6 @@ Command completion and syntax help with ``?`` and ``[tab]`` will also work.
   Interface        IP Address                        S/L  Description
   ---------        ----------                        ---  -----------
   eth0             0.0.0.0/0                         u/u
-
 
 Archive
 =======
@@ -383,9 +372,6 @@ command:
       9	   2013-12-12 15:42:07 root by boot-config-loader
       10   2013-12-12 15:42:06 root by init
 
-  [edit]
-  vyos@vyos#
-
 Comparing Revisions
 ^^^^^^^^^^^^^^^^^^^
 
@@ -426,8 +412,6 @@ apply the selected revision and trigger a system reboot.
   Proceed with reboot? [confirm][y]
   Broadcast message from root@vyos-1 (pts/0) (Tue Dec 17 21:07:45 2013):
   The system is going down for reboot NOW!
-  [edit]
-  vyos@vyos#
 
 Configuring the archive size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -464,7 +448,6 @@ default one, you can enter the following command in configuration mode:
   load /opt/vyatta/etc/config.boot.default
 
 You will be asked if you want to continue. If you accept, you will have to use
-``commit`` if you want to make the changes active.
 
 Then you may want to ``save`` in order to delete the saved configuration too.
 
