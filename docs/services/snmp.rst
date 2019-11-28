@@ -189,15 +189,27 @@ After commit the resulting configuration will look like:
        }
    }
 
+VyOS MIBs
+^^^^^^^^^
+
+All SNMP MIBs are located in each image of VyOS here: ``/usr/share/snmp/mibs/``
+
+you are be able to download the files with the a activate ssh service like this
+
+.. code-block:: console
+
+  scp -r vyos@your_router:/usr/share/snmp/mibs /your_folder/mibs
+
+
 SNMP Extensions
 ^^^^^^^^^^^^^^^
 
 To extend SNMP agent functionality, custom scripts can be executed every time
-the agent is being called. This can be achieved by using ``arbitrary extension
-commands``_. The first step is to create a functional script of course, then
-upload it to your VyOS instance via the command ``scp your_script.sh
-vyos@your_router:/config/user-data``. Once the script is uploaded, it needs to
-be configured via the command below.
+the agent is being called. This can be achieved by using 
+``arbitrary extensioncommands``. The first step is to create a functional
+script of course, then upload it to your VyOS instance via the command
+``scp your_script.sh vyos@your_router:/config/user-data``.
+Once the script is uploaded, it needs to be configured via the command below.
 
 
 .. code-block:: console
