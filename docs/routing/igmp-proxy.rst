@@ -14,7 +14,7 @@ simple example:
 
 Interface eth1 LAN is behind NAT. In order to subscribe 10.0.0.0/23 subnet multicast which is in eth0 WAN we need igmp-proxy.
 
-.. code-block:: console
+.. code-block:: none
 
   # show protocols igmp-proxy 
   interface eth0 {

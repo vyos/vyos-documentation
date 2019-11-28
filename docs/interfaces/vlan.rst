@@ -7,7 +7,7 @@ term used for this is `vif`. Configuration of a tagged sub-interface is
 accomplished using the configuration command
 `set interfaces ethernet <name> vif <vlan-id>`.
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces ethernet eth1 vif 100 description 'VLAN 100'
   set interfaces ethernet eth1 vif 100 address '192.168.100.1/24'
@@ -15,7 +15,7 @@ accomplished using the configuration command
 
 Resulting in:
 
-.. code-block:: console
+.. code-block:: none
 
   ethernet eth1 {
       address 192.168.100.1/24
@@ -33,7 +33,7 @@ Resulting in:
 
 VLAN interfaces are shown as `<name>.<vlan-id>`, e.g. `eth1.100`:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down

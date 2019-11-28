@@ -8,7 +8,7 @@ To manipulate or display ARP_ table entries, the following commands are implemen
 adding a static arp entry
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols static arp 10.1.1.100 hwaddr 08:00:27:de:23:aa
   commit
@@ -16,7 +16,7 @@ adding a static arp entry
 display arp table entries
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: none
 
   show protocols static arp
 
@@ -24,7 +24,7 @@ display arp table entries
   10.1.1.1                 ether   08:00:27:de:23:2e   C                     eth1
   10.1.1.100               ether   08:00:27:de:23:aa   CM                    eth1
 
-.. code-block:: console
+.. code-block:: none
 
   show protocols static arp interface eth1
   Address                  HWtype  HWaddress           Flags Mask            Iface

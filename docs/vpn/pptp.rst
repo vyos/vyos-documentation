@@ -12,7 +12,7 @@ If no gateway-address is set within the configuration, the lowest IP out of the 
 server example
 ^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: none
 
   set vpn pptp remote-access authentication local-users username test password 'test'
   set vpn pptp remote-access authentication mode 'local'
@@ -28,7 +28,7 @@ client example (debian 9)
 Install the client software via apt and execute pptpsetup to generate the configuration.
 
 
-.. code-block:: console
+.. code-block:: none
 
   apt-get install pptp-linux
   pptpsetup --create TESTTUNNEL --server 10.1.1.120 --username test --password test --encrypt
@@ -39,7 +39,7 @@ The command pon TESTUNNEL establishes the PPTP tunnel to the remote system.
 
 All tunnel sessions can be checked via:
 
-.. code-block:: console
+.. code-block:: none
 
   run sh pptp-server sessions
    ifname | username | calling-sid |      ip      | type | comp | state  |  uptime

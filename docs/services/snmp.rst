@@ -90,7 +90,7 @@ plain text.
 Example
 *******
 
-.. code-block:: console
+.. code-block:: none
 
   # Define a community
   set service snmp community routers authorization ro
@@ -139,7 +139,7 @@ The securityapproach in v3 targets:
 Example
 *******
 
-.. code-block:: console
+.. code-block:: none
 
   set service snmp v3 engineid '0x0aa0d6c6f450'
   set service snmp v3 group defaultgroup mode 'ro'
@@ -160,7 +160,7 @@ After commit the resulting configuration will look like:
 .. note:: SNMPv3 keys won't we stored in plaintext. On ``commit`` the keys
    will be encrypted and the encrypted key is based on the engineid!
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# show service snmp
    v3 {
@@ -200,7 +200,7 @@ vyos@your_router:/config/user-data``. Once the script is uploaded, it needs to
 be configured via the command below.
 
 
-.. code-block:: console
+.. code-block:: none
 
   set service snmp script-extensions extension-name my-extension script your_script.sh
   commit
@@ -209,7 +209,7 @@ be configured via the command below.
 The OID ``.1.3.6.1.4.1.8072.1.3.2.3.1.1.4.116.101.115.116``, once called, will
 contain the output of the extension.
 
-.. code-block:: console
+.. code-block:: none
 
   root@vyos:/home/vyos# snmpwalk -v2c  -c public 127.0.0.1 nsExtendOutput1
   NET-SNMP-EXTEND-MIB::nsExtendOutput1Line."my-extension" = STRING: hello
@@ -226,7 +226,7 @@ Templates Management. A template for VyOS can be easily imported.
 Create a file named ``VyOS-1.3.6.1.4.1.44641.ConfigMgmt-Commands`` using the
 following content:
 
-.. code-block:: console
+.. code-block:: none
 
   <Configuration-Management Device="VyOS" SystemOID="1.3.6.1.4.1.44641">
       <Commands>

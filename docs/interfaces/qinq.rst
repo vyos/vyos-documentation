@@ -14,7 +14,7 @@ The outer tag is the one closer/closest to the Ethernet header; its name is S-TA
 
 Configuration commands:
 
-.. code-block:: console
+.. code-block:: none
 
   interfaces
       ethernet <eth[0-999]>
@@ -48,7 +48,7 @@ Configuration commands:
 
 Example:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces ethernet eth0 vif-s 333
   set interfaces ethernet eth0 vif-s 333 address 192.0.2.10/32

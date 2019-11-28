@@ -8,7 +8,7 @@ VyOS supports executing configuration and operational commands non-interactively
 
 To include VyOS-specific functions and aliases you need to ``source /opt/vyatta/etc/functions/script-template`` files at the top of your script.
 
-.. code-block:: console
+.. code-block:: none
 
   #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
@@ -22,7 +22,7 @@ Configuration commands are executed just like from a normal config session.
 
 For example, if you want to disable a BGP peer on VRRP transition to backup:
 
-.. code-block:: console
+.. code-block:: none
 
   #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
@@ -41,7 +41,7 @@ Run operational commands
 
 Unlike a normal configuration sessions, all operational commands must be prepended with ``run``, even if you haven't created a session with configure.
 
-.. code-block:: console
+.. code-block:: none
 
   #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
@@ -65,7 +65,7 @@ Here is a simple example:
   print "set firewall group address-group somehosts address '1.1.1.2'"
 
 
-.. code-block:: console
+.. code-block:: none
 
   #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
@@ -82,7 +82,7 @@ There is a pitfall when working with configuration scripts. It is tempting to ca
 
 On VyOS this will cause the following problem: After modifying the configuration via script like this once, it is not possible to manually modify the config anymore:
 
-.. code-block:: console
+.. code-block:: none
 
   sudo ./myscript.sh # Modifies config
   configure
@@ -93,14 +93,14 @@ On VyOS this will cause the following problem: After modifying the configuration
 
 To avoid these problems, the proper way is to call a script with the ``vyattacfg`` group, e.g., by using the ``sg`` (switch group) command:
 
-.. code-block:: console
+.. code-block:: none
 
   sg vyattacfg -c ./myscript.sh
 
 
 To make sure that a script is not accidentally called without the ``vyattacfg`` group, the script can be safeguarded like this:
 
-.. code-block:: console
+.. code-block:: none
 
   if [ "$(id -g -n)" != 'vyattacfg' ] ; then
       exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
@@ -115,7 +115,7 @@ Any modifications done to work around unfixed bugs and implement enhancements wh
 
 The default file looks like this:
 
-.. code-block:: console
+.. code-block:: none
 
   #!/bin/sh
   # This script is executed at boot time after VyOS configuration is fully applied.

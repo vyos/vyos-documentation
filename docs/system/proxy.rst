@@ -8,14 +8,14 @@ The option allowes to set a HTTP proxy and if necessary, supports `basic auth`_.
 
 The code example below sets a proxy for all HTTP, HTTPS and FTP (anonymous ftp) connections, initiated by vyos. 
 
-.. code-block:: console
+.. code-block:: none
 
   set system proxy url http://10.100.100.1
   set system proxy port 8080
 
 That enables the update of a system image if the vyos system operates behind a proxy.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
   Trying to fetch ISO file from https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso

@@ -15,7 +15,7 @@ commands. The options for each are shown (the options for each command were
 displayed using the built-in help as described in the :ref:`cli`
 section and are omitted from the output here):
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ ping
   Possible completions:
@@ -25,7 +25,7 @@ section and are omitted from the output here):
 
 Several options are available when more extensive troubleshooting is needed:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ ping 8.8.8.8
   Possible completions:
@@ -51,7 +51,7 @@ Several options are available when more extensive troubleshooting is needed:
     ttl
     verbose
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ traceroute
   Possible completions:
@@ -64,7 +64,7 @@ Several options are available when more extensive troubleshooting is needed:
 However, another tool, mtr_, is available which combines ping and traceroute
 into a single tool. An example of its output is shown:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ mtr 10.62.212.12
 
@@ -95,7 +95,7 @@ It's possible to monitor network traffic, either at the flow level or protocol
 level. This can be useful when troubleshooting a variety of protocols and
 configurations. The following interface types can be monitored:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ monitor interfaces
   Possible completions:
@@ -117,7 +117,7 @@ To monitor traffic flows, issue the :code:`monitor interfaces <type> <name> flow
 command, replacing `<type>` and `<name>` with your desired interface type and
 name, respectively. Output looks like the following:
 
-.. code-block:: console
+.. code-block:: none
 
                      12.5Kb              25.0Kb              37.5Kb              50.0Kb        62.5Kb
   ????????????????????????????????????????????????????????????????????????????????????????????????????
@@ -145,7 +145,7 @@ traffic` command, replacing `<type>` and `<name>` with your desired interface
 type and name, respectively. This command invokes the familiar tshark_ utility
 and the following options are available:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ monitor interfaces ethernet eth0 traffic
   Possible completions:
@@ -169,13 +169,13 @@ Interface Bandwith
 
 to take a quick view on the used bandwith of an interface use the ``monitor bandwith`` command
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ monitor bandwidth interface eth0
 
 show the following:
 
-.. code-block:: console
+.. code-block:: none
   
    eth0                                                                                                          bmon 3.5
   Interfaces                     │ RX bps       pps     %│ TX bps       pps     %
@@ -210,7 +210,7 @@ Interface performance
 
 To take a look on the network bandwith between two nodes, the ``monitor bandwidth-test`` command is used to run iperf.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ monitor bandwidth-test
   Possible completions:
@@ -220,7 +220,7 @@ To take a look on the network bandwith between two nodes, the ``monitor bandwidt
 | The ``accept`` command open a listen iperf server on TCP Port 5001
 | The ``initiate`` command conncet to this server.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ monitor bandwidth-test initiate
   Possible completions:
@@ -235,13 +235,13 @@ Monitor command
 The ``monitor command`` command allows you to repeatedly run a command to view a continuously refreshed output.
 The command is run and output every 2 seconds, allowing you to monitor the output continuously without having to re-run the command. This can be useful to follow routing adjacency formation.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@router:~$ monitor command "show interfaces"
 
 Will clear the screen and show you the output of ``show interfaces`` every 2 seconds.
 
-.. code-block:: console
+.. code-block:: none
 
   Every 2.0s: /opt/vyatta/bin/vyatta-op-cmd-wrapper s...  Sun Mar 26 02:49:46 2019
 
@@ -264,13 +264,13 @@ To do this use the ``clear`` command in Operational mode.
 
 to clear the console output
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ clear console
 
 to clear interface counters
 
-.. code-block:: console
+.. code-block:: none
 
   # clear all interfaces
   vyos@vyos:~$ clear interface ethernet counters  
@@ -279,7 +279,7 @@ to clear interface counters
 
 The command follow the same logic as the ``set`` command in configuration mode.
 
-.. code-block:: console
+.. code-block:: none
 
   # clear all counters of a interface type
   vyos@vyos:~$ clear interface <interface_type> counters
@@ -289,7 +289,7 @@ The command follow the same logic as the ``set`` command in configuration mode.
 
 to clear counters on firewall rulesets or single rules
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ clear firewall name <ipv4 ruleset name> counters
   vyos@vyos:~$ clear firewall name <ipv4 ruleset name> rule <rule#> counters

@@ -17,7 +17,7 @@ For example typing `sh` followed by the **[tab]** key will complete to `show`.
 Pressing **[tab]** a second time will display the possible sub-commands of the
 `show` command.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ s[tab]
   set   show
@@ -25,7 +25,7 @@ Pressing **[tab]** a second time will display the possible sub-commands of the
 
 Example showing possible show commands:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show [tab]
   Possible completions:
@@ -69,7 +69,7 @@ When viewing in page mode the following commands are available:
 
 To enter configuration mode use the `configure` command:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ configure
   [edit]
@@ -77,7 +77,7 @@ To enter configuration mode use the `configure` command:
 
 .. note:: Prompt changes from `$` to `#`. To exit configuration mode, type `exit`.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~# exit
   exit

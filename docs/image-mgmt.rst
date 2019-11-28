@@ -8,7 +8,7 @@ each image on the storage device selected during the install process.
 
 The directory structure of the boot device:
 
-.. code-block:: console
+.. code-block:: none
 
   /
   /boot
@@ -36,7 +36,7 @@ default-boot` command in operational mode.
 A list of available images can be shown using the :code:`show system image`
 command in operational mode.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show system image
   The system currently has the following image(s) installed:
@@ -69,7 +69,7 @@ process will prompt you to use the current system configuration and SSH
 security keys, allowing for the new image to boot using the current
 configuration.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-1.2.0-rolling%2B201810030440-amd64.iso
   Trying to fetch ISO file from https://downloads.vyos.io/rolling/current/amd64/vyos-1.2.0-rolling%2B201810030440-amd64.iso
@@ -107,7 +107,7 @@ If you need some files from a previous images - take a look inside a
 
 After reboot you might want to verify the version you are running with :code:`show version`
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show version
   Version:          VyOS 1.2.0-rolling+201810030440

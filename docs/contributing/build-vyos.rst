@@ -17,7 +17,7 @@ Docker_.  This process has been tested on clean installs of Debian Jessie, Stret
 
 Installing Docker_ and prerequisites
 
-.. code-block:: console
+.. code-block:: none
 
   $ apt-get update
   $ apt-get install -y apt-transport-https ca-certificates curl \
@@ -48,7 +48,7 @@ the vyos-build repository).
 
 The container can always be built directly from source:
 
-.. code-block:: console
+.. code-block:: none
 
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
   $ docker build -t vyos/vyos-build docker
@@ -67,7 +67,7 @@ Build ISO inside container
 After the container is generated either manually or fetched from DockerHub,
 a fresh build of the VyOS ISO can begin.
 
-.. code-block:: console
+.. code-block:: none
 
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build bash
   vyos_bld@d4220bb519a0:/vyos# ./configure --architecture amd64 \
@@ -87,7 +87,7 @@ image:
 This ISO can be customized with the following list of configure options. 
 The full and current list can be generated with ``./configure --help``:
 
-.. code-block:: console
+.. code-block:: none
 
   -h, --help            show this help message and exit
   --architecture ARCHITECTURE

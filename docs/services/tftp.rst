@@ -10,7 +10,7 @@ simple to implement.
 Example
 ^^^^^^^
 
-.. code-block:: console
+.. code-block:: none
 
   # If you want to enable uploads, else TFTP server will act as read-only (optional)
   set service tftp-server allow-upload
@@ -30,7 +30,7 @@ Example
 
 The resulting configuration will look like:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# show service
    tftp-server {

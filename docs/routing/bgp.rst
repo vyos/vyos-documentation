@@ -10,7 +10,7 @@ A simple eBGP configuration:
 
 **Node 1:**
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols bgp 65534 neighbor 192.168.0.2 ebgp-multihop '2'
   set protocols bgp 65534 neighbor 192.168.0.2 remote-as '65535'
@@ -20,7 +20,7 @@ A simple eBGP configuration:
 
 **Node 2:**
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols bgp 65535 neighbor 192.168.0.1 ebgp-multihop '2'
   set protocols bgp 65535 neighbor 192.168.0.1 remote-as '65534'
@@ -35,13 +35,13 @@ creating a static route:**
 
 **Node 1:**
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols static route 172.16.0.0/16 blackhole distance '254'
 
 **Node 2:**
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols static route 172.17.0.0/16 blackhole distance '254'
 
@@ -53,7 +53,7 @@ A simple BGP configuration via IPv6.
 
 **Node 1:**
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols bgp 65534 neighbor 2001:db8::2 ebgp-multihop '2'
   set protocols bgp 65534 neighbor 2001:db8::2 remote-as '65535'
@@ -64,7 +64,7 @@ A simple BGP configuration via IPv6.
 
 **Node 2:**
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols bgp 65535 neighbor 2001:db8::1 ebgp-multihop '2'
   set protocols bgp 65535 neighbor 2001:db8::1 remote-as '65534'
@@ -79,13 +79,13 @@ creating a static route:**
 
 **Node 1:**
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols static route6 2001:db8:1::/48 blackhole distance '254'
 
 **Node 2:**
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols static route6 2001:db8:2::/48 blackhole distance '254'
 
@@ -96,7 +96,7 @@ Route filter can be applied using a route-map:
 
 **Node1:**
 
-.. code-block:: console
+.. code-block:: none
 
   set policy prefix-list AS65535-IN rule 10 action 'permit'
   set policy prefix-list AS65535-IN rule 10 prefix '172.16.0.0/16'
@@ -119,7 +119,7 @@ Route filter can be applied using a route-map:
 
 **Node2:**
 
-.. code-block:: console
+.. code-block:: none
 
   set policy prefix-list AS65534-IN rule 10 action 'permit'
   set policy prefix-list AS65534-IN rule 10 prefix '172.17.0.0/16'

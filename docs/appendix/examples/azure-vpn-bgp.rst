@@ -52,7 +52,7 @@ Vyos configuration
 - Configure the IKE and ESP settings to match a subset
   of those supported by Azure:
 
-.. code-block:: console
+.. code-block:: none
 
   set vpn ipsec esp-group AZURE compression 'disable'
   set vpn ipsec esp-group AZURE lifetime '3600'
@@ -73,26 +73,26 @@ Vyos configuration
 
 - Enable IPsec on eth0
 
-.. code-block:: console
+.. code-block:: none
 
   set vpn ipsec ipsec-interfaces interface 'eth0'
 
 - Configure a VTI with a dummy IP address
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces vti vti1 address '10.10.1.5/32'
   set interfaces vti vti1 description 'Azure Tunnel'
 
 - Clamp the VTI's MSS to 1350 to avoid PMTU blackholes.
 
-.. code-block:: console
+.. code-block:: none
 
   set firewall options interface vti1 adjust-mss 1350
 
 - Configure the VPN tunnel
 
-.. code-block:: console
+.. code-block:: none
 
   set vpn ipsec site-to-site peer 203.0.113.2 authentication id '198.51.100.3'
   set vpn ipsec site-to-site peer 203.0.113.2 authentication mode 'pre-shared-secret'
@@ -108,13 +108,13 @@ Vyos configuration
 
 - **Important**: Add an interface route to reach Azure's BGP listener
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols static interface-route 10.0.0.4/32 next-hop-interface vti1
 
 - Configure your BGP settings
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols bgp 64499 neighbor 10.0.0.4 remote-as '65540'
   set protocols bgp 64499 neighbor 10.0.0.4 address-family ipv4-unicast soft-reconfiguration 'inbound'
@@ -123,6 +123,6 @@ Vyos configuration
 
 - **Important**: Disable connected check \
 
-.. code-block:: console
+.. code-block:: none
 
   set protocols bgp 64499 neighbor 10.0.0.4 disable-connected-check

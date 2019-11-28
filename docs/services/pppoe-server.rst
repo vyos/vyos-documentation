@@ -15,7 +15,7 @@ The example below uses ACN as access-concentrator name, assigns an address
 from the pool 10.1.1.100-111, terminates at the local endpoint 10.1.1.1 and
 serves requests only on eth1.
 
-.. code-block:: console
+.. code-block:: none
 
   set service pppoe-server access-concentrator 'ACN'
   set service pppoe-server authentication local-users username foo password 'bar'
@@ -30,7 +30,7 @@ serves requests only on eth1.
 
 Connections can be locally checked via the command
 
-.. code-block:: console
+.. code-block:: none
 
   show pppoe-server sessions
   ifname | username |     ip     |    calling-sid    | rate-limit  | state  |  uptime  | rx-bytes | tx-bytes 
@@ -48,7 +48,7 @@ If the CIDR notation is used, multiple subnets can be setup which are used seque
 
 **Client IP address via IP range definition**
 
-.. code-block:: console
+.. code-block:: none
 
   set service pppoe-server client-ip-pool start '10.1.1.100'
   set service pppoe-server client-ip-pool stop '10.1.1.111'
@@ -56,7 +56,7 @@ If the CIDR notation is used, multiple subnets can be setup which are used seque
 
 **Client IP subnets via CIDR notation**
 
-.. code-block:: console
+.. code-block:: none
 
   set service pppoe-server client-ip-pool subnet '10.1.1.0/24'
   set service pppoe-server client-ip-pool subnet '10.1.2.0/24'
@@ -70,7 +70,7 @@ To use a radius server, you need to switch to authentication mode radius and
 of course need to specify an IP for the server. You can have multiple RADIUS
 server configured, if you wish to achieve redundancy.
 
-.. code-block:: console
+.. code-block:: none
 
   set service pppoe-server access-concentrator 'ACN'
   set service pppoe-server authentication mode 'radius'
@@ -84,7 +84,7 @@ RADIUS provides the IP addresses in the example above via Framed-IP-Address.
 
 For remotely disconnect sessions and change some authentication parameters you can configure dae-server
 
-.. code-block:: console
+.. code-block:: none
 
   set service pppoe-server authentication radius-settings dae-server ip-address '10.1.1.2'
   set service pppoe-server authentication radius-settings dae-server port '3799'
@@ -92,20 +92,20 @@ For remotely disconnect sessions and change some authentication parameters you c
 
 Example, from radius-server send command for disconnect client with username test
 
-.. code-block:: console
+.. code-block:: none
 
   root@radius-server:~# echo "User-Name=test" | radclient -x 10.1.1.2:3799 disconnect secret123
   
 You can also use another attributes for identify client for disconnect, like Framed-IP-Address, Acct-Session-Id, etc.
 Result commands appears in log
 
-.. code-block:: console
+.. code-block:: none
 
   show log | match Disconnect*
 
 Example for changing rate-limit via RADIUS CoA
 
-.. code-block:: console
+.. code-block:: none
 
   echo "User-Name=test,Filter-Id=5000/4000" | radclient 10.1.1.2:3799 coa secret123
 
@@ -119,7 +119,7 @@ Automatic VLAN creation
 VLAN's can be created by accel-ppp on the fly if via the use of the kernel module vlan_mon, which is monitoring incoming vlans and creates the necessary VLAN if required and allowed.
 VyOS supports the use of either VLAN ID's or entire ranges, both values can be defined at the same time for an interface.
 
-.. code-block:: console
+.. code-block:: none
 
   set service pppoe-server interface eth3 vlan-id 100
   set service pppoe-server interface eth3 vlan-id 200
@@ -141,7 +141,7 @@ Bandwidth Shaping for local users
 
 The rate-limit is set in kbit/sec.
 
-.. code-block:: console
+.. code-block:: none
 
   set service pppoe-server access-concentrator 'ACN'
   set service pppoe-server authentication local-users username foo password 'bar'
@@ -158,7 +158,7 @@ The rate-limit is set in kbit/sec.
 
 Once the user is connected, the user session is using the set limits and can be displayed via 'show pppoe-server sessions'.
 
-.. code-block:: console
+.. code-block:: none
 
   show pppoe-server sessions
   ifname | username |     ip     |    calling-sid    | rate-limit  | state  |  uptime  | rx-bytes | tx-bytes
@@ -175,7 +175,7 @@ Filter-Id=2000/3000 (means 2000Kbit down-stream rate and 3000Kbit up-stream rate
 
 The command below enables it, assuming the RADIUS connection has been setup and is working.
 
-.. code-block:: console
+.. code-block:: none
 
   set service pppoe-server authentication radius-settings rate-limit enable
 
@@ -191,7 +191,7 @@ Dual-stack provisioning with IPv6 PD via pppoe
 
 The example below covers a dual-stack configuration via pppoe-server.
 
-.. code-block:: console
+.. code-block:: none
 
   set service pppoe-server authentication local-users username test password 'test'
   set service pppoe-server authentication mode 'local'
@@ -207,7 +207,7 @@ The example below covers a dual-stack configuration via pppoe-server.
 
 The client, once successfully authenticated, will receive an IPv4 and an IPv6 /64 address, to terminate the pppoe endpoint on the client side and a /56 subnet for the clients internal use.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@pppoe-server:~$ sh pppoe-server sessions 
    ifname | username |     ip      |            ip6           |       ip6-dp        |    calling-sid    | rate-limit | state  |  uptime  | rx-bytes | tx-bytes 

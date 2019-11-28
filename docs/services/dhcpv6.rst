@@ -5,25 +5,25 @@ DHCPv6 server
 VyOS provides DHCPv6 server functionality which is described in this section.
 In order to use the DHCPv6 server it has to be enabled first:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server
 
 To restart the DHCPv6 server (operational mode):
 
-.. code-block:: console
+.. code-block:: none
 
   restart dhcpv6 server
 
 To show the current status of the DHCPv6 server use:
 
-.. code-block:: console
+.. code-block:: none
 
   show dhcpv6 server status
 
 Show statuses of all assigned leases:
 
-.. code-block:: console
+.. code-block:: none
 
   show dhcpv6 server leases
 
@@ -37,19 +37,19 @@ Clients receiving advertise messages from multiple servers choose the server
 with the highest preference value. The range for this value is `0...255`. Set
 a preference value for the DHCPv6 server:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server preference <preference value>
 
 Delete a preference:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server preference
 
 Show current preference:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcpv6-server preference
 
@@ -60,19 +60,19 @@ The default lease time for DHCPv6 leases is 24 hours. This can be changed by
 supplying a `default-time`, `maximum-time` and `minimum-time` (all values in
 seconds):
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name <name> subnet <ipv6net> lease-time {default <default-time> | maximum <maximum-time> | minimum <minimum-time>}
 
 Reset the custom lease times:
 
-.. code-block:: console
+.. code-block:: none
 
   delete service dhcpv6-server shared-network-name <name> subnet <ipv6net> lease-time {default | maximum | minimum}
 
 Show the current configuration:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcpv6-server shared-network-name <name> subnet <ipv6net> lease-time {default | maximum | minimum}
 
@@ -81,19 +81,19 @@ Specify NIS domain
 
 A Network Information (NIS) domain can be set to be used for DHCPv6 clients:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name <name> subnet <ipv6net> nis-domain <nis-domain-name>
 
 To Delete the NIS domain:
 
-.. code-block:: console
+.. code-block:: none
 
   delete service dhcpv6-server shared-network-name <name> subnet <ipv6net> nis-domain <nis-domain-name>
 
 Show a configured NIS domain:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcpv6-server shared-network-name <name> subnet <ipv6net> nis-domain <nis-domain-name>
 
@@ -103,13 +103,13 @@ Specify NIS+ domain
 The procedure to specify a Network Information Service Plus (NIS+) domain is
 similar to the NIS domain one:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name <name> subnet <ipv6net> nisplus-domain <nisplus-domain-name>
 
 To Delete the NIS+ domain:
 
-.. code-block:: console
+.. code-block:: none
 
   delete service dhcpv6-server shared-network-name <name> subnet <ipv6net> nisplus-domain <nisplus-domain-name>
 
@@ -122,19 +122,19 @@ Specify NIS server address
 
 To specify a NIS server address for DHCPv6 clients:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name <name> subnet <ipv6net> nis-server <IPv6 address>
 
 Delete a specified NIS server address:
 
-.. code-block:: console
+.. code-block:: none
 
   delete service dhcpv6-server shared-network-name <name> subnet <ipv6net> nis-server <IPv6 address>
 
 Show specified NIS server addresses:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcpv6-server shared-network-name <name> subnet <ipv6net> nis-server
 
@@ -143,19 +143,19 @@ Specify NIS+ server address
 
 To specify a NIS+ server address for DHCPv6 clients:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name <name> subnet <ipv6net> nisplus-server <IPv6 address>
 
 Delete a specified NIS+ server address:
 
-.. code-block:: console
+.. code-block:: none
 
   delete service dhcpv6-server shared-network-name <name> subnet <ipv6net> nisplus-server <IPv6 address>
 
 Show specified NIS+ server addresses:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcpv6-server shared-network-name <name> subnet <ipv6net> nisplus-server
 
@@ -169,19 +169,19 @@ By IPv6 address
 A Session Initiation Protocol (SIP) server address can be specified
 for DHCPv6 clients:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name <name> subnet <ipv6net> sip-server-address <IPv6 address>
 
 Delete a specified SIP server address:
 
-.. code-block:: console
+.. code-block:: none
 
   delete service dhcpv6-server shared-network-name <name> subnet <ipv6net> sip-server-address <IPv6 address>
 
 Show specified SIP server addresses:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcpv6-server shared-network-name <name> subnet <ipv6net> sip-server-address
 
@@ -190,19 +190,19 @@ By FQDN
 
 A name for SIP server can be specified:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name <name> subnet <ipv6net> sip-server-name <sip-server-name>
 
 Delete a specified SIP server name:
 
-.. code-block:: console
+.. code-block:: none
 
   delete service dhcpv6-server shared-network-name <name> subnet <ipv6net> sip-server-name <sip-server-name>
 
 Show specified SIP server names:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcpv6-server shared-network-name <name> subnet <ipv6net> sip-server-name
 
@@ -211,19 +211,19 @@ Simple Network Time Protocol (SNTP) server address for DHCPv6 clients
 
 A SNTP server address can be specified for DHCPv6 clients:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name <name> subnet <ipv6net> sntp-server-address <IPv6 address>
 
 Delete a specified SNTP server address:
 
-.. code-block:: console
+.. code-block:: none
 
   delete service dhcpv6-server shared-network-name <name> subnet <ipv6net> sntp-server-address <IPv6 address>
 
 Show specified SNTP server addresses:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcpv6-server shared-network-name <name> subnet <ipv6net> sntp-server-address
 
@@ -241,14 +241,14 @@ connected to `eth1`, a DNS server at `2001:db8:111::111` is used for name
 services. The range of the address pool shall be `::100` through `::199`. The
 lease time will be left at the default value which is 24 hours.
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name NET1 subnet 2001:db8:100::/64 address-range start 2001:db8:100::100 stop 2001:db8:100::199
   set service dhcpv6-server shared-network-name NET1 subnet 2001:db8:100::/64 name-server 2001:db8:111::111
 
 Commit the changes and show the configuration:
 
-.. code-block:: console
+.. code-block:: none
 
   commit
   show service dhcpv6-server
@@ -279,14 +279,14 @@ MAC address `00:15:c5:b7:5e:23`, this host-specific mapping shall be named
 .. note:: The MAC address identifier is defined by the last 4 byte of the
    MAC address.
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name NET1 subnet 2001:db8:100::/64 static-mapping client1 ipv6-address 2001:db8:100::101
   set service dhcpv6-server shared-network-name NET1 subnet 2001:db8:100::/64 static-mapping client1 identifier c5b75e23
 
 Commit the changes and show the configuration:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcp-server shared-network-name NET1
      shared-network-name NET1 {

@@ -30,7 +30,7 @@ Configuration
 Enabling SSH only requires you to add ``service ssh port NN``, where 'NN' is
 the port you want SSH to listen on. By default, SSH runs on port 22.
 
-.. code-block:: console
+.. code-block:: none
 
   set service ssh port 22
 
@@ -130,7 +130,7 @@ line. The third part is simply an identifier, and is for your own reference.
 Under the user (in this example, ``vyos``), add the public key and the type.
 The `identifier` is simply a string that is relevant to you.
 
-.. code-block:: console
+.. code-block:: none
 
   set system login user vyos authentication public-keys 'identifier' key "AAAAB3Nz...."
   set system login user vyos authentication public-keys 'identifier' type ssh-rsa"
@@ -139,7 +139,7 @@ You can assign multiple keys to the same user by changing the identifier. In
 the following example, both Unicron and xrobau will be able to SSH into VyOS
 as the ``vyos`` user using their own keys.
 
-.. code-block:: console
+.. code-block:: none
 
   set system login user vyos authentication public-keys 'Unicron' key "AAAAB3Nz...."
   set system login user vyos authentication public-keys 'Unicron' type ssh-rsa

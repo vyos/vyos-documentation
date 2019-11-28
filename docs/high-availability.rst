@@ -21,7 +21,7 @@ The required parameters are interface, vrid, and virtual-address.
 
 minimal config
 
-.. code-block:: console
+.. code-block:: none
 
   set high-availability vrrp group Foo vrid 10
   set high-availability vrrp group Foo interface eth0
@@ -29,7 +29,7 @@ minimal config
 
 You can verify your VRRP group status with the operational mode ``run show vrrp`` command:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# run show vrrp 
   Name        Interface      VRID  State    Last Transition
@@ -46,7 +46,7 @@ Disabling a VRRP group
 
 You can disable a VRRP group with ``disable`` option:
 
-.. code-block:: console
+.. code-block:: none
 
   set high-availability vrrp group Foo disable
 
@@ -57,7 +57,7 @@ Setting VRRP group priority
 
 VRRP priority can be set with ``priority`` option:
 
-.. code-block:: console
+.. code-block:: none
 
   set high-availability vrrp group Foo priority 200
 
@@ -68,7 +68,7 @@ Sync groups
 
 A sync group allows VRRP groups to transition together.  
 
-.. code-block:: console
+.. code-block:: none
 
     edit high-availability
     set sync-group MAIN member VLAN9
@@ -76,7 +76,7 @@ A sync group allows VRRP groups to transition together.
 
 In the following example, when VLAN9 transitions, VLAN20 will also transition:
 
-.. code-block:: console
+.. code-block:: none
 
     vrrp {
         group VLAN9 {
@@ -108,13 +108,13 @@ VRRP can use two modes: preemptive and non-preemptive. In the preemptive mode, i
 
 By default VRRP uses preemption. You can disable it with the "no-preempt" option:
 
-.. code-block:: console
+.. code-block:: none
 
   set high-availability vrrp group Foo no-preempt
 
 You can also configure the time interval for preemption with the "preempt-delay" option. For example, to set the higher priority router to take over in 180 seconds, use:
 
-.. code-block:: console
+.. code-block:: none
 
   set high-availability vrrp group Foo preempt-delay 180
 
@@ -123,7 +123,7 @@ Unicast VRRP
 
 By default VRRP uses multicast packets. If your network does not support multicast for whatever reason, you can make VRRP use unicast communication instead.
 
-.. code-block:: console
+.. code-block:: none
 
   set high-availability vrrp group Foo peer-address 192.0.2.10
   set high-availability vrrp group Foo hello-source-address 192.0.2.15
@@ -139,7 +139,7 @@ Health check scripts
 
 This setup will make the VRRP process execute the ``/config/scripts/vrrp-check.sh script`` every 60 seconds, and transition the group to the fault state if it fails (i.e. exits with non-zero status) three times:
 
-.. code-block:: console
+.. code-block:: none
 
   set high-availability vrrp group Foo health-check script /config/scripts/vrrp-check.sh
   set high-availability vrrp group Foo health-check interval 60
@@ -151,7 +151,7 @@ Transition scripts
 Transition scripts can help you implement various fixups, such as starting and stopping services, or even modifying the VyOS config on VRRP transition.
 This setup will make the VRRP process execute the ``/config/scripts/vrrp-fail.sh`` with argument ``Foo`` when VRRP fails, and the ``/config/scripts/vrrp-master.sh`` when the router becomes the master:
 
-.. code-block:: console
+.. code-block:: none
 
   set high-availability vrrp group Foo transition-script backup "/config/scripts/vrrp-fail.sh Foo"
   set high-availability vrrp group Foo transition-script fault "/config/scripts/vrrp-fail.sh Foo"

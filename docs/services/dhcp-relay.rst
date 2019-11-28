@@ -28,27 +28,27 @@ Configuration
 
 Enable DHCP relay for eth1 and eth2:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcp-relay interface eth1
   set service dhcp-relay interface eth2
 
 Set the IP address of the DHCP server:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcp-relay server 10.0.1.4
 
 The router should discard DHCP packages already containing relay agent
 information to ensure that only requests from DHCP clients are forwarded:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcp-relay relay-options relay-agents-packets discard
 
 Commit the changes and show the results:
 
-.. code-block:: console
+.. code-block:: none
 
   commit
   show service dhcp-relay
@@ -61,7 +61,7 @@ Commit the changes and show the results:
 
 The DHCP relay agent can be restarted with:
 
-.. code-block:: console
+.. code-block:: none
 
   restart dhcp relay-agent
 
@@ -83,20 +83,20 @@ Configuration
 
 Set eth1 to be the listening interface for the DHCPv6 relay:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-relay listen-interface eth1
 
 Set eth2 to be the upstream interface and specify the IPv6 address of
 the DHCPv6 server:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-relay upstream-interface eth2 address 2001:db8:100::4
 
 Commit the changes and show results:
 
-.. code-block:: console
+.. code-block:: none
 
   commit
   show service dhcpv6-relay
@@ -108,13 +108,13 @@ Commit the changes and show results:
 
 Show the current status of the DHCPv6 relay agent:
 
-.. code-block:: console
+.. code-block:: none
 
   show dhcpv6 relay-agent status
 
 The DHCPv6 relay agent can be restarted with:
 
-.. code-block:: console
+.. code-block:: none
 
   restart dhcpv6 relay-agent
 
