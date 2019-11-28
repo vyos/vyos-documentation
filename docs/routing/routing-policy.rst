@@ -19,12 +19,12 @@ Routing Policy Example
 
   #Create policy
   set policy route-map setmet rule 2 action 'permit'
-  set policy route-map setmet rule 2 set as-path-prepend '2 2 2'  
-  
+  set policy route-map setmet rule 2 set as-path-prepend '2 2 2'
+
   #Apply policy to BGP
   set protocols bgp 1 neighbor 1.1.1.2 address-family ipv4-unicast route-map import 'setmet'
-  set protocols bgp 1 neighbor 1.1.1.2 address-family ipv4-unicast soft-reconfiguration 'inbound' <<<< *** 
-  
+  set protocols bgp 1 neighbor 1.1.1.2 address-family ipv4-unicast soft-reconfiguration 'inbound' <<<< ***
+
   *** get policy update without bouncing the neighbor
 
 **Routes learned before routing policy applied:**
@@ -36,10 +36,10 @@ Routing Policy Example
   Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
                 r RIB-failure, S Stale, R Removed
   Origin codes: i - IGP, e - EGP, ? - incomplete
-  
+
      Network          Next Hop            Metric LocPrf Weight Path
-  *> 22.22.22.22/32   1.1.1.2                  1             0 2 i  < Path 
-  
+  *> 22.22.22.22/32   1.1.1.2                  1             0 2 i  < Path
+
   Total number of prefixes 1
 
 **Routes learned after routing policy applied:**
@@ -51,9 +51,9 @@ Routing Policy Example
   Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
                 r RIB-failure, S Stale, R Removed
   Origin codes: i - IGP, e - EGP, ? - incomplete
-  
+
      Network          Next Hop            Metric LocPrf Weight Path
   *> 22.22.22.22/32   1.1.1.2                  1             0 2 2 2 2 i < longer AS_path length
-  
+
   Total number of prefixes 1
-  vyos@vos1:~$ 
+  vyos@vos1:~$

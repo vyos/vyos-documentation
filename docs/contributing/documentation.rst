@@ -93,7 +93,7 @@ We use the following syntax for Headlines.
   #####
   Parts
   #####
-  
+
   ********
   Chapters
   ********

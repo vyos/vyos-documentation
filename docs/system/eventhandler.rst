@@ -31,7 +31,7 @@ In this small example a script runs every time a login failed and an interface g
 
 .. code-block:: console
 
-  vyos@vyos# show system event-handler 
+  vyos@vyos# show system event-handler
   feed Syslog {
       policy MyPolicy
       source {
@@ -43,6 +43,6 @@ In this small example a script runs every time a login failed and an interface g
       event BadThingsHappened {
           pattern "authentication failure"
           pattern "interface \.* index \d+ .* DOWN.*"
-          run /config/scripts/email-to-admin 
+          run /config/scripts/email-to-admin
       }
   }

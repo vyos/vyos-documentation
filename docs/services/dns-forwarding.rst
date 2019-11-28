@@ -28,7 +28,7 @@ Setting a forwarding DNS server for a specific domain:
 .. code-block:: console
 
   set service dns forwarding domain example.com server 192.0.2.1
-  
+
 Set which networks or clients are allowed to query the DNS Server. Allow from all:
 
 .. code-block:: console
@@ -68,5 +68,5 @@ The IP addresses for the LAN interface are 192.168.0.1 and 2001:db8::1
   set service dns forwarding name-server 2001:4860:4860::8888
   set service dns forwarding name-server 2001:4860:4860::8844
   set service dns forwarding listen-address 2001:db8::1
-  set service dns forwarding listen-address 192.168.0.1 
+  set service dns forwarding listen-address 192.168.0.1
   set service dns forwarding allow-from 0.0.0.0/0

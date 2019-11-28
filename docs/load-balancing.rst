@@ -78,7 +78,7 @@ To configure the rate limiting use:
 Flow and packet-based balancing
 *******************************
 
-Outgoing traffic is balanced in a flow-based manner. 
+Outgoing traffic is balanced in a flow-based manner.
 A connection tracking table is used to track flows by their source address, destination address and port.
 Each flow is assigned to an interface according to the defined balancing rules and subsequent packets are sent through the same interface.
 This has the advantage that packets always arrive in order if links with different speeds are in use.
@@ -150,7 +150,7 @@ For multi target health checking multiple tests can be defined:
 Source NAT rules
 ----------------
 
-Per default, interfaces used in a load balancing pool replace the source IP of each outgoing packet with its own address to ensure that replies arrive on the same interface. 
+Per default, interfaces used in a load balancing pool replace the source IP of each outgoing packet with its own address to ensure that replies arrive on the same interface.
 This works through automatically generated source NAT (SNAT) rules, these rules are only applied to balanced traffic. In cases where this behaviour is not desired, the automatic generation of SNAT rules can be disabled:
 
 .. code-block:: console

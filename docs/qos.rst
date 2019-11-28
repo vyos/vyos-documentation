@@ -53,18 +53,18 @@ Once a traffic-policy is created, you can apply it to an interface :
 
   set interfaces ethernet eth0 traffic-policy in WAN-IN
   set interfaces etherhet eth0 traffic-policy out WAN-OUT
-  
+
 A Real-World Example
 ^^^^^^^^^^^^^^^^^^^^
 
 This policy sets download and upload bandwidth maximums (roughly 90% of the speeds possible), then divvies
-up the traffic into buckets of importance, giving guaranteed bandwidth chunks to types of 
+up the traffic into buckets of importance, giving guaranteed bandwidth chunks to types of
 traffic that are necessary for general interactive internet use, like web browsing, streaming, or gaming.
 
 After identifying and prioritizing that traffic, it drops the remaining traffic into a general-priority
 bucket, which it gives a lower priority than what is required for real-time use. If there is no real-time
 traffic that needs the bandwidth, the lower-priority traffic can use most of the connection. This ensures
-that the connection can be used fully by whatever wants it, without suffocating real-time traffic or 
+that the connection can be used fully by whatever wants it, without suffocating real-time traffic or
 throttling background traffic too much.
 
 .. code-block:: console

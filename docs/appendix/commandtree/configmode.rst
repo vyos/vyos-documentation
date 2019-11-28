@@ -158,7 +158,7 @@ VyOS maintains backups of previous configurations. To compare configuration revi
     saved		Compare working & saved configurations
     <N>		Compare working with revision N
     <N> <M>	Compare revision N with M
-  
+
     Revisions:
       0	2019-03-20 20:57:22 root by boot-config-loader
       1	2019-03-15 20:00:04 root by boot-config-loader
@@ -225,7 +225,7 @@ The ``discard`` command removes all pending configuration changes.
 
   [edit]
   vyos@vyos# discard
-  
+
     Changes have been discarded
 
 Edit
@@ -435,9 +435,9 @@ Use the compare command to verify the configuration you want to rollback to.
   [edit]
   vyos@vyos# rollback 1
   Proceed with reboot? [confirm][y]
-  
+
   Broadcast message from root@vyos-1 (pts/0) (Tue Dec 17 21:07:45 2018):
-  
+
   The system is going down for reboot NOW!
   [edit]
   vyos@vyos#

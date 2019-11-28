@@ -3,7 +3,7 @@
 High availability
 =================
 
-VRRP (Virtual Redundancy Protocol) provides active/backup redundancy for routers. 
+VRRP (Virtual Redundancy Protocol) provides active/backup redundancy for routers.
 Every VRRP router has a physical IP/IPv6 address, and a virtual address.
 On startup, routers elect the master, and the router with the highest priority becomes the master and assigns the virtual address to its interface.
 All routers with lower priorities become backup routers. The master then starts sending keepalive packets to notify other routers that it's available.
@@ -31,7 +31,7 @@ You can verify your VRRP group status with the operational mode ``run show vrrp`
 
 .. code-block:: console
 
-  vyos@vyos# run show vrrp 
+  vyos@vyos# run show vrrp
   Name        Interface      VRID  State    Last Transition
   ----------  -----------  ------  -------  -----------------
   Foo         eth1             10  MASTER   2s
@@ -66,7 +66,7 @@ The priority must be an integer number from 1 to 255. Higher priority value incr
 Sync groups
 -----------
 
-A sync group allows VRRP groups to transition together.  
+A sync group allows VRRP groups to transition together.
 
 .. code-block:: console
 

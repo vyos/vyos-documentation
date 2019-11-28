@@ -105,9 +105,9 @@ Directory as authentication backend. Queries are done via LDAP.
    listen-address 192.168.188.103 {
        disable-transparent
    }
-  
+
 * ``base-dn`` set the base directory for the search
-* ``bind-dn`` and ``password``: set the user, which is used for the ldap search 
+* ``bind-dn`` and ``password``: set the user, which is used for the ldap search
 * ``filter-expression``: set the exact filter which a authorized user match in a ldap-search. In this example every User is able to authorized.
 
 You can find more about the ldap authentication `here <http://www.squid-cache.org/Versions/v3/3.2/manuals/basic_ldap_auth.html>`_

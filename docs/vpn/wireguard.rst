@@ -42,7 +42,7 @@ Named keypairs can be used on a interface basis, if configured.
 If multiple wireguard interfaces are being configured, each can have
 their own keypairs.
 
-The commands below will generate 2 keypairs, which are not related 
+The commands below will generate 2 keypairs, which are not related
 to each other.
 
 .. code-block:: console
@@ -170,7 +170,7 @@ In the following example, the IPs for the remote clients are defined in the peer
         port 2224
     }
 
-The following is the config for the iPhone peer above.  It's important to note that the ``AllowedIPs`` setting 
+The following is the config for the iPhone peer above.  It's important to note that the ``AllowedIPs`` setting
 directs all IPv4 and IPv6 traffic through the connection.
 
 .. code-block:: console

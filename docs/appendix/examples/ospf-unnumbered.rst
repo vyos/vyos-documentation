@@ -50,28 +50,28 @@ Results
 
 .. code-block:: console
 
-  vyos@vyos:~$ show interfaces 
+  vyos@vyos:~$ show interfaces
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
   ---------        ----------                        ---  -----------
-  eth0             10.0.0.1/24                       u/u  
-  eth1             192.168.0.1/32                    u/u  
-  eth2             192.168.0.1/32                    u/u  
-  lo               127.0.0.1/8                       u/u  
+  eth0             10.0.0.1/24                       u/u
+  eth1             192.168.0.1/32                    u/u
+  eth2             192.168.0.1/32                    u/u
+  lo               127.0.0.1/8                       u/u
                    192.168.0.1/32
                    ::1/128
-  vyos@vyos:~$ 
+  vyos@vyos:~$
 
 
 .. code-block:: console
 
-  vyos@vyos:~$ show ip route 
+  vyos@vyos:~$ show ip route
   Codes: K - kernel route, C - connected, S - static, R - RIP,
          O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
          T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
          F - PBR, f - OpenFabric,
          > - selected route, * - FIB route, q - queued route, r - rejected route
-  
+
   S>* 0.0.0.0/0 [210/0] via 10.0.0.254, eth0, 00:57:34
   O   10.0.0.0/24 [110/20] via 192.168.0.2, eth1 onlink, 00:13:21
                               via 192.168.0.2, eth2 onlink, 00:13:21
@@ -82,35 +82,35 @@ Results
   C>* 192.168.0.1/32 is directly connected, lo, 00:57:36
   O>* 192.168.0.2/32 [110/1] via 192.168.0.2, eth1 onlink, 00:29:03
     *                        via 192.168.0.2, eth2 onlink, 00:29:03
-  vyos@vyos:~$ 
+  vyos@vyos:~$
 
 
 - Router B:
 
 .. code-block:: console
 
-  vyos@vyos:~$ show interfaces 
+  vyos@vyos:~$ show interfaces
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
   ---------        ----------                        ---  -----------
-  eth0             10.0.0.2/24                       u/u  
-  eth1             192.168.0.2/32                    u/u  
-  eth2             192.168.0.2/32                    u/u  
-  lo               127.0.0.1/8                       u/u  
+  eth0             10.0.0.2/24                       u/u
+  eth1             192.168.0.2/32                    u/u
+  eth2             192.168.0.2/32                    u/u
+  lo               127.0.0.1/8                       u/u
                    192.168.0.2/32
                    ::1/128
-  vyos@vyos:~$ 
+  vyos@vyos:~$
 
 
 .. code-block:: console
 
-  vyos@vyos:~$ show ip route 
+  vyos@vyos:~$ show ip route
   Codes: K - kernel route, C - connected, S - static, R - RIP,
          O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
          T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
          F - PBR, f - OpenFabric,
          > - selected route, * - FIB route, q - queued route, r - rejected route
-  
+
   S>* 0.0.0.0/0 [210/0] via 10.0.0.254, eth0, 00:57:34
   O   10.0.0.0/24 [110/20] via 192.168.0.1, eth1 onlink, 00:13:21
                               via 192.168.0.1, eth2 onlink, 00:13:21
@@ -121,5 +121,5 @@ Results
   C>* 192.168.0.2/32 is directly connected, lo, 00:57:36
   O>* 192.168.0.1/32 [110/1] via 192.168.0.1, eth1 onlink, 00:29:03
     *                        via 192.168.0.1, eth2 onlink, 00:29:03
-  vyos@vyos:~$ 
+  vyos@vyos:~$
 

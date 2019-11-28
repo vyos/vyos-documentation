@@ -45,7 +45,7 @@ For completion the key below corresponds to the key listed in the URL above.
 
   -----BEGIN PGP PUBLIC KEY BLOCK-----
   Version: GnuPG v1.4.12 (GNU/Linux)
-  
+
   mQINBFIIUZwBEADGl+wkZpYytQxd6LnjDZZScziBKYJbjInetYeS0SUrgpqnPkzL
   2CiGfPczLwpYY0zWxpUhTvqjFsE5yDpgs0sPXIgUTFE1qfZQE+WD1I1EUM6sp/38
   2xKQ9QaNc8oHuYINLYYmNYra6ZjIGtQP9WOX//IDYB3fhdwlmiW2z0hux2OnPWdh
@@ -131,7 +131,7 @@ release.
    Digital signature is valid.
    Checking MD5 checksums of files on the ISO image...OK.
    Done!
-   
+
    What would you like to name this image? [1.0.0]: [return]
    OK.  This image will be named: 1.0.0
    Installing "1.0.0" image.
@@ -146,7 +146,7 @@ release.
    Copying SSH keys...
    Setting up grub configuration...
    Done.
-   
+
    vyatta@vyatta:~$ show system image
    The system currently has the following image(s) installed:
 

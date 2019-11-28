@@ -33,9 +33,9 @@ Connections can be locally checked via the command
 .. code-block:: console
 
   show pppoe-server sessions
-  ifname | username |     ip     |    calling-sid    | rate-limit  | state  |  uptime  | rx-bytes | tx-bytes 
+  ifname | username |     ip     |    calling-sid    | rate-limit  | state  |  uptime  | rx-bytes | tx-bytes
   -------+----------+------------+-------------------+-------------+--------+----------+----------+----------
-  ppp0   | foo      | 10.1.1.100 | 08:00:27:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B     
+  ppp0   | foo      | 10.1.1.100 | 08:00:27:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 
 
 Client IP address pools
@@ -95,7 +95,7 @@ Example, from radius-server send command for disconnect client with username tes
 .. code-block:: console
 
   root@radius-server:~# echo "User-Name=test" | radclient -x 10.1.1.2:3799 disconnect secret123
-  
+
 You can also use another attributes for identify client for disconnect, like Framed-IP-Address, Acct-Session-Id, etc.
 Result commands appears in log
 
@@ -136,7 +136,7 @@ Bandwidth Shaping
 
 Bandwidth rate limits can be set for local users or RADIUS based attributes.
 
-Bandwidth Shaping for local users 
+Bandwidth Shaping for local users
 =================================
 
 The rate-limit is set in kbit/sec.
@@ -209,8 +209,8 @@ The client, once successfully authenticated, will receive an IPv4 and an IPv6 /6
 
 .. code-block:: console
 
-  vyos@pppoe-server:~$ sh pppoe-server sessions 
-   ifname | username |     ip      |            ip6           |       ip6-dp        |    calling-sid    | rate-limit | state  |  uptime  | rx-bytes | tx-bytes 
+  vyos@pppoe-server:~$ sh pppoe-server sessions
+   ifname | username |     ip      |            ip6           |       ip6-dp        |    calling-sid    | rate-limit | state  |  uptime  | rx-bytes | tx-bytes
   --------+----------+-------------+--------------------------+---------------------+-------------------+------------+--------+----------+----------+----------
    ppp0   | test     | 192.168.0.1 | 2001:db8:8002:0:200::/64 | 2001:db8:8003::1/56 | 08:00:27:12:42:eb |            | active | 00:00:49 | 875 B    | 2.1 KiB
 

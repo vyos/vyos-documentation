@@ -16,7 +16,7 @@ Interface eth1 LAN is behind NAT. In order to subscribe 10.0.0.0/23 subnet multi
 
 .. code-block:: console
 
-  # show protocols igmp-proxy 
+  # show protocols igmp-proxy
   interface eth0 {
       alt-subnet 10.0.0.0/23
       role upstream

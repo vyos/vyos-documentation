@@ -55,7 +55,7 @@ reserving an average of 200-300 sessions per host system.
 Example: For an ~8,000 host network a source NAT pool of 32 IP addresses is
 recommended.
 
-A pool of addresses can be defined by using a **-** in the 
+A pool of addresses can be defined by using a **-** in the
 `set nat source rule [n] translation address` statement.
 
 .. code-block:: console
@@ -429,7 +429,7 @@ Additionally, we want to use VPNs only on our eth1 interface (the external inter
 IPSec VPN Tunnels
 *****************
 
-We'll use the IKE and ESP groups created above for this VPN. 
+We'll use the IKE and ESP groups created above for this VPN.
 Because we need access to 2 different subnets on the far side, we will need two different tunnels.
 If you changed the names of the ESP group and IKE group in the previous step, make sure you use the correct names here too.
 

@@ -205,7 +205,7 @@ SNMP Extensions
 ^^^^^^^^^^^^^^^
 
 To extend SNMP agent functionality, custom scripts can be executed every time
-the agent is being called. This can be achieved by using 
+the agent is being called. This can be achieved by using
 ``arbitrary extensioncommands``. The first step is to create a functional
 script of course, then upload it to your VyOS instance via the command
 ``scp your_script.sh vyos@your_router:/config/user-data``.

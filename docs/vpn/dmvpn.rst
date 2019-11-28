@@ -160,7 +160,7 @@ HUB Example Configuration:
   set protocols static route 0.0.0.0/0 next-hop 1.1.1.2
   set protocols static route 192.168.2.0/24 next-hop 10.0.0.2
   set protocols static route 192.168.3.0/24 next-hop 10.0.0.3
-  
+
 HUB on AWS Configuration Specifics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

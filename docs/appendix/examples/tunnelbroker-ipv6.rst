@@ -3,7 +3,7 @@
 VyOS Tunnelbroker.net IPv6
 --------------------------
 
-This guides walks through the setup of `Tunnelbroker.net <https://www.tunnelbroker.net/>`_ for an IPv6 Tunnel.  
+This guides walks through the setup of `Tunnelbroker.net <https://www.tunnelbroker.net/>`_ for an IPv6 Tunnel.
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -78,9 +78,9 @@ At this point your VyOS install should have full IPv6, but now your LAN devices 
 With Tunnelbroker.net, you have two options:
 
 - Routed /64. This is the default assignment.  In IPv6-land, it's good for a single "LAN", and is somewhat equivalent to a /24.  Example: `2001:470:xxxx:xxxx::/64`
-- Routed /48. This is something you can request by clicking the "Assign /48" link in the Tunnelbroker.net tunnel config.  It allows you to have up to 65k LANs. Example: `2001:470:xxxx::/48` 
+- Routed /48. This is something you can request by clicking the "Assign /48" link in the Tunnelbroker.net tunnel config.  It allows you to have up to 65k LANs. Example: `2001:470:xxxx::/48`
 
-Unlike IPv4, IPv6 is really not designed to be broken up smaller than /64.  So if you ever want to have multiple LANs, VLANs, DMZ, etc, you'll want to ignore the assigned /64, and request the /48 and use that.  
+Unlike IPv4, IPv6 is really not designed to be broken up smaller than /64.  So if you ever want to have multiple LANs, VLANs, DMZ, etc, you'll want to ignore the assigned /64, and request the /48 and use that.
 
 Single LAN Setup
 ^^^^^^^^^^^^^^^^
@@ -89,7 +89,7 @@ Single LAN setup where eth1 is your LAN interface.  Use the /64 (all the xxxx sh
 
 .. code-block:: console
 
-   set interfaces ethernet eth1 address '2001:470:xxxx:xxxx::1/64'    
+   set interfaces ethernet eth1 address '2001:470:xxxx:xxxx::1/64'
    set interfaces ethernet eth1 ipv6 router-advert name-server '2001:4860:4860::8888'
    set interfaces ethernet eth1 ipv6 router-advert name-server '2001:4860:4860::8844'
    set interfaces ethernet eth1 ipv6 router-advert prefix 2001:470:xxxx:xxxx::/64 autonomous-flag 'true'
@@ -100,7 +100,7 @@ Single LAN setup where eth1 is your LAN interface.  Use the /64 (all the xxxx sh
 - This accomplishes a few things:
 
   - Sets your LAN interface's IP address
-  - Enables router advertisements.  This is an IPv6 alternative for DHCP (though DHCPv6 can still be used). With RAs, Your devices will automatically find the information they need for routing and DNS. 
+  - Enables router advertisements.  This is an IPv6 alternative for DHCP (though DHCPv6 can still be used). With RAs, Your devices will automatically find the information they need for routing and DNS.
 
 Multiple LAN/DMZ Setup
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -114,7 +114,7 @@ The format of these addresses:
 - `2001:470:xxxx:2::/64`: Another subnet
 - `2001:470:xxxx:ffff:/64`: The last usable /64 subnet.
 
-In the above examples, 1,2,ffff are all chosen by you.  You can use 1-ffff (1-65535). 
+In the above examples, 1,2,ffff are all chosen by you.  You can use 1-ffff (1-65535).
 
 So, when your LAN is eth1, your DMZ is eth2, your cameras live on eth3, etc:
 
@@ -144,7 +144,7 @@ So, when your LAN is eth1, your DMZ is eth2, your cameras live on eth3, etc:
 Firewall
 ^^^^^^^^
 
-Finally, don't forget the :ref:`firewall`.  The usage is identical, except for instead of `set firewall name NAME`, you would use `set firewall ipv6-name NAME`. 
+Finally, don't forget the :ref:`firewall`.  The usage is identical, except for instead of `set firewall name NAME`, you would use `set firewall ipv6-name NAME`.
 
 Similarly, to attach the firewall, you would use `set interfaces ethernet eth0 firewall in ipv6-name` or `set zone-policy zone LOCAL from WAN firewall ipv6-name`
 

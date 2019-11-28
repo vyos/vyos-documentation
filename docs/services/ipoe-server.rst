@@ -26,7 +26,7 @@ Other DHCP discovery requests will be ignored, unless the client mac has been en
   set service ipoe-server interface eth2 client-subnet '192.168.0.0/24'
 
 
-The first address of the parameter ``client-subnet``, will be used as the default gateway. 
+The first address of the parameter ``client-subnet``, will be used as the default gateway.
 Connected sessions can be checked via the ``show ipoe-server sessions`` command.
 
 .. code-block:: console
@@ -59,10 +59,10 @@ IPv6 DNS addresses are optional.
 
 .. code-block:: console
 
-  vyos@ipoe-server# run sh ipoe-server sessions 
-  ifname | called-sid |    calling-sid    |     ip      |               ip6               | ip6-dp          | rate-limit | state  |  uptime  |        sid       
+  vyos@ipoe-server# run sh ipoe-server sessions
+  ifname | called-sid |    calling-sid    |     ip      |               ip6               | ip6-dp          | rate-limit | state  |  uptime  |        sid
   -------+------------+-------------------+-------------+---------------------------------+-----------------+------------+--------+----------+------------------
-  ipoe0  | eth3       | 08:00:27:2f:d8:06 | 192.168.1.2 | 2001:db8::a00:27ff:fe2f:d806/64 | 2001:db8:1::/56 |            | active | 01:02:59 | 4626faf71b12cc25  
+  ipoe0  | eth3       | 08:00:27:2f:d8:06 | 192.168.1.2 | 2001:db8::a00:27ff:fe2f:d806/64 | 2001:db8:1::/56 |            | active | 01:02:59 | 4626faf71b12cc25
 
 
 The clients cpe can now communicate via IPv4 or IPv6. All devices behind ``2001:db8::a00:27ff:fe2f:d806/64`` can use addresses from ``2001:db8:1::/56`` and can
@@ -100,7 +100,7 @@ Bandwidth Shaping
 Bandwidth rate limits can be set for local users within the configuration or via RADIUS based attributes.
 
 
-Bandwidth Shaping for local users 
+Bandwidth Shaping for local users
 =================================
 
 The rate-limit is set in kbit/sec.
@@ -117,9 +117,9 @@ The rate-limit is set in kbit/sec.
 
 .. code-block:: console
 
-  vyos@vyos# run show ipoe-server sessions 
+  vyos@vyos# run show ipoe-server sessions
 
-  ifname | called-sid |    calling-sid    |     ip      | ip6 | ip6-dp | rate-limit | state  |  uptime  |        sid       
+  ifname | called-sid |    calling-sid    |     ip      | ip6 | ip6-dp | rate-limit | state  |  uptime  |        sid
   -------+------------+-------------------+-------------+-----+--------+------------+--------+----------+------------------
   ipoe0  | eth2       | 08:00:27:2f:d8:06 | 192.168.0.2 |     |        | 500/500    | active | 00:00:05 | dccc870fd31349fb
 

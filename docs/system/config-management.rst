@@ -28,6 +28,6 @@ A commit look now like this:
     Archiving config...
     tftp://10.0.0.2  OK
     [edit]
-    vyos@vyos-R1# 
+    vyos@vyos-R1#
 
 The filename has this format: config.boot-hostname.YYYYMMDD_HHMMSS

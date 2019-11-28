@@ -81,7 +81,7 @@ Our implementation uses VMware's Distributed Port Groups, which allows VMware to
 Basic Setup (via console)
 -------------------------
 
-Create your router1 VM so it is able to withstand a VM Host failing, or a network link failing. Using VMware, this is achieved by enabling vSphere DRS, vSphere Availability, and creating a Distributed Port Group that uses LACP. 
+Create your router1 VM so it is able to withstand a VM Host failing, or a network link failing. Using VMware, this is achieved by enabling vSphere DRS, vSphere Availability, and creating a Distributed Port Group that uses LACP.
 
 Many other Hypervisors do this, and I'm hoping that this document will be expanded to document how to do this for others.
 
@@ -224,7 +224,7 @@ router2
 Create vrrp sync-group
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The sync group is used to replicate connection tracking. It needs to be assigned to a random VRRP group, and we are creating a sync group called ``sync`` using the vrrp group ``int``. 
+The sync group is used to replicate connection tracking. It needs to be assigned to a random VRRP group, and we are creating a sync group called ``sync`` using the vrrp group ``int``.
 
 .. code-block:: console
 
@@ -251,7 +251,7 @@ You should be able to ping to and from all the IPs you have allocated.
 NAT and conntrack-sync
 ----------------------
 
-Masquerade Traffic originating from 10.200.201.0/24 that is heading out the public interface. 
+Masquerade Traffic originating from 10.200.201.0/24 that is heading out the public interface.
 Note we explicitly exclude the primary upstream network so that BGP or OSPF traffic doesn't accidentally get NAT'ed.
 
 .. code-block:: console
@@ -265,7 +265,7 @@ Note we explicitly exclude the primary upstream network so that BGP or OSPF traf
 Configure conntrack-sync and disable helpers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Most conntrack modules cause more problems than they're worth, especially in a complex network. Turn them off by default, and if you need to turn them on later, you can do so. 
+Most conntrack modules cause more problems than they're worth, especially in a complex network. Turn them off by default, and if you need to turn them on later, you can do so.
 
 .. code-block:: console
 
@@ -413,7 +413,7 @@ Enable OSPF
 ^^^^^^^^^^^
 
 Every router **must** have a unique router-id.
-The 'reference-bandwidth' is used because when OSPF was originally designed, the idea of a link faster than 1gbit was unheard of, and it does not scale correctly. 
+The 'reference-bandwidth' is used because when OSPF was originally designed, the idea of a link faster than 1gbit was unheard of, and it does not scale correctly.
 
 .. code-block:: console
 
