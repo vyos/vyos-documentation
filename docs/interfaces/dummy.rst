@@ -10,7 +10,7 @@ purposes.
 
 Configuration commands:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# set interfaces dummy dum0
   Possible completions:

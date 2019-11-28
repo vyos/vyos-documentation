@@ -28,7 +28,7 @@ Prerequisites:
 
 Multiple DHCP ranges can be defined and may contain holes.
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcp-server shared-network-name '<name>' authoritative
   set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 default-router 192.0.2.1
@@ -39,7 +39,7 @@ Multiple DHCP ranges can be defined and may contain holes.
 
 The generated config will look like:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# show service dhcp-server shared-network-name '<name>'
   authoritative
@@ -97,7 +97,7 @@ Failover
 
 VyOS provides support for DHCP failover:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' \
       failover local-address '192.0.2.1'
@@ -111,14 +111,14 @@ VyOS provides support for DHCP failover:
 The primary and secondary statements determines whether the server is
 primary or secondary
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' \
       failover status 'primary'
 
 or
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' \
       failover status 'secondary'
@@ -237,7 +237,7 @@ server. The following example describes a common scenario.
 * Address pool shall be ``2001:db8::100`` through ``2001:db8::199``.
 * Lease time will be left at the default value which is 24 hours
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 \
       address-range start 2001:db8::100 stop 2001:db8::199
@@ -246,7 +246,7 @@ server. The following example describes a common scenario.
 
 The configuration will look as follows:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcpv6-server
       shared-network-name NET1 {
@@ -275,7 +275,7 @@ be created. The following example explains the process.
 .. hint:: The MAC address identifier is defined by the last 4 byte of the
    MAC address.
 
-.. code-block:: console
+.. code-block:: none
 
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 \
       static-mapping client1 ipv6-address 2001:db8::101
@@ -284,7 +284,7 @@ be created. The following example explains the process.
 
 The configuration will look as follows:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcp-server shared-network-name NET1
      shared-network-name NET1 {
@@ -362,7 +362,7 @@ Example
 
 The generated configuration will look like:
 
-.. code-block:: console
+.. code-block:: none
 
   show service dhcp-relay
       interface eth1
@@ -440,7 +440,7 @@ Example
 
 The generated configuration will look like:
 
-.. code-block:: console
+.. code-block:: none
 
   commit
   show service dhcpv6-relay

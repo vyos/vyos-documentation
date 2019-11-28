@@ -10,7 +10,7 @@ Configuration
 
 - Router A:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces ethernet eth0 address '10.0.0.1/24'
   set interfaces ethernet eth1 address '192.168.0.1/32'
@@ -27,7 +27,7 @@ Configuration
 
 - Router B:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces ethernet eth0 address '10.0.0.2/24'
   set interfaces ethernet eth1 address '192.168.0.2/32'
@@ -48,7 +48,7 @@ Results
 
 - Router A:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -61,7 +61,7 @@ Results
                    192.168.0.1/32
                    ::1/128
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show ip route
   Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -83,7 +83,7 @@ Results
 
 - Router B:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -96,7 +96,7 @@ Results
                    192.168.0.2/32
                    ::1/128
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show ip route
   Codes: K - kernel route, C - connected, S - static, R - RIP,

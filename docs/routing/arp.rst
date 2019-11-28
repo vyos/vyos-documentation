@@ -31,7 +31,7 @@ Operation
 
 Display all known ARP table entries spanning accross all interfaces
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show protocols static arp
   Address                  HWtype  HWaddress           Flags Mask     Iface
@@ -43,7 +43,7 @@ Display all known ARP table entries spanning accross all interfaces
 
 Display all known ARP table entries on a given interface only (`eth1`):
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show protocols static arp interface eth1
   Address                  HWtype  HWaddress           Flags Mask     Iface

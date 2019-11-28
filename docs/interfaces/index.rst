@@ -7,7 +7,7 @@ Network Interfaces
 Configured interfaces on a VyOS system can be displayed using the
 ``show interfaces`` command.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -21,7 +21,7 @@ Configured interfaces on a VyOS system can be displayed using the
 A specific interface can be shown using the ``show interfaces <type> <name>``
 command.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces ethernet eth0
   eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000

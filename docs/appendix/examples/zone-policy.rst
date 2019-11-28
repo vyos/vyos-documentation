@@ -8,7 +8,7 @@ Native IPv4 and IPv6
 
 We have three networks.
 
-.. code-block:: console
+.. code-block:: none
 
   WAN - 172.16.10.0/24, 2001:0DB8:0:9999::0/64
   LAN - 192.168.100.0/24, 2001:0DB8:0:AAAA::0/64
@@ -25,7 +25,7 @@ WAN is on VLAN 10, LAN on VLAN 20, and DMZ on VLAN 30.
 
 It will look something like this:
 
-.. code-block:: console
+.. code-block:: none
 
   interfaces {
       ethernet eth0 {
@@ -80,7 +80,7 @@ ruleset.
 In rules, it is good to keep them named consistently. As the number of rules
 you have grows, the more consistency you have, the easier your life will be.
 
-.. code-block:: console
+.. code-block:: none
 
   Rule 1 - State Established, Related
   Rule 2 - State Invalid
@@ -105,7 +105,7 @@ significant headaches when trying to troubleshoot a connectivity issue.
 
 To add logging to the default rule, do:
 
-.. code-block:: console
+.. code-block:: none
 
   set firewall name <ruleSet> enable-default-log
 
@@ -143,7 +143,7 @@ The following are the rules that were created for this example
 (may not be complete), both in IPv4 and IPv6. If there is no IP specified,
 then the source/destination address is not explicit.
 
-.. code-block:: console
+.. code-block:: none
 
   WAN – DMZ:192.168.200.200 – tcp/80
   WAN – DMZ:192.168.200.200 – tcp/443
@@ -195,7 +195,7 @@ then the source/destination address is not explicit.
 
 Since we have 4 zones, we need to setup the following rulesets.
 
-.. code-block:: console
+.. code-block:: none
 
   Lan-wan
   Lan-local
@@ -217,7 +217,7 @@ connection attempts.
 
 This is an example of the three base rules.
 
-.. code-block:: console
+.. code-block:: none
 
   name wan-lan {
     default-action drop
@@ -241,7 +241,7 @@ This is an example of the three base rules.
 
 Here is an example of an IPv6 DMZ-WAN ruleset.
 
-.. code-block:: console
+.. code-block:: none
 
   ipv6-name dmz-wan-6 {
     default-action drop
@@ -317,7 +317,7 @@ zone-policy.
 
 Start by setting the interface and default action for each zone.
 
-.. code-block:: console
+.. code-block:: none
 
   set zone-policy zone dmz default-action drop
   set zone-policy zone dmz interface eth0.30
@@ -342,7 +342,7 @@ LAN, WAN, DMZ, local and TUN (tunnel)
 
 v6 pairs would be:
 
-.. code-block:: console
+.. code-block:: none
 
   lan-tun
   lan-local
@@ -363,7 +363,7 @@ You would have to add a couple of rules on your wan-local ruleset to allow proto
 
 Something like:
 
-.. code-block:: console
+.. code-block:: none
 
   rule 400 {
     action accept

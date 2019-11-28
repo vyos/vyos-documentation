@@ -19,7 +19,7 @@ URL Filtering is provided by Squidguard_.
 Configuration
 ^^^^^^^^^^^^^^
 
-.. code-block:: console
+.. code-block:: none
 
   # Enable proxy service
   set service webproxy listen-address 192.168.0.1
@@ -46,7 +46,7 @@ Filtering by category
 If you wan't to use existing blacklists you have to create/download a database
 first. Otherwise you will not be able to commit the config changes.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# commit
   [ service webproxy ]
@@ -83,7 +83,7 @@ The embedded Squid proxy can use LDAP to authenticate users against a company
 wide directory. The following configuration is an example of how to use Active
 Directory as authentication backend. Queries are done via LDAP.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# show service webproxy
    authentication {
@@ -117,7 +117,7 @@ Adjusting cache size
 
 The size of the proxy cache can be adjusted by the user.
 
-.. code-block:: console
+.. code-block:: none
 
   set service webproxy cache-size
    Possible completions:

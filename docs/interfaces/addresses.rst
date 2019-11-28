@@ -27,7 +27,7 @@ PPP.
 
 The command is ``set interfaces $type $name address $address``. Examples:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces ethernet eth0 address 192.0.2.1/24
   set interfaces tunnel tun0 address 10.0.0.1/30
@@ -43,7 +43,7 @@ Pseudo-ethernet, Wireless).
 
 The command is ``set interfaces $type $name address dhcp``. Examples:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces ethernet eth0 vif 90 address dhcp
   set interfaces bridge br0 address dhcp
@@ -61,7 +61,7 @@ except :ref:`tunnel-interface`.
 
 The command is ``set interfaces $type $name address $address``. Examples:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces ethernet eth0 address 2001:db8:100::ffff/64
   set interfaces tunnel tun0 address 2001:db8::1/64
@@ -77,7 +77,7 @@ Pseudo-ethernet, Wireless).
 
 The command is `set interfaces $type $name address dhcpv6`. Examples:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces bonding bond1 address dhcpv6
   set interfaces bridge br0 vif 56 address dhcpv6
@@ -91,7 +91,7 @@ interfaces, and those that are directly connected to a physical interface
 
 The command is ``set interfaces $type $name ipv6 address autoconf``. Examples:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces ethernet eth0 vif 90 ipv6 address autoconf
   set interfaces bridge br0 ipv6 address autoconf
@@ -109,7 +109,7 @@ MAC address, if you specify the prefix.
 The command is `set interfaces $type $name ipv6 address eui64 $prefix`.
 Examples:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces bridge br0 ipv6 address eui64 2001:db8:beef::/64
   set interfaces pseudo-ethernet peth0 ipv6 address eui64 2001:db8:aa::/64
@@ -123,14 +123,14 @@ of what is known as SLAAC (Stateless Address Autoconfiguration).
 
 To enable or disable, use:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces <interface> ipv6 router-advert send-advert <true|false>
 
 
 To set the options described in "Router Advertisement Message Format":
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos#  set interfaces <interface> ipv6 router-advert
   Possible completions:
@@ -154,7 +154,7 @@ Prefix Information
 
 Prefix information is described in :rfc:`4861#section-4.6.2`.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# set interfaces <interface> ipv6 router-advert prefix <h:h:h:h:h:h:h:h/x>
   Possible completions:
@@ -169,7 +169,7 @@ Receiving Router Advertisements
 To receive and accept RAs on an interface, you need to enable it with the
 following configuration command
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# set system sysctl custom net.ipv6.conf.<interface>.accept_ra value 2
 

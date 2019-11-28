@@ -5,33 +5,33 @@ Use DNS forwarding if you want your router to function as a DNS server for the
 local network. There are several options, the easiest being 'forward all
 traffic to the system DNS server(s)' (defined with set system name-server):
 
-.. code-block:: console
+.. code-block:: none
 
   set service dns forwarding system
 
 Manually setting DNS servers for forwarding:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dns forwarding name-server 8.8.8.8
   set service dns forwarding name-server 8.8.4.4
 
 Manually setting DNS servers with IPv6 connectivity:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dns forwarding name-server 2001:4860:4860::8888
   set service dns forwarding name-server 2001:4860:4860::8844
 
 Setting a forwarding DNS server for a specific domain:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dns forwarding domain example.com server 192.0.2.1
 
 Set which networks or clients are allowed to query the DNS Server. Allow from all:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dns forwarding allow-from 0.0.0.0/0
 
@@ -44,7 +44,7 @@ Router with two interfaces eth0 (WAN link) and eth1 (LAN). Split DNS for example
 * Other DNS requests are forwarded to Google's DNS servers.
 * The IP address for the LAN interface is 192.168.0.1.
 
-.. code-block:: console
+.. code-block:: none
 
   set service dns forwarding domain example.com server 192.0.2.1
   set service dns forwarding name-server 8.8.8.8
@@ -60,7 +60,7 @@ servers.
 
 The IP addresses for the LAN interface are 192.168.0.1 and 2001:db8::1
 
-.. code-block:: console
+.. code-block:: none
 
   set service dns forwarding domain example.com server 192.0.2.1
   set service dns forwarding name-server 8.8.8.8

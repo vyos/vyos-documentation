@@ -8,7 +8,7 @@ The ``system proxy`` option sets the configuration for a proxy, and if necessary
 
 This example sets a proxy for all connections initiated by VyOS, including HTTP, HTTPS, and FTP (anonymous ftp).
 
-.. code-block:: console
+.. code-block:: none
 
   set system proxy url http://10.100.100.1
   set system proxy port 8080
@@ -19,7 +19,7 @@ This example sets a proxy for all connections initiated by VyOS, including HTTP,
 
 That enables the update of a system image if the VyOS system operates behind a proxy.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
   Trying to fetch ISO file from https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso

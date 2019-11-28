@@ -40,7 +40,7 @@ and the RIGHT router is 203.0.113.45
 
 On the LEFT:
 
-.. code-block:: console
+.. code-block:: none
 
   # GRE tunnel
   set interfaces tunnel tun0 encapsulation gre
@@ -90,7 +90,7 @@ RIGHT router has a dynamic address on eth0.
 
 On the LEFT:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces loopback lo address 192.168.99.1/32
 
@@ -101,7 +101,7 @@ On the LEFT:
 
 On the RIGHT:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces loopback lo address 192.168.99.2/32
 
@@ -119,7 +119,7 @@ address, so we'll have to use RSA keys.
 First, on both routers run the operational command "generate vpn rsa-key bits
 2048". You may choose different length than 2048 of course.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@left# run generate vpn rsa-key bits 2048
   Generating rsa-key to /config/ipsec.d/rsa-keys/localhost.key
@@ -131,7 +131,7 @@ First, on both routers run the operational command "generate vpn rsa-key bits
 
 Then on the opposite router, add the RSA key to your config.
 
-.. code-block:: console
+.. code-block:: none
 
   set vpn rsa-keys rsa-key-name LEFT rsa-key KEYGOESHERE
 
@@ -140,7 +140,7 @@ for the peer on the dynamic side.
 
 On the LEFT (static address):
 
-.. code-block:: console
+.. code-block:: none
 
   set vpn rsa-keys rsa-key-name RIGHT rsa-key <PUBLIC KEY FROM THE RIGHT>
 
@@ -165,7 +165,7 @@ On the LEFT (static address):
 
 On the RIGHT (dynamic address):
 
-.. code-block:: console
+.. code-block:: none
 
   set vpn rsa-keys rsa-key-name LEFT rsa-key <PUBLIC KEY FROM THE LEFT>
 

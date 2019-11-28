@@ -9,7 +9,7 @@ to clamp your TCP MSS value for IPv4 and IPv6.
 
 Clamping can be disabled per interface using the `disable` keyword:
 
-.. code-block:: console
+.. code-block:: none
 
   set firewall options interface pppoe0 disable
 
@@ -19,7 +19,7 @@ IPv4
 Clamp outgoing MSS value in a TCP SYN packet to `1452` for `pppoe0` and `1372`
 for your WireGuard `wg02` tunnel.
 
-.. code-block:: console
+.. code-block:: none
 
   set firewall options interface pppoe0 adjust-mss '1452'
   set firewall options interface wg02 adjust-mss '1372'
@@ -32,7 +32,7 @@ Clamp outgoing MSS value in a TCP SYN packet to `1280` for both `pppoe0` and
 
 To achieve the same for IPv6 please use:
 
-.. code-block:: console
+.. code-block:: none
 
   set firewall options interface pppoe0 adjust-mss6 '1280'
   set firewall options interface wg02 adjust-mss6 '1280'

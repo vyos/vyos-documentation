@@ -45,7 +45,7 @@ The WAP in this example has the following characteristics:
 * Use 802.11n protocol
 * Wireless channel ``1``
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces wireless wlan0 address '192.0.2.1/24'
   set interfaces wireless wlan0 type access-point
@@ -58,7 +58,7 @@ The WAP in this example has the following characteristics:
 
 Resulting in
 
-.. code-block:: console
+.. code-block:: none
 
   interfaces {
     [...]
@@ -110,7 +110,7 @@ The WAP in this example has the following characteristics:
 * Wireless channel ``1``
 * RADIUS server at ``192.0.3.10`` with shared-secret ``VyOSPassword``
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces wireless wlan0 address '192.0.2.1/24'
   set interfaces wireless wlan0 type access-point
@@ -124,7 +124,7 @@ The WAP in this example has the following characteristics:
 
 Resulting in
 
-.. code-block:: console
+.. code-block:: none
 
   interfaces {
     [...]
@@ -161,7 +161,7 @@ The example creates a wireless station (commonly referred to as Wi-Fi client)
 that accesses the network through the WAP defined in the above example. The
 default physical device (``phy0``) is used.
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces wireless wlan0 type station
   set interfaces wireless wlan0 address dhcp
@@ -170,7 +170,7 @@ default physical device (``phy0``) is used.
 
 Resulting in
 
-.. code-block:: console
+.. code-block:: none
 
   interfaces {
     [...]
@@ -193,7 +193,7 @@ Operational Commands
 Use this command to view operational status and wireless-specific information
 about all wireless interfaces.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces wireless info
   Interface  Type          SSID                         Channel
@@ -204,7 +204,7 @@ about all wireless interfaces.
 Use this command to view operational status and detailes wireless-specific
 information about all wireless interfaces.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces wireless detail
   wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
@@ -236,7 +236,7 @@ information about all wireless interfaces.
 This command shows both status and statistics on the specified wireless interface.
 The wireless interface identifier can range from wlan0 to wlan999.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces wireless wlan0
   wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
@@ -257,7 +257,7 @@ The wireless interface identifier can range from wlan0 to wlan999.
 This command gives a brief status overview of a specified wireless interface.
 The wireless interface identifier can range from wlan0 to wlan999.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces wireless wlan0 brief
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -271,7 +271,7 @@ The wireless interface identifier can range from wlan0 to wlan999.
 Use this command to view wireless interface queue information.
 The wireless interface identifier can range from wlan0 to wlan999.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces wireless wlan0 queue
   qdisc pfifo_fast 0: root bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
@@ -289,7 +289,7 @@ in station mode.
    hardware. Refer to your driver and wireless hardware documentation for
    further details.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces wireless wlan0 scan
   Address            SSID                          Channel  Signal (dbm)

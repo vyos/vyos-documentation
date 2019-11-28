@@ -22,7 +22,7 @@ this reason, there are no other configuration options for this kind of tunnel.
 
 An example:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces tunnel tun0 encapsulation ipip
   set interfaces tunnel tun0 local-ip 192.0.2.10
@@ -40,7 +40,7 @@ It's not likely that anyone will need it any time soon, but it does exist.
 
 An example:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces tunnel tun0 encapsulation ipip
   set interfaces tunnel tun0 local-ip 2001:db8:aa::1/64
@@ -57,7 +57,7 @@ As the name implies, it's IPv4 encapsulated in IPv6, as simple as that.
 
 An example:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces tunnel tun0 encapsulation ipip6
   set interfaces tunnel tun0 local-ip 2001:db8:aa::1/64
@@ -79,7 +79,7 @@ Electric`_.
 
 An example:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces tunnel tun0 encapsulation sit
   set interfaces tunnel tun0 local-ip 192.0.2.10
@@ -108,7 +108,7 @@ ip otherwise it would have to be configured as well.
 
 **VyOS Router:**
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces tunnel tun100 address '10.0.0.1/30'
   set interfaces tunnel tun100 encapsulation 'gre'
@@ -117,7 +117,7 @@ ip otherwise it would have to be configured as well.
 
 **Cisco IOS Router:**
 
-.. code-block:: console
+.. code-block:: none
 
   interface Tunnel100
   ip address 10.0.0.2 255.255.255.252
@@ -135,7 +135,7 @@ that are discarding IP protocol 47 or blocking your source/desintation traffic.
 
 **1. Confirm IP connectivity between tunnel local-ip and remote-ip:**
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ ping 203.0.113.10 interface 198.51.100.2 count 4
   PING 203.0.113.10 (203.0.113.10) from 198.51.100.2 : 56(84) bytes of data.
@@ -150,7 +150,7 @@ that are discarding IP protocol 47 or blocking your source/desintation traffic.
 
 **2. Confirm the link type has been set to GRE:**
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces tunnel tun100
   tun100@NONE: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1476 qdisc noqueue state UNKNOWN group default qlen 1000
@@ -167,7 +167,7 @@ that are discarding IP protocol 47 or blocking your source/desintation traffic.
 
 **3. Confirm IP connectivity across the tunnel:**
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ ping 10.0.0.2 interface 10.0.0.1 count 4
   PING 10.0.0.2 (10.0.0.2) from 10.0.0.1 : 56(84) bytes of data.
@@ -185,14 +185,14 @@ Virtual Tunnel Interface (VTI)
 
 Set Virtual Tunnel Interface
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces vti vti0 address 192.168.2.249/30
   set interfaces vti vti0 address 2001:db8:2::249/64
 
 Results in:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# show interfaces vti
   vti vti0 {

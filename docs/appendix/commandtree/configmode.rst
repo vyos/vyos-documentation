@@ -3,7 +3,7 @@
 Configuration mode
 ------------------
 
-.. code-block:: console
+.. code-block:: none
 
   confirm           Confirm prior commit-confirm
   comment           Add comment to this configuration element
@@ -39,21 +39,21 @@ The command cannot be used at the top of the configuration hierarchy, only on su
 
 To add a comment to a section, while being already at the proper section level:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit <section>]
   vyos@vyos# comment "Type Comment Here"
 
 To add a comment directly to a section, from the top or a higher section:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# comment <section> "Type Comment Here"
 
 To remove a comment, add a blank comment to overwrite:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit <section>]
   vyos@vyos# comment ""
@@ -63,7 +63,7 @@ Examples
 
 To add a comment to the "interfaces" section:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# edit interfaces
@@ -74,7 +74,7 @@ To add a comment to the "interfaces" section:
 
 The comment would then appear like this:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# show
@@ -86,7 +86,7 @@ The comment would then appear like this:
 
 An important thing to note is that since the comment is added on top of the section, it will not appear if the ``show <section>`` command is used. With the above example, the ``show interfaces`` command would return starting after the "interfaces {" line, hiding the comment:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# show interfaces
@@ -96,7 +96,7 @@ An important thing to note is that since the comment is added on top of the sect
 
 To add a comment to the interfaces section from the top:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# comment interfaces "test"
@@ -104,7 +104,7 @@ To add a comment to the interfaces section from the top:
 
 The comment can be added to any node that already exists, even if it's multiple levels lower:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# comment interfaces ethernet eth0 vif 222 address "Far down comment"
@@ -119,7 +119,7 @@ To discard the changes without committing, use the ``discard`` command. The ``co
 
 The confirm keyword can be added, see ``commit-confirm``. A comment can be entered, it will appear in the commit log.
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# commit
@@ -134,7 +134,7 @@ The ``commit-confirm`` command commits the proposed changes to the configuration
 If the ``confirm`` command is not entered before the timer expiration, the configuration will be rolled back and VyOS will reboot.
 The default timer value is 10 minutes, but a custom value can be entered.
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# commit-confirm
@@ -149,7 +149,7 @@ Compare
 
 VyOS maintains backups of previous configurations. To compare configuration revisions in configuration mode, use the compare command:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# compare
@@ -178,7 +178,7 @@ The ``copy`` command allows you to copy a configuration object.
 
 Copy the configuration entrys from a firewall name WAN rule 1 to rule 2.
 
-.. code-block:: console
+.. code-block:: none
 
   [edit firewall name WAN]
   vyos@vyos# show
@@ -212,7 +212,7 @@ The ``delte`` command is to delete a configuration entry.
 
 This Example delete the hole ``service tftp-server`` section.
 
-.. code-block:: console
+.. code-block:: none
 
   delete service tftp-server
 
@@ -221,7 +221,7 @@ Discard
 
 The ``discard`` command removes all pending configuration changes.
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# discard
@@ -235,7 +235,7 @@ The ``edit`` command allows you to navigate down into the configuration tree.
 To get back to an upper level, use the ``up`` command or use the ``top`` command to get back to the upper most level.
 The ``[edit]`` text displays where the user is located in the configuration tree.
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# edit interfaces
@@ -255,14 +255,14 @@ The ``exit`` command doesn't save the configuration, only the ``save`` command d
 Exiting from a configuration level:
 
 
-.. code-block:: console
+.. code-block:: none
 
   [edit interfaces ethernet eth0]
   vyos@vyos# exit
 
 Exiting from configuration mode:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# exit
@@ -271,14 +271,14 @@ Exiting from configuration mode:
 
 Exiting from operational mode:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ exit
   logout
 
 Error message when trying to exit with uncommitted changes:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# exit
   Cannot exit: configuration modified.
@@ -287,7 +287,7 @@ Error message when trying to exit with uncommitted changes:
 
 Warning message when exiting with unsaved changes:
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# exit
@@ -298,7 +298,7 @@ Load
 
 The ``load`` command load a configuration from a local or remote file. You have to be use ``commit`` to make the change active
 
-.. code-block:: console
+.. code-block:: none
 
   <Enter>				Load from system config file
   <file>				Load from file on local machine
@@ -310,7 +310,7 @@ The ``load`` command load a configuration from a local or remote file. You have 
   tftp://<host>/<file>			Load from file on remote machine
 
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# load
@@ -324,7 +324,7 @@ Loadkey
 
 Copies the content of a public key to the ~/.ssh/authorized_keys file.
 
-.. code-block:: console
+.. code-block:: none
 
   loadkey <username> [tab]
 
@@ -342,7 +342,7 @@ The ``merge`` command merge the config from a local or remote file with the runn
 
 In the example below exist a ``default-firewall.config`` file with some common firewall rules you saved earlier.
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# show firewall
@@ -384,7 +384,7 @@ The ``rename`` command allows you to rename or move a configuration object.
 
 See here how to move the configuration entrys from vlanid 3 to 2
 
-.. code-block:: console
+.. code-block:: none
 
   [edit interfaces ethernet eth1]
   vyos@vyos# show
@@ -418,7 +418,7 @@ Rollback
 You can ``rollback`` configuration using the rollback command, however this command will currently trigger a system reboot.
 Use the compare command to verify the configuration you want to rollback to.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# compare 1
   [edit system]
@@ -436,7 +436,7 @@ Run
 
 The ``run`` command allows you to execute any operational mode commands without exiting the configuration session.
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# run show interfaces
@@ -451,7 +451,7 @@ Save
 
 The ``save`` command saves the current configuration to non-volatile storage. VyOS also supports saving and loading configuration remotely using SCP, FTP, or TFTP.
 
-.. code-block:: console
+.. code-block:: none
 
   <Enter>				Save to system config file
   <file>				Save to file on local machine
@@ -465,7 +465,7 @@ Set
 
 The ``set`` command create all configuration entrys
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# set protocols static route 0.0.0.0/0 next-hop 192.168.1.1
@@ -477,7 +477,7 @@ The ``show`` command in the configuration mode displays the configuration and sh
 
 Show the hole config, the address and description of eth1 is moving to vlan 2 if you commit the changes.
 
-.. code-block:: console
+.. code-block:: none
 
   [edit]
   vyos@vyos# show

@@ -94,7 +94,7 @@ Bonding on Hardware Router
 
 Create a LACP bond on the hardware router. We are assuming that eth0 and eth1 are connected to port 8 on both switches, and that those ports are configured as a Port-Channel.
 
-.. code-block:: console
+.. code-block:: none
 
    set interfaces bonding bond0 description 'Switch Port-Channel'
    set interfaces bonding bond0 hash-policy 'layer2'
@@ -111,14 +111,14 @@ VLAN 100 and 201 will have floating IP addresses, but VLAN50 does not, as this i
 
 For the hardware router, replace ``eth0`` with ``bond0``. As (almost) every command is identical, this will not be specified unless different things need to be performed on different hosts.
 
-.. code-block:: console
+.. code-block:: none
 
    set interfaces ethernet eth0 vif 50 address '192.0.2.21/24'
 
 
 In this case, the hardware router has a different IP, so it would be
 
-.. code-block:: console
+.. code-block:: none
 
    set interfaces ethernet bond0 vif 50 address '192.0.2.22/24'
 
@@ -128,7 +128,7 @@ Add (temporary) default route, and enable SSH
 
 It is assumed that the routers provided by upstream are capable of acting as a default router. Add that as a static route, and enable SSH so you can now SSH into the routers, rather than using the console.
 
-.. code-block:: console
+.. code-block:: none
 
    set protocols static route 0.0.0.0/0 next-hop 192.0.2.11
    set service ssh
@@ -158,7 +158,7 @@ This has a floating IP address of 10.200.201.1, using virtual router ID 201. The
 router1
 ~~~~~~~
 
-.. code-block:: console
+.. code-block:: none
 
    set interfaces ethernet eth0 vif 201 address 10.200.201.2/24
    set high-availability vrrp group int hello-source-address '10.200.201.2'
@@ -173,7 +173,7 @@ router1
 router2
 ~~~~~~~
 
-.. code-block:: console
+.. code-block:: none
 
    set interfaces ethernet bond0 vif 201 address 10.200.201.3/24
    set high-availability vrrp group int hello-source-address '10.200.201.3'
@@ -194,7 +194,7 @@ The virtual router ID is just a random number between 1 and 254, and can be set 
 router1
 ~~~~~~~
 
-.. code-block:: console
+.. code-block:: none
 
    set interfaces ethernet eth0 vif 100 address 203.0.113.2/24
    set high-availability vrrp group public hello-source-address '203.0.113.2'
@@ -209,7 +209,7 @@ router1
 router2
 ~~~~~~~
 
-.. code-block:: console
+.. code-block:: none
 
    set interfaces ethernet bond0 vif 100 address 203.0.113.3/24
    set high-availability vrrp group public hello-source-address '203.0.113.3'
@@ -226,7 +226,7 @@ Create vrrp sync-group
 
 The sync group is used to replicate connection tracking. It needs to be assigned to a random VRRP group, and we are creating a sync group called ``sync`` using the vrrp group ``int``.
 
-.. code-block:: console
+.. code-block:: none
 
    set high-availability vrrp sync-group sync member 'int'
 
@@ -236,7 +236,7 @@ Testing
 
 At this point, you should be able to see both IP addresses when you run ``show interfaces``\ , and ``show vrrp`` should show both interfaces in MASTER state (and SLAVE state on router2).
 
-.. code-block:: console
+.. code-block:: none
 
    vyos@router1:~$ show vrrp
    Name      Interface      VRID  State    Last Transition
@@ -254,7 +254,7 @@ NAT and conntrack-sync
 Masquerade Traffic originating from 10.200.201.0/24 that is heading out the public interface.
 Note we explicitly exclude the primary upstream network so that BGP or OSPF traffic doesn't accidentally get NAT'ed.
 
-.. code-block:: console
+.. code-block:: none
 
    set nat source rule 10 destination address '!192.0.2.0/24'
    set nat source rule 10 outbound-interface 'eth0.50'
@@ -267,7 +267,7 @@ Configure conntrack-sync and disable helpers
 
 Most conntrack modules cause more problems than they're worth, especially in a complex network. Turn them off by default, and if you need to turn them on later, you can do so.
 
-.. code-block:: console
+.. code-block:: none
 
    set system conntrack modules ftp disable
    set system conntrack modules gre disable
@@ -279,7 +279,7 @@ Most conntrack modules cause more problems than they're worth, especially in a c
 
 Now enable replication between nodes. Replace eth0.201 with bond0.201 on the hardware router.
 
-.. code-block:: console
+.. code-block:: none
 
    set service conntrack-sync accept-protocol 'tcp,udp,icmp'
    set service conntrack-sync event-listen-queue-size '8'
@@ -315,7 +315,7 @@ router1
 
 Replace the 99.99.99.99 with whatever the other router's IP address is.
 
-.. code-block:: console
+.. code-block:: none
 
    set interfaces wireguard wg01 address '10.254.60.1/30'
    set interfaces wireguard wg01 description 'router1-to-offsite1'
@@ -339,7 +339,7 @@ offsite1
 
 This is connecting back to the STATIC IP of router1, not the floating.
 
-.. code-block:: console
+.. code-block:: none
 
    set interfaces wireguard wg01 address '10.254.60.2/30'
    set interfaces wireguard wg01 description 'offsite1-to-router1'
@@ -373,7 +373,7 @@ This filter is applied to ``redistribute connected``.  If we WERE to advertise i
 via their default route, establish the connection, and then OSPF would say '192.0.2.0/24 is available via this tunnel', at which point
 the tunnel would break, OSPF would drop the routes, and then 192.0.2.0/24 would be reachable via default again. This is called 'flapping'.
 
-.. code-block:: console
+.. code-block:: none
 
    set policy access-list 150 description 'Outbound OSPF Redistribution'
    set policy access-list 150 rule 10 action 'permit'
@@ -394,7 +394,7 @@ Create Import Filter
 
 We only want to import networks we know about. Our OSPF peer should only be advertising networks in the 10.201.0.0/16 range. Note that this is an INVERSE MATCH. You deny in access-list 100 to accept the route.
 
-.. code-block:: console
+.. code-block:: none
 
    set policy access-list 100 description 'Inbound OSPF Routes from Peers'
    set policy access-list 100 rule 10 action 'deny'
@@ -415,7 +415,7 @@ Enable OSPF
 Every router **must** have a unique router-id.
 The 'reference-bandwidth' is used because when OSPF was originally designed, the idea of a link faster than 1gbit was unheard of, and it does not scale correctly.
 
-.. code-block:: console
+.. code-block:: none
 
    set protocols ospf area 0.0.0.0 authentication 'md5'
    set protocols ospf area 0.0.0.0 network '10.254.60.0/24'
@@ -440,7 +440,7 @@ As a reminder, only advertise routes that you are the default router for. This i
 192.0.2.0/24 network, because if that was announced into OSPF, the other routers would try to connect to that
 network over a tunnel that connects to that network!
 
-.. code-block:: console
+.. code-block:: none
 
    set protocols ospf access-list 150 export 'connected'
    set protocols ospf redistribute connected
@@ -458,7 +458,7 @@ Priorities
 
 Set the cost on the secondary links to be 200. This means that they will not be used unless the primary links are down.
 
-.. code-block:: console
+.. code-block:: none
 
    set interfaces wireguard wg01 ip ospf cost '10'
    set interfaces wireguard wg02 ip ospf cost '200'
@@ -476,7 +476,7 @@ router1
 
 The ``redistribute ospf`` command is there purely as an example of how this can be expanded. In this walkthrough, it will be filtered by BGPOUT rule 10000, as it is not 203.0.113.0/24.
 
-.. code-block:: console
+.. code-block:: none
 
    set policy prefix-list BGPOUT description 'BGP Export List'
    set policy prefix-list BGPOUT rule 10 action 'deny'

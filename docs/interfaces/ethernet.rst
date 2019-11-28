@@ -6,7 +6,7 @@ Ethernet
 Ethernet interfaces allow for the configuration of speed, duplex, and hw-id
 (MAC address). Below is an example configuration:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces ethernet eth1 address '192.168.0.1/24'
   set interfaces ethernet eth1 address '2001:db8:1::ffff/64'
@@ -16,7 +16,7 @@ Ethernet interfaces allow for the configuration of speed, duplex, and hw-id
 
 Resulting in:
 
-.. code-block:: console
+.. code-block:: none
 
   ethernet eth1 {
       address 192.168.0.1/24
@@ -35,7 +35,7 @@ In addition, Ethernet interfaces provide the extended operational commands:
 
 Statistics available are driver dependent.
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show interfaces ethernet eth0 physical
   Settings for eth0:

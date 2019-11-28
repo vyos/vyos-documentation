@@ -9,7 +9,7 @@ Layer-2 traffic.
 A bridge is created when a bridge interface is defined. In the example below
 we create a bridge named br100 with eth1 and eth2 as the bridge member ports.
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces bridge 'br100'
   set interfaces bridge br100 member interface eth1
@@ -18,7 +18,7 @@ we create a bridge named br100 with eth1 and eth2 as the bridge member ports.
 Each bridge member can be assiged a port cost and priority using the following
 commands:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces bridge br100 member interface eth1 cost 10
   set interfaces bridge br100 member interface eth1 priority 1024
@@ -27,14 +27,14 @@ Interfaces assigned to a bridge do not have address configuration. An IP
 address can be assigned to the bridge interface itself, however, like any
 normal interface.
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces bridge br100 address '192.168.100.1/24'
   set interfaces bridge br100 address '2001:db8:100::1/64'
 
 Example Result:
 
-.. code-block:: console
+.. code-block:: none
 
   bridge br100 {
       address 192.168.100.1/24
@@ -59,7 +59,7 @@ Spanning-Tree Protocol. STP is disabled by default.
 
 To enable spanning-tree use the `set interfaces bridge <name> stp` command:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces bridge br100 stp
 
@@ -70,7 +70,7 @@ using the `aging` directive.
 The `show bridge` operational command can be used to display configured
 bridges:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show bridge
   bridge name     bridge id               STP enabled     interfaces
@@ -79,7 +79,7 @@ bridges:
 If spanning-tree is enabled, the `show bridge <name> spanning-tree` command
 can be used to show STP configuration:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show bridge br100 spanning-tree
   br100
@@ -105,7 +105,7 @@ can be used to show STP configuration:
 The MAC address-table for a bridge can be displayed using the
 `show bridge <name> macs` command:
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos:~$ show bridge br100 macs
   port no mac addr                is local?       ageing timer

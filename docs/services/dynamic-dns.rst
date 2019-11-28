@@ -16,44 +16,44 @@ VyOS CLI and RFC2136
 
 First, create an :rfc:`2136` config node :
 
-.. code-block:: console
+.. code-block:: none
 
   edit service dns dynamic interface eth0 rfc2136 <confignodename>
 
 Present your RNDC key to ddclient :
 
-.. code-block:: console
+.. code-block:: none
 
   set key /config/dyndns/mydnsserver.rndc.key
 
 Set the DNS server IP/FQDN :
 
-.. code-block:: console
+.. code-block:: none
 
   set server dns.mydomain.com
 
 Set the NS zone to be updated :
 
-.. code-block:: console
+.. code-block:: none
 
   set zone mydomain.com
 
 Set the records to be updated :
 
-.. code-block:: console
+.. code-block:: none
 
   set record dyn
   set record dyn2
 
 You can optionally set a TTL (note : default value is 600 seconds) :
 
-.. code-block:: console
+.. code-block:: none
 
   set ttl 600
 
 This will generate the following ddclient config blocks:
 
-.. code-block:: console
+.. code-block:: none
 
   server=dns.mydomain.com
   protocol=nsupdate
@@ -70,7 +70,7 @@ This will generate the following ddclient config blocks:
 
 You can also keep a different dns zone updated. Just create a new config node:
 
-.. code-block:: console
+.. code-block:: none
 
   edit service dns dynamic interface eth0 rfc2136 <confignode2>
 
@@ -83,7 +83,7 @@ by ddclient.
 To use such a service, you must define a login, a password, one or multiple
 hostnames, a protocol and a server.
 
-.. code-block:: console
+.. code-block:: none
 
   edit service dns dynamic interface eth0 service HeNet
   set login my-login # set password my-password
@@ -107,7 +107,7 @@ the services VyOS knows about:
 
 To use DynDNS for example:
 
-.. code-block:: console
+.. code-block:: none
 
   edit service dns dynamic interface eth0 service dyndns
   set login my-login
@@ -116,7 +116,7 @@ To use DynDNS for example:
 
 It's possible to use multiple services :
 
-.. code-block:: console
+.. code-block:: none
 
   edit service dns dynamic interface eth0 service dyndns
   set login my-login
@@ -139,7 +139,7 @@ record will be updated to point to your internal IP.
 ddclient_ has another way to determine the WAN IP address. This is controlled
 by these two options:
 
-.. code-block:: console
+.. code-block:: none
 
   set service dns dynamic interface eth0 use-web url
   set service dns dynamic interface eth0 use-web skip

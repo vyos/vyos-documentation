@@ -12,7 +12,7 @@ to PPP.
 Over IP
 ^^^^^^^
 
-.. code-block:: console
+.. code-block:: none
 
   # show interfaces l2tpv3
   l2tpv3 l2tpeth10 {
@@ -36,7 +36,7 @@ UDP mode works better with NAT:
 * Set local-ip to your local IP (LAN).
 * Add a forwarding rule matching UDP port on your internet router.
 
-.. code-block:: console
+.. code-block:: none
 
   # show interfaces l2tpv3
   l2tpv3 l2tpeth10 {
@@ -63,7 +63,7 @@ will be directly connected like if there was a switch between them.
 
 IPSec:
 
-.. code-block:: console
+.. code-block:: none
 
   set vpn ipsec ipsec-interfaces <VPN-interface>
   set vpn ipsec esp-group test-ESP-1 compression 'disable'
@@ -91,7 +91,7 @@ IPSec:
 
 Bridge:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces bridge br0 description 'L2 VPN Bridge'
   # remote side in this example:
@@ -102,7 +102,7 @@ Bridge:
 
 L2TPv3:
 
-.. code-block:: console
+.. code-block:: none
 
   set interfaces bridge br0 member interface 'l2tpeth0'
   set interfaces l2tpv3 l2tpeth0 description 'L2 VPN Tunnel'

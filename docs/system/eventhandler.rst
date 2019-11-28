@@ -7,7 +7,7 @@ Event handler allows you to execute scripts when a string that matches a regex a
 
 It uses "feeds" (output of commands, or a named pipes) and "policies" that define what to execute if a regex is matched.
 
-.. code-block:: console
+.. code-block:: none
 
   system
   event-handler
@@ -29,7 +29,7 @@ It uses "feeds" (output of commands, or a named pipes) and "policies" that defin
 
 In this small example a script runs every time a login failed and an interface goes down
 
-.. code-block:: console
+.. code-block:: none
 
   vyos@vyos# show system event-handler
   feed Syslog {

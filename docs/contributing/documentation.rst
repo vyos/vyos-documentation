@@ -59,7 +59,7 @@ This requires you already have a GitHub account.
 
   Check your configured remote repositories:
 
-  .. code-block:: console
+  .. code-block:: none
 
     $ git remote -v
     origin    https://github.com/YOUR_USERNAME/vyos-documentation.git (fetch)
@@ -70,7 +70,7 @@ This requires you already have a GitHub account.
   Your remote repo on Github is called Origin, while the original repo you
   have forked is called Upstream. Now you can locally update your forked repo.
 
-  .. code-block:: console
+  .. code-block:: none
 
     $ git fetch upstream
     $ git checkout master
@@ -88,7 +88,7 @@ Sections
 
 We use the following syntax for Headlines.
 
-.. code-block:: console
+.. code-block:: none
 
   #####
   Parts
@@ -139,7 +139,7 @@ Under the command a short exlaination should be provide.
 
 Example:
 
-.. code-block:: console
+.. code-block:: none
 
   .. opcmd:: show protocols static arp
 

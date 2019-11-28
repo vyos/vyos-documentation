@@ -6,7 +6,7 @@ Config Management
 
 The following changes the number of commit revisions. In the default settings, 20 revisions are stored locally.
 
-.. code-block:: console
+.. code-block:: none
 
   set system config-management commit-revisions 50
 
@@ -14,7 +14,7 @@ The following changes the number of commit revisions. In the default settings, 2
 | If you want to save all config changes to a remote destination. Set the commit-archive location. Every time a commit is successfully the config.boot file will be copied to the defined destinations.
 
 
-.. code-block:: console
+.. code-block:: none
 
   set system config-management commit-archive location 'tftp://10.0.0.2'
 
@@ -22,7 +22,7 @@ The following changes the number of commit revisions. In the default settings, 2
 
 A commit look now like this:
 
-.. code-block:: console
+.. code-block:: none
 
     vyos@vyos-R1# commit
     Archiving config...
