@@ -33,13 +33,13 @@ VyOS User Guide
    :name: advanced
    :maxdepth: 2
 
-   routing/index
-   firewall
-   nat
-   vpn/index
-   qos
    services/index
+   firewall
+   routing/index
+   nat
+   qos
    high-availability
+   vpn/index
    clustering
    load-balancing
    commandscripting
