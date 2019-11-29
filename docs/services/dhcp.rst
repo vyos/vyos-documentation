@@ -95,37 +95,39 @@ Make a range of addresses available for clients starting from .100 [...]
 Failover
 --------
 
-VyOS provides support for DHCP failover:
+VyOS provides support for DHCP failover. DHCP failover must be configured
+explicitly by the following statements.
 
-.. code-block:: none
+.. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover local-address '192.0.2.1'
 
-  set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' \
-      failover local-address '192.0.2.1'
-  set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' \
-      failover name 'foo'
-  set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' \
-      failover peer-address '192.0.2.2'
+Local IP address used when communicating to the failover peer.
+
+.. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover peer-address '192.0.2.2'
+
+Peer IP address of the second DHCP server in this failover cluster.
+
+.. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover name 'foo'
+
+A generic name referencing this sync service.
 
 .. note:: `name` must be identical on both sides!
 
-The primary and secondary statements determines whether the server is
-primary or secondary
+.. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover status '{primary|secondary}'
 
-.. code-block:: none
-
-  set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' \
-      failover status 'primary'
-
-or
-
-.. code-block:: none
-
-  set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' \
-      failover status 'secondary'
+The primary and secondary statements determines whether the server is primary
+r secondary.
 
 .. note:: In order for the primary and the secondary DHCP server to keep
    their lease tables in sync, they must be able to reach each other on TCP
    port 647. If you have firewall rules in effect, adjust them accordingly.
+
+.. hint:: The dialogue between failover partners is neither encrypted nor
+   authenticated. Since most DHCP servers exist within an organisation's own
+   secure Intranet, this would be an unnecessary overhead. However, if you have
+   DHCP failover peers whose communications traverse insecure networks, then we
+   recommend that you consider the use of VPN tunneling between them to ensure
+   that the failover partnership is immune to disruption (accidental or
+   otherwise) via third parties.
 
 Static mappings
 ---------------
@@ -133,7 +135,6 @@ Static mappings
 You can specify a static DHCP assignment on a per host basis. You will need the
 MAC address of the station and your desired IP address. The address must be
 inside your subnet definition but can be outside of your range sttement.
-
 
 .. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 static-mapping <host> ip-address 192.0.2.10
 
@@ -239,10 +240,8 @@ server. The following example describes a common scenario.
 
 .. code-block:: none
 
-  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 \
-      address-range start 2001:db8::100 stop 2001:db8::199
-  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 \
-      name-server 2001:db8::ffff
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 address-range start 2001:db8::100 stop 2001:db8::199
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 name-server 2001:db8::ffff
 
 The configuration will look as follows:
 
@@ -277,10 +276,8 @@ be created. The following example explains the process.
 
 .. code-block:: none
 
-  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 \
-      static-mapping client1 ipv6-address 2001:db8::101
-  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 \
-      static-mapping client1 identifier c5b75e23
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-address 2001:db8::101
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 identifier c5b75e23
 
 The configuration will look as follows:
 
