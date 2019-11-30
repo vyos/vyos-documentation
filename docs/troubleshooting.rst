@@ -27,7 +27,7 @@ Several options are available when more extensive troubleshooting is needed:
 
 .. code-block:: none
 
-  vyos@vyos:~$ ping 8.8.8.8
+  vyos@vyos:~$ ping 10.1.1.1
   Possible completions:
     <Enter>       Execute the current command
     adaptive      Ping options
@@ -247,8 +247,8 @@ Will clear the screen and show you the output of ``show interfaces`` every
   eth0.5           198.51.100.4/24                   u/u  WAN
   lo               127.0.0.1/8                       u/u
                    ::1/128
-  vti0             172.32.254.2/30                   u/u
-  vti1             172.32.254.9/30                   u/u
+  vti0             172.25.254.2/30                   u/u
+  vti1             172.25.254.9/30                   u/u
 
 Clear Command
 -------------
