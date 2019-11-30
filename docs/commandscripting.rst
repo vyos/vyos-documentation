@@ -55,8 +55,8 @@ Here is a simple example:
 
   #!/usr/bin/env python
   print "delete firewall group address-group somehosts"
-  print "set firewall group address-group somehosts address '1.1.1.1'"
-  print "set firewall group address-group somehosts address '1.1.1.2'"
+  print "set firewall group address-group somehosts address '192.0.2.3'"
+  print "set firewall group address-group somehosts address '203.0.113.55'"
 
 
 .. code-block:: none
