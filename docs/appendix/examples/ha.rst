@@ -313,7 +313,7 @@ We use small /30's from 10.254.60/24 for the point-to-point links.
 router1
 ~~~~~~~
 
-Replace the 99.99.99.99 with whatever the other router's IP address is.
+Replace the 203.0.113.3 with whatever the other router's IP address is.
 
 .. code-block:: none
 
@@ -328,7 +328,7 @@ Replace the 99.99.99.99 with whatever the other router's IP address is.
    set interfaces wireguard wg01 ip ospf retransmit-interval '5'
    set interfaces wireguard wg01 ip ospf transmit-delay '1'
    set interfaces wireguard wg01 peer OFFSITE1 allowed-ips '0.0.0.0/0'
-   set interfaces wireguard wg01 peer OFFSITE1 endpoint '99.99.99.99:50001'
+   set interfaces wireguard wg01 peer OFFSITE1 endpoint '203.0.113.3:50001'
    set interfaces wireguard wg01 peer OFFSITE1 persistent-keepalive '15'
    set interfaces wireguard wg01 peer OFFSITE1 pubkey 'GEFMOWzAyau42/HwdwfXnrfHdIISQF8YHj35rOgSZ0o='
    set interfaces wireguard wg01 port '50001'

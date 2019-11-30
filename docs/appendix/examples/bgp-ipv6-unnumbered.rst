@@ -12,39 +12,39 @@ Configuration
 
 .. code-block:: none
 
-  set protocols bgp 65020 address-family ipv4-unicast redistribute connected
-  set protocols bgp 65020 address-family ipv6-unicast redistribute connected
-  set protocols bgp 65020 neighbor eth1 interface v6only
-  set protocols bgp 65020 neighbor eth1 interface v6only peer-group 'fabric'
-  set protocols bgp 65020 neighbor eth2 interface v6only
-  set protocols bgp 65020 neighbor eth2 interface v6only peer-group 'fabric'
-  set protocols bgp 65020 parameters bestpath as-path multipath-relax
-  set protocols bgp 65020 parameters bestpath compare-routerid
-  set protocols bgp 65020 parameters default no-ipv4-unicast
-  set protocols bgp 65020 parameters router-id '192.168.0.1'
-  set protocols bgp 65020 peer-group fabric address-family ipv4-unicast
-  set protocols bgp 65020 peer-group fabric address-family ipv6-unicast
-  set protocols bgp 65020 peer-group fabric capability extended-nexthop
-  set protocols bgp 65020 peer-group fabric remote-as 'external'
+  set protocols bgp 64496 address-family ipv4-unicast redistribute connected
+  set protocols bgp 64496 address-family ipv6-unicast redistribute connected
+  set protocols bgp 64496 neighbor eth1 interface v6only
+  set protocols bgp 64496 neighbor eth1 interface v6only peer-group 'fabric'
+  set protocols bgp 64496 neighbor eth2 interface v6only
+  set protocols bgp 64496 neighbor eth2 interface v6only peer-group 'fabric'
+  set protocols bgp 64496 parameters bestpath as-path multipath-relax
+  set protocols bgp 64496 parameters bestpath compare-routerid
+  set protocols bgp 64496 parameters default no-ipv4-unicast
+  set protocols bgp 64496 parameters router-id '192.168.0.1'
+  set protocols bgp 64496 peer-group fabric address-family ipv4-unicast
+  set protocols bgp 64496 peer-group fabric address-family ipv6-unicast
+  set protocols bgp 64496 peer-group fabric capability extended-nexthop
+  set protocols bgp 64496 peer-group fabric remote-as 'external'
 
 - Router B:
 
 .. code-block:: none
 
-  set protocols bgp 65021 address-family ipv4-unicast redistribute connected
-  set protocols bgp 65021 address-family ipv6-unicast redistribute connected
-  set protocols bgp 65021 neighbor eth1 interface v6only
-  set protocols bgp 65021 neighbor eth1 interface v6only peer-group 'fabric'
-  set protocols bgp 65021 neighbor eth2 interface v6only
-  set protocols bgp 65021 neighbor eth2 interface v6only peer-group 'fabric'
-  set protocols bgp 65021 parameters bestpath as-path multipath-relax
-  set protocols bgp 65021 parameters bestpath compare-routerid
-  set protocols bgp 65021 parameters default no-ipv4-unicast
-  set protocols bgp 65021 parameters router-id '192.168.0.2'
-  set protocols bgp 65021 peer-group fabric address-family ipv4-unicast
-  set protocols bgp 65021 peer-group fabric address-family ipv6-unicast
-  set protocols bgp 65021 peer-group fabric capability extended-nexthop
-  set protocols bgp 65021 peer-group fabric remote-as 'external'
+  set protocols bgp 64499 address-family ipv4-unicast redistribute connected
+  set protocols bgp 64499 address-family ipv6-unicast redistribute connected
+  set protocols bgp 64499 neighbor eth1 interface v6only
+  set protocols bgp 64499 neighbor eth1 interface v6only peer-group 'fabric'
+  set protocols bgp 64499 neighbor eth2 interface v6only
+  set protocols bgp 64499 neighbor eth2 interface v6only peer-group 'fabric'
+  set protocols bgp 64499 parameters bestpath as-path multipath-relax
+  set protocols bgp 64499 parameters bestpath compare-routerid
+  set protocols bgp 64499 parameters default no-ipv4-unicast
+  set protocols bgp 64499 parameters router-id '192.168.0.2'
+  set protocols bgp 64499 peer-group fabric address-family ipv4-unicast
+  set protocols bgp 64499 peer-group fabric address-family ipv6-unicast
+  set protocols bgp 64499 peer-group fabric capability extended-nexthop
+  set protocols bgp 64499 peer-group fabric remote-as 'external'
 
 Results
 ^^^^^^^^^^^^^
@@ -57,7 +57,7 @@ Results
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
   ---------        ----------                        ---  -----------
-  eth0             62.104.XXX.XXX/24                 u/u
+  eth0             198.51.100.34/24                  u/u
   eth1             -                                 u/u
   eth2             -                                 u/u
   lo               127.0.0.1/8                       u/u
@@ -73,8 +73,8 @@ Results
          F - PBR, f - OpenFabric,
          > - selected route, * - FIB route
 
-  S>* 0.0.0.0/0 [210/0] via 62.104.XXX.XXX, eth0, 03:21:53
-  C>* 62.104.56.0/24 is directly connected, eth0, 03:21:53
+  S>* 0.0.0.0/0 [210/0] via 198.51.100.34, eth0, 03:21:53
+  C>* 198.51.100.0/24 is directly connected, eth0, 03:21:53
   C>* 192.168.0.1/32 is directly connected, lo, 03:21:56
   B>* 192.168.0.2/32 [20/0] via fe80::a00:27ff:fe3b:7ed2, eth2, 00:05:07
     *                       via fe80::a00:27ff:fe7b:4000, eth1, 00:05:07
@@ -105,8 +105,8 @@ Results
   Peer groups 1, using 64 bytes of memory
 
   Neighbor        V         AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd
-  eth1            4      65021      13      13        0    0    0 00:05:33            2
-  eth2            4      65021      13      14        0    0    0 00:05:29            2
+  eth1            4      64499      13      13        0    0    0 00:05:33            2
+  eth2            4      64499      13      14        0    0    0 00:05:29            2
 
   Total number of neighbors 2
 
@@ -118,7 +118,7 @@ Results
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
   ---------        ----------                        ---  -----------
-  eth0             62.104.XXX.XXX/24                 u/u
+  eth0             198.51.100.33/24                  u/u
   eth1             -                                 u/u
   eth2             -                                 u/u
   lo               127.0.0.1/8                       u/u
@@ -134,8 +134,8 @@ Results
          F - PBR, f - OpenFabric,
          > - selected route, * - FIB route
 
-  S>* 0.0.0.0/0 [210/0] via 62.104.XXX.XXX, eth0, 00:44:08
-  C>* 62.104.56.0/24 is directly connected, eth0, 00:44:09
+  S>* 0.0.0.0/0 [210/0] via 198.51.100.33, eth0, 00:44:08
+  C>* 198.51.100.0/24 is directly connected, eth0, 00:44:09
   B>* 192.168.0.1/32 [20/0] via fe80::a00:27ff:fe2d:205d, eth1, 00:06:18
     *                       via fe80::a00:27ff:fe93:e142, eth2, 00:06:18
   C>* 192.168.0.2/32 is directly connected, lo, 00:44:11
@@ -164,8 +164,8 @@ Results
   Peer groups 1, using 64 bytes of memory
 
   Neighbor        V         AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd
-  eth1            4      65020      14      14        0    0    0 00:06:40            2
-  eth2            4      65020      14      14        0    0    0 00:06:37            2
+  eth1            4      64496      14      14        0    0    0 00:06:40            2
+  eth2            4      64496      14      14        0    0    0 00:06:37            2
 
   Total number of neighbors 2
 
