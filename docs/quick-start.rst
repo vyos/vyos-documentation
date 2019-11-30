@@ -47,8 +47,8 @@ And a DNS forwarder:
 
   set service dns forwarding cache-size '0'
   set service dns forwarding listen-address '192.168.0.1'
-  set service dns forwarding name-server '8.8.8.8'
-  set service dns forwarding name-server '8.8.4.4'
+  set service dns forwarding name-server '203.0.113.1'
+  set service dns forwarding name-server '203.0.113.2'
 
 NAT and Firewall
 ^^^^^^^^^^^^^^^^
