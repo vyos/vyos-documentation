@@ -17,7 +17,7 @@ using the show configuration command.
   interfaces {
       ethernet eth0 {
           address dhcp
-          hw-id 00:0c:29:44:3b:0f
+          hw-id 00:53:dd:44:3b:0f
       }
       loopback lo {
       }
@@ -78,7 +78,7 @@ running configuration.
 
   vyos@vyos:~$ show configuration commands
   set interfaces ethernet eth0 address 'dhcp'
-  set interfaces ethernet eth0 hw-id '00:0c:29:44:3b:0f'
+  set interfaces ethernet eth0 hw-id '00:53:dd:44:3b:0f'
   set interfaces loopback 'lo'
   set service ssh port '22'
   set system config-management commit-revisions '20'
@@ -170,7 +170,7 @@ replacements and ``-`` for deletions.
   ethernet eth0 {
       description MY_OLD_DESCRIPTION
       disable
-      hw-id 52:54:00:0e:82:d9
+      hw-id 00:53:dd:44:3b:03
   }
   loopback lo {
   }
@@ -186,7 +186,7 @@ replacements and ``-`` for deletions.
  +    address dhcp
  >    description MY_NEW_DESCRIPTION
  -    disable
-      hw-id 52:54:00:0e:82:d9
+      hw-id 00:53:dd:44:3b:03
   }
   loopback lo {
   }
@@ -198,7 +198,7 @@ using ``show | commands``
 
   vyos@vyos# show interfaces ethernet eth0 | commands
   set address dhcp
-  set hw-id 00:0c:29:44:3b:0f
+  set hw-id 00:53:ad:44:3b:03
 
 These commands are also relative to the level you are inside and only relevant
 configuration blocks will be displayed when entering a sub-level.
@@ -208,7 +208,7 @@ configuration blocks will be displayed when entering a sub-level.
   [edit interfaces ethernet eth0]
   vyos@vyos# show
    address dhcp
-   hw-id 00:0c:29:44:3b:0f
+   hw-id 00:53:ad:44:3b:03
 
 Exiting from the configuration mode is done via the ``exit`` command from the
 top level, executing `exit` from within a sub-level takes you back to the top
