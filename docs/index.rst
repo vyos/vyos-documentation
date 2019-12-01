@@ -79,6 +79,7 @@ Contributing
 
    contributing/issues_features
    contributing/development
+   contributing/documentation
    contributing/vyos_cli
    contributing/coding_guidelines
    contributing/upstream-packages
