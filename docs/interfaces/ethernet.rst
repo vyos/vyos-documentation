@@ -23,7 +23,7 @@ Resulting in:
       address 2001:db8:1::ffff/64
       description INSIDE
       duplex auto
-      hw-id 00:0c:29:44:3b:19
+      hw-id 00:53:29:44:3b:19
       smp_affinity auto
       speed auto
   }
