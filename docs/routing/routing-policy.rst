@@ -22,8 +22,8 @@ Routing Policy Example
   set policy route-map setmet rule 2 set as-path-prepend '2 2 2'
 
   #Apply policy to BGP
-  set protocols bgp 1 neighbor 1.1.1.2 address-family ipv4-unicast route-map import 'setmet'
-  set protocols bgp 1 neighbor 1.1.1.2 address-family ipv4-unicast soft-reconfiguration 'inbound' <<<< ***
+  set protocols bgp 1 neighbor 203.0.113.2 address-family ipv4-unicast route-map import 'setmet'
+  set protocols bgp 1 neighbor 203.0.113.2 address-family ipv4-unicast soft-reconfiguration 'inbound' <<<< ***
 
   *** get policy update without bouncing the neighbor
 
@@ -38,7 +38,7 @@ Routing Policy Example
   Origin codes: i - IGP, e - EGP, ? - incomplete
 
      Network          Next Hop            Metric LocPrf Weight Path
-  *> 22.22.22.22/32   1.1.1.2                  1             0 2 i  < Path
+  *> 198.51.100.3/32   203.0.113.2           1             0 2 i  < Path
 
   Total number of prefixes 1
 
@@ -53,7 +53,7 @@ Routing Policy Example
   Origin codes: i - IGP, e - EGP, ? - incomplete
 
      Network          Next Hop            Metric LocPrf Weight Path
-  *> 22.22.22.22/32   1.1.1.2                  1             0 2 2 2 2 i < longer AS_path length
+  *> 198.51.100.3/32   203.0.113.2           1             0 2 2 2 2 i < longer AS_path length
 
   Total number of prefixes 1
   vyos@vos1:~$
