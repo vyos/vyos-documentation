@@ -39,7 +39,7 @@ to as :abbr:`SSID (Service Set Identifier)`, and MAC addresses.
 
 The WAP in this example has the following characteristics:
 
-* IP address ``192.0.2.1/24``
+* IP address ``192.168.2.1/24``
 * Network ID (SSID) ``TEST``
 * WPA passphrase ``12345678``
 * Use 802.11n protocol
@@ -47,7 +47,7 @@ The WAP in this example has the following characteristics:
 
 .. code-block:: none
 
-  set interfaces wireless wlan0 address '192.0.2.1/24'
+  set interfaces wireless wlan0 address '192.168.2.1/24'
   set interfaces wireless wlan0 type access-point
   set interfaces wireless wlan0 channel 1
   set interfaces wireless wlan0 mode n
@@ -63,7 +63,7 @@ Resulting in
   interfaces {
     [...]
     wireless wlan0 {
-          address 192.0.2.1/24
+          address 192.168.2.1/24
           channel 1
           mode n
           security {
@@ -103,24 +103,24 @@ is responsible for authenticating the users.
 
 The WAP in this example has the following characteristics:
 
-* IP address ``192.0.2.1/24``
+* IP address ``192.168.2.1/24``
 * Network ID (SSID) ``Enterprise-TEST``
 * WPA passphrase ``12345678``
 * Use 802.11n protocol
 * Wireless channel ``1``
-* RADIUS server at ``192.0.3.10`` with shared-secret ``VyOSPassword``
+* RADIUS server at ``192.168.3.10`` with shared-secret ``VyOSPassword``
 
 .. code-block:: none
 
-  set interfaces wireless wlan0 address '192.0.2.1/24'
+  set interfaces wireless wlan0 address '192.168.2.1/24'
   set interfaces wireless wlan0 type access-point
   set interfaces wireless wlan0 channel 1
   set interfaces wireless wlan0 mode n
   set interfaces wireless wlan0 ssid 'TEST'
   set interfaces wireless wlan0 security wpa mode wpa2
   set interfaces wireless wlan0 security wpa cipher CCMP
-  set interfaces wireless wlan0 security wpa radius server 192.0.3.10 key 'VyOSPassword'
-  set interfaces wireless wlan0 security wpa radius server 192.0.3.10 port 1812
+  set interfaces wireless wlan0 security wpa radius server 192.168.3.10 key 'VyOSPassword'
+  set interfaces wireless wlan0 security wpa radius server 192.168.3.10 port 1812
 
 Resulting in
 
@@ -129,7 +129,7 @@ Resulting in
   interfaces {
     [...]
     wireless wlan0 {
-          address 192.0.2.1/24
+          address 192.168.2.1/24
           channel 1
           mode n
           security {
@@ -137,7 +137,7 @@ Resulting in
                   cipher CCMP
                   mode wpa2
                   radius {
-                      server 192.0.3.10 {
+                      server 192.168.3.10 {
                           key 'VyOSPassword'
                           port 1812
                       }
@@ -263,7 +263,7 @@ The wireless interface identifier can range from wlan0 to wlan999.
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
   ---------        ----------                        ---  -----------
-  wlan0            192.0.2.254/24                    u/u
+  wlan0            192.168.2.254/24                    u/u
 
 
 .. opcmd:: show interfaces wireless <wlanX> queue
