@@ -5,9 +5,11 @@ GENEVE
 ######
 
 :abbr:`GENEVE (Generic Network Virtualization Encapsulation)` supports all of
-the capabilities of VXLAN, NVGRE, and STT and was designed to overcome their
-perceived limitations. Many believe GENEVE could eventually replace these
-earlier formats entirely.
+the capabilities of :abbr:`VXLAN (Virtual Extensible LAN)`, :abbr:`NVGRE
+(Network Virtualization using Generic Routing Encapsulation)`, and :abbr:`STT
+(Stateless Transport Tunneling)` and was designed to overcome their perceived
+limitations. Many believe GENEVE could eventually replace these earlier formats
+entirely.
 
 GENEVE is designed to support network virtualization use cases, where tunnels
 are typically established to act as a backplane between the virtual switches
