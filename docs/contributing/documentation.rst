@@ -14,61 +14,81 @@ guid how to do so.
    you open up a Phabricator_ task prior to submitting a Pull-Request to the
    documentation.
 
-Git Workflow
-------------
+Forking Workflow
+----------------
 
+The Forking Workflow is fundamentally different than other popular Git
+workflows. Instead of using a single server-side repository to act as the
+"central" codebase, it gives every developer their own server-side repository.
+This means that each contributor has not one, but two Git repositories: a
+private local one and a public server-side one.
 
-Updates to our documentation should be delivered by a GitHub pull-request. In
-order to create a pull-request you need to fork our documentation code first.
-This requires you already have a GitHub account.
+The main advantage of the Forking Workflow is that contributions can be
+integrated without the need for everybody to push to a single central
+repository. Developers push to their own server-side repositories, and only the
+project maintainer can push to the official repository. This allows the
+maintainer to accept commits from any developer without giving them write
+access to the official codebase.
 
-* Fork the project on GitHub https://github.com/vyos/vyos-documentation/fork
+.. node:: Updates to our documentation should be delivered by a GitHub
+   pull-request. This requires you already have a GitHub account.
+
+* Fork this project on GitHub https://github.com/vyos/vyos-documentation/fork
 
 * Clone fork to local machine
 
-* Change to your new local directory ``vyos-documentation``
+* Change to your new local directory ``$ cd vyos-documentation``
 
 * Create new branch for your work, use a descriptive name of your work:
   ``$ git checkout -b fix-vxlan-typo``
 
-* Make all your changes - please keep out commit rules in mind
-  (:ref:`prepare_commit`). This mainly applies to a proper commit message
-  describing your change. Please check the documentation if you aren't familiar
-  with Sphinx-doc_ or reStructuredText_.
+* Make all your changes - please keep our commit rules in mind
+  (:ref:`prepare_commit`). This mainly applies to proper commit messages
+  describing your change (how and why). Please check out the documentation of
+  Sphinx-doc_ or reStructuredText_ if you are not familiar with it. This is used
+  for writing our docs.
 
+* Check your changes by locally building the documentation ``$ make html``.
+  Sphinx will build the html files in the ``docs/_build`` folder. We provide
+  you with a Docker container for an easy to use user experience. Check the
+  README.md_ file of this repository.
 
-* Check your changes by locally building the documentation ``$ make html``
-  Sphinx will build the html files in the ``docs/_build`` folder
+* View modified files by calling ``$ git status``. You will get an overview of
+  all files modified by you. You can add individual files to the Git Index in
+  the next step.
 
-* Add modified files to Git index ``$ git add path/to/filname`` or add all
-  unstaged files ``$ git add .``
+* Add modified files to Git index ``$ git add path/to/filename`` or add all
+  unstaged files ``$ git add .``. All files added to the Git index will be part
+  of you following Git commit.
 
-* Commit your changes ``$ git commit -m "vxlan: rework CLI syntax"``
+* Commit your changes ``$ git commit -v`` - your configured editor will now ne
+  launched where you can type in a commit message. Again please make yourself
+  comfortable with out rules (:ref:`prepare_commit`).
 
-* Push your commits to your GitHub project: ``$ git push -u origin
-  fix-vxlan-typo``
+* Push your commits to your GitHub project: ``$ git push -u origin foo-branch``
 
 * Submit pull-request. In GitHub visit the main repository and you should
   see a banner suggesting to make a pull request. Fill out the form and
   describe what you do.
 
 * Once pull resquests have been approved, you may want to locally update
-  your forked repository too. First you'll have to add the remote upstream
-  repository. ``$ git remote add upstream
-  https://github.com/vyos/vyos-documentation.git``
+  your forked repository too. First you'll have to add a second remote
+  called `upstream` which points to our main repository. ``$ git remote add
+  upstream https://github.com/vyos/vyos-documentation.git``
 
   Check your configured remote repositories:
 
   .. code-block:: none
 
     $ git remote -v
-    origin    https://github.com/YOUR_USERNAME/vyos-documentation.git (fetch)
-    origin    https://github.com/YOUR_USERNAME/vyos.documentation.git (push)
+    origin    https://github.com/<username>/vyos-documentation.git (fetch)
+    origin    https://github.com/<username>/vyos.documentation.git (push)
     upstream  https://github.com/vyos/vyos-documentation.git (fetch)
     upstream  https://github.com/vyos/vyos-documentation.git (push)
 
-  Your remote repo on Github is called Origin, while the original repo you
-  have forked is called Upstream. Now you can locally update your forked repo.
+  Your remote repo on Github is called ``origin``, while the original repo you
+  have forked is called ``upstream``. Now you can locally update your forked
+  repo.
 
   .. code-block:: none
 
@@ -76,9 +96,8 @@ This requires you already have a GitHub account.
     $ git checkout master
     $ git merge upstream/master
 
-  If you want to update your fork on GitHub, too use the following:
-  ``$ git push origin master``
-
+* If you want to update your fork on GitHub, too use the following: ``$ git
+  push origin master``
 
 Style Guide
 -----------
@@ -129,15 +148,15 @@ system numbers for the documentation:
 Please don't use other public address space.
 
 
-Specific Sphinx-doc Markup
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Custom Sphinx-doc Markup
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-When documenting CLI commands use the ``.. cfgcmd::`` directive for
-the configuration mode and the ``.. opcmd::`` directive for operational mode
-commands.
-Under the command a short exlaination should be provide.
+When documenting CLI commands use the ``.. cfgcmd::`` directive for all
+configuration mode commands. When documenting operational level command use
+the ``.. opcmd::`` directive. An explanation of the described command should
+be added below this statement.
 
-Example:
+**Example**
 
 .. code-block:: none
 
@@ -145,6 +164,12 @@ Example:
 
   Display all known ARP table entries spanning accross all interfaces
 
+  .. cfgcmd:: set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
+
+  This will configure a static ARP entry always resolving `192.0.2.100` to
+  `00:53:27:de:23:aa`.
+
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
 .. _Phabricator: https://phabricator.vyos.net
+.. _README.md: https://github.com/vyos/vyos-documentation/blob/master/README.md
