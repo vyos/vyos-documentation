@@ -32,7 +32,7 @@ The command is ``set interfaces $type $name address $address``. Examples:
   set interfaces ethernet eth0 address 192.0.2.1/24
   set interfaces tunnel tun0 address 10.0.0.1/30
   set interfaces bridge br0 address 203.0.113.45/26
-  set interfaces ethernet eth0 vif 30 address 192.0.30.254/24
+  set interfaces ethernet eth0 vif 30 address 198.51.100.254/24
 
 DHCP
 ****
