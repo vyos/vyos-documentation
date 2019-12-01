@@ -109,4 +109,4 @@ The MAC address-table for a bridge can be displayed using the
 
   vyos@vyos:~$ show bridge br100 macs
   port no mac addr                is local?       ageing timer
-    1     00:0c:29:44:3b:19       yes                0.00
+    1     00:53:29:44:3b:19       yes                0.00
