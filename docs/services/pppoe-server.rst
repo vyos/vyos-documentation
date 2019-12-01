@@ -35,7 +35,7 @@ Connections can be locally checked via the command
   show pppoe-server sessions
   ifname | username |     ip     |    calling-sid    | rate-limit  | state  |  uptime  | rx-bytes | tx-bytes
   -------+----------+------------+-------------------+-------------+--------+----------+----------+----------
-  ppp0   | foo      | 10.1.1.100 | 08:00:27:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
+  ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 
 
 Client IP address pools
@@ -163,7 +163,7 @@ Once the user is connected, the user session is using the set limits and can be 
   show pppoe-server sessions
   ifname | username |     ip     |    calling-sid    | rate-limit  | state  |  uptime  | rx-bytes | tx-bytes
   -------+----------+------------+-------------------+-------------+--------+----------+----------+----------
-  ppp0   | foo      | 10.1.1.100 | 08:00:27:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
+  ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 
 
 RADIUS based shaper setup
@@ -212,6 +212,6 @@ The client, once successfully authenticated, will receive an IPv4 and an IPv6 /6
   vyos@pppoe-server:~$ sh pppoe-server sessions
    ifname | username |     ip      |            ip6           |       ip6-dp        |    calling-sid    | rate-limit | state  |  uptime  | rx-bytes | tx-bytes
   --------+----------+-------------+--------------------------+---------------------+-------------------+------------+--------+----------+----------+----------
-   ppp0   | test     | 192.168.0.1 | 2001:db8:8002:0:200::/64 | 2001:db8:8003::1/56 | 08:00:27:12:42:eb |            | active | 00:00:49 | 875 B    | 2.1 KiB
+   ppp0   | test     | 192.168.0.1 | 2001:db8:8002:0:200::/64 | 2001:db8:8003::1/56 | 00:53:00:12:42:eb |            | active | 00:00:49 | 875 B    | 2.1 KiB
 
 .. _`accel-ppp`: https://accel-ppp.org/
