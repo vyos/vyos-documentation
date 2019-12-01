@@ -167,3 +167,7 @@ texinfo_documents = [
      author, 'VyOS', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+def setup(app):
+    app.add_object_type('opcmd', 'opcmd')
+    app.add_object_type('cfcmd', 'cfcmd')
