@@ -389,7 +389,7 @@ See here how to move the configuration entrys from vlanid 3 to 2
   [edit interfaces ethernet eth1]
   vyos@vyos# show
    duplex auto
-   hw-id 08:00:27:81:c6:59
+   hw-id 00:53:22:81:c6:59
    smp-affinity auto
    speed auto
    vif 3 {
@@ -400,7 +400,7 @@ See here how to move the configuration entrys from vlanid 3 to 2
   [edit interfaces ethernet eth1]
   vyos@vyos# show
    duplex auto
-   hw-id 08:00:27:81:c6:59
+   hw-id 00:53:22:81:c6:59
    smp-affinity auto
    speed auto
   +vif 2 {
@@ -488,7 +488,7 @@ Show the hole config, the address and description of eth1 is moving to vlan 2 if
        ethernet eth0 {
            address dhcp
            duplex auto
-           hw-id 08:00:27:2b:c0:0b
+           hw-id 00:53:22:2b:c0:0b
            smp-affinity auto
            speed auto
        }
@@ -496,7 +496,7 @@ Show the hole config, the address and description of eth1 is moving to vlan 2 if
   -        address 10.1.1.1/32
   -        description "MGMT Interface"
            duplex auto
-           hw-id 08:00:27:81:c6:59
+           hw-id 00:53:22:81:c6:59
            smp-affinity auto
            speed auto
   +        vif 2 {

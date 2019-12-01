@@ -13,7 +13,7 @@ Configuration
 
   set interfaces tunnel tun100 address '172.16.253.134/29'
   set interfaces tunnel tun100 encapsulation 'gre'
-  set interfaces tunnel tun100 local-ip '11.22.33.44'
+  set interfaces tunnel tun100 local-ip '203.0.113.44'
   set interfaces tunnel tun100 multicast 'enable'
   set interfaces tunnel tun100 parameters ip key '1'
 
@@ -69,7 +69,7 @@ Use this configuration on your Cisco device:
 
   crypto pki token default removal timeout 0
   crypto keyring DMVPN
-    pre-shared-key address 1.2.3.4 key <secretkey>
+    pre-shared-key address 198.51.100.2 key <secretkey>
   !
   crypto isakmp policy 10
    encr aes 256
@@ -80,7 +80,7 @@ Use this configuration on your Cisco device:
   crypto isakmp keepalive 30 30 periodic
   crypto isakmp profile DMVPN
      keyring DMVPN
-     match identity address 11.22.33.44 255.255.255.255
+     match identity address 203.0.113.44 255.255.255.255
   !
   crypto ipsec transform-set DMVPN-AES256 esp-aes 256 esp-sha-hmac
    mode transport
@@ -95,8 +95,8 @@ Use this configuration on your Cisco device:
    ip address 172.16.253.129 255.255.255.248
    no ip redirects
    ip nhrp authentication <nhrp secret key>
-   ip nhrp map multicast 11.22.33.44
-   ip nhrp map 172.16.253.134 11.22.33.44
+   ip nhrp map multicast 203.0.113.44
+   ip nhrp map 172.16.253.134 203.0.113.44
    ip nhrp network-id 1
    ip nhrp holdtime 600
    ip nhrp nhs 172.16.253.134
