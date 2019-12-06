@@ -293,6 +293,34 @@ if you need multiple search domains (DHCP Option 119).
 
 Multi: can be specified multiple times.
 
+Raw parameters
+--------------
+
+Raw parameters can be passed to shared-network-name, subnet and static-mapping:
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name dhcpexample shared-network-parameters
+     <text>       Additional shared-network parameters for DHCP server.
+  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 subnet-parameters
+     <text>       Additional subnet parameters for DHCP server.
+  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters
+     <text>       Additional static-mapping parameters for DHCP server.
+                  Will be placed inside the "host" block of the mapping.
+
+These parameters are passed as-is to isc-dhcp's dhcpd.conf under the configuration node they are defined in.
+They are not validated so an error in the raw parameters won't be caught by vyos's scripts and will cause dhcpd to fail to start.
+Always verify that the parameters are correct before commiting the configuration.
+Refer to isc-dhcp's dhcpd.conf manual for more information:
+https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcpdconf
+
+Example
+^^^^^^^
+
+.. opcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option domain-name-servers 192.0.2.11, 192.0.2.12;"
+
+Override the static-mapping's dns-server with a custom one that will be sent only to this host.
+
 DHCPv6 Server
 =============
 
