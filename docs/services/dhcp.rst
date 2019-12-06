@@ -165,6 +165,133 @@ The domain-name parameter should be the domain name used when completing DNS
 request where no full FQDN is passed. This option can be given multiple times
 if you need multiple search domains (DHCP Option 119).
 
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 0
+   :widths: 12 7 23 40 20
+
+   * - Setting name
+     - Option number
+     - ISC-DHCP Option name
+     - Option description
+     - Multi
+   * - client-prefix-length
+     - 1
+     - subnet-mask
+     - Specifies the clients subnet mask as per RFC 950. If unset, subnet declaration is used.
+     - N
+   * - time-offset
+     - 2
+     - time-offset
+     - Offset of the client's subnet in seconds from Coordinated Universal Time (UTC)
+     - N
+   * - default-router
+     - 3
+     - routers
+     - IPv4 address of router on the client's subnet
+     - N
+   * - time-server
+     - 4
+     - time-servers
+     - RFC 868 time server IPv4 address
+     - Y
+   * - dns-server
+     - 6
+     - domain-name-servers
+     - DNS server IPv4 address
+     - Y
+   * - domain-name
+     - 15
+     - domain-name
+     - Client domain name
+     - Y
+   * - ip-forwarding
+     - 19
+     - ip-forwarding
+     - Enable IP forwarding on client
+     - N
+   * - ntp-server
+     - 42
+     - ntp-servers
+     - IP address of NTP server
+     - Y
+   * - wins-server
+     - 44
+     - netbios-name-servers
+     - NetBIOS over TCP/IP name server
+     - Y
+   * - server-identifier
+     - 54
+     - dhcp-server-identifier
+     - IP address for DHCP server identifier
+     - N
+   * - bootfile-server
+     - siaddr
+     - next-server
+     - IPv4 address of next bootstrap server
+     - N
+   * - tftp-server-name
+     - 66
+     - tftp-server-name
+     - Name or IPv4 address of TFTP server
+     - N
+   * - bootfile-name
+     - 67
+     - bootfile-name, filename
+     - Bootstrap file name
+     - N
+   * - smtp-server
+     - 69
+     - smtp-server
+     - IP address of SMTP server
+     - Y
+   * - pop-server
+     - 70
+     - pop-server
+     - IP address of POP3 server
+     - Y
+   * - domain-search
+     - 119
+     - domain-search
+     - Client domain search
+     - Y
+   * - static-route
+     - 121, 249
+     - rfc3442-static-route, windows-static-route
+     - Classless static route
+     - N
+   * - wpad-url
+     - 252
+     - wpad-url, wpad-url code 252 = text
+     - Web Proxy Autodiscovery (WPAD) URL
+     - N
+   * - lease
+     -
+     - default-lease-time, max-lease-time
+     - Lease timeout in seconds (default: 86400)
+     - N
+   * - range
+     -
+     - range
+     - DHCP lease range
+     - Y
+   * - exclude
+     -
+     -
+     - IP address to exclude from DHCP lease range
+     - Y
+   * - failover
+     -
+     -
+     - DHCP failover parameters
+     -
+   * - static-mapping
+     -
+     -
+     - Name of static mapping
+     - Y
+
+Multi: can be specified multiple times.
 
 DHCPv6 Server
 =============
