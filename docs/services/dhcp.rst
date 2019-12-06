@@ -19,33 +19,23 @@ Static mappings can be set to assign "static" addresses to clients based on thei
 Basic Example
 -------------
 
-We are offering address space in the 192.0.2.0/24 network, which is
-physically connected on eth1, and pppoe0 is our connection to the internet.
-We are using the network name ``<name>``.
-
-Prerequisites:
-
-* Configuring PPPoE interface is assumed to be done already, and appears
-  on `pppoe0`
-* Interface ``eth1`` is configured to be connected to our DHCP subnet
-  192.0.2.0/24 by assigning e.g. address 192.0.2.1/24.
-
-Multiple DHCP ranges can be defined and may contain holes.
+In this example, we are offering address space in the 192.0.2.0/24 network.
+We are using the network name `dhcpexample`.
 
 .. code-block:: none
 
-  set service dhcp-server shared-network-name '<name>' authoritative
-  set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 default-router 192.0.2.1
-  set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 dns-server 192.0.2.1
-  set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 lease 86400
-  set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 range 0 start 192.0.2.100
-  set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 range 0 stop 192.0.2.199
+  set service dhcp-server shared-network-name dhcpexample authoritative
+  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 default-router 192.0.2.1
+  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 dns-server 192.0.2.1
+  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 lease 86400
+  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 range 0 start 192.0.2.100
+  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 range 0 stop 192.0.2.199
 
 The generated config will look like:
 
 .. code-block:: none
 
-  vyos@vyos# show service dhcp-server shared-network-name '<name>'
+  vyos@vyos# show service dhcp-server shared-network-name dhcpexample
   authoritative
   subnet 192.0.2.0/24 {
       default-router 192.0.2.1
@@ -57,23 +47,22 @@ The generated config will look like:
       }
   }
 
-
 Explanation
 ^^^^^^^^^^^
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' authoritative
+.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample authoritative
 
 This says that this device is the only DHCP server for this network. If other
 devices are trying to offer DHCP leases, this machine will send 'DHCPNAK' to
 any device trying to request an IP address that is
 not valid for this network.
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 default-router 192.0.2.1
+.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 default-router 192.0.2.1
 
 This is a configuration parameter for the subnet, saying that as part of the
 response, tell the client that I am the default router for this network
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 dns-server 192.0.2.1
+.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 dns-server 192.0.2.1
 
 This is a configuration parameter for the subnet, saying that as part of the
 response, tell the client that I am the DNS server for this network. If you
@@ -81,20 +70,20 @@ do not want to run a DNS server, you could also provide one of the public
 DNS servers, such as google's. You can add multiple entries by repeating the
 line.
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 lease 86400
+.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 lease 86400
 
 Assign the IP address to this machine for 24 hours. It is unlikely you'd need
 to shorten this period, unless you are running a network with lots of devices
 appearing and disappearing.
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 range 0 start 192.0.2.100
+
+.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 range 0 start 192.0.2.100
 
 Make a range of addresses available for clients starting from .100 [...]
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 range 0 stop 192.0.2.199
+.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 range 0 stop 192.0.2.199
 
-[...] and ending at .199
-
+[...] and ending at .199.
 
 Failover
 --------
