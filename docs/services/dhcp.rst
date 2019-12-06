@@ -9,8 +9,12 @@ VyOS uses ISC DHCPd for both IPv4 and IPv6 address assignment.
 DHCP Server
 ===========
 
-Multiple DHCP Servers can be run from a single machine. Each DHCP service is
-identified by a ``shared-network-name``.
+The network topology is declared by shared-network-name and the subnet declarations.
+The DHCP service can serve multiple shared networks, with each shared network having 1 or more subnets.
+Each subnet must be present on an interface.
+A range can be declared inside a subnet to define a pool of dynamic addresses.
+Multiple ranges can be defined and can contain holes.
+Static mappings can be set to assign "static" addresses to clients based on their MAC address.
 
 Basic Example
 -------------
