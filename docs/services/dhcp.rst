@@ -321,6 +321,54 @@ Example
 
 Override the static-mapping's dns-server with a custom one that will be sent only to this host.
 
+Operation Mode
+--------------
+
+.. opcmd:: restart dhcp server
+
+Restart the DHCP server
+
+.. opcmd:: show dhcp server statistics
+
+Show the DHCP server statistics:
+
+.. code-block:: none
+
+  vyos@vyos:~$ show dhcp server statistics
+  Pool           Size    Leases    Available  Usage
+  -----------  ------  --------  -----------  -------
+  dhcpexample      99         2           97  2%
+
+.. opcmd:: show dhcp server statistics pool <pool>
+
+Show the DHCP server statistics for the specified pool.
+
+.. opcmd:: show dhcp server leases
+
+Show statuses of all active leases:
+
+.. code-block:: none
+
+  vyos@vyos:~$ show dhcp server leases
+  IP address      Hardware address    State    Lease start          Lease expiration     Remaining   Pool         Hostname
+  --------------  ------------------  -------  -------------------  -------------------  ----------  -----------  ---------
+  192.0.2.104     aa:bb:cc:dd:ee:ff   active   2019/12/05 14:24:23  2019/12/06 02:24:23  6:05:35     dhcpexample  test1
+  192.0.2.115     ab:ac:ad:ae:af:bf   active   2019/12/05 18:02:37  2019/12/06 06:02:37  9:43:49     dhcpexample  test2
+
+.. hint:: Static mappings aren't shown. To show all states, use ``show dhcp server leases state all``.
+
+.. opcmd:: show dhcp server leases pool <pool>
+
+Show only leases in the specified pool.
+
+.. opcmd:: show dhcp server leases sort <key>
+
+Sort the output by the specified key. Possible keys: ip, hardware_address, state, start, end, remaining, pool, hostname (default = ip)
+
+.. opcmd:: show dhcp server leases state <state>
+
+Show only leases with the specified state. Possible states: all, active, free, expired, released, abandoned, reset, backup (default = active)
+
 DHCPv6 Server
 =============
 
