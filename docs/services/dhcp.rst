@@ -466,16 +466,16 @@ be created. The following example explains the process.
 **Example:**
 
 * IPv6 address ``2001:db8::101`` shall be statically mapped
-* Device MAC address will be ``00:53:c5:b7:5e:23``
 * Host specific mapping shall be named ``client1``
 
-.. hint:: The MAC address identifier is defined by the last 4 byte of the
-   MAC address.
+.. hint:: The identifier is the device's DUID: colon-separated hex list (as used by isc-dhcp option dhcpv6.client-id).
+   If the device already has a dynamic lease from the DHCPv6 server, its DUID can be found with ``show service dhcpv6 server leases``.
+   The DUID begins at the 5th octet (after the 4th colon) of IAID_DUID.
 
 .. code-block:: none
 
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-address 2001:db8::101
-  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 identifier c5b75e23
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 identifier 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
 
 The configuration will look as follows:
 
@@ -492,11 +492,10 @@ The configuration will look as follows:
             }
             static-mapping client1 {
                ipv6-address 2001:db8::101
-               identifier c5b75e23
+               identifier 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
             }
          }
       }
-
 
 Operation Mode
 --------------
