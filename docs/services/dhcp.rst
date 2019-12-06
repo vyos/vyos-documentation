@@ -127,16 +127,18 @@ Static mappings
 
 You can specify a static DHCP assignment on a per host basis. You will need the
 MAC address of the station and your desired IP address. The address must be
-inside your subnet definition but can be outside of your range sttement.
+inside the subnet definition but can be outside of the range statement.
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 static-mapping <host> ip-address 192.0.2.10
+.. cfgcmd::  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping static-mapping-01 mac-address ff:ff:ff:ff:ff:ff
 
-Configure desired IPv4 address for your host referenced to as `host`.
+Each host is uniquely identified by its MAC address.
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 static-mapping <hodt> mac-address ff:ff:ff:ff:ff:ff
+.. cfgcmd::  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping static-mapping-01 ip-address 192.0.2.10
 
-Configure MAC address for your host referenced by as `host` used in this static
-assignment.
+IP address to assign to this host. It must be inside the subnet in which it is defined but can be outside the dynamic range.
+If ip-address is not specified, an IP from the dynamic pool (as specified by ``range``) is used. This is useful, for example, in combination with hostfile update.
+
+.. hint:: This is the equivalent of the host block in dhcpd.conf of isc-dhcpd.
 
 DHCP Options
 ------------
