@@ -108,7 +108,7 @@ A generic name referencing this sync service.
 .. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover status '{primary|secondary}'
 
 The primary and secondary statements determines whether the server is primary
-r secondary.
+or secondary.
 
 .. note:: In order for the primary and the secondary DHCP server to keep
    their lease tables in sync, they must be able to reach each other on TCP
