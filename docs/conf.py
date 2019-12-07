@@ -40,7 +40,8 @@ release = u'1.3.x (equuleus)'
 # ones.
 extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.todo',
-              'sphinx.ext.ifconfig']
+              'sphinx.ext.ifconfig',
+              'sphinx.ext.graphviz']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

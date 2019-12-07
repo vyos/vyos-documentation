@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y \
     texlive-latex-extra \
     sudo \
     gosu \
+    graphviz \
     curl
 
 RUN pip3 install sphinx-autobuild
@@ -40,8 +41,5 @@ RUN sed "s/^%sudo.*/%sudo\tALL=(ALL) NOPASSWD:ALL/g" -i /etc/sudoers && \
 # vale
 RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v1.7.1
 
-
-
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-
