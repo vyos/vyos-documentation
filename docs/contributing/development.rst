@@ -64,15 +64,15 @@ In general, use an editor to create your commit messages rather than passing
 them on the command line. The format should be and is inspired by this blog
 post: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 
-* A single, short, summary of the commit (recommended 70 characters or less,
-  but not exceeding 80 characters)
+* A single, short, summary of the commit (recommended 50 characters or less,
+  not exceeding 80 characters)
 
-  * Add a prefix of the changed component to your commit headline, e.g. ``snmp:
-    T1111:`` or ``ethernet: T2222:``. If multiple components are touched by this
-    commit, you can use multiple prefixes, e.g.: ``snmp: ethernet:``
+  * Add prefix of changed component to your commit headline, e.g. ``snmp:
+    T1111:`` or ``ethernet: T2222:``. If multiple components are touched by
+    this commit, you can use multiple prefixes, e.g.: ``snmp: ethernet:``
 
-* Followed by a blank line (this is mandatory - else Git will treat the whole
-  commit message as the headline only)
+* Followed by a blank line (this line is mandatory - else Git will treat the
+  whole commit message as the headline only)
 
 * Followed by a message which describes all the details like:
 
