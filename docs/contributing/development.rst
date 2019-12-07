@@ -1,7 +1,8 @@
 .. _development:
 
+###########
 Development
-===========
+###########
 
 All VyOS source code is hosted on GitHub under the VyOS organization which can
 be found here: https://github.com/vyos
@@ -20,8 +21,8 @@ https://github.com/vyos/vyos-build
 
 The README.md file will guide you to use the this top level repository.
 
-Submit a patch
---------------
+Submit a Patch
+==============
 
 Patches are always more then welcome. To have a clean and easy to maintain
 repository we have some guidelines when working with Git. A clean repository
@@ -32,8 +33,8 @@ file(s) history by invoking ``git log path/to/file.txt``.
 
 .. _prepare_commit:
 
-Preparing patch/commit
-^^^^^^^^^^^^^^^^^^^^^^
+Prepare patch/commit
+--------------------
 
 In a big system, such as VyOS, that is comprised of multiple components, it's
 impossible to keep track of all the changes and bugs/feature requests in one's
@@ -107,8 +108,8 @@ Limits:
 Please submit your patches using the well-known GitHub pull-request against our
 repositories found in the VyOS GitHub organisation at https://github.com/vyos
 
-Determining package for a fix
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Determinine source package
+--------------------------
 
 Suppose you want to make a change in the webproxy script but yet you do not know
 which of the many VyOS packages ship this file. You can determine the VyOS
@@ -124,8 +125,8 @@ This means the file in question (``/opt/vyatta/sbin/vyatta-update-webproxy.pl``)
 is located in the ``vyatta-webproxy`` package which can be found here:
 https://github.com/vyos/vyatta-webproxy
 
-Fork repository to submit a Patch
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Fork Repository and submit Patch
+--------------------------------
 
 Forking the repository and submitting a GitHub pull-request is the preferred
 way of submitting your changes to VyOS. You can fork any VyOS repository to your
@@ -161,7 +162,7 @@ record them in your created Git commit:
 * Submit the patch ``git push`` and create the GitHub pull-request.
 
 Attach patch to Phabricator task
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 Follow the above steps on how to "Fork repository to submit a Patch". Instead
 of uploading "pushing" your changes to GitHub you can export the patches/
@@ -172,7 +173,7 @@ commits and send it to maintainers@vyos.net or attach it directly to the bug
   commits into its appropriate patch files: ``git format-patch -2``
 
 Coding Guidelines
------------------
+=================
 
 Like any other project we have some small guidelines about our source code, too.
 The rules we have are not there to punish you - the rules are in place to help
@@ -184,7 +185,7 @@ Python 3 **shall** be used. How long can we keep Python 2 alive anyway? No
 considerations for Python 2 compatibility **should** be taken at any time.
 
 Formatting
-^^^^^^^^^^
+----------
 
 * Python: Tabs **shall not** be used. Every indentation level should be 4 spaces
 * XML: Tabs **shall not** be used. Every indentation level should be 2 spaces
@@ -195,7 +196,7 @@ Formatting
    2>/dev/null`` now you can call the linter using ``gg=G`` in command mode.
 
 Text generation
-###############
+^^^^^^^^^^^^^^^
 
 Template processor **should** be used for generating config files. Built-in
 string formatting **may** be used for simple line-oriented formats where every
@@ -205,7 +206,7 @@ used for structured, multi-line formats such as those used by ISC DHCPd.
 The default template processor for VyOS code is Jinja2_.
 
 Summary
-#######
+-------
 
 When modifying the source code, remember these rules of the legacy elimination
 campaign:
@@ -215,7 +216,7 @@ campaign:
 * No code incompatible with Python3
 
 Python
-------
+======
 
 The switch to the Python programming language for new code is not merely a
 change of the language, but a chance to rethink and improve the programming
@@ -239,8 +240,8 @@ Please use the following template as good starting point when developing new
 modules or even rewrite a whole bunch of code in the new style XML/Pyhon
 interface.
 
-Configuration script structure and behaviour
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration Script Structure and Behaviour
+--------------------------------------------
 
 Your configuration script or operation mode script which is also written in
 Python3 should have a line break on 80 characters. This seems to be a bit odd
@@ -360,8 +361,8 @@ For easy orientation we suggest you take a look on the ``ntp.py`` or
 ``interfaces-bonding.py`` (for tag nodes) implementation. Both files can be
 found in the vyos-1x_ repository.
 
-XML - CLI
----------
+XML (used for CLI definitions)
+==============================
 
 The bash (or better vbash) completion in VyOS is defined in *templates*.
 Templates are text files (called ``node.def``) stored in a directory tree. The
@@ -384,7 +385,6 @@ there is no other format now that would allow this. Besides, a specialized XML
 editor can alleviate the issue with verbosity.
 
 Example:
-^^^^^^^^
 
 .. code-block:: xml
 
@@ -467,17 +467,17 @@ logic for generating config files for target applications, restarting services
 and so on is implemented in configuration scripts instead.
 
 Guidelines
-^^^^^^^^^^
+----------
 
 Use of numbers
-##############
+^^^^^^^^^^^^^^^
 
 Use of numbers in command names **should** be avoided unless a number is a
 part of a protocol name or similar. Thus, ``protocols ospfv3`` is perfectly
 fine, but something like ``server-1`` is questionable at best.
 
 Help String
-###########
+^^^^^^^^^^^
 
 To ensure uniform look and feel, and improve readability, we should follow a
 set of guidelines consistently.
@@ -554,7 +554,7 @@ Examples:
 * Bad: "Disables IPv6 forwarding"
 
 Migrating old CLI
-^^^^^^^^^^^^^^^^^
+-----------------
 
 .. list-table::
    :widths: 25 25 50
@@ -618,7 +618,7 @@ Migrating old CLI
      - All logic should be in the scripts
 
 Continous Integration
----------------------
+=====================
 
 VyOS makes use of Jenkins_ as our Continous Integration (CI) service. Our CI
 server is publicly accessible here: https://ci.vyos.net. You can get a brief
