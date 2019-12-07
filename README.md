@@ -45,7 +45,7 @@ You can either build the container on your own or directly fetch it prebuild
 from Dockerhub. If you want to build it for yourself, use the following command.
 
 ```bash
-$ docker build -t vyos-docu docker
+$ docker build -t vyos/vyos-documentation docker
 ```
 
 ### Build documentation
