@@ -211,4 +211,4 @@ SSH:
 
 Commit and save.
 
-.. _tc: http://en.wikipedia.org/wiki/Tc_(Linux)
+.. _tc: https://en.wikipedia.org/wiki/Tc_(Linux)
