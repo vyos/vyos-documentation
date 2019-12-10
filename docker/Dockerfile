@@ -12,6 +12,7 @@ RUN echo "dash dash/sh boolean false" | debconf-set-selections && \
 
 RUN apt-get update && apt-get install -y \
     vim \
+    nano \
     git \
     mc \
     make \
