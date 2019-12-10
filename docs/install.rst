@@ -275,7 +275,7 @@ Requirements
 * A **HTTP server** (optional, but we will use it to speed up intallation)
 * The **VyOS ISO** image to be installed (do not use images prior to VyOS 1.2.3)
 * The ``pxelinux.0`` and ``ldlinux.c32`` files from the Syslinux distribution
-  https://kernel.org/pub/linux/utils/boot/syslinux/
+  https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/
 
 Step 1: DHCP
 ^^^^^^^^^^^^
