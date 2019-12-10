@@ -152,7 +152,7 @@ To setup a destination NAT rule we need to gather:
 
 In our example, we will be forwarding web server traffic to an internal web
 server on 192.168.0.100. HTTP traffic makes use of the TCP protocol on port 80.
-For other common port numbers, see: http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+For other common port numbers, see: https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
 
 Our configuration commands would be:
 
@@ -469,4 +469,4 @@ Start by checking for IPSec SAs (Security Associations) with:
 
 That looks good - we defined 2 tunnels and they're both up and running.
 
-.. _ULAs: http://en.wikipedia.org/wiki/Unique_local_address
+.. _ULAs: https://en.wikipedia.org/wiki/Unique_local_address
