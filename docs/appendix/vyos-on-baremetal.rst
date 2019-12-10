@@ -306,8 +306,7 @@ Partaker i5
 .. figure:: ../_static/images/600px-Partaker-i5.jpg
 
 I believe this is actually the same hardware as the Protectli. I purchased it
-from `Amazon <https://www.amazon.com/gp/product/B073F9GHKL/>`_ in June 2018.
-It came pre-loaded with pfSense.
+in June 2018. It came pre-loaded with pfSense.
 
 `Manufacturer product page <http://www.inctel.com.cn/product/detail/338.html>`_.
 
