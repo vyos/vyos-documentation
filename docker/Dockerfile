@@ -26,7 +26,8 @@ RUN apt-get update && apt-get install -y \
     sudo \
     gosu \
     graphviz \
-    curl
+    curl \
+    dos2unix
 
 RUN pip3 install sphinx-autobuild
 
@@ -43,4 +44,11 @@ RUN sed "s/^%sudo.*/%sudo\tALL=(ALL) NOPASSWD:ALL/g" -i /etc/sudoers && \
 RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v1.7.1
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
+# we need to convert the entrypoint with appropriate line endings, else
+# there will be an error:
+#     standard_init_linux.go:175: exec user process caused
+#     "no such file or directory"
+RUN dos2unix /usr/local/bin/entrypoint.sh
+
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
