@@ -63,7 +63,7 @@ it.
 
 In general, use an editor to create your commit messages rather than passing
 them on the command line. The format should be and is inspired by this blog
-post: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+post: https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 
 * A single, short, summary of the commit (recommended 50 characters or less,
   not exceeding 80 characters)
@@ -636,8 +636,8 @@ to our Debian repository which is used during build time. It is located here:
 http://dev.packages.vyos.net/repositories/.
 
 .. _process: https://blog.vyos.io/vyos-development-digest-10
-.. _VyConf: https://github.com/vyos/vyconf/blob/master/data/schemata
-.. _vyos-1x: https://github.com/vyos/vyos-1x/blob/current/schema/
+.. _VyConf: https://github.com/vyos/vyconf/tree/master/data/schemata
+.. _vyos-1x: https://github.com/vyos/vyos-1x/tree/current/schema
 .. _Jinja2: https://jinja.palletsprojects.com/
 .. _Phabricator: https://phabricator.vyos.net/
 .. _Jenkins: https://jenkins.io/

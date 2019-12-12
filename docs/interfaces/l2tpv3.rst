@@ -117,4 +117,4 @@ L2TPv3:
   set interfaces l2tpv3 l2tpeth0 source-port '5000'
   set interfaces l2tpv3 l2tpeth0 tunnel-id '10'
 
-.. _`Wikipedia L2TPv3`: http://en.wikipedia.org/wiki/L2TPv3
+.. _`Wikipedia L2TPv3`: https://en.wikipedia.org/wiki/L2TPv3

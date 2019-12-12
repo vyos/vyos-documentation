@@ -156,7 +156,7 @@ versions, so we are building it from source.
 Debian does keep their package in git, but it's upstream tarball imported into
 git without its original commit history. To be able to merge new tags in, we
 keep a fork of the upstream repository with packaging files imported from
-Debian at http://github.com/vyos/keepalived-upstream
+Debian at https://github.com/vyos/keepalived-upstream
 
 strongswan
 ^^^^^^^^^^

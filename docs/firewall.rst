@@ -3,7 +3,7 @@
 Firewall
 ========
 
-VyOS makes use of Linux `netfilter <http://netfilter.org/>`_ for packet filtering.
+VyOS makes use of Linux `netfilter <https://netfilter.org/>`_ for packet filtering.
 
 The firewall supports the creation of groups for ports, addresses, and networks
 (implemented using netfilter ipset) and the option of interface or zone based

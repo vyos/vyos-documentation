@@ -66,7 +66,7 @@ please search Phabricator_ if there is already a request pending. You can
 enhance it or if you don't find one, create a new one by use the quick link in
 the left side under the specific project.
 
-.. _documentation: https://vyos.redthedocs.io
+.. _documentation: https://docs.vyos.io
 .. _Slack: https://slack.vyos.io
 .. _Forum: https://forum.vyos.io
 .. _Phabricator: https://phabricator.vyos.net

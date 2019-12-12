@@ -1372,7 +1372,7 @@ tcp
 .. note:: You must set ipv6 protocol to TCP to use the TCP filters.
 
 .. note:: This filter will only match IPv6 packets with no header extension, see
-   http://en.wikipedia.org/wiki/IPv6_packet#Extension_headers for no header
+   https://en.wikipedia.org/wiki/IPv6_packet#Extension_headers for no header
    extension.
 
 .. code-block:: none
@@ -1406,7 +1406,7 @@ vif
   set interfaces ethernet eth0 traffic-policy out 'WAN-OUT'
   set interfaces ethernet eth1 traffic-policy out 'LAN-OUT'
 
-.. _tc: http://en.wikipedia.org/wiki/Tc_(Linux)
+.. _tc: https://en.wikipedia.org/wiki/Tc_(Linux)
 .. _TBF: https://en.wikipedia.org/wiki/Token_bucket
 .. _HFSC: https://en.wikipedia.org/wiki/Hierarchical_fair-service_curve
-.. _IFB: http://www.linuxfoundation.org/collaborate/workgroups/networking/ifb
+.. _IFB: https://www.linuxfoundation.org/collaborate/workgroups/networking/ifb

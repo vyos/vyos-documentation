@@ -201,5 +201,5 @@ Results in:
       description "Description"
   }
 
-.. _`other proposals`: https://www.isc.org/downloads/aftr
+.. _`other proposals`: https://www.isc.org/othersoftware/
 .. _`Hurricane Electric`: https://tunnelbroker.net/

@@ -335,7 +335,7 @@ These are the boot steps for VyOS 1.2
   11. Finally it runs the post-config script
       ``/config/scripts/vyos-postconfig-bootup.script``
 
-.. _Quagga: http://www.quagga.net/
+.. _Quagga: https://www.quagga.net/
 .. _`GNU Zebra`: https://www.gnu.org/software/zebra/
 .. _FRR: https://frrouting.org/
 .. _vyatta-cfg: https://github.com/vyos/vyatta-cfg
