@@ -482,6 +482,45 @@ Command definitions are purely declarative, and cannot contain any logic. All
 logic for generating config files for target applications, restarting services
 and so on is implemented in configuration scripts instead.
 
+GNU Preprocessor
+----------------
+
+XML interface definition files use the `xml.in` file extension which was
+implemented in T1843_. XML interface definitions tend to have a lot of
+duplicated code in areas such as:
+
+* VIF (incl. VIF-S/VIF-C)
+* Address
+* Description
+* Enabled/Disabled
+
+Instead of supplying all those XML nodes multiple times there are now include
+files with predefined features. Brief overview:
+
+* `IPv4, IPv6 and DHCP(v6)`_ address assignment
+* `IPv4, IPv6`_ address assignment
+* `VLAN (VIF)`_ definition
+* `MAC address`_ assignment
+
+All interface definition XML input files (.in suffix) will be sent to the GCC
+preprocess and the output is stored in the `build/interface-definitions`
+folder. The previously mentioned `scripts/build-command-templates` script
+operates on the `build/interface-definitions` folder to generate all required
+CLI nodes.
+
+.. code-block:: none
+
+  $ make interface_definitions
+  install -d -m 0755 build/interface-definitions
+  install -d -m 0755 build/op-mode-definitions
+  Generating build/interface-definitions/intel_qat.xml from interface-definitions/intel_qat.xml.in
+  Generating build/interface-definitions/interfaces-bonding.xml from interface-definitions/interfaces-bonding.xml.in
+  Generating build/interface-definitions/cron.xml from interface-definitions/cron.xml.in
+  Generating build/interface-definitions/pppoe-server.xml from interface-definitions/pppoe-server.xml.in
+  Generating build/interface-definitions/mdns-repeater.xml from interface-definitions/mdns-repeater.xml.in
+  Generating build/interface-definitions/tftp-server.xml from interface-definitions/tftp-server.xml.in
+  [...]
+
 
 Guidelines
 ----------
@@ -659,3 +698,8 @@ http://dev.packages.vyos.net/repositories/.
 .. _Phabricator: https://phabricator.vyos.net/
 .. _Jenkins: https://jenkins.io/
 .. _Dockerhub: https://hub.docker.com/u/vyos/
+.. _T1843: https://phabricator.vyos.net/T1843
+.. _`IPv4, IPv6 and DHCP(v6)`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/address-ipv4-ipv6-dhcp.xml.i
+.. _`IPv4, IPv6`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/address-ipv4-ipv6.xml.i
+.. _`VLAN (VIF)`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/vif.xml.i
+.. _`MAC address`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/interface-mac.xml.i
