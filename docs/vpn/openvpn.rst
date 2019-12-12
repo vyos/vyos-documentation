@@ -183,8 +183,8 @@ Server
 ======
 
 Multi-client server is the most popular OpenVPN mode on routers. It always uses
-x.509 authentication and therefore requires a PKI setup. This guide assumes you
-have already setup a PKI and have a CA certificate, a server certificate and
+x.509 authentication and therefore requires a PKI setup. This guide assumes
+`you have already setup a PKI`_ and have a CA certificate, a server certificate and
 key, a certificate revocation list, a Diffie-Hellman key exchange parameters
 file. You do not need client certificates and keys for the server setup.
 
@@ -254,6 +254,7 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
 
   set protocols static interface-route 10.23.0.0/20 next-hop-interface vtun10
 
+.. _`you have already setup a PKI`: https://support.vyos.io/en/kb/articles/using-easy-rsa-to-generate-x-509-certificates-and-keys-2
 
 Client Authentication
 ---------------------
