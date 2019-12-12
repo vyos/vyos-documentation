@@ -41,14 +41,18 @@ impossible to keep track of all the changes and bugs/feature requests in one's
 head. We use a bugtracker known as Phabricator_ for it ("issue tracker" would
 be a better term, but this one stuck).
 
-The information is used in two ways:
+The information is used in three ways:
 
 * Keep track of the progress (what we've already done in this branch and what
   we still need to do).
 
 * Prepare release notes for upcoming releases
 
-To make this approach work, every change must be associated with a bug number
+* Help future maintainers of VyOS (it could be you!) to find out why certain
+  things have been changed in the codebase or why certain features have been
+  added
+
+To make this approach work, every change must be associated with a task number
 (prefixed with **T**) and a component. If there is no bug report/feature request
 for the changes you are going to make, you have to create a Phabricator_ task
 first. Once there is an entry in Phabricator_, you should reference its id in
@@ -61,19 +65,21 @@ If there is no Phabricator_ reference in the commits of your pull request, we
 have to ask you to ammend the commit message. Otherwise we will have to reject
 it.
 
-In general, use an editor to create your commit messages rather than passing
-them on the command line. The format should be and is inspired by this blog
-post: https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+Writing good commit messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The format should be and is inspired by: https://git-scm.com/book/ch5-2.html
 
 * A single, short, summary of the commit (recommended 50 characters or less,
-  not exceeding 80 characters)
+  not exceeding 80 characters) containing a prefix of the changed component
+  and the corresponding Phabricator_ reference e.g. ``snmp: T1111:`` or
+  ``ethernet: T2222:`` - multiple components could be concatenated as in
+  ``snmp: ethernet: T3333``
 
-  * Add prefix of changed component to your commit headline, e.g. ``snmp:
-    T1111:`` or ``ethernet: T2222:``. If multiple components are touched by
-    this commit, you can use multiple prefixes, e.g.: ``snmp: ethernet:``
-
-* Followed by a blank line (this line is mandatory - else Git will treat the
-  whole commit message as the headline only)
+* In some contexts, the first line is treated as the subject of an email and
+  the rest of the text as the body. The blank line separating the summary from
+  the body is critical (unless you omit the body entirely); tools like rebase
+  can get confused if you run the two together.
 
 * Followed by a message which describes all the details like:
 
@@ -108,6 +114,7 @@ Limits:
 Please submit your patches using the well-known GitHub pull-request against our
 repositories found in the VyOS GitHub organisation at https://github.com/vyos
 
+
 Determinine source package
 --------------------------
 
@@ -124,6 +131,7 @@ VyOS installation.
 This means the file in question (``/opt/vyatta/sbin/vyatta-update-webproxy.pl``)
 is located in the ``vyatta-webproxy`` package which can be found here:
 https://github.com/vyos/vyatta-webproxy
+
 
 Fork Repository and submit Patch
 --------------------------------
@@ -161,6 +169,7 @@ record them in your created Git commit:
 
 * Submit the patch ``git push`` and create the GitHub pull-request.
 
+
 Attach patch to Phabricator task
 --------------------------------
 
@@ -171,6 +180,7 @@ commits and send it to maintainers@vyos.net or attach it directly to the bug
 
 * Export last commit to patch file: ``git format-patch`` or export the last two
   commits into its appropriate patch files: ``git format-patch -2``
+
 
 Coding Guidelines
 =================
@@ -184,6 +194,7 @@ implied logic of any one source file..
 Python 3 **shall** be used. How long can we keep Python 2 alive anyway? No
 considerations for Python 2 compatibility **should** be taken at any time.
 
+
 Formatting
 ----------
 
@@ -195,6 +206,7 @@ Formatting
    ``au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\
    2>/dev/null`` now you can call the linter using ``gg=G`` in command mode.
 
+
 Text generation
 ^^^^^^^^^^^^^^^
 
@@ -205,6 +217,7 @@ used for structured, multi-line formats such as those used by ISC DHCPd.
 
 The default template processor for VyOS code is Jinja2_.
 
+
 Summary
 -------
 
@@ -214,6 +227,7 @@ campaign:
 * No new features in Perl
 * No old style command definitions
 * No code incompatible with Python3
+
 
 Python
 ======
@@ -239,6 +253,7 @@ the spaghetti code.
 Please use the following template as good starting point when developing new
 modules or even rewrite a whole bunch of code in the new style XML/Pyhon
 interface.
+
 
 Configuration Script Structure and Behaviour
 --------------------------------------------
@@ -361,6 +376,7 @@ For easy orientation we suggest you take a look on the ``ntp.py`` or
 ``interfaces-bonding.py`` (for tag nodes) implementation. Both files can be
 found in the vyos-1x_ repository.
 
+
 XML (used for CLI definitions)
 ==============================
 
@@ -465,6 +481,7 @@ Example:
 Command definitions are purely declarative, and cannot contain any logic. All
 logic for generating config files for target applications, restarting services
 and so on is implemented in configuration scripts instead.
+
 
 Guidelines
 ----------
