@@ -1,11 +1,12 @@
 .. _dynamic-dns:
 
+###########
 Dynamic DNS
------------
+###########
 
 VyOS is able to update a remote DNS record when an interface gets a new IP
-address. In order to do so, VyOS includes ddclient_, a perl script written for
-this exact purpose.
+address. In order to do so, VyOS includes ddclient_, a Perl script written for
+this only one purpose.
 
 ddclient_ uses two methods to update a DNS record. The first one will send
 updates directly to the DNS daemon, in compliance with :rfc:`2136`. The second
@@ -13,8 +14,8 @@ one involves a third party service, like DynDNS.com or any other similar
 website. This method uses HTTP requests to transmit the new IP address. You
 can configure both in VyOS.
 
-VyOS CLI and RFC2136
-^^^^^^^^^^^^^^^^^^^^
+CLI and RFC2136
+===============
 
 First, create an :rfc:`2136` config node :
 
@@ -76,8 +77,8 @@ You can also keep a different dns zone updated. Just create a new config node:
 
   edit service dns dynamic interface eth0 rfc2136 <confignode2>
 
-VyOS CLI and HTTP dynamic DNS services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+CLI and HTTP dynamic DNS services
+=================================
 
 VyOS is also able to use any service relying on protocols supported
 by ddclient.
@@ -132,7 +133,7 @@ It's possible to use multiple services :
   set server ipv4.tunnelbroker.net
 
 ddclient behind NAT
-^^^^^^^^^^^^^^^^^^^
+===================
 
 By default, ddclient will update a dynamic dns record using the IP address
 directly attached to the interface. If your VyOS instance is behind NAT, your
