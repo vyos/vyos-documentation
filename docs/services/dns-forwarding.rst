@@ -11,9 +11,10 @@ VyOS provides DNS infrastructure for small networks. It is designed to be
 lightweight and have a small footprint, suitable for resource constrained
 routers and firewalls, for this we utilize PowerDNS recursor.
 
-VyOS DNS forwarder doe not require an upstream DNS server. It can serve as a
+VyOS DNS forwarder does not require an upstream DNS server. It can serve as a
 full recursive DNS server - but it can also forward queries to configurable
-upstream DNS servers.
+upstream DNS servers. By not configuring any upstream DNS servers you also
+avoid to be tracked by the provider of your upstream DNS server.
 
 .. cfgcmd:: set service dns forwarding system
 
@@ -63,7 +64,7 @@ are:
   send SERVFAIL when the validation comes up bogus.
 
 * **log-fail** In this mode, the recursor will attempt to validate all data it
-  retrieves from authoritative servers, regardless of the client’s DNSSEC
+  retrieves from authoritative servers, regardless of the client's DNSSEC
   desires, and will log the validation result. This mode can be used to
   determine the extra load and amount of possibly bogus answers before turning
   on full-blown validation. Responses to client queries are the same as with
@@ -71,13 +72,13 @@ are:
 
 * **validate** The highest mode of DNSSEC processing. In this mode, all queries
   will be be validated and will be answered with a SERVFAIL in case of bogus
-  data, regardless of the client’s request.
+  data, regardless of the client's request.
 
-.. note:: the ``dig`` tool sets the AD-bit in the query. This might lead to
-   unexpected query results when testing. Set +noad on the dig commandline when
-   this is the case.
+.. note:: The famous UNIX/Linux ``dig`` tool sets the AD-bit in the query. This
+   might lead to unexpected query results when testing. Set ``+noad`` on the
+   ``dig`` commandline when this is the case.
 
-.. note:: the CD-bit is honored correctly for process and validate. For
+.. note:: The ``CD``-bit is honored correctly for process and validate. For
    log-fail, failures will be logged too.
 
 .. cfgcmd:: set service dns forwarding ignore-hosts-file
