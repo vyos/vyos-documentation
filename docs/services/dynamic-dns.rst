@@ -113,11 +113,6 @@ service identified by `<service>`.
 Configure `<password>` used when authenticating the update request for DynDNS
 service identified by `<service>`.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service> password <password>
-
-Configure `<password>` used when authenticating the update request for DynDNS
-service identified by `<service>`.
-
 .. cfgcmd:: set service dns dynamic interface <interface> service <service> protocol <protocol>
 
 When a ``custom`` DynDNS provider is used the protocol used for communicating to
