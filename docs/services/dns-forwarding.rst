@@ -4,6 +4,9 @@
 DNS Forwarding
 ##############
 
+Configuration
+=============
+
 VyOS provides DNS infrastructure for small networks. It is designed to be
 lightweight and have a small footprint, suitable for resource constrained
 routers and firewalls, for this we utilize PowerDNS recursor.
@@ -128,3 +131,10 @@ use of DNS split-horizon for example.com.
   set service dns forwarding allow-from 192.168.1.0/24
   set service dns forwarding allow-from 2001:db8::/64
 
+Operation
+=========
+
+.. opcmd:: reset dns forwarding <all | domain>
+
+Reset local DNS forwarding cache database. You can reset the cache for all
+entries or only for entries to a specific domain.
