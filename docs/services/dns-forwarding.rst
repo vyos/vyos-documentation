@@ -1,7 +1,8 @@
 .. _dns-forwarding:
 
+##############
 DNS Forwarding
---------------
+##############
 
 Use DNS forwarding if you want your router to function as a DNS server for the
 local network. There are several options, the easiest being 'forward all
@@ -37,8 +38,11 @@ Set which networks or clients are allowed to query the DNS Server. Allow from al
 
   set service dns forwarding allow-from 0.0.0.0/0
 
+Examples
+========
+
 Example 1
-^^^^^^^^^
+---------
 
 Router with two interfaces eth0 (WAN link) and eth1 (LAN). Split DNS for example.com.
 
@@ -55,7 +59,7 @@ Router with two interfaces eth0 (WAN link) and eth1 (LAN). Split DNS for example
   set service dns forwarding allow-from 0.0.0.0/0
 
 Example 2
-^^^^^^^^^
+---------
 
 Same as example 1 but with additional IPv6 addresses for Google's public DNS
 servers.
