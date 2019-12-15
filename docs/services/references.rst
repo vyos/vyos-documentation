@@ -1,5 +1,5 @@
 .. _`Cisco Discovery Protocol`: https://en.wikipedia.org/wiki/Cisco_Discovery_Protocol
-.. _ddclient: http://sourceforge.net/p/ddclient/wiki/Home/
+.. _ddclient: http://github.com/ddclient/ddclient
 .. _`Foundry Discovery Protocol`: https://en.wikipedia.org/wiki/Foundry_Discovery_Protocol
 .. _MIB: https://en.wikipedia.org/wiki/Management_information_base
 .. _RFC2136: https://www.ietf.org/rfc/rfc2136.txt
