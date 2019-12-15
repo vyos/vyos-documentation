@@ -1,11 +1,12 @@
 .. _ssh:
 
+###
 SSH
----
+###
 
-Secure Shell (SSH_) is a cryptographic network protocol for operating network
-services securely over an unsecured network.[1] The standard TCP port for SSH
-is 22. The best known example application is for remote login to computer
+:abbr:`SSH (Secure Shell)` is a cryptographic network protocol for operating
+network services securely over an unsecured network. The standard TCP port for
+SSH is 22. The best known example application is for remote login to computer
 systems by users.
 
 SSH provides a secure channel over an unsecured network in a client-server
@@ -27,7 +28,7 @@ analysis. The encryption used by SSH is intended to provide confidentiality
 and integrity of data over an unsecured network, such as the Internet.
 
 Configuration
-^^^^^^^^^^^^^
+=============
 
 Enabling SSH only requires you to add ``service ssh port NN``, where 'NN' is
 the port you want SSH to listen on. By default, SSH runs on port 22.
@@ -37,7 +38,7 @@ the port you want SSH to listen on. By default, SSH runs on port 22.
   set service ssh port 22
 
 Options
-*******
+-------
 
 * Listening address - Specify the IPv4/IPv6 listening address for connection
   requests. Multiple ``listen-address`` nodes can be defined.
