@@ -163,4 +163,4 @@ and tries to extract your IP address from the response.
 
 ddclient_ will skip any address located before the string set in `<pattern>`.
 
-.. _ddclient: https://sourceforge.net/p/ddclient/wiki/Home/
+.. _ddclient: https://github.com/ddclient/ddclient
