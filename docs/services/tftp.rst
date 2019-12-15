@@ -1,34 +1,46 @@
 .. _tftp-server:
 
+####
 TFTP
-----
+####
 
-Trivial File Transfer Protocol (TFTP_) is a simple lockstep File Transfer
-Protocol which allows a client to get a file from or put a file onto a remote
+:abbr:`TFTP (Trivial File Transfer Protocol) is a simple, lockstep file transfer
+protocol which allows a client to get a file from or put a file onto a remote
 host. One of its primary uses is in the early stages of nodes booting from a
 local area network. TFTP has been used for this application because it is very
 simple to implement.
 
-Example
-^^^^^^^
+Configuration
+=============
 
-.. code-block:: none
+.. cfgcmd:: set service tftp-server directory '/config/tftpboot'
 
-  # If you want to enable uploads, else TFTP server will act as read-only (optional)
-  set service tftp-server allow-upload
+Enable TFTP service by specifying the directory which will be used to serve
+files.
 
-  # Directory for TFTP server content
-  set service tftp-server directory '/config/tftpboot'
-
-  # On which addresses we want to listen for incoming TFTP connections? (mandatory)
-  set service tftp-server listen-address '2001:db8:ffee::1'
-  set service tftp-server listen-address '10.10.1.1'
-
-.. note:: Choose your ``directory`` location carefully or you will loose the
+.. hint:: Choose your ``directory`` location carefully or you will loose the
    content on image upgrades. Any directory under ``/config`` is save at this
    will be migrated.
 
+.. cfgcmd:: set service tftp-server listen-address '<address>'
+
+Configure the IPv4 or IPv6 listen address of the TFTP server. Multiple IPv4 and
+IPv6 addresses can be given. There will be one TFTP server instances listening
+on each IP address.
+
 .. note:: Configuring a listen-address is essential for the service to work.
+
+.. cfgcmd:: set service tftp-server allow-upload
+
+Optional, if you want to enable uploads, else TFTP server will act as read-only
+server.
+
+Example
+-------
+
+Provide TFTP server listening on both IPv4 and IPv6 addresses ``192.0.2.1`` and
+``2001:db8::1`` serving the content from ``/config/tftpboot``. Uploading via
+TFTP to this server is not allowed!
 
 The resulting configuration will look like:
 
@@ -36,9 +48,7 @@ The resulting configuration will look like:
 
   vyos@vyos# show service
    tftp-server {
-      allow-upload
       directory /config/tftpboot
-      listen-address 2001:db8:ffee::1
-      listen-address 10.10.1.1
+      listen-address 2001:db8::1
+      listen-address 192.0.2.1
    }
-
