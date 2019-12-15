@@ -77,6 +77,15 @@ are:
 .. note:: the CD-bit is honored correctly for process and validate. For
    log-fail, failures will be logged too.
 
+.. cfgcmd:: set service dns forwarding ignore-hosts-file
+
+Do not use local ``/etc/hosts`` file in name resolution. VyOS DHCP server will
+use this file to add resolvers to assigned addresses.
+
+.. cfgcmd:: set service dns forwarding max-cache-entries
+
+Maximum number of DNS cache entries. 1 million per CPU core will generally
+suffice for most installations.
 
 Example
 =======
