@@ -1,3 +1,5 @@
+.. _dynamic-dns:
+
 Dynamic DNS
 -----------
 
