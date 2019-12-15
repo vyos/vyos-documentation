@@ -1,33 +1,32 @@
 .. _config-management:
 
-Config Management
------------------
+########################
+Configuration Management
+########################
+
+VyOS comes with an integrated versioning system for the system configuration.
+The configurations are versioned locally for rollback but they can also be
+stored on a remote host for archiving/backup reasons.
+
+.. cfgcmd:: set system config-management commit-revisions <number>
+
+Change the number of commit revisions to `<number>`, the default setting for
+this value is to store 20 revisions locally.
 
 
-The following changes the number of commit revisions. In the default settings, 20 revisions are stored locally.
+.. cfgcmd:: set system config-management commit-archive location '<url>'
 
-.. code-block:: none
+If you want to save all config changes to a remote destination. Set the
+commit-archive location. Every time a commit is successfully the ``config.boot``
+file will be copied to the defined destination(s). The filename used on the
+remote host used will be: ``config.boot-hostname.YYYYMMDD_HHMMSS``
 
-  set system config-management commit-revisions 50
+Destinations will be configured as any of the below :abbr:`URI (Uniform
+Resource Identifier)`
 
+* ``scp://<user>:<passwd>@<host>/<dir>``
+* ``sftp://<user>:<passwd>@<host>/<dir>``
+* ``ftp://<user>:<passwd>@<host>/<dir>``
+* ``tftp://<host>/<dir>``
 
-| If you want to save all config changes to a remote destination. Set the commit-archive location. Every time a commit is successfully the config.boot file will be copied to the defined destinations.
-
-
-.. code-block:: none
-
-  set system config-management commit-archive location 'tftp://10.0.0.2'
-
-.. note:: the number of revisions don't effect the commit-archive:
-
-A commit look now like this:
-
-.. code-block:: none
-
-    vyos@vyos-R1# commit
-    Archiving config...
-    tftp://10.0.0.2  OK
-    [edit]
-    vyos@vyos-R1#
-
-The filename has this format: config.boot-hostname.YYYYMMDD_HHMMSS
+.. note:: The number of revisions don't effect the commit-archive.
