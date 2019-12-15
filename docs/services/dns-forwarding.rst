@@ -87,6 +87,14 @@ use this file to add resolvers to assigned addresses.
 Maximum number of DNS cache entries. 1 million per CPU core will generally
 suffice for most installations.
 
+.. cfgcmd:: set service dns forwarding negative-ttl
+
+A query for which there is authoritatively no answer is cached to quickly deny
+a record's existence later on, without putting a heavy load on the remote
+server. In practice, caches can become saturated with hundreds of thousands of
+hosts which are tried only once. This setting, which defaults to 3600 seconds,
+puts a maximum on the amount of time negative entries are cached.
+
 Example
 =======
 
