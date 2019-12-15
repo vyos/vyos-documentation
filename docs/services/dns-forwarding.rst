@@ -95,6 +95,11 @@ server. In practice, caches can become saturated with hundreds of thousands of
 hosts which are tried only once. This setting, which defaults to 3600 seconds,
 puts a maximum on the amount of time negative entries are cached.
 
+.. cfgcmd:: set service dns forwarding listen-address
+
+Local IPv4 or IPv6 addresses to bind to - waiting on this address for incoming
+connections.
+
 Example
 =======
 
