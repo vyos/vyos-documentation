@@ -1,3 +1,5 @@
+.. _tftp-server:
+
 TFTP
 ----
 
