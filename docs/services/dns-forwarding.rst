@@ -36,6 +36,48 @@ attacts, you must configure the networks which are allowed to use this recursor.
 A network of ``0.0.0.0/0`` or ``::/0`` would allow all IPv4 and IPv6 networks
 to query this server. This is on general a bad idea.
 
+.. cfgcmd:: set service dns forwarding dnssec <off | process-no-validate | process | log-fail | validate>
+
+The PowerDNS Recursor has 5 different levels of DNSSEC processing, which can
+be set with the dnssec setting. In order from least to most processing, these
+are:
+
+* **off** In this mode, no DNSSEC processing takes place. The recursor will not
+  set the DNSSEC OK (DO) bit in the outgoing queries and will ignore the DO and
+  AD bits in queries.
+
+* **process-no-validate** In this mode the Recursor acts as a "security aware,
+  non-validating" nameserver, meaning it will set the DO-bit on outgoing queries
+  and will provide DNSSEC related RRsets (NSEC, RRSIG) to clients that ask for
+  them (by means of a DO-bit in the query), except for zones provided through
+  the auth-zones setting. It will not do any validation in this mode, not even
+  when requested by the client.
+
+* **process** When dnssec is set to process the behaviour is similar to
+  process-no-validate. However, the recursor will try to validate the data if
+  at least one of the DO or AD bits is set in the query; in that case, it will
+  set the AD-bit in the response when the data is validated successfully, or
+  send SERVFAIL when the validation comes up bogus.
+
+* **log-fail** In this mode, the recursor will attempt to validate all data it
+  retrieves from authoritative servers, regardless of the client’s DNSSEC
+  desires, and will log the validation result. This mode can be used to
+  determine the extra load and amount of possibly bogus answers before turning
+  on full-blown validation. Responses to client queries are the same as with
+  process.
+
+* **validate** The highest mode of DNSSEC processing. In this mode, all queries
+  will be be validated and will be answered with a SERVFAIL in case of bogus
+  data, regardless of the client’s request.
+
+.. note:: the ``dig`` tool sets the AD-bit in the query. This might lead to
+   unexpected query results when testing. Set +noad on the dig commandline when
+   this is the case.
+
+.. note:: the CD-bit is honored correctly for process and validate. For
+   log-fail, failures will be logged too.
+
+
 Example
 =======
 
