@@ -4,11 +4,11 @@
 TFTP
 ####
 
-:abbr:`TFTP (Trivial File Transfer Protocol) is a simple, lockstep file transfer
-protocol which allows a client to get a file from or put a file onto a remote
-host. One of its primary uses is in the early stages of nodes booting from a
-local area network. TFTP has been used for this application because it is very
-simple to implement.
+:abbr:`TFTP (Trivial File Transfer Protocol)` is a simple, lockstep file
+transfer protocol which allows a client to get a file from or put a file onto
+a remote host. One of its primary uses is in the early stages of nodes booting
+from a local area network. TFTP has been used for this application because it
+is very simple to implement.
 
 Configuration
 =============
