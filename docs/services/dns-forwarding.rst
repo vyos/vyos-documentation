@@ -139,3 +139,7 @@ Operation
 
 Reset local DNS forwarding cache database. You can reset the cache for all
 entries or only for entries to a specific domain.
+
+.. opcmd:: restart dns forwarding
+
+Restart DNS recursor process which also invalidates the cache.
