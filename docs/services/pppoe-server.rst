@@ -38,6 +38,20 @@ Connections can be locally checked via the command
   ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 
 
+Per default the user session is being replaced if a second authentication request succeeds.
+Such session requests can be either denied or allowed entirely, which would allow multiple sessions for a user in the latter case.
+If it is denied, the second session is being rejected even if the authentication succeeds, the user has to terminate its first
+session and can then authentication again.
+
+.. code-block:: none
+
+  vyos@# set service pppoe-server session-control 
+    Possible completions:
+    disable      Disables session control
+    deny         Deny second session authorization
+
+
+
 Client IP address pools
 =======================
 
