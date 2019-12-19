@@ -161,16 +161,34 @@ ASN and Router ID
 
 .. cfgcmd:: set protocols bgp '<ASN>'
 
-First of all you must configure BGP router with the :abbr:`ASN (Autonomous
-System Number)`. The AS number is an identifier for the autonomous system. The
-BGP protocol uses the AS number for detecting whether the BGP connection is
-internal or external.
+   First of all you must configure BGP router with the :abbr:`ASN (Autonomous
+   System Number)`. The AS number is an identifier for the autonomous system.
+   The BGP protocol uses the AS number for detecting whether the BGP connection
+   is internal or external.
 
 .. cfgcmd:: set protocols bgp '<ASN>' parameters router-id
 
-This command specifies the router-ID. If router ID is not specified it will use
-the highest interface IP address.
+   This command specifies the router-ID. If router ID is not specified it will
+   use the highest interface IP address.
 
+Route Selection
+---------------
+
+.. cfgcmd:: set protocols bgp '<ASN>' parameters bestpath as-path confed
+
+   This command specifies that the length of confederation path sets and
+   sequences should should be taken into account during the BGP best path
+   decision process.
+
+.. cfgcmd:: set protocols bgp '<ASN>' parameters bestpath as-path multipath-relax
+
+   This command specifies that BGP decision process should consider paths
+   of equal AS_PATH length candidates for multipath computation. Without
+   the knob, the entire AS_PATH must match for multipath computation.
+
+.. cfgcmd:: set protocols bgp '<ASN>' parameters bestpath as-path ignore
+
+   Ignore AS_PATH length when selecting a route
 
 IPv4
 ^^^^
