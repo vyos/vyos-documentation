@@ -38,14 +38,16 @@ Connections can be locally checked via the command
   ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 
 
-Per default the user session is being replaced if a second authentication request succeeds.
-Such session requests can be either denied or allowed entirely, which would allow multiple sessions for a user in the latter case.
-If it is denied, the second session is being rejected even if the authentication succeeds, the user has to terminate its first
-session and can then authentication again.
+Per default the user session is being replaced if a second authentication
+request succeeds. Such session requests can be either denied or allowed
+entirely, which would allow multiple sessions for a user in the latter case.
+If it is denied, the second session is being rejected even if the
+authentication succeeds, the user has to terminate its first session and can
+then authentication again.
 
 .. code-block:: none
 
-  vyos@# set service pppoe-server session-control 
+  vyos@# set service pppoe-server session-control
     Possible completions:
     disable      Disables session control
     deny         Deny second session authorization
@@ -55,10 +57,14 @@ session and can then authentication again.
 Client IP address pools
 =======================
 
-To automatically assign the client an IP address as tunnel endpoint, a client IP pool is needed. The source can be either RADIUS or a local subnet or IP range definition.
+To automatically assign the client an IP address as tunnel endpoint, a client
+IP pool is needed. The source can be either RADIUS or a local subnet or IP
+range definition.
 
-Once the local tunnel endpoint ``set service pppoe-server local-ip '10.1.1.2'`` has been defined, the client IP pool can be either defined as a range or as subnet using CIDR notation.
-If the CIDR notation is used, multiple subnets can be setup which are used sequentially.
+Once the local tunnel endpoint ``set service pppoe-server local-ip '10.1.1.2'``
+has been defined, the client IP pool can be either defined as a range or as
+subnet using CIDR notation. If the CIDR notation is used, multiple subnets can
+be setup which are used sequentially.
 
 **Client IP address via IP range definition**
 
@@ -96,7 +102,8 @@ RADIUS provides the IP addresses in the example above via Framed-IP-Address.
 
 **RADIUS sessions management DM/CoA**
 
-For remotely disconnect sessions and change some authentication parameters you can configure dae-server
+For remotely disconnect sessions and change some authentication parameters you
+can configure dae-server
 
 .. code-block:: none
 
@@ -110,8 +117,8 @@ Example, from radius-server send command for disconnect client with username tes
 
   root@radius-server:~# echo "User-Name=test" | radclient -x 10.1.1.2:3799 disconnect secret123
 
-You can also use another attributes for identify client for disconnect, like Framed-IP-Address, Acct-Session-Id, etc.
-Result commands appears in log
+You can also use another attributes for identify client for disconnect, like
+Framed-IP-Address, Acct-Session-Id, etc. Result commands appears in log
 
 .. code-block:: none
 
@@ -126,12 +133,13 @@ Example for changing rate-limit via RADIUS CoA
 Filter-Id=5000/4000 (means 5000Kbit down-stream rate and 4000Kbit up-stream rate)
 If attribute Filter-Id redefined, replace it in radius coa request
 
-
 Automatic VLAN creation
 =======================
 
-VLAN's can be created by accel-ppp on the fly if via the use of the kernel module vlan_mon, which is monitoring incoming vlans and creates the necessary VLAN if required and allowed.
-VyOS supports the use of either VLAN ID's or entire ranges, both values can be defined at the same time for an interface.
+VLAN's can be created by accel-ppp on the fly if via the use of the kernel
+module vlan_mon, which is monitoring incoming vlans and creates the necessary
+VLAN if required and allowed. VyOS supports the use of either VLAN ID's or
+entire ranges, both values can be defined at the same time for an interface.
 
 .. code-block:: none
 
@@ -141,8 +149,9 @@ VyOS supports the use of either VLAN ID's or entire ranges, both values can be d
   set service pppoe-server interface eth3 vlan-range 2000-3000
 
 
-The pppoe-server will now create these VLANs if required and once the user session has been cancelled, and the VLAN is not necessary anymore, it will remove it again.
-
+The pppoe-server will now create these VLANs if required and once the user
+session has been cancelled, and the VLAN is not necessary anymore, it will
+remove it again.
 
 
 Bandwidth Shaping
@@ -170,7 +179,8 @@ The rate-limit is set in kbit/sec.
   set service pppoe-server local-ip '10.1.1.2'
 
 
-Once the user is connected, the user session is using the set limits and can be displayed via 'show pppoe-server sessions'.
+Once the user is connected, the user session is using the set limits and can be
+displayed via 'show pppoe-server sessions'.
 
 .. code-block:: none
 
@@ -183,18 +193,20 @@ Once the user is connected, the user session is using the set limits and can be 
 RADIUS based shaper setup
 =========================
 
-The current attribute 'Filter-Id' is being used as default and can be setup within RADIUS:
+The current attribute 'Filter-Id' is being used as default and can be setup
+within RADIUS:
 
 Filter-Id=2000/3000 (means 2000Kbit down-stream rate and 3000Kbit up-stream rate)
 
-The command below enables it, assuming the RADIUS connection has been setup and is working.
+The command below enables it, assuming the RADIUS connection has been setup and
+is working.
 
 .. code-block:: none
 
   set service pppoe-server authentication radius-settings rate-limit enable
 
-Other attributes can be used, but they have to be in one of the dictionaries in /usr/share/accel-ppp/radius.
-
+Other attributes can be used, but they have to be in one of the dictionaries
+in /usr/share/accel-ppp/radius.
 
 
 Practical Configuration Examples
@@ -219,7 +231,9 @@ The example below covers a dual-stack configuration via pppoe-server.
   set service pppoe-server local-ip '10.100.100.1'
 
 
-The client, once successfully authenticated, will receive an IPv4 and an IPv6 /64 address, to terminate the pppoe endpoint on the client side and a /56 subnet for the clients internal use.
+The client, once successfully authenticated, will receive an IPv4 and an IPv6
+/64 address, to terminate the pppoe endpoint on the client side and a /56
+subnet for the clients internal use.
 
 .. code-block:: none
 
