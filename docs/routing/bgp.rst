@@ -91,7 +91,7 @@ bottom until one of the factors can be used.
 
    If multi-pathing is enabled, then check whether the routes not yet
    distinguished in preference may be considered equal. If
-   :clicmd:`bgp bestpath as-path multipath-relax` is set, all such routes are
+   :cfgcmd:`bgp bestpath as-path multipath-relax` is set, all such routes are
    considered equal, otherwise routes received via iBGP with identical AS_PATHs
    or routes received from eBGP neighbours in the same AS are considered equal.
 
@@ -99,7 +99,7 @@ bottom until one of the factors can be used.
 
     Where both routes were received from eBGP peers, then prefer the route
     which is already selected. Note that this check is not applied if
-    :clicmd:`bgp bestpath compare-routerid` is configured. This check can
+    :cfgcmd:`bgp bestpath compare-routerid` is configured. This check can
     prevent some cases of oscillation.
 
 11. **Router-ID check**
