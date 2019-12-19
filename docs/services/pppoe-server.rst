@@ -1,3 +1,5 @@
+.. _pppoe-server:
+
 PPPoE server
 ------------
 
