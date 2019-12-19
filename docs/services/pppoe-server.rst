@@ -1,7 +1,8 @@
 .. _pppoe-server:
 
-PPPoE server
-------------
+############
+PPPoE Server
+############
 
 VyOS utilizes `accel-ppp`_ to provide PPPoE server functionality. It can be
 used with local authentication or a connected RADIUS server.
@@ -11,7 +12,7 @@ used with local authentication or a connected RADIUS server.
    connected users, in order to become effective.**
 
 Configuration
-^^^^^^^^^^^^^
+=============
 
 The example below uses ACN as access-concentrator name, assigns an address
 from the pool 10.1.1.100-111, terminates at the local endpoint 10.1.1.1 and
@@ -54,10 +55,8 @@ then authentication again.
     disable      Disables session control
     deny         Deny second session authorization
 
-
-
-Client IP address pools
-=======================
+Client Address Pools
+--------------------
 
 To automatically assign the client an IP address as tunnel endpoint, a client
 IP pool is needed. The source can be either RADIUS or a local subnet or IP
@@ -135,8 +134,8 @@ Example for changing rate-limit via RADIUS CoA
 Filter-Id=5000/4000 (means 5000Kbit down-stream rate and 4000Kbit up-stream rate)
 If attribute Filter-Id redefined, replace it in radius coa request
 
-Automatic VLAN creation
-=======================
+Automatic VLAN Creation
+-----------------------
 
 VLAN's can be created by accel-ppp on the fly if via the use of the kernel
 module vlan_mon, which is monitoring incoming vlans and creates the necessary
@@ -157,12 +156,12 @@ remove it again.
 
 
 Bandwidth Shaping
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Bandwidth rate limits can be set for local users or RADIUS based attributes.
 
-Bandwidth Shaping for local users
-=================================
+For Local Users
+^^^^^^^^^^^^^^^
 
 The rate-limit is set in kbit/sec.
 
@@ -192,8 +191,8 @@ displayed via 'show pppoe-server sessions'.
   ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 
 
-RADIUS based shaper setup
-=========================
+For RADIUS users
+^^^^^^^^^^^^^^^^
 
 The current attribute 'Filter-Id' is being used as default and can be setup
 within RADIUS:
@@ -210,12 +209,11 @@ is working.
 Other attributes can be used, but they have to be in one of the dictionaries
 in /usr/share/accel-ppp/radius.
 
+Examples
+========
 
-Practical Configuration Examples
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Dual-stack provisioning with IPv6 PD via pppoe
-==============================================
+Dual-Stack IPv4/IPv6 provisioning with PD
+-----------------------------------------
 
 The example below covers a dual-stack configuration via pppoe-server.
 
@@ -231,7 +229,6 @@ The example below covers a dual-stack configuration via pppoe-server.
   set service pppoe-server dnsv6-servers server-1 '2001:4860:4860::8888'
   set service pppoe-server interface 'eth2'
   set service pppoe-server local-ip '10.100.100.1'
-
 
 The client, once successfully authenticated, will receive an IPv4 and an IPv6
 /64 address, to terminate the pppoe endpoint on the client side and a /56
