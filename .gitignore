@@ -3,3 +3,7 @@ venv/
 
 # put various editor ignores here
 .vscode/
+*.vpj
+*.vpw
+*.vpwhist
+*.vtg
