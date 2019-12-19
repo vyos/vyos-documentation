@@ -21,15 +21,15 @@ Configure
 
 .. cfgcmd:: set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
 
-This will configure a static ARP entry always resolving `192.0.2.100` to
-`00:53:27:de:23:aa`
+   This will configure a static ARP entry always resolving `192.0.2.100` to
+   `00:53:27:de:23:aa`
 
 Operation
 =========
 
 .. opcmd:: show protocols static arp
 
-Display all known ARP table entries spanning accross all interfaces
+   Display all known ARP table entries spanning accross all interfaces
 
 .. code-block:: none
 
@@ -41,7 +41,7 @@ Display all known ARP table entries spanning accross all interfaces
 
 .. opcmd:: show protocols static arp interface eth1
 
-Display all known ARP table entries on a given interface only (`eth1`):
+   Display all known ARP table entries on a given interface only (`eth1`):
 
 .. code-block:: none
 

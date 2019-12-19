@@ -52,38 +52,37 @@ Explanation
 
 .. cfgcmd:: set service dhcp-server shared-network-name dhcpexample authoritative
 
-This says that this device is the only DHCP server for this network. If other
-devices are trying to offer DHCP leases, this machine will send 'DHCPNAK' to
-any device trying to request an IP address that is
-not valid for this network.
+   This says that this device is the only DHCP server for this network. If other
+   devices are trying to offer DHCP leases, this machine will send 'DHCPNAK' to
+   any device trying to request an IP address that is not valid for this
+   network.
 
 .. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 default-router 192.0.2.1
 
-This is a configuration parameter for the subnet, saying that as part of the
-response, tell the client that I am the default router for this network
+   This is a configuration parameter for the subnet, saying that as part of the
+   response, tell the client that I am the default router for this network.
 
 .. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 dns-server 192.0.2.1
 
-This is a configuration parameter for the subnet, saying that as part of the
-response, tell the client that I am the DNS server for this network. If you
-do not want to run a DNS server, you could also provide one of the public
-DNS servers, such as google's. You can add multiple entries by repeating the
-line.
+   This is a configuration parameter for the subnet, saying that as part of the
+   response, tell the client that I am the DNS server for this network. If you
+   do not want to run a DNS server, you could also provide one of the public
+   DNS servers, such as google's. You can add multiple entries by repeating the
+   line.
 
 .. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 lease 86400
 
-Assign the IP address to this machine for 24 hours. It is unlikely you'd need
-to shorten this period, unless you are running a network with lots of devices
-appearing and disappearing.
-
+   Assign the IP address to this machine for 24 hours. It is unlikely you'd need
+   to shorten this period, unless you are running a network with lots of devices
+   appearing and disappearing.
 
 .. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 range 0 start 192.0.2.100
 
-Make a range of addresses available for clients starting from .100 [...]
+   Make a range of addresses available for clients starting from .100 [...]
 
 .. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 range 0 stop 192.0.2.199
 
-[...] and ending at .199.
+   [...] and ending at .199.
 
 Failover
 --------
@@ -93,22 +92,22 @@ explicitly by the following statements.
 
 .. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover local-address '192.0.2.1'
 
-Local IP address used when communicating to the failover peer.
+   Local IP address used when communicating to the failover peer.
 
 .. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover peer-address '192.0.2.2'
 
-Peer IP address of the second DHCP server in this failover cluster.
+   Peer IP address of the second DHCP server in this failover cluster.
 
 .. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover name 'foo'
 
-A generic name referencing this sync service.
+   A generic name referencing this sync service.
 
 .. note:: `name` must be identical on both sides!
 
 .. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover status '{primary|secondary}'
 
-The primary and secondary statements determines whether the server is primary
-or secondary.
+   The primary and secondary statements determines whether the server is primary
+   or secondary.
 
 .. note:: In order for the primary and the secondary DHCP server to keep
    their lease tables in sync, they must be able to reach each other on TCP
@@ -131,12 +130,14 @@ inside the subnet definition but can be outside of the range statement.
 
 .. cfgcmd::  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping static-mapping-01 mac-address ff:ff:ff:ff:ff:ff
 
-Each host is uniquely identified by its MAC address.
+   Each host is uniquely identified by its MAC address.
 
 .. cfgcmd::  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping static-mapping-01 ip-address 192.0.2.10
 
-IP address to assign to this host. It must be inside the subnet in which it is defined but can be outside the dynamic range.
-If ip-address is not specified, an IP from the dynamic pool (as specified by ``range``) is used. This is useful, for example, in combination with hostfile update.
+   IP address to assign to this host. It must be inside the subnet in which it
+   is defined but can be outside the dynamic range. If ip-address is not
+   specified, an IP from the dynamic pool (as specified by ``range``) is used.
+   This is useful, for example, in combination with hostfile update.
 
 .. hint:: This is the equivalent of the host block in dhcpd.conf of isc-dhcpd.
 
@@ -145,25 +146,25 @@ DHCP Options
 
 .. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 default-router '<address>'
 
-Specify the default routers IPv4 address which should be used in this subnet.
-This can - of course - be a VRRP address (DHCP option 003).
+   Specify the default routers IPv4 address which should be used in this subnet.
+   This can - of course - be a VRRP address (DHCP option 003).
 
 .. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 dns-server '<address>'
 
-Specify the DNS nameservers used (Option 006). This option may be used mulltiple
-times to specify additional DNS nameservers.
+   Specify the DNS nameservers used (Option 006). This option may be used
+   mulltiple times to specify additional DNS nameservers.
 
 .. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 domain-name '<domain-name>'
 
-The domain-name parameter should be the domain name that will be appended to
-the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
-Option 015).
+   The domain-name parameter should be the domain name that will be appended to
+   the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
+   Option 015).
 
 .. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 domain-search '<domain-name>'
 
-The domain-name parameter should be the domain name used when completing DNS
-request where no full FQDN is passed. This option can be given multiple times
-if you need multiple search domains (DHCP Option 119).
+   The domain-name parameter should be the domain name used when completing DNS
+   request where no full FQDN is passed. This option can be given multiple times
+   if you need multiple search domains (DHCP Option 119).
 
 .. list-table::
    :header-rows: 1
@@ -319,18 +320,18 @@ Example
 
 .. opcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option domain-name-servers 192.0.2.11, 192.0.2.12;"
 
-Override the static-mapping's dns-server with a custom one that will be sent only to this host.
+   Override the static-mapping's dns-server with a custom one that will be sent only to this host.
 
 Operation Mode
 --------------
 
 .. opcmd:: restart dhcp server
 
-Restart the DHCP server
+   Restart the DHCP server
 
 .. opcmd:: show dhcp server statistics
 
-Show the DHCP server statistics:
+   Show the DHCP server statistics:
 
 .. code-block:: none
 
@@ -341,11 +342,11 @@ Show the DHCP server statistics:
 
 .. opcmd:: show dhcp server statistics pool <pool>
 
-Show the DHCP server statistics for the specified pool.
+   Show the DHCP server statistics for the specified pool.
 
 .. opcmd:: show dhcp server leases
 
-Show statuses of all active leases:
+   Show statuses of all active leases:
 
 .. code-block:: none
 
@@ -355,19 +356,22 @@ Show statuses of all active leases:
   192.0.2.104     aa:bb:cc:dd:ee:ff   active   2019/12/05 14:24:23  2019/12/06 02:24:23  6:05:35     dhcpexample  test1
   192.0.2.115     ab:ac:ad:ae:af:bf   active   2019/12/05 18:02:37  2019/12/06 06:02:37  9:43:49     dhcpexample  test2
 
-.. hint:: Static mappings aren't shown. To show all states, use ``show dhcp server leases state all``.
+.. hint:: Static mappings aren't shown. To show all states, use
+   ``show dhcp server leases state all``.
 
 .. opcmd:: show dhcp server leases pool <pool>
 
-Show only leases in the specified pool.
+   Show only leases in the specified pool.
 
 .. opcmd:: show dhcp server leases sort <key>
 
-Sort the output by the specified key. Possible keys: ip, hardware_address, state, start, end, remaining, pool, hostname (default = ip)
+   Sort the output by the specified key. Possible keys: ip, hardware_address,
+   state, start, end, remaining, pool, hostname (default = ip)
 
 .. opcmd:: show dhcp server leases state <state>
 
-Show only leases with the specified state. Possible states: all, active, free, expired, released, abandoned, reset, backup (default = active)
+   Show only leases with the specified state. Possible states: all, active,
+   free, expired, released, abandoned, reset, backup (default = active)
 
 DHCPv6 Server
 =============
@@ -380,47 +384,46 @@ Configuration Options
 
 .. cfgcmd:: set service dhcpv6-server preference <preference value>
 
-Clients receiving advertise messages from multiple servers choose the server
-with the highest preference value. The range for this value is ``0...255``.
-
+   Clients receiving advertise messages from multiple servers choose the server
+   with the highest preference value. The range for this value is ``0...255``.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' lease-time {default | maximum | minimum}
 
-The default lease time for DHCPv6 leases is 24 hours. This can be changed by
-supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All values
-need to be supplied in seconds.
+   The default lease time for DHCPv6 leases is 24 hours. This can be changed by
+   supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All
+   values need to be supplied in seconds.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nis-domain '<domain-name>'
 
-A :abbr:`NIS (Network Information Service)` domain can be set to be used for
-DHCPv6 clients.
+   A :abbr:`NIS (Network Information Service)` domain can be set to be used for
+   DHCPv6 clients.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nisplus-domain '<domain-name>'
 
-The procedure to specify a :abbr:`NIS+ (Network Information Service Plus)`
-domain is similar to the NIS domain one:
+   The procedure to specify a :abbr:`NIS+ (Network Information Service Plus)`
+   domain is similar to the NIS domain one:
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nis-server '<address>'
 
-Specify a NIS server address for DHCPv6 clients.
+   Specify a NIS server address for DHCPv6 clients.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nisplus-server '<address>'
 
-Specify a NIS+ server address for DHCPv6 clients.
+   Specify a NIS+ server address for DHCPv6 clients.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' sip-server-address '<address>'
 
-Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6 address for
-all DHCPv6 clients.
+   Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6 address
+   for all DHCPv6 clients.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' sip-server-name '<fqdn>'
 
-Specify a :abbr:`SIP (Session Initiation Protocol)` server by FQDN for all
-DHCPv6 clients.
+   Specify a :abbr:`SIP (Session Initiation Protocol)` server by FQDN for all
+   DHCPv6 clients.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' sntp-server-address '<address>'
 
-A SNTP server address can be specified for DHCPv6 clients:
+   A SNTP server address can be specified for DHCPv6 clients.
 
 Address pools
 -------------
@@ -468,9 +471,11 @@ be created. The following example explains the process.
 * IPv6 address ``2001:db8::101`` shall be statically mapped
 * Host specific mapping shall be named ``client1``
 
-.. hint:: The identifier is the device's DUID: colon-separated hex list (as used by isc-dhcp option dhcpv6.client-id).
-   If the device already has a dynamic lease from the DHCPv6 server, its DUID can be found with ``show service dhcpv6 server leases``.
-   The DUID begins at the 5th octet (after the 4th colon) of IAID_DUID.
+.. hint:: The identifier is the device's DUID: colon-separated hex list (as
+   used by isc-dhcp option dhcpv6.client-id). If the device already has a
+   dynamic lease from the DHCPv6 server, its DUID can be found with ``show
+   service dhcpv6 server leases``. The DUID begins at the 5th octet (after the
+   4th colon) of IAID_DUID.
 
 .. code-block:: none
 
@@ -502,15 +507,15 @@ Operation Mode
 
 .. opcmd:: restart dhcpv6 server
 
-To restart the DHCPv6 server
+   To restart the DHCPv6 server
 
 .. opcmd:: show dhcpv6 server status
 
-To show the current status of the DHCPv6 server.
+   To show the current status of the DHCPv6 server.
 
 .. opcmd:: show dhcpv6 server leases
 
-Show statuses of all assigned leases:
+   Show statuses of all assigned leases:
 
 .. code-block:: none
 
@@ -520,19 +525,22 @@ Show statuses of all assigned leases:
   2001:db8::101  active   2019/12/05 19:40:10   2019/12/06 07:40:10  11:45:21     non-temporary  NET1   98:76:54:32:00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
   2001:db8::102  active   2019/12/05 14:01:23   2019/12/06 02:01:23  6:06:34      non-temporary  NET1   87:65:43:21:00:01:00:01:11:22:33:44:fa:fb:fc:fd:fe:ff
 
-.. hint:: Static mappings aren't shown. To show all states, use ``show dhcp server leases state all``.
+.. hint:: Static mappings aren't shown. To show all states, use ``show dhcp
+   server leases state all``.
 
 .. opcmd:: show dhcpv6 server leases pool <pool>
 
-Show only leases in the specified pool.
+   Show only leases in the specified pool.
 
 .. opcmd:: show dhcpv6 server leases sort <key>
 
-Sort the output by the specified key. Possible keys: expires, iaid_duid, ip, last_comm, pool, remaining, state, type (default = ip)
+   Sort the output by the specified key. Possible keys: expires, iaid_duid, ip,
+   last_comm, pool, remaining, state, type (default = ip)
 
 .. opcmd:: show dhcpv6 server leases state <state>
 
-Show only leases with the specified state. Possible states: abandoned, active, all, backup, expired, free, released, reset (default = active)
+   Show only leases with the specified state. Possible states: abandoned,
+   active, all, backup, expired, free, released, reset (default = active)
 
 DHCP Relay
 ==========
@@ -550,16 +558,16 @@ Configuration
 
 .. cfgcmd:: set service dhcp-relay interface '<interface>'
 
-Enable the DHCP relay service on the given interface.
+   Enable the DHCP relay service on the given interface.
 
 .. cfgcmd:: set service dhcp-relay server 10.0.1.4
 
-Configure IP address of the DHCP server
+   Configure IP address of the DHCP server
 
 .. cfgcmd:: set service dhcp-relay relay-options relay-agents-packets discard
 
-The router should discard DHCP packages already containing relay agent
-information to ensure that only requests from DHCP clients are forwarded.
+   The router should discard DHCP packages already containing relay agent
+   information to ensure that only requests from DHCP clients are forwarded.
 
 Example
 -------
@@ -592,38 +600,38 @@ Options
 
 .. cfgcmd:: set service dhcp-relay relay-options hop-count 'count'
 
-Set the maximum hop count before packets are discarded. Range 0...255,
-default 10.
+   Set the maximum hop count before packets are discarded. Range 0...255,
+   default 10.
 
 .. cfgcmd:: set service dhcp-relay relay-options max-size 'size'
 
-Set maximum size of DHCP packets including relay agent information. If a
-DHCP packet size surpasses this value it will be forwarded without appending
-relay agent information. Range 64...1400, default 576.
+   Set maximum size of DHCP packets including relay agent information. If a
+   DHCP packet size surpasses this value it will be forwarded without appending
+   relay agent information. Range 64...1400, default 576.
 
 .. cfgcmd:: set service dhcp-relay relay-options relay-agents-packet 'policy'
 
-Four policies for reforwarding DHCP packets exist:
+   Four policies for reforwarding DHCP packets exist:
 
-* **append:** The relay agent is allowed to append its own relay information
-  to a received DHCP packet, disregarding relay information already present in
-  the packet.
+   * **append:** The relay agent is allowed to append its own relay information
+     to a received DHCP packet, disregarding relay information already present in
+     the packet.
 
-* **discard:** Received packets which already contain relay information will
-  be discarded.
+   * **discard:** Received packets which already contain relay information will
+     be discarded.
 
-* **forward:** All packets are forwarded, relay information already present
-  will be ignored.
+   * **forward:** All packets are forwarded, relay information already present
+     will be ignored.
 
-* **replace:** Relay information already present in a packet is stripped and
-  replaced with the router's own relay information set.
+   * **replace:** Relay information already present in a packet is stripped and
+     replaced with the router's own relay information set.
 
 Operation
 ---------
 
 .. opcmd:: restart dhcp relay-agent
 
-Restart DHCP relay service
+   Restart DHCP relay service
 
 DHCPv6 relay
 ============
@@ -633,12 +641,12 @@ Configuration
 
 .. cfgcmd:: set service dhcpv6-relay listen-interface eth1
 
-Set eth1 to be the listening interface for the DHCPv6 relay:
+   Set eth1 to be the listening interface for the DHCPv6 relay:
 
 .. cfgcmd:: set service dhcpv6-relay upstream-interface eth2 address 2001:db8::4
 
-Set eth2 to be the upstream interface and specify the IPv6 address of
-the DHCPv6 server:
+   Set eth2 to be the upstream interface and specify the IPv6 address of
+   the DHCPv6 server:
 
 Example
 ^^^^^^^
@@ -670,20 +678,20 @@ Options
 
 .. cfgcmd:: set service dhcpv6-relay max-hop-count 'count'
 
-Set maximum hop count before packets are discarded, default: 10
+   Set maximum hop count before packets are discarded, default: 10
 
 .. cfgcmd:: set service dhcpv6-relay use-interface-id-option
 
-If this is set the relay agent will insert the interface ID. This option is
-set automatically if more than one listening interfaces are in use.
+   If this is set the relay agent will insert the interface ID. This option is
+   set automatically if more than one listening interfaces are in use.
 
 Operation
 ---------
 
 .. opcmd:: show dhcpv6 relay-agent status
 
-Show the current status of the DHCPv6 relay agent:
+   Show the current status of the DHCPv6 relay agent:
 
 .. opcmd:: restart dhcpv6 relay-agent
 
-Restart DHCPv6 relay agent immediately.
+   Restart DHCPv6 relay agent immediately.

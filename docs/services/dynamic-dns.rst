@@ -22,31 +22,33 @@ Configuration
 
 .. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
 
-Create new :rfc:`2136` DNS update configuration which will update the IP address
-assigned to `<interface>` on the service you configured under `<service-name>`.
+   Create new :rfc:`2136` DNS update configuration which will update the IP
+   address assigned to `<interface>` on the service you configured under
+   `<service-name>`.
 
 .. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> key <keyfile>
 
-File identified by `<keyfile>` containing the secret RNDC key shared with
-remote DNS server.
+   File identified by `<keyfile>` containing the secret RNDC key shared with
+   remote DNS server.
 
 .. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> server <server>
 
-Configure the DNS `<server>` IP/FQDN used when updating this dynamic assignemnt.
+   Configure the DNS `<server>` IP/FQDN used when updating this dynamic
+   assignemnt.
 
 .. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> zone <zone>
 
-Configure DNS `<zone>` to be updated.
+   Configure DNS `<zone>` to be updated.
 
 .. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> record <record>
 
-Configure DNS `<record>` which should be updated. This can be set multiple
-times.
+   Configure DNS `<record>` which should be updated. This can be set multiple
+   times.
 
 .. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> ttl <ttl>
 
-Configure optional TTL value on the given resource record. This defualts to 600
-seconds.
+   Configure optional TTL value on the given resource record. This defualts to
+   600 seconds.
 
 Example
 ^^^^^^^
@@ -99,30 +101,30 @@ hostnames, protocol and server.
 
 .. cfgcmd:: set service dns dynamic interface <interface> service <service> host-name <hostname>
 
-Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS provider
-identified by `<service>` when the IP address on interface `<interface>`
-changes.
+   Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS
+   provider identified by `<service>` when the IP address on interface
+   `<interface>` changes.
 
 .. cfgcmd:: set service dns dynamic interface <interface> service <service> login <username>
 
-Configure `<username>` used when authenticating the update request for DynDNS
-service identified by `<service>`.
+   Configure `<username>` used when authenticating the update request for
+   DynDNS service identified by `<service>`.
 
 .. cfgcmd:: set service dns dynamic interface <interface> service <service> password <password>
 
-Configure `<password>` used when authenticating the update request for DynDNS
-service identified by `<service>`.
+   Configure `<password>` used when authenticating the update request for
+   DynDNS service identified by `<service>`.
 
 .. cfgcmd:: set service dns dynamic interface <interface> service <service> protocol <protocol>
 
-When a ``custom`` DynDNS provider is used the protocol used for communicating to
-the provider must be specified under `<protocol>`. See the embedded completion
-helper for available protocols.
+   When a ``custom`` DynDNS provider is used the protocol used for communicating
+   to the provider must be specified under `<protocol>`. See the embedded
+   completion helper for available protocols.
 
 .. cfgcmd:: set service dns dynamic interface <interface> service <service> server <server>
 
-When a ``custom`` DynDNS provider is used the `<server>` where update requests
-are beeing sent to must be specified.
+   When a ``custom`` DynDNS provider is used the `<server>` where update
+   requests are beeing sent to must be specified.
 
 Example:
 ^^^^^^^^
@@ -151,11 +153,11 @@ by:
 
 .. cfgcmd:: set service dns dynamic interface <interface> use-web url <url>
 
-Use configured `<url>` to determine your IP address. ddclient_ will load `<url>`
-and tries to extract your IP address from the response.
+   Use configured `<url>` to determine your IP address. ddclient_ will load
+   `<url>` and tries to extract your IP address from the response.
 
 .. cfgcmd:: set service dns dynamic interface <interface> use-web skip <pattern>
 
-ddclient_ will skip any address located before the string set in `<pattern>`.
+   ddclient_ will skip any address located before the string set in `<pattern>`.
 
 .. _ddclient: https://github.com/ddclient/ddclient

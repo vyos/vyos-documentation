@@ -36,42 +36,41 @@ Configuration
 
 .. cfgcmd:: set service lldp
 
-Enable LLDP service
+   Enable LLDP service
 
 .. cfgcmd:: set service lldp management-address <address>
 
-Define IPv4 management address transmitted via LLDP.
+   Define IPv4 management address transmitted via LLDP.
 
 .. cfgcmd:: set service lldp interface <interface>
 
-Enable transmission of LLDP information on given `<interface>`. You can also
-say ``all`` here so LLDP is turned on on every interface.
+   Enable transmission of LLDP information on given `<interface>`. You can also
+   say ``all`` here so LLDP is turned on on every interface.
 
 .. cfgcmd:: set service lldp interface <interface> disable
 
-Disable transmit of LLDP frames on given `<interface>`. Useful to exclude
-certain interfaces from LLDP when ``all`` have been enabled.
+   Disable transmit of LLDP frames on given `<interface>`. Useful to exclude
+   certain interfaces from LLDP when ``all`` have been enabled.
 
 .. cfgcmd:: set service lldp snmp enable
 
-Enable SNMP queries of the LLDP database
-
+   Enable SNMP queries of the LLDP database
 
 .. cfgcmd:: set service lldp legacy-protocols <cdp|edp|fdp|sonmp>
 
-Enable given legacy protocol on this LLDP instance. Legacy protocols include:
+   Enable given legacy protocol on this LLDP instance. Legacy protocols include:
 
-* ``cdp`` - Listen for CDP for Cisco routers/switches
-* ``edp`` - Listen for EDP for Extreme routers/switches
-* ``fdp`` - Listen for FDP for Foundry routers/switches
-* ``sonmp`` - Listen for SONMP for Nortel routers/switches
+   * ``cdp`` - Listen for CDP for Cisco routers/switches
+   * ``edp`` - Listen for EDP for Extreme routers/switches
+   * ``fdp`` - Listen for FDP for Foundry routers/switches
+   * ``sonmp`` - Listen for SONMP for Nortel routers/switches
 
 Operation
 =========
 
 .. opcmd:: show lldp neighbors
 
-Displays information about all neighbors discovered via LLDP.
+   Displays information about all neighbors discovered via LLDP.
 
 .. code-block:: none
 
@@ -85,7 +84,7 @@ Displays information about all neighbors discovered via LLDP.
 
 .. opcmd:: show lldp neighbors detail
 
-Get detailed information about LLDP neighbors.
+   Get detailed information about LLDP neighbors.
 
 .. code-block:: none
 
@@ -135,8 +134,8 @@ Get detailed information about LLDP neighbors.
 
 .. opcmd:: show lldp neighbors interface <interface>
 
-Show LLDP neighbors connected via interface `<interface>`.
+   Show LLDP neighbors connected via interface `<interface>`.
 
 .. opcmd:: show log lldp
 
-Used for troubleshooting.
+   Used for troubleshooting.
