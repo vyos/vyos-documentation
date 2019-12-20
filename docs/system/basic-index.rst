@@ -8,5 +8,5 @@ System Configuration
    :maxdepth: 2
 
    host-information
-   login-users
+   user-management
    time-zone

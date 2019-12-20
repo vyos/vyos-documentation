@@ -1,18 +1,19 @@
-.. _systemusers:
+.. _user_management:
 
-Login
------
+###############
+User Management
+###############
 
 The default VyOS user account (`vyos`), as well as newly created user accounts,
-have all capabilities to configure the system. All accounts have sudo capabilities
-and therefore can operate as root on the system. Setting the level to admin is
-optional, all accounts on the system will have admin privileges.
+have all capabilities to configure the system. All accounts have sudo
+capabilities and therefore can operate as root on the system. Setting the level
+to `admin` is optional, all accounts on the system will have admin privileges.
 
 Both local administered and remote administered RADIUS (Remote Authentication
 Dial-In User Service) accounts are supported.
 
 Local
-^^^^^
+=====
 
 Create user account `jsmith` and the password `mypassword`.
 
@@ -41,7 +42,7 @@ will show the contents of :code:`system login` configuration node:
   }
 
 SSH with Public Keys
-********************
+--------------------
 
 The following command will load the public key `dev.pub` for user `jsmith`
 
@@ -67,7 +68,7 @@ key.
   set system login user jsmith authentication public-keys callisto type 'ssh-rsa'
 
 RADIUS
-^^^^^^
+======
 
 VyOS supports using one or more RADIUS servers as backend for user authentication.
 
@@ -103,7 +104,7 @@ This configuration results in:
    the attribute you will only get regular, non privilegued, system users.
 
 Source Address
-**************
+--------------
 
 RADIUS servers could be hardened by only allowing certain IP addresses to connect.
 As of this the source address of each RADIUS query can be configured. If this is
@@ -116,7 +117,7 @@ networks when a link fails.
   set system login radius source-address 192.168.1.254
 
 Login Banner
-^^^^^^^^^^^^
+============
 
 You are able to set post-login or pre-login messages with the following lines:
 
