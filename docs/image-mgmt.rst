@@ -18,104 +18,137 @@ The directory structure of the boot device:
 
 The image directory contains the system kernel, a compressed image of the root
 filesystem for the OS, and a directory for persistent storage, such as
-configuration.
-
-On boot, the system will extract the OS image into memory and mount the
-appropriate live-rw sub-directories to provide persistent storage system
-configuration.
+configuration. On boot, the system will extract the OS image into memory and
+mount the appropriate live-rw sub-directories to provide persistent storage
+system configuration.
 
 This process allows for a system to always boot to a known working state, as
 the OS image is fixed and non-persistent. It also allows for multiple releases
-of VyOS to be installed on the same storage device.
+of VyOS to be installed on the same storage device. The image can be selected
+manually at boot if needed, but the system will otherwise boot the image
+configured to be the default (:opcmd:`set system image default-boot`).
 
-The image can be selected manually at boot if needed, but the system will
-otherwise boot the image configured to be the default.
+.. opcmd:: show system image
 
-The default boot image can be set using the :code:`set system image
-default-boot` command in operational mode.
+   List all available system images which can be bootet on the current system.
 
-A list of available images can be shown using the :code:`show system image`
-command in operational mode.
+   .. code-block:: none
 
-.. code-block:: none
+     vyos@vyos:~$ show system image
+     The system currently has the following image(s) installed:
 
-  vyos@vyos:~$ show system image
-  The system currently has the following image(s) installed:
+        1: 1.2.0-rolling+201810021347 (default boot)
+        2: 1.2.0-rolling+201810021217
+        3: 1.2.0-rolling+201809252218
 
-     1: 1.2.0-rolling+201810021347 (default boot)
-     2: 1.2.0-rolling+201810021217
-     3: 1.2.0-rolling+201809280337
-     4: 1.2.0-rolling+201809252218
+.. opcmd:: set system image default-boot
 
-Images no longer needed can be removed using the :code:`delete system image`
-command.
+   Select the default boot image which will be started on the next boot of the
+   System. A list of available images can be shown using the :opcmd:`show
+   system image`
+
+
+.. opcmd:: delete system image
+
+   Delete no longer needed images from the system.
+
+   .. code-block:: none
+
+      vyos@vyos:~$ delete system image
+      The following image(s) can be deleted:
+
+         1: 1.3-rolling-201912181733 (default boot) (running image)
+         2: 1.3-rolling-201912180242
+         3: 1.2.2
+         4: 1.2.1
+
+      Select the image to delete: 2
+
+      Are you sure you want to delete the
+      "1.3-rolling-201912180242" image? (Yes/No) [No]: y
+      Deleting the "1.3-rolling-201912180242" image...
+      Done
+
+.. opcmd:: show version
+
+   Show current system image version.
+
+   .. code-block:: none
+
+      vyos@vyos:~$ show version
+      Version:          VyOS 1.3-rolling-201912181733
+      Built by:         autobuild@vyos.net
+      Built on:         Wed 18 Dec 2019 17:33 UTC
+      Build UUID:       bccde2c3-261c-49cc-b421-9b257204e06c
+      Build Commit ID:  f7ce0d8a692f2d
+
+      Architecture:     x86_64
+      Boot via:         installed image
+      System type:      bare metal
+
+      Hardware vendor:  VMware, Inc.
+      Hardware model:   VMware Virtual Platform
+      Hardware S/N:     VMware-42 1d 83 b9 fe c1 bd b2-7d 3d 49 db 94 18 f5 c9
+      Hardware UUID:    b9831d42-c1fe-b2bd-7d3d-49db9418f5c9
+
+      Copyright:        VyOS maintainers and contributors
+
 
 .. _update_vyos:
 
 Update VyOS
 ===========
 
-Finally, new system images can be added using the :code:`add system image`
+Finally, new system images can be added using the :opcmd:`add system image`
 command. The add image command will extract the image from the release ISO
 (either on the local filesystem or remotely if a URL is provided). The image
 install process will prompt you to use the current system configuration and SSH
 security keys, allowing for the new image to boot using the current
 configuration.
 
-.. code-block:: none
+.. opcmd:: add system image <url | path>
 
-  vyos@vyos:~$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-1.2.0-rolling%2B201810030440-amd64.iso
-  Trying to fetch ISO file from https://downloads.vyos.io/rolling/current/amd64/vyos-1.2.0-rolling%2B201810030440-amd64.iso
-    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                   Dload  Upload   Total   Spent    Left  Speed
-  100  338M  100  338M    0     0  3837k      0  0:01:30  0:01:30 --:--:-- 3929k
-  ISO download succeeded.
-  Checking for digital signature file...
-    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                   Dload  Upload   Total   Spent    Left  Speed
-    0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  curl: (22) The requested URL returned error: 404 Not Found
+   New system images can be either installed from an URL (http://, https://) or
+   any location pointed to by a file path, e.g. /tmp/vyos-1.2.3-amd64.iso.
+   If there is not enough free diskspace available installation will be
+   canceled. To delete images use the :opcmd:`delete system image` command.
 
-  Unable to fetch digital signature file.
-  Do you want to continue without signature check? (yes/no) [yes]
-  Checking MD5 checksums of files on the ISO image...OK.
-  Done!
 
-  What would you like to name this image? [1.2.0-rolling+201810030440]:
+   .. code-block:: none
 
-  OK.  This image will be named: 1.2.0-rolling+201810030440
-  We do not have enough disk space to install this image!
-  We need 344880 KB, but we only have 17480 KB.
-  Exiting...
+     vyos@vyos:~$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+     Trying to fetch ISO file from https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                      Dload  Upload   Total   Spent    Left  Speed
+     100  338M  100  338M    0     0  3837k      0  0:01:30  0:01:30 --:--:-- 3929k
+     ISO download succeeded.
+     Checking for digital signature file...
+       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                      Dload  Upload   Total   Spent    Left  Speed
+       0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+     curl: (22) The requested URL returned error: 404 Not Found
 
-.. note:: Rolling releases are not GPG signed, only the real release build
-   will have a proper GPG signature.
+     Unable to fetch digital signature file.
+     Do you want to continue without signature check? (yes/no) [yes]
+     Checking MD5 checksums of files on the ISO image...OK.
+     Done!
 
-.. note:: VyOS configuration is associated to each image, and each image has
-   a unique copy of its configuration. This is different than a traditional
-   network router where the configuration is shared across all images.
+     What would you like to name this image? [vyos-1.3-rolling-201912201452]:
 
-If you need some files from a previous images - take a look inside a
-:code:`/live` directory.
+     OK.  This image will be named: vyos-1.3-rolling-201912201452
 
-After reboot you might want to verify the version you are running with :code:`show version`
+   .. note:: Rolling releases are not GPG signed, only the real release build
+      will have a proper GPG signature.
 
-.. code-block:: none
+   .. note:: VyOS configuration is associated to each image, and each image has
+      a unique copy of its configuration. This is different than a traditional
+      network router where the configuration is shared across all images.
 
-  vyos@vyos:~$ show version
-  Version:          VyOS 1.2.0-rolling+201810030440
-  Built by:         autobuild@vyos.net
-  Built on:         Mon 10 Mar 2018 03:37 UTC
-  Build UUID:       2ed16684-875c-4a19-8a34-1b03099eed35
-  Build Commit ID:  3305dca496d814
+   After reboot you might want to verify the version you are running with the
+   :opcmd:`show version` command.
 
-  Architecture:     x86_64
-  Boot via:         installed image
-  System type:      Microsoft Hyper-V guest
+.. hint:: You can always access files from a previous installation any copy
+   them to your current image. This can be done using the :opcmd:`copy`
+   command. To copy ``/config/config.boot`` from VyOS 1.2.1 image use ``copy
+   file 1.2.1://config/config.boot to /tmp/config.boot.1.2.1``.
 
-  Hardware vendor:  Microsoft Corporation
-  Hardware model:   Virtual Machine
-  Hardware S/N:     9705-6585-6578-0429-1204-0427-62
-  Hardware UUID:    5260b1ce-4028-4d9c-bc5d-4f8425e5c056
-
-  Copyright:        VyOS maintainers and contributors
