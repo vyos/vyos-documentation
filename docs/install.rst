@@ -303,7 +303,7 @@ In this example we configured an existent VyOS as the DHCP server:
        }
    }
 
-.. _tftp-server:
+.. _install_from_tftp:
 
 Step 2: TFTP
 ^^^^^^^^^^^^
@@ -375,7 +375,7 @@ over TFTP. Run a web server - you can use a simple one like
 file. The file can be found inside the ``/live`` directory of the extracted
 contents of the ISO file.
 
-Edit the configuration file at the :ref:`tftp-server` so that it shows the
+Edit the configuration file at the :ref:`install_from_tftp` so that it shows the
 correct URL at ``fetch=http://address/filesystem.squashfs``. Then restart
 the TFTP service. If you are using VyOS as your TFTP Server, you can restart
 the service with ``sudo service tftpd-hpa restart``.
