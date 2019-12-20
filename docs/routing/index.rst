@@ -9,6 +9,7 @@ Routing
 
    arp
    bgp
+   rpki
    ospf
    pbr
    rip

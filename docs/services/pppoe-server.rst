@@ -1,5 +1,8 @@
-PPPoE server
-------------
+.. _pppoe-server:
+
+############
+PPPoE Server
+############
 
 VyOS utilizes `accel-ppp`_ to provide PPPoE server functionality. It can be
 used with local authentication or a connected RADIUS server.
@@ -9,7 +12,7 @@ used with local authentication or a connected RADIUS server.
    connected users, in order to become effective.**
 
 Configuration
-^^^^^^^^^^^^^
+=============
 
 The example below uses ACN as access-concentrator name, assigns an address
 from the pool 10.1.1.100-111, terminates at the local endpoint 10.1.1.1 and
@@ -38,13 +41,31 @@ Connections can be locally checked via the command
   ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 
 
-Client IP address pools
-=======================
+Per default the user session is being replaced if a second authentication
+request succeeds. Such session requests can be either denied or allowed
+entirely, which would allow multiple sessions for a user in the latter case.
+If it is denied, the second session is being rejected even if the
+authentication succeeds, the user has to terminate its first session and can
+then authentication again.
 
-To automatically assign the client an IP address as tunnel endpoint, a client IP pool is needed. The source can be either RADIUS or a local subnet or IP range definition.
+.. code-block:: none
 
-Once the local tunnel endpoint ``set service pppoe-server local-ip '10.1.1.2'`` has been defined, the client IP pool can be either defined as a range or as subnet using CIDR notation.
-If the CIDR notation is used, multiple subnets can be setup which are used sequentially.
+  vyos@# set service pppoe-server session-control
+    Possible completions:
+    disable      Disables session control
+    deny         Deny second session authorization
+
+Client Address Pools
+--------------------
+
+To automatically assign the client an IP address as tunnel endpoint, a client
+IP pool is needed. The source can be either RADIUS or a local subnet or IP
+range definition.
+
+Once the local tunnel endpoint ``set service pppoe-server local-ip '10.1.1.2'``
+has been defined, the client IP pool can be either defined as a range or as
+subnet using CIDR notation. If the CIDR notation is used, multiple subnets can
+be setup which are used sequentially.
 
 **Client IP address via IP range definition**
 
@@ -82,7 +103,8 @@ RADIUS provides the IP addresses in the example above via Framed-IP-Address.
 
 **RADIUS sessions management DM/CoA**
 
-For remotely disconnect sessions and change some authentication parameters you can configure dae-server
+For remotely disconnect sessions and change some authentication parameters you
+can configure dae-server
 
 .. code-block:: none
 
@@ -96,8 +118,8 @@ Example, from radius-server send command for disconnect client with username tes
 
   root@radius-server:~# echo "User-Name=test" | radclient -x 10.1.1.2:3799 disconnect secret123
 
-You can also use another attributes for identify client for disconnect, like Framed-IP-Address, Acct-Session-Id, etc.
-Result commands appears in log
+You can also use another attributes for identify client for disconnect, like
+Framed-IP-Address, Acct-Session-Id, etc. Result commands appears in log
 
 .. code-block:: none
 
@@ -112,12 +134,13 @@ Example for changing rate-limit via RADIUS CoA
 Filter-Id=5000/4000 (means 5000Kbit down-stream rate and 4000Kbit up-stream rate)
 If attribute Filter-Id redefined, replace it in radius coa request
 
+Automatic VLAN Creation
+-----------------------
 
-Automatic VLAN creation
-=======================
-
-VLAN's can be created by accel-ppp on the fly if via the use of the kernel module vlan_mon, which is monitoring incoming vlans and creates the necessary VLAN if required and allowed.
-VyOS supports the use of either VLAN ID's or entire ranges, both values can be defined at the same time for an interface.
+VLAN's can be created by accel-ppp on the fly if via the use of the kernel
+module vlan_mon, which is monitoring incoming vlans and creates the necessary
+VLAN if required and allowed. VyOS supports the use of either VLAN ID's or
+entire ranges, both values can be defined at the same time for an interface.
 
 .. code-block:: none
 
@@ -127,17 +150,18 @@ VyOS supports the use of either VLAN ID's or entire ranges, both values can be d
   set service pppoe-server interface eth3 vlan-range 2000-3000
 
 
-The pppoe-server will now create these VLANs if required and once the user session has been cancelled, and the VLAN is not necessary anymore, it will remove it again.
-
+The pppoe-server will now create these VLANs if required and once the user
+session has been cancelled, and the VLAN is not necessary anymore, it will
+remove it again.
 
 
 Bandwidth Shaping
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Bandwidth rate limits can be set for local users or RADIUS based attributes.
 
-Bandwidth Shaping for local users
-=================================
+For Local Users
+^^^^^^^^^^^^^^^
 
 The rate-limit is set in kbit/sec.
 
@@ -156,7 +180,8 @@ The rate-limit is set in kbit/sec.
   set service pppoe-server local-ip '10.1.1.2'
 
 
-Once the user is connected, the user session is using the set limits and can be displayed via 'show pppoe-server sessions'.
+Once the user is connected, the user session is using the set limits and can be
+displayed via 'show pppoe-server sessions'.
 
 .. code-block:: none
 
@@ -166,28 +191,29 @@ Once the user is connected, the user session is using the set limits and can be 
   ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 
 
-RADIUS based shaper setup
-=========================
+For RADIUS users
+^^^^^^^^^^^^^^^^
 
-The current attribute 'Filter-Id' is being used as default and can be setup within RADIUS:
+The current attribute 'Filter-Id' is being used as default and can be setup
+within RADIUS:
 
 Filter-Id=2000/3000 (means 2000Kbit down-stream rate and 3000Kbit up-stream rate)
 
-The command below enables it, assuming the RADIUS connection has been setup and is working.
+The command below enables it, assuming the RADIUS connection has been setup and
+is working.
 
 .. code-block:: none
 
   set service pppoe-server authentication radius-settings rate-limit enable
 
-Other attributes can be used, but they have to be in one of the dictionaries in /usr/share/accel-ppp/radius.
+Other attributes can be used, but they have to be in one of the dictionaries
+in /usr/share/accel-ppp/radius.
 
+Examples
+========
 
-
-Practical Configuration Examples
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Dual-stack provisioning with IPv6 PD via pppoe
-==============================================
+Dual-Stack IPv4/IPv6 provisioning with PD
+-----------------------------------------
 
 The example below covers a dual-stack configuration via pppoe-server.
 
@@ -204,8 +230,9 @@ The example below covers a dual-stack configuration via pppoe-server.
   set service pppoe-server interface 'eth2'
   set service pppoe-server local-ip '10.100.100.1'
 
-
-The client, once successfully authenticated, will receive an IPv4 and an IPv6 /64 address, to terminate the pppoe endpoint on the client side and a /56 subnet for the clients internal use.
+The client, once successfully authenticated, will receive an IPv4 and an IPv6
+/64 address, to terminate the pppoe endpoint on the client side and a /56
+subnet for the clients internal use.
 
 .. code-block:: none
 

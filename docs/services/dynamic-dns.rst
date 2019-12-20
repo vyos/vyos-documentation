@@ -1,9 +1,12 @@
+.. _dynamic-dns:
+
+###########
 Dynamic DNS
------------
+###########
 
 VyOS is able to update a remote DNS record when an interface gets a new IP
-address. In order to do so, VyOS includes ddclient_, a perl script written for
-this exact purpose.
+address. In order to do so, VyOS includes ddclient_, a Perl script written for
+this only one purpose.
 
 ddclient_ uses two methods to update a DNS record. The first one will send
 updates directly to the DNS daemon, in compliance with :rfc:`2136`. The second
@@ -11,141 +14,150 @@ one involves a third party service, like DynDNS.com or any other similar
 website. This method uses HTTP requests to transmit the new IP address. You
 can configure both in VyOS.
 
-VyOS CLI and RFC2136
-^^^^^^^^^^^^^^^^^^^^
+Configuration
+=============
 
-First, create an :rfc:`2136` config node :
+:rfc:`2136` Based
+-----------------
+
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+
+   Create new :rfc:`2136` DNS update configuration which will update the IP
+   address assigned to `<interface>` on the service you configured under
+   `<service-name>`.
+
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> key <keyfile>
+
+   File identified by `<keyfile>` containing the secret RNDC key shared with
+   remote DNS server.
+
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> server <server>
+
+   Configure the DNS `<server>` IP/FQDN used when updating this dynamic
+   assignemnt.
+
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> zone <zone>
+
+   Configure DNS `<zone>` to be updated.
+
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> record <record>
+
+   Configure DNS `<record>` which should be updated. This can be set multiple
+   times.
+
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> ttl <ttl>
+
+   Configure optional TTL value on the given resource record. This defualts to
+   600 seconds.
+
+Example
+^^^^^^^
+
+* Register DNS record ``example.vyos.io`` on DNS server ``ns1.vyos.io``
+* Use auth key file at ``/config/auth/my.key``
+* Set TTL to 300 seconds
 
 .. code-block:: none
 
-  edit service dns dynamic interface eth0 rfc2136 <confignodename>
+  vyos@vyos# show service dns dynamic
+   interface eth0.7 {
+       rfc2136 VyOS-DNS {
+           key /config/auth/my.key
+           record example.vyos.io
+           server ns1.vyos.io
+           ttl 300
+           zone vyos.io
+       }
+   }
 
-Present your RNDC key to ddclient :
-
-.. code-block:: none
-
-  set key /config/dyndns/mydnsserver.rndc.key
-
-Set the DNS server IP/FQDN :
-
-.. code-block:: none
-
-  set server dns.mydomain.com
-
-Set the NS zone to be updated :
+This will render the following ddclient_ configuration entry:
 
 .. code-block:: none
 
-  set zone mydomain.com
+  #
+  # ddclient configuration for interface "eth0.7":
+  #
+  use=if, if=eth0.7
 
-Set the records to be updated :
-
-.. code-block:: none
-
-  set record dyn
-  set record dyn2
-
-You can optionally set a TTL (note : default value is 600 seconds) :
-
-.. code-block:: none
-
-  set ttl 600
-
-This will generate the following ddclient config blocks:
-
-.. code-block:: none
-
-  server=dns.mydomain.com
+  # RFC2136 dynamic DNS configuration for example.vyos.io.vyos.io
+  server=ns1.vyos.io
   protocol=nsupdate
-  password=/config/dyndns/mydnsserver.rndc.key
-  ttl=600
-  zone=mydomain.com
-  dyn
-  server=dns.mydomain.com
-  protocol=nsupdate
-  password=/config/dyndns/mydnsserver.rndc.key
-  ttl=600
-  zone=mydomain.com
-  dyn2
+  password=/config/auth/my.key
+  ttl=300
+  zone=vyos.io
+  example.vyos.io
 
-You can also keep a different dns zone updated. Just create a new config node:
+.. note:: You can also keep different DNS zone updated. Just create a new
+   config node: ``set service dns dynamic interface <interface> rfc2136
+   <other-service-name>``
 
-.. code-block:: none
+HTTP based services
+-------------------
 
-  edit service dns dynamic interface eth0 rfc2136 <confignode2>
+VyOS is also able to use any service relying on protocols supported by ddclient.
 
-VyOS CLI and HTTP dynamic DNS services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To use such a service, one must define a login, password, one or multiple
+hostnames, protocol and server.
 
-VyOS is also able to use any service relying on protocols supported
-by ddclient.
+.. cfgcmd:: set service dns dynamic interface <interface> service <service> host-name <hostname>
 
-To use such a service, you must define a login, a password, one or multiple
-hostnames, a protocol and a server.
+   Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS
+   provider identified by `<service>` when the IP address on interface
+   `<interface>` changes.
 
-.. code-block:: none
+.. cfgcmd:: set service dns dynamic interface <interface> service <service> login <username>
 
-  edit service dns dynamic interface eth0 service HeNet
-  set login my-login # set password my-password
-  set host-name my-tunnel-id
-  set protocol dyndns2
-  set server ipv4.tunnelbroker.net
+   Configure `<username>` used when authenticating the update request for
+   DynDNS service identified by `<service>`.
 
-VyOS is also shipped with a list of known services. You don't need to set the
-protocol and server value as VyOS has defaults provided for those. These are
-the services VyOS knows about:
+.. cfgcmd:: set service dns dynamic interface <interface> service <service> password <password>
 
-* afraid
-* changeip
-* dnspark
-* dslreports
-* dyndns
-* easydns
-* namecheap
-* noip
-* zoneedit
+   Configure `<password>` used when authenticating the update request for
+   DynDNS service identified by `<service>`.
 
-To use DynDNS for example:
+.. cfgcmd:: set service dns dynamic interface <interface> service <service> protocol <protocol>
 
-.. code-block:: none
+   When a ``custom`` DynDNS provider is used the protocol used for communicating
+   to the provider must be specified under `<protocol>`. See the embedded
+   completion helper for available protocols.
 
-  edit service dns dynamic interface eth0 service dyndns
-  set login my-login
-  set password my-password
-  set host-name my-dyndns-hostname
+.. cfgcmd:: set service dns dynamic interface <interface> service <service> server <server>
 
-It's possible to use multiple services :
+   When a ``custom`` DynDNS provider is used the `<server>` where update
+   requests are beeing sent to must be specified.
+
+Example:
+^^^^^^^^
+
+Use DynDNS as your preferred provider:
 
 .. code-block:: none
 
-  edit service dns dynamic interface eth0 service dyndns
-  set login my-login
-  set password my-password
-  set host-name my-dyndns-hostname
-  edit service dns dynamic interface eth0 service HeNet
-  set login my-login
-  set password my-password
-  set host-name my-tunnel-id
-  set protocol dyndns2
-  set server ipv4.tunnelbroker.net
+  set service dns dynamic interface eth0 service dyndns
+  set service dns dynamic interface eth0 service dyndns login my-login
+  set service dns dynamic interface eth0 service dyndns password my-password
+  set service dns dynamic interface eth0 service dyndns host-name my-dyndns-hostname
 
-ddclient behind NAT
-^^^^^^^^^^^^^^^^^^^
+.. note:: Multiple services can be used per interface. Just specify as many
+   serives per interface as you like!
 
-By default, ddclient will update a dynamic dns record using the IP address
+Running Behind NAT
+------------------
+
+By default, ddclient_ will update a dynamic dns record using the IP address
 directly attached to the interface. If your VyOS instance is behind NAT, your
 record will be updated to point to your internal IP.
 
 ddclient_ has another way to determine the WAN IP address. This is controlled
-by these two options:
+by:
 
-.. code-block:: none
+.. cfgcmd:: set service dns dynamic interface <interface> use-web url <url>
 
-  set service dns dynamic interface eth0 use-web url
-  set service dns dynamic interface eth0 use-web skip
+   Use configured `<url>` to determine your IP address. ddclient_ will load
+   `<url>` and tries to extract your IP address from the response.
 
-ddclient_ will load the webpage at `[url]` and will try to extract an IP
-address for the response. ddclient_ will skip any address located before the
-string set in `[skip]`.
+.. cfgcmd:: set service dns dynamic interface <interface> use-web skip <pattern>
 
-.. include:: references.rst
+   ddclient_ will skip any address located before the string set in `<pattern>`.
+
+.. _ddclient: https://github.com/ddclient/ddclient

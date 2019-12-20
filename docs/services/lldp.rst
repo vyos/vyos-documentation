@@ -1,27 +1,28 @@
+.. _lldp:
+
+####
 LLDP
-----
+####
 
 :abbr:`LLDP (Link Layer Discovery Protocol)` is a vendor-neutral link layer
 protocol in the Internet Protocol Suite used by network devices for advertising
 their identity, capabilities, and neighbors on an IEEE 802 local area network,
-principally wired Ethernet.[1] The protocol is formally referred to by the IEEE
+principally wired Ethernet. The protocol is formally referred to by the IEEE
 as Station and Media Access Control Connectivity Discovery specified in IEEE
 802.1AB and IEEE 802.3-2012 section 6 clause 79.
 
 LLDP performs functions similar to several proprietary protocols, such as
-`Cisco Discovery Protocol`_, `Foundry Discovery Protocol`_,
-Nortel Discovery Protocol and Link Layer Topology Discovery.
+:abbr:`CDP (Cisco Discovery Protocol)`, :abbr:`FDP (Foundry Discovery Protocol)`,
+:abbr:`NDP (Nortel Discovery Protocol)` and :abbr:`LLTD (Link Layer Topology
+Discovery)`.
 
-Information gathered
-^^^^^^^^^^^^^^^^^^^^
-
-Information gathered with LLDP is stored in the device as a management
-information database (MIB_) and can be queried with the Simple Network
-Management Protocol (SNMP_) as specified in :rfc:`2922`. The topology of an
+Information gathered with LLDP is stored in the device as a :abbr:`MIB
+(Management Information Database)` and can be queried with :abbr:`SNMP (Simple
+Network Management Protocol)` as specified in :rfc:`2922`. The topology of an
 LLDP-enabled network can be discovered by crawling the hosts and querying this
 database. Information that may be retrieved include:
 
-* System name and description
+* System Name and Description
 * Port name and description
 * VLAN name
 * IP management address
@@ -31,67 +32,110 @@ database. Information that may be retrieved include:
 * Link aggregation
 
 Configuration
-^^^^^^^^^^^^^
+=============
 
-* Enable service with:
+.. cfgcmd:: set service lldp
 
-  :code:`set service lldp`
+   Enable LLDP service
 
-Options
-*******
+.. cfgcmd:: set service lldp management-address <address>
 
-* Configure a Define management-address:
+   Define IPv4 management address transmitted via LLDP.
 
-  :code:`set service lldp management-address <x.x.x.x>`
+.. cfgcmd:: set service lldp interface <interface>
 
-* Define listening interfaces
+   Enable transmission of LLDP information on given `<interface>`. You can also
+   say ``all`` here so LLDP is turned on on every interface.
 
-  :code:`set service lldp interface <all|interface name>`
+.. cfgcmd:: set service lldp interface <interface> disable
 
-* LLDPd also implements an SNMP subagent. To Enable SNMP queries of the LLDP
-  database:
+   Disable transmit of LLDP frames on given `<interface>`. Useful to exclude
+   certain interfaces from LLDP when ``all`` have been enabled.
 
-  :code:`set service lldp snmp enable`
+.. cfgcmd:: set service lldp snmp enable
 
-* Enable optional/other protocols
+   Enable SNMP queries of the LLDP database
 
-  :code:`set service lldp legacy-protocols cdp`
+.. cfgcmd:: set service lldp legacy-protocols <cdp|edp|fdp|sonmp>
 
-  Supported legacy protocols:
+   Enable given legacy protocol on this LLDP instance. Legacy protocols include:
 
- * ``cdp`` - Listen for CDP for Cisco routers/switches
- * ``edp`` - Listen for EDP for Extreme routers/switches
- * ``fdp`` - Listen for FDP for Foundry routers/switches
- * ``sonmp`` - Listen for SONMP for Nortel routers/switches
+   * ``cdp`` - Listen for CDP for Cisco routers/switches
+   * ``edp`` - Listen for EDP for Extreme routers/switches
+   * ``fdp`` - Listen for FDP for Foundry routers/switches
+   * ``sonmp`` - Listen for SONMP for Nortel routers/switches
 
+Operation
+=========
 
-Display neighbors
-^^^^^^^^^^^^^^^^^
+.. opcmd:: show lldp neighbors
 
-* Display with:
-
-``show lldp neighbors``
-
-Exemple:
+   Displays information about all neighbors discovered via LLDP.
 
 .. code-block:: none
 
   vyos@vyos:~# show lldp neighbors
   Capability Codes: R - Router, B - Bridge, W - Wlan r - Repeater, S - Station
-                   D - Docsis, T - Telephone, O - Other
+                    D - Docsis, T - Telephone, O - Other
+
   Device ID                 Local  Proto  Cap   Platform             Port ID
   ---------                 -----  -----  ---   --------             -------
-  swA309                    eth0   LLDP   ?     Cisco IOS Software,  GigE0/33
+  Switch0815                eth0   LLDP   B     Cisco IOS Software,  Gi0/4
 
+.. opcmd:: show lldp neighbors detail
 
-* Options:
+   Get detailed information about LLDP neighbors.
 
- * ``detail`` - Show lldp neighbors detail
- * ``interface`` - Show LLDP for specified interface
+.. code-block:: none
 
-Troubleshooting
-^^^^^^^^^^^^^^^
+  vyos@vyos:~# show lldp neighbors detail
+  -------------------------------------------------------------------------------
+  LLDP neighbors:
+  -------------------------------------------------------------------------------
+  Interface:    eth0, via: LLDP, RID: 1, Time: 12 days, xxxx:xxxx:40
+    Chassis:
+      ChassisID:    mac 00:50:40:20:03:00
+      SysName:      Switch0815
+      SysDescr:     Cisco IOS Software, C2960 Software (C2960-LANBASEK9-M), Version 15.0(2)SE11, RELEASE SOFTWARE (fc3)
+                    Technical Support: http://www.cisco.com/techsupport
+                    Copyright (c) 1986-2017 by Cisco Systems, Inc.
+                    Compiled Sat 19-Aug-17 09:34 by prod_rel_team
+      MgmtIP:       192.0.2.201
+      Capability:   Bridge, on
+    Port:
+      PortID:       ifname Gi0/4
+      PortDescr:    GigabitEthernet0/4
+      TTL:          120
+      PMD autoneg:  supported: yes, enabled: yes
+        Adv:          10Base-T, HD: yes, FD: yes
+        Adv:          100Base-TX, HD: yes, FD: yes
+        Adv:          1000Base-T, HD: no, FD: yes
+        MAU oper type: 1000BaseTFD - Four-pair Category 5 UTP, full duplex mode
+    VLAN:         1, pvid: yes
+    LLDP-MED:
+      Device Type:  Network Connectivity Device
+      Capability:   Capabilities, yes
+      Capability:   Policy, yes
+      Capability:   Location, yes
+      Capability:   Inventory, yes
+      LLDP-MED Network Policy for: Voice, Defined: no
+        Priority:     Best effort
+        PCP:          0
+        DSCP Value:   0
+      LLDP-MED Network Policy for: Voice Signaling, Defined: no
+        Priority:     Best effort
+        PCP:          0
+        DSCP Value:   0
+      Inventory:
+        Hardware Revision: WS-C2960G-8TC-L (PowerPC405):C0
+        Software Revision: 15.0(2)SE11
+        Manufacturer: Cisco Systems, Inc.
+        Model:        WS-C2960G-8TC-L
 
-Use operational command ``show log lldp`` to display logs.
+.. opcmd:: show lldp neighbors interface <interface>
 
-.. include:: references.rst
+   Show LLDP neighbors connected via interface `<interface>`.
+
+.. opcmd:: show log lldp
+
+   Used for troubleshooting.

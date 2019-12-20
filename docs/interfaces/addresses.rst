@@ -13,7 +13,7 @@ addresses might be:
 
 .. cfgcmd:: set interfaces ethernet eth0 description 'OUTSIDE'
 
-An interface description is assigned using the following command:
+   An interface description is assigned using the following command:
 
 IPv4
 ^^^^

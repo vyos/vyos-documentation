@@ -162,12 +162,12 @@ be added below this statement.
 
   .. opcmd:: show protocols static arp
 
-  Display all known ARP table entries spanning accross all interfaces
+     Display all known ARP table entries spanning accross all interfaces
 
   .. cfgcmd:: set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
 
-  This will configure a static ARP entry always resolving `192.0.2.100` to
-  `00:53:27:de:23:aa`.
+     This will configure a static ARP entry always resolving `192.0.2.100` to
+     `00:53:27:de:23:aa`.
 
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
