@@ -7,6 +7,7 @@ System Configuration
 .. toctree::
    :maxdepth: 2
 
-   host-information
    user-management
+   host-information
+   default-route
    time-zone

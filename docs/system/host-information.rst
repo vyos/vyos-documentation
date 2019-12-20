@@ -146,31 +146,3 @@ Example: Set alias `router1` for system with hostname `RT01`:
         inet 10.20.30.41
     }
 
-Default Gateway/Route
-=====================
-
-In the past (VyOS 1.1.8) used a gateway-address configured in the system tree
-(`set system gateway-address <IP address>`) this is no longer supported and
-existing configurations are migrated to the new CLI commands.
-
-It is replaced by inserting a static route into the routing table using:
-
-.. code-block:: none
-
-  set protocols static route 0.0.0.0/0 next-hop <gateway ip>
-
-Delete the default route from the system
-
-.. code-block:: none
-
-  delete protocols static route 0.0.0.0/0
-
-Show default route:
-
-.. code-block:: none
-
-  vyos@vyos$ show ip route 0.0.0.0
-  Routing entry for 0.0.0.0/0
-    Known via "static", distance 1, metric 0, best
-    Last update 3d00h23m ago
-    * 172.16.34.6, via eth1
