@@ -12,6 +12,6 @@ System Configuration
    flow-accounting
    ntp
    proxy
-   serialconsole
+   serial-console
    syslog
    task-scheduler
