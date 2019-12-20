@@ -9,7 +9,7 @@ System Configuration
 
    config-management
    eventhandler
-   flowaccounting
+   flow-accounting
    ntp
    proxy
    serialconsole
