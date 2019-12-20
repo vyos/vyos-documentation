@@ -1,29 +1,130 @@
-.. _routing-static:
+.. _static-routing:
 
-#############
+######
+Static
+######
+
+Static routes are manually configured routes, which, in general, cannot be
+updated dynamically from information VyOS learns about the network topology from
+other routing protocols. However, if a link fails, the router will remove
+routes, including static routes, from the :abbr:`RIPB (Routing Information
+Base)` that used this interface to reach the next hop. In general, static
+routes should only be used for very simple network topologies, or to override
+the behavior of a dynamic routing protocol for a small number of routes. The
+collection of all routes the router has learned from its configuration or from
+its dynamic routing protocols is stored in the RIB. Unicast routes are directly
+used to determine the forwarding table used for unicast packet forwarding.
+
 Static Routes
 #############
 
-Static routes are manually configured network routes.
+.. cfgcmd:: set protocols static route '<subnet>' next-hop '<address>'
 
-A typical use for a static route is a static default route for systems that do
-not make use of DHCP or dynamic routing protocols:
+   Configure next-hop `<address>` for an IPv4 static route. Multiple static
+   routes can be created.
 
-.. code-block:: none
+.. cfgcmd:: set protocols static route '<subnet>' next-hop '<address>' disable
 
-  set protocols static route 0.0.0.0/0 next-hop 10.1.1.1 distance '1'
+   Disable this IPv4 static route entry.
 
-Another common use of static routes is to blackhole (drop) traffic. In the
-example below, :rfc:`1918` networks are set as blackhole routes.
+.. cfgcmd:: set protocols static route '<subnet>' next-hop '<address>' distance '<distance>'
 
-This prevents these networks leaking out public interfaces, but it does not prevent
-them from being used as the most specific route has the highest priority.
+   Defines next-hop distance for this route, routes with smaller administrative
+   distance are elected prior those with a higher distance.
 
-.. code-block:: none
+   Range is 1 to 255, default is 1.
 
-  set protocols static route 10.0.0.0/8 blackhole distance '254'
-  set protocols static route 172.16.0.0/12 blackhole distance '254'
-  set protocols static route 192.168.0.0/16 blackhole distance '254'
+.. cfgcmd:: set protocols static route6 '<subnet>' next-hop '<address>'
+
+   Configure next-hop `<address>` for an IPv6 static route. Multiple static
+   routes can be created.
+
+.. cfgcmd:: set protocols static route6 '<subnet>' next-hop '<address>' disable
+
+   Disable this IPv6 static route entry.
+
+.. cfgcmd:: set protocols static route6 '<subnet>' next-hop '<address>' distance '<distance>'
+
+   Defines next-hop distance for this route, routes with smaller administrative
+   distance are elected prior those with a higher distance.
+
+   Range is 1 to 255, default is 1.
 
 .. note:: Routes with a distance of 255 are effectively disabled and not
    installed into the kernel.
+
+
+Interface Routes
+================
+
+.. cfgcmd:: set protocols static interface-route '<subnet>' next-hop-interface '<interface>'
+
+   Allows you to configure the next-hop interface for an interface-based IPv4
+   static route. `<interface>` will be the next-hop interface where trafic is
+   routed for the given `<subnet>`.
+
+.. cfgcmd:: set protocols static interface-route '<subnet>' next-hop-interface '<interface>' disable
+
+   Disables interface-based IPv4 static route.
+
+.. cfgcmd:: set protocols static interface-route '<subnet>' next-hop-interface '<interface>' distance '<distance>'
+
+   Defines next-hop distance for this route, routes with smaller administrative
+   distance are elected prior those with a higher distance.
+
+   Range is 1 to 255, default is 1.
+
+.. cfgcmd:: set protocols static interface-route6 '<subnet>' next-hop-interface '<interface>'
+
+   Allows you to configure the next-hop interface for an interface-based IPv6
+   static route. `<interface>` will be the next-hop interface where trafic is
+   routed for the given `<subnet>`.
+
+.. cfgcmd:: set protocols static interface-route6 '<subnet>' next-hop-interface '<interface>' disable
+
+   Disables interface-based IPv6 static route.
+
+.. cfgcmd:: set protocols static interface-route6 '<subnet>' next-hop-interface '<interface>' distance '<distance>'
+
+   Defines next-hop distance for this route, routes with smaller administrative
+   distance are elected prior those with a higher distance.
+
+   Range is 1 to 255, default is 1.
+
+
+Blackhole
+=========
+
+.. cfgcmd:: set protocols static route '<subnet>' blackhole
+
+   Use this command to configure a "black-hole" route on the router. A
+   black-hole route is a route for which the system silently discard packets
+   that are matched. This prevents networks leaking out public interfaces, but
+   it does not prevent them from being used as a more specific route inside your
+   network.
+
+.. cfgcmd:: set protocols static route '<subnet>' blackhole distance '<distance>'
+
+   Defines blackhole distance for this route, routes with smaller administrative
+   distance are elected prior those with a higher distance.
+
+.. cfgcmd:: set protocols static route6 '<subnet>' blackhole
+
+   Use this command to configure a "black-hole" route on the router. A
+   black-hole route is a route for which the system silently discard packets
+   that are matched. This prevents networks leaking out public interfaces, but
+   it does not prevent them from being used as a more specific route inside your
+   network.
+
+.. cfgcmd:: set protocols static route6 '<subnet>' blackhole distance '<distance>'
+
+   Defines blackhole distance for this route, routes with smaller administrative
+   distance are elected prior those with a higher distance.
+
+
+Alternate Routing Tables
+========================
+
+Alternate routing tables are used with policy based routing.
+
+TBD
