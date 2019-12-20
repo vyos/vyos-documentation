@@ -24,7 +24,7 @@ VyOS User Guide
 
    configuration-overview
    interfaces/index
-   system/index
+   system/basic-index
    image-mgmt
 
 
@@ -34,6 +34,7 @@ VyOS User Guide
    :maxdepth: 2
 
    services/index
+   system/index
    firewall
    routing/index
    nat

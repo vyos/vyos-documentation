@@ -1,4 +1,4 @@
-.. _system:
+.. _system_config:
 
 ####################
 System Configuration
@@ -10,11 +10,8 @@ System Configuration
    config-management
    eventhandler
    flowaccounting
-   host-information
-   login-users
    ntp
    proxy
    serialconsole
    syslog
    task-scheduler
-   time-zone
