@@ -40,7 +40,6 @@ VyOS User Guide
    qos
    high-availability
    vpn/index
-   clustering
    load-balancing
    commandscripting
    troubleshooting
@@ -89,3 +88,4 @@ Permission is granted to copy and distribute translations of this manual into
 another language, under the above conditions for modified versions, except that
 this permission notice may be stated in a translation approved by the VyOS
 maintainers.
+
