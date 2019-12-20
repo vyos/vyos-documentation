@@ -1,7 +1,8 @@
 .. _host-information:
 
+################
 Host Information
-----------------
+################
 
 This section describes the system's host information and how to configure them,
 it covers the following topics:
@@ -12,8 +13,8 @@ it covers the following topics:
 * Default gateway
 * Aliases
 
-Host Name
-^^^^^^^^^
+Hostname
+========
 
 A hostname is the label (name) assigned to a network device (a host) on a
 network and is used to distinguish one device from another on specific networks
@@ -49,7 +50,7 @@ Example: Set system hostname to 'RT01':
     host-name RT01
 
 Domain Name
-^^^^^^^^^^^
+===========
 
 A domain name is the label (name) assigned to a computer network and is thus
 unique.
@@ -84,7 +85,7 @@ Example: Set system domain to example.com:
     domain-name example.com
 
 Static host mappings
-^^^^^^^^^^^^^^^^^^^^
+====================
 
 How to assign IPs to interfaces is described in chapter
 :ref:`interfaces-addresses`. This section shows how to statically map a system
@@ -113,7 +114,7 @@ IP address `10.20.30.41`:
     }
 
 Aliases
-*******
+-------
 
 One or more system aliases (static mappings) can be defined:
 
@@ -146,7 +147,7 @@ Example: Set alias `router1` for system with hostname `RT01`:
     }
 
 Default Gateway/Route
-^^^^^^^^^^^^^^^^^^^^^
+=====================
 
 In the past (VyOS 1.1.8) used a gateway-address configured in the system tree
 (`set system gateway-address <IP address>`) this is no longer supported and
