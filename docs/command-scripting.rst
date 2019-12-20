@@ -1,6 +1,6 @@
-.. _commandscripting:
+.. _command-scripting:
 
-Command scripting
+Command Scripting
 =================
 
 VyOS supports executing configuration and operational commands non-interactively

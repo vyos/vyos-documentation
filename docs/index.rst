@@ -42,7 +42,7 @@ VyOS User Guide
    high-availability
    vpn/index
    load-balancing
-   commandscripting
+   command-scripting
    troubleshooting
 
 

@@ -38,9 +38,9 @@ Major upgrades to the installed distribution may also require console access.
    * ``57600`` - 57,600 bps
    * ``115200`` - 115,200 bps (default for serial console)
 
-##############
+###############
 Network Console
-##############
+###############
 
 TBD.
 

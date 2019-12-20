@@ -1,60 +1,40 @@
 .. _task-scheduler:
 
+##############
+Task Scheduler
+##############
 
-Task scheduler
---------------
+The task scheduler allows you to execute tasks on a given schedule. It makes
+use of UNIX cron_.
 
-| Task scheduler — allows scheduled task execution. Note that scripts excecuted this way are executed as root user - this may be dangerous.
-| Together with :ref:`commandscripting` this can be used for automating configuration.
+.. note:: All scripts excecuted this way are executed as root user - this may
+   be dangerous. Together with :ref:`command-scripting` this can be used for
+   automating (re-)configuration.
 
-.. code-block:: none
+.. cfgcmd:: set system task-scheduler task '<task>' interval '<interval>'
 
-  system
-      task-scheduler
-          task <name>
-              cron-spec <UNIX cron time spec>
-              executable
-                  arguments <arguments string>
-                  path <path to executable>
-              interval
-                  <int32>[mhd]
+   Specify the time interval when `<task>` should be executed. The interval
+   is specified as number with one of the following suffixes:
 
-Interval
-********
+   * ``none`` - Execution interval in minutes
+   * ``m`` - Execution interval in minutes
+   * ``h`` - Execution interval in hours
+   * ``d`` - Execution interval in days
 
-You are able to set the time as an time interval.
+   .. note:: If suffix is omitted, minutes are implied.
 
-.. code-block:: none
+.. cfgcmd:: set system task-scheduler task '<task>' crontab-spec '<spec>'
 
-  set system task-scheduler task <name> interval <value><suffix>
+   Set execution time in common cron_ time format. A cron `<spec>` of
+   ``30 */6 * * *`` would execute the `<task>` at minute 30 past every 6th hour.
 
-Sets the task to execute every N minutes, hours, or days. Suffixes:
+.. cfgcmd:: set system task-scheduler task '<task>' executable path '<path>'
 
- * m — minutes
- * h — hours
- * d — days
+   Specify absolute `<path>` to script which will be run when `<task>` is
+   executed.
 
-If suffix is omitted, minutes are implied.
+.. cfgcmd:: set system task-scheduler task '<task>' executable arguments '<args>'
 
-Or set the execution time in common cron time.
+   Arguments which will be passed to the executable.
 
-.. code-block:: none
-
-  set system task-scheduler task TEST crontab-spec "* * * 1 *"
-
-Example
-*******
-
-.. code-block:: none
-
-  system
-      task-scheduler
-          task mytask
-              interval 2h
-              executable
-                  path /config/scripts/mytask
-                  arguments "arg1 arg2 arg3"
-          task anothertask
-              cron-spec "* * * 1 *"
-              executable
-                  path /config/scripts/anothertask
+.. _cron: https://en.wikipedia.org/wiki/Cron
