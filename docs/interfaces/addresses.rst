@@ -96,8 +96,7 @@ The command is ``set interfaces $type $name ipv6 address autoconf``. Examples:
   set interfaces ethernet eth0 vif 90 ipv6 address autoconf
   set interfaces bridge br0 ipv6 address autoconf
 
-.. note:: This method automatically disables IPv6 traffic forwarding on the
-   interface in question.
+
 
 EUI-64
 ******

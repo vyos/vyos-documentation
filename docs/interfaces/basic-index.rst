@@ -47,6 +47,5 @@ respective sections.
 .. toctree::
    :maxdepth: 2
 
-   addresses
    ethernet
    pppoe
