@@ -33,7 +33,7 @@ VyOS User Guide
    :name: advanced
    :maxdepth: 2
 
-   interfaces/index
+   interfaces/advanced-index
    services/index
    system/index
    firewall
