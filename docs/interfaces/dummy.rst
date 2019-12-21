@@ -69,7 +69,7 @@ Operation
 
    Show detailed information on given `<interface>`
 
-   .. code-block::
+   .. code-block:: none
 
      vyos@vyos:~$ show interfaces ethernet eth0
      dum0: <BROADCAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000

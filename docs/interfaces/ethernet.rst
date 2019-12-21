@@ -33,10 +33,10 @@ Address
 
 .. cfgcmd:: set interfaces ethernet '<interface>' ipv6 address autoconf
 
-   :abbr:`SLAAC (Stateless Address Autoconfiguration)` is specified in
+   :abbr:`SLAAC (Stateless Address Autoconfiguration)`
    :rfc:`4862`. IPv6 hosts can configure themselves automatically when connected
    to an IPv6 network using the Neighbor Discovery Protocol via :abbr:`ICMPv6
-   (Internet Control Message Protocol version 6) router discovery messages.
+   (Internet Control Message Protocol version 6)` router discovery messages.
    When first connected to a network, a host sends a link-local router
    solicitation multicast request for its configuration parameters; routers
    respond to such a request with a router advertisement packet that contains
@@ -148,7 +148,7 @@ Operation
 
    Show detailed information on given `<interface>`
 
-   .. code-block::
+   .. code-block:: none
 
      vyos@vyos:~$ show interfaces ethernet eth0
      eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
@@ -165,7 +165,7 @@ Operation
 
    Show information about physical `<interface>`
 
-   .. code-block::
+   .. code-block:: none
 
      vyos@vyos:~$ show interfaces ethernet eth0 physical
      Settings for eth0:
