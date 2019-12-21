@@ -5,7 +5,7 @@ Network Interfaces
 ##################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    dummy
    bridge

@@ -5,7 +5,7 @@ Basic Interfaces
 ################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    ethernet
    pppoe
