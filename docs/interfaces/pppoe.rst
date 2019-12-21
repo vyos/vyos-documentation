@@ -51,8 +51,8 @@ configure it to open the PPPoE session for you and your DSL Transceiver
 (Modem/Router) just acts to translate your messages in a way that
 vDSL/aDSL understands.
 
-Configuration Example
-^^^^^^^^^^^^^^^^^^^^^
+Example
+=======
 
 Requirements:
 
@@ -96,7 +96,7 @@ assigning it to the pppoe0 itself as shown here:
   set interfaces ethernet eth0 pppoe 0 firewall out name NET-OUT
 
 VLAN Example
-""""""""""""
+------------
 
 Some recent ISPs require you to build the PPPoE connection through a VLAN
 interface. One of those ISPs is e.g. Deutsche Telekom in Germany. VyOS
@@ -117,30 +117,31 @@ which is the default VLAN for Deutsche Telekom:
   set interfaces ethernet eth0 vif 7 pppoe 0 password 'secret'
 
 Troubleshooting
-^^^^^^^^^^^^^^^
+===============
 
 .. opcmd:: disconnect interface <interface>
 
-Test disconnecting given connection-oriented interface. `<interface>` can be
-``pppoe0`` as example.
+   Test disconnecting given connection-oriented interface. `<interface>` can be
+   ``pppoe0`` as example.
 
 .. opcmd:: connect interface <interface>
 
-Test connecting given connection-oriented interface. `<interface>` can be
-``pppoe0`` as example.
+   Test connecting given connection-oriented interface. `<interface>` can be
+   ``pppoe0`` as example.
 
 .. opcmd:: show interfaces pppoe <interface>
 
-Check PPPoE connection logs with the following command which shows the current
-statistics, status and some of the settings (i.e. MTU) for the current
-connection on <interface> (e.g. ``pppoe0``)
+   Check PPPoE connection logs with the following command which shows the
+   current statistics, status and some of the settings (i.e. MTU) for the
+   current connection on <interface> (e.g. ``pppoe0``)
 
 .. opcmd:: show interfaces pppoe <interface> log
 
-Show entire log for the PPPoE connection starting with the oldest data. Scroll
-down with the <space> key to reach the end where the current data is.
+   Show entire log for the PPPoE connection starting with the oldest data.
+   Scroll down with the <space> key to reach the end where the current data is.
 
 .. opcmd::  show interfaces pppoe <interface> log tail
 
-Shows the same log as without the 'tail' option but start with the last few
-lines and continues to show added lines until you exit with ``Ctrl + x``
+   Shows the same log as without the 'tail' option but start with the last few
+   lines and continues to show added lines until you exit with ``Ctrl + x``
+
