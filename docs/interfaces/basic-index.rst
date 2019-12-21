@@ -1,4 +1,4 @@
-.. _network-interfaces:
+.. _basic_network-interfaces:
 
 ##################
 Network Interfaces
@@ -47,13 +47,6 @@ respective sections.
 .. toctree::
    :maxdepth: 2
 
-   dummy
-   bridge
-   bond
-   l2tpv3
-   wireless
-   tunnel
-   vlan
-   qinq
-   vxlan
-   geneve
+   addresses
+   ethernet
+   pppoe

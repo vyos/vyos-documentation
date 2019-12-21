@@ -23,7 +23,7 @@ VyOS User Guide
    :maxdepth: 2
 
    configuration-overview
-   interfaces/index
+   interfaces/basic-index
    system/basic-index
    image-mgmt
 
@@ -33,6 +33,7 @@ VyOS User Guide
    :name: advanced
    :maxdepth: 2
 
+   interfaces/index
    services/index
    system/index
    firewall
