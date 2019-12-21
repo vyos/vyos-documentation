@@ -317,12 +317,24 @@ Always verify that the parameters are correct before commiting the configuration
 Refer to isc-dhcp's dhcpd.conf manual for more information:
 https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcpdconf
 
+Quotes can be used inside parameter values by replacing all quote characters 
+with the string ``&quot;``. They will be replaced with literal quote characters
+when generating dhcpd.conf.
+
 Example
 ^^^^^^^
 
 .. opcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option domain-name-servers 192.0.2.11, 192.0.2.12;"
 
-   Override the static-mapping's dns-server with a custom one that will be sent only to this host.
+   Override the static-mapping's dns-server with a custom one that will be sent
+   only to this host.
+
+.. opcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option pxelinux.configfile &quot;pxelinux.cfg/01-00-15-17-44-2d-aa&quot;;"
+
+   An option that takes a quoted string is set by replacing all quote characters
+   with the string ``&quot;`` inside the static-mapping-parameters value.
+   The resulting line in dhcpd.conf will be
+   ``option pxelinux.configfile "pxelinux.cfg/01-00-15-17-44-2d-aa";``.
 
 Operation Mode
 --------------
