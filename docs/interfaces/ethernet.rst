@@ -95,7 +95,7 @@ Link Administration
 
 .. cfgcmd:: set interfaces ethernet '<interface>' disable
 
-   Disable given ethernet interface. It will be placed in administratively down
+   Disable given `<interface>`. It will be placed in administratively down
    state.
 
 .. cfgcmd:: set interfaces ethernet '<interface>' disable-flow-control
@@ -132,7 +132,7 @@ Operation
 
 .. opcmd:: show interfaces ethernet
 
-   Show Ethernet interface information
+   Show brief interface information.
 
    .. code-block:: none
 
