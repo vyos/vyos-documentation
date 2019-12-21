@@ -1,7 +1,8 @@
 .. _pppoe-interface:
 
+#####
 PPPoE
-=====
+#####
 
 :abbr:`PPPoE (Point-to-Point Protocol over Ethernet)` is a network protocol
 for encapsulating PPP frames inside Ethernet frames. It appeared in 1999,
@@ -14,14 +15,14 @@ PPP facilities for authenticating the user with a username and password,
 predominately via the PAP protocol and less often via CHAP.
 
 Operating Modes
----------------
+===============
 
 VyOS supports setting up PPPoE in two different ways to a PPPoE internet
 connection. This is due to most ISPs provide a modem that is also a wireless
 router.
 
 Home Users
-**********
+----------
 
 In this method, the DSL Modem/Router connects to the ISP for you with your
 credentials preprogrammed into the device. This gives you an :rfc:`1918`
@@ -34,7 +35,7 @@ few extra layers of complexity, particularly if you use some NAT or
 tunnel features.
 
 Business Users
-**************
+--------------
 
 In order to have full control and make use of multiple static public IP
 addresses, your VyOS will have to initiate the PPPoE connection and control
@@ -51,7 +52,7 @@ configure it to open the PPPoE session for you and your DSL Transceiver
 vDSL/aDSL understands.
 
 Configuration Example
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 Requirements:
 
@@ -95,7 +96,7 @@ assigning it to the pppoe0 itself as shown here:
   set interfaces ethernet eth0 pppoe 0 firewall out name NET-OUT
 
 VLAN Example
-++++++++++++
+""""""""""""
 
 Some recent ISPs require you to build the PPPoE connection through a VLAN
 interface. One of those ISPs is e.g. Deutsche Telekom in Germany. VyOS
@@ -116,7 +117,7 @@ which is the default VLAN for Deutsche Telekom:
   set interfaces ethernet eth0 vif 7 pppoe 0 password 'secret'
 
 Troubleshooting
----------------
+^^^^^^^^^^^^^^^
 
 .. opcmd:: disconnect interface <interface>
 
