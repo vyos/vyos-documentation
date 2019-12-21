@@ -7,14 +7,14 @@ Installation
 Requirements
 ============
 
-The recommended system requirements are 512 MiB RAM and 2 GiB storage. Depending
-on your use you might need additional RAM and CPU resources e.g. when having
-multiple BGP full tables in your system.
+The recommended system requirements are 512 MiB RAM and 2 GiB storage.
+Depending on your use you might need additional RAM and CPU resources e.g.
+when having multiple BGP full tables in your system.
 
-Getting the software
-====================
+Download
+========
 
-Registered subscribers
+Registered Subscribers
 ----------------------
 
 Registered subscribers can log into https://support.vyos.io/ to have access to
@@ -28,23 +28,29 @@ ISOs.
 Building from source
 ----------------------
 
-Non-subscribers can get the LTS release by building it from source. Instruction
-can be found here: :ref:`build` and the source repository is available
-for everyone at https://github.com/vyos/vyos-build.
+Non-subscribers can always get the LTS release by building it from source.
+Instruction can be found in the :ref:`build` section of this manual. VyOS
+source code repository is available for everyone at
+https://github.com/vyos/vyos-build.
 
 Rolling Release
 ---------------
 
-Non-subscribers and subscribers can download bleeding-edge VyOS rolling images
-from: https://downloads.vyos.io/
+Everyone can download bleeding-edge VyOS rolling images from:
+https://downloads.vyos.io/
 
-The following link will always fetch the most updated AMD64 image of the
-current branch:
+.. note:: Rolling releases contain all the latest enhancements and fixes. This
+   means that there will be new bugs of course. If you think you hit a bug
+   please follow the guide at :ref:`bug_report`. To improve VyOS we depend on
+   your feedback!
+
+The following link will always fetch the most recent VyOS build for AMD64
+systems from the current branch:
 https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 
 
-Software verification
-=====================
+Download Verification
+---------------------
 
 This subsection and the following one applies to downloaded LTS images, for
 other versions please jump to :ref:`Install`.
@@ -164,12 +170,12 @@ Finally, verify the authencity of the downloaded image:
 
 .. _Install:
 
-Install
-=======
+Installation
+============
 
-VyOS ISO is a Live CD and will boot to a functional VyOS image.
+VyOS ISO is a live CD and will boot into a full functional VyOS system.
 
-To login to the system, use the default username and password will be: ``vyos``
+.. hint:: The default username and password for the live system is ``vyos``.
 
 .. code-block:: none
 
@@ -251,34 +257,34 @@ the provided default credentials.
   Setting up grub: OK
   Done!
 
-After the installation is complete, remove the Live CD and reboot the system:
+After the installation is complete, remove the live CD and reboot the system:
 
 .. code-block:: none
 
   vyos@vyos:~$ reboot
   Proceed with reboot? (Yes/No) [No] Yes
 
-.. _PXE Install:
-
-PXE Install
------------
+PXE Boot
+--------
 
 VyOS can also be installed through PXE. This is a more complex installation
 method which allows deploying VyOS through the network.
 
-Requirements
-^^^^^^^^^^^^
+**Requirements**
 
-* **Clients** (where VyOS is to be installed) **with a PXE-enabled NIC**
-* A **DHCP server**
-* A **TFTP server**
-* A **HTTP server** (optional, but we will use it to speed up intallation)
-* The **VyOS ISO** image to be installed (do not use images prior to VyOS 1.2.3)
-* The ``pxelinux.0`` and ``ldlinux.c32`` files from the Syslinux distribution
-  https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/
+* :ref:`dhcp-server`
+* :ref:`tftp-server`
+* Webserver (HTTP) - optional, but we will use it to speed up intallation
+* VyOS ISO image to be installed (do not use images prior to VyOS 1.2.3)
+* ``pxelinux.0``, ``ldlinux.c32`` from SYSLINUX_
+  (https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/)
 
-Step 1: DHCP
-^^^^^^^^^^^^
+
+Configuration
+^^^^^^^^^^^^^
+
+DHCP
+""""
 
 Configure DHCP server to provide the client with:
 
@@ -305,8 +311,8 @@ In this example we configured an existent VyOS as the DHCP server:
 
 .. _install_from_tftp:
 
-Step 2: TFTP
-^^^^^^^^^^^^
+TFTP
+""""
 
 Configure a TFTP server so that it serves the following:
 
@@ -365,8 +371,8 @@ Example of simple (no menu) configuration file:
    APPEND initrd=initrd.img-4.19.54-amd64-vyos boot=live nopersistence \
           noautologin nonetworking fetch=http://address:8000/filesystem.squashfs
 
-Step 3: HTTP
-^^^^^^^^^^^^
+HTTP
+""""
 
 As you read in the configuration file, we are sending ``filesystem.squashfs``
 through HTTP. As that is a heavy file, we choose HTTP to speed up the transfer
@@ -375,8 +381,8 @@ over TFTP. Run a web server - you can use a simple one like
 file. The file can be found inside the ``/live`` directory of the extracted
 contents of the ISO file.
 
-Edit the configuration file at the :ref:`install_from_tftp` so that it shows the
-correct URL at ``fetch=http://address/filesystem.squashfs``. Then restart
+Edit the configuration file at the :ref:`install_from_tftp` so that it shows
+the correct URL at ``fetch=http://address/filesystem.squashfs``. Then restart
 the TFTP service. If you are using VyOS as your TFTP Server, you can restart
 the service with ``sudo service tftpd-hpa restart``.
 
@@ -385,8 +391,8 @@ the service with ``sudo service tftpd-hpa restart``.
 
 .. _`Python's SimpleHTTPServer`: https://docs.python.org/2/library/simplehttpserver.html
 
-Step 4: Boot the clients
-^^^^^^^^^^^^^^^^^^^^^^^^
+Client Boot
+"""""""""""
 
 Turn on your PXE-enabled client or clients. They will automatically get an IP
 address from the DHCP server and start booting into VyOS live from the files
@@ -394,3 +400,5 @@ automatically taken from the TFTP and HTTP servers.
 
 Once finished you will be able to proceed with the ``install image`` command as
 in a regular VyOS installation.
+
+.. _SYSLINUX: http://www.syslinux.org/

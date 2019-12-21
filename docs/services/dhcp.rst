@@ -6,6 +6,8 @@ DHCP / DHCPv6
 
 VyOS uses ISC DHCPd for both IPv4 and IPv6 address assignment.
 
+.. _dhcp-server:
+
 DHCP Server
 ===========
 
