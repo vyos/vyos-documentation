@@ -12,9 +12,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.append(os.path.abspath("./_ext"))
 
 
 # -- Project information -----------------------------------------------------
@@ -41,7 +41,9 @@ release = u'1.3.x (equuleus)'
 extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.todo',
               'sphinx.ext.ifconfig',
-              'sphinx.ext.graphviz']
+              'sphinx.ext.graphviz',
+              'vyos'
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -170,5 +172,6 @@ texinfo_documents = [
 ]
 
 def setup(app):
-    app.add_object_type('opcmd', 'opcmd')
-    app.add_object_type('cfgcmd', 'cfgcmd')
+    pass
+    #app.add_object_type('opcmd', 'opcmd')
+    #app.add_object_type('cfgcmd', 'cfgcmd')
