@@ -53,6 +53,7 @@ VyOS User Guide
 
    appendix/releasenotes
    appendix/examples/index
+   appendix/cmd-index
    appendix/commandtree/index
    appendix/vyos-on-vmware
    appendix/vyos-on-baremetal
