@@ -40,7 +40,8 @@ Configuration
 
 .. cfgcmd:: set service lldp management-address <address>
 
-   Define IPv4 management address transmitted via LLDP.
+   Define IPv4/IPv6 management address transmitted via LLDP. Multiple addresses
+   can be defined. Only addresses connected to the system will be transmitted.
 
 .. cfgcmd:: set service lldp interface <interface>
 
