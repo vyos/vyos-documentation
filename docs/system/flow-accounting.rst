@@ -4,6 +4,19 @@
 Flow Accounting
 ###############
 
+VyOS supports flow-accounting for both IPv4 and IPv6 traffic. The system acts as a
+flow exporter, and you are free to use it with any compatible collector.
+
+Flows can be exported via two different protocols: NetFlow (versions 5, 9 and 10/IPFIX) 
+and sFlow. Additionally, you may save flows to an in-memory table internally in a router.
+
+.. warning:: You need to disable the in-memory table in production environments!
+   Using :abbr:`IMT (In-Memory Table)` may lead to heavy CPU overloading and 
+   unstable flow-accounting behavior.
+
+
+NetFlow / IPFIX
+===============
 NetFlow is a feature that was introduced on Cisco routers around 1996 that
 provides the ability to collect IP network traffic as it enters or exits an
 interface. By analyzing the data provided by NetFlow, a network administrator
@@ -39,15 +52,40 @@ interface, the interface must be configured for flow accounting.
    You can configure multiple interfaces which whould participate in flow
    accounting.
 
+.. note:: Will be recorded only packets/flows on **incoming** directinon
+   in configured interfaces.
+
+
+By default, recorded flows will be saved internally and can be listed with the CLI
+command. You may disable using the local in-memory table with the command:
+
+.. cfgcmd:: set system flow-accounting disable-imt
+
+Internally, in flow-accounting processes exist a buffer for data exchanging between 
+core process and plugins (each export target is a separated plugin). If you have high 
+traffic levels or noted some problems with missed records or stopping exporting, you 
+may try to increase a default buffer size (10 MiB) with the next command:
+
+.. cfgcmd:: set system flow-accounting buffer-size '<buffer size>'
+
+In case, if you need to catch some logs from flow-accounting daemon, you may 
+configure logging facility:
+
+.. cfgcmd:: set system flow-accounting syslog-facility '<facility>'
+
+
 Flow Export
 -----------
 
 In addition to displaying flow accounting information locally, one can also
 exported them to a collection server.
 
+NetFlow
+^^^^^^^
+
 .. cfgcmd:: set system flow-accounting netflow version '<version>'
 
-   There are multiple versions available for the NetFlo data. The `<version>`
+   There are multiple versions available for the NetFlow data. The `<version>`
    used in the exported flow data can be configured here. The following
    versions are supported:
 
@@ -85,6 +123,31 @@ exported them to a collection server.
    Specifies the interval at which Netflow data will be sent to a collector. As
    per default, Netflow data will be sent every 60 seconds.
 
+   You may also additionally configure timeouts for different types of connections.
+
+.. cfgcmd:: set system flow-accounting netflow max-flows '<number>'
+
+   If you want to change the maximum number of flows, which are tracking simultaneously,
+   you may do this with this command (default 8192).
+
+sFlow
+^^^^^
+.. cfgcmd:: set system flow-accounting sflow server '<address>'
+
+   Configure address of sFlow collector. sFlow server at `<address>` can
+   be an IPv4 or IPv6 address. But you cannot export to both IPv4 and 
+   IPv6 collectors at the same time!
+
+.. cfgcmd:: set system flow-accounting sflow sampling-rate '<rate>'
+
+   Enable sampling of packets, which will be transmitted to sFlow collectors.
+
+.. cfgcmd:: set system flow-accounting sflow agent-address '<address>'
+
+   Configure a sFlow agent address. It can be IPv4 or IPv6 address, but you must set 
+   the same protocol, which is used for sFlow collector addresses.
+   By default, using router-id from BGP or OSPF protocol, or the primary IP 
+   address from the first interface.
 
 Example:
 --------
@@ -110,26 +173,16 @@ display captured network traffic information for all configured interfaces.
    .. code-block:: none
 
      vyos@vyos:~$ show flow-accounting interface eth0
-     flow-accounting for [eth0]
-     Src Addr      Dst Addr     Sport Dport Proto  Packets     Bytes  Flows
-     0.0.0.0       192.0.2.50   811   811     udp     7733    591576      0
-     0.0.0.0       192.0.2.50   811   811     udp     7669    586558      1
-     192.0.2.200   192.0.2.51   56188 22      tcp      586     36504      1
-     192.0.2.99    192.0.2.51   61636 161     udp       46      6313      4
-     192.0.2.99    192.0.2.51   61638 161     udp       42      5364      9
-     192.0.2.99    192.0.2.51   61640 161     udp       42      5111      3
-     192.0.2.200   192.0.2.51   54702 22      tcp       86      4432      1
-     192.0.2.99    192.0.2.51   62509 161     udp       24      3540      1
-     192.0.2.99    192.0.2.51   0     0      icmp       49      2989      8
-     192.0.2.99    192.0.2.51   54667 161     udp       18      2658      1
-     192.0.2.99    192.0.2.51   54996 161     udp       18      2622      1
-     192.0.2.99    192.0.2.51   63708 161     udp       18      2622      1
-     192.0.2.99    192.0.2.51   62111 161     udp       18      2622      1
-     192.0.2.99    192.0.2.51   61646 161     udp       16      1977      4
-     192.0.2.99    192.0.2.51   56038 161     udp       10      1256      1
-     192.0.2.99    192.0.2.51   55570 161     udp        6      1146      1
-     192.0.2.99    192.0.2.51   54599 161     udp        6      1134      1
-     192.0.2.99    192.0.2.51   56304 161     udp        8      1029      1
+     IN_IFACE    SRC_MAC            DST_MAC            SRC_IP                     DST_IP             SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
+     ----------  -----------------  -----------------  ------------------------  ---------------  ----------  ----------  ----------  -----  ---------  -------  -------
+     eth0        00:53:01:a8:28:ac  ff:ff:ff:ff:ff:ff  192.0.2.2                 255.255.255.255        5678        5678  udp             0          1        1      178
+     eth0        00:53:01:b2:2f:34  33:33:ff:00:00:00  fe80::253:01ff:feb2:2f34  ff02::1:ff00:0            0           0  ipv6-icmp       0          2        1      144
+     eth0        00:53:01:1a:b4:53  33:33:ff:00:00:00  fe80::253:01ff:fe1a:b453  ff02::1:ff00:0            0           0  ipv6-icmp       0          1        1       72
+     eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40152          22  tcp            16         39        1     2064
+     eth0        00:53:01:c8:33:af  ff:ff:ff:ff:ff:ff  192.0.2.3                 255.255.255.255        5678        5678  udp             0          1        1      154
+     eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40006          22  tcp            16        146        1     9444
+     eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14                0           0  icmp          192         27        1     4455
+
 
 
 .. opcmd:: show flow-accounting interface '<interface>' host '<address>'
@@ -139,8 +192,9 @@ display captured network traffic information for all configured interfaces.
 
    .. code-block:: none
 
-     vyos@vyos:~$ show flow-accounting interface eth0 host 192.0.2.200
-     flow-accounting for [eth0]
-     Src Addr      Dst Addr     Sport Dport Proto  Packets     Bytes  Flows
-     192.0.2.200   192.0.2.51   56188 22      tcp      586     36504      1
-     192.0.2.200   192.0.2.51   54702 22      tcp       86      4432      1
+     vyos@vyos:~$ show flow-accounting interface eth0 host 192.0.2.14
+     IN_IFACE    SRC_MAC            DST_MAC            SRC_IP       DST_IP        SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
+     ----------  -----------------  -----------------  -----------  ----------  ----------  ----------  ----------  -----  ---------  -------  -------
+     eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40006          22  tcp            16        197        2    12940
+     eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40152          22  tcp            16         94        1     4924
+     eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14           0           0  icmp          192         36        1     5877
