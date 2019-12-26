@@ -112,9 +112,12 @@ configuration.
 
    New system images can be either installed from an URL (http://, https://) or
    any location pointed to by a file path, e.g. /tmp/vyos-1.2.3-amd64.iso.
+   	   
    If there is not enough free diskspace available installation will be
    canceled. To delete images use the :opcmd:`delete system image` command.
 
+   .. hint:: The most up-do-date Rolling Release for AMD64 can be accessed using the following URL:
+      https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 
    .. code-block:: none
 
