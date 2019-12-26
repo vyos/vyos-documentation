@@ -101,53 +101,5 @@ This could be used to harden security.
 .. note:: VyOS 1.1 supported login as user ``root``. This has been removed due
    to tighter security in VyOS 1.2.
 
-Key Based Authentication
-========================
+.. seealso:: SSH :ref:`ssh_key_based_authentication`
 
-It is highly recommended to use SSH Key authentication. By default there is
-only one user (``vyos``), and you can assign any number of keys to that user.
-You can generate a ssh key with the ``ssh-keygen`` command on your local
-machine, which will (by default) save it as ``~/.ssh/id_rsa.pub``.
-
-Every SSH key comes in three parts:
-
-``ssh-rsa AAAAB3NzaC1yc2EAAAABAA...VBD5lKwEWB username@host.example.com``
-
-Only the type (``ssh-rsa``) and the key (``AAAB3N...``) are used. Note that the
-key will usually be several hundred characters long, and you will need to copy
-and paste it. Some terminal emulators may accidentally split this over several
-lines. Be attentive when you paste it that it only pastes as a single line.
-The third part is simply an identifier, and is for your own reference.
-
-.. cfgcmd:: set system login user '<username>' authentication public-keys '<identifier>' key '<key>'
-
-Assign the SSH public key portion `<key>` identified by per-key `<identifier>`
-to the local user `<username>`.
-
-.. cfgcmd:: set system login user '<username>' authentication public-keys '<identifier>' type '<type>'
-
-Every SSH public key portion referenced by `<identifier>` requires the
-configuration of the `<type>` of public-key used. This type can be any of:
-
-* ``ecdsa-sha2-nistp256``
-* ``ecdsa-sha2-nistp384``
-* ``ecdsa-sha2-nistp521``
-* ``ssh-dss``
-* ``ssh-ed25519``
-* ``ssh-rsa``
-
-.. note:: You can assign multiple keys to the same user by using a unique
-   identifier per SSH key.
-
-Example
--------
-
-In the following example, both User1 and User2 will be able to SSH into VyOS
-as the ``vyos`` user using their own keys.
-
-.. code-block:: none
-
-  set system login user vyos authentication public-keys 'User1' key "AAAAB3Nz...KwEW"
-  set system login user vyos authentication public-keys 'User1' type ssh-rsa
-  set system login user vyos authentication public-keys 'User2' key "AAAAQ39x...fbV3"
-  set system login user vyos authentication public-keys 'User2' type ssh-rsa

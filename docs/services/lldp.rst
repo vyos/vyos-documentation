@@ -40,7 +40,8 @@ Configuration
 
 .. cfgcmd:: set service lldp management-address <address>
 
-   Define IPv4 management address transmitted via LLDP.
+   Define IPv4/IPv6 management address transmitted via LLDP. Multiple addresses
+   can be defined. Only addresses connected to the system will be transmitted.
 
 .. cfgcmd:: set service lldp interface <interface>
 
@@ -72,65 +73,64 @@ Operation
 
    Displays information about all neighbors discovered via LLDP.
 
-.. code-block:: none
+   .. code-block:: none
 
-  vyos@vyos:~# show lldp neighbors
-  Capability Codes: R - Router, B - Bridge, W - Wlan r - Repeater, S - Station
-                    D - Docsis, T - Telephone, O - Other
+     vyos@vyos:~$ show lldp neighbors
+     Capability Codes: R - Router, B - Bridge, W - Wlan r - Repeater, S - Station
+                       D - Docsis, T - Telephone, O - Other
 
-  Device ID                 Local  Proto  Cap   Platform             Port ID
-  ---------                 -----  -----  ---   --------             -------
-  Switch0815                eth0   LLDP   B     Cisco IOS Software,  Gi0/4
+     Device ID                 Local     Proto  Cap   Platform             Port ID
+     ---------                 -----     -----  ---   --------             -------
+     BR2.vyos.net              eth0      LLDP   R     VyOS 1.2.4           eth1
+     BR3.vyos.net              eth0      LLDP   RB    VyOS 1.2.4           eth2
+     SW1.vyos.net              eth0      LLDP   B     Cisco IOS Software   GigabitEthernet0/6
 
 .. opcmd:: show lldp neighbors detail
 
    Get detailed information about LLDP neighbors.
 
-.. code-block:: none
+   .. code-block:: none
 
-  vyos@vyos:~# show lldp neighbors detail
-  -------------------------------------------------------------------------------
-  LLDP neighbors:
-  -------------------------------------------------------------------------------
-  Interface:    eth0, via: LLDP, RID: 1, Time: 12 days, xxxx:xxxx:40
-    Chassis:
-      ChassisID:    mac 00:50:40:20:03:00
-      SysName:      Switch0815
-      SysDescr:     Cisco IOS Software, C2960 Software (C2960-LANBASEK9-M), Version 15.0(2)SE11, RELEASE SOFTWARE (fc3)
-                    Technical Support: http://www.cisco.com/techsupport
-                    Copyright (c) 1986-2017 by Cisco Systems, Inc.
-                    Compiled Sat 19-Aug-17 09:34 by prod_rel_team
-      MgmtIP:       192.0.2.201
-      Capability:   Bridge, on
-    Port:
-      PortID:       ifname Gi0/4
-      PortDescr:    GigabitEthernet0/4
-      TTL:          120
-      PMD autoneg:  supported: yes, enabled: yes
-        Adv:          10Base-T, HD: yes, FD: yes
-        Adv:          100Base-TX, HD: yes, FD: yes
-        Adv:          1000Base-T, HD: no, FD: yes
-        MAU oper type: 1000BaseTFD - Four-pair Category 5 UTP, full duplex mode
-    VLAN:         1, pvid: yes
-    LLDP-MED:
-      Device Type:  Network Connectivity Device
-      Capability:   Capabilities, yes
-      Capability:   Policy, yes
-      Capability:   Location, yes
-      Capability:   Inventory, yes
-      LLDP-MED Network Policy for: Voice, Defined: no
-        Priority:     Best effort
-        PCP:          0
-        DSCP Value:   0
-      LLDP-MED Network Policy for: Voice Signaling, Defined: no
-        Priority:     Best effort
-        PCP:          0
-        DSCP Value:   0
-      Inventory:
-        Hardware Revision: WS-C2960G-8TC-L (PowerPC405):C0
-        Software Revision: 15.0(2)SE11
-        Manufacturer: Cisco Systems, Inc.
-        Model:        WS-C2960G-8TC-L
+     vyos@vyos:~$ show lldp neighbors detail
+     -------------------------------------------------------------------------------
+     LLDP neighbors:
+     -------------------------------------------------------------------------------
+     Interface:    eth0, via: LLDP, RID: 28, Time: 0 day, 00:24:33
+       Chassis:
+         ChassisID:    mac 00:53:00:01:02:c9
+         SysName:      BR2.vyos.net
+         SysDescr:     VyOS 1.3-rolling-201912230217
+         MgmtIP:       192.0.2.1
+         MgmtIP:       2001:db8::ffff
+         Capability:   Bridge, on
+         Capability:   Router, on
+         Capability:   Wlan, off
+         Capability:   Station, off
+       Port:
+         PortID:       mac 00:53:00:01:02:c9
+         PortDescr:    eth0
+         TTL:          120
+         PMD autoneg:  supported: no, enabled: no
+           MAU oper type: 10GigBaseCX4 - X copper over 8 pair 100-Ohm balanced cable
+       VLAN:         201 eth0.201
+       VLAN:         205 eth0.205
+       LLDP-MED:
+         Device Type:  Network Connectivity Device
+         Capability:   Capabilities, yes
+         Capability:   Policy, yes
+         Capability:   Location, yes
+         Capability:   MDI/PSE, yes
+         Capability:   MDI/PD, yes
+         Capability:   Inventory, yes
+         Inventory:
+           Hardware Revision: None
+           Software Revision: 4.19.89-amd64-vyos
+           Firmware Revision: 6.00
+           Serial Number: VMware-42 1d 83 b9 fe c1 bd b2-7
+           Manufacturer: VMware, Inc.
+           Model:        VMware Virtual Platform
+           Asset ID:     No Asset Tag
+     -------------------------------------------------------------------------------
 
 .. opcmd:: show lldp neighbors interface <interface>
 

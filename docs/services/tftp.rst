@@ -1,8 +1,8 @@
 .. _tftp-server:
 
-####
-TFTP
-####
+###########
+TFTP Server
+###########
 
 :abbr:`TFTP (Trivial File Transfer Protocol)` is a simple, lockstep file
 transfer protocol which allows a client to get a file from or put a file onto

@@ -23,8 +23,8 @@ VyOS User Guide
    :maxdepth: 2
 
    configuration-overview
-   interfaces/index
-   system/index
+   interfaces/basic-index
+   system/basic-index
    image-mgmt
 
 
@@ -33,16 +33,17 @@ VyOS User Guide
    :name: advanced
    :maxdepth: 2
 
+   interfaces/advanced-index
    services/index
+   system/index
    firewall
    routing/index
    nat
    qos
    high-availability
    vpn/index
-   clustering
    load-balancing
-   commandscripting
+   command-scripting
    troubleshooting
 
 
@@ -89,3 +90,4 @@ Permission is granted to copy and distribute translations of this manual into
 another language, under the above conditions for modified versions, except that
 this permission notice may be stated in a translation approved by the VyOS
 maintainers.
+

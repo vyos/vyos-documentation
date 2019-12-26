@@ -1,32 +1,28 @@
-.. _proxy:
+.. _system_proxy:
 
+############
 System Proxy
-============
+############
 
 Some IT environments require the use of a proxy to connect to the Internet.
-The ``system proxy`` option sets the configuration for a proxy, and if necessary, supports `basic auth`_.
+Without this configuration VyOS updates could not be installed directly by
+using the :opcmd:`add system image` command (:ref:`update_vyos`).
 
-This example sets a proxy for all connections initiated by VyOS, including HTTP, HTTPS, and FTP (anonymous ftp).
+.. cfgcmd:: set system proxy url '<url>'
 
-.. code-block:: none
+   Set proxy for all connections initiated by VyOS, including HTTP, HTTPS, and
+   FTP (anonymous ftp).
 
-  set system proxy url http://10.100.100.1
-  set system proxy port 8080
+.. cfgcmd:: set system proxy port '<port>'
 
-  # If a username and password are required
-  set system proxy username vyosuser
-  set system proxy password vyosuser-password
+   Configure proxy port if it does not listen to the default port 80.
 
-That enables the update of a system image if the VyOS system operates behind a proxy.
+.. cfgcmd:: set system proxy username '<username>'
 
-.. code-block:: none
+   Some proxys require/support the "basic" HTTP authentication scheme as per
+   :rfc:`7617`, thus a username can be configured.
 
-  vyos@vyos:~$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
-  Trying to fetch ISO file from https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  1  413M    1 4479k    0     0   995k      0  0:07:04  0:00:04  0:07:00  995k
+.. cfgcmd:: set system proxy password '<password>'
 
-
-
-.. _`basic auth`: https://tools.ietf.org/html/rfc7617
+   Some proxys require/support the "basic" HTTP authentication scheme as per
+   :rfc:`7617`, thus a password can be configured.

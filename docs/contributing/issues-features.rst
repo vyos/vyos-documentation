@@ -3,6 +3,8 @@
 Issues/Feature requests
 =======================
 
+.. _bug_report:
+
 Bug Report/Issue
 ----------------
 Issues or bugs are found in any software project. VyOS is not an exception.
