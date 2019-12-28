@@ -4,14 +4,15 @@
 Flow Accounting
 ###############
 
-VyOS supports flow-accounting for both IPv4 and IPv6 traffic. The system acts as a
-flow exporter, and you are free to use it with any compatible collector.
+VyOS supports flow-accounting for both IPv4 and IPv6 traffic. The system acts
+as a flow exporter, and you are free to use it with any compatible collector.
 
-Flows can be exported via two different protocols: NetFlow (versions 5, 9 and 10/IPFIX) 
-and sFlow. Additionally, you may save flows to an in-memory table internally in a router.
+Flows can be exported via two different protocols: NetFlow (versions 5, 9 and
+10/IPFIX) and sFlow. Additionally, you may save flows to an in-memory table
+internally in a router.
 
 .. warning:: You need to disable the in-memory table in production environments!
-   Using :abbr:`IMT (In-Memory Table)` may lead to heavy CPU overloading and 
+   Using :abbr:`IMT (In-Memory Table)` may lead to heavy CPU overloading and
    unstable flow-accounting behavior.
 
 
@@ -31,8 +32,8 @@ NetFlow) consists of three main components:
 * **application**: analyzes received flow data in the context of intrusion
   detection or traffic profiling, for example
 
-For connectionless protocols as like ICMP and UDP, a flow is considered complete
-once no more packets for this flow appear after configurable timeout.
+For connectionless protocols as like ICMP and UDP, a flow is considered
+complete once no more packets for this flow appear after configurable timeout.
 
 NetFlow is usually enabled on a per-interface basis to limit load on the router
 components involved in NetFlow, or to limit the amount of NetFlow records
@@ -52,23 +53,24 @@ interface, the interface must be configured for flow accounting.
    You can configure multiple interfaces which whould participate in flow
    accounting.
 
-.. note:: Will be recorded only packets/flows on **incoming** directinon
-   in configured interfaces.
+.. note:: Will be recorded only packets/flows on **incoming** direction in
+   configured interfaces.
 
 
-By default, recorded flows will be saved internally and can be listed with the CLI
-command. You may disable using the local in-memory table with the command:
+By default, recorded flows will be saved internally and can be listed with the
+CLI command. You may disable using the local in-memory table with the command:
 
 .. cfgcmd:: set system flow-accounting disable-imt
 
-Internally, in flow-accounting processes exist a buffer for data exchanging between 
-core process and plugins (each export target is a separated plugin). If you have high 
-traffic levels or noted some problems with missed records or stopping exporting, you 
-may try to increase a default buffer size (10 MiB) with the next command:
+Internally, in flow-accounting processes exist a buffer for data exchanging
+between core process and plugins (each export target is a separated plugin). If
+you have high traffic levels or noted some problems with missed records or
+stopping exporting, you may try to increase a default buffer size (10 MiB) with
+the next command:
 
 .. cfgcmd:: set system flow-accounting buffer-size '<buffer size>'
 
-In case, if you need to catch some logs from flow-accounting daemon, you may 
+In case, if you need to catch some logs from flow-accounting daemon, you may
 configure logging facility:
 
 .. cfgcmd:: set system flow-accounting syslog-facility '<facility>'
@@ -123,19 +125,20 @@ NetFlow
    Specifies the interval at which Netflow data will be sent to a collector. As
    per default, Netflow data will be sent every 60 seconds.
 
-   You may also additionally configure timeouts for different types of connections.
+   You may also additionally configure timeouts for different types of
+   connections.
 
 .. cfgcmd:: set system flow-accounting netflow max-flows '<number>'
 
-   If you want to change the maximum number of flows, which are tracking simultaneously,
-   you may do this with this command (default 8192).
+   If you want to change the maximum number of flows, which are tracking
+   simultaneously, you may do this with this command (default 8192).
 
 sFlow
 ^^^^^
 .. cfgcmd:: set system flow-accounting sflow server '<address>'
 
    Configure address of sFlow collector. sFlow server at `<address>` can
-   be an IPv4 or IPv6 address. But you cannot export to both IPv4 and 
+   be an IPv4 or IPv6 address. But you cannot export to both IPv4 and
    IPv6 collectors at the same time!
 
 .. cfgcmd:: set system flow-accounting sflow sampling-rate '<rate>'
@@ -144,9 +147,9 @@ sFlow
 
 .. cfgcmd:: set system flow-accounting sflow agent-address '<address>'
 
-   Configure a sFlow agent address. It can be IPv4 or IPv6 address, but you must set 
-   the same protocol, which is used for sFlow collector addresses.
-   By default, using router-id from BGP or OSPF protocol, or the primary IP 
+   Configure a sFlow agent address. It can be IPv4 or IPv6 address, but you
+   must set the same protocol, which is used for sFlow collector addresses. By
+   default, using router-id from BGP or OSPF protocol, or the primary IP
    address from the first interface.
 
 Example:
@@ -182,8 +185,6 @@ display captured network traffic information for all configured interfaces.
      eth0        00:53:01:c8:33:af  ff:ff:ff:ff:ff:ff  192.0.2.3                 255.255.255.255        5678        5678  udp             0          1        1      154
      eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40006          22  tcp            16        146        1     9444
      eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14                0           0  icmp          192         27        1     4455
-
-
 
 .. opcmd:: show flow-accounting interface '<interface>' host '<address>'
 
