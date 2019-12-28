@@ -29,9 +29,10 @@ avoid to be tracked by the provider of your upstream DNS server.
 .. cfgcmd:: set service dns forwarding domain <domain-name> server <address>
 
    Forward received queries for a particular domain (specified via `domain-name`)
-   to a given name-server. Multiple nameservers can be specified.
+   to a given name-server. Multiple nameservers can be specified. You can use
+   this feature for a DNS split-horizon configuration.
 
-.. note:: This also works for reverse-lookup zones e.g. ``18.172.in-addr.arpa``.
+   .. note:: This also works for reverse-lookup zones (``18.172.in-addr.arpa``).
 
 .. cfgcmd:: set service dns forwarding allow-from <network>
 
@@ -71,8 +72,8 @@ avoid to be tracked by the provider of your upstream DNS server.
      as with process.
 
    * **validate** The highest mode of DNSSEC processing. In this mode, all
-     queries will be be validated and will be answered with a SERVFAIL in case
-     of bogus data, regardless of the client's request.
+     queries will be validated and will be answered with a SERVFAIL in case of
+     bogus data, regardless of the client's request.
 
    .. note:: The famous UNIX/Linux ``dig`` tool sets the AD-bit in the query.
       This might lead to unexpected query results when testing. Set ``+noad``
