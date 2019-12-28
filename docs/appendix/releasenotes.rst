@@ -6,6 +6,70 @@ Release notes
 1.2 (Crux)
 ==========
 
+1.2.4
+-----
+
+1.2.4 is a maintenance release made in December 2019.
+
+Resolved issues
+^^^^^^^^^^^^^^^
+
+* `T258 <https://phabricator.vyos.net/T258>`_ Can not configure wan load-balancing on vyos-1.2
+* `T818 <https://phabricator.vyos.net/T818>`_ SNMP v3 - remove required engineid from user node
+* `T1030 <https://phabricator.vyos.net/T1030>`_ Upgrade ddclient from 3.8.2 to 3.9.0 (support Cloudflare API v4)
+* `T1183 <https://phabricator.vyos.net/T1183>`_ BFD Support via FRR
+* `T1299 <https://phabricator.vyos.net/T1299>`_ Allow SNMPd to be extended with custom scripts
+* `T1351 <https://phabricator.vyos.net/T1351>`_ accel-pppoe adding CIDR based IP pool option
+* `T1391 <https://phabricator.vyos.net/T1391>`_ In route-map set community additive
+* `T1394 <https://phabricator.vyos.net/T1394>`_ syslog systemd and host_name.py race condition
+* `T1401 <https://phabricator.vyos.net/T1401>`_ Copying files with the FTP protocol fails if the password contains special characters
+* `T1421 <https://phabricator.vyos.net/T1421>`_ OpenVPN client push-route stopped working, needs added quotes to fix
+* `T1447 <https://phabricator.vyos.net/T1447>`_ Python subprocess called without import in host_name.py
+* `T1470 <https://phabricator.vyos.net/T1470>`_ improve output of "show dhcpv6 server leases"
+* `T1485 <https://phabricator.vyos.net/T1485>`_ Enable 'AdvIntervalOpt' option in for radvd.conf
+* `T1496 <https://phabricator.vyos.net/T1496>`_ Separate rolling release and LTS kernel builds
+* `T1560 <https://phabricator.vyos.net/T1560>`_ "set load-balancing wan rule 0" causes segfault and prevents load balancing from starting
+* `T1568 <https://phabricator.vyos.net/T1568>`_ strip-private command improvement for additional masking of IPv6 and MAC address
+* `T1578 <https://phabricator.vyos.net/T1578>`_ completion offers "show table", but show table does not exist
+* `T1593 <https://phabricator.vyos.net/T1593>`_ Support ip6gre
+* `T1597 <https://phabricator.vyos.net/T1597>`_ /usr/sbin/rsyslogd after deleting "system syslog"
+* `T1638 <https://phabricator.vyos.net/T1638>`_ vyos-hostsd not setting system domain name 
+* `T1678 <https://phabricator.vyos.net/T1678>`_ hostfile-update missing line feed
+* `T1694 <https://phabricator.vyos.net/T1694>`_ NTPd: Do not listen on all interfaces by default
+* `T1701 <https://phabricator.vyos.net/T1701>`_ Delete domain-name and domain-search won't work
+* `T1705 <https://phabricator.vyos.net/T1705>`_ High CPU usage by bgpd when snmp is active
+* `T1707 <https://phabricator.vyos.net/T1707>`_ DHCP static mapping and exclude address not working
+* `T1708 <https://phabricator.vyos.net/T1708>`_ Update Rolling Release Kernel to 4.19.76
+* `T1709 <https://phabricator.vyos.net/T1709>`_ Update WireGuard to 0.0.20190913
+* `T1716 <https://phabricator.vyos.net/T1716>`_ Update Intel NIC drivers to recent versions
+* `T1726 <https://phabricator.vyos.net/T1726>`_ Update Linux Firmware binaries to a more recent version 2019-03-14 -> 2019-10-07
+* `T1728 <https://phabricator.vyos.net/T1728>`_ Update Linux Kernel to 4.19.79
+* `T1737 <https://phabricator.vyos.net/T1737>`_ SNMP tab completion missing
+* `T1738 <https://phabricator.vyos.net/T1738>`_ Copy SNMP configuration from node to node raises exception
+* `T1740 <https://phabricator.vyos.net/T1740>`_ Broken OSPFv2 virtual-link authentication
+* `T1742 <https://phabricator.vyos.net/T1742>`_ NHRP unable to commit.
+* `T1745 <https://phabricator.vyos.net/T1745>`_ dhcp-server commit fails with "DHCP range stop address x must be greater or equal to the range start address y!" when static mapping has same IP as range stop
+* `T1749 <https://phabricator.vyos.net/T1749>`_ numeric validator doesn't support multiple ranges
+* `T1769 <https://phabricator.vyos.net/T1769>`_ Remove complex SNMPv3 Transport Security Model (TSM)
+* `T1772 <https://phabricator.vyos.net/T1772>`_ <regex> constraints in XML are partially broken
+* `T1778 <https://phabricator.vyos.net/T1778>`_ Kilobits/Megabits difference in configuration Vyos/FRR
+* `T1780 <https://phabricator.vyos.net/T1780>`_ Adding ipsec ike closeaction
+* `T1786 <https://phabricator.vyos.net/T1786>`_ disable-dhcp-nameservers is missed in current host_name.py implementation
+* `T1788 <https://phabricator.vyos.net/T1788>`_ Intel QAT (QuickAssist Technology ) implementation
+* `T1792 <https://phabricator.vyos.net/T1792>`_ Update WireGuard to Debian release 0.0.20191012-1
+* `T1800 <https://phabricator.vyos.net/T1800>`_ Update Linux Kernel to v4.19.84
+* `T1809 <https://phabricator.vyos.net/T1809>`_ Wireless: SSID scan does not work in AP mode
+* `T1811 <https://phabricator.vyos.net/T1811>`_ Upgrade from 1.1.8: Config file migration failed: module=l2tp
+* `T1812 <https://phabricator.vyos.net/T1812>`_ DHCP: hostnames of clients not resolving after update v1.2.3 -> 1.2-rolling 
+* `T1819 <https://phabricator.vyos.net/T1819>`_ Reboot kills SNMPv3 configuration
+* `T1822 <https://phabricator.vyos.net/T1822>`_ Priority inversion wireless interface dhcpv6
+* `T1836 <https://phabricator.vyos.net/T1836>`_ import-conf-mode-commands in vyos-1x/scripts fails to create an xml
+* `T1839 <https://phabricator.vyos.net/T1839>`_ LLDP shows "VyOS unknown" instead of "VyOS"
+* `T1841 <https://phabricator.vyos.net/T1841>`_ PPP ipv6-up.d direcotry missing
+* `T1893 <https://phabricator.vyos.net/T1893>`_ igmp-proxy: Do not allow adding unknown interface
+* `T1904 <https://phabricator.vyos.net/T1904>`_ update eth1 and eth2 link files for the vep4600
+
+
 1.2.3
 -----
 
