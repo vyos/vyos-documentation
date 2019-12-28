@@ -422,20 +422,36 @@ When the number of revisions exceeds that number, the oldest revision is
 removed.
 
 Remote archive
-^^^^^^^^^^^^^^
+--------------
 
-VyOS can copy the config to a remote location after each commit. TFTP, FTP,
-and SFTP servers are supported.
+VyOS can copy the config to a remote location after each commit.
+TFTP, FTP, SFTP and SCP servers are supported.
 
-You can specify the location with:
+Use ``set system config-management commit-archive location``
+followed by your chosen protocol and required data
+as indicated by VyOS CLI:
 
-* ``set system config-management commit-archive location URL``
+.. code-block:: none
 
-For example, ``set system config-management commit-archive location tftp://10.0.0.1/vyos``.
+  vyos@vyos# set system config-management commit-archive location 
+  Possible completions:
+     <uri>        Uniform Resource Identifier
+  
+  Detailed information:
+    
+      "scp://<user>:<passwd>@<host>/<dir>"
+      "sftp://<user>:<passwd>@<host>/<dir>"
+      "ftp://<user>:<passwd>@<host>/<dir>"
+      "tftp://<host>/<dir>"
 
-You can specify the location with ``set system config-management commit-archive
-location URL`` command, e.g. ``set system config-management commit-archive
-location tftp://10.0.0.1/vyos``.
+.. note:: If you are not using the default port, add a colon after the host address followed by the port number.
+
+Examples
+^^^^^^^^
+
+``set system config-management commit-archive location tftp://10.0.0.1/directory``
+
+``set system config-management commit-archive location sftp://myusername:mypassword@198.41.100.3:8952/thedirectory``
 
 Restore Default
 ===============
