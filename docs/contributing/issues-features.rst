@@ -51,9 +51,10 @@ also contain information that is helpful for the development team.
 Report a Bug
 ************
 
-Create an account on VyOS Phabricator_. Phabricator_ is located at
-https://phabricator.vyos.net. To create a bug-report use the quick link in the
-left side under the specific project.
+In order to open up a bug-report/feature request you need to create yourself
+an account on VyOS Phabricator_. On the left side of the specific project (VyOS
+1.2 or VyOS 1.3) you will find quick-links for opening a bug-report/feature
+request.
 
 * Provide as much information as you can
 * Which version of VyOS are you using? ``run show version``
@@ -71,4 +72,5 @@ the left side under the specific project.
 .. _documentation: https://docs.vyos.io
 .. _Slack: https://slack.vyos.io
 .. _Forum: https://forum.vyos.io
-.. _Phabricator: https://phabricator.vyos.net
+
+.. include:: ../common-references.rst

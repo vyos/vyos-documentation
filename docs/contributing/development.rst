@@ -695,10 +695,11 @@ http://dev.packages.vyos.net/repositories/.
 .. _VyConf: https://github.com/vyos/vyconf/tree/master/data/schemata
 .. _vyos-1x: https://github.com/vyos/vyos-1x/tree/current/schema
 .. _Jinja2: https://jinja.palletsprojects.com/
-.. _Phabricator: https://phabricator.vyos.net/
 .. _Jenkins: https://jenkins.io/
 .. _Dockerhub: https://hub.docker.com/u/vyos/
 .. _`IPv4, IPv6 and DHCP(v6)`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/address-ipv4-ipv6-dhcp.xml.i
 .. _`IPv4, IPv6`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/address-ipv4-ipv6.xml.i
 .. _`VLAN (VIF)`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/vif.xml.i
 .. _`MAC address`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/interface-mac.xml.i
+
+.. include:: ../common-references.rst

@@ -171,5 +171,6 @@ be added below this statement.
 
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
-.. _Phabricator: https://phabricator.vyos.net
 .. _README.md: https://github.com/vyos/vyos-documentation/blob/master/README.md
+
+.. include:: ../common-references.rst
