@@ -12,7 +12,7 @@ span.cfgcmd {
 
 .opcmd-heading,
 .cfgcmd-heading {
-    display: block;
+    display: inline-block;
     margin: 6px 0;
     font-size: 90%;
     line-height: normal;
@@ -32,8 +32,24 @@ span.cfgcmd {
 }
 
 
+
+.cfgcmd-heading .cmdlink:after,
+.opcmd-heading .cmdlink:after {
+    content: "";
+    font-family: FontAwesome
+}
+
+
+.cfgcmd-heading:not(:hover) .cmdlink,
+.opcmd-heading:not(:hover) .cmdlink {
+    display: none;
+}
+
+
+
 a.cmdlink {
     font-size: 80%;
+    margin-left: 6px;
 }
 
 .wy-nav-content {

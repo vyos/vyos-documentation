@@ -11,19 +11,28 @@ def setup(app):
         'https://phabricator.vyos.net/', ''
     )
     app.add_role('vytask', vytask_role)
+    app.add_role('cfgcmd', cmd_role)
+    app.add_role('opcmd', cmd_role)
 
     print(app.config.vyos_phabricator_url)
 
     app.add_node(
+        inlinecmd,
+        html=(inlinecmd.visit_span, inlinecmd.depart_span),
+        latex=(inlinecmd.tex, inlinecmd.tex),
+        text=(inlinecmd.visit_span, inlinecmd.depart_span)
+    )
+
+    app.add_node(
         CmdDiv,
         html=(CmdDiv.visit_div, CmdDiv.depart_div),
-        latex=(CmdDiv.visit_div, CmdDiv.depart_div),
+        latex=(CmdDiv.tex, CmdDiv.tex),
         text=(CmdDiv.visit_div, CmdDiv.depart_div)
     )
     app.add_node(
         CmdHeader,
         html=(CmdHeader.visit_div, CmdHeader.depart_div),
-        latex=(CmdHeader.visit_div, CmdHeader.depart_div),
+        latex=(CmdHeader.tex, CmdHeader.tex),
         text=(CmdHeader.visit_div, CmdHeader.depart_div)
     )
     app.add_node(CfgcmdList)
@@ -44,6 +53,7 @@ class CfgcmdList(nodes.General, nodes.Element):
 class OpcmdList(nodes.General, nodes.Element):
     pass
 
+import json
 
 class CmdHeader(nodes.General, nodes.Element):
 
@@ -53,7 +63,15 @@ class CmdHeader(nodes.General, nodes.Element):
 
     @staticmethod
     def depart_div(self, node=None):
-        self.body.append('</div>\n')
+        # self.body.append('</div>\n')
+        self.body.append('<a class="cmdlink" href="#%s" ' %
+                        node.children[0]['refid'] +
+                        'title="%s"></a></div>' % (
+                        'Permalink to this Command'))
+
+    @staticmethod
+    def tex(self, node=None):
+        pass
 
 
 class CmdDiv(nodes.General, nodes.Element):
@@ -65,6 +83,31 @@ class CmdDiv(nodes.General, nodes.Element):
     @staticmethod
     def depart_div(self, node=None):
         self.body.append('</div>\n')
+
+    @staticmethod
+    def tex(self, node=None):
+        pass
+
+
+class inlinecmd(nodes.inline):
+
+    @staticmethod
+    def visit_span(self, node):
+        self.body.append(self.starttag(node, 'span'))
+
+    @staticmethod
+    def depart_span(self, node=None):
+        self.body.append('</span>\n')
+
+    @staticmethod
+    def tex(self, node=None):
+        print('=====================')
+        #print(json.dumps(dir(self)))
+        print('---------------------')
+        print((self.visit_inline))
+        exit()
+        #self.body.append('\\chapter')
+        pass
 
 
 class CfgcmdlistDirective(Directive):
@@ -114,7 +157,7 @@ class CmdDirective(SphinxDirective):
         title_nodes, messages = self.state.inline_text(title_text,
                                                        self.lineno)
 
-        title = nodes.inline(title_text, '', *title_nodes)
+        title = inlinecmd(title_text, '', *title_nodes)
         target['classes'] += []
         title['classes'] += [cfgmode]
         heading_element.append(target)
@@ -201,4 +244,9 @@ def vytask_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     set_classes(options)
     node = nodes.reference(
         rawtext, utils.unescape(str(text)), refuri=ref, **options)
+    return [node], []
+
+
+def cmd_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+    node = nodes.literal(text, text)
     return [node], []
