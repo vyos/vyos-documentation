@@ -16,6 +16,8 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+from docutils import nodes, utils
+from docutils.parsers.rst.roles import set_classes
 
 # -- Project information -----------------------------------------------------
 
@@ -169,6 +171,22 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+
+def vytask_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+    app = inliner.document.settings.env.app
+    base = app.config.vyos_phabricator_url
+    ref = base + str(text)
+    set_classes(options)
+    node = nodes.reference(
+        rawtext, utils.unescape(str(text)), refuri=ref, **options)
+    return [node], []
+
+
 def setup(app):
+    app.add_config_value(
+        'vyos_phabricator_url',
+        'https://phabricator.vyos.net/', ''
+    )
+    app.add_role('vytask', vytask_role)
     app.add_object_type('opcmd', 'opcmd')
     app.add_object_type('cfgcmd', 'cfgcmd')
