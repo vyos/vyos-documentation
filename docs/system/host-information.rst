@@ -44,7 +44,7 @@ unqualified name of `crux`, then VyOS qualifies the name to `crux.example.com`.
 Static Hostname Mapping
 =======================
 
-How an IP address is assigned to an interface in :ref:`interfaces-addresses`.
+How an IP address is assigned to an interface in :ref:`ethernet-interface`.
 This section shows how to statically map an IP address to a hostname for local
 (meaning on this VyOS instance) name resolution.
 
