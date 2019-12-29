@@ -34,8 +34,8 @@ Once your configuration works as expected you can save it permanently.
 
   save
 
-Network Interface Configuration
-###############################
+Interface Configuration
+#######################
 
 * Your outside/WAN interface will be `eth0`, it receives it's interface address
   be means of DHCP.
@@ -52,7 +52,8 @@ commands:
   set interfaces ethernet eth1 address '192.168.0.1/24'
   set interfaces ethernet eth1 description 'INSIDE'
 
-Enable Management via SSH
+
+Enable SSH Management SSH
 #########################
 
 After switching to :ref:`quick-start-configuration-mode` issue the following
@@ -65,8 +66,8 @@ on specific addresses only.
   set service ssh port '22'
 
 
-Configure DHCP and DNS server
-#############################
+Configure DHCP/DNS Servers
+##########################
 
 * Provide DHCP service on your internal/LAN network where VyOS will act
   as the default gateway and DNS server.
@@ -90,6 +91,7 @@ Configure DHCP and DNS server
   set service dns forwarding listen-address '192.168.0.1'
   set service dns forwarding allow-from '192.168.0.0/24'
 
+
 NAT
 ###
 
@@ -100,6 +102,7 @@ NAT
   set nat source rule 100 outbound-interface 'eth0'
   set nat source rule 100 source address '192.168.0.0/24'
   set nat source rule 100 translation address masquerade
+
 
 Firewall
 ########
@@ -163,9 +166,9 @@ Commit changes, save the configuration, and exit configuration mode:
   vyos@vyos# exit
   vyos@vyos$
 
+
 QoS
 ###
-
 
 One common use of :ref:`qos` is to limit bandwidth for an interface. In
 the example below we limit bandwidth for our internal/LAN connection to 200
@@ -190,6 +193,7 @@ interface-level traffic-policy directive:
 
   set interfaces ethernet eth0 traffic-policy out 'WAN-OUT'
   set interfaces ethernet eth1 traffic-policy out 'LAN-OUT'
+
 
 Security Hardening
 ##################
