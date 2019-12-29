@@ -486,7 +486,7 @@ GNU Preprocessor
 ----------------
 
 XML interface definition files use the `xml.in` file extension which was
-implemented in T1843_. XML interface definitions tend to have a lot of
+implemented in :vytask:`T1843`. XML interface definitions tend to have a lot of
 duplicated code in areas such as:
 
 * VIF (incl. VIF-S/VIF-C)
@@ -698,7 +698,6 @@ http://dev.packages.vyos.net/repositories/.
 .. _Phabricator: https://phabricator.vyos.net/
 .. _Jenkins: https://jenkins.io/
 .. _Dockerhub: https://hub.docker.com/u/vyos/
-.. _T1843: https://phabricator.vyos.net/T1843
 .. _`IPv4, IPv6 and DHCP(v6)`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/address-ipv4-ipv6-dhcp.xml.i
 .. _`IPv4, IPv6`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/address-ipv4-ipv6.xml.i
 .. _`VLAN (VIF)`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/vif.xml.i
