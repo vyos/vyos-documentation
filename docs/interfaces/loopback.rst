@@ -21,9 +21,8 @@ Address
 .. cfgcmd:: set interfaces loopback lo address <address>
 
    Configure Loopback interface `lo` with one or more interface addresses.
-
-   * **address** can be specified multiple times as IPv4 and/or IPv6 address,
-     e.g. 192.0.2.1/24 and/or 2001:db8::1/64
+   Address can be specified multiple times as IPv4 and/or IPv6 address, e.g.
+   192.0.2.1/24 and/or 2001:db8::1/64.
 
 Link Administration
 -------------------
