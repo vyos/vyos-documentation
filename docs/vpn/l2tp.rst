@@ -19,7 +19,6 @@ with native Windows and Mac VPN clients):
   set vpn ipsec nat-networks allowed-network 0.0.0.0/0
 
   set vpn l2tp remote-access outside-address 192.0.2.2
-  set vpn l2tp remote-access outside-nexthop 192.168.255.1
   set vpn l2tp remote-access client-ip-pool start 192.168.255.2
   set vpn l2tp remote-access client-ip-pool stop 192.168.255.254
   set vpn l2tp remote-access ipsec-settings authentication mode pre-shared-secret
@@ -27,8 +26,7 @@ with native Windows and Mac VPN clients):
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
-In the example above an external IP of 192.0.2.2 is assumed. Nexthop IP address
-192.168.255.1 uses as client tunnel termination point.
+In the example above an external IP of 192.0.2.2 is assumed.
 
 If a local firewall policy is in place on your external interface you will need
 to allow the ports below:
@@ -100,7 +98,6 @@ Below is an example to configure a LNS:
 .. code-block:: none
 
   set vpn l2tp remote-access outside-address 192.0.2.2
-  set vpn l2tp remote-access outside-nexthop 192.168.255.1
   set vpn l2tp remote-access client-ip-pool start 192.168.255.2
   set vpn l2tp remote-access client-ip-pool stop 192.168.255.254
   set vpn l2tp remote-access lns shared-secret 'secret'
@@ -108,8 +105,7 @@ Below is an example to configure a LNS:
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
-The example above uses 192.0.2.2 as external IP address, the nexthop is supposed
-to be 192.168.255.1 and is used as client termination point. A LAC normally
+The example above uses 192.0.2.2 as external IP address. A LAC normally
 requires an authentication password, which is set in the example configuration
 to ``lns shared-secret 'secret'``. This setup requires the Compression Control
 Protocol (CCP) being disabled, the command ``set vpn l2tp remote-access ccp-disable``
@@ -129,7 +125,6 @@ The rate-limit is set in kbit/sec.
 .. code-block:: none
 
   set vpn l2tp remote-access outside-address 192.0.2.2
-  set vpn l2tp remote-access outside-nexthop 192.168.255.1
   set vpn l2tp remote-access client-ip-pool start 192.168.255.2
   set vpn l2tp remote-access client-ip-pool stop 192.168.255.254
   set vpn l2tp remote-access authentication mode local
