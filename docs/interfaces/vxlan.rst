@@ -1,7 +1,8 @@
 .. _vxlan-interface:
 
+#####
 VXLAN
------
+#####
 
 :abbr:`VXLAN (Virtual Extensible LAN)` is a network virtualization technology
 that attempts to address the scalability problems associated with large cloud
@@ -33,7 +34,7 @@ may be blocked by the hypervisor.
    per VXLAN interface basis to get it working accross multiple vendors.
 
 Multicast VXLAN
-^^^^^^^^^^^^^^^^
+===============
 
 Example Topology:
 
@@ -65,8 +66,8 @@ For optimal scalability Multicast shouldn't be used at all, but instead use BGP
 to signal all connected devices between leafs. Unfortunately, VyOS does not yet
 support this.
 
-Configuration commands
-^^^^^^^^^^^^^^^^^^^^^^
+Configuration
+=============
 
 .. code-block:: none
 
@@ -83,8 +84,8 @@ Configuration commands
       remote           # Remote address of the VXLAN tunnel, used for PTP instead of multicast
       vni <1-16777215> # Virtual Network Identifier (required)
 
-Configuration Example
-^^^^^^^^^^^^^^^^^^^^^
+Example
+-------
 
 The setup is this:
 
@@ -239,7 +240,7 @@ configuration directive to support a user-specified destination port to override
 that behavior is available using the above command.
 
 Older Examples
-^^^^^^^^^^^^^^
+--------------
 
 Example for bridging normal L2 segment and vxlan overlay network, and using a
 vxlan interface as routing interface.
@@ -304,7 +305,7 @@ gateway. You can add an IP to a bridge to create a gateway.
   }
 
 Unicast VXLAN
-^^^^^^^^^^^^^
+=============
 
 Alternative to multicast, the remote IPv4 address of the VXLAN tunnel can set directly.
 Let's change the Multicast example from above:
