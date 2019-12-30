@@ -16,7 +16,7 @@ Configuration
 Address
 -------
 
-.. cfgcmd:: set interfaces dummy '<interface>' address <address | dhcp | dhcpv6>
+.. cfgcmd:: set interfaces dummy <interface> address <address | dhcp | dhcpv6>
 
    Configure dummy interface `<interface>` with one or more interface
    addresses.
@@ -40,12 +40,12 @@ Address
 Link Administration
 -------------------
 
-.. cfgcmd:: set interfaces dummy '<interface>' description '<description>'
+.. cfgcmd:: set interfaces dummy <interface> description <description>
 
    Assign given `<description>` to interface. Description will also be passed
    to SNMP monitoring systems.
 
-.. cfgcmd:: set interfaces dummy '<interface>' disable
+.. cfgcmd:: set interfaces dummy <interface> disable
 
    Disable given `<interface>`. It will be placed in administratively down
    state.
@@ -65,7 +65,7 @@ Operation
      ---------        ----------                        ---  -----------
      dum0             172.18.254.201/32                 u/u
 
-.. opcmd:: show interfaces dummy '<interface>'
+.. opcmd:: show interfaces dummy <interface>
 
    Show detailed information on given `<interface>`
 

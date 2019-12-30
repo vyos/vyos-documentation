@@ -45,7 +45,7 @@ Configururation
 In order for flow accounting information to be collected and displayed for an
 interface, the interface must be configured for flow accounting.
 
-.. cfgcmd:: set system flow-accounting interface '<interface>'
+.. cfgcmd:: set system flow-accounting interface <interface>
 
    Configure and enable collection of flow information for the interface
    identified by `<interface>`.
@@ -68,12 +68,12 @@ you have high traffic levels or noted some problems with missed records or
 stopping exporting, you may try to increase a default buffer size (10 MiB) with
 the next command:
 
-.. cfgcmd:: set system flow-accounting buffer-size '<buffer size>'
+.. cfgcmd:: set system flow-accounting buffer-size <buffer size>
 
 In case, if you need to catch some logs from flow-accounting daemon, you may
 configure logging facility:
 
-.. cfgcmd:: set system flow-accounting syslog-facility '<facility>'
+.. cfgcmd:: set system flow-accounting syslog-facility <facility>
 
 
 Flow Export
@@ -85,7 +85,7 @@ exported them to a collection server.
 NetFlow
 ^^^^^^^
 
-.. cfgcmd:: set system flow-accounting netflow version '<version>'
+.. cfgcmd:: set system flow-accounting netflow version <version>
 
    There are multiple versions available for the NetFlow data. The `<version>`
    used in the exported flow data can be configured here. The following
@@ -95,20 +95,20 @@ NetFlow
    * **9** - NetFlow version 9 (default)
    * **10** - :abbr:`IPFIX (IP Flow Information Export)` as per :rfc:`3917`
 
-.. cfgcmd:: set system flow-accounting netflow server '<address>'
+.. cfgcmd:: set system flow-accounting netflow server <address>
 
    Configure address of NetFlow collector. NetFlow server at `<address>` can
    be both listening on an IPv4 or IPv6 address.
 
-.. cfgcmd:: set system flow-accounting netflow source-ip '<address>'
+.. cfgcmd:: set system flow-accounting netflow source-ip <address>
 
    IPv4 or IPv6 source address of NetFlow packets
 
-.. cfgcmd:: set system flow-accounting netflow engine-id '<id>'
+.. cfgcmd:: set system flow-accounting netflow engine-id <id>
 
    NetFlow engine-id which will appear in NetFlow data. The range is 0 to 255.
 
-.. cfgcmd:: set system flow-accounting netflow sampling-rate '<rate>'
+.. cfgcmd:: set system flow-accounting netflow sampling-rate <rate>
 
    Use this command to configure the  sampling rate for flow accounting. The
    system samples one in every `<rate>` packets, where `<rate>` is the value
@@ -120,7 +120,7 @@ NetFlow
 
    Per default every packet is sampled (that is, the sampling rate is 1).
 
-.. cfgcmd:: set system flow-accounting netflow timeout expiry interval '<interval>'
+.. cfgcmd:: set system flow-accounting netflow timeout expiry interval <interval>
 
    Specifies the interval at which Netflow data will be sent to a collector. As
    per default, Netflow data will be sent every 60 seconds.
@@ -128,24 +128,24 @@ NetFlow
    You may also additionally configure timeouts for different types of
    connections.
 
-.. cfgcmd:: set system flow-accounting netflow max-flows '<number>'
+.. cfgcmd:: set system flow-accounting netflow max-flows <n>
 
    If you want to change the maximum number of flows, which are tracking
    simultaneously, you may do this with this command (default 8192).
 
 sFlow
 ^^^^^
-.. cfgcmd:: set system flow-accounting sflow server '<address>'
+.. cfgcmd:: set system flow-accounting sflow server <address>
 
    Configure address of sFlow collector. sFlow server at `<address>` can
    be an IPv4 or IPv6 address. But you cannot export to both IPv4 and
    IPv6 collectors at the same time!
 
-.. cfgcmd:: set system flow-accounting sflow sampling-rate '<rate>'
+.. cfgcmd:: set system flow-accounting sflow sampling-rate <rate>
 
    Enable sampling of packets, which will be transmitted to sFlow collectors.
 
-.. cfgcmd:: set system flow-accounting sflow agent-address '<address>'
+.. cfgcmd:: set system flow-accounting sflow agent-address <address>
 
    Configure a sFlow agent address. It can be IPv4 or IPv6 address, but you
    must set the same protocol, which is used for sFlow collector addresses. By
@@ -169,7 +169,7 @@ Operation
 Once flow accounting is configured on an interfaces it provides the ability to
 display captured network traffic information for all configured interfaces.
 
-.. opcmd:: show flow-accounting interface '<interface>'
+.. opcmd:: show flow-accounting interface <interface>
 
    Show flow accounting information for given `<interface>`.
 
@@ -186,7 +186,7 @@ display captured network traffic information for all configured interfaces.
      eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40006          22  tcp            16        146        1     9444
      eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14                0           0  icmp          192         27        1     4455
 
-.. opcmd:: show flow-accounting interface '<interface>' host '<address>'
+.. opcmd:: show flow-accounting interface <interface> host <address>
 
    Show flow accounting information for given `<interface>` for a specific host
    only.

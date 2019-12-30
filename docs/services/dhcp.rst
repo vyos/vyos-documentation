@@ -146,23 +146,23 @@ inside the subnet definition but can be outside of the range statement.
 DHCP Options
 ------------
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 default-router '<address>'
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet 192.0.2.0/24 default-router <address>
 
    Specify the default routers IPv4 address which should be used in this subnet.
    This can - of course - be a VRRP address (DHCP option 003).
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 dns-server '<address>'
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet 192.0.2.0/24 dns-server <address>
 
    Specify the DNS nameservers used (Option 006). This option may be used
    mulltiple times to specify additional DNS nameservers.
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 domain-name '<domain-name>'
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet 192.0.2.0/24 domain-name <domain-name>
 
    The domain-name parameter should be the domain name that will be appended to
    the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
    Option 015).
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 domain-search '<domain-name>'
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet 192.0.2.0/24 domain-search <domain-name>
 
    The domain-name parameter should be the domain name used when completing DNS
    request where no full FQDN is passed. This option can be given multiple times
@@ -401,41 +401,41 @@ Configuration Options
    Clients receiving advertise messages from multiple servers choose the server
    with the highest preference value. The range for this value is ``0...255``.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' lease-time {default | maximum | minimum}
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> lease-time {default | maximum | minimum}
 
    The default lease time for DHCPv6 leases is 24 hours. This can be changed by
    supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All
    values need to be supplied in seconds.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nis-domain '<domain-name>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nis-domain <domain-name>
 
    A :abbr:`NIS (Network Information Service)` domain can be set to be used for
    DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nisplus-domain '<domain-name>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nisplus-domain <domain-name>
 
    The procedure to specify a :abbr:`NIS+ (Network Information Service Plus)`
    domain is similar to the NIS domain one:
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nis-server '<address>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nis-server <address>
 
    Specify a NIS server address for DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nisplus-server '<address>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nisplus-server <address>
 
    Specify a NIS+ server address for DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' sip-server-address '<address>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sip-server-address <address>
 
    Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6 address
    for all DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' sip-server-name '<fqdn>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sip-server-name <fqdn>
 
    Specify a :abbr:`SIP (Session Initiation Protocol)` server by FQDN for all
    DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' sntp-server-address '<address>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sntp-server-address <address>
 
    A SNTP server address can be specified for DHCPv6 clients.
 
@@ -570,7 +570,7 @@ https://wiki.vyos.net/wiki/Network_address_setup.
 Configuration
 -------------
 
-.. cfgcmd:: set service dhcp-relay interface '<interface>'
+.. cfgcmd:: set service dhcp-relay interface <interface>
 
    Enable the DHCP relay service on the given interface.
 

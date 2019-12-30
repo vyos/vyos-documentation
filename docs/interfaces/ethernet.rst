@@ -10,7 +10,7 @@ Configuration
 Address
 -------
 
-.. cfgcmd:: set interfaces ethernet '<interface>' address <address | dhcp | dhcpv6>
+.. cfgcmd:: set interfaces ethernet <interface> address <address | dhcp | dhcpv6>
 
    Configure ethernet interface `<interface>` with one or more interface
    addresses.
@@ -31,7 +31,7 @@ Address
      set interfaces ethernet eth0 address 2001:db8::ffff/64
      set interfaces ethernet eth0 address 2001:db8:100::ffff/64
 
-.. cfgcmd:: set interfaces ethernet '<interface>' ipv6 address autoconf
+.. cfgcmd:: set interfaces ethernet <interface> ipv6 address autoconf
 
    :abbr:`SLAAC (Stateless Address Autoconfiguration)`
    :rfc:`4862`. IPv6 hosts can configure themselves automatically when connected
@@ -45,7 +45,7 @@ Address
    .. note:: This method automatically disables IPv6 traffic forwarding on the
       interface in question.
 
-.. cfgcmd:: set interfaces ethernet '<interface>' ipv6 address eui64 '<prefix>'
+.. cfgcmd:: set interfaces ethernet <interface> ipv6 address eui64 <prefix>
 
    :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in
    :rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address.
@@ -57,7 +57,7 @@ Address
 Speed/Duplex
 ------------
 
-.. cfgcmd:: set interfaces ethernet '<interface>' duplex <auto | full | half>
+.. cfgcmd:: set interfaces ethernet <interface> duplex <auto | full | half>
 
    Configure physical interface duplex setting.
 
@@ -67,7 +67,7 @@ Speed/Duplex
 
    VyOS default will be `auto`.
 
-.. cfgcmd:: set interfaces ethernet '<interface>' speed <auto | 10 | 100 | 1000 | 2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000>
+.. cfgcmd:: set interfaces ethernet <interface> speed <auto | 10 | 100 | 1000 | 2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000>
 
    Configure physical interface speed setting.
 
@@ -88,27 +88,27 @@ Speed/Duplex
 Link Administration
 -------------------
 
-.. cfgcmd:: set interfaces ethernet '<interface>' description '<description>'
+.. cfgcmd:: set interfaces ethernet <interface> description <description>
 
    Assign given `<description>` to interface. Description will also be passed
    to SNMP monitoring systems.
 
-.. cfgcmd:: set interfaces ethernet '<interface>' disable
+.. cfgcmd:: set interfaces ethernet <interface> disable
 
    Disable given `<interface>`. It will be placed in administratively down
    state.
 
-.. cfgcmd:: set interfaces ethernet '<interface>' disable-flow-control
+.. cfgcmd:: set interfaces ethernet <interface> disable-flow-control
 
    Disable Ethernet flow control (pause frames).
 
 
-.. cfgcmd:: set interfaces ethernet '<interface>' mac '<mac-address>'
+.. cfgcmd:: set interfaces ethernet <interface> mac <mac-address>
 
    Configure user defined :abbr:`MAC (Media Access Control)` address on given
    `<interface>`.
 
-.. cfgcmd:: set interfaces ethernet '<interface>' mtu '<mtu>'
+.. cfgcmd:: set interfaces ethernet <interface> mtu <mtu>
 
    Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It
    is the size (in bytes) of the largest ethernet frame sent on this link.
@@ -119,11 +119,11 @@ Router Advertisements
 Router advertisements are described in :rfc:`4861#section-4.6.2`. They are part
 of what is known as :abbr:`SLAAC (Stateless Address Autoconfiguration)`.
 
-.. cfgcmd:: set interfaces ethernet '<interface>' ipv6 router-advert send-advert <true | false>
+.. cfgcmd:: set interfaces ethernet <interface> ipv6 router-advert send-advert <true | false>
 
    Enable or disable router advertisements in this `<interface>`.
 
-.. cfgcmd:: set interfaces ethernet '<interface>' ipv6 router-advert prefix '<prefix>'
+.. cfgcmd:: set interfaces ethernet <interface> ipv6 router-advert prefix <prefix>
 
    Prefix information is described in :rfc:`4861#section-4.6.2`.
 
@@ -144,7 +144,7 @@ Operation
      eth1             172.18.202.11/24                  u/u  WAN
      eth2             -                                 u/D
 
-.. opcmd:: show interfaces ethernet '<interface>'
+.. opcmd:: show interfaces ethernet <interface>
 
    Show detailed information on given `<interface>`
 
@@ -161,7 +161,7 @@ Operation
          TX:  bytes    packets     errors    dropped    carrier collisions
             5601460      62595          0          0          0          0
 
-.. opcmd:: show interfaces ethernet '<interface>' physical
+.. opcmd:: show interfaces ethernet <interface> physical
 
    Show information about physical `<interface>`
 
@@ -200,7 +200,7 @@ Operation
      supports-register-dump: yes
      supports-priv-flags: no
 
-.. opcmd:: show interfaces ethernet '<interface>' transceiver
+.. opcmd:: show interfaces ethernet <interface> transceiver
 
    Show transceiver information from plugin modules, e.g SFP+, QSFP
 

@@ -30,17 +30,17 @@ and integrity of data over an unsecured network, such as the Internet.
 Configuration
 =============
 
-.. cfgcmd:: set service ssh port '<number>'
+.. cfgcmd:: set service ssh port <port>
 
-Enabling SSH only requires you to specify the port ``<number>`` you want SSH to
+Enabling SSH only requires you to specify the port ``<port>`` you want SSH to
 listen on. By default, SSH runs on port 22.
 
-.. cfgcmd:: set service ssh listen-address '<address>'
+.. cfgcmd:: set service ssh listen-address <address>
 
 Specify IPv4/IPv6 listen address of SSH server. Multiple addresses can be
 defined.
 
-.. cfgcmd:: set service ssh ciphers '<cipher>'
+.. cfgcmd:: set service ssh ciphers <cipher>
 
 Define allowed ciphers used for the SSH connection. A number of allowed ciphers
 can be specified, use multiple occurrences to allow multiple ciphers.
@@ -71,7 +71,7 @@ security!
 Disable the host validation through reverse DNS lookups - can speedup login
 time when reverse lookup is not possible.
 
-.. cfgcmd:: set service ssh macs '<mac>'
+.. cfgcmd:: set service ssh macs <mac>
 
 Specifies the available :abbr:`MAC (Message Authentication Code)` algorithms.
 The MAC algorithm is used in protocol version 2 for data integrity protection.

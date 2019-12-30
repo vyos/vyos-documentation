@@ -109,7 +109,7 @@ added through a collection of :cfgcmd:`set` and :cfgcmd:`delete` commands.
      set service ssh port '22'
      set system config-management commit-revisions '20'
      set system console device ttyS0 speed '9600'
-     set system login user vyos authentication encrypted-password '<removed>'
+     set system login user vyos authentication encrypted-password '$6$Vt68...QzF0'
      set system login user vyos level 'admin'
      set system ntp server '0.pool.ntp.org'
      set system ntp server '1.pool.ntp.org'

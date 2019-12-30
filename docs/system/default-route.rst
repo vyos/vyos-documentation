@@ -5,13 +5,13 @@ Default Gateway/Route
 #####################
 
 In the past (VyOS 1.1) used a gateway-address configured under the system tree
-(:cfgcmd:`set system gateway-address '<address>'`), this is no longer supported
+(:cfgcmd:`set system gateway-address <address>`), this is no longer supported
 and existing configurations are migrated to the new CLI command.
 
 Configuration
 =============
 
-.. cfgcmd:: set protocols static route 0.0.0.0/0 next-hop '<address>'
+.. cfgcmd:: set protocols static route 0.0.0.0/0 next-hop <address>
 
    Specify static route into the routing table sending all non local traffic
    to the nexthop address `<address>`.

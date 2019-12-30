@@ -22,7 +22,7 @@ files.
    content on image upgrades. Any directory under ``/config`` is save at this
    will be migrated.
 
-.. cfgcmd:: set service tftp-server listen-address '<address>'
+.. cfgcmd:: set service tftp-server listen-address <address>
 
 Configure the IPv4 or IPv6 listen address of the TFTP server. Multiple IPv4 and
 IPv6 addresses can be given. There will be one TFTP server instances listening

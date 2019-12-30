@@ -17,7 +17,7 @@ Configuration
   set interfaces tunnel tun100 multicast 'enable'
   set interfaces tunnel tun100 parameters ip key '1'
 
-  set protocols nhrp tunnel tun100 cisco-authentication '<nhrp secret key>'
+  set protocols nhrp tunnel tun100 cisco-authentication <secret>
   set protocols nhrp tunnel tun100 holding-time '300'
   set protocols nhrp tunnel tun100 multicast 'dynamic'
   set protocols nhrp tunnel tun100 redirect
@@ -43,7 +43,7 @@ Configuration
   set vpn ipsec ipsec-interfaces interface 'eth0'
 
   set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
-  set vpn ipsec profile NHRPVPN authentication pre-shared-secret '<secretkey>'
+  set vpn ipsec profile NHRPVPN authentication pre-shared-secret <secret>
   set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
   set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
   set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
