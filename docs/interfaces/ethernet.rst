@@ -96,7 +96,7 @@ Link Administration
 .. cfgcmd:: set interfaces ethernet <interface> disable
 
    Disable given `<interface>`. It will be placed in administratively down
-   state.
+   (``A/D``) state.
 
 .. cfgcmd:: set interfaces ethernet <interface> disable-flow-control
 
