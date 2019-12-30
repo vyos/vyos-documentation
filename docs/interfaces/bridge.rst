@@ -59,7 +59,7 @@ Address
 
    .. code-block:: none
 
-     set interfaces bridge eth0 ipv6 address eui64 2001:db8:beef::/64
+     set interfaces bridge br0 ipv6 address eui64 2001:db8:beef::/64
 
 
 .. cfgcmd:: set interfaces bridge <interface> aging <time>
