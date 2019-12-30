@@ -292,6 +292,11 @@ Member Interfaces
 
    Enslave `<member>` interface to bond `<interface>`.
 
+Example
+-------
+
+An example configuration for a Cisco PortChannel to VyOS would be nice
+
 Operation
 #########
 
