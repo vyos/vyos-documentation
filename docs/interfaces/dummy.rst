@@ -19,14 +19,8 @@ Address
 .. cfgcmd:: set interfaces dummy <interface> address <address | dhcp | dhcpv6>
 
    Configure dummy interface `<interface>` with one or more interface
-   addresses.
-
-   * **address** can be specified multiple times as IPv4 and/or IPv6 address,
-     e.g. 192.0.2.1/24 and/or 2001:db8::1/64
-   * **dhcp** interface address is received by DHCP from a DHCP server on this
-     segment.
-   * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6 server on
-     this segment.
+   addresses. Address can be specified multiple times as IPv4 and/or IPv6
+   address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
 
    Example:
 
