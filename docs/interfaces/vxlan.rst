@@ -33,12 +33,108 @@ may be blocked by the hypervisor.
    for VXLAN, VyOS uses a default port of 8472. You can change the port on a
    per VXLAN interface basis to get it working accross multiple vendors.
 
+Configuration
+=============
+
+Address
+-------
+
+.. cfgcmd:: set interfaces vxlan <interface> address <address>
+
+   Configure VXLAN interface `<interface>` with one or more interface
+   addresses. Address can be specified multiple times as IPv4 and/or IPv6
+   address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
+
+   Example:
+
+   .. code-block:: none
+
+     set interfaces vxlan vxlan0 address 192.0.2.1/24
+     set interfaces vxlan vxlan0 address 192.0.2.2/24
+     set interfaces vxlan vxlan0 address 2001:db8::ffff/64
+     set interfaces vxlan vxlan0 address 2001:db8:100::ffff/64
+
+
+.. cfgcmd:: set interfaces vxlan <interface> ipv6 address autoconf
+
+   :abbr:`SLAAC (Stateless Address Autoconfiguration)`
+   :rfc:`4862`. IPv6 hosts can configure themselves automatically when connected
+   to an IPv6 network using the Neighbor Discovery Protocol via :abbr:`ICMPv6
+   (Internet Control Message Protocol version 6)` router discovery messages.
+   When first connected to a network, a host sends a link-local router
+   solicitation multicast request for its configuration parameters; routers
+   respond to such a request with a router advertisement packet that contains
+   Internet Layer configuration parameters.
+
+
+.. cfgcmd:: set interfaces vxlan <interface> ipv6 address eui64 <prefix>
+
+   :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in
+   :rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address.
+
+   .. code-block:: none
+
+     set interfaces vxlan vxlan0 ipv6 address eui64 2001:db8:beef::/64
+
+
+.. cfgcmd:: set interfaces vxlan <interface> link <interface>
+
+   Interface used for VXLAN underlay. This is mandatory when using VXLAN via
+   a multicast network. VXLAN traffic will always enter and exit this interface.
+
+
+.. cfgcmd:: set interfaces vxlan <interface> group <address>
+
+   Multicast group address for VXLAN interface. VXLAN tunnels can be built
+   either via Multicast or via Unicast.
+
+
+.. cfgcmd:: set interfaces vxlan <interface> remote <address>
+
+   IPv4 remote address of the VXLAN tunnel. Alternative to multicast, the
+   remote IPv4 address of the VXLAN tunnel can set directly.
+
+
+.. cfgcmd:: set interfaces vxlan <interface> port <port>
+
+    Configure port number of remote VXLAN endpoint.
+
+    .. note:: As VyOS is Linux based the default port used is not using 4789
+       as the default IANA-assigned destination UDP port number. Instead VyOS
+       uses the Linux default port of 8472.
+
+
+.. cfgcmd:: set interfaces vxlan <interface> vni <number>
+
+   Each VXLAN segment is identified through a 24-bit segment ID, termed the
+   :abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))`, This allows
+   up to 16M VXLAN segments to coexist within the same administrative domain.
+
+
+Link Administration
+-------------------
+
+.. cfgcmd:: set interfaces vxlan <interface> description <description>
+
+   Assign given `<description>` to interface. Description will also be passed
+   to SNMP monitoring systems.
+
+.. cfgcmd:: set interfaces vxlan <interface> disable
+
+   Disable given `<interface>`. It will be placed in administratively down
+   (``A/D``) state.
+
+.. cfgcmd:: set interfaces vxlan <interface> mtu <mtu>
+
+   Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It
+   is the size (in bytes) of the largest ethernet frame sent on this link.
+   MTU ranges from 1450 to 9000 bytes. For best performance you should have
+   a MTU > 1550 bytes on your underlay.
+
 Multicast VXLAN
 ===============
 
-Example Topology:
-
-PC4 - Leaf2 - Spine1 - Leaf3 - PC5
+Topology: PC4 - Leaf2 - Spine1 - Leaf3 - PC5
 
 PC4 has IP 10.0.0.4/24 and PC5 has IP 10.0.0.5/24, so they believe they are in
 the same broadcast domain.
@@ -66,30 +162,10 @@ For optimal scalability Multicast shouldn't be used at all, but instead use BGP
 to signal all connected devices between leafs. Unfortunately, VyOS does not yet
 support this.
 
-Configuration
-=============
-
-.. code-block:: none
-
-  interfaces
-    vxlan <vxlan[0-16777215]>
-      address          # IP address of the VXLAN interface
-      description      # Description
-      group <ipv4>     # IPv4 Multicast group address (required)
-      ip               # IPv4 routing options
-      ipv6             # IPv6 routing options
-      link <dev>       # IP interface for underlay of this vxlan overlay (optional)
-      mtu              # MTU
-      policy           # Policy routing options
-      remote           # Remote address of the VXLAN tunnel, used for PTP instead of multicast
-      vni <1-16777215> # Virtual Network Identifier (required)
-
 Example
 -------
 
-The setup is this:
-
-Leaf2 - Spine1 - Leaf3
+The setup is this: Leaf2 - Spine1 - Leaf3
 
 Spine1 is a Cisco IOS router running version 15.4, Leaf2 and Leaf3 is each a
 VyOS router running 1.2.
@@ -112,7 +188,7 @@ Topology:
   Eth0 towards Spine1, IP-address 10.1.3.3/24
   Eth1 towards a vlan-aware switch
 
-Spine1 Configuration:
+**Spine1 Configuration:**
 
 .. code-block:: none
 
@@ -132,10 +208,10 @@ Spine1 Configuration:
 
 Multicast-routing is required for the leafs to forward traffic between each
 other in a more scalable way. This also requires PIM to be enabled towards the
-Leafs so that the Spine can learn what multicast groups each Leaf expect traffic
-from.
+Leafs so that the Spine can learn what multicast groups each Leaf expect
+traffic from.
 
-Leaf2 configuration:
+**Leaf2 configuration:**
 
 .. code-block:: none
 
@@ -160,7 +236,7 @@ Leaf2 configuration:
   set interfaces vxlan vxlan242 link 'eth0'
   set interfaces vxlan vxlan242 vni '242'
 
-Leaf3 configuration:
+**Leaf3 configuration:**
 
 .. code-block:: none
 
@@ -239,77 +315,11 @@ its pre-standard value of 8472 to preserve backwards compatibility. A
 configuration directive to support a user-specified destination port to override
 that behavior is available using the above command.
 
-Older Examples
---------------
-
-Example for bridging normal L2 segment and vxlan overlay network, and using a
-vxlan interface as routing interface.
-
-.. code-block:: none
-
-  interfaces {
-       bridge br0 {
-           member {
-               interface vxlan0 {
-               }
-           }
-       }
-       ethernet eth0 {
-           address dhcp
-       }
-       loopback lo {
-       }
-       vxlan vxlan0 {
-           group 239.0.0.1
-           vni 0
-       }
-       vxlan vxlan1 {
-           address 192.168.0.1/24
-           link eth0
-           group 239.0.0.1
-           vni 1
-       }
-  }
-
-Here is a working configuration that creates a VXLAN between two routers. Each
-router has a VLAN interface (26) facing the client devices and a VLAN interface
-(30) that connects it to the other routers. With this configuration, traffic
-can flow between both routers' VLAN 26, but can't escape since there is no L3
-gateway. You can add an IP to a bridge to create a gateway.
-
-.. code-block:: none
-
-  interfaces {
-       bridge br0 {
-           member {
-               interface eth0.26 {
-               }
-               interface vxlan0 {
-               }
-           }
-       }
-       ethernet eth0 {
-           duplex auto
-           smp-affinity auto
-           speed auto
-           vif 30 {
-               address 10.7.50.6/24
-           }
-       }
-       loopback lo {
-       }
-       vxlan vxlan0 {
-           group 239.0.0.241
-           vni 241
-       }
-  }
-
 Unicast VXLAN
 =============
 
-Alternative to multicast, the remote IPv4 address of the VXLAN tunnel can set directly.
-Let's change the Multicast example from above:
-
+Alternative to multicast, the remote IPv4 address of the VXLAN tunnel can be
+set directly. Let's change the Multicast example from above:
 
 .. code-block:: none
 
