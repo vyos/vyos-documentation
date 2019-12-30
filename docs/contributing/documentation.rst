@@ -186,6 +186,17 @@ descriptive way in the resulting HTML/PDF manual.
 
      Display all known ARP table entries spanning accross all interfaces
 
+vytask
+""""""
+
+When referencing to VyOS Phabricator Tasks, there is a custom Spinx Markup
+command called ``vytask`` which automatically reners to a proper Phabricator
+URL. This is heavily used in the :ref:`release-notes` section.
+
+.. code-block:: none
+
+  * :vytask:`T1605` Fixed regression in L2TP/IPsec server
+  * :vytask:`T1613` Netflow/sFlow captures IPv6 traffic correctly
 
 
 .. _Sphinx-doc: https://www.sphinx-doc.org
