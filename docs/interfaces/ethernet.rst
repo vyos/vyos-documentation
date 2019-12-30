@@ -12,8 +12,7 @@ Address
 
 .. cfgcmd:: set interfaces ethernet <interface> address <address | dhcp | dhcpv6>
 
-   Configure ethernet interface `<interface>` with one or more interface
-   addresses.
+   Configure interface `<interface>` with one or more interface addresses.
 
    * **address** can be specified multiple times as IPv4 and/or IPv6 address,
      e.g. 192.0.2.1/24 and/or 2001:db8::1/64
