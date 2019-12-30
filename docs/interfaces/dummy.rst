@@ -5,10 +5,10 @@ Dummy
 #####
 
 The dummy interface is really a little exotic, but rather useful nevertheless.
-Dummy interfaces are much like the loopback interface, except you can have
-as many as you want. Dummy interfaces can be used as interfaces that always
-stay up (in the same fashion to loopbacks in Cisco IOS), or for testing
-purposes.
+Dummy interfaces are much like the :ref:`loopback-interface` interface, except
+you can have as many as you want. Dummy interfaces can be used as interfaces
+that always stay up (in the same fashion to loopbacks in Cisco IOS), or for
+testing purposes.
 
 Configuration
 #############
