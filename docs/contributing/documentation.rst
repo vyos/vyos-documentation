@@ -147,16 +147,38 @@ system numbers for the documentation:
 
 Please don't use other public address space.
 
-
 Custom Sphinx-doc Markup
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-When documenting CLI commands use the ``.. cfgcmd::`` directive for all
-configuration mode commands. When documenting operational level command use
-the ``.. opcmd::`` directive. An explanation of the described command should
-be added below this statement.
+When writing the cducmentation custom commands have been developed. Please
+make yourself comfortable with those commands as this eases the way how we
+can render the ducumentation.
 
-**Example**
+cfgcmd
+""""""
+
+When documenting CLI commands use the ``.. cfgcmd::`` directive for all
+configuration mode commands. An explanation of the described command should be
+added below this statement.
+
+With those custom commands it will be possible to render them in a more
+descriptive way in the resulting HTML/PDF manual.
+
+.. code-block:: none
+
+  .. cfgcmd:: set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
+
+     This will configure a static ARP entry always resolving `192.0.2.100` to
+     `00:53:27:de:23:aa`.
+
+opcmd
+"""""
+
+When documenting operational level command use the ``.. opcmd::`` directive.
+An explanation of the described command should be added below this statement.
+
+With those custom commands it will be possible to render them in a more
+descriptive way in the resulting HTML/PDF manual.
 
 .. code-block:: none
 
@@ -164,10 +186,7 @@ be added below this statement.
 
      Display all known ARP table entries spanning accross all interfaces
 
-  .. cfgcmd:: set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
 
-     This will configure a static ARP entry always resolving `192.0.2.100` to
-     `00:53:27:de:23:aa`.
 
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
