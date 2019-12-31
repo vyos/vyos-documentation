@@ -302,12 +302,12 @@ a per VIF IPv4 address.
 .. code-block:: none
 
   # Create bonding interface bond0 with 802.3ad LACP
-  set bonding bond0 hash-policy 'layer2'
-  set bonding bond0 mode '802.3ad'
+  set interfaces bonding bond0 hash-policy 'layer2'
+  set interfaces bonding bond0 mode '802.3ad'
 
   # Add the required vlans and IPv4 addresses on them
-  set bonding bond0 vif 10 address 192.168.0.1/24
-  set bonding bond0 vif 100 address 10.10.10.1/24
+  set interfaces bonding bond0 vif 10 address 192.168.0.1/24
+  set interfaces bonding bond0 vif 100 address 10.10.10.1/24
 
   # Add the member interfaces to the bonding interface
   set interfaces bonding bond0 member interface eth1
