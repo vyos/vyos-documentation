@@ -295,7 +295,54 @@ Member Interfaces
 Example
 -------
 
+Cisco
+^^^^^
+
 An example configuration for a Cisco PortChannel to VyOS would be nice
+
+Juniper EX Switch
+^^^^^^^^^^^^^^^^^
+
+For a headstart you can use the below example on how to build a bond with two
+interfaces from VyOS to a Juniper EX Switch system.
+
+.. code-block:: none
+
+  # Create aggregated ethernet device with 802.3ad LACP and port speeds of 10gbit/s
+  set interfaces ae0 aggregated-ether-options link-speed 10g
+  set interfaces ae0 aggregated-ether-options lacp active
+
+  # Create layer 2 on the aggregated ethernet device with trunking for our vlans
+  set interfaces ae0 unit 0 family ethernet-switching port-mode trunk
+
+  # Add the required vlans to the device
+  set interfaces ae0 unit 0 family ethernet-switching vlan members 10
+  set interfaces ae0 unit 0 family ethernet-switching vlan members 100
+
+  # Add the two interfaces to the aggregated ethernet device, in this setup both
+  # ports are on the same switch (switch 0, module 1, port 0 and 1)
+  set interfaces xe-0/1/0 ether-options 802.3ad ae0
+  set interfaces xe-0/1/1 ether-options 802.3ad ae0
+
+  # But this can also be done with multiple switches in a stack, a virtual
+  # chassis on Juniper (switch 0 and switch 1, module 1, port 0 on both switches)
+  set interfaces xe-0/1/0 ether-options 802.3ad ae0
+  set interfaces xe-1/1/0 ether-options 802.3ad ae0
+
+Aruba/HP
+^^^^^^^^
+
+For a headstart you can use the below example on how to build a bond,port-channel
+with two interfaces from VyOS to a Aruba/HP 2510G switch.
+
+.. code-block:: none
+
+  # Create trunk with 2 member interfaces (interface 1 and 2) and LACP
+  trunk 1-2 Trk1 LACP
+
+  # Add the required vlans to the trunk
+  vlan 10 tagged Trk1
+  vlan 100 tagged Trk1
 
 Operation
 #########
