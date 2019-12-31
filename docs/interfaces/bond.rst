@@ -288,7 +288,7 @@ Link Administration
 Member Interfaces
 -----------------
 
-.. cfgcmd:: set interfaces bridge <interface> member interface <member>
+.. cfgcmd:: set interfaces bonding <interface> member interface <member>
 
    Enslave `<member>` interface to bond `<interface>`.
 
