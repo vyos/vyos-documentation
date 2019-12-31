@@ -88,11 +88,13 @@ Address
    Multicast group address for VXLAN interface. VXLAN tunnels can be built
    either via Multicast or via Unicast.
 
+   Both IPv4 and IPv6 multicast is possible.
+
 
 .. cfgcmd:: set interfaces vxlan <interface> remote <address>
 
-   IPv4 remote address of the VXLAN tunnel. Alternative to multicast, the
-   remote IPv4 address of the VXLAN tunnel can set directly.
+   IPv4/IPv6 remote address of the VXLAN tunnel. Alternative to multicast, the
+   remote IPv4/IPv6 address can set directly.
 
 
 .. cfgcmd:: set interfaces vxlan <interface> port <port>
