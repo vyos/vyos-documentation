@@ -1,12 +1,13 @@
 .. _nat:
 
+###
 NAT
-===
+###
 
 .. _source-nat:
 
 Source NAT
-----------
+==========
 
 Source NAT is typically referred to simply as NAT. To be more correct, what
 most people refer to as NAT is actually the process of **Port Address
@@ -90,7 +91,7 @@ traffic, instead allowing the operator to make the determination on how the
 traffic is handled.
 
 NAT Reflection/Hairpin NAT
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 .. note:: Avoiding NAT breakage in the absence of split-DNS
 
@@ -137,7 +138,7 @@ Which results in a configuration of:
   }
 
 Destination NAT
----------------
+===============
 
 DNAT is typically referred to as a **Port Forward**. When using VyOS as a NAT
 router and firewall, a common configuration task is to redirect incoming
@@ -230,7 +231,7 @@ This would generate the following configuration:
   additional rules to permit inbound NAT traffic.
 
 1-to-1 NAT
-----------
+==========
 
 Another term often used for DNAT is **1-to-1 NAT**. For a 1-to-1 NAT
 configuration, both DNAT and SNAT are used to NAT all traffic from an external
@@ -269,13 +270,12 @@ Firewall rules are written as normal, using the internal IP address as the
 source of outbound rules and the destination of inbound rules.
 
 NPTv6
------
+=====
 
 NPTv6 stands for Network Prefix Translation. It's a form of NAT for IPv6. It's
 described in :rfc:`6296`. NPTv6 is supported in linux kernel since version 3.13.
 
-Usage
-^^^^^
+**Usage**
 
 NPTv6 is very useful for IPv6 multihoming. It is also commonly used when the external IPv6 prefix is dynamic,
 as it prevents the need for renumbering of internal hosts when the extern prefix changes.
@@ -302,7 +302,7 @@ their address to the right subnet when going through your router.
 * eth2 addr : 2001:db8:e2::1/48
 
 VyOS Support
-^^^^^^^^^^^^
+------------
 
 NPTv6 support has been added in VyOS 1.2 (Crux) and is available through
 `nat nptv6` configuration nodes.
@@ -333,13 +333,13 @@ Resulting in the following ip6tables rules:
 
 
 NAT before VPN
---------------
+==============
 
 Some application service providers (ASPs) operate a VPN gateway to provide access to their internal resources,
 and require that a connecting organisation translate all traffic to the service provider network to a source address provided by the ASP.
 
 Example Network
-^^^^^^^^^^^^^^^
+---------------
 
 Here's one example of a network environment for an ASP.
 The ASP requests that all connections from this company should come from 172.29.41.89 - an address that is assigned by the ASP and not in use at the customer site.
@@ -352,7 +352,7 @@ The ASP requests that all connections from this company should come from 172.29.
 
 
 Configuration
-^^^^^^^^^^^^^
+-------------
 
 The required configuration can be broken down into 4 major pieces:
 
@@ -363,7 +363,7 @@ The required configuration can be broken down into 4 major pieces:
 
 
 Dummy interface
-***************
+^^^^^^^^^^^^^^^
 
 The dummy interface allows us to have an equivalent of the Cisco IOS Loopback interface - a router-internal interface we can use for IP addresses the router must know about,
 but which are not actually assigned to a real network.
@@ -375,7 +375,7 @@ We only need a single step for this interface:
   set interfaces dummy dum0 address '172.29.41.89/32'
 
 NAT Configuration
-*****************
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -391,7 +391,7 @@ NAT Configuration
   set nat source rule 120 translation address '172.29.41.89'
 
 IPSec IKE and ESP
-*****************
+^^^^^^^^^^^^^^^^^
 
 
 The ASP has documented their IPSec requirements:
@@ -429,7 +429,7 @@ Additionally, we want to use VPNs only on our eth1 interface (the external inter
   set vpn ipsec ipsec-interfaces interface 'eth1'
 
 IPSec VPN Tunnels
-*****************
+^^^^^^^^^^^^^^^^^
 
 We'll use the IKE and ESP groups created above for this VPN.
 Because we need access to 2 different subnets on the far side, we will need two different tunnels.
@@ -450,7 +450,7 @@ If you changed the names of the ESP group and IKE group in the previous step, ma
   set vpn ipsec site-to-site peer 198.51.100.243 tunnel 1 remote prefix '10.125.0.0/16'
 
 Testing and Validation
-^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""
 
 If you've completed all the above steps you no doubt want to see if it's all working.
 
