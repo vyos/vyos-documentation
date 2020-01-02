@@ -12,6 +12,13 @@ services on your local machine.
    you need multiple interfaces, please use the :ref:`dummy-interface`
    interface type.
 
+.. hint:: A lookback interface is always up, thus it could be used for
+   management traffic or as source/destination for and :abbr:`IGP (Interior
+   Gateway Protocol)` like :ref:`bgp` so your internal BGP link is not dependant
+   on physical link states and multiple routes can be choosen to the
+   destination. A :ref:`dummy-interface` Interface should always be preferred
+   over a :ref:`loopback-interface` interface.
+
 Configuration
 =============
 

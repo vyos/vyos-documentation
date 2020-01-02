@@ -6,9 +6,18 @@ Dummy
 
 The dummy interface is really a little exotic, but rather useful nevertheless.
 Dummy interfaces are much like the :ref:`loopback-interface` interface, except
-you can have as many as you want. Dummy interfaces can be used as interfaces
-that always stay up (in the same fashion to loopbacks in Cisco IOS), or for
-testing purposes.
+you can have as many as you want.
+
+.. note:: Dummy interfaces can be used as interfaces that always stay up (in
+   the same fashion to loopbacks in Cisco IOS), or for testing purposes.
+
+.. hint:: A Dummy interface is always up, thus it could be used for
+   management traffic or as source/destination for and :abbr:`IGP (Interior
+   Gateway Protocol)` like :ref:`bgp` so your internal BGP link is not dependant
+   on physical link states and multiple routes can be choosen to the
+   destination. A :ref:`dummy-interface` Interface should always be preferred
+   over a :ref:`loopback-interface` interface.
+
 
 Configuration
 #############
