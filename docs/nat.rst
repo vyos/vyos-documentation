@@ -111,7 +111,7 @@ NAT Ruleset
 :abbr:`NAT (Network Address Translation)` is configured entirely on a series
 of so called `rules`. Rules are numbered and evaluated by the underlaying OS
 in numerical order! The rule numbers can be changes by utilizing the
-:cfgcmd:`rename` and :cfgcmd`copy` commands.
+:cfgcmd:`rename` and :cfgcmd:`copy` commands.
 
 .. note:: Changes to the NAT system only affect newly established connections.
    Already establiushed ocnnections are not affected.
