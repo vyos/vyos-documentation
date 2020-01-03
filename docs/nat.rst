@@ -335,10 +335,10 @@ protocol behavior. For this reason, VyOS does not globally drop invalid state
 traffic, instead allowing the operator to make the determination on how the
 traffic is handled.
 
-NAT Reflection/Hairpin NAT
---------------------------
+.. _hairpin_nat_reflection:
 
-.. note:: Avoiding NAT breakage in the absence of split-DNS
+Hairpin NAT/NAT Reflection
+--------------------------
 
 A typical problem with using NAT and hosting public servers is the ability for
 internal systems to reach an internal server using it's external IP address.
@@ -346,41 +346,87 @@ The solution to this is usually the use of split-DNS to correctly point host
 systems to the internal address when requests are made internally. Because
 many smaller networks lack DNS infrastructure, a work-around is commonly
 deployed to facilitate the traffic by NATing the request from internal hosts
-to the source address of the internal interface on the firewall. This technique
-is commonly referred to as **NAT Reflection**, or **Hairpin NAT**.
+to the source address of the internal interface on the firewall.
 
-In this example, we will be using the example Quick Start configuration above
-as a starting point.
+This technique is commonly referred to as NAT Reflection or Hairpin NAT.
 
-To setup a NAT reflection rule, we need to create a rule to NAT connections
-from the internal network to the same internal network to use the source
-address of the internal interface.
+Example:
+
+* Redirect Microsoft RDP traffic from the outside (WAN, external) world via
+  :ref:`destination-nat` in rule 100 to the internal, private host 192.0.2.40.
+
+* Redirect Microsoft RDP traffic from the internal (LAN, private) network via
+  :ref:`destination-nat` in rule 110 to the internal, private host 192.0.2.40.
+  We also need a :ref:`source-nat` rule 110 for the reverse path of the traffic.
+  The internal network 192.0.2.0/24 is reachable via interfache `eth0.10`.
 
 .. code-block:: none
 
+  set nat destination rule 100 description 'Regular destination NAT from external'
+  set nat destination rule 100 destination port '3389'
+  set nat destination rule 100 inbound-interface 'pppoe0'
+  set nat destination rule 100 protocol 'tcp'
+  set nat destination rule 100 translation address '192.0.2.40'
+
+  set nat destination rule 110 description 'NAT Reflection: INSIDE'
+  set nat destination rule 110 destination port '3389'
+  set nat destination rule 110 inbound-interface 'eth0.10'
+  set nat destination rule 110 protocol 'tcp'
+  set nat destination rule 110 translation address '192.0.2.40'
+
   set nat source rule 110 description 'NAT Reflection: INSIDE'
-  set nat source rule 110 destination address '192.168.0.0/24'
-  set nat source rule 110 outbound-interface 'eth1'
-  set nat source rule 110 source address '192.168.0.0/24'
+  set nat source rule 110 destination address '192.0.2.0/24'
+  set nat source rule 110 outbound-interface 'eth0.10'
+  set nat source rule 110 protocol 'tcp'
+  set nat source rule 110 source address '192.0.2.0/24'
   set nat source rule 110 translation address 'masquerade'
 
 Which results in a configuration of:
 
 .. code-block:: none
 
-  rule 110 {
-      description "NAT Reflection: INSIDE"
-      destination {
-          address 192.168.0.0/24
-      }
-      outbound-interface eth1
-      source {
-          address 192.168.0.0/24
-      }
-      translation {
-          address masquerade
-      }
-  }
+  vyos@vyos# show nat
+   destination {
+       rule 100 {
+           description "Regular destination NAT from external"
+           destination {
+               port 3389
+           }
+           inbound-interface pppoe0
+           protocol tcp
+           translation {
+               address 192.0.2.40
+           }
+       }
+       rule 110 {
+           description "NAT Reflection: INSIDE"
+           destination {
+               port 3389
+           }
+           inbound-interface eth0.10
+           protocol tcp
+           translation {
+               address 192.0.2.40
+           }
+       }
+   }
+   source {
+       rule 110 {
+           description "NAT Reflection: INSIDE"
+           destination {
+               address 192.0.2.0/24
+           }
+           outbound-interface eth0.10
+           protocol tcp
+           source {
+               address 192.0.2.0/24
+           }
+           translation {
+               address masquerade
+           }
+       }
+   }
+
 
 Destination NAT
 ---------------
