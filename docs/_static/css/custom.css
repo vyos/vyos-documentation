@@ -1,3 +1,57 @@
+span.opcmd,
+span.cfgcmd {
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 100% !important;
+    max-width: 100%;
+    color: #000;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",Courier,monospace;
+}
+
+.opcmd-heading,
+.cfgcmd-heading {
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 90%;
+    line-height: normal;
+    background: #e7f2fa;
+    color: #2980B9;
+    border-top: solid 3px #6ab0de;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: rgb(106, 176, 222);
+    padding: 6px;
+}
+
+.opcmd-body,
+.cfgcmd-body {
+    margin: 6px 0;
+    padding-left: 12px;
+}
+
+
+
+.cfgcmd-heading .cmdlink:after,
+.opcmd-heading .cmdlink:after {
+    content: "";
+    font-family: FontAwesome
+}
+
+
+.cfgcmd-heading:not(:hover) .cmdlink,
+.opcmd-heading:not(:hover) .cmdlink {
+    display: none;
+}
+
+
+
+a.cmdlink {
+    font-size: 80%;
+    margin-left: 6px;
+}
+
 .wy-nav-content {
   max-width : none;
 }
