@@ -32,17 +32,7 @@ Address
 
 .. cfgcmd:: set interfaces ethernet <interface> ipv6 address autoconf
 
-   :abbr:`SLAAC (Stateless Address Autoconfiguration)`
-   :rfc:`4862`. IPv6 hosts can configure themselves automatically when connected
-   to an IPv6 network using the Neighbor Discovery Protocol via :abbr:`ICMPv6
-   (Internet Control Message Protocol version 6)` router discovery messages.
-   When first connected to a network, a host sends a link-local router
-   solicitation multicast request for its configuration parameters; routers
-   respond to such a request with a router advertisement packet that contains
-   Internet Layer configuration parameters.
-
-   .. note:: This method automatically disables IPv6 traffic forwarding on the
-      interface in question.
+   .. include:: common-ipv6-addr-autoconf.txt
 
 .. cfgcmd:: set interfaces ethernet <interface> ipv6 address eui64 <prefix>
 
