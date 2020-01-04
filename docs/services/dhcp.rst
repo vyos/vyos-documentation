@@ -83,24 +83,24 @@ explicitly by the following statements.
 
    A generic `<name>` referencing this sync service.
 
-.. note:: `<name>` must be identical on both sides!
+   .. note:: `<name>` must be identical on both sides!
 
 .. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> failover status <primary | secondary>
 
    The primary and secondary statements determines whether the server is primary
    or secondary.
 
-.. note:: In order for the primary and the secondary DHCP server to keep
-   their lease tables in sync, they must be able to reach each other on TCP
-   port 647. If you have firewall rules in effect, adjust them accordingly.
+   .. note:: In order for the primary and the secondary DHCP server to keep
+      their lease tables in sync, they must be able to reach each other on TCP
+      port 647. If you have firewall rules in effect, adjust them accordingly.
 
-.. hint:: The dialogue between failover partners is neither encrypted nor
-   authenticated. Since most DHCP servers exist within an organisation's own
-   secure Intranet, this would be an unnecessary overhead. However, if you have
-   DHCP failover peers whose communications traverse insecure networks, then we
-   recommend that you consider the use of VPN tunneling between them to ensure
-   that the failover partnership is immune to disruption (accidental or
-   otherwise) via third parties.
+   .. hint:: The dialogue between failover partners is neither encrypted nor
+      authenticated. Since most DHCP servers exist within an organisation's own
+      secure Intranet, this would be an unnecessary overhead. However, if you have
+      DHCP failover peers whose communications traverse insecure networks, then we
+      recommend that you consider the use of VPN tunneling between them to ensure
+      that the failover partnership is immune to disruption (accidental or
+      otherwise) via third parties.
 
 Example
 ^^^^^^^
