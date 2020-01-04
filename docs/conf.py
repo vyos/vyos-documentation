@@ -16,6 +16,8 @@ import os
 import sys
 sys.path.append(os.path.abspath("./_ext"))
 
+from docutils import nodes, utils
+from docutils.parsers.rst.roles import set_classes
 
 # -- Project information -----------------------------------------------------
 
@@ -173,6 +175,17 @@ texinfo_documents = [
      author, 'VyOS', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+
+def vytask_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+    app = inliner.document.settings.env.app
+    base = app.config.vyos_phabricator_url
+    ref = base + str(text)
+    set_classes(options)
+    node = nodes.reference(
+        rawtext, utils.unescape(str(text)), refuri=ref, **options)
+    return [node], []
+
 
 def setup(app):
     pass

@@ -441,8 +441,8 @@ Options
 =======
 
 We do not have CLI nodes for every single OpenVPN options. If an option is
-missing, a feature request should be opened at https://phabricator.vyos.net so
-all users can benefit from it.
+missing, a feature request should be opened at Phabricator_ so all users can
+benefit from it (see :ref:`issues_features`).
 
 If you are a hacker or want to try on your own we support passing raw OpenVPN
 options to OpenVPN.
@@ -460,3 +460,5 @@ Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
 .. note:: Sometimes option lines in the generated OpenVPN configurarion require
    quotes. This is done through a hack on our config generator. You can pass
    quotes using the ``&quot;`` statement.
+
+.. include:: ../common-references.rst

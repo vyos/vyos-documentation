@@ -1,7 +1,8 @@
 .. _pppoe-interface:
 
+#####
 PPPoE
-=====
+#####
 
 :abbr:`PPPoE (Point-to-Point Protocol over Ethernet)` is a network protocol
 for encapsulating PPP frames inside Ethernet frames. It appeared in 1999,
@@ -14,14 +15,14 @@ PPP facilities for authenticating the user with a username and password,
 predominately via the PAP protocol and less often via CHAP.
 
 Operating Modes
----------------
+===============
 
 VyOS supports setting up PPPoE in two different ways to a PPPoE internet
 connection. This is due to most ISPs provide a modem that is also a wireless
 router.
 
 Home Users
-**********
+----------
 
 In this method, the DSL Modem/Router connects to the ISP for you with your
 credentials preprogrammed into the device. This gives you an :rfc:`1918`
@@ -34,7 +35,7 @@ few extra layers of complexity, particularly if you use some NAT or
 tunnel features.
 
 Business Users
-**************
+--------------
 
 In order to have full control and make use of multiple static public IP
 addresses, your VyOS will have to initiate the PPPoE connection and control
@@ -50,8 +51,8 @@ configure it to open the PPPoE session for you and your DSL Transceiver
 (Modem/Router) just acts to translate your messages in a way that
 vDSL/aDSL understands.
 
-Configuration Example
-~~~~~~~~~~~~~~~~~~~~~
+Example
+=======
 
 Requirements:
 
@@ -95,7 +96,7 @@ assigning it to the pppoe0 itself as shown here:
   set interfaces ethernet eth0 pppoe 0 firewall out name NET-OUT
 
 VLAN Example
-++++++++++++
+------------
 
 Some recent ISPs require you to build the PPPoE connection through a VLAN
 interface. One of those ISPs is e.g. Deutsche Telekom in Germany. VyOS
@@ -116,30 +117,31 @@ which is the default VLAN for Deutsche Telekom:
   set interfaces ethernet eth0 vif 7 pppoe 0 password 'secret'
 
 Troubleshooting
----------------
+===============
 
 .. opcmd:: disconnect interface <interface>
 
-Test disconnecting given connection-oriented interface. `<interface>` can be
-``pppoe0`` as example.
+   Test disconnecting given connection-oriented interface. `<interface>` can be
+   ``pppoe0`` as example.
 
 .. opcmd:: connect interface <interface>
 
-Test connecting given connection-oriented interface. `<interface>` can be
-``pppoe0`` as example.
+   Test connecting given connection-oriented interface. `<interface>` can be
+   ``pppoe0`` as example.
 
 .. opcmd:: show interfaces pppoe <interface>
 
-Check PPPoE connection logs with the following command which shows the current
-statistics, status and some of the settings (i.e. MTU) for the current
-connection on <interface> (e.g. ``pppoe0``)
+   Check PPPoE connection logs with the following command which shows the
+   current statistics, status and some of the settings (i.e. MTU) for the
+   current connection on <interface> (e.g. ``pppoe0``)
 
 .. opcmd:: show interfaces pppoe <interface> log
 
-Show entire log for the PPPoE connection starting with the oldest data. Scroll
-down with the <space> key to reach the end where the current data is.
+   Show entire log for the PPPoE connection starting with the oldest data.
+   Scroll down with the <space> key to reach the end where the current data is.
 
 .. opcmd::  show interfaces pppoe <interface> log tail
 
-Shows the same log as without the 'tail' option but start with the last few
-lines and continues to show added lines until you exit with ``Ctrl + x``
+   Shows the same log as without the 'tail' option but start with the last few
+   lines and continues to show added lines until you exit with ``Ctrl + x``
+

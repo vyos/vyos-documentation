@@ -33,9 +33,9 @@ in :rfc:`1305`.
 Configuration
 =============
 
-.. cfgcmd:: set system ntp server '<address | fqdn>'
+.. cfgcmd:: set system ntp server <address>
 
-   Configure one or more servers for synchronisation. Server name cen be either
+   Configure one or more servers for synchronisation. Server name can be either
    an IP address or :abbr:`FQDN (Fully Qualified Domain Name)`.
 
    There are 3 default NTP server set. You are able to change them.
@@ -44,13 +44,13 @@ Configuration
    * 1.pool.ntp.org
    * 2.pool.ntp.org
 
-.. cfgcmd:: set system ntp listen-address '<address>'
+.. cfgcmd:: set system ntp listen-address <address>
 
    Setup VyOS as an NTP responder, you must specify the `<address>` and
    optionally the permitted clients. Multiple listen addresses can be
    configured.
 
-.. cfgcmd:: set system ntp allow-clients address '<address>'
+.. cfgcmd:: set system ntp allow-clients address <address>
 
    List of networks or client addresses permitted to contact this NTP server.
    Multiple networks can be configured.

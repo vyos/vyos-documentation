@@ -4,17 +4,46 @@
 Quick Start
 ###########
 
-Below is a very basic configuration example that will provide a NAT gateway
-for a device with two interfaces.
+This chapter will guide you on how to get up to speed using your new VyOS
+system. It will show you a very basic configuration example that will provide
+a :ref:`nat` gateway for a device with two network interfaces (`eth0` and
+`eth1`).
 
-Enter configuration mode:
+.. _quick-start-configuration-mode:
+
+Configuration Mode
+##################
 
 .. code-block:: none
 
   vyos@vyos$ configure
   vyos@vyos#
 
-Configure network interfaces:
+Commit and Save
+################
+
+After every configuration change you need to apply the changes by using the
+
+.. code-block:: none
+
+  commit
+
+Once your configuration works as expected you can save it permanently.
+
+.. code-block:: none
+
+  save
+
+Interface Configuration
+#######################
+
+* Your outside/WAN interface will be `eth0`, it receives it's interface address
+  be means of DHCP.
+* Your internal/LAN interface is `eth1`. It uses a fixed IP address of
+  `192.168.0.1/24`.
+
+After switching to :ref:`quick-start-configuration-mode` issue the following
+commands:
 
 .. code-block:: none
 
@@ -23,14 +52,31 @@ Configure network interfaces:
   set interfaces ethernet eth1 address '192.168.0.1/24'
   set interfaces ethernet eth1 description 'INSIDE'
 
-Enable SSH for remote management:
+
+Enable SSH Management SSH
+#########################
+
+After switching to :ref:`quick-start-configuration-mode` issue the following
+commands, and your system will listen on every interface for incoming SSH
+connections. You might want to check the :ref:`ssh` chapter on how to listen
+on specific addresses only.
 
 .. code-block:: none
 
   set service ssh port '22'
 
-Configure DHCP Server and DNS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Configure DHCP/DNS Servers
+##########################
+
+* Provide DHCP service on your internal/LAN network where VyOS will act
+  as the default gateway and DNS server.
+* Client IP addresses are assigned from the range ``192.168.0.9 -
+  192.168.0.254``
+* DHCP leases will hold for one day (86400 seconds)
+* VyOS will server as full DNS recursor - no need to bother the Google or
+  Cloudflare DNS servers (good for privacy)
+* Only clients from your internal/LAN network can use the DNS resolver
 
 .. code-block:: none
 
@@ -41,19 +87,15 @@ Configure DHCP Server and DNS
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 start 192.168.0.9
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 stop '192.168.0.254'
 
-And a DNS forwarder:
-
-.. code-block:: none
-
   set service dns forwarding cache-size '0'
   set service dns forwarding listen-address '192.168.0.1'
-  set service dns forwarding name-server '203.0.113.1'
-  set service dns forwarding name-server '203.0.113.2'
+  set service dns forwarding allow-from '192.168.0.0/24'
 
-NAT and Firewall
-^^^^^^^^^^^^^^^^
 
-Configure Source NAT for our "Inside" network.
+NAT
+###
+
+* Configure :ref:`source-nat` for our internal/LAN network
 
 .. code-block:: none
 
@@ -61,9 +103,14 @@ Configure Source NAT for our "Inside" network.
   set nat source rule 100 source address '192.168.0.0/24'
   set nat source rule 100 translation address masquerade
 
-Add a set of firewall policies for our "Outside" interface.
 
-This configuration creates a proper stateful firewall that blocks all traffic:
+Firewall
+########
+
+Add a set of firewall policies for our outside/WAN interface.
+
+This configuration creates a proper stateful firewall that blocks all traffic
+which was not initiated from the internal/LAN side first.
 
 .. code-block:: none
 
@@ -71,6 +118,7 @@ This configuration creates a proper stateful firewall that blocks all traffic:
   set firewall name OUTSIDE-IN rule 10 action 'accept'
   set firewall name OUTSIDE-IN rule 10 state established 'enable'
   set firewall name OUTSIDE-IN rule 10 state related 'enable'
+
   set firewall name OUTSIDE-LOCAL default-action 'drop'
   set firewall name OUTSIDE-LOCAL rule 10 action 'accept'
   set firewall name OUTSIDE-LOCAL rule 10 state established 'enable'
@@ -80,8 +128,8 @@ This configuration creates a proper stateful firewall that blocks all traffic:
   set firewall name OUTSIDE-LOCAL rule 20 protocol 'icmp'
   set firewall name OUTSIDE-LOCAL rule 20 state new 'enable'
 
-If you wanted to enable SSH access to your firewall from the Internet, you
-could create some additional rules to allow the traffic.
+If you wanted to enable SSH access to your firewall from the outside/WAN
+interface, you could create some additional rules to allow that kind of traffic.
 
 These rules allow SSH traffic and rate limit it to 4 requests per minute. This
 blocks brute-forcing attempts:
@@ -94,6 +142,7 @@ blocks brute-forcing attempts:
   set firewall name OUTSIDE-LOCAL rule 30 recent count '4'
   set firewall name OUTSIDE-LOCAL rule 30 recent time '60'
   set firewall name OUTSIDE-LOCAL rule 30 state new 'enable'
+
   set firewall name OUTSIDE-LOCAL rule 31 action 'accept'
   set firewall name OUTSIDE-LOCAL rule 31 destination port '22'
   set firewall name OUTSIDE-LOCAL rule 31 protocol 'tcp'
@@ -117,15 +166,13 @@ Commit changes, save the configuration, and exit configuration mode:
   vyos@vyos# exit
   vyos@vyos$
 
-Basic QoS
-^^^^^^^^^
 
-The traffic policy subsystem provides an interface to Linux traffic control
-(tc_).
+QoS
+###
 
-One common use of traffic policy is to limit bandwidth for an interface. In
-the example below we limit bandwidth for our LAN connection to 200 Mbit
-download and out WAN connection to 50 Mbit upload:
+One common use of :ref:`qos` is to limit bandwidth for an interface. In
+the example below we limit bandwidth for our internal/LAN connection to 200
+Mbit/s download and our outside/WAN connection to 50 Mbit/s upload:
 
 .. code-block:: none
 
@@ -133,35 +180,13 @@ download and out WAN connection to 50 Mbit upload:
   set traffic-policy shaper WAN-OUT default bandwidth '50%'
   set traffic-policy shaper WAN-OUT default ceiling '100%'
   set traffic-policy shaper WAN-OUT default queue-type 'fair-queue'
+
   set traffic-policy shaper LAN-OUT bandwidth '200Mbit'
   set traffic-policy shaper LAN-OUT default bandwidth '50%'
   set traffic-policy shaper LAN-OUT default ceiling '100%'
   set traffic-policy shaper LAN-OUT default queue-type 'fair-queue'
 
-Resulting in the following configuration:
-
-.. code-block:: none
-
-  traffic-policy {
-      shaper WAN-OUT {
-          bandwidth 50Mbit
-          default {
-              bandwidth 50%
-              ceiling 100%
-              queue-type fair-queue
-          }
-      }
-      shaper LAN-OUT {
-          bandwidth 200Mbit
-          default {
-              bandwidth 50%
-              ceiling 100%
-              queue-type fair-queue
-          }
-      }
-  }
-
-Once defined, a traffic policy can be applied to each interface using the
+Once defined, a traffic policy needs to be applied to each interface using the
 interface-level traffic-policy directive:
 
 .. code-block:: none
@@ -169,46 +194,34 @@ interface-level traffic-policy directive:
   set interfaces ethernet eth0 traffic-policy out 'WAN-OUT'
   set interfaces ethernet eth1 traffic-policy out 'LAN-OUT'
 
-.. note:: A traffic policy can also be defined to match specific traffic
-   flows using class statements.
-
-VyOS 1.2 (Crux) also supports HFSC (:code:`set traffic-policy shaper-hfsc`)
-
-See further information in the :ref:`qos` chapter.
 
 Security Hardening
-^^^^^^^^^^^^^^^^^^
+##################
 
-Especially if you are allowing SSH access from the Internet, there are a few
-additional configuration steps that should be taken.
+Especially if you are allowing SSH remote access from the outside/WAN interface,
+there are a few additional configuration steps that should be taken.
 
-Create a user to replace the default `vyos` user:
+Replace the default `vyos` system user:
 
 .. code-block:: none
 
   set system login user myvyosuser level admin
   set system login user myvyosuser authentication plaintext-password mysecurepassword
 
-Set up SSH key based authentication. For example, on Linux you'd want to run
-``ssh-keygen -t rsa``. Then the contents of ``id_rsa.pub`` would be used below:
+Set up :ref:`ssh_key_based_authentication`:
 
 .. code-block:: none
 
   set system login user myvyosuser authentication public-keys myusername@mydesktop type ssh-rsa
   set system login user myvyosuser authentication public-keys myusername@mydesktop key contents_of_id_rsa.pub
 
-Or you can use the ``loadkey`` command. Commit and save.
-
 Finally, try and SSH into the VyOS install as your new user. Once you have
-confirmed that your new user can access your server, without a password, delete
+confirmed that your new user can access your router without a password, delete
 the original ``vyos`` user and probably disable password authentication for
-SSH:
+:ref:`ssh` at all:
 
 .. code-block:: none
 
   delete system login user vyos
   set service ssh disable-password-authentication
 
-Commit and save.
-
-.. _tc: https://en.wikipedia.org/wiki/Tc_(Linux)

@@ -90,7 +90,7 @@ A typical configuration using 2 nodes.
 
 .. note:: You can not easily redistribute IPv6 routes via OSPFv3 on a WireGuard
    interface link. This requires you to configure link-local addresses manually
-   on the WireGuard interfaces, see Phabricator task T1483_.
+   on the WireGuard interfaces, see :vytask:`T1483`.
 
 Example configuration for WireGuard interfaces:
 
@@ -135,6 +135,4 @@ Example configuration for WireGuard interfaces:
   vyos@ospf02# run sh ipv6 ospfv3 neighbor
   Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]
   192.168.0.1       1    00:00:39     Full/PointToPoint    00:19:44 wg01[PointToPoint]
-
-.. _T1483: https://phabricator.vyos.net/T1483
 

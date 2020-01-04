@@ -121,6 +121,108 @@ Good luck!
    or ``rolling`` image. Make sure to choose the matching container for the
    version of VyOS that is being built.
 
+.. _build_packages:
+
+Build packages
+--------------
+
+VyOS requires a bunch of packages which are VyOS specific and thus can not be
+found in any Debian Upstream mirrror. Those packages can be found at the VyOS
+GitHub project (https://github.com/vyos) and there is a nice helper script
+available to build and list those individual packages.
+
+`scripts/build-packages` provides an easy interface to automate the process 
+of building all VyOS related packages that are not part of the upstream Debian 
+version. Execute it in the root of the `vyos-build` directory to start
+compilation.
+
+.. code-block:: none
+
+  $  scripts/build-packages -h
+  usage: build-packages [-h] [-c | -k | -f] [-v] [-l] [-b BUILD [BUILD ...]]
+                        [-p] [--blacklist BLACKLIST [BLACKLIST ...]]
+  
+  optional arguments:
+    -h, --help            show this help message and exit
+    -c, --clean           Re-clone required Git repositories
+    -k, --keep            Keep modified Git repositories
+    -f, --fetch           Fetch sources only, no build
+    -v, --verbose         Increase logging verbosity for each occurance
+    -l, --list-packages   List all packages to build
+    -b BUILD [BUILD ...], --build BUILD [BUILD ...]
+                          Whitespace separated list of packages to build
+    -p, --parallel        Build on all CPUs
+    --blacklist BLACKLIST [BLACKLIST ...]
+                          Do not build/report packages when calling --list
+
+Git repositoriers are automatically fetched and build on demand. If you want to
+work offline you can fetch all source code first with the `-f` option.
+
+The easiest way to compile is with the above mentioned Docker
+container, it includes all dependencies for compiling supported packages.
+
+.. code-block:: none
+
+  $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
+               --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
+               vyos-builder scripts/build-packages
+
+.. note:: `--sysctl net.ipv6.conf.lo.disable_ipv6=0` is required to build the
+   `vyos-strongswan` package
+
+.. note::  Prior to executing this script you need to create or build the Docker
+   container and checkout all packages you want to compile.
+
+Building single package(s)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To build a single package use the same script as above but specify packages with
+`-b`:
+
+Executed from the root of `vyos-build`
+
+.. code-block:: none
+
+  $ docker run --rm -it -v $(pwd):/vyos -w /vyos/packages/PACKAGENAME \
+               --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
+               vyos-builder scripts/build-packages -b <package>
+
+.. note:: `--sysctl net.ipv6.conf.lo.disable_ipv6=0` is only needed when
+   building `vyos-strongswan` and can be ignored on other packages.
+
+.. note:: `vyos-strongswan` will only compile on a Linux system, running on
+   macOS or Windows might result in a unittest deadlock (it never exits).
+
+Building single packages from your own repositories
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can also build packages that are not from the default git repositories,
+for example from your own forks of the official vyos repositories.
+
+First create a directory "packages" at the top level of the vyos-build
+repository and clone your package into it (creating a subdirectory with the
+package contents). Then checkout the correct branch or commit you want to build
+before building the package.
+
+Example using `git@github.com:myname/vyos-1x.git` repository to build vyos-1x:
+
+.. code-block:: none
+
+  $ mkdir packages
+  $ cd packages
+  $ git clone git@github.com:myname/vyos-1x.git
+  $ cd ..
+  $ docker run --rm -it -v $(pwd):/vyos -w /vyos/packages/PACKAGENAME \
+               --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
+               vyos-builder scripts/build-packages -b vyos-1x
+
+.. note:: You need to git pull manually after you commit to the remote and
+   before rebuilding, the local repository won't be updated automatically.
+
+.. warning:: Any packages in the packages directory will be added to the iso
+   during build, replacing the upstream ones. Make sure you delete them (both
+   the source directories and built deb packages) if you want to build an iso
+   from purely upstream packages.
 
 
 .. _upstream_packages:
