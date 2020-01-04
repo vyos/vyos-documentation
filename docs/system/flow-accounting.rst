@@ -62,19 +62,20 @@ CLI command. You may disable using the local in-memory table with the command:
 
 .. cfgcmd:: set system flow-accounting disable-imt
 
-Internally, in flow-accounting processes exist a buffer for data exchanging
-between core process and plugins (each export target is a separated plugin). If
-you have high traffic levels or noted some problems with missed records or
-stopping exporting, you may try to increase a default buffer size (10 MiB) with
-the next command:
+   Internally, in flow-accounting processes exist a buffer for data exchanging
+   between core process and plugins (each export target is a separated plugin).
+   If you have high traffic levels or noted some problems with missed records
+   or stopping exporting, you may try to increase a default buffer size (10
+   MiB) with the next command:
 
 .. cfgcmd:: set system flow-accounting buffer-size <buffer size>
 
-In case, if you need to catch some logs from flow-accounting daemon, you may
-configure logging facility:
+   In case, if you need to catch some logs from flow-accounting daemon, you may
+   configure logging facility:
 
 .. cfgcmd:: set system flow-accounting syslog-facility <facility>
 
+   TBD
 
 Flow Export
 -----------
@@ -135,6 +136,7 @@ NetFlow
 
 sFlow
 ^^^^^
+
 .. cfgcmd:: set system flow-accounting sflow server <address>
 
    Configure address of sFlow collector. sFlow server at `<address>` can
