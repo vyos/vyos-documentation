@@ -76,7 +76,7 @@ bottom until one of the factors can be used.
 6. **MED check**
 
    Where routes with a MED were received from the same AS, prefer the route
-   with the lowest MED. :ref:`bgp-med`.
+   with the lowest MED.
 
 7. **External check**
 
