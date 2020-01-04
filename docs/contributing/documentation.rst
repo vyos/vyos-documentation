@@ -171,6 +171,12 @@ descriptive way in the resulting HTML/PDF manual.
      This will configure a static ARP entry always resolving `192.0.2.100` to
      `00:53:27:de:23:aa`.
 
+For a inline configuration level command use ``:cfgcmd:``
+
+.. code-block:: none
+  
+  :cfgcmd:`set interface ethernet eth0`
+
 opcmd
 """""
 
@@ -186,10 +192,16 @@ descriptive way in the resulting HTML/PDF manual.
 
      Display all known ARP table entries spanning across all interfaces
 
+For a inline operational level command use ``:opcmd:``
+
+.. code-block:: none
+  
+  :opcmd:`add system image`
+
 vytask
 """"""
 
-When referencing to VyOS Phabricator Tasks, there is a custom Spinx Markup
+When referencing to VyOS Phabricator Tasks, there is a custom Sphinx Markup
 command called ``vytask`` which automatically renders to a proper Phabricator
 URL. This is heavily used in the :ref:`release-notes` section.
 

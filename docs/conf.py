@@ -12,9 +12,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.append(os.path.abspath("./_ext"))
 
 from docutils import nodes, utils
 from docutils.parsers.rst.roles import set_classes
@@ -43,7 +43,9 @@ release = u'1.3.x (equuleus)'
 extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.todo',
               'sphinx.ext.ifconfig',
-              'sphinx.ext.graphviz']
+              'sphinx.ext.graphviz',
+              'vyos'
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -136,6 +138,9 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
+    'preamble': r'''\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist''',
+
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -183,10 +188,4 @@ def vytask_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
 
 
 def setup(app):
-    app.add_config_value(
-        'vyos_phabricator_url',
-        'https://phabricator.vyos.net/', ''
-    )
-    app.add_role('vytask', vytask_role)
-    app.add_object_type('opcmd', 'opcmd')
-    app.add_object_type('cfgcmd', 'cfgcmd')
+    pass
