@@ -465,7 +465,7 @@ default one, you can enter the following command in configuration mode:
   load /opt/vyatta/etc/config.boot.default
 
 You will be asked if you want to continue. If you accept, you will have to use
- :cfgcmd:`commit` if you want to make the changes active.
+:cfgcmd:`commit` if you want to make the changes active.
 
 Then you may want to :cfgcmd:`save` in order to delete the saved configuration
 too.
