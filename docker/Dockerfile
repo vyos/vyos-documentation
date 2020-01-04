@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install Sphinx
 RUN pip3 install sphinx-rtd-theme
+RUN pip3 install sphinx-autobuild
 
 # Cleanup
 RUN rm -rf /var/lib/apt/lists/*
