@@ -19,15 +19,21 @@ def setup(app):
     app.add_node(
         inlinecmd,
         html=(inlinecmd.visit_span, inlinecmd.depart_span),
-        latex=(inlinecmd.tex, inlinecmd.tex),
+        latex=(inlinecmd.visit_tex, inlinecmd.depart_tex),
         text=(inlinecmd.visit_span, inlinecmd.depart_span)
     )
 
     app.add_node(
         CmdDiv,
         html=(CmdDiv.visit_div, CmdDiv.depart_div),
-        latex=(CmdDiv.tex, CmdDiv.tex),
+        latex=(CmdDiv.visit_tex, CmdDiv.depart_tex),
         text=(CmdDiv.visit_div, CmdDiv.depart_div)
+    )
+    app.add_node(
+        CmdBody,
+        html=(CmdBody.visit_div, CmdBody.depart_div),
+        latex=(CmdBody.visit_tex, CmdBody.depart_tex),
+        text=(CmdBody.visit_div, CmdBody.depart_div)
     )
     app.add_node(
         CmdHeader,
@@ -88,6 +94,38 @@ class CmdDiv(nodes.General, nodes.Element):
     def tex(self, node=None):
         pass
 
+    @staticmethod
+    def visit_tex(self, node=None):
+        self.body.append('\n\n\\begin{changemargin}{0cm}{0cm}\n')
+
+    @staticmethod
+    def depart_tex(self, node=None):
+        self.body.append('\n\\end{changemargin}\n\n')
+
+class CmdBody(nodes.General, nodes.Element):
+
+    @staticmethod
+    def visit_div(self, node):
+        self.body.append(self.starttag(node, 'div'))
+
+    @staticmethod
+    def depart_div(self, node=None):
+        self.body.append('</div>\n')
+
+    @staticmethod
+    def visit_tex(self, node=None):
+        self.body.append('\n\n\\begin{changemargin}{0.5cm}{0.5cm}\n')
+
+
+    @staticmethod
+    def depart_tex(self, node=None):
+        self.body.append('\n\\end{changemargin}\n\n')
+
+
+    @staticmethod
+    def tex(self, node=None):
+        pass
+
 
 class inlinecmd(nodes.inline):
 
@@ -100,14 +138,14 @@ class inlinecmd(nodes.inline):
         self.body.append('</span>\n')
 
     @staticmethod
-    def tex(self, node=None):
-        print('=====================')
-        #print(json.dumps(dir(self)))
-        print('---------------------')
-        print((self.visit_inline))
-        exit()
-        #self.body.append('\\chapter')
-        pass
+    def visit_tex(self, node=None):
+        self.body.append(r'\sphinxbfcode{\sphinxupquote{')
+        #self.literal_whitespace += 1
+
+    @staticmethod
+    def depart_tex(self, node=None):
+        self.body.append(r'}}')
+        #self.literal_whitespace -= 1
 
 
 class CfgcmdlistDirective(Directive):
@@ -185,7 +223,7 @@ class CmdDirective(SphinxDirective):
             self.env.vyos_cfgcmd.append(append_list)
 
         if has_body:
-            body_element = CmdDiv(content_text)
+            body_element = CmdBody(content_text)
             self.state.nested_parse(
                 content_list,
                 self.content_offset,
