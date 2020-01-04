@@ -102,6 +102,45 @@ explicitly by the following statements.
    that the failover partnership is immune to disruption (accidental or
    otherwise) via third parties.
 
+Example
+^^^^^^^
+
+* Setup DHCP failover for network 192.0.2.0/24
+* Default gateway and DNS server is at `192.0.2.254`
+* The primary DHCP server uses address `192.168.189.252`
+* The secondary DHCP server uses address `192.168.189.253`
+* DHCP range spans from `192.168.189.10` - `192.168.189.250`
+
+Primary
+"""""""
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 default-router '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 dns-server '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 domain-name 'vyos.net'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover local-address '192.168.189.252'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.253'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.168.189.10'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.168.189.250'
+
+Secondary
+"""""""""
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 default-router '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 dns-server '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 domain-name 'vyos.net'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover local-address '192.168.189.253'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.252'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.168.189.10'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.168.189.250'
+
 Static mappings
 ---------------
 
