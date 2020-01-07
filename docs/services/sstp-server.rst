@@ -6,9 +6,9 @@ SSTP server
 VyOS utilizes accel-ppp_ to provide SSTP server functionality. It can be
 used with local authentication or a connected RADIUS server.
 
-.. note:: **Please be aware, due to an upstream bug, config changes/commits
+.. note:: Please be aware, due to an upstream bug, config changes/commits
    will restart the ppp daemon and will reset existing PPPoE connections from
-   connected users, in order to become effective.**
+   connected users, in order to become effective.
 
 Configuration
 ^^^^^^^^^^^^^
@@ -73,4 +73,4 @@ looks for all files and directories in ``/config/user-data/sstp``.
   set sstp-settings ssl-certs server-cert 'server.crt'
   set sstp-settings ssl-certs server-key 'server.key'
 
-.. include:: references.rst
+.. include:: ../common-references.rst

@@ -5,10 +5,19 @@ Dummy
 #####
 
 The dummy interface is really a little exotic, but rather useful nevertheless.
-Dummy interfaces are much like the loopback interface, except you can have
-as many as you want. Dummy interfaces can be used as interfaces that always
-stay up (in the same fashion to loopbacks in Cisco IOS), or for testing
-purposes.
+Dummy interfaces are much like the :ref:`loopback-interface` interface, except
+you can have as many as you want.
+
+.. note:: Dummy interfaces can be used as interfaces that always stay up (in
+   the same fashion to loopbacks in Cisco IOS), or for testing purposes.
+
+.. hint:: A Dummy interface is always up, thus it could be used for
+   management traffic or as source/destination for and :abbr:`IGP (Interior
+   Gateway Protocol)` like :ref:`bgp` so your internal BGP link is not dependant
+   on physical link states and multiple routes can be choosen to the
+   destination. A :ref:`dummy-interface` Interface should always be preferred
+   over a :ref:`loopback-interface` interface.
+
 
 Configuration
 #############
@@ -16,17 +25,11 @@ Configuration
 Address
 -------
 
-.. cfgcmd:: set interfaces dummy '<interface>' address <address | dhcp | dhcpv6>
+.. cfgcmd:: set interfaces dummy <interface> address <address | dhcp | dhcpv6>
 
    Configure dummy interface `<interface>` with one or more interface
-   addresses.
-
-   * **address** can be specified multiple times as IPv4 and/or IPv6 address,
-     e.g. 192.0.2.1/24 and/or 2001:db8::1/64
-   * **dhcp** interface address is received by DHCP from a DHCP server on this
-     segment.
-   * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6 server on
-     this segment.
+   addresses. Address can be specified multiple times as IPv4 and/or IPv6
+   address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
 
    Example:
 
@@ -40,12 +43,12 @@ Address
 Link Administration
 -------------------
 
-.. cfgcmd:: set interfaces dummy '<interface>' description '<description>'
+.. cfgcmd:: set interfaces dummy <interface> description <description>
 
    Assign given `<description>` to interface. Description will also be passed
    to SNMP monitoring systems.
 
-.. cfgcmd:: set interfaces dummy '<interface>' disable
+.. cfgcmd:: set interfaces dummy <interface> disable
 
    Disable given `<interface>`. It will be placed in administratively down
    state.
@@ -65,7 +68,7 @@ Operation
      ---------        ----------                        ---  -----------
      dum0             172.18.254.201/32                 u/u
 
-.. opcmd:: show interfaces dummy '<interface>'
+.. opcmd:: show interfaces dummy <interface>
 
    Show detailed information on given `<interface>`
 

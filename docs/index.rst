@@ -52,8 +52,9 @@ VyOS User Guide
    :name: appendix
    :maxdepth: 2
 
-   appendix/releasenotes
+   appendix/release-notes
    appendix/examples/index
+   appendix/cmd-index
    appendix/commandtree/index
    appendix/vyos-on-vmware
    appendix/vyos-on-baremetal

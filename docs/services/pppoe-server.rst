@@ -7,9 +7,9 @@ PPPoE Server
 VyOS utilizes `accel-ppp`_ to provide PPPoE server functionality. It can be
 used with local authentication or a connected RADIUS server.
 
-.. note:: **Please be aware, due to an upstream bug, config changes/commits
+.. note:: Please be aware, due to an upstream bug, config changes/commits
    will restart the ppp daemon and will reset existing PPPoE connections from
-   connected users, in order to become effective.**
+   connected users, in order to become effective.
 
 Configuration
 =============
@@ -241,4 +241,4 @@ subnet for the clients internal use.
   --------+----------+-------------+--------------------------+---------------------+-------------------+------------+--------+----------+----------+----------
    ppp0   | test     | 192.168.0.1 | 2001:db8:8002:0:200::/64 | 2001:db8:8003::1/56 | 00:53:00:12:42:eb |            | active | 00:00:49 | 875 B    | 2.1 KiB
 
-.. _`accel-ppp`: https://accel-ppp.org/
+.. include:: ../common-references.rst

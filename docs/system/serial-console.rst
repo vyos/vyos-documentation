@@ -16,7 +16,7 @@ access to the console is the only way to diagnose and correct software failures.
 Major upgrades to the installed distribution may also require console access.
 
 
-.. cfgcmd:: set system console device '<device>'
+.. cfgcmd:: set system console device <device>
 
    Defines the specified device as a system console. Available console devices
    can be (see completion helper):
@@ -25,7 +25,7 @@ Major upgrades to the installed distribution may also require console access.
    * ``ttyUSBX`` - USB Serial device name
    * ``hvc0`` - Xen console
 
-.. cfgcmd:: set system console device '<device>' speed '<speed>'
+.. cfgcmd:: set system console device <device> speed <speed>
 
    The speed (baudrate) of the console device. Supported values are:
 
@@ -44,6 +44,6 @@ Network Console
 
 TBD.
 
-.. cfgcmd:: set system console network '<netconXX>'
+.. cfgcmd:: set system console network <netconXX>
 
    ... and many more commands ...

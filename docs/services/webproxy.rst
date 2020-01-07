@@ -3,7 +3,7 @@ Webproxy
 
 The proxy service in VyOS is based on Squid3 and some related modules.
 
-Squid is a caching and forwarding HTTP web proxy. It has a wide variety of
+Squid3_ is a caching and forwarding HTTP web proxy. It has a wide variety of
 uses, including speeding up a web server by caching repeated requests,
 caching web, DNS and other computer network lookups for a group of people
 sharing network resources, and aiding security by filtering traffic. Although
@@ -149,4 +149,5 @@ So sometimes it is useful to bypass a transparent proxy:
   (This can be useful when a called service has many and/or often changing
   destination addresses - e.g. Netflix.)
 
-.. include:: references.rst
+.. _Squid3: http://www.squid-cache.org/
+.. _Squidguard: http://www.squidguard.org/

@@ -11,162 +11,138 @@ VyOS uses ISC DHCPd for both IPv4 and IPv6 address assignment.
 DHCP Server
 ===========
 
-The network topology is declared by shared-network-name and the subnet declarations.
-The DHCP service can serve multiple shared networks, with each shared network having 1 or more subnets.
-Each subnet must be present on an interface.
-A range can be declared inside a subnet to define a pool of dynamic addresses.
-Multiple ranges can be defined and can contain holes.
-Static mappings can be set to assign "static" addresses to clients based on their MAC address.
+The network topology is declared by shared-network-name and the subnet
+declarations. The DHCP service can serve multiple shared networks, with each
+shared network having 1 or more subnets. Each subnet must be present on an
+interface. A range can be declared inside a subnet to define a pool of dynamic
+addresses. Multiple ranges can be defined and can contain holes. Static
+mappings can be set to assign "static" addresses to clients based on their MAC
+address.
 
-Basic Example
+Configuration
 -------------
 
-In this example, we are offering address space in the 192.0.2.0/24 network.
-We are using the network name `dhcpexample`.
-
-.. code-block:: none
-
-  set service dhcp-server shared-network-name dhcpexample authoritative
-  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 default-router 192.0.2.1
-  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 dns-server 192.0.2.1
-  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 lease 86400
-  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 range 0 start 192.0.2.100
-  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 range 0 stop 192.0.2.199
-
-The generated config will look like:
-
-.. code-block:: none
-
-  vyos@vyos# show service dhcp-server shared-network-name dhcpexample
-  authoritative
-  subnet 192.0.2.0/24 {
-      default-router 192.0.2.1
-      dns-server 192.0.2.1
-      lease 86400
-      range 0 {
-          start 192.0.2.100
-          stop 192.0.2.199
-      }
-  }
-
-Explanation
-^^^^^^^^^^^
-
-.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample authoritative
+.. cfgcmd:: set service dhcp-server shared-network-name <name> authoritative
 
    This says that this device is the only DHCP server for this network. If other
    devices are trying to offer DHCP leases, this machine will send 'DHCPNAK' to
    any device trying to request an IP address that is not valid for this
    network.
 
-.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 default-router 192.0.2.1
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> default-router <address>
+
+   This is a configuration parameter for the `<subnet>`, saying that as part of
+   the response, tell the client that the default gateway can be reached at
+   `<address>`.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> dns-server <address>
 
    This is a configuration parameter for the subnet, saying that as part of the
-   response, tell the client that I am the default router for this network.
+   response, tell the client that the DNS server can be found at `<address>`.
 
-.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 dns-server 192.0.2.1
+   Multiple DNS servers can be defined.
 
-   This is a configuration parameter for the subnet, saying that as part of the
-   response, tell the client that I am the DNS server for this network. If you
-   do not want to run a DNS server, you could also provide one of the public
-   DNS servers, such as google's. You can add multiple entries by repeating the
-   line.
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> lease <time>
 
-.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 lease 86400
+   Assign the IP address to this machine for `<time>` seconds.
 
-   Assign the IP address to this machine for 24 hours. It is unlikely you'd need
-   to shorten this period, unless you are running a network with lots of devices
-   appearing and disappearing.
+   The default value is 86400 seconds which corresponds to one day.
 
-.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 range 0 start 192.0.2.100
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> range <n> start <address>
 
-   Make a range of addresses available for clients starting from .100 [...]
+   Create DHCP address range with a range id of `<n>`. DHCP leases are taken
+   from this pool. The pool starts at address `<address>`.
 
-.. cfgcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 range 0 stop 192.0.2.199
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> range <n> stop <address>
 
-   [...] and ending at .199.
+   Create DHCP address range with a range id of `<n>`. DHCP leases are taken
+   from this pool. The pool stops with address `<address>`.
 
-Failover
---------
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> exclude <address>
 
-VyOS provides support for DHCP failover. DHCP failover must be configured
-explicitly by the following statements.
+   Always exclude this address from any defined range. This address will never
+   be assigned by the DHCP server.
 
-.. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover local-address '192.0.2.1'
+   This option can be specified multiple times.
 
-   Local IP address used when communicating to the failover peer.
-
-.. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover peer-address '192.0.2.2'
-
-   Peer IP address of the second DHCP server in this failover cluster.
-
-.. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover name 'foo'
-
-   A generic name referencing this sync service.
-
-.. note:: `name` must be identical on both sides!
-
-.. cfgcmd:: set service dhcp-server shared-network-name 'LAN' subnet '192.0.2.0/24' failover status '{primary|secondary}'
-
-   The primary and secondary statements determines whether the server is primary
-   or secondary.
-
-.. note:: In order for the primary and the secondary DHCP server to keep
-   their lease tables in sync, they must be able to reach each other on TCP
-   port 647. If you have firewall rules in effect, adjust them accordingly.
-
-.. hint:: The dialogue between failover partners is neither encrypted nor
-   authenticated. Since most DHCP servers exist within an organisation's own
-   secure Intranet, this would be an unnecessary overhead. However, if you have
-   DHCP failover peers whose communications traverse insecure networks, then we
-   recommend that you consider the use of VPN tunneling between them to ensure
-   that the failover partnership is immune to disruption (accidental or
-   otherwise) via third parties.
-
-Static mappings
----------------
-
-You can specify a static DHCP assignment on a per host basis. You will need the
-MAC address of the station and your desired IP address. The address must be
-inside the subnet definition but can be outside of the range statement.
-
-.. cfgcmd::  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping static-mapping-01 mac-address ff:ff:ff:ff:ff:ff
-
-   Each host is uniquely identified by its MAC address.
-
-.. cfgcmd::  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping static-mapping-01 ip-address 192.0.2.10
-
-   IP address to assign to this host. It must be inside the subnet in which it
-   is defined but can be outside the dynamic range. If ip-address is not
-   specified, an IP from the dynamic pool (as specified by ``range``) is used.
-   This is useful, for example, in combination with hostfile update.
-
-.. hint:: This is the equivalent of the host block in dhcpd.conf of isc-dhcpd.
-
-DHCP Options
-------------
-
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 default-router '<address>'
-
-   Specify the default routers IPv4 address which should be used in this subnet.
-   This can - of course - be a VRRP address (DHCP option 003).
-
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 dns-server '<address>'
-
-   Specify the DNS nameservers used (Option 006). This option may be used
-   mulltiple times to specify additional DNS nameservers.
-
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 domain-name '<domain-name>'
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet 192.0.2.0/24 domain-name <domain-name>
 
    The domain-name parameter should be the domain name that will be appended to
    the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
    Option 015).
 
-.. cfgcmd:: set service dhcp-server shared-network-name '<name>' subnet 192.0.2.0/24 domain-search '<domain-name>'
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet 192.0.2.0/24 domain-search <domain-name>
 
    The domain-name parameter should be the domain name used when completing DNS
    request where no full FQDN is passed. This option can be given multiple times
    if you need multiple search domains (DHCP Option 119).
+
+
+Failover
+^^^^^^^^
+
+VyOS provides support for DHCP failover. DHCP failover must be configured
+explicitly by the following statements.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> failover local-address <address>
+
+   Local IP `<address>` used when communicating to the failover peer.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> failover peer-address <address>
+
+   Remote peer IP `<address>` of the second DHCP server in this failover cluster.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> failover name <name>
+
+   A generic `<name>` referencing this sync service.
+
+   .. note:: `<name>` must be identical on both sides!
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> failover status <primary | secondary>
+
+   The primary and secondary statements determines whether the server is primary
+   or secondary.
+
+   .. note:: In order for the primary and the secondary DHCP server to keep
+      their lease tables in sync, they must be able to reach each other on TCP
+      port 647. If you have firewall rules in effect, adjust them accordingly.
+
+   .. hint:: The dialogue between failover partners is neither encrypted nor
+      authenticated. Since most DHCP servers exist within an organisation's own
+      secure Intranet, this would be an unnecessary overhead. However, if you have
+      DHCP failover peers whose communications traverse insecure networks, then we
+      recommend that you consider the use of VPN tunneling between them to ensure
+      that the failover partnership is immune to disruption (accidental or
+      otherwise) via third parties.
+
+
+Static mappings
+^^^^^^^^^^^^^^^
+
+You can specify a static DHCP assignment on a per host basis. You will need the
+MAC address of the station and your desired IP address. The address must be
+inside the subnet definition but can be outside of the range statement.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> static-mapping <description> mac-address <address>
+
+   Create a new DHCP static mapping named `<description>` which is valid for
+   the host identified by its MAC `<address>`.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> static-mapping <description> ip-address <address>
+
+   Static DHCP IP address assign to host identified by `<description>`. IP
+   address must be inside the `<subnet>` which is defined but can be outside
+   the dynamic range created with :cfgcmd:`set service dhcp-server
+   shared-network-name <name> subnet <subnet> range <n>`. If no ip-address is
+   specified, an IP from the dynamic pool is used.
+
+   This is useful, for example, in combination with hostfile update.
+
+   .. hint:: This is the equivalent of the host block in dhcpd.conf of isc-dhcpd.
+
+
+Options
+^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -296,45 +272,124 @@ DHCP Options
 
 Multi: can be specified multiple times.
 
-Raw parameters
---------------
+
+Raw Parameters
+^^^^^^^^^^^^^^
 
 Raw parameters can be passed to shared-network-name, subnet and static-mapping:
 
 .. code-block:: none
 
-  set service dhcp-server shared-network-name dhcpexample shared-network-parameters
+  set service dhcp-server shared-network-name <name> shared-network-parameters
      <text>       Additional shared-network parameters for DHCP server.
-  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 subnet-parameters
+  set service dhcp-server shared-network-name <name> subnet <subnet> subnet-parameters
      <text>       Additional subnet parameters for DHCP server.
-  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters
+  set service dhcp-server shared-network-name <name> subnet <subnet> static-mapping <description> static-mapping-parameters
      <text>       Additional static-mapping parameters for DHCP server.
                   Will be placed inside the "host" block of the mapping.
 
-These parameters are passed as-is to isc-dhcp's dhcpd.conf under the configuration node they are defined in.
-They are not validated so an error in the raw parameters won't be caught by vyos's scripts and will cause dhcpd to fail to start.
-Always verify that the parameters are correct before commiting the configuration.
-Refer to isc-dhcp's dhcpd.conf manual for more information:
+These parameters are passed as-is to isc-dhcp's dhcpd.conf under the
+configuration node they are defined in. They are not validated so an error in
+the raw parameters won't be caught by vyos's scripts and will cause dhcpd to
+fail to start. Always verify that the parameters are correct before commiting
+the configuration. Refer to isc-dhcp's dhcpd.conf manual for more information:
 https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcpdconf
 
-Quotes can be used inside parameter values by replacing all quote characters 
+Quotes can be used inside parameter values by replacing all quote characters
 with the string ``&quot;``. They will be replaced with literal quote characters
 when generating dhcpd.conf.
+
 
 Example
 ^^^^^^^
 
-.. opcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option domain-name-servers 192.0.2.11, 192.0.2.12;"
+Quick-Start
+"""""""""""
 
-   Override the static-mapping's dns-server with a custom one that will be sent
-   only to this host.
+* We are offering address space in the `192.0.2.0/24` network.
+* We are using the network name `mypool`.
 
-.. opcmd:: set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option pxelinux.configfile &quot;pxelinux.cfg/01-00-15-17-44-2d-aa&quot;;"
+.. code-block:: none
 
-   An option that takes a quoted string is set by replacing all quote characters
-   with the string ``&quot;`` inside the static-mapping-parameters value.
-   The resulting line in dhcpd.conf will be
-   ``option pxelinux.configfile "pxelinux.cfg/01-00-15-17-44-2d-aa";``.
+  set service dhcp-server shared-network-name mypool authoritative
+  set service dhcp-server shared-network-name mypool subnet 192.0.2.0/24 default-router 192.0.2.1
+  set service dhcp-server shared-network-name mypool subnet 192.0.2.0/24 dns-server 192.0.2.1
+  set service dhcp-server shared-network-name mypool subnet 192.0.2.0/24 lease 86400
+  set service dhcp-server shared-network-name mypool subnet 192.0.2.0/24 range 0 start 192.0.2.100
+  set service dhcp-server shared-network-name mypool subnet 192.0.2.0/24 range 0 stop 192.0.2.199
+
+The generated config will look like:
+
+.. code-block:: none
+
+  vyos@vyos# show service dhcp-server shared-network-name mypool
+  authoritative
+  subnet 192.0.2.0/24 {
+      default-router 192.0.2.1
+      dns-server 192.0.2.1
+      lease 86400
+      range 0 {
+          start 192.0.2.100
+          stop 192.0.2.199
+      }
+  }
+
+
+Failover
+""""""""
+
+* Setup DHCP failover for network 192.0.2.0/24
+* Default gateway and DNS server is at `192.0.2.254`
+* The primary DHCP server uses address `192.168.189.252`
+* The secondary DHCP server uses address `192.168.189.253`
+* DHCP range spans from `192.168.189.10` - `192.168.189.250`
+
+**Primary**
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 default-router '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 dns-server '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 domain-name 'vyos.net'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover local-address '192.168.189.252'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.253'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.168.189.10'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.168.189.250'
+
+**Secondary**
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 default-router '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 dns-server '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 domain-name 'vyos.net'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover local-address '192.168.189.253'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.252'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.168.189.10'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.168.189.250'
+
+
+Raw Parameters
+""""""""""""""
+
+* Override static-mapping's dns-server with a custom one that will be sent only
+  to this host.
+* An option that takes a quoted string is set by replacing all quote characters
+  with the string ``&quot;`` inside the static-mapping-parameters value.
+  The resulting line in dhcpd.conf will be
+  ``option pxelinux.configfile "pxelinux.cfg/01-00-15-17-44-2d-aa";``.
+
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option domain-name-servers 192.0.2.11, 192.0.2.12;"
+  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option pxelinux.configfile &quot;pxelinux.cfg/01-00-15-17-44-2d-aa&quot;;"
+
+
 
 Operation Mode
 --------------
@@ -401,41 +456,41 @@ Configuration Options
    Clients receiving advertise messages from multiple servers choose the server
    with the highest preference value. The range for this value is ``0...255``.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' lease-time {default | maximum | minimum}
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> lease-time {default | maximum | minimum}
 
    The default lease time for DHCPv6 leases is 24 hours. This can be changed by
    supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All
    values need to be supplied in seconds.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nis-domain '<domain-name>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nis-domain <domain-name>
 
    A :abbr:`NIS (Network Information Service)` domain can be set to be used for
    DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nisplus-domain '<domain-name>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nisplus-domain <domain-name>
 
    The procedure to specify a :abbr:`NIS+ (Network Information Service Plus)`
    domain is similar to the NIS domain one:
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nis-server '<address>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nis-server <address>
 
    Specify a NIS server address for DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' nisplus-server '<address>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nisplus-server <address>
 
    Specify a NIS+ server address for DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' sip-server-address '<address>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sip-server-address <address>
 
    Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6 address
    for all DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' sip-server-name '<fqdn>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sip-server-name <fqdn>
 
    Specify a :abbr:`SIP (Session Initiation Protocol)` server by FQDN for all
    DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name '<name>' subnet '<v6net>' sntp-server-address '<address>'
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sntp-server-address <address>
 
    A SNTP server address can be specified for DHCPv6 clients.
 
@@ -570,7 +625,7 @@ https://wiki.vyos.net/wiki/Network_address_setup.
 Configuration
 -------------
 
-.. cfgcmd:: set service dhcp-relay interface '<interface>'
+.. cfgcmd:: set service dhcp-relay interface <interface>
 
    Enable the DHCP relay service on the given interface.
 

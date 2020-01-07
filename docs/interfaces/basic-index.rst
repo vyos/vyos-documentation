@@ -8,4 +8,5 @@ Basic Interfaces
    :maxdepth: 1
 
    ethernet
+   loopback
    pppoe

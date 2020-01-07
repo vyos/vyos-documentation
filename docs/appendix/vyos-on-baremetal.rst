@@ -107,7 +107,7 @@ VyOS 1.2 (crux)
 ---------------
 
 Depending on the VyOS versions you intend to install there is a difference in
-the serial port settings (T1327_).
+the serial port settings (:vytask:`T1327`).
 
 Create a bootable USB pendrive using e.g. Rufus_ on a Windows machine.
 
@@ -190,7 +190,7 @@ VyOS 1.2 (rolling)
 ------------------
 
 Installing the rolling release on an APU2 board does not require any change
-on the serial console from your host side as T1327_ was successfully
+on the serial console from your host side as :vytask:`T1327` was successfully
 implemented.
 
 Simply proceed with a regular image installation as described in
@@ -246,8 +246,6 @@ Desktop
    :alt: APU4C4 desktop back
 
 .. _Rufus: https://rufus.ie/
-.. _T1327: https://phabricator.vyos.net/T1327
-
 
 Qotom Q355G4
 ************

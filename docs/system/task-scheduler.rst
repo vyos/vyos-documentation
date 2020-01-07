@@ -11,7 +11,7 @@ use of UNIX cron_.
    be dangerous. Together with :ref:`command-scripting` this can be used for
    automating (re-)configuration.
 
-.. cfgcmd:: set system task-scheduler task '<task>' interval '<interval>'
+.. cfgcmd:: set system task-scheduler task <task> interval <interval>
 
    Specify the time interval when `<task>` should be executed. The interval
    is specified as number with one of the following suffixes:
@@ -23,17 +23,17 @@ use of UNIX cron_.
 
    .. note:: If suffix is omitted, minutes are implied.
 
-.. cfgcmd:: set system task-scheduler task '<task>' crontab-spec '<spec>'
+.. cfgcmd:: set system task-scheduler task <task> crontab-spec <spec>
 
    Set execution time in common cron_ time format. A cron `<spec>` of
    ``30 */6 * * *`` would execute the `<task>` at minute 30 past every 6th hour.
 
-.. cfgcmd:: set system task-scheduler task '<task>' executable path '<path>'
+.. cfgcmd:: set system task-scheduler task <task> executable path <path>
 
    Specify absolute `<path>` to script which will be run when `<task>` is
    executed.
 
-.. cfgcmd:: set system task-scheduler task '<task>' executable arguments '<args>'
+.. cfgcmd:: set system task-scheduler task <task> executable arguments <args>
 
    Arguments which will be passed to the executable.
 

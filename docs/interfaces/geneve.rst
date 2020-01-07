@@ -32,6 +32,9 @@ Geneve Header:
   |                    Variable Length Options                    |
   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
+Configuration
+=============
+
 .. cfgcmd:: set interfaces geneve gnv0 address '192.0.2.2/24'
 
    Create GENEVE tunnel listening on local address `192.0.2.2/24`.

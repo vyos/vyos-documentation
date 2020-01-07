@@ -18,32 +18,32 @@ used to determine the forwarding table used for unicast packet forwarding.
 Static Routes
 #############
 
-.. cfgcmd:: set protocols static route '<subnet>' next-hop '<address>'
+.. cfgcmd:: set protocols static route <subnet> next-hop <address>
 
    Configure next-hop `<address>` for an IPv4 static route. Multiple static
    routes can be created.
 
-.. cfgcmd:: set protocols static route '<subnet>' next-hop '<address>' disable
+.. cfgcmd:: set protocols static route <subnet> next-hop <address> disable
 
    Disable this IPv4 static route entry.
 
-.. cfgcmd:: set protocols static route '<subnet>' next-hop '<address>' distance '<distance>'
+.. cfgcmd:: set protocols static route <subnet> next-hop <address> distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
 
    Range is 1 to 255, default is 1.
 
-.. cfgcmd:: set protocols static route6 '<subnet>' next-hop '<address>'
+.. cfgcmd:: set protocols static route6 <subnet> next-hop <address>
 
    Configure next-hop `<address>` for an IPv6 static route. Multiple static
    routes can be created.
 
-.. cfgcmd:: set protocols static route6 '<subnet>' next-hop '<address>' disable
+.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> disable
 
    Disable this IPv6 static route entry.
 
-.. cfgcmd:: set protocols static route6 '<subnet>' next-hop '<address>' distance '<distance>'
+.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
@@ -57,34 +57,34 @@ Static Routes
 Interface Routes
 ================
 
-.. cfgcmd:: set protocols static interface-route '<subnet>' next-hop-interface '<interface>'
+.. cfgcmd:: set protocols static interface-route <subnet> next-hop-interface <interface>
 
    Allows you to configure the next-hop interface for an interface-based IPv4
    static route. `<interface>` will be the next-hop interface where trafic is
    routed for the given `<subnet>`.
 
-.. cfgcmd:: set protocols static interface-route '<subnet>' next-hop-interface '<interface>' disable
+.. cfgcmd:: set protocols static interface-route <subnet> next-hop-interface <interface> disable
 
    Disables interface-based IPv4 static route.
 
-.. cfgcmd:: set protocols static interface-route '<subnet>' next-hop-interface '<interface>' distance '<distance>'
+.. cfgcmd:: set protocols static interface-route <subnet> next-hop-interface <interface> distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
 
    Range is 1 to 255, default is 1.
 
-.. cfgcmd:: set protocols static interface-route6 '<subnet>' next-hop-interface '<interface>'
+.. cfgcmd:: set protocols static interface-route6 <subnet> next-hop-interface <interface>
 
    Allows you to configure the next-hop interface for an interface-based IPv6
    static route. `<interface>` will be the next-hop interface where trafic is
    routed for the given `<subnet>`.
 
-.. cfgcmd:: set protocols static interface-route6 '<subnet>' next-hop-interface '<interface>' disable
+.. cfgcmd:: set protocols static interface-route6 <subnet> next-hop-interface <interface> disable
 
    Disables interface-based IPv6 static route.
 
-.. cfgcmd:: set protocols static interface-route6 '<subnet>' next-hop-interface '<interface>' distance '<distance>'
+.. cfgcmd:: set protocols static interface-route6 <subnet> next-hop-interface <interface> distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
@@ -95,7 +95,7 @@ Interface Routes
 Blackhole
 =========
 
-.. cfgcmd:: set protocols static route '<subnet>' blackhole
+.. cfgcmd:: set protocols static route <subnet> blackhole
 
    Use this command to configure a "black-hole" route on the router. A
    black-hole route is a route for which the system silently discard packets
@@ -103,12 +103,12 @@ Blackhole
    it does not prevent them from being used as a more specific route inside your
    network.
 
-.. cfgcmd:: set protocols static route '<subnet>' blackhole distance '<distance>'
+.. cfgcmd:: set protocols static route <subnet> blackhole distance <distance>
 
    Defines blackhole distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
 
-.. cfgcmd:: set protocols static route6 '<subnet>' blackhole
+.. cfgcmd:: set protocols static route6 <subnet> blackhole
 
    Use this command to configure a "black-hole" route on the router. A
    black-hole route is a route for which the system silently discard packets
@@ -116,7 +116,7 @@ Blackhole
    it does not prevent them from being used as a more specific route inside your
    network.
 
-.. cfgcmd:: set protocols static route6 '<subnet>' blackhole distance '<distance>'
+.. cfgcmd:: set protocols static route6 <subnet> blackhole distance <distance>
 
    Defines blackhole distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.

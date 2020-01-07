@@ -4,9 +4,9 @@ IPoE server
 VyOS utilizes `accel-ppp`_ to provide IPoE server functionality. It can be
 used with local authentication (mac-address) or a connected RADIUS server.
 
-.. note:: **Please be aware, due to an upstream bug, config changes/commits
+.. note:: Please be aware, due to an upstream bug, config changes/commits
    will restart the ppp daemon and will reset existing IPoE sessions,
-   in order to become effective.**
+   in order to become effective.
 
 Configuration
 ^^^^^^^^^^^^^
@@ -123,7 +123,4 @@ The rate-limit is set in kbit/sec.
   -------+------------+-------------------+-------------+-----+--------+------------+--------+----------+------------------
   ipoe0  | eth2       | 08:00:27:2f:d8:06 | 192.168.0.2 |     |        | 500/500    | active | 00:00:05 | dccc870fd31349fb
 
-
-
-
-.. _`accel-ppp`: https://accel-ppp.org/
+.. include:: ../common-references.rst

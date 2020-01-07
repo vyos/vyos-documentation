@@ -5,12 +5,12 @@ Documentation
 
 As most software projects we also have a lack in documentation. We encourage
 every VyOS user to help us improve our documentation. This will not only be
-benefical four you (when reading something up) but also for the whole world.
+beneficial for you (when reading something up) but also for the whole world.
 
-If you are willing to contribute to our documentation this is the definate
-guid how to do so.
+If you are willing to contribute to our documentation this is the definite
+guide how to do so.
 
-.. note:: In contrast to submitting code patches there is no requirement that
+.. note:: In contrast to submitting code patches, there is no requirement that
    you open up a Phabricator_ task prior to submitting a Pull-Request to the
    documentation.
 
@@ -147,29 +147,72 @@ system numbers for the documentation:
 
 Please don't use other public address space.
 
-
 Custom Sphinx-doc Markup
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-When documenting CLI commands use the ``.. cfgcmd::`` directive for all
-configuration mode commands. When documenting operational level command use
-the ``.. opcmd::`` directive. An explanation of the described command should
-be added below this statement.
+When writing the documentation custom commands have been developed. Please
+make yourself comfortable with those commands as this eases the way we
+render the documentation.
 
-**Example**
+cfgcmd
+""""""
+
+When documenting CLI commands use the ``.. cfgcmd::`` directive for all
+configuration mode commands. An explanation of the described command should be
+added below this statement.
+
+With those custom commands it will be possible to render them in a more
+descriptive way in the resulting HTML/PDF manual.
 
 .. code-block:: none
-
-  .. opcmd:: show protocols static arp
-
-     Display all known ARP table entries spanning accross all interfaces
 
   .. cfgcmd:: set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
 
      This will configure a static ARP entry always resolving `192.0.2.100` to
      `00:53:27:de:23:aa`.
 
+For a inline configuration level command use ``:cfgcmd:``
+
+.. code-block:: none
+  
+  :cfgcmd:`set interface ethernet eth0`
+
+opcmd
+"""""
+
+When documenting operational level command use the ``.. opcmd::`` directive.
+An explanation of the described command should be added below this statement.
+
+With those custom commands it will be possible to render them in a more
+descriptive way in the resulting HTML/PDF manual.
+
+.. code-block:: none
+
+  .. opcmd:: show protocols static arp
+
+     Display all known ARP table entries spanning across all interfaces
+
+For a inline operational level command use ``:opcmd:``
+
+.. code-block:: none
+  
+  :opcmd:`add system image`
+
+vytask
+""""""
+
+When referencing to VyOS Phabricator Tasks, there is a custom Sphinx Markup
+command called ``vytask`` which automatically renders to a proper Phabricator
+URL. This is heavily used in the :ref:`release-notes` section.
+
+.. code-block:: none
+
+  * :vytask:`T1605` Fixed regression in L2TP/IPsec server
+  * :vytask:`T1613` Netflow/sFlow captures IPv6 traffic correctly
+
+
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
-.. _Phabricator: https://phabricator.vyos.net
 .. _README.md: https://github.com/vyos/vyos-documentation/blob/master/README.md
+
+.. include:: ../common-references.rst

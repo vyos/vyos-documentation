@@ -15,23 +15,23 @@ Authentication Dial-In User Service)` accounts are supported.
 Local
 =====
 
-.. cfgcmd:: set system login user '<name>' full-name "<string>"
+.. cfgcmd:: set system login user <name> full-name "<string>"
 
    Create new system user with username `<name>` and real-name specified by
    `<string>`.
 
-.. cfgcmd:: set system login user '<name>' authentication plaintext-password '<password>'
+.. cfgcmd:: set system login user <name> authentication plaintext-password <password>
 
    Specify the plaintext password user by user `<name>` on this system. The
    plaintext password will be automatically transferred into a secure hashed
    password and not saved anywhere in plaintext.
 
-.. cfgcmd:: set system login user '<name>' authentication encrypted-password '<password>'
+.. cfgcmd:: set system login user <name> authentication encrypted-password <password>
 
    Setup encrypted password for given username. This is usefull for
    transferring a hashed password from system to system.
 
-.. cfgcmd:: set system login user '<name>' group '<group>'
+.. cfgcmd:: set system login user <name> group <group>
 
    Specify additional group membership for given username `<name>`.
 
@@ -55,12 +55,12 @@ and paste it. Some terminal emulators may accidentally split this over several
 lines. Be attentive when you paste it that it only pastes as a single line.
 The third part is simply an identifier, and is for your own reference.
 
-.. cfgcmd:: set system login user '<username>' authentication public-keys '<identifier>' key '<key>'
+.. cfgcmd:: set system login user <username> authentication public-keys <identifier> key <key>
 
    Assign the SSH public key portion `<key>` identified by per-key
    `<identifier>` to the local user `<username>`.
 
-.. cfgcmd:: set system login user '<username>' authentication public-keys '<identifier>' type '<type>'
+.. cfgcmd:: set system login user <username> authentication public-keys <identifier> type <type>
 
    Every SSH public key portion referenced by `<identifier>` requires the
    configuration of the `<type>` of public-key used. This type can be any of:
@@ -75,7 +75,7 @@ The third part is simply an identifier, and is for your own reference.
    .. note:: You can assign multiple keys to the same user by using a unique
       identifier per SSH key.
 
-.. cfgcmd:: loadkey '<username>' '<location>'
+.. cfgcmd:: loadkey <username> <location>
 
    SSH keys can not only be specified on the command-line but also loaded for
    a given user with `<username>` from a file pointed to by `<location>.` Keys
@@ -113,17 +113,17 @@ Dial-In User Service)` servers as backend for user authentication.
 Configuration
 -------------
 
-.. cfgcmd:: set system login radius server '<address>' secret '<secret>'
+.. cfgcmd:: set system login radius server <address> secret <secret>
 
    Specify the `<address>` of the RADIUS server user with the pre-shared-secret
    given in `<secret>`. Multiple servers can be specified.
 
-.. cfgcmd:: set system login radius server '<address>' port '<port>'
+.. cfgcmd:: set system login radius server <address> port <port>
 
    Configure the discrete port under which the RADIUS server can be reached.
    This defaults to 1812.
 
-.. cfgcmd:: set system login radius server '<address>' timeout '<timeout>'
+.. cfgcmd:: set system login radius server <address> timeout <timeout>
 
    Setup the `<timeout>` in seconds when querying the RADIUS server.
 
@@ -132,7 +132,7 @@ Configuration
    the attribute you will only get regular, non privilegued, system users.
 
 
-.. cfgcmd:: set system login radius source-address '<address>'
+.. cfgcmd:: set system login radius source-address <address>
 
    RADIUS servers could be hardened by only allowing certain IP addresses to
    connect. As of this the source address of each RADIUS query can be
@@ -148,12 +148,12 @@ Login Banner
 You are able to set post-login or pre-login banner messages to display certain
 information for this system.
 
-.. cfgcmd:: set system login banner pre-login '<message>'
+.. cfgcmd:: set system login banner pre-login <message>
 
    Configure `<message>` which is shown during SSH connect and before a user is
    logged in.
 
-.. cfgcmd:: set system login banner post-login '<message>'
+.. cfgcmd:: set system login banner post-login <message>
 
    Configure `<message>` which is shown after user has logged in to the system.
 

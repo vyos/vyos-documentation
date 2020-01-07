@@ -13,7 +13,7 @@ stored on a remote host for archiving/backup reasons.
    Change the number of commit revisions to `<number>`, the default setting for
    this value is to store 20 revisions locally.
 
-.. cfgcmd:: set system config-management commit-archive location '<url>'
+.. cfgcmd:: set system config-management commit-archive location <url>
 
    If you want to save all config changes to a remote destination. Set the
    commit-archive location. Every time a commit is successfully the
