@@ -232,16 +232,45 @@ Edit
 ^^^^
 
 The ``edit`` command allows you to navigate down into the configuration tree.
+
+To avoid writing or pasting long paths,
+you can set the edit level to any node with the "edit" command,
+such as "edit firewall name Foo".
+Once you are at some level, you can use relative node paths,
+such as "set rule 10 action accept" in this case.
+
 To get back to an upper level, use the ``up`` command or use the ``top`` command to get back to the upper most level.
 The ``[edit]`` text displays where the user is located in the configuration tree.
 
 .. code-block:: none
 
+  dmbaturin@reki# edit firewall name Foo
+
+  [edit firewall name Foo]
+
+  dmbaturin@reki# set rule 10 protocol tcp
+
+  [edit firewall name Foo]
+
+  dmbaturin@reki# edit rule 10
+
+  [edit firewall name Foo rule 10]
+
+  dmbaturin@reki# set destination port 22
+
+  [edit firewall name Foo rule 10]
+
+  dmbaturin@reki# up
+
+  [edit firewall name Foo]
+
+  dmbaturin@reki# set rule 10 description "Allow SSH"
+
+  [edit firewall name Foo]
+
+  dmbaturin@reki# top
+
   [edit]
-  vyos@vyos# edit interfaces
-  [edit interfaces]
-  vyos@vyos# edit ethernet eth0
-  [edit interfaces ethernet eth0]
 
 Exit
 ^^^^
