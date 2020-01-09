@@ -10,7 +10,7 @@ and BGP for dynamic routing updates.
 Prerequisites
 ^^^^^^^^^^^^^
 
-- A pair of Azure VNet Gateways deployed in active-passive
+- A pair of Azure VNet Gateways deployed in active-active
   configuration with BGP enabled.
 
 - A local network gateway deployed in Azure representing
