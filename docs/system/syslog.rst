@@ -222,3 +222,5 @@ allowed parameters:
 
 When no options/parameters are used, the contents of the main syslog file are
 displayed.
+
+.. hint:: Use ``show log | srip-private`` if you want to hide private data when sharing your logs.
