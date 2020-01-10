@@ -149,7 +149,7 @@ configuration.
    After reboot you might want to verify the version you are running with the
    :opcmd:`show version` command.
 
-.. hint:: You can always access files from a previous installation any copy
+.. hint:: You can always access files from a previous installation and copy
    them to your current image. This can be done using the :opcmd:`copy`
    command. To copy ``/config/config.boot`` from VyOS 1.2.1 image use ``copy
    file 1.2.1://config/config.boot to /tmp/config.boot.1.2.1``.
