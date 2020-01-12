@@ -164,7 +164,7 @@ HUB Example Configuration:
 HUB on AWS Configuration Specifics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Setting this up on AWS will require a "Custom Protocol Rule" for protocol number "47" (GRE) Allow Rule in TWO places. Firstly on the VPC Network ACL, and secondly on the security group network ACL attached to the EC2 instance. This has been tested as working for the offical AMI image on the AWS Marketplace. (Locate the correct VPC and security group by navigating through the details pane below your EC2 instance in the AWS console)
+Setting this up on AWS will require a "Custom Protocol Rule" for protocol number "47" (GRE) Allow Rule in TWO places. Firstly on the VPC Network ACL, and secondly on the security group network ACL attached to the EC2 instance. This has been tested as working for the official AMI image on the AWS Marketplace. (Locate the correct VPC and security group by navigating through the details pane below your EC2 instance in the AWS console)
 
 SPOKE Configuration
 ^^^^^^^^^^^^^^^^^^^

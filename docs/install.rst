@@ -64,7 +64,7 @@ distributions it is installed by default as package managers use it to verify
 package signatures. If not pre-installed, it will need to be downloaded and
 installed.
 
-The offical VyOS public key can be retrieved in a number of ways. Skip to
+The official VyOS public key can be retrieved in a number of ways. Skip to
 :ref:`gpg-verification` if the key is already present.
 
 It can also be retrieved directly from a key server:
@@ -158,7 +158,7 @@ downloaded.
    downloaded VyOS image. That small *.asc* file is the signature for the
    associated image.
 
-Finally, verify the authencity of the downloaded image:
+Finally, verify the authenticity of the downloaded image:
 
 .. code-block:: none
 
@@ -274,7 +274,7 @@ method which allows deploying VyOS through the network.
 
 * :ref:`dhcp-server`
 * :ref:`tftp-server`
-* Webserver (HTTP) - optional, but we will use it to speed up intallation
+* Webserver (HTTP) - optional, but we will use it to speed up installation
 * VyOS ISO image to be installed (do not use images prior to VyOS 1.2.3)
 * ``pxelinux.0``, ``ldlinux.c32`` from SYSLINUX_
   (https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/)

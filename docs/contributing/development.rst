@@ -62,7 +62,7 @@ your commit message, as shown below:
 * ``Jenkins: add current Git commit ID to build description``
 
 If there is no Phabricator_ reference in the commits of your pull request, we
-have to ask you to ammend the commit message. Otherwise we will have to reject
+have to ask you to amend the commit message. Otherwise we will have to reject
 it.
 
 Writing good commit messages
@@ -83,7 +83,7 @@ The format should be and is inspired by: https://git-scm.com/book/ch5-2.html
 
 * Followed by a message which describes all the details like:
 
-  * What/why/how something has been changed, makes everyones life easier when
+  * What/why/how something has been changed, makes everyone's life easier when
     working with `git bisect`
 
   * All text of the commit message should be wrapped at 72 characters if
@@ -93,7 +93,7 @@ The format should be and is inspired by: https://git-scm.com/book/ch5-2.html
   * If applicable a reference to a previous commit should be made linking
     those commits nicely when browsing the history: ``After commit abcd12ef
     ("snmp: this is a headline") a Python import statement is missing,
-    throwing the follwoing exception: ABCDEF``
+    throwing the following exception: ABCDEF``
 
 * Always use the ``-x`` option to the ``git cherry-pick`` command when back or
   forward porting an individual commit. This automatically appends the line:
@@ -109,7 +109,7 @@ Limits:
 
 * We only accept bugfixes in packages other than https://github.com/vyos/vyos-1x
   as no new functionality should use the old style templates (``node.def`` and
-  Perl/BASH code. Use the new stlye XML/Python interface instead.
+  Perl/BASH code. Use the new style XML/Python interface instead.
 
 Please submit your patches using the well-known GitHub pull-request against our
 repositories found in the VyOS GitHub organisation at https://github.com/vyos
@@ -120,7 +120,7 @@ Determinine source package
 
 Suppose you want to make a change in the webproxy script but yet you do not know
 which of the many VyOS packages ship this file. You can determine the VyOS
-package name in question by using Debians ``dpkg -S`` command of your running
+package name in question by using Debian's ``dpkg -S`` command of your running
 VyOS installation.
 
 .. code-block:: none
@@ -138,7 +138,7 @@ Fork Repository and submit Patch
 
 Forking the repository and submitting a GitHub pull-request is the preferred
 way of submitting your changes to VyOS. You can fork any VyOS repository to your
-very own GitHub account by just appending ``/fork`` to any repositories URL on
+very own GitHub account by just appending ``/fork`` to any repository's URL on
 GitHub. To e.g. fork the ``vyos-1x`` repository, open the following URL in your
 favourite browser: https://github.com/vyos/vyos-1x/fork
 
@@ -149,7 +149,7 @@ repository:
 
 * Fork: ``git remote add myfork https://github.com/<user>/vyos-1x.git``
 
-In order to record you as the author of the fix please indentify yourself to Git
+In order to record you as the author of the fix please identify yourself to Git
 by setting up your name and email. This can be done local for this one and only
 repository ``git config`` or globally using ``git config --global``.
 
@@ -260,7 +260,7 @@ Configuration Script Structure and Behaviour
 
 Your configuration script or operation mode script which is also written in
 Python3 should have a line break on 80 characters. This seems to be a bit odd
-nowadays but as some people also work remotly or programm using vi(m) this is
+nowadays but as some people also work remotely or program using vi(m) this is
 a fair good standard which I hope we can rely on.
 
 In addition this also helps when browsing the GitHub codebase on a mobile
@@ -563,7 +563,7 @@ Examples:
 
 * Good: "TCP connection timeout"
 * Bad: "tcp connection timeout"
-* Horrible: "Tcp connectin timeout"
+* Horrible: "Tcp connection timeout"
 
 Acronyms also **must** be capitalized to visually distinguish them from normal
 words:
@@ -673,10 +673,10 @@ Migrating old CLI
      - None
      - All logic should be in the scripts
 
-Continous Integration
-=====================
+Continuous Integration
+======================
 
-VyOS makes use of Jenkins_ as our Continous Integration (CI) service. Our CI
+VyOS makes use of Jenkins_ as our Continuous Integration (CI) service. Our CI
 server is publicly accessible here: https://ci.vyos.net. You can get a brief
 overview of all required components shipped in a VyOS ISO.
 
@@ -687,7 +687,7 @@ but instead of building it from source on every run, we rather always fetch a
 fresh copy (if needed) from Dockerhub_.
 
 Each module is build on demand if a new commit on the branch in question is
-found. After a successfull run the resulting Debian Package(s) will be deployed
+found. After a successful run the resulting Debian Package(s) will be deployed
 to our Debian repository which is used during build time. It is located here:
 http://dev.packages.vyos.net/repositories/.
 

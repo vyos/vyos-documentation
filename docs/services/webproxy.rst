@@ -24,7 +24,7 @@ Configuration
   # Enable proxy service
   set service webproxy listen-address 192.168.0.1
 
-  # By default it will listen to port 3128. If you wan't something else you have to define that.
+  # By default it will listen to port 3128. If you want something else you have to define that.
   set service webproxy listen-address 192.168.0.1 port 2050
 
   # By default the transparent proxy on that interface is enabled. To disable that you simply
@@ -43,7 +43,7 @@ Options
 Filtering by category
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you wan't to use existing blacklists you have to create/download a database
+If you want to use existing blacklists you have to create/download a database
 first. Otherwise you will not be able to commit the config changes.
 
 .. code-block:: none

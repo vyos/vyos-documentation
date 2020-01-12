@@ -31,7 +31,7 @@ may be blocked by the hypervisor.
 
 .. note:: As VyOS is based on Linux and there was no official IANA port assigned
    for VXLAN, VyOS uses a default port of 8472. You can change the port on a
-   per VXLAN interface basis to get it working accross multiple vendors.
+   per VXLAN interface basis to get it working across multiple vendors.
 
 Configuration
 =============

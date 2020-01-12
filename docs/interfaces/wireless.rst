@@ -23,7 +23,7 @@ added the configuration tree, specifying any detected settings (for example,
 its MAC address) and configured to run in monitor mode.
 
 To be able to use the wireless interfaces you will first need to set a
-regulatory domain with the country code of your locaion.
+regulatory domain with the country code of your location.
 
 .. cfgcmd:: set system wifi-regulatory-domain DE
 
@@ -34,7 +34,7 @@ Configuring Access-Point
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following example creates a WAP. When configuring multiple WAP interfaces,
-you must specify unique IP addresses, channels, Network IDs commonly refered
+you must specify unique IP addresses, channels, Network IDs commonly referred
 to as :abbr:`SSID (Service Set Identifier)`, and MAC addresses.
 
 The WAP in this example has the following characteristics:
@@ -281,8 +281,8 @@ The wireless interface identifier can range from wlan0 to wlan999.
 
 .. opcmd:: show interfaces wireless <wlanX> scan
 
-This command is used to retrive information about WAP within the range of your
-wireless interface. This command is usefull on wireless interfaces configured
+This command is used to retrieve information about WAP within the range of your
+wireless interface. This command is useful on wireless interfaces configured
 in station mode.
 
 .. note:: Scanning is not supported on all wireless drivers and wireless

@@ -141,7 +141,7 @@ RADIUS authentication
 ======================
 
 To enable RADIUS based authentication, the authentication mode needs to be
-changed withing the configuration. Previous settings like the local users, still
+changed within the configuration. Previous settings like the local users, still
 exists within the configuration, however they are not used if the mode has been
 changed from local to radius. Once changed back to local, it will use all local
 accounts again.

@@ -22,7 +22,7 @@ Shopping Cart
 
 Optional (10GE)
 ---------------
-If you wan't to get additional ethernet ports or even 10GE connectivity
+If you want to get additional ethernet ports or even 10GE connectivity
 the following optional parts will be required:
 
 * 1x Supermicro RSC-RR1U-E8 (Riser Card)
@@ -98,7 +98,7 @@ Shopping Cart
 * 1x VARIA Group Item 326745 19" dual rack for APU4
 * 1x Compex WLE900VX (Optional mini PCIe WiFi module)
 
-The 19" enclosure can accomodate up to two APU4 boards - there is a single and
+The 19" enclosure can accommodate up to two APU4 boards - there is a single and
 dual front cover.
 
 .. note:: Compex WLE900VX is only supported in mPCIe slot 1.
@@ -252,7 +252,7 @@ Qotom Q355G4
 
 The install on this Q355G4 box is pretty much plug and play. The port numbering
 the OS does might differ from the labels on the outside, but the UEFI firmware
-has a port blink test built in with MAC adresses so you can very quickly
+has a port blink test built in with MAC addresses so you can very quickly
 identify which is which. MAC labels are on the inside as well, and this test
 can be done from VyOS or plain Linux too. Default settings in the UEFI will
 make it boot, but depending on your installation wishes (i.e. storage type,

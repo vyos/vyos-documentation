@@ -29,7 +29,7 @@ Operation
 
 .. opcmd:: show protocols static arp
 
-   Display all known ARP table entries spanning accross all interfaces
+   Display all known ARP table entries spanning across all interfaces
 
 .. code-block:: none
 

@@ -13,7 +13,7 @@ In a minimal, configuration the following must be provided:
  * a interface with a nexthop
  * one rule with a LAN (inbound-interface) and the WAN (interface).
 
-lets assume we have two dhcp WAN interfaces and one LAN (eth2)
+Let's assume we have two DHCP WAN interfaces and one LAN (eth2):
 
 .. code-block:: none
 

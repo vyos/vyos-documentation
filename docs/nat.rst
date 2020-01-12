@@ -94,10 +94,10 @@ rewritten to address the internal (private) host.
 Bidirectional NAT
 ^^^^^^^^^^^^^^^^^
 
-This is a common szenario where both :ref:`source-nat` and
+This is a common scenario where both :ref:`source-nat` and
 :ref:`destination-nat` are configured at the same time. It's commonly used then
 internal (private) hosts need to establish a connection with external resources
-and external systems need to acces sinternal (private) resources.
+and external systems need to access internal (private) resources.
 
 NAT, Routing, Firewall Interaction
 ----------------------------------
@@ -109,7 +109,7 @@ NAT Ruleset
 -----------
 
 :abbr:`NAT (Network Address Translation)` is configured entirely on a series
-of so called `rules`. Rules are numbered and evaluated by the underlaying OS
+of so called `rules`. Rules are numbered and evaluated by the underlying OS
 in numerical order! The rule numbers can be changes by utilizing the
 :cfgcmd:`rename` and :cfgcmd:`copy` commands.
 
@@ -145,7 +145,7 @@ rules applied. Five different filters can be applied within a NAT rule
     set nat source rule 20 outbound-interface eth0
 
 * **inbound-interface** - applicable only to :ref:`destination-nat`. It
-  configures the interface which is used for the inside traffic the the
+  configures the interface which is used for the inside traffic the
   translation rule applies to.
 
   Example:
@@ -205,7 +205,7 @@ Address Conversion
 ------------------
 
 Every NAT rule has a translation command defined. The address defined for the
-translation is the addrass used when the address information in a packet is
+translation is the address used when the address information in a packet is
 replaced.
 
 Source Address
@@ -358,7 +358,7 @@ Example:
 * Redirect Microsoft RDP traffic from the internal (LAN, private) network via
   :ref:`destination-nat` in rule 110 to the internal, private host 192.0.2.40.
   We also need a :ref:`source-nat` rule 110 for the reverse path of the traffic.
-  The internal network 192.0.2.0/24 is reachable via interfache `eth0.10`.
+  The internal network 192.0.2.0/24 is reachable via interface `eth0.10`.
 
 .. code-block:: none
 

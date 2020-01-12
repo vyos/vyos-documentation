@@ -28,7 +28,7 @@ Local
 
 .. cfgcmd:: set system login user <name> authentication encrypted-password <password>
 
-   Setup encrypted password for given username. This is usefull for
+   Setup encrypted password for given username. This is useful for
    transferring a hashed password from system to system.
 
 .. cfgcmd:: set system login user <name> group <group>
@@ -127,7 +127,7 @@ Configuration
 
    Setup the `<timeout>` in seconds when querying the RADIUS server.
 
-.. hint:: If you wan't to have admin users to authenticate via RADIUS it is
+.. hint:: If you want to have admin users to authenticate via RADIUS it is
    essential to sent the ``Cisco-AV-Pair shell:priv-lvl=15`` attribute. Without
    the attribute you will only get regular, non privilegued, system users.
 
