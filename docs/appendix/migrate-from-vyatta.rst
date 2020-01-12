@@ -7,8 +7,8 @@ VyOS 1.x line aims to preserve backward compatibility and provide a safe
 upgrade path for existing Vyatta Core users. You may think of VyOS 1.0.0 as
 VC7.0.
 
-Vyatta release compatiblity
----------------------------
+Vyatta release compatibility
+----------------------------
 
 Vyatta Core releases from 6.5 to 6.6 should be 100% compatible.
 

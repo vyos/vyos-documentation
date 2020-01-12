@@ -6,7 +6,7 @@ Configuration Overview
 
 VyOS makes use of a unified configuration file for the entire systems
 configuration: ``/config/config.boot``. This allows easy template creation,
-backup, and replication of system configuration. A sytem can thus also be
+backup, and replication of system configuration. A system can thus also be
 easily cloned by simply copying the required configuration files.
 
 Terminology
@@ -341,7 +341,7 @@ Config Archive
 ==============
 
 VyOS automatically maintains backups of every previous configurations which
-has been comitted to the system.
+has been committed to the system.
 
 Local Archive
 -------------

@@ -234,7 +234,7 @@ Many base system packages are pulled straight from Debian's main and contrib
 repositories, but there are exceptions.
 
 This chapter lists those exceptions and gives you a brief overview what we
-have done on those packages. If you only wan't to build yourself a fresh ISO
+have done on those packages. If you only want to build yourself a fresh ISO
 you can completely skip this chapter. It may become interesting once you have
 a VyOS deep dive.
 

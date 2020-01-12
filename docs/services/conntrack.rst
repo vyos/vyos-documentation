@@ -58,7 +58,7 @@ Configuration
 
 Example
 ^^^^^^^
-The next exemple is a simple configuration of conntrack-sync.
+The next example is a simple configuration of conntrack-sync.
 
 
 .. figure:: /_static/images/service_conntrack_sync-schema.png
@@ -117,7 +117,7 @@ If you are using VRRP, you need to define a VRRP sync-group, and use ``vrrp sync
   set service conntrack-sync failover-mechanism vrrp sync-group 'syncgrp'
 
 
-On the active router, you should have informations in the internal-cache of
+On the active router, you should have information in the internal-cache of
 conntrack-sync. The same current active connections number should be shown in
 the external-cache of the standby router
 

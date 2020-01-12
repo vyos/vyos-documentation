@@ -4,9 +4,9 @@
 UDP Broadcast Relay
 ###################
 
-Certain vendors use broadcasts to identify their equipemnt within one ethernet
+Certain vendors use broadcasts to identify their equipment within one ethernet
 segment. Unfortunately if you split your network with multiple VLANs you loose
-the ability of identifying your equiment.
+the ability of identifying your equipment.
 
 This is where "UDP broadcast relay" comes into play! It will forward received
 broadcasts to other configured networks.
@@ -20,7 +20,7 @@ Configuration
 .. cfgcmd:: set service broadcast-relay id <n> description <description>
 
    A description can be added for each and every unique relay ID. This is
-   usefull to distinguish between multiple different ports/appliactions.
+   useful to distinguish between multiple different ports/appliactions.
 
 .. cfgcmd:: set service broadcast-relay id <n> interface <interface>
 

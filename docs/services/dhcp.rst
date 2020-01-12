@@ -291,7 +291,7 @@ Raw parameters can be passed to shared-network-name, subnet and static-mapping:
 These parameters are passed as-is to isc-dhcp's dhcpd.conf under the
 configuration node they are defined in. They are not validated so an error in
 the raw parameters won't be caught by vyos's scripts and will cause dhcpd to
-fail to start. Always verify that the parameters are correct before commiting
+fail to start. Always verify that the parameters are correct before committing
 the configuration. Refer to isc-dhcp's dhcpd.conf manual for more information:
 https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcpdconf
 

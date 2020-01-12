@@ -39,7 +39,7 @@ How is VyOS different from any other router distributions and platform?
 - DHCP, TFTP, mDNS repeater, broadcast relay and DNS forwarding support
 - Both IPv4 and IPv6 support
 - Runs on physical and virtual platforms alike: small x86 boards, big servers,
-  KVM, Xen, VMWare, Hyper-V, and more
+  KVM, Xen, VMware, Hyper-V, and more
 - Completely free and open source, with documented internal APIs and build
   procedures
 - Community driven. Patches are welcome and all code, bugs, and nightly builds

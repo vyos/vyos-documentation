@@ -164,11 +164,11 @@ The `unlimited` keyword is used to specify that an unlimited number of packets
 can be captured (by default, 1,000 packets are captured and you're returned to
 the VyOS command prompt).
 
-Interface Bandwith
-^^^^^^^^^^^^^^^^^^
+Interface Bandwidth
+^^^^^^^^^^^^^^^^^^^
 
-to take a quick view on the used bandwith of an interface use the ``monitor
-bandwith`` command
+to take a quick view on the used bandwidth of an interface use the ``monitor
+bandwidth`` command
 
 .. code-block:: none
 
@@ -199,7 +199,7 @@ show the following:
 Interface performance
 ^^^^^^^^^^^^^^^^^^^^^
 
-To take a look on the network bandwith between two nodes, the ``monitor
+To take a look on the network bandwidth between two nodes, the ``monitor
 bandwidth-test`` command is used to run iperf.
 
 .. code-block:: none
@@ -209,8 +209,8 @@ bandwidth-test`` command is used to run iperf.
     accept        Wait for bandwidth test connections (port TCP/5001)
     initiate      Initiate a bandwidth test
 
-* The ``accept`` command open a listen iperf server on TCP Port 5001
-* The ``initiate`` command conncet to this server.
+* The ``accept`` command opens a listening iperf server on TCP Port 5001
+* The ``initiate`` command connects to that server to perform the test.
 
 .. code-block:: none
 

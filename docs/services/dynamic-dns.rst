@@ -34,7 +34,7 @@ Configuration
 .. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> server <server>
 
    Configure the DNS `<server>` IP/FQDN used when updating this dynamic
-   assignemnt.
+   assignment.
 
 .. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> zone <zone>
 
@@ -124,7 +124,7 @@ hostnames, protocol and server.
 .. cfgcmd:: set service dns dynamic interface <interface> service <service> server <server>
 
    When a ``custom`` DynDNS provider is used the `<server>` where update
-   requests are beeing sent to must be specified.
+   requests are being sent to must be specified.
 
 Example:
 ^^^^^^^^

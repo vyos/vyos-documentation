@@ -25,7 +25,7 @@ what needs to be changed to make it work with a different protocol. We assume
 that IPsec will use pre-shared secret authentication and will use AES128/SHA1
 for the cipher and hash. Adjust this as necessary.
 
-.. NOTE:: VMWare users should ensure that VMXNET3 adapters used, e1000 adapters
+.. NOTE:: VMware users should ensure that VMXNET3 adapters used, e1000 adapters
    have known issue with GRE processing
 
 IPsec policy matching GRE

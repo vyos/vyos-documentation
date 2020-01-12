@@ -177,7 +177,7 @@ Route Selection
 .. cfgcmd:: set protocols bgp <asn> parameters bestpath as-path confed
 
    This command specifies that the length of confederation path sets and
-   sequences should should be taken into account during the BGP best path
+   sequences should be taken into account during the BGP best path
    decision process.
 
 .. cfgcmd:: set protocols bgp <asn> parameters bestpath as-path multipath-relax
