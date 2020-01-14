@@ -16,22 +16,37 @@ To build the manual run the following commands inside the `docs` folder:
 * `make latexpdf` for a LaTeX rendered PDF
 
 Required Debian Packages:
-* `python-sphinx`
-* `python-sphinx-rtd-theme`
 * `latexmk`
 * `texlive-latex-recommended`
 * `texlive-fonts-recommended`
 * `texlive-latex-extra`
+* `sphinx` (See sphinx below)
 
-### sphinx-autobuild
-Required extra setup procedure on Debian:
+### sphinx
+Installing `sphinx`, `sphinx-autobuild` and `sphinx-rtd-theme` packages
+on Debian, requires some extra steps:
+First ensure that phython3 is the default one
 ```bash
+python --version
+```
+
+Alternatively, to make python3 the default fix the following line to
+point to relevant 3.x version of binary on your system:
+```bash
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3....
+```
+
+Then follow these steps to install sphinx group of packages: 
+```bash
+sudo apt-get install python3-sphinx
 sudo apt-get install python-pip
+sudo pip install sphinx-rtd-theme
 sudo pip install sphinx-autobuild
 ```
 
-To build and run a webeserver, inside the `docs` folder:
-* `make livehtml` and browse to http://localhost:8000
+To build the html, start a webeserver, and view the output:
+* Run `make livehtml` inside the `docs` folder
+* Browse to http://localhost:8000
 
 
 ## Docker
