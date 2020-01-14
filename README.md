@@ -20,18 +20,20 @@ Required Debian Packages:
 * `texlive-latex-recommended`
 * `texlive-fonts-recommended`
 * `texlive-latex-extra`
-* `sphinx` (See sphinx below)
+* `sphinx`
 
 ### sphinx
-Installing `sphinx`, `sphinx-autobuild` and `sphinx-rtd-theme` packages
-on Debian, requires some extra steps:
-First ensure that phython3 is the default one
+Debian, requires some extra steps for 
+installing `sphinx`, `sphinx-autobuild` and `sphinx-rtd-theme` packages:
+
+First ensure that phython3 is the default:
 ```bash
 python --version
 ```
 
-Alternatively, to make python3 the default fix the following line to
-point to relevant 3.x version of binary on your system:
+Alternatively, to make python3 the default, revise the following line to
+point to the relevant 3.x version of the binary on your system:
+
 ```bash
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3....
 ```
