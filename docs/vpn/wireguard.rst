@@ -7,6 +7,15 @@ WireGuard is an extremely simple yet fast and modern VPN that utilizes
 state-of-the-art cryptography. See https://www.wireguard.com for more
 information.
 
+Create the Interface
+^^^^^^^^^^^^^
+
+As in the other VPN types supported by VyOS, you must create a WireGuard interface.
+
+.. code-block:: none
+set interfaces wireguard wg0
+
+
 Configuration
 ^^^^^^^^^^^^^
 
