@@ -24,19 +24,19 @@ multiple interfaces are being configured.
 .. code-block:: none
 
   wg01:~$ configure
-  wg01# run generate wireguard keypair
+  wg01# run generate wireguard named-keypairs KP0
 
 The public key is being shared with your peer(s), your peer will encrypt all
 traffic to your system using this public key.
 
 .. code-block:: none
 
-  wg01# run show wireguard pubkey
+  wg01# run show wireguard keypairs pubkey KP0
   u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk=
 
 
-Generate named keypairs
-~~~~~~~~~~~~~~~~~~~~~~~
+Tying named keypairs to Interfaces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Named keypairs can be used on a interface basis, if configured.
 If multiple wireguard interfaces are being configured, each can have
