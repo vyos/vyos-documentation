@@ -43,28 +43,15 @@ defined.
 .. cfgcmd:: set service ssh ciphers <cipher>
 
 Define allowed ciphers used for the SSH connection. A number of allowed ciphers
-can be specified, use multiple occurrences to allow multiple ciphers.
-
-* ``3des-cbc``
-* ``aes128-cbc``
-* ``aes192-cbc``
-* ``aes256-cbc``
-* ``aes128-ctr``
-* ``aes192-ctr``
-* ``aes256-ctr``
-* ``arcfour128``
-* ``arcfour256``
-* ``arcfour``
-* ``blowfish-cbc``
-* ``cast128-cbc``
-
-This could be used to harden security.
+can be specified, use multiple occurrences to allow multiple ciphers. You can
+choose from the following ciphers: ``3des-cbc``, ``aes128-cbc``, ``aes192-cbc``,
+``aes256-cbc``, ``aes128-ctr``, ``aes192-ctr``, ``aes256-ctr``, ``arcfour128``,
+``arcfour256``, ``arcfour``, ``blowfish-cbc``, ``cast128-cbc``
 
 .. cfgcmd:: set service ssh disable-password-authentication
 
 Disable password based authentication. Login via SSH keys only. This hardens
 security!
-
 
 .. cfgcmd: set service ssh disable-host-validation
 
@@ -75,28 +62,14 @@ time when reverse lookup is not possible.
 
 Specifies the available :abbr:`MAC (Message Authentication Code)` algorithms.
 The MAC algorithm is used in protocol version 2 for data integrity protection.
-Multiple algorithms can be provided. Supported MACs:
-
-* ``hmac-md5``
-* ``hmac-md5-96``
-* ``hmac-ripemd160``
-* ``hmac-sha1``
-* ``hmac-sha1-96``
-* ``hmac-sha2-256``
-* ``hmac-sha2-512``
-* ``umac-64@openssh.com``
-* ``umac-128@openssh.com``
-* ``hmac-md5-etm@openssh.com``
-* ``hmac-md5-96-etm@openssh.com``
-* ``hmac-ripemd160-etm@openssh.com``
-* ``hmac-sha1-etm@openssh.com``
-* ``hmac-sha1-96-etm@openssh.com``
-* ``hmac-sha2-256-etm@openssh.com``
-* ``hmac-sha2-512-etm@openssh.com``
-* ``umac-64-etm@openssh.com``
-* ``umac-128-etm@openssh.com``
-
-This could be used to harden security.
+Multiple algorithms can be provided. Supported MACs: ``hmac-md5``,
+``hmac-md5-96``, ``hmac-ripemd160``, ``hmac-sha1``, ``hmac-sha1-96``,
+``hmac-sha2-256``, ``hmac-sha2-512``, ``umac-64@openssh.com``,
+``umac-128@openssh.com``, ``hmac-md5-etm@openssh.com``,
+``hmac-md5-96-etm@openssh.com``, ``hmac-ripemd160-etm@openssh.com``,
+``hmac-sha1-etm@openssh.com``, ``hmac-sha1-96-etm@openssh.com``,
+``hmac-sha2-256-etm@openssh.com``, ``hmac-sha2-512-etm@openssh.com``,
+``umac-64-etm@openssh.com``, ``umac-128-etm@openssh.com``
 
 .. note:: VyOS 1.1 supported login as user ``root``. This has been removed due
    to tighter security in VyOS 1.2.
