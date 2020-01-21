@@ -1,11 +1,12 @@
 mDNS Repeater
 -------------
 
-Starting with VyOS 1.2 a `Multicast DNS`_ (mDNS) repeater functionality is
-provided.
+Starting with VyOS 1.2 a :abbr:`mDNS (Multicast DNS)` repeater functionality is
+provided. Additional information can be obtained from
+https://en.wikipedia.org/wiki/Multicast_DNS.
 
 Multicast DNS uses the 224.0.0.51 address, which is "administratively scoped"
-and does not leave the subnet. It re-broadcast mDNS packets from one interface
+and does not leave the subnet. It retransmits mDNS packets from one interface
 to other interfaces. This enables support for e.g. Apple Airplay devices across
 multiple VLANs.
 
