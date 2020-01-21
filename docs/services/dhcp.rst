@@ -667,18 +667,18 @@ The generated configuration will look like:
 Options
 -------
 
-.. cfgcmd:: set service dhcp-relay relay-options hop-count 'count'
+.. cfgcmd:: set service dhcp-relay relay-options hop-count <count>
 
-   Set the maximum hop count before packets are discarded. Range 0...255,
+   Set the maximum hop `<count>` before packets are discarded. Range 0...255,
    default 10.
 
-.. cfgcmd:: set service dhcp-relay relay-options max-size 'size'
+.. cfgcmd:: set service dhcp-relay relay-options max-size <size>
 
-   Set maximum size of DHCP packets including relay agent information. If a
+   Set maximum `<size>` of DHCP packets including relay agent information. If a
    DHCP packet size surpasses this value it will be forwarded without appending
    relay agent information. Range 64...1400, default 576.
 
-.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packet 'policy'
+.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packet <append | discard | forward | replace>
 
    Four policies for reforwarding DHCP packets exist:
 
