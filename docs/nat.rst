@@ -67,14 +67,16 @@ Different NAT Types
 
 .. _source-nat:
 
-Source NAT (SNAT)
-^^^^^^^^^^^^^^^^^
+SNAT
+^^^^
 
-Source NAT is the most common form of NAT and is typically referred to simply
-as NAT. To be more correct, what most people refer to as NAT is actually the
-process of :abbr:`PAT (Port Address Translation)`, or NAT Overload. SNAT is
-typically used by internal users/private hosts to access the Internet - the
-source address is translated and thus kept private.
+:abbr:`SNAT (Source Network Address Translation)` is the most common form of
+:abbr:`NAT (Network Address Translation)` and is typically referred to simply
+as NAT. To be more correct, what most people refer to as :abbr:`NAT (Network
+Address Translation)` is actually the process of :abbr:`PAT (Port Address
+Translation)`, or NAT overload. SNAT is typically used by internal users/private
+hosts to access the Internet - the source address is translated and thus kept
+private.
 
 .. _destination-nat:
 
