@@ -140,7 +140,7 @@ latex_elements = {
     # 'figure_align': 'htbp',
     'preamble': r'''\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist''',
-
+    'classoptions': ',openany,oneside'
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
