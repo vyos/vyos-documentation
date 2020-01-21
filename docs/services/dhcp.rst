@@ -641,10 +641,9 @@ Configuration
 Example
 -------
 
-* Use interfaces ``eth1`` and ``eth2`` for DHCP relay
-* Router receives DHCP client requests on ``eth1`` and relays them through
-  ``eth2``
+* Listen for DHCP requests on interface ``eth1``.
 * DHCP server is located at IPv4 address 10.0.1.4.
+* Router receives DHCP client requests on ``eth1`` and relays them to the server at 10.0.1.4.
 
 .. figure:: /_static/images/service_dhcp-relay01.png
    :scale: 80 %
@@ -658,7 +657,6 @@ The generated configuration will look like:
 
   show service dhcp-relay
       interface eth1
-      interface eth2
       server 10.0.1.4
       relay-options {
          relay-agents-packets discard
