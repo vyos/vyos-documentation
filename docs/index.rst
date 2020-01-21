@@ -39,6 +39,7 @@ VyOS User Guide
    firewall
    routing/index
    nat
+   nptv6
    qos
    high-availability
    vpn/index
