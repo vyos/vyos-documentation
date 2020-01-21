@@ -704,5 +704,3 @@ Start by checking for IPSec SAs (Security Associations) with:
       1       up     0.0/0.0        aes256   sha256  no     865     3600    all
 
 That looks good - we defined 2 tunnels and they're both up and running.
-
-.. _ULAs: https://en.wikipedia.org/wiki/Unique_local_address

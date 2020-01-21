@@ -64,3 +64,4 @@ Resulting in the following ip6tables rules:
       0     0 SNPT     all    any    eth2  fc00:dead:beef::/48 anywhere          src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e2::/48
       0     0 RETURN   all    any    any   anywhere            anywhere
 
+.. _ULAs: https://en.wikipedia.org/wiki/Unique_local_address
