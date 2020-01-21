@@ -80,16 +80,16 @@ private.
 
 .. _destination-nat:
 
-Destination NAT (DNAT)
-^^^^^^^^^^^^^^^^^^^^^^
+DNAT
+^^^^
 
-While :ref:`source-nat` changes the source address of packets, DNAT changes
-the destination address of packets passing through the router. DNAT is
-typically used when an external (public) host needs to initiate a session with
-an internal (private) host. A customer needs to access a private service
-behind the routers public IP. A connection is established with the routers
-public IP address on a well known port and thus all traffic for this port is
-rewritten to address the internal (private) host.
+:abbr:`DNAT (Destination Network Address Translation)` changes the destination
+address of packets passing through the router, while :ref:`source-nat` changes
+the source address of packets. DNAT is typically used when an external (public)
+host needs to initiate a session with an internal (private) host. A customer
+needs to access a private service behind the routers public IP. A connection is
+established with the routers public IP address on a well known port and thus all
+traffic for this port is rewritten to address the internal (private) host.
 
 .. _bidirectional-nat:
 
