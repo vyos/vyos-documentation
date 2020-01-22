@@ -167,8 +167,8 @@ Commit changes, save the configuration, and exit configuration mode:
   vyos@vyos$
 
 
-Security Hardening
-##################
+Hardening
+#########
 
 Especially if you are allowing SSH remote access from the outside/WAN interface,
 there are a few additional configuration steps that should be taken.
