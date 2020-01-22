@@ -708,14 +708,16 @@ DHCPv6 relay
 Configuration
 -------------
 
-.. cfgcmd:: set service dhcpv6-relay listen-interface eth1
+.. cfgcmd:: set service dhcpv6-relay listen-interface <interface>
 
-   Set eth1 to be the listening interface for the DHCPv6 relay:
+   Set eth1 to be the listening interface for the DHCPv6 relay.
 
-.. cfgcmd:: set service dhcpv6-relay upstream-interface eth2 address 2001:db8::4
+   Multiple interfaces may be specified.
 
-   Set eth2 to be the upstream interface and specify the IPv6 address of
-   the DHCPv6 server:
+.. cfgcmd:: set service dhcpv6-relay upstream-interface <interface> address <server>
+
+   Specifies an upstream network `<interface>` from which replies from `<server>`
+   and other relay agents will be accepted.
 
 Example
 ^^^^^^^
