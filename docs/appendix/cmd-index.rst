@@ -1,12 +1,16 @@
 .. cmd-index:
 
-Operational Command Refercence
-==============================
+#################
+Command Reference
+#################
+
+Operational Commands
+====================
 
 .. opcmdlist::
 
 
-Configuration Command Refercence
-================================
+Configuration Commands
+======================
 
 .. cfgcmdlist::
