@@ -51,7 +51,7 @@ Configuration
      set interfaces geneve gnv0 address 2001:db8::ffff/64
      set interfaces geneve gnv0 address 2001:db8:100::ffff/64
 
-.. cfgcmd:: set interfaces geneve gnv0 remote '172.18.204.10'
+.. cfgcmd:: set interfaces geneve gnv0 remote <address>
 
    Configure GENEVE tunnel far end/remote tunnel endpoint.
 
