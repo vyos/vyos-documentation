@@ -53,8 +53,8 @@ commands:
   set interfaces ethernet eth1 description 'INSIDE'
 
 
-Enable SSH Management SSH
-#########################
+SSH Management
+##############
 
 After switching to :ref:`quick-start-configuration-mode` issue the following
 commands, and your system will listen on every interface for incoming SSH
