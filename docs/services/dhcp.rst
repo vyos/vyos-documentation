@@ -629,9 +629,10 @@ Configuration
 
    Enable the DHCP relay service on the given interface.
 
-.. cfgcmd:: set service dhcp-relay server 10.0.1.4
+.. cfgcmd:: set service dhcp-relay server <server>
 
-   Configure IP address of the DHCP server
+   Configure IP address of the DHCP `<server>` which will handle the relayed
+   packets.
 
 .. cfgcmd:: set service dhcp-relay relay-options relay-agents-packets discard
 
