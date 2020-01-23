@@ -1,23 +1,20 @@
-.. role:: raw-html-m2r(raw)
-   :format: html
-
-
-VyOS High Availability Walkthrough
-==================================
+#############################
+High Availability Walkthrough
+#############################
 
 This document walks you through a complete HA setup of two VyOS machines. This design is based on a VM as the primary router, and a physical machine as a backup, using VRRP, BGP, OSPF and conntrack sharing.
 
 The aim of this document is to walk you through setting everything up so you end up at a point where you can reboot any machine and not lose more than a few seconds worth of connectivity.
 
 Design
-------
+======
 
 This is based on a real life, in production design. One of the complex issues is ensuring you have redundant data INTO your network.
 We do this with a pair of Cisco Nexus switches, and using Virtual PortChannels that are spanned across them.
 This as an added bonus, also allows for complete switch failure without an outage. How you achieve this yourself is left as an exercise to the reader but our setup is documented here.
 
 Walkthrough suggestion
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 The ``commit`` command is implied after every section. If you make an error, ``commit`` will warn you and you can fix it before getting too far into things. Please ensure you commit early and commit often.
 
@@ -26,7 +23,7 @@ If you are following through this document, it is strongly suggested you complet
 This ensures you don't go to fast, or miss a step. However, it will make your life easier to configure the fixed IP address and default route now on the hardware router.
 
 Example Network
-^^^^^^^^^^^^^^^
+---------------
 
 In this document, we have been allocated 203.0.113.0/24 by our upstream provider, which we are publishing on VLAN100.
 
@@ -41,7 +38,7 @@ When traffic is originated from the 10.200.201.0/24 network, it will be masquera
 For connection between sites, we are running a WireGuard link to two REMOTE routers, and using OSPF over those links to distribute routes. That remote site is expected to send traffic from anything in 10.201.0.0/16
 
 VLANs
-^^^^^
+-----
 
 These are the vlans we wll be using:
 
@@ -50,7 +47,7 @@ These are the vlans we wll be using:
 * 201: 'Internal' network, using 10.200.201.0/24
 
 Hardware
-^^^^^^^^
+--------
 
 * switch1 (Nexus 10gb Switch)
 * switch2 (Nexus 10gb Switch)
@@ -62,7 +59,7 @@ Hardware
 Note that router1 is a VM that runs on one of the compute nodes.
 
 Network Cabling
-^^^^^^^^^^^^^^^
+---------------
 
 * From Datacenter - This connects into port 1 on both switches, and is tagged as VLAN 50
 * Cisco VPC Crossconnect - Ports 39 and 40 bonded between each switch
@@ -74,12 +71,12 @@ Network Cabling
 This is ignoring the extra Out-of-band management networking, which should be on totally different switches, and a different feed into the rack, and is out of scope of this.
 
 Note about VMware
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Our implementation uses VMware's Distributed Port Groups, which allows VMware to use LACP. This is a part of the ENTERPRISE licence, and is not available on a Free licence. If you are implementing this and do not have access to DPGs, you should not use VMware, and use some other virtualization platform instead.
 
 Basic Setup (via console)
--------------------------
+=========================
 
 Create your router1 VM so it is able to withstand a VM Host failing, or a network link failing. Using VMware, this is achieved by enabling vSphere DRS, vSphere Availability, and creating a Distributed Port Group that uses LACP.
 
@@ -90,7 +87,7 @@ Create an 'All VLANs' network group, that passes all trunked traffic through to 
 **VMware Note:** You must DISABLE SECURITY on this Port group. Make sure that ``Promiscuous Mode``\ , ``MAC address changes`` and ``Forged transmits`` are enabled. All of these will be done as part of failover.
 
 Bonding on Hardware Router
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 Create a LACP bond on the hardware router. We are assuming that eth0 and eth1 are connected to port 8 on both switches, and that those ports are configured as a Port-Channel.
 
@@ -105,7 +102,7 @@ Create a LACP bond on the hardware router. We are assuming that eth0 and eth1 ar
 
 
 Assign external IP addresses
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 VLAN 100 and 201 will have floating IP addresses, but VLAN50 does not, as this is talking directly to upstream. Create our IP address on vlan50.
 
@@ -124,7 +121,7 @@ In this case, the hardware router has a different IP, so it would be
 
 
 Add (temporary) default route, and enable SSH
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------
 
 It is assumed that the routers provided by upstream are capable of acting as a default router. Add that as a static route, and enable SSH so you can now SSH into the routers, rather than using the console.
 
@@ -139,24 +136,24 @@ It is assumed that the routers provided by upstream are capable of acting as a d
 At this point you should be able to SSH into both of them, and will no longer need access to the console (unless you break something!)
 
 Configure Floating IPs
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 Now you can SSH into the routers, it makes it a lot easier to copy-and-paste configurations.
 
 We need to set up the fixed and floating IPs.
 
 VRRP Configuration
-------------------
+==================
+
 
 We are setting up VRRP so that it does NOT fail back when a machine returns into service, and it prioritizes router1 over router2.
 
-Internal network 10.200.201.0/24
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Internal network
+----------------
 
-This has a floating IP address of 10.200.201.1, using virtual router ID 201. The difference between them is the interface name, hello-source-address, and peer-address.
+This has a floating IP address of 10.200.201.1/24, using virtual router ID 201. The difference between them is the interface name, hello-source-address, and peer-address.
 
-router1
-~~~~~~~
+**router1**
 
 .. code-block:: none
 
@@ -170,8 +167,7 @@ router1
    set high-availability vrrp group int vrid '201'
 
 
-router2
-~~~~~~~
+**router2**
 
 .. code-block:: none
 
@@ -185,14 +181,13 @@ router2
    set high-availability vrrp group int vrid '201'
 
 
-Public network 203.0.113.0/24
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Public network
+--------------
 
-This has a floating IP address of 203.0.113.1, using virtual router ID 113.
+This has a floating IP address of 203.0.113.1/24, using virtual router ID 113.
 The virtual router ID is just a random number between 1 and 254, and can be set to whatever you want. Best practices suggest you try to keep them unique enterprise-wide.
 
-router1
-~~~~~~~
+**router1**
 
 .. code-block:: none
 
@@ -206,8 +201,7 @@ router1
    set high-availability vrrp group public vrid '113'
 
 
-router2
-~~~~~~~
+**router2**
 
 .. code-block:: none
 
@@ -222,7 +216,7 @@ router2
 
 
 Create vrrp sync-group
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 The sync group is used to replicate connection tracking. It needs to be assigned to a random VRRP group, and we are creating a sync group called ``sync`` using the vrrp group ``int``.
 
@@ -232,7 +226,7 @@ The sync group is used to replicate connection tracking. It needs to be assigned
 
 
 Testing
-^^^^^^^
+-------
 
 At this point, you should be able to see both IP addresses when you run ``show interfaces``\ , and ``show vrrp`` should show both interfaces in MASTER state (and SLAVE state on router2).
 
@@ -249,7 +243,7 @@ At this point, you should be able to see both IP addresses when you run ``show i
 You should be able to ping to and from all the IPs you have allocated.
 
 NAT and conntrack-sync
-----------------------
+======================
 
 Masquerade Traffic originating from 10.200.201.0/24 that is heading out the public interface.
 Note we explicitly exclude the primary upstream network so that BGP or OSPF traffic doesn't accidentally get NAT'ed.
@@ -263,7 +257,7 @@ Note we explicitly exclude the primary upstream network so that BGP or OSPF traf
 
 
 Configure conntrack-sync and disable helpers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------
 
 Most conntrack modules cause more problems than they're worth, especially in a complex network. Turn them off by default, and if you need to turn them on later, you can do so.
 
@@ -290,28 +284,27 @@ Now enable replication between nodes. Replace eth0.201 with bond0.201 on the har
 
 
 Testing
-^^^^^^^
+-------
 
 The simplest way to test is to look at the connection tracking stats on the standby hardware router with the command ``show conntrack-sync statistics``. The numbers should be very close to the numbers on the primary router.
 
 When you have both routers up, you should be able to establish a connection from a NAT'ed machine out to the internet, reboot the active machine, and that connection should be preserved, and will not drop out.
 
 OSPF Over WireGuard
--------------------
+===================
 
 Wireguard doesn't have the concept of an up or down link, due to its design. This complicates AND simplifies using it for network transport, as for reliable state detection you need to use SOMETHING to detect when the link is down.
 
 If you use a routing protocol itself, you solve two problems at once.  This is only a basic example, and is provided as a starting point.
 
 Configure Wireguard
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 There is plenty of instructions and documentation on setting up Wireguard. The only important thing you need to remember is to only use one WireGuard interface per OSPF connection.
 
 We use small /30's from 10.254.60/24 for the point-to-point links.
 
-router1
-~~~~~~~
+**router1**
 
 Replace the 203.0.113.3 with whatever the other router's IP address is.
 
@@ -334,8 +327,7 @@ Replace the 203.0.113.3 with whatever the other router's IP address is.
    set interfaces wireguard wg01 port '50001'
 
 
-offsite1
-~~~~~~~~
+**offsite1**
 
 This is connecting back to the STATIC IP of router1, not the floating.
 
@@ -359,12 +351,12 @@ This is connecting back to the STATIC IP of router1, not the floating.
 
 
 Test wireguard link
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 Make sure you can ping 10.254.60.1 and .2 from both routers.
 
 Create Export Filter
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 We only want to export the networks we know we should be exporting. Always whitelist your route filters, both importing and exporting.
 A good rule of thumb is **'If you are not the default router for a network, don't advertise it'**. This means we explicitly do not want to
@@ -390,7 +382,7 @@ the tunnel would break, OSPF would drop the routes, and then 192.0.2.0/24 would 
 
 
 Create Import Filter
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 We only want to import networks we know about. Our OSPF peer should only be advertising networks in the 10.201.0.0/16 range. Note that this is an INVERSE MATCH. You deny in access-list 100 to accept the route.
 
@@ -410,7 +402,7 @@ We only want to import networks we know about. Our OSPF peer should only be adve
 
 
 Enable OSPF
-^^^^^^^^^^^
+-----------
 
 Every router **must** have a unique router-id.
 The 'reference-bandwidth' is used because when OSPF was originally designed, the idea of a link faster than 1gbit was unheard of, and it does not scale correctly.
@@ -427,14 +419,14 @@ The 'reference-bandwidth' is used because when OSPF was originally designed, the
 
 
 Test OSPF
-^^^^^^^^^
+---------
 
 When you have enabled OSPF on both routers, you should be able to see each other with the command ``show ip ospf neighbour``.
 The state must be 'Full' or '2-Way', if it is not then there is a network connectivity issue between the hosts. This is often caused by NAT or MTU issues.
 You should not see any new routes (unless this is the second pass) in the output of ``show ip route``
 
 Advertise connected routes
---------------------------
+==========================
 
 As a reminder, only advertise routes that you are the default router for. This is why we are NOT announcing the
 192.0.2.0/24 network, because if that was announced into OSPF, the other routers would try to connect to that
@@ -449,12 +441,12 @@ network over a tunnel that connects to that network!
 You should now be able to see the advertised network on the other host.
 
 Duplicate configuration
-^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 At this pont you now need to create the X link between all four routers. Use a different /30 for each link.
 
 Priorities
-^^^^^^^^^^
+----------
 
 Set the cost on the secondary links to be 200. This means that they will not be used unless the primary links are down.
 
@@ -467,12 +459,12 @@ Set the cost on the secondary links to be 200. This means that they will not be 
 This will be visible in 'show ip route'.
 
 BGP
----
+===
 
 BGP is an extremely complex network protocol. An example is provided here. Note, again, router id's must be unique.
 
-router1
-^^^^^^^
+**router1**
+
 
 The ``redistribute ospf`` command is there purely as an example of how this can be expanded. In this walkthrough, it will be filtered by BGPOUT rule 10000, as it is not 203.0.113.0/24.
 
@@ -507,7 +499,6 @@ The ``redistribute ospf`` command is there purely as an example of how this can 
    set protocols bgp 65551 parameters router-id '192.0.2.21'
 
 
-router2
-^^^^^^^
+**router2**
 
 This is identical, but you use the BGPPREPENDOUT route-map to advertise the route with a longer path.
