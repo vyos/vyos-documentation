@@ -1,19 +1,20 @@
 .. _examples-tunnelbroker-ipv6:
 
-VyOS Tunnelbroker.net IPv6
---------------------------
+#######################
+Tunnelbroker.net (IPv6)
+#######################
 
 This guides walks through the setup of `Tunnelbroker.net <https://www.tunnelbroker.net/>`_ for an IPv6 Tunnel.
 
 Prerequisites
-^^^^^^^^^^^^^
+=============
 
 - A public IP address.  This does not necessarily need to be static, but you will need to update the tunnel endpoint when/if your IP address changes, which can be done with a script and a scheduled task.
 - An account at `Tunnelbroker.net <https://www.tunnelbroker.net/>`_.
 - Requested a "Regular Tunnel".  You want to choose a location that is closest to your physical location for the best response time.
 
-Setting up the initial tunnel
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Setup initial tunnel
+====================
 
 - Set up the initial IPv6 tunnel. Replace the field below from the fields on the `Tunnelbroker.net <https://www.tunnelbroker.net/>`_ tunnel information page.
 
@@ -71,7 +72,7 @@ Setting up the initial tunnel
 -  Assuming everything works, you can proceed to client configuration
 
 LAN Configuration
-^^^^^^^^^^^^^^^^^
+=================
 
 At this point your VyOS install should have full IPv6, but now your LAN devices need access.
 
@@ -83,7 +84,7 @@ With Tunnelbroker.net, you have two options:
 Unlike IPv4, IPv6 is really not designed to be broken up smaller than /64.  So if you ever want to have multiple LANs, VLANs, DMZ, etc, you'll want to ignore the assigned /64, and request the /48 and use that.
 
 Single LAN Setup
-^^^^^^^^^^^^^^^^
+================
 
 Single LAN setup where eth1 is your LAN interface.  Use the /64 (all the xxxx should be replaced with the information from your `Routed /64` tunnel):
 
@@ -103,7 +104,7 @@ Single LAN setup where eth1 is your LAN interface.  Use the /64 (all the xxxx sh
   - Enables router advertisements.  This is an IPv6 alternative for DHCP (though DHCPv6 can still be used). With RAs, Your devices will automatically find the information they need for routing and DNS.
 
 Multiple LAN/DMZ Setup
-^^^^^^^^^^^^^^^^^^^^^^
+======================
 
 In this, you use the `Routed /48` information. This allows you to assign a different /64 to every interface, LAN, or even device.  Or you could break your network into smaller chunks like /56 or /60.
 
@@ -142,7 +143,7 @@ So, when your LAN is eth1, your DMZ is eth2, your cameras live on eth3, etc:
    set interfaces ethernet eth3 ipv6 router-advert prefix 2001:470:xxxx:3::/64 valid-lifetime '2592000'
 
 Firewall
-^^^^^^^^
+========
 
 Finally, don't forget the :ref:`firewall`.  The usage is identical, except for instead of `set firewall name NAME`, you would use `set firewall ipv6-name NAME`.
 
