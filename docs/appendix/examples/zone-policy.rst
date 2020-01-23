@@ -327,12 +327,17 @@ from the LAN, destined for the DMZ.
 Because the zone-policy firewall syntax is a little awkward, I keep it straight
 by thinking of it backwards.
 
- set zone-policy zone dmz from lan firewall ipv6-name lan-dmz-6
+.. code-block:: none
+
+  set zone-policy zone dmz from lan firewall ipv6-name lan-dmz-6
 
 dmz-lan policy is lan-dmz. You can get a rhythm to it when you build out a bunch at one time.
 
 In the end, you will end up with something like this config. I took out everything but the Firewall, Interfaces, and zone-policy sections. It is long enough as is.
-== IPv6 Tunnel ==
+
+
+IPv6 Tunnel
+^^^^^^^^^^^
 
 If you are using a IPv6 tunnel from HE.net or someone else, the basis is the same except you have two WAN interface. One for v4 and one for v6.
 
