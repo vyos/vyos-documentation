@@ -65,13 +65,13 @@ Configuration
 
    This option can be specified multiple times.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet 192.0.2.0/24 domain-name <domain-name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> domain-name <domain-name>
 
    The domain-name parameter should be the domain name that will be appended to
    the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
    Option 015).
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet 192.0.2.0/24 domain-search <domain-name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> domain-search <domain-name>
 
    The domain-name parameter should be the domain name used when completing DNS
    request where no full FQDN is passed. This option can be given multiple times
