@@ -1,5 +1,8 @@
-IPoE server
-------------
+.. _ipoe_server:
+
+###########
+IPoE Server
+###########
 
 VyOS utilizes `accel-ppp`_ to provide IPoE server functionality. It can be
 used with local authentication (mac-address) or a connected RADIUS server.
@@ -9,7 +12,7 @@ used with local authentication (mac-address) or a connected RADIUS server.
    in order to become effective.
 
 Configuration
-^^^^^^^^^^^^^
+=============
 
 IPoE can be configure on different interfaces, it will depend on each specific situation which interface will provide IPoE to clients.
 The clients mac address and the incoming interface is being used as control parameter, to authenticate a client.
@@ -39,7 +42,7 @@ Connected sessions can be checked via the ``show ipoe-server sessions`` command.
 
 
 IPv6 SLAAC and IA-PD
-====================
+--------------------
 
 To configure IPv6 assignments for clients, two options need to be configured. A global prefix which is terminated on the clients cpe and a delegated prefix, the client can use
 for devices routed via the clients cpe.
@@ -70,7 +73,7 @@ globally communicate without the need of any NAT rules.
 
 
 Automatic VLAN creation
-=======================
+-----------------------
 
 To create VLANs per user during runtime, the following settings are required on a per interface basis. VLAN ID and VLAN range can be present in the configuration at the same time.
 
@@ -84,7 +87,7 @@ To create VLANs per user during runtime, the following settings are required on 
 
 
 RADIUS Setup
-^^^^^^^^^^^^
+------------
 
 To use a RADIUS server for authentication and bandwidth-shaping, the following example configuration can be used.
 
@@ -113,7 +116,6 @@ The rate-limit is set in kbit/sec.
   set service ipoe-server dns-server server-1 '8.8.8.8'
   set service ipoe-server dns-server server-2 '8.8.4.4'
   set service ipoe-server interface eth2 client-subnet '192.168.0.0/24'
-
 
 .. code-block:: none
 
