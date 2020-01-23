@@ -44,7 +44,6 @@ VyOS User Guide
    high-availability
    vpn/index
    load-balancing
-   command-scripting
    troubleshooting
 
 
@@ -59,6 +58,7 @@ VyOS User Guide
    appendix/vyos-on-vmware
    appendix/vyos-on-baremetal
    appendix/migrate-from-vyatta
+   appendix/command-scripting
 
 
 .. toctree::
