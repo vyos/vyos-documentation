@@ -18,7 +18,10 @@ We have three networks.
 This specific example is for a router on a stick, but is very easily adapted
 for however many NICs you have.
 
-[https://i.imgur.com/Alz1J.png Topology Image]
+.. image:: zone-policy-diagram.svg
+   :width: 80%
+   :align: center
+   :alt: Network Topology Diagram
 
 The VyOS interface is assigned the .1/:1 address of their respective networks.
 WAN is on VLAN 10, LAN on VLAN 20, and DMZ on VLAN 30.
