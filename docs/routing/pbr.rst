@@ -48,9 +48,9 @@ forwarding the traffic using different routing tables.
 
 Routing tables that will be used in this example are:
 
-* ``table 10`` Routing tabled used for VLAN 10 (192.168.188.0/24)
-* ``table 11`` Routing tabled used for VLAN 11 (192.168.189.0/24)
-* ``main`` Routing table used by VyOS and other interfaces not paritipating in
+* ``table 10`` Routing table used for VLAN 10 (192.168.188.0/24)
+* ``table 11`` Routing table used for VLAN 11 (192.168.189.0/24)
+* ``main`` Routing table used by VyOS and other interfaces not participating in
   PBR
 
 .. figure:: ../_static/images/pbr_example_1.png
