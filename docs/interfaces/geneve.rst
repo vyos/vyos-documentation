@@ -35,15 +35,27 @@ Geneve Header:
 Configuration
 =============
 
-.. cfgcmd:: set interfaces geneve gnv0 address '192.0.2.2/24'
+.. cfgcmd:: set interfaces geneve gnv0 address <address>
 
-   Create GENEVE tunnel listening on local address `192.0.2.2/24`.
+   Configure interface `<interface>` with one or more interface addresses.
 
-.. cfgcmd:: set interfaces geneve gnv0 remote '172.18.204.10'
+   **address** can be specified multiple times as IPv4 and/or IPv6 address,
+   e.g. 192.0.2.1/24 and/or 2001:db8::1/64
 
-   Specify the IP address of the other end of the tunnel.
+   Example:
 
-.. cfgcmd:: set interfaces geneve gnv0 vni '1000'
+   .. code-block:: none
+
+     set interfaces geneve gnv0 address 192.0.2.1/24
+     set interfaces geneve gnv0 address 192.0.2.2/24
+     set interfaces geneve gnv0 address 2001:db8::ffff/64
+     set interfaces geneve gnv0 address 2001:db8:100::ffff/64
+
+.. cfgcmd:: set interfaces geneve gnv0 remote <address>
+
+   Configure GENEVE tunnel far end/remote tunnel endpoint.
+
+.. cfgcmd:: set interfaces geneve gnv0 vni <vni>
 
    :abbr:`VNI (Virtual Network Identifier)` is an identifier for a unique
    element of a virtual network.  In many situations this may represent an L2
@@ -53,6 +65,6 @@ Configuration
    address spaces contained in the encapsulated packet when load balancing
    across CPUs.
 
-.. cfgcmd:: set interfaces geneve gnv0 mtu
+.. cfgcmd:: set interfaces geneve gnv0 mtu <mtu>
 
    Set interface :abbr:`MTU (Maximum Transfer Unit)` size.

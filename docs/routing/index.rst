@@ -14,6 +14,7 @@ Routing
    pbr
    rip
    static
+   bfd
    mss-clamp
    routing-policy
    igmp-proxy

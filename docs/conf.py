@@ -22,7 +22,7 @@ from docutils.parsers.rst.roles import set_classes
 # -- Project information -----------------------------------------------------
 
 project = u'VyOS'
-copyright = u'2019, VyOS maintainers and contributors'
+copyright = u'2020, VyOS maintainers and contributors'
 author = u'VyOS maintainers and contributors'
 
 # The short X.Y version
@@ -140,7 +140,7 @@ latex_elements = {
     # 'figure_align': 'htbp',
     'preamble': r'''\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist''',
-
+    'classoptions': ',openany,oneside'
 }
 
 # Grouping the document tree into LaTeX files. List of tuples

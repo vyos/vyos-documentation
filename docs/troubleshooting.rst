@@ -88,81 +88,74 @@ to the VyOS command prompt.
 Monitoring
 ----------
 
-Network Interfaces
-^^^^^^^^^^^^^^^^^^
-
-It's possible to monitor network traffic, either at the flow level or protocol
-level. This can be useful when troubleshooting a variety of protocols and
-configurations. The following interface types can be monitored:
+VyOS features several monitoring tools.
 
 .. code-block:: none
 
-  vyos@vyos:~$ monitor interfaces
+  vyos@vyos:~$ monitor 
   Possible completions:
-    <Enter>       Execute the current command
-    bonding       Monitor a bonding interface
-    bridge        Monitor a bridge interface
-    ethernet      Monitor a ethernet interface
-    loopback      Monitor a loopback interface
-    openvpn       Monitor an openvpn interface
-    pppoe         Monitor pppoe interface
-    pseudo-ethernet
-                  Monitor a pseudo-ethernet interface
-    tunnel        Monitor a tunnel interface
-    vrrp          Monitor a vrrp interface
-    vti           Monitor a vti interface
-    wireless      Monitor wireless interface
+    bandwidth     Monitor interface bandwidth in real time
+    bandwidth-test
+                  Initiate or wait for bandwidth test
+    cluster       Monitor clustering service
+    command       Monitor an operational mode command (refreshes every 2 seconds)
+    conntrack-sync
+                  Monitor conntrack-sync
+    content-inspection
+                  Monitor Content-Inspection
+    dhcp          Monitor Dynamic Host Control Protocol (DHCP)
+    dns           Monitor a Domain Name Service (DNS) daemon
+    firewall      Monitor Firewall
+    https         Monitor the Secure Hypertext Transfer Protocol (HTTPS) service
+    lldp          Monitor Link Layer Discovery Protocol (LLDP) daemon
+    log           Monitor last lines of messages file
+    nat           Monitor network address translation (NAT)
+    openvpn       Monitor OpenVPN
+    protocol      Monitor routing protocols
+    snmp          Monitor Simple Network Management Protocol (SNMP) daemon
+    stop-all      Stop all current background monitoring processes
+    traceroute    Monitor the path to a destination in realtime
+    traffic       Monitor traffic dumps
+    vpn           Monitor VPN
+    vrrp          Monitor Virtual Router Redundancy Protocol (VRRP)
+    webproxy      Monitor Webproxy service
+  
 
-To monitor traffic flows, issue the :code:`monitor interfaces <type> <name> flow`
-command, replacing `<type>` and `<name>` with your desired interface type and
-name, respectively. Output looks like the following:
+Traffic Dumps
+^^^^^^^^^^^^^
 
-.. code-block:: none
-
-                     12.5Kb              25.0Kb              37.5Kb              50.0Kb        62.5Kb
-  ????????????????????????????????????????????????????????????????????????????????????????????????????
-  10.11.111.255                        => 10.11.110.37                            0b      0b      0b
-                                      <=                                       624b    749b    749b
-  10.11.110.29                         => 10.62.200.11                            0b    198b    198b
-                                      <=                                         0b    356b    356b
-  255.255.255.255                      => 10.11.110.47                            0b      0b      0b
-                                      <=                                       724b    145b    145b
-  10.11.111.255                        => 10.11.110.47                            0b      0b      0b
-                                      <=                                       724b    145b    145b
-  10.11.111.255                        => 10.11.110.255                           0b      0b      0b
-                                      <=                                       680b    136b    136b
-  ????????????????????????????????????????????????????????????????????????????????????????????????????
-  TX:             cumm:  26.7KB   peak:   40.6Kb                      rates:   23.2Kb  21.4Kb  21.4Kb
-  RX:                    67.5KB           63.6Kb                               54.6Kb  54.0Kb  54.0Kb
-  TOTAL:                 94.2KB            104Kb                               77.8Kb  75.4Kb  75.4Kb
-
-Several options are available for changing the display output. Press `h` to
-invoke the built in help system. To quit, just press `q` and you'll be returned
-to the VyOS command prompt.
-
-To monitor interface traffic, issue the :code:`monitor interfaces <type> <name>
-traffic` command, replacing `<type>` and `<name>` with your desired interface
-type and name, respectively. This command invokes the familiar tshark_ utility
-and the following options are available:
+To monitor interface traffic, issue the :code:`monitor traffic interface <type> <name>`
+command, replacing `<type>` and `<name>` with your desired interface
+type and name, respectively.
 
 .. code-block:: none
 
-  vyos@vyos:~$ monitor interfaces ethernet eth0 traffic
-  Possible completions:
-    <Enter>       Execute the current command
-    detail        Monitor detailed traffic for the specified ethernet interface
-    filter        Monitor filtered traffic for the specified ethernet interface
-    save          Save monitored traffic to a file
-    unlimited     Monitor traffic for the specified ethernet interface
+  vyos@vyos:~$ monitor traffic interface eth0 
+  tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+  listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+  15:54:28.581601 IP 192.168.0.1 > vyos: ICMP echo request, id 1870, seq 3848, length 64
+  15:54:28.581660 IP vyos > 192.168.0.1: ICMP echo reply, id 1870, seq 3848, length 64
+  15:54:29.583399 IP 192.168.0.1 > vyos: ICMP echo request, id 1870, seq 3849, length 64
+  15:54:29.583454 IP vyos > 192.168.0.1: ICMP echo reply, id 1870, seq 3849, length 64
+  ^C
+  4 packets captured
+  4 packets received by filter
+  0 packets dropped by kernel
+  vyos@vyos:~$
 
 To quit monitoring, press `Ctrl-c` and you'll be returned to the VyOS command
-prompt. The `detail` keyword provides verbose output of the traffic seen on
-the monitored interface. The `filter` keyword accepts valid `PCAP filter
-expressions`_, enclosed in single or double quotes (e.g. "port 25" or "port 161
-and udp"). The `save` keyword allows you to save the traffic dump to a file.
-The `unlimited` keyword is used to specify that an unlimited number of packets
-can be captured (by default, 1,000 packets are captured and you're returned to
-the VyOS command prompt).
+prompt.
+
+Traffic can be filtered and saved.
+
+.. code-block:: none
+
+  vyos@vyos:~$ monitor traffic interface eth0 
+  Possible completions:
+    <Enter>       Execute the current command
+    filter        Monitor traffic matching filter conditions
+    save          Save traffic dump from an interface to a file
+
 
 Interface Bandwidth
 ^^^^^^^^^^^^^^^^^^^

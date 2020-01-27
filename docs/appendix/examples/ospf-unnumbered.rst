@@ -1,12 +1,13 @@
 .. _examples-ospf-unnumbered:
 
-VyOS OSPF unnumbered with ecmp
-----------------------------------------------
+#########################
+OSPF unnumbered with ECMP
+#########################
 
 General infomration can be found in the :ref:`routing-ospf` chapter.
 
 Configuration
-^^^^^^^^^^^^^
+=============
 
 - Router A:
 
@@ -44,7 +45,7 @@ Configuration
 
 
 Results
-^^^^^^^^^^^^^
+=======
 
 - Router A:
 

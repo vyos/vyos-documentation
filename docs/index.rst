@@ -39,11 +39,11 @@ VyOS User Guide
    firewall
    routing/index
    nat
+   nptv6
    qos
    high-availability
    vpn/index
    load-balancing
-   command-scripting
    troubleshooting
 
 
@@ -55,10 +55,10 @@ VyOS User Guide
    appendix/release-notes
    appendix/examples/index
    appendix/cmd-index
-   appendix/commandtree/index
    appendix/vyos-on-vmware
    appendix/vyos-on-baremetal
    appendix/migrate-from-vyatta
+   appendix/command-scripting
 
 
 .. toctree::
@@ -76,7 +76,7 @@ VyOS User Guide
 Copyright Notice
 ################
 
-Copyright (C) 2018-2019 VyOS maintainers and contributors
+Copyright (C) 2018-2020 VyOS maintainers and contributors
 
 Permission is granted to make and distribute verbatim copies of this manual
 provided the copyright notice and this permission notice are preserved on all

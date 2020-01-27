@@ -1,12 +1,13 @@
 .. _examples-bgp-ipv6-unnumbered:
 
-VyOS BGP ipv6 unnumbered with extended nexthop
-----------------------------------------------
+#########################################
+BGP IPv6 unnumbered with extended nexthop
+#########################################
 
 General infomration can be found in the :ref:`bgp` chapter.
 
 Configuration
-^^^^^^^^^^^^^
+=============
 
 - Router A:
 
@@ -47,7 +48,7 @@ Configuration
   set protocols bgp 64499 peer-group fabric remote-as 'external'
 
 Results
-^^^^^^^^^^^^^
+=======
 
 - Router A:
 

@@ -401,4 +401,24 @@ automatically taken from the TFTP and HTTP servers.
 Once finished you will be able to proceed with the ``install image`` command as
 in a regular VyOS installation.
 
+Known Issues
+------------
+
+This is a list of known issues that can arise during installation.
+
+Black screen on install
+^^^^^^^^^^^^^^^^^^^^^^^
+
+GRUB attempts to redirect all output to a serial port for ease of installation on headless hosts.
+This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a 
+black screen after selecting the `Live system` option from the installation image.
+
+The workaround is to type `e` when the boot menu appears and edit the GRUB boot options.  Specifically, remove the:
+
+`console=ttyS0,115200` 
+
+option, and type CTRL-X to boot. 
+
+Installation can then continue as outlined above.
+
 .. _SYSLINUX: http://www.syslinux.org/

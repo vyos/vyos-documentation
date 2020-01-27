@@ -65,13 +65,13 @@ Configuration
 
    This option can be specified multiple times.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet 192.0.2.0/24 domain-name <domain-name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> domain-name <domain-name>
 
    The domain-name parameter should be the domain name that will be appended to
    the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
    Option 015).
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet 192.0.2.0/24 domain-search <domain-name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> domain-search <domain-name>
 
    The domain-name parameter should be the domain name used when completing DNS
    request where no full FQDN is passed. This option can be given multiple times
@@ -629,9 +629,10 @@ Configuration
 
    Enable the DHCP relay service on the given interface.
 
-.. cfgcmd:: set service dhcp-relay server 10.0.1.4
+.. cfgcmd:: set service dhcp-relay server <server>
 
-   Configure IP address of the DHCP server
+   Configure IP address of the DHCP `<server>` which will handle the relayed
+   packets.
 
 .. cfgcmd:: set service dhcp-relay relay-options relay-agents-packets discard
 
@@ -641,10 +642,9 @@ Configuration
 Example
 -------
 
-* Use interfaces ``eth1`` and ``eth2`` for DHCP relay
-* Router receives DHCP client requests on ``eth1`` and relays them through
-  ``eth2``
+* Listen for DHCP requests on interface ``eth1``.
 * DHCP server is located at IPv4 address 10.0.1.4.
+* Router receives DHCP client requests on ``eth1`` and relays them to the server at 10.0.1.4.
 
 .. figure:: /_static/images/service_dhcp-relay01.png
    :scale: 80 %
@@ -658,7 +658,6 @@ The generated configuration will look like:
 
   show service dhcp-relay
       interface eth1
-      interface eth2
       server 10.0.1.4
       relay-options {
          relay-agents-packets discard
@@ -667,18 +666,18 @@ The generated configuration will look like:
 Options
 -------
 
-.. cfgcmd:: set service dhcp-relay relay-options hop-count 'count'
+.. cfgcmd:: set service dhcp-relay relay-options hop-count <count>
 
-   Set the maximum hop count before packets are discarded. Range 0...255,
+   Set the maximum hop `<count>` before packets are discarded. Range 0...255,
    default 10.
 
-.. cfgcmd:: set service dhcp-relay relay-options max-size 'size'
+.. cfgcmd:: set service dhcp-relay relay-options max-size <size>
 
-   Set maximum size of DHCP packets including relay agent information. If a
+   Set maximum `<size>` of DHCP packets including relay agent information. If a
    DHCP packet size surpasses this value it will be forwarded without appending
    relay agent information. Range 64...1400, default 576.
 
-.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packet 'policy'
+.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packet <append | discard | forward | replace>
 
    Four policies for reforwarding DHCP packets exist:
 
@@ -708,14 +707,16 @@ DHCPv6 relay
 Configuration
 -------------
 
-.. cfgcmd:: set service dhcpv6-relay listen-interface eth1
+.. cfgcmd:: set service dhcpv6-relay listen-interface <interface>
 
-   Set eth1 to be the listening interface for the DHCPv6 relay:
+   Set eth1 to be the listening interface for the DHCPv6 relay.
 
-.. cfgcmd:: set service dhcpv6-relay upstream-interface eth2 address 2001:db8::4
+   Multiple interfaces may be specified.
 
-   Set eth2 to be the upstream interface and specify the IPv6 address of
-   the DHCPv6 server:
+.. cfgcmd:: set service dhcpv6-relay upstream-interface <interface> address <server>
+
+   Specifies an upstream network `<interface>` from which replies from `<server>`
+   and other relay agents will be accepted.
 
 Example
 ^^^^^^^

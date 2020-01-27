@@ -53,8 +53,8 @@ commands:
   set interfaces ethernet eth1 description 'INSIDE'
 
 
-Enable SSH Management SSH
-#########################
+SSH Management
+##############
 
 After switching to :ref:`quick-start-configuration-mode` issue the following
 commands, and your system will listen on every interface for incoming SSH
@@ -167,36 +167,8 @@ Commit changes, save the configuration, and exit configuration mode:
   vyos@vyos$
 
 
-QoS
-###
-
-One common use of :ref:`qos` is to limit bandwidth for an interface. In
-the example below we limit bandwidth for our internal/LAN connection to 200
-Mbit/s download and our outside/WAN connection to 50 Mbit/s upload:
-
-.. code-block:: none
-
-  set traffic-policy shaper WAN-OUT bandwidth '50Mbit'
-  set traffic-policy shaper WAN-OUT default bandwidth '50%'
-  set traffic-policy shaper WAN-OUT default ceiling '100%'
-  set traffic-policy shaper WAN-OUT default queue-type 'fair-queue'
-
-  set traffic-policy shaper LAN-OUT bandwidth '200Mbit'
-  set traffic-policy shaper LAN-OUT default bandwidth '50%'
-  set traffic-policy shaper LAN-OUT default ceiling '100%'
-  set traffic-policy shaper LAN-OUT default queue-type 'fair-queue'
-
-Once defined, a traffic policy needs to be applied to each interface using the
-interface-level traffic-policy directive:
-
-.. code-block:: none
-
-  set interfaces ethernet eth0 traffic-policy out 'WAN-OUT'
-  set interfaces ethernet eth1 traffic-policy out 'LAN-OUT'
-
-
-Security Hardening
-##################
+Hardening
+#########
 
 Especially if you are allowing SSH remote access from the outside/WAN interface,
 there are a few additional configuration steps that should be taken.

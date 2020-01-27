@@ -1,7 +1,8 @@
 .. _sstp_server:
 
-SSTP server
-------------
+###########
+SSTP Server
+###########
 
 VyOS utilizes accel-ppp_ to provide SSTP server functionality. It can be
 used with local authentication or a connected RADIUS server.
@@ -11,15 +12,15 @@ used with local authentication or a connected RADIUS server.
    connected users, in order to become effective.
 
 Configuration
-^^^^^^^^^^^^^
+=============
 
 The `Secure Socket Tunneling Protocol`_ (SSTP), provides ppp via a SSL/TLS
 channel. Using publically signed certificates as well a by private PKI, is
 fully supported. All certificates should be stored on VyOS under
 ``/config/user-data/sstp``.
 
-Self Signed CA and server certificates
-======================================
+Self Signed CA and Certificates
+-------------------------------
 
 To generate the CA, the server private key and certificates the following
 commands can be used.

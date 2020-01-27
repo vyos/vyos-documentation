@@ -1,13 +1,16 @@
-
 .. _examples-dmvpn:
 
-VyOS DMVPN Hub
---------------
+#########
+DMVPN Hub
+#########
 
 General infomration can be found in the :ref:`vpn-dmvpn` chapter.
 
 Configuration
-^^^^^^^^^^^^^
+=============
+
+VyOS Hub
+--------
 
 .. code-block:: none
 
@@ -49,7 +52,7 @@ Configuration
   set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 
 Cisco IOS Spoke
-^^^^^^^^^^^^^^^
+---------------
 
 This example is verified with a Cisco 2811 platform running IOS 15.1(4)M9 and
 VyOS 1.1.7 (helium) up to VyOS 1.2 (Crux).

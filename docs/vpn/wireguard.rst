@@ -94,7 +94,7 @@ To use a named key on an interface, the option private-key needs to be set.
   set interfaces wireguard wg01 private-key KP01
   set interfaces wireguard wg02 private-key KP02
 
-The command ``run show wireguard named-keypairs pubkey KP01`` will then show the public key,
+The command ``run show wireguard keypairs pubkey KP01`` will then show the public key,
 which needs to be shared with the peer.
 
 

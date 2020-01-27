@@ -13,9 +13,9 @@ is very simple to implement.
 Configuration
 =============
 
-.. cfgcmd:: set service tftp-server directory '/config/tftpboot'
+.. cfgcmd:: set service tftp-server directory <directory>
 
-Enable TFTP service by specifying the directory which will be used to serve
+Enable TFTP service by specifying the `<directory>` which will be used to serve
 files.
 
 .. hint:: Choose your ``directory`` location carefully or you will loose the

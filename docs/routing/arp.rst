@@ -19,10 +19,16 @@ implemented.
 Configure
 =========
 
-.. cfgcmd:: set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
+.. cfgcmd:: set protocols static arp <address> hwaddr <mac>
 
-   This will configure a static ARP entry always resolving `192.0.2.100` to
-   `00:53:27:de:23:aa`
+   This will configure a static ARP entry always resolving `<address>` to
+   `<mac>`.
+
+   Example:
+
+   .. code-block::
+
+     set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
 
 Operation
 =========

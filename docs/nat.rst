@@ -67,27 +67,29 @@ Different NAT Types
 
 .. _source-nat:
 
-Source NAT (SNAT)
-^^^^^^^^^^^^^^^^^
+SNAT
+^^^^
 
-Source NAT is the most common form of NAT and is typically referred to simply
-as NAT. To be more correct, what most people refer to as NAT is actually the
-process of :abbr:`PAT (Port Address Translation)`, or NAT Overload. SNAT is
-typically used by internal users/private hosts to access the Internet - the
-source address is translated and thus kept private.
+:abbr:`SNAT (Source Network Address Translation)` is the most common form of
+:abbr:`NAT (Network Address Translation)` and is typically referred to simply
+as NAT. To be more correct, what most people refer to as :abbr:`NAT (Network
+Address Translation)` is actually the process of :abbr:`PAT (Port Address
+Translation)`, or NAT overload. SNAT is typically used by internal users/private
+hosts to access the Internet - the source address is translated and thus kept
+private.
 
 .. _destination-nat:
 
-Destination NAT (DNAT)
-^^^^^^^^^^^^^^^^^^^^^^
+DNAT
+^^^^
 
-While :ref:`source-nat` changes the source address of packets, DNAT changes
-the destination address of packets passing through the router. DNAT is
-typically used when an external (public) host needs to initiate a session with
-an internal (private) host. A customer needs to access a private service
-behind the routers public IP. A connection is established with the routers
-public IP address on a well known port and thus all traffic for this port is
-rewritten to address the internal (private) host.
+:abbr:`DNAT (Destination Network Address Translation)` changes the destination
+address of packets passing through the router, while :ref:`source-nat` changes
+the source address of packets. DNAT is typically used when an external (public)
+host needs to initiate a session with an internal (private) host. A customer
+needs to access a private service behind the routers public IP. A connection is
+established with the routers public IP address on a well known port and thus all
+traffic for this port is rewritten to address the internal (private) host.
 
 .. _bidirectional-nat:
 
@@ -557,70 +559,6 @@ one external interface:
 Firewall rules are written as normal, using the internal IP address as the
 source of outbound rules and the destination of inbound rules.
 
-NPTv6
------
-
-NPTv6 stands for Network Prefix Translation. It's a form of NAT for IPv6. It's
-described in :rfc:`6296`. NPTv6 is supported in linux kernel since version 3.13.
-
-**Usage**
-
-NPTv6 is very useful for IPv6 multihoming. It is also commonly used when the
-external IPv6 prefix is dynamic, as it prevents the need for renumbering of
-internal hosts when the extern prefix changes.
-
-Let's assume the following network configuration:
-
-* eth0 : LAN
-* eth1 : WAN1, with 2001:db8:e1::/48 routed towards it
-* eth2 : WAN2, with 2001:db8:e2::/48 routed towards it
-
-Regarding LAN hosts addressing, why would you choose 2001:db8:e1::/48 over
-2001:db8:e2::/48? What happens when you get a new provider with a different
-routed IPv6 subnet?
-
-The solution here is to assign to your hosts ULAs_ and to prefix-translate
-their address to the right subnet when going through your router.
-
-* LAN Subnet : fc00:dead:beef::/48
-* WAN 1 Subnet : 2001:db8:e1::/48
-* WAN 2 Subnet : 2001:db8:e2::/48
-
-* eth0 addr : fc00:dead:beef::1/48
-* eth1 addr : 2001:db8:e1::1/48
-* eth2 addr : 2001:db8:e2::1/48
-
-VyOS Support
-^^^^^^^^^^^^
-
-NPTv6 support has been added in VyOS 1.2 (Crux) and is available through
-`nat nptv6` configuration nodes.
-
-.. code-block:: none
-
-  set rule 10 inside-prefix 'fc00:dead:beef::/48'
-  set rule 10 outside-interface 'eth1'
-  set rule 10 outside-prefix '2001:db8:e1::/48'
-  set rule 20 inside-prefix 'fc00:dead:beef::/48'
-  set rule 20 outside-interface 'eth2'
-  set rule 20 outside-prefix '2001:db8:e2::/48'
-
-Resulting in the following ip6tables rules:
-
-.. code-block:: none
-
-  Chain VYOS_DNPT_HOOK (1 references)
-   pkts bytes target   prot opt in   out   source              destination
-      0     0 DNPT     all    eth1   any   anywhere            2001:db8:e1::/48  src-pfx 2001:db8:e1::/48 dst-pfx fc00:dead:beef::/48
-      0     0 DNPT     all    eth2   any   anywhere            2001:db8:e2::/48  src-pfx 2001:db8:e2::/48 dst-pfx fc00:dead:beef::/48
-      0     0 RETURN   all    any    any   anywhere            anywhere
-  Chain VYOS_SNPT_HOOK (1 references)
-   pkts bytes target   prot opt in   out   source              destination
-      0     0 SNPT     all    any    eth1  fc00:dead:beef::/48 anywhere          src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e1::/48
-      0     0 SNPT     all    any    eth2  fc00:dead:beef::/48 anywhere          src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e2::/48
-      0     0 RETURN   all    any    any   anywhere            anywhere
-
-
 NAT before VPN
 --------------
 
@@ -766,5 +704,3 @@ Start by checking for IPSec SAs (Security Associations) with:
       1       up     0.0/0.0        aes256   sha256  no     865     3600    all
 
 That looks good - we defined 2 tunnels and they're both up and running.
-
-.. _ULAs: https://en.wikipedia.org/wiki/Unique_local_address
