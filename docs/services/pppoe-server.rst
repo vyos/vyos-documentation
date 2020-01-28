@@ -209,6 +209,36 @@ is working.
 Other attributes can be used, but they have to be in one of the dictionaries
 in /usr/share/accel-ppp/radius.
 
+
+Load Balancing
+--------------
+
+There exist PPPoE server session balancing mechanisms based on PADO packet delays.
+
+.. code-block:: none
+
+  set service pppoe-server pado-delay 50 sessions '500'
+  set service pppoe-server pado-delay 100 sessions '1000'
+  set service pppoe-server pado-delay 300 sessions '3000'
+
+First 499 session connects without delay. PADO packets will be delayed 50 ms for connection from 500 to 999, this trick allows other PPPoE servers send PADO faster and clients will connect to other servers. Last command says that this PPPoE server can serve only 3000 clients.
+
+
+Maintenance mode
+----------------
+
+For network maintenance, it's a good idea to direct users to a backup server so that the primary server can be safely taken out of service. It's possible to switch your PPPoE server to maintenance mode where it maintains already established connections, but refuses new connection attempts.
+
+.. code-block:: none
+
+  vyos@vyos:~$ set pppoe-server maintenance-mode enable
+
+You can also cancel maintenance mode with the following command
+
+.. code-block:: none
+
+  vyos@vyos:~$ set pppoe-server maintenance-mode cancel
+
 Examples
 ========
 
