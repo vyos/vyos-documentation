@@ -124,9 +124,8 @@ VyOS features several monitoring tools.
 Traffic Dumps
 ^^^^^^^^^^^^^
 
-To monitor interface traffic, issue the :code:`monitor traffic interface <type> <name>`
-command, replacing `<type>` and `<name>` with your desired interface
-type and name, respectively.
+To monitor interface traffic, issue the :code:`monitor traffic interface <name>`
+command, replacing `<name>` with your chosen interface.
 
 .. code-block:: none
 
