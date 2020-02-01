@@ -70,7 +70,7 @@ A sync group allows VRRP groups to transition together.
 
 .. code-block:: none
 
-    edit high-availability
+    edit high-availability vrrp
     set sync-group MAIN member VLAN9
     set sync-group MAIN member VLAN20
 
