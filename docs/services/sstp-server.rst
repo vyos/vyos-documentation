@@ -84,8 +84,8 @@ Configuration
 
 .. cfgcmd:: set service sstp-server network-settings client-ip-settings gateway-address <gateway>
 
-  Use `<gateway>` IP address for clients. This can be any arbitrary address as
-  it will be a Point-to-Point link.
+  Specifies single `<gateway>` IP address to be used as local address of PPP
+  interfaces.
 
 
 .. cfgcmd:: set service sstp-server network-settings client-ip-settings subnet <subnet>
