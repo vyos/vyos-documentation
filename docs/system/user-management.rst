@@ -6,8 +6,7 @@ User Management
 
 The default VyOS user account (`vyos`), as well as newly created user accounts,
 have all capabilities to configure the system. All accounts have sudo
-capabilities and therefore can operate as root on the system. Setting the level
-to `admin` is optional, all accounts on the system will have admin privileges.
+capabilities and therefore can operate as root on the system.
 
 Both local administered and remote administered :abbr:`RADIUS (Remote
 Authentication Dial-In User Service)` accounts are supported.
@@ -30,10 +29,6 @@ Local
 
    Setup encrypted password for given username. This is useful for
    transferring a hashed password from system to system.
-
-.. cfgcmd:: set system login user <name> group <group>
-
-   Specify additional group membership for given username `<name>`.
 
 .. _ssh_key_based_authentication:
 
