@@ -42,7 +42,7 @@ An example:
 
 .. code-block:: none
 
-  set interfaces tunnel tun0 encapsulation ipip
+  set interfaces tunnel tun0 encapsulation ip6ip6
   set interfaces tunnel tun0 local-ip 2001:db8:aa::1/64
   set interfaces tunnel tun0 remote-ip 2001:db8:aa::2/64
   set interfaces tunnel tun0 address 2001:db8:bb::1/64
