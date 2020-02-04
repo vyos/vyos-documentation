@@ -41,9 +41,7 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3....
 Then follow these steps to install sphinx group of packages: 
 ```bash
 sudo apt-get install python3-sphinx
-sudo apt-get install python-pip
-sudo pip install sphinx-rtd-theme
-sudo pip install sphinx-autobuild
+sudo apt-get install python3-sphinx-rtd-theme
 ```
 
 To build the html, start a webeserver, and view the output:
