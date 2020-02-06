@@ -50,7 +50,10 @@ The container can always be built directly from source:
 
 .. code-block:: none
 
+  $ mkdir ~/vyos
+  $ cd ~/vyos
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+  $ cd vyos-build
   $ docker build -t vyos/vyos-build docker
 
 .. note: The container is automatically downloaded from Dockerhub if it is not
@@ -70,7 +73,10 @@ a fresh build of the VyOS ISO can begin.
 
 .. code-block:: none
 
+  $ cd ~/vyos
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build bash
+
+  vyos_bld@d4220bb519a0:/vyos# cd /vyos/vyos-build
   vyos_bld@d4220bb519a0:/vyos# ./configure --architecture amd64 \
                                --build-by "your@email.tld" \
                                --build-type release --version 1.2.0
