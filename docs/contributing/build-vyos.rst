@@ -36,6 +36,8 @@ To be able to use Docker_, the current non-root user should be added to the
 
 .. note:: The build process needs to be built on a local file system, building
    on SMB or NFS shares will result in the container failing to build properly!
+   VirtualBox Drive Share is also not an option as block device operations 
+   are not implemented and the drive is always mounted as "nodev"
 
 Build Docker Container
 ----------------------
@@ -75,6 +77,10 @@ a fresh build of the VyOS ISO can begin.
                                --build-by "your@email.tld" \
                                --build-type release --version 1.2.0
   vyos_bld@d4220bb519a0:/vyos# sudo make iso
+
+.. note:: Attempting to use the docker build image on MacOS or Windows will fail
+   as docker does not expose all the filesystem feature required to the container.
+   Building within a VirtualBox server on Mac or Windows is however possible.
 
 To select the container you want to run, you need to specify the branch you are
 interested in, this can be easily done by selecting the appropriate container
