@@ -201,7 +201,7 @@ Formatting
 * Python: Tabs **shall not** be used. Every indentation level should be 4 spaces
 * XML: Tabs **shall not** be used. Every indentation level should be 2 spaces
 
-.. note: There are extensions to e.g. VIM (xmllint) which will help you to get
+.. note:: There are extensions to e.g. VIM (xmllint) which will help you to get
    your indention levels correct. Add to following to your .vimrc file:
    ``au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\
    2>/dev/null`` now you can call the linter using ``gg=G`` in command mode.

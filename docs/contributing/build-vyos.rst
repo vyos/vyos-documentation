@@ -53,10 +53,10 @@ The container can always be built directly from source:
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
   $ docker build -t vyos/vyos-build docker
 
-.. note: The container is automatically downloaded from Dockerhub if it is not
+.. note:: The container is automatically downloaded from Dockerhub if it is not
    found on your local machine when the below command is executed.
 
-.. note: We require one container per build branch, this means that the used
+.. note:: We require one container per build branch, this means that the used
    container in ``crux`` and ``current`` can and will differ once VyOS makes
    the move towards Debian (10) Buster.
 
