@@ -76,7 +76,7 @@ Pictures
 PC Engines APU4
 ***************
 
-As this platform seems to be quiet common in terms of noise, cost, power and
+As this platform seems to be quite common in terms of noise, cost, power and
 performance it makes sense to write a small installation manual.
 
 This guide was developed using an APU4C4 board with the following specs:

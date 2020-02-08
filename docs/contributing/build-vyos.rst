@@ -36,6 +36,8 @@ To be able to use Docker_, the current non-root user should be added to the
 
 .. note:: The build process needs to be built on a local file system, building
    on SMB or NFS shares will result in the container failing to build properly!
+   VirtualBox Drive Share is also not an option as block device operations 
+   are not implemented and the drive is always mounted as "nodev"
 
 Build Docker Container
 ----------------------
@@ -53,10 +55,10 @@ The container can always be built directly from source:
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
   $ docker build -t vyos/vyos-build docker
 
-.. note: The container is automatically downloaded from Dockerhub if it is not
+.. note:: The container is automatically downloaded from Dockerhub if it is not
    found on your local machine when the below command is executed.
 
-.. note: We require one container per build branch, this means that the used
+.. note:: We require one container per build branch, this means that the used
    container in ``crux`` and ``current`` can and will differ once VyOS makes
    the move towards Debian (10) Buster.
 
@@ -75,6 +77,10 @@ a fresh build of the VyOS ISO can begin.
                                --build-by "your@email.tld" \
                                --build-type release --version 1.2.0
   vyos_bld@d4220bb519a0:/vyos# sudo make iso
+
+.. note:: Attempting to use the docker build image on MacOS or Windows will fail
+   as docker does not expose all the filesystem feature required to the container.
+   Building within a VirtualBox server on Mac or Windows is however possible.
 
 To select the container you want to run, you need to specify the branch you are
 interested in, this can be easily done by selecting the appropriate container
@@ -369,7 +375,7 @@ Drivers are build as part of the Kernel Pipeline - read above.
 Accel-PPP
 ^^^^^^^^^
 
-Accel-PPP used to be an upstream fork for quiet some time but now has been
+Accel-PPP used to be an upstream fork for quite some time but now has been
 converted to make use of the upstream source code and build system.
 
 It is build as part of the Kernel Pipeline - read above.
