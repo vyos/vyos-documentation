@@ -375,7 +375,7 @@ Drivers are build as part of the Kernel Pipeline - read above.
 Accel-PPP
 ^^^^^^^^^
 
-Accel-PPP used to be an upstream fork for quiet some time but now has been
+Accel-PPP used to be an upstream fork for quite some time but now has been
 converted to make use of the upstream source code and build system.
 
 It is build as part of the Kernel Pipeline - read above.
