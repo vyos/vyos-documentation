@@ -53,6 +53,7 @@ The container can always be built directly from source:
 .. code-block:: none
 
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+  $ cd vyos-build
   $ docker build -t vyos/vyos-build docker
 
 .. note:: The container is automatically downloaded from Dockerhub if it is not
@@ -137,8 +138,8 @@ found in any Debian Upstream mirrror. Those packages can be found at the VyOS
 GitHub project (https://github.com/vyos) and there is a nice helper script
 available to build and list those individual packages.
 
-`scripts/build-packages` provides an easy interface to automate the process 
-of building all VyOS related packages that are not part of the upstream Debian 
+`scripts/build-packages` provides an easy interface to automate the process
+of building all VyOS related packages that are not part of the upstream Debian
 version. Execute it in the root of the `vyos-build` directory to start
 compilation.
 
@@ -147,7 +148,7 @@ compilation.
   $  scripts/build-packages -h
   usage: build-packages [-h] [-c | -k | -f] [-v] [-l] [-b BUILD [BUILD ...]]
                         [-p] [--blacklist BLACKLIST [BLACKLIST ...]]
-  
+
   optional arguments:
     -h, --help            show this help message and exit
     -c, --clean           Re-clone required Git repositories
