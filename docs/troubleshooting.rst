@@ -284,6 +284,36 @@ to clear counters on firewall rulesets or single rules
   vyos@vyos:~$ clear firewall ipv6-name <ipv6 ruleset name> counters
   vyos@vyos:~$ clear firewall ipv6-name <ipv6 ruleset name> rule <rule#> counters
 
+Comment command
+---------------
+The :cfgcmd:`comment` command allows you to add comments above the current section. 
+The :cfgcmd:`comment` command cannot be used at the top level of the configuration 
+hierarchy only on subsections. Comments need to be committed, just like other 
+config changes.
+
+Syntax
+^^^^^^
+
+To add comments to a section, while already being at the proper section level:
+
+.. code-block:: none
+
+  [edit <section>]
+  vyos@vyos# comment "Comment Text"
+
+To add comments directly to a section from the top or higher section:
+
+.. code-block:: none
+
+  [edit]
+  vyos@vyos# comment <section> "Comment Text"
+
+To remove a comment, add a blank comment to overwrite:
+
+.. code-block:: none
+
+  [edit <section>]
+  vyos@vyos# comment ""
 
 Basic System Information
 ------------------------
