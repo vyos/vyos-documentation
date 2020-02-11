@@ -338,7 +338,7 @@ location of https://github.com/vyos/vyos-kernel - where it is kept for history.
 Nowadays the Kernel we use is the upstream source code which is patched
 with two additional patches from the good old Vyatta times which never made it
 into the mainstream Kernel. The patches can be found here:
-https://github.com/vyos/vyos-build-kernel/tree/current/patches/kernel and are
+https://github.com/vyos/vyos-build-kernel/tree/master/patches/kernel and are
 automatically applied to the Kernel by the Jenkins Pipeline which is used to
 generate the Kernel binaries.
 
