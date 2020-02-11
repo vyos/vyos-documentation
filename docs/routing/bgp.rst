@@ -301,8 +301,10 @@ Route filter can be applied using a route-map:
   set policy route-map AS65535-OUT rule 10 match ip address prefix-list 'AS65535-OUT'
   set policy route-map AS65535-OUT rule 10 match ipv6 address prefix-list 'AS65535-OUT'
   set policy route-map AS65535-OUT rule 20 action 'permit'
-  set protocols bgp 65534 neighbor 2001:db8::2 route-map export 'AS65535-OUT'
-  set protocols bgp 65534 neighbor 2001:db8::2 route-map import 'AS65535-IN'
+  set protocols bgp 65534 neighbor 2001:db8::2 address-family ipv4-unicast route-map export 'AS65535-OUT'
+  set protocols bgp 65534 neighbor 2001:db8::2 address-family ipv4-unicast route-map import 'AS65535-IN'
+  set protocols bgp 65534 neighbor 2001:db8::2 address-family ipv6-unicast route-map export 'AS65535-OUT'
+  set protocols bgp 65534 neighbor 2001:db8::2 address-family ipv6-unicast route-map import 'AS65535-IN'
 
 **Node2:**
 
@@ -324,8 +326,10 @@ Route filter can be applied using a route-map:
   set policy route-map AS65534-OUT rule 10 match ip address prefix-list 'AS65534-OUT'
   set policy route-map AS65534-OUT rule 10 match ipv6 address prefix-list 'AS65534-OUT'
   set policy route-map AS65534-OUT rule 20 action 'permit'
-  set protocols bgp 65535 neighbor 2001:db8::1 route-map export 'AS65534-OUT'
-  set protocols bgp 65535 neighbor 2001:db8::1 route-map import 'AS65534-IN'
+  set protocols bgp 65535 neighbor 2001:db8::1 address-family ipv4-unicast route-map export 'AS65534-OUT'
+  set protocols bgp 65535 neighbor 2001:db8::1 address-family ipv4-unicast route-map import 'AS65534-IN'
+  set protocols bgp 65535 neighbor 2001:db8::1 address-family ipv6-unicast route-map export 'AS65534-OUT'
+  set protocols bgp 65535 neighbor 2001:db8::1 address-family ipv6-unicast route-map import 'AS65534-IN'
 
 We could expand on this and also deny link local and multicast in the rule 20
 action deny.
