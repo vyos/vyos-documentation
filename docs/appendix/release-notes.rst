@@ -240,4 +240,4 @@ Resolved issues
 Earlier releases
 ================
 
-See `the wiki <https://wiki.vyos.net/wiki/1.2.0/release_notes>`_.
+Release notes for legacy versions (1.1.x, 1.0.x) can be found in the `archived wiki <https://web.archive.org/web/20200212180711/https://wiki.vyos.net/wiki/Category:Release_notes>`_.
