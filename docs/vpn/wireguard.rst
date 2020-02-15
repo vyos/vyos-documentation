@@ -34,24 +34,6 @@ traffic to your system using this public key.
   wg01# run show wireguard pubkey
   u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk=
 
-
-Generate named keypairs
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Named keypairs can be used on a interface basis, if configured.
-If multiple wireguard interfaces are being configured, each can have
-their own keypairs.
-
-The commands below will generate 2 keypairs, which are not related 
-to each other.
-
-.. code-block:: none
-
-  wg01:~$ configure
-  wg01# run generate wireguard named-keypairs KP01
-  wg01# run generate wireguard named-keypairs KP02
-
-
 Wireguard Interface configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -85,18 +67,6 @@ The last step is to define an interface route for 10.2.0.0/24 to get through
 the wireguard interface `wg01`. Multiple IPs or networks can be defined and
 routed, the last check is allowed-ips which either prevents or allows the
 traffic.
-
-
-To use a named key on an interface, the option private-key needs to be set.
-
-.. code-block:: none
-
-  set interfaces wireguard wg01 private-key KP01
-  set interfaces wireguard wg02 private-key KP02
-
-The command ``run show wireguard named-keypairs pubkey KP01`` will then show the public key,
-which needs to be shared with the peer.
-
 
 **remote side**
 
@@ -168,13 +138,6 @@ Operational commands
 
   vyos@wg01# run show wireguard keypair pubkey default
   FAXCPb6EbTlSH5200J5zTopt9AYXneBthAySPBLbZwM=
-
-**Show public key of a named key**
-
-.. code-block:: none
-
-  vyos@wg01# run show wireguard keypair pubkey KP01
-  HUtsu198toEnm1poGoRTyqkUKfKUdyh54f45dtcahDM=
 
 
 **Delete wireguard keypairs**
