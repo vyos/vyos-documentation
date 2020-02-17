@@ -27,7 +27,7 @@ An example:
   set interfaces tunnel tun0 encapsulation ipip
   set interfaces tunnel tun0 local-ip 192.0.2.10
   set interfaces tunnel tun0 remote-ip 203.0.113.20
-  set interfaces tunnel tun0 address 192.168.100.200
+  set interfaces tunnel tun0 address 192.168.100.200/24
 
 IP6IP6
 ------
@@ -43,8 +43,8 @@ An example:
 .. code-block:: none
 
   set interfaces tunnel tun0 encapsulation ip6ip6
-  set interfaces tunnel tun0 local-ip 2001:db8:aa::1/64
-  set interfaces tunnel tun0 remote-ip 2001:db8:aa::2/64
+  set interfaces tunnel tun0 local-ip 2001:db8:aa::1
+  set interfaces tunnel tun0 remote-ip 2001:db8:aa::2
   set interfaces tunnel tun0 address 2001:db8:bb::1/64
 
 IPIP6
@@ -60,9 +60,9 @@ An example:
 .. code-block:: none
 
   set interfaces tunnel tun0 encapsulation ipip6
-  set interfaces tunnel tun0 local-ip 2001:db8:aa::1/64
-  set interfaces tunnel tun0 remote-ip 2001:db8:aa::2/64
-  set interfaces tunnel tun0 address 192.168.70.80
+  set interfaces tunnel tun0 local-ip 2001:db8:aa::1
+  set interfaces tunnel tun0 remote-ip 2001:db8:aa::2
+  set interfaces tunnel tun0 address 192.168.70.80/24
 
 6in4 (SIT)
 ----------
