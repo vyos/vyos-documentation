@@ -5,11 +5,11 @@ CLI
 ###
 
 The VyOS :abbr:`CLI (Command-Line Interface)` comprises an
-:ref:`commandtree_operationmode` and a :ref:`commandtree_configmode`.
+operational and a configuration mode.
 
 Operational mode allows for commands to perform operational system tasks and
 view system and service status, while configuration mode allows for the
-modification of system configuration. The :ref:`command tree page<commandtree>`
+modification of system configuration. The :ref:`cmd-index`
 lists available commands and their functions.
 
 The CLI provides a built-in help system. In the CLI the ``?`` key may be used
