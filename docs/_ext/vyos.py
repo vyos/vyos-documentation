@@ -245,7 +245,7 @@ class CfgCmdDirective(CmdDirective):
 
 def process_cmd_node(app, cmd, fromdocname):
     para = nodes.paragraph()
-    newnode = nodes.reference(' ', ' ')
+    newnode = nodes.reference('', '')
     innernode = cmd['cmdnode']
     newnode['refdocname'] = cmd['docname']
     newnode['refuri'] = app.builder.get_relative_uri(

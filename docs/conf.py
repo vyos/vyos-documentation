@@ -177,15 +177,5 @@ texinfo_documents = [
 ]
 
 
-def vytask_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
-    app = inliner.document.settings.env.app
-    base = app.config.vyos_phabricator_url
-    ref = base + str(text)
-    set_classes(options)
-    node = nodes.reference(
-        rawtext, utils.unescape(str(text)), refuri=ref, **options)
-    return [node], []
-
-
 def setup(app):
     pass
