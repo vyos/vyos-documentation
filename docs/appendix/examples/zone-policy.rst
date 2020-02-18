@@ -18,7 +18,7 @@ We have three networks.
 This specific example is for a router on a stick, but is very easily adapted
 for however many NICs you have.
 
-.. image:: zone-policy-diagram.svg
+.. image:: /_static/images/zone-policy-diagram.png
    :width: 80%
    :align: center
    :alt: Network Topology Diagram
