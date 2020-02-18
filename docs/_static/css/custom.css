@@ -46,10 +46,17 @@ span.cfgcmd {
 }
 
 
-
 a.cmdlink {
     font-size: 80%;
     margin-left: 6px;
+}
+
+a.cmdlink span{
+    color: #2980B9;
+}
+
+a.cmdlink span:hover{
+    color: #3091d1;
 }
 
 .wy-nav-content {
