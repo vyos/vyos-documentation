@@ -35,9 +35,9 @@ Ethernet interfaces:
 * Pseudo-Ethernet interfaces may not work in environments which expect a
   :abbr:`NIC (Network Interface Card)` to only have a single address. This
   applies to:
-  — VMware machines using default settings
-  — Network switches with security settings allowing only a single MAC address
-  — xDSL modems that try to lear the MAC address of the NIC
+  - VMware machines using default settings
+  - Network switches with security settings allowing only a single MAC address
+  - xDSL modems that try to lear the MAC address of the NIC
 
 Configuration
 =============
