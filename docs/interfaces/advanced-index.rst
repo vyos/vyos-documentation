@@ -11,6 +11,7 @@ Network Interfaces
    bridge
    bond
    l2tpv3
+   pseudo-ethernet
    wireless
    tunnel
    vlan
