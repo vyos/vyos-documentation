@@ -81,6 +81,10 @@ filter we reject prefixes with the state `invalid`, and set a higher
   set policy route-map ROUTES-IN rule 30 action 'deny'
   set policy route-map ROUTES-IN rule 30 match rpki 'invalid'
 
+Once your routers are configured to reject RPKI-invalid prefixes, test
+whether the configuration is working correctly using the `RIPE Labs RPKI
+Test`_ experimental tool.
+
 .. _Routinator: https://www.nlnetlabs.nl/projects/rpki/routinator/
 .. _GoRTR: https://github.com/cloudflare/gortr
 .. _OctoRPKI: https://github.com/cloudflare/cfrpki#octorpki
@@ -88,3 +92,4 @@ filter we reject prefixes with the state `invalid`, and set a higher
 .. _some instructions: https://labs.ripe.net/Members/tashi_phuntsho_3/how-to-install-an-rpki-validator
 .. _Krill: https://www.nlnetlabs.nl/projects/rpki/krill/
 .. _RPKI analytics: https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/
+.. _RIPE Labs RPKI Test: https://sg-pub.ripe.net/jasper/rpki-web-test/
