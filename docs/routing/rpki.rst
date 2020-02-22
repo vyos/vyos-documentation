@@ -22,11 +22,11 @@ not found.
 * Notfound means that prefix not found in ROA.
 
 We can build route-maps for import, based on these states. Simple RPKI
-configuration, where 'routinator' - RPKI cache server with ip '10.11.11.1'.
+configuration, where 'routinator' - RPKI cache server with ip '192.0.2.1'.
 
 .. code-block:: none
 
-  set protocols rpki cache routinator address '10.11.11.1'
+  set protocols rpki cache routinator address '192.0.2.1'
   set protocols rpki cache routinator port '3323'
 
 Example route-map for import. We can set local-preference logic based on states.
