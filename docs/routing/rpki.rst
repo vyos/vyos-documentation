@@ -10,7 +10,7 @@ infrastructure. It associate a BGP route announcement with the correct
 originating :abbr:`ASN (Autonomus System Number)` and check its validity.
 
 RPKI is described in :rfc:`6480`. This is a separate server. You can find more
-details at RIPE-NNC_.
+details at RIPE-NCC_.
 
 Imported prefixes during the validation may have values: valid, invalid and
 not found.
@@ -43,4 +43,4 @@ Also we may not import prefixes with the state 'invalid'.
   set policy route-map ROUTES-IN rule 30 action 'deny'
   set policy route-map ROUTES-IN rule 30 match rpki 'invalid'
 
-.. _RIPE-NNC: https://github.com/RIPE-NCC/rpki-validator-3/wiki
+.. _RIPE-NCC: https://github.com/RIPE-NCC/rpki-validator-3/wiki
