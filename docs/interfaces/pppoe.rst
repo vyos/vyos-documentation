@@ -73,17 +73,16 @@ Requirements:
   nameservers your ISP sens you and thus you can fully rely on the ones you
   have configured statically.
 
+.. note:: Syntax has changed from VyOS 1.2 (crux) and it will be automatically
+   migrated during an upgrade.
+
 .. code-block:: none
 
-  set interfaces ethernet eth0 description "DSL Modem"
-  set interfaces ethernet eth0 duplex auto
-  set interfaces ethernet eth0 smp_affinity auto
-  set interfaces ethernet eth0 speed auto
-  set interfaces ethernet eth0 pppoe 0 default-route 'auto'
-  set interfaces ethernet eth0 pppoe 0 mtu 1492
-  set interfaces ethernet eth0 pppoe 0 name-server 'auto'
-  set interfaces ethernet eth0 pppoe 0 user-id 'userid'
-  set interfaces ethernet eth0 pppoe 0 password 'secret'
+  set interfaces pppoe pppoe0 default-route 'auto'
+  set interfaces pppoe pppoe0 mtu 1492
+  set interfaces pppoe pppoe0 authentication user 'userid'
+  set interfaces pppoe pppoe0 authentication password 'secret'
+  set interfaces pppoe pppoe0 source-interface 'eth0'
 
 
 You should add a firewall to your configuration above as well by
@@ -91,9 +90,9 @@ assigning it to the pppoe0 itself as shown here:
 
 .. code-block:: none
 
-  set interfaces ethernet eth0 pppoe 0 firewall in name NET-IN
-  set interfaces ethernet eth0 pppoe 0 firewall local name NET-LOCAL
-  set interfaces ethernet eth0 pppoe 0 firewall out name NET-OUT
+  set interfaces pppoe pppoe0 firewall in name NET-IN
+  set interfaces pppoe pppoe0 firewall local name NET-LOCAL
+  set interfaces pppoe pppoe0 firewall out name NET-OUT
 
 VLAN Example
 ------------
@@ -106,15 +105,11 @@ which is the default VLAN for Deutsche Telekom:
 
 .. code-block:: none
 
-  set interfaces ethernet eth0 description "DSL Modem"
-  set interfaces ethernet eth0 duplex auto
-  set interfaces ethernet eth0 smp_affinity auto
-  set interfaces ethernet eth0 speed auto
-  set interfaces ethernet eth0 vif 7 pppoe 0 default-route 'auto'
-  set interfaces ethernet eth0 vif 7 pppoe 0 mtu '1492'
-  set interfaces ethernet eth0 vif 7 pppoe 0 name-server 'auto'
-  set interfaces ethernet eth0 vif 7 pppoe 0 user-id 'userid#0001@t-online.de'
-  set interfaces ethernet eth0 vif 7 pppoe 0 password 'secret'
+  set interfaces pppoe pppoe0 default-route 'auto'
+  set interfaces pppoe pppoe0 mtu 1492
+  set interfaces pppoe pppoe0 authentication user 'userid'
+  set interfaces pppoe pppoe0 authentication password 'secret'
+  set interfaces pppoe pppoe0 source-interface 'eth0.7'
 
 Troubleshooting
 ===============
