@@ -51,6 +51,166 @@ configure it to open the PPPoE session for you and your DSL Transceiver
 (Modem/Router) just acts to translate your messages in a way that
 vDSL/aDSL understands.
 
+Configuration
+=============
+
+.. cfgcmd:: set interfaces pppoe <interface> access-concentrator <name>
+
+   Use this command to restrict the PPPoE session on a given access
+   concentrator. Normally, a host sends a PPPoE initiation packet to start the
+   PPPoE discovery process, a number of access concentrators respond with offer
+   packets and the host selects one of the responding access concentrators to
+   serve this session.
+
+   This command allows you to select a specific access concentrator when you
+   know the access concentrators `<name>`.
+
+.. cfgcmd:: set interfaces pppoe <interface> authentication user <username>
+
+   Use this command to set the username for authenticating with a remote PPPoE
+   endpoint. Authentication is optional from the system's point of view but
+   most service providers require it.
+
+.. cfgcmd:: set interfaces pppoe <interface> authentication password <password>
+
+   Use this command to set the password for authenticating with a remote PPPoE
+   endpoint. Authentication is optional from the system's point of view but
+   most service providers require it.
+
+.. cfgcmd:: set interfaces pppoe <interface> connect-on-demand
+
+   Enables or disables on-demand PPPoE connection on a PPPoE unit.
+
+   Use this command to instruct the system to establish a PPPoE connections
+   automatically once traffic passes through the interface. A disabled on-demand
+   connection is established at boot time and remains up. If the link fails for
+   any reason, the link is brought back up immediately.
+
+   Enabled on-demand PPPoE connections bring up the link only when traffic needs
+   to pass this link.  If the link fails for any reason, the link is brought
+   back up automatically once traffic passes the interface again. If you
+   configure an on-demand PPPoE connection, you must also configure the idle
+   timeout period, after which an idle PPPoE link will be disconnected. A
+   non-zero idle timeout will never disconnect the link after it first came up.
+
+.. cfgcmd:: set interfaces pppoe <interface> default-route
+
+   Use this command to specify whether to automatically add a default route
+   pointing to the endpoint of the PPPoE when the link comes up. The default
+   route is only added if no other default route already exists in the system.
+
+   **default:** A default route to the remote endpoint is automatically added
+   when the link comes up (i.e. auto).
+
+.. cfgcmd:: set interfaces pppoe <interface> description
+
+   Assign given `<description>` to interface. Description will also be passed
+   to SNMP monitoring systems.
+
+.. cfgcmd:: set interfaces pppoe <interface> disable
+
+   Disable given `<interface>`. It will be placed in administratively down
+   (``A/D``) state.
+
+.. cfgcmd:: set interfaces pppoe <interface> idle-timeout <time>
+
+   Use this command to set the idle timeout interval to be used with on-demand
+   PPPoE sessions. When an on-demand connection is established, the link is
+   brought up only when traffic is sent and is disabled when the link is idle
+   for the interval specified.
+
+   If this parameter is not set or 0, an on-demand link will not be taken down
+   when it is idle and after the initial establishment of the connection. It
+   will stay up forever.
+
+.. cfgcmd:: set interfaces pppoe <interface> local-address <address>
+
+   Use this command to set the IP address of the local endpoint of a PPPoE
+   session. If it is not set it will be negotiated.
+
+.. cfgcmd:: set interfaces pppoe <interface> mtu <mtu>
+
+   Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It
+   is the size (in bytes) of the largest ethernet frame sent on this link.
+
+.. cfgcmd:: set interfaces pppoe <interface> no-peer-dns
+
+   Use this command to not install advertised DNS nameservers into the local
+   system.
+
+.. cfgcmd:: set interfaces pppoe <interface> remote-address <address>
+
+   Use this command to set the IP address of the remote endpoint of a PPPoE
+   session. If it is not set it will be negotiated.
+
+.. cfgcmd:: set interfaces pppoe <interface> service-name <name>
+
+   Use this command to specify a service name by which the local PPPoE interface
+   can select access concentrators to connect with. It will connect to any
+   access concentrator if not set.
+
+.. cfgcmd:: set interfaces pppoe <interface> source-interface <source-interface>
+
+   Use this command to link the PPPoE connection to a physical interface. Each
+   PPPoE connection must be established over a physical interface. Interfaces
+   can be regular Ethernet interfaces, VIFs or bonding interfaces/VIFs.
+
+IPv6
+----
+
+.. cfgcmd:: set interfaces pppoe <interface> ipv6 enable
+
+   Use this command to enable IPv6 support on this PPPoE connection.
+
+
+Operation
+=========
+
+.. opcmd:: show interfaces pppoe <interface>
+
+   Show detailed information on given `<interface>`
+
+   .. code-block:: none
+
+     vyos@vyos:~$ show interfaces pppoe pppoe0
+     pppoe0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1492 qdisc pfifo_fast state UNKNOWN group default qlen 3
+         link/ppp
+         inet 192.0.2.1 peer 192.0.2.255/32 scope global pppoe0
+            valid_lft forever preferred_lft forever
+
+         RX:  bytes    packets     errors    dropped    overrun      mcast
+         7002658233    5064967          0          0          0          0
+         TX:  bytes    packets     errors    dropped    carrier collisions
+          533822843    1620173          0          0          0          0
+
+.. opcmd:: show interfaces pppoe <interface> log
+
+   Displays log information for a PPPoE interface.
+
+.. opcmd:: show interfaces pppoe <interface> queue
+
+   Displays queue information for a PPPoE interface.
+
+   .. code-block:: none
+
+     vyos@vyos:~$ show interfaces pppoe pppoe0 queue
+     qdisc pfifo_fast 0: root refcnt 2 bands 3 priomap  1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+      Sent 534625359 bytes 1626761 pkt (dropped 62, overlimits 0 requeues 0)
+      backlog 0b 0p requeues 0
+
+Connect/Disconnect
+------------------
+
+.. opcmd:: disconnect interface <interface>
+
+   Test disconnecting given connection-oriented interface. `<interface>` can be
+   ``pppoe0`` as example.
+
+.. opcmd:: connect interface <interface>
+
+   Test connecting given connection-oriented interface. `<interface>` can be
+   ``pppoe0`` as example.
+
 Example
 =======
 
@@ -110,33 +270,4 @@ which is the default VLAN for Deutsche Telekom:
   set interfaces pppoe pppoe0 authentication user 'userid'
   set interfaces pppoe pppoe0 authentication password 'secret'
   set interfaces pppoe pppoe0 source-interface 'eth0.7'
-
-Troubleshooting
-===============
-
-.. opcmd:: disconnect interface <interface>
-
-   Test disconnecting given connection-oriented interface. `<interface>` can be
-   ``pppoe0`` as example.
-
-.. opcmd:: connect interface <interface>
-
-   Test connecting given connection-oriented interface. `<interface>` can be
-   ``pppoe0`` as example.
-
-.. opcmd:: show interfaces pppoe <interface>
-
-   Check PPPoE connection logs with the following command which shows the
-   current statistics, status and some of the settings (i.e. MTU) for the
-   current connection on <interface> (e.g. ``pppoe0``)
-
-.. opcmd:: show interfaces pppoe <interface> log
-
-   Show entire log for the PPPoE connection starting with the oldest data.
-   Scroll down with the <space> key to reach the end where the current data is.
-
-.. opcmd::  show interfaces pppoe <interface> log tail
-
-   Shows the same log as without the 'tail' option but start with the last few
-   lines and continues to show added lines until you exit with ``Ctrl + x``
 
