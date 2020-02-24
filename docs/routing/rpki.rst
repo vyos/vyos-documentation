@@ -4,6 +4,13 @@
 RPKI
 ####
 
+.. pull-quote::
+
+   There are two types of Network Admins who deal with BGP, those who have
+   created an international incident and/or outage, and those who are lying
+
+   -- `tweet by EvilMog`_, 2020-02-21
+
 :abbr:`RPKI (Resource Public Key Infrastructure)` is a framework :abbr:`PKI
 (Public Key Infrastructure)` designed to secure the Internet routing
 infrastructure. It associates BGP route announcements with the correct
@@ -18,6 +25,14 @@ open source implementations to choose from, such as NLNetLabs' Routinator_
 (written in Rust), Cloudflare's GoRTR_ and OctoRPKI_ (written in Go), and
 RIPE NCC's RPKI Validator_ (written in Java). The RTR protocol is described
 in :rfc:`8210`.
+
+.. tip::
+  If you are new to these routing security technologies then there is an
+  `excellent guide to RPKI`_ by NLnet Labs which will get you up to speed
+  very quickly. Their documentation explains everything from what RPKI is to
+  deploying it in production (albeit with a focus on using NLnet Labs'
+  tools). It also has some `help and operational guidance`_ including
+  "What can I do about my route having an Invalid state?"
 
 First you will need to deploy an RPKI validator for your routers to use. The
 RIPE NCC helpfully provide `some instructions`_ to get you started with
@@ -81,10 +96,11 @@ filter we reject prefixes with the state `invalid`, and set a higher
   set policy route-map ROUTES-IN rule 30 action 'deny'
   set policy route-map ROUTES-IN rule 30 match rpki 'invalid'
 
-Once your routers are configured to reject RPKI-invalid prefixes, test
-whether the configuration is working correctly using the `RIPE Labs RPKI
+Once your routers are configured to reject RPKI-invalid prefixes, you can
+test whether the configuration is working correctly using the `RIPE Labs RPKI
 Test`_ experimental tool.
 
+.. _tweet by EvilMog: https://twitter.com/Evil_Mog/status/1230924170508169216
 .. _Routinator: https://www.nlnetlabs.nl/projects/rpki/routinator/
 .. _GoRTR: https://github.com/cloudflare/gortr
 .. _OctoRPKI: https://github.com/cloudflare/cfrpki#octorpki
@@ -93,3 +109,5 @@ Test`_ experimental tool.
 .. _Krill: https://www.nlnetlabs.nl/projects/rpki/krill/
 .. _RPKI analytics: https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/
 .. _RIPE Labs RPKI Test: https://sg-pub.ripe.net/jasper/rpki-web-test/
+.. _excellent guide to RPKI: https://rpki.readthedocs.io/
+.. _help and operational guidance: https://rpki.readthedocs.io/en/latest/about/help.html
