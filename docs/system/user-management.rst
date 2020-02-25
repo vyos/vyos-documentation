@@ -122,10 +122,9 @@ Configuration
 
    Setup the `<timeout>` in seconds when querying the RADIUS server.
 
-.. hint:: If you want to have admin users to authenticate via RADIUS it is
-   essential to sent the ``Cisco-AV-Pair shell:priv-lvl=15`` attribute. Without
-   the attribute you will only get regular, non privilegued, system users.
+.. cfgcmd:: set system login radius server <address> disable
 
+   Temporary disable this RADIUS server. It won't be queried.
 
 .. cfgcmd:: set system login radius source-address <address>
 
@@ -135,6 +134,11 @@ Configuration
    will use the nearest interface address pointing towards the server - making
    it error prone on e.g. OSPF networks when a link fails and a backup route is
    taken.
+
+.. hint:: If you want to have admin users to authenticate via RADIUS it is
+   essential to sent the ``Cisco-AV-Pair shell:priv-lvl=15`` attribute. Without
+   the attribute you will only get regular, non privilegued, system users.
+
 
 
 Login Banner
