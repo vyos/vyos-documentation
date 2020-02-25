@@ -1,8 +1,8 @@
 .. _basic_network-interfaces:
 
-################
-Basic Interfaces
-################
+########################
+Basic Network Interfaces
+########################
 
 .. toctree::
    :maxdepth: 1
