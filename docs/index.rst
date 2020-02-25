@@ -34,8 +34,8 @@ VyOS User Guide
    :maxdepth: 2
 
    interfaces/advanced-index
+   system/advanced-index
    services/index
-   system/index
    firewall
    routing/index
    nat
