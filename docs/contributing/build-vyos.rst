@@ -128,6 +128,32 @@ Good luck!
    or ``rolling`` image. Make sure to choose the matching container for the
    version of VyOS that is being built.
 
+Troubleshooting
+^^^^^^^^^^^^^^^
+
+Debian APT is not very verbose when it comes to errors. If your ISO build breaks
+for whatever reason and you supect its a problem with APT dependencies or
+installation you can add this small patch which increases the APT verbosity
+during ISO build.
+
+.. code-block:: Python
+
+  diff --git i/scripts/live-build-config w/scripts/live-build-config
+  index 1b3b454..3696e4e 100755
+  --- i/scripts/live-build-config
+  +++ w/scripts/live-build-config
+  @@ -57,7 +57,8 @@ lb config noauto \
+           --firmware-binary false \
+           --updates true \
+           --security true \
+  -        --apt-options "--yes -oAcquire::Check-Valid-Until=false" \
+  +        --apt-options "--yes -oAcquire::Check-Valid-Until=false -oDebug::BuildDeps=true -oDebug::pkgDepCache::AutoInstall=true \
+  +                             -oDebug::pkgDepCache::Marker=true -oDebug::pkgProblemResolver=true -oDebug::Acquire::gpgv=true" \
+           --apt-indices false
+           "${@}"
+   """
+
+
 .. _build_packages:
 
 Build packages
