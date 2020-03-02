@@ -11,16 +11,15 @@ information.
 Configuration
 =============
 
-Wireguard requires the generation of a keypair, a private key which will decrypt
+WireGuard requires the generation of a keypair, a private key which will decrypt
 incoming traffic and a public key, which the peer(s) will use to encrypt traffic.
 
 Generate keypair
 ----------------
 
 Generate the keypair, which creates a public and private part and stores it
-within VyOS.
-It will be used per default on any configured wireguard interface, even if
-multiple interfaces are being configured.
+within VyOS. It will be used per default on any configured WireGuard interface,
+even if multiple interfaces are being configured.
 
 .. code-block:: none
 
@@ -40,7 +39,7 @@ Generate named keypair
 ----------------------
 
 Named keypairs can be used on a interface basis, if configured.
-If multiple wireguard interfaces are being configured, each can have
+If multiple WireGuard interfaces are being configured, each can have
 their own keypairs.
 
 The commands below will generate 2 keypairs, which are not related
@@ -65,7 +64,7 @@ firewall rules, since the port may be a different one when you reboot your
 system.
 
 You will also need the public key of your peer as well as the network(s) you
-want to tunnel (allowed-ips) to configure a wireguard tunnel. The public key
+want to tunnel (allowed-ips) to configure a WireGuard tunnel. The public key
 below is always the public key from your peer, not your local one.
 
 **local side**
@@ -84,7 +83,7 @@ below is always the public key from your peer, not your local one.
    (FQDN). Using a FQDN will result in unexpected behavior.
 
 The last step is to define an interface route for 10.2.0.0/24 to get through
-the wireguard interface `wg01`. Multiple IPs or networks can be defined and
+the WireGuard interface `wg01`. Multiple IPs or networks can be defined and
 routed, the last check is allowed-ips which either prevents or allows the
 traffic.
 
@@ -113,7 +112,7 @@ which needs to be shared with the peer.
   set protocols static interface-route 10.1.0.0/24 next-hop-interface wg01
 
 Assure that your firewall rules allow the traffic, in which case you have a
-working VPN using wireguard.
+working VPN using WireGuard
 
 .. code-block:: none
 
