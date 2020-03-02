@@ -59,6 +59,7 @@ VyOS User Guide
    appendix/vyos-on-baremetal
    appendix/migrate-from-vyatta
    appendix/command-scripting
+   appendix/http-api
 
 
 .. toctree::
