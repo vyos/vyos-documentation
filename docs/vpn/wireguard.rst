@@ -1,20 +1,21 @@
 .. _wireguard:
 
-WireGuard VPN Interface
------------------------
+#########
+WireGuard
+#########
 
 WireGuard is an extremely simple yet fast and modern VPN that utilizes
 state-of-the-art cryptography. See https://www.wireguard.com for more
 information.
 
 Configuration
-^^^^^^^^^^^^^
+=============
 
 Wireguard requires the generation of a keypair, a private key which will decrypt
 incoming traffic and a public key, which the peer(s) will use to encrypt traffic.
 
-Generate a keypair
-~~~~~~~~~~~~~~~~~~
+Generate keypair
+----------------
 
 Generate the keypair, which creates a public and private part and stores it
 within VyOS.
@@ -35,8 +36,8 @@ traffic to your system using this public key.
   u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk=
 
 
-Generate named keypairs
-~~~~~~~~~~~~~~~~~~~~~~~
+Generate named keypair
+----------------------
 
 Named keypairs can be used on a interface basis, if configured.
 If multiple wireguard interfaces are being configured, each can have
@@ -52,8 +53,8 @@ to each other.
   wg01# run generate wireguard named-keypairs KP02
 
 
-Wireguard Interface configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interface configuration
+-----------------------
 
 The next step is to configure your local side as well as the policy based
 trusted destination addresses. If you only initiate a connection, the listen
@@ -79,7 +80,8 @@ below is always the public key from your peer, not your local one.
   set interfaces wireguard wg01 port '12345'
   set protocols static interface-route 10.2.0.0/24 next-hop-interface wg01
 
-.. note:: The `endpoint` must be an IP and not a fully qualified domain name (FQDN). Using a FQDN will result in unexpected behavior.
+.. note:: The `endpoint` must be an IP and not a fully qualified domain name
+   (FQDN). Using a FQDN will result in unexpected behavior.
 
 The last step is to define an interface route for 10.2.0.0/24 to get through
 the wireguard interface `wg01`. Multiple IPs or networks can be defined and
@@ -143,11 +145,13 @@ your peer should have knowledge of its content.
   wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
 
 Road Warrior Example
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
-With WireGuard, a Road Warrior VPN config is similar to a site-to-site VPN.  It just lacks the ``endpoint`` address.
+With WireGuard, a Road Warrior VPN config is similar to a site-to-site VPN. It
+just lacks the ``endpoint`` address.
 
-In the following example, the IPs for the remote clients are defined in the peers.  This would allow the peers to interact with one another.
+In the following example, the IPs for the remote clients are defined in the
+peers. This would allow the peers to interact with one another.
 
 .. code-block:: none
 
@@ -170,8 +174,9 @@ In the following example, the IPs for the remote clients are defined in the peer
         port 2224
     }
 
-The following is the config for the iPhone peer above.  It's important to note that the ``AllowedIPs`` setting
-directs all IPv4 and IPv6 traffic through the connection.
+The following is the config for the iPhone peer above.  It's important to note
+that the ``AllowedIPs`` setting directs all IPv4 and IPv6 traffic through the
+connection.
 
 .. code-block:: none
 
@@ -187,7 +192,8 @@ directs all IPv4 and IPv6 traffic through the connection.
     PersistentKeepalive = 25
 
 
-This MacBook peer is doing split-tunneling, where only the subnets local to the server go over the connection.
+This MacBook peer is doing split-tunneling, where only the subnets local to the
+server go over the connection.
 
 .. code-block:: none
 
@@ -203,7 +209,7 @@ This MacBook peer is doing split-tunneling, where only the subnets local to the 
 
 
 Operational commands
-^^^^^^^^^^^^^^^^^^^^
+====================
 
 **Show interface status**
 
