@@ -36,7 +36,7 @@ To be able to use Docker_, the current non-root user should be added to the
 
 .. note:: The build process needs to be built on a local file system, building
    on SMB or NFS shares will result in the container failing to build properly!
-   VirtualBox Drive Share is also not an option as block device operations 
+   VirtualBox Drive Share is also not an option as block device operations
    are not implemented and the drive is always mounted as "nodev"
 
 Build Docker Container
@@ -87,10 +87,9 @@ To select the container you want to run, you need to specify the branch you are
 interested in, this can be easily done by selecting the appropriate container
 image:
 
-* For VyOS 1.2 (crux) use ``vyos/vyos-build:crux``
-* For VyOS 1.3 (equuleus) use ``vyos/vyos-build:equuleus``
-* For our VyOS rolling release you should use ``vyos/vyos-build`` which will
-  always refer to the latest image.
+* VyOS 1.2 (crux) use ``vyos/vyos-build:crux``
+* VyOS rolling release you should use ``vyos/vyos-build`` which will always
+  refer to the latest image.
 
 This ISO can be customized with the following list of configure options.
 The full and current list can be generated with ``./configure --help``:
