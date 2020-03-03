@@ -91,6 +91,9 @@ image:
 * VyOS rolling release you should use ``vyos/vyos-build`` which will always
   refer to the latest image.
 
+Customisation
+^^^^^^^^^^^^^
+
 This ISO can be customized with the following list of configure options.
 The full and current list can be generated with ``./configure --help``:
 
@@ -126,6 +129,17 @@ Good luck!
 .. note:: The build process does not differentiate when building a ``crux`` ISO
    or ``rolling`` image. Make sure to choose the matching container for the
    version of VyOS that is being built.
+
+Development
+^^^^^^^^^^^
+
+If you are brave enough to build yourself an ISO image containing any modified
+package from our GitHub organisation - this is the place to be.
+
+Building an ISO with a customized package is in no way different then building
+a regular (customized or not) ISO image. Simply place your modified `*.deb`
+package inside the `packages` folder within `vyos-build`. You may need to create
+the folder in advance.
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
