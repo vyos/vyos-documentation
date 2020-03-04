@@ -38,6 +38,7 @@ VyOS User Guide
    services/index
    firewall
    routing/index
+   vrf
    nat
    nptv6
    qos
