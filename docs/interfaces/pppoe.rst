@@ -162,6 +162,11 @@ IPv6
 
    Use this command to enable IPv6 support on this PPPoE connection.
 
+.. cfgcmd:: set interfaces pppoe <interface> ipv6 address autoconf
+
+   Use this command to enable acquisition of IPv6 address using stateless
+   autoconfig (SLAAC).
+
 
 Operation
 =========
