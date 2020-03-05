@@ -79,5 +79,6 @@ Operation
 
       VRF blue:
       K   0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:00:50
+      S>* 172.16.0.0/16 [1/0] via 192.0.2.1, dum1, 00:00:02
       C>* 192.0.2.0/24 is directly connected, dum1, 00:00:06
 
