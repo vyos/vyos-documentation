@@ -42,6 +42,17 @@ then enslaved to a VRF device.
 Interfaces
 ----------
 
+When VRFs are used it is not only mandatory to create a VRF but also the VRF
+itself needs to be assigned to an interface.
+
+.. cfgcmd:: set interfaces dummy <interface> vrf <name>
+
+   Assign dummy interface identified by `<interface>` to VRF named `<name>`.
+
+   .. warning:: VRFs are still experimental - thus they are only available to
+      certain interfaces types right now (``dummy``) to test out the
+      functionality.
+
 Routing
 -------
 
