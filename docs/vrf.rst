@@ -109,44 +109,6 @@ Static Routes
    installed into the kernel.
 
 
-Interface Routes
-""""""""""""""""
-
-.. cfgcmd:: set protocols vrf <name> static interface-route <subnet> next-hop-interface <interface>
-
-   Allows you to configure the next-hop interface for an interface-based IPv4
-   static route. `<interface>` will be the next-hop interface where trafic is
-   routed for the given `<subnet>`.
-
-.. cfgcmd:: set protocols vrf <name> static interface-route <subnet> next-hop-interface <interface> disable
-
-   Disables interface-based IPv4 static route.
-
-.. cfgcmd:: set protocols vrf <name> static interface-route <subnet> next-hop-interface <interface> distance <distance>
-
-   Defines next-hop distance for this route, routes with smaller administrative
-   distance are elected prior those with a higher distance.
-
-   Range is 1 to 255, default is 1.
-
-.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet> next-hop-interface <interface>
-
-   Allows you to configure the next-hop interface for an interface-based IPv6
-   static route. `<interface>` will be the next-hop interface where trafic is
-   routed for the given `<subnet>`.
-
-.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet> next-hop-interface <interface> disable
-
-   Disables interface-based IPv6 static route.
-
-.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet> next-hop-interface <interface> distance <distance>
-
-   Defines next-hop distance for this route, routes with smaller administrative
-   distance are elected prior those with a higher distance.
-
-   Range is 1 to 255, default is 1.
-
-
 Blackhole
 """""""""
 
