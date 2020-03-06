@@ -177,7 +177,6 @@ Blackhole
    distance are elected prior those with a higher distance.
 
 
-
 Operation
 =========
 
@@ -205,19 +204,39 @@ Operation
 
 .. opcmd:: show ip route vrf <name>
 
-   Display routing table used by VRF `<name>`
+   Display IPv4 routing table for VRF identified by `<name>`.
 
    .. code-block:: none
 
-      vyos@vyos:~$ show ip route vrf blue
-      Codes: K - kernel route, C - connected, S - static, R - RIP,
-             O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-             T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-             F - PBR, f - OpenFabric,
-             > - selected route, * - FIB route, q - queued route, r - rejected route
+     vyos@vyos:~$ show ip route vrf blue
+     Codes: K - kernel route, C - connected, S - static, R - RIP,
+            O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+            T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+            F - PBR, f - OpenFabric,
+            > - selected route, * - FIB route, q - queued route, r - rejected route
 
-      VRF blue:
-      K   0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:00:50
-      S>* 172.16.0.0/16 [1/0] via 192.0.2.1, dum1, 00:00:02
-      C>* 192.0.2.0/24 is directly connected, dum1, 00:00:06
+     VRF blue:
+     K   0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:00:50
+     S>* 172.16.0.0/16 [1/0] via 192.0.2.1, dum1, 00:00:02
+     C>* 192.0.2.0/24 is directly connected, dum1, 00:00:06
+
+
+.. opcmd:: show ipv6 route vrf <name>
+
+   Display IPv6 routing table for VRF identified by `<name>`.
+
+   .. code-block:: none
+
+     vyos@vyos:~$ show ipv6 route vrf red
+     Codes: K - kernel route, C - connected, S - static, R - RIPng,
+            O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
+            v - VNC, V - VNC-Direct, A - Babel, D - SHARP, F - PBR,
+            f - OpenFabric,
+            > - selected route, * - FIB route, q - queued route, r - rejected route
+
+     VRF red:
+     K   ::/0 [255/8192] unreachable (ICMP unreachable), 00:43:20
+     C>* 2001:db8::/64 is directly connected, dum1, 00:02:19
+     C>* fe80::/64 is directly connected, dum1, 00:43:19
+     K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
 
