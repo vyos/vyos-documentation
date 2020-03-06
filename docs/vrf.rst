@@ -49,9 +49,21 @@ itself needs to be assigned to an interface.
 
    Assign dummy interface identified by `<interface>` to VRF named `<name>`.
 
-   .. warning:: VRFs are still experimental - thus they are only available to
-      certain interfaces types right now (``dummy``) to test out the
-      functionality.
+.. cfgcmd:: set interfaces ethernet <interface> vrf <name>
+
+   Assign ethernet interface identified by `<interface>` to VRF named `<name>`.
+
+.. cfgcmd:: set interfaces bonding <interface> vrf <name>
+
+   Assign bonding interface identified by `<interface>` to VRF named `<name>`.
+
+.. cfgcmd:: set interfaces bridge <interface> vrf <name>
+
+   Assign bridge interface identified by `<interface>` to VRF named `<name>`.
+
+.. warning:: VRFs are still experimental - thus they are only available to
+  certain interfaces types right now (``dummy, ethernet, bond, bridge``) to test
+  out the functionality.
 
 Routing
 -------
