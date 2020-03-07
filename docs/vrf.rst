@@ -10,6 +10,11 @@ VRFs, VRF-lite to be specific) in the Linux network stack. One use case is the
 multi-tenancy problem where each tenant has their own unique routing tables and
 in the very least need different default gateways.
 
+.. warning:: VRFs are an "needs testing" feature. If you think things should be
+   different then they are implemented and handled right now - please feedback
+   via a task created in Phabricator_.
+
+
 Configuration
 =============
 
@@ -61,9 +66,9 @@ itself needs to be assigned to an interface.
 
    Assign bridge interface identified by `<interface>` to VRF named `<name>`.
 
-.. warning:: VRFs are still experimental - thus they are only available to
-  certain interfaces types right now (``dummy, ethernet, bond, bridge``) to test
-  out the functionality.
+.. cfgcmd:: set interfaces pppoe <interface> vrf <name>
+
+   Assign PPPoE interface identified by `<interface>` to VRF named `<name>`.
 
 Routing
 -------
@@ -214,3 +219,4 @@ Operation
      C>* fe80::/64 is directly connected, dum1, 00:43:19
      K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
 
+.. include:: common-references.rst
