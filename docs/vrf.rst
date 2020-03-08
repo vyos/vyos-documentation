@@ -169,11 +169,10 @@ For VR Fmaintenance the followin operational commands are in place.
    .. code-block:: none
 
      vyos@vyos:~$ show vrf
-
-     interface         state    mac                flags
-     ---------         -----    ---                -----
-     bar               up       ee:c7:5b:fc:ae:f9  noarp,master,up,lower_up
-     foo               up       ee:bb:a4:ac:cd:20  noarp,master,up,lower_up
+     VRF name          state     mac address        flags                     interfaces
+     --------          -----     -----------        -----                     ----------
+     blue              up        de:c4:83:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
+     red               up        be:36:ce:02:df:aa  noarp,master,up,lower_up  dum100,eth0.300,bond0.100,peth0
 
    .. note:: Command should probably be extended to list also the real interfaces
       assigned to this one VRF to get a better overview.
@@ -182,10 +181,10 @@ For VR Fmaintenance the followin operational commands are in place.
 
    .. code-block:: none
 
-     vyos@vyos:~$ show vrf name bar
-     interface         state    mac                flags
-     ---------         -----    ---                -----
-     bar               up       ee:c7:5b:fc:ae:f9  noarp,master,up,lower_up
+     vyos@vyos:~$ show vrf name blue
+     VRF name          state     mac address        flags                     interfaces
+     --------          -----     -----------        -----                     ----------
+     blue              up        de:c4:83:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
 
 .. opcmd:: show ip route vrf <name>
 
