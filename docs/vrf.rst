@@ -159,6 +159,9 @@ Blackhole
 Operation
 =========
 
+It is not sufficient to only configure a VRF but VRFs must be maintained, too.
+For VR Fmaintenance the followin operational commands are in place.
+
 .. opcmd:: show vrf
 
    List VRFs that have been created
@@ -171,6 +174,9 @@ Operation
      ---------         -----    ---                -----
      bar               up       ee:c7:5b:fc:ae:f9  noarp,master,up,lower_up
      foo               up       ee:bb:a4:ac:cd:20  noarp,master,up,lower_up
+
+   .. note:: Command should probably be extended to list also the real interfaces
+      assigned to this one VRF to get a better overview.
 
 .. opcmd:: show vrf <name>
 
@@ -218,5 +224,39 @@ Operation
      C>* 2001:db8::/64 is directly connected, dum1, 00:02:19
      C>* fe80::/64 is directly connected, dum1, 00:43:19
      K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
+
+
+.. opcmd:: ping <host> vrf <name>
+
+   The ping command is used to test whether a network host is reachable or not.
+
+   Ping uses ICMP protocol's mandatory ECHO_REQUEST datagram to elicit an
+   ICMP ECHO_RESPONSE from a host or gateway. ECHO_REQUEST datagrams (pings)
+   will have an IP and ICMP header, followed by "struct timeval" and an
+   arbitrary number of pad bytes used to fill out the packet.
+
+   When doing fault isolation with ping, your should first run it on the local
+   host, to verify that the local network interface is up and running. Then,
+   continue with hosts and gateways further down the road towards your
+   destination. Round-trip times and packet loss statistics are computed.
+
+   Duplicate packets are not included in the packet loss calculation, although
+   the round-trip time of these packets is used in calculating the minimum/
+   average/maximum round-trip time numbers.
+
+   Ping command can be interrupted at any given time using `<Ctrl>+c`- A brief
+   statistic is shown afterwards.
+
+   .. code-block:: none
+
+     vyos@vyos:~$ ping 192.0.2.1 vrf red
+     PING 192.0.2.1 (192.0.2.1) 56(84) bytes of data.
+     64 bytes from 192.0.2.1: icmp_seq=1 ttl=64 time=0.070 ms
+     64 bytes from 192.0.2.1: icmp_seq=2 ttl=64 time=0.078 ms
+     ^C
+     --- 192.0.2.1 ping statistics ---
+     2 packets transmitted, 2 received, 0% packet loss, time 4ms
+     rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
+
 
 .. include:: common-references.rst
