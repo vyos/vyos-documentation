@@ -125,6 +125,22 @@ Static Routes
 .. note:: Routes with a distance of 255 are effectively disabled and not
    installed into the kernel.
 
+Leaking
+"""""""
+
+.. cfgcmd:: set protocols vrf <name> static route <subnet> next-hop <address> next-hop-vrf <default | vrf-name>
+
+   Use this command if you have shared services or routes that should be shared
+   between multiple VRF instances. This will add an IPv4 route to VRF `<name>`
+   routing table to reach a `<subnet>` via a next-hop gatewys `<address>` in
+   a different VRF or leak it into the default VRF.
+
+.. cfgcmd:: set protocols vrf <name> static route6 <subnet> next-hop <address> next-hop-vrf <default | vrf-name>
+
+   Use this command if you have shared services or routes that should be shared
+   between multiple VRF instances. This will add an IPv6 route to VRF `<name>`
+   routing table to reach a `<subnet>` via a next-hop gatewys `<address>` in
+   a different VRF or leak it into the default VRF.
 
 Blackhole
 """""""""
