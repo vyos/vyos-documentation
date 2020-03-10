@@ -50,25 +50,9 @@ Interfaces
 When VRFs are used it is not only mandatory to create a VRF but also the VRF
 itself needs to be assigned to an interface.
 
-.. cfgcmd:: set interfaces dummy <interface> vrf <name>
+.. cfgcmd:: set interfaces <dummy | ethernet | bonding | bridge | pppoe> <interface> vrf <name>
 
-   Assign dummy interface identified by `<interface>` to VRF named `<name>`.
-
-.. cfgcmd:: set interfaces ethernet <interface> vrf <name>
-
-   Assign ethernet interface identified by `<interface>` to VRF named `<name>`.
-
-.. cfgcmd:: set interfaces bonding <interface> vrf <name>
-
-   Assign bonding interface identified by `<interface>` to VRF named `<name>`.
-
-.. cfgcmd:: set interfaces bridge <interface> vrf <name>
-
-   Assign bridge interface identified by `<interface>` to VRF named `<name>`.
-
-.. cfgcmd:: set interfaces pppoe <interface> vrf <name>
-
-   Assign PPPoE interface identified by `<interface>` to VRF named `<name>`.
+   Assign interface identified by `<interface>` to VRF named `<name>`.
 
 Routing
 -------
