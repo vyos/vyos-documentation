@@ -156,7 +156,10 @@ On active router run:
 
 
 
-  On standby router run:
+On standby router run:
+
+
+.. code-block:: none
 
 
   $ show conntrack-sync statistics
