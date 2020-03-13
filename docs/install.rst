@@ -272,21 +272,20 @@ method which allows deploying VyOS through the network.
 
 **Requirements**
 
+* Clients (where VyOS is to be installed) with a PXE-enabled NIC
 * :ref:`dhcp-server`
 * :ref:`tftp-server`
 * Webserver (HTTP) - optional, but we will use it to speed up installation
 * VyOS ISO image to be installed (do not use images prior to VyOS 1.2.3)
-* ``pxelinux.0``, ``ldlinux.c32`` from SYSLINUX_
-  (https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/)
-
+* Files ``pxelinux.0`` and ``ldlinux.c32`` `from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_
 
 Configuration
 ^^^^^^^^^^^^^
 
-DHCP
-""""
+Step 1: DHCP
+""""""""""""
 
-Configure DHCP server to provide the client with:
+Configure a DHCP server to provide the client with:
 
 * An IP address
 * The TFTP server address (DHCP option 66). Sometimes referred as *boot server*
@@ -311,13 +310,13 @@ In this example we configured an existent VyOS as the DHCP server:
 
 .. _install_from_tftp:
 
-TFTP
-""""
+Step 2: TFTP
+""""""""""""
 
 Configure a TFTP server so that it serves the following:
 
-* ``pxelinux.0`` from the Syslinux distribution
-* ``ldlinux.c32`` from the Syslinux distribution
+* The ``pxelinux.0`` file from the Syslinux distribution
+* The ``ldlinux.c32`` file from the Syslinux distribution
 * The kernel of the VyOS software you want to deploy. That is the ``vmlinuz``
   file inside the ``/live`` directory of the extracted contents from the ISO
   file
@@ -325,8 +324,8 @@ Configure a TFTP server so that it serves the following:
   ``initrd.img`` file inside the ``/live`` directory of the extracted contents
   from the ISO file. Do not use an empty (0 bytes) initrd.img file you might
   find, the correct file may have a longer name.
-* A directory named pxelinux.cfg which must contain the configuration file:
-  We will use the configuration_ file shown below, which we named default_
+* A directory named pxelinux.cfg which must contain the configuration file.
+  We will use the configuration_ file shown below, which we named default_.
 
 .. _configuration: https://wiki.syslinux.org/wiki/index.php?title=Config
 .. _default: https://wiki.syslinux.org/wiki/index.php?title=PXELINUX#Configuration
@@ -371,19 +370,22 @@ Example of simple (no menu) configuration file:
    APPEND initrd=initrd.img-4.19.54-amd64-vyos boot=live nopersistence \
           noautologin nonetworking fetch=http://address:8000/filesystem.squashfs
 
-HTTP
-""""
+Step 3: HTTP
+""""""""""""
 
-As you read in the configuration file, we are sending ``filesystem.squashfs``
+As you can read in the configuration file, we are sending ``filesystem.squashfs``
 through HTTP. As that is a heavy file, we choose HTTP to speed up the transfer
-over TFTP. Run a web server - you can use a simple one like
+over TFTP.
+
+First run a web server - you can use a simple one like
 `Python's SimpleHTTPServer`_ and start serving the ``filesystem.squashfs``
 file. The file can be found inside the ``/live`` directory of the extracted
 contents of the ISO file.
 
-Edit the configuration file at the :ref:`install_from_tftp` so that it shows
-the correct URL at ``fetch=http://address/filesystem.squashfs``. Then restart
-the TFTP service. If you are using VyOS as your TFTP Server, you can restart
+Second, edit the configuration file at the :ref:`install_from_tftp` so that it shows
+the correct URL at ``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``.
+
+And third, restart the TFTP service. If you are using VyOS as your TFTP Server, you can restart
 the service with ``sudo service tftpd-hpa restart``.
 
 .. note::  Make sure the available directories and files in both TFTP and HTTP
@@ -392,14 +394,16 @@ the service with ``sudo service tftpd-hpa restart``.
 .. _`Python's SimpleHTTPServer`: https://docs.python.org/2/library/simplehttpserver.html
 
 Client Boot
-"""""""""""
+^^^^^^^^^^^
 
-Turn on your PXE-enabled client or clients. They will automatically get an IP
+Finally, turn on your PXE-enabled client or clients. They will automatically get an IP
 address from the DHCP server and start booting into VyOS live from the files
 automatically taken from the TFTP and HTTP servers.
 
 Once finished you will be able to proceed with the ``install image`` command as
 in a regular VyOS installation.
+
+
 
 Known Issues
 ------------
