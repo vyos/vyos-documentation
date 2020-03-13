@@ -29,8 +29,8 @@ A VyOS system has three major types of configurations:
   can be multiple configuration files. The default or "boot" configuration is
   saved and loaded from the file ``/config/config.boot``.
 
-Work the Config
-===============
+Seeing the configuration
+========================
 
 .. opcmd:: show configuration
 
@@ -121,8 +121,8 @@ Both these commands should be executed when in operational mode, they do not
 work directly in configuration mode. The is a special way on how to
 :ref:`run_opmode_from_config_mode`.
 
-Navigating
-==========
+Navigating the configuration
+============================
 
 When entering the configuration mode you are navigating inside the tree
 structure exported in the overview above, to enter configuration mode enter
@@ -223,10 +223,10 @@ to the top level.
   vyos@vyos# exit
   Warning: configuration changes have not been saved.
 
-Managing
-========
+Editing the configuration
+=========================
 
-The configuration is managed by the use of :cfgcmd:`set` and :cfgcmd:`delete`
+The configuration can be edited by the use of :cfgcmd:`set` and :cfgcmd:`delete`
 commands from within configuration mode. Configuration commands are flattened
 from the tree into 'one-liner' commands shown in :opcmd:`show configuration
 commands` from operation mode.
@@ -337,11 +337,14 @@ commands.
     ---------        ----------                        ---  -----------
     eth0             0.0.0.0/0                         u/u
 
-Config Archive
-==============
+Managing configurations
+=======================
 
-VyOS automatically maintains backups of every previous configurations which
-has been committed to the system.
+VyOS comes with an integrated versioning system for the system configuration.
+It automatically maintains a backup of every previous configuration
+which has been committed to the system.
+The configurations are versioned locally for rollback
+but they can also be stored on a remote host for archiving/backup reasons.
 
 Local Archive
 -------------
@@ -416,6 +419,7 @@ previous revisions if something goes wrong.
    You can specify the number of revisions stored on disk. N can be in the
    range of 0 - 65535. When the number of revisions exceeds the configured
    value, the oldest revision is removed.
+   The default setting for this value is to store 20 revisions locally.
 
 Rollback Changes
 ----------------
@@ -443,19 +447,26 @@ Remote Archive
 --------------
 
 VyOS can upload the configuration to a remote location after each call to
-:cfgcmd:`commit`. TFTP, FTP, and SFTP servers are supported.
+:cfgcmd:`commit`. You will have to set the commit-archive location.
+TFTP, FTP, and SFTP servers are supported.
+Every time a :cfgcmd:`commit` is successfull
+the ``config.boot`` file will be copied to the defined destination(s).
+The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``
 
-.. cfgcmd set system config-management commit-archive location <URI>
+.. cfgcmd:: set system config-management commit-archive location <URI>
 
-   Specify remote location of commit archive.
+   Specify remote location of commit archive as any of the below :abbr:`URI (Uniform
+   Resource Identifier)`
 
-   * scp://<user>:<passwd>@<host>/<dir>
-   * sftp://<user>:<passwd>@<host>/<dir>
-   * ftp://<user>:<passwd>@<host>/<dir>
-   * tftp://<host>/<dir>
+   * ``scp://<user>:<passwd>@<host>/<dir>``
+   * ``sftp://<user>:<passwd>@<host>/<dir>``
+   * ``ftp://<user>:<passwd>@<host>/<dir>``
+   * ``tftp://<host>/<dir>``
+
+.. note:: The number of revisions don't affect the commit-archive.
 
 Restore Default
-===============
+---------------
 
 In the case you want to completely delete your configuration and restore the
 default one, you can enter the following command in configuration mode:

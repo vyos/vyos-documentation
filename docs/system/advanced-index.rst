@@ -1,13 +1,12 @@
-.. _system_config:
+.. _advanced_system_tweaks:
 
-####################
-System Configuration
-####################
+######################
+Advanced System Tweaks
+######################
 
 .. toctree::
    :maxdepth: 2
 
-   config-management
    eventhandler
    flow-accounting
    ntp
