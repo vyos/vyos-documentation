@@ -17,22 +17,23 @@ incoming traffic and a public key, which the peer(s) will use to encrypt traffic
 Generate keypair
 ----------------
 
-Generate the keypair, which creates a public and private part and stores it
-within VyOS. It will be used per default on any configured WireGuard interface,
-even if multiple interfaces are being configured.
+.. opcmd:: generate wireguard default-keypair
 
-.. code-block:: none
+   It generates the keypair, that is its public and private part and stores it within VyOS. It will be used per default on any configured WireGuard interface, even if multiple interfaces are being configured.
 
-  wg01:~$ configure
-  wg01# run generate wireguard keypair
 
-The public key is being shared with your peer(s), your peer will encrypt all
-traffic to your system using this public key.
 
-.. code-block:: none
+.. opcmd:: show wireguard keypairs pubkey default
 
-  wg01# run show wireguard pubkey
-  u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk=
+   It shows the public key which needs to be shared with your peer(s). Your peer will encrypt all traffic to your system using this public key.
+
+
+
+   .. code-block:: none
+
+     vyos@vyos:~$ show wireguard keypairs pubkey default 
+     hW17UxY7zeydJNPIyo3UtGnBHkzTK/NeBOrDSIU9Tx0=
+
 
 
 Generate named keypair
@@ -47,9 +48,8 @@ to each other.
 
 .. code-block:: none
 
-  wg01:~$ configure
-  wg01# run generate wireguard named-keypairs KP01
-  wg01# run generate wireguard named-keypairs KP02
+  vyos@vyos:~$ generate wireguard named-keypairs KP01
+  vyos@vyos:~$ generate wireguard named-keypairs KP02
 
 
 Interface configuration
