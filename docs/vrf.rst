@@ -257,5 +257,12 @@ For VR Fmaintenance the followin operational commands are in place.
      2 packets transmitted, 2 received, 0% packet loss, time 4ms
      rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
 
+.. opcmd:: traceroute vrf <name> [ipv4 | ipv6] <host>
+
+   Displays the route packets take to a network host utilizing VRF instance
+   identified by `<name>`. When using the IPv4 or IPv6 option, display the route
+   packets take to the for the given hosts IP address family. This option is
+   useful when the host specified is a hostname rather than an IP address.
+
 
 .. include:: common-references.rst
