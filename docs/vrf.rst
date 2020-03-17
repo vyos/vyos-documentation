@@ -106,8 +106,9 @@ Static Routes
 
    Range is 1 to 255, default is 1.
 
-.. note:: Routes with a distance of 255 are effectively disabled and not
-   installed into the kernel.
+   .. note:: Routes with a distance of 255 are effectively disabled and not
+      installed into the kernel.
+
 
 Leaking
 """""""
@@ -125,6 +126,44 @@ Leaking
    between multiple VRF instances. This will add an IPv6 route to VRF `<name>`
    routing table to reach a `<subnet>` via a next-hop gatewys `<address>` in
    a different VRF or leak it into the default VRF.
+
+
+Interface Routes
+""""""""""""""""
+
+.. cfgcmd:: set protocols vrf <name> static interface-route <subnet> next-hop-interface <interface>
+
+   Allows you to configure the next-hop interface for an interface-based IPv4
+   static route. `<interface>` will be the next-hop interface where trafic is
+   routed for the given `<subnet>`.
+
+.. cfgcmd:: set protocols vrf <name> static interface-route <subnet> next-hop-interface <interface> disable
+
+   Disables interface-based IPv4 static route.
+
+.. cfgcmd:: set protocols vrf <name> static interface-route <subnet> next-hop-interface <interface> distance <distance>
+
+   Defines next-hop distance for this route, routes with smaller administrative
+   distance are elected prior those with a higher distance.
+
+   Range is 1 to 255, default is 1.
+
+.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet> next-hop-interface <interface>
+
+   Allows you to configure the next-hop interface for an interface-based IPv6
+   static route. `<interface>` will be the next-hop interface where trafic is
+   routed for the given `<subnet>`.
+
+.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet> next-hop-interface <interface> disable
+
+   Disables interface-based IPv6 static route.
+
+.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet> next-hop-interface <interface> distance <distance>
+
+   Defines next-hop distance for this route, routes with smaller administrative
+   distance are elected prior those with a higher distance.
+
+   Range is 1 to 255, default is 1.
 
 Blackhole
 """""""""
