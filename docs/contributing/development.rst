@@ -673,6 +673,34 @@ Migrating old CLI
      - None
      - All logic should be in the scripts
 
+Debugging
+=========
+
+There are two flags available to aid in debugging configuration scripts.
+Since configuration loading issues will manifest during boot, the flags are
+passed as kernel boot parameters.
+
+Kernel boot parameters
+----------------------
+
+``vyos-debug``
+^^^^^^^^^^^^^^
+
+Adding the parameter ``vyos-debug`` to the linux boot line will produce
+timing results for the execution of scripts during commit. If one is seeing
+an unexpected delay during manual or boot commit, this may be useful in
+identifying bottlenecks. The internal flag is ``VYOS_DEBUG``, and is found in
+vyatta-cfg_. Output is directed to ``/var/log/vyatta/cfg-stdout.log``.
+
+``vyos-config-debug``
+^^^^^^^^^^^^^^^^^^^^^
+
+During development, coding errors can lead to a commit failure on boot,
+possibly resulting in a failed initialization of the CLI. In this
+circumstance, the kernel boot parameter ``vyos-config-debug`` will ensure
+access to the system as user ``vyos``, and will log a Python stack trace to
+``/tmp/boot-config-trace``.
+
 Continuous Integration
 ======================
 
@@ -701,5 +729,6 @@ http://dev.packages.vyos.net/repositories/.
 .. _`IPv4, IPv6`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/address-ipv4-ipv6.xml.i
 .. _`VLAN (VIF)`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/vif.xml.i
 .. _`MAC address`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/interface-mac.xml.i
+.. _vyatta-cfg: https://github.com/vyos/vyatta-cfg
 
 .. include:: ../common-references.rst
