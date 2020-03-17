@@ -1,8 +1,8 @@
-.. _network-interfaces:
+.. _advanced_network-interfaces:
 
-##################
-Network Interfaces
-##################
+###########################
+Advanced Network Interfaces
+###########################
 
 .. toctree::
    :maxdepth: 1
