@@ -128,6 +128,7 @@ Blackhole
 Alternate Routing Tables
 ========================
 
-Alternate routing tables are used with policy based routing.
-
 TBD
+
+Alternate routing tables are used with policy based routing of by utilizing
+:ref:`vrf`.
