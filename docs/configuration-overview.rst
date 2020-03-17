@@ -121,6 +121,42 @@ Both these commands should be executed when in operational mode, they do not
 work directly in configuration mode. The is a special way on how to
 :ref:`run_opmode_from_config_mode`.
 
+Comment
+-------
+
+.. cfgcmd:: comment <config node> "comment text"
+
+   Add comment as an annotation to a configuration node.
+
+   The ``comment` command allows you to insert a comment above the ``<config
+   node>`` configuration section. Comments are enclosed with ``/*`` and ``*/``
+   as open/close delimiters. A ``comment`` cannot be used at the top of the
+   configuration hierarchy, only on subsections. Comments need to be commited,
+   just like other config changes.
+
+   To remove an existing comment from your current configuration, specify an
+   empty string enclosed in double quote marks (``""``) as the comment text.
+
+   Example:
+
+   .. code-block:: none
+
+     vyos@vyos# comment firewall all-ping "Yes I know this VyOS is cool"
+     vyos@vyos# commit
+     vyos@vyos# show
+      firewall {
+          /* Yes I know this VyOS is cool */
+          all-ping enable
+          broadcast-ping disable
+          ...
+      }
+
+   .. note:: An important thing to note is that since the comment is added on
+      top of the section, it will not appear if the ``show <section>`` command
+      is used. With the above example, the `show firewall` command would return
+      starting after the ``firewall {`` line, hiding the comment.
+
+
 Navigating the configuration
 ============================
 
