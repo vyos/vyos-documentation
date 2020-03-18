@@ -4,38 +4,41 @@
 Configuration Overview
 ######################
 
-VyOS makes use of a unified configuration file for the entire systems
-configuration: ``/config/config.boot``. This allows easy template creation,
-backup, and replication of system configuration. A system can thus also be
-easily cloned by simply copying the required configuration files.
+VyOS makes use of a unified configuration file for the entire system's
+configuration: ``/config/config.boot``. This allows easy template
+creation, backup, and replication of system configuration. A system can
+thus also be easily cloned by simply copying the required configuration
+files.
 
 Terminology
 ===========
 
 A VyOS system has three major types of configurations:
 
-* **Active/Running** configuration is the system configuration that is loaded
-  and currently active (used by VyOS). Any change in the configuration will
-  have to be committed to belong to the active/running configuration.
+* **Active** or **Running** configuration is the system configuration
+  that is loaded  and currently active (used by VyOS). Any change in
+  the configuration will have to be committed to belong to the
+  active/running configuration.
 
-* **Working** - is the configuration which is currently being modified in
-  configuration mode. Changes made to the working configuration do not go into
-  effect until the changes are committed with the :cfgcmd:`commit` command. At
-  which time the working configuration will become the active or running
-  configuration.
+* **Working** - is the configuration which is currently being modified
+  in configuration mode. Changes made to the working configuration do
+  not go into effect until the changes are committed with the
+  :cfgcmd:`commit` command. At which time the working configuration will
+  become the active or running configuration.
 
-* **Saved** - is a configuration saved to a file using the :cfgcmd:`save`
-  command. It allows you to keep safe a configuration for future uses. There
-  can be multiple configuration files. The default or "boot" configuration is
-  saved and loaded from the file ``/config/config.boot``.
+* **Saved** - is a configuration saved to a file using the
+  :cfgcmd:`save` command. It allows you to keep safe a configuration for
+  future uses. There can be multiple configuration files. The default or
+  "boot" configuration is saved and loaded from the file
+  ``/config/config.boot``.
 
-Seeing the configuration
-========================
+Seeing and navigating the configuration
+=======================================
 
 .. opcmd:: show configuration
 
    View the current active configuration, also known as the running
-   configuration.
+   configuration, from the operational mode.
 
    .. code-block:: none
 
@@ -91,13 +94,14 @@ Seeing the configuration
      }
 
 By default, the configuration is displayed in a hierarchy like the above
-example, this is only one of the possible ways to display the configuration.
-When the configuration is generated and the device is configured, changes are
-added through a collection of :cfgcmd:`set` and :cfgcmd:`delete` commands.
+example, this is only one of the possible ways to display the
+configuration. When the configuration is generated and the device is
+configured, changes are added through a collection of :cfgcmd:`set` and
+:cfgcmd:`delete` commands.
 
 .. opcmd:: show configuration commands
 
-   Get a collection of all the set commands required which led to this
+   Get a collection of all the set commands required which led to the
    running configuration.
 
    .. code-block:: none
@@ -117,52 +121,23 @@ added through a collection of :cfgcmd:`set` and :cfgcmd:`delete` commands.
      set system syslog global facility all level 'notice'
      set system syslog global facility protocols level 'debug'
 
-Both these commands should be executed when in operational mode, they do not
-work directly in configuration mode. The is a special way on how to
-:ref:`run_opmode_from_config_mode`.
+Both these ``show`` commands should be executed when in operational
+mode, they do not work directly in configuration mode. There is a
+special way on how to :ref:`run_opmode_from_config_mode`.
 
-Comment
--------
+.. hint:: Use the ``show configuration commands | strip-private``
+   command when you want to hide private data. You may want to do so if
+   you want to share your configuration on the `forum`_.
 
-.. cfgcmd:: comment <config node> "comment text"
-
-   Add comment as an annotation to a configuration node.
-
-   The ``comment` command allows you to insert a comment above the ``<config
-   node>`` configuration section. Comments are enclosed with ``/*`` and ``*/``
-   as open/close delimiters. A ``comment`` cannot be used at the top of the
-   configuration hierarchy, only on subsections. Comments need to be commited,
-   just like other config changes.
-
-   To remove an existing comment from your current configuration, specify an
-   empty string enclosed in double quote marks (``""``) as the comment text.
-
-   Example:
-
-   .. code-block:: none
-
-     vyos@vyos# comment firewall all-ping "Yes I know this VyOS is cool"
-     vyos@vyos# commit
-     vyos@vyos# show
-      firewall {
-          /* Yes I know this VyOS is cool */
-          all-ping enable
-          broadcast-ping disable
-          ...
-      }
-
-   .. note:: An important thing to note is that since the comment is added on
-      top of the section, it will not appear if the ``show <section>`` command
-      is used. With the above example, the `show firewall` command would return
-      starting after the ``firewall {`` line, hiding the comment.
+.. _`forum`: https://forum.vyos.io
 
 
-Navigating the configuration
-============================
+The config mode
+---------------
 
-When entering the configuration mode you are navigating inside the tree
-structure exported in the overview above, to enter configuration mode enter
-the command :opcmd:`configure` when in operational mode.
+When entering the configuration mode you are navigating inside a tree
+structure, to enter configuration mode enter the command
+:opcmd:`configure` when in operational mode.
 
 .. code-block:: none
 
@@ -170,11 +145,17 @@ the command :opcmd:`configure` when in operational mode.
   [edit]
   vyos@vyos#
 
-All commands executed here are relative to the configuration level you have
-entered. You can do everything from the top level, but commands will be quite
-lengthy when manually typing them.
 
-The current hierarchy level can be changed by the :cfgcmd:`edit` command.
+.. note:: When going into configuration mode, prompt changes from
+   ``$`` to ``#``.
+
+
+All commands executed here are relative to the configuration level you
+have entered. You can do everything from the top level, but commands
+will be quite lengthy when manually typing them.
+
+The current hierarchy level can be changed by the :cfgcmd:`edit`
+command.
 
 .. code-block:: none
 
@@ -185,17 +166,16 @@ The current hierarchy level can be changed by the :cfgcmd:`edit` command.
   vyos@vyos#
 
 You are now in a sublevel relative to ``interfaces ethernet eth0``, all
-commands executed from this point on are relative to this sublevel. Use either
-the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top of the
-hierarchy. You can also use the :cfgcmd:`up` command to move only one level up
-at a time.
+commands executed from this point on are relative to this sublevel. Use
+eithe the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top
+of the hierarchy. You can also use the :cfgcmd:`up` command to move only
+one level up at a time.
 
-The :cfgcmd:`show` command within configuration mode will show the working
-configuration indicating line changes with ``+`` for additions, ``>`` for
-replacements and ``-`` for deletions.
+.. cfgcmd:: show
 
-.. note:: When going into configuration mode, prompt changes from
-   ``$`` to ``#``.
+The :cfgcmd:`show` command within configuration mode will show the
+working configuration indicating line changes with ``+`` for additions,
+``>`` for replacements and ``-`` for deletions.
 
 **Example:**
 
@@ -228,8 +208,8 @@ replacements and ``-`` for deletions.
   loopback lo {
   }
 
-It is also possible to display all `set` commands within configuration mode
-using :cfgcmd:`show | commands`
+It is also possible to display all `set` commands within configuration
+mode using :cfgcmd:`show | commands`
 
 .. code-block:: none
 
@@ -237,8 +217,9 @@ using :cfgcmd:`show | commands`
   set address dhcp
   set hw-id 00:53:ad:44:3b:03
 
-These commands are also relative to the level you are inside and only relevant
-configuration blocks will be displayed when entering a sub-level.
+These commands are also relative to the level you are inside and only 
+relevant configuration blocks will be displayed when entering a
+sub-level.
 
 .. code-block:: none
 
@@ -247,9 +228,9 @@ configuration blocks will be displayed when entering a sub-level.
    address dhcp
    hw-id 00:53:ad:44:3b:03
 
-Exiting from the configuration mode is done via the :cfgcmd:`exit` command from
-the top level, executing :cfgcmd:`exit` from within a sub-level takes you back
-to the top level.
+Exiting from the configuration mode is done via the :cfgcmd:`exit`
+command from the top level, executing :cfgcmd:`exit` from within a
+sub-level takes you back to the top level.
 
 .. code-block:: none
 
@@ -259,16 +240,56 @@ to the top level.
   vyos@vyos# exit
   Warning: configuration changes have not been saved.
 
+Comment
+-------
+
+.. cfgcmd:: comment <config node> "comment text"
+
+   Add comment as an annotation to a configuration node.
+
+   The ``comment` command allows you to insert a comment above the
+   ``<config node>`` configuration section. Comments are enclosed with
+   ``/*`` and ``*/`` as open/close delimiters. A ``comment`` cannot be
+   used at the top of  the configuration hierarchy, only on subsections.
+   Comments need to be commited, just like other config changes.
+
+   To remove an existing comment from your current configuration,
+   specify an empty string enclosed in double quote marks (``""``) as
+   the comment text.
+
+   Example:
+
+   .. code-block:: none
+
+     vyos@vyos# comment firewall all-ping "Yes I know this VyOS is cool"
+     vyos@vyos# commit
+     vyos@vyos# show
+      firewall {
+          /* Yes I know this VyOS is cool */
+          all-ping enable
+          broadcast-ping disable
+          ...
+      }
+
+   .. note:: An important thing to note is that since the comment is
+      added on top of the section, it will not appear if the ``show
+      <section>`` command is used. With the above example, the `show
+      firewall` command would return starting after the ``firewall
+      {`` line, hiding the comment.
+
+
+
 Editing the configuration
 =========================
 
-The configuration can be edited by the use of :cfgcmd:`set` and :cfgcmd:`delete`
-commands from within configuration mode. Configuration commands are flattened
-from the tree into 'one-liner' commands shown in :opcmd:`show configuration
-commands` from operation mode.
+The configuration can be edited by the use of :cfgcmd:`set` and
+:cfgcmd:`delete` commands from within configuration mode. Configuration
+commands are flattened from the tree into 'one-liner' commands shown in
+:opcmd:`show configuration commands` from operation mode.
 
-Commands are relative to the level where they are executed and all redundant
-information from the current level is removed from the command entered.
+Commands are relative to the level where they are executed and all
+redundant information from the current level is removed from the command
+entered.
 
 .. code-block:: none
 
@@ -278,15 +299,16 @@ information from the current level is removed from the command entered.
   [edit interfaces ethernet eth0]
   vyos@vyos# set address 203.0.113.6/24
 
-These two commands above are essentially the same, just executed from different
-levels in the hierarchy.
+These two commands above are essentially the same, just executed from
+different levels in the hierarchy.
 
 .. cfgcmd:: delete
 
-   To delete a configuration entry use the :cfgcmd:`delete` command, this also
-   deletes all sub-levels under the current level you've specified in the
-   :cfgcmd:`delete` command. Deleting an entry will also result in the element
-   reverting back to its default value if one exists.
+   To delete a configuration entry use the :cfgcmd:`delete` command,
+   this also deletes all sub-levels under the current level you've
+   specified in the :cfgcmd:`delete` command. Deleting an entry will
+   also result in the element reverting back to its default value if one
+   exists.
 
    .. code-block:: none
 
@@ -295,8 +317,8 @@ levels in the hierarchy.
 
 .. cfgcmd:: commit
 
-  Any change you do on the configuration, will not take effect until committed
-  using the :cfgcmd:`commit` command in configuration mode.
+  Any change you do on the configuration, will not take effect until
+  committed using the :cfgcmd:`commit` command in configuration mode.
 
   .. code-block:: none
 
@@ -308,9 +330,9 @@ levels in the hierarchy.
 
 .. cfgcmd:: save
 
-   In order to preserve configuration changes upon reboot, the configuration
-   must also be saved once applied. This is done using the :cfgcmd:`save`
-   command in configuration mode.
+   In order to preserve configuration changes upon reboot, the
+   configuration must also be saved once applied. This is done using the
+   :cfgcmd:`save` command in configuration mode.
 
    .. code-block:: none
 
@@ -334,9 +356,9 @@ levels in the hierarchy.
 
 .. cfgcmd:: exit [discard]
 
-   Configuration mode can not be exited while uncommitted changes exist. To
-   exit configuration mode without applying changes, the :cfgcmd:`exit discard`
-   command must be used.
+   Configuration mode can not be exited while uncommitted changes exist.
+   To exit configuration mode without applying changes, the
+   :cfgcmd:`exit discard` command must be used.
 
    All changes in the working config will thus be lost.
 
@@ -353,16 +375,17 @@ levels in the hierarchy.
 Access opmode from config mode
 ==============================
 
-When inside configuration mode you are not directly able to execute operational
-commands.
+When inside configuration mode you are not directly able to execute
+operational commands.
 
 .. cfgcmd:: run
 
-  Access to these commands are possible through the use of the ``run [command]``
-  command. From this command you will have access to everything accessible from
-  operational mode.
+  Access to these commands are possible through the use of the
+  ``run [command]`` command. From this command you will have access to
+  everything accessible from operational mode.
 
-  Command completion and syntax help with ``?`` and ``[tab]`` will also work.
+  Command completion and syntax help with ``?`` and ``[tab]`` will also
+  work.
 
   .. code-block:: none
 
@@ -376,17 +399,17 @@ commands.
 Managing configurations
 =======================
 
-VyOS comes with an integrated versioning system for the system configuration.
-It automatically maintains a backup of every previous configuration
-which has been committed to the system.
-The configurations are versioned locally for rollback
-but they can also be stored on a remote host for archiving/backup reasons.
+VyOS comes with an integrated versioning system for the system
+configuration. It automatically maintains a backup of every previous
+configuration which has been committed to the system. The configurations
+are versioned locally for rollback but they can also be stored on a
+remote host for archiving/backup reasons.
 
 Local Archive
 -------------
 
-Revisions are stored on disk. You can view, compare and rollback them to any
-previous revisions if something goes wrong.
+Revisions are stored on disk. You can view, compare and rollback them to
+any previous revisions if something goes wrong.
 
 .. opcmd:: show system commit
 
@@ -429,11 +452,12 @@ previous revisions if something goes wrong.
          9	   2013-12-12 15:42:07 root by boot-config-loader
          10   2013-12-12 15:42:06 root by init
 
-   Revisions can be compared with :cfgcmd:`compare N M` command, where N and M
-   are revision numbers. The output will describe how the configuration N is
-   when compared to YM indicating with a plus sign (``+``) the additional parts
-   N has when compared to M, and indicating with a minus sign (``-``) the
-   lacking parts N misses when compared to Y.
+   Revisions can be compared with :cfgcmd:`compare N M` command, where N
+   and M are revision numbers. The output will describe how the
+   configuration N is when compared to YM indicating with a plus sign
+   (``+``) the additional parts N has when compared to M, and indicating
+   with a minus sign (``-``) the lacking parts N misses when compared to
+   Y.
 
    .. code-block:: none
 
@@ -452,16 +476,16 @@ previous revisions if something goes wrong.
 
 .. cfgcmd:: set system config-management commit-revisions <N>
 
-   You can specify the number of revisions stored on disk. N can be in the
-   range of 0 - 65535. When the number of revisions exceeds the configured
-   value, the oldest revision is removed.
-   The default setting for this value is to store 20 revisions locally.
+   You can specify the number of revisions stored on disk. N can be in
+   the range of 0 - 65535. When the number of revisions exceeds the
+   configured value, the oldest revision is removed. The default setting
+   for this value is to store 20 revisions locally.
 
 Rollback Changes
 ----------------
 
-You can rollback configuration changes using the rollback command. This will
-apply the selected revision and trigger a system reboot.
+You can rollback configuration changes using the rollback command. This
+willn apply the selected revision and trigger a system reboot.
 
 .. cfgcmd:: rollback <N>
 
@@ -482,17 +506,17 @@ apply the selected revision and trigger a system reboot.
 Remote Archive
 --------------
 
-VyOS can upload the configuration to a remote location after each call to
-:cfgcmd:`commit`. You will have to set the commit-archive location.
-TFTP, FTP, and SFTP servers are supported.
-Every time a :cfgcmd:`commit` is successfull
-the ``config.boot`` file will be copied to the defined destination(s).
-The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``
+VyOS can upload the configuration to a remote location after each call
+to :cfgcmd:`commit`. You will have to set the commit-archive location.
+TFTP, FTP, and SFTP servers are supported. Every time a :cfgcmd:`commit`
+is successfull the ``config.boot`` file will be copied to the defined
+destination(s). The filename used on the remote host will be
+``config.boot-hostname.YYYYMMDD_HHMMSS``
 
 .. cfgcmd:: set system config-management commit-archive location <URI>
 
-   Specify remote location of commit archive as any of the below :abbr:`URI (Uniform
-   Resource Identifier)`
+   Specify remote location of commit archive as any of the below
+   :abbr:`URI (Uniform Resource Identifier)`
 
    * ``scp://<user>:<passwd>@<host>/<dir>``
    * ``sftp://<user>:<passwd>@<host>/<dir>``
@@ -504,19 +528,20 @@ The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHM
 Restore Default
 ---------------
 
-In the case you want to completely delete your configuration and restore the
-default one, you can enter the following command in configuration mode:
+In the case you want to completely delete your configuration and restore
+the default one, you can enter the following command in configuration
+mode:
 
 .. code-block:: none
 
   load /opt/vyatta/etc/config.boot.default
 
-You will be asked if you want to continue. If you accept, you will have to use
-:cfgcmd:`commit` if you want to make the changes active.
+You will be asked if you want to continue. If you accept, you will have
+to use :cfgcmd:`commit` if you want to make the changes active.
 
-Then you may want to :cfgcmd:`save` in order to delete the saved configuration
-too.
+Then you may want to :cfgcmd:`save` in order to delete the saved
+configuration too.
 
-.. note:: If you are remotely connected, you will lose your connection. You may
-   want to copy first the config, edit it to ensure connectivity, and load the
-   edited config.
+.. note:: If you are remotely connected, you will lose your connection.
+   You may want to copy first the config, edit it to ensure
+   connectivity, and load the edited config.
