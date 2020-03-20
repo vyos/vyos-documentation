@@ -34,7 +34,7 @@ are reserved for private use:
 
 * 10.0.0.0 to 10.255.255.255 (CIDR: 10.0.0.0/8)
 * 172.16.0.0 to 172.31.255.255 (CIDR: 172.16.0.0/12)
-* 192.168.0.0 to 192.168.255.255 (CIDR: 192.268.0.0/16)
+* 192.168.0.0 to 192.168.255.255 (CIDR: 192.168.0.0/16)
 
 
 If an ISP deploys a :abbr:`CGN (Carrier-grade NAT)`, and uses :rfc:`1918`
