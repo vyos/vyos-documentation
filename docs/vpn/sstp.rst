@@ -62,17 +62,33 @@ commands can be used.
 Configuration
 =============
 
-.. cfgcmd:: set service sstp-server authentication local-users username <user> password <pass>
+.. cfgcmd:: set vpn sstp authentication local-users username <user> password <pass>
 
   Create `<user>` for local authentication on this system. The users password
   will be set to `<pass>`.
 
-.. cfgcmd:: set service sstp-server authentication protocols <pap | chap | mschap | mschap-v2>
+.. cfgcmd:: set vpn sstp authentication local-users username <user> disable
+
+  Disable `<user>` account.
+
+.. cfgcmd:: set vpn sstp authentication local-users username <user> static-ip <address>
+
+  Assign static IP address to `<user>` account.
+
+.. cfgcmd:: set vpn sstp authentication local-users username <user> rate-limit download <bandwidth>
+
+  Download bandwidth limit in kbit/s for `<user>`.
+
+.. cfgcmd:: set vpn sstp authentication local-users username <user> rate-limit upload <bandwidth>
+
+  Upload bandwidth limit in kbit/s for `<user>`.
+
+.. cfgcmd:: set vpn sstp authentication protocols <pap | chap | mschap | mschap-v2>
 
   Require the peer to authenticate itself using one of the following protocols:
   pap, chap, mschap, mschap-v2.
 
-.. cfgcmd:: set service sstp-server authentication mode <local | radius>
+.. cfgcmd:: set vpn sstp authentication mode <local | radius>
 
   Set authentication backend. The configured authentication backend is used
   for all queries.
@@ -82,61 +98,58 @@ Configuration
   * **local**: All authentication queries are handled locally.
 
 
-.. cfgcmd:: set service sstp-server network-settings client-ip-settings gateway-address <gateway>
+.. cfgcmd:: set vpn sstp network-settings client-ip-settings gateway-address <gateway>
 
   Specifies single `<gateway>` IP address to be used as local address of PPP
   interfaces.
 
 
-.. cfgcmd:: set service sstp-server network-settings client-ip-settings subnet <subnet>
+.. cfgcmd:: set vpn sstp network-settings client-ip-settings subnet <subnet>
 
   Use `<subnet>` as the IP pool for all connecting clients.
 
 
-.. cfgcmd:: set service sstp-server network-settings dns-server primary-dns <address>
+.. cfgcmd:: set vpn sstp network-settings name-server <address>
 
-  Connected client should use `<address>` as their primary DNS server.
+  Connected client should use `<address>` as their DNS server. Up to two IPv4
+  nameservers can be configured.
 
-
-.. cfgcmd:: set service sstp-server network-settings dns-server secondary-dns <address>
-
-  Connected client should use `<address>` as their secondary DNS server.
 
 SSL Certificates
 ----------------
 
-.. cfgcmd:: set service sstp-server sstp-settings ssl-certs ca <file>
+.. cfgcmd:: set vpn sstp ssl ca-cert-file <file>
 
   Path to `<file>` pointing to the certificate authority certificate.
 
-.. cfgcmd:: set service sstp-server sstp-settings ssl-certs server-cert <file>
+.. cfgcmd:: set vpn sstp ssl cert-file <file>
 
   Path to `<file>` pointing to the servers certificate (public portion).
 
-.. cfgcmd:: set service sstp-server sstp-settings ssl-certs server-key <file>
+.. cfgcmd:: set vpn sstp ssl key-file <file>
 
   Path to `<file>` pointing to the servers certificate (private portion).
 
 PPP Settings
 ------------
 
-.. cfgcmd:: set service sstp-server ppp-settings lcp-echo-failure <number>
+.. cfgcmd:: set vpn sstp ppp-settings lcp-echo-failure <number>
 
   Defines the maximum `<number>` of unanswered echo requests. Upon reaching the
   value `<number>`, the session will be reset.
 
-.. cfgcmd:: set service sstp-server ppp-settings lcp-echo-interval <interval>
+.. cfgcmd:: set vpn sstp ppp-settings lcp-echo-interval <interval>
 
   If this option is specified and is greater than 0, then the PPP module will
   send LCP pings of the echo request every `<interval>` seconds.
 
-.. cfgcmd:: set service sstp-server ppp-settings lcp-echo-timeout
+.. cfgcmd:: set vpn sstp ppp-settings lcp-echo-timeout
 
   Specifies timeout in seconds to wait for any peer activity. If this option
   specified it turns on adaptive lcp echo functionality and "lcp-echo-failure"
   is not used.
 
-.. cfgcmd:: set service sstp-server ppp-settings mppe <require | prefer | deny>
+.. cfgcmd:: set vpn sstp ppp-settings mppe <require | prefer | deny>
 
   Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotioation
   preference.
@@ -156,107 +169,98 @@ RADIUS
 Server
 ^^^^^^
 
-.. cfgcmd:: set service sstp-server authentication radius-server <server> secret <secret>
+.. cfgcmd:: set vpn sstp authentication radius server <server> port <port>
+
+  Configure RADIUS `<server>` and its required port for authentication requests.
+
+.. cfgcmd:: set vpn sstp authentication radius server <server> key <secret>
 
   Configure RADIUS `<server>` and its required shared `<secret>` for
   communicating with the RADIUS server.
 
-.. cfgcmd:: set service sstp-server authentication radius-server <server> secret <secret>
-
-  Configure RADIUS `<server>` and its required shared `<secret>` for
-  communicating with the RADIUS server.
-
-.. cfgcmd:: set service sstp-server authentication radius-server <server> fail-time <time>
+.. cfgcmd:: set vpn sstp authentication radius server <server> fail-time <time>
 
   Mark RADIUS server as offline for this given `<time>` in seconds.
 
-.. cfgcmd:: set service sstp-server authentication radius-server <server> req-limit <limit>
+.. cfgcmd:: set vpn sstp authentication radius server <server> disable
 
-  Maximum number of simultaneous requests to RADIUS server, default is
-  unlimited.
+  Temporary disable this RADIUS server.
 
 Options
 ^^^^^^^
 
-.. cfgcmd:: set service sstp-server authentication radius-settings acct-timeout
+.. cfgcmd:: set vpn sstp authentication radius acct-timeout <timeout>
 
   Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 
-
-.. cfgcmd:: set service sstp-server authentication radius-settings dae-server ip-address <address>
+.. cfgcmd:: set vpn sstp authentication radius dynamic-author server <address>
 
   Specifies IP address for Dynamic Authorization Extension server (DM/CoA)
 
-
-.. cfgcmd:: set service sstp-server authentication radius-settings dae-server port <port>
+.. cfgcmd:: set vpn sstp authentication radius dynamic-author port <port>
 
   Port for Dynamic Authorization Extension server (DM/CoA)
 
-
-.. cfgcmd:: set service sstp-server authentication radius-settings dae-server secret <secret>
+.. cfgcmd:: set vpn sstp authentication radius dynamic-author key <secret>
 
   Secret for Dynamic Authorization Extension server (DM/CoA)
 
-
-.. cfgcmd:: set service sstp-server authentication radius-settings max-try <number>
+.. cfgcmd:: set vpn sstp authentication radius max-try <number>
 
   Maximum number of tries to send Access-Request/Accounting-Request queries
 
-
-.. cfgcmd:: set service sstp-server authentication radius-settings timeout <timeout>
+.. cfgcmd:: set vpn sstp authentication radius timeout <timeout>
 
   Timeout to wait response from server (seconds)
 
-
-.. cfgcmd:: set service sstp-server authentication radius-settings nas-identifier <identifier>
+.. cfgcmd:: set vpn sstp authentication radius nas-identifier <identifier>
 
   Value to send to RADIUS server in NAS-Identifier attribute and to be matched
   in DM/CoA requests.
 
-
-.. cfgcmd:: set service sstp-server authentication radius-settings nas-ip-address <address>
+.. cfgcmd:: set vpn sstp authentication radius nas-ip-address <address>
 
   Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
   in DM/CoA requests. Also DM/CoA server will bind to that address.
 
+.. cfgcmd:: set vpn sstp authentication radius source-address <address>
 
-.. cfgcmd:: set service sstp-server authentication radius-settings rate-limit attribute <attribute>
+  Source IPv4 address used in all RADIUS server queires.
+
+.. cfgcmd:: set vpn sstp authentication radius rate-limit attribute <attribute>
 
   Specifies which RADIUS server attribute contains the rate limit information.
   The default attribute is `Filter-Id`.
 
-
-.. cfgcmd:: set service sstp-server authentication radius-settings rate-limit enable
+.. cfgcmd:: set vpn sstp authentication radius rate-limit enable
 
   Enables bandwidth shaping via RADIUS.
 
-
-.. cfgcmd:: set service sstp-server authentication radius-settings rate-limit vendor
+.. cfgcmd:: set vpn sstp authentication radius rate-limit vendor
 
   Specifies the vendor dictionary, dictionary needs to be in
   /usr/share/accel-ppp/radius.
-
 
 
 Example
 =======
 
 * Use local user `foo` with password `bar`
-* Client IP addresses will be provided from pool `192.0.2.0/24`
+* Client IP addresses will be provided from pool `192.0.2.0/25`
 
-Use <tab> to setup the ``set sstp-settings ssl-certs ...``, it automatically
+Use <tab> to setup the ``set ssl...``, it automatically
 looks for all files and directories in ``/config/user-data/sstp``.
 
 .. code-block:: none
 
-  set service sstp-server authentication local-users username foo password 'bar'
-  set service sstp-server authentication mode 'local'
-  set service sstp-server network-settings client-ip-settings gateway-address '192.0.2.0'
-  set service sstp-server network-settings client-ip-settings subnet '192.0.2.0/24'
-  set service sstp-server network-settings dns-server primary-dns '10.100.100.1'
-  set service sstp-server network-settings dns-server secondary-dns '10.200.100.1'
-  set service sstp-server sstp-settings ssl-certs ca 'ca.crt'
-  set service sstp-server sstp-settings ssl-certs server-cert 'server.crt'
-  set service sstp-server sstp-settings ssl-certs server-key 'server.key'
+  set vpn sstp authentication local-users username foo password 'bar'
+  set vpn sstp authentication mode 'local'
+  set vpn sstp network-settings client-ip-settings gateway-address '192.0.2.254'
+  set vpn sstp network-settings client-ip-settings subnet '192.0.2.0/25'
+  set vpn sstp network-settings name-server '10.0.0.1'
+  set vpn sstp network-settings name-server '10.0.0.2'
+  set vpn sstp ssl ca-cert-file 'ca.crt'
+  set vpn sstp ssl cert-file 'server.crt'
+  set vpn sstp ssl key-file 'server.key'
 
 .. include:: ../common-references.rst

@@ -7,10 +7,11 @@ VPN
 .. toctree::
    :maxdepth: 2
 
-   openvpn
-   l2tp
-   site2site_ipsec
-   gre-ipsec
    dmvpn
+   gre-ipsec
+   l2tp
+   openvpn
    pptp
+   site2site_ipsec
+   sstp
    wireguard
