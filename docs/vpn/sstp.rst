@@ -1,8 +1,8 @@
-.. _sstp_server:
+.. _sstp:
 
-###########
-SSTP Server
-###########
+####
+SSTP
+####
 
 :abbr:`SSTP (Secure Socket Tunneling Protocol)` is a form of :abbr:`VPN
 (Virtual Private Network)` tunnel that provides a mechanism to transport PPP
@@ -19,9 +19,10 @@ local and RADIUS authentication.
 As SSTP provides PPP via a SSL/TLS channel the use of either publically signed
 certificates as well as a private PKI is required.
 
-.. note:: All certificates should be stored on VyOS under
-  ``/config/user-data/sstp``. If certificates are not stored unt ``/config``
-  they will not be migrated during a software update.
+.. note:: All certificates should be stored on VyOS under ``/config/auth``. If
+  certificates are not stored in the ``/config`` directory they will not be
+  migrated during a software update.
+
 
 Self Signed CA and Certificates
 ===============================
@@ -248,9 +249,6 @@ Example
 * Use local user `foo` with password `bar`
 * Client IP addresses will be provided from pool `192.0.2.0/25`
 
-Use <tab> to setup the ``set ssl...``, it automatically
-looks for all files and directories in ``/config/user-data/sstp``.
-
 .. code-block:: none
 
   set vpn sstp authentication local-users username foo password 'bar'
@@ -259,8 +257,8 @@ looks for all files and directories in ``/config/user-data/sstp``.
   set vpn sstp network-settings client-ip-settings subnet '192.0.2.0/25'
   set vpn sstp network-settings name-server '10.0.0.1'
   set vpn sstp network-settings name-server '10.0.0.2'
-  set vpn sstp ssl ca-cert-file 'ca.crt'
-  set vpn sstp ssl cert-file 'server.crt'
-  set vpn sstp ssl key-file 'server.key'
+  set vpn sstp ssl ca-cert-file '/config/auth/ca.crt'
+  set vpn sstp ssl cert-file '/config/auth/server.crt'
+  set vpn sstp ssl key-file '/config/auth/server.key'
 
 .. include:: ../common-references.rst
