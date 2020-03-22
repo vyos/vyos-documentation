@@ -32,7 +32,6 @@ commands can be used.
 
 .. code-block:: none
 
-
   vyos@vyos:~$ mkdir -p /config/user-data/sstp
   vyos@vyos:~$ openssl req -newkey rsa:4096 -new -nodes -x509 -days 3650 -keyout /config/user-data/sstp/server.key -out /config/user-data/sstp/server.crt
 
@@ -260,5 +259,68 @@ Example
   set vpn sstp ssl ca-cert-file '/config/auth/ca.crt'
   set vpn sstp ssl cert-file '/config/auth/server.crt'
   set vpn sstp ssl key-file '/config/auth/server.key'
+
+Testing SSTP
+============
+
+Once you have setup your SSTP server there comes the time to do some basic
+testing. The Linux client used for testing is called sstpc_. sstpc_ requires a
+PPP configuration/peer file.
+
+The following PPP configuration tests MSCHAP-v2:
+
+.. code-block:: none
+
+  $ cat /etc/ppp/peers/vyos
+  usepeerdns
+  #require-mppe
+  #require-pap
+  require-mschap-v2
+  noauth
+  lock
+  refuse-pap
+  refuse-eap
+  refuse-chap
+  refuse-mschap
+  #refuse-mschap-v2
+  nobsdcomp
+  nodeflate
+  debug
+
+
+You can now "dial" the peer with the follwoing command: ``sstpc --log-level 4
+--log-stderr --user vyos --password vyos vpn.example.com -- call vyos``.
+
+A connection attempt will be shown as:
+
+.. code-block:: none
+
+  $ sstpc --log-level 4 --log-stderr --user vyos --password vyos vpn.example.com -- call vyos
+
+  Mar 22 13:29:12 sstpc[12344]: Resolved vpn.example.com to 192.0.2.1
+  Mar 22 13:29:12 sstpc[12344]: Connected to vpn.example.com
+  Mar 22 13:29:12 sstpc[12344]: Sending Connect-Request Message
+  Mar 22 13:29:12 sstpc[12344]: SEND SSTP CRTL PKT(14)
+  Mar 22 13:29:12 sstpc[12344]:   TYPE(1): CONNECT REQUEST, ATTR(1):
+  Mar 22 13:29:12 sstpc[12344]:     ENCAP PROTO(1): 6
+  Mar 22 13:29:12 sstpc[12344]: RECV SSTP CRTL PKT(48)
+  Mar 22 13:29:12 sstpc[12344]:   TYPE(2): CONNECT ACK, ATTR(1):
+  Mar 22 13:29:12 sstpc[12344]:     CRYPTO BIND REQ(4): 40
+  Mar 22 13:29:12 sstpc[12344]: Started PPP Link Negotiation
+  Mar 22 13:29:15 sstpc[12344]: Sending Connected Message
+  Mar 22 13:29:15 sstpc[12344]: SEND SSTP CRTL PKT(112)
+  Mar 22 13:29:15 sstpc[12344]:   TYPE(4): CONNECTED, ATTR(1):
+  Mar 22 13:29:15 sstpc[12344]:     CRYPTO BIND(3): 104
+  Mar 22 13:29:15 sstpc[12344]: Connection Established
+
+  $ ip addr show ppp0
+  164: ppp0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1452 qdisc fq_codel state UNKNOWN group default qlen 3
+       link/ppp  promiscuity 0
+       inet 100.64.2.2 peer 100.64.1.1/32 scope global ppp0
+          valid_lft forever preferred_lft forever
+
+
+
+.. _sstpc: https://github.com/reliablehosting/sstp-client
 
 .. include:: ../common-references.rst
