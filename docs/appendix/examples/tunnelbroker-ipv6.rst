@@ -106,11 +106,11 @@ should be replaced with the information from your `Routed /64` tunnel):
 .. code-block:: none
 
   set interfaces ethernet eth1 address '2001:470:xxxx:xxxx::1/64'
-  set interfaces ethernet eth1 ipv6 router-advert name-server '2001:4860:4860::8888'
-  set interfaces ethernet eth1 ipv6 router-advert name-server '2001:4860:4860::8844'
-  set interfaces ethernet eth1 ipv6 router-advert prefix 2001:470:xxxx:xxxx::/64 autonomous-flag 'true'
-  set interfaces ethernet eth1 ipv6 router-advert prefix 2001:470:xxxx:xxxx::/64 on-link-flag 'true'
-  set interfaces ethernet eth1 ipv6 router-advert prefix 2001:470:xxxx:xxxx::/64 valid-lifetime '2592000'
+  set service router-advert interface eth1 name-server '2001:4860:4860::8888'
+  set service router-advert interface eth1 name-server '2001:4860:4860::8844'
+  set service router-advert interface eth1 prefix 2001:470:xxxx:xxxx::/64 autonomous-flag
+  set service router-advert interface eth1 prefix 2001:470:xxxx:xxxx::/64 on-link-flag
+  set service router-advert interface eth1 prefix 2001:470:xxxx:xxxx::/64 valid-lifetime '2592000'
 
 This accomplishes a few things:
 
@@ -141,25 +141,25 @@ So, when your LAN is eth1, your DMZ is eth2, your cameras live on eth3, etc:
 .. code-block:: none
 
   set interfaces ethernet eth1 address '2001:470:xxxx:1::1/64'
-  set interfaces ethernet eth1 ipv6 router-advert name-server '2001:4860:4860::8888'
-  set interfaces ethernet eth1 ipv6 router-advert name-server '2001:4860:4860::8844'
-  set interfaces ethernet eth1 ipv6 router-advert prefix 2001:470:xxxx:1::/64 autonomous-flag 'true'
-  set interfaces ethernet eth1 ipv6 router-advert prefix 2001:470:xxxx:1::/64 on-link-flag 'true'
-  set interfaces ethernet eth1 ipv6 router-advert prefix 2001:470:xxxx:1::/64 valid-lifetime '2592000'
+  set service router-advert interface eth1 name-server '2001:4860:4860::8888'
+  set service router-advert interface eth1 name-server '2001:4860:4860::8844'
+  set service router-advert interface eth1 prefix 2001:470:xxxx:1::/64 autonomous-flag 'true'
+  set service router-advert interface eth1 prefix 2001:470:xxxx:1::/64 on-link-flag 'true'
+  set service router-advert interface eth1 prefix 2001:470:xxxx:1::/64 valid-lifetime '2592000'
 
   set interfaces ethernet eth2 address '2001:470:xxxx:2::1/64'
-  set interfaces ethernet eth2 ipv6 router-advert name-server '2001:4860:4860::8888'
-  set interfaces ethernet eth2 ipv6 router-advert name-server '2001:4860:4860::8844'
-  set interfaces ethernet eth2 ipv6 router-advert prefix 2001:470:xxxx:2::/64 autonomous-flag 'true'
-  set interfaces ethernet eth2 ipv6 router-advert prefix 2001:470:xxxx:2::/64 on-link-flag 'true'
-  set interfaces ethernet eth2 ipv6 router-advert prefix 2001:470:xxxx:2::/64 valid-lifetime '2592000'
+  set service router-advert interface eth2 name-server '2001:4860:4860::8888'
+  set service router-advert interface eth2 name-server '2001:4860:4860::8844'
+  set service router-advert interface eth2 prefix 2001:470:xxxx:2::/64 autonomous-flag 'true'
+  set service router-advert interface eth2 prefix 2001:470:xxxx:2::/64 on-link-flag 'true'
+  set service router-advert interface eth2 prefix 2001:470:xxxx:2::/64 valid-lifetime '2592000'
 
   set interfaces ethernet eth3 address '2001:470:xxxx:3::1/64'
-  set interfaces ethernet eth3 ipv6 router-advert name-server '2001:4860:4860::8888'
-  set interfaces ethernet eth3 ipv6 router-advert name-server '2001:4860:4860::8844'
-  set interfaces ethernet eth3 ipv6 router-advert prefix 2001:470:xxxx:3::/64 autonomous-flag 'true'
-  set interfaces ethernet eth3 ipv6 router-advert prefix 2001:470:xxxx:3::/64 on-link-flag 'true'
-  set interfaces ethernet eth3 ipv6 router-advert prefix 2001:470:xxxx:3::/64 valid-lifetime '2592000'
+  set service router-advert interface eth3 name-server '2001:4860:4860::8888'
+  set service router-advert interface eth3 name-server '2001:4860:4860::8844'
+  set service router-advert interface eth3 prefix 2001:470:xxxx:3::/64 autonomous-flag 'true'
+  set service router-advert interface eth3 prefix 2001:470:xxxx:3::/64 on-link-flag 'true'
+  set service router-advert interface eth3 prefix 2001:470:xxxx:3::/64 valid-lifetime '2592000'
 
 Firewall
 ========

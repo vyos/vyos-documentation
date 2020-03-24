@@ -95,20 +95,6 @@ Link Administration
    Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It
    is the size (in bytes) of the largest ethernet frame sent on this link.
 
-Router Advertisements
----------------------
-
-Router advertisements are described in :rfc:`4861#section-4.6.2`. They are part
-of what is known as :abbr:`SLAAC (Stateless Address Autoconfiguration)`.
-
-.. cfgcmd:: set interfaces ethernet <interface> ipv6 router-advert send-advert <true | false>
-
-   Enable or disable router advertisements in this `<interface>`.
-
-.. cfgcmd:: set interfaces ethernet <interface> ipv6 router-advert prefix <prefix>
-
-   Prefix information is described in :rfc:`4861#section-4.6.2`.
-
 Operation
 =========
 

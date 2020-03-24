@@ -18,6 +18,7 @@ This chapter describes the available system/network services provided by VyOS.
    ipoe-server
    pppoe-server
    udp-broadcast-relay
+   router-advert
    snmp
    ssh
    tftp
