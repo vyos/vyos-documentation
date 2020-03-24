@@ -44,12 +44,12 @@ NPTv6 support has been added in VyOS 1.2 (Crux) and is available through
 
 .. code-block:: none
 
-  set rule 10 inside-prefix 'fc00:dead:beef::/48'
+  set rule 10 source prefix 'fc00:dead:beef::/48'
   set rule 10 outside-interface 'eth1'
-  set rule 10 outside-prefix '2001:db8:e1::/48'
-  set rule 20 inside-prefix 'fc00:dead:beef::/48'
+  set rule 10 translation prefix '2001:db8:e1::/48'
+  set rule 20 source prefix 'fc00:dead:beef::/48'
   set rule 20 outside-interface 'eth2'
-  set rule 20 outside-prefix '2001:db8:e2::/48'
+  set rule 20 translation prefix '2001:db8:e2::/48'
 
 Resulting in the following ip6tables rules:
 
@@ -57,13 +57,13 @@ Resulting in the following ip6tables rules:
 
   Chain VYOS_DNPT_HOOK (1 references)
    pkts bytes target   prot opt in   out   source              destination
-      0     0 DNPT     all    eth1   any   anywhere            2001:db8:e1::/48  src-pfx 2001:db8:e1::/48 dst-pfx fc00:dead:beef::/48
-      0     0 DNPT     all    eth2   any   anywhere            2001:db8:e2::/48  src-pfx 2001:db8:e2::/48 dst-pfx fc00:dead:beef::/48
+      0     0 NETMAP   all    eth1   any   anywhere            2001:db8:e1::/48  to:fc00:dead:beef::/48
+      0     0 NETMAP   all    eth2   any   anywhere            2001:db8:e2::/48  to:fc00:dead:beef::/48
       0     0 RETURN   all    any    any   anywhere            anywhere
   Chain VYOS_SNPT_HOOK (1 references)
    pkts bytes target   prot opt in   out   source              destination
-      0     0 SNPT     all    any    eth1  fc00:dead:beef::/48 anywhere          src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e1::/48
-      0     0 SNPT     all    any    eth2  fc00:dead:beef::/48 anywhere          src-pfx fc00:dead:beef::/48 dst-pfx 2001:db8:e2::/48
+      0     0 NETMAP   all    any    eth1  fc00:dead:beef::/48 anywhere          to:2001:db8:e1::/48
+      0     0 NETMAP   all    any    eth2  fc00:dead:beef::/48 anywhere          to:2001:db8:e2::/48
       0     0 RETURN   all    any    any   anywhere            anywhere
 
 .. _ULAs: https://en.wikipedia.org/wiki/Unique_local_address
