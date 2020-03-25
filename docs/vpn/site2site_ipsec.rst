@@ -225,7 +225,7 @@ Imagine the following topology
    IPSec IKEv2 site2site VPN (source ./draw.io/vpn_s2s_ikev2.drawio)
 
 
-.. note:: Don't get confused about the used /31 tunnel subnet. :rfc:`3031`
+.. note:: Don't get confused about the used /31 tunnel subnet. :rfc:`3021`
    gives you additional information for using /31 subnets on point-to-point
    links.
 
