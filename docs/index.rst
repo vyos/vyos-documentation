@@ -61,6 +61,7 @@ VyOS User Guide
    appendix/migrate-from-vyatta
    appendix/command-scripting
    appendix/http-api
+   appendix/vyos-on-gns3
 
 
 .. toctree::
