@@ -13,9 +13,28 @@ VyOS HTTP API can be enabled through the ``set service https api`` command.
 
   set service https api debug
   set service https api keys id MY-HTTP-API-ID key MY-HTTP-API-PLAINTEXT-KEY
-  set service https listen-address 192.168.122.127
 
-The local API process listens on localhost:8080, and nginx exposes it on 192.168.122.127:443 in this example.
+The local API process listens on localhost:8080, and nginx exposes it on all
+virtual servers, by default. For the purpose of illustration below, we will
+assume nginx is running at https://192.168.122.127.
+
+One can limit proxying to specific listen addresses/ports/server-names by
+defining a ``service https virtual-host <id>``, and setting ``service https
+api virtual-host <id>``.
+
+.. code-block:: none
+
+  set service https virtual-host example listen-address 192.168.122.127
+  set service https virtual-host example listen-port 44302
+  set service https virtual-host example server-name example.net
+
+  set service https api virtual-host example
+
+In this example, nginx will proxy only those requests to
+192.168.122.127:44302 or example.net:44302 (assuming the DNS record is
+viable). Omitting any of listen-address, listen-port, or server-name, will
+leave appropriate defaults in the nginx directive. Multiple instances of
+``service https api virtual-host`` may be set.
 
 Operational requests
 --------------------
