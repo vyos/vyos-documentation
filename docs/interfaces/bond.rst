@@ -302,10 +302,35 @@ a per VIF IPv4 address.
   set interfaces bonding bond0 member interface eth1
   set interfaces bonding bond0 member interface eth2
 
-Cisco
-^^^^^
+Cisco Catalyst
+^^^^^^^^^^^^^^
 
-An example configuration for a Cisco PortChannel to VyOS would be nice
+Assign member interfaces to PortChannel
+
+.. code-block:: none
+
+  interface GigabitEthernet1/0/23
+   description VyOS eth1
+   channel-group 1 mode active
+  !
+  interface GigabitEthernet1/0/24
+   description VyOS eth2
+   channel-group 1 mode active
+  !
+
+A new interface becomes present ``Port-channel1``, all configuration like
+allowed VLAN interfaces, STP will happen here.
+
+.. code-block:: none
+
+  interface Port-channel1
+   description LACP Channel for VyOS
+   switchport trunk encapsulation dot1q
+   switchport trunk allowed vlan 10,100
+   switchport mode trunk
+   spanning-tree portfast trunk
+  !
+
 
 Juniper EX Switch
 ^^^^^^^^^^^^^^^^^
