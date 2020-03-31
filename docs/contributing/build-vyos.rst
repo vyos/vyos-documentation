@@ -29,10 +29,10 @@ Installing Docker_ and prerequisites:
   $ apt-get update
   $ apt-get install -y docker-ce
 
-To be able to use Docker_, the current non-root user should be added to the
+To be able to use Docker_ without ``sudo``, the current non-root user can be added to the
 ``docker`` group by calling: ``usermod -aG docker yourusername``
 
-.. note:: It is recommended to use that non-root user for the remaining steps.
+.. note:: Doing so grants privileges equivalent to the ``root`` user! It is recommended to remove the non-root user from the ``docker`` group after building the VyOS ISO. See also https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user
 
 .. note:: The build process needs to be built on a local file system, building
    on SMB or NFS shares will result in the container failing to build properly!
