@@ -149,7 +149,7 @@ for whatever reason and you supect its a problem with APT dependencies or
 installation you can add this small patch which increases the APT verbosity
 during ISO build.
 
-.. code-block:: Python
+.. code-block:: diff
 
   diff --git i/scripts/live-build-config w/scripts/live-build-config
   index 1b3b454..3696e4e 100755
