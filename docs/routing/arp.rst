@@ -26,7 +26,7 @@ Configure
 
    Example:
 
-   .. code-block::
+   .. code-block:: none
 
      set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
 
