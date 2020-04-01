@@ -5,15 +5,16 @@
 PBR
 ---
 
-:abbr:`PBR (Policy-Based Routing)` allowing traffic to be assigned to different
-routing tables. Traffic can be matched using standard 5-tuple matching (source
-address, destination address, protocol, source port, destination port).
+:abbr:`PBR (Policy-Based Routing)` allowing traffic to be assigned to
+different routing tables. Traffic can be matched using standard 5-tuple
+matching (source address, destination address, protocol, source port,
+destination port).
 
 Transparent Proxy
 ^^^^^^^^^^^^^^^^^
 
-The following example will show how VyOS can be used to redirect web traffic to
-an external transparent proxy:
+The following example will show how VyOS can be used to redirect web
+traffic to an external transparent proxy:
 
 .. code-block:: none
 
@@ -21,9 +22,9 @@ an external transparent proxy:
   set policy route FILTER-WEB rule 1000 protocol tcp
   set policy route FILTER-WEB rule 1000 set table 100
 
-This creates a route policy called FILTER-WEB with one rule to set the routing
-table for matching traffic (TCP port 80) to table ID 100 instead of the
-default routing table.
+This creates a route policy called FILTER-WEB with one rule to set the
+routing table for matching traffic (TCP port 80) to table ID 100
+instead of the default routing table.
 
 To create routing table 100 and add a new default gateway to be used by
 traffic matching our route policy:
@@ -32,10 +33,11 @@ traffic matching our route policy:
 
   set protocols static table 100 route 0.0.0.0/0 next-hop 10.255.0.2
 
-This can be confirmed using the show ip route table 100 operational command.
+This can be confirmed using the ``show ip route table 100`` operational
+command.
 
-Finally, to apply the policy route to ingress traffic on our LAN interface,
-we use:
+Finally, to apply the policy route to ingress traffic on our LAN
+interface, we use:
 
 .. code-block:: none
 
@@ -45,15 +47,15 @@ we use:
 Multiple Uplinks
 ^^^^^^^^^^^^^^^^
 
-VyOS Policy-Based Routing (PBR) works by matching source IP address ranges and
-forwarding the traffic using different routing tables.
+VyOS Policy-Based Routing (PBR) works by matching source IP address
+ranges and forwarding the traffic using different routing tables.
 
 Routing tables that will be used in this example are:
 
 * ``table 10`` Routing table used for VLAN 10 (192.168.188.0/24)
 * ``table 11`` Routing table used for VLAN 11 (192.168.189.0/24)
-* ``main`` Routing table used by VyOS and other interfaces not participating in
-  PBR
+* ``main`` Routing table used by VyOS and other interfaces not
+  participating in PBR
 
 .. figure:: ../_static/images/pbr_example_1.png
    :scale: 80 %
@@ -89,7 +91,8 @@ Apply routing policy to **inbound** direction of out VLAN interfaces
   set interfaces ethernet eth0 vif 11 policy route 'PBR'
 
 
-**OPTIONAL:** Exclude Inter-VLAN traffic (between VLAN10 and VLAN11) from PBR
+**OPTIONAL:** Exclude Inter-VLAN traffic (between VLAN10 and VLAN11)
+from PBR
 
 .. code-block:: none
 
@@ -98,5 +101,5 @@ Apply routing policy to **inbound** direction of out VLAN interfaces
   set policy route PBR rule 10 destination address '192.168.189.0/24'
   set policy route PBR rule 10 set table 'main'
 
-.. note:: Allows the VLAN10 and VLAN20 hosts to communicate with each other
-   using the main routing table.
+These commands allow the VLAN10 and VLAN20 hosts to communicate with
+each other using the main routing table.
