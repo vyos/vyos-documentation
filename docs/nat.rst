@@ -4,60 +4,65 @@
 NAT
 ###
 
-:abbr:`NAT (Network Address Translation)` is a common method of remapping one
-IP address space into another by modifying network address information in the
-IP header of packets while they are in transit across a traffic routing device.
-The technique was originally used as a shortcut to avoid the need to readdress
-every host when a network was moved. It has become a popular and essential tool
-in conserving global address space in the face of IPv4 address exhaustion. One
-Internet-routable IP address of a NAT gateway can be used for an entire private
-network.
+:abbr:`NAT (Network Address Translation)` is a common method of
+remapping one IP address space into another by modifying network address
+information in the IP header of packets while they are in transit across
+a traffic routing device. The technique was originally used as a
+shortcut to avoid the need to readdress every host when a network was
+moved. It has become a popular and essential tool in conserving global
+address space in the face of IPv4 address exhaustion. One
+Internet-routable IP address of a NAT gateway can be used for an entire
+private network.
 
-IP masquerading is a technique that hides an entire IP address space, usually
-consisting of private IP addresses, behind a single IP address in another,
-usually public address space. The hidden addresses are changed into a single
-(public) IP address as the source address of the outgoing IP packets so they
-appear as originating not from the hidden host but from the routing device
-itself. Because of the popularity of this technique to conserve IPv4 address
-space, the term NAT has become virtually synonymous with IP masquerading.
+IP masquerading is a technique that hides an entire IP address space,
+usually consisting of private IP addresses, behind a single IP address
+in another, usually public address space. The hidden addresses are
+changed into a single (public) IP address as the source address of the
+outgoing IP packets so they appear as originating not from the hidden
+host but from the routing device itself. Because of the popularity of
+this technique to conserve IPv4 address space, the term NAT has become
+virtually synonymous with IP masquerading.
 
-As network address translation modifies the IP address information in packets,
-NAT implementations may vary in their specific behavior in various addressing
-cases and their effect on network traffic. The specifics of NAT behavior are
-not commonly documented by vendors of equipment containing NAT implementations.
+As network address translation modifies the IP address information in
+packets, NAT implementations may vary in their specific behavior in
+various addressing cases and their effect on network traffic. The
+specifics of NAT behavior are not commonly documented by vendors of
+equipment containing NAT implementations.
 
-The computers on an internal network can use any of the addresses set aside by
-the :abbr:`IANA (Internet Assigned Numbers Authority)` for private addressing
-(see :rfc:`1918`). These reserved IP addresses are not in use on the Internet,
-so an external machine will not directly route to them. The following addresses
-are reserved for private use:
+The computers on an internal network can use any of the addresses set
+aside by the :abbr:`IANA (Internet Assigned Numbers Authority)` for
+private addressing (see :rfc:`1918`). These reserved IP addresses are
+not in use on the Internet, so an external machine will not directly
+route to them. The following addresses are reserved for private use:
 
 * 10.0.0.0 to 10.255.255.255 (CIDR: 10.0.0.0/8)
 * 172.16.0.0 to 172.31.255.255 (CIDR: 172.16.0.0/12)
 * 192.168.0.0 to 192.168.255.255 (CIDR: 192.168.0.0/16)
 
 
-If an ISP deploys a :abbr:`CGN (Carrier-grade NAT)`, and uses :rfc:`1918`
-address space to number customer gateways, the risk of address collision, and
-therefore routing failures, arises when the customer network already uses an
-:rfc:`1918` address space.
+If an ISP deploys a :abbr:`CGN (Carrier-grade NAT)`, and uses
+:rfc:`1918` address space to number customer gateways, the risk of
+address collision, and therefore routing failures, arises when the
+customer network already uses an :rfc:`1918` address space.
 
-This prompted some ISPs to develop a policy within the :abbr:`ARIN (American
-Registry for Internet Numbers)` to allocate new private address space for CGNs,
-but ARIN deferred to the IETF before implementing the policy indicating that
-the matter was not a typical allocation issue but a reservation of addresses
-for technical purposes (per :rfc:`2860`).
+This prompted some ISPs to develop a policy within the :abbr:`ARIN
+(American Registry for Internet Numbers)` to allocate new private
+address space for CGNs, but ARIN deferred to the IETF before
+implementing the policy indicating that the matter was not a typical
+allocation issue but a reservation of addresses for technical purposes
+(per :rfc:`2860`).
 
-IETF published :rfc:`6598`, detailing a shared address space for use in ISP
-CGN deployments that can handle the same network prefixes occurring both on
-inbound and outbound interfaces. ARIN returned address space to the :abbr:`IANA
-(Internet Assigned Numbers Authority)` for this allocation.
+IETF published :rfc:`6598`, detailing a shared address space for use in
+ISP CGN deployments that can handle the same network prefixes occurring
+both on inbound and outbound interfaces. ARIN returned address space to
+the :abbr:`IANA (Internet Assigned Numbers Authority)` for this
+allocation.
 
 The allocated address block is 100.64.0.0/10.
 
 Devices evaluating whether an IPv4 address is public must be updated to
-recognize the new address space. Allocating more private IPv4 address space for
-NAT devices might prolong the transition to IPv6.
+recognize the new address space. Allocating more private IPv4 address
+space for NAT devices might prolong the transition to IPv6.
 
 Overview
 ========
@@ -70,26 +75,28 @@ Different NAT Types
 SNAT
 ^^^^
 
-:abbr:`SNAT (Source Network Address Translation)` is the most common form of
-:abbr:`NAT (Network Address Translation)` and is typically referred to simply
-as NAT. To be more correct, what most people refer to as :abbr:`NAT (Network
-Address Translation)` is actually the process of :abbr:`PAT (Port Address
-Translation)`, or NAT overload. SNAT is typically used by internal users/private
-hosts to access the Internet - the source address is translated and thus kept
-private.
+:abbr:`SNAT (Source Network Address Translation)` is the most common
+form of :abbr:`NAT (Network Address Translation)` and is typically
+referred to simply as NAT. To be more correct, what most people refer
+to as :abbr:`NAT (Network Address Translation)` is actually the process
+of :abbr:`PAT (Port Address Translation)`, or NAT overload. SNAT is
+typically used by internal users/private hosts to access the Internet
+- the source address is translated and thus kept private.
 
 .. _destination-nat:
 
 DNAT
 ^^^^
 
-:abbr:`DNAT (Destination Network Address Translation)` changes the destination
-address of packets passing through the router, while :ref:`source-nat` changes
-the source address of packets. DNAT is typically used when an external (public)
-host needs to initiate a session with an internal (private) host. A customer
-needs to access a private service behind the routers public IP. A connection is
-established with the routers public IP address on a well known port and thus all
-traffic for this port is rewritten to address the internal (private) host.
+:abbr:`DNAT (Destination Network Address Translation)` changes the
+destination address of packets passing through the router, while
+:ref:`source-nat` changes the source address of packets. DNAT is
+typically used when an external (public) host needs to initiate a
+session with an internal (private) host. A customer needs to access a
+private service behind the routers public IP. A connection is
+established with the routers public IP address on a well known port and
+thus all traffic for this port is rewritten to address the internal
+(private) host.
 
 .. _bidirectional-nat:
 
@@ -97,33 +104,35 @@ Bidirectional NAT
 ^^^^^^^^^^^^^^^^^
 
 This is a common scenario where both :ref:`source-nat` and
-:ref:`destination-nat` are configured at the same time. It's commonly used then
-internal (private) hosts need to establish a connection with external resources
-and external systems need to access internal (private) resources.
+:ref:`destination-nat` are configured at the same time. It's commonly
+used then internal (private) hosts need to establish a connection with
+external resources and external systems need to access internal
+(private) resources.
 
 NAT, Routing, Firewall Interaction
 ----------------------------------
 
-There is a very nice picture/explanation in the Vyatta documentation which
-should be rewritten here.
+There is a very nice picture/explanation in the Vyatta documentation
+which should be rewritten here.
 
 NAT Ruleset
 -----------
 
-:abbr:`NAT (Network Address Translation)` is configured entirely on a series
-of so called `rules`. Rules are numbered and evaluated by the underlying OS
-in numerical order! The rule numbers can be changes by utilizing the
-:cfgcmd:`rename` and :cfgcmd:`copy` commands.
+:abbr:`NAT (Network Address Translation)` is configured entirely on a
+series of so called `rules`. Rules are numbered and evaluated by the
+underlying OS in numerical order! The rule numbers can be changes by
+utilizing the :cfgcmd:`rename` and :cfgcmd:`copy` commands.
 
-.. note:: Changes to the NAT system only affect newly established connections.
-   Already establiushed ocnnections are not affected.
+.. note:: Changes to the NAT system only affect newly established
+   connections. Already established connections are not affected.
 
-.. hint:: When designing your NAT ruleset leave some space between consecutive
-   rules for later extension. Your ruleset could start with numbers 10, 20, 30.
-   You thus can later extend the ruleset and place new rules between existing
-   ones.
+.. hint:: When designing your NAT ruleset leave some space between
+   consecutive rules for later extension. Your ruleset could start with
+   numbers 10, 20, 30. You thus can later extend the ruleset and place
+   new rules between existing ones.
 
-Rules will be created for both :ref:`source-nat` and :ref:`destination-nat`.
+Rules will be created for both :ref:`source-nat` and
+:ref:`destination-nat`.
 
 For :ref:`bidirectional-nat` a rule for both :ref:`source-nat` and
 :ref:`destination-nat` needs to be created.
@@ -133,12 +142,13 @@ For :ref:`bidirectional-nat` a rule for both :ref:`source-nat` and
 Traffic Filters
 ---------------
 
-Traffic Filters are used to control which packets will have the defined NAT
-rules applied. Five different filters can be applied within a NAT rule
+Traffic Filters are used to control which packets will have the defined
+NAT rules applied. Five different filters can be applied within a NAT
+rule.
 
-* **outbound-interface** - applicable only to :ref:`source-nat`. It configures
-  the interface which is used for the outside traffic that this translation rule
-  applies to.
+* **outbound-interface** - applicable only to :ref:`source-nat`. It
+  configures the interface which is used for the outside traffic that
+  this translation rule applies to.
 
   Example:
 
@@ -156,8 +166,8 @@ rules applied. Five different filters can be applied within a NAT rule
 
     set nat destination rule 20 inbound-interface eth1
 
-* **protocol** - specify which types of protocols this translation rule applies
-  to. Only packets matching the specified protocol are NATed. By default this
+* **protocol** - specify which types of protocols this translation rule
+  applies to. Only packets matching the specified protocol are NATed. By default this
   applies to `all` protocols.
 
   Example:
@@ -170,15 +180,16 @@ rules applied. Five different filters can be applied within a NAT rule
     set nat source rule 20 protocol tcp_udp
     set nat destination rule 20 protocol udp
 
-* **source** - specifies which packets the NAT translation rule applies to
-  based on the packets source IP address and/or source port. Only matching
-  packets are considered for NAT.
+* **source** - specifies which packets the NAT translation rule applies
+  to based on the packets source IP address and/or source port. Only
+  matching packets are considered for NAT.
 
   Example:
 
-  * Set SNAT rule 20 to only NAT packets arriving from the 192.0.2.0/24 network
-  * Set SNAT rule 30 to only NAT packets arriving from the 192.0.3.0/24 network
-    with a source port of 80 and 443
+  * Set SNAT rule 20 to only NAT packets arriving from the 192.0.2.0/24
+    network
+  * Set SNAT rule 30 to only NAT packets arriving from the 192.0.3.0/24
+    network with a source port of 80 and 443
 
   .. code-block:: none
 
@@ -187,16 +198,17 @@ rules applied. Five different filters can be applied within a NAT rule
     set nat source rule 30 source port 80,443
 
 
-* **destination** - specify which packets the translation will be applied to,
-  only based on the destination address and/or port number configured.
+* **destination** - specify which packets the translation will be
+  applied to, only based on the destination address and/or port number
+  configured.
 
   .. note:: If no destination is specified the rule will match on any
      destination address and port.
 
   Example:
 
-  * Configure SNAT rule (40) to only NAT packets with a destination address of
-    192.0.2.1.
+  * Configure SNAT rule (40) to only NAT packets with a destination
+    address of 192.0.2.1.
 
   .. code-block:: none
 
@@ -206,34 +218,36 @@ rules applied. Five different filters can be applied within a NAT rule
 Address Conversion
 ------------------
 
-Every NAT rule has a translation command defined. The address defined for the
-translation is the address used when the address information in a packet is
-replaced.
+Every NAT rule has a translation command defined. The address defined
+for the translation is the address used when the address information in
+a packet is replaced.
 
 Source Address
 ^^^^^^^^^^^^^^
 
-For :ref:`source-nat` rules the packets source address will be replaced with
-the address specified in the translation command. A port translation can also
-be specified and is part of the translation address.
+For :ref:`source-nat` rules the packets source address will be replaced
+with the address specified in the translation command. A port
+translation can also be specified and is part of the translation
+address.
 
-.. note:: The translation address must be set to one of the available addresses
-   on the configured `outbound-interface` or it must be set to `masquerade`
-   which will use the primary IP address of the `outbound-interface` as its
-   translation address.
+.. note:: The translation address must be set to one of the available
+   addresses on the configured `outbound-interface` or it must be set to
+   `masquerade` which will use the primary IP address of the
+   `outbound-interface` as its translation address.
 
-.. note:: When using NAT for a large number of host systems it recommended that
-   a minimum of 1 IP address is used to NAT every 256 private host systems.
-   This is due to the limit of 65,000 port numbers available for unique
-   translations and a reserving an average of 200-300 sessions per host system.
+.. note:: When using NAT for a large number of host systems it
+   recommended that a minimum of 1 IP address is used to NAT every 256
+   private host systems. This is due to the limit of 65,000 port numbers
+   available for unique translations and a reserving an average of
+   200-300 sessions per host system.
 
 Example:
 
 * Define a discrete source IP address of 100.64.0.1 for SNAT rule 20
 * Use address `masquerade` (the interfaces primary address) on rule 30
-* For a large amount of private machines behind the NAT your address pool might
-  to be bigger. Use any address in the range 100.64.0.10 - 100.64.0.20 on SNAT
-  rule 40 when doing the translation
+* For a large amount of private machines behind the NAT your address
+  pool might to be bigger. Use any address in the range 100.64.0.10 -
+  100.64.0.20 on SNAT rule 40 when doing the translation
 
 
 .. code-block:: none
@@ -251,8 +265,8 @@ replaced by the specified address in the `translation address` command.
 
 Example:
 
-* DNAT rule 10 replaces the destination address of an inbound packet with
-  192.0.2.10
+* DNAT rule 10 replaces the destination address of an inbound packet
+  with 192.0.2.10
 
 .. code-block:: none
 
@@ -268,8 +282,8 @@ To setup SNAT, we need to know:
 * The outgoing interface to perform the translation on
 * The external IP address to translate to
 
-In the example used for the Quick Start configuration above, we demonstrate
-the following configuration:
+In the example used for the Quick Start configuration above, we
+demonstrate the following configuration:
 
 .. code-block:: none
 
@@ -291,76 +305,84 @@ Which generates the following configuration:
       }
   }
 
-In this example, we use **masquerade** as the translation address instead of
-an IP address. The **masquerade** target is effectively an alias to say "use
-whatever IP address is on the outgoing interface", rather than a statically
-configured IP address. This is useful if you use DHCP for your outgoing
-interface and do not know what the external address will be.
+In this example, we use **masquerade** as the translation address
+instead of an IP address. The **masquerade** target is effectively an
+alias to say "use whatever IP address is on the outgoing interface",
+rather than a statically configured IP address. This is useful if you
+use DHCP for your outgoing interface and do not know what the external
+address will be.
 
 When using NAT for a large number of host systems it recommended that a
-minimum of 1 IP address is used to NAT every 256 host systems. This is due to
-the limit of 65,000 port numbers available for unique translations and a
-reserving an average of 200-300 sessions per host system.
+minimum of 1 IP address is used to NAT every 256 host systems. This is
+due to the limit of 65,000 port numbers available for unique
+translations and a reserving an average of 200-300 sessions per host
+system.
 
-Example: For an ~8,000 host network a source NAT pool of 32 IP addresses is
-recommended.
+Example: For an ~8,000 host network a source NAT pool of 32 IP addresses
+is recommended.
 
-A pool of addresses can be defined by using a **-** in the
-`set nat source rule [n] translation address` statement.
+A pool of addresses can be defined by using a hyphen between two IP
+addresses:
 
 .. code-block:: none
 
   set nat source rule 100 translation address '203.0.113.32-203.0.113.63'
 
-.. note:: Avoiding "leaky" NAT
+.. _avoidng_leaky_nat:
 
-Linux netfilter will not NAT traffic marked as INVALID. This often confuses
-people into thinking that Linux (or specifically VyOS) has a broken NAT
-implementation because non-NATed traffic is seen leaving an external interface.
-This is actually working as intended, and a packet capture of the "leaky"
-traffic should reveal that the traffic is either an additional TCP "RST",
-"FIN,ACK", or "RST,ACK" sent by client systems after Linux netfilter considers
-the connection closed. The most common is the additional TCP RST some host
-implementations send after terminating a connection (which is implementation-
-specific).
+Avoiding "leaky" NAT
+--------------------
 
-In other words, connection tracking has already observed the connection be
-closed and has transition the flow to INVALID to prevent attacks from
+Linux netfilter will not NAT traffic marked as INVALID. This often
+confuses people into thinking that Linux (or specifically VyOS) has a
+broken NAT implementation because non-NATed traffic is seen leaving an
+external interface. This is actually working as intended, and a packet
+capture of the "leaky" traffic should reveal that the traffic is either
+an additional TCP "RST", "FIN,ACK", or "RST,ACK" sent by client systems
+after Linux netfilter considers the connection closed. The most common
+is the additional TCP RST some host implementations send after
+terminating a connection (which is implementation-specific).
+
+In other words, connection tracking has already observed the connection
+be closed and has transition the flow to INVALID to prevent attacks from
 attempting to reuse the connection.
 
 You can avoid the "leaky" behavior by using a firewall policy that drops
 "invalid" state packets.
 
-Having control over the matching of INVALID state traffic, e.g. the ability to
-selectively log, is an important troubleshooting tool for observing broken
-protocol behavior. For this reason, VyOS does not globally drop invalid state
-traffic, instead allowing the operator to make the determination on how the
-traffic is handled.
+Having control over the matching of INVALID state traffic, e.g. the
+ability to selectively log, is an important troubleshooting tool for
+observing broken protocol behavior. For this reason, VyOS does not
+globally drop invalid state traffic, instead allowing the operator to
+make the determination on how the traffic is handled.
 
 .. _hairpin_nat_reflection:
 
 Hairpin NAT/NAT Reflection
 --------------------------
 
-A typical problem with using NAT and hosting public servers is the ability for
-internal systems to reach an internal server using it's external IP address.
-The solution to this is usually the use of split-DNS to correctly point host
-systems to the internal address when requests are made internally. Because
-many smaller networks lack DNS infrastructure, a work-around is commonly
-deployed to facilitate the traffic by NATing the request from internal hosts
-to the source address of the internal interface on the firewall.
+A typical problem with using NAT and hosting public servers is the
+ability for internal systems to reach an internal server using it's
+external IP address. The solution to this is usually the use of
+split-DNS to correctly point host systems to the internal address when
+requests are made internally. Because many smaller networks lack DNS
+infrastructure, a work-around is commonly deployed to facilitate the
+traffic by NATing the request from internal hosts to the source address
+of the internal interface on the firewall.
 
 This technique is commonly referred to as NAT Reflection or Hairpin NAT.
 
 Example:
 
-* Redirect Microsoft RDP traffic from the outside (WAN, external) world via
-  :ref:`destination-nat` in rule 100 to the internal, private host 192.0.2.40.
+* Redirect Microsoft RDP traffic from the outside (WAN, external) world
+  via :ref:`destination-nat` in rule 100 to the internal, private host
+  192.0.2.40.
 
-* Redirect Microsoft RDP traffic from the internal (LAN, private) network via
-  :ref:`destination-nat` in rule 110 to the internal, private host 192.0.2.40.
-  We also need a :ref:`source-nat` rule 110 for the reverse path of the traffic.
-  The internal network 192.0.2.0/24 is reachable via interface `eth0.10`.
+* Redirect Microsoft RDP traffic from the internal (LAN, private)
+  network via :ref:`destination-nat` in rule 110 to the internal,
+  private host 192.0.2.40. We also need a :ref:`source-nat` rule 110 for
+  the reverse path of the traffic. The internal network 192.0.2.0/24 is
+  reachable via interface `eth0.10`.
 
 .. code-block:: none
 
@@ -433,12 +455,12 @@ Which results in a configuration of:
 Destination NAT
 ---------------
 
-DNAT is typically referred to as a **Port Forward**. When using VyOS as a NAT
-router and firewall, a common configuration task is to redirect incoming
-traffic to a system behind the firewall.
+DNAT is typically referred to as a **Port Forward**. When using VyOS as
+a NAT router and firewall, a common configuration task is to redirect
+incoming traffic to a system behind the firewall.
 
-In this example, we will be using the example Quick Start configuration above
-as a starting point.
+In this example, we will be using the example Quick Start configuration
+above as a starting point.
 
 To setup a destination NAT rule we need to gather:
 
@@ -446,9 +468,10 @@ To setup a destination NAT rule we need to gather:
 * The protocol and port we wish to forward;
 * The IP address of the internal system we wish to forward traffic to.
 
-In our example, we will be forwarding web server traffic to an internal web
-server on 192.168.0.100. HTTP traffic makes use of the TCP protocol on port 80.
-For other common port numbers, see: https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+In our example, we will be forwarding web server traffic to an internal
+web server on 192.168.0.100. HTTP traffic makes use of the TCP protocol
+on port 80. For other common port numbers, see:
+https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
 
 Our configuration commands would be:
 
@@ -480,19 +503,21 @@ Which would generate the following NAT destination configuration:
       }
   }
 
-.. note:: If forwarding traffic to a different port than it is arriving on,
-   you may also configure the translation port using
+.. note:: If forwarding traffic to a different port than it is arriving
+   on, you may also configure the translation port using
    `set nat destination rule [n] translation port`.
 
-This establishes our Port Forward rule, but if we created a firewall policy it
-will likely block the traffic.
+This establishes our Port Forward rule, but if we created a firewall
+policy it will likely block the traffic.
 
 It is important to note that when creating firewall rules that the DNAT
-translation occurs **before** traffic traverses the firewall. In other words,
-the destination address has already been translated to 192.168.0.100.
+translation occurs **before** traffic traverses the firewall. In other
+words, the destination address has already been translated to
+192.168.0.100.
 
-So in our firewall policy, we want to allow traffic coming in on the outside
-interface, destined for TCP port 80 and the IP address of 192.168.0.100.
+So in our firewall policy, we want to allow traffic coming in on the
+outside interface, destined for TCP port 80 and the IP address of
+192.168.0.100.
 
 .. code-block:: none
 
@@ -527,19 +552,19 @@ This would generate the following configuration:
 ----------
 
 Another term often used for DNAT is **1-to-1 NAT**. For a 1-to-1 NAT
-configuration, both DNAT and SNAT are used to NAT all traffic from an external
-IP address to an internal IP address and vice-versa.
+configuration, both DNAT and SNAT are used to NAT all traffic from an
+external IP address to an internal IP address and vice-versa.
 
 Typically, a 1-to-1 NAT rule omits the destination port (all ports) and
 replaces the protocol with either **all** or **ip**.
 
-Then a corresponding SNAT rule is created to NAT outgoing traffic for the
-internal IP to a reserved external IP. This dedicates an external IP address
-to an internal IP address and is useful for protocols which don't have the
-notion of ports, such as GRE.
+Then a corresponding SNAT rule is created to NAT outgoing traffic for
+the internal IP to a reserved external IP. This dedicates an external IP
+address to an internal IP address and is useful for protocols which
+don't have the notion of ports, such as GRE.
 
-Here's an extract of a simple 1-to-1 NAT configuration with one internal and
-one external interface:
+Here's an extract of a simple 1-to-1 NAT configuration with one internal
+and one external interface:
 
 .. code-block:: none
 
@@ -556,24 +581,24 @@ one external interface:
   set nat source rule 2000 source address '192.168.1.10'
   set nat source rule 2000 translation address '192.0.2.30'
 
-Firewall rules are written as normal, using the internal IP address as the
-source of outbound rules and the destination of inbound rules.
+Firewall rules are written as normal, using the internal IP address as
+the source of outbound rules and the destination of inbound rules.
 
 NAT before VPN
 --------------
 
-Some application service providers (ASPs) operate a VPN gateway to provide
-access to their internal resources, and require that a connecting organisation
-translate all traffic to the service provider network to a source address
-provided by the ASP.
+Some application service providers (ASPs) operate a VPN gateway to
+provide access to their internal resources, and require that a
+connecting organisation translate all traffic to the service provider
+network to a source address provided by the ASP.
 
 Example Network
 ^^^^^^^^^^^^^^^
 
 Here's one example of a network environment for an ASP.
 The ASP requests that all connections from this company should come from
-172.29.41.89 - an address that is assigned by the ASP and not in use at the
-customer site.
+172.29.41.89 - an address that is assigned by the ASP and not in use at
+the customer site.
 
 .. figure:: _static/images/nat_before_vpn_topology.png
    :scale: 100 %
@@ -596,9 +621,10 @@ The required configuration can be broken down into 4 major pieces:
 Dummy interface
 """""""""""""""
 
-The dummy interface allows us to have an equivalent of the Cisco IOS Loopback
-interface - a router-internal interface we can use for IP addresses the router
-must know about, but which are not actually assigned to a real network.
+The dummy interface allows us to have an equivalent of the Cisco IOS
+Loopback interface - a router-internal interface we can use for IP
+addresses the router must know about, but which are not actually
+assigned to a real network.
 
 We only need a single step for this interface:
 
@@ -639,8 +665,8 @@ The ASP has documented their IPSec requirements:
   * DH Group 14
 
 
-Additionally, we want to use VPNs only on our eth1 interface (the external
-interface in the image above)
+Additionally, we want to use VPNs only on our eth1 interface (the
+external interface in the image above)
 
 .. code-block:: none
 
@@ -663,10 +689,11 @@ interface in the image above)
 IPSec VPN Tunnels
 """""""""""""""""
 
-We'll use the IKE and ESP groups created above for this VPN. Because we need
-access to 2 different subnets on the far side, we will need two different
-tunnels. If you changed the names of the ESP group and IKE group in the previous
-step, make sure you use the correct names here too.
+We'll use the IKE and ESP groups created above for this VPN. Because we
+need access to 2 different subnets on the far side, we will need two
+different tunnels. If you changed the names of the ESP group and IKE
+group in the previous step, make sure you use the correct names here
+too.
 
 .. code-block:: none
 
@@ -685,8 +712,8 @@ step, make sure you use the correct names here too.
 Testing and Validation
 """"""""""""""""""""""
 
-If you've completed all the above steps you no doubt want to see if it's all
-working.
+If you've completed all the above steps you no doubt want to see if it's
+all working.
 
 Start by checking for IPSec SAs (Security Associations) with:
 
