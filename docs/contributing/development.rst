@@ -701,6 +701,19 @@ circumstance, the kernel boot parameter ``vyos-config-debug`` will ensure
 access to the system as user ``vyos``, and will log a Python stack trace to
 ``/tmp/boot-config-trace``.
 
+```Priorities```
+^^^^^^^^^^^^^^^^
+
+VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def``
+file and possibly an attached script that is executed when the node is present.
+Nodes can have a priority, and on system bootup - or any other ``commit`` to the
+config all scripts are executed from lowest to higest priority. This is good as
+this gives a deterministic behavior.
+
+To debug issues in priorities or to see what's going on in the background you can
+use the ``/opt/vyatta/sbin/priority.pl`` script which lists to you the execution
+order of the scripts.
+
 Continuous Integration
 ======================
 
