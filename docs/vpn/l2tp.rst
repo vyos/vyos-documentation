@@ -35,7 +35,8 @@ to allow the ports below:
 * IP protocol number 50 (ESP)
 * UDP port 1701 for IPsec
 
-As well as the below to allow NAT-traversal:
+As well as the below to allow NAT-traversal (when NAT is detected by the
+VPN client, ESP is encapsulated in UDP for NAT-traversal):
 
 * UDP port 4500 (NAT-T)
 
@@ -74,8 +75,9 @@ parameter to the client.
   set vpn l2tp remote-access dns-servers server-1 '8.8.8.8'
   set vpn l2tp remote-access dns-servers server-2 '8.8.4.4'
 
-.. note:: Those are the `Google public DNS`_ servers. You can also use the
-   public available servers from Quad9_ (9.9.9.9) or Cloudflare_ (1.1.1.1).
+.. note:: Those are the `Google public DNS`_ servers, but you can choose
+   any public available servers, like Quad9_ (9.9.9.9), Cloudflare_ (1.1.1.1)
+   or OpenNIC_.
 
 Established sessions can be viewed using the **show vpn remote-access**
 operational command, or **show l2tp-server sessions**
@@ -226,6 +228,7 @@ renamed.
 .. _`Google Public DNS`: https://developers.google.com/speed/public-dns
 .. _Quad9: https://quad9.net
 .. _CloudFlare: https://blog.cloudflare.com/announcing-1111
+.. _OpenNIC: https://www.opennic.org/
 .. _RADIUS: https://en.wikipedia.org/wiki/RADIUS
 .. _FreeRADIUS: https://freeradius.org
 .. _`Network Policy Server`: https://en.wikipedia.org/wiki/Network_Policy_Server
