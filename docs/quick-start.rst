@@ -177,7 +177,6 @@ Replace the default `vyos` system user:
 
 .. code-block:: none
 
-  set system login user myvyosuser level admin
   set system login user myvyosuser authentication plaintext-password mysecurepassword
 
 Set up :ref:`ssh_key_based_authentication`:
