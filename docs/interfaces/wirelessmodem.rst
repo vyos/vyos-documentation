@@ -65,7 +65,20 @@ Link Administration
    Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It
    is the size (in bytes) of the largest ethernet frame sent on this link.
 
+Example
+=======
 
+The following example is based on a Sierra Wireless MC7710 miniPCIe card (only
+the form factor in reality it runs UBS) and Deutsche Telekom as ISP. The card
+is assembled into a :ref:`pc-engines-apu4`.
+
+.. code-block:: none
+
+  set interfaces wirelessmodem wlm0 apn 'internet.telekom'
+  set interfaces wirelessmodem wlm0 backup distance '100'
+  set interfaces wirelessmodem wlm0 device 'ttyUSB2'
+  set interfaces wirelessmodem wlm0 disable
+  set interfaces wirelessmodem wlm0 no-peer-dns
 
 Operation
 =========

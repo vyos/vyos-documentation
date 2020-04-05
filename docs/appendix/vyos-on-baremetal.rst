@@ -73,6 +73,8 @@ Pictures
    :alt: CSE-505-203B w/ 10GE Open
 
 
+.. _pc-engines-apu4:
+
 PC Engines APU4
 ***************
 
