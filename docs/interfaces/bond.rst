@@ -1,8 +1,8 @@
 .. _bond-interface:
 
-####
-Bond
-####
+#######################
+Bond / Link Aggregation
+#######################
 
 The bonding interface provides a method for aggregating multiple network
 interfaces into a single logical "bonded" interface, or LAG, or ether-channel,
