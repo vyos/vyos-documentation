@@ -35,7 +35,7 @@ peer will encrypt all traffic to your system using this public key.
 
    .. code-block:: none
 
-     vyos@vyos:~$ show wireguard keypairs pubkey default 
+     vyos@vyos:~$ show wireguard keypairs pubkey default
      hW17UxY7zeydJNPIyo3UtGnBHkzTK/NeBOrDSIU9Tx0=
 
 
@@ -61,7 +61,7 @@ Interface configuration
 
 The next step is to configure your local side as well as the policy
 based trusted destination addresses. If you only initiate a connection,
-the listen port and endpoint is optional, if you however act as a server
+the listen port and address/port is optional, if you however act as a server
 and endpoints initiate the connections to your system, you need to
 define a port your clients can connect to, otherwise it's randomly
 chosen and may make it difficult with firewall rules, since the port may
@@ -79,13 +79,11 @@ one.
   set interfaces wireguard wg01 address '10.1.0.1/24'
   set interfaces wireguard wg01 description 'VPN-to-wg02'
   set interfaces wireguard wg01 peer to-wg02 allowed-ips '10.2.0.0/24'
-  set interfaces wireguard wg01 peer to-wg02 endpoint '192.168.0.142:12345'
+  set interfaces wireguard wg01 peer to-wg02 address '192.168.0.142:12345'
+  set interfaces wireguard wg01 peer to-wg02 port '12345'
   set interfaces wireguard wg01 peer to-wg02 pubkey 'XMrlPykaxhdAAiSjhtPlvi30NVkvLQliQuKP7AI7CyI='
   set interfaces wireguard wg01 port '12345'
   set protocols static interface-route 10.2.0.0/24 next-hop-interface wg01
-
-.. note:: The `endpoint` must be an IP and not a fully qualified domain
-  name (FQDN). Using a FQDN will result in unexpected behavior.
 
 The last step is to define an interface route for 10.2.0.0/24 to get
 through the WireGuard interface `wg01`. Multiple IPs or networks can be
@@ -112,7 +110,8 @@ the public key, which needs to be shared with the peer.
   set interfaces wireguard wg01 address '10.2.0.1/24'
   set interfaces wireguard wg01 description 'VPN-to-wg01'
   set interfaces wireguard wg01 peer to-wg02 allowed-ips '10.1.0.0/24'
-  set interfaces wireguard wg01 peer to-wg02 endpoint '192.168.0.124:12345'
+  set interfaces wireguard wg01 peer to-wg02 address '192.168.0.124'
+  set interfaces wireguard wg01 peer to-wg02 port '12345'
   set interfaces wireguard wg01 peer to-wg02 pubkey 'u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk='
   set interfaces wireguard wg01 port '12345'
   set protocols static interface-route 10.1.0.0/24 next-hop-interface wg01
@@ -153,7 +152,7 @@ Road Warrior Example
 --------------------
 
 With WireGuard, a Road Warrior VPN config is similar to a site-to-site
-VPN. It just lacks the ``endpoint`` address.
+VPN. It just lacks the ``address`` and ``port`` statements.
 
 In the following example, the IPs for the remote clients are defined in
 the peers. This would allow the peers to interact with one another.
