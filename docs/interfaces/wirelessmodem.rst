@@ -82,3 +82,35 @@ is assembled into a :ref:`pc-engines-apu4`.
 
 Operation
 =========
+
+.. opcmd:: show interfaces wirelessmodem <interface>
+
+   Retrive interface information from given WWAN interface.
+
+   .. code-block:: none
+
+     vyos@vyos:~$ show interfaces wirelessmodem wlm0
+     wlm0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master black state UNKNOWN group default qlen 3
+         link/ppp
+         inet 10.26.238.93 peer 10.64.64.64/32 scope global wlm0
+            valid_lft forever preferred_lft forever
+         Description: baaar
+
+         RX:  bytes    packets     errors    dropped    overrun      mcast
+                 38          5          0          0          0          0
+         TX:  bytes    packets     errors    dropped    carrier collisions
+                217          8          0          0          0          0
+
+.. opcmd:: show interfaces wirelessmodem <interface> statistics
+
+   Retrive interface statistics from given WWAN interface.
+
+   .. code-block:: none
+
+     vyos@vyos:~$ show interfaces wirelessmodem wlm0 statistics
+         IN   PACK VJCOMP  VJUNC  VJERR  |      OUT   PACK VJCOMP  VJUNC NON-VJ
+         38      5      0      0      0  |      217      8      0      0      8
+
+.. opcmd:: show interfaces wirelessmodem <interface> log
+
+   Displays log information for a WWAN interface.
