@@ -7,14 +7,15 @@ Advanced Network Interfaces
 .. toctree::
    :maxdepth: 1
 
-   dummy
-   bridge
    bond
+   bridge
+   dummy
+   geneve
    l2tpv3
    pseudo-ethernet
-   wireless
+   qinq
    tunnel
    vlan
-   qinq
    vxlan
-   geneve
+   wireless
+   wirelessmodem
