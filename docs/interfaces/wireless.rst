@@ -1,7 +1,7 @@
 .. _wireless-interface:
 
-Wireless (Wi-Fi)
-----------------
+Wireless LAN (WiFi)
+-------------------
 
 :abbr:`WLAN (Wireless LAN)` interface provide 802.11 (a/b/g/n/ac) wireless
 support (commonly referred to as Wi-Fi) by means of compatible hardware. If your
