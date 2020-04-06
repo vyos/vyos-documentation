@@ -701,7 +701,7 @@ circumstance, the kernel boot parameter ``vyos-config-debug`` will ensure
 access to the system as user ``vyos``, and will log a Python stack trace to
 ``/tmp/boot-config-trace``.
 
-```Priorities```
+``Priorities``
 ^^^^^^^^^^^^^^^^
 
 VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def``
