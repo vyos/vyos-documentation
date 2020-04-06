@@ -109,6 +109,7 @@ hostnames, protocol and server.
 
    Configure `<username>` used when authenticating the update request for
    DynDNS service identified by `<service>`.
+   For Namecheap, set the <domain> you wish to update.
 
 .. cfgcmd:: set service dns dynamic interface <interface> service <service> password <password>
 
