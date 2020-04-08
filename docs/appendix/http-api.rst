@@ -20,7 +20,7 @@ assume nginx is running at https://192.168.122.127.
 
 One can limit proxying to specific listen addresses/ports/server-names by
 defining a ``service https virtual-host <id>``, and setting ``service https
-api virtual-host <id>``.
+api-restrict virtual-host <id>``.
 
 .. code-block:: none
 
@@ -28,13 +28,13 @@ api virtual-host <id>``.
   set service https virtual-host example listen-port 44302
   set service https virtual-host example server-name example.net
 
-  set service https api virtual-host example
+  set service https api-restrict virtual-host example
 
 In this example, nginx will proxy only those requests to
 192.168.122.127:44302 or example.net:44302 (assuming the DNS record is
 viable). Omitting any of listen-address, listen-port, or server-name, will
 leave appropriate defaults in the nginx directive. Multiple instances of
-``service https api virtual-host`` may be set.
+``service https api-restrict virtual-host`` may be set.
 
 Operational requests
 --------------------
