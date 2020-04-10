@@ -69,7 +69,16 @@ Address
      set interfaces vxlan vxlan0 ipv6 address eui64 2001:db8:beef::/64
 
 
-.. cfgcmd:: set interfaces vxlan <interface> link <interface>
+.. cfgcmd:: set interfaces vxlan <interface> vni <number>
+
+   Each VXLAN segment is identified through a 24-bit segment ID, termed the
+   :abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))`, This allows
+   up to 16M VXLAN segments to coexist within the same administrative domain.
+
+Multicast
+^^^^^^^^^
+
+.. cfgcmd:: set interfaces vxlan <interface> source-interface <interface>
 
    Interface used for VXLAN underlay. This is mandatory when using VXLAN via
    a multicast network. VXLAN traffic will always enter and exit this interface.
@@ -82,6 +91,8 @@ Address
 
    Both IPv4 and IPv6 multicast is possible.
 
+Unicast
+^^^^^^^
 
 .. cfgcmd:: set interfaces vxlan <interface> remote <address>
 
@@ -97,12 +108,13 @@ Address
        as the default IANA-assigned destination UDP port number. Instead VyOS
        uses the Linux default port of 8472.
 
+L2VVPN / EVPN
+^^^^^^^^^^^^^
 
-.. cfgcmd:: set interfaces vxlan <interface> vni <number>
+.. cfgcmd:: set interfaces vxlan <interface> source-address <interface>
 
-   Each VXLAN segment is identified through a 24-bit segment ID, termed the
-   :abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))`, This allows
-   up to 16M VXLAN segments to coexist within the same administrative domain.
+   Source IP address used for VXLAN underlay. This is mandatory when using
+   VXLAN via L2VPN/EVPN.
 
 
 Link Administration
