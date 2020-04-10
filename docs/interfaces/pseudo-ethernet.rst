@@ -65,7 +65,7 @@ Address
 Physical Asignment
 ------------------
 
-.. cfgcmd:: set interfaces pseudo-ethernet <interface> link <ethX>
+.. cfgcmd:: set interfaces pseudo-ethernet <interface> source-interface <ethX>
 
    Specifies the physical `<ethX>` Ethernet interface associated with a Pseudo
    Ethernet `<interface>`.
