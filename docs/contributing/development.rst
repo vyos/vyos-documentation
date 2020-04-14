@@ -701,6 +701,61 @@ circumstance, the kernel boot parameter ``vyos-config-debug`` will ensure
 access to the system as user ``vyos``, and will log a Python stack trace to
 ``/tmp/boot-config-trace``.
 
+
+Debugging features
+------------------
+
+A number of flags can be set up to change the behaviour of VyOS at runtime.
+These flags can be toggled using either environment variables or creating
+files.
+
+For each feature, a file called ``vyos.feature.debug`` can be created to toggle
+the feature on. If a parameter is required it can be placed inside the file as
+its first line.
+
+The file can be placed in ``/tmp`` for one time debugging (as the file will be
+removed on reboot) or placed in '/config' to stay permanently.
+
+For example, ``/tmp/vyos.ifconfig.debug`` can be created to enable interface
+debugging.
+
+It is also possible to set up the debugging using environment variables.
+In that case, the name will be (in uppercase) VYOS_FEATURE_DEBUG.
+
+for example running, ``export VYOS_IFCONFIG_DEBUG=""`` on your vash, will have
+the same effect as ``touch /tmp/vyos.ifconfig.debug``.
+
+``ifconfig``
+^^^^^^^^^^^^
+
+Once set, all commands used, and their responses received from the OS, will be
+presented on the screen for inspection.
+
+``command``
+^^^^^^^^^^^
+
+Once set, all commands used, and their responses received from the OS, will be 
+presented on the screen for inspection.
+
+``developer``
+^^^^^^^^^^^^^
+
+Should a command fail, instead of printing a message to the user explaining how
+to report issues, the python interpreter will start a PBD post-mortem session
+to allow the developer to debug the issue.
+
+As the debugger will wait from input from the developer, it has the capacity to
+prevent a router to boot and therefore should only be permanently set up on 
+production if you are ready to see the OS fail to boot.
+
+``log``
+^^^^^^^
+
+In some rare cases, it may be useful to see what the OS is doing, including
+during boot. This option sends all commands used by VyOS to a file. 
+The default file is ``/tmp/full-log`` but it can be changed.
+
+
 Priorities
 ==========
 
