@@ -13,35 +13,35 @@ the following RFCs: :rfc:`5880`, :rfc:`5881` and :rfc:`5883`.
 Configure BFD
 =============
 
-.. cfgcmd:: set protocols bfd <address>
+.. cfgcmd:: set protocols bfd peer <address>
 
    Set BFD peer IPv4 address or IPv6 address
 
-.. cfgcmd:: set protocols bfd <address> echo-mode
+.. cfgcmd:: set protocols bfd peer <address> echo-mode
 
    Enables the echo transmission mode
 
-.. cfgcmd:: set protocols bfd <address> multihop
+.. cfgcmd:: set protocols bfd peer <address> multihop
 
    Allow this BFD peer to not be directly connected
 
-.. cfgcmd:: set protocols bfd <address> source [address <address> | interface <interface>]
+.. cfgcmd:: set protocols bfd peer <address> source [address <address> | interface <interface>]
 
    Bind listener to specifid interface/address, mandatory for IPv6
 
-.. cfgcmd:: set protocols bfd <address> interval echo-interval <10-60000>
+.. cfgcmd:: set protocols bfd peer <address> interval echo-interval <10-60000>
 
    The minimal echo receive transmission interval that this system is capable of handling
 
-.. cfgcmd:: set protocols bfd <address> interval multiplier <2-255>
+.. cfgcmd:: set protocols bfd peer <address> interval multiplier <2-255>
 
    Remote transmission interval will be multiplied by this value
 
-.. cfgcmd:: set protocols bfd <address> interval [receive | transmit] <10-60000>
+.. cfgcmd:: set protocols bfd peer <address> interval [receive | transmit] <10-60000>
 
    Interval in milliseconds
 
-.. cfgcmd:: set protocols bfd <address> shutdown
+.. cfgcmd:: set protocols bfd peer <address> shutdown
 
    Disable a BFD peer
 
