@@ -69,3 +69,16 @@ If you don't specify the file when saving, it saves to ``/config/config.boot``. 
 
   # curl -k -X POST -F key=MY-HTTP-API-PLAINTEXT-KEY -Fdata='{"op": "save", "file": "/config/config.boot"}' https://192.168.122.127/config-file
 
+
+
+Reading config
+--------------
+
+To retrieve raw configs:
+
+  # curl -X POST -F data='{"op": "showConfig", "path": ["interfaces", "dummy"]}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/retrieve
+ 
+It will returns: 
+  {"success": true, "data": " /* So very dummy */\n dummy dum0 {\n     address 192.168.168.1/32\n     address 192.168.168.2/32\n     /* That is a description */\n     description \"Test interface\"\n }\n dummy dum1 {\n     address 203.0.113.76/32\n     address 203.0.113.79/32\n }\n", "error": null}
+
+
