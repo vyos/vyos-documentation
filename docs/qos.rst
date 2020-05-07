@@ -1000,8 +1000,9 @@ Traffic classes
  * gbit (gigabits per second)
 
 * Set the priority of a class for allocation of additional bandwidth, if unused
-  bandwidth is available. Range 0...7, lowest number has lowest priority,
-  default 0:
+  bandwidth is available. You can set any number from 0 to 7. The lower
+  the number, the higher the priority. If no value is set for a classs,
+  it will be internally configured as 0, the highest priority.
 
   :code:`set traffic-policy shaper <policy-name> class <class ID>
   priority <priority>`
