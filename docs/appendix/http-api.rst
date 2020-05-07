@@ -87,3 +87,57 @@ It will returns:
   {"success": true, "data": " /* So very dummy */\n dummy dum0 {\n     address 192.168.168.1/32\n     address 192.168.168.2/32\n     /* That is a description */\n     description \"Test interface\"\n }\n dummy dum1 {\n     address 203.0.113.76/32\n     address 203.0.113.79/32\n }\n", "error": null}
 
 
+Opmode
+------
+
+It is possible to run show and generate commands outside configure.
+
+
+Request:
+
+.. code-block:: none
+
+  curl -X POST -F key=mykey https://myip/generate --insecure -F data='{"cmd": "wireguard preshared-key"}'
+
+Response:
+
+.. code-block:: none
+
+  {"success": true, "data": "wxxxxxxxfHJj/aDWf0qg0=\n", "error": null}
+
+Request:
+
+.. code-block:: none
+
+  curl -X POST -F key=mykey https://myip/show --insecure -F data='{"cmd": "wireguard keypairs pubkey default"}'
+
+Response:
+
+.. code-block:: none
+
+  {"success": true, "data": "<<censored_but_right_key>>\n", "error": null}
+
+Request:
+
+.. code-block:: none
+
+  curl -X POST -F key=mykey https://myip/show --insecure -F data='{"cmd": "wireguard keypairs pubkey default"}'
+
+Response:
+
+.. code-block:: none
+
+  {"success": true, "data": "<<censored_but_right_key>>\n", "error": null}
+
+Request:
+
+.. code-block:: none
+
+  curl -s -k -X POST -F data='{"op": "show", "path": ["ip", "route"]}' -F key=mykey https://myip:44302/show
+
+Response:
+
+.. code-block:: none
+
+  {"success": true, "data": "Codes: K - kernel route, C - connected, S - static, R - RIP,\n       O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,\n       T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,\n       F - PBR, f - OpenFabric,\n       > - selected route, * - FIB route, q - queued route, r - rejected route\n\nS>* 0.0.0.0/0 [210/0] via 10.3.0.1, eth0, 12:42:53\nC>* 10.3.0.0/24 is directly connected, eth0, 12:42:53\nS>* 10.10.10.0/24 [1/0] via 10.3.0.1, eth0, 12:42:53\nS>* 10.10.11.0/24 [1/0] via 10.3.0.1, eth0, 12:42:53\nS>* 169.254.169.254/32 [210/0] via 10.3.0.3, eth0, 12:42:53\n", "error": null}
+
