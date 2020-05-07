@@ -480,15 +480,10 @@ Configuration Options
 
    Specify a NIS+ server address for DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sip-server-address <address>
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sip-server <address | fqdn>
 
-   Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6 address
-   for all DHCPv6 clients.
-
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sip-server-name <fqdn>
-
-   Specify a :abbr:`SIP (Session Initiation Protocol)` server by FQDN for all
-   DHCPv6 clients.
+   Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6
+   address of Fully Qualified Domain Name for all DHCPv6 clients.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sntp-server-address <address>
 
