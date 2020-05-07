@@ -247,11 +247,10 @@ Comment
 
    Add comment as an annotation to a configuration node.
 
-   The ``comment` command allows you to insert a comment above the
-   ``<config node>`` configuration section. Comments are enclosed with
-   ``/*`` and ``*/`` as open/close delimiters. A ``comment`` cannot be
-   used at the top of  the configuration hierarchy, only on subsections.
-   Comments need to be commited, just like other config changes.
+   The ``comment`` command allows you to insert a comment above the
+   ``<config node>`` configuration section. When shown, comments are
+   enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments
+   need to be commited, just like other config changes.
 
    To remove an existing comment from your current configuration,
    specify an empty string enclosed in double quote marks (``""``) as
