@@ -80,7 +80,6 @@ interested in, this can be easily done by selecting the appropriate container
 image:
 
 * For VyOS 1.2 (crux) use ``vyos/vyos-build:crux``
-* For VyOS 1.3 (equuleus) use ``vyos/vyos-build:crux``
 * For our VyOS rolling release you should use ``vyos/vyos-build`` which will
   always refer to the latest image.
 
