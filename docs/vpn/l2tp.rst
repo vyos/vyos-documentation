@@ -39,7 +39,6 @@ Example:
 .. code-block:: none
 
   set firewall name OUTSIDE-LOCAL rule 40 action 'accept'
-  set firewall name OUTSIDE-LOCAL rule 40 destination port '50'
   set firewall name OUTSIDE-LOCAL rule 40 protocol 'esp'
   set firewall name OUTSIDE-LOCAL rule 41 action 'accept'
   set firewall name OUTSIDE-LOCAL rule 41 destination port '500'
