@@ -109,11 +109,30 @@ Configuration
   Use `<subnet>` as the IP pool for all connecting clients.
 
 
+.. cfgcmd:: set vpn sstp network-settings client-ipv6-pool prefix <address> mask <number-of-bits>
+
+  Use this comand to set the IPv6 address pool from which an SSTP client
+  will get an IPv6 prefix of your defined length (mask) to terminate the
+  SSTP endpoint at their side. The mask length can be set from 48 to 128
+  bit long, the default value is 64.
+
+
+.. cfgcmd:: set vpn sstp network-settings client-ipv6-pool delegate <address> delegation-prefix <number-of-bits>
+
+  Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
+  SSTP. You will have to set your IPv6 pool and the length of the
+  delegation prefix. From the defined IPv6 pool you will be handing out
+  networks of the defined length (delegation-prefix). The length of the
+  delegation prefix can be set from 32 to 64 bit long.
+
+
 .. cfgcmd:: set vpn sstp network-settings name-server <address>
 
-  Connected client should use `<address>` as their DNS server. Up to two IPv4
-  nameservers can be configured.
+  Connected client should use `<address>` as their DNS server. This
+  command accepts both IPv4 and IPv6 addresses. Up to two nameservers
+  can be configured for IPv4, up to three for IPv6.
 
+Maximum number of IPv4 nameservers
 
 SSL Certificates
 ----------------
