@@ -36,7 +36,7 @@ viable). Omitting any of listen-address, listen-port, or server-name, will
 leave appropriate defaults in the nginx directive. Multiple instances of
 ``service https api-restrict virtual-host`` may be set.
 
-Operational requests
+Configuration mode requests
 --------------------
 
 In our example, we are creating a dummy interface and assigning an address to it:
@@ -57,6 +57,36 @@ Separate value field make the semantics more clear though, and also makes it eas
 
 You can pass the ``set``, ``delete`` or ``comment`` command to it. The API will push the command to the session and commit.
 
+To retrieve a value:
+
+.. code-block:: none
+
+  curl -k -X POST -F data='{"op": "returnValue", "path": ["interfaces", "dummy", "dum1", "address"]}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/retrieve
+
+Use ``returnValues`` for multi-valued nodes.
+
+
+Show config
+"""""""""""
+
+To retrieve the full config under a path:
+
+.. code-block:: none
+
+  # curl -k -X POST -F data='{"op": "showConfig", "path": ["interfaces", "dummy"]}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/retrieve
+ 
+It will return: 
+
+.. code-block:: none
+
+  {"success": true, "data": {"dummy": {"dum1": {"address": "203.0.113.76/32"}}}, "error": null}
+
+Passing an empty path will return the full config:
+
+.. code-block:: none
+
+  # curl -k -X POST -F data='{"op": "showConfig", "path": []}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/retrieve
+ 
 
 Configuration management requests
 ---------------------------------
@@ -70,74 +100,45 @@ If you don't specify the file when saving, it saves to ``/config/config.boot``. 
   # curl -k -X POST -F key=MY-HTTP-API-PLAINTEXT-KEY -Fdata='{"op": "save", "file": "/config/config.boot"}' https://192.168.122.127/config-file
 
 
+Operational mode commands
+-------------------------
 
-Reading config
---------------
-
-To retrieve raw configs:
-
-.. code-block:: none
-
-  # curl -X POST -F data='{"op": "showConfig", "path": ["interfaces", "dummy"]}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/retrieve
- 
-It will returns: 
-
-.. code-block:: none
-
-  {"success": true, "data": " /* So very dummy */\n dummy dum0 {\n     address 192.168.168.1/32\n     address 192.168.168.2/32\n     /* That is a description */\n     description \"Test interface\"\n }\n dummy dum1 {\n     address 203.0.113.76/32\n     address 203.0.113.79/32\n }\n", "error": null}
-
-
-Opmode
-------
-
-It is possible to run show and generate commands outside configure.
+It is possible to run ``show`` and ``generate`` commands:
 
 
 Request:
 
 .. code-block:: none
 
-  curl -X POST -F key=mykey https://myip/generate --insecure -F data='{"cmd": "wireguard preshared-key"}'
+  curl -k -X POST -F data='{"op": "generate", "path": ["wireguard", "default-keypair"]}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/generate
 
 Response:
 
 .. code-block:: none
 
-  {"success": true, "data": "wxxxxxxxfHJj/aDWf0qg0=\n", "error": null}
+  {"success": true, "data": "", "error": null}
 
 Request:
 
 .. code-block:: none
 
-  curl -X POST -F key=mykey https://myip/show --insecure -F data='{"cmd": "wireguard keypairs pubkey default"}'
+  curl -k -X POST -F data='{"op": "show", "path": ["wireguard", "keypairs", "pubkey", "default"]}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/show
 
 Response:
 
 .. code-block:: none
 
-  {"success": true, "data": "<<censored_but_right_key>>\n", "error": null}
+  {"success": true, "data": "<some pubkey>=\n", "error": null} 
 
 Request:
 
 .. code-block:: none
 
-  curl -X POST -F key=mykey https://myip/show --insecure -F data='{"cmd": "wireguard keypairs pubkey default"}'
+  curl -k -X POST -F data='{"op": "show", "path": ["ip", "route"]}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/show
 
 Response:
 
 .. code-block:: none
 
-  {"success": true, "data": "<<censored_but_right_key>>\n", "error": null}
-
-Request:
-
-.. code-block:: none
-
-  curl -s -k -X POST -F data='{"op": "show", "path": ["ip", "route"]}' -F key=mykey https://myip:44302/show
-
-Response:
-
-.. code-block:: none
-
-  {"success": true, "data": "Codes: K - kernel route, C - connected, S - static, R - RIP,\n       O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,\n       T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,\n       F - PBR, f - OpenFabric,\n       > - selected route, * - FIB route, q - queued route, r - rejected route\n\nS>* 0.0.0.0/0 [210/0] via 10.3.0.1, eth0, 12:42:53\nC>* 10.3.0.0/24 is directly connected, eth0, 12:42:53\nS>* 10.10.10.0/24 [1/0] via 10.3.0.1, eth0, 12:42:53\nS>* 10.10.11.0/24 [1/0] via 10.3.0.1, eth0, 12:42:53\nS>* 169.254.169.254/32 [210/0] via 10.3.0.3, eth0, 12:42:53\n", "error": null}
+  {"success": true, "data": "Codes: K - kernel route, C - connected, S - static, R - RIP,\n       O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,\n       T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,\n       F - PBR, f - OpenFabric,\n       > - selected route, * - FIB route, q - queued route, r - rejected route\n\nS>* 0.0.0.0/0 [210/0] via 192.168.100.1, eth0, 01:41:05\nC>* 192.168.0.0/24 is directly connected, eth1, 01:41:09\nC>* 192.168.100.0/24 is directly connected, eth0, 01:41:05\nC>* 203.0.113.76/32 is directly connected, dum1, 01:38:40\n", "error": null} 
 
