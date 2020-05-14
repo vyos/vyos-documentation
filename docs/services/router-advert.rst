@@ -16,7 +16,7 @@ Supported interface types:
     * ethernet
     * l2tpv3
     * openvpn
-    * psuedo-ethernet
+    * pseudo-ethernet
     * tunnel
     * vxlan
     * wireguard
