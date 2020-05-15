@@ -778,7 +778,7 @@ own by:
 
 .. code-block:: none
 
-  vyos@vyos3:~$ /usr/libexec/vyos/run-config-migration.py --virtual --set-vintage vyos /tmp/config.boot
+  vyos@vyos:~$ /usr/libexec/vyos/run-config-migration.py --virtual --set-vintage vyos /tmp/config.boot
 
 
 Priorities
