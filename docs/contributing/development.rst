@@ -755,6 +755,31 @@ In some rare cases, it may be useful to see what the OS is doing, including
 during boot. This option sends all commands used by VyOS to a file. 
 The default file is ``/tmp/full-log`` but it can be changed.
 
+Config Migration
+----------------
+
+When writing a new configuration migrator it may happen that you see an error when
+you try to invoke it manually on a development system. This error will look like:
+
+.. code-block:: none
+
+  vyos@vyos:~$ /opt/vyatta/etc/config-migrate/migrate/ssh/0-to-1 /tmp/config.boot
+  Traceback (most recent call last):
+    File "/opt/vyatta/etc/config-migrate/migrate/ssh/0-to-1", line 31, in <module>
+      config = ConfigTree(config_file)
+    File "/usr/lib/python3/dist-packages/vyos/configtree.py", line 134, in __init__
+      raise ValueError("Failed to parse config: {0}".format(msg))
+  ValueError: Failed to parse config: Syntax error on line 240, character 1: Invalid syntax.
+
+The reason is that the configuration migration backend is rewritten and uses a new form of
+"magic string" which is applied on demand when real config migration is run on boot. When
+runnint individual migrators for testing, you need to convert the "magic string" on your
+own by:
+
+.. code-block:: none
+
+  vyos@vyos3:~$ /usr/libexec/vyos/run-config-migration.py --virtual --set-vintage vyos /tmp/config.boot
+
 
 Priorities
 ==========
