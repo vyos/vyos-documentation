@@ -10,6 +10,7 @@ This chapter contains various configuration Examples
    :maxdepth: 2
 
    dmvpn
+   dhcp-relay-through-gre-bridge
    zone-policy
    bgp-ipv6-unnumbered
    ospf-unnumbered
