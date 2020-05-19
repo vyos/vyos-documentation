@@ -101,25 +101,46 @@ configured to be the default (:opcmd:`set system image default-boot`).
 Update VyOS
 ===========
 
-Finally, new system images can be added using the :opcmd:`add system image`
-command. The add image command will extract the image from the release ISO
-(either on the local filesystem or remotely if a URL is provided). The image
-install process will prompt you to use the current system configuration and SSH
-security keys, allowing for the new image to boot using the current
-configuration.
+New system images can be added using the :opcmd:`add system image`
+command. The command will extract the chosen image and will prompt you
+to use the current system configuration and SSH security keys, allowing
+for the new image to boot using the current configuration.
+
+.. note:: Only LTS releases are PGP-signed.
 
 .. opcmd:: add system image <url | path>
 
-   New system images can be either installed from an URL (http://, https://) or
-   any location pointed to by a file path, e.g. /tmp/vyos-1.2.3-amd64.iso.
-   If there is not enough free diskspace available installation will be
-   canceled. To delete images use the :opcmd:`delete system image` command.
+   Use this command to install a new system image. You can reach the
+   image from the web (http://, https://) or from your local system,
+   e.g.  /tmp/vyos-1.2.3-amd64.iso.
 
-   .. hint:: | The most up-do-date Rolling Release for AMD64 can be accessed using the following URL:
-      | https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+If there is not enough **free disk space available**, the installation
+will be canceled. To delete images use the :opcmd:`delete system image`
+command.
+
+VyOS configuration is associated to each image, and **each image has a
+unique copy of its configuration**. This is different than a traditional
+network router where the configuration is shared across all images.
+
+.. note:: If you have any personal file, like some scripts you created,
+   and you don't want them to be deleted during the upgrade, make sure
+   those files are into the ``/configure`` directory.
+
+You can access files from a previous installation and copy them to your
+current image if they were located in the ``/config`` directory. This
+can be done using the :opcmd:`copy` command. So, for instance, in order
+to copy ``/config/config.boot`` from VyOS 1.2.1 image, you would use the
+following command:
+
+.. code::
+
+   copy file 1.2.1://config/config.boot to /tmp/config.boot.1.2.1
 
 
-   .. code-block:: none
+Example
+"""""""
+
+.. code-block:: none
 
      vyos@vyos:~$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
      Trying to fetch ISO file from https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
@@ -142,18 +163,13 @@ configuration.
 
      OK.  This image will be named: vyos-1.3-rolling-201912201452
 
-   .. note:: Rolling releases are not GPG signed, only the real release build
-      will have a proper GPG signature.
 
-   .. note:: VyOS configuration is associated to each image, and each image has
-      a unique copy of its configuration. This is different than a traditional
-      network router where the configuration is shared across all images.
+.. hint:: | The most up-do-date Rolling Release for AMD64 can be accessed using the following URL:
+   | https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 
-   After reboot you might want to verify the version you are running with the
-   :opcmd:`show version` command.
+After reboot you might want to verify the version you are running with
+the :opcmd:`show version` command.
 
-.. hint:: You can always access files from a previous installation and copy
-   them to your current image. This can be done using the :opcmd:`copy`
-   command. To copy ``/config/config.boot`` from VyOS 1.2.1 image use ``copy
-   file 1.2.1://config/config.boot to /tmp/config.boot.1.2.1``.
+
+
 
