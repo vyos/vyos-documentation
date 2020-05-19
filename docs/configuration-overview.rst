@@ -507,10 +507,10 @@ Remote Archive
 
 VyOS can upload the configuration to a remote location after each call
 to :cfgcmd:`commit`. You will have to set the commit-archive location.
-TFTP, FTP, and SFTP servers are supported. Every time a :cfgcmd:`commit`
-is successfull the ``config.boot`` file will be copied to the defined
-destination(s). The filename used on the remote host will be
-``config.boot-hostname.YYYYMMDD_HHMMSS``
+TFTP, FTP, SCP and SFTP servers are supported. Every time a
+:cfgcmd:`commit` is successfull the ``config.boot`` file will be copied
+to the defined destination(s). The filename used on the remote host will
+be ``config.boot-hostname.YYYYMMDD_HHMMSS``. 
 
 .. cfgcmd:: set system config-management commit-archive location <URI>
 
@@ -523,6 +523,15 @@ destination(s). The filename used on the remote host will be
    * ``tftp://<host>/<dir>``
 
 .. note:: The number of revisions don't affect the commit-archive.
+
+.. note:: You may find VyOS not allowing the secure connection because
+   it cannot verify the legitimacy of the remote server. You can use
+   the workaround below to quickly add the remote host's SSH
+   fingerprint to your ``~/.ssh/known_hosts`` file:
+
+   .. code-block:: none
+
+     vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
 
 Restore Default
 ---------------
