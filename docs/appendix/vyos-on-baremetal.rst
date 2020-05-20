@@ -1,10 +1,11 @@
 .. _vyosonbaremetal:
 
+#####################
 Running on Bare Metal
 #####################
 
-Intel Atom C3000
-****************
+Supermicro A2SDi (Atom C3000)
+=============================
 
 I opted to get one of the new Intel Atom C3000 CPUs to spawn VyOS on it.
 Running VyOS on an UEFI only device is supported as of VyOS release 1.2.
@@ -76,7 +77,7 @@ Pictures
 .. _pc-engines-apu4:
 
 PC Engines APU4
-***************
+================
 
 As this platform seems to be quite common in terms of noise, cost, power and
 performance it makes sense to write a small installation manual.
@@ -98,12 +99,18 @@ Shopping Cart
 * 1x apu4c4 = 4 i211AT LAN / AMD GX-412TC CPU / 4 GB DRAM / dual SIM
 * 1x Kingston SUV500MS/120G
 * 1x VARIA Group Item 326745 19" dual rack for APU4
-* 1x Compex WLE900VX (Optional mini PCIe WiFi module)
 
 The 19" enclosure can accommodate up to two APU4 boards - there is a single and
 dual front cover.
 
-.. note:: Compex WLE900VX is only supported in mPCIe slot 1.
+Extension Modules
+^^^^^^^^^^^^^^^^^
+
+* Compex WLE900VX mini-PCIe WiFi module, only supported in mPCIe slot 1.
+  Refer to :ref:`wireless-interface` for additional information.
+
+* Sierra Wireless MC7710 LZE miniPCIe card is supported by VyOS 1.3 (equuleus).
+  Refer to :ref:`wwan-interface` for additional information.
 
 VyOS 1.2 (crux)
 ---------------
@@ -228,8 +235,8 @@ Rack Mount
    :alt: APU4C4 rack module #3 with PSU
 
 
-Desktop
-^^^^^^^
+Desktop / Bench Top
+^^^^^^^^^^^^^^^^^^^
 
 .. figure:: /_static/images/apu4c4_desk_1.jpg
    :scale: 25 %
@@ -250,7 +257,7 @@ Desktop
 .. _Rufus: https://rufus.ie/
 
 Qotom Q355G4
-************
+============
 
 The install on this Q355G4 box is pretty much plug and play. The port numbering
 the OS does might differ from the labels on the outside, but the UEFI firmware
@@ -301,7 +308,7 @@ serial mode if you disconnect HDMI and plug in serial, in all other cases it's
 HDMI mode.
 
 Partaker i5
-***********
+===========
 
 .. figure:: ../_static/images/600px-Partaker-i5.jpg
 
@@ -327,7 +334,7 @@ Warning the interface labels on my device are backwards; the left-most "LAN4"
 port is eth0 and the right-most "LAN1" port is eth3.
 
 Acrosser AND-J190N1
-*******************
+===================
 
 .. figure:: ../_static/images/480px-Acrosser_ANDJ190N1_Front.jpg
 
