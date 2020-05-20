@@ -196,7 +196,7 @@ by most ISPs who provide native IPv6 for consumers on fixed networks.
 
 .. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option delegate <prefix-interface> sla-len <len>
 
-   This statement specifies the length of the SLA ID in bits. `<len> must be a
+   This statement specifies the length of the SLA ID in bits. `<len>` must be a
    decimal number between 0 and 128. If the length is not specified by this
    statement, the default value 16 will be used.
 
