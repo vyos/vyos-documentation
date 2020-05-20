@@ -37,7 +37,7 @@ leave appropriate defaults in the nginx directive. Multiple instances of
 ``service https api-restrict virtual-host`` may be set.
 
 Configuration mode requests
---------------------
+---------------------------
 
 In our example, we are creating a dummy interface and assigning an address to it:
 
@@ -74,8 +74,8 @@ To retrieve the full config under a path:
 .. code-block:: none
 
   # curl -k -X POST -F data='{"op": "showConfig", "path": ["interfaces", "dummy"]}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/retrieve
- 
-It will return: 
+
+It will return:
 
 .. code-block:: none
 
@@ -86,7 +86,7 @@ Passing an empty path will return the full config:
 .. code-block:: none
 
   # curl -k -X POST -F data='{"op": "showConfig", "path": []}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/retrieve
- 
+
 
 Configuration management requests
 ---------------------------------
@@ -128,7 +128,7 @@ Response:
 
 .. code-block:: none
 
-  {"success": true, "data": "<some pubkey>=\n", "error": null} 
+  {"success": true, "data": "<some pubkey>=\n", "error": null}
 
 Request:
 
@@ -140,5 +140,5 @@ Response:
 
 .. code-block:: none
 
-  {"success": true, "data": "Codes: K - kernel route, C - connected, S - static, R - RIP,\n       O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,\n       T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,\n       F - PBR, f - OpenFabric,\n       > - selected route, * - FIB route, q - queued route, r - rejected route\n\nS>* 0.0.0.0/0 [210/0] via 192.168.100.1, eth0, 01:41:05\nC>* 192.168.0.0/24 is directly connected, eth1, 01:41:09\nC>* 192.168.100.0/24 is directly connected, eth0, 01:41:05\nC>* 203.0.113.76/32 is directly connected, dum1, 01:38:40\n", "error": null} 
+  {"success": true, "data": "Codes: K - kernel route, C - connected, S - static, R - RIP,\n       O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,\n       T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,\n       F - PBR, f - OpenFabric,\n       > - selected route, * - FIB route, q - queued route, r - rejected route\n\nS>* 0.0.0.0/0 [210/0] via 192.168.100.1, eth0, 01:41:05\nC>* 192.168.0.0/24 is directly connected, eth1, 01:41:09\nC>* 192.168.100.0/24 is directly connected, eth0, 01:41:05\nC>* 203.0.113.76/32 is directly connected, dum1, 01:38:40\n", "error": null}
 
