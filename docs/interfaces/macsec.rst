@@ -121,7 +121,7 @@ Examples
   set interfaces macsec macsec1 security mka ckn '40916f4b23e3d548ad27eedd2d10c6f98c2d21684699647d63d41b500dfe8836'
   set interfaces macsec macsec1 source-interface 'eth1'
 
-**R1**
+**R2**
 
 .. code-block:: none
 
