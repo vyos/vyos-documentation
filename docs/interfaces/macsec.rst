@@ -55,6 +55,18 @@ individual peers.
   The peer with lower priority will become the key server and start
   distributing SAKs.
 
+Replay protection
+-----------------
+
+.. cfgcmd:: set interfaces macsec <interface> security replay-window <window>
+
+  IEEE 802.1X/MACsec replay protection window. This determines a window in which
+  replay is tolerated, to allow receipt of frames that have been misordered by
+  the network.
+
+  - ``0``: No replay window, strict check
+  - ``1-4294967295``: Number of packets that could be misordered
+
 Operation
 =========
 
