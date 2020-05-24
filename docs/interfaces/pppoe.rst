@@ -220,10 +220,6 @@ Operation
          TX:  bytes    packets     errors    dropped    carrier collisions
           533822843    1620173          0          0          0          0
 
-.. opcmd:: show interfaces pppoe <interface> log
-
-   Displays log information for a PPPoE interface.
-
 .. opcmd:: show interfaces pppoe <interface> queue
 
    Displays queue information for a PPPoE interface.
