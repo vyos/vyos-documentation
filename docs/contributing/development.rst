@@ -694,6 +694,7 @@ Kernel boot parameters
   CLI. In this circumstance, the kernel boot parameter ``vyos-config-debug``
   will ensure access to the system as user ``vyos``, and will log a Python
   stack trace to the file ``/tmp/boot-config-trace``.
+  File ``boot-config-trace`` will generate only if config loaded with a failure status.
 
 Debugging features
 ------------------
