@@ -249,7 +249,7 @@ Executed from the root of `vyos-build`
 
 .. code-block:: none
 
-  $ docker run --rm -it -v $(pwd):/vyos -w /vyos/packages/PACKAGENAME \
+  $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
                --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
                vyos-builder scripts/build-packages -b <package>
 
@@ -278,7 +278,7 @@ Example using `git@github.com:myname/vyos-1x.git` repository to build vyos-1x:
   $ cd packages
   $ git clone git@github.com:myname/vyos-1x.git
   $ cd ..
-  $ docker run --rm -it -v $(pwd):/vyos -w /vyos/packages/PACKAGENAME \
+  $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
                --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
                vyos-builder scripts/build-packages -b vyos-1x
 
