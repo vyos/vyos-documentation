@@ -38,6 +38,10 @@ Major upgrades to the installed distribution may also require console access.
    * ``57600`` - 57,600 bps
    * ``115200`` - 115,200 bps (default for serial console)
 
+   .. note:: If you use a USB to serial converter please note that most of them
+      use software emulation without flow control, thus you should start with a
+      common baud rate of 9600 as otherwise you could get
+
 ###############
 Network Console
 ###############
