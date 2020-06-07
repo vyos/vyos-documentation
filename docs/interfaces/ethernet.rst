@@ -168,6 +168,38 @@ Operation
      supports-register-dump: yes
      supports-priv-flags: no
 
+.. opcmd:: show interfaces ethernet <interface> physical offload
+
+   Show available offloading functions on given `<interface>`
+
+   .. code-block:: none
+
+     vyos@vyos:~$ show interfaces ethernet eth0 physical offload
+     rx-checksumming               on
+     tx-checksumming               on
+     tx-checksum-ip-generic        on
+     scatter-gather                off
+     tx-scatter-gather             off
+     tcp-segmentation-offload      off
+     tx-tcp-segmentation           off
+     tx-tcp-mangleid-segmentation  off
+     tx-tcp6-segmentation          off
+     udp-fragmentation-offload     off
+     generic-segmentation-offload  off
+     generic-receive-offload       off
+     large-receive-offload         off
+     rx-vlan-offload               on
+     tx-vlan-offload               on
+     ntuple-filters                off
+     receive-hashing               on
+     tx-gre-segmentation           on
+     tx-gre-csum-segmentation      on
+     tx-udp_tnl-segmentation       on
+     tx-udp_tnl-csum-segmentation  on
+     tx-gso-partial                on
+     tx-nocache-copy               off
+     rx-all                        off
+
 .. opcmd:: show interfaces ethernet <interface> transceiver
 
    Show transceiver information from plugin modules, e.g SFP+, QSFP
