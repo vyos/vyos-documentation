@@ -99,8 +99,30 @@ If you don't specify the file when saving, it saves to ``/config/config.boot``. 
 
   # curl -k -X POST -F key=MY-HTTP-API-PLAINTEXT-KEY -Fdata='{"op": "save", "file": "/config/config.boot"}' https://192.168.122.127/config-file
 
+Image management requests
+-------------------------
 
-Operational mode commands
+One may ``add`` or ``delete`` a system image using the endpoint ``/image``. Here are the respective examples:
+
+``add`` from ``url``. Here we use the URL of the latest rolling release:
+
+.. code-block:: none
+
+  # curl -k -X POST -F data='{"op": "add", "url": "https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso"}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/image
+
+``delete`` by image ``name``. For example:
+
+.. code-block:: none
+
+  # curl -k -X POST -F data='{"op": "delete", "name": "1.3-rolling-202006070117"}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/image
+
+To list the available system images by name, one may use the operational mode request ``show`` discussed in the next section; in this setting it would be:
+
+.. code-block:: none
+
+  # curl -k -X POST -F data='{"op": "show", "path": ["system", "image"]}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/show
+
+Operational mode requests
 -------------------------
 
 It is possible to run ``show`` and ``generate`` commands:
