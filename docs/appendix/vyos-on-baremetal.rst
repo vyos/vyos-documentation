@@ -214,45 +214,51 @@ Pictures
 Rack Mount
 ^^^^^^^^^^
 
-.. figure:: /_static/images/apu4c4_rack_1.jpg
+.. figure:: /_static/images/apu4_rack_1.jpg
    :scale: 25 %
-   :alt: APU4C4 rack closed
+   :alt: APU4 rack closed
 
-.. figure:: /_static/images/apu4c4_rack_2.jpg
+.. figure:: /_static/images/apu4_rack_2.jpg
    :scale: 25 %
-   :alt: APU4C4 rack front
+   :alt: APU4 rack front
 
-.. figure:: /_static/images/apu4c4_rack_3.jpg
+.. figure:: /_static/images/apu4_rack_3.jpg
    :scale: 25 %
-   :alt: APU4C4 rack module #1
+   :alt: APU4 rack module #1
 
-.. figure:: /_static/images/apu4c4_rack_4.jpg
+.. figure:: /_static/images/apu4_rack_4.jpg
    :scale: 25 %
-   :alt: APU4C4 rack module #2
+   :alt: APU4 rack module #2
 
-.. figure:: /_static/images/apu4c4_rack_5.jpg
+.. figure:: /_static/images/apu4_rack_5.jpg
    :scale: 25 %
-   :alt: APU4C4 rack module #3 with PSU
+   :alt: APU4 rack module #3 with PSU
 
+VyOS custom print
+"""""""""""""""""
+
+.. figure:: /_static/images/apu4_rack_vyos_print.jpg
+   :scale: 25 %
+   :alt: APU4 custom VyOS powder coat
 
 Desktop / Bench Top
 ^^^^^^^^^^^^^^^^^^^
 
-.. figure:: /_static/images/apu4c4_desk_1.jpg
+.. figure:: /_static/images/apu4_desk_1.jpg
    :scale: 25 %
-   :alt: APU4C4 desktop closed
+   :alt: APU4 desktop closed
 
-.. figure:: /_static/images/apu4c4_desk_2.jpg
+.. figure:: /_static/images/apu4_desk_2.jpg
    :scale: 25 %
-   :alt: APU4C4 desktop closed
+   :alt: APU4 desktop closed
 
-.. figure:: /_static/images/apu4c4_desk_3.jpg
+.. figure:: /_static/images/apu4_desk_3.jpg
    :scale: 25 %
-   :alt: APU4C4 desktop back
+   :alt: APU4 desktop back
 
-.. figure:: /_static/images/apu4c4_desk_4.jpg
+.. figure:: /_static/images/apu4_desk_4.jpg
    :scale: 25 %
-   :alt: APU4C4 desktop back
+   :alt: APU4 desktop back
 
 .. _Rufus: https://rufus.ie/
 
