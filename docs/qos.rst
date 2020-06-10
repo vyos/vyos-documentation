@@ -31,7 +31,6 @@ But before learning to configure your policy, we will quickly warn you
 about the different units you can use and also show you what *classes*
 are and how they work, as some policies may require you to configure
 them.
- 
 
 
 Units
@@ -128,19 +127,16 @@ configuring it.
    policies, like Priority Queue, the number of the class defines its
    priority.
 
-When you define a class, you will always need to define which traffic
-will be assigned to that class.
 
 .. code-block:: none
 
   set traffic-policy <policy> <policy-name> class <class-ID> match <class-matching-rule-name>
 
 
-In the command above, we are setting the type of policy we are going to
-work with, the name we choose for it, a class (so that we can
-differentiate some traffic) and an identifiable number for that class,
-and then we are configuring a matching rule (or filter) and a name for
-it.
+In the command above, we set the type of policy we are going to
+work with and the name we choose for it; a class (so that we can
+differentiate some traffic) and an identifiable number for that class;
+then we configure a matching rule (or filter) and a name for it.
 
 A class can have multiple match filters:
 
@@ -164,14 +160,14 @@ This will match TCP traffic with source port 80.
 There are many parameters you will be able to use in order to match the
 traffic you want for a class:
 
- - Ethernet (protocol, destination address or source address)
- - Interface name
- - IPv4 (DSCP value, maximum packet length, protocol, source address,
-   destination address, source port, destination port or TCP flags)
- - IPv6 (DSCP value, maximum payload length, protocol, source address,
-   destination address, source port, destination port or TCP flags)
- - Firewall mark
- - VLAN ID
+ - **Ethernet (protocol, destination address or source address)**
+ - **Interface name**
+ - **IPv4 (DSCP value, maximum packet length, protocol, source address,**
+   **destination address, source port, destination port or TCP flags)**
+ - **IPv6 (DSCP value, maximum payload length, protocol, source address,**
+   **destination address, source port, destination port or TCP flags)**
+ - **Firewall mark**
+ - **VLAN ID**
 
 When configuring your filter, you can use the ``Tab`` key to see the many
 different parameters you can configure.
@@ -207,10 +203,17 @@ You can also write a description for a filter:
    https://en.wikipedia.org/wiki/IPv6_packet#Extension_headers
 
 
+Default
+-------
+
+Often you will also have to configure what you want to do with traffic
+called *default*, in the same way you do with a class. *Default* is just
+any traffic which is not matching any of the classes you configured. It
+is a class without filters.
+
 
 Class treatment
 ---------------
-
 
 Once a class has a filter configured, you will also have to define what
 you want to do with the traffic of that class, what specific
@@ -238,15 +241,40 @@ will know about them in the :ref:`creating_a_traffic_policy` subsection.
       target       fq-codel - Acceptable minimum queue delay (milliseconds)
    
 
+Sometimes, you will want to embed_ a new policy into one class. In the
+example above VyOS also shows the possibility to configure FQ-CoDel
+settings into one of the classes of a Shaper policy.
 
 
-Default
--------
+.. _embed:
 
-Often you will also have to configure what you want to do with traffic
-called *default*, in the same way you do with a class. *Default* is just
-any traffic which is not matching any of the classes you configured. It
-is like a class without filters.
+Embedding one policy into another one
+-------------------------------------
+
+Very often we will want to embed one policy into another. 
+For instance, you might want to apply different policies to the
+different classes of a a Round-Robin policy you have configured.
+
+
+Some policies, in order to be effective, they need to be applied to an
+interface that is directly connected to the link where the bottleneck
+is. If your router is is not directly connected to the bottleneck, but
+some hop before it, you might want to embed your non-shaping policy into
+a classful shaping one so that the bottleneck bandwidth is emulated and
+your non-shaping policy takes effect.
+
+You can configure a policy in a class through the ``queue-type``
+setting.
+
+.. code-block:: none
+
+   set traffic-policy shaper SHAPER_FOR_FQ-CODEL bandwidth 900mbit
+   set traffic-policy shaper SHAPER_FOR_FQ-CODEL default bandwidth 100%
+   set traffic-policy shaper SHAPER_FOR_FQ-CODEL default queue-type fq-codel
+
+As shown in the last command of the example above, `queue-type` is the
+esponsible for allowing these combinations, you will be able to use it
+in many policies.
 
 
 
@@ -261,16 +289,18 @@ every possibility. You can configure as many policies as you want, but
 you will only be able to apply one policy per interface and direction
 (inbound or outbound).
 
-Some policies let you have different queues inside, so you will be able
-to combine policies by assigning a different policy to a subqueue. 
+Some policies can be combined, you will be able to embed_ a different
+policy that will be applied to a subqueue of the main policy. 
 
-
-.. hint:: If you do not know what policy you need for your outbound
-   traffic, you might want to try FQ-CoDel_ for a multipurpose simple
-   configuration, you might also be interested in trying Shaper_ if you
-   don't need to guarantee low delay, or Shaper-HFSC_ when you need to
-   guarantee a low delay transmission for some specific traffic and you
-   are not afraid of setting a complex configuration.
+.. hint:: If you are looking for a policy for your outbound traffic but
+   you do not know what policy you need, you might want to give a try to
+   FQ-CoDel_ as your multipurpose nearly-no-configuration fair-queue and
+   low-delay policy; or you might want to try Shaper_ if you don't need
+   to guarantee low delay but you want to manually allocate bandwidth
+   shares to specific traffic; or, if you want to manually allocate
+   bandwidth shares to specific traffic while guaranteeing low delay,
+   and you are not afraid of setting a complex configuration, you
+   might want to give Shaper-HFSC_ a go.
 
 Drop Tail
 ---------
@@ -348,35 +378,36 @@ fashion. You can configure the length of the queue.
    will only be useful if your outgoing interface is really full. If it
    is not, VyOS will not own the queue and Fair Queue will have no
    effect. If there is bandwidth available on the physical link, you can
-   embed_ Fair Queue into a classful shaping policy to make sure it owns
+   embed_ Fair-Queue into a classful shaping policy to make sure it owns
    the queue.
 
 
 
-.. _FQ-QoDel
+.. _FQ-CoDel
 
 FQ-CoDel
 --------
 
-| **Queueing discipline** Fair/Flow Queue CoDel
-| **Applies to:** Outbound Traffic
+| **Queueing discipline** Fair/Flow Queue CoDel.
+| **Applies to:** Outbound Traffic.
 
-The FQ-CoDel policy fights bufferbloat and reduces latency without the
-need of complex configurations. It has become the new default Queueing
+The FQ-CoDel policy cuts things up into 1024 FIFO queues and tries to
+provide good service between all of them. It also tries to keep the
+length of all the queues short.
+
+FQ-CoDel fights bufferbloat and reduces latency without the need of
+complex configurations. It has become the new default Queueing
 Discipline for the interfaces of some GNU/Linux distributions.
 
-FQ-Codel uses a stochastic model to classify incoming packets into
+It uses a stochastic model to classify incoming packets into
 different flows and is used to provide a fair share of the bandwidth to
 all the flows using the queue. Each such flow is managed by the CoDel
 queuing  discipline. Reordering within a flow is avoided since Codel
 internally uses a FIFO queue.
 
-FQ-Codel is based on a modified Deficit Round Robin (DRR) queue
+FQ-CoDel is based on a modified Deficit Round Robin (DRR_) queue
 scheduler with the CoDel Active Queue Management (AQM) algorithm
 operating on each queue.
-
-VyOS let you customize FQ-CoDel parameters, but very likely it will work
-ok with its default values.
 
 
 .. note:: FQ-Codel is a non-shaping (work-conserving) policy, so it
@@ -386,6 +417,59 @@ ok with its default values.
    embed_ FQ-Codel into a classful shaping policy to make sure it owns
    the queue.
 
+
+FQ-CoDel is tuned to run ok with its default parameters at 10Gbit
+speeds. It might work ok too at other speeds without configuring
+anything, but here we will explain some cases when you might want to
+tune its parameters.
+
+When running it at 1Gbit and lower, you may want to reduce the
+`queue-limit` to 1000 packets or less. In rates like 10Mbit, you may
+want to set it to 600 packets.
+
+If you are using FQ-CoDel embedded into Shaper_ and you have large rates
+(100Mbit and above), you may consider increasing `quantum` to 8000 or
+higher so that the scheduler saves CPU.
+
+On low rates (below 40Mbit) you may want to tune `quantum` down to
+something like 300.
+
+At very low rates (below 3Mbit), besides tuning `quantum` (300 keeps
+being ok) you may also want to increase `target` to something like 15ms
+and increase `interval` to something around 150ms.
+
+
+.. cfgcmd:: set traffic-policy fq-codel <policy name> codel-quantum <bytes>
+
+   Use this command to configure an fq-codel policy, set its name and
+   the maximum number of bytes (default: 1514) to be dequeued from a
+   queue at once.
+
+.. cfgcmd:: set traffic-policy fq-codel <policy name> flows <number-of-flows>
+
+   Use this command to configure an fq-codel policy, set its name and
+   the number of sub-queues (default: 1024) into which packets are
+   classified.
+
+.. cfgcmd:: set traffic-policy fq-codel <policy name> interval <miliseconds>
+
+   Use this command to configure an fq-codel policy, set its name and
+   the time period used by the control loop of CoDel to detect when a
+   persistent queue is developing, ensuring that the measured minimum
+   delay does not become too stale (default: 100ms).
+
+.. cfgcmd:: set traffic-policy fq-codel <policy-name> queue-limit <number-of-packets>`
+
+   Use this command to configure an fq-codel policy, set its name, and
+   define a hard limit on the real queue size. When this limit is
+   reached, new packets are dropped (default: 10240 packets).
+
+.. cfgcmd:: set traffic-policy fq-codel <policy-name> target <miliseconds>`
+
+   Use this command to configure an fq-codel policy, set its name, and
+   define the acceptable minimum standing/persistent queue delay. This
+   minimum delay is identified by tracking the local minimum queue delay
+   that packets experience (default: 5ms).
 
 
 Limiter
@@ -462,7 +546,7 @@ how you want matching traffic to behave.
 Network emulator
 ----------------
 
-| **Queueing discipline:** netem (Network Emulator) + TBF (Token Bucket Filter)
+| **Queueing discipline:** netem (Network Emulator) + TBF (Token Bucket Filter).
 | **Applies to:** Outbound traffic.
 
 VyOS Network Emulator policy emulates the conditions you can suffer in a
@@ -525,8 +609,8 @@ under certain network conditions.
 Priority queue
 --------------
 
-| **Queueing discipline:** PRIO 
-| **Applies to:** Outbound traffic
+| **Queueing discipline:** PRIO.
+| **Applies to:** Outbound traffic.
 
 
 The Priority Queue is a classful scheduling policy. It does not delay
@@ -535,7 +619,7 @@ packets, it simply dequeues packets according to their priority.
 .. note:: Priority Queue, as other non-shaping policies, is only useful
    if your outgoing interface is really full. If it is not, VyOS will
    not own the queue and Priority Queue will have no effect. If there is
-   bandwidth available on the physical link, you can embed Priority
+   bandwidth available on the physical link, you can embed_ Priority
    Queue into a classful shaping policy to make sure it owns the queue.
    In that case packets can be prioritized based on DSCP.
 
@@ -547,9 +631,9 @@ continuously, packets from lower priority classes will only be
 transmitted after traffic volume from higher priority classes decreases.
 
 
-.. note:: In Priority Queue we do not define clases with a class ID
-   number but with a class priority number (1-7). The lower the number,
-   the higher the priority.
+.. note:: In Priority Queue we do not define clases with a meaningless
+   class ID number but with a class priority number (1-7). The lower the
+   number, the higher the priority.
 
 
 As with other policies, you can define different type of matching rules
@@ -568,241 +652,57 @@ for your classes:
       vif          Virtual Local Area Network (VLAN) ID for this match
 
 
-.. cfgcmd:: set traffic-policy priority-queue <policy name> class
-   <class-priority-number> codel-quantum <bytes>
+As with other policies, you can embed_ other policies into the classes 
+(and default) of your Priority Queue policy through the ``queue-type``
+setting:
 
-   Use this command to configure a Priority Queue, set its name, set a
-   class with a priority from 1 to 7 and set the maximum number of bytes
-   (default: 1514) to be dequeued from a queue at once when using an
-   fq-codel queue.
+.. code-block:: none
 
+   vyos@vyos# set traffic-policy priority-queue MY-PRIO class 3 queue-type 
+   Possible completions:
+      fq-codel     Fair Queue Codel
+      fair-queue   Stochastic Fair Queue (SFQ)
+      drop-tail    First-In-First-Out (FIFO)
+      priority     Priority queueing based on DSCP
+      random-detect
+                   Random Early Detection (RED)
 
-.. cfgcmd:: set traffic-policy priority-queue <policy name> class
-   <class-priority-number> flows <number-of-flows>
-
-   Use this command to configure a Priority Queue, set its name, set a
-   class with a priority from 1 to 7 and set the number of sub-queues
-   (default: 1024) into which packets are classified when using an
-   fq-codel queue.
-
-.. cfgcmd:: set traffic-policy priority-queue <policy name> class
-   <class-priority-number> interval <miliseconds>
-
-   Use this command to configure a Priority Queue, set its name, set a
-   class with a priority from 1 to 7 and set the time period used by the
-   control loop of CoDel to detect when a persistent queue is
-   developing. It can be used when an fq-codel queue is configured.
 
 .. cfgcmd:: set traffic-policy priority-queue <policy-name> class
    <class-ID>  queue-limit <limit>`
 
-   Use this command to configure a Priority Queue, set its name, set a
-   class with a priority from 1 to 7 and set the xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   Use this command to configure a Priority Queue policy, set its name,
+   set a class with a priority from 1 to 7 and define a hard limit on
+   the real queue size. When this limit is reached, new packets are
+   dropped.
 
-* Specify a queue type for a traffic class, available queue types:
 
- * drop-tail
- * fair-queue
- * random-detect
 
-  :code:`set traffic-policy priority-queue <policy name> class <class ID>
-  queue-type <type>`
+.. _Random-Detect:
 
-Default class
-"""""""""""""
+Random-Detect
+-------------
 
-* Define a default priority queue:
 
-  :code:`set traffic-policy priority-queue <policy name> default`
+| **Queueing discipline:** Generalized Random Early Drop.
+| **Applies to:** Outbound traffic.
 
-* Define a maximum queue length for the default traffic class in packets:
+A simple Random Early Detection (RED) policy would start randomly
+dropping packets from a queue before it reaches its queue limit thus
+avoiding congestion. That would be also beneficial for TCP connections
+as the gradual dropping of packets acts as a signal for the sender to
+decrease its transmission rate, avoiding global TCP synchronisation.
 
-  :code:`set traffic-policy priority-queue <policy name> default queue-limit
-  <limit>`
+In contrast to simple RED, the Weighted Random Early Detect policy
+found at VyOS provides different virtual queues based on the IP
+Precedence value so that some virtual queues can drop more packets than
+others. 
 
-* Specify the queuing type for the default traffic class, available queue types:
+This is achieved by using the first three bits of the ToS (Type of
+Service) field to categorize data streams and, in accordance with the
+defined precedence parameters, a decision is made.
 
- * drop-tail
- * fair-queue
- * random-detect
-
-  :code:`set traffic-policy priority-queue <policy name> default queue-type <type>`
-
-Matching rules
-""""""""""""""
-
-* Define a class matching rule:
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name>`
-
-* Add a match rule description:
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> description <description>`
-
-* Specify a match criterion based on a **destination MAC address**
-  (format: xx:xx:xx:xx:xx:xx):
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ether destination <MAC address>`
-
-* Specify a match criterion based on a **source MAC address**
-  (format: xx:xx:xx:xx:xx:xx):
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ether source <MAC address>`
-
-* Specify a match criterion based on **packet type/protocol**, range 0...65535:
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ether protocol <number>`
-
-* Specify a match criterion based on **ingress interface**:
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> interface <interface>`
-
-* Specify a match criterion based on the **fwmark field**, range 0....4294967295:
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> mark <fwmark>`
-
-* Specify a match criterion based on **VLAN ID**, range 1...4096:
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> vif <VLAN ID>`
-
-**IPv4**
-
-* Specify a match criterion based on **destination IPv4 address and/or port**,
-  port may be specified as number or service name (i.e. ssh):
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ip destination <IPv4 address|port>`
-
-* Specify a match criterion based on **source IPv4 address and/or port**, port
-  may be specified as number or service name (i.e. ssh):
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ip source <IPv4 address|port>`
-
-* Specify a match criterion based on **DSCP (Differentiated Services Code Point)
-  value**, DSCP value may be specified as decimal or hexadecimal number:
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ip dscp <DSCP value>`
-
-* Specify a match criterion based on **IPv4 protocol**, protocol may be
-  specified by name (i.e. icmp) or IANA-assigned number:
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ip protocol <proto>`
-
-**IPv6**
-
-* Specify a match criterion based on **destination IPv6 address and/or port**,
-  port may be specified as number or service name (i.e. ssh):
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ipv6 destination <IPv6 address|port>`
-
-* Specify a match criterion based on **source IPv6 address and/or port**, port
-  may be specified as number or service name (i.e. ssh):
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ipv6 source <IPv6 address|port>`
-
-* Specify a match criterion based on **DSCP (Differentiated Services Code Point)
-  value**, DSCP value may be specified as decimal or hexadecimal number:
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ipv6 dscp <DSCP value>`
-
-* Specify a match criterion based on **IPv6 protocol**, protocol may be
-  specified by name (i.e. icmp) or IANA-assigned number:
-
-  :code:`set traffic-policy priority-queue <policy name> class <class ID> match
-  <match name> ipv6 protocol <proto>`
-
-
-Random Early Detection (RED/WRED)
----------------------------------
-
-RED
-^^^
-
-| **Queueing discipline:**
-| **Applies to:**
-
-A Random Early Detection (RED) policy starts randomly dropping packets from a
-queue before it reaches its queue limit thus avoiding congestion. It is also
-beneficial for TCP connections as the gradual dropping of packets acts as a
-signal for the sender to decrease its transmission rate, avoiding global TCP
-synchronisation. Applicable to outbound traffic only.
-
-Available commands:
-
-* Define a RED policy:
-
-  :code:`set traffic-policy random-detect <policy name>`
-
-* Add a description:
-
-  :code:`set traffic-policy random-detect <policy name> description <description>`
-
-* Set a bandwidth limit, default auto:
-
-  :code:`set traffic-policy random-detect <policy name> bandwidth <rate>`
-
-  Available suffixes:</u>
-
- * auto (bandwidth limit based on interface speed, default)
- * kbit (kilobits per second)
- * mbit (megabits per second)
- * gbit (gigabits per second)
- * kbps (kilobytes per second)
- * mbps (megabytes per second)
- * gbps (gigabytes per second)
-
-
-WRED
-^^^^
-
-| **Queueing discipline:**
-| **Applies to:**
-
-In contrast to RED, Weighted Random Early Detection (WRED) differentiates
-between classes of traffic in a single queue and assigns different precedence
-to traffic flows accordingly; low priority packets are dropped from a queue
-earlier than high priority packets. This is achieved by using the first three
-bits of the ToS (Type of Service) field to categorise data streams and in
-accordance with the defined precedence parameters a decision is made. A WRED
-policy is defined with the following parameters:
-
-* precedence
-* min-threshold
-* max-threshold
-* average-packet
-* mark-probability
-* queue-limit
-
-If the average queue size is lower than the :code:`min-threshold`, an arriving
-packet is placed in the queue. If the average queue size is between
-:code:`min-threshold` and :code:`max-threshold` an arriving packet is either
-dropped or placed in the queue depending on the defined :code:`mark-probability`.
-In case the average queue size is larger than :code:`max-threshold`, packets
-are dropped. If the current queue size is larger than :code:`queue-limit`,
-packets are dropped. The average queue size depends on its former average size
-and its current size. If :code:`max-threshold` is set but :code:`min-threshold`
-is not, then :code:`min-threshold` is scaled to 50% of :code:`max-threshold`.
-In principle, values must be :code:`min-threshold` < :code:`max-threshold` <
-:code:`queue-limit`. Applicable to outbound traffic only.
-
-Possible values for WRED parameters:
-
-* precedence - IP precedence, first three bits of the ToS field as defined in
-  :rfc:`791`.
+IP precedence as defined in :rfc:`791`:
 
  +------------+----------------------+
  | Precedence |      Priority        |
@@ -824,9 +724,48 @@ Possible values for WRED parameters:
  |      0     | Routine              |
  +------------+----------------------+
 
-* min-threshold - Min value for the average queue length, packets are dropped
-  if the average queue length reaches this threshold. Range 0...4096, default
-  is dependent on precedence:
+
+.. cfgcmd:: set traffic-policy random-detect <policy-name> bandwidth <bandwidth>
+
+   Use this command to configure a Random-Detect policy, set its name
+   and set the available bandwidth for this policy.
+
+.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> average-packet <bytes>
+   
+   Use this command to configure a Random-Detect policy and set its
+   name, then name the IP Precedence for the virtual queue you are
+   configuring and what the size of its average-packet should be
+   (in bytes, default: 1024).
+
+.. note:: When configuring a Random-Detect policy, remember: the higher
+   the precedence number, the higher the priority.
+
+.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> mark-probability <value>
+   
+   Use this command to configure a Random-Detect policy and set its
+   name, then name the IP Precedence for the virtual queue you are
+   configuring and what its mark (drop) probability will be. Set the
+   probability by giving the N value of the fraction 1/N (default: 10).
+
+
+.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> maximum-threshold <packets>
+   
+   Use this command to configure a Random-Detect policy and set its
+   name, then name the IP Precedence for the virtual queue you are
+   configuring and what its maximum threshold for random detection will
+   be (from 0 to 4096 packets, default: 18). At this size, the marking
+   (drop) probability is maximal.
+
+.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> minimum-threshold <packets>
+   
+   Use this command to configure a Random-Detect policy and set its
+   name, then name the IP Precedence for the virtual queue you are
+   configuring and what its minimum threshold for random detection will
+   be (from 0 to 4096 packets).  If this value is exceeded, packets
+   start being eligible for being dropped.
+
+
+The default values for the minimum-threshold depend on IP precedence:
 
  +------------+-----------------------+
  | Precedence | default min-threshold |
@@ -848,219 +787,147 @@ Possible values for WRED parameters:
  |      0     |          9            |
  +------------+-----------------------+
 
-* max-threshold - Max value for the average queue length, packets are dropped
-  if this value is exceeded. Range 0...4096 packets, default 18.
 
-* average-packet - Average packet size in bytes, default 1024.
+.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> queue-limit <packets>
+   
+   Use this command to configure a Random-Detect policy and set its
+   name, then name the IP Precedence for the virtual queue you are
+   configuring and what the maximum size of its queue will be (from 1 to
+   1-4294967295 packets). Packets are dropped when the current queue
+   length reaches this value.
 
-* mark-probability - The fraction of packets (n/probability) dropped from the
-  queue when the average queue length reaches <code>max-threshold</code>,
-  default 10.
 
-* queue-limit - Packets are dropped when the current queue length reaches this
-  value, default 4*<code>max-threshold</code>.
+If the average queue size is lower than the :code:`min-threshold`, an
+arriving packet is placed in the queue. If the average queue size is
+between :code:`min-threshold` and :code:`max-threshold` an arriving
+packet is either dropped or placed in the queue depending on the defined
+:code:`mark-probability`. In case the average queue size is larger than
+:code:`max-threshold`, packets are dropped. If the current queue size is
+larger than :code:`queue-limit`, packets are dropped. The average queue
+size depends on its former average size and its current size. If
+:code:`max-threshold` is set but :code:`min-threshold` is not, then
+:code:`min-threshold` is scaled to 50% of :code:`max-threshold`. In
+principle, values must be :code:`min-threshold` < :code:`max-threshold`
+< :code:`queue-limit`.
 
-Usage:
+One use of this algorithm might be to prevent a backbone overload.
 
-:code:`set traffic-policy random-detect <policy-name> precedence
-<precedence> [average-packet <bytes> | mark-probability <probability> |
-max-threshold <max> | min-threshold <min> | queue-limit <packets>]`
+Rate control
+------------
 
-Rate control (TBF)
-------------------
+| **Queueing discipline:** Tocken Bucket Filter.
+| **Applies to:** Outbound traffic.
 
-| **Queueing discipline:**
-| **Applies to:**
+Rate-Control is a classless policy that limits the packet flow to a set
+rate. It is a pure shaper, it does not schedule traffic. Traffic is
+filtered based on the expenditure of tokens. Tokens roughly correspond
+to bytes.
 
-The rate control policy uses the Token Bucket Filter (TBF_) algorithm to limit
-the packet flow to a set rate. Short bursts can be allowed to exceed the limit.
-Applicable to outbound traffic only.
+Short bursts can be allowed to exceed the limit. On creation, the
+Rate-Control traffic is stocked with tokens which correspond to the
+amount of traffic that can be burst in one go. Tokens arrive at a steady
+rate, until the bucket is full.
 
-Available commands:
+.. cfgcmd:: set traffic-policy rate-control <policy-name> bandwidth <rate>
 
-* Define a rate control policy:
+   Use this command to configure a Rate-Control policy, set its name
+   and the rate limit you want to have.
 
-  :code:`set traffic-policy rate-control <policy-name>`
+.. cfgcmd:: set traffic-policy rate-control <policy-name> burst <burst-size>
 
-* Add a description:
+   Use this command to configure a Rate-Control policy, set its name
+   and the size of the bucket in bytes which will be available for
+   burst.
 
-  :code:`set traffic-policy rate-control <policy-name> description <description>`
 
-* Specify a bandwidth limit in kbits/s:
+As a reference: for 10mbit/s on Intel, you might need at least 10kbyte
+buffer if you want to reach your configured rate.
 
-  :code:`set traffic-policy rate-control <policy-name> bandwidth <rate>`
+A too small buffer will soon start dropping packets.
 
-  Available suffixes:</u>
+.. cfgcmd:: set traffic-policy rate-control <policy-name> latency 
 
- * kbit (kilobits per second, default)
- * mbit (megabits per second)
- * gbit (gigabits per second)
- * kbps (kilobytes per second)
- * mbps (megabytes per second)
- * gbps (gigabytes per second)
+   Use this command to configure a Rate-Control policy, set its name
+   and the maximum amount of time a packet can be queued (default: 50
+   ms.
 
-* Specify a burst size in bytes, default 15 kilobytes:
 
-  :code:`set traffic-policy rate-control <policy-name> burst <burst-size>`
+Rate-Control is a CPU-friendly policy. You might consider using it when
+you just simply want to slow traffic down.
 
-  Available suffixes:
-
- * kb (kilobytes)
- * mb (megabytes)
- * gb (gigabytes)
-
-* Specify a latency in milliseconds; the maximum amount of time packets are
-  allowed to wait in the queue, default 50 milliseconds:
-
-  :code:`set traffic-policy rate-control <policy-name> latency`
-
-  Available suffixes:
-
- * secs (seconds)
- * ms (milliseconds, default)
- * us (microseconds)
+.. _DRR:
 
 Round robin (DRR)
 -----------------
 
-| **Queueing discipline:**
-| **Applies to:**
+| **Queueing discipline:** Deficit Round Robin.
+| **Applies to:** Outbound traffic.
 
-The round robin policy divides available bandwidth between all defined traffic
-classes.
+The round-robin policy is a classful scheduler that divides traffic in
+different classes_ you can configure (up to 4096). You can embed_ a
+new policy into each of those classes (the default one included).
+ 
+Each class is assigned a deficit counter (the number of bytes that a
+flow is allowed to transmit when it is its turn) initialized to quantum.
+Quantum is a parameter you configure which acts like a credit of fix
+bytes the counter receives on each round. Then the Round-Robin policy
+starts moving its Round Robin pointer through the queues. If the deficit
+counter is greater than the packet's size at the head of the queue, this
+packet will be sent and the value of the counter will be decremented by
+the packet size. Then, the size of the next packet will be compared to
+the counter value again, repeating the process. Once the queue is empty
+or the value of the counter is insufficient, the Round-Robin pointer
+will move to the next queue. If the queue is empty, the value of the
+deficit counter is reset to 0. 
 
-Available commands:
+At every round, the deficit counter adds the quantum so that even large
+packets will have their opportunity to be dequeued.
 
-* Define a round robin policy:
 
-  :code:`set traffic-policy round-robin <policy-name>`
+.. cfgcmd:: set traffic-policy round-robin <policy name> class
+   <class-ID> quantum <packets>
 
-* Add a description:
+   Use this command to configure a Round-Robin policy, set its name, set
+   a class ID, and the quantum for that class. The deficit counter will
+   add that value each round.
 
-  :code:`set traffic-policy round-robin <policy-name> description <description>`
+.. cfgcmd:: set traffic-policy round-robin <policy name> class
+   <class ID> queue-limit <packets>
 
-* Define a traffic class ID, range 2...4095:
+   Use this command to configure a Round-Robin policy, set its name, set
+   a class ID, and the queue size in packets.
 
-  :code:`set traffic-policy round-robin <policy-name> class <class>`
+As with other policies, Round-Robin can embed_ another policy into a
+class through the ``queue-type`` setting and then configure its
+parameters.
 
-**Default policy:**
+.. code-block:: none
 
-* Define a default priority queue:
+   vyos@vyos# set traffic-policy round-robin DRR class 10 queue-type 
+   Possible completions:
+      fq-codel     Fair Queue Codel
+      fair-queue   Stochastic Fair Queue (SFQ)
+      drop-tail    First-In-First-Out (FIFO)
+      priority     Priority queueing based on DSCP
+            
 
-  :code:`set traffic-policy round-robin <policy name> default`
+.. code-block:: none
 
-* Set the number of packets that can be sent per scheduling quantum:
+   vyos@vyos# set traffic-policy round-robin DRR class 10 
+   Possible completions:
+      codel-quantum
+                   fq-codel - Number of bytes used as 'deficit' (default 1514)
+      description  Description for this traffic class
+      flows        fq-codel - Number of flows (default 1024)
+      interval     fq-codel - Interval (milliseconds) used to measure the delay (default 100)
+   +> match        Class matching rule name
+      quantum      Packet scheduling quantum
+      queue-limit  Maximum queue size (packets)
+      queue-type   Queue type for this class
+      target       fq-codel - Acceptable minimum queue delay (milliseconds)
 
-  :code:`set traffic-policy round-robin <policy name> default quantum <packets>`
 
-* Define a maximum queue length for the default policy in packets:
 
-  :code:`set traffic-policy round-robin <policy name> default queue-limit <limit>`
-
-* Specify the queuing type for the default policy, available queue types:
-
- * drop-tail
- * fair-queue
- * priority (based on the DSCP values in the ToS byte)
-
-  :code:`set traffic-policy round-robin <policy name> default queue-type <type>`
-
-Matching rules
-""""""""""""""
-
-* Define a class matching rule:
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name>`
-
-* Add a match rule description:
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> description <description>`
-
-* Specify a match criterion based on a **destination MAC address** (format:
-  xx:xx:xx:xx:xx:xx):
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ether destination <MAC address>`
-
-* Specify a match criterion based on a **source MAC address** (format:
-  xx:xx:xx:xx:xx:xx):
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ether source <MAC address>`
-
-* Specify a match criterion based on **packet type/protocol**, range 0...65535:
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ether protocol <number>`
-
-* Specify a match criterion based on **ingress interface**:
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> interface <interface>`
-
-* Specify a match criterion based on the **fwmark field**, range 0....4294967295:
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> mark <fwmark>`
-
-* Specify a match criterion based on **VLAN ID**, range 1...4096:
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> vif <VLAN ID>*`
-
-**IPv4**
-
-* Specify a match criterion based on **destination IPv4 address and/or port**,
-  port may be specified as number or service name (i.e. ssh):
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ip destination <IPv4 address|port>`
-
-* Specify a match criterion based on **source IPv4 address and/or port**, port
-  may be specified as number or service name (i.e. ssh):
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ip source <IPv4 address|port>`
-
-* Specify a match criterion based on **DSCP (Differentiated Services Code Point)
-  value**, DSCP value may be specified as decimal or hexadecimal number:
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ip dscp <DSCP value>`
-
-* Specify a match criterion based on **IPv4 protocol**, protocol may be
-  specified by name (i.e. icmp) or IANA-assigned number:
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ip protocol <proto>`
-
-**IPv6**
-
-* Specify a match criterion based on **destination IPv6 address and/or port**,
-  port may be specified as number or service name (i.e. ssh):
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ipv6 destination <IPv6 address|port>`
-
-* Specify a match criterion based on **source IPv6 address and/or port**, port
-  may be specified as number or service name (i.e. ssh):
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ipv6 source <IPv6 address|port>`
-
-* Specify a match criterion based on **DSCP (Differentiated Services Code Point)
-  value**, DSCP value may be specified as decimal or hexadecimal number:
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ipv6 dscp <DSCP value>`
-
-* Specify a match criterion based on **IPv6 protocol**, protocol may be
-  specified by name (i.e. icmp) or IANA-assigned number:
-
-  :code:`set traffic-policy round-robin <policy name> class <class ID> match
-  <match name> ipv6 protocol <proto>`
 
 
 .. _Shaper:
@@ -1068,20 +935,99 @@ Matching rules
 Traffic shaper
 --------------
 
-| **Queueing discipline:**
-| **Applies to:**
+| **Queueing discipline:** Hierarchical Token Bucket.
+| **Applies to:** Outbound traffic.
 
+
+The Shaper policy does not guarantee a low delay, but it does guarantee
+bandwidth to different traffic classes and lets you choose how to
+allocate more traffic once the guarantees are met. 
+
+Each class can use a guaranteed part of the total bandwidth defined for
+the whole policy, so all those shares together should not be higher
+than the policy's whole bandwidth.
+
+If guaranteed traffic in a class is met and there is room for more
+traffic, the ceiling parameter can be used to set how much more
+bandwidth can be used. If guaranteed traffic is met and there are
+several classes willing to use their ceilings, the priority parameter
+will establish the order in which that additional traffic will be
+allocated. Priority can be any number from 0 to 7. The lower the number,
+the higher the priority.
 
 
 DEFAULT PRIORITY: 0
 DEFAULT CEILING: SAME AS BANDWIDTH (so no borrowing)
 
 
+.. cfgcmd:: set traffic-policy shaper <policy-name> bandwidth <rate>
 
-VyOS shaper uses the Hierarchical Token Bucket algorithm to optimally
-allocate different amounts of bandwidth to different traffic classes
-while being able to define guaranteed bandwidth and shared bandwidth for
-different conditions.
+   Use this command to configure a Shaper policy, set its name
+   and the maximum bandwidth for all combined traffic.
+
+
+.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> bandwidth <rate>
+
+   Use this command to configure a Shaper policy, set its name, define
+   a class and set the guaranteed traffic you want to allocate to that
+   class.
+
+.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> burst <bytes>
+
+   Use this command to configure a Shaper policy, set its name, define
+   a class and set the size of the bucket. Shaper will dequeue its burst
+   bytes before awaiting the arrival of more tokens.
+
+.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> ceiling <bandwidth>
+
+   Use this command to configure a Shaper policy, set its name, define
+   a class and set the maximum speed possible for this class. The
+   default ceiling value is the same as bandwidth, so no borrowing.
+
+.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> priority <0-7>
+
+   Use this command to configure a Shaper policy, set its name, define
+   a class and set the priority for usage of available bandwidth once
+   guarantees have been met. The lower the priority number, the higher
+   the priority. The default priority value is 0, the highest priority.
+
+
+As with other policies, Shaper can embed_ other policies into its
+classes through the ``queue-type`` setting and then configure their
+parameters.
+
+.. :code-block:: none
+
+   vyos@vyos# set traffic-policy shaper HTB class 10 queue-type 
+   Possible completions:
+      fq-codel     Fair Queue Codel
+      fair-queue   Stochastic Fair Queue (SFQ)
+      drop-tail    First-In-First-Out (FIFO)
+      priority     Priority queueing based on DSCP
+      random-detect
+                   Random Early Detection (RED)
+
+.. :code-block:: none
+
+   vyos@vyos# set traffic-policy shaper HTB class 10 
+   Possible completions:
+      bandwidth    Bandwidth used for this class
+      burst        Burst size for this class (default: 15kb)
+      ceiling      Bandwidth limit for this class
+      codel-quantum
+                   fq-codel - Number of bytes used as 'deficit' (default 1514)
+      description  Description for this traffic class
+      flows        fq-codel - Number of flows (default 1024)
+      interval     fq-codel - Interval (milliseconds) used to measure the delay (default 100)
+   +> match        Class matching rule name
+      priority     Priority for usage of excess bandwidth
+      queue-limit  Maximum queue size (packets)
+      queue-type   Queue type for this class
+      set-dscp     Change the Differentiated Services (DiffServ) field in the IP header
+      target       fq-codel - Acceptable minimum queue delay (milliseconds)
+
+
+
 
 Available commands:
 
@@ -1318,7 +1264,7 @@ Matching rules
   <match name> ipv6 protocol <proto>`
 
 
-.. _Shaper-HFSC
+.. _Shaper-HFSC:
 
 shaper-hfsc (HFSC_ + sfq)
 -------------------------
@@ -1330,53 +1276,12 @@ TBD
 
 
 
-.. _embed
-
-Embedding a policy into a another one
-=====================================
-
-You can embed a non-shaping policy into a classful shaping policy, as in
-the example below:
-
-.. code-block:: none
-
-   set traffic-policy shaper SHAPER_FOR_FAIR-QUEUE bandwidth '50mbit'
-   set traffic-policy shaper SHAPER_FOR_FAIR-QUEUE default bandwidth '50mbit'
-   set traffic-policy shaper SHAPER_FOR_FAIR-QUEUE default queue-type 'fair-queue'
-
-
-
-
-
-Applying a traffic policy
-=========================
-
-Once a traffic-policy is created, you can apply it to an interface:
-
-.. code-block:: none
-
-  set interfaces etherhet eth0 traffic-policy out WAN-OUT
-
-
-
-You can have serveral policies running at the same time:
-
-.. code-block:: none
-
-  set interfaces ethernet eth0 traffic-policy in WAN-IN
-  set interfaces etherhet eth0 traffic-policy out WAN-OUT
-  set interfaces ethernet eth1 traffic-policy out LAN-OUT
-
-
-
-
 .. _ingress-shaping:
 
 The case of ingress shaping
 ===========================
 
-| **Queueing discipline:**
-| **Applies to:**
+| **Applies to:** Inbound traffic.
 
 Only a **limiter** policy can be applied directly
 for ingress traffic on an interface. It is possible though to use what is
@@ -1401,6 +1306,25 @@ Steps to do:
   :code:`set interfaces ethernet eth0 redirect ifb0`
 
 
+
+Applying a traffic policy
+=========================
+
+Once a traffic-policy is created, you can apply it to an interface:
+
+.. code-block:: none
+
+  set interfaces etherhet eth0 traffic-policy out WAN-OUT
+
+
+
+You can have serveral policies running at the same time:
+
+.. code-block:: none
+
+  set interfaces ethernet eth0 traffic-policy in WAN-IN
+  set interfaces etherhet eth0 traffic-policy out WAN-OUT
+  set interfaces ethernet eth1 traffic-policy out LAN-OUT
 
 
 
