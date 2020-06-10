@@ -76,7 +76,7 @@ throttling background traffic too much.
   set traffic-policy shaper download class 10 match dns ip source port '53'
   set traffic-policy shaper download class 10 match icmp ip protocol 'icmp'
   set traffic-policy shaper download class 10 match ssh ip source port '22'
-  set traffic-policy shaper download class 10 priority '5'
+  set traffic-policy shaper download class 10 priority '1'
   set traffic-policy shaper download class 10 queue-type 'fair-queue'
   set traffic-policy shaper download class 20 bandwidth '10%'
   set traffic-policy shaper download class 20 burst '15k'
@@ -88,7 +88,7 @@ throttling background traffic too much.
   set traffic-policy shaper download default bandwidth '70%'
   set traffic-policy shaper download default burst '15k'
   set traffic-policy shaper download default ceiling '100%'
-  set traffic-policy shaper download default priority '3'
+  set traffic-policy shaper download default priority '7'
   set traffic-policy shaper download default queue-type 'fair-queue'
   set traffic-policy shaper upload bandwidth '18mbit'
   set traffic-policy shaper upload class 2 bandwidth '10%'
@@ -99,7 +99,7 @@ throttling background traffic too much.
   set traffic-policy shaper upload class 2 match icmp ip protocol 'icmp'
   set traffic-policy shaper upload class 2 match ssh ip destination port '22'
   set traffic-policy shaper upload class 2 match syn ip tcp syn
-  set traffic-policy shaper upload class 2 priority '5'
+  set traffic-policy shaper upload class 2 priority '1'
   set traffic-policy shaper upload class 2 queue-limit '16'
   set traffic-policy shaper upload class 2 queue-type 'fair-queue'
   set traffic-policy shaper upload class 5 bandwidth '10%'
@@ -112,7 +112,7 @@ throttling background traffic too much.
   set traffic-policy shaper upload default bandwidth '60%'
   set traffic-policy shaper upload default burst '15k'
   set traffic-policy shaper upload default ceiling '100%'
-  set traffic-policy shaper upload default priority '3'
+  set traffic-policy shaper upload default priority '7'
   set traffic-policy shaper upload default queue-type 'fair-queue'
 
 
