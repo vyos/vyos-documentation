@@ -58,6 +58,7 @@ VyOS User Guide
    appendix/cmd-index
    appendix/vyos-on-vmware
    appendix/vyos-on-baremetal
+   appendix/vyos-on-clouds
    appendix/migrate-from-vyatta
    appendix/command-scripting
    appendix/http-api

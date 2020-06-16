@@ -12,6 +12,7 @@ Advanced Network Interfaces
    dummy
    geneve
    l2tpv3
+   macsec
    pseudo-ethernet
    qinq
    tunnel

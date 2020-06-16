@@ -489,6 +489,22 @@ Configuration Options
 
    A SNTP server address can be specified for DHCPv6 clients.
 
+Prefix Delegation
+^^^^^^^^^^^^^^^^^
+
+To hand out individual prefixes to your clients the following configuration is
+used:
+
+
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> prefix-delegation start <address> prefix-length <length>
+
+   Hand out prefixes of size `<length>` to clients in subnet `<prefix>` when
+   they request for prefix delegation.
+
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> prefix-delegation start <address> stop <address>
+
+   Delegate prefixes from the range indicated by the start and stop qualifier.
+
 Address pools
 -------------
 

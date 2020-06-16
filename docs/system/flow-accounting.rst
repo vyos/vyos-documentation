@@ -121,7 +121,7 @@ NetFlow
 
    Per default every packet is sampled (that is, the sampling rate is 1).
 
-.. cfgcmd:: set system flow-accounting netflow timeout expiry interval <interval>
+.. cfgcmd:: set system flow-accounting netflow timeout expiry-interval <interval>
 
    Specifies the interval at which Netflow data will be sent to a collector. As
    per default, Netflow data will be sent every 60 seconds.

@@ -48,7 +48,14 @@ will ensure that the container is always up-to-date. A rebuild is triggered once
 the container changes (please note this will take 2-3 hours after pushing to
 the vyos-build repository).
 
-The container can always be built directly from source:
+To download the container from DockerHub run:
+
+.. code-block:: none
+
+  $ docker pull vyos/vyos-build:crux     # for the LTS version
+  $ docker pull vyos/vyos-build:current  # for the current version
+
+The container can also be built directly from source:
 
 .. code-block:: none
 
@@ -69,15 +76,28 @@ Build ISO
 ---------
 
 After the container is generated either manually or fetched from DockerHub,
-a fresh build of the VyOS ISO can begin.
+a fresh build of the VyOS ISO can begin. 
+
+If you pulled the image from DockerHub, you need to clone the repository to
+your local machine:
 
 .. code-block:: none
 
+  $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+
+After cloning, change directory to the ``vyos-build`` directory and run:
+
+.. code-block:: none
+
+  $ cd vyos-build
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build bash
   vyos_bld@d4220bb519a0:/vyos# ./configure --architecture amd64 \
                                --build-by "your@email.tld" \
                                --build-type release --version 1.2.0
   vyos_bld@d4220bb519a0:/vyos# sudo make iso
+
+When the build is successful, the resulting iso can be found inside the ``build`` 
+directory.
 
 .. note:: Attempting to use the docker build image on MacOS or Windows will fail
    as docker does not expose all the filesystem feature required to the container.
@@ -229,7 +249,7 @@ Executed from the root of `vyos-build`
 
 .. code-block:: none
 
-  $ docker run --rm -it -v $(pwd):/vyos -w /vyos/packages/PACKAGENAME \
+  $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
                --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
                vyos-builder scripts/build-packages -b <package>
 
@@ -258,7 +278,7 @@ Example using `git@github.com:myname/vyos-1x.git` repository to build vyos-1x:
   $ cd packages
   $ git clone git@github.com:myname/vyos-1x.git
   $ cd ..
-  $ docker run --rm -it -v $(pwd):/vyos -w /vyos/packages/PACKAGENAME \
+  $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
                --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
                vyos-builder scripts/build-packages -b vyos-1x
 

@@ -405,9 +405,9 @@ There are a lot of matching criteria gainst which the package can be tested.
       set firewall name WAN-IN-v4 rule 13 tcp flags 'SYN,!ACK,!FIN,!RST'
 
 .. cfgcmd:: set firewall name <name> rule <1-9999> state [established |
-   invalid | new | releated]
+   invalid | new | related] [enable | disable ]
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> state [established |
-   invalid | new | releated]
+   invalid | new | related] [enable | disable ]
 
    Match against the state of a packet.
 

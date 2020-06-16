@@ -1,8 +1,456 @@
 .. _qos:
 
-***
+===
 QoS
-***
+===
+
+VyOS uses tc_ as backend for QoS. VyOS provides its users with configuration
+nodes for the following shaping/queueing/policing disciplines:
+
+* HTB
+* HFSC
+* SFQ
+* pfifo
+* network-emulator
+* PRIO
+* GRED
+* TBF
+* DRR
+
+Configuration nodes
+-------------------
+
+VyOS QoS configuration is done in two steps. The first one consists in setting
+up your classes/queues and traffic filters to distribute traffic amongst them.
+The second step is to apply such traffic policy to an interface ingress or
+egress.
+
+Creating a traffic policy
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Such configuration takes place under the `traffic-policy` tree.
+
+Available subtrees :
+
+.. code-block:: none
+
+  set traffic-policy drop-tail NAME
+  set traffic-policy fair-queue NAME
+  set traffic-policy limiter NAME
+  set traffic-policy network-emulator NAME
+  set traffic-policy priority-queue NAME
+  set traffic-policy random-detect NAME
+  set traffic-policy rate-control NAME
+  set traffic-policy round-robin NAME
+  set traffic-policy shaper NAME
+  set traffic-policy shaper-hfsc NAME
+
+Apply traffic policy to an interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once a traffic-policy is created, you can apply it to an interface :
+
+.. code-block:: none
+
+  set interfaces ethernet eth0 traffic-policy in WAN-IN
+  set interfaces etherhet eth0 traffic-policy out WAN-OUT
+
+A Real-World Example
+^^^^^^^^^^^^^^^^^^^^
+
+This policy sets download and upload bandwidth maximums (roughly 90% of the speeds possible), then divvies
+up the traffic into buckets of importance, giving guaranteed bandwidth chunks to types of
+traffic that are necessary for general interactive internet use, like web browsing, streaming, or gaming.
+
+After identifying and prioritizing that traffic, it drops the remaining traffic into a general-priority
+bucket, which it gives a lower priority than what is required for real-time use. If there is no real-time
+traffic that needs the bandwidth, the lower-priority traffic can use most of the connection. This ensures
+that the connection can be used fully by whatever wants it, without suffocating real-time traffic or
+throttling background traffic too much.
+
+.. code-block:: none
+
+  set traffic-policy shaper download bandwidth '175mbit'
+  set traffic-policy shaper download class 10 bandwidth '10%'
+  set traffic-policy shaper download class 10 burst '15k'
+  set traffic-policy shaper download class 10 ceiling '100%'
+  set traffic-policy shaper download class 10 match dns ip source port '53'
+  set traffic-policy shaper download class 10 match icmp ip protocol 'icmp'
+  set traffic-policy shaper download class 10 match ssh ip source port '22'
+  set traffic-policy shaper download class 10 priority '1'
+  set traffic-policy shaper download class 10 queue-type 'fair-queue'
+  set traffic-policy shaper download class 20 bandwidth '10%'
+  set traffic-policy shaper download class 20 burst '15k'
+  set traffic-policy shaper download class 20 ceiling '100%'
+  set traffic-policy shaper download class 20 match http ip source port '80'
+  set traffic-policy shaper download class 20 match https ip source port '443'
+  set traffic-policy shaper download class 20 priority '4'
+  set traffic-policy shaper download class 20 queue-type 'fair-queue'
+  set traffic-policy shaper download default bandwidth '70%'
+  set traffic-policy shaper download default burst '15k'
+  set traffic-policy shaper download default ceiling '100%'
+  set traffic-policy shaper download default priority '7'
+  set traffic-policy shaper download default queue-type 'fair-queue'
+  set traffic-policy shaper upload bandwidth '18mbit'
+  set traffic-policy shaper upload class 2 bandwidth '10%'
+  set traffic-policy shaper upload class 2 burst '15k'
+  set traffic-policy shaper upload class 2 ceiling '100%'
+  set traffic-policy shaper upload class 2 match ack ip tcp ack
+  set traffic-policy shaper upload class 2 match dns ip destination port '53'
+  set traffic-policy shaper upload class 2 match icmp ip protocol 'icmp'
+  set traffic-policy shaper upload class 2 match ssh ip destination port '22'
+  set traffic-policy shaper upload class 2 match syn ip tcp syn
+  set traffic-policy shaper upload class 2 priority '1'
+  set traffic-policy shaper upload class 2 queue-limit '16'
+  set traffic-policy shaper upload class 2 queue-type 'fair-queue'
+  set traffic-policy shaper upload class 5 bandwidth '10%'
+  set traffic-policy shaper upload class 5 burst '15k'
+  set traffic-policy shaper upload class 5 ceiling '100%'
+  set traffic-policy shaper upload class 5 match http ip destination port '80'
+  set traffic-policy shaper upload class 5 match https ip destination port '443'
+  set traffic-policy shaper upload class 5 priority '4'
+  set traffic-policy shaper upload class 5 queue-type 'fair-queue'
+  set traffic-policy shaper upload default bandwidth '60%'
+  set traffic-policy shaper upload default burst '15k'
+  set traffic-policy shaper upload default ceiling '100%'
+  set traffic-policy shaper upload default priority '7'
+  set traffic-policy shaper upload default queue-type 'fair-queue'
+
+
+Traffic policies in VyOS
+------------------------
+An overview of QoS traffic policies supported by VyOS.
+
+Drop-tail (FIFO)
+^^^^^^^^^^^^^^^^
+
+A packet queuing mechanism on a FIFO (First In, First Out) basis; packets are
+sent out in the same order as they arrive. The queue has a defined length,
+packets arriving after the queue is filled up will be dropped (hence the name
+`drop tail`, the "tail" of the queue will be dropped). With this policy in
+place, all traffic is treated equally and put into a single queue. Applicable
+to outbound traffic only.
+
+Available commands:
+
+* Define a drop-tail policy (unique name, exclusive to this policy):
+
+  :code:`set traffic-policy drop-tail <policy name>`
+
+* Add a description:
+
+  :code:`set traffic-policy drop-tail <policy name> description <description>`
+
+* Set the queue length limit (max. number of packets in queue), range
+  0...4294967295 packets:
+
+  :code:`set traffic-policy drop-tail <policy name> queue-limit <limit>`
+
+Fair queue (SFQ)
+^^^^^^^^^^^^^^^^
+
+Fair queue is a packet queuing mechanism that separates traffic flows based on
+their source/destination IP addresses and/or source port and places them into
+buckets. Bandwidth is allocated fairly between buckets based on the Stochastic
+airness Queuing algorithm. Applicable to outbound traffic only.
+
+Available commands:
+
+* Define a fair queue policy:
+
+  :code:`set traffic-policy fair-queue <policy name>`
+
+* Add a description:
+
+  :code:`set traffic-policy fair-queue <policy name> description <description>`
+
+* Set hash update interval; the algorithm used is stochastic and thus not
+  'truly' fair, hash collisions can occur, in which case traffic flows may be
+  put into the same bucket. To mitigate this, the hashes can be updated at a
+  set interval, Range 0...4294967295 seconds:
+
+  :code:`set traffic-policy fair-queue <policy name> hash-interval <seconds>`
+
+* Set the queue-limit (max. number of packets in queue), range 0...4294967295
+  packets, default 127:
+
+  :code:`set traffic-policy fair-queue <policy name> queue-limit <limit>`
+
+Limiter
+^^^^^^^
+
+The limiter performs ingress policing of traffic flows. Multiple classes of
+traffic can be defined and traffic limits can be applied to each class. Traffic
+exceeding the defined bandwidth limits is dropped. Applicable to inbound
+traffic only.
+
+Available commands:
+
+* Define a traffic limiter policy:
+  :code:`set traffic-policy limiter <policy-name>`
+* Add a description:
+  :code:`set traffic-policy limiter <policy-name> description <description>`
+
+Traffic classes
+***************
+
+* Define a traffic class for a limiter policy, range for class ID is 1...4095:
+
+  :code:`set traffic-policy limiter <policy-name> class <class ID>`
+
+* Add a class description:
+
+  :code:`set traffic-policy limiter <policy-name> class <class ID> description
+  <description>`
+
+* Specify a bandwidth limit for a class, in kbit/s:
+
+  :code:`set traffic-policy limiter <policy-name> class <class ID> bandwidth
+  <rate>`.
+
+  Available suffixes:
+
+ * kbit (kilobits per second, default)
+ * mbit (megabits per second)
+ * gbit (gigabits per second)
+ * kbps (kilobytes per second)
+ * mbps (megabytes per second)
+ * gbps (gigabytes per second)
+
+* Set a burst size for a class, the maximum amount of traffic that can be sent,
+  in bytes:
+
+  :code:`set traffic-policy limiter <policy-name> class <class ID>
+  burst <burst-size>`.
+
+  Available suffixes:
+
+ * kb (kilobytes)
+ * mb (megabytes)
+ * gb (gigabytes)
+
+Default class
+#############
+
+* Define a default class for a limiter policy that applies to traffic not
+  matching any other classes for this policy:
+
+  :code:`set traffic-policy limiter <policy name> default`
+
+* Specify a bandwidth limit for the default class, in kbit/s:
+
+  :code:`set traffic-policy limiter <policy name> default bandwidth <rate>`.
+
+  Available suffixes:
+
+ * kbit (kilobits per second, default)
+ * mbit (megabits per second)
+ * gbit (gigabits per second)
+ * kbps (kilobytes per second)
+ * mbps (megabytes per second)
+ * gbps (gigabytes per second)
+
+* Set a burst size for the default class, the maximum amount of traffic that
+  can be sent, in bytes:
+
+  :code:`set traffic-policy limiter <policy-name> default burst <burst-size>`.
+
+  Available suffixes:
+
+ * kb (kilobytes)
+ * mb (megabytes)
+ * gb (gigabytes)
+
+* Specify the priority of the default class to set the order in which the rules
+  are evaluated, the higher the number the lower the priority, range 0...20
+  (default 20):
+
+  :code:`set traffic-policy limiter <policy name> default priority <priority>`
+
+Matching rules
+**************
+
+* Define a traffic class matching rule:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name>`
+
+* Add a description:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> description <description>`
+
+* Specify the priority of a matching rule to set the order in which the rules
+  are evaluated, the higher the number the lower the priority, range 0...20
+  (default 20):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID>
+  priority <priority>`
+
+* Specify a match criterion based on a **destination MAC address**
+  (format: xx:xx:xx:xx:xx:xx):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ether destination <MAC address>`
+
+* Specify a match criterion based on a **source MAC address** (format:
+  xx:xx:xx:xx:xx:xx):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ether source <MAC address>`
+
+* Specify a match criterion based on **packet type/protocol**, range 0...65535:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ether protocol <number>`
+
+* Specify a match criterion based on the **fwmark field**, range 0....4294967295:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> mark <fwmark>`
+
+* Specify a match criterion based on **VLAN ID**, range 1...4096:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> vif <VLAN ID>`
+
+**IPv4**
+
+* Specify a match criterion based on **destination IPv4 address** and/or port,
+  port may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID>
+  match <match name> ip destination <IPv4 address|port>`
+
+* Specify a match criterion based on **source IPv4 address** and/or port, port
+  may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID>
+  match <match name> ip source <IPv4 address|port>`
+
+* Specify a match criterion based on **DSCP (Differentiated Services Code Point)
+  value**, DSCP value may be specified as decimal or hexadecimal number:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ip dscp <DSCP value>`
+
+* Specify a match criterion based on **IPv4 protocol**, protocol may be
+  specified by name (i.e. icmp) or IANA-assigned number:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ip protocol <proto>`
+
+**IPv6**
+
+* Specify a match criterion based on **destination IPv6 address and/or port**,
+  port may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ipv6 destination <IPv6 address|port>`
+
+* Specify a match criterion based on **source IPv6 address and/or port**, port
+  may be specified as number or service name (i.e. ssh):
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ipv6 source <IPv6 address|port>`
+
+* Specify a match criterion based on **DSCP (Differentiated Services Code
+  Point) value**, DSCP value may be specified as decimal or hexadecimal number:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ipv6 dscp <DSCP value>`
+
+* Specify a match criterion based on **IPv6 protocol**, protocol may be
+  specified by name (i.e. icmp) or IANA-assigned number:
+
+  :code:`set traffic-policy limiter <policy name> class <class ID> match
+  <match name> ipv6 protocol <proto>`
+
+Network emulator
+^^^^^^^^^^^^^^^^
+
+The network emulator policy emulates WAN traffic, which is useful for testing
+purposes. Applicable to outbound traffic only.
+
+Available commands:
+
+* Define a network emulator policy:
+
+  :code:`set traffic-policy network-emulator <policy name>`
+
+* Add a description:
+
+  :code:`set traffic-policy network-emulator <policy name> description <description>`
+
+* Specify a bandwidth limit in kbit/s:
+
+  :code:`set traffic-policy network-emulator <policy name> bandwidth <rate>`
+
+  Available suffixes:
+
+ * kbit (kilobits per second, default)
+ * mbit (megabits per second)
+ * gbit (gigabits per second)
+ * kbps (kilobytes per second)
+ * mbps (megabytes per second)
+ * gbps (gigabytes per second)
+
+* Set a burst size, the maximum amount of traffic that can be sent, in bytes:
+
+  :code:`set traffic-policy network-emulator <policy name> burst <burst size>`
+
+  Available suffixes:
+
+ * kb (kilobytes)
+ * mb (megabytes)
+ * gb (gigabytes)
+
+* Define a delay between packets:
+
+  :code:`set traffic-policy network-emulator <policy name> network-delay <delay>`
+
+  Available suffixes:
+
+ * secs (seconds)
+ * ms (milliseconds, default)
+ * us (microseconds)
+
+* Set a percentage of corrupted of packets (one bit flip, unchanged checksum):
+
+  :code:`set traffic-policy network-emulator <policy name> packet-corruption
+  <percent>`
+
+* Set a percentage of random packet loss:
+
+  :code:`set traffic-policy network-emulator <policy name> packet-loss <percent>`
+
+* Set a percentage of packets for random reordering:
+
+  :code:`set traffic-policy network-emulator <policy name> packet-reordering
+  <percent>`
+
+* Set a queue length limit in packets, range 0...4294967295, default 127:
+
+  :code:`set traffic-policy network-emulator <policy name> queue-limit <limit>`
+
+Priority queue
+^^^^^^^^^^^^^^
+
+Up to seven queues with differing priorities can be defined, packets are placed
+into queues based on associated match criteria. Packets are transmitted from
+the queues in priority order. If queues with a higher order are being filled
+with packets continuously, packets from lower priority queues will only be
+transmitted after traffic volume from higher priority queues decreases.
+
+Available commands:
+
+* Define a priority queue:
+
+  :code:`set traffic-policy priority-queue <policy name>`
+
+* Add a description:
+
+  :code:`set traffic-policy priority-queue <policy name> description <description>`
 
 The generic name of Quality of Service or Traffic Control involves
 things like shaping traffic, scheduling or dropping packets, which
