@@ -231,7 +231,7 @@ container, it includes all dependencies for compiling supported packages.
 
   $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
                --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
-               vyos-builder scripts/build-packages
+               vyos-build scripts/build-packages
 
 .. note:: `--sysctl net.ipv6.conf.lo.disable_ipv6=0` is required to build the
    `vyos-strongswan` package
@@ -251,7 +251,7 @@ Executed from the root of `vyos-build`
 
   $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
                --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
-               vyos-builder scripts/build-packages -b <package>
+               vyos-build scripts/build-packages -b <package>
 
 .. note:: `--sysctl net.ipv6.conf.lo.disable_ipv6=0` is only needed when
    building `vyos-strongswan` and can be ignored on other packages.
@@ -280,7 +280,7 @@ Example using `git@github.com:myname/vyos-1x.git` repository to build vyos-1x:
   $ cd ..
   $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
                --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
-               vyos-builder scripts/build-packages -b vyos-1x
+               vyos-build scripts/build-packages -b vyos-1x
 
 .. note:: You need to git pull manually after you commit to the remote and
    before rebuilding, the local repository won't be updated automatically.
