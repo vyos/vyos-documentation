@@ -107,25 +107,25 @@ times are used to send a single character, and so dividing the signalling
 bit-rate by ten results in the overall transmission speed in characters per
 second. This is also the default setting if none of those options are defined.
 
-.. cfgcmd:: service console-server <device> data-bits
+.. cfgcmd:: set service console-server <device> data-bits
 
   Configure either seven or eight data bits. This defaults to eight data
   bits if left unconfigured.
 
-.. cfgcmd:: service console-server <device> description
+.. cfgcmd:: set service console-server <device> description
 
   A user friendly description identifying the connected peripheral.
 
-.. cfgcmd:: service console-server <device> parity [even | odd | none]
+.. cfgcmd:: set service console-server <device> parity [even | odd | none]
 
   Set the parity option for the console. If unset this will default to none.
 
-.. cfgcmd:: service console-server <device> stop-bits
+.. cfgcmd:: set service console-server <device> stop-bits
 
   Configure either one or two stop bits. This defaults to one stop bits if
   left unconfigured.
 
-.. cfgcmd:: service console-server <device> speed <baudrate>
+.. cfgcmd:: set service console-server <device> speed <baudrate>
 
   .. note:: USB to serial converters will handle most of their work in software
      so you should be carefull with the selected baudrate as some times they
@@ -138,7 +138,7 @@ Each individual configured console-server device can be directly exposed to
 the outside world. A user can directly connect via SSH to the configured
 port.
 
-.. cfgcmd:: service console-server <device> ssh port <port>
+.. cfgcmd:: set service console-server <device> ssh port <port>
 
   Accept SSH connections for the given `<device>` on TCP port `<port>`.
   After successfull authentication the user will be directly dropped to
