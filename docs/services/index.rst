@@ -10,6 +10,7 @@ This chapter describes the available system/network services provided by VyOS.
    :maxdepth: 1
 
    conntrack
+   console-server
    dhcp
    dns-forwarding
    dynamic-dns
