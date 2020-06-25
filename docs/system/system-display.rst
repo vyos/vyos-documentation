@@ -16,7 +16,7 @@ The first step is to identify the LCD screen model. This step is required.
 Available models are: (see completion helper for the most up-to-date list):
 
    * ``EZIO`` - Display model for Portwell, Caswell appliances with built-in EZIO-100 or EZIO-300 LCD
-   * ``SDEC`` - Display model for Lanner, Watchguard, Nexcom NSA appliances with built-in SDEC LCD
+   * ``SDEC`` - Display model for Lanner, Watchguard, Nexcom NSA, Sophos UTM  appliances with built-in SDEC LCD
 
    .. note:: This model is to be understood as a macro type, to be expanded over
       time as needed.
