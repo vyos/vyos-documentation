@@ -65,6 +65,7 @@ Appendix
    appendix/examples/index
    appendix/commandtree/index
    appendix/vyos-on-vmware
+   appendix/vyos-on-gns3
    appendix/vyos-on-baremetal
    appendix/migrate-from-vyatta
 
