@@ -80,7 +80,7 @@ This will set the title text on the display screens
 This will set the welcome and final text on the screen as the system display
 starts and stops.
 
-.. cfgcmd:: set system display duration <s>
+.. cfgcmd:: set system display time <s>
 
 This will set the time (in seconds) to hold each screen on the system display.
 
