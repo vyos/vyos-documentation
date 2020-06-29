@@ -84,7 +84,7 @@ starts and stops.
 
 This will set the time (in seconds) to hold each screen on the system display.
 
-.. cfgcmd:: set system display config
+.. cfgcmd:: set system display disabled
 
-The config option allows the entire system display configuration to be
-enabled or disabled without having to delete and re-create the configuration.
+The disabled option allows the system display configuration to be disabled while
+keeping the rest of the configuration.
