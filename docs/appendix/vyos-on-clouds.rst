@@ -148,6 +148,7 @@ Click **Add item** and paste your public ssh key. Click ``Save``.
 .. figure:: /_static/images/cloud-gcp-05.png
 
 6. Connect to the instance. SSH key was generated in the first step.
+
   .. code-block:: none
 
     ssh -i ~/.ssh/vyos_gcp vyos@203.0.113.3
