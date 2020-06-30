@@ -174,9 +174,10 @@ You can also tune multicast with the following commands.
 IGMP Proxy
 **********
 
-:abbr:`IGMP (Internet Group Management Protocol)` proxy sends IGMP host messages
-on behalf of a connected client. The configuration must define one, and only one
-upstream interface, and one or more downstream interfaces.
+:abbr:`IGMP (Internet Group Management Protocol)` proxy sends IGMP host
+messages on behalf of a connected client. The configuration must define
+one, and only one upstream interface, and one or more downstream
+interfaces.
 
 Configuration
 =============
@@ -225,8 +226,8 @@ Configuration
 Example
 -------
 
-Interface `eth1` LAN is behind NAT. In order to subscribe `10.0.0.0/23` subnet
-multicast which is in `eth0` WAN we need to configure igmp-proxy.
+Interface `eth1` LAN is behind NAT. In order to subscribe `10.0.0.0/23`
+subnet multicast which is in `eth0` WAN we need to configure igmp-proxy.
 
 .. code-block:: none
 
