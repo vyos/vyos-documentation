@@ -183,7 +183,7 @@ Examples:
 * Bad: "Set TCP connection timeout"
 
 If a verb is essential, keep it. For example, in the help text of ``set system
-ipv6 disable-forwarding`, "Disable IPv6 forwarding on all interfaces" is a
+ipv6 disable-forwarding``, "Disable IPv6 forwarding on all interfaces" is a
 perfectly justified wording.
 
 Prefer infinitives

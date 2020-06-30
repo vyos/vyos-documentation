@@ -38,7 +38,7 @@ To be able to use Docker_, the current non-root user should be added to the
 
 
 Generating the container
-----------------------
+------------------------
 
 The container can built by hand or by fetching the pre-built one from
 DockerHub. Using the pre-built VyOS DockerHub organisation (https://hub.docker.com/u/vyos) will

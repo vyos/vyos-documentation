@@ -31,6 +31,7 @@ eases the automatic generation of a changelog file.
 A good approach for writing commit messages is actually to have a look at the
 file(s) history by invoking ``git log path/to/file.txt``.
 
+.. _prepare_commit:
 
 Preparding patch/commit
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,12 +82,12 @@ post: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 
   * All text of the commit message should be wrapped at 72 characters if
     possible which makes reading commit logs easier with ``git log`` on a
-	standard terminal (which happens to be 80x25)
+    standard terminal (which happens to be 80x25)
 
   * If applicable a reference to a previous commit should be made linking
     those commits nicely when browsing the history: ``After commit abcd12ef
-	("snmp: this is a headline") a Python import statement is missing,
-	throwing the follwoing exception: ABCDEF``
+    ("snmp: this is a headline") a Python import statement is missing,
+    throwing the following exception: ABCDEF``
 
 * Always use the ``-x`` option to the ``git cherry-pick`` command when back or
   forward porting an individual commit. This automatically appends the line:
