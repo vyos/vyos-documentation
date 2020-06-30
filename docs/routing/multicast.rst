@@ -31,7 +31,7 @@ source-specific multicast).
 
 
 Example
--------
+=======
 
 In the following example we can see a basic multicast setup:
 
@@ -87,7 +87,7 @@ In the following example we can see a basic multicast setup:
 
 
 Basic commands
---------------
+==============
 
 These are the commands for a basic setup.
 
@@ -114,7 +114,7 @@ These are the commands for a basic setup.
 
 
 Tuning commands
----------------
+===============
 
 You can also tune multicast with the following commands.
 
