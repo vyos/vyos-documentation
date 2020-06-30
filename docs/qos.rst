@@ -423,7 +423,7 @@ fashion. You can configure the length of the queue.
 
 
 
-.. _FQ-CoDel
+.. _FQ-CoDel:
 
 FQ-CoDel
 --------
