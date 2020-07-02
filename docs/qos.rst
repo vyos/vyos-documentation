@@ -22,9 +22,9 @@ How to make it work
 In order to have VyOS Traffic Control working you need to follow 2
 steps:
 
- 1. Create a traffic policy.
+ 1. **Create a traffic policy**.
 
- 2. Apply the traffic policy to an interface ingress or egress.
+ 2. **Apply the traffic policy to an interface ingress or egress**.
     
 
 But before learning to configure your policy, we will warn you
@@ -300,7 +300,7 @@ classes of a Round-Robin policy you have configured.
 
 A common example is the case of some policies which, in order to be
 effective, they need to be applied to an interface that is directly
-connected to the link where the bottleneck is. If your router is not
+connected where the bottleneck is. If your router is not
 directly connected to the bottleneck, but some hop before it, you can
 emulate the bottleneck by embedding your non-shaping policy into a
 classful shaping one so that it takes effect.
@@ -310,15 +310,17 @@ setting.
 
 .. code-block:: none
 
-   set traffic-policy shaper FQ-SHAPER bandwidth 1gbit
+   set traffic-policy shaper FQ-SHAPER bandwidth 4gbit
    set traffic-policy shaper FQ-SHAPER default bandwidth 100%
-   set traffic-policy shaper FQ-SHAPER default queue-type fair-queue
+   set traffic-policy shaper FQ-SHAPER default queue-type fq-codel
 
 As shown in the last command of the example above, the `queue-type`
 setting allows these combinations. You will be able to use it
 in many policies.
 
-
+.. note:: Some policies already include other embedded policies inside.
+   That is the case of Shaper_: each of its classes use fair-queue
+   unless you change it.
 
 .. _creating_a_traffic_policy:
 
@@ -361,8 +363,9 @@ are to be sent, they could get dropped when trying to get enqueued at
 the tail. This can happen if the queue has still not been able to
 release enough packets from its head.
 
-**Very likely you do not need this simple policy as you cannot get much
-from it. Sometimes it is used just to enable logging.**
+This is the policy that requieres the lowest resources for the same
+amount of traffic. But **very likely you do not need it as you cannot
+get much from it. Sometimes it is used just to enable logging.**
 
 .. cfgcmd:: set traffic-policy drop-tail <policy-name> queue-limit <number-of-packets>
 
@@ -378,9 +381,11 @@ Fair Queue
 | **Applies to:** Outbound traffic.
 
 Fair Queue is a work-conserving scheduler which schedules the
-transmission of packets based on flows, trying to ensure fairness so
-that each flow is able to send data in turn, preventing any single one
-from drowning out the rest.
+transmission of packets based on flows, that is, it balances traffic
+distributing it through different sub-queues in order to ensure
+fairness so that each flow is able to send data in turn, preventing any
+single one from drowning out the rest.
+
 
 .. cfgcmd:: set traffic-policy fair-queue <policy-name>
 
@@ -388,13 +393,14 @@ from drowning out the rest.
    It is based on the Stochastic Fairness Queueing and can be applied to
    outbound traffic.
 
-The algorithm enqueues packets to hash buckets based on source address,
-destination address and source port. Each of these buckets should
-represent a unique flow. Because multiple flows may get hashed to the
-same bucket, the hashing algorithm is perturbed at configurable
-intervals so that the unfairness lasts only for a short while.
-Perturbation may however cause some inadvertent packet reordering to
-occur. An advisable value could be 10 seconds.
+In order to separate traffic, Fair Queue uses a classifier based on
+source address, destination address and source port. The algorithm
+enqueues packets to hash buckets based on those tree parameters.
+Each of these buckets should represent a unique flow. Because multiple
+flows may get hashed to the same bucket, the hashing algorithm is
+perturbed at configurable intervals so that the unfairness lasts only
+for a short while. Perturbation may however cause some inadvertent
+packet reordering to occur. An advisable value could be 10 seconds.
 
 One of the uses of Fair Queue might be the mitigation of Denial of
 Service attacks.
@@ -534,7 +540,7 @@ Limiter
 | **Applies to:** Inbound traffic.
 
 Limiter is one of those policies that uses classes_ (Ingress qdisc is
-actually classless policy but filters do work in it).
+actually a classless policy but filters do work in it).
 
 The limiter performs basic ingress policing of traffic flows. Multiple
 classes of traffic can be defined and traffic limits can be applied to
@@ -598,7 +604,7 @@ how you want matching traffic to behave.
 
  
 
-Network emulator
+Network Emulator
 ----------------
 
 | **Queueing discipline:** netem (Network Emulator) + TBF (Token Bucket Filter).
@@ -622,14 +628,18 @@ under certain network conditions.
    
    Use this command to configure the burst size of the traffic in a
    Network Emulator policy. Define the name of the Network Emulator
-   policy and its traffic burst size. It will only take effect if you
-   have configured its bandwidth too.
+   policy and its traffic burst size (it will be configured through the
+   Token Bucket Filter qdisc). Default:15kb. It will only take effect if
+   you have configured its bandwidth too.
 
 .. cfgcmd:: set traffic-policy network-emulator <policy-name> network-delay <delay>
    
    Use this command to configure a Network Emulator policy defining its
    name and the fixed amount of time you want to add to all packet going
-   out of the interface. You can use secs, ms and us.
+   out of the interface. The latency will be added through the
+   Token Bucket Filter qdisc. It will only take effect if you have
+   configured its bandwidth too. You can use secs, ms and us. Default:
+   50ms.
 
 .. cfgcmd:: set traffic-policy network-emulator <policy-name> packet-corruption <percent>
    
@@ -658,7 +668,7 @@ under certain network conditions.
 
 
 
-Priority queue
+Priority Queue
 --------------
 
 | **Queueing discipline:** PRIO.
@@ -666,7 +676,8 @@ Priority queue
 
 
 The Priority Queue is a classful scheduling policy. It does not delay
-packets, it simply dequeues packets according to their priority.
+packets (Priority Queue is not a shaping policy), it simply dequeues
+packets according to their priority.
 
 .. note:: Priority Queue, as other non-shaping policies, is only useful
    if your outgoing interface is really full. If it is not, VyOS will
@@ -744,8 +755,8 @@ avoiding congestion. That is good for TCP connections as the gradual
 dropping of packets acts as a signal for the sender to decrease its
 transmission rate.
 
-In contrast to simple RED, VyOS' Random-Detect uses a Weighted Random
-Early Detect policy that prvides different virtual queues based on the
+In contrast to simple RED, VyOS' Random-Detect uses a Generalized Random
+Early Detect policy that provides different virtual queues based on the
 IP Precedence value so that some virtual queues can drop more packets
 than others. 
 
@@ -776,10 +787,18 @@ IP precedence as defined in :rfc:`791`:
  +------------+----------------------+
 
 
+Random-Detect could be useful for heavy traffic. One use of this
+algorithm might be to prevent a backbone overload. But only for TCP
+(because dropped packets could be retransmitted), not for UDP.
+
+
 .. cfgcmd:: set traffic-policy random-detect <policy-name> bandwidth <bandwidth>
 
    Use this command to configure a Random-Detect policy, set its name
-   and set the available bandwidth for this policy.
+   and set the available bandwidth for this policy. It is used for
+   calculating the average queue size after some idle time. It should be
+   set to the bandwidth of your interface. Random Detect is not a
+   shaping policy, this command will not shape.
 
 .. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> average-packet <bytes>
    
@@ -848,22 +867,27 @@ The default values for the minimum-threshold depend on IP precedence:
    length reaches this value.
 
 
-If the average queue size is lower than the :code:`min-threshold`, an
-arriving packet will be placed in the queue. In the case the average
-queue size is between :code:`min-threshold` and :code:`max-threshold`,
-then an arriving packet would be either dropped or placed in the queue,
-it will depend on the defined :code:`mark-probability`. If the current
-queue size is larger than :code:`queue-limit`, then packets will be
-dropped. The average queue size depends on its former average size and
-its current one. If :code:`max-threshold` is set but
-:code:`min-threshold` is not, then :code:`min-threshold` is scaled to
-50% of :code:`max-threshold`. In principle, values must be
+If the average queue size is lower than the **min-threshold**, an
+arriving packet will be placed in the queue.
+
+In the case the average queue size is between **min-threshold** and
+**max-threshold**, then an arriving packet would be either dropped or
+placed in the queue, it will depend on the defined **mark-probability**.
+
+If the current queue size is larger than **queue-limit**,
+then packets will be dropped. The average queue size depends on its
+former average size and its current one.
+
+If **max-threshold** is set but **min-threshold is not, then
+**min-threshold** is scaled to 50% of **max-threshold**.
+
+In principle, values must be
 :code:`min-threshold` < :code:`max-threshold` < :code:`queue-limit`.
 
-One use of this algorithm might be to prevent a backbone overload.
 
 
-Rate control
+
+Rate Control
 ------------
 
 | **Queueing discipline:** Tocken Bucket Filter.
@@ -908,8 +932,8 @@ you just simply want to slow traffic down.
 
 .. _DRR:
 
-Round robin (DRR)
------------------
+Round Robin
+-----------
 
 | **Queueing discipline:** Deficit Round Robin.
 | **Applies to:** Outbound traffic.
@@ -1098,12 +1122,17 @@ The case of ingress shaping
 | **Applies to:** Inbound traffic.
 
 For the ingress traffic of an interface, there is only one policy you
-can directly apply, a **Limiter** policy. This workaround lets you
-redirect every incoming traffic to an in-between virtual interface to
-which you will be able to apply there an outbound policy. That
-in-between virtual interface" is possible because of the configuration
-of an Intermediate Functional Block IFB_. That is how it is possible to
-do an "ingress shaping".
+can directly apply, a **Limiter** policy. You cannot apply a shaping
+policy directly to the ingress traffic of any interface because shaping
+only works for outbound traffic.
+
+This workaround lets you apply a shaping policy to the ingress traffic
+by first redirecting it to an in-between virtual interface
+(`Intermediate Functional Block`_). There, in that virtual interface,
+you will be able to apply any of the policies that work for outbound
+traffic, for instance, a shaping one.
+
+That is how it is possible to do the so-called "ingress shaping".
 
 
 .. code-block:: none
@@ -1138,12 +1167,18 @@ have several policies working at the same time:
   set interfaces ethernet eth2 traffic-policy out LAN-OUT
 
 
+Getting queueing information
+----------------------------
 
+.. opcmd:: show queueing <interface-type> <interface-name>
 
+   Use this command to see the queueing information for an interface.
+   You will be able to see a packet counter (Sent, Dropped, Overlimit
+   and Backlog) per policy and class configured.
 
 
 .. _that can give you a great deal of flexibility: https://blog.vyos.io/using-the-policy-route-and-packet-marking-for-custom-qos-matches
 .. _tc: https://en.wikipedia.org/wiki/Tc_(Linux)
 .. _tocken bucket: https://en.wikipedia.org/wiki/Token_bucket
 .. _HFSC: https://en.wikipedia.org/wiki/Hierarchical_fair-service_curve
-.. _IFB: https://www.linuxfoundation.org/collaborate/workgroups/networking/ifb
+.. _Intermediate Functional Block: https://www.linuxfoundation.org/collaborate/workgroups/networking/ifb
