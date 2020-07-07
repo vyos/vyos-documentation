@@ -47,7 +47,7 @@ Although mostly everything uses phython3, But to install this specific
 package, make sure that pip points to the python2 version of the package manager:
 
 ```bash
-python --version
+pip --version
 ```
 
 Then run:
