@@ -26,7 +26,7 @@ Required Debian Packages:
 Debian, requires some extra steps for 
 installing `sphinx`, `sphinx-autobuild` and `sphinx-rtd-theme` packages:
 
-First ensure that phython3 is the default:
+First ensure that phython2 & phython3 are installed and phython3 is the default:
 ```bash
 python --version
 ```
@@ -35,19 +35,35 @@ Alternatively, to make python3 the default, revise the following line to
 point to the relevant 3.x version of the binary on your system:
 
 ```bash
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3....
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 0
 ```
 
 Then follow these steps to install sphinx group of packages: 
 ```bash
 sudo apt-get install python3-sphinx
-sudo apt-get install python3-sphinx-rtd-theme
 ```
 
-To build the html, start a webeserver, and view the output:
-* Run `make livehtml` inside the `docs` folder
-* Browse to http://localhost:8000
+Although mostly everything uses phython3, But to install this specific 
+package, make sure that pip points to the python2 version of the package manager:
 
+```bash
+python --version
+```
+
+Then run:
+
+```bash
+sudo pip install sphinx-rtd-theme
+```
+
+
+Do the following to  build the html and start a webeserver:
+* Run `make livehtml` inside the `docs` folder
+
+Then, to view the live output:
+* Browse to http://localhost:8000
+Note: The changes you save to the sources are represented in the live HTML outout 
+automatically (and almost instantly) without the need to rebuild or refresh manually.
 
 ## Docker
 
