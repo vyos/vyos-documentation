@@ -66,9 +66,9 @@ The container can also be built directly from source:
 .. note:: The container is automatically downloaded from Dockerhub if it is not
    found on your local machine when the below command is executed.
 
-.. note:: We require one container per build branch, this means that the used
-   container in ``crux`` and ``current`` can and will differ once VyOS makes
-   the move towards Debian (10) Buster.
+.. note:: Since VyOS has switched to Debian (10) Buster in its ``current`` branch,
+   the that the used is different from the one used for ``crux`` branch. Hence you
+   will need one separate container for each branch
 
 .. _build_iso:
 
@@ -90,10 +90,21 @@ After cloning, change directory to the ``vyos-build`` directory and run:
 .. code-block:: none
 
   $ cd vyos-build
-  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build bash
+  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:crux bash # for the LTS version
+  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build bash # for the current version
+
+Note: The above command is used to select the container you want to run (for building the branch you are
+interested in). this selection  is performed by:
+image:
+
+* Using ``vyos/vyos-build:crux``  for VyOS 1.2 (crux) 
+* Using ``vyos/vyos-build`` for the latest image at the moment.
+
+Then 
+.. code-block:: none
   vyos_bld@d4220bb519a0:/vyos# ./configure --architecture amd64 \
                                --build-by "your@email.tld" \
-                               --build-type release --version 1.2.0
+                               --build-type release --version 1.2.5
   vyos_bld@d4220bb519a0:/vyos# sudo make iso
 
 When the build is successful, the resulting iso can be found inside the ``build`` 
@@ -103,13 +114,7 @@ directory.
    as docker does not expose all the filesystem feature required to the container.
    Building within a VirtualBox server on Mac or Windows is however possible.
 
-To select the container you want to run, you need to specify the branch you are
-interested in, this can be easily done by selecting the appropriate container
-image:
 
-* VyOS 1.2 (crux) use ``vyos/vyos-build:crux``
-* VyOS rolling release you should use ``vyos/vyos-build`` which will always
-  refer to the latest image.
 
 Customisation
 ^^^^^^^^^^^^^
