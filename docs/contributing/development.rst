@@ -69,6 +69,7 @@ Writing good commit messages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The format should be and is inspired by: https://git-scm.com/book/ch5-2.html
+It is also worth reading https://chris.beams.io/posts/git-commit/
 
 * A single, short, summary of the commit (recommended 50 characters or less,
   not exceeding 80 characters) containing a prefix of the changed component
