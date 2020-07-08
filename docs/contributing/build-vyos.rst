@@ -100,8 +100,10 @@ image:
 * Using ``vyos/vyos-build:crux``  for VyOS 1.2 (crux) 
 * Using ``vyos/vyos-build`` for the latest image at the moment.
 
-Then 
+Then run:
+
 .. code-block:: none
+
   vyos_bld@d4220bb519a0:/vyos# ./configure --architecture amd64 \
                                --build-by "your@email.tld" \
                                --build-type release --version 1.2.5
