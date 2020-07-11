@@ -1,11 +1,14 @@
-SNMP
-----
+.. _snmp:
 
-Simple Network Management Protocol (SNMP_) is an Internet Standard protocol
-for collecting and organizing information about managed devices on IP networks
-and for modifying that information to change device behavior. Devices that
-typically support SNMP include cable modems, routers, switches, servers,
-workstations, printers, and more.
+####
+SNMP
+####
+
+:abbr:`SNMP (Simple Network Management Protocol)` is an Internet Standard
+protocol for collecting and organizing information about managed devices on
+IP networks and for modifying that information to change device behavior.
+Devices that typically support SNMP include cable modems, routers, switches,
+servers, workstations, printers, and more.
 
 SNMP is widely used in network management for network monitoring. SNMP exposes
 management data in the form of variables on the managed systems organized in
@@ -23,7 +26,7 @@ management, including an application layer protocol, a database schema, and a
 set of data objects.
 
 Overview and basic concepts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===========================
 
 In typical uses of SNMP, one or more administrative computers called managers
 have the task of monitoring or managing a group of hosts or devices on a
@@ -63,15 +66,15 @@ network.
 
 .. note:: VyOS SNMP supports both IPv4 and IPv6.
 
-SNMP protocol versions
-^^^^^^^^^^^^^^^^^^^^^^
+SNMP Protocol Versions
+======================
 
 VyOS itself supports SNMPv2_ (version 2) and SNMPv3_ (version 3) where the
 later is recommended because of improved security (optional authentication and
 encryption).
 
 SNMPv2
-^^^^^^
+------
 
 SNMPv2 is the original and most commonly used version. For authorizing clients,
 SNMP uses the concept of communities. Communities may have authorization set
@@ -88,7 +91,7 @@ router. Note that SNMPv2 also supports no encryption and always sends data in
 plain text.
 
 Example
-*******
+^^^^^^^
 
 .. code-block:: none
 
@@ -116,7 +119,7 @@ Example
 
 
 SNMPv3
-^^^^^^
+------
 
 SNMPv3 (version 3 of the SNMP protocol) introduced a whole slew of new security
 related features that have been missing from the previous versions. Security
@@ -137,60 +140,64 @@ The securityapproach in v3 targets:
 * Authentication – to verify that the message is from a valid source.
 
 Example
-*******
+^^^^^^^
+
+* Let SNMP daemon listen only on IP address 192.0.2.1
+* Configure new SNMP user named "vyos" with password "vyos12345678"
+* New user will use SHA/AES for authentication and privacy
 
 .. code-block:: none
 
-  set service snmp v3 engineid '0x0aa0d6c6f450'
-  set service snmp v3 group defaultgroup mode 'ro'
-  set service snmp v3 group defaultgroup seclevel 'priv'
-  set service snmp v3 group defaultgroup view 'defaultview'
-  set service snmp v3 view defaultview oid '1'
+  set service snmp listen-address 192.0.2.1
+  set service snmp location 'VyOS Datacenter'
+  set service snmp v3 engineid '000000000000000000000002'
+  set service snmp v3 group default mode 'ro'
+  set service snmp v3 group default view 'default'
+  set service snmp v3 user vyos auth plaintext-password 'vyos12345678'
+  set service snmp v3 user vyos auth type 'sha'
+  set service snmp v3 user vyos group 'default'
+  set service snmp v3 user vyos privacy plaintext-password 'vyos12345678'
+  set service snmp v3 user vyos privacy type 'aes'
+  set service snmp v3 view default oid 1
 
-  set service snmp v3 user testUser1 auth plaintext-key testUserKey1
-  set service snmp v3 user testUser1 auth type 'md5'
-  set service snmp v3 user testUser1 engineid '0x0aa0d6c6f450'
-  set service snmp v3 user testUser1 group 'defaultgroup'
-  set service snmp v3 user testUser1 mode 'ro'
-  set service snmp v3 user testUser1 privacy type aes
-  set service snmp v3 user testUser1 privacy plaintext-key testUserKey1
-
-After commit the resulting configuration will look like:
-
-.. note:: SNMPv3 keys won't we stored in plaintext. On ``commit`` the keys
-   will be encrypted and the encrypted key is based on the engineid!
+After commit the plaintext passwords will be hashed and stored in your
+configuration. The resulting LCI config will look like:
 
 .. code-block:: none
 
   vyos@vyos# show service snmp
+   listen-address 172.18.254.201 {
+   }
+   location "Wuerzburg, Dr.-Georg-Fuchs-Str. 8"
    v3 {
-       engineid 0x0aa0d6c6f450
-       group defaultgroup {
+       engineid 000000000000000000000002
+       group default {
            mode ro
-           seclevel priv
-           view defaultview
+           view default
        }
-       user testUser1 {
+       user vyos {
            auth {
-               encrypted-key 0x3b68d4162c2c817b8e9dfb6f08583e5d
-               type md5
+               encrypted-password 4e52fe55fd011c9c51ae2c65f4b78ca93dcafdfe
+               type sha
            }
-           engineid 0x0aa0d6c6f450
-           group defaultgroup
-           mode ro
+           group default
            privacy {
-               encrypted-key 0x3b68d4162c2c817b8e9dfb6f08583e5d
+               encrypted-password 4e52fe55fd011c9c51ae2c65f4b78ca93dcafdfe
                type aes
            }
        }
-       view defaultview {
+       view default {
            oid 1 {
            }
        }
    }
 
+You can test the SNMPv3 functionality from any linux based system, just run the
+following command: ``snmpwalk -v 3 -u vyos -a SHA -A vyos12345678 -x AES
+-X vyos12345678 -l authPriv 192.0.2.1 .1``
+
 VyOS MIBs
-^^^^^^^^^
+=========
 
 All SNMP MIBs are located in each image of VyOS here: ``/usr/share/snmp/mibs/``
 
@@ -200,9 +207,8 @@ you are be able to download the files with the a activate ssh service like this
 
   scp -r vyos@your_router:/usr/share/snmp/mibs /your_folder/mibs
 
-
 SNMP Extensions
-^^^^^^^^^^^^^^^
+===============
 
 To extend SNMP agent functionality, custom scripts can be executed every time
 the agent is being called. This can be achieved by using
@@ -230,7 +236,7 @@ contain the output of the extension.
   NET-SNMP-EXTEND-MIB::nsExtendResult."my-extension" = INTEGER: 0
 
 SolarWinds
-^^^^^^^^^^
+==========
 
 If you happen to use SolarWinds Orion as NMS you can also use the Device
 Templates Management. A template for VyOS can be easily imported.
@@ -255,7 +261,6 @@ following content:
   </Configuration-Management>
 
 .. _MIB: https://en.wikipedia.org/wiki/Management_information_base
-.. _SNMP: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol
 .. _SNMPv2: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_2
 .. _SNMPv3: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_3
 
