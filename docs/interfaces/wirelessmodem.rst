@@ -114,3 +114,16 @@ Operation
 .. opcmd:: show interfaces wirelessmodem <interface> log
 
    Displays log information for a WWAN interface.
+
+Supported Modules
+#################
+
+The following hardware modules have been tested successfully in an
+:ref:`pc-engines-apu4` board:
+
+* Sierra Wireless AirPrime MC7304 miniPCIe card (LTE)
+* Sierra Wireless AirPrime MC7430 miniPCIe card (LTE)
+* Sierra Wireless AirPrime MC7455 miniPCIe card (LTE)
+* Sierra Wireless AirPrime MC7710 miniPCIe card (LTE)
+* Huawei ME909u-521 miniPCIe card (LTE)
+

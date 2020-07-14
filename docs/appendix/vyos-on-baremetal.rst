@@ -106,11 +106,25 @@ dual front cover.
 Extension Modules
 ^^^^^^^^^^^^^^^^^
 
-* Compex WLE900VX mini-PCIe WiFi module, only supported in mPCIe slot 1.
-  Refer to :ref:`wireless-interface` for additional information.
+WiFi
+""""
 
-* Sierra Wireless MC7710 LZE miniPCIe card is supported by VyOS 1.3 (equuleus).
-  Refer to :ref:`wwan-interface` for additional information.
+Refer to :ref:`wireless-interface` for additional information, below listed modules
+have been tested successfully on this Hardware platform:
+
+* Compex WLE900VX mini-PCIe WiFi module, only supported in mPCIe slot 1.
+
+WWAN
+""""
+
+Refer to :ref:`wwan-interface` for additional information, below listed modules
+have been tested successfully on this Hardware platform using VyOS 1.3 (equuleus):
+
+* Sierra Wireless AirPrime MC7304 miniPCIe card (LTE)
+* Sierra Wireless AirPrime MC7430 miniPCIe card (LTE)
+* Sierra Wireless AirPrime MC7455 miniPCIe card (LTE)
+* Sierra Wireless AirPrime MC7710 miniPCIe card (LTE)
+* Huawei ME909u-521 miniPCIe card (LTE)
 
 VyOS 1.2 (crux)
 ---------------
