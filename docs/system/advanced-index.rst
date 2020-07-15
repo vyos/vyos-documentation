@@ -10,6 +10,7 @@ Advanced System Tweaks
    eventhandler
    flow-accounting
    ntp
+   options
    proxy
    serial-console
    syslog
