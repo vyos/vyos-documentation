@@ -69,7 +69,7 @@ For additional details you can refer to https://phabricator.vyos.net/T2490.
                 |__ Port 4: Dev 7, If 0, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
 
 
-.. opcmd:: show system usb
+.. opcmd:: show system usb serial
 
   Retrieve a list and description of all connected USB serial devices. The device name
   displayed, e.g. `usb0b2.4p1.0` can be directly used when accessing the serial console
