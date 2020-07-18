@@ -1,0 +1,10 @@
+:orphan:
+
+Page Not Found
+==============
+
+Sorry, We could not find a page.
+Try using the search box or go to the release homepage:
+
+  * `1.2.x (crux) <https://docs.vyos.io/en/crux/>`_
+  * `rolling release (equuleus) <https://docs.vyos.io/en/latest/>`_
