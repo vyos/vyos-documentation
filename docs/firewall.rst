@@ -690,7 +690,7 @@ Show Firewall log
    Show the logs of a specific Rule-Set
 
 .. note::
-   At the moment it not possible to look at the hole Firewall log with vyos
+   At the moment it not possible to look at the whole firewall log with VyOS
    operational commands. All logs will save to ``/var/logs/messages``.
    For example: ``grep '10.10.0.10' /var/log/messages``
 
