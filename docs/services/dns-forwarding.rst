@@ -11,7 +11,7 @@ VyOS provides DNS infrastructure for small networks. It is designed to be
 lightweight and have a small footprint, suitable for resource constrained
 routers and firewalls, for this we utilize PowerDNS recursor.
 
-VyOS DNS forwarder does not require an upstream DNS server. It can serve as a
+The VyOS DNS forwarder does not require an upstream DNS server. It can serve as a
 full recursive DNS server - but it can also forward queries to configurable
 upstream DNS servers. By not configuring any upstream DNS servers you also
 avoid to be tracked by the provider of your upstream DNS server.
@@ -103,23 +103,23 @@ avoid to be tracked by the provider of your upstream DNS server.
 
 .. cfgcmd:: set service dns forwarding listen-address
 
-   Local IPv4 or IPv6 addresses to bind to - waiting on this address for
+   The local IPv4 or IPv6 addresses to bind the DNS forwarder to. The forwarder will listen on this address for
    incoming connections.
 
 Example
 =======
 
-Router with two interfaces eth0 (WAN link) and eth1 (LAN) does want to make
-use of DNS split-horizon for example.com.
+A VyOS router with two interfaces - eth0 (WAN) and eth1 (LAN) - is required to implement a split-horizon DNS configuration for example.com.
 
-* DNS request for example.com need to get forwarded to IPv4 address 192.0.2.254
-  and IPv6 address 2001:db8:cafe::1
-* All other DNS requests are forwarded to DNS server listening on 192.0.2.1,
+In this scenario:
+
+* All DNS requests for example.com must be forwarded to a DNS server at 192.0.2.254
+  and 2001:db8:cafe::1
+* All other DNS requests will be forwarded to a different set of DNS servers at 192.0.2.1,
   192.0.2.2, 2001:db8::1:ffff and 2001:db8::2:ffff
-* DNS server is listening on the LAN interface addresses only, 192.168.1.254
+* The VyOS DNS forwarder will only listen for requests on the eth1 (LAN) interface addresses - 192.168.1.254
   for IPv4 and 2001:db8::ffff for IPv6
-* Only clients from the LAN segment (192.168.1.0/24) are allowed to use this
-  server
+* The VyOS DNS forwarder will only accept lookup requests from the LAN subnets - 192.168.1.0/24 and 2001:db8::/64
 
 .. code-block:: none
 
@@ -139,9 +139,9 @@ Operation
 
 .. opcmd:: reset dns forwarding <all | domain>
 
-   Reset local DNS forwarding cache database. You can reset the cache for all
+   Resets the local DNS forwarding cache database. You can reset the cache for all
    entries or only for entries to a specific domain.
 
 .. opcmd:: restart dns forwarding
 
-   Restart DNS recursor process which also invalidates the cache.
+   Restarts the DNS recursor process. This also invalidates the local DNS forwarding cache.
