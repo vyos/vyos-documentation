@@ -44,6 +44,7 @@ extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.todo',
               'sphinx.ext.ifconfig',
               'sphinx.ext.graphviz',
+              'notfound.extension',
               'vyos'
 ]
 
