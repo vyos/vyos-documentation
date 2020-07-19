@@ -3,9 +3,13 @@
 Building VyOS
 =============
 
-This will guide you though the process of building a VyOS ISO using Docker_.
-This process has been tested on clean installs of Debian Jessie, Stretch, and
-Buster.
+There are different ways you can build VyOS.
+
+Building using a :ref:`Docker<build docker>` container, although not the only way, is the
+easiest way as all dependencies are managed for you. It also allows you to
+build ARM images on a x86 host.
+
+However, you can also set up your own build machine and :ref:`build from source<build source>`.
 
 .. note:: Starting with VyOS 1.2 the release model of VyOS has changed.
    VyOS is now **free as in speech, but not as in beer**. This means
@@ -16,21 +20,30 @@ Buster.
    The source code remains public and an ISO can be built
    using the process outlined here.
 
+This will guide you though the process of building a VyOS ISO using Docker_.
+This process has been tested on clean installs of Debian Jessie, Stretch, and
+Buster.
+
+.. _build docker:
+
+Docker
+------
+
 Installing Docker_ and prerequisites:
 
 .. code-block:: none
 
-  $ apt-get update
-  $ apt-get install -y apt-transport-https ca-certificates curl \
+  $ sudo apt-get update
+  $ sudo apt-get install -y apt-transport-https ca-certificates curl \
         gnupg2 software-properties-common
   $ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-  $ add-apt-repository "deb [arch=amd64] \
+  $ sudo add-apt-repository "deb [arch=amd64] \
         https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-  $ apt-get update
-  $ apt-get install -y docker-ce
+  $ sudo apt-get update
+  $ sudo apt-get install -y docker-ce
 
 To be able to use Docker_ without ``sudo``, the current non-root user can be added to the
-``docker`` group by calling: ``usermod -aG docker yourusername``
+``docker`` group by calling: ``sudo usermod -aG docker yourusername``
 
 .. note:: Doing so grants privileges equivalent to the ``root`` user! It is recommended to remove the non-root user from the ``docker`` group after building the VyOS ISO. See also https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user
 
@@ -40,86 +53,114 @@ To be able to use Docker_ without ``sudo``, the current non-root user can be add
    are not implemented and the drive is always mounted as "nodev"
 
 Build Docker Container
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 The container can built by hand or by fetching the pre-built one from DockerHub.
-Using the pre-built VyOS DockerHub organisation (https://hub.docker.com/u/vyos)
-will ensure that the container is always up-to-date. A rebuild is triggered once
-the container changes (please note this will take 2-3 hours after pushing to
-the vyos-build repository).
+Using the pre-built containers from the `VyOS DockerHub organisation`_ will
+ensure that the container is always up-to-date. A rebuild is triggered once the
+container changes (please note this will take 2-3 hours after pushing to the
+vyos-build repository).
 
-To download the container from DockerHub run:
+.. note: If you are using the pre-built container, it will be automatically
+   downloaded from DockerHub if it is not found on your local machine when
+   you build the ISO.
+
+To manually download the container from DockerHub, run:
 
 .. code-block:: none
 
-  $ docker pull vyos/vyos-build:crux     # for the LTS version
-  $ docker pull vyos/vyos-build:current  # for the current version
+  $ docker pull vyos/vyos-build:crux     # For VyOS 1.2
+  $ docker pull vyos/vyos-build:current  # For rolling release
 
 The container can also be built directly from source:
 
 .. code-block:: none
 
-  $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build   # For VyOS 1.2
+  $ git clone -b master --single-branch https://github.com/vyos/vyos-build # For rolling release
   $ cd vyos-build
-  $ docker build -t vyos/vyos-build docker
+  $ docker build -t vyos/vyos-build:crux docker # For VyOS 1.2
+  $ docker build -t vyos/vyos-build docker      # For rollign release
 
-.. note:: The container is automatically downloaded from Dockerhub if it is not
-   found on your local machine when the below command is executed.
-
-.. note:: Since VyOS has switched to Debian (10) Buster in its ``current`` branch,
+.. note:: Since VyOS has switched to Debian (10) Buster in its ``master`` branch,
    the that the used is different from the one used for ``crux`` branch. Hence you
    will need one separate container for each branch
 
 .. _build_iso:
 
 Build ISO
----------
+^^^^^^^^^
 
-After the container is generated either manually or fetched from DockerHub,
-a fresh build of the VyOS ISO can begin. 
-
-If you pulled the image from DockerHub, you need to clone the repository to
-your local machine:
+If you have not build your own Docker image, you need to clone the repository to your local machine:
 
 .. code-block:: none
 
-  $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build   # For VyOS 1.2
+  $ git clone -b master --single-branch https://github.com/vyos/vyos-build # For rolling release
 
-After cloning, change directory to the ``vyos-build`` directory and run:
+Now a fresh build of the VyOS ISO can begin. Change directory to the ``vyos-build`` directory and run:
 
 .. code-block:: none
 
   $ cd vyos-build
-  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:crux bash # for the LTS version
-  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build bash # for the current version
-
-Note: The above command is used to select the container you want to run (for building the branch you are
-interested in). this selection  is performed by:
-image:
-
-* Using ``vyos/vyos-build:crux``  for VyOS 1.2 (crux) 
-* Using ``vyos/vyos-build`` for the latest image at the moment.
-
-Then run:
-
-.. code-block:: none
-
+  $ docker run --rm -it --privileged -v $(pwd)/vyos-build:/vyos -w /vyos vyos/vyos-build:crux bash # For VyOS 1.2
+  $ docker run --rm -it --privileged -v $(pwd)/vyos-build:/vyos -w /vyos vyos/vyos-build bash      # Fpr rp;;omg re;ease
   vyos_bld@d4220bb519a0:/vyos# ./configure --architecture amd64 \
                                --build-by "your@email.tld" \
                                --build-type release --version 1.2.5
   vyos_bld@d4220bb519a0:/vyos# sudo make iso
 
 When the build is successful, the resulting iso can be found inside the ``build`` 
-directory.
+directory as ``live-image-[architecture].hybrid.iso``.
 
 .. note:: Attempting to use the docker build image on MacOS or Windows will fail
    as docker does not expose all the filesystem feature required to the container.
    Building within a VirtualBox server on Mac or Windows is however possible.
+   
+Good luck!
 
+.. note: Make sure to choose the matching container for the version of VyOS
+   that is being built, ``vyos/vyos-build:crux`` for VyOS 1.2 (crux) and 
+   ``vyos/vyos-build`` for rolling release.
+   
+.. _build source:
 
+From source
+-----------
 
-Customisation
-^^^^^^^^^^^^^
+To build from source, you will need:
+
+- Debian Buster for VyOS 1.2
+- Debian Stretch for the rolling releases
+
+To start, clone the repository to your local machine:
+
+.. code-block:: none
+
+  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build # For VyOS 1.2
+  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build # For rolling release
+
+For the packages required, you can refer to the ``docker/Dockerfile`` file
+in the repository_. The ``./configure`` script will also warn you if any
+dependencies are missing.
+
+Once you have the required dependencies, you may configure the build by
+running ``./configure`` with your options. For details, refer to
+:ref:`Customizing the build<customize>`.
+
+Once you have configured your build, build the ISO by running:
+
+.. code-block:: none
+
+  $ sudo make iso
+
+The successfully built ISO should now be in the ``build/`` directory as
+``live-image-[architecture].hybrid.iso``.
+
+.. _customize:
+
+Customizing the build
+---------------------
 
 This ISO can be customized with the following list of configure options.
 The full and current list can be generated with ``./configure --help``:
@@ -149,16 +190,8 @@ The full and current list can be generated with ``./configure --help``:
   --custom-apt-key CUSTOM_APT_KEY
                         Custom APT key file
 
-The successfully built ISO should now be in the `build/` directory.
-
-Good luck!
-
-.. note:: The build process does not differentiate when building a ``crux`` ISO
-   or ``rolling`` image. Make sure to choose the matching container for the
-   version of VyOS that is being built.
-
-Development
-^^^^^^^^^^^
+Customized packages
+^^^^^^^^^^^^^^^^^^^
 
 If you are brave enough to build yourself an ISO image containing any modified
 package from our GitHub organisation - this is the place to be.
@@ -169,7 +202,7 @@ package inside the `packages` folder within `vyos-build`. You may need to create
 the folder in advance.
 
 Troubleshooting
-^^^^^^^^^^^^^^^
+---------------
 
 Debian APT is not very verbose when it comes to errors. If your ISO build breaks
 for whatever reason and you supect its a problem with APT dependencies or
@@ -200,13 +233,13 @@ Build packages
 --------------
 
 VyOS requires a bunch of packages which are VyOS specific and thus can not be
-found in any Debian Upstream mirrror. Those packages can be found at the VyOS
-GitHub project (https://github.com/vyos) and there is a nice helper script
-available to build and list those individual packages.
+found in any Debian Upstream mirrror. Those packages can be found at the
+`VyOS GitHub project`_ and there is a nice helper script available to build and
+list those individual packages.
 
-`scripts/build-packages` provides an easy interface to automate the process
+``scripts/build-packages`` provides an easy interface to automate the process
 of building all VyOS related packages that are not part of the upstream Debian
-version. Execute it in the root of the `vyos-build` directory to start
+version. Execute it in the root of the ``vyos-build`` directory to start
 compilation.
 
 .. code-block:: none
@@ -229,65 +262,95 @@ compilation.
                           Do not build/report packages when calling --list
 
 Git repositoriers are automatically fetched and build on demand. If you want to
-work offline you can fetch all source code first with the `-f` option.
+work offline you can fetch all source code first with the ``-f`` option.
 
 The easiest way to compile is with the above mentioned Docker
 container, it includes all dependencies for compiling supported packages.
 
 .. code-block:: none
 
+  $ cd vyos-build
   $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
                --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
                vyos-build scripts/build-packages
 
-.. note:: `--sysctl net.ipv6.conf.lo.disable_ipv6=0` is required to build the
-   `vyos-strongswan` package
+.. note:: ``--sysctl net.ipv6.conf.lo.disable_ipv6=0`` is required to build the
+   ``vyos-strongswan`` package
 
 .. note::  Prior to executing this script you need to create or build the Docker
    container and checkout all packages you want to compile.
+   
+Alternatively, on your build server run:
+
+.. code-block:: none
+
+  $ sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=0
+  $ cd vyos-build
+  $ chmod +x scripts/build-packages
+  $ ./scripts/build-packages
 
 Building single package(s)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To build a single package use the same script as above but specify packages with
-`-b`:
+``-b``.
 
-Executed from the root of `vyos-build`
+If building using Docker:
 
 .. code-block:: none
 
+  $ cd vyos-build
   $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
-               --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
+               --sysctl net.ipv6.conf.lo.disable_ipv6=0 \ # Only needed for `vyos-strongswan`
                vyos-build scripts/build-packages -b <package>
 
-.. note:: `--sysctl net.ipv6.conf.lo.disable_ipv6=0` is only needed when
-   building `vyos-strongswan` and can be ignored on other packages.
+.. note:: ``vyos-strongswan`` will only compile on a Linux system, running on
+   macOS or Windows might result in a unit test deadlock (it never exits).
+   
+If building on build server:
 
-.. note:: `vyos-strongswan` will only compile on a Linux system, running on
-   macOS or Windows might result in a unittest deadlock (it never exits).
+.. code-block:: none
 
-Building single packages from your own repositories
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  $ sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=0 # Only needed for `vyos-strongswan`
+  $ cd vyos-build
+  $ chmod +x scripts/build-packages
+  $ ./scripts/build-packages -b <package>
+
+Building single package(s) from your own repositories
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can also build packages that are not from the default git repositories,
-for example from your own forks of the official vyos repositories.
+for example from your own forks of the official VyOS repositories.
 
 First create a directory "packages" at the top level of the vyos-build
 repository and clone your package into it (creating a subdirectory with the
 package contents). Then checkout the correct branch or commit you want to build
 before building the package.
 
-Example using `git@github.com:myname/vyos-1x.git` repository to build vyos-1x:
+Example using ``git@github.com:myname/vyos-1x.git`` repository to build vyos-1x:
 
 .. code-block:: none
 
+  $ cd vyos-build
   $ mkdir packages
   $ cd packages
   $ git clone git@github.com:myname/vyos-1x.git
   $ cd ..
+
+If building using Docker:
+
+.. code-block:: none
+
   $ docker run --rm -it -v $(pwd):/vyos -w /vyos \
-               --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
+               --sysctl net.ipv6.conf.lo.disable_ipv6=0 \ # Only needed for `vyos-strongswan`
                vyos-build scripts/build-packages -b vyos-1x
+               
+If building on build server:
+
+.. code-block:: none
+
+  $ sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=0 # Only needed for `vyos-strongswan`
+  $ ./scripts/build-packages -b vyos-1x
 
 .. note:: You need to git pull manually after you commit to the remote and
    before rebuilding, the local repository won't be updated automatically.
@@ -464,3 +527,9 @@ vyos-replace package replaces the upstream dhclient-script with a modified
 version that is aware of the VyOS config.
 
 .. _Docker: https://www.docker.com
+
+.. _VyOS DockerHub organisation: https://hub.docker.com/u/vyos
+
+.. _repository: https://github.com/vyos/vyos-build
+
+.. _VyOS GitHub project: https://github.com/vyos
