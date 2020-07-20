@@ -77,7 +77,7 @@ The container can also be built directly from source:
 .. code-block:: none
 
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build   # For VyOS 1.2
-  $ git clone -b master --single-branch https://github.com/vyos/vyos-build # For rolling release
+  $ git clone -b current --single-branch https://github.com/vyos/vyos-build # For rolling release
   $ cd vyos-build
   $ docker build -t vyos/vyos-build:crux docker # For VyOS 1.2
   $ docker build -t vyos/vyos-build docker      # For rollign release
@@ -96,7 +96,7 @@ If you have not build your own Docker image, you need to clone the repository to
 .. code-block:: none
 
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build   # For VyOS 1.2
-  $ git clone -b master --single-branch https://github.com/vyos/vyos-build # For rolling release
+  $ git clone -b current --single-branch https://github.com/vyos/vyos-build # For rolling release
 
 Now a fresh build of the VyOS ISO can begin. Change directory to the ``vyos-build`` directory and run:
 
@@ -104,7 +104,7 @@ Now a fresh build of the VyOS ISO can begin. Change directory to the ``vyos-buil
 
   $ cd vyos-build
   $ docker run --rm -it --privileged -v $(pwd)/vyos-build:/vyos -w /vyos vyos/vyos-build:crux bash # For VyOS 1.2
-  $ docker run --rm -it --privileged -v $(pwd)/vyos-build:/vyos -w /vyos vyos/vyos-build bash      # Fpr rp;;omg re;ease
+  $ docker run --rm -it --privileged -v $(pwd)/vyos-build:/vyos -w /vyos vyos/vyos-build bash      # For rolling release
   vyos_bld@d4220bb519a0:/vyos# ./configure --architecture amd64 \
                                --build-by "your@email.tld" \
                                --build-type release --version 1.2.5
@@ -138,7 +138,7 @@ To start, clone the repository to your local machine:
 .. code-block:: none
 
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build # For VyOS 1.2
-  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build # For rolling release
+  $ git clone -b current --single-branch https://github.com/vyos/vyos-build # For rolling release
 
 For the packages required, you can refer to the ``docker/Dockerfile`` file
 in the repository_. The ``./configure`` script will also warn you if any
