@@ -108,9 +108,9 @@ should be replaced with the information from your `Routed /64` tunnel):
   set interfaces ethernet eth1 address '2001:470:xxxx:xxxx::1/64'
   set service router-advert interface eth1 name-server '2001:4860:4860::8888'
   set service router-advert interface eth1 name-server '2001:4860:4860::8844'
-  set service router-advert interface eth1 prefix 2001:470:xxxx:xxxx::/64 autonomous-flag
-  set service router-advert interface eth1 prefix 2001:470:xxxx:xxxx::/64 on-link-flag
-  set service router-advert interface eth1 prefix 2001:470:xxxx:xxxx::/64 valid-lifetime '2592000'
+  set service router-advert interface eth1 prefix 2001:470:xxxx:xxxx::/64 
+
+Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default, 'valid-lifetime' and 'preferred-lifetime' are set to default values of 30 days and 4 hours respectively.
 
 This accomplishes a few things:
 
@@ -143,23 +143,19 @@ So, when your LAN is eth1, your DMZ is eth2, your cameras live on eth3, etc:
   set interfaces ethernet eth1 address '2001:470:xxxx:1::1/64'
   set service router-advert interface eth1 name-server '2001:4860:4860::8888'
   set service router-advert interface eth1 name-server '2001:4860:4860::8844'
-  set service router-advert interface eth1 prefix 2001:470:xxxx:1::/64 autonomous-flag 'true'
-  set service router-advert interface eth1 prefix 2001:470:xxxx:1::/64 on-link-flag 'true'
-  set service router-advert interface eth1 prefix 2001:470:xxxx:1::/64 valid-lifetime '2592000'
-
+  set service router-advert interface eth1 prefix 2001:470:xxxx:1::/64
+  
   set interfaces ethernet eth2 address '2001:470:xxxx:2::1/64'
   set service router-advert interface eth2 name-server '2001:4860:4860::8888'
   set service router-advert interface eth2 name-server '2001:4860:4860::8844'
-  set service router-advert interface eth2 prefix 2001:470:xxxx:2::/64 autonomous-flag 'true'
-  set service router-advert interface eth2 prefix 2001:470:xxxx:2::/64 on-link-flag 'true'
-  set service router-advert interface eth2 prefix 2001:470:xxxx:2::/64 valid-lifetime '2592000'
+  set service router-advert interface eth2 prefix 2001:470:xxxx:2::/64 
 
   set interfaces ethernet eth3 address '2001:470:xxxx:3::1/64'
   set service router-advert interface eth3 name-server '2001:4860:4860::8888'
   set service router-advert interface eth3 name-server '2001:4860:4860::8844'
-  set service router-advert interface eth3 prefix 2001:470:xxxx:3::/64 autonomous-flag 'true'
-  set service router-advert interface eth3 prefix 2001:470:xxxx:3::/64 on-link-flag 'true'
-  set service router-advert interface eth3 prefix 2001:470:xxxx:3::/64 valid-lifetime '2592000'
+  set service router-advert interface eth3 prefix 2001:470:xxxx:3::/64
+
+Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default, 'valid-lifetime' and 'preferred-lifetime' are set to default values of 30 days and 4 hours respectively.
 
 Firewall
 ========
