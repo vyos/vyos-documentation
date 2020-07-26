@@ -85,6 +85,10 @@ through the WireGuard interface `wg01`. Multiple IPs or networks can be
 defined and routed, the last check is allowed-ips which either prevents
 or allows the traffic.
 
+.. note:: You can not assign the same allowed-ips statement to multiple
+   WireGuard peers. This a a design decission. For more information please
+   check the `WireGuard mailing list`_.
+
 
 To use a named key on an interface, the option private-key needs to be
 set.
@@ -257,3 +261,5 @@ Operational commands
 
   vyos@wg01# wireguard keypair default
 
+
+.. _`WireGuard mailing list`: https://lists.zx2c4.com/pipermail/wireguard/2018-December/003704.html
