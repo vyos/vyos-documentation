@@ -33,7 +33,7 @@ distributions.
 
 For additional details you can refer to https://phabricator.vyos.net/T2490.
 
-.. opcmd:: show system usb
+.. opcmd:: show hardware usb
 
   Retrieve a tree like representation of all connected USB devices.
 
@@ -42,7 +42,7 @@ For additional details you can refer to https://phabricator.vyos.net/T2490.
 
   .. code-block:: none
 
-    vyos@vyos:~$ show system usb
+    vyos@vyos:~$ show hardware usb
     /:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=ehci-pci/2p, 480M
         |__ Port 1: Dev 2, If 0, Class=Hub, Driver=hub/4p, 480M
             |__ Port 3: Dev 4, If 0, Class=Vendor Specific Class, Driver=qcserial, 480M
@@ -69,7 +69,7 @@ For additional details you can refer to https://phabricator.vyos.net/T2490.
                 |__ Port 4: Dev 7, If 0, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
 
 
-.. opcmd:: show system usb serial
+.. opcmd:: show hardware usb serial
 
   Retrieve a list and description of all connected USB serial devices. The device name
   displayed, e.g. `usb0b2.4p1.0` can be directly used when accessing the serial console
@@ -77,7 +77,7 @@ For additional details you can refer to https://phabricator.vyos.net/T2490.
 
   .. code-block:: none
 
-    vyos@vyos$ show system usb serial
+    vyos@vyos$ show hardware usb serial
     Device           Model               Vendor
     ------           ------              ------
     usb0b1.3p1.0     MC7710              Sierra Wireless, Inc.
