@@ -108,11 +108,16 @@ for the new image to boot using the current configuration.
 
 .. note:: Only LTS releases are PGP-signed.
 
-.. opcmd:: add system image <url | path>
+.. opcmd:: add system image <url | path> [vrf name] [username user [password pass]]
 
    Use this command to install a new system image. You can reach the
    image from the web (http://, https://) or from your local system,
    e.g.  /tmp/vyos-1.2.3-amd64.iso.
+
+   The `add system image` command also supports installing new versions
+   of VyOS through an optional given VRF. Also if URL in question requires
+   authentication, you can specify an optional username and password via
+   the commandline which will be passed as "Basic-Auth" to the server.
 
 If there is not enough **free disk space available**, the installation
 will be canceled. To delete images use the :opcmd:`delete system image`
