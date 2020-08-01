@@ -127,9 +127,10 @@ VyOS configuration is associated to each image, and **each image has a
 unique copy of its configuration**. This is different than a traditional
 network router where the configuration is shared across all images.
 
-.. note:: If you have any personal file, like some scripts you created,
-   and you don't want them to be deleted during the upgrade, make sure
-   those files are into the ``/configure`` directory.
+.. note:: If you have any personal files, like some scripts you created,
+   and you don't want them to be lost during the upgrade, make sure
+   those files are stored in ``/config`` as this directory is always copied
+   to newer installed images.
 
 You can access files from a previous installation and copy them to your
 current image if they were located in the ``/config`` directory. This
