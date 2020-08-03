@@ -99,7 +99,7 @@ The container can also be built directly from source:
    you will require individual container for `current` and `crux` builds.
 
 Tips and Tricks
-^^^^^^^^^^^^^^^
+---------------
 
 You can create yourself some handy Bash aliases to always launch the latest -
 per release train (`current` or `crux`) - container. Add the following to your
@@ -258,7 +258,7 @@ The full and current list can be generated with ``./configure --help``:
 .. _build_custom_packages:
 
 Packages
---------
+========
 
 If you are brave enough to build yourself an ISO image containing any modified
 package from our GitHub organisation - this is the place to be.
@@ -272,7 +272,7 @@ building a regular (customized or not) ISO image. Simply place your modified
 process will then pickup your custom package and integrate it into your ISO.
 
 Troubleshooting
----------------
+===============
 
 Debian APT is not very verbose when it comes to errors. If your ISO build breaks
 for whatever reason and you supect its a problem with APT dependencies or
@@ -297,6 +297,27 @@ during ISO build.
    """
 
 
+Virtualization Platforms
+========================
+
+QEMU
+----
+
+Run following command after building the ISO image.
+
+.. code-block:: none
+
+  $ make qemu
+
+VMware
+------
+
+Run following command after building the QEMU image.
+
+.. code-block:: none
+
+  $ make vmware
+
 .. _build_packages:
 
 ********
@@ -306,7 +327,7 @@ Packages
 VyOS itself comes with a bunch of packages which are specific to our system and
 thus can not be found in any Debian mirrror. Those packages can be found at the
 `VyOS GitHub project`_ in their source format can can easily be compiled into
-a custom Debian (*.deb) package.
+a custom Debian (`*.deb`) package.
 
 The easiest way to compile your package is with the above mentioned
 :ref:`build_docker` container, it includes all required dependencies for
@@ -316,6 +337,7 @@ Assume we want to build the vyos-1x package on our own and modify it to our
 needs. We first need to clone the repository from GitHub.
 
 .. code-block:: none
+
   $ git clone https://github.com/vyos/vyos-1x
 
 Build
@@ -324,6 +346,7 @@ Build
 Launch Docker container and build package
 
 .. code-block:: none
+
   # For VyOS 1.3 (equuleus, current)
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build bash
 
@@ -346,7 +369,7 @@ Install
 =======
 
 To take your newly created package on a test drive you can simply SCP it to a
-running VyOS instance and install the new *.deb package over the current
+running VyOS instance and install the new `*.deb` package over the current
 running one.
 
 Just install using the following commands:
@@ -360,7 +383,7 @@ Just install using the following commands:
   Setting up vyos-1x (1.3dev0-1847-gb6dcb0a8) ...
   Processing triggers for rsyslog (8.1901.0-1) ...
 
-You can also place the generated *.deb into your ISO build environment to
+You can also place the generated `*.deb` into your ISO build environment to
 include it in a custom iso, see :ref:`build_custom_packages` for more
 information.
 
