@@ -72,6 +72,7 @@ VyOS User Guide
    :maxdepth: 2
 
    contributing/build-vyos
+   contributing/upstream-packages
    contributing/issues-features
    contributing/development
    contributing/documentation
