@@ -183,10 +183,10 @@ Server
 ======
 
 Multi-client server is the most popular OpenVPN mode on routers. It always uses
-x.509 authentication and therefore requires a PKI setup. This guide assumes
-`you have already setup a PKI`_ and have a CA certificate, a server certificate and
-key, a certificate revocation list, a Diffie-Hellman key exchange parameters
-file. You do not need client certificates and keys for the server setup.
+x.509 authentication and therefore requires a PKI setup. Refer this section
+**Generate X.509 Certificate and Keys** to generate a CA certificate,
+a server certificate and key, a certificate revocation list, a Diffie-Hellman
+key exchange parameters file. You do not need client certificates and keys for the server setup.
 
 In this example we will use the most complicated case: a setup where each
 client is a router that has its own subnet (think HQ and branch offices), since
@@ -254,7 +254,88 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
 
   set protocols static interface-route 10.23.0.0/20 next-hop-interface vtun10
 
-.. _`you have already setup a PKI`: https://support.vyos.io/en/kb/articles/using-easy-rsa-to-generate-x-509-certificates-and-keys-2
+Generate X.509 Certificate and Keys
+***********************************
+
+OpenVPN ships with a set of scripts called Easy-RSA that can generate the
+appropriate files needed for an OpenVPN setup using X.509 certificates.
+Easy-RSA comes installed by default on VyOS routers.
+
+Copy the Easy-RSA scripts to a new directory to modify the values.
+
+.. code-block:: none
+
+  cp -r /usr/share/easy-rsa/ /config/my-easy-rsa-config
+  cd /config/my-easy-rsa-config
+
+To ensure the consistent use of values when generating the PKI, set default
+values to be used by the PKI generating scripts. Rename the vars.example filename
+to vars
+
+.. code-block:: none
+
+  mv vars.example vars
+
+Following is the instance of the file after editing. You may also change other values in
+the file at your discretion/need, though for most cases the defaults should be just fine.
+(do not leave any of these parameters blank)
+
+.. code-block:: none
+
+  set_var EASYRSA_DN      "org"
+  set_var EASYRSA_REQ_COUNTRY     "US"
+  set_var EASYRSA_REQ_PROVINCE    "California"
+  set_var EASYRSA_REQ_CITY        "San Francisco"
+  set_var EASYRSA_REQ_ORG "Copyleft Certificate Co"
+  set_var EASYRSA_REQ_EMAIL       "me@example.net"
+  set_var EASYRSA_REQ_OU          "My Organizational Unit"
+  set_var EASYRSA_KEY_SIZE        2048
+
+
+init-pki option will create a new pki directory or will delete any previously generated
+certificates stored in that folder. The term 'central' is used to refer server and
+'branch' for client
+
+.. note:: Remember the “CA Key Passphrase” prompted in build-ca command,
+   as it will be asked in signing the server/client certificate.
+
+.. code-block:: none
+
+  vyos@vyos:/config/my-easy-rsa-config$./easyrsa init-pki
+  vyos@vyos:/config/my-easy-rsa-config$./easyrsa build-ca
+  vyos@vyos:/config/my-easy-rsa-config$./easyrsa gen-req central nopass
+  vyos@vyos:/config/my-easy-rsa-config$./easyrsa sign-req server central
+  vyos@vyos:/config/my-easy-rsa-config$./easyrsa gen-dh
+  vyos@vyos:/config/my-easy-rsa-config$./easyrsa build-client-full branch1 nopass
+
+To generate a certificate revocation list for any client, execute these commands:
+
+.. code-block:: none
+
+  vyos@vyos:/config/my-easy-rsa-config$./easyrsa revoke client1
+  vyos@vyos:/config/my-easy-rsa-config$ ./easyrsa gen-crl
+
+Copy the files to /config/auth/ovpn/ to use in OpenVPN tunnel creation
+
+.. code-block:: none
+
+  vyos@vyos:/config/my-easy-rsa-config$ sudo mkdir /config/auth/ovpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/ca.crt /config/auth/ovpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/dh.pem  /config/auth/ovpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/private/central.key /config/auth/ovpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/issued/central.crt  /config/auth/ovpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/crl.pem /config/auth/ovpn
+
+Additionally, each client needs a copy of ca.crt and its own client key and cert files.
+The files are plaintext so they may be copied either manually,
+or through a remote file transfer tool like scp. Whichever method you use,
+the files need to end up in the proper location on each router.
+For example, Branch 1's router might have the following files:
+
+.. code-block:: none
+
+  vyos@branch1-rtr:$ ls /config/auth/ovpn
+  ca.crt branch1.crt branch1.key
 
 Client Authentication
 ---------------------
