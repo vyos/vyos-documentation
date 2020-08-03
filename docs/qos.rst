@@ -1086,7 +1086,7 @@ parameters.
 Example
 ^^^^^^^
 
-A simple example of Shaper using priorities. It includes examples of matching on addresses and protocols.
+A simple example of Shaper using priorities.
 
 
 .. code-block:: none
@@ -1111,17 +1111,7 @@ A simple example of Shaper using priorities. It includes examples of matching on
    set traffic-policy shaper MY-HTB default ceiling '100%'
    set traffic-policy shaper MY-HTB default priority '7'
    set traffic-policy shaper MY-HTB default queue-type 'fair-queue'
-   set traffic-policy shaper MY-HTB class 2 match ack ip tcp ack
-   set traffic-policy shaper MY-HTB class 2 match dns ip destination port '53'
-   set traffic-policy shaper MY-HTB class 2 match icmp ip protocol 'icmp'
-   set traffic-policy shaper MY-HTB class 2 match ssh ip destination port '22'
-   set traffic-policy shaper MY-HTB class 2 match syn ip tcp syn
-   set traffic-policy shaper MY-HTB class 2 priority '5'
-   set traffic-policy shaper MY-HTB class 2 queue-limit '16'
-   set traffic-policy shaper MY-HTB class 2 queue-type 'fair-queue'
-   set traffic-policy shaper MY-HTB class 5 bandwidth '10%'
-   set traffic-policy shaper MY-HTB class 5 burst '15k'
-   set traffic-policy shaper MY-HTB class 5 ceiling '100%'   
+   
 
 
 .. _ingress-shaping:
@@ -1163,7 +1153,7 @@ Once a traffic-policy is created, you can apply it to an interface:
 
 .. code-block:: none
 
-  set interfaces ethernet eth0 traffic-policy out WAN-OUT
+  set interfaces etherhet eth0 traffic-policy out WAN-OUT
 
 You can only apply one policy per interface and direction, but you can
 have several policies working at the same time:
@@ -1171,8 +1161,8 @@ have several policies working at the same time:
 .. code-block:: none
 
   set interfaces ethernet eth0 traffic-policy in WAN-IN
-  set interfaces ethernet eth0 traffic-policy out WAN-OUT
-  set interfaces ethernet eth1 traffic-policy out WAN-OUT
+  set interfaces etherhet eth0 traffic-policy out WAN-OUT
+  set interfaces etherhet eth1 traffic-policy out WAN-OUT
   set interfaces ethernet eth2 traffic-policy out LAN-IN
   set interfaces ethernet eth2 traffic-policy out LAN-OUT
 
