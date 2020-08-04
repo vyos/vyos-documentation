@@ -39,8 +39,8 @@ NetFlow is usually enabled on a per-interface basis to limit load on the router
 components involved in NetFlow, or to limit the amount of NetFlow records
 exported.
 
-Configururation
-===============
+Configuration
+=============
 
 In order for flow accounting information to be collected and displayed for an
 interface, the interface must be configured for flow accounting.
