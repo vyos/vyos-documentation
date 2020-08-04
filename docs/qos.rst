@@ -1153,7 +1153,7 @@ Once a traffic-policy is created, you can apply it to an interface:
 
 .. code-block:: none
 
-  set interfaces etherhet eth0 traffic-policy out WAN-OUT
+  set interfaces ethernet eth0 traffic-policy out WAN-OUT
 
 You can only apply one policy per interface and direction, but you can
 have several policies working at the same time:
@@ -1161,8 +1161,8 @@ have several policies working at the same time:
 .. code-block:: none
 
   set interfaces ethernet eth0 traffic-policy in WAN-IN
-  set interfaces etherhet eth0 traffic-policy out WAN-OUT
-  set interfaces etherhet eth1 traffic-policy out WAN-OUT
+  set interfaces ethernet eth0 traffic-policy out WAN-OUT
+  set interfaces ethernet eth1 traffic-policy out WAN-OUT
   set interfaces ethernet eth2 traffic-policy out LAN-IN
   set interfaces ethernet eth2 traffic-policy out LAN-OUT
 
