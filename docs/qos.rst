@@ -1114,6 +1114,38 @@ A simple example of Shaper using priorities.
    
 
 
+Applying a traffic policy
+=========================
+
+Once a traffic-policy is created, you can apply it to an interface:
+
+.. code-block:: none
+
+  set interfaces etherhet eth0 traffic-policy out WAN-OUT
+
+You can only apply one policy per interface and direction, but you can
+have several policies working at the same time:
+
+.. code-block:: none
+
+  set interfaces ethernet eth0 traffic-policy in WAN-IN
+  set interfaces etherhet eth0 traffic-policy out WAN-OUT
+  set interfaces etherhet eth1 traffic-policy out WAN-OUT
+  set interfaces ethernet eth2 traffic-policy out LAN-IN
+  set interfaces ethernet eth2 traffic-policy out LAN-OUT
+
+
+Getting queueing information
+----------------------------
+
+.. opcmd:: show queueing <interface-type> <interface-name>
+
+   Use this command to see the queueing information for an interface.
+   You will be able to see a packet counter (Sent, Dropped, Overlimit
+   and Backlog) per policy and class configured.
+
+
+
 .. _ingress-shaping:
 
 The case of ingress shaping
@@ -1145,36 +1177,6 @@ That is how it is possible to do the so-called "ingress shaping".
    set interfaces ethernet eth0 redirect ifb0
 
 
-
-Applying a traffic policy
-=========================
-
-Once a traffic-policy is created, you can apply it to an interface:
-
-.. code-block:: none
-
-  set interfaces etherhet eth0 traffic-policy out WAN-OUT
-
-You can only apply one policy per interface and direction, but you can
-have several policies working at the same time:
-
-.. code-block:: none
-
-  set interfaces ethernet eth0 traffic-policy in WAN-IN
-  set interfaces etherhet eth0 traffic-policy out WAN-OUT
-  set interfaces etherhet eth1 traffic-policy out WAN-OUT
-  set interfaces ethernet eth2 traffic-policy out LAN-IN
-  set interfaces ethernet eth2 traffic-policy out LAN-OUT
-
-
-Getting queueing information
-----------------------------
-
-.. opcmd:: show queueing <interface-type> <interface-name>
-
-   Use this command to see the queueing information for an interface.
-   You will be able to see a packet counter (Sent, Dropped, Overlimit
-   and Backlog) per policy and class configured.
 
 
 .. _that can give you a great deal of flexibility: https://blog.vyos.io/using-the-policy-route-and-packet-marking-for-custom-qos-matches
