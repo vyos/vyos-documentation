@@ -286,6 +286,72 @@ to clear counters on firewall rulesets or single rules
   vyos@vyos:~$ clear firewall ipv6-name <ipv6 ruleset name> rule <rule#> counters
 
 
+
+IPv6 topology discovery
+-----------------------
+
+Topology discovery tool supporting IPv6 in vyos1.3
+
+Router discovery
+^^^^^^^^^^^^^^^^
+
+Vyos 1.3 supports the following commands to complete IPv6 Router Discovery:
+
+.. code-block:: none
+
+  vyos@vyos:~$ force ipv6-rd  interface <interface> address <ip>
+
+Example:
+
+.. code-block:: none
+
+  vyos@vyos:~$ force ipv6-rd  interface <interface> address <ip>
+  Soliciting ff02::2 (ff02::2) on eth0...
+
+  Hop limit                 :           60 (      0x3c)
+  Stateful address conf.    :           No
+  Stateful other conf.      :           No
+  Mobile home agent         :           No
+  Router preference         :         high
+  Neighbor discovery proxy  :           No
+  Router lifetime           :         1800 (0x00000708) seconds
+  Reachable time            :  unspecified (0x00000000)
+  Retransmit time           :  unspecified (0x00000000)
+   Prefix                   : 240e:fe:8ca7:ea01::/64
+    On-link                 :          Yes
+    Autonomous address conf.:          Yes
+    Valid time              :      2592000 (0x00278d00) seconds
+    Pref. time              :        14400 (0x00003840) seconds
+   Prefix                   : fc00:470:f1cd:101::/64
+    On-link                 :          Yes
+    Autonomous address conf.:          Yes
+    Valid time              :      2592000 (0x00278d00) seconds
+    Pref. time              :        14400 (0x00003840) seconds
+   Recursive DNS server     : fc00:470:f1cd::ff00
+    DNS server lifetime     :          600 (0x00000258) seconds
+   Source link-layer address: 00:98:2B:F8:3F:11
+   from fe80::298:2bff:fef8:3f11
+
+Neighbor Discovery
+^^^^^^^^^^^^^^^^^^
+
+Vyos1.3 supports IPv6 host topology detection. The following commands can be used to detect the occupation of IPv6 address:
+
+.. code-block:: none
+
+  vyos@vyos:~$ force ipv6-nd interface <interface> address <ip>
+
+Example:
+
+.. code-block:: none
+
+  vyos@vyos:~$ force ipv6-nd interface eth0 address fc00:470:f1cd:101::1
+  Soliciting fc00:470:f1cd:101::1 (fc00:470:f1cd:101::1) on eth0...
+  Target link-layer address: 00:98:2B:F8:3F:11
+   from fc00:470:f1cd:101::1
+
+
+
 Basic System Information
 ------------------------
 
