@@ -74,7 +74,7 @@ one.
   set interfaces wireguard wg01 address '10.1.0.1/24'
   set interfaces wireguard wg01 description 'VPN-to-wg02'
   set interfaces wireguard wg01 peer to-wg02 allowed-ips '10.2.0.0/24'
-  set interfaces wireguard wg01 peer to-wg02 address '192.168.0.142:12345'
+  set interfaces wireguard wg01 peer to-wg02 address '192.168.0.142'
   set interfaces wireguard wg01 peer to-wg02 port '12345'
   set interfaces wireguard wg01 peer to-wg02 pubkey 'XMrlPykaxhdAAiSjhtPlvi30NVkvLQliQuKP7AI7CyI='
   set interfaces wireguard wg01 port '12345'
