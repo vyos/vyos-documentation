@@ -1083,6 +1083,12 @@ parameters.
 
 
 
+.. note:: If you configure a class for **VoIP traffic**, don't give it any
+   *ceiling*, otherwise new VoIP calls could start when there is available
+   bandwidth and get suddenly dropped when other classes start using
+   their bandwidth.
+
+
 Example
 ^^^^^^^
 
