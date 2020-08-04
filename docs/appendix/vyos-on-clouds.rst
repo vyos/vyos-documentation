@@ -98,6 +98,13 @@ Deploy VyOS on Azure.
     ssh -i ~/.ssh/vyos_azure vyos@203.0.113.3
     vyos@vyos-doc-r1:~$
 
+Add interface
+-------------
+
+If instance was deployed with one **eth0** ``WAN`` interface and want to add new one.
+To add new interface an example **eth1** ``LAN`` you need shutdown the instance. Attach the interface in the Azure portal and then start the instance.
+
+.. NOTE:: Azure does not allow you attach interface when the instance in the **Running** state.
 
 References
 ----------
