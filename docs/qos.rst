@@ -1098,14 +1098,12 @@ A simple example of Shaper using priorities.
 .. code-block:: none
 
    set traffic-policy shaper MY-HTB bandwidth '50mbit'
-   set traffic-policy shaper MY-HTB class 10 bandwidth '10%'
-   set traffic-policy shaper MY-HTB class 10 ceiling '15%'
-   set traffic-policy shaper MY-HTB class 10 match ADDRESS10 ip source address '192.168.10.0/24'
-   set traffic-policy shaper MY-HTB class 10 priority '0'
-   set traffic-policy shaper MY-HTB class 10 queue-type 'fair-queue'
+   set traffic-policy shaper MY-HTB class 10 bandwidth '20%'
+   set traffic-policy shaper MY-HTB class 10 match DSCP ip dscp 'EF'
+   set traffic-policy shaper MY-HTB class 10 queue-type 'fq-codel'
    set traffic-policy shaper MY-HTB class 20 bandwidth '10%'
    set traffic-policy shaper MY-HTB class 20 ceiling '50%'
-   set traffic-policy shaper MY-HTB class 20 match ADDRESS20 ip source address '192.168.20.0/24'
+   set traffic-policy shaper MY-HTB class 20 match PORT666 ip destination port '666'
    set traffic-policy shaper MY-HTB class 20 priority '3'
    set traffic-policy shaper MY-HTB class 20 queue-type 'fair-queue'
    set traffic-policy shaper MY-HTB class 30 bandwidth '10%'
@@ -1117,7 +1115,6 @@ A simple example of Shaper using priorities.
    set traffic-policy shaper MY-HTB default ceiling '100%'
    set traffic-policy shaper MY-HTB default priority '7'
    set traffic-policy shaper MY-HTB default queue-type 'fair-queue'
-   
 
 
 Applying a traffic policy
@@ -1129,17 +1126,21 @@ Once a traffic-policy is created, you can apply it to an interface:
 
   set interfaces etherhet eth0 traffic-policy out WAN-OUT
 
-You can only apply one policy per interface and direction, but you can
-have several policies working at the same time:
+You can only apply one policy per interface and direction, but you could
+reuse a policy on different interfaces and directions:
 
 .. code-block:: none
 
   set interfaces ethernet eth0 traffic-policy in WAN-IN
   set interfaces etherhet eth0 traffic-policy out WAN-OUT
-  set interfaces etherhet eth1 traffic-policy out WAN-OUT
-  set interfaces ethernet eth2 traffic-policy out LAN-IN
+  set interfaces etherhet eth1 traffic-policy in LAN-IN
+  set interfaces etherhet eth1 traffic-policy out LAN-OUT
+  set interfaces ethernet eth2 traffic-policy in LAN-IN
   set interfaces ethernet eth2 traffic-policy out LAN-OUT
-
+  set interfaces etherhet eth3 traffic-policy in TWO-WAY-POLICY
+  set interfaces etherhet eth3 traffic-policy out TWO-WAY-POLICY
+  set interfaces etherhet eth4 traffic-policy in TWO-WAY-POLICY
+  set interfaces etherhet eth4 traffic-policy out TWO-WAY-POLICY
 
 Getting queueing information
 ----------------------------
