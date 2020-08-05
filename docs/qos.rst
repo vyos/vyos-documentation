@@ -1029,7 +1029,7 @@ the higher the priority.
 
    Use this command to configure a Shaper policy, set its name, define
    a class and set the size of the `tocken bucket`_ in bytes, which will
-   be available to be sent at maximum speed (default: 15Kb).
+   be available to be sent at ceiling speed (default: 15Kb).
 
 .. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> ceiling <bandwidth>
 
