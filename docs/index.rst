@@ -83,6 +83,7 @@ VyOS User Guide
    contributing/upstream-packages
    contributing/issues-features
    contributing/development
+   contributing/debugging
    contributing/documentation
 
 
