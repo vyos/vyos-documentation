@@ -18,7 +18,7 @@ VyOS User Guide
 
 
 .. toctree::
-   :caption: Basics
+   :caption: Basic Configuration
    :name: basics
    :maxdepth: 2
 
@@ -29,7 +29,7 @@ VyOS User Guide
 
 
 .. toctree::
-   :caption: Advanced
+   :caption: Advanced Configuration
    :name: advanced
    :maxdepth: 2
 
@@ -45,7 +45,16 @@ VyOS User Guide
    high-availability
    vpn/index
    load-balancing
+   command-list-configuration
+
+
+.. toctree::
+   :caption: System Operation
+   :name: system-operation
+   :maxdepth: 2
+
    troubleshooting
+   command-list-operation
 
 
 .. toctree::
@@ -55,7 +64,6 @@ VyOS User Guide
 
    appendix/release-notes
    appendix/examples/index
-   appendix/cmd-index
    appendix/vyos-on-vmware
    appendix/vyos-on-baremetal
    appendix/vyos-on-clouds
@@ -97,4 +105,3 @@ Permission is granted to copy and distribute translations of this manual into
 another language, under the above conditions for modified versions, except that
 this permission notice may be stated in a translation approved by the VyOS
 maintainers.
-
