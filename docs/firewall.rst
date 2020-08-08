@@ -26,7 +26,7 @@ or zone based firewall policy.
 Global settings
 ---------------
 
-Some firewall settings are global and have a affect on the hole system.
+Some firewall settings are global and have a affect on the whole system.
 
 .. cfgcmd:: set firewall all-ping [enable | disable]
 
