@@ -299,13 +299,13 @@ Vyos 1.3 supports the following commands to complete IPv6 Router Discovery:
 
 .. code-block:: none
 
-  vyos@vyos:~$ force ipv6-rd  interface <interface> address <ip>
+  vyos@vyos:~$ force ipv6-rd  interface <interface> [address <ip>]
 
 Example:
 
 .. code-block:: none
 
-  vyos@vyos:~$ force ipv6-rd  interface <interface> address <ip>
+  vyos@vyos:~$ force ipv6-rd  interface eth0
   Soliciting ff02::2 (ff02::2) on eth0...
 
   Hop limit                 :           60 (      0x3c)
