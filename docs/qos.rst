@@ -1029,7 +1029,7 @@ the higher the priority.
 
    Use this command to configure a Shaper policy, set its name, define
    a class and set the size of the `tocken bucket`_ in bytes, which will
-   be available to be sent at maximum speed (default: 15Kb).
+   be available to be sent at ceiling speed (default: 15Kb).
 
 .. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> ceiling <bandwidth>
 
@@ -1083,6 +1083,12 @@ parameters.
 
 
 
+.. note:: If you configure a class for **VoIP traffic**, don't give it any
+   *ceiling*, otherwise new VoIP calls could start when there is available
+   bandwidth and get suddenly dropped when other classes start using
+   their bandwidth.
+
+
 Example
 ^^^^^^^
 
@@ -1092,14 +1098,12 @@ A simple example of Shaper using priorities.
 .. code-block:: none
 
    set traffic-policy shaper MY-HTB bandwidth '50mbit'
-   set traffic-policy shaper MY-HTB class 10 bandwidth '10%'
-   set traffic-policy shaper MY-HTB class 10 ceiling '15%'
-   set traffic-policy shaper MY-HTB class 10 match ADDRESS10 ip source address '192.168.10.0/24'
-   set traffic-policy shaper MY-HTB class 10 priority '0'
-   set traffic-policy shaper MY-HTB class 10 queue-type 'fair-queue'
+   set traffic-policy shaper MY-HTB class 10 bandwidth '20%'
+   set traffic-policy shaper MY-HTB class 10 match DSCP ip dscp 'EF'
+   set traffic-policy shaper MY-HTB class 10 queue-type 'fq-codel'
    set traffic-policy shaper MY-HTB class 20 bandwidth '10%'
    set traffic-policy shaper MY-HTB class 20 ceiling '50%'
-   set traffic-policy shaper MY-HTB class 20 match ADDRESS20 ip source address '192.168.20.0/24'
+   set traffic-policy shaper MY-HTB class 20 match PORT666 ip destination port '666'
    set traffic-policy shaper MY-HTB class 20 priority '3'
    set traffic-policy shaper MY-HTB class 20 queue-type 'fair-queue'
    set traffic-policy shaper MY-HTB class 30 bandwidth '10%'
@@ -1111,7 +1115,42 @@ A simple example of Shaper using priorities.
    set traffic-policy shaper MY-HTB default ceiling '100%'
    set traffic-policy shaper MY-HTB default priority '7'
    set traffic-policy shaper MY-HTB default queue-type 'fair-queue'
-   
+
+
+Applying a traffic policy
+=========================
+
+Once a traffic-policy is created, you can apply it to an interface:
+
+.. code-block:: none
+
+  set interfaces etherhet eth0 traffic-policy out WAN-OUT
+
+You can only apply one policy per interface and direction, but you could
+reuse a policy on different interfaces and directions:
+
+.. code-block:: none
+
+  set interfaces ethernet eth0 traffic-policy in WAN-IN
+  set interfaces etherhet eth0 traffic-policy out WAN-OUT
+  set interfaces etherhet eth1 traffic-policy in LAN-IN
+  set interfaces etherhet eth1 traffic-policy out LAN-OUT
+  set interfaces ethernet eth2 traffic-policy in LAN-IN
+  set interfaces ethernet eth2 traffic-policy out LAN-OUT
+  set interfaces etherhet eth3 traffic-policy in TWO-WAY-POLICY
+  set interfaces etherhet eth3 traffic-policy out TWO-WAY-POLICY
+  set interfaces etherhet eth4 traffic-policy in TWO-WAY-POLICY
+  set interfaces etherhet eth4 traffic-policy out TWO-WAY-POLICY
+
+Getting queueing information
+----------------------------
+
+.. opcmd:: show queueing <interface-type> <interface-name>
+
+   Use this command to see the queueing information for an interface.
+   You will be able to see a packet counter (Sent, Dropped, Overlimit
+   and Backlog) per policy and class configured.
+
 
 
 .. _ingress-shaping:
@@ -1145,36 +1184,6 @@ That is how it is possible to do the so-called "ingress shaping".
    set interfaces ethernet eth0 redirect ifb0
 
 
-
-Applying a traffic policy
-=========================
-
-Once a traffic-policy is created, you can apply it to an interface:
-
-.. code-block:: none
-
-  set interfaces etherhet eth0 traffic-policy out WAN-OUT
-
-You can only apply one policy per interface and direction, but you can
-have several policies working at the same time:
-
-.. code-block:: none
-
-  set interfaces ethernet eth0 traffic-policy in WAN-IN
-  set interfaces etherhet eth0 traffic-policy out WAN-OUT
-  set interfaces etherhet eth1 traffic-policy out WAN-OUT
-  set interfaces ethernet eth2 traffic-policy out LAN-IN
-  set interfaces ethernet eth2 traffic-policy out LAN-OUT
-
-
-Getting queueing information
-----------------------------
-
-.. opcmd:: show queueing <interface-type> <interface-name>
-
-   Use this command to see the queueing information for an interface.
-   You will be able to see a packet counter (Sent, Dropped, Overlimit
-   and Backlog) per policy and class configured.
 
 
 .. _that can give you a great deal of flexibility: https://blog.vyos.io/using-the-policy-route-and-packet-marking-for-custom-qos-matches
