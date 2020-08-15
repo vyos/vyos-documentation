@@ -15,3 +15,4 @@ Advanced System Tweaks
    serial-console
    syslog
    task-scheduler
+   system-display
