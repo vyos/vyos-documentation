@@ -181,7 +181,7 @@ VyOS features several monitoring tools.
     lldp          Monitor Link Layer Discovery Protocol (LLDP) daemon
     log           Monitor last lines of messages file
     nat           Monitor network address translation (NAT)
-    ndp           Monitors the NDP information received by the router through the device
+    ndp           Monitor the NDP information received by the router through the device
     openvpn       Monitor OpenVPN
     protocol      Monitor routing protocols
     snmp          Monitor Simple Network Management Protocol (SNMP) daemon
