@@ -53,6 +53,7 @@ VyOS User Guide
    :name: system-operation
    :maxdepth: 2
 
+   information
    troubleshooting
    command-list-operation
 
