@@ -30,7 +30,7 @@ Ethernet interfaces:
   means that you can not try to ping a Pseudo-Ethernet interface from the host
   system on which it is defined. The ping will be lost.
 * Loopbacks occurs at the IP level the same way as for other interfaces,
-  ethernet packets are not forwarded between Pseudo-Ethernet interfaces.
+  ethernet frames are not forwarded between Pseudo-Ethernet interfaces.
 * Pseudo-Ethernet interfaces may not work in environments which expect a
   :abbr:`NIC (Network Interface Card)` to only have a single address. This
   applies to:
