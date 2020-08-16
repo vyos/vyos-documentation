@@ -97,64 +97,6 @@ Advanced Connectivity Tests
    invoke the built in help system. To quit, just press `q` and you'll be
    returned to the VyOS command prompt.
 
-IPv6 Topology Discovery
-=======================
-
-IPv6 uses different techniques to discover its Neighbors/topology.
-
-Router Discovery
-----------------
-
-.. opcmd:: force ipv6-rd interface <interface> [address <ipv6-address>]
-
-   Discover routers via eth0.
-
-   Example:
-
-   .. code-block:: none
-
-     vyos@vyos:~$ force ipv6-rd interface eth0
-     Soliciting ff02::2 (ff02::2) on eth0...
-
-     Hop limit                 :           60 (      0x3c)
-     Stateful address conf.    :           No
-     Stateful other conf.      :           No
-     Mobile home agent         :           No
-     Router preference         :         high
-     Neighbor discovery proxy  :           No
-     Router lifetime           :         1800 (0x00000708) seconds
-     Reachable time            :  unspecified (0x00000000)
-     Retransmit time           :  unspecified (0x00000000)
-      Prefix                   : 240e:fe:8ca7:ea01::/64
-       On-link                 :          Yes
-       Autonomous address conf.:          Yes
-       Valid time              :      2592000 (0x00278d00) seconds
-       Pref. time              :        14400 (0x00003840) seconds
-      Prefix                   : fc00:470:f1cd:101::/64
-       On-link                 :          Yes
-       Autonomous address conf.:          Yes
-       Valid time              :      2592000 (0x00278d00) seconds
-       Pref. time              :        14400 (0x00003840) seconds
-      Recursive DNS server     : fc00:470:f1cd::ff00
-       DNS server lifetime     :          600 (0x00000258) seconds
-      Source link-layer address: 00:98:2B:F8:3F:11
-      from fe80::298:2bff:fef8:3f11
-
-Neighbor Discovery
-------------------
-
-.. opcmd:: force ipv6-nd interface <interface> address <ipv6-address>
-
-
-   Example:
-
-   .. code-block:: none
-
-     vyos@vyos:~$ force ipv6-nd interface eth0 address fc00:470:f1cd:101::1
-
-     Soliciting fc00:470:f1cd:101::1 (fc00:470:f1cd:101::1) on eth0...
-     Target link-layer address: 00:98:2B:F8:3F:11 from fc00:470:f1cd:101::1
-
 **********
 Monitoring
 **********
