@@ -8,13 +8,14 @@ Routing
    :maxdepth: 1
 
    arp
+   bfd
    bgp
-   rpki
+   mpls
+   mss-clamp
+   multicast
    ospf
    pbr
    rip
-   static
-   bfd
-   mss-clamp
    routing-policy
-   multicast
+   rpki
+   static
