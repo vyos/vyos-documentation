@@ -19,12 +19,3 @@ Routing
    routing-policy
    rpki
    static
-   
-   
-  
-   
-   
-   
-   
-
-   
