@@ -53,7 +53,7 @@ choose from the following ciphers: ``3des-cbc``, ``aes128-cbc``, ``aes192-cbc``,
 Disable password based authentication. Login via SSH keys only. This hardens
 security!
 
-.. cfgcmd: set service ssh disable-host-validation
+.. cfgcmd:: set service ssh disable-host-validation
 
 Disable the host validation through reverse DNS lookups - can speedup login
 time when reverse lookup is not possible.
@@ -74,5 +74,33 @@ Multiple algorithms can be provided. Supported MACs: ``hmac-md5``,
 .. note:: VyOS 1.1 supported login as user ``root``. This has been removed due
    to tighter security in VyOS 1.2.
 
-.. seealso:: SSH :ref:`ssh_key_based_authentication`
+.. cfgcmd:: set service ssh access-control <allow | deny> <group | user> <name>
 
+Add access-control directive to allow or deny users and groups. Directives are
+processed in the following order: ``deny-users``, ``allow-users``,
+``deny-groups`` and ``allow-groups``.
+
+.. cfgcmd:: set service ssh client-keepalive-interval <interval>
+
+Specify timeout interval for keepalive message in seconds.
+
+.. cfgcmd:: set service ssh key-exchange <kex>
+
+Specify allowed :abbr:`KEX (Key Exchange)` algorithms.
+Supported algorithms: ``diffie-hellman-group1-sha1``,
+``diffie-hellman-group14-sha1``, ``diffie-hellman-group14-sha256``,
+``diffie-hellman-group16-sha512``, ``diffie-hellman-group18-sha512``,
+``diffie-hellman-group-exchange-sha1``,
+``diffie-hellman-group-exchange-sha256``, ``ecdh-sha2-nistp256
+ecdh-sha2-nistp384``, ``ecdh-sha2-nistp521``, ``curve25519-sha256`` and
+``curve25519-sha256@libssh.org``.
+
+.. cfgcmd:: set service ssh loglevel <quiet | fatal | error | info | verbose>
+
+Set the ``sshd`` log level. The default is ``info``.
+
+.. cmfcmd:: set service ssh vrf <name>
+
+Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
+
+.. seealso:: SSH :ref:`ssh_key_based_authentication`
