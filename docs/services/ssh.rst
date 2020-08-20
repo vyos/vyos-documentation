@@ -77,7 +77,7 @@ Multiple algorithms can be provided. Supported MACs: ``hmac-md5``,
 .. cfgcmd:: set service ssh access-control <allow | deny> <group | user> <name>
 
 Add access-control directive to allow or deny users and groups. Directives are
-processed in the following order: ``deny-users``, ``allow-users``,
+processed in the following order of precedence: ``deny-users``, ``allow-users``,
 ``deny-groups`` and ``allow-groups``.
 
 .. cfgcmd:: set service ssh client-keepalive-interval <interval>
@@ -91,8 +91,8 @@ Supported algorithms: ``diffie-hellman-group1-sha1``,
 ``diffie-hellman-group14-sha1``, ``diffie-hellman-group14-sha256``,
 ``diffie-hellman-group16-sha512``, ``diffie-hellman-group18-sha512``,
 ``diffie-hellman-group-exchange-sha1``,
-``diffie-hellman-group-exchange-sha256``, ``ecdh-sha2-nistp256
-ecdh-sha2-nistp384``, ``ecdh-sha2-nistp521``, ``curve25519-sha256`` and
+``diffie-hellman-group-exchange-sha256``, ``ecdh-sha2-nistp256``,
+``ecdh-sha2-nistp384``, ``ecdh-sha2-nistp521``, ``curve25519-sha256`` and
 ``curve25519-sha256@libssh.org``.
 
 .. cfgcmd:: set service ssh loglevel <quiet | fatal | error | info | verbose>
