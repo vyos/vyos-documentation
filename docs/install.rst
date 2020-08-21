@@ -4,10 +4,16 @@
 Installation
 ############
 
-Requirements
-============
+VyOS installation requires to download a VyOS .iso file. That file is
+a live install image that lets you boot a live VyOS. From that live
+system you can proceed to the permanent installation on a hard drive or
+any other type of storage.
 
-The recommended system requirements are 512 MiB RAM and 2 GiB storage.
+
+Hardware requirements
+=====================
+
+The minimum system requirements are 512 MiB RAM and 2 GiB storage.
 Depending on your use you might need additional RAM and CPU resources e.g.
 when having multiple BGP full tables in your system.
 
@@ -53,7 +59,7 @@ Download Verification
 ---------------------
 
 This subsection and the following one applies to downloaded LTS images, for
-other versions please jump to :ref:`Install`.
+other versions please jump to :ref:`live_installation`.
 
 LTS images are signed by VyOS lead package-maintainer private key. With the
 official public key, the authenticity of the package can be verified.
@@ -168,24 +174,77 @@ Finally, verify the authenticity of the downloaded image:
   gpg: Good signature from "VyOS Maintainers (VyOS Release) <maintainers@vyos.net>" [unknown]
   Primary key fingerprint: 0694 A923 0F51 39BF 834B  A458 FD22 0285 A0FE 6D7E
 
-.. _Install:
+.. _live_installation:
 
-Installation
-============
+Live installation
+=================
 
-VyOS ISO is a live CD and will boot into a full functional VyOS system.
+.. note:: A permanent VyOS installation always requires to go first
+   through a live installation.
+
+VyOS, as other GNU+Linux distributions, can be tasted without installing
+it in your hard drive. **With your downloaded VyOS .iso file you can
+create a bootable USB drive that will let you boot into a fully
+functional VyOS system**. Once you have tested it, you can either decide
+to begin a :ref:`permanent_installation` in your hard drive or power
+your system off, remove the USB drive, and leave everythng as it was. 
+
+
+If you have a GNU+Linux system, you can create your VyOS bootable USB
+stick with with the ``dd`` command:
+
+ 1. Open your terminal emulator.
+
+ 2. Find out the device name of your USB drive (you can use the ``lsblk``
+    command)
+
+ 3. Unmount the USB drive. Replace X in the example below with the
+    letter of your device and keep the asterisk (wildcard) to unmount
+    all partitions.
+
+ .. code-block:: none
+ 
+  $ umount /dev/sdX* 
+
+ 4. Write the image (your VyOS .iso file) to the USB drive.
+    Note that here you want to use the device name (e.g. /dev/sdb), not
+    the partition name (e.g. /dev/sdb1).
+
+  **Warning**: This will destroy all data on the USB drive!
+
+ .. code-block:: none
+ 
+   # dd if=/path/to/vyos.iso of=/dev/sdX bs=8M
+
+ 5. Wait until you get the outcome (bytes copied). Be patient, in some
+    computers it might take more than one minute.
+
+ 6. Once ``dd`` has finished, plug the USB drive out and plug it into
+    the powered-off computer where you want to install (or test) VyOS.
+
+ 7. Power the computer on, making sure it boots from the USB drive (you
+    might need to select booting device or change booting settings).
+
+ 8. Once VyOS is completely loaded, enter the default credentials
+    (login: vyos, password: vyos).
+
+
+If you find difficulties with this method, prefer to use a GUI program,
+or have a different operating system, there are other programs you can
+use to create a bootable USB drive, like balenaEtcher_ (for GNU/Linux,
+macOS and Windows), Rufus_ (for Windows) and `many others`_. You can
+follow their instructions to create a bootable USB drive from an .iso
+file.
 
 .. hint:: The default username and password for the live system is ``vyos``.
 
-.. code-block:: none
 
-  The programs included with the Debian GNU/Linux system are free software;
-  the exact distribution terms for each program are described in the
-  individual files in /usr/share/doc/*/copyright.
+.. _permanent_installation:
 
-  Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-  permitted by applicable law.
-  vyos@vyos:~$
+Permanent installation
+======================
+
+.. note:: Before a permanent installation, VyOS requires a :ref:`live_installation`.
 
 Unlike general purpose Linux distributions, VyOS uses "image installation" that
 mimics the user experience of traditional hardware routers and allows keeping
@@ -203,72 +262,84 @@ keys, or custom scripts.
    the general ``add system image <image_path>`` upgrade command (consult
    :ref:`image-mgmt` for further information).
 
-To install VyOS, run ``install image`` after logging into the live system with
-the provided default credentials.
 
-.. code-block:: none
+In order to proceed with a permanent installation:
 
-  vyos@vyos:~$ install image
-  Welcome to the VyOS install program.  This script
-  will walk you through the process of installing the
-  VyOS image to a local hard drive.
-  Would you like to continue? (Yes/No) [Yes]: Yes
-  Probing drives: OK
-  Looking for pre-existing RAID groups...none found.
-  The VyOS image will require a minimum 2000MB root.
-  Would you like me to try to partition a drive automatically
-  or would you rather partition it manually with parted?  If
-  you have already setup your partitions, you may skip this step
+ 1. Log into the VyOS live system (use the default credentials: vyos,
+    vyos)
 
-  Partition (Auto/Parted/Skip) [Auto]:
+ 2. Run the ``install image`` command and follow the wizard:
 
-  I found the following drives on your system:
-   sda    4294MB
+ .. code-block:: none
 
-  Install the image on? [sda]:
+   vyos@vyos:~$ install image
+   Welcome to the VyOS install program.  This script
+   will walk you through the process of installing the
+   VyOS image to a local hard drive.
+   Would you like to continue? (Yes/No) [Yes]: Yes
+   Probing drives: OK
+   Looking for pre-existing RAID groups...none found.
+   The VyOS image will require a minimum 2000MB root.
+   Would you like me to try to partition a drive automatically
+   or would you rather partition it manually with parted?  If
+   you have already setup your partitions, you may skip this step
+   
+   Partition (Auto/Parted/Skip) [Auto]:
+   
+   I found the following drives on your system:
+    sda    4294MB
+   
+   Install the image on? [sda]:
+   
+   This will destroy all data on /dev/sda.
+   Continue? (Yes/No) [No]: Yes
+   
+   How big of a root partition should I create? (2000MB - 4294MB) [4294]MB:
+   
+   Creating filesystem on /dev/sda1: OK
+   Done!
+   Mounting /dev/sda1...
+   What would you like to name this image? [1.2.0-rolling+201809210337]:
+   OK.  This image will be named: 1.2.0-rolling+201809210337
+   Copying squashfs image...
+   Copying kernel and initrd images...
+   Done!
+   I found the following configuration files:
+       /opt/vyatta/etc/config.boot.default
+   Which one should I copy to sda? [/opt/vyatta/etc/config.boot.default]:
+   
+   Copying /opt/vyatta/etc/config.boot.default to sda.
+   Enter password for administrator account
+   Enter password for user 'vyos':
+   Retype password for user 'vyos':
+   I need to install the GRUB boot loader.
+   I found the following drives on your system:
+    sda    4294MB
+   
+   Which drive should GRUB modify the boot partition on? [sda]:
+   
+   Setting up grub: OK
+   Done!
 
-  This will destroy all data on /dev/sda.
-  Continue? (Yes/No) [No]: Yes
 
-  How big of a root partition should I create? (2000MB - 4294MB) [4294]MB:
+ 3. After the installation is complete, remove the live USB stick or
+    CD.
 
-  Creating filesystem on /dev/sda1: OK
-  Done!
-  Mounting /dev/sda1...
-  What would you like to name this image? [1.2.0-rolling+201809210337]:
-  OK.  This image will be named: 1.2.0-rolling+201809210337
-  Copying squashfs image...
-  Copying kernel and initrd images...
-  Done!
-  I found the following configuration files:
-      /opt/vyatta/etc/config.boot.default
-  Which one should I copy to sda? [/opt/vyatta/etc/config.boot.default]:
+ 4. Reboot the system.
 
-  Copying /opt/vyatta/etc/config.boot.default to sda.
-  Enter password for administrator account
-  Enter password for user 'vyos':
-  Retype password for user 'vyos':
-  I need to install the GRUB boot loader.
-  I found the following drives on your system:
-   sda    4294MB
-
-  Which drive should GRUB modify the boot partition on? [sda]:
-
-  Setting up grub: OK
-  Done!
-
-After the installation is complete, remove the live CD and reboot the system:
-
-.. code-block:: none
+ .. code-block:: none
 
   vyos@vyos:~$ reboot
   Proceed with reboot? (Yes/No) [No] Yes
 
-PXE Boot
---------
+ You will boot now into a permanent VyOS system.
 
-VyOS can also be installed through PXE. This is a more complex installation
-method which allows deploying VyOS through the network.
+
+PXE Boot
+========
+
+VyOS can also be installed through PXE. This is a more complex
+installation method which allows deploying VyOS through the network.
 
 **Requirements**
 
@@ -280,7 +351,7 @@ method which allows deploying VyOS through the network.
 * Files ``pxelinux.0`` and ``ldlinux.c32`` `from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_
 
 Configuration
-^^^^^^^^^^^^^
+-------------
 
 Step 1: DHCP
 """"""""""""
@@ -367,8 +438,7 @@ Example of simple (no menu) configuration file:
 
   LABEL VyOS123
    KERNEL vmlinuz
-   APPEND initrd=initrd.img-4.19.54-amd64-vyos boot=live nopersistence \
-          noautologin nonetworking fetch=http://address:8000/filesystem.squashfs
+   APPEND initrd=initrd.img-4.19.54-amd64-vyos boot=live nopersistence noautologin nonetworking fetch=http://address:8000/filesystem.squashfs
 
 Step 3: HTTP
 """"""""""""
@@ -394,7 +464,7 @@ the service with ``sudo service tftpd-hpa restart``.
 .. _`Python's SimpleHTTPServer`: https://docs.python.org/2/library/simplehttpserver.html
 
 Client Boot
-^^^^^^^^^^^
+-----------
 
 Finally, turn on your PXE-enabled client or clients. They will automatically get an IP
 address from the DHCP server and start booting into VyOS live from the files
@@ -406,7 +476,7 @@ in a regular VyOS installation.
 
 
 Known Issues
-------------
+============
 
 This is a list of known issues that can arise during installation.
 
@@ -426,3 +496,6 @@ option, and type CTRL-X to boot.
 Installation can then continue as outlined above.
 
 .. _SYSLINUX: http://www.syslinux.org/
+.. _balenaEtcher: https://www.balena.io/etcher/
+.. _Rufus: https://rufus.ie/
+.. _many others: https://en.wikipedia.org/wiki/List_of_tools_to_create_Live_USB_systems
