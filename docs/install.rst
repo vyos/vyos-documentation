@@ -58,26 +58,29 @@ https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 Download Verification
 ---------------------
 
-This subsection and the following one applies to downloaded LTS images, for
-other versions please jump to :ref:`live_installation`.
+LTS images are signed by VyOS lead package-maintainer private key. With
+the official public key, the authenticity of the package can be
+verified. :abbr:`GPG (GNU Privacy Guard)` is used for verification.
 
-LTS images are signed by VyOS lead package-maintainer private key. With the
-official public key, the authenticity of the package can be verified.
-:abbr:`GPG (GNU Privacy Guard)` is used for verification.
+.. note:: This subsection only applies e applies to LTS images, for
+   Rolling images please jump to :ref:`live_installation`.
+
+Preparing for the verification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 First, install GPG or another OpenPGP implementation. On most GNU+Linux
-distributions it is installed by default as package managers use it to verify
-package signatures. If not pre-installed, it will need to be downloaded and
-installed.
+distributions it is installed by default as package managers use it to
+verify package signatures. If not pre-installed, it will need to be
+downloaded and installed.
 
-The official VyOS public key can be retrieved in a number of ways. Skip to
-:ref:`gpg-verification` if the key is already present.
+The official VyOS public key can be retrieved in a number of ways. Skip
+to :ref:`gpg-verification` if the key is already present.
 
-It can also be retrieved directly from a key server:
+It can be retrieved directly from a key server:
 
 ``gpg --recv-keys FD220285A0FE6D7E``
 
-Or it can be accessed from a key server via a web browser:
+Or it can be accessed via a web browser:
 
 https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E
 
@@ -154,11 +157,11 @@ The import can be verified with:
 
 .. _gpg-verification:
 
-GPG
----
+GPG verification
+^^^^^^^^^^^^^^^^
 
-With the public key imported, the signature for the desired image needs to be
-downloaded.
+With the public key imported, the signature for the desired image needs
+to be downloaded.
 
 .. note:: The signature can be downloaded by appending `.asc` to the URL of the
    downloaded VyOS image. That small *.asc* file is the signature for the
