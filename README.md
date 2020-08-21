@@ -1,8 +1,7 @@
 Starting with VyOS 1.2 (`crux`) documentation will be migrated from the old wiki
-to ReadTheDocs. Documentation can be accessed via the following URLs:
+to ReadTheDocs. Documentation can be accessed via the following URL:
 
 * https://docs.vyos.io
-* https://vyos.readthedocs.org
 
 # Build
 
