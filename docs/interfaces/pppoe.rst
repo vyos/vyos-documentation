@@ -173,14 +173,17 @@ Prefix Delegation (DHCPv6-PD)
 VyOS 1.3 (equuleus) supports DHCPv6-PD. DHCPv6 Prefix Delegation is supported
 by most ISPs who provide native IPv6 for consumers on fixed networks.
 
-.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option prefix-delegation length <length>
+.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option pd <id> length <length>
 
    Some ISPs by default only delegate a /64 prefix. To request for a specific
-   prefix size use this option to request for a bigger delegation. This value
+   prefix size use this option to request for a bigger delegation for this pd
+   `<id>`. This value
    is in the range from 32 - 64 so you could request up to /32 down to a /64
    delegation.
 
-.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option prefix-delegation interface <prefix-interface> address <local-addr>
+   Default value is 64.
+
+.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option pd <id> interface <prefix-interface> address <local-addr>
 
    This statement specifies the interface address used locally on the interfcae
    where the prefix has been delegated to. ID must be a decimal integer.
@@ -193,7 +196,7 @@ by most ISPs who provide native IPv6 for consumers on fixed networks.
    Using `<id>` value 65535 will assign IPv6 address <prefix>::ffff to the
    interface.
 
-.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option prefix-delegation interface <prefix-interface> sla-id <id>
+.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option pd <id> interface <prefix-interface> sla-id <id>
 
    This statement specifies the identifier value of the site-level aggregator
    (SLA) on the interface. ID must be a decimal number greater then 0 which
@@ -201,12 +204,6 @@ by most ISPs who provide native IPv6 for consumers on fixed networks.
    client is delegated an IPv6 prefix 2001:db8:ffff::/48, dhcp6c will combine
    the two values into a single IPv6 prefix, 2001:db8:ffff:1::/64, and will
    configure the prefix on the specified interface.
-
-.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option prefix-delegation interface <prefix-interface> sla-len <len>
-
-   This statement specifies the length of the SLA ID in bits. `<len>` must be a
-   decimal number between 0 and 128. If the length is not specified by this
-   statement, the default value 16 will be used.
 
 Operation
 =========
