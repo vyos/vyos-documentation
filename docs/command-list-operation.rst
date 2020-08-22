@@ -1,9 +1,7 @@
-#############
-Commands List
-#############
+.. _operational_level_commands:
 
-Operational level commands:
-
-.. _op_cmd_list:
+******************************
+Operational Level Command List
+******************************
 
 .. opcmdlist::

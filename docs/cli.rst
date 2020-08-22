@@ -4,13 +4,16 @@
 CLI
 ###
 
-The VyOS :abbr:`CLI (Command-Line Interface)` comprises an
-operational and a configuration mode.
+The VyOS :abbr:`CLI (Command-Line Interface)` comprises an operational and a
+configuration mode.
+
+Operational Mode
+================
 
 Operational mode allows for commands to perform operational system tasks and
 view system and service status, while configuration mode allows for the
-modification of system configuration. The :ref:`cmd-index`
-lists available commands and their functions.
+modification of system configuration. The list of all operational level commands
+is available at :ref:`operational_level_commands`.
 
 The CLI provides a built-in help system. In the CLI the ``?`` key may be used
 to display available commands. The ``TAB`` key can be used to auto-complete
@@ -68,6 +71,12 @@ When viewing in page mode the following commands are available:
    time respectively
  * ``left-arrow`` and ``right-arrow`` can be used to scroll left or right
    in the event that the output has lines which exceed the terminal size.
+
+Configuration Mode
+==================
+
+The list of all operational level commands is available at
+:ref:`configuration_level_commands`.
 
 To enter configuration mode use the ``configure`` command:
 

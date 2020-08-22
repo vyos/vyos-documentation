@@ -1,9 +1,7 @@
-############
-Command List
-############
+.. _configuration_level_commands:
 
-Configuration level commands:
-
-.. _cfg_cmd_list:
+********************************
+Configuration Level Command List
+********************************
 
 .. cfgcmdlist::
