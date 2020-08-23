@@ -18,10 +18,7 @@ Address
 
    Every WWAN connection requires an :abbr:`APN (Access Point Name)` which is
    used by the client to dial into the ISPs network. This is a mandatory
-   parameter. See the following list of well-known APNs:
-
-   - AT&T (isp.cingular)
-   - Deutsche Telekom (internet.t-d1.de or internet.telekom)
+   parameter. Contact your Service Provider for correct APN.
 
 .. cfgcmd:: set interfaces wirelessmodem <interface> backup distance <metric>
 
