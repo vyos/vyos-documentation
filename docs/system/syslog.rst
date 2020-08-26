@@ -22,7 +22,7 @@ Console
 
 .. cfgcmd:: set system syslog console facility <keyword> level <keyword>
 
-Log syslog messages to ``/dev/console``, for en explanation on
+Log syslog messages to ``/dev/console``, for an explanation on
 :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
 see tables below.
 
