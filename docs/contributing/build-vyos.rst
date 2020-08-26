@@ -154,7 +154,7 @@ in the repository_. The ``./configure`` script will also warn you if any
 dependencies are missing.
 
 Once you have the required dependencies installed, you may proceed with the
-steps descirbed in :ref:`build_iso`.
+steps described in :ref:`build_iso`.
 
 
 .. _build_iso:
