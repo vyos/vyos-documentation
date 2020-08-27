@@ -15,3 +15,4 @@ VPN
    site2site_ipsec
    sstp
    wireguard
+   anyconnect
