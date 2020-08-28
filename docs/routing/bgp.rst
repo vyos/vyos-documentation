@@ -4,7 +4,7 @@
 BGP
 ###
 
-:abbr:`BGP (Border Gateway Protocol) is one of the Exterior Gateway Protocols
+:abbr:`BGP (Border Gateway Protocol)` is one of the Exterior Gateway Protocols
 and the de facto standard interdomain routing protocol. The latest BGP version
 is 4. BGP-4 is described in :rfc:`1771` and updated by :rfc:`4271`. :rfc:`2858`
 adds multiprotocol support to BGP.
