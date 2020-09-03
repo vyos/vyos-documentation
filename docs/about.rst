@@ -16,7 +16,7 @@ https://readthedocs.org. We will provide one version of the manual for every
 VyOS major version starting with VyOS 1.2 which will receive Long-term support
 (LTS).
 
-The manual version is selected/specified by it's Git branch name. You can
+The manual version is selected/specified by its Git branch name. You can
 switch between versions of the documentation by selecting the appropriate
 branch on the bottom left corner.
 
