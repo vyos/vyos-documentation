@@ -217,12 +217,12 @@ stick with with the ``dd`` command:
 
  .. code-block:: none
  
-   # dd if=/path/to/vyos.iso of=/dev/sdX bs=8M
+   # dd if=/path/to/vyos.iso of=/dev/sdX bs=8M; sync
 
  5. Wait until you get the outcome (bytes copied). Be patient, in some
     computers it might take more than one minute.
 
- 6. Once ``dd`` has finished, plug the USB drive out and plug it into
+ 6. Once ``dd`` has finished, pull the USB drive out and plug it into
     the powered-off computer where you want to install (or test) VyOS.
 
  7. Power the computer on, making sure it boots from the USB drive (you
@@ -239,7 +239,7 @@ macOS and Windows), Rufus_ (for Windows) and `many others`_. You can
 follow their instructions to create a bootable USB drive from an .iso
 file.
 
-.. hint:: The default username and password for the live system is ``vyos``.
+.. hint:: The default username and password for the live system is *vyos*.
 
 
 .. _permanent_installation:
@@ -357,7 +357,7 @@ Configuration
 -------------
 
 Step 1: DHCP
-""""""""""""
+^^^^^^^^^^^^
 
 Configure a DHCP server to provide the client with:
 
@@ -385,7 +385,7 @@ In this example we configured an existent VyOS as the DHCP server:
 .. _install_from_tftp:
 
 Step 2: TFTP
-""""""""""""
+^^^^^^^^^^^^
 
 Configure a TFTP server so that it serves the following:
 
@@ -444,7 +444,7 @@ Example of simple (no menu) configuration file:
    APPEND initrd=initrd.img-4.19.54-amd64-vyos boot=live nopersistence noautologin nonetworking fetch=http://address:8000/filesystem.squashfs
 
 Step 3: HTTP
-""""""""""""
+^^^^^^^^^^^^
 
 As you can read in the configuration file, we are sending ``filesystem.squashfs``
 through HTTP. As that is a heavy file, we choose HTTP to speed up the transfer
@@ -455,7 +455,7 @@ First run a web server - you can use a simple one like
 file. The file can be found inside the ``/live`` directory of the extracted
 contents of the ISO file.
 
-Second, edit the configuration file at the :ref:`install_from_tftp` so that it shows
+Second, edit the configuration file of the :ref:`install_from_tftp` so that it shows
 the correct URL at ``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``.
 
 And third, restart the TFTP service. If you are using VyOS as your TFTP Server, you can restart
