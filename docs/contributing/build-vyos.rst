@@ -93,7 +93,7 @@ The container can also be built directly from source:
 
   $ cd vyos-build
   $ docker build -t vyos/vyos-build:crux docker # For VyOS 1.2
-  $ docker build -t vyos/vyos-build docker      # For rolling release
+  $ docker build -t vyos/vyos-build:current docker      # For rolling release
 
 .. note:: Since VyOS has switched to Debian (10) Buster in its ``current`` branch,
    you will require individual container for `current` and `crux` builds.
@@ -184,7 +184,7 @@ Now a fresh build of the VyOS ISO can begin. Change directory to the ``vyos-buil
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:crux bash
 
   # For VyOS 1.3 (equuleus, current)
-  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build bash
+  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
 
 Start the build:
 
@@ -348,7 +348,7 @@ Launch Docker container and build package
 .. code-block:: none
 
   # For VyOS 1.3 (equuleus, current)
-  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build bash
+  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
 
   # Change to source directory
   $ cd vyos-1x
