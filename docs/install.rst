@@ -1,68 +1,90 @@
 .. _installation:
 
+############
 Installation
-============
+############
+
+VyOS installation requires to download a VyOS .iso file. That file is
+a live install image that lets you boot a live VyOS. From that live
+system you can proceed to the permanent installation on a hard drive or
+any other type of storage.
 
 
-Requirements
-------------
+Hardware requirements
+=====================
 
-The recommended system requirements are 512 MiB RAM and 2 GiB storage.
+The minimum system requirements are 512 MiB RAM and 2 GiB storage.
+Depending on your use you might need additional RAM and CPU resources e.g.
+when having multiple BGP full tables in your system.
 
+Download
+========
 
-Getting the software
----------------------
+Registered Subscribers
+----------------------
 
-Registered subscribers
-^^^^^^^^^^^^^^^^^^^^^^
-
-A registered subscriber can log into https://support.vyos.io/ to have access to a variety of different downloads via the "Downloads" link.  
-These downloads include LTS releases and associated hot-fixes, early public access releases, pre-built VM images, as well as device specific installation ISOs.
+Registered subscribers can log into https://support.vyos.io/ to have access to
+a variety of different downloads via the "Downloads" link. These downloads
+include LTS (Long-Term-Support) and associated hot-fix releases, early public
+access releases, pre-built VM images, as well as device specific installation
+ISOs.
 
 .. figure:: /_static/images/vyos-downloads.png
 
 Building from source
-^^^^^^^^^^^^^^^^^^^^
+----------------------
 
-Non-subscribers can get the LTS release by building it from source. The instructions for building from source can be found at:
+Non-subscribers can always get the LTS release by building it from source.
+Instruction can be found in the :ref:`build` section of this manual. VyOS
+source code repository is available for everyone at
+https://github.com/vyos/vyos-build.
 
-https://github.com/vyos/vyos-build
+Rolling Release
+---------------
 
-Rolling releases
-^^^^^^^^^^^^^^^^
-
-Non-subscribers and subscribers can download bleeding-edge VyOS rolling images from:
-
+Everyone can download bleeding-edge VyOS rolling images from:
 https://downloads.vyos.io/
 
-The following link will always fetch the most updated AMD64 image of the current branch:
+.. note:: Rolling releases contain all the latest enhancements and fixes. This
+   means that there will be new bugs of course. If you think you hit a bug
+   please follow the guide at :ref:`bug_report`. To improve VyOS we depend on
+   your feedback!
 
+The following link will always fetch the most recent VyOS build for AMD64
+systems from the current branch:
 https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 
 
-Preparing software verification
--------------------------------
+Download Verification
+---------------------
 
-This subsection and the following one applies to downloaded LTS images, for other cases please jump to :ref:`Install`.
+LTS images are signed by VyOS lead package-maintainer private key. With
+the official public key, the authenticity of the package can be
+verified. :abbr:`GPG (GNU Privacy Guard)` is used for verification.
 
-LTS images are signed by VyOS lead package-maintainer private key. With the official public key, the authenticity of the package can be verified.
+.. note:: This subsection only applies e applies to LTS images, for
+   Rolling images please jump to :ref:`live_installation`.
 
-First, install GPG or another OpenPGP implementation.
-On most GNU+Linux distributions it is installed by default as package managers use it to verify package signatures.
-If not pre-installed, it will need to be downloaded and installed.
+Preparing for the verification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The offical VyOS public key can be retrieved in a number of ways. Skip to :ref:`gpg-verification` if the key is already present. 
+First, install GPG or another OpenPGP implementation. On most GNU+Linux
+distributions it is installed by default as package managers use it to
+verify package signatures. If not pre-installed, it will need to be
+downloaded and installed.
+
+The official VyOS public key can be retrieved in a number of ways. Skip
+to :ref:`gpg-verification` if the key is already present.
 
 It can be retrieved directly from a key server:
 
 ``gpg --recv-keys FD220285A0FE6D7E``
 
-Or it can be accessed from a key server via a web browser:
+Or it can be accessed via a web browser:
 
 https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E
 
-Or from the following block: 
-
+Or from the following block:
 
 .. code-block:: none
 
@@ -119,11 +141,9 @@ Or from the following block:
   =Ld8S
   -----END PGP PUBLIC KEY BLOCK-----
 
+Store the key in a new text file and import it into GPG via: ``gpg --import
+file_with_the_public_key``
 
-The key is then pasted into a new text file and imported into GPG:
-
-``gpg --import file_with_the_public_key``
- 
 The import can be verified with:
 
 .. code-block:: none
@@ -135,17 +155,19 @@ The import can be verified with:
   uid           [ unknown] VyOS Maintainers (VyOS Release) <maintainers@vyos.net>
   sub   rsa4096 2015-08-12 [E]
 
-
 .. _gpg-verification:
 
 GPG verification
-----------------
+^^^^^^^^^^^^^^^^
 
-With the public key imported, the signature for the desired image needs to be downloaded.
+With the public key imported, the signature for the desired image needs
+to be downloaded.
 
-.. note:: The signature can be downloaded by appending `.asc` to the URL of the downloaded VyOS image. That small *.asc* file is the signature for the associated image.
+.. note:: The signature can be downloaded by appending `.asc` to the URL of the
+   downloaded VyOS image. That small *.asc* file is the signature for the
+   associated image.
 
-Finally, verify the authencity of the downloaded image:
+Finally, verify the authenticity of the downloaded image:
 
 .. code-block:: none
 
@@ -155,138 +177,199 @@ Finally, verify the authencity of the downloaded image:
   gpg: Good signature from "VyOS Maintainers (VyOS Release) <maintainers@vyos.net>" [unknown]
   Primary key fingerprint: 0694 A923 0F51 39BF 834B  A458 FD22 0285 A0FE 6D7E
 
+.. _live_installation:
 
-.. _Install:
+Live installation
+=================
 
-Install
--------
+.. note:: A permanent VyOS installation always requires to go first
+   through a live installation.
+
+VyOS, as other GNU+Linux distributions, can be tasted without installing
+it in your hard drive. **With your downloaded VyOS .iso file you can
+create a bootable USB drive that will let you boot into a fully
+functional VyOS system**. Once you have tested it, you can either decide
+to begin a :ref:`permanent_installation` in your hard drive or power
+your system off, remove the USB drive, and leave everythng as it was. 
 
 
-The VyOS ISO is a Live CD and will boot to a functional VyOS image. 
+If you have a GNU+Linux system, you can create your VyOS bootable USB
+stick with with the ``dd`` command:
 
-To login to the system, use the default username ``vyos`` with password ``vyos``.
+ 1. Open your terminal emulator.
 
-.. code-block:: none
+ 2. Find out the device name of your USB drive (you can use the ``lsblk``
+    command)
 
-  The programs included with the Debian GNU/Linux system are free software;
-  the exact distribution terms for each program are described in the
-  individual files in /usr/share/doc/*/copyright.
+ 3. Unmount the USB drive. Replace X in the example below with the
+    letter of your device and keep the asterisk (wildcard) to unmount
+    all partitions.
 
-  Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-  permitted by applicable law.
-  vyos@vyos:~$
+ .. code-block:: none
+ 
+  $ umount /dev/sdX* 
 
-  vyos@vyos:~$ uname -a
-  Linux vyos 4.18.11-amd64-vyos #23 SMP Mon Oct 1 17:29:22 CEST 2018 x86_64 GNU/Linux
+ 4. Write the image (your VyOS .iso file) to the USB drive.
+    Note that here you want to use the device name (e.g. /dev/sdb), not
+    the partition name (e.g. /dev/sdb1).
 
-Unlike general purpose Linux distributions, VyOS uses "image installation"
-that mimics the user experience of traditional hardware routers and allows
-keeping multiple VyOS versions installed simultaneously. This makes it possible to switch to a previous
-version if something breaks after an upgrade. 
+  **Warning**: This will destroy all data on the USB drive!
 
-Every version is contained in its own squashfs image that is mounted in a union filesystem together with a
-directory for mutable data such as configurations, keys, or custom scripts.
+ .. code-block:: none
+ 
+   # dd if=/path/to/vyos.iso of=/dev/sdX bs=8M; sync
 
-.. note:: Older versions used to support non-image installation (``install system`` command). 
-   Support for this is removed from VyOS 1.2 (crux) and newer releases.  Older releases can still be upgraded
-   via ``add system image <image_path>``
+ 5. Wait until you get the outcome (bytes copied). Be patient, in some
+    computers it might take more than one minute.
 
-To install VyOS, run ``install image``.
+ 6. Once ``dd`` has finished, pull the USB drive out and plug it into
+    the powered-off computer where you want to install (or test) VyOS.
 
-.. code-block:: none
+ 7. Power the computer on, making sure it boots from the USB drive (you
+    might need to select booting device or change booting settings).
 
-  vyos@vyos:~$ install image
-  Welcome to the VyOS install program.  This script
-  will walk you through the process of installing the
-  VyOS image to a local hard drive.
-  Would you like to continue? (Yes/No) [Yes]: Yes
-  Probing drives: OK
-  Looking for pre-existing RAID groups...none found.
-  The VyOS image will require a minimum 2000MB root.
-  Would you like me to try to partition a drive automatically
-  or would you rather partition it manually with parted?  If
-  you have already setup your partitions, you may skip this step
+ 8. Once VyOS is completely loaded, enter the default credentials
+    (login: vyos, password: vyos).
 
-  Partition (Auto/Parted/Skip) [Auto]:
 
-  I found the following drives on your system:
-   sda    4294MB
+If you find difficulties with this method, prefer to use a GUI program,
+or have a different operating system, there are other programs you can
+use to create a bootable USB drive, like balenaEtcher_ (for GNU/Linux,
+macOS and Windows), Rufus_ (for Windows) and `many others`_. You can
+follow their instructions to create a bootable USB drive from an .iso
+file.
 
-  Install the image on? [sda]:
+.. hint:: The default username and password for the live system is *vyos*.
 
-  This will destroy all data on /dev/sda.
-  Continue? (Yes/No) [No]: Yes
 
-  How big of a root partition should I create? (2000MB - 4294MB) [4294]MB:
+.. _permanent_installation:
 
-  Creating filesystem on /dev/sda1: OK
-  Done!
-  Mounting /dev/sda1...
-  What would you like to name this image? [1.2.0-rolling+201809210337]:
-  OK.  This image will be named: 1.2.0-rolling+201809210337
-  Copying squashfs image...
-  Copying kernel and initrd images...
-  Done!
-  I found the following configuration files:
-      /opt/vyatta/etc/config.boot.default
-  Which one should I copy to sda? [/opt/vyatta/etc/config.boot.default]:
+Permanent installation
+======================
 
-  Copying /opt/vyatta/etc/config.boot.default to sda.
-  Enter password for administrator account
-  Enter password for user 'vyos':
-  Retype password for user 'vyos':
-  I need to install the GRUB boot loader.
-  I found the following drives on your system:
-   sda    4294MB
+.. note:: Before a permanent installation, VyOS requires a :ref:`live_installation`.
 
-  Which drive should GRUB modify the boot partition on? [sda]:
+Unlike general purpose Linux distributions, VyOS uses "image installation" that
+mimics the user experience of traditional hardware routers and allows keeping
+multiple VyOS versions installed simultaneously. This makes it possible to
+switch to a previous version if something breaks or miss-behaves after an image
+upgrade.
 
-  Setting up grub: OK
-  Done!
-  vyos@vyos:~$
+Every version is contained in its own squashfs image that is mounted in a union
+filesystem together with a directory for mutable data such as configurations,
+keys, or custom scripts.
 
-After the installation is complete, remove the Live CD and reboot the system:
+.. note:: Older versions (prior to VyOS 1.1) used to support non-image
+   installation (``install system`` command). Support for this has been removed
+   from VyOS 1.2 and newer releases. Older releases can still be upgraded via
+   the general ``add system image <image_path>`` upgrade command (consult
+   :ref:`image-mgmt` for further information).
 
-.. code-block:: none
+
+In order to proceed with a permanent installation:
+
+ 1. Log into the VyOS live system (use the default credentials: vyos,
+    vyos)
+
+ 2. Run the ``install image`` command and follow the wizard:
+
+ .. code-block:: none
+
+   vyos@vyos:~$ install image
+   Welcome to the VyOS install program.  This script
+   will walk you through the process of installing the
+   VyOS image to a local hard drive.
+   Would you like to continue? (Yes/No) [Yes]: Yes
+   Probing drives: OK
+   Looking for pre-existing RAID groups...none found.
+   The VyOS image will require a minimum 2000MB root.
+   Would you like me to try to partition a drive automatically
+   or would you rather partition it manually with parted?  If
+   you have already setup your partitions, you may skip this step
+   
+   Partition (Auto/Parted/Skip) [Auto]:
+   
+   I found the following drives on your system:
+    sda    4294MB
+   
+   Install the image on? [sda]:
+   
+   This will destroy all data on /dev/sda.
+   Continue? (Yes/No) [No]: Yes
+   
+   How big of a root partition should I create? (2000MB - 4294MB) [4294]MB:
+   
+   Creating filesystem on /dev/sda1: OK
+   Done!
+   Mounting /dev/sda1...
+   What would you like to name this image? [1.2.0-rolling+201809210337]:
+   OK.  This image will be named: 1.2.0-rolling+201809210337
+   Copying squashfs image...
+   Copying kernel and initrd images...
+   Done!
+   I found the following configuration files:
+       /opt/vyatta/etc/config.boot.default
+   Which one should I copy to sda? [/opt/vyatta/etc/config.boot.default]:
+   
+   Copying /opt/vyatta/etc/config.boot.default to sda.
+   Enter password for administrator account
+   Enter password for user 'vyos':
+   Retype password for user 'vyos':
+   I need to install the GRUB boot loader.
+   I found the following drives on your system:
+    sda    4294MB
+   
+   Which drive should GRUB modify the boot partition on? [sda]:
+   
+   Setting up grub: OK
+   Done!
+
+
+ 3. After the installation is complete, remove the live USB stick or
+    CD.
+
+ 4. Reboot the system.
+
+ .. code-block:: none
 
   vyos@vyos:~$ reboot
   Proceed with reboot? (Yes/No) [No] Yes
 
+ You will boot now into a permanent VyOS system.
 
 
+PXE Boot
+========
 
-.. _PXE Install:
+VyOS can also be installed through PXE. This is a more complex
+installation method which allows deploying VyOS through the network.
 
-PXE Install
------------
+**Requirements**
 
-VyOS can also be installed through PXE. This is a more complex installation method which allows deploying VyOS through the network. 
+* Clients (where VyOS is to be installed) with a PXE-enabled NIC
+* :ref:`dhcp-server`
+* :ref:`tftp-server`
+* Webserver (HTTP) - optional, but we will use it to speed up installation
+* VyOS ISO image to be installed (do not use images prior to VyOS 1.2.3)
+* Files ``pxelinux.0`` and ``ldlinux.c32`` `from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_
 
-
-Requirements
-^^^^^^^^^^^^
-
-* **Clients** (where VyOS is to be installed) **with a PXE-enabled NIC**
-* A **DHCP server** 
-* A **TFTP server**
-* A **HTTP server** (this is optional but we will use it to speed up our intallation)
-* The **VyOS ISO** image to be installed (Do not use images prior to 1.2.3)
-* The **pxelinux.0** and **ldlinux.c32** `files from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_
+Configuration
+-------------
 
 Step 1: DHCP
 ^^^^^^^^^^^^
 
-Configure a DHCP server so that it gives the client
+Configure a DHCP server to provide the client with:
 
-	- An **IP address**
-	- The **TFTP server address** (DHCP option 66). Sometimes named *Boot server*
-	- The **bootfile name** (DHCP option 67), which is **pxelinux.0**
+* An IP address
+* The TFTP server address (DHCP option 66). Sometimes referred as *boot server*
+* The *bootfile name* (DHCP option 67), which is ``pxelinux.0``
 
 In this example we configured an existent VyOS as the DHCP server:
 
 .. code-block:: none
 
-  vyos@vyos# show service dhcp-server 
+  vyos@vyos# show service dhcp-server
    shared-network-name mydhcp {
        subnet 192.168.1.0/24 {
            bootfile-name pxelinux.0
@@ -298,35 +381,37 @@ In this example we configured an existent VyOS as the DHCP server:
            }
        }
    }
-  [edit]
-  vyos@vyos# 
 
-
-.. _tftp-server:
+.. _install_from_tftp:
 
 Step 2: TFTP
 ^^^^^^^^^^^^
 
 Configure a TFTP server so that it serves the following:
-	
-	+ The file **pxelinux.0** from the *Syslinux* distribution
-	+ The file **ldlinux.c32** from the *Syslinux* distribution
-	+ The kernel of the VyOS software you want to deploy. That is the **vmlinuz** file inside the *live* directory of the extracted contents from the ISO file.
-	+ The initial ramdisk of the VyOS ISO you want to deploy. That is the **initrd.img** file inside the *live* directory of the extracted contents from the ISO file. Do not use an empty (0 bytes) initrd.img file you might find, the correct file may have a longer name.
-	+ **A directory named pxelinux.cfg which must contain the configuration file**. We will use the `configuration file <https://wiki.syslinux.org/wiki/index.php?title=Config>`_ shown below, which we named `default <https://wiki.syslinux.org/wiki/index.php?title=PXELINUX#Configuration>`_. 
 
+* The ``pxelinux.0`` file from the Syslinux distribution
+* The ``ldlinux.c32`` file from the Syslinux distribution
+* The kernel of the VyOS software you want to deploy. That is the ``vmlinuz``
+  file inside the ``/live`` directory of the extracted contents from the ISO
+  file
+* The initial ramdisk of the VyOS ISO you want to deploy. That is the
+  ``initrd.img`` file inside the ``/live`` directory of the extracted contents
+  from the ISO file. Do not use an empty (0 bytes) initrd.img file you might
+  find, the correct file may have a longer name.
+* A directory named pxelinux.cfg which must contain the configuration file.
+  We will use the configuration_ file shown below, which we named default_.
+
+.. _configuration: https://wiki.syslinux.org/wiki/index.php?title=Config
+.. _default: https://wiki.syslinux.org/wiki/index.php?title=PXELINUX#Configuration
 
 In the example we configured our existent VyOS as the TFTP server too:
 
 .. code-block:: none
 
-  vyos@vyos# show service tftp-server 
+  vyos@vyos# show service tftp-server
    directory /config/tftpboot
    listen-address 192.168.1.50
-  [edit]
-  vyos@vyos#
-  
-  
+
 Example of the contents of the TFTP server:
 
 .. code-block:: none
@@ -340,48 +425,80 @@ Example of the contents of the TFTP server:
   -rw-r--r-- 1 root vyattacfg  46K Oct 13 23:24 pxelinux.0
   drwxr-xr-x 2 root vyattacfg 4.0K Oct 14 01:10 pxelinux.cfg
   -r--r--r-- 1 root vyattacfg 3.7M Oct 13 23:24 vmlinuz
-  [edit]
-  vyos@vyos# 
-  [edit]
+
   vyos@vyos# ls -hal /config/tftpboot/pxelinux.cfg
   total 12K
   drwxr-xr-x 2 root vyattacfg 4.0K Oct 14 01:10 .
   drwxr-sr-x 3 tftp tftp      4.0K Oct 14 00:23 ..
   -rw-r--r-- 1 root root       191 Oct 14 01:10 default
-  [edit]
-  vyos@vyos# 
-  
 
 Example of simple (no menu) configuration file:
 
 .. code-block:: none
-  
-  vyos@vyos# cat /config/tftpboot/pxelinux.cfg/default 
+
+  vyos@vyos# cat /config/tftpboot/pxelinux.cfg/default
   DEFAULT VyOS123
-  
+
   LABEL VyOS123
    KERNEL vmlinuz
-   APPEND initrd=initrd.img-4.19.54-amd64-vyos boot=live nopersistence noautologin nonetworking fetch=http://192.168.1.2:8000/filesystem.squashfs
-  [edit]
-  vyos@vyos# 
-  
-  
+   APPEND initrd=initrd.img-4.19.54-amd64-vyos boot=live nopersistence noautologin nonetworking fetch=http://address:8000/filesystem.squashfs
 
 Step 3: HTTP
 ^^^^^^^^^^^^
 
-	a) As you can read in the configuration file, we are sending *filesystem.squashfs* through HTTP. As that is a heavy file, we choose HTTP to speed up its transfer. **Run a web server** --you can use a simple one like `Python's SimpleHTTPServer <https://docs.python.org/2/library/simplehttpserver.html>`_-- **and start serving the filesystem.squashfs file**. The file can be found inside the *live* directory of the extracted contents of the ISO file.
+As you can read in the configuration file, we are sending ``filesystem.squashfs``
+through HTTP. As that is a heavy file, we choose HTTP to speed up the transfer
+over TFTP.
+
+First run a web server - you can use a simple one like
+`Python's SimpleHTTPServer`_ and start serving the ``filesystem.squashfs``
+file. The file can be found inside the ``/live`` directory of the extracted
+contents of the ISO file.
+
+Second, edit the configuration file of the :ref:`install_from_tftp` so that it shows
+the correct URL at ``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``.
+
+And third, restart the TFTP service. If you are using VyOS as your TFTP Server, you can restart
+the service with ``sudo service tftpd-hpa restart``.
+
+.. note::  Make sure the available directories and files in both TFTP and HTTP
+   server have the right permissions to be accessed from the booting clients.
+
+.. _`Python's SimpleHTTPServer`: https://docs.python.org/2/library/simplehttpserver.html
+
+Client Boot
+-----------
+
+Finally, turn on your PXE-enabled client or clients. They will automatically get an IP
+address from the DHCP server and start booting into VyOS live from the files
+automatically taken from the TFTP and HTTP servers.
+
+Once finished you will be able to proceed with the ``install image`` command as
+in a regular VyOS installation.
 
 
-	b) Edit the configuration file at the :ref:`tftp-server` so that it shows the correct URL at *fetch=http://address_of_your_HTTP_server/filesystem.squashfs*. Then restart the TFTP service. If you are using VyOS as your TFTP Server, you can restart the service with ``sudo service tftpd-hpa restart``.
 
+Known Issues
+============
 
-.. note::  Make sure the available directories and files in both TFTP server and HTTP server have the right permissions to be accessed from the booting clients.
+This is a list of known issues that can arise during installation.
 
+Black screen on install
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Step 4: Boot the clients
-^^^^^^^^^^^^^^^^^^^^^^^^
+GRUB attempts to redirect all output to a serial port for ease of installation on headless hosts.
+This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a 
+black screen after selecting the `Live system` option from the installation image.
 
-Turn on the PXE-enabled client or clients. They will automatically get an IP address from the DHCP server and start booting into VyOS live from the files automatically taken from the TFTP and HTTP servers.
+The workaround is to type `e` when the boot menu appears and edit the GRUB boot options.  Specifically, remove the:
 
-Once finished you will be able to proceed with the ``install image`` command as in a normal VyOS installation.
+`console=ttyS0,115200` 
+
+option, and type CTRL-X to boot. 
+
+Installation can then continue as outlined above.
+
+.. _SYSLINUX: http://www.syslinux.org/
+.. _balenaEtcher: https://www.balena.io/etcher/
+.. _Rufus: https://rufus.ie/
+.. _many others: https://en.wikipedia.org/wiki/List_of_tools_to_create_Live_USB_systems
