@@ -65,14 +65,12 @@ VyOS User Guide
 
    appendix/release-notes
    appendix/examples/index
-   appendix/vyos-on-vmware
    appendix/vyos-on-baremetal
+   appendix/virtual/index
    appendix/vyos-on-clouds
-   appendix/vyos-on-virtual-environments
    appendix/migrate-from-vyatta
    appendix/command-scripting
    appendix/http-api
-   appendix/vyos-on-gns3
 
 
 .. toctree::

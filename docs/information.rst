@@ -5,7 +5,7 @@ Information
 ***********
 
 VyOS features a rich set of operational level commands to retrieve arbitrary
-infomration about your running system.
+information about your running system.
 
 ########
 Hardware
