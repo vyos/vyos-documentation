@@ -76,3 +76,5 @@ Verification
   interface    username    ip            remote IP      RX        TX        state      uptime
   -----------  ----------  ------------  -------------  --------  --------  ---------  --------
   sslvpn0      user4       100.64.0.105  xx.xxx.49.253  127.3 KB  160.0 KB  connected  12m:28s
+
+.. note:: It is compatible with Cisco (R) AnyConnect (R) clients.
