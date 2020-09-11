@@ -1,7 +1,8 @@
 .. _vyos-on-gns3:
 
-VyOS on GNS3
-############
+###############
+Running on GNS3
+###############
 
 Sometimes you may want to test VyOS in a lab environment.
 `GNS3 <http://www.gns3.com>`__ is a network emulation software you

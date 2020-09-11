@@ -1,12 +1,8 @@
-.. _vyos-on-virtual-environments:
+.. _libvirt:
 
-###############################
-Running in Virtual Environments
-###############################
-
-****************
-Libvirt Qemu/KVM
-****************
+***************************
+Running on Libvirt Qemu/KVM
+***************************
 
 Libvirt is an open-source API, daemon and management tool for managing platform virtualization.
 There are several ways to deploy VyOS on libvirt kvm. Use Virt-manager and native CLI.
@@ -161,12 +157,4 @@ Download predefined VyOS.qcow2 image for ``KVM``
 .. figure:: /_static/images/virt-libvirt-qc-03.png
 
 
-*******
-Proxmox
-*******
-
-References
-==========
-
-https://www.proxmox.com/en/proxmox-ve
 
