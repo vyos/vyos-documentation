@@ -159,6 +159,25 @@ Link Administration
 
      This mode provides load balancing and fault tolerance.
 
+.. cfgcmd:: set interfaces bonding <interface> min-links <0-16>
+
+   Specifies the minimum number of links that must be active before asserting
+   carrier. It is similar to the Cisco EtherChannel min-links feature. This
+   allows setting the minimum number of member ports that must be up (link-up
+   state) before marking the bond device as up (carrier on). This is useful for
+   situations where higher level services such as clustering want to ensure a
+   minimum number of low bandwidth links are active before switchover.
+
+   This option only affects 802.3ad mode.
+
+   The default value is 0. This will cause carrier to be asserted (for 802.3ad
+   mode) whenever there is an active aggregator, regardless of the number of
+   available links in that aggregator.
+
+   .. note:: Because an aggregator cannot be active without at least one
+      available link, setting this option to 0 or to 1 has the exact same
+      effect.
+
 .. cfgcmd:: set interfaces bonding <interface> hash-policy <policy>
 
    * **layer2** - Uses XOR of hardware MAC addresses and packet type ID field
