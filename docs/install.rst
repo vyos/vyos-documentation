@@ -190,7 +190,7 @@ it in your hard drive. **With your downloaded VyOS .iso file you can
 create a bootable USB drive that will let you boot into a fully
 functional VyOS system**. Once you have tested it, you can either decide
 to begin a :ref:`permanent_installation` in your hard drive or power
-your system off, remove the USB drive, and leave everythng as it was. 
+your system off, remove the USB drive, and leave everythng as it was.
 
 
 If you have a GNU+Linux system, you can create your VyOS bootable USB
@@ -206,8 +206,8 @@ stick with with the ``dd`` command:
     all partitions.
 
  .. code-block:: none
- 
-  $ umount /dev/sdX* 
+
+  $ umount /dev/sdX*
 
  4. Write the image (your VyOS .iso file) to the USB drive.
     Note that here you want to use the device name (e.g. /dev/sdb), not
@@ -216,7 +216,7 @@ stick with with the ``dd`` command:
   **Warning**: This will destroy all data on the USB drive!
 
  .. code-block:: none
- 
+
    # dd if=/path/to/vyos.iso of=/dev/sdX bs=8M; sync
 
  5. Wait until you get the outcome (bytes copied). Be patient, in some
@@ -286,19 +286,19 @@ In order to proceed with a permanent installation:
    Would you like me to try to partition a drive automatically
    or would you rather partition it manually with parted?  If
    you have already setup your partitions, you may skip this step
-   
+
    Partition (Auto/Parted/Skip) [Auto]:
-   
+
    I found the following drives on your system:
     sda    4294MB
-   
+
    Install the image on? [sda]:
-   
+
    This will destroy all data on /dev/sda.
    Continue? (Yes/No) [No]: Yes
-   
+
    How big of a root partition should I create? (2000MB - 4294MB) [4294]MB:
-   
+
    Creating filesystem on /dev/sda1: OK
    Done!
    Mounting /dev/sda1...
@@ -310,7 +310,7 @@ In order to proceed with a permanent installation:
    I found the following configuration files:
        /opt/vyatta/etc/config.boot.default
    Which one should I copy to sda? [/opt/vyatta/etc/config.boot.default]:
-   
+
    Copying /opt/vyatta/etc/config.boot.default to sda.
    Enter password for administrator account
    Enter password for user 'vyos':
@@ -318,9 +318,9 @@ In order to proceed with a permanent installation:
    I need to install the GRUB boot loader.
    I found the following drives on your system:
     sda    4294MB
-   
+
    Which drive should GRUB modify the boot partition on? [sda]:
-   
+
    Setting up grub: OK
    Done!
 
@@ -484,17 +484,17 @@ Known Issues
 This is a list of known issues that can arise during installation.
 
 Black screen on install
-^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 GRUB attempts to redirect all output to a serial port for ease of installation on headless hosts.
-This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a 
+This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a
 black screen after selecting the `Live system` option from the installation image.
 
 The workaround is to type `e` when the boot menu appears and edit the GRUB boot options.  Specifically, remove the:
 
-`console=ttyS0,115200` 
+`console=ttyS0,115200`
 
-option, and type CTRL-X to boot. 
+option, and type CTRL-X to boot.
 
 Installation can then continue as outlined above.
 
