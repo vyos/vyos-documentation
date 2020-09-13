@@ -99,7 +99,7 @@ Supported algorithms: ``diffie-hellman-group1-sha1``,
 
 Set the ``sshd`` log level. The default is ``info``.
 
-.. cmfcmd:: set service ssh vrf <name>
+.. cfgcmd:: set service ssh vrf <name>
 
 Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 
