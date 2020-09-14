@@ -255,7 +255,7 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
   set protocols static interface-route 10.23.0.0/20 next-hop-interface vtun10
 
 Generate X.509 Certificate and Keys
-***********************************
+-----------------------------------
 
 OpenVPN ships with a set of scripts called Easy-RSA that can generate the
 appropriate files needed for an OpenVPN setup using X.509 certificates.
@@ -338,10 +338,10 @@ For example, Branch 1's router might have the following files:
   ca.crt branch1.crt branch1.key
 
 Client Authentication
----------------------
+=====================
 
 LDAP
-****
+----
 
 Enterprise installations usually ship a kind of directory service which is used
 to have a single password store for all employees. VyOS and OpenVPN support using
@@ -380,7 +380,7 @@ The required config file may look like:
   </Authorization>
 
 Active Directory
-****************
+^^^^^^^^^^^^^^^^
 
 Despite the fact that AD is a superset of LDAP
 
