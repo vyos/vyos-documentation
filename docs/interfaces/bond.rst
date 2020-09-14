@@ -395,6 +395,121 @@ with two interfaces from VyOS to a Aruba/HP 2510G switch.
   vlan 10 tagged Trk1
   vlan 100 tagged Trk1
 
+Arista EOS
+^^^^^^^^^^
+
+When utilizing VyOS in an environment with Arista gear you can use this blue
+print as an initial setup to get an LACP bond / port-channel operational between
+those two devices.
+
+Lets assume the following topology:
+
+.. figure:: /_static/images/vyos_arista_bond_lacp.png
+   :alt: VyOS Arista EOS setup
+
+**R1**
+
+  .. code-block:: none
+
+     interfaces {
+         bonding bond10 {
+             hash-policy layer3+4
+             member {
+                 interface eth1
+                 interface eth2
+             }
+             mode 802.3ad
+             vif 100 {
+                 address 192.0.2.1/30
+                 address 2001:db8::1/64
+             }
+         }
+
+**R2**
+
+  .. code-block:: none
+
+     interfaces {
+         bonding bond10 {
+             hash-policy layer3+4
+             member {
+                 interface eth1
+                 interface eth2
+             }
+             mode 802.3ad
+             vif 100 {
+                 address 192.0.2.2/30
+                 address 2001:db8::2/64
+             }
+         }
+
+**SW1**
+
+  .. code-block:: none
+
+     !
+     vlan 100
+        name FOO
+     !
+     interface Port-Channel10
+        switchport trunk allowed vlan 100
+        switchport mode trunk
+        spanning-tree portfast
+     !
+     interface Port-Channel20
+        switchport mode trunk
+        no spanning-tree portfast auto
+        spanning-tree portfast network
+     !
+     interface Ethernet1
+        channel-group 10 mode active
+     !
+     interface Ethernet2
+        channel-group 10 mode active
+     !
+     interface Ethernet3
+        channel-group 20 mode active
+     !
+     interface Ethernet4
+        channel-group 20 mode active
+     !
+
+**SW2**
+
+  .. code-block:: none
+
+     !
+     vlan 100
+        name FOO
+     !
+     interface Port-Channel10
+        switchport trunk allowed vlan 100
+        switchport mode trunk
+        spanning-tree portfast
+     !
+     interface Port-Channel20
+        switchport mode trunk
+        no spanning-tree portfast auto
+        spanning-tree portfast network
+     !
+     interface Ethernet1
+        channel-group 10 mode active
+     !
+     interface Ethernet2
+        channel-group 10 mode active
+     !
+     interface Ethernet3
+        channel-group 20 mode active
+     !
+     interface Ethernet4
+        channel-group 20 mode active
+     !
+
+.. note:: When using EVE-NG to lab this environment ensure you are using e1000
+   as the desired driver for your VyOS network interfaces. When using the regular
+   virtio network driver no LACP PDUs will be sent by VyOS thus the port-channel
+   will never become active!
+
 Operation
 #########
 
