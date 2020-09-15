@@ -336,12 +336,11 @@ you will only be able to apply one policy per interface and direction
 Some policies can be combined, you will be able to embed_ a different
 policy that will be applied to a class of the main policy. 
 
-.. hint:: If you are looking for a policy for your outbound traffic but
-   you do not know what policy you need, you might consider FQ-CoDel_ as
-   your multipurpose nearly-no-configuration low-delay fair-queue
-   policy; if delay does not worry you and you want to manually allocate
-   bandwidth shares to specific traffic, then you should consider
-   Shaper_.
+.. hint:: **If you are looking for a policy for your outbound traffic**
+   but you don't know which one you need and you don't want to go
+   through every possible policy shown here, **our bet is that highly
+   likely you are looking for a** Shaper_ **policy and you want to**
+   :ref:`set its queues <embed>` **as FQ-CoDel**.
 
 Drop Tail
 ---------
