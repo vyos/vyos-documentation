@@ -26,7 +26,7 @@ This process allows for a system to always boot to a known working state, as
 the OS image is fixed and non-persistent. It also allows for multiple releases
 of VyOS to be installed on the same storage device. The image can be selected
 manually at boot if needed, but the system will otherwise boot the image
-configured to be the default (:opcmd:`set system image default-boot`).
+configured to be the default.
 
 .. opcmd:: show system image
 
@@ -40,12 +40,6 @@ configured to be the default (:opcmd:`set system image default-boot`).
         1: 1.2.0-rolling+201810021347 (default boot)
         2: 1.2.0-rolling+201810021217
         3: 1.2.0-rolling+201809252218
-
-.. opcmd:: set system image default-boot
-
-   Select the default boot image which will be started on the next boot of the
-   System. A list of available images can be shown using the :opcmd:`show
-   system image`
 
 
 .. opcmd:: delete system image [image-name]
@@ -177,5 +171,23 @@ After reboot you might want to verify the version you are running with
 the :opcmd:`show version` command.
 
 
+System rollback
+===============
 
+If you need to rollback to a previous image, you can easily do so. First
+check the available images through the :opcmd:`show system image`
+command and then select your image with the following command:
 
+.. opcmd:: set system image default-boot [image-name]
+
+   Select the default boot image which will be started on the next boot
+   of the system.
+
+Then reboot the system.
+
+.. note:: VyOS automatically associates the configuration to the image,
+   so you don't need to worry about that. Each image has a unique copy
+   of its configuration.
+
+If you have access to the console, there is a another way to select
+your booting image: reboot and use the GRUB menu at startup.
