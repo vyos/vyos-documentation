@@ -15,18 +15,18 @@ Terminology
 
 A VyOS system has three major types of configurations:
 
-* **Active** or **Running** configuration is the system configuration
+* **Active** or **running configuration** is the system configuration
   that is loaded  and currently active (used by VyOS). Any change in
   the configuration will have to be committed to belong to the
   active/running configuration.
 
-* **Working** - is the configuration which is currently being modified
+* **Working configuration** is the one that is currently being modified
   in configuration mode. Changes made to the working configuration do
   not go into effect until the changes are committed with the
   :cfgcmd:`commit` command. At which time the working configuration will
   become the active or running configuration.
 
-* **Saved** - is a configuration saved to a file using the
+* **Saved configuration** is the one saved to a file using the
   :cfgcmd:`save` command. It allows you to keep safe a configuration for
   future uses. There can be multiple configuration files. The default or
   "boot" configuration is saved and loaded from the file
@@ -295,8 +295,12 @@ entered.
   [edit]
   vyos@vyos# set interface ethernet eth0 address 192.0.2.100/24
 
+
+.. code-block:: none
+
   [edit interfaces ethernet eth0]
   vyos@vyos# set address 203.0.113.6/24
+
 
 These two commands above are essentially the same, just executed from
 different levels in the hierarchy.
@@ -368,6 +372,105 @@ different levels in the hierarchy.
      Use 'exit discard' to discard the changes and exit.
      [edit]
      vyos@vyos# exit discard
+
+
+.. cfgcmd:: commit-confirm
+
+   Commit the current set of changes if ``confirm`` is also entered
+   within 10 minutes. Otherwise the system reboot into the previous
+   configuration.
+
+
+   What if you are doing something dangerous? Suppose you want to setup
+   a firewall, and you are not sure there are no mistakes that will lock
+   you out of your system. You can use confirmed commit. If you issue
+   the ``commit-confirm`` command, your changes will be commited, and if
+   you don't issue issue the ``confirm`` command in 10 minutes, your
+   system will reboot into previous config revision.
+
+   .. code-block:: none
+   
+      vyos@router# set interfaces ethernet eth0 firewall local name FromWorld
+      vyos@router# commit-confirm 
+      commit confirm will be automatically reboot in 10 minutes unless confirmed
+      Proceed? [confirm]y
+      [edit]
+      vyos@router# confirm 
+      [edit]
+
+
+   .. note:: A reboot because you did not enter ``confirm`` will not
+      take you necessarily to the *saved configuration*, but to the
+      point before the unfortunate commit.
+
+
+.. cfgcmd:: copy
+
+   Copy a configuration element.
+
+   You can copy and remove configuration subtrees. Suppose you set up a
+   firewall ruleset ``FromWorld`` with one rule that allows traffic from
+   specific subnet. Now you want to setup a similar rule, but for
+   different subnet. Change your edit level to
+   ``firewall name FromWorld`` and use ``copy rule 10 to rule 20``, then
+   modify rule 20.
+
+
+   .. code-block:: none
+   
+      vyos@router# show firewall name FromWorld 
+       default-action drop
+       rule 10 {
+           action accept
+           source {
+               address 203.0.113.0/24
+           }
+       }
+      [edit]
+      vyos@router# edit firewall name FromWorld 
+      [edit firewall name FromWorld]
+      vyos@router# copy rule 10 to rule 20
+      [edit firewall name FromWorld]
+      vyos@router# set rule 20 source address 198.51.100.0/24
+      [edit firewall name FromWorld]
+      vyos@router# commit
+      [edit firewall name FromWorld]
+
+
+.. cfgcmd:: rename
+
+   Rename a configuration element.
+
+   You can also rename config subtrees:
+
+   .. code-block:: none
+   
+      vyos@router# rename rule 10 to rule 5
+      [edit firewall name FromWorld]
+      vyos@router# commit
+      [edit firewall name FromWorld]
+
+   Note that ``show`` command respects your edit level and from this
+   level you can view the modified firewall ruleset with just ``show``
+   with no parameters.
+
+   .. code-block:: none
+   
+      vyos@router# show 
+       default-action drop
+       rule 5 {
+           action accept
+           source {
+               address 203.0.113.0/24
+           }
+       }
+       rule 20 {
+           action accept
+           source {
+               address 198.51.100.0/24
+           }
+       }
+   
 
 .. _run_opmode_from_config_mode:
 
@@ -451,12 +554,13 @@ any previous revisions if something goes wrong.
          9	   2013-12-12 15:42:07 root by boot-config-loader
          10   2013-12-12 15:42:06 root by init
 
-   Revisions can be compared with :cfgcmd:`compare N M` command, where N
-   and M are revision numbers. The output will describe how the
-   configuration N is when compared to YM indicating with a plus sign
-   (``+``) the additional parts N has when compared to M, and indicating
-   with a minus sign (``-``) the lacking parts N misses when compared to
-   Y.
+   The command :cfgcmd:`compare` allows you to compare different type of
+   configurations. It also lets you compare different revisions through
+   the :cfgcmd:`compare N M` command, where N and M are revision
+   numbers. The output will describe how the configuration N is when
+   compared to M indicating with a plus sign (``+``) the additional
+   parts N has when compared to M, and indicating with a minus sign
+   (``-``) the lacking parts N misses when compared to M.
 
    .. code-block:: none
 
@@ -472,6 +576,26 @@ any previous revisions if something goes wrong.
      -vif 900 {
      -    address 192.0.2.4/24
      -}
+
+
+.. opcmd:: show system commit diff <number>
+
+   Show commit revision difference.
+
+
+The command above also lets you see the difference between two commits.
+By default the difference with the running config is shown.
+
+.. code-block:: none
+
+   vyos@router# run show system commit diff 4
+   [edit system]
+   +ipv6 {
+   +    disable-forwarding
+   +}
+
+This means four commits ago we did ``set system ipv6 disable-forwarding``.
+
 
 .. cfgcmd:: set system config-management commit-revisions <N>
 
