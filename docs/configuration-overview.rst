@@ -1,117 +1,143 @@
 .. _configuration-overview:
 
+######################
 Configuration Overview
-======================
+######################
 
-VyOS makes use of a unified configuration file for all system configuration:
-`config.boot`. This allows for easy template creation, backup, and replication
-of system configuration.
+VyOS makes use of a unified configuration file for the entire system's
+configuration: ``/config/config.boot``. This allows easy template
+creation, backup, and replication of system configuration. A system can
+thus also be easily cloned by simply copying the required configuration
+files.
 
-The current active configuration -aka running configuration- can be viewed using the show configuration command.
-
-.. code-block:: none
-
-  vyos@vyos:~$ show configuration
-  interfaces {
-      ethernet eth0 {
-          address dhcp
-          hw-id 00:0c:29:44:3b:0f
-      }
-      loopback lo {
-      }
-  }
-  service {
-      ssh {
-          port 22
-      }
-  }
-  system {
-      config-management {
-          commit-revisions 20
-      }
-      console {
-          device ttyS0 {
-              speed 9600
-          }
-      }
-      login {
-          user vyos {
-              authentication {
-                  encrypted-password ****************
-              }
-              level admin
-          }
-      }
-      ntp {
-          server 0.pool.ntp.org {
-          }
-          server 1.pool.ntp.org {
-          }
-          server 2.pool.ntp.org {
-          }
-      }
-      syslog {
-          global {
-              facility all {
-                  level notice
-              }
-              facility protocols {
-                  level debug
-              }
-          }
-      }
-  }
-  vyos@vyos:~$
-
-By default the configuration is displayed in a hierarchy like the example above,
-this is only one of the possible ways to display the configuration.
-
-When the configuration is generated and the device is configured, changes are added through a collection of `set` and `delete` commands. You can see that collection of commands by entering `show configuration commands`, which is another way of seeing the running configuration.
-
-
-.. code-block:: none
-
-  vyos@vyos:~$ show configuration commands
-  set interfaces ethernet eth0 address 'dhcp'
-  set interfaces ethernet eth0 hw-id '00:0c:29:44:3b:0f'
-  set interfaces loopback 'lo'
-  set service ssh port '22'
-  set system config-management commit-revisions '20'
-  set system console device ttyS0 speed '9600'
-  set system login user vyos authentication encrypted-password '<removed>'
-  set system login user vyos level 'admin'
-  set system ntp server '0.pool.ntp.org'
-  set system ntp server '1.pool.ntp.org'
-  set system ntp server '2.pool.ntp.org'
-  set system syslog global facility all level 'notice'
-  set system syslog global facility protocols level 'debug'
-  vyos@vyos:~$
-
-Both these commands should be executed when in operational mode, they do not work in configuration mode.
-
-
-Configuration terminology
--------------------------
-
+Terminology
+===========
+live
 A VyOS system has three major types of configurations:
 
-Active or running configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The active or running configuration is the system configuration that is loaded and currently being used by VyOS. Any change in the configuration will have to be committed to belong to the active/running configuration.
+* **Active** or **running configuration** is the system configuration
+  that is loaded  and currently active (used by VyOS). Any change in
+  the configuration will have to be committed to belong to the
+  active/running configuration.
 
-Working configuration
-^^^^^^^^^^^^^^^^^^^^^
-The working configuration is the configuration which is currently being modified in configuration mode. Changes made to the working configuration do not go into effect until the changes are committed with the `commit` command. At which time the working configuration will become the active or running configuration.
+* **Working configuration** is the one that is currently being modified
+  in configuration mode. Changes made to the working configuration do
+  not go into effect until the changes are committed with the
+  :cfgcmd:`commit` command. At which time the working configuration will
+  become the active or running configuration.
 
-Saved configuration
-^^^^^^^^^^^^^^^^^^^
-A saved configuration is a configuration saved to a file using the `save` command. It allows you to keep safe a configuration for future uses. There can be multiple configuration files. The default or "boot" configuration is saved and loaded from the file config.boot.
+* **Saved configuration** is the one saved to a file using the
+  :cfgcmd:`save` command. It allows you to keep safe a configuration for
+  future uses. There can be multiple configuration files. The default or
+  "boot" configuration is saved and loaded from the file
+  ``/config/config.boot``.
+
+Seeing and navigating the configuration
+=======================================
+
+.. opcmd:: show configuration
+
+   View the current active configuration, also known as the running
+   configuration, from the operational mode.
+
+   .. code-block:: none
+
+     vyos@vyos:~$ show configuration
+     interfaces {
+         ethernet eth0 {
+             address dhcp
+             hw-id 00:53:00:00:aa:01
+         }
+         loopback lo {
+         }
+     }
+     service {
+         ssh {
+             port 22
+         }
+     }
+     system {
+         config-management {
+             commit-revisions 20
+         }
+         console {
+             device ttyS0 {
+                 speed 9600
+             }
+         }
+         login {
+             user vyos {
+                 authentication {
+                     encrypted-password ****************
+                 }
+                 level admin
+             }
+         }
+         ntp {
+             server 0.pool.ntp.org {
+             }
+             server 1.pool.ntp.org {
+             }
+             server 2.pool.ntp.org {
+             }
+         }
+         syslog {
+             global {
+                 facility all {
+                     level notice
+                 }
+                 facility protocols {
+                     level debug
+                 }
+             }
+         }
+     }
+
+By default, the configuration is displayed in a hierarchy like the above
+example, this is only one of the possible ways to display the
+configuration. When the configuration is generated and the device is
+configured, changes are added through a collection of :cfgcmd:`set` and
+:cfgcmd:`delete` commands.
+
+.. opcmd:: show configuration commands
+
+   Get a collection of all the set commands required which led to the
+   running configuration.
+
+   .. code-block:: none
+
+     vyos@vyos:~$ show configuration commands
+     set interfaces ethernet eth0 address 'dhcp'
+     set interfaces ethernet eth0 hw-id '00:53:dd:44:3b:0f'
+     set interfaces loopback 'lo'
+     set service ssh port '22'
+     set system config-management commit-revisions '20'
+     set system console device ttyS0 speed '9600'
+     set system login user vyos authentication encrypted-password '$6$Vt68...QzF0'
+     set system login user vyos level 'admin'
+     set system ntp server '0.pool.ntp.org'
+     set system ntp server '1.pool.ntp.org'
+     set system ntp server '2.pool.ntp.org'
+     set system syslog global facility all level 'notice'
+     set system syslog global facility protocols level 'debug'
+
+Both these ``show`` commands should be executed when in operational
+mode, they do not work directly in configuration mode. There is a
+special way on how to :ref:`run_opmode_from_config_mode`.
+
+.. hint:: Use the ``show configuration commands | strip-private``
+   command when you want to hide private data. You may want to do so if
+   you want to share your configuration on the `forum`_.
+
+.. _`forum`: https://forum.vyos.io
 
 
-Navigating in Configuration Mode
----------------------------------
-When entering the configuration mode you are navigating inside the tree structure exported in the overview above,
-to enter configuration mode enter the command `configure` when in operational mode
+The config mode
+---------------
+
+When entering the configuration mode you are navigating inside a tree
+structure, to enter configuration mode enter the command
+:opcmd:`configure` when in operational mode.
 
 .. code-block:: none
 
@@ -119,11 +145,17 @@ to enter configuration mode enter the command `configure` when in operational mo
   [edit]
   vyos@vyos#
 
-.. note:: When going into configuration mode, prompt changes from *$* to *#*. To exit configuration mode, type `exit`.
 
-All commands executed here are relative to the configuration level you have entered. You can do everything from the top level, but commands will be quite lengthy when manually typing them.
+.. note:: When going into configuration mode, prompt changes from
+   ``$`` to ``#``.
 
-To change the current hierarchy level use the command: `edit`
+
+All commands executed here are relative to the configuration level you
+have entered. You can do everything from the top level, but commands
+will be quite lengthy when manually typing them.
+
+The current hierarchy level can be changed by the :cfgcmd:`edit`
+command.
 
 .. code-block:: none
 
@@ -133,13 +165,19 @@ To change the current hierarchy level use the command: `edit`
   [edit interfaces ethernet eth0]
   vyos@vyos#
 
-You are now in a sublevel relative to `interfaces ethernet eth0`,
-all commands executed from this point on are relative to this sublevel.
-Use either the `top` or `exit` command to go back to the top of the hierarchy. You can also use the `up` command to move only one level up at a time.
+You are now in a sublevel relative to ``interfaces ethernet eth0``, all
+commands executed from this point on are relative to this sublevel. Use
+eithe the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top
+of the hierarchy. You can also use the :cfgcmd:`up` command to move only
+one level up at a time.
 
-The `show` command within configuration mode will show the working configuration
-indicating line changes with `+` for additions, `>` for replacements and `-` for deletions.
+.. cfgcmd:: show
 
+The :cfgcmd:`show` command within configuration mode will show the
+working configuration indicating line changes with ``+`` for additions,
+``>`` for replacements and ``-`` for deletions.
+
+**Example:**
 
 .. code-block:: none
 
@@ -149,7 +187,7 @@ indicating line changes with `+` for additions, `>` for replacements and `-` for
   ethernet eth0 {
       description MY_OLD_DESCRIPTION
       disable
-      hw-id 52:54:00:0e:82:d9
+      hw-id 00:53:dd:44:3b:03
   }
   loopback lo {
   }
@@ -165,31 +203,34 @@ indicating line changes with `+` for additions, `>` for replacements and `-` for
  +    address dhcp
  >    description MY_NEW_DESCRIPTION
  -    disable
-      hw-id 52:54:00:0e:82:d9
+      hw-id 00:53:dd:44:3b:03
   }
   loopback lo {
   }
- [edit]
- vyos@vyos#
 
-It is also possible to display all `set` commands within configuration mode using `show | commands`
+It is also possible to display all `set` commands within configuration
+mode using :cfgcmd:`show | commands`
 
 .. code-block:: none
 
   vyos@vyos# show interfaces ethernet eth0 | commands
   set address dhcp
-  set hw-id 00:0c:29:44:3b:0f
+  set hw-id 00:53:ad:44:3b:03
 
-These commands are also relative to the level you are inside and only relevant configuration blocks will be displayed when entering a sub-level.
+These commands are also relative to the level you are inside and only 
+relevant configuration blocks will be displayed when entering a
+sub-level.
 
 .. code-block:: none
 
   [edit interfaces ethernet eth0]
   vyos@vyos# show
    address dhcp
-   hw-id 00:0c:29:44:3b:0f
+   hw-id 00:53:ad:44:3b:03
 
-Exiting from the configuration mode is done via the `exit` command from the top level, executing `exit` from within a sub-level takes you back to the top level.
+Exiting from the configuration mode is done via the :cfgcmd:`exit`
+command from the top level, executing :cfgcmd:`exit` from within a
+sub-level takes you back to the top level.
 
 .. code-block:: none
 
@@ -198,229 +239,458 @@ Exiting from the configuration mode is done via the `exit` command from the top 
   [edit]
   vyos@vyos# exit
   Warning: configuration changes have not been saved.
-  vyos@vyos:~$
 
 
+Editing the configuration
+=========================
 
-Managing the configuration
---------------------------
+The configuration can be edited by the use of :cfgcmd:`set` and
+:cfgcmd:`delete` commands from within configuration mode.
 
-The configuration is managed by the use of `set` and `delete` commands from within configuration mode.
-Configuration commands are flattened from the tree into 'one-liner' commands shown in `show configuration commands` from operation mode.
+.. cfgcmd:: set
 
-These commands are also relative to the level where they are executed and all redundant information from the current level is removed from the command entered.
+   Use this command to set the value of a parameter or to create a new
+   element.
+
+Configuration commands are flattened from the tree into 'one-liner'
+commands shown in :opcmd:`show configuration commands` from operation
+mode. Commands are relative to the level where they are executed and all
+redundant information from the current level is removed from the command
+entered.
 
 .. code-block:: none
 
   [edit]
-  vyos@vyos# set interface ethernet eth0 address 203.0.113.6/24
+  vyos@vyos# set interface ethernet eth0 address 192.0.2.100/24
+
+
+.. code-block:: none
 
   [edit interfaces ethernet eth0]
   vyos@vyos# set address 203.0.113.6/24
 
-These two commands above are essentially the same, just executed from different levels in the hierarchy.
 
-To delete a configuration entry use the `delete` command, this also deletes all sub-levels under the current level you've specified in the `delete` command.
-Deleting an entry will also result in the element reverting back to its default value if one exists.
+These two commands above are essentially the same, just executed from
+different levels in the hierarchy.
+
+.. cfgcmd:: delete
+
+   To delete a configuration entry use the :cfgcmd:`delete` command,
+   this also deletes all sub-levels under the current level you've
+   specified in the :cfgcmd:`delete` command. Deleting an entry will
+   also result in the element reverting back to its default value if one
+   exists.
+
+   .. code-block:: none
+
+     [edit interfaces ethernet eth0]
+     vyos@vyos# delete address 192.0.2.100/24
+
+.. cfgcmd:: commit
+
+  Any change you do on the configuration, will not take effect until
+  committed using the :cfgcmd:`commit` command in configuration mode.
+
+  .. code-block:: none
+
+    vyos@vyos# commit
+    [edit]
+    vyos@vyos# exit
+    Warning: configuration changes have not been saved.
+    vyos@vyos:~$
+
+.. cfgcmd:: save
+
+   In order to preserve configuration changes upon reboot, the
+   configuration must also be saved once applied. This is done using the
+   :cfgcmd:`save` command in configuration mode.
+
+   .. code-block:: none
+
+     vyos@vyos# save
+     Saving configuration to '/config/config.boot'...
+     Done
+
+   .. code-block:: none
+
+     vyos@vyos# save [tab]
+     Possible completions:
+       <Enter>       Save to system config file
+       <file>        Save to file on local machine
+       scp://<user>:<passwd>@<host>/<file> Save to file on remote machine
+       ftp://<user>:<passwd>@<host>/<file> Save to file on remote machine
+       tftp://<host>/<file>      Save to file on remote machine
+     vyos@vyos# save tftp://192.168.0.100/vyos-test.config.boot
+     Saving configuration to 'tftp://192.168.0.100/vyos-test.config.boot'...
+     ######################################################################## 100.0%
+     Done
+
+.. cfgcmd:: exit [discard]
+
+   Configuration mode can not be exited while uncommitted changes exist.
+   To exit configuration mode without applying changes, the
+   :cfgcmd:`exit discard` command must be used.
+
+   All changes in the working config will thus be lost.
+
+   .. code-block:: none
+
+     vyos@vyos# exit
+     Cannot exit: configuration modified.
+     Use 'exit discard' to discard the changes and exit.
+     [edit]
+     vyos@vyos# exit discard
+
+
+.. cfgcmd:: commit-confirm
+
+   Commit the current set of changes if ``confirm`` is also entered
+   within 10 minutes. Otherwise the system reboot into the previous
+   configuration.
+
+
+   What if you are doing something dangerous? Suppose you want to setup
+   a firewall, and you are not sure there are no mistakes that will lock
+   you out of your system. You can use confirmed commit. If you issue
+   the ``commit-confirm`` command, your changes will be commited, and if
+   you don't issue issue the ``confirm`` command in 10 minutes, your
+   system will reboot into previous config revision.
+
+   .. code-block:: none
+   
+      vyos@router# set interfaces ethernet eth0 firewall local name FromWorld
+      vyos@router# commit-confirm 
+      commit confirm will be automatically reboot in 10 minutes unless confirmed
+      Proceed? [confirm]y
+      [edit]
+      vyos@router# confirm 
+      [edit]
+
+
+   .. note:: A reboot because you did not enter ``confirm`` will not
+      take you necessarily to the *saved configuration*, but to the
+      point before the unfortunate commit.
+
+
+.. cfgcmd:: copy
+
+   Copy a configuration element.
+
+   You can copy and remove configuration subtrees. Suppose you set up a
+   firewall ruleset ``FromWorld`` with one rule that allows traffic from
+   specific subnet. Now you want to setup a similar rule, but for
+   different subnet. Change your edit level to
+   ``firewall name FromWorld`` and use ``copy rule 10 to rule 20``, then
+   modify rule 20.
+
+
+   .. code-block:: none
+   
+      vyos@router# show firewall name FromWorld 
+       default-action drop
+       rule 10 {
+           action accept
+           source {
+               address 203.0.113.0/24
+           }
+       }
+      [edit]
+      vyos@router# edit firewall name FromWorld 
+      [edit firewall name FromWorld]
+      vyos@router# copy rule 10 to rule 20
+      [edit firewall name FromWorld]
+      vyos@router# set rule 20 source address 198.51.100.0/24
+      [edit firewall name FromWorld]
+      vyos@router# commit
+      [edit firewall name FromWorld]
+
+
+.. cfgcmd:: rename
+
+   Rename a configuration element.
+
+   You can also rename config subtrees:
+
+   .. code-block:: none
+   
+      vyos@router# rename rule 10 to rule 5
+      [edit firewall name FromWorld]
+      vyos@router# commit
+      [edit firewall name FromWorld]
+
+   Note that ``show`` command respects your edit level and from this
+   level you can view the modified firewall ruleset with just ``show``
+   with no parameters.
+
+   .. code-block:: none
+   
+      vyos@router# show 
+       default-action drop
+       rule 5 {
+           action accept
+           source {
+               address 203.0.113.0/24
+           }
+       }
+       rule 20 {
+           action accept
+           source {
+               address 198.51.100.0/24
+           }
+       }
+
+
+.. cfgcmd:: comment <config node> "comment text"
+
+   Add comment as an annotation to a configuration node.
+
+   The ``comment`` command allows you to insert a comment above the
+   ``<config node>`` configuration section. When shown, comments are
+   enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments
+   need to be commited, just like other config changes.
+
+   To remove an existing comment from your current configuration,
+   specify an empty string enclosed in double quote marks (``""``) as
+   the comment text.
+
+   Example:
+
+   .. code-block:: none
+
+     vyos@vyos# comment firewall all-ping "Yes I know this VyOS is cool"
+     vyos@vyos# commit
+     vyos@vyos# show
+      firewall {
+          /* Yes I know this VyOS is cool */
+          all-ping enable
+          broadcast-ping disable
+          ...
+      }
+
+   .. note:: An important thing to note is that since the comment is
+      added on top of the section, it will not appear if the ``show
+      <section>`` command is used. With the above example, the `show
+      firewall` command would return starting after the ``firewall
+      {`` line, hiding the comment.
+
+
+
+
+   
+
+.. _run_opmode_from_config_mode:
+
+Access opmode from config mode
+==============================
+
+When inside configuration mode you are not directly able to execute
+operational commands.
+
+.. cfgcmd:: run
+
+  Access to these commands are possible through the use of the
+  ``run [command]`` command. From this command you will have access to
+  everything accessible from operational mode.
+
+  Command completion and syntax help with ``?`` and ``[tab]`` will also
+  work.
+
+  .. code-block:: none
+
+    [edit]
+    vyos@vyos# run show interfaces
+    Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+    Interface        IP Address                        S/L  Description
+    ---------        ----------                        ---  -----------
+    eth0             0.0.0.0/0                         u/u
+
+Managing configurations
+=======================
+
+VyOS comes with an integrated versioning system for the system
+configuration. It automatically maintains a backup of every previous
+configuration which has been committed to the system. The configurations
+are versioned locally for rollback but they can also be stored on a
+remote host for archiving/backup reasons.
+
+Local Archive
+-------------
+
+Revisions are stored on disk. You can view, compare and rollback them to
+any previous revisions if something goes wrong.
+
+.. opcmd:: show system commit
+
+   View all existing revisions on the local system.
+
+   .. code-block:: none
+
+     vyos@vyos:~$ show system commit
+     0   2015-03-30 08:53:03 by vyos via cli
+     1   2015-03-30 08:52:20 by vyos via cli
+     2   2015-03-26 21:26:01 by root via boot-config-loader
+     3   2015-03-26 20:43:18 by root via boot-config-loader
+     4   2015-03-25 11:06:14 by root via boot-config-loader
+     5   2015-03-25 01:04:28 by root via boot-config-loader
+     6   2015-03-25 00:16:47 by vyos via cli
+     7   2015-03-24 23:43:45 by root via boot-config-loader
+
+
+.. cfgcmd:: set system config-management commit-revisions <N>
+
+   You can specify the number of revisions stored on disk. N can be in
+   the range of 0 - 65535. When the number of revisions exceeds the
+   configured value, the oldest revision is removed. The default setting
+   for this value is to store 100 revisions locally.
+
+
+Compare configurations
+----------------------
+
+VyOS lets you compare different configurations.
+
+.. cfgcmd:: compare <saved | N> <M>
+
+   Use this command to spot what the differences are between different
+   configurations.
+
+   .. code-block:: none
+
+     vyos@vyos# compare [tab]
+     Possible completions:
+       <Enter>	Compare working & active configurations
+       saved		Compare working & saved configurations
+       <N>		Compare working with revision N
+       <N> <M>	Compare revision N with M
+       Revisions:
+         0	   2013-12-17 20:01:37 root by boot-config-loader
+         1	   2013-12-13 15:59:31 root by boot-config-loader
+         2	   2013-12-12 21:56:22 vyos by cli
+         3	   2013-12-12 21:55:11 vyos by cli
+         4	   2013-12-12 21:27:54 vyos by cli
+         5	   2013-12-12 21:23:29 vyos by cli
+         6	   2013-12-12 21:13:59 root by boot-config-loader
+         7	   2013-12-12 16:25:19 vyos by cli
+         8	   2013-12-12 15:44:36 vyos by cli
+         9	   2013-12-12 15:42:07 root by boot-config-loader
+         10   2013-12-12 15:42:06 root by init
+
+   The command :cfgcmd:`compare` allows you to compare different type of
+   configurations. It also lets you compare different revisions through
+   the :cfgcmd:`compare N M` command, where N and M are revision
+   numbers. The output will describe how the configuration N is when
+   compared to M indicating with a plus sign (``+``) the additional
+   parts N has when compared to M, and indicating with a minus sign
+   (``-``) the lacking parts N misses when compared to M.
+
+   .. code-block:: none
+
+     vyos@vyos# compare 0 6
+     [edit interfaces]
+     +dummy dum1 {
+     +    address 10.189.0.1/31
+     +}
+     [edit interfaces ethernet eth0]
+     +vif 99 {
+     +    address 10.199.0.1/31
+     +}
+     -vif 900 {
+     -    address 192.0.2.4/24
+     -}
+
+
+.. opcmd:: show system commit diff <number>
+
+   Show commit revision difference.
+
+
+The command above also lets you see the difference between two commits.
+By default the difference with the running config is shown.
 
 .. code-block:: none
 
-  [edit interfaces ethernet eth0]
-  vyos@vyos#  delete address 203.0.113.6/24
+   vyos@router# run show system commit diff 4
+   [edit system]
+   +ipv6 {
+   +    disable-forwarding
+   +}
 
-Any change you do on the configuration, will not take effect until committed using the `commit` command in configuration mode.
-
-.. code-block:: none
-
-  vyos@vyos# commit
-  [edit]
-  vyos@vyos# exit
-  Warning: configuration changes have not been saved.
-  vyos@vyos:~$
-
-In order to preserve configuration changes upon reboot, the configuration must
-also be saved once applied. This is done using the `save` command in
-configuration mode.
-
-.. code-block:: none
-
-  vyos@vyos# save
-  Saving configuration to '/config/config.boot'...
-  Done
-  [edit]
-  vyos@vyos#
-
-
-Configuration mode can not be exited while uncommitted changes exist. To exit
-configuration mode without applying changes, the exit discard command can be
-used.
-
-.. code-block:: none
-
-  vyos@vyos# exit
-  Cannot exit: configuration modified.
-  Use 'exit discard' to discard the changes and exit.
-  [edit]
-  vyos@vyos# exit discard
-  exit
-  vyos@vyos:~$
+This means four commits ago we did ``set system ipv6 disable-forwarding``.
 
 
 
-.. code-block:: none
-
-  vyos@vyos# save [tab]
-  Possible completions:
-    <Enter>       Save to system config file
-    <file>        Save to file on local machine
-    scp://<user>:<passwd>@<host>/<file> Save to file on remote machine
-    ftp://<user>:<passwd>@<host>/<file> Save to file on remote machine
-    tftp://<host>/<file>      Save to file on remote machine
-  vyos@vyos# save tftp://192.168.0.100/vyos-test.config.boot
-  Saving configuration to 'tftp://192.168.0.100/vyos-test.config.boot'...
-  ######################################################################## 100.0%
-  Done
-
-Operational info from config mode
----------------------------------
-
-When inside configuration mode you are not directly able to execute operational commands.
-
-Access to these commands are possible through the use of the `run [command]` command.
-From this command you will have access to everything accessible from operational mode.
-
-Command completion and syntax help with `?` and `[tab]` will also work.
-
-.. code-block:: none
-
-  [edit]
-  vyos@vyos# run show interfaces
-  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
-  Interface        IP Address                        S/L  Description
-  ---------        ----------                        ---  -----------
-  eth0             0.0.0.0/0                         u/u
 
 
-Configuration archive
----------------------
+Rollback Changes
+----------------
 
-VyOS automatically maintains backups of previous configurations.
+You can rollback configuration changes using the rollback command. This
+willn apply the selected revision and trigger a system reboot.
 
-Local archive and revisions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. cfgcmd:: rollback <N>
 
-Revisions are stored on disk. You can view them, compare them, and rollback to previous revisions if anything goes wrong.
+   Rollback to revision N (currently requires reboot)
 
-To view existing revisions, use `show system commit` operational mode command.
+   .. code-block:: none
 
-.. code-block:: none
+     vyos@vyos# compare 1
+     [edit system]
+     >host-name vyos-1
+     [edit]
 
-  vyos@vyos-test-2# run show system commit
-  0   2015-03-30 08:53:03 by vyos via cli
-  1   2015-03-30 08:52:20 by vyos via cli
-  2   2015-03-26 21:26:01 by root via boot-config-loader
-  3   2015-03-26 20:43:18 by root via boot-config-loader
-  4   2015-03-25 11:06:14 by root via boot-config-loader
-  5   2015-03-25 01:04:28 by root via boot-config-loader
-  6   2015-03-25 00:16:47 by vyos via cli
-  7   2015-03-24 23:43:45 by root via boot-config-loader
+     vyos@vyos# rollback 1
+     Proceed with reboot? [confirm][y]
+     Broadcast message from root@vyos-1 (pts/0) (Tue Dec 17 21:07:45 2013):
+     The system is going down for reboot NOW!
 
-To compare configuration revisions in configuration mode, use the compare command:
+Remote Archive
+--------------
 
-.. code-block:: none
+VyOS can upload the configuration to a remote location after each call
+to :cfgcmd:`commit`. You will have to set the commit-archive location.
+TFTP, FTP, SCP and SFTP servers are supported. Every time a
+:cfgcmd:`commit` is successfull the ``config.boot`` file will be copied
+to the defined destination(s). The filename used on the remote host will
+be ``config.boot-hostname.YYYYMMDD_HHMMSS``. 
 
-  vyos@vyos# compare [tab]
-  Possible completions:
-    <Enter>	Compare working & active configurations
-    saved		Compare working & saved configurations
-    <N>		Compare working with revision N
-    <N> <M>	Compare revision N with M
-    Revisions:
-      0	   2013-12-17 20:01:37 root by boot-config-loader
-      1	   2013-12-13 15:59:31 root by boot-config-loader
-      2	   2013-12-12 21:56:22 vyos by cli
-      3	   2013-12-12 21:55:11 vyos by cli
-      4	   2013-12-12 21:27:54 vyos by cli
-      5	   2013-12-12 21:23:29 vyos by cli
-      6	   2013-12-12 21:13:59 root by boot-config-loader
-      7	   2013-12-12 16:25:19 vyos by cli
-      8	   2013-12-12 15:44:36 vyos by cli
-      9	   2013-12-12 15:42:07 root by boot-config-loader
-      10   2013-12-12 15:42:06 root by init
+.. cfgcmd:: set system config-management commit-archive location <URI>
 
-  [edit]
-  vyos@vyos#
+   Specify remote location of commit archive as any of the below
+   :abbr:`URI (Uniform Resource Identifier)`
 
-Comparing Revisions
-"""""""""""""""""""
+   * ``scp://<user>:<passwd>@<host>/<dir>``
+   * ``sftp://<user>:<passwd>@<host>/<dir>``
+   * ``ftp://<user>:<passwd>@<host>/<dir>``
+   * ``tftp://<host>/<dir>``
 
-You can compare revisions with `compare X Y` command, where X and Y are revision numbers. The output will describe how the configuration X is when compared to Y, indicating with a plus sign (**+**) the additional parts X has when compared to y, and indicating with a minus sign (**-**) the lacking parts x misses when compared to y.
+.. note:: The number of revisions don't affect the commit-archive.
 
-.. code-block:: none
+.. note:: You may find VyOS not allowing the secure connection because
+   it cannot verify the legitimacy of the remote server. You can use
+   the workaround below to quickly add the remote host's SSH
+   fingerprint to your ``~/.ssh/known_hosts`` file:
 
-  vyos@vyos-test-2# compare 0 6
-  [edit interfaces]
-  +dummy dum1 {
-  +    address 10.189.0.1/31
-  +}
-  [edit interfaces ethernet eth0]
-  +vif 99 {
-  +    address 10.199.0.1/31
-  +}
-  -vif 900 {
-  -    address 192.0.2.4/24
-  -}
+   .. code-block:: none
 
-Rolling Back Changes
-""""""""""""""""""""
+     vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
 
-You can rollback configuration using the rollback command.  This 
-command will apply the selected revision and trigger a system reboot.
+Restore Default
+---------------
 
-.. code-block:: none
-
-  vyos@vyos# compare 1
-  [edit system]
-  >host-name vyos-1
-  [edit]
-  vyos@vyos# rollback 1
-  Proceed with reboot? [confirm][y]
-  Broadcast message from root@vyos-1 (pts/0) (Tue Dec 17 21:07:45 2013):
-  The system is going down for reboot NOW!
-  [edit]
-  vyos@vyos#
-
-Configuring the archive size
-""""""""""""""""""""""""""""
-
-You can specify the number of revisions stored on disk with `set system config-management commit-revisions X`, where X is a number between 0 and 65535. When the number of revisions exceeds that number, the oldest revision is removed.
-
-Remote archive
-^^^^^^^^^^^^^^
-
-VyOS can copy the config to a remote location after each commit. TFTP, FTP, and SFTP servers are supported.
-
-
-You can specify the location with: 
-
-* `set system config-management commit-archive location URL` 
-
-For example, `set system config-management commit-archive location tftp://10.0.0.1/vyos`.
-
-You can specify the location with `set system config-management commit-archive location URL` command, e.g. `set system config-management commit-archive location tftp://10.0.0.1/vyos`.
-
-Wipe config and restore default
--------------------------------
-
-In the case you want to completely delete your configuration and restore the default one, you can enter the following command in configuration mode:
+In the case you want to completely delete your configuration and restore
+the default one, you can enter the following command in configuration
+mode:
 
 .. code-block:: none
 
   load /opt/vyatta/etc/config.boot.default
 
+You will be asked if you want to continue. If you accept, you will have
+to use :cfgcmd:`commit` if you want to make the changes active.
 
-You will be asked if you want to continue. If you accept, you will have to use `commit` if you want to make the changes active.
+Then you may want to :cfgcmd:`save` in order to delete the saved
+configuration too.
 
-Then you  may want to `save` in order to delete the saved configuration too.
-
-.. note:: If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config.
+.. note:: If you are remotely connected, you will lose your connection.
+   You may want to copy first the config, edit it to ensure
+   connectivity, and load the edited config.
