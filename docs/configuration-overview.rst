@@ -535,7 +535,7 @@ any previous revisions if something goes wrong.
    You can specify the number of revisions stored on disk. N can be in
    the range of 0 - 65535. When the number of revisions exceeds the
    configured value, the oldest revision is removed. The default setting
-   for this value is to store 20 revisions locally.
+   for this value is to store 100 revisions locally.
 
 
 Compare configurations
