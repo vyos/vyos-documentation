@@ -529,9 +529,24 @@ any previous revisions if something goes wrong.
      6   2015-03-25 00:16:47 by vyos via cli
      7   2015-03-24 23:43:45 by root via boot-config-loader
 
+
+.. cfgcmd:: set system config-management commit-revisions <N>
+
+   You can specify the number of revisions stored on disk. N can be in
+   the range of 0 - 65535. When the number of revisions exceeds the
+   configured value, the oldest revision is removed. The default setting
+   for this value is to store 20 revisions locally.
+
+
+Compare configurations
+----------------------
+
+VyOS lets you compare different configurations.
+
 .. cfgcmd:: compare <saved | N> <M>
 
-   Compare difference in configuration revisions.
+   Use this command to spot what the differences are between different
+   configurations.
 
    .. code-block:: none
 
@@ -597,12 +612,8 @@ By default the difference with the running config is shown.
 This means four commits ago we did ``set system ipv6 disable-forwarding``.
 
 
-.. cfgcmd:: set system config-management commit-revisions <N>
 
-   You can specify the number of revisions stored on disk. N can be in
-   the range of 0 - 65535. When the number of revisions exceeds the
-   configured value, the oldest revision is removed. The default setting
-   for this value is to store 20 revisions locally.
+
 
 Rollback Changes
 ----------------
