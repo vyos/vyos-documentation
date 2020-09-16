@@ -12,7 +12,7 @@ files.
 
 Terminology
 ===========
-
+live
 A VyOS system has three major types of configurations:
 
 * **Active** or **running configuration** is the system configuration
@@ -240,53 +240,21 @@ sub-level takes you back to the top level.
   vyos@vyos# exit
   Warning: configuration changes have not been saved.
 
-Comment
--------
-
-.. cfgcmd:: comment <config node> "comment text"
-
-   Add comment as an annotation to a configuration node.
-
-   The ``comment`` command allows you to insert a comment above the
-   ``<config node>`` configuration section. When shown, comments are
-   enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments
-   need to be commited, just like other config changes.
-
-   To remove an existing comment from your current configuration,
-   specify an empty string enclosed in double quote marks (``""``) as
-   the comment text.
-
-   Example:
-
-   .. code-block:: none
-
-     vyos@vyos# comment firewall all-ping "Yes I know this VyOS is cool"
-     vyos@vyos# commit
-     vyos@vyos# show
-      firewall {
-          /* Yes I know this VyOS is cool */
-          all-ping enable
-          broadcast-ping disable
-          ...
-      }
-
-   .. note:: An important thing to note is that since the comment is
-      added on top of the section, it will not appear if the ``show
-      <section>`` command is used. With the above example, the `show
-      firewall` command would return starting after the ``firewall
-      {`` line, hiding the comment.
-
-
 
 Editing the configuration
 =========================
 
 The configuration can be edited by the use of :cfgcmd:`set` and
-:cfgcmd:`delete` commands from within configuration mode. Configuration
-commands are flattened from the tree into 'one-liner' commands shown in
-:opcmd:`show configuration commands` from operation mode.
+:cfgcmd:`delete` commands from within configuration mode.
 
-Commands are relative to the level where they are executed and all
+.. cfgcmd:: set
+
+   Use this command to set the value of a parameter or to create a new
+   element.
+
+Configuration commands are flattened from the tree into 'one-liner'
+commands shown in :opcmd:`show configuration commands` from operation
+mode. Commands are relative to the level where they are executed and all
 redundant information from the current level is removed from the command
 entered.
 
@@ -470,6 +438,44 @@ different levels in the hierarchy.
                address 198.51.100.0/24
            }
        }
+
+
+.. cfgcmd:: comment <config node> "comment text"
+
+   Add comment as an annotation to a configuration node.
+
+   The ``comment`` command allows you to insert a comment above the
+   ``<config node>`` configuration section. When shown, comments are
+   enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments
+   need to be commited, just like other config changes.
+
+   To remove an existing comment from your current configuration,
+   specify an empty string enclosed in double quote marks (``""``) as
+   the comment text.
+
+   Example:
+
+   .. code-block:: none
+
+     vyos@vyos# comment firewall all-ping "Yes I know this VyOS is cool"
+     vyos@vyos# commit
+     vyos@vyos# show
+      firewall {
+          /* Yes I know this VyOS is cool */
+          all-ping enable
+          broadcast-ping disable
+          ...
+      }
+
+   .. note:: An important thing to note is that since the comment is
+      added on top of the section, it will not appear if the ``show
+      <section>`` command is used. With the above example, the `show
+      firewall` command would return starting after the ``firewall
+      {`` line, hiding the comment.
+
+
+
+
    
 
 .. _run_opmode_from_config_mode:
