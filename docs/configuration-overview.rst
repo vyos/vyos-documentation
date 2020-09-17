@@ -374,11 +374,12 @@ different levels in the hierarchy.
      vyos@vyos# exit discard
 
 
-.. cfgcmd:: commit-confirm
+.. cfgcmd:: commit-confirm <minutes>
 
-   Commit the current set of changes if ``confirm`` is also entered
-   within 10 minutes. Otherwise the system reboot into the previous
-   configuration.
+   Use this command to temporarily commit your changes and set the
+   number of minutes available for validation. ``confirm`` must
+   be entered within those minutes, otherwise the system will reboot
+   into the previous configuration. The default value is 10 minutes.
 
 
    What if you are doing something dangerous? Suppose you want to setup
