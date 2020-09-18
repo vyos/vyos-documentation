@@ -45,7 +45,6 @@ Introduction
    services/index
    system/index
    high-availability
-   clustering
    load-balancing
    image-mgmt
    commandscripting
