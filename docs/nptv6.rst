@@ -45,10 +45,10 @@ NPTv6 support has been added in VyOS 1.2 (Crux) and is available through
 .. code-block:: none
 
   set rule 10 source prefix 'fc00:dead:beef::/48'
-  set rule 10 outside-interface 'eth1'
+  set rule 10 outbound-interface 'eth1'
   set rule 10 translation prefix '2001:db8:e1::/48'
   set rule 20 source prefix 'fc00:dead:beef::/48'
-  set rule 20 outside-interface 'eth2'
+  set rule 20 outbound-interface 'eth2'
   set rule 20 translation prefix '2001:db8:e2::/48'
 
 Resulting in the following ip6tables rules:
