@@ -4,7 +4,7 @@
 Quick Start
 ###########
 
-This chapter will guide you on how to get up to speed using your new VyOS
+This chapter will guide you on how to get up to speed quickly using your new VyOS
 system. It will show you a very basic configuration example that will provide
 a :ref:`nat` gateway for a device with two network interfaces (`eth0` and
 `eth1`).
@@ -14,6 +14,10 @@ a :ref:`nat` gateway for a device with two network interfaces (`eth0` and
 Configuration Mode
 ##################
 
+By default, VyOS is in operational mode, and the command prompt displays a `$`. To configure VyOS,
+you will need to enter configuration mode, resulting in the command prompt displaying a `#`, as
+demonstrated below:
+
 .. code-block:: none
 
   vyos@vyos$ configure
@@ -22,13 +26,13 @@ Configuration Mode
 Commit and Save
 ################
 
-After every configuration change you need to apply the changes by using the
+After every configuration change, you need to apply the changes by using the following command:
 
 .. code-block:: none
 
   commit
 
-Once your configuration works as expected you can save it permanently.
+Once your configuration works as expected, you can save it permanently by using the following command:
 
 .. code-block:: none
 
@@ -37,9 +41,9 @@ Once your configuration works as expected you can save it permanently.
 Interface Configuration
 #######################
 
-* Your outside/WAN interface will be `eth0`, it receives it's interface address
-  be means of DHCP.
-* Your internal/LAN interface is `eth1`. It uses a fixed IP address of
+* Your outside/WAN interface will be `eth0`. It will receive its interface address
+  via DHCP.
+* Your internal/LAN interface will be `eth1`. It will use a static IP address of
   `192.168.0.1/24`.
 
 After switching to :ref:`quick-start-configuration-mode` issue the following
@@ -69,14 +73,17 @@ on specific addresses only.
 Configure DHCP/DNS Servers
 ##########################
 
-* Provide DHCP service on your internal/LAN network where VyOS will act
-  as the default gateway and DNS server.
-* Client IP addresses are assigned from the range ``192.168.0.9 -
-  192.168.0.254``
+The following settings will configure DHCP and DNS services on your internal/LAN network,
+where VyOS will act as the default gateway and DNS server.
+
+* The default gateway and DNS recursor address will be `192.168.0.1/24`
+* The address range `192.168.0.2/24 - 192.168.0.8/24` will be reserved for static assignments
+* DHCP clients will be assigned IP addresses within the range of `192.168.0.9 - 192.168.0.254`
+  and have a domain name of `internal-network`
 * DHCP leases will hold for one day (86400 seconds)
-* VyOS will server as full DNS recursor - no need to bother the Google or
-  Cloudflare DNS servers (good for privacy)
-* Only clients from your internal/LAN network can use the DNS resolver
+* VyOS will serve as a full DNS recursor, replacing the need to utilize Google, 
+  Cloudflare, or other public DNS servers (which is good for privacy)
+* Only hosts from your internal/LAN network can use the DNS recursor
 
 .. code-block:: none
 
@@ -95,7 +102,8 @@ Configure DHCP/DNS Servers
 NAT
 ###
 
-* Configure :ref:`source-nat` for our internal/LAN network
+The following settings will configure :ref:`source-nat` rules for our internal/LAN network, allowing
+hosts to communicate through the outside/WAN network via IP masquerade.
 
 .. code-block:: none
 
@@ -188,11 +196,23 @@ Set up :ref:`ssh_key_based_authentication`:
 
 Finally, try and SSH into the VyOS install as your new user. Once you have
 confirmed that your new user can access your router without a password, delete
-the original ``vyos`` user and probably disable password authentication for
-:ref:`ssh` at all:
+the original ``vyos`` user and completely disable password authentication for
+:ref:`ssh`:
 
 .. code-block:: none
 
   delete system login user vyos
   set service ssh disable-password-authentication
 
+As above, commit your changes, save the configuration, and exit configuration mode:
+
+.. code-block:: none
+
+  vyos@vyos# commit
+  vyos@vyos# save
+  Saving configuration to '/config/config.boot'...
+  Done
+  vyos@vyos# exit
+  vyos@vyos$
+ 
+You now should have a simple yet secure and functioning router to experiment with further. Enjoy!
