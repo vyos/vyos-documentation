@@ -35,9 +35,9 @@ Address
    Do not install DNS nameservers received from ISP into system wide nameserver
    list.
 
-.. cfgcmd:: set interfaces wirelessmodem <interface> ondemand
+.. cfgcmd:: set interfaces wirelessmodem <interface> connect-on-demand
 
-   Enables or disables on-demand WWAN connection.
+   When set the interface is enabled for "dial-on-demand".
 
    Use this command to instruct the system to establish a PPP connection
    automatically once traffic passes through the interface. A disabled on-demand

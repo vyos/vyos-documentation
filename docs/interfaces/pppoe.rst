@@ -79,7 +79,7 @@ Configuration
 
 .. cfgcmd:: set interfaces pppoe <interface> connect-on-demand
 
-   Enables or disables on-demand PPPoE connection on a PPPoE unit.
+   When set the interface is enabled for "dial-on-demand".
 
    Use this command to instruct the system to establish a PPPoE connections
    automatically once traffic passes through the interface. A disabled on-demand
