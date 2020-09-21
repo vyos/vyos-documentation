@@ -299,11 +299,14 @@ different levels in the hierarchy.
     Warning: configuration changes have not been saved.
     vyos@vyos:~$
 
+.. _save:
+
 .. cfgcmd:: save
 
-   In order to preserve configuration changes upon reboot, the
-   configuration must also be saved once applied. This is done using the
-   :cfgcmd:`save` command in configuration mode.
+   Use this command to preserve configuration changes upon reboot. By
+   default it is stored at */config/config.boot*. In the case you want
+   to store the configuration file somewhere else, you can add a local
+   path, an SCP address, an FTP address or a TFTP address. 
 
    .. code-block:: none
 
@@ -619,14 +622,11 @@ By default the difference with the running config is shown.
 This means four commits ago we did ``set system ipv6 disable-forwarding``.
 
 
-
-
-
 Rollback Changes
 ----------------
 
 You can rollback configuration changes using the rollback command. This
-willn apply the selected revision and trigger a system reboot.
+will apply the selected revision and trigger a system reboot.
 
 .. cfgcmd:: rollback <N>
 
@@ -674,6 +674,39 @@ be ``config.boot-hostname.YYYYMMDD_HHMMSS``.
    .. code-block:: none
 
      vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
+
+Saving and loading manually
+---------------------------
+
+You can use the ``save`` and ``load`` commands if you want to manually
+manage specific configuration files.
+
+When using the save_ command, you can add a specific location where
+to store your configuration file. And, when needed it, you will be able
+to load it with the ``load`` command:
+
+.. cfgcmd:: load <URI>
+
+   Use this command to load a configuration which will replace the
+   running configuration. Define the location of the configuration file
+   to be loaded. You can use a path to a local file, an SCP address, an
+   SFTP address, an FTP address, an HTTP address, an HTTPS address or a
+   TFTP address.
+
+  .. code-block:: none
+
+     vyos@vyos# load 
+     Possible completions:
+       <Enter>				        Load from system config file
+       <file>			        	Load from file on local machine
+       scp://<user>:<passwd>@<host>/<file>	Load from file on remote machine
+       sftp://<user>:<passwd>@<host>/<file>	Load from file on remote machine
+       ftp://<user>:<passwd>@<host>/<file>	Load from file on remote machine
+       http://<host>/<file>			Load from file on remote machine
+       https://<host>/<file>			Load from file on remote machine
+       tftp://<host>/<file>			Load from file on remote machine
+     
+
 
 Restore Default
 ---------------
