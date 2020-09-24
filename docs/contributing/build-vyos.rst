@@ -403,6 +403,27 @@ the right location, and finally building the Debian packages.
 
   ...
 
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
+  dpkg-shlibdeps: warning: package could avoid a useless dependency if /vyos/vyos-build/packages/linux-kernel/linux/debian/toolstmp/usr/bin/trace /vyos/vyos-build/packages/linux-kernel/linux/debian/toolstmp/usr/bin/perf were not linked against libcrypto.so.1.1 (they use none of the library's symbols)
+  dpkg-shlibdeps: warning: package could avoid a useless dependency if /vyos/vyos-build/packages/linux-kernel/linux/debian/toolstmp/usr/bin/trace /vyos/vyos-build/packages/linux-kernel/linux/debian/toolstmp/usr/bin/perf were not linked against libcrypt.so.1 (they use none of the library's symbols)
+  dpkg-deb: building package 'linux-tools-4.19.146-amd64-vyos' in '../linux-tools-4.19.146-amd64-vyos_4.19.146-1_amd64.deb'.
+   dpkg-genbuildinfo --build=binary
+   dpkg-genchanges --build=binary >../linux-4.19.146-amd64-vyos_4.19.146-1_amd64.changes
+  dpkg-genchanges: warning: package linux-image-4.19.146-amd64-vyos-dbg in control file but not in files list
+  dpkg-genchanges: info: binary-only upload (no source code included)
+   dpkg-source --after-build .
+  dpkg-buildpackage: info: binary-only upload (no source included)
 
 
 In the end you will be presented with the Kernel binary packages which you can
@@ -453,6 +474,15 @@ Just run the following command:
 
   ...
 
+  dpkg-genchanges: info: binary-only upload (no source code included)
+   debian/rules clean
+  dh clean
+     dh_clean
+   dpkg-source --after-build .
+  dpkg-source: info: unapplying 0002-Avoid-trying-to-compile-on-debian-5.5-kernels-Closes.patch
+  dpkg-source: info: unapplying 0001-Makefile-do-not-use-git-to-get-version-number.patch
+  dpkg-buildpackage: info: binary-only upload (no source included)
+
 After compiling the packages you will find yourself the newly generated `*.deb`
 binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
 to the ``vyos-build/packages`` folder for inclusion during the ISO build.
@@ -483,24 +513,16 @@ Just run the following command:
     specific short-term circumstances.  Projects should be ported to the NEW
     behavior and not rely on setting a policy to OLD.
 
-
   -- The C compiler identification is GNU 8.3.0
-  -- Check for working C compiler: /usr/bin/cc
-  -- Check for working C compiler: /usr/bin/cc -- works
-  -- Detecting C compiler ABI info
-  -- Detecting C compiler ABI info - done
-  -- Detecting C compile features
-  -- Detecting C compile features - done
-  -- 'x86_64'
-  -- Found Lua: /usr/lib/x86_64-linux-gnu/liblua5.3.so;/usr/lib/x86_64-linux-gnu/libm.so (found suitable version "5.3.3", minimum required is "5.3")
-  -- Looking for timerfd_create
-  -- Looking for timerfd_create - found
-  -- Looking for linux/netfilter/ipset/ip_set.h
-  -- Looking for linux/netfilter/ipset/ip_set.h - found
-  -- Looking for setns
-  -- Looking for setns - found
 
   ...
+
+  CPack: Create package using DEB
+  CPack: Install projects
+  CPack: - Run preinstall target for: accel-ppp
+  CPack: - Install project: accel-ppp
+  CPack: Create package
+  CPack: - package: /vyos/vyos-build/packages/linux-kernel/accel-ppp/build/accel-ppp.deb generated.
 
 After compiling the packages you will find yourself the newly generated `*.deb`
 binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
@@ -523,6 +545,13 @@ Simply use our wrapper script to build all of the driver modules.
   I: Compile Kernel module for Intel ixgbe driver
 
   ...
+
+  I: Building Debian package vyos-intel-iavf
+  Doing `require 'backports'` is deprecated and will not load any backport in the next major release.
+  Require just the needed backports instead, or 'backports/latest'.
+  Debian packaging tools generally labels all files in /etc as config files, as mandated by policy, so fpm defaults to this behavior for deb packages. You can disable this default behavior with --deb-no-default-config-files flag {:level=>:warn}
+  Created package {:path=>"vyos-intel-iavf_4.0.1-0_amd64.deb"}
+  I: Cleanup iavf source
 
 After compiling the packages you will find yourself the newly generated `*.deb`
 binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
@@ -550,6 +579,14 @@ Simply use our wrapper script to build all of the driver modules.
   checking whether make sets $(MAKE)... yes
 
   ...
+
+  I: Building Debian package vyos-intel-qat
+  Doing `require 'backports'` is deprecated and will not load any backport in the next major release.
+  Require just the needed backports instead, or 'backports/latest'.
+  Debian packaging tools generally labels all files in /etc as config files, as mandated by policy, so fpm defaults to this behavior for deb packages. You can disable this default behavior with --deb-no-default-config-files flag {:level=>:warn}
+  Created package {:path=>"vyos-intel-qat_1.7.l.4.9.0-00008-0_amd64.deb"}
+  I: Cleanup qat source
+
 
 After compiling the packages you will find yourself the newly generated `*.deb`
 binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
