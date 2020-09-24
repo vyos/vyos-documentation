@@ -257,6 +257,305 @@ The full and current list can be generated with ``./configure --help``:
 
 .. _build_custom_packages:
 
+Linux Kernel
+============
+
+The Linux Kernel used by VyOS is heavily tied to the ISO build process. The
+file ``data/defaults.json`` hosts a JSON definition if the Kernel version used
+``kernel_version`` and the ``kernel_flavor`` of the Kernel which represents the
+Kernels LOCAL_VERSION. Both together form the Kernel Version variable in the
+system:
+
+.. code-block:: none
+
+  vyos@vyos:~$ uname -r
+  4.19.146-amd64-vyos
+
+Other packages (e.g. vyos-1x) add dependencies to the ISO build procedure on
+e.g. the wireguard-modules package which itself adds a dependency on the Kernel
+version used due to the module it ships. This may change (for WireGuard) in
+future Kernel releases but as long as we have out-of-tree modules.
+
+* WireGuard
+* Accel-PPP
+* Intel NIC drivers
+* Inter QAT
+
+Each of those modules holds a dependency on the Kernel Version and if you are
+lucky enough to receive an ISO build error which sounds like:
+
+.. code-block:: none
+
+  I: Create initramfs if it does not exist.
+  Extra argument '4.19.146-amd64-vyos'
+  Usage: update-initramfs {-c|-d|-u} [-k version] [-v] [-b directory]
+  Options:
+   -k version     Specify kernel version or 'all'
+   -c             Create a new initramfs
+   -u             Update an existing initramfs
+   -d             Remove an existing initramfs
+   -b directory   Set alternate boot directory
+   -v             Be verbose
+  See update-initramfs(8) for further details.
+  E: config/hooks/live/17-gen_initramfs.chroot failed (exit non-zero). You should check for errors.
+
+The most obvious reasons could be:
+
+* ``vyos-build`` repo is outdate, please ``git pull`` to update to the latest
+  release Kernel version from us.
+
+* You have your own custom Kernel `*.deb` packages in the `packages` folder but
+  missed to create all required out-of tree modules like Accel-PPP, WireGuard,
+  Intel QAT, Intel NIC
+
+Building The Kernel
+-------------------
+
+The Kernel build is quiet easy, most of the required steps can be found in the
+``vyos-build/packages/linux-kernel/Jenkinsfile`` but we will walk you through
+it.
+
+Clone the Kernel source to `vyos-build/packages/linux-kernel/`:
+
+.. code-block:: none
+
+  $ cd cyos-build/packages/linux-kernel/
+  $ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+
+Checkout the required Kernel version - see ``vyos-build/data/defaults.json``
+file (example uses kernel 4.19.146):
+
+.. code-block:: none
+
+  $ cd cyos-build/packages/linux-kernel/linux
+  $ git checkout v4.19.146
+  Checking out files: 100% (61536/61536), done.
+  Note: checking out 'v4.19.146'.
+
+  You are in 'detached HEAD' state. You can look around, make experimental
+  changes and commit them, and you can discard any commits you make in this
+  state without impacting any branches by performing another checkout.
+
+  If you want to create a new branch to retain commits you create, you may
+  do so (now or later) by using -b with the checkout command again. Example:
+
+    git checkout -b <new-branch-name>
+
+  HEAD is now at 015e94d0e37b Linux 4.19.146
+
+Now we can use the helper script ``build-kernel.sh`` which does all the necessary
+Voodoo by applying required patches from the `vyos-build/packages/linux-kernell/
+patches` folder, copying our Kernel configuration ``x86_64_vyos_defconfig`` to
+the right location, and finally building the Debian packages.
+
+.. note:: You might grad your self some refreshments as the build will last for
+   approximately 20 minutes.
+
+.. code-block:: none
+
+  (18:59) vyos_bld 412374ca36b8:/vyos/vyos-build/packages/linux-kernel [current] # ./build-kernel.sh
+  I: Copy Kernel config (x86_64_vyos_defconfig) to Kernel Source
+  I: Apply Kernel patch: /vyos/vyos-build/packages/linux-kernel/patches/kernel/0001-VyOS-Add-linkstate-IP-device-attribute.patch
+  patching file Documentation/networking/ip-sysctl.txt
+  patching file include/linux/inetdevice.h
+  patching file include/linux/ipv6.h
+  patching file include/uapi/linux/ip.h
+  patching file include/uapi/linux/ipv6.h
+  patching file net/ipv4/devinet.c
+  Hunk #1 succeeded at 2319 (offset 1 line).
+  patching file net/ipv6/addrconf.c
+  patching file net/ipv6/route.c
+  I: Apply Kernel patch: /vyos/vyos-build/packages/linux-kernel/patches/kernel/0002-VyOS-add-inotify-support-for-stackable-filesystems-o.patch
+  patching file fs/notify/inotify/Kconfig
+  patching file fs/notify/inotify/inotify_user.c
+  patching file fs/overlayfs/super.c
+  Hunk #2 succeeded at 1713 (offset 9 lines).
+  Hunk #3 succeeded at 1739 (offset 9 lines).
+  Hunk #4 succeeded at 1762 (offset 9 lines).
+  patching file include/linux/inotify.h
+  I: Apply Kernel patch: /vyos/vyos-build/packages/linux-kernel/patches/kernel/0003-RFC-builddeb-add-linux-tools-package-with-perf.patch
+  patching file scripts/package/builddeb
+  I: make x86_64_vyos_defconfig
+    HOSTCC  scripts/basic/fixdep
+    HOSTCC  scripts/kconfig/conf.o
+    YACC    scripts/kconfig/zconf.tab.c
+    LEX     scripts/kconfig/zconf.lex.c
+    HOSTCC  scripts/kconfig/zconf.tab.o
+    HOSTLD  scripts/kconfig/conf
+  #
+  # configuration written to .config
+  #
+  I: Generate environment file containing Kernel variable
+  I: Build Debian Kernel package
+    UPD     include/config/kernel.release
+  /bin/sh ./scripts/package/mkdebian
+  dpkg-buildpackage -r"fakeroot -u" -a$(cat debian/arch) -b -nc -uc
+  dpkg-buildpackage: info: source package linux-4.19.146-amd64-vyos
+  dpkg-buildpackage: info: source version 4.19.146-1
+  dpkg-buildpackage: info: source distribution buster
+  dpkg-buildpackage: info: source changed by vyos_bld <christian@poessinger.com>
+  dpkg-buildpackage: info: host architecture amd64
+  dpkg-buildpackage: warning: debian/rules is not executable; fixing that
+   dpkg-source --before-build .
+   debian/rules build
+  make KERNELRELEASE=4.19.146-amd64-vyos ARCH=x86         KBUILD_BUILD_VERSION=1 KBUILD_SRC=
+    SYSTBL  arch/x86/include/generated/asm/syscalls_32.h
+
+  ...
+
+
+
+In the end you will be presented with the Kernel binary packages which you can
+then use in your custom ISO build process, by placing all the `*.deb` files in
+the vyos-build/packages folder where they will be picked up automatically.
+
+Building Out-Of-Tree Modules
+----------------------------
+
+Building the Kernel is one part, but now you also need to build the required
+out-of-tree modules so everything is lined up and the ABIs match. To do so,
+you can again take a look at ``vyos-build/packages/linux-kernel/Jenkinsfile``
+to see all of the required modules and their selected version. We will show you
+once how to build all the current required modules.
+
+WireGuard
+^^^^^^^^^
+
+First clone the source code and checkout the appropriate version by running:
+
+.. code-block:: none
+
+  $ cd vyos-build/packages/linux-kernel
+  $ git clone https://salsa.debian.org/debian/wireguard-linux-compat.git
+  $ cd wireguard-linux-compat
+  $ git checkout debian/1.0.20200712-1_bpo10+1
+
+We again make use of a helper script and some patches to make the build work.
+Just run the following command:
+
+.. code-block:: none
+
+  $ cd vyos-build/packages/linux-kernel
+  $ ./build-wireguard-modules.sh
+  I: Apply WireGuard patch: /vyos/packages/linux-kernel/patches/wireguard-linux-compat/0001-Debian-build-wireguard-modules-package.patch
+  patching file debian/control
+  patching file debian/rules
+  I: Build Debian WireGuard package
+  dpkg-buildpackage: info: source package wireguard-linux-compat
+  dpkg-buildpackage: info: source version 1.0.20200712-1~bpo10+1
+  dpkg-buildpackage: info: source distribution buster-backports
+  dpkg-buildpackage: info: source changed by Unit 193 <unit193@debian.org>
+  dpkg-buildpackage: info: host architecture amd64
+   dpkg-source --before-build .
+  dpkg-source: info: using patch list from debian/patches/series
+  dpkg-source: info: applying 0001-Makefile-do-not-use-git-to-get-version-number.patch
+  dpkg-source: info: applying 0002-Avoid-trying-to-compile-on-debian-5.5-kernels-Closes.patch
+
+  ...
+
+After compiling the packages you will find yourself the newly generated `*.deb`
+binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
+to the ``vyos-build/packages`` folder for inclusion during the ISO build.
+
+Accel-PPP
+^^^^^^^^^
+
+First clone the source code and checkout the appropriate version by running:
+
+.. code-block:: none
+
+  $ cd vyos-build/packages/linux-kernel
+  $ git clone https://github.com/accel-ppp/accel-ppp.git
+
+We again make use of a helper script and some patches to make the build work.
+Just run the following command:
+
+.. code-block:: none
+
+  $ ./build-accel-ppp.sh
+  I: Build Accel-PPP Debian package
+  CMake Deprecation Warning at CMakeLists.txt:3 (cmake_policy):
+    The OLD behavior for policy CMP0003 will be removed from a future version
+    of CMake.
+
+    The cmake-policies(7) manual explains that the OLD behaviors of all
+    policies are deprecated and that a policy should be set to OLD only under
+    specific short-term circumstances.  Projects should be ported to the NEW
+    behavior and not rely on setting a policy to OLD.
+
+
+  -- The C compiler identification is GNU 8.3.0
+  -- Check for working C compiler: /usr/bin/cc
+  -- Check for working C compiler: /usr/bin/cc -- works
+  -- Detecting C compiler ABI info
+  -- Detecting C compiler ABI info - done
+  -- Detecting C compile features
+  -- Detecting C compile features - done
+  -- 'x86_64'
+  -- Found Lua: /usr/lib/x86_64-linux-gnu/liblua5.3.so;/usr/lib/x86_64-linux-gnu/libm.so (found suitable version "5.3.3", minimum required is "5.3")
+  -- Looking for timerfd_create
+  -- Looking for timerfd_create - found
+  -- Looking for linux/netfilter/ipset/ip_set.h
+  -- Looking for linux/netfilter/ipset/ip_set.h - found
+  -- Looking for setns
+  -- Looking for setns - found
+
+  ...
+
+After compiling the packages you will find yourself the newly generated `*.deb`
+binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
+to the ``vyos-build/packages`` folder for inclusion during the ISO build.
+
+Intel NIC
+^^^^^^^^^
+
+The Intel NIC drivers do not come from a Git repository, instead we just fetch
+the tarballs from our mirror and compile them.
+
+Simply use our wrapper script to build all of the driver modules.
+
+.. code-block:: none
+
+  ./build-intel-drivers.sh
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                   Dload  Upload   Total   Spent    Left  Speed
+  100  490k  100  490k    0     0   648k      0 --:--:-- --:--:-- --:--:--  648k
+  I: Compile Kernel module for Intel ixgbe driver
+
+  ...
+
+After compiling the packages you will find yourself the newly generated `*.deb`
+binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
+to the ``vyos-build/packages`` folder for inclusion during the ISO build.
+
+Intel QAT
+^^^^^^^^^
+The Intel QAT (Quick Assist Technology) drivers do not come from a Git
+repository, instead we just fetch the tarballs from 01.org, Intels Open-Source
+website.
+
+Simply use our wrapper script to build all of the driver modules.
+
+.. code-block:: none
+
+  $ ./build-intel-qat.sh
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                   Dload  Upload   Total   Spent    Left  Speed
+  100 5065k  100 5065k    0     0  1157k      0  0:00:04  0:00:04 --:--:-- 1157k
+  I: Compile Kernel module for Intel qat driver
+  checking for a BSD-compatible install... /usr/bin/install -c
+  checking whether build environment is sane... yes
+  checking for a thread-safe mkdir -p... /bin/mkdir -p
+  checking for gawk... gawk
+  checking whether make sets $(MAKE)... yes
+
+  ...
+
+After compiling the packages you will find yourself the newly generated `*.deb`
+binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
+to the ``vyos-build/packages`` folder for inclusion during the ISO build.
+
+
 Packages
 ========
 
