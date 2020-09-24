@@ -319,7 +319,7 @@ Clone the Kernel source to `vyos-build/packages/linux-kernel/`:
 
 .. code-block:: none
 
-  $ cd cyos-build/packages/linux-kernel/
+  $ cd vyos-build/packages/linux-kernel/
   $ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 
 Checkout the required Kernel version - see ``vyos-build/data/defaults.json``
@@ -327,7 +327,7 @@ file (example uses kernel 4.19.146):
 
 .. code-block:: none
 
-  $ cd cyos-build/packages/linux-kernel/linux
+  $ cd vyos-build/packages/linux-kernel/linux
   $ git checkout v4.19.146
   Checking out files: 100% (61536/61536), done.
   Note: checking out 'v4.19.146'.
@@ -344,12 +344,11 @@ file (example uses kernel 4.19.146):
   HEAD is now at 015e94d0e37b Linux 4.19.146
 
 Now we can use the helper script ``build-kernel.sh`` which does all the necessary
-Voodoo by applying required patches from the `vyos-build/packages/linux-kernell/
+Voodoo by applying required patches from the `vyos-build/packages/linux-kernel/
 patches` folder, copying our Kernel configuration ``x86_64_vyos_defconfig`` to
 the right location, and finally building the Debian packages.
 
-.. note:: You might grad your self some refreshments as the build will last for
-   approximately 20 minutes.
+.. note:: Building the kernel will take some time depending on the speed and quantity of your CPU/cores and disk speed.  Plan on 20 minutes or even longer on lower end harder
 
 .. code-block:: none
 
@@ -428,7 +427,7 @@ the right location, and finally building the Debian packages.
 
 In the end you will be presented with the Kernel binary packages which you can
 then use in your custom ISO build process, by placing all the `*.deb` files in
-the vyos-build/packages folder where they will be picked up automatically.
+the vyos-build/packages folder where they will be used automatically when building VyOS as documented above.
 
 Building Out-Of-Tree Modules
 ----------------------------
