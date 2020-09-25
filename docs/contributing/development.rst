@@ -317,8 +317,10 @@ device if you happen to be a crazy scientist.
       pass
 
   try:
-      config = get_config()
-      verify(config)
+      c = get_config()
+      verify(c)
+      generate(c)
+      apply(c)      
   except ConfigError as e:
       print(e)
       sys.exit(1)
