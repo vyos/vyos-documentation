@@ -23,9 +23,11 @@ certificates as well as a private PKI is required.
   certificates are not stored in the ``/config`` directory they will not be
   migrated during a software update.
 
+Certificates
+============
 
-Self Signed CA and Certificates
-===============================
+Self Signed CA
+--------------
 
 To generate the CA, the server private key and certificates the following
 commands can be used.
@@ -152,23 +154,23 @@ SSL Certificates
 PPP Settings
 ------------
 
-.. cfgcmd:: set vpn sstp ppp-settings lcp-echo-failure <number>
+.. cfgcmd:: set vpn sstp ppp-options lcp-echo-failure <number>
 
   Defines the maximum `<number>` of unanswered echo requests. Upon reaching the
   value `<number>`, the session will be reset.
 
-.. cfgcmd:: set vpn sstp ppp-settings lcp-echo-interval <interval>
+.. cfgcmd:: set vpn sstp ppp-options lcp-echo-interval <interval>
 
   If this option is specified and is greater than 0, then the PPP module will
   send LCP pings of the echo request every `<interval>` seconds.
 
-.. cfgcmd:: set vpn sstp ppp-settings lcp-echo-timeout
+.. cfgcmd:: set vpn sstp ppp-options lcp-echo-timeout
 
   Specifies timeout in seconds to wait for any peer activity. If this option
   specified it turns on adaptive lcp echo functionality and "lcp-echo-failure"
   is not used.
 
-.. cfgcmd:: set vpn sstp ppp-settings mppe <require | prefer | deny>
+.. cfgcmd:: set vpn sstp ppp-options mppe <require | prefer | deny>
 
   Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotioation
   preference.
