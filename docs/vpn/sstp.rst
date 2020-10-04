@@ -100,18 +100,18 @@ Configuration
   * **local**: All authentication queries are handled locally.
 
 
-.. cfgcmd:: set vpn sstp network-settings client-ip-settings gateway-address <gateway>
+.. cfgcmd:: set vpn sstp gateway-address <gateway>
 
   Specifies single `<gateway>` IP address to be used as local address of PPP
   interfaces.
 
 
-.. cfgcmd:: set vpn sstp network-settings client-ip-settings subnet <subnet>
+.. cfgcmd:: set vpn sstp client-ip-pool subnet <subnet>
 
   Use `<subnet>` as the IP pool for all connecting clients.
 
 
-.. cfgcmd:: set vpn sstp network-settings client-ipv6-pool prefix <address> mask <number-of-bits>
+.. cfgcmd:: set vpn sstp client-ipv6-pool prefix <address> mask <number-of-bits>
 
   Use this comand to set the IPv6 address pool from which an SSTP client
   will get an IPv6 prefix of your defined length (mask) to terminate the
@@ -119,7 +119,7 @@ Configuration
   bit long, the default value is 64.
 
 
-.. cfgcmd:: set vpn sstp network-settings client-ipv6-pool delegate <address> delegation-prefix <number-of-bits>
+.. cfgcmd:: set vpn sstp client-ipv6-pool delegate <address> delegation-prefix <number-of-bits>
 
   Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
   SSTP. You will have to set your IPv6 pool and the length of the
@@ -128,7 +128,7 @@ Configuration
   delegation prefix can be set from 32 to 64 bit long.
 
 
-.. cfgcmd:: set vpn sstp network-settings name-server <address>
+.. cfgcmd:: set vpn sstp name-server <address>
 
   Connected client should use `<address>` as their DNS server. This
   command accepts both IPv4 and IPv6 addresses. Up to two nameservers
@@ -271,15 +271,15 @@ Example
 
 .. code-block:: none
 
-  set vpn sstp authentication local-users username foo password 'bar'
-  set vpn sstp authentication mode 'local'
-  set vpn sstp network-settings client-ip-settings gateway-address '192.0.2.254'
-  set vpn sstp network-settings client-ip-settings subnet '192.0.2.0/25'
-  set vpn sstp network-settings name-server '10.0.0.1'
-  set vpn sstp network-settings name-server '10.0.0.2'
-  set vpn sstp ssl ca-cert-file '/config/auth/ca.crt'
-  set vpn sstp ssl cert-file '/config/auth/server.crt'
-  set vpn sstp ssl key-file '/config/auth/server.key'
+  set vpn sstp authentication local-users username vyos password vyos
+  set vpn sstp authentication mode local
+  set vpn sstp gateway-address 192.0.2.254
+  set vpn sstp client-ip-pool subnet 192.0.2.0/25
+  set vpn sstp name-server 10.0.0.1
+  set vpn sstp name-server 10.0.0.2
+  set vpn sstp ssl ca-cert-file /config/auth/ca.crt
+  set vpn sstp ssl cert-file /config/auth/server.crt
+  set vpn sstp ssl key-file /config/auth/server.key
 
 Testing SSTP
 ============
