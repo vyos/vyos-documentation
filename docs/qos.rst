@@ -527,8 +527,8 @@ A simple example of an FQ-CoDel policy working inside a Shaper one.
 .. code-block:: none
 
    set traffic-policy shaper FQ-CODEL-SHAPER bandwidth 2gbit
-   set traffic-policy shaper FQ-CODEL-SHAPER 100%
-   set traffic-policy shaper FQ-CODEL-SHAPER fq-codel
+   set traffic-policy shaper FQ-CODEL-SHAPER default bandwidth 100%
+   set traffic-policy shaper FQ-CODEL-SHAPER default queue-type fq-codel
 
 
 
