@@ -230,7 +230,7 @@ traffic from.
   set interfaces bridge br241 member interface 'vxlan241'
 
   set interfaces vxlan vxlan241 group '239.0.0.241'
-  set interfaces vxlan vxlan241 link 'eth0'
+  set interfaces vxlan vxlan241 source-interface 'eth0'
   set interfaces vxlan vxlan241 vni '241'
 
   ! Our seconds vxlan interface
@@ -239,7 +239,7 @@ traffic from.
   set interfaces bridge br242 member interface 'vxlan242'
 
   set interfaces vxlan vxlan242 group '239.0.0.242'
-  set interfaces vxlan vxlan242 link 'eth0'
+  set interfaces vxlan vxlan242 source-interface 'eth0'
   set interfaces vxlan vxlan242 vni '242'
 
 **Leaf3 configuration:**
@@ -255,7 +255,7 @@ traffic from.
   set interfaces bridge br241 member interface 'vxlan241'
 
   set interfaces vxlan vxlan241 group '239.0.0.241'
-  set interfaces vxlan vxlan241 link 'eth0'
+  set interfaces vxlan vxlan241 source-interface 'eth0'
   set interfaces vxlan vxlan241 vni '241'
 
   ! Our seconds vxlan interface
@@ -264,7 +264,7 @@ traffic from.
   set interfaces bridge br242 member interface 'vxlan242'
 
   set interfaces vxlan vxlan242 group '239.0.0.242'
-  set interfaces vxlan vxlan242 link 'eth0'
+  set interfaces vxlan vxlan242 source-interface 'eth0'
   set interfaces vxlan vxlan242 vni '242'
 
 As you can see, Leaf2 and Leaf3 configuration is almost identical. There are
@@ -300,7 +300,7 @@ same on all Leafs that has this interface.
 
 .. code-block:: none
 
-  set interfaces vxlan vxlan241 link 'eth0'
+  set interfaces vxlan vxlan241 source-interface 'eth0'
 
 Sets the interface to listen for multicast packets on. Could be a loopback, not
 yet tested.
@@ -314,7 +314,7 @@ multicast-address.
 
 .. code-block:: none
 
-  set interfaces vxlan vxlan241 remote-port 12345
+  set interfaces vxlan vxlan241 port 12345
 
 The destination port used for creating a VXLAN interface in Linux defaults to
 its pre-standard value of 8472 to preserve backwards compatibility. A
@@ -331,7 +331,7 @@ set directly. Let's change the Multicast example from above:
 
   # leaf2 and leaf3
   delete interfaces vxlan vxlan241 group '239.0.0.241'
-  delete interfaces vxlan vxlan241 link 'eth0'
+  delete interfaces vxlan vxlan241 source-interface 'eth0'
 
   # leaf2
   set interface vxlan vxlan241 remote 10.1.3.3
@@ -340,4 +340,4 @@ set directly. Let's change the Multicast example from above:
   set interface vxlan vxlan241 remote 10.1.2.2
 
 The default port udp is set to 8472.
-It can be changed with ``set interface vxlan <vxlanN> remote-port <port>``
+It can be changed with ``set interface vxlan <vxlanN> port <port>``
