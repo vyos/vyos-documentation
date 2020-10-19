@@ -37,7 +37,7 @@ For more information on how MPLS label switching works, please go visit
 Label Distribution Protocol
 ===========================
 
-The :abbr: `MPLS (Multi-Protocol Label Switching)` architecture does not assume
+The :abbr:`MPLS (Multi-Protocol Label Switching)` architecture does not assume
 a single protocol to create MPLS paths. VyOS supports the Label Distribution
 Protocol (LDP) as implemented by FRR, based on :rfc:`5036`.
 
