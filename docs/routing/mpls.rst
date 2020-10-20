@@ -61,43 +61,43 @@ must be explicitly set in the configuration.
 Configuration Options
 =====================
 
-Use this command to enable LDP, and enable MPLS processing on the interface you
-define.
-
 .. cfgcmd:: set protocols mpls ldp interface <interface>
+
+  Use this command to enable LDP, and enable MPLS processing on the interface you
+  define.
+
+.. cfgcmd:: set protocols mpls ldp router-id <address>
 
   Use this command to configure the IP address used as the LDP router-id of the
   local device.
 
-.. cfgcmd:: set protocols mpls ldp router-id <address>
+.. cfgcmd:: set protocols mpls ldp discovery transport-ipv4-address <IPv4 address>
+.. cfgcmd:: set protocols mpls ldp discovery transport-ipv6-address <IPv6 address>
 
   Use this command to set the IPv4 or IPv6 transport-address used by LDP.
 
-.. cfgcmd:: set protocols mpls ldp discovery transport-ipv4-address <IPv4 address>
-.. cfgcmd:: set protocols mpls ldp discovery transport-ipv6-address <IPv6 address>
+.. cfgcmd:: set protocols mpls ldp neighbor <IPv4 address> password <password>
 
   Use this command to configure authentication for LDP peers. Set the
   IP address of the LDP peer and a password that should be shared in
   order to become neighbors.
 
-.. cfgcmd:: set protocols mpls ldp neighbor <IPv4 address> password <password>
+.. cfgcmd:: set protocols mpls ldp discovery hello-interval <seconds>
+.. cfgcmd:: set protocols mpls ldp discovery hello-holdtime <seconds>
 
   Use this command if you would like to set the discovery hello and hold time
   parameters.
 
-.. cfgcmd:: set protocols mpls ldp discovery hello-interval <seconds>
-.. cfgcmd:: set protocols mpls ldp discovery hello-holdtime <seconds>
-
-Use this command if you would like to set the TCP session hold time intervals.
-
 .. cfgcmd:: set protocols mpls ldp discovery session-ipv4-holdtime <seconds>
 .. cfgcmd:: set protocols mpls ldp discovery session-ipv6-holdtime <seconds>
 
-Use this command if you would like for the router to advertise FECs with a label
-of 0 for explicit null operations.
+  Use this command if you would like to set the TCP session hold time intervals.
 
 .. cfgcmd:: set protocols mpls ldp export ipv4 explicit-null
 .. cfgcmd:: set protocols mpls ldp export ipv6 explicit-null
+
+  Use this command if you would like for the router to advertise FECs with a label
+  of 0 for explicit null operations.
 
 
 Sample configuration to setup LDP on VyOS
