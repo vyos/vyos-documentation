@@ -348,7 +348,7 @@ Voodoo by applying required patches from the `vyos-build/packages/linux-kernel/
 patches` folder, copying our Kernel configuration ``x86_64_vyos_defconfig`` to
 the right location, and finally building the Debian packages.
 
-.. note:: Building the kernel will take some time depending on the speed and quantity of your CPU/cores and disk speed.  Plan on 20 minutes or even longer on lower end harder
+.. note:: Building the kernel will take some time depending on the speed and quantity of your CPU/cores and disk speed.  Plan on 20 minutes (or even longer) on lower end hardware.
 
 .. code-block:: none
 
