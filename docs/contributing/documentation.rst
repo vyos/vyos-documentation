@@ -35,12 +35,12 @@ access to the official codebase.
 
 * Fork this project on GitHub https://github.com/vyos/vyos-documentation/fork
 
-* Clone fork to local machine
+* Clone fork to local machine, then change to that directory``$ cd vyos-documentation``
 
-* Change to your new local directory ``$ cd vyos-documentation``
+* Install the requirements ``$ pip install -r requirements.txt`` (or something similar)
 
 * Create new branch for your work, use a descriptive name of your work:
-  ``$ git checkout -b fix-vxlan-typo``
+  ``$ git checkout -b <branch-name>``
 
 * Make all your changes - please keep our commit rules in mind
   (:ref:`prepare_commit`). This mainly applies to proper commit messages
@@ -61,11 +61,12 @@ access to the official codebase.
   unstaged files ``$ git add .``. All files added to the Git index will be part
   of you following Git commit.
 
-* Commit your changes ``$ git commit -v`` - your configured editor will now ne
-  launched where you can type in a commit message. Again please make yourself
-  comfortable with out rules (:ref:`prepare_commit`).
+* Commit your changes with the message, ``$ git commit -m "<commit message>"``
+  or  use ``$ git commit -v`` to have your configured editor launched. You can
+  type in a commit message. Again please make yourself comfortable with out
+  rules (:ref:`prepare_commit`).
 
-* Push your commits to your GitHub project: ``$ git push -u origin foo-branch``
+* Push commits to your GitHub project: ``$ git push -u origin <branch-name>``
 
 * Submit pull-request. In GitHub visit the main repository and you should
   see a banner suggesting to make a pull request. Fill out the form and
