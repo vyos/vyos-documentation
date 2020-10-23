@@ -1083,9 +1083,9 @@ parameters.
 
 
 .. note:: If you configure a class for **VoIP traffic**, don't give it any
-   *ceiling*, otherwise new VoIP calls could start when there is available
-   bandwidth and get suddenly dropped when other classes start using
-   their bandwidth.
+   *ceiling*, otherwise new VoIP calls could start when the link is
+   available and get suddenly dropped when other classes start using
+   their assigned *bandwidth* share.
 
 
 Example
@@ -1182,7 +1182,12 @@ That is how it is possible to do the so-called "ingress shaping".
    set interfaces input ifb0 traffic-policy out MY-INGRESS-SHAPING
    set interfaces ethernet eth0 redirect ifb0
 
+.. warning::
 
+  Do not configure IFB as the first step. First create everything else
+  of your traffic-policy, and then you can configure IFB.
+  Otherwise you might get the ``RTNETLINK answer: File exists`` error,
+  which can be solved with ``sudo ip link delete ifb0``.
 
 
 .. _that can give you a great deal of flexibility: https://blog.vyos.io/using-the-policy-route-and-packet-marking-for-custom-qos-matches
