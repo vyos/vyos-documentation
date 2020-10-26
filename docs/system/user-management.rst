@@ -78,7 +78,7 @@ The third part is simply an identifier, and is for your own reference.
    using one of the following :abbr:`URIs (Uniform Resource Identifier)`:
 
    * ``<file>`` - Load from file on local filesystem path
-   * ``scp://<user>@<host>/<file>`` - Load via SCP from remote machine
+   * ``scp://<user>@<host>:/<file>`` - Load via SCP from remote machine
    * ``sftp://<user>@<host>/<file>`` - Load via SFTP from remote machine
    * ``ftp://<user>@<host>/<file>`` - Load via FTP from remote machine
    * ``http://<host>/<file>`` - Load via HTTP from remote machine

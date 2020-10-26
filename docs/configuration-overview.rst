@@ -320,7 +320,7 @@ different levels in the hierarchy.
      Possible completions:
        <Enter>       Save to system config file
        <file>        Save to file on local machine
-       scp://<user>:<passwd>@<host>/<file> Save to file on remote machine
+       scp://<user>:<passwd>@<host>:/<file> Save to file on remote machine
        ftp://<user>:<passwd>@<host>/<file> Save to file on remote machine
        tftp://<host>/<file>      Save to file on remote machine
      vyos@vyos# save tftp://192.168.0.100/vyos-test.config.boot
@@ -659,7 +659,7 @@ be ``config.boot-hostname.YYYYMMDD_HHMMSS``.
    Specify remote location of commit archive as any of the below
    :abbr:`URI (Uniform Resource Identifier)`
 
-   * ``scp://<user>:<passwd>@<host>/<dir>``
+   * ``scp://<user>:<passwd>@<host>:/<dir>``
    * ``sftp://<user>:<passwd>@<host>/<dir>``
    * ``ftp://<user>:<passwd>@<host>/<dir>``
    * ``tftp://<host>/<dir>``
@@ -699,7 +699,7 @@ to load it with the ``load`` command:
      Possible completions:
        <Enter>				        Load from system config file
        <file>			        	Load from file on local machine
-       scp://<user>:<passwd>@<host>/<file>	Load from file on remote machine
+       scp://<user>:<passwd>@<host>:/<file>	Load from file on remote machine
        sftp://<user>:<passwd>@<host>/<file>	Load from file on remote machine
        ftp://<user>:<passwd>@<host>/<file>	Load from file on remote machine
        http://<host>/<file>			Load from file on remote machine
