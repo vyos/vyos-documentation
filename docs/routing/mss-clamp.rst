@@ -1,7 +1,8 @@
 .. _routing-mss-clamp:
 
+################
 TCP-MSS Clamping
-----------------
+################
 
 As Internet wide PMTU discovery rarely works, we sometimes need to clamp
 our TCP MSS value to a specific value. This is a field in the TCP
@@ -18,16 +19,15 @@ value for IPv4 and IPv6.
 
 
 IPv4
-^^^^
+====
 
 .. cfgcmd:: set firewall options interface <interface> adjust-mss <number-of-bytes>
 
    Use this command to set the maximum segment size for IPv4 transit
    packets on a specific interface (500-1460 bytes).
 
-
 Example
-"""""""
+-------
 
 Clamp outgoing MSS value in a TCP SYN packet to `1452` for `pppoe0` and
 `1372`
@@ -39,16 +39,15 @@ for your WireGuard `wg02` tunnel.
   set firewall options interface wg02 adjust-mss '1372'
 
 IPv6
-^^^^^
+====
 
 .. cfgcmd:: set firewall options interface <interface> adjust-mss6 <number-of-bytes>
 
    Use this command to set the maximum segment size for IPv6 transit
    packets on a specific interface (1280-1492 bytes).
 
-
 Example
-"""""""
+-------
 
 Clamp outgoing MSS value in a TCP SYN packet to `1280` for both `pppoe0` and
 `wg02` interface.

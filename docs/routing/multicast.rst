@@ -7,7 +7,6 @@ Multicast
 VyOS facilitates IP Multicast by supporting **PIM Sparse Mode**,
 **IGMP** and **IGMP-Proxy**.
 
-
 ************
 PIM and IGMP
 ************
@@ -16,7 +15,7 @@ PIM (Protocol Independent Multicast) must be configured in every
 interface of every participating router. Every router must also have the
 location of the Rendevouz Point manually configured. Then,
 unidirectional shared trees rooted at the Rendevouz Point will
-automatically be built for multicast distribution. 
+automatically be built for multicast distribution.
 
 Traffic from multicast sources will go to the Rendezvous Point, and
 receivers will pull it from a shared tree using IGMP (Internet Group
@@ -24,7 +23,7 @@ Management Protocol).
 
 Multicast receivers will talk IGMP to their local router, so, besides
 having PIM configured in every router, IGMP must also be configured in
-any router where there could be a multicast receiver locally connected. 
+any router where there could be a multicast receiver locally connected.
 
 VyOS supports both IGMP version 2 and version 3 (which allows
 source-specific multicast).
@@ -54,7 +53,7 @@ In the following example we can see a basic multicast setup:
    set protocols pim interface eth1
    set protocols pim interface eth2
    set protocols pim rp address 172.16.255.1 group '224.0.0.0/4'
-   
+
 **Router 3**
 
 .. code-block:: none
@@ -69,7 +68,7 @@ In the following example we can see a basic multicast setup:
    set protocols pim interface eth0
    set protocols pim interface eth1
    set protocols pim rp address 172.16.255.1 group '224.0.0.0/4'
-   
+
 **Router 2**
 
 .. code-block:: none
@@ -81,7 +80,7 @@ In the following example we can see a basic multicast setup:
    set protocols pim interface eth1
    set protocols pim interface eth2
    set protocols pim rp address 172.16.255.1 group '224.0.0.0/4'
-   
+
 
 
 
@@ -103,7 +102,7 @@ These are the commands for a basic setup.
    that join messages can be sent there. Set the Rendevouz Point address
    and the matching prefix of group ranges covered. These values must
    be shared with every router participating in the PIM network.
- 
+
 
 .. cfgcmd:: set protocols igmp interface eth1
 
@@ -163,7 +162,7 @@ You can also tune multicast with the following commands.
    timed out.
 
 
-.. cfgcmd:: set protocols igmp interface <interface> version <version-number> 
+.. cfgcmd:: set protocols igmp interface <interface> version <version-number>
 
    Use this command to define in the selected interface whether you
    choose IGMP version 2 or 3. The default value is 3.

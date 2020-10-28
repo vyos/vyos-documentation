@@ -2,8 +2,9 @@
 
 .. _routing-ospf:
 
+####
 OSPF
-----
+####
 
 :abbr:`OSPF (Open Shortest Path First)` is a routing protocol for Internet
 Protocol (IP) networks. It uses a link state routing (LSR) algorithm and falls
@@ -16,7 +17,7 @@ addressing model.
 OSPF is a widely used IGP in large enterprise networks.
 
 OSPFv2 (IPv4)
-^^^^^^^^^^^^^
+#############
 
 In order to have a VyOS system exchanging routes with OSPF neighbors, you will
 at least need to configure an OSPF area and some network.
@@ -68,7 +69,7 @@ address and the node 1 sending the default route:
   set policy route-map CONNECT rule 10 match interface lo
 
 OSPFv3 (IPv6)
-^^^^^^^^^^^^^
+#############
 
 A typical configuration using 2 nodes.
 

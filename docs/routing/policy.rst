@@ -1,32 +1,35 @@
 .. include:: ../_include/need_improvement.txt
 
-Routing-policy
---------------
+######
+Policy
+######
 
-Routing Policies could be used to tell the router (self or neighbors) what routes and their attributes needs to be put into the routing table.
+Routing Policies could be used to tell the router (self or neighbors) what
+routes and their attributes needs to be put into the routing table.
 
 There could be a wide range of routing policies. Some examples are below:
 
-  * Set some metric to routes learned from a particular neighbor
-  * Set some attributes (like AS PATH or Community value) to advertised routes to neighbors
-  * Prefer a specific routing protocol routes over another routing protocol running on the same router
+* Set some metric to routes learned from a particular neighbor
+* Set some attributes (like AS PATH or Community value) to advertised routes to neighbors
+* Prefer a specific routing protocol routes over another routing protocol running on the same router
 
-Routing Policy Example
-~~~~~~~~~~~~~~~~~~~~~~
+Example
+=======
 
 **Policy definition:**
 
 .. code-block:: none
 
-  #Create policy
+  # Create policy
   set policy route-map setmet rule 2 action 'permit'
   set policy route-map setmet rule 2 set as-path-prepend '2 2 2'
 
-  #Apply policy to BGP
+  # Apply policy to BGP
   set protocols bgp 1 neighbor 203.0.113.2 address-family ipv4-unicast route-map import 'setmet'
-  set protocols bgp 1 neighbor 203.0.113.2 address-family ipv4-unicast soft-reconfiguration 'inbound' <<<< ***
+  set protocols bgp 1 neighbor 203.0.113.2 address-family ipv4-unicast soft-reconfiguration 'inbound'
 
-  *** get policy update without bouncing the neighbor
+Using 'soft-reconfiguration' we get the policy update without bouncing the
+neighbor.
 
 **Routes learned before routing policy applied:**
 
@@ -54,7 +57,9 @@ Routing Policy Example
   Origin codes: i - IGP, e - EGP, ? - incomplete
 
      Network          Next Hop            Metric LocPrf Weight Path
-  *> 198.51.100.3/32   203.0.113.2           1             0 2 2 2 2 i < longer AS_path length
+  *> 198.51.100.3/32   203.0.113.2           1             0 2 2 2 2 i
 
   Total number of prefixes 1
   vyos@vos1:~$
+
+You now see the longer AS path.

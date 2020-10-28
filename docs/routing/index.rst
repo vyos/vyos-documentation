@@ -16,6 +16,6 @@ Routing
    ospf
    pbr
    rip
-   routing-policy
+   policy
    rpki
    static

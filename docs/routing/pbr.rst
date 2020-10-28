@@ -2,8 +2,9 @@
 
 .. _routing-pbr:
 
+###
 PBR
----
+###
 
 :abbr:`PBR (Policy-Based Routing)` allowing traffic to be assigned to
 different routing tables. Traffic can be matched using standard 5-tuple
@@ -11,7 +12,7 @@ matching (source address, destination address, protocol, source port,
 destination port).
 
 Transparent Proxy
-^^^^^^^^^^^^^^^^^
+=================
 
 The following example will show how VyOS can be used to redirect web
 traffic to an external transparent proxy:
@@ -45,7 +46,7 @@ interface, we use:
 
 
 Multiple Uplinks
-^^^^^^^^^^^^^^^^
+================
 
 VyOS Policy-Based Routing (PBR) works by matching source IP address
 ranges and forwarding the traffic using different routing tables.

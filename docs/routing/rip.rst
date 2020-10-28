@@ -2,8 +2,9 @@
 
 .. _rip:
 
+###
 RIP
----
+###
 
 :abbr:`RIP (Routing Information Protocol)` is a widely deployed interior gateway
 protocol. RIP was developed in the 1970s at Xerox Labs as part of the XNS
