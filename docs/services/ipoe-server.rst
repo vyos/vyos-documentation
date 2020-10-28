@@ -119,13 +119,13 @@ example configuration can be used.
   set service ipoe-server authentication radius-server 10.100.100.1 secret 'password'
 
 Bandwidth Shaping
-^^^^^^^^^^^^^^^^^
+=================
 
 Bandwidth rate limits can be set for local users within the configuration or
 via RADIUS based attributes.
 
 Bandwidth Shaping for local users
-=================================
+---------------------------------
 
 The rate-limit is set in kbit/sec.
 
