@@ -569,7 +569,7 @@ The following commands let you check tunnel status.
 Reset OpenVPN
 -------------
 
-The following commands let you reset OpenVPN for a specific client or interface.
+The following commands let you reset OpenVPN.
 
 .. opcmd:: reset openvpn client <text>
 
