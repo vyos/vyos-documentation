@@ -542,4 +542,43 @@ Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
    quotes. This is done through a hack on our config generator. You can pass
    quotes using the ``&quot;`` statement.
 
+
+Troubleshooting
+===============
+
+VyOS provides some operational commands on OpenVPN.
+
+Check status
+------------
+
+The following commands let you check tunnel status.
+
+.. opcmd:: show openvpn client
+
+   Use this command to check the tunnel status for OpenVPN client interfaces.
+
+.. opcmd:: show openvpn server
+
+   Use this command to check the tunnel status for OpenVPN server interfaces.
+
+.. opcmd:: show openvpn site-to-site
+
+   Use this command to check the tunnel status for OpenVPN site-to-site interfaces.
+
+
+Reset OpenVPN
+-------------
+
+The following commands let you reset OpenVPN.
+
+.. opcmd:: reset openvpn client <text>
+
+   Use this command to reset specified OpenVPN client.
+
+.. opcmd:: reset openvpn interface <interface>
+
+   Uset this command to reset the OpenVPN process on a specific interface.
+
+
+
 .. include:: ../common-references.rst
