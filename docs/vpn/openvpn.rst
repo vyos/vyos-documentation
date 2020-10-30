@@ -427,3 +427,41 @@ options to OpenVPN.
 Will add `persistent-key` at the end of the generated OpenVPN configuration.
 Please use this only as last resort - things might break and OpenVPN won't start
 if you pass invalid options/syntax.
+
+Troubleshooting
+===============
+
+VyOS provides some operational commands on OpenVPN.
+
+Check status
+------------
+
+The following commands let you check tunnel status.
+
+.. opcmd:: show openvpn client status
+
+   Use this command to check the tunnel status for OpenVPN client.
+
+.. opcmd:: show openvpn server status
+
+   Use this command to check the tunnel status for OpenVPN server.
+
+.. opcmd:: show openvpn site-to-site status
+
+   Use this command to check the tunnel status for OpenVPN site-to-site.
+
+
+Reset OpenVPN
+-------------
+
+The following commands let you reset OpenVPN.
+
+.. opcmd:: reset openvpn client <text>
+
+   Use this command to reset specified OpenVPN client.
+
+.. opcmd:: reset openvpn interface <interface>
+
+   Uset this command to reset the OpenVPN process on a specific interface.
+
+
