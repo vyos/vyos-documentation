@@ -13,6 +13,7 @@ Routing
    mpls
    mss-clamp
    multicast
+   ip-commands
    ospf
    pbr
    rip
