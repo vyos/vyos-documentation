@@ -137,7 +137,7 @@ An example:
   
 GRE-Bridge
 ^^^^^^^^^^
-While normal GRE is for layer 3, GRE-Bridge is for layer 2. GRE-Bridge can encasulate Ethernet frames, thus it can be bridged with other interfaces to create datalink layer segments that span multiple remote sites.
+While normal GRE is for layer 3, GRE-Bridge is for layer 2. GRE-Bridge can encapsulate Ethernet frames, thus it can be bridged with other interfaces to create datalink layer segments that span multiple remote sites.
 
 Layer 2 GRE example:
 
