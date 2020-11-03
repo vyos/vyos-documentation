@@ -233,7 +233,7 @@ Show commands
    You can get more specific OSPFv3 information by using the parameters
    shown below:
    
-   .. code-block:: 
+   .. code-block:: none
    
       vyos@vyos:~$ show ipv6 ospfv3 
       Possible completions:
