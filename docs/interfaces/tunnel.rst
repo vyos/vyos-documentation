@@ -112,6 +112,47 @@ The Cisco router defaults to 'gre ip' otherwise it would have to be configured a
   tunnel source 203.0.113.10
   tunnel destination 198.51.100.2
 
+
+Tunnel keys
+^^^^^^^^^^^
+
+GRE is also the only classic protocol that allows creating multiple tunnels with the same source and destination due to its support for tunnel keys. Despite its name, this feature has nothing to do with security: it's simply an identifier that allows routers to tell one tunnel from another.
+
+An example:
+
+.. code-block:: none
+
+   set interfaces tunnel tun0 local-ip 192.0.2.10
+   set interfaces tunnel tun0 remote-ip 192.0.2.20
+   set interfaces tunnel tun0 address 10.40.50.60/24
+   set interfaces tunnel tun0 parameters ip key 10
+  
+.. code-block:: none
+
+   set interfaces tunnel tun0 local-ip 192.0.2.10
+   set interfaces tunnel tun0 remote-ip 192.0.2.20
+   set interfaces tunnel tun0 address 172.16.17.18/24
+   set interfaces tunnel tun0 parameters ip key 20
+   
+  
+GRE-Bridge
+^^^^^^^^^^
+While normal GRE is for layer 3, GRE-Bridge is for layer 2. GRE-Bridge can encasulate Ethernet frames, thus it can be bridged with other interfaces to create datalink layer segments that span multiple remote sites.
+
+Layer 2 GRE example:
+
+.. code-block:: none
+
+   set interfaces bridge br0
+   set interfaces tunnel tun0 encapsulation gre-bridge
+   set interfaces tunnel tun0 local-ip 192.0.2.10
+   set interfaces tunnel tun0 remote-ip 192.0.2.20
+   set interfaces tunnel tun0 parameters ip bridge-group bridge br0
+   set interfaces ethernet eth1 bridge-group br0
+   
+As you can see, the bridge-group option for tunnels is in a rather unusual place, different from all other interfaces.
+
+
 Troubleshooting
 ^^^^^^^^^^^^^^^
 
