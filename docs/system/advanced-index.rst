@@ -11,6 +11,7 @@ Advanced System Tweaks
    flow-accounting
    ntp
    options
+   boot-options
    proxy
    serial-console
    syslog

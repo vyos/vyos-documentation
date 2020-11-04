@@ -362,6 +362,8 @@ to clear counters on firewall rulesets or single rules
 System Information
 ******************
 
+.. _boot-steps:
+
 Boot Steps
 ==========
 
