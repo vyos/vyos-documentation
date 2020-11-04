@@ -26,6 +26,12 @@ tunnels it can be their tunnel ID, but otherwise is just zero, as if it were
 not part of the tuple. To be able to inspect the TCP port in all cases, packets
 will be mandatorily defragmented.
 
+It is possible to use either Multicast or Unicast to sync conntrack traffic.
+Most examples below show Multicast, but unicast can be specified by using the
+"peer" keywork after the specificed interface, as in the following example:  
+
+set service conntrack-sync interface eth0 peer 192.168.0.250
+
 Configuration
 ^^^^^^^^^^^^^
 
@@ -51,9 +57,12 @@ Configuration
 
   # Interface to use for syncing conntrack entries [REQUIRED]
   set service conntrack-sync interface <ifname>
-
+ 
   # Multicast group to use for syncing conntrack entries
   set service conntrack-sync mcast-group <x.x.x.x>
+  
+  # Peer to send Unicast UDP conntrack sync entires to, if not using Multicast above
+  set service conntrack-sync interface <ifname> peer <remote IP of peer>
 
   # Queue size for syncing conntrack entries (in MB)
   set service conntrack-sync sync-queue-size <size>
