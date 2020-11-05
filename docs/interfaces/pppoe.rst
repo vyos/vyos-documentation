@@ -183,27 +183,27 @@ by most ISPs who provide native IPv6 for consumers on fixed networks.
 
    Default value is 64.
 
-.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option pd <id> interface <prefix-interface> address <local-addr>
+.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option pd <id> interface <delegatee> address <address>
 
-   This statement specifies the interface address used locally on the interfcae
-   where the prefix has been delegated to. ID must be a decimal integer.
-   It will be combined with the delegated prefix and the sla-id to form a
-   complete interface address. The default is to use the EUI-64 address of the
-   interface.
+   Specify the interface address used locally on the interfcae where the prefix
+   has been delegated to. ID must be a decimal integer.
+
+   It will be combined with the delegated prefix and the sla-id to form a complete
+   interface address. The default is to use the EUI-64 address of the interface.
 
    Example:
 
-   Using `<id>` value 65535 will assign IPv6 address <prefix>::ffff to the
+   Using ``<id>`` value 65535 will assign IPv6 address ``<prefix>::ffff`` to the
    interface.
 
-.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option pd <id> interface <prefix-interface> sla-id <id>
+.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option pd <id> interface <delegatee> sla-id <id>
 
-   This statement specifies the identifier value of the site-level aggregator
-   (SLA) on the interface. ID must be a decimal number greater then 0 which
-   fits in the length of SLA IDs (see below). For example, if ID is 1 and the
-   client is delegated an IPv6 prefix 2001:db8:ffff::/48, dhcp6c will combine
-   the two values into a single IPv6 prefix, 2001:db8:ffff:1::/64, and will
-   configure the prefix on the specified interface.
+   Specify the identifier value of the site-level aggregator (SLA) on the
+   interface. ID must be a decimal number greater then 0 which fits in the length
+   of SLA IDs (see below). For example, if ID is 1 and the client is delegated
+   an IPv6 prefix 2001:db8:ffff::/48, dhcp6c will combine the two values into a
+   single IPv6 prefix, 2001:db8:ffff:1::/64, and will configure the prefix on
+   the specified interface.
 
 Operation
 =========
