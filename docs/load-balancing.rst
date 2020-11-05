@@ -159,6 +159,12 @@ This works through automatically generated source NAT (SNAT) rules, these rules 
 
 Sticky Connections
 ------------------
+Inbound connections to a WAN interface can be improperly handled when the reply is sent back to the client.
+
+.. image:: /_static/images/sticky-connections.jpg
+   :width: 80%
+   :align: center
+
 
 Upon reception of an incoming packet, when a response is sent, it might be desired to ensure that it leaves from the same interface as the inbound one.
 This can be achieved by enabling sticky connections in the load balancing:
