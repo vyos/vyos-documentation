@@ -22,3 +22,4 @@ should be ready for further configuration which is described in this chapter.
    syslog
    task-scheduler
    time-zone
+   boot-options
