@@ -11,3 +11,4 @@ Basic System Tweaks
    host-information
    default-route
    time-zone
+   system-dns
