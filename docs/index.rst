@@ -1,40 +1,26 @@
 .. _index:
 
+###############
 VyOS User Guide
-===============
+###############
 
-VyOS is an open source network operating system based on Debian GNU/Linux.
 
-VyOS provides a free routing platform that competes directly with other
-commercially available solutions from well known network providers. Because
-VyOS is run on standard amd64, i586 and ARM systems, it is able to be used
-as a router and firewall platform for cloud deployments.
-
-#####
-About
-#####
-
-We use multiple live versions of our manual hosted thankfully by
-https://readthedocs.org. We will provide one version of the manual for every
-VyOS major version starting with VyOS 1.2 which will receive Long-term support
-(LTS).
-
-The manual version is selected/specified by it's Git branch name. You can
-switch between versions of the documentation by selecting the appropriate
-branch on the bottom left corner.
-
-############
-Introduction
-############
-
-.. _introduction:
 .. toctree::
+   :caption: Introduction
+   :name: intro
    :maxdepth: 2
 
+   about
    history
    install
    cli
    quick-start
+
+.. toctree::
+   :caption: Configuration
+   :name: configuration
+   :maxdepth: 2
+
    configuration-overview
    interfaces/index
    routing/index
@@ -51,12 +37,10 @@ Introduction
 .. modules
 
 
-########
-Appendix
-########
 
-.. _appendix:
 .. toctree::
+   :caption: Appendix
+   :name: appendix
    :maxdepth: 2
 
    appendix/releasenotes
@@ -69,14 +53,11 @@ Appendix
    appendix/migrate-from-vyatta
 
 
-############
-Contributing
-############
-
-.. _contributing:
 .. toctree::
+   :caption: Contributing
+   :name: contributing
    :maxdepth: 2
-
+   
    contributing/issues_features
    contributing/development
    contributing/documentation
