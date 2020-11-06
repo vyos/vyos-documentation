@@ -20,6 +20,7 @@ should be ready for further configuration which is described in this chapter.
    proxy
    serialconsole
    syslog
+   system-dns
    task-scheduler
    time-zone
    boot-options
