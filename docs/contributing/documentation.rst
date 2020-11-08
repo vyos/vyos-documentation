@@ -46,7 +46,8 @@ access to the official codebase.
   (:ref:`prepare_commit`). This mainly applies to proper commit messages
   describing your change (how and why). Please check out the documentation of
   Sphinx-doc_ or reStructuredText_ if you are not familiar with it. This is used
-  for writing our docs.
+  for writing our docs. Additional directives how to write in RST can be obtained
+  from reStructuredTextDirectives_.
 
 * Check your changes by locally building the documentation ``$ make html``.
   Sphinx will build the html files in the ``docs/_build`` folder. We provide
@@ -175,7 +176,7 @@ descriptive way in the resulting HTML/PDF manual.
 For a inline configuration level command use ``:cfgcmd:``
 
 .. code-block:: none
-  
+
   :cfgcmd:`set interface ethernet eth0`
 
 opcmd
@@ -196,7 +197,7 @@ descriptive way in the resulting HTML/PDF manual.
 For a inline operational level command use ``:opcmd:``
 
 .. code-block:: none
-  
+
   :opcmd:`add system image`
 
 vytask
@@ -214,6 +215,7 @@ URL. This is heavily used in the :ref:`release-notes` section.
 
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
+.. _reStructuredTextDirectives: https://docutils.sourceforge.io/docs/ref/rst/directives.html
 .. _README.md: https://github.com/vyos/vyos-documentation/blob/master/README.md
 
 .. include:: ../common-references.rst
