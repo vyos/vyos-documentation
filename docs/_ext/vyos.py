@@ -1,6 +1,10 @@
-from docutils import nodes, utils
+import re
+import io
+import os
+from docutils import io, nodes, utils, statemachine
+from docutils.utils.error_reporting import SafeString, ErrorString
 from docutils.parsers.rst.roles import set_classes
-from docutils.parsers.rst import Directive
+from docutils.parsers.rst import Directive, directives
 from sphinx.util.docutils import SphinxDirective
 
 
@@ -49,6 +53,7 @@ def setup(app):
 
     app.add_directive('cfgcmd', CfgCmdDirective)
     app.add_directive('opcmd', OpCmdDirective)
+    app.add_directive('cmdinclude', CfgInclude)
     app.connect('doctree-resolved', process_cmd_nodes)
 
 
@@ -146,6 +151,156 @@ class inlinecmd(nodes.inline):
     def depart_tex(self, node=None):
         self.body.append(r'}}')
         #self.literal_whitespace -= 1
+
+
+class CfgInclude(Directive):
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {
+        'var0': str,
+        'var1': str,
+        'var2': str,
+        'var3': str,
+        'var4': str,
+        'var5': str,
+        'var6': str,
+        'var7': str,
+        'var8': str,
+        'var9': str
+    }
+
+    def run(self):
+        ### Copy from include directive docutils 
+        """Include a file as part of the content of this reST file."""
+        if not self.state.document.settings.file_insertion_enabled:
+            raise self.warning('"%s" directive disabled.' % self.name)
+        source = self.state_machine.input_lines.source(
+            self.lineno - self.state_machine.input_offset - 1)
+        source_dir = os.path.dirname(os.path.abspath(source))
+        path = directives.path(self.arguments[0])
+        if path.startswith('<') and path.endswith('>'):
+            path = os.path.join(self.standard_include_path, path[1:-1])
+        path = os.path.normpath(os.path.join(source_dir, path))
+        path = utils.relative_path(None, path)
+        path = nodes.reprunicode(path)
+        encoding = self.options.get(
+            'encoding', self.state.document.settings.input_encoding)
+        e_handler=self.state.document.settings.input_encoding_error_handler
+        tab_width = self.options.get(
+            'tab-width', self.state.document.settings.tab_width)
+        try:
+            self.state.document.settings.record_dependencies.add(path)
+            include_file = io.FileInput(source_path=path,
+                                        encoding=encoding,
+                                        error_handler=e_handler)
+        except UnicodeEncodeError:
+            raise self.severe(u'Problems with "%s" directive path:\n'
+                              'Cannot encode input file path "%s" '
+                              '(wrong locale?).' %
+                              (self.name, SafeString(path)))
+        except IOError:
+            raise self.severe(u'Problems with "%s" directive path.' %
+                      (self.name))
+        startline = self.options.get('start-line', None)
+        endline = self.options.get('end-line', None)
+        try:
+            if startline or (endline is not None):
+                lines = include_file.readlines()
+                rawtext = ''.join(lines[startline:endline])
+            else:
+                rawtext = include_file.read()
+        except UnicodeError:
+            raise self.severe(u'Problem with "%s" directive:\n%s' %
+                              (self.name, ErrorString(error)))
+        # start-after/end-before: no restrictions on newlines in match-text,
+        # and no restrictions on matching inside lines vs. line boundaries
+        after_text = self.options.get('start-after', None)
+        if after_text:
+            # skip content in rawtext before *and incl.* a matching text
+            after_index = rawtext.find(after_text)
+            if after_index < 0:
+                raise self.severe('Problem with "start-after" option of "%s" '
+                                  'directive:\nText not found.' % self.name)
+            rawtext = rawtext[after_index + len(after_text):]
+        before_text = self.options.get('end-before', None)
+        if before_text:
+            # skip content in rawtext after *and incl.* a matching text
+            before_index = rawtext.find(before_text)
+            if before_index < 0:
+                raise self.severe('Problem with "end-before" option of "%s" '
+                                  'directive:\nText not found.' % self.name)
+            rawtext = rawtext[:before_index]
+
+        include_lines = statemachine.string2lines(rawtext, tab_width,
+                                                  convert_whitespace=True)
+        if 'literal' in self.options:
+            # Convert tabs to spaces, if `tab_width` is positive.
+            if tab_width >= 0:
+                text = rawtext.expandtabs(tab_width)
+            else:
+                text = rawtext
+            literal_block = nodes.literal_block(rawtext, source=path,
+                                    classes=self.options.get('class', []))
+            literal_block.line = 1
+            self.add_name(literal_block)
+            if 'number-lines' in self.options:
+                try:
+                    startline = int(self.options['number-lines'] or 1)
+                except ValueError:
+                    raise self.error(':number-lines: with non-integer '
+                                     'start value')
+                endline = startline + len(include_lines)
+                if text.endswith('\n'):
+                    text = text[:-1]
+                tokens = NumberLines([([], text)], startline, endline)
+                for classes, value in tokens:
+                    if classes:
+                        literal_block += nodes.inline(value, value,
+                                                      classes=classes)
+                    else:
+                        literal_block += nodes.Text(value, value)
+            else:
+                literal_block += nodes.Text(text, text)
+            return [literal_block]
+        if 'code' in self.options:
+            self.options['source'] = path
+            codeblock = CodeBlock(self.name,
+                                  [self.options.pop('code')], # arguments
+                                  self.options,
+                                  include_lines, # content
+                                  self.lineno,
+                                  self.content_offset,
+                                  self.block_text,
+                                  self.state,
+                                  self.state_machine)
+            return codeblock.run()
+
+        new_include_lines = []
+        var_value0 = self.options.get('var0', '')
+        var_value1 = self.options.get('var1', '')
+        var_value2 = self.options.get('var2', '')
+        var_value3 = self.options.get('var3', '')
+        var_value4 = self.options.get('var4', '')
+        var_value5 = self.options.get('var5', '')
+        var_value6 = self.options.get('var6', '')
+        var_value7 = self.options.get('var7', '')
+        var_value8 = self.options.get('var8', '')
+        var_value9 = self.options.get('var9', '')
+        for line in include_lines:
+            line = re.sub('{{\s?var0\s?}}',var_value0,line)
+            line = re.sub('{{\s?var1\s?}}',var_value1,line)
+            line = re.sub('{{\s?var2\s?}}',var_value2,line)
+            line = re.sub('{{\s?var3\s?}}',var_value3,line)
+            line = re.sub('{{\s?var4\s?}}',var_value4,line)
+            line = re.sub('{{\s?var5\s?}}',var_value5,line)
+            line = re.sub('{{\s?var6\s?}}',var_value6,line)
+            line = re.sub('{{\s?var7\s?}}',var_value7,line)
+            line = re.sub('{{\s?var8\s?}}',var_value8,line)
+            line = re.sub('{{\s?var9\s?}}',var_value9,line)
+            new_include_lines.append(line)
+        self.state_machine.insert_input(new_include_lines, path)
+        return []
 
 
 class CfgcmdlistDirective(Directive):
