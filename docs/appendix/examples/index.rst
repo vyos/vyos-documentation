@@ -17,3 +17,4 @@ This chapter contains various configuration Examples
    azure-vpn-dual-bgp
    tunnelbroker-ipv6
    dhcp-relay-through-gre-bridge
+   wan-load-balancing

@@ -347,8 +347,8 @@ installation method which allows deploying VyOS through the network.
 **Requirements**
 
 * Clients (where VyOS is to be installed) with a PXE-enabled NIC
-* :ref:`dhcp-server`
-* :ref:`tftp-server`
+* DHCP Server
+* TFTP Server
 * Webserver (HTTP) - optional, but we will use it to speed up installation
 * VyOS ISO image to be installed (do not use images prior to VyOS 1.2.3)
 * Files *pxelinux.0* and *ldlinux.c32* `from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_
