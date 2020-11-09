@@ -3,7 +3,7 @@
 Configuration Blueprints
 ========================
 
-This chapter contains various configuration Examples
+This chapter contains various configuration examples:
 
 
 .. toctree::
@@ -18,3 +18,4 @@ This chapter contains various configuration Examples
    azure-vpn-dual-bgp
    tunnelbroker-ipv6
    ha
+   wan-load-balancing
