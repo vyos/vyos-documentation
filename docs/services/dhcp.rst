@@ -629,9 +629,7 @@ If you want your router to forward DHCP requests to an external DHCP server
 you can configure the system to act as a DHCP relay agent. The DHCP relay
 agent works with IPv4 and IPv6 addresses.
 
-All interfaces used for the DHCP relay must be configured. See
-https://wiki.vyos.net/wiki/Network_address_setup.
-
+All interfaces used for the DHCP relay must be configured.
 
 Configuration
 -------------
