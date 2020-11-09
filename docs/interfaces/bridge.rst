@@ -20,27 +20,9 @@ Configuration
 Address
 -------
 
-.. cfgcmd:: set interfaces bridge <interface> address <address | dhcp |
-   dhcpv6>
-
-   Configure interface `<interface>` with one or more interface
-   addresses.
-
-   * **address** can be specified multiple times as IPv4 and/or IPv6
-     address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
-   * **dhcp** interface address is received by DHCP from a DHCP server
-     on this segment.
-   * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
-     server on this segment.
-
-   Example:
-
-   .. code-block:: none
-
-     set interfaces bridge br0 address 192.0.2.1/24
-     set interfaces bridge br0 address 192.0.2.2/24
-     set interfaces bridge br0 address 2001:db8::ffff/64
-     set interfaces bridge br0 address 2001:db8:100::ffff/64
+.. cmdinclude:: ../_include/interface-address.txt
+   :var0: bridge
+   :var1: br0
 
 
 .. cfgcmd:: set interfaces bridge <interface> ipv6 address autoconf
