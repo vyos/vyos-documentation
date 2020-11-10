@@ -10,7 +10,9 @@ Advanced Network Interfaces
    bond
    bridge
    dummy
+   ethernet
    geneve
+   loopback
    l2tpv3
    macsec
    pseudo-ethernet
