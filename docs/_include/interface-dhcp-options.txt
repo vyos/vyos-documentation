@@ -1,0 +1,46 @@
+.. cfgcmd:: set interfaces {{ var0 }} <interface> dhcp-options client-id <description>
+
+  :rfc:`2131` states: The client MAY choose to explicitly provide the identifier
+  through the 'client identifier' option. If the client supplies a 'client
+  identifier', the client MUST use the same 'client identifier' in all
+  subsequent messages, and the server MUST use that identifier to identify the
+  client.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} dhcp-options client-id 'foo-bar'
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> dhcp-options host-name <hostname>
+
+  Instead of sending the real system hostname to the DHCP server, overwrite the
+  host-name with this given-value.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} dhcp-options host-name 'VyOS'
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> dhcp-options vendor-class-id <vendor-id>
+
+  The vendor-class-id option can be used to request a specific class of vendor
+  options from the server.
+
+  Example
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} dhcp-options vendor-class-id 'VyOS'
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> dhcp-options no-default-route
+
+  Only request an address from the DHCP server but do not request a default
+  gateway.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} dhcp-options no-default-route
