@@ -16,20 +16,8 @@ Configuration
 Common interface configuration
 ------------------------------
 
-.. cmdinclude:: ../_include/interface-address-with-dhcp.txt
-   :var0: bonding
-   :var1: bond0
-
-.. cmdinclude:: ../_include/interface-description.txt
-   :var0: bonding
-   :var1: bond0
-
-.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
-   :var0: bonding
-   :var1: bond0
-
-.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
-   :var0: bonding
+.. cmdinclude:: ../_include/interface-common-with-dhcp.txt
+   :var0: bond
    :var1: bond0
 
 Link Administration

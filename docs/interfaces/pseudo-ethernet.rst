@@ -44,19 +44,7 @@ Configuration
 Common interface configuration
 ------------------------------
 
-.. cmdinclude:: ../_include/interface-address-with-dhcp.txt
-   :var0: pseudo-ethernet
-   :var1: peth0
-
-.. cmdinclude:: ../_include/interface-description.txt
-   :var0: pseudo-ethernet
-   :var1: peth0
-
-.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
-   :var0: pseudo-ethernet
-   :var1: peth0
-
-.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
+.. cmdinclude:: ../_include/interface-common-with-dhcp.txt
    :var0: pseudo-ethernet
    :var1: peth0
 

@@ -20,26 +20,13 @@ Configuration
 Common interface configuration
 ------------------------------
 
-.. cmdinclude:: ../_include/interface-address-with-dhcp.txt
-   :var0: bridge
-   :var1: br0
-
-.. cmdinclude:: ../_include/interface-description.txt
-   :var0: bridge
-   :var1: br0
-
-.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
-   :var0: bridge
-   :var1: br0
-
-.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
+.. cmdinclude:: ../_include/interface-common-with-dhcp.txt
    :var0: bridge
    :var1: br0
 
 .. cfgcmd:: set interfaces bridge <interface> aging <time>
 
    MAC address aging `<time`> in seconds (default: 300).
-
 
 .. cfgcmd:: set interfaces bridge <interface> max-age <time>
 

@@ -39,19 +39,7 @@ Configuration
 Common interface configuration
 ------------------------------
 
-.. cmdinclude:: ../_include/interface-address.txt
-   :var0: vxlan
-   :var1: vxlan0
-
-.. cmdinclude:: ../_include/interface-description.txt
-   :var0: vxlan
-   :var1: vxlan0
-
-.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
-   :var0: vxlan
-   :var1: vxlan0
-
-.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
+.. cmdinclude:: ../_include/interface-common-without-dhcp.txt
    :var0: vxlan
    :var1: vxlan0
 

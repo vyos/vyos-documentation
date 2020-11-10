@@ -38,11 +38,7 @@ Configuration
 Common interface configuration
 ------------------------------
 
-.. cmdinclude:: ../_include/interface-address.txt
-   :var0: geneve
-   :var1: gnv0
-
-.. cmdinclude:: ../_include/interface-description.txt
+.. cmdinclude:: ../_include/interface-common-without-dhcp.txt
    :var0: geneve
    :var1: gnv0
 
