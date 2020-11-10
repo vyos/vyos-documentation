@@ -23,6 +23,9 @@ Common interface configuration
    :var0: macsec
    :var1: macsec0
 
+MACsec specific options
+-----------------------
+
 .. cfgcmd:: set interfaces macsec <interface> security cipher [gcm-aes-128]
 
   Select cipher suite used for cryptographic operations. This setting is
@@ -41,9 +44,8 @@ Common interface configuration
   A physical interface is required to connect this MACsec instance to. Traffic
   leaving this interfac will now be authenticated/encrypted.
 
-
 Key Management
---------------
+^^^^^^^^^^^^^^
 
 :abbr:`MKA (MACsec Key Agreement protocol)` is used to synchronize keys between
 individual peers.
@@ -63,7 +65,7 @@ individual peers.
   distributing SAKs.
 
 Replay protection
------------------
+^^^^^^^^^^^^^^^^^
 
 .. cfgcmd:: set interfaces macsec <interface> security replay-window <window>
 
@@ -75,7 +77,7 @@ Replay protection
   - ``1-4294967295``: Number of packets that could be misordered
 
 Operation
-=========
+#########
 
 .. opcmd:: run generate macsec mka-cak
 
@@ -122,7 +124,7 @@ Operation
         TXSC: 005056bfefaa0001 on SA 0
 
 Examples
-========
+########
 
 * Two routers connected both via eth1 through an untrusted switch
 * R1 has 192.0.2.1/24 & 2001:db8::1/64

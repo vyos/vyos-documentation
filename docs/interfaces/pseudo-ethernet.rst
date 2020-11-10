@@ -48,8 +48,8 @@ Common interface configuration
    :var0: pseudo-ethernet
    :var1: peth0
 
-Physical Asignment
-------------------
+Pseudo Ethernet/MACVLAN specific options
+----------------------------------------
 
 .. cfgcmd:: set interfaces pseudo-ethernet <interface> source-interface <ethX>
 

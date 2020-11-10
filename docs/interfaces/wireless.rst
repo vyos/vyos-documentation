@@ -1,7 +1,10 @@
+.. include:: ../_include/need_improvement.txt
+
 .. _wireless-interface:
 
+###################
 Wireless LAN (WiFi)
--------------------
+###################
 
 :abbr:`WLAN (Wireless LAN)` interface provide 802.11 (a/b/g/n/ac) wireless
 support (commonly referred to as Wi-Fi) by means of compatible hardware. If your
@@ -22,16 +25,29 @@ If the system detects an unconfigured wireless device, it will be automatically
 added the configuration tree, specifying any detected settings (for example,
 its MAC address) and configured to run in monitor mode.
 
-To be able to use the wireless interfaces you will first need to set a
-regulatory domain with the country code of your location.
+Configuration
+#############
 
-.. cfgcmd:: set system wifi-regulatory-domain DE
+Common interface configuration
+------------------------------
 
-   Configure system wide Wi-Fi regulatory domain. A reboot is required for this
-   change to be enabled.
+.. cmdinclude:: ../_include/interface-common-with-dhcp.txt
+   :var0: wireless
+   :var1: wlan0
+
+Wireless specific options
+-------------------------
 
 Configuring Access-Point
 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+To be able to use the wireless interfaces you will first need to set a
+regulatory domain with the country code of your location.
+
+.. cfgcmd:: set interfaces wireless <interface> country-code <cc>
+
+   Configure system wide Wi-Fi regulatory domain. A reboot is required for this
+   change to be enabled.
 
 The following example creates a WAP. When configuring multiple WAP interfaces,
 you must specify unique IP addresses, channels, Network IDs commonly referred

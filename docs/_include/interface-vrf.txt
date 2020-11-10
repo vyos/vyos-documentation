@@ -1,0 +1,12 @@
+.. cfgcmd:: set interfaces {{ var0 }} <interface> vrf <vrf>
+
+  Place interface in given VRF instance.
+
+  .. seealso:: There is an entire chapter about how to configure a :ref:`vrf`,
+    please check this for additional information.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} vrf red

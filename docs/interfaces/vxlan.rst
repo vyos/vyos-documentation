@@ -40,55 +40,54 @@ Common interface configuration
 ------------------------------
 
 .. cmdinclude:: ../_include/interface-common-without-dhcp.txt
-   :var0: vxlan
-   :var1: vxlan0
+  :var0: vxlan
+  :var1: vxlan0
+
+VXLAN specific options
+-----------------------
 
 .. cfgcmd:: set interfaces vxlan <interface> vni <number>
 
-   Each VXLAN segment is identified through a 24-bit segment ID, termed the
-   :abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))`, This allows
-   up to 16M VXLAN segments to coexist within the same administrative domain.
+  Each VXLAN segment is identified through a 24-bit segment ID, termed the
+  :abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))`, This allows
+  up to 16M VXLAN segments to coexist within the same administrative domain.
 
-Multicast
-^^^^^^^^^
+.. cfgcmd:: set interfaces vxlan <interface> port <port>
 
-.. cfgcmd:: set interfaces vxlan <interface> source-interface <interface>
+  Configure port number of remote VXLAN endpoint.
 
-   Interface used for VXLAN underlay. This is mandatory when using VXLAN via
-   a multicast network. VXLAN traffic will always enter and exit this interface.
+  .. note:: As VyOS is Linux based the default port used is not using 4789
+     as the default IANA-assigned destination UDP port number. Instead VyOS
+     uses the Linux default port of 8472.
 
+.. cfgcmd:: set interfaces vxlan <interface> source-address <interface>
 
-.. cfgcmd:: set interfaces vxlan <interface> group <address>
-
-   Multicast group address for VXLAN interface. VXLAN tunnels can be built
-   either via Multicast or via Unicast.
-
-   Both IPv4 and IPv6 multicast is possible.
+  Source IP address used for VXLAN underlay. This is mandatory when using VXLAN
+  via L2VPN/EVPN.
 
 Unicast
 ^^^^^^^
 
 .. cfgcmd:: set interfaces vxlan <interface> remote <address>
 
-   IPv4/IPv6 remote address of the VXLAN tunnel. Alternative to multicast, the
-   remote IPv4/IPv6 address can set directly.
+  IPv4/IPv6 remote address of the VXLAN tunnel. Alternative to multicast, the
+  remote IPv4/IPv6 address can set directly.
+
+Multicast
+^^^^^^^^^
+
+.. cfgcmd:: set interfaces vxlan <interface> source-interface <interface>
+
+  Interface used for VXLAN underlay. This is mandatory when using VXLAN via
+  a multicast network. VXLAN traffic will always enter and exit this interface.
 
 
-.. cfgcmd:: set interfaces vxlan <interface> port <port>
+.. cfgcmd:: set interfaces vxlan <interface> group <address>
 
-    Configure port number of remote VXLAN endpoint.
+  Multicast group address for VXLAN interface. VXLAN tunnels can be built
+  either via Multicast or via Unicast.
 
-    .. note:: As VyOS is Linux based the default port used is not using 4789
-       as the default IANA-assigned destination UDP port number. Instead VyOS
-       uses the Linux default port of 8472.
-
-L2VVPN / EVPN
-^^^^^^^^^^^^^
-
-.. cfgcmd:: set interfaces vxlan <interface> source-address <interface>
-
-   Source IP address used for VXLAN underlay. This is mandatory when using
-   VXLAN via L2VPN/EVPN.
+  Both IPv4 and IPv6 multicast is possible.
 
 Multicast VXLAN
 ===============

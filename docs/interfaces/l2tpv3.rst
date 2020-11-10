@@ -2,14 +2,25 @@
 
 .. _l2tpv3-interface:
 
+######
 L2TPv3
-------
+######
 
 L2TPv3 is a pseudowire protocol, you can read more about on `Wikipedia L2TPv3`_
 or in :rfc:`3921`
 
 L2TPv3 can transport any traffic including ethernet frames. L2TPv2 is limited
 to PPP.
+
+Configuration
+#############
+
+Common interface configuration
+------------------------------
+
+.. cmdinclude:: ../_include/interface-common-without-dhcp.txt
+   :var0: l2tpv3
+   :var1: l2tpeth0
 
 Over IP
 ^^^^^^^

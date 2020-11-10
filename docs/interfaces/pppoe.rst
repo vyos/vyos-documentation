@@ -54,6 +54,24 @@ vDSL/aDSL understands.
 Configuration
 =============
 
+Common interface configuration
+------------------------------
+
+.. cmdinclude:: ../_include/interface-description.txt
+   :var0: pppoe
+   :var1: pppoe0
+
+.. cmdinclude:: ../_include/interface-disable.txt
+   :var0: pppoe
+   :var1: pppoe0
+
+.. cmdinclude:: ../_include/interface-vrf.txt
+   :var0: pppoe
+   :var1: pppoe0
+
+PPPoE specific configuration
+----------------------------
+
 .. cfgcmd:: set interfaces pppoe <interface> access-concentrator <name>
 
    Use this command to restrict the PPPoE session on a given access
@@ -101,16 +119,6 @@ Configuration
 
    **default:** A default route to the remote endpoint is automatically added
    when the link comes up (i.e. auto).
-
-.. cfgcmd:: set interfaces pppoe <interface> description
-
-   Assign given `<description>` to interface. Description will also be passed
-   to SNMP monitoring systems.
-
-.. cfgcmd:: set interfaces pppoe <interface> disable
-
-   Disable given `<interface>`. It will be placed in administratively down
-   (``A/D``) state.
 
 .. cfgcmd:: set interfaces pppoe <interface> idle-timeout <time>
 
@@ -167,43 +175,9 @@ IPv6
    Use this command to enable acquisition of IPv6 address using stateless
    autoconfig (SLAAC).
 
-Prefix Delegation (DHCPv6-PD)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-VyOS 1.3 (equuleus) supports DHCPv6-PD. DHCPv6 Prefix Delegation is supported
-by most ISPs who provide native IPv6 for consumers on fixed networks.
-
-.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option pd <id> length <length>
-
-   Some ISPs by default only delegate a /64 prefix. To request for a specific
-   prefix size use this option to request for a bigger delegation for this pd
-   `<id>`. This value
-   is in the range from 32 - 64 so you could request up to /32 down to a /64
-   delegation.
-
-   Default value is 64.
-
-.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option pd <id> interface <delegatee> address <address>
-
-   Specify the interface address used locally on the interfcae where the prefix
-   has been delegated to. ID must be a decimal integer.
-
-   It will be combined with the delegated prefix and the sla-id to form a complete
-   interface address. The default is to use the EUI-64 address of the interface.
-
-   Example:
-
-   Using ``<id>`` value 65535 will assign IPv6 address ``<prefix>::ffff`` to the
-   interface.
-
-.. cfgcmd:: set interfaces pppoe <interface> dhcpv6-option pd <id> interface <delegatee> sla-id <id>
-
-   Specify the identifier value of the site-level aggregator (SLA) on the
-   interface. ID must be a decimal number greater then 0 which fits in the length
-   of SLA IDs (see below). For example, if ID is 1 and the client is delegated
-   an IPv6 prefix 2001:db8:ffff::/48, dhcp6c will combine the two values into a
-   single IPv6 prefix, 2001:db8:ffff:1::/64, and will configure the prefix on
-   the specified interface.
+.. cmdinclude:: ../_include/interface-dhcpv6-prefix-delegation.txt
+  :var0: pppoe
+  :var1: pppoe0
 
 Operation
 =========

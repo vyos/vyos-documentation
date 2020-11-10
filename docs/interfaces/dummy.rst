@@ -33,6 +33,14 @@ Common interface configuration
    :var0: dummy
    :var1: dum0
 
+.. cmdinclude:: ../_include/interface-disable.txt
+   :var0: dummy
+   :var1: dum0
+
+.. cmdinclude:: ../_include/interface-vrf.txt
+   :var0: dummy
+   :var1: dum0
+
 Operation
 =========
 

@@ -1,8 +1,8 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> ipv6 address eui64 <prefix>
 
-   :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in
-   :rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address.
+  :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in
+  :rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address.
 
-   .. code-block:: none
+  .. code-block:: none
 
-     set interfaces {{ var0 }} {{ var1 }} ipv6 address eui64 2001:db8:beef::/64
+    set interfaces {{ var0 }} {{ var1 }} ipv6 address eui64 2001:db8:beef::/64

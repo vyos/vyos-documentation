@@ -42,6 +42,9 @@ Common interface configuration
    :var0: geneve
    :var1: gnv0
 
+GENEVE specific options
+-----------------------
+
 .. cfgcmd:: set interfaces geneve gnv0 remote <address>
 
    Configure GENEVE tunnel far end/remote tunnel endpoint.
@@ -55,7 +58,3 @@ Common interface configuration
    decisions or MAY be used as a mechanism to distinguish between overlapping
    address spaces contained in the encapsulated packet when load balancing
    across CPUs.
-
-.. cfgcmd:: set interfaces geneve gnv0 mtu <mtu>
-
-   Set interface :abbr:`MTU (Maximum Transfer Unit)` size.

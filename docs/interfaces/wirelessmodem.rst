@@ -18,8 +18,16 @@ Common interface configuration
    :var0: wirelessmodem
    :var1: wlm0
 
-Address
--------
+.. cmdinclude:: ../_include/interface-disable.txt
+   :var0: wirelessmodem
+   :var1: wlm0
+
+.. cmdinclude:: ../_include/interface-vrf.txt
+   :var0: wirelessmodem
+   :var1: wlm0
+
+WWAN specific options
+---------------------
 
 .. cfgcmd:: set interfaces wirelessmodem <interface> apn <apn>
 

@@ -20,8 +20,15 @@ Common interface configuration
    :var0: bond
    :var1: bond0
 
-Link Administration
--------------------
+Member Interfaces
+-----------------
+
+.. cfgcmd:: set interfaces bonding <interface> member interface <member>
+
+   Enslave `<member>` interface to bond `<interface>`.
+
+Bond options
+------------
 
 .. cfgcmd:: set interfaces bonding <interface> mode <mode>
 
@@ -245,13 +252,6 @@ Link Administration
 
    The maximum number of targets that can be specified is 16. The default value
    is no IP addresses.
-
-Member Interfaces
------------------
-
-.. cfgcmd:: set interfaces bonding <interface> member interface <member>
-
-   Enslave `<member>` interface to bond `<interface>`.
 
 Example
 -------

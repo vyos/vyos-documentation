@@ -1,7 +1,7 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> mac <xx:xx:xx:xx:xx:xx>
 
-   Configure user defined :abbr:`MAC (Media Access Control)` address on given
-   `<interface>`.
+  Configure user defined :abbr:`MAC (Media Access Control)` address on given
+  `<interface>`.
 
   Example:
 

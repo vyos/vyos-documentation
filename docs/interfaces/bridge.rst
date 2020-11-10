@@ -24,29 +24,6 @@ Common interface configuration
    :var0: bridge
    :var1: br0
 
-.. cfgcmd:: set interfaces bridge <interface> aging <time>
-
-   MAC address aging `<time`> in seconds (default: 300).
-
-.. cfgcmd:: set interfaces bridge <interface> max-age <time>
-
-   Bridge maximum aging `<time>` in seconds (default: 20).
-
-   If a another bridge in the spanning tree does not send out a hello
-   packet for a long period of time, it is assumed to be dead.
-
-
-Link Administration
--------------------
-
-.. cfgcmd:: set interfaces bridge <interface> disable-flow-control
-
-   Disable Ethernet flow control (pause frames).
-
-.. cfgcmd:: set interfaces bridge <interface> igmp querier
-
-   Enable IGMP querier
-
 Member Interfaces
 -----------------
 
@@ -81,7 +58,6 @@ Member Interfaces
    bridge could have a different speed and this value is used when
    deciding which link to use. Faster interfaces should have lower
    costs.
-
 
 .. _stp:
 
@@ -118,9 +94,26 @@ links providing fault tolerance if an active link fails.
    Designated Bridges. Hello packets are used to communicate information
    about the topology throughout the entire Bridged Local Area Network.
 
+Additional Bridge Options
+-------------------------
+
+.. cfgcmd:: set interfaces bridge <interface> aging <time>
+
+   MAC address aging `<time`> in seconds (default: 300).
+
+.. cfgcmd:: set interfaces bridge <interface> max-age <time>
+
+   Bridge maximum aging `<time>` in seconds (default: 20).
+
+   If a another bridge in the spanning tree does not send out a hello
+   packet for a long period of time, it is assumed to be dead.
+
+.. cfgcmd:: set interfaces bridge <interface> igmp querier
+
+   Enable IGMP querier
 
 Example
--------
+#######
 
 Creating a bridge interface is very simple. In this example we will
 have:
@@ -155,7 +148,7 @@ This results in the active configuration:
 
 
 Operation
-=========
+#########
 
 .. opcmd:: show bridge
 

@@ -45,13 +45,12 @@ Speed/Duplex
 
    VyOS default will be `auto`.
 
-Link Administration
--------------------
+VLAN (802.1q) configuration
+---------------------------
 
-.. cfgcmd:: set interfaces ethernet <interface> disable-flow-control
-
-   Disable Ethernet flow control (pause frames).
-
+.. cmdinclude:: ../_include/interface-vlan.txt
+   :var0: ethernet
+   :var1: eth0
 
 Operation
 =========
