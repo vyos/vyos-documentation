@@ -55,22 +55,3 @@ Physical Asignment
 
    Specifies the physical `<ethX>` Ethernet interface associated with a Pseudo
    Ethernet `<interface>`.
-
-Link Administration
--------------------
-
-.. cfgcmd:: set interfaces pseudo-ethernet <interface> description <description>
-
-   Assign given `<description>` to interface. Description will also be passed
-   to SNMP monitoring systems.
-
-.. cfgcmd:: set interfaces pseudo-ethernet <interface> disable
-
-   Disable given `<interface>`. It will be placed in administratively down
-   (``A/D``) state.
-
-.. cfgcmd:: set interfaces pseudo-ethernet <interface> mac <mac-address>
-
-   Configure user defined :abbr:`MAC (Media Access Control)` address on given
-   `<interface>`.
-

@@ -48,30 +48,9 @@ Speed/Duplex
 Link Administration
 -------------------
 
-.. cfgcmd:: set interfaces ethernet <interface> description <description>
-
-   Assign given `<description>` to interface. Description will also be passed
-   to SNMP monitoring systems.
-
-.. cfgcmd:: set interfaces ethernet <interface> disable
-
-   Disable given `<interface>`. It will be placed in administratively down
-   (``A/D``) state.
-
 .. cfgcmd:: set interfaces ethernet <interface> disable-flow-control
 
    Disable Ethernet flow control (pause frames).
-
-
-.. cfgcmd:: set interfaces ethernet <interface> mac <mac-address>
-
-   Configure user defined :abbr:`MAC (Media Access Control)` address on given
-   `<interface>`.
-
-.. cfgcmd:: set interfaces ethernet <interface> mtu <mtu>
-
-   Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It
-   is the size (in bytes) of the largest ethernet frame sent on this link.
 
 
 Operation

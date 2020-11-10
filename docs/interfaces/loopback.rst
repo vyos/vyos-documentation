@@ -33,14 +33,6 @@ Common interface configuration
    :var0: loopback
    :var1: lo
 
-Link Administration
--------------------
-
-.. cfgcmd:: set interfaces loopback lo description <description>
-
-   Assign given `<description>` to interface `lo`. Description will also be
-   passed to SNMP monitoring systems.
-
 Operation
 =========
 

@@ -1,0 +1,10 @@
+.. cfgcmd:: set interfaces {{ var0 }} <interface> disable
+
+   Disable given `<interface>`. It will be placed in administratively down
+   (``A/D``) state.
+
+   Example:
+
+   .. code-block:: none
+
+     set interfaces {{ var0 }} {{ var1 }} disable

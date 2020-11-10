@@ -2,6 +2,18 @@
    :var0: {{ var0 }}
    :var1: {{ var1 }}
 
+.. cmdinclude:: ../_include/interface-disable.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+
+.. cmdinclude:: ../_include/interface-mac.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+
+.. cmdinclude:: ../_include/interface-mtu.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+
 .. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}

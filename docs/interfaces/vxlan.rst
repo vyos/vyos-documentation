@@ -90,27 +90,6 @@ L2VVPN / EVPN
    Source IP address used for VXLAN underlay. This is mandatory when using
    VXLAN via L2VPN/EVPN.
 
-
-Link Administration
--------------------
-
-.. cfgcmd:: set interfaces vxlan <interface> description <description>
-
-   Assign given `<description>` to interface. Description will also be passed
-   to SNMP monitoring systems.
-
-.. cfgcmd:: set interfaces vxlan <interface> disable
-
-   Disable given `<interface>`. It will be placed in administratively down
-   (``A/D``) state.
-
-.. cfgcmd:: set interfaces vxlan <interface> mtu <mtu>
-
-   Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It
-   is the size (in bytes) of the largest ethernet frame sent on this link.
-   MTU ranges from 1450 to 9000 bytes. For best performance you should have
-   a MTU > 1550 bytes on your underlay.
-
 Multicast VXLAN
 ===============
 

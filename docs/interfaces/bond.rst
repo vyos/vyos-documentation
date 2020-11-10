@@ -23,22 +23,6 @@ Common interface configuration
 Link Administration
 -------------------
 
-.. cfgcmd:: set interfaces bonding <interface> description <description>
-
-   Assign given `<description>` to interface. Description will also be passed
-   to SNMP monitoring systems.
-
-
-.. cfgcmd:: set interfaces bonding <interface> disable
-
-   Disable given `<interface>`. It will be placed in administratively down
-   (``A/D``) state.
-
-.. cfgcmd:: set interfaces bonding <interface> mac <mac-address>
-
-   Configure user defined :abbr:`MAC (Media Access Control)` address on given
-   `<interface>`.
-
 .. cfgcmd:: set interfaces bonding <interface> mode <mode>
 
    Specifies one of the bonding policies. The default is 802.3ad. Possible

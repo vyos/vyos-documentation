@@ -33,19 +33,6 @@ Common interface configuration
    :var0: dummy
    :var1: dum0
 
-Link Administration
--------------------
-
-.. cfgcmd:: set interfaces dummy <interface> description <description>
-
-   Assign given `<description>` to interface. Description will also be passed
-   to SNMP monitoring systems.
-
-.. cfgcmd:: set interfaces dummy <interface> disable
-
-   Disable given `<interface>`. It will be placed in administratively down
-   state.
-
 Operation
 =========
 

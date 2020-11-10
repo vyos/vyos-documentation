@@ -1,0 +1,10 @@
+.. cfgcmd:: set interfaces {{ var0 }} <interface> mtu <mtu>
+
+  Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It
+  is the size (in bytes) of the largest ethernet frame sent on this link.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} mtu 1450

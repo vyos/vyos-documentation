@@ -39,34 +39,13 @@ Common interface configuration
 Link Administration
 -------------------
 
-.. cfgcmd:: set interfaces bridge <interface> description <description>
-
-   Assign given `<description>` to interface. Description will also be
-   passed to SNMP monitoring systems.
-
-
-.. cfgcmd:: set interfaces bridge <interface> disable
-
-   Disable given `<interface>`. It will be placed in administratively
-   down (``A/D``) state.
-
-
 .. cfgcmd:: set interfaces bridge <interface> disable-flow-control
 
    Disable Ethernet flow control (pause frames).
 
-
-.. cfgcmd:: set interfaces bridge <interface> mac <mac-address>
-
-   Configure user defined :abbr:`MAC (Media Access Control)` address on
-   given `<interface>`.
-
-
 .. cfgcmd:: set interfaces bridge <interface> igmp querier
 
    Enable IGMP querier
-
-
 
 Member Interfaces
 -----------------
