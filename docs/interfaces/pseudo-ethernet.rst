@@ -44,22 +44,17 @@ Configuration
 Address
 -------
 
-.. cfgcmd:: set interfaces pseudo-ethernet <interface> address <address | dhcp | dhcpv6>
+.. cmdinclude:: ../_include/interface-address.txt
+   :var0: pseudo-ethernet
+   :var1: peth0
 
-   .. include:: common-ip-ipv6-addr.txt
+.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
+   :var0: pseudo-ethernet
+   :var1: peth0
 
-   Example:
-
-   .. code-block:: none
-
-     set interfaces pseudo-ethernet peth0 address 192.0.2.1/24
-     set interfaces pseudo-ethernet peth0 address 192.0.2.2/24
-     set interfaces pseudo-ethernet peth0 address 2001:db8::ffff/64
-     set interfaces pseudo-ethernet peth0 address 2001:db8:100::ffff/64
-
-.. cfgcmd:: set interfaces pseudo-ethernet <interface> ipv6 address autoconf
-
-   .. include:: common-ipv6-addr-autoconf.txt
+.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
+   :var0: pseudo-ethernet
+   :var1: peth0
 
 Physical Asignment
 ------------------

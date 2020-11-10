@@ -24,22 +24,13 @@ Address
    :var0: bridge
    :var1: br0
 
+.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
+   :var0: bridge
+   :var1: br0
 
-.. cfgcmd:: set interfaces bridge <interface> ipv6 address autoconf
-
-   .. include:: common-ipv6-addr-autoconf.txt
-
-.. cfgcmd:: set interfaces bridge <interface> ipv6 address eui64
-   <prefix>
-
-   :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in
-   :rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6
-   address.
-
-   .. code-block:: none
-
-     set interfaces bridge br0 ipv6 address eui64 2001:db8:beef::/64
-
+.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
+   :var0: bridge
+   :var1: br0
 
 .. cfgcmd:: set interfaces bridge <interface> aging <time>
 

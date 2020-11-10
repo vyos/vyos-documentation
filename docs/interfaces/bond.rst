@@ -16,40 +16,17 @@ Configuration
 Address
 -------
 
-.. cfgcmd:: set interfaces bonding <interface> address <address | dhcp | dhcpv6>
+.. cmdinclude:: ../_include/interface-address.txt
+   :var0: bonding
+   :var1: bond0
 
-   Configure interface `<interface>` with one or more interface addresses.
+.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
+   :var0: bonding
+   :var1: bond0
 
-   * **address** can be specified multiple times as IPv4 and/or IPv6 address,
-     e.g. 192.0.2.1/24 and/or 2001:db8::1/64
-   * **dhcp** interface address is received by DHCP from a DHCP server on this
-     segment.
-   * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6 server on
-     this segment.
-
-   Example:
-
-   .. code-block:: none
-
-     set interfaces bonding bond0 address 192.0.2.1/24
-     set interfaces bonding bond0 address 192.0.2.2/24
-     set interfaces bonding bond0 address 2001:db8::ffff/64
-     set interfaces bonding bond0 address 2001:db8:100::ffff/64
-
-
-.. cfgcmd:: set interfaces bonding <interface> ipv6 address autoconf
-
-   .. include:: common-ipv6-addr-autoconf.txt
-
-.. cfgcmd:: set interfaces bonding <interface> ipv6 address eui64 <prefix>
-
-   :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in
-   :rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address.
-
-   .. code-block:: none
-
-     set interfaces bonding bond0 ipv6 address eui64 2001:db8:beef::/64
-
+.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
+   :var0: bonding
+   :var1: bond0
 
 Link Administration
 -------------------

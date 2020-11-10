@@ -39,35 +39,17 @@ Configuration
 Address
 -------
 
-.. cfgcmd:: set interfaces vxlan <interface> address <address>
+.. cmdinclude:: ../_include/interface-address.txt
+   :var0: vxlan
+   :var1: vxlan0
 
-   Configure VXLAN interface `<interface>` with one or more interface
-   addresses. Address can be specified multiple times as IPv4 and/or IPv6
-   address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
+.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
+   :var0: vxlan
+   :var1: vxlan0
 
-   Example:
-
-   .. code-block:: none
-
-     set interfaces vxlan vxlan0 address 192.0.2.1/24
-     set interfaces vxlan vxlan0 address 192.0.2.2/24
-     set interfaces vxlan vxlan0 address 2001:db8::ffff/64
-     set interfaces vxlan vxlan0 address 2001:db8:100::ffff/64
-
-
-.. cfgcmd:: set interfaces vxlan <interface> ipv6 address autoconf
-
-   .. include:: common-ipv6-addr-autoconf.txt
-
-.. cfgcmd:: set interfaces vxlan <interface> ipv6 address eui64 <prefix>
-
-   :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in
-   :rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address.
-
-   .. code-block:: none
-
-     set interfaces vxlan vxlan0 ipv6 address eui64 2001:db8:beef::/64
-
+.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
+   :var0: vxlan
+   :var1: vxlan0
 
 .. cfgcmd:: set interfaces vxlan <interface> vni <number>
 
