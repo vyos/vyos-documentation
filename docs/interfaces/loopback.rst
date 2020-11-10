@@ -22,14 +22,16 @@ services on your local machine.
 Configuration
 =============
 
-Address
--------
+Common interface configuration
+------------------------------
 
-.. cfgcmd:: set interfaces loopback lo address <address>
+.. cmdinclude:: ../_include/interface-address.txt
+   :var0: loopback
+   :var1: lo
 
-   Configure Loopback interface `lo` with one or more interface addresses.
-   Address can be specified multiple times as IPv4 and/or IPv6 address, e.g.
-   192.0.2.1/24 and/or 2001:db8::1/64.
+.. cmdinclude:: ../_include/interface-description.txt
+   :var0: loopback
+   :var1: lo
 
 Link Administration
 -------------------

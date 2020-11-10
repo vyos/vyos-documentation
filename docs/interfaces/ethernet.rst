@@ -7,10 +7,14 @@ Ethernet
 Configuration
 #############
 
-Address
--------
+Common interface configuration
+------------------------------
 
-.. cmdinclude:: ../_include/interface-address.txt
+.. cmdinclude:: ../_include/interface-address-with-dhcp.txt
+   :var0: ethernet
+   :var1: eth0
+
+.. cmdinclude:: ../_include/interface-description.txt
    :var0: ethernet
    :var1: eth0
 

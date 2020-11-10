@@ -1,0 +1,10 @@
+.. cfgcmd:: set interfaces {{ var0 }} <interface> description <description>
+
+   Set a human readable, descriptive alias for this connection. Alias is used by
+   e.g. the :opcmd:`show interfaces` command or SNMP based monitoring tools.
+
+   Example:
+
+   .. code-block:: none
+
+     set interfaces {{ var0 }} {{ var1 }} description 'This is an awesome interface running on VyOS'

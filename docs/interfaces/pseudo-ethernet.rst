@@ -41,10 +41,14 @@ Ethernet interfaces:
 Configuration
 =============
 
-Address
--------
+Common interface configuration
+------------------------------
 
-.. cmdinclude:: ../_include/interface-address.txt
+.. cmdinclude:: ../_include/interface-address-with-dhcp.txt
+   :var0: pseudo-ethernet
+   :var1: peth0
+
+.. cmdinclude:: ../_include/interface-description.txt
    :var0: pseudo-ethernet
    :var1: peth0
 

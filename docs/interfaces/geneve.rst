@@ -35,21 +35,16 @@ Geneve Header:
 Configuration
 =============
 
-.. cfgcmd:: set interfaces geneve gnv0 address <address>
+Common interface configuration
+------------------------------
 
-   Configure interface `<interface>` with one or more interface addresses.
+.. cmdinclude:: ../_include/interface-address.txt
+   :var0: geneve
+   :var1: gnv0
 
-   **address** can be specified multiple times as IPv4 and/or IPv6 address,
-   e.g. 192.0.2.1/24 and/or 2001:db8::1/64
-
-   Example:
-
-   .. code-block:: none
-
-     set interfaces geneve gnv0 address 192.0.2.1/24
-     set interfaces geneve gnv0 address 192.0.2.2/24
-     set interfaces geneve gnv0 address 2001:db8::ffff/64
-     set interfaces geneve gnv0 address 2001:db8:100::ffff/64
+.. cmdinclude:: ../_include/interface-description.txt
+   :var0: geneve
+   :var1: gnv0
 
 .. cfgcmd:: set interfaces geneve gnv0 remote <address>
 

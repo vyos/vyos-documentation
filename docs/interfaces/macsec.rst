@@ -16,6 +16,25 @@ used for their own specific use cases.
 Configuration
 #############
 
+Common interface configuration
+------------------------------
+
+.. cmdinclude:: ../_include/interface-address-with-dhcp.txt
+   :var0: macsec
+   :var1: macsec0
+
+.. cmdinclude:: ../_include/interface-description.txt
+   :var0: macsec
+   :var1: macsec0
+
+.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
+   :var0: macsec
+   :var1: macsec0
+
+.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
+   :var0: macsec
+   :var1: macsec0
+
 .. cfgcmd:: set interfaces macsec <interface> security cipher [gcm-aes-128]
 
   Select cipher suite used for cryptographic operations. This setting is

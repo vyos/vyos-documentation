@@ -11,6 +11,13 @@ The wirelessmodem interface provides access (through a wireless modem/wwan) to
 wireless networks provided by various cellular providers. VyOS uses the
 interfaces wirelessmodem subsystem for configuration.
 
+Common interface configuration
+------------------------------
+
+.. cmdinclude:: ../_include/interface-description.txt
+   :var0: wirelessmodem
+   :var1: wlm0
+
 Address
 -------
 

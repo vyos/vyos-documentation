@@ -36,10 +36,14 @@ may be blocked by the hypervisor.
 Configuration
 =============
 
-Address
--------
+Common interface configuration
+------------------------------
 
 .. cmdinclude:: ../_include/interface-address.txt
+   :var0: vxlan
+   :var1: vxlan0
+
+.. cmdinclude:: ../_include/interface-description.txt
    :var0: vxlan
    :var1: vxlan0
 

@@ -17,10 +17,14 @@ standard.
 Configuration
 #############
 
-Address
--------
+Common interface configuration
+------------------------------
 
-.. cmdinclude:: ../_include/interface-address.txt
+.. cmdinclude:: ../_include/interface-address-with-dhcp.txt
+   :var0: bridge
+   :var1: br0
+
+.. cmdinclude:: ../_include/interface-description.txt
    :var0: bridge
    :var1: br0
 
