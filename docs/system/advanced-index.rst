@@ -1,8 +1,8 @@
 .. _advanced_system_tweaks:
 
-######################
-Advanced System Tweaks
-######################
+######
+System
+######
 
 .. toctree::
    :maxdepth: 2
@@ -11,6 +11,7 @@ Advanced System Tweaks
    flow-accounting
    ntp
    options
+   options-performance
    boot-options
    proxy
    serial-console
