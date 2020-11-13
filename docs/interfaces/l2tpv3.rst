@@ -6,21 +6,82 @@
 L2TPv3
 ######
 
-L2TPv3 is a pseudowire protocol, you can read more about on `Wikipedia L2TPv3`_
-or in :rfc:`3921`
+Layer 2 Tunnelling Protocol Version 3 is an IETF standard related to L2TP that
+can be used as an alternative protocol to :ref:`mpls` for encapsulation of
+multiprotocol Layer 2 communications traffic over IP networks. Like L2TP,
+L2TPv3 provides a pseudo-wire service, but scaled to fit carrier requirements.
 
-L2TPv3 can transport any traffic including ethernet frames. L2TPv2 is limited
-to PPP.
+L2TPv3 can be regarded as being to MPLS what IP is to ATM: a simplified version
+of the same concept, with much of the same benefit achieved at a fraction of the
+effort, at the cost of losing some technical features considered less important
+in the market.
 
+In the case of L2TPv3, the features lost are teletraffic engineering features
+considered important in MPLS. However, there is no reason these features could
+not be re-engineered in or on top of L2TPv3 in later products.
+
+The protocol overhead of L2TPv3 is also significantly bigger than MPLS.
+
+L2TPv3 is described in :rfc:`3921`.
+
+*************
 Configuration
-#############
+*************
 
 Common interface configuration
-------------------------------
+==============================
 
 .. cmdinclude:: ../_include/interface-common-without-dhcp.txt
    :var0: l2tpv3
    :var1: l2tpeth0
+
+L2TPv3 options
+==============
+
+.. cfgcmd:: set interfaces l2tpv3 <interface> encapsulation <udp | ip>
+
+  Set the encapsulation type of the tunnel. Valid values for encapsulation are:
+  udp, ip.
+
+  This defaults to UDP
+
+.. cfgcmd:: set interfaces l2tpv3 <interface> local-ip <address>
+
+  set the IP address of the local interface to be used for the tunnel.
+
+  This address must be the address of a local interface. May be specified as an
+  IPv4 address or an IPv6 address.
+
+.. cfgcmd:: set interfaces l2tpv3 <interface> remote-ip <address>
+
+  Set the IP address of the remote peer. May be specified as an IPv4 address or
+  an IPv6 address.
+
+.. cfgcmd:: set interfaces l2tpv3 <interface> session-id <id>
+
+  Set the session id, which is a 32-bit integer value. Uniquely identifies the
+  session being created. The value used must match the peer_session_id value
+  being used at the peer.
+
+.. cfgcmd:: set interfaces l2tpv3 <interface> peer-session-id <id>
+
+  Set the peer session id, which is a 32-bit integer value assigned to the
+  session by the peer. The value used must match the session_id value being
+  used at the peer.
+
+.. cfgcmd:: set interfaces l2tpv3 <interface> tunnel-id <id>
+
+  Set the tunnel id, which is a 32-bit integer value. Uniquely identifies the
+  tunnel into which the session will be created.
+
+.. cfgcmd:: set interfaces l2tpv3 <interface> peer-tunnel-id <id>
+
+  Set the tunnel id, which is a 32-bit integer value. Uniquely identifies the
+  tunnel into which the session will be created.
+
+*******
+Example
+*******
 
 Over IP
 ^^^^^^^
@@ -129,5 +190,3 @@ L2TPv3:
   set interfaces l2tpv3 l2tpeth0 session-id '110'
   set interfaces l2tpv3 l2tpeth0 source-port '5000'
   set interfaces l2tpv3 l2tpeth0 tunnel-id '10'
-
-.. _`Wikipedia L2TPv3`: https://en.wikipedia.org/wiki/L2TPv3

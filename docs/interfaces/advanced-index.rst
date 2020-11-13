@@ -1,8 +1,8 @@
 .. _advanced_network-interfaces:
 
-###########################
-Advanced Network Interfaces
-###########################
+##################
+Network Interfaces
+##################
 
 .. toctree::
    :maxdepth: 1
@@ -15,6 +15,7 @@ Advanced Network Interfaces
    loopback
    l2tpv3
    macsec
+   pppoe
    pseudo-ethernet
    qinq
    tunnel

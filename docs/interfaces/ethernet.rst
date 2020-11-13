@@ -4,18 +4,22 @@
 Ethernet
 ########
 
+This will be the most widely used interface on a router carrying traffic to the
+real world.
+
+*************
 Configuration
-#############
+*************
 
 Common interface configuration
-------------------------------
+==============================
 
 .. cmdinclude:: ../_include/interface-common-with-dhcp.txt
    :var0: ethernet
    :var1: eth0
 
-Speed/Duplex
-------------
+Ethernet options
+================
 
 .. cfgcmd:: set interfaces ethernet <interface> duplex <auto | full | half>
 
@@ -45,15 +49,9 @@ Speed/Duplex
 
    VyOS default will be `auto`.
 
-VLAN (802.1q) configuration
----------------------------
-
-.. cmdinclude:: ../_include/interface-vlan.txt
-   :var0: ethernet
-   :var1: eth0
-
+*********
 Operation
-=========
+*********
 
 .. opcmd:: show interfaces ethernet
 

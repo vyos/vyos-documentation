@@ -38,18 +38,19 @@ Ethernet interfaces:
   - Network switches with security settings allowing only a single MAC address
   - xDSL modems that try to lear the MAC address of the NIC
 
+*************
 Configuration
-=============
+*************
 
 Common interface configuration
-------------------------------
+==============================
 
 .. cmdinclude:: ../_include/interface-common-with-dhcp.txt
    :var0: pseudo-ethernet
    :var1: peth0
 
-Pseudo Ethernet/MACVLAN specific options
-----------------------------------------
+Pseudo Ethernet/MACVLAN options
+===============================
 
 .. cfgcmd:: set interfaces pseudo-ethernet <interface> source-interface <ethX>
 

@@ -4,15 +4,16 @@
 WirelessModem (WWAN)
 ####################
 
-Configuration
-#############
-
-The wirelessmodem interface provides access (through a wireless modem/wwan) to
-wireless networks provided by various cellular providers. VyOS uses the
+The wirelessmodem interface provides access (through a wireless modem/wwan)
+to wireless networks provided by various cellular providers. VyOS uses the
 interfaces wirelessmodem subsystem for configuration.
 
+*************
+Configuration
+*************
+
 Common interface configuration
-------------------------------
+==============================
 
 .. cmdinclude:: ../_include/interface-description.txt
    :var0: wirelessmodem
@@ -26,8 +27,8 @@ Common interface configuration
    :var0: wirelessmodem
    :var1: wlm0
 
-WWAN specific options
----------------------
+WirelessModem (WWAN) options
+============================
 
 .. cfgcmd:: set interfaces wirelessmodem <interface> apn <apn>
 
@@ -59,23 +60,9 @@ WWAN specific options
    connection is established at boot time and remains up. If the link fails for
    any reason, the link is brought back up immediately.
 
-Example
-=======
-
-The following example is based on a Sierra Wireless MC7710 miniPCIe card (only
-the form factor in reality it runs UBS) and Deutsche Telekom as ISP. The card
-is assembled into a :ref:`pc-engines-apu4`.
-
-.. code-block:: none
-
-  set interfaces wirelessmodem wlm0 apn 'internet.telekom'
-  set interfaces wirelessmodem wlm0 backup distance '100'
-  set interfaces wirelessmodem wlm0 device 'ttyUSB2'
-  set interfaces wirelessmodem wlm0 disable
-  set interfaces wirelessmodem wlm0 no-peer-dns
-
+*********
 Operation
-=========
+*********
 
 .. opcmd:: show interfaces wirelessmodem <interface>
 
@@ -109,8 +96,26 @@ Operation
 
    Displays log information for a WWAN interface.
 
+
+*******
+Example
+*******
+
+The following example is based on a Sierra Wireless MC7710 miniPCIe card (only
+the form factor in reality it runs UBS) and Deutsche Telekom as ISP. The card
+is assembled into a :ref:`pc-engines-apu4`.
+
+.. code-block:: none
+
+  set interfaces wirelessmodem wlm0 apn 'internet.telekom'
+  set interfaces wirelessmodem wlm0 backup distance '100'
+  set interfaces wirelessmodem wlm0 device 'ttyUSB2'
+  set interfaces wirelessmodem wlm0 disable
+  set interfaces wirelessmodem wlm0 no-peer-dns
+
+*****************
 Supported Modules
-#################
+*****************
 
 The following hardware modules have been tested successfully in an
 :ref:`pc-engines-apu4` board:
@@ -120,4 +125,4 @@ The following hardware modules have been tested successfully in an
 * Sierra Wireless AirPrime MC7455 miniPCIe card (LTE)
 * Sierra Wireless AirPrime MC7710 miniPCIe card (LTE)
 * Huawei ME909u-521 miniPCIe card (LTE)
-
+* Huawei ME909s-120 miniPCIe card (LTE)

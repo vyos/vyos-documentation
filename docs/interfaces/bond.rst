@@ -10,32 +10,35 @@ or port-channel. The behavior of the bonded interfaces depends upon the mode;
 generally speaking, modes provide either hot standby or load balancing services.
 Additionally, link integrity monitoring may be performed.
 
+*************
 Configuration
-#############
+*************
 
 Common interface configuration
-------------------------------
+==============================
 
 .. cmdinclude:: ../_include/interface-common-with-dhcp.txt
    :var0: bond
    :var1: bond0
 
 Member Interfaces
------------------
+=================
 
 .. cfgcmd:: set interfaces bonding <interface> member interface <member>
 
    Enslave `<member>` interface to bond `<interface>`.
 
 Bond options
-------------
+============
 
-.. cfgcmd:: set interfaces bonding <interface> mode <mode>
+.. cfgcmd:: set interfaces bonding <interface> mode <802.3ad | active-backup |
+  broadcast | round-robin | transmit-load-balance | adaptive-load-balance |
+  xor-hash>
 
    Specifies one of the bonding policies. The default is 802.3ad. Possible
    values are:
 
-   * **802.3ad** - IEEE 802.3ad Dynamic link aggregation. Creates aggregation
+   * ``802.3ad`` - IEEE 802.3ad Dynamic link aggregation. Creates aggregation
      groups that share the same speed and duplex settings. Utilizes all slaves
      in the active aggregator according to the 802.3ad specification.
 
@@ -47,7 +50,7 @@ Bond options
         in regards to the packet mis-ordering requirements of section 43.2.4
         of the 802.3ad standard.
 
-   * **active-backup** - Active-backup policy: Only one slave in the bond is
+   * ``active-backup`` - Active-backup policy: Only one slave in the bond is
      active. A different slave becomes active if, and only if, the active slave
      fails. The bond's MAC address is externally visible on only one port
      (network adapter) to avoid confusing the switch.
@@ -62,24 +65,24 @@ Bond options
      This mode provides fault tolerance. The :cfgcmd:`primary` option,
      documented below, affects the behavior of this mode.
 
-   * **broadcast** - Broadcast policy: transmits everything on all slave
+   * ``broadcast`` - Broadcast policy: transmits everything on all slave
      interfaces.
 
      This mode provides fault tolerance.
 
-   * **round-robin** - Round-robin policy: Transmit packets in sequential
+   * ``round-robin`` - Round-robin policy: Transmit packets in sequential
      order from the first available slave through the last.
 
      This mode provides load balancing and fault tolerance.
 
-   * **transmit-load-balance** - Adaptive transmit load balancing: channel
+   * ``transmit-load-balance`` - Adaptive transmit load balancing: channel
      bonding that does not require any special switch support.
 
      Incoming traffic is received by the current slave. If the receiving slave
      fails, another slave takes over the MAC address of the failed receiving
      slave.
 
-   * **adaptive-load-balance** - Adaptive load balancing: includes
+   * ``adaptive-load-balance`` - Adaptive load balancing: includes
      transmit-load-balance plus receive load balancing for IPV4 traffic, and
      does not require any special switch support. The receive load balancing
      is achieved by ARP negotiation. The bonding driver intercepts the ARP
@@ -111,7 +114,7 @@ Bond options
      than the switch's forwarding delay so that the ARP Replies sent to the
      peers will not be blocked by the switch.
 
-   * **xor-hash** - XOR policy: Transmit based on the selected transmit
+   * ``xor-hash`` - XOR policy: Transmit based on the selected transmit
      hash policy.  The default policy is a simple [(source MAC address XOR'd
      with destination MAC address XOR packet type ID) modulo slave count].
      Alternate transmit policies may be selected via the :cfgcmd:`hash-policy`
@@ -253,8 +256,9 @@ Bond options
    The maximum number of targets that can be specified is 16. The default value
    is no IP addresses.
 
+*******
 Example
--------
+*******
 
 The following configuration on VyOS applies to all following 3rd party vendors.
 It creates a bond with two links and VLAN 10, 100 on the bonded interfaces with
@@ -275,7 +279,7 @@ a per VIF IPv4 address.
   set interfaces bonding bond0 member interface eth2
 
 Cisco Catalyst
-^^^^^^^^^^^^^^
+==============
 
 Assign member interfaces to PortChannel
 
@@ -305,7 +309,7 @@ allowed VLAN interfaces, STP will happen here.
 
 
 Juniper EX Switch
-^^^^^^^^^^^^^^^^^
+=================
 
 For a headstart you can use the below example on how to build a bond with two
 interfaces from VyOS to a Juniper EX Switch system.
@@ -334,7 +338,7 @@ interfaces from VyOS to a Juniper EX Switch system.
   set interfaces xe-1/1/0 ether-options 802.3ad ae0
 
 Aruba/HP
-^^^^^^^^
+========
 
 For a headstart you can use the below example on how to build a bond,port-channel
 with two interfaces from VyOS to a Aruba/HP 2510G switch.
@@ -349,7 +353,7 @@ with two interfaces from VyOS to a Aruba/HP 2510G switch.
   vlan 100 tagged Trk1
 
 Arista EOS
-^^^^^^^^^^
+==========
 
 When utilizing VyOS in an environment with Arista gear you can use this blue
 print as an initial setup to get an LACP bond / port-channel operational between
@@ -463,8 +467,9 @@ Lets assume the following topology:
    virtio network driver no LACP PDUs will be sent by VyOS thus the port-channel
    will never become active!
 
+*********
 Operation
-#########
+*********
 
 .. opcmd:: show interfaces bonding
 

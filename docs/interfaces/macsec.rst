@@ -13,18 +13,19 @@ including DHCP or ARP requests. It does not compete with other security
 solutions such as IPsec (layer 3) or TLS (layer 4), as all those solutions are
 used for their own specific use cases.
 
+*************
 Configuration
-#############
+*************
 
 Common interface configuration
-------------------------------
+==============================
 
 .. cmdinclude:: ../_include/interface-common-with-dhcp.txt
    :var0: macsec
    :var1: macsec0
 
-MACsec specific options
------------------------
+MACsec options
+==============
 
 .. cfgcmd:: set interfaces macsec <interface> security cipher [gcm-aes-128]
 
@@ -45,7 +46,7 @@ MACsec specific options
   leaving this interfac will now be authenticated/encrypted.
 
 Key Management
-^^^^^^^^^^^^^^
+--------------
 
 :abbr:`MKA (MACsec Key Agreement protocol)` is used to synchronize keys between
 individual peers.
@@ -65,7 +66,7 @@ individual peers.
   distributing SAKs.
 
 Replay protection
-^^^^^^^^^^^^^^^^^
+-----------------
 
 .. cfgcmd:: set interfaces macsec <interface> security replay-window <window>
 
@@ -76,8 +77,9 @@ Replay protection
   - ``0``: No replay window, strict check
   - ``1-4294967295``: Number of packets that could be misordered
 
+*********
 Operation
-#########
+*********
 
 .. opcmd:: run generate macsec mka-cak
 
@@ -123,8 +125,9 @@ Operation
         cipher suite: GCM-AES-128, using ICV length 16
         TXSC: 005056bfefaa0001 on SA 0
 
+********
 Examples
-########
+********
 
 * Two routers connected both via eth1 through an untrusted switch
 * R1 has 192.0.2.1/24 & 2001:db8::1/64

@@ -19,11 +19,12 @@ services on your local machine.
    destination. A :ref:`dummy-interface` Interface should always be preferred
    over a :ref:`loopback-interface` interface.
 
+*************
 Configuration
-=============
+*************
 
 Common interface configuration
-------------------------------
+==============================
 
 .. cmdinclude:: ../_include/interface-address.txt
    :var0: loopback
@@ -33,8 +34,9 @@ Common interface configuration
    :var0: loopback
    :var1: lo
 
+*********
 Operation
-=========
+*********
 
 .. opcmd:: show interfaces loopback
 

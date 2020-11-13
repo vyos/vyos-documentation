@@ -32,18 +32,19 @@ Geneve Header:
   |                    Variable Length Options                    |
   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
+*************
 Configuration
-=============
+*************
 
 Common interface configuration
-------------------------------
+==============================
 
 .. cmdinclude:: ../_include/interface-common-without-dhcp.txt
    :var0: geneve
    :var1: gnv0
 
-GENEVE specific options
------------------------
+GENEVE options
+==============
 
 .. cfgcmd:: set interfaces geneve gnv0 remote <address>
 

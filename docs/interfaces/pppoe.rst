@@ -14,15 +14,16 @@ encryption, and compression." Typical use of PPPoE involves leveraging the
 PPP facilities for authenticating the user with a username and password,
 predominately via the PAP protocol and less often via CHAP.
 
+***************
 Operating Modes
-===============
+***************
 
 VyOS supports setting up PPPoE in two different ways to a PPPoE internet
 connection. This is due to most ISPs provide a modem that is also a wireless
 router.
 
 Home Users
-----------
+==========
 
 In this method, the DSL Modem/Router connects to the ISP for you with your
 credentials preprogrammed into the device. This gives you an :rfc:`1918`
@@ -35,7 +36,7 @@ few extra layers of complexity, particularly if you use some NAT or
 tunnel features.
 
 Business Users
---------------
+==============
 
 In order to have full control and make use of multiple static public IP
 addresses, your VyOS will have to initiate the PPPoE connection and control
@@ -51,11 +52,12 @@ configure it to open the PPPoE session for you and your DSL Transceiver
 (Modem/Router) just acts to translate your messages in a way that
 vDSL/aDSL understands.
 
+*************
 Configuration
-=============
+*************
 
 Common interface configuration
-------------------------------
+==============================
 
 .. cmdinclude:: ../_include/interface-description.txt
    :var0: pppoe
@@ -69,8 +71,8 @@ Common interface configuration
    :var0: pppoe
    :var1: pppoe0
 
-PPPoE specific configuration
-----------------------------
+PPPoE options
+=============
 
 .. cfgcmd:: set interfaces pppoe <interface> access-concentrator <name>
 
@@ -179,8 +181,9 @@ IPv6
   :var0: pppoe
   :var1: pppoe0
 
+*********
 Operation
-=========
+*********
 
 .. opcmd:: show interfaces pppoe <interface>
 
@@ -211,7 +214,7 @@ Operation
       backlog 0b 0p requeues 0
 
 Connect/Disconnect
-------------------
+==================
 
 .. opcmd:: disconnect interface <interface>
 
@@ -223,8 +226,9 @@ Connect/Disconnect
    Test connecting given connection-oriented interface. `<interface>` can be
    ``pppoe0`` as example.
 
+*******
 Example
-=======
+*******
 
 Requirements:
 
