@@ -1,5 +1,3 @@
-.. include:: ../_include/need_improvement.txt
-
 .. _wireless-interface:
 
 ###################
@@ -25,52 +23,271 @@ If the system detects an unconfigured wireless device, it will be automatically
 added the configuration tree, specifying any detected settings (for example,
 its MAC address) and configured to run in monitor mode.
 
+*************
 Configuration
-#############
+*************
 
 Common interface configuration
-------------------------------
+==============================
 
 .. cmdinclude:: ../_include/interface-common-with-dhcp.txt
    :var0: wireless
    :var1: wlan0
 
-Wireless specific options
--------------------------
+Wireless options
+================
 
-Configuring Access-Point
-^^^^^^^^^^^^^^^^^^^^^^^^
+.. cfgcmd:: set interfaces wireless <interface> channel <number>
 
-To be able to use the wireless interfaces you will first need to set a
-regulatory domain with the country code of your location.
+  Channel number (IEEE 802.11), for 2.4Ghz (802.11 b/g/n) channels range from
+  1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 173
 
 .. cfgcmd:: set interfaces wireless <interface> country-code <cc>
 
-   Configure system wide Wi-Fi regulatory domain. A reboot is required for this
-   change to be enabled.
+  Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
+  to indicate country in which device is operating. This can limit available
+  channels and transmit power.
 
-The following example creates a WAP. When configuring multiple WAP interfaces,
-you must specify unique IP addresses, channels, Network IDs commonly referred
-to as :abbr:`SSID (Service Set Identifier)`, and MAC addresses.
+  .. note:: This option is mandatory in Access-Point mode.
 
-The WAP in this example has the following characteristics:
+.. cfgcmd:: set interfaces wireless <interface> disable-broadcast-ssid
 
-* IP address ``192.168.2.1/24``
-* Network ID (SSID) ``TEST``
-* WPA passphrase ``12345678``
-* Use 802.11n protocol
-* Wireless channel ``1``
+  Send empty SSID in beacons and ignore probe request frames that do not specify
+  full SSID, i.e., require stations to know SSID.
+
+.. cfgcmd:: set interfaces wireless <interface> expunge-failing-stations
+
+  Disassociate stations based on excessive transmission failures or other
+  indications of connection loss.
+
+  This depends on the driver capabilities and may not be available with all
+  drivers.
+
+.. cfgcmd:: set interfaces wireless <interface> isolate-stations
+
+  Client isolation can be used to prevent low-level bridging of frames between
+  associated stations in the BSS.
+
+  By default, this bridging is allowed.
+
+.. cfgcmd:: set interfaces wireless <interface> max-stations
+
+  Maximum number of stations allowed in station table. New stations will be
+  rejected after the station table is full. IEEE 802.11 has a limit of 2007
+  different association IDs, so this number should not be larger than that.
+
+  This defaults to 2007.
+
+.. cfgcmd:: set interfaces wireless <interface> mgmt-frame-protection
+
+  Management Frame Protection (MFP) according to IEEE 802.11w
+
+.. cfgcmd:: set interfaces wireless <interface> mode <a | b | g | n | ac>
+
+  Operation mode of wireless radio.
+
+  * ``a`` - 802.11a - 54 Mbits/sec
+  * ``b`` - 802.11b - 11 Mbits/sec
+  * ``g`` - 802.11g - 54 Mbits/sec (default)
+  * ``n`` - 802.11n - 600 Mbits/sec
+  * ``ac`` - 802.11ac - 1300 Mbits/sec
+
+.. cfgcmd:: set interfaces wireless <interface> physical-device <device>
+
+  Wireless hardware device used as underlay radio.
+
+  This defaults to phy0.
+
+.. cfgcmd:: set interfaces wireless <interface> reduce-transmit-power <number>
+
+  Add Power Constraint element to Beacon and Probe Response frames.
+
+  This option adds Power Constraint element when applicable and Country element
+  is added. Power Constraint element is required by Transmit Power Control.
+
+  Valid values are 0..255.
+
+.. cfgcmd:: set interfaces wireless <interface> ssid <ssid>
+
+  SSID to be used in IEEE 802.11 management frames
+
+.. cfgcmd:: set interfaces wireless <interface> type <access-point | station | monitor>
+
+  Wireless device type for this interface
+
+  * ``access-point`` - Access-point forwards packets between other nodes
+  * ``station`` - Connects to another access point
+  * ``monitor`` - Passively monitor all packets on the frequency/channel
+
+PPDU
+----
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities require-ht
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities require-hvt
+
+HT (High Throughput) capabilities (802.11n)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht 40mhz-incapable
+
+  Device is incapable of 40 MHz, do not advertise. This sets ``[40-INTOLERANT]``
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht auto-powersave
+
+  WMM-PS Unscheduled Automatic Power Save Delivery [U-APSD]
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht channel-set-width <ht20 | ht40+ | ht40->
+
+  Supported channel width set.
+
+  * ``ht40-`` - Both 20 MHz and 40 MHz with secondary channel below the primary
+    channel
+  * ``ht40+`` - Both 20 MHz and 40 MHz with secondary channel above the primary
+    channel
+
+  .. note:: There are limits on which channels can be used with HT40- and HT40+.
+    Following table shows the channels that may be available for HT40- and HT40+
+    use per IEEE 802.11n Annex J:
+
+    Depending on the location, not all of these channels may be available for use!
+
+    .. code-block:: none
+
+      freq		HT40-		HT40+
+      2.4 GHz		5-13		1-7 (1-9 in Europe/Japan)
+      5 GHz		40,48,56,64	36,44,52,60
+
+  .. note:: 40 MHz channels may switch their primary and secondary channels if
+    needed or creation of 40 MHz channel maybe rejected based on overlapping
+    BSSes. These changes are done automatically when hostapd is setting up the
+    40 MHz channel.
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht delayed-block-ack
+
+  Enable HT-delayed Block Ack ``[DELAYED-BA]``
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht dsss-cck-40
+
+  DSSS/CCK Mode in 40 MHz, this sets ``[DSSS_CCK-40]``
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht greenfield
+
+  This enables the greenfield option which sets the ``[GF]`` option
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht ldpc
+
+  Enable LDPC coding capability
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht lsig-protection
+
+  Enable L-SIG TXOP protection capability
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht max-amsdu <3839 | 7935>
+
+  Maximum A-MSDU length 3839 (default) or 7935 octets
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht short-gi <20 | 40>
+
+  Short GI capabilities for 20 and 40 MHz
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht smps <static | dynamic>
+
+  Spatial Multiplexing Power Save (SMPS) settings
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht stbc rx <num>
+
+  Enable receiving PPDU using STBC (Space Time Block Coding)
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht stbc tx
+
+  Enable sending PPDU using STBC (Space Time Block Coding)
+
+VHT (Very High Throughput) capabilities (802.11ac)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht antenna-count
+
+  Number of antennas on this card
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht antenna-pattern-fixed
+
+  Set if antenna pattern does not change during the lifetime of an association
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht beamform
+  <single-user-beamformer | single-user-beamformee | multi-user-beamformer |
+  multi-user-beamformee>
+
+  Beamforming capabilities:
+
+  * ``single-user-beamformer`` - Support for operation as single user beamformer
+  * ``single-user-beamformee`` - Support for operation as single user beamformee
+  * ``multi-user-beamformer`` - Support for operation as single user beamformer
+  * ``multi-user-beamformee`` - Support for operation as single user beamformer
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht center-channel-freq <freq-1 | freq-2>
+
+  VHT operating channel center frequency - center freq 1 (for use with 80, 80+80 and 160 modes)
+
+  VHT operating channel center frequency - center freq 2 (for use with the 80+80 mode)
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht channel-set-width <0 | 1 | 2 | 3>
+
+   * ``0`` - 20 or 40 MHz channel width (default)
+   * ``1`` - 80 MHz channel width
+   * ``2`` - 160 MHz channel width
+   * ``3`` - 80+80 MHz channel width
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht ldpc
+
+  Enable LDPC (Low Density Parity Check) coding capability
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht link-adaptation
+
+  VHT link adaptation capabilities
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht max-mpdu <value>
+
+  Increase Maximum MPDU length to 7991 or 11454 octets (default 3895 octets)
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht max-mpdu-exp <value>
+
+  Set the maximum length of A-MPDU pre-EOF padding that the station can receive
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht short-gi <80 | 160>
+
+  Short GI capabilities
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht stbc rx <num>
+
+  Enable receiving PPDU using STBC (Space Time Block Coding)
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht stbc tx
+
+  Enable sending PPDU using STBC (Space Time Block Coding)
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht tx-powersave
+
+  Enable VHT TXOP Power Save Mode
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht vht-cf
+
+  Station supports receiving VHT variant HT Control field
+
+
+Wireless options (Station/Client)
+=================================
+
+The example creates a wireless station (commonly referred to as Wi-Fi client)
+that accesses the network through the WAP defined in the above example. The
+default physical device (``phy0``) is used.
 
 .. code-block:: none
 
-  set interfaces wireless wlan0 address '192.168.2.1/24'
-  set interfaces wireless wlan0 type access-point
-  set interfaces wireless wlan0 channel 1
-  set interfaces wireless wlan0 mode n
-  set interfaces wireless wlan0 ssid 'TEST'
-  set interfaces wireless wlan0 security wpa mode wpa2
-  set interfaces wireless wlan0 security wpa cipher CCMP
-  set interfaces wireless wlan0 security wpa passphrase '12345678'
+  set interfaces wireless wlan0 type station
+  set interfaces wireless wlan0 address dhcp
+  set interfaces wireless wlan0 ssid Test
+  set interfaces wireless wlan0 security wpa
 
 Resulting in
 
@@ -79,32 +296,18 @@ Resulting in
   interfaces {
     [...]
     wireless wlan0 {
-          address 192.168.2.1/24
-          channel 1
-          mode n
-          security {
-              wpa {
-                  cipher CCMP
-                  mode wpa2
-                  passphrase "12345678"
-              }
-          }
-          ssid "TEST"
-          type access-point
+      address dhcp
+      security {
+        wpa {
+          passphrase "12345678"
+        }
       }
-  }
-  system {
-    [...]
-    wifi-regulatory-domain DE
-  }
+      ssid TEST
+      type station
+    }
 
-To get it to work as a access point with this configuration you will need
-to set up a DHCP server to work with that network. You can - of course - also
-bridge the Wireless interface with any configured bridge
-(:ref:`bridge-interface`) on the system.
-
-WPA/WPA2 enterprise
-*******************
+Security
+========
 
 :abbr:`WPA (Wi-Fi Protected Access)` and WPA2 Enterprise in combination with
 802.1x based authentication can be used to authenticate users or computers
@@ -170,39 +373,9 @@ Resulting in
   }
 
 
-Configuring Wireless Station
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The example creates a wireless station (commonly referred to as Wi-Fi client)
-that accesses the network through the WAP defined in the above example. The
-default physical device (``phy0``) is used.
-
-.. code-block:: none
-
-  set interfaces wireless wlan0 type station
-  set interfaces wireless wlan0 address dhcp
-  set interfaces wireless wlan0 ssid Test
-  set interfaces wireless wlan0 security wpa
-
-Resulting in
-
-.. code-block:: none
-
-  interfaces {
-    [...]
-    wireless wlan0 {
-      address dhcp
-      security {
-        wpa {
-          passphrase "12345678"
-        }
-      }
-      ssid TEST
-      type station
-    }
-
-Operational Commands
-^^^^^^^^^^^^^^^^^^^^
+*********
+Operation
+*********
 
 .. opcmd:: show interfaces wireless info
 
@@ -324,3 +497,61 @@ in station mode.
   00:53:7c:99:ce:76  Vodafone Hotspot                    1  -86.00
   00:53:44:46:d2:0b  Vodafone Hotspot                    1  -87.00
 
+
+********
+Examples
+********
+
+The following example creates a WAP. When configuring multiple WAP interfaces,
+you must specify unique IP addresses, channels, Network IDs commonly referred
+to as :abbr:`SSID (Service Set Identifier)`, and MAC addresses.
+
+The WAP in this example has the following characteristics:
+
+* IP address ``192.168.2.1/24``
+* Network ID (SSID) ``TEST``
+* WPA passphrase ``12345678``
+* Use 802.11n protocol
+* Wireless channel ``1``
+
+.. code-block:: none
+
+  set interfaces wireless wlan0 address '192.168.2.1/24'
+  set interfaces wireless wlan0 type access-point
+  set interfaces wireless wlan0 channel 1
+  set interfaces wireless wlan0 mode n
+  set interfaces wireless wlan0 ssid 'TEST'
+  set interfaces wireless wlan0 security wpa mode wpa2
+  set interfaces wireless wlan0 security wpa cipher CCMP
+  set interfaces wireless wlan0 security wpa passphrase '12345678'
+
+Resulting in
+
+.. code-block:: none
+
+  interfaces {
+    [...]
+    wireless wlan0 {
+          address 192.168.2.1/24
+          channel 1
+          mode n
+          security {
+              wpa {
+                  cipher CCMP
+                  mode wpa2
+                  passphrase "12345678"
+              }
+          }
+          ssid "TEST"
+          type access-point
+      }
+  }
+  system {
+    [...]
+    wifi-regulatory-domain DE
+  }
+
+To get it to work as a access point with this configuration you will need
+to set up a DHCP server to work with that network. You can - of course - also
+bridge the Wireless interface with any configured bridge
+(:ref:`bridge-interface`) on the system.
