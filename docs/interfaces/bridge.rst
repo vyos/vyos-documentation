@@ -113,6 +113,57 @@ links providing fault tolerance if an active link fails.
    Designated Bridges. Hello packets are used to communicate information
    about the topology throughout the entire Bridged Local Area Network.
 
+Enable VLAN-aware bridge
+-------------------------
+
+.. cfgcmd:: set interfaces bridge <interface> member interface <member> native-vlan <vlan-id>
+
+   Set the native VLAN ID flag of the interface. When a data packet without a VLAN tag enters
+   the port, the data packet will be forced to add a tag of a specific vlan id. When the vlan 
+   id flag flows out, the tag of the vlan id will be stripped
+
+.. cfgcmd:: set interfaces bridge <interface> member interface <member> allowed-vlan <vlan-id>
+
+   Allows specific VLAN IDs to pass through the bridge member interface
+
+.. cfgcmd:: set interfaces bridge <interface> member interface <member> allowed-vlan <n-m>
+
+   `n` and `m` represent a VLAN ID, which identifies a VLAN ID range and allows all VLAN IDS in this range to pass through the bridge member interface
+
+VLAN (802.1q) configuration
+---------------------------
+
+IEEE 802.1q, often referred to as Dot1q, is the networking standard that supports
+virtual LANs (VLANs) on an IEEE 802.3 Ethernet network. The standard defines a
+system of VLAN tagging for Ethernet frames and the accompanying procedures to be
+used by bridges and switches in handling such frames. The standard also contains
+provisions for a quality-of-service prioritization scheme commonly known as IEEE
+802.1p and defines the Generic Attribute Registration Protocol.
+
+Portions of the network which are VLAN-aware (i.e., IEEE 802.1q conformant) can
+include VLAN tags. When a frame enters the VLAN-aware portion of the network, a
+tag is added to represent the VLAN membership. Each frame must be distinguishable
+as being within exactly one VLAN. A frame in the VLAN-aware portion of the network
+that does not contain a VLAN tag is assumed to be flowing on the native VLAN.
+
+The standard was developed by IEEE 802.1, a working group of the IEEE 802
+standards committee, and continues to be actively revised. One of the notable
+revisions is 802.1Q-2014 which incorporated IEEE 802.1aq (Shortest Path Bridging)
+and much of the IEEE 802.1d standard.
+
+802.1q VLAN interfaces are represented as virtual sub-interfaces in VyOS. The
+term used for this is ``vif``.
+
+.. cfgcmd:: set interfaces bridge <interface> vif <vlan-id>
+
+  Create a new VLAN interface on interface `<interface>` using the VLAN number
+  provided via `<vlan-id>`.
+
+  You can create multiple VLAN interfaces on a physical interface. The VLAN ID
+  range is from 1 to 4094.
+
+  .. note:: Only 802.1Q-tagged packets are accepted on Bridge vifs.
+
 *******
 Example
 *******
@@ -147,6 +198,45 @@ This results in the active configuration:
         }
     }
     stp
+
+*******
+Example
+*******
+
+An example of creating a VLAN-aware bridge is as follows:
+
+* A bridge named `br100`
+* The member interface `eth1` is a trunk that allows VLAN 10 to pass
+* VLAN 10 on member interface `eth2` (ACCESS mode)
+* Enable STP
+* Bridge answers on IP address 192.0.2.1/24 and 2001:db8::ffff/64
+
+.. code-block:: none
+
+  set interfaces bridge br100 member interface eth1 allowed-vlan 10
+  set interfaces bridge br100 member interface eth2 native-vlan 10
+  set interfaces bridge br100 vif 10 address 192.0.2.1/24
+  set interfaces bridge br100 vif 10 address 2001:db8::ffff/64
+  set interfaces bridge br100 stp
+
+This results in the active configuration:
+
+.. code-block:: none
+
+   vyos@vyos# show interfaces bridge br100
+    member {
+        interface eth1 {
+            allowed-vlan 10
+        }
+        interface eth2 {
+            native-vlan 10
+        }
+    }
+    stp
+    vif 10 {
+        address 192.0.2.1/24
+        address 2001:db8::ffff/64
+    }
 
 *******
 Example
