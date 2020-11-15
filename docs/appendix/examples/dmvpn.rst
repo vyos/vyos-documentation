@@ -121,3 +121,53 @@ spoke01
   interface FastEthernet0/0
    ip address dhcp
    duplex half
+
+
+spoke05
+-------
+
+VyOS can also run in DMVPN spoke mode.
+
+.. code-block:: none
+
+  set interfaces ethernet eth0 address 'dhcp'
+
+  set interfaces tunnel tun100 address '172.16.253.133/29'
+  set interfaces tunnel tun100 dhcp-interface 'eth0'
+  set interfaces tunnel tun100 encapsulation 'gre'
+  set interfaces tunnel tun100 multicast 'enable'
+  set interfaces tunnel tun100 parameters ip key '1'
+
+  set protocols nhrp tunnel tun100 cisco-authentication 'secret'
+  set protocols nhrp tunnel tun100 holding-time '300'
+  set protocols nhrp tunnel tun100 map 172.16.253.134/29 nbma-address '92.0.2.1'
+  set protocols nhrp tunnel tun100 map 172.16.253.134/29 register
+  set protocols nhrp tunnel tun100 multicast 'dynamic'
+
+  set vpn ipsec esp-group ESP-HUB compression 'disable'
+  set vpn ipsec esp-group ESP-HUB lifetime '1800'
+  set vpn ipsec esp-group ESP-HUB mode 'tunnel'
+  set vpn ipsec esp-group ESP-HUB pfs 'dh-group2'
+  set vpn ipsec esp-group ESP-HUB proposal 1 encryption 'aes256'
+  set vpn ipsec esp-group ESP-HUB proposal 1 hash 'sha1'
+  set vpn ipsec esp-group ESP-HUB proposal 2 encryption '3des'
+  set vpn ipsec esp-group ESP-HUB proposal 2 hash 'md5'
+  set vpn ipsec ike-group IKE-HUB close-action 'none'
+  set vpn ipsec ike-group IKE-HUB ikev2-reauth 'no'
+  set vpn ipsec ike-group IKE-HUB key-exchange 'ikev1'
+  set vpn ipsec ike-group IKE-HUB lifetime '3600'
+  set vpn ipsec ike-group IKE-HUB proposal 1 dh-group '2'
+  set vpn ipsec ike-group IKE-HUB proposal 1 encryption 'aes256'
+  set vpn ipsec ike-group IKE-HUB proposal 1 hash 'sha1'
+  set vpn ipsec ike-group IKE-HUB proposal 2 dh-group '2'
+  set vpn ipsec ike-group IKE-HUB proposal 2 encryption 'aes128'
+  set vpn ipsec ike-group IKE-HUB proposal 2 hash 'sha1'
+
+  set vpn ipsec ipsec-interfaces interface 'eth0'
+
+  set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
+  set vpn ipsec profile NHRPVPN authentication pre-shared-secret 'secret'
+  set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
+  set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
+  set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
+
