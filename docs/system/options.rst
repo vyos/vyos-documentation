@@ -38,6 +38,25 @@ HTTP client
 
 .. note:: `source-address` and `source-interface` can not be used at the same time.
 
+***************
+Keyboard Layout
+***************
+
+When starting a VyOS live system (the installation CD) the configured keyboard
+layout defaults to US. As this might not suite everyones use case you can adjust
+the used keyboard layout on the system console.
+
+.. cfgcmd:: set system options keyboard-layout <us | fr | de | fi | no | dk>
+
+  Change system keyboard layout to given language.
+
+  Defaults to ``us``.
+
+  .. note:: Changing the keymap only has an effect on the system console, using
+    SSH oder Serial remote access to the device is not affected as the keyboard
+    layout here corresponds to your access system.
+
+.. _system_options_performance:
 
 ***********
 Performance
