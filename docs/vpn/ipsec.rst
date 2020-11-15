@@ -1,7 +1,8 @@
-.. _gre-ipsec:
+.. _ipsec:
 
-GRE/IPsec
----------
+#####
+IPsec
+#####
 
 Generic Routing Encapsulation (GRE), GRE/IPsec (or IPIP/IPsec, SIT/IPsec, or any
 other stateless tunnel protocol over IPsec) is the usual way to protect the

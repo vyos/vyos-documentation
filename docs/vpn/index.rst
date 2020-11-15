@@ -8,11 +8,11 @@ VPN
    :maxdepth: 2
 
    dmvpn
-   gre-ipsec
+   ipsec
    l2tp
+   openconnect
    openvpn
    pptp
    site2site_ipsec
    sstp
    wireguard
-   openconnect

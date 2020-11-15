@@ -5,11 +5,9 @@ Configuration Blueprints
 
 This chapter contains various configuration examples:
 
-
 .. toctree::
    :maxdepth: 2
 
-   dmvpn
    dhcp-relay-through-gre-bridge
    zone-policy
    bgp-ipv6-unnumbered
