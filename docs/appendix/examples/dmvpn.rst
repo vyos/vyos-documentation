@@ -22,11 +22,12 @@ The below referenced IP address `192.0.2.1` is used as example address
 representing a global unicast address under which the HUB can be contacted by
 each and every individual spoke.
 
+*************
 Configuration
-=============
+*************
 
 Hub
----
+===
 
 .. code-block:: none
 
@@ -74,13 +75,13 @@ Hub
   set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 
 Spoke
------
+=====
 
 The individual spoke configurations only differ in the local IP address on the
 ``tun10`` interface. See the above diagram for the individual IP addresses.
 
 spoke01
-^^^^^^^
+-------
 
 .. code-block:: none
 
@@ -211,4 +212,3 @@ spoke01
    transport input all
   !
   end
-
