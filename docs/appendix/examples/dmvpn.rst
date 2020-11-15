@@ -45,9 +45,6 @@ Hub
   set protocols nhrp tunnel tun100 redirect
   set protocols nhrp tunnel tun100 shortcut
 
-  set system host-name 'HUB'
-  set system time-zone 'UTC'
-
   set vpn ipsec esp-group ESP-HUB compression 'disable'
   set vpn ipsec esp-group ESP-HUB lifetime '1800'
   set vpn ipsec esp-group ESP-HUB mode 'tunnel'
@@ -85,49 +82,6 @@ spoke01
 
 .. code-block:: none
 
-  Current configuration : 1773 bytes
-  !
-  ! Last configuration change at 14:46:27 UTC Sun Nov 15 2020
-  upgrade fpd auto
-  version 15.1
-  service timestamps debug datetime msec
-  service timestamps log datetime msec
-  no service password-encryption
-  !
-  hostname spoke01
-  !
-  boot-start-marker
-  boot-end-marker
-  !
-  !
-  !
-  no aaa new-model
-  !
-  ip source-route
-  ip cef
-  !
-  !
-  !
-  !
-  !
-  no ipv6 cef
-  !
-  multilink bundle-name authenticated
-  !
-  !
-  !
-  !
-  !
-  !
-  !
-  crypto pki token default removal timeout 0
-  !
-  !
-  !
-  redundancy
-  !
-  !
-  !
   crypto keyring DMVPN
     pre-shared-key address 192.0.2.1 key secret
   !
@@ -141,7 +95,6 @@ spoke01
      keyring DMVPN
      match identity address 192.0.2.1 255.255.255.255
   !
-  !
   crypto ipsec transform-set DMVPN-AES256 esp-aes 256 esp-sha-hmac
    mode transport
   !
@@ -149,11 +102,6 @@ spoke01
    set security-association idle-time 720
    set transform-set DMVPN-AES256
    set isakmp-profile DMVPN
-  !
-  !
-  !
-  !
-  !
   !
   interface Tunnel10
    description Tunnel to DMVPN HUB
@@ -173,42 +121,3 @@ spoke01
   interface FastEthernet0/0
    ip address dhcp
    duplex half
-  !
-  interface FastEthernet1/0
-   no ip address
-   shutdown
-   duplex half
-  !
-  ip forward-protocol nd
-  no ip http server
-  no ip http secure-server
-  !
-  !
-  !
-  !
-  !
-  !
-  !
-  !
-  !
-  control-plane
-  !
-  !
-  !
-  mgcp profile default
-  !
-  !
-  !
-  gatekeeper
-   shutdown
-  !
-  !
-  line con 0
-   stopbits 1
-  line aux 0
-   stopbits 1
-  line vty 0 4
-   login
-   transport input all
-  !
-  end
