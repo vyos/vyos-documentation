@@ -7,14 +7,13 @@ System
 .. toctree::
    :maxdepth: 2
 
+   boot-options
    eventhandler
    flow-accounting
+   lcd
    ntp
    options
-   options-performance
-   boot-options
    proxy
    serial-console
    syslog
    task-scheduler
-   lcd
