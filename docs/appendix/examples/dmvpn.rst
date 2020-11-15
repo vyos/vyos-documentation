@@ -4,27 +4,48 @@
 DMVPN Hub
 #########
 
-General infomration can be found in the :ref:`vpn-dmvpn` chapter.
+********
+Overview
+********
+
+General information can be found in the :ref:`vpn-dmvpn` chapter.
+
+This blueprint uses VyOS as the DMVPN Hub and Cisco (7206VXR) as multiple
+spokes. The lab was build using :abbr:`EVE-NG (Emulated Virtual Environment NG)`.
+
+.. figure:: /_static/images/blueprint-dmvpn.png
+   :alt: DMVPN network
+
+Each node (Hub and Spoke) uses an IP address from the network 172.16.253.128/29.
+
+The below referenced IP address `192.0.2.1` is used as example address
+representing a global unicast address under which the HUB can be contacted by
+each and every individual spoke.
 
 Configuration
 =============
 
-VyOS Hub
---------
+Hub
+---
 
 .. code-block:: none
 
+  set interfaces ethernet eth0 address 192.0.2.1/24
+
   set interfaces tunnel tun100 address '172.16.253.134/29'
   set interfaces tunnel tun100 encapsulation 'gre'
-  set interfaces tunnel tun100 local-ip '203.0.113.44'
+  set interfaces tunnel tun100 local-ip '192.0.2.1'
   set interfaces tunnel tun100 multicast 'enable'
   set interfaces tunnel tun100 parameters ip key '1'
 
-  set protocols nhrp tunnel tun100 cisco-authentication <secret>
+  set protocols nhrp tunnel tun100 cisco-authentication 'secret'
   set protocols nhrp tunnel tun100 holding-time '300'
   set protocols nhrp tunnel tun100 multicast 'dynamic'
   set protocols nhrp tunnel tun100 redirect
   set protocols nhrp tunnel tun100 shortcut
+
+  set system host-name 'HUB'
+  set system time-zone 'UTC'
 
   set vpn ipsec esp-group ESP-HUB compression 'disable'
   set vpn ipsec esp-group ESP-HUB lifetime '1800'
@@ -43,47 +64,82 @@ VyOS Hub
   set vpn ipsec ike-group IKE-HUB proposal 2 dh-group '2'
   set vpn ipsec ike-group IKE-HUB proposal 2 encryption 'aes128'
   set vpn ipsec ike-group IKE-HUB proposal 2 hash 'sha1'
+
   set vpn ipsec ipsec-interfaces interface 'eth0'
 
   set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
-  set vpn ipsec profile NHRPVPN authentication pre-shared-secret <secret>
+  set vpn ipsec profile NHRPVPN authentication pre-shared-secret 'secret'
   set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
   set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
   set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 
-Cisco IOS Spoke
----------------
+Spoke
+-----
 
-This example is verified with a Cisco 2811 platform running IOS 15.1(4)M9 and
-VyOS 1.1.7 (helium) up to VyOS 1.2 (Crux).
+The individual spoke configurations only differ in the local IP address on the
+``tun10`` interface. See the above diagram for the individual IP addresses.
 
-.. code-block:: none
-
-  Cisco IOS Software, 2800 Software (C2800NM-ADVENTERPRISEK9-M), Version 15.1(4)M9, RELEASE SOFTWARE (fc3)
-  Technical Support: http://www.cisco.com/techsupport
-  Copyright (c) 1986-2014 by Cisco Systems, Inc.
-  Compiled Fri 12-Sep-14 10:45 by prod_rel_team
-
-  ROM: System Bootstrap, Version 12.3(8r)T7, RELEASE SOFTWARE (fc1)
-
-Use this configuration on your Cisco device:
+spoke01
+^^^^^^^
 
 .. code-block:: none
 
+  Current configuration : 1773 bytes
+  !
+  ! Last configuration change at 14:46:27 UTC Sun Nov 15 2020
+  upgrade fpd auto
+  version 15.1
+  service timestamps debug datetime msec
+  service timestamps log datetime msec
+  no service password-encryption
+  !
+  hostname spoke01
+  !
+  boot-start-marker
+  boot-end-marker
+  !
+  !
+  !
+  no aaa new-model
+  !
+  ip source-route
+  ip cef
+  !
+  !
+  !
+  !
+  !
+  no ipv6 cef
+  !
+  multilink bundle-name authenticated
+  !
+  !
+  !
+  !
+  !
+  !
+  !
   crypto pki token default removal timeout 0
+  !
+  !
+  !
+  redundancy
+  !
+  !
+  !
   crypto keyring DMVPN
-    pre-shared-key address 198.51.100.2 key <secretkey>
+    pre-shared-key address 192.0.2.1 key secret
   !
   crypto isakmp policy 10
    encr aes 256
    authentication pre-share
    group 2
-  !
   crypto isakmp invalid-spi-recovery
   crypto isakmp keepalive 30 30 periodic
   crypto isakmp profile DMVPN
      keyring DMVPN
-     match identity address 203.0.113.44 255.255.255.255
+     match identity address 192.0.2.1 255.255.255.255
+  !
   !
   crypto ipsec transform-set DMVPN-AES256 esp-aes 256 esp-sha-hmac
    mode transport
@@ -93,17 +149,66 @@ Use this configuration on your Cisco device:
    set transform-set DMVPN-AES256
    set isakmp-profile DMVPN
   !
+  !
+  !
+  !
+  !
+  !
   interface Tunnel10
    description Tunnel to DMVPN HUB
    ip address 172.16.253.129 255.255.255.248
    no ip redirects
-   ip nhrp authentication <nhrp secret key>
-   ip nhrp map multicast 203.0.113.44
-   ip nhrp map 172.16.253.134 203.0.113.44
+   ip nhrp authentication secret
+   ip nhrp map 172.16.253.134 192.0.2.1
+   ip nhrp map multicast 192.0.2.1
    ip nhrp network-id 1
    ip nhrp holdtime 600
    ip nhrp nhs 172.16.253.134
    ip nhrp registration timeout 75
-   tunnel source Dialer1
+   tunnel source FastEthernet0/0
    tunnel mode gre multipoint
    tunnel key 1
+  !
+  interface FastEthernet0/0
+   ip address dhcp
+   duplex half
+  !
+  interface FastEthernet1/0
+   no ip address
+   shutdown
+   duplex half
+  !
+  ip forward-protocol nd
+  no ip http server
+  no ip http secure-server
+  !
+  !
+  !
+  !
+  !
+  !
+  !
+  !
+  !
+  control-plane
+  !
+  !
+  !
+  mgcp profile default
+  !
+  !
+  !
+  gatekeeper
+   shutdown
+  !
+  !
+  line con 0
+   stopbits 1
+  line aux 0
+   stopbits 1
+  line vty 0 4
+   login
+   transport input all
+  !
+  end
+
