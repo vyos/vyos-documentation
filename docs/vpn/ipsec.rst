@@ -4,9 +4,9 @@
 IPsec
 #####
 
-Generic Routing Encapsulation (GRE), GRE/IPsec (or IPIP/IPsec, SIT/IPsec, or any
-other stateless tunnel protocol over IPsec) is the usual way to protect the
-traffic inside a tunnel.
+:abbr:`GRE (Generic Routing Encapsulation)`, GRE/IPsec (or IPIP/IPsec,
+SIT/IPsec, or any other stateless tunnel protocol over IPsec) is the usual way
+to protect the traffic inside a tunnel.
 
 An advantage of this scheme is that you get a real interface with its own
 address, which makes it easier to setup static routes or use dynamic routing
@@ -26,11 +26,12 @@ what needs to be changed to make it work with a different protocol. We assume
 that IPsec will use pre-shared secret authentication and will use AES128/SHA1
 for the cipher and hash. Adjust this as necessary.
 
-.. NOTE:: VMware users should ensure that VMXNET3 adapters used, e1000 adapters
-   have known issue with GRE processing
+.. NOTE:: VMware users should ensure that a VMXNET3 adapter is used. E1000
+  adapters have known issues with GRE processing.
 
+*************************
 IPsec policy matching GRE
-^^^^^^^^^^^^^^^^^^^^^^^^^
+*************************
 
 The first and arguably cleaner option is to make your IPsec policy match GRE
 packets between external addresses of your routers. This is the best option if
