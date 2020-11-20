@@ -12,7 +12,7 @@ System
    flow-accounting
    lcd
    ntp
-   options
+   option
    proxy
    serial-console
    syslog

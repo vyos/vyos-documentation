@@ -1,4 +1,4 @@
-.. _system_options:
+.. _system_option:
 
 #######
 Options
@@ -10,28 +10,28 @@ This chapter describe the possibilities of advanced system behavior.
 General
 *******
 
-.. cfgcmd:: set system options beep-if-fully-booted
-
-    Send an audible beep to the system speaker when system is ready.
-
-.. cfgcmd:: set system options ctrl-alt-del-action [ ignore | reboot | poweroff ]
+.. cfgcmd:: set system option ctrl-alt-delete <ignore | reboot | poweroff>
 
    Action which will be run once the ctrl-alt-del keystroke is received.
 
-.. cfgcmd:: set system options reboot-on-panic
+.. cfgcmd:: set system option reboot-on-panic
 
-   Automatically teboot system on kernel panic after 60 seconds.
+   Automatically reboot system on kernel panic after 60 seconds.
+
+.. cfgcmd:: set system option startup-beep
+
+    Play an audible beep to the system speaker when system is ready.
 
 ***********
 HTTP client
 ***********
 
-.. cfgcmd:: set system options http-client source-address <address>
+.. cfgcmd:: set system option http-client source-address <address>
 
    Several commands utilize curl to initiate transfers. Configure the local
    source IPv4/IPv6 address used for all CURL operations.
 
-.. cfgcmd:: set system options http-client source-interface <interface>
+.. cfgcmd:: set system option http-client source-interface <interface>
 
    Several commands utilize curl to initiate transfers. Configure the local
    source interface used for all CURL operations.
@@ -46,7 +46,7 @@ When starting a VyOS live system (the installation CD) the configured keyboard
 layout defaults to US. As this might not suite everyones use case you can adjust
 the used keyboard layout on the system console.
 
-.. cfgcmd:: set system options keyboard-layout <us | fr | de | fi | no | dk>
+.. cfgcmd:: set system option keyboard-layout <us | fr | de | fi | no | dk>
 
   Change system keyboard layout to given language.
 
@@ -71,7 +71,7 @@ We now utilize `tuned` for dynamic resource balancing based on profiles.
 
   .. seealso:: https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v2.1.pdf
 
-.. cfgcmd:: set system options performance < throughput | latency >
+.. cfgcmd:: set system option performance < throughput | latency >
 
   Configure one of the predefined system performance profiles.
 
