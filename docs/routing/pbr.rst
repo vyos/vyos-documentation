@@ -104,3 +104,34 @@ from PBR
 
 These commands allow the VLAN10 and VLAN20 hosts to communicate with
 each other using the main routing table.
+
+Local route
+===========
+
+The following example allows VyOS to use :abbr:`PBR (Policy-Based Routing)` for traffic, which originated from the router itself.
+That solution for multiple ISP's and VyOS router will respond from the same interface that the packet was received.
+Also, it used, if we want that one VPN tunnel to be through one provider, and the second through another.
+
+* ``192.168.1.254`` IP addreess on VyOS eth1 from ISP1
+* ``192.168.2.254`` IP addreess on VyOS eth2 from ISP2
+* ``table 10`` Routing table used for ISP1
+* ``table 11`` Routing table used for ISP2
+
+
+.. code-block:: none
+
+  set policy local-route rule 101 set table '10'
+  set policy local-route rule 101 source '192.0.1.254'
+  set policy local-route rule 102 set table '11'
+  set policy local-route rule 102 source '192.0.2.254'
+  set protocols static table 10 route '0.0.0.0/0' next-hop '192.0.1.1'
+  set protocols static table 11 route '0.0.0.0/0' next-hop '192.0.2.2'
+
+Add multiple source IP in one rule with same priority
+
+.. code-block:: none
+
+  set policy local-route rule 101 set table '10'
+  set policy local-route rule 101 source '192.0.1.254'
+  set policy local-route rule 101 source '192.0.1.253'
+  set policy local-route rule 101 source '203.0.113.0/24'
