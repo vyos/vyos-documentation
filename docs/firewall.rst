@@ -571,7 +571,7 @@ Rule-set overview
 
    This will show you a summary about rule-sets and groups
 
-   .. code-block::
+   .. code-block:: none
 
       vyos@vyos:~$ show firewall summary
 
