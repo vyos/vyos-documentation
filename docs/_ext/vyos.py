@@ -277,27 +277,15 @@ class CfgInclude(Directive):
             return codeblock.run()
 
         new_include_lines = []
-        var_value0 = self.options.get('var0', '')
-        var_value1 = self.options.get('var1', '')
-        var_value2 = self.options.get('var2', '')
-        var_value3 = self.options.get('var3', '')
-        var_value4 = self.options.get('var4', '')
-        var_value5 = self.options.get('var5', '')
-        var_value6 = self.options.get('var6', '')
-        var_value7 = self.options.get('var7', '')
-        var_value8 = self.options.get('var8', '')
-        var_value9 = self.options.get('var9', '')
+
         for line in include_lines:
-            line = re.sub('{{\s?var0\s?}}',var_value0,line)
-            line = re.sub('{{\s?var1\s?}}',var_value1,line)
-            line = re.sub('{{\s?var2\s?}}',var_value2,line)
-            line = re.sub('{{\s?var3\s?}}',var_value3,line)
-            line = re.sub('{{\s?var4\s?}}',var_value4,line)
-            line = re.sub('{{\s?var5\s?}}',var_value5,line)
-            line = re.sub('{{\s?var6\s?}}',var_value6,line)
-            line = re.sub('{{\s?var7\s?}}',var_value7,line)
-            line = re.sub('{{\s?var8\s?}}',var_value8,line)
-            line = re.sub('{{\s?var9\s?}}',var_value9,line)
+            for i in range(10):
+                value = self.options.get(f'var{i}','')
+                if value == '':
+                    line = re.sub('\s?{{\s?var' + str(i) + '\s?}}',value,line)
+                else:
+                    line = re.sub('{{\s?var' + str(i) + '\s?}}',value,line)
+
             new_include_lines.append(line)
         self.state_machine.insert_input(new_include_lines, path)
         return []
