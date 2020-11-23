@@ -1,4 +1,4 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> ipv6 address autoconf
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var4 }} ipv6 address autoconf
 
   :abbr:`SLAAC (Stateless Address Autoconfiguration)` :rfc:`4862`. IPv6 hosts
   can configure themselves automatically when connected to an IPv6 network using
@@ -15,4 +15,4 @@
 
   .. code-block:: none
 
-    set interfaces {{ var0 }} {{ var1 }} ipv6 address autoconf
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} ipv6 address autoconf

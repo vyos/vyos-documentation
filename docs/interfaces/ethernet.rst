@@ -49,6 +49,13 @@ Ethernet options
 
    VyOS default will be `auto`.
 
+VLAN
+====
+
+.. cmdinclude:: ../_include/interface-vlan.txt
+   :var0: ethernet
+   :var1: eth0
+
 *********
 Operation
 *********

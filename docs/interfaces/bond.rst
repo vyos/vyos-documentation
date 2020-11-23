@@ -256,6 +256,13 @@ Bond options
    The maximum number of targets that can be specified is 16. The default value
    is no IP addresses.
 
+VLAN
+====
+
+.. cmdinclude:: ../_include/interface-vlan.txt
+   :var0: bond
+   :var1: bond0
+
 *******
 Example
 *******

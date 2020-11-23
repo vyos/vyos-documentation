@@ -274,7 +274,6 @@ VHT (Very High Throughput) capabilities (802.11ac)
 
   Station supports receiving VHT variant HT Control field
 
-
 Wireless options (Station/Client)
 =================================
 
@@ -372,6 +371,13 @@ Resulting in
     wifi-regulatory-domain DE
   }
 
+
+VLAN
+====
+
+.. cmdinclude:: ../_include/interface-vlan.txt
+   :var0: wireless
+   :var1: wlan0
 
 *********
 Operation

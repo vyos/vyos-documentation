@@ -56,3 +56,10 @@ Pseudo Ethernet/MACVLAN options
 
    Specifies the physical `<ethX>` Ethernet interface associated with a Pseudo
    Ethernet `<interface>`.
+
+VLAN
+====
+
+.. cmdinclude:: ../_include/interface-vlan.txt
+   :var0: pseudo-ethernet
+   :var1: peth0
