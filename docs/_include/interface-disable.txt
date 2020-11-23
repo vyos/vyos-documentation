@@ -1,4 +1,4 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var4 }} disable
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} disable
 
   Disable given `<interface>`. It will be placed in administratively down
   (``A/D``) state.

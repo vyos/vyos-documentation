@@ -1,4 +1,4 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var4 }} address <address | dhcp |
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} address <address | dhcp |
    dhcpv6>
 
   Configure interface `<interface>` with one or more interface addresses.

@@ -1,4 +1,5 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var4 }} vrf <vrf>
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  vrf <vrf>
 
   Place interface in given VRF instance.
 

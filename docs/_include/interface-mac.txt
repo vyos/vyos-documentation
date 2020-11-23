@@ -1,4 +1,5 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var4 }} mac <xx:xx:xx:xx:xx:xx>
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  mac <xx:xx:xx:xx:xx:xx>
 
   Configure user defined :abbr:`MAC (Media Access Control)` address on given
   `<interface>`.
