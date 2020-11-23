@@ -84,7 +84,7 @@ Example
 *******
 
 Over IP
-^^^^^^^
+=======
 
 .. code-block:: none
 
@@ -103,7 +103,7 @@ Over IP
 Inverse configuration has to be applied to the remote side.
 
 Over UDP
-^^^^^^^^
+========
 
 UDP mode works better with NAT:
 
@@ -130,7 +130,7 @@ To create more than one tunnel, use distinct UDP ports.
 
 
 Over IPSec, L2 VPN (bridge)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===========================
 
 This is the LAN extension use case. The eth0 port of the distant VPN peers
 will be directly connected like if there was a switch between them.
