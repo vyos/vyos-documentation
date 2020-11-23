@@ -271,7 +271,7 @@ assigning it to the pppoe0 itself as shown here:
   set interfaces pppoe pppoe0 firewall out name NET-OUT
 
 VLAN Example
-------------
+============
 
 Some recent ISPs require you to build the PPPoE connection through a VLAN
 interface. One of those ISPs is e.g. Deutsche Telekom in Germany. VyOS
