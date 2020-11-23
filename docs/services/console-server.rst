@@ -82,7 +82,7 @@ Operation
 
   Show currently connected users.
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show console-server user
      usb0b2.4p1.0               up   vyos@localhost
