@@ -17,9 +17,7 @@ Network Interfaces
    macsec
    pppoe
    pseudo-ethernet
-   qinq
    tunnel
-   vlan
    vxlan
    wireless
    wirelessmodem

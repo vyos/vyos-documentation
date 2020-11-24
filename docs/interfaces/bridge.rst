@@ -116,7 +116,7 @@ links providing fault tolerance if an active link fails.
 VLAN
 ====
 
-.. cmdinclude:: ../_include/interface-vlan.txt
+.. cmdinclude:: ../_include/interface-vlan-8021q.txt
    :var0: bridge
    :var1: br0
 

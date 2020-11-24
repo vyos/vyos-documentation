@@ -375,7 +375,17 @@ Resulting in
 VLAN
 ====
 
-.. cmdinclude:: ../_include/interface-vlan.txt
+Regular VLANs (802.1q)
+----------------------
+
+.. cmdinclude:: ../_include/interface-vlan-8021q.txt
+   :var0: wireless
+   :var1: wlan0
+
+QinQ (802.1ad)
+--------------
+
+.. cmdinclude:: ../_include/interface-vlan-8021ad.txt
    :var0: wireless
    :var1: wlan0
 

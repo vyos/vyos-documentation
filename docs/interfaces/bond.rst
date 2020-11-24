@@ -259,7 +259,7 @@ Bond options
 VLAN
 ====
 
-.. cmdinclude:: ../_include/interface-vlan.txt
+.. cmdinclude:: ../_include/interface-vlan-8021q.txt
    :var0: bond
    :var1: bond0
 

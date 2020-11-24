@@ -8,8 +8,9 @@
    <p class="admonition-title">Call for Contributions</p>
 
 
-This page needs improvements, examples and explanations.
-Please take a look at the Contributing Guide for :ref:`documentation`.
+This section needs improvements, examples and explanations.
+
+Please take a look at the Contributing Guide for our :ref:`documentation`.
 
 .. raw:: html
 

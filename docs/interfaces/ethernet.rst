@@ -52,7 +52,17 @@ Ethernet options
 VLAN
 ====
 
-.. cmdinclude:: ../_include/interface-vlan.txt
+Regular VLANs (802.1q)
+----------------------
+
+.. cmdinclude:: ../_include/interface-vlan-8021q.txt
+   :var0: ethernet
+   :var1: eth0
+
+QinQ (802.1ad)
+--------------
+
+.. cmdinclude:: ../_include/interface-vlan-8021ad.txt
    :var0: ethernet
    :var1: eth0
 
