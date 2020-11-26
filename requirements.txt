@@ -2,4 +2,5 @@ Sphinx>=1.4.3
 sphinx-rtd-theme
 setuptools
 docutils
+lxml
 sphinx-notfound-page
