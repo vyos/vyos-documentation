@@ -31,7 +31,8 @@ Ethernet options
 
    VyOS default will be `auto`.
 
-.. cfgcmd:: set interfaces ethernet <interface> speed <auto | 10 | 100 | 1000 | 2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000>
+.. cfgcmd:: set interfaces ethernet <interface> speed <auto | 10 | 100 | 1000 |
+  2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000>
 
    Configure physical interface speed setting.
 
@@ -48,6 +49,22 @@ Ethernet options
    * 100000 - 100 GBit/s
 
    VyOS default will be `auto`.
+
+
+.. cfgcmd:: set interfaces ethernet <interface> mirror <interface>
+
+  Use this command to mirror the inbound traffic from one Ethernet interface to
+  another interface. This feature is typically used to provide a copy of traffic
+  inbound on one interface to a system running a monitoring or IPS application
+  on another interface. The benefit of mirroring the traffic is that the
+  application is isolated from the source traffic and so application processing
+  does not affect the traffic or the system performance.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces ethernet eth0 mirror eth1
 
 VLAN
 ====
