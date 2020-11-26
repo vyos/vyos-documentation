@@ -299,7 +299,7 @@ VyOS can also run in DMVPN spoke mode.
 
   set protocols nhrp tunnel tun100 cisco-authentication 'secret'
   set protocols nhrp tunnel tun100 holding-time '300'
-  set protocols nhrp tunnel tun100 map 172.16.253.134/29 nbma-address '92.0.2.1'
+  set protocols nhrp tunnel tun100 map 172.16.253.134/29 nbma-address '192.0.2.1'
   set protocols nhrp tunnel tun100 map 172.16.253.134/29 register
   set protocols nhrp tunnel tun100 multicast 'nhs'
   set protocols nhrp tunnel tun100 redirect
