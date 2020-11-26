@@ -1,0 +1,8 @@
+extends: existence
+message: "Don't place a space on either side of a hyphen (unless it's suspended)."
+link: 'https://developers.google.com/style/hyphens'
+level: warning
+nonword: true
+tokens:
+  - '\s-'
+  - '-\s'
