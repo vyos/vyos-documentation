@@ -15,3 +15,7 @@
 .. cmdinclude:: ../_include/interface-dhcpv6-options.txt
   :var0: {{ var0 }}
   :var1: {{ var1 }}
+
+.. cmdinclude:: ../_include/interface-dhcpv6-prefix-delegation.txt
+  :var0: {{ var0 }}
+  :var1: {{ var1 }}
