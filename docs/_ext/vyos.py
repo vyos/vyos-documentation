@@ -297,16 +297,6 @@ class CfgInclude(Directive):
             return codeblock.run()
         
         new_include_lines = []
-        var_value0 = self.options.get('var0', '')
-        var_value1 = self.options.get('var1', '')
-        var_value2 = self.options.get('var2', '')
-        var_value3 = self.options.get('var3', '')
-        var_value4 = self.options.get('var4', '')
-        var_value5 = self.options.get('var5', '')
-        var_value6 = self.options.get('var6', '')
-        var_value7 = self.options.get('var7', '')
-        var_value8 = self.options.get('var8', '')
-        var_value9 = self.options.get('var9', '')
         for line in include_lines:
             for i in range(10):
                 value = self.options.get(f'var{i}','')
@@ -436,7 +426,7 @@ class CfgCmdDirective(CmdDirective):
 
 
 def strip_cmd(cmd):
-    #cmd = re.sub('set','',cmd)
+    cmd = re.sub('set','',cmd)
     cmd = re.sub('\s\|\s','',cmd)
     cmd = re.sub('<\S*>','',cmd)
     cmd = re.sub('\[\S\]','',cmd)
