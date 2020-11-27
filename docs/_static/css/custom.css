@@ -10,8 +10,45 @@ span.cfgcmd {
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",Courier,monospace;
 }
 
-.opcmd-heading,
+span.cfgcmd:before {
+  content: "#";
+  margin-right: 0px;
+}
+
+td p a.cmdlink span.cfgcmd:before,
+td p a.cmdlink span.opcmd:before  {
+  content: "";
+}
+
+td p a.cmdlink,
+td p a.cmdlink {
+  margin-left: 0px;
+}
+
+tr td p {
+  margin-bottom:0px
+ }
+
+span.opcmd:before {
+  content: "$";
+  margin-right: 0px;
+}
+
 .cfgcmd-heading {
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 90%;
+    line-height: normal;
+    background: #f0d481;
+    color: #2980B9;
+    border-top: solid 3px #6ab0de;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: #FF9302;
+    padding: 6px;
+}
+
+.opcmd-heading {
     display: inline-block;
     margin: 6px 0;
     font-size: 90%;
@@ -34,7 +71,7 @@ span.cfgcmd {
 
 
 .cfgcmd-heading .cmdlink:after,
-.opcmd-heading .cmdlink:after {
+.opcmd-heading .cmdlink:after{
     content: "";
     font-family: FontAwesome
 }
@@ -97,21 +134,44 @@ a.cmdlink span:hover{
 }
 
 .wy-side-nav-search {
-  background-color : #FF0000 !important;
+  background-color : #ffffff !important;
 }
 
 .wy-side-nav-search img {
-  background-color : #FF0000 !important;
+  background-color : #ffffff !important;
 }
 
 .wy-side-nav-search > div.version {
-  color : rgba(255, 255, 255, 0.7) !important;
+  color : #000000 !important;
+}
+
+.wy-side-nav-search>a,
+.wy-side-nav-search .wy-dropdown>a {
+ color:#000000;
+ font-size:100%;
+ font-weight:bold;
+ display:inline-block;
+ padding:4px 6px;
+ margin-bottom:.809em
 }
 
 .wy-nav-top {
-  background-color : #FF0000 !important;
+  background-color : #ffffff !important;
 }
 
 .wy-nav-top img {
-  background-color : #FF0000 !important;
+  background-color : #000000 !important;
+}
+
+.rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td.coverage-ok,
+.rst-content table.docutils td.coverage-ok {
+  background-color: green;
+  color: black;
+}
+
+
+.rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td.coverage-fail,
+.rst-content table.docutils td.coverage-fail {
+  background-color: red;
+  color: black;
 }
