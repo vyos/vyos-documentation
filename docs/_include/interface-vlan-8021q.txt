@@ -71,7 +71,14 @@ term used for this is ``vif``.
    :var3: <vlan-id>
    :var4: 10
 
-.. cmdinclude:: ../_include/interface-ipv6-address.txt
+.. cmdinclude:: ../_include/interface-ip.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: ../_include/interface-ipv6.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif
