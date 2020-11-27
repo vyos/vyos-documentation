@@ -22,11 +22,7 @@
   :var0: {{ var0 }}
   :var1: {{ var1 }}
 
-.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
-  :var0: {{ var0 }}
-  :var1: {{ var1 }}
-
-.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
+.. cmdinclude:: ../_include/interface-ipv6-address.txt
   :var0: {{ var0 }}
   :var1: {{ var1 }}
 
