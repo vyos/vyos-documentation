@@ -219,9 +219,9 @@ class CfgInclude(Directive):
                               'Cannot encode input file path "%s" '
                               '(wrong locale?).' %
                               (self.name, SafeString(path)))
-        except IOError:
+        except IOError as error:
             raise self.severe(u'Problems with "%s" directive path:\n%s.' %
-                      (self.name, ErrorString(error)))
+                      (self.name, error))
         startline = self.options.get('start-line', None)
         endline = self.options.get('end-line', None)
         try:
