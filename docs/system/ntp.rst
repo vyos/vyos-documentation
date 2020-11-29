@@ -40,17 +40,38 @@ Configuration
 
    There are 3 default NTP server set. You are able to change them.
 
-   * 0.pool.ntp.org
-   * 1.pool.ntp.org
-   * 2.pool.ntp.org
+   * ``0.pool.ntp.org``
+   * ``1.pool.ntp.org``
+   * ``2.pool.ntp.org``
+
+.. cfgcmd:: set system ntp server <address> <noselect | pool | preempt | prefer>
+
+   Configure one or more attributes to the given NTP server.
+
+   * ``noselect`` marks the server as unused, except for display purposes. The
+     server is discarded by the selection algorithm.
+
+   * ``pool`` mobilizes persistent client mode association with a number of
+     remote servers.
+
+   * ``preempt`` a preemptable association is expendable.
+
+   * ``prefer`` marks the server as preferred. All other things being equal,
+     this host will be chosen for synchronization among a set of correctly
+     operating hosts.
 
 .. cfgcmd:: set system ntp listen-address <address>
 
-   Setup VyOS as an NTP responder, you must specify the `<address>` and
-   optionally the permitted clients. Multiple listen addresses can be
-   configured.
+   NTP process will only listen on the specified IP address. You must specify
+   the `<address>` and optionally the permitted clients. Multiple listen
+   addresses can be configured.
 
 .. cfgcmd:: set system ntp allow-clients address <address>
 
    List of networks or client addresses permitted to contact this NTP server.
+
    Multiple networks can be configured.
+
+.. cfgcmd:: set system ntp vrf <name>
+
+  Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
