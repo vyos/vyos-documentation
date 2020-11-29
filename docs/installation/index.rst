@@ -12,7 +12,8 @@ Installation and Image Management
    iso
    virtual/index
    cloud/index
+   vyos-on-baremetal
    update
    image
    migrate-from-vyatta
-   ../vyos-on-baremetal
+   
