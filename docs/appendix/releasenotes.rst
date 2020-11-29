@@ -6,6 +6,160 @@ Release notes
 1.2 (Crux)
 ==========
 
+1.2.6-S1
+--------
+
+1.2.6-S1 is a security release release made in September 2020.
+
+Resolved issues
+^^^^^^^^^^^^^^^
+
+VyOS 1.2.6 release was found to be suspectible to CVE-2020-10995. It's a low-
+impact vulnerability in the PowerDNS recursor that allows an attacker to cause
+performance degradation via a specially crafted authoritative DNS server reply.
+
+* `2899 <https://phabricator.vyos.net/T2899>`_ remote syslog server migration error on update
+
+1.2.6
+-----
+
+1.2.6 is a maintenance release made in September 2019.
+
+Resolved issues
+^^^^^^^^^^^^^^^
+
+* `103 <https://phabricator.vyos.net/T103>`_ DHCP server prepends shared network name to hostnames
+* `125 <https://phabricator.vyos.net/T125>`_ Missing PPPoE interfaces in l2tp configuration
+* `1194 <https://phabricator.vyos.net/T1194>`_ cronjob is being setup even if not saved
+* `1205 <https://phabricator.vyos.net/T1205>`_ module pcspkr missing
+* `1219 <https://phabricator.vyos.net/T1219>`_ Redundant active-active configuration, asymmetric routing and conntrack-sync cache
+* `1220 <https://phabricator.vyos.net/T1220>`_ Show transceiver information from plugin modules, e.g SFP+, QSFP
+* `1221 <https://phabricator.vyos.net/T1221>`_ BGP - Default route injection is not processed by the specific route-map
+* `1241 <https://phabricator.vyos.net/T1241>`_ Remove of policy route throws CLI error
+* `1291 <https://phabricator.vyos.net/T1291>`_ Under certain conditions the VTI will stay forever down
+* `1463 <https://phabricator.vyos.net/T1463>`_ Missing command `show ip bgp scan` appears in command completion
+* `1575 <https://phabricator.vyos.net/T1575>`_ `show snmp mib ifmib` crashes with IndexError
+* `1699 <https://phabricator.vyos.net/T1699>`_ Default net.ipv6.route.max_size 32768 is too low
+* `1729 <https://phabricator.vyos.net/T1729>`_ PIM (Protocol Independent Multicast) implementation
+* `1901 <https://phabricator.vyos.net/T1901>`_ Semicolon in values is interpreted as a part of the shell command by validators
+* `1934 <https://phabricator.vyos.net/T1934>`_ Change default hostname when deploy from OVA without params.
+* `1938 <https://phabricator.vyos.net/T1938>`_ syslog doesn't start automatically
+* `1949 <https://phabricator.vyos.net/T1949>`_ Multihop IPv6 BFD is unconfigurable
+* `1953 <https://phabricator.vyos.net/T1953>`_ DDNS service name validation rejects valid service names
+* `1956 <https://phabricator.vyos.net/T1956>`_ PPPoE server: support PADO-delay
+* `1973 <https://phabricator.vyos.net/T1973>`_ Allow route-map to match on BGP local preference value
+* `1974 <https://phabricator.vyos.net/T1974>`_ Allow route-map to set administrative distance
+* `1982 <https://phabricator.vyos.net/T1982>`_ Increase rotation for atop.acct
+* `1983 <https://phabricator.vyos.net/T1983>`_ Expose route-map when BGP routes are programmed in to FIB
+* `1985 <https://phabricator.vyos.net/T1985>`_ pppoe: Enable ipv6 modules without configured ipv6 pools
+* `2000 <https://phabricator.vyos.net/T2000>`_ strongSwan does not install routes to table 220 in certain cases
+* `2021 <https://phabricator.vyos.net/T2021>`_ OSPFv3 doesn't support decimal area syntax
+* `2062 <https://phabricator.vyos.net/T2062>`_ Wrong dhcp-server static route subnet bytes
+* `2091 <https://phabricator.vyos.net/T2091>`_ swanctl.conf file is not generated properly is more than one IPsec profile is used
+* `2131 <https://phabricator.vyos.net/T2131>`_ Improve syslog remote host CLI definition
+* `2224 <https://phabricator.vyos.net/T2224>`_ Update Linux Kernel to v4.19.114
+* `2286 <https://phabricator.vyos.net/T2286>`_ IPoE server vulnerability
+* `2303 <https://phabricator.vyos.net/T2303>`_ Unable to delete the image version that came from OVA
+* `2305 <https://phabricator.vyos.net/T2305>`_ Add release name to "show version" command
+* `2311 <https://phabricator.vyos.net/T2311>`_ Statically configured name servers may not take precedence over ones from DHCP
+* `2327 <https://phabricator.vyos.net/T2327>`_ Unable to create syslog server entry with different port
+* `2332 <https://phabricator.vyos.net/T2332>`_ Backport node option for a syslog server
+* `2342 <https://phabricator.vyos.net/T2342>`_ Bridge l2tpv3 + ethX errors
+* `2344 <https://phabricator.vyos.net/T2344>`_ PPPoE server client static IP assignment silently fails
+* `2385 <https://phabricator.vyos.net/T2385>`_ salt-minion: improve completion helpers
+* `2389 <https://phabricator.vyos.net/T2389>`_ BGP community-list unknown command
+* `2398 <https://phabricator.vyos.net/T2398>`_ op-mode "dhcp client leases interface" completion helper misses interfaces
+* `2402 <https://phabricator.vyos.net/T2402>`_ Live ISO should warn when configuring that changes won't persist
+* `2443 <https://phabricator.vyos.net/T2443>`_ NHRP: Add debugging information to syslog
+* `2448 <https://phabricator.vyos.net/T2448>`_ `monitor protocol bgp` subcommands fail with 'command incomplete'
+* `2458 <https://phabricator.vyos.net/T2458>`_ Update FRR to 7.3.1
+* `2476 <https://phabricator.vyos.net/T2476>`_ Bond member description change leads to network outage
+* `2478 <https://phabricator.vyos.net/T2478>`_ login radius: use NAS-IP-Address if defined source address
+* `2482 <https://phabricator.vyos.net/T2482>`_ Update PowerDNS recursor to 4.3.1 for CVE-2020-10995
+* `2517 <https://phabricator.vyos.net/T2517>`_ vyos-container: link_filter: No such file or directory
+* `2526 <https://phabricator.vyos.net/T2526>`_ Wake-On-Lan CLI implementation
+* `2528 <https://phabricator.vyos.net/T2528>`_ "update dns dynamic" throws FileNotFoundError excepton
+* `2536 <https://phabricator.vyos.net/T2536>`_ "show log dns forwarding" still refers to dnsmasq
+* `2538 <https://phabricator.vyos.net/T2538>`_ Update Intel NIC drivers to recent release (preparation for Kernel >=5.4)
+* `2545 <https://phabricator.vyos.net/T2545>`_ Show physical device offloading capabilities for specified ethernet interface
+* `2563 <https://phabricator.vyos.net/T2563>`_ Wrong interface binding for Dell VEP 1445
+* `2605 <https://phabricator.vyos.net/T2605>`_ SNMP service is not disabled by default
+* `2625 <https://phabricator.vyos.net/T2625>`_ Provide generic Library for package builds
+* `2686 <https://phabricator.vyos.net/T2686>`_ FRR: BGP: large-community configuration is not applied properly after upgrading FRR to 7.3.x series
+* `2701 <https://phabricator.vyos.net/T2701>`_ `vpn ipsec pfs enable` doesn't work with IKE groups
+* `2728 <https://phabricator.vyos.net/T2728>`_ Protocol option ignored for IPSec peers in transport mode
+* `2734 <https://phabricator.vyos.net/T2734>`_ WireGuard: fwmark CLI definition is inconsistent
+* `2757 <https://phabricator.vyos.net/T2757>`_ "show system image version" contains additional new-line character breaking output
+* `2797 <https://phabricator.vyos.net/T2797>`_ Update Linux Kernel to v4.19.139
+* `2822 <https://phabricator.vyos.net/T2822>`_ Update Linux Kernel to v4.19.141
+* `2829 <https://phabricator.vyos.net/T2829>`_ PPPoE server: mppe setting is implemented as node instead of leafNode
+* `2831 <https://phabricator.vyos.net/T2831>`_ Update Linux Kernel to v4.19.142
+* `2852 <https://phabricator.vyos.net/T2852>`_ rename dynamic dns interface breaks ddclient.cache permissions
+* `2853 <https://phabricator.vyos.net/T2853>`_ Intel QAT acceleration does not work
+
+
+1.2.5
+-----
+
+1.2.5 is a maintenance release made in April 2019.
+
+Resolved issues
+^^^^^^^^^^^^^^^
+
+* `1020 <https://phabricator.vyos.net/T1020>`_ OSPF Stops distributing default route after a while
+* `1228 <https://phabricator.vyos.net/T1228>`_ pppoe default-route force option not working (Rel 1.2.0-rc11)
+* `1301 <https://phabricator.vyos.net/T1301>`_ bgp peer-groups don't work when "no-ipv4-unicast" is enabled.
+* `1341 <https://phabricator.vyos.net/T1341>`_ Adding rate-limiter for pppoe server users
+* `1376 <https://phabricator.vyos.net/T1376>`_ Incorrect DHCP lease counting
+* `1392 <https://phabricator.vyos.net/T1392>`_ Large firewall rulesets cause the system to lose configuration and crash at startup
+* `1416 <https://phabricator.vyos.net/T1416>`_ 2 dhcp server run in failover mode can't sync hostname with each other
+* `1452 <https://phabricator.vyos.net/T1452>`_ accel-pppoe - add vendor option to shaper
+* `1490 <https://phabricator.vyos.net/T1490>`_ BGP configuration (is lost|not applied) when updating 1.1.8 -> 1.2.1
+* `1780 <https://phabricator.vyos.net/T1780>`_ Adding ipsec ike closeaction
+* `1803 <https://phabricator.vyos.net/T1803>`_ Unbind NTP while it's not requested...
+* `1821 <https://phabricator.vyos.net/T1821>`_ "authentication mode radius" has no effect for PPPoE server
+* `1827 <https://phabricator.vyos.net/T1827>`_ Increase default gc_thresh
+* `1828 <https://phabricator.vyos.net/T1828>`_ Missing completion helper for "set system syslog host 192.0.2.1 facility all protocol"
+* `1832 <https://phabricator.vyos.net/T1832>`_ radvd adding feature DNSSL branch.example.com example.com to existing package
+* `1837 <https://phabricator.vyos.net/T1837>`_ PPPoE unrecognized option 'replacedefaultroute'
+* `1851 <https://phabricator.vyos.net/T1851>`_ wireguard - changing the pubkey on an existing peer seems to destroy the running config.
+* `1858 <https://phabricator.vyos.net/T1858>`_ l2tp: Delete depricated outside-nexthop and add gateway-address
+* `1864 <https://phabricator.vyos.net/T1864>`_ Lower IPSec DPD timeout lower limit from 10s -> 2s
+* `1879 <https://phabricator.vyos.net/T1879>`_ Extend Dynamic DNS XML definition value help strings and validators
+* `1881 <https://phabricator.vyos.net/T1881>`_ Execute permissions are removed from custom SNMP scripts at commit time
+* `1884 <https://phabricator.vyos.net/T1884>`_ Keeping VRRP transition-script native behaviour and adding stop-script
+* `1891 <https://phabricator.vyos.net/T1891>`_ Router announcements broken on boot
+* `1900 <https://phabricator.vyos.net/T1900>`_ Enable SNMP for VRRP.
+* `1902 <https://phabricator.vyos.net/T1902>`_ Add redistribute non main table in bgp
+* `1909 <https://phabricator.vyos.net/T1909>`_ Incorrect behaviour of static routes with overlapping networks
+* `1913 <https://phabricator.vyos.net/T1913>`_ "system ipv6 blacklist" command has no effect
+* `1914 <https://phabricator.vyos.net/T1914>`_ IPv6 multipath hash policy does not apply
+* `1917 <https://phabricator.vyos.net/T1917>`_ Update WireGuard to Debian release 0.0.20191219-1
+* `1934 <https://phabricator.vyos.net/T1934>`_ Change default hostname when deploy from OVA without params.
+* `1935 <https://phabricator.vyos.net/T1935>`_ NIC identification and usage problem in Hyper-V environments
+* `1936 <https://phabricator.vyos.net/T1936>`_ pppoe-server CLI control features
+* `1964 <https://phabricator.vyos.net/T1964>`_ SNMP Script-extensions allows names with spaces, but commit fails
+* `1967 <https://phabricator.vyos.net/T1967>`_ BGP parameter "enforce-first-as" does not work anymore
+* `1970 <https://phabricator.vyos.net/T1970>`_ Correct adding interfaces on boot
+* `1971 <https://phabricator.vyos.net/T1971>`_ Missing modules in initrd.img for PXE boot
+* `1998 <https://phabricator.vyos.net/T1998>`_ Update FRR to 7.3
+* `2001 <https://phabricator.vyos.net/T2001>`_ Error when router reboot
+* `2032 <https://phabricator.vyos.net/T2032>`_ Monitor bandwidth bits
+* `2059 <https://phabricator.vyos.net/T2059>`_ Set source-validation on bond vif don't work
+* `2066 <https://phabricator.vyos.net/T2066>`_ PPPoE interface can be created multiple times - last wins
+* `2069 <https://phabricator.vyos.net/T2069>`_ PPPoE-client does not works with service-name option
+* `2077 <https://phabricator.vyos.net/T2077>`_ ISO build from crux branch is failing
+* `2079 <https://phabricator.vyos.net/T2079>`_ Update Linux Kernel to v4.19.106
+* `2087 <https://phabricator.vyos.net/T2087>`_ Add maxfail 0 option to pppoe configuration.
+* `2100 <https://phabricator.vyos.net/T2100>`_ BGP route adverisement wih checks rib
+* `2120 <https://phabricator.vyos.net/T2120>`_ "reset vpn ipsec-peer" doesn't work with named peers
+* `2197 <https://phabricator.vyos.net/T2197>`_ Cant add vif-s interface into a bridge
+* `2228 <https://phabricator.vyos.net/T2228>`_ WireGuard does not allow ports < 1024 to be used
+* `2252 <https://phabricator.vyos.net/T2252>`_ HTTP API add system image can return '504 Gateway Time-out'
+* `2272 <https://phabricator.vyos.net/T2272>`_ Set system flow-accounting disable-imt has syntax error
+* `2276 <https://phabricator.vyos.net/T2276>`_ PPPoE server vulnerability
+
+
 1.2.4
 -----
 
@@ -33,7 +187,7 @@ Resolved issues
 * `T1578 <https://phabricator.vyos.net/T1578>`_ completion offers "show table", but show table does not exist
 * `T1593 <https://phabricator.vyos.net/T1593>`_ Support ip6gre
 * `T1597 <https://phabricator.vyos.net/T1597>`_ /usr/sbin/rsyslogd after deleting "system syslog"
-* `T1638 <https://phabricator.vyos.net/T1638>`_ vyos-hostsd not setting system domain name 
+* `T1638 <https://phabricator.vyos.net/T1638>`_ vyos-hostsd not setting system domain name
 * `T1678 <https://phabricator.vyos.net/T1678>`_ hostfile-update missing line feed
 * `T1694 <https://phabricator.vyos.net/T1694>`_ NTPd: Do not listen on all interfaces by default
 * `T1701 <https://phabricator.vyos.net/T1701>`_ Delete domain-name and domain-search won't work
@@ -60,7 +214,7 @@ Resolved issues
 * `T1800 <https://phabricator.vyos.net/T1800>`_ Update Linux Kernel to v4.19.84
 * `T1809 <https://phabricator.vyos.net/T1809>`_ Wireless: SSID scan does not work in AP mode
 * `T1811 <https://phabricator.vyos.net/T1811>`_ Upgrade from 1.1.8: Config file migration failed: module=l2tp
-* `T1812 <https://phabricator.vyos.net/T1812>`_ DHCP: hostnames of clients not resolving after update v1.2.3 -> 1.2-rolling 
+* `T1812 <https://phabricator.vyos.net/T1812>`_ DHCP: hostnames of clients not resolving after update v1.2.3 -> 1.2-rolling
 * `T1819 <https://phabricator.vyos.net/T1819>`_ Reboot kills SNMPv3 configuration
 * `T1822 <https://phabricator.vyos.net/T1822>`_ Priority inversion wireless interface dhcpv6
 * `T1836 <https://phabricator.vyos.net/T1836>`_ import-conf-mode-commands in vyos-1x/scripts fails to create an xml
