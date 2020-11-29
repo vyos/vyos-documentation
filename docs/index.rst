@@ -8,7 +8,6 @@ VyOS User Guide
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: FIND CAPTION NAME
 
    introducing/about
    introducing/history
