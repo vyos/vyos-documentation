@@ -210,26 +210,7 @@ that are discarding IP protocol 47 or blocking your source/desintation traffic.
   4 packets transmitted, 4 received, 0% packet loss, time 3008ms
   rtt min/avg/max/mdev = 1.055/1.729/1.989/0.395 ms
 
-Virtual Tunnel Interface (VTI)
-------------------------------
 
-Set Virtual Tunnel Interface
-
-.. code-block:: none
-
-  set interfaces vti vti0 address 192.168.2.249/30
-  set interfaces vti vti0 address 2001:db8:2::249/64
-
-Results in:
-
-.. code-block:: none
-
-  vyos@vyos# show interfaces vti
-  vti vti0 {
-      address 192.168.2.249/30
-      address 2001:db8:2::249/64
-      description "Description"
-  }
 
 .. _`other proposals`: https://www.isc.org/othersoftware/
 .. _`Hurricane Electric`: https://tunnelbroker.net/
