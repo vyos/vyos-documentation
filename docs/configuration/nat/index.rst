@@ -4,6 +4,12 @@
 NAT
 ###
 
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+
+   nptv6
+
 :abbr:`NAT (Network Address Translation)` is a common method of
 remapping one IP address space into another by modifying network address
 information in the IP header of packets while they are in transit across
