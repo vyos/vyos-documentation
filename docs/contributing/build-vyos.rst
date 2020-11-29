@@ -101,8 +101,7 @@ Now a fresh build of the VyOS ISO can begin. Change directory to the ``vyos-buil
 .. code-block:: none
 
   $ cd vyos-build
-  $ docker run --rm -it --privileged -v $(pwd)/vyos-build:/vyos -w /vyos vyos/vyos-build:crux bash # For VyOS 1.2
-  $ docker run --rm -it --privileged -v $(pwd)/vyos-build:/vyos -w /vyos vyos/vyos-build bash # For rolling release
+  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:crux bash
   vyos_bld@d4220bb519a0:/vyos# ./configure --architecture amd64 \
                                --build-by "your@email.tld" \
                                --build-type release --version 1.2.0
