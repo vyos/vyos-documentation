@@ -1,7 +1,8 @@
 .. _documentation:
 
+#############
 Documentation
-=============
+#############
 
 As most software projects we also have a lack in documentation. We encourage
 every VyOS user to help us improve our documentation. This will not only be
@@ -15,7 +16,7 @@ guide how to do so.
    documentation.
 
 Forking Workflow
-----------------
+================
 
 The Forking Workflow is fundamentally different than other popular Git
 workflows. Instead of using a single server-side repository to act as the
@@ -102,17 +103,20 @@ access to the official codebase.
   push origin master``
 
 Style Guide
------------
+===========
 
-Sections
-^^^^^^^^
+Formating and Sphinxmarkup
+--------------------------
+
+TOC Level
+^^^^^^^^^^
 
 We use the following syntax for Headlines.
 
 .. code-block:: none
 
   #####
-  Parts
+  Title
   #####
 
   ********
@@ -159,16 +163,17 @@ render the documentation.
 cfgcmd
 """"""
 
-When documenting CLI commands use the ``.. cfgcmd::`` directive for all
-configuration mode commands. An explanation of the described command should be
-added below this statement.
+When documenting CLI commands use the ``.. cfgcmd::`` directive
+for all configuration mode commands. An explanation of the described command
+should be added below this statement.
+Replace all variable contents with <value> or somthing similar.
 
 With those custom commands it will be possible to render them in a more
 descriptive way in the resulting HTML/PDF manual.
 
 .. code-block:: none
 
-  .. cfgcmd:: set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
+  .. cfgcmd:: protocols static arp <ipaddress> hwaddr <macaddress>
 
      This will configure a static ARP entry always resolving `192.0.2.100` to
      `00:53:27:de:23:aa`.
@@ -249,6 +254,70 @@ URL. This is heavily used in the :ref:`release-notes` section.
 
   * :vytask:`T1605` Fixed regression in L2TP/IPsec server
   * :vytask:`T1613` Netflow/sFlow captures IPv6 traffic correctly
+
+Page content
+------------
+
+The documentation have 3 different types of pages, the same kind of pages must 
+have the same structure to achieve a recognition factor.
+
+For all *.rst files must follow the same TOC Level syntax and have to start with
+
+.. code-block::
+
+   #####
+   Titel
+   #####
+
+Configuration mode pages
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+A configuration mode article covers a specific level of a command.
+The exact level depends on the command.
+
+For example:
+
+  * ``set zone-policy`` is written in ``zone-policy/index.rst``
+  * ``set interfaces ethernet`` is written in ``interfaces/ethernet.rst``
+
+The article starts with a short intruducing about the command or the technologie.
+Include some helpfull links or background informations.
+
+After this a optional section follows. Some commands have requirements like the
+compatible hardware (e.g. Wifi) or some commands you have to set before. For
+example it is recommended to set a route-map before configure bgp.
+
+In the configuration part of the page all possible confiuration options
+should be documented. Use ``.. cfgcmd::`` like described above.
+
+Related Operation command must be documented in the next part of the articel.
+Use ``::opcmd..`` for these commands.
+
+If there some troubleshooting guides releated to the commands. Explain it in the
+next optional part.
+
+Examples:
+
+   * ssh
+   
+
+
+Operation mode pages
+^^^^^^^^^^^^^^^^^^^^
+
+Operation mode commands, which didn't fit in a related configuraton mode command
+must documented in this part of the documentation.
+
+.. todo::
+
+  create structure
+
+
+Anything else
+^^^^^^^^^^^^^
+
+Anything else what is not a configuration or a operation command have no
+predefined structure.
 
 
 .. _Sphinx-doc: https://www.sphinx-doc.org

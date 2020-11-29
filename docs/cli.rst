@@ -1,14 +1,14 @@
 .. _cli:
 
-###
-CLI
-###
+#####################
+Comand Line Interface
+#####################
 
 The VyOS :abbr:`CLI (Command-Line Interface)` comprises an operational and a
 configuration mode.
 
 Operational Mode
-================
+################
 
 Operational mode allows for commands to perform operational system tasks and
 view system and service status, while configuration mode allows for the
@@ -73,7 +73,7 @@ When viewing in page mode the following commands are available:
    in the event that the output has lines which exceed the terminal size.
 
 Configuration Mode
-==================
+##################
 
 The list of all operational level commands is available at
 :ref:`configuration_level_commands`.
