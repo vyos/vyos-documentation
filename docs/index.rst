@@ -4,15 +4,16 @@
 VyOS User Guide
 ###############
 
-
 .. toctree::
    :maxdepth: 2
    :hidden:
+   :caption: FIND CAPTION NAME
 
    introducing/about
    introducing/history
    introducing/releases
    changelog/index
+
 
 .. toctree::
    :maxdepth: 2
@@ -21,15 +22,15 @@ VyOS User Guide
    :caption: first steps
 
    installation/index
-   quick-start
+   quickstart/index
    cli
-
    
 .. toctree::
    :maxdepth: 2
    :hidden:
    :includehidden:
    :caption: Adminguide
+
 
    configuration/index
    operation/index
@@ -43,6 +44,7 @@ VyOS User Guide
    :hidden:
    :includehidden:
    :caption: Contributing
+
 
    contributing/index
    copyright

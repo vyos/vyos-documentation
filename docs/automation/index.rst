@@ -13,4 +13,3 @@ VyOS Automation
    :maxdepth: 1
 
    command-scripting
-   http-api
