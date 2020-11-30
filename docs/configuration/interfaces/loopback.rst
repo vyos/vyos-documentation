@@ -26,11 +26,11 @@ Configuration
 Common interface configuration
 ==============================
 
-.. cmdinclude:: ../_include/interface-address.txt
+.. cmdinclude:: /_include/interface-address.txt
    :var0: loopback
    :var1: lo
 
-.. cmdinclude:: ../_include/interface-description.txt
+.. cmdinclude:: /_include/interface-description.txt
    :var0: loopback
    :var1: lo
 

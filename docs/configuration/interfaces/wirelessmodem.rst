@@ -15,15 +15,15 @@ Configuration
 Common interface configuration
 ==============================
 
-.. cmdinclude:: ../_include/interface-description.txt
+.. cmdinclude:: /_include/interface-description.txt
    :var0: wirelessmodem
    :var1: wlm0
 
-.. cmdinclude:: ../_include/interface-disable.txt
+.. cmdinclude:: /_include/interface-disable.txt
    :var0: wirelessmodem
    :var1: wlm0
 
-.. cmdinclude:: ../_include/interface-vrf.txt
+.. cmdinclude:: /_include/interface-vrf.txt
    :var0: wirelessmodem
    :var1: wlm0
 

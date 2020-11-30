@@ -14,7 +14,7 @@ Configuration
 Common interface configuration
 ==============================
 
-.. cmdinclude:: ../_include/interface-common-with-dhcp.txt
+.. cmdinclude:: /_include/interface-common-with-dhcp.txt
    :var0: ethernet
    :var1: eth0
 
@@ -72,14 +72,14 @@ VLAN
 Regular VLANs (802.1q)
 ----------------------
 
-.. cmdinclude:: ../_include/interface-vlan-8021q.txt
+.. cmdinclude:: /_include/interface-vlan-8021q.txt
    :var0: ethernet
    :var1: eth0
 
 QinQ (802.1ad)
 --------------
 
-.. cmdinclude:: ../_include/interface-vlan-8021ad.txt
+.. cmdinclude:: /_include/interface-vlan-8021ad.txt
    :var0: ethernet
    :var1: eth0
 

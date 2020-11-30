@@ -16,7 +16,7 @@ a closer look at the protocols and options currently supported by VyOS.
 Common interface configuration
 ------------------------------
 
-.. cmdinclude:: ../_include/interface-common-without-dhcp.txt
+.. cmdinclude:: /_include/interface-common-without-dhcp.txt
    :var0: tunnel
    :var1: tun0
 

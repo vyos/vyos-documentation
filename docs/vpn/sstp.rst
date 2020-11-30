@@ -344,4 +344,4 @@ A connection attempt will be shown as:
 
 .. _sstpc: https://github.com/reliablehosting/sstp-client
 
-.. include:: ../common-references.rst
+.. include:: /common-references.rst

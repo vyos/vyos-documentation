@@ -41,5 +41,5 @@ Configuration
    .. note:: We can't support all displays from the beginning. If your display
       type is missing, please create a feature request via Phabricator_.
 
-.. include:: ../common-references.rst
+.. include:: /common-references.rst
 

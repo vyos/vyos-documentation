@@ -581,4 +581,4 @@ The following commands let you reset OpenVPN.
 
 
 
-.. include:: ../common-references.rst
+.. include:: /common-references.rst

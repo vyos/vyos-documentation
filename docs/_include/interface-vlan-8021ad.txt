@@ -1,4 +1,4 @@
-.. include:: ../_include/need_improvement.txt
+.. include:: /_include/need_improvement.txt
 
 IEEE 802.1ad_ was an Ethernet networking standard informally known as QinQ as
 an amendment to IEEE standard 802.1q VLAN interfaces as described above.
@@ -28,7 +28,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
 (service tag with Ethernet Type = 0x88a8).
 
 
-.. cmdinclude:: ../_include/interface-address-with-dhcp.txt
+.. cmdinclude:: /_include/interface-address-with-dhcp.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -38,7 +38,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. cmdinclude:: ../_include/interface-description.txt
+.. cmdinclude:: /_include/interface-description.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -48,7 +48,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. cmdinclude:: ../_include/interface-disable.txt
+.. cmdinclude:: /_include/interface-disable.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -58,7 +58,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. cmdinclude:: ../_include/interface-disable-link-detect.txt
+.. cmdinclude:: /_include/interface-disable-link-detect.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -68,7 +68,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. cmdinclude:: ../_include/interface-mac.txt
+.. cmdinclude:: /_include/interface-mac.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -78,7 +78,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. cmdinclude:: ../_include/interface-mtu.txt
+.. cmdinclude:: /_include/interface-mtu.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -88,7 +88,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. cmdinclude:: ../_include/interface-ipv6-addr-autoconf.txt
+.. cmdinclude:: /_include/interface-ipv6-addr-autoconf.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -98,7 +98,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. cmdinclude:: ../_include/interface-ipv6-addr-eui64.txt
+.. cmdinclude:: /_include/interface-ipv6-addr-eui64.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -108,7 +108,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. cmdinclude:: ../_include/interface-vrf.txt
+.. cmdinclude:: /_include/interface-vrf.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -120,7 +120,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
 
 **DHCP(v6)**
 
-.. cmdinclude:: ../_include/interface-dhcp-options.txt
+.. cmdinclude:: /_include/interface-dhcp-options.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -130,7 +130,7 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. cmdinclude:: ../_include/interface-dhcpv6-options.txt
+.. cmdinclude:: /_include/interface-dhcpv6-options.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif-s
@@ -140,4 +140,4 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. include:: ../common-references.rst
+.. include:: /common-references.rst

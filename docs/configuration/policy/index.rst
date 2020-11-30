@@ -1,4 +1,4 @@
-.. include:: ../_include/need_improvement.txt
+.. include:: /_include/need_improvement.txt
 
 ######
 Policy
@@ -65,7 +65,7 @@ neighbor.
 You now see the longer AS path.
 
 
-.. include:: ../_include/need_improvement.txt
+.. include:: /_include/need_improvement.txt
 
 .. _routing-pbr:
 

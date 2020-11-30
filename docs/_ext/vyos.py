@@ -3,7 +3,7 @@ import json
 import os
 from docutils import io, nodes, utils, statemachine
 from docutils.parsers.rst.roles import set_classes
-from docutils.parsers.rst import Directive, directives
+from docutils.parsers.rst import Directive, directives, states
 
 from sphinx.util.docutils import SphinxDirective
 
@@ -173,7 +173,7 @@ class inlinecmd(nodes.inline):
         #self.literal_whitespace -= 1
 
 
-class CfgInclude(Directive):
+class CfgInclude(SphinxDirective):
     required_arguments = 1
     optional_arguments = 0
     final_argument_whitespace = True
@@ -189,10 +189,15 @@ class CfgInclude(Directive):
         'var8': str,
         'var9': str
     }
+    standard_include_path = os.path.join(os.path.dirname(states.__file__),
+                                         'include')
 
     def run(self):
         ### Copy from include directive docutils 
         """Include a file as part of the content of this reST file."""
+        rel_filename, filename = self.env.relfn2path(self.arguments[0])
+        self.arguments[0] = filename
+        self.env.note_included(filename)
         if not self.state.document.settings.file_insertion_enabled:
             raise self.warning('"%s" directive disabled.' % self.name)
         source = self.state_machine.input_lines.source(

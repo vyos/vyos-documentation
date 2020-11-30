@@ -17,7 +17,7 @@ Configuration
 Common interface configuration
 ==============================
 
-.. cmdinclude:: ../_include/interface-common-with-dhcp.txt
+.. cmdinclude:: /_include/interface-common-with-dhcp.txt
    :var0: bond
    :var1: bond0
 
@@ -259,7 +259,7 @@ Bond options
 VLAN
 ====
 
-.. cmdinclude:: ../_include/interface-vlan-8021q.txt
+.. cmdinclude:: /_include/interface-vlan-8021q.txt
    :var0: bond
    :var1: bond0
 

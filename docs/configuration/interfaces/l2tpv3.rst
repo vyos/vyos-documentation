@@ -1,4 +1,4 @@
-.. include:: ../_include/need_improvement.txt
+.. include:: /_include/need_improvement.txt
 
 .. _l2tpv3-interface:
 
@@ -31,7 +31,7 @@ Configuration
 Common interface configuration
 ==============================
 
-.. cmdinclude:: ../_include/interface-common-without-dhcp.txt
+.. cmdinclude:: /_include/interface-common-without-dhcp.txt
    :var0: l2tpv3
    :var1: l2tpeth0
 

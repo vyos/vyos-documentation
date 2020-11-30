@@ -59,15 +59,15 @@ Configuration
 Common interface configuration
 ==============================
 
-.. cmdinclude:: ../_include/interface-description.txt
+.. cmdinclude:: /_include/interface-description.txt
    :var0: pppoe
    :var1: pppoe0
 
-.. cmdinclude:: ../_include/interface-disable.txt
+.. cmdinclude:: /_include/interface-disable.txt
    :var0: pppoe
    :var1: pppoe0
 
-.. cmdinclude:: ../_include/interface-vrf.txt
+.. cmdinclude:: /_include/interface-vrf.txt
    :var0: pppoe
    :var1: pppoe0
 
@@ -177,7 +177,7 @@ IPv6
    Use this command to enable acquisition of IPv6 address using stateless
    autoconfig (SLAAC).
 
-.. cmdinclude:: ../_include/interface-dhcpv6-prefix-delegation.txt
+.. cmdinclude:: /_include/interface-dhcpv6-prefix-delegation.txt
   :var0: pppoe
   :var1: pppoe0
 

@@ -39,7 +39,7 @@ Configuration
 Common interface configuration
 ==============================
 
-.. cmdinclude:: ../_include/interface-common-without-dhcp.txt
+.. cmdinclude:: /_include/interface-common-without-dhcp.txt
    :var0: geneve
    :var1: gnv0
 

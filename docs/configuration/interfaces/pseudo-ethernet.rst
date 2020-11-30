@@ -45,7 +45,7 @@ Configuration
 Common interface configuration
 ==============================
 
-.. cmdinclude:: ../_include/interface-common-with-dhcp.txt
+.. cmdinclude:: /_include/interface-common-with-dhcp.txt
    :var0: pseudo-ethernet
    :var1: peth0
 
@@ -60,6 +60,6 @@ Pseudo Ethernet/MACVLAN options
 VLAN
 ====
 
-.. cmdinclude:: ../_include/interface-vlan-8021q.txt
+.. cmdinclude:: /_include/interface-vlan-8021q.txt
    :var0: pseudo-ethernet
    :var1: peth0

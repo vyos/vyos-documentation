@@ -20,7 +20,7 @@ Configuration
 Common interface configuration
 ==============================
 
-.. cmdinclude:: ../_include/interface-common-with-dhcp.txt
+.. cmdinclude:: /_include/interface-common-with-dhcp.txt
    :var0: macsec
    :var1: macsec0
 

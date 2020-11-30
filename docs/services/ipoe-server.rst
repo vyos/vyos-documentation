@@ -1,4 +1,4 @@
-.. include:: ../_include/need_improvement.txt
+.. include:: /_include/need_improvement.txt
 
 .. _ipoe_server:
 
@@ -146,4 +146,4 @@ The rate-limit is set in kbit/sec.
   -------+------------+-------------------+-------------+-----+--------+------------+--------+----------+------------------
   ipoe0  | eth2       | 08:00:27:2f:d8:06 | 192.168.0.2 |     |        | 500/500    | active | 00:00:05 | dccc870fd31349fb
 
-.. include:: ../common-references.rst
+.. include:: /common-references.rst
