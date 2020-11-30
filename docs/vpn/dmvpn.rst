@@ -199,7 +199,7 @@ Hub
 
   set vpn ipsec esp-group ESP-HUB compression 'disable'
   set vpn ipsec esp-group ESP-HUB lifetime '1800'
-  set vpn ipsec esp-group ESP-HUB mode 'tunnel'
+  set vpn ipsec esp-group ESP-HUB mode 'transport'
   set vpn ipsec esp-group ESP-HUB pfs 'dh-group2'
   set vpn ipsec esp-group ESP-HUB proposal 1 encryption 'aes256'
   set vpn ipsec esp-group ESP-HUB proposal 1 hash 'sha1'
@@ -307,7 +307,7 @@ VyOS can also run in DMVPN spoke mode.
 
   set vpn ipsec esp-group ESP-HUB compression 'disable'
   set vpn ipsec esp-group ESP-HUB lifetime '1800'
-  set vpn ipsec esp-group ESP-HUB mode 'tunnel'
+  set vpn ipsec esp-group ESP-HUB mode 'transport'
   set vpn ipsec esp-group ESP-HUB pfs 'dh-group2'
   set vpn ipsec esp-group ESP-HUB proposal 1 encryption 'aes256'
   set vpn ipsec esp-group ESP-HUB proposal 1 hash 'sha1'
