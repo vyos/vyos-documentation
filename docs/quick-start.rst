@@ -89,7 +89,7 @@ where VyOS will act as the default gateway and DNS server.
 
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 default-router '192.168.0.1'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 dns-server '192.168.0.1'
-  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 domain-name 'internal-network'
+  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 domain-name 'vyos.net'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 lease '86400'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 start 192.168.0.9
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 stop '192.168.0.254'
