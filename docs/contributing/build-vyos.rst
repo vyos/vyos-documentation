@@ -429,6 +429,28 @@ In the end you will be presented with the Kernel binary packages which you can
 then use in your custom ISO build process, by placing all the `*.deb` files in
 the vyos-build/packages folder where they will be used automatically when building VyOS as documented above.
 
+Firmware
+^^^^^^^^
+
+If you upgrade your kernel or include new drivers you may need new firmware.
+Build a new ``vyos-linux-firmware`` package with the included helper scripts.
+
+.. code-block:: none
+
+  $ cd vyos-build/packages/linux-kernel
+  $ git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+  $ ./build-linux-firmware.sh
+  $ cp vyos-linux-firmware_*.deb ../
+
+This tries to automatically detect which blobs are needed based on which drivers
+were built. If it fails to find the correct files you can add them manually to
+``vyos-build/packages/linux-kernel/build-linux-firmware.sh``:
+
+.. code-block:: bash
+
+  ADD_FW_FILES="iwlwifi* ath11k/QCA6390/*/*.bin"
+
+
 Building Out-Of-Tree Modules
 ----------------------------
 
