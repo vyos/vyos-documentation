@@ -225,11 +225,13 @@ VHT (Very High Throughput) capabilities (802.11ac)
   * ``multi-user-beamformer`` - Support for operation as single user beamformer
   * ``multi-user-beamformee`` - Support for operation as single user beamformer
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities vht center-channel-freq <freq-1 | freq-2>
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht center-channel-freq <freq-1 | freq-2> <number>
 
   VHT operating channel center frequency - center freq 1 (for use with 80, 80+80 and 160 modes)
 
   VHT operating channel center frequency - center freq 2 (for use with the 80+80 mode)
+
+  <number> must be from 34 - 173. For 80 MHz channels it should be channel + 6.
 
 .. cfgcmd:: set interfaces wireless <interface> capabilities vht channel-set-width <0 | 1 | 2 | 3>
 
