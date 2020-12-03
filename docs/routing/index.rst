@@ -14,6 +14,7 @@ Routing
    mss-clamp
    multicast
    ip-commands
+   isis
    ospf
    pbr
    rip
