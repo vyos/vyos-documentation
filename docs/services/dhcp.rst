@@ -355,8 +355,8 @@ Failover
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.253'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.168.189.10'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.168.189.250'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.0.2.10'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
 
 **Secondary**
 
@@ -369,8 +369,8 @@ Failover
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.252'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.168.189.10'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.168.189.250'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.0.2.10'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
 
 
 Raw Parameters
