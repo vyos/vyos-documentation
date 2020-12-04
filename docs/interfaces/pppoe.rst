@@ -168,10 +168,6 @@ PPPoE options
 IPv6
 ----
 
-.. cfgcmd:: set interfaces pppoe <interface> ipv6 enable
-
-   Use this command to enable IPv6 support on this PPPoE connection.
-
 .. cfgcmd:: set interfaces pppoe <interface> ipv6 address autoconf
 
    Use this command to enable acquisition of IPv6 address using stateless
@@ -303,5 +299,4 @@ If you do not know the prefix size delegated to you, start with sla-len 0.
   set interfaces pppoe pppoe0 dhcpv6-options prefix-delegation interface eth0 sla-id 0
   set interfaces pppoe pppoe0 dhcpv6-options prefix-delegation interface eth0 sla-len 8
   set interfaces pppoe pppoe0 ipv6 address autoconf
-  set interfaces pppoe pppoe0 ipv6 enable
   set interfaces pppoe pppoe0 source-interface eth1
