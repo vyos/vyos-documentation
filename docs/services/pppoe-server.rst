@@ -39,7 +39,7 @@ First steps
    Use this command to define the interface the PPPoE server will use to
    listen for PPPoE clients.
 
-.. cfgcmd:: set service pppoe-server local-ip <address>
+.. cfgcmd:: set service pppoe-server gateway-address <address>
 
    Use this command to configure the local gateway IP address.
 
@@ -57,7 +57,7 @@ To automatically assign the client an IP address as tunnel endpoint, a
 client IP pool is needed. The source can be either RADIUS or a local
 subnet or IP range definition.
 
-Once the local tunnel endpoint ``set service pppoe-server local-ip
+Once the local tunnel endpoint ``set service pppoe-server gateway-address
 '10.1.1.2'`` has been defined, the client IP pool can be either defined
 as a range or as subnet using CIDR notation. If the CIDR notation is
 used, multiple subnets can be setup which are used sequentially.
@@ -116,7 +116,7 @@ and then configure it.
   set service pppoe-server authentication mode 'radius'
   set service pppoe-server authentication radius server 10.1.100.1 key 'secret'
   set service pppoe-server interface 'eth1'
-  set service pppoe-server local-ip '10.1.1.2'
+  set service pppoe-server gateway-address '10.1.1.2'
 
 RADIUS provides the IP addresses in the example above via
 Framed-IP-Address.
@@ -210,7 +210,7 @@ For Local Users
   set service pppoe-server name-server '10.100.100.1'
   set service pppoe-server name-server '10.100.200.1'
   set service pppoe-server interface 'eth1'
-  set service pppoe-server local-ip '10.1.1.2'
+  set service pppoe-server gateway-address '10.1.1.2'
 
 
 Once the user is connected, the user session is using the set limits and
@@ -359,7 +359,7 @@ address from the pool 10.1.1.100-111, terminates at the local endpoint
   set service pppoe-server client-ip-pool start '10.1.1.100'
   set service pppoe-server client-ip-pool stop '10.1.1.111'
   set service pppoe-server interface eth1
-  set service pppoe-server local-ip '10.1.1.2'
+  set service pppoe-server gateway-address '10.1.1.2'
   set service pppoe-server name-server '10.100.100.1'
   set service pppoe-server name-server '10.100.200.1'
 
@@ -381,7 +381,7 @@ The example below covers a dual-stack configuration via pppoe-server.
   set service pppoe-server name-server '8.8.8.8'
   set service pppoe-server name-server '2001:4860:4860::8888'
   set service pppoe-server interface 'eth2'
-  set service pppoe-server local-ip '10.100.100.1'
+  set service pppoe-server gateway-address '10.100.100.1'
 
 The client, once successfully authenticated, will receive an IPv4 and an
 IPv6 /64 address to terminate the pppoe endpoint on the client side and
