@@ -143,4 +143,4 @@ order of the scripts.
 .. _vyatta-cfg: https://github.com/vyos/vyatta-cfg
 .. _bootchart.conf: https://github.com/vyos/vyos-build/blob/current/data/live-build-config/includes.chroot/etc/systemd/bootchart.conf
 
-.. include:: /common-references.rst
+.. include:: /_include/common-references.txt

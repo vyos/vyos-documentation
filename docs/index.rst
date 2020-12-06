@@ -22,7 +22,7 @@ VyOS User Guide
    :caption: first steps
 
    installation/index
-   quickstart/index
+   quick-start
    cli
    
 .. toctree::
@@ -47,4 +47,5 @@ VyOS User Guide
 
 
    contributing/index
+   coverage
    copyright

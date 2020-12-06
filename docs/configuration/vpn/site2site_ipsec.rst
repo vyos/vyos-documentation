@@ -218,7 +218,7 @@ IKEv2
 
 Imagine the following topology
 
-.. figure:: ../_static/images/vpn_s2s_ikev2.png
+.. figure:: /_static/images/vpn_s2s_ikev2.png
    :scale: 50 %
    :alt: IPSec IKEv2 site2site VPN
 

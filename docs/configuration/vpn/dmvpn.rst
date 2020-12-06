@@ -26,7 +26,7 @@ peers.
    complete solution also incorporates the use of a routing protocol. BGP is
    particularly well suited for use with DMVPN.
 
-.. figure:: ../_static/images/vpn_dmvpn_topology01.png
+.. figure:: /_static/images/vpn_dmvpn_topology01.png
    :scale: 40 %
    :alt: Baseline DMVPN topology
 

@@ -140,4 +140,4 @@ tag is the one closer/closest to the Ethernet header, its name is S-TAG
    :var6: <vlan-id>
    :var7: 20
 
-.. include:: /common-references.rst
+.. include:: /_include/common-references.txt

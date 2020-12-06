@@ -711,4 +711,4 @@ http://dev.packages.vyos.net/repositories/.
 .. _`VLAN (VIF)`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/vif.xml.i
 .. _`MAC address`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/interface-mac.xml.i
 
-.. include:: /common-references.rst
+.. include:: /_include/common-references.txt

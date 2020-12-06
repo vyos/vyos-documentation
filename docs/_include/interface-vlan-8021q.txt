@@ -108,4 +108,4 @@ term used for this is ``vif``.
    :var3: <vlan-id>
    :var4: 10
 
-.. include:: /common-references.rst
+.. include:: /_include/common-references.txt

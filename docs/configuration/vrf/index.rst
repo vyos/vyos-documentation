@@ -304,4 +304,4 @@ For VR Fmaintenance the followin operational commands are in place.
    useful when the host specified is a hostname rather than an IP address.
 
 
-.. include:: common-references.rst
+.. include:: /_include/common-references.txt

@@ -325,4 +325,4 @@ predefined structure.
 .. _reStructuredTextDirectives: https://docutils.sourceforge.io/docs/ref/rst/directives.html
 .. _README.md: https://github.com/vyos/vyos-documentation/blob/master/README.md
 
-.. include:: /common-references.rst
+.. include:: /_include/common-references.txt
