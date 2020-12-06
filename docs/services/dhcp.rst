@@ -1,15 +1,16 @@
 .. _dhcp:
 
-#############
-DHCP / DHCPv6
-#############
-
-VyOS uses ISC DHCPd for both IPv4 and IPv6 address assignment.
-
 .. _dhcp-server:
 
+###########
 DHCP Server
-===========
+###########
+
+VyOS uses ISC DHCP server for both IPv4 and IPv6 address assignment.
+
+***********
+IPv4 server
+***********
 
 The network topology is declared by shared-network-name and the subnet
 declarations. The DHCP service can serve multiple shared networks, with each
@@ -20,7 +21,7 @@ mappings can be set to assign "static" addresses to clients based on their MAC
 address.
 
 Configuration
--------------
+=============
 
 .. cfgcmd:: set service dhcp-server shared-network-name <name> authoritative
 
@@ -77,9 +78,8 @@ Configuration
    request where no full FQDN is passed. This option can be given multiple times
    if you need multiple search domains (DHCP Option 119).
 
-
 Failover
-^^^^^^^^
+--------
 
 VyOS provides support for DHCP failover. DHCP failover must be configured
 explicitly by the following statements.
@@ -115,9 +115,8 @@ explicitly by the following statements.
       that the failover partnership is immune to disruption (accidental or
       otherwise) via third parties.
 
-
 Static mappings
-^^^^^^^^^^^^^^^
+---------------
 
 You can specify a static DHCP assignment on a per host basis. You will need the
 MAC address of the station and your desired IP address. The address must be
@@ -140,9 +139,8 @@ inside the subnet definition but can be outside of the range statement.
 
    .. hint:: This is the equivalent of the host block in dhcpd.conf of isc-dhcpd.
 
-
 Options
-^^^^^^^
+=======
 
 .. list-table::
    :header-rows: 1
@@ -272,9 +270,8 @@ Options
 
 Multi: can be specified multiple times.
 
-
 Raw Parameters
-^^^^^^^^^^^^^^
+==============
 
 Raw parameters can be passed to shared-network-name, subnet and static-mapping:
 
@@ -299,44 +296,15 @@ Quotes can be used inside parameter values by replacing all quote characters
 with the string ``&quot;``. They will be replaced with literal quote characters
 when generating dhcpd.conf.
 
-
 Example
-^^^^^^^
+=======
 
-Quick-Start
-"""""""""""
-
-* We are offering address space in the `192.0.2.0/24` network.
-* We are using the network name `mypool`.
-
-.. code-block:: none
-
-  set service dhcp-server shared-network-name mypool authoritative
-  set service dhcp-server shared-network-name mypool subnet 192.0.2.0/24 default-router 192.0.2.1
-  set service dhcp-server shared-network-name mypool subnet 192.0.2.0/24 dns-server 192.0.2.1
-  set service dhcp-server shared-network-name mypool subnet 192.0.2.0/24 lease 86400
-  set service dhcp-server shared-network-name mypool subnet 192.0.2.0/24 range 0 start 192.0.2.100
-  set service dhcp-server shared-network-name mypool subnet 192.0.2.0/24 range 0 stop 192.0.2.199
-
-The generated config will look like:
-
-.. code-block:: none
-
-  vyos@vyos# show service dhcp-server shared-network-name mypool
-  authoritative
-  subnet 192.0.2.0/24 {
-      default-router 192.0.2.1
-      dns-server 192.0.2.1
-      lease 86400
-      range 0 {
-          start 192.0.2.100
-          stop 192.0.2.199
-      }
-  }
-
+Please see the :ref:`dhcp-dns-quick-start` configuration.
 
 Failover
-""""""""
+--------
+
+Configuration of a DHCP failover pair
 
 * Setup DHCP failover for network 192.0.2.0/24
 * Default gateway and DNS server is at `192.0.2.254`
@@ -344,37 +312,38 @@ Failover
 * The secondary DHCP server uses address `192.168.189.253`
 * DHCP range spans from `192.168.189.10` - `192.168.189.250`
 
-**Primary**
+Common configuration, valid for both primary and secondary node.
 
 .. code-block:: none
 
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 default-router '192.0.2.254'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 dns-server '192.0.2.254'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 domain-name 'vyos.net'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.0.2.10'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
+
+
+**Primary**
+
+.. code-block:: none
+
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover local-address '192.168.189.252'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.253'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.0.2.10'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
 
 **Secondary**
 
 .. code-block:: none
 
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 default-router '192.0.2.254'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 dns-server '192.0.2.254'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 domain-name 'vyos.net'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover local-address '192.168.189.253'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.252'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.0.2.10'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
 
 
 Raw Parameters
-""""""""""""""
+--------------
 
 * Override static-mapping's dns-server with a custom one that will be sent only
   to this host.
@@ -390,9 +359,8 @@ Raw Parameters
   set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option pxelinux.configfile &quot;pxelinux.cfg/01-00-15-17-44-2d-aa&quot;;"
 
 
-
 Operation Mode
---------------
+==============
 
 .. opcmd:: restart dhcp server
 
@@ -442,14 +410,15 @@ Operation Mode
    Show only leases with the specified state. Possible states: all, active,
    free, expired, released, abandoned, reset, backup (default = active)
 
-DHCPv6 Server
-=============
+***********
+IPv6 server
+***********
 
 VyOS also provides DHCPv6 server functionality which is described in this
 section.
 
-Configuration Options
----------------------
+Configuration
+=============
 
 .. cfgcmd:: set service dhcpv6-server preference <preference value>
 
@@ -490,7 +459,7 @@ Configuration Options
    A SNTP server address can be specified for DHCPv6 clients.
 
 Prefix Delegation
-^^^^^^^^^^^^^^^^^
+-----------------
 
 To hand out individual prefixes to your clients the following configuration is
 used:
@@ -541,7 +510,7 @@ The configuration will look as follows:
       }
 
 Static mappings
-^^^^^^^^^^^^^^^
+---------------
 
 In order to map specific IPv6 addresses to specific hosts static mappings can
 be created. The following example explains the process.
@@ -583,7 +552,7 @@ The configuration will look as follows:
       }
 
 Operation Mode
---------------
+==============
 
 .. opcmd:: restart dhcpv6 server
 
@@ -622,8 +591,9 @@ Operation Mode
    Show only leases with the specified state. Possible states: abandoned,
    active, all, backup, expired, free, released, reset (default = active)
 
+##########
 DHCP Relay
-==========
+##########
 
 If you want your router to forward DHCP requests to an external DHCP server
 you can configure the system to act as a DHCP relay agent. The DHCP relay
@@ -631,8 +601,12 @@ agent works with IPv4 and IPv6 addresses.
 
 All interfaces used for the DHCP relay must be configured.
 
+**********
+IPv4 relay
+**********
+
 Configuration
--------------
+=============
 
 .. cfgcmd:: set service dhcp-relay interface <interface>
 
@@ -647,30 +621,6 @@ Configuration
 
    The router should discard DHCP packages already containing relay agent
    information to ensure that only requests from DHCP clients are forwarded.
-
-Example
--------
-
-* Listen for DHCP requests on interface ``eth1``.
-* DHCP server is located at IPv4 address 10.0.1.4.
-* Router receives DHCP client requests on ``eth1`` and relays them to the server at 10.0.1.4.
-
-.. figure:: /_static/images/service_dhcp-relay01.png
-   :scale: 80 %
-   :alt: DHCP relay example
-
-   DHCP relay example
-
-The generated configuration will look like:
-
-.. code-block:: none
-
-  show service dhcp-relay
-      interface eth1
-      server 10.0.1.4
-      relay-options {
-         relay-agents-packets discard
-      }
 
 Options
 -------
@@ -703,18 +653,43 @@ Options
    * **replace:** Relay information already present in a packet is stripped and
      replaced with the router's own relay information set.
 
+Example
+=======
+
+* Listen for DHCP requests on interface ``eth1``.
+* DHCP server is located at IPv4 address 10.0.1.4.
+* Router receives DHCP client requests on ``eth1`` and relays them to the server at 10.0.1.4.
+
+.. figure:: /_static/images/service_dhcp-relay01.png
+   :scale: 80 %
+   :alt: DHCP relay example
+
+   DHCP relay example
+
+The generated configuration will look like:
+
+.. code-block:: none
+
+  show service dhcp-relay
+      interface eth1
+      server 10.0.1.4
+      relay-options {
+         relay-agents-packets discard
+      }
+
 Operation
----------
+=========
 
 .. opcmd:: restart dhcp relay-agent
 
    Restart DHCP relay service
 
-DHCPv6 relay
-============
+**********
+IPv6 relay
+**********
 
 Configuration
--------------
+=============
 
 .. cfgcmd:: set service dhcpv6-relay listen-interface <interface>
 
@@ -727,8 +702,20 @@ Configuration
    Specifies an upstream network `<interface>` from which replies from `<server>`
    and other relay agents will be accepted.
 
+Options
+-------
+
+.. cfgcmd:: set service dhcpv6-relay max-hop-count 'count'
+
+   Set maximum hop count before packets are discarded, default: 10
+
+.. cfgcmd:: set service dhcpv6-relay use-interface-id-option
+
+   If this is set the relay agent will insert the interface ID. This option is
+   set automatically if more than one listening interfaces are in use.
+
 Example
-^^^^^^^
+=======
 
 * DHCPv6 requests are received by the router on `listening interface` ``eth1``
 * Requests are forwarded through ``eth2`` as the `upstream interface`
@@ -752,24 +739,8 @@ The generated configuration will look like:
          address 2001:db8::4
       }
 
-Options
--------
-
-.. cfgcmd:: set service dhcpv6-relay max-hop-count 'count'
-
-   Set maximum hop count before packets are discarded, default: 10
-
-.. cfgcmd:: set service dhcpv6-relay use-interface-id-option
-
-   If this is set the relay agent will insert the interface ID. This option is
-   set automatically if more than one listening interfaces are in use.
-
 Operation
----------
-
-.. opcmd:: show dhcpv6 relay-agent status
-
-   Show the current status of the DHCPv6 relay agent:
+=========
 
 .. opcmd:: restart dhcpv6 relay-agent
 

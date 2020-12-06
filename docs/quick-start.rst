@@ -70,8 +70,10 @@ on specific addresses only.
   set service ssh port '22'
 
 
-Configure DHCP/DNS Servers
-##########################
+.. _dhcp-dns-quick-start:
+
+DHCP/DNS quick-start
+####################
 
 The following settings will configure DHCP and DNS services on your internal/LAN network,
 where VyOS will act as the default gateway and DNS server.
@@ -81,7 +83,7 @@ where VyOS will act as the default gateway and DNS server.
 * DHCP clients will be assigned IP addresses within the range of `192.168.0.9 - 192.168.0.254`
   and have a domain name of `internal-network`
 * DHCP leases will hold for one day (86400 seconds)
-* VyOS will serve as a full DNS recursor, replacing the need to utilize Google, 
+* VyOS will serve as a full DNS recursor, replacing the need to utilize Google,
   Cloudflare, or other public DNS servers (which is good for privacy)
 * Only hosts from your internal/LAN network can use the DNS recursor
 
@@ -214,5 +216,5 @@ As above, commit your changes, save the configuration, and exit configuration mo
   Done
   vyos@vyos# exit
   vyos@vyos$
- 
+
 You now should have a simple yet secure and functioning router to experiment with further. Enjoy!
