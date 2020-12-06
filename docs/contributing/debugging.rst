@@ -51,7 +51,7 @@ interface debugging.
 It is also possible to set up the debugging using environment variables.
 In that case, the name will be (in uppercase) VYOS_FEATURE_DEBUG.
 
-For example running, ``export VYOS_IFCONFIG_DEBUG=""`` on your vash,
+For example running, ``export VYOS_IFCONFIG_DEBUG=""`` on your vbash,
 will have the same effect as ``touch /tmp/vyos.ifconfig.debug``.
 
 * ``ifconfig`` - Once set, all commands used, and their responses received
@@ -70,6 +70,11 @@ will have the same effect as ``touch /tmp/vyos.ifconfig.debug``.
 * ``log`` - In some rare cases, it may be useful to see what the OS is doing,
   including during boot. This option sends all commands used by VyOS to a
   file. The default file is ``/tmp/full-log`` but it can be changed.
+
+.. note:: In order to retrieve the debug output on the command-line you need to
+  disable ``vyos-configd`` in addition. This can be run either one-time by calling
+  ``sudo systemctl stop vyos-configd`` or make this reboot-safe by calling
+  ``sudo systemctl disable vyos-configd``.
 
 Config Migration Scripts
 ------------------------
