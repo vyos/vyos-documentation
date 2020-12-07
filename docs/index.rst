@@ -11,7 +11,6 @@ VyOS User Guide
 
    introducing/about
    introducing/history
-   introducing/releases
    changelog/index
 
 
