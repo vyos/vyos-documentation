@@ -24,5 +24,4 @@ python:
     - requirements: requirements.txt
 
 submodules:
-  include:
-    - vyos-1x
+  include: all
