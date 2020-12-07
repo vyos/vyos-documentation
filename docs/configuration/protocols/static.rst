@@ -15,8 +15,9 @@ collection of all routes the router has learned from its configuration or from
 its dynamic routing protocols is stored in the RIB. Unicast routes are directly
 used to determine the forwarding table used for unicast packet forwarding.
 
+*************
 Static Routes
-#############
+*************
 
 .. cfgcmd:: set protocols static route <subnet> next-hop <address>
 
@@ -152,8 +153,9 @@ provided by the Neighbor Discovery Protocol (NDP).
 To manipulate or display ARP_ table entries, the following commands are
 implemented.
 
+*********
 Configure
-=========
+*********
 
 .. cfgcmd:: set protocols static arp <address> hwaddr <mac>
 
@@ -166,8 +168,11 @@ Configure
 
      set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
 
+
+*********
 Operation
-=========
+*********
+
 
 .. opcmd:: show protocols static arp
 

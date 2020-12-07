@@ -22,7 +22,7 @@ System
    name-server
    name-servers-dhcp
    ntp
-   options
+   option
    proxy
    static-host-mapping
    sysctl
@@ -30,3 +30,11 @@ System
    task-scheduler
    time-zone
    wifi-requlatory-domain
+
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+
+   default-route
+   eventhandler

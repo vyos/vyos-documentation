@@ -1,11 +1,12 @@
 .. _firewall:
 
+########
 Firewall
-========
+########
 
-
+********
 Overview
---------
+********
 
 VyOS makes use of Linux `netfilter <https://netfilter.org/>`_ for packet
 filtering.
@@ -24,8 +25,9 @@ or zone based firewall policy.
    OS, is a reference to as `local` with respect to its input interface.
 
 
+***************
 Global settings
----------------
+***************
 
 Some firewall settings are global and have a affect on the whole system.
 
@@ -140,8 +142,9 @@ Some firewall settings are global and have a affect on the whole system.
    Set the global setting for related connections.
 
 
+******
 Groups
-------
+******
 
 Firewall groups represent collections of IP addresses, networks, or
 ports. Once created, a group can be referenced by firewall rules as
@@ -158,7 +161,7 @@ names.
 
 
 Address Groups
-**************
+==============
 
 In a **address group** a single IP adresses or IP address ranges are
 definded.
@@ -182,7 +185,7 @@ definded.
 
 
 Network Groups
-**************
+==============
 
 While **network groups** accept IP networks in CIDR notation, specific
 IP addresses can be added as a 32-bit prefix. If you foresee the need
@@ -207,7 +210,7 @@ recommended.
       
 
 Port Groups
-***********
+===========
 
 A **port group** represents only port numbers, not the protocol. Port
 groups can be referenced for either TCP or UDP. It is recommended that
@@ -232,8 +235,9 @@ filtering unnecessary ports. Ranges of ports can be specified by using
    Provide a port group description.
 
 
+*********
 Rule-Sets
-----------
+*********
 
 A rule-set is a named collection of firewall rules that can be applied
 to an interface or zone. Each rule is numbered, has an action to apply
@@ -281,7 +285,7 @@ the action of the rule will executed.
    If you want to disable a rule but let it in the configuration.
 
 Matching criteria
-*****************
+=================
 
 There are a lot of matching criteria gainst which the package can be tested.
 
@@ -413,8 +417,9 @@ There are a lot of matching criteria gainst which the package can be tested.
    Match against the state of a packet.
 
 
+***********************************
 Applying a Rule-Set to an Interface
------------------------------------
+***********************************
 
 A Rule-Set can be appliend to every inteface:
 
@@ -439,8 +444,9 @@ A Rule-Set can be appliend to every inteface:
       several interfaces. An interface can only have one rule-set per chain.
 
 
+**************************
 Zone-based Firewall Policy
---------------------------
+**************************
 
 As an alternative to applying policy to an interface directly, a
 zone-based firewall can be created to simplify configuration when
@@ -453,7 +459,7 @@ An basic introduction to zone-based firewalls can be found `here
 and an example at :ref:`examples-zone-policy`.
 
 Define a Zone
-*************
+=============
 
 To define a zone setup either one with interfaces or a local zone.
 
@@ -477,7 +483,7 @@ To define a zone setup either one with interfaces or a local zone.
 
 
 Applying a Rule-Set to a Zone
-*****************************
+=============================
 
 Before you are able to apply a rule-set to a zone you have to create the zones 
 first. 
@@ -496,11 +502,12 @@ first.
       set zone-policy zone LAN from DMZ firewall name DMZv4-to-LANv4
 
 
+***********************
 Operation-mode Firewall
------------------------
+***********************
 
 Rule-set overview
-*****************
+=================
 
 .. opcmd:: show firewall
 
@@ -663,7 +670,7 @@ Rule-set overview
 
 
 Zone-Policy Overview
-********************
+====================
 
 .. opcmd:: show zone-policy zone <name>
 
@@ -684,7 +691,7 @@ Zone-Policy Overview
 
 
 Show Firewall log
-*****************
+=================
 
 .. opcmd:: show log firewall [name | ipv6name] <name>
 
@@ -698,7 +705,7 @@ Show Firewall log
 
 
 Example Partial Config
-----------------------
+======================
 
 .. code-block:: none
 
@@ -770,9 +777,10 @@ Example Partial Config
 
 .. _routing-mss-clamp:
 
-################
+
+****************
 TCP-MSS Clamping
-################
+****************
 
 As Internet wide PMTU discovery rarely works, we sometimes need to clamp
 our TCP MSS value to a specific value. This is a field in the TCP
@@ -788,8 +796,10 @@ value for IPv4 and IPv6.
    in 1452 bytes on a 1492 byte MTU.
 
 
+
 IPv4
 ====
+
 
 .. cfgcmd:: set firewall options interface <interface> adjust-mss <number-of-bytes>
 
@@ -807,6 +817,8 @@ for your WireGuard `wg02` tunnel.
 
   set firewall options interface pppoe0 adjust-mss '1452'
   set firewall options interface wg02 adjust-mss '1372'
+
+
 
 IPv6
 ====

@@ -261,7 +261,7 @@ Page content
 The documentation have 3 different types of pages, the same kind of pages must 
 have the same structure to achieve a recognition factor.
 
-For all *.rst files must follow the same TOC Level syntax and have to start with
+For all rst files must follow the same TOC Level syntax and have to start with
 
 .. code-block::
 

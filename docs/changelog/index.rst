@@ -1,3 +1,6 @@
+.. _release-notes:
+
+
 #########
 Changelog
 #########

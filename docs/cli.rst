@@ -12,8 +12,7 @@ Operational Mode
 
 Operational mode allows for commands to perform operational system tasks and
 view system and service status, while configuration mode allows for the
-modification of system configuration. The list of all operational level commands
-is available at :ref:`operational_level_commands`.
+modification of system configuration.
 
 The CLI provides a built-in help system. In the CLI the ``?`` key may be used
 to display available commands. The ``TAB`` key can be used to auto-complete
@@ -75,9 +74,6 @@ When viewing in page mode the following commands are available:
 Configuration Mode
 ##################
 
-The list of all operational level commands is available at
-:ref:`configuration_level_commands`.
-
 To enter configuration mode use the ``configure`` command:
 
 .. code-block:: none
@@ -112,7 +108,8 @@ thus also be easily cloned by simply copying the required configuration
 files.
 
 Terminology
-===========
+###########
+
 live
 A VyOS system has three major types of configurations:
 
