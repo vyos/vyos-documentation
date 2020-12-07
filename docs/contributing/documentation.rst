@@ -261,7 +261,7 @@ Page content
 The documentation have 3 different types of pages, the same kind of pages must 
 have the same structure to achieve a recognition factor.
 
-For all rst files must follow the same TOC Level syntax and have to start with
+All RST files must follow the same TOC Level syntax and have to start with
 
 .. code-block::
 
@@ -272,8 +272,9 @@ For all rst files must follow the same TOC Level syntax and have to start with
 Configuration mode pages
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-A configuration mode article covers a specific level of a command.
-The exact level depends on the command.
+A configuration mode folder and article covers a specific level of a command.
+The exact level depends on the command. This should provide stability for URLs
+used in the forum or blogpost.
 
 For example:
 
@@ -281,7 +282,7 @@ For example:
   * ``set interfaces ethernet`` is written in ``interfaces/ethernet.rst``
 
 The article starts with a short intruducing about the command or the technologie.
-Include some helpfull links or background informations.
+Please include some helpfull links or background informations.
 
 After this a optional section follows. Some commands have requirements like the
 compatible hardware (e.g. Wifi) or some commands you have to set before. For
@@ -290,17 +291,11 @@ example it is recommended to set a route-map before configure bgp.
 In the configuration part of the page all possible confiuration options
 should be documented. Use ``.. cfgcmd::`` like described above.
 
-Related Operation command must be documented in the next part of the articel.
+Related Operation command must be documented in the next part of the article.
 Use ``::opcmd..`` for these commands.
 
 If there some troubleshooting guides releated to the commands. Explain it in the
 next optional part.
-
-Examples:
-
-   * ssh
-   
-
 
 Operation mode pages
 ^^^^^^^^^^^^^^^^^^^^
@@ -308,10 +303,8 @@ Operation mode pages
 Operation mode commands, which didn't fit in a related configuraton mode command
 must documented in this part of the documentation.
 
-.. todo::
-
-  create structure
-
+General concepts for troubleshooting belong here as well as detailed process
+descriptions.
 
 Anything else
 ^^^^^^^^^^^^^
