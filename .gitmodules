@@ -1,0 +1,4 @@
+[submodule "docs/_include/vyos-1x"]
+	path = docs/_include/vyos-1x
+	url = https://github.com/vyos/vyos-1x
+	branch = current
