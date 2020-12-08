@@ -6,8 +6,6 @@ VyOS User Guide
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
-   :caption: FIND CAPTION NAME
 
    introducing/about
    introducing/history
@@ -16,9 +14,8 @@ VyOS User Guide
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
    :includehidden:
-   :caption: first steps
+   :caption: First Steps
 
    installation/index
    quick-start
@@ -26,7 +23,6 @@ VyOS User Guide
    
 .. toctree::
    :maxdepth: 2
-   :hidden:
    :includehidden:
    :caption: Adminguide
 
@@ -40,7 +36,6 @@ VyOS User Guide
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
    :includehidden:
    :caption: Contributing
 
