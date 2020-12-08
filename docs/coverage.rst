@@ -5,7 +5,7 @@ Coverage
 Overview over all commands, which are documented in the ``.. cfgcmd::`` or ``.. opcmd::`` Directives.
 
 | The build process take all xml definition files from `vyos-1x <https://github.com/vyos/vyos-1x>`_  and extract each leaf command or executable command.
-| After this the commands are compare and shown in the follwoing two tables.
+| After this the commands are compare and shown in the following two tables.
 | The script compare only the fixed part of a command. All varables or values will be erase and then compare:
 
 for example there are these two commands:

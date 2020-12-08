@@ -5,7 +5,7 @@ VyOS User Guide
 ###############
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    introducing/about
    introducing/history
