@@ -71,14 +71,14 @@ term used for this is ``vif``.
    :var3: <vlan-id>
    :var4: 10
 
-.. cmdinclude:: ../_include/interface-ip.txt
+.. cmdinclude:: /_include/interface-ip.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif
    :var3: <vlan-id>
    :var4: 10
 
-.. cmdinclude:: ../_include/interface-ipv6.txt
+.. cmdinclude:: /_include/interface-ipv6.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif
@@ -108,11 +108,11 @@ term used for this is ``vif``.
    :var3: <vlan-id>
    :var4: 10
 
-.. cmdinclude:: ../_include/interface-dhcpv6-prefix-delegation.txt
+.. cmdinclude:: /_include/interface-dhcpv6-prefix-delegation.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}
    :var2: vif
    :var3: <vlan-id>
    :var4: 10
 
-.. include:: ../common-references.rst
+.. include:: /_include/common-references.txt

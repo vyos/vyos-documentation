@@ -213,7 +213,7 @@ file and replace the ``{{ var0 }}`` - ``{{ var9 }}`` with the correct value
 
 .. code-block:: none
 
-   .. cmdinclude:: interface-address.txt
+   .. cmdinclude:: /_include/interface-address.txt
       :var0: ethernet
       :var1: eth1
 

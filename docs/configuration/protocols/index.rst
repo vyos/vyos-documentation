@@ -11,7 +11,7 @@ Protocols
    bgp
    igmp
    igmp-proxy
-   is-is
+   isis
    mpls
    ospf
    ospfv3
