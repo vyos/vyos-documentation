@@ -33,6 +33,7 @@ RUN pip3 install Sphinx
 RUN pip3 install sphinx-rtd-theme
 RUN pip3 install sphinx-autobuild
 RUN pip3 install sphinx-notfound-page
+RUN pip3 install lxml
 
 
 # Cleanup
