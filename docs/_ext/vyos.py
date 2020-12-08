@@ -430,15 +430,30 @@ class CfgCmdDirective(CmdDirective):
     custom_class = 'cfg'
 
 
-def strip_cmd(cmd):
+def strip_cmd(cmd, debug=False):
+    if debug:
+        print("")
+        print(cmd)
     cmd = re.sub('set','',cmd)
-    cmd = re.sub('\s\|\s','',cmd)
+    if debug:
+        print(cmd)
+    #while " | " in cmd:
+    cmd = re.sub('\s+\|\s+','',cmd)
+    if debug:
+        print(cmd)
     cmd = re.sub('<\S*>','',cmd)
+    if debug:
+        print(cmd)
     cmd = re.sub('\[\S\]','',cmd)
+    if debug:
+        print(cmd)
     cmd = re.sub('\s+','',cmd)
+    if debug:
+        print(cmd)
+        print("")
     return cmd
 
-def build_row(app, fromdocname, rowdata):
+def build_row(app, fromdocname, rowdata):   
     row = nodes.row()
     for cell in rowdata:
         entry = nodes.entry()
@@ -480,7 +495,11 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
         coverage_item['doccmd_item'] = cmd
         coverage_item['indocs'] = True
         int_docs += 1
+
         coverage_list[strip_cmd(cmd['cmd'])] = dict(coverage_item)
+
+    
+    #print(coverage_list.keys())
     
     for cmd in xmlcmd:
         
@@ -502,11 +521,6 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
             int_xml += 1
             coverage_list[strip] = dict(coverage_item)
         else:
-            #print("===BEGIN===")
-            #print(cmd)
-            #print(coverage_list[strip])
-            #print(strip)
-            #print("===END====")
             coverage_list[strip]['xmlcmd'] = cmd['cmd']
             coverage_list[strip]['xmlcmd_item'] = cmd
             coverage_list[strip]['inxml'] = True
