@@ -111,6 +111,22 @@ Configuration Options
 
   Use this command if you would like to set the TCP session hold time intervals.
 
+.. cfgcmd:: set protocols mpls ldp import ipv4 import-filter filter-access-list <access list number>
+.. cfgcmd:: set protocols mpls ldp import ipv6 import-filter filter-access-list6 <access list number>
+
+  Use these commands to control the importing of forwarding equivalence classes
+  (FECs) for LDP from neighbors. This would be useful for example on only
+  accepting the labeled routes that are needed and not ones that are not
+  needed, such as accepting loopback interfaces and rejecting all others.
+  
+.. cfgcmd:: set protocols mpls ldp export ipv4 export-filter filter-access-list <access list number>
+.. cfgcmd:: set protocols mpls ldp export ipv6 export-filter filter-access-list6 <access list number>
+
+  Use these commands to control the exporting of forwarding equivalence classes
+  (FECs) for LDP to neighbors. This would be useful for example on only
+  announcing the labeled routes that are needed and not ones that are not
+  needed, such as announcing loopback interfaces and no others.
+
 .. cfgcmd:: set protocols mpls ldp export ipv4 explicit-null
 .. cfgcmd:: set protocols mpls ldp export ipv6 explicit-null
 
