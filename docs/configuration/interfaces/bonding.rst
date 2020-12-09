@@ -263,6 +263,11 @@ VLAN
    :var0: bond
    :var1: bond0
 
+Port Mirror (SPAN)
+==================
+.. cmdinclude:: ../../_include/interface-mirror.txt
+   :var0: ethernet
+
 *******
 Example
 *******
