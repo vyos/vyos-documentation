@@ -13,10 +13,10 @@ jobs:
       id: file_changes
       uses: trilom/file-changes-action@v1.2.3
 
-    - name: Vale
-      uses: errata-ai/vale-action@v1.3.0
-      with:
-        files: '${{ steps.file_changes.outputs.files_modified }}' 
+    #- name: Vale
+    #  uses: errata-ai/vale-action@v1.3.0
+    #  with:
+    #    files: '${{ steps.file_changes.outputs.files_modified }}' 
 
     - name: Set up Python
       uses: actions/setup-python@v2
