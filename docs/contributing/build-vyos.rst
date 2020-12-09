@@ -125,7 +125,7 @@ per release train (`current` or `crux`) - container. Add the following to your
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:crux bash'
 
-Now you are prepared with two new aliases ``vybld`` and ``vybld_crux`` to spwan
+Now you are prepared with two new aliases ``vybld`` and ``vybld_crux`` to spawn
 your development containers in your current working directory.
 
 .. _build_native:
@@ -260,10 +260,10 @@ The full and current list can be generated with ``./configure --help``:
 Linux Kernel
 ============
 
-The Linux Kernel used by VyOS is heavily tied to the ISO build process. The
-file ``data/defaults.json`` hosts a JSON definition if the Kernel version used
-``kernel_version`` and the ``kernel_flavor`` of the Kernel which represents the
-Kernels LOCAL_VERSION. Both together form the Kernel Version variable in the
+The Linux kernel used by VyOS is heavily tied to the ISO build process. The
+file ``data/defaults.json`` hosts a JSON definition of the kernel version used
+``kernel_version`` and the ``kernel_flavor`` of the kernel which represents the
+kernel's LOCAL_VERSION. Both together form the kernel version variable in the
 system:
 
 .. code-block:: none
@@ -272,16 +272,16 @@ system:
   4.19.146-amd64-vyos
 
 Other packages (e.g. vyos-1x) add dependencies to the ISO build procedure on
-e.g. the wireguard-modules package which itself adds a dependency on the Kernel
+e.g. the wireguard-modules package which itself adds a dependency on the kernel
 version used due to the module it ships. This may change (for WireGuard) in
-future Kernel releases but as long as we have out-of-tree modules.
+future kernel releases but as long as we have out-of-tree modules.
 
 * WireGuard
 * Accel-PPP
 * Intel NIC drivers
 * Inter QAT
 
-Each of those modules holds a dependency on the Kernel Version and if you are
+Each of those modules holds a dependency on the kernel version and if you are
 lucky enough to receive an ISO build error which sounds like:
 
 .. code-block:: none
@@ -301,28 +301,28 @@ lucky enough to receive an ISO build error which sounds like:
 
 The most obvious reasons could be:
 
-* ``vyos-build`` repo is outdate, please ``git pull`` to update to the latest
-  release Kernel version from us.
+* ``vyos-build`` repo is outdated, please ``git pull`` to update to the latest
+  release kernel version from us.
 
-* You have your own custom Kernel `*.deb` packages in the `packages` folder but
-  missed to create all required out-of tree modules like Accel-PPP, WireGuard,
+* You have your own custom kernel `*.deb` packages in the `packages` folder but
+  neglected to create all required out-of tree modules like Accel-PPP, WireGuard,
   Intel QAT, Intel NIC
 
 Building The Kernel
 -------------------
 
-The Kernel build is quiet easy, most of the required steps can be found in the
+The kernel build is quite easy, most of the required steps can be found in the
 ``vyos-build/packages/linux-kernel/Jenkinsfile`` but we will walk you through
 it.
 
-Clone the Kernel source to `vyos-build/packages/linux-kernel/`:
+Clone the kernel source to `vyos-build/packages/linux-kernel/`:
 
 .. code-block:: none
 
   $ cd vyos-build/packages/linux-kernel/
   $ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 
-Checkout the required Kernel version - see ``vyos-build/data/defaults.json``
+Check out the required kernel version - see ``vyos-build/data/defaults.json``
 file (example uses kernel 4.19.146):
 
 .. code-block:: none
@@ -344,11 +344,11 @@ file (example uses kernel 4.19.146):
   HEAD is now at 015e94d0e37b Linux 4.19.146
 
 Now we can use the helper script ``build-kernel.sh`` which does all the necessary
-Voodoo by applying required patches from the `vyos-build/packages/linux-kernel/
-patches` folder, copying our Kernel configuration ``x86_64_vyos_defconfig`` to
+voodoo by applying required patches from the `vyos-build/packages/linux-kernel/
+patches` folder, copying our kernel configuration ``x86_64_vyos_defconfig`` to
 the right location, and finally building the Debian packages.
 
-.. note:: Building the kernel will take some time depending on the speed and quantity of your CPU/cores and disk speed.  Plan on 20 minutes (or even longer) on lower end hardware.
+.. note:: Building the kernel will take some time depending on the speed and quantity of your CPU/cores and disk speed. Expect 20 minutes (or even longer) on lower end hardware.
 
 .. code-block:: none
 
@@ -425,7 +425,7 @@ the right location, and finally building the Debian packages.
   dpkg-buildpackage: info: binary-only upload (no source included)
 
 
-In the end you will be presented with the Kernel binary packages which you can
+In the end you will be presented with the kernel binary packages which you can
 then use in your custom ISO build process, by placing all the `*.deb` files in
 the vyos-build/packages folder where they will be used automatically when building VyOS as documented above.
 
@@ -454,16 +454,16 @@ were built. If it fails to find the correct files you can add them manually to
 Building Out-Of-Tree Modules
 ----------------------------
 
-Building the Kernel is one part, but now you also need to build the required
+Building the kernel is one part, but now you also need to build the required
 out-of-tree modules so everything is lined up and the ABIs match. To do so,
 you can again take a look at ``vyos-build/packages/linux-kernel/Jenkinsfile``
-to see all of the required modules and their selected version. We will show you
-once how to build all the current required modules.
+to see all of the required modules and their selected versions. We will show
+you how to build all the current required modules.
 
 WireGuard
 ^^^^^^^^^
 
-First clone the source code and checkout the appropriate version by running:
+First, clone the source code and check out the appropriate version by running:
 
 .. code-block:: none
 
@@ -511,7 +511,7 @@ to the ``vyos-build/packages`` folder for inclusion during the ISO build.
 Accel-PPP
 ^^^^^^^^^
 
-First clone the source code and checkout the appropriate version by running:
+First, clone the source code and check out the appropriate version by running:
 
 .. code-block:: none
 
@@ -581,8 +581,8 @@ to the ``vyos-build/packages`` folder for inclusion during the ISO build.
 Intel QAT
 ^^^^^^^^^
 The Intel QAT (Quick Assist Technology) drivers do not come from a Git
-repository, instead we just fetch the tarballs from 01.org, Intels Open-Source
-website.
+repository, instead we just fetch the tarballs from 01.org, Intel's
+open-source website.
 
 Simply use our wrapper script to build all of the driver modules.
 
@@ -621,7 +621,7 @@ If you are brave enough to build yourself an ISO image containing any modified
 package from our GitHub organisation - this is the place to be.
 
 Any "modified" package may refer to an altered version of e.g. vyos-1x package
-that you would like to test before filing a PullRequest on GitHub.
+that you would like to test before filing a pull request on GitHub.
 
 Building an ISO with any customized package is in no way different then
 building a regular (customized or not) ISO image. Simply place your modified
@@ -632,7 +632,7 @@ Troubleshooting
 ===============
 
 Debian APT is not very verbose when it comes to errors. If your ISO build breaks
-for whatever reason and you supect its a problem with APT dependencies or
+for whatever reason and you suspect it's a problem with APT dependencies or
 installation you can add this small patch which increases the APT verbosity
 during ISO build.
 
@@ -681,9 +681,9 @@ Run following command after building the QEMU image.
 Packages
 ********
 
-VyOS itself comes with a bunch of packages which are specific to our system and
-thus can not be found in any Debian mirrror. Those packages can be found at the
-`VyOS GitHub project`_ in their source format can can easily be compiled into
+VyOS itself comes with a bunch of packages that are specific to our system and
+thus cannot be found in any Debian mirror. Those packages can be found at the
+`VyOS GitHub project`_ in their source format can easily be compiled into
 a custom Debian (`*.deb`) package.
 
 The easiest way to compile your package is with the above mentioned
