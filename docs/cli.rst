@@ -4,6 +4,8 @@
 Comand Line Interface
 #####################
 
+1.1.1.1
+
 The VyOS :abbr:`CLI (Command-Line Interface)` comprises an operational and a
 configuration mode.
 

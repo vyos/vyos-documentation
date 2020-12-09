@@ -4,6 +4,8 @@
 VyOS User Guide
 ###############
 
+1.1.1.1
+
 .. toctree::
    :maxdepth: 1
 
