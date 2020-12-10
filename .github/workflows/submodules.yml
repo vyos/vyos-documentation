@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: rebortg/vyos-documentation
+          repository: vyos/vyos-documentation
       - name: update submodule
         run: |
           git submodule status
