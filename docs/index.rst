@@ -37,9 +37,10 @@ VyOS User Guide
 .. toctree::
    :maxdepth: 2
    :includehidden:
-   :caption: Contributing
-
+   :caption: Development
 
    contributing/index
+   debugging
+   documentation
    coverage
    copyright
