@@ -67,51 +67,40 @@ def lint_linelen(cnt, line):
     if len(line) > 80:
         return (f"Line too long: len={len(line)}", cnt, 'warning')
 
-
-def handle_file(path, file):
-    errors = []
-    path = '/'.join(path)
-    filepath = f"{path}/{file}"
-    try:
-        with open(filepath) as fp:
-            line = fp.readline()
-            cnt = 1
-            while line:
-                err_mac = lint_mac(cnt, line.strip())
-                err_ip4 = lint_ipv4(cnt, line.strip())
-                err_ip6 = lint_ipv6(cnt, line.strip())
-                err_len = lint_linelen(cnt, line.strip())
-                if err_mac:
-                    errors.append(err_mac)
-                if err_ip4:
-                    errors.append(err_ip4)
-                if err_ip6:
-                    errors.append(err_ip6)
-                if err_len:
-                    errors.append(err_len)
-                line = fp.readline()
-                cnt += 1
-    finally:
-        fp.close()
-
-    if len(errors) > 0:
-        print(f"File: {filepath}")
-        for error in errors:
-            print(error)
-        print('')
-        return False
-
 def handle_file_action(filepath):
     errors = []
     try:
         with open(filepath) as fp:
             line = fp.readline()
             cnt = 1
+            test_line_lenght = True
+            indentation = 0
             while line:
+                # ignore every '.. code-block::' for line lenght
+                # rst code-block have its own style in html the format in rst
+                # and the build page must be the same
+                if test_line_lenght is False:
+                    if len(line) > indentation:
+                        #print(f"'{line}'")
+                        #print(indentation)
+                        if line[indentation].isspace() is False:
+                            test_line_lenght = True
+
+                if ".. code-block::" in line:
+                    test_line_lenght = False
+                    indentation = 0
+                    for i in line:
+                        if i.isspace():
+                            indentation = indentation + 1
+                        else:
+                            break
                 err_mac = lint_mac(cnt, line.strip())
                 err_ip4 = lint_ipv4(cnt, line.strip())
                 err_ip6 = lint_ipv6(cnt, line.strip())
-                err_len = lint_linelen(cnt, line.strip())
+                if test_line_lenght:
+                    err_len = lint_linelen(cnt, line)
+                else:
+                    err_len = None
                 if err_mac:
                     errors.append(err_mac)
                 if err_ip4:
@@ -142,17 +131,19 @@ def main():
     try:
         files = ast.literal_eval(sys.argv[1])
         for file in files:
-                print(file)
-                if file[-4:] == ".rst":
+                if file[-4:] in [".rst", ".txt"] and "_build" not in file:
                     if handle_file_action(file) is False:
                         bool_error = False
     except Exception as e:
         for root, dirs, files in os.walk("docs"):
             path = root.split(os.sep)
             for file in files:
-                if file[-4:] == ".rst":
-                    if handle_file(path, file) is False:
+                if file[-4:] in [".rst", ".txt"] and "_build" not in path:
+                    fpath = '/'.join(path)
+                    filepath = f"{fpath}/{file}"
+                    if handle_file_action(filepath) is False:
                         bool_error = False
+
     return bool_error
 
 

@@ -153,6 +153,16 @@ system numbers for the documentation:
 
 Please don't use other public address space.
 
+
+Line length
+^^^^^^^^^^^
+
+Limit all lines to a maximum of 79 characters.
+
+Except in ``.. code-block::`` because it will use  the html tag ``<pre>``
+which have the save line format as in the rst file.
+
+
 Custom Sphinx-doc Markup
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
