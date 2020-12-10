@@ -58,26 +58,27 @@ It is highly recommended to use the same address for both the LDP router-id and
 the discovery transport address, but for VyOS MPLS LDP to work both parameters
 must be explicitly set in the configuration.
 
-Another thing to keep in mind with LDP is that much like BGP, it is a protocol that
-runs on top of TCP. It however does not have an ability to do something like a
-refresh capability like BGPs route refresh capability. Therefore one might have
-to reset the neighbor for a capability change or a configuration change to work.
+Another thing to keep in mind with LDP is that much like BGP, it is a protocol
+that runs on top of TCP. It however does not have an ability to do something
+like a refresh capability like BGPs route refresh capability. Therefore one
+might have to reset the neighbor for a capability change or a configuration
+change to work.
 
 Configuration Options
 =====================
 
 .. cfgcmd:: set protocols mpls ldp interface <interface>
 
-  Use this command to enable LDP, and enable MPLS processing on the interface you
-  define.
+  Use this command to enable LDP, and enable MPLS processing on the interface
+  you define.
 
 .. cfgcmd:: set protocols mpls ldp router-id <address>
 
   Use this command to configure the IP address used as the LDP router-id of the
   local device.
 
-.. cfgcmd:: set protocols mpls ldp discovery transport-ipv4-address <IPv4 address>
-.. cfgcmd:: set protocols mpls ldp discovery transport-ipv6-address <IPv6 address>
+.. cfgcmd:: set protocols mpls ldp discovery transport-ipv4-address <address>
+.. cfgcmd:: set protocols mpls ldp discovery transport-ipv6-address <address>
 
   Use this command to set the IPv4 or IPv6 transport-address used by LDP.
 
@@ -85,18 +86,19 @@ Configuration Options
 
   Use this command to configure authentication for LDP peers. Set the
   IP address of the LDP peer and a password that should be shared in
-  order to become neighbors. 
-  
+  order to become neighbors.
+
 .. cfgcmd:: set protocols mpls ldp neighbor <address> session-holdtime <seconds>
-  
+
   Use this command to configure a specific session hold time for LDP peers.
   Set the IP address of the LDP peer and a session hold time that should be
   configured for it. You may have to reset the neighbor for this to work.
-  
-.. cfgcmd:: set protocols mpls ldp neighbor <address> ttl-security <disable | hop count>
+
+.. cfgcmd:: set protocols mpls ldp neighbor <address> ttl-security
+  <disable | hop count>
 
   Use this command to enable, disable, or specify hop count for TTL security
-  for LDP peers. By default the value is set to 255 (or max TTL). 
+  for LDP peers. By default the value is set to 255 (or max TTL).
 
 .. cfgcmd:: set protocols mpls ldp discovery hello-ipv4-interval <seconds>
 .. cfgcmd:: set protocols mpls ldp discovery hello-ipv4-holdtime <seconds>
@@ -111,16 +113,20 @@ Configuration Options
 
   Use this command if you would like to set the TCP session hold time intervals.
 
-.. cfgcmd:: set protocols mpls ldp import ipv4 import-filter filter-access-list <access list number>
-.. cfgcmd:: set protocols mpls ldp import ipv6 import-filter filter-access-list6 <access list number>
+.. cfgcmd:: set protocols mpls ldp import ipv4 import-filter filter-access-list
+  <access list number>
+.. cfgcmd:: set protocols mpls ldp import ipv6 import-filter filter-access-list6
+  <access list number>
 
   Use these commands to control the importing of forwarding equivalence classes
   (FECs) for LDP from neighbors. This would be useful for example on only
   accepting the labeled routes that are needed and not ones that are not
   needed, such as accepting loopback interfaces and rejecting all others.
-  
-.. cfgcmd:: set protocols mpls ldp export ipv4 export-filter filter-access-list <access list number>
-.. cfgcmd:: set protocols mpls ldp export ipv6 export-filter filter-access-list6 <access list number>
+
+.. cfgcmd:: set protocols mpls ldp export ipv4 export-filter filter-access-list
+  <access list number>
+.. cfgcmd:: set protocols mpls ldp export ipv6 export-filter filter-access-list6
+  <access list number>
 
   Use these commands to control the exporting of forwarding equivalence classes
   (FECs) for LDP to neighbors. This would be useful for example on only
@@ -130,43 +136,51 @@ Configuration Options
 .. cfgcmd:: set protocols mpls ldp export ipv4 explicit-null
 .. cfgcmd:: set protocols mpls ldp export ipv6 explicit-null
 
-  Use this command if you would like for the router to advertise FECs with a label
-  of 0 for explicit null operations.
-  
-.. cfgcmd:: set protocols mpls ldp allocation ipv4 access-list <access list number>
-.. cfgcmd:: set protocols mpls ldp allocation ipv6 access-list6 <access list number>
+  Use this command if you would like for the router to advertise FECs with a
+  label of 0 for explicit null operations.
 
-  Use this command if you would like to control the local FEC allocations for LDP. A
-  good example would be for your local router to not allocate a label for everything.
-  Just a label for what it's useful. A good example would be just a loopback label.
-  
+.. cfgcmd:: set protocols mpls ldp allocation ipv4 access-list
+  <access list number>
+.. cfgcmd:: set protocols mpls ldp allocation ipv6 access-list6
+  <access list number>
+
+  Use this command if you would like to control the local FEC allocations for
+  LDP. A good example would be for your local router to not allocate a label for
+  everything. Just a label for what it's useful. A good example would be just a
+  loopback label.
+
 .. cfgcmd:: set protocols mpls ldp parameters cisco-interop-tlv
 
-  Use this command to use a Cisco non-compliant format to send and interpret the
-  Dual-Stack capability TLV for IPv6 LDP communications. This is related to :rfc:`7552`.
-  
+  Use this command to use a Cisco non-compliant format to send and interpret
+  the Dual-Stack capability TLV for IPv6 LDP communications. This is related to
+  :rfc:`7552`.
+
 .. cfgcmd:: set protocols mpls ldp parameters transport-prefer-ipv4
 
-  Use this command to prefer IPv4 for TCP peer transport connection for LDP when
-  both an IPv4 and IPv6 LDP address are configured on the same interface.
-  
+  Use this command to prefer IPv4 for TCP peer transport connection for LDP
+  when both an IPv4 and IPv6 LDP address are configured on the same interface.
+
 .. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv4 enable
 .. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv6 enable
 
-  Use this command to enable targeted LDP sessions to the local router. The router
-  will then respond to any sessions that are trying to connect to it that are not
-  a link local type of TCP connection.
-  
+  Use this command to enable targeted LDP sessions to the local router. The
+  router will then respond to any sessions that are trying to connect to it that
+  are not a link local type of TCP connection.
+
 .. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv4 address <address>
 .. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv6 address <address>
 
   Use this command to enable the local router to try and connect with a targeted
   LDP session to another router.
-  
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv4 hello-holdtime <seconds>
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv4 hello-interval <seconds>
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv6 hello-holdtime <seconds>
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv6 hello-interval <seconds>
+
+.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv4 hello-holdtime
+  <seconds>
+.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv4 hello-interval
+  <seconds>
+.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv6 hello-holdtime
+  <seconds>
+.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv6 hello-interval
+  <seconds>
 
   Use these commands if you would like to set the discovery hello and hold time
   parameters for the targeted LDP neighbors.
