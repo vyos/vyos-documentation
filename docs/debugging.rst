@@ -76,6 +76,42 @@ will have the same effect as ``touch /tmp/vyos.ifconfig.debug``.
   ``sudo systemctl stop vyos-configd`` or make this reboot-safe by calling
   ``sudo systemctl disable vyos-configd``.
 
+Debugging Python Code with PDB
+------------------------------
+
+Sometimes it might be useful to debug Python code interactively on the live
+system rather than a IDE. This can be achieved using pdb.
+
+Let us assume you want to debug a Python script that is called by an op-mode
+command. After you found the script by looking up the op-mode-defitions you
+can edit the script in the live system using e.g. vi:
+``vi /usr/libexec/vyos/op_mode/show_xyz.py``
+
+Insert the following statement right before the section where you want to
+investigate a problem (e.g. a statement you see in a backtrace):
+``import pdb; pdb.set_trace()``
+Optionally you can surrounded this statement by an ``if`` which only triggers
+under the condition you are interested in.
+
+Once you run ``show xyz`` and your condition is triggered you should be dropped
+into the python debugger:
+
+
+.. code-block:: none
+
+   > /usr/libexec/vyos/op_mode/show_nat_translations.py(109)process()
+   -> rule_type = rule.get('type', '')
+   (Pdb)
+
+You can type ``help`` to get an overview of the available commands, and
+``help command`` to get more information on each command.
+
+Useful commands are:
+
+* examine variables using ``pp(var)``
+* contine execution using ``cont``
+* get a backtrace using ``bt``
+
 Config Migration Scripts
 ------------------------
 
