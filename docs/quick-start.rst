@@ -4,19 +4,19 @@
 Quick Start
 ###########
 
-This chapter will guide you on how to get up to speed quickly using your new VyOS
-system. It will show you a very basic configuration example that will provide
-a :ref:`nat` gateway for a device with two network interfaces (`eth0` and
-`eth1`).
+This chapter will guide you on how to get up to speed quickly using your new
+VyOS system. It will show you a very basic configuration example that will
+provide a :ref:`nat` gateway for a device with two network interfaces
+(`eth0` and `eth1`).
 
 .. _quick-start-configuration-mode:
 
 Configuration Mode
 ##################
 
-By default, VyOS is in operational mode, and the command prompt displays a `$`. To configure VyOS,
-you will need to enter configuration mode, resulting in the command prompt displaying a `#`, as
-demonstrated below:
+By default, VyOS is in operational mode, and the command prompt displays a `$`.
+To configure VyOS, you will need to enter configuration mode, resulting in the
+command prompt displaying a `#`, as demonstrated below:
 
 .. code-block:: none
 
@@ -26,13 +26,15 @@ demonstrated below:
 Commit and Save
 ################
 
-After every configuration change, you need to apply the changes by using the following command:
+After every configuration change, you need to apply the changes by using the
+following command:
 
 .. code-block:: none
 
   commit
 
-Once your configuration works as expected, you can save it permanently by using the following command:
+Once your configuration works as expected, you can save it permanently by using
+the following command:
 
 .. code-block:: none
 
@@ -41,10 +43,10 @@ Once your configuration works as expected, you can save it permanently by using 
 Interface Configuration
 #######################
 
-* Your outside/WAN interface will be `eth0`. It will receive its interface address
-  via DHCP.
-* Your internal/LAN interface will be `eth1`. It will use a static IP address of
-  `192.168.0.1/24`.
+* Your outside/WAN interface will be `eth0`. It will receive its interface
+  address via DHCP.
+* Your internal/LAN interface will be `eth1`. It will use a static IP address
+  of `192.168.0.1/24`.
 
 After switching to :ref:`quick-start-configuration-mode` issue the following
 commands:
@@ -75,13 +77,15 @@ on specific addresses only.
 DHCP/DNS quick-start
 ####################
 
-The following settings will configure DHCP and DNS services on your internal/LAN network,
-where VyOS will act as the default gateway and DNS server.
+The following settings will configure DHCP and DNS services on 
+your internal/LAN network, where VyOS will act as the default gateway and
+DNS server.
 
 * The default gateway and DNS recursor address will be `192.168.0.1/24`
-* The address range `192.168.0.2/24 - 192.168.0.8/24` will be reserved for static assignments
-* DHCP clients will be assigned IP addresses within the range of `192.168.0.9 - 192.168.0.254`
-  and have a domain name of `internal-network`
+* The address range `192.168.0.2/24 - 192.168.0.8/24` will be reserved for
+  static assignments
+* DHCP clients will be assigned IP addresses within the range of
+  `192.168.0.9 - 192.168.0.254` and have a domain name of `internal-network`
 * DHCP leases will hold for one day (86400 seconds)
 * VyOS will serve as a full DNS recursor, replacing the need to utilize Google,
   Cloudflare, or other public DNS servers (which is good for privacy)
@@ -104,8 +108,9 @@ where VyOS will act as the default gateway and DNS server.
 NAT
 ###
 
-The following settings will configure :ref:`source-nat` rules for our internal/LAN network, allowing
-hosts to communicate through the outside/WAN network via IP masquerade.
+The following settings will configure :ref:`source-nat` rules for our
+internal/LAN network, allowing hosts to communicate through the outside/WAN
+network via IP masquerade.
 
 .. code-block:: none
 
@@ -139,7 +144,8 @@ which was not initiated from the internal/LAN side first.
   set firewall name OUTSIDE-LOCAL rule 20 state new 'enable'
 
 If you wanted to enable SSH access to your firewall from the outside/WAN
-interface, you could create some additional rules to allow that kind of traffic.
+interface, you could create some additional rules to allow that kind of
+traffic.
 
 These rules allow SSH traffic and rate limit it to 4 requests per minute. This
 blocks brute-forcing attempts:
@@ -180,8 +186,8 @@ Commit changes, save the configuration, and exit configuration mode:
 Hardening
 #########
 
-Especially if you are allowing SSH remote access from the outside/WAN interface,
-there are a few additional configuration steps that should be taken.
+Especially if you are allowing SSH remote access from the outside/WAN
+interface, there are a few additional configuration steps that should be taken.
 
 Replace the default `vyos` system user:
 
@@ -206,7 +212,8 @@ the original ``vyos`` user and completely disable password authentication for
   delete system login user vyos
   set service ssh disable-password-authentication
 
-As above, commit your changes, save the configuration, and exit configuration mode:
+As above, commit your changes, save the configuration, and exit
+configuration mode:
 
 .. code-block:: none
 
@@ -217,4 +224,5 @@ As above, commit your changes, save the configuration, and exit configuration mo
   vyos@vyos# exit
   vyos@vyos$
 
-You now should have a simple yet secure and functioning router to experiment with further. Enjoy!
+You now should have a simple yet secure and functioning router to experiment
+with further. Enjoy!
