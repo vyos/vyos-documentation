@@ -1,8 +1,8 @@
 .. _mpls:
 
-####################################
-MPLS (Multiprotocol Label Switching)
-####################################
+####
+MPLS
+####
 
 :abbr:`MPLS (Multi-Protocol Label Switching)` is a packet forwarding paradigm
 which differs from regular IP forwarding. Instead of IP addresses being used to
