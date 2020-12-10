@@ -4,7 +4,7 @@ VyOS 1.3 (equuleus) supports DHCPv6-PD (:rfc:`3633`). DHCPv6 Prefix Delegation
 is supported by most ISPs who provide native IPv6 for consumers on fixed networks.
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-option pd <id> length <length>
+  {{ var5 }} {{ var6 }} dhcpv6-options pd <id> length <length>
 
   Some ISPs by default only delegate a /64 prefix. To request for a specific
   prefix size use this option to request for a bigger delegation for this pd
@@ -20,7 +20,7 @@ is supported by most ISPs who provide native IPv6 for consumers on fixed network
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 length 56
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-option pd <id> interface <delegatee> address <address>
+  {{ var5 }} {{ var6 }} dhcpv6-options pd <id> interface <delegatee> address <address>
 
   Specify the interface address used locally on the interfcae where the prefix
   has been delegated to. ID must be a decimal integer.
@@ -35,10 +35,10 @@ is supported by most ISPs who provide native IPv6 for consumers on fixed network
 
   .. code-block:: none
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-option pd 0 interface eth8 address 65534
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 address 65534
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-option pd <id> interface <delegatee> sla-id <id>
+  {{ var5 }} {{ var6 }} dhcpv6-options pd <id> interface <delegatee> sla-id <id>
 
   Specify the identifier value of the site-level aggregator (SLA) on the
   interface. ID must be a decimal number greater then 0 which fits in the
@@ -51,5 +51,5 @@ is supported by most ISPs who provide native IPv6 for consumers on fixed network
 
   .. code-block:: none
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-option pd 0 interface eth8 sla-id 1
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 sla-id 1
 
