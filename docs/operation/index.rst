@@ -7,5 +7,4 @@ Operation Mode
    :includehidden:
 
    information
-   ip-commands
    boot-options

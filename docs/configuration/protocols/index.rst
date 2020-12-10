@@ -14,7 +14,6 @@ Protocols
    isis
    mpls
    ospf
-   ospfv3
    pim
    rip
    ripng
