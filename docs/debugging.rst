@@ -29,7 +29,8 @@ Kernel
   CLI. In this circumstance, the kernel boot parameter ``vyos-config-debug``
   will ensure access to the system as user ``vyos``, and will log a Python
   stack trace to the file ``/tmp/boot-config-trace``.
-  File ``boot-config-trace`` will generate only if config loaded with a failure status.
+  File ``boot-config-trace`` will generate only if config loaded with a failure
+  status.
 
 Live System
 ===========
@@ -72,9 +73,9 @@ will have the same effect as ``touch /tmp/vyos.ifconfig.debug``.
   file. The default file is ``/tmp/full-log`` but it can be changed.
 
 .. note:: In order to retrieve the debug output on the command-line you need to
-  disable ``vyos-configd`` in addition. This can be run either one-time by calling
-  ``sudo systemctl stop vyos-configd`` or make this reboot-safe by calling
-  ``sudo systemctl disable vyos-configd``.
+  disable ``vyos-configd`` in addition. This can be run either one-time by
+  calling ``sudo systemctl stop vyos-configd`` or make this reboot-safe by
+  calling ``sudo systemctl disable vyos-configd``.
 
 Debugging Python Code with PDB
 ------------------------------
@@ -171,17 +172,18 @@ This can also be done permanently by changing ``/boot/grub/grub.cfg``.
 Priorities
 ==========
 
-VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def``
-file and possibly an attached script that is executed when the node is present.
-Nodes can have a priority, and on system bootup - or any other ``commit`` to the
-config all scripts are executed from lowest to higest priority. This is good as
-this gives a deterministic behavior.
+VyOS CLI is all about priorities. Every CLI node has a corresponding
+``node.def`` file and possibly an attached script that is executed when the
+node is present. Nodes can have a priority, and on system bootup - or any
+other ``commit`` to the config all scripts are executed from lowest to higest
+priority. This is good as this gives a deterministic behavior.
 
-To debug issues in priorities or to see what's going on in the background you can
-use the ``/opt/vyatta/sbin/priority.pl`` script which lists to you the execution
-order of the scripts.
+To debug issues in priorities or to see what's going on in the background
+you can use the ``/opt/vyatta/sbin/priority.pl`` script which lists to you
+the execution order of the scripts.
 
+.. stop_vyoslinter
 .. _vyatta-cfg: https://github.com/vyos/vyatta-cfg
 .. _bootchart.conf: https://github.com/vyos/vyos-build/blob/current/data/live-build-config/includes.chroot/etc/systemd/bootchart.conf
-
 .. include:: /_include/common-references.txt
+.. start_vyoslinter
