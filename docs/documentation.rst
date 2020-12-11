@@ -157,7 +157,7 @@ Please don't use other public address space.
 Line length
 ^^^^^^^^^^^
 
-Limit all lines to a maximum of 79 characters.
+Limit all lines to a maximum of 80 characters.
 
 Except in ``.. code-block::`` because it will use  the html tag ``<pre>``
 which have the save line format as in the rst file.
