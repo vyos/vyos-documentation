@@ -119,8 +119,8 @@ Matching traffic
 ----------------
 
 In order to define which traffic goes into which class, you define
-filters (that is, the matching criteria). Packets go through these matching rules
-(as in the rules of a firewall) and, if a packet matches the filter, it
+filters (that is, the matching criteria). Packets go through these matching
+rules (as in the rules of a firewall) and, if a packet matches the filter, it
 is assigned to that class.
 
 In VyOS, a class is identified by a number you can choose when
@@ -194,7 +194,8 @@ different parameters you can configure.
  
 
 As shown in the example above, one of the possibilities to match packets
-is based on marks done by the firewall, `that can give you a great deal of flexibility`_.
+is based on marks done by the firewall,
+`that can give you a great deal of flexibility`_.
 
 You can also write a description for a filter:
 
@@ -204,12 +205,12 @@ You can also write a description for a filter:
 
 
 
-.. note:: An IPv4 TCP filter will only match packets with an IPv4 header length of
-   20 bytes (which is the majority of IPv4 packets anyway).
+.. note:: An IPv4 TCP filter will only match packets with an IPv4 header
+   length of 20 bytes (which is the majority of IPv4 packets anyway).
 
 
-.. note:: IPv6 TCP filters will only match IPv6 packets with no header extension, see
-   https://en.wikipedia.org/wiki/IPv6_packet#Extension_headers
+.. note:: IPv6 TCP filters will only match IPv6 packets with no header
+   extension, see https://en.wikipedia.org/wiki/IPv6_packet#Extension_headers
 
 
 Default
@@ -250,9 +251,9 @@ possibilities depending on the Traffic Policy you are configuring.
       target       fq-codel - Acceptable minimum queue delay (milliseconds)
    
 
-For instance, with :code:`set traffic-policy shaper MY-SHAPER class 30 set-dscp EF`
-you would be modifying the DSCP field value of packets in that class to
-Expedite Forwarding.
+For instance, with :code:`set traffic-policy shaper MY-SHAPER
+class 30 set-dscp EF` you would be modifying the DSCP field value of packets in
+that class to Expedite Forwarding.
 
 
   DSCP values as per :rfc:`2474` and :rfc:`4595`:
@@ -371,7 +372,8 @@ This is the policy that requieres the lowest resources for the same
 amount of traffic. But **very likely you do not need it as you cannot
 get much from it. Sometimes it is used just to enable logging.**
 
-.. cfgcmd:: set traffic-policy drop-tail <policy-name> queue-limit <number-of-packets>
+.. cfgcmd:: set traffic-policy drop-tail <policy-name> queue-limit
+   <number-of-packets>
 
    Use this command to configure a drop-tail policy (PFIFO). Choose a
    unique name for this policy and the size of the queue by setting the
@@ -509,7 +511,8 @@ and increase `interval` to something around 150 ms.
    persistent queue is developing, ensuring that the measured minimum
    delay does not become too stale (default: 100ms).
 
-.. cfgcmd:: set traffic-policy fq-codel <policy-name> queue-limit <number-of-packets>`
+.. cfgcmd:: set traffic-policy fq-codel <policy-name> queue-limit
+   <number-of-packets>`
 
    Use this command to configure an fq-codel policy, set its name, and
    define a hard limit on the real queue size. When this limit is
@@ -562,7 +565,8 @@ the configured classes.
   **inbound** traffic, check the ingress-shaping_ section.
 
 
-.. cfgcmd:: set traffic-policy limiter <policy-name> class <class ID> match <match-name> description <description>
+.. cfgcmd:: set traffic-policy limiter <policy-name> class <class ID> match
+   <match-name> description <description>
 
    Use this command to configure an Ingress Policer, defining its name,
    a class identifier (1-4090), a class matching rule name and its
@@ -573,14 +577,16 @@ Once the matching rules are set for a class, you can start configuring
 how you want matching traffic to behave.
 
 
-.. cfgcmd:: set traffic-policy limiter <policy-name> class <class-ID> bandwidth <rate>
+.. cfgcmd:: set traffic-policy limiter <policy-name> class <class-ID> bandwidth
+   <rate>
 
    Use this command to configure an Ingress Policer, defining its name,
    a class identifier (1-4090) and the maximum allowed bandwidth for
    this class.
 
 
-.. cfgcmd:: set traffic-policy limiter <policy-name> class <class-ID> burst <burst-size>
+.. cfgcmd:: set traffic-policy limiter <policy-name> class <class-ID> burst
+   <burst-size>
 
    Use this command to configure an Ingress Policer, defining its name,
    a class identifier (1-4090) and the burst size in bytes for this
@@ -599,7 +605,8 @@ how you want matching traffic to behave.
    and the burst size in bytes (default: 15) for its default policy.
 
 
-.. cfgcmd:: set traffic-policy limiter <policy-name> class <class ID> priority <value>
+.. cfgcmd:: set traffic-policy limiter <policy-name> class <class ID> priority
+   <value>
 
    Use this command to configure an Ingress Policer, defining its name,
    a class identifier (1-4090), and the priority (0-20, default 20) in
@@ -636,7 +643,8 @@ under certain network conditions.
    Token Bucket Filter qdisc). Default:15kb. It will only take effect if
    you have configured its bandwidth too.
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> network-delay <delay>
+.. cfgcmd:: set traffic-policy network-emulator <policy-name> network-delay
+   <delay>
    
    Use this command to configure a Network Emulator policy defining its
    name and the fixed amount of time you want to add to all packet going
@@ -645,26 +653,30 @@ under certain network conditions.
    configured its bandwidth too. You can use secs, ms and us. Default:
    50ms.
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> packet-corruption <percent>
+.. cfgcmd:: set traffic-policy network-emulator <policy-name> packet-corruption
+   <percent>
    
    Use this command to emulate noise in a Network Emulator policy. Set
    the policy name and the percentage of corrupted packets you want. A
    random error will be introduced in a random position for the chosen
    percent of packets.
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> packet-loss <percent>`
+.. cfgcmd:: set traffic-policy network-emulator <policy-name> packet-loss
+   <percent>
    
    Use this command to emulate packet-loss conditions in a Network
    Emulator policy. Set the policy name and the percentage of loss
    packets your traffic will suffer.
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> packet-reordering <percent>`
+.. cfgcmd:: set traffic-policy network-emulator <policy-name> packet-reordering
+   <percent>
    
    Use this command to emulate packet-reordering conditions in a Network
    Emulator policy. Set the policy name and the percentage of reordered
    packets your traffic will suffer.
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> queue-limit <limit>
+.. cfgcmd:: set traffic-policy network-emulator <policy-name> queue-limit
+   <limit>
    
    Use this command to define the length of the queue of your Network
    Emulator policy. Set the policy name and the maximum number of
@@ -735,7 +747,8 @@ setting:
                    Random Early Detection (RED)
 
 
-.. cfgcmd:: set traffic-policy priority-queue <policy-name> class <class-ID>  queue-limit <limit>`
+.. cfgcmd:: set traffic-policy priority-queue <policy-name> class <class-ID> 
+   queue-limit <limit>`
 
    Use this command to configure a Priority Queue policy, set its name,
    set a class with a priority from 1 to 7 and define a hard limit on
@@ -804,7 +817,8 @@ algorithm might be to prevent a backbone overload. But only for TCP
    set to the bandwidth of your interface. Random Detect is not a
    shaping policy, this command will not shape.
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> average-packet <bytes>
+.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence
+   <IP-precedence-value> average-packet <bytes>
    
    Use this command to configure a Random-Detect policy and set its
    name, then state the IP Precedence for the virtual queue you are
@@ -814,7 +828,8 @@ algorithm might be to prevent a backbone overload. But only for TCP
 .. note:: When configuring a Random-Detect policy: **the higher the
    precedence number, the higher the priority**.
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> mark-probability <value>
+.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence
+   <IP-precedence-value> mark-probability <value>
    
    Use this command to configure a Random-Detect policy and set its
    name, then state the IP Precedence for the virtual queue you are
@@ -822,7 +837,8 @@ algorithm might be to prevent a backbone overload. But only for TCP
    probability by giving the N value of the fraction 1/N (default: 10).
 
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> maximum-threshold <packets>
+.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence
+   <IP-precedence-value> maximum-threshold <packets>
    
    Use this command to configure a Random-Detect policy and set its
    name, then state the IP Precedence for the virtual queue you are
@@ -830,7 +846,8 @@ algorithm might be to prevent a backbone overload. But only for TCP
    be (from 0 to 4096 packets, default: 18). At this size, the marking
    (drop) probability is maximal.
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> minimum-threshold <packets>
+.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence
+   <IP-precedence-value> minimum-threshold <packets>
    
    Use this command to configure a Random-Detect policy and set its
    name, then state the IP Precedence for the virtual queue you are
@@ -862,7 +879,8 @@ The default values for the minimum-threshold depend on IP precedence:
  +------------+-----------------------+
 
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence <IP-precedence-value> queue-limit <packets>
+.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence
+   <IP-precedence-value> queue-limit <packets>
    
    Use this command to configure a Random-Detect policy and set its
    name, then name the IP Precedence for the virtual queue you are
@@ -1023,25 +1041,29 @@ the higher the priority.
    and the maximum bandwidth for all combined traffic.
 
 
-.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> bandwidth <rate>
+.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> bandwidth
+   <rate>
 
    Use this command to configure a Shaper policy, set its name, define
    a class and set the guaranteed traffic you want to allocate to that
    class.
 
-.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> burst <bytes>
+.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> burst
+   <bytes>
 
    Use this command to configure a Shaper policy, set its name, define
    a class and set the size of the `tocken bucket`_ in bytes, which will
    be available to be sent at ceiling speed (default: 15Kb).
 
-.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> ceiling <bandwidth>
+.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> ceiling
+   <bandwidth>
 
    Use this command to configure a Shaper policy, set its name, define
    a class and set the maximum speed possible for this class. The
    default ceiling value is the bandwidth value.
 
-.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> priority <0-7>
+.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> priority
+   <0-7>
 
    Use this command to configure a Shaper policy, set its name, define
    a class and set the priority for usage of available bandwidth once
@@ -1195,8 +1217,10 @@ That is how it is possible to do the so-called "ingress shaping".
   which can be solved with ``sudo ip link delete ifb0``.
 
 
+.. stop_vyoslinter
 .. _that can give you a great deal of flexibility: https://blog.vyos.io/using-the-policy-route-and-packet-marking-for-custom-qos-matches
 .. _tc: https://en.wikipedia.org/wiki/Tc_(Linux)
 .. _tocken bucket: https://en.wikipedia.org/wiki/Token_bucket
 .. _HFSC: https://en.wikipedia.org/wiki/Hierarchical_fair-service_curve
 .. _Intermediate Functional Block: https://www.linuxfoundation.org/collaborate/workgroups/networking/ifb
+.. start_vyoslinter
