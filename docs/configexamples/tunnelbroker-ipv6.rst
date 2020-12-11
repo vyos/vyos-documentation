@@ -1,5 +1,7 @@
 .. _examples-tunnelbroker-ipv6:
 
+.. stop_vyoslinter
+
 #######################
 Tunnelbroker.net (IPv6)
 #######################
@@ -110,7 +112,9 @@ should be replaced with the information from your `Routed /64` tunnel):
   set service router-advert interface eth1 name-server '2001:4860:4860::8844'
   set service router-advert interface eth1 prefix 2001:470:xxxx:xxxx::/64 
 
-Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default, 'valid-lifetime' and 'preferred-lifetime' are set to default values of 30 days and 4 hours respectively.
+Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default,
+'valid-lifetime' and 'preferred-lifetime' are set to default values of
+30 days and 4 hours respectively.
 
 This accomplishes a few things:
 
@@ -155,7 +159,9 @@ So, when your LAN is eth1, your DMZ is eth2, your cameras live on eth3, etc:
   set service router-advert interface eth3 name-server '2001:4860:4860::8844'
   set service router-advert interface eth3 prefix 2001:470:xxxx:3::/64
 
-Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default, 'valid-lifetime' and 'preferred-lifetime' are set to default values of 30 days and 4 hours respectively.
+Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default,
+'valid-lifetime' and 'preferred-lifetime' are set to default values of
+30 days and 4 hours respectively.
 
 Firewall
 ========
@@ -167,3 +173,6 @@ NAME`.
 Similarly, to attach the firewall, you would use `set interfaces ethernet eth0
 firewall in ipv6-name` or `set zone-policy zone LOCAL from WAN firewall
 ipv6-name`.
+
+
+.. start_vyoslinter
