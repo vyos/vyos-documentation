@@ -43,17 +43,26 @@ def lint_ipv4(cnt, line):
     if ip is not None:
         ip = ipaddress.ip_address(ip.group().strip(' '))
         # https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address.is_private
-        if ip.is_private is False and ip.is_multicast is False:
-            return (f"Use IPv4 reserved for Documentation (RFC 5737) or private Space: {ip}", cnt, 'error')
+        if ip.is_private:
+            return None
+        if ip.is_multicast:
+            return None
+        if ip.is_global is False:
+            return None
+        return (f"Use IPv4 reserved for Documentation (RFC 5737) or private Space: {ip}", cnt, 'error')
 
 
 def lint_ipv6(cnt, line):
     ip = re.search(IPV6ADDR, line, re.I)
     if ip is not None:
         ip = ipaddress.ip_address(ip.group().strip(' '))
-        # https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address.is_private
-        if ip.is_private is False and ip.is_multicast is False:
-            return (f"Use IPv6 reserved for Documentation (RFC 3849) or private Space: {ip}", cnt, 'error')
+        if ip.is_private:
+            return None
+        if ip.is_multicast:
+            return None
+        if ip.is_global is False:
+            return None
+        return (f"Use IPv6 reserved for Documentation (RFC 3849) or private Space: {ip}", cnt, 'error')
 
 
 def lint_AS(cnt, line):
@@ -102,7 +111,10 @@ def handle_file_action(filepath):
                                 indentation = indentation + 1
                             else:
                                 break
+                    
                     err_mac = lint_mac(cnt, line.strip())
+                    # disable mac detection for the moment, too many false positives
+                    err_mac = None
                     err_ip4 = lint_ipv4(cnt, line.strip())
                     err_ip6 = lint_ipv6(cnt, line.strip())
                     if test_line_lenght:
@@ -135,7 +147,6 @@ def handle_file_action(filepath):
         for error in errors:
             print(f"::{error[2]} file={filepath},line={error[1]}::{error[0]}")
         print('')
-        exit()
         return False
 
 
