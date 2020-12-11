@@ -36,9 +36,11 @@ access to the official codebase.
 
 * Fork this project on GitHub https://github.com/vyos/vyos-documentation/fork
 
-* Clone fork to local machine, then change to that directory``$ cd vyos-documentation``
+* Clone fork to local machine, then change to that directory 
+  ``$ cd vyos-documentation``
 
-* Install the requirements ``$ pip install -r requirements.txt`` (or something similar)
+* Install the requirements ``$ pip install -r requirements.txt``
+  (or something similar)
 
 * Create new branch for your work, use a descriptive name of your work:
   ``$ git checkout -b <branch-name>``
@@ -47,8 +49,8 @@ access to the official codebase.
   (:ref:`prepare_commit`). This mainly applies to proper commit messages
   describing your change (how and why). Please check out the documentation of
   Sphinx-doc_ or reStructuredText_ if you are not familiar with it. This is used
-  for writing our docs. Additional directives how to write in RST can be obtained
-  from reStructuredTextDirectives_.
+  for writing our docs. Additional directives how to write in RST can be
+  obtained from reStructuredTextDirectives_.
 
 * Check your changes by locally building the documentation ``$ make html``.
   Sphinx will build the html files in the ``docs/_build`` folder. We provide
@@ -302,8 +304,8 @@ For example:
   * ``set zone-policy`` is written in ``zone-policy/index.rst``
   * ``set interfaces ethernet`` is written in ``interfaces/ethernet.rst``
 
-The article starts with a short intruducing about the command or the technologie.
-Please include some helpfull links or background informations.
+The article starts with a short intruducing about the command or the
+technologie. Please include some helpfull links or background informations.
 
 After this a optional section follows. Some commands have requirements like the
 compatible hardware (e.g. Wifi) or some commands you have to set before. For
@@ -334,9 +336,10 @@ Anything else what is not a configuration or a operation command have no
 predefined structure.
 
 
+.. stop_vyoslinter
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
 .. _reStructuredTextDirectives: https://docutils.sourceforge.io/docs/ref/rst/directives.html
 .. _README.md: https://github.com/vyos/vyos-documentation/blob/master/README.md
-
 .. include:: /_include/common-references.txt
+.. start_vyoslinter
