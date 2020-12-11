@@ -19,15 +19,15 @@ USB
 In the past serial interface have been defined as ttySx and ttyUSBx where x was
 an instance number of the serial interface. It was discovered that from system
 boot to system boot the mapping of USB based serial interfaces will differ,
-depending which driver was loaded first by the operating system. This will become
-rather painful if you not only have serial interfaces for a console server
-connected but in addition also a serial backed :ref:`wwan-interface`.
+depending which driver was loaded first by the operating system. This will
+become rather painful if you not only have serial interfaces for a console
+server connected but in addition also a serial backed :ref:`wwan-interface`.
 
-To overcome this issue and the fact that in almost 50% of all cheap USB to serial
-converters there is no serial number programmed, the USB to serial interface is
-now directly identified by the USB root bridge and bus it connects to. This
-somehow mimics the new network interface definitions we see in recend Linux
-distributions.
+To overcome this issue and the fact that in almost 50% of all cheap USB to
+serial converters there is no serial number programmed, the USB to serial
+interface is now directly identified by the USB root bridge and bus it connects
+to. This somehow mimics the new network interface definitions we see in recend
+Linux distributions.
 
 For additional details you can refer to https://phabricator.vyos.net/T2490.
 
@@ -69,9 +69,9 @@ For additional details you can refer to https://phabricator.vyos.net/T2490.
 
 .. opcmd:: show hardware usb serial
 
-  Retrieve a list and description of all connected USB serial devices. The device name
-  displayed, e.g. `usb0b2.4p1.0` can be directly used when accessing the serial console
-  as console-server device.
+  Retrieve a list and description of all connected USB serial devices. The
+  device name displayed, e.g. `usb0b2.4p1.0` can be directly used when accessing
+  the serial console as console-server device.
 
   .. code-block:: none
 
@@ -94,4 +94,3 @@ For additional details you can refer to https://phabricator.vyos.net/T2490.
     usb0b2.4p1.1     Quad_RS232-HS       Future Technology Devices International, Ltd
     usb0b2.4p1.2     Quad_RS232-HS       Future Technology Devices International, Ltd
     usb0b2.4p1.3     Quad_RS232-HS       Future Technology Devices International, Ltd
-

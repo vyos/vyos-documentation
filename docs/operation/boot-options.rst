@@ -53,5 +53,6 @@ These options disable some boot steps. Make sure you understand the
       Do not perform config migration.
 
     no-vyos-firewall
-      Do not initialize default firewall chains, renders any firewall configuration unusable.
+      Do not initialize default firewall chains, renders any firewall
+      configuration unusable.
 
