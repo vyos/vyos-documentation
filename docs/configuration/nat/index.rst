@@ -173,8 +173,8 @@ rule.
     set nat destination rule 20 inbound-interface eth1
 
 * **protocol** - specify which types of protocols this translation rule
-  applies to. Only packets matching the specified protocol are NATed. By default this
-  applies to `all` protocols.
+  applies to. Only packets matching the specified protocol are NATed.
+  By default this applies to `all` protocols.
 
   Example:
 
@@ -194,13 +194,13 @@ rule.
 
   * Set SNAT rule 20 to only NAT packets arriving from the 192.0.2.0/24
     network
-  * Set SNAT rule 30 to only NAT packets arriving from the 192.0.3.0/24
+  * Set SNAT rule 30 to only NAT packets arriving from the 203.0.113.0/24
     network with a source port of 80 and 443
 
   .. code-block:: none
 
     set nat source rule 20 source address 192.0.2.0/24
-    set nat source rule 30 source address 192.0.3.0/24
+    set nat source rule 30 source address 203.0.113.0/24
     set nat source rule 30 source port 80,443
 
 
