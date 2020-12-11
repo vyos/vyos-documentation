@@ -28,7 +28,8 @@ Static Routes
 
    Disable this IPv4 static route entry.
 
-.. cfgcmd:: set protocols static route <subnet> next-hop <address> distance <distance>
+.. cfgcmd:: set protocols static route <subnet> next-hop <address>
+   distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
@@ -47,7 +48,8 @@ Static Routes
 
    Disable this IPv6 static route entry.
 
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> distance <distance>
+.. cfgcmd:: set protocols static route6 <subnet> next-hop <address>
+   distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
@@ -61,34 +63,40 @@ Static Routes
 Interface Routes
 ================
 
-.. cfgcmd:: set protocols static interface-route <subnet> next-hop-interface <interface>
+.. cfgcmd:: set protocols static interface-route <subnet> next-hop-interface
+   <interface>
 
    Allows you to configure the next-hop interface for an interface-based IPv4
    static route. `<interface>` will be the next-hop interface where trafic is
    routed for the given `<subnet>`.
 
-.. cfgcmd:: set protocols static interface-route <subnet> next-hop-interface <interface> disable
+.. cfgcmd:: set protocols static interface-route <subnet> next-hop-interface
+   <interface> disable
 
    Disables interface-based IPv4 static route.
 
-.. cfgcmd:: set protocols static interface-route <subnet> next-hop-interface <interface> distance <distance>
+.. cfgcmd:: set protocols static interface-route <subnet> next-hop-interface
+   <interface> distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
 
    Range is 1 to 255, default is 1.
 
-.. cfgcmd:: set protocols static interface-route6 <subnet> next-hop-interface <interface>
+.. cfgcmd:: set protocols static interface-route6 <subnet> next-hop-interface
+   <interface>
 
    Allows you to configure the next-hop interface for an interface-based IPv6
    static route. `<interface>` will be the next-hop interface where trafic is
    routed for the given `<subnet>`.
 
-.. cfgcmd:: set protocols static interface-route6 <subnet> next-hop-interface <interface> disable
+.. cfgcmd:: set protocols static interface-route6 <subnet> next-hop-interface
+   <interface> disable
 
    Disables interface-based IPv6 static route.
 
-.. cfgcmd:: set protocols static interface-route6 <subnet> next-hop-interface <interface> distance <distance>
+.. cfgcmd:: set protocols static interface-route6 <subnet> next-hop-interface
+   <interface> distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.

@@ -96,7 +96,8 @@ These are the commands for a basic setup.
    can communicate with PIM neighbors.
 
 
-.. cfgcmd:: set protocols pim rp address <address> group <multicast-address/mask-bits>
+.. cfgcmd:: set protocols pim rp address <address> group
+   <multicast-address/mask-bits>
 
    Use this comand to manually configure a Rendevouz Point for PIM so
    that join messages can be sent there. Set the Rendevouz Point address
@@ -140,7 +141,8 @@ You can also tune multicast with the following commands.
    platforms cannot see data flowing in better than 30 second chunks.
 
 
-.. cfgcmd:: set protocols igmp interface <interface> join <multicast-address> source <IP-address>
+.. cfgcmd:: set protocols igmp interface <interface> join <multicast-address>
+   source <IP-address>
 
    Use this command to allow the selected interface join a multicast
    group defining the multicast address you want to join and the source
@@ -153,7 +155,8 @@ You can also tune multicast with the following commands.
    host query interval (1-1800) in seconds that PIM will use.
 
 
-.. cfgcmd:: set protocols igmp interface <interface query-max-response-time <deciseconds>
+.. cfgcmd:: set protocols igmp interface <interface query-max-response-time
+   <deciseconds>
 
    Use this command to configure in the selected interface the IGMP
    query response timeout value (10-250) in deciseconds. If a report is
@@ -180,7 +183,8 @@ upstream interface, and one or more downstream interfaces.
 Configuration
 =============
 
-.. cfgcmd:: set protocols igmp-proxy interface <interface> role <upstream | downstream>
+.. cfgcmd:: set protocols igmp-proxy interface <interface> role
+   <upstream | downstream>
 
    * **upstream:** The upstream network interface is the outgoing interface
      which is responsible for communicating to available multicast data sources.

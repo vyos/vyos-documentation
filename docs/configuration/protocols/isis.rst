@@ -6,12 +6,14 @@
 IS-IS
 #####
 
-:abbr:`IS-IS (Intermediate System to Intermediate System)` is a link-state interior gateway routing protocol.
-Like OSPF, IS-IS runs the Dijkstra shortest-path first (SPF) algorithm to create a database of the network’s
-topology and, from that database, to determine the best (that is, shortest) path to a destination.
-The routers exchange topology information with their nearest neighbors.
-IS-IS runs directly on the data link layer (Layer 2).
-IS-IS addresses are called :abbr:`NETs (Network Entity Titles)` and can be 8 to 20 bytes long, but are generally 10 bytes long.
+:abbr:`IS-IS (Intermediate System to Intermediate System)` is a link-state
+interior gateway routing protocol. Like OSPF, IS-IS runs the Dijkstra
+shortest-path first (SPF) algorithm to create a database of the network’s
+topology and, from that database, to determine the best (that is, shortest)
+path to a destination. The routers exchange topology information with their
+nearest neighbors. IS-IS runs directly on the data link layer (Layer 2).
+IS-IS addresses are called :abbr:`NETs (Network Entity Titles)` and can be
+8 to 20 bytes long, but are generally 10 bytes long.
 
 For example :abbr:`NET (Network Entity Title)`
 
@@ -28,12 +30,14 @@ The IS-IS address consists of three parts:
     ``0001`` IS-IS area number (Area1)
 
   System identifier:
-    ``1921.6800.1002`` For system idetifier we recommend to use IP address or MAC address of the router.
+    ``1921.6800.1002`` For system idetifier we recommend to use IP address or
+    MAC address of the router.
 
   NET selector:
     ``00`` Must always be 00, to indicate "this system".
 
-Simple IS-IS configuration using 2 nodes and redistributing connected interfaces.
+Simple IS-IS configuration using 2 nodes and redistributing connected
+interfaces.
 
 **Node 1:**
 

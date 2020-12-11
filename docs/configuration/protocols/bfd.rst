@@ -25,19 +25,22 @@ Configure BFD
 
    Allow this BFD peer to not be directly connected
 
-.. cfgcmd:: set protocols bfd peer <address> source [address <address> | interface <interface>]
+.. cfgcmd:: set protocols bfd peer <address> source 
+   [address <address> | interface <interface>]
 
    Bind listener to specifid interface/address, mandatory for IPv6
 
 .. cfgcmd:: set protocols bfd peer <address> interval echo-interval <10-60000>
 
-   The minimal echo receive transmission interval that this system is capable of handling
+   The minimal echo receive transmission interval that this system is
+   capable of handling
 
 .. cfgcmd:: set protocols bfd peer <address> interval multiplier <2-255>
 
    Remote transmission interval will be multiplied by this value
 
-.. cfgcmd:: set protocols bfd peer <address> interval [receive | transmit] <10-60000>
+.. cfgcmd:: set protocols bfd peer <address> interval 
+   [receive | transmit] <10-60000>
 
    Interval in milliseconds
 

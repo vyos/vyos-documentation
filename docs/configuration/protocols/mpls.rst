@@ -240,4 +240,8 @@ Reset
   Use this command to reset an LDP neighbor/TCP session that is established
 
 
+.. stop_vyoslinter
+
 .. _`Wikipedia (MPLS)`: https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching
+
+.. start_vyoslinter

@@ -100,6 +100,8 @@ Once your routers are configured to reject RPKI-invalid prefixes, you can
 test whether the configuration is working correctly using the `RIPE Labs RPKI
 Test`_ experimental tool.
 
+.. stop_vyoslinter
+
 .. _tweet by EvilMog: https://twitter.com/Evil_Mog/status/1230924170508169216
 .. _Routinator: https://www.nlnetlabs.nl/projects/rpki/routinator/
 .. _GoRTR: https://github.com/cloudflare/gortr
@@ -110,4 +112,6 @@ Test`_ experimental tool.
 .. _RPKI analytics: https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/
 .. _RIPE Labs RPKI Test: https://sg-pub.ripe.net/jasper/rpki-web-test/
 .. _excellent guide to RPKI: https://rpki.readthedocs.io/
-.. _help and operational guidance: https://rpki.readthedocs.io/en/latest/about/help.html
+.. _help and operational guidance: https://rpki.readthedocs.io/en/latest/about/help.htm
+
+.. start_vyoslinter
