@@ -801,7 +801,8 @@ IPv4
 ====
 
 
-.. cfgcmd:: set firewall options interface <interface> adjust-mss <number-of-bytes>
+.. cfgcmd:: set firewall options interface <interface> adjust-mss
+   <number-of-bytes>
 
    Use this command to set the maximum segment size for IPv4 transit
    packets on a specific interface (500-1460 bytes).
@@ -823,7 +824,8 @@ for your WireGuard `wg02` tunnel.
 IPv6
 ====
 
-.. cfgcmd:: set firewall options interface <interface> adjust-mss6 <number-of-bytes>
+.. cfgcmd:: set firewall options interface <interface> adjust-mss6
+   <number-of-bytes>
 
    Use this command to set the maximum segment size for IPv6 transit
    packets on a specific interface (1280-1492 bytes).
