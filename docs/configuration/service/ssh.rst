@@ -47,12 +47,12 @@ Configuration
 
 .. cfgcmd:: set service ssh ciphers <cipher>
 
-  Define allowed ciphers used for the SSH connection. A number of allowed ciphers
-  can be specified, use multiple occurrences to allow multiple ciphers.
+  Define allowed ciphers used for the SSH connection. A number of allowed
+  ciphers can be specified, use multiple occurrences to allow multiple ciphers.
 
   List of supported ciphers: ``3des-cbc``, ``aes128-cbc``, ``aes192-cbc``,
-  ``aes256-cbc``, ``aes128-ctr``, ``aes192-ctr``, ``aes256-ctr``, ``arcfour128``,
-  ``arcfour256``, ``arcfour``, ``blowfish-cbc``, ``cast128-cbc``
+  ``aes256-cbc``, ``aes128-ctr``, ``aes192-ctr``, ``aes256-ctr``,
+  ``arcfour128``, ``arcfour256``, ``arcfour``, ``blowfish-cbc``, ``cast128-cbc``
 
 .. cfgcmd:: set service ssh disable-password-authentication
 
@@ -72,11 +72,12 @@ Configuration
 
   List of supported MACs: ``hmac-md5``, ``hmac-md5-96``, ``hmac-ripemd160``,
   ``hmac-sha1``, ``hmac-sha1-96``, ``hmac-sha2-256``, ``hmac-sha2-512``,
-  ``umac-64@openssh.com``, ``umac-128@openssh.com``, ``hmac-md5-etm@openssh.com``,
-  ``hmac-md5-96-etm@openssh.com``, ``hmac-ripemd160-etm@openssh.com``,
-  ``hmac-sha1-etm@openssh.com``, ``hmac-sha1-96-etm@openssh.com``,
-  ``hmac-sha2-256-etm@openssh.com``, ``hmac-sha2-512-etm@openssh.com``,
-  ``umac-64-etm@openssh.com``, ``umac-128-etm@openssh.com``
+  ``umac-64@openssh.com``, ``umac-128@openssh.com``,
+  ``hmac-md5-etm@openssh.com``, ``hmac-md5-96-etm@openssh.com``,
+  ``hmac-ripemd160-etm@openssh.com``, ``hmac-sha1-etm@openssh.com``,
+  ``hmac-sha1-96-etm@openssh.com``, ``hmac-sha2-256-etm@openssh.com``,
+  ``hmac-sha2-512-etm@openssh.com``, ``umac-64-etm@openssh.com``,
+  ``umac-128-etm@openssh.com``
 
 .. cfgcmd:: set service ssh access-control <allow | deny> <group | user> <name>
 
@@ -95,7 +96,8 @@ Configuration
   List of supported algorithms: ``diffie-hellman-group1-sha1``,
   ``diffie-hellman-group14-sha1``, ``diffie-hellman-group14-sha256``,
   ``diffie-hellman-group16-sha512``, ``diffie-hellman-group18-sha512``,
-  ``diffie-hellman-group-exchange-sha1``, ``diffie-hellman-group-exchange-sha256``,
+  ``diffie-hellman-group-exchange-sha1``,
+  ``diffie-hellman-group-exchange-sha256``,
   ``ecdh-sha2-nistp256``, ``ecdh-sha2-nistp384``, ``ecdh-sha2-nistp521``,
   ``curve25519-sha256`` and ``curve25519-sha256@libssh.org``.
 

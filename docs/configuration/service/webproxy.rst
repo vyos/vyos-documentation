@@ -68,7 +68,8 @@ first. Otherwise you will not be able to commit the config changes.
 
 * To auto update the blacklist files
 
-  :code:`set service webproxy url-filtering squidguard auto-update update-hour 23`
+  :code:`set service webproxy url-filtering squidguard auto-update
+  update-hour 23`
 
 * To configure blocking add the following to the configuration
 
@@ -108,9 +109,12 @@ Directory as authentication backend. Queries are done via LDAP.
 
 * ``base-dn`` set the base directory for the search
 * ``bind-dn`` and ``password``: set the user, which is used for the ldap search
-* ``filter-expression``: set the exact filter which a authorized user match in a ldap-search. In this example every User is able to authorized.
+* ``filter-expression``: set the exact filter which a authorized user match in
+  a ldap-search. In this example every User is able to authorized.
 
-You can find more about the ldap authentication `here <http://www.squid-cache.org/Versions/v3/3.2/manuals/basic_ldap_auth.html>`_
+You can find more about the ldap authentication
+`here 
+<http://www.squid-cache.org/Versions/v3/3.2/manuals/basic_ldap_auth.html>`_
 
 Adjusting cache size
 ^^^^^^^^^^^^^^^^^^^^

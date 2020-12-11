@@ -29,6 +29,8 @@ Enabling Advertisments
 
 .. cfgcmd:: set service router-advert interface <interface> ....
 
+.. stop_vyoslinter
+
 .. csv-table:: 
    :header: "Field", "VyOS Option", "Description"
    :widths: 10, 10, 20
@@ -45,10 +47,15 @@ Enabling Advertisments
    "DNSSL", "dnssl", "DNS search list to advertise"
    "Name Server", "name-server", "Advertise DNS server per https://tools.ietf.org/html/rfc6106"
 
+.. start_vyoslinter
+
+
 Advertising a Prefix
 ''''''''''''''''''''
 
 .. cfgcmd:: set service router-advert interface <interface> prefix 2001:DB8::/32
+
+.. stop_vyoslinter
 
 .. csv-table::
     :header: "VyOS Field", "Description"
@@ -59,6 +66,7 @@ Advertising a Prefix
     "preferred-lifetime","Time in seconds that the prefix will remain preferred (default 4 hours)"
     "valid-lifetime","Time in seconds that the prefix will remain valid (default: 30 days)"
 
+.. start_vyoslinter
 
 Disabling Advertisements
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,10 +86,10 @@ Example Configuration
         interval {
             max 600
         }
-        name-server 2001:4860:4860::8888
-        name-server 2001:4860:4860::8844
+        name-server 2001:db8::1
+        name-server 2001:db8::2
         other-config-flag
-        prefix 2001:DB8:beef:2::/64 {
+        prefix 2001:db8:beef:2::/64 {
             valid-lifetime 2592000
         }
         reachable-time 0

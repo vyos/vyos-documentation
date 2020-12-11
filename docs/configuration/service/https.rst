@@ -39,23 +39,34 @@ leave appropriate defaults in the nginx directive. Multiple instances of
 Configuration mode requests
 ---------------------------
 
-In our example, we are creating a dummy interface and assigning an address to it:
+In our example, we are creating a dummy interface and assigning an address to
+it:
 
 .. code-block:: none
 
   curl -k -X POST -F data='{"op": "set", "path": ["interfaces", "dummy", "dum1", "address"], "value": "203.0.113.76/32"}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/configure
 
-The ``/configure`` endpoint takes a request serialized in JSON. The only HTTP method it uses is POST. Request data is passed in the ``data=`` field and the API key is passed in the ``key=`` field. Key identifiers from the config are purely informational and the application doesn't need to know them, they only appear in the server logs to avoid exposing keys in log files, you only need the key itself.
+The ``/configure`` endpoint takes a request serialized in JSON. The only HTTP
+method it uses is POST. Request data is passed in the ``data=`` field and the
+API key is passed in the ``key=`` field. Key identifiers from the config are
+purely informational and the application doesn't need to know them, they only
+appear in the server logs to avoid exposing keys in log files, you only need
+the key itself.
 
-Since internally there is no distinction between a path and a value, you can omit the value field and include the value in the path like it's done in the shell commands:
+Since internally there is no distinction between a path and a value, you can
+omit the value field and include the value in the path like it's done in the
+shell commands:
 
 .. code-block:: none
 
   curl -k -X POST -F data='{"op": "set", "path": ["interfaces", "dummy", "dum10", "address", "203.0.113.99/32"]}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/configure
 
-Separate value field make the semantics more clear though, and also makes it easier to create a command template once and update it with different values as needed.
+Separate value field make the semantics more clear though, and also makes it
+easier to create a command template once and update it with different values
+as needed.
 
-You can pass the ``set``, ``delete`` or ``comment`` command to it. The API will push the command to the session and commit.
+You can pass the ``set``, ``delete`` or ``comment`` command to it.
+The API will push the command to the session and commit.
 
 To retrieve a value:
 
@@ -91,9 +102,11 @@ Passing an empty path will return the full config:
 Configuration management requests
 ---------------------------------
 
-When saving or loading a configuration, the endpoint is ``/config-file`` and you can pass the ``save`` or ``load`` command.
+When saving or loading a configuration, the endpoint is ``/config-file`` and
+you can pass the ``save`` or ``load`` command.
 
-If you don't specify the file when saving, it saves to ``/config/config.boot``. Here's an example:
+If you don't specify the file when saving, it saves to ``/config/config.boot``.
+Here's an example:
 
 .. code-block:: none
 
@@ -102,7 +115,8 @@ If you don't specify the file when saving, it saves to ``/config/config.boot``. 
 Image management requests
 -------------------------
 
-One may ``add`` or ``delete`` a system image using the endpoint ``/image``. Here are the respective examples:
+One may ``add`` or ``delete`` a system image using the endpoint ``/image``.
+Here are the respective examples:
 
 ``add`` from ``url``. Here we use the URL of the latest rolling release:
 
@@ -116,7 +130,8 @@ One may ``add`` or ``delete`` a system image using the endpoint ``/image``. Here
 
   # curl -k -X POST -F data='{"op": "delete", "name": "1.3-rolling-202006070117"}' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/image
 
-To list the available system images by name, one may use the operational mode request ``show`` discussed in the next section; in this setting it would be:
+To list the available system images by name, one may use the operational mode
+request ``show`` discussed in the next section; in this setting it would be:
 
 .. code-block:: none
 

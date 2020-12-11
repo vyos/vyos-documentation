@@ -119,7 +119,8 @@ Now configure conntrack-sync service on ``router1`` **and** ``router2``
   set service conntrack-sync mcast-group '225.0.0.50'
   set service conntrack-sync sync-queue-size '8'
 
-If you are using VRRP, you need to define a VRRP sync-group, and use ``vrrp sync-group`` instead of ``cluster group``.
+If you are using VRRP, you need to define a VRRP sync-group, and use
+``vrrp sync-group`` instead of ``cluster group``.
 
 .. code-block:: none
 

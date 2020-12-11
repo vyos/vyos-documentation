@@ -29,7 +29,8 @@ First steps
    Use this command to define whether your PPPoE clients will locally
    authenticate in your VyOS system or in RADIUS server.
 
-.. cfgcmd:: set service pppoe-server authentication local-users username <name> password <password>
+.. cfgcmd:: set service pppoe-server authentication local-users username
+   <name> password <password>
 
    Use this command to configure the username and the password of a
    locally configured user.
@@ -103,7 +104,8 @@ used, multiple subnets can be setup which are used sequentially.
 To use a radius server, you need to switch to authentication mode RADIUS
 and then configure it.
 
-.. cfgcmd:: set service pppoe-server authentication radius server <address> key <secret>
+.. cfgcmd:: set service pppoe-server authentication radius server <address>
+   key <secret>
   
    Use this command to configure the IP address and the shared secret
    key of your RADIUS server.  You can have multiple RADIUS servers
@@ -123,7 +125,8 @@ Framed-IP-Address.
 
 **RADIUS sessions management DM/CoA**
 
-.. cfgcmd:: set service pppoe-server authentication radius dynamic-author <key | port | server>
+.. cfgcmd:: set service pppoe-server authentication radius dynamic-author
+   <key | port | server>
 
    Use this command to configure Dynamic Authorization Extensions to
    RADIUS so that you can remotely disconnect sessions and change some
@@ -141,7 +144,8 @@ username test
 
 .. code-block:: none
 
-  root@radius-server:~# echo "User-Name=test" | radclient -x 10.1.1.2:3799 disconnect secret123
+  root@radius-server:~# echo "User-Name=test" | radclient -x 10.1.1.2:3799
+  disconnect secret123
 
 You can also use another attributes for identify client for disconnect,
 like Framed-IP-Address, Acct-Session-Id, etc. Result commands appears in
@@ -155,7 +159,8 @@ Example for changing rate-limit via RADIUS CoA.
 
 .. code-block:: none
 
-  echo "User-Name=test,Filter-Id=5000/4000" | radclient 10.1.1.2:3799 coa secret123
+  echo "User-Name=test,Filter-Id=5000/4000" | radclient 10.1.1.2:3799 coa
+  secret123
 
 Filter-Id=5000/4000 (means 5000Kbit down-stream rate and 4000Kbit
 up-stream rate) If attribute Filter-Id redefined, replace it in RADIUS
@@ -164,7 +169,8 @@ CoA request.
 Automatic VLAN Creation
 -----------------------
 
-.. cfgcmd:: set service pppoe-server interface <interface> <vlan-id | vlan range> <text>
+.. cfgcmd:: set service pppoe-server interface <interface>
+   <vlan-id | vlan range> <text>
 
    VLAN's can be created by accel-ppp on the fly via the use of a Kernel
    module named `vlan_mon`, which is monitoring incoming vlans and
@@ -193,7 +199,8 @@ attributes.
 For Local Users
 ^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set service pppoe-server authentication local-users username <name> rate-limit <download | upload>
+.. cfgcmd:: set service pppoe-server authentication local-users username <name>
+   rate-limit <download | upload>
   
    Use this command to configure a data-rate limit to PPPOoE clients for
    traffic download or upload. The rate-limit is set in kbit/sec.
@@ -248,7 +255,8 @@ Load Balancing
 --------------
 
 
-.. cfgcmd:: set service pppoe-server pado-delay <number-of-ms> sessions <number-of-sessions>
+.. cfgcmd:: set service pppoe-server pado-delay <number-of-ms>
+   sessions <number-of-sessions>
 
    Use this command to enable the delay of PADO (PPPoE Active Discovery
    Offer) packets, which can be used as a session balancing mechanism
@@ -273,7 +281,8 @@ IPv6
 IPv6 client's prefix assignment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set service pppoe-server client-ipv6-pool prefix <address> mask <number-of-bits>
+.. cfgcmd:: set service pppoe-server client-ipv6-pool prefix <address>
+   mask <number-of-bits>
 
    Use this comand to set the IPv6 address pool from which a PPPoE
    client will get an IPv6 prefix of your defined length (mask) to
@@ -284,7 +293,8 @@ IPv6 client's prefix assignment
 IPv6 Prefix Delegation
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set service pppoe-server client-ipv6-pool delegate <address> delegation-prefix <number-of-bits>
+.. cfgcmd:: set service pppoe-server client-ipv6-pool delegate <address>
+   delegation-prefix <number-of-bits>
 
    Use this command to configure DHCPv6 Prefix Delegation (RFC3633). You
    will have to set your IPv6 pool and the length of the delegation
@@ -378,8 +388,8 @@ The example below covers a dual-stack configuration via pppoe-server.
   set service pppoe-server client-ip-pool stop '192.168.0.10'
   set service pppoe-server client-ipv6-pool delegate '2001:db8:8003::/48' delegation-prefix '56'
   set service pppoe-server client-ipv6-pool prefix '2001:db8:8002::/48' mask '64'
-  set service pppoe-server name-server '8.8.8.8'
-  set service pppoe-server name-server '2001:4860:4860::8888'
+  set service pppoe-server name-server '10.1.1.1'
+  set service pppoe-server name-server '2001:db8:4860::8888'
   set service pppoe-server interface 'eth2'
   set service pppoe-server gateway-address '10.100.100.1'
 

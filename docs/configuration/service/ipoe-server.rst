@@ -41,8 +41,8 @@ the configuration.
 
   set service ipoe-server authentication interface eth2 mac-address 08:00:27:2f:d8:06
   set service ipoe-server authentication mode 'local'
-  set service ipoe-server dns-server server-1 '8.8.8.8'
-  set service ipoe-server dns-server server-2 '8.8.4.4'
+  set service ipoe-server dns-server server-1 '10.10.1.1'
+  set service ipoe-server dns-server server-2 '10.10.1.2'
   set service ipoe-server interface eth2 client-subnet '192.168.0.0/24'
 
 
@@ -134,8 +134,8 @@ The rate-limit is set in kbit/sec.
   set service ipoe-server authentication interface eth2 mac-address 08:00:27:2f:d8:06 rate-limit download '500'
   set service ipoe-server authentication interface eth2 mac-address 08:00:27:2f:d8:06 rate-limit upload '500'
   set service ipoe-server authentication mode 'local'
-  set service ipoe-server dns-server server-1 '8.8.8.8'
-  set service ipoe-server dns-server server-2 '8.8.4.4'
+  set service ipoe-server dns-server server-1 '10.10.1.1'
+  set service ipoe-server dns-server server-2 '10.10.1.2'
   set service ipoe-server interface eth2 client-subnet '192.168.0.0/24'
 
 .. code-block:: none

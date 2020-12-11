@@ -30,49 +30,57 @@ Configuration
    any device trying to request an IP address that is not valid for this
    network.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> default-router <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   default-router <address>
 
    This is a configuration parameter for the `<subnet>`, saying that as part of
    the response, tell the client that the default gateway can be reached at
    `<address>`.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> dns-server <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   dns-server <address>
 
    This is a configuration parameter for the subnet, saying that as part of the
    response, tell the client that the DNS server can be found at `<address>`.
 
    Multiple DNS servers can be defined.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> lease <time>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   lease <time>
 
    Assign the IP address to this machine for `<time>` seconds.
 
    The default value is 86400 seconds which corresponds to one day.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> range <n> start <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   range <n> start <address>
 
    Create DHCP address range with a range id of `<n>`. DHCP leases are taken
    from this pool. The pool starts at address `<address>`.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> range <n> stop <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   range <n> stop <address>
 
    Create DHCP address range with a range id of `<n>`. DHCP leases are taken
    from this pool. The pool stops with address `<address>`.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> exclude <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   exclude <address>
 
    Always exclude this address from any defined range. This address will never
    be assigned by the DHCP server.
 
    This option can be specified multiple times.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> domain-name <domain-name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   domain-name <domain-name>
 
    The domain-name parameter should be the domain name that will be appended to
    the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
    Option 015).
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> domain-search <domain-name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   domain-search <domain-name>
 
    The domain-name parameter should be the domain name used when completing DNS
    request where no full FQDN is passed. This option can be given multiple times
@@ -84,21 +92,26 @@ Failover
 VyOS provides support for DHCP failover. DHCP failover must be configured
 explicitly by the following statements.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> failover local-address <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
+   <subnet> failover local-address <address>
 
    Local IP `<address>` used when communicating to the failover peer.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> failover peer-address <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
+   <subnet> failover peer-address <address>
 
-   Remote peer IP `<address>` of the second DHCP server in this failover cluster.
+   Remote peer IP `<address>` of the second DHCP server in this failover
+   cluster.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> failover name <name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
+   <subnet> failover name <name>
 
    A generic `<name>` referencing this sync service.
 
    .. note:: `<name>` must be identical on both sides!
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> failover status <primary | secondary>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
+   <subnet> failover status <primary | secondary>
 
    The primary and secondary statements determines whether the server is primary
    or secondary.
@@ -109,11 +122,11 @@ explicitly by the following statements.
 
    .. hint:: The dialogue between failover partners is neither encrypted nor
       authenticated. Since most DHCP servers exist within an organisation's own
-      secure Intranet, this would be an unnecessary overhead. However, if you have
-      DHCP failover peers whose communications traverse insecure networks, then we
-      recommend that you consider the use of VPN tunneling between them to ensure
-      that the failover partnership is immune to disruption (accidental or
-      otherwise) via third parties.
+      secure Intranet, this would be an unnecessary overhead. However, if you
+      have DHCP failover peers whose communications traverse insecure networks,
+      then we recommend that you consider the use of VPN tunneling between them
+      to ensure that the failover partnership is immune to disruption
+      (accidental or otherwise) via third parties.
 
 Static mappings
 ---------------
@@ -122,12 +135,14 @@ You can specify a static DHCP assignment on a per host basis. You will need the
 MAC address of the station and your desired IP address. The address must be
 inside the subnet definition but can be outside of the range statement.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> static-mapping <description> mac-address <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
+   <subnet> static-mapping <description> mac-address <address>
 
    Create a new DHCP static mapping named `<description>` which is valid for
    the host identified by its MAC `<address>`.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> static-mapping <description> ip-address <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
+   <subnet> static-mapping <description> ip-address <address>
 
    Static DHCP IP address assign to host identified by `<description>`. IP
    address must be inside the `<subnet>` which is defined but can be outside
@@ -137,7 +152,8 @@ inside the subnet definition but can be outside of the range statement.
 
    This is useful, for example, in combination with hostfile update.
 
-   .. hint:: This is the equivalent of the host block in dhcpd.conf of isc-dhcpd.
+   .. hint:: This is the equivalent of the host block in dhcpd.conf of
+      isc-dhcpd.
 
 Options
 =======
@@ -155,12 +171,14 @@ Options
    * - client-prefix-length
      - 1
      - subnet-mask
-     - Specifies the clients subnet mask as per RFC 950. If unset, subnet declaration is used.
+     - Specifies the clients subnet mask as per RFC 950. If unset,
+       subnet declaration is used.
      - N
    * - time-offset
      - 2
      - time-offset
-     - Offset of the client's subnet in seconds from Coordinated Universal Time (UTC)
+     - Offset of the client's subnet in seconds from Coordinated
+       Universal Time (UTC)
      - N
    * - default-router
      - 3
@@ -390,8 +408,8 @@ Operation Mode
   vyos@vyos:~$ show dhcp server leases
   IP address      Hardware address    State    Lease start          Lease expiration     Remaining   Pool         Hostname
   --------------  ------------------  -------  -------------------  -------------------  ----------  -----------  ---------
-  192.0.2.104     aa:bb:cc:dd:ee:ff   active   2019/12/05 14:24:23  2019/12/06 02:24:23  6:05:35     dhcpexample  test1
-  192.0.2.115     ab:ac:ad:ae:af:bf   active   2019/12/05 18:02:37  2019/12/06 06:02:37  9:43:49     dhcpexample  test2
+  192.0.2.104     00:53:01:dd:ee:ff   active   2019/12/05 14:24:23  2019/12/06 02:24:23  6:05:35     dhcpexample  test1
+  192.0.2.115     00:53:01:ae:af:bf   active   2019/12/05 18:02:37  2019/12/06 06:02:37  9:43:49     dhcpexample  test2
 
 .. hint:: Static mappings aren't shown. To show all states, use
    ``show dhcp server leases state all``.
@@ -425,36 +443,43 @@ Configuration
    Clients receiving advertise messages from multiple servers choose the server
    with the highest preference value. The range for this value is ``0...255``.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> lease-time {default | maximum | minimum}
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> lease-time {default | maximum | minimum}
 
    The default lease time for DHCPv6 leases is 24 hours. This can be changed by
    supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All
    values need to be supplied in seconds.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nis-domain <domain-name>
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> nis-domain <domain-name>
 
    A :abbr:`NIS (Network Information Service)` domain can be set to be used for
    DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nisplus-domain <domain-name>
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> nisplus-domain <domain-name>
 
    The procedure to specify a :abbr:`NIS+ (Network Information Service Plus)`
    domain is similar to the NIS domain one:
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nis-server <address>
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> nis-server <address>
 
    Specify a NIS server address for DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> nisplus-server <address>
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> nisplus-server <address>
 
    Specify a NIS+ server address for DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sip-server <address | fqdn>
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> sip-server <address | fqdn>
 
    Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6
    address of Fully Qualified Domain Name for all DHCPv6 clients.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> sntp-server-address <address>
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> sntp-server-address <address>
 
    A SNTP server address can be specified for DHCPv6 clients.
 
@@ -465,12 +490,14 @@ To hand out individual prefixes to your clients the following configuration is
 used:
 
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> prefix-delegation start <address> prefix-length <length>
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> prefix-delegation start <address> prefix-length <length>
 
    Hand out prefixes of size `<length>` to clients in subnet `<prefix>` when
    they request for prefix delegation.
 
-.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <prefix> prefix-delegation start <address> stop <address>
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> prefix-delegation start <address> stop <address>
 
    Delegate prefixes from the range indicated by the start and stop qualifier.
 
@@ -533,6 +560,8 @@ be created. The following example explains the process.
 
 The configuration will look as follows:
 
+.. stop_vyoslinter (00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff false positive)
+
 .. code-block:: none
 
   show service dhcp-server shared-network-name NET1
@@ -550,6 +579,8 @@ The configuration will look as follows:
             }
          }
       }
+
+.. start_vyoslinter
 
 Operation Mode
 ==============
@@ -636,13 +667,14 @@ Options
    DHCP packet size surpasses this value it will be forwarded without appending
    relay agent information. Range 64...1400, default 576.
 
-.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packet <append | discard | forward | replace>
+.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packet
+   <append | discard | forward | replace>
 
    Four policies for reforwarding DHCP packets exist:
 
    * **append:** The relay agent is allowed to append its own relay information
-     to a received DHCP packet, disregarding relay information already present in
-     the packet.
+     to a received DHCP packet, disregarding relay information already present
+     in the packet.
 
    * **discard:** Received packets which already contain relay information will
      be discarded.
@@ -658,7 +690,8 @@ Example
 
 * Listen for DHCP requests on interface ``eth1``.
 * DHCP server is located at IPv4 address 10.0.1.4.
-* Router receives DHCP client requests on ``eth1`` and relays them to the server at 10.0.1.4.
+* Router receives DHCP client requests on ``eth1`` and relays them to the server
+  at 10.0.1.4.
 
 .. figure:: /_static/images/service_dhcp-relay01.png
    :scale: 80 %
@@ -697,10 +730,11 @@ Configuration
 
    Multiple interfaces may be specified.
 
-.. cfgcmd:: set service dhcpv6-relay upstream-interface <interface> address <server>
+.. cfgcmd:: set service dhcpv6-relay upstream-interface <interface>
+   address <server>
 
-   Specifies an upstream network `<interface>` from which replies from `<server>`
-   and other relay agents will be accepted.
+   Specifies an upstream network `<interface>` from which replies from
+   `<server>` and other relay agents will be accepted.
 
 Options
 -------

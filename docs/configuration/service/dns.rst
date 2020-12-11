@@ -11,8 +11,8 @@ VyOS provides DNS infrastructure for small networks. It is designed to be
 lightweight and have a small footprint, suitable for resource constrained
 routers and firewalls, for this we utilize PowerDNS recursor.
 
-The VyOS DNS forwarder does not require an upstream DNS server. It can serve as a
-full recursive DNS server - but it can also forward queries to configurable
+The VyOS DNS forwarder does not require an upstream DNS server. It can serve as
+a full recursive DNS server - but it can also forward queries to configurable
 upstream DNS servers. By not configuring any upstream DNS servers you also
 avoid to be tracked by the provider of your upstream DNS server.
 
@@ -28,9 +28,10 @@ avoid to be tracked by the provider of your upstream DNS server.
 
 .. cfgcmd:: set service dns forwarding domain <domain-name> server <address>
 
-   Forward received queries for a particular domain (specified via `domain-name`)
-   to a given name-server. Multiple nameservers can be specified. You can use
-   this feature for a DNS split-horizon configuration.
+   Forward received queries for a particular domain
+   (specified via `domain-name`) to a given name-server. Multiple nameservers
+   can be specified. You can use this feature for a DNS split-horizon
+   configuration.
 
    .. note:: This also works for reverse-lookup zones (``18.172.in-addr.arpa``).
 
@@ -41,7 +42,8 @@ avoid to be tracked by the provider of your upstream DNS server.
    recursor. A network of ``0.0.0.0/0`` or ``::/0`` would allow all IPv4 and
    IPv6 networks to query this server. This is on general a bad idea.
 
-.. cfgcmd:: set service dns forwarding dnssec <off | process-no-validate | process | log-fail | validate>
+.. cfgcmd:: set service dns forwarding dnssec
+   <off | process-no-validate | process | log-fail | validate>
 
    The PowerDNS Recursor has 5 different levels of DNSSEC processing, which can
    be set with the dnssec setting. In order from least to most processing, these
@@ -103,23 +105,25 @@ avoid to be tracked by the provider of your upstream DNS server.
 
 .. cfgcmd:: set service dns forwarding listen-address
 
-   The local IPv4 or IPv6 addresses to bind the DNS forwarder to. The forwarder will listen on this address for
-   incoming connections.
+   The local IPv4 or IPv6 addresses to bind the DNS forwarder to. The forwarder
+   will listen on this address for incoming connections.
 
 Example
 =======
 
-A VyOS router with two interfaces - eth0 (WAN) and eth1 (LAN) - is required to implement a split-horizon DNS configuration for example.com.
+A VyOS router with two interfaces - eth0 (WAN) and eth1 (LAN) - is required to
+implement a split-horizon DNS configuration for example.com.
 
 In this scenario:
 
-* All DNS requests for example.com must be forwarded to a DNS server at 192.0.2.254
-  and 2001:db8:cafe::1
-* All other DNS requests will be forwarded to a different set of DNS servers at 192.0.2.1,
-  192.0.2.2, 2001:db8::1:ffff and 2001:db8::2:ffff
-* The VyOS DNS forwarder will only listen for requests on the eth1 (LAN) interface addresses - 192.168.1.254
-  for IPv4 and 2001:db8::ffff for IPv6
-* The VyOS DNS forwarder will only accept lookup requests from the LAN subnets - 192.168.1.0/24 and 2001:db8::/64
+* All DNS requests for example.com must be forwarded to a DNS server
+  at 192.0.2.254 and 2001:db8:cafe::1
+* All other DNS requests will be forwarded to a different set of DNS servers at
+  192.0.2.1, 192.0.2.2, 2001:db8::1:ffff and 2001:db8::2:ffff
+* The VyOS DNS forwarder will only listen for requests on the eth1 (LAN)
+  interface addresses - 192.168.1.254 for IPv4 and 2001:db8::ffff for IPv6
+* The VyOS DNS forwarder will only accept lookup requests from the
+  LAN subnets - 192.168.1.0/24 and 2001:db8::/64
 
 .. code-block:: none
 
@@ -139,12 +143,13 @@ Operation
 
 .. opcmd:: reset dns forwarding <all | domain>
 
-   Resets the local DNS forwarding cache database. You can reset the cache for all
-   entries or only for entries to a specific domain.
+   Resets the local DNS forwarding cache database. You can reset the cache
+   for all entries or only for entries to a specific domain.
 
 .. opcmd:: restart dns forwarding
 
-   Restarts the DNS recursor process. This also invalidates the local DNS forwarding cache.
+   Restarts the DNS recursor process. This also invalidates the local DNS
+   forwarding cache.
 
 
 .. _dynamic-dns:
@@ -175,26 +180,31 @@ Configuration
    address assigned to `<interface>` on the service you configured under
    `<service-name>`.
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> key <keyfile>
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+   key <keyfile>
 
    File identified by `<keyfile>` containing the secret RNDC key shared with
    remote DNS server.
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> server <server>
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+   server <server>
 
    Configure the DNS `<server>` IP/FQDN used when updating this dynamic
    assignment.
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> zone <zone>
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+   zone <zone>
 
    Configure DNS `<zone>` to be updated.
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> record <record>
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+   record <record>
 
    Configure DNS `<record>` which should be updated. This can be set multiple
    times.
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name> ttl <ttl>
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+   ttl <ttl>
 
    Configure optional TTL value on the given resource record. This defualts to
    600 seconds.
@@ -248,30 +258,35 @@ VyOS is also able to use any service relying on protocols supported by ddclient.
 To use such a service, one must define a login, password, one or multiple
 hostnames, protocol and server.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service> host-name <hostname>
+.. cfgcmd:: set service dns dynamic interface <interface> service <service>
+   host-name <hostname>
 
    Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS
    provider identified by `<service>` when the IP address on interface
    `<interface>` changes.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service> login <username>
+.. cfgcmd:: set service dns dynamic interface <interface> service <service>
+   login <username>
 
    Configure `<username>` used when authenticating the update request for
    DynDNS service identified by `<service>`.
    For Namecheap, set the <domain> you wish to update.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service> password <password>
+.. cfgcmd:: set service dns dynamic interface <interface> service <service>
+   password <password>
 
    Configure `<password>` used when authenticating the update request for
    DynDNS service identified by `<service>`.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service> protocol <protocol>
+.. cfgcmd:: set service dns dynamic interface <interface> service <service>
+   protocol <protocol>
 
    When a ``custom`` DynDNS provider is used the protocol used for communicating
    to the provider must be specified under `<protocol>`. See the embedded
    completion helper for available protocols.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service> server <server>
+.. cfgcmd:: set service dns dynamic interface <interface> service <service>
+   server <server>
 
    When a ``custom`` DynDNS provider is used the `<server>` where update
    requests are being sent to must be specified.

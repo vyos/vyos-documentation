@@ -12,7 +12,8 @@ as Station and Media Access Control Connectivity Discovery specified in IEEE
 802.1AB and IEEE 802.3-2012 section 6 clause 79.
 
 LLDP performs functions similar to several proprietary protocols, such as
-:abbr:`CDP (Cisco Discovery Protocol)`, :abbr:`FDP (Foundry Discovery Protocol)`,
+:abbr:`CDP (Cisco Discovery Protocol)`,
+:abbr:`FDP (Foundry Discovery Protocol)`,
 :abbr:`NDP (Nortel Discovery Protocol)` and :abbr:`LLTD (Link Layer Topology
 Discovery)`.
 
