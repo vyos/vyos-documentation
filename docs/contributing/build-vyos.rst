@@ -10,9 +10,9 @@ Prerequisites
 
 There are different ways you can build VyOS.
 
-Building using a :ref:`build_docker` container, although not the only way, is the
-easiest way as all dependencies are managed for you. However, you can also
-set up your own build machine and run a :ref:`build_native`.
+Building using a :ref:`build_docker` container, although not the only way,
+is the easiest way as all dependencies are managed for you. However, you can
+also set up your own build machine and run a :ref:`build_native`.
 
 .. note:: Starting with VyOS 1.2 the release model of VyOS has changed. VyOS
    is now **free as in speech, but not as in beer**. This means that while
@@ -95,8 +95,9 @@ The container can also be built directly from source:
   $ docker build -t vyos/vyos-build:crux docker # For VyOS 1.2
   $ docker build -t vyos/vyos-build:current docker      # For rolling release
 
-.. note:: Since VyOS has switched to Debian (10) Buster in its ``current`` branch,
-   you will require individual container for `current` and `crux` builds.
+.. note:: Since VyOS has switched to Debian (10) Buster in its ``current``
+   branch, you will require individual container for `current` and `crux`
+   builds.
 
 Tips and Tricks
 ---------------
@@ -175,7 +176,8 @@ Please note as this will differ for both `current` and `crux`.
   # For VyOS 1.3 (equuleus, current)
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
 
-Now a fresh build of the VyOS ISO can begin. Change directory to the ``vyos-build`` directory and run:
+Now a fresh build of the VyOS ISO can begin. Change directory to the
+``vyos-build`` directory and run:
 
 .. code-block:: none
 
@@ -193,8 +195,8 @@ Start the build:
   vyos_bld@d4220bb519a0:/vyos# ./configure --architecture amd64 --build-by "j.randomhacker@vyos.io"
   vyos_bld@d4220bb519a0:/vyos# sudo make iso
 
-When the build is successful, the resulting iso can be found inside the ``build``
-directory as ``live-image-[architecture].hybrid.iso``.
+When the build is successful, the resulting iso can be found inside the
+``build`` directory as ``live-image-[architecture].hybrid.iso``.
 
 Good luck!
 
@@ -202,8 +204,8 @@ Good luck!
    Docker does not expose all the filesystem feature required to the container.
    Building within a VirtualBox server on Mac however possible.
 
-.. hint:: Building VyOS on Windows WSL2 with Docker integrated into WSL2 will work
-   like a charm. No problems are known so far!
+.. hint:: Building VyOS on Windows WSL2 with Docker integrated into WSL2 will
+   work like a charm. No problems are known so far!
 
 .. _build source:
 
@@ -305,8 +307,8 @@ The most obvious reasons could be:
   release kernel version from us.
 
 * You have your own custom kernel `*.deb` packages in the `packages` folder but
-  neglected to create all required out-of tree modules like Accel-PPP, WireGuard,
-  Intel QAT, Intel NIC
+  neglected to create all required out-of tree modules like Accel-PPP,
+  WireGuard, Intel QAT, Intel NIC
 
 Building The Kernel
 -------------------
@@ -343,12 +345,15 @@ file (example uses kernel 4.19.146):
 
   HEAD is now at 015e94d0e37b Linux 4.19.146
 
-Now we can use the helper script ``build-kernel.sh`` which does all the necessary
-voodoo by applying required patches from the `vyos-build/packages/linux-kernel/
-patches` folder, copying our kernel configuration ``x86_64_vyos_defconfig`` to
-the right location, and finally building the Debian packages.
+Now we can use the helper script ``build-kernel.sh`` which does all the
+necessary voodoo by applying required patches from the
+`vyos-build/packages/linux-kernel/patches` folder, copying our kernel
+configuration ``x86_64_vyos_defconfig`` to the right location, and finally
+building the Debian packages.
 
-.. note:: Building the kernel will take some time depending on the speed and quantity of your CPU/cores and disk speed. Expect 20 minutes (or even longer) on lower end hardware.
+.. note:: Building the kernel will take some time depending on the speed and
+   quantity of your CPU/cores and disk speed. Expect 20 minutes
+   (or even longer) on lower end hardware.
 
 .. code-block:: none
 
@@ -427,7 +432,8 @@ the right location, and finally building the Debian packages.
 
 In the end you will be presented with the kernel binary packages which you can
 then use in your custom ISO build process, by placing all the `*.deb` files in
-the vyos-build/packages folder where they will be used automatically when building VyOS as documented above.
+the vyos-build/packages folder where they will be used automatically when
+building VyOS as documented above.
 
 Firmware
 ^^^^^^^^
@@ -636,6 +642,8 @@ for whatever reason and you suspect it's a problem with APT dependencies or
 installation you can add this small patch which increases the APT verbosity
 during ISO build.
 
+.. stop_vyoslinter
+
 .. code-block:: diff
 
   diff --git i/scripts/live-build-config w/scripts/live-build-config
@@ -652,6 +660,9 @@ during ISO build.
            --apt-indices false
            "${@}"
    """
+
+.. start_vyoslinter
+
 
 
 Virtualization Platforms
@@ -713,8 +724,8 @@ Launch Docker container and build package
   # Build DEB
   $ dpkg-buildpackage -uc -us -tc -b
 
-After a minute or two you will find the generated DEB packages next to the vyos-1x
-source directory:
+After a minute or two you will find the generated DEB packages next to the
+vyos-1x source directory:
 
 .. code-block:: none
 
@@ -749,8 +760,14 @@ information.
    the source directories and built deb packages) if you want to build an iso
    from purely upstream packages.
 
+
+.. stop_vyoslinter
+
 .. _Docker: https://www.docker.com
 .. _`Docker as non-root`: https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user
 .. _VyOS DockerHub organisation: https://hub.docker.com/u/vyos
 .. _repository: https://github.com/vyos/vyos-build
 .. _VyOS GitHub project: https://github.com/vyos
+
+.. start_vyoslinter
+
