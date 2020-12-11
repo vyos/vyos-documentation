@@ -11,7 +11,8 @@ technologies are actually standards based. The three technologies are:
 
 * :abbr:`NHRP (Next Hop Resolution Protocol)` :rfc:`2332`
 * :abbr:`mGRE (Multipoint Generic Routing Encapsulation)` :rfc:`1702`
-* :abbr:`IPSec (IP Security)` - too many RFCs to list, but start with :rfc:`4301`
+* :abbr:`IPSec (IP Security)` - too many RFCs to list, but start with
+  :rfc:`4301`
 
 NHRP provides the dynamic tunnel endpoint discovery mechanism (endpoint
 registration, and endpoint discovery/lookup), mGRE provides the tunnel

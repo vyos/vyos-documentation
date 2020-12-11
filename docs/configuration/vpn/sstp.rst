@@ -64,7 +64,8 @@ commands can be used.
 Configuration
 =============
 
-.. cfgcmd:: set vpn sstp authentication local-users username <user> password <pass>
+.. cfgcmd:: set vpn sstp authentication local-users username <user> password
+   <pass>
 
   Create `<user>` for local authentication on this system. The users password
   will be set to `<pass>`.
@@ -73,19 +74,23 @@ Configuration
 
   Disable `<user>` account.
 
-.. cfgcmd:: set vpn sstp authentication local-users username <user> static-ip <address>
+.. cfgcmd:: set vpn sstp authentication local-users username <user> static-ip
+   <address>
 
   Assign static IP address to `<user>` account.
 
-.. cfgcmd:: set vpn sstp authentication local-users username <user> rate-limit download <bandwidth>
+.. cfgcmd:: set vpn sstp authentication local-users username <user> rate-limit
+   download <bandwidth>
 
   Download bandwidth limit in kbit/s for `<user>`.
 
-.. cfgcmd:: set vpn sstp authentication local-users username <user> rate-limit upload <bandwidth>
+.. cfgcmd:: set vpn sstp authentication local-users username <user> rate-limit
+   upload <bandwidth>
 
   Upload bandwidth limit in kbit/s for `<user>`.
 
-.. cfgcmd:: set vpn sstp authentication protocols <pap | chap | mschap | mschap-v2>
+.. cfgcmd:: set vpn sstp authentication protocols
+   <pap | chap | mschap | mschap-v2>
 
   Require the peer to authenticate itself using one of the following protocols:
   pap, chap, mschap, mschap-v2.
@@ -119,7 +124,8 @@ Configuration
   bit long, the default value is 64.
 
 
-.. cfgcmd:: set vpn sstp client-ipv6-pool delegate <address> delegation-prefix <number-of-bits>
+.. cfgcmd:: set vpn sstp client-ipv6-pool delegate <address> delegation-prefix
+   <number-of-bits>
 
   Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
   SSTP. You will have to set your IPv6 pool and the length of the

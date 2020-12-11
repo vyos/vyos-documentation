@@ -3,103 +3,151 @@
 Site-to-Site
 ============
 
-Site-to-site mode provides a way to add remote peers, which could be configured to exchange encrypted information between them and VyOS itself or connected/routed networks.
+Site-to-site mode provides a way to add remote peers, which could be configured
+to exchange encrypted information between them and VyOS itself or
+connected/routed networks.
 
-To configure site-to-site connection you need to add peers with the ``set vpn ipsec site-to-site`` command.
+To configure site-to-site connection you need to add peers with the
+``set vpn ipsec site-to-site`` command.
 
 You can identify a remote peer with:
 
-* IPv4 or IPv6 address. This mode is easiest for configuration and mostly used when a peer has a public static IP address;
-* Hostname. This mode is similar to IP address, only you define DNS name instead of an IP. Could be used when a peer has a public IP address and DNS name, but an IP address could be changed from time to time;
-* Remote ID of the peer. In this mode, there is no predefined remote address nor DNS name of the peer. This mode is useful when a peer doesn't have a publicly available IP address (NAT between it and VyOS), or IP address could be changed.
+* IPv4 or IPv6 address. This mode is easiest for configuration and mostly used
+  when a peer has a public static IP address;
+* Hostname. This mode is similar to IP address, only you define DNS name instead
+  of an IP. Could be used when a peer has a public IP address and DNS name, but
+  an IP address could be changed from time to time;
+* Remote ID of the peer. In this mode, there is no predefined remote address
+  nor DNS name of the peer. This mode is useful when a peer doesn't have a
+  publicly available IP address (NAT between it and VyOS), or IP address could
+  be changed.
 
 Each site-to-site peer has the next options:
 
-* ``authentication`` - configure authentication between VyOS and a remote peer. Suboptions:
+* ``authentication`` - configure authentication between VyOS and a remote peer.
+  Suboptions:
 
- * ``id`` - ID for the local VyOS router. If defined, during the authentication it will be send to remote peer;
+ * ``id`` - ID for the local VyOS router. If defined, during the authentication
+   it will be send to remote peer;
 
  * ``mode`` - mode for authentication between VyOS and remote peer:
 
-  * ``pre-shared-secret`` - use predefined shared secret phrase, must be the same for local and remote side;
+  * ``pre-shared-secret`` - use predefined shared secret phrase, must be the
+    same for local and remote side;
 
-  * ``rsa`` - use simple shared RSA key. The key must be defined in the ``set vpn rsa-keys`` section;
+  * ``rsa`` - use simple shared RSA key. The key must be defined in the
+    ``set vpn rsa-keys`` section;
 
   * ``x509`` - use certificates infrastructure for authentication.
 
- * ``pre-shared-secret`` - predefined shared secret. Used if configured ``mode pre-shared-secret``;
+ * ``pre-shared-secret`` - predefined shared secret. Used if configured
+   ``mode pre-shared-secret``;
 
- * ``remote-id`` - define an ID for remote peer, instead of using peer name or address. Useful in case if the remote peer is behind NAT or if ``mode x509`` is used;
+ * ``remote-id`` - define an ID for remote peer, instead of using peer name or
+   address. Useful in case if the remote peer is behind NAT or if ``mode x509``
+   is used;
 
- * ``rsa-key-name`` - shared RSA key for authentication. The key must be defined in the ``set vpn rsa-keys`` section;
+ * ``rsa-key-name`` - shared RSA key for authentication. The key must be defined
+   in the ``set vpn rsa-keys`` section;
 
- * ``use-x509-id`` - use local ID from x509 certificate. Cannot be used when ``id`` is defined;
+ * ``use-x509-id`` - use local ID from x509 certificate. Cannot be used when
+   ``id`` is defined;
 
  * ``x509`` - options for x509 authentication mode:
 
-  * ``ca-cert-file`` - CA certificate file. Using for authenticating remote peer;
+  * ``ca-cert-file`` - CA certificate file. Using for authenticating
+    remote peer;
 
-  * ``cert-file`` - certificate file, which will be used for authenticating local router on remote peer;
+  * ``cert-file`` - certificate file, which will be used for authenticating
+    local router on remote peer;
 
-  * ``crl-file`` - file with the Certificate Revocation List. Using to check if a certificate for the remote peer is valid or revoked;
+  * ``crl-file`` - file with the Certificate Revocation List. Using to check if
+    a certificate for the remote peer is valid or revoked;
 
-  * ``key`` - a private key, which will be used for authenticating local router on remote peer:
+  * ``key`` - a private key, which will be used for authenticating local router
+    on remote peer:
 
    * ``file`` - path to the key file;
 
    * ``password`` - passphrase private key, if needed.
 
-* ``connection-type`` - how to handle this connection process. Possible variants:
+* ``connection-type`` - how to handle this connection process. Possible
+  variants:
 
- * ``initiate`` - do initial connection to remote peer immediately after configuring and after boot. In this mode the connection will not be restarted in case of disconnection, therefore should be used only together with DPD or another session tracking methods;
+ * ``initiate`` - do initial connection to remote peer immediately after
+   configuring and after boot. In this mode the connection will not be restarted
+   in case of disconnection, therefore should be used only together with DPD or
+   another session tracking methods;
 
- * ``respond`` - do not try to initiate a connection to a remote peer. In this mode, the IPSec session will be established only after initiation from a remote peer. Could be useful when there is no direct connectivity to the peer due to firewall or NAT in the middle of the local and remote side.
+ * ``respond`` - do not try to initiate a connection to a remote peer. In this
+   mode, the IPSec session will be established only after initiation from a
+   remote peer. Could be useful when there is no direct connectivity to the
+   peer due to firewall or NAT in the middle of the local and remote side.
 
-* ``default-esp-group`` - ESP group to use by default for traffic encryption. Might be overwritten by individual settings for tunnel or VTI interface binding;
+* ``default-esp-group`` - ESP group to use by default for traffic encryption.
+  Might be overwritten by individual settings for tunnel or VTI interface
+  binding;
 
 * ``description`` - description for this peer;
 
-* ``dhcp-interface`` - use an IP address, received from DHCP for IPSec connection with this peer, instead of ``local-address``;
+* ``dhcp-interface`` - use an IP address, received from DHCP for IPSec
+  connection with this peer, instead of ``local-address``;
 
-* ``force-encapsulation`` - force encapsulation of ESP into UDP datagrams. Useful in case if between local and remote side is firewall or NAT, which not allows passing plain ESP packets between them;
+* ``force-encapsulation`` - force encapsulation of ESP into UDP datagrams.
+  Useful in case if between local and remote side is firewall or NAT, which not
+  allows passing plain ESP packets between them;
 
 * ``ike-group`` - IKE group to use for key exchanges;
 
-* ``ikev2-reauth`` - reauthenticate remote peer during the rekeying process. Can be used only with IKEv2:
+* ``ikev2-reauth`` - reauthenticate remote peer during the rekeying process.
+  Can be used only with IKEv2:
 
- * ``yes`` - create a new IKE_SA from the scratch and try to recreate all IPsec SAs;
+ * ``yes`` - create a new IKE_SA from the scratch and try to recreate all
+   IPsec SAs;
 
  * ``no`` - rekey without uninstalling the IPsec SAs;
 
  * ``inherit`` - use default behavior for the used IKE group.
 
-* ``local-address`` - local IP address for IPSec connection with this peer. If defined ``any``, then an IP address which configured on interface with default route will be used;
+* ``local-address`` - local IP address for IPSec connection with this peer.
+  If defined ``any``, then an IP address which configured on interface with
+  default route will be used;
 
-* ``tunnel`` - define criteria for traffic to be matched for encrypting and send it to a peer:
+* ``tunnel`` - define criteria for traffic to be matched for encrypting and send
+  it to a peer:
 
  * ``disable`` - disable this tunnel;
 
  * ``esp-group`` - define ESP group for encrypt traffic, defined by this tunnel;
 
- * ``local`` - define a local source for match traffic, which should be encrypted and send to this peer:
+ * ``local`` - define a local source for match traffic, which should be
+   encrypted and send to this peer:
 
   * ``port`` - define port. Have effect only when used together with ``prefix``;
 
   * ``prefix`` - IP network at local side.
 
- * ``protocol`` - define the protocol for match traffic, which should be encrypted and send to this peer;
+ * ``protocol`` - define the protocol for match traffic, which should be
+   encrypted and send to this peer;
 
- * ``remote`` - define the remote destination for match traffic, which should be encrypted and send to this peer:
+ * ``remote`` - define the remote destination for match traffic, which should be
+   encrypted and send to this peer:
 
   * ``port`` - define port. Have effect only when used together with ``prefix``;
 
   * ``prefix`` - IP network at remote side.
 
-* ``vti`` - use a VTI interface for traffic encryption. Any traffic, which will be send to VTI interface will be encrypted and send to this peer. Using VTI makes IPSec configuration much flexible and easier in complex situation, and allows to dynamically add/delete remote networks, reachable via a peer, as in this mode router don't need to create additional SA/policy for each remote network:
+* ``vti`` - use a VTI interface for traffic encryption. Any traffic, which will
+  be send to VTI interface will be encrypted and send to this peer. Using VTI
+  makes IPSec configuration much flexible and easier in complex situation, and
+  allows to dynamically add/delete remote networks, reachable via a peer, as in
+  this mode router don't need to create additional SA/policy for each remote
+  network:
 
  * ``bind`` - select a VTI interface to bind to this peer;
 
- * ``esp-group`` - define ESP group for encrypt traffic, passed this VTI interface.
+ * ``esp-group`` - define ESP group for encrypt traffic, passed this VTI
+   interface.
 
 Examples:
 ------------------
