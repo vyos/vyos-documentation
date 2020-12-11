@@ -23,8 +23,8 @@ then enslaved to a VRF device.
 
 .. cfgcmd:: set vrf name <name>
 
-   Create new VRF instance with `<name>`. The name is used when placing individual
-   interfaces into the VRF.
+   Create new VRF instance with `<name>`. The name is used when placing
+   individual interfaces into the VRF.
 
 .. cfgcmd:: set vrf name <name> table <id>
 
@@ -50,7 +50,8 @@ Interfaces
 When VRFs are used it is not only mandatory to create a VRF but also the VRF
 itself needs to be assigned to an interface.
 
-.. cfgcmd:: set interfaces <dummy | ethernet | bonding | bridge | pppoe> <interface> vrf <name>
+.. cfgcmd:: set interfaces <dummy | ethernet | bonding | bridge | pppoe>
+   <interface> vrf <name>
 
    Assign interface identified by `<interface>` to VRF named `<name>`.
 
@@ -79,11 +80,13 @@ Static Routes
    Configure next-hop `<address>` for an IPv4 static route in the VRF identified
    by `<name>`. Multiple static routes can be created.
 
-.. cfgcmd:: set protocols vrf <name> static route <subnet> next-hop <address> disable
+.. cfgcmd:: set protocols vrf <name> static route <subnet> next-hop <address>
+   disable
 
    Disable IPv4 static route entry in the VRF identified by `<name>`
 
-.. cfgcmd:: set protocols vrf <name> static route <subnet> next-hop <address> distance <distance>
+.. cfgcmd:: set protocols vrf <name> static route <subnet> next-hop <address>
+   distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
@@ -95,11 +98,13 @@ Static Routes
    Configure next-hop `<address>` for an IPv6 static route in the VRF identified
    by `<name>`. Multiple IPv6 static routes can be created.
 
-.. cfgcmd:: set protocols vrf <name> static route6 <subnet> next-hop <address> disable
+.. cfgcmd:: set protocols vrf <name> static route6 <subnet> next-hop <address>
+   disable
 
    Disable IPv6 static route entry in the VRF identified by `<name>`.
 
-.. cfgcmd:: set protocols vrf <name> static route6 <subnet> next-hop <address> distance <distance>
+.. cfgcmd:: set protocols vrf <name> static route6 <subnet> next-hop <address>
+   distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
@@ -113,14 +118,16 @@ Static Routes
 Leaking
 """""""
 
-.. cfgcmd:: set protocols vrf <name> static route <subnet> next-hop <address> next-hop-vrf <default | vrf-name>
+.. cfgcmd:: set protocols vrf <name> static route <subnet> next-hop <address>
+   next-hop-vrf <default | vrf-name>
 
    Use this command if you have shared services or routes that should be shared
    between multiple VRF instances. This will add an IPv4 route to VRF `<name>`
    routing table to reach a `<subnet>` via a next-hop gatewys `<address>` in
    a different VRF or leak it into the default VRF.
 
-.. cfgcmd:: set protocols vrf <name> static route6 <subnet> next-hop <address> next-hop-vrf <default | vrf-name>
+.. cfgcmd:: set protocols vrf <name> static route6 <subnet> next-hop <address>
+   next-hop-vrf <default | vrf-name>
 
    Use this command if you have shared services or routes that should be shared
    between multiple VRF instances. This will add an IPv6 route to VRF `<name>`
@@ -131,34 +138,40 @@ Leaking
 Interface Routes
 """"""""""""""""
 
-.. cfgcmd:: set protocols vrf <name> static interface-route <subnet> next-hop-interface <interface>
+.. cfgcmd:: set protocols vrf <name> static interface-route <subnet>
+   next-hop-interface <interface>
 
    Allows you to configure the next-hop interface for an interface-based IPv4
    static route. `<interface>` will be the next-hop interface where trafic is
    routed for the given `<subnet>`.
 
-.. cfgcmd:: set protocols vrf <name> static interface-route <subnet> next-hop-interface <interface> disable
+.. cfgcmd:: set protocols vrf <name> static interface-route <subnet>
+   next-hop-interface <interface> disable
 
    Disables interface-based IPv4 static route.
 
-.. cfgcmd:: set protocols vrf <name> static interface-route <subnet> next-hop-interface <interface> distance <distance>
+.. cfgcmd:: set protocols vrf <name> static interface-route <subnet>
+   next-hop-interface <interface> distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
 
    Range is 1 to 255, default is 1.
 
-.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet> next-hop-interface <interface>
+.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet>
+   next-hop-interface <interface>
 
    Allows you to configure the next-hop interface for an interface-based IPv6
    static route. `<interface>` will be the next-hop interface where trafic is
    routed for the given `<subnet>`.
 
-.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet> next-hop-interface <interface> disable
+.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet>
+   next-hop-interface <interface> disable
 
    Disables interface-based IPv6 static route.
 
-.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet> next-hop-interface <interface> distance <distance>
+.. cfgcmd:: set protocols vrf <name> static interface-route6 <subnet>
+   next-hop-interface <interface> distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
@@ -176,7 +189,8 @@ Blackhole
    it does not prevent them from being used as a more specific route inside your
    network.
 
-.. cfgcmd:: set protocols vrf <name> static route <subnet> blackhole distance <distance>
+.. cfgcmd:: set protocols vrf <name> static route <subnet> blackhole distance
+   <distance>
 
    Defines blackhole distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
@@ -189,7 +203,8 @@ Blackhole
    it does not prevent them from being used as a more specific route inside your
    network.
 
-.. cfgcmd:: set protocols vrf <name> static route6 <subnet> blackhole distance <distance>
+.. cfgcmd:: set protocols vrf <name> static route6 <subnet> blackhole distance
+   <distance>
 
    Defines blackhole distance for this route, routes with smaller administrative
    distance are elected prior those with a higher distance.
@@ -210,11 +225,11 @@ For VR Fmaintenance the followin operational commands are in place.
      vyos@vyos:~$ show vrf
      VRF name          state     mac address        flags                     interfaces
      --------          -----     -----------        -----                     ----------
-     blue              up        de:c4:83:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
-     red               up        be:36:ce:02:df:aa  noarp,master,up,lower_up  dum100,eth0.300,bond0.100,peth0
+     blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
+     red               up        00:53:de:02:df:aa  noarp,master,up,lower_up  dum100,eth0.300,bond0.100,peth0
 
-   .. note:: Command should probably be extended to list also the real interfaces
-      assigned to this one VRF to get a better overview.
+   .. note:: Command should probably be extended to list also the real
+      interfaces assigned to this one VRF to get a better overview.
 
 .. opcmd:: show vrf <name>
 
@@ -223,7 +238,7 @@ For VR Fmaintenance the followin operational commands are in place.
      vyos@vyos:~$ show vrf name blue
      VRF name          state     mac address        flags                     interfaces
      --------          -----     -----------        -----                     ----------
-     blue              up        de:c4:83:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
+     blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
 
 .. opcmd:: show ip route vrf <name>
 
