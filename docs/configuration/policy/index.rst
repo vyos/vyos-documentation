@@ -10,8 +10,10 @@ routes and their attributes needs to be put into the routing table.
 There could be a wide range of routing policies. Some examples are below:
 
 * Set some metric to routes learned from a particular neighbor
-* Set some attributes (like AS PATH or Community value) to advertised routes to neighbors
-* Prefer a specific routing protocol routes over another routing protocol running on the same router
+* Set some attributes (like AS PATH or Community value) to advertised routes
+  to neighbors
+* Prefer a specific routing protocol routes over another routing protocol
+  running on the same router
 
 Example
 =======
@@ -64,8 +66,6 @@ neighbor.
 
 You now see the longer AS path.
 
-
-.. include:: /_include/need_improvement.txt
 
 .. _routing-pbr:
 
@@ -136,7 +136,7 @@ Add default routes for routing ``table 10`` and ``table 11``
 
 .. code-block:: none
 
-  set protocols static table 10 route 0.0.0.0/0 next-hop 192.0.1.1
+  set protocols static table 10 route 0.0.0.0/0 next-hop 192.0.2.1
   set protocols static table 11 route 0.0.0.0/0 next-hop 192.0.2.2
 
 Add policy route matching VLAN source addresses
@@ -175,11 +175,13 @@ each other using the main routing table.
 Local route
 ===========
 
-The following example allows VyOS to use :abbr:`PBR (Policy-Based Routing)` for traffic, which originated from the router itself.
-That solution for multiple ISP's and VyOS router will respond from the same interface that the packet was received.
-Also, it used, if we want that one VPN tunnel to be through one provider, and the second through another.
+The following example allows VyOS to use :abbr:`PBR (Policy-Based Routing)`
+for traffic, which originated from the router itself. That solution for multiple
+ISP's and VyOS router will respond from the same interface that the packet was
+received. Also, it used, if we want that one VPN tunnel to be through one
+provider, and the second through another.
 
-* ``192.168.1.254`` IP addreess on VyOS eth1 from ISP1
+* ``203.0.113.0.254`` IP addreess on VyOS eth1 from ISP1
 * ``192.168.2.254`` IP addreess on VyOS eth2 from ISP2
 * ``table 10`` Routing table used for ISP1
 * ``table 11`` Routing table used for ISP2
@@ -188,10 +190,10 @@ Also, it used, if we want that one VPN tunnel to be through one provider, and th
 .. code-block:: none
 
   set policy local-route rule 101 set table '10'
-  set policy local-route rule 101 source '192.0.1.254'
+  set policy local-route rule 101 source '203.0.113.0.254'
   set policy local-route rule 102 set table '11'
   set policy local-route rule 102 source '192.0.2.254'
-  set protocols static table 10 route '0.0.0.0/0' next-hop '192.0.1.1'
+  set protocols static table 10 route '0.0.0.0/0' next-hop '203.0.113.0.1'
   set protocols static table 11 route '0.0.0.0/0' next-hop '192.0.2.2'
 
 Add multiple source IP in one rule with same priority
@@ -199,7 +201,7 @@ Add multiple source IP in one rule with same priority
 .. code-block:: none
 
   set policy local-route rule 101 set table '10'
-  set policy local-route rule 101 source '192.0.1.254'
-  set policy local-route rule 101 source '192.0.1.253'
-  set policy local-route rule 101 source '203.0.113.0/24'
+  set policy local-route rule 101 source '203.0.113.0.254'
+  set policy local-route rule 101 source '203.0.113.0.253'
+  set policy local-route rule 101 source '198.51.100.0/24'
 

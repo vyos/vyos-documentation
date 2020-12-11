@@ -1218,9 +1218,11 @@ That is how it is possible to do the so-called "ingress shaping".
 
 
 .. stop_vyoslinter
+
 .. _that can give you a great deal of flexibility: https://blog.vyos.io/using-the-policy-route-and-packet-marking-for-custom-qos-matches
 .. _tc: https://en.wikipedia.org/wiki/Tc_(Linux)
 .. _tocken bucket: https://en.wikipedia.org/wiki/Token_bucket
 .. _HFSC: https://en.wikipedia.org/wiki/Hierarchical_fair-service_curve
 .. _Intermediate Functional Block: https://www.linuxfoundation.org/collaborate/workgroups/networking/ifb
+
 .. start_vyoslinter
