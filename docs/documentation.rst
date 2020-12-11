@@ -163,6 +163,17 @@ Except in ``.. code-block::`` because it will use  the html tag ``<pre>``
 which have the save line format as in the rst file.
 
 
+Autolinter
+^^^^^^^^^^
+
+Each GitHub Pull request will automatically lint against the Address space and
+line length.
+
+Sometimes it is necessary to provide real IP Addresses like in the
+:ref:`examples`. For this please use the sphinx comment syntax
+``.. stop_vyoslinter`` to stop the linter and ``.. start_vyoslinter`` to start.
+
+
 Custom Sphinx-doc Markup
 ^^^^^^^^^^^^^^^^^^^^^^^^
 

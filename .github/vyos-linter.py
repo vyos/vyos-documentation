@@ -74,43 +74,55 @@ def handle_file_action(filepath):
             line = fp.readline()
             cnt = 1
             test_line_lenght = True
+            start_vyoslinter = True
             indentation = 0
             while line:
-                # ignore every '.. code-block::' for line lenght
-                # rst code-block have its own style in html the format in rst
-                # and the build page must be the same
-                if test_line_lenght is False:
-                    if len(line) > indentation:
-                        #print(f"'{line}'")
-                        #print(indentation)
-                        if line[indentation].isspace() is False:
-                            test_line_lenght = True
+                # search for ignore linter comments in lines
+                if ".. stop_vyoslinter" in line:
+                    start_vyoslinter = False
+                if ".. start_vyoslinter" in line:
+                    start_vyoslinter = True
+                if start_vyoslinter:
+                    # ignore every '.. code-block::' for line lenght
+                    # rst code-block have its own style in html the format in rst
+                    # and the build page must be the same
+                    if test_line_lenght is False:
+                        if len(line) > indentation:
+                            #print(f"'{line}'")
+                            #print(indentation)
+                            if line[indentation].isspace() is False:
+                                test_line_lenght = True
 
-                if ".. code-block::" in line:
-                    test_line_lenght = False
-                    indentation = 0
-                    for i in line:
-                        if i.isspace():
-                            indentation = indentation + 1
-                        else:
-                            break
-                err_mac = lint_mac(cnt, line.strip())
-                err_ip4 = lint_ipv4(cnt, line.strip())
-                err_ip6 = lint_ipv6(cnt, line.strip())
-                if test_line_lenght:
-                    err_len = lint_linelen(cnt, line)
-                else:
-                    err_len = None
-                if err_mac:
-                    errors.append(err_mac)
-                if err_ip4:
-                    errors.append(err_ip4)
-                if err_ip6:
-                    errors.append(err_ip6)
-                if err_len:
-                    errors.append(err_len)
+                    if ".. code-block::" in line:
+                        test_line_lenght = False
+                        indentation = 0
+                        for i in line:
+                            if i.isspace():
+                                indentation = indentation + 1
+                            else:
+                                break
+                    err_mac = lint_mac(cnt, line.strip())
+                    err_ip4 = lint_ipv4(cnt, line.strip())
+                    err_ip6 = lint_ipv6(cnt, line.strip())
+                    if test_line_lenght:
+                        err_len = lint_linelen(cnt, line)
+                    else:
+                        err_len = None
+                    if err_mac:
+                        errors.append(err_mac)
+                    if err_ip4:
+                        errors.append(err_ip4)
+                    if err_ip6:
+                        errors.append(err_ip6)
+                    if err_len:
+                        errors.append(err_len)
+                
                 line = fp.readline()
                 cnt += 1
+            
+            # ensure linter was not stop on top and forgot to tun on again
+            if start_vyoslinter == False:
+                errors.append((f"Don't forgett to turn linter back on", cnt, 'error'))
     finally:
         fp.close()
 
