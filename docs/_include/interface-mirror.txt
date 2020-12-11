@@ -1,17 +1,22 @@
-SPAN port mirroring can copy the inbound/outbound traffic of the interface to the 
-specified interface, usually the interface can be connected to some special equipment,
-such as behavior control system, intrusion detection system and traffic collector, 
-and can copy all related traffic from this port
+SPAN port mirroring can copy the inbound/outbound traffic of the interface to
+the specified interface, usually the interface can be connected to some special
+equipment, such as behavior control system, intrusion detection system and
+traffic collector, and can copy all related traffic from this port
 
-VyOS uses the `mirror` option to configure port mirroring. The configuration is divided
-into 2 different directions. Destination ports should be configured for different traffic directions.
+VyOS uses the `mirror` option to configure port mirroring. The configuration
+is divided into 2 different directions. Destination ports should be configured
+for different traffic directions.
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> mirror ingress <monitor-interface>
+.. cfgcmd:: set interfaces {{ var0 }} <interface> mirror
+   ingress <monitor-interface>
 
-   Configure port mirroring for `interface` inbound traffic and copy the traffic to `monitor-interface`
+   Configure port mirroring for `interface` inbound traffic and copy the
+   traffic to `monitor-interface`
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> mirror egress <monitor-interface>
+.. cfgcmd:: set interfaces {{ var0 }} <interface> mirror egress
+   <monitor-interface>
 
-   Configure port mirroring for `interface` outbound traffic and copy the traffic to `monitor-interface`
+   Configure port mirroring for `interface` outbound traffic and copy the
+   traffic to `monitor-interface`
 
    
