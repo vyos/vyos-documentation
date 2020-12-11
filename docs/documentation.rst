@@ -337,9 +337,11 @@ predefined structure.
 
 
 .. stop_vyoslinter
+
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
 .. _reStructuredTextDirectives: https://docutils.sourceforge.io/docs/ref/rst/directives.html
 .. _README.md: https://github.com/vyos/vyos-documentation/blob/master/README.md
 .. include:: /_include/common-references.txt
+
 .. start_vyoslinter
