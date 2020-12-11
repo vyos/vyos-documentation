@@ -93,7 +93,8 @@ An example:
   set interfaces tunnel tun0 remote-ip 192.0.2.20
   set interfaces tunnel tun0 address 2001:db8:bb::1/64
 
-A full example of a Tunnelbroker.net config can be found at :ref:`here <examples-tunnelbroker-ipv6>`.
+A full example of a Tunnelbroker.net config can be found at
+:ref:`here <examples-tunnelbroker-ipv6>`.
 
 Generic Routing Encapsulation (GRE)
 -----------------------------------
@@ -135,7 +136,10 @@ ip otherwise it would have to be configured as well.
 Tunnel keys
 ^^^^^^^^^^^
 
-GRE is also the only classic protocol that allows creating multiple tunnels with the same source and destination due to its support for tunnel keys. Despite its name, this feature has nothing to do with security: it's simply an identifier that allows routers to tell one tunnel from another.
+GRE is also the only classic protocol that allows creating multiple tunnels
+with the same source and destination due to its support for tunnel keys.
+Despite its name, this feature has nothing to do with security: it's simply
+an identifier that allows routers to tell one tunnel from another.
 
 An example:
 

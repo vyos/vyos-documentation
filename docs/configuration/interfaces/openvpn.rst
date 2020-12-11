@@ -186,7 +186,8 @@ Multi-client server is the most popular OpenVPN mode on routers. It always uses
 x.509 authentication and therefore requires a PKI setup. Refer this section
 **Generate X.509 Certificate and Keys** to generate a CA certificate,
 a server certificate and key, a certificate revocation list, a Diffie-Hellman
-key exchange parameters file. You do not need client certificates and keys for the server setup.
+key exchange parameters file. You do not need client certificates and keys for
+the server setup.
 
 In this example we will use the most complicated case: a setup where each
 client is a router that has its own subnet (think HQ and branch offices), since
@@ -269,16 +270,16 @@ Copy the Easy-RSA scripts to a new directory to modify the values.
   cd /config/my-easy-rsa-config
 
 To ensure the consistent use of values when generating the PKI, set default
-values to be used by the PKI generating scripts. Rename the vars.example filename
-to vars
+values to be used by the PKI generating scripts. Rename the vars.example
+filename to vars
 
 .. code-block:: none
 
   mv vars.example vars
 
-Following is the instance of the file after editing. You may also change other values in
-the file at your discretion/need, though for most cases the defaults should be just fine.
-(do not leave any of these parameters blank)
+Following is the instance of the file after editing. You may also change other
+values in the file at your discretion/need, though for most cases the defaults
+should be just fine. (do not leave any of these parameters blank)
 
 .. code-block:: none
 
@@ -292,9 +293,9 @@ the file at your discretion/need, though for most cases the defaults should be j
   set_var EASYRSA_KEY_SIZE        2048
 
 
-init-pki option will create a new pki directory or will delete any previously generated
-certificates stored in that folder. The term 'central' is used to refer server and
-'branch' for client
+init-pki option will create a new pki directory or will delete any previously
+generated certificates stored in that folder. The term 'central' is used to
+refer server and 'branch' for client
 
 .. note:: Remember the “CA Key Passphrase” prompted in build-ca command,
    as it will be asked in signing the server/client certificate.
@@ -308,7 +309,8 @@ certificates stored in that folder. The term 'central' is used to refer server a
   vyos@vyos:/config/my-easy-rsa-config$./easyrsa gen-dh
   vyos@vyos:/config/my-easy-rsa-config$./easyrsa build-client-full branch1 nopass
 
-To generate a certificate revocation list for any client, execute these commands:
+To generate a certificate revocation list for any client, execute these
+commands:
 
 .. code-block:: none
 
@@ -326,8 +328,8 @@ Copy the files to /config/auth/ovpn/ to use in OpenVPN tunnel creation
   vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/issued/central.crt  /config/auth/ovpn
   vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/crl.pem /config/auth/ovpn
 
-Additionally, each client needs a copy of ca.crt and its own client key and cert files.
-The files are plaintext so they may be copied either manually,
+Additionally, each client needs a copy of ca.crt and its own client key and
+cert files. The files are plaintext so they may be copied either manually,
 or through a remote file transfer tool like scp. Whichever method you use,
 the files need to end up in the proper location on each router.
 For example, Branch 1's router might have the following files:
@@ -344,12 +346,13 @@ LDAP
 ----
 
 Enterprise installations usually ship a kind of directory service which is used
-to have a single password store for all employees. VyOS and OpenVPN support using
-LDAP/AD as single user backend.
+to have a single password store for all employees. VyOS and OpenVPN support
+using LDAP/AD as single user backend.
 
 Authentication is done by using the ``openvpn-auth-ldap.so`` plugin which is
-shipped with every VyOS installation. A dedicated configuration file is required.
-It is best practise to store it in ``/config`` to survive image updates
+shipped with every VyOS installation. A dedicated configuration file is
+required. It is best practise to store it in ``/config`` to survive image
+updates
 
 .. code-block:: none
 
@@ -435,7 +438,8 @@ If you only want to check if the user account is enabled and can authenticate
     RequireGroup    false
   </Authorization>
 
-A complete LDAP auth OpenVPN configuration could look like the following example:
+A complete LDAP auth OpenVPN configuration could look like the following
+example:
 
 .. code-block:: none
 
@@ -453,8 +457,8 @@ A complete LDAP auth OpenVPN configuration could look like the following example
        server {
            domain-name example.com
            max-connections 5
-           name-server 1.1.1.1
-           name-server 9.9.9.9
+           name-server 203.0.113.0.10
+           name-server 198.51.100.3
            subnet 172.18.100.128/29
        }
        tls {
@@ -534,7 +538,8 @@ Will add ``persistent-key`` at the end of the generated OpenVPN configuration.
 Please use this only as last resort - things might break and OpenVPN won't start
 if you pass invalid options/syntax.
 
-.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option 'push &quot;keepalive 1 10&quot;'
+.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option
+   'push &quot;keepalive 1 10&quot;'
 
 Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
 
@@ -563,7 +568,8 @@ The following commands let you check tunnel status.
 
 .. opcmd:: show openvpn site-to-site
 
-   Use this command to check the tunnel status for OpenVPN site-to-site interfaces.
+   Use this command to check the tunnel status for OpenVPN site-to-site 
+   interfaces.
 
 
 Reset OpenVPN

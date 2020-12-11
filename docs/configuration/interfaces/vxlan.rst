@@ -240,8 +240,8 @@ advertised.
   set interfaces bridge br241 member interface 'eth1.241'
   set interfaces bridge br241 member interface 'vxlan241'
 
-Binds eth1.241 and vxlan241 to each other by making them both member interfaces of
-the same bridge.
+Binds eth1.241 and vxlan241 to each other by making them both member 
+interfaces of the same bridge.
 
 .. code-block:: none
 

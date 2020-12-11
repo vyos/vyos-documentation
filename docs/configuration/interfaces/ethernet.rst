@@ -123,6 +123,8 @@ Operation
          TX:  bytes    packets     errors    dropped    carrier collisions
             5601460      62595          0          0          0          0
 
+.. stop_vyoslinter
+
 .. opcmd:: show interfaces ethernet <interface> physical
 
    Show information about physical `<interface>`
@@ -161,6 +163,8 @@ Operation
      supports-eeprom-access: no
      supports-register-dump: yes
      supports-priv-flags: no
+
+.. start_vyoslinter
 
 .. opcmd:: show interfaces ethernet <interface> physical offload
 

@@ -287,9 +287,13 @@ which is the default VLAN for Deutsche Telekom:
 IPv6 DHCPv6-PD Example
 ----------------------
 
+.. stop_vyoslinter
+
 The following configuration will assign a /64 prefix out of a /56 delegation
 to eth0. The IPv6 address assigned to eth0 will be <prefix>::ffff/64.
 If you do not know the prefix size delegated to you, start with sla-len 0.
+
+.. start_vyoslinter
 
 .. code-block:: none
 

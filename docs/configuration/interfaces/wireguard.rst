@@ -262,4 +262,8 @@ Operational commands
   vyos@wg01# wireguard keypair default
 
 
+.. stop_vyoslinter
+
 .. _`WireGuard mailing list`: https://lists.zx2c4.com/pipermail/wireguard/2018-December/003704.html
+
+.. start_vyoslinter

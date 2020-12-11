@@ -111,7 +111,8 @@ Wireless options
 
   SSID to be used in IEEE 802.11 management frames
 
-.. cfgcmd:: set interfaces wireless <interface> type <access-point | station | monitor>
+.. cfgcmd:: set interfaces wireless <interface> type
+   <access-point | station | monitor>
 
   Wireless device type for this interface
 
@@ -137,7 +138,8 @@ HT (High Throughput) capabilities (802.11n)
 
   WMM-PS Unscheduled Automatic Power Save Delivery [U-APSD]
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities ht channel-set-width <ht20 | ht40+ | ht40->
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht
+   channel-set-width <ht20 | ht40+ | ht40->
 
   Supported channel width set.
 
@@ -150,7 +152,8 @@ HT (High Throughput) capabilities (802.11n)
     Following table shows the channels that may be available for HT40- and HT40+
     use per IEEE 802.11n Annex J:
 
-    Depending on the location, not all of these channels may be available for use!
+    Depending on the location, not all of these channels may be available for
+    use!
 
     .. code-block:: none
 
@@ -163,7 +166,8 @@ HT (High Throughput) capabilities (802.11n)
     BSSes. These changes are done automatically when hostapd is setting up the
     40 MHz channel.
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities ht delayed-block-ack
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht
+   delayed-block-ack
 
   Enable HT-delayed Block Ack ``[DELAYED-BA]``
 
@@ -183,15 +187,18 @@ HT (High Throughput) capabilities (802.11n)
 
   Enable L-SIG TXOP protection capability
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities ht max-amsdu <3839 | 7935>
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht max-amsdu
+   <3839 | 7935>
 
   Maximum A-MSDU length 3839 (default) or 7935 octets
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities ht short-gi <20 | 40>
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht
+   short-gi <20 | 40>
 
   Short GI capabilities for 20 and 40 MHz
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities ht smps <static | dynamic>
+.. cfgcmd:: set interfaces wireless <interface> capabilities ht
+   smps <static | dynamic>
 
   Spatial Multiplexing Power Save (SMPS) settings
 
@@ -210,7 +217,8 @@ VHT (Very High Throughput) capabilities (802.11ac)
 
   Number of antennas on this card
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities vht antenna-pattern-fixed
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht
+   antenna-pattern-fixed
 
   Set if antenna pattern does not change during the lifetime of an association
 
@@ -225,15 +233,19 @@ VHT (Very High Throughput) capabilities (802.11ac)
   * ``multi-user-beamformer`` - Support for operation as single user beamformer
   * ``multi-user-beamformee`` - Support for operation as single user beamformer
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities vht center-channel-freq <freq-1 | freq-2> <number>
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht
+   center-channel-freq <freq-1 | freq-2> <number>
 
-  VHT operating channel center frequency - center freq 1 (for use with 80, 80+80 and 160 modes)
+  VHT operating channel center frequency - center freq 1
+  (for use with 80, 80+80 and 160 modes)
 
-  VHT operating channel center frequency - center freq 2 (for use with the 80+80 mode)
+  VHT operating channel center frequency - center freq 2
+  (for use with the 80+80 mode)
 
   <number> must be from 34 - 173. For 80 MHz channels it should be channel + 6.
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities vht channel-set-width <0 | 1 | 2 | 3>
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht
+   channel-set-width <0 | 1 | 2 | 3>
 
    * ``0`` - 20 or 40 MHz channel width (default)
    * ``1`` - 80 MHz channel width
@@ -248,15 +260,18 @@ VHT (Very High Throughput) capabilities (802.11ac)
 
   VHT link adaptation capabilities
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities vht max-mpdu <value>
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht
+   max-mpdu <value>
 
   Increase Maximum MPDU length to 7991 or 11454 octets (default 3895 octets)
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities vht max-mpdu-exp <value>
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht
+   max-mpdu-exp <value>
 
   Set the maximum length of A-MPDU pre-EOF padding that the station can receive
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities vht short-gi <80 | 160>
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht
+   short-gi <80 | 160>
 
   Short GI capabilities
 
@@ -440,8 +455,8 @@ information about all wireless interfaces.
 
 .. opcmd:: show interfaces wireless <wlanX>
 
-This command shows both status and statistics on the specified wireless interface.
-The wireless interface identifier can range from wlan0 to wlan999.
+This command shows both status and statistics on the specified wireless
+interface. The wireless interface identifier can range from wlan0 to wlan999.
 
 .. code-block:: none
 

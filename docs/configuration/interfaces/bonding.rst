@@ -352,8 +352,8 @@ interfaces from VyOS to a Juniper EX Switch system.
 Aruba/HP
 ========
 
-For a headstart you can use the below example on how to build a bond,port-channel
-with two interfaces from VyOS to a Aruba/HP 2510G switch.
+For a headstart you can use the below example on how to build a
+bond,port-channel with two interfaces from VyOS to a Aruba/HP 2510G switch.
 
 .. code-block:: none
 
