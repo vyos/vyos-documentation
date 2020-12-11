@@ -19,13 +19,15 @@ Local
    Create new system user with username `<name>` and real-name specified by
    `<string>`.
 
-.. cfgcmd:: set system login user <name> authentication plaintext-password <password>
+.. cfgcmd:: set system login user <name> authentication plaintext-password
+   <password>
 
    Specify the plaintext password user by user `<name>` on this system. The
    plaintext password will be automatically transferred into a secure hashed
    password and not saved anywhere in plaintext.
 
-.. cfgcmd:: set system login user <name> authentication encrypted-password <password>
+.. cfgcmd:: set system login user <name> authentication encrypted-password
+   <password>
 
    Setup encrypted password for given username. This is useful for
    transferring a hashed password from system to system.
@@ -50,12 +52,14 @@ and paste it. Some terminal emulators may accidentally split this over several
 lines. Be attentive when you paste it that it only pastes as a single line.
 The third part is simply an identifier, and is for your own reference.
 
-.. cfgcmd:: set system login user <username> authentication public-keys <identifier> key <key>
+.. cfgcmd:: set system login user <username> authentication public-keys
+   <identifier> key <key>
 
    Assign the SSH public key portion `<key>` identified by per-key
    `<identifier>` to the local user `<username>`.
 
-.. cfgcmd:: set system login user <username> authentication public-keys <identifier> type <type>
+.. cfgcmd:: set system login user <username> authentication public-keys
+   <identifier> type <type>
 
    Every SSH public key portion referenced by `<identifier>` requires the
    configuration of the `<type>` of public-key used. This type can be any of:

@@ -28,6 +28,7 @@ Example
 In this example, some *OpenNIC* servers are used, two IPv4 addresses
 and two IPv6 addresses:
 
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -36,6 +37,7 @@ and two IPv6 addresses:
    set system name-server 2a01:4f8:161:3441::1
    set system name-server 2a00:f826:8:2::195
 
+.. start_vyoslinter
 
 Domain search order
 ===================

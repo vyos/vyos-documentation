@@ -22,9 +22,9 @@ Console
 
 .. cfgcmd:: set system syslog console facility <keyword> level <keyword>
 
-Log syslog messages to ``/dev/console``, for an explanation on
-:ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
-see tables below.
+   Log syslog messages to ``/dev/console``, for an explanation on
+   :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
+   see tables below.
 
 
 Custom File
@@ -32,20 +32,21 @@ Custom File
 
 .. cfgcmd:: set system syslog file <filename> facility <keyword> level <keyword>
 
-Log syslog messages to file specified via `<filename>`, for en explanation on
-:ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords see
-tables below.
+   Log syslog messages to file specified via `<filename>`, for en explanation on
+   :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
+   see tables below.
 
 .. cfgcmd:: set system syslog file <filename> archive size <size>
 
-Syslog will write `<size>` kilobytes into the file specified by `<filename>`.
-After this limit has been reached, the custom file is "rotated" by logrotate
-and a new custom file is created.
+   Syslog will write `<size>` kilobytes into the file specified by `<filename>`.
+   After this limit has been reached, the custom file is "rotated" by logrotate
+   and a new custom file is created.
 
 .. cfgcmd:: set system syslog file <filename> archive file <number>
 
-Syslog uses logrotate to rotate logiles after a number of gives bytes. We keep
-as many as `<number>` rotated file before they are deleted on the system.
+   Syslog uses logrotate to rotate logiles after a number of gives bytes.
+   We keep as many as `<number>` rotated file before they are deleted on the
+   system.
 
 
 Remote Host
@@ -59,16 +60,17 @@ sending the messages via port 514/UDP.
 
 .. cfgcmd:: set system syslog host <address> facility <keyword> level <keyword>
 
-Log syslog messages to remote host specified by `<address>`. The address can be
-specified by either FQDN or IP address. For en explanation on
-:ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords see
-tables below.
+   Log syslog messages to remote host specified by `<address>`. The address
+   can be specified by either FQDN or IP address. For en explanation on
+   :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level`
+   keywords see tables below.
 
 
-.. cfgcmd:: set system syslog host <address> facility <keyword> protocol <udp|tcp>
+.. cfgcmd:: set system syslog host <address> facility <keyword> protocol
+   <udp|tcp>
 
-Configure protocol used for communication to remote syslog host. This can be
-either UDP or TCP.
+   Configure protocol used for communication to remote syslog host. This can be
+   either UDP or TCP.
 
 
 Local User Account
@@ -76,11 +78,11 @@ Local User Account
 
 .. cfgcmd:: set system syslog user <username> facility <keyword> level <keyword>
 
-If logging to a local user account is configured, all defined log messages are
-display on the console if the local user is logged in, if the user is not
-logged in, no messages are being displayed. For en explanation on
-:ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords see
-tables below.
+   If logging to a local user account is configured, all defined log messages
+   are display on the console if the local user is logged in, if the user is not
+   logged in, no messages are being displayed. For en explanation on
+   :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
+   see tables below.
 
 .. _syslog_facilities:
 
@@ -191,36 +193,39 @@ Display Logs
 
 .. opcmd:: show log [all | authorization | cluster | conntrack-sync | ...]
 
-Display log files of given category on the console. Use tab completion to get
-a list of available categories. Thos categories could be: all, authorization,
-cluster, conntrack-sync, dhcp, directory, dns, file, firewall, https, image
-lldp, nat, openvpn, snmp, tail, vpn, vrrp
+   Display log files of given category on the console. Use tab completion to get
+   a list of available categories. Thos categories could be: all, authorization,
+   cluster, conntrack-sync, dhcp, directory, dns, file, firewall, https, image
+   lldp, nat, openvpn, snmp, tail, vpn, vrrp
 
 If no option is specified, this defaults to `all`.
 
-.. opcmd:: show log image <name> [all | authorization | directory | file <file name> | tail <lines>]
+.. opcmd:: show log image <name>
+   [all | authorization | directory | file <file name> | tail <lines>]
 
-Log messages from a specified image can be displayed on the console. Details of
-allowed parameters:
+   Log messages from a specified image can be displayed on the console. Details
+   of allowed parameters:
 
-.. list-table::
-   :widths: 25 75
-   :header-rows: 0
+   .. list-table::
+      :widths: 25 75
+      :header-rows: 0
 
-   * - all
-     - Display contents of all master log files of the specified image
-   * - authorization
-     - Display all authorization attempts of the specified image
-   * - directory
-     - Display list of all user-defined log files of the specified image
-   * - file <file name>
-     - Display contents of a specified user-defined log file of the specified image
-   * - tail
-     - Display last lines of the system log of the specified image
-   * - <lines>
-     - Number of lines to be displayed, default 10
+      * - all
+        - Display contents of all master log files of the specified image
+      * - authorization
+        - Display all authorization attempts of the specified image
+      * - directory
+        - Display list of all user-defined log files of the specified image
+      * - file <file name>
+        - Display contents of a specified user-defined log file of the specified
+          image
+      * - tail
+        - Display last lines of the system log of the specified image
+      * - <lines>
+        - Number of lines to be displayed, default 10
 
 When no options/parameters are used, the contents of the main syslog file are
 displayed.
 
-.. hint:: Use ``show log | strip-private`` if you want to hide private data when sharing your logs.
+.. hint:: Use ``show log | strip-private`` if you want to hide private data
+   when sharing your logs.

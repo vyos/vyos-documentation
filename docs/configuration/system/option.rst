@@ -1,8 +1,8 @@
 .. _system_option:
 
-#######
-Options
-#######
+######
+Option
+######
 
 This chapter describe the possibilities of advanced system behavior.
 
@@ -36,7 +36,8 @@ HTTP client
    Several commands utilize curl to initiate transfers. Configure the local
    source interface used for all CURL operations.
 
-.. note:: `source-address` and `source-interface` can not be used at the same time.
+.. note:: `source-address` and `source-interface` can not be used at the same
+   time.
 
 ***************
 Keyboard Layout
@@ -69,15 +70,20 @@ earlier to pin certain interrupt handlers to specific CPUs.
 
 We now utilize `tuned` for dynamic resource balancing based on profiles.
 
-  .. seealso:: https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v2.1.pdf
+.. stop_vyoslinter
+
+.. seealso:: https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v2.1.pdf
+
+.. start_vyoslinter
 
 .. cfgcmd:: set system option performance < throughput | latency >
 
   Configure one of the predefined system performance profiles.
 
   * ``throughput``: A server profile focused on improving network throughput.
-    This profile favors performance over power savings by setting ``intel_pstate``
-    and ``max_perf_pct=100`` and increasing kernel network buffer sizes.
+    This profile favors performance over power savings by setting
+    ``intel_pstate`` and ``max_perf_pct=100`` and increasing kernel network
+    buffer sizes.
 
     It enables transparent huge pages, and uses cpupower to set the performance
     cpufreq governor. It also sets ``kernel.sched_min_granularity_ns`` to 10 us,
@@ -85,8 +91,8 @@ We now utilize `tuned` for dynamic resource balancing based on profiles.
     40%.
 
   * ``latency``: A server profile focused on lowering network latency.
-    This profile favors performance over power savings by setting ``intel_pstate``
-    and ``min_perf_pct=100``.
+    This profile favors performance over power savings by setting
+    ``intel_pstate`` and ``min_perf_pct=100``.
 
     It disables transparent huge pages, and automatic NUMA balancing. It also
     uses cpupower to set the performance cpufreq governor, and requests a

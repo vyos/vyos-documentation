@@ -3,9 +3,11 @@
 Event Handler
 -------------
 
-Event handler allows you to execute scripts when a string that matches a regex appears in a text stream (e.g. log file).
+Event handler allows you to execute scripts when a string that matches a regex
+appears in a text stream (e.g. log file).
 
-It uses "feeds" (output of commands, or a named pipes) and "policies" that define what to execute if a regex is matched.
+It uses "feeds" (output of commands, or a named pipes) and "policies" that
+define what to execute if a regex is matched.
 
 .. code-block:: none
 
@@ -27,7 +29,8 @@ It uses "feeds" (output of commands, or a named pipes) and "policies" that defin
           pattern <regex>
           run <command to run>
 
-In this small example a script runs every time a login failed and an interface goes down
+In this small example a script runs every time a login failed and an interface
+goes down
 
 .. code-block:: none
 
