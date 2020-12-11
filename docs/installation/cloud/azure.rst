@@ -9,7 +9,8 @@ Deploy VyOS on Azure.
 
 1. Go to the Azure services and Click to **Add new Virtual machine**
 
-2. Choose vm name, resource group, region and click **Browse all public and private images**
+2. Choose vm name, resource group, region and click **Browse all public and
+   private images**
 
 .. figure:: /_static/images/cloud-azure-01.png
 
@@ -43,10 +44,12 @@ Deploy VyOS on Azure.
 Add interface
 -------------
 
-If instance was deployed with one **eth0** ``WAN`` interface and want to add new one.
-To add new interface an example **eth1** ``LAN`` you need shutdown the instance. Attach the interface in the Azure portal and then start the instance.
+If instance was deployed with one **eth0** ``WAN`` interface and want to add
+new one. To add new interface an example **eth1** ``LAN`` you need shutdown the
+instance. Attach the interface in the Azure portal and then start the instance.
 
-.. NOTE:: Azure does not allow you attach interface when the instance in the **Running** state.
+.. note:: Azure does not allow you attach interface when the instance in the
+   **Running** state.
 
 References
 ----------

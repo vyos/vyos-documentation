@@ -19,15 +19,18 @@ Deploy VyOS on Amazon :abbr:`AWS (Amazon Web Services)`
 
 .. figure:: /_static/images/cloud-aws-03.png
 
-4. Configure instance for your requirements. Select number of instances / network / subnet
+4. Configure instance for your requirements. Select number of
+   instances / network / subnet
 
 .. figure:: /_static/images/cloud-aws-04.png
 
-5. Additional storage. You can remove additional storage ``/dev/sdb``. First root device will be ``/dev/xvda``. You can skeep this step.
+5. Additional storage. You can remove additional storage ``/dev/sdb``. First
+   root device will be ``/dev/xvda``. You can skeep this step.
 
 .. figure:: /_static/images/cloud-aws-05.png
 
-6. Configure Security Group. It's recommended that you configure ssh access only from certain address sources. Or permit any (by default).
+6. Configure Security Group. It's recommended that you configure ssh access
+   only from certain address sources. Or permit any (by default).
 
 .. figure:: /_static/images/cloud-aws-06.png
 

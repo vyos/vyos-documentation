@@ -7,7 +7,8 @@ Deploy VM
 
 To deploy VyOS on GCP (Google Cloud Platform)
 
-1. Generate SSH key pair type **ssh-rsa** from the host that will connect to VyOS.
+1. Generate SSH key pair type **ssh-rsa** from the host that will connect to
+   VyOS.
 
   Example:
 
@@ -16,10 +17,12 @@ To deploy VyOS on GCP (Google Cloud Platform)
     ssh-keygen -t rsa -f ~/.ssh/vyos_gcp -C "vyos@mypc"
 
 
-.. NOTE:: In name "vyos@mypc" The first value must be "**vyos**". Because default user is vyos and google api uses this option.
+.. note:: In name "vyos@mypc" The first value must be "**vyos**". Because
+   default user is vyos and google api uses this option.
 
 
-2. Open GCP console and navigate to the menu **Metadata**. Choose **SSH Keys** and click ``edit``.
+2. Open GCP console and navigate to the menu **Metadata**. Choose
+   **SSH Keys** and click ``edit``.
 
 .. figure:: /_static/images/cloud-gcp-01.png
 

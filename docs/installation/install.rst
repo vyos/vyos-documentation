@@ -247,7 +247,8 @@ file.
 Permanent installation
 ======================
 
-.. note:: Before a permanent installation, VyOS requires a :ref:`live_installation`.
+.. note:: Before a permanent installation, VyOS requires a
+   :ref:`live_installation`.
 
 Unlike general purpose Linux distributions, VyOS uses "image installation" that
 mimics the user experience of traditional hardware routers and allows keeping
@@ -351,7 +352,8 @@ installation method which allows deploying VyOS through the network.
 * :ref:`tftp-server`
 * Webserver (HTTP) - optional, but we will use it to speed up installation
 * VyOS ISO image to be installed (do not use images prior to VyOS 1.2.3)
-* Files *pxelinux.0* and *ldlinux.c32* `from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_
+* Files *pxelinux.0* and *ldlinux.c32* `from the Syslinux distribution
+  <https://kernel.org/pub/linux/utils/boot/syslinux/>`_
 
 Configuration
 -------------
@@ -401,9 +403,6 @@ Configure a TFTP server so that it serves the following:
 * A directory named pxelinux.cfg which must contain the configuration
   file. We will use the configuration_ file shown below, which we named
   default_.
-
-.. _configuration: https://wiki.syslinux.org/wiki/index.php?title=Config
-.. _default: https://wiki.syslinux.org/wiki/index.php?title=PXELINUX#Configuration
 
 In the example we configured our existent VyOS as the TFTP server too:
 
@@ -473,7 +472,7 @@ TFTP Server, you can restart the service with
    and HTTP server have the right permissions to be accessed from the
    booting clients.
 
-.. _`Python's SimpleHTTPServer`: https://docs.python.org/2/library/simplehttpserver.html
+
 
 Client Boot
 -----------
@@ -496,11 +495,13 @@ This is a list of known issues that can arise during installation.
 Black screen on install
 -----------------------
 
-GRUB attempts to redirect all output to a serial port for ease of installation on headless hosts.
-This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a
-black screen after selecting the `Live system` option from the installation image.
+GRUB attempts to redirect all output to a serial port for ease of installation
+on headless hosts. This appears to cause an hard lockup on some hardware that
+lacks a serial port, with the result being a black screen after selecting the
+`Live system` option from the installation image.
 
-The workaround is to type `e` when the boot menu appears and edit the GRUB boot options.  Specifically, remove the:
+The workaround is to type `e` when the boot menu appears and edit the GRUB boot
+options.  Specifically, remove the:
 
 `console=ttyS0,115200`
 
@@ -508,7 +509,15 @@ option, and type CTRL-X to boot.
 
 Installation can then continue as outlined above.
 
+
+.. stop_vyoslinter
+
 .. _SYSLINUX: http://www.syslinux.org/
 .. _balenaEtcher: https://www.balena.io/etcher/
 .. _Rufus: https://rufus.ie/
 .. _many others: https://en.wikipedia.org/wiki/List_of_tools_to_create_Live_USB_systems
+.. _configuration: https://wiki.syslinux.org/wiki/index.php?title=Config
+.. _default: https://wiki.syslinux.org/wiki/index.php?title=PXELINUX#Configuration
+.. _`Python's SimpleHTTPServer`: https://docs.python.org/2/library/simplehttpserver.html
+
+.. start_vyoslinter

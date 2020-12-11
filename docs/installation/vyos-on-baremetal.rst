@@ -109,8 +109,8 @@ Extension Modules
 WiFi
 """"
 
-Refer to :ref:`wireless-interface` for additional information, below listed modules
-have been tested successfully on this Hardware platform:
+Refer to :ref:`wireless-interface` for additional information, below listed
+modules have been tested successfully on this Hardware platform:
 
 * Compex WLE900VX mini-PCIe WiFi module, only supported in mPCIe slot 1.
 
@@ -118,7 +118,8 @@ WWAN
 """"
 
 Refer to :ref:`wwan-interface` for additional information, below listed modules
-have been tested successfully on this Hardware platform using VyOS 1.3 (equuleus):
+have been tested successfully on this Hardware platform using VyOS 1.3
+(equuleus):
 
 * Sierra Wireless AirPrime MC7304 miniPCIe card (LTE)
 * Sierra Wireless AirPrime MC7430 miniPCIe card (LTE)
@@ -137,6 +138,7 @@ Create a bootable USB pendrive using e.g. Rufus_ on a Windows machine.
 Connect serial port to a PC through null modem cable (RXD / TXD crossed over).
 Set terminal emulator to 115200 8N1.
 
+.. stop_vyoslinter
 .. code-block:: none
 
   PC Engines apu4
@@ -153,6 +155,9 @@ Set terminal emulator to 115200 8N1.
   2. USB MSC Drive Generic Flash Disk 8.07
   3. Payload [memtest]
   4. Payload [setup]
+
+.. start_vyoslinter
+
 
 Now boot from the ``USB MSC Drive Generic Flash Disk 8.07`` media by pressing
 ``2``, the VyOS boot menu will appear, just wait 10 seconds or press ``Enter``
