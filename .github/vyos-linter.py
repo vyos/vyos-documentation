@@ -5,7 +5,7 @@ import sys
 import ast
 
 IPV4SEG  = r'(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])'
-IPV4ADDR = r'(?:(?:' + IPV4SEG + r'\.){3,3}' + IPV4SEG + r')'
+IPV4ADDR = r'\b(?:(?:' + IPV4SEG + r'\.){3,3}' + IPV4SEG + r')\b'
 IPV6SEG  = r'(?:(?:[0-9a-fA-F]){1,4})'
 IPV6GROUPS = (
     r'(?:' + IPV6SEG + r':){7,7}' + IPV6SEG,                  # 1:2:3:4:5:6:7:8
@@ -135,6 +135,7 @@ def handle_file_action(filepath):
         for error in errors:
             print(f"::{error[2]} file={filepath},line={error[1]}::{error[0]}")
         print('')
+        exit()
         return False
 
 
