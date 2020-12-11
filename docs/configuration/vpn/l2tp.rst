@@ -72,12 +72,8 @@ parameter to the client.
 
 .. code-block:: none
 
-  set vpn l2tp remote-access dns-servers server-1 '8.8.8.8'
-  set vpn l2tp remote-access dns-servers server-2 '8.8.4.4'
-
-.. note:: Those are the `Google public DNS`_ servers, but you can choose
-   any public available servers, like Quad9_ (9.9.9.9), Cloudflare_ (1.1.1.1)
-   or OpenNIC_.
+  set vpn l2tp remote-access dns-servers server-1 '198.51.100.8'
+  set vpn l2tp remote-access dns-servers server-2 '198.51.100.4'
 
 Established sessions can be viewed using the **show vpn remote-access**
 operational command, or **show l2tp-server sessions**
@@ -107,11 +103,11 @@ Below is an example to configure a LNS:
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
-The example above uses 192.0.2.2 as external IP address. A LAC normally
-requires an authentication password, which is set in the example configuration
-to ``lns shared-secret 'secret'``. This setup requires the Compression Control
-Protocol (CCP) being disabled, the command ``set vpn l2tp remote-access ccp-disable``
-accomplishes that.
+The example above uses 192.0.2.2 as external IP address. A LAC normally requires
+an authentication password, which is set in the example configuration to
+``lns shared-secret 'secret'``. This setup requires the Compression Control
+Protocol (CCP) being disabled, the command ``set vpn l2tp remote-access
+ccp-disable`` accomplishes that.
 
 
 Bandwidth Shaping
@@ -166,9 +162,9 @@ servers can be setup and will be used subsequentially.
 RADIUS source address
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you are using OSPF as IGP always the closets interface connected to the RADIUS
-server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests to a
-single source IP e.g. the loopback interface.
+If you are using OSPF as IGP always the closets interface connected to the
+RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
+to a single source IP e.g. the loopback interface.
 
 .. code-block:: none
 
@@ -183,14 +179,15 @@ on this NAS.
 RADIUS bandwidth shaping attribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To enable bandwidth shaping via RADIUS, the option rate-limit needs to be enabled.
+To enable bandwidth shaping via RADIUS, the option rate-limit needs to be
+enabled.
 
 .. code-block:: none
 
   set vpn l2tp remote-access authentication radius rate-limit enable
 
-The default RADIUS attribute for rate limiting is ``Filter-Id``, but you may also
-redefine it.
+The default RADIUS attribute for rate limiting is ``Filter-Id``, but you may
+also redefine it.
 
 .. code-block:: none
 
