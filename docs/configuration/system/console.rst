@@ -38,6 +38,9 @@ Major upgrades to the installed distribution may also require console access.
    * ``57600`` - 57,600 bps
    * ``115200`` - 115,200 bps (default for serial console)
 
-   .. note:: If you use a USB to serial converter please note that most of them
-      use software emulation without flow control, thus you should start with a
-      common baud rate of 9600 as otherwise you could get
+   .. note:: If you use USB to serial converters for connecting to your VyOS
+     appliance please note that most of them use software emulation without flow
+     control. This means you should start with a common baud rate (most likely
+     9600 baud) as otherwise you probably can not connect to the device using
+     high speed baud rates as your serial converter simply can not process this
+     datarate.
