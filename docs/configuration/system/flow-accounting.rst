@@ -54,7 +54,7 @@ interface, the interface must be configured for flow accounting.
    accounting.
 
 .. note:: Will be recorded only packets/flows on **incoming** direction in
-   configured interfaces.
+   configured interfaces by default.
 
 
 By default, recorded flows will be saved internally and can be listed with the
@@ -67,6 +67,11 @@ CLI command. You may disable using the local in-memory table with the command:
    If you have high traffic levels or noted some problems with missed records
    or stopping exporting, you may try to increase a default buffer size (10
    MiB) with the next command:
+
+.. cfgcmd:: set system flow-accounting enable-egress
+
+   If you need to sample also egress traffic, you may want to
+   configure egress flow-accounting:
 
 .. cfgcmd:: set system flow-accounting buffer-size <buffer size>
 
