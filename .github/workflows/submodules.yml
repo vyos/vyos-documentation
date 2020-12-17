@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: vyos/vyos-documentation
+          repository: ${{ github.repository }}
       - name: update submodule
         run: |
           git submodule status
