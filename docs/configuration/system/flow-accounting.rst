@@ -70,7 +70,8 @@ CLI command. You may disable using the local in-memory table with the command:
 
 .. cfgcmd:: set system flow-accounting enable-egress
 
-   If you need to sample also egress traffic, you may want to configure egress flow-accounting:
+   If you need to sample also egress traffic, you may want to
+   configure egress flow-accounting:
 
 .. cfgcmd:: set system flow-accounting buffer-size <buffer size>
 
