@@ -51,6 +51,17 @@ instance. Attach the interface in the Azure portal and then start the instance.
 .. note:: Azure does not allow you attach interface when the instance in the
    **Running** state.
 
+Absorbing Routes
+----------------
+
+If using as a router, you will want your LAN interface to absorb some or all of the traffic from your VNET by using a route table applied to the subnet.
+
+1. Create a route table and browse to *Configuration*
+
+2. Add one or more routes for networks you want to pass through the VyOS VM. Next hop type *Virtual Appliance* with the *Next Hop Address* of the VyOS LAN interface.
+
+.. note:: If you want to create a new default route for VMs on the subnet, use *Address Prefix* 0.0.0.0/0 Also note that if you want to use this as a typical edge device, you'll want masquerade NAT on the WAN interface.
+
 References
 ----------
 https://azure.microsoft.com
