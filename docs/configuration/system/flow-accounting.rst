@@ -62,16 +62,16 @@ CLI command. You may disable using the local in-memory table with the command:
 
 .. cfgcmd:: set system flow-accounting disable-imt
 
+   If you need to sample also egress traffic, you may want to
+   configure egress flow-accounting:
+
+.. cfgcmd:: set system flow-accounting enable-egress
+
    Internally, in flow-accounting processes exist a buffer for data exchanging
    between core process and plugins (each export target is a separated plugin).
    If you have high traffic levels or noted some problems with missed records
    or stopping exporting, you may try to increase a default buffer size (10
    MiB) with the next command:
-
-.. cfgcmd:: set system flow-accounting enable-egress
-
-   If you need to sample also egress traffic, you may want to
-   configure egress flow-accounting:
 
 .. cfgcmd:: set system flow-accounting buffer-size <buffer size>
 
