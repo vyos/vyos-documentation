@@ -14,7 +14,7 @@ Deploy VyOS on Azure.
 
 .. figure:: /_static/images/cloud-azure-01.png
 
-3. On the marketplace search ``VyOS``
+3. On the marketplace search ``VyOS`` and choose the appropriate subscription
 
 .. figure:: /_static/images/cloud-azure-02.png
 
@@ -26,7 +26,7 @@ Deploy VyOS on Azure.
 
 .. figure:: /_static/images/cloud-azure-04.png
 
-6. Click ``Review + create``. After fiew second your deployment will be complete
+6. Click ``Review + create``. After a few seconds your deployment will be complete
 
 .. figure:: /_static/images/cloud-azure-05.png
 
@@ -56,11 +56,12 @@ Absorbing Routes
 
 If using as a router, you will want your LAN interface to absorb some or all of the traffic from your VNET by using a route table applied to the subnet.
 
-1. Create a route table and browse to *Configuration*
+1. Create a route table and browse to **Configuration**
 
-2. Add one or more routes for networks you want to pass through the VyOS VM. Next hop type *Virtual Appliance* with the *Next Hop Address* of the VyOS LAN interface.
+2. Add one or more routes for networks you want to pass through the VyOS VM. Next hop type **Virtual Appliance** with the **Next Hop Address** of the VyOS ``LAN`` interface.
 
-.. note:: If you want to create a new default route for VMs on the subnet, use *Address Prefix* 0.0.0.0/0 Also note that if you want to use this as a typical edge device, you'll want masquerade NAT on the WAN interface.
+.. note:: If you want to create a new default route for VMs on the subnet, use **Address Prefix** ``0.0.0.0/0`` Also note that if you want to use this as a typical edge device, you'll want masquerade NAT for the ``WAN`` interface.
+
 
 References
 ----------
