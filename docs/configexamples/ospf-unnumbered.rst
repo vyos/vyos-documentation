@@ -4,7 +4,7 @@
 OSPF unnumbered with ECMP
 #########################
 
-General infomration can be found in the :ref:`routing-ospf` chapter.
+General information can be found in the :ref:`routing-ospf` chapter.
 
 Configuration
 =============
