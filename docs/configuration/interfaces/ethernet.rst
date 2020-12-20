@@ -121,6 +121,8 @@ Port Mirror (SPAN)
 ==================
 .. cmdinclude:: ../../_include/interface-mirror.txt
    :var0: ethernet
+   :var1: eth1
+   :var2: eth3
 
 *********
 Operation
