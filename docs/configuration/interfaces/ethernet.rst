@@ -66,6 +66,40 @@ Ethernet options
 
     set interfaces ethernet eth0 mirror eth1
 
+Offloading
+----------
+
+.. cfgcmd:: set interfaces ethernet <interface> offload <gro | gso | sg |
+  tso | ufo>
+
+  Enable different types of hardware offloading on the given NIC.
+
+  Generic segmentation offload is a pure software offload that is meant to deal
+  with cases where device drivers cannot perform the offloads described above.
+  What occurs in GSO is that a given skbuff will have its data broken out over
+  multiple skbuffs that have been resized to match the MSS provided via
+  skb_shinfo()->gso_size.
+
+  Before enabling any hardware segmentation offload a corresponding software
+  offload is required in GSO. Otherwise it becomes possible for a frame to be
+  re-routed between devices and end up being unable to be transmitted.
+
+  Generic receive offload is the complement to GSO. Ideally any frame assembled
+  by GRO should be segmented to create an identical sequence of frames using
+  GSO, and any sequence of frames segmented by GSO should be able to be
+  reassembled back to the original by GRO. The only exception to this is IPv4
+  ID in the case that the DF bit is set for a given IP header. If the value of
+  the IPv4 ID is not sequentially incrementing it will be altered so that it is
+  when a frame assembled via GRO is segmented via GSO.
+
+  .. warning:: Recent 1.3 rolling images also support XDP offloading which
+    stands for eXpress Data Path in the Linux Kernel. You must enable it for
+    every interface which should participate in the XDP forwarding.
+
+    Enabling this feature will break any form of NAT or Firewalling on this
+    interface, as XDP is handled way earlier in the driver then NfTables.
+
+
 VLAN
 ====
 
