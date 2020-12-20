@@ -266,7 +266,9 @@ VLAN
 Port Mirror (SPAN)
 ==================
 .. cmdinclude:: ../../_include/interface-mirror.txt
-   :var0: ethernet
+   :var0: bonding
+   :var1: bond1
+   :var2: eth3
 
 *******
 Example

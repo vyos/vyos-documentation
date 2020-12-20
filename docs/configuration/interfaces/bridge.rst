@@ -127,6 +127,12 @@ VLAN
    VLAN tag enters the port, the data packet will be forced to add a tag of a
    specific vlan id. When the vlan id flag flows out, the tag of the vlan id
    will be stripped
+   
+   Example: Set `eth0` member port to be native VLAN 2
+   
+   .. code-block:: none
+
+     set interfaces bridge br1 member interface eth0 native-vlan 2
 
 .. cfgcmd:: set interfaces bridge <interface> member interface <member>
    allowed-vlan <vlan-id>
@@ -134,11 +140,25 @@ VLAN
    Allows specific VLAN IDs to pass through the bridge member interface. This
    can either be an individual VLAN id or a range of VLAN ids delimited by a
    hyphen.
+   
+   Example: Set `eth0` member port to be allowed VLAN 4
+   
+   .. code-block:: none
+   
+     set interfaces bridge br1 member interface eth0 allowed-vlan 4
+  
+   Example: Set `eth0` member port to be allowed VLAN 6-8
+   
+   .. code-block:: none
+   
+     set interfaces bridge br1 member interface eth0 allowed-vlan 6-8
 
 Port Mirror (SPAN)
 ==================
 .. cmdinclude:: ../../_include/interface-mirror.txt
-   :var0: ethernet
+   :var0: bridge
+   :var1: br1
+   :var2: eth3
 
 *******
 Example
