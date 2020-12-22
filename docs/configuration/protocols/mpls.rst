@@ -155,6 +155,12 @@ Configuration Options
   the Dual-Stack capability TLV for IPv6 LDP communications. This is related to
   :rfc:`7552`.
 
+.. cfgcmd:: set protocols mpls ldp parameters ordered-control
+
+  Use this command to use ordered label distribution control mode. FRR
+  by default uses independent label distribution control mode for label
+  distribution.  This is related to :rfc:`5036`.
+
 .. cfgcmd:: set protocols mpls ldp parameters transport-prefer-ipv4
 
   Use this command to prefer IPv4 for TCP peer transport connection for LDP
