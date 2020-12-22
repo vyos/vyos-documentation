@@ -3,7 +3,7 @@
 High availability
 =================
 
-VRRP (Virtual Redundancy Protocol) provides active/backup redundancy for
+VRRP (Virtual Router Redundancy Protocol) provides active/backup redundancy for
 routers. Every VRRP router has a physical IP/IPv6 address, and a virtual
 address. On startup, routers elect the master, and the router with the highest
 priority becomes the master and assigns the virtual address to its interface.
