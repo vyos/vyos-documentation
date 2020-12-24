@@ -317,16 +317,16 @@ commands:
   vyos@vyos:/config/my-easy-rsa-config$./easyrsa revoke client1
   vyos@vyos:/config/my-easy-rsa-config$ ./easyrsa gen-crl
 
-Copy the files to /config/auth/ovpn/ to use in OpenVPN tunnel creation
+Copy the files to /config/auth/openvpn/ to use in OpenVPN tunnel creation
 
 .. code-block:: none
 
-  vyos@vyos:/config/my-easy-rsa-config$ sudo mkdir /config/auth/ovpn
-  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/ca.crt /config/auth/ovpn
-  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/dh.pem  /config/auth/ovpn
-  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/private/central.key /config/auth/ovpn
-  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/issued/central.crt  /config/auth/ovpn
-  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/crl.pem /config/auth/ovpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo mkdir /config/auth/openvpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/ca.crt /config/auth/openvpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/dh.pem  /config/auth/openvpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/private/central.key /config/auth/openvpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/issued/central.crt  /config/auth/openvpn
+  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/crl.pem /config/auth/openvpn
 
 Additionally, each client needs a copy of ca.crt and its own client key and
 cert files. The files are plaintext so they may be copied either manually,
@@ -336,7 +336,7 @@ For example, Branch 1's router might have the following files:
 
 .. code-block:: none
 
-  vyos@branch1-rtr:$ ls /config/auth/ovpn
+  vyos@branch1-rtr:$ ls /config/auth/openvpn
   ca.crt branch1.crt branch1.key
 
 Client Authentication
