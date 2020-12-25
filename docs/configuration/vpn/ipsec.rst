@@ -183,7 +183,7 @@ On the RIGHT (dynamic address):
   set vpn ipsec site-to-site peer 192.0.2.10 authentication id @RIGHT
   set vpn ipsec site-to-site peer 192.0.2.10 authentication mode rsa
   set vpn ipsec site-to-site peer 192.0.2.10 authentication rsa-key-name LEFT
-  set vpn ipsec site-to-site peer 192.0.2.10 remote-id @LEFT
+  set vpn ipsec site-to-site peer 192.0.2.10 authentication remote-id LEFT
   set vpn ipsec site-to-site peer 192.0.2.10 connection-type initiate
   set vpn ipsec site-to-site peer 192.0.2.10 default-esp-group MyESPGroup
   set vpn ipsec site-to-site peer 192.0.2.10 ike-group MyIKEGroup
