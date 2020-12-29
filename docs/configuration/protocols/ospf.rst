@@ -92,6 +92,12 @@ A typical configuration using 2 nodes.
   set protocols ospfv3 parameters router-id 192.168.2.1
   set protocols ospfv3 redistribute connected
 
+**To see the redistributed routes:**
+
+.. code-block:: none
+
+  show ipv6 ospfv3 redistribute
+
 .. note:: You can not easily redistribute IPv6 routes via OSPFv3 on a WireGuard
    interface link. This requires you to configure link-local addresses manually
    on the WireGuard interfaces, see :vytask:`T1483`.
