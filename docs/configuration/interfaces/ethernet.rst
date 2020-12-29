@@ -96,6 +96,44 @@ Offloading
    :var0: ethernet
    :var1: eth0
 
+Authentication (EAPoL)
+----------------------
+
+:abbr:`EAP (Extensible Authentication Protocol)` over LAN (EAPoL) is a network
+port authentication protocol used in IEEE 802.1X (Port Based Network Access
+Control) developed to give a generic network sign-on to access network
+resources.
+
+EAPoL comes with an identify option. We automatically use the interface MAC
+address as identity parameter.
+
+.. cfgcmd:: set interfaces ethernet <interface> eapol ca-cert-file <file>
+
+  SSL :abbr:`CA (Certificate Authority)` x509 PEM file used afor authentication
+  of the remote side.
+
+  .. code-block: none
+
+    set interfaces ethernet eth0 eapol ca-cert-file /config/auth/ca.pem
+
+.. cfgcmd:: set interfaces ethernet <interface> eapol cert-file <file>
+
+  SSL/x509 public certificate file provided by the client to authenticate
+  against the 802.1x system.
+
+  .. code-block: none
+
+    set interfaces ethernet eth0 eapol cert-file /config/auth/public.pem
+
+.. cfgcmd:: set interfaces ethernet <interface> eapol key-file <file>
+
+  SSL/x509 private certificate file provided by the client to authenticate
+  against the 802.1x system.
+
+  .. code-block: none
+
+    set interfaces ethernet eth0 eapol key-file /config/auth/private.key
+
 VLAN
 ====
 
