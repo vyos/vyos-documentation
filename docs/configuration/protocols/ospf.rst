@@ -98,7 +98,7 @@ A typical configuration using 2 nodes.
 
   show ipv6 ospfv3 redistribute
 
-.. note:: You can not easily redistribute IPv6 routes via OSPFv3 on a WireGuard
+.. note:: You cannot easily redistribute IPv6 routes via OSPFv3 on a WireGuard
    interface link. This requires you to configure link-local addresses manually
    on the WireGuard interfaces, see :vytask:`T1483`.
 
