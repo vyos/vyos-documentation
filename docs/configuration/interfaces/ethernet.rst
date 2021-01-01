@@ -69,28 +69,42 @@ Ethernet options
 Offloading
 ----------
 
-.. cfgcmd:: set interfaces ethernet <interface> offload <gro | gso | sg |
-  tso | ufo>
+.. cfgcmd:: set interfaces ethernet <interface> offload <gro | gso | sg | tso |
+  ufo | rps>
 
   Enable different types of hardware offloading on the given NIC.
 
-  Generic segmentation offload is a pure software offload that is meant to deal
-  with cases where device drivers cannot perform the offloads described above.
-  What occurs in GSO is that a given skbuff will have its data broken out over
-  multiple skbuffs that have been resized to match the MSS provided via
-  skb_shinfo()->gso_size.
+  :abbr:`GSO (Generic Segmentation Offload)` is a pure software offload that is
+  meant to deal with cases where device drivers cannot perform the offloads
+  described above. What occurs in GSO is that a given skbuff will have its data
+  broken out over multiple skbuffs that have been resized to match the MSS
+  provided via skb_shinfo()->gso_size.
 
   Before enabling any hardware segmentation offload a corresponding software
   offload is required in GSO. Otherwise it becomes possible for a frame to be
   re-routed between devices and end up being unable to be transmitted.
 
-  Generic receive offload is the complement to GSO. Ideally any frame assembled
-  by GRO should be segmented to create an identical sequence of frames using
-  GSO, and any sequence of frames segmented by GSO should be able to be
-  reassembled back to the original by GRO. The only exception to this is IPv4
-  ID in the case that the DF bit is set for a given IP header. If the value of
-  the IPv4 ID is not sequentially incrementing it will be altered so that it is
-  when a frame assembled via GRO is segmented via GSO.
+  :abbr:`GRO (Generic receive offload)` is the complement to GSO. Ideally any
+  frame assembled by GRO should be segmented to create an identical sequence of
+  frames using GSO, and any sequence of frames segmented by GSO should be able
+  to be reassembled back to the original by GRO. The only exception to this is
+  IPv4 ID in the case that the DF bit is set for a given IP header. If the
+  value of the IPv4 ID is not sequentially incrementing it will be altered so
+  that it is when a frame assembled via GRO is segmented via GSO.
+
+  :abbr:`RPS (Receive Packet Steering)` is logically a software implementation
+  of :abbr:`RSS (Receive Side Scaling)`. Being in software, it is necessarily
+  called later in the datapath. Whereas RSS selects the queue and hence CPU that
+  will run the hardware interrupt handler, RPS selects the CPU to perform
+  protocol processing above the interrupt handler. This is accomplished by
+  placing the packet on the desired CPU's backlog queue and waking up the CPU
+  for processing. RPS has some advantages over RSS:
+
+  - it can be used with any NIC,
+  - software filters can easily be added to hash over new protocols,
+  - it does not increase hardware device interrupt rate (although it does
+    introduce inter-processor interrupts (IPIs)).
+
 
 .. cmdinclude:: /_include/interface-xdp.txt
    :var0: ethernet
