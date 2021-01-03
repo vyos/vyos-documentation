@@ -1,7 +1,7 @@
 .. _cli:
 
 #####################
-Comand Line Interface
+Command Line Interface
 #####################
 
 The VyOS :abbr:`CLI (Command-Line Interface)` comprises an operational and a
