@@ -174,6 +174,13 @@ ASN and Router ID
 Route Selection
 ---------------
 
+.. cfgcmd:: set protocols bgp <asn> parameters always-compare-med
+
+   This command provides to compare the MED on routes, even when they were 
+   received from different neighbouring ASes. Setting this option makes the 
+   order of preference of routes more defined, and should eliminate MED 
+   induced oscillations.
+
 .. cfgcmd:: set protocols bgp <asn> parameters bestpath as-path confed
 
    This command specifies that the length of confederation path sets and
@@ -189,6 +196,254 @@ Route Selection
 .. cfgcmd:: set protocols bgp <asn> parameters bestpath as-path ignore
 
    Ignore AS_PATH length when selecting a route
+
+.. cfgcmd:: set protocols bgp <asn> parameters bestpath compare-routerid
+
+   Ensure that when comparing routes where both are equal on most metrics, 
+   including local-pref, AS_PATH length, IGP cost, MED, that the tie is 
+   broken based on router-ID.
+
+   If this option is enabled, then the already-selected check, where 
+   already selected eBGP routes are preferred, is skipped.
+
+   If a route has an ORIGINATOR_ID attribute because it has been reflected, 
+   that ORIGINATOR_ID will be used. Otherwise, the router-ID of the peer 
+   the route was received from will be used.
+
+   The advantage of this is that the route-selection (at this point) will 
+   be more deterministic. The disadvantage is that a few or even one lowest-ID 
+   router may attract all traffic to otherwise-equal paths because of this 
+   check. It may increase the possibility of MED or IGP oscillation, unless 
+   other measures were taken to avoid these. The exact behaviour will be 
+   sensitive to the iBGP and reflection topology.
+
+.. cfgcmd:: set protocols bgp <asn> parameters bestpath med confed
+   
+   This command specifies that BGP considers the MED when comparing routes 
+   originated from different sub-ASs within the confederation to which this 
+   BGP speaker belongs. The default state, where the MED attribute is not 
+   considered.
+
+.. cfgcmd:: set protocols bgp <asn> parameters bestpath med missing-as-worst
+
+   This command specifies that a route with a MED is always considered to be 
+   better than a route without a MED by causing the missing MED attribute to 
+   have a value of infinity. The default state, where the missing MED 
+   attribute is considered to have a value of zero.
+
+.. cfgcmd:: set protocols bgp <asn> parameters default local-pref <local-pref value>
+
+   This command specifies the default local preference value. The local 
+   preference range is 0 to 4294967295.
+   
+.. cfgcmd:: set protocols bgp <asn> parameters default no-ipv4-unicast
+
+   This command allows the user to specify that IPv4 peering is turned off by 
+   default.
+
+.. cfgcmd:: set protocols bgp <asn> parameters deterministic-med
+
+   This command provides to compare different MED values that advertised by 
+   neighbours in the same AS for routes selection. When this command is enabled, 
+   routes from the same autonomous system are grouped together, and the best 
+   entries of each group are compared.
+
+Administrative Distance
+-----------------------
+
+.. cfgcmd:: set protocols bgp <asn> parameters distance global <external|internal|local> <distance>
+
+   This command change distance value of BGP. The arguments are the distance 
+   values for external routes, internal routes and local routes respectively.
+   The distance range is 1 to 255.
+
+.. cfgcmd:: set protocols bgp <asn> parameters distance prefix <subnet> distance <distance>
+
+   This command sets the administrative distance for a particular route. The 
+   distance range is 1 to 255.
+   
+   .. note:: Routes with a distance of 255 are effectively disabled and not
+      installed into the kernel.
+
+Network Advertisement
+---------------------
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> network <prefix>
+
+   This command is used for advertising IPv4 or IPv6 networks.
+   
+   .. note:: By default, the BGP prefix is advertised even if it's not 
+   present in the routing table. This behaviour differs from the 
+   implementation of some vendors.
+   
+.. cfgcmd::  set protocols bgp <asn> parameters network-import-check
+
+   This configuration modifies the behavior of the network statement.
+   If you have this configured the underlying network must exist in the rib
+
+Peers
+-----
+
+Defining Peers
+^^^^^^^^^^^^^^
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> remote-as <nasn>
+
+   This command creates a new neighbor whose remote-as is NASN. The neighbor 
+   address can be an IPv4 address or an IPv6 address or an interface to use 
+   for the connection.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> remote-as internal
+
+   Create a peer as you would when you specify an ASN, except that if the 
+   peers ASN is different than mine as specified under the :cfgcmd:`protocols 
+   bgp <asn>` command the connection will be denied.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> remote-as external
+
+   Create a peer as you would when you specify an ASN, except that if the 
+   peers ASN is the same as mine as specified under the :cfgcmd:`protocols 
+   bgp <asn>` command the connection will be denied.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> shutdown
+   
+   This command disable the peer. To reenable the peer use the delete 
+   form of this command.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> description <text>
+
+   Set description of the peer.
+
+Capability Negotiation
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> capability dynamic
+
+   This command would allow the dynamic update of capabilities over an 
+   established BGP session.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> capability extended-nexthop
+
+   Allow bgp to negotiate the extended-nexthop capability with it’s peer. 
+   If you are peering over a IPv6 Link-Local address then this capability 
+   is turned on automatically. If you are peering over a IPv6 Global Address 
+   then turning on this command will allow BGP to install IPv4 routes with 
+   IPv6 nexthops if you do not have IPv4 configured on interfaces.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> disable-capability-negotiation
+
+   Suppress sending Capability Negotiation as OPEN message optional 
+   parameter to the peer. This command only affects the peer is 
+   configured other than IPv4 unicast configuration.
+
+   When remote peer does not have capability negotiation feature, 
+   remote peer will not send any capabilities at all. In that case,
+   bgp configures the peer with configured capabilities.
+
+   You may prefer locally configured capabilities more than the negotiated 
+   capabilities even though remote peer sends capabilities. If the peer is 
+   configured by :cfgcmd:`override-capability`, VyOS ignores received capabilities 
+   then override negotiated capabilities with configured values.
+
+   Additionally you should keep in mind that this feature fundamentally 
+   disables the ability to use widely deployed BGP features. BGP unnumbered,
+   hostname support, AS4, Addpath, Route Refresh, ORF, Dynamic Capabilities,
+   and graceful restart.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> override-capability
+
+   This command allow override the result of Capability Negotiation with 
+   local configuration. Ignore remote peer’s capability value.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> strict-capability-match
+
+   This command forces strictly compare remote capabilities and local 
+   capabilities. If capabilities are different, send Unsupported Capability
+   error then reset connection.
+
+   You may want to disable sending Capability Negotiation OPEN message 
+   optional parameter to the peer when remote peer does not implement 
+   Capability Negotiation. Please use :cfgcmd:`disable-capability-negotiation` 
+   command to disable the feature.
+
+Peer Parameters
+^^^^^^^^^^^^^^^
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family <ipv4-unicast|ipv6-unicast> allowas-in number <number>
+
+   This command accept incoming routes with AS path containing AS 
+   number with the same value as the current system AS. This is 
+   used when you want to use the same AS number in your sites,
+   but you can’t connect them directly.
+
+   The number parameter (1-10) configures the amount of accepted 
+   occurences of the system AS number in AS path.
+
+   This command is only allowed for eBGP peers.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family <ipv4-unicast|ipv6-unicast> as-override
+
+   This command override AS number of the originating router with 
+   the local AS number.
+
+   Usually this configuration is used in PEs (Provider Edge) to 
+   replace the incoming customer AS number so the connected CE (
+   Customer Edge) can use the same AS number as the other customer 
+   sites. This allows customers of the provider network to use the 
+   same AS number across their sites.
+
+   This command is only allowed for eBGP peers.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family <ipv4-unicast|ipv6-unicast> attribute-unchanged <as-path|med|next-hop>
+
+   This command specifies attributes to be left unchanged for 
+   advertisements sent to a peer.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family <ipv4-unicast|ipv6-unicast> maximum-prefix <number>
+
+   This command specifies a maximum number of prefixes we can receive 
+   from a given peer. If this number is exceeded, the BGP session 
+   will be destroyed. The number range is 1 to 4294967295.
+   
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family <ipv4-unicast|ipv6-unicast> nexthop-self
+
+   This command forces the BGP speaker to report itself as the 
+   next hop for an advertised route it advertised to a neighbor.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family <ipv4-unicast|ipv6-unicast> remove-private-as
+
+   This command removes the private ASN of routes that are advertised 
+   to the configured peer. It removes only private ASNs on routes 
+   advertised to EBGP peers.
+   
+   If the AS-Path for the route has only private ASNs, the private 
+   ASNs are removed. 
+   
+   If the AS-Path for the route has a private ASN between public 
+   ASNs, it is assumed that this is a design choice, and the 
+   private ASN is not removed.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family <ipv4-unicast|ipv6-unicast> weight <number>
+
+   This command specifies a default weight value for the neighbor’s 
+   routes. The number range is 1 to 65535.
+
+Timers
+------
+
+.. cfgcmd:: set protocols bgp <asn> timers holdtime <seconds>
+
+   This command specifies hold-time in seconds. The timer can 
+   range from 4 to 65535.The default value is 180 second. If
+   you set value to 0 VyOS will not hold routes.
+   
+.. cfgcmd:: set protocols bgp <asn> timers keepalive <seconds>
+
+   This command specifies keep-alive time in seconds. The timer 
+   can range from 4 to 65535.The default value is 60 second.
+
+Configuration Examples
+----------------------
 
 IPv4
 ^^^^
