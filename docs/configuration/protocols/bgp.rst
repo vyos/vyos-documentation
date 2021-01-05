@@ -236,11 +236,6 @@ Route Selection
    This command specifies the default local preference value. The local 
    preference range is 0 to 4294967295.
    
-.. cfgcmd:: set protocols bgp <asn> parameters default no-ipv4-unicast
-
-   This command allows the user to specify that IPv4 peering is turned off by 
-   default.
-
 .. cfgcmd:: set protocols bgp <asn> parameters deterministic-med
 
    This command provides to compare different MED values that advertised by 
@@ -272,14 +267,66 @@ Network Advertisement
 
    This command is used for advertising IPv4 or IPv6 networks.
    
-   .. note:: By default, the BGP prefix is advertised even if it's not 
-   present in the routing table. This behaviour differs from the 
-   implementation of some vendors.
+   .. note:: By default, the BGP prefix is advertised even if it's not present in
+      the routing table. This behaviour differs from the implementation of some vendors.
    
 .. cfgcmd::  set protocols bgp <asn> parameters network-import-check
 
    This configuration modifies the behavior of the network statement.
-   If you have this configured the underlying network must exist in the rib
+   If you have this configured the underlying network must exist in the 
+   routing table.
+
+Route Aggregation
+-----------------
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> aggregate-address <prefix>
+
+   This command specifies an aggregate address. The router will also 
+   announce longer-prefixes inside of the aggregate address.
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> aggregate-address <prefix> as-set
+
+   This command specifies an aggregate address with a mathematical set of 
+   autonomous systems. This command summarizes the AS_PATH attributes of 
+   all the individual routes. 
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> aggregate-address <prefix> summary-only
+
+   This command specifies an aggregate address and provides that 
+   longer-prefixes inside of the aggregate address are suppressed 
+   before sending BGP updates out to peers.
+
+Redistribution
+--------------
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> redistribute connected
+
+   Redistribute connected routes to BGP process.
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> redistribute kernel
+
+   Redistribute kernel routes to BGP process.
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> redistribute ospf
+
+   Redistribute OSPF routes to BGP process.
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> redistribute rip
+
+   Redistribute RIP routes to BGP process.
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> redistribute static
+
+   Redistribute static routes to BGP process.
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> redistribute <route source> metric <number>
+
+   This command specifies metric (MED) for redistributed routes. The 
+   metric range is 0 to 4294967295.
+
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> redistribute <route source> route-map <name>
+
+   This command allows to use route map to filter redistributed routes.
 
 Peers
 -----
@@ -291,7 +338,7 @@ Defining Peers
 
    This command creates a new neighbor whose remote-as is NASN. The neighbor 
    address can be an IPv4 address or an IPv6 address or an interface to use 
-   for the connection.
+   for the connection. The command it applicable for peer and peer group.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> remote-as internal
 
@@ -307,12 +354,17 @@ Defining Peers
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> shutdown
    
-   This command disable the peer. To reenable the peer use the delete 
-   form of this command.
+   This command disable the peer or peer group. To reenable the peer use 
+   the delete form of this command.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> description <text>
 
-   Set description of the peer.
+   Set description of the peer or peer group.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> update-source <address|interface>
+
+   Specify the IPv4 source address to use for the BGP session to this neighbour,
+   may be specified as either an IPv4 address directly or as an interface name.
 
 Capability Negotiation
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -379,7 +431,8 @@ Peer Parameters
    The number parameter (1-10) configures the amount of accepted 
    occurences of the system AS number in AS path.
 
-   This command is only allowed for eBGP peers.
+   This command is only allowed for eBGP peers. It is not applicable 
+   for peer groups.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family <ipv4-unicast|ipv6-unicast> as-override
 
@@ -397,7 +450,7 @@ Peer Parameters
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family <ipv4-unicast|ipv6-unicast> attribute-unchanged <as-path|med|next-hop>
 
    This command specifies attributes to be left unchanged for 
-   advertisements sent to a peer.
+   advertisements sent to a peer or peer group.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family <ipv4-unicast|ipv6-unicast> maximum-prefix <number>
 
@@ -428,8 +481,109 @@ Peer Parameters
    This command specifies a default weight value for the neighbor’s 
    routes. The number range is 1 to 65535.
 
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> advertisement-interval <seconds>
+
+   This command specifies the minimum route advertisement interval for 
+   the peer. This number is between 0 and 600 seconds, with the default 
+   advertisement interval being 0.
+   
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> disable-connected-check
+
+   This command allows peerings between directly connected eBGP peers 
+   using loopback addresses without adjusting the default TTL of 1.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> ebgp-multihop <number>
+
+   This command allows sessions to be established with eBGP neighbors 
+   when they are multiple hops away. When the neighbor is not directly 
+   connected and this knob is not enabled, the session will not establish.
+   The number of hops range is 1 to 255.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> local-as <asn> [no-prepend] [replace-as]
+
+   Specify an alternate AS for this BGP process when interacting with 
+   the specified peer or peer group. With no modifiers, the specified 
+   local-as is prepended to the received AS_PATH when receiving routing 
+   updates from the peer, and prepended to the outgoing AS_PATH (after 
+   the process local AS) when transmitting local routes to the peer.
+
+   If the :cfgcmd:`no-prepend` attribute is specified, then the supplied 
+   local-as is not prepended to the received AS_PATH.
+
+   If the :cfgcmd:`replace-as` attribute is specified, then only the supplied 
+   local-as is prepended to the AS_PATH when transmitting local-route 
+   updates to this peer.
+
+   Note that replace-as can only be specified if no-prepend is.
+   This command is only allowed for eBGP peers.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> passive
+
+   Configures the BGP speaker so that it only accepts inbound connections 
+   from, but does not initiate outbound connections to the peer or peer group.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> ttl-security hops <number>
+
+   This command enforces Generalized TTL Security Mechanism (GTSM), 
+   as specified in :rfc:`5082`. With this command, only neighbors 
+   that are the specified number of hops away will be allowed to 
+   become neighbors. The number of hops range is 1 to 254.This 
+   command is mutually exclusive with :cfgcmd:`ebgp-multihop`.   
+
+Peer Groups
+^^^^^^^^^^^
+
+Peer groups are used to help improve scaling by generating the same update 
+information to all members of a peer group. Note that this means that the 
+routes generated by a member of a peer group will be sent back to that 
+originating peer with the originator identifier attribute set to indicated 
+the originating peer. All peers not associated with a specific peer group 
+are treated as belonging to a default peer group, and will share updates.
+
+.. cfgcmd:: set protocols bgp <asn> peer-group <name>
+
+   This command defines a new peer group. You can specify to the group 
+   the same parameters that you can specify for specific neighbors.
+
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> peer-group <name>
+
+   This command bind specific peer to peer group with a given name.
+
+General configuration
+---------------------
+
+.. cfgcmd:: set protocols bgp <asn> maximum-paths <ebgp|ibgp> <number>
+
+   This command defines the maximum number of parallel routes that 
+   the BGP can support. In order for BGP to use the second path, the 
+   following attributes have to match: Weight, Local Preference, AS
+   Path (both AS number and AS path length), Origin code, MED, IGP 
+   metric. Also, the next hop address for each path must be different. 
+
+.. cfgcmd:: set protocols bgp <asn> parameters default no-ipv4-unicast
+
+   This command allows the user to specify that IPv4 peering is turned off by 
+   default.
+
+.. cfgcmd:: set protocols bgp <asn> parameters log-neighbor-changes
+
+   Tis command enable logging neighbor up/down changes and reset reason.
+
+.. cfgcmd:: set protocols bgp <asn> parameters no-client-to-client-reflection
+
+   Tis command disables route reflection between route reflector clients.
+   By default, the clients of a route reflector are not required to be 
+   fully meshed and the routes from a client are reflected to other clients. 
+   However, if the clients are fully meshed, route reflection is not required. 
+   In this case, use the :cfgcmd:`no-client-to-client-reflection` command 
+   to disable client-to-client reflection.
+
+.. cfgcmd:: set protocols bgp <asn> parameters no-fast-external-failover
+   
+   Disable immediate sesison reset if peer's connected link goes down.
+
 Timers
-------
+^^^^^^
 
 .. cfgcmd:: set protocols bgp <asn> timers holdtime <seconds>
 
