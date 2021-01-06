@@ -15,7 +15,7 @@ ENV/
 
 # python cache files
 *.pyc
-__pychache__
+__pycache__
 
 # dotenv
 .env
