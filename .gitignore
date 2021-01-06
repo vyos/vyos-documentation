@@ -1,3 +1,6 @@
+# Sphinx
+_build/
+
 # python virtualenv
 venv/
 ENV/
