@@ -214,7 +214,8 @@ that are discarding IP protocol 47 or blocking your source/desintation traffic.
   4 packets transmitted, 4 received, 0% packet loss, time 3008ms
   rtt min/avg/max/mdev = 1.055/1.729/1.989/0.395 ms
 
-
+.. note:: There is also a GRE over IPv6 encapsulation available, it is
+  called: ``ip6gre``.
 
 .. _`other proposals`: https://www.isc.org/othersoftware/
 .. _`Hurricane Electric`: https://tunnelbroker.net/
