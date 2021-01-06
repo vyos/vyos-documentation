@@ -497,7 +497,8 @@ Peer Parameters
    This command allows sessions to be established with eBGP neighbors 
    when they are multiple hops away. When the neighbor is not directly 
    connected and this knob is not enabled, the session will not establish.
-   The number of hops range is 1 to 255.
+   The number of hops range is 1 to 255. This command is mutually 
+   exclusive with :cfgcmd:`ttl-security hops`.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> local-as <asn> [no-prepend] [replace-as]
 
@@ -527,7 +528,7 @@ Peer Parameters
    This command enforces Generalized TTL Security Mechanism (GTSM), 
    as specified in :rfc:`5082`. With this command, only neighbors 
    that are the specified number of hops away will be allowed to 
-   become neighbors. The number of hops range is 1 to 254.This 
+   become neighbors. The number of hops range is 1 to 254. This 
    command is mutually exclusive with :cfgcmd:`ebgp-multihop`.   
 
 Peer Groups
@@ -595,6 +596,139 @@ Timers
 
    This command specifies keep-alive time in seconds. The timer 
    can range from 4 to 65535.The default value is 60 second.
+
+Operational Mode Commands
+=========================
+
+Show
+----
+
+.. opcmd:: show <ip|ipv6> bgp 
+
+   This command displays all entries in BGP routing table.
+
+.. code-block:: none
+
+   BGP table version is 10, local router ID is 10.0.35.3, vrf id 0
+   Default local pref 100, local AS 65000
+   Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
+                  i internal, r RIB-failure, S Stale, R Removed
+   Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
+   Origin codes:  i - IGP, e - EGP, ? - incomplete
+
+      Network          Next Hop            Metric LocPrf Weight Path
+   *> 198.51.100.0/24  10.0.34.4                0             0 65004 i
+   *> 203.0.113.0/24   10.0.35.5                0             0 65005 i
+
+   Displayed  2 routes and 2 total paths
+
+.. opcmd:: show <ip|ipv6> bgp <address|prefix>
+
+   This command displays information about the particular entry in the BGP routing table.
+
+.. code-block:: none
+
+   BGP routing table entry for 198.51.100.0/24
+   Paths: (1 available, best #1, table default)
+     Advertised to non peer-group peers:
+     10.0.13.1 10.0.23.2 10.0.34.4 10.0.35.5
+     65004
+       10.0.34.4 from 10.0.34.4 (10.0.34.4)
+         Origin IGP, metric 0, valid, external, best (First path received)
+         Last update: Wed Jan  6 12:18:53 2021
+
+.. opcmd:: show ip bgp cidr-only
+
+   This command displays routes with classless interdomain routing (CIDR).
+
+.. opcmd:: show <ip|ipv6> bgp community <value>
+
+   This command displays routes that belong to specified BGP communities.
+   Valid value is a community number in the range from 1 to 4294967200, 
+   or AA:NN (autonomous system-community number/2-byte number), no-export,
+   local-as, or no-advertise.
+
+.. opcmd:: show <ip|ipv6> bgp community-list <name>
+
+   This command displays routes that are permitted by the BGP 
+   community list.
+
+.. opcmd:: show ip bgp dampened-paths
+
+   This command displays BGP dampened routes.
+
+.. opcmd:: show <ip|ipv6> bgp neighbors <address> advertised-routes
+
+   This command displays BGP routes advertised to a neighbor.
+
+.. opcmd:: show <ip|ipv6> bgp neighbors <address> received-routes
+
+   This command displays BGP routes originating from the specified BGP 
+   neighbor before inbound policy is applied. To use this command inbound 
+   soft reconfiguration must be enabled.
+
+.. opcmd:: show <ip|ipv6> bgp neighbors <address> routes
+
+   This command displays BGP received-routes that are accepted after filtering.
+   
+.. opcmd:: show <ip|ipv6> bgp neighbors <address> dampened-routes
+
+   This command displays dampened routes received from BGP neighbor.
+   
+.. opcmd:: show <ip|ipv6> bgp regexp <text>
+
+   This command displays information about BGP routes whose AS path 
+   matches the specified regular expression. 
+
+.. opcmd:: show <ip|ipv6> bgp summary
+
+   This command displays the status of all BGP connections.
+
+.. code-block:: none
+
+   IPv4 Unicast Summary:
+   BGP router identifier 10.0.35.3, local AS number 65000 vrf-id 0
+   BGP table version 11
+   RIB entries 5, using 920 bytes of memory
+   Peers 4, using 82 KiB of memory
+   
+   Neighbor        V         AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd
+   10.0.13.1       4      65000     148     159        0    0    0 02:16:01            0
+   10.0.23.2       4      65000     136     143        0    0    0 02:13:21            0
+   10.0.34.4       4      65004     161     163        0    0    0 02:16:01            1
+   10.0.35.5       4      65005     162     166        0    0    0 02:16:01            1
+   
+   Total number of neighbors 4
+
+Reset
+-----
+
+.. opcmd:: reset <ip|ipv6> bgp <address> [soft [in|out]]
+
+   This command resets BGP connections to the specified neighbor IP address.
+   With argument :cfgcmd:`soft` this command initiates a soft reset. If
+   you do not specify the :cfgcmd:`in` or :cfgcmd:`out` options, both 
+   inbound and outbound soft reconfiguration are triggered.
+
+.. opcmd:: reset ip bgp all
+
+   This command resets all BGP connections of given router.
+
+.. opcmd:: reset ip bgp dampening
+
+   This command uses to clear BGP route dampening information and to 
+   unsuppress suppressed routes.
+
+.. opcmd:: reset ip bgp external
+
+   This command resets all external BGP peers of given router.
+   
+.. opcmd:: reset ip bgp peer-group <name> [soft [in|out]]
+
+   This command resets BGP connections to the specified peer group.
+   With argument :cfgcmd:`soft` this command initiates a soft reset. If
+   you do not specify the :cfgcmd:`in` or :cfgcmd:`out` options, both 
+   inbound and outbound soft reconfiguration are triggered.
 
 Configuration Examples
 ----------------------
