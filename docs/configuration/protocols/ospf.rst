@@ -25,10 +25,10 @@ OSPFv2 (IPv4)
    specified in decimal notation in the range from 0 to 4294967295. Or it
    can be specified in dotted decimal notation similar to ip address.
 
-.. cfgcmd:: set protocols ospf area <number> network A.B.C.D/M
+.. cfgcmd:: set protocols ospf area <number> network <A.B.C.D/M>
 
    This command specifies the OSPF enabled interface(s). If the interface has 
-   an address from defined range then the command enables ospf on this 
+   an address from defined range then the command enables OSPF on this 
    interface so router can provide network information to the other ospf 
    routers via this interface.
 
