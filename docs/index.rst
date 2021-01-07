@@ -47,16 +47,9 @@ VyOS User Guide
    configuration-overview
    interfaces/index
    routing/index
-   firewall
-   nat
    vpn/index
-   qos
-   services/index
    system/index
-   high-availability
-   load-balancing
 
-   commandscripting
 
 
 
