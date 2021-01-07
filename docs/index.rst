@@ -4,17 +4,40 @@
 VyOS User Guide
 ###############
 
+.. toctree::
+   :maxdepth: 1
+
+   introducing/about
+   introducing/history
+   changelog/index
+
 
 .. toctree::
-   :caption: Introduction
-   :name: intro
    :maxdepth: 2
+   :includehidden:
+   :caption: First Steps
 
-   about
-   history
-   install
-   cli
+   installation/index
    quick-start
+   cli
+
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+   :caption: Adminguide
+
+
+   configuration/index
+   operation/index
+   automation/index
+   troubleshooting/index
+   configexamples/index
+
+
+
+-------------------
+
 
 .. toctree::
    :caption: Configuration
@@ -32,9 +55,9 @@ VyOS User Guide
    system/index
    high-availability
    load-balancing
-   image-mgmt
+
    commandscripting
-.. modules
+
 
 
 
@@ -47,10 +70,6 @@ VyOS User Guide
    appendix/troubleshooting
    appendix/examples/index
    appendix/commandtree/index
-   appendix/vyos-on-vmware
-   appendix/vyos-on-gns3
-   appendix/vyos-on-baremetal
-   appendix/migrate-from-vyatta
 
 
 .. toctree::
