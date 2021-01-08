@@ -101,8 +101,9 @@ Generic Routing Encapsulation (GRE)
 
 A GRE tunnel operates at layer 3 of the OSI model and is repsented by IP
 protocol 47.The main benefit of a GRE tunnel is that you are able to carry
-multiple protocols inside the same tunnel. GRE also supports multicast traffic and
-supports routing protocols that leverage multicast to form neighbor adjacencies.
+multiple protocols inside the same tunnel. GRE also supports multicast traffic
+and supports routing protocols that leverage multicast to form neighbor
+adjacencies.
 
 A VyOS GRE tunnel can carry both IPv4 and IPv6 traffic and can also be created
 over either IPv4 (gre) or IPv6 (ip6gre).
@@ -113,10 +114,10 @@ Configuration
 
 A basic configuration requires a tunnel source (local-ip), a tunnel destination
 (remote-ip), an encapsulation type (gre), and an address (ipv4/ipv6).Below is a
-basic IPv4 only configuration example taken from a VyOS router and a Cisco IOS router.
-The main difference between these two configurations is that VyOS requires you
-explicitly configure the encapsulation type. The Cisco router defaults to gre
-ip otherwise it would have to be configured as well.
+basic IPv4 only configuration example taken from a VyOS router and a Cisco IOS
+router. The main difference between these two configurations is that VyOS
+requires you explicitly configure the encapsulation type. The Cisco router
+defaults to gre ip otherwise it would have to be configured as well.
 
 **VyOS Router:**
 
