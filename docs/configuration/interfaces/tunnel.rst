@@ -100,17 +100,21 @@ Generic Routing Encapsulation (GRE)
 -----------------------------------
 
 A GRE tunnel operates at layer 3 of the OSI model and is repsented by IP
-protocol 47.The main benefit of a GRE tunnel is that you are able to route
-traffic across disparate networks. GRE also supports multicast traffic and
+protocol 47.The main benefit of a GRE tunnel is that you are able to carry
+multiple protocols inside the same tunnel. GRE also supports multicast traffic and
 supports routing protocols that leverage multicast to form neighbor adjacencies.
+
+A VyOS GRE tunnel can carry both IPv4 and IPv6 traffic and can also be created
+over either IPv4 (gre) or IPv6 (ip6gre).
+
 
 Configuration
 ^^^^^^^^^^^^^
 
 A basic configuration requires a tunnel source (local-ip), a tunnel destination
 (remote-ip), an encapsulation type (gre), and an address (ipv4/ipv6).Below is a
-configuration example taken from a VyOS router and a Cisco IOS router. The main
-difference between these two configurations is that VyOS requires you
+basic IPv4 only configuration example taken from a VyOS router and a Cisco IOS router.
+The main difference between these two configurations is that VyOS requires you
 explicitly configure the encapsulation type. The Cisco router defaults to gre
 ip otherwise it would have to be configured as well.
 
@@ -132,6 +136,45 @@ ip otherwise it would have to be configured as well.
   tunnel source 203.0.113.10
   tunnel destination 198.51.100.2
 
+Here is a second example of a dual-stack tunnel over IPv6 between a VyOS router
+and a Linux host using systemd-networkd.
+
+**VyOS Router:**
+
+.. code-block:: none
+
+  set interfaces tunnel tun101 address '2001:db8:feed:beef::1/126'
+  set interfaces tunnel tun101 address '192.168.5.1/30'
+  set interfaces tunnel tun101 encapsulation 'ip6gre'
+  set interfaces tunnel tun101 local-ip '2001:db8:babe:face::3afe:3'
+  set interfaces tunnel tun101 remote-ip '2001:db8:9bb:3ce::5'
+
+**Linux systemd-networkd:**
+
+This requires two files, one to create the device (XXX.netdev) and one
+to configure the network on the device (XXX.network)
+
+.. code-block:: none
+
+  # cat /etc/systemd/network/gre-example.netdev
+  [NetDev]
+  Name=gre-example
+  Kind=ip6gre
+  MTUBytes=14180
+
+  [Tunnel]
+  Remote=2001:db8:babe:face::3afe:3
+
+
+  # cat /etc/systemd/network/gre-example.network
+  [Match]
+  Name=gre-example
+
+  [Network]
+  Address=2001:db8:feed:beef::2/126
+
+  [Address]
+  Address=192.168.5.2/30
 
 Tunnel keys
 ^^^^^^^^^^^
