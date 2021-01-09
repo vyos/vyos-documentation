@@ -1,5 +1,3 @@
-.. include:: /_include/need_improvement.txt
-
 .. _routing-ospf:
 
 ####
@@ -19,7 +17,7 @@ OSPF is a widely used IGP in large enterprise networks.
 OSPFv2 (IPv4)
 #############
 
-General configuration
+General Configuration
 ---------------------
 
 .. cfgcmd:: set protocols ospf area <number>
@@ -43,6 +41,17 @@ General configuration
    have a cost of 1. Cost of lower bandwidth links will be scaled with 
    reference to this cost).
 
+.. cfgcmd:: set protocols ospf parameters router-id <rid>
+
+   This command sets the router-ID of the OSPF process. The router-ID may be an
+   IP address of the router, but need not be – it can be any arbitrary 32bit number.
+   However it MUST be unique within the entire OSPF domain to the OSPF speaker – bad
+   things will happen if multiple OSPF speakers are configured with the same router-ID!
+
+
+Optional Configuration
+----------------------
+
 .. cfgcmd:: set protocols ospf default-information originate [always] [metric <number>] [metric-type <1|2>] [route-map <name>]
 
    Originate an AS-External (type-5) LSA describing a default route into all 
@@ -65,23 +74,36 @@ General configuration
    .. note:: Routes with a distance of 255 are effectively disabled and not
       installed into the kernel.
 
-.. cfgcmd:: set protocols ospf parameters router-id <rid>
+.. cfgcmd:: set protocols ospf log-adjacency-changes [detail]
+
+   This command allows to log changes in adjacency. With the optional
+   :cfgcmd:`detail` argument, all changes in adjacency status are shown.
+   Without :cfgcmd:`detail`, only changes to full or regressions are shown.
+
+.. cfgcmd:: set protocols ospf max-metric router-lsa <administrative|on-shutdown <seconds>|on-startup <seconds>>
+
+   This enables :rfc:`3137` support, where the OSPF process describes its
+   transit links in its router-LSA as having infinite distance so that other
+   routers will avoid calculating transit paths through the router while
+   still being able to reach networks through the router.
    
-   This command sets the router-ID of the OSPF process. The router-ID may be an
-   IP address of the router, but need not be – it can be any arbitrary 32bit number.
-   However it MUST be unique within the entire OSPF domain to the OSPF speaker – bad
-   things will happen if multiple OSPF speakers are configured with the same router-ID!
+   This support may be enabled administratively (and indefinitely) with the
+   :cfgcmd:`administrative` command. It may also be enabled conditionally.
+   Conditional enabling of max-metric router-lsas can be for a period of
+   seconds after startup with the :cfgcmd:`on-startup <seconds>` command
+   and/or for a period of seconds prior to shutdown with the
+   :cfgcmd:`on-shutdown <seconds>` command. The time range is 5 to 86400.
    
 .. cfgcmd:: set protocols ospf parameters abr-type <cisco|ibm|shortcut|standard>
 
    This command selects ABR model. OSPF router supports four ABR models:
 
-   "cisco" – a router will be considered as ABR if it has several configured links to 
+   **cisco** – a router will be considered as ABR if it has several configured links to 
    the networks in different areas one of which is a backbone area. Moreover, the link 
    to the backbone area should be active (working).
-   "ibm" – identical to "cisco" model but in this case a backbone area link may not be active.
-   "standard" – router has several active links to different areas.
-   "shortcut" – identical to "standard" but in this model a router is allowed to use a 
+   **ibm** – identical to "cisco" model but in this case a backbone area link may not be active.
+   **standard** – router has several active links to different areas.
+   **shortcut** – identical to "standard" but in this model a router is allowed to use a 
    connected areas topology without involving a backbone area for inter-area connections.
 
    Detailed information about "cisco" and "ibm" models differences can be found in :rfc:`3509`. 
@@ -123,8 +145,18 @@ General configuration
    a threshold value, which by default is 1800 seconds (half an hour). The value is applied
    to the whole OSPF router. The timer range is 10 to 1800.
 
+.. cfgcmd:: set protocols ospf timers throttle spf <delay|initial-holdtime|max-holdtime> <seconds>
 
-Areas configuration
+   This command sets the initial delay, the initial-holdtime and the maximum-holdtime between
+   when SPF is calculated and the event which triggered the calculation. The times are specified
+   in milliseconds and must be in the range of 0 to 600000 milliseconds. :cfgcmd:`delay` sets
+   the initial SPF schedule delay in milliseconds. The default value is 200 ms.
+   :cfgcmd:`initial-holdtime` sets the minimum hold time between two consecutive SPF calculations.
+   The default value is 1000 ms. :cfgcmd:`max-holdtime` sets the maximum wait time between two
+   consecutive SPF calculations. The default value is 10000 ms.
+
+
+Areas Configuration
 -------------------
 
 .. cfgcmd:: set protocols ospf area <number> area-type stub
@@ -189,11 +221,11 @@ Areas configuration
    This parameter allows to "shortcut" routes (non-backbone) for inter-area routes. There 
    are three modes available for routes shortcutting:
 
-   "default" –  this area will be used for shortcutting only if ABR does not have a link 
+   **default** –  this area will be used for shortcutting only if ABR does not have a link 
    to the backbone area or this link was lost.
-   "enable" – the area will be used for shortcutting every time the route that goes through 
+   **enable** – the area will be used for shortcutting every time the route that goes through 
    it is cheaper.
-   "disable" – this area is never used by ABR for routes shortcutting.
+   **disable** – this area is never used by ABR for routes shortcutting.
    
 .. cfgcmd:: set protocols ospf area <number> virtual-link <A.B.C.D>
 
@@ -214,7 +246,7 @@ Areas configuration
    to belong to a backbone area.
 
 
-Interfaces configuration
+Interfaces Configuration
 ------------------------
 
 .. cfgcmd:: set interfaces <inttype> <intname> ip ospf authentication plaintext-password <text>
@@ -267,10 +299,10 @@ Interfaces configuration
    This command allows to specify the distribution type for the network connected 
    to this interface:
 
-   "broadcast" – broadcast IP addresses distribution.
-   "non-broadcast" – address distribution in NBMA networks topology.
-   "point-to-multipoint" – address distribution in point-to-multipoint networks.
-   "point-to-point" – address distribution in point-to-point networks.
+   **broadcast** – broadcast IP addresses distribution.
+   **non-broadcast** – address distribution in NBMA networks topology.
+   **point-to-multipoint** – address distribution in point-to-multipoint networks.
+   **point-to-point** – address distribution in point-to-point networks.
 
 .. cfgcmd:: set interfaces <inttype> <intname> ip ospf priority <number>
 
@@ -293,7 +325,32 @@ Interfaces configuration
    is 3 to 65535.
 
 
-Redistribution configuration
+Manual Neighbor Configuration
+-----------------------------
+
+OSPF routing devices normally discover their neighbors dynamically by listening to the broadcast
+or multicast hello packets on the network. Because an NBMA network does not support broadcast (or
+multicast), the device cannot discover its neighbors dynamically, so you must configure all the
+neighbors statically.
+
+.. cfgcmd:: set protocols ospf neighbor <A.B.C.D>
+
+   This command specifies the IP address of the neighboring device.
+
+.. cfgcmd:: set protocols ospf neighbor <A.B.C.D> poll-interval <seconds>
+
+   This command specifies the length of time, in seconds, before the routing device sends hello
+   packets out of the interface before it establishes adjacency with a neighbor. The range is 1
+   to 65535 seconds. The default value is 60 seconds.
+   
+.. cfgcmd:: set protocols ospf neighbor <A.B.C.D> priority <number>
+
+   This command specifies the router priority value of the nonbroadcast neighbor associated with
+   the IP address specified. The default is 0. This keyword does not apply to point-to-multipoint
+   interfaces.
+
+
+Redistribution Configuration
 ----------------------------
 
 .. cfgcmd:: set protocols ospf redistribute bgp
@@ -348,7 +405,227 @@ Redistribution configuration
    There are five modes available for route source: bgp, connected, kernel, rip, static.
 
 
-Configuration example
+Operational Mode Commands
+-------------------------
+
+.. opcmd:: show ip ospf neighbor
+
+   This command displays the neighbors status.
+   
+.. code-block:: none
+
+   Neighbor ID     Pri State           Dead Time Address         Interface                        RXmtL RqstL DBsmL
+   10.0.13.1         1 Full/DR           38.365s 10.0.13.1       eth0:10.0.13.3                       0     0     0
+   10.0.23.2         1 Full/Backup       39.175s 10.0.23.2       eth1:10.0.23.3                       0     0     0
+
+.. opcmd:: show ip ospf neighbor detail
+
+   This command displays the neighbors information in a detailed form, not just
+   a summary table.
+
+.. code-block:: none
+
+   Neighbor 10.0.13.1, interface address 10.0.13.1
+      In the area 0.0.0.0 via interface eth0
+      Neighbor priority is 1, State is Full, 5 state changes
+      Most recent state change statistics:
+        Progressive change 11m55s ago
+      DR is 10.0.13.1, BDR is 10.0.13.3
+      Options 2 *|-|-|-|-|-|E|-
+      Dead timer due in 34.854s
+      Database Summary List 0
+      Link State Request List 0
+      Link State Retransmission List 0
+      Thread Inactivity Timer on
+      Thread Database Description Retransmision off
+      Thread Link State Request Retransmission on
+      Thread Link State Update Retransmission on
+
+  Neighbor 10.0.23.2, interface address 10.0.23.2
+     In the area 0.0.0.1 via interface eth1
+     Neighbor priority is 1, State is Full, 4 state changes
+     Most recent state change statistics:
+       Progressive change 41.193s ago
+     DR is 10.0.23.3, BDR is 10.0.23.2
+     Options 2 *|-|-|-|-|-|E|-
+     Dead timer due in 35.661s
+     Database Summary List 0
+     Link State Request List 0
+     Link State Retransmission List 0
+     Thread Inactivity Timer on
+     Thread Database Description Retransmision off
+     Thread Link State Request Retransmission on
+     Thread Link State Update Retransmission on
+
+.. opcmd:: show ip ospf neighbor <A.B.C.D>
+
+   This command displays the neighbors information in a detailed form for a neighbor
+   whose IP address is specified.
+
+.. opcmd:: show ip ospf neighbor <intname>
+
+   This command displays the neighbors status for a neighbor on the specified
+   interface.
+
+.. opcmd:: show ip ospf interface [intname]
+
+   This command displays state and configuration of OSPF the specified interface,
+   or all interfaces if no interface is given.
+
+.. code-block:: none
+
+   eth0 is up
+     ifindex 2, MTU 1500 bytes, BW 4294967295 Mbit <UP,BROADCAST,RUNNING,MULTICAST>
+     Internet Address 10.0.13.3/24, Broadcast 10.0.13.255, Area 0.0.0.0
+     MTU mismatch detection: enabled
+     Router ID 10.0.23.3, Network Type BROADCAST, Cost: 1
+     Transmit Delay is 1 sec, State Backup, Priority 1
+     Backup Designated Router (ID) 10.0.23.3, Interface Address 10.0.13.3
+     Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
+     Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
+       Hello due in 4.470s
+     Neighbor Count is 1, Adjacent neighbor count is 1
+   eth1 is up
+     ifindex 3, MTU 1500 bytes, BW 4294967295 Mbit <UP,BROADCAST,RUNNING,MULTICAST>
+     Internet Address 10.0.23.3/24, Broadcast 10.0.23.255, Area 0.0.0.1
+     MTU mismatch detection: enabled
+     Router ID 10.0.23.3, Network Type BROADCAST, Cost: 1
+     Transmit Delay is 1 sec, State DR, Priority 1
+     Backup Designated Router (ID) 10.0.23.2, Interface Address 10.0.23.2
+     Saved Network-LSA sequence number 0x80000002
+     Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
+     Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
+       Hello due in 4.563s
+     Neighbor Count is 1, Adjacent neighbor count is 1
+
+.. opcmd:: show ip ospf route
+
+   This command displays the OSPF routing table, as determined by the most recent
+   SPF calculation.
+
+.. code-block:: none
+
+   ============ OSPF network routing table ============
+   N IA 10.0.12.0/24          [3] area: 0.0.0.0
+                              via 10.0.13.3, eth0
+   N    10.0.13.0/24          [1] area: 0.0.0.0
+                              directly attached to eth0
+   N IA 10.0.23.0/24          [2] area: 0.0.0.0
+                              via 10.0.13.3, eth0
+   N    10.0.34.0/24          [2] area: 0.0.0.0
+                              via 10.0.13.3, eth0
+   
+   ============ OSPF router routing table =============
+   R    10.0.23.3             [1] area: 0.0.0.0, ABR
+                              via 10.0.13.3, eth0
+   R    10.0.34.4             [2] area: 0.0.0.0, ASBR
+                              via 10.0.13.3, eth0
+   
+   ============ OSPF external routing table ===========
+   N E2 172.16.0.0/24         [2/20] tag: 0
+                              via 10.0.13.3, eth0
+
+The table consists of following data:
+
+**OSPF network routing table** – includes a list of acquired routes for all 
+accessible networks (or aggregated area ranges) of OSPF system. "IA" flag means
+that route destination is in the area to which the router is not connected, i.e.
+it’s an inter-area path. In square brackets a summary metric for all links through
+which a path lies to this network is specified. "via" prefix defines a
+router-gateway, i.e. the first router on the way to the destination (next hop).
+**OSPF router routing table** – includes a list of acquired routes to all 
+accessible ABRs and ASBRs.
+**OSPF external routing table** – includes a list of acquired routes that are
+external to the OSPF process. "E" flag points to the external link metric type
+(E1 – metric type 1, E2 – metric type 2). External link metric is printed in the
+"<metric of the router which advertised the link>/<link metric>" format.
+
+.. opcmd:: show ip ospf border-routers
+
+   This command displays a table of paths to area boundary and autonomous system
+   boundary routers.
+   
+.. opcmd:: show ip ospf database
+
+   This command displays a summary table with a database contents (LSA).
+
+.. code-block:: none
+
+          OSPF Router with ID (10.0.13.1)
+   
+                   Router Link States (Area 0.0.0.0)
+   
+   Link ID         ADV Router      Age  Seq#       CkSum  Link count
+   10.0.13.1       10.0.13.1        984 0x80000005 0xd915 1
+   10.0.23.3       10.0.23.3       1186 0x80000008 0xfe62 2
+   10.0.34.4       10.0.34.4       1063 0x80000004 0x4e3f 1
+   
+                   Net Link States (Area 0.0.0.0)
+   
+   Link ID         ADV Router      Age  Seq#       CkSum
+   10.0.13.1       10.0.13.1        994 0x80000003 0x30bb
+   10.0.34.4       10.0.34.4       1188 0x80000001 0x9411
+   
+                   Summary Link States (Area 0.0.0.0)
+   
+   Link ID         ADV Router      Age  Seq#       CkSum  Route
+   10.0.12.0       10.0.23.3       1608 0x80000001 0x6ab6 10.0.12.0/24
+   10.0.23.0       10.0.23.3        981 0x80000003 0xe232 10.0.23.0/24
+   
+                   AS External Link States
+   
+   Link ID         ADV Router      Age  Seq#       CkSum  Route
+   172.16.0.0      10.0.34.4       1063 0x80000001 0xc40d E2 172.16.0.0/24 [0x0]
+   
+.. opcmd:: show ip ospf database <type> [A.B.C.D] [adv-router <A.B.C.D>|self-originate]
+
+   This command displays a database contents for a specific link advertisement type.
+   
+   The type can be the following:
+   asbr-summary, external, network, nssa-external, opaque-area, opaque-as,
+   opaque-link, router, summary.
+   
+   [A.B.C.D] – link-state-id. With this specified the command displays portion of
+   the network environment that is being described by the advertisement. The value
+   entered depends on the advertisement’s LS type. It must be entered in the form
+   of an IP address.
+   
+   :cfgcmd:`adv-router <A.B.C.D>` – router id, which link advertisements need to be
+   reviewed.
+   
+   :cfgcmd:`self-originate` displays only self-originated LSAs from the local router. 
+
+.. code-block:: none
+
+             OSPF Router with ID (10.0.13.1)
+
+                   Router Link States (Area 0.0.0.0)
+
+     LS age: 1213
+     Options: 0x2  : *|-|-|-|-|-|E|-
+     LS Flags: 0x3
+     Flags: 0x0
+     LS Type: router-LSA
+     Link State ID: 10.0.13.1
+     Advertising Router: 10.0.13.1
+     LS Seq Number: 80000009
+     Checksum: 0xd119
+     Length: 36
+   
+      Number of Links: 1
+
+       Link connected to: a Transit Network
+        (Link ID) Designated Router address: 10.0.13.1
+        (Link Data) Router Interface address: 10.0.13.1
+        Number of TOS metrics: 0
+          TOS 0 Metric: 1
+
+.. opcmd:: show ip ospf database max-age
+
+   This command displays LSAs in MaxAge list.
+
+
+Configuration Example
 ---------------------
 
 Below you can see a typical configuration using 2 nodes, redistribute loopback
