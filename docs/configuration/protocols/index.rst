@@ -10,13 +10,9 @@ Protocols
    bfd
    bgp
    igmp
-   igmp-proxy
    isis
    mpls
    ospf
-   pim
    rip
-   ripng
    rpki
    static
-   vrf

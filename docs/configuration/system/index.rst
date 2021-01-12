@@ -7,12 +7,7 @@ System
    :maxdepth: 1
    :includehidden:
 
-   acceleration
-   config-management
-   conntrack
    console
-   domain-name
-   domain-search
    flow-accounting
    host-name
    ip
@@ -20,16 +15,12 @@ System
    lcd
    login
    name-server
-   name-servers-dhcp
    ntp
    option
    proxy
-   static-host-mapping
-   sysctl
    syslog
    task-scheduler
    time-zone
-   wifi-requlatory-domain
 
 
 .. toctree::
