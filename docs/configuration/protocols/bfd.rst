@@ -61,17 +61,24 @@ Enable BFD in BGP
    Enable BFD on a BGP peer group
 
 
-
 Enable BFD in OSPF
 ------------------
 
-.. cfgcmd:: set interfaces ethernet <ethN> ip ospf bfd
+.. cfgcmd:: set interfaces ethernet <interface> ip ospf bfd
 
-   Enable BFD for ospf on a interface
+   Enable BFD for OSPF on a interface
 
-.. cfgcmd:: set interfaces ethernet <ethN> ipv6 ospfv3 bfd
+.. cfgcmd:: set interfaces ethernet <interface> ipv6 ospfv3 bfd
 
-   Enable BFD for ospfv3 on a interface
+   Enable BFD for OSPFv3 on a interface
+
+
+Enable BFD in ISIS
+------------------
+
+.. cfgcmd:: set protocols isis <name> interface <interface> bfd
+
+   Enable BFD for ISIS on a interface
 
 
 
