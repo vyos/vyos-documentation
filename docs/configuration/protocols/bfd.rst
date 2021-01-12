@@ -9,6 +9,12 @@ BFD
 :abbr:`BFD (Bidirectional Forwarding Detection)` is described and extended by
 the following RFCs: :rfc:`5880`, :rfc:`5881` and :rfc:`5883`.
 
+In the age of very fast networks, a second of unreachability may equal millions of lost packets.
+The idea behind BFD is to detect very quickly when a peer is down and take action extremely fast. 
+
+BFD sends lots of small UDP packets very quickly to ensures that the peer is still alive.
+
+This allows avoiding the timers defined in BGP and OSPF protocol to expires.
 
 Configure BFD
 =============
