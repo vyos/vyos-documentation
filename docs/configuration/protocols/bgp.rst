@@ -271,14 +271,14 @@ Network Advertisement
 
    This command is used for advertising IPv4 or IPv6 networks.
    
-   .. note:: By default, the BGP prefix is advertised even if it's not present in
-      the routing table. This behaviour differs from the implementation of some
-      vendors.
+   .. note:: By default, the BGP prefix is advertised even if it's not present 
+      in the routing table. This behaviour differs from the implementation of
+      some vendors.
    
 .. cfgcmd:: set protocols bgp <asn> parameters network-import-check
 
-   This configuration modifies the behavior of the network statement. If you have
-   this configured the underlying network must exist in the routing table.
+   This configuration modifies the behavior of the network statement. If you 
+   have this configured the underlying network must exist in the routing table.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family
    <ipv4-unicast|ipv6-unicast> default-originate [route-map <name>]
@@ -357,7 +357,8 @@ Peers Configuration
 Defining Peers
 ^^^^^^^^^^^^^^
 
-.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> remote-as <nasn>
+.. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> remote-as 
+   <nasn>
 
    This command creates a new neighbor whose remote-as is NASN. The neighbor 
    address can be an IPv4 address or an IPv6 address or an interface to use 
@@ -492,16 +493,16 @@ Peer Parameters
 
    This command applys the access list filters named in <number> to the
    specified BGP neighbor to restrict the routing information that BGP learns
-   and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import` specify
-   the direction in which the prefix lists are applied.
+   and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import`
+   specify the direction in which the prefix lists are applied.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family
    <ipv4-unicast|ipv6-unicast> filter-list <export|import> <name>
    
    This command applys the AS path access list filters named in <name> to the
    specified BGP neighbor to restrict the routing information that BGP learns
-   and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import` specify
-   the direction in which the prefix lists are applied.
+   and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import`
+   specify the direction in which the prefix lists are applied.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> address-family
    <ipv4-unicast|ipv6-unicast> maximum-prefix <number>
@@ -623,7 +624,8 @@ are treated as belonging to a default peer group, and will share updates.
    parameters that you can specify for specific neighbors. 
    
    .. note:: If you apply a parameter to an individual neighbor IP address, you
-      override the action defined for a peer group that includes that IP address.
+      override the action defined for a peer group that includes that IP
+      address.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> peer-group
    <name>
@@ -682,11 +684,11 @@ Route Reflector Configuration
 
 BGP routers connected inside the same AS through BGP belong to an internal BGP
 session, or IBGP. In order to prevent routing table loops, IBGP speaker does not
-advertise IBGP-learned routes to other IBGP speaker (Split Horizon mechanism). As
-such, IBGP requires a full mesh of all peers. For large networks, this quickly
-becomes unscalable. Introducing route reflectors removes the need for the
-full-mesh. Route reflectors mechanism is described in :rfc:`4456` and updated by
-:rfc:`7606`.
+advertise IBGP-learned routes to other IBGP speaker (Split Horizon mechanism).
+As such, IBGP requires a full mesh of all peers. For large networks, this
+quickly becomes unscalable. Introducing route reflectors removes the need for
+the full-mesh. Route reflectors mechanism is described in :rfc:`4456` and
+updated by :rfc:`7606`.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address> address-family
    <ipv4-unicast|ipv6-unicast> route-reflector-client
