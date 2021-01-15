@@ -174,10 +174,10 @@ Interfaces Configuration
   to 127.
 
 .. cfgcmd:: set protocols isis <name> interface <interface>
-  three-way-handshake
+  no-three-way-handshake
 
-  This command enables :rfc:`5303` Three-Way Handshake for P2P adjacencies.
-  Three-Way Handshake is enabled by default.
+  This command disables Three-Way Handshake for P2P adjacencies which
+  described in :rfc:`5303`. Three-Way Handshake is enabled by default.
 
 
 Redistribution Configuration
