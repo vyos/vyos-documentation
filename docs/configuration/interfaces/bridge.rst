@@ -116,15 +116,21 @@ links providing fault tolerance if an active link fails.
 VLAN
 ====
 
-.. note:: It is not valid to use the `vif 1` option for VLAN aware bridges
-   because VLAN aware bridges assume that all unlabeled packets belong to 
-   the default VLAN 1 member and that the VLAN ID of the bridge's parent 
-   interface is always 1
+Enable VLAN-Aware Bridge
+------------------------
 
 .. cfgcmd:: set interfaces bridge <interface> enable-vlan
 
    To activate the VLAN aware bridge, you must activate this setting to use VLAN 
    settings for the bridge
+
+VLAN Options
+------------
+
+.. note:: It is not valid to use the `vif 1` option for VLAN aware bridges
+   because VLAN aware bridges assume that all unlabeled packets belong to 
+   the default VLAN 1 member and that the VLAN ID of the bridge's parent 
+   interface is always 1
 
 .. cmdinclude:: /_include/interface-vlan-8021q.txt
    :var0: bridge
@@ -170,9 +176,12 @@ Port Mirror (SPAN)
    :var1: br1
    :var2: eth3
 
-******************************
-Example: Create a basic bridge
-******************************
+********
+Examples
+********
+
+Create a basic bridge
+=====================
 
 Creating a bridge interface is very simple. In this example we will
 have:
@@ -205,9 +214,9 @@ This results in the active configuration:
     }
     stp
 
-*********************************
-Example: Using VLAN aware Bridge
-*********************************
+
+Using VLAN aware Bridge
+=======================
 
 An example of creating a VLAN-aware bridge is as follows:
 
@@ -246,9 +255,9 @@ This results in the active configuration:
         address 2001:db8::ffff/64
     }
 
-********************************************************************
-Example: Using the operation mode command to view Bridge Information
-********************************************************************
+
+Using the operation mode command to view Bridge Information
+===========================================================
 
 .. opcmd:: show bridge
 
