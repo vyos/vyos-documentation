@@ -173,7 +173,7 @@ Defining Peers
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> remote-as 
    <nasn>
 
-   This command creates a new neighbor whose remote-as is <nasn>. The neighbor 
+   This command creates a new neighbor whose remote-as is <nasn>. The neighbor
    address can be an IPv4 address or an IPv6 address or an interface to use 
    for the connection. The command it applicable for peer and peer group.
 
@@ -181,7 +181,7 @@ Defining Peers
    internal
 
    Create a peer as you would when you specify an ASN, except that if the 
-   peers ASN is different than mine as specified under the :cfgcmd:`protocols 
+   peers ASN is different than mine as specified under the :cfgcmd:`protocols
    bgp <asn>` command the connection will be denied.
 
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> remote-as
@@ -204,7 +204,7 @@ Defining Peers
 .. cfgcmd:: set protocols bgp <asn> neighbor <address|interface> update-source
    <address|interface>
 
-   Specify the IPv4 source address to use for the BGP session to this neighbour,
+   Specify the IPv4 source address to use for the BGP session to this neighbor,
    may be specified as either an IPv4 address directly or as an interface name.
 
 
@@ -560,8 +560,8 @@ Common parametrs
    Tis command disables route reflection between route reflector clients.
    By default, the clients of a route reflector are not required to be 
    fully meshed and the routes from a client are reflected to other clients. 
-   However, if the clients are fully meshed, route reflection is not required. 
-   In this case, use the :cfgcmd:`no-client-to-client-reflection` command 
+   However, if the clients are fully meshed, route reflection is not required.
+   In this case, use the :cfgcmd:`no-client-to-client-reflection` command
    to disable client-to-client reflection.
 
 .. cfgcmd:: set protocols bgp <asn> parameters no-fast-external-failover
@@ -575,14 +575,14 @@ Administrative Distance
 .. cfgcmd:: set protocols bgp <asn> parameters distance global
    <external|internal|local> <distance>
 
-   This command change distance value of BGP. The arguments are the distance 
+   This command change distance value of BGP. The arguments are the distance
    values for external routes, internal routes and local routes respectively.
    The distance range is 1 to 255.
 
 .. cfgcmd:: set protocols bgp <asn> parameters distance prefix <subnet>
    distance <distance>
 
-   This command sets the administrative distance for a particular route. The 
+   This command sets the administrative distance for a particular route. The
    distance range is 1 to 255.
    
    .. note:: Routes with a distance of 255 are effectively disabled and not
@@ -699,7 +699,7 @@ Route Selection Configuration
    the route was received from will be used.
 
    The advantage of this is that the route-selection (at this point) will 
-   be more deterministic. The disadvantage is that a few or even one lowest-ID 
+   be more deterministic. The disadvantage is that a few or even one lowest-ID
    router may attract all traffic to otherwise-equal paths because of this 
    check. It may increase the possibility of MED or IGP oscillation, unless 
    other measures were taken to avoid these. The exact behaviour will be 
@@ -849,17 +849,19 @@ by :rfc:`7606`.
 Confederation Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A BGP confederation divides our AS into sub-ASes to reduce the number of required
-IBGP peerings. Within a sub-AS we still require full-mesh IBGP but between these
-sub-ASes we use something that looks like EBGP but behaves like IBGP (called
-confederation BGP). Confederation mechanism is described in :rfc:`5065`
+A BGP confederation divides our AS into sub-ASes to reduce the number of
+required IBGP peerings. Within a sub-AS we still require full-mesh IBGP but
+between these sub-ASes we use something that looks like EBGP but behaves like
+IBGP (called confederation BGP). Confederation mechanism is described in
+:rfc:`5065`
 
 .. cfgcmd:: set protocols bgp <subasn> parameters confederation identifier
    <asn>
 
-   This command specifies a BGP confederation identifier. <asn> is the number of
-   the autonomous system that internally includes multiple sub-autonomous systems
-   (a confederation). <subasn> is the number sub-autonomous system inside <asn>.
+   This command specifies a BGP confederation identifier. <asn> is the number
+   of the autonomous system that internally includes multiple sub-autonomous
+   systems (a confederation). <subasn> is the number sub-autonomous system
+   inside <asn>.
 
 .. cfgcmd:: set protocols bgp <subasn> parameters confederation confederation
    peers <nsubasn>
