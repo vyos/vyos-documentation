@@ -15,5 +15,4 @@ This chapter contains various configuration examples:
    azure-vpn-bgp
    azure-vpn-dual-bgp
    tunnelbroker-ipv6
-   ha
    wan-load-balancing

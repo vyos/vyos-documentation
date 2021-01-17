@@ -45,7 +45,6 @@ VyOS User Guide
    :maxdepth: 2
 
    configuration-overview
-   interfaces/index
    routing/index
    vpn/index
    system/index
@@ -61,7 +60,6 @@ VyOS User Guide
 
    appendix/releasenotes
    appendix/troubleshooting
-   appendix/examples/index
    appendix/commandtree/index
 
 

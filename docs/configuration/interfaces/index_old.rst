@@ -45,19 +45,4 @@ maintain interface-specific configuration. These will be covered in their
 respective sections.
 
 
-.. toctree::
-   :maxdepth: 2
-   :hidden:
 
-   addresses
-   dummy
-   ethernet
-   l2tpv3
-   pppoe
-   wireless
-   bridging
-   bonding
-   tunnel
-   vlan
-   qinq
-   vxlan
