@@ -12,11 +12,9 @@ Service
    dhcp-relay
    dhcp-server
    dns
-   https
    lldp
    mdns
    pppoe-server
-   salt-minion
    snmp
    ssh
    tftp-server

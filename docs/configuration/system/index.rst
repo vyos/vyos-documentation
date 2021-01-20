@@ -9,17 +9,13 @@ should be ready for further configuration which is described in this chapter.
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
 
+   console
    eventhandler
-   flowaccounting
-   host-information
-   login-users
+   flow-accounting
+   login
+   name-server
    ntp
-   proxy
-   serialconsole
    syslog
-   system-dns
    task-scheduler
    time-zone
-   boot-options

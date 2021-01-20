@@ -39,19 +39,6 @@ VyOS User Guide
 -------------------
 
 
-.. toctree::
-   :caption: Configuration
-   :name: configuration
-   :maxdepth: 2
-
-   configuration-overview
-   routing/index
-   vpn/index
-   system/index
-
-
-
-
 
 .. toctree::
    :caption: Appendix

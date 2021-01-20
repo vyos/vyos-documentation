@@ -15,8 +15,6 @@ BGP).
    ip-commands
    multicast
    ospf
-   pbr
    rip
-   routing-policy
    static
    mss-clamp
