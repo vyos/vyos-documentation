@@ -2,6 +2,7 @@
 _build/
 
 # python virtualenv
+Pipfile.lock
 venv/
 ENV/
 .venv
