@@ -27,7 +27,6 @@ VyOS User Guide
    :includehidden:
    :caption: Adminguide
 
-
    configuration/index
    operation/index
    automation/index
@@ -37,18 +36,6 @@ VyOS User Guide
 
 
 -------------------
-
-
-
-.. toctree::
-   :caption: Appendix
-   :name: appendix
-   :maxdepth: 2
-
-   appendix/releasenotes
-   appendix/troubleshooting
-   appendix/commandtree/index
-
 
 .. toctree::
    :caption: Contributing
