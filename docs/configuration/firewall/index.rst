@@ -17,16 +17,6 @@ use of the `FORWARD` chain and either the input or output interface. The
 `INPUT` chain, which is used for local traffic to the OS, is a reference to
 as `local` with respect to its input interface.
 
-Zone-based Firewall Policy
---------------------------
-
-As an alternative to applying policy to an interface directly, a zone-based
-firewall can be created to simplify configuration when multiple interfaces
-belong to the same security zone. Instead of applying to rulesets to interfaces
-they are applied to source zone-destination zone pairs.
-
-An example to zone-based firewalls can be found here: :ref:`examples-zone-policy`.
-
 Groups
 ------
 
