@@ -10,6 +10,7 @@ should be ready for further configuration which is described in this chapter.
 .. toctree::
    :maxdepth: 2
 
+   host-information
    console
    eventhandler
    flow-accounting
