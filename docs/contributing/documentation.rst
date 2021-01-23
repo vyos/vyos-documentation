@@ -7,6 +7,9 @@ VyOS documentation is written in reStructuredText and generated to Read the Docs
 pages with Sphinx, as per the Python tradition, as well as PDF files for offline
 use through LaTeX.
 
+We welcome all sorts of contributions to the documentation. Not just
+new additions but also corrections to existing documentation.
+
 Guidelines
 ^^^^^^^^^^
 
@@ -18,7 +21,8 @@ of the documentation process.
 
 The following is a quick summary of the rules:
 
-- Use American English at all times. A spell checker can be helpful for this.
+- Use American English at all times. It's always a good idea to run
+  your text through a grammar and spell checker, such as `Grammarly`_.
 - Don't forget to update ``index.rst`` when adding a new node.
 - Try not to exceed 80 characters per line, but don't break URLs over this.
 - Properly quote commands, filenames and brief code snippets with double backticks.
@@ -43,3 +47,4 @@ You can either install Sphinx (and TeX Live for PDF output) and build the
 documentation locally, or use the `Dockerfile`_ to build it in a container.
 
 .. _Dockerfile: https://github.com/vyos/vyos-documentation/blob/master/docker/Dockerfile
+.. _Grammarly: https://www.grammarly.com/
