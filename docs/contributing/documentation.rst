@@ -10,12 +10,13 @@ use through LaTeX.
 Guidelines
 ^^^^^^^^^^
 
-There are a few small things to keep in mind when contributing to the
-documentation, for the sake of consistency and readability. When in doubt,
-follow the style of existing documentation.
+There are a few things to keep in mind when contributing to the
+documentation, for the sake of consistency and readability.
 
-Remember that the reStructuredText files aren't exclusively for generating
-HTML and PDF. They should be human-readable and easily perused from a console.
+Take a look at the `Documentation`_ page for an intricate explanation
+of the documentation process.
+
+The following is a quick summary of the rules:
 
 - Use American English at all times. A spell checker can be helpful for this.
 - Don't forget to update `index.rst` when adding a new node.
@@ -24,6 +25,11 @@ HTML and PDF. They should be human-readable and easily perused from a console.
 - Use literal blocks for longer snippets.
 - Leave a newline before and after a header.
 - Indent with two spaces.
+- When in doubt, follow the style of existing documentation.
+
+And finally, remember that the reStructuredText files aren't
+exclusively for generating HTML and PDF. They should be human-readable
+and easily perused from a console.
 
 Building
 ^^^^^^^^
