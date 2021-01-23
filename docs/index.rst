@@ -20,6 +20,7 @@ VyOS User Guide
    installation/index
    quick-start
    cli
+   commandtree/index
 
 
 .. toctree::
@@ -43,4 +44,3 @@ VyOS User Guide
    contributing/index
    documentation
    copyright
-   appendix_old/commandtree/index.rst
