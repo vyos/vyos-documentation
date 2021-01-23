@@ -13,15 +13,15 @@ Guidelines
 There are a few things to keep in mind when contributing to the
 documentation, for the sake of consistency and readability.
 
-Take a look at the `Documentation`_ page for an intricate explanation
+Take a look at the :doc:`/documentation` page for an intricate explanation
 of the documentation process.
 
 The following is a quick summary of the rules:
 
 - Use American English at all times. A spell checker can be helpful for this.
-- Don't forget to update `index.rst` when adding a new node.
+- Don't forget to update ``index.rst`` when adding a new node.
 - Try not to exceed 80 characters per line, but don't break URLs over this.
-- Properly quote commands, filenames and brief code snippets with backticks.
+- Properly quote commands, filenames and brief code snippets with double backticks.
 - Use literal blocks for longer snippets.
 - Leave a newline before and after a header.
 - Indent with two spaces.
