@@ -221,7 +221,7 @@ configured, changes are added through a collection of :cfgcmd:`set` and
 
 Both these ``show`` commands should be executed when in operational
 mode, they do not work directly in configuration mode. There is a
-special way on how to :ref:`run_opmode_from_config_mode`.
+special way on how to `run_opmode_from_config_mode`_
 
 .. hint:: Use the ``show configuration commands | strip-private``
    command when you want to hide private data. You may want to do so if
@@ -575,10 +575,6 @@ different levels in the hierarchy.
       firewall` command would return starting after the ``firewall
       {`` line, hiding the comment.
 
-
-
-
-   
 
 .. _run_opmode_from_config_mode:
 

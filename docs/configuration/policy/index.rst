@@ -114,7 +114,7 @@ Routing tables that will be used in this example are:
 * ``table 11`` Routing tabled used for VLAN 11 (192.168.189.0/24)
 * ``main`` Routing table used by VyOS and other interfaces not paritipating in PBR
 
-.. figure:: ../_static/images/pbr_example_1.png
+.. figure:: /_static/images/pbr_example_1.png
    :scale: 80 %
    :alt: PBR multiple uplinks
 

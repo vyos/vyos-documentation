@@ -43,3 +43,4 @@ VyOS User Guide
    contributing/index
    documentation
    copyright
+   appendix_old/commandtree/index.rst

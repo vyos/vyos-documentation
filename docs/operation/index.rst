@@ -6,5 +6,4 @@ Operation Mode
    :maxdepth: 1
    :includehidden:
 
-   information
    boot-options
