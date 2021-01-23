@@ -7,5 +7,6 @@ Contributing
 
    build-vyos
    development
+   documentation
    issues-features
    upstream-packages
