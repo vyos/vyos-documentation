@@ -5,7 +5,7 @@ Contributing
 .. toctree::
    :maxdepth: 2
 
-   issues_features
+   issues-features
    development
    vyos_cli
    coding_guidelines

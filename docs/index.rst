@@ -41,7 +41,5 @@ VyOS User Guide
    :caption: Development
 
    contributing/index
-   debugging
    documentation
-   coverage
    copyright
