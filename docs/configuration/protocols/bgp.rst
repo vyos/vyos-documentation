@@ -553,11 +553,11 @@ Common parametrs
 
 .. cfgcmd:: set protocols bgp <asn> parameters log-neighbor-changes
 
-   Tis command enable logging neighbor up/down changes and reset reason.
+   This command enable logging neighbor up/down changes and reset reason.
 
 .. cfgcmd:: set protocols bgp <asn> parameters no-client-to-client-reflection
 
-   Tis command disables route reflection between route reflector clients.
+   This command disables route reflection between route reflector clients.
    By default, the clients of a route reflector are not required to be 
    fully meshed and the routes from a client are reflected to other clients. 
    However, if the clients are fully meshed, route reflection is not required.
@@ -566,8 +566,25 @@ Common parametrs
 
 .. cfgcmd:: set protocols bgp <asn> parameters no-fast-external-failover
    
-   Disable immediate sesison reset if peer's connected link goes down.
+   Disable immediate session reset if peer's connected link goes down.
 
+.. cfgcmd:: set protocols bgp <asn> listen range <prefix> peer-group <name>
+
+   This command is useful if one desires to loosen the requirement for BGP
+   to have strictly defined neighbors. Specifically what is allowed is for
+   the local router to listen to a range of IPv4 or IPv6 addresses defined
+   by a prefix and to accept BGP open messages. When a TCP connection
+   (and subsequently a BGP open message) from within this range tries to
+   connect the local router then the local router will respond and connect
+   with the parameters that are defined within the peer group. One must define
+   a peer-group for each range that is listed. If no peer-group is defined
+   then an error will keep you from committing the configuration.
+
+.. cfgcmd:: set protocols bgp <asn> listen limit <number>
+
+   This command goes hand in hand with the listen range command to limit the
+   amount of BGP neighbors that are allowed to connect to the local router.
+   The limit range is 1 to 5000.
 
 Administrative Distance
 ^^^^^^^^^^^^^^^^^^^^^^^
