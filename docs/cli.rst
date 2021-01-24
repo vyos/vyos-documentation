@@ -109,7 +109,7 @@ thus also be easily cloned by simply copying the required configuration
 files.
 
 Terminology
-===========
+###########
 
 A VyOS system has three major types of configurations:
 
@@ -131,7 +131,7 @@ A VyOS system has three major types of configurations:
   ``/config/config.boot``.
 
 Seeing and navigating the configuration
-=======================================
+#######################################
 
 .. opcmd:: show configuration
 
@@ -231,7 +231,7 @@ special way on how to `run_opmode_from_config_mode`_
 
 
 The config mode
----------------
+===============
 
 When entering the configuration mode you are navigating inside a tree
 structure, to enter configuration mode enter the command
@@ -340,7 +340,7 @@ sub-level takes you back to the top level.
 
 
 Editing the configuration
-=========================
+#########################
 
 The configuration can be edited by the use of :cfgcmd:`set` and
 :cfgcmd:`delete` commands from within configuration mode.
@@ -571,15 +571,15 @@ different levels in the hierarchy.
 
    .. note:: An important thing to note is that since the comment is
       added on top of the section, it will not appear if the ``show
-      <section>`` command is used. With the above example, the `show
-      firewall` command would return starting after the ``firewall
-      {`` line, hiding the comment.
+      <section>`` command is used. With the above example, the
+      ``show firewall`` command would return starting after the 
+      ``firewall {`` line, hiding the comment.
 
 
 .. _run_opmode_from_config_mode:
 
 Access opmode from config mode
-==============================
+##############################
 
 When inside configuration mode you are not directly able to execute
 operational commands.
@@ -603,7 +603,7 @@ operational commands.
     eth0             0.0.0.0/0                         u/u
 
 Managing configurations
-=======================
+#######################
 
 VyOS comes with an integrated versioning system for the system
 configuration. It automatically maintains a backup of every previous
@@ -612,7 +612,7 @@ are versioned locally for rollback but they can also be stored on a
 remote host for archiving/backup reasons.
 
 Local Archive
--------------
+=============
 
 Revisions are stored on disk. You can view, compare and rollback them to
 any previous revisions if something goes wrong.
@@ -643,7 +643,7 @@ any previous revisions if something goes wrong.
 
 
 Compare configurations
-----------------------
+======================
 
 VyOS lets you compare different configurations.
 
@@ -717,7 +717,7 @@ This means four commits ago we did ``set system ipv6 disable-forwarding``.
 
 
 Rollback Changes
-----------------
+================
 
 You can rollback configuration changes using the rollback command. This
 will apply the selected revision and trigger a system reboot.
@@ -739,7 +739,7 @@ will apply the selected revision and trigger a system reboot.
      The system is going down for reboot NOW!
 
 Remote Archive
---------------
+==============
 
 VyOS can upload the configuration to a remote location after each call
 to :cfgcmd:`commit`. You will have to set the commit-archive location.
@@ -770,7 +770,7 @@ be ``config.boot-hostname.YYYYMMDD_HHMMSS``.
      vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
 
 Saving and loading manually
----------------------------
+===========================
 
 You can use the ``save`` and ``load`` commands if you want to manually
 manage specific configuration files.
@@ -803,7 +803,7 @@ to load it with the ``load`` command:
 
 
 Restore Default
----------------
+===============
 
 In the case you want to completely delete your configuration and restore
 the default one, you can enter the following command in configuration

@@ -494,7 +494,7 @@ Known Issues
 This is a list of known issues that can arise during installation.
 
 Black screen on install
-^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 GRUB attempts to redirect all output to a serial port for ease of installation on headless hosts.
 This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a 

@@ -1,7 +1,8 @@
 .. _openvpn:
 
+#######
 OpenVPN
--------
+#######
 
 Traditionally hardware routers implement IPsec exclusively due to relative
 ease of implementing it in hardware and insufficient CPU power for doing
@@ -32,7 +33,7 @@ configured using the `set vpn` stanza, OpenVPN is configured as a network
 interface using `set interfaces openvpn`.
 
 OpenVPN Site-To-Site
-^^^^^^^^^^^^^^^^^^^^
+####################
 
 While many are aware of OpenVPN as a Client VPN solution, it is often
 overlooked as a site-to-site VPN solution due to lack of support for this mode
@@ -43,7 +44,7 @@ static keys, which is simpler in many cases. In this example, we'll configure
 a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared key.
 
 First, one one of the systems generate the key using the operational command
-`generate openvpn key <filename>`. This will generate a key with the name
+``generate openvpn key <filename>``. This will generate a key with the name
 provided in the `/config/auth/` directory. Once generated, you will need to
 copy this key to the remote router.
 
@@ -155,7 +156,7 @@ OpenVPN status can be verified using the `show openvpn` operational commands.
 See the built-in help for a complete list of options.
 
 OpenVPN Server
-^^^^^^^^^^^^^^
+##############
 
 Multi-client server is the most popular OpenVPN mode on routers. It always uses
 x.509 authentication and therefore requires a PKI setup. This guide assumes you
@@ -229,10 +230,10 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
 
 
 Client Authentication
-*********************
+=====================
 
 OpenLDAP
-========
+--------
 
 Enterprise installations usually ship a kind of directory service which is used
 to have a single password store for all employees. VyOS and OpenVPN support using
@@ -271,7 +272,7 @@ The required config file may look like:
   </Authorization>
 
 Active Directory
-================
+----------------
 
 Despite the fact that AD is a superset of LDAP
 
@@ -357,7 +358,7 @@ A complete LDAP auth OpenVPN configuration could look like the following example
    }
 
 OpenVPN Client
-^^^^^^^^^^^^^^
+##############
 
 VyOS can not only act as an OpenVPN site-to-site or Server for multiple clients.
 You can indeed also configure any VyOS OpenVPN interface as an OpenVPN client
@@ -370,7 +371,7 @@ using their CN attribute in the SSL certificate.
 
 
 Server
-******
+======
 
 .. code-block:: none
 
@@ -394,7 +395,7 @@ Server
   set interfaces openvpn vtun10 use-lzo-compression
 
 Client
-******
+======
 
 .. code-block:: none
 
@@ -411,7 +412,7 @@ Client
   set interfaces openvpn vtun10 use-lzo-compression
 
 Options
-^^^^^^^
+-------
 
 We do not have CLI nodes for every single OpenVPN options. If an option is
 missing, a feature request should be opened at https://phabricator.vyos.net so
@@ -429,12 +430,12 @@ Please use this only as last resort - things might break and OpenVPN won't start
 if you pass invalid options/syntax.
 
 Troubleshooting
-===============
+###############
 
 VyOS provides some operational commands on OpenVPN.
 
 Check status
-------------
+============
 
 The following commands let you check tunnel status.
 
@@ -452,7 +453,7 @@ The following commands let you check tunnel status.
 
 
 Reset OpenVPN
--------------
+=============
 
 The following commands let you reset OpenVPN.
 
