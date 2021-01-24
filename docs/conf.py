@@ -20,7 +20,7 @@ sys.path.append(os.path.abspath("./_ext"))
 # -- Project information -----------------------------------------------------
 
 project = u'VyOS'
-copyright = u'2020, VyOS maintainers and contributors'
+copyright = u'2021, VyOS maintainers and contributors'
 author = u'VyOS maintainers and contributors'
 
 # The short X.Y version
