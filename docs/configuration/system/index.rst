@@ -15,6 +15,8 @@ should be ready for further configuration which is described in this chapter.
    eventhandler
    flow-accounting
    login
+   ip
+   ipv6
    name-server
    ntp
    syslog

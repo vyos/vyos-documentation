@@ -11,11 +11,8 @@ BGP).
 .. toctree::
    :maxdepth: 1
 
-   arp
    bgp
-   ip-commands
-   multicast
+   igmp
    ospf
    rip
    static
-   mss-clamp

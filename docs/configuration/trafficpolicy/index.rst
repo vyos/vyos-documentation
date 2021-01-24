@@ -1,8 +1,8 @@
 .. _qos:
 
-***
-QoS
-***
+##############
+Traffic Policy
+##############
 
 The generic name of Quality of Service or Traffic Control involves
 things like shaping traffic, scheduling or dropping packets, which
