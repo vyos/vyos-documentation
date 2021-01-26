@@ -16,9 +16,8 @@ Requirements
 
 The following items are required:
 
-* A VyOS installation image (.iso file).
-  `Here <https://docs.vyos.io/en/latest/install.html#download>`__ you
-  can find how to get it.
+* A VyOS installation image (.iso file). You
+  can find how to get it on the :ref:`installation` page
 
 * A working GNS3 installation. For further information see the
   `GNS3 documentation <https://docs.gns3.com/>`__.
