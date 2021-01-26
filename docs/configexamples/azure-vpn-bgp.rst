@@ -7,8 +7,8 @@ This guide shows an example of a route-based IKEv2 site-to-site VPN to
 Azure using VTI and BGP for dynamic routing updates.
 
 For redundant / active-active configurations see
-`Route-Based Redundant Site-to-Site VPN to Azure (BGP over IKEv2/IPsec)
-<https://docs.vyos.io/en/crux/appendix/examples/azure-vpn-dual-bgp.html>`_
+:ref:`examples-azure-vpn-dual-bgp`
+
 
 Prerequisites
 ^^^^^^^^^^^^^
