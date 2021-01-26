@@ -10,7 +10,7 @@ VyOS 1.2.6 release was found to be suspectible to CVE-2020-10995. It's a low-
 impact vulnerability in the PowerDNS recursor that allows an attacker to cause
 performance degradation via a specially crafted authoritative DNS server reply.
 
-* :vytask:`2899` remote syslog server migration error on update
+* :vytask:`T2899` remote syslog server migration error on update
 
 1.2.6
 =====
@@ -20,87 +20,87 @@ performance degradation via a specially crafted authoritative DNS server reply.
 Resolved issues
 ---------------
 
-* :vytask:`103` DHCP server prepends shared network name to hostnames
-* :vytask:`125` Missing PPPoE interfaces in l2tp configuration
-* :vytask:`1194` cronjob is being setup even if not saved
-* :vytask:`1205` module pcspkr missing
-* :vytask:`1219` Redundant active-active configuration, asymmetric routing and
+* :vytask:`T103` DHCP server prepends shared network name to hostnames
+* :vytask:`T125` Missing PPPoE interfaces in l2tp configuration
+* :vytask:`T1194` cronjob is being setup even if not saved
+* :vytask:`T1205` module pcspkr missing
+* :vytask:`T1219` Redundant active-active configuration, asymmetric routing and
   conntrack-sync cache
-* :vytask:`1220` Show transceiver information from plugin modules, e.g SFP+,
+* :vytask:`T1220` Show transceiver information from plugin modules, e.g SFP+,
   QSFP
-* :vytask:`1221` BGP - Default route injection is not processed by the specific
+* :vytask:`T1221` BGP - Default route injection is not processed by the specific
   route-map
-* :vytask:`1241` Remove of policy route throws CLI error
-* :vytask:`1291` Under certain conditions the VTI will stay forever down
-* :vytask:`1463` Missing command `show ip bgp scan` appears in command
+* :vytask:`T1241` Remove of policy route throws CLI error
+* :vytask:`T1291` Under certain conditions the VTI will stay forever down
+* :vytask:`T1463` Missing command `show ip bgp scan` appears in command
   completion
-* :vytask:`1575` `show snmp mib ifmib` crashes with IndexError
-* :vytask:`1699` Default net.ipv6.route.max_size 32768 is too low
-* :vytask:`1729` PIM (Protocol Independent Multicast) implementation
-* :vytask:`1901` Semicolon in values is interpreted as a part of the shell
+* :vytask:`T1575` `show snmp mib ifmib` crashes with IndexError
+* :vytask:`T1699` Default net.ipv6.route.max_size 32768 is too low
+* :vytask:`T1729` PIM (Protocol Independent Multicast) implementation
+* :vytask:`T1901` Semicolon in values is interpreted as a part of the shell
   command by validators
-* :vytask:`1934` Change default hostname when deploy from OVA without params.
-* :vytask:`1938` syslog doesn't start automatically
-* :vytask:`1949` Multihop IPv6 BFD is unconfigurable
-* :vytask:`1953` DDNS service name validation rejects valid service names
-* :vytask:`1956` PPPoE server: support PADO-delay
-* :vytask:`1973` Allow route-map to match on BGP local preference value
-* :vytask:`1974` Allow route-map to set administrative distance
-* :vytask:`1982` Increase rotation for atop.acct
-* :vytask:`1983` Expose route-map when BGP routes are programmed in to FIB
-* :vytask:`1985` pppoe: Enable ipv6 modules without configured ipv6 pools
-* :vytask:`2000` strongSwan does not install routes to table 220 in certain
+* :vytask:`T1934` Change default hostname when deploy from OVA without params.
+* :vytask:`T1938` syslog doesn't start automatically
+* :vytask:`T1949` Multihop IPv6 BFD is unconfigurable
+* :vytask:`T1953` DDNS service name validation rejects valid service names
+* :vytask:`T1956` PPPoE server: support PADO-delay
+* :vytask:`T1973` Allow route-map to match on BGP local preference value
+* :vytask:`T1974` Allow route-map to set administrative distance
+* :vytask:`T1982` Increase rotation for atop.acct
+* :vytask:`T1983` Expose route-map when BGP routes are programmed in to FIB
+* :vytask:`T1985` pppoe: Enable ipv6 modules without configured ipv6 pools
+* :vytask:`T2000` strongSwan does not install routes to table 220 in certain
   cases
-* :vytask:`2021` OSPFv3 doesn't support decimal area syntax
-* :vytask:`2062` Wrong dhcp-server static route subnet bytes
-* :vytask:`2091` swanctl.conf file is not generated properly is more than one
+* :vytask:`T2021` OSPFv3 doesn't support decimal area syntax
+* :vytask:`T2062` Wrong dhcp-server static route subnet bytes
+* :vytask:`T2091` swanctl.conf file is not generated properly is more than one
   IPsec profile is used
-* :vytask:`2131` Improve syslog remote host CLI definition
-* :vytask:`2224` Update Linux Kernel to v4.19.114
-* :vytask:`2286` IPoE server vulnerability
-* :vytask:`2303` Unable to delete the image version that came from OVA
-* :vytask:`2305` Add release name to "show version" command
-* :vytask:`2311` Statically configured name servers may not take precedence
+* :vytask:`T2131` Improve syslog remote host CLI definition
+* :vytask:`T2224` Update Linux Kernel to v4.19.114
+* :vytask:`T2286` IPoE server vulnerability
+* :vytask:`T2303` Unable to delete the image version that came from OVA
+* :vytask:`T2305` Add release name to "show version" command
+* :vytask:`T2311` Statically configured name servers may not take precedence
   over ones from DHCP
-* :vytask:`2327` Unable to create syslog server entry with different port
-* :vytask:`2332` Backport node option for a syslog server
-* :vytask:`2342` Bridge l2tpv3 + ethX errors
-* :vytask:`2344` PPPoE server client static IP assignment silently fails
-* :vytask:`2385` salt-minion: improve completion helpers
-* :vytask:`2389` BGP community-list unknown command
-* :vytask:`2398` op-mode "dhcp client leases interface" completion helper
+* :vytask:`T2327` Unable to create syslog server entry with different port
+* :vytask:`T2332` Backport node option for a syslog server
+* :vytask:`T2342` Bridge l2tpv3 + ethX errors
+* :vytask:`T2344` PPPoE server client static IP assignment silently fails
+* :vytask:`T2385` salt-minion: improve completion helpers
+* :vytask:`T2389` BGP community-list unknown command
+* :vytask:`T2398` op-mode "dhcp client leases interface" completion helper
   misses interfaces
-* :vytask:`2402` Live ISO should warn when configuring that changes won't
+* :vytask:`T2402` Live ISO should warn when configuring that changes won't
   persist
-* :vytask:`2443` NHRP: Add debugging information to syslog
-* :vytask:`2448` `monitor protocol bgp` subcommands fail with 'command
+* :vytask:`T2443` NHRP: Add debugging information to syslog
+* :vytask:`T2448` `monitor protocol bgp` subcommands fail with 'command
   incomplete'
-* :vytask:`2458` Update FRR to 7.3.1
-* :vytask:`2476` Bond member description change leads to network outage
-* :vytask:`2478` login radius: use NAS-IP-Address if defined source address
-* :vytask:`2482` Update PowerDNS recursor to 4.3.1 for CVE-2020-10995
-* :vytask:`2517` vyos-container: link_filter: No such file or directory
-* :vytask:`2526` Wake-On-Lan CLI implementation
-* :vytask:`2528` "update dns dynamic" throws FileNotFoundError excepton
-* :vytask:`2536` "show log dns forwarding" still refers to dnsmasq
-* :vytask:`2538` Update Intel NIC drivers to recent release (preparation for
+* :vytask:`T2458` Update FRR to 7.3.1
+* :vytask:`T2476` Bond member description change leads to network outage
+* :vytask:`T2478` login radius: use NAS-IP-Address if defined source address
+* :vytask:`T2482` Update PowerDNS recursor to 4.3.1 for CVE-2020-10995
+* :vytask:`T2517` vyos-container: link_filter: No such file or directory
+* :vytask:`T2526` Wake-On-Lan CLI implementation
+* :vytask:`T2528` "update dns dynamic" throws FileNotFoundError excepton
+* :vytask:`T2536` "show log dns forwarding" still refers to dnsmasq
+* :vytask:`T2538` Update Intel NIC drivers to recent release (preparation for
   Kernel >=5.4)
-* :vytask:`2545` Show physical device offloading capabilities for specified
+* :vytask:`T2545` Show physical device offloading capabilities for specified
   ethernet interface
-* :vytask:`2563` Wrong interface binding for Dell VEP 1445
-* :vytask:`2605` SNMP service is not disabled by default
-* :vytask:`2625` Provide generic Library for package builds
-* :vytask:`2686` FRR: BGP: large-community configuration is not applied
+* :vytask:`T2563` Wrong interface binding for Dell VEP 1445
+* :vytask:`T2605` SNMP service is not disabled by default
+* :vytask:`T2625` Provide generic Library for package builds
+* :vytask:`T2686` FRR: BGP: large-community configuration is not applied
   properly after upgrading FRR to 7.3.x series
-* :vytask:`2701` `vpn ipsec pfs enable` doesn't work with IKE groups
-* :vytask:`2728` Protocol option ignored for IPSec peers in transport mode
-* :vytask:`2734` WireGuard: fwmark CLI definition is inconsistent
-* :vytask:`2757` "show system image version" contains additional new-line
+* :vytask:`T2701` `vpn ipsec pfs enable` doesn't work with IKE groups
+* :vytask:`T2728` Protocol option ignored for IPSec peers in transport mode
+* :vytask:`T2734` WireGuard: fwmark CLI definition is inconsistent
+* :vytask:`T2757` "show system image version" contains additional new-line
   character breaking output
-* :vytask:`2797` Update Linux Kernel to v4.19.139
-* :vytask:`2822` Update Linux Kernel to v4.19.141
-* :vytask:`2829` PPPoE server: mppe setting is implemented as node instead of
+* :vytask:`T2797` Update Linux Kernel to v4.19.139
+* :vytask:`T2822` Update Linux Kernel to v4.19.141
+* :vytask:`T2829` PPPoE server: mppe setting is implemented as node instead of
   leafNode
-* :vytask:`2831` Update Linux Kernel to v4.19.142
-* :vytask:`2852` rename dynamic dns interface breaks ddclient.cache permissions
-* :vytask:`2853` Intel QAT acceleration does not work
+* :vytask:`T2831` Update Linux Kernel to v4.19.142
+* :vytask:`T2852` rename dynamic dns interface breaks ddclient.cache permissions
+* :vytask:`T2853` Intel QAT acceleration does not work
