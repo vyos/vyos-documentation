@@ -105,7 +105,7 @@ Optional Configuration
   route only inside RIP. This command should be used only by advanced users
   who are particularly knowledgeable about the RIP protocol. In most cases,
   we recommend creating a static route in VyOS and redistributing it in RIP
-  using :cfgcmd:`redistribute static.
+  using :cfgcmd:`redistribute static`.
   
 .. cfgcmd:: set protocols rip timers update <seconds>
 
