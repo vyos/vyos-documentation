@@ -20,7 +20,8 @@ def setup(app):
 
     app.add_config_value(
         'vyos_working_commands',
-        get_working_commands(),
+        #get_working_commands(),
+        {"cfgcmd": [], "opcmd": []},
         'html'
     )
     app.add_config_value(
