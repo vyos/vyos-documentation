@@ -30,7 +30,7 @@ Each AS has an identifying number associated with it called an :abbr:`ASN
 to 65535. The AS numbers 64512 through 65535 are defined as private AS numbers.
 Private AS numbers must not be advertised on the global Internet. The 2-byte AS
 number range has been exhausted. 4-byte AS numbers are specified in
- :rfc:`6793`, and provide a pool of 4294967296 AS numbers.
+:rfc:`6793`, and provide a pool of 4294967296 AS numbers.
 
 The :abbr:`ASN (Autonomous System Number)` is one of the essential elements of
 BGP. BGP is a distance vector routing protocol, and the AS-Path framework
