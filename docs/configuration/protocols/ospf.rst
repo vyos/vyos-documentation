@@ -430,9 +430,9 @@ Redistribution Configuration
 
 .. cfgcmd:: set protocols ospf redistribute <route source> metric <number>
 
-   This command specifies metric for redistributed routes from given route
-   source. There are five modes available for route source: bgp, connected,
-   kernel, rip, static. The metric range is 1 to 16.
+   This command specifies metric for redistributed routes from the given 
+   route source. There are five modes available for route source: bgp, 
+   connected, kernel, rip, static. The metric range is 1 to 16777214.
 
 .. cfgcmd:: set protocols ospf redistribute <route source> metric-type <1|2>
 
@@ -455,8 +455,8 @@ Redistribution Configuration
 .. cfgcmd:: set protocols ospf redistribute <route source> route-map <name>
 
    This command allows to use route map to filter redistributed routes from
-   given route source. There are five modes available for route source: bgp,
-   connected, kernel, rip, static.
+   the given route source. There are five modes available for route source:
+   bgp, connected, kernel, rip, static.
 
 
 Operational Mode Commands
