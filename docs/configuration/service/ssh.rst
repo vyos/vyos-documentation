@@ -108,3 +108,50 @@ Configuration
 .. cfgcmd:: set service ssh vrf <name>
 
   Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
+
+Operation
+=========
+
+.. opcmd:: restart ssh
+
+  Restart the SSH daemon process, the current session is not affected, only the
+  background daemon is restarted.
+
+.. opcmd:: generate ssh server-key
+
+  Re-generated the public/private keyportion which SSH uses to secure
+  connections.
+
+  .. note:: Already learned known_hosts files of clients need an update as the
+  public key will change.
+
+.. opcmd:: generate ssh client-key /path/to/private_key
+
+  Re-generated a known pub/private keyfile which can e.g. used to connect to
+  other services (RPKI cache).
+
+  Example:
+
+  .. code-block:: none
+
+    vyos@vyos:~$ generate ssh client-key /config/auth/id_rsa_rpki
+    Generating public/private rsa key pair.
+    Your identification has been saved in /config/auth/id_rsa_rpki.
+    Your public key has been saved in /config/auth/id_rsa_rpki.pub.
+    The key fingerprint is:
+    SHA256:XGv2PpdOzVCzpmEzJZga8hTRq7B/ZYL3fXaioLFLS5Q cpo@LR1.wue3
+    The key's randomart image is:
+    +---[RSA 2048]----+
+    |         oo      |
+    |          ..o    |
+    |       . o.o.. o.|
+    |       o+ooo  o.o|
+    |        Eo*  =.o |
+    |       o = +.o*+ |
+    |        = o *.o.o|
+    |       o * +.o+.+|
+    |        =.. o=.oo|
+    +----[SHA256]-----+
+
+  Two new files ``/config/auth/id_rsa_rpki`` and ``/config/auth/id_rsa_rpki.pub``
+  will be created.
