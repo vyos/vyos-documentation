@@ -34,6 +34,10 @@ in :rfc:`8210`.
   tools). It also has some `help and operational guidance`_ including
   "What can I do about my route having an Invalid state?"
 
+***************
+Getting started
+***************
+
 First you will need to deploy an RPKI validator for your routers to use. The
 RIPE NCC helpfully provide `some instructions`_ to get you started with
 several different options.  Once your server is running you can start
@@ -71,14 +75,95 @@ Imported prefixes during the validation may have values:
   reading about Krill_ if this is a rabbit hole you need or especially want
   to dive down.
 
+Features of the Current Implementation
+======================================
+
+In a nutshell, the current implementation provides the following features:
+
+* The BGP router can connect to one or more RPKI cache servers to receive
+  validated prefix to origin AS mappings. Advanced failover can be implemented
+  by server sockets with different preference values.
+
+* If no connection to an RPKI cache server can be established after a
+  pre-defined timeout, the router will process routes without prefix origin
+  validation. It still will try to establish a connection to an RPKI cache
+  server in the background.
+
+* By default, enabling RPKI does not change best path selection. In particular,
+  invalid prefixes will still be considered during best path selection. However,
+  the router can be configured to ignore all invalid prefixes.
+
+* Route maps can be configured to match a specific RPKI validation state. This
+  allows the creation of local policies, which handle BGP routes based on the
+  outcome of the Prefix Origin Validation.
+
+* Updates from the RPKI cache servers are directly applied and path selection is
+  updated accordingly. (Soft reconfiguration must be enabled for this to work).
+
+*************
+Configuration
+*************
+
+.. cfgcmd:: protocols rpki polling-period <1-86400>
+
+  Define the time interval to update the local cache
+
+  The default value is 300 seconds.
+
+.. cfgcmd:: protocols rpki cache <address> port <port>
+
+  Defined the IPv4, IPv6 or FQDN and port number of the caching RPKI caching
+  instance which is used.
+
+  This is a mandatory setting.
+
+.. cfgcmd:: protocols rpki cache <address> preference <preference>
+
+  Multiple RPKI caching instances can be supplied and they need a preference in
+  which their result sets are used.
+
+  This is a mandatory setting.
+
+SSH
+===
+
+Connections to the RPKI caching server can not only be established by HTTP/TLS
+but you can also rely on a secure SSH session to the server. To enable SSH you
+first need to create yoursels an SSH client keypair using ``generate ssh
+client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup
+the connection.
+
+.. cfgcmd:: protocols rpki cache <address> ssh username <user>
+
+  SSH username to establish an SSH connection to the cache server.
+
+.. cfgcmd:: protocols rpki cache <address> ssh known-hosts-file <filepath>
+
+  Local path that includes the known hosts file.
+
+.. cfgcmd:: protocols rpki cache <address> ssh private-key-file <filepath>
+
+  Local path that includes the private key file of the router.
+
+.. cfgcmd:: protocols rpki cache <address> ssh public-key-file <filepath
+
+  Local path that includes the public key file of the router.
+
+.. note:: When using SSH, known-hosts-file, private-key-file and public-key-file
+  are mandatory options.
+
+*******
+Example
+*******
+
 We can build route-maps for import based on these states. Here is a simple
 RPKI configuration, where `routinator` is the RPKI-validating "cache"
 server with ip `192.0.2.1`:
 
 .. code-block:: none
 
-  set protocols rpki cache routinator address '192.0.2.1'
-  set protocols rpki cache routinator port '3323'
+  set protocols rpki cache 192.0.2.1 port '3323'
+  set protocols rpki cache 192.0.2.1 preference '1'
 
 Here is an example route-map to apply to routes learned at import. In this
 filter we reject prefixes with the state `invalid`, and set a higher
