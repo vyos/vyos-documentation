@@ -14,23 +14,27 @@ addressing model.
 
 OSPF is a widely used IGP in large enterprise networks.
 
+*************
 OSPFv2 (IPv4)
-#############
+*************
 
-General Configuration
----------------------
+Configuration
+=============
+
+General
+-------
 
 VyOS does not have a special command to start the OSPF process. The OSPF process
 starts when the first ospf enabled interface is configured.
 
 .. cfgcmd:: set protocols ospf area <number> network <A.B.C.D/M>
 
-   This command specifies the OSPF enabled interface(s). If the interface has 
-   an address from defined range then the command enables OSPF on this 
-   interface so router can provide network information to the other ospf 
+   This command specifies the OSPF enabled interface(s). If the interface has
+   an address from defined range then the command enables OSPF on this
+   interface so router can provide network information to the other ospf
    routers via this interface.
-   
-   This command is also used to enable the OSPF process. The area number can be 
+
+   This command is also used to enable the OSPF process. The area number can be
    specified in decimal notation in the range from 0 to 4294967295. Or it
    can be specified in dotted decimal notation similar to ip address.
 
@@ -51,14 +55,14 @@ starts when the first ospf enabled interface is configured.
    with the same router-ID!
 
 
-Optional Configuration
-----------------------
+Optional
+--------
 
 .. cfgcmd:: set protocols ospf default-information originate [always]
    [metric <number>] [metric-type <1|2>] [route-map <name>]
 
-   Originate an AS-External (type-5) LSA describing a default route into all 
-   external-routing capable areas, of the specified metric and metric type. 
+   Originate an AS-External (type-5) LSA describing a default route into all
+   external-routing capable areas, of the specified metric and metric type.
    If the :cfgcmd:`always` keyword is given then the default is always
    advertised, even when there is no default present in the routing table.
    The argument :cfgcmd:`route-map` specifies to advertise the default route
@@ -72,10 +76,10 @@ Optional Configuration
 .. cfgcmd:: set protocols ospf distance ospf <external|inter-area|intra-area>
    <distance>
 
-   This command change distance value of OSPF. The arguments are the distance 
-   values for external routes, inter-area routes and intra-area routes 
+   This command change distance value of OSPF. The arguments are the distance
+   values for external routes, inter-area routes and intra-area routes
    respectively. The distance range is 1 to 255.
-   
+
    .. note:: Routes with a distance of 255 are effectively disabled and not
       installed into the kernel.
 
@@ -92,14 +96,14 @@ Optional Configuration
    transit links in its router-LSA as having infinite distance so that other
    routers will avoid calculating transit paths through the router while
    still being able to reach networks through the router.
-   
+
    This support may be enabled administratively (and indefinitely) with the
    :cfgcmd:`administrative` command. It may also be enabled conditionally.
    Conditional enabling of max-metric router-lsas can be for a period of
    seconds after startup with the :cfgcmd:`on-startup <seconds>` command
    and/or for a period of seconds prior to shutdown with the
    :cfgcmd:`on-shutdown <seconds>` command. The time range is 5 to 86400.
-   
+
 .. cfgcmd:: set protocols ospf parameters abr-type
    <cisco|ibm|shortcut|standard>
 
@@ -173,8 +177,8 @@ Optional Configuration
    consecutive SPF calculations. The default value is 10000 ms.
 
 
-Areas Configuration
--------------------
+Area Configuration
+------------------
 
 .. cfgcmd:: set protocols ospf area <number> area-type stub
 
@@ -220,7 +224,7 @@ Areas Configuration
 
    This command sets the default cost of LSAs announced to NSSA areas.
    The cost range is 0 to 16777215.
-   
+
 .. cfgcmd:: set protocols ospf area <number> area-type nssa translate
    <always|candidate|never>
 
@@ -241,7 +245,7 @@ Areas Configuration
 .. cfgcmd:: set protocols ospf area <number> authentication md5
 
    This command specify that OSPF packets must be authenticated with MD5 HMACs
-   within the given area. Keying material must also be configured on a 
+   within the given area. Keying material must also be configured on a
    per-interface basis.
 
 .. cfgcmd:: set protocols ospf area <number> range <A.B.C.D/M> [cost <number>]
@@ -278,7 +282,7 @@ Areas Configuration
    **enable** – the area will be used for shortcutting every time the route
    that goes through it is cheaper.
    **disable** – this area is never used by ABR for routes shortcutting.
-   
+
 .. cfgcmd:: set protocols ospf area <number> virtual-link <A.B.C.D>
 
    Provides a backbone area coherence by virtual link establishment.
@@ -299,10 +303,10 @@ Areas Configuration
    This pseudo-network is considered to belong to a backbone area.
 
 
-Interfaces Configuration
-------------------------
+Interface Configuration
+-----------------------
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf authentication 
+.. cfgcmd:: set interfaces <inttype> <intname> ip ospf authentication
    plaintext-password <text>
 
    This command sets OSPF authentication key to a simple password. After
@@ -318,14 +322,14 @@ Interfaces Configuration
    interface. It sets OSPF authentication key to a cryptographic password.
    Key-id identifies secret key used to create the message digest. This ID
    is part of the protocol and must be consistent across routers on a link.
-   The key can be long up to 16 chars (larger strings will be truncated), 
+   The key can be long up to 16 chars (larger strings will be truncated),
    and is associated with the given key-id.
 
 .. cfgcmd:: set interfaces <inttype> <intname> ip ospf bandwidth <number>
 
-   This command sets the interface bandwidth for cost calculations, where 
+   This command sets the interface bandwidth for cost calculations, where
    bandwidth can be in range from 1 to 100000, specified in Mbits/s.
-   
+
 .. cfgcmd:: set interfaces <inttype> <intname> ip ospf cost <number>
 
    This command sets link cost for the specified interface. The cost value is
@@ -352,10 +356,10 @@ Interfaces Configuration
    This command disables check of the MTU value in the OSPF DBD packets. Thus,
    use of this command allows the OSPF adjacency to reach the FULL state even
    though there is an interface MTU mismatch between two OSPF routers.
-   
+
 .. cfgcmd:: set interfaces <inttype> <intname> ip ospf network <type>
 
-   This command allows to specify the distribution type for the network 
+   This command allows to specify the distribution type for the network
    connected to this interface:
 
    **broadcast** – broadcast IP addresses distribution.
@@ -370,7 +374,7 @@ Interfaces Configuration
    highest priority will be more eligible to become Designated Router.
    Setting the value to 0, makes the router ineligible to become
    Designated Router. The default value is 1. The interval range is 0 to 255.
-   
+
 .. cfgcmd:: set interfaces <inttype> <intname> ip ospf retransmit-interval
    <number>
 
@@ -378,7 +382,7 @@ Interfaces Configuration
    value is used when retransmitting Database Description and Link State
    Request packets if acknowledge was not received. The default value is 5
    seconds. The interval range is 3 to 65535.
-   
+
 .. cfgcmd:: set interfaces <inttype> <intname> ip ospf transmit-delay <number>
 
    This command sets number of seconds for InfTransDelay value. It allows to
@@ -406,7 +410,7 @@ the neighbors statically.
    device sends hello packets out of the interface before it establishes
    adjacency with a neighbor. The range is 1 to 65535 seconds. The default
    value is 60 seconds.
-   
+
 .. cfgcmd:: set protocols ospf neighbor <A.B.C.D> priority <number>
 
    This command specifies the router priority value of the nonbroadcast
@@ -422,16 +426,16 @@ Redistribution Configuration
    This command redistributes routing information from the given route source
    to the OSPF process. There are five modes available for route source: bgp,
    connected, kernel, rip, static.
-   
+
 .. cfgcmd:: set protocols ospf default-metric <number>
-   
+
    This command specifies the default metric value of redistributed routes.
    The metric range is 0 to 16777214.
 
 .. cfgcmd:: set protocols ospf redistribute <route source> metric <number>
 
-   This command specifies metric for redistributed routes from the given 
-   route source. There are five modes available for route source: bgp, 
+   This command specifies metric for redistributed routes from the given
+   route source. There are five modes available for route source: bgp,
    connected, kernel, rip, static. The metric range is 1 to 16777214.
 
 .. cfgcmd:: set protocols ospf redistribute <route source> metric-type <1|2>
@@ -465,7 +469,7 @@ Operational Mode Commands
 .. opcmd:: show ip ospf neighbor
 
    This command displays the neighbors status.
-   
+
 .. code-block:: none
 
    Neighbor ID     Pri State           Dead Time Address         Interface                        RXmtL RqstL DBsmL
@@ -568,13 +572,13 @@ Operational Mode Commands
                               via 10.0.13.3, eth0
    N    10.0.34.0/24          [2] area: 0.0.0.0
                               via 10.0.13.3, eth0
-   
+
    ============ OSPF router routing table =============
    R    10.0.23.3             [1] area: 0.0.0.0, ABR
                               via 10.0.13.3, eth0
    R    10.0.34.4             [2] area: 0.0.0.0, ASBR
                               via 10.0.13.3, eth0
-   
+
    ============ OSPF external routing table ===========
    N E2 172.16.0.0/24         [2/20] tag: 0
                               via 10.0.13.3, eth0
@@ -588,7 +592,7 @@ connected, i.e. it’s an inter-area path. In square brackets a summary metric
 for all links through which a path lies to this network is specified. "via"
 prefix defines a router-gateway, i.e. the first router on the way to the
 destination (next hop).
-**OSPF router routing table** – includes a list of acquired routes to all 
+**OSPF router routing table** – includes a list of acquired routes to all
 accessible ABRs and ASBRs.
 **OSPF external routing table** – includes a list of acquired routes that are
 external to the OSPF process. "E" flag points to the external link metric type
@@ -599,7 +603,7 @@ the "<metric of the router which advertised the link>/<link metric>" format.
 
    This command displays a table of paths to area boundary and autonomous
    system boundary routers.
-   
+
 .. opcmd:: show ip ospf database
 
    This command displays a summary table with a database contents (LSA).
@@ -607,51 +611,51 @@ the "<metric of the router which advertised the link>/<link metric>" format.
 .. code-block:: none
 
           OSPF Router with ID (10.0.13.1)
-   
+
                    Router Link States (Area 0.0.0.0)
-   
+
    Link ID         ADV Router      Age  Seq#       CkSum  Link count
    10.0.13.1       10.0.13.1        984 0x80000005 0xd915 1
    10.0.23.3       10.0.23.3       1186 0x80000008 0xfe62 2
    10.0.34.4       10.0.34.4       1063 0x80000004 0x4e3f 1
-   
+
                    Net Link States (Area 0.0.0.0)
-   
+
    Link ID         ADV Router      Age  Seq#       CkSum
    10.0.13.1       10.0.13.1        994 0x80000003 0x30bb
    10.0.34.4       10.0.34.4       1188 0x80000001 0x9411
-   
+
                    Summary Link States (Area 0.0.0.0)
-   
+
    Link ID         ADV Router      Age  Seq#       CkSum  Route
    10.0.12.0       10.0.23.3       1608 0x80000001 0x6ab6 10.0.12.0/24
    10.0.23.0       10.0.23.3        981 0x80000003 0xe232 10.0.23.0/24
-   
+
                    AS External Link States
-   
+
    Link ID         ADV Router      Age  Seq#       CkSum  Route
    172.16.0.0      10.0.34.4       1063 0x80000001 0xc40d E2 172.16.0.0/24 [0x0]
-   
+
 .. opcmd:: show ip ospf database <type> [A.B.C.D]
   [adv-router <A.B.C.D>|self-originate]
 
    This command displays a database contents for a specific link advertisement
    type.
-   
+
    The type can be the following:
    asbr-summary, external, network, nssa-external, opaque-area, opaque-as,
    opaque-link, router, summary.
-   
+
    [A.B.C.D] – link-state-id. With this specified the command displays portion
    of the network environment that is being described by the advertisement.
    The value entered depends on the advertisement’s LS type. It must be
    entered in the form of an IP address.
-   
+
    :cfgcmd:`adv-router <A.B.C.D>` – router id, which link advertisements need
    to be reviewed.
-   
+
    :cfgcmd:`self-originate` displays only self-originated LSAs from the local
-   router. 
+   router.
 
 .. code-block:: none
 
@@ -669,7 +673,7 @@ the "<metric of the router which advertised the link>/<link metric>" format.
      LS Seq Number: 80000009
      Checksum: 0xd119
      Length: 36
-   
+
       Number of Links: 1
 
        Link connected to: a Transit Network
@@ -721,11 +725,15 @@ address and the node 1 sending the default route:
   set policy route-map CONNECT rule 10 match interface lo
 
 
+*************
 OSPFv3 (IPv6)
-#############
+*************
 
-General Configuration
----------------------
+Configuration
+=============
+
+General
+-------
 
 VyOS does not have a special command to start the OSPFv3 process. The OSPFv3
 process starts when the first ospf enabled interface is configured.
@@ -746,15 +754,15 @@ process starts when the first ospf enabled interface is configured.
    configured with the same router-ID!
 
 
-Optional Configuration
-----------------------
+Optional
+--------
 
 .. cfgcmd:: set protocols ospfv3 distance global <distance>
 
    This command change distance value of OSPFv3 globally.
    The distance range is 1 to 255.
 
-.. cfgcmd:: set protocols ospfv3 distance ospfv3 
+.. cfgcmd:: set protocols ospfv3 distance ospfv3
    <external|inter-area|intra-area> <distance>
 
    This command change distance value of OSPFv3. The arguments are the
@@ -762,8 +770,8 @@ Optional Configuration
    routes respectively. The distance range is 1 to 255.
 
 
-Areas Configuration
--------------------
+Area Configuration
+------------------
 
 .. cfgcmd:: set protocols ospfv3 area <number> range <prefix>
 
@@ -778,8 +786,8 @@ Areas Configuration
    command makes sense in ABR only.
 
 
-Interfaces Configuration
-------------------------
+Interface Configuration
+-----------------------
 
 .. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 cost <number>
 
@@ -810,7 +818,7 @@ Interfaces Configuration
    Thus, use of this command allows the OSPF adjacency to reach the FULL
    state even though there is an interface MTU mismatch between two OSPF
    routers.
-   
+
 .. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 network <type>
 
    This command allows to specify the distribution type for the network
@@ -825,7 +833,7 @@ Interfaces Configuration
    highest priority will be more eligible to become Designated Router.
    Setting the value to 0, makes the router ineligible to become Designated
    Router. The default value is 1. The interval range is 0 to 255.
-   
+
 .. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 passive
 
    This command specifies interface as passive. Passive interface advertises
@@ -839,7 +847,7 @@ Interfaces Configuration
    value is used when retransmitting Database Description and Link State
    Request packets if acknowledge was not received. The default value is 5
    seconds. The interval range is 3 to 65535.
-   
+
 .. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 transmit-delay
    <number>
 
@@ -892,7 +900,7 @@ Operational Mode Commands
    This command displays state and configuration of OSPF the specified
    interface, or all interfaces if no interface is given. Whith the argument
    :cfgcmd:`prefix` this command shows connected prefixes to advertise.
-   
+
 .. opcmd:: show ipv6 ospfv3 route
 
    This command displays the OSPF routing table, as determined by the most
@@ -902,7 +910,7 @@ Operational Mode Commands
 
    This command displays a table of paths to area boundary and autonomous
    system boundary routers.
-   
+
 .. opcmd:: show ipv6 ospfv3 database
 
    This command displays a summary table with a database contents (LSA).
@@ -947,7 +955,7 @@ A typical configuration using 2 nodes.
 
   show ipv6 ospfv3 redistribute
 
-.. note:: You cannot easily redistribute IPv6 routes via OSPFv3 on a 
+.. note:: You cannot easily redistribute IPv6 routes via OSPFv3 on a
    WireGuard interface link. This requires you to configure link-local
    addresses manually on the WireGuard interfaces, see :vytask:`T1483`.
 
@@ -994,4 +1002,4 @@ Example configuration for WireGuard interfaces:
   vyos@ospf02# run sh ipv6 ospfv3 neighbor
   Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]
   192.168.0.1       1    00:00:39     Full/PointToPoint    00:19:44 wg01[PointToPoint]
-  
+
