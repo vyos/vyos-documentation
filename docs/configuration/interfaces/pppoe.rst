@@ -113,7 +113,7 @@ PPPoE options
    timeout period, after which an idle PPPoE link will be disconnected. A
    non-zero idle timeout will never disconnect the link after it first came up.
 
-.. cfgcmd:: set interfaces pppoe <interface> default-route
+.. cfgcmd:: set interfaces pppoe <interface> default-route [auto | force | none]
 
    Use this command to specify whether to automatically add a default route
    pointing to the endpoint of the PPPoE when the link comes up. The default
@@ -121,6 +121,16 @@ PPPoE options
 
    **default:** A default route to the remote endpoint is automatically added
    when the link comes up (i.e. auto).
+
+   * auto: A default route is added if no other default route (From any
+     source) already exists.
+   * force: A default route is added after removing *all* existing default
+     routes.
+   * none: No default route is installed.
+
+.. note:: In all modes except 'none', all default routes using this interface will be
+   removed when the interface is torn down - even manually installed static
+   interface-routes.
 
 .. cfgcmd:: set interfaces pppoe <interface> idle-timeout <time>
 
@@ -240,7 +250,8 @@ Requirements:
 * With the ``default-route`` option set to ``auto``, VyOS will only add the
   default gateway you receive from your DSL ISP to the routing table if you
   have no other WAN connections. If you wish to use a dual WAN connection,
-  change the ``default-route`` option to ``force``.
+  change the ``default-route`` option to ``force``.  You could also install
+  a static interface-route and set the ``default-route`` option to ``none``.
 * With the ``name-server`` option set to ``none``, VyOS will ignore the
   nameservers your ISP sens you and thus you can fully rely on the ones you
   have configured statically.
