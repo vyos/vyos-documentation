@@ -128,9 +128,9 @@ PPPoE options
      routes.
    * none: No default route is installed.
 
-.. note:: In all modes except 'none', all default routes using this interface will be
-   removed when the interface is torn down - even manually installed static
-   interface-routes.
+.. note:: In all modes except 'none', all default routes using this interface
+   will be removed when the interface is torn down - even manually installed
+   static interface-routes.
 
 .. cfgcmd:: set interfaces pppoe <interface> idle-timeout <time>
 
