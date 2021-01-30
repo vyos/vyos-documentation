@@ -123,7 +123,7 @@ Operation
   connections.
 
   .. note:: Already learned known_hosts files of clients need an update as the
-  public key will change.
+     public key will change.
 
 .. opcmd:: generate ssh client-key /path/to/private_key
 
