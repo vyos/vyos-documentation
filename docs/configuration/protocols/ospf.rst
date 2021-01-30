@@ -306,7 +306,7 @@ Area Configuration
 Interface Configuration
 -----------------------
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf authentication
+.. cfgcmd:: set protocols ospf interface <interface> authentication
    plaintext-password <text>
 
    This command sets OSPF authentication key to a simple password. After
@@ -315,7 +315,7 @@ Interface Configuration
    Simple text password authentication is insecure and deprecated in favour of
    MD5 HMAC authentication.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf authentication md5
+.. cfgcmd:: set protocols ospf interface <interface> authentication md5
    key-id <id> md5-key <text>
 
    This command specifys that MD5 HMAC authentication must be used on this
@@ -325,25 +325,25 @@ Interface Configuration
    The key can be long up to 16 chars (larger strings will be truncated),
    and is associated with the given key-id.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf bandwidth <number>
+.. cfgcmd:: set protocols ospf interface <interface> bandwidth <number>
 
    This command sets the interface bandwidth for cost calculations, where
    bandwidth can be in range from 1 to 100000, specified in Mbits/s.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf cost <number>
+.. cfgcmd:: set protocols ospf interface <interface> cost <number>
 
    This command sets link cost for the specified interface. The cost value is
    set to router-LSA’s metric field and used for SPF calculation. The cost
    range is 1 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf dead-interval <number>
+.. cfgcmd:: set protocols ospf interface <interface> dead-interval <number>
 
    Set number of seconds for router Dead Interval timer value used for Wait
    Timer and Inactivity Timer. This value must be the same for all routers
    attached to a common network. The default value is 40 seconds. The
    interval range is 1 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf hello-interval <number>
+.. cfgcmd:: set protocols ospf interface <interface> hello-interval <number>
 
    Set number of seconds for Hello Interval timer value. Setting this value,
    Hello packet will be sent every timer value seconds on the specified
@@ -351,13 +351,18 @@ Interface Configuration
    common network. The default value is 10 seconds. The interval range is 1
    to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf mtu-ignore
+.. cfgcmd:: set protocols ospf interface <interface> bfd
+
+   This command enables :abbr:`BFD (Bidirectional Forwarding Detection)` on
+   this OSPF link interface.
+
+.. cfgcmd:: set protocols ospf interface <interface> mtu-ignore
 
    This command disables check of the MTU value in the OSPF DBD packets. Thus,
    use of this command allows the OSPF adjacency to reach the FULL state even
    though there is an interface MTU mismatch between two OSPF routers.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf network <type>
+.. cfgcmd:: set protocols ospf interface <interface> network <type>
 
    This command allows to specify the distribution type for the network
    connected to this interface:
@@ -368,14 +373,14 @@ Interface Configuration
    networks.
    **point-to-point** – address distribution in point-to-point networks.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf priority <number>
+.. cfgcmd:: set protocols ospf interface <interface> priority <number>
 
    This command sets Router Priority integer value. The router with the
    highest priority will be more eligible to become Designated Router.
    Setting the value to 0, makes the router ineligible to become
    Designated Router. The default value is 1. The interval range is 0 to 255.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf retransmit-interval
+.. cfgcmd:: set protocols ospf interface <interface> retransmit-interval
    <number>
 
    This command sets number of seconds for RxmtInterval timer value. This
@@ -383,7 +388,7 @@ Interface Configuration
    Request packets if acknowledge was not received. The default value is 5
    seconds. The interval range is 3 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf transmit-delay <number>
+.. cfgcmd:: set protocols ospf interface <interface> transmit-delay <number>
 
    This command sets number of seconds for InfTransDelay value. It allows to
    set and adjust for each interface the delay interval before starting the
