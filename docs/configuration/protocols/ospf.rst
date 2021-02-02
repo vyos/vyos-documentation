@@ -343,6 +343,15 @@ Interface Configuration
    attached to a common network. The default value is 40 seconds. The
    interval range is 1 to 65535.
 
+.. cfgcmd:: set protocols ospf interface <interface> hello-multiplier <number>
+
+   The hello-multiplier specifies how many Hellos to send per second, from 1
+   (every second) to 10 (every 100ms). Thus one can have 1s convergence time
+   for OSPF. If this form is specified, then the hello-interval advertised in
+   Hello packets is set to 0 and the hello-interval on received Hello packets
+   is not checked, thus the hello-multiplier need NOT be the same across
+   multiple routers on a common link.
+
 .. cfgcmd:: set protocols ospf interface <interface> hello-interval <number>
 
    Set number of seconds for Hello Interval timer value. Setting this value,
