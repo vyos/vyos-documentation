@@ -9,12 +9,12 @@ Configuration
 
 VyOS provides DNS infrastructure for small networks. It is designed to be
 lightweight and have a small footprint, suitable for resource constrained
-routers and firewalls, for this we utilize PowerDNS recursor.
+routers and firewalls. For this we utilize PowerDNS recursor.
 
 The VyOS DNS forwarder does not require an upstream DNS server. It can serve as
 a full recursive DNS server - but it can also forward queries to configurable
 upstream DNS servers. By not configuring any upstream DNS servers you also
-avoid to be tracked by the provider of your upstream DNS server.
+avoid being tracked by the provider of your upstream DNS server.
 
 .. cfgcmd:: set service dns forwarding system
 
@@ -29,7 +29,7 @@ avoid to be tracked by the provider of your upstream DNS server.
 .. cfgcmd:: set service dns forwarding domain <domain-name> server <address>
 
    Forward received queries for a particular domain
-   (specified via `domain-name`) to a given name-server. Multiple nameservers
+   (specified via `domain-name`) to a given nameserver. Multiple nameservers
    can be specified. You can use this feature for a DNS split-horizon
    configuration.
 
@@ -37,15 +37,15 @@ avoid to be tracked by the provider of your upstream DNS server.
 
 .. cfgcmd:: set service dns forwarding allow-from <network>
 
-   Given the fact that open DNS recursors could be used on DDOS amplification
-   attacts, you must configure the networks which are allowed to use this
+   Given the fact that open DNS recursors could be used on DDoS amplification
+   attacks, you must configure the networks which are allowed to use this
    recursor. A network of ``0.0.0.0/0`` or ``::/0`` would allow all IPv4 and
-   IPv6 networks to query this server. This is on general a bad idea.
+   IPv6 networks to query this server. This is generally a bad idea.
 
 .. cfgcmd:: set service dns forwarding dnssec
    <off | process-no-validate | process | log-fail | validate>
 
-   The PowerDNS Recursor has 5 different levels of DNSSEC processing, which can
+   The PowerDNS recursor has 5 different levels of DNSSEC processing, which can
    be set with the dnssec setting. In order from least to most processing, these
    are:
 
@@ -53,14 +53,14 @@ avoid to be tracked by the provider of your upstream DNS server.
      not set the DNSSEC OK (DO) bit in the outgoing queries and will ignore the
      DO and AD bits in queries.
 
-   * **process-no-validate** In this mode the Recursor acts as a "security
+   * **process-no-validate** In this mode the recursor acts as a "security
      aware, non-validating" nameserver, meaning it will set the DO-bit on
      outgoing queries and will provide DNSSEC related RRsets (NSEC, RRSIG) to
      clients that ask for them (by means of a DO-bit in the query), except for
      zones provided through the auth-zones setting. It will not do any
      validation in this mode, not even when requested by the client.
 
-   * **process** When dnssec is set to process the behaviour is similar to
+   * **process** When dnssec is set to process the behavior is similar to
      process-no-validate. However, the recursor will try to validate the data
      if at least one of the DO or AD bits is set in the query; in that case,
      it will set the AD-bit in the response when the data is validated
@@ -77,17 +77,17 @@ avoid to be tracked by the provider of your upstream DNS server.
      queries will be validated and will be answered with a SERVFAIL in case of
      bogus data, regardless of the client's request.
 
-   .. note:: The famous UNIX/Linux ``dig`` tool sets the AD-bit in the query.
+   .. note:: The popular Unix/Linux ``dig`` tool sets the AD-bit in the query.
       This might lead to unexpected query results when testing. Set ``+noad``
-      on the ``dig`` commandline when this is the case.
+      on the ``dig`` command line when this is the case.
 
    .. note:: The ``CD``-bit is honored correctly for process and validate. For
       log-fail, failures will be logged too.
 
 .. cfgcmd:: set service dns forwarding ignore-hosts-file
 
-   Do not use local ``/etc/hosts`` file in name resolution. VyOS DHCP server
-   will use this file to add resolvers to assigned addresses.
+   Do not use the local ``/etc/hosts`` file in name resolution. VyOS DHCP
+   server will use this file to add resolvers to assigned addresses.
 
 .. cfgcmd:: set service dns forwarding max-cache-entries
 
@@ -206,7 +206,7 @@ Configuration
 .. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
    ttl <ttl>
 
-   Configure optional TTL value on the given resource record. This defualts to
+   Configure optional TTL value on the given resource record. This defaults to
    600 seconds.
 
 Example
@@ -304,7 +304,7 @@ Use DynDNS as your preferred provider:
   set service dns dynamic interface eth0 service dyndns host-name my-dyndns-hostname
 
 .. note:: Multiple services can be used per interface. Just specify as many
-   serives per interface as you like!
+   services per interface as you like!
 
 Running Behind NAT
 ------------------
