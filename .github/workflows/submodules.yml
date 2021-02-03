@@ -16,7 +16,7 @@ jobs:
           git submodule status
           git submodule update --init --force
           cd docs/_include/vyos-1x
-          git checkout current
+          git checkout equuleus
           git pull
           git submodule status
       - name: Create Pull Request
