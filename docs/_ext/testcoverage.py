@@ -281,13 +281,15 @@ def get_working_commands():
                 while line:                
                     string = string + include_file(line.strip(), entry['input_dir'])
                     line = fp.readline()
-            
+
             try:
                 xml = ET.parse(BytesIO(bytes(string, 'utf-8')))
             except Exception as e:
                 print("Failed to load interface definition file {0}".format(f))
                 print(e)
                 sys.exit(1)
+
+            override_defaults(xml)
             
             try:
                 relaxng_xml = ET.parse(entry['schema_file'])
@@ -343,7 +345,36 @@ def get_working_commands():
         cmd['cmd'] = " ".join(cmd['name'])
     return result
 
+def override_defaults(xml):
+    root = xml.getroot()
+    defv = {}
 
+    xpath_str = f'//defaultValue'
+    xp = xml.xpath(xpath_str)
+
+    for element in xp:
+        ap = element.xpath('ancestor::*[@name]')
+        defv.setdefault((ap[-1].get("name"), str(ap[:-1])), []).append(element)
+
+    for k, v in defv.items():
+        if len(v) > 1:
+            override_element(v)
+
+def override_element(l: list):
+    if len(l) < 2:
+        return
+
+    # assemble list of leafNodes of overriding defaultValues, for later removal
+    parents = []
+    for el in l[1:]:
+        parents.append(el.getparent())
+
+    # replace element with final override
+    l[0].getparent().replace(l[0], l[-1])
+
+    # remove all but overridden element
+    for el in parents:
+        el.getparent().remove(el)
 
 if __name__ == "__main__":
     res = get_working_commands()
