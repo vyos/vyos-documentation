@@ -78,7 +78,7 @@ one.
   set interfaces wireguard wg01 peer to-wg02 port '12345'
   set interfaces wireguard wg01 peer to-wg02 pubkey 'XMrlPykaxhdAAiSjhtPlvi30NVkvLQliQuKP7AI7CyI='
   set interfaces wireguard wg01 port '12345'
-  set protocols static interface-route 10.2.0.0/24 next-hop-interface wg01
+  set protocols static route 10.2.0.0/24 interface wg01
 
 The last step is to define an interface route for 10.2.0.0/24 to get
 through the WireGuard interface `wg01`. Multiple IPs or networks can be
@@ -113,7 +113,7 @@ the public key, which needs to be shared with the peer.
   set interfaces wireguard wg01 peer to-wg02 port '12345'
   set interfaces wireguard wg01 peer to-wg02 pubkey 'u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk='
   set interfaces wireguard wg01 port '12345'
-  set protocols static interface-route 10.1.0.0/24 next-hop-interface wg01
+  set protocols static route 10.1.0.0/24 interface wg01
 
 Assure that your firewall rules allow the traffic, in which case you
 have a working VPN using WireGuard

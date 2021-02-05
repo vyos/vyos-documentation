@@ -159,13 +159,13 @@ Local Configuration:
 
 .. code-block:: none
 
-  set protocols static interface-route 10.1.0.0/16 next-hop-interface vtun1
+  set protocols static route 10.1.0.0/16 interface vtun1
 
 Remote Configuration:
 
 .. code-block:: none
 
-  set protocols static interface-route 10.0.0.0/16 next-hop-interface vtun1
+  set protocols static route 10.0.0.0/16 interface vtun1
 
 Firewall policy can also be applied to the tunnel interface for `local`, `in`,
 and `out` directions and function identically to ethernet interfaces.
@@ -253,7 +253,7 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
 
 .. code-block:: none
 
-  set protocols static interface-route 10.23.0.0/20 next-hop-interface vtun10
+  set protocols static route 10.23.0.0/20 interface vtun10
 
 Generate X.509 Certificate and Keys
 -----------------------------------

@@ -114,7 +114,7 @@ Vyos configuration
 
 .. code-block:: none
 
-  set protocols static interface-route 10.0.0.4/32 next-hop-interface vti1
+  set protocols static route 10.0.0.4/32 interface vti1
 
 - Configure your BGP settings
 

@@ -130,7 +130,7 @@ PPPoE options
 
 .. note:: In all modes except 'none', all default routes using this interface
    will be removed when the interface is torn down - even manually installed
-   static interface-routes.
+   static routes.
 
 .. cfgcmd:: set interfaces pppoe <interface> idle-timeout <time>
 
@@ -251,7 +251,7 @@ Requirements:
   default gateway you receive from your DSL ISP to the routing table if you
   have no other WAN connections. If you wish to use a dual WAN connection,
   change the ``default-route`` option to ``force``.  You could also install
-  a static interface-route and set the ``default-route`` option to ``none``.
+  a static route and set the ``default-route`` option to ``none``.
 * With the ``name-server`` option set to ``none``, VyOS will ignore the
   nameservers your ISP sens you and thus you can fully rely on the ones you
   have configured statically.

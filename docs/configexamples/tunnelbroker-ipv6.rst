@@ -35,7 +35,7 @@ tunnel information page.
   set interfaces tunnel tun0 mtu '1472'
   set interfaces tunnel tun0 multicast 'disable'
   set interfaces tunnel tun0 remote-ip Server_IPv4_from_Tunnelbroker  # This is the IP of the Tunnelbroker server
-  set protocols static interface-route6 ::/0 next-hop-interface tun0  # Tell all traffic to go over this tunnel
+  set protocols static route6 ::/0 interface tun0  # Tell all traffic to go over this tunnel
   commit
 
 If your WAN connection is over PPPoE, you may need to set the MTU on the above

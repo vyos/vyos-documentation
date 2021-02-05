@@ -29,7 +29,7 @@ DHCP Server
    set protocols ospf area 0 network '192.168.3.0/24'
    set protocols ospf area 0 network '10.0.2.0/24'
    set protocols ospf parameters router-id '192.168.3.3'
-   set protocols static interface-route 10.0.1.2/32 next-hop-interface tun100
+   set protocols static route 10.0.1.2/32 interface tun100
    set service dhcp-server shared-network-name asdf authoritative
    set service dhcp-server shared-network-name asdf subnet 192.168.3.0/24 range 0 start '192.168.3.30'
    set service dhcp-server shared-network-name asdf subnet 192.168.3.0/24 range 0 stop '192.168.3.40'
@@ -70,7 +70,7 @@ DHCP Relay
    set protocols ospf area 0 network '192.168.0.0/24'
    set protocols ospf area 0 network '10.100.100.0/24'
    set protocols ospf parameters router-id '10.100.100.1'
-   set protocols static interface-route 192.168.3.3/32 next-hop-interface tun100
+   set protocols static route 192.168.3.3/32 interface tun100
    set service dhcp-relay interface 'eth0'
    set service dhcp-relay interface 'tun100'
    set service dhcp-relay server '192.168.3.3'
