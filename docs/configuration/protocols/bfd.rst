@@ -70,7 +70,7 @@ Enable BFD in BGP
 Enable BFD in OSPF
 ------------------
 
-.. cfgcmd:: set interfaces ethernet <interface> ip ospf bfd
+.. cfgcmd:: set protocols ospf interface <interface> ip ospf bfd
 
    Enable BFD for OSPF on a interface
 
