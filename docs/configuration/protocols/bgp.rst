@@ -509,22 +509,22 @@ Redistribution Configuration
    redistribute <route source>
 
    This command redistributes routing information from the given route source
-   to the BGP process. There are six modes available for route source: bgp,
-   connected, kernel, ospf, rip, static.
+   to the BGP process. There are six modes available for route source:
+   connected, kernel, ospf, rip, static, table.
 
 .. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast>
    redistribute <route source> metric <number>
 
    This command specifies metric (MED) for redistributed routes. The 
-   metric range is 0 to 4294967295. There are six modes available for 
-   route source: bgp, connected, kernel, ospf, rip, static.
+   metric range is 0 to 4294967295. There are six modes available for
+   route source: connected, kernel, ospf, rip, static, table.
 
 .. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast>
    redistribute <route source> route-map <name>
 
    This command allows to use route map to filter redistributed routes.
-   There are six modes available for route source: bgp, connected, kernel,
-   ospf, rip, static.
+   There are six modes available for route source: connected, kernel,
+   ospf, rip, static, table.
 
 
 General Configuration
