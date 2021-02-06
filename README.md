@@ -1,11 +1,32 @@
-Starting with VyOS 1.2 (`crux`) documentation is being migrated from the old wiki
-to ReadTheDocs. Documentation can be accessed via the following URL:
+Starting with VyOS 1.2 (`crux`) our documentation is being migrated from the old wiki
+to ReadTheDocs. Documentation can be accessed via the following URL: https://docs.vyos.io
 
-* https://docs.vyos.io
+Our old WiKi can still be accessed from the
+[Wayback Machine](https://web.archive.org/web/20200225171529/https://wiki.vyos.net/wiki/Main_Page)
 
 # Build
 
 [![Documentation Status](https://readthedocs.org/projects/vyos/badge/?version=latest)](https://docs.vyos.io/en/latest/?badge=latest)
+
+# Versions
+
+Our version follows the very same branching scheme as the VyOS source modules
+itself. We maintain one documentation branch per VyOS release. The default
+branch that contains the most recent VyOS documentation is called `master`
+and matches the latest VyOS release which is 1.4 at the time.
+
+All new documentation enhancements go to the `master` branch. If those changes
+are beneficial for previous VyOS documentation versions they will be
+cherry-picked to the appropriate branch(es).
+
+Post-1.2.0 branches are named after constellations sorted by area from smallest to
+largest. There are 88 of them, here's the
+[complete list](https://en.wikipedia.org/wiki/IAU_designated_constellations_by_area).
+
+* 1.2.x: `crux` (Southern Cross)
+* 1.3.x: `equuleus` (Little Horse)
+* 1.4.x: `sagitta` (Arrow)
+* ...
 
 ## Native
 
