@@ -5,12 +5,41 @@ on:
   # 06:00 UTC on Monday
     - cron:  '0 6 * * 1'
 jobs:
-  updatVyOS-1x:
+  updateVyOS-1x_master:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           repository: ${{ github.repository }}
+      - name: update submodule
+        run: |
+          git submodule status
+          git submodule update --init --force
+          cd docs/_include/vyos-1x
+          git checkout current
+          git pull
+          git submodule status
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          commit-message: "vyos-1x: update current branch"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          title: "vyos-1x: update current branch"
+          body: |
+            Autoupdate vyos-1x submodule
+          branch: update-dependencies-master
+          delete-branch: true
+
+
+  updateVyOS-1x_equuleus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}
+          ref: equuleus
       - name: update submodule
         run: |
           git submodule status
@@ -23,10 +52,11 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          commit-message: Update vyos-1x submodule
+          commit-message: "vyos-1x: update equuleus branch"
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          title: Update vyos-1x submodule
+          title: "vyos-1x: update equuleus branch"
           body: |
             Autoupdate vyos-1x submodule
-          branch: update-dependencies
+          branch: update-dependencies-equuleus
+          delete-branch: true
