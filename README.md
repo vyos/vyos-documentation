@@ -1,7 +1,12 @@
-Starting with VyOS 1.2 (`crux`) documentation is being migrated from the old wiki
-to ReadTheDocs. Documentation can be accessed via the following URL:
+Starting with VyOS 1.2 (`crux`) our documentation is being migrated from the old wiki
+to ReadTheDocs. Documentation can be accessed via the following URL: https://docs.vyos.io
 
-* https://docs.vyos.io
+Our old WiKi can still be accessed from the
+[Wayback Machine](https://web.archive.org/web/20200225171529/https://wiki.vyos.net/wiki/Main_Page)
+
+# Build
+
+[![Documentation Status](https://readthedocs.org/projects/vyos/badge/?version=latest)](https://docs.vyos.io/en/latest/?badge=latest)
 
 # Versions
 
@@ -22,10 +27,6 @@ largest. There are 88 of them, here's the
 * 1.3.x: `equuleus` (Little Horse)
 * 1.4.x: `sagitta` (Arrow)
 * ...
-
-# Build
-
-[![Documentation Status](https://readthedocs.org/projects/vyos/badge/?version=latest)](https://docs.vyos.io/en/latest/?badge=latest)
 
 ## Native
 
