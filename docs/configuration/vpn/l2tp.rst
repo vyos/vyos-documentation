@@ -72,8 +72,8 @@ parameter to the client.
 
 .. code-block:: none
 
-  set vpn l2tp remote-access dns-servers server-1 '198.51.100.8'
-  set vpn l2tp remote-access dns-servers server-2 '198.51.100.4'
+  set vpn l2tp remote-access name-server '198.51.100.8'
+  set vpn l2tp remote-access name-server '198.51.100.4'
 
 Established sessions can be viewed using the **show vpn remote-access**
 operational command, or **show l2tp-server sessions**
