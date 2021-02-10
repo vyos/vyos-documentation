@@ -10,6 +10,8 @@ Changelog
    :maxdepth: 1
    :includehidden:
 
+   1.4
+   1.3
    1.2.6
    1.2.5
    1.2.4
