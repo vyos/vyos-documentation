@@ -32,7 +32,7 @@ on each IP address.
 
 .. cfgcmd:: set service tftp-server allow-upload
 
-Optional, if you want to enable uploads, else TFTP server will act as read-only
+Optional, if you want to enable uploads, else TFTP server will act as a read-only
 server.
 
 Example
@@ -40,7 +40,7 @@ Example
 
 Provide TFTP server listening on both IPv4 and IPv6 addresses ``192.0.2.1`` and
 ``2001:db8::1`` serving the content from ``/config/tftpboot``. Uploading via
-TFTP to this server is not allowed!
+TFTP to this server is disabled.
 
 The resulting configuration will look like:
 
