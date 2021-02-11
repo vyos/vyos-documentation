@@ -1,0 +1,21 @@
+.. cmdinclude:: /_include/interface-address-with-dhcp.txt
+  :var0: {{ var0 }}
+  :var1: {{ var1 }}
+
+.. cmdinclude:: /_include/interface-common.txt
+  :var0: {{ var0 }}
+  :var1: {{ var1 }}
+
+**DHCP(v6)**
+
+.. cmdinclude:: /_include/interface-dhcp-options.txt
+  :var0: {{ var0 }}
+  :var1: {{ var1 }}
+
+.. cmdinclude:: /_include/interface-dhcpv6-options.txt
+  :var0: {{ var0 }}
+  :var1: {{ var1 }}
+
+.. cmdinclude:: /_include/interface-dhcpv6-prefix-delegation.txt
+  :var0: {{ var0 }}
+  :var1: {{ var1 }}

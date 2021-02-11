@@ -8,9 +8,9 @@ SPHINXPROJ    = VyOS
 SOURCEDIR     = .
 BUILDDIR      = _build
 
-AUTOHOST      =0.0.0.0
-AUTOPORT      =8000
-AUTOOPTS      =--poll
+AUTOHOST      = 0.0.0.0
+AUTOPORT      = 8000
+AUTOOPTS      = --watch .
 
 # Put it first so that "make" without argument is like "make help".
 help:

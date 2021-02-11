@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sphinx-rtd-theme = "*"
+docutils = "*"
+lxml = "*"
+sphinx-notfound-page = "*"
+Sphinx = ">=1.4.3"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"

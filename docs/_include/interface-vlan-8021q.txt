@@ -1,0 +1,120 @@
+IEEE 802.1q_, often referred to as Dot1q, is the networking standard that
+supports virtual LANs (VLANs) on an IEEE 802.3 Ethernet network. The standard
+defines a system of VLAN tagging for Ethernet frames and the accompanying
+procedures to be used by bridges and switches in handling such frames.
+The standard also contains provisions for a quality-of-service prioritization
+scheme commonly known as IEEE 802.1p and defines the
+Generic Attribute Registration Protocol.
+
+Portions of the network which are VLAN-aware (i.e., IEEE 802.1q_ conformant) can
+include VLAN tags. When a frame enters the VLAN-aware portion of the network, a
+tag is added to represent the VLAN membership. Each frame must be
+distinguishable as being within exactly one VLAN. A frame in the VLAN-aware
+portion of the network that does not contain a VLAN tag is assumed to be
+flowing on the native VLAN.
+
+The standard was developed by IEEE 802.1, a working group of the IEEE 802
+standards committee, and continues to be actively revised. One of the notable
+revisions is 802.1Q-2014 which incorporated IEEE 802.1aq
+(Shortest Path Bridging) and much of the IEEE 802.1d standard.
+
+802.1q VLAN interfaces are represented as virtual sub-interfaces in VyOS. The
+term used for this is ``vif``.
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> vif <vlan-id>
+
+  Create a new VLAN interface on interface `<interface>` using the VLAN number
+  provided via `<vlan-id>`.
+
+  You can create multiple VLAN interfaces on a physical interface. The VLAN ID
+  range is from 0 to 4094.
+
+  .. note:: Only 802.1Q-tagged packets are accepted on Ethernet vifs.
+
+.. cmdinclude:: /_include/interface-address-with-dhcp.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: /_include/interface-description.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: /_include/interface-disable.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: /_include/interface-disable-link-detect.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: /_include/interface-mac.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: /_include/interface-mtu.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: /_include/interface-ip.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: /_include/interface-ipv6.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: /_include/interface-vrf.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+**DHCP(v6)**
+
+.. cmdinclude:: /_include/interface-dhcp-options.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: /_include/interface-dhcpv6-options.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. cmdinclude:: /_include/interface-dhcpv6-prefix-delegation.txt
+   :var0: {{ var0 }}
+   :var1: {{ var1 }}
+   :var2: vif
+   :var3: <vlan-id>
+   :var4: 10
+
+.. include:: /_include/common-references.txt

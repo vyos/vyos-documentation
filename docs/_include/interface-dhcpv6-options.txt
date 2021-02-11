@@ -1,0 +1,44 @@
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} dhcpv6-options duid <duid>
+
+  The DHCP unique identifier (DUID) is used by a client to get an IP address
+  from a DHCPv6 server. It has a 2-byte DUID type field, and a variable-length
+  identifier field up to 128 bytes. Its actual length depends on its type. The
+  server compares the DUID with its database and delivers configuration data
+  (address, lease times, DNS servers, etc.) to the client.
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} duid '0e:00:00:01:00:01:27:71:db:f0:00:50:56:bf:c5:6d'
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} dhcpv6-options parameters-only
+
+  This statement specifies dhcp6c to only exchange informational configuration
+  parameters with servers. A list of DNS server addresses is an example of such
+  parameters. This statement is useful when the client does not need stateful
+  configuration parameters such as IPv6 addresses or prefixes.
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options parameters-only
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} dhcpv6-options rapid-commit
+
+  When rapid-commit is specified, dhcp6c will include a rapid-commit option in
+  solicit messages and wait for an immediate reply instead of advertisements.
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options rapid-commit
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} dhcpv6-options temporary
+
+  Request only a temporary address and not form an IA_NA (Identity Association
+  for Non-temporary Addresses) partnership.
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options temporary

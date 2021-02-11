@@ -271,7 +271,7 @@ device if you happen to be a crazy scientist.
 
   #!/usr/bin/env python3
   #
-  # Copyright (C) 2019 VyOS maintainers and contributors
+  # Copyright (C) 2020 VyOS maintainers and contributors
   #
   # This program is free software; you can redistribute it and/or modify
   # it under the terms of the GNU General Public License version 2 or later as
@@ -291,10 +291,16 @@ device if you happen to be a crazy scientist.
   from vyos import ConfigError
 
   def get_config():
-      vc = Config()
+      if config:
+          conf = config
+      else:
+          conf = Config()
+        
+      # Base path to CLI nodes
+      base = ['...', '...']
       # Convert the VyOS config to an abstract internal representation
-      config = ...
-      return config
+      config_data = conf.get_config_dict(base, key_mangling=('-', '_'), get_first_key=True)
+      return config_data
 
   def verify(config):
       # Verify that configuration is valid
@@ -311,8 +317,10 @@ device if you happen to be a crazy scientist.
       pass
 
   try:
-      config = get_config()
-      verify(config)
+      c = get_config()
+      verify(c)
+      generate(c)
+      apply(c)      
   except ConfigError as e:
       print(e)
       sys.exit(1)
@@ -650,8 +658,8 @@ Migrating old CLI
        validation is better left to commit-time scripts
    * - priority: 999
      - <properties> <priority>999</priority>
-     - Please leave a comment explaining why the priority was chosen (e.g. "after
-       interfaces are configured")
+     - Please leave a comment explaining why the priority was chosen
+       (e.g. "after interfaces are configured")
    * - multi:
      - <properties> <multi/>
      - Only applicable to leaf nodes
@@ -692,6 +700,9 @@ found. After a successful run the resulting Debian Package(s) will be deployed
 to our Debian repository which is used during build time. It is located here:
 http://dev.packages.vyos.net/repositories/.
 
+
+.. stop_vyoslinter
+
 .. _Jenkins: https://jenkins.io/
 .. _Dockerhub: https://hub.docker.com/u/vyos/
 .. _process: https://blog.vyos.io/vyos-development-digest-10
@@ -703,4 +714,6 @@ http://dev.packages.vyos.net/repositories/.
 .. _`VLAN (VIF)`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/vif.xml.i
 .. _`MAC address`: https://github.com/vyos/vyos-1x/tree/current/interface-definitions/include/interface-mac.xml.i
 
-.. include:: ../common-references.rst
+.. include:: /_include/common-references.txt
+
+.. start_vyoslinter

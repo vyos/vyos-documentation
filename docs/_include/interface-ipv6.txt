@@ -1,0 +1,55 @@
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} ipv6 address autoconf
+
+  :abbr:`SLAAC (Stateless Address Autoconfiguration)` :rfc:`4862`. IPv6 hosts
+  can configure themselves automatically when connected to an IPv6 network using
+  the Neighbor Discovery Protocol via :abbr:`ICMPv6 (Internet Control Message
+  Protocol version 6)` router discovery messages. When first connected to a
+  network, a host sends a link-local router solicitation multicast request for
+  its configuration parameters; routers respond to such a request with a router
+  advertisement packet that contains Internet Layer configuration parameters.
+
+  .. note:: This method automatically disables IPv6 traffic forwarding on the
+    interface in question.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address autoconf
+
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} ipv6 address eui64 <prefix>
+
+  :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in
+  :rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address eui64 2001:db8:beef::/64
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} ipv6 address no-default-link-local
+
+  Do not assign a link-local IPv6 address to this interface.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address no-default-link-local
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} ipv6 disable-forwarding
+
+  Configure interface-specific Host/Router behaviour. If set, the interface will
+  switch to host mode and IPv6 forwarding will be disabled on this interface.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 disable-forwarding

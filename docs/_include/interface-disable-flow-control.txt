@@ -1,0 +1,23 @@
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+   disable-flow-control
+
+  Ethernet flow control is a mechanism for temporarily stopping the transmission
+  of data on Ethernet family computer networks. The goal of this mechanism is to
+  ensure zero packet loss in the presence of network congestion.
+
+  The first flow control mechanism, the pause frame, was defined by the IEEE
+  802.3x standard.
+
+  A sending station (computer or network switch) may be transmitting data faster
+  than the other end of the link can accept it. Using flow control, the
+  receiving station can signal the sender requesting suspension of
+  transmissions until the receiver catches up.
+
+  Use this command to disable the generation of Ethernet flow control (pause
+  frames).
+
+   Example:
+
+   .. code-block:: none
+
+     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} disable-flow-control

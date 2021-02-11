@@ -22,14 +22,14 @@ from docutils.parsers.rst.roles import set_classes
 # -- Project information -----------------------------------------------------
 
 project = u'VyOS'
-copyright = u'2020, VyOS maintainers and contributors'
+copyright = u'2021, VyOS maintainers and contributors'
 author = u'VyOS maintainers and contributors'
 
 # The short X.Y version
-version = u'1.3'
+version = u'1.4'
 
 # The full version, including alpha/beta/rc tags
-release = u'1.3.x (equuleus)'
+release = u'1.4.x (sagitta)'
 
 # -- General configuration ---------------------------------------------------
 
@@ -70,7 +70,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
-exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store', '_include/vyos-1x']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'

@@ -77,4 +77,4 @@ the left side under the specific project.
 .. _Slack: https://slack.vyos.io
 .. _Forum: https://forum.vyos.io
 
-.. include:: ../common-references.rst
+.. include:: /_include/common-references.txt

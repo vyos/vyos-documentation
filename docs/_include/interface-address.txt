@@ -1,0 +1,14 @@
+.. cfgcmd:: set interfaces {{ var0 }} <interface> address <address>
+
+  Configure interface `<interface>` with one or more interface
+  addresses.
+
+  * **address** can be specified multiple times as IPv4 and/or IPv6
+    address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
+    set interfaces {{ var0 }} {{ var1 }} address 2001:db8::1/64
