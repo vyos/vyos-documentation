@@ -76,6 +76,15 @@ will have the same effect as ``touch /tmp/vyos.ifconfig.debug``.
   disable ``vyos-configd`` in addition. This can be run either one-time by
   calling ``sudo systemctl stop vyos-configd`` or make this reboot-safe by
   calling ``sudo systemctl disable vyos-configd``.
+  
+FRR
+---
+
+Recent versions use the ``vyos.frr`` framework. The Python class is located
+inside our ``vyos-1x:python/vyos/frr.py``. It comes with an embedded debugging/
+(print style) debugger as vyos.ifconfig does.
+
+To enable debugging just run: ``$ touch /tmp/vyos.frr.debug``
 
 Debugging Python Code with PDB
 ------------------------------
