@@ -127,8 +127,8 @@ Operation
 
 .. opcmd:: generate ssh client-key /path/to/private_key
 
-  Re-generated a known pub/private keyfile which can e.g. used to connect to
-  other services (RPKI cache).
+  Re-generated a known pub/private keyfile which can be used to connect to
+  other services (e.g. RPKI cache).
 
   Example:
 
@@ -153,5 +153,6 @@ Operation
     |        =.. o=.oo|
     +----[SHA256]-----+
 
-  Two new files ``/config/auth/id_rsa_rpki`` and ``/config/auth/id_rsa_rpki.pub``
+  Two new files ``/config/auth/id_rsa_rpki`` and
+  ``/config/auth/id_rsa_rpki.pub``
   will be created.

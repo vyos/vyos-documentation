@@ -126,7 +126,7 @@
   possible to allow these hosts to communicate through the upstream router by
   proxy_arp'ing.
 
-  .. note:: Don't need to be used together with proxy_arp.
+  .. note:: Does not need to be used together with proxy_arp.
 
   This technology is known by different names:
 

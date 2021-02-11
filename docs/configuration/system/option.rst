@@ -28,8 +28,8 @@ HTTP client
 
 .. cfgcmd:: set system option http-client source-address <address>
 
-   Several commands utilize curl to initiate transfers. Configure the local
-   source IPv4/IPv6 address used for all CURL operations.
+   Several commands utilize cURL to initiate transfers. Configure the local
+   source IPv4/IPv6 address used for all cURL operations.
 
 .. cfgcmd:: set system option http-client source-interface <interface>
 
@@ -54,7 +54,7 @@ the used keyboard layout on the system console.
   Defaults to ``us``.
 
   .. note:: Changing the keymap only has an effect on the system console, using
-    SSH oder Serial remote access to the device is not affected as the keyboard
+    SSH or Serial remote access to the device is not affected as the keyboard
     layout here corresponds to your access system.
 
 .. _system_options_performance:

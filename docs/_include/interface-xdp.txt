@@ -1,6 +1,6 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> xdp
 
-  Enable support for Linux :abbr:`XDP (eXpress Data Path)` on recent 1.3 rolling
+  Enable support for Linux :abbr:`XDP (eXpress Data Path)` on recent 1.4 rolling
   releases. You must enable it for every interface which should participate in
   the XDP forwarding.
 
@@ -18,7 +18,9 @@
     nftables.
 
   Enabling this feature will only load the XDP router code as described here:
+  .. stop_vyoslinter
   https://blog.apnic.net/2020/04/30/how-to-build-an-xdp-based-bgp-peering-router/
+ .. start_vyoslinter
 
   Example:
 

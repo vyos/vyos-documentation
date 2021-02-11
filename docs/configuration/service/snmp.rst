@@ -201,7 +201,8 @@ VyOS MIBs
 
 All SNMP MIBs are located in each image of VyOS here: ``/usr/share/snmp/mibs/``
 
-you are be able to download the files with the a activate ssh service like this
+You are be able to download the files using SCP, once the SSH service
+has been activated like so
 
 .. code-block:: none
 
