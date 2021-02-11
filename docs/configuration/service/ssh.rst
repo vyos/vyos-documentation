@@ -153,5 +153,6 @@ Operation
     |        =.. o=.oo|
     +----[SHA256]-----+
 
-  Two new files ``/config/auth/id_rsa_rpki`` and ``/config/auth/id_rsa_rpki.pub``
+  Two new files ``/config/auth/id_rsa_rpki`` and
+  ``/config/auth/id_rsa_rpki.pub``
   will be created.

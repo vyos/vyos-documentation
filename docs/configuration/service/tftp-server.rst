@@ -32,8 +32,8 @@ on each IP address.
 
 .. cfgcmd:: set service tftp-server allow-upload
 
-Optional, if you want to enable uploads, else TFTP server will act as a read-only
-server.
+Optional, if you want to enable uploads, else TFTP server will act as a 
+read-only server.
 
 Example
 -------
