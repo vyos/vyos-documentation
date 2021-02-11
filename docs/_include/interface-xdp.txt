@@ -18,7 +18,9 @@
     nftables.
 
   Enabling this feature will only load the XDP router code as described here:
+  .. stop_vyoslinter
   https://blog.apnic.net/2020/04/30/how-to-build-an-xdp-based-bgp-peering-router/
+ .. start_vyoslinter
 
   Example:
 
