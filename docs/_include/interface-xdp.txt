@@ -1,6 +1,6 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> xdp
 
-  Enable support for Linux :abbr:`XDP (eXpress Data Path)` on recent 1.3 rolling
+  Enable support for Linux :abbr:`XDP (eXpress Data Path)` on recent 1.4 rolling
   releases. You must enable it for every interface which should participate in
   the XDP forwarding.
 
