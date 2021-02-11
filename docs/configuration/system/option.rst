@@ -28,8 +28,8 @@ HTTP client
 
 .. cfgcmd:: set system option http-client source-address <address>
 
-   Several commands utilize curl to initiate transfers. Configure the local
-   source IPv4/IPv6 address used for all CURL operations.
+   Several commands utilize cURL to initiate transfers. Configure the local
+   source IPv4/IPv6 address used for all cURL operations.
 
 .. cfgcmd:: set system option http-client source-interface <interface>
 
