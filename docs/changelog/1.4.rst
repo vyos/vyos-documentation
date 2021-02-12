@@ -1,3 +1,148 @@
 ################
 VyOS 1.4 Sagitta
 ################
+
+
+20210212
+========
+
+* :vytask:`T3301` (bug): Wrong format and valueHelp for policy as-path-list regex
+
+
+20210211
+========
+
+* :vytask:`T3281` (default): Rewrite protocol RIPng [conf-mode] to new XML/Python style
+* :vytask:`T3282` (default): Add XML for [conf-mode] RIPng
+* :vytask:`T3279` (default): Rewrite protocol STATIC [op-mode] to new XML/Python style
+* :vytask:`T3297` (bug): Optimize irrelevant error stack hints
+
+
+20210208
+========
+
+* :vytask:`T3295` (feature): Update Linux Kernel to v5.4.96 / 5.10.14
+
+
+20210205
+========
+
+* :vytask:`T3030` (feature): Support ERSPAN Tunnel Protocol
+
+
+20210204
+========
+
+* :vytask:`T3283` (feature): Support for IPv4 neigh tables
+* :vytask:`T3280` (default): Add XML for [conf-mode] STATIC
+
+
+20210203
+========
+
+* :vytask:`T3278` (feature): Add XML for "protocols vrf" [conf-mode]
+* :vytask:`T3239` (default): XML: override 'defaultValue' for mtu of certain interfaces; remove workarounds
+* :vytask:`T2910` (feature): XML: generator should support override of variables
+
+
+20210202
+========
+
+* :vytask:`T3018` (bug): Unclear behaviour when configuring vif and vif-s interfaces
+* :vytask:`T3255` (default): Rewrite protocol RPKI to new XML/Python style
+* :vytask:`T3263` (feature): OSPF Hello subsecond timer
+
+
+20210131
+========
+
+* :vytask:`T3276` (feature): Update Linux Kernel to v5.4.94 / 5.10.12
+
+
+20210130
+========
+
+* :vytask:`T3240` (feature): Support per-interface DHCPv6 DUIDs
+* :vytask:`T3273` (default): PPPoE static default-routes deleted on interface down when not added by interface up
+
+
+20210129
+========
+
+* :vytask:`T3261` (bug): Does not possible to disable pppoe client interface.
+* :vytask:`T3272` (default): OSPF: interface config is not removed
+
+
+20210127
+========
+
+* :vytask:`T3257` (feature): tcpdump supporting complete protocol
+* :vytask:`T3244` (default): Rewrite protocol OSPFv3 to new XML/Python style
+
+
+20210126
+========
+
+* :vytask:`T3251` (bug): PPPoE client trying to authorize with the wrong username
+* :vytask:`T3256` (default): Add XML for protocol RPKI [conf-mode]
+
+
+20210125
+========
+
+* :vytask:`T3249` (feature): Support operation mode forwarding table output
+
+
+20210124
+========
+
+* :vytask:`T3227` (bug): Latest releases don't work with RPKI (crash)
+* :vytask:`T3230` (bug): RPKI can't be deleted
+* :vytask:`T3221` (bug): FRR config
+* :vytask:`T3245` (default): Add XML for protocol ospfv3 [conf-mode]
+
+
+20210123
+========
+
+* :vytask:`T3236` (default): Add XML for [conf-mode] OSPF
+
+
+20210117
+========
+
+* :vytask:`T3222` (bug): BGP dampening description
+* :vytask:`T3226` (bug): Repair bridge smoke test damage
+
+
+20210116
+========
+
+* :vytask:`T3215` (bug): show ipv6 route Broken on 1.4 Rolling
+* :vytask:`T3157` (bug): salt-minion fails to start due to permission error accessing /root/.salt/minion.log
+* :vytask:`T3137` (feature): Let VLAN aware bridge approach the behavior of professional equipment
+
+
+20210115
+========
+
+* :vytask:`T3210` (feature): ISIS three-way-handshake
+* :vytask:`T3184` (feature): Add correct desctiptions for BGP neighbors
+
+
+20210114
+========
+
+* :vytask:`T3213` (bug): show interface command python error
+
+
+20210112
+========
+
+* :vytask:`T3205` (bug): Does not possible to configure tunnel mode gre-bridge
+
+
+20201220
+========
+
+* :vytask:`T3132` (feature): Enable egress flow accounting
