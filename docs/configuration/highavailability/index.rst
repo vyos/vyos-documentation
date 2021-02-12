@@ -189,3 +189,5 @@ and the ``/config/scripts/vrrp-master.sh`` when the router becomes the master:
   set high-availability vrrp group Foo transition-script backup "/config/scripts/vrrp-fail.sh Foo"
   set high-availability vrrp group Foo transition-script fault "/config/scripts/vrrp-fail.sh Foo"
   set high-availability vrrp group Foo transition-script master "/config/scripts/vrrp-master.sh Foo"
+
+To know more about scripting, check the :ref:`command-scripting` section.
