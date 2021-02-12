@@ -5,7 +5,7 @@ on:
   # 06:00 UTC on Monday
     - cron:  '0 6 * * 1'
 jobs:
-  updateVyOS-1x_master:
+  update_master:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,21 +19,26 @@ jobs:
           git checkout current
           git pull
           git submodule status
+      - name: update releasenotes
+        run: |
+          pip3 install phabricator
+          python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b current equuleus
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          commit-message: "vyos-1x: update current branch"
+          commit-message: "Github: update current branch"
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          title: "vyos-1x: update current branch"
+          title: "Github: update current branch"
           body: |
             Autoupdate vyos-1x submodule
+            update releasenotes
           branch: update-dependencies-master
           delete-branch: true
 
 
-  updateVyOS-1x_equuleus:
+  update_equuleus:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -48,15 +53,20 @@ jobs:
           git checkout equuleus
           git pull
           git submodule status
+      - name: update releasenotes
+        run: |
+          pip3 install phabricator
+          python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b equuleus
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          commit-message: "vyos-1x: update equuleus branch"
+          commit-message: "Github: update equuleus branch"
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          title: "vyos-1x: update equuleus branch"
+          title: "Github: update equuleus branch"
           body: |
             Autoupdate vyos-1x submodule
+            update releasenotes
           branch: update-dependencies-equuleus
           delete-branch: true
