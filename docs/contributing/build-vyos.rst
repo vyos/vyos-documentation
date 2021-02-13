@@ -323,6 +323,8 @@ Clone the kernel source to `vyos-build/packages/linux-kernel/`:
 
   $ cd vyos-build/packages/linux-kernel/
   $ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+  $ cd linux
+  $ git fetch origin 'refs/tags/*:refs/tags/*'
 
 Check out the required kernel version - see ``vyos-build/data/defaults.json``
 file (example uses kernel 4.19.146):
