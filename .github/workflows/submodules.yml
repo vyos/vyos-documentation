@@ -20,6 +20,9 @@ jobs:
           git pull
           git submodule status
       - name: update releasenotes
+        env:
+          PHABRICATOR_API: ${{ secrets.PHABRICATOR_API }}
+        if: env.PHABRICATOR_API != null
         run: |
           pip3 install phabricator
           python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b current equuleus
@@ -54,6 +57,9 @@ jobs:
           git pull
           git submodule status
       - name: update releasenotes
+        env:
+          PHABRICATOR_API: ${{ secrets.PHABRICATOR_API }}
+        if: env.PHABRICATOR_API != null
         run: |
           pip3 install phabricator
           python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b equuleus
