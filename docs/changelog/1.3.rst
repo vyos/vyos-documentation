@@ -3,6 +3,30 @@ VyOS 1.3 Equuleus
 #################
 
 
+20210214
+========
+
+* :vytask:`T2152` (bug): ddclient has bug which prevents use_web from being used
+* :vytask:`T3308` (feature): BGP: add gracefull shutdown support
+
+
+20210213
+========
+
+* :vytask:`T3028` (feature): Create a default user when metadata is not available (for Cloud-init builds)
+* :vytask:`T2867` (feature): Cleanup DataSourceOVF.py in the Cloud-init
+* :vytask:`T2726` (feature): Allow to use all supported SSH key types in Cloud-init
+* :vytask:`T2403` (feature): Full support for networking config in Cloud-init
+* :vytask:`T2387` (feature): Create XML scheme for [conf_mode] BGP 
+* :vytask:`T2174` (feature): Rewrite protocol BGP to new XML/Python style
+* :vytask:`T1987` (bug): A default route can be deleted by dhclient-script in some cases
+* :vytask:`T2310` (bug): vyos-cloud-init use global config to configure pass and ssh login
+* :vytask:`T723` (feature): Add support for first boot or installation time saved config modification
+* :vytask:`T1775` (bug): Cloud-init not running userdata runcmd
+* :vytask:`T1389` (feature): Add support for NoCloud cloud-init datasource
+* :vytask:`T1315` (feature): Allow BGP to use address-family l2vpn evpn
+
+
 20210212
 ========
 
