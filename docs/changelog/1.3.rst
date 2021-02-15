@@ -1,17 +1,22 @@
-#################
-VyOS 1.3 Equuleus
-#################
+############
+1.3 Equuleus
+############
+
+..
+   Please don't add anything by hand.
+   This file is managed by the script:
+   _ext/releasenotes.py
 
 
-20210214
-========
+2021-02-14
+==========
 
 * :vytask:`T2152` (bug): ddclient has bug which prevents use_web from being used
 * :vytask:`T3308` (feature): BGP: add gracefull shutdown support
 
 
-20210213
-========
+2021-02-13
+==========
 
 * :vytask:`T3028` (feature): Create a default user when metadata is not available (for Cloud-init builds)
 * :vytask:`T2867` (feature): Cleanup DataSourceOVF.py in the Cloud-init
@@ -27,14 +32,14 @@ VyOS 1.3 Equuleus
 * :vytask:`T1315` (feature): Allow BGP to use address-family l2vpn evpn
 
 
-20210212
-========
+2021-02-12
+==========
 
 * :vytask:`T3301` (bug): Wrong format and valueHelp for policy as-path-list regex
 
 
-20210211
-========
+2021-02-11
+==========
 
 * :vytask:`T2638` (default): FRR: New framework for configuring FRR 
 * :vytask:`T3035` (enhancment): Allow IPv4 over IPv6 IPsec and vice versa
@@ -42,41 +47,41 @@ VyOS 1.3 Equuleus
 * :vytask:`T1773` (default): Make it possible to export config to JSON
 
 
-20210208
-========
+2021-02-08
+==========
 
 * :vytask:`T3295` (feature): Update Linux Kernel to v5.4.96 / 5.10.14
 * :vytask:`T3292` (bug): RIPng: access-lists/prefix-list reference IPv4 and not IPv6 lists during verification
 
 
-20210207
-========
+2021-02-07
+==========
 
 * :vytask:`T3293` (bug): RPKI migration script errors out after CLI rewrite
 
 
-20210206
-========
+2021-02-06
+==========
 
 * :vytask:`T3285` (feature): Schedule reboots through systemd-shutdownd instead of atd
 * :vytask:`T661` (feature): Show a warning if router going to reboot soon (due to "commit-confirm" command)
 
 
-20210205
-========
+2021-02-05
+==========
 
 * :vytask:`T2450` (feature): Rewrite "protocols vrf" tree in XML and Python
 * :vytask:`T208` (feature): Ability to ignore default-route from dhcpcd per interface
 
 
-20210204
-========
+2021-02-04
+==========
 
 * :vytask:`T2834` (bug): Config rollback function is broken due lack access to the config.boot
 
 
-20210203
-========
+2021-02-03
+==========
 
 * :vytask:`T3239` (default): XML: override 'defaultValue' for mtu of certain interfaces; remove workarounds
 * :vytask:`T2910` (feature): XML: generator should support override of variables
@@ -84,28 +89,28 @@ VyOS 1.3 Equuleus
 * :vytask:`T627` (bug): IPSec configuration directive deletion fails, causes bad IPSec state on reboot.  
 
 
-20210202
-========
+2021-02-02
+==========
 
 * :vytask:`T3018` (bug): Unclear behaviour when configuring vif and vif-s interfaces
 * :vytask:`T3255` (default): Rewrite protocol RPKI to new XML/Python style
 
 
-20210201
-========
+2021-02-01
+==========
 
 * :vytask:`T3268` (feature): Add VRF support to VIF-S interfaces
 * :vytask:`T3274` (default): ask_yes_no() doesn't handle EOFError
 
 
-20210131
-========
+2021-01-31
+==========
 
 * :vytask:`T3276` (feature): Update Linux Kernel to v5.4.94 / 5.10.12
 
 
-20210130
-========
+2021-01-30
+==========
 
 * :vytask:`T3269` (bug): VIF-C interfaces don't verify configuration
 * :vytask:`T3240` (feature): Support per-interface DHCPv6 DUIDs
@@ -113,8 +118,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T3273` (default): PPPoE static default-routes deleted on interface down when not added by interface up
 
 
-20210129
-========
+2021-01-29
+==========
 
 * :vytask:`T3262` (bug): DHCPv6 client runs when dhcpv6-options is configured without requesting an address or PD
 * :vytask:`T3261` (bug): Does not possible to disable pppoe client interface.
@@ -122,8 +127,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T3126` (bug): unsuppress-map doesn't work for BGP IPv4
 
 
-20210127
-========
+2021-01-27
+==========
 
 * :vytask:`T3257` (feature): tcpdump supporting complete protocol
 * :vytask:`T3194` (bug): OSPF redistribution metric issue
@@ -137,35 +142,35 @@ VyOS 1.3 Equuleus
 * :vytask:`T505` (bug): Hostapd cannot log
 
 
-20210126
-========
+2021-01-26
+==========
 
 * :vytask:`T3251` (bug): PPPoE client trying to authorize with the wrong username
 * :vytask:`T2859` (bug): show nat source translation - Errors out
 
 
-20210125
-========
+2021-01-25
+==========
 
 * :vytask:`T3252` (bug): rpki: AttributeError: 'Config' object has no attribute 'return__value'
 * :vytask:`T3249` (feature): Support operation mode forwarding table output
 
 
-20210124
-========
+2021-01-24
+==========
 
 * :vytask:`T3230` (bug): RPKI can't be deleted
 * :vytask:`T3243` (feature): Update Linux Kernel to v5.4.92 / 5.10.10
 
 
-20210121
-========
+2021-01-21
+==========
 
 * :vytask:`T3237` (bug): DHCP Server Static-Mapping Validation Error
 
 
-20210118
-========
+2021-01-18
+==========
 
 * :vytask:`T2761` (feature): Extend "show vrrp" op-mode command with router priority
 * :vytask:`T2679` (feature): VRRP with BFD Failure Detection
@@ -173,8 +178,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T3231` (bug): "system option ctrl-alt-delete" has no effect
 
 
-20210117
-========
+2021-01-17
+==========
 
 * :vytask:`T3222` (bug): BGP dampening description
 * :vytask:`T2944` (bug): NTP by default listen on any address/interface
@@ -183,8 +188,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2381` (bug): OpenVPN: openvpn-option parsed/rendered improperly
 
 
-20210116
-========
+2021-01-16
+==========
 
 * :vytask:`T3215` (bug): show ipv6 route Broken on 1.4 Rolling
 * :vytask:`T3172` (bug): Builds sometime after 2020-12-17 have broken routing after reboot
@@ -195,34 +200,34 @@ VyOS 1.3 Equuleus
 * :vytask:`T3223` (feature): Update Linux Kernel to v5.4.89 / 5.10.7
 
 
-20210115
-========
+2021-01-15
+==========
 
 * :vytask:`T3210` (feature): ISIS three-way-handshake
 * :vytask:`T3184` (feature): Add correct desctiptions for BGP neighbors
 * :vytask:`T2850` (feature): Add  BGP template for FRR
 
 
-20210114
-========
+2021-01-14
+==========
 
 * :vytask:`T3218` (feature): Replace Intel out-of-tree drivers with Linux Kernel stock drivers.
 
 
-20210113
-========
+2021-01-13
+==========
 
 * :vytask:`T3186` (bug): NAT: bug with "!" invert character
 
 
-20210112
-========
+2021-01-12
+==========
 
 * :vytask:`T3205` (bug): Does not possible to configure tunnel mode gre-bridge
 
 
-20210111
-========
+2021-01-11
+==========
 
 * :vytask:`T3208` (bug): Does not possible to change user password
 * :vytask:`T3198` (bug): OSPF database filtering issue
@@ -231,27 +236,27 @@ VyOS 1.3 Equuleus
 * :vytask:`T3201` (bug): show log all Not Working for RADIUS Users
 
 
-20210110
-========
+2021-01-10
+==========
 
 * :vytask:`T3178` (feature): Migrate vyatta-op-quagga to vyos-1x
 
 
-20210109
-========
+2021-01-09
+==========
 
 * :vytask:`T2467` (bug): Restarting Flow Accounting Fails
 * :vytask:`T3199` (feature): Update Linux Kernel to v5.4.88 / 5.10.6
 
 
-20210107
-========
+2021-01-07
+==========
 
 * :vytask:`T3192` (feature): login: radius: add support for IPv6 RADIUS servers
 
 
-20210105
-========
+2021-01-05
+==========
 
 * :vytask:`T3169` (enhancment): Reimplement smoke test of span (mirror)
 * :vytask:`T3161` (default): Consider removing ConfigLoad.pm
@@ -259,51 +264,51 @@ VyOS 1.3 Equuleus
 * :vytask:`T805` (enhancment): Drop config compatibility with Vyatta Core older than 6.5
 
 
-20210104
-========
+2021-01-04
+==========
 
 * :vytask:`T3185` (bug): [conf-mode] Wrong CompletionHelp for Tunnel local-ip
 * :vytask:`T3152` (bug): wan-load-balance does not show connections
 * :vytask:`T2601` (bug): pppoe-server: does not possible to disable ccp
 
 
-20210103
-========
+2021-01-03
+==========
 
 * :vytask:`T3180` (bug): DHCP server raises NameError
 
 
-20210102
-========
+2021-01-02
+==========
 
 * :vytask:`T3175` (bug): Dynamic DNS validations don't reflect supported protocols in ddclient
 * :vytask:`T2321` (feature): VRF support for SSH, NTP, SNMP service
 * :vytask:`T3177` (bug): Rolling Release no longer reports VMware UUID
 
 
-20210101
-========
+2021-01-01
+==========
 
 * :vytask:`T3171` (feature): Add CLI option to enable RPS (Receive Packet Steering)
 
 
-20201231
-========
+2020-12-31
+==========
 
 * :vytask:`T3162` (bug): PPPoE server pado-delay issue
 * :vytask:`T3160` (bug): PPPoE server called-sid option does not work
 * :vytask:`T3168` (feature): Update Linux Kernel to v5.4.86
 
 
-20201229
-========
+2020-12-29
+==========
 
 * :vytask:`T3082` (bug): multi_to_list must distinguish between values and defaults
 * :vytask:`T1466` (feature): Add EAPOL login support
 
 
-20201228
-========
+2020-12-28
+==========
 
 * :vytask:`T1732` (feature): Removing vyatta-webproxy module
 * :vytask:`T2666` (feature): Packet Processing with eBPF and XDP
@@ -311,14 +316,14 @@ VyOS 1.3 Equuleus
 * :vytask:`T563` (feature): webproxy: migrate 'service webproxy' to get_config_dict()
 
 
-20201227
-========
+2020-12-27
+==========
 
 * :vytask:`T3150` (bug): When configuring QoS, the setting procedure of port mirroring is wrong
 
 
-20201223
-========
+2020-12-23
+==========
 
 * :vytask:`T3143` (bug): OpenVPN server: Push route does not work
 * :vytask:`T3146` (feature): Upgrade FRR from 7.4 -> 7.5 version incl. new libyang
@@ -326,8 +331,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T3147` (feature): Upgrade to SaltStack version 3002.2
 
 
-20201222
-========
+2020-12-22
+==========
 
 * :vytask:`T3142` (bug): OpenVPN op-command completion issue
 * :vytask:`T2940` (feature): Update FRR to 7.4
@@ -336,23 +341,23 @@ VyOS 1.3 Equuleus
 * :vytask:`T1316` (feature): Support for IS-IS 
 
 
-20201220
-========
+2020-12-20
+==========
 
 * :vytask:`T3131` (bug): Typo in ipsec preshared-secret help
 * :vytask:`T3134` (bug): DHCPv6 DUID configuration node missing
 * :vytask:`T3140` (feature): Relax "ethernet offload-options" CLI definition
 
 
-20201217
-========
+2020-12-17
+==========
 
 * :vytask:`T2810` (default): Docs for vpn anyconnect-server
 * :vytask:`T2036` (default): Open Connect VPN Server () support
 
 
-20201214
-========
+2020-12-14
+==========
 
 * :vytask:`T3128` (bug): pppoe smoke test failed
 * :vytask:`T3129` (feature): Update Linux Kernel to v5.4.83
@@ -360,112 +365,112 @@ VyOS 1.3 Equuleus
 * :vytask:`T3130` (feature): Replace vyos-netplug with upstream debian version
 
 
-20201213
-========
+2020-12-13
+==========
 
 * :vytask:`T3114` (bug): When the bridge member is a non-ethernet interface, setting VLAN-aware bridge parameters fails
 
 
-20201211
-========
+2020-12-11
+==========
 
 * :vytask:`T3123` (bug): Configuration of vti interface impossible 
 
 
-20201210
-========
+2020-12-10
+==========
 
 * :vytask:`T3117` (bug): OpenVPN config migration errors upgrading from 1.3-rolling-202010280217 to 1.3-rolling-202012060217
 
 
-20201209
-========
+2020-12-09
+==========
 
 * :vytask:`T3122` (feature): Update Linux Kernel to v4.19.162
 * :vytask:`T3121` (bug): get_config_dict() and key_mangling=('-', '_') Broke PowerDNS dns_forwarding config file
 
 
-20201208
-========
+2020-12-08
+==========
 
 * :vytask:`T2562` (bug): VyOS can't be used as a DHCP server for a DHCP relay
 
 
-20201207
-========
+2020-12-07
+==========
 
 * :vytask:`T3120` (bug): 1.3-rolling-202012070217 python error when deleting nat rule
 * :vytask:`T3119` (feature): migrate "system ip" to get_config_dict() and provide smoketest
 
 
-20201205
-========
+2020-12-05
+==========
 
 * :vytask:`T2744` (bug): igmp-proxy issue: Address already in use
 
 
-20201204
-========
+2020-12-04
+==========
 
 * :vytask:`T3108` (bug): Section Config overlapped match with FRRConfig
 * :vytask:`T3112` (feature): PPPoE IPv6: remove "enable" node
 * :vytask:`T3100` (feature): Migrate DHCP/DHCPv6 server to get_config_dict()
 
 
-20201203
-========
+2020-12-03
+==========
 
 * :vytask:`T3105` (bug): static-host-mapping writing in one line
 * :vytask:`T3107` (feature): Update Linux Kernel to v4.19.161
 * :vytask:`T3104` (bug): LLDP Traceback error
 
 
-20201201
-========
+2020-12-01
+==========
 
 * :vytask:`T3094` (bug): Can not specify multiple deny ports in FW rule
 * :vytask:`T3102` (bug): Destination NAT fails to commit
 * :vytask:`T2713` (bug): VyOS must not change permissions on files in /config/auth
 
 
-20201130
-========
+2020-11-30
+==========
 
 * :vytask:`T3091` (feature): Add "tag" for static route
 * :vytask:`T1207` (feature): DMVPN behind NAT
 
 
-20201129
-========
+2020-11-29
+==========
 
 * :vytask:`T2297` (feature): NTP add support for pool configuration
 * :vytask:`T3095` (feature): Migrate dhcp-relay and dhcpv6-relay to get_config_dict()
 
 
-20201128
-========
+2020-11-28
+==========
 
 * :vytask:`T2890` (bug): NAT error adding translation address range
 * :vytask:`T2868` (bug): Tcp-mss option in policy calls kernel-panic
 * :vytask:`T3092` (feature): nat: migrate to get_config_dict()
 
 
-20201127
-========
+2020-11-27
+==========
 
 * :vytask:`T2715` (feature): Duplicate address detection option supporting ARP
 * :vytask:`T2714` (feature): A collection of utilities supporting IPv6 or ipv4
 * :vytask:`T3088` (feature): Migrate IGMP-Proxy over to get_config_dict() and add smoketests
 
 
-20201124
-========
+2020-11-24
+==========
 
 * :vytask:`T3087` (feature): Update Linux Kernel to v4.19.160
 
 
-20201123
-========
+2020-11-23
+==========
 
 * :vytask:`T2177` (default): Commit fails on adding disabled interface to bridge
 * :vytask:`T3066` (bug): reboot in - Invalid time
@@ -484,15 +489,15 @@ VyOS 1.3 Equuleus
 * :vytask:`T3084` (bug): wifi: TypeError on "show interfaces wireless info"
 
 
-20201121
-========
+2020-11-21
+==========
 
 * :vytask:`T3079` (bug): Fix the problem that VLAN 1 will be deleted in VLAN-aware bridge
 * :vytask:`T3060` (bug): OpenVPN not working in vyos-1.3-rolling-20201101 and after
 
 
-20201120
-========
+2020-11-20
+==========
 
 * :vytask:`T3078` (feature): CLI cleanup: rename "system options" -> "system option"
 * :vytask:`T2997` (feature): DHCP: disallow/do-not-request certain options when requesting IP address from server
@@ -503,21 +508,21 @@ VyOS 1.3 Equuleus
 * :vytask:`T3048` (feature): Drop static smp-affinity for a more dynamic way using tuned
 
 
-20201119
-========
+2020-11-19
+==========
 
 * :vytask:`T3067` (bug): Wireless interface can no longer be added to the bridge after bridge VLAN support
 * :vytask:`T3075` (feature): Update Linux Kernel to v4.19.158
 
 
-20201116
-========
+2020-11-16
+==========
 
 * :vytask:`T3003` (enhancment): Extend smoketest framework to allow loading an arbitrary config file
 
 
-20201115
-========
+2020-11-15
+==========
 
 * :vytask:`T3069` (bug): openvpn - routed networks not available
 * :vytask:`T3038` (feature): Supporting AZERTY keyboards 
@@ -525,47 +530,47 @@ VyOS 1.3 Equuleus
 * :vytask:`T2564` (enhancment): Extend VyOS to support appliance LCDs
 
 
-20201114
-========
+2020-11-14
+==========
 
 * :vytask:`T3041` (bug): Intel QAT: vyos-1.3-rolling-202011020217-amd64 kernel panic during configure
 
 
-20201113
-========
+2020-11-13
+==========
 
 * :vytask:`T3063` (feature): Add support for Huawei LTE Module ME909s-120
 * :vytask:`T3059` (bug): L2TPv3 interface: Enforced to shutdown but no command to enable interface permanently
 
 
-20201112
-========
+2020-11-12
+==========
 
 * :vytask:`T3064` (feature): Update Linux Kernel to v4.19.157
 
 
-20201110
-========
+2020-11-10
+==========
 
 * :vytask:`T2103` (bug): Abnormal interface names if VIF present
 
 
-20201108
-========
+2020-11-08
+==========
 
 * :vytask:`T3050` (bug): Broken address/subnet validation on NAT configuration
 
 
-20201107
-========
+2020-11-07
+==========
 
 * :vytask:`T2914` (bug): OpenVPN: Fix for IPv4 remote-host hostname in client mode:
 * :vytask:`T2653` (feature): "set interfaces" Python handler code improvements - next iteration
 * :vytask:`T311` (feature): DHCP: set client-hostname via CLI
 
 
-20201106
-========
+2020-11-06
+==========
 
 * :vytask:`T3051` (bug): OpenVPN: multiple client routes do not work in server mode
 * :vytask:`T3046` (bug): openvpn directory is not auto-created
@@ -573,15 +578,15 @@ VyOS 1.3 Equuleus
 * :vytask:`T2731` (bug): "show interfaces" returns invalid state when link is down
 
 
-20201105
-========
+2020-11-05
+==========
 
 * :vytask:`T3049` (feature): Update Linux Kernel to v4.19.155
 * :vytask:`T2994` (feature): Migrate OpenVPN interfaces to get_config_dict() syntax
 
 
-20201103
-========
+2020-11-03
+==========
 
 * :vytask:`T3043` (feature): Wireless: Refactor CLI
 * :vytask:`T3034` (feature): Add WiFi WPA 3 support
@@ -589,30 +594,30 @@ VyOS 1.3 Equuleus
 * :vytask:`T2483` (bug): DHCP most likely not restarting pdns_recursor
 
 
-20201102
-========
+2020-11-02
+==========
 
 * :vytask:`T3024` (bug): DHCPv6 PD configuration doesn't really render an expected behavior
 
 
-20201101
-========
+2020-11-01
+==========
 
 * :vytask:`T3036` (feature): OpenVPN remote-address does not accept IPv6 address
 * :vytask:`T3032` (feature): Ability to "set table" in the policy route-map
 * :vytask:`T2193` (feature): Display disabled VRRP instances in a `show vrrp` output
 
 
-20201030
-========
+2020-10-30
+==========
 
 * :vytask:`T2790` (feature): Add ability to set ipv6 protocol route-map for OSPFv3
 * :vytask:`T3033` (feature): Update Linux Kernel to v4.19.154
 * :vytask:`T2969` (bug): OpenVPN: command_set on interface is not applied, if interface doesn't come up in commit
 
 
-20201028
-========
+2020-10-28
+==========
 
 * :vytask:`T2631` (default): l2tp, sstp, pptp add option to disable radius accounting
 * :vytask:`T2630` (feature): Allow Interface MTU over 9000
@@ -621,8 +626,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2968` (feature): Add support for Intel Atom C2000 series QAT
 
 
-20201027
-========
+2020-10-27
+==========
 
 * :vytask:`T3026` (default): qemu: update script for deprecated ssh_host_port_min/max
 * :vytask:`T2938` (feature): Adding remote Syslog RFC5424 compatibility
@@ -634,14 +639,14 @@ VyOS 1.3 Equuleus
 * :vytask:`T1721` (bug): Recursive Next Hop not updated for static routes
 
 
-20201026
-========
+2020-10-26
+==========
 
 * :vytask:`T3016` (feature): dhcp-server: use better constraint error message on invalid subnet
 
 
-20201024
-========
+2020-10-24
+==========
 
 * :vytask:`T3007` (default): HTTP-API should use config load script, not backend config load
 * :vytask:`T2984` (bug): (igb, ixgbe) HW queues applied only for the first 2 interfaces 
@@ -652,30 +657,30 @@ VyOS 1.3 Equuleus
 * :vytask:`T2723` (feature): Support tcptraceroute
 
 
-20201022
-========
+2020-10-22
+==========
 
 * :vytask:`T2978` (bug): IPoE service does not work on shared mode.
 * :vytask:`T2906` (bug): OpenVPN: tls-auth missing key direction
 
 
-20201021
-========
+2020-10-21
+==========
 
 * :vytask:`T2828` (bug): BGP conf_mode error enforce-first-as
 * :vytask:`T2749` (bug): Setting ethx configuration issue.
 * :vytask:`T2138` (default): Can't load archived configs as they are gzipped
 
 
-20201020
-========
+2020-10-20
+==========
 
 * :vytask:`T2987` (bug): VxLAN not working properly after upgrading to latest October build (also with newinstallation)
 * :vytask:`T2989` (default): MPLS documentation expansion
 
 
-20201019
-========
+2020-10-19
+==========
 
 * :vytask:`T1588` (bug): VRRP failed to start if any of its interaces not exist
 * :vytask:`T1385` (feature): Allow bonding interfaces to have pseudo-ethernet interfaces
@@ -684,16 +689,16 @@ VyOS 1.3 Equuleus
 * :vytask:`T752` (feature): Disable IPv4 forwarding on specific interface only
 
 
-20201018
-========
+2020-10-18
+==========
 
 * :vytask:`T2965` (feature): Brief BFD Peer Info
 * :vytask:`T2907` (feature): OpenVPN: Option to disable encryption
 * :vytask:`T2985` (feature): Add glue code to create bridge interface on demand
 
 
-20201017
-========
+2020-10-17
+==========
 
 * :vytask:`T2980` (bug): FRR bfdd crash due to invalid length
 * :vytask:`T2991` (feature): Update WireGuard to 1.0.20200908
@@ -702,87 +707,87 @@ VyOS 1.3 Equuleus
 * :vytask:`T2792` (default): Failed to run `sudo make qemu`  with vyos-build container due to the change of packer
 
 
-20201014
-========
+2020-10-14
+==========
 
 * :vytask:`T2972` (bug): PPPoE server rate limiter allows max 65535 kbps to be set
 
 
-20201013
-========
+2020-10-13
+==========
 
 * :vytask:`T2976` (bug): Client IP pool does not work for PPPoE local users
 
 
-20201012
-========
+2020-10-12
+==========
 
 * :vytask:`T2951` (bug): monitor nat not working
 * :vytask:`T2782` (bug): Changing timezone, does not restart rsyslog
 
 
-20201011
-========
+2020-10-11
+==========
 
 * :vytask:`T2973` (bug): tftp-server cannot listen on IPv6 address
 
 
-20201008
-========
+2020-10-08
+==========
 
 * :vytask:`T2891` (feature): Support to change ring-buffers from CLI
 
 
-20201006
-========
+2020-10-06
+==========
 
 * :vytask:`T2957` (bug): show openvpn not returning anything
 
 
-20201005
-========
+2020-10-05
+==========
 
 * :vytask:`T2963` (bug): Wireless: WIFI is not password protected when security wpa mode is not defined but passphrase is
 
 
-20201004
-========
+2020-10-04
+==========
 
 * :vytask:`T2953` (feature): Accel-PPP services CLI config cleanup (SSTP, L2TP, PPPoE, IPoE)
 * :vytask:`T2829` (bug): PPPoE server: mppe setting is implemented as node instead of leafNode
 * :vytask:`T2960` (feature): sstp: migrate to get_config_dict()
 
 
-20201003
-========
+2020-10-03
+==========
 
 * :vytask:`T2956` (feature): Add support for list of defaultValues
 * :vytask:`T2955` (feature): Update Linux Kernel to v4.19.149
 
 
-20201002
-========
+2020-10-02
+==========
 
 * :vytask:`T2952` (bug): configd: timeout breaks synchronization of messages, causing freeze
 
 
-20201001
-========
+2020-10-01
+==========
 
 * :vytask:`T2945` (bug): Interface removed from BRIDGE on setting changed
 * :vytask:`T2948` (bug): NAT: OSError when configuring translation address range
 * :vytask:`T2936` (feature): Migrate PPPoE server to get_config_dict() do reduce boilerplate code
 
 
-20200930
-========
+2020-09-30
+==========
 
 * :vytask:`T2939` (bug): Wireguard Remove Peer Fails
 * :vytask:`T2932` (bug): The second QAT device does not start
 
 
-20200929
-========
+2020-09-29
+==========
 
 * :vytask:`T2919` (feature): PPPoE server: Called-Station-Id attribute
 * :vytask:`T2918` (feature): Accounting interim jitter for pppoe, l2tp, pptp, ipoe
@@ -790,14 +795,14 @@ VyOS 1.3 Equuleus
 * :vytask:`T2937` (feature): Update Linux Kernel to v4.19.148
 
 
-20200927
-========
+2020-09-27
+==========
 
 * :vytask:`T2930` (feature): Support configuration of MAC address for VXLAN and GENEVE tunnel
 
 
-20200926
-========
+2020-09-26
+==========
 
 * :vytask:`T2902` (bug): "add system image" fails when appending XX to image name
 * :vytask:`T2856` (bug): equuleus: `show version all` throws broken pipe exception on abort
@@ -808,64 +813,64 @@ VyOS 1.3 Equuleus
 * :vytask:`T2912` (feature): When setting MTU check for hardware maximum supported MTU size
 
 
-20200925
-========
+2020-09-25
+==========
 
 * :vytask:`T2915` (bug): Lost "proxy-arp-pvlan" option for vlan
 * :vytask:`T2925` (feature): Update Linux Kernel to v4.19.147
 * :vytask:`T2921` (feature): Migrate "service dns forwarding" to get_config_dict() for ease of source maintenance
 
 
-20200924
-========
+2020-09-24
+==========
 
 * :vytask:`T2896` (bug): set ip route 0.0.0.0/0 dhcp-interface eth0
 * :vytask:`T2923` (bug): Configuring DHCPv6-PD without a interface to delegate to raises TypeError
 
 
-20200923
-========
+2020-09-23
+==========
 
 * :vytask:`T2846` (bug): ip route doesn't show longer-prefixes
 
 
-20200920
-========
+2020-09-20
+==========
 
 * :vytask:`T2904` (feature): 802.1ad / Q-in-Q ethertype default not utilized
 * :vytask:`T2905` (feature): Sync CLI nodes between PPPoE and WWAN interface
 * :vytask:`T2903` (feature): Q-in-Q (802.1.ad) ethertype should be defined explicitly and not via its raw value
 
 
-20200919
-========
+2020-09-19
+==========
 
 * :vytask:`T2894` (bug): bond: lacp: member interfaces get removed once bond interface has vlans configured
 * :vytask:`T2901` (feature): Update Linux Kernel to v4.19.146
 * :vytask:`T2900` (bug): DNS forwarding: invalid warning is shown for "system name-server" or "system name-servers-dhcp" even if present
 
 
-20200918
-========
+2020-09-18
+==========
 
 * :vytask:`T945` (bug): Unable to change configuration after changing it from script (vbash + script-template)
 
 
-20200916
-========
+2020-09-16
+==========
 
 * :vytask:`T2886` (bug): RADIUS authentication broken only returns operator level
 * :vytask:`T2887` (bug): WiFi ht40+ channel width is not set in hostaptd.conf
 
 
-20200915
-========
+2020-09-15
+==========
 
 * :vytask:`T2515` (bug): Ethernet interface is automatically disabled when removing it from bond
 
 
-20200914
-========
+2020-09-14
+==========
 
 * :vytask:`T2872` (bug): "Show log" for nat and openvpn got inter-mixed
 * :vytask:`T2301` (bug): Delete PBR vyatta_policy_ref
@@ -873,8 +878,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2879` (feature): Cleanup 4.19.144 kernel configuration
 
 
-20200913
-========
+2020-09-13
+==========
 
 * :vytask:`T2878` (feature): LACP / bonding: new op-mode command: show interfaces bonding bond0 detail
 * :vytask:`T2858` (feature): Rewrite dynamic dns client to get_config_dict()
@@ -883,54 +888,54 @@ VyOS 1.3 Equuleus
 * :vytask:`T2877` (feature): LACP / bonding: support configuration of minimum number of links
 
 
-20200912
-========
+2020-09-12
+==========
 
 * :vytask:`T2863` (default): Wireguard IPv6 Link-Local Addresses Are Not Unique
 * :vytask:`T2876` (feature): Update Linux Kernel to v4.19.144
 
 
-20200910
-========
+2020-09-10
+==========
 
 * :vytask:`T2870` (feature): Update Linux Kernel to v5.8.8
 
 
-20200909
-========
+2020-09-09
+==========
 
 * :vytask:`T2728` (bug): Protocol option ignored for IPSec peers in transport mode
 * :vytask:`T1934` (default): Change default hostname when deploy from OVA without params.
 * :vytask:`T1953` (bug): DDNS service name validation rejects valid service names
 
 
-20200907
-========
+2020-09-07
+==========
 
 * :vytask:`T1729` (default): PIM (Protocol Independent Multicast) implementation
 
 
-20200906
-========
+2020-09-06
+==========
 
 * :vytask:`T2860` (bug): Update Accel-PPP to fix l2tp CVE
 
 
-20200902
-========
+2020-09-02
+==========
 
 * :vytask:`T2833` (bug): vyos 1.3-rolling-202008200357 RIP outgoing update filter list no longer operational
 * :vytask:`T2849` (bug): vyos.xml.defaults should return a list on multi nodes, by default
 
 
-20200831
-========
+2020-08-31
+==========
 
 * :vytask:`T2636` (bug): get_config_dict() shall always return a list on <multi/> nodes
 
 
-20200830
-========
+2020-08-30
+==========
 
 * :vytask:`T2843` (feature): Upgrade Linux Kernel to 5.8 series
 * :vytask:`T2814` (default): kernel 5.1+ : NAT : module `nft_chain_nat_ipv4` renamed
@@ -939,99 +944,99 @@ VyOS 1.3 Equuleus
 * :vytask:`T1205` (bug): module pcspkr missing
 
 
-20200829
-========
+2020-08-29
+==========
 
 * :vytask:`T2836` (default): show system integrity broken in 1.3
 
 
-20200828
-========
+2020-08-28
+==========
 
 * :vytask:`T2126` (bug): show vpn ipsec sa IPSec - Process NOT Running
 * :vytask:`T2813` (bug): NAT: possible to commit illegal source nat without translation 
 * :vytask:`T1463` (bug): Missing command `show ip bgp scan` appears in command completion
 
 
-20200827
-========
+2020-08-27
+==========
 
 * :vytask:`T2832` (feature): Migrate vyos-smoketest content into vyos-1x
 
 
-20200826
-========
+2020-08-26
+==========
 
 * :vytask:`T2830` (default): Migrate "service https" to use get_config_dict()
 * :vytask:`T2831` (feature): Update Linux Kernel to v4.19.142
 
 
-20200825
-========
+2020-08-25
+==========
 
 * :vytask:`T2826` (bug): frr: frr python lib error in replace_section
 
 
-20200824
-========
+2020-08-24
+==========
 
 * :vytask:`T2423` (bug): Loadkey scp ssh key errors
 
 
-20200823
-========
+2020-08-23
+==========
 
 * :vytask:`T2811` (bug): Does not possible to delete vpn anyconnect
 * :vytask:`T2823` (bug): VXLAN has state A/D after configuration
 * :vytask:`T2812` (default): Add basic smoketest for anyconnect
 
 
-20200822
-========
+2020-08-22
+==========
 
 * :vytask:`T2822` (feature): Update Linux Kernel to v4.19.141
 * :vytask:`T2821` (feature): Support DHCPv6-PD without "address dhcpv6"
 * :vytask:`T2677` (feature): Proposal for clearer DHCPv6-PD configuration options
 
 
-20200820
-========
+2020-08-20
+==========
 
 * :vytask:`T2209` (bug): Documentation has reference to the old 'user x level admin' option
 * :vytask:`T1665` (default): prefix-list and prefix-list6 rules incorrectly accept a host address where prefix is required
 * :vytask:`T2815` (default): Move certbot config directory under /config/auth
 
 
-20200819
-========
+2020-08-19
+==========
 
 * :vytask:`T2794` (bug): op-mode: lldp: "show lldp neighbors" IndexError: list index out of range
 * :vytask:`T2791` (feature): "monitor traceroute" has no explicit IPv4/IPv6 support
 * :vytask:`T1515` (bug): FRR ospf6d crashes when performing: "show ipv6 ospfv3 database"
 
 
-20200816
-========
+2020-08-16
+==========
 
 * :vytask:`T2277` (bug): dhclient-script-vyos does not support VRFs
 * :vytask:`T2090` (default): Deleting 'service salt-minion' causes python TypeError
 
 
-20200815
-========
+2020-08-15
+==========
 
 * :vytask:`T2797` (feature): Update Linux Kernel to v4.19.139
 * :vytask:`T2796` (bug): PPPoE-Server: listen interface is mandatory but validation check is missing
 
 
-20200814
-========
+2020-08-14
+==========
 
 * :vytask:`T2795` (bug): console server fails to commit
 
 
-20200812
-========
+2020-08-12
+==========
 
 * :vytask:`T2786` (bug): OSPF Interface Cost
 * :vytask:`T2325` (bug): NHRP op-mode errors
@@ -1040,22 +1045,22 @@ VyOS 1.3 Equuleus
 * :vytask:`T2316` (bug): DHCP-server op-mode errors
 
 
-20200811
-========
+2020-08-11
+==========
 
 * :vytask:`T2779` (bug): LLDP: "show lldp neighbors interface" does not yield any result
 * :vytask:`T2379` (bug):   But when I get DHCPv6 address for interface deletion, script execution error occurs
 * :vytask:`T2784` (default): Remove unused arg from host_name.py functions verify and get_config
 
 
-20200810
-========
+2020-08-10
+==========
 
 * :vytask:`T2780` (feature): Update Linux Kernel to v4.19.138
 
 
-20200808
-========
+2020-08-08
+==========
 
 * :vytask:`T2716` (bug): Shaper-HFSC shapes but does not control latency correctly
 * :vytask:`T2497` (default): Cache config string during commit
@@ -1064,8 +1069,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1949` (bug): Multihop IPv6 BFD is unconfigurable
 
 
-20200804
-========
+2020-08-04
+==========
 
 * :vytask:`T2758` (bug): router-advert: 'infinity' is not a valid integer number
 * :vytask:`T2637` (bug): Vlan is not removed from the system
@@ -1073,8 +1078,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1287` (bug): No DHCPv6 leases reported for "show dhcpv6 client leases"
 
 
-20200803
-========
+2020-08-03
+==========
 
 * :vytask:`T2241` (default): Changing settings on an interface causes it to fall out of bridge
 * :vytask:`T2757` (bug): "show system image version" contains additional new-line character breaking output
@@ -1090,14 +1095,14 @@ VyOS 1.3 Equuleus
 * :vytask:`T1754` (bug): DHCPv6 client is impossible to restart
 
 
-20200802
-========
+2020-08-02
+==========
 
 * :vytask:`T2756` (feature): Accel-PPP: make RADIUS accounting port configurable
 
 
-20200801
-========
+2020-08-01
+==========
 
 * :vytask:`T2752` (bug): Exception when configuring unavailable ethernet interface
 * :vytask:`T2751` (feature): Update Linux Kernel to v4.19.136
@@ -1105,8 +1110,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2690` (feature): Add VRF support to the add system image command
 
 
-20200730
-========
+2020-07-30
+==========
 
 * :vytask:`T2746` (feature): IPv6 link-local addresses not configured
 * :vytask:`T2678` (bug): High RAM usage on SSH logins with lots of IPv6 routes in the routing table.
@@ -1114,23 +1119,23 @@ VyOS 1.3 Equuleus
 * :vytask:`T2745` (feature): router-advert: migrate to get_config_dict()
 
 
-20200729
-========
+2020-07-29
+==========
 
 * :vytask:`T2743` (feature): WireGuard: move key migration from config script to migration script
 * :vytask:`T1241` (bug): Remove of policy route throws CLI error
 * :vytask:`T2742` (feature): mDNS repeater: migrate to get_config_dict()
 
 
-20200728
-========
+2020-07-28
+==========
 
 * :vytask:`T1117` (feature): 'show ipv6 bgp route-map' missing
 * :vytask:`T928` (feature): pimd support
 
 
-20200727
-========
+2020-07-27
+==========
 
 * :vytask:`T2729` (feature): Pseudo-ethernet replace fail message.
 * :vytask:`T1249` (feature): multiply PBR rules can set to a single interface
@@ -1143,8 +1148,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2067` (feature): pppoe-server: Add possibility set multiple service-name
 
 
-20200726
-========
+2020-07-26
+==========
 
 * :vytask:`T2734` (feature): WireGuard: fwmark CLI definition is inconsistent
 * :vytask:`T2733` (feature): Support MTU configuration on pseudo ethernet devices
@@ -1162,16 +1167,16 @@ VyOS 1.3 Equuleus
 * :vytask:`T1985` (feature): pppoe: Enable ipv6 modules without configured ipv6 pools
 
 
-20200725
-========
+2020-07-25
+==========
 
 * :vytask:`T2730` (feature): Update Linux Kernel to v4.19.134
 * :vytask:`T2106` (bug): Wrong interface states after reboot
 * :vytask:`T1507` (default): cli: logical redundancy with boolean type
 
 
-20200724
-========
+2020-07-24
+==========
 
 * :vytask:`T2097` (bug): Problems when using <path> as completion helper in op-mode
 * :vytask:`T2092` (bug): dhcp-server rfc3442 static route sould add default route
@@ -1182,8 +1187,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1715` (bug): System DNS Server Order Incorrect
 
 
-20200723
-========
+2020-07-23
+==========
 
 * :vytask:`T2673` (bug): After the bridge is configured with Mac, bridge is automatically disabled
 * :vytask:`T2626` (bug): Changing pseudo-ethernet mode, throws CLI error
@@ -1195,8 +1200,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2188` (default): NTP op-mode commands don't work
 
 
-20200722
-========
+2020-07-22
+==========
 
 * :vytask:`T2718` (bug): ntp.conf updated incorrectly. 
 * :vytask:`T2658` (bug): Interface description comment display error
@@ -1205,15 +1210,15 @@ VyOS 1.3 Equuleus
 * :vytask:`T2707` (default): Allow alternative initialization data for Config
 
 
-20200720
-========
+2020-07-20
+==========
 
 * :vytask:`T2709` (bug): Destination NAT translation port without address fails to commit
 * :vytask:`T2519` (bug): Broadcast address does not add automatically
 
 
-20200719
-========
+2020-07-19
+==========
 
 * :vytask:`T2708` (bug): "show flow-accounting" should not display script's "usage" help
 * :vytask:`T2592` (default): dhcp-relay discarding packets on valid interfaces
@@ -1221,104 +1226,104 @@ VyOS 1.3 Equuleus
 * :vytask:`T2706` (feature): Support NDP protocol monitoring
 
 
-20200718
-========
+2020-07-18
+==========
 
 * :vytask:`T2704` (bug): connect/disconnect Missing newline in op-mode tab completion helper
 * :vytask:`T2689` (feature): Add helper functions to query changes between session and effective configs
 * :vytask:`T2585` (bug): Unable to access the Internet after opening PPPoE on-demand dialing
 
 
-20200715
-========
+2020-07-15
+==========
 
 * :vytask:`T2675` (bug): DNS service failed to start
 * :vytask:`T2596` (feature): Allow specifying source IP for 'add system image'
 
 
-20200712
-========
+2020-07-12
+==========
 
 * :vytask:`T1575` (default): `show snmp mib ifmib` crashes with IndexError
 * :vytask:`T2696` (bug): Some bugfixes of vyatta-wanloadbalance
 
 
-20200711
-========
+2020-07-11
+==========
 
 * :vytask:`T2687` (feature): SNMP: change logic on v3 password encryption
 * :vytask:`T2693` (bug): Dhcp6c cannot be restarted after PPPoE link is reset
 
 
-20200708
-========
+2020-07-08
+==========
 
 * :vytask:`T2692` (bug): Evaluate Setting Default Hash Policy to L3+L4
 * :vytask:`T2646` (bug): Sysctl for IPv4 ECMP Hash Policy Not Set
 
 
-20200707
-========
+2020-07-07
+==========
 
 * :vytask:`T2691` (bug): Upgrade from 1.2.5 to 1.3-rolling-202007040117 results in broken config due to case mismatch
 * :vytask:`T2389` (bug): BGP community-list unknown command
 * :vytask:`T2686` (bug): FRR: BGP: large-community configuration is not applied properly after upgrading FRR to 7.3.x series
 
 
-20200706
-========
+2020-07-06
+==========
 
 * :vytask:`T2680` (bug): Dhcp6c service can not recover when it fails.
 
 
-20200705
-========
+2020-07-05
+==========
 
 * :vytask:`T2684` (feature): Update Linux Kernel to v4.19.131
 * :vytask:`T2685` (feature): Update Accel-PPP to fix SSTP client issues
 * :vytask:`T2681` (bug): PPPoE stops negotiating IPv6
 
 
-20200704
-========
+2020-07-04
+==========
 
 * :vytask:`T2682` (bug): VRF aware services - connection no longer possible after system reboot
 
 
-20200703
-========
+2020-07-03
+==========
 
 * :vytask:`T2670` (default): Remove dependency on show_config from get_config_dict
 * :vytask:`T2676` (feature): NTP: migrate to get_config_dict() implementation
 
 
-20200702
-========
+2020-07-02
+==========
 
 * :vytask:`T2668` (default): get_config_dict: add get_first_key arg to utility function get_sub_dict
 
 
-20200701
-========
+2020-07-01
+==========
 
 * :vytask:`T2662` (default): get_config_dict includes node name as key only for tag and leaf nodes
 * :vytask:`T2667` (feature): get_config_dict: Use utility function for non-empty path argument
 
 
-20200628
-========
+2020-06-28
+==========
 
 * :vytask:`T2660` (bug): XML: Python default dictionary does not obey underscore (_)  when flat is False
 
 
-20200627
-========
+2020-06-27
+==========
 
 * :vytask:`T2656` (bug): XML: Python default dictionary returns wrong dictionary level(s)
 
 
-20200626
-========
+2020-06-26
+==========
 
 * :vytask:`T2642` (bug): sshd Broken on Latest Rolling Release
 * :vytask:`T2588` (default): Add support for default values to the interface-definition format
@@ -1327,8 +1332,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2625` (feature): Provide generic Library for package builds
 
 
-20200625
-========
+2020-06-25
+==========
 
 * :vytask:`T2487` (bug): VRRP does not display info when group disabled
 * :vytask:`T2329` (bug): Show remote config openvpn 
@@ -1342,8 +1347,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1808` (feature): add package nftables
 
 
-20200624
-========
+2020-06-24
+==========
 
 * :vytask:`T2634` (feature): remove autogeneration of interface "ip section" from vyatta-cfg-system
 * :vytask:`T2633` (bug): Error with arp_accept on tun interface
@@ -1351,16 +1356,16 @@ VyOS 1.3 Equuleus
 * :vytask:`T1938` (bug): syslog doesn't start automatically
 
 
-20200623
-========
+2020-06-23
+==========
 
 * :vytask:`T2632` (bug): WireGuard: Can not use only one preshared-key for one peer
 * :vytask:`T1829` (bug): Install Image script does not respect size of partition greater than 2G but less than disk size
 * :vytask:`T2635` (feature): SSH: migrate to get_config_dict()
 
 
-20200622
-========
+2020-06-22
+==========
 
 * :vytask:`T2486` (bug): DNS records set via 'system static-host-mapping' return NXDOMAIN from 'service dns forwarding' after a request to a forwarded zone
 * :vytask:`T2463` (bug): DHCP-received nameserver not added to vyos-hostsd
@@ -1369,8 +1374,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2225` (default): PIM/IGMP documentation
 
 
-20200621
-========
+2020-06-21
+==========
 
 * :vytask:`T2624` (feature): Serial Console: fix migration script for configured powersave and no console
 * :vytask:`T2610` (bug): default-lifetime is not reflected in the RA message
@@ -1379,30 +1384,30 @@ VyOS 1.3 Equuleus
 * :vytask:`T480` (bug): Error if no serial interface is present (/dev/ttyS0: not a tty)
 
 
-20200620
-========
+2020-06-20
+==========
 
 * :vytask:`T2621` (bug): show interfaces repeats interface description if it is longer then an arbitrary number of characters
 * :vytask:`T2618` (default): Conversion from 1.2 to 1.3 lost RADVD prefix autonomous-flag setting
 
 
-20200619
-========
+2020-06-19
+==========
 
 * :vytask:`T2589` (bug): delete pseudo-ethernet failed
 * :vytask:`T2490` (feature): Add serial (rs232) to ssh bridge service
 
 
-20200618
-========
+2020-06-18
+==========
 
 * :vytask:`T2614` (default): Add an option to mangle dict keys to vyos.config.get_config_dict()
 * :vytask:`T2026` (default): Make cli-shell-api correctly exit with non-zero code on failures
 * :vytask:`T1868` (default): Add opportunity to get current values from API
 
 
-20200617
-========
+2020-06-17
+==========
 
 * :vytask:`T2478` (feature): login radius: use NAS-IP-Address if defined source address
 * :vytask:`T2141` (bug): Static ARP is not applied on boot
@@ -1410,8 +1415,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1720` (feature): support for more 'show ip route' commands 
 
 
-20200616
-========
+2020-06-16
+==========
 
 * :vytask:`T2604` (default): Remove use of is_tag in system-syslog.py
 * :vytask:`T2605` (bug): SNMP service is not disabled by default
@@ -1419,8 +1424,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2156` (default): PIM op-mode commands
 
 
-20200615
-========
+2020-06-15
+==========
 
 * :vytask:`T2600` (bug): RADIUS system login configuration rendered wrongly
 * :vytask:`T2599` (bug): "show interfaces" does not list VIF interfaces in ascending order
@@ -1428,16 +1433,16 @@ VyOS 1.3 Equuleus
 * :vytask:`T2576` (bug): "show interfaces" does not return VTI
 
 
-20200614
-========
+2020-06-14
+==========
 
 * :vytask:`T2354` (bug): Wireless conf_mode errors
 * :vytask:`T2593` (bug): source NAT translation port can not be set when translation address is set to masquerade
 * :vytask:`T2594` (default): Missing firmware for iwlwifi
 
 
-20200611
-========
+2020-06-11
+==========
 
 * :vytask:`T2578` (bug): ipaddrcheck unaware of /31 host addresses - can no longer assign /31 mask to interface addresses
 * :vytask:`T2571` (bug): NAT destination port with ! results in error
@@ -1447,42 +1452,42 @@ VyOS 1.3 Equuleus
 * :vytask:`T2569` (feature): Migrate "set system console" to XML and Python representation
 
 
-20200610
-========
+2020-06-10
+==========
 
 * :vytask:`T2575` (bug): pppoe-server: does not possibly assign IP address
 * :vytask:`T2565` (bug): Does not possible connect to l2tp server with radius auth
 * :vytask:`T2553` (bug): Regression: set interface ethN vif-s nnnn does not commit on 1.3-rolling-202006050621
 
 
-20200608
-========
+2020-06-08
+==========
 
 * :vytask:`T2559` (feature): Add operational mode command to retrieve hardware sensor data
 
 
-20200607
-========
+2020-06-07
+==========
 
 * :vytask:`T2529` (feature): WWAN: migrate from ttyUSB device to new device in /dev/serial/by-bus
 * :vytask:`T2560` (feature): New op-mode command to display information about USB interfaces
 
 
-20200605
-========
+2020-06-05
+==========
 
 * :vytask:`T2548` (bug): Interfaces allowing inappropriate network addresses to be assigned
 * :vytask:`T1958` (default): Include only firmware we actually need
 
 
-20200604
-========
+2020-06-04
+==========
 
 * :vytask:`T2514` (enhancment): "mac" setting for bond members
 
 
-20200602
-========
+2020-06-02
+==========
 
 * :vytask:`T2129` (feature): XML schema: tagNode not allowed on first level in new XML op-mode definition
 * :vytask:`T2545` (feature): Show physical device offloading capabilities for specified ethernet interface
@@ -1491,8 +1496,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1096` (bug): BGP process memory leak
 
 
-20200601
-========
+2020-06-01
+==========
 
 * :vytask:`T2535` (feature): Update Intel QAT drivers to 1.7.l.4.9.0-00008
 * :vytask:`T2537` (feature): Migrate "show log dns" from vyatta-op to vyos-1x
@@ -1501,14 +1506,14 @@ VyOS 1.3 Equuleus
 * :vytask:`T2526` (feature): Wake-On-Lan CLI implementation
 
 
-20200531
-========
+2020-05-31
+==========
 
 * :vytask:`T2532` (feature): VRF aware OpenVPN
 
 
-20200530
-========
+2020-05-30
+==========
 
 * :vytask:`T2388` (feature): template rendering should create folder and set permission
 * :vytask:`T2531` (feature): Update Linux Kernel to v4.19.125
@@ -1516,27 +1521,27 @@ VyOS 1.3 Equuleus
 * :vytask:`T2460` (default): Migrate vyatta-nat-translations.pl to Python
 
 
-20200529
-========
+2020-05-29
+==========
 
 * :vytask:`T2528` (bug): "update dns dynamic" throws FileNotFoundError excepton
 
 
-20200528
-========
+2020-05-28
+==========
 
 * :vytask:`T1291` (default): Under certain conditions the VTI will stay forever down
 
 
-20200527
-========
+2020-05-27
+==========
 
 * :vytask:`T2395` (feature): HTTP API move to flask/flask-restx as microframework
 * :vytask:`T1121` (bug): Can't search for prefixes by community: Community malformed: AA:NN
 
 
-20200526
-========
+2020-05-26
+==========
 
 * :vytask:`T2520` (bug): Show conntrack fail
 * :vytask:`T2502` (bug): PPPoE default route not installed for IPv6 when "default-route auto"
@@ -1544,16 +1549,16 @@ VyOS 1.3 Equuleus
 * :vytask:`T2506` (feature): DHCPv6-PD add prefix hint CLI option
 
 
-20200525
-========
+2020-05-25
+==========
 
 * :vytask:`T2391` (bug): pppoe-server session-control does not work
 * :vytask:`T2269` (feature): SSTP specify tunnels names
 * :vytask:`T1137` (bug): 'sh ip bgp sum' being truncated
 
 
-20200522
-========
+2020-05-22
+==========
 
 * :vytask:`T2491` (feature): MACsec: create CLI for replay protection
 * :vytask:`T2489` (feature): Add MACsec interfaces to "show interfaces" output
@@ -1564,8 +1569,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2380` (bug): After PPPoE 0 is restarted, the default static route is lost
 
 
-20200521
-========
+2020-05-21
+==========
 
 * :vytask:`T1876` (bug): IPSec VTI tunnels are deleted after rekey and dangling around as A/D
 * :vytask:`T2488` (feature): Remove logfile for dialup interfaces like pppoe and wwan
@@ -1575,30 +1580,30 @@ VyOS 1.3 Equuleus
 * :vytask:`T2023` (feature): Add support for 802.1ae MACsec
 
 
-20200520
-========
+2020-05-20
+==========
 
 * :vytask:`T2480` (bug): NAT: after rewrite commit tells that dnat IP address is not locally connected
 * :vytask:`T103` (bug): DHCP server prepends shared network name to hostnames
 
 
-20200519
-========
+2020-05-19
+==========
 
 * :vytask:`T2481` (feature): WireGuard: support tunnel via IPv6 underlay
 * :vytask:`T421` (bug): VyOS lacks DHCPv6-PD (Prefix delegation) length / IA_PD support
 * :vytask:`T815` (feature): Add DHCPv6 prefix-delegation support
 
 
-20200517
-========
+2020-05-17
+==========
 
 * :vytask:`T2471` (feature): PPPoE server: always add AdvAutonomousFlag when IPv6 is configured
 * :vytask:`T2409` (default): At boot, effective config should not be equal to current config
 
 
-20200516
-========
+2020-05-16
+==========
 
 * :vytask:`T2466` (bug): live-build encounters apt dependency problem when building with local packages
 * :vytask:`T2470` (feature): Update to PowerDNS recursor 4.3
@@ -1606,42 +1611,42 @@ VyOS 1.3 Equuleus
 * :vytask:`T2198` (default): Rewrite NAT in new XML/Python style
 
 
-20200515
-========
+2020-05-15
+==========
 
 * :vytask:`T2449` (bug): 'ipv6 address autoconf' and 'address dhcpv6' don't work because interfaces have accept_ra=1 (they should have accept_ra=2 when forwarding=1)
 
 
-20200514
-========
+2020-05-14
+==========
 
 * :vytask:`T2456` (bug): netflow source-ip cannot be configured
 
 
-20200513
-========
+2020-05-13
+==========
 
 * :vytask:`T2435` (bug): Pseudo-ethernet Interfaces Broken
 * :vytask:`T2294` (bug): ipoe-server broken (jinja2 template issue)
 
 
-20200512
-========
+2020-05-12
+==========
 
 * :vytask:`T2454` (feature): Update Linux Kernel to v4.19.122
 * :vytask:`T2392` (bug): SSTP with ipv6
 
 
-20200510
-========
+2020-05-10
+==========
 
 * :vytask:`T2445` (bug): VRF route leaking for ipv4 not working
 * :vytask:`T2372` (bug): VLAN: error on commit if main interface is disabled
 * :vytask:`T2439` (bug): Configuration dependency problem, unable to load complex configuration after reboot
 
 
-20200509
-========
+2020-05-09
+==========
 
 * :vytask:`T2427` (default): Interface addressing broken since fix for T2372 was merged
 * :vytask:`T2438` (default): isc-dhcp-server(6).service reports startup success immediately even if dhcpd fails to start up
@@ -1649,58 +1654,58 @@ VyOS 1.3 Equuleus
 * :vytask:`T2367` (default): Flush addresses from bridge members
 
 
-20200508
-========
+2020-05-08
+==========
 
 * :vytask:`T2441` (bug): TZ validator has a parse error
 * :vytask:`T2429` (bug): Vyos cannot apply VLAN sub interface to bridge
 
 
-20200506
-========
+2020-05-06
+==========
 
 * :vytask:`T2402` (bug): Live ISO should warn when configuring that changes won't persist
 
 
-20200505
-========
+2020-05-05
+==========
 
 * :vytask:`T1899` (bug): Unionfs metadata folder is copied to the active configuration directory
 
 
-20200504
-========
+2020-05-04
+==========
 
 * :vytask:`T2412` (bug): ping flood does not work
 * :vytask:`T701` (bug): LTE interface dosen't come up
 * :vytask:`T951` (bug): command 'isolate-stations true/false' does not make any changes in the hostapd.conf
 
 
-20200503
-========
+2020-05-03
+==========
 
 * :vytask:`T2420` (feature): Update Linux Kernel to v4.19.120
 * :vytask:`T2406` (feature): DHCPv6 CLI improvements
 * :vytask:`T2421` (feature): Update WireGuard to Debian release 1.0.20200429-2_bpo10+1
 
 
-20200502
-========
+2020-05-02
+==========
 
 * :vytask:`T2414` (feature): Improve runtime from Python numeric validator
 * :vytask:`T2413` (feature): Update Linux Kernel to v4.19.119
 
 
-20200501
-========
+2020-05-01
+==========
 
 * :vytask:`T2411` (feature): op-mode: make "monitor traceroute" VRF aware
 * :vytask:`T2347` (bug): During commit, any script output directed to stdout will contain path
 * :vytask:`T2239` (default): build-vmware-image script ignores the predefined file path, uses the environment variable unconditionally.
 
 
-20200429
-========
+2020-04-29
+==========
 
 * :vytask:`T2399` (bug): op-mode "dhcp client leases" does not return leases
 * :vytask:`T2398` (bug): op-mode "dhcp client leases interface" completion helper misses interfaces
@@ -1709,22 +1714,22 @@ VyOS 1.3 Equuleus
 * :vytask:`T2268` (bug): DHCPv6 is broken
 
 
-20200428
-========
+2020-04-28
+==========
 
 * :vytask:`T1227` (bug): rip PW can't be set at interface config
 
 
-20200427
-========
+2020-04-27
+==========
 
 * :vytask:`T2373` (feature): Required auth options for pppoe-server
 * :vytask:`T1381` (feature): Enable DHCP option 121 processing
 * :vytask:`T2010` (bug): Reboot at reports wrong time or missing timezone
 
 
-20200426
-========
+2020-04-26
+==========
 
 * :vytask:`T2386` (bug): salt: upgrade to 2019.2 packages
 * :vytask:`T2385` (bug): salt-minion: improve completion helpers
@@ -1734,22 +1739,22 @@ VyOS 1.3 Equuleus
 * :vytask:`T2350` (bug): Interface geneve conf-mode error
 
 
-20200425
-========
+2020-04-25
+==========
 
 * :vytask:`T2304` (feature): "system login" add RADIUS VRF support 
 * :vytask:`T1842` (bug): Equuleus: "reboot at 04:00" command not working
 
 
-20200424
-========
+2020-04-24
+==========
 
 * :vytask:`T2375` (feature): WireGuard: throw exception if address and port are not given as both are mandatory
 * :vytask:`T2348` (bug): On IPv6 address distribution and DHCPv6 bugs
 
 
-20200423
-========
+2020-04-23
+==========
 
 * :vytask:`T2369` (feature): VRF: can not leak interface route from default VRf to any other VRF
 * :vytask:`T2368` (bug): VRF: missing completion helper when leaking to default table
@@ -1758,8 +1763,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2345` (default): IPv6 router-advert not working
 
 
-20200422
-========
+2020-04-22
+==========
 
 * :vytask:`T2361` (bug): Unable to delete VLAN vif interface
 * :vytask:`T2339` (bug): OpenVPN: IPv4 no longer working after adding IPv6 support
@@ -1769,8 +1774,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2351` (feature): Cleanup PPTP server implementation and CLI commands
 
 
-20200421
-========
+2020-04-21
+==========
 
 * :vytask:`T2341` (bug): Pseudo-ethernet Interfaces Not Loaded on Boot
 * :vytask:`T2270` (bug): using load with scp/sftp and a username and password does not work
@@ -1779,8 +1784,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2204` (feature): Support tunnel source-interface
 
 
-20200420
-========
+2020-04-20
+==========
 
 * :vytask:`T2335` (bug): Unable to assign IPv6 from ISP
 * :vytask:`T2317` (bug): l2tp overwriting ipsec config files
@@ -1788,8 +1793,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2344` (bug): PPPoE server client static IP assignment silently fails
 
 
-20200419
-========
+2020-04-19
+==========
 
 * :vytask:`T2337` (default): hw-id gone missing from interfaces after upgrade to 1.3-rolling-202004191028
 * :vytask:`T2340` (feature): Remove informational "sg" messages from syslog
@@ -1799,8 +1804,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2185` (default): Start daemons with systemd units instead of with start-stop-daemon
 
 
-20200418
-========
+2020-04-18
+==========
 
 * :vytask:`T2318` (bug): dns-forwarding migrationscript broken
 * :vytask:`T2319` (feature): Update Linux Kernel to v4.19.116
@@ -1815,15 +1820,15 @@ VyOS 1.3 Equuleus
 * :vytask:`T2324` (feature): Cleanup IPoE server implementation and CLI commands
 
 
-20200417
-========
+2020-04-17
+==========
 
 * :vytask:`T2275` (bug): flow-accounting broken in rolling
 * :vytask:`T2256` (feature): Accel-ppp op-mode syntax
 
 
-20200416
-========
+2020-04-16
+==========
 
 * :vytask:`T2295` (bug): Passwords with Special Characters Broken
 * :vytask:`T2305` (feature): Add release name to "show version" command
@@ -1831,21 +1836,21 @@ VyOS 1.3 Equuleus
 * :vytask:`T149` (feature): IPv6 support in OpenVPN tunnel
 
 
-20200415
-========
+2020-04-15
+==========
 
 * :vytask:`T2293` (bug): OpenVPN: UnboundLocalError after merging server_network PullRequest
 * :vytask:`T2298` (bug): Errors PDNS with name-server set
 
 
-20200414
-========
+2020-04-14
+==========
 
 * :vytask:`T2213` (bug): vyos-1x: WiFi mode ieee80211ac should also activate ieee80211n
 
 
-20200413
-========
+2020-04-13
+==========
 
 * :vytask:`T2283` (default): openvpn not starting: ccd path in template not moved to /run/openvpn/ccd
 * :vytask:`T2236` (bug): DMVPN broken after tunnel rewrite to XML/Python
@@ -1854,8 +1859,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T611` (feature): Static route syntax should reflect `ip` command routing capabilities, if possible.
 
 
-20200412
-========
+2020-04-12
+==========
 
 * :vytask:`T2273` (default): OpenVPN no longer starts in latest rolling, migrate to systemd
 * :vytask:`T2263` (feature): Reset feature for SSTP sessions
@@ -1867,16 +1872,16 @@ VyOS 1.3 Equuleus
 * :vytask:`T2031` (bug): pseudo-ethernet link interface can not be changed
 
 
-20200411
-========
+2020-04-11
+==========
 
 * :vytask:`T2264` (feature): l2tp: cleanup CLI definition
 * :vytask:`T2233` (bug): Typos in wlanX.cfg
 * :vytask:`T2238` (bug): After re-writing list_interfaces.py to use Interfaces() pseudo-ethernet is missing
 
 
-20200410
-========
+2020-04-10
+==========
 
 * :vytask:`T2265` (feature): DHCP to be an attribute of the class instead of a inheritance
 * :vytask:`T2261` (bug): "client-config-dir" not being set for openvpn in 1.3-rolling-202004090909
@@ -1886,8 +1891,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2253` (default): Fix use of cmd in merge config and remote function helpers
 
 
-20200409
-========
+2020-04-09
+==========
 
 * :vytask:`T2260` (feature): vxlan, pseudo-ethernet: convert link nodes to source-interface
 * :vytask:`T2252` (bug): HTTP API add system image can return '504 Gateway Time-out'
@@ -1895,8 +1900,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2237` (bug): l2tp, pptp, pppoe wrong chap-secrets file
 
 
-20200408
-========
+2020-04-08
+==========
 
 * :vytask:`T2244` (feature): WireGuard: cleanup Python implementation and reduce amount of boilerplate code
 * :vytask:`T2186` (feature): Provide more information to the user when a traceback is reported to the user
@@ -1906,8 +1911,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2247` (feature): WireGuard: add VRF support
 
 
-20200405
-========
+2020-04-05
+==========
 
 * :vytask:`T2228` (bug): WireGuard does not allow ports < 1024 to be used
 * :vytask:`T2212` (bug): vyos-1x: WiFi card antenna count not set accordingly
@@ -1916,8 +1921,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2032` (bug): Monitor bandwidth bits
 
 
-20200404
-========
+2020-04-04
+==========
 
 * :vytask:`T2158` (bug): Commit fails if ethernet interface doesn't support flow control (pause)
 * :vytask:`T2221` (bug): Ability to remove a VRF that has a next-hop-vrf as target
@@ -1930,8 +1935,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2222` (default): openvpn: requires "multihome" option to listen on all addresses with udp protocol
 
 
-20200402
-========
+2020-04-02
+==========
 
 * :vytask:`T2072` (bug): Shell autocomplete of option (config node) with quoted value doesn't work
 * :vytask:`T1823` (feature): l2tpv3 interface migration fails
@@ -1939,8 +1944,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2200` (feature): Add VRF support on wirelessmodem interfaces
 
 
-20200331
-========
+2020-03-31
+==========
 
 * :vytask:`T2166` (bug): Broken proxy-arp on vif
 * :vytask:`T2069` (bug): PPPoE-client does not works with service-name option
@@ -1950,60 +1955,60 @@ VyOS 1.3 Equuleus
 * :vytask:`T2144` (default): vyos-build: docker: selection of text in the terminal still selects it in vim (mouse isn't completely disabled) 
 
 
-20200330
-========
+2020-03-30
+==========
 
 * :vytask:`T2176` (default): 'WiFiIf' object has no attribute 'set_state'
 * :vytask:`T2029` (feature): Switch to new syntax for config file component versions
 
 
-20200329
-========
+2020-03-29
+==========
 
 * :vytask:`T2178` (bug): VRF interface don't get removed when VRF is deleted
 * :vytask:`T2170` (feature): Add ability to create static route from default to VRF
 * :vytask:`T1831` (feature): Denest IPv6 router-advert from Interfaces to general service
 
 
-20200328
-========
+2020-03-28
+==========
 
 * :vytask:`T2167` (bug): vyos.ifconfig.get_mac() broken
 * :vytask:`T2151` (default): wireless: can't delete interface present in config but not present in system
 * :vytask:`T1988` (feature): Migrate wirelessmodem to new XML/Python style interface
 
 
-20200327
-========
+2020-03-27
+==========
 
 * :vytask:`T2164` (bug): Package libstrongswan-standard-plugins missing from image
 * :vytask:`T2105` (bug): wireless: not possible to disabled wlan0
 * :vytask:`T2169` (default): Remove redundant use of show_config in vyos-merge-config
 
 
-20200326
-========
+2020-03-26
+==========
 
 * :vytask:`T2162` (default): migration script for router-advert sets link-mtu 0 on bridge interfaces
 * :vytask:`T1735` (bug): Issue in "show vpn ipsec/ike sa" output with ipsec encryption algorithm aes128gcm128/aes256gcm128/chacha etc
 
 
-20200325
-========
+2020-03-25
+==========
 
 * :vytask:`T2148` (default): openvpn: setting "server client" config without "server client ip" results in ValueError: '' does not appear to be an IPv4 or IPv6 address
 * :vytask:`T2146` (default): openvpn: "delete server client" doesn't delete the corresponding ccd configs
 
 
-20200324
-========
+2020-03-24
+==========
 
 * :vytask:`T2157` (default): Organize service https listen-address/listen-port/server-name under 'virtual-host' node
 * :vytask:`T1845` (bug): syslog host no longer accepts a port
 
 
-20200322
-========
+2020-03-22
+==========
 
 * :vytask:`T2150` (feature): SSTP ssl certificates can only be stored in /config/user-data/sstp
 * :vytask:`T2149` (feature): Update Linux Kernel to v4.19.112
@@ -2012,16 +2017,16 @@ VyOS 1.3 Equuleus
 * :vytask:`T476` (enhancment): Start builds for Debian 10 (Buster)
 
 
-20200321
-========
+2020-03-21
+==========
 
 * :vytask:`T2142` (bug): vyos-build: Add required packages and step to build-GCE-image script
 * :vytask:`T1870` (feature): Extend Pipeline scripts to support PullRequests
 * :vytask:`T1936` (feature): pppoe-server CLI control features
 
 
-20200320
-========
+2020-03-20
+==========
 
 * :vytask:`T2006` (bug): SSTP RADIUS CLI accepts invalid values
 * :vytask:`T2140` (default): openvpn: tls file check function checkCertHeader returns True even when no match is found
@@ -2029,8 +2034,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T2008` (feature): Adjustment of SSTP CLI to be more consistent to the rest of VyOS
 
 
-20200319
-========
+2020-03-19
+==========
 
 * :vytask:`T2135` (bug): Login banner missing spacing now
 * :vytask:`T2132` (feature): Document kernel boot parameter 'vyos-config-debug'
@@ -2038,21 +2043,21 @@ VyOS 1.3 Equuleus
 * :vytask:`T1301` (default): bgp peer-groups don't work when "no-ipv4-unicast" is enabled.
 
 
-20200317
-========
+2020-03-17
+==========
 
 * :vytask:`T2134` (bug): VXLAN: `NameError: name 'config' is not defined`
 
 
-20200316
-========
+2020-03-16
+==========
 
 * :vytask:`T1803` (bug): Unbind NTP while it's not requested... 
 * :vytask:`T2131` (feature): Improve syslog remote host CLI definition
 
 
-20200315
-========
+2020-03-15
+==========
 
 * :vytask:`T2122` (feature): Update Intel out-of-tree drivers to latest version(s)
 * :vytask:`T2121` (feature): Update Linux Kernel to v4.19.109
@@ -2067,35 +2072,35 @@ VyOS 1.3 Equuleus
 * :vytask:`T1832` (feature): radvd adding feature DNSSL branch.example.com example.com to existing package
 
 
-20200314
-========
+2020-03-14
+==========
 
 * :vytask:`T834` (feature): accel-ppp: l2tp implementation
 
 
-20200313
-========
+2020-03-13
+==========
 
 * :vytask:`T1935` (bug): NIC identification and usage problem in Hyper-V environments
 * :vytask:`T1821` (bug): "authentication mode radius" has no effect for PPPoE server
 * :vytask:`T1622` (default): Add failsafe and back trace to boot config loader
 
 
-20200311
-========
+2020-03-11
+==========
 
 * :vytask:`T1961` (bug): VXLAN - fails to commit due to non-existent variable, broken MTU
 * :vytask:`T2084` (default): conntrack-tools package build error for current/equuleus
 
 
-20200310
-========
+2020-03-10
+==========
 
 * :vytask:`T1331` (bug): DNS stops working
 
 
-20200309
-========
+2020-03-09
+==========
 
 * :vytask:`T2111` (feature): VRF add route leaking support
 * :vytask:`T2109` (bug): Ping by name broken in VyOS 1.3-rolling-202003080217
@@ -2104,39 +2109,39 @@ VyOS 1.3 Equuleus
 * :vytask:`T31` (feature): Add VRF support
 
 
-20200308
-========
+2020-03-08
+==========
 
 * :vytask:`T1954` (bug): Having `system login radius` configured causes exponentially long boot times
 * :vytask:`T1760` (bug): RADIUS shared secret is not redacted from "show configuration" op mode command
 
 
-20200307
-========
+2020-03-07
+==========
 
 * :vytask:`T2107` (bug): Wireless interfaces do not work in station mode without security
 
 
-20200305
-========
+2020-03-05
+==========
 
 * :vytask:`T2074` (bug): VyOS docker container: Does not possible to configure ethernet interface
 
 
-20200304
-========
+2020-03-04
+==========
 
 * :vytask:`T2098` (bug): Wrong call to cli-shell-api in generated op-mode templates for path completion helper
 
 
-20200303
-========
+2020-03-03
+==========
 
 * :vytask:`T2095` (bug): Copy command errors out
 
 
-20200301
-========
+2020-03-01
+==========
 
 * :vytask:`T2082` (bug): WireGuard broken after merging T2057
 * :vytask:`T2089` (feature): RADIUS: do not query servers when commit is running started from a non RADIUS user
@@ -2144,22 +2149,22 @@ VyOS 1.3 Equuleus
 * :vytask:`T2086` (feature): Move sudo session open/close log entries to auth.log
 
 
-20200229
-========
+2020-02-29
+==========
 
 * :vytask:`T2046` (feature): allowing sub-classes of Interface to redefine how the interface is created
 * :vytask:`T2077` (bug): ISO build from crux branch is failing
 
 
-20200228
-========
+2020-02-28
+==========
 
 * :vytask:`T2083` (default): vyos-build: build-packages fails at mdns-repeater due to wrong branch
 * :vytask:`T2080` (default): traffic-policy shaper error when setting bandwidth
 
 
-20200227
-========
+2020-02-27
+==========
 
 * :vytask:`T2075` (feature): Add support for OpenVPN tls-crypt file option
 * :vytask:`T2079` (feature): Update Linux Kernel to v4.19.106
@@ -2168,49 +2173,49 @@ VyOS 1.3 Equuleus
 * :vytask:`T2078` (feature): Kernel: remove unused RAID functions 5,6,10,jbod,dm
 
 
-20200225
-========
+2020-02-25
+==========
 
 * :vytask:`T1971` (bug): Missing modules in initrd.img for PXE boot
 * :vytask:`T2070` (feature): Rewrite (dis-)connect op-mode commands in XML and Python
 * :vytask:`T2071` (feature): Add possibility to temporary disable a RADIUS server used for system login
 
 
-20200223
-========
+2020-02-23
+==========
 
 * :vytask:`T2055` (feature): Remove IPv6 router-advert options for PPPoE
 * :vytask:`T1998` (feature): Update FRR to 7.3
 * :vytask:`T1318` (feature): PPPoE client CLI redesign
 
 
-20200222
-========
+2020-02-22
+==========
 
 * :vytask:`T2063` (feature): vyos-salt-minion package is missing from vyos-world
 
 
-20200220
-========
+2020-02-20
+==========
 
 * :vytask:`T1969` (default): OSPF with WireGuard cause Route Inactive
 
 
-20200218
-========
+2020-02-18
+==========
 
 * :vytask:`T2034` (default): Removal of interfaces loopback lo removed 127.0.0.1 and ::1
 
 
-20200217
-========
+2020-02-17
+==========
 
 * :vytask:`T2047` (feature): Update Linux Kernel to v4.19.104
 * :vytask:`T2048` (bug): ISO boot failes when wireleass adapter is present
 
 
-20200216
-========
+2020-02-16
+==========
 
 * :vytask:`T2043` (bug): Bond VLANs can't be extended on the fly
 * :vytask:`T2030` (bug): Bond doesn't survive reboot
@@ -2219,92 +2224,92 @@ VyOS 1.3 Equuleus
 * :vytask:`T1246` (bug): VyOS 1.2.0 "openvpn-options" configuration does not allow quotes in values
 
 
-20200215
-========
+2020-02-15
+==========
 
 * :vytask:`T2042` (bug): Error on reboot after deleting "service snmp" and not "service lldp snmp enable"
 * :vytask:`T2041` (bug): Adding non existent bond interface raises exception
 
 
-20200214
-========
+2020-02-14
+==========
 
 * :vytask:`T2039` (bug): Wrong system type displayed.
 * :vytask:`T2040` (bug): vyos-http-api-server should reload Config in all routes
 
 
-20200213
-========
+2020-02-13
+==========
 
 * :vytask:`T2033` (feature): Drop vyos-replace package
 * :vytask:`T1635` (feature): Rewrite interface pseudo-ethernet in new XML/Python style
 
 
-20200210
-========
+2020-02-10
+==========
 
 * :vytask:`T2024` (feature): Migrate "system login banner" to XML/Python
 
 
-20200209
-========
+2020-02-09
+==========
 
 * :vytask:`T2022` (feature): When RADIUS config is active, local logins won't work
 * :vytask:`T2020` (default): Unable to log in after upgrade to 1.3-rolling-202002080217
 * :vytask:`T1931` (bug): Enabling SNMP commit error
 
 
-20200208
-========
+2020-02-08
+==========
 
 * :vytask:`T1851` (bug): wireguard - changing the pubkey on an existing peer seems to destroy the running config.
 
 
-20200205
-========
+2020-02-05
+==========
 
 * :vytask:`T1948` (bug): RADIUS login broken in 1.3
 * :vytask:`T1990` (feature): Migrate "system login" to XML/Python representation
 * :vytask:`T1585` (default): Add letsencrypt/certbot support for 'service https'
 
 
-20200204
-========
+2020-02-04
+==========
 
 * :vytask:`T1965` (bug): VyOS-1.3: ping no longer supports specifying interface or source 
 
 
-20200202
-========
+2020-02-02
+==========
 
 * :vytask:`T2011` (feature): Update Linux Kernel to v4.19.101
 * :vytask:`T640` (bug): Images no longer work when built without "recommended" packages
 
 
-20200201
-========
+2020-02-01
+==========
 
 * :vytask:`T2009` (bug): Ethernet Interface always stays down
 * :vytask:`T1989` (bug): conf.get_config_dict() throws exception
 
 
-20200131
-========
+2020-01-31
+==========
 
 * :vytask:`T1768` (bug): PPtP - vyos.config rewrite
 * :vytask:`T2002` (bug): VLAN interfaces try to be enabled even if parent interface is A/D
 
 
-20200130
-========
+2020-01-30
+==========
 
 * :vytask:`T1994` (default): lldpd not bound to specified interfaces - Fix jinja template
 * :vytask:`T1896` (enhancment): Remove LLDP-MED civic_based location information
 * :vytask:`T1724` (feature): wireguard - add endpoint check in verify()
 
 
-20200129
-========
+2020-01-29
+==========
 
 * :vytask:`T1392` (bug): Large firewall rulesets cause the system to lose configuration and crash at startup
 * :vytask:`T1996` (feature): Update Linux Kernel to 4.19.99
@@ -2321,8 +2326,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1670` (feature): OpenVPN option for tls-auth
 
 
-20200126
-========
+2020-01-26
+==========
 
 * :vytask:`T1937` (bug): snmpd throwing a tremendous amount of errors
 * :vytask:`T1767` (bug): IPoE - vyos.config rewrite
@@ -2330,79 +2335,79 @@ VyOS 1.3 Equuleus
 * :vytask:`T1964` (default): SNMP Script-extensions allows names with spaces, but commit fails
 
 
-20200125
-========
+2020-01-25
+==========
 
 * :vytask:`T1902` (feature): Add redistribute non main table in bgp
 * :vytask:`T1900` (default): Enable SNMP for VRRP.
 
 
-20200124
-========
+2020-01-24
+==========
 
 * :vytask:`T1975` (bug): OpenVPN tap devices won't come up automatically
 
 
-20200123
-========
+2020-01-23
+==========
 
 * :vytask:`T1766` (bug): service-pppoe - vyos.config rewrite
 
 
-20200121
-========
+2020-01-21
+==========
 
 * :vytask:`T1784` (bug): DMVPN with IPSec does not work in HUB mode
 * :vytask:`T1977` (bug): webproxy error on fresh install
 
 
-20200118
-========
+2020-01-18
+==========
 
 * :vytask:`T1830` (feature): 1.3-rolling boots to GRUB prompt post-install on UEFI systems
 * :vytask:`T1940` (bug): EFI Fresh Install fails to boot, 4K Sector Drives Fail to boot EFI
 
 
-20200116
-========
+2020-01-16
+==========
 
 * :vytask:`T1880` (default): "A stop job is running for live-tools - System Support Scripts" hangs, times out when shutting down equuleus live iso
 
 
-20200115
-========
+2020-01-15
+==========
 
 * :vytask:`T1959` (bug): Error message when adding IPSec VPN
 * :vytask:`T1827` (feature): Increase default gc_thresh
 
 
-20200113
-========
+2020-01-13
+==========
 
 * :vytask:`T1909` (bug): Incorrect behaviour of static routes with overlapping networks
 
 
-20200109
-========
+2020-01-09
+==========
 
 * :vytask:`T1955` (feature): snmp - cli config val_help missing
 * :vytask:`T1813` (bug): error in generated /etc/hosts file
 
 
-20200108
-========
+2020-01-08
+==========
 
 * :vytask:`T1946` (bug): Recovery ifname for PPtP remote-access
 
 
-20200103
-========
+2020-01-03
+==========
 
 * :vytask:`T1939` (feature): Provide abstraction for interface "ip" options
 
 
-20200101
-========
+2020-01-01
+==========
 
 * :vytask:`T1903` (default): Implementation udev predefined interface naming
 * :vytask:`T1825` (feature): Improve DHCP configuration error message
@@ -2410,15 +2415,15 @@ VyOS 1.3 Equuleus
 * :vytask:`T1430` (default): Add options for custom DHCP client-id and hostname
 
 
-20191231
-========
+2019-12-31
+==========
 
 * :vytask:`T1654` (bug): sFlow: multiple "sflow server" not work, and "disable-imt" could break configuration
 * :vytask:`T1923` (feature): Migrate L2TPv3 interface to XML/Python
 
 
-20191230
-========
+2019-12-30
+==========
 
 * :vytask:`T1920` (bug): beep: Error: Running under sudo, which is not supported for security reasons.
 * :vytask:`T1918` (bug): l2tp / ipsec config broken in latest daily
@@ -2429,8 +2434,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1919` (feature): Migrate "system options" to XML/Python representation
 
 
-20191228
-========
+2019-12-28
+==========
 
 * :vytask:`T1917` (feature): Update WireGuard to Debian release 0.0.20191219-1
 * :vytask:`T1916` (feature): Update Linux Kernel to v4.19.91
@@ -2438,101 +2443,101 @@ VyOS 1.3 Equuleus
 * :vytask:`T1912` (feature): Migrate "system (ip|ipv6)" to XML/Python representation
 
 
-20191227
-========
+2019-12-27
+==========
 
 * :vytask:`T1910` (bug): Invalid parmissions on latest 1.3 rolling ISO images
 
 
-20191226
-========
+2019-12-26
+==========
 
 * :vytask:`T1794` (bug): Interface description can't contain a colon
 * :vytask:`T1906` (feature): Migrate "system time-zone" configuration to XML/Python
 
 
-20191223
-========
+2019-12-23
+==========
 
 * :vytask:`T1898` (enhancment): Support multiple IPv4/IPv6 LLDP management addresses
 * :vytask:`T1878` (bug): accel-ppp: pppoe single-session option implementation
 * :vytask:`T258` (default): Can not configure wan load-balancing on vyos-1.2
 
 
-20191222
-========
+2019-12-22
+==========
 
 * :vytask:`T393` (enhancment): Migrate vyatta-lldpd to vyos-1x
 
 
-20191220
-========
+2019-12-20
+==========
 
 * :vytask:`T1892` (default): vyos-build: Do not install recommends in docker image [enhancement]
 * :vytask:`T1893` (bug): igmp-proxy: Do not allow adding unknown interface
 * :vytask:`T1411` (enhancment): equuleus: buster: vyatta-ravpn: libfreeradius-client2 is missing in buster
 
 
-20191219
-========
+2019-12-19
+==========
 
 * :vytask:`T1873` (default): DHCP server fails to start due to a change in isc-dhcp-server init scripts
 * :vytask:`T1881` (bug): Execute permissions are removed from custom SNMP scripts at commit time
 
 
-20191218
-========
+2019-12-18
+==========
 
 * :vytask:`T1889` (bug): Error building docker build image
 * :vytask:`T1132` (default): Build on Debian Buster
 
 
-20191217
-========
+2019-12-17
+==========
 
 * :vytask:`T1886` (feature): Update Linux Kernel to v4.19.89
 * :vytask:`T1887` (feature): Update WireGuard to Debian release 0.0.20191212-1
 
 
-20191215
-========
+2019-12-15
+==========
 
 * :vytask:`T1879` (bug): Extend Dynamic DNS XML definition value help strings and validators
 
 
-20191213
-========
+2019-12-13
+==========
 
 * :vytask:`T1861` (default): hosts lost after modified static-host-mapping
 
 
-20191212
-========
+2019-12-12
+==========
 
 * :vytask:`T1864` (feature): Lower IPSec DPD timeout lower limit from 10s -> 2s
 
 
-20191210
-========
+2019-12-10
+==========
 
 * :vytask:`T1843` (feature): Add GCC preprocessor support for XML files
 * :vytask:`T1017` (bug): 1.2.0-rc7 duplex auto (autogenerated config) setting not accepted
 
 
-20191208
-========
+2019-12-08
+==========
 
 * :vytask:`T1566` (feature): Extend L2TP/IPSec server with IPv6
 
 
-20191207
-========
+2019-12-07
+==========
 
 * :vytask:`T1714` (bug): Disable DHCP Nameservers Not Working
 
 
-20191206
-========
+2019-12-06
+==========
 
 * :vytask:`T1860` (feature): Update WireGuard to Debian release 0.0.20191127-2
 * :vytask:`T1859` (feature): Update Linux Kernel to v4.19.88
@@ -2543,63 +2548,63 @@ VyOS 1.3 Equuleus
 * :vytask:`T586` (bug): Cannot add ethernet vif-s vif-c interface to bridge-group
 
 
-20191205
-========
+2019-12-05
+==========
 
 * :vytask:`T1847` (bug): set_level incorrectly handles path given as empty string
 
 
-20191204
-========
+2019-12-04
+==========
 
 * :vytask:`T1787` (default): Failed config migration from V1.2.3 to 1.2-rolling-201911030217
 * :vytask:`T1212` (bug): IPSec Tunnel to Cisco ASA drops reliably after 4.2GB transferred
 * :vytask:`T1704` (feature): OpenVPN - Add support for ncp-ciphers
 
 
-20191203
-========
+2019-12-03
+==========
 
 * :vytask:`T1782` (bug): pppoe0: showing as "Coming up"
 * :vytask:`T1801` (bug): Unescaped backslashes in config values cause configuration failure
 
 
-20191202
-========
+2019-12-02
+==========
 
 * :vytask:`T1841` (bug): PPP ipv6-up.d direcotry missing
 * :vytask:`T1840` (bug): PPPoE doesn't not rename pppX to pppoeX
 
 
-20191128
-========
+2019-11-28
+==========
 
 * :vytask:`T1299` (feature): Allow SNMPd to be extended with custom scripts
 
 
-20191125
-========
+2019-11-25
+==========
 
 * :vytask:`T1824` (bug): Permission denied: '/opt/vyatta/etc/config/vyos-migrate.log'
 
 
-20191124
-========
+2019-11-24
+==========
 
 * :vytask:`T1673` (bug): vif bridge-group not migrated to bridge member interface
 * :vytask:`T1799` (feature): Add support for GENEVE (Generic Network Virtualization Encapsulation)
 
 
-20191123
-========
+2019-11-23
+==========
 
 * :vytask:`T1812` (bug): DHCP: hostnames of clients not resolving after update v1.2.3 -> 1.2-rolling 
 * :vytask:`T1627` (feature): Rewrite wireless interface in new style XML syntax
 * :vytask:`T1811` (bug): Upgrade from 1.1.8: Config file migration failed: module=l2tp
 
 
-20191122
-========
+2019-11-22
+==========
 
 * :vytask:`T1786` (bug): disable-dhcp-nameservers is missed in current host_name.py implementation
 * :vytask:`T1749` (bug): numeric validator doesn't support multiple ranges
@@ -2612,21 +2617,21 @@ VyOS 1.3 Equuleus
 * :vytask:`T1597` (bug): /usr/sbin/rsyslogd after deleting "system syslog"
 
 
-20191121
-========
+2019-11-21
+==========
 
 * :vytask:`T1818` (default): Print name of migration script on failure
 * :vytask:`T1814` (default): Add log of migration scripts run during config migration
 
 
-20191119
-========
+2019-11-19
+==========
 
 * :vytask:`T1705` (default): High CPU usage by bgpd when snmp is active
 
 
-20191117
-========
+2019-11-17
+==========
 
 * :vytask:`T1742` (default): NHRP unable to commit.
 * :vytask:`T1740` (default): Broken OSPFv2 virtual-link authentication
@@ -2639,14 +2644,14 @@ VyOS 1.3 Equuleus
 * :vytask:`T1351` (feature): accel-pppoe adding CIDR based IP pool option
 
 
-20191116
-========
+2019-11-16
+==========
 
 * :vytask:`T1788` (feature): Intel QAT (QuickAssist Technology ) implementation
 
 
-20191114
-========
+2019-11-14
+==========
 
 * :vytask:`T1710` (default): [equuleus] buster: add patch to fix live-build missing key error
 * :vytask:`T1804` (default): Add python3-psutil to docker image
@@ -2654,283 +2659,283 @@ VyOS 1.3 Equuleus
 * :vytask:`T1424` (default): Rewrite the config load script
 
 
-20191112
-========
+2019-11-12
+==========
 
 * :vytask:`T1800` (feature): Update Linux Kernel to v4.19.84
 
 
-20191111
-========
+2019-11-11
+==========
 
 * :vytask:`T1793` (feature): Editing description on an interface causes BGP sessions to reset on commit
 
 
-20191110
-========
+2019-11-10
+==========
 
 * :vytask:`T1598` (default): New implementation of the resolv.conf and hosts update mechanism
 * :vytask:`T1792` (feature): Update WireGuard to Debian release 0.0.20191012-1
 * :vytask:`T1791` (feature): Update Linux Kernel to 4.19.82
 
 
-20191109
-========
+2019-11-09
+==========
 
 * :vytask:`T1030` (bug): Upgrade ddclient from 3.8.2 to 3.9.0 (support Cloudflare API v4)
 
 
-20191108
-========
+2019-11-08
+==========
 
 * :vytask:`T1789` (bug): ddclient not working with generated RFC2136 / nsupdate config
 
 
-20191103
-========
+2019-11-03
+==========
 
 * :vytask:`T1777` (bug): Bonding interface MAC address missmatch after reboot
 * :vytask:`T1752` (bug): PPPoE does not automatically start on boot
 
 
-20191102
-========
+2019-11-02
+==========
 
 * :vytask:`T1783` (bug): Interface can't unpin from bridge
 
 
-20191030
-========
+2019-10-30
+==========
 
 * :vytask:`T1778` (bug): Kilobits/Megabits difference in configuration Vyos/FRR
 
 
-20191028
-========
+2019-10-28
+==========
 
 * :vytask:`T1769` (feature): Remove complex SNMPv3 Transport Security Model (TSM)
 * :vytask:`T1738` (bug): Copy SNMP configuration from node to node raises exception
 * :vytask:`T818` (feature): SNMP v3 - remove required engineid from user node
 
 
-20191026
-========
+2019-10-26
+==========
 
 * :vytask:`T1560` (default): "set load-balancing wan rule 0" causes segfault and prevents load balancing from starting
 
 
-20191022
-========
+2019-10-22
+==========
 
 * :vytask:`T1756` (feature): Modify output to be more useful - Wireguard
 
 
-20191021
-========
+2019-10-21
+==========
 
 * :vytask:`T1741` (feature): Add system wide proxy setting
 
 
-20191019
-========
+2019-10-19
+==========
 
 * :vytask:`T1746` (bug): 201910180117 fails startup with 'Permission Denied' errors
 * :vytask:`T1745` (default): dhcp-server commit fails with "DHCP range stop address x must be greater or equal to the range start address y!" when static mapping has same IP as range stop
 * :vytask:`T1743` (default): equuleus: remove references to SSH key type "rsa1" deprecated in Debian Buster
 
 
-20191018
-========
+2019-10-18
+==========
 
 * :vytask:`T1712` (default): DHCP client sometimes doesn't start
 * :vytask:`T1684` (bug): Unable to enable IPv6 autoconf on PPPoE
 * :vytask:`T1604` (enhancment): equuleus: buster: vbash: tab completion breaks
 
 
-20191017
-========
+2019-10-17
+==========
 
 * :vytask:`T1737` (bug): SNMP tab completion missing
 
 
-20191014
-========
+2019-10-14
+==========
 
 * :vytask:`T1726` (bug): Update Linux Firmware binaries to a more recent version 2019-03-14 -> 2019-10-07
 * :vytask:`T1716` (feature): Update Intel NIC drivers to recent versions
 
 
-20191013
-========
+2019-10-13
+==========
 
 * :vytask:`T1728` (feature): Update Linux Kernel to 4.19.79
 
 
-20191011
-========
+2019-10-11
+==========
 
 * :vytask:`T1723` (bug): wireguard - Interface wg01 could not be brought up in time 
 
 
-20191009
-========
+2019-10-09
+==========
 
 * :vytask:`T1719` (feature): ssh deprecated options
 * :vytask:`T1718` (bug): ISO check in /opt/vyatta/sbin/install-image faulty
 * :vytask:`T1682` (feature): Migrate to new Jenkins Pipeline script
 
 
-20191008
-========
+2019-10-08
+==========
 
 * :vytask:`T1717` (bug): disable multiple daemons to autostart at boot
 
 
-20191006
-========
+2019-10-06
+==========
 
 * :vytask:`T1713` (feature): Remove deprecated packages no longer required after migration to Accel-PPP
 * :vytask:`T1709` (bug): Update WireGuard to 0.0.20190913
 * :vytask:`T1708` (bug): Update Rolling Release Kernel to 4.19.76
 
 
-20191004
-========
+2019-10-04
+==========
 
 * :vytask:`T1707` (bug): DHCP static mapping and exclude address not working
 * :vytask:`T1496` (bug): Separate rolling release and LTS kernel builds
 
 
-20191003
-========
+2019-10-03
+==========
 
 * :vytask:`T1689` (feature): "reset openvpn" op-mode command should terminate and restart OpenVPN process
 
 
-20191001
-========
+2019-10-01
+==========
 
 * :vytask:`T1706` (bug): wireguard broken in latest rolling
 
 
-20190930
-========
+2019-09-30
+==========
 
 * :vytask:`T1642` (bug): BGP configuration error when using remove-private-as
 * :vytask:`T1688` (feature): OpenVPN - Add new cipher aes-(128|192|256)-gcm
 
 
-20190928
-========
+2019-09-28
+==========
 
 * :vytask:`T1696` (bug): NTP - Tests fail when building vyos-1x
 * :vytask:`T1512` (bug): vyos 1.2 openvpn client names with spaces created incorrectly
 
 
-20190927
-========
+2019-09-27
+==========
 
 * :vytask:`T1681` (feature): cleanup wireguard code since tagnodes are now visible
 * :vytask:`T1695` (bug): Syntax error in interface-dummy.py
 
 
-20190926
-========
+2019-09-26
+==========
 
 * :vytask:`T1692` (bug): ipoe-server verify function error
 * :vytask:`T1691` (bug): OpenVPN - Commiting config when OpenVPN peer/server not available makes commit hang
 * :vytask:`T1690` (feature): restart op-mode commands for 'service (pppoe|ipoe)-server'
 
 
-20190925
-========
+2019-09-25
+==========
 
 * :vytask:`T1672` (bug): Wireguard keys not automatically moved
 
 
-20190923
-========
+2019-09-23
+==========
 
 * :vytask:`T1679` (bug): during bootup: invalid literal for int() with base 10
 * :vytask:`T1680` (feature): DHCP client does not release IP address on exit/deletion
 
 
-20190921
-========
+2019-09-21
+==========
 
 * :vytask:`T1676` (default):  [equuleus] buster: update GRUB boot parameters during upgrade
 * :vytask:`T1637` (feature): Rewrite ethernet interface in new style XML syntax
 * :vytask:`T1675` (feature): OpenVPN - Specify minimum TLS version
 
 
-20190920
-========
+2019-09-20
+==========
 
 * :vytask:`T1602` (default): equuleus: buster: add live build apt options for choosing vyos packages
 
 
-20190919
-========
+2019-09-19
+==========
 
 * :vytask:`T1666` (feature): Deleting a bond will place member interfaces into A/D state
 
 
-20190917
-========
+2019-09-17
+==========
 
 * :vytask:`T239` (bug): firewall all-ping setting is confusing
 
 
-20190916
-========
+2019-09-16
+==========
 
 * :vytask:`T1040` (default): rc.local is executed too early
 
 
-20190915
-========
+2019-09-15
+==========
 
 * :vytask:`T1662` (default): openvpn: 'show openvpn client' error
 * :vytask:`T1661` (default): openvpn: wrong checking for existence cert files
 * :vytask:`T1630` (bug): OpenVPN after changing it from root to nobody (unprivileged user) cant add routes
 
 
-20190913
-========
+2019-09-13
+==========
 
 * :vytask:`T1660` (bug): Bonding dont’t work on VyOS 1.2-rolling-201909120338
 * :vytask:`T1655` (enhancment): equuleus: buster: arm: vyos-accel-ppp build failes because of filename hardcoded as x86_64 in debian/rules
 
 
-20190912
-========
+2019-09-12
+==========
 
 * :vytask:`T1572` (feature): Wireguard keyPair per interface
 * :vytask:`T1545` (bug): IPSEC vti issue
 
 
-20190910
-========
+2019-09-10
+==========
 
 * :vytask:`T1650` (feature): implement wireguard default key removal
 * :vytask:`T1649` (feature): feature documentation different keypairs per interface 
 * :vytask:`T1648` (feature): add cli command 'delete wireguard named-key <key>'
 
 
-20190909
-========
+2019-09-09
+==========
 
 * :vytask:`T1639` (bug): wireguard pubkey change error 
 
 
-20190907
-========
+2019-09-07
+==========
 
 * :vytask:`T1640` (feature): Update Linux Kernel to v4.19.70
 
 
-20190906
-========
+2019-09-06
+==========
 
 * :vytask:`T1624` (bug): Failed to set up config session
 * :vytask:`T1636` (feature): Rewrite VXLAN in new style XML/Python
@@ -2942,14 +2947,14 @@ VyOS 1.3 Equuleus
 * :vytask:`T1360` (bug): DNS nameservers from dhcp not set
 
 
-20190905
-========
+2019-09-05
+==========
 
 * :vytask:`T1443` (default): New "service https" implementation
 
 
-20190904
-========
+2019-09-04
+==========
 
 * :vytask:`T1632` (bug): OpenVPN 'push' options with quotes
 * :vytask:`T1631` (bug): Multiple push-route options cause error generating openvpn configuration
@@ -2961,14 +2966,14 @@ VyOS 1.3 Equuleus
 * :vytask:`T1614` (feature): Rewrite bonding interface in new style XML syntax
 
 
-20190902
-========
+2019-09-02
+==========
 
 * :vytask:`T1621` (default): Rewrite the rest of trivial vyatta-op commands to new syntax
 
 
-20190831
-========
+2019-08-31
+==========
 
 * :vytask:`T1559` (default): webproxy (squidguard) doesn't work
 * :vytask:`T1531` (bug): Several bugs in cluster configuration
@@ -2984,34 +2989,34 @@ VyOS 1.3 Equuleus
 * :vytask:`T1362` (bug): Incorrect handling of special characters in VRRP passwords
 
 
-20190830
-========
+2019-08-30
+==========
 
 * :vytask:`T1587` (bug): New implementation of "monitor interface"
 
 
-20190829
-========
+2019-08-29
+==========
 
 * :vytask:`T1571` (bug): `show log vpn ipsec` produces no output 
 
 
-20190828
-========
+2019-08-28
+==========
 
 * :vytask:`T1615` (feature): After migration to pyroute2 the address DHCP statement is no longer covered
 
 
-20190827
-========
+2019-08-27
+==========
 
 * :vytask:`T1613` (bug): IPv6 traffic is not captured by NetFlow sensor (pmacct/NFLOG)
 * :vytask:`T1617` (default): OpenVPN push route failure
 * :vytask:`T1250` (bug): FRR not setting default gateway from dhcp
 
 
-20190826
-========
+2019-08-26
+==========
 
 * :vytask:`T1591` (bug): OpenVPN "run show openvpn client status" does not work
 * :vytask:`T1608` (feature): bridge: Bridge adding non existing interfaces is allowed but does not work
@@ -3019,164 +3024,164 @@ VyOS 1.3 Equuleus
 * :vytask:`T1607` (default): Convert 'reset conntrack' and 'reset ip[v6] cache' operations from vyatta-op to new syntax
 
 
-20190825
-========
+2019-08-25
+==========
 
 * :vytask:`T1611` (default): Migration to latest rolling fails with vyos.configtree.ConfigTreeError: Path [b'interfaces bridge br0 igmp-snooping querier'] doesn't exist
 * :vytask:`T1333` (bug): pdns_recursor does not perform recursive lookups on domain specific forwarders
 * :vytask:`T1524` (feature): Add support to set allow-from network in DNS forwarding
 
 
-20190823
-========
+2019-08-23
+==========
 
 * :vytask:`T1606` (bug): Rolling release no longer boots after adding hostname daemon
 
 
-20190822
-========
+2019-08-22
+==========
 
 * :vytask:`T1131` (bug): open-vm-tools causing 100% CPU load
 
 
-20190821
-========
+2019-08-21
+==========
 
 * :vytask:`T1601` (feature): Rewrite loopback interface type with new style XML/Python interface
 * :vytask:`T1596` (default): Convert 'telnet' and 'traceroute' vyatta-op commands to new syntax
 
 
-20190820
-========
+2019-08-20
+==========
 
 * :vytask:`T1595` (feature): Migrate deprecated "service dns forwarding listen-on" to listen-address
 
 
-20190819
-========
+2019-08-19
+==========
 
 * :vytask:`T1580` (feature): Rewrite dummy interface type with new style XML/Python interface
 * :vytask:`T1590` (default): Convert 'show system' operations from vyatta-op to python/xml syntax
 * :vytask:`T1377` (default): BGP Weight Not properly applying
 
 
-20190817
-========
+2019-08-17
+==========
 
 * :vytask:`T1592` (feature): Update Linux Kernel to v4.19.67
 * :vytask:`T1551` (default): Error when creating QinQ interface without earlier sets firewall name, if it used
 
 
-20190815
-========
+2019-08-15
+==========
 
 * :vytask:`T1584` (default): equuleus: buster: add consistent grub options for predictable interface names
 
 
-20190813
-========
+2019-08-13
+==========
 
 * :vytask:`T1556` (feature): Rewrite Bridge in new style XML syntax
 
 
-20190809
-========
+2019-08-09
+==========
 
 * :vytask:`T1569` (feature): interfaceconfig class documetation
 
 
-20190805
-========
+2019-08-05
+==========
 
 * :vytask:`T1562` (feature): Change version scheme on current branch used for rolling releases
 
 
-20190804
-========
+2019-08-04
+==========
 
 * :vytask:`T1561` (bug): VyOS rolling ISO cluttered with vyatta-ravpn Git Repo
 
 
-20190803
-========
+2019-08-03
+==========
 
 * :vytask:`T1554` (bug): Enable RSS (Receive Side Scaling) and Multiqueue for Intel drivers
 
 
-20190802
-========
+2019-08-02
+==========
 
 * :vytask:`T853` (feature): accel-ppp: SSTP implementation
 * :vytask:`T742` (feature): Implement accel-ppp in VyOS
 
 
-20190801
-========
+2019-08-01
+==========
 
 * :vytask:`T1544` (feature): L2TP documentation
 
 
-20190731
-========
+2019-07-31
+==========
 
 * :vytask:`T1552` (feature): accel-ppp: SSTP documentation
 * :vytask:`T1553` (default): equuleus: buster: add 'noautologin' to boot parameters
 
 
-20190729
-========
+2019-07-29
+==========
 
 * :vytask:`T1532` (default): [equuleus] buster: GPG error on vyos package repository
 
 
-20190728
-========
+2019-07-28
+==========
 
 * :vytask:`T1547` (feature): accel-ppp/L2TP restructure CLI
 * :vytask:`T1546` (bug): accel-ppp/L2TP radius-source address is not honored
 
 
-20190723
-========
+2019-07-23
+==========
 
 * :vytask:`T1533` (bug): Rolling builds broken!
 * :vytask:`T1489` (feature): Add vlan_mon usage at Accel
 
 
-20190722
-========
+2019-07-22
+==========
 
 * :vytask:`T1435` (enhancment): Make ip-address [OPTIONAL] (in dhcp-server -> static-mapping) to cope with "unfriendly" client-hostnames of IoT-Devices
 
 
-20190721
-========
+2019-07-21
+==========
 
 * :vytask:`T823` (feature): Rewrite DHCP op mode in the new style
 
 
-20190718
-========
+2019-07-18
+==========
 
 * :vytask:`T1497` (bug): "set system name-server" generates invalid/incorrect resolv.conf
 * :vytask:`T533` (feature): PPPoE MTU graeter than 1492
 
 
-20190715
-========
+2019-07-15
+==========
 
 * :vytask:`T1526` (feature): [SNMP] write documentation for snmp script extension
 * :vytask:`T1516` (bug): [wireguard] config changes cause an error
 
 
-20190714
-========
+2019-07-14
+==========
 
 * :vytask:`T1066` (bug): Missing NICs
 
 
-20190710
-========
+2019-07-10
+==========
 
 * :vytask:`T1505` (bug): vyos.config return_effective_values does not convert the output to a list
 * :vytask:`T1503` (feature): Add functions for commit lock checking
@@ -3184,8 +3189,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1400` (bug): iBGP: remote-as and router AS can't be the same value
 
 
-20190708
-========
+2019-07-08
+==========
 
 * :vytask:`T1465` (bug): Priority inversion in "interfaces vti vtiX ip"
 * :vytask:`T1510` (feature): [IPoE] vlan-mon option implementation
@@ -3194,35 +3199,35 @@ VyOS 1.3 Equuleus
 * :vytask:`T989` (feature): accel-ppp: IPoE implementation
 
 
-20190703
-========
+2019-07-03
+==========
 
 * :vytask:`T1502` (feature): Add build sanity checking tools to the dev builds
 * :vytask:`T1469` (enhancment): Create forward-zones-recurse entry instead of forward-zones when setting service dns forwarding
 
 
-20190702
-========
+2019-07-02
+==========
 
 * :vytask:`T1099` (default): Openvpn: use config files instead of one long command.
 * :vytask:`T1495` (feature): accel-ppp: IPoE implement IPv6 PD
 
 
-20190701
-========
+2019-07-01
+==========
 
 * :vytask:`T1498` (bug): Nameservers are not propagated into resolv.conf
 
 
-20190624
-========
+2019-06-24
+==========
 
 * :vytask:`T1482` (feature): Add OpenVPN SHA384 hashing algorithm
 * :vytask:`T1484` (bug): OSPF md5 key not removed in strip-private
 
 
-20190623
-========
+2019-06-23
+==========
 
 * :vytask:`T1477` (feature): Intel i40evf fails to load - unknown symbol
 * :vytask:`T1474` (feature): Update WireGuard to 0.0.20190601
@@ -3234,8 +3239,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1464` (feature): FRR: Set explicit OSPFv3 network type for specified interface
 
 
-20190622
-========
+2019-06-22
+==========
 
 * :vytask:`T1371` (bug): Arguments of VRRP health check scripts are ignored
 * :vytask:`T1313` (feature): Add support for reusable build flavours
@@ -3243,16 +3248,16 @@ VyOS 1.3 Equuleus
 * :vytask:`T1433` (bug): "show dhcpv6 server leases" shows leases from wrong file
 
 
-20190620
-========
+2019-06-20
+==========
 
 * :vytask:`T1461` (bug): Deleting 'firewall options' causes Python TypeError
 * :vytask:`T1413` (enhancment):  equuleus: buster: vyos-xe-guest-utilities is not installable and breaks live-build
 * :vytask:`T1412` (enhancment):  equuleus: buster: vyos-netplug is not installable and breaks live-build
 
 
-20190619
-========
+2019-06-19
+==========
 
 * :vytask:`T1453` (bug): Warning: nss-myhostname is not installed
 * :vytask:`T1447` (bug): Python subprocess called without import in host_name.py
@@ -3261,182 +3266,182 @@ VyOS 1.3 Equuleus
 * :vytask:`T1454` (bug): Reading deprecated /etc/frr/daemons.conf
 
 
-20190618
-========
+2019-06-18
+==========
 
 * :vytask:`T1451` (bug): Intel e1000e driver missing in lates rolling release
 * :vytask:`T1446` (default): Raid install with efi can generate some warning output.
 * :vytask:`T1444` (feature): Update Linux Kernel to v4.19.52
 
 
-20190617
-========
+2019-06-17
+==========
 
 * :vytask:`T1394` (bug): syslog systemd and host_name.py race condition
 * :vytask:`T1408` (feature): pppoe-server - implement local-ipv6 for pure IPv6 based deployments
 * :vytask:`T1390` (default): Extend bgp config for bestpath as-path multipath-relax
 
 
-20190616
-========
+2019-06-16
+==========
 
 * :vytask:`T1438` (bug): DMI board/product serial can't be read
 
 
-20190612
-========
+2019-06-12
+==========
 
 * :vytask:`T1397` (default): Rewrite the config merge script
 
 
-20190605
-========
+2019-06-05
+==========
 
 * :vytask:`T1426` (default): Update the script that checks conntrack hash-size on reboot
 
 
-20190604
-========
+2019-06-04
+==========
 
 * :vytask:`T1379` (bug): Deprecated functions in /sbin/dhclient-script
 
 
-20190603
-========
+2019-06-03
+==========
 
 * :vytask:`T1423` (default): When merging remote config files, create known_hosts file if not present.
 
 
-20190601
-========
+2019-06-01
+==========
 
 * :vytask:`T1422` (feature): Add a utility for querying values in config files
 * :vytask:`T1309` (bug): allow duplicate ip adresses on different interfaces
 
 
-20190530
-========
+2019-05-30
+==========
 
 * :vytask:`T1419` (bug): Can't delete multiple OSPF passive-interfaces in single commit
 
 
-20190528
-========
+2019-05-28
+==========
 
 * :vytask:`T1410` (feature): Upgrade Linux Kernel to 4.19.46
 
 
-20190526
-========
+2019-05-26
+==========
 
 * :vytask:`T1388` (bug): OpenVPN client connections with password and certificate authentication don't work
 * :vytask:`T1387` (bug): Disabling a DHCP interface with no address displays an error
 * :vytask:`T1404` (feature): Update iproute2 package to 4.19
 
 
-20190524
-========
+2019-05-24
+==========
 
 * :vytask:`T1407` (bug): pppoe IPv6 PD documention by practical example
 
 
-20190523
-========
+2019-05-23
+==========
 
 * :vytask:`T1402` (feature): Update Linux Kernel to 4.19.45
 
 
-20190522
-========
+2019-05-22
+==========
 
 * :vytask:`T1399` (bug): accel-ppp kernel modules missing in rolling build 20190522
 * :vytask:`T1393` (bug): pppoe IPv6 pool doesn't work
 
 
-20190521
-========
+2019-05-21
+==========
 
 * :vytask:`T592` (bug): lldpcli: unknown command from argument 1: `#`
 
 
-20190520
-========
+2019-05-20
+==========
 
 * :vytask:`T1384` (bug): vxlan remote-port
 
 
-20190516
-========
+2019-05-16
+==========
 
 * :vytask:`T1267` (feature): FRR: Add interface name for static routes
 * :vytask:`T1148` (bug): epa2 BGP peers initiate before config is fully loaded, routes leak.
 
 
-20190513
-========
+2019-05-13
+==========
 
 * :vytask:`T1378` (feature): Embed Git commit ID of vyos-build repo in resulting image
 
 
-20190512
-========
+2019-05-12
+==========
 
 * :vytask:`T1370` (bug): Webproxy with ldap authentication don't start
 
 
-20190509
-========
+2019-05-09
+==========
 
 * :vytask:`T1367` (bug): VIF deletion fails inconsistently
 
 
-20190506
-========
+2019-05-06
+==========
 
 * :vytask:`T1368` (feature): Enable MPLS support in Linux Kernel
 
 
-20190505
-========
+2019-05-05
+==========
 
 * :vytask:`T1366` (feature): Update Linux Kernel to v4.19.40
 
 
-20190504
-========
+2019-05-04
+==========
 
 * :vytask:`T1365` (bug): Cannot configure syslog on 1.2.0-rolling+201904260337
 
 
-20190429
-========
+2019-04-29
+==========
 
 * :vytask:`T1359` (bug): Changing VLAN interface address from DHCP to static is not handeled in vyatta-address script
 * :vytask:`T1352` (feature): vyos-documentaion: accel-pppoe adding CIDR based IP pool option
 
 
-20190426
-========
+2019-04-26
+==========
 
 * :vytask:`T1357` (feature): Wrong exit code produced by dhcp-server migration script
 
 
-20190425
-========
+2019-04-25
+==========
 
 * :vytask:`T1355` (bug): rsyslog stopped after reboot or clean start
 
 
-20190423
-========
+2019-04-23
+==========
 
 * :vytask:`T1242` (bug): Error when setting 'pppoe 0 ipv6 address autoconf'
 * :vytask:`T1345` (feature): Specify RADIUS source IP for system login command
 * :vytask:`T41` (feature): Feature Request: Include bgpq3 for BGP policy creation
 
 
-20190421
-========
+2019-04-21
+==========
 
 * :vytask:`T314` (default): Unable to apply MSS Clamp with VyOS configuration
 * :vytask:`T1348` (feature): Upgrade WireGuard to 0.0.20190406-1
@@ -3445,8 +3450,8 @@ VyOS 1.3 Equuleus
 * :vytask:`T1332` (bug): Upgrade ethtool from 3.16 to 4.19
 
 
-20190420
-========
+2019-04-20
+==========
 
 * :vytask:`T1335` (default): Configuration migration issue from 1.1.8 to latest 1.2.0 regarding DHCP `authoritative enable` statement
 * :vytask:`T1336` (default): `system domain-name` statement doesn't allow domain names ending in a dot on latest 1.2.0
@@ -3455,82 +3460,82 @@ VyOS 1.3 Equuleus
 * :vytask:`T1310` (feature): Replace system prompt with FQDN
 
 
-20190419
-========
+2019-04-19
+==========
 
 * :vytask:`T1325` (default): GRE tunnel to Cisco router fails in 1.2.0 - works in 1.1.8
 
 
-20190417
-========
+2019-04-17
+==========
 
 * :vytask:`T14` (enhancment): Provide VMware OVF and OVA
 
 
-20190416
-========
+2019-04-16
+==========
 
 * :vytask:`T1274` (feature): Update QLogic firmware files
 * :vytask:`T1184` (feature): wireguard - extend documentation with the show interface wireguard commands
 
 
-20190415
-========
+2019-04-15
+==========
 
 * :vytask:`T1260` (feature): VICI-based implementation of "run show vpn ipsec sa"
 * :vytask:`T1273` (default): Add script profiling functionality to the config backend
 * :vytask:`T1248` (default): Add a function for copying nodes to the vyos.configtree library
 
 
-20190410
-========
+2019-04-10
+==========
 
 * :vytask:`T1329` (default): support installation on SD cards fix
 
 
-20190407
-========
+2019-04-07
+==========
 
 * :vytask:`T1296` (default): Image install can't install to SD cards (mmcblk...)
 
 
-20190405
-========
+2019-04-05
+==========
 
 * :vytask:`T1324` (feature): update documtation for 'set system login user level'
 * :vytask:`T1322` (bug): Wrong configuration generated for DHCPv6 Relay
 
 
-20190404
-========
+2019-04-04
+==========
 
 * :vytask:`T1323` (feature): migrate operator accounts to admin accounts and remove the option to setup an operator account
 
 
-20190326
-========
+2019-03-26
+==========
 
 * :vytask:`T1312` (feature): Allow many to many NAT rules with networks of different size
 * :vytask:`T1305` (bug): libvyosconfig parser doesn't work when config lacks a version comment and ends at a leaf node
 
 
-20190322
-========
+2019-03-22
+==========
 
 * :vytask:`T1308` (bug): Use of '<' in PPPoE password fails
 * :vytask:`T1279` (bug): ACPI power event don't work
 
 
-20190320
-========
+2019-03-20
+==========
 
 * :vytask:`T1282` (feature): Configure VyOS to send syslog messages to remote syslog using fully-qualified domain name
 * :vytask:`T1004` (feature): ISO + System Boot with Serial Console for APU2 and Embedded Devices
 * :vytask:`T405` (feature): Add binaries for lcdproc
 
 
-20190317
-========
+2019-03-17
+==========
 
 * :vytask:`T1218` (bug): Static routes not being applied in 1.2 Release
 * :vytask:`T1067` (feature): VXLAN support improvements
@@ -3541,33 +3546,33 @@ VyOS 1.3 Equuleus
 * :vytask:`T986` (feature): Please update the i40e driver
 
 
-20190316
-========
+2019-03-16
+==========
 
 * :vytask:`T1272` (bug): VRRP is using physical rather than virtual MAC in RFC-compliant mode
 
 
-20190312
-========
+2019-03-12
+==========
 
 * :vytask:`T1284` (feature): accel-ppp: pptp implementation documention
 * :vytask:`T833` (feature): accel-ppp: pptp implementation
 
 
-20190308
-========
+2019-03-08
+==========
 
 * :vytask:`T1277` (bug): Source build of VyOS 1.2.0 (crux) FileNotFound exception in show_dhcp.py
 
 
-20190302
-========
+2019-03-02
+==========
 
 * :vytask:`T929` (bug): Replace Debian firmware packages with upstream Kernel
 
 
-20190225
-========
+2019-02-25
+==========
 
 * :vytask:`T1261` (default): TFTP-Server only listen on 127.0.0.1
 * :vytask:`T1211` (default): Blank hostnames from dhcpd are able to bring down DNS
@@ -3575,39 +3580,39 @@ VyOS 1.3 Equuleus
 * :vytask:`T1234` (bug): DHCP relay relay-agents-packets is dysfunctional
 
 
-20190222
-========
+2019-02-22
+==========
 
 * :vytask:`T1257` (bug): implement 'set system static-host-mapping' in host_name.py and remove old function calls
 
 
-20190221
-========
+2019-02-21
+==========
 
 * :vytask:`T1214` (bug): Add `ipaddrcheck` to the packages directory
 * :vytask:`T1255` (bug): /usr/libexec/vyos/conf_mode/host_name.py needs to add an additional newline char
 
 
-20190219
-========
+2019-02-19
+==========
 
 * :vytask:`T1051` (default): Update openvpn to support TLS 1.2
 
 
-20190216
-========
+2019-02-16
+==========
 
 * :vytask:`T1174` (bug): "system domain-name" is not reflected in /etc/resolv.conf
 
 
-20190210
-========
+2019-02-10
+==========
 
 * :vytask:`T1154` (default): use of local cache to build iso
 
 
-20190209
-========
+2019-02-09
+==========
 
 * :vytask:`T1239` (feature): make module build for vyos-accel-ppp dynamic
 * :vytask:`T1236` (feature): Update Linux Kernel to 4.19.20
@@ -3615,31 +3620,31 @@ VyOS 1.3 Equuleus
 * :vytask:`T1010` (bug): improper pid file handling of webgui
 
 
-20190208
-========
+2019-02-08
+==========
 
 * :vytask:`T173` (bug): Static routes ignored with DHCP received gateway
 
 
-20190205
-========
+2019-02-05
+==========
 
 * :vytask:`T1231` (feature): Remove “service dns dynamic“ cache file on node change/delete
 
 
-20190129
-========
+2019-01-29
+==========
 
 * :vytask:`T166` (bug): NPTv6 is broken
 
 
-20181207
-========
+2018-12-07
+==========
 
 * :vytask:`T1060` (default): Add an option to exclude addresses from transparent wev proxying
 
 
-20180403
-========
+2018-04-03
+==========
 
 * :vytask:`T477` (bug): Strongswan issue #1220 (packet loss on AWS)
