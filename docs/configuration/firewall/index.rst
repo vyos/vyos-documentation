@@ -127,7 +127,7 @@ Some firewall settings are global and have a affect on the whole system.
 
 .. cfgcmd:: set firewall state-policy established log enable
 
-   Set the global setting for a astablished connections.
+   Set the global setting for a established connections.
 
 .. cfgcmd:: set firewall state-policy invalid action [accept | drop | reject]
 
