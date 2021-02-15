@@ -2,7 +2,7 @@
 Copyright Notice
 ################
 
-Copyright (C) 2018-2020 VyOS maintainers and contributors
+Copyright (C) 2018-2021 VyOS maintainers and contributors
 
 Permission is granted to make and distribute verbatim copies of this manual
 provided the copyright notice and this permission notice are preserved on all
