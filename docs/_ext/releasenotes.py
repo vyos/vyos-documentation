@@ -22,14 +22,14 @@ for project in projects.response['data']:
 projects = {
     'equuleus': {
         'phid': 'PHID-PROJ-zu26ui4vbmvykpjtepij',
-        'name': 'VyOS 1.3 Equuleus',
+        'name': '1.3 Equuleus',
         'filename': 'docs/changelog/1.3.rst',
         'tasks': [],
         'releasenotes': []
     },
     'current': {
         'phid': 'PHID-PROJ-m4utvy456e2shcprpq3b',
-        'name': 'VyOS 1.4 Sagitta',
+        'name': '1.4 Sagitta',
         'filename': 'docs/changelog/1.4.rst',
         'tasks': [],
         'releasenotes': []
@@ -71,7 +71,7 @@ for project in projects:
             releasenote = {}
             releasenote['type'] = task['fields']['subtype']
             date = datetime.fromtimestamp(task['fields']['dateClosed'])
-            releasenote['closedate'] = date.strftime('%Y%m%d')
+            releasenote['closedate'] = date.strftime('%Y-%m-%d')
             releasenote['name'] = task['fields']['name']
             releasenote['id'] = task['id']
             #print(f"{project}: {task['fields']['status']} {task['id']}")
@@ -86,6 +86,12 @@ for project in projects:
     rst_text += f"\n{projects[project]['name']}\n"
     rst_text += "#" * len(projects[project]['name'])
     rst_text += "\n"
+
+    rst_text += "\n"
+    rst_text += "..\n"
+    rst_text += "   Please don't add anything by hand.\n"
+    rst_text += "   This file is managed by the script:\n"
+    rst_text += "   _ext/releasenotes.py\n"
 
     date = None
     for rn in projects[project]['releasenotes']:
