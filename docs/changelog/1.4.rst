@@ -3,6 +3,13 @@ VyOS 1.4 Sagitta
 ################
 
 
+20210214
+========
+
+* :vytask:`T2848` (feature): bgp-add-path configuration options
+* :vytask:`T1875` (feature): Add the ability to use network address as BGP neighbor (bgp listen range)
+
+
 20210212
 ========
 
