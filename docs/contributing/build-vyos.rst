@@ -257,6 +257,88 @@ The full and current list can be generated with ``./configure --help``:
     --custom-package CUSTOM_PACKAGE
                           Custom package to install from repositories
 
+.. _iso_build_issues:
+
+ISO Build Issues
+----------------
+
+There are (rare) situations where building an ISO image is not possible at all
+due to a broken package feed in the background. APT is not very good at
+reporting the root cause of the issue. Your ISO build will likely fail with a
+more or less similar looking error message:
+
+.. code-block:: none
+
+  The following packages have unmet dependencies:
+   vyos-1x : Depends: accel-ppp but it is not installable
+  E: Unable to correct problems, you have held broken packages.
+  P: Begin unmounting filesystems...
+  P: Saving caches...
+  Reading package lists...
+  Building dependency tree...
+  Reading state information...
+  Del frr-pythontools 7.5-20210215-00-g8a5d3b7cd-0 [38.9 kB]
+  Del accel-ppp 1.12.0-95-g59f8e1b [475 kB]
+  Del frr 7.5-20210215-00-g8a5d3b7cd-0 [2671 kB]
+  Del frr-snmp 7.5-20210215-00-g8a5d3b7cd-0 [55.1 kB]
+  Del frr-rpki-rtrlib 7.5-20210215-00-g8a5d3b7cd-0 [37.3 kB]
+  make: *** [Makefile:30: iso] Error 1
+  (10:13) vyos_bld ece068908a5b:/vyos [current] #
+
+To debug the build process and gain additional information of what could be the
+root cause wou need to `chroot` into the build directry. This is explained in
+the following step by step procedure:
+
+.. code-block:: none
+
+  vyos_bld ece068908a5b:/vyos [current] # sudo chroot build/chroot /bin/bash
+
+We now need to mount some required, volatile filesystems
+
+.. code-block:: none
+
+  (live)root@ece068908a5b:/# mount -t proc none /proc
+  (live)root@ece068908a5b:/# mount -t sysfs none /sys
+  (live)root@ece068908a5b:/# mount -t devtmpfs none /dev
+
+We now are free to run any command we would like to use for debugging, e.g.
+re-installing the failed package after updating the repository.
+
+.. code-block:: none
+
+  (live)root@ece068908a5b:/# apt-get update; apt-get install vyos-1x
+  Get:1 file:/root/packages ./ InRelease
+  Ign:1 file:/root/packages ./ InRelease
+  Get:2 file:/root/packages ./ Release [1235 B]
+  Get:2 file:/root/packages ./ Release [1235 B]
+  Get:3 file:/root/packages ./ Release.gpg
+  Ign:3 file:/root/packages ./ Release.gpg
+  Hit:4 http://repo.powerdns.com/debian buster-rec-43 InRelease
+  Hit:5 http://repo.saltstack.com/py3/debian/10/amd64/archive/3002.2 buster InRelease
+  Hit:6 http://deb.debian.org/debian bullseye InRelease
+  Hit:7 http://deb.debian.org/debian buster InRelease
+  Hit:8 http://deb.debian.org/debian-security buster/updates InRelease
+  Hit:9 http://deb.debian.org/debian buster-updates InRelease
+  Hit:10 http://deb.debian.org/debian buster-backports InRelease
+  Hit:11 http://dev.packages.vyos.net/repositories/current current InRelease
+  Reading package lists... Done
+  N: Download is performed unsandboxed as root as file '/root/packages/./InRelease' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
+  Reading package lists... Done
+  Building dependency tree
+  Reading state information... Done
+  Some packages could not be installed. This may mean that you have
+  requested an impossible situation or if you are using the unstable
+  distribution that some required packages have not yet been created
+  or been moved out of Incoming.
+  The following information may help to resolve the situation:
+
+  The following packages have unmet dependencies:
+   vyos-1x : Depends: accel-ppp but it is not installable
+  E: Unable to correct problems, you have held broken packages.
+
+Now it's time to fix the package mirror and rerun the last step until the
+package installation succeeds again!
+
 .. _build_custom_packages:
 
 Linux Kernel

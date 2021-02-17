@@ -8,6 +8,12 @@ There are two flags available to aid in debugging configuration scripts.
 Since configuration loading issues will manifest during boot, the flags are
 passed as kernel boot parameters.
 
+ISO image build
+===============
+
+When having trouble compiling your own ISO image or debugging Jenkins issues
+you can follow the steps at :ref:`iso_build_issues`.
+
 System Startup
 ==============
 
@@ -76,7 +82,7 @@ will have the same effect as ``touch /tmp/vyos.ifconfig.debug``.
   disable ``vyos-configd`` in addition. This can be run either one-time by
   calling ``sudo systemctl stop vyos-configd`` or make this reboot-safe by
   calling ``sudo systemctl disable vyos-configd``.
-  
+
 FRR
 ---
 
