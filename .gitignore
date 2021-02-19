@@ -5,6 +5,7 @@ _build/
 venv/
 ENV/
 .venv
+Pipfile.lock
 
 # put various editor ignores here
 .vscode/
