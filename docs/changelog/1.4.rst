@@ -8,6 +8,40 @@
    _ext/releasenotes.py
 
 
+2021-02-21
+==========
+
+* :vytask:`T3331` (bug): Bgp unsuppress-map should be as "value leafNode"
+* :vytask:`T3330` (bug): Bgp capability orf prefix-list fail
+* :vytask:`T3163` (feature): ethernet ring-buffer can be set with an invalid value
+
+
+2021-02-19
+==========
+
+* :vytask:`T3326` (bug): OSPFv3: Cannot add L2TPv3 interface
+* :vytask:`T3332` (bug): BGP unnumbered - UnboundLocalError: local variable 'peer_group' referenced before assignment
+
+
+2021-02-18
+==========
+
+* :vytask:`T3259` (default): many dnat rules makes the vyos http api crash, even showConfig op timeouts
+
+
+2021-02-17
+==========
+
+* :vytask:`T3312` (feature): SolarFlare NICs support
+
+
+2021-02-16
+==========
+
+* :vytask:`T3313` (bug): ospfv3 interface missing options
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.99 / 5.10.17
+
+
 2021-02-15
 ==========
 
