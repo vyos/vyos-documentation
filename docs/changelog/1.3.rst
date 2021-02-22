@@ -8,6 +8,45 @@
    _ext/releasenotes.py
 
 
+2021-02-21
+==========
+
+* :vytask:`T3163` (feature): ethernet ring-buffer can be set with an invalid value
+* :vytask:`T2521` (bug): Need to restart pdns-recursor to check new entries in /etc/hosts
+
+
+2021-02-20
+==========
+
+* :vytask:`T2647` (default): ipsec disableuniqreqids generate a wrong ipsec.conf
+
+
+2021-02-19
+==========
+
+* :vytask:`T3326` (bug): OSPFv3: Cannot add L2TPv3 interface
+* :vytask:`T2061` (bug): protocol logs not sent to remote syslog
+
+
+2021-02-18
+==========
+
+* :vytask:`T3259` (default): many dnat rules makes the vyos http api crash, even showConfig op timeouts
+
+
+2021-02-17
+==========
+
+* :vytask:`T3047` (bug): OSPF : virtual-link and passive-interface default parameters does not work together
+* :vytask:`T3312` (feature): SolarFlare NICs support
+
+
+2021-02-16
+==========
+
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.99 / 5.10.17
+
+
 2021-02-14
 ==========
 
