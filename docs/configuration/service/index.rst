@@ -19,6 +19,7 @@ Service
    mdns
    pppoe-server
    router-advert
+   salt-minion
    snmp
    ssh
    tftp-server
