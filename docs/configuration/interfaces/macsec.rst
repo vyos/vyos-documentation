@@ -27,13 +27,10 @@ Common interface configuration
 MACsec options
 ==============
 
-.. cfgcmd:: set interfaces macsec <interface> security cipher [gcm-aes-128]
+.. cfgcmd:: set interfaces macsec <interface> security cipher <gcm-aes-128|gcm-aes-256>
 
   Select cipher suite used for cryptographic operations. This setting is
   mandatory.
-
-  .. note:: gcm-aes-256 support planned once iproute2 package is updated to
-     version >=5.2.
 
 .. cfgcmd:: set interfaces macsec <interface> security encrypt
 
