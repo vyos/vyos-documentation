@@ -32,8 +32,8 @@ An example:
 .. code-block:: none
 
   set interfaces tunnel tun0 encapsulation ipip
-  set interfaces tunnel tun0 local-ip 192.0.2.10
-  set interfaces tunnel tun0 remote-ip 203.0.113.20
+  set interfaces tunnel tun0 source-address 192.0.2.10
+  set interfaces tunnel tun0 remote 203.0.113.20
   set interfaces tunnel tun0 address 192.168.100.200/24
 
 IP6IP6
@@ -50,8 +50,8 @@ An example:
 .. code-block:: none
 
   set interfaces tunnel tun0 encapsulation ip6ip6
-  set interfaces tunnel tun0 local-ip 2001:db8:aa::1
-  set interfaces tunnel tun0 remote-ip 2001:db8:aa::2
+  set interfaces tunnel tun0 source-address 2001:db8:aa::1
+  set interfaces tunnel tun0 remote 2001:db8:aa::2
   set interfaces tunnel tun0 address 2001:db8:bb::1/64
 
 IPIP6
@@ -67,8 +67,8 @@ An example:
 .. code-block:: none
 
   set interfaces tunnel tun0 encapsulation ipip6
-  set interfaces tunnel tun0 local-ip 2001:db8:aa::1
-  set interfaces tunnel tun0 remote-ip 2001:db8:aa::2
+  set interfaces tunnel tun0 source-address 2001:db8:aa::1
+  set interfaces tunnel tun0 remote 2001:db8:aa::2
   set interfaces tunnel tun0 address 192.168.70.80/24
 
 6in4 (SIT)
@@ -89,8 +89,8 @@ An example:
 .. code-block:: none
 
   set interfaces tunnel tun0 encapsulation sit
-  set interfaces tunnel tun0 local-ip 192.0.2.10
-  set interfaces tunnel tun0 remote-ip 192.0.2.20
+  set interfaces tunnel tun0 source-address 192.0.2.10
+  set interfaces tunnel tun0 remote 192.0.2.20
   set interfaces tunnel tun0 address 2001:db8:bb::1/64
 
 A full example of a Tunnelbroker.net config can be found at
@@ -112,8 +112,8 @@ over either IPv4 (gre) or IPv6 (ip6gre).
 Configuration
 ^^^^^^^^^^^^^
 
-A basic configuration requires a tunnel source (local-ip), a tunnel destination
-(remote-ip), an encapsulation type (gre), and an address (ipv4/ipv6).Below is a
+A basic configuration requires a tunnel source (source-address), a tunnel destination
+(remote), an encapsulation type (gre), and an address (ipv4/ipv6).Below is a
 basic IPv4 only configuration example taken from a VyOS router and a Cisco IOS
 router. The main difference between these two configurations is that VyOS
 requires you explicitly configure the encapsulation type. The Cisco router
@@ -125,8 +125,8 @@ defaults to gre ip otherwise it would have to be configured as well.
 
   set interfaces tunnel tun100 address '10.0.0.1/30'
   set interfaces tunnel tun100 encapsulation 'gre'
-  set interfaces tunnel tun100 local-ip '198.51.100.2'
-  set interfaces tunnel tun100 remote-ip '203.0.113.10'
+  set interfaces tunnel tun100 source-address '198.51.100.2'
+  set interfaces tunnel tun100 remote '203.0.113.10'
 
 **Cisco IOS Router:**
 
@@ -147,8 +147,8 @@ and a Linux host using systemd-networkd.
   set interfaces tunnel tun101 address '2001:db8:feed:beef::1/126'
   set interfaces tunnel tun101 address '192.168.5.1/30'
   set interfaces tunnel tun101 encapsulation 'ip6gre'
-  set interfaces tunnel tun101 local-ip '2001:db8:babe:face::3afe:3'
-  set interfaces tunnel tun101 remote-ip '2001:db8:9bb:3ce::5'
+  set interfaces tunnel tun101 source-address '2001:db8:babe:face::3afe:3'
+  set interfaces tunnel tun101 remote '2001:db8:9bb:3ce::5'
 
 **Linux systemd-networkd:**
 
@@ -189,15 +189,15 @@ An example:
 
 .. code-block:: none
 
-   set interfaces tunnel tun0 local-ip 192.0.2.10
-   set interfaces tunnel tun0 remote-ip 192.0.2.20
+   set interfaces tunnel tun0 source-address 192.0.2.10
+   set interfaces tunnel tun0 remote 192.0.2.20
    set interfaces tunnel tun0 address 10.40.50.60/24
    set interfaces tunnel tun0 parameters ip key 10
-  
+
 .. code-block:: none
 
-   set interfaces tunnel tun0 local-ip 192.0.2.10
-   set interfaces tunnel tun0 remote-ip 192.0.2.20
+   set interfaces tunnel tun0 source-address 192.0.2.10
+   set interfaces tunnel tun0 remote 192.0.2.20
    set interfaces tunnel tun0 address 172.16.17.18/24
    set interfaces tunnel tun0 parameters ip key 20
 
@@ -211,7 +211,7 @@ to make sure the configuration performs as expected. A common cause for GRE
 tunnels to fail to come up correctly include ACL or Firewall configurations
 that are discarding IP protocol 47 or blocking your source/desintation traffic.
 
-**1. Confirm IP connectivity between tunnel local-ip and remote-ip:**
+**1. Confirm IP connectivity between tunnel source-address and remote:**
 
 .. code-block:: none
 
