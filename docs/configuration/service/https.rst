@@ -61,7 +61,8 @@ Configuration
 
    Use an automatically generated self-signed certificate
 
-.. cfgcmd:: set service https certificates system-generated-certificate lifetime <days>
+.. cfgcmd:: set service https certificates system-generated-certificate
+   lifetime <days>
 
    Lifetime in days; default is 365
 
