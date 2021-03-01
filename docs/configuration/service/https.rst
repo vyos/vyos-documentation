@@ -76,8 +76,9 @@ To retrieve a value:
 
 Use ``returnValues`` for multi-valued nodes.
 
-Some of VyOS components like DHCP, PPPoE Servers, IPSec, VXLAN, and other tunnels require full configuration for commit.
-It is possible to use a list of commands to satisfy requirements:
+Some of VyOS components like DHCP and PPPoE Servers, IPSec, VXLAN, and other
+tunnels require full configuration for commit. It is possible to use a list
+of commands to satisfy requirements:
 
 .. code-block:: none
 
