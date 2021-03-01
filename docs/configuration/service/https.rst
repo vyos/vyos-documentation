@@ -76,6 +76,11 @@ To retrieve a value:
 
 Use ``returnValues`` for multi-valued nodes.
 
+Some of VyOS components like DHCP, PPPoE Servers, IPSec, VXLAN, and other tunnels require full configuration for commit. It is possible to use a list of commands to satisfy requirements:
+
+.. code-block:: none
+
+  curl -k -X POST -F data='[{"op": "set","path":["interfaces","vxlan","vxlan1","remote","203.0.113.99"]}, {"op": "set","path":["interfaces","vxlan","vxlan1","vni","1"]}]' -F key=MY-HTTP-API-PLAINTEXT-KEY https://192.168.122.127/configure
 
 Show config
 """""""""""
