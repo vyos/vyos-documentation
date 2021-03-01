@@ -8,6 +8,46 @@
    _ext/releasenotes.py
 
 
+2021-02-28
+==========
+
+* :vytask:`T3370` (bug): dhcp: Invalid domain name "private"
+* :vytask:`T3369` (feature): VXLAN: add IPv6 underlay support
+* :vytask:`T3363` (bug): VyOS-Build interactive prompt when using Podman
+* :vytask:`T3320` (bug): Bgp neighbor peer-group without peer-group fail
+
+
+2021-02-27
+==========
+
+* :vytask:`T3365` (bug): Bgp neighbor interface ordering for remote-as
+* :vytask:`T3225` (bug): Adding a BGP neighbor with an address on a local interface throws a vyos.frr.CommitError: Configuration FRR failed while committing code: ''
+* :vytask:`T3211` (feature): ability to redistribute ISIS into other routing protocols
+* :vytask:`T3368` (feature): macsec: add support for gcm-aes-256 cipher
+* :vytask:`T3173` (feature): Need 'nopmtudisc' option for tunnel interface
+
+
+2021-02-26
+==========
+
+* :vytask:`T3324` (bug): Bgp space in the password
+* :vytask:`T3357` (default): HTTP-API redirect from http correct https port
+* :vytask:`T3323` (bug): Bgp ttl-security and ebgp-multihop fail
+
+
+2021-02-24
+==========
+
+* :vytask:`T3303` (feature): Change welcome message on boot
+
+
+2021-02-22
+==========
+
+* :vytask:`T3322` (bug): Bgp neighbor timers not applyed to FRR config
+* :vytask:`T3327` (bug): OSPFv3: Cannot add dummy interface
+
+
 2021-02-21
 ==========
 
@@ -39,7 +79,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.99 / 5.10.17
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.101 / 5.10.19
 
 
 2021-02-15
