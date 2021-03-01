@@ -530,8 +530,8 @@ Redistribution Configuration
 General Configuration
 ---------------------
 
-Common parametrs
-^^^^^^^^^^^^^^^^
+Common parameters
+^^^^^^^^^^^^^^^^^
 
 .. cfgcmd:: set protocols bgp <asn> parameters router-id <id>
 
@@ -585,7 +585,17 @@ Common parametrs
    This command goes hand in hand with the listen range command to limit the
    amount of BGP neighbors that are allowed to connect to the local router.
    The limit range is 1 to 5000.
-
+   
+.. cfgcmd:: set protocols bgp <asn> parameters ebgp-requires-policy
+   
+   This command changes the eBGP behavior of FRR. By default FRR enables
+   :rfc:`8212` functionality which affects how eBGP routes are advertised,
+   namely no routes are advertised across eBGP sessions without some
+   sort of egress route-map/policy in place. In VyOS however we have this
+   RFC functionality disabled by default so that we can preserve backwards
+   compatibility with older versions of VyOS. With this option one can
+   enable :rfc:`8212` functionality to operate.
+   
 Administrative Distance
 ^^^^^^^^^^^^^^^^^^^^^^^
 
