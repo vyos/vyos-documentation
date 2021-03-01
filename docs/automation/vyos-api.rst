@@ -4,7 +4,7 @@
 VyOS API
 ########
 
-for configuration and enabling the API see :ref:`httpapi`
+for configuration and enabling the API see :ref:`http-api`
 
 **************
 Authentication
@@ -242,14 +242,16 @@ You can pass a ``set``, ``delete`` or ``comment`` command to the
       "error": null
    }
 
-The API will push the command to a session and commit after each HTTP reguest.
+The API push every request to a session and commit it.
+But some of VyOS components like DHCP and PPPoE Servers, IPSec, VXLAN, and
+other tunnels require full configuration for commit. 
 The Endpoint will process multiple commands when you pass them as a list to
 the ``data`` field.
 
 .. code-block:: none
 
    curl -k --location --request POST 'https://vyos/configure' \
-   --form data='[{"op": "delete", "path": ["interfaces", "dummy", "dum1", "address"]},{"op": "set", "path": ["interfaces", "dummy", "dum1", "address", "10.11.0.1/32"]}]' \
+   --form data='[{"op": "set","path":["interfaces","vxlan","vxlan1","remote","203.0.113.99"]}, {"op": "set","path":["interfaces","vxlan","vxlan1","vni","1"]}]' \
    --form key='MY-HTTPS-API-PLAINTEXT-KEY'
 
    response:
