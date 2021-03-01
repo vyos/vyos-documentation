@@ -8,6 +8,37 @@
    _ext/releasenotes.py
 
 
+2021-02-28
+==========
+
+* :vytask:`T3370` (bug): dhcp: Invalid domain name "private"
+* :vytask:`T3369` (feature): VXLAN: add IPv6 underlay support
+
+
+2021-02-27
+==========
+
+* :vytask:`T2291` (bug): Bad hostnames in /etc/hosts with static-mapping in dhcp server config
+* :vytask:`T3364` (feature): tunnel: cleanup/rename CLI nodes
+* :vytask:`T3211` (feature): ability to redistribute ISIS into other routing protocols
+* :vytask:`T3368` (feature): macsec: add support for gcm-aes-256 cipher
+* :vytask:`T3366` (bug): tunnel: can not change local / remote ip address for gre-bridge tunnel
+
+
+2021-02-26
+==========
+
+* :vytask:`T3347` (default): vyos 1.3 beta fails to configure Xen HVM guest ethernet interfaces due to ethtool -g error
+* :vytask:`T3357` (default): HTTP-API redirect from http correct https port
+
+
+2021-02-24
+==========
+
+* :vytask:`T1774` (default): Add a show config operation to the HTTP API
+* :vytask:`T3303` (feature): Change welcome message on boot
+
+
 2021-02-21
 ==========
 
@@ -44,7 +75,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.99 / 5.10.17
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.101 / 5.10.19
 
 
 2021-02-14
