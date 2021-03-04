@@ -72,11 +72,11 @@ IPv6 DNS addresses are optional.
 
   set service ipoe-server authentication interface eth3 mac-address 08:00:27:2F:D8:06
   set service ipoe-server authentication mode 'local'
-  set service ipoe-server client-ipv6-pool delegate-prefix '2001:db8:1::/48,56'
-  set service ipoe-server client-ipv6-pool prefix '2001:db8::/48,64'
-  set service ipoe-server dnsv6-server server-1 '2001:db8::'
-  set service ipoe-server dnsv6-server server-2 '2001:db8:aaa::'
-  set service ipoe-server dnsv6-server server-3 '2001:db8:bbb::'
+  set service ipoe-server client-ipv6-pool delegate '2001:db8:1::/48' delegation-prefix '56'
+  set service ipoe-server client-ipv6-pool prefix '2001:db8::/48' mask '64'
+  set service ipoe-server name-server '2001:db8::'
+  set service ipoe-server name-server '2001:db8:aaa::'
+  set service ipoe-server name-server '2001:db8:bbb::'
   set service ipoe-server interface eth3 client-subnet '192.168.1.0/24'
 
 .. code-block:: none
@@ -116,7 +116,7 @@ example configuration can be used.
 .. code-block:: none
 
   set service ipoe-server authentication mode 'radius'
-  set service ipoe-server authentication radius-server 10.100.100.1 secret 'password'
+  set service ipoe-server authentication radius server 10.100.100.1 key 'password'
 
 Bandwidth Shaping
 =================
@@ -134,8 +134,8 @@ The rate-limit is set in kbit/sec.
   set service ipoe-server authentication interface eth2 mac-address 08:00:27:2f:d8:06 rate-limit download '500'
   set service ipoe-server authentication interface eth2 mac-address 08:00:27:2f:d8:06 rate-limit upload '500'
   set service ipoe-server authentication mode 'local'
-  set service ipoe-server dns-server server-1 '10.10.1.1'
-  set service ipoe-server dns-server server-2 '10.10.1.2'
+  set service ipoe-server name-server '10.10.1.1'
+  set service ipoe-server name-server '10.10.1.2'
   set service ipoe-server interface eth2 client-subnet '192.168.0.0/24'
 
 .. code-block:: none
