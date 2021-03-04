@@ -48,3 +48,14 @@
   .. code-block:: none
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options no-default-route
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} dhcp-options default-route-distance <distance>
+
+  Set the distance for the default gateway sent by the DHCP server.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options default-route-distance 220
