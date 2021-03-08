@@ -8,6 +8,38 @@
    _ext/releasenotes.py
 
 
+2021-03-07
+==========
+
+* :vytask:`T3319` (bug): VXLAN uses ttl 1 (auto) by default
+* :vytask:`T3391` (feature): Add CLI support for specifying maximum-paths per address family ipv4 unicast and ipv6 unicast
+* :vytask:`T3211` (feature): ability to redistribute ISIS into other routing protocols
+
+
+2021-03-05
+==========
+
+* :vytask:`T2659` (feature): Add fastnetmon (DDoS detection) support
+
+
+2021-03-04
+==========
+
+* :vytask:`T2861` (bug): route-map "set community additive" not working correctly
+
+
+2021-03-03
+==========
+
+* :vytask:`T2966` (feature): tunnel: add new encapsulation types ip6tnl and ip6gretap
+
+
+2021-03-01
+==========
+
+* :vytask:`T3342` (bug): On xen-netback interfaces must set "scattergather" offload before MTU>1500
+
+
 2021-02-28
 ==========
 
@@ -20,7 +52,6 @@
 
 * :vytask:`T2291` (bug): Bad hostnames in /etc/hosts with static-mapping in dhcp server config
 * :vytask:`T3364` (feature): tunnel: cleanup/rename CLI nodes
-* :vytask:`T3211` (feature): ability to redistribute ISIS into other routing protocols
 * :vytask:`T3368` (feature): macsec: add support for gcm-aes-256 cipher
 * :vytask:`T3366` (bug): tunnel: can not change local / remote ip address for gre-bridge tunnel
 
@@ -75,7 +106,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.101 / 5.10.19
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.102 / 5.10.20
 
 
 2021-02-14
