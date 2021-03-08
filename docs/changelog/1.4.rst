@@ -8,6 +8,25 @@
    _ext/releasenotes.py
 
 
+2021-03-07
+==========
+
+* :vytask:`T3388` (bug): show interfaces doesn't display pppoeX
+* :vytask:`T3211` (feature): ability to redistribute ISIS into other routing protocols
+
+
+2021-03-04
+==========
+
+* :vytask:`T3377` (bug): show interfaces throws error
+
+
+2021-03-02
+==========
+
+* :vytask:`T3375` (bug): Interface becomes up at boot even when disabled
+
+
 2021-02-28
 ==========
 
@@ -22,7 +41,6 @@
 
 * :vytask:`T3365` (bug): Bgp neighbor interface ordering for remote-as
 * :vytask:`T3225` (bug): Adding a BGP neighbor with an address on a local interface throws a vyos.frr.CommitError: Configuration FRR failed while committing code: ''
-* :vytask:`T3211` (feature): ability to redistribute ISIS into other routing protocols
 * :vytask:`T3368` (feature): macsec: add support for gcm-aes-256 cipher
 * :vytask:`T3173` (feature): Need 'nopmtudisc' option for tunnel interface
 
@@ -79,7 +97,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.101 / 5.10.19
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.102 / 5.10.20
 
 
 2021-02-15
