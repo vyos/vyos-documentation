@@ -41,8 +41,8 @@ the configuration.
 
   set service ipoe-server authentication interface eth2 mac-address 08:00:27:2f:d8:06
   set service ipoe-server authentication mode 'local'
-  set service ipoe-server dns-server server-1 '10.10.1.1'
-  set service ipoe-server dns-server server-2 '10.10.1.2'
+  set service ipoe-server name-server '10.10.1.1'
+  set service ipoe-server name-server '10.10.1.2'
   set service ipoe-server interface eth2 client-subnet '192.168.0.0/24'
 
 
