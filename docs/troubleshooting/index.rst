@@ -441,8 +441,8 @@ These are the boot steps for VyOS 1.2
     1. The config loader script writes log entries to
        ``/var/log/vyatta-config-loader.log``
 
-  10. Runs ``telinit q`` to tell the init system to reload ``/etc/inittab``
-  11. Finally it runs the post-config script
+  9. Runs ``telinit q`` to tell the init system to reload ``/etc/inittab``
+  10. Finally it runs the post-config script
       ``/config/scripts/vyos-postconfig-bootup.script``
 
 .. stop_vyoslinter
