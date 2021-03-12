@@ -24,7 +24,7 @@ The README.md file will guide you to use the this top level repository.
 Submit a Patch
 ==============
 
-Patches are always more then welcome. To have a clean and easy to maintain
+Patches are always more than welcome. To have a clean and easy to maintain
 repository we have some guidelines when working with Git. A clean repository
 eases the automatic generation of a changelog file.
 
