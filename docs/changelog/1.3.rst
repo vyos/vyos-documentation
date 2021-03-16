@@ -8,6 +8,45 @@
    _ext/releasenotes.py
 
 
+2021-03-14
+==========
+
+* :vytask:`T3395` (bug): WAN load-balancing fails with nexthop dhcp
+* :vytask:`T3289` (bug): No description for node "service" conf-mode
+* :vytask:`T2271` (feature): OSPF: add per VRF instance support
+* :vytask:`T175` (feature): Add source route option to vti interface
+
+
+2021-03-13
+==========
+
+* :vytask:`T3406` (bug): tunnel: interface no longer supports specifying encaplimit none - or migrator is missing
+* :vytask:`T3407` (bug): console-server: do not allow to spawn a console-server session on serial port used by "system console"
+
+
+2021-03-11
+==========
+
+* :vytask:`T3399` (bug): RPKI: dashes in hostnames are replaced with underscores when rendering the FRR config
+* :vytask:`T3305` (bug): Ingress qdisc does not work anymore in 1.3-rolling-202101 snapshot
+* :vytask:`T2927` (bug): isc-dhcpd release and expiry events never execute
+* :vytask:`T899` (bug): Tunnels cannot be moved from one bridge to another
+* :vytask:`T786` (feature): new style xml and conf-mode scripts: posibillity to add tagNode value as parameter to conf-script
+
+
+2021-03-09
+==========
+
+* :vytask:`T3389` (default): gretap tunnel type missing from vyos documentation after renamed from gre-bridge
+* :vytask:`T3382` (bug): Error creating Console Server
+
+
+2021-03-08
+==========
+
+* :vytask:`T3387` (bug): Command "Monitor vpn ipsec"  is not working
+
+
 2021-03-07
 ==========
 
@@ -106,7 +145,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.102 / 5.10.20
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.105 / 5.10.23
 
 
 2021-02-14
