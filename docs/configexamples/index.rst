@@ -17,3 +17,4 @@ This chapter contains various configuration examples:
    tunnelbroker-ipv6
    ha
    wan-load-balancing
+   pppoe-ipv6-basic
