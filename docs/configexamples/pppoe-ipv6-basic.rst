@@ -15,7 +15,7 @@ please contact your ISP for more information.
 Network Topology
 ================
 
-.. image:: /_static/images/pppoe-ipv6-pd-diagram.png
+.. image:: /_static/images/pppoe-ipv6-pd-diagram.jpg
    :width: 60%
    :align: center
    :alt: Network Topology Diagram
