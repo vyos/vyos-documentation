@@ -185,7 +185,7 @@ Live installation
 .. note:: A permanent VyOS installation always requires to go first
    through a live installation.
 
-VyOS, as other GNU+Linux distributions, can be tasted without installing
+VyOS, as other GNU+Linux distributions, can be tested without installing
 it in your hard drive. **With your downloaded VyOS .iso file you can
 create a bootable USB drive that will let you boot into a fully
 functional VyOS system**. Once you have tested it, you can either decide
