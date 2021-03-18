@@ -3,7 +3,6 @@ VyOS Automation
 ###############
 
 
-  * Ansible
   * Saltstack
   * startup scripts
 
@@ -12,4 +11,5 @@ VyOS Automation
    :maxdepth: 1
    
    vyos-api
+   vyos-ansible
    command-scripting
