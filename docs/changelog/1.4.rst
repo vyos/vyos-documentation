@@ -8,11 +8,52 @@
    _ext/releasenotes.py
 
 
-2021-03-14
+2021-03-21
+==========
+
+* :vytask:`T3417` (default): ISIS: provide per VRF instance support
+* :vytask:`T3416` (bug): NTP: when running inside a VRF op-mode commands do not work
+
+
+2021-03-20
 ==========
 
 * :vytask:`T3395` (bug): WAN load-balancing fails with nexthop dhcp
-* :vytask:`T3289` (bug): No description for node "service" conf-mode
+* :vytask:`T3392` (bug): vrrp over dhcp default route bug (unexpected vrf)
+* :vytask:`T3373` (feature): Upgrade to SaltStack version 3002.5
+* :vytask:`T3329` (default): "system conntrack ignore" rules can no longer be created due to an iptables syntax change
+* :vytask:`T3300` (feature): Add DHCP default route distance
+* :vytask:`T3306` (feature): Extend set route-map aggregator as to 4 Bytes 
+
+
+2021-03-18
+==========
+
+* :vytask:`T3411` (default): Extend the redirect_stdout context manager in vyos-configd to redirect stdout from subprocesses
+* :vytask:`T3271` (bug): qemu-kvm grub issue
+
+
+2021-03-17
+==========
+
+* :vytask:`T3413` (bug): Configuring invalid IPv6 EUI64 address results in "OSError: illegal IP address string passed to inet_pton"
+
+
+2021-03-16
+==========
+
+* :vytask:`T3302` (default): Make vyos-configd relay stdout from scripts to the user's console
+
+
+2021-03-15
+==========
+
+* :vytask:`T3354` (default): Convert strip-private script from Perl to Python
+
+
+2021-03-14
+==========
+
 * :vytask:`T3345` (default): BGP: add per VRF instance support
 * :vytask:`T3344` (default): Per VRF dynamic routing support
 * :vytask:`T3325` (bug): Bgp listen-range wrong commit message
@@ -135,7 +176,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.105 / 5.10.23
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.106 / 5.10.24
 
 
 2021-02-15
