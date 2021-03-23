@@ -26,7 +26,7 @@ proper commands list by copying it from another router.
 
 Usage example (User-Data content):
 
-.. code-block::
+.. code-block:: none
 
    #cloud-config
    vyos_config_commands:
