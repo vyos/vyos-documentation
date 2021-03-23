@@ -803,21 +803,20 @@ Area Configuration
 Interface Configuration
 -----------------------
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 cost <number>
+.. cfgcmd:: set protocols ospfv3 interface <intname> ipv6 cost <number>
 
    This command sets link cost for the specified interface. The cost value is
    set to router-LSA’s metric field and used for SPF calculation. The cost
    range is 1 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 dead-interval
-   <number>
+.. cfgcmd:: set protocols ospfv3 interface <intname> dead-interval <number>
 
    Set number of seconds for router Dead Interval timer value used for Wait
    Timer and Inactivity Timer. This value must be the same for all routers
    attached to a common network. The default value is 40 seconds. The
    interval range is 1 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 hello-interval
+.. cfgcmd:: set protocols ospfv3 interface <intname> hello-interval
    <number>
 
    Set number of seconds for Hello Interval timer value. Setting this value,
@@ -826,14 +825,14 @@ Interface Configuration
    common network. The default value is 10 seconds. The interval range is 1
    to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 mtu-ignore
+.. cfgcmd:: set protocols ospfv3 interface <intname> mtu-ignore
 
    This command disables check of the MTU value in the OSPF DBD packets.
    Thus, use of this command allows the OSPF adjacency to reach the FULL
    state even though there is an interface MTU mismatch between two OSPF
    routers.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 network <type>
+.. cfgcmd:: set protocols ospfv3 interface <intname> network <type>
 
    This command allows to specify the distribution type for the network
    connected to this interface:
@@ -841,20 +840,20 @@ Interface Configuration
    **broadcast** – broadcast IP addresses distribution.
    **point-to-point** – address distribution in point-to-point networks.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 priority <number>
+.. cfgcmd:: set protocols ospfv3 interface <intname> priority <number>
 
    This command sets Router Priority integer value. The router with the
    highest priority will be more eligible to become Designated Router.
    Setting the value to 0, makes the router ineligible to become Designated
    Router. The default value is 1. The interval range is 0 to 255.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 passive
+.. cfgcmd:: set protocols ospfv3 interface <intname> passive
 
    This command specifies interface as passive. Passive interface advertises
    its address, but does not run the OSPF protocol (adjacencies are not formed
    and hello packets are not generated).
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 retransmit-interval
+.. cfgcmd:: set protocols ospfv3 interface <intname> retransmit-interval
    <number>
 
    This command sets number of seconds for RxmtInterval timer value. This
@@ -862,7 +861,7 @@ Interface Configuration
    Request packets if acknowledge was not received. The default value is 5
    seconds. The interval range is 3 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 transmit-delay
+.. cfgcmd:: set protocols ospfv3 interface <intname> transmit-delay
    <number>
 
    This command sets number of seconds for InfTransDelay value. It allows to
@@ -899,15 +898,9 @@ Operational Mode Commands
    This command displays the neighbors information in a detailed form, not
    just a summary table.
 
-.. opcmd:: show ipv6 ospfv3 neighbor <A.B.C.D>
+.. opcmd:: show ipv6 ospfv3 neighbor drchoice
 
-   This command displays the neighbors information in a detailed form for
-   a neighbor whose IP address is specified.
-
-.. opcmd:: show ipv6 ospfv3 neighbor <intname>
-
-   This command displays the neighbors status for a neighbor on the specified
-   interface.
+   This command displays the neighbor DR choice information.
 
 .. opcmd:: show ipv6 ospfv3 interface [prefix]|[<intname> [prefix]]
 
