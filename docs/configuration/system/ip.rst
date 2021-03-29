@@ -32,7 +32,7 @@ show commands
 
 See below the different parameters available for the IPv4 **show** command:
 
-.. code-block::
+.. code-block:: none
 
    vyos@vyos:~$ show ip
    Possible completions:
@@ -64,7 +64,7 @@ reset commands
 
 And the different IPv4 **reset** commands available:
 
-.. code-block::
+.. code-block:: none
 
    vyos@vyos:~$ reset ip 
    Possible completions:
