@@ -8,6 +8,40 @@
    _ext/releasenotes.py
 
 
+2021-03-28
+==========
+
+* :vytask:`T3440` (bug): HTTP API: give uvicorn time to initialize before restarting Nginx proxy
+* :vytask:`T3426` (default): add support for script arguments to vyos-configd
+
+
+2021-03-27
+==========
+
+* :vytask:`T3423` (bug): Cannot create ipv4 static route for default gateway in vrf
+
+
+2021-03-26
+==========
+
+* :vytask:`T3412` (default): HTTP API: move to FastAPI as web framework
+* :vytask:`T2397` (feature): HTTP API: export OpenAPI definition
+
+
+2021-03-24
+==========
+
+* :vytask:`T3419` (bug): show interfaces | strip-private fails
+* :vytask:`T3307` (default): address prefix destination NAT fails to render nftables rules / commit
+
+
+2021-03-22
+==========
+
+* :vytask:`T3402` (feature): Add VyOS programming library for operational level commands
+* :vytask:`T3284` (bug): merge/load fail silently if unable to resolve host
+
+
 2021-03-21
 ==========
 
@@ -18,7 +52,6 @@
 2021-03-20
 ==========
 
-* :vytask:`T3395` (bug): WAN load-balancing fails with nexthop dhcp
 * :vytask:`T3392` (bug): vrrp over dhcp default route bug (unexpected vrf)
 * :vytask:`T3373` (feature): Upgrade to SaltStack version 3002.5
 * :vytask:`T3329` (default): "system conntrack ignore" rules can no longer be created due to an iptables syntax change
@@ -176,7 +209,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.106 / 5.10.24
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.108 / 5.10.26
 
 
 2021-02-15
