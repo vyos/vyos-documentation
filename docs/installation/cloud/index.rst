@@ -8,4 +8,7 @@ Running VyOS in Cloud Environments
    :maxdepth: 1
    :caption: Content
    
+   aws
+   azure
+   gcp
    cloud-init
