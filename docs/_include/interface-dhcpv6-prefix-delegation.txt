@@ -24,7 +24,7 @@ networks.
   {{ var5 }} {{ var6 }} dhcpv6-options pd <id> interface <delegatee>
   address <address>
 
-  Specify the interface address used locally on the interfcae where the prefix
+  Specify the interface address used locally on the interface where the prefix
   has been delegated to. ID must be a decimal integer.
 
   It will be combined with the delegated prefix and the sla-id to form a
