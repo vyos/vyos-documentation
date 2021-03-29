@@ -370,19 +370,19 @@ Replace the 203.0.113.3 with whatever the other router's IP address is.
 
    set interfaces wireguard wg01 address '10.254.60.1/30'
    set interfaces wireguard wg01 description 'router1-to-offsite1'
-   set interfaces wireguard wg01 ip ospf authentication md5 key-id 1 md5-key 'i360KoCwUGZvPq7e'
-   set interfaces wireguard wg01 ip ospf cost '11'
-   set interfaces wireguard wg01 ip ospf dead-interval '5'
-   set interfaces wireguard wg01 ip ospf hello-interval '1'
-   set interfaces wireguard wg01 ip ospf network 'point-to-point'
-   set interfaces wireguard wg01 ip ospf priority '1'
-   set interfaces wireguard wg01 ip ospf retransmit-interval '5'
-   set interfaces wireguard wg01 ip ospf transmit-delay '1'
    set interfaces wireguard wg01 peer OFFSITE1 allowed-ips '0.0.0.0/0'
    set interfaces wireguard wg01 peer OFFSITE1 endpoint '203.0.113.3:50001'
    set interfaces wireguard wg01 peer OFFSITE1 persistent-keepalive '15'
    set interfaces wireguard wg01 peer OFFSITE1 pubkey 'GEFMOWzAyau42/HwdwfXnrfHdIISQF8YHj35rOgSZ0o='
    set interfaces wireguard wg01 port '50001'
+   set protocols ospf interface wg01 authentication md5 key-id 1 md5-key 'i360KoCwUGZvPq7e'
+   set protocols ospf interface wg01 cost '11'
+   set protocols ospf interface wg01 dead-interval '5'
+   set protocols ospf interface wg01 hello-interval '1'
+   set protocols ospf interface wg01 network 'point-to-point'
+   set protocols ospf interface wg01 priority '1'
+   set protocols ospf interface wg01 retransmit-interval '5'
+   set protocols ospf interface wg01 transmit-delay '1'
 
 
 **offsite1**
@@ -393,19 +393,19 @@ This is connecting back to the STATIC IP of router1, not the floating.
 
    set interfaces wireguard wg01 address '10.254.60.2/30'
    set interfaces wireguard wg01 description 'offsite1-to-router1'
-   set interfaces wireguard wg01 ip ospf authentication md5 key-id 1 md5-key 'i360KoCwUGZvPq7e'
-   set interfaces wireguard wg01 ip ospf cost '11'
-   set interfaces wireguard wg01 ip ospf dead-interval '5'
-   set interfaces wireguard wg01 ip ospf hello-interval '1'
-   set interfaces wireguard wg01 ip ospf network 'point-to-point'
-   set interfaces wireguard wg01 ip ospf priority '1'
-   set interfaces wireguard wg01 ip ospf retransmit-interval '5'
-   set interfaces wireguard wg01 ip ospf transmit-delay '1'
    set interfaces wireguard wg01 peer ROUTER1 allowed-ips '0.0.0.0/0'
    set interfaces wireguard wg01 peer ROUTER1 endpoint '192.0.2.21:50001'
    set interfaces wireguard wg01 peer ROUTER1 persistent-keepalive '15'
    set interfaces wireguard wg01 peer ROUTER1 pubkey 'CKwMV3ZaLntMule2Kd3G7UyVBR7zE8/qoZgLb82EE2Q='
    set interfaces wireguard wg01 port '50001'
+   set protocols ospf interface wg01 authentication md5 key-id 1 md5-key 'i360KoCwUGZvPq7e'
+   set protocols ospf interface wg01 cost '11'
+   set protocols ospf interface wg01 dead-interval '5'
+   set protocols ospf interface wg01 hello-interval '1'
+   set protocols ospf interface wg01 network 'point-to-point'
+   set protocols ospf interface wg01 priority '1'
+   set protocols ospf interface wg01 retransmit-interval '5'
+   set protocols ospf interface wg01 transmit-delay '1'
 
 Test WireGuard
 --------------
@@ -523,8 +523,8 @@ be used unless the primary links are down.
 
 .. code-block:: none
 
-   set interfaces wireguard wg01 ip ospf cost '10'
-   set interfaces wireguard wg02 ip ospf cost '200'
+   set protocols ospf interface wg01 cost '10'
+   set protocols ospf interface wg01 cost '200'
 
 
 This will be visible in 'show ip route'.
