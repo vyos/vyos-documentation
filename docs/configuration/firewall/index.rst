@@ -254,7 +254,7 @@ the action of the rule will executed.
 .. cfgcmd:: set firewall ipv6-name <name> default-action [drop | reject |
    accept]
 
-   This set the default action of the rule-set if no rule matched a paket
+   This set the default action of the rule-set if no rule matched a packet
    criteria.
 
 .. cfgcmd:: set firewall name <name> enable-default-log
@@ -387,8 +387,8 @@ There are a lot of matching criteria gainst which the package can be tested.
 
    Match a protocol criteria. A protocol number or a name which is here
    defined: ``/etc/protocols``. 
-   Special names are ``all`` for all protocols and ``tcp_udp`` for tcp and upd
-   based pakets. The ``!`` negate the selected protocol.
+   Special names are ``all`` for all protocols and ``tcp_udp`` for tcp and udp
+   based packets. The ``!`` negate the selected protocol.
 
    .. code-block:: none
 
@@ -421,7 +421,7 @@ There are a lot of matching criteria gainst which the package can be tested.
 Applying a Rule-Set to an Interface
 ***********************************
 
-A Rule-Set can be appliend to every inteface:
+A Rule-Set can be applied to every interface:
 
 * ``in``: Ruleset for forwarded packets on inbound interface
 * ``out``: Ruleset for forwarded packets on outbound interface
