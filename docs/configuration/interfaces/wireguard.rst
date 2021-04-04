@@ -259,7 +259,7 @@ Operational commands
 
 .. code-block:: none
 
-  vyos@wg01# wireguard keypair default
+  vyos@wg01$ delete wireguard keypair default
 
 
 .. stop_vyoslinter
