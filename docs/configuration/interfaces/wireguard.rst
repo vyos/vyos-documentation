@@ -20,9 +20,9 @@ Generate keypair
 
 .. opcmd:: generate wireguard default-keypair
 
-   It generates the keypair, that is its public and private part and stores
-   it within VyOS. It will be used per default on any configured WireGuard
-   interface, even if multiple interfaces are being configured.
+   It generates the keypair, which includes the public and private parts,
+   and stores it within VyOS. It will be used per default on any configured
+   WireGuard interface, even if multiple interfaces are being configured.
 
 .. opcmd:: show wireguard keypairs pubkey default
 
