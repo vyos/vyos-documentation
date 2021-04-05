@@ -4,9 +4,9 @@
 Documentation
 #############
 
-As most software projects we also have a lack in documentation. We encourage
-every VyOS user to help us improve our documentation. This will not only be
-beneficial for you (when reading something up) but also for the whole world.
+We encourage every VyOS user to help us improve our documentation as we have
+a deficit like most software projects.  This not only be helps you when reading,
+but also everyone else.
 
 If you are willing to contribute to our documentation this is the definite
 guide how to do so.
@@ -101,7 +101,7 @@ access to the official codebase.
     $ git checkout master
     $ git merge upstream/master
 
-* If you want to update your fork on GitHub, too use the following: ``$ git
+* If you also want to update your fork on GitHub, use the following: ``$ git
   push origin master``
 
 Style Guide
@@ -153,7 +153,7 @@ system numbers for the documentation:
   * Unicast MAC Addresses: ``00-53-00`` to ``00-53-FF``
   * Multicast MAC-Addresses: ``90-10-00`` to ``90-10-FF``
 
-Please don't use other public address space.
+Please do not use other public address space.
 
 
 Line length
@@ -161,32 +161,32 @@ Line length
 
 Limit all lines to a maximum of 80 characters.
 
-Except in ``.. code-block::`` because it will use  the html tag ``<pre>``
-which have the save line format as in the rst file.
+Except in ``.. code-block::`` because it uses the html tag ``<pre>`` and
+renders the same line format from the source rst file.
 
 
 Autolinter
 ^^^^^^^^^^
 
-Each GitHub Pull request will automatically lint against the Address space and
+Each GitHub Pull request is automatically linted to check the Address space and
 line length.
 
 Sometimes it is necessary to provide real IP Addresses like in the
-:ref:`examples`. For this please use the sphinx comment syntax
+:ref:`examples`. For this, please use the sphinx comment syntax
 ``.. stop_vyoslinter`` to stop the linter and ``.. start_vyoslinter`` to start.
 
 
 Custom Sphinx-doc Markup
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-When writing the documentation custom commands have been developed. Please
+Custom commands have been developed for writing the documentation. Please
 make yourself comfortable with those commands as this eases the way we
 render the documentation.
 
 cfgcmd
 """"""
 
-When documenting CLI commands use the ``.. cfgcmd::`` directive
+When documenting CLI commands, use the ``.. cfgcmd::`` directive
 for all configuration mode commands. An explanation of the described command
 should be added below this statement.
 Replace all variable contents with <value> or somthing similar.
@@ -201,7 +201,7 @@ descriptive way in the resulting HTML/PDF manual.
      This will configure a static ARP entry always resolving `192.0.2.100` to
      `00:53:27:de:23:aa`.
 
-For a inline configuration level command use ``:cfgcmd:``
+For a inline configuration level command, use ``:cfgcmd:``
 
 .. code-block:: none
 
@@ -210,10 +210,10 @@ For a inline configuration level command use ``:cfgcmd:``
 opcmd
 """""
 
-When documenting operational level command use the ``.. opcmd::`` directive.
+When documenting operational level commands, use the ``.. opcmd::`` directive.
 An explanation of the described command should be added below this statement.
 
-With those custom commands it will be possible to render them in a more
+With those custom commands, it is possible to render them in a more
 descriptive way in the resulting HTML/PDF manual.
 
 .. code-block:: none
@@ -222,7 +222,7 @@ descriptive way in the resulting HTML/PDF manual.
 
      Display all known ARP table entries spanning across all interfaces
 
-For a inline operational level command use ``:opcmd:``
+For a inline operational level command, use ``:opcmd:``
 
 .. code-block:: none
 
@@ -231,7 +231,7 @@ For a inline operational level command use ``:opcmd:``
 cmdinclude
 """"""""""
 
-To minimize redundancy there is a special include directive. It include a txt
+To minimize redundancy, there is a special include directive. It include a txt
 file and replace the ``{{ var0 }}`` - ``{{ var9 }}`` with the correct value
 
 .. code-block:: none
@@ -270,7 +270,7 @@ vytask
 """"""
 
 When referencing to VyOS Phabricator Tasks, there is a custom Sphinx Markup
-command called ``vytask`` which automatically renders to a proper Phabricator
+command called ``vytask`` that automatically renders to a proper Phabricator
 URL. This is heavily used in the :ref:`release-notes` section.
 
 .. code-block:: none
@@ -281,7 +281,7 @@ URL. This is heavily used in the :ref:`release-notes` section.
 Page content
 ------------
 
-The documentation have 3 different types of pages, the same kind of pages must 
+The documentation has 3 different types of pages. The same kind of pages must 
 have the same structure to achieve a recognition factor.
 
 All RST files must follow the same TOC Level syntax and have to start with
@@ -307,12 +307,12 @@ For example:
 The article starts with a short intruducing about the command or the
 technologie. Please include some helpfull links or background informations.
 
-After this a optional section follows. Some commands have requirements like the
-compatible hardware (e.g. Wifi) or some commands you have to set before. For
-example it is recommended to set a route-map before configure bgp.
+An optional section follows. Some commands have requirements like compatible
+hardware (e.g. Wifi) or some commands you have to set before. For
+example, it is recommended to set a route-map before configure BGP.
 
-In the configuration part of the page all possible confiuration options
-should be documented. Use ``.. cfgcmd::`` like described above.
+In the configuration part of the page, all possible confiuration options
+should be documented. Use ``.. cfgcmd::`` described above.
 
 Related Operation command must be documented in the next part of the article.
 Use ``::opcmd..`` for these commands.
@@ -323,16 +323,15 @@ next optional part.
 Operation mode pages
 ^^^^^^^^^^^^^^^^^^^^
 
-Operation mode commands, which didn't fit in a related configuraton mode command
-must documented in this part of the documentation.
+Operation mode commands that does not fit in a related configuraton mode command
+must be documented in this part of the documentation.
 
-General concepts for troubleshooting belong here as well as detailed process
-descriptions.
+General concepts for troubleshooting and detailed process descriptions belong here.
 
 Anything else
 ^^^^^^^^^^^^^
 
-Anything else what is not a configuration or a operation command have no
+Anything else that is not a configuration or an operation command have no
 predefined structure.
 
 
