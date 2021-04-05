@@ -326,7 +326,8 @@ Operation mode pages
 Operation mode commands that does not fit in a related configuraton mode command
 must be documented in this part of the documentation.
 
-General concepts for troubleshooting and detailed process descriptions belong here.
+General concepts for troubleshooting, and detailed process descriptions belong
+here.
 
 Anything else
 ^^^^^^^^^^^^^
