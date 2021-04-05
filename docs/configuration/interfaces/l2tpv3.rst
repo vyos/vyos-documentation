@@ -45,14 +45,14 @@ L2TPv3 options
 
   This defaults to UDP
 
-.. cfgcmd:: set interfaces l2tpv3 <interface> local-ip <address>
+.. cfgcmd:: set interfaces l2tpv3 <interface> source-address <address>
 
-  set the IP address of the local interface to be used for the tunnel.
+  Set the IP address of the local interface to be used for the tunnel.
 
   This address must be the address of a local interface. May be specified as an
   IPv4 address or an IPv6 address.
 
-.. cfgcmd:: set interfaces l2tpv3 <interface> remote-ip <address>
+.. cfgcmd:: set interfaces l2tpv3 <interface> remote <address>
 
   Set the IP address of the remote peer. May be specified as an IPv4 address or
   an IPv6 address.
@@ -92,10 +92,10 @@ Over IP
   l2tpv3 l2tpeth10 {
       address 192.168.37.1/27
       encapsulation ip
-      local-ip 192.0.2.1
+      source-address 192.0.2.1
       peer-session-id 100
       peer-tunnel-id 200
-      remote-ip 203.0.113.24
+      remote 203.0.113.24
       session-id 100
       tunnel-id 200
   }
@@ -107,7 +107,7 @@ Over UDP
 
 UDP mode works better with NAT:
 
-* Set local-ip to your local IP (LAN).
+* Set source-address to your local IP (LAN).
 * Add a forwarding rule matching UDP port on your internet router.
 
 .. code-block:: none
@@ -117,10 +117,10 @@ UDP mode works better with NAT:
       address 192.168.37.1/27
       destination-port 9001
       encapsulation udp
-      local-ip 192.0.2.1
+      source-address 192.0.2.1
       peer-session-id 100
       peer-tunnel-id 200
-      remote-ip 203.0.113.24
+      remote 203.0.113.24
       session-id 100
       source-port 9000
       tunnel-id 200
@@ -182,11 +182,11 @@ L2TPv3:
   set interfaces l2tpv3 l2tpeth0 description 'L2 VPN Tunnel'
   set interfaces l2tpv3 l2tpeth0 destination-port '5000'
   set interfaces l2tpv3 l2tpeth0 encapsulation 'ip'
-  set interfaces l2tpv3 l2tpeth0 local-ip <local-ip>
+  set interfaces l2tpv3 l2tpeth0 source-address <local-ip>
   set interfaces l2tpv3 l2tpeth0 mtu '1500'
   set interfaces l2tpv3 l2tpeth0 peer-session-id '110'
   set interfaces l2tpv3 l2tpeth0 peer-tunnel-id '10'
-  set interfaces l2tpv3 l2tpeth0 remote-ip <peer-ip>
+  set interfaces l2tpv3 l2tpeth0 remote <peer-ip>
   set interfaces l2tpv3 l2tpeth0 session-id '110'
   set interfaces l2tpv3 l2tpeth0 source-port '5000'
   set interfaces l2tpv3 l2tpeth0 tunnel-id '10'
