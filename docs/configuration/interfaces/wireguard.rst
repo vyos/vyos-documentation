@@ -11,9 +11,9 @@ information.
 Configuration
 =============
 
-WireGuard requires the generation of a keypair, a private key which will
-decrypt incoming traffic and a public key, which the peer(s) will use to
-encrypt traffic.
+WireGuard requires the generation of a keypair, which includes a private
+key to decrypt incoming traffic, and a public key for peer(s) to encrypt
+traffic.
 
 Generate keypair
 ----------------
@@ -26,8 +26,8 @@ Generate keypair
 
 .. opcmd:: show wireguard keypairs pubkey default
 
-   It shows the public key which needs to be shared with your peer(s). Your
-   peer will encrypt all traffic to your system using this public key.
+   It shows the public key to be shared with your peer(s). Your peer will
+   encrypt all traffic to your system using this public key.
 
    .. code-block:: none
 
@@ -38,12 +38,11 @@ Generate keypair
 Generate named keypair
 ----------------------
 
-Named keypairs can be used on a interface basis, if configured. If
+Named keypairs can be used on a interface basis when configured. If
 multiple WireGuard interfaces are being configured, each can have their
 own keypairs.
 
-The commands below will generate 2 keypairs, which are not related to
-each other.
+The commands below generates 2 keypairs unrelated to each other.
 
 .. code-block:: none
 
@@ -56,11 +55,11 @@ Interface configuration
 
 The next step is to configure your local side as well as the policy
 based trusted destination addresses. If you only initiate a connection,
-the listen port and address/port is optional, if you however act as a server
-and endpoints initiate the connections to your system, you need to
-define a port your clients can connect to, otherwise it's randomly
-chosen and may make it difficult with firewall rules, since the port may
-be a different one when you reboot your system.
+the listen port and address/port is optional; however, if you act as a
+server and endpoints initiate the connections to your system, you need to
+define a port your clients can connect to, otherwise the port is randomly
+chosen and may make connection difficult with firewall rules, since the port
+may be different each time the system is rebooted.
 
 You will also need the public key of your peer as well as the network(s)
 you want to tunnel (allowed-ips) to configure a WireGuard tunnel. The
@@ -82,7 +81,7 @@ one.
 
 The last step is to define an interface route for 10.2.0.0/24 to get
 through the WireGuard interface `wg01`. Multiple IPs or networks can be
-defined and routed, the last check is allowed-ips which either prevents
+defined and routed. The last check is allowed-ips which either prevents
 or allows the traffic.
 
 .. note:: You can not assign the same allowed-ips statement to multiple
@@ -116,7 +115,7 @@ the public key, which needs to be shared with the peer.
   set protocols static route 10.1.0.0/24 interface wg01
 
 Assure that your firewall rules allow the traffic, in which case you
-have a working VPN using WireGuard
+have a working VPN using WireGuard.
 
 .. code-block:: none
 
@@ -131,16 +130,16 @@ have a working VPN using WireGuard
   64 bytes from 10.1.0.1: icmp_seq=2 ttl=64 time=1.02 ms
 
 An additional layer of symmetric-key crypto can be used on top of the
-asymmetric crypto, which is optional.
+asymmetric crypto. This is optional.
 
 .. code-block:: none
 
   wg01# run generate wireguard preshared-key
   rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc=
 
-Copy the key, as it is not stored on the local file system. Make sure
-you distribute that key in a safe manner, it's a symmetric key, so only
-you and your peer should have knowledge of its content.
+Copy the key, as it is not stored on the local filesystem. Because it
+is a symmetric key, only you and your peer should have knowledge of
+its content. Make sure you distribute the key in a safe manner,
 
 .. code-block:: none
 
@@ -154,7 +153,7 @@ With WireGuard, a Road Warrior VPN config is similar to a site-to-site
 VPN. It just lacks the ``address`` and ``port`` statements.
 
 In the following example, the IPs for the remote clients are defined in
-the peers. This would allow the peers to interact with one another.
+the peers. This allows the peers to interact with one another.
 
 .. code-block:: none
 
