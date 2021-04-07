@@ -8,9 +8,22 @@
    _ext/releasenotes.py
 
 
-2021-03-26
+2021-04-04
 ==========
 
+* :vytask:`T3457` (feature): Output the "monitor log" command in a colorful way
+
+
+2021-03-31
+==========
+
+* :vytask:`T3445` (bug): vyos-1x build include not all nodes
+
+
+2021-03-29
+==========
+
+* :vytask:`T3446` (default): Cloudinit error message when empty domain is passed to filter.
 * :vytask:`T3432` (default): Azure ssh keys not working for version 1.2.7/1.3.x
 
 
@@ -197,7 +210,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.108 / 5.10.26
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.109 / 5.10.27
 
 
 2021-02-14
