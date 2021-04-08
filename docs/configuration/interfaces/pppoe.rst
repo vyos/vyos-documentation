@@ -310,8 +310,8 @@ If you do not know the prefix size delegated to you, start with sla-len 0.
 
   set interfaces pppoe pppoe0 authentication user vyos
   set interfaces pppoe pppoe0 authentication password vyos
-  set interfaces pppoe pppoe0 dhcpv6-options prefix-delegation interface eth0 address 65535
-  set interfaces pppoe pppoe0 dhcpv6-options prefix-delegation interface eth0 sla-id 0
-  set interfaces pppoe pppoe0 dhcpv6-options prefix-delegation interface eth0 sla-len 8
+  set interfaces pppoe pppoe0 dhcpv6-options pd 0 interface eth0 address '1'
+  set interfaces pppoe pppoe0 dhcpv6-options pd 0 interface eth0 sla-id '0'
+  set interfaces pppoe pppoe0 dhcpv6-options pd 0 length '56'
   set interfaces pppoe pppoe0 ipv6 address autoconf
   set interfaces pppoe pppoe0 source-interface eth1
