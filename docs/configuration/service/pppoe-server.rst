@@ -388,6 +388,7 @@ The example below covers a dual-stack configuration via pppoe-server.
   set service pppoe-server client-ip-pool stop '192.168.0.10'
   set service pppoe-server client-ipv6-pool delegate '2001:db8:8003::/48' delegation-prefix '56'
   set service pppoe-server client-ipv6-pool prefix '2001:db8:8002::/48' mask '64'
+  set service pppoe-server ppp-options ipv6 allow
   set service pppoe-server name-server '10.1.1.1'
   set service pppoe-server name-server '2001:db8:4860::8888'
   set service pppoe-server interface 'eth2'
