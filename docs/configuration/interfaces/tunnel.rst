@@ -201,6 +201,22 @@ An example:
    set interfaces tunnel tun0 address 172.16.17.18/24
    set interfaces tunnel tun0 parameters ip key 20
 
+GRETAP
+^^^^^^
+
+While normal GRE is for layer 3, GRETAP is for layer 2. GRETAP can encapsulate 
+Ethernet frames, thus it can be bridged with other interfaces to create 
+datalink layer segments that span multiple remote sites.
+
+Layer 2 GRE example:
+
+.. code-block:: none
+
+   set interfaces bridge br0 member interface eth0
+   set interfaces bridge br0 member interface tun0
+   set interfaces tunnel tun0 encapsulation gretap
+   set interfaces tunnel tun0 local-ip 198.51.100.2
+   set interfaces tunnel tun0 remote-ip 203.0.113.10
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
