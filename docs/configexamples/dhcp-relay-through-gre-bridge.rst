@@ -1,3 +1,8 @@
+
+
+
+
+
 .. _examples-dhcp-relay-through-gre-bridge:
 
 
@@ -24,8 +29,8 @@ DHCP Server
    set interfaces loopback lo address '192.168.3.3/24'
    set interfaces tunnel tun100 address '172.16.0.2/30'
    set interfaces tunnel tun100 encapsulation 'gretap'
-   set interfaces tunnel tun100 local-ip '10.0.2.1'
-   set interfaces tunnel tun100 remote-ip '192.168.0.1'
+   set interfaces tunnel tun100 source-address '10.0.2.1'
+   set interfaces tunnel tun100 remote '192.168.0.1'
    set protocols ospf area 0 network '192.168.3.0/24'
    set protocols ospf area 0 network '10.0.2.0/24'
    set protocols ospf parameters router-id '192.168.3.3'
@@ -62,8 +67,8 @@ DHCP Relay
    set interfaces loopback lo address '10.100.100.1'
    set interfaces tunnel tun100 address '172.16.0.1/30'
    set interfaces tunnel tun100 encapsulation 'gretap'
-   set interfaces tunnel tun100 local-ip '192.168.0.1'
-   set interfaces tunnel tun100 remote-ip '10.0.2.1'
+   set interfaces tunnel tun100 source-address '192.168.0.1'
+   set interfaces tunnel tun100 remote '10.0.2.1'
    set protocols ospf area 0 network '10.0.1.0/24'
    set protocols ospf area 0 network '192.168.0.0/24'
    set protocols ospf area 0 network '10.100.100.0/24'
