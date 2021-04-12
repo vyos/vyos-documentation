@@ -13,3 +13,4 @@ VyOS Automation
    vyos-api
    vyos-ansible
    command-scripting
+   cloud-init
