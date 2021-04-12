@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2021-04-11
+==========
+
+* :vytask:`T3435` (bug): NAT rules show corruption
+
+
+2021-04-10
+==========
+
+* :vytask:`T3460` (bug): bgp, Configuration FRR failed while commiting code
+
+
+2021-04-09
+==========
+
+* :vytask:`T3464` (bug): OSPF: route-map names containing a hypen are not "found"
+
+
+2021-04-08
+==========
+
+* :vytask:`T3462` (default): show ipv6 bgp -- missing
+* :vytask:`T3456` (bug): firewall: rules that should be deleted seem to be still in use
+* :vytask:`T3463` (bug): Prevent IPv4 Route exchange with IPv6 neighbors
+
+
+2021-04-05
+==========
+
+* :vytask:`T3438` (bug): VRF: removing vif which belongs to a vrf, will delete the entire vrf from the operating system
+* :vytask:`T3418` (bug): BGP: system wide known interface can not be used as neighbor
+
+
 2021-04-04
 ==========
 
@@ -30,7 +63,7 @@
 ==========
 
 * :vytask:`T3415` (feature): bridge: add support for isolated interfaces (private-vlan)
-* :vytask:`T1711` (feature): Bgp set local-AS number one time
+* :vytask:`T1711` (feature): BGP - migrate from tagNode to node (remove ASN from tagNode)
 
 
 2021-03-28
@@ -234,7 +267,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.109 / 5.10.27
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.111 / 5.10.29
 
 
 2021-02-15
