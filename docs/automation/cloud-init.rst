@@ -5,16 +5,37 @@ VyOS cloud-init
 ###############
 
 Cloud instances of VyOS are initialized using the industry-standard cloud-init. 
-Via cloud-init, users can execute shell commands and configure the router.
+Via cloud-init, the system performs tasks such as injecting SSH keys and
+configuring the network. In addition, the user can supply a custom
+configuration at the time of instance launch.
 
-The initialization is guided by a set of instructions--known as user 
-data--provided by the user at launch time. VyOS implements a user-data
-format called cloud-config.
+**************
+Config Sources
+**************
+
+VyOS support three type of config sources.
+
+.. stop_vyoslinter
+
+* Metadata - Metadata is sourced by the cloud platform or hypervisor. In some clouds, there is implemented as an HTTP endpoint at http://169.254.169.254.
+
+* Network configuration - Ths config source informs the system about the network.
+
+* User-data - User-data is specified by the user. This config source offers the most flexibility and will be the focus of this documentation.
+
+.. start_vyoslinter
+
+
+*********
+User-data
+*********
 
 Major cloud providers offer a means of providing user-data at the time
 of instance launch. Typically the user includes user-data as plain
 text and the cloud provider's platform base64 encodes the user-data
 before injecting it into the instance. 
+
+VyOS implements a user-data format called cloud-config.
 
 
 ************************
@@ -25,7 +46,7 @@ cloud-config file format
 A cloud-config document is written in YAML. The file must begin
 with "#cloud-config". The key used to designate a VyOS configuration
 is "vyos_config_commands". What follows is VyOS configuration using
-the "set-style" syntax.
+the "set-style" syntax. Both "set" and "delete" commands are supported.
 
 Commands requirements:
 
@@ -50,6 +71,23 @@ Here is an example cloud-config.
      - set system host-name 'vyos-prod-ashburn'
      - set system ntp server 1.pool.ntp.org
      - set system ntp server 2.pool.ntp.org
+     - delete interfaces ethernet eth1 address 'dhcp'
+     - set interfaces ethernet eth1 address '172.31.7.247/20'
+     - set protocols static route '172.31.0.0/16' next-hop '100.64.16.1'
+
+*************************
+System Defaults/Fallbacks
+*************************
+
+These are the VyOS defaults and fallbacks.
+
+* SSH is configured on port 22
+* vyos/vyos credentials if no SSH public key exists in metadata
+* DHCP on first Ethernet interface if no network configuration is provided
+
+
+All of these can be overridden using configuration in user-data.
+
 
 ***************
 Troubleshooting
