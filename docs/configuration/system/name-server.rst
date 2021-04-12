@@ -4,6 +4,8 @@
 System DNS
 ##########
 
+.. warning:: If you are configuring a VRF for management purposes, there is
+   currently no way to force system DNS traffic via a specific VRF.
 
 This section describes configuring DNS on the system, namely:
 
