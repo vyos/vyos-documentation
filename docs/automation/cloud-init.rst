@@ -82,7 +82,7 @@ System Defaults/Fallbacks
 These are the VyOS defaults and fallbacks.
 
 * SSH is configured on port 22
-* vyos/vyos credentials if no SSH public key exists in metadata
+* vyos/vyos credentials if no others specified by data source
 * DHCP on first Ethernet interface if no network configuration is provided
 
 
