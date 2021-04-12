@@ -8,6 +8,20 @@
    _ext/releasenotes.py
 
 
+2021-04-08
+==========
+
+* :vytask:`T3456` (bug): firewall: rules that should be deleted seem to be still in use
+
+
+2021-04-05
+==========
+
+* :vytask:`T1612` (default): dhcp-server time-offset fails to validate
+* :vytask:`T3438` (bug): VRF: removing vif which belongs to a vrf, will delete the entire vrf from the operating system
+* :vytask:`T3418` (bug): BGP: system wide known interface can not be used as neighbor
+
+
 2021-04-04
 ==========
 
@@ -210,7 +224,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.109 / 5.10.27
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.111 / 5.10.29
 
 
 2021-02-14
