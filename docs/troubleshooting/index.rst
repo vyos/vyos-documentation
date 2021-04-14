@@ -23,7 +23,7 @@ section and are omitted from the output here):
 .. opcmd:: ping <destination>
 
    Send ICMP echo requests to destination host. There are multiple options to
-   ping, inkl. VRF support.
+   ping.
 
    .. code-block:: none
 
@@ -50,7 +50,6 @@ section and are omitted from the output here):
        tos
        ttl
        verbose
-       vrf
 
 
 .. opcmd:: traceroute <destination>
