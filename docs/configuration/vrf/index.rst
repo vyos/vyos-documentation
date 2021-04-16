@@ -10,10 +10,6 @@ VRFs, VRF-lite to be specific) in the Linux network stack. One use case is the
 multi-tenancy problem where each tenant has their own unique routing tables and
 in the very least need different default gateways.
 
-.. warning:: VRFs are an "needs testing" feature. If you think things should be
-   different then they are implemented and handled right now - please feedback
-   via a task created in Phabricator_.
-
 Configuration
 =============
 
