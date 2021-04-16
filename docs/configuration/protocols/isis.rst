@@ -1,6 +1,6 @@
 .. include:: /_include/need_improvement.txt
 
-.. _isis:
+.. _routing-isis:
 
 #####
 IS-IS
@@ -15,9 +15,6 @@ destination. The routers exchange topology information with their nearest
 neighbors. IS-IS runs directly on the data link layer (Layer 2). IS-IS
 addresses are called :abbr:`NETs (Network Entity Titles)` and can be
 8 to 20 bytes long, but are generally 10 bytes long.
-
-
-
 
 *******
 General

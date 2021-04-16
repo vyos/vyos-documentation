@@ -1,4 +1,4 @@
-.. _bgp:
+.. _routing-bgp:
 
 ###
 BGP

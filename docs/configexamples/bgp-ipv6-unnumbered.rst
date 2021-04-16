@@ -4,7 +4,7 @@
 BGP IPv6 unnumbered with extended nexthop
 #########################################
 
-General information can be found in the :ref:`bgp` chapter.
+General information can be found in the :ref:`routing-bgp` chapter.
 
 Configuration
 =============

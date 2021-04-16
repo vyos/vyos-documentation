@@ -1,4 +1,4 @@
-.. _static-routing:
+.. _routing-static:
 
 ######
 Static

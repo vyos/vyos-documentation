@@ -36,5 +36,5 @@ Operation
         Last update 09:46:30 ago
         * 172.18.201.254, via eth0.201
 
-.. seealso:: Configuration of :ref:`static-routing`
+.. seealso:: Configuration of :ref:`routing-static`
 
