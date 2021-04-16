@@ -10,11 +10,6 @@ VRFs, VRF-lite to be specific) in the Linux network stack. One use case is the
 multi-tenancy problem where each tenant has their own unique routing tables and
 in the very least need different default gateways.
 
-.. warning:: VRFs are an "needs testing" feature. If you think things should be
-   different then they are implemented and handled right now - please feedback
-   via a task created in Phabricator_.
-
-
 Configuration
 =============
 
@@ -57,6 +52,11 @@ itself needs to be assigned to an interface.
 
 Routing
 -------
+
+.. note:: VyOS 1.3 (equuleus) only supports VRF static routing. Dynamic routing
+   for given VRFs was added in VyOS 1.4 (sagitta). This also came with a change
+   in the CLI configuration which will be - of course - automatically migrated
+   on upgrades.
 
 Static
 ^^^^^^
