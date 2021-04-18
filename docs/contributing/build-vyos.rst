@@ -188,6 +188,21 @@ Now a fresh build of the VyOS ISO can begin. Change directory to the
   # For VyOS 1.3 (equuleus, current)
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
 
+.. code-block:: none
+
+  # For MacOS (crux, equuleus, sagitta)
+  $ git clone https://github.com/vyos/vyos-utils-misc
+  $ cd build-tools/macos-build 
+
+  # For VyOS 1.2 (crux)
+  $ os=jessie64 branch=crux make build
+
+  # For VyOS 1.3 (equuleus)
+  $ os=buster64 branch=equuleus make build
+
+  # For VyOS 1.4 (sagitta)
+  $ os=buster64 branch=sagitta make build
+
 Start the build:
 
 .. code-block:: none
@@ -199,10 +214,6 @@ When the build is successful, the resulting iso can be found inside the
 ``build`` directory as ``live-image-[architecture].hybrid.iso``.
 
 Good luck!
-
-.. hint:: Attempting to use the Docker build image on MacOS will fail as
-   Docker does not expose all the filesystem feature required to the container.
-   Building within a VirtualBox server on Mac however possible.
 
 .. hint:: Building VyOS on Windows WSL2 with Docker integrated into WSL2 will
    work like a charm. No problems are known so far!
