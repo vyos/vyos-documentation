@@ -19,7 +19,7 @@ The setup used in this example is shown in the following diagram:
 
 Overview
 ^^^^^^^^
- * All traffic coming in trough eth2 is balanced between eth0 and eth1
+ * All traffic coming in through eth2 is balanced between eth0 and eth1
    on the router.
  * Pings will be sent to four targets for health testing (33.44.55.66,
    44.55.66.77, 55.66.77.88 and 66.77.88.99).
