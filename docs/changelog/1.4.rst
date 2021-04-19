@@ -8,6 +8,47 @@
    _ext/releasenotes.py
 
 
+2021-04-18
+==========
+
+* :vytask:`T3481` (default): Exclude tag node values from key mangling
+* :vytask:`T3475` (bug): XML dictionary cache unable to process syntaxVersion elements
+
+
+2021-04-17
+==========
+
+* :vytask:`T3470` (bug): as-override isn't applied to frr
+
+
+2021-04-15
+==========
+
+* :vytask:`T3386` (bug): PPPoE-server don't start with local authentication
+* :vytask:`T3190` (feature): Unable to subtract value from local-preference in route-map
+
+
+2021-04-14
+==========
+
+* :vytask:`T3398` (bug): Can't commit
+* :vytask:`T3055` (bug): op-mode incorrect naming fo ipsec policy-based tunnels 
+
+
+2021-04-13
+==========
+
+* :vytask:`T3436` (feature): Refactoring ospf op-mode for support vrf
+* :vytask:`T3434` (feature): Refactoring bgp op-mode for support vrf
+
+
+2021-04-12
+==========
+
+* :vytask:`T3454` (enhancment): dhclient reject option
+* :vytask:`T3328` (bug): Bgp not possible to delete bgp route-map 
+
+
 2021-04-11
 ==========
 
@@ -267,7 +308,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.111 / 5.10.29
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.112 / 5.10.30
 
 
 2021-02-15
