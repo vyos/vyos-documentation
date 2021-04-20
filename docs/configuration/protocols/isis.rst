@@ -280,9 +280,9 @@ interfaces.
   set policy route-map EXPORT-ISIS rule 10 action 'permit'
   set policy route-map EXPORT-ISIS rule 10 match ip address prefix-list 'EXPORT-ISIS'
 
-  set protocols isis FOO interface eth1
-  set protocols isis FOO net '49.0001.1921.6800.1002.00'
-  set protocols isis FOO redistribute ipv4 connected level-2 route-map 'EXPORT-ISIS'
+  set protocols isis interface eth1
+  set protocols isis net '49.0001.1921.6800.1002.00'
+  set protocols isis redistribute ipv4 connected level-2 route-map 'EXPORT-ISIS'
 
 **Node 2:**
 
@@ -290,8 +290,8 @@ interfaces.
 
   set interfaces ethernet eth1 address '192.0.2.2/24'
 
-  set protocols isis FOO interface eth1
-  set protocols isis FOO net '49.0001.1921.6800.2002.00'
+  set protocols isis interface eth1
+  set protocols isis net '49.0001.1921.6800.2002.00'
 
 Show ip routes on Node2:
 
