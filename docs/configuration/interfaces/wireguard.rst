@@ -169,7 +169,7 @@ the peers. This allows the peers to interact with one another.
         }
         peer iPhone {
             allowed-ips 10.172.24.20/32
-            allowed-ips 2001:DB8:470:22::30/128
+            allowed-ips 2001:DB8:470:22::20/128
             persistent-keepalive 15
             pubkey BknHcLFo8nOo8Dwq2CjaC/TedchKQ0ebxC7GYn7Al00=
         }
