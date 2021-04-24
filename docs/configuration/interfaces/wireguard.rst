@@ -8,15 +8,16 @@ WireGuard is an extremely simple yet fast and modern VPN that utilizes
 state-of-the-art cryptography. See https://www.wireguard.com for more
 information.
 
+*************
 Configuration
-=============
+*************
 
 WireGuard requires the generation of a keypair, which includes a private
 key to decrypt incoming traffic, and a public key for peer(s) to encrypt
 traffic.
 
-Generate keypair
-----------------
+Generate Keypair
+================
 
 .. opcmd:: generate wireguard default-keypair
 
@@ -35,8 +36,8 @@ Generate keypair
      hW17UxY7zeydJNPIyo3UtGnBHkzTK/NeBOrDSIU9Tx0=
 
 
-Generate named keypair
-----------------------
+Generate Named Keypair
+======================
 
 Named keypairs can be used on a interface basis when configured. If
 multiple WireGuard interfaces are being configured, each can have their
@@ -51,7 +52,7 @@ The commands below generates 2 keypairs unrelated to each other.
 
 
 Interface configuration
------------------------
+=======================
 
 The next step is to configure your local side as well as the policy
 based trusted destination addresses. If you only initiate a connection,
@@ -210,56 +211,99 @@ to the server go over the connection.
     PersistentKeepalive = 25
 
 
-Operational commands
-====================
+********************
+Operational Commands
+********************
 
-**Show interface status**
+Status
+======
 
-.. code-block:: none
+.. opcmd:: show interfaces wireguard
 
-  vyos@wg01# run show interfaces wireguard wg01
-  interface: wg1
-      description: VPN-to-wg01
-      address: 10.2.0.1/24
-      public key: RIbtUTCfgzNjnLNPQ/asldkfjhaERDFl2H/xUfbyjc=
+  Get a list of all wireguard interfaces
+
+  .. code-block:: none
+
+    Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+    Interface        IP Address                        S/L  Description
+    ---------        ----------                        ---  -----------
+    wg0              10.0.0.1/24                       u/u
+
+
+.. opcmd:: show interfaces wireguard <interface>
+
+  Show general information about specific WireGuard interface
+
+  .. code-block:: none
+
+    vyos@vyos:~$ show interfaces wireguard wg01
+    interface: wg0
+      address: 10.0.0.1/24
+      public key: h1HkYlSuHdJN6Qv4Hz4bBzjGg5WUty+U1L7DJsZy1iE=
       private key: (hidden)
-      listening port: 53665
-      peer: to-wg02
-          public key: u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk=
-          latest handshake: 0:01:20
-          status: active
-          endpoint: 192.168.0.124:12345
-          allowed ips: 10.2.0.0/24
-          transfer: 42 GB received, 487 MB sent
-          persistent keepalive: every 15 seconds
-      RX:
-              bytes    packets    errors    dropped    overrun    mcast
-      45252407916   31192260         0     244493          0        0
-      TX:
-          bytes    packets    errors    dropped    carrier    collisions
-      511649780    5129601     24465          0          0             0
+      listening port: 41751
 
-**Show public key of the default key**
+        RX:  bytes  packets  errors  dropped  overrun       mcast
+                 0        0       0        0        0           0
+        TX:  bytes  packets  errors  dropped  carrier  collisions
+                 0        0       0        0        0           0
 
-.. code-block:: none
+Encryption Keys
+===============
 
-  vyos@wg01# run show wireguard keypair pubkey default
-  FAXCPb6EbTlSH5200J5zTopt9AYXneBthAySPBLbZwM=
+.. opcmd:: show wireguard keypair pubkey <name>
 
-**Show public key of a named key**
+  Show public key portion for specified key. This can be either the ``default``
+  key, or any other named key-pair.
 
-.. code-block:: none
+  The ``default`` keypair
 
-  vyos@wg01# run show wireguard keypair pubkey KP01
-  HUtsu198toEnm1poGoRTyqkUKfKUdyh54f45dtcahDM=
+  .. code-block:: none
+
+    vyos@vyos:~$ show wireguard keypair pubkey default
+    FAXCPb6EbTlSH5200J5zTopt9AYXneBthAySPBLbZwM=
+
+  Name keypair ``KP01``
+
+  .. code-block:: none
+
+    vyos@vyos:~$ show wireguard keypair pubkey KP01
+    HUtsu198toEnm1poGoRTyqkUKfKUdyh54f45dtcahDM=
+
+.. opcmd:: delete wireguard keypair pubkey <name>
+
+  Delete a keypair, this can be either the ``default`` key, or any other
+  named key-pair.
+
+  .. code-block:: none
+
+    vyos@vyos:~$ delete wireguard keypair default
 
 
-**Delete wireguard keypairs**
+Mobile "RoadWarrior" clients
+============================
 
-.. code-block:: none
+Some users tend to connect their mobile devices using WireGuard to their VyOS
+router. To ease deployment one can generate a "per mobile" configuration from
+the VyOS CLI.
 
-  vyos@wg01$ delete wireguard keypair default
+.. warning:: From a security perspective it is not recommended to let a third
+  party create the private key for a secured connection. You should create the
+  private portion on your own and only hand out the public key. Please keep this
+  in mind when using this convenience feature.
 
+.. opcmd:: generate wireguard mobile-config <interface> server <ip | fqdn> address <client ip>
+
+  Using this command you will create a client configuration which can connect to
+  ``interface`` on this router. The public key from the specified interface is
+  automatically extracted and embedded into the configuration.
+
+  In addition you will specifiy the IP address or FQDN for the client where it
+  will connect to. The address parameter is used to assign a given client an
+  IPv4 or IPv6 address.
+
+  .. figure:: /_static/images/wireguard_qrcode.jpg
+     :alt: WireGuard Client QR code
 
 .. stop_vyoslinter
 
