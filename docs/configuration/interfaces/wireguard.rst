@@ -1,5 +1,7 @@
 .. _wireguard:
 
+.. include:: /_include/need_improvement.txt
+
 #########
 WireGuard
 #########
@@ -43,12 +45,14 @@ Named keypairs can be used on a interface basis when configured. If
 multiple WireGuard interfaces are being configured, each can have their
 own keypairs.
 
-The commands below generates 2 keypairs unrelated to each other.
+.. opcmd:: generate wireguard named-keypairs <name>
 
-.. code-block:: none
+  The commands below generates 2 keypairs unrelated to each other.
 
-  vyos@vyos:~$ generate wireguard named-keypairs KP01
-  vyos@vyos:~$ generate wireguard named-keypairs KP02
+  .. code-block:: none
+
+    vyos@vyos:~$ generate wireguard named-keypairs KP01
+    vyos@vyos:~$ generate wireguard named-keypairs KP02
 
 
 Interface configuration
@@ -89,17 +93,17 @@ or allows the traffic.
    WireGuard peers. This a a design decission. For more information please
    check the `WireGuard mailing list`_.
 
+.. cfgcmd:: set interfaces wireguard <interface> private-key <name>
 
-To use a named key on an interface, the option private-key needs to be
-set.
+  To use a named key on an interface, the option private-key needs to be
+  set.
 
-.. code-block:: none
+  .. code-block:: none
 
-  set interfaces wireguard wg01 private-key KP01
-  set interfaces wireguard wg02 private-key KP02
+    set interfaces wireguard wg01 private-key KP01
 
-The command ``run show wireguard keypairs pubkey KP01`` will then show
-the public key, which needs to be shared with the peer.
+  The command :opcmd:`show wireguard keypairs pubkey KP01` will then show the
+  public key, which needs to be shared with the peer.
 
 
 **remote side**
@@ -292,15 +296,19 @@ the VyOS CLI.
   private portion on your own and only hand out the public key. Please keep this
   in mind when using this convenience feature.
 
-.. opcmd:: generate wireguard mobile-config <interface> server <ip | fqdn> address <client ip>
+.. opcmd:: generate wireguard client-config <name> interface <interface> server <ip|fqdn> address <client-ip>
 
-  Using this command you will create a client configuration which can connect to
-  ``interface`` on this router. The public key from the specified interface is
-  automatically extracted and embedded into the configuration.
+  Using this command you will create a new client configuration which can
+  connect to ``interface`` on this router. The public key from the specified
+  interface is automatically extracted and embedded into the configuration.
+
+  The command also generates a configuration snipped which can be copy/pasted
+  into the VyOS CLI if needed. The supplied ``<name>`` on the CLI will become
+  the peer name in the snippet.
 
   In addition you will specifiy the IP address or FQDN for the client where it
-  will connect to. The address parameter is used to assign a given client an
-  IPv4 or IPv6 address.
+  will connect to. The address parameter can be used up to two times and is used
+  to assign the client its specific IPv4 (/32) or IPv6 (/128) address.
 
   .. figure:: /_static/images/wireguard_qrcode.jpg
      :alt: WireGuard Client QR code
