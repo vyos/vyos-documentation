@@ -89,13 +89,13 @@ Operation
      usb0b2.4p1.0               up   vyos@localhost
 
 
-.. opcmd:: connect console-server <device>
+.. opcmd:: connect console <device>
 
   Locally connect to serial port identified by `<device>`.
 
   .. code-block:: none
 
-    vyos@vyos-r1:~$ connect console-server usb0b2.4p1.0
+    vyos@vyos-r1:~$ connect console usb0b2.4p1.0
     [Enter `^Ec?' for help]
     [-- MOTD -- VyOS Console Server]
 
