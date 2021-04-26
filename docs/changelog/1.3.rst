@@ -8,6 +8,20 @@
    _ext/releasenotes.py
 
 
+2021-04-25
+==========
+
+* :vytask:`T3468` (bug): Tunnel interfaces aren't suggested as being available for bridging (regression)
+* :vytask:`T1802` (feature): Wireguard QR code in cli for mobile devices
+
+
+2021-04-23
+==========
+
+* :vytask:`T3395` (bug): WAN load-balancing fails with nexthop dhcp
+* :vytask:`T3290` (bug): Disabling GRE conntrack module fails
+
+
 2021-04-18
 ==========
 
@@ -249,7 +263,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.112 / 5.10.30
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.114 / 5.10.32
 
 
 2021-02-14

@@ -8,6 +8,36 @@
    _ext/releasenotes.py
 
 
+2021-04-25
+==========
+
+* :vytask:`T3490` (bug): priority inversion on PBR "policy route" create, breaks default route from dhcp (live iso)
+* :vytask:`T3468` (bug): Tunnel interfaces aren't suggested as being available for bridging (regression)
+* :vytask:`T3497` (bug): Prefix list with rule containing only action is not detected as error during parse
+* :vytask:`T3492` (bug): BGP Configuration Migration failed (badly!) from rolling 202102240218 to rolling 202104221210
+* :vytask:`T1802` (feature): Wireguard QR code in cli for mobile devices
+
+
+2021-04-24
+==========
+
+* :vytask:`T3472` (bug): commit-confirm script not found
+* :vytask:`T3439` (bug): Commit-archive location not working for scp
+
+
+2021-04-23
+==========
+
+* :vytask:`T3395` (bug): WAN load-balancing fails with nexthop dhcp
+* :vytask:`T3290` (bug): Disabling GRE conntrack module fails
+
+
+2021-04-20
+==========
+
+* :vytask:`T3488` (bug): Specifying an invalid "interface address" like dhcph leads to commit error
+
+
 2021-04-18
 ==========
 
@@ -308,7 +338,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.112 / 5.10.30
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.114 / 5.10.32
 
 
 2021-02-15
