@@ -152,6 +152,30 @@ instead.
   set high-availability vrrp group Foo peer-address 192.0.2.10
   set high-availability vrrp group Foo hello-source-address 192.0.2.15
 
+rfc3768-compatibility
+---------------------
+
+RFC 3768 defines a virtual MAC address to each VRRP virtual router. This 
+virtual router MAC address will be used as the source in all periodic 
+VRRP messages sent by the active node. When the rfc3768-compatibilty option 
+is set, a new VRRP interface is created, to which the MAC address and the 
+virtual IP address is automatically assigned.
+
+.. code-block:: none
+
+   set high-availability vrrp group Foo rfc3768-compatibility
+
+Verification
+
+.. code-block:: none
+
+   $show interfaces ethernet eth0v10
+   eth0v10@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue 
+   state UP group default qlen 1000
+   link/ether 00:00:5e:00:01:0a brd ff:ff:ff:ff:ff:ff
+   inet 172.25.0.247/16 scope global eth0v10
+   valid_lft forever preferred_lft forever
+
 Scripting
 ---------
 
