@@ -306,7 +306,7 @@ There are a lot of matching criteria gainst which the package can be tested.
 
       set firewall name WAN-IN-v4 rule 100 source address 192.0.2.10-192.0.2.11
       # with a '!' the rule match everything except the specified subnet
-      set fitewall name WAN-IN-v4 rule 101 source address !203.0.113.0/24
+      set firewall name WAN-IN-v4 rule 101 source address !203.0.113.0/24
       set firewall ipv6-name WAN-IN-v6 rule 100 source address 2001:db8::202
 
 
