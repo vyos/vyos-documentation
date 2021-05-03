@@ -8,6 +8,46 @@
    _ext/releasenotes.py
 
 
+2021-05-02
+==========
+
+* :vytask:`T3511` (bug): Update libnss-mapuser and libpam-radius packages from CUMULUS Linux
+* :vytask:`T3510` (bug): RADIUS usersname is not shown on CLI
+
+
+2021-05-01
+==========
+
+* :vytask:`T3379` (feature): Add global-parameters name-server  for dhcpv6-server
+* :vytask:`T3491` (default): Change Kernel HZ to 1000
+
+
+2021-04-29
+==========
+
+* :vytask:`T3503` (bug): "route-reflector-client" fails when "remote-as" is "internal"
+* :vytask:`T3502` (bug): "system ip multipath layer4-hashing" doesn't work
+
+
+2021-04-28
+==========
+
+* :vytask:`T3473` (bug): IPSec op-mode show sa error
+
+
+2021-04-27
+==========
+
+* :vytask:`T3458` (default): vyos docs missing gretap from tunnel section
+* :vytask:`T2946` (bug): call to commandd 'stty_size' cause show interfaces API to fail.
+
+
+2021-04-26
+==========
+
+* :vytask:`T3487` (bug): Specifying an invalid "interface address" like dhcph leads to commit error
+
+
 2021-04-25
 ==========
 
@@ -338,7 +378,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.114 / 5.10.32
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.115 / 5.10.33
 
 
 2021-02-15
