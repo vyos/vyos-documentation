@@ -6,8 +6,8 @@ This document walks you through a complete HA setup of two VyOS machines. This
 design is based on a VM as the primary router, and a physical machine as a
 backup, using VRRP, BGP, OSPF and conntrack sharing.
 
-The aim of this document is to walk you through setting everything up so you
-and up at a point where you can reboot any machine and not lose more than a few
+The aim of this document is to walk you through setting everything up, so 
+at a point where you can reboot any machine and not lose more than a few
 seconds worth of connectivity.
 
 Design
