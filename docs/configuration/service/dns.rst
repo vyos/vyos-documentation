@@ -111,6 +111,12 @@ avoid being tracked by the provider of your upstream DNS server.
    The local IPv4 or IPv6 addresses to bind the DNS forwarder to. The forwarder
    will listen on this address for incoming connections.
 
+.. cfgcmd:: set service dns forwarding no-server-rfc1918
+
+   This makes the server authoritatively not aware of: 10.in-addr.arpa,
+   168.192.in-addr.arpa, 16-31.172.in-addr.arpa, which enabling upstream 
+   DNS server(s) to be used for reverse lookups of these zones.
+
 Example
 =======
 
@@ -127,6 +133,8 @@ In this scenario:
   interface addresses - 192.168.1.254 for IPv4 and 2001:db8::ffff for IPv6
 * The VyOS DNS forwarder will only accept lookup requests from the
   LAN subnets - 192.168.1.0/24 and 2001:db8::/64
+* The VyOS DNS forwarder will pass reverse lookups for  10.in-addr.arpa,
+  168.192.in-addr.arpa, 16-31.172.in-addr.arpa zones to upstream server.
 
 .. code-block:: none
 
@@ -140,6 +148,7 @@ In this scenario:
   set service dns forwarding listen-address 2001:db8::ffff
   set service dns forwarding allow-from 192.168.1.0/24
   set service dns forwarding allow-from 2001:db8::/64
+  set service dns forwarding no-serve-rfc1918
 
 Operation
 =========
