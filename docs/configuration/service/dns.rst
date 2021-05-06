@@ -108,7 +108,7 @@ avoid being tracked by the provider of your upstream DNS server.
    The local IPv4 or IPv6 addresses to bind the DNS forwarder to. The forwarder
    will listen on this address for incoming connections.
 
-.. cfgcmd:: set service dns forwarding no-server-rfc1918
+.. cfgcmd:: set service dns forwarding no-serve-rfc1918
 
    This makes the server authoritatively not aware of: 10.in-addr.arpa,
    168.192.in-addr.arpa, 16-31.172.in-addr.arpa, which enabling upstream 
