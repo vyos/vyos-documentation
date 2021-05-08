@@ -38,7 +38,7 @@ Click **Add item** and paste your public ssh key. Click ``Save``.
 
 .. figure:: /_static/images/cloud-gcp-03.png
 
-4. After fiew seconds click to ``instance``
+4. After few seconds click to ``instance``
 
 .. figure:: /_static/images/cloud-gcp-04.png
 
