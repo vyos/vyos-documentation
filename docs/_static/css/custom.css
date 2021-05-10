@@ -175,3 +175,17 @@ a.cmdlink span:hover{
   background-color: red;
   color: black;
 }
+
+
+p.devwarning {
+	top: 10px;
+	position: sticky;
+	margin: 10px 10px 10px 310px;
+	padding: 5px 10px;
+	border-radius: 4px;
+	letter-spacing: 1px;
+	color: #000;
+	text-align: center;
+	background: #d40 repeating-linear-gradient( 135deg, transparent, transparent 56px, rgba(255, 255, 255, 0.2) 56px, rgba(255, 255, 255, 0.2) 112px );
+  background-color: #fdab10;
+}
