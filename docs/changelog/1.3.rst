@@ -8,6 +8,31 @@
    _ext/releasenotes.py
 
 
+2021-05-09
+==========
+
+* :vytask:`T3531` (bug): policy: prefix-list and route-map names do not allow underscores in names (FRR does)
+
+
+2021-05-08
+==========
+
+* :vytask:`T3517` (bug): FRR 7.5 bfd behavior for 1.3
+
+
+2021-05-07
+==========
+
+* :vytask:`T3333` (bug): "show vpn ipsec sa" reports ESP tunnels to be up when they are not.
+* :vytask:`T1171` (bug): 1.2.0 epa2 - IPsec VPN initiation
+
+
+2021-05-06
+==========
+
+* :vytask:`T3519` (bug): Cannot add / assign L2TPv3 to vrf
+
+
 2021-05-01
 ==========
 
@@ -305,7 +330,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.115 / 5.10.33
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.117 / 5.10.35
 
 
 2021-02-14
