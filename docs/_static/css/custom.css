@@ -156,7 +156,7 @@ a.cmdlink span:hover{
 }
 
 .wy-nav-top {
-  background-color : #ffffff !important;
+  background-color : #ffffff;
 }
 
 .wy-nav-top img {
@@ -188,4 +188,17 @@ p.devwarning {
 	text-align: center;
 	background: #d40 repeating-linear-gradient( 135deg, transparent, transparent 56px, rgba(255, 255, 255, 0.2) 56px, rgba(255, 255, 255, 0.2) 112px );
   background-color: #fdab10;
+}
+
+
+@media screen and (max-width: 768px) {
+  .wy-nav-top{
+    background-color: #fdab10;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  p.devwarning {
+    margin: 10px 10px 10px 10px;
+  }
 }
