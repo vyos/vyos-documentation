@@ -175,3 +175,9 @@ a.cmdlink span:hover{
   background-color: red;
   color: black;
 }
+
+@media screen and (max-width: 768px) {
+  .wy-nav-top{
+    background-color: #fdab10;
+  }
+}
