@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2021-05-09
+==========
+
+* :vytask:`T3530` (bug): BGP peer-group can't contain a hyphen
+* :vytask:`T3531` (bug): policy: prefix-list and route-map names do not allow underscores in names (FRR does)
+
+
+2021-05-07
+==========
+
+* :vytask:`T3333` (bug): "show vpn ipsec sa" reports ESP tunnels to be up when they are not.
+
+
+2021-05-06
+==========
+
+* :vytask:`T3523` (bug): VRF BGP daemon route-map command missing
+* :vytask:`T3519` (bug): Cannot add / assign L2TPv3 to vrf
+
+
+2021-05-05
+==========
+
+* :vytask:`T3520` (bug): Cannot add tunnel interface to isis within vrf
+* :vytask:`T3335` (bug): Some OSPFv3 show commands do not work
+
+
+2021-05-04
+==========
+
+* :vytask:`T3504` (feature): BGP Per Peer Graceful Restart
+
+
 2021-05-02
 ==========
 
@@ -378,7 +411,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.115 / 5.10.33
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.117 / 5.10.35
 
 
 2021-02-15
