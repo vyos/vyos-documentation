@@ -141,6 +141,19 @@ Bond options
       available link, setting this option to 0 or to 1 has the exact same
       effect.
 
+.. cfgcmd:: set interfaces bonding <interface> lacp-rate <slow|fast>
+
+   Option specifying the rate in which we'll ask our link partner to transmit
+   LACPDU packets in 802.3ad mode.
+
+   This option only affects 802.3ad mode.
+
+   * slow: Request partner to transmit LACPDUs every 30 seconds
+
+   * fast: Request partner to transmit LACPDUs every 1 second
+
+   The default value is slow.
+
 .. cfgcmd:: set interfaces bonding <interface> hash-policy <policy>
 
    * **layer2** - Uses XOR of hardware MAC addresses and packet type ID field
