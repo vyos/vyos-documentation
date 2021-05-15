@@ -28,7 +28,7 @@ will be mandatorily defragmented.
 
 It is possible to use either Multicast or Unicast to sync conntrack traffic.
 Most examples below show Multicast, but unicast can be specified by using the
-"peer" keywork after the specificed interface, as in the following example:  
+"peer" keywork after the specificed interface, as in the following example:
 
 set service conntrack-sync interface eth0 peer 192.168.0.250
 
@@ -53,14 +53,14 @@ Configuration
   set service conntrack-sync vrrp sync-group <1-255>
 
   # IP addresses for which local conntrack entries will not be synced
-  set service conntrack-sync ignore-address ipv4 <x.x.x.x>
+  set service conntrack-sync ignore-address <x.x.x.x>
 
   # Interface to use for syncing conntrack entries [REQUIRED]
   set service conntrack-sync interface <ifname>
- 
+
   # Multicast group to use for syncing conntrack entries
   set service conntrack-sync mcast-group <x.x.x.x>
-  
+
   # Peer to send Unicast UDP conntrack sync entires to, if not using Multicast above
   set service conntrack-sync interface <ifname> peer <remote IP of peer>
 
@@ -112,21 +112,16 @@ Now configure conntrack-sync service on ``router1`` **and** ``router2``
 
 .. code-block:: none
 
-  set service conntrack-sync accept-protocol 'tcp,udp,icmp'
+  set high-availablilty vrrp group internal virtual-address ... etc ...
+  set high-availability vrrp sync-group syncgrp member 'internal'
+  set service conntrack-sync accept-protocol 'tcp'
+  set service conntrack-sync accept-protocol 'udp'
+  set service conntrack-sync accept-protocol 'icmp'
   set service conntrack-sync event-listen-queue-size '8'
-  set service conntrack-sync failover-mechanism cluster group 'GROUP'
+  set service conntrack-sync failover-mechanism vrrp sync-group 'syncgrp'
   set service conntrack-sync interface 'eth0'
   set service conntrack-sync mcast-group '225.0.0.50'
   set service conntrack-sync sync-queue-size '8'
-
-If you are using VRRP, you need to define a VRRP sync-group, and use
-``vrrp sync-group`` instead of ``cluster group``.
-
-.. code-block:: none
-
-  set high-availablilty vrrp group internal virtual-address ... etc ...
-  set high-availability vrrp sync-group syncgrp member 'internal'
-  set service conntrack-sync failover-mechanism vrrp sync-group 'syncgrp'
 
 
 On the active router, you should have information in the internal-cache of
