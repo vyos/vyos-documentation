@@ -8,6 +8,47 @@
    _ext/releasenotes.py
 
 
+2021-05-15
+==========
+
+* :vytask:`T3549` (bug): DHCPv6 "service dhcpv6-server global-parameters name-server" is not correctly exported to dhcpdv6.conf when multiple name-server entries are present
+* :vytask:`T3532` (bug): Not possible to change ethertype after interface creation
+* :vytask:`T3550` (bug): Router-advert completion typo
+* :vytask:`T3547` (feature): conntrackd: remove deprecated config options
+* :vytask:`T3535` (feature): Rewrite vyatta-conntrack-sync in new XML and Python flavor
+
+
+2021-05-14
+==========
+
+* :vytask:`T3346` (bug): nat 4-to-5 migration script fails when a 'source' or 'destination' node exists but there are no rules
+* :vytask:`T3248` (default): Deal with VRRP mode-force command that exists in 1.2 but not in 1.3
+* :vytask:`T2809` (bug): An issue with config migration (system ntp server)
+* :vytask:`T3426` (default): add support for script arguments to vyos-configd
+
+
+2021-05-13
+==========
+
+* :vytask:`T3539` (bug): Typo in RPKI interface definition
+* :vytask:`T439` (feature): local PBR support
+* :vytask:`T3544` (feature): DHCP server should validate configuration before applying it
+* :vytask:`T3543` (feature): Support for setting lacp_rate on LACP bonded interfaces
+
+
+2021-05-12
+==========
+
+* :vytask:`T3302` (default): Make vyos-configd relay stdout from scripts to the user's console
+* :vytask:`T3542` (bug): udev net.rules not installed in image since may 2nd
+
+
+2021-05-10
+==========
+
+* :vytask:`T3374` (bug): IPv6 GRE Tunnel issues
+
+
 2021-05-09
 ==========
 
@@ -214,7 +255,6 @@
 ==========
 
 * :vytask:`T3440` (bug): HTTP API: give uvicorn time to initialize before restarting Nginx proxy
-* :vytask:`T3426` (default): add support for script arguments to vyos-configd
 
 
 2021-03-27
@@ -272,12 +312,6 @@
 ==========
 
 * :vytask:`T3413` (bug): Configuring invalid IPv6 EUI64 address results in "OSError: illegal IP address string passed to inet_pton"
-
-
-2021-03-16
-==========
-
-* :vytask:`T3302` (default): Make vyos-configd relay stdout from scripts to the user's console
 
 
 2021-03-15
@@ -411,7 +445,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.117 / 5.10.35
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.119 / 5.10.37
 
 
 2021-02-15
