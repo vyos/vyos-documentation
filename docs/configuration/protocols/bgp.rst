@@ -1069,22 +1069,22 @@ A simple eBGP configuration:
 **Node 1:**
 
 .. code-block:: none
-
-  set protocols bgp 65534 neighbor 192.168.0.2 ebgp-multihop '2'
-  set protocols bgp 65534 neighbor 192.168.0.2 remote-as '65535'
-  set protocols bgp 65534 neighbor 192.168.0.2 update-source '192.168.0.1'
-  set protocols bgp 65534 address-family ipv4-unicast network '172.16.0.0/16'
-  set protocols bgp 65534 parameters router-id '192.168.0.1'
+  
+  set protocols bgp local-as 65534
+  set protocols bgp neighbor 192.168.0.2 remote-as '65535'
+  set protocols bgp neighbor 192.168.0.2 update-source '192.168.0.1'
+  set protocols bgp address-family ipv4-unicast network '172.16.0.0/16'
+  set protocols bgp parameters router-id '192.168.0.1'
 
 **Node 2:**
 
 .. code-block:: none
 
-  set protocols bgp 65535 neighbor 192.168.0.1 ebgp-multihop '2'
-  set protocols bgp 65535 neighbor 192.168.0.1 remote-as '65534'
-  set protocols bgp 65535 neighbor 192.168.0.1 update-source '192.168.0.2'
-  set protocols bgp 65535 address-family ipv4-unicast network '172.17.0.0/16'
-  set protocols bgp 65535 parameters router-id '192.168.0.2'
+  set protocols bgp local-as 65535
+  set protocols bgp neighbor 192.168.0.1 remote-as '65534'
+  set protocols bgp neighbor 192.168.0.1 update-source '192.168.0.2'
+  set protocols bgp address-family ipv4-unicast network '172.17.0.0/16'
+  set protocols bgp parameters router-id '192.168.0.2'
 
 
 Don't forget, the CIDR declared in the network statement MUST **exist in your
@@ -1113,23 +1113,23 @@ A simple BGP configuration via IPv6.
 
 .. code-block:: none
 
-  set protocols bgp 65534 neighbor 2001:db8::2 ebgp-multihop '2'
-  set protocols bgp 65534 neighbor 2001:db8::2 remote-as '65535'
-  set protocols bgp 65534 neighbor 2001:db8::2 update-source '2001:db8::1'
-  set protocols bgp 65534 neighbor 2001:db8::2 address-family ipv6-unicast
-  set protocols bgp 65534 address-family ipv6-unicast network '2001:db8:1::/48'
-  set protocols bgp 65534 parameters router-id '10.1.1.1'
+  set protocols bgp local-as 65534
+  set protocols bgp neighbor 2001:db8::2 remote-as '65535'
+  set protocols bgp neighbor 2001:db8::2 update-source '2001:db8::1'
+  set protocols bgp neighbor 2001:db8::2 address-family ipv6-unicast
+  set protocols bgp address-family ipv6-unicast network '2001:db8:1::/48'
+  set protocols bgp parameters router-id '10.1.1.1'
 
 **Node 2:**
 
 .. code-block:: none
 
-  set protocols bgp 65535 neighbor 2001:db8::1 ebgp-multihop '2'
-  set protocols bgp 65535 neighbor 2001:db8::1 remote-as '65534'
-  set protocols bgp 65535 neighbor 2001:db8::1 update-source '2001:db8::2'
-  set protocols bgp 65535 neighbor 2001:db8::1 address-family ipv6-unicast
-  set protocols bgp 65535 address-family ipv6-unicast network '2001:db8:2::/48'
-  set protocols bgp 65535 parameters router-id '10.1.1.2'
+  set protocols bgp local-as 65535
+  set protocols bgp neighbor 2001:db8::1 remote-as '65534'
+  set protocols bgp neighbor 2001:db8::1 update-source '2001:db8::2'
+  set protocols bgp neighbor 2001:db8::1 address-family ipv6-unicast
+  set protocols bgp address-family ipv6-unicast network '2001:db8:2::/48'
+  set protocols bgp parameters router-id '10.1.1.2'
 
 Don't forget, the CIDR declared in the network statement **MUST exist in your
 routing table (dynamic or static), the best way to make sure that is true is
@@ -1172,10 +1172,10 @@ Route filter can be applied using a route-map:
   set policy route-map AS65535-OUT rule 10 match ip address prefix-list 'AS65535-OUT'
   set policy route-map AS65535-OUT rule 10 match ipv6 address prefix-list 'AS65535-OUT'
   set policy route-map AS65535-OUT rule 20 action 'permit'
-  set protocols bgp 65534 neighbor 2001:db8::2 address-family ipv4-unicast route-map export 'AS65535-OUT'
-  set protocols bgp 65534 neighbor 2001:db8::2 address-family ipv4-unicast route-map import 'AS65535-IN'
-  set protocols bgp 65534 neighbor 2001:db8::2 address-family ipv6-unicast route-map export 'AS65535-OUT'
-  set protocols bgp 65534 neighbor 2001:db8::2 address-family ipv6-unicast route-map import 'AS65535-IN'
+  set protocols bgp neighbor 2001:db8::2 address-family ipv4-unicast route-map export 'AS65535-OUT'
+  set protocols bgp neighbor 2001:db8::2 address-family ipv4-unicast route-map import 'AS65535-IN'
+  set protocols bgp neighbor 2001:db8::2 address-family ipv6-unicast route-map export 'AS65535-OUT'
+  set protocols bgp neighbor 2001:db8::2 address-family ipv6-unicast route-map import 'AS65535-IN'
 
 **Node2:**
 
@@ -1197,10 +1197,10 @@ Route filter can be applied using a route-map:
   set policy route-map AS65534-OUT rule 10 match ip address prefix-list 'AS65534-OUT'
   set policy route-map AS65534-OUT rule 10 match ipv6 address prefix-list 'AS65534-OUT'
   set policy route-map AS65534-OUT rule 20 action 'permit'
-  set protocols bgp 65535 neighbor 2001:db8::1 address-family ipv4-unicast route-map export 'AS65534-OUT'
-  set protocols bgp 65535 neighbor 2001:db8::1 address-family ipv4-unicast route-map import 'AS65534-IN'
-  set protocols bgp 65535 neighbor 2001:db8::1 address-family ipv6-unicast route-map export 'AS65534-OUT'
-  set protocols bgp 65535 neighbor 2001:db8::1 address-family ipv6-unicast route-map import 'AS65534-IN'
+  set protocols bgp neighbor 2001:db8::1 address-family ipv4-unicast route-map export 'AS65534-OUT'
+  set protocols bgp neighbor 2001:db8::1 address-family ipv4-unicast route-map import 'AS65534-IN'
+  set protocols bgp neighbor 2001:db8::1 address-family ipv6-unicast route-map export 'AS65534-OUT'
+  set protocols bgp neighbor 2001:db8::1 address-family ipv6-unicast route-map import 'AS65534-IN'
 
 We could expand on this and also deny link local and multicast in the rule 20
 action deny.
