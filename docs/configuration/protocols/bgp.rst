@@ -1070,21 +1070,23 @@ A simple eBGP configuration:
 
 .. code-block:: none
   
+  set interfaces dummy dum0 address 172.16.1.1/32
+  set interfaces ethernet eth0 address 192.168.0.1/30
   set protocols bgp local-as 65534
-  set protocols bgp neighbor 192.168.0.2 remote-as '65535'
-  set protocols bgp neighbor 192.168.0.2 update-source '192.168.0.1'
-  set protocols bgp address-family ipv4-unicast network '172.16.0.0/16'
-  set protocols bgp parameters router-id '192.168.0.1'
+  set protocols bgp address-family ipv4-unicast redistribute connected
+  set protocols bgp neighbor 192.168.0.2 address-family ipv4-unicast
+  set protocols bgp neighbor 192.168.0.2 remote-as 65535
 
 **Node 2:**
 
 .. code-block:: none
 
+  set interfaces dummy dum0 address 172.16.1.2/32
+  set interfaces ethernet eth0 address 192.168.0.2/30
   set protocols bgp local-as 65535
-  set protocols bgp neighbor 192.168.0.1 remote-as '65534'
-  set protocols bgp neighbor 192.168.0.1 update-source '192.168.0.2'
-  set protocols bgp address-family ipv4-unicast network '172.17.0.0/16'
-  set protocols bgp parameters router-id '192.168.0.2'
+  set protocols bgp address-family ipv4-unicast redistribute connected
+  set protocols bgp neighbor 192.168.0.2 address-family ipv4-unicast
+  set protocols bgp neighbor 192.168.0.2 remote-as 65534
 
 
 Don't forget, the CIDR declared in the network statement MUST **exist in your
