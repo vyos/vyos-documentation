@@ -1089,23 +1089,6 @@ A simple eBGP configuration:
   set protocols bgp neighbor 192.168.0.2 remote-as 65534
 
 
-Don't forget, the CIDR declared in the network statement MUST **exist in your
-routing table (dynamic or static), the best way to make sure that is true is
-creating a static route:**
-
-**Node 1:**
-
-.. code-block:: none
-
-  set protocols static route 172.16.0.0/16 blackhole distance '254'
-
-**Node 2:**
-
-.. code-block:: none
-
-  set protocols static route 172.17.0.0/16 blackhole distance '254'
-
-
 IPv6 peering
 ============
 
