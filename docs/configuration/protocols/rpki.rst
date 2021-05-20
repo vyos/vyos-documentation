@@ -30,9 +30,9 @@ in :rfc:`8210`.
   If you are new to these routing security technologies then there is an
   `excellent guide to RPKI`_ by NLnet Labs which will get you up to speed
   very quickly. Their documentation explains everything from what RPKI is to
-  deploying it in production (albeit with a focus on using NLnet Labs'
-  tools). It also has some `help and operational guidance`_ including
-  "What can I do about my route having an Invalid state?"
+  deploying it in production. It also has some 
+  `help and operational guidance`_ including "What can I do about my route 
+  having an Invalid state?"
 
 ***************
 Getting started
@@ -197,6 +197,6 @@ Test`_ experimental tool.
 .. _RPKI analytics: https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/
 .. _RIPE Labs RPKI Test: https://sg-pub.ripe.net/jasper/rpki-web-test/
 .. _excellent guide to RPKI: https://rpki.readthedocs.io/
-.. _help and operational guidance: https://rpki.readthedocs.io/en/latest/about/help.htm
+.. _help and operational guidance: https://rpki.readthedocs.io/en/latest/about/help.html
 
 .. start_vyoslinter
