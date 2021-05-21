@@ -374,6 +374,29 @@ Raw Parameters
   set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option domain-name-servers 192.0.2.11, 192.0.2.12;"
   set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option pxelinux.configfile &quot;pxelinux.cfg/01-00-15-17-44-2d-aa&quot;;"
 
+Option 43 for UniFI
+-------------------
+
+* These parameters need to be part of the DHCP global options. They stay unchanged.
+
+
+.. code-block:: none
+
+ set service dhcp-server global-parameters 'option space ubnt;'
+ set service dhcp-server global-parameters 'option ubnt.unifi-address code 1 = ip-address;'
+ set service dhcp-server global-parameters 'class &quot;ubnt&quot; {'
+ set service dhcp-server global-parameters 'match if substring (option vendor-class-identifier, 0, 4) = &quot;ubnt&quot;;'
+ set service dhcp-server global-parameters 'option vendor-class-identifier &quot;ubnt&quot;;'
+ set service dhcp-server global-parameters 'vendor-option-space ubnt;'
+ set service dhcp-server global-parameters '}'
+
+* Now we add the option to the scope, adapt to your setup
+
+
+.. code-block:: none
+
+ set service dhcp-server shared-network-name example-scope subnet 10.1.1.0/24 subnet-parameters 'option ubnt.unifi-address 172.16.1.10;'
+
 
 Operation Mode
 ==============
