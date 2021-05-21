@@ -11,12 +11,15 @@ you can have as many as you want.
 .. note:: Dummy interfaces can be used as interfaces that always stay up (in
    the same fashion to loopbacks in Cisco IOS), or for testing purposes.
 
-.. hint:: A Dummy interface is always up, thus it could be used for
-   management traffic or as source/destination for and :abbr:`IGP (Interior
-   Gateway Protocol)` like :ref:`bgp` so your internal BGP link is not dependent
-   on physical link states and multiple routes can be chosen to the
-   destination. A :ref:`dummy-interface` Interface should always be preferred
-   over a :ref:`loopback-interface` interface.
+.. hint:: On systems with multiple redundant uplinks and routes,
+   it's a good idea to use a dedicated address for management and dynamic routing protocols.
+   However, assigning that address to a physical link is risky:
+   if that link goes down, that address will become inaccessible.
+   A common solution is to assign the management address to a loopback or a dummy interface
+   and advertise that address via all physical links, so that it's reachable
+   through any of them. Since in Linux-based systems, there can be only one loopback interface,
+   it's better to use a dummy interface for that purpose, since they can be added, removed,
+   and taken up and down independently.
 
 *************
 Configuration
