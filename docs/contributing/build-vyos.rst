@@ -94,7 +94,7 @@ If you have not build your own Docker image, you need to clone the repository to
 .. code-block:: none
 
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build # For VyOS 1.2
-  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build # For rolling release
+  $ git clone -b current --single-branch https://github.com/vyos/vyos-build # For rolling release
 
 Now a fresh build of the VyOS ISO can begin. Change directory to the ``vyos-build`` directory and run:
 
@@ -131,7 +131,7 @@ To start, clone the repository to your local machine:
 .. code-block:: none
 
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build # For VyOS 1.2
-  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build # For rolling release
+  $ git clone -b current --single-branch https://github.com/vyos/vyos-build # For rolling release
 
 For the packages required, you can refer to the ``docker/Dockerfile`` file
 in the repository_. The ``./configure`` script will also warn you if any
