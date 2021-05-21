@@ -395,7 +395,8 @@ Option 43 for UniFI
 
 .. code-block:: none
 
- set service dhcp-server shared-network-name example-scope subnet 10.1.1.0/24 static-mapping unifi-controller static-mapping-parameters 'option ubnt.unifi-address 172.16.1.10;'
+ set service dhcp-server shared-network-name example-scope subnet 10.1.1.0/24 subnet-parameters 'option ubnt.unifi-address 172.16.1.10;'
+
 
 Operation Mode
 ==============
