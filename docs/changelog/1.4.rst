@@ -8,6 +8,52 @@
    _ext/releasenotes.py
 
 
+2021-05-23
+==========
+
+* :vytask:`T3570` (default): Prevent setting of a larger MTU on child interfaces
+* :vytask:`T3573` (bug): as-path-prepend Description Invalid
+* :vytask:`T3572` (feature): Basic Drive Diagnostic Tools
+
+
+2021-05-22
+==========
+
+* :vytask:`T3564` (default): Multiple BGP Confederation Peers Not Allowed
+
+
+2021-05-21
+==========
+
+* :vytask:`T3551` (bug): QoS control failure of VLAN sub interface
+
+
+2021-05-20
+==========
+
+* :vytask:`T3554` (feature): Add area-type stub for ospfv3
+* :vytask:`T3565` (feature): sysctl: rewrite in XML and Python and drop from vyatta-cfg-system
+
+
+2021-05-19
+==========
+
+* :vytask:`T3562` (feature): Update Accel-PPP to a newer revision
+* :vytask:`T3559` (feature): Add restart op-command for OpenConnect Server
+
+
+2021-05-18
+==========
+
+* :vytask:`T3525` (default): VMWare resume script syntax errors
+
+
+2021-05-17
+==========
+
+* :vytask:`T3557` (bug): ddclient: FileNotFoundError in op-mode
+
+
 2021-05-15
 ==========
 
@@ -445,7 +491,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.119 / 5.10.37
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.121 / 5.10.39
 
 
 2021-02-15
