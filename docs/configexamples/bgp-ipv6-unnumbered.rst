@@ -13,39 +13,41 @@ Configuration
 
 .. code-block:: none
 
-  set protocols bgp 64496 address-family ipv4-unicast redistribute connected
-  set protocols bgp 64496 address-family ipv6-unicast redistribute connected
-  set protocols bgp 64496 neighbor eth1 interface v6only
-  set protocols bgp 64496 neighbor eth1 interface v6only peer-group 'fabric'
-  set protocols bgp 64496 neighbor eth2 interface v6only
-  set protocols bgp 64496 neighbor eth2 interface v6only peer-group 'fabric'
-  set protocols bgp 64496 parameters bestpath as-path multipath-relax
-  set protocols bgp 64496 parameters bestpath compare-routerid
-  set protocols bgp 64496 parameters default no-ipv4-unicast
-  set protocols bgp 64496 parameters router-id '192.168.0.1'
-  set protocols bgp 64496 peer-group fabric address-family ipv4-unicast
-  set protocols bgp 64496 peer-group fabric address-family ipv6-unicast
-  set protocols bgp 64496 peer-group fabric capability extended-nexthop
-  set protocols bgp 64496 peer-group fabric remote-as 'external'
+  set protocols bgp local-as 64496
+  set protocols bgp address-family ipv4-unicast redistribute connected
+  set protocols bgp address-family ipv6-unicast redistribute connected
+  set protocols bgp neighbor eth1 interface v6only
+  set protocols bgp neighbor eth1 interface v6only peer-group 'fabric'
+  set protocols bgp neighbor eth2 interface v6only
+  set protocols bgp neighbor eth2 interface v6only peer-group 'fabric'
+  set protocols bgp parameters bestpath as-path multipath-relax
+  set protocols bgp parameters bestpath compare-routerid
+  set protocols bgp parameters default no-ipv4-unicast
+  set protocols bgp parameters router-id '192.168.0.1'
+  set protocols bgp peer-group fabric address-family ipv4-unicast
+  set protocols bgp peer-group fabric address-family ipv6-unicast
+  set protocols bgp peer-group fabric capability extended-nexthop
+  set protocols bgp peer-group fabric remote-as 'external'
 
 - Router B:
 
 .. code-block:: none
 
-  set protocols bgp 64499 address-family ipv4-unicast redistribute connected
-  set protocols bgp 64499 address-family ipv6-unicast redistribute connected
-  set protocols bgp 64499 neighbor eth1 interface v6only
-  set protocols bgp 64499 neighbor eth1 interface v6only peer-group 'fabric'
-  set protocols bgp 64499 neighbor eth2 interface v6only
-  set protocols bgp 64499 neighbor eth2 interface v6only peer-group 'fabric'
-  set protocols bgp 64499 parameters bestpath as-path multipath-relax
-  set protocols bgp 64499 parameters bestpath compare-routerid
-  set protocols bgp 64499 parameters default no-ipv4-unicast
-  set protocols bgp 64499 parameters router-id '192.168.0.2'
-  set protocols bgp 64499 peer-group fabric address-family ipv4-unicast
-  set protocols bgp 64499 peer-group fabric address-family ipv6-unicast
-  set protocols bgp 64499 peer-group fabric capability extended-nexthop
-  set protocols bgp 64499 peer-group fabric remote-as 'external'
+  set protocols bgp local-as 64499
+  set protocols bgp address-family ipv4-unicast redistribute connected
+  set protocols bgp address-family ipv6-unicast redistribute connected
+  set protocols bgp neighbor eth1 interface v6only
+  set protocols bgp neighbor eth1 interface v6only peer-group 'fabric'
+  set protocols bgp neighbor eth2 interface v6only
+  set protocols bgp neighbor eth2 interface v6only peer-group 'fabric'
+  set protocols bgp parameters bestpath as-path multipath-relax
+  set protocols bgp parameters bestpath compare-routerid
+  set protocols bgp parameters default no-ipv4-unicast
+  set protocols bgp parameters router-id '192.168.0.2'
+  set protocols bgp peer-group fabric address-family ipv4-unicast
+  set protocols bgp peer-group fabric address-family ipv6-unicast
+  set protocols bgp peer-group fabric capability extended-nexthop
+  set protocols bgp peer-group fabric remote-as 'external'
 
 Results
 =======

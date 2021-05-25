@@ -26,7 +26,8 @@ example, if you want to disable a BGP peer on VRRP transition to backup:
   #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
   configure
-  set protocols bgp 65536 neighbor 192.168.2.1 shutdown
+  set protocols bgp local-as 65536
+  set protocols bgp neighbor 192.168.2.1 shutdown
   commit
   exit
 
