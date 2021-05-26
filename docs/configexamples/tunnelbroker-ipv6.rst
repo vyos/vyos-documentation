@@ -31,10 +31,10 @@ tunnel information page.
   set interfaces tunnel tun0 address Client_IPv6_from_Tunnelbroker    # This will be your VyOS install's public IPv6 address
   set interfaces tunnel tun0 description 'HE.NET IPv6 Tunnel'
   set interfaces tunnel tun0 encapsulation 'sit'
-  set interfaces tunnel tun0 local-ip Client_IPv4_from_Tunnelbroker   # This is your public IP
+  set interfaces tunnel tun0 source-address Client_IPv4_from_Tunnelbroker   # This is your public IP
   set interfaces tunnel tun0 mtu '1472'
   set interfaces tunnel tun0 multicast 'disable'
-  set interfaces tunnel tun0 remote-ip Server_IPv4_from_Tunnelbroker  # This is the IP of the Tunnelbroker server
+  set interfaces tunnel tun0 remote Server_IPv4_from_Tunnelbroker  # This is the IP of the Tunnelbroker server
   set protocols static route6 ::/0 interface tun0  # Tell all traffic to go over this tunnel
   commit
 
