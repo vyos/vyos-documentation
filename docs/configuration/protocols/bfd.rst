@@ -10,7 +10,7 @@ BFD
 the following RFCs: :rfc:`5880`, :rfc:`5881` and :rfc:`5883`.
 
 In the age of very fast networks, a second of unreachability may equal millions of lost packets.
-The idea behind BFD is to detect very quickly when a peer is down and take action extremely fast. 
+The idea behind BFD is to detect very quickly when a peer is down and take action extremely fast.
 
 BFD sends lots of small UDP packets very quickly to ensures that the peer is still alive.
 
@@ -31,7 +31,7 @@ Configure BFD
 
    Allow this BFD peer to not be directly connected
 
-.. cfgcmd:: set protocols bfd peer <address> source 
+.. cfgcmd:: set protocols bfd peer <address> source
    [address <address> | interface <interface>]
 
    Bind listener to specifid interface/address, mandatory for IPv6
@@ -45,7 +45,7 @@ Configure BFD
 
    Remote transmission interval will be multiplied by this value
 
-.. cfgcmd:: set protocols bfd peer <address> interval 
+.. cfgcmd:: set protocols bfd peer <address> interval
    [receive | transmit] <10-60000>
 
    Interval in milliseconds
@@ -58,11 +58,11 @@ Configure BFD
 Enable BFD in BGP
 -----------------
 
-.. cfgcmd:: set protocols bgp <asn> neighbor <address> bfd
+.. cfgcmd:: set protocols bgp neighbor <neighbor> bfd
 
    Enable BFD on a single BGP neighbor
 
-.. cfgcmd:: set protocols bgp <asn> peer-group <group> bfd
+.. cfgcmd:: set protocols bgp peer-group <neighbor> bfd
 
    Enable BFD on a BGP peer group
 

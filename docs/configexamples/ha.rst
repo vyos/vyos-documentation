@@ -6,7 +6,7 @@ This document walks you through a complete HA setup of two VyOS machines. This
 design is based on a VM as the primary router, and a physical machine as a
 backup, using VRRP, BGP, OSPF and conntrack sharing.
 
-The aim of this document is to walk you through setting everything up, so 
+The aim of this document is to walk you through setting everything up, so
 at a point where you can reboot any machine and not lose more than a few
 seconds worth of connectivity.
 
@@ -555,6 +555,7 @@ it is not 203.0.113.0/24.
    set policy prefix-list BGPOUT rule 100 prefix '203.0.113.0/24'
    set policy prefix-list BGPOUT rule 10000 action 'deny'
    set policy prefix-list BGPOUT rule 10000 prefix '0.0.0.0/0'
+
    set policy route-map BGPOUT description 'BGP Export Filter'
    set policy route-map BGPOUT rule 10 action 'permit'
    set policy route-map BGPOUT rule 10 match ip address prefix-list 'BGPOUT'
@@ -564,14 +565,16 @@ it is not 203.0.113.0/24.
    set policy route-map BGPPREPENDOUT rule 10 set as-path-prepend '65551 65551 65551'
    set policy route-map BGPPREPENDOUT rule 10 match ip address prefix-list 'BGPOUT'
    set policy route-map BGPPREPENDOUT rule 10000 action 'deny'
-   set protocols bgp 65551 address-family ipv4-unicast network 192.0.2.0/24
-   set protocols bgp 65551 address-family ipv4-unicast redistribute connected metric '50'
-   set protocols bgp 65551 address-family ipv4-unicast redistribute ospf metric '50'
-   set protocols bgp 65551 neighbor 192.0.2.11 address-family ipv4-unicast route-map export 'BGPOUT'
-   set protocols bgp 65551 neighbor 192.0.2.11 address-family ipv4-unicast soft-reconfiguration inbound
-   set protocols bgp 65551 neighbor 192.0.2.11 remote-as '65550'
-   set protocols bgp 65551 neighbor 192.0.2.11 update-source '192.0.2.21'
-   set protocols bgp 65551 parameters router-id '192.0.2.21'
+
+   set protocols bgp local-as 65551
+   set protocols bgp address-family ipv4-unicast network 192.0.2.0/24
+   set protocols bgp address-family ipv4-unicast redistribute connected metric '50'
+   set protocols bgp address-family ipv4-unicast redistribute ospf metric '50'
+   set protocols bgp neighbor 192.0.2.11 address-family ipv4-unicast route-map export 'BGPOUT'
+   set protocols bgp neighbor 192.0.2.11 address-family ipv4-unicast soft-reconfiguration inbound
+   set protocols bgp neighbor 192.0.2.11 remote-as '65550'
+   set protocols bgp neighbor 192.0.2.11 update-source '192.0.2.21'
+   set protocols bgp parameters router-id '192.0.2.21'
 
 
 **router2**

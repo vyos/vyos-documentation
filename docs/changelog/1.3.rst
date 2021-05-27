@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2021-05-23
+==========
+
+* :vytask:`T3570` (default): Prevent setting of a larger MTU on child interfaces
+* :vytask:`T3572` (feature): Basic Drive Diagnostic Tools
+
+
+2021-05-20
+==========
+
+* :vytask:`T3554` (feature): Add area-type stub for ospfv3
+
+
+2021-05-19
+==========
+
+* :vytask:`T3562` (feature): Update Accel-PPP to a newer revision
+* :vytask:`T3559` (feature): Add restart op-command for OpenConnect Server
+
+
+2021-05-18
+==========
+
+* :vytask:`T3525` (default): VMWare resume script syntax errors
+* :vytask:`T2462` (default): LLDP op-mode exception: IndexError: list index out of range
+
+
+2021-05-17
+==========
+
+* :vytask:`T3557` (bug): ddclient: FileNotFoundError in op-mode
+
+
 2021-05-15
 ==========
 
@@ -375,7 +408,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.119 / 5.10.37
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.121 / 5.10.39
 
 
 2021-02-14

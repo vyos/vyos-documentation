@@ -120,13 +120,14 @@ Vyos configuration
 
 .. code-block:: none
 
-  set protocols bgp 64499 neighbor 10.0.0.4 remote-as '65540'
-  set protocols bgp 64499 neighbor 10.0.0.4 address-family ipv4-unicast soft-reconfiguration 'inbound'
-  set protocols bgp 64499 neighbor 10.0.0.4 timers holdtime '30'
-  set protocols bgp 64499 neighbor 10.0.0.4 timers keepalive '10'
+  set protocols bgp local-as 64499
+  set protocols bgp neighbor 10.0.0.4 remote-as '65540'
+  set protocols bgp neighbor 10.0.0.4 address-family ipv4-unicast soft-reconfiguration 'inbound'
+  set protocols bgp neighbor 10.0.0.4 timers holdtime '30'
+  set protocols bgp neighbor 10.0.0.4 timers keepalive '10'
 
 - **Important**: Disable connected check \
 
 .. code-block:: none
 
-  set protocols bgp 64499 neighbor 10.0.0.4 disable-connected-check
+  set protocols bgp neighbor 10.0.0.4 disable-connected-check
