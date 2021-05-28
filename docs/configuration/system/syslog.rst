@@ -26,6 +26,7 @@ Console
    :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
    see tables below.
 
+.. _custom-file:
 
 Custom File
 -----------
@@ -229,3 +230,16 @@ displayed.
 
 .. hint:: Use ``show log | strip-private`` if you want to hide private data
    when sharing your logs.
+
+Delete Logs
+===========
+
+.. opcmd:: delete log file <text>
+
+Deletes the specified user-defined file <text> in the /var/log/user directory
+
+Note that deleting the log file does not stop the system from logging events. 
+If you use this command while the system is logging events, old log events 
+will be deleted, but events after the delete operation will be recorded in 
+the new file. To delete the file altogether, first delete logging to the 
+file using system syslog :ref:`custom-file` command, and then delete the file. 
