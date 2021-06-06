@@ -15,8 +15,6 @@ with native Windows and Mac VPN clients):
 .. code-block:: none
 
   set vpn ipsec ipsec-interfaces interface eth0
-  set vpn ipsec nat-traversal enable
-  set vpn ipsec nat-networks allowed-network 0.0.0.0/0
 
   set vpn l2tp remote-access outside-address 192.0.2.2
   set vpn l2tp remote-access client-ip-pool start 192.168.255.2
