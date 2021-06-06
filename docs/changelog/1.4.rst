@@ -8,6 +8,55 @@
    _ext/releasenotes.py
 
 
+2021-05-30
+==========
+
+* :vytask:`T3524` (default): Please implement  bgp graceful-shutdown
+* :vytask:`T3518` (bug): Warning messages when using SCP commit-archive
+* :vytask:`T3093` (default): Add xml for vpn ipsec
+* :vytask:`T1866` (bug): Commit archive over SFTP doesn't work with non-standard ports
+* :vytask:`T3590` (feature): bgp: add option for limiting maximum number of prefixes to be sent to a peer
+* :vytask:`T3589` (feature): op-mode: support clearing out logfiles from CLI
+* :vytask:`T2641` (feature): Rewrite vpn ipsec OP commands in new style XML syntax
+* :vytask:`T3351` (feature): Installer checking MD5 checksums on the ISO image
+
+
+2021-05-29
+==========
+
+* :vytask:`T1944` (bug): FRR: Invalid route in BGP causes update storm, memory leak, and failure of Zebra. 
+* :vytask:`T1888` (feature): Update to StrongSwan 5.9.1
+* :vytask:`T1995` (bug): "show vpn ike sa" command always show child-sas as down
+
+
+2021-05-27
+==========
+
+* :vytask:`T3561` (feature): router-advert: support advertising specific routes
+* :vytask:`T2669` (bug): DHCP-server overlapping ranges.
+
+
+2021-05-26
+==========
+
+* :vytask:`T3540` (bug): Keepalived memory utilisation issue when constantly getting its state in JSON format
+
+
+2021-05-25
+==========
+
+* :vytask:`T3569` (bug): Firewall wrong completion help values
+
+
+2021-05-24
+==========
+
+* :vytask:`T3575` (bug): pseudo-ethernet: must check source-interface MTU
+* :vytask:`T3571` (bug): Broken Show Tab Complete
+* :vytask:`T3555` (bug): GRE TAP tunnel does not silent fragment packets / kernel fix available
+* :vytask:`T3576` (bug): ISIS does not support IPV6
+
+
 2021-05-23
 ==========
 
@@ -491,7 +540,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.121 / 5.10.39
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.123 / 5.10.41
 
 
 2021-02-15

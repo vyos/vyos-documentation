@@ -8,6 +8,66 @@
    _ext/releasenotes.py
 
 
+2021-05-30
+==========
+
+* :vytask:`T3524` (default): Please implement  bgp graceful-shutdown
+* :vytask:`T1866` (bug): Commit archive over SFTP doesn't work with non-standard ports
+* :vytask:`T3589` (feature): op-mode: support clearing out logfiles from CLI
+* :vytask:`T3508` (bug): Check if there's enough drive space for an upgrade before downloading an image
+* :vytask:`T1506` (enhancment): commit-archive scp/sftp public key authentication
+
+
+2021-05-29
+==========
+
+* :vytask:`T3135` (bug): BFD configurations fail to be applied
+* :vytask:`T3103` (default): Rewrite parts of vyos\frr.py for readability, logging and to fix mulitiline regex "bugs"
+* :vytask:`T2739` (default): vyos-utils is not compiled with a Jenkins pipeline.
+* :vytask:`T2451` (bug): Cannot use !tcp or !tcp_udp while adding firewall rule
+* :vytask:`T2436` (default): equuleus: Testing: vyos-1x: syntax checking python scripts in PR
+* :vytask:`T2184` (bug): OpenVPN op_mode tools broken
+* :vytask:`T1944` (bug): FRR: Invalid route in BGP causes update storm, memory leak, and failure of Zebra. 
+* :vytask:`T1995` (bug): "show vpn ike sa" command always show child-sas as down
+
+
+2021-05-28
+==========
+
+* :vytask:`T1579` (feature): Rewrite all interface types in new XML/Python style
+
+
+2021-05-27
+==========
+
+* :vytask:`T2629` (bug): VXLAN interfaces don't actually allow you to configure most settings
+* :vytask:`T2617` (feature): Rewrite vyatta-op-quagga "show" to XML
+* :vytask:`T2512` (feature): vyatta-op-quagga [show ip] to XML format
+* :vytask:`T1905` (default): Update to Keepalived 2.0.19
+* :vytask:`T2669` (bug): DHCP-server overlapping ranges.
+
+
+2021-05-26
+==========
+
+* :vytask:`T3558` (default): autocomplete options for dhcp-interface is not showing for the static route command
+* :vytask:`T3540` (bug): Keepalived memory utilisation issue when constantly getting its state in JSON format
+* :vytask:`T2807` (feature): IPv6 Link-Local Address - Automatically generation/configuration on GRE Interfaces
+
+
+2021-05-25
+==========
+
+* :vytask:`T3569` (bug): Firewall wrong completion help values
+
+
+2021-05-24
+==========
+
+* :vytask:`T3575` (bug): pseudo-ethernet: must check source-interface MTU
+* :vytask:`T3571` (bug): Broken Show Tab Complete
+
+
 2021-05-23
 ==========
 
@@ -408,7 +468,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.121 / 5.10.39
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.123 / 5.10.41
 
 
 2021-02-14
