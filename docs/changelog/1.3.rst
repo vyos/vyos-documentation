@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2021-06-04
+==========
+
+* :vytask:`T3592` (feature): Set default TTL 64 for tunnels
+
+
+2021-06-01
+==========
+
+* :vytask:`T406` (bug): VPN configuration error: IPv6 over IPv4 IPsec is not supported when using IPv6 ONLY tunnel.
+
+
 2021-05-30
 ==========
 
@@ -468,7 +480,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.123 / 5.10.41
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.124 / 5.10.42
 
 
 2021-02-14
@@ -810,6 +822,7 @@
 * :vytask:`T3131` (bug): Typo in ipsec preshared-secret help
 * :vytask:`T3134` (bug): DHCPv6 DUID configuration node missing
 * :vytask:`T3140` (feature): Relax "ethernet offload-options" CLI definition
+* :vytask:`T3132` (feature): Enable egress flow accounting
 
 
 2020-12-17
