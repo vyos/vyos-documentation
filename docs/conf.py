@@ -45,7 +45,7 @@ extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.ifconfig',
               'sphinx.ext.graphviz',
               'notfound.extension',
-              'autosectionlabel',
+              #'autosectionlabel',
               'vyos'
 ]
 
