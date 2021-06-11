@@ -17,6 +17,8 @@ performance degradation via a specially crafted authoritative DNS server reply.
 
 1.2.6 is a maintenance release made in September 2020.
 
+.. _resovled issues 1.2.6:
+
 Resolved issues
 ---------------
 

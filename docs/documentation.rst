@@ -137,6 +137,59 @@ We use the following syntax for Headlines.
   Paragraphs
   """"""""""
 
+Cross-References
+^^^^^^^^^^^^^^^^
+
+A plugin will used to generate a reference lable of each headline.
+To reference a page or a section in the documentation use the ``:ref:``
+command.
+
+For example you want to reference the headline **VLAN** in the
+**ethernet.rst** page. The plugin generates label based on headline
+and the file path.
+
+``:ref:`configuration/interfaces/ethernet:vlan``
+
+to use a alternative Hyperlink use it this way:
+
+``:ref:`Check out VLAN<configuration/interfaces/ethernet:vlan>``
+
+handle build errors
+"""""""""""""""""""
+
+The plugin will warn on build if a headline has a duplicate name in the 
+same document. To prevent this warning you have to put a custom link on
+top of the headline.
+
+.. code-block::
+
+   Section A
+   ==========
+
+   Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+
+   Example
+   -------
+
+   Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+
+   Section B
+   ==========
+
+   Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+   
+   .. _section B example:
+
+   Example
+   -------
+
+   Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+
+
+
+
+
+
 Address space
 ^^^^^^^^^^^^^
 

@@ -222,6 +222,7 @@ Defining Peers
    Specify the IPv4 source address to use for the BGP session to this neighbor,
    may be specified as either an IPv4 address directly or as an interface name.
 
+.. _bgp_capability_negotiation:
 
 Capability Negotiation
 ^^^^^^^^^^^^^^^^^^^^^^

@@ -743,8 +743,12 @@ address and the node 1 sending the default route:
 OSPFv3 (IPv6)
 *************
 
+.. _ospf:v3_configuration:
+
 Configuration
 =============
+
+.. _ospf:v3_general:
 
 General
 -------
@@ -768,6 +772,8 @@ process starts when the first ospf enabled interface is configured.
    configured with the same router-ID!
 
 
+.. _ospf:v3_optional:
+
 Optional
 --------
 
@@ -783,6 +789,7 @@ Optional
    distance values for external routes, inter-area routes and intra-area
    routes respectively. The distance range is 1 to 255.
 
+.. _ospf:v3_area_configuration:
 
 Area Configuration
 ------------------
@@ -799,6 +806,7 @@ Area Configuration
    intra area paths from this range are not advertised into other areas. This
    command makes sense in ABR only.
 
+.. _ospf:v3_interface_config:
 
 Interface Configuration
 -----------------------
@@ -869,6 +877,7 @@ Interface Configuration
    synchronizing process of the router's database with all neighbors. The
    default value is 1 seconds. The interval range is 3 to 65535.
 
+.. _ospf:v3_redistribution_config:
 
 Redistribution Configuration
 ----------------------------
@@ -885,6 +894,7 @@ Redistribution Configuration
    given route source. There are five modes available for route source: bgp,
    connected, kernel, ripng, static.
 
+.. _ospf:v3_op_cmd:
 
 Operational Mode Commands
 -------------------------
@@ -932,6 +942,7 @@ Operational Mode Commands
 
    This command displays external information redistributed into OSPFv3
 
+.. _ospf:v3_config_example:
 
 Configuration Example
 ---------------------

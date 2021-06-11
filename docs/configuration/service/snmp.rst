@@ -139,6 +139,8 @@ The securityapproach in v3 targets:
 
 * Authentication – to verify that the message is from a valid source.
 
+.. _snmp:v3_example:
+
 Example
 ^^^^^^^
 
