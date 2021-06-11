@@ -8,6 +8,38 @@
    _ext/releasenotes.py
 
 
+2021-06-06
+==========
+
+* :vytask:`T842` (feature): Adopt VyOS CLI to latest StrongSwan options and deprecated Keywords
+
+
+2021-06-04
+==========
+
+* :vytask:`T3595` (default): Cannot create new VTI interface
+* :vytask:`T3592` (feature): Set default TTL 64 for tunnels
+
+
+2021-06-03
+==========
+
+* :vytask:`T3384` (feature): Support UDP bandwidth testing
+
+
+2021-06-02
+==========
+
+* :vytask:`T3233` (bug): Interface redirect to dum0
+
+
+2021-06-01
+==========
+
+* :vytask:`T3585` (default): Fix NHRP module for updated interfaces tunnel syntax
+* :vytask:`T3594` (bug): Disable by default service strongswan-starter
+
+
 2021-05-30
 ==========
 
@@ -540,7 +572,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.123 / 5.10.41
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.124 / 5.10.42
 
 
 2021-02-15
