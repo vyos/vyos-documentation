@@ -93,6 +93,8 @@ This guide was developed using an APU4C4 board with the following specs:
 
 The board can be powered via 12V from the front or via a 5V onboard connector.
 
+.. _vyos-on-baremetal:apu4_shopping:
+
 Shopping Cart
 -------------
 
@@ -223,6 +225,8 @@ implemented.
 
 Simply proceed with a regular image installation as described in
 :ref:`installation`.
+
+.. _vyos-on-baremetal:apu4_pictures:
 
 Pictures
 --------

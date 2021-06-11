@@ -317,6 +317,8 @@ Example
 
 Please see the :ref:`dhcp-dns-quick-start` configuration.
 
+.. _dhcp-server:v4_example_failover:
+
 Failover
 --------
 
@@ -357,6 +359,7 @@ Common configuration, valid for both primary and secondary node.
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.252'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
 
+.. _dhcp-server:v4_example_raw:
 
 Raw Parameters
 --------------
@@ -455,6 +458,8 @@ IPv6 server
 
 VyOS also provides DHCPv6 server functionality which is described in this
 section.
+
+.. _dhcp-server:v6_config:
 
 Configuration
 =============
@@ -557,6 +562,8 @@ The configuration will look as follows:
           }
       }
 
+.. _dhcp-server:v6_static_mapping:
+
 Static mappings
 ---------------
 
@@ -602,6 +609,8 @@ The configuration will look as follows:
       }
 
 .. start_vyoslinter
+
+.. _dhcp-server:v6_op_cmd:
 
 Operation Mode
 ==============

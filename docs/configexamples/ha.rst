@@ -332,6 +332,8 @@ hardware router.
    set service conntrack-sync mcast-group '224.0.0.50'
    set service conntrack-sync sync-queue-size '8'
 
+.. _ha:contracktesting:
+
 Testing
 -------
 

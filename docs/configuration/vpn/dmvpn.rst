@@ -176,6 +176,8 @@ The below referenced IP address `192.0.2.1` is used as example address
 representing a global unicast address under which the HUB can be contacted by
 each and every individual spoke.
 
+.. _dmvpn:example_configuration:
+
 Configuration
 =============
 

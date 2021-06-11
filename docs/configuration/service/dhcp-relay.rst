@@ -99,6 +99,8 @@ Operation
 IPv6 relay
 **********
 
+.. _dhcp-relay:ipv6_configuration:
+
 Configuration
 =============
 
@@ -114,6 +116,8 @@ Configuration
    Specifies an upstream network `<interface>` from which replies from
    `<server>` and other relay agents will be accepted.
 
+.. _dhcp-relay:ipv6_options:
+
 Options
 -------
 
@@ -125,6 +129,8 @@ Options
 
    If this is set the relay agent will insert the interface ID. This option is
    set automatically if more than one listening interfaces are in use.
+
+.. _dhcp-relay:ipv6_example:
 
 Example
 =======
@@ -150,6 +156,8 @@ The generated configuration will look like:
       upstream-interface eth2 {
          address 2001:db8::4
       }
+
+.. _dhcp-relay:ipv6_op_cmd:
 
 Operation
 =========

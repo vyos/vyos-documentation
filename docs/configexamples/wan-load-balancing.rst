@@ -67,6 +67,9 @@ Example 2: Failover based on interface weights
 
 This examples uses the failover mode.
 
+
+.. _wan:example2_overwiew:
+
 Overview
 ^^^^^^^^
 In this example eth0 is the primary interface and eth1 is the secondary
@@ -93,6 +96,8 @@ Example 3: Failover based on rule order
 The previous example used the failover command to send traffic thorugh
 eth1 if eth0 fails. In this example failover functionality is provided
 by rule order.
+
+.. _wan:example3_overwiew:
 
 Overview
 ^^^^^^^^
@@ -121,6 +126,9 @@ A rule order for prioritising traffic is useful in scenarios where the
 secondary link has a lower speed and should only carry high priority
 traffic. It is assumed for this example that eth1 is connected to a
 slower connection than eth0 and should prioritise VoIP traffic.
+
+
+.. _wan:example4_overwiew:
 
 Overview
 ^^^^^^^^

@@ -830,6 +830,8 @@ IPv6
    Use this command to set the maximum segment size for IPv6 transit
    packets on a specific interface (1280-1492 bytes).
 
+.. _firewall:ipv6_example:
+
 Example
 -------
 

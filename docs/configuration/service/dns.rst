@@ -177,6 +177,8 @@ one involves a third party service, like DynDNS.com or any other similar
 website. This method uses HTTP requests to transmit the new IP address. You
 can configure both in VyOS.
 
+.. _dns:dynmaic_config:
+
 Configuration
 =============
 
@@ -217,6 +219,8 @@ Configuration
 
    Configure optional TTL value on the given resource record. This defaults to
    600 seconds.
+
+.. _dns:dynmaic_example:
 
 Example
 ^^^^^^^

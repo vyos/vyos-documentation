@@ -225,6 +225,8 @@ Configuration
 
    Disable this service.
 
+.. _igmp:proxy_example:
+
 Example
 -------
 

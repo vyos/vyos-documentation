@@ -1114,6 +1114,7 @@ parameters.
    available and get suddenly dropped when other classes start using
    their assigned *bandwidth* share.
 
+.. _traffic_policy:shaper_example:
 
 Example
 ^^^^^^^

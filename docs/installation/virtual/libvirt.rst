@@ -100,6 +100,8 @@ The virt-manager application is a desktop user interface for managing virtual
 machines through libvirt. On the linux open
 :abbr:`VMM (Virtual Machine Manager)`.
 
+.. _libvirt:virt-manager_iso:
+
 Deploy from ISO
 ---------------
 
@@ -129,6 +131,8 @@ Deploy from ISO
 7. Then you will be taken to the console.
 
 .. figure:: /_static/images/virt-libvirt-06.png
+
+.. _libvirt:virt-manager_qcow2:
 
 Deploy from qcow2
 -----------------

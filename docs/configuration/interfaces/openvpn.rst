@@ -481,6 +481,8 @@ and another VyOS router acting as OpenVPN client. The Server also pushes a
 static client IP address to the OpenVPN client. Remember, clients are identified
 using their CN attribute in the SSL certificate.
 
+.. _openvpn:client_server:
+
 Server
 ------
 
@@ -504,6 +506,8 @@ Server
   set interfaces openvpn vtun10 tls dh-file '/config/auth/dh.pem'
   set interfaces openvpn vtun10 tls key-file '/config/auth/server.key'
   set interfaces openvpn vtun10 use-lzo-compression
+
+.. _openvpn:client_client:
 
 Client
 ------

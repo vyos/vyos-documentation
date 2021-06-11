@@ -57,6 +57,7 @@ list can be defined which will be used for domain searches.
 .. note:: Domain names can include letters, numbers, hyphens and periods
    with a maximum length of 253 characters.
 
+.. _name-server:domain-search-order_example:
 
 Example
 -------
