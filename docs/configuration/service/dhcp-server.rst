@@ -380,7 +380,8 @@ Raw Parameters
 Option 43 for UniFI
 -------------------
 
-* These parameters need to be part of the DHCP global options. They stay unchanged.
+* These parameters need to be part of the DHCP global options.
+  They stay unchanged.
 
 
 .. code-block:: none
