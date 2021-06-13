@@ -1,8 +1,8 @@
 .. _pseudo-ethernet-interface:
 
-#######################
-Pseudo Ethernet/MACVLAN
-#######################
+#########################
+MACVLAN - Pseudo Ethernet
+#########################
 
 Pseudo-Ethernet or MACVLAN interfaces can be seen as subinterfaces to regular
 ethernet interfaces. Each and every subinterface is created a different media
