@@ -23,6 +23,6 @@ Interfaces
    vxlan
    wireguard
    wireless
-   wirelessmodem
+   wwan
 
 
