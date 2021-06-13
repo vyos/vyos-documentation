@@ -81,7 +81,7 @@ Operation
 
   Show detailed information on given `<interface>`
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0
     wwan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 1000
@@ -100,7 +100,7 @@ Operation
 
   Show detailed information summary on given `<interface>`
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0 summary
       --------------------------------
@@ -167,7 +167,7 @@ Operation
 
   Show WWAN module hardware capabilities.
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0 capabilities
     Max TX channel rate: '50000000'
@@ -182,7 +182,7 @@ Operation
 
   Show WWAN module firmware.
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0 firmware
     Model: MC7710
@@ -198,7 +198,7 @@ Operation
 
   Show WWAN module IMEI.
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0 imei
     ESN: '0'
@@ -209,7 +209,7 @@ Operation
 
   Show WWAN module IMSI.
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0 imsi
     IMSI: '262xxxxxxxxxxxx'
@@ -218,7 +218,7 @@ Operation
 
   Show WWAN module model.
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0 model
     Model: 'MC7710'
@@ -227,7 +227,7 @@ Operation
 
   Show WWAN module MSISDN.
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0 msisdn
     MSISDN: '4917xxxxxxxx'
@@ -236,7 +236,7 @@ Operation
 
   Show WWAN module hardware revision.
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0 revision
     Revision: 'SWI9200X_03.05.29.03ap r6485 CNSHZ-ED-XP0031 2014/12/02 17:53:15'
@@ -245,7 +245,7 @@ Operation
 
   Show WWAN module signal strength.
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0 signal
     LTE:
@@ -261,7 +261,7 @@ Operation
 
   Show WWAN module SIM card information.
 
-  .. code-block::
+  .. code-block:: none
 
     vyos@vyos:~$ show interfaces wwan wwan0 sim
     Provisioning applications:
