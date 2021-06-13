@@ -1,7 +1,7 @@
 .. _wwan-interface:
 
 #################################
-Wireless Wide-Area-Network (WWAN)
+WWAN - Wireless Wide-Area-Network
 #################################
 
 The Wireless Wide-Area-Network interface provides access (through a wireless
