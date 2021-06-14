@@ -8,6 +8,54 @@
    _ext/releasenotes.py
 
 
+2021-06-13
+==========
+
+* :vytask:`T3620` (feature): Rename WWAN interface from wirelessmodem to wwan to use QMI interface
+* :vytask:`T3622` (feature): WWAN: add support for APN authentication
+* :vytask:`T3621` (bug): PPPoE interface does not validate if password is supplied when username is set
+
+
+2021-06-12
+==========
+
+* :vytask:`T3609` (bug): BGP Peer Group Changes Slow
+
+
+2021-06-10
+==========
+
+* :vytask:`T3250` (bug): PPPoE server:  wrong local usernames
+* :vytask:`T3138` (bug): ddclient improperly updated when apply rfc2136 config
+* :vytask:`T2620` (feature): Add ipsec peer-name to log to simplifies grepping and troubleshooting
+* :vytask:`T2645` (default): Editing route-map Action Requires New Rule
+
+
+2021-06-09
+==========
+
+* :vytask:`T3602` (bug): Renaming BGP Peer Groups Leaves Router Broken
+* :vytask:`T2916` (bug): A state of VTI interface in a configuration does not being processing properly
+* :vytask:`T2855` (default): disabled vti interfaces still working
+
+
+2021-06-08
+==========
+
+* :vytask:`T3605` (default): Allow to set prefer-global for ipv6-next-hop
+* :vytask:`T3607` (feature): [route-map] set ipv6 next-hop prefer-global
+* :vytask:`T3289` (bug): No description for node "service" conf-mode
+
+
+2021-06-07
+==========
+
+* :vytask:`T3581` (bug): Incomplete command `show ipv6 ospfv3 linkstate`
+* :vytask:`T3516` (bug): FRR 7.5 adds a second route when you attempt to change a static route distance instead of overwriting the old route
+* :vytask:`T3461` (bug): OpenConnect Server redundancy check
+* :vytask:`T3455` (bug): system users can not be added in "edit"
+
+
 2021-06-04
 ==========
 
@@ -480,7 +528,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.124 / 5.10.42
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.125 / 5.10.43
 
 
 2021-02-14
@@ -1690,6 +1738,7 @@
 ==========
 
 * :vytask:`T2709` (bug): Destination NAT translation port without address fails to commit
+* :vytask:`T2717` (default): Wrong DHCP server pool size in statistics
 * :vytask:`T2519` (bug): Broadcast address does not add automatically
 
 
