@@ -8,6 +8,55 @@
    _ext/releasenotes.py
 
 
+2021-06-13
+==========
+
+* :vytask:`T3620` (feature): Rename WWAN interface from wirelessmodem to wwan to use QMI interface
+* :vytask:`T2173` (feature): Add the ability to use VRF on VTI interfaces
+* :vytask:`T3622` (feature): WWAN: add support for APN authentication
+* :vytask:`T3606` (bug): SNMP unknown notification OID
+* :vytask:`T3621` (bug): PPPoE interface does not validate if password is supplied when username is set
+
+
+2021-06-12
+==========
+
+* :vytask:`T3611` (bug): WWAN interface (MC7710) no longer works on Kernel 5.10
+* :vytask:`T1534` (bug): IPSec w/ IKEv2 Invalid local-address "any"
+* :vytask:`T3616` (bug): Update to FastAPI causes regression in vyos-http-api-server
+
+
+2021-06-11
+==========
+
+* :vytask:`T3614` (bug): Container network name with hyphen fail
+
+
+2021-06-10
+==========
+
+* :vytask:`T3250` (bug): PPPoE server:  wrong local usernames
+* :vytask:`T3138` (bug): ddclient improperly updated when apply rfc2136 config
+* :vytask:`T2620` (feature): Add ipsec peer-name to log to simplifies grepping and troubleshooting
+* :vytask:`T2645` (default): Editing route-map Action Requires New Rule
+
+
+2021-06-08
+==========
+
+* :vytask:`T3605` (default): Allow to set prefer-global for ipv6-next-hop
+* :vytask:`T3607` (feature): [route-map] set ipv6 next-hop prefer-global
+* :vytask:`T3289` (bug): No description for node "service" conf-mode
+
+
+2021-06-07
+==========
+
+* :vytask:`T3461` (bug): OpenConnect Server redundancy check
+* :vytask:`T3455` (bug): system users can not be added in "edit"
+* :vytask:`T3588` (default): IPSec: migrate no longer available options from CLI which are now hardcoded/enabled in strongSwan
+
+
 2021-06-06
 ==========
 
@@ -572,7 +621,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.124 / 5.10.42
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.125 / 5.10.43
 
 
 2021-02-15
@@ -731,3 +780,9 @@
 ==========
 
 * :vytask:`T3132` (feature): Enable egress flow accounting
+
+
+2020-07-20
+==========
+
+* :vytask:`T2717` (default): Wrong DHCP server pool size in statistics
