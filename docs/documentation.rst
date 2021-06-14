@@ -140,13 +140,13 @@ We use the following syntax for Headlines.
 Cross-References
 ^^^^^^^^^^^^^^^^
 
-A plugin will used to generate a reference lable of each headline.
-To reference a page or a section in the documentation use the ``:ref:``
-command.
+A plugin will be used to generate a reference label for each headline.
+to reference a page or a section in the documentation use the
+``:ref:`` command.
 
-For example you want to reference the headline **VLAN** in the
-**ethernet.rst** page. The plugin generates label based on headline
-and the file path.
+For example, you want to reference the headline **VLAN** in the
+**ethernet.rst** page. The plugin generates the label based on
+the headline and the file path.
 
 ``:ref:`configuration/interfaces/ethernet:vlan``
 
