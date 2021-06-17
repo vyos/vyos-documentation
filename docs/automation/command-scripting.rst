@@ -105,6 +105,25 @@ group, the script can be safeguarded like this:
       exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
   fi
 
+Executing pre-hooks/post-hooks Scripts
+-------------------------------
+
+Vyos has the ability to run custom  scripts before and after each commit
+
+≈
+
+The default folder where you put your custom Scripts is:
+
+.. code-block:: none
+
+
+/config/scripts/commit/pre-hooks.d - folder with scripts that run before each commit
+/config/scripts/commit/post-hooks.d - folder with scripts that run after each commit
+
+Scripts are run in alphabetical order. Their names must consist entirely of ASCII upper- and lower-case letters, ASCII digits, ASCII underscores, and ASCII minus-hyphens. 
+No other characters are allowed.
+
+
 Postconfig on boot
 ------------------
 
