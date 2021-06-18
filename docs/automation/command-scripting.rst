@@ -106,22 +106,38 @@ group, the script can be safeguarded like this:
   fi
 
 Executing pre-hooks/post-hooks Scripts
--------------------------------
+--------------------------------------
 
 Vyos has the ability to run custom  scripts before and after each commit
 
-≈
-
-The default folder where you put your custom Scripts is:
+The default directories where your custom Scripts should be located are:
 
 .. code-block:: none
 
+  /config/scripts/commit/pre-hooks.d   - Directory with scripts that run before each commit
+  /config/scripts/commit/post-hooks.d  - Directory with scripts that run after each commit
 
-/config/scripts/commit/pre-hooks.d - folder with scripts that run before each commit
-/config/scripts/commit/post-hooks.d - folder with scripts that run after each commit
-
-Scripts are run in alphabetical order. Their names must consist entirely of ASCII upper- and lower-case letters, ASCII digits, ASCII underscores, and ASCII minus-hyphens. 
+Scripts are run in alphabetical order. Their names must consist entirely of ASCII upper- and 
+lower-case letters,ASCII digits, ASCII underscores, and ASCII minus-hyphens.
 No other characters are allowed.
+
+.. note:: Custom scripts are not executed with root privileges (Use sudo inside if this is necessary).
+
+A simple example is shown below, where the ops command executed in the post-hook script is "show interfaces".
+
+.. code-block:: none
+
+  vyos@vyos# set interfaces ethernet eth1  address 30.30.30.30/24
+  vyos@vyos# commit
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  Interface        IP Address                        S/L  Description
+  ---------        ----------                        ---  -----------
+  eth0             10.10.10.10/24                    u/u
+  eth1             30.30.30.30/24                    u/u
+  eth2             10.10.20.20/24                    u/u
+  eth3             -                                 u/u
+  lo               127.0.0.1/8                       u/u
+                  ::1/128
 
 
 Postconfig on boot
