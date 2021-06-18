@@ -36,6 +36,7 @@ section and are omitted from the output here):
        bypass-route
        count
        deadline
+       do-not-fragment
        flood
        interface
        interval
