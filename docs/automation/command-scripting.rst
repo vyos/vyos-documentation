@@ -114,30 +114,34 @@ The default directories where your custom Scripts should be located are:
 
 .. code-block:: none
 
-  /config/scripts/commit/pre-hooks.d   - Directory with scripts that run before each commit
-  /config/scripts/commit/post-hooks.d  - Directory with scripts that run after each commit
+  /config/scripts/commit/pre-hooks.d   - Directory with scripts that run before 
+                                         each commit.
 
-Scripts are run in alphabetical order. Their names must consist entirely of ASCII upper- and 
-lower-case letters,ASCII digits, ASCII underscores, and ASCII minus-hyphens.
-No other characters are allowed.
+  /config/scripts/commit/post-hooks.d  - Directory with scripts that run after
+                                         each commit.
+
+Scripts are run in alphabetical order. Their names must consist entirely of 
+ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and 
+ASCII minus-hyphens.No other characters are allowed.
 
 .. note:: Custom scripts are not executed with root privileges (Use sudo inside if this is necessary).
 
-A simple example is shown below, where the ops command executed in the post-hook script is "show interfaces".
+A simple example is shown below, where the ops command executed in 
+the post-hook script is "show interfaces".
 
 .. code-block:: none
 
-  vyos@vyos# set interfaces ethernet eth1  address 30.30.30.30/24
+  vyos@vyos# set interfaces ethernet eth1  address 192.0.2.3/24
   vyos@vyos# commit
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
   ---------        ----------                        ---  -----------
-  eth0             10.10.10.10/24                    u/u
-  eth1             30.30.30.30/24                    u/u
-  eth2             10.10.20.20/24                    u/u
+  eth0             198.51.100.10/24                  u/u
+  eth1             192.0.2.3/24                      u/u
+  eth2             -                                 u/u
   eth3             -                                 u/u
-  lo               127.0.0.1/8                       u/u
-                  ::1/128
+  lo               203.0.113.5/24                    u/u
+                  
 
 
 Postconfig on boot
