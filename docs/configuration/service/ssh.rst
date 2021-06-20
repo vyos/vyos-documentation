@@ -161,7 +161,8 @@ Operation
 
    Generate the configuration mode commands to add a public key for
    :ref:`ssh_key_based_authentication`.
-   `<location>` can be a local path or a URL pointing at a remote file.
+   ``<location>`` can be a local path or a URL pointing at a remote file.
+
    Supported remote protocols are FTP, HTTP, HTTPS, SCP/SFTP and TFTP.
 
   Example:

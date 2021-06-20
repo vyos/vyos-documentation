@@ -78,7 +78,7 @@ The third part is simply an identifier, and is for your own reference.
 
    **Deprecation notice:** ``loadkey`` has been deprecated in favour of
    :opcmd:`generate public-key-commands` and will be removed in a future
-   version. See :ref:`ssh:operation`.
+   version. See :ref:`ssh`.
 
    SSH keys can not only be specified on the command-line but also loaded for
    a given user with `<username>` from a file pointed to by `<location>.` Keys
