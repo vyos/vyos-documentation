@@ -156,3 +156,32 @@ Operation
   Two new files ``/config/auth/id_rsa_rpki`` and
   ``/config/auth/id_rsa_rpki.pub``
   will be created.
+
+.. opcmd:: generate public-key-commands name <username> path <location>
+
+   Generate the configuration mode commands to add a public key for
+   :ref:`ssh_key_based_authentication`.
+   `<location>` can be a local path or a URL pointing at a remote file.
+   Supported remote protocols are FTP, HTTP, HTTPS, SCP/SFTP and TFTP.
+
+  Example:
+
+  .. code-block:: none
+
+    alyssa@vyos:~$ generate public-key-commands name alyssa path sftp://example.net/home/alyssa/.ssh/id_rsa.pub
+    # To add this key as an embedded key, run the following commands:
+    configure
+    set system login user alyssa authentication public-keys alyssa@example.net key AAA...
+    set system login user alyssa authentication public-keys alyssa@example.net type ssh-rsa
+    commit
+    save
+    exit
+
+    ben@vyos:~$ generate public-key-command user ben path ~/.ssh/id_rsa.pub
+    # To add this key as an embedded key, run the following commands:
+    configure
+    set system login user ben authentication public-keys ben@vyos key AAA...
+    set system login user ben authentication public-keys ben@vyos type ssh-dss
+    commit
+    save
+    exit
