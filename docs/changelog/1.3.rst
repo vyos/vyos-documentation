@@ -8,6 +8,33 @@
    _ext/releasenotes.py
 
 
+2021-06-19
+==========
+
+* :vytask:`T3633` (feature): Add LRO offload for interface ethernet
+* :vytask:`T3632` (bug): policy: route-map: unable to configure route-target / site-of-origin
+
+
+2021-06-18
+==========
+
+* :vytask:`T3634` (feature): Add op command option for ping for do not fragment bit to be set
+
+
+2021-06-17
+==========
+
+* :vytask:`T3631` (feature): route-map: migrate "set extcommunity-rt" and "set extcommunity-soo" to "set extcommunity rt|soo" to match FRR syntax
+
+
+2021-06-16
+==========
+
+* :vytask:`T3623` (default): Fix for dummy interface option in the operational command "clear interfaces dummy"
+* :vytask:`T2425` (feature): Rewrite all policy zebra filters to XML/Python style
+* :vytask:`T3630` (feature): op-mode: add "show version kernel" command
+
+
 2021-06-13
 ==========
 
@@ -528,7 +555,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.125 / 5.10.43
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.127 / 5.10.45
 
 
 2021-02-14
