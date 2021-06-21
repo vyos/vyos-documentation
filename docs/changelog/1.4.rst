@@ -8,6 +8,47 @@
    _ext/releasenotes.py
 
 
+2021-06-21
+==========
+
+* :vytask:`T3628` (bug): commit-archive source-address Interface Broken
+* :vytask:`T3563` (default): commit-archive breaks with IPv6 source addresses
+
+
+2021-06-20
+==========
+
+* :vytask:`T3637` (bug): vrf: bind-to-all didn't work properly
+* :vytask:`T3639` (default): GCC preprocessor clobbers C comments
+
+
+2021-06-19
+==========
+
+* :vytask:`T3633` (feature): Add LRO offload for interface ethernet
+* :vytask:`T3632` (bug): policy: route-map: unable to configure route-target / site-of-origin
+
+
+2021-06-18
+==========
+
+* :vytask:`T3634` (feature): Add op command option for ping for do not fragment bit to be set
+* :vytask:`T3599` (default): Migrate NHRP to XML/Python
+
+
+2021-06-17
+==========
+
+* :vytask:`T3624` (feature): BGP: add support for extended community bandwidth definition
+
+
+2021-06-16
+==========
+
+* :vytask:`T3623` (default): Fix for dummy interface option in the operational command "clear interfaces dummy"
+* :vytask:`T3630` (feature): op-mode: add "show version kernel" command
+
+
 2021-06-13
 ==========
 
@@ -621,7 +662,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.125 / 5.10.43
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.127 / 5.10.45
 
 
 2021-02-15
