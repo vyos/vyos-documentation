@@ -142,7 +142,23 @@ the post-hook script is "show interfaces".
   eth3             -                                 u/u
   lo               203.0.113.5/24                    u/u
                   
+Preconfig on boot
+-----------------
 
+The ``/config/scripts/vyos-preconfig-bootup.script`` script is called on boot
+before the VyOS configuration during boot process.
+
+Any modifications done to work around unfixed bugs and implement enhancements
+which are not complete in the VyOS system can be placed here.
+
+The default file looks like this:
+
+.. code-block:: none
+
+  #!/bin/sh
+  # This script is executed at boot time before VyOS configuration is applied. 
+  # Any modifications required to work around unfixed bugs or use
+  # services not available through the VyOS CLI system can be placed here. 
 
 Postconfig on boot
 ------------------
@@ -158,10 +174,10 @@ The default file looks like this:
 .. code-block:: none
 
   #!/bin/sh
-  # This script is executed at boot time after VyOS configuration is fully
+  # This script is executed at boot time after VyOS configuration is fullyßßßß
   # applied. Any modifications required to work around unfixed bugs or use
   # services not available through the VyOS CLI system can be placed here.
 
-.. hint:: For configuration/upgrade management issues, modification of this
+.. hint:: For configuration/upgrade management issues, modification of these
    script should be the last option. Always try to find solutions based on CLI
    commands first.
