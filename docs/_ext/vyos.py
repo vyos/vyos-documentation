@@ -1,6 +1,7 @@
 import re
 import json
 import os
+from datetime import datetime
 from docutils import io, nodes, utils, statemachine
 from docutils.parsers.rst.roles import set_classes
 from docutils.parsers.rst import Directive, directives, states
@@ -9,6 +10,9 @@ from sphinx.util.docutils import SphinxDirective
 
 from testcoverage import get_working_commands
 
+from sphinx.util import logging
+
+logger = logging.getLogger(__name__)
 
 def setup(app):
 
@@ -74,6 +78,7 @@ def setup(app):
     app.add_directive('opcmd', OpCmdDirective)
     app.add_directive('cmdinclude', CfgInclude)
     app.connect('doctree-resolved', process_cmd_nodes)
+    app.connect('doctree-read', handle_document_meta_data)
 
 class CfgcmdList(nodes.General, nodes.Element):
     pass
@@ -641,3 +646,22 @@ def vytask_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
 def cmd_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     node = nodes.literal(text, text)
     return [node], []
+
+
+def handle_document_meta_data(app, document):
+    docname = app.env.docname
+    lastproofread = app.env.metadata[docname].get('lastproofread', False)
+    if lastproofread:
+        try:
+            lastproofread_time = datetime.strptime(lastproofread, '%Y-%m-%d')
+            delta = datetime.now() - lastproofread_time
+            if delta.days > 180:
+                logger.warning(f'{delta.days} days since last proofread {app.env.doc2path(docname)}')
+
+        except Exception as e:
+            logger.warning(f'lastproofread meta data error in {app.env.doc2path(docname)}: {e}')
+    else:
+        pass
+        #logger.warning(f'lastproofread meta data missing in {app.env.doc2path(docname)}')
+
+        
