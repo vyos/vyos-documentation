@@ -160,6 +160,7 @@ The default file looks like this:
   # Any modifications required to work around unfixed bugs or use
   # services not available through the VyOS CLI system can be placed here. 
 
+
 Postconfig on boot
 ------------------
 

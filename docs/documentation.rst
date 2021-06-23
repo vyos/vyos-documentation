@@ -161,7 +161,7 @@ The plugin will warn on build if a headline has a duplicate name in the
 same document. To prevent this warning you have to put a custom link on
 top of the headline.
 
-.. code-block::
+.. code-block:: none
 
    Section A
    ==========
@@ -184,10 +184,6 @@ top of the headline.
    -------
 
    Lorem ipsum dolor sit amet, consetetur sadipscing elitr
-
-
-
-
 
 
 Address space
