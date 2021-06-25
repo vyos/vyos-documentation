@@ -21,3 +21,4 @@ The following structure respresent the cli structure.
    vpn/index
    vrf/index
    zonepolicy/index
+   container/index
