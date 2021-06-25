@@ -1,0 +1,139 @@
+.. _container:
+
+########
+Container
+########
+
+*************
+Configuration
+*************
+
+.. cfgcmd:: set container <name>
+
+   Set an named container.
+
+.. cfgcmd:: set container network <networkname>
+
+    Creates a named container network
+
+.. cfgcmd:: set container registry <name>
+
+    By default, for any image that does not include the registry in the image name, Vyos will use docker.io. Multiple registries
+    can be added as unqualified-search-registries using this command 
+
+.. cfgcmd:: set container <name> image        
+    
+    Sets the image name in the hub registry 
+
+    .. code-block:: none
+
+      set container name mysql-server image mysql:8.0
+
+    If a registry is not specefied, Docker.io will be used as the registry by default unless an alternative registry is specefied
+    using **set container registry <name>** or the registry is included in the image name
+
+    .. code-block:: none
+
+      set container name mysql-server image quay.io/mysql:8.0
+
+.. cfgcmd:: set container <name> allow-host-networks
+    
+    Allow host networking in container. The network stack of the container is not isolated from the host and will use the
+    host IP.
+
+    The following commands translates to "--net host" when the container is created 
+
+    .. note:: **allow-host-networks** cannot be used with **network** 
+
+.. cfgcmd:: set container <name> description <text>
+
+    Sets the container description
+
+.. cfgcmd:: set container <name> environment '<key>' value '<value>'
+
+    Adds a custom environment variables. Multiple enviroment variables are allowed. The following commands translates to "-e key=value" when container is created. 
+
+    .. code-block:: none
+
+        set container name mysql-server environment 'MYSQL_DATABASE' value 'zabbix'
+        set container name mysql-server environment 'MYSQL_USER' value 'zabbix'
+        set container name mysql-server environment 'MYSQL_PASSWORD' value 'zabbix_pwd'
+        set container name mysql-server environment 'MYSQL_ROOT_PASSWORD' value 'root_pwd'
+
+.. cfgcmd:: set container <name> network <networkname> 
+
+    Attaches user defined network to container. Only one network must be specefied and must already exist.
+
+    Optionally a specific static IPv4 or IPv6 address can be set for the container. This address must be within the named network.
+
+    .. code-block:: none
+
+        set container <name> network <networkname> address <address> 
+
+    .. note:: The first IP in the container network is reserved by the engine and cannot be used
+
+.. cfgcmd:: set container <name> port <portname> [source | destination ] <portnumber>
+
+    Publishes a port for the container
+
+    .. code-block:: none
+
+    set container name zabbix-web-nginx-mysql port http source 80
+    set container name zabbix-web-nginx-mysql port http destination 8080
+
+.. cfgcmd:: set container <name> volume <volumename> [source | destination ] <path>
+
+    Mount a volume into the container
+
+    .. code-block:: none
+
+    set container name coredns volume 'corefile' source /config/coredns/Corefile
+    set container name coredns volume 'corefile' destination /etc/Corefile
+    
+
+
+*********************
+Example Configuration
+*********************
+
+    .. code-block:: none
+
+    set container network zabbix-net prefix 172.20.0.0/16
+    set container network zabbix-net description 'Network for Zabbix component containers'
+
+    set container name mysql-server image mysql:8.0
+    set container name mysql-server network zabbix-net
+
+    set container name mysql-server environment 'MYSQL_DATABASE' value 'zabbix'
+    set container name mysql-server environment 'MYSQL_USER' value 'zabbix'
+    set container name mysql-server environment 'MYSQL_PASSWORD' value 'zabbix_pwd'
+    set container name mysql-server environment 'MYSQL_ROOT_PASSWORD' value 'root_pwd' 
+
+    set container name zabbix-java-gateway image zabbix/zabbix-java-gateway:alpine-5.2-latest
+    set container name zabbix-java-gateway network zabbix-net
+
+    set container name zabbix-server-mysql image zabbix/zabbix-server-mysql:alpine-5.2-latest
+    set container name zabbix-server-mysql network zabbix-net
+
+    set container name zabbix-server-mysql environment 'DB_SERVER_HOST' value 'mysql-server'
+    set container name zabbix-server-mysql environment 'MYSQL_DATABASE' value 'zabbix'
+    set container name zabbix-server-mysql environment 'MYSQL_USER' value 'zabbix'
+    set container name zabbix-server-mysql environment 'MYSQL_PASSWORD' value 'zabbix_pwd'
+    set container name zabbix-server-mysql environment 'MYSQL_ROOT_PASSWORD' value 'root_pwd'
+    set container name zabbix-server-mysql environment 'ZBX_JAVAGATEWAY' value 'zabbix-java-gateway'
+
+    set container name zabbix-server-mysql port zabbix source 10051
+    set container name zabbix-server-mysql port zabbix destination 10051
+
+    set container name zabbix-web-nginx-mysql image zabbix/zabbix-web-nginx-mysql:alpine-5.2-latest
+    set container name zabbix-web-nginx-mysql network zabbix-net
+
+    set container name zabbix-web-nginx-mysql environment 'MYSQL_DATABASE' value 'zabbix'
+    set container name zabbix-web-nginx-mysql environment 'ZBX_SERVER_HOST' value 'zabbix-server-mysql'
+    set container name zabbix-web-nginx-mysql environment 'DB_SERVER_HOST' value 'mysql-server'
+    set container name zabbix-web-nginx-mysql environment 'MYSQL_USER' value 'zabbix'
+    set container name zabbix-web-nginx-mysql environment 'MYSQL_PASSWORD' value 'zabbix_pwd'
+    set container name zabbix-web-nginx-mysql environment 'MYSQL_ROOT_PASSWORD' value 'root_pwd'
+    
+    set container name zabbix-web-nginx-mysql port http source 80
+    set container name zabbix-web-nginx-mysql port http destination 8080
