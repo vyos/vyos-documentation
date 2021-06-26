@@ -94,3 +94,60 @@ For additional details you can refer to https://phabricator.vyos.net/T2490.
     usb0b2.4p1.1     Quad_RS232-HS       Future Technology Devices International, Ltd
     usb0b2.4p1.2     Quad_RS232-HS       Future Technology Devices International, Ltd
     usb0b2.4p1.3     Quad_RS232-HS       Future Technology Devices International, Ltd
+
+.. _information_version:
+
+########
+Version
+########
+
+.. opcmd:: show version
+
+  Return the current running VyOS version and build information. This includes
+  also the name of the release train which is ``crux`` on VyOS 1.2, ``equuleus``
+  on VyOS 1.3 and ``sagitta`` on VyOS 1.4.
+
+  .. code-block:: none
+
+    vyos@vyos:~$ show version
+
+    Version:          VyOS 1.3.0-rc4
+    Release Train:    equuleus
+
+    Built by:         Sentrium S.L.
+    Built on:         Mon 19 Apr 2021 08:28 UTC
+    Build UUID:       8d9996d2-511e-4dea-be4f-cd4515c404f3
+    Build Commit ID:  2aac286ccfe594
+
+    Architecture:     x86_64
+    Boot via:         installed image
+    System type:      VMware guest
+
+    Hardware vendor:  VMware, Inc.
+    Hardware model:   VMware Virtual Platform
+    Hardware S/N:     VMware-42 33 79 fe 73 64 2d 62-d5 62 ab 99 5a 3e d9 6d
+    Hardware UUID:    fe793342-6473-622d-d562-ab995a3ed96d
+
+    Copyright:        VyOS maintainers and contributors
+
+.. opcmd:: show version kernel
+
+  Return version number of the Linux Kernel used in this release.
+
+  .. code-block:: none
+
+    vyos@vyos:~$ show version kernel
+    5.4.128-amd64-vyos
+
+.. opcmd:: show version frr
+
+  Return version number of FRR (Free Range Routing - https://frrouting.org/)
+  used in this release. This is the routing control plane and a successor to GNU
+  Zebra and Quagga.
+
+    .. code-block:: none
+
+      vyos@vyos:~$ show version frr
+      FRRouting 7.5.1-20210625-00-gf07d935a2 (vyos).
+      Copyright 1996-2005 Kunihiro Ishiguro, et al.
+
