@@ -109,26 +109,24 @@ Version
 
   .. code-block:: none
 
-    vyos@vyos:~$ show version
-
-    Version:          VyOS 1.3.0-rc4
-    Release Train:    equuleus
-
-    Built by:         Sentrium S.L.
-    Built on:         Mon 19 Apr 2021 08:28 UTC
-    Build UUID:       8d9996d2-511e-4dea-be4f-cd4515c404f3
-    Build Commit ID:  2aac286ccfe594
-
-    Architecture:     x86_64
-    Boot via:         installed image
-    System type:      VMware guest
-
-    Hardware vendor:  VMware, Inc.
-    Hardware model:   VMware Virtual Platform
-    Hardware S/N:     VMware-42 33 79 fe 73 64 2d 62-d5 62 ab 99 5a 3e d9 6d
-    Hardware UUID:    fe793342-6473-622d-d562-ab995a3ed96d
-
-    Copyright:        VyOS maintainers and contributors
+     Version:          VyOS 1.4-rolling-202106270801
+     Release Train:    sagitta
+     
+     Built by:         autobuild@vyos.net
+     Built on:         Sun 27 Jun 2021 09:50 UTC
+     Build UUID:       ab43e735-edcb-405a-9f51-f16a1b104e52
+     Build Commit ID:  f544d75eab758f
+     
+     Architecture:     x86_64
+     Boot via:         installed image
+     System type:      KVM guest
+     
+     Hardware vendor:  QEMU
+     Hardware model:   Standard PC (i440FX + PIIX, 1996)
+     Hardware S/N:     
+     Hardware UUID:    Unknown
+     
+     Copyright:        VyOS maintainers and contributors
 
 .. opcmd:: show version kernel
 
@@ -137,7 +135,7 @@ Version
   .. code-block:: none
 
     vyos@vyos:~$ show version kernel
-    5.4.128-amd64-vyos
+    5.10.46-amd64-vyos
 
 .. opcmd:: show version frr
 
