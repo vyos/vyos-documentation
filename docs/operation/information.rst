@@ -108,25 +108,27 @@ Version
   on VyOS 1.3 and ``sagitta`` on VyOS 1.4.
 
   .. code-block:: none
+  
+    vyos@vyos:~$ show version  
 
-     Version:          VyOS 1.4-rolling-202106270801
-     Release Train:    sagitta
-     
-     Built by:         autobuild@vyos.net
-     Built on:         Sun 27 Jun 2021 09:50 UTC
-     Build UUID:       ab43e735-edcb-405a-9f51-f16a1b104e52
-     Build Commit ID:  f544d75eab758f
-     
-     Architecture:     x86_64
-     Boot via:         installed image
-     System type:      KVM guest
-     
-     Hardware vendor:  QEMU
-     Hardware model:   Standard PC (i440FX + PIIX, 1996)
-     Hardware S/N:     
-     Hardware UUID:    Unknown
-     
-     Copyright:        VyOS maintainers and contributors
+    Version:          VyOS 1.4-rolling-202106270801
+    Release Train:    sagitta
+
+    Built by:         autobuild@vyos.net
+    Built on:         Sun 27 Jun 2021 09:50 UTC
+    Build UUID:       ab43e735-edcb-405a-9f51-f16a1b104e52
+    Build Commit ID:  f544d75eab758f
+
+    Architecture:     x86_64
+    Boot via:         installed image
+    System type:      KVM guest
+
+    Hardware vendor:  QEMU
+    Hardware model:   Standard PC (i440FX + PIIX, 1996)
+    Hardware S/N:     
+    Hardware UUID:    Unknown
+
+    Copyright:        VyOS maintainers and contributors
 
 .. opcmd:: show version kernel
 
