@@ -8,6 +8,35 @@
    _ext/releasenotes.py
 
 
+2021-06-27
+==========
+
+* :vytask:`T3653` (default): Cloudinit subnet error if a cidr (/24) is used instead of a subnet mask (255.255.255.0)
+
+
+2021-06-25
+==========
+
+* :vytask:`T3641` (feature): Upgrade base system from Debian Buster -> Debian Bullseye
+* :vytask:`T3649` (feature): Add bonding additional hash-policy
+
+
+2021-06-23
+==========
+
+* :vytask:`T3647` (feature): Bullseye: gcc defaults to passing --as-needed to linker
+* :vytask:`T3644` (default): Replace GCC with a simpler preprocessor for including nested XML snippets in XML documents
+* :vytask:`T3356` (feature): Script for remote file transfers
+
+
+2021-06-22
+==========
+
+* :vytask:`T3629` (bug): IPoE server shifting address in the range
+* :vytask:`T3645` (feature): Bullseye: ethtool changed output for ring-buffer information
+* :vytask:`T3582` (default): 'delete log file' does not work
+
+
 2021-06-21
 ==========
 
@@ -662,7 +691,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.127 / 5.10.45
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.128 / 5.10.46
 
 
 2021-02-15
