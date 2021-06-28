@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-28
+
 .. _examples-azure-vpn-bgp:
 
 Route-Based Site-to-Site VPN to Azure (BGP over IKEv2/IPsec)
