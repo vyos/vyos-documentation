@@ -1,24 +1,26 @@
+:lastproofread: 2021-06-28
+
 #############################
 High Availability Walkthrough
 #############################
 
 This document walks you through a complete HA setup of two VyOS machines. This
-design is based on a VM as the primary router, and a physical machine as a
-backup, using VRRP, BGP, OSPF and conntrack sharing.
+design is based on a VM as the primary router and a physical machine as a
+backup, using VRRP, BGP, OSPF, and conntrack sharing.
 
-The aim of this document is to walk you through setting everything up, so
+This document aims to walk you through setting everything up, so
 at a point where you can reboot any machine and not lose more than a few
 seconds worth of connectivity.
 
 Design
 ======
 
-This is based on a real life, in production design. One of the complex issues
+This is based on a real-life production design. One of the complex issues
 is ensuring you have redundant data INTO your network. We do this with a pair
-of Cisco Nexus switches, and using Virtual PortChannels that are spanned across
-them. This as an added bonus, also allows for complete switch failure without
-an outage. How you achieve this yourself is left as an exercise to the reader
-but our setup is documented here.
+of Cisco Nexus switches and using Virtual PortChannels that are spanned across
+them. As a bonus, this also allows for complete switch failure without
+an outage. How you achieve this yourself is left as an exercise to the reader.
+But our setup is documented here.
 
 Walkthrough suggestion
 ----------------------
@@ -31,7 +33,7 @@ If you are following through this document, it is strongly suggested you
 complete the entire document, ONLY doing the virtual router1 steps, and then
 come back and walk through it AGAIN on the backup hardware router.
 
-This ensures you don't go to fast, or miss a step. However, it will make your
+This ensures you don't go too fast or miss a step. However, it will make your
 life easier to configure the fixed IP address and default route now on the
 hardware router.
 
@@ -43,7 +45,7 @@ provider, which we are publishing on VLAN100.
 
 They want us to establish a BGP session to their routers on 192.0.2.11 and
 192.0.2.12 from our routers 192.0.2.21 and 192.0.2.22. They are AS 65550 and
-we are AS65551.
+we are AS 65551.
 
 Our routers are going to have a floating IP address of 203.0.113.1, and use
 .2 and .3 as their fixed IPs.
@@ -54,13 +56,13 @@ When traffic is originated from the 10.200.201.0/24 network, it will be
 masqueraded to 203.0.113.1
 
 For connection between sites, we are running a WireGuard link to two REMOTE
-routers, and using OSPF over those links to distribute routes. That remote
+routers and using OSPF over those links to distribute routes. That remote
 site is expected to send traffic from anything in 10.201.0.0/16
 
 VLANs
 -----
 
-These are the vlans we wll be using:
+These are the vlans we will be using:
 
 * 50: Upstream, using the 192.0.2.0/24 network allocated by them.
 * 100: 'Public' network, using our 203.0.113.0/24 network.
@@ -95,7 +97,7 @@ of scope of this.
 
 .. note:: Our implementation uses VMware's Distributed Port Groups, which allows
   VMware to use LACP. This is a part of the ENTERPRISE licence, and is not
-  available on a Free licence. If you are implementing this and do not have
+  available on a free licence. If you are implementing this and do not have
   access to DPGs, you should not use VMware, and use some other virtualization
   platform instead.
 
@@ -103,7 +105,7 @@ of scope of this.
 Basic Setup (via console)
 =========================
 
-Create your router1 VM so it is able to withstand a VM Host failing, or a
+Create your router1 VM. So it can withstand a VM Host failing or a
 network link failing. Using VMware, this is achieved by enabling vSphere DRS,
 vSphere Availability, and creating a Distributed Port Group that uses LACP.
 
@@ -177,7 +179,7 @@ Enable SSH so you can now SSH into the routers, rather than using the console.
    commit
    save
 
-At this point you should be able to SSH into both of them, and will no longer
+At this point, you should be able to SSH into both of them, and will no longer
 need access to the console (unless you break something!)
 
 
@@ -415,9 +417,9 @@ Make sure you can ping 10.254.60.1 and .2 from both routers.
 Create Export Filter
 --------------------
 
-We only want to export the networks we know we should be exporting. Always
-whitelist your route filters, both importing and exporting. A good rule of
-thumb is **'If you are not the default router for a network, don't advertise
+We only want to export the networks we know. Always do a whitelist on your route
+filters, both importing and exporting. A good rule of thumb is
+**'If you are not the default router for a network, don't advertise
 it'**. This means we explicitly do not want to advertise the 192.0.2.0/24
 network (but do want to advertise 10.200.201.0 and 203.0.113.0, which we ARE
 the default route for). This filter is applied to ``redistribute connected``.
@@ -446,7 +448,7 @@ default again. This is called 'flapping'.
 Create Import Filter
 --------------------
 
-We only want to import networks we know about. Our OSPF peer should only be
+We only want to import networks we know. Our OSPF peer should only be
 advertising networks in the 10.201.0.0/16 range. Note that this is an INVERSE
 MATCH. You deny in access-list 100 to accept the route.
 
@@ -489,7 +491,7 @@ Test OSPF
 
 When you have enabled OSPF on both routers, you should be able to see each
 other with the command ``show ip ospf neighbour``. The state must be 'Full'
-or '2-Way', if it is not then there is a network connectivity issue between the
+or '2-Way'. If it is not, then there is a network connectivity issue between the
 hosts. This is often caused by NAT or MTU issues. You should not see any new
 routes (unless this is the second pass) in the output of ``show ip route``
 
@@ -512,8 +514,8 @@ You should now be able to see the advertised network on the other host.
 Duplicate configuration
 -----------------------
 
-At this pont you now need to create the X link between all four routers. Use a
-different /30 for each link.
+At this point, you now need to create the X link between all four routers.
+Use amdifferent /30 for each link.
 
 Priorities
 ----------
