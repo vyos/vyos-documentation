@@ -8,6 +8,7 @@ The following structure respresent the cli structure.
    :maxdepth: 1
    :includehidden:
 
+   container/index
    firewall/index
    highavailability/index
    interfaces/index
@@ -21,4 +22,3 @@ The following structure respresent the cli structure.
    vpn/index
    vrf/index
    zonepolicy/index
-   container/index
