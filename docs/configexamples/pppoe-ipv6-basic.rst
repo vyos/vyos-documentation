@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-29
+
 .. _examples-pppoe-ipv6-basic:
 
 #######################################
@@ -5,9 +7,9 @@ PPPoE IPv6 Basic Setup for Home Network
 #######################################
 
 This document is to describe a basic setup using PPPoE with DHCPv6-PD +
-SLAAC to construct a typical home network. The user can follow steps described
-here to quickly setup a working network and use this as a starting point to
-further configure or fine tune other settings.
+SLAAC to construct a typical home network. The user can follow the steps
+described here to quickly setup a working network and use this as a starting
+point to further configure or fine-tune other settings.
 
 To achieve this, your ISP is required to support DHCPv6-PD. If you're not sure,
 please contact your ISP for more information.
@@ -40,8 +42,8 @@ DHCPv6-PD Setup
 ---------------
 
 During address configuration, in addition to assigning an address to the WAN
-interface, ISP also provides a prefix to allow router to configure addresses of
-LAN interface and other nodes connecting to LAN, which is called prefix
+interface, ISP also provides a prefix to allow the router to configure addresses
+of LAN interface and other nodes connecting to LAN, which is called prefix
 delegation (PD).
 
 .. code-block:: none
@@ -49,8 +51,8 @@ delegation (PD).
    set interfaces pppoe pppoe0 ipv6 address autoconf
    set interfaces pppoe pppoe0 dhcpv6-options pd 0 interface eth1 address '100'
 
-* Here we use prefix to configure the address of eth1 (LAN) to form ``<prefix>::64``,
-  where ``64`` is hexadecimal of address 100.
+* Here we use the prefix to configure the address of eth1 (LAN) to form
+``<prefix>::64``, where ``64`` is hexadecimal of address 100.
 * For home network users, most of time ISP only provides /64 prefix, hence
   there is no need to set SLA ID and prefix length. See :ref:`pppoe-interface`
   for more information.
@@ -59,7 +61,7 @@ Router Advertisement
 --------------------
 
 We need to enable router advertisement for LAN network so that PC can receive
-the prefix and use SLAAC to configure address automatically.
+the prefix and use SLAAC to configure the address automatically.
 
 .. code-block:: none
 
@@ -68,8 +70,8 @@ the prefix and use SLAAC to configure address automatically.
    set service router-advert interface eth1 prefix ::/64 valid-lifetime '172800'
 
 * Set MTU in advertisement to 1492 because of PPPoE header overhead.
-* Set DNS server address in advertisement so that clients can obtain it by using
-  RDNSS option. Most operating systems (Windows, Linux, Mac) should
+* Set DNS server address in the advertisement so that clients can obtain it by
+  using RDNSS option. Most operating systems (Windows, Linux, Mac) should
   already support it.
 * Here we set the prefix to ``::/64`` to indicate advertising any /64 prefix
   the LAN interface is assigned.
@@ -106,5 +108,5 @@ To have basic protection while keeping IPv6 network functional, we need to:
    set interfaces pppoe pppoe0 firewall in ipv6-name 'WAN_IN'
    set interfaces pppoe pppoe0 firewall local ipv6-name 'WAN_LOCAL'
 
-Note to allow router to receive DHCPv6 response from ISP, we need to allow
+Note to allow the router to receive DHCPv6 response from ISP. We need to allow
 packets with source port 547 (server) and destination port 546 (client).
