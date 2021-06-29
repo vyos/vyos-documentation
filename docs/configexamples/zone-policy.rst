@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-29
+
 .. _examples-zone-policy:
 
 Zone-Policy example
@@ -132,7 +134,7 @@ To add logging to the default rule, do:
   set firewall name <ruleSet> enable-default-log
 
 
-By default, iptables does not allow traffic for established session to
+By default, iptables does not allow traffic for established sessions to
 return, so you must explicitly allow this. I do this by adding two rules
 to every ruleset. 1 allows established and related state packets through
 and rule 2 drops and logs invalid state packets. We place the
@@ -367,7 +369,7 @@ IPv6 Tunnel
 ^^^^^^^^^^^
 
 If you are using a IPv6 tunnel from HE.net or someone else, the basis is
-the same except you have two WAN interface. One for v4 and one for v6.
+the same except you have two WAN interfaces. One for v4 and one for v6.
 
 You would have 5 zones instead of just 4 and you would configure your v6
 ruleset between your tunnel interface and your LAN/DMZ zones instead of
