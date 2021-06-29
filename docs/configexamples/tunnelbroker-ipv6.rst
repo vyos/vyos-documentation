@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-29
+
 .. _examples-tunnelbroker-ipv6:
 
 .. stop_vyoslinter
@@ -6,7 +8,7 @@
 Tunnelbroker.net (IPv6)
 #######################
 
-This guides walks through the setup of https://www.tunnelbroker.net/ for an
+This guide walks through the setup of https://www.tunnelbroker.net/ for an
 IPv6 Tunnel.
 
 Prerequisites
@@ -78,12 +80,12 @@ You should now be able to ping something by IPv6 DNS name:
    2 packets transmitted, 2 received, 0% packet loss, time 1001ms
    rtt min/avg/max/mdev = 16.880/17.153/17.426/0.273 ms
 
-Assuming everything works, you can proceed to client configuration
+Assuming everything works, you can proceed to the client configuration
 
 LAN Configuration
 =================
 
-At this point your VyOS install should have full IPv6, but now your LAN devices
+At this point, your VyOS install should have full IPv6, but now your LAN devices
 need access.
 
 With Tunnelbroker.net, you have two options:
@@ -140,7 +142,7 @@ The format of these addresses:
 In the above examples, 1,2,ffff are all chosen by you. You can use 1-ffff
 (1-65535).
 
-So, when your LAN is eth1, your DMZ is eth2, your cameras live on eth3, etc:
+So, when your LAN is eth1, your DMZ is eth2, your cameras are on eth3, etc:
 
 .. code-block:: none
 
