@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-29
+
 .. _firewall:
 
 ########
@@ -29,7 +31,7 @@ or zone based firewall policy.
 Global settings
 ***************
 
-Some firewall settings are global and have a affect on the whole system.
+Some firewall settings are global and have an affect on the whole system.
 
 .. cfgcmd:: set firewall all-ping [enable | disable]
 
@@ -89,7 +91,7 @@ Some firewall settings are global and have a affect on the whole system.
 
 .. cfgcmd:: set firewall send-redirects [enable | disable]
 
-   enable or disable of ICMPv4 redirect messages send by VyOS 
+   enable or disable  ICMPv4 redirect messages send by VyOS 
    The following system parameter will be altered:
 
    * ``net.ipv4.conf.all.send_redirects``
@@ -127,7 +129,7 @@ Some firewall settings are global and have a affect on the whole system.
 
 .. cfgcmd:: set firewall state-policy established log enable
 
-   Set the global setting for a established connections.
+   Set the global setting for an established connection.
 
 .. cfgcmd:: set firewall state-policy invalid action [accept | drop | reject]
 
@@ -163,8 +165,8 @@ names.
 Address Groups
 ==============
 
-In a **address group** a single IP adresses or IP address ranges are
-definded.
+In an **address group** a single IP address or IP address ranges are
+defined.
 
 .. cfgcmd::  set firewall group address-group <name> address [address |
    address range]
@@ -221,7 +223,7 @@ filtering unnecessary ports. Ranges of ports can be specified by using
 .. cfgcmd:: set firewall group port-group <name> port
    [portname | portnumber | startport-endport]
 
-   Define a port group. A port name are any name defined in
+   Define a port group. A port name can be any name defined in
    /etc/services. e.g.: http
 
    .. code-block:: none
@@ -240,10 +242,10 @@ Rule-Sets
 *********
 
 A rule-set is a named collection of firewall rules that can be applied
-to an interface or zone. Each rule is numbered, has an action to apply
+to an interface or a zone. Each rule is numbered, has an action to apply
 if the rule is matched, and the ability to specify the criteria to
 match. Data packets go through the rules from 1 - 9999, at the first match
-the action of the rule will executed.
+the action of the rule will be executed.
 
 .. cfgcmd:: set firewall name <name> description <text>
 .. cfgcmd:: set firewall ipv6-name <name> description <text>
@@ -267,7 +269,7 @@ the action of the rule will executed.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> action [drop | reject |
    accept]
 
-   This required setting define the action of the current rule.
+   This required setting defines the action of the current rule.
 
 .. cfgcmd:: set firewall name <name> rule <1-9999> description <text>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> description <text>
@@ -287,7 +289,7 @@ the action of the rule will executed.
 Matching criteria
 =================
 
-There are a lot of matching criteria gainst which the package can be tested.
+There are a lot of matching criteria against which the package can be tested.
 
 
 .. cfgcmd:: set firewall name <name> rule <1-9999> source address 
@@ -299,7 +301,7 @@ There are a lot of matching criteria gainst which the package can be tested.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> destination address
    [address | addressrange | CIDR]
 
-   This is similiar to the network groups part, but here you are able to negate
+   This is similar to the network groups part, but here you are able to negate
    the matching addresses.
 
    .. code-block:: none
@@ -315,7 +317,7 @@ There are a lot of matching criteria gainst which the package can be tested.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> source mac-address 
    <mac-address>
 
-   Only in the source criteria you can specify a mac-address
+   Only in the source criteria, you can specify a mac-address.
 
    .. code-block:: none
 
@@ -331,7 +333,7 @@ There are a lot of matching criteria gainst which the package can be tested.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> destination port
    [1-65535 | portname | start-end]
 
-   A port can be set with a portnumber or a name which is here
+   A port can be set with a port number or a name which is here
    defined: ``/etc/services``.
 
    .. code-block:: none
@@ -410,9 +412,9 @@ There are a lot of matching criteria gainst which the package can be tested.
       set firewall name WAN-IN-v4 rule 13 tcp flags 'SYN,!ACK,!FIN,!RST'
 
 .. cfgcmd:: set firewall name <name> rule <1-9999> state [established |
-   invalid | new | related] [enable | disable ]
+   invalid | new | related] [enable | disable]
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> state [established |
-   invalid | new | related] [enable | disable ]
+   invalid | new | related] [enable | disable]
 
    Match against the state of a packet.
 
@@ -423,8 +425,8 @@ Applying a Rule-Set to an Interface
 
 A Rule-Set can be applied to every interface:
 
-* ``in``: Ruleset for forwarded packets on inbound interface
-* ``out``: Ruleset for forwarded packets on outbound interface
+* ``in``: Ruleset for forwarded packets on an inbound interface
+* ``out``: Ruleset for forwarded packets on an outbound interface
 * ``local``: Ruleset for packets destined for this router
 
 .. cfgcmd:: set interface ethernet <ethN> firewall [in | out | local] 
@@ -451,7 +453,7 @@ Zone-based Firewall Policy
 As an alternative to applying policy to an interface directly, a
 zone-based firewall can be created to simplify configuration when
 multiple interfaces belong to the same security zone. Instead of
-applying rulesets to interfaces, they are applied to source
+applying rule-sets to interfaces, they are applied to source
 zone-destination zone pairs.
 
 An basic introduction to zone-based firewalls can be found `here
@@ -465,12 +467,12 @@ To define a zone setup either one with interfaces or a local zone.
 
 .. cfgcmd:: set zone-policy zone <name> interface <interfacenames>
 
-   Set a interfaces to a zone. A zone can have multiple interfaces.
-   But a interface can only be member in one zone.
+   Set interfaces to a zone. A zone can have multiple interfaces.
+   But an interface can only be a member in one zone.
 
 .. cfgcmd:: set zone-policy zone <name> local-zone
 
-   Define the Zone as a local zone. A local zone have no interfaces and
+   Define the zone as a local zone. A local zone has no interfaces and
    will be applied to the router itself.
 
 .. cfgcmd:: set zone-policy zone <name> default-action [drop | reject]
@@ -486,14 +488,14 @@ Applying a Rule-Set to a Zone
 =============================
 
 Before you are able to apply a rule-set to a zone you have to create the zones 
-first. 
+first.
 
 .. cfgcmd::  set zone-policy zone <name> from <name> firewall name
    <rule-set>
 .. cfgcmd::  set zone-policy zone <name> from <name> firewall ipv6-name
    <rule-set>
 
-   You apply a rule-set always to a zone from a other zone, it is recommended
+   You apply a rule-set always to a zone from an other zone, it is recommended
    to create one rule-set for each zone pair.
 
    .. code-block:: none
@@ -577,7 +579,7 @@ Rule-set overview
 
 .. opcmd:: show firewall summary
 
-   This will show you a summary about rule-sets and groups
+   This will show you a summary of rule-sets and groups
 
    .. code-block:: none
 
@@ -630,7 +632,7 @@ Rule-set overview
    
 .. opcmd:: show firewall [name | ipv6name] <name> rule <1-9999>
 
-   This command will give an overview about a rule in a single rule-set
+   This command will give an overview of a rule in a single rule-set
 
 .. opcmd:: show firewall group <name>
 
@@ -658,7 +660,7 @@ Rule-set overview
 
 .. opcmd:: show firewall [name | ipv6name] <name>
 
-   This command will give an overview about a single rule-set
+   This command will give an overview of a single rule-set.
 
 .. opcmd:: show firewall [name | ipv6name] <name> statistics
 
@@ -666,7 +668,7 @@ Rule-set overview
 
 .. opcmd:: show firewall [name | ipv6name] <name> rule <1-9999>
 
-   This command will give an overview about a rule in a single rule-set
+   This command will give an overview of a rule in a single rule-set.
 
 
 Zone-Policy Overview
@@ -674,7 +676,7 @@ Zone-Policy Overview
 
 .. opcmd:: show zone-policy zone <name>
 
-   Use this command to get an overview about a zone
+   Use this command to get an overview of a zone.
 
    .. code-block:: none
 
@@ -695,7 +697,7 @@ Show Firewall log
 
 .. opcmd:: show log firewall [name | ipv6name] <name>
 
-   Show the logs of a specific Rule-Set
+   Show the logs of a specific Rule-Set.
 
 .. note::
    At the moment it not possible to look at the whole firewall log with VyOS
