@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-30
+
 .. include:: /_include/need_improvement.txt
 
 .. _l2tpv3-interface:
@@ -9,7 +11,7 @@ L2TPv3
 Layer 2 Tunnelling Protocol Version 3 is an IETF standard related to L2TP that
 can be used as an alternative protocol to :ref:`mpls` for encapsulation of
 multiprotocol Layer 2 communications traffic over IP networks. Like L2TP,
-L2TPv3 provides a pseudo-wire service, but scaled to fit carrier requirements.
+L2TPv3 provides a pseudo-wire service but is scaled to fit carrier requirements.
 
 L2TPv3 can be regarded as being to MPLS what IP is to ATM: a simplified version
 of the same concept, with much of the same benefit achieved at a fraction of the
@@ -49,13 +51,13 @@ L2TPv3 options
 
   Set the IP address of the local interface to be used for the tunnel.
 
-  This address must be the address of a local interface. May be specified as an
-  IPv4 address or an IPv6 address.
+  This address must be the address of a local interface. It may be specified as
+  an IPv4 address or an IPv6 address.
 
 .. cfgcmd:: set interfaces l2tpv3 <interface> remote <address>
 
-  Set the IP address of the remote peer. May be specified as an IPv4 address or
-  an IPv6 address.
+  Set the IP address of the remote peer. It may be specified as
+  an IPv4 address or an IPv6 address.
 
 .. cfgcmd:: set interfaces l2tpv3 <interface> session-id <id>
 
@@ -65,7 +67,7 @@ L2TPv3 options
 
 .. cfgcmd:: set interfaces l2tpv3 <interface> peer-session-id <id>
 
-  Set the peer session id, which is a 32-bit integer value assigned to the
+  Set the peer-session-id, which is a 32-bit integer value assigned to the
   session by the peer. The value used must match the session_id value being
   used at the peer.
 
@@ -100,7 +102,7 @@ Over IP
       tunnel-id 200
   }
 
-Inverse configuration has to be applied to the remote side.
+The inverse configuration has to be applied to the remote side.
 
 Over UDP
 ========
