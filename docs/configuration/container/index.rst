@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-30
+
 .. include:: /_include/need_improvement.txt
 
 .. _container:
@@ -12,7 +14,7 @@ Configuration
 
 .. cfgcmd:: set container <name>
 
-   Set an named container.
+   Set a named container.
 
 .. cfgcmd:: set container network <networkname>
 
@@ -32,8 +34,8 @@ Configuration
 
       set container name mysql-server image mysql:8.0
 
-    If a registry is not specefied, Docker.io will be used as the container 
-    registry unless an alternative registry is specefied using 
+    If a registry is not specified, Docker.io will be used as the container 
+    registry unless an alternative registry is specified using 
     **set container registry <name>** or the registry is included in the image name
 
     .. code-block:: none
@@ -42,10 +44,11 @@ Configuration
 
 .. cfgcmd:: set container <name> allow-host-networks
     
-    Allow host networking in container. The network stack of the container is 
+    Allow host networking in a container. The network stack of the container is 
     not isolated from the host and will use the host IP.
 
-    The following commands translates to "--net host" when the container is created 
+    The following commands translate to "--net host" when the container
+    is created 
 
     .. note:: **allow-host-networks** cannot be used with **network** 
 
@@ -55,7 +58,10 @@ Configuration
 
 .. cfgcmd:: set container <name> environment '<key>' value '<value>'
 
-    Adds a custom environment variables. Multiple enviroment variables are allowed. The following commands translates to "-e key=value" when container is created. 
+    Add custom environment variables.
+    Multiple environment variables are allowed.
+    The following commands translate to "-e key=value" when the container
+    is created. 
 
     .. code-block:: none
 
@@ -66,9 +72,11 @@ Configuration
 
 .. cfgcmd:: set container <name> network <networkname> 
 
-    Attaches user defined network to container. Only one network must be specefied and must already exist.
+    Attaches user-defined network to a container.
+    Only one network must be specified and must already exist.
 
-    Optionally a specific static IPv4 or IPv6 address can be set for the container. This address must be within the named network.
+    Optionally a specific static IPv4 or IPv6 address can be set for
+    the container. This address must be within the named network.
 
     .. code-block:: none
 
@@ -98,7 +106,9 @@ Configuration
 Example Configuration
 *********************
 
-    For the sake of demonstration, `example #1 in the official documentation <https://www.zabbix.com/documentation/current/manual/installation/containers>`_ to the declarative VyOS CLI syntax.
+    For the sake of demonstration, `example #1 in the official documentation
+    <https://www.zabbix.com/documentation/current/manual/installation/containers>`_
+    to the declarative VyOS CLI syntax.
 
     .. code-block:: none
 
