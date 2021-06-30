@@ -35,7 +35,7 @@ Building from source
 ----------------------
 
 Non-subscribers can always get the LTS release by building it from source.
-Instruction can be found in the :ref:`build` section of this manual. VyOS
+Instructions can be found in the :ref:`build` section of this manual. VyOS
 source code repository is available for everyone at
 https://github.com/vyos/vyos-build.
 
@@ -58,7 +58,7 @@ https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 Download Verification
 ---------------------
 
-LTS images are signed by VyOS lead package-maintainer private key. With
+LTS images are signed by the VyOS lead package-maintainer private key. With
 the official public key, the authenticity of the package can be
 verified. :abbr:`GPG (GNU Privacy Guard)` is used for verification.
 
@@ -190,7 +190,7 @@ it in your hard drive. **With your downloaded VyOS .iso file you can
 create a bootable USB drive that will let you boot into a fully
 functional VyOS system**. Once you have tested it, you can either decide
 to begin a :ref:`permanent_installation` in your hard drive or power
-your system off, remove the USB drive, and leave everythng as it was.
+your system off, remove the USB drive, and leave everything as it was.
 
 
 If you have a GNU+Linux system, you can create your VyOS bootable USB

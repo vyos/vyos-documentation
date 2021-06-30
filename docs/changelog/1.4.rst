@@ -8,6 +8,76 @@
    _ext/releasenotes.py
 
 
+2021-06-27
+==========
+
+* :vytask:`T3653` (default): Cloudinit subnet error if a cidr (/24) is used instead of a subnet mask (255.255.255.0)
+
+
+2021-06-25
+==========
+
+* :vytask:`T3641` (feature): Upgrade base system from Debian Buster -> Debian Bullseye
+* :vytask:`T3649` (feature): Add bonding additional hash-policy
+
+
+2021-06-23
+==========
+
+* :vytask:`T3647` (feature): Bullseye: gcc defaults to passing --as-needed to linker
+* :vytask:`T3644` (default): Replace GCC with a simpler preprocessor for including nested XML snippets in XML documents
+* :vytask:`T3356` (feature): Script for remote file transfers
+
+
+2021-06-22
+==========
+
+* :vytask:`T3629` (bug): IPoE server shifting address in the range
+* :vytask:`T3645` (feature): Bullseye: ethtool changed output for ring-buffer information
+* :vytask:`T3582` (default): 'delete log file' does not work
+
+
+2021-06-21
+==========
+
+* :vytask:`T3628` (bug): commit-archive source-address Interface Broken
+* :vytask:`T3563` (default): commit-archive breaks with IPv6 source addresses
+
+
+2021-06-20
+==========
+
+* :vytask:`T3637` (bug): vrf: bind-to-all didn't work properly
+* :vytask:`T3639` (default): GCC preprocessor clobbers C comments
+
+
+2021-06-19
+==========
+
+* :vytask:`T3633` (feature): Add LRO offload for interface ethernet
+* :vytask:`T3632` (bug): policy: route-map: unable to configure route-target / site-of-origin
+
+
+2021-06-18
+==========
+
+* :vytask:`T3634` (feature): Add op command option for ping for do not fragment bit to be set
+* :vytask:`T3599` (default): Migrate NHRP to XML/Python
+
+
+2021-06-17
+==========
+
+* :vytask:`T3624` (feature): BGP: add support for extended community bandwidth definition
+
+
+2021-06-16
+==========
+
+* :vytask:`T3623` (default): Fix for dummy interface option in the operational command "clear interfaces dummy"
+* :vytask:`T3630` (feature): op-mode: add "show version kernel" command
+
+
 2021-06-13
 ==========
 
@@ -621,7 +691,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.125 / 5.10.43
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.128 / 5.10.46
 
 
 2021-02-15

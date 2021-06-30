@@ -1,29 +1,31 @@
-.. _cloud-init:
+:lastproofread: 2021-06-27
+
+. _cloud-init:
 
 ###############
 VyOS cloud-init
 ###############
 
-Cloud instances of VyOS are initialized using the industry-standard cloud-init. 
-Via cloud-init, the system performs tasks such as injecting SSH keys and
-configuring the network. In addition, the user can supply a custom
+Cloud instances of VyOS are initialized using the industry-standard
+cloud-init. Via cloud-init, the system performs tasks such as injecting
+SSH keys and configuring the network. In addition, the user can supply a custom
 configuration at the time of instance launch.
 
 **************
 Config Sources
 **************
 
-VyOS support three type of config sources.
+VyOS support three types of config sources.
 
-.. stop_vyoslinter
+* Metadata - Metadata is sourced by the cloud platform or hypervisor.
+  In some clouds, there is implemented as an HTTP endpoint at
+  http://169.254.169.254.
 
-* Metadata - Metadata is sourced by the cloud platform or hypervisor. In some clouds, there is implemented as an HTTP endpoint at http://169.254.169.254.
+* Network configuration - This config source informs the system about the
+  network.
 
-* Network configuration - Ths config source informs the system about the network.
-
-* User-data - User-data is specified by the user. This config source offers the most flexibility and will be the focus of this documentation.
-
-.. start_vyoslinter
+* User-data - User-data is specified by the user. This config source offers the
+  most flexibility and will be the focus of this documentation.
 
 
 *********
@@ -86,7 +88,7 @@ These are the VyOS defaults and fallbacks.
 * DHCP on first Ethernet interface if no network configuration is provided
 
 
-All of these can be overridden using configuration in user-data.
+All of these can be overridden using the configuration in user-data.
 
 
 ***************

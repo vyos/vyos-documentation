@@ -8,6 +8,7 @@ The following structure respresent the cli structure.
    :maxdepth: 1
    :includehidden:
 
+   container/index
    firewall/index
    highavailability/index
    interfaces/index

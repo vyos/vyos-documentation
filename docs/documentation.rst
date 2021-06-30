@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-25
+
 .. _documentation:
 
 #############
@@ -5,7 +7,7 @@ Documentation
 #############
 
 We encourage every VyOS user to help us improve our documentation as we have
-a deficit like most software projects.  This not only be helps you when reading,
+a deficit like most software projects.  This not only helps you when reading
 but also everyone else.
 
 If you are willing to contribute to our documentation this is the definite
@@ -18,7 +20,7 @@ guide how to do so.
 Forking Workflow
 ================
 
-The Forking Workflow is fundamentally different than other popular Git
+The Forking Workflow is fundamentally different from other popular Git
 workflows. Instead of using a single server-side repository to act as the
 "central" codebase, it gives every developer their own server-side repository.
 This means that each contributor has not one, but two Git repositories: a
@@ -42,7 +44,7 @@ access to the official codebase.
 * Install the requirements ``$ pip install -r requirements.txt``
   (or something similar)
 
-* Create new branch for your work, use a descriptive name of your work:
+* Create a new branch for your work, use a descriptive name of your work:
   ``$ git checkout -b <branch-name>``
 
 * Make all your changes - please keep our commit rules in mind
@@ -54,7 +56,7 @@ access to the official codebase.
 
 * Check your changes by locally building the documentation ``$ make html``.
   Sphinx will build the html files in the ``docs/_build`` folder. We provide
-  you with a Docker container for an easy to use user experience. Check the
+  you with a Docker container for an easy-to-use user experience. Check the
   README.md_ file of this repository.
 
 * View modified files by calling ``$ git status``. You will get an overview of
@@ -67,7 +69,7 @@ access to the official codebase.
 
 * Commit your changes with the message, ``$ git commit -m "<commit message>"``
   or  use ``$ git commit -v`` to have your configured editor launched. You can
-  type in a commit message. Again please make yourself comfortable with out
+  type in a commit message. Again please make yourself comfortable without
   rules (:ref:`prepare_commit`).
 
 * Push commits to your GitHub project: ``$ git push -u origin <branch-name>``
@@ -76,7 +78,7 @@ access to the official codebase.
   see a banner suggesting to make a pull request. Fill out the form and
   describe what you do.
 
-* Once pull resquests have been approved, you may want to locally update
+* Once pull requests have been approved, you may want to locally update
   your forked repository too. First you'll have to add a second remote
   called `upstream` which points to our main repository. ``$ git remote add
   upstream https://github.com/vyos/vyos-documentation.git``
@@ -141,7 +143,7 @@ Cross-References
 ^^^^^^^^^^^^^^^^
 
 A plugin will be used to generate a reference label for each headline.
-to reference a page or a section in the documentation use the
+To reference a page or a section in the documentation use the
 ``:ref:`` command.
 
 For example, you want to reference the headline **VLAN** in the
@@ -150,7 +152,7 @@ the headline and the file path.
 
 ``:ref:`configuration/interfaces/ethernet:vlan``
 
-to use a alternative Hyperlink use it this way:
+to use an alternative hyperlink use it this way:
 
 ``:ref:`Check out VLAN<configuration/interfaces/ethernet:vlan>``
 
@@ -158,10 +160,10 @@ handle build errors
 """""""""""""""""""
 
 The plugin will warn on build if a headline has a duplicate name in the 
-same document. To prevent this warning you have to put a custom link on
+same document. To prevent this warning, you have to put a custom link on
 top of the headline.
 
-.. code-block::
+.. code-block:: none
 
    Section A
    ==========
@@ -184,10 +186,6 @@ top of the headline.
    -------
 
    Lorem ipsum dolor sit amet, consetetur sadipscing elitr
-
-
-
-
 
 
 Address space
@@ -221,10 +219,10 @@ renders the same line format from the source rst file.
 Autolinter
 ^^^^^^^^^^
 
-Each GitHub Pull request is automatically linted to check the Address space and
+Each GitHub pull request is automatically linted to check the address space and
 line length.
 
-Sometimes it is necessary to provide real IP Addresses like in the
+Sometimes it is necessary to provide real IP addresses like in the
 :ref:`examples`. For this, please use the sphinx comment syntax
 ``.. stop_vyoslinter`` to stop the linter and ``.. start_vyoslinter`` to start.
 
@@ -242,19 +240,19 @@ cfgcmd
 When documenting CLI commands, use the ``.. cfgcmd::`` directive
 for all configuration mode commands. An explanation of the described command
 should be added below this statement.
-Replace all variable contents with <value> or somthing similar.
+Replace all variable contents with <value> or something similar.
 
-With those custom commands it will be possible to render them in a more
+With those custom commands, it will be possible to render them in a more
 descriptive way in the resulting HTML/PDF manual.
 
 .. code-block:: none
 
   .. cfgcmd:: protocols static arp <ipaddress> hwaddr <macaddress>
 
-     This will configure a static ARP entry always resolving `192.0.2.100` to
+     This will configure a static ARP entry, always resolving `192.0.2.100` to
      `00:53:27:de:23:aa`.
 
-For a inline configuration level command, use ``:cfgcmd:``
+For an inline configuration level command, use ``:cfgcmd:``
 
 .. code-block:: none
 
@@ -275,7 +273,7 @@ descriptive way in the resulting HTML/PDF manual.
 
      Display all known ARP table entries spanning across all interfaces
 
-For a inline operational level command, use ``:opcmd:``
+For an inline operational level command, use ``:opcmd:``
 
 .. code-block:: none
 
@@ -284,8 +282,8 @@ For a inline operational level command, use ``:opcmd:``
 cmdinclude
 """"""""""
 
-To minimize redundancy, there is a special include directive. It include a txt
-file and replace the ``{{ var0 }}`` - ``{{ var9 }}`` with the correct value
+To minimize redundancy, there is a special include directive. It includes a txt
+file and replace the ``{{ var0 }}`` - ``{{ var9 }}`` with the correct value.
 
 .. code-block:: none
 
@@ -348,44 +346,44 @@ All RST files must follow the same TOC Level syntax and have to start with
 Configuration mode pages
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-A configuration mode folder and article covers a specific level of a command.
-The exact level depends on the command. This should provide stability for URLs
-used in the forum or blogpost.
+The configuration mode folder and the articles cover the specific level of
+the commands. The exact level depends on the command. This should provide
+stability for URLs used in the forum or blogpost.
 
 For example:
 
   * ``set zone-policy`` is written in ``zone-policy/index.rst``
   * ``set interfaces ethernet`` is written in ``interfaces/ethernet.rst``
 
-The article starts with a short intruducing about the command or the
-technologie. Please include some helpfull links or background informations.
+The article starts with a short introduction about the command or the
+technology. Please include some helpful links or background information.
 
 An optional section follows. Some commands have requirements like compatible
 hardware (e.g. Wifi) or some commands you have to set before. For
-example, it is recommended to set a route-map before configure BGP.
+example, it is recommended to set a route-map before configuring BGP.
 
-In the configuration part of the page, all possible confiuration options
+In the configuration part of the page, all possible configuration options
 should be documented. Use ``.. cfgcmd::`` described above.
 
-Related Operation command must be documented in the next part of the article.
+Related operation command must be documented in the next part of the article.
 Use ``::opcmd..`` for these commands.
 
-If there some troubleshooting guides releated to the commands. Explain it in the
+If there some troubleshooting guides related to the commands. Explain it in the
 next optional part.
 
 Operation mode pages
 ^^^^^^^^^^^^^^^^^^^^
 
-Operation mode commands that does not fit in a related configuraton mode command
+Operation mode commands that do not fit in a related configuration mode command
 must be documented in this part of the documentation.
 
-General concepts for troubleshooting, and detailed process descriptions belong
+General concepts for troubleshooting and detailed process descriptions belong
 here.
 
 Anything else
 ^^^^^^^^^^^^^
 
-Anything else that is not a configuration or an operation command have no
+Anything else that is not a configuration or an operation command has no
 predefined structure.
 
 

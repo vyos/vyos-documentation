@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-28
+
 .. _vyosapi:
 
 ########
@@ -10,11 +12,11 @@ For configuration and enabling the API see :ref:`http-api`
 Authentication
 **************
 
-All Endpoint only listen on HTTP POST requests and the API KEY must set as
+All endpoints only listen on HTTP POST requests and the API KEY must set as
 ``key`` in the formdata.
 
 Below see one example for curl and one for python.
-In the following, the documentation is reduced to curl.
+The rest of the documentation is reduced to curl.
 
 .. code-block:: none
 
@@ -74,8 +76,7 @@ To get the whole configuration, pass an empty list to the ``path`` field
    }
 
 
-only get a part of the configuration, 
-for example ``system syslog``.
+To only get a part of the configuration, for example ``system syslog``.
 
 .. code-block:: none
 
@@ -105,7 +106,7 @@ for example ``system syslog``.
 if you just want the Value of a multi-valued node, use the ``returnValues``
 operation.
 
-for example get the addresses of a ``dum0`` interface
+For example, get the addresses of a ``dum0`` interface.
 
 .. code-block:: none
 
@@ -165,9 +166,9 @@ delete an image, for example ``1.3-rolling-202006070117``
 /show
 =====
 
-The ``/show`` endpoint is to show everthing in operational mode
+The ``/show`` endpoint is to show everything in the operational mode.
 
-for example which images are installed
+For example, show which images are installed.
 
 .. code-block:: none
 
@@ -189,7 +190,7 @@ for example which images are installed
 /generate
 =========
 
-to run a ``generate`` command use the
+THe ``generate`` endpoint run a ``generate`` command.
 
 .. code-block:: none
 
@@ -242,10 +243,10 @@ You can pass a ``set``, ``delete`` or ``comment`` command to the
       "error": null
    }
 
-The API push every request to a session and commit it.
+The API pushes every request to a session and commit it.
 But some of VyOS components like DHCP and PPPoE Servers, IPSec, VXLAN, and
 other tunnels require full configuration for commit. 
-The Endpoint will process multiple commands when you pass them as a list to
+The endpoint will process multiple commands when you pass them as a list to
 the ``data`` field.
 
 .. code-block:: none

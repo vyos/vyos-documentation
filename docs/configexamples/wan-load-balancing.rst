@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-29
+
 .. _wan-load-balancing:
 
 .. stop_vyoslinter # pictures and text have to change
@@ -65,21 +67,20 @@ Configure the WAN load balancer with the parameters described above:
 Example 2: Failover based on interface weights
 ----------------------------------------------
 
-This examples uses the failover mode.
-
+This example uses the failover mode.
 
 .. _wan:example2_overwiew:
 
 Overview
 ^^^^^^^^
-In this example eth0 is the primary interface and eth1 is the secondary
-interface to provide simple failover functionality. If eth0 fails, eth1
+In this example, eth0 is the primary interface and eth1 is the secondary
+interface. To provide simple failover functionality. If eth0 fails, eth1
 takes over.
 
 Create interface weight based configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The configuration steps are the same as in the previous example, except
-rule 10 so we keep the configuration, remove rule 10 and add a new rule
+rule 10. So we keep the configuration, remove rule 10 and add a new rule
 for the failover mode:
 
 .. code-block:: none
@@ -93,8 +94,8 @@ for the failover mode:
 Example 3: Failover based on rule order
 ---------------------------------------
 
-The previous example used the failover command to send traffic thorugh
-eth1 if eth0 fails. In this example failover functionality is provided
+The previous example used the failover command to send traffic through
+eth1 if eth0 fails. In this example, failover functionality is provided
 by rule order.
 
 .. _wan:example3_overwiew:
@@ -108,7 +109,7 @@ directing traffic to eth1.
 
 Create rule order based configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-We keep the configurtation from the previous example, delete rule 10
+We keep the configuration from the previous example, delete rule 10
 and create the two new rules as described:
 
 .. code-block:: none
@@ -122,20 +123,20 @@ and create the two new rules as described:
 Example 4: Failover based on rule order - priority traffic
 ----------------------------------------------------------
 
-A rule order for prioritising traffic is useful in scenarios where the
+A rule order for prioritizing traffic is useful in scenarios where the
 secondary link has a lower speed and should only carry high priority
 traffic. It is assumed for this example that eth1 is connected to a
-slower connection than eth0 and should prioritise VoIP traffic.
+slower connection than eth0 and should prioritize VoIP traffic.
 
 
 .. _wan:example4_overwiew:
 
 Overview
 ^^^^^^^^
-A rule order for prioritising traffic is useful in scenarios where the
+A rule order for prioritizing traffic is useful in scenarios where the
 secondary link has a lower speed and should only carry high priority
 traffic. It is assumed for this example that eth1 is connected to a
-slower connection than eth0 and should prioritise VoIP traffic. 
+slower connection than eth0 and should prioritize VoIP traffic. 
 
 Create rule order based configuration with low speed secondary link
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

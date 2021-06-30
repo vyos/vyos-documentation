@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-27
+
 .. _command-scripting:
 
 Command Scripting
@@ -34,7 +36,7 @@ example, if you want to disable a BGP peer on VRRP transition to backup:
 Run operational commands
 ------------------------
 
-Unlike a normal configuration sessions, all operational commands must be
+Unlike a normal configuration session, all operational commands must be
 prepended with ``run``, even if you haven't created a session with configure.
 
 .. code-block:: none
@@ -44,8 +46,8 @@ prepended with ``run``, even if you haven't created a session with configure.
   run show interfaces
   exit
 
-Other script language
----------------------
+Other script languages
+----------------------
 
 If you want to script the configs in a language other than bash you can have
 your script output commands and then source them in a bash script.
@@ -105,14 +107,71 @@ group, the script can be safeguarded like this:
       exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
   fi
 
+Executing pre-hooks/post-hooks Scripts
+--------------------------------------
+
+VyOS has the ability to run custom  scripts before and after each commit
+
+The default directories where your custom Scripts should be located are:
+
+.. code-block:: none
+
+  /config/scripts/commit/pre-hooks.d   - Directory with scripts that run before 
+                                         each commit.
+
+  /config/scripts/commit/post-hooks.d  - Directory with scripts that run after
+                                         each commit.
+
+Scripts are run in alphabetical order. Their names must consist entirely of 
+ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and 
+ASCII minus-hyphens.No other characters are allowed.
+
+.. note:: Custom scripts are not executed with root privileges
+   (Use sudo inside if this is necessary).
+
+A simple example is shown below, where the ops command executed in 
+the post-hook script is "show interfaces".
+
+.. code-block:: none
+
+  vyos@vyos# set interfaces ethernet eth1  address 192.0.2.3/24
+  vyos@vyos# commit
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  Interface        IP Address                        S/L  Description
+  ---------        ----------                        ---  -----------
+  eth0             198.51.100.10/24                  u/u
+  eth1             192.0.2.3/24                      u/u
+  eth2             -                                 u/u
+  eth3             -                                 u/u
+  lo               203.0.113.5/24                    u/u
+                  
+Preconfig on boot
+-----------------
+
+The ``/config/scripts/vyos-preconfig-bootup.script`` script is called on boot
+before the VyOS configuration during boot process.
+
+Any modifications were done to work around unfixed bugs and implement
+enhancements that are not complete in the VyOS system can be placed here.
+
+The default file looks like this:
+
+.. code-block:: none
+
+  #!/bin/sh
+  # This script is executed at boot time before VyOS configuration is applied. 
+  # Any modifications required to work around unfixed bugs or use
+  # services not available through the VyOS CLI system can be placed here. 
+
+
 Postconfig on boot
 ------------------
 
 The ``/config/scripts/vyos-postconfig-bootup.script`` script is called on boot
 after the VyOS configuration is fully applied.
 
-Any modifications done to work around unfixed bugs and implement enhancements
-which are not complete in the VyOS system can be placed here.
+Any modifications were done to work around unfixed bugs and implement
+enhancements that are not complete in the VyOS system can be placed here.
 
 The default file looks like this:
 
