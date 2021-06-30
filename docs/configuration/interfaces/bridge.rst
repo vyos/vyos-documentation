@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-30
+
 .. _bridge-interface:
 
 ######
@@ -48,7 +50,7 @@ Member Interfaces
    and a cost, that is used to decide which is the shortest path to
    forward a packet. The lowest cost path is always used unless the
    other path is down. If you have multiple bridges and interfaces then
-   you may need to adjust the priorities to achieve optimium
+   you may need to adjust the priorities to achieve optimum
    performance.
 
 
@@ -71,7 +73,7 @@ Bridge Options
 
    Bridge maximum aging `<time>` in seconds (default: 20).
 
-   If a another bridge in the spanning tree does not send out a hello
+   If an another bridge in the spanning tree does not send out a hello
    packet for a long period of time, it is assumed to be dead.
 
 .. cfgcmd:: set interfaces bridge <interface> igmp querier
@@ -98,8 +100,8 @@ links providing fault tolerance if an active link fails.
 
    Spanning Tree Protocol forwarding `<delay>` in seconds (default: 15).
 
-   Forwarding delay time is the time spent in each of the Listening and
-   Learning states before the Forwarding state is entered. This delay is
+   The forwarding delay time is the time spent in each of the listening and
+   learning states before the Forwarding state is entered. This delay is
    so that when a new bridge comes onto a busy network it looks at some
    traffic before participating.
 
@@ -183,7 +185,7 @@ Examples
 Create a basic bridge
 =====================
 
-Creating a bridge interface is very simple. In this example we will
+Creating a bridge interface is very simple. In this example, we will
 have:
 
 * A bridge named `br100`
