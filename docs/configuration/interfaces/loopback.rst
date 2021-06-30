@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-30
+
 .. _loopback-interface:
 
 ########
@@ -53,7 +55,7 @@ Operation
 
 .. opcmd:: show interfaces loopback lo
 
-   Show detailed information on given loopback interface `lo`.
+   Show detailed information on the given loopback interface `lo`.
 
    .. code-block:: none
 
