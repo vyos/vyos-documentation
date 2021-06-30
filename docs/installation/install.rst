@@ -326,7 +326,7 @@ In order to proceed with a permanent installation:
    Done!
 
 
- 3. After the installation is complete, remove the live USB stick or
+ 3. After the installation is completed, remove the live USB stick or
     CD.
 
  4. Reboot the system.

@@ -6,7 +6,7 @@
 VyOS API
 ########
 
-for configuration and enabling the API see :ref:`http-api`
+For configuration and enabling the API see :ref:`http-api`
 
 **************
 Authentication

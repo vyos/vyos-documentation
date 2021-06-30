@@ -43,4 +43,4 @@ Major upgrades to the installed distribution may also require console access.
      control. This means you should start with a common baud rate (most likely
      9600 baud) as otherwise you probably can not connect to the device using
      high speed baud rates as your serial converter simply can not process this
-     datarate.
+     data rate.

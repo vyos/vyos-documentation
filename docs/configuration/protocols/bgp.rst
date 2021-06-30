@@ -190,7 +190,7 @@ Defining Peers
 
    This command creates a new neighbor whose remote-as is <nasn>. The neighbor
    address can be an IPv4 address or an IPv6 address or an interface to use
-   for the connection. The command it applicable for peer and peer group.
+   for the connection. The command is applicable for peer and peer group.
 
 .. cfgcmd:: set protocols bgp neighbor <address|interface> remote-as
    internal
@@ -809,7 +809,7 @@ For outbound updates the order of preference is:
 .. cfgcmd:: set protocols bgp neighbor <address|interface> address-family
    <ipv4-unicast|ipv6-unicast> distribute-list <export|import> <number>
 
-   This command applys the access list filters named in <number> to the
+   This command applies the access list filters named in <number> to the
    specified BGP neighbor to restrict the routing information that BGP learns
    and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import`
    specify the direction in which the access list are applied.
@@ -817,7 +817,7 @@ For outbound updates the order of preference is:
 .. cfgcmd:: set protocols bgp neighbor <address|interface> address-family
    <ipv4-unicast|ipv6-unicast> prefix-list <export|import> <name>
 
-   This command applys the prfefix list filters named in <name> to the
+   This command applies the prfefix list filters named in <name> to the
    specified BGP neighbor to restrict the routing information that BGP learns
    and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import`
    specify the direction in which the prefix list are applied.
@@ -825,7 +825,7 @@ For outbound updates the order of preference is:
 .. cfgcmd:: set protocols bgp neighbor <address|interface> address-family
    <ipv4-unicast|ipv6-unicast> route-map <export|import> <name>
 
-   This command applys the route map named in <name> to the specified BGP
+   This command applies the route map named in <name> to the specified BGP
    neighbor to control and modify routing information that is exchanged
    between peers. The arguments :cfgcmd:`export` and :cfgcmd:`import`
    specify the direction in which the route map are applied.
@@ -833,7 +833,7 @@ For outbound updates the order of preference is:
 .. cfgcmd:: set protocols bgp neighbor <address|interface> address-family
    <ipv4-unicast|ipv6-unicast> filter-list <export|import> <name>
 
-   This command applys the AS path access list filters named in <name> to the
+   This command applies the AS path access list filters named in <name> to the
    specified BGP neighbor to restrict the routing information that BGP learns
    and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import`
    specify the direction in which the AS path access list are applied.

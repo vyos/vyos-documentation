@@ -22,7 +22,7 @@ the command line prompt.
 
 .. cfgcmd:: set system host-name <hostname>
 
-   Set system hostname. The hostname can be up to 63 characters. A hostname
+   The hostname can be up to 63 characters. A hostname
    must start and end with a letter or digit, and have as interior characters
    only letters, digits, or a hyphen.
 
