@@ -33,7 +33,7 @@ Custom File
 
 .. cfgcmd:: set system syslog file <filename> facility <keyword> level <keyword>
 
-   Log syslog messages to file specified via `<filename>`, for en explanation on
+   Log syslog messages to file specified via `<filename>`, for an explanation on
    :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
    see tables below.
 
@@ -62,7 +62,7 @@ sending the messages via port 514/UDP.
 .. cfgcmd:: set system syslog host <address> facility <keyword> level <keyword>
 
    Log syslog messages to remote host specified by `<address>`. The address
-   can be specified by either FQDN or IP address. For en explanation on
+   can be specified by either FQDN or IP address. For an explanation on
    :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level`
    keywords see tables below.
 
@@ -81,7 +81,7 @@ Local User Account
 
    If logging to a local user account is configured, all defined log messages
    are display on the console if the local user is logged in, if the user is not
-   logged in, no messages are being displayed. For en explanation on
+   logged in, no messages are being displayed. For an explanation on
    :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
    see tables below.
 

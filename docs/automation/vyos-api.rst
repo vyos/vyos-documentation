@@ -4,7 +4,7 @@
 VyOS API
 ########
 
-for configuration and enabling the API see :ref:`http-api`
+For configuration and enabling the API see :ref:`http-api`
 
 **************
 Authentication
@@ -13,7 +13,7 @@ Authentication
 All Endpoint only listen on HTTP POST requests and the API KEY must set as
 ``key`` in the formdata.
 
-Below see one example or curl and one for python.
+Below see one example for curl and one for python.
 In the following, the documentation is reduced to curl.
 
 .. code-block:: none

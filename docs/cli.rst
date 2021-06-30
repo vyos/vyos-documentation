@@ -110,8 +110,7 @@ files.
 Terminology
 ###########
 
-live
-A VyOS system has three major types of configurations:
+A live VyOS system has three major types of configurations:
 
 * **Active** or **running configuration** is the system configuration
   that is loaded  and currently active (used by VyOS). Any change in
@@ -404,7 +403,7 @@ different levels in the hierarchy.
    Use this command to preserve configuration changes upon reboot. By
    default it is stored at */config/config.boot*. In the case you want
    to store the configuration file somewhere else, you can add a local
-   path, an SCP address, an FTP address or a TFTP address. 
+   path, a SCP address, a FTP address or a TFTP address. 
 
    .. code-block:: none
 
@@ -455,7 +454,7 @@ different levels in the hierarchy.
    a firewall, and you are not sure there are no mistakes that will lock
    you out of your system. You can use confirmed commit. If you issue
    the ``commit-confirm`` command, your changes will be commited, and if
-   you don't issue issue the ``confirm`` command in 10 minutes, your
+   you don't issue  the ``confirm`` command in 10 minutes, your
    system will reboot into previous config revision.
 
    .. code-block:: none

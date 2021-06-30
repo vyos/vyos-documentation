@@ -62,7 +62,7 @@ LTS images are signed by VyOS lead package-maintainer private key. With
 the official public key, the authenticity of the package can be
 verified. :abbr:`GPG (GNU Privacy Guard)` is used for verification.
 
-.. note:: This subsection only applies e applies to LTS images, for
+.. note:: This subsection only applies to LTS images, for
    Rolling images please jump to :ref:`live_installation`.
 
 Preparing for the verification
@@ -326,7 +326,7 @@ In order to proceed with a permanent installation:
    Done!
 
 
- 3. After the installation is complete, remove the live USB stick or
+ 3. After the installation is completed, remove the live USB stick or
     CD.
 
  4. Reboot the system.
