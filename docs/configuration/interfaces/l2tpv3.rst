@@ -49,7 +49,7 @@ L2TPv3 options
 
 .. cfgcmd:: set interfaces l2tpv3 <interface> local-ip <address>
 
-  set the IP address of the local interface to be used for the tunnel.
+  Set the IP address of the local interface to be used for the tunnel.
 
   This address must be the address of a local interface. It may be specified as
   an IPv4 address or an IPv6 address.
