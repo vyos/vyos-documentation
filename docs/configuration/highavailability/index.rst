@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-30
+
 .. _high-availability:
 
 High availability
@@ -113,7 +115,7 @@ In the following example, when VLAN9 transitions, VLAN20 will also transition:
 
 
 .. warning:: All items in a sync group should be similarly configured. 
-   If one VRRP group is set to a different premption delay or priority,
+   If one VRRP group is set to a different preemption delay or priority,
    it would result in an endless transition loop.
 
 
@@ -157,7 +159,7 @@ rfc3768-compatibility
 
 RFC 3768 defines a virtual MAC address to each VRRP virtual router.
 This virtual router MAC address will be used as the source in all periodic VRRP 
-messages sent by the active node. When the rfc3768-compatibilty option is set, 
+messages sent by the active node. When the rfc3768-compatibility option is set, 
 a new VRRP interface is created, to which the MAC address and the virtual IP 
 address is automatically assigned.
 
