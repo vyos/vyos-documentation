@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-30
+
 .. _dummy-interface:
 
 #####
@@ -50,7 +52,7 @@ Operation
 
 .. opcmd:: show interfaces dummy
 
-   Show brief interface information.information
+   Show brief interface information.
 
    .. code-block:: none
 
