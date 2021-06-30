@@ -566,6 +566,7 @@ be created. The following example explains the process.
 **Example:**
 
 * IPv6 address ``2001:db8::101`` shall be statically mapped
+* IPv6 prefix ``2001:db8:0:101::/64`` shall be statically mapped
 * Host specific mapping shall be named ``client1``
 
 .. hint:: The identifier is the device's DUID: colon-separated hex list (as
@@ -577,6 +578,7 @@ be created. The following example explains the process.
 .. code-block:: none
 
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-address 2001:db8::101
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-prefix 2001:db8:0:101::/64
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 identifier 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
 
 The configuration will look as follows:
