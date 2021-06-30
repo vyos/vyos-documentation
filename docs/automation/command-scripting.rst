@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-27
+
 .. _command-scripting:
 
 Command Scripting
@@ -34,7 +36,7 @@ example, if you want to disable a BGP peer on VRRP transition to backup:
 Run operational commands
 ------------------------
 
-Unlike a normal configuration sessions, all operational commands must be
+Unlike a normal configuration session, all operational commands must be
 prepended with ``run``, even if you haven't created a session with configure.
 
 .. code-block:: none
@@ -44,8 +46,8 @@ prepended with ``run``, even if you haven't created a session with configure.
   run show interfaces
   exit
 
-Other script language
----------------------
+Other script languages
+----------------------
 
 If you want to script the configs in a language other than bash you can have
 your script output commands and then source them in a bash script.
@@ -108,7 +110,7 @@ group, the script can be safeguarded like this:
 Executing pre-hooks/post-hooks Scripts
 --------------------------------------
 
-Vyos has the ability to run custom  scripts before and after each commit
+VyOS has the ability to run custom  scripts before and after each commit
 
 The default directories where your custom Scripts should be located are:
 
@@ -124,7 +126,8 @@ Scripts are run in alphabetical order. Their names must consist entirely of
 ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and 
 ASCII minus-hyphens.No other characters are allowed.
 
-.. note:: Custom scripts are not executed with root privileges (Use sudo inside if this is necessary).
+.. note:: Custom scripts are not executed with root privileges
+   (Use sudo inside if this is necessary).
 
 A simple example is shown below, where the ops command executed in 
 the post-hook script is "show interfaces".
@@ -148,8 +151,8 @@ Preconfig on boot
 The ``/config/scripts/vyos-preconfig-bootup.script`` script is called on boot
 before the VyOS configuration during boot process.
 
-Any modifications done to work around unfixed bugs and implement enhancements
-which are not complete in the VyOS system can be placed here.
+Any modifications were done to work around unfixed bugs and implement
+enhancements that are not complete in the VyOS system can be placed here.
 
 The default file looks like this:
 
@@ -167,8 +170,8 @@ Postconfig on boot
 The ``/config/scripts/vyos-postconfig-bootup.script`` script is called on boot
 after the VyOS configuration is fully applied.
 
-Any modifications done to work around unfixed bugs and implement enhancements
-which are not complete in the VyOS system can be placed here.
+Any modifications were done to work around unfixed bugs and implement
+enhancements that are not complete in the VyOS system can be placed here.
 
 The default file looks like this:
 
@@ -179,6 +182,6 @@ The default file looks like this:
   # applied. Any modifications required to work around unfixed bugs or use
   # services not available through the VyOS CLI system can be placed here.
 
-.. hint:: For configuration/upgrade management issues, modification of these
+.. hint:: For configuration/upgrade management issues, modification of this
    script should be the last option. Always try to find solutions based on CLI
    commands first.
