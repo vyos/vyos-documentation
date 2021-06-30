@@ -1,3 +1,5 @@
+:lastproofread: 2021-06-30
+
 .. _ethernet-interface:
 
 ########
@@ -312,4 +314,3 @@ Operation
      XDP_PASS               0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:2.000414
      XDP_TX                 0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:2.000414
      XDP_REDIRECT           0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:2.000414
-
