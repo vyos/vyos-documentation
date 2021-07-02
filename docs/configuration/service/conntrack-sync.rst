@@ -42,9 +42,7 @@ Configuration
     Accept only certain protocols: You may want to replicate the state of flows
     depending on their layer 4 protocol.
 
-    Protocols are: tcp, sctp, udp and icmp.
-
-    .. note:: When using multiple protocols they must be separated by comma.
+    Protocols are: tcp, sctp, dccp, udp, icmp and ipv6-icmp.
 
   .. cfgcmd:: set service conntrack-sync event-listen-queue-size <size>
 
@@ -64,7 +62,7 @@ Configuration
 
     Only VRRP is supported. Required option.
 
-  .. cfgcmd:: set service conntrack-sync ignore-address ipv4 <x.x.x.x>
+  .. cfgcmd:: set service conntrack-sync ignore-address <x.x.x.x>
 
     IP addresses or networks for which local conntrack entries will not be synced
 
@@ -110,7 +108,9 @@ Operation
     1015734272 172.31.20.12:60286     239.10.10.14:694       udp [17]         29
     1006239392 10.35.101.221          172.31.120.21          icmp [1]         29
 
-  .. note:: If the table is empty and you have a warning message, it means
+  .. note::
+
+    If the table is empty and you have a warning message, it means
     conntrack is not enabled. To enable conntrack, just create a NAT or a firewall
     rule. :cfgcmd:`set firewall state-policy established action accept`
 
@@ -184,7 +184,9 @@ Now configure conntrack-sync service on ``router1`` **and** ``router2``
 
   set high-availablilty vrrp group internal virtual-address ... etc ...
   set high-availability vrrp sync-group syncgrp member 'internal'
-  set service conntrack-sync accept-protocol 'tcp,udp,icmp'
+  set service conntrack-sync accept-protocol 'tcp'
+  set service conntrack-sync accept-protocol 'udp'
+  set service conntrack-sync accept-protocol 'icmp'
   set service conntrack-sync failover-mechanism vrrp sync-group 'syncgrp'
   set service conntrack-sync interface 'eth0'
   set service conntrack-sync mcast-group '225.0.0.50'
