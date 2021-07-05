@@ -8,6 +8,27 @@
    _ext/releasenotes.py
 
 
+2021-07-03
+==========
+
+* :vytask:`T57` (enhancment): Make it possible to disable the entire IPsec peer
+
+
+2021-07-01
+==========
+
+* :vytask:`T3658` (feature): Add support for dhcpdv6 fixed-prefix6
+* :vytask:`T2035` (bug): Executing vyos-smoketest multiple times makes ssh test fail on execution
+
+
+2021-06-29
+==========
+
+* :vytask:`T3593` (bug): PPPoE server called-sid format does not work
+* :vytask:`T3657` (default): BGP neighbors ipv6 not able to establish with IPv6 link-local addresses
+* :vytask:`T1441` (feature): Add support for IPSec XFRM interfaces
+
+
 2021-06-27
 ==========
 
@@ -691,7 +712,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.128 / 5.10.46
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.129 / 5.10.47
 
 
 2021-02-15
