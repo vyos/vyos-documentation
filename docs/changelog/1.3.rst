@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2021-07-01
+==========
+
+* :vytask:`T3658` (feature): Add support for dhcpdv6 fixed-prefix6
+
+
+2021-06-29
+==========
+
+* :vytask:`T3593` (bug): PPPoE server called-sid format does not work
+
+
 2021-06-27
 ==========
 
@@ -221,6 +233,7 @@
 * :vytask:`T3532` (bug): Not possible to change ethertype after interface creation
 * :vytask:`T3550` (bug): Router-advert completion typo
 * :vytask:`T3547` (feature): conntrackd: remove deprecated config options
+* :vytask:`T3535` (feature): Rewrite vyatta-conntrack-sync in new XML and Python flavor
 * :vytask:`T2049` (feature): Update strongSwan cipher suites list for IPSec settings
 
 
@@ -581,7 +594,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.128 / 5.10.46
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.129 / 5.10.47
 
 
 2021-02-14
