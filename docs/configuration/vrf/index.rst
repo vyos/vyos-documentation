@@ -1,3 +1,4 @@
+:lastproofread:2021-07-07
 .. _vrf:
 
 ###
@@ -23,7 +24,7 @@ then enslaved to a VRF device.
 
 .. cfgcmd:: set vrf name <name> table <id>
 
-   Configure use routing table `<id>` used by VRF `<name>`.
+   Configured routing table `<id>` is used by VRF `<name>`.
 
    .. note:: A routing table ID can not be modified once it is assigned. It can
       only be changed by deleting and re-adding the VRF instance.
@@ -62,14 +63,14 @@ Currently dynamic routing is supported for the following protocols:
 - :ref:`routing-ospf`
 - :ref:`routing-static`
 
-The CLI configuration the same as mentioned in above articles. The only
+The CLI configuration is same as mentioned in above articles. The only
 difference is, that each routing protocol used, must be prefixed with the `vrf
 name <name>` command.
 
 Example
 ^^^^^^^
 
-The following commands would be required to set options ofr a given dynamic
+The following commands would be required to set options for a given dynamic
 routing protocol inside a given vrf:
 
 - :ref:`routing-bgp`: ``set vrf name <name> protocols bgp ...``
@@ -81,11 +82,11 @@ Operation
 =========
 
 It is not sufficient to only configure a VRF but VRFs must be maintained, too.
-For VR Fmaintenance the followin operational commands are in place.
+For VRF maintenance the following operational commands are in place.
 
 .. opcmd:: show vrf
 
-   List VRFs that have been created
+   Lists VRFs that have been created
 
    .. code-block:: none
 
@@ -155,10 +156,10 @@ For VR Fmaintenance the followin operational commands are in place.
    will have an IP and ICMP header, followed by "struct timeval" and an
    arbitrary number of pad bytes used to fill out the packet.
 
-   When doing fault isolation with ping, your should first run it on the local
+   When doing fault isolation with ping, you should first run it on the local
    host, to verify that the local network interface is up and running. Then,
    continue with hosts and gateways further down the road towards your
-   destination. Round-trip times and packet loss statistics are computed.
+   destination. Round-trip time and packet loss statistics are computed.
 
    Duplicate packets are not included in the packet loss calculation, although
    the round-trip time of these packets is used in calculating the minimum/
@@ -180,10 +181,10 @@ For VR Fmaintenance the followin operational commands are in place.
 
 .. opcmd:: traceroute vrf <name> [ipv4 | ipv6] <host>
 
-   Displays the route packets take to a network host utilizing VRF instance
-   identified by `<name>`. When using the IPv4 or IPv6 option, display the route
-   packets take to the for the given hosts IP address family. This option is
-   useful when the host specified is a hostname rather than an IP address.
+   Displays the route packets taken to a network host utilizing VRF instance
+   identified by `<name>`. When using the IPv4 or IPv6 option, displays the 
+   route packets taken to the given hosts IP address family. This option is
+   useful when the host is specified as a hostname rather than an IP address.
 
 
 .. include:: /_include/common-references.txt
