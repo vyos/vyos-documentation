@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-09
+
 .. _tunnel-interface:
 
 Tunnel
@@ -99,8 +101,8 @@ A full example of a Tunnelbroker.net config can be found at
 Generic Routing Encapsulation (GRE)
 -----------------------------------
 
-A GRE tunnel operates at layer 3 of the OSI model and is repsented by IP
-protocol 47.The main benefit of a GRE tunnel is that you are able to carry
+A GRE tunnel operates at layer 3 of the OSI model and is represented by IP
+protocol 47. The main benefit of a GRE tunnel is that you are able to carry
 multiple protocols inside the same tunnel. GRE also supports multicast traffic
 and supports routing protocols that leverage multicast to form neighbor
 adjacencies.
@@ -112,12 +114,12 @@ over either IPv4 (gre) or IPv6 (ip6gre).
 Configuration
 ^^^^^^^^^^^^^
 
-A basic configuration requires a tunnel source (source-address), a tunnel destination
-(remote), an encapsulation type (gre), and an address (ipv4/ipv6).Below is a
-basic IPv4 only configuration example taken from a VyOS router and a Cisco IOS
-router. The main difference between these two configurations is that VyOS
-requires you explicitly configure the encapsulation type. The Cisco router
-defaults to gre ip otherwise it would have to be configured as well.
+A basic configuration requires a tunnel source (source-address), a tunnel
+destination (remote), an encapsulation type (gre), and an address (ipv4/ipv6).
+Below is a basic IPv4 only configuration example taken from a VyOS router and
+a Cisco IOS router. The main difference between these two configurations is
+that VyOS requires you explicitly configure the encapsulation type. The Cisco
+router defaults to GRE IP otherwise it would have to be configured as well.
 
 **VyOS Router:**
 
@@ -224,7 +226,7 @@ GRE is a well defined standard that is common in most networks. While not
 inherently difficult to configure there are a couple of things to keep in mind
 to make sure the configuration performs as expected. A common cause for GRE
 tunnels to fail to come up correctly include ACL or Firewall configurations
-that are discarding IP protocol 47 or blocking your source/desintation traffic.
+that are discarding IP protocol 47 or blocking your source/destination traffic.
 
 **1. Confirm IP connectivity between tunnel source-address and remote:**
 
