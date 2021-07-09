@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-05
+
 .. _openvpn:
 
 #######
@@ -95,7 +97,7 @@ Remote Configuration:
   set interfaces openvpn vtun1 remote-address '10.255.1.1'
 
 The configurations above will default to using 256-bit AES in GCM mode
-for encryption (if both sides supports NCP) and SHA-1 for HMAC authentication.
+for encryption (if both sides support NCP) and SHA-1 for HMAC authentication.
 SHA-1 is considered weak, but other hashing algorithms are available, as are
 encryption algorithms:
 
@@ -120,7 +122,7 @@ OpenVPN version < 2.4.0.
     aes256gcm    AES algorithm with 256-bit key GCM
 
 This sets the accepted ciphers to use when version => 2.4.0 and NCP is
-enabled (which is default). Default NCP cipher for versions >= 2.4.0 is
+enabled (which is the default). Default NCP cipher for versions >= 2.4.0 is
 aes256gcm. The first cipher in this list is what server pushes to clients.
 
 .. code-block:: none
@@ -168,7 +170,7 @@ Remote Configuration:
   set protocols static interface-route 10.0.0.0/16 next-hop-interface vtun1
 
 Firewall policy can also be applied to the tunnel interface for `local`, `in`,
-and `out` directions and function identically to ethernet interfaces.
+and `out` directions and functions identically to ethernet interfaces.
 
 If making use of multiple tunnels, OpenVPN must have a way to distinguish
 between different tunnels aside from the pre-shared-key. This is either by
@@ -358,7 +360,7 @@ updates
 
   set interfaces openvpn vtun0 openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
 
-The required config file may look like:
+The required config file may look like this:
 
 .. code-block:: none
 
@@ -472,12 +474,12 @@ example:
 Client
 ======
 
-VyOS can not only act as an OpenVPN site-to-site or Server for multiple clients.
+VyOS can not only act as an OpenVPN site-to-site or server for multiple clients.
 You can indeed also configure any VyOS OpenVPN interface as an OpenVPN client
 connecting to a VyOS OpenVPN server or any other OpenVPN server.
 
 Given the following example we have one VyOS router acting as OpenVPN server
-and another VyOS router acting as OpenVPN client. The Server also pushes a
+and another VyOS router acting as OpenVPN client. The server also pushes a
 static client IP address to the OpenVPN client. Remember, clients are identified
 using their CN attribute in the SSL certificate.
 
@@ -525,7 +527,7 @@ Client
 Options
 =======
 
-We do not have CLI nodes for every single OpenVPN options. If an option is
+We do not have CLI nodes for every single OpenVPN option. If an option is
 missing, a feature request should be opened at Phabricator_ so all users can
 benefit from it (see :ref:`issues_features`).
 
@@ -543,7 +545,7 @@ if you pass invalid options/syntax.
 
 Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
 
-.. note:: Sometimes option lines in the generated OpenVPN configurarion require
+.. note:: Sometimes option lines in the generated OpenVPN configuration require
    quotes. This is done through a hack on our config generator. You can pass
    quotes using the ``&quot;`` statement.
 
@@ -579,11 +581,11 @@ The following commands let you reset OpenVPN.
 
 .. opcmd:: reset openvpn client <text>
 
-   Use this command to reset specified OpenVPN client.
+   Use this command to reset the specified OpenVPN client.
 
 .. opcmd:: reset openvpn interface <interface>
 
-   Uset this command to reset the OpenVPN process on a specific interface.
+   Use this command to reset the OpenVPN process on a specific interface.
 
 
 
