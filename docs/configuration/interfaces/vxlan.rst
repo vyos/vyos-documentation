@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-09
+
 .. _vxlan-interface:
 
 #####
@@ -12,8 +14,8 @@ encapsulate OSI layer 2 Ethernet frames within layer 4 UDP datagrams, using
 endpoints, which terminate VXLAN tunnels and may be either virtual or physical
 switch ports, are known as :abbr:`VTEPs (VXLAN tunnel endpoints)`.
 
-VXLAN is an evolution of efforts to standardize on an overlay encapsulation
-protocol. It increases scalability up to 16 million logical networks and
+VXLAN is an evolution of efforts to standardize an overlay encapsulation
+protocol. It increases the scalability up to 16 million logical networks and
 allows for layer 2 adjacency across IP networks. Multicast or unicast with
 head-end replication (HER) is used to flood broadcast, unknown unicast,
 and multicast (BUM) traffic.
@@ -100,10 +102,10 @@ the same broadcast domain.
 Let's assume PC4 on Leaf2 wants to ping PC5 on Leaf3. Instead of setting Leaf3
 as our remote end manually, Leaf2 encapsulates the packet into a UDP-packet and
 sends it to its designated multicast-address via Spine1. When Spine1 receives
-this packet it forwards it to all other Leafs who has joined the same
+this packet it forwards it to all other leaves who has joined the same
 multicast-group, in this case Leaf3. When Leaf3 receives the packet it forwards
 it, while at the same time learning that PC4 is reachable behind Leaf2, because
-the encapsulated packet had Leaf2's IP-address set as source IP.
+the encapsulated packet had Leaf2's IP address set as source IP.
 
 PC5 receives the ping echo, responds with an echo reply that Leaf3 receives and
 this time forwards to Leaf2's unicast address directly because it learned the
@@ -111,13 +113,13 @@ location of PC4 above. When Leaf2 receives the echo reply from PC5 it sees that
 it came from Leaf3 and so remembers that PC5 is reachable via Leaf3.
 
 Thanks to this discovery, any subsequent traffic between PC4 and PC5 will not
-be using the multicast-address between the Leafs as they both know behind which
+be using the multicast-address between the leaves as they both know behind which
 Leaf the PCs are connected. This saves traffic as less multicast packets sent
-reduces the load on the network, which improves scalability when more Leafs are
+reduces the load on the network, which improves scalability when more leaves are
 added.
 
-For optimal scalability Multicast shouldn't be used at all, but instead use BGP
-to signal all connected devices between leafs. Unfortunately, VyOS does not yet
+For optimal scalability, Multicast shouldn't be used at all, but instead use BGP
+to signal all connected devices between leaves. Unfortunately, VyOS does not yet
 support this.
 
 Example
@@ -164,9 +166,9 @@ Topology:
   router ospf 1
    network 10.0.0.0 0.255.255.255 area 0
 
-Multicast-routing is required for the leafs to forward traffic between each
+Multicast-routing is required for the leaves to forward traffic between each
 other in a more scalable way. This also requires PIM to be enabled towards the
-Leafs so that the Spine can learn what multicast groups each Leaf expect
+leaves so that the Spine can learn what multicast groups each Leaf expects
 traffic from.
 
 **Leaf2 configuration:**
@@ -228,7 +230,7 @@ descriptions are placed under the command boxes:
   set interfaces bridge br241 address '172.16.241.1/24'
 
 This commands creates a bridge that is used to bind traffic on eth1 vlan 241
-with the vxlan241-interface. The IP-address is not required. It may however be
+with the vxlan241-interface. The IP address is not required. It may however be
 used as a default gateway for each Leaf which allows devices on the vlan to
 reach other subnets. This requires that the subnets are redistributed by OSPF
 so that the Spine will learn how to reach it. To do this you need to change the
@@ -247,8 +249,8 @@ interfaces of the same bridge.
 
   set interfaces vxlan vxlan241 group '239.0.0.241'
 
-The multicast-group used by all Leafs for this vlan extension. Has to be the
-same on all Leafs that has this interface.
+The multicast-group used by all leaves for this vlan extension. Has to be the
+same on all leaves that has this interface.
 
 .. code-block:: none
 
@@ -269,7 +271,7 @@ multicast-address.
   set interfaces vxlan vxlan241 port 12345
 
 The destination port used for creating a VXLAN interface in Linux defaults to
-its pre-standard value of 8472 to preserve backwards compatibility. A
+its pre-standard value of 8472 to preserve backward compatibility. A
 configuration directive to support a user-specified destination port to override
 that behavior is available using the above command.
 
