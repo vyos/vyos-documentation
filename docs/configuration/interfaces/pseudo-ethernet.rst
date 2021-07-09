@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-09
+
 .. _pseudo-ethernet-interface:
 
 #########################
@@ -36,7 +38,7 @@ Ethernet interfaces:
   applies to:
   - VMware machines using default settings
   - Network switches with security settings allowing only a single MAC address
-  - xDSL modems that try to lear the MAC address of the NIC
+  - xDSL modems that try to learn the MAC address of the NIC
 
 *************
 Configuration
