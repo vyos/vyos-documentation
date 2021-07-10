@@ -13,6 +13,7 @@ VPN
    pptp
    rsa-keys
    sstp
+   wireguard
 
 
 

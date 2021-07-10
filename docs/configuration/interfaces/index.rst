@@ -21,7 +21,6 @@ Interfaces
    tunnel
    vti
    vxlan
-   wireguard
    wireless
    wwan
 
