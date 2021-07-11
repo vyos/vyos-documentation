@@ -16,6 +16,7 @@ Interfaces
    loopback
    macsec
    openvpn
+   wireguard
    pppoe
    pseudo-ethernet
    tunnel

@@ -13,8 +13,6 @@ VPN
    pptp
    rsa-keys
    sstp
-   wireguard
-
 
 
 pages to sort
