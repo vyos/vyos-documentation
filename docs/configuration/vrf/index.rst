@@ -340,7 +340,7 @@ The following example topology was build using EVE-NG.
 Configuration
 ^^^^^^^^^^^^^
 
-  .. code-block: none
+  .. code-block:: none
 
     set interfaces bridge br10 address '10.30.0.254/24'
     set interfaces bridge br10 member interface eth3
