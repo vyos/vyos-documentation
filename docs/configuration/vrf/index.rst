@@ -318,5 +318,134 @@ For VR Fmaintenance the followin operational commands are in place.
    packets take to the for the given hosts IP address family. This option is
    useful when the host specified is a hostname rather than an IP address.
 
+Example
+=======
+
+VRF route leaking
+-----------------
+
+The following example topology was build using EVE-NG.
+
+.. figure:: /_static/images/vrf-example-topology-01.png
+   :alt: VRF topology example
+
+   VRF route leaking
+
+* PC1 is in the ``default`` VRF and acting as e.g. a "fileserver"
+* PC2 is in VRF ``blue`` which is the development department
+* PC3 and PC4 are connected to a bridge device on router ``R1`` which is in VRF
+  ``red``. Say this is the HR department.
+* R1 is managed through an out-of-band network that resides in VRF ``mgmt``
+
+Configuration
+^^^^^^^^^^^^^
+
+  .. code-block: none
+
+    set interfaces bridge br10 address '10.30.0.254/24'
+    set interfaces bridge br10 member interface eth3
+    set interfaces bridge br10 member interface eth4
+    set interfaces bridge br10 vrf 'red'
+    set interfaces ethernet eth0 address 'dhcp'
+    set interfaces ethernet eth0 vrf 'mgmt'
+    set interfaces ethernet eth1 address '10.0.0.254/24'
+    set interfaces ethernet eth2 address '10.20.0.254/24'
+    set interfaces ethernet eth2 vrf 'blue'
+    set protocols static interface-route 10.20.0.0/24 next-hop-interface eth2 next-hop-vrf 'blue'
+    set protocols static interface-route 10.30.0.0/24 next-hop-interface br10 next-hop-vrf 'red'
+    set protocols vrf blue static interface-route 10.0.0.0/24 next-hop-interface eth1 next-hop-vrf 'default'
+    set protocols vrf red static interface-route 10.0.0.0/24 next-hop-interface eth1 next-hop-vrf 'default'
+    set service ssh disable-host-validation
+    set service ssh vrf 'mgmt'
+    set system console device ttyS0 speed '9600'
+    set system domain-name 'vyos.net'
+    set system host-name 'R1'
+    set system name-servers-dhcp 'eth0'
+    set system ntp server 0.pool.ntp.org
+    set system ntp server 1.pool.ntp.org
+    set system ntp server 2.pool.ntp.org
+    set system ntp vrf 'mgmt'
+    set system syslog global facility all level 'info'
+    set system syslog global facility protocols level 'debug'
+    set system time-zone 'UTC'
+    set vrf name blue table '3000'
+    set vrf name mgmt table '1000'
+    set vrf name red table '2000'
+
+Operation
+^^^^^^^^^
+
+After committing the configuration we can verify all leaked routes are installed,
+and try to ICMP ping PC1 from PC3.
+
+  .. code-block:: none
+
+    PCS> ping 10.0.0.1
+
+    84 bytes from 10.0.0.1 icmp_seq=1 ttl=63 time=1.943 ms
+    84 bytes from 10.0.0.1 icmp_seq=2 ttl=63 time=1.618 ms
+    84 bytes from 10.0.0.1 icmp_seq=3 ttl=63 time=1.745 ms
+
+  .. code-block:: none
+
+    VPCS> show ip
+
+    NAME        : VPCS[1]
+    IP/MASK     : 10.30.0.1/24
+    GATEWAY     : 10.30.0.254
+    DNS         :
+    MAC         : 00:50:79:66:68:0f
+
+VRF default routing table
+"""""""""""""""""""""""""
+
+  .. code-block:: none
+
+    vyos@R1:~$ show ip route
+    Codes: K - kernel route, C - connected, S - static, R - RIP,
+           O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+           T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+           F - PBR, f - OpenFabric,
+           > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+
+    C>* 10.0.0.0/24 is directly connected, eth1, 00:07:44
+    S>* 10.20.0.0/24 [1/0] is directly connected, eth2 (vrf blue), weight 1, 00:07:38
+    S>* 10.30.0.0/24 [1/0] is directly connected, br10 (vrf red), weight 1, 00:07:38
+
+VRF red routing table
+"""""""""""""""""""""
+
+  .. code-block:: none
+
+    vyos@R1:~$ show ip route vrf red
+    Codes: K - kernel route, C - connected, S - static, R - RIP,
+           O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+           T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+           F - PBR, f - OpenFabric,
+           > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+
+    VRF red:
+    K>* 0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:07:57
+    S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07:40
+    C>* 10.30.0.0/24 is directly connected, br10, 00:07:54
+
+VRF blue routing table
+""""""""""""""""""""""
+
+  .. code-block:: none
+
+    vyos@R1:~$ show ip route vrf blue
+    Codes: K - kernel route, C - connected, S - static, R - RIP,
+           O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+           T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+           F - PBR, f - OpenFabric,
+           > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+
+    VRF blue:
+    K>* 0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:08:00
+    S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07:44
+    C>* 10.20.0.0/24 is directly connected, eth2, 00:07:53
+
+
 
 .. include:: /_include/common-references.txt
