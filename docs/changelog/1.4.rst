@@ -8,6 +8,30 @@
    _ext/releasenotes.py
 
 
+2021-07-11
+==========
+
+* :vytask:`T3665` (bug): Missing VRF support for VxLAN but already documented
+
+
+2021-07-10
+==========
+
+* :vytask:`T3636` (feature): SSTP / L2TP ipv6 support broken
+
+
+2021-07-09
+==========
+
+* :vytask:`T3667` (bug): brctl is damaged
+
+
+2021-07-06
+==========
+
+* :vytask:`T3660` (feature): Conntrack-Sync configuration command to specify destination udp port for peer
+
+
 2021-07-03
 ==========
 
@@ -61,7 +85,6 @@
 2021-06-21
 ==========
 
-* :vytask:`T3628` (bug): commit-archive source-address Interface Broken
 * :vytask:`T3563` (default): commit-archive breaks with IPv6 source addresses
 
 
