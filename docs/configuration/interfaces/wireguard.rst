@@ -8,13 +8,13 @@ WireGuard is an extremely simple yet fast and modern VPN that utilizes
 state-of-the-art cryptography. See https://www.wireguard.com for more
 information.
 
-*************
-Diagram
-*************
+****************
+Site to Site VPN
+****************
 
-This diagram corresponds with the configuration below.
+This diagram corresponds with the example site to site configuration below.
 
-.. figure:: /_static/images/wireguard_vpn_diagram.jpg
+.. figure:: /_static/images/wireguard_site2site_diagram.jpg
 
 *************
 Configuration
@@ -22,9 +22,9 @@ Configuration
 
 
 
-*************
+********
 Keypairs
-*************
+********
 
 WireGuard requires the generation of a keypair, which includes a private
 key to decrypt incoming traffic, and a public key for peer(s) to encrypt
@@ -67,9 +67,9 @@ own keypairs.
     vyos@vyos:~$ generate wireguard named-keypairs KP02
 
 
-**************************
+***********************
 Interface configuration
-**************************
+***********************
 
 The next step is to configure your local side as well as the policy
 based trusted destination addresses. If you only initiate a connection,
@@ -91,7 +91,7 @@ one.
   set interfaces wireguard wg01 address '10.1.0.1/30'
   set interfaces wireguard wg01 description 'VPN-to-wg02'
   set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.2.0/24'
-  set interfaces wireguard wg01 peer to-wg02 address '2.2.2.2'
+  set interfaces wireguard wg01 peer to-wg02 address '<Site1 Pub IP>'
   set interfaces wireguard wg01 peer to-wg02 port '51820'
   set interfaces wireguard wg01 peer to-wg02 pubkey 'XMrlPykaxhdAAiSjhtPlvi30NVkvLQliQuKP7AI7CyI='
   set interfaces wireguard wg01 port '51820'
@@ -101,14 +101,14 @@ one.
 
 .. code-block:: none
 
-  set interfaces wireguard wg01 address '10.1.0.1/30'                    # Address of the wg01 tunnel interface.          
+  set interfaces wireguard wg01 address '10.1.0.1/30'                     # Address of the wg01 tunnel interface.          
   set interfaces wireguard wg01 description 'VPN-to-wg02'
-  set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.2.0/24'# Subnets that are allowed to travel over the tunnel
-  set interfaces wireguard wg01 peer to-wg02 address '2.2.2.2'           # Public IP of the peer
-  set interfaces wireguard wg01 peer to-wg02 port '58120'                # Port of the Peer
-  set interfaces wireguard wg01 peer to-wg02 pubkey '<pubkey>'           # Public Key of the Peer
-  set interfaces wireguard wg01 port '51820'                             # Port of own server
-  set protocols static route 192.168.2.0/24 interface wg01               # Static route to remote subnet
+  set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.2.0/24' # Subnets that are allowed to travel over the tunnel
+  set interfaces wireguard wg01 peer to-wg02 address '<Site2 Pub IP>'     # Public IP of the peer
+  set interfaces wireguard wg01 peer to-wg02 port '58120'                 # Port of the Peer
+  set interfaces wireguard wg01 peer to-wg02 pubkey '<pubkey>'            # Public Key of the Peer
+  set interfaces wireguard wg01 port '51820'                              # Port of own server
+  set protocols static route 192.168.2.0/24 interface wg01                # Static route to remote subnet
 
 The last step is to define an interface route for 10.2.0.0/24 to get
 through the WireGuard interface `wg01`. Multiple IPs or networks can be
@@ -139,7 +139,7 @@ or allows the traffic.
   set interfaces wireguard wg01 address '10.1.0.2/30'
   set interfaces wireguard wg01 description 'VPN-to-wg01'
   set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.1.0/24'
-  set interfaces wireguard wg01 peer to-wg02 address '1.1.1.1'
+  set interfaces wireguard wg01 peer to-wg02 address '<Site1 Pub IP>'
   set interfaces wireguard wg01 peer to-wg02 port '51820'
   set interfaces wireguard wg01 peer to-wg02 pubkey 'u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk='
   set interfaces wireguard wg01 port '51820'
@@ -149,18 +149,18 @@ or allows the traffic.
 
 .. code-block:: none
 
-  set interfaces wireguard wg01 address '10.1.0.2/30'                    # Address of the wg01 tunnel interface.
+  set interfaces wireguard wg01 address '10.1.0.2/30'                     # Address of the wg01 tunnel interface.
   set interfaces wireguard wg01 description 'VPN-to-wg01'
-  set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.1.0/24'# Subnets that are allowed to travel over the tunnel
-  set interfaces wireguard wg01 peer to-wg02 address '1.1.1.1'           # Public IP address of the Peer
-  set interfaces wireguard wg01 peer to-wg02 port '12345'                # Port of the Peer
-  set interfaces wireguard wg01 peer to-wg02 pubkey '<pubkey>'           # Public key of the Peer  
-  set interfaces wireguard wg01 port '51820'                             # Port of own server
-  set protocols static route 192.168.1.0/24 interface wg01               # Static route remote subnet
+  set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.1.0/24' # Subnets that are allowed to travel over the tunnel
+  set interfaces wireguard wg01 peer to-wg02 address 'Site1 Pub IP'       # Public IP address of the Peer
+  set interfaces wireguard wg01 peer to-wg02 port '51820'                 # Port of the Peer
+  set interfaces wireguard wg01 peer to-wg02 pubkey '<pubkey>'            # Public key of the Peer  
+  set interfaces wireguard wg01 port '51820'                              # Port of own server
+  set protocols static route 192.168.1.0/24 interface wg01                # Static route to remote subnet
 
-**************************
+*******************
 Firewall Exceptions
-**************************
+*******************
 
 For the WireGuard traffic to pass through the WAN interface, you must create a firewall exception.
 
@@ -215,9 +215,9 @@ its content. Make sure you distribute the key in a safe manner,
   wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
 
 
-*******************************
-Mobile "RoadWarrior" Example
-*******************************
+***********************************
+Remote Access "RoadWarrior" Example
+***********************************
 
 With WireGuard, a Road Warrior VPN config is similar to a site-to-site
 VPN. It just lacks the ``address`` and ``port`` statements.
@@ -287,17 +287,18 @@ Operational Commands
 Status
 ======
 
-.. opcmd:: sudo wg
+.. opcmd:: show interfaces wireguard wg0 summary
 
   Show info about the Wireguard service. 
   Also shows the latest handshake.
 
   .. code-block:: none
 
+    vyos@vyos:~$ show interfaces wireguard wg0 summary
     interface: wg0
       public key: 
       private key: (hidden)
-      listening port: 51869
+      listening port: 51820
 
     peer: <peer pubkey>
       endpoint: <peer public IP>
@@ -335,9 +336,9 @@ Status
         TX:  bytes  packets  errors  dropped  carrier  collisions
                  0        0       0        0        0           0
 
-**************************
+***************
 Encryption Keys
-**************************
+***************
 
 .. opcmd:: show wireguard keypair pubkey <name>
 
@@ -368,9 +369,9 @@ Encryption Keys
     vyos@vyos:~$ delete wireguard keypair default
 
 
-*******************************
-Mobile "RoadWarrior" clients
-*******************************
+***********************************
+Remote Access "RoadWarrior" clients
+***********************************
 
 Some users tend to connect their mobile devices using WireGuard to their VyOS
 router. To ease deployment one can generate a "per mobile" configuration from
