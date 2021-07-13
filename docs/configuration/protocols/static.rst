@@ -32,7 +32,7 @@ Static Routes
    distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
-   distance are elected prior those with a higher distance.
+   distance are elected prior to those with a higher distance.
 
    Range is 1 to 255, default is 1.
 
@@ -52,7 +52,7 @@ Static Routes
    distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
-   distance are elected prior those with a higher distance.
+   distance are elected prior to those with a higher distance.
 
    Range is 1 to 255, default is 1.
 
@@ -67,7 +67,7 @@ Interface Routes
    <interface>
 
    Allows you to configure the next-hop interface for an interface-based IPv4
-   static route. `<interface>` will be the next-hop interface where trafic is
+   static route. `<interface>` will be the next-hop interface where traffic is
    routed for the given `<subnet>`.
 
 .. cfgcmd:: set protocols static route <subnet> interface
@@ -79,7 +79,7 @@ Interface Routes
    <interface> distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
-   distance are elected prior those with a higher distance.
+   distance are elected prior to those with a higher distance.
 
    Range is 1 to 255, default is 1.
 
@@ -87,7 +87,7 @@ Interface Routes
    <interface>
 
    Allows you to configure the next-hop interface for an interface-based IPv6
-   static route. `<interface>` will be the next-hop interface where trafic is
+   static route. `<interface>` will be the next-hop interface where traffic is
    routed for the given `<subnet>`.
 
 .. cfgcmd:: set protocols static route6 <subnet> interface
@@ -99,7 +99,7 @@ Interface Routes
    <interface> distance <distance>
 
    Defines next-hop distance for this route, routes with smaller administrative
-   distance are elected prior those with a higher distance.
+   distance are elected prior to those with a higher distance.
 
    Range is 1 to 255, default is 1.
 
@@ -118,7 +118,7 @@ Blackhole
 .. cfgcmd:: set protocols static route <subnet> blackhole distance <distance>
 
    Defines blackhole distance for this route, routes with smaller administrative
-   distance are elected prior those with a higher distance.
+   distance are elected prior to those with a higher distance.
 
 .. cfgcmd:: set protocols static route6 <subnet> blackhole
 
@@ -131,7 +131,7 @@ Blackhole
 .. cfgcmd:: set protocols static route6 <subnet> blackhole distance <distance>
 
    Defines blackhole distance for this route, routes with smaller administrative
-   distance are elected prior those with a higher distance.
+   distance are elected prior to those with a higher distance.
 
 
 Alternate Routing Tables
@@ -139,7 +139,7 @@ Alternate Routing Tables
 
 TBD
 
-Alternate routing tables are used with policy based routing of by utilizing
+Alternate routing tables are used with policy based routing by utilizing
 :ref:`vrf`.
 
 
