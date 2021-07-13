@@ -1,6 +1,6 @@
 :lastproofread: 2021-07-12
 
-. _cloud-init:
+.. _cloud-init:
 
 ###############
 VyOS cloud-init
