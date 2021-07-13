@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2021-07-11
+==========
+
+* :vytask:`T3665` (bug): Missing VRF support for VxLAN but already documented
+
+
+2021-07-06
+==========
+
+* :vytask:`T3660` (feature): Conntrack-Sync configuration command to specify destination udp port for peer
+
+
 2021-07-01
 ==========
 
@@ -44,6 +56,12 @@
 
 * :vytask:`T3629` (bug): IPoE server shifting address in the range
 * :vytask:`T3582` (default): 'delete log file' does not work
+
+
+2021-06-20
+==========
+
+* :vytask:`T3637` (bug): vrf: bind-to-all didn't work properly
 
 
 2021-06-19
