@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-
+
 .. _wireless-interface:
 
 ########################
@@ -423,7 +425,7 @@ about all wireless interfaces.
 
 .. opcmd:: show interfaces wireless detail
 
-Use this command to view operational status and detailes wireless-specific
+Use this command to view operational status and details wireless-specific
 information about all wireless interfaces.
 
 .. code-block:: none
@@ -584,7 +586,7 @@ Resulting in
     wifi-regulatory-domain DE
   }
 
-To get it to work as a access point with this configuration you will need
+To get it to work as an access point with this configuration you will need
 to set up a DHCP server to work with that network. You can - of course - also
 bridge the Wireless interface with any configured bridge
 (:ref:`bridge-interface`) on the system.
