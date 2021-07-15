@@ -1,3 +1,5 @@
+:lastproofread:2021-07-15
+
 .. _pptp:
 
 PPTP-Server
@@ -17,8 +19,7 @@ server example
   set vpn pptp remote-access authentication local-users username test password 'test'
   set vpn pptp remote-access authentication mode 'local'
   set vpn pptp remote-access client-ip-pool start '192.168.0.10'
-  set vpn pptp remote-access client-ip-pool stop '192.168.0.15'
-  set vpn pptp remote-access gateway-address '10.100.100.1'
+  set vpn pptp remote-access client-ip-pool stop '192.168.0.15' 
   set vpn pptp remote-access outside-address '10.1.1.120'
 
 
@@ -41,7 +42,9 @@ All tunnel sessions can be checked via:
 
 .. code-block:: none
 
-  run sh pptp-server sessions
-   ifname | username | calling-sid |      ip      | type | comp | state  |  uptime
-  --------+----------+-------------+--------------+------+------+--------+----------
-   ppp0   | test     | 10.1.1.99   | 192.168.0.10 | pptp | mppe | active | 00:00:58
+  run show vpn remote-access
+  Active remote access VPN sessions:
+
+  User            Proto Iface     Tunnel IP       TX byte RX byte  Time
+  ----            ----- -----     ---------       ------- -------  ----
+  test            PPTP  pptp0     192.168.0.10     288      66  00h00m07s

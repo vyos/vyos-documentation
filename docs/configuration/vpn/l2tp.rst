@@ -1,3 +1,5 @@
+:lastproofread:2021-07-15
+
 .. _l2tp:
 
 L2TP over IPsec
@@ -85,7 +87,7 @@ operational command.
 RADIUS authentication
 ^^^^^^^^^^^^^^^^^^^^^
 
-The above configuration made use of local accounts on the VyOS router for
+The above configuration uses local accounts on the VyOS router for
 authenticating L2TP/IPSec clients. In bigger environments usually something
 like RADIUS_ (FreeRADIUS_ or Microsoft `Network Policy Server`_, NPS) is used.
 
@@ -104,9 +106,9 @@ nodes:
   set vpn l2tp remote-access authentication radius server 1.1.1.1 key 'foo'
   set vpn l2tp remote-access authentication radius server 2.2.2.2 key 'foo'
 
-.. note:: Some RADIUS_ severs make use of an access control list who is allowed
-   to query the server. Please configure your VyOS router in the allowed client
-   list.
+.. note:: Some RADIUS_ severs make use of an access control list which is 
+   allowed to query the server. Please configure your VyOS router in the 
+   allowed client list.
 
 RADIUS source address
 *********************
