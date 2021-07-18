@@ -1,8 +1,7 @@
-In addition to the command above, the output is in a format which can be used
-to directly import the key into the VyOS CLI by simply copy-pasting the output
-from op-mode into configuration mode.
+.. note:: In addition to the command above, the output is in a format which can
+  be used to directly import the key into the VyOS CLI by simply copy-pasting
+  the output from op-mode into configuration mode.
 
-Name is used for the VyOS CLI command to identify this CA on the running
-configuration.
-
-
+  ``name`` is used for the VyOS CLI command to identify this key. This
+  key ``name`` is then used in the CLI configuration to reference the key
+  instance.

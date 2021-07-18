@@ -111,8 +111,50 @@ OpenVPN
 
 .. opcmd:: generate pki openvpn shared-secret
 
-  Genearate a new OpenVPN shared secret.
+  Genearate a new OpenVPN shared secret. The generated secred is the output to
+  the console.
 
+.. opcmd:: generate pki openvpn shared-secret install <name>
+
+  Genearate a new OpenVPN shared secret. The generated secred is the output to
+  the console.
+
+  .. include:: pki_cli_import_help.txt
+
+WireGuard
+---------
+
+.. opcmd:: generate pki wireguard key-pair
+
+  Generate a new WireGuard public/private key portion and output the result to
+  the console.
+
+.. opcmd:: generate pki wireguard key-pair install <interface>
+
+  Generate a new WireGuard public/private key portion and output the result to
+  the console.
+
+  .. note:: In addition to the command above, the output is in a format which can
+    be used to directly import the key into the VyOS CLI by simply copy-pasting
+    the output from op-mode into configuration mode.
+
+    ``interface`` is used for the VyOS CLI command to identify the WireGuard
+    interface where this private key is to be used.
+
+.. opcmd:: generate pki wireguard pre-shared-key
+
+  Generate a WireGuard pre-shared secret used for peers to communicate.
+
+.. opcmd:: generate pki wireguard pre-shared-key install <peer>
+
+  Generate a WireGuard pre-shared secret used for peers to communicate.
+
+  .. note:: In addition to the command above, the output is in a format which can
+    be used to directly import the key into the VyOS CLI by simply copy-pasting
+    the output from op-mode into configuration mode.
+
+    ``peer`` is used for the VyOS CLI command to identify the WireGuard peer where
+    this secred is to be used.
 
 Configuration
 =============
