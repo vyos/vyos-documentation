@@ -15,6 +15,7 @@ The following structure respresent the cli structure.
    loadbalancing/index
    nat/index
    policy/index
+   pki/index
    protocols/index
    service/index
    system/index
