@@ -131,11 +131,11 @@ also to display them.
 
     vyos@vyos:~$ show pki ca
     Certificate Authorities:
-    Name                      Subject                                                                                                  Issuer CN                                Issued               Expiry               Private Key    Parent
-    ------------------------  -------------------------------------------------------------------------------------------------------  ---------------------------------------  -------------------  -------------------  -------------  ------------------------
-    CAcert_Class_3_Root       CN=CAcert Class 3 Root,OU=http://www.CAcert.org,O=CAcert Inc.                                            1.2.840.113549.1.9.1=support@cacert.org  2021-04-19 12:18:30  2031-04-17 12:18:30  No             CAcert_Signing_Authority
-    CAcert_Signing_Authority  1.2.840.113549.1.9.1=support@cacert.org,CN=CA Cert Signing Authority,OU=http://www.cacert.org,O=Root CA  1.2.840.113549.1.9.1=support@cacert.org  2003-03-30 12:29:49  2033-03-29 12:29:49  No             N/A
-    peer_172_18_254_202       CN=Easy-RSA CA                                                                                           CN=Easy-RSA CA                           2021-06-14 19:45:27  2031-06-12 19:45:27  No             N/A
+    Name            Subject                                                  Issuer CN          Issued               Expiry               Private Key    Parent
+    --------------  -------------------------------------------------------  -----------------  -------------------  -------------------  -------------  --------------
+    DST_Root_CA_X3  CN=ISRG Root X1,O=Internet Security Research Group,C=US  CN=DST Root CA X3  2021-01-20 19:14:03  2024-09-30 18:14:03  No             N/A
+    R3              CN=R3,O=Let's Encrypt,C=US                               CN=ISRG Root X1    2020-09-04 00:00:00  2025-09-15 16:00:00  No             DST_Root_CA_X3
+    vyos_rw         CN=VyOS RW CA,O=VyOS,L=Some-City,ST=Some-State,C=GB      CN=VyOS RW CA      2021-07-05 13:46:03  2026-07-04 13:46:03  Yes            N/A
 
 .. opcmd:: show pki certificates
 
@@ -143,12 +143,12 @@ also to display them.
 
   .. code-block:: none
 
-    cpo@LR1.wue3:~$ show pki certificate
+    vyos@vyos:~$ show pki certificate
     Certificates:
-    Name                 Type    Subject CN    Issuer CN       Issued               Expiry               Revoked    Private Key    CA Present
-    -------------------  ------  ------------  --------------  -------------------  -------------------  ---------  -------------  -------------------------
-    peer_172_18_254_202  Server  CN=peer1      CN=Easy-RSA CA  2021-06-14 20:04:47  2024-05-29 20:04:47  No         Yes            Yes (peer_172_18_254_202)
-
+    Name       Type    Subject CN             Issuer CN      Issued               Expiry               Revoked    Private Key    CA Present
+    ---------  ------  ---------------------  -------------  -------------------  -------------------  ---------  -------------  -------------
+    ac2        Server  CN=ac2.vyos.net        CN=R3          2021-07-05 07:29:59  2021-10-03 07:29:58  No         Yes            Yes (R3)
+    rw_server  Server  CN=VyOS RW             CN=VyOS RW CA  2021-07-05 13:48:02  2022-07-05 13:48:02  No         Yes            Yes (vyos_rw)
 
 .. opcmd:: show pki crl
 
