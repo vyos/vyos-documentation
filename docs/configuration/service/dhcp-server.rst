@@ -355,7 +355,7 @@ Common configuration, valid for both primary and secondary node.
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover local-address '192.168.189.253'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.252'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'secondary'
 
 
 Raw Parameters
