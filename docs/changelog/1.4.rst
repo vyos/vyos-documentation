@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2021-07-13
+==========
+
+* :vytask:`T3679` (default): Point the unexpected exception message link to the new rolling release location
+
+
 2021-07-11
 ==========
 
@@ -735,7 +741,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.129 / 5.10.47
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.132 / 5.10.50
 
 
 2021-02-15
