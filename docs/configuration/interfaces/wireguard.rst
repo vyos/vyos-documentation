@@ -33,38 +33,21 @@ traffic.
 Generate Keypair
 ================
 
-.. opcmd:: generate wireguard default-keypair
+.. opcmd:: generate wireguard keypair
 
    It generates the keypair, which includes the public and private parts,
    and stores it within VyOS. It will be used per default on any configured
    WireGuard interface, even if multiple interfaces are being configured.
 
-.. opcmd:: show wireguard keypairs pubkey default
+.. opcmd:: show wireguard pubkey 
 
    It shows the public key to be shared with your peer(s). Your peer will
    encrypt all traffic to your system using this public key.
 
    .. code-block:: none
 
-     vyos@vyos:~$ show wireguard keypairs pubkey default
+     vyos@vyos:~$ show wireguard pubkey
      hW17UxY7zeydJNPIyo3UtGnBHkzTK/NeBOrDSIU9Tx0=
-
-
-Generate Named Keypair
-======================
-
-Named keypairs can be used on a interface basis when configured. If
-multiple WireGuard interfaces are being configured, each can have their
-own keypairs.
-
-.. opcmd:: generate wireguard named-keypairs <name>
-
-  The commands below generates 2 keypairs unrelated to each other.
-
-  .. code-block:: none
-
-    vyos@vyos:~$ generate wireguard named-keypairs KP01
-    vyos@vyos:~$ generate wireguard named-keypairs KP02
 
 
 ***********************
@@ -118,19 +101,6 @@ or allows the traffic.
 .. note:: You can not assign the same allowed-ips statement to multiple
    WireGuard peers. This a a design decision. For more information please
    check the `WireGuard mailing list`_.
-
-.. cfgcmd:: set interfaces wireguard <interface> private-key <name>
-
-  To use a named key on an interface, the option private-key needs to be
-  set.
-
-  .. code-block:: none
-
-    set interfaces wireguard wg01 private-key KP01
-
-  The command :opcmd:`show wireguard keypairs pubkey KP01` will then show the
-  public key, which needs to be shared with the peer.
-
 
 **remote side - commands**
 
@@ -287,25 +257,6 @@ Operational Commands
 Status
 ======
 
-.. opcmd:: show interfaces wireguard wg0 summary
-
-  Show info about the Wireguard service. 
-  Also shows the latest handshake.
-
-  .. code-block:: none
-
-    vyos@vyos:~$ show interfaces wireguard wg0 summary
-    interface: wg0
-      public key: 
-      private key: (hidden)
-      listening port: 51820
-
-    peer: <peer pubkey>
-      endpoint: <peer public IP>
-      allowed ips: 10.69.69.2/32
-      latest handshake: 23 hours, 45 minutes, 26 seconds ago
-      transfer: 1.26 MiB received, 6.47 MiB sent
-
 .. opcmd:: show interfaces wireguard
 
   Get a list of all wireguard interfaces
@@ -367,37 +318,6 @@ Encryption Keys
   .. code-block:: none
 
     vyos@vyos:~$ delete wireguard keypair default
-
-
-***********************************
-Remote Access "RoadWarrior" clients
-***********************************
-
-Some users tend to connect their mobile devices using WireGuard to their VyOS
-router. To ease deployment one can generate a "per mobile" configuration from
-the VyOS CLI.
-
-.. warning:: From a security perspective it is not recommended to let a third
-  party create and share the private key for a secured connection. You should create the
-  private portion on your own and only hand out the public key. Please keep this
-  in mind when using this convenience feature.
-
-.. opcmd:: generate wireguard client-config <name> interface <interface> server <ip|fqdn> address <client-ip>
-
-  Using this command you will create a new client configuration which can
-  connect to ``interface`` on this router. The public key from the specified
-  interface is automatically extracted and embedded into the configuration.
-
-  The command also generates a configuration snipped which can be copy/pasted
-  into the VyOS CLI if needed. The supplied ``<name>`` on the CLI will become
-  the peer name in the snippet.
-
-  In addition you will specifiy the IP address or FQDN for the client where it
-  will connect to. The address parameter can be used up to two times and is used
-  to assign the client its specific IPv4 (/32) or IPv6 (/128) address.
-
-  .. figure:: /_static/images/wireguard_qrcode.jpg
-     :alt: WireGuard Client QR code
 
 .. stop_vyoslinter
 
