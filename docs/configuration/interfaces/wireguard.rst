@@ -287,25 +287,6 @@ Operational Commands
 Status
 ======
 
-.. opcmd:: show interfaces wireguard wg0 summary
-
-  Show info about the Wireguard service. 
-  Also shows the latest handshake.
-
-  .. code-block:: none
-
-    vyos@vyos:~$ show interfaces wireguard wg0 summary
-    interface: wg0
-      public key: 
-      private key: (hidden)
-      listening port: 51820
-
-    peer: <peer pubkey>
-      endpoint: <peer public IP>
-      allowed ips: 10.69.69.2/32
-      latest handshake: 23 hours, 45 minutes, 26 seconds ago
-      transfer: 1.26 MiB received, 6.47 MiB sent
-
 .. opcmd:: show interfaces wireguard
 
   Get a list of all wireguard interfaces
