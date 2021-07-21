@@ -1,3 +1,5 @@
+:lastproofread: 2020-07-15
+
 .. _vpn-dmvpn:
 
 DMVPN
@@ -7,7 +9,7 @@ DMVPN
 
 DMVPN is a dynamic VPN technology originally developed by Cisco. While their
 implementation was somewhat proprietary, the underlying technologies are
-actually standards based. The three technologies are:
+actually standard based. The three technologies are:
 
 * **NHRP** - NBMA Next Hop Resolution Protocol RFC2332_
 * **mGRE** - Multipoint Generic Routing Encapsulation / mGRE RFC1702_
@@ -34,9 +36,11 @@ Baseline Configuration:
 #. Create nhrp (`protocols nhrp`)
 #. Create ipsec vpn (optional, but recommended for security) (`vpn ipsec`)
 
-The tunnel will be set to mGRE if for encapsulation `gre` is set, and no
+The tunnel will be set to mGRE if `gre` is set for encapsulation, and no
 `remote-ip` is set. If the public ip is provided by DHCP the tunnel `local-ip`
-can be set to "0.0.0.0". If you do set the `remote-ip` directive at any point, the interface will need to be `delete`'d from the config and recreated without the `remote-ip` config ever being set.
+can be set to "0.0.0.0". If you do set the `remote-ip` directive at any point, 
+the interface will need to be `deleted` from the config and recreated without 
+the `remote-ip` config ever being set.
 
 .. figure:: /_static/images/vpn_dmvpn_topology01.png
    :scale: 40 %
@@ -164,7 +168,12 @@ HUB Example Configuration:
 HUB on AWS Configuration Specifics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Setting this up on AWS will require a "Custom Protocol Rule" for protocol number "47" (GRE) Allow Rule in TWO places. Firstly on the VPC Network ACL, and secondly on the security group network ACL attached to the EC2 instance. This has been tested as working for the offical AMI image on the AWS Marketplace. (Locate the correct VPC and security group by navigating through the details pane below your EC2 instance in the AWS console)
+Setting this up on AWS will require a "Custom Protocol Rule" for protocol 
+number "47" (GRE) Allow Rule in TWO places. Firstly on the VPC Network ACL, and 
+secondly on the security group network ACL attached to the EC2 instance. This 
+has been tested as working for the offical AMI image on the AWS Marketplace. 
+(Locate the correct VPC and security group by navigating through the details 
+pane below your EC2 instance in the AWS console)
 
 SPOKE Configuration
 ^^^^^^^^^^^^^^^^^^^

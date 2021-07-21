@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-15
+
 .. _l2tp:
 
 L2TP over IPsec
@@ -60,6 +62,8 @@ will need to add the appropriate source NAT rules to your configuration.
   set nat source rule 110 source address '192.168.255.0/24'
   set nat source rule 110 translation address masquerade
 
+.. stop_vyoslinter
+
 To be able to resolve when connected to the VPN, the following DNS rules are
 needed as well.
 
@@ -70,6 +74,8 @@ needed as well.
 
 .. note:: Those are the `Google public DNS`_ servers. You can also use the
    public available servers from Quad9_ (9.9.9.9) or Cloudflare_ (1.1.1.1).
+
+.. start_vyoslinter
 
 Established sessions can be viewed using the **show vpn remote-access**
 operational command.
@@ -85,7 +91,7 @@ operational command.
 RADIUS authentication
 ^^^^^^^^^^^^^^^^^^^^^
 
-The above configuration made use of local accounts on the VyOS router for
+The above configuration uses local accounts on the VyOS router for
 authenticating L2TP/IPSec clients. In bigger environments usually something
 like RADIUS_ (FreeRADIUS_ or Microsoft `Network Policy Server`_, NPS) is used.
 
@@ -94,6 +100,8 @@ VyOS supports either `local` or `radius` user authentication:
 .. code-block:: none
 
   set vpn l2tp remote-access authentication mode <local|radius>
+
+.. stop_vyoslinter
 
 In addition one or more RADIUS_ servers can be configured to server for user
 authentication. This is done using the `radius server` and `radius server key`
@@ -104,9 +112,9 @@ nodes:
   set vpn l2tp remote-access authentication radius server 1.1.1.1 key 'foo'
   set vpn l2tp remote-access authentication radius server 2.2.2.2 key 'foo'
 
-.. note:: Some RADIUS_ severs make use of an access control list who is allowed
-   to query the server. Please configure your VyOS router in the allowed client
-   list.
+.. note:: Some RADIUS_ severs make use of an access control list which is 
+   allowed to query the server. Please configure your VyOS router in the 
+   allowed client list.
 
 RADIUS source address
 *********************
@@ -122,6 +130,7 @@ single source IP e.g. the loopback interface.
 Above command will use `3.3.3.3` as source IPv4 address for all RADIUS queries
 on this NAS.
 
+.. start_vyoslinter
 
 .. _`Google Public DNS`: https://developers.google.com/speed/public-dns
 .. _Quad9: https://quad9.net
