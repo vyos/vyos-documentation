@@ -187,6 +187,8 @@ For VRF maintenance the following operational commands are in place.
    route packets taken to the given hosts IP address family. This option is
    useful when the host is specified as a hostname rather than an IP address.
 
+.. _vrf example:
+
 Example
 =======
 
@@ -205,6 +207,8 @@ The following example topology was build using EVE-NG.
 * PC3 and PC4 are connected to a bridge device on router ``R1`` which is in VRF
   ``red``. Say this is the HR department.
 * R1 is managed through an out-of-band network that resides in VRF ``mgmt``
+
+.. _vrf example configuration:
 
 Configuration
 ^^^^^^^^^^^^^
@@ -235,6 +239,8 @@ Configuration
     set vrf name mgmt table '1000'
     set vrf name red protocols static route 10.0.0.0/24 interface eth1 vrf 'default'
     set vrf name red table '2000'
+
+.. _vrf example operation:
 
 Operation
 ^^^^^^^^^
