@@ -261,51 +261,59 @@ This results in the active configuration:
 Using the operation mode command to view Bridge Information
 ===========================================================
 
-.. opcmd:: show bridge
+.. opcmd:: show bridge 
 
    The `show bridge` operational command can be used to display
    configured bridges:
 
    .. code-block:: none
 
-     vyos@vyos:~$ show bridge
-     bridge name     bridge id               STP enabled     interfaces
-     br100           8000.0050569d11df       yes             eth1
-                                                           eth2.10
+     vyos@vyos:~$ show bridge 
+     3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding 
+     priority 32 cost 100   
+     4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding 
+     priority 32 cost 100
 
-.. opcmd:: show bridge <name> spanning-tree
+.. opcmd:: show bridge <name> fdb
 
-   Show bridge `<name>` STP configuration.
+   Show bridge `<name>` fdb displays the current forwarding table:
 
    .. code-block:: none
 
-     vyos@vyos:~$ show bridge br100 spanning-tree
-     br100
-      bridge id              8000.0050569d11df
-      designated root        8000.0050569d11df
-      root port                 0                    path cost                  0
-      max age                  20.00                 bridge max age            20.00
-      hello time                2.00                 bridge hello time          2.00
-      forward delay            14.00                 bridge forward delay      14.00
-      ageing time             300.00
-      hello timer               0.06                 tcn timer                  0.00
-      topology change timer     0.00                 gc timer                 242.02
-      flags
+     vyos@vyos:~$ show bridge br0 fdb
+     50:00:00:08:00:01 dev eth1 vlan 20 master br0 permanent
+     50:00:00:08:00:01 dev eth1 vlan 10 master br0 permanent
+     50:00:00:08:00:01 dev eth1 master br0 permanent
+     33:33:00:00:00:01 dev eth1 self permanent
+     33:33:00:00:00:02 dev eth1 self permanent
+     01:00:5e:00:00:01 dev eth1 self permanent
+     50:00:00:08:00:02 dev eth2 vlan 20 master br0 permanent
+     50:00:00:08:00:02 dev eth2 vlan 10 master br0 permanent
+     50:00:00:08:00:02 dev eth2 master br0 permanent
+     33:33:00:00:00:01 dev eth2 self permanent
+     33:33:00:00:00:02 dev eth2 self permanent
+     01:00:5e:00:00:01 dev eth2 self permanent
+     33:33:00:00:00:01 dev br0 self permanent
+     33:33:00:00:00:02 dev br0 self permanent
+     33:33:ff:08:00:01 dev br0 self permanent
+     01:00:5e:00:00:6a dev br0 self permanent
+     33:33:00:00:00:6a dev br0 self permanent
+     01:00:5e:00:00:01 dev br0 self permanent
+     33:33:ff:00:00:00 dev br0 self permanent
+ 
+.. opcmd:: show bridge <name> mdb
 
-     eth1 (1)
-      port id                8001                    state                  disabled
-      designated root        8000.0050569d11df       path cost                100
-      designated bridge      8000.0050569d11df       message age timer          0.00
-      designated port        8001                    forward delay timer        0.00
-      designated cost           0                    hold timer                 0.00
-      flags
+   Show bridge `<name>` mdb displays the current multicast group membership 
+   table.The table is populated by IGMP and MLD snooping in the bridge driver 
+   automatically.
 
-     eth2.10 (2)
-      port id                8002                    state                  disabled
-      designated root        8000.0050569d11df       path cost                100
-      designated bridge      8000.0050569d11df       message age timer          0.00
-      designated port        8002                    forward delay timer        0.00
-      designated cost           0                    hold timer                 0.00
+   .. code-block:: none
+
+     vyos@vyos:~$ show bridge br0 mdb
+     dev br0 port br0 grp ff02::1:ff00:0 temp vid 1
+     dev br0 port br0 grp ff02::2 temp vid 1
+     dev br0 port br0 grp ff02::1:ff08:1 temp vid 1
+     dev br0 port br0 grp ff02::6a temp vid 1
 
 .. opcmd: show bridge <name> macs
 
