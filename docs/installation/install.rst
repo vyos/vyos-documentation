@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-24
+
 .. _installation:
 
 ############
@@ -62,7 +64,7 @@ LTS images are signed by VyOS lead package-maintainer private key. With
 the official public key, the authenticity of the package can be
 verified. :abbr:`GPG (GNU Privacy Guard)` is used for verification.
 
-.. note:: This subsection only applies e applies to LTS images, for
+.. note:: This subsection only applies to LTS images, for
    Rolling images please jump to :ref:`live_installation`.
 
 Preparing for the verification
@@ -185,12 +187,12 @@ Live installation
 .. note:: A permanent VyOS installation always requires to go first
    through a live installation.
 
-VyOS, as other GNU+Linux distributions, can be tasted without installing
+VyOS, as other GNU+Linux distributions, can be tested without installing
 it in your hard drive. **With your downloaded VyOS .iso file you can
 create a bootable USB drive that will let you boot into a fully
 functional VyOS system**. Once you have tested it, you can either decide
 to begin a :ref:`permanent_installation` in your hard drive or power
-your system off, remove the USB drive, and leave everythng as it was. 
+your system off, remove the USB drive, and leave everything as it was. 
 
 
 If you have a GNU+Linux system, you can create your VyOS bootable USB
@@ -252,7 +254,7 @@ Permanent installation
 Unlike general purpose Linux distributions, VyOS uses "image installation" that
 mimics the user experience of traditional hardware routers and allows keeping
 multiple VyOS versions installed simultaneously. This makes it possible to
-switch to a previous version if something breaks or miss-behaves after an image
+switch to a previous version if something breaks or misbehaves after an image
 upgrade.
 
 Every version is contained in its own squashfs image that is mounted in a union
@@ -325,7 +327,7 @@ In order to proceed with a permanent installation:
    Done!
 
 
- 3. After the installation is complete, remove the live USB stick or
+ 3. After the installation is completed, remove the live USB stick or
     CD.
 
  4. Reboot the system.
@@ -496,17 +498,19 @@ This is a list of known issues that can arise during installation.
 Black screen on install
 -----------------------
 
-GRUB attempts to redirect all output to a serial port for ease of installation on headless hosts.
-This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a 
-black screen after selecting the `Live system` option from the installation image.
+GRUB attempts to redirect all output to a serial port for ease of installation 
+on headless hosts. This appears to cause a hard lockup on some hardware that 
+lacks a serial port, with the result being a black screen after selecting the 
+`Live system` option from the installation image.
 
-The workaround is to type `e` when the boot menu appears and edit the GRUB boot options.  Specifically, remove the:
+The workaround is to type `e` when the boot menu appears and edit the GRUB boot 
+options. Specifically, remove the:
 
 `console=ttyS0,115200` 
 
 option, and type CTRL-X to boot. 
 
-Installation can then continue as outlined above.
+Installation can be continued as outlined above.
 
 .. _SYSLINUX: http://www.syslinux.org/
 .. _balenaEtcher: https://www.balena.io/etcher/

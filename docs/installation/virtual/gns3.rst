@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-24
+
 .. _vyos-on-gns3:
 
 VyOS on GNS3
@@ -29,7 +31,7 @@ VM setup
 First, a virtual machine (VM) for the VyOS installation must be created
 in GNS3.
 
-Go to the GNS3 **File** menu, click **New template** and choose select
+Go to the GNS3 **File** menu, click **New template** and select
 **Manually create a new Template**.
 
 .. figure:: /_static/images/gns3-01.png
@@ -101,7 +103,7 @@ you want to install.
 
 .. figure:: /_static/images/gns3-14.png
 
-.. note:: You probably will want to accept to copy the .iso file to your
+.. note:: You will probably want to accept, to copy the .iso file to your
    default image directory when you are asked.
 
 In the **Network** tab,  set **0** as the number of adapters, set the
