@@ -153,6 +153,33 @@ VLAN Options
      set interfaces bridge br1 member interface eth0 native-vlan 2
 
 .. cfgcmd:: set interfaces bridge <interface> member interface <member>
+   vlan-tunnel <tunnel-id> vlan <id>
+   
+   Set a tunnel ID for VLAN ID to tunnel ID mapping. 
+   
+   .. code-block:: none
+
+     set interfaces bridge br1 member interface l2tpeth0 vlan-tunnel 2000 vlan 2
+     
+.. cfgcmd:: set interfaces bridge <interface> member interface <member>
+   vlan-tunnel <tunnel-id> remote <remote-address>
+   
+   Set the remote vxlan address corresponding to this TUNNEL ID
+   
+   .. code-block:: none
+
+     set interfaces bridge br1 member interface l2tpeth0 vlan-tunnel 2000 remote 192.168.122.2
+
+.. cfgcmd:: set interfaces bridge <interface> member interface <member>
+   vlan-tunnel <tunnel-id> port <remote-port>
+   
+   Set the remote vxlan address port corresponding to this TUNNEL ID
+   
+   .. code-block:: none
+
+     set interfaces bridge br1 member interface l2tpeth0 vlan-tunnel 2000 port 1234
+
+.. cfgcmd:: set interfaces bridge <interface> member interface <member>
    allowed-vlan <vlan-id>
 
    Allows specific VLAN IDs to pass through the bridge member interface. This
