@@ -26,8 +26,8 @@ DHCP Server
    set interfaces loopback lo address '192.168.3.3/24'
    set interfaces tunnel tun100 address '172.16.0.2/30'
    set interfaces tunnel tun100 encapsulation 'gre-bridge'
-   set interfaces tunnel tun100 local-ip '10.0.2.1'
-   set interfaces tunnel tun100 remote-ip '192.168.0.1'
+   set interfaces tunnel tun100 source-address '10.0.2.1'
+   set interfaces tunnel tun100 remote '192.168.0.1'
    set protocols ospf area 0 network '192.168.3.0/24'
    set protocols ospf area 0 network '10.0.2.0/24'
    set protocols ospf parameters router-id '192.168.3.3'
@@ -42,7 +42,7 @@ DHCP Server
    set service dhcp-server shared-network-name asdf subnet 10.2.1.0/24 range 0 stop '10.2.1.233'
    set service dhcp-server shared-network-name asdf subnet 172.16.0.0/30 range 0 start '172.16.0.1'
    set service dhcp-server shared-network-name asdf subnet 172.16.0.0/30 range 0 stop '172.16.0.2'
-   
+
 
 In-Between Router
 """""""""""""""""
@@ -54,7 +54,7 @@ In-Between Router
    set protocols ospf area 0 network '192.168.0.0/24'
    set protocols ospf area 0 network '10.0.2.0/24'
    set protocols ospf parameters router-id '192.168.0.2'
-   
+
 
 DHCP Relay
 """"""""""
@@ -66,8 +66,8 @@ DHCP Relay
    set interfaces loopback lo address '10.100.100.1'
    set interfaces tunnel tun100 address '172.16.0.1/30'
    set interfaces tunnel tun100 encapsulation 'gre-bridge'
-   set interfaces tunnel tun100 local-ip '192.168.0.1'
-   set interfaces tunnel tun100 remote-ip '10.0.2.1'
+   set interfaces tunnel tun100 source-address '192.168.0.1'
+   set interfaces tunnel tun100 remote '10.0.2.1'
    set protocols ospf area 0 network '10.0.1.0/24'
    set protocols ospf area 0 network '192.168.0.0/24'
    set protocols ospf area 0 network '10.100.100.0/24'
@@ -76,4 +76,3 @@ DHCP Relay
    set service dhcp-relay interface 'eth0'
    set service dhcp-relay interface 'tun100'
    set service dhcp-relay server '192.168.3.3'
-   

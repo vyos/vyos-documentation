@@ -46,8 +46,8 @@ On the LEFT:
 
   # GRE tunnel
   set interfaces tunnel tun0 encapsulation gre
-  set interfaces tunnel tun0 local-ip 192.0.2.10
-  set interfaces tunnel tun0 remote-ip 203.0.113.45
+  set interfaces tunnel tun0 source-address 192.0.2.10
+  set interfaces tunnel tun0 remote 203.0.113.45
   set interfaces tunnel tun0 address 10.10.10.1/30
 
   ## IPsec
@@ -98,8 +98,8 @@ On the LEFT:
 
   set interfaces tunnel tun0 encapsulation gre
   set interfaces tunnel tun0 address 10.10.10.1/30
-  set interfaces tunnel tun0 local-ip 192.168.99.1
-  set interfaces tunnel tun0 remote-ip 192.168.99.2
+  set interfaces tunnel tun0 source-address 192.168.99.1
+  set interfaces tunnel tun0 remote 192.168.99.2
 
 On the RIGHT:
 
@@ -109,8 +109,8 @@ On the RIGHT:
 
   set interfaces tunnel tun0 encapsulation gre
   set interfaces tunnel tun0 address 10.10.10.2/30
-  set interfaces tunnel tun0 local-ip 192.168.99.2
-  set interfaces tunnel tun0 remote-ip 192.168.99.1
+  set interfaces tunnel tun0 source-address 192.168.99.2
+  set interfaces tunnel tun0 remote 192.168.99.1
 
 **Setting up IPSec**
 

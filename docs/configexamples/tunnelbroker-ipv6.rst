@@ -33,10 +33,10 @@ tunnel information page.
   set interfaces tunnel tun0 address Client_IPv6_from_Tunnelbroker    # This will be your VyOS install's public IPv6 address
   set interfaces tunnel tun0 description 'HE.NET IPv6 Tunnel'
   set interfaces tunnel tun0 encapsulation 'sit'
-  set interfaces tunnel tun0 local-ip Client_IPv4_from_Tunnelbroker   # This is your public IP
+  set interfaces tunnel tun0 source-address Client_IPv4_from_Tunnelbroker   # This is your public IP
   set interfaces tunnel tun0 mtu '1472'
   set interfaces tunnel tun0 multicast 'disable'
-  set interfaces tunnel tun0 remote-ip Server_IPv4_from_Tunnelbroker  # This is the IP of the Tunnelbroker server
+  set interfaces tunnel tun0 remote Server_IPv4_from_Tunnelbroker  # This is the IP of the Tunnelbroker server
   set protocols static interface-route6 ::/0 next-hop-interface tun0  # Tell all traffic to go over this tunnel
   commit
 
@@ -112,7 +112,7 @@ should be replaced with the information from your `Routed /64` tunnel):
   set interfaces ethernet eth1 address '2001:470:xxxx:xxxx::1/64'
   set service router-advert interface eth1 name-server '2001:4860:4860::8888'
   set service router-advert interface eth1 name-server '2001:4860:4860::8844'
-  set service router-advert interface eth1 prefix 2001:470:xxxx:xxxx::/64 
+  set service router-advert interface eth1 prefix 2001:470:xxxx:xxxx::/64
 
 Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default,
 'valid-lifetime' and 'preferred-lifetime' are set to default values of
@@ -150,11 +150,11 @@ So, when your LAN is eth1, your DMZ is eth2, your cameras are on eth3, etc:
   set service router-advert interface eth1 name-server '2001:4860:4860::8888'
   set service router-advert interface eth1 name-server '2001:4860:4860::8844'
   set service router-advert interface eth1 prefix 2001:470:xxxx:1::/64
-  
+
   set interfaces ethernet eth2 address '2001:470:xxxx:2::1/64'
   set service router-advert interface eth2 name-server '2001:4860:4860::8888'
   set service router-advert interface eth2 name-server '2001:4860:4860::8844'
-  set service router-advert interface eth2 prefix 2001:470:xxxx:2::/64 
+  set service router-advert interface eth2 prefix 2001:470:xxxx:2::/64
 
   set interfaces ethernet eth3 address '2001:470:xxxx:3::1/64'
   set service router-advert interface eth3 name-server '2001:4860:4860::8888'
