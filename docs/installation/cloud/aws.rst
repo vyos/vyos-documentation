@@ -25,7 +25,7 @@ Deploy VyOS on Amazon :abbr:`AWS (Amazon Web Services)`
 .. figure:: /_static/images/cloud-aws-04.png
 
 5. Additional storage. You can remove additional storage ``/dev/sdb``. First
-   root device will be ``/dev/xvda``. You can skeep this step.
+   root device will be ``/dev/xvda``. You may skip this step.
 
 .. figure:: /_static/images/cloud-aws-05.png
 

@@ -7,7 +7,7 @@ Deploy VM
 
 Deploy VyOS on Azure.
 
-1. Go to the Azure services and Click to **Add new Virtual machine**
+1. Go to the Azure services and Click on **Add new Virtual machine**
 
 2. Choose vm name, resource group, region and click **Browse all public and
    private images**
@@ -26,7 +26,8 @@ Deploy VyOS on Azure.
 
 .. figure:: /_static/images/cloud-azure-04.png
 
-6. Click ``Review + create``. After a few seconds your deployment will be complete
+6. Click ``Review + create``. After a few seconds your deployment will be 
+   completed
 
 .. figure:: /_static/images/cloud-azure-05.png
 
@@ -45,8 +46,8 @@ Add interface
 -------------
 
 If instance was deployed with one **eth0** ``WAN`` interface and want to add
-new one. To add new interface an example **eth1** ``LAN`` you need shutdown the
-instance. Attach the interface in the Azure portal and then start the instance.
+new one, like **eth1** ``LAN`` you need to shutdown the instance first. Attach 
+the interface in the Azure portal and then start the instance.
 
 .. note:: Azure does not allow you attach interface when the instance in the
    **Running** state.
@@ -54,18 +55,27 @@ instance. Attach the interface in the Azure portal and then start the instance.
 Absorbing Routes
 ----------------
 
-If using as a router, you will want your LAN interface to absorb some or all of the traffic from your VNET by using a route table applied to the subnet.
+If using as a router, you will want your LAN interface to absorb some or all 
+of the traffic from your VNET by using a route table applied to the subnet.
 
 1. Create a route table and browse to **Configuration**
 
-2. Add one or more routes for networks you want to pass through the VyOS VM. Next hop type **Virtual Appliance** with the **Next Hop Address** of the VyOS ``LAN`` interface.
+2. Add one or more routes for networks you want to pass through the VyOS VM. 
+   Next hop type **Virtual Appliance** with the **Next Hop Address** of the 
+   VyOS ``LAN`` interface.
 
-.. note:: If you want to create a new default route for VMs on the subnet, use **Address Prefix** ``0.0.0.0/0`` Also note that if you want to use this as a typical edge device, you'll want masquerade NAT for the ``WAN`` interface.
+.. note:: If you want to create a new default route for VMs on the subnet, use
+   **Address Prefix** ``0.0.0.0/0`` Also note that if you want to use this as 
+   a typical edge device, you'll want to masquerade NAT for the ``WAN`` 
+   interface.
 
 Serial Console
 --------------
 
-Azure has a way to access the serial console of a VM, but this needs to be configured on the VyOS. It's there by default, but keep it in mind if you are replacing config.boot and rebooting: ``set system console device ttyS0 speed '9600'``
+Azure has a way to access the serial console of a VM, but this needs to be 
+configured on the VyOS. It's there by default, but keep it in mind if you are 
+replacing config.boot and rebooting: ``set system console device ttyS0 speed 
+'9600'``
 
 References
 ----------

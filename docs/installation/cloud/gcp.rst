@@ -1,3 +1,4 @@
+
 #####################
 Google Cloud Platform
 #####################
@@ -17,8 +18,8 @@ To deploy VyOS on GCP (Google Cloud Platform)
     ssh-keygen -t rsa -f ~/.ssh/vyos_gcp -C "vyos@mypc"
 
 
-.. note:: In name "vyos@mypc" The first value must be "**vyos**". Because
-   default user is vyos and google api uses this option.
+.. note:: For name, type "vyos@mypc" as the first value must be "**vyos**". 
+   Because default user is vyos and google api uses this option.
 
 
 2. Open GCP console and navigate to the menu **Metadata**. Choose
@@ -38,7 +39,7 @@ Click **Add item** and paste your public ssh key. Click ``Save``.
 
 .. figure:: /_static/images/cloud-gcp-03.png
 
-4. After fiew seconds click to ``instance``
+4. After few seconds click on ``instance``
 
 .. figure:: /_static/images/cloud-gcp-04.png
 
