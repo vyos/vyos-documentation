@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-26
+
 .. _vyosonbaremetal:
 
 Running on Bare Metal
@@ -14,23 +16,24 @@ Shopping Cart
 
 * 1x Supermicro CSE-505-203B (19" 1U chassis, inkl. 200W PSU)
 * 1x Supermicro MCP-260-00085-0B (I/O Shield for A2SDi-2C-HLN4F)
-* 1x Supermicro A2SDi-2C-HLN4F (Intel Atom C3338, 2C/2T, 4MB cache, Quad LAN with
-  Intel C3000 SoC 1GbE)
+* 1x Supermicro A2SDi-2C-HLN4F (Intel Atom C3338, 2C/2T, 4MB cache, Quad LAN 
+  with Intel C3000 SoC 1GbE)
 * 1x Crucial CT4G4DFS824A (4GB DDR4 RAM 2400 MT/s, PC4-19200)
 * 1x SanDisk Ultra Fit 32GB (USB-A 3.0 SDCZ43-032G-G46 mass storage for OS)
 * 1x Supermicro MCP-320-81302-0B (optional FAN tray)
 
 Optional (10GE)
 ---------------
-If you wan't to get additional ethernet ports or even 10GE connectivity
+If you want to get additional ethernet ports or even 10GE connectivity
 the following optional parts will be required:
 
 * 1x Supermicro RSC-RR1U-E8 (Riser Card)
 * 1x Supermicro MCP-120-00063-0N (Riser Card Bracket)
 
 Latest VyOS rolling releases boot without any problem on this board. You also
-receive a nice IPMI interface realized with an ASPEED AST2400 BMC (no information
-about `OpenBMC <https://www.openbmc.org/>`_ so far on this motherboard).
+receive a nice IPMI interface realized with an ASPEED AST2400 BMC (no 
+information about `OpenBMC <https://www.openbmc.org/>`_ so far on this 
+motherboard).
 
 Pictures
 --------
@@ -105,13 +108,15 @@ dual front cover.
 VyOS 1.2 (crux)
 ---------------
 
-Depending on the VyOS versions you intend to install there is a difference in
+Depending on the VyOS versions, you intend to install there is a difference in
 the serial port settings (T1327_).
 
 Create a bootable USB pendrive using e.g. Rufus_ on a Windows machine.
 
 Connect serial port to a PC through null modem cable (RXD / TXD crossed over).
 Set terminal emulator to 115200 8N1.
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -129,6 +134,8 @@ Set terminal emulator to 115200 8N1.
   2. USB MSC Drive Generic Flash Disk 8.07
   3. Payload [memtest]
   4. Payload [setup]
+
+.. start_vyoslinter
 
 Now boot from the ``USB MSC Drive Generic Flash Disk 8.07`` media by pressing
 ``2``, the VyOS boot menu will appear, just wait 10 seconds or press ``Enter``
@@ -175,8 +182,8 @@ Use the following command to adjust the :ref:`serial-console` settings:
 
   set system console device ttyS0 speed 115200
 
-.. note:: Once you ``commit`` the above changes access to the serial interface
-   is lost until you set your terminal emulator to 115200 8N1 again.
+.. note:: Once you ``commit`` the above changes, the access to the serial 
+   interface is lost until you set your terminal emulator to 115200 8N1 again.
 
 .. code-block:: none
 
@@ -192,12 +199,14 @@ Installing the rolling release on an APU2 board does not require any change
 on the serial console from your host side as T1327_ was successfully
 implemented.
 
-Simply proceed with a regular image installation as described in :ref:`installation`.
+Simply proceed with a regular image installation as described in 
+:ref:`installation`.
 
 Pictures
 --------
 
-.. note:: Both device types operate without any moving parts and emit zero noise.
+.. note:: Both device types operate without any moving parts and emit zero 
+   noise.
 
 Rack Mount
 ^^^^^^^^^^
@@ -251,12 +260,13 @@ Qotom Q355G4
 
 The install on this Q355G4 box is pretty much plug and play. The port numbering
 the OS does might differ from the labels on the outside, but the UEFI firmware
-has a port blink test built in with MAC adresses so you can very quickly identify
-which is which. MAC labels are on the inside as well, and this test can be done
-from VyOS or plain Linux too. Default settings in the UEFI will make it boot,
-but depending on your installation wishes (i.e. storage type, boot type, console
-type) you might want to adjust them. This Qotom company seems to be the real
-OEM/ODM for many other relabelling companies like Protectli.
+has a port blink test built in with MAC adresses so you can very quickly 
+identify which is which. MAC labels are on the inside as well, and this test 
+can be done from VyOS or plain Linux too. Default settings in the UEFI will 
+make it boot, but depending on your installation wishes (i.e. storage type, 
+boot type, console type) you might want to adjust them. This Qotom company 
+seems to be the real OEM/ODM for many other relabelling companies like 
+Protectli.
 
 Hardware
 --------
@@ -271,12 +281,13 @@ slots, so you could in theory add an LTE/Cell modem (not tested so far).
 
 The chassis is a U-shaped alu extrusion with removable I/O plates and removable
 bottom plate. Cooling is completely passive with a heatsink on the SoC with
-internal and external fins, a flat interface surface, thermal pad on top of that,
-which then directly attaches to the chassis, which has fins as well. It comes
-with mounting hardware and rubber feet, so you could place it like a desktop
-model or mount it on a VESA mount, or even wall mount it with the provided
-mounting plate. The closing plate doubles as internal 2.5" mounting place for
-an HDD or SSD, and comes supplied with a small SATA cable and SATA power cable.
+internal and external fins, a flat interface surface, thermal pad on top of 
+that, which then directly attaches to the chassis, which has fins as well. It 
+comes with mounting hardware and rubber feet, so you could place it like a 
+desktop model or mount it on a VESA mount, or even wall mount it with the 
+provided mounting plate. The closing plate doubles as internal 2.5" mounting 
+place for an HDD or SSD, and comes supplied with a small SATA cable and SATA 
+power cable.
 
 Power supply is a 12VDC barrel jack, and included switching power supply, which
 is why SATA power regulation is on-board. Internally it has a NUC-board-style
@@ -336,7 +347,8 @@ It is a small (serial console only) PC with 6 Gb LAN
 http://www.acrosser.com/upload/AND-J190_J180N1-2.pdf
 
 You may have to add your own RAM and HDD/SSD. There is no VGA connector. But
-Acrosser provides a DB25 adapter for the VGA header on the motherboard (not used).
+Acrosser provides a DB25 adapter for the VGA header on the motherboard (not 
+used).
 
 BIOS Settings:
 --------------
@@ -345,10 +357,11 @@ First thing you want to do is getting a more user friendly console to configure
 BIOS. Default VT100 brings a lot of issues. Configure VT100+ instead.
 
 For practical issues change speed from 115200 to 9600. 9600 is the default speed
-at which both linux kernel and VyOS will reconfigure the serial port when loading.
+at which both linux kernel and VyOS will reconfigure the serial port when 
+loading.
 
-Connect to serial (115200bps). Power on the appliance and press Del in the console
-when requested to enter BIOS settings.
+Connect to serial (115200bps). Power on the appliance and press Del in the 
+console when requested to enter BIOS settings.
 
 Advanced > Serial Port Console Redirection > Console Redirection Settings:
 
@@ -368,8 +381,8 @@ Reboot into BIOS, Chipset > South Bridge > USB Configuration:
 Install VyOS:
 -------------
 
-Create a VyOS bootable USB key. I used the 64-bit ISO (VyOS 1.1.7) and `LinuxLive
-USB Creator <http://www.linuxliveusb.com/>`_.
+Create a VyOS bootable USB key. I used the 64-bit ISO (VyOS 1.1.7) and 
+`LinuxLive USB Creator <http://www.linuxliveusb.com/>`_.
 
 I'm not sure if it helps the process but I changed default option to live-serial
 (line “default xxxx”) on the USB key under syslinux/syslinux.cfg.

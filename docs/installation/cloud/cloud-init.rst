@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-26
+
 .. _cloud-init: 
  
 ################################ 
@@ -20,9 +22,9 @@ Commands requirements:
      ``set some option 'value'``, ``delete some option 'value'``
    * a single-quote symbol is not allowed inside command or value
 
-The commands list produced by the ``show configuration commands`` command on a
+The commands' list produced by the ``show configuration commands`` command on a
 VyOS router should comply with all the requirements, so it is easy to get a
-proper commands list by copying it from another router.
+proper commands' list by copying it from another router.
 
 Usage example (User-Data content):
 
