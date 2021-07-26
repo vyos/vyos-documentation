@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-26
+
 .. _image-mgmt:
 
 ################
@@ -30,7 +32,7 @@ configured to be the default.
 
 .. opcmd:: show system image
 
-   List all available system images which can be bootet on the current system.
+   List all available system images which can be booted on the current system.
 
    .. code-block:: none
 
@@ -46,7 +48,7 @@ configured to be the default.
 
    Delete no longer needed images from the system. You can specify an optional
    image name to delete, the image name can be retrieved via a list of available
-   images can be shown using the :opcmd:`show system image`.
+   images using the command :opcmd:`show system image`.
 
    .. code-block:: none
 
@@ -111,5 +113,5 @@ Then reboot the system.
    so you don't need to worry about that. Each image has a unique copy
    of its configuration.
 
-If you have access to the console, there is a another way to select
+If you have access to the console, there is an another way to select
 your booting image: reboot and use the GRUB menu at startup.
