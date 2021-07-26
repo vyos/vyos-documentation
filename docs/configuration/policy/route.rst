@@ -419,10 +419,3 @@ IPv6 Route
 
    Weekdays to match rule on. Format for weekdays: Mon,Thu,Sat. To negate add !
    at the front eg. !Mon,Thu,Sat.
-
-
-********
-Examples
-********
-
-Examples would be uploaded soon.

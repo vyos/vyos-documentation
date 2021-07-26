@@ -33,7 +33,7 @@ Access Lists
    <destination|source> <any|host|inverse-mask|network>
 
    This command defines matching parameters for access list rule. Matching
-   criteria could be applied to destinarion or source parameters:
+   criteria could be applied to destination or source parameters:
 
    * any: any IP address to match.
    * host: single host IP address to match.
@@ -68,10 +68,3 @@ Basic filtering could also be applied to IPv6 traffic.
    * exact-match: exact match of the network prefixes.
    * network: network/netmask to match (requires inverse-match be defined) BUG,
      NO invert-match option in access-list6
-
-
-********
-Examples
-********
-
-Examples would be uploaded soon.

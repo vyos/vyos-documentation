@@ -254,9 +254,3 @@ Route Map
    <0-4294967295>
 
    Set BGP weight attribute
-
-********
-Examples
-********
-
-Examples would be uploaded soon.

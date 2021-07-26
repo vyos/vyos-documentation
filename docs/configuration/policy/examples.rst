@@ -1,5 +1,6 @@
+###########
 BGP Example
-===========
+###########
 
 **Policy definition:**
 
@@ -50,9 +51,9 @@ neighbor.
 
 You now see the longer AS path.
 
-
+#################
 Transparent Proxy
-=================
+#################
 
 The following example will show how VyOS can be used to redirect web
 traffic to an external transparent proxy:
@@ -84,9 +85,9 @@ interface, we use:
 
   set interfaces ethernet eth1 policy route FILTER-WEB
 
-
+################
 Multiple Uplinks
-================
+################
 
 VyOS Policy-Based Routing (PBR) works by matching source IP address
 ranges and forwarding the traffic using different routing tables.
@@ -146,7 +147,7 @@ These commands allow the VLAN10 and VLAN20 hosts to communicate with
 each other using the main routing table.
 
 Local route
------------
+===========
 
 The following example allows VyOS to use :abbr:`PBR (Policy-Based Routing)`
 for traffic, which originated from the router itself. That solution for multiple

@@ -35,8 +35,11 @@ Policy Sections
   prefix-list
   route
   route-map
-  bgp-policies
   local-route
+  as-path-list
+  community-list
+  extcommunity-list
+  large-community-list
 
 ********
 Examples
