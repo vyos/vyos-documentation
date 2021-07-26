@@ -1,4 +1,4 @@
-:lastproofread:2021-07-07
+:lastproofread: 2021-07-07
 
 .. _information:
 

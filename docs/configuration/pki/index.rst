@@ -1,4 +1,4 @@
-lastproofread: 1970-01-01
+:lastproofread: 1970-01-01
 
 .. include:: /_include/need_improvement.txt
 
