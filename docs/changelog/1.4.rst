@@ -8,6 +8,13 @@
    _ext/releasenotes.py
 
 
+2021-07-23
+==========
+
+* :vytask:`T3699` (bug): login: verify selected "system login user" name is not already used by the base system.
+* :vytask:`T3698` (default): Support bridge monitoring
+
+
 2021-07-13
 ==========
 
@@ -741,7 +748,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.132 / 5.10.50
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.134 / 5.10.52
 
 
 2021-02-15
