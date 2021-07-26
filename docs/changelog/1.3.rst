@@ -8,6 +8,25 @@
    _ext/releasenotes.py
 
 
+2021-07-23
+==========
+
+* :vytask:`T3699` (bug): login: verify selected "system login user" name is not already used by the base system.
+
+
+2021-07-21
+==========
+
+* :vytask:`T3689` (bug): static ipv6 route doesn't deleted in some cases
+* :vytask:`T3685` (feature): IPv6 PBR doesn't allow setting of an egress interface
+
+
+2021-07-20
+==========
+
+* :vytask:`T3691` (bug): GRETAP: key is not applied when interface is created
+
+
 2021-07-13
 ==========
 
@@ -215,6 +234,7 @@
 
 * :vytask:`T3575` (bug): pseudo-ethernet: must check source-interface MTU
 * :vytask:`T3571` (bug): Broken Show Tab Complete
+* :vytask:`T3576` (bug): ISIS does not support IPV6
 
 
 2021-05-23
@@ -566,6 +586,7 @@
 * :vytask:`T3364` (feature): tunnel: cleanup/rename CLI nodes
 * :vytask:`T3368` (feature): macsec: add support for gcm-aes-256 cipher
 * :vytask:`T3366` (bug): tunnel: can not change local / remote ip address for gre-bridge tunnel
+* :vytask:`T3173` (feature): Need 'nopmtudisc' option for tunnel interface
 
 
 2021-02-26
@@ -618,7 +639,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.132 / 5.10.50
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.134 / 5.10.52
 
 
 2021-02-14
