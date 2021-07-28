@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-27
+
 .. _wireguard:
 
 #########
@@ -73,7 +75,7 @@ Interface configuration
 
 The next step is to configure your local side as well as the policy
 based trusted destination addresses. If you only initiate a connection,
-the listen port and address/port is optional; however, if you act as a
+the listen port and address/port is optional; however, if you act like a
 server and endpoints initiate the connections to your system, you need to
 define a port your clients can connect to, otherwise the port is randomly
 chosen and may make connection difficult with firewall rules, since the port
@@ -116,7 +118,7 @@ defined and routed. The last check is allowed-ips which either prevents
 or allows the traffic.
 
 .. note:: You can not assign the same allowed-ips statement to multiple
-   WireGuard peers. This a a design decision. For more information please
+   WireGuard peers. This a design decision. For more information please
    check the `WireGuard mailing list`_.
 
 .. cfgcmd:: set interfaces wireguard <interface> private-key <name>
@@ -162,7 +164,8 @@ or allows the traffic.
 Firewall Exceptions
 *******************
 
-For the WireGuard traffic to pass through the WAN interface, you must create a firewall exception.
+For the WireGuard traffic to pass through the WAN interface, you must create a
+firewall exception.
 
 .. code-block:: none
 
@@ -177,13 +180,15 @@ For the WireGuard traffic to pass through the WAN interface, you must create a f
     set firewall name OUTSIDE_LOCAL rule 20 protocol udp
     set firewall name OUTSIDE_LOCAL rule 20 source
 
-You should also ensure that the OUTISDE_LOCAL firewall group is applied to the WAN interface and a direction (local).
+You should also ensure that the OUTISDE_LOCAL firewall group is applied to the
+WAN interface and a direction (local).
 
 .. code-block:: none
 
     set interfaces ethernet eth0 firewall local name 'OUTSIDE-LOCAL'
 
-Assure that your firewall rules allow the traffic, in which case you have a working VPN using WireGuard.
+Assure that your firewall rules allow the traffic, in which case you have a
+working VPN using WireGuard.
 
 .. code-block:: none
 
@@ -263,9 +268,9 @@ through the connection.
     Endpoint = 192.0.2.1:2224
     PersistentKeepalive = 25
 
-However, split-tunneling can be achieved by specifing the remote subnets.
-This ensures that only traffic destined for the remote site is sent over the tunnel.
-All other traffic is unaffected.
+However, split-tunneling can be achieved by specifying the remote subnets.
+This ensures that only traffic destined for the remote site is sent over the
+tunnel. All other traffic is unaffected.
 
 .. code-block:: none
 
@@ -290,7 +295,7 @@ Status
 .. opcmd:: show interfaces wireguard wg0 summary
 
   Show info about the Wireguard service. 
-  Also shows the latest handshake.
+  It also shows the latest handshake.
 
   .. code-block:: none
 
@@ -377,14 +382,15 @@ Some users tend to connect their mobile devices using WireGuard to their VyOS
 router. To ease deployment one can generate a "per mobile" configuration from
 the VyOS CLI.
 
-.. warning:: From a security perspective it is not recommended to let a third
-  party create and share the private key for a secured connection. You should create the
-  private portion on your own and only hand out the public key. Please keep this
-  in mind when using this convenience feature.
+.. warning:: From a security perspective, it is not recommended to let a third
+  party create and share the private key for a secured connection.
+  You should create the private portion on your own and only hand out the
+  public key. Please keep this in mind when using this convenience feature.
 
-.. opcmd:: generate wireguard client-config <name> interface <interface> server <ip|fqdn> address <client-ip>
+.. opcmd:: generate wireguard client-config <name> interface <interface> server
+   <ip|fqdn> address <client-ip>
 
-  Using this command you will create a new client configuration which can
+  Using this command, you will create a new client configuration which can
   connect to ``interface`` on this router. The public key from the specified
   interface is automatically extracted and embedded into the configuration.
 
@@ -394,7 +400,7 @@ the VyOS CLI.
 
   In addition you will specifiy the IP address or FQDN for the client where it
   will connect to. The address parameter can be used up to two times and is used
-  to assign the client its specific IPv4 (/32) or IPv6 (/128) address.
+  to assign the clients specific IPv4 (/32) or IPv6 (/128) address.
 
   .. figure:: /_static/images/wireguard_qrcode.jpg
      :alt: WireGuard Client QR code
