@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-28
+
 .. _load-balancing:
 
 WAN load balancing
@@ -13,7 +15,7 @@ determined by interface health and weight.
 
 In a minimal, configuration the following must be provided:
 
- * a interface with a nexthop
+ * an interface with a nexthop
  * one rule with a LAN (inbound-interface) and the WAN (interface).
 
 Let's assume we have two DHCP WAN interfaces and one LAN (eth2):
@@ -35,7 +37,7 @@ against outgoing packets. In case of a match the packet is sent through an
 interface specified in the matching rule. If a packet doesn't match any rule
 it is sent by using the system routing table. Rule numbers can't be changed.
 
-Create a load balancing rule, rule can be a number between 1 and 9999:
+Create a load balancing rule, it can be a number between 1 and 9999:
 
 .. code-block:: none
 
@@ -55,8 +57,8 @@ Create a load balancing rule, rule can be a number between 1 and 9999:
 Interface weight
 ****************
 
-Let's expand the example from above and add a weight to the interfaces.
-The bandwidth from eth0 is larger than eth1. Per default outbound traffic is
+Let's expand the example from above and add weight to the interfaces.
+The bandwidth from eth0 is larger than eth1. Per default, outbound traffic is
 distributed randomly across available interfaces. Weights can be assigned to
 interfaces to influence the balancing.
 
@@ -65,7 +67,7 @@ interfaces to influence the balancing.
     set load-balancing wan rule 1 interface eth0 weight 2
     set load-balancing wan rule 1 interface eth1 weight 1
 
-66% traffic is routed to eth0 and eth1 get 33% of traffic.
+66% of traffic is routed to eth0, eth1 gets 33% of traffic.
 
 Rate limit
 **********
@@ -132,7 +134,7 @@ To enable health checking for an interface:
     success-count    Success count
     +> test          Rule number
 
-Specify nexthop on the path to destination, ``ipv4-address`` can be set to
+Specify nexthop on the path to the destination, ``ipv4-address`` can be set to
 ``dhcp``
 
 .. code-block:: none
