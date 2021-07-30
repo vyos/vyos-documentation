@@ -1,3 +1,5 @@
+:lastproofread: 2021-07-30
+
 .. _openvpn:
 
 #######
@@ -43,7 +45,7 @@ Site-to-site mode supports x.509 but doesn't require it and can also work with
 static keys, which is simpler in many cases. In this example, we'll configure
 a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared key.
 
-First, one one of the systems generate the key using the operational command
+First, one of the system generates the key using the operational command
 ``generate openvpn key <filename>``. This will generate a key with the name
 provided in the `/config/auth/` directory. Once generated, you will need to
 copy this key to the remote router.
@@ -94,7 +96,7 @@ Remote Configuration:
   set interfaces openvpn vtun1 local-address '10.255.1.2'
   set interfaces openvpn vtun1 remote-address '10.255.1.1'
 
-The configurations above will default to using 128-bit Blowfish in CBC mode
+The above configurations will by default use 128-bit Blowfish in CBC mode
 for encryption and SHA-1 for HMAC authentication. These are both considered
 weak, but a number of other encryption and hashing algorithms are available:
 
@@ -177,7 +179,11 @@ First we need to specify the basic settings. 1194/UDP is the default. The
 closing on connection resets or daemon reloads.
 
 
-.. note:: Using **openvpn-option -reneg-sec** can be tricky. This option is used to renegotiate data channel after n seconds. When used at both server and client, the lower value will trigger the renegotiation. If you set it to 0 on one side of the connection (to disable it), the chosen value on the other side will determine when the renegotiation will occur.
+.. note:: Using **openvpn-option -reneg-sec** can be tricky. This option is 
+   used to renegotiate data channel after n seconds. When used at both server 
+   and client, the lower value will trigger the renegotiation. If you set it 
+   to 0 on one side of the connection (to disable it), the chosen value on the 
+   other side will determine when the renegotiation will occur.
 
 
 .. code-block:: none
@@ -200,7 +206,7 @@ you keep the files in `/config/auth/openvpn`
 
 Now we need to specify the server network settings. In all cases we need to
 specify the subnet for client tunnel endpoints. Since we want clients to access
-a specific network behind out router, we will use a push-route option for
+a specific network behind our router, we will use a push-route option for
 installing that route on clients.
 
 .. code-block:: none
@@ -236,12 +242,13 @@ OpenLDAP
 --------
 
 Enterprise installations usually ship a kind of directory service which is used
-to have a single password store for all employees. VyOS and OpenVPN support using
-LDAP/AD as single user backend.
+to have a single password store for all employees. VyOS and OpenVPN support 
+using LDAP/AD as single user backend.
 
 Authentication is done by using the ``openvpn-auth-ldap.so`` plugin which is
-shipped with every VyOS installation. A dedicated configuration file is required.
-It is best practise to store it in ``/config`` to survive image updates
+shipped with every VyOS installation. A dedicated configuration file is 
+required. It is best practise to store it in ``/config`` to survive image 
+updates
 
 .. code-block:: none
 
@@ -327,7 +334,10 @@ If you only want to check if the user account is enabled and can authenticate
     RequireGroup    false
   </Authorization>
 
-A complete LDAP auth OpenVPN configuration could look like the following example:
+A complete LDAP auth OpenVPN configuration could look like the following 
+example:
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -357,10 +367,13 @@ A complete LDAP auth OpenVPN configuration could look like the following example
        }
    }
 
+.. start_vyoslinter
+
 OpenVPN Client
 ##############
 
-VyOS can not only act as an OpenVPN site-to-site or Server for multiple clients.
+VyOS can not only act as an OpenVPN site-to-site but also as a Server for 
+multiple clients.
 You can indeed also configure any VyOS OpenVPN interface as an OpenVPN client
 connecting to a VyOS OpenVPN server or any other OpenVPN server.
 
@@ -463,6 +476,6 @@ The following commands let you reset OpenVPN.
 
 .. opcmd:: reset openvpn interface <interface>
 
-   Uset this command to reset the OpenVPN process on a specific interface.
+   Use this command to reset the OpenVPN process on a specific interface.
 
 
