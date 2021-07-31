@@ -80,12 +80,27 @@ Local Configuration:
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
   set interfaces openvpn vtun1 persistent-tunnel
-  set interfaces openvpn vtun1 local-host '198.51.100.10'
+  set interfaces openvpn vtun1 remote-host '203.0.113.11
   set interfaces openvpn vtun1 local-port '1195'
   set interfaces openvpn vtun1 remote-port '1195'
   set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
-  set interfaces openvpn vtun1 local-address '10.255.1.1'
+  set interfaces openvpn vtun1 local-address '10.255.1.1'                         
   set interfaces openvpn vtun1 remote-address '10.255.1.2'
+
+Local Configuration - Annotated:
+
+.. code-block:: none
+
+  set interfaces openvpn vtun1 mode site-to-site
+  set interfaces openvpn vtun1 protocol udp
+  set interfaces openvpn vtun1 persistent-tunnel
+  set interfaces openvpn vtun1 remote-host '203.0.113.11'                         # Pub IP of other site
+  set interfaces openvpn vtun1 local-port '1195'
+  set interfaces openvpn vtun1 remote-port '1195'
+  set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
+  set interfaces openvpn vtun1 local-address '10.255.1.1'                         # Local IP of vtun interface
+  set interfaces openvpn vtun1 remote-address '10.255.1.2'                        # Remote IP of vtun interface
+
 
 Remote Configuration:
 
@@ -100,6 +115,20 @@ Remote Configuration:
   set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
   set interfaces openvpn vtun1 local-address '10.255.1.2'
   set interfaces openvpn vtun1 remote-address '10.255.1.1'
+
+Remote Configuration - Annotated:
+
+.. code-block:: none
+
+  set interfaces openvpn vtun1 mode site-to-site
+  set interfaces openvpn vtun1 protocol udp
+  set interfaces openvpn vtun1 persistent-tunnel
+  set interfaces openvpn vtun1 remote-host '198.51.100.10'                         # Pub IP of other site
+  set interfaces openvpn vtun1 local-port '1195'
+  set interfaces openvpn vtun1 remote-port '1195'
+  set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
+  set interfaces openvpn vtun1 local-address '10.255.1.2'                          # Local IP of vtun interface
+  set interfaces openvpn vtun1 remote-address '10.255.1.1'                         # Remote IP of vtun interface
 
 Static Routing:
 
