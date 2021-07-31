@@ -131,6 +131,35 @@ Remote Configuration - Annotated:
   set interfaces openvpn vtun1 local-address '10.255.1.2'                          # Local IP of vtun interface
   set interfaces openvpn vtun1 remote-address '10.255.1.1'                         # Remote IP of vtun interface
 
+
+*******************
+Firewall Exceptions
+*******************
+
+For the WireGuard traffic to pass through the WAN interface, you must create a
+firewall exception.
+
+.. code-block:: none
+
+    set firewall name OUTSIDE_LOCAL rule 10 action accept
+    set firewall name OUTSIDE_LOCAL rule 10 description 'Allow established/related'
+    set firewall name OUTSIDE_LOCAL rule 10 state established enable
+    set firewall name OUTSIDE_LOCAL rule 10 state related enable
+    set firewall name OUTSIDE_LOCAL rule 20 action accept
+    set firewall name OUTSIDE_LOCAL rule 20 description OpenVPN_IN
+    set firewall name OUTSIDE_LOCAL rule 20 destination port 1195
+    set firewall name OUTSIDE_LOCAL rule 20 log enable
+    set firewall name OUTSIDE_LOCAL rule 20 protocol udp
+    set firewall name OUTSIDE_LOCAL rule 20 source
+
+You should also ensure that the OUTISDE_LOCAL firewall group is applied to the
+WAN interface and a direction (local).
+
+.. code-block:: none
+
+    set interfaces ethernet eth0 firewall local name 'OUTSIDE-LOCAL'
+
+
 Static Routing:
 
 Static routes can be configured referencing the tunnel interface; for example,
