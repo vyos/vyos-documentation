@@ -34,8 +34,10 @@ The ``confirm`` command confirms the prior ``commit-confirm``.
 Comment
 ^^^^^^^
 
-The ``comment`` commands allow you to insert a comment above the current configuration section.
-The command cannot be used at the top of the configuration hierarchy, only on subsections. Comments needs to be commited, just like other config changes.
+The ``comment`` commands allow you to insert a comment above the current 
+configuration section.
+The command cannot be used at the top of the configuration hierarchy, only on 
+subsections. Comments need to be commited, just like other config changes.
 
 To add a comment to a section, while being already at the proper section level:
 
@@ -84,7 +86,10 @@ The comment would then appear like this:
     [...]
 
 
-An important thing to note is that since the comment is added on top of the section, it will not appear if the ``show <section>`` command is used. With the above example, the ``show interfaces`` command would return starting after the "interfaces {" line, hiding the comment:
+An important thing to note is that since the comment is added on top of the 
+section, it will not appear if the ``show <section>`` command is used. With the
+above example, the ``show interfaces`` command would return starting after the 
+"interfaces {" line, hiding the comment:
 
 .. code-block:: none
 
@@ -102,7 +107,8 @@ To add a comment to the interfaces section from the top:
   vyos@vyos# comment interfaces "test"
 
 
-The comment can be added to any node that already exists, even if it's multiple levels lower:
+The comment can be added to any node that already exists, even if it's multiple 
+levels lower:
 
 .. code-block:: none
 
@@ -114,10 +120,15 @@ Commit
 ^^^^^^
 
 The ``commit`` command commits the proposed changes to the configuration file.
-Every changes done in the configuration session is only applied when the configuration is committed. To view the changes that will be applied, use the show command.
-To discard the changes without committing, use the ``discard`` command. The ``commit`` command doesn't save the configuration, you need to manually use the ``save`` command.
+Every changes done in the configuration session is only applied when the 
+configuration is committed. To view the changes that will be applied, use the 
+show command.
+To discard the changes without committing, use the ``discard`` command. The 
+``commit`` command doesn't save the configuration, you need to manually use the 
+``save`` command.
 
-The confirm keyword can be added, see ``commit-confirm``. A comment can be entered, it will appear in the commit log.
+The confirm keyword can be added, see ``commit-confirm``. A comment can be 
+entered, it will appear in the commit log.
 
 .. code-block:: none
 
@@ -130,8 +141,10 @@ The confirm keyword can be added, see ``commit-confirm``. A comment can be enter
 Commit-confirm
 ^^^^^^^^^^^^^^
 
-The ``commit-confirm`` command commits the proposed changes to the configuration file and starts a timer.
-If the ``confirm`` command is not entered before the timer expiration, the configuration will be rolled back and VyOS will reboot.
+The ``commit-confirm`` command commits the proposed changes to the 
+configuration file and starts a timer.
+If the ``confirm`` command is not entered before the timer expiration, the 
+configuration will be rolled back and VyOS will reboot.
 The default timer value is 10 minutes, but a custom value can be entered.
 
 .. code-block:: none
@@ -147,7 +160,8 @@ The default timer value is 10 minutes, but a custom value can be entered.
 Compare
 ^^^^^^^
 
-VyOS maintains backups of previous configurations. To compare configuration revisions in configuration mode, use the compare command:
+VyOS maintains backups of previous configurations. To compare configuration 
+revisions in configuration mode, use the compare command:
 
 .. code-block:: none
 
@@ -176,7 +190,7 @@ Copy
 
 The ``copy`` command allows you to copy a configuration object.
 
-Copy the configuration entrys from a firewall name WAN rule 1 to rule 2.
+Copy the configuration entries from a firewall name WAN rule 1 to rule 2.
 
 .. code-block:: none
 
@@ -208,9 +222,9 @@ Copy the configuration entrys from a firewall name WAN rule 1 to rule 2.
 Delete
 ^^^^^^
 
-The ``delte`` command is to delete a configuration entry.
+The ``delete`` command is to delete a configuration entry.
 
-This Example delete the hole ``service tftp-server`` section.
+This example deletes the whole ``service tftp-server`` section.
 
 .. code-block:: none
 
@@ -232,8 +246,10 @@ Edit
 ^^^^
 
 The ``edit`` command allows you to navigate down into the configuration tree.
-To get back to an upper level, use the ``up`` command or use the ``top`` command to get back to the upper most level.
-The ``[edit]`` text displays where the user is located in the configuration tree.
+To get back to an upper level, use the ``up`` command or use the ``top`` 
+command to get back to the upper most level.
+The ``[edit]`` text displays where the user is located in the configuration 
+tree.
 
 .. code-block:: none
 
@@ -246,10 +262,17 @@ The ``[edit]`` text displays where the user is located in the configuration tree
 Exit
 ^^^^
 
-The ``exit`` command exits the current configuration mode. If the current configuration level isn't the top-most, then the configuration level is put back to the top-most level.
-If the configuration level is at the top-most level, then it exits the configuration mode and returns to operational mode.
-The ``exit`` command cannot be used if uncommitted changes exists in the configuration file. To exit with uncommitted changes, you either need to use the ``exit discard`` command or you need to commit the changes before exiting.
-The ``exit`` command doesn't save the configuration, only the ``save`` command does. A warning will be given when exiting with unsaved changes. Using the ``exit`` command in operational mode will logout the session.
+The ``exit`` command exits the current configuration mode. If the current 
+configuration level isn't the top-most, then the configuration level is put 
+back to the top-most level.
+If the configuration level is at the top-most level, then it exits the 
+configuration mode and returns to operational mode.
+The ``exit`` command cannot be used if uncommitted changes exists in the 
+configuration file. To exit with uncommitted changes, you either need to use 
+the ``exit discard`` command or you need to commit the changes before exiting.
+The ``exit`` command doesn't save the configuration, only the ``save`` command 
+does. A warning will be given when exiting with unsaved changes. Using the 
+``exit`` command in operational mode will logout the session.
 
 
 Exiting from a configuration level:
@@ -302,7 +325,8 @@ Warning message when exiting with unsaved changes:
 Load
 ^^^^
 
-The ``load`` command load a configuration from a local or remote file. You have to be use ``commit`` to make the change active
+The ``load`` command loads a configuration from a local or remote file. You have
+to use ``commit`` to make the changes active
 
 .. code-block:: none
 
@@ -344,9 +368,11 @@ Copies the content of a public key to the ~/.ssh/authorized_keys file.
 Merge
 ^^^^^
 
-The ``merge`` command merge the config from a local or remote file with the running config.
+The ``merge`` command merges the config from a local or remote file with the 
+running config.
 
-In the example below exist a ``default-firewall.config`` file with some common firewall rules you saved earlier.
+In the below example exists a ``default-firewall.config`` file with some common 
+firewall rules you saved earlier.
 
 .. code-block:: none
 
@@ -390,7 +416,7 @@ Rename
 
 The ``rename`` command allows you to rename or move a configuration object.
 
-See here how to move the configuration entrys from vlanid 3 to 2
+See here how to move the configuration entries from vlanid 3 to 2
 
 .. code-block:: none
 
@@ -424,7 +450,8 @@ See here how to move the configuration entrys from vlanid 3 to 2
 Rollback
 ^^^^^^^^
 
-You can ``rollback`` configuration using the rollback command, however this command will currently trigger a system reboot.
+You can ``rollback`` configuration using the rollback command, however this 
+command will currently trigger a system reboot.
 Use the compare command to verify the configuration you want to rollback to.
 
 .. code-block:: none
@@ -445,7 +472,8 @@ Use the compare command to verify the configuration you want to rollback to.
 Run
 ^^^
 
-The ``run`` command allows you to execute any operational mode commands without exiting the configuration session.
+The ``run`` command allows you to execute any operational mode commands without 
+exiting the configuration session.
 
 .. code-block:: none
 
@@ -460,7 +488,9 @@ The ``run`` command allows you to execute any operational mode commands without 
 Save
 ^^^^
 
-The ``save`` command saves the current configuration to non-volatile storage. VyOS also supports saving and loading configuration remotely using SCP, FTP, or TFTP.
+The ``save`` command saves the current configuration to non-volatile storage. 
+VyOS also supports saving and loading configuration remotely using SCP, FTP, or 
+TFTP.
 
 .. code-block:: none
 
@@ -474,7 +504,7 @@ The ``save`` command saves the current configuration to non-volatile storage. Vy
 Set
 ^^^
 
-The ``set`` command create all configuration entrys
+The ``set`` command creates all configuration entries
 
 .. code-block:: none
 
@@ -484,9 +514,11 @@ The ``set`` command create all configuration entrys
 Show
 ^^^^
 
-The ``show`` command in the configuration mode displays the configuration and show uncommitted changes.
+The ``show`` command in the configuration mode displays the configuration and 
+show uncommitted changes.
 
-Show the hole config, the address and description of eth1 is moving to vlan 2 if you commit the changes.
+Shows the whole config, the address and description of eth1 is moving to vlan 2 
+if you commit the changes.
 
 .. code-block:: none
 

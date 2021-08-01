@@ -156,9 +156,9 @@ release.
 Upon reboot, you should have a working installation of VyOS.
 
 You can go back to your Vyatta install using the ``set system image
-default-boot`` command and selecting the your previous Vyatta Core image.
+default-boot`` command and selecting your previous Vyatta Core image.
 
 .. note:: Future releases of VyOS will break the direct upgrade path from
    Vyatta core. Please upgrade through an intermediate VyOS version e.g. VyOS
-   1.2. After this you can continue upgrading to newer releases once you bootet
+   1.2. After this you can continue upgrading to newer releases once you booted
    into VyOS 1.2 once.
