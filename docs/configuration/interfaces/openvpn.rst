@@ -37,6 +37,8 @@ interface using `set interfaces openvpn`.
 Site-To-Site
 ============
 
+.. figure:: /_static/images/openvpn_site2site_diagram.jpg
+
 While many are aware of OpenVPN as a Client VPN solution, it is often
 overlooked as a site-to-site VPN solution due to lack of support for this mode
 in many router platforms.
@@ -53,9 +55,12 @@ copy this key to the remote router.
 In our example, we used the filename ``openvpn-1.key`` which we will reference
 in our configuration.
 
-* The public IP address of the local side of the VPN will be 198.51.100.10
-* The remote will be 203.0.113.11
+* The public IP address of the local side of the VPN will be 198.51.100.10.
+* The public IP address of the remote side of the VPN will be 203.0.113.11.
 * The tunnel will use 10.255.1.1 for the local IP and 10.255.1.2 for the remote.
+* The local site will have a subnet of 10.0.0.0/16.
+* The remote site will have a subnet of 10.1.0.0/16.
+* Static Routing or other dynamic routing protocols can be used over the vtun interface
 * OpenVPN allows for either TCP or UDP. UDP will provide the lowest latency,
   while TCP will work better for lossy connections; generally UDP is preferred
   when possible.
@@ -68,6 +73,7 @@ in our configuration.
   ``remote-host`` directive; if unknown, it can be omitted. We will assume a
   dynamic IP for our remote router.
 
+
 Local Configuration:
 
 .. code-block:: none
@@ -75,12 +81,27 @@ Local Configuration:
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
   set interfaces openvpn vtun1 persistent-tunnel
-  set interfaces openvpn vtun1 local-host '198.51.100.10'
+  set interfaces openvpn vtun1 remote-host '203.0.113.11
   set interfaces openvpn vtun1 local-port '1195'
   set interfaces openvpn vtun1 remote-port '1195'
   set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
-  set interfaces openvpn vtun1 local-address '10.255.1.1'
+  set interfaces openvpn vtun1 local-address '10.255.1.1'                         
   set interfaces openvpn vtun1 remote-address '10.255.1.2'
+
+Local Configuration - Annotated:
+
+.. code-block:: none
+
+  set interfaces openvpn vtun1 mode site-to-site
+  set interfaces openvpn vtun1 protocol udp
+  set interfaces openvpn vtun1 persistent-tunnel
+  set interfaces openvpn vtun1 remote-host '203.0.113.11'                         # Pub IP of other site
+  set interfaces openvpn vtun1 local-port '1195'
+  set interfaces openvpn vtun1 remote-port '1195'
+  set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
+  set interfaces openvpn vtun1 local-address '10.255.1.1'                         # Local IP of vtun interface
+  set interfaces openvpn vtun1 remote-address '10.255.1.2'                        # Remote IP of vtun interface
+
 
 Remote Configuration:
 
@@ -95,6 +116,67 @@ Remote Configuration:
   set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
   set interfaces openvpn vtun1 local-address '10.255.1.2'
   set interfaces openvpn vtun1 remote-address '10.255.1.1'
+
+Remote Configuration - Annotated:
+
+.. code-block:: none
+
+  set interfaces openvpn vtun1 mode site-to-site
+  set interfaces openvpn vtun1 protocol udp
+  set interfaces openvpn vtun1 persistent-tunnel
+  set interfaces openvpn vtun1 remote-host '198.51.100.10'                         # Pub IP of other site
+  set interfaces openvpn vtun1 local-port '1195'
+  set interfaces openvpn vtun1 remote-port '1195'
+  set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
+  set interfaces openvpn vtun1 local-address '10.255.1.2'                          # Local IP of vtun interface
+  set interfaces openvpn vtun1 remote-address '10.255.1.1'                         # Remote IP of vtun interface
+
+
+*******************
+Firewall Exceptions
+*******************
+
+For the WireGuard traffic to pass through the WAN interface, you must create a
+firewall exception.
+
+.. code-block:: none
+
+    set firewall name OUTSIDE_LOCAL rule 10 action accept
+    set firewall name OUTSIDE_LOCAL rule 10 description 'Allow established/related'
+    set firewall name OUTSIDE_LOCAL rule 10 state established enable
+    set firewall name OUTSIDE_LOCAL rule 10 state related enable
+    set firewall name OUTSIDE_LOCAL rule 20 action accept
+    set firewall name OUTSIDE_LOCAL rule 20 description OpenVPN_IN
+    set firewall name OUTSIDE_LOCAL rule 20 destination port 1195
+    set firewall name OUTSIDE_LOCAL rule 20 log enable
+    set firewall name OUTSIDE_LOCAL rule 20 protocol udp
+    set firewall name OUTSIDE_LOCAL rule 20 source
+
+You should also ensure that the OUTISDE_LOCAL firewall group is applied to the
+WAN interface and a direction (local).
+
+.. code-block:: none
+
+    set interfaces ethernet eth0 firewall local name 'OUTSIDE-LOCAL'
+
+
+Static Routing:
+
+Static routes can be configured referencing the tunnel interface; for example,
+the local router will use a network of 10.0.0.0/16, while the remote has a
+network of 10.1.0.0/16:
+
+Local Configuration:
+
+.. code-block:: none
+
+  set protocols static route 10.1.0.0/16 interface vtun1
+
+Remote Configuration:
+
+.. code-block:: none
+
+  set protocols static route 10.0.0.0/16 interface vtun1
 
 The configurations above will default to using 256-bit AES in GCM mode
 for encryption (if both sides support NCP) and SHA-1 for HMAC authentication.
@@ -153,21 +235,6 @@ If you change the default encryption and hashing algorithms, be sure that the
 local and remote ends have matching configurations, otherwise the tunnel will
 not come up.
 
-Static routes can be configured referencing the tunnel interface; for example,
-the local router will use a network of 10.0.0.0/16, while the remote has a
-network of 10.1.0.0/16:
-
-Local Configuration:
-
-.. code-block:: none
-
-  set protocols static route 10.1.0.0/16 interface vtun1
-
-Remote Configuration:
-
-.. code-block:: none
-
-  set protocols static route 10.0.0.0/16 interface vtun1
 
 Firewall policy can also be applied to the tunnel interface for `local`, `in`,
 and `out` directions and functions identically to ethernet interfaces.
