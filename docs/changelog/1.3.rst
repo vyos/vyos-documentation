@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2021-08-01
+==========
+
+* :vytask:`T3707` (bug): Ping incorrect ip host checks
+
+
+2021-07-31
+==========
+
+* :vytask:`T3711` (default): service router-advert interface <name> dnssl option has no effects
+* :vytask:`T3716` (feature): Linux kernel parameters ignore_routes_with_link_down- ignore disconnected routing connections
+* :vytask:`T1626` (bug): BGP exchanges prefixes withou specified address-family
+
+
+2021-07-30
+==========
+
+* :vytask:`T1176` (default): FRR - BGP replicating routes
+* :vytask:`T1123` (bug): Inconsistency in community-list naming validation
+
+
+2021-07-29
+==========
+
+* :vytask:`T3498` (default): Prevent automated publication of releases that weren't yet hand-tested
+* :vytask:`T2931` (bug): Unicode decode error causes vyos.configd service to restart
+* :vytask:`T2727` (bug): Add a dotted decimal value validator
+* :vytask:`T2328` (default): dhcpv6 server not starting (disable check reversed?)
+* :vytask:`T1758` (default): Switch vyos.config to libvyosconfig
+* :vytask:`T954` (bug): Using the 10.255.255.0/24 subnet on other interfaces breaks L2TP/IPSec
+* :vytask:`T1187` (bug): Command show log vpn display wrong information  
+
+
 2021-07-23
 ==========
 
@@ -639,7 +672,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.134 / 5.10.52
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.135 / 5.10.53
 
 
 2021-02-14
@@ -2286,7 +2319,6 @@
 
 * :vytask:`T2427` (default): Interface addressing broken since fix for T2372 was merged
 * :vytask:`T2438` (default): isc-dhcp-server(6).service reports startup success immediately even if dhcpd fails to start up
-* :vytask:`T2432` (default): dhcpd: Can't create new lease file: Permission denied
 * :vytask:`T2367` (default): Flush addresses from bridge members
 
 
