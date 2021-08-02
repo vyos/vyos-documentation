@@ -134,7 +134,7 @@ Remote Configuration - Annotated:
 Firewall Exceptions
 *******************
 
-For the WireGuard traffic to pass through the WAN interface, you must create a
+For the OpenVPN traffic to pass through the WAN interface, you must create a
 firewall exception.
 
 .. code-block:: none
