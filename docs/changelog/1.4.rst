@@ -8,6 +8,26 @@
    _ext/releasenotes.py
 
 
+2021-08-01
+==========
+
+* :vytask:`T3707` (bug): Ping incorrect ip host checks
+
+
+2021-07-31
+==========
+
+* :vytask:`T3711` (default): service router-advert interface <name> dnssl option has no effects
+* :vytask:`T3716` (feature): Linux kernel parameters ignore_routes_with_link_down- ignore disconnected routing connections
+
+
+2021-07-30
+==========
+
+* :vytask:`T1176` (default): FRR - BGP replicating routes
+* :vytask:`T1210` (feature): About IKEv2 IPSec VPN remote access
+
+
 2021-07-23
 ==========
 
@@ -748,7 +768,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.134 / 5.10.52
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.135 / 5.10.53
 
 
 2021-02-15
