@@ -51,7 +51,7 @@ Server Configuration
 
   set vpn openconnect authentication local-users username <user> password <pass>
   set vpn openconnect authentication mode <local|radius>
-  set vpn opneconnect network-settings client-ip-settings subnet <subnet>
+  set vpn openconnect network-settings client-ip-settings subnet <subnet>
   set vpn openconnect network-settings name-server <address>
   set vpn openconnect network-settings name-server <address>
   set vpn openconnect ssl ca-cert-file <file>
