@@ -315,8 +315,8 @@ manually if you wish.
 
 .. code-block:: none
 
-   set system conntrack modules ftp enable
-   set system conntrack modules gre enable
+   set system conntrack modules ftp
+   set system conntrack modules gre
 
 Now enable replication between nodes. Replace eth0.201 with bond0.201 on the
 hardware router.
