@@ -37,6 +37,14 @@ starts when the first ospf enabled interface is configured.
    This command is also used to enable the OSPF process. The area number can be
    specified in decimal notation in the range from 0 to 4294967295. Or it
    can be specified in dotted decimal notation similar to ip address.
+   
+   Prefix length in interface must be equal or bigger (i.e. smaller network) than
+   prefix length in network statement. For example statement above doesn't enable
+   ospf on interface with address 192.168.1.1/23, but it does on interface with
+   address 192.168.1.129/25.
+   
+   In some cases it may be more convenient to enable OSPF on a per interface/subnet
+   basis :cfgcmd:`set protocols ospf interface <interface> area <x.x.x.x | x>`
 
 .. cfgcmd:: set protocols ospf auto-cost reference-bandwidth <number>
 
@@ -305,6 +313,13 @@ Area Configuration
 
 Interface Configuration
 -----------------------
+
+.. cfgcmd:: set protocols ospf interface <interface> area <x.x.x.x | x>
+
+   Enable ospf on an interface and set associated area.
+
+   If you have a lot of interfaces, and/or a lot of subnets, then enabling
+   OSPF via this command may result in a slight performance improvement.
 
 .. cfgcmd:: set protocols ospf interface <interface> authentication
    plaintext-password <text>
