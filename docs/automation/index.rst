@@ -12,5 +12,7 @@ VyOS Automation
    
    vyos-api
    vyos-ansible
+   vyos-napalm
+   vyos-netmiko
    command-scripting
    cloud-init
