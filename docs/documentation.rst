@@ -17,6 +17,43 @@ guide how to do so.
    you open up a Phabricator_ task prior to submitting a Pull-Request to the
    documentation.
 
+VyOS documentation is written in reStructuredText and generated to Read the Docs
+pages with Sphinx, as per the Python tradition, as well as PDF files for offline
+use through LaTeX. We welcome all sorts of contributions to the documentation.
+Not just new additions but also corrections to existing documentation.
+
+The documentation source is kept in the Git repository at
+https://github.com/vyos/vyos-documentation and you can follow the instructions
+in the README.md_ to build and test your changes.
+
+You can either install Sphinx (and TeX Live for PDF output) and build the
+documentation locally, or use the Dockerfile_ to build it in a container.
+
+Guidelines
+==========
+
+There are a few things to keep in mind when contributing to the
+documentation, for the sake of consistency and readability.
+
+Take a look at the :doc:`/documentation` page for an intricate explanation
+of the documentation process.
+
+The following is a quick summary of the rules:
+
+- Use American English at all times. It's always a good idea to run
+  your text through a grammar and spell checker, such as `Grammarly`_.
+- Don't forget to update ``index.rst`` when adding a new node.
+- Try not to exceed 80 characters per line, but don't break URLs over this.
+- Properly quote commands, filenames and brief code snippets with double backticks.
+- Use literal blocks for longer snippets.
+- Leave a newline before and after a header.
+- Indent with two spaces.
+- When in doubt, follow the style of existing documentation.
+
+And finally, remember that the reStructuredText files aren't
+exclusively for generating HTML and PDF. They should be human-readable
+and easily perused from a console.
+
 Forking Workflow
 ================
 
@@ -38,7 +75,7 @@ access to the official codebase.
 
 * Fork this project on GitHub https://github.com/vyos/vyos-documentation/fork
 
-* Clone fork to local machine, then change to that directory 
+* Clone fork to local machine, then change to that directory
   ``$ cd vyos-documentation``
 
 * Install the requirements ``$ pip install -r requirements.txt``
@@ -332,7 +369,7 @@ URL. This is heavily used in the :ref:`release-notes` section.
 Page content
 ------------
 
-The documentation has 3 different types of pages. The same kind of pages must 
+The documentation has 3 different types of pages. The same kind of pages must
 have the same structure to achieve a recognition factor.
 
 All RST files must follow the same TOC Level syntax and have to start with
@@ -393,6 +430,8 @@ predefined structure.
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
 .. _reStructuredTextDirectives: https://docutils.sourceforge.io/docs/ref/rst/directives.html
 .. _README.md: https://github.com/vyos/vyos-documentation/blob/master/README.md
+.. _Dockerfile: https://github.com/vyos/vyos-documentation/blob/master/docker/Dockerfile
+.. _Grammarly: https://www.grammarly.com/
 .. include:: /_include/common-references.txt
 
 .. start_vyoslinter
