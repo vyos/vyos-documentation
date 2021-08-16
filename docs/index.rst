@@ -20,7 +20,7 @@ VyOS User Guide
    installation/index
    quick-start
    cli
-   
+
 .. toctree::
    :maxdepth: 2
    :includehidden:
@@ -41,6 +41,7 @@ VyOS User Guide
 
    contributing/index
    debugging
+   testing
    documentation
    coverage
    copyright

@@ -295,7 +295,7 @@ device if you happen to be a crazy scientist.
           conf = config
       else:
           conf = Config()
-        
+
       # Base path to CLI nodes
       base = ['...', '...']
       # Convert the VyOS config to an abstract internal representation
@@ -320,7 +320,7 @@ device if you happen to be a crazy scientist.
       c = get_config()
       verify(c)
       generate(c)
-      apply(c)      
+      apply(c)
   except ConfigError as e:
       print(e)
       sys.exit(1)
@@ -685,9 +685,9 @@ Migrating old CLI
 Continuous Integration
 ======================
 
-VyOS makes use of Jenkins_ as our Continuous Integration (CI) service. Our CI
-server is publicly accessible here: https://ci.vyos.net. You can get a brief
-overview of all required components shipped in a VyOS ISO.
+VyOS makes use of Jenkins_ as our Continuous Integration (CI) service. Our
+`VyOS CI`_ server is publicly accessible here: https://ci.vyos.net. You can get
+a brief overview of all required components shipped in a VyOS ISO.
 
 To build our modules we utilize a CI/CD Pipeline script. Each and every VyOS
 component comes with it's own ``Jenkinsfile`` which is (more or less) a copy.

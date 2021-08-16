@@ -5,5 +5,7 @@
 .. _Phabricator: https://phabricator.vyos.net/
 .. _802.1ad: https://en.wikipedia.org/wiki/IEEE_802.1ad
 .. _802.1q: https://en.wikipedia.org/wiki/IEEE_802.1Q
+.. _`VyOS CI`: https://ci.vyos.net
+.. _vyos-build: https://github.com/vyos/vyos-build
 
 .. start_vyoslinter
