@@ -8,6 +8,79 @@
    _ext/releasenotes.py
 
 
+2021-08-15
+==========
+
+* :vytask:`T3756` (default): VyOS generates invalid QR code for wireguard clients
+* :vytask:`T3757` (default): OSPF: add support to configure the area at an interface level
+
+
+2021-08-14
+==========
+
+* :vytask:`T3745` (feature): op-mode IPSec show vpn ipse sa sorting
+* :vytask:`T1083` (feature): Implement "--persistent" option to NAT rules
+
+
+2021-08-13
+==========
+
+* :vytask:`T3749` (bug): V4/V6 Counters in network container validation aren't being reset
+* :vytask:`T3728` (bug): FRR not respect configured RD and RT for L3VNI
+* :vytask:`T3727` (bug): VPN IPsec ESP proposal and ESP presented in config missmatch
+* :vytask:`T3740` (bug): HTTPs API breaks when the address is IPv6
+* :vytask:`T3734` (bug): Move EVPN VRF up in FRR config
+
+
+2021-08-12
+==========
+
+* :vytask:`T3731` (bug): verify_accel_ppp_base_service return wrong config error for SSP
+* :vytask:`T3405` (feature): PPPoE server unit-cache
+* :vytask:`T2432` (default): dhcpd: Can't create new lease file: Permission denied
+* :vytask:`T3746` (feature): Inform users logging into the system about a pending reboot
+* :vytask:`T3744` (default): Dns forwarding statistics formatting missing a new line
+
+
+2021-08-11
+==========
+
+* :vytask:`T3709` (feature): Snmp: Allow enable MIDs/OIDs ipCidrRouteTable
+
+
+2021-08-09
+==========
+
+* :vytask:`T3720` (bug): IPSec set vti secondary address cause interface disable
+
+
+2021-08-08
+==========
+
+* :vytask:`T3705` (bug): IPSec: VTI interface does not honor default-esp-group
+* :vytask:`T2027` (bug): get_config_dict is failing when the configuration section is empty/missing
+
+
+2021-08-05
+==========
+
+* :vytask:`T3719` (bug): Restart vpn shows some missed files
+* :vytask:`T696` (feature): Rewrite conntrack  sync to XML
+
+
+2021-08-04
+==========
+
+* :vytask:`T3704` (feature): Add ability to interact with Areca RAID adapers
+* :vytask:`T3718` (bug): VPN IPsec IKE group by default not use DH-group 2
+
+
+2021-08-02
+==========
+
+* :vytask:`T3601` (default): Error in ssh keys for vmware cloud-init if ssh keys is left empty.
+
+
 2021-08-01
 ==========
 
@@ -138,7 +211,6 @@
 2021-06-18
 ==========
 
-* :vytask:`T3634` (feature): Add op command option for ping for do not fragment bit to be set
 * :vytask:`T3599` (default): Migrate NHRP to XML/Python
 
 
@@ -603,7 +675,6 @@
 2021-03-22
 ==========
 
-* :vytask:`T3402` (feature): Add VyOS programming library for operational level commands
 * :vytask:`T3284` (bug): merge/load fail silently if unable to resolve host
 
 
@@ -768,7 +839,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.135 / 5.10.53
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.140 / 5.10.58
 
 
 2021-02-15

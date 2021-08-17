@@ -8,6 +8,91 @@
    _ext/releasenotes.py
 
 
+2021-08-15
+==========
+
+* :vytask:`T3756` (default): VyOS generates invalid QR code for wireguard clients
+* :vytask:`T3275` (default): Disable conntrack helpers by default
+
+
+2021-08-14
+==========
+
+* :vytask:`T3745` (feature): op-mode IPSec show vpn ipse sa sorting
+* :vytask:`T1083` (feature): Implement "--persistent" option to NAT rules
+* :vytask:`T521` (bug): Network services may fail if vyatta-router.service startup takes longer than a few seconds
+
+
+2021-08-13
+==========
+
+* :vytask:`T3740` (bug): HTTPs API breaks when the address is IPv6
+* :vytask:`T3734` (bug): Move EVPN VRF up in FRR config
+
+
+2021-08-12
+==========
+
+* :vytask:`T3731` (bug): verify_accel_ppp_base_service return wrong config error for SSP
+* :vytask:`T3405` (feature): PPPoE server unit-cache
+* :vytask:`T2432` (default): dhcpd: Can't create new lease file: Permission denied
+* :vytask:`T3746` (feature): Inform users logging into the system about a pending reboot
+* :vytask:`T3744` (default): Dns forwarding statistics formatting missing a new line
+
+
+2021-08-10
+==========
+
+* :vytask:`T3730` (bug): op-mode conntrack-sync miss some functions
+
+
+2021-08-09
+==========
+
+* :vytask:`T1501` (bug): VPN Commit Errors
+
+
+2021-08-08
+==========
+
+* :vytask:`T2027` (bug): get_config_dict is failing when the configuration section is empty/missing
+* :vytask:`T169` (feature): Image install should put correct serial console device in created grub menuentry
+
+
+2021-08-07
+==========
+
+* :vytask:`T548` (feature): BGP IPv6 multipath support
+
+
+2021-08-06
+==========
+
+* :vytask:`T3196` (bug): No NAT translations showing up
+* :vytask:`T1153` (bug): VyOS 1.2.0RC10, RAID-1, fresh install, unable to save config
+
+
+2021-08-05
+==========
+
+* :vytask:`T696` (feature): Rewrite conntrack  sync to XML
+
+
+2021-08-04
+==========
+
+* :vytask:`T3704` (feature): Add ability to interact with Areca RAID adapers
+* :vytask:`T320` (default): ospf does not redistribute connected routes associated with virtuan tunnel interfaces
+
+
+2021-08-02
+==========
+
+* :vytask:`T2623` (bug): Creating sit tunnel fails with “Can not set “local” for tunnel sit tun1 at tunnel creation”
+* :vytask:`T2161` (default): snmpd cannot start if ipv6 disabled
+* :vytask:`T3601` (default): Error in ssh keys for vmware cloud-init if ssh keys is left empty.
+
+
 2021-08-01
 ==========
 
@@ -127,12 +212,6 @@
 
 * :vytask:`T3633` (feature): Add LRO offload for interface ethernet
 * :vytask:`T3632` (bug): policy: route-map: unable to configure route-target / site-of-origin
-
-
-2021-06-18
-==========
-
-* :vytask:`T3634` (feature): Add op command option for ping for do not fragment bit to be set
 
 
 2021-06-17
@@ -672,7 +751,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.135 / 5.10.53
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.140 / 5.10.58
 
 
 2021-02-14
@@ -1757,7 +1836,6 @@
 * :vytask:`T1486` (bug): Unknown LLDP version reported to peers
 * :vytask:`T1414` (enhancment):  equuleus: buster: 10-unmountfs.chroot fail under apply
 * :vytask:`T1076` (bug): SSH: make configuration (sshd_config) volatile and store it to /run
-* :vytask:`T770` (bug): Bonded interfaces get updated with incorrect hw-id in config.
 * :vytask:`T2724` (feature): Support for IPv6 Toolset
 * :vytask:`T2323` (bug): LLDP: "show lldp neighbors detail" returns warnings when service is not configured
 * :vytask:`T1754` (bug): DHCPv6 client is impossible to restart
