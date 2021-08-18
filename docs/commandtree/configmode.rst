@@ -1,3 +1,5 @@
+:lastproofread: 2021-08-18
+
 .. _commandtree_configmode:
 
 Configuration mode
@@ -34,7 +36,7 @@ The ``confirm`` command confirms the prior ``commit-confirm``.
 Comment
 ^^^^^^^
 
-The ``comment`` commands allow you to insert a comment above the current 
+The ``comment`` command allow you to insert a comment above the current 
 configuration section.
 The command cannot be used at the top of the configuration hierarchy, only on 
 subsections. Comments need to be commited, just like other config changes.
@@ -515,7 +517,7 @@ Show
 ^^^^
 
 The ``show`` command in the configuration mode displays the configuration and 
-show uncommitted changes.
+shows the uncommitted changes.
 
 Shows the whole config, the address and description of eth1 is moving to vlan 2 
 if you commit the changes.

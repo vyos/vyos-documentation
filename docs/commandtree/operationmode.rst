@@ -1,10 +1,12 @@
+:lastproofread: 2021-08-16
+
 .. _commandtree_operationmode:
 
 Operational mode
 ----------------
 
-Operational mode allows for commands to perform operational system tasks and view system and service status.
-After this is the first view after the login.
+Operational mode allows for commands to perform operational system tasks and 
+view system and service status. This is the first view after the login.
 Please see :ref:`cli` for navigation in the CLI
 
 
@@ -66,7 +68,8 @@ Clear
 
 Clone
 ^^^^^
-The ``clone`` command allows you to clone a configuration from a system image to another one, or from the running config to another system image.
+The ``clone`` command allows you to clone a configuration from a system image 
+to another one, or from the running config to another system image.
 To clone the running config to a system image:
 
 .. code-block:: none
@@ -95,7 +98,8 @@ The ``configure`` command allows you to enter configuration mode.
 Connect
 ^^^^^^^
 
-The ``connect`` command allows you to bring up a connection oriented interface, like a pppoe interface.
+The ``connect`` command allows you to bring up a connection oriented interface, 
+like a pppoe interface.
 
 .. code-block:: none
 
@@ -104,7 +108,8 @@ The ``connect`` command allows you to bring up a connection oriented interface, 
 Copy
 ^^^^
 
-The ``copy`` command allows you to copy a file to your running config or over images.
+The ``copy`` command allows you to copy a file to your running config or over 
+images.
 
 It can look like this example:
 
@@ -147,7 +152,8 @@ Delete
 Disconnect
 ^^^^^^^^^^
 
-The ``disconnect`` command allows you to take down a connection oriented interface, like a pppoe interface.
+The ``disconnect`` command allows you to take down a connection oriented 
+interface, like a pppoe interface.
 
 .. code-block:: none
 
@@ -196,7 +202,7 @@ The ``install`` command allows you to install the system image on the disk.
 Monitor
 ^^^^^^^
 
-``monitor`` can be used to continually view what is happening on the router.
+``monitor`` can be used to continuously view what is happening on the router.
 
 .. code-block:: none
 
@@ -230,7 +236,8 @@ Monitor
 Ping
 ^^^^
 
-The ``ping`` command allows you to send an ICMP-EchoRequest packet and display the ICMP-EchoReply received.
+The ``ping`` command allows you to send an ICMP-EchoRequest packet and display 
+the ICMP-EchoReply received.
 
 .. code-block:: none
 
@@ -242,7 +249,8 @@ The ``ping`` command allows you to send an ICMP-EchoRequest packet and display t
 Poweroff
 ^^^^^^^^
 
-The ``poweroff`` command allows you to properly shut down the VyOS instance. Without any modifier, the command is executed immediately.
+The ``poweroff`` command allows you to properly shut down the VyOS instance. 
+Without any modifier, the command is executed immediately.
 
 .. code-block:: none
 
@@ -254,7 +262,8 @@ The ``poweroff`` command allows you to properly shut down the VyOS instance. Wit
 
 Reboot
 ^^^^^^
-The ``reboot`` command allows you to properly restart the VyOS instance. Without any modifier, the command is executed immediately.
+The ``reboot`` command allows you to properly restart the VyOS instance. Without
+ any modifier, the command is executed immediately.
 
 .. code-block:: none
 
@@ -406,8 +415,9 @@ Show
 
 Telnet
 ^^^^^^
-In the past the ``telnet`` command allowed you to connect remotely to another device using the telnet protocol.
-Telnet is unencrypted and should not use anymore. But its nice to test if an TCP Port to a host is open.
+In the past the ``telnet`` command allowed you to connect remotely to another 
+device using the telnet protocol. Telnet is unencrypted and should not be used
+anymore. But its nice to test if a TCP Port to a host is open or not.
 
 
 .. code-block:: none
@@ -424,7 +434,8 @@ Telnet is unencrypted and should not use anymore. But its nice to test if an TCP
 Traceroute
 ^^^^^^^^^^
 
-The ``traceroute`` command allows you to trace the path taken to a particular device.
+The ``traceroute`` command allows you to trace the path taken to a particular 
+device.
 
 .. code-block:: none
 
