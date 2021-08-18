@@ -179,7 +179,7 @@ individual test configurations on his own.
   Loading configuration from '/usr/libexec/vyos/tests/config/ospf-small'
   Load complete. Use 'commit' to make changes effective.
   [edit]
-  cpo@LR1.wue3# compare
+  vyos@vyos# compare
   [edit interfaces ethernet eth0]
   -hw-id 00:50:56:bf:c5:6d
   [edit interfaces ethernet eth1]

@@ -139,7 +139,7 @@ Operation
     Your identification has been saved in /config/auth/id_rsa_rpki.
     Your public key has been saved in /config/auth/id_rsa_rpki.pub.
     The key fingerprint is:
-    SHA256:XGv2PpdOzVCzpmEzJZga8hTRq7B/ZYL3fXaioLFLS5Q cpo@LR1.wue3
+    SHA256:XGv2PpdOzVCzpmEzJZga8hTRq7B/ZYL3fXaioLFLS5Q vyos@vyos
     The key's randomart image is:
     +---[RSA 2048]----+
     |         oo      |
