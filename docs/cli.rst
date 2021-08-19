@@ -1,3 +1,5 @@
+:lastproofread: 2021-08-16
+
 .. _cli:
 
 ######################
@@ -12,7 +14,8 @@ Operational Mode
 
 Operational mode allows for commands to perform operational system tasks and
 view system and service status, while configuration mode allows for the
-modification of system configuration. The :ref:`command tree page<commandtree>` lists available commands and their functions.
+modification of system configuration. The :ref:`command tree page<commandtree>` 
+lists available commands and their functions.
 
 The CLI provides a built-in help system. In the CLI the **[?]** key may be used
 to display available commands. The **[tab]** key can be used to auto-complete
@@ -57,7 +60,8 @@ Example showing possible show commands:
   : q
   vyos@vyos:~$
 
-You can scroll up with the keys [Shift]+[PageUp] and sroll down with [Shift]+[PageDown].
+You can scroll up with the keys [Shift]+[PageUp] and scroll down with [Shift]+
+[PageDown].
 
 When the output of a command results in more lines than can be displayed on the
 terminal screen the output is paginated as indicated by a : prompt.
@@ -83,7 +87,8 @@ To enter configuration mode use the `configure` command:
   [edit]
   vyos@vyos:~#
 
-.. note:: Prompt changes from `$` to `#`. To exit configuration mode, type `exit`.
+.. note:: Prompt changes from `$` to `#`. To exit configuration mode, type 
+`exit`.
 
 .. code-block:: none
 
@@ -265,7 +270,7 @@ command.
 
 You are now in a sublevel relative to ``interfaces ethernet eth0``, all
 commands executed from this point on are relative to this sublevel. Use
-eithe the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top
+either the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top
 of the hierarchy. You can also use the :cfgcmd:`up` command to move only
 one level up at a time.
 
@@ -454,8 +459,8 @@ different levels in the hierarchy.
    What if you are doing something dangerous? Suppose you want to setup
    a firewall, and you are not sure there are no mistakes that will lock
    you out of your system. You can use confirmed commit. If you issue
-   the ``commit-confirm`` command, your changes will be commited, and if
-   you don't issue issue the ``confirm`` command in 10 minutes, your
+   the ``commit-confirm`` command, your changes will be committed, and if
+   you don't issue the ``confirm`` command in 10 minutes, your
    system will reboot into previous config revision.
 
    .. code-block:: none
@@ -469,9 +474,9 @@ different levels in the hierarchy.
       [edit]
 
 
-   .. note:: A reboot because you did not enter ``confirm`` will not
-      take you necessarily to the *saved configuration*, but to the
-      point before the unfortunate commit.
+   .. note:: A reboot will be initiated if you did not enter ``confirm`` 
+      and will take you necessarily to the last *saved configuration*, but to 
+      the point before the unfortunate commit.
 
 
 .. cfgcmd:: copy
@@ -481,9 +486,8 @@ different levels in the hierarchy.
    You can copy and remove configuration subtrees. Suppose you set up a
    firewall ruleset ``FromWorld`` with one rule that allows traffic from
    specific subnet. Now you want to setup a similar rule, but for
-   different subnet. Change your edit level to
-   ``firewall name FromWorld`` and use ``copy rule 10 to rule 20``, then
-   modify rule 20.
+   different subnet. Change your edit level to``firewall name FromWorld`` and 
+   use ``copy rule 10 to rule 20``, then modify rule 20.
 
 
    .. code-block:: none
@@ -549,7 +553,7 @@ different levels in the hierarchy.
    The ``comment`` command allows you to insert a comment above the
    ``<config node>`` configuration section. When shown, comments are
    enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments
-   need to be commited, just like other config changes.
+   need to be committed, just like other config changes.
 
    To remove an existing comment from your current configuration,
    specify an empty string enclosed in double quote marks (``""``) as
@@ -671,7 +675,7 @@ VyOS lets you compare different configurations.
          7	   2013-12-12 16:25:19 vyos by cli
          8	   2013-12-12 15:44:36 vyos by cli
          9	   2013-12-12 15:42:07 root by boot-config-loader
-         10   2013-12-12 15:42:06 root by init
+         10        2013-12-12 15:42:06 root by init
 
    The command :cfgcmd:`compare` allows you to compare different type of
    configurations. It also lets you compare different revisions through
@@ -720,7 +724,7 @@ Rollback Changes
 ================
 
 You can rollback configuration changes using the rollback command. This
-will apply the selected revision and trigger a system reboot.
+will apply to the selected revision and trigger a system reboot.
 
 .. cfgcmd:: rollback <N>
 
@@ -783,8 +787,8 @@ to load it with the ``load`` command:
 
    Use this command to load a configuration which will replace the
    running configuration. Define the location of the configuration file
-   to be loaded. You can use a path to a local file, an SCP address, an
-   SFTP address, an FTP address, an HTTP address, an HTTPS address or a
+   to be loaded. You can use a path to a local file, a SCP address, a
+   SFTP address, a FTP address, a HTTP address, a HTTPS address or a
    TFTP address.
 
   .. code-block:: none
