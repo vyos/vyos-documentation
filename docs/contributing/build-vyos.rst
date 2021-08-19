@@ -95,9 +95,9 @@ The container can also be built directly from source:
   $ docker build -t vyos/vyos-build:crux docker # For VyOS 1.2
   $ docker build -t vyos/vyos-build:current docker      # For rolling release
 
-.. note:: Since VyOS has switched to Debian (10) Buster in its ``current``
-   branch, you will require individual container for `current` and `crux`
-   builds.
+.. note:: Since VyOS has switched to Debian (11) Bullseye in its ``current``
+   branch, you will require individual container for `current`, `equuleus` and
+   `crux` builds.
 
 Tips and Tricks
 ---------------
@@ -192,7 +192,7 @@ Now a fresh build of the VyOS ISO can begin. Change directory to the
 
   # For MacOS (crux, equuleus, sagitta)
   $ git clone https://github.com/vyos/vyos-utils-misc
-  $ cd build-tools/macos-build 
+  $ cd build-tools/macos-build
 
   # For VyOS 1.2 (crux)
   $ os=jessie64 branch=crux make build
