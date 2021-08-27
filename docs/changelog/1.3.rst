@@ -8,6 +8,52 @@
    _ext/releasenotes.py
 
 
+2021-08-21
+==========
+
+* :vytask:`T3682` (bug): Remove running dhclient from ether-resume.py
+* :vytask:`T3681` (default): The VMware Tools resume script did not run successfully in this virtual machine.
+
+
+2021-08-20
+==========
+
+* :vytask:`T1950` (default): Store VyOS configuration syntax version data in JSON file
+
+
+2021-08-19
+==========
+
+* :vytask:`T2759` (bug): validate-value prints error messages from validators that fail even if overall validation succeeds
+* :vytask:`T3234` (bug): multi_to_list fails in certain cases, with root cause an element redundancy in XML interface-definitions
+* :vytask:`T3732` (feature): override-default helper should support adding defaultValues to default less nodes
+* :vytask:`T3574` (default): Add constraintGroup for combining validators with logical AND
+* :vytask:`T1962` (default): Add syntax version to schema
+
+
+2021-08-18
+==========
+
+* :vytask:`T3537` (bug): Unable to override the default OSPFv3 link cost for wireguard interface
+
+
+2021-08-17
+==========
+
+* :vytask:`T2525` (bug): OSPFv3 missing route map, not establishing
+* :vytask:`T508` (bug): ISC DHCP incorrect UDP checksum generation
+* :vytask:`T1643` (bug): Deleting all firewall zones failed and locked out box
+* :vytask:`T1550` (bug): Add support for Large BGP Community show commands
+
+
+2021-08-16
+==========
+
+* :vytask:`T3735` (bug): Configuration with multiple network addresses of firewall network-group via colud-init fails
+* :vytask:`T3738` (default): openvpn fails if server and authentication are configured
+* :vytask:`T1594` (bug): l2tpv3 error on IPv6 local-ip
+
+
 2021-08-15
 ==========
 
@@ -27,7 +73,6 @@
 ==========
 
 * :vytask:`T3740` (bug): HTTPs API breaks when the address is IPv6
-* :vytask:`T3734` (bug): Move EVPN VRF up in FRR config
 
 
 2021-08-12
@@ -3059,7 +3104,6 @@
 
 * :vytask:`T1392` (bug): Large firewall rulesets cause the system to lose configuration and crash at startup
 * :vytask:`T1996` (feature): Update Linux Kernel to 4.19.99
-* :vytask:`T1950` (default): Store VyOS configuration syntax version data in JSON file
 * :vytask:`T1862` (default): Use regex pattern \s+ to split strings on whitespace in Python 3.7
 * :vytask:`T1780` (feature): Adding ipsec ike closeaction
 * :vytask:`T1755` (bug): Python KeyError exceptions raised with 'show vpn ipsec sa' command under use of certain IPSEC cipher suites.

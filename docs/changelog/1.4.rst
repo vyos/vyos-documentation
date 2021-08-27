@@ -8,6 +8,43 @@
    _ext/releasenotes.py
 
 
+2021-08-22
+==========
+
+* :vytask:`T3090` (feature): Move 'adjust-mss' firewall options to the interface section.
+* :vytask:`T3765` (default): container: additional op-mode commands
+
+
+2021-08-20
+==========
+
+* :vytask:`T1950` (default): Store VyOS configuration syntax version data in JSON file
+
+
+2021-08-19
+==========
+
+* :vytask:`T3751` (bug): pki generate ca add new line after passphrase
+* :vytask:`T3764` (bug): Unconfigurable IKE and ESP lifetime
+* :vytask:`T3234` (bug): multi_to_list fails in certain cases, with root cause an element redundancy in XML interface-definitions
+* :vytask:`T3732` (feature): override-default helper should support adding defaultValues to default less nodes
+* :vytask:`T3574` (default): Add constraintGroup for combining validators with logical AND
+* :vytask:`T3759` (default): [L3VPN] VPNv4/VPNv6 add commands 
+
+
+2021-08-18
+==========
+
+* :vytask:`T3752` (bug): generate pki certificate file xxx doesn't touch file
+
+
+2021-08-16
+==========
+
+* :vytask:`T3738` (default): openvpn fails if server and authentication are configured
+* :vytask:`T1594` (bug): l2tpv3 error on IPv6 local-ip
+
+
 2021-08-15
 ==========
 
@@ -29,7 +66,6 @@
 * :vytask:`T3728` (bug): FRR not respect configured RD and RT for L3VNI
 * :vytask:`T3727` (bug): VPN IPsec ESP proposal and ESP presented in config missmatch
 * :vytask:`T3740` (bug): HTTPs API breaks when the address is IPv6
-* :vytask:`T3734` (bug): Move EVPN VRF up in FRR config
 
 
 2021-08-12
