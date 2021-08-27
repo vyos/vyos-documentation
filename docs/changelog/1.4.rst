@@ -8,6 +8,38 @@
    _ext/releasenotes.py
 
 
+2021-08-27
+==========
+
+* :vytask:`T3182` (bug): Main blocker Task for FRR 7.4/7.5 series update
+
+
+2021-08-26
+==========
+
+* :vytask:`T3776` (default): Rename FRR daemon restart op-mode commands
+* :vytask:`T3739` (feature): policy: route-map: add EVPN match support
+
+
+2021-08-25
+==========
+
+* :vytask:`T3773` (bug): Delete the "show system integrity" command (to prepare for a re-implementation)
+* :vytask:`T3775` (bug): Typo in generated Strongswan VPN-config
+
+
+2021-08-24
+==========
+
+* :vytask:`T3772` (bug): VRRP virtual interfaces are not shown in show interfaces
+
+
+2021-08-23
+==========
+
+* :vytask:`T3769` (feature): Containers: Network Bridging
+
+
 2021-08-22
 ==========
 
@@ -875,7 +907,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.140 / 5.10.58
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.143 / 5.10.61
 
 
 2021-02-15
