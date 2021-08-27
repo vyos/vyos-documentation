@@ -298,7 +298,7 @@ def get_working_commands():
                 if not validator.validate(xml):
                     print(validator.error_log)
                     print("Interface definition file {0} does not match the schema!".format(f))
-                    sys.exit(1)
+                    #sys.exit(1)
             except Exception as e:
                 print("Failed to load the XML schema {0}".format(entry['schema_file']))
                 print(e)
