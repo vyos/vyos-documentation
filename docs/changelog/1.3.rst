@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2021-08-27
+==========
+
+* :vytask:`T3182` (bug): Main blocker Task for FRR 7.4/7.5 series update
+
+
+2021-08-26
+==========
+
+* :vytask:`T3781` (bug): Revert the NAT implementation in 1.3 back to iptables
+* :vytask:`T3776` (default): Rename FRR daemon restart op-mode commands
+* :vytask:`T3779` (feature): Backport all 1.4 IS-IS features and configuration to 1.3 except VRF
+
+
+2021-08-25
+==========
+
+* :vytask:`T3773` (bug): Delete the "show system integrity" command (to prepare for a re-implementation)
+* :vytask:`T1514` (default): Add ability to restart frr processes
+
+
+2021-08-24
+==========
+
+* :vytask:`T3772` (bug): VRRP virtual interfaces are not shown in show interfaces
+
+
+2021-08-23
+==========
+
+* :vytask:`T2555` (bug): XML op-mode generation scripts silently discard XML nodes
+
+
 2021-08-21
 ==========
 
@@ -796,7 +829,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.140 / 5.10.58
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.143 / 5.10.61
 
 
 2021-02-14
