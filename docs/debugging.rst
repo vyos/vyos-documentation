@@ -23,11 +23,10 @@ Kernel
   an unexpected delay during manual or boot commit, this may be useful in
   identifying bottlenecks. The internal flag is ``VYOS_DEBUG``, and is found
   in vyatta-cfg_. Output is directed to ``/var/log/vyatta/cfg-stdout.log``.
-  
+
   In addition this setting creates the runtime debug files for some Live system
   components (see below). Those files are: ``/tmp/vyos-config-status``,
-  ``/tmp/vyos.container.debug``, ``/tmp/vyos.frr.debug``,
-  ``/tmp/vyos.ifconfig.debug``.
+  ``/tmp/vyos.frr.debug``, ``/tmp/vyos.ifconfig.debug``.
 
 * ``vyos-config-debug`` - During development, coding errors can lead to a
   commit failure on boot, possibly resulting in a failed initialization of the
