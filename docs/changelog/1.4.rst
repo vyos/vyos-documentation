@@ -8,10 +8,26 @@
    _ext/releasenotes.py
 
 
+2021-08-29
+==========
+
+* :vytask:`T3708` (bug): isisd and gre-bridge commit error
+* :vytask:`T3783` (bug): "set protocols isis spf-delay-ietf" is not working
+* :vytask:`T2750` (default): Use m4 as a template processor
+
+
+2021-08-28
+==========
+
+* :vytask:`T3743` (bug): l2tp doesn't work after reboot if outside-address not 0.0.0.0
+
+
 2021-08-27
 ==========
 
 * :vytask:`T3182` (bug): Main blocker Task for FRR 7.4/7.5 series update
+* :vytask:`T3568` (feature): Add XML for firewall conf-mode
+* :vytask:`T2108` (default): Use minisign/signify instead of GPG for release signing
 
 
 2021-08-26
@@ -325,7 +341,7 @@
 * :vytask:`T3250` (bug): PPPoE server:  wrong local usernames
 * :vytask:`T3138` (bug): ddclient improperly updated when apply rfc2136 config
 * :vytask:`T2620` (feature): Add ipsec peer-name to log to simplifies grepping and troubleshooting
-* :vytask:`T2645` (default): Editing route-map Action Requires New Rule
+* :vytask:`T2645` (default): Editing route-map action requires adding a new rule
 
 
 2021-06-08
@@ -576,7 +592,7 @@
 ==========
 
 * :vytask:`T3458` (default): vyos docs missing gretap from tunnel section
-* :vytask:`T2946` (bug): call to commandd 'stty_size' cause show interfaces API to fail.
+* :vytask:`T2946` (bug): Calling 'stty_size' causes show interfaces API to fail
 
 
 2021-04-26
@@ -639,7 +655,7 @@
 ==========
 
 * :vytask:`T3398` (bug): Can't commit
-* :vytask:`T3055` (bug): op-mode incorrect naming fo ipsec policy-based tunnels 
+* :vytask:`T3055` (bug): op-mode incorrect naming for ipsec policy-based tunnels 
 
 
 2021-04-13
