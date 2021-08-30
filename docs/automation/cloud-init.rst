@@ -58,9 +58,19 @@ cloud-config file format
 ************************
 
 A cloud-config document is written in YAML. The file must begin
-with ``#cloud-config`` line. The key used to designate a VyOS configuration
-is ``vyos_config_commands``. What follows is VyOS configuration using
-the "set-style" syntax. Both "set" and "delete" commands are supported.
+with ``#cloud-config`` line. The only supported top-level keys are
+``vyos_config_commands`` and ``write_files``. The use of these keys is described
+in the following two sections.
+
+
+************************
+Initial Configuration
+************************
+
+
+The key used to designate a VyOS configuration is ``vyos_config_commands``. What 
+follows is VyOS configuration using the "set-style" syntax. Both "set" and "delete" 
+commands are supported.
 
 Commands requirements:
 
@@ -75,7 +85,7 @@ proper commands list by copying it from another router.
 The configuration specified in the cloud-config document overwrites default
 configuration values and values configured via Metadata.
 
-Here is an example cloud-config.
+Here is an example cloud-config that appends configuration at the time of first boot.
 
 .. code-block:: yaml
 
@@ -88,9 +98,9 @@ Here is an example cloud-config.
      - set interfaces ethernet eth1 address '192.0.2.247/24'
      - set protocols static route 198.51.100.0/24 next-hop '192.0.2.1'
 
-*************************
+-------------------------
 System Defaults/Fallbacks
-*************************
+-------------------------
 
 These are the VyOS defaults and fallbacks.
 
@@ -99,6 +109,65 @@ These are the VyOS defaults and fallbacks.
 * DHCP on first Ethernet interface if no network configuration is provided
 
 All of these can be overridden using the configuration in user-data.
+
+
+*********************************
+Command Execution at Initial Boot
+*********************************
+
+VyOS supports the execution of operational commands and linux commands at
+initial boot. This is accomplished using ``write_files`` to certain
+files in the /opt/vyatta/etc/config/scripts directory. Commands specified
+in opt/vyatta/etc/config/scripts/vyos-preconfig-bootup.script are executed
+prior to configuration. The 
+/opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script file contains
+commands to be executed after configuration. In both cases, commands are
+executed as the root user.
+
+Note that the /opt/vyatta/etc/config is used instead of the /config/scripts
+directory referenced in the :ref:`command-scripting` section of the 
+documentation because the /config/script directory isn't mounted when the 
+``write_files`` module executes.
+
+The following example shows how to execute commands after the initial 
+configuration.
+
+.. code-block:: yaml
+
+   #cloud-config
+   write_files:
+     - path: /opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script
+       owner: root:vyattacfg
+       permissions: '0775'
+       content: |
+         #!/bin/vbash
+         source /opt/vyatta/etc/functions/script-template
+         filename=/tmp/bgp_status_`date +"%Y_%m_%d_%I_%M_%p"`.log
+         run show ip bgp summary >> $filename
+
+
+If you need to gather information from linux commands to configure VyOS, you can
+execute commands and then configure VyOS in the same script.
+
+The following example sets the hostname based on the instance identifier
+obtained from the EC2 metadata service.
+
+.. code-block:: yaml
+
+
+   #cloud-config
+   write_files:
+     - path: /opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script
+       owner: root:vyattacfg
+       permissions: '0775'
+       content: |
+         #!/bin/vbash
+         source /opt/vyatta/etc/functions/script-template
+         hostname=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
+         configure
+         set system host-name $hostname
+         commit
+         exit
 
 ***************
 Troubleshooting
