@@ -177,6 +177,59 @@ Finally, verify the authenticity of the downloaded image:
   gpg: Good signature from "VyOS Maintainers (VyOS Release) <maintainers@vyos.net>" [unknown]
   Primary key fingerprint: 0694 A923 0F51 39BF 834B  A458 FD22 0285 A0FE 6D7E
 
+.. _minisign-verification:
+
+Minisign verification
+^^^^^^^^^^^^^^^^^^^^^
+
+Currently we are using GPG for release signing (pretty much like everyone else).
+
+Popularity of GPG for release signing comes from the fact that many people
+already had it installed for email encryption/signing. Inside a VyOS image,
+signature checking is the only reason to have it installed. However, it still
+comes with all the features no one needs, such as support for multiple outdated
+cipher suits and ability to embed a photo in the key file. More importantly,
+web of trust, the basic premise of PGP, is never used in release signing
+context. Once you have a knowingly authentic image, authenticity of upgrades is
+checked using a key that comes in the image, and to get their first image people
+never rely on keyservers either.
+
+Another point is that we are using RSA now, which requires absurdly large keys
+to be secure.
+
+In 2015, OpenBSD introduced signify. An alternative implementation of the same
+protocol is minisign, which is also available for Windows and macOS, and in most
+GNU/Linux distros it's in the repositories now.
+
+Its installed size (complete with libsodium) is less than that of GPG binary
+alone (not including libgcrypt and some other libs, which I think we only use
+for GPG). Since it uses elliptic curves, it gets away with much smaller keys,
+and it doesn't include as much metadata to begin with.
+
+Another issue of GPG is that it creates a /root/.gnupg directory just for
+release checking. The dir is small so the fact that it's never used again is
+an aesthetic problem, but we've had that process fail in the past. But, small
+key size of the Ed25519 algorithm allows passing public keys in command line
+arguments, so verification process can be completely stateless:
+
+:vytask:`T2180` switched the validation system to prefer minisign over GPG keys.
+
+To verify a VyOS image starting off with VyOS 1.3.0-rc6 you can run:
+
+.. code-block:: none
+
+  $ minisign -V -P RWTR1ty93Oyontk6caB9WqmiQC4fgeyd/ejgRxCRGd2MQej7nqebHneP -m vyos-1.3.0-rc6-amd64.iso vyos-1.3.0-rc6-amd64.iso.minisig
+  Signature and comment signature verified
+  Trusted comment: timestamp:1629997936   file:vyos-1.3.0-rc6-amd64.iso
+
+During an image upgrade VyOS performas the following command:
+
+.. code-block:: none
+
+  $ minisign -V -p /usr/share/vyos/keys/vyos-release.minisign.pub -m vyos-1.3.0-rc6-amd64.iso vyos-1.3.0-rc6-amd64.iso.minisig
+  Signature and comment signature verified
+  Trusted comment: timestamp:1629997936   file:vyos-1.3.0-rc6-amd64.iso
+
 .. _live_installation:
 
 Live installation
@@ -460,7 +513,7 @@ extracted contents of the ISO file.
 so that it shows the correct URL at
 ``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``.
 
-.. note:: Do not change the name of the *filesystem.squashfs* file. If 
+.. note:: Do not change the name of the *filesystem.squashfs* file. If
    you are working with different versions, you can create different
    directories instead.
 
