@@ -190,7 +190,7 @@ For example, show which images are installed.
 /generate
 =========
 
-THe ``generate`` endpoint run a ``generate`` command.
+The ``generate`` endpoint run a ``generate`` command.
 
 .. code-block:: none
 
