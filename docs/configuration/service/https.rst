@@ -4,7 +4,7 @@
 HTTP-API
 ########
 
-VyOS provide a HTTP API. You can use it to execute op-mode commands,
+VyOS provide an HTTP API. You can use it to execute op-mode commands,
 update VyOS, set or delete config.
 
 Please take a look at the :ref:`vyosapi` page for an detailed how-to.
@@ -15,7 +15,7 @@ Configuration
 
 .. cfgcmd:: set service https api keys id <name> key <apikey>
 
-   Set an named api key, every key have the same, full permissions
+   Set a named api key. Every key has the same, full permissions
    on the system.
 
 .. cfgcmd:: set service https api debug
@@ -25,7 +25,7 @@ Configuration
 
 .. cfgcmd:: set service https api port
 
-   Set the listen port of the local API, this have non effect of the
+   Set the listen port of the local API, this has no effect on the
    webserver. The default is port 8080
 
 .. cfgcmd:: set service https api strict
@@ -42,11 +42,11 @@ Configuration
 
 .. cfgcmd:: set service https virtual-host <vhost> server-name <text>
 
-   Server names for virtual hosts it ca be exact, wildcard or regex.
+   Server names for virtual hosts it can be exact, wildcard or regex.
 
 .. cfgcmd:: set service https api-restrict virtual-host <vhost>
 
-   Nginx exposes the local API on all virtual servers, by default
+   By default, nginx exposes the local API on all virtual servers.
    Use this to restrict nginx to one or more virtual hosts.
 
 .. cfgcmd:: set service https certificates certbot domain-name <text>
