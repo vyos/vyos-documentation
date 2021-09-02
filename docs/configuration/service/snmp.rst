@@ -163,7 +163,7 @@ Example
   set service snmp v3 view default oid 1
 
 After commit the plaintext passwords will be hashed and stored in your
-configuration. The resulting LCI config will look like:
+configuration. The resulting CLI config will look like:
 
 .. code-block:: none
 
