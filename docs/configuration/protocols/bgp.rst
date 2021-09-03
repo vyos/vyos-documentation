@@ -1043,9 +1043,9 @@ A simple eBGP configuration:
   set protocols bgp 65535 parameters router-id '192.168.0.2'
 
 
-Don't forget, the CIDR declared in the network statement MUST **exist in your
-routing table (dynamic or static), the best way to make sure that is true is
-creating a static route:**
+By default the prefix declared in the network statement does not need to exist in your
+routing table, but it is conventional to add it to prevent routing loops. 
+The best way to do that is to creat a static route:
 
 **Node 1:**
 
@@ -1087,9 +1087,9 @@ A simple BGP configuration via IPv6.
   set protocols bgp 65535 address-family ipv6-unicast network '2001:db8:2::/48'
   set protocols bgp 65535 parameters router-id '10.1.1.2'
 
-Don't forget, the CIDR declared in the network statement **MUST exist in your
-routing table (dynamic or static), the best way to make sure that is true is
-creating a static route:**
+By default the prefix declared in the network statement does not need to exist in your
+routing table, but it is conventional to add it to prevent routing loops. 
+The best way to do that is to creat a static route:
 
 **Node 1:**
 
