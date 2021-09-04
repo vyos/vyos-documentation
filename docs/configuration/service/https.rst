@@ -78,7 +78,7 @@ Set an API-KEY is the minimal configuration to get a working API Endpoint.
    set service https api keys id MY-HTTPS-API-ID key MY-HTTPS-API-PLAINTEXT-KEY
 
 
-To use this full configuration we asume a publice accessable hostname.
+To use this full configuration we asume a public accessible hostname.
 
 .. code-block:: none
 
