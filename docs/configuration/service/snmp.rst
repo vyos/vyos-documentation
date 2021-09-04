@@ -129,7 +129,7 @@ sent in clear text between a manager and agent. Each SNMPv3 message contains
 security parameters which are encoded as an octet string. The meaning of these
 security parameters depends on the security model being used.
 
-The securityapproach in v3 targets:
+The security approach in SNMPv3 targets:
 
 * Confidentiality – Encryption of packets to prevent snooping by an
   unauthorized source.
