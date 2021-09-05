@@ -346,25 +346,25 @@ Configuration
     set interfaces bridge br10 member interface eth3
     set interfaces bridge br10 member interface eth4
     set interfaces bridge br10 vrf 'red'
-    
+
     set interfaces ethernet eth0 address 'dhcp'
     set interfaces ethernet eth0 vrf 'mgmt'
     set interfaces ethernet eth1 address '10.0.0.254/24'
     set interfaces ethernet eth2 address '10.20.0.254/24'
     set interfaces ethernet eth2 vrf 'blue'
-    
+
     set protocols static interface-route 10.20.0.0/24 next-hop-interface eth2 next-hop-vrf 'blue'
     set protocols static interface-route 10.30.0.0/24 next-hop-interface br10 next-hop-vrf 'red'
     set protocols vrf blue static interface-route 10.0.0.0/24 next-hop-interface eth1 next-hop-vrf 'default'
     set protocols vrf red static interface-route 10.0.0.0/24 next-hop-interface eth1 next-hop-vrf 'default'
-    
+
     set service ssh disable-host-validation
     set service ssh vrf 'mgmt'
-    
+
     set system domain-name 'vyos.net'
     set system host-name 'R1'
-    set system name-servers-dhcp 'eth0'
-    
+    set system name-server 'eth0'
+
     set vrf name blue table '3000'
     set vrf name mgmt table '1000'
     set vrf name red table '2000'
