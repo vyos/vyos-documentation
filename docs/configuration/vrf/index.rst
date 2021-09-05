@@ -232,7 +232,7 @@ Configuration
     set service ssh disable-host-validation
     set service ssh vrf 'mgmt'
 
-    set system name-servers-dhcp 'eth0'
+    set system name-server 'eth0'
 
     set vrf name blue protocols static route 10.0.0.0/24 interface eth1 vrf 'default'
     set vrf name blue table '3000'
