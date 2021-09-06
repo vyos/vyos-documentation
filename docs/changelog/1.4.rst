@@ -8,6 +8,50 @@
    _ext/releasenotes.py
 
 
+2021-09-05
+==========
+
+* :vytask:`T3804` (feature): cli: Migrate and merge "system name-servers-dhcp" into "system name-server"
+
+
+2021-09-04
+==========
+
+* :vytask:`T3619` (bug): Performance Degradation 1.2 --> 1.3 | High ksoftirqd CPU usage
+
+
+2021-09-03
+==========
+
+* :vytask:`T3788` (bug): Keys are not allowed with ipip and sit tunnels
+* :vytask:`T3634` (feature): Add op command option for ping for do not fragment bit to be set
+* :vytask:`T3798` (feature): bgp: add support for "neighbor <X> local-as replace-as" option
+* :vytask:`T690` (feature): openvpn push-route allow different metric
+
+
+2021-09-02
+==========
+
+* :vytask:`T3792` (bug): login: A hypen present in a username from "system login user" is replaced by an underscore
+* :vytask:`T3790` (bug): Does not possible to configure PPTP static ip-address to users
+* :vytask:`T2947` (bug): Nat translation many-many with prefix does not map 1-1.
+
+
+2021-08-31
+==========
+
+* :vytask:`T3789` (feature): Add custom validator for base64 encoded CLI data
+* :vytask:`T3782` (default): Ingress Shaping with IFB No Longer Functional with 1.3
+
+
+2021-08-30
+==========
+
+* :vytask:`T3768` (default): Remove early syntaxVersion implementation
+* :vytask:`T2941` (default): Using a non-ASCII character in the description field causes UnicodeDecodeError in configsource.py
+* :vytask:`T3787` (bug): Remove deprecated UDP fragmentation offloading option
+
+
 2021-08-29
 ==========
 
@@ -149,7 +193,6 @@
 ==========
 
 * :vytask:`T3719` (bug): Restart vpn shows some missed files
-* :vytask:`T696` (feature): Rewrite conntrack  sync to XML
 
 
 2021-08-04
@@ -174,7 +217,6 @@
 2021-07-31
 ==========
 
-* :vytask:`T3711` (default): service router-advert interface <name> dnssl option has no effects
 * :vytask:`T3716` (feature): Linux kernel parameters ignore_routes_with_link_down- ignore disconnected routing connections
 
 
@@ -408,7 +450,7 @@
 2021-05-29
 ==========
 
-* :vytask:`T1944` (bug): FRR: Invalid route in BGP causes update storm, memory leak, and failure of Zebra. 
+* :vytask:`T1944` (bug): FRR: Invalid route in BGP causes update storm, memory leak, and failure of Zebra
 * :vytask:`T1888` (feature): Update to StrongSwan 5.9.1
 * :vytask:`T1995` (bug): "show vpn ike sa" command always show child-sas as down
 
@@ -591,14 +633,7 @@
 2021-04-27
 ==========
 
-* :vytask:`T3458` (default): vyos docs missing gretap from tunnel section
 * :vytask:`T2946` (bug): Calling 'stty_size' causes show interfaces API to fail
-
-
-2021-04-26
-==========
-
-* :vytask:`T3487` (bug): Specifying an invalid "interface address" like dhcph leads to commit error
 
 
 2021-04-25
@@ -753,7 +788,6 @@
 ==========
 
 * :vytask:`T3419` (bug): show interfaces | strip-private fails
-* :vytask:`T3307` (default): address prefix destination NAT fails to render nftables rules / commit
 
 
 2021-03-22
@@ -824,7 +858,6 @@
 2021-03-09
 ==========
 
-* :vytask:`T3389` (default): gretap tunnel type missing from vyos documentation after renamed from gre-bridge
 * :vytask:`T3382` (bug): Error creating Console Server
 
 
@@ -1047,14 +1080,14 @@
 2021-01-17
 ==========
 
-* :vytask:`T3222` (bug): BGP dampening description
+* :vytask:`T3222` (bug): Typo in BGP dampening description
 * :vytask:`T3226` (bug): Repair bridge smoke test damage
 
 
 2021-01-16
 ==========
 
-* :vytask:`T3215` (bug): show ipv6 route Broken on 1.4 Rolling
+* :vytask:`T3215` (bug): Operational command "show ipv6 route" is broken
 * :vytask:`T3157` (bug): salt-minion fails to start due to permission error accessing /root/.salt/minion.log
 * :vytask:`T3137` (feature): Let VLAN aware bridge approach the behavior of professional equipment
 
