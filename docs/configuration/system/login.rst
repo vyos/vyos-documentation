@@ -74,6 +74,14 @@ The third part is simply an identifier, and is for your own reference.
    .. note:: You can assign multiple keys to the same user by using a unique
       identifier per SSH key.
 
+.. cfgcmd:: set system login user <username> authentication public-keys
+   <identifier> options <options>
+
+   Set the options for this public key. See the ssh ``authorized_keys`` man page
+   for details of what you can specify here. To place a ``"`` character in the
+   options field, use ``&quot;``, for example ``from=&quot;10.0.0.0/24&quot;``
+   to restrict where the user may connect from when using this key.
+
 .. cfgcmd:: loadkey <username> <location>
 
    **Deprecation notice:** ``loadkey`` has been deprecated in favour of
@@ -96,12 +104,14 @@ Example
 -------
 
 In the following example, both `User1` and `User2` will be able to SSH into
-VyOS as user ``vyos`` using their very own keys.
+VyOS as user ``vyos`` using their very own keys. `User1` is restricted to only
+be able to connect from a single IP address.
 
 .. code-block:: none
 
   set system login user vyos authentication public-keys 'User1' key "AAAAB3Nz...KwEW"
   set system login user vyos authentication public-keys 'User1' type ssh-rsa
+  set system login user vyos authentication public-keys 'User1' options "from=&quot;192.168.0.100&quot;"
   set system login user vyos authentication public-keys 'User2' key "AAAAQ39x...fbV3"
   set system login user vyos authentication public-keys 'User2' type ssh-rsa
 
