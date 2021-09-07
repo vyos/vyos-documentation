@@ -1,4 +1,4 @@
-:lastproofread: 1970-01-01
+:lastproofread: 2021-09-01
 
 .. include:: /_include/need_improvement.txt
 
@@ -6,14 +6,21 @@
 PKI
 ###
 
-VyOS 1.4 changed the way in how encrytions keys/certificates are stored on the
-running system. In the pre VyOS 1.4 era, certificates got stored under /config
-ans every service referenced a file. That made copying a running configuration
-from system A to system B a bit harder, as you had to copy the files and their
-permissions by hand.
+VyOS 1.4 changed the way in how encrytion keys or certificates are stored on the
+system. In the pre VyOS 1.4 era, certificates got stored under /config and every
+service referenced a file. That made copying a running configuration from system
+A to system B a bit harder, as you had to copy the files and their permissions
+by hand.
 
-VyOS 1.4 comes with a new approach where the keys are stored on the CLI and are
-simply referenced by their name.
+:vytask:`T3642` describes a new CLI subsystem that serves as a "certstore" to
+all services requiring any kind of encryption key(s). In short, public and
+private certificates are now stored in PKCS#8 format in the regular VyOS CLI.
+Keys can now be added, edited, and deleted using the regular set/edit/delete
+CLI commands.
+
+VyOS not only can now manage certificates issued by 3rd party Certificate
+Authorities, it can also act as a CA on its own. You can create your own root
+CA and sign keys with it by making use of some simple op-mode commands.
 
 Don't be afraid that you need to re-do your configuration. Key transformation is
 handled, as always, by our migration scripts, so this will be a smooth transition
@@ -156,8 +163,90 @@ WireGuard
     ``peer`` is used for the VyOS CLI command to identify the WireGuard peer where
     this secred is to be used.
 
-Configuration
-=============
+Key usage (CLI)
+===============
+
+CA (Certificate Authority)
+--------------------------
+
+.. cfgcmd:: set pki ca <name> certificate
+
+  Add the public CA certificate for the CA named `name` to the VyOS CLI.
+
+  .. note:: When loading the certificate you need to manually strip the
+    ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
+    Also, the certificate/key needs to be presented in a single line without
+    line breaks (``\n``), this can be done using the following shell command:
+
+    ``$ tail -n +2 ca.pem | head -n -1 | tr -d '\n'H``
+
+.. cfgcmd:: set pki ca <name> crl
+
+  Certificate revocation list in PEM format.
+
+.. cfgcmd:: set pki ca <name> description
+
+  A human readable description what this CA is about.
+
+.. cfgcmd:: set pki ca <name> private key
+
+  Add the CAs private key to the VyOS CLI. This should never leave the system,
+  and is only required if you use VyOS as your certificate generator as
+  mentioned above.
+
+  .. note:: When loading the certificate you need to manually strip the
+    ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
+    certificate/key needs to be presented in a single line without line
+    breaks (``\n``), this can be done using the following shell command:
+
+    ``$ tail -n +2 ca.key | head -n -1 | tr -d '\n'H``
+
+.. cfgcmd:: set pki ca <name> private password-protected
+
+  Mark the CAs private key as password protected. User is asked for the password
+  when the key is referenced.
+
+Server Certificate
+------------------
+
+After we have imported the CA certificate(s) we can now import and add
+certificates used by services on this router.
+
+.. cfgcmd:: set pki certificate <name> certificate
+
+  Add public key portion for the certificate named `name` to the VyOS CLI.
+
+  .. note:: When loading the certificate you need to manually strip the
+    ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
+    Also, the certificate/key needs to be presented in a single line without
+    line breaks (``\n``), this can be done using the following shell command:
+
+    ``$ tail -n +2 cert.pem | head -n -1 | tr -d '\n'H``
+
+.. cfgcmd:: set pki certificate <name> description
+
+  A human readable description what this certificate is about.
+
+.. cfgcmd:: set pki certificate <name> private key
+
+  Add the private key portion of this certificate to the CLI. This should never
+  leave the system as it is used to decrypt the data.
+
+  .. note:: When loading the certificate you need to manually strip the
+    ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
+    certificate/key needs to be presented in a single line without line
+    breaks (``\n``), this can be done using the following shell command:
+
+    ``$ tail -n +2 cert.key | head -n -1 | tr -d '\n'H``
+
+.. cfgcmd:: set pki certificate <name> private password-protected
+
+  Mark the private key as password protected. User is asked for the password
+  when the key is referenced.
+
+.. cfgcmd:: set pki certificate <name> revoke
+
+  If CA is present, this certificate will be included in generated CRLs
 
 Operation
 =========
