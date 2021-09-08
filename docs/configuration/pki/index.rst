@@ -178,7 +178,7 @@ CA (Certificate Authority)
     Also, the certificate/key needs to be presented in a single line without
     line breaks (``\n``), this can be done using the following shell command:
 
-    ``$ tail -n +2 ca.pem | head -n -1 | tr -d '\n'H``
+    ``$ tail -n +2 ca.pem | head -n -1 | tr -d '\n'``
 
 .. cfgcmd:: set pki ca <name> crl
 
@@ -199,7 +199,7 @@ CA (Certificate Authority)
     certificate/key needs to be presented in a single line without line
     breaks (``\n``), this can be done using the following shell command:
 
-    ``$ tail -n +2 ca.key | head -n -1 | tr -d '\n'H``
+    ``$ tail -n +2 ca.key | head -n -1 | tr -d '\n'``
 
 .. cfgcmd:: set pki ca <name> private password-protected
 
@@ -221,7 +221,7 @@ certificates used by services on this router.
     Also, the certificate/key needs to be presented in a single line without
     line breaks (``\n``), this can be done using the following shell command:
 
-    ``$ tail -n +2 cert.pem | head -n -1 | tr -d '\n'H``
+    ``$ tail -n +2 cert.pem | head -n -1 | tr -d '\n'``
 
 .. cfgcmd:: set pki certificate <name> description
 
@@ -237,7 +237,7 @@ certificates used by services on this router.
     certificate/key needs to be presented in a single line without line
     breaks (``\n``), this can be done using the following shell command:
 
-    ``$ tail -n +2 cert.key | head -n -1 | tr -d '\n'H``
+    ``$ tail -n +2 cert.key | head -n -1 | tr -d '\n'``
 
 .. cfgcmd:: set pki certificate <name> private password-protected
 
