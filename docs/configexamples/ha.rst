@@ -306,21 +306,17 @@ public interface.
    set nat source rule 10 translation address '203.0.113.1'
 
 
-Configure conntrack-sync and disable helpers
+Configure conntrack-sync and enable helpers
 --------------------------------------------
 
-Most conntrack modules cause more problems than they're worth, especially in a
-complex network. Turn them off by default, and if you need to turn them on
-later, you can do so.
+Conntrack modules are disabled by default because they cause more problems
+than they're worth, especially in a complex network. You can enable them
+manually if you wish.
 
 .. code-block:: none
 
-   set system conntrack modules ftp disable
-   set system conntrack modules gre disable
-   set system conntrack modules nfs disable
-   set system conntrack modules pptp disable
-   set system conntrack modules sip disable
-   set system conntrack modules tftp disable
+   set system conntrack modules ftp
+   set system conntrack modules gre
 
 Now enable replication between nodes. Replace eth0.201 with bond0.201 on the
 hardware router.
