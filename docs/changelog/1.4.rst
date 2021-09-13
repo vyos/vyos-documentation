@@ -8,6 +8,46 @@
    _ext/releasenotes.py
 
 
+2021-09-11
+==========
+
+* :vytask:`T3402` (feature): Add VyOS programming library for operational level commands
+* :vytask:`T3275` (default): Disable conntrack helpers by default
+
+
+2021-09-10
+==========
+
+* :vytask:`T3802` (bug): Commit fails if ethernet interface doesn't support flow control
+* :vytask:`T3819` (bug): Upgrade Salt Stack 3002.3 -> 3003 release train
+* :vytask:`T915` (feature): MPLS Support
+
+
+2021-09-09
+==========
+
+* :vytask:`T3812` (bug): Vyos and frr route-map config out of sync
+* :vytask:`T3814` (bug): wireguard: commit error showing incorrect peer name from the configured name
+* :vytask:`T3805` (bug): OpenVPN insufficient privileges for rtnetlink when closing TUN/TAP interface
+* :vytask:`T3815` (bug): pki : the file command 'generate pki wireguard key-pair file' is not working
+
+
+2021-09-07
+==========
+
+* :vytask:`T1894` (bug): FRR config not loaded after daemons segfault or restart
+* :vytask:`T3807` (bug): Op Command "show interfaces wireguard"  does not show the output
+
+
+2021-09-06
+==========
+
+* :vytask:`T3806` (bug): Don't set link local ipv6 address if MTU less then 1280
+* :vytask:`T3803` (default): Add source-address option to the ping CLI
+* :vytask:`T3431` (bug): Show version all bug
+* :vytask:`T2920` (bug): Commit crash when adding the second mGRE tunnel with the same key
+
+
 2021-09-05
 ==========
 
@@ -26,7 +66,6 @@
 * :vytask:`T3788` (bug): Keys are not allowed with ipip and sit tunnels
 * :vytask:`T3634` (feature): Add op command option for ping for do not fragment bit to be set
 * :vytask:`T3798` (feature): bgp: add support for "neighbor <X> local-as replace-as" option
-* :vytask:`T690` (feature): openvpn push-route allow different metric
 
 
 2021-09-02
@@ -285,12 +324,6 @@
 * :vytask:`T1441` (feature): Add support for IPSec XFRM interfaces
 
 
-2021-06-27
-==========
-
-* :vytask:`T3653` (default): Cloudinit subnet error if a cidr (/24) is used instead of a subnet mask (255.255.255.0)
-
-
 2021-06-25
 ==========
 
@@ -311,7 +344,6 @@
 
 * :vytask:`T3629` (bug): IPoE server shifting address in the range
 * :vytask:`T3645` (feature): Bullseye: ethtool changed output for ring-buffer information
-* :vytask:`T3582` (default): 'delete log file' does not work
 
 
 2021-06-21
@@ -331,7 +363,6 @@
 ==========
 
 * :vytask:`T3633` (feature): Add LRO offload for interface ethernet
-* :vytask:`T3632` (bug): policy: route-map: unable to configure route-target / site-of-origin
 
 
 2021-06-18
@@ -382,7 +413,6 @@
 
 * :vytask:`T3250` (bug): PPPoE server:  wrong local usernames
 * :vytask:`T3138` (bug): ddclient improperly updated when apply rfc2136 config
-* :vytask:`T2620` (feature): Add ipsec peer-name to log to simplifies grepping and troubleshooting
 * :vytask:`T2645` (default): Editing route-map action requires adding a new rule
 
 
@@ -437,7 +467,6 @@
 2021-05-30
 ==========
 
-* :vytask:`T3524` (default): Please implement  bgp graceful-shutdown
 * :vytask:`T3518` (bug): Warning messages when using SCP commit-archive
 * :vytask:`T3093` (default): Add xml for vpn ipsec
 * :vytask:`T1866` (bug): Commit archive over SFTP doesn't work with non-standard ports
@@ -452,7 +481,6 @@
 
 * :vytask:`T1944` (bug): FRR: Invalid route in BGP causes update storm, memory leak, and failure of Zebra
 * :vytask:`T1888` (feature): Update to StrongSwan 5.9.1
-* :vytask:`T1995` (bug): "show vpn ike sa" command always show child-sas as down
 
 
 2021-05-27
@@ -466,12 +494,6 @@
 ==========
 
 * :vytask:`T3540` (bug): Keepalived memory utilisation issue when constantly getting its state in JSON format
-
-
-2021-05-25
-==========
-
-* :vytask:`T3569` (bug): Firewall wrong completion help values
 
 
 2021-05-24
@@ -523,12 +545,6 @@
 * :vytask:`T3525` (default): VMWare resume script syntax errors
 
 
-2021-05-17
-==========
-
-* :vytask:`T3557` (bug): ddclient: FileNotFoundError in op-mode
-
-
 2021-05-15
 ==========
 
@@ -544,7 +560,6 @@
 
 * :vytask:`T3346` (bug): nat 4-to-5 migration script fails when a 'source' or 'destination' node exists but there are no rules
 * :vytask:`T3248` (default): Deal with VRRP mode-force command that exists in 1.2 but not in 1.3
-* :vytask:`T2809` (bug): An issue with config migration (system ntp server)
 * :vytask:`T3426` (default): add support for script arguments to vyos-configd
 
 
@@ -574,13 +589,6 @@
 ==========
 
 * :vytask:`T3530` (bug): BGP peer-group can't contain a hyphen
-* :vytask:`T3531` (bug): policy: prefix-list and route-map names do not allow underscores in names (FRR does)
-
-
-2021-05-07
-==========
-
-* :vytask:`T3333` (bug): "show vpn ipsec sa" reports ESP tunnels to be up when they are not.
 
 
 2021-05-06
@@ -729,7 +737,6 @@
 ==========
 
 * :vytask:`T3462` (default): show ipv6 bgp -- missing
-* :vytask:`T3456` (bug): firewall: rules that should be deleted seem to be still in use
 * :vytask:`T3463` (bug): Prevent IPv4 Route exchange with IPv6 neighbors
 
 
@@ -1115,9 +1122,3 @@
 ==========
 
 * :vytask:`T3132` (feature): Enable egress flow accounting
-
-
-2020-07-20
-==========
-
-* :vytask:`T2717` (default): Wrong DHCP server pool size in statistics
