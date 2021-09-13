@@ -34,8 +34,9 @@ In the VyOS CLI, a key point often overlooked is that rather than being
 configured using the `set vpn` stanza, OpenVPN is configured as a network
 interface using `set interfaces openvpn`.
 
-Site-To-Site
-============
+************
+Site-to-Site
+************
 
 .. figure:: /_static/images/openvpn_site2site_diagram.jpg
 
@@ -85,7 +86,7 @@ Local Configuration:
   set interfaces openvpn vtun1 local-port '1195'
   set interfaces openvpn vtun1 remote-port '1195'
   set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
-  set interfaces openvpn vtun1 local-address '10.255.1.1'                         
+  set interfaces openvpn vtun1 local-address '10.255.1.1'
   set interfaces openvpn vtun1 remote-address '10.255.1.2'
 
 Local Configuration - Annotated:
@@ -132,11 +133,10 @@ Remote Configuration - Annotated:
   set interfaces openvpn vtun1 remote-address '10.255.1.1'                         # Remote IP of vtun interface
 
 
-*******************
 Firewall Exceptions
-*******************
+===================
 
-For the WireGuard traffic to pass through the WAN interface, you must create a
+For the OpenVPN traffic to pass through the WAN interface, you must create a
 firewall exception.
 
 .. code-block:: none
@@ -248,8 +248,9 @@ to each tunnel. Another option is to dedicate a port number to each tunnel
 OpenVPN status can be verified using the `show openvpn` operational commands.
 See the built-in help for a complete list of options.
 
+******
 Server
-======
+******
 
 Multi-client server is the most popular OpenVPN mode on routers. It always uses
 x.509 authentication and therefore requires a PKI setup. Refer this section
@@ -325,7 +326,7 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
   set protocols static route 10.23.0.0/20 interface vtun10
 
 Generate X.509 Certificate and Keys
------------------------------------
+===================================
 
 OpenVPN ships with a set of scripts called Easy-RSA that can generate the
 appropriate files needed for an OpenVPN setup using X.509 certificates.
@@ -538,8 +539,9 @@ example:
        }
    }
 
+******
 Client
-======
+******
 
 VyOS can not only act as an OpenVPN site-to-site or server for multiple clients.
 You can indeed also configure any VyOS OpenVPN interface as an OpenVPN client
@@ -552,8 +554,11 @@ using their CN attribute in the SSL certificate.
 
 .. _openvpn:client_server:
 
-Server
-------
+Configuration
+=============
+
+Server Side
+-----------
 
 .. code-block:: none
 
@@ -578,8 +583,8 @@ Server
 
 .. _openvpn:client_client:
 
-Client
-------
+Client Side
+-----------
 
 .. code-block:: none
 
@@ -641,7 +646,7 @@ The following commands let you check tunnel status.
 
 .. opcmd:: show openvpn site-to-site
 
-   Use this command to check the tunnel status for OpenVPN site-to-site 
+   Use this command to check the tunnel status for OpenVPN site-to-site
    interfaces.
 
 
