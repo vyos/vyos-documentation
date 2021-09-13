@@ -39,9 +39,19 @@ VyOS User Guide
    :includehidden:
    :caption: Development
 
-   contributing/index
-   debugging
-   testing
+   contributing/build-vyos
+   contributing/development
+   contributing/issues-features
+   contributing/upstream-packages
+   contributing/debugging
+   contributing/testing
+
+
+.. toctree::
+   :maxdepth: 2
+   :includehidden:
+   :caption: Misc
+
    documentation
    coverage
    copyright

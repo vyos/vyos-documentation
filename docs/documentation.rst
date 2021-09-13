@@ -2,9 +2,9 @@
 
 .. _documentation:
 
-#############
-Documentation
-#############
+###################
+Write Documentation
+###################
 
 We encourage every VyOS user to help us improve our documentation as we have
 a deficit like most software projects.  This not only helps you when reading
