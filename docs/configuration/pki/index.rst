@@ -268,6 +268,10 @@ also to display them.
     R3              CN=R3,O=Let's Encrypt,C=US                               CN=ISRG Root X1    2020-09-04 00:00:00  2025-09-15 16:00:00  No             DST_Root_CA_X3
     vyos_rw         CN=VyOS RW CA,O=VyOS,L=Some-City,ST=Some-State,C=GB      CN=VyOS RW CA      2021-07-05 13:46:03  2026-07-04 13:46:03  Yes            N/A
 
+.. opcmd:: show pki ca <name>
+
+  Show only information for specified Certificate Authority.
+
 .. opcmd:: show pki certificates
 
   Show a list of installed certificates
@@ -280,6 +284,10 @@ also to display them.
     ---------  ------  ---------------------  -------------  -------------------  -------------------  ---------  -------------  -------------
     ac2        Server  CN=ac2.vyos.net        CN=R3          2021-07-05 07:29:59  2021-10-03 07:29:58  No         Yes            Yes (R3)
     rw_server  Server  CN=VyOS RW             CN=VyOS RW CA  2021-07-05 13:48:02  2022-07-05 13:48:02  No         Yes            Yes (vyos_rw)
+
+.. opcmd:: show pki certificates <name>
+
+  Show only information for specified certificate.
 
 .. opcmd:: show pki crl
 
