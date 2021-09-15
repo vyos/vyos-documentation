@@ -133,7 +133,7 @@ VyOS installation
 * Open a console.
   The console should show the system booting. It will ask for the login
   credentials, you are at the VyOS live system.
-* `Install VyOS <https://docs.vyos.io/en/latest/install.html#install>`__
+* :ref:`Install VyOS <installation>`
   as normal (that is, using the ``install image`` command).
 
 * After a successful installation, shutdown the VM with the ``poweroff``
