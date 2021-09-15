@@ -58,8 +58,7 @@ Imported prefixes during the validation may have values:
   notfound
     No ROA exists which covers that prefix. Unfortunately this is the case
     for about 80% of the IPv4 prefixes which were announced to the :abbr:`DFZ
-    (default-free zone)` at the start of 2020 (see more detail in
-    NLnet Labs' `RPKI analytics`_).
+    (default-free zone)` at the start of 2020
 
 .. note::
   If you are responsible for the global addresses assigned to your
@@ -191,10 +190,9 @@ Test`_ experimental tool.
 .. _Routinator: https://www.nlnetlabs.nl/projects/rpki/routinator/
 .. _GoRTR: https://github.com/cloudflare/gortr
 .. _OctoRPKI: https://github.com/cloudflare/cfrpki#octorpki
-.. _Validator: https://www.ripe.net/manage-ips-and-asns/resource-management/certification/tools-and-resources
+.. _Validator: https://www.ripe.net/manage-ips-and-asns/resource-management/rpki/tools-and-resources
 .. _some instructions: https://labs.ripe.net/Members/tashi_phuntsho_3/how-to-install-an-rpki-validator
 .. _Krill: https://www.nlnetlabs.nl/projects/rpki/krill/
-.. _RPKI analytics: https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/
 .. _RIPE Labs RPKI Test: https://sg-pub.ripe.net/jasper/rpki-web-test/
 .. _excellent guide to RPKI: https://rpki.readthedocs.io/
 .. _help and operational guidance: https://rpki.readthedocs.io/en/latest/about/help.html
