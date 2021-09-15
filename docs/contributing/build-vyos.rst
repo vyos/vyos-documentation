@@ -864,7 +864,7 @@ information.
 .. stop_vyoslinter
 
 .. _Docker: https://www.docker.com
-.. _`Docker as non-root`: https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user
+.. _`Docker as non-root`: https://docs.docker.com/engine/install/linux-postinstall
 .. _VyOS DockerHub organisation: https://hub.docker.com/u/vyos
 .. _repository: https://github.com/vyos/vyos-build
 .. _VyOS GitHub project: https://github.com/vyos
