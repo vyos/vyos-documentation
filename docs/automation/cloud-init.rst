@@ -19,7 +19,7 @@ VyOS support three types of config sources.
 
 * Metadata - Metadata is sourced by the cloud platform or hypervisor.
   In some clouds, there is implemented as an HTTP endpoint at
-  http://169.254.169.254.
+  ```http://169.254.169.254```.
 * Network configuration - This config source informs the system about the
   network settings like IP addresses, routes, DNS. Available only in several
   cloud and virtualization platforms.
