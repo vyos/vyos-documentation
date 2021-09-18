@@ -21,6 +21,27 @@ address.
 Configuration
 =============
 
+.. cfgcmd:: set service dhcp-server shared-network-name <name> domain-name <domain-name>
+
+   The domain-name parameter should be the domain name that will be appended to
+   the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
+   Option 015).
+
+   This is the configuration parameter for the entire shared network definition.
+   All subnets will inherit this configuration item if not specified locally.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> name-server <address>
+
+   Inform client that the DNS server can be found at `<address>`.
+
+   This is the configuration parameter for the entire shared network definition.
+   All subnets will inherit this configuration item if not specified locally.
+
+   Multiple DNS servers can be defined.
+
+Individual Client Subnet
+-------------------------
+
 .. cfgcmd:: set service dhcp-server shared-network-name <name> authoritative
 
    This says that this device is the only DHCP server for this network. If other
