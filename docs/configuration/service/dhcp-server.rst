@@ -36,7 +36,7 @@ Configuration
    `<address>`.
 
 .. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
-   dns-server <address>
+   name-server <address>
 
    This is a configuration parameter for the subnet, saying that as part of the
    response, tell the client that the DNS server can be found at `<address>`.
@@ -188,7 +188,7 @@ Options
      - time-servers
      - RFC 868 time server IPv4 address
      - Y
-   * - dns-server
+   * - name-server
      - 6
      - domain-name-servers
      - DNS server IPv4 address
@@ -335,7 +335,7 @@ Common configuration, valid for both primary and secondary node.
 .. code-block:: none
 
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 default-router '192.0.2.254'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 dns-server '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 name-server '192.0.2.254'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 domain-name 'vyos.net'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.0.2.10'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
@@ -364,7 +364,7 @@ Common configuration, valid for both primary and secondary node.
 Raw Parameters
 --------------
 
-* Override static-mapping's dns-server with a custom one that will be sent only
+* Override static-mapping's name-server with a custom one that will be sent only
   to this host.
 * An option that takes a quoted string is set by replacing all quote characters
   with the string ``&quot;`` inside the static-mapping-parameters value.
