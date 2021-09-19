@@ -136,32 +136,33 @@ Individual Client Subnet
    DHCP server will attempt to reclaim an abandoned IP address regardless of the
    value of abandon-lease-time.
 
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   enable-failover
+
+   Enable DHCP failover configuration for this address pool.
+
 Failover
 --------
 
 VyOS provides support for DHCP failover. DHCP failover must be configured
 explicitly by the following statements.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
-   <subnet> failover local-address <address>
+.. cfgcmd:: set service dhcp-server failover source-address <address>
 
    Local IP `<address>` used when communicating to the failover peer.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
-   <subnet> failover peer-address <address>
+.. cfgcmd:: set service dhcp-server failover remote <address>
 
    Remote peer IP `<address>` of the second DHCP server in this failover
    cluster.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
-   <subnet> failover name <name>
+.. cfgcmd:: set service dhcp-server failover name <name>
 
    A generic `<name>` referencing this sync service.
 
    .. note:: `<name>` must be identical on both sides!
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
-   <subnet> failover status <primary | secondary>
+.. cfgcmd:: set service dhcp-server failover status <primary | secondary>
 
    The primary and secondary statements determines whether the server is primary
    or secondary.
@@ -391,25 +392,26 @@ Common configuration, valid for both primary and secondary node.
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 domain-name 'vyos.net'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.0.2.10'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 enable-failover
 
 
 **Primary**
 
 .. code-block:: none
 
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover local-address '192.168.189.252'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.253'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'primary'
+  set service dhcp-server failover source-address '192.168.189.252'
+  set service dhcp-server failover name 'NET-VYOS'
+  set service dhcp-server failover remote '192.168.189.253'
+  set service dhcp-server failover status 'primary'
 
 **Secondary**
 
 .. code-block:: none
 
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover local-address '192.168.189.253'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover name 'NET-VYOS'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover peer-address '192.168.189.252'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 failover status 'secondary'
+  set service dhcp-server failover source-address '192.168.189.253'
+  set service dhcp-server failover name 'NET-VYOS'
+  set service dhcp-server failover remote '192.168.189.252'
+  set service dhcp-server failover status 'secondary'
 
 .. _dhcp-server:v4_example_raw:
 
