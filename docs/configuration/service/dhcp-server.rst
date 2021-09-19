@@ -39,6 +39,21 @@ Configuration
 
    Multiple DNS servers can be defined.
 
+.. cfgcmd:: set service dhcp-server shared-network-name <name> ping-check
+
+   When the DHCP server is considering dynamically allocating an IP address to a
+   client, it first sends an ICMP Echo request (a ping) to the address being
+   assigned. It waits for a second, and if no ICMP Echo response has been heard,
+   it assigns the address.
+
+   If a response is heard, the lease is abandoned, and the server does not
+   respond to the client. The lease will remain abandoned for a minimum of
+   abandon-lease-time seconds (defaults to 24 hours).
+
+   If a there are no free addressses but there are abandoned IP addresses, the
+   DHCP server will attempt to reclaim an abandoned IP address regardless of the
+   value of abandon-lease-time.
+
 Individual Client Subnet
 -------------------------
 
@@ -104,6 +119,22 @@ Individual Client Subnet
    The domain-name parameter should be the domain name used when completing DNS
    request where no full FQDN is passed. This option can be given multiple times
    if you need multiple search domains (DHCP Option 119).
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   ping-check
+
+   When the DHCP server is considering dynamically allocating an IP address to a
+   client, it first sends an ICMP Echo request (a ping) to the address being
+   assigned. It waits for a second, and if no ICMP Echo response has been heard,
+   it assigns the address.
+
+   If a response is heard, the lease is abandoned, and the server does not
+   respond to the client. The lease will remain abandoned for a minimum of
+   abandon-lease-time seconds (defaults to 24 hours).
+
+   If a there are no free addressses but there are abandoned IP addresses, the
+   DHCP server will attempt to reclaim an abandoned IP address regardless of the
+   value of abandon-lease-time.
 
 Failover
 --------
