@@ -8,6 +8,30 @@
    _ext/releasenotes.py
 
 
+2021-09-19
+==========
+
+* :vytask:`T3841` (feature): dhcp-server: add ping-check option to CLI
+* :vytask:`T2738` (bug): Modifying configuration in the "interfaces" section from VRRP transition scripts causes configuration lockup and high CPU utilization
+* :vytask:`T3840` (feature): dns forwarding: Cache size should allow values > 10k
+* :vytask:`T3672` (bug): DHCP-FO with multiple subnets results in invalid/non-functioning dhcpd.conf configuration file output 
+
+
+2021-09-18
+==========
+
+* :vytask:`T3831` (bug): External traffic stops routing when IPSEC tunnel comes up with interface vti0
+* :vytask:`T1968` (default): Allow multiple static routes in dhcp-server
+* :vytask:`T3838` (feature): dhcp-server - sync cli for name-servers to other subsystems
+* :vytask:`T3839` (feature): dhcp-server: Allow configuration of a DNS server and domain name on the shared-network level
+
+
+2021-09-17
+==========
+
+* :vytask:`T3830` (bug): ipsec: remote-id no longer included in IKE AUTH if not explicitly specified
+
+
 2021-09-11
 ==========
 
@@ -320,7 +344,6 @@
 ==========
 
 * :vytask:`T3593` (bug): PPPoE server called-sid format does not work
-* :vytask:`T3657` (default): BGP neighbors ipv6 not able to establish with IPv6 link-local addresses
 * :vytask:`T1441` (feature): Add support for IPSec XFRM interfaces
 
 
