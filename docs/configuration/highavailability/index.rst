@@ -16,8 +16,8 @@ highest priority becomes the new master and takes over the virtual address.
 
 VRRP keepalive packets use multicast, and VRRP setups are limited to a single
 datalink layer segment. You can setup multiple VRRP groups
-(also called virtual routers). Virtual routers are identified by a 
-VRID (Virtual Router IDentifier). If you setup multiple groups on the same 
+(also called virtual routers). Virtual routers are identified by a
+VRID (Virtual Router IDentifier). If you setup multiple groups on the same
 interface, their VRIDs must be unique, but it's possible (even if not
 recommended for readability reasons) to use duplicate VRIDs on different
 interfaces.
@@ -27,7 +27,7 @@ Basic setup
 
 VRRP groups are created with the
 ``set high-availability vrrp group $GROUP_NAME`` commands. The required
-parameters are interface, vrid, and virtual-address.
+parameters are interface, vrid, and address.
 
 minimal config
 
@@ -35,7 +35,7 @@ minimal config
 
   set high-availability vrrp group Foo vrid 10
   set high-availability vrrp group Foo interface eth0
-  set high-availability vrrp group Foo virtual-address 192.0.2.1/24
+  set high-availability vrrp group Foo address 192.0.2.1/24
 
 You can verify your VRRP group status with the operational mode
 ``run show vrrp`` command:
@@ -50,8 +50,8 @@ You can verify your VRRP group status with the operational mode
 IPv6 support
 ------------
 
-The ``virtual-address`` parameter can be either an IPv4 or IPv6 address, but you
-cannot mix IPv4 and IPv6 in the same group, and will need to create groups with
+The ``address`` parameter can be either an IPv4 or IPv6 address, but you can
+not mix IPv4 and IPv6 in the same group, and will need to create groups with
 different VRIDs specially for IPv4 and IPv6.
 
 Disabling a VRRP group
@@ -97,14 +97,14 @@ In the following example, when VLAN9 transitions, VLAN20 will also transition:
     vrrp {
         group VLAN9 {
             interface eth0.9
-            virtual-address 10.9.1.1/24
+            address 10.9.1.1/24
             priority 200
             vrid 9
         }
         group VLAN20 {
             interface eth0.20
             priority 200
-            virtual-address 10.20.20.1/24
+            address 10.20.20.1/24
             vrid 20
         }
         sync-group MAIN {
@@ -114,7 +114,7 @@ In the following example, when VLAN9 transitions, VLAN20 will also transition:
     }
 
 
-.. warning:: All items in a sync group should be similarly configured. 
+.. warning:: All items in a sync group should be similarly configured.
    If one VRRP group is set to a different preemption delay or priority,
    it would result in an endless transition loop.
 
@@ -158,9 +158,9 @@ rfc3768-compatibility
 ---------------------
 
 RFC 3768 defines a virtual MAC address to each VRRP virtual router.
-This virtual router MAC address will be used as the source in all periodic VRRP 
-messages sent by the active node. When the rfc3768-compatibility option is set, 
-a new VRRP interface is created, to which the MAC address and the virtual IP 
+This virtual router MAC address will be used as the source in all periodic VRRP
+messages sent by the active node. When the rfc3768-compatibility option is set,
+a new VRRP interface is created, to which the MAC address and the virtual IP
 address is automatically assigned.
 
 .. code-block:: none
@@ -172,7 +172,7 @@ Verification
 .. code-block:: none
 
    $show interfaces ethernet eth0v10
-   eth0v10@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue 
+   eth0v10@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue
    state UP group default qlen 1000
    link/ether 00:00:5e:00:01:0a brd ff:ff:ff:ff:ff:ff
    inet 172.25.0.247/16 scope global eth0v10
