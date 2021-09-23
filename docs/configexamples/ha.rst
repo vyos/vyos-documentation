@@ -309,14 +309,13 @@ public interface.
 Configure conntrack-sync and enable helpers
 --------------------------------------------
 
-Conntrack modules are disabled by default because they cause more problems
-than they're worth, especially in a complex network. You can enable them
-manually if you wish.
+Conntrack helper modules are enabled by default, but they tend to cause more
+problems than they're worth in complex networks. You can disable all of them
+at one go.
 
 .. code-block:: none
 
-   set system conntrack modules ftp
-   set system conntrack modules gre
+      delete system conntrack modules
 
 Now enable replication between nodes. Replace eth0.201 with bond0.201 on the
 hardware router.
