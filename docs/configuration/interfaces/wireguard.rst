@@ -110,7 +110,7 @@ one.
   set interfaces wireguard wg01 port '51820'                              # Port of own server
   set protocols static route 192.168.2.0/24 interface wg01                # Static route to remote subnet
 
-The last step is to define an interface route for 10.2.0.0/24 to get
+The last step is to define an interface route for 192.168.2.0/24 to get
 through the WireGuard interface `wg01`. Multiple IPs or networks can be
 defined and routed. The last check is allowed-ips which either prevents
 or allows the traffic.
