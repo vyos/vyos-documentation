@@ -8,6 +8,27 @@
    _ext/releasenotes.py
 
 
+2021-09-26
+==========
+
+* :vytask:`T3860` (bug): Error on pppoe, tunnel and wireguard interfaces for IPv6 EUI64 addresses
+* :vytask:`T3857` (feature): reboot: send wall message to all users for information
+* :vytask:`T3867` (bug): vxlan: multicast group address is not validated
+* :vytask:`T3859` (bug): Add "log-adjacency-changes" to ospfv3 process
+
+
+2021-09-23
+==========
+
+* :vytask:`T3850` (bug): Dots are no longer allowed in SSH public key names
+
+
+2021-09-21
+==========
+
+* :vytask:`T2602` (bug): pptp/sstp/l2tp add possibility enable or disable CCP
+
+
 2021-09-19
 ==========
 
