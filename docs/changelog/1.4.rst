@@ -8,6 +8,40 @@
    _ext/releasenotes.py
 
 
+2021-09-26
+==========
+
+* :vytask:`T3860` (bug): Error on pppoe, tunnel and wireguard interfaces for IPv6 EUI64 addresses
+* :vytask:`T3857` (feature): reboot: send wall message to all users for information
+* :vytask:`T3867` (bug): vxlan: multicast group address is not validated
+* :vytask:`T3859` (bug): Add "log-adjacency-changes" to ospfv3 process
+* :vytask:`T3826` (bug): PKI: op-mode - do input validation when listing certificates
+
+
+2021-09-25
+==========
+
+* :vytask:`T3657` (default): BGP neighbors ipv6 not able to establish with IPv6 link-local addresses
+
+
+2021-09-23
+==========
+
+* :vytask:`T3850` (bug): Dots are no longer allowed in SSH public key names
+
+
+2021-09-21
+==========
+
+* :vytask:`T3847` (feature): keepalived/vrrp: migrate to get_config_dict() - cleanup
+
+
+2021-09-20
+==========
+
+* :vytask:`T3823` (bug): strip-private does not filter public IPv6 addresses
+
+
 2021-09-19
 ==========
 
@@ -736,12 +770,6 @@
 
 * :vytask:`T3454` (enhancment): dhclient reject option
 * :vytask:`T3328` (bug): Bgp not possible to delete bgp route-map 
-
-
-2021-04-11
-==========
-
-* :vytask:`T3435` (bug): NAT rules show corruption
 
 
 2021-04-10
