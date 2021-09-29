@@ -1,3 +1,5 @@
+:lastproofread: 2021-09-28
+
 .. include:: /_include/need_improvement.txt
 
 .. _routing-bfd:
@@ -34,7 +36,7 @@ Configure BFD
 .. cfgcmd:: set protocols bfd peer <address> source
    [address <address> | interface <interface>]
 
-   Bind listener to specifid interface/address, mandatory for IPv6
+   Bind listener to specific interface/address, mandatory for IPv6
 
 .. cfgcmd:: set protocols bfd peer <address> interval echo-interval <10-60000>
 
@@ -72,11 +74,11 @@ Enable BFD in OSPF
 
 .. cfgcmd:: set interfaces ethernet <interface> ip ospf bfd
 
-   Enable BFD for OSPF on a interface
+   Enable BFD for OSPF on an interface
 
 .. cfgcmd:: set interfaces ethernet <interface> ipv6 ospfv3 bfd
 
-   Enable BFD for OSPFv3 on a interface
+   Enable BFD for OSPFv3 on an interface
 
 
 Enable BFD in ISIS
@@ -84,7 +86,7 @@ Enable BFD in ISIS
 
 .. cfgcmd:: set protocols isis <name> interface <interface> bfd
 
-   Enable BFD for ISIS on a interface
+   Enable BFD for ISIS on an interface
 
 
 
