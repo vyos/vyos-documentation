@@ -1,3 +1,5 @@
+:lastproofread: 2021-09-30
+
 .. _multicast:
 
 #########
@@ -99,7 +101,7 @@ These are the commands for a basic setup.
 .. cfgcmd:: set protocols pim rp address <address> group
    <multicast-address/mask-bits>
 
-   Use this comand to manually configure a Rendevouz Point for PIM so
+   Use this command to manually configure a Rendezvous Point for PIM so
    that join messages can be sent there. Set the Rendevouz Point address
    and the matching prefix of group ranges covered. These values must
    be shared with every router participating in the PIM network.
@@ -108,7 +110,7 @@ These are the commands for a basic setup.
 .. cfgcmd:: set protocols igmp interface eth1
 
    Use this command to configure an interface with IGMP so that PIM can
-   receive IGMP reports and query on the selected interface. By defaul
+   receive IGMP reports and query on the selected interface. By default
    IGMP version 3 will be used.
 
 
@@ -135,16 +137,16 @@ You can also tune multicast with the following commands.
 
 .. cfgcmd:: set protocols pim rp keep-alive-timer <seconds>
 
-   Use this PIM command to modify the the time out value (31-60000
+   Use this PIM command to modify the time out value (31-60000
    seconds) for an `(S,G) <https://tools.ietf.org/html/rfc7761#section-4.1>`_
    flow. 31 seconds is chosen for a lower bound as some hardware
-   platforms cannot see data flowing in better than 30 second chunks.
+   platforms cannot see data flowing in better than 30 seconds chunks.
 
 
 .. cfgcmd:: set protocols igmp interface <interface> join <multicast-address>
    source <IP-address>
 
-   Use this command to allow the selected interface join a multicast
+   Use this command to allow the selected interface to join a multicast
    group defining the multicast address you want to join and the source
    IP address too.
 
@@ -160,7 +162,7 @@ You can also tune multicast with the following commands.
 
    Use this command to configure in the selected interface the IGMP
    query response timeout value (10-250) in deciseconds. If a report is
-   not returned in the specified time, it will be asumed the `(S,G) or
+   not returned in the specified time, it will be assumed the `(S,G) or
    (*,G) state <https://tools.ietf.org/html/rfc7761#section-4.1>`_ has
    timed out.
 
@@ -198,7 +200,7 @@ Configuration
 .. cfgcmd:: set protocols igmp-proxy interface <interface> alt-subnet <network>
 
    Defines alternate sources for multicasting and IGMP data. The network address
-   must be on the following format 'a.b.c.d/n'. By default the router will
+   must be on the following format 'a.b.c.d/n'. By default, the router will
    accept data from sources on the same network as configured on an interface.
    If the multicast source lies on a remote network, one must define from where
    traffic should be accepted.
@@ -213,10 +215,10 @@ Configuration
    Disables quickleave mode. In this mode the daemon will not send a Leave IGMP
    message upstream as soon as it receives a Leave message for any downstream
    interface. The daemon will not ask for Membership reports on the downstream
-   interfaces, and if a report is received the group is not joined again
+   interfaces, and if a report is received the group is not joined again the
    upstream.
 
-   If it's vital that the daemon should act exactly as a real multicast client
+   If it's vital that the daemon should act exactly like a real multicast client
    on the upstream interface, this function should be enabled.
 
    Enabling this function increases the risk of bandwidth saturation.
@@ -245,6 +247,3 @@ Operation
 .. opcmd:: restart igmp-proxy
 
    Restart the IGMP proxy process.
-
-
-
