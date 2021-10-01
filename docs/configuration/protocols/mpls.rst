@@ -67,10 +67,13 @@ change to work.
 Configuration Options
 =====================
 
+.. cfgcmd:: set protocols mpls interface <interface>
+
+  Use this command to enable MPLS processing on the interface you define.
+
 .. cfgcmd:: set protocols mpls ldp interface <interface>
 
-  Use this command to enable LDP, and enable MPLS processing on the interface
-  you define.
+  Use this command to enable LDP on the interface you define.
 
 .. cfgcmd:: set protocols mpls ldp router-id <address>
 
@@ -200,9 +203,10 @@ Sample configuration to setup LDP on VyOS
   set protocols ospf area 0 network '192.168.255.252/32'                      <--- Routing for loopback
   set protocols ospf area 0 network '192.168.0.5/32'                          <--- Routing for an interface connecting to the network
   set protocols ospf parameters router-id '192.168.255.252'                   <--- Router ID setting for OSPF
+  set protocols mpls interface 'eth1'                                         <--- Enable MPLS for an interface connecting to network
   set protocols mpls ldp discovery transport-ipv4-address '192.168.255.252'   <--- Transport address for LDP for TCP sessions to connect to
-  set protocols mpls ldp interface 'eth1'                                     <--- Enable MPLS and LDP for an interface connecting to network
-  set protocols mpls ldp interface 'lo'                                       <--- Enable MPLS and LDP on loopback for future services connectivity
+  set protocols mpls ldp interface 'eth1'                                     <--- Enable LDP for an interface connecting to network
+  set protocols mpls ldp interface 'lo'                                       <--- Enable LDP on loopback for future services connectivity
   set protocols mpls ldp router-id '192.168.255.252'                          <--- Router ID setting for LDP
   set interfaces ethernet eth1 address '192.168.0.5/31'                       <--- Interface IP for connecting to network
   set interfaces loopback lo address '192.168.255.252/32'                     <--- Interface loopback IP for router ID and other uses
