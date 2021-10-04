@@ -8,6 +8,37 @@
    _ext/releasenotes.py
 
 
+2021-10-03
+==========
+
+* :vytask:`T3880` (bug): EFI boot shows error on display
+
+
+2021-10-02
+==========
+
+* :vytask:`T3882` (feature): Upgrade PowerDNs recursor to 4.5 series
+* :vytask:`T3883` (bug): VRF - Delette vrf config on interface
+
+
+2021-10-01
+==========
+
+* :vytask:`T3877` (bug): VRRP always enabled rfc3768-compatibility even when not specified
+
+
+2021-09-30
+==========
+
+* :vytask:`T3874` (bug): D-Link Ethernet Interface not working.
+
+
+2021-09-27
+==========
+
+* :vytask:`T3858` (bug): Deleting OSPFv3 process yields: Unknown command: no router-id
+
+
 2021-09-26
 ==========
 
@@ -107,7 +138,6 @@
 * :vytask:`T3788` (bug): Keys are not allowed with ipip and sit tunnels
 * :vytask:`T3683` (bug): VXLAN not accept ipv6 and source-interface options and mtu bug
 * :vytask:`T3634` (feature): Add op command option for ping for do not fragment bit to be set
-* :vytask:`T690` (feature): Allow OpenVPN servers to push routes with custom metric values
 
 
 2021-09-02
@@ -334,7 +364,6 @@
 * :vytask:`T2328` (default): dhcpv6 server not starting (disable check reversed?)
 * :vytask:`T1758` (default): Switch vyos.config to libvyosconfig
 * :vytask:`T954` (bug): Using the 10.255.255.0/24 subnet on other interfaces breaks L2TP/IPSec
-* :vytask:`T1187` (bug): Command show log vpn display wrong information  
 
 
 2021-07-23
@@ -876,7 +905,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.143 / 5.10.61
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.150 / 5.10.70
 
 
 2021-02-14
@@ -1754,7 +1783,6 @@
 * :vytask:`T2814` (default): kernel 5.1+ : NAT : module `nft_chain_nat_ipv4` renamed
 * :vytask:`T2839` (feature): Upgrade WireGuard user-space tools and Kernel module
 * :vytask:`T2842` (feature): Replace custom "wireguard, wireguard-tools" package with debian-backports version
-* :vytask:`T1205` (bug): module pcspkr missing
 
 
 2020-08-29
@@ -1887,7 +1915,6 @@
 
 * :vytask:`T2758` (bug): router-advert: 'infinity' is not a valid integer number
 * :vytask:`T2637` (bug): Vlan is not removed from the system
-* :vytask:`T1194` (bug): cronjob is being setup even if not saved
 * :vytask:`T1287` (bug): No DHCPv6 leases reported for "show dhcpv6 client leases"
 
 
@@ -1935,7 +1962,6 @@
 ==========
 
 * :vytask:`T2743` (feature): WireGuard: move key migration from config script to migration script
-* :vytask:`T1241` (bug): Remove of policy route throws CLI error
 * :vytask:`T2742` (feature): mDNS repeater: migrate to get_config_dict()
 
 
@@ -1950,7 +1976,7 @@
 ==========
 
 * :vytask:`T2729` (feature): Pseudo-ethernet replace fail message
-* :vytask:`T1249` (feature): multiply PBR rules can set to a single interface
+* :vytask:`T1249` (feature): multiple PBR rules can set to a single interface
 * :vytask:`T1956` (feature): PPPoE server: support PADO-delay
 * :vytask:`T1295` (feature): FRR: update documentation 
 * :vytask:`T1222` (bug): OSPF routing problem - route looping
@@ -2401,7 +2427,7 @@
 
 * :vytask:`T2481` (feature): WireGuard: support tunnel via IPv6 underlay
 * :vytask:`T421` (bug): Add Pv6 prefix delegation support
-* :vytask:`T815` (feature): Add DHCPv6 prefix-delegation support
+* :vytask:`T815` (feature): Add DHCPv6 server prefix-delegation support
 
 
 2020-05-17
@@ -3591,7 +3617,7 @@
 ==========
 
 * :vytask:`T1617` (default): OpenVPN push route failure
-* :vytask:`T1250` (bug): FRR not setting default gateway from dhcp
+* :vytask:`T1250` (bug): FRR not setting default gateway from DHCP
 
 
 2019-08-26
@@ -3961,5 +3987,4 @@
 2019-02-09
 ==========
 
-* :vytask:`T1236` (feature): Update Linux Kernel to 4.19.20
-* :vytask:`T1238` (bug): Wireguard allows invalid IP's
+* :vytask:`T1236` (feature): Update Linux Kernel
