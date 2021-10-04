@@ -8,6 +8,38 @@
    _ext/releasenotes.py
 
 
+2021-10-03
+==========
+
+* :vytask:`T3880` (bug): EFI boot shows error on display
+
+
+2021-10-02
+==========
+
+* :vytask:`T3882` (feature): Upgrade PowerDNs recursor to 4.5 series
+* :vytask:`T3883` (bug): VRF - Delette vrf config on interface
+
+
+2021-09-30
+==========
+
+* :vytask:`T3874` (bug): D-Link Ethernet Interface not working.
+* :vytask:`T3869` (default): Rewrite vyatta_net_name/vyatta_interface_rescan in Python
+
+
+2021-09-28
+==========
+
+* :vytask:`T3853` (default): nat66 rules gets deleted on reboot in 1.4-rolling-202109240217
+
+
+2021-09-27
+==========
+
+* :vytask:`T3863` (default): nat66: commit fails/hangs on non existing interface
+
+
 2021-09-26
 ==========
 
@@ -1014,7 +1046,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.143 / 5.10.61
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.150 / 5.10.70
 
 
 2021-02-15
