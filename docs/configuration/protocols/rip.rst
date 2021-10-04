@@ -1,3 +1,4 @@
+:lastproofread: 2021-10-04
 .. _rip:
 
 ###
@@ -57,20 +58,20 @@ Optional Configuration
 
 .. cfgcmd:: set protocols rip default-distance <distance>
 
-  This command change distance value of RIP. The distance range is 1 to 255.
+  This command change the distance value of RIP. The distance range is 1 to 255.
    
    .. note:: Routes with a distance of 255 are effectively disabled and not
       installed into the kernel.
 
 .. cfgcmd:: set protocols rip network-distance <A.B.C.D/M> distance <distance>
 
-  This command sets default RIP distance to specified value when the route’s
+  This command sets default RIP distance to a specified value when the routes
   source IP address matches the specified prefix.
   
 .. cfgcmd:: set protocols rip network-distance <A.B.C.D/M> access-list <name>
 
   This command can be used with previous command to sets default RIP distance
-  to specified value when the route’s source IP address matches the specified
+  to specified value when the route source IP address matches the specified
   prefix and the specified access-list.
 
 .. cfgcmd:: set protocols rip default-information originate
@@ -156,7 +157,7 @@ Redistribution Configuration
   This command modifies the default metric (hop count) value for redistributed
   routes. The metric range is 1 to 16. The default value is 1. This command
   does not affect connected route even if it is redistributed by
-  :cfgcmd:`redistribute connected`. To modify connected route’s metric
+  :cfgcmd:`redistribute connected`. To modify connected routes metric
   value, please use :cfgcmd:`redistribute connected metric`.
 
 
@@ -178,7 +179,7 @@ Interfaces Configuration
 
   This command disables split-horizon on the interface. By default, VyOS does
   not advertise RIP routes out the interface over which they were learned
-  (split horizon).
+  (split horizon).3
   
 .. cfgcmd:: set interfaces <inttype> <intname> ip rip split-horizon poison-reverse
 
