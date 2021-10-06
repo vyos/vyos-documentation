@@ -154,7 +154,7 @@ below is always the public key from your peer, not your local one.
   set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.2.0/24'
   set interfaces wireguard wg01 peer to-wg02 address '192.0.2.1'
   set interfaces wireguard wg01 peer to-wg02 port '51820'
-  set interfaces wireguard wg01 peer to-wg02 pubkey 'XMrlPykaxhdAAiSjhtPlvi30NVkvLQliQuKP7AI7CyI='
+  set interfaces wireguard wg01 peer to-wg02 public-key 'XMrlPykaxhdAAiSjhtPlvi30NVkvLQliQuKP7AI7CyI='
   set interfaces wireguard wg01 port '51820'
 
   set protocols static route 192.168.2.0/24 interface wg01
@@ -185,10 +185,10 @@ traffic.
 
   set interfaces wireguard wg01 address '10.1.0.2/30'
   set interfaces wireguard wg01 description 'VPN-to-wg01'
-  set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.1.0/24'
-  set interfaces wireguard wg01 peer to-wg02 address '192.0.2.2'
-  set interfaces wireguard wg01 peer to-wg02 port '51820'
-  set interfaces wireguard wg01 peer to-wg02 pubkey 'u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk='
+  set interfaces wireguard wg01 peer to-wg01 allowed-ips '192.168.1.0/24'
+  set interfaces wireguard wg01 peer to-wg01 address '192.0.2.2'
+  set interfaces wireguard wg01 peer to-wg01 port '51820'
+  set interfaces wireguard wg01 peer to-wg01 public-key 'u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk='
   set interfaces wireguard wg01 port '51820'
 
   set protocols static route 192.168.1.0/24 interface wg01
