@@ -3,7 +3,6 @@
 ##############################
 VTI - Virtual Tunnel Interface
 ##############################
-
 Set Virtual Tunnel Interface
 
 .. code-block:: none
@@ -21,3 +20,10 @@ Results in:
       address 2001:db8:2::249/64
       description "Description"
   }
+
+.. warning:: When using site-to-site IPsec with VTI interfaces,
+   be sure to disable route autoinstall
+
+.. code-block:: none
+  
+  set vpn ipsec options disable-route-autoinstall
