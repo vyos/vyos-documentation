@@ -48,7 +48,7 @@ Site-to-site mode supports x.509 but doesn't require it and can also work with
 static keys, which is simpler in many cases. In this example, we'll configure
 a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared key.
 
-First, one of the systems generate the key using the :ref:`generate pki openvpn shared-secret<configuration/pki:pki>` 
+First, one of the systems generate the key using the :ref:`generate pki openvpn shared-secret<configuration/pki/index:pki>` 
 command. Once generated, you will need to install this key on the local system, 
 then copy and install this key to the remote router.
 
@@ -274,7 +274,7 @@ Server
 
 Multi-client server is the most popular OpenVPN mode on routers. It always uses
 x.509 authentication and therefore requires a PKI setup. Refer this topic
-:ref:`configuration/pki:pki` to generate a CA certificate,
+:ref:`configuration/pki/index:pki` to generate a CA certificate,
 a server certificate and key, a certificate revocation list, a Diffie-Hellman
 key exchange parameters file. You do not need client certificates and keys for
 the server setup.
