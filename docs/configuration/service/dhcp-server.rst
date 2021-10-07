@@ -468,6 +468,30 @@ Option 43 for UniFI
 Operation Mode
 ==============
 
+.. opcmd:: show log dhcp server
+
+   Show DHCP server daemon log file
+
+.. opcmd:: show log dhcp client
+
+   Show logs from all DHCP client processes.
+
+.. opcmd:: show log dhcp client interface <interface>
+
+   Show logs from specific `interface` DHCP client process.
+
+.. opcmd:: show log dhcpv6 server
+
+   Show DHCPv6 server daemon log file
+
+.. opcmd:: show log dhcpv6 client
+
+   Show logs from all DHCPv6 client processes.
+
+.. opcmd:: show log dhcpv6 client interface <interface>
+
+   Show logs from specific `interface` DHCPv6 client process.
+
 .. opcmd:: restart dhcp server
 
    Restart the DHCP server
@@ -515,6 +539,8 @@ Operation Mode
 
    Show only leases with the specified state. Possible states: all, active,
    free, expired, released, abandoned, reset, backup (default = active)
+
+
 
 ***********
 IPv6 server
