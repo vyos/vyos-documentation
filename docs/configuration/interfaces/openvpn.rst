@@ -48,8 +48,9 @@ Site-to-site mode supports x.509 but doesn't require it and can also work with
 static keys, which is simpler in many cases. In this example, we'll configure
 a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared key.
 
-First, one of the systems generate the key using the `generate pki openvpn shared-secret <https://docs.vyos.io/en/latest/configuration/pki/index.html#openvpn>`_ command. 
-Once generated, you will need to install this key on the local system, then copy and install this key to the remote router.
+First, one of the systems generate the key using the :ref:`generate pki openvpn shared-secret<configuration/pki:pki>` 
+command. Once generated, you will need to install this key on the local system, 
+then copy and install this key to the remote router.
 
 In our example, we used the key name ``openvpn-1`` which we will reference
 in our configuration.
@@ -96,10 +97,14 @@ Local Configuration - Annotated:
 
 .. code-block:: none
 
-  run generate pki openvpn shared-secret install openvpn-1                        # Locally genearated OpenVPN shared secret. The generated secret is the output to the console.
+  run generate pki openvpn shared-secret install openvpn-1                        # Locally genearated OpenVPN shared secret. 
+                                                                                    The generated secret is the output to 
+                                                                                    the console.
   Configure mode commands to install OpenVPN key:
-  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'              # Generated secret displayed in the output to the console.
-  set pki openvpn shared-secret openvpn-1 version '1'                             # Generated secret displayed in the output to the console.
+  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'              # Generated secret displayed in the output to 
+                                                                                    the console.
+  set pki openvpn shared-secret openvpn-1 version '1'                             # Generated secret displayed in the output to 
+                                                                                    the console.
 
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
@@ -133,7 +138,8 @@ Remote Configuration - Annotated:
 
 .. code-block:: none
 
-  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'               # Locally genearated OpenVPN shared secret (from the Local Configuration Block).
+  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'               # Locally genearated OpenVPN shared secret 
+                                                                                    (from the Local Configuration Block).
   set pki openvpn shared-secret openvpn-1 version '1'
 
   set interfaces openvpn vtun1 mode site-to-site
@@ -268,7 +274,7 @@ Server
 
 Multi-client server is the most popular OpenVPN mode on routers. It always uses
 x.509 authentication and therefore requires a PKI setup. Refer this topic
-`PKI <https://docs.vyos.io/en/latest/configuration/pki/index.html#pki>`_ to generate a CA certificate,
+:ref:`configuration/pki:pki` to generate a CA certificate,
 a server certificate and key, a certificate revocation list, a Diffie-Hellman
 key exchange parameters file. You do not need client certificates and keys for
 the server setup.
@@ -302,17 +308,18 @@ Then we need to generate, add and specify the names of the cryptographic materia
 
 .. code-block:: none
 
-  run generate pki ca install ca-1                                # Follow the instructions to generate CA cert
+  run generate pki ca install ca-1                                # Follow the instructions to generate CA cert.
   Configure mode commands to install:
   set pki ca ca-1 certificate 'generated_cert_string'
   set pki ca ca-1 private key 'generated_private_key'
   
-  run generate pki certificate sign ca-1 install srv-1            # Follow the instructions to generate server cert
+  run generate pki certificate sign ca-1 install srv-1            # Follow the instructions to generate server cert.
   Configure mode commands to install:
   set pki certificate srv-1 certificate 'generated_server_cert'
   set pki certificate srv-1 private key 'generated_private_key'
   
-  run generate pki dh install dh-1                                # Follow the instructions to generate set of Diffie-Hellman parameters
+  run generate pki dh install dh-1                                # Follow the instructions to generate set of 
+                                                                    Diffie-Hellman parameters.
   Generating parameters...
   Configure mode commands to install DH parameters:
   set pki dh dh-1 parameters 'generated_dh_params_set'
@@ -361,7 +368,8 @@ HQ's router requires the following steps to generate crypto materials for the Br
 
 .. code-block:: none
   
-  run generate pki certificate sign ca-1 install branch-1            # Follow the instructions to generate client cert for Branch 1
+  run generate pki certificate sign ca-1 install branch-1            # Follow the instructions to generate client 
+                                                                       cert for Branch 1
   Configure mode commands to install:
   
 Branch 1's router might have the following lines:
