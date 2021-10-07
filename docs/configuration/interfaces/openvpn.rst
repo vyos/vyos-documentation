@@ -48,12 +48,11 @@ Site-to-site mode supports x.509 but doesn't require it and can also work with
 static keys, which is simpler in many cases. In this example, we'll configure
 a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared key.
 
-First, one of the systems generate the key using the operational command
-``generate openvpn key <filename>``. This will generate a key with the name
-provided in the ``/config/auth/`` directory. Once generated, you will need to
-copy this key to the remote router.
+First, one of the systems generate the key using the :ref:`generate pki openvpn shared-secret<configuration/pki:pki>` 
+command. Once generated, you will need to install this key on the local system, 
+then copy and install this key to the remote router.
 
-In our example, we used the filename ``openvpn-1.key`` which we will reference
+In our example, we used the key name ``openvpn-1`` which we will reference
 in our configuration.
 
 * The public IP address of the local side of the VPN will be 198.51.100.10.
@@ -79,13 +78,18 @@ Local Configuration:
 
 .. code-block:: none
 
+  run generate pki openvpn shared-secret install openvpn-1
+  Configure mode commands to install OpenVPN key:
+  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'
+  set pki openvpn shared-secret openvpn-1 version '1'
+  
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
   set interfaces openvpn vtun1 persistent-tunnel
   set interfaces openvpn vtun1 remote-host '203.0.113.11
   set interfaces openvpn vtun1 local-port '1195'
   set interfaces openvpn vtun1 remote-port '1195'
-  set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
+  set interfaces openvpn vtun1 shared-secret-key openvpn-1
   set interfaces openvpn vtun1 local-address '10.255.1.1'
   set interfaces openvpn vtun1 remote-address '10.255.1.2'
 
@@ -93,13 +97,22 @@ Local Configuration - Annotated:
 
 .. code-block:: none
 
+  run generate pki openvpn shared-secret install openvpn-1                        # Locally genearated OpenVPN shared secret. 
+                                                                                    The generated secret is the output to 
+                                                                                    the console.
+  Configure mode commands to install OpenVPN key:
+  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'              # Generated secret displayed in the output to 
+                                                                                    the console.
+  set pki openvpn shared-secret openvpn-1 version '1'                             # Generated secret displayed in the output to 
+                                                                                    the console.
+
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
   set interfaces openvpn vtun1 persistent-tunnel
   set interfaces openvpn vtun1 remote-host '203.0.113.11'                         # Pub IP of other site
   set interfaces openvpn vtun1 local-port '1195'
   set interfaces openvpn vtun1 remote-port '1195'
-  set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
+  set interfaces openvpn vtun1 shared-secret-key openvpn-1                        # Locally generated secret name
   set interfaces openvpn vtun1 local-address '10.255.1.1'                         # Local IP of vtun interface
   set interfaces openvpn vtun1 remote-address '10.255.1.2'                        # Remote IP of vtun interface
 
@@ -108,13 +121,16 @@ Remote Configuration:
 
 .. code-block:: none
 
+  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'
+  set pki openvpn shared-secret openvpn-1 version '1'
+
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
   set interfaces openvpn vtun1 persistent-tunnel
   set interfaces openvpn vtun1 remote-host '198.51.100.10'
   set interfaces openvpn vtun1 local-port '1195'
   set interfaces openvpn vtun1 remote-port '1195'
-  set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
+  set interfaces openvpn vtun1 shared-secret-key openvpn-1
   set interfaces openvpn vtun1 local-address '10.255.1.2'
   set interfaces openvpn vtun1 remote-address '10.255.1.1'
 
@@ -122,13 +138,17 @@ Remote Configuration - Annotated:
 
 .. code-block:: none
 
+  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'               # Locally genearated OpenVPN shared secret 
+                                                                                    (from the Local Configuration Block).
+  set pki openvpn shared-secret openvpn-1 version '1'
+
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
   set interfaces openvpn vtun1 persistent-tunnel
   set interfaces openvpn vtun1 remote-host '198.51.100.10'                         # Pub IP of other site
   set interfaces openvpn vtun1 local-port '1195'
   set interfaces openvpn vtun1 remote-port '1195'
-  set interfaces openvpn vtun1 shared-secret-key-file '/config/auth/openvpn-1.key'
+  set interfaces openvpn vtun1 shared-secret-key openvpn-1                         # Locally generated secret name
   set interfaces openvpn vtun1 local-address '10.255.1.2'                          # Local IP of vtun interface
   set interfaces openvpn vtun1 remote-address '10.255.1.1'                         # Remote IP of vtun interface
 
@@ -253,8 +273,8 @@ Server
 ******
 
 Multi-client server is the most popular OpenVPN mode on routers. It always uses
-x.509 authentication and therefore requires a PKI setup. Refer this section
-**Generate X.509 Certificate and Keys** to generate a CA certificate,
+x.509 authentication and therefore requires a PKI setup. Refer this topic
+:ref:`configuration/pki:pki` to generate a CA certificate,
 a server certificate and key, a certificate revocation list, a Diffie-Hellman
 key exchange parameters file. You do not need client certificates and keys for
 the server setup.
@@ -284,16 +304,30 @@ closing on connection resets or daemon reloads.
   set interfaces openvpn vtun10 persistent-tunnel
   set interfaces openvpn vtun10 protocol udp
 
-Then we need to specify the location of the cryptographic materials. Suppose
-you keep the files in `/config/auth/openvpn`
+Then we need to generate, add and specify the names of the cryptographic materials. 
 
 .. code-block:: none
 
-  set interfaces openvpn vtun10 tls ca-cert-file /config/auth/openvpn/ca.crt
-  set interfaces openvpn vtun10 tls cert-file /config/auth/openvpn/server.crt
-  set interfaces openvpn vtun10 tls key-file /config/auth/openvpn/server.key
-  set interfaces openvpn vtun10 tls crl-file /config/auth/openvpn/crl.pem
-  set interfaces openvpn vtun10 tls dh-file /config/auth/openvpn/dh2048.pem
+  run generate pki ca install ca-1                                # Follow the instructions to generate CA cert.
+  Configure mode commands to install:
+  set pki ca ca-1 certificate 'generated_cert_string'
+  set pki ca ca-1 private key 'generated_private_key'
+  
+  run generate pki certificate sign ca-1 install srv-1            # Follow the instructions to generate server cert.
+  Configure mode commands to install:
+  set pki certificate srv-1 certificate 'generated_server_cert'
+  set pki certificate srv-1 private key 'generated_private_key'
+  
+  run generate pki dh install dh-1                                # Follow the instructions to generate set of 
+                                                                    Diffie-Hellman parameters.
+  Generating parameters...
+  Configure mode commands to install DH parameters:
+  set pki dh dh-1 parameters 'generated_dh_params_set'
+  
+  set interfaces openvpn vtun10 tls ca-certificate ca-1
+  set interfaces openvpn vtun10 tls certificate srv-1
+  set interfaces openvpn vtun10 tls crypt-key srv-1
+  set interfaces openvpn vtun10 tls dh-params dh-1
 
 Now we need to specify the server network settings. In all cases we need to
 specify the subnet for client tunnel endpoints. Since we want clients to access
@@ -325,89 +359,30 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
 
   set protocols static route 10.23.0.0/20 interface vtun10
 
-Generate X.509 Certificate and Keys
-===================================
+Additionally, each client needs a copy of ca cert and its own client key and
+cert files. The files are plaintext so they may be copied either manually from the CLI. 
+Client key and cert files should be signed with the proper ca cert and generated on the 
+server side. 
 
-OpenVPN ships with a set of scripts called Easy-RSA that can generate the
-appropriate files needed for an OpenVPN setup using X.509 certificates.
-Easy-RSA comes installed by default on VyOS routers.
+HQ's router requires the following steps to generate crypto materials for the Branch 1:
 
-Copy the Easy-RSA scripts to a new directory to modify the values.
+.. code-block:: none
+  
+  run generate pki certificate sign ca-1 install branch-1            # Follow the instructions to generate client 
+                                                                       cert for Branch 1
+  Configure mode commands to install:
+  
+Branch 1's router might have the following lines:
 
 .. code-block:: none
 
-  cp -r /usr/share/easy-rsa/ /config/my-easy-rsa-config
-  cd /config/my-easy-rsa-config
-
-To ensure the consistent use of values when generating the PKI, set default
-values to be used by the PKI generating scripts. Rename the vars.example
-filename to vars
-
-.. code-block:: none
-
-  mv vars.example vars
-
-Following is the instance of the file after editing. You may also change other
-values in the file at your discretion/need, though for most cases the defaults
-should be just fine. (do not leave any of these parameters blank)
-
-.. code-block:: none
-
-  set_var EASYRSA_DN      "org"
-  set_var EASYRSA_REQ_COUNTRY     "US"
-  set_var EASYRSA_REQ_PROVINCE    "California"
-  set_var EASYRSA_REQ_CITY        "San Francisco"
-  set_var EASYRSA_REQ_ORG "Copyleft Certificate Co"
-  set_var EASYRSA_REQ_EMAIL       "me@example.net"
-  set_var EASYRSA_REQ_OU          "My Organizational Unit"
-  set_var EASYRSA_KEY_SIZE        2048
-
-
-init-pki option will create a new pki directory or will delete any previously
-generated certificates stored in that folder. The term 'central' is used to
-refer server and 'branch' for client
-
-.. note:: Remember the “CA Key Passphrase” prompted in build-ca command,
-   as it will be asked in signing the server/client certificate.
-
-.. code-block:: none
-
-  vyos@vyos:/config/my-easy-rsa-config$./easyrsa init-pki
-  vyos@vyos:/config/my-easy-rsa-config$./easyrsa build-ca
-  vyos@vyos:/config/my-easy-rsa-config$./easyrsa gen-req central nopass
-  vyos@vyos:/config/my-easy-rsa-config$./easyrsa sign-req server central
-  vyos@vyos:/config/my-easy-rsa-config$./easyrsa gen-dh
-  vyos@vyos:/config/my-easy-rsa-config$./easyrsa build-client-full branch1 nopass
-
-To generate a certificate revocation list for any client, execute these
-commands:
-
-.. code-block:: none
-
-  vyos@vyos:/config/my-easy-rsa-config$./easyrsa revoke client1
-  vyos@vyos:/config/my-easy-rsa-config$ ./easyrsa gen-crl
-
-Copy the files to /config/auth/openvpn/ to use in OpenVPN tunnel creation
-
-.. code-block:: none
-
-  vyos@vyos:/config/my-easy-rsa-config$ sudo mkdir /config/auth/openvpn
-  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/ca.crt /config/auth/openvpn
-  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/dh.pem  /config/auth/openvpn
-  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/private/central.key /config/auth/openvpn
-  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/issued/central.crt  /config/auth/openvpn
-  vyos@vyos:/config/my-easy-rsa-config$ sudo cp pki/crl.pem /config/auth/openvpn
-
-Additionally, each client needs a copy of ca.crt and its own client key and
-cert files. The files are plaintext so they may be copied either manually,
-or through a remote file transfer tool like scp. Whichever method you use,
-the files need to end up in the proper location on each router.
-For example, Branch 1's router might have the following files:
-
-.. code-block:: none
-
-  vyos@branch1-rtr:$ ls /config/auth/openvpn
-  ca.crt branch1.crt branch1.key
+  set pki ca ca-1 certificate 'generated_cert_string'                # CA cert generated on HQ router
+  set pki certificate branch-1 certificate 'generated_branch_cert'   # Client cert generated and signed on HQ router
+  set pki certificate branch-1 private key 'generated_private_key'   # Client cert key generated on HQ router
+  
+  set interfaces openvpn vtun10 tls ca-cert ca-1
+  set interfaces openvpn vtun10 tls certificate branch-1
+  set interfaces openvpn vtun10 tls crypt-key branch-1
 
 Client Authentication
 =====================
@@ -575,10 +550,10 @@ Server Side
   set interfaces openvpn vtun10 server name-server '172.16.254.30'
   set interfaces openvpn vtun10 server subnet '10.10.0.0/24'
   set interfaces openvpn vtun10 server topology 'subnet'
-  set interfaces openvpn vtun10 tls ca-cert-file '/config/auth/ca.crt'
-  set interfaces openvpn vtun10 tls cert-file '/config/auth/server.crt'
-  set interfaces openvpn vtun10 tls dh-file '/config/auth/dh.pem'
-  set interfaces openvpn vtun10 tls key-file '/config/auth/server.key'
+  set interfaces openvpn vtun10 tls ca-cert ca-1
+  set interfaces openvpn vtun10 tls certificate srv-1
+  set interfaces openvpn vtun10 tls crypt-key srv-1
+  set interfaces openvpn vtun10 tls dh-params dh-1
   set interfaces openvpn vtun10 use-lzo-compression
 
 .. _openvpn:client_client:
@@ -595,9 +570,9 @@ Client Side
   set interfaces openvpn vtun10 protocol 'udp'
   set interfaces openvpn vtun10 remote-host '172.18.201.10'
   set interfaces openvpn vtun10 remote-port '1194'
-  set interfaces openvpn vtun10 tls ca-cert-file '/config/auth/ca.crt'
-  set interfaces openvpn vtun10 tls cert-file '/config/auth/client1.crt'
-  set interfaces openvpn vtun10 tls key-file '/config/auth/client1.key'
+  set interfaces openvpn vtun10 tls ca-cert ca-1
+  set interfaces openvpn vtun10 tls certificate client-1
+  set interfaces openvpn vtun10 tls crypt-key client-1
   set interfaces openvpn vtun10 use-lzo-compression
 
 Options
