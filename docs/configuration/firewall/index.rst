@@ -17,7 +17,7 @@ The firewall supports the creation of groups for ports, addresses, and
 networks (implemented using netfilter ipset) and the option of interface
 or zone based firewall policy.
 
-.. note:: **Important note on usage of terms:** 
+.. note:: **Important note on usage of terms:**
    The firewall makes use of the terms `in`, `out`, and `local`
    for firewall policy. Users experienced with netfilter often confuse
    `in` to be a reference to the `INPUT` chain, and `out` the `OUTPUT`
@@ -91,35 +91,35 @@ Some firewall settings are global and have an affect on the whole system.
 
 .. cfgcmd:: set firewall send-redirects [enable | disable]
 
-   enable or disable  ICMPv4 redirect messages send by VyOS 
+   enable or disable  ICMPv4 redirect messages send by VyOS
    The following system parameter will be altered:
 
    * ``net.ipv4.conf.all.send_redirects``
 
 .. cfgcmd:: set firewall log-martians [enable | disable]
 
-   enable or disable the logging of martian IPv4 packets. 
+   enable or disable the logging of martian IPv4 packets.
    The following system parameter will be altered:
 
    * ``net.ipv4.conf.all.log_martians``
 
 .. cfgcmd:: set firewall source-validation [strict | loose | disable]
 
-   Set the IPv4 source validation mode. 
+   Set the IPv4 source validation mode.
    The following system parameter will be altered:
 
    * ``net.ipv4.conf.all.rp_filter``
 
 .. cfgcmd:: set firewall syn-cookies [enable | disable]
 
-   Enable or Disable if VyOS use IPv4 TCP SYN Cookies. 
+   Enable or Disable if VyOS use IPv4 TCP SYN Cookies.
    The following system parameter will be altered:
 
    * ``net.ipv4.tcp_syncookies``
 
 .. cfgcmd:: set firewall twa-hazards-protection [enable | disable]
 
-   Enable or Disable VyOS to be :rfc:`1337` conform. 
+   Enable or Disable VyOS to be :rfc:`1337` conform.
    The following system parameter will be altered:
 
    * ``net.ipv4.tcp_rfc1337``
@@ -135,7 +135,7 @@ Some firewall settings are global and have an affect on the whole system.
 
 .. cfgcmd:: set firewall state-policy invalid log enable
 
-   Set the global setting for invalid packets. 
+   Set the global setting for invalid packets.
 
 .. cfgcmd:: set firewall state-policy related action [accept | drop | reject]
 
@@ -209,7 +209,7 @@ recommended.
 .. cfgcmd::  set firewall group ipv6-network-group <name> description <text>
 
    Provide a IPv4 or IPv6 network group description.
-      
+
 
 Port Groups
 ===========
@@ -292,7 +292,7 @@ Matching criteria
 There are a lot of matching criteria against which the package can be tested.
 
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> source address 
+.. cfgcmd:: set firewall name <name> rule <1-9999> source address
    [address | addressrange | CIDR]
 .. cfgcmd:: set firewall name <name> rule <1-9999> destination address
    [address | addressrange | CIDR]
@@ -312,16 +312,16 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall ipv6-name WAN-IN-v6 rule 100 source address 2001:db8::202
 
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> source mac-address 
+.. cfgcmd:: set firewall name <name> rule <1-9999> source mac-address
    <mac-address>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> source mac-address 
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> source mac-address
    <mac-address>
 
    Only in the source criteria, you can specify a mac-address.
 
    .. code-block:: none
 
-      set firewall name LAN-IN-v4 rule 100 source mac-address 00:53:00:11:22:33 
+      set firewall name LAN-IN-v4 rule 100 source mac-address 00:53:00:11:22:33
       set firewall name LAN-IN-v4 rule 101 source mac-address !00:53:00:aa:12:34
 
 .. cfgcmd:: set firewall name <name> rule <1-9999> source port
@@ -344,7 +344,7 @@ There are a lot of matching criteria against which the package can be tested.
 
    Multiple source ports can be specified as a comma-separated list.
    The whole list can also be "negated" using '!'. For example:
-   
+
    .. code-block:: none
 
       set firewall ipv6-name WAN-IN-v6 rule 10 source port '!22,https,3333-3338'
@@ -388,7 +388,7 @@ There are a lot of matching criteria against which the package can be tested.
    <0-255> | all | tcp_udp]
 
    Match a protocol criteria. A protocol number or a name which is here
-   defined: ``/etc/protocols``. 
+   defined: ``/etc/protocols``.
    Special names are ``all`` for all protocols and ``tcp_udp`` for tcp and udp
    based packets. The ``!`` negate the selected protocol.
 
@@ -404,7 +404,7 @@ There are a lot of matching criteria against which the package can be tested.
    Allowed values fpr TCP flags: ``SYN``, ``ACK``, ``FIN``, ``RST``, ``URG``,
    ``PSH``, ``ALL`` When specifying more than one flag, flags should be comma
    separated. The ``!`` negate the selected protocol.
-   
+
    .. code-block:: none
 
       set firewall name WAN-IN-v4 rule 10 tcp flags 'ACK'
@@ -429,7 +429,7 @@ A Rule-Set can be applied to every interface:
 * ``out``: Ruleset for forwarded packets on an outbound interface
 * ``local``: Ruleset for packets destined for this router
 
-.. cfgcmd:: set interface ethernet <ethN> firewall [in | out | local] 
+.. cfgcmd:: set interface ethernet <ethN> firewall [in | out | local]
    [name | ipv6-name] <rule-set>
 
    Here are some examples for applying a rule-set to an interface
@@ -487,7 +487,7 @@ To define a zone setup either one with interfaces or a local zone.
 Applying a Rule-Set to a Zone
 =============================
 
-Before you are able to apply a rule-set to a zone you have to create the zones 
+Before you are able to apply a rule-set to a zone you have to create the zones
 first.
 
 .. cfgcmd::  set zone-policy zone <name> from <name> firewall name
@@ -629,7 +629,7 @@ Rule-set overview
 .. opcmd:: show firewall statistics
 
    This will show you a statistic of all rule-sets since the last boot.
-   
+
 .. opcmd:: show firewall [name | ipv6name] <name> rule <1-9999>
 
    This command will give an overview of a rule in a single rule-set
@@ -650,7 +650,7 @@ Rule-set overview
                   443
                   8080
                   8443
-      
+
       vyos@vyos:~$ show firewall group LANv4
       Name       : LANv4
       Type       : network
@@ -775,77 +775,3 @@ Example Partial Config
          }
      }
   }
-
-
-.. _routing-mss-clamp:
-
-
-****************
-TCP-MSS Clamping
-****************
-
-As Internet wide PMTU discovery rarely works, we sometimes need to clamp
-our TCP MSS value to a specific value. This is a field in the TCP
-Options part of a SYN packet. By setting the MSS value, you are telling
-the remote side unequivocally 'do not try to send me packets bigger than
-this value'.
-
-Starting with VyOS 1.2 there is a firewall option to clamp your TCP MSS
-value for IPv4 and IPv6.
-
-
-.. note:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting
-   in 1452 bytes on a 1492 byte MTU.
-
-
-
-IPv4
-====
-
-
-.. cfgcmd:: set firewall options interface <interface> adjust-mss
-   <number-of-bytes>
-
-   Use this command to set the maximum segment size for IPv4 transit
-   packets on a specific interface (500-1460 bytes).
-
-Example
--------
-
-Clamp outgoing MSS value in a TCP SYN packet to `1452` for `pppoe0` and
-`1372`
-for your WireGuard `wg02` tunnel.
-
-.. code-block:: none
-
-  set firewall options interface pppoe0 adjust-mss '1452'
-  set firewall options interface wg02 adjust-mss '1372'
-
-
-
-IPv6
-====
-
-.. cfgcmd:: set firewall options interface <interface> adjust-mss6
-   <number-of-bytes>
-
-   Use this command to set the maximum segment size for IPv6 transit
-   packets on a specific interface (1280-1492 bytes).
-
-.. _firewall:ipv6_example:
-
-Example
--------
-
-Clamp outgoing MSS value in a TCP SYN packet to `1280` for both `pppoe0` and
-`wg02` interface.
-
-.. code-block:: none
-
-  set firewall options interface pppoe0 adjust-mss6 '1280'
-  set firewall options interface wg02 adjust-mss6 '1280'
-
-
-
-.. hint:: When doing your byte calculations, you might find useful this
-   `Visual packet size calculator <https://baturin.org/tools/encapcalc/>`_.

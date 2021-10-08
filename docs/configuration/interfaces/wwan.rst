@@ -39,6 +39,10 @@ Common interface configuration
    :var0: wwan
    :var1: wwan0
 
+.. cmdinclude:: /_include/interface-adjust-mss.txt
+   :var0: wwan
+   :var1: wwan0
+
 .. cmdinclude:: /_include/interface-ip.txt
    :var0: wwan
    :var1: wwan0
