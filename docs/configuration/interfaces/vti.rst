@@ -28,3 +28,6 @@ Results in:
 .. code-block:: none
   
   set vpn ipsec options disable-route-autoinstall
+
+More details about the IPsec and VTI issue and option disable-route-autoinstall:
+https://blog.vyos.io/vyos-1-dot-2-0-development-news-in-july
