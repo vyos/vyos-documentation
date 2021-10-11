@@ -490,6 +490,12 @@ Applying a Rule-Set to a Zone
 Before you are able to apply a rule-set to a zone you have to create the zones
 first.
 
+It helps to think of the syntax as: (see below). The 'rule-set' should be 
+written from the perspective of: *Source Zone*-to->*Destination Zone*
+
+.. cfgcmd::  set zone-policy zone <Destination Zone> from <Source Zone> 
+   firewall name <rule-set>
+
 .. cfgcmd::  set zone-policy zone <name> from <name> firewall name
    <rule-set>
 .. cfgcmd::  set zone-policy zone <name> from <name> firewall ipv6-name
