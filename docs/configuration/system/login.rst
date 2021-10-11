@@ -122,7 +122,7 @@ Dial-In User Service)` servers as backend for user authentication.
 Configuration
 -------------
 
-.. cfgcmd:: set system login radius server <address> secret <secret>
+.. cfgcmd:: set system login radius server <address> key <secret>
 
    Specify the `<address>` of the RADIUS server user with the pre-shared-secret
    given in `<secret>`. Multiple servers can be specified.
