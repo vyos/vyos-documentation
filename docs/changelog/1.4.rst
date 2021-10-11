@@ -8,6 +8,40 @@
    _ext/releasenotes.py
 
 
+2021-10-10
+==========
+
+* :vytask:`T3750` (bug): pdns-recursor 4.4 issue with dont-query and private DNS servers
+* :vytask:`T3885` (default): dhcpv6-pd: randomly generated DUID is not persisted
+* :vytask:`T3899` (enhancment): Add support for hd44780 LCD displays
+
+
+2021-10-09
+==========
+
+* :vytask:`T3894` (bug): Tunnel Commit Failed if system does not have `eth0`
+
+
+2021-10-08
+==========
+
+* :vytask:`T3893` (bug): MGRE Tunnel commit crash If sit tunnel available
+
+
+2021-10-05
+==========
+
+* :vytask:`T3741` (feature): [BGP] default no-ipv4-unicast - by default
+
+
+2021-10-04
+==========
+
+* :vytask:`T3888` (bug): Incorrect warning when poweroff command executed from configure mode.
+* :vytask:`T3890` (feature): dhcp(v6): provide op-mode commands to retrieve both server and client logfiles
+* :vytask:`T3889` (feature): Migrate to journalctl when reading daemon logs
+
+
 2021-10-03
 ==========
 
@@ -1046,7 +1080,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.150 / 5.10.70
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.152 / 5.10.72
 
 
 2021-02-15
