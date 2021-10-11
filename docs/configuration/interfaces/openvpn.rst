@@ -34,8 +34,9 @@ In the VyOS CLI, a key point often overlooked is that rather than being
 configured using the `set vpn` stanza, OpenVPN is configured as a network
 interface using `set interfaces openvpn`.
 
+************
 Site-To-Site
-============
+************
 
 .. figure:: /_static/images/openvpn_site2site_diagram.jpg
 
@@ -130,9 +131,9 @@ Remote Configuration - Annotated:
   set interfaces openvpn vtun1 local-address '10.255.1.2'                          # Local IP of vtun interface
   set interfaces openvpn vtun1 remote-address '10.255.1.1'                         # Remote IP of vtun interface
 
-*******************
+
 Firewall Exceptions
-*******************
+===================
 
 For the OpenVPN traffic to pass through the WAN interface, you must create a
 firewall exception.
@@ -245,8 +246,9 @@ to each tunnel. Another option is to dedicate a port number to each tunnel
 OpenVPN status can be verified using the `show openvpn` operational commands.
 See the built-in help for a complete list of options.
 
+******
 Server
-======
+******
 
 Multi-client server is the most popular OpenVPN mode on routers. It always uses
 x.509 authentication and therefore requires a PKI setup. Refer this section
@@ -322,7 +324,7 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
   set protocols static interface-route 10.23.0.0/20 next-hop-interface vtun10
 
 Generate X.509 Certificate and Keys
------------------------------------
+===================================
 
 OpenVPN ships with a set of scripts called Easy-RSA that can generate the
 appropriate files needed for an OpenVPN setup using X.509 certificates.
@@ -535,8 +537,10 @@ example:
        }
    }
 
+
+******
 Client
-======
+******
 
 VyOS can not only act as an OpenVPN site-to-site or server for multiple clients.
 You can indeed also configure any VyOS OpenVPN interface as an OpenVPN client
@@ -548,7 +552,7 @@ static client IP address to the OpenVPN client. Remember, clients are identified
 using their CN attribute in the SSL certificate.
 
 Server
-------
+======
 
 .. code-block:: none
 
@@ -572,7 +576,7 @@ Server
   set interfaces openvpn vtun10 use-lzo-compression
 
 Client
-------
+======
 
 .. code-block:: none
 
@@ -614,13 +618,14 @@ Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
    quotes using the ``&quot;`` statement.
 
 
+***************
 Troubleshooting
-===============
+***************
 
 VyOS provides some operational commands on OpenVPN.
 
 Check status
-------------
+============
 
 The following commands let you check tunnel status.
 
@@ -639,7 +644,7 @@ The following commands let you check tunnel status.
 
 
 Reset OpenVPN
--------------
+=============
 
 The following commands let you reset OpenVPN.
 
