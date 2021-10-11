@@ -151,6 +151,7 @@ below is always the public key from your peer, not your local one.
 .. code-block:: none
 
   set interfaces wireguard wg01 address '10.1.0.1/30'
+  set interfaces wireguard wg01 description 'VPN-to-wg02'
   set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.2.0/24'
   set interfaces wireguard wg01 peer to-wg02 address '192.0.2.1'
   set interfaces wireguard wg01 peer to-wg02 port '51820'
