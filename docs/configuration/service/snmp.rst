@@ -166,9 +166,9 @@ configuration. The resulting LCI config will look like:
 .. code-block:: none
 
   vyos@vyos# show service snmp
-   listen-address 172.18.254.201 {
+   listen-address 192.0.2.1 {
    }
-   location "Wuerzburg, Dr.-Georg-Fuchs-Str. 8"
+   location "VyOS Datacenter"
    v3 {
        engineid 000000000000000000000002
        group default {
