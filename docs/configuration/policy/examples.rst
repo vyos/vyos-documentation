@@ -138,12 +138,15 @@ from PBR
 
 .. code-block:: none
 
+  set firewall group network-group VLANS-GR description 'VLANs networks'
+  set firewall group network-group VLANS-GR network '192.168.188.0/24'
+  set firewall group network-group VLANS-GR network '192.168.189.0/24'
+
   set policy route PBR rule 10 description 'VLAN10 <-> VLAN11 shortcut'
-  set policy route PBR rule 10 destination address '192.168.188.0/24'
-  set policy route PBR rule 10 destination address '192.168.189.0/24'
+  set policy route PBR rule 10 destination group network-group 'VLANS-GR'
   set policy route PBR rule 10 set table 'main'
 
-These commands allow the VLAN10 and VLAN20 hosts to communicate with
+These commands allow the VLAN10 and VLAN11 hosts to communicate with
 each other using the main routing table.
 
 Local route
