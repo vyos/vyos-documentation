@@ -89,7 +89,7 @@ avoid being tracked by the provider of your upstream DNS server.
    Do not use the local ``/etc/hosts`` file in name resolution. VyOS DHCP
    server will use this file to add resolvers to assigned addresses.
 
-.. cfgcmd:: set service dns forwarding max-cache-entries
+.. cfgcmd:: set service dns forwarding cache-size <0-2147483647>
 
    Maximum number of DNS cache entries. 1 million per CPU core will generally
    suffice for most installations.
