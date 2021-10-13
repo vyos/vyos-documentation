@@ -94,16 +94,19 @@ avoid being tracked by the provider of your upstream DNS server.
    Maximum number of DNS cache entries. 1 million per CPU core will generally
    suffice for most installations.
 
-.. cfgcmd:: set service dns forwarding negative-ttl
+   This defaults to 10000.
+
+.. cfgcmd:: set service dns forwarding negative-ttl <0-7200>
 
    A query for which there is authoritatively no answer is cached to quickly
    deny a record's existence later on, without putting a heavy load on the
    remote server. In practice, caches can become saturated with hundreds of
-   thousands of hosts which are tried only once. This setting, which defaults
-   to 3600 seconds, puts a maximum on the amount of time negative entries are
-   cached.
+   thousands of hosts which are tried only once.
 
-.. cfgcmd:: set service dns forwarding listen-address
+   This setting, which defaults to 3600 seconds, puts a maximum on the amount
+   of time negative entries are cached.
+
+.. cfgcmd:: set service dns forwarding listen-address <address>
 
    The local IPv4 or IPv6 addresses to bind the DNS forwarder to. The forwarder
    will listen on this address for incoming connections.
