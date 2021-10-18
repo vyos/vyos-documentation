@@ -8,6 +8,49 @@
    _ext/releasenotes.py
 
 
+2021-10-17
+==========
+
+* :vytask:`T3786` (bug): GRE tunnel source address 0.0.0.0 error
+* :vytask:`T3425` (bug): Scripts from the /config/scripts/ folder do not run on live system
+* :vytask:`T3217` (default): Save FRR configuration on each commit
+* :vytask:`T3076` (bug): Router reboot adds unwanted 'conntrack-sync mcast-group '225.0.0.50'' line to configuration
+* :vytask:`T2800` (bug): Pseudo-Ethernet: source-interface must not be member of a bridge
+* :vytask:`T3422` (bug): Dynamic DNS doesn't allow zone field with cloudflare protocol
+* :vytask:`T3381` (bug): Change GRE tunnel failed
+* :vytask:`T3254` (bug): Dynamic DNS status shows incorrect last update time
+* :vytask:`T3253` (bug): rpki: multiple peers cannot be configured 
+* :vytask:`T3219` (default): Typo in openvpn server client config for IPv6 iroute
+* :vytask:`T2764` (enhancment): Increase maximum number of NAT rules
+* :vytask:`T2100` (feature): BGP route adverisement wih checks rib
+* :vytask:`T1663` (enhancment): T1656 equuleus: buster: arm64/aarch64: ipaddrcheck does not complete testing
+* :vytask:`T1243` (bug): BGP local-as accept wrong values
+* :vytask:`T770` (bug): Bonded interfaces get updated with incorrect hw-id in config.
+* :vytask:`T697` (bug): Clean up and sanitize package dependencies
+* :vytask:`T3837` (default): OpenConnect: Fix typo in help property
+* :vytask:`T1440` (bug): Creating two DHCPv6 shared-network-names with the same subnet is allowed, causes dhcpd to fail to start.
+
+
+2021-10-16
+==========
+
+* :vytask:`T3879` (bug): GPG key verification fails when upgrading from a 1.3 beta version
+* :vytask:`T3851` (bug): Missing ospf and rip options for bridge vifs
+
+
+2021-10-13
+==========
+
+* :vytask:`T3904` (bug): NTP pool associations silently fail
+* :vytask:`T3277` (feature): DNS Forwarding - reverse zones
+
+
+2021-10-11
+==========
+
+* :vytask:`T2607` (feature): Support for pppoe-server radius mode auth and config radius accouting port
+
+
 2021-10-10
 ==========
 
@@ -933,7 +976,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.152 / 5.10.72
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.154 / 5.10.74
 
 
 2021-02-14

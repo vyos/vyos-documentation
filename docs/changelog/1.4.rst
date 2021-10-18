@@ -8,6 +8,59 @@
    _ext/releasenotes.py
 
 
+2021-10-17
+==========
+
+* :vytask:`T3786` (bug): GRE tunnel source address 0.0.0.0 error
+* :vytask:`T3217` (default): Save FRR configuration on each commit
+* :vytask:`T3381` (bug): Change GRE tunnel failed
+* :vytask:`T3254` (bug): Dynamic DNS status shows incorrect last update time
+* :vytask:`T2764` (enhancment): Increase maximum number of NAT rules
+* :vytask:`T1243` (bug): BGP local-as accept wrong values
+* :vytask:`T697` (bug): Clean up and sanitize package dependencies
+* :vytask:`T578` (feature): Support Linux Container
+
+
+2021-10-16
+==========
+
+* :vytask:`T3879` (bug): GPG key verification fails when upgrading from a 1.3 beta version
+
+
+2021-10-15
+==========
+
+* :vytask:`T3748` (bug): Container deletion bug
+* :vytask:`T3693` (feature): ISIS Route redistribution ipv6 support missing
+* :vytask:`T3676` (feature): Container option to add Linux capabilities
+* :vytask:`T3613` (feature): Selectors for route-based IPsec tunnel (vti)
+* :vytask:`T3692` (bug): VyOS build failing due to  repo.saltstack.com
+* :vytask:`T3673` (feature): BGP large-community del operation missing
+
+
+2021-10-14
+==========
+
+* :vytask:`T3811` (bug): NAT (op_mode): NAT op_mode command fails.
+* :vytask:`T3801` (feature): containers: do not use podman CLI to create container networks
+
+
+2021-10-13
+==========
+
+* :vytask:`T3904` (bug): NTP pool associations silently fail
+* :vytask:`T3277` (feature): DNS Forwarding - reverse zones
+
+
+2021-10-12
+==========
+
+* :vytask:`T3216` (bug): Removal of restricted-shell broke configure mode for RADIUS users
+* :vytask:`T3881` (bug): Wrong description for container section restart
+* :vytask:`T3868` (bug): Regex and/or wildcard not accepted with large-community-list
+* :vytask:`T3701` (bug): ipoe server fails to start when configuring radius dynamic-author on ipoe
+
+
 2021-10-10
 ==========
 
@@ -738,7 +791,6 @@
 ==========
 
 * :vytask:`T3511` (bug): Update libnss-mapuser and libpam-radius packages from CUMULUS Linux
-* :vytask:`T3510` (bug): RADIUS usersname is not shown on CLI
 
 
 2021-05-01
@@ -1080,7 +1132,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.152 / 5.10.72
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.154 / 5.10.74
 
 
 2021-02-15
