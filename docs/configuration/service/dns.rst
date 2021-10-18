@@ -307,6 +307,11 @@ hostnames, protocol and server.
    When a ``custom`` DynDNS provider is used the `<server>` where update
    requests are being sent to must be specified.
 
+.. cfgcmd:: set service dns dynamic interface <interface> ipv6-enable
+
+   Allow explicit IPv6 address for the interface.
+
+
 Example:
 ^^^^^^^^
 
@@ -321,6 +326,19 @@ Use DynDNS as your preferred provider:
 
 .. note:: Multiple services can be used per interface. Just specify as many
    services per interface as you like!
+
+Example IPv6 only:
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: none
+
+  set service dns dynamic interface eth0 ipv6-enable
+  set service dns dynamic interface eth0 service dyndns6 login my-login
+  set service dns dynamic interface eth0 service dyndns6 password my-password
+  set service dns dynamic interface eth0 service dyndns6 host-name my-dyndns-hostname
+  set service dns dynamic interface eth0 service dyndns6 protocol dyndns2
+  set service dns dynamic interface eth0 service dyndns6 server dyndns-v6-server
+
 
 Running Behind NAT
 ------------------
