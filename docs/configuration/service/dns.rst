@@ -111,6 +111,11 @@ avoid being tracked by the provider of your upstream DNS server.
    The local IPv4 or IPv6 addresses to bind the DNS forwarder to. The forwarder
    will listen on this address for incoming connections.
 
+.. cfgcmd:: set service dns forwarding source-address <address>
+
+   The local IPv4 or IPv6 addresses to use as a source address for sending queries.
+   The forwarder will send forwarded outbound DNS requests from this address.
+
 .. cfgcmd:: set service dns forwarding no-serve-rfc1918
 
    This makes the server authoritatively not aware of: 10.in-addr.arpa,
