@@ -6,24 +6,48 @@ RSA can be used for services such as key exchanges and for encryption purposes.
 To make IPSec work with dynamic address on one/both sides, we will have to use
 RSA keys for authentication. They are very fast and easy to setup.
 
-First, on both routers run the operational command “generate vpn rsa-key 
-bits 2048”. You may choose different length than 2048 of course.
+First, on both routers run the operational command "generate pki key-pair 
+install <key-pair nam>>". You may choose different length than 2048 of course.
 
 .. code-block:: none
 
-  vyos@left# run generate vpn rsa-key bits 2048
-  Generating rsa-key to /config/ipsec.d/rsa-keys/localhost.key
+  vyos@left# run generate pki key-pair install ipsec-LEFT
+  Enter private key type: [rsa, dsa, ec] (Default: rsa)
+  Enter private key bits: (Default: 2048)
+  Note: If you plan to use the generated key on this router, do not encrypt the private key.
+  Do you want to encrypt the private key with a passphrase? [y/N] N
+  Configure mode commands to install key pair:
+  Do you want to install the public key? [Y/n] Yrgerg
+  set pki key-pair ipsec-LEFT public key 'MIIBIjANBgkqh...'
+  Do you want to install the private key? [Y/n] Y
+  set pki key-pair ipsec-LEFT private key 'MIIEvgIBADAN...'
+  [edit]
 
-  Your new local RSA key has been generated
-  The public portion of the key is:
-
-  0sAQO2335[long string here]
-
-Please note down this public key, as you have to add this RSA key in the opposite router.
+Configuration commands will display.
+Note the command with the public key 
+(set pki key-pair ipsec-LEFT public key 'MIIBIjANBgkqh...'). 
+Then do the same on the opposite router:
 
 .. code-block:: none
 
-  set vpn rsa-keys rsa-key-name LEFT rsa-key KEYGOESHERE
+  vyos@left# run generate pki key-pair install ipsec-RIGHT
+
+Note the command with the public key 
+(set pki key-pair ipsec-RIGHT public key 'FAAOCAQ8AMII...'). 
+
+The noted public keys should be entered on the opposite routers.
+
+On the LEFT:
+
+.. code-block:: none
+
+  set pki key-pair ipsec-RIGHT public key 'FAAOCAQ8AMII...'
+
+On the RIGHT:
+
+.. code-block:: none
+
+  set pki key-pair ipsec-LEFT public key 'MIIBIjANBgkqh...'
 
 Now you are ready to setup IPsec. The key points:
 
@@ -31,16 +55,12 @@ Now you are ready to setup IPsec. The key points:
 2. On the initiator, we set the peer address to its public address, but on the responder we only set the id.
 3. On the initiator, we need to set the remote-id option so that it can identify IKE traffic from the responder correctly.
 4. On the responder, we need to set the local id so that initiator can know who's talking to it for the point #3 to work.
-5. Don't forget to enable NAT traversal on both sides, "set vpn ipsec nat-traversal enable".
 
-LEFT SIDE:
+On the LEFT (static address):
 
 .. code-block:: none
 
-  set vpn rsa-keys rsa-key-name RIGHT rsa-key <PUBLIC KEY FROM THE RIGHT>
-
-  set vpn ipsec ipsec-interfaces interface eth0
-  set vpn ipsec nat-traversal 'enable'
+  set vpn ipsec interface eth0
 
   set vpn ipsec esp-group MyESPGroup proposal 1 encryption aes128
   set vpn ipsec esp-group MyESPGroup proposal 1 hash sha1
@@ -49,25 +69,23 @@ LEFT SIDE:
   set vpn ipsec ike-group MyIKEGroup proposal 1 encryption aes128
   set vpn ipsec ike-group MyIKEGroup proposal 1 hash sha1
 
-  set vpn ipsec site-to-site peer 192.0.2.60 authentication mode rsa
-  set vpn ipsec site-to-site peer 192.0.2.60 authentication id @LEFT
-  set vpn ipsec site-to-site peer 192.0.2.60 authentication rsa-key-name RIGHT
-  set vpn ipsec site-to-site peer 192.0.2.60 authentication remote-id RIGHT
-  set vpn ipsec site-to-site peer 192.0.2.60 default-esp-group MyESPGroup
-  set vpn ipsec site-to-site peer 192.0.2.60 ike-group MyIKEGroup
-  set vpn ipsec site-to-site peer 192.0.2.60 local-address any
-  set vpn ipsec site-to-site peer 192.0.2.60 connection-type initiate
-  set vpn ipsec site-to-site peer 192.0.2.60 tunnel 1 local prefix 192.168.99.1/32
-  set vpn ipsec site-to-site peer 192.0.2.60 tunnel 1 remote prefix 192.168.99.2/32
+  set vpn ipsec site-to-site peer @RIGHT authentication id LEFT
+  set vpn ipsec site-to-site peer @RIGHT authentication mode rsa
+  set vpn ipsec site-to-site peer @RIGHT authentication rsa local-key ipsec-LEFT
+  set vpn ipsec site-to-site peer @RIGHT authentication rsa remote-key ipsec-RIGHT
+  set vpn ipsec site-to-site peer @RIGHT authentication remote-id RIGHT
+  set vpn ipsec site-to-site peer @RIGHT default-esp-group MyESPGroup
+  set vpn ipsec site-to-site peer @RIGHT ike-group MyIKEGroup
+  set vpn ipsec site-to-site peer @RIGHT local-address 192.0.2.10
+  set vpn ipsec site-to-site peer @RIGHT connection-type respond
+  set vpn ipsec site-to-site peer @RIGHT tunnel 1 local prefix 192.168.99.1/32  # Additional loopback address on the local
+  set vpn ipsec site-to-site peer @RIGHT tunnel 1 remote prefix 192.168.99.2/32 # Additional loopback address on the remote
 
-RIGHT SIDE:
+On the RIGHT (dynamic address):
 
 .. code-block:: none
 
-  set vpn rsa-keys rsa-key-name LEFT rsa-key <PUBLIC KEY FROM THE LEFT>
-
-  set vpn ipsec ipsec-interfaces interface eth0
-  set vpn ipsec nat-traversal 'enable'
+  set vpn ipsec interface eth0
 
   set vpn ipsec esp-group MyESPGroup proposal 1 encryption aes128
   set vpn ipsec esp-group MyESPGroup proposal 1 hash sha1
@@ -76,13 +94,14 @@ RIGHT SIDE:
   set vpn ipsec ike-group MyIKEGroup proposal 1 encryption aes128
   set vpn ipsec ike-group MyIKEGroup proposal 1 hash sha1
 
-  set vpn ipsec site-to-site peer @LEFT authentication id @RIGHT
-  set vpn ipsec site-to-site peer @LEFT authentication mode rsa
-  set vpn ipsec site-to-site peer @LEFT authentication rsa-key-name LEFT
-  set vpn ipsec site-to-site peer @LEFT connection-type respond
-  set vpn ipsec site-to-site peer @LEFT default-esp-group MyESPGroup
-  set vpn ipsec site-to-site peer @LEFT ike-group MyIKEGroup
-  set vpn ipsec site-to-site peer @LEFT local-address any
-  set vpn ipsec site-to-site peer @LEFT tunnel 1 local prefix 192.168.99.2/32
-  set vpn ipsec site-to-site peer @LEFT tunnel 1 remote prefix 192.168.99.1/32
-
+  set vpn ipsec site-to-site peer 192.0.2.10 authentication id RIGHT
+  set vpn ipsec site-to-site peer 192.0.2.10 authentication mode rsa
+  set vpn ipsec site-to-site peer 192.0.2.10 authentication rsa local-key ipsec-RIGHT
+  set vpn ipsec site-to-site peer 192.0.2.10 authentication rsa remote-key ipsec-LEFT
+  set vpn ipsec site-to-site peer 192.0.2.10 authentication remote-id LEFT
+  set vpn ipsec site-to-site peer 192.0.2.10 connection-type initiate
+  set vpn ipsec site-to-site peer 192.0.2.10 default-esp-group MyESPGroup
+  set vpn ipsec site-to-site peer 192.0.2.10 ike-group MyIKEGroup
+  set vpn ipsec site-to-site peer 192.0.2.10 local-address any
+  set vpn ipsec site-to-site peer 192.0.2.10 tunnel 1 local prefix 192.168.99.2/32  # Additional loopback address on the local
+  set vpn ipsec site-to-site peer 192.0.2.10 tunnel 1 remote prefix 192.168.99.1/32 # Additional loopback address on the remote
