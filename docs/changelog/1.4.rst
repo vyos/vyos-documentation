@@ -8,6 +8,43 @@
    _ext/releasenotes.py
 
 
+2021-10-22
+==========
+
+* :vytask:`T3897` (feature): Dynamic DNS doesn't work with IPv6 addresses
+* :vytask:`T3832` (feature): Allow to set DHCP client-id in hexadecimal format
+* :vytask:`T3188` (bug): Tunnel local-ip to dhcp-interface Change Fails to Update
+* :vytask:`T3917` (default): Use Avahi as mDNS repeater for IPv6 support
+
+
+2021-10-21
+==========
+
+* :vytask:`T3926` (bug): strip-private does not sanitize "cisco-authentication" from NHRP configuration
+* :vytask:`T3925` (feature): Tunnel: dhcp-interface not implemented - use source-interface instead
+* :vytask:`T3923` (feature): Kernel: Enable TLS/IPSec offload support for Mellanox ConnectX NICs
+* :vytask:`T3927` (feature): Kernel: Enable kernel support for HW offload of the TLS protocol
+
+
+2021-10-20
+==========
+
+* :vytask:`T3918` (bug): DHCPv6 prefix delegation incorrect verify error
+* :vytask:`T3921` (bug): tunnel: KeyError when using dhcp-interface
+
+
+2021-10-19
+==========
+
+* :vytask:`T3396` (bug): syslog can't be configured with an ipv6 literal destination in 1.2.x
+
+
+2021-10-18
+==========
+
+* :vytask:`T3002` (default): VRRP change on IPSec interface causes packet routing issues
+
+
 2021-10-17
 ==========
 
@@ -1132,7 +1169,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.154 / 5.10.74
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.155 / 5.10.75
 
 
 2021-02-15

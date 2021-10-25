@@ -8,6 +8,36 @@
    _ext/releasenotes.py
 
 
+2021-10-22
+==========
+
+* :vytask:`T3188` (bug): Tunnel local-ip to dhcp-interface Change Fails to Update
+
+
+2021-10-21
+==========
+
+* :vytask:`T3920` (bug): dhclient exit hook script 01-vyos-cleanup causes too many arguments error
+* :vytask:`T3926` (bug): strip-private does not sanitize "cisco-authentication" from NHRP configuration
+* :vytask:`T3925` (feature): Tunnel: dhcp-interface not implemented - use source-interface instead
+* :vytask:`T3927` (feature): Kernel: Enable kernel support for HW offload of the TLS protocol
+
+
+2021-10-20
+==========
+
+* :vytask:`T3922` (bug): NHRP: delete fails 
+* :vytask:`T3918` (bug): DHCPv6 prefix delegation incorrect verify error
+* :vytask:`T3921` (bug): tunnel: KeyError when using dhcp-interface
+
+
+2021-10-19
+==========
+
+* :vytask:`T3396` (bug): syslog can't be configured with an ipv6 literal destination in 1.2.x
+* :vytask:`T690` (feature): Allow OpenVPN servers to push routes with custom metric values
+
+
 2021-10-17
 ==========
 
@@ -976,7 +1006,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.154 / 5.10.74
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.155 / 5.10.75
 
 
 2021-02-14
