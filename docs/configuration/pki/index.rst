@@ -52,7 +52,7 @@ keypairs from an easy to access operational level command.
   Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it using
   the private key referenced by `ca-name`.
 
-.. opcmd:: generate pki ca sign <name> install
+.. opcmd:: generate pki ca sign <ca-name> install <name>
 
   Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it using
   the private key referenced by `name`.
