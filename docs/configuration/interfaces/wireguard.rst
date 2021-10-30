@@ -95,20 +95,20 @@ one.
   set interfaces wireguard wg01 peer to-wg02 port '51820'
   set interfaces wireguard wg01 peer to-wg02 pubkey 'XMrlPykaxhdAAiSjhtPlvi30NVkvLQliQuKP7AI7CyI='
   set interfaces wireguard wg01 port '51820'
-  set protocols static route 192.168.2.0/24 interface wg01
+  set protocols static interface-route 192.168.2.0/24 next-hop-interface wg01
 
 **local side - annotated commands**
 
 .. code-block:: none
 
-  set interfaces wireguard wg01 address '10.1.0.1/30'                     # Address of the wg01 tunnel interface.          
+  set interfaces wireguard wg01 address '10.1.0.1/30'                          # Address of the wg01 tunnel interface.          
   set interfaces wireguard wg01 description 'VPN-to-wg02'
-  set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.2.0/24' # Subnets that are allowed to travel over the tunnel
-  set interfaces wireguard wg01 peer to-wg02 address '<Site2 Pub IP>'     # Public IP of the peer
-  set interfaces wireguard wg01 peer to-wg02 port '58120'                 # Port of the Peer
-  set interfaces wireguard wg01 peer to-wg02 pubkey '<pubkey>'            # Public Key of the Peer
-  set interfaces wireguard wg01 port '51820'                              # Port of own server
-  set protocols static route 192.168.2.0/24 interface wg01                # Static route to remote subnet
+  set interfaces wireguard wg01 peer to-wg02 allowed-ips '192.168.2.0/24'      # Subnets that are allowed to travel over the tunnel
+  set interfaces wireguard wg01 peer to-wg02 address '<Site2 Pub IP>'          # Public IP of the peer
+  set interfaces wireguard wg01 peer to-wg02 port '58120'                      # Port of the Peer
+  set interfaces wireguard wg01 peer to-wg02 pubkey '<pubkey>'                 # Public Key of the Peer
+  set interfaces wireguard wg01 port '51820'                                   # Port of own server
+  set protocols static interface-route 192.168.2.0/24 next-hop-interface wg01  # Static route to remote subnet
 
 The last step is to define an interface route for 192.168.2.0/24 to get
 through the WireGuard interface `wg01`. Multiple IPs or networks can be
