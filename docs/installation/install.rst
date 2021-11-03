@@ -11,6 +11,37 @@ a live install image that lets you boot a live VyOS. From that live
 system you can proceed to the permanent installation on a hard drive or
 any other type of storage.
 
+.. table:: Comparison of VyOS image releases
+
+  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
+  | Release Type | Description                                       | Release Cycle     | Intended Use                          | Access to Images      | Access to Source |
+  +==============+===================================================+===================+=======================================+=======================+==================+
+  | **Nightly    | Automatically built from the current branch.      | Every night       | Developing VyOS, testing new          | Everyone              | Everyone         |
+  | (Current)**  | Always up to date with cutting edge development   |                   | features, experimenting.              |                       |                  |
+  |              | but guaranteed to contain bugs.                   |                   |                                       |                       |                  |
+  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
+  | **Nightly    | Automatically built from the development branch   | Every night       | Developing and testing the latest     | Everyone              | Everyone         |
+  | (Beta)**     | and released alongside snapshots. Most likely     |                   | major version under development.      |                       |                  |
+  |              | contains bugs.                                    |                   |                                       |                       |                  |
+  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
+  | **Snapshot** | A particularly stable release frozen from nightly | Every month until | Home labs and simple networks that    | Everyone              | Everyone         |
+  |              | each month after manual testing. Still contains   | RC comes out      | call for new features.                |                       |                  |
+  |              | experimental code.                                |                   |                                       |                       |                  |
+  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
+  | **Release    | Rather stable. All development focuses on testing | Irregularly until | Labs, small offices and non-critical  | Everyone              | Everyone         |
+  | Candidate**  | and hunting down remaining bugs following the     | EPA comes out     | production systems backed by a        |                       |                  |
+  |              | feature freeze.                                   |                   | high-availability setup.              |                       |                  |
+  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
+  | **Early      | Highly stable with no known bugs. Needs to be     | Irregularly until | Non-critical production environments, | Everyone              | Everyone         |
+  | Production   | tested repeatedly under different conditions      | LTS comes out     | preparing for the LTS release.        |                       |                  |
+  | Access**     | before it can become the final release.           |                   |                                       |                       |                  |
+  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
+  | **Long-Term  | Guaranteed to be stable and carefully maintained  | Every major       | Large-scale enterprise networks,      | Subscribers,          | Everyone         |
+  | Support**    | for several years after the release. No features  | version           | internet service providers,           | contributors,         |                  |
+  |              | are introduced but security updates are released  |                   | critical production environments      | non-profits,          |                  |
+  |              | in a timely manner.                               |                   | that call for minimum downtime.       | emergency services,   |                  |
+  |              |                                                   |                   |                                       | academic institutions |                  |
+  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
 
 Hardware requirements
 =====================
