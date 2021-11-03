@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2021-10-31
+==========
+
+* :vytask:`T3945` (feature): Add route-map for bgp aggregate-address
+* :vytask:`T3341` (bug): Wrong behavior of the "reset vpn ipsec-peer XXX tunnel XXX" command
+* :vytask:`T3954` (bug): FTDI cable makes VyOS sagitta latest hang, /dev/serial unpopulated, config system error
+* :vytask:`T3943` (bug): "netflow source-ip" prevents image upgrades if IP address does not exist locally
+
+
+2021-10-29
+==========
+
+* :vytask:`T3942` (feature): Generate IPSec debug archive from op-mode
+
+
+2021-10-28
+==========
+
+* :vytask:`T3941` (bug): "show vpn ipsec sa" shows established time of parent SA not child SA's
+
+
+2021-10-27
+==========
+
+* :vytask:`T3944` (bug): VRRP fails over when adding new group to master
+
+
+2021-10-25
+==========
+
+* :vytask:`T3935` (bug): Update from rc5 to EPA2 failed
+
+
 2021-10-22
 ==========
 
@@ -1418,7 +1451,6 @@
 2020-11-29
 ==========
 
-* :vytask:`T2297` (feature): NTP add support for pool configuration
 * :vytask:`T3095` (feature): Migrate dhcp-relay and dhcpv6-relay to get_config_dict()
 
 
