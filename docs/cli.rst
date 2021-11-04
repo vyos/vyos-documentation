@@ -87,9 +87,9 @@ To enter configuration mode use the ``configure`` command:
 
 .. code-block:: none
 
-  vyos@vyos:~# exit
-  exit
-  vyos@vyos:~$
+   vyos@vyos:~# exit
+   exit
+   vyos@vyos:~$
 
 See the configuration section of this document for more information on
 configuration mode.
