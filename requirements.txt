@@ -4,3 +4,4 @@ setuptools
 docutils
 lxml
 sphinx-notfound-page
+docutils<0.18
