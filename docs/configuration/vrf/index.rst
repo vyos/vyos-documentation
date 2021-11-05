@@ -317,5 +317,134 @@ VRF blue routing table
     C>* 10.20.0.0/24 is directly connected, eth2, 00:07:53
 
 
+#####
+L3VPN VRFs
+#####
+
+:abbr:`L3VPN VRFs ( Layer 3 Virtual Private Networks )` bgpd supports for 
+IPv4 RFC 4364 and IPv6 RFC 4659. L3VPN routes,and their associated VRF 
+MPLS labels, can be distributed to VPN SAFI neighbors in the default, i.e.,
+non VRF, BGP instance. VRF MPLS labels are reached using core MPLS labels
+which are distributed using LDP or BGP labeled unicast.
+bgpd also supports inter-VRF route leaking.
+
+
+VRF Route Leaking
+==================
+
+BGP routes may be leaked (i.e. copied) between a unicast VRF RIB and the VPN
+SAFI RIB of the default VRF for use in MPLS-based L3VPNs. Unicast routes may 
+also be leaked between any VRFs (including the unicast RIB of the default BGP
+instanced). A shortcut syntax is also available for specifying leaking from 
+one VRF to another VRF using the default instance’s VPN RIB as the intemediary
+. A common application of the VRF-VRF feature is to connect a customer’s 
+private routing domain to a provider’s VPN service. Leaking is configured from
+the point of view of an individual VRF: import refers to routes leaked from VPN
+to a unicast VRF, whereas export refers to routes leaked from a unicast VRF to 
+VPN.
+
+
+.. note:: Routes exported from a unicast VRF to the VPN RIB must be augmented
+          by two parameters:
+
+             an RD / RTLIST
+
+          Configuration for these exported routes must, at a minimum, specify 
+          these two parameters.
+
+Configuration
+=============
+
+Configuration of route leaking between a unicast VRF RIB and the VPN SAFI RIB
+of the default VRF is accomplished via commands in the context of a VRF 
+address-family.
+
+.. cfgcmd:: set vrf name <name> protocols bgp address-family 
+            <ipv4-unicast|ipv6-unicast> rd vpn export <asn:nn|address:nn>
+      
+   Specifies the route distinguisher to be added to a route exported from the 
+   current unicast VRF to VPN.Create new VRF instance with `<name>`. The name
+   is used when placing individual interfaces into the VRF.
+
+.. cfgcmd:: set vrf name <name> protocols bgp address-family
+            <ipv4-unicast|ipv6-unicast> route-target vpn <import|export|both>
+            [RTLIST]
+
+   Specifies the route-target list to be attached to a route (export) or the 
+   route-target list to match against (import) when exporting/importing 
+   between the current unicast VRF and VPN.The RTLIST is a space-separated
+   list of route-targets, which are BGP extended community values as 
+   described in Extended Communities Attribute.
+
+.. cfgcmd:: set vrf name <name> protocols bgp address-family
+            <ipv4-unicast|ipv6-unicast> label vpn export <0-1048575|auto>
+
+   Enables an MPLS label to be attached to a route exported from the current 
+   unicast VRF to VPN. If the value specified is auto, the label value is 
+   automatically assigned from a pool maintained.
+
+.. cfgcmd:: set  vrf name <name> protocols bgp address-family
+            <ipv4-unicast|ipv6-unicast> route-map vpn <import|export>
+            [route-map <name>]
+
+   Specifies an optional route-map to be applied to routes imported or 
+   exported between the current unicast VRF and VPN.
+
+.. cfgcmd:: set  vrf name <name> protocols bgp address-family
+            <ipv4-unicast|ipv6-unicast> <import|export> vpn
+
+   Enables import or export of routes between the current unicast VRF and VPN.
+
+.. cfgcmd:: set  vrf name <name> protocols bgp address-family
+            <ipv4-unicast|ipv6-unicast> import vrf <name>
+    
+   Shortcut syntax for specifying automatic leaking from vrf VRFNAME to the 
+   current VRF using the VPN RIB as intermediary. The RD and RT are auto 
+   derived and should not be specified explicitly for either the source or 
+   destination VRF’s.
+
+Operation
+=========
+
+It is not sufficient to only configure a L3VPN VRFs but L3VPN VRFs must be
+maintained, too.For L3VPN VRF maintenance the following operational commands
+are in place.
+
+.. opcmd:: show bgp <ipv4|ipv6> vpn
+
+   Print active IPV4 or IPV6 routes advertised via the VPN SAFI.
+
+  .. code-block:: none
+
+    BGP table version is 2, local router ID is 10.0.1.1, vrf id 0
+    Default local pref 100, local AS 65001
+    Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
+                   i internal, r RIB-failure, S Stale, R Removed
+    Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
+    Origin codes:  i - IGP, e - EGP, ? - incomplete
+
+       Network          Next Hop            Metric LocPrf Weight Path
+    Route Distinguisher: 10.50.50.1:1011
+    *>i10.50.50.0/24    10.0.0.7                  0    100      0 i
+        UN=10.0.0.7 EC{65035:1011} label=80 type=bgp, subtype=0
+    Route Distinguisher: 10.60.60.1:1011
+    *>i10.60.60.0/24    10.0.0.10              0    100      0 i
+        UN=10.0.0.10  EC{65035:1011} label=80 type=bgp, subtype=0
+
+.. opcmd:: show bgp <ipv4|ipv6> vpn summary
+        
+        Print a summary of neighbor connections for the specified AFI/SAFI 
+        combination.
+
+  .. code-block:: none
+
+    BGP router identifier 10.0.1.1, local AS number 65001 vrf-id 0
+    BGP table version 0
+    RIB entries 9, using 1728 bytes of memory
+    Peers 4, using 85 KiB of memory
+    Peer groups 1, using 64 bytes of memory
+
+    Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+    10.0.0.7        4      65001      2860      2870        0    0    0 1d23h34m            2       10
 
 .. include:: /_include/common-references.txt
