@@ -317,9 +317,9 @@ VRF blue routing table
     C>* 10.20.0.0/24 is directly connected, eth2, 00:07:53
 
 
-#####
+##########
 L3VPN VRFs
-#####
+##########
 
 :abbr:`L3VPN VRFs ( Layer 3 Virtual Private Networks )` bgpd supports for 
 IPv4 RFC 4364 and IPv6 RFC 4659. L3VPN routes,and their associated VRF 
@@ -330,7 +330,7 @@ bgpd also supports inter-VRF route leaking.
 
 
 VRF Route Leaking
-==================
+=================
 
 BGP routes may be leaked (i.e. copied) between a unicast VRF RIB and the VPN
 SAFI RIB of the default VRF for use in MPLS-based L3VPNs. Unicast routes may 
