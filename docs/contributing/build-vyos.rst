@@ -107,8 +107,8 @@ Tips and Tricks
 ---------------
 
 You can create yourself some handy Bash aliases to always launch the latest -
-per release train (`current`, `equuleus` or `crux`) - container. Add the following to your
-``.bash_aliases`` file:
+per release train (`current`, `equuleus` or `crux`) - container. 
+Add the following to your ``.bash_aliases`` file:
 
 .. code-block:: none
 
@@ -139,15 +139,17 @@ per release train (`current`, `equuleus` or `crux`) - container. Add the followi
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:crux bash'
 
-Now you are prepared with three new aliases ``vybld`` `vybld_equuleus`` and ``vybld_crux`` to spawn
-your development containers in your current working directory.
+Now you are prepared with three new aliases ``vybld`` `vybld_equuleus`` and 
+``vybld_crux`` to spawn your development containers in your current working 
+directory.
 
 .. note:: Some VyOS packages (namely vyos-1x) come with build-time tests which
    verify some of the internal library calls that they work as expected. Those
    tests are carried out through the Python Unittest module. If you wan't to
-   build the ``vyos-1x`` package (which is our main development package) you need
-   to start your Docker container using the following argument:
-   ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will fail.
+   build the ``vyos-1x`` package (which is our main development package) 
+   you need to start your Docker container using the following argument:
+   ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests 
+   will fail.
 
 .. _build_native:
 
