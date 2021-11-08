@@ -245,8 +245,8 @@ Configuration
 Operation
 ^^^^^^^^^
 
-After committing the configuration we can verify all leaked routes are installed,
-and try to ICMP ping PC1 from PC3.
+After committing the configuration we can verify all leaked routes are 
+installed, and try to ICMP ping PC1 from PC3.
 
   .. code-block:: none
 
@@ -352,7 +352,7 @@ VPN.
 
           Configuration for these exported routes must, at a minimum, specify 
           these two parameters.
-          
+
 .. _l3vpn-vrf example configuration:
 
 Configuration
