@@ -76,8 +76,9 @@ To manually download the container from DockerHub, run:
 
 .. code-block:: none
 
-  $ docker pull vyos/vyos-build:crux     # For VyOS 1.2
-  $ docker pull vyos/vyos-build:current  # For rolling release
+  $ docker pull vyos/vyos-build:crux       # For VyOS 1.2
+  $ docker pull vyos/vyos-build:equuleus   # For VyOS 1.3
+  $ docker pull vyos/vyos-build:current    # For rolling release
 
 Build from source
 ^^^^^^^^^^^^^^^^^
@@ -88,12 +89,15 @@ The container can also be built directly from source:
 
   # For VyOS 1.2 (crux)
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
-  # For VyOS 1.3 (equuleus, current)
+  # For VyOS 1.3 (equuleus)
+  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
+  # For VyOS 1.4 (sagitta, current)
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
 
   $ cd vyos-build
-  $ docker build -t vyos/vyos-build:crux docker # For VyOS 1.2
-  $ docker build -t vyos/vyos-build:current docker      # For rolling release
+  $ docker build -t vyos/vyos-build:crux docker      # For VyOS 1.2
+  $ docker build -t vyos/vyos-build:equuleus docker  # For VyOS 1.3
+  $ docker build -t vyos/vyos-build:current docker   # For rolling release
 
 .. note:: Since VyOS has switched to Debian (11) Bullseye in its ``current``
    branch, you will require individual container for `current`, `equuleus` and
@@ -103,8 +107,8 @@ Tips and Tricks
 ---------------
 
 You can create yourself some handy Bash aliases to always launch the latest -
-per release train (`current` or `crux`) - container. Add the following to your
-``.bash_aliases`` file:
+per release train (`current`, `equuleus` or `crux`) - container. 
+Add the following to your ``.bash_aliases`` file:
 
 .. code-block:: none
 
@@ -117,6 +121,15 @@ per release train (`current` or `crux`) - container. Add the following to your
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:current bash'
 
+  alias vybld='docker pull vyos/vyos-build:equuleus && docker run --rm -it \
+      -v "$(pwd)":/vyos \
+      -v "$HOME/.gitconfig":/etc/gitconfig \
+      -v "$HOME/.bash_aliases":/home/vyos_bld/.bash_aliases \
+      -v "$HOME/.bashrc":/home/vyos_bld/.bashrc \
+      -w /vyos --privileged --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
+      -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
+      vyos/vyos-build:equuleus bash'
+
   alias vybld_crux='docker pull vyos/vyos-build:crux && docker run --rm -it \
       -v "$(pwd)":/vyos \
       -v "$HOME/.gitconfig":/etc/gitconfig \
@@ -126,15 +139,17 @@ per release train (`current` or `crux`) - container. Add the following to your
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:crux bash'
 
-Now you are prepared with two new aliases ``vybld`` and ``vybld_crux`` to spawn
-your development containers in your current working directory.
+Now you are prepared with three new aliases ``vybld`` `vybld_equuleus`` and 
+``vybld_crux`` to spawn your development containers in your current working 
+directory.
 
 .. note:: Some VyOS packages (namely vyos-1x) come with build-time tests which
    verify some of the internal library calls that they work as expected. Those
    tests are carried out through the Python Unittest module. If you wan't to
-   build the ``vyos-1x`` package (which is our main development package) you need
-   to start your Docker container using the following argument:
-   ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will fail.
+   build the ``vyos-1x`` package (which is our main development package) 
+   you need to start your Docker container using the following argument:
+   ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests 
+   will fail.
 
 .. _build_native:
 
@@ -145,7 +160,8 @@ To build VyOS natively you require a properly configured build host with the
 following Debian versions installed:
 
 - Debian Jessie for VyOS 1.2 (crux)
-- Debian Buster for VyOS 1.3 (equuleus, current) - aka the rolling release
+- Debian Buster for VyOS 1.3 (equuleus)
+- Debian Bullseye for VyOS 1.4 (sagitta, current) - aka the rolling release
 
 To start, clone the repository to your local machine:
 
@@ -154,7 +170,10 @@ To start, clone the repository to your local machine:
   # For VyOS 1.2 (crux)
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
 
-  # For VyOS 1.3 (equuleus, current)
+  # For VyOS 1.3 (equuleus)
+  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
+  
+  # For VyOS 1.4 (sagitta, current)
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
 
 For the packages required, you can refer to the ``docker/Dockerfile`` file
@@ -173,14 +192,17 @@ Build ISO
 
 Now as you are aware of the prerequisites we can continue and build our own
 ISO from source. For this we have to fetch the latest source code from GitHub.
-Please note as this will differ for both `current` and `crux`.
+Please note as this will differ for both `current` and `equuleus`.
 
 .. code-block:: none
 
   # For VyOS 1.2 (crux)
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
 
-  # For VyOS 1.3 (equuleus, current)
+  # For VyOS 1.3 (equuleus)
+  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
+  
+  # For VyOS 1.4 (sagitta, current)
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
 
 Now a fresh build of the VyOS ISO can begin. Change directory to the
@@ -192,7 +214,10 @@ Now a fresh build of the VyOS ISO can begin. Change directory to the
   # For VyOS 1.2 (crux)
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:crux bash
 
-  # For VyOS 1.3 (equuleus, current)
+  # For VyOS 1.3 (equuleus)
+  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:equuleus bash
+  
+  # For VyOS 1.4 (sagitta, current)
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
 
 Start the build:
@@ -722,8 +747,8 @@ Launch Docker container and build package
 
 .. code-block:: none
 
-  # For VyOS 1.3 (equuleus, current)
-  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
+  # For VyOS 1.3 (equuleus)
+  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:equuleus bash
 
   # Change to source directory
   $ cd vyos-1x
