@@ -171,7 +171,7 @@ To start, clone the repository to your local machine:
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
 
   # For VyOS 1.3 (equuleus)
-  $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
   
   # For VyOS 1.4 (sagitta, current)
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
