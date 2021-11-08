@@ -8,6 +8,45 @@
    _ext/releasenotes.py
 
 
+2021-11-07
+==========
+
+* :vytask:`T2874` (feature): Add MTU and TCP-MSS discovery tool
+* :vytask:`T3626` (bug): Configuring and disabling DHCP Server
+
+
+2021-11-06
+==========
+
+* :vytask:`T3971` (feature): Ability to build ISO images for XCP-NG hypervisor
+* :vytask:`T3514` (bug): NIC flap at any interface change
+
+
+2021-11-05
+==========
+
+* :vytask:`T3972` (bug): Removing vif-c interface raises KeyError
+
+
+2021-11-04
+==========
+
+* :vytask:`T3964` (bug): SSTP: local-user static-ip CLI node accepts invalid IPv4 addresses
+
+
+2021-11-03
+==========
+
+* :vytask:`T3610` (bug): DHCP-Server creation for not primary IP address fails
+
+
+2021-11-01
+==========
+
+* :vytask:`T3846` (bug): dmvpn configuration not reapllied after "restart vpn"
+* :vytask:`T3956` (bug): GRE tunnel - unable to move from source-interface to source-address, commit error
+
+
 2021-10-31
 ==========
 
