@@ -305,6 +305,8 @@ closing on connection resets or daemon reloads.
   set interfaces openvpn vtun10 protocol udp
 
 Then we need to generate, add and specify the names of the cryptographic materials. 
+Each of the install command should be applied to the configuration and commited 
+before using under the openvpn interface configuration.
 
 .. code-block:: none
 
@@ -326,7 +328,6 @@ Then we need to generate, add and specify the names of the cryptographic materia
   
   set interfaces openvpn vtun10 tls ca-certificate ca-1
   set interfaces openvpn vtun10 tls certificate srv-1
-  set interfaces openvpn vtun10 tls crypt-key srv-1
   set interfaces openvpn vtun10 tls dh-params dh-1
 
 Now we need to specify the server network settings. In all cases we need to
@@ -382,7 +383,6 @@ Branch 1's router might have the following lines:
   
   set interfaces openvpn vtun10 tls ca-cert ca-1
   set interfaces openvpn vtun10 tls certificate branch-1
-  set interfaces openvpn vtun10 tls crypt-key branch-1
 
 Client Authentication
 =====================
@@ -507,10 +507,9 @@ example:
            subnet 172.18.100.128/29
        }
        tls {
-           ca-cert-file /config/auth/ca.crt
-           cert-file /config/auth/server.crt
-           dh-file /config/auth/dh1024.pem
-           key-file /config/auth/server.key
+           ca-certificate ca.crt
+           certificate server.crt
+           dh-params dh1024.pem
        }
    }
 
