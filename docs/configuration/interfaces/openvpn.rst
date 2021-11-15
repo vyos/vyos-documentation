@@ -86,7 +86,7 @@ Local Configuration:
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
   set interfaces openvpn vtun1 persistent-tunnel
-  set interfaces openvpn vtun1 remote-host '203.0.113.11
+  set interfaces openvpn vtun1 remote-host '203.0.113.11'
   set interfaces openvpn vtun1 local-port '1195'
   set interfaces openvpn vtun1 remote-port '1195'
   set interfaces openvpn vtun1 shared-secret-key openvpn-1
