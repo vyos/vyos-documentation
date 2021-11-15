@@ -8,6 +8,35 @@
    _ext/releasenotes.py
 
 
+2021-11-14
+==========
+
+* :vytask:`T3974` (bug): route-map commit fails if interface does not exist
+
+
+2021-11-11
+==========
+
+* :vytask:`T1349` (bug): L2TP remote-access vpn terminated and not showing as connected
+* :vytask:`T1058` (default): hw-id is ignored when naming interfaces
+* :vytask:`T914` (feature): Extend list_interfaces.py to support multiple interface types
+* :vytask:`T688` (enhancment): Move component versions used for config migration purposes into vyos-1x
+
+
+2021-11-10
+==========
+
+* :vytask:`T3982` (bug): DHCP server commit fails if static-mapping contains + or .
+
+
+2021-11-09
+==========
+
+* :vytask:`T3962` (bug): Image cannot be built without open-vm-tools
+* :vytask:`T2088` (bug): Increased boot time from 1.2.4 -> 1.3 rolling by 100%
+* :vytask:`T2136` (bug): XML command definition convertor doesn't disallow tag nodes with multi flag on
+
+
 2021-11-07
 ==========
 
