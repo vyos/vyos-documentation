@@ -366,8 +366,7 @@ address-family.
             <ipv4-unicast|ipv6-unicast> rd vpn export <asn:nn|address:nn>
       
    Specifies the route distinguisher to be added to a route exported from the 
-   current unicast VRF to VPN. Create new VRF instance with `<name>`. The name
-   is used when placing individual interfaces into the VRF.
+   current unicast VRF to VPN.
 
 .. cfgcmd:: set vrf name <name> protocols bgp address-family
             <ipv4-unicast|ipv6-unicast> route-target vpn <import|export|both>
@@ -451,5 +450,47 @@ are in place.
 
     Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
     10.0.0.7        4      65001      2860      2870        0    0    0 1d23h34m            2       10
+
+.. _l3vpn-vrf example configuration:
+
+Example
+=======
+
+L3VPN VRF Basic Setting
+-----------------------
+
+The following example as setting a basic l3vpn between nodes: 
+
+**Node 1:**
+
+.. code-block:: none
+
+    set vrf name GREEN protocols bgp address-family ipv4-unicast export vpn
+    set vrf name GREEN protocols bgp address-family ipv4-unicast import vpn
+    set vrf name GREEN protocols bgp address-family ipv4-unicast label vpn export 'auto'
+    set vrf name GREEN protocols bgp address-family ipv4-unicast network 172.16.80.0/24
+    set vrf name GREEN protocols bgp address-family ipv4-unicast rd vpn export '172.16.80.1:2011'
+    set vrf name GREEN protocols bgp address-family ipv4-unicast redistribute connected
+    set vrf name GREEN protocols bgp address-family ipv4-unicast route-target vpn export '65050:2011'
+    set vrf name GREEN protocols bgp address-family ipv4-unicast route-target vpn import '65050:2011'
+    set vrf name GREEN protocols bgp local-as '65001'
+    set vrf name GREEN protocols bgp neighbor 172.16.80.2 address-family ipv4-unicast as-override
+    set vrf name GREEN protocols bgp neighbor 172.16.80.2 remote-as '65050
+
+**Node 2:**
+
+.. code-block:: none
+
+    set vrf name GREEN protocols bgp address-family ipv4-unicast export vpn
+    set vrf name GREEN protocols bgp address-family ipv4-unicast import vpn
+    set vrf name GREEN protocols bgp address-family ipv4-unicast label vpn export 'auto'
+    set vrf name GREEN protocols bgp address-family ipv4-unicast network 172.16.100.0/24
+    set vrf name GREEN protocols bgp address-family ipv4-unicast rd vpn export '172.16.100.1:2011'
+    set vrf name GREEN protocols bgp address-family ipv4-unicast redistribute connected
+    set vrf name GREEN protocols bgp address-family ipv4-unicast route-target vpn export '65050:2011'
+    set vrf name GREEN protocols bgp address-family ipv4-unicast route-target vpn import '65050:2011'
+    set vrf name GREEN protocols bgp local-as '65001'
+    set vrf name GREEN protocols bgp neighbor 172.16.100.2 address-family ipv4-unicast as-override
+    set vrf name GREEN protocols bgp neighbor 172.16.100.2 remote-as '65050'
 
 .. include:: /_include/common-references.txt
