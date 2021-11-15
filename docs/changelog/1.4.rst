@@ -8,6 +8,20 @@
    _ext/releasenotes.py
 
 
+2021-11-10
+==========
+
+* :vytask:`T3966` (default): OpenVPN fix the smoketests
+* :vytask:`T3834` (default): [OPENVPN] Support for Two Factor Authentication totp.
+* :vytask:`T3982` (bug): DHCP server commit fails if static-mapping contains + or .
+
+
+2021-11-09
+==========
+
+* :vytask:`T3962` (bug): Image cannot be built without open-vm-tools
+
+
 2021-11-07
 ==========
 
