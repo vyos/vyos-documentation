@@ -366,8 +366,7 @@ address-family.
             <ipv4-unicast|ipv6-unicast> rd vpn export <asn:nn|address:nn>
       
    Specifies the route distinguisher to be added to a route exported from the 
-   current unicast VRF to VPN. Create new VRF instance with `<name>`. The name
-   is used when placing individual interfaces into the VRF.
+   current unicast VRF to VPN.
 
 .. cfgcmd:: set vrf name <name> protocols bgp address-family
             <ipv4-unicast|ipv6-unicast> route-target vpn <import|export|both>
@@ -451,5 +450,6 @@ are in place.
 
     Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
     10.0.0.7        4      65001      2860      2870        0    0    0 1d23h34m            2       10
+
 
 .. include:: /_include/common-references.txt
