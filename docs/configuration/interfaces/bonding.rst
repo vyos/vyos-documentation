@@ -315,6 +315,16 @@ a per VIF IPv4 address.
   set interfaces bonding bond0 member interface eth1
   set interfaces bonding bond0 member interface eth2
 
+
+.. note:: If you happen to run this in a virtual environment like by EVE-NG
+   you need to ensure your VyOS NIC is set to use the e1000 driver. Using the
+   default ``virtio-net-pci`` or the ``vmxnet3`` driver will not work. ICMP
+   messages will not be properly processed. They are visible on the virtual wire
+   but will not make it fully up the networking stack.
+
+   You can check your NIC driver by issuing :opcmd:`show interfaces ethernet
+   eth0 physical | grep -i driver`
+
 Cisco Catalyst
 ==============
 
