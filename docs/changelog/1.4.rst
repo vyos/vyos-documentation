@@ -8,6 +8,46 @@
    _ext/releasenotes.py
 
 
+2021-11-20
+==========
+
+* :vytask:`T3998` (bug): route-target completion incorrect description
+
+
+2021-11-19
+==========
+
+* :vytask:`T4003` (bug): API for "show interfaces ethernet" does not include the interface description
+* :vytask:`T4011` (bug): ethernet: deleting interface should place interface in admin down state
+
+
+2021-11-18
+==========
+
+* :vytask:`T3612` (bug): IPoE Server address pool issues. 
+* :vytask:`T3995` (feature): OpenVPN: do not stop/start service on configuration change
+* :vytask:`T3680` (bug): Static routes with dhcp-interface are flaky
+* :vytask:`T4008` (feature): dhcp: change client retry interval form 300 -> 60 seconds
+* :vytask:`T3795` (bug): WWAN: issues with non connected interface / no signal
+* :vytask:`T3510` (bug): RADIUS usersname is not shown on CLI
+
+
+2021-11-17
+==========
+
+* :vytask:`T3350` (bug): OpenVPN config file generation broken
+* :vytask:`T3996` (bug): SNMP service error in log
+
+
+2021-11-15
+==========
+
+* :vytask:`T3994` (bug): VRF: unable to delete vrf when name contains numbers, hyphen or underscore
+* :vytask:`T3960` (bug): FRR Misconfig when using multiple VRF VNI
+* :vytask:`T3724` (feature): Allow setting host-name in l2tp section of accel-ppp
+* :vytask:`T645` (feature): Allow multiple prefixes in ipsec tunnel
+
+
 2021-11-10
 ==========
 
@@ -483,7 +523,6 @@
 ==========
 
 * :vytask:`T3745` (feature): op-mode IPSec show vpn ipse sa sorting
-* :vytask:`T1083` (feature): Implement "--persistent" option to NAT rules
 
 
 2021-08-13
@@ -1251,7 +1290,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.155 / 5.10.75
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.160 / 5.10.80
 
 
 2021-02-15
