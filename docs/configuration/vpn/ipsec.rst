@@ -135,7 +135,8 @@ install <key-pair nam>>". You may choose different length than 2048 of course.
   set pki key-pair ipsec-LEFT private key 'MIIEvgIBADAN...'
   [edit]
 
-Configuration commands will display.
+Configuration commands for the private and public key will be displayed on the 
+screen which needs to be set on the router first.
 Note the command with the public key 
 (set pki key-pair ipsec-LEFT public key 'MIIBIjANBgkqh...'). 
 Then do the same on the opposite router:
