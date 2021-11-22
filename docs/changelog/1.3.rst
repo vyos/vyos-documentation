@@ -8,6 +8,41 @@
    _ext/releasenotes.py
 
 
+2021-11-20
+==========
+
+* :vytask:`T4004` (bug): IPsec ike-group parameters are not saved correctly (after reboot)
+
+
+2021-11-19
+==========
+
+* :vytask:`T4003` (bug): API for "show interfaces ethernet" does not include the interface description
+* :vytask:`T4011` (bug): ethernet: deleting interface should place interface in admin down state
+
+
+2021-11-18
+==========
+
+* :vytask:`T3995` (feature): OpenVPN: do not stop/start service on configuration change
+* :vytask:`T4008` (feature): dhcp: change client retry interval form 300 -> 60 seconds
+* :vytask:`T3795` (bug): WWAN: issues with non connected interface / no signal
+
+
+2021-11-17
+==========
+
+* :vytask:`T3350` (bug): OpenVPN config file generation broken
+* :vytask:`T3996` (bug): SNMP service error in log
+
+
+2021-11-15
+==========
+
+* :vytask:`T3934` (bug): Openconnect VPN broken: ocserv-worker general protection fault on client connect
+* :vytask:`T3724` (feature): Allow setting host-name in l2tp section of accel-ppp
+
+
 2021-11-14
 ==========
 
@@ -466,7 +501,6 @@
 ==========
 
 * :vytask:`T3745` (feature): op-mode IPSec show vpn ipse sa sorting
-* :vytask:`T1083` (feature): Implement "--persistent" option to NAT rules
 * :vytask:`T521` (bug): Network services may fail if vyatta-router.service startup takes longer than a few seconds
 
 
@@ -1107,7 +1141,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.155 / 5.10.75
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.160 / 5.10.80
 
 
 2021-02-14
