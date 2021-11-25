@@ -44,4 +44,5 @@ The process will do the following steps:
 .. toctree::
    :maxdepth: 1
 
+   autotest/L3VPN_EVPN/L3VPN_EVPN
    autotest/Wireguard/Wireguard
