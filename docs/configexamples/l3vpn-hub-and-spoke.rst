@@ -93,5 +93,12 @@ L3VPN configuration parameters table:
 +---------------------------------------+---------------------+
 
 
+********
+Topology
+********
+.. image:: /_static/images/Wan_load_balancing1.png
+   :width: 80%
+   :align: center
+   :alt: Network Topology Diagram
 
 
