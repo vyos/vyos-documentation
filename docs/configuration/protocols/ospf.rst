@@ -145,11 +145,15 @@ Optional
 
    This command should NOT be set normally.
 
-.. cfgcmd:: set protocols ospf passive-interface <interface>
+.. cfgcmd:: set protocols ospf interface <interface> passive [disable]
 
    This command specifies interface as passive. Passive interface advertises
    its address, but does not run the OSPF protocol (adjacencies are not formed
    and hello packets are not generated).
+
+   The optional `disable` option allows to exclude interface from passive state.
+   This command is used if the command :cfgcmd:`passive-interface default` was
+   configured.
 
 .. cfgcmd:: set protocols ospf passive-interface default
 
@@ -157,11 +161,6 @@ Optional
    command changes the configuration logic to a default passive; therefore,
    interfaces where router adjacencies are expected need to be configured
    with the :cfgcmd:`passive-interface-exclude` command.
-
-.. cfgcmd:: set protocols ospf passive-interface-exclude <interface>
-
-   This command allows exclude interface from passive state. This command is
-   used if the command :cfgcmd:`passive-interface default` was configured.
 
 .. cfgcmd:: set protocols ospf refresh timers <seconds>
 
