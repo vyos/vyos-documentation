@@ -306,7 +306,7 @@ Area Configuration
 Interface Configuration
 -----------------------
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf authentication
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf authentication
    plaintext-password <text>
 
    This command sets OSPF authentication key to a simple password. After
@@ -315,7 +315,7 @@ Interface Configuration
    Simple text password authentication is insecure and deprecated in favour of
    MD5 HMAC authentication.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf authentication md5
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf authentication md5
    key-id <id> md5-key <text>
 
    This command specifys that MD5 HMAC authentication must be used on this
@@ -325,25 +325,25 @@ Interface Configuration
    The key can be long up to 16 chars (larger strings will be truncated),
    and is associated with the given key-id.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf bandwidth <number>
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf bandwidth <number>
 
    This command sets the interface bandwidth for cost calculations, where
    bandwidth can be in range from 1 to 100000, specified in Mbits/s.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf cost <number>
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf cost <number>
 
    This command sets link cost for the specified interface. The cost value is
    set to router-LSA’s metric field and used for SPF calculation. The cost
    range is 1 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf dead-interval <number>
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf dead-interval <number>
 
    Set number of seconds for router Dead Interval timer value used for Wait
    Timer and Inactivity Timer. This value must be the same for all routers
    attached to a common network. The default value is 40 seconds. The
    interval range is 1 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf hello-interval <number>
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf hello-interval <number>
 
    Set number of seconds for Hello Interval timer value. Setting this value,
    Hello packet will be sent every timer value seconds on the specified
@@ -351,13 +351,13 @@ Interface Configuration
    common network. The default value is 10 seconds. The interval range is 1
    to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf mtu-ignore
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf mtu-ignore
 
    This command disables check of the MTU value in the OSPF DBD packets. Thus,
    use of this command allows the OSPF adjacency to reach the FULL state even
    though there is an interface MTU mismatch between two OSPF routers.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf network <type>
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf network <type>
 
    This command allows to specify the distribution type for the network
    connected to this interface:
@@ -368,14 +368,14 @@ Interface Configuration
    networks.
    **point-to-point** – address distribution in point-to-point networks.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf priority <number>
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf priority <number>
 
    This command sets Router Priority integer value. The router with the
    highest priority will be more eligible to become Designated Router.
    Setting the value to 0, makes the router ineligible to become
    Designated Router. The default value is 1. The interval range is 0 to 255.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf retransmit-interval
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf retransmit-interval
    <number>
 
    This command sets number of seconds for RxmtInterval timer value. This
@@ -383,7 +383,7 @@ Interface Configuration
    Request packets if acknowledge was not received. The default value is 5
    seconds. The interval range is 3 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ip ospf transmit-delay <number>
+.. cfgcmd:: set interfaces <inttype> <interface> ip ospf transmit-delay <number>
 
    This command sets number of seconds for InfTransDelay value. It allows to
    set and adjust for each interface the delay interval before starting the
@@ -520,12 +520,12 @@ Operational Mode Commands
    This command displays the neighbors information in a detailed form for a
    neighbor whose IP address is specified.
 
-.. opcmd:: show ip ospf neighbor <intname>
+.. opcmd:: show ip ospf neighbor <interface>
 
    This command displays the neighbors status for a neighbor on the specified
    interface.
 
-.. opcmd:: show ip ospf interface [<intname>]
+.. opcmd:: show ip ospf interface [<interface>]
 
    This command displays state and configuration of OSPF the specified
    interface, or all interfaces if no interface is given.
@@ -789,13 +789,13 @@ Area Configuration
 Interface Configuration
 -----------------------
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 cost <number>
+.. cfgcmd:: set interfaces <inttype> <interface> ipv6 ospfv3 cost <number>
 
    This command sets link cost for the specified interface. The cost value is
    set to router-LSA’s metric field and used for SPF calculation. The cost
    range is 1 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 dead-interval
+.. cfgcmd:: set interfaces <inttype> <interface> ipv6 ospfv3 dead-interval
    <number>
 
    Set number of seconds for router Dead Interval timer value used for Wait
@@ -803,7 +803,7 @@ Interface Configuration
    attached to a common network. The default value is 40 seconds. The
    interval range is 1 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 hello-interval
+.. cfgcmd:: set interfaces <inttype> <interface> ipv6 ospfv3 hello-interval
    <number>
 
    Set number of seconds for Hello Interval timer value. Setting this value,
@@ -812,14 +812,14 @@ Interface Configuration
    common network. The default value is 10 seconds. The interval range is 1
    to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 mtu-ignore
+.. cfgcmd:: set interfaces <inttype> <interface> ipv6 ospfv3 mtu-ignore
 
    This command disables check of the MTU value in the OSPF DBD packets.
    Thus, use of this command allows the OSPF adjacency to reach the FULL
    state even though there is an interface MTU mismatch between two OSPF
    routers.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 network <type>
+.. cfgcmd:: set interfaces <inttype> <interface> ipv6 ospfv3 network <type>
 
    This command allows to specify the distribution type for the network
    connected to this interface:
@@ -827,20 +827,20 @@ Interface Configuration
    **broadcast** – broadcast IP addresses distribution.
    **point-to-point** – address distribution in point-to-point networks.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 priority <number>
+.. cfgcmd:: set interfaces <inttype> <interface> ipv6 ospfv3 priority <number>
 
    This command sets Router Priority integer value. The router with the
    highest priority will be more eligible to become Designated Router.
    Setting the value to 0, makes the router ineligible to become Designated
    Router. The default value is 1. The interval range is 0 to 255.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 passive
+.. cfgcmd:: set interfaces <inttype> <interface> ipv6 ospfv3 passive
 
    This command specifies interface as passive. Passive interface advertises
    its address, but does not run the OSPF protocol (adjacencies are not formed
    and hello packets are not generated).
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 retransmit-interval
+.. cfgcmd:: set interfaces <inttype> <interface> ipv6 ospfv3 retransmit-interval
    <number>
 
    This command sets number of seconds for RxmtInterval timer value. This
@@ -848,7 +848,7 @@ Interface Configuration
    Request packets if acknowledge was not received. The default value is 5
    seconds. The interval range is 3 to 65535.
 
-.. cfgcmd:: set interfaces <inttype> <intname> ipv6 ospfv3 transmit-delay
+.. cfgcmd:: set interfaces <inttype> <interface> ipv6 ospfv3 transmit-delay
    <number>
 
    This command sets number of seconds for InfTransDelay value. It allows to
@@ -890,12 +890,12 @@ Operational Mode Commands
    This command displays the neighbors information in a detailed form for
    a neighbor whose IP address is specified.
 
-.. opcmd:: show ipv6 ospfv3 neighbor <intname>
+.. opcmd:: show ipv6 ospfv3 neighbor <interface>
 
    This command displays the neighbors status for a neighbor on the specified
    interface.
 
-.. opcmd:: show ipv6 ospfv3 interface [prefix]|[<intname> [prefix]]
+.. opcmd:: show ipv6 ospfv3 interface [prefix]|[<interface> [prefix]]
 
    This command displays state and configuration of OSPF the specified
    interface, or all interfaces if no interface is given. Whith the argument
