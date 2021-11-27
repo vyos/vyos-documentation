@@ -18,7 +18,7 @@ This chapter contains various configuration examples:
    ha
    wan-load-balancing
    pppoe-ipv6-basic
-   l3vpn-hub-and-spoke.rst
+   l3vpn-hub-and-spoke
 
 
 Configuration Blueprints (autotest)
