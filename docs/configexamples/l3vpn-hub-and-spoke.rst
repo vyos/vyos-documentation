@@ -729,3 +729,402 @@ and installing them to the specific customer VRFs:
 
 .. code-block:: none
    
+   vyos@VyOS-PE1:~$ show bgp ipv4 vpn summary
+   BGP router identifier 7.7.7.7, local AS number 65001 vrf-id 0
+   BGP table version 0
+   RIB entries 9, using 1728 bytes of memory
+   Peers 2, using 43 KiB of memory
+   Peer groups 1, using 64 bytes of memory
+   
+   Neighbor    	V     	AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+   1.1.1.1     	4  	65001  	8812  	8794    	   0	   0	   0   01:18:42        	8    	2
+   2.2.2.2     	4  	65001  	8800  	8792    	   0	   0	   0   6d02h27m        	8    	2
+
+- “show bgp vrf all” for checking all the prefix learning on BGP 
+   within VRFs:
+
+.. code-block:: none
+   
+   vyos@VyOS-PE1:~$ show  bgp vrf all
+
+   Instance default:
+   No BGP prefixes displayed, 0 exist
+   
+   Instance BLUE_SPOKE:
+   BGP table version is 8, local router ID is 10.50.50.1, vrf id 6
+   Default local pref 100, local AS 65001
+   Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
+              	i internal, r RIB-failure, S Stale, R Removed
+   Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
+   Origin codes:  i - IGP, e - EGP, ? - incomplete
+   
+      Network      	Next Hop        	Metric LocPrf Weight Path
+   *  10.50.50.0/24	0.0.0.0              	0     	32768 ?
+   *>              	0.0.0.0              	0     	32768 i
+   *> 10.80.80.0/24	8.8.8.8@0<           	0	100  	0 i
+   *               	8.8.8.8@0<           	0	100  	0 i
+   *> 80.80.80.80/32   10.50.50.2           	0         	0 65035 i
+   *> 100.100.100.100/32
+                   	8.8.8.8@0<           	0	100  	0 65035 ?
+   *               	8.8.8.8@0<           	0	100  	0 65035 ?
+
+- “show bgp vrf BLUE_SPOKE summary” for checking EBGP neighbor 
+   information between PE and CE:
+   
+.. code-block:: none
+   
+   vyos@VyOS-PE1:~$ show bgp vrf BLUE_SPOKE summary
+
+
+   IPv4 Unicast Summary:
+   BGP router identifier 10.50.50.1, local AS number 65001 vrf-id 6
+   BGP table version 8
+   RIB entries 7, using 1344 bytes of memory
+   Peers 1, using 21 KiB of memory
+   
+   Neighbor    	V     	AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+   10.50.50.2  	4  	65035  	9019  	9023    	      0	0	   0   6d06h12m        	1    	4
+   
+   Total number of neighbors 1
+
+- “show ip route vrf BLUE_SPOKE” for viewing the RIB in our Spoke PE. 
+   Using this command we are also able to check the transport and 
+   customer label (inner/outer) for Hub network prefix (100.100.100.100/32):
+
+.. code-block:: none
+   
+   vyos@VyOS-PE1:~$ show ip route vrf BLUE_SPOKE
+
+   Codes: K - kernel route, C - connected, S - static, R - RIP,
+      	O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+      	T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+      	F - PBR, f - OpenFabric,
+      	> - selected route, * - FIB route, q - queued, r - rejected, b - backup
+   
+   VRF BLUE_SPOKE:
+   K>* 0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 03w0d23h
+   C>* 10.50.50.0/24 is directly connected, eth3, 03w0d23h
+   B>  10.80.80.0/24 [200/0] via 8.8.8.8 (vrf default) (recursive), label 80, weight 1, 04:22:00
+     *                     	via 172.16.90.1, eth0 (vrf default), label 24/80, weight 1, 04:22:00
+   B>* 80.80.80.80/32 [20/0] via 10.50.50.2, eth3, weight 1, 6d05h30m
+   B>  100.100.100.100/32 [200/0] via 8.8.8.8 (vrf default) (recursive), label 80, weight 1, 04:22:00
+     *                          	via 172.16.90.1, eth0 (vrf default), label 24/80, weight 1, 04:22:00
+
+- “show bgp ipv4 vpn x.x.x.x/32” for checking the best-path to the 
+   specific VPNv4 destination including extended community and 
+   remotelabel information. This procedure is the same on all Spoke nodes:
+   
+.. code-block:: none
+   
+   vyos@VyOS-PE1:~$ show bgp ipv4 vpn 100.100.100.100/32
+   BGP routing table entry for 10.80.80.1:1011:100.100.100.100/32
+   not allocated
+   Paths: (2 available, best #1)
+     Not advertised to any peer
+     65035
+   	8.8.8.8 from 1.1.1.1 (8.8.8.8)
+     	Origin incomplete, metric 0, localpref 100, valid, internal, best (Neighbor IP)
+     	Extended Community: RT:65035:1030
+     	Originator: 8.8.8.8, Cluster list: 1.1.1.1
+     	Remote label: 80
+     	Last update: Tue Oct 19 13:45:26 2021
+     65035
+   	8.8.8.8 from 2.2.2.2 (8.8.8.8)
+     	Origin incomplete, metric 0, localpref 100, valid, internal
+     	Extended Community: RT:65035:1030
+     	Originator: 8.8.8.8, Cluster list: 1.1.1.1
+     	Remote label: 80
+     	Last update: Wed Oct 13 12:39:34 202
+
+Now, let’s check routing information on out Hub PE:
+- “show bgp ipv4 vpn summary” for checking iBGP neighbors again 
+   VyOS-RR1/RR2
+
+.. code-block:: none
+   
+   vyos@VyOS-PE2:~$ show bgp ipv4 vpn summary
+   BGP router identifier 8.8.8.8, local AS number 65001 vrf-id 0
+   BGP table version 0
+   RIB entries 9, using 1728 bytes of memory
+   Peers 2, using 43 KiB of memory
+   Peer groups 1, using 64 bytes of memory
+   
+   Neighbor    	V     	AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+   1.1.1.1     	4  	65001 	15982 	15949    	0	0	0 05:41:28        	6    	4
+   2.2.2.2     	4  	65001  	9060  	9054    	0	0	0 6d06h47m        	6    	4
+   
+   Total number of neighbors
+
+- “show bgp vrf all” for checking all the prefixes learning on BGP
+
+.. code-block:: none
+   
+   vyos@VyOS-PE2:~$ show bgp vrf all
+
+   Instance default:
+   No BGP prefixes displayed, 0 exist
+   
+   Instance BLUE_HUB:
+   BGP table version is 50, local router ID is 10.80.80.1, vrf id 8
+   Default local pref 100, local AS 65001
+   Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
+              	i internal, r RIB-failure, S Stale, R Removed
+   Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
+   Origin codes:  i - IGP, e - EGP, ? - incomplete
+   
+      Network      	Next Hop        	Metric LocPrf Weight Path
+   *> 10.50.50.0/24	7.7.7.7@0<           	0	100  	0 i
+   *               	7.7.7.7@0<           	0	100  	0 i
+   *> 10.60.60.0/24	10.10.10.10@0<       	0	100  	0 i
+   *               	10.10.10.10@0<       	0	100  	0 i
+   *  10.80.80.0/24	10.80.80.2           	0         	0 65035 ?
+   *               	0.0.0.0              	0     	32768 i
+   *>              	0.0.0.0              	0     	32768 ?
+   *> 10.110.110.0/24  172.16.80.2@9<       	0         	0 65050 i
+   *> 10.210.210.0/24  9.9.9.9@0<           	0	100  	0 65050 i
+   *               	9.9.9.9@0<           	0	100  	0 65050 i
+   *> 80.80.80.80/32   7.7.7.7@0<           	0	100  	0 65035 i
+   *               	7.7.7.7@0<           	0	100  	0 65035 i
+   *> 90.90.90.90/32   10.10.10.10@0<       	0	100  	0 65035 i
+   *               	10.10.10.10@0<       	0	100  	0 65035 i
+   *> 100.100.100.100/32
+                   	10.80.80.2           	0         	0 65035 ?
+   *> 172.16.80.0/24   0.0.0.0@9<           	0     	32768 ?
+                   	0.0.0.0@9<           	0     	32768 i
+   *> 172.16.100.0/24  9.9.9.9@0<           	0	100  	0 i
+   *               	9.9.9.9@0<           	0	100  	0 i
+
+- “show bgp vrf BLUE_HUB summary” for checking EBGP neighbor 
+   CE Hub device
+
+.. code-block:: none
+   
+   vyos@VyOS-PE2:~$ show bgp vrf BLUE_HUB summary
+
+   IPv4 Unicast Summary:
+   BGP router identifier 10.80.80.1, local AS number 65001 vrf-id 8
+   BGP table version 50
+   RIB entries 19, using 3648 bytes of memory
+   Peers 1, using 21 KiB of memory
+   
+   Neighbor    	V     	AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+   10.80.80.2  	4  	65035 	15954 	15972    	   0	0	   0   01w4d01h        	2   	10
+   
+- “show ip route vrf BLUE_HUB” to view the RIB in our Hub PE. 
+   With this command we are able to check the transport and 
+   customer label (inner/outer) for network spokes prefixes 
+   80.80.80.80/32 - 90.90.90.90/32
+   
+.. code-block:: none
+   
+   vyos@VyOS-PE2:~$ show ip route vrf BLUE_HUB
+   Codes: K - kernel route, C - connected, S - static, R - RIP,
+      	O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+      	T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+      	F - PBR, f - OpenFabric,
+      	> - selected route, * - FIB route, q - queued, r - rejected, b - backup
+   VRF BLUE_HUB:
+   K>* 0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 01w4d01h
+   B>  10.50.50.0/24 [200/0] via 7.7.7.7 (vrf default) (recursive), label 144, weight 1, 05:53:15
+     *                     	via 172.16.100.1, eth1 (vrf default), label 22/144, weight 1, 05:53:15
+   B>  10.60.60.0/24 [200/0] via 10.10.10.10 (vrf default) (recursive), label 144, weight 1, 05:53:15
+     *                     	via 172.16.110.1, eth0 (vrf default), label 23/144, weight 1, 05:53:15
+   C>* 10.80.80.0/24 is directly connected, eth3, 01w4d01h
+   B>* 10.110.110.0/24 [200/0] via 172.16.80.2, eth2 (vrf GREEN), weight 1, 01w4d01h
+   B>  10.210.210.0/24 [200/0] via 9.9.9.9 (vrf default) (recursive), label 144, weight 1, 05:53:15
+     *                       	via 172.16.100.1, eth1 (vrf default), label 18/144, weight 1, 05:53:15
+     *                       	via 172.16.110.1, eth0 (vrf default), label 22/144, weight 1, 05:53:15
+   B>  80.80.80.80/32 [200/0] via 7.7.7.7 (vrf default) (recursive), label 144, weight 1, 05:53:15
+     *                      	via 172.16.100.1, eth1 (vrf default), label 22/144, weight 1, 05:53:15
+   B>  90.90.90.90/32 [200/0] via 10.10.10.10 (vrf default) (recursive), label 144, weight 1, 05:53:15
+     *                      	via 172.16.110.1, eth0 (vrf default), label 23/144, weight 1, 05:53:15
+   B>* 100.100.100.100/32 [20/0] via 10.80.80.2, eth3, weight 1, 01w4d01h
+   B>* 172.16.80.0/24 [200/0] is directly connected, eth2 (vrf GREEN), weight 1, 01w4d01h
+   B>  172.16.100.0/24 [200/0] via 9.9.9.9 (vrf default) (recursive), label 144, weight 1, 05:53:15
+     *                       	via 172.16.100.1, eth1 (vrf default), label 18/144, weight 1, 05:53:15
+     *                       	via 172.16.110.1, eth0 (vrf default), label 22/144, weight 1, 05:53:15
+
+- “show bgp ipv4 vpn x.x.x.x/32” for checking best-path, 
+   extended community and remote label of specific destination
+   
+.. code-block:: none
+   
+   vyos@VyOS-PE2:~$ show bgp ipv4 vpn 80.80.80.80/32
+   BGP routing table entry for 10.50.50.1:1011:80.80.80.80/32
+   not allocated
+   Paths: (2 available, best #1)
+     Not advertised to any peer
+     65035
+   	7.7.7.7 from 1.1.1.1 (7.7.7.7)
+     	Origin IGP, metric 0, localpref 100, valid, internal, best (Neighbor IP)
+     	Extended Community: RT:65035:1011
+     	Originator: 7.7.7.7, Cluster list: 1.1.1.1
+     	Remote label: 144
+     	Last update: Tue Oct 19 13:45:30 2021
+     65035
+   	7.7.7.7 from 2.2.2.2 (7.7.7.7)
+     	Origin IGP, metric 0, localpref 100, valid, internal
+     	Extended Community: RT:65035:1011
+     	Originator: 7.7.7.7, Cluster list: 1.1.1.1
+     	Remote label: 144
+     	Last update: Wed Oct 13 12:39:37 2021
+   
+   vyos@VyOS-PE2:~$ show bgp ipv4 vpn 90.90.90.90/32
+   BGP routing table entry for 10.60.60.1:1011:90.90.90.90/32
+   not allocated
+   Paths: (2 available, best #1)
+     Not advertised to any peer
+     65035
+   	10.10.10.10 from 1.1.1.1 (10.10.10.10)
+     	Origin IGP, metric 0, localpref 100, valid, internal, best (Neighbor IP)
+     	Extended Community: RT:65035:1011
+     	Originator: 10.10.10.10, Cluster list: 1.1.1.1
+     	Remote label: 144
+    	Last update: Tue Oct 19 13:45:30 2021
+     65035
+   	10.10.10.10 from 2.2.2.2 (10.10.10.10)
+     	Origin IGP, metric 0, localpref 100, valid, internal
+     	Extended Community: RT:65035:1011
+     	Originator: 10.10.10.10, Cluster list: 1.1.1.1
+     	Remote label: 144
+     	Last update: Wed Oct 13 12:45:44 2021
+
+Finally, let’s check the reachability between CEs:
+
+- VyOS-CE1-SPOKE ----->   VyOS-CE-HUB
+
+
+.. code-block:: none
+   
+   # check rib 
+   vyos@VyOS-CE1-SPOKE:~$ show ip route
+   Codes: K - kernel route, C - connected, S - static, R - RIP,
+      	O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+      	T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+      	F - PBR, f - OpenFabric,
+      	> - selected route, * - FIB route, q - queued, r - rejected, b - backup
+   
+   B   10.50.50.0/24 [20/0] via 10.50.50.1 inactive, weight 1, 6d07h53m
+   C>* 10.50.50.0/24 is directly connected, eth0, 09w0d00h
+   B>* 10.80.80.0/24 [20/0] via 10.50.50.1, eth0, weight 1, 6d07h53m
+   C>* 80.80.80.80/32 is directly connected, dum20, 09w0d00h
+   B>* 100.100.100.100/32 [20/0] via 10.50.50.1, eth0, weight 1, 6d07h53m
+   
+   # check icmp
+   vyos@VyOS-CE1-SPOKE:~$ ping 100.100.100.100 interface 80.80.80.80
+   PING 100.100.100.100 (100.100.100.100) from 80.80.80.80 : 56(84) bytes of data.
+   64 bytes from 100.100.100.100: icmp_seq=1 ttl=62 time=6.52 ms
+   64 bytes from 100.100.100.100: icmp_seq=2 ttl=62 time=4.13 ms
+   64 bytes from 100.100.100.100: icmp_seq=3 ttl=62 time=4.04 ms
+   64 bytes from 100.100.100.100: icmp_seq=4 ttl=62 time=4.03 ms
+   ^C
+   --- 100.100.100.100 ping statistics ---
+   4 packets transmitted, 4 received, 0% packet loss, time 8ms
+   rtt min/avg/max/mdev = 4.030/4.680/6.518/1.064 ms
+   
+   # check network path
+   vyos@VyOS-CE1-SPOKE:~$ traceroute 100.100.100.100
+   traceroute to 100.100.100.100 (100.100.100.100), 30 hops max, 60 byte packets
+    1  10.50.50.1 (10.50.50.1)  1.041 ms  1.252 ms  1.835 ms
+    2  * * *
+    3  100.100.100.100 (100.100.100.100)  9.225 ms  9.159 ms  9.121 m
+
+- VyOS-CE-HUB -------> VyOS-CE1-SPOKE
+- VyOS-CE-HUB -------> VyOS-CE2-SPOKE
+
+.. code-block:: none
+   
+   # check rib
+   vyos@VyOS-CE-HUB:~$ show ip route
+   Codes: K - kernel route, C - connected, S - static, R - RIP,
+      	O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+      	T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+      	F - PBR, f - OpenFabric,
+      	> - selected route, * - FIB route, q - queued, r - rejected, b - backup
+   
+   B>* 10.50.50.0/24 [20/0] via 10.80.80.1, eth0, weight 1, 6d08h04m
+   B>* 10.60.60.0/24 [20/0] via 10.80.80.1, eth0, weight 1, 6d08h35m
+   C>* 10.80.80.0/24 is directly connected, eth0, 01w6d07h
+   B>* 10.110.110.0/24 [20/0] via 10.80.80.1, eth0, weight 1, 01w4d02h
+   B>* 10.210.210.0/24 [20/0] via 10.80.80.1, eth0, weight 1, 6d08h35m
+   B>* 80.80.80.80/32 [20/0] via 10.80.80.1, eth0, weight 1, 6d08h04m
+   B>* 90.90.90.90/32 [20/0] via 10.80.80.1, eth0, weight 1, 6d08h35m
+   C>* 100.100.100.100/32 is directly connected, dum20, 01w6d07h
+   B>* 172.16.80.0/24 [20/0] via 10.80.80.1, eth0, weight 1, 01w4d02h
+   B>* 172.16.100.0/24 [20/0] via 10.80.80.1, eth0, weight 1, 6d08h35m
+   
+   # check icmp
+   vyos@VyOS-CE-HUB:~$ ping 80.80.80.80 interface 100.100.100.100 c 4
+   PING 80.80.80.80 (80.80.80.80) from 100.100.100.100 : 56(84) bytes of data.
+   64 bytes from 80.80.80.80: icmp_seq=1 ttl=62 time=3.31 ms
+   64 bytes from 80.80.80.80: icmp_seq=2 ttl=62 time=4.23 ms
+   64 bytes from 80.80.80.80: icmp_seq=3 ttl=62 time=3.89 ms
+   64 bytes from 80.80.80.80: icmp_seq=4 ttl=62 time=3.22 ms
+   
+   --- 80.80.80.80 ping statistics ---
+   4 packets transmitted, 4 received, 0% packet loss, time 9ms
+   rtt min/avg/max/mdev = 3.218/3.661/4.226/0.421 ms
+   
+   vyos@VyOS-CE-HUB:~$ ping 90.90.90.90 interface 100.100.100.100 c 4
+   PING 90.90.90.90 (90.90.90.90) from 100.100.100.100 : 56(84) bytes of data.
+   64 bytes from 90.90.90.90: icmp_seq=1 ttl=62 time=7.46 ms
+   64 bytes from 90.90.90.90: icmp_seq=2 ttl=62 time=4.43 ms
+   64 bytes from 90.90.90.90: icmp_seq=3 ttl=62 time=4.60 ms
+   ^C
+   --- 90.90.90.90 ping statistics ---
+   3 packets transmitted, 3 received, 0% packet loss, time 6ms
+   rtt min/avg/max/mdev = 4.430/5.498/7.463/1.391 ms
+   
+   # check network path
+   vyos@VyOS-CE-HUB:~$ traceroute 80.80.80.80
+   traceroute to 80.80.80.80 (80.80.80.80), 30 hops max, 60 byte packets
+    1  10.80.80.1 (10.80.80.1)  1.563 ms  1.341 ms  1.075 ms
+    2  * * *
+    3  80.80.80.80 (80.80.80.80)  8.125 ms  8.019 ms  7.781 ms
+   
+   vyos@VyOS-CE-HUB:~$ traceroute 90.90.90.90
+   traceroute to 90.90.90.90 (90.90.90.90), 30 hops max, 60 byte packets
+    1  10.80.80.1 (10.80.80.1)  1.305 ms  1.137 ms  1.097 ms
+    2  * * *
+    3  * * *
+    4  90.90.90.90 (90.90.90.90)  9.358 ms  9.325 ms  9.292 ms
+
+- VyOS-CE2-SPOKE ------->  VyOS-CE-HUB
+
+.. code-block:: none
+   
+   # check rib
+   vyos@rt-ce2-SPOKE:~$ show ip route
+   Codes: K - kernel route, C - connected, S - static, R - RIP,
+      	O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+      	T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+      	F - PBR, f - OpenFabric,
+      	> - selected route, * - FIB route, q - queued, r - rejected, b - backup
+   
+   B   10.60.60.0/24 [20/0] via 10.60.60.1 inactive, weight 1, 02w6d00h
+   C>* 10.60.60.0/24 is directly connected, eth0, 02w6d00h
+   B>* 10.80.80.0/24 [20/0] via 10.60.60.1, eth0, weight 1, 6d08h46m
+   C>* 90.90.90.90/32 is directly connected, dum20, 02w6d00h
+   B>* 100.100.100.100/32 [20/0] via 10.60.60.1, eth0, weight 1, 6d08h46m
+   
+   # check icmp
+   vyos@rt-ce2-SPOKE:~$ ping 100.100.100.100 interface 90.90.90.90 c 4
+   PING 100.100.100.100 (100.100.100.100) from 90.90.90.90 : 56(84) bytes of data.
+   64 bytes from 100.100.100.100: icmp_seq=1 ttl=62 time=4.97 ms
+   64 bytes from 100.100.100.100: icmp_seq=2 ttl=62 time=4.45 ms
+   64 bytes from 100.100.100.100: icmp_seq=3 ttl=62 time=4.20 ms
+   64 bytes from 100.100.100.100: icmp_seq=4 ttl=62 time=4.29 ms
+   
+   --- 100.100.100.100 ping statistics ---
+   4 packets transmitted, 4 received, 0% packet loss, time 9ms
+   rtt min/avg/max/mdev = 4.201/4.476/4.971/0.309 ms
+   
+   # check network path
+   vyos@rt-ce2-SPOKE:~$ traceroute 100.100.100.100
+   traceroute to 100.100.100.100 (100.100.100.100), 30 hops max, 60 byte packets
+    1  10.60.60.1 (10.60.60.1)  1.343 ms  1.190 ms  1.152 ms
+    2  * * *
+    3  * * *
+    4  100.100.100.100 (100.100.100.100)  7.504 ms  7.480 ms  7.488 ms
+
+**Note:** At the moment, trace mpls doesn’t show labels/paths. So we’ll see * * *  for the transit routers of the mpls backbone.
