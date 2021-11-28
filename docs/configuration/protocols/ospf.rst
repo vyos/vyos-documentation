@@ -753,6 +753,8 @@ address and the node 1 sending the default route:
   set policy route-map CONNECT rule 10 match interface lo
 
 
+.. _routing-ospfv3:
+
 *************
 OSPFv3 (IPv6)
 *************
