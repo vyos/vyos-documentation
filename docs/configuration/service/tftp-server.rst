@@ -30,8 +30,11 @@ on each IP address.
 
 .. cfgcmd:: set service tftp-server listen-address <address> vrf <name>
 
-Additional option to run TFTP server in the :abbr:`VRF (Virtual Routing and
-Forwarding)` context
+.. stop_vyoslinter
+
+Additional option to run TFTP server in the :abbr:`VRF (Virtual Routing and Forwarding)` context
+
+.. start_vyoslinter
 
 .. note:: Configuring a listen-address is essential for the service to work.
 
