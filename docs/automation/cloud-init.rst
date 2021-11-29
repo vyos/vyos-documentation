@@ -19,7 +19,7 @@ VyOS support three types of config sources.
 
 * Metadata - Metadata is sourced by the cloud platform or hypervisor.
   In some clouds, there is implemented as an HTTP endpoint at
-  ```http://169.254.169.254```.
+  ``http://169.254.169.254``.
 * Network configuration - This config source informs the system about the
   network settings like IP addresses, routes, DNS. Available only in several
   cloud and virtualization platforms.
@@ -44,13 +44,14 @@ described below.
 Cloud-config modules
 ********************
 
-In VyOS, by default, enabled only two modules:
+In VyOS, by default, enables only two modules:
 
 * ``write_files`` - this module allows to insert any files into the filesystem
   before the first boot, for example, pre-generated encryption keys,
   certificates, or even a whole ``config.boot`` file.
 * ``vyos_userdata`` - the module accepts a list of CLI configuration commands in
   a ``vyos_config_commands`` section, which gives an easy way to configure the
+
   system during deployment.
 
 ************************
@@ -168,6 +169,51 @@ obtained from the EC2 metadata service.
          set system host-name $hostname
          commit
          exit
+
+*******
+NoCloud
+*******
+
+Injecting configuration data is not limited to cloud platforms. Users can
+employ the NoCloud data source to inject user-data and meta-data on
+virtualization platforms such as VMware, Hyper-V and KVM.
+
+While other methods exist, the most straightforward method for using the
+NoCloud data source is creating a seed ISO and attaching it to the virtual
+machine as a CD drive. The volume must be formatted as a vfat or ISO 9660
+file system with the label "cidata" or "CIDATA".
+
+Create text files named user-data and meta-data. On linux-based systems, 
+the mkisofs utility can be used to create the seed ISO. The following
+syntax will add these files to the ISO 9660 file system.
+
+.. code-block:: none
+
+  mkisofs -joliet -rock -volid "cidata" -output seed.iso meta-data user-data
+
+The seed.iso file can be attached to the virtual machine. As an example,
+the method with KVM to attach the ISO as a CD drive follows.
+
+.. code-block:: none
+
+  $ virt-install -n vyos_r1 \
+     --ram 4096 \
+     --vcpus 2 \
+     --cdrom seed.iso \
+     --os-type linux \
+     --os-variant debian10 \
+     --network network=default \
+     --graphics vnc \
+     --hvm \
+     --virt-type kvm \
+     --disk path=/var/lib/libvirt/images/vyos_kvm.qcow2,bus=virtio \
+     --import \
+     --noautoconsole
+
+
+For more information on the NoCloud data source, visit its 
+`page <https://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html>`_
+in the cloud-init documentation. 
 
 ***************
 Troubleshooting
