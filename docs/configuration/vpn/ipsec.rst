@@ -29,6 +29,88 @@ for the cipher and hash. Adjust this as necessary.
 .. NOTE:: VMware users should ensure that a VMXNET3 adapter is used. E1000
   adapters have known issues with GRE processing.
 
+**************************************
+IKE (Internet Key Exchange) Attributes
+**************************************
+IKE performs mutual authentication between two parties and establishes 
+an IKE security association (SA) that includes shared secret information 
+that can be used to efficiently establish SAs for Encapsulating Security 
+Payload (ESP) or Authentication Header (AH) and a set of cryptographic 
+algorithms to be used by the SAs to protect the traffic that they carry.
+https://datatracker.ietf.org/doc/html/rfc5996
+
+In VyOS, IKE attributes are specified through IKE groups.
+Multiple proposals can be specified in a single group.
+
+VyOS IKE group has the next options:
+
+* ``close-action`` defines the action to take if the remote peer unexpectedly 
+  closes a CHILD_SA:
+
+ * ``none`` set action to none (default);
+ 
+ * ``hold`` set action to hold;
+ 
+ * ``clear`` set action to clear;
+ 
+ * ``restart`` set action to restart;
+ 
+* ``dead-peer-detection`` controls the use of the Dead Peer Detection protocol 
+  (DPD, RFC 3706) where R_U_THERE notification messages (IKEv1) or empty 
+  INFORMATIONAL messages (IKEv2) are periodically sent in order to check the 
+  liveliness of the IPsec peer:
+  
+ * ``action`` keep-alive failure action:
+ 
+  * ``hold`` set action to hold (default)
+  
+  * ``clear`` set action to clear;
+  
+  * ``restart`` set action to restart;
+  
+ * ``interval`` keep-alive interval in seconds <2-86400> (default 30);
+ 
+ * ``timeout`` keep-alive timeout in seconds <2-86400> (default 120) IKEv1 only
+ 
+* ``ikev2-reauth`` whether rekeying of an IKE_SA should also reauthenticate 
+  the peer. In IKEv1, reauthentication is always done:
+  
+ * ``yes`` enable remote host re-authentication during an IKE rekey;
+ 
+ * ``no`` disable remote host re-authenticaton during an IKE rekey;
+ 
+* ``key-exchange`` which protocol should be used to initialize the connection
+  If not set both protocols are handled and connections will use IKEv2 when 
+  initiating, but accept any protocol version when responding:
+  
+ * ``ikev1`` use IKEv1 for Key Exchange;
+ 
+ * ``ikev2`` use IKEv2 for Key Exchange;
+ 
+* ``lifetime`` IKE lifetime in seconds <30-86400> (default 28800);
+
+* ``mobike`` enable MOBIKE Support. MOBIKE is only available for IKEv2:
+
+ * ``enable`` enable MOBIKE (default for IKEv2);
+ 
+ * ``disable`` disable MOBIKE;
+ 
+* ``mode`` IKEv1 Phase 1 Mode Selection:
+
+ * ``main`` use Main mode for Key Exchanges in the IKEv1 Protocol 
+   (Recommended Default);
+   
+ * ``aggressive`` use Aggressive mode for Key Exchanges in the IKEv1 protocol 
+   aggressive mode is much more insecure compared to Main mode;
+   
+* ``proposal`` the list of proposals and their parameters:
+
+ * ``dh-group`` dh-group;
+ 
+ * ``encryption`` encryption algorithm;
+
+ * ``hash`` hash algorithm.
+
 *************************
 IPsec policy matching GRE
 *************************
