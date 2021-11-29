@@ -8,6 +8,47 @@
    _ext/releasenotes.py
 
 
+2021-11-28
+==========
+
+* :vytask:`T3999` (bug): show lldp neighbor Traceback error
+* :vytask:`T3928` (feature): Add OSPFv3 VRF support
+
+
+2021-11-27
+==========
+
+* :vytask:`T3755` (feature): ospf: adjust to new FRR 8 syntax where "no passive-interface " moved to interface section
+* :vytask:`T3753` (feature): frr: upgrade to stable/8.1 release train
+
+
+2021-11-26
+==========
+
+* :vytask:`T3978` (bug): containers add network without declaring prefix raise ConfigError
+
+
+2021-11-25
+==========
+
+* :vytask:`T4006` (default): Add additional Linux capabilities to container configuration
+* :vytask:`T3986` (bug): Incorrect description for vpn ipsec site-to-site authentication and connection
+
+
+2021-11-24
+==========
+
+* :vytask:`T4015` (feature): Update Accel-PPP to a newer revision
+* :vytask:`T3865` (bug): loadkey command help text missing escape sequence
+* :vytask:`T1083` (feature): Implement persistent/random address and port mapping options for NAT rules
+
+
+2021-11-23
+==========
+
+* :vytask:`T3990` (bug): WATCHFRR: crashlog and per-thread log buffering unavailable (due to files left behind in /var/tmp/frr/ after reboot)
+
+
 2021-11-20
 ==========
 
@@ -1290,7 +1331,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.160 / 5.10.80
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.162 / 5.10.82
 
 
 2021-02-15
