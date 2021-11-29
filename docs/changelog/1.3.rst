@@ -8,6 +8,37 @@
    _ext/releasenotes.py
 
 
+2021-11-28
+==========
+
+* :vytask:`T3999` (bug): show lldp neighbor Traceback error
+
+
+2021-11-26
+==========
+
+* :vytask:`T4019` (bug): Smoketests for SSTP and openconnect fails 
+
+
+2021-11-25
+==========
+
+* :vytask:`T4005` (feature): Feature Request: IPsec IKEv1 + IKEv2 for one peer
+
+
+2021-11-24
+==========
+
+* :vytask:`T4015` (feature): Update Accel-PPP to a newer revision
+* :vytask:`T1083` (feature): Implement persistent/random address and port mapping options for NAT rules
+
+
+2021-11-23
+==========
+
+* :vytask:`T3990` (bug): WATCHFRR: crashlog and per-thread log buffering unavailable (due to files left behind in /var/tmp/frr/ after reboot)
+
+
 2021-11-20
 ==========
 
@@ -1141,7 +1172,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.160 / 5.10.80
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.162 / 5.10.82
 
 
 2021-02-14
