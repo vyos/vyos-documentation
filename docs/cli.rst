@@ -229,6 +229,112 @@ special way on how to :ref:`run_opmode_from_config_mode`.
 
 .. _`forum`: https://forum.vyos.io
 
+.. opcmd:: show configuration json
+
+   View the current active configuration in JSON format.
+
+   .. code-block:: none
+
+     {"interfaces": {"ethernet": {"eth0": {"address": ["192.0.2.11/24", "192.0.2.35/24"], "hw-id": "52:54:00:48:a0:c6"}, "eth1": {"address": ["203.0.113.1/24"], "hw-id": "52:54:00:fc:50:0b"}}, "loopback": {"lo": {}}}, "protocols": {"static": {"route": {"0.0.0.0/0": {"next-hop": {"192.0.2.254": {}}}}}}, "service": {"ssh": {"disable-host-validation": {}}}, "system": {"config-management": {"commit-revisions": "100"}, "console": {"device": {"ttyS0": {"speed": "115200"}}}, "host-name": "r11-vyos", "login": {"user": {"vyos": {"authentication": {"encrypted-password": "$6$Vt68...F0", "plaintext-password": "", "public-keys": {"vyos@vyos": {"key": "AAAAxxx=", "type": "ssh-rsa"}}}}}}, "name-server": ["203.0.113.254"], "ntp": {"server": {"time1.vyos.net": {}, "time2.vyos.net": {}, "time3.vyos.net": {}}}, "syslog": {"global": {"facility": {"all": {"level": "info"}, "protocols": {"level": "debug"}}}}, "time-zone": "America/New_York"}}
+
+.. opcmd:: show configuration json pretty
+
+   View the current active configuration in readable JSON format.
+
+   .. code-block:: none
+
+     {
+         "interfaces": {
+             "ethernet": {
+                 "eth0": {
+                     "address": [
+                         "192.0.2.11/24",
+                         "192.0.2.35/24"
+                     ],
+                     "hw-id": "52:54:00:48:a0:c6"
+                 },
+                 "eth1": {
+                     "address": [
+                         "203.0.113.1/24"
+                     ],
+                     "hw-id": "52:54:00:fc:50:0b"
+                 }
+             },
+             "loopback": {
+                 "lo": {}
+             }
+         },
+         "protocols": {
+             "static": {
+                 "route": {
+                     "0.0.0.0/0": {
+                         "next-hop": {
+                             "192.0.2.254": {}
+                         }
+                     }
+                 }
+             }
+         },
+         "service": {
+             "ssh": {
+                 "disable-host-validation": {}
+             }
+         },
+         "system": {
+             "config-management": {
+                 "commit-revisions": "100"
+             },
+             "console": {
+                 "device": {
+                     "ttyS0": {
+                         "speed": "115200"
+                     }
+                 }
+             },
+             "host-name": "r11-vyos",
+             "login": {
+                 "user": {
+                     "vyos": {
+                         "authentication": {
+                             "encrypted-password": "$6$Vt68...F0",
+                             "plaintext-password": "",
+                             "public-keys": {
+                                 "vyos@vyos": {
+                                     "key": "AAAAxxx=",
+                                     "type": "ssh-rsa"
+                                 }
+                             }
+                         }
+                     }
+                 }
+             },
+             "name-server": [
+                 "203.0.113.254"
+             ],
+             "ntp": {
+                 "server": {
+                     "time1.vyos.net": {},
+                     "time2.vyos.net": {},
+                     "time3.vyos.net": {}
+                }
+             },
+             "syslog": {
+                 "global": {
+                     "facility": {
+                         "all": {
+                             "level": "info"
+                         },
+                         "protocols": {
+                             "level": "debug"
+                         }
+                     }
+                 }
+             },
+             "time-zone": "America/New_York"
+         }
+     }
+
+
 
 The config mode
 ---------------
