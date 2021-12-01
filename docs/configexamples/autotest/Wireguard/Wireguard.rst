@@ -3,8 +3,8 @@ Wireguard
 #########
 
 
-| Testdate: 2021-11-23
-| Version: 1.4-rolling-202106170808
+| Testdate: 2021-11-30
+| Version: 1.4-rolling-202104132216
 
 
 This simple structure show how to connect two offices. One remote branch and the
@@ -46,7 +46,7 @@ After this, the public key can be displayed, to save for later.
 
    vyos@central:~$ generate wireguard default-keypair
    vyos@central:~$ show wireguard keypairs pubkey default
-   +mLLOGxR37k3EsWba7+G7vIDq6yW4t0s549rNVShWy4=
+   P9y9TTRzIOVl27Ij9n/BXjZUdQFADZ5WnHV0kQr1ulQ=
 
 
 After you have each public key. The wireguard interfaces can be setup.
@@ -65,6 +65,20 @@ Branch
    :lines: 4-11
 
 
+To reach the network, a route must be set on each VyOS host.
+In this structure, a static interface route will fit the requirements.
+
+Central
+
+.. literalinclude:: _include/central.conf
+   :language: none
+   :lines: 13
+
+Branch
+
+.. literalinclude:: _include/branch.conf
+   :language: none
+   :lines: 13
 
 *********************
 Testing and debugging
@@ -88,11 +102,11 @@ And ping the Branch PC from your central router to check the response.
 
    vyos@central:~$ ping 10.0.2.100 count 4
    PING 10.0.2.100 (10.0.2.100) 56(84) bytes of data.
-   64 bytes from 10.0.2.100: icmp_seq=1 ttl=63 time=0.609 ms
-   64 bytes from 10.0.2.100: icmp_seq=2 ttl=63 time=0.871 ms
-   64 bytes from 10.0.2.100: icmp_seq=3 ttl=63 time=0.937 ms
-   64 bytes from 10.0.2.100: icmp_seq=4 ttl=63 time=0.746 ms
+   64 bytes from 10.0.2.100: icmp_seq=1 ttl=63 time=0.526 ms
+   64 bytes from 10.0.2.100: icmp_seq=2 ttl=63 time=0.583 ms
+   64 bytes from 10.0.2.100: icmp_seq=3 ttl=63 time=0.873 ms
+   64 bytes from 10.0.2.100: icmp_seq=4 ttl=63 time=0.753 ms
    
    --- 10.0.2.100 ping statistics ---
-   4 packets transmitted, 4 received, 0% packet loss, time 4ms
-   rtt min/avg/max/mdev = 0.609/0.790/0.937/0.130 ms
+   4 packets transmitted, 4 received, 0% packet loss, time 48ms
+   rtt min/avg/max/mdev = 0.526/0.683/0.873/0.141 ms

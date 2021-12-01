@@ -37,12 +37,12 @@ starts when the first ospf enabled interface is configured.
    This command is also used to enable the OSPF process. The area number can be
    specified in decimal notation in the range from 0 to 4294967295. Or it
    can be specified in dotted decimal notation similar to ip address.
-   
+
    Prefix length in interface must be equal or bigger (i.e. smaller network) than
    prefix length in network statement. For example statement above doesn't enable
    ospf on interface with address 192.168.1.1/23, but it does on interface with
    address 192.168.1.129/25.
-   
+
    In some cases it may be more convenient to enable OSPF on a per interface/subnet
    basis :cfgcmd:`set protocols ospf interface <interface> area <x.x.x.x | x>`
 
@@ -145,11 +145,15 @@ Optional
 
    This command should NOT be set normally.
 
-.. cfgcmd:: set protocols ospf passive-interface <interface>
+.. cfgcmd:: set protocols ospf interface <interface> passive [disable]
 
    This command specifies interface as passive. Passive interface advertises
    its address, but does not run the OSPF protocol (adjacencies are not formed
    and hello packets are not generated).
+
+   The optional `disable` option allows to exclude interface from passive state.
+   This command is used if the command :cfgcmd:`passive-interface default` was
+   configured.
 
 .. cfgcmd:: set protocols ospf passive-interface default
 
@@ -157,11 +161,6 @@ Optional
    command changes the configuration logic to a default passive; therefore,
    interfaces where router adjacencies are expected need to be configured
    with the :cfgcmd:`passive-interface-exclude` command.
-
-.. cfgcmd:: set protocols ospf passive-interface-exclude <interface>
-
-   This command allows exclude interface from passive state. This command is
-   used if the command :cfgcmd:`passive-interface default` was configured.
 
 .. cfgcmd:: set protocols ospf refresh timers <seconds>
 
@@ -549,12 +548,12 @@ Operational Mode Commands
    This command displays the neighbors information in a detailed form for a
    neighbor whose IP address is specified.
 
-.. opcmd:: show ip ospf neighbor <intname>
+.. opcmd:: show ip ospf neighbor <interface>
 
    This command displays the neighbors status for a neighbor on the specified
    interface.
 
-.. opcmd:: show ip ospf interface [<intname>]
+.. opcmd:: show ip ospf interface [<interface>]
 
    This command displays state and configuration of OSPF the specified
    interface, or all interfaces if no interface is given.
@@ -754,6 +753,8 @@ address and the node 1 sending the default route:
   set policy route-map CONNECT rule 10 match interface lo
 
 
+.. _routing-ospfv3:
+
 *************
 OSPFv3 (IPv6)
 *************
@@ -826,20 +827,20 @@ Area Configuration
 Interface Configuration
 -----------------------
 
-.. cfgcmd:: set protocols ospfv3 interface <intname> ipv6 cost <number>
+.. cfgcmd:: set protocols ospfv3 interface <interface> ipv6 cost <number>
 
    This command sets link cost for the specified interface. The cost value is
    set to router-LSA’s metric field and used for SPF calculation. The cost
    range is 1 to 65535.
 
-.. cfgcmd:: set protocols ospfv3 interface <intname> dead-interval <number>
+.. cfgcmd:: set protocols ospfv3 interface <interface> dead-interval <number>
 
    Set number of seconds for router Dead Interval timer value used for Wait
    Timer and Inactivity Timer. This value must be the same for all routers
    attached to a common network. The default value is 40 seconds. The
    interval range is 1 to 65535.
 
-.. cfgcmd:: set protocols ospfv3 interface <intname> hello-interval
+.. cfgcmd:: set protocols ospfv3 interface <interface> hello-interval
    <number>
 
    Set number of seconds for Hello Interval timer value. Setting this value,
@@ -848,14 +849,14 @@ Interface Configuration
    common network. The default value is 10 seconds. The interval range is 1
    to 65535.
 
-.. cfgcmd:: set protocols ospfv3 interface <intname> mtu-ignore
+.. cfgcmd:: set protocols ospfv3 interface <interface> mtu-ignore
 
    This command disables check of the MTU value in the OSPF DBD packets.
    Thus, use of this command allows the OSPF adjacency to reach the FULL
    state even though there is an interface MTU mismatch between two OSPF
    routers.
 
-.. cfgcmd:: set protocols ospfv3 interface <intname> network <type>
+.. cfgcmd:: set protocols ospfv3 interface <interface> network <type>
 
    This command allows to specify the distribution type for the network
    connected to this interface:
@@ -863,20 +864,20 @@ Interface Configuration
    **broadcast** – broadcast IP addresses distribution.
    **point-to-point** – address distribution in point-to-point networks.
 
-.. cfgcmd:: set protocols ospfv3 interface <intname> priority <number>
+.. cfgcmd:: set protocols ospfv3 interface <interface> priority <number>
 
    This command sets Router Priority integer value. The router with the
    highest priority will be more eligible to become Designated Router.
    Setting the value to 0, makes the router ineligible to become Designated
    Router. The default value is 1. The interval range is 0 to 255.
 
-.. cfgcmd:: set protocols ospfv3 interface <intname> passive
+.. cfgcmd:: set protocols ospfv3 interface <interface> passive
 
    This command specifies interface as passive. Passive interface advertises
    its address, but does not run the OSPF protocol (adjacencies are not formed
    and hello packets are not generated).
 
-.. cfgcmd:: set protocols ospfv3 interface <intname> retransmit-interval
+.. cfgcmd:: set protocols ospfv3 interface <interface> retransmit-interval
    <number>
 
    This command sets number of seconds for RxmtInterval timer value. This
@@ -884,7 +885,7 @@ Interface Configuration
    Request packets if acknowledge was not received. The default value is 5
    seconds. The interval range is 3 to 65535.
 
-.. cfgcmd:: set protocols ospfv3 interface <intname> transmit-delay
+.. cfgcmd:: set protocols ospfv3 interface <interface> transmit-delay
    <number>
 
    This command sets number of seconds for InfTransDelay value. It allows to
@@ -927,7 +928,7 @@ Operational Mode Commands
 
    This command displays the neighbor DR choice information.
 
-.. opcmd:: show ipv6 ospfv3 interface [prefix]|[<intname> [prefix]]
+.. opcmd:: show ipv6 ospfv3 interface [prefix]|[<interface> [prefix]]
 
    This command displays state and configuration of OSPF the specified
    interface, or all interfaces if no interface is given. Whith the argument

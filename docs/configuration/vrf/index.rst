@@ -62,6 +62,7 @@ Currently dynamic routing is supported for the following protocols:
 - :ref:`routing-bgp`
 - :ref:`routing-isis`
 - :ref:`routing-ospf`
+- :ref:`routing-ospfv3`
 - :ref:`routing-static`
 
 The CLI configuration is same as mentioned in above articles. The only
@@ -77,6 +78,7 @@ routing protocol inside a given vrf:
 - :ref:`routing-bgp`: ``set vrf name <name> protocols bgp ...``
 - :ref:`routing-isis`: ``set vrf name <name> protocols isis ...``
 - :ref:`routing-ospf`: ``set vrf name <name> protocols ospf ...``
+- :ref:`routing-ospfv3`: ``set vrf name <name> protocols ospfv3 ...``
 - :ref:`routing-static`: ``set vrf name <name> protocols static ...``
 
 Operation

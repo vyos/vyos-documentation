@@ -28,6 +28,14 @@ Configure the IPv4 or IPv6 listen address of the TFTP server. Multiple IPv4 and
 IPv6 addresses can be given. There will be one TFTP server instances listening
 on each IP address.
 
+.. cfgcmd:: set service tftp-server listen-address <address> vrf <name>
+
+.. stop_vyoslinter
+
+Additional option to run TFTP server in the :abbr:`VRF (Virtual Routing and Forwarding)` context
+
+.. start_vyoslinter
+
 .. note:: Configuring a listen-address is essential for the service to work.
 
 .. cfgcmd:: set service tftp-server allow-upload
