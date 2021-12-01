@@ -53,7 +53,7 @@ General information can be found in the :ref:`l3vpn-vrfs` chapter.
 ********
 Topology
 ********
-.. image:: /_static/images/L3VPN_hub_spoke.png
+.. image:: /_static/images/L3VPN_hub_and_spoke.png
    :width: 80%
    :align: center
    :alt: Network Topology Diagram
