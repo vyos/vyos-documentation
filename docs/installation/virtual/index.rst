@@ -10,3 +10,4 @@ Running VyOS in Virtual Environments
    vmware
    gns3
    eve-ng
+   docker
