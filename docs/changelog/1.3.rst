@@ -8,6 +8,49 @@
    _ext/releasenotes.py
 
 
+2021-12-05
+==========
+
+* :vytask:`T4034` (bug): "make xcp-ng-iso" still includes vyos-xe-guest-utilities
+* :vytask:`T2076` (feature): RAID install: sfdisk change-id is deprecated in favor of --part-type
+* :vytask:`T4041` (bug): "transition-script" doesn't work on "sync-group"
+* :vytask:`T1869` (bug): Install  and Boot from RAID Doesn't Work
+* :vytask:`T1126` (bug): Reusing a RAID from a BIOS install in an EFI install causes a failure to boot
+
+
+2021-12-04
+==========
+
+* :vytask:`T4049` (feature): support command-style output with compare command
+* :vytask:`T4047` (bug): Wrong regex validation in XML definitions
+* :vytask:`T4045` (bug): Unable to "format disk <new> like <old>"
+
+
+2021-12-02
+==========
+
+* :vytask:`T4035` (bug): Geneve interfaces aren't displayed by operational mode commands
+
+
+2021-12-01
+==========
+
+* :vytask:`T3695` (bug): OpenConnect reports commit success when ocserv fails to start due to SSL cert/key file issues
+
+
+2021-11-30
+==========
+
+* :vytask:`T3725` (feature): show configuration in json format
+
+
+2021-11-29
+==========
+
+* :vytask:`T2661` (bug): SSTP wrong certificates check
+* :vytask:`T3946` (enhancment): Automatically resize the root partition if the drive has extra space
+
+
 2021-11-28
 ==========
 
@@ -1172,7 +1215,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.162 / 5.10.82
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.163 / 5.10.83
 
 
 2021-02-14
