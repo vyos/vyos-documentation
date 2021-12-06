@@ -8,6 +8,50 @@
    _ext/releasenotes.py
 
 
+2021-12-05
+==========
+
+* :vytask:`T4041` (bug): "transition-script" doesn't work on "sync-group"
+
+
+2021-12-04
+==========
+
+* :vytask:`T4049` (feature): support command-style output with compare command
+* :vytask:`T4047` (bug): Wrong regex validation in XML definitions
+* :vytask:`T4042` (bug): BGP L2VPN / EVPN and RD type 0 set
+* :vytask:`T4048` (bug): BGP: L2VPN/EVPN and individual RD and RT settings for each VNI
+* :vytask:`T4045` (bug): Unable to "format disk <new> like <old>"
+* :vytask:`T4044` (feature): BFD: add vrf support
+* :vytask:`T4043` (feature): BFD: add support for passive mode
+
+
+2021-12-02
+==========
+
+* :vytask:`T4035` (bug): Geneve interfaces aren't displayed by operational mode commands
+* :vytask:`T3950` (bug): CLI backtrace on update if DNS not defined 
+
+
+2021-12-01
+==========
+
+* :vytask:`T3695` (bug): OpenConnect reports commit success when ocserv fails to start due to SSL cert/key file issues
+
+
+2021-11-30
+==========
+
+* :vytask:`T4010` (bug): DMVPN generates incorrect configuration life_time for swanctl.conf
+* :vytask:`T3725` (feature): show configuration in json format
+
+
+2021-11-29
+==========
+
+* :vytask:`T3946` (enhancment): Automatically resize the root partition if the drive has extra space
+
+
 2021-11-28
 ==========
 
@@ -711,7 +755,6 @@
 
 * :vytask:`T3647` (feature): Bullseye: gcc defaults to passing --as-needed to linker
 * :vytask:`T3644` (default): Replace GCC with a simpler preprocessor for including nested XML snippets in XML documents
-* :vytask:`T3356` (feature): Script for remote file transfers
 
 
 2021-06-22
@@ -1331,7 +1374,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.162 / 5.10.82
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.163 / 5.10.83
 
 
 2021-02-15
