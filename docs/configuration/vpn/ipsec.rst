@@ -111,6 +111,52 @@ VyOS IKE group has the next options:
 
  * ``hash`` hash algorithm.
 
+***********************************************
+ESP (Encapsulating Security Payload) Attributes
+***********************************************
+ESP is used to provide confidentiality, data origin authentication, 
+connectionless integrity, an anti-replay service (a form of partial sequence 
+integrity), and limited traffic flow confidentiality.
+https://datatracker.ietf.org/doc/html/rfc4303
+
+In VyOS, ESP attributes are specified through ESP groups.
+Multiple proposals can be specified in a single group.
+
+VyOS ESP group has the next options:
+
+* ``compression`` whether IPComp compression of content is proposed 
+  on the connection:
+
+ * ``disable`` disable IPComp compression (default);
+ 
+ * ``enable`` enable IPComp compression;
+ 
+* ``lifetime`` ESP lifetime in seconds <30-86400> (default 3600). 
+  How long a particular instance of a connection (a set of 
+  encryption/authentication keys for user packets) should last, 
+  from successful negotiation to expiry;
+  
+* ``mode`` the type of the connection:
+ 
+ * ``tunnel`` tunnel mode (default);
+
+ * ``transport`` transport mode;
+
+* ``pfs`` whether Perfect Forward Secrecy of keys is desired on the 
+  connection's keying channel and defines a Diffie-Hellman group for PFS:
+
+ * ``enable`` Inherit Diffie-Hellman group from IKE group (default);
+
+ * ``disable`` Disable PFS;
+
+ * ``< dh-group >`` defines a Diffie-Hellman group for PFS;
+
+* ``proposal`` ESP-group proposal with number <1-65535>:
+
+ * ``encryption`` encryption algorithm (default 128 bit AES-CBC);
+
+ * ``hash`` hash algorithm (default sha1).
+
 *************************
 IPsec policy matching GRE
 *************************
