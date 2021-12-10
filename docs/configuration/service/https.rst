@@ -71,7 +71,8 @@ Configuration
 Example Configuration
 *********************
 
-Setting an API-KEY is the minimal configuration needed to get a working API Endpoint.
+Setting an API-KEY is the minimal configuration needed to get a working API 
+Endpoint.
 
 .. code-block:: none
 
