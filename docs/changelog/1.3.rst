@@ -8,13 +8,51 @@
    _ext/releasenotes.py
 
 
+2021-12-12
+==========
+
+* :vytask:`T4036` (bug): VXLAN incorrect raiseError if set multicast network instead of singe address
+
+
+2021-12-10
+==========
+
+* :vytask:`T4068` (feature): Python: ConfigError should insert line breaks into the error message
+
+
+2021-12-09
+==========
+
+* :vytask:`T4033` (bug): VRRP - Error security when setting scripts
+* :vytask:`T4064` (bug): IP address for vif is not removed from the system when deleted in configuration
+* :vytask:`T4063` (bug): VRRP log error - /usr/libexec/vyos/vyos-vrrp-conntracksync.sh - No such file or directory
+* :vytask:`T4060` (enhancment): Extend configquery for use before boot configuration is complete
+
+
+2021-12-08
+==========
+
+* :vytask:`T4024` (bug): Access-lists and prefix-lists disappear when setting ldp hello-ipv4-interval
+
+
+2021-12-07
+==========
+
+* :vytask:`T4041` (servicerequest): "transition-script" doesn't work on "sync-group"
+
+
+2021-12-06
+==========
+
+* :vytask:`T4012` (feature): Add VRF support for TFTP
+* :vytask:`T4055` (feature): Add VRF support for HTTP(S) API service
+
+
 2021-12-05
 ==========
 
 * :vytask:`T4034` (bug): "make xcp-ng-iso" still includes vyos-xe-guest-utilities
 * :vytask:`T2076` (feature): RAID install: sfdisk change-id is deprecated in favor of --part-type
-* :vytask:`T4041` (bug): "transition-script" doesn't work on "sync-group"
-* :vytask:`T1869` (bug): Install  and Boot from RAID Doesn't Work
 * :vytask:`T1126` (bug): Reusing a RAID from a BIOS install in an EFI install causes a failure to boot
 
 
@@ -1215,7 +1253,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.163 / 5.10.83
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.164 / 5.10.84
 
 
 2021-02-14
