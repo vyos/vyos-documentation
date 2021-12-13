@@ -8,10 +8,40 @@
    _ext/releasenotes.py
 
 
-2021-12-05
+2021-12-12
 ==========
 
-* :vytask:`T4041` (bug): "transition-script" doesn't work on "sync-group"
+* :vytask:`T4069` (feature): BGP: add additional available parameters to VyOS CLI
+* :vytask:`T4036` (bug): VXLAN incorrect raiseError if set multicast network instead of singe address
+
+
+2021-12-10
+==========
+
+* :vytask:`T4068` (feature): Python: ConfigError should insert line breaks into the error message
+
+
+2021-12-09
+==========
+
+* :vytask:`T4033` (bug): VRRP - Error security when setting scripts
+* :vytask:`T4064` (bug): IP address for vif is not removed from the system when deleted in configuration
+* :vytask:`T4060` (enhancment): Extend configquery for use before boot configuration is complete
+* :vytask:`T4058` (bug): BFD: add BGP and OSPF "bfd profile" support
+* :vytask:`T4054` (bug): BFD profiles configuration incorrect behavior.
+
+
+2021-12-07
+==========
+
+* :vytask:`T4041` (servicerequest): "transition-script" doesn't work on "sync-group"
+
+
+2021-12-06
+==========
+
+* :vytask:`T4012` (feature): Add VRF support for TFTP
+* :vytask:`T4055` (feature): Add VRF support for HTTP(S) API service
 
 
 2021-12-04
@@ -1374,7 +1404,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.163 / 5.10.83
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.164 / 5.10.84
 
 
 2021-02-15
