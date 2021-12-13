@@ -14,7 +14,7 @@ primarily used to implement DMVPN:
 * mGRE - provides the tunnel encapsulation itself 
 * IPSec - protocols handle the key exchange, and crypto mechanism
 
-For his example we are using the following devices:
+For this example we are using the following devices:
 
 * 2 x Hubs
 * 3 x Spokes
@@ -974,7 +974,7 @@ local networks. From the traceroute we see that the traffic pass through the
 Hub-1.
 
 Now, let's check traffic between Spoke sites. Based on our configuration, Spoke 
-sites are using shourtcut for direct reachability between each other. First, let's 
+sites are using shortcut for direct reachability between each other. First, let's 
 check NHRP tunnels before passing the traffic between Spoke-1 and Spoke-2:
 
 .. code-block:: none
@@ -1053,7 +1053,7 @@ check NHRP tunnels before passing the traffic between Spoke-1 and Spoke-2:
     NBMA-Address: 10.21.0.1
 
 
-After passing traffic we could see that there is additional shourtcut tunnel 
+After passing traffic we could see that there is additional shortcut tunnel 
 created between Spoke-1 and Spoke-2 for the direct communication:
 
 .. code-block:: none
