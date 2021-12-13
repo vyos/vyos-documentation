@@ -162,7 +162,22 @@ _________________________________________
 
 .. code-block:: none
     
-    TBC
+    #!/bin/bash
+
+    eth0status="$(cat /sys/class/net/eth0/operstate | grep 'up')"
+    
+    if [[ ! -z ${eth0status} ]]; then
+     eth0gw="$(ip -j r show 0.0.0.0/0 dev eth0 | awk 'match($0, /\"gateway":\"([[:digit:]\.]+)/, gw) {print gw[1]}')"
+     if [[ ! -z $eth0gw ]]; then
+      /bin/ping -I eth0 -c 1 -W 1 $eth0gw && exit 0 || exit 1
+     else
+      exit 1
+     fi
+    else
+     #Exit 0 because eth0 down is handled by vrrp transition
+     exit 0
+    fi
+
 
 **Note**: some parts of the script might be dependent on your network topology 
 and connectivity. Be careful before using it on your own devices.
