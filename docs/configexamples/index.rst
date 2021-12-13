@@ -17,6 +17,7 @@ This chapter contains various configuration examples:
    tunnelbroker-ipv6
    ha
    wan-load-balancing
+   dual-hub-dmvpn
 
 Configuration Blueprints (autotest)
 ===================================
