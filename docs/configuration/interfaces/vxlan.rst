@@ -67,6 +67,11 @@ VXLAN specific options
   Source IP address used for VXLAN underlay. This is mandatory when using VXLAN
   via L2VPN/EVPN.
 
+.. cfgcmd:: set interfaces vxlan <interface> external
+
+  Specifies whether an external control plane (e.g. BGP L2VPN/EVPN) or the
+  internal FDB should be used.
+
 Unicast
 ^^^^^^^
 
