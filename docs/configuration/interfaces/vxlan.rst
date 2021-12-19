@@ -72,6 +72,11 @@ VXLAN specific options
   Specifies whether an external control plane (e.g. BGP L2VPN/EVPN) or the
   internal FDB should be used.
 
+.. cfgcmd:: set interfaces vxlan <interface> gpe
+
+  Eenables the Generic Protocol extension (VXLAN-GPE). Currently, this is only
+  supported together with the external keyword.
+
 Unicast
 ^^^^^^^
 
