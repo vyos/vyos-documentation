@@ -8,6 +8,41 @@
    _ext/releasenotes.py
 
 
+2021-12-19
+==========
+
+* :vytask:`T3912` (default): Use a more informative default post-login banner
+
+
+2021-12-17
+==========
+
+* :vytask:`T4059` (bug): VRRP sync-group transition script does not persist after reboot
+
+
+2021-12-16
+==========
+
+* :vytask:`T4046` (feature): Sflow - Add Source address parameter
+* :vytask:`T3556` (bug): Commit-archive via scp causes 100% CPU on boot
+* :vytask:`T4076` (enhancment): Allow setting CORS options in HTTP API
+* :vytask:`T4037` (default): HTTP transfers do not follow redirects
+* :vytask:`T4029` (default): Broken SFTP uploads
+
+
+2021-12-15
+==========
+
+* :vytask:`T4077` (bug): op-mode: bfd: drop "show protocols bfd" in favour of "show bfd"
+* :vytask:`T4073` (bug): "show protocols bfd peer <>" shows incorrect peer information.
+
+
+2021-12-14
+==========
+
+* :vytask:`T4071` (feature): Allow HTTP API to bind to unix domain socket
+
+
 2021-12-12
 ==========
 
@@ -1272,12 +1307,6 @@
 ==========
 
 * :vytask:`T3413` (bug): Configuring invalid IPv6 EUI64 address results in "OSError: illegal IP address string passed to inet_pton"
-
-
-2021-03-15
-==========
-
-* :vytask:`T3354` (default): Convert strip-private script from Perl to Python
 
 
 2021-03-14
