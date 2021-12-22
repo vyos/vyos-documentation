@@ -8,3 +8,4 @@ Operation Mode
 
    information
    boot-options
+   raid
