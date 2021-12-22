@@ -8,7 +8,6 @@ This chapter contains various configuration examples:
 .. toctree::
    :maxdepth: 2
 
-   dhcp-relay-through-gre-bridge
    zone-policy
    bgp-ipv6-unnumbered
    ospf-unnumbered
@@ -45,5 +44,6 @@ The process will do the following steps:
 .. toctree::
    :maxdepth: 1
 
+   autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE
    autotest/L3VPN_EVPN/L3VPN_EVPN
    autotest/Wireguard/Wireguard
