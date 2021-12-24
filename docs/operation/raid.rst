@@ -26,7 +26,7 @@ The VyOS implementation of RAID 1 allows the following:
 
 .. _raid_instalation:
 
-Installation Implications 
+Installation Implications
 =========================
 
 The VyOS systems installation utility provides several options for installing 
@@ -42,8 +42,8 @@ to a RAID 1 set. You can:
 Configuration
 =============
 
-Non–RAID 1 System
------------------
+Single disk, install as normal 
+------------------------------
 
 When the VyOS system is installed, it automatically detects the presence of two 
 disks not currently part of a RAID array. In these cases, the VyOS 
@@ -57,13 +57,12 @@ mirroring for the drives, with the following prompt.
 * If you do not want to configure RAID 1 mirroring, enter “No” at the prompt
   and continue with installation in the normal way.
 
-Non–RAID 1 to RAID 1 
---------------------
+Empty 2+ Disk 
+-------------
 
-If you reinstall a non-RAID VyOS system on a system with two identical disks
-that are not currently part of a RAID 1 set, the VyOS installation utility 
-automatically offers you the option of configuring RAID 1 mirroring for the 
-drives, with the following prompt. 
+If VyOS system detect two identical disks that are not currently part of a 
+RAID-1 set, the VyOS installation utility automatically offers you the option
+of configuring RAID 1 mirroring for the drives, with the following prompt. 
 
 .. code-block:: none
 
@@ -90,13 +89,20 @@ prompted to confirm that you want to continue
 installation is complete. Enter “No” to delete the current VyOS
 configuration. 
 
-5 - Continue with installation in the normal way.
+.. code-block:: none
+
+   Would you like me to save the data on it before I delete it?
+
+5 - Enter “Yes” at the prompt to retain the current VyOS configuration once 
+installation is complete. Enter “No” to delete the current VyOS configuration.
+
+6 - Continue with installation in the normal way.
 
 
-RAID 1 to Non–RAID 1 
---------------------
+Present RAID-1
+--------------
 
-If you reinstall VyOS software on a system with a RAID 1 set already configured, 
+When the VyOS software on a system with a RAID 1 set already configured, 
 the installation utility will detect the array and will display the following 
 prompt: 
 
@@ -135,60 +141,6 @@ installation is complete. Enter “No” to delete the current VyOS configuratio
 
 5 - Continue with installation in the normal way.
 
-RAID 1 to RAID 1
-----------------
-
-If you reinstall the VyOS software on a system with a RAID 1 set already 
-configured, the installation utility will detect the array and will display
-the following prompt:
-
-.. code-block:: none
-
-   Would you like to use this one?
-
-1 - To continue to use the existing RAID 1 array, enter “Yes” at the prompt.
-The system prompts you to indicate whether you want to save the old
-configuration data. This represents the current VyOS configuration.
-
-.. code-block:: none
-
-   Would you like me to save the data on it before I delete it?
-
-2 - Enter “Yes” at the prompt to retain the current VyOS configuration once 
-installation is complete. Enter “No” to delete all current VyOS configuration. 
-
-3 - Continue with installation in the normal way.
-
-RAID 1 to new RAID 1
---------------------
-
-You can also recreate the RAID 1 array on disk drives already configured for
-RAID-1.The installation utility will detect the array and will display the
-following prompt:
-
-.. code-block:: none
-
-   Would you like to use this one?
-
-1 - To stop using the existing RAID 1 array, enter “No” at the prompt. 
-The system detects the two disks and prompts you to indicate whether you 
-want to configure RAID 1 mirroring in them.
-
-.. code-block:: none
-
-  Would you like to configure RAID 1 mirroring on them?
-
-2 - To create a new RAID 1 array, enter “Yes” at the prompt. If the system 
-detects a file system on the partitions being used for RAID 1 it will prompt
-you to indicate whether you want to continue creating the RAID 1 array.
-
-.. code-block:: none
-
-   Continue creating array?
-
-3 - To overwrite the old filesystem, enter “Yes”. 
-
-4 - Continue with installation in the normal way.
 
 Detecting and Replacing a Failed RAID 1 Disk
 --------------------------------------------
@@ -202,12 +154,10 @@ To replace a bad disk within a RAID 1 set, perform the following steps:
 1 - Remove the failed disk from the RAID 1 set by issuing the following 
 command:
 
-.. code-block:: none
+.. opcmd:: delete raid RAID‐1‐device member disk‐partition
 
-   vyos@vyos:~$ remove raid RAID‐1‐device member disk‐partition
-
-where RAID-1-device is the name of the RAID 1 device (for example, md0) and 
-disk-partition is the name of the failed disk partition (for example, sdb2).
+   where RAID-1-device is the name of the RAID 1 device (for example, md0) and 
+   disk-partition is the name of the failed disk partition (for example, sdb2).
 
 2- Physically remove the failed disk from the system. If the drives are not 
 hot-swappable, then you must shut down the system before removing the disk.
@@ -216,51 +166,35 @@ hot-swappable, then you must shut down the system before removing the disk.
 
 4 - Format the new disk for RAID 1 by issuing the following command:
 
-.. code-block:: none
+.. opcmd:: format <disk‐device1> like <disk‐device2>
 
-   vyos@vyos:~$ format <disk‐device1> like <disk‐device2>
-
-where disk-device1 is the replacement disk (for example, sdb) and disk-device2
-is the existing healthy disk (for example, sda).
+   where disk-device1 is the replacement disk (for example, sdb) and 
+   disk-device2 is the existing healthy disk (for example, sda).
 
 5-Add the replacement disk to the RAID 1 set by issuing the following command:
 
-.. code-block:: none
+.. opcmd:: add raid <RAID‐1‐device> member <disk‐partition>
 
-   vyos@vyos:~$ add raid <RAID‐1‐device> member <disk‐partition>
-
-where RAID-1-device is the name of the RAID 1 device (for example, md0) and 
-disk-partition is the name of the replacement disk partition 
-(for example, sdb2).
+   where RAID-1-device is the name of the RAID 1 device (for example, md0) and 
+   disk-partition is the name of the replacement disk partition 
+   (for example, sdb2).
 
 Operation
 =========
 
-Use this command to add a member disk partition to the RAID 1 set. Adding a 
-disk partition to a RAID 1 set initiates mirror synchronization, where all data
-on the existing member partition is copied to the new partition.
-Before adding a brand new drive to a RAID 1 set, the drive must be formatted
-using
+This part introduces how to add a disk partition to a RAID-1 set initiates
+mirror synchronization, check and display information.
 
-.. code-block:: none
+.. opcmd:: add raid <RAID‐1‐device> member <disk‐partition>
+ 
+   Use this command to add a member disk partition to the RAID 1 set. Adding a 
+   disk partition to a RAID 1 set initiates mirror synchronization, where all 
+   data on the existing member partition is copied to the new partition.
 
-   vyos@vyos:~$ add raid <RAID‐1‐device> member <disk‐partition>
+.. opcmd:: format <disk‐device1> like <disk‐device2>
 
-Use this command to format a disk to be partitioned exactly like a second disk. 
-The disk to be formatted must be inactive; that is, it must not have any 
-partitions mounted and it must not already be part of an active RAID 1 set.
-In formatting, no data is copied to the formatted device, but any existing data
-on the formatted device is lost. 
-This command is typically used to prepare a disk to be added to a preexisting
-RAID 1 set (of which disk-device2 is already a member).
-
-.. code-block:: none
-
-   vyos@vyos:~$ format <disk‐device1> like <disk‐device2>
-
-
-Displaying information about a RAID 1 set with two members ‐ one being
-resynchronized.
+   This command is typically used to prepare a disk to be added to a preexisting
+   RAID 1 set (of which disk-device2 is already a member).
 
 .. opcmd:: show raid <RAID‐1‐device>
    
@@ -309,4 +243,3 @@ resynchronized.
 
       
 
-      
