@@ -8,6 +8,61 @@
    _ext/releasenotes.py
 
 
+2021-12-26
+==========
+
+* :vytask:`T4104` (bug): RAID1: "add raid md0 member sda1" does not restore boot sector
+* :vytask:`T4108` (default): OSPFv3: add support for auto-cost parameter
+* :vytask:`T4107` (default): OSPFv3: add support for "default-information originate"
+
+
+2021-12-25
+==========
+
+* :vytask:`T4101` (bug): commit-archive: Use of uninitialized value $source_address in concatenation
+* :vytask:`T4099` (feature): flow-accounting: sync "source-ip" and "source-address" between netflow and sflow ion CLI
+* :vytask:`T4097` (feature): flow-accounting: migrate implementation to get_config_dict()
+* :vytask:`T4105` (feature): flow-accounting: drop "sflow agent-address auto"
+* :vytask:`T4106` (feature): flow-accounting: support specification of capture packet lenght
+* :vytask:`T4102` (feature): OSPFv3: add support for NSSA area-type
+* :vytask:`T4055` (feature): Add VRF support for HTTP(S) API service
+
+
+2021-12-24
+==========
+
+* :vytask:`T3854` (bug): Missing op-mode commands for conntrack-sync
+
+
+2021-12-23
+==========
+
+* :vytask:`T3354` (default): Convert strip-private script from Perl to Python
+
+
+2021-12-22
+==========
+
+* :vytask:`T4056` (bug): Traffic policy not set in live configuration
+* :vytask:`T3678` (bug): VyOS 1.4: Invalid error message while deleting ipsec vpn configuration
+* :vytask:`T3356` (feature): Script for remote file transfers
+
+
+2021-12-21
+==========
+
+* :vytask:`T4083` (bug): Cluster heartbeat doesn't start b.c lack of directory /run/heartbeat/
+* :vytask:`T4070` (bug): NATv4 : inbound-interface type "any" is missing.
+* :vytask:`T4053` (bug): VRRP impossible to set scripts out of the /config directory
+* :vytask:`T3931` (bug): SSTP doesn't work after rewriting to PKI
+
+
+2021-12-20
+==========
+
+* :vytask:`T4088` (default): Fix typo in login banner
+
+
 2021-12-19
 ==========
 
@@ -76,7 +131,6 @@
 ==========
 
 * :vytask:`T4012` (feature): Add VRF support for TFTP
-* :vytask:`T4055` (feature): Add VRF support for HTTP(S) API service
 
 
 2021-12-04
@@ -324,7 +378,6 @@
 * :vytask:`T3217` (default): Save FRR configuration on each commit
 * :vytask:`T3381` (bug): Change GRE tunnel failed
 * :vytask:`T3254` (bug): Dynamic DNS status shows incorrect last update time
-* :vytask:`T2764` (enhancment): Increase maximum number of NAT rules
 * :vytask:`T1243` (bug): BGP local-as accept wrong values
 * :vytask:`T697` (bug): Clean up and sanitize package dependencies
 * :vytask:`T578` (feature): Support Linux Container
@@ -1433,7 +1486,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.164 / 5.10.84
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.164 / 5.10.88
 
 
 2021-02-15

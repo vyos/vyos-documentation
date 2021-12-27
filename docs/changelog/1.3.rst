@@ -8,6 +8,52 @@
    _ext/releasenotes.py
 
 
+2021-12-26
+==========
+
+* :vytask:`T4104` (bug): RAID1: "add raid md0 member sda1" does not restore boot sector
+
+
+2021-12-25
+==========
+
+* :vytask:`T4101` (bug): commit-archive: Use of uninitialized value $source_address in concatenation
+* :vytask:`T4055` (feature): Add VRF support for HTTP(S) API service
+
+
+2021-12-24
+==========
+
+* :vytask:`T3854` (bug): Missing op-mode commands for conntrack-sync
+
+
+2021-12-23
+==========
+
+* :vytask:`T4092` (bug): IKEv2 mobike commit failed with DMVPN nhrp
+* :vytask:`T3354` (default): Convert strip-private script from Perl to Python
+
+
+2021-12-22
+==========
+
+* :vytask:`T3356` (feature): Script for remote file transfers
+
+
+2021-12-21
+==========
+
+* :vytask:`T4053` (bug): VRRP impossible to set scripts out of the /config directory
+* :vytask:`T4013` (bug): Add pkg cloudwatch for AWS images
+* :vytask:`T3913` (bug): VRF traffic fails after upgrade from 1.3.0-RC6 to 1.3.0-EPA1/2
+
+
+2021-12-20
+==========
+
+* :vytask:`T4088` (default): Fix typo in login banner
+
+
 2021-12-19
 ==========
 
@@ -80,7 +126,6 @@
 ==========
 
 * :vytask:`T4012` (feature): Add VRF support for TFTP
-* :vytask:`T4055` (feature): Add VRF support for HTTP(S) API service
 
 
 2021-12-05
@@ -334,7 +379,6 @@
 * :vytask:`T3254` (bug): Dynamic DNS status shows incorrect last update time
 * :vytask:`T3253` (bug): rpki: multiple peers cannot be configured 
 * :vytask:`T3219` (default): Typo in openvpn server client config for IPv6 iroute
-* :vytask:`T2764` (enhancment): Increase maximum number of NAT rules
 * :vytask:`T2100` (feature): BGP route adverisement wih checks rib
 * :vytask:`T1663` (enhancment): T1656 equuleus: buster: arm64/aarch64: ipaddrcheck does not complete testing
 * :vytask:`T1243` (bug): BGP local-as accept wrong values
@@ -1288,7 +1332,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.164 / 5.10.84
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.164 / 5.10.88
 
 
 2021-02-14
