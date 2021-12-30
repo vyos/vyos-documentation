@@ -46,7 +46,7 @@ The following software was used in the creation of this document:
 **NOTE:** VyOS Router (tested with VyOS 1.4-rolling-202110310317) 
 –  The configurations below are specifically for VyOS 1.4.x.
 
-General information can be found in the :ref:`l3vpn-vrfs` chapter.
+General information can be found in the :ref:`configuration/vrf/index:L3VPN VRFs` chapter.
 
 
 
@@ -837,6 +837,7 @@ and installing them to the specific customer VRFs:
      	Last update: Wed Oct 13 12:39:34 202
 
 Now, let’s check routing information on out Hub PE:
+
 - “show bgp ipv4 vpn summary” for checking iBGP neighbors again 
    VyOS-RR1/RR2
 
