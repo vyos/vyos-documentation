@@ -34,14 +34,56 @@ Docker
 
 Installing Docker_ and prerequisites:
 
-.. code-block:: none
 
-  $ sudo apt-get update
-  $ sudo apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
-  $ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-  $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-  $ sudo apt-get update
-  $ sudo apt-get install -y docker-ce
+`On Debian`_
+
+.. code-block:: bash
+
+  sudo apt-get update
+  sudo apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
+  curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+  sudo apt-get update
+  sudo apt-get install -y docker-ce
+
+`On Ubuntu`_
+
+.. code-block:: bash
+
+    sudo apt-get update
+    sudo apt-get -y install \
+      ca-certificates \
+      curl \
+      gnupg \
+      lsb-release
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+
+`On Fedora`_
+
+.. code-block:: bash
+
+  sudo dnf -y install dnf-plugins-core
+  sudo dnf config-manager \
+      --add-repo \
+      https://download.docker.com/linux/fedora/docker-ce.repo
+  sudo dnf install -y docker-ce docker-ce-cli containerd.io
+
+`On CentOS and similar`_
+
+.. code-block:: bash
+
+    sudo yum install -y yum-utils
+    sudo yum-config-manager \
+        --add-repo \
+        https://download.docker.com/linux/centos/docker-ce.repo
+    sudo yum install -y docker-ce docker-ce-cli containerd.io
+
 
 To be able to use Docker_ without ``sudo``, the current non-root user must be
 added to the ``docker`` group by calling: ``sudo usermod -aG docker
@@ -112,6 +154,7 @@ Add the following to your ``.bash_aliases`` file:
 
 .. code-block:: none
 
+  # latest release
   alias vybld='docker pull vyos/vyos-build:current && docker run --rm -it \
       -v "$(pwd)":/vyos \
       -v "$HOME/.gitconfig":/etc/gitconfig \
@@ -121,7 +164,8 @@ Add the following to your ``.bash_aliases`` file:
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:current bash'
 
-  alias vybld='docker pull vyos/vyos-build:equuleus && docker run --rm -it \
+  # v1.3
+  alias vybld_equuleus='docker pull vyos/vyos-build:equuleus && docker run --rm -it \
       -v "$(pwd)":/vyos \
       -v "$HOME/.gitconfig":/etc/gitconfig \
       -v "$HOME/.bash_aliases":/home/vyos_bld/.bash_aliases \
@@ -130,6 +174,7 @@ Add the following to your ``.bash_aliases`` file:
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:equuleus bash'
 
+  # v1.2
   alias vybld_crux='docker pull vyos/vyos-build:crux && docker run --rm -it \
       -v "$(pwd)":/vyos \
       -v "$HOME/.gitconfig":/etc/gitconfig \
@@ -139,7 +184,7 @@ Add the following to your ``.bash_aliases`` file:
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:crux bash'
 
-Now you are prepared with three new aliases ``vybld`` `vybld_equuleus`` and 
+Now you are prepared with three new aliases ``vybld``, ``vybld_equuleus``, and 
 ``vybld_crux`` to spawn your development containers in your current working 
 directory.
 
@@ -800,6 +845,9 @@ information.
 .. _VyOS DockerHub organisation: https://hub.docker.com/u/vyos
 .. _repository: https://github.com/vyos/vyos-build
 .. _VyOS GitHub project: https://github.com/vyos
-
+.. _`On Debian`: https://docs.docker.com/engine/install/debian/
+.. _`On Ubuntu`: https://docs.docker.com/engine/install/ubuntu/
+.. _`On Fedora`: https://docs.docker.com/engine/install/fedora/
+.. _`On CentOS and similar`: https://docs.docker.com/engine/install/centos/
 .. start_vyoslinter
 
