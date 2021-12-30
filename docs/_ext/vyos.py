@@ -655,7 +655,7 @@ def handle_document_meta_data(app, document):
         try:
             lastproofread_time = datetime.strptime(lastproofread, '%Y-%m-%d')
             delta = datetime.now() - lastproofread_time
-            if delta.days > 180:
+            if delta.days > 365:
                 logger.warning(f'{delta.days} days since last proofread {app.env.doc2path(docname)}')
 
         except Exception as e:
