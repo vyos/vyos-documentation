@@ -13,7 +13,6 @@ This chapter contains various configuration examples:
    ospf-unnumbered
    azure-vpn-bgp
    azure-vpn-dual-bgp
-   tunnelbroker-ipv6
    ha
    wan-load-balancing
    pppoe-ipv6-basic
@@ -45,5 +44,6 @@ The process will do the following steps:
    :maxdepth: 1
 
    autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE
+   autotest/tunnelbroker/tunnelbroker
    autotest/L3VPN_EVPN/L3VPN_EVPN
    autotest/Wireguard/Wireguard
