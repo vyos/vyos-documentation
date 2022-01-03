@@ -8,6 +8,41 @@
    _ext/releasenotes.py
 
 
+2021-12-31
+==========
+
+* :vytask:`T4081` (bug): VRRP health-check script stops working when setting up a sync group
+
+
+2021-12-30
+==========
+
+* :vytask:`T4124` (feature): snmp: migrate to get_config_dict()
+
+
+2021-12-29
+==========
+
+* :vytask:`T4111` (bug): IPSec generates wrong configuration colons for IPv6 peers
+* :vytask:`T4023` (feature): Add grepcidr or similar functionality
+* :vytask:`T4086` (default): system login banner is not removed on deletion.
+
+
+2021-12-28
+==========
+
+* :vytask:`T3380` (bug): Show vpn ike sa with IPv6 remote peer
+
+
+2021-12-27
+==========
+
+* :vytask:`T3979` (bug): vyos-hostd unable to hostfile-update
+* :vytask:`T2566` (bug): sstp not able to run tunnels ipv6 only
+* :vytask:`T4093` (bug): SNMPv3 snmpd.conf generation bug
+* :vytask:`T2764` (enhancment): Increase maximum number of NAT rules
+
+
 2021-12-26
 ==========
 
@@ -1486,7 +1521,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.164 / 5.10.88
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.169 / 5.10.89
 
 
 2021-02-15
