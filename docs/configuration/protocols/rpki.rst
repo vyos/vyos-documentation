@@ -103,20 +103,20 @@ In a nutshell, the current implementation provides the following features:
 Configuration
 *************
 
-.. cfgcmd:: protocols rpki polling-period <1-86400>
+.. cfgcmd:: set protocols rpki polling-period <1-86400>
 
   Define the time interval to update the local cache
 
   The default value is 300 seconds.
 
-.. cfgcmd:: protocols rpki cache <address> port <port>
+.. cfgcmd:: set protocols rpki cache <address> port <port>
 
   Defined the IPv4, IPv6 or FQDN and port number of the caching RPKI caching
   instance which is used.
 
   This is a mandatory setting.
 
-.. cfgcmd:: protocols rpki cache <address> preference <preference>
+.. cfgcmd:: set protocols rpki cache <address> preference <preference>
 
   Multiple RPKI caching instances can be supplied and they need a preference in
   which their result sets are used.
@@ -132,19 +132,19 @@ first need to create yoursels an SSH client keypair using ``generate ssh
 client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup
 the connection.
 
-.. cfgcmd:: protocols rpki cache <address> ssh username <user>
+.. cfgcmd:: set protocols rpki cache <address> ssh username <user>
 
   SSH username to establish an SSH connection to the cache server.
 
-.. cfgcmd:: protocols rpki cache <address> ssh known-hosts-file <filepath>
+.. cfgcmd:: set protocols rpki cache <address> ssh known-hosts-file <filepath>
 
   Local path that includes the known hosts file.
 
-.. cfgcmd:: protocols rpki cache <address> ssh private-key-file <filepath>
+.. cfgcmd:: set protocols rpki cache <address> ssh private-key-file <filepath>
 
   Local path that includes the private key file of the router.
 
-.. cfgcmd:: protocols rpki cache <address> ssh public-key-file <filepath
+.. cfgcmd:: set protocols rpki cache <address> ssh public-key-file <filepath
 
   Local path that includes the public key file of the router.
 
