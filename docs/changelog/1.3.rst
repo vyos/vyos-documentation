@@ -8,6 +8,36 @@
    _ext/releasenotes.py
 
 
+2021-12-31
+==========
+
+* :vytask:`T4081` (bug): VRRP health-check script stops working when setting up a sync group
+
+
+2021-12-29
+==========
+
+* :vytask:`T2922` (bug): The `vpn ipsec logging log-modes` miss the IPSec daemons state check
+* :vytask:`T2695` (bug): Flow-accounting bug with subinterfaces
+* :vytask:`T2400` (default): OpenVPN: dont restart server if no need
+* :vytask:`T4086` (default): system login banner is not removed on deletion.
+
+
+2021-12-28
+==========
+
+* :vytask:`T3380` (bug): Show vpn ike sa with IPv6 remote peer
+* :vytask:`T2933` (feature): VRRP add option virtual_ipaddress_excluded
+
+
+2021-12-27
+==========
+
+* :vytask:`T2566` (bug): sstp not able to run tunnels ipv6 only
+* :vytask:`T4093` (bug): SNMPv3 snmpd.conf generation bug
+* :vytask:`T2764` (enhancment): Increase maximum number of NAT rules
+
+
 2021-12-26
 ==========
 
@@ -1332,7 +1362,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.164 / 5.10.88
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.169 / 5.10.89
 
 
 2021-02-14
