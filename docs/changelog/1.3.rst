@@ -8,6 +8,34 @@
    _ext/releasenotes.py
 
 
+2022-01-09
+==========
+
+* :vytask:`T3822` (bug): OpenVPN processes do not have permission to read key files generated with `run generate openvpn key`
+* :vytask:`T4142` (bug): Input ifbX interfaces not displayed in op-mode
+* :vytask:`T3914` (bug): vrrp rfc3768-compatibility doesn't work with unicast peers
+
+
+2022-01-07
+==========
+
+* :vytask:`T3924` (bug): VRRP stops working with VRF
+
+
+2022-01-06
+==========
+
+* :vytask:`T4141` (bug): Set high-availability vrrp sync-group without members error
+
+
+2022-01-03
+==========
+
+* :vytask:`T4065` (bug): IPSEC configuration error: connection to unix:///var/run/charon.ctl failed: No such file or directory
+* :vytask:`T4052` (bug): Validator return traceback on VRRP configuration with the script path not in config dir
+* :vytask:`T4128` (bug): keepalived: Upgrade package to add VRF support
+
+
 2021-12-31
 ==========
 
