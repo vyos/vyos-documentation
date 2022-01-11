@@ -53,6 +53,18 @@ IPv6 support
 The ``address`` parameter can be either an IPv4 or IPv6 address, but you can
 not mix IPv4 and IPv6 in the same group, and will need to create groups with
 different VRIDs specially for IPv4 and IPv6.
+If you want to use IPv4 + IPv6 address you can use option ``excluded-address``
+
+Address
+-------
+The ``address`` can be configured either on the VRRP interface or on not VRRP
+interface.
+
+.. code-block:: none
+
+  set high-availability vrrp group Foo address 192.0.2.1/24
+  set high-availability vrrp group Foo address 203.0.113.22/24 interface eth2
+  set high-availability vrrp group Foo address 198.51.100.33/24 interface eth3
 
 Disabling a VRRP group
 ----------------------
@@ -66,6 +78,19 @@ You can disable a VRRP group with ``disable`` option:
 A disabled group will be removed from the VRRP process and your router will not
 participate in VRRP for that VRID. It will disappear from operational mode
 commands output, rather than enter the backup state.
+
+Exclude address
+---------------
+
+Exclude IP addresses from ``VRRP packets``. This option ``excluded-address`` is
+used when you want to set IPv4 + IPv6 addresses on the same virtual interface
+or when used more than 20 IP addresses.
+
+.. code-block:: none
+
+  set high-availability vrrp group Foo excluded-address '203.0.113.254/24'
+  set high-availability vrrp group Foo excluded-address '2001:db8:aa::1/64'
+  set high-availability vrrp group Foo excluded-address '2001:db8:22::1/64'
 
 Setting VRRP group priority
 ---------------------------
@@ -142,6 +167,23 @@ seconds, use:
 
   set high-availability vrrp group Foo preempt-delay 180
 
+Track
+-----
+
+Track option to track non VRRP interface states. VRRP changes status to
+``FAULT`` if one of the track interfaces in state ``down``.
+
+.. code-block:: none
+
+  set high-availability vrrp group Foo track interface eth0
+  set high-availability vrrp group Foo track interface eth1
+
+Ignore VRRP main interface faults
+
+.. code-block:: none
+
+  set high-availability vrrp group Foo track exclude-vrrp-interface
+
 Unicast VRRP
 ------------
 
@@ -217,3 +259,75 @@ and the ``/config/scripts/vrrp-master.sh`` when the router becomes the master:
   set high-availability vrrp group Foo transition-script master "/config/scripts/vrrp-master.sh Foo"
 
 To know more about scripting, check the :ref:`command-scripting` section.
+
+Virtual-server
+--------------
+.. include:: /_include/need_improvement.txt
+
+Virtual Server allows to Load-balance traffic destination virtual-address:port
+between several real servers.
+
+Algorithm
+^^^^^^^^^
+Load-balancing schedule algorithm:
+
+* round-robin
+* weighted-round-robin
+* least-connection
+* weighted-least-connection
+* source-hashing
+* destination-hashing
+* locality-based-least-connection
+
+.. code-block:: none
+
+  set high-availability virtual-server 203.0.113.1 algorithm 'least-connection'
+
+Forward method
+^^^^^^^^^^^^^^
+* NAT
+* direct
+* tunnel
+
+.. code-block:: none
+
+  set high-availability virtual-server 203.0.113.1 forward-method 'nat'
+
+
+Real server
+^^^^^^^^^^^
+Real server IP address and port
+
+.. code-block:: none
+
+  set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80'
+
+
+Example
+^^^^^^^
+Virtual-server can be configured with VRRP virtual address or without VRRP.
+
+In the next example all traffic destined to ``203.0.113.1`` and port ``8280``
+protocol TCP is balanced between 2 real servers ``192.0.2.11`` and
+``192.0.2.12`` to port ``80``
+
+Real server is auto-excluded if port check with this server fail.
+
+.. code-block:: none
+
+  set interfaces ethernet eth0 address '203.0.113.11/24'
+  set interfaces ethernet eth1 address '192.0.2.1/24'
+  set high-availability vrrp group FOO interface 'eth0'
+  set high-availability vrrp group FOO no-preempt
+  set high-availability vrrp group FOO priority '150'
+  set high-availability vrrp group FOO address '203.0.113.1/24'
+  set high-availability vrrp group FOO vrid '10'
+
+  set high-availability virtual-server 203.0.113.1 algorithm 'source-hashing'
+  set high-availability virtual-server 203.0.113.1 delay-loop '10'
+  set high-availability virtual-server 203.0.113.1 forward-method 'nat'
+  set high-availability virtual-server 203.0.113.1 persistence-timeout '180'
+  set high-availability virtual-server 203.0.113.1 port '8280'
+  set high-availability virtual-server 203.0.113.1 protocol 'tcp'
+  set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80'
+  set high-availability virtual-server 203.0.113.1 real-server 192.0.2.12 port '80'
