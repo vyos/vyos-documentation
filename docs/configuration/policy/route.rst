@@ -12,27 +12,27 @@ Configuration
 Route
 =====
 
-.. cfgcmd:: set policy route <text>
+.. cfgcmd:: set policy route <name>
 
    This command creates a new route policy, identified by <text>.
 
-.. cfgcmd:: set policy route <text> description <text>
+.. cfgcmd:: set policy route <name> description <text>
 
    Set description for the route policy.
 
-.. cfgcmd:: set policy route <text> enable-default-log
+.. cfgcmd:: set policy route <name> enable-default-log
 
    Option to log packets hitting default-action.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> description <text>
+.. cfgcmd:: set policy route <name> rule <n> description <text>
 
    Set description for rule in route policy.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> action drop
+.. cfgcmd:: set policy route <name> rule <n> action drop
 
    Set rule action to drop.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> destination address
+.. cfgcmd:: set policy route <name> rule <n> destination address
    <match_criteria>
 
    Set match criteria based on destination address, where <match_criteria>
@@ -45,13 +45,13 @@ Route
    * !<x.x.x.x/x>: Match everything except the specified subnet.
    * !<x.x.x.x>-<x.x.x.x>: Match everything except the specified range.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> destination group
+.. cfgcmd:: set policy route <name> rule <n> destination group
    <address-group|network-group|port-group> <text>
 
    Set destination match criteria based on groups, where <text> would be the
    group name/identifier.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> destination port
+.. cfgcmd:: set policy route <name> rule <n> destination port
    <match_criteria>
 
    Set match criteria based on destination port, where <match_criteria> could
@@ -65,11 +65,11 @@ Route
    whole list can also be "negated" using '!'. For example:
    '!22,telnet,http,123,1001-1005'
 
-.. cfgcmd:: set policy route <text> rule <1-9999> disable
+.. cfgcmd:: set policy route <name> rule <n> disable
 
    Option to disable rule.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> fragment
+.. cfgcmd:: set policy route <name> rule <n> fragment
    <match-grag|match-non-frag>
 
    Set IP fragment match, where:
@@ -77,12 +77,12 @@ Route
    * match-frag: Second and further fragments of fragmented packets.
    * match-non-frag: Head fragments or unfragmented packets.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> icmp <code|type|type-name>
+.. cfgcmd:: set policy route <name> rule <n> icmp <code|type|type-name>
 
    Set ICMP match criterias, based on code and/or types. Types could be
    referenced by number or by name.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> ipsec
+.. cfgcmd:: set policy route <name> rule <n> ipsec
    <match-ipsec|match-none>
 
    Set IPSec inbound match criterias, where:
@@ -90,54 +90,54 @@ Route
    * match-ipsec: match inbound IPsec packets.
    * match-none: match inbound non-IPsec packets.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> limit burst <0-4294967295>
+.. cfgcmd:: set policy route <name> rule <n> limit burst <0-4294967295>
 
    Set maximum number of packets to alow in excess of rate
 
-.. cfgcmd:: set policy route <text> rule <1-9999> limit rate <text>
+.. cfgcmd:: set policy route <name> rule <n> limit rate <text>
 
    Set maximum average matching rate. Format for rate: integer/time_unit, where
    time_unit could be any one of second, minute, hour or day.For example
    1/second implies rule to be matched at an average of once per second.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> log <enable|disable>
+.. cfgcmd:: set policy route <name> rule <n> log <enable|disable>
 
    Option to enable or disable log matching rule.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> log <text>
+.. cfgcmd:: set policy route <name> rule <n> log <text>
 
    Option to log matching rule.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> protocol
+.. cfgcmd:: set policy route <name> rule <n> protocol
    <text|0-255|tcp_udp|all|!protocol>
 
    Set protocol to match. Protocol name in /etc/protocols or protocol number,
    or "tcp_udp" or "all". Also, protocol could be denied by using !.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> recent <count|time>
+.. cfgcmd:: set policy route <name> rule <n> recent <count|time>
    <1-255|0-4294967295>
 
    Set parameters for matching recently seen sources. This match could be used
    by seeting count (source address seen more than <1-255> times) and/or time
    (source address seen in the last <0-4294967295> seconds).
 
-.. cfgcmd:: set policy route <text> rule <1-9999> set dscp <0-63>
+.. cfgcmd:: set policy route <name> rule <n> set dscp <0-63>
 
    Set packet modifications: Packet Differentiated Services Codepoint (DSCP)
 
-.. cfgcmd:: set policy route <text> rule <1-9999> set mark <1-2147483647>
+.. cfgcmd:: set policy route <name> rule <n> set mark <1-2147483647>
 
    Set packet modifications: Packet marking
 
-.. cfgcmd:: set policy route <text> rule <1-9999> set table <main|1-200>
+.. cfgcmd:: set policy route <name> rule <n> set table <main|1-200>
 
    Set packet modifications: Routing table to forward packet with.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> set tcp-mss <500-1460>
+.. cfgcmd:: set policy route <name> rule <n> set tcp-mss <500-1460>
 
    Set packet modifications: Explicitly set TCP Maximum segment size value.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> source address
+.. cfgcmd:: set policy route <name> rule <n> source address
    <match_criteria>
 
    Set match criteria based on source address, where <match_criteria> could be:
@@ -149,13 +149,13 @@ Route
    * !<x.x.x.x/x>: Match everything except the specified subnet.
    * !<x.x.x.x>-<x.x.x.x>: Match everything except the specified range.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> source group
+.. cfgcmd:: set policy route <name> rule <n> source group
    <address-group|network-group|port-group> <text>
 
    Set source match criteria based on groups, where <text> would be the group
    name/identifier.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> source port <match_criteria>
+.. cfgcmd:: set policy route <name> rule <n> source port <match_criteria>
 
    Set match criteria based on source port, where <match_criteria> could be:
 
@@ -167,52 +167,52 @@ Route
    list can also be "negated" using '!'. For example:
    '!22,telnet,http,123,1001-1005'
 
-.. cfgcmd:: set policy route <text> rule <1-9999> state
+.. cfgcmd:: set policy route <name> rule <n> state
    <established|invalid|new|related> <disable|enable>
 
    Set match criteria based on session state.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> tcp flags <text>
+.. cfgcmd:: set policy route <name> rule <n> tcp flags <text>
 
    Set match criteria based on tcp flags. Allowed values for TCP flags: SYN ACK
    FIN RST URG PSH ALL. When specifying more than one flag, flags should be
    comma-separated. For example : value of 'SYN,!ACK,!FIN,!RST' will only match
    packets with the SYN flag set, and the ACK, FIN and RST flags unset.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> time monthdays <text>
+.. cfgcmd:: set policy route <name> rule <n> time monthdays <text>
 
    Set monthdays to match rule on. Format for monthdays: 2,12,21.
    To negate add ! at the front eg. !2,12,21
 
-.. cfgcmd:: set policy route <text> rule <1-9999> time startdate <text>
+.. cfgcmd:: set policy route <name> rule <n> time startdate <text>
 
    Set date to start matching rule. Format for date: yyyy-mm-dd. To specify
    time of date with startdate, append 'T' to date followed by time in 24 hour
    notation hh:mm:ss. For eg startdate value of 2009-01-21T13:30:00 refers to
    21st Jan 2009 with time 13:30:00.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> time starttime <text>
+.. cfgcmd:: set policy route <name> rule <n> time starttime <text>
 
    Set time of day to start matching rule. Format of time: hh:mm:ss using 24
    hours notation.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> time stopdate <text>
+.. cfgcmd:: set policy route <name> rule <n> time stopdate <text>
 
    Set date to stop matching rule. Format for date: yyyy-mm-dd. To specify time
    of date with stopdate, append 'T' to date followed by time in 24 hour
    notation hh:mm:ss. For eg startdate value of 2009-01-21T13:30:00 refers to
    21st Jan 2009 with time 13:30:00.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> time stoptime <text>
+.. cfgcmd:: set policy route <name> rule <n> time stoptime <text>
 
    Set time of day to stop matching rule. Format of time: hh:mm:ss using 24
    hours notation.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> time utc
+.. cfgcmd:: set policy route <name> rule <n> time utc
 
    Interpret times for startdate, stopdate, starttime and stoptime to be UTC.
 
-.. cfgcmd:: set policy route <text> rule <1-9999> time weekdays
+.. cfgcmd:: set policy route <name> rule <n> time weekdays
 
    Weekdays to match rule on. Format for weekdays: Mon,Thu,Sat. To negate add !
    at the front eg. !Mon,Thu,Sat.
@@ -221,27 +221,27 @@ Route
 IPv6 Route
 ==========
 
-.. cfgcmd:: set policy ipv6-route <text>
+.. cfgcmd:: set policy route6 <name>
 
    This command creates a new IPv6 route policy, identified by <text>.
 
-.. cfgcmd:: set policy ipv6-route <text> description <text>
+.. cfgcmd:: set policy route6 <name> description <text>
 
    Set description for the IPv6 route policy.
 
-.. cfgcmd:: set policy ipv6-route <text> enable-default-log
+.. cfgcmd:: set policy route6 <name> enable-default-log
 
    Option to log packets hitting default-action.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> action drop
+.. cfgcmd:: set policy route6 <name> rule <n> action drop
 
    Set rule action to drop.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> description <text>
+.. cfgcmd:: set policy route6 <name> rule <n> description <text>
 
    Set description for rule in IPv6 route policy.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> destination address
+.. cfgcmd:: set policy route6 <name> rule <n> destination address
    <match_criteria>
 
    Set match criteria based on destination IPv6 address, where <match_criteria>
@@ -255,8 +255,7 @@ IPv6 Route
    * !<h:h:h:h:h:h:h:h>-<h:h:h:h:h:h:h:h>: Match everything except the
      specified range.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> destination port
-   <match_criteria>
+.. cfgcmd:: set policy route6 <name> rule <n> destination port <match_criteria>
 
    Set match criteria based on destination port, where <match_criteria> could
    be:
@@ -269,15 +268,15 @@ IPv6 Route
    whole list can also be "negated" using '!'. For example:
    '!22,telnet,http,123,1001-1005'.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> disable
+.. cfgcmd:: set policy route6 <name> rule <n> disable
 
    Option to disable rule.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> icmpv6 type <icmpv6_typ>
+.. cfgcmd:: set policy route6 <name> rule <n> icmpv6 type <icmpv6_typ>
 
    Set ICMPv6 match criterias, based on ICMPv6 type/code name.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> ipsec
+.. cfgcmd:: set policy route6 <name> rule <n> ipsec
    <match-ipsec|match-none>
 
    Set IPSec inbound match criterias, where:
@@ -285,59 +284,59 @@ IPv6 Route
    * match-ipsec: match inbound IPsec packets.
    * match-none: match inbound non-IPsec packets.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> limit burst
+.. cfgcmd:: set policy route6 <name> rule <n> limit burst
    <0-4294967295>
 
    Set maximum number of packets to alow in excess of rate
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> limit rate <text>
+.. cfgcmd:: set policy route6 <name> rule <n> limit rate <text>
 
    Set maximum average matching rate. Format for rate: integer/time_unit, where
    time_unit could be any one of second, minute, hour or day.For example
    1/second implies rule to be matched at an average of once per second.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> log <enable|disable>
+.. cfgcmd:: set policy route6 <name> rule <n> log <enable|disable>
 
    Option to enable or disable log matching rule.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> log <text>
+.. cfgcmd:: set policy route6 <name> rule <n> log <text>
 
    Option to log matching rule.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> protocol
+.. cfgcmd:: set policy route6 <name> rule <n> protocol
    <text|0-255|tcp_udp|all|!protocol>
 
    Set IPv6 protocol to match. IPv6 protocol name from /etc/protocols or
    protocol number, or "tcp_udp" or "all". Also, protocol could be denied by
    using !.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> recent <count|time>
+.. cfgcmd:: set policy route6 <name> rule <n> recent <count|time>
    <1-255|0-4294967295>
 
    Set parameters for matching recently seen sources. This match could be used
    by seeting count (source address seen more than <1-255> times) and/or time
    (source address seen in the last <0-4294967295> seconds).
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> set dscp <0-63>
+.. cfgcmd:: set policy route6 <name> rule <n> set dscp <0-63>
 
    Set packet modifications: Packet Differentiated Services Codepoint (DSCP)
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> set mark <1-2147483647>
+.. cfgcmd:: set policy route6 <name> rule <n> set mark <1-2147483647>
 
    Set packet modifications: Packet marking.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> set table <main|1-200>
+.. cfgcmd:: set policy route6 <name> rule <n> set table <main|1-200>
 
    Set packet modifications: Routing table to forward packet with.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> set tcp-mss
+.. cfgcmd:: set policy route6 <name> rule <n> set tcp-mss
    <pmtu|500-1460>
 
    Set packet modifications: pmtu option automatically set to Path Maximum
    Transfer Unit minus 60 bytes. Otherwise, expliicitly set TCP MSS value from
    500 to 1460.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> source address
+.. cfgcmd:: set policy route6 <name> rule <n> source address
    <match_criteria>
 
    Set match criteria based on IPv6 source address, where <match_criteria>
@@ -351,13 +350,13 @@ IPv6 Route
    * !<h:h:h:h:h:h:h:h>-<h:h:h:h:h:h:h:h>: Match everything except the
      specified range
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> source mac-address
+.. cfgcmd:: set policy route6 <name> rule <n> source mac-address
    <MAC_address|!MAC_address>
 
    Set source match criteria based on MAC address. Declare specific MAC address
    to match, or match everything except the specified MAC.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> source port
+.. cfgcmd:: set policy route6 <name> rule <n> source port
    <match_criteria>
 
    Set match criteria based on source port, where <match_criteria> could be:
@@ -370,52 +369,52 @@ IPv6 Route
    list can also be "negated" using '!'. For example:
    '!22,telnet,http,123,1001-1005'.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> state
+.. cfgcmd:: set policy route6 <name> rule <n> state
    <established|invalid|new|related> <disable|enable>
 
    Set match criteria based on session state.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> tcp flags <text>
+.. cfgcmd:: set policy route6 <name> rule <n> tcp flags <text>
 
    Set match criteria based on tcp flags. Allowed values for TCP flags: SYN ACK
    FIN RST URG PSH ALL. When specifying more than one flag, flags should be
    comma-separated. For example : value of 'SYN,!ACK,!FIN,!RST' will only match
    packets with the SYN flag set, and the ACK, FIN and RST flags unset.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> time monthdays <text>
+.. cfgcmd:: set policy route6 <name> rule <n> time monthdays <text>
 
    Set monthdays to match rule on. Format for monthdays: 2,12,21.
    To negate add ! at the front eg. !2,12,21
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> time startdate <text>
+.. cfgcmd:: set policy route6 <name> rule <n> time startdate <text>
 
    Set date to start matching rule. Format for date: yyyy-mm-dd. To specify
    time of date with startdate, append 'T' to date followed by time in 24 hour
    notation hh:mm:ss. For eg startdate value of 2009-01-21T13:30:00 refers to
    21st Jan 2009 with time 13:30:00.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> time starttime <text>
+.. cfgcmd:: set policy route6 <name> rule <n> time starttime <text>
 
    Set time of day to start matching rule. Format of time: hh:mm:ss using 24
    hours notation.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> time stopdate <text>
+.. cfgcmd:: set policy route6 <name> rule <n> time stopdate <text>
 
    Set date to stop matching rule. Format for date: yyyy-mm-dd. To specify time
    of date with stopdate, append 'T' to date followed by time in 24 hour
    notation hh:mm:ss. For eg startdate value of 2009-01-21T13:30:00 refers to
    21st Jan 2009 with time 13:30:00.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> time stoptime <text>
+.. cfgcmd:: set policy route6 <name> rule <n> time stoptime <text>
 
    Set time of day to stop matching rule. Format of time: hh:mm:ss using 24
    hours notation.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> time utc
+.. cfgcmd:: set policy route6 <name> rule <n> time utc
 
    Interpret times for startdate, stopdate, starttime and stoptime to be UTC.
 
-.. cfgcmd:: set policy ipv6-route <text> rule <1-9999> time weekdays
+.. cfgcmd:: set policy route6 <name> rule <n> time weekdays
 
    Weekdays to match rule on. Format for weekdays: Mon,Thu,Sat. To negate add !
    at the front eg. !Mon,Thu,Sat.
