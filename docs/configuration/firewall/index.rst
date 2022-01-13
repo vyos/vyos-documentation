@@ -244,7 +244,7 @@ Rule-Sets
 A rule-set is a named collection of firewall rules that can be applied
 to an interface or a zone. Each rule is numbered, has an action to apply
 if the rule is matched, and the ability to specify the criteria to
-match. Data packets go through the rules from 1 - 9999, at the first match
+match. Data packets go through the rules from 1 - 999999, at the first match
 the action of the rule will be executed.
 
 .. cfgcmd:: set firewall name <name> description <text>
@@ -264,25 +264,26 @@ the action of the rule will be executed.
 
    Use this command to enable the logging of the default action.
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> action [drop | reject |
+.. cfgcmd:: set firewall name <name> rule <1-999999> action [drop | reject |
    accept]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> action [drop | reject |
-   accept]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> action [drop | 
+   reject | accept]
 
    This required setting defines the action of the current rule.
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> description <text>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> description <text>
+.. cfgcmd:: set firewall name <name> rule <1-999999> description <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> description <text>
 
    Provide a description for each rule.
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> log [disable | enable]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> log [disable | enable]
+.. cfgcmd:: set firewall name <name> rule <1-999999> log [disable | enable]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log [disable |
+   enable]
 
    Enable or disable logging for the matched packet.
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> disable
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> disable
+.. cfgcmd:: set firewall name <name> rule <1-999999> disable
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> disable
 
    If you want to disable a rule but let it in the configuration.
 
@@ -292,13 +293,13 @@ Matching criteria
 There are a lot of matching criteria against which the package can be tested.
 
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> source address 
+.. cfgcmd:: set firewall name <name> rule <1-999999> source address 
    [address | addressrange | CIDR]
-.. cfgcmd:: set firewall name <name> rule <1-9999> destination address
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination address
    [address | addressrange | CIDR]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> source address
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source address
    [address | addressrange | CIDR]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> destination address
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination address
    [address | addressrange | CIDR]
 
    This is similar to the network groups part, but here you are able to negate
@@ -312,9 +313,9 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall ipv6-name WAN-IN-v6 rule 100 source address 2001:db8::202
 
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> source mac-address 
+.. cfgcmd:: set firewall name <name> rule <1-999999> source mac-address 
    <mac-address>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> source mac-address 
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source mac-address 
    <mac-address>
 
    Only in the source criteria, you can specify a mac-address.
@@ -324,13 +325,13 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall name LAN-IN-v4 rule 100 source mac-address 00:53:00:11:22:33 
       set firewall name LAN-IN-v4 rule 101 source mac-address !00:53:00:aa:12:34
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> source port
+.. cfgcmd:: set firewall name <name> rule <1-999999> source port
    [1-65535 | portname | start-end]
-.. cfgcmd:: set firewall name <name> rule <1-9999> destination port
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination port
    [1-65535 | portname | start-end]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> source port
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source port
    [1-65535 | portname | start-end]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> destination port
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination port
    [1-65535 | portname | start-end]
 
    A port can be set with a port number or a name which is here
@@ -349,42 +350,42 @@ There are a lot of matching criteria against which the package can be tested.
 
       set firewall ipv6-name WAN-IN-v6 rule 10 source port '!22,https,3333-3338'
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> source group
+.. cfgcmd:: set firewall name <name> rule <1-999999> source group
    address-group <name>
-.. cfgcmd:: set firewall name <name> rule <1-9999> destination group
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination group
    address-group <name>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> source group
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
    address-group <name>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> destination group
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    address-group <name>
 
    Use a specific address-group
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> source group
+.. cfgcmd:: set firewall name <name> rule <1-999999> source group
    network-group <name>
-.. cfgcmd:: set firewall name <name> rule <1-9999> destination group
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination group
    network-group <name>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> source group
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
    network-group <name>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> destination group
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    network-group <name>
 
    Use a specific network-group
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> source group
+.. cfgcmd:: set firewall name <name> rule <1-999999> source group
    port-group <name>
-.. cfgcmd:: set firewall name <name> rule <1-9999> destination group
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination group
    port-group <name>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> source group
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
    port-group <name>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> destination group
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    port-group <name>
 
    Use a specific port-group
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> protocol [<text> |
+.. cfgcmd:: set firewall name <name> rule <1-999999> protocol [<text> |
    <0-255> | all | tcp_udp]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> protocol [<text> |
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> protocol [<text> |
    <0-255> | all | tcp_udp]
 
    Match a protocol criteria. A protocol number or a name which is here
@@ -398,8 +399,8 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall name WAN-IN-v4 rule 11 protocol !tcp_udp
       set firewall ipv6-name WAN-IN-v6 rule 10 protocol tcp
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> tcp flags <text>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> tcp flags <text>
+.. cfgcmd:: set firewall name <name> rule <1-999999> tcp flags <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> tcp flags <text>
 
    Allowed values fpr TCP flags: ``SYN``, ``ACK``, ``FIN``, ``RST``, ``URG``,
    ``PSH``, ``ALL`` When specifying more than one flag, flags should be comma
@@ -411,9 +412,9 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall name WAN-IN-v4 rule 12 tcp flags 'SYN'
       set firewall name WAN-IN-v4 rule 13 tcp flags 'SYN,!ACK,!FIN,!RST'
 
-.. cfgcmd:: set firewall name <name> rule <1-9999> state [established |
+.. cfgcmd:: set firewall name <name> rule <1-999999> state [established |
    invalid | new | related] [enable | disable]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-9999> state [established |
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> state [established |
    invalid | new | related] [enable | disable]
 
    Match against the state of a packet.
@@ -630,7 +631,7 @@ Rule-set overview
 
    This will show you a statistic of all rule-sets since the last boot.
    
-.. opcmd:: show firewall [name | ipv6name] <name> rule <1-9999>
+.. opcmd:: show firewall [name | ipv6name] <name> rule <1-999999>
 
    This command will give an overview of a rule in a single rule-set
 
@@ -666,7 +667,7 @@ Rule-set overview
 
    This will show you a rule-set statistic since the last boot.
 
-.. opcmd:: show firewall [name | ipv6name] <name> rule <1-9999>
+.. opcmd:: show firewall [name | ipv6name] <name> rule <1-999999>
 
    This command will give an overview of a rule in a single rule-set.
 
