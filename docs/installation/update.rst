@@ -51,8 +51,8 @@ Example
 
 .. code-block:: none
 
-     vyos@vyos:~$ add system image https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
-     Trying to fetch ISO file from https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+     vyos@vyos:~$ add system image https://s3.amazonaws.com/s3-us.vyos.io/rolling/current/vyos-1.4-rolling-202201120317-amd64.iso
+     Trying to fetch ISO file from https://s3.amazonaws.com/s3-us.vyos.io/rolling/current/vyos-1.4-rolling-202201120317-amd64.iso
        % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                       Dload  Upload   Total   Spent    Left  Speed
      100  338M  100  338M    0     0  3837k      0  0:01:30  0:01:30 --:--:-- 3929k
@@ -76,7 +76,7 @@ Example
 .. hint:: The most up-do-date Rolling Release for AMD64 can be accessed using
    the following URL:
    
-   https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+   https://vyos.net/get/nightly-builds/
 
 After reboot you might want to verify the version you are running with
 the :opcmd:`show version` command.
