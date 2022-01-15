@@ -1,5 +1,5 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} ip adjust-mss <mss>
+  {{ var5 }} {{ var6 }} ip adjust-mss <mss | clamp-mss-to-pmtu>
 
   As Internet wide PMTU discovery rarely works, we sometimes need to clamp our
   TCP MSS value to a specific value. This is a field in the TCP options part of
@@ -11,6 +11,9 @@
 
   .. hint:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in
     1452 bytes on a 1492 byte MTU.
+
+  Instead of a numberical MSS value `clamp-mss-to-pmtu` can be used to 
+  automatically set the proper value.
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip arp-cache-timeout
