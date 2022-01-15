@@ -190,8 +190,8 @@ PPPoE options
   .. hint:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in
     1452 bytes on a 1492 byte MTU.
 
-Instead of a numberical MSS value `clamp-mss-to-pmtu` can be used to 
-automatically set the proper value.
+  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to 
+  automatically set the proper value.
 
 .. cfgcmd:: set interfaces pppoe <interface> ip disable-forwarding
 
@@ -235,9 +235,9 @@ IPv6
 
   .. hint:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in
     1452 bytes on a 1492 byte MTU.
-
-Instead of a numberical MSS value `clamp-mss-to-pmtu` can be used to 
-automatically set the proper value.
+  
+  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to 
+  automatically set the proper value.
 
 .. cfgcmd:: set interfaces pppoe <interface> ipv6 disable-forwarding
 
