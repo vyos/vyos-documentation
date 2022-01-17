@@ -1,4 +1,21 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} ip adjust-mss <mss | clamp-mss-to-pmtu>
+
+  As Internet wide PMTU discovery rarely works, we sometimes need to clamp our
+  TCP MSS value to a specific value. This is a field in the TCP options part of
+  a SYN packet. By setting the MSS value, you are telling the remote side
+  unequivocally 'do not try to send me packets bigger than this value'.
+
+  .. note:: This command was introduced in VyOS 1.4 - it was previously called:
+    ``set firewall options interface <name> adjust-mss <value>``
+
+  .. hint:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in
+    1452 bytes on a 1492 byte MTU.
+
+  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to 
+  automatically set the proper value.
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip arp-cache-timeout
 
   Once a neighbor has been found, the entry is considered to be valid for at

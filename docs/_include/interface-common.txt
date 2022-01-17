@@ -22,10 +22,6 @@
   :var0: {{ var0 }}
   :var1: {{ var1 }}
 
-.. cmdinclude:: /_include/interface-adjust-mss.txt
-  :var0: {{ var0 }}
-  :var1: {{ var1 }}
-
 .. cmdinclude:: /_include/interface-ip.txt
   :var0: {{ var0 }}
   :var1: {{ var1 }}

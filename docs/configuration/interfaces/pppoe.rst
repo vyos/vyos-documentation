@@ -177,6 +177,44 @@ PPPoE options
    PPPoE connection must be established over a physical interface. Interfaces
    can be regular Ethernet interfaces, VIFs or bonding interfaces/VIFs.
 
+.. cfgcmd:: set interfaces pppoe <interface> ip adjust-mss <mss | clamp-mss-to-pmtu>
+
+  As Internet wide PMTU discovery rarely works, we sometimes need to clamp our
+  TCP MSS value to a specific value. This is a field in the TCP options part of
+  a SYN packet. By setting the MSS value, you are telling the remote side
+  unequivocally 'do not try to send me packets bigger than this value'.
+
+  .. note:: This command was introduced in VyOS 1.4 - it was previously called:
+    ``set firewall options interface <name> adjust-mss <value>``
+
+  .. hint:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in
+    1452 bytes on a 1492 byte MTU.
+
+  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to 
+  automatically set the proper value.
+
+.. cfgcmd:: set interfaces pppoe <interface> ip disable-forwarding
+
+  Configure interface-specific Host/Router behaviour. If set, the interface will
+  switch to host mode and IPv6 forwarding will be disabled on this interface.
+
+.. cfgcmd:: set interfaces pppoe <interface> ip source-validation <strict | loose | disable>
+
+  Enable policy for source validation by reversed path, as specified in
+  :rfc:`3704`. Current recommended practice in :rfc:`3704` is to enable strict
+  mode to prevent IP spoofing from DDos attacks. If using asymmetric routing
+  or other complicated routing, then loose mode is recommended.
+
+  - strict: Each incoming packet is tested against the FIB and if the interface
+    is not the best reverse path the packet check will fail. By default failed
+    packets are discarded.
+
+  - loose: Each incoming packet's source address is also tested against the FIB
+    and if the source address is not reachable via any interface the packet
+    check will fail.
+
+  - disable: No source validation
+
 IPv6
 ----
 
@@ -184,6 +222,27 @@ IPv6
 
    Use this command to enable acquisition of IPv6 address using stateless
    autoconfig (SLAAC).
+
+.. cfgcmd:: set interfaces pppoe <interface> ipv6 adjust-mss <mss | clamp-mss-to-pmtu>
+
+  As Internet wide PMTU discovery rarely works, we sometimes need to clamp our
+  TCP MSS value to a specific value. This is a field in the TCP options part of
+  a SYN packet. By setting the MSS value, you are telling the remote side
+  unequivocally 'do not try to send me packets bigger than this value'.
+
+  .. note:: This command was introduced in VyOS 1.4 - it was previously called:
+    ``set firewall options interface <name> adjust-mss <value>``
+
+  .. hint:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in
+    1452 bytes on a 1492 byte MTU.
+  
+  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to 
+  automatically set the proper value.
+
+.. cfgcmd:: set interfaces pppoe <interface> ipv6 disable-forwarding
+
+  Configure interface-specific Host/Router behaviour. If set, the interface will
+  switch to host mode and IPv6 forwarding will be disabled on this interface.
 
 .. cmdinclude:: /_include/interface-dhcpv6-prefix-delegation.txt
   :var0: pppoe
