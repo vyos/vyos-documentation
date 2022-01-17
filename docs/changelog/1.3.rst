@@ -8,6 +8,28 @@
    _ext/releasenotes.py
 
 
+2022-01-15
+==========
+
+* :vytask:`T4183` (feature): IPv6 link-local address not accepted as wireguard peer
+* :vytask:`T4110` (feature): [IPV6-SSH/DNS}  enable IPv6 link local adresses as listen-address %eth0
+
+
+2022-01-12
+==========
+
+* :vytask:`T4168` (bug): Does not possible to reset VPN properly when DMVPN configured
+* :vytask:`T4167` (bug): DMVPN apply wrong param on the first configuration
+* :vytask:`T4152` (bug): NHRP shortcut-target holding-time does not work
+
+
+2022-01-10
+==========
+
+* :vytask:`T3299` (bug): Webproxy is prohibited from listening on all IP addresses
+* :vytask:`T3115` (feature): Add support for firewall on L3 VIF bridge interface
+
+
 2022-01-09
 ==========
 
@@ -1390,7 +1412,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.169 / 5.10.89
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.171 / 5.10.91
 
 
 2021-02-14
