@@ -8,6 +8,55 @@
    _ext/releasenotes.py
 
 
+2022-01-15
+==========
+
+* :vytask:`T4183` (feature): IPv6 link-local address not accepted as wireguard peer
+* :vytask:`T4150` (bug): VRRP with conntrack-sync does not work
+* :vytask:`T4110` (feature): [IPV6-SSH/DNS}  enable IPv6 link local adresses as listen-address %eth0
+
+
+2022-01-14
+==========
+
+* :vytask:`T4182` (bug): Show vrrp if vrrp not configured bug
+* :vytask:`T4179` (feature): Add op-mode CLI for show high-availability virtual-server
+* :vytask:`T4177` (bug): Strip-private doesn't work for service monitoring
+* :vytask:`T1972` (feature): Allow setting interface name for virtual_ipaddress in VRRP VRID
+
+
+2022-01-13
+==========
+
+* :vytask:`T4175` (bug): BGP configuration failed
+* :vytask:`T4109` (feature): Extend high-availability/keepalived for support virtual-server lb
+
+
+2022-01-12
+==========
+
+* :vytask:`T4174` (bug): Validation fails when entering port range with upper port 65535
+* :vytask:`T4162` (bug): VPN ipsec ike-group - Incorrect value help for ikev2-reauth
+* :vytask:`T4161` (bug): Policy route-map - Incorrect value help for local preference
+* :vytask:`T4152` (bug): NHRP shortcut-target holding-time does not work
+
+
+2022-01-11
+==========
+
+* :vytask:`T4149` (bug): [Firewall-IPV6] Error delete Fw rules on VIF/INT
+* :vytask:`T3950` (bug): CLI backtrace on update if DNS not defined 
+* :vytask:`T4170` (feature): Rename "policy ipv6-route" -> "policy route6"
+* :vytask:`T4166` (bug): Debug output missing when frr.py called under vyos-configd
+
+
+2022-01-10
+==========
+
+* :vytask:`T3299` (bug): Webproxy is prohibited from listening on all IP addresses
+* :vytask:`T3115` (feature): Add support for firewall on L3 VIF bridge interface
+
+
 2022-01-09
 ==========
 
@@ -226,7 +275,6 @@
 ==========
 
 * :vytask:`T4035` (bug): Geneve interfaces aren't displayed by operational mode commands
-* :vytask:`T3950` (bug): CLI backtrace on update if DNS not defined 
 
 
 2021-12-01
@@ -1563,7 +1611,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.169 / 5.10.89
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.171 / 5.10.91
 
 
 2021-02-15
