@@ -8,6 +8,56 @@
    _ext/releasenotes.py
 
 
+2022-01-23
+==========
+
+* :vytask:`T4186` (bug): Firewall icmp type - Offered options not supported
+* :vytask:`T4181` (bug): Firewall ipv6-network-group - incorrect description on helper 
+
+
+2022-01-22
+==========
+
+* :vytask:`T4173` (bug): Wan Load Balancing - Error on firewall NAT rules
+
+
+2022-01-21
+==========
+
+* :vytask:`T4200` (bug): Assigning ipv6-name to interface is not generating nftables rules
+* :vytask:`T4144` (bug): Firewall address-group - Improve error messages
+* :vytask:`T4137` (bug): Firewall group configuration allows to set incorrect port range and invalid port
+* :vytask:`T4133` (bug): Firewall network group error with zone-based firewall rules
+
+
+2022-01-20
+==========
+
+* :vytask:`T4171` (bug): Interface config migration error on 1.2.8 -> 1.4 upgrade
+
+
+2022-01-19
+==========
+
+* :vytask:`T4195` (feature): [OSPF-ECMP]enable set maximun-path
+
+
+2022-01-18
+==========
+
+* :vytask:`T4159` (bug): Empty firewall group (address, network & port) generates invalid nftables config, commit fails
+* :vytask:`T4155` (bug): PBR: `set table main` fails in `firewall.py` with newer rolling releases 
+* :vytask:`T3873` (feature): Zone based Firewall - Filter traffic in same zone
+* :vytask:`T3286` (feature): Switch the firewall from iptables to nftables
+* :vytask:`T292` (feature): [ZBF] Allow filtering intra zone traffic
+
+
+2022-01-17
+==========
+
+* :vytask:`T3164` (bug): console-server ssh does not work with RADIUS PAM auth
+
+
 2022-01-15
 ==========
 
@@ -1611,7 +1661,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.171 / 5.10.91
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.172 / 5.10.92
 
 
 2021-02-15
