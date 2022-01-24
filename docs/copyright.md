@@ -1,6 +1,4 @@
-################
-Copyright Notice
-################
+# Copyright Notice
 
 Copyright (C) 2018-2022 VyOS maintainers and contributors
 
