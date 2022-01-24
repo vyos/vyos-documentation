@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2022-01-17
+==========
+
+* :vytask:`T3164` (bug): console-server ssh does not work with RADIUS PAM auth
+
+
 2022-01-15
 ==========
 
@@ -1412,7 +1418,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.171 / 5.10.91
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.172 / 5.10.92
 
 
 2021-02-14
