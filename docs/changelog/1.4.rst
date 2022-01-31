@@ -8,6 +8,44 @@
    _ext/releasenotes.py
 
 
+2022-01-29
+==========
+
+* :vytask:`T4153` (bug): Monitor bandwidth-test initiate not working
+
+
+2022-01-28
+==========
+
+* :vytask:`T4184` (bug): NTP allow-clients address doesn't work it allows to use ntp server for all addresses
+* :vytask:`T4115` (bug): reboot in <x> not working as expected
+* :vytask:`T4217` (bug): firewall: port-group requires protocol to be set - but not in VyOS 1.3
+
+
+2022-01-27
+==========
+
+* :vytask:`T4213` (default): ipv6 policy routing not working anymore
+* :vytask:`T4188` (bug): Firewall does not correctly handle conntracking
+* :vytask:`T3762` (feature): Support network and address groups for policy ipv6-route
+* :vytask:`T3560` (feature): Ability to create groups of MAC addresses
+* :vytask:`T3495` (feature): Modernising port/protocol definitions
+
+
+2022-01-25
+==========
+
+* :vytask:`T4205` (feature): Disable Debian Version in SSH (DebianBanner->no)
+* :vytask:`T4131` (bug): Show firewall group incorrect format members
+
+
+2022-01-24
+==========
+
+* :vytask:`T4204` (feature): Update Accel-PPP to a newer revision
+* :vytask:`T1795` (default): Commit rollback by timeout
+
+
 2022-01-23
 ==========
 
@@ -1661,7 +1699,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.172 / 5.10.92
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.174 / 5.10.94
 
 
 2021-02-15
