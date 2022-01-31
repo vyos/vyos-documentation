@@ -8,6 +8,25 @@
    _ext/releasenotes.py
 
 
+2022-01-29
+==========
+
+* :vytask:`T4153` (bug): Monitor bandwidth-test initiate not working
+
+
+2022-01-28
+==========
+
+* :vytask:`T4184` (bug): NTP allow-clients address doesn't work it allows to use ntp server for all addresses
+* :vytask:`T4115` (bug): reboot in <x> not working as expected
+
+
+2022-01-24
+==========
+
+* :vytask:`T4204` (feature): Update Accel-PPP to a newer revision
+
+
 2022-01-17
 ==========
 
@@ -1418,7 +1437,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.172 / 5.10.92
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.174 / 5.10.94
 
 
 2021-02-14
