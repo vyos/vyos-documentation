@@ -1,3 +1,5 @@
+:lastproofread: 2022-02-01
+
 .. _snmp:
 
 ####
@@ -129,7 +131,7 @@ sent in clear text between a manager and agent. Each SNMPv3 message contains
 security parameters which are encoded as an octet string. The meaning of these
 security parameters depends on the security model being used.
 
-The securityapproach in v3 targets:
+The security approach in v3 targets:
 
 * Confidentiality – Encryption of packets to prevent snooping by an
   unauthorized source.
@@ -161,7 +163,7 @@ Example
   set service snmp v3 view default oid 1
 
 After commit the plaintext passwords will be hashed and stored in your
-configuration. The resulting LCI config will look like:
+configuration. The resulting CLI config will look like:
 
 .. code-block:: none
 
@@ -201,7 +203,7 @@ VyOS MIBs
 
 All SNMP MIBs are located in each image of VyOS here: ``/usr/share/snmp/mibs/``
 
-you are be able to download the files with the a activate ssh service like this
+You can download the file to your local host with an active ssh service like this
 
 .. code-block:: none
 
