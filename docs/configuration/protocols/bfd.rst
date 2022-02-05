@@ -1,4 +1,4 @@
-:lastproofread: 2021-09-28
+:lastproofread: 2022-02-05
 
 .. include:: /_include/need_improvement.txt
 
@@ -72,11 +72,11 @@ Enable BFD in BGP
 Enable BFD in OSPF
 ------------------
 
-.. cfgcmd:: set interfaces ethernet <interface> ip ospf bfd
+.. cfgcmd:: set protocols ospf interface <interface> bfd
 
    Enable BFD for OSPF on an interface
 
-.. cfgcmd:: set interfaces ethernet <interface> ipv6 ospfv3 bfd
+.. cfgcmd:: set protocols ospfv3 interface <interface> bfd
 
    Enable BFD for OSPFv3 on an interface
 
@@ -93,7 +93,7 @@ Enable BFD in ISIS
 Operational Commands
 ====================
 
-.. opcmd:: show protocols bfd peer
+.. opcmd:: show bfd peers
 
    Show all BFD peers
 
