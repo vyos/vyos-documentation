@@ -89,7 +89,7 @@ access to the official codebase.
   for writing our docs. Additional directives how to write in RST can be
   obtained from reStructuredTextDirectives_.
 
-* Check your changes by locally building the documentation ``$ make html``.
+* Check your changes by locally building the documentation ``$ make livehtml``.
   Sphinx will build the html files in the ``docs/_build`` folder. We provide
   you with a Docker container for an easy to use user experience. Check the
   README.md_ file of this repository.

@@ -28,20 +28,6 @@ largest. There are 88 of them, here's the
 * 1.4.x: `sagitta` (Arrow)
 * ...
 
-## Native
-
-To build the manual, run the following commands inside the `docs` folder:
-
-* `make html` for an HTML manual
-* `make latexpdf` for a LaTeX rendered PDF
-
-Required Debian Packages:
-* `latexmk`
-* `texlive-latex-recommended`
-* `texlive-fonts-recommended`
-* `texlive-latex-extra`
-* `sphinx`
-
 ### sphinx
 Debian requires some extra steps for
 installing `sphinx`, `sphinx-autobuild` and `sphinx-rtd-theme` packages:
@@ -75,7 +61,6 @@ Then run:
 ```bash
 sudo pip install sphinx-rtd-theme
 ```
-
 
 Do the following to build the HTML and start a webserver:
 * Run `make livehtml` inside the `docs` folder
