@@ -8,7 +8,7 @@ Proxmox is an open-source platform for virtualization. Users with a support
 subscription can download a qcow2 image that can be imported into Proxmox.
 
 Deploy VyOS from CLI with qcow2 image
-====================
+=====================================
 
  A prebuilt image in qcow2 format is available to all VyOS subscribers for download and use directly within Proxmox.
 
@@ -33,7 +33,8 @@ Deploy VyOS from CLI with qcow2 image
 
 
 Deploy VyOS from CLI with rolling release ISO
-====================
+=============================================
+
 1. Download the rolling release iso from https://vyos.net/get/nightly-builds/. Non-subscribers can always get the LTS release by building it from source. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available https://github.com/vyos/vyos-build.
 2. Prepare VM for installation from ISO media. The commands below assume that your iso is available in a storage pool 'local', that you want it to have a VM ID '200' and want to create a new disk on storage pool 'local-lvm' of size 15GB.
 
