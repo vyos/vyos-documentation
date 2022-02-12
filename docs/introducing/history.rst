@@ -8,11 +8,11 @@ In the beginning...
 ===================
 
 There once was a network operating system based on Debian GNU/Linux,
-called Vyatta. [*]_ 2006 onwards, it was a great free software
+called Vyatta.[*]_ 2006 onwards, it was a great free software
 alternative to Cisco IOS and Jupiter JUNOS. It came in two editions:
 Vyatta Core (previously Vyatta Community Edition) that was completely
 free software, and Vyatta Subscription Edition that had proprietary
-features and was only available to paying customers. [*]_
+features and was only available to paying customers.[*]_
 
 Vyatta was acquired by Brocade Communication Systems in 2012. Shortly
 after, Brocade renamed Vyatta Subscription Edition to Brocade vRouter,
@@ -113,18 +113,17 @@ A note on copyright
 
 Unlike Vyatta, VyOS never had (nor will ever have) proprietary code.
 The only proprietary material in VyOS is non-code assets, such as
-graphics and the term "VyOS". [*]_ This means you can build your own
-long-term support images (as the entire toolchain we use is free
+graphics and the trademark "VyOS".[*]_ This means you can build your
+own long-term support images (as the entire toolchain we use is free
 software) and even distribute them, given you rename it and remove
 such assets before building. Although note that we do not provide
 support for images distributed by a third-party. See the
 `artwork license <https://github.com/vyos/vyos-build/blob/current/LICENSE.artwork>`_
-and the end-user license agreement at `/usr/share/doc/vyos/EULA` in any
-pre-built image for more precise information.
+and the end-user license agreement at ``/usr/share/doc/vyos/EULA`` in
+any pre-built image for more precise information.
 
 
 .. [*] From the Sanskrit adjective "Vyātta" (व्यात्त), meaning opened.
 .. [*] A business model comparable to that of Redis, rather than that
        of VyOS today.
-.. [*] This is not unlike how Linus Torvalds owns copyright of the
-       term "Linux".
+.. [*] This is not unlike how Linus Torvalds owns the trademark "Linux".
