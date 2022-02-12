@@ -8,11 +8,11 @@ In the beginning...
 ===================
 
 There once was a network operating system based on Debian GNU/Linux,
-called Vyatta.[*]_ 2006 onwards, it was a great free software
+called Vyatta. [*]_ 2006 onwards, it was a great free software
 alternative to Cisco IOS and Jupiter JUNOS. It came in two editions:
 Vyatta Core (previously Vyatta Community Edition) that was completely
 free software, and Vyatta Subscription Edition that had proprietary
-features and was only available to paying customers.[*]_
+features and was only available to paying customers. [*]_
 
 Vyatta was acquired by Brocade Communication Systems in 2012. Shortly
 after, Brocade renamed Vyatta Subscription Edition to Brocade vRouter,
@@ -47,7 +47,7 @@ angle area, starting from the smallest.
 Hydrogen (1.0)
 --------------
 
-Released just in time for holidays in 22 December 2013, Hydrogen was
+Released just in time for holidays on 22 December 2013, Hydrogen was
 the first major VyOS release. It fixed features that were broken in
 Vyatta Core 6.6 (such as IPv4 BGP peer groups and DHCPv6 relay) and
 introduced command scripting, a task scheduler and web proxy LDAP
@@ -56,7 +56,7 @@ authentication.
 Helium (1.1)
 ------------
 
-Helium was released in 9 October 2014, exactly on the day VyOS Project
+Helium was released on 9 October 2014, exactly on the day VyOS Project
 first came into being in the previous year. Helium came with a lot of
 new features, including an event handler and support for L2TPv3,
 802.1ad QinQ and IGMP proxy, as well as experimental support for VXLAN
@@ -66,7 +66,7 @@ its reliance on a proprietary NHRP implementation).
 Crux (1.2)
 ----------
 
-Crux (the Southern Cross) came out in 28 January 2019 and was the
+Crux (the Southern Cross) came out on 28 January 2019 and was the
 first major release of VyOS as we know it today. The underlying
 Debian base was upgraded from Squeeze (6) to Jessie (8).
 
@@ -90,7 +90,7 @@ Equuleus (1.3)
 --------------
 
 The current long-term support version of VyOS, Equuleus (the Pony)
-came out in 21 December 2021, once again in time for the winter
+came out on 21 December 2021, once again in time for the winter
 holidays.
 
 Equuleus brought many long-desired features with it, most notably
@@ -113,7 +113,7 @@ A note on copyright
 
 Unlike Vyatta, VyOS never had (nor will ever have) proprietary code.
 The only proprietary material in VyOS is non-code assets, such as
-graphics and the trademark "VyOS".[*]_ This means you can build your
+graphics and the trademark "VyOS". [*]_ This means you can build your
 own long-term support images (as the entire toolchain we use is free
 software) and even distribute them, given you rename it and remove
 such assets before building. Although note that we do not provide
