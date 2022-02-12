@@ -20,9 +20,11 @@ VyOS support three types of config sources.
 * Metadata - Metadata is sourced by the cloud platform or hypervisor.
   In some clouds, there is implemented as an HTTP endpoint at
   ``http://169.254.169.254``.
+
 * Network configuration - This config source informs the system about the
   network settings like IP addresses, routes, DNS. Available only in several
   cloud and virtualization platforms.
+
 * User-data - User-data is specified by the user. This config source offers the
   ability to insert any CLI configuration commands into the configuration before
   the first boot.
@@ -49,9 +51,9 @@ In VyOS, by default, enables only two modules:
 * ``write_files`` - this module allows to insert any files into the filesystem
   before the first boot, for example, pre-generated encryption keys,
   certificates, or even a whole ``config.boot`` file.
+
 * ``vyos_userdata`` - the module accepts a list of CLI configuration commands in
   a ``vyos_config_commands`` section, which gives an easy way to configure the
-
   system during deployment.
 
 ************************
@@ -75,9 +77,9 @@ commands are supported.
 
 Commands requirements:
 
-* one command per line
-* if command ends in a value, it must be inside single quotes
-* a single-quote symbol is not allowed inside command or value
+* One command per line.
+* If command ends in a value, it must be inside single quotes.
+* A single-quote symbol is not allowed inside command or value.
 
 The commands list produced by the ``show configuration commands`` command on a
 VyOS router should comply with all the requirements, so it is easy to get a 
@@ -105,9 +107,9 @@ System Defaults/Fallbacks
 
 These are the VyOS defaults and fallbacks.
 
-* SSH is configured on port 22
-* ``vyos``/``vyos`` credentials if no others specified by data source
-* DHCP on first Ethernet interface if no network configuration is provided
+* SSH is configured on port 22.
+* ``vyos``/``vyos`` credentials if no others specified by data source.
+* DHCP on first Ethernet interface if no network configuration is provided.
 
 All of these can be overridden using the configuration in user-data.
 

@@ -8,6 +8,84 @@
    _ext/releasenotes.py
 
 
+2022-02-06
+==========
+
+* :vytask:`T4223` (bug): policy route cannot have several entries with the same table
+* :vytask:`T4216` (bug): Firewall: can't use negated groups in firewall rules
+* :vytask:`T4178` (bug): policy based routing tcp flags issue
+* :vytask:`T4164` (bug): PBR: network groups (as well as address and port groups) don't resolve in `nftables_policy.conf`
+* :vytask:`T3970` (feature): Add support for op-mode PKI direct install into an active config session
+* :vytask:`T3828` (bug): ipsec: Subtle change in "pfs enable" behavior from equuleus -> sagitta
+* :vytask:`T4228` (bug): bond: OS error thrown when two bonds use the same member
+
+
+2022-02-05
+==========
+
+* :vytask:`T4226` (bug): VRRP transition-script does not work for groups name which contains -(minus) sign
+
+
+2022-02-04
+==========
+
+* :vytask:`T4196` (bug): DHCP server client-prefix-length parameter results in non-functional leases
+
+
+2022-02-03
+==========
+
+* :vytask:`T4218` (bug): firewall: rule name is not allowed to start with a number
+* :vytask:`T3643` (bug): show vpn ipsec sa doesn't show tunnels in "down" state
+
+
+2022-02-01
+==========
+
+* :vytask:`T4224` (bug): Ethernet interfaces configured for DHCP not working on latest rolling snapshot (vyos-1.4-rolling-202201291849-amd64.iso)
+* :vytask:`T4225` (bug): Performance degration with latest rolling release
+* :vytask:`T4220` (bug): Commit broke dhclient 78b247b724f74bdabab0706aaa7f5b00e5809bc1
+* :vytask:`T4138` (bug): NAT configuration allows to set incorrect port range and invalid port
+
+
+2022-01-29
+==========
+
+* :vytask:`T4153` (bug): Monitor bandwidth-test initiate not working
+
+
+2022-01-28
+==========
+
+* :vytask:`T4184` (bug): NTP allow-clients address doesn't work it allows to use ntp server for all addresses
+* :vytask:`T4115` (bug): reboot in <x> not working as expected
+* :vytask:`T4217` (bug): firewall: port-group requires protocol to be set - but not in VyOS 1.3
+
+
+2022-01-27
+==========
+
+* :vytask:`T4213` (default): ipv6 policy routing not working anymore
+* :vytask:`T4188` (bug): Firewall does not correctly handle conntracking
+* :vytask:`T3762` (feature): Support network and address groups for policy ipv6-route
+* :vytask:`T3560` (feature): Ability to create groups of MAC addresses
+* :vytask:`T3495` (feature): Modernising port/protocol definitions
+
+
+2022-01-25
+==========
+
+* :vytask:`T4205` (feature): Disable Debian Version in SSH (DebianBanner->no)
+* :vytask:`T4131` (bug): Show firewall group incorrect format members
+
+
+2022-01-24
+==========
+
+* :vytask:`T4204` (feature): Update Accel-PPP to a newer revision
+* :vytask:`T1795` (default): Commit rollback by timeout
+
+
 2022-01-23
 ==========
 
@@ -1661,7 +1739,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.172 / 5.10.92
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.175 / 5.10.95
 
 
 2021-02-15

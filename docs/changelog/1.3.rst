@@ -8,6 +8,55 @@
    _ext/releasenotes.py
 
 
+2022-02-06
+==========
+
+* :vytask:`T4228` (bug): bond: OS error thrown when two bonds use the same member
+
+
+2022-02-05
+==========
+
+* :vytask:`T4226` (bug): VRRP transition-script does not work for groups name which contains -(minus) sign
+
+
+2022-02-04
+==========
+
+* :vytask:`T4196` (bug): DHCP server client-prefix-length parameter results in non-functional leases
+
+
+2022-02-03
+==========
+
+* :vytask:`T3643` (bug): show vpn ipsec sa doesn't show tunnels in "down" state
+
+
+2022-02-01
+==========
+
+* :vytask:`T4198` (bug): Error shown on commit
+
+
+2022-01-29
+==========
+
+* :vytask:`T4153` (bug): Monitor bandwidth-test initiate not working
+
+
+2022-01-28
+==========
+
+* :vytask:`T4184` (bug): NTP allow-clients address doesn't work it allows to use ntp server for all addresses
+* :vytask:`T4115` (bug): reboot in <x> not working as expected
+
+
+2022-01-24
+==========
+
+* :vytask:`T4204` (feature): Update Accel-PPP to a newer revision
+
+
 2022-01-17
 ==========
 
@@ -1418,7 +1467,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.172 / 5.10.92
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.175 / 5.10.95
 
 
 2021-02-14
