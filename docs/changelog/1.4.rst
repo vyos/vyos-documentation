@@ -8,6 +8,37 @@
    _ext/releasenotes.py
 
 
+2022-02-13
+==========
+
+* :vytask:`T4242` (bug): ethernet speed/duplex can never be switched back to auto/auto
+* :vytask:`T4191` (bug): Lost access to host after VRF re-creating
+
+
+2022-02-11
+==========
+
+* :vytask:`T3872` (feature): Add configurable telegraf monitoring service
+
+
+2022-02-10
+==========
+
+* :vytask:`T4235` (default): Add config tree diff algorithm
+
+
+2022-02-08
+==========
+
+* :vytask:`T4227` (bug): Typo in help completion of hello-time option of bridge interface
+
+
+2022-02-07
+==========
+
+* :vytask:`T4233` (bug): ssh: sync regex for allow/deny usernames to "system login"
+
+
 2022-02-06
 ==========
 
@@ -58,7 +89,6 @@
 ==========
 
 * :vytask:`T4184` (bug): NTP allow-clients address doesn't work it allows to use ntp server for all addresses
-* :vytask:`T4115` (bug): reboot in <x> not working as expected
 * :vytask:`T4217` (bug): firewall: port-group requires protocol to be set - but not in VyOS 1.3
 
 
@@ -1739,7 +1769,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.175 / 5.10.95
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.178 / 5.10.99
 
 
 2021-02-15
