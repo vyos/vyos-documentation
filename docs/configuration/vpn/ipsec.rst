@@ -174,8 +174,8 @@ On the LEFT:
 
   # GRE tunnel
   set interfaces tunnel tun0 encapsulation gre
-  set interfaces tunnel tun0 local-ip 192.0.2.10
-  set interfaces tunnel tun0 remote-ip 203.0.113.45
+  set interfaces tunnel tun0 source-address 192.0.2.10
+  set interfaces tunnel tun0 remote 203.0.113.45
   set interfaces tunnel tun0 address 10.10.10.1/30
 
   ## IPsec
@@ -226,8 +226,8 @@ On the LEFT:
 
   set interfaces tunnel tun0 encapsulation gre
   set interfaces tunnel tun0 address 10.10.10.1/30
-  set interfaces tunnel tun0 local-ip 192.168.99.1
-  set interfaces tunnel tun0 remote-ip 192.168.99.2
+  set interfaces tunnel tun0 source-address 192.168.99.1
+  set interfaces tunnel tun0 remote 192.168.99.2
 
 On the RIGHT:
 
@@ -237,8 +237,8 @@ On the RIGHT:
 
   set interfaces tunnel tun0 encapsulation gre
   set interfaces tunnel tun0 address 10.10.10.2/30
-  set interfaces tunnel tun0 local-ip 192.168.99.2
-  set interfaces tunnel tun0 remote-ip 192.168.99.1
+  set interfaces tunnel tun0 source-address 192.168.99.2
+  set interfaces tunnel tun0 remote 192.168.99.1
 
 **Setting up IPSec**
 
@@ -247,7 +247,7 @@ tricky part is that pre-shared secret authentication doesn't work with dynamic
 address, so we'll have to use RSA keys.
 
 First, on both routers run the operational command "generate pki key-pair 
-install <key-pair nam>>". You may choose different length than 2048 of course.
+install <key-pair name>". You may choose different length than 2048 of course.
 
 .. code-block:: none
 
