@@ -71,9 +71,9 @@ Initial Configuration
 ************************
 
 
-The key used to designate a VyOS configuration is ``vyos_config_commands``. What 
-follows is VyOS configuration using the "set-style" syntax. Both "set" and "delete" 
-commands are supported.
+The key used to designate a VyOS configuration is ``vyos_config_commands``.
+What follows is VyOS configuration using the "set-style" syntax. Both "set"
+and "delete" commands are supported.
 
 Commands requirements:
 
@@ -88,7 +88,8 @@ proper commands list by copying it from another router.
 The configuration specified in the cloud-config document overwrites default
 configuration values and values configured via Metadata.
 
-Here is an example cloud-config that appends configuration at the time of first boot.
+Here is an example cloud-config that appends configuration at the time of
+first boot.
 
 .. code-block:: yaml
 
@@ -149,8 +150,8 @@ configuration.
          run show ip bgp summary >> $filename
 
 
-If you need to gather information from linux commands to configure VyOS, you can
-execute commands and then configure VyOS in the same script.
+If you need to gather information from linux commands to configure VyOS, you
+can execute commands and then configure VyOS in the same script.
 
 The following example sets the hostname based on the instance identifier
 obtained from the EC2 metadata service.
@@ -213,8 +214,8 @@ the method with KVM to attach the ISO as a CD drive follows.
      --noautoconsole
 
 
-For more information on the NoCloud data source, visit its 
-`page <https://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html>`_
+For more information on the NoCloud data source, visit its `page
+<https://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html>`_
 in the cloud-init documentation. 
 
 ***************
