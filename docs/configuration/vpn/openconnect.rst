@@ -54,9 +54,9 @@ Server Configuration
   set vpn opneconnect network-settings client-ip-settings subnet <subnet>
   set vpn openconnect network-settings name-server <address>
   set vpn openconnect network-settings name-server <address>
-  set vpn openconnect ssl ca-cert-file <file>
-  set vpn openconnect ssl cert-file <file>
-  set vpn openconnect ssl key-file <file>
+  set vpn openconnect ssl ca-certificate <file>
+  set vpn openconnect ssl certificate <file>
+  set vpn openconnect ssl passphrase <file>
 
 
 *******
@@ -74,9 +74,9 @@ The Gateway IP Address must be in one of the router´s interfaces.
   set vpn openconnect network-settings client-ip-settings subnet '100.64.0.0/24'
   set vpn openconnect network-settings name-server '10.1.1.1'
   set vpn openconnect network-settings name-server '10.1.1.2'
-  set vpn openconnect ssl ca-cert-file '/config/auth/fullchain.pem'
-  set vpn openconnect ssl cert-file '/config/auth/cert.pem'
-  set vpn openconnect ssl key-file '/config/auth/privkey.pem'
+  set vpn openconnect ssl ca-certificate '/config/auth/fullchain.pem'
+  set vpn openconnect ssl certificate '/config/auth/cert.pem'
+  set vpn openconnect ssl passphrase '/config/auth/privkey.pem'
 
 
 ************
