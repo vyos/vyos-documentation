@@ -54,30 +54,9 @@ Server Configuration
   set vpn opneconnect network-settings client-ip-settings subnet <subnet>
   set vpn openconnect network-settings name-server <address>
   set vpn openconnect network-settings name-server <address>
-  set vpn openconnect ssl ca-certificate <file>
-  set vpn openconnect ssl certificate <file>
-  set vpn openconnect ssl passphrase <file>
-
-
-*******
-Example
-*******
-
-Use local user name "user4" with password "SecretPassword"
-Client IP addresses will be provided from pool 100.64.0.0/24
-The Gateway IP Address must be in one of the router´s interfaces.
-
-.. code-block:: none
-
-  set vpn openconnect authentication local-users username user4 password 'SecretPassword'
-  set vpn openconnect authentication mode 'local'
-  set vpn openconnect network-settings client-ip-settings subnet '100.64.0.0/24'
-  set vpn openconnect network-settings name-server '10.1.1.1'
-  set vpn openconnect network-settings name-server '10.1.1.2'
-  set vpn openconnect ssl ca-certificate '/config/auth/fullchain.pem'
-  set vpn openconnect ssl certificate '/config/auth/cert.pem'
-  set vpn openconnect ssl passphrase '/config/auth/privkey.pem'
-
+  set vpn openconnect ssl ca-certificate <pki-ca-name>
+  set vpn openconnect ssl certificate <pki-cert-name>
+  set vpn openconnect ssl passphrase <pki-password>
 
 ************
 Verification
