@@ -273,7 +273,7 @@ value needs to be lower than the UDP timeout.
 
 .. code-block:: none
 
-    wireguard wg0 {
+    wireguard wg01 {
         address 10.172.24.1/24
         address 2001:db8:470:22::1/64
         description RoadWarrior
@@ -333,15 +333,15 @@ Operational Commands
 Status
 ======
 
-.. opcmd:: show interfaces wireguard wg0 summary
+.. opcmd:: show interfaces wireguard wg01 summary
 
   Show info about the Wireguard service.
   It also shows the latest handshake.
 
   .. code-block:: none
 
-    vyos@vyos:~$ show interfaces wireguard wg0 summary
-    interface: wg0
+    vyos@vyos:~$ show interfaces wireguard wg01 summary
+    interface: wg01
       public key:
       private key: (hidden)
       listening port: 51820
@@ -361,7 +361,7 @@ Status
     Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
     Interface        IP Address                        S/L  Description
     ---------        ----------                        ---  -----------
-    wg0              10.0.0.1/24                       u/u
+    wg01             10.0.0.1/24                       u/u
 
 
 .. opcmd:: show interfaces wireguard <interface>
@@ -371,7 +371,7 @@ Status
   .. code-block:: none
 
     vyos@vyos:~$ show interfaces wireguard wg01
-    interface: wg0
+    interface: wg01
       address: 10.0.0.1/24
       public key: h1HkYlSuHdJN6Qv4Hz4bBzjGg5WUty+U1L7DJsZy1iE=
       private key: (hidden)
