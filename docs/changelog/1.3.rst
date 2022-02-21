@@ -8,6 +8,42 @@
    _ext/releasenotes.py
 
 
+2022-02-20
+==========
+
+* :vytask:`T4261` (feature): MACsec: add DHCP client support
+* :vytask:`T4203` (bug): Reconfigure DHCP client interface causes brief outages
+
+
+2022-02-19
+==========
+
+* :vytask:`T4258` (bug): [DHCP-SERVER]  error parameter on Failover
+
+
+2022-02-17
+==========
+
+* :vytask:`T4241` (bug): ocserv openconnect looks broken in recent bulds of 1.3 Equuleus
+* :vytask:`T4255` (bug): Unexpected print of dict bridge on delete
+* :vytask:`T4240` (bug): Cannot add wlan0 to bridge via configure
+* :vytask:`T4154` (bug): Error add second gre tunnel with the same source interface
+
+
+2022-02-16
+==========
+
+* :vytask:`T4237` (bug): Conntrack-sync error - error adding listen-address command
+
+
+2022-02-15
+==========
+
+* :vytask:`T4201` (bug): Firewall - ICMPv6 matches not working as expected on 1.3.0
+* :vytask:`T3006` (bug): Accel-PPP & vlan-mon config get invalid VLAN
+* :vytask:`T3494` (bug): DHCPv6 leases traceback when PD using
+
+
 2022-02-13
 ==========
 
