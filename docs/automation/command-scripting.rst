@@ -45,6 +45,32 @@ prepended with ``run``, even if you haven't created a session with configure.
   run show interfaces
   exit
 
+Run commands remotely
+---------------------
+
+Sometimes you simply wan't to execute a bunch of op-mode commands via SSH on
+a remote VyOS system.
+
+.. code-block:: none
+
+  ssh 192.0.2.1 'vbash -s' <<EOF
+  source /opt/vyatta/etc/functions/script-template
+  run show interfaces
+  exit
+  EOF
+
+Will return:
+
+```
+Welcome to VyOS
+Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+Interface        IP Address                        S/L  Description
+---------        ----------                        ---  -----------
+eth0             192.0.2.1/24                      u/u
+lo               127.0.0.1/8                       u/u
+                 ::1/128
+```
+
 Other script languages
 ----------------------
 
