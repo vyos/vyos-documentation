@@ -142,20 +142,20 @@ The default directories where your custom Scripts should be located are:
 
 .. code-block:: none
 
-  /config/scripts/commit/pre-hooks.d   - Directory with scripts that run before 
+  /config/scripts/commit/pre-hooks.d   - Directory with scripts that run before
                                          each commit.
 
   /config/scripts/commit/post-hooks.d  - Directory with scripts that run after
                                          each commit.
 
-Scripts are run in alphabetical order. Their names must consist entirely of 
-ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and 
+Scripts are run in alphabetical order. Their names must consist entirely of
+ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and
 ASCII minus-hyphens.No other characters are allowed.
 
 .. note:: Custom scripts are not executed with root privileges
    (Use sudo inside if this is necessary).
 
-A simple example is shown below, where the ops command executed in 
+A simple example is shown below, where the ops command executed in
 the post-hook script is "show interfaces".
 
 .. code-block:: none
@@ -170,7 +170,7 @@ the post-hook script is "show interfaces".
   eth2             -                                 u/u
   eth3             -                                 u/u
   lo               203.0.113.5/24                    u/u
-                  
+
 Preconfig on boot
 -----------------
 
@@ -185,9 +185,9 @@ The default file looks like this:
 .. code-block:: none
 
   #!/bin/sh
-  # This script is executed at boot time before VyOS configuration is applied. 
+  # This script is executed at boot time before VyOS configuration is applied.
   # Any modifications required to work around unfixed bugs or use
-  # services not available through the VyOS CLI system can be placed here. 
+  # services not available through the VyOS CLI system can be placed here.
 
 
 Postconfig on boot
