@@ -8,6 +8,45 @@
    _ext/releasenotes.py
 
 
+2022-02-20
+==========
+
+* :vytask:`T4254` (feature): VPN IPSec charon add options cisco_flexvpn and install_virtual_ip_on
+* :vytask:`T4249` (feature): Add support for device mapping in containers
+* :vytask:`T3617` (bug): IPSec 1.4 generate invalid configuration
+* :vytask:`T4261` (feature): MACsec: add DHCP client support
+* :vytask:`T4203` (bug): Reconfigure DHCP client interface causes brief outages
+
+
+2022-02-19
+==========
+
+* :vytask:`T4258` (bug): [DHCP-SERVER]  error parameter on Failover
+
+
+2022-02-17
+==========
+
+* :vytask:`T4255` (bug): Unexpected print of dict bridge on delete
+* :vytask:`T4240` (bug): Cannot add wlan0 to bridge via configure
+* :vytask:`T4154` (bug): Error add second gre tunnel with the same source interface
+
+
+2022-02-16
+==========
+
+* :vytask:`T4237` (bug): Conntrack-sync error - error adding listen-address command
+
+
+2022-02-15
+==========
+
+* :vytask:`T4160` (bug): Firewall - Error in rules that matches everything except something
+* :vytask:`T3006` (bug): Accel-PPP & vlan-mon config get invalid VLAN
+* :vytask:`T3494` (bug): DHCPv6 leases traceback when PD using
+* :vytask:`T1292` (bug): Issues while deleting all rules from a firewall
+
+
 2022-02-13
 ==========
 
@@ -180,7 +219,6 @@
 * :vytask:`T4182` (bug): Show vrrp if vrrp not configured bug
 * :vytask:`T4179` (feature): Add op-mode CLI for show high-availability virtual-server
 * :vytask:`T4177` (bug): Strip-private doesn't work for service monitoring
-* :vytask:`T1972` (feature): Allow setting interface name for virtual_ipaddress in VRRP VRID
 
 
 2022-01-13
