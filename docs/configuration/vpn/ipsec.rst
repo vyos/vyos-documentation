@@ -131,6 +131,12 @@ VyOS ESP group has the next options:
  
  * ``enable`` enable IPComp compression;
  
+* ``life-bytes`` ESP life in bytes <1024-26843545600000>. 
+  Number of bytes transmitted over an IPsec SA before it expires;
+  
+* ``life-packets`` ESP life in packets <1000-26843545600000>. 
+  Number of packets transmitted over an IPsec SA before it expires;  
+  
 * ``lifetime`` ESP lifetime in seconds <30-86400> (default 3600). 
   How long a particular instance of a connection (a set of 
   encryption/authentication keys for user packets) should last, 
