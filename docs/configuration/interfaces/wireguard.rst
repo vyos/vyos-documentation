@@ -169,15 +169,17 @@ traffic.
    WireGuard peers. This a design decision. For more information please
    check the `WireGuard mailing list`_.
 
-.. cfgcmd:: set interfaces wireguard <interface> private-key <name>
+.. cfgcmd:: set interfaces wireguard <interface> private-key <private-key>
 
-  To use a named key on an interface, the option private-key needs to be set.
+  Associates the previously generated private key to a specific WireGuard
+  interface. The private key can be generate via the command
+  :opcmd:`generate pki wireguard key-pair`.
 
   .. code-block:: none
 
-    set interfaces wireguard wg01 private-key KP01
+    set interfaces wireguard wg01 private-key 'iJJyEARGK52Ls1GYRCcFvPuTj7WyWYDo//BknoDU0XY='
 
-  The command :opcmd:`show wireguard keypairs pubkey KP01` will then show the
+  The command :opcmd:`show interfaces wireguard wg01 public-key` will then show the
   public key, which needs to be shared with the peer.
 
 **remote side - commands**
@@ -189,7 +191,7 @@ traffic.
   set interfaces wireguard wg01 peer to-wg01 allowed-ips '192.168.1.0/24'
   set interfaces wireguard wg01 peer to-wg01 address '192.0.2.2'
   set interfaces wireguard wg01 peer to-wg01 port '51820'
-  set interfaces wireguard wg01 peer to-wg01 public-key 'u41jO3OF73Gq1WARMMFG7tOfk7+r8o8AzPxJ1FZRhzk='
+  set interfaces wireguard wg01 peer to-wg01 public-key 'EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw='
   set interfaces wireguard wg01 port '51820'
 
   set protocols static route 192.168.1.0/24 interface wg01
@@ -262,11 +264,16 @@ With WireGuard, a Road Warrior VPN config is similar to a site-to-site
 VPN. It just lacks the ``address`` and ``port`` statements.
 
 In the following example, the IPs for the remote clients are defined in
-the peers. This allows the peers to interact with one another.
+the peers. This allows the peers to interact with one another. In
+comparison to the site-to-site example the ``persistent-keepalive``
+flag is set to 15 seconds to assure the connection is kept alive.
+This is mainly relevant if one of the peers is behind NAT and can't
+be connected to if the connection is lost. To be effective this
+value needs to be lower than the UDP timeout.
 
 .. code-block:: none
 
-    wireguard wg0 {
+    wireguard wg01 {
         address 10.172.24.1/24
         address 2001:db8:470:22::1/64
         description RoadWarrior
@@ -326,15 +333,15 @@ Operational Commands
 Status
 ======
 
-.. opcmd:: show interfaces wireguard wg0 summary
+.. opcmd:: show interfaces wireguard wg01 summary
 
   Show info about the Wireguard service.
   It also shows the latest handshake.
 
   .. code-block:: none
 
-    vyos@vyos:~$ show interfaces wireguard wg0 summary
-    interface: wg0
+    vyos@vyos:~$ show interfaces wireguard wg01 summary
+    interface: wg01
       public key:
       private key: (hidden)
       listening port: 51820
@@ -354,7 +361,7 @@ Status
     Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
     Interface        IP Address                        S/L  Description
     ---------        ----------                        ---  -----------
-    wg0              10.0.0.1/24                       u/u
+    wg01             10.0.0.1/24                       u/u
 
 
 .. opcmd:: show interfaces wireguard <interface>
@@ -364,7 +371,7 @@ Status
   .. code-block:: none
 
     vyos@vyos:~$ show interfaces wireguard wg01
-    interface: wg0
+    interface: wg01
       address: 10.0.0.1/24
       public key: h1HkYlSuHdJN6Qv4Hz4bBzjGg5WUty+U1L7DJsZy1iE=
       private key: (hidden)
