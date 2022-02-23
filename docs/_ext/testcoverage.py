@@ -337,7 +337,8 @@ def get_working_commands():
     }
     for kind in  config_tree_new:
         for e in config_tree_new[kind]:
-            result[kind].extend(create_commands(config_tree_new[kind][e]))
+            if config_tree_new[kind][e]['name']:
+                result[kind].extend(create_commands(config_tree_new[kind][e]))
     
     for cmd in result['cfgcmd']:
         cmd['cmd'] = " ".join(cmd['name'])
