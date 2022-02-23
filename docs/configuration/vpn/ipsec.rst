@@ -162,7 +162,20 @@ VyOS ESP group has the next options:
  * ``encryption`` encryption algorithm (default 128 bit AES-CBC);
 
  * ``hash`` hash algorithm (default sha1).
+ 
+***********************************************
+Options (Global IPsec settings) Attributes
+*********************************************** 
+* ``options`` IPsec settings:
 
+ * ``disable-route-autoinstall`` Do not automatically install routes to remote networks;
+ 
+ * ``flexvpn`` Allow FlexVPN vendor ID payload (IKEv2 only);
+ 
+ * ``interface`` Interface Name to use;
+ 
+ * ``virtual-ip`` Allow install virtual-ip addresses.
+ 
 *************************
 IPsec policy matching GRE
 *************************
