@@ -131,6 +131,12 @@ VyOS ESP group has the next options:
  
  * ``enable`` enable IPComp compression;
  
+* ``life-bytes`` ESP life in bytes <1024-26843545600000>. 
+  Number of bytes transmitted over an IPsec SA before it expires;
+  
+* ``life-packets`` ESP life in packets <1000-26843545600000>. 
+  Number of packets transmitted over an IPsec SA before it expires;  
+  
 * ``lifetime`` ESP lifetime in seconds <30-86400> (default 3600). 
   How long a particular instance of a connection (a set of 
   encryption/authentication keys for user packets) should last, 
@@ -156,7 +162,20 @@ VyOS ESP group has the next options:
  * ``encryption`` encryption algorithm (default 128 bit AES-CBC);
 
  * ``hash`` hash algorithm (default sha1).
+ 
+***********************************************
+Options (Global IPsec settings) Attributes
+*********************************************** 
+* ``options`` IPsec settings:
 
+ * ``disable-route-autoinstall`` Do not automatically install routes to remote networks;
+ 
+ * ``flexvpn`` Allow FlexVPN vendor ID payload (IKEv2 only). Send the Cisco FlexVPN vendor ID payload (IKEv2 only), which is required in order to make Cisco brand devices allow negotiating a local traffic selector (from strongSwan's point of view) that is not the assigned virtual IP address if such an address is requested by strongSwan. Sending the Cisco FlexVPN vendor ID prevents the peer from narrowing the initiator's local traffic selector and allows it to e.g. negotiate a TS of 0.0.0.0/0 == 0.0.0.0/0 instead. This has been tested with a "tunnel mode ipsec ipv4" Cisco template but should also work for GRE encapsulation;
+ 
+ * ``interface`` Interface Name to use. The name of the interface on which virtual IP addresses should be installed. If not specified the addresses will be installed on the outbound interface;
+ 
+ * ``virtual-ip`` Allow install virtual-ip addresses. Comma separated list of virtual IPs to request in IKEv2 configuration payloads or IKEv1 Mode Config. The wildcard addresses 0.0.0.0 and :: request an arbitrary address, specific addresses may be defined. The responder may return a different address, though, or none at all.
+ 
 *************************
 IPsec policy matching GRE
 *************************
