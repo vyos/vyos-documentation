@@ -6,7 +6,7 @@ Our old WiKi can still be accessed from the
 
 # Build
 
-[![Documentation Status](https://readthedocs.org/projects/vyos/badge/?version=latest)](https://docs.vyos.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/vyos/badge/?version=latest)](https://docs.vyos.io/en/latest/?badge=crux)
 
 # Versions
 
