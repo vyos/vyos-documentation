@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2022-02-21
+==========
+
+* :vytask:`T4120` (feature): [VXLAN] add ability to set multiple unicast-remotes
+
+
 2022-02-20
 ==========
 
