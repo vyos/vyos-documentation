@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2022-02-26
+==========
+
+* :vytask:`T4272` (feature): lldp: migrate Python script to use get_config_dict()
+
+
+2022-02-25
+==========
+
+* :vytask:`T4269` (feature): node.def generator should automatically add default values
+
+
+2022-02-24
+==========
+
+* :vytask:`T4267` (bug): Error - Missing required "ip key" parameter
+
+
+2022-02-23
+==========
+
+* :vytask:`T4194` (bug): prefix-list no check for duplicate entries
+* :vytask:`T4264` (bug): vxlan: interface is destroyed and rebuild on description change
+* :vytask:`T4263` (bug): vyos.util.leaf_node_changed() dos not honor valueLess nodes
+
+
 2022-02-21
 ==========
 
@@ -64,12 +90,6 @@
 ==========
 
 * :vytask:`T3872` (feature): Add configurable telegraf monitoring service
-
-
-2022-02-10
-==========
-
-* :vytask:`T4235` (default): Add config tree diff algorithm
 
 
 2022-02-08
@@ -1813,7 +1833,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.178 / 5.10.99
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.181 / 5.10.102
 
 
 2021-02-15
