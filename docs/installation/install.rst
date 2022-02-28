@@ -44,7 +44,7 @@ any other type of storage.
 Hardware requirements
 =====================
 
-The minimum system requirements are 512 MiB RAM and 2 GiB storage.
+The minimum system requirements are 1024 MiB RAM and 2 GiB storage.
 Depending on your use, you might need additional RAM and CPU resources e.g.
 when having multiple BGP full tables in your system.
 
