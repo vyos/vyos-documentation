@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2022-02-24
+==========
+
+* :vytask:`T4267` (bug): Error - Missing required "ip key" parameter
+
+
+2022-02-23
+==========
+
+* :vytask:`T4264` (bug): vxlan: interface is destroyed and rebuild on description change
+* :vytask:`T4263` (bug): vyos.util.leaf_node_changed() dos not honor valueLess nodes
+
+
 2022-02-21
 ==========
 
@@ -1541,7 +1554,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.178 / 5.10.99
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.181 / 5.10.102
 
 
 2021-02-14
