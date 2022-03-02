@@ -8,7 +8,8 @@ If you want your router to forward DHCP requests to an external DHCP server
 you can configure the system to act as a DHCP relay agent. The DHCP relay
 agent works with IPv4 and IPv6 addresses.
 
-All interfaces used for the DHCP relay must be configured. This includes the uplink to the DHCP server.
+All interfaces used for the DHCP relay must be configured. This includes the
+uplink to the DHCP server.
 
 **********
 IPv4 relay
@@ -19,7 +20,8 @@ Configuration
 
 .. cfgcmd:: set service dhcp-relay interface <interface>
 
-   Interfaces that participate in the DHCP relay process, including the uplink to the DHCP server.
+   Interfaces that participate in the DHCP relay process, including the uplink
+   to the DHCP server.
 
 .. cfgcmd:: set service dhcp-relay server <server>
 
