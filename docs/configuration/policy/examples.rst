@@ -110,7 +110,7 @@ Add default routes for routing ``table 10`` and ``table 11``
 
 .. code-block:: none
 
-  set protocols static table 10 route 0.0.0.0/0 next-hop 192.0.2.1
+  set protocols static table 10 route 0.0.0.0/0 next-hop 192.0.1.1
   set protocols static table 11 route 0.0.0.0/0 next-hop 192.0.2.2
 
 Add policy route matching VLAN source addresses
