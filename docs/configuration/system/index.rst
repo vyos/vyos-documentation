@@ -7,6 +7,7 @@ System
    :maxdepth: 1
    :includehidden:
 
+   conntrack
    console
    flow-accounting
    host-name
