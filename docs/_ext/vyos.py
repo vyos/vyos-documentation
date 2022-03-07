@@ -77,6 +77,7 @@ def setup(app):
     app.add_directive('cfgcmd', CfgCmdDirective)
     app.add_directive('opcmd', OpCmdDirective)
     app.add_directive('cmdinclude', CfgInclude)
+    app.add_directive('cmdincludemd', CmdInclude)
     app.connect('doctree-resolved', process_cmd_nodes)
     app.connect('doctree-read', handle_document_meta_data)
 
@@ -317,6 +318,47 @@ class CfgInclude(SphinxDirective):
                     line = re.sub('{{\s?var' + str(i) + '\s?}}',value,line)
             new_include_lines.append(line)
         self.state_machine.insert_input(new_include_lines, path)
+        return []
+
+class CmdInclude(SphinxDirective):
+    '''
+    2nd CMDInclude only for Markdown, just the migration process
+    '''
+    
+    has_content = False
+    required_arguments = 1
+    optional_arguments = 0
+    option_spec = {
+        'var0': str,
+        'var1': str,
+        'var2': str,
+        'var3': str,
+        'var4': str,
+        'var5': str,
+        'var6': str,
+        'var7': str,
+        'var8': str,
+        'var9': str
+    }
+    
+    def run(self):
+        include_file = self.env.relfn2path(self.arguments[0])
+
+        f = open(include_file[1], "r")
+        file_content = f.readlines()
+        f.close()
+        
+        new_include_lines = []
+        for line in file_content:
+            for i in range(10):
+                value = self.options.get(f'var{i}','')
+                if value == '':
+                    line = re.sub('\s?{{\s?var' + str(i) + '\s?}}',value,line)
+                else:
+                    line = re.sub('{{\s?var' + str(i) + '\s?}}',value,line)
+            new_include_lines.append(line)
+        
+        self.state._renderer.nested_render_text(''.join(new_include_lines), self.lineno)
         return []
 
 
