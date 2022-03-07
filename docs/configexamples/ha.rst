@@ -1,5 +1,7 @@
 :lastproofread: 2021-06-28
 
+.. _example-high-availability:
+
 #############################
 High Availability Walkthrough
 #############################
