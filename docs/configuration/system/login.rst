@@ -84,6 +84,10 @@ The third part is simply an identifier, and is for your own reference.
 
 .. cfgcmd:: loadkey <username> <location>
 
+   **Deprecation notice:** ``loadkey`` has been deprecated in favour of
+   :opcmd:`generate public-key-commands` and will be removed in a future
+   version. See :ref:`ssh`.
+
    SSH keys can not only be specified on the command-line but also loaded for
    a given user with `<username>` from a file pointed to by `<location>.` Keys
    can be either loaded from local filesystem or any given remote location
@@ -122,7 +126,7 @@ Dial-In User Service)` servers as backend for user authentication.
 Configuration
 -------------
 
-.. cfgcmd:: set system login radius server <address> key <secret>
+.. cfgcmd:: set system login radius server <address> secret <secret>
 
    Specify the `<address>` of the RADIUS server user with the pre-shared-secret
    given in `<secret>`. Multiple servers can be specified.

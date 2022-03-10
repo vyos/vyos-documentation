@@ -127,8 +127,8 @@ Operation
 
 .. opcmd:: generate ssh client-key /path/to/private_key
 
-  Re-generated a known pub/private keyfile which can e.g. used to connect to
-  other services (RPKI cache).
+  Re-generated a known pub/private keyfile which can be used to connect to
+  other services (e.g. RPKI cache).
 
   Example:
 
@@ -153,5 +153,36 @@ Operation
     |        =.. o=.oo|
     +----[SHA256]-----+
 
-  Two new files ``/config/auth/id_rsa_rpki`` and ``/config/auth/id_rsa_rpki.pub``
+  Two new files ``/config/auth/id_rsa_rpki`` and
+  ``/config/auth/id_rsa_rpki.pub``
   will be created.
+
+.. opcmd:: generate public-key-command name <username> path <location>
+
+   Generate the configuration mode commands to add a public key for
+   :ref:`ssh_key_based_authentication`.
+   ``<location>`` can be a local path or a URL pointing at a remote file.
+
+   Supported remote protocols are FTP, FTPS, HTTP, HTTPS, SCP/SFTP and TFTP.
+
+  Example:
+
+  .. code-block:: none
+
+    alyssa@vyos:~$ generate public-key-command name alyssa path sftp://example.net/home/alyssa/.ssh/id_rsa.pub
+    # To add this key as an embedded key, run the following commands:
+    configure
+    set system login user alyssa authentication public-keys alyssa@example.net key AAA...
+    set system login user alyssa authentication public-keys alyssa@example.net type ssh-rsa
+    commit
+    save
+    exit
+
+    ben@vyos:~$ generate public-key-command user ben path ~/.ssh/id_rsa.pub
+    # To add this key as an embedded key, run the following commands:
+    configure
+    set system login user ben authentication public-keys ben@vyos key AAA...
+    set system login user ben authentication public-keys ben@vyos type ssh-dss
+    commit
+    save
+    exit
