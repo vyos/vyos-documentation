@@ -201,11 +201,40 @@ Route Map
 
    Nexthop IP address.
 
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set ip-next-hop
+   unchanged
+
+   Set the next-hop as unchanged. Pass through the route-map without
+   changing its value
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set ip-next-hop
+   peer-address
+
+   Set the BGP nexthop address to the address of the peer. For an incoming
+   route-map this means the ip address of our peer is used. For an 
+   outgoing route-map this means the ip address of our self is used to 
+   establish the peering with our neighbor.
+
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set ipv6-next-hop
    <global|local> <h:h:h:h:h:h:h:h>
 
    Nexthop IPv6 address.
 
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set ipv6-next-hop
+   peer-address
+
+   Set the BGP nexthop address to the address of the peer. For an incoming
+   route-map this means the ip address of our peer is used. For an 
+   outgoing route-map this means the ip address of our self is used to 
+   establish the peering with our neighbor.
+   
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set ipv6-next-hop
+   prefer-global
+   
+   For Incoming and Import Route-maps if we receive a v6 global and v6 LL
+   address for the route, then prefer to use the global address as the
+   nexthop.
+   
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set large-community
    <text>
 
