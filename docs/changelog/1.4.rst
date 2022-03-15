@@ -8,6 +8,25 @@
    _ext/releasenotes.py
 
 
+2022-03-12
+==========
+
+* :vytask:`T4296` (bug): Interface config injected by Cloud-Init may interfere with VyOS native
+* :vytask:`T4265` (feature): Add op-mode for bgp flowspec state and routes
+
+
+2022-03-11
+==========
+
+* :vytask:`T4297` (bug): Interface configuration saving fails for ice/iavf based interfaces because they can't change speed/duplex settings
+
+
+2022-03-09
+==========
+
+* :vytask:`T3981` (feature): VRF support for flow-accounting
+
+
 2022-03-05
 ==========
 
@@ -1859,7 +1878,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.182 / 5.10.103
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.184 / 5.10.105
 
 
 2021-02-15
