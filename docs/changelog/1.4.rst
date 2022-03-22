@@ -8,6 +8,31 @@
    _ext/releasenotes.py
 
 
+2022-03-20
+==========
+
+* :vytask:`T4298` (default): vyos-vm-images: fix ansible group name and remove obsolete empty command
+
+
+2022-03-18
+==========
+
+* :vytask:`T4286` (bug): Fix for firewall ipv6 name address validator
+
+
+2022-03-15
+==========
+
+* :vytask:`T4302` (feature): FRRouting upgrade to release 8.2.2
+* :vytask:`T4293` (default): Add "set ip-next-hop unchanged" in route-map
+
+
+2022-03-14
+==========
+
+* :vytask:`T4275` (default): Incorrect val_help for local/remote prefix in ipsec vpn
+
+
 2022-03-12
 ==========
 
@@ -1264,7 +1289,6 @@
 ==========
 
 * :vytask:`T3647` (feature): Bullseye: gcc defaults to passing --as-needed to linker
-* :vytask:`T3644` (default): Replace GCC with a simpler preprocessor for including nested XML snippets in XML documents
 
 
 2021-06-22
@@ -1878,7 +1902,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.184 / 5.10.105
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.185 / 5.10.106
 
 
 2021-02-15
