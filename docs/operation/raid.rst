@@ -154,7 +154,7 @@ To replace a bad disk within a RAID 1 set, perform the following steps:
 1 - Remove the failed disk from the RAID 1 set by issuing the following 
 command:
 
-.. opcmd:: delete raid RAID‐1‐device member disk‐partition
+.. opcmd:: delete raid <RAID‐1‐device> member <disk‐partition>
 
    where RAID-1-device is the name of the RAID 1 device (for example, md0) and 
    disk-partition is the name of the failed disk partition (for example, sdb2).
@@ -166,7 +166,7 @@ hot-swappable, then you must shut down the system before removing the disk.
 
 4 - Format the new disk for RAID 1 by issuing the following command:
 
-.. opcmd:: format <disk‐device1> like <disk‐device2>
+.. opcmd:: format disk <disk‐device1> like <disk‐device2>
 
    where disk-device1 is the replacement disk (for example, sdb) and 
    disk-device2 is the existing healthy disk (for example, sda).
@@ -191,7 +191,7 @@ mirror synchronization, check and display information.
    disk partition to a RAID 1 set initiates mirror synchronization, where all 
    data on the existing member partition is copied to the new partition.
 
-.. opcmd:: format <disk‐device1> like <disk‐device2>
+.. opcmd:: format disk <disk‐device1> like <disk‐device2>
 
    This command is typically used to prepare a disk to be added to a preexisting
    RAID 1 set (of which disk-device2 is already a member).

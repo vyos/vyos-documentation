@@ -41,6 +41,7 @@ Deploy VyOS from CLI with rolling release ISO
 .. code-block:: none
 
   qm create 200 --name vyos --memory 2048 --net0 virtio,bridge=vmbr0 --ide2 media=cdrom,file=local:iso/live-image-amd64.hybrid.iso --virtio0 local-lvm:15
+
 3. Start the VM using the command ``qm start 200`` or using the start button located in the proxmox GUI.
 4. Using the proxmox webGUI, open the virtual console for your newly created vm. Login username/password is ``vyos/vyos``.
 5. Once booted into the live system, type ``install image`` into the command line and follow the prompts to install VyOS to the virtual drive. 
