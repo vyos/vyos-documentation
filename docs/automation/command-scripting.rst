@@ -61,15 +61,16 @@ a remote VyOS system.
 
 Will return:
 
-```
-Welcome to VyOS
-Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
-Interface        IP Address                        S/L  Description
----------        ----------                        ---  -----------
-eth0             192.0.2.1/24                      u/u
-lo               127.0.0.1/8                       u/u
-                 ::1/128
-```
+.. code-block:: none
+
+  Welcome to VyOS
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  Interface        IP Address                        S/L  Description
+  ---------        ----------                        ---  -----------
+  eth0             192.0.2.1/24                      u/u
+  lo               127.0.0.1/8                       u/u
+                  ::1/128
+
 
 Other script languages
 ----------------------

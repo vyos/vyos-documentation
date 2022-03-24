@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2022-03-12
+==========
+
+* :vytask:`T4296` (bug): Interface config injected by Cloud-Init may interfere with VyOS native
+* :vytask:`T4002` (default): firewall group network-group long names restriction incorrect behavior
+
+
+2022-03-11
+==========
+
+* :vytask:`T4297` (bug): Interface configuration saving fails for ice/iavf based interfaces because they can't change speed/duplex settings
+
+
 2022-03-05
 ==========
 
@@ -1567,7 +1580,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.182 / 5.10.103
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.185 / 5.10.106
 
 
 2021-02-14
