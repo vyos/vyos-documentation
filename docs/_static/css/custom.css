@@ -165,15 +165,15 @@ a.cmdlink span:hover{
 
 .rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td.coverage-ok,
 .rst-content table.docutils td.coverage-ok {
-  background-color: green;
-  color: black;
+  color: green;
+  text-align: center;
 }
-
 
 .rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td.coverage-fail,
 .rst-content table.docutils td.coverage-fail {
-  background-color: red;
-  color: black;
+  color: red;
+  text-align: center;
+
 }
 
 @media screen and (max-width: 768px) {
