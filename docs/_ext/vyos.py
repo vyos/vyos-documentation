@@ -514,10 +514,10 @@ def build_row(app, fromdocname, rowdata):
                     entry += nodes.paragraph(text=item)
         elif isinstance(cell, bool):
             if cell:
-                entry += nodes.paragraph(text="")
+                entry += nodes.paragraph(text="✔")
                 entry['classes'] = ['coverage-ok']
             else:
-                entry += nodes.paragraph(text="")
+                entry += nodes.paragraph(text="✕")
                 entry['classes'] = ['coverage-fail']
         else:
             entry += nodes.paragraph(text=cell)
@@ -527,8 +527,7 @@ def build_row(app, fromdocname, rowdata):
 
 def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
     coverage_list = {}
-    int_docs = 0
-    int_xml = 0
+    strip_true_list = []
     for cmd in doccmd:
         coverage_item = {
             'doccmd': None,
@@ -542,7 +541,6 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
         coverage_item['doccmd'] = cmd['cmd']
         coverage_item['doccmd_item'] = cmd
         coverage_item['indocs'] = True
-        int_docs += 1
 
         coverage_list[strip_cmd(cmd['cmd'])] = dict(coverage_item)
 
@@ -566,15 +564,16 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
             coverage_item['xmlcmd_item'] = cmd
             coverage_item['inxml'] = True
             coverage_item['xmlfilename'] = cmd['filename']
-            int_xml += 1
             coverage_list[strip] = dict(coverage_item)
         else:
             coverage_list[strip]['xmlcmd'] = cmd['cmd']
             coverage_list[strip]['xmlcmd_item'] = cmd
             coverage_list[strip]['inxml'] = True
             coverage_list[strip]['xmlfilename'] = cmd['filename']
-            int_xml += 1
+            strip_true_list.append(strip)
+    
 
+    strip_true_list = list(set(strip_true_list))
 
     
 
@@ -582,8 +581,8 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
     tgroup = nodes.tgroup(cols=3)
     table += tgroup
 
-    header = (f'{int_docs}/{len(coverage_list)} in Docs', f'{int_xml}/{len(coverage_list)} in XML', 'Command')
-    colwidths = (1, 1, 8)
+    header = (f'Status {len(strip_true_list)}/{len(coverage_list)}', 'Documentaion', 'XML')
+    colwidths = (5, 50 , 50)
     table = nodes.table()
     tgroup = nodes.tgroup(cols=len(header))
     table += tgroup
@@ -595,28 +594,34 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
     tbody = nodes.tbody()
     tgroup += tbody
     for entry in sorted(coverage_list):
-        body_text_list = []
+        doc_cmd_text = []
+        doc_xml_text = []
         if coverage_list[entry]['indocs']:
-            body_text_list.append(coverage_list[entry]['doccmd_item'])
+            doc_cmd_text.append(coverage_list[entry]['doccmd_item'])
         else:
-            body_text_list.append('Not documented yet')
+            doc_cmd_text.append('not yet documented')
 
         if coverage_list[entry]['inxml']:
-            body_text_list.append("------------------")
-            body_text_list.append(str(coverage_list[entry]['xmlfilename']) + ":")
-            body_text_list.append(coverage_list[entry]['xmlcmd'])
+            doc_xml_text.append(str(coverage_list[entry]['xmlfilename']) + ":")
+            doc_xml_text.append(coverage_list[entry]['xmlcmd'])
         else:
-            body_text_list.append('Nothing found in XML Definitions')
+            doc_xml_text.append('Nothing found in XML Definitions')
 
-            
+        if not coverage_list[entry]['indocs'] or not coverage_list[entry]['inxml']:
+            status = False
+        else:
+            status = True
+        
         tbody += build_row(app, fromdocname, 
             (
-                coverage_list[entry]['indocs'],
-                coverage_list[entry]['inxml'],
-                body_text_list
+                status,
+                doc_cmd_text,
+                doc_xml_text
+
             )
         )
 
+    table['ids'] = [f'table-{cli_type}']
     return table
 
 def process_cmd_node(app, cmd, fromdocname, cli_type):

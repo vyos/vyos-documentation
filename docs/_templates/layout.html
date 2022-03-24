@@ -2,6 +2,9 @@
 {%- set current_version = "1.4.x sagitta" %}
 {% block extrahead %}
     <link href="{{ pathto("_static/css/custom.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/datatables.css", True) }}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" charset="utf8" src="{{ pathto("_static/js/datatables.js", True) }}"></script>
+    <script type="text/javascript" charset="utf8" src="{{ pathto("_static/js/tables.js", True) }}"></script>
 {% endblock %}
 {% block extrabody %}
     <p class="devwarning">Warning: This is the dev version. The latest stable version is
