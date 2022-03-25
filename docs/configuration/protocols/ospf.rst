@@ -38,10 +38,10 @@ starts when the first ospf enabled interface is configured.
    specified in decimal notation in the range from 0 to 4294967295. Or it
    can be specified in dotted decimal notation similar to ip address.
 
-   Prefix length in interface must be equal or bigger (i.e. smaller network) than
-   prefix length in network statement. For example statement above doesn't enable
-   ospf on interface with address 192.168.1.1/23, but it does on interface with
-   address 192.168.1.129/25.
+   Prefix length in interface must be equal or bigger (i.e. smaller network) 
+   than prefix length in network statement. For example statement above doesn't
+   enable ospf on interface with address 192.168.1.1/23, but it does on 
+   interface with address 192.168.1.129/25.
 
    In some cases it may be more convenient to enable OSPF on a per interface/subnet
    basis :cfgcmd:`set protocols ospf interface <interface> area <x.x.x.x | x>`
