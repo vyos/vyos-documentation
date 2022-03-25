@@ -162,6 +162,12 @@ Optional
    interfaces where router adjacencies are expected need to be configured
    with the :cfgcmd:`passive-interface-exclude` command.
 
+.. cfgcmd:: set protocols ospf maximum-paths <1-64>
+
+   Use this command to control the maximum number of equal cost paths to reach
+   a specific destination. The upper limit may differ if you change the value
+   of MULTIPATH_NUM during compilation. The default is MULTIPATH_NUM (64).
+
 .. cfgcmd:: set protocols ospf refresh timers <seconds>
 
    The router automatically updates link-state information with its neighbors.
@@ -269,6 +275,18 @@ Area Configuration
 
    This command instead of summarizing intra area paths filter them - i.e.
    intra area paths from this range are not advertised into other areas.
+   This command makes sense in ABR only.
+
+.. cfgcmd:: set protocols ospf area <number> export-list <acl_number> 
+
+   Filter Type-3 summary-LSAs announced to other areas originated from 
+   intra- area paths from specified area.
+   This command makes sense in ABR only.
+
+.. cfgcmd:: set protocols ospf area <number> import-list <acl_number> 
+
+   Same as export-list, but it applies to paths announced into specified 
+   area as Type-3 summary-LSAs.
    This command makes sense in ABR only.
 
 .. cfgcmd:: set protocols ospf area <number> range <A.B.C.D/M> substitute
