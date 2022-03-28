@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2022-03-26
+==========
+
+* :vytask:`T4321` (default): Allow BGP neighbors between different VIFs on the same VyOS
+
+
+2022-03-25
+==========
+
+* :vytask:`T4319` (bug): The command "set system ipv6 disable" doesn't work as expected.
+
+
+2022-03-24
+==========
+
+* :vytask:`T4301` (bug): The "arp-monitor" option in bonding interface settings does not work
+* :vytask:`T4294` (bug): Adding a new openvpn-option does not restart the OpenVPN process
+* :vytask:`T4290` (bug): BGP source-interface fails to commit
+* :vytask:`T4230` (bug): OpenVPN server configuration deleted after reboot when using a VRRP virtual-address
+
+
+2022-03-23
+==========
+
+* :vytask:`T4314` (bug): Latest 1.4 Rolling release config migration error
+
+
+2022-03-21
+==========
+
+* :vytask:`T4304` (feature): [OSPF]import/export filter inter-area prefix
+
+
 2022-03-20
 ==========
 
@@ -345,7 +378,7 @@
 2022-01-10
 ==========
 
-* :vytask:`T3299` (bug): Webproxy is prohibited from listening on all IP addresses
+* :vytask:`T3299` (bug): Allow the web proxy service to listen on all IP addresses
 * :vytask:`T3115` (feature): Add support for firewall on L3 VIF bridge interface
 
 
@@ -353,7 +386,7 @@
 ==========
 
 * :vytask:`T4142` (bug): Input ifbX interfaces not displayed in op-mode
-* :vytask:`T3914` (bug): vrrp rfc3768-compatibility doesn't work with unicast peers
+* :vytask:`T3914` (bug): VRRP rfc3768-compatibility doesn't work with unicast peers
 
 
 2022-01-08
