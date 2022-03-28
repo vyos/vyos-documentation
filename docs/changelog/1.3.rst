@@ -8,6 +8,26 @@
    _ext/releasenotes.py
 
 
+2022-03-25
+==========
+
+* :vytask:`T4319` (bug): The command "set system ipv6 disable" doesn't work as expected.
+
+
+2022-03-24
+==========
+
+* :vytask:`T4294` (bug): Adding a new openvpn-option does not restart the OpenVPN process
+* :vytask:`T4230` (bug): OpenVPN server configuration deleted after reboot when using a VRRP virtual-address
+
+
+2022-03-21
+==========
+
+* :vytask:`T4311` (bug): CVE-2021-4034: local privilege escalation in PolKit
+* :vytask:`T4310` (bug): CVE-2022-0778: infinite loop in OpenSSL certificate parsing
+
+
 2022-03-12
 ==========
 
@@ -106,7 +126,7 @@
 2022-02-10
 ==========
 
-* :vytask:`T4165` (bug): Delete custom conntrack timeout firewall bug
+* :vytask:`T4165` (bug): Custom conntrack rules cannot be deleted
 
 
 2022-02-08
@@ -186,7 +206,7 @@
 2022-01-12
 ==========
 
-* :vytask:`T4168` (bug): Does not possible to reset VPN properly when DMVPN configured
+* :vytask:`T4168` (bug): IPsec VPN is impossible to restart when DMVPN is configured
 * :vytask:`T4167` (bug): DMVPN apply wrong param on the first configuration
 * :vytask:`T4152` (bug): NHRP shortcut-target holding-time does not work
 
@@ -194,7 +214,7 @@
 2022-01-10
 ==========
 
-* :vytask:`T3299` (bug): Webproxy is prohibited from listening on all IP addresses
+* :vytask:`T3299` (bug): Allow the web proxy service to listen on all IP addresses
 * :vytask:`T3115` (feature): Add support for firewall on L3 VIF bridge interface
 
 
@@ -203,7 +223,7 @@
 
 * :vytask:`T3822` (bug): OpenVPN processes do not have permission to read key files generated with `run generate openvpn key`
 * :vytask:`T4142` (bug): Input ifbX interfaces not displayed in op-mode
-* :vytask:`T3914` (bug): vrrp rfc3768-compatibility doesn't work with unicast peers
+* :vytask:`T3914` (bug): VRRP rfc3768-compatibility doesn't work with unicast peers
 
 
 2022-01-07
