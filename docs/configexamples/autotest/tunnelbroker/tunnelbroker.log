@@ -1,578 +1,584 @@
-2021-12-30 11:02:15,089 p=88031 u=rob n=ansible | PLAY [prepare node and Lab] ********************************************************************************************************************************
-2021-12-30 11:02:15,108 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : fail] ***************************************************************************************************************************
-2021-12-30 11:02:15,133 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:15,137 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:15,139 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:15,143 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:15,146 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : fail] ***************************************************************************************************************************
-2021-12-30 11:02:15,167 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:15,173 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:15,175 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:15,179 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:15,182 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : Login to EVE-NG and get Cookie] *************************************************************************************************
-2021-12-30 11:02:15,212 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:15,218 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:15,219 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:16,281 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:02:16,287 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : get template facts] *************************************************************************************************************
-2021-12-30 11:02:16,316 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:16,317 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:16,323 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,039 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:02:17,043 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : Register path status] ***********************************************************************************************************
-2021-12-30 11:02:17,069 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,072 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,078 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,578 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:02:17,583 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : create path] ********************************************************************************************************************
-2021-12-30 11:02:17,603 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,610 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,612 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,616 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,619 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : Download iso] *******************************************************************************************************************
-2021-12-30 11:02:17,635 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,642 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,643 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,647 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,651 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : create virtioa.qcow2 file] ******************************************************************************************************
-2021-12-30 11:02:17,666 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,672 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,674 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,678 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,680 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : Login to EVE-NG and get Cookie] *************************************************************************************************
-2021-12-30 11:02:17,694 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,700 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,702 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,706 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,709 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : create lab for node install] ****************************************************************************************************
-2021-12-30 11:02:17,722 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,728 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,730 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,734 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,737 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : open lab] ***********************************************************************************************************************
-2021-12-30 11:02:17,750 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,757 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,759 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,763 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,766 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : set_fact] ***********************************************************************************************************************
-2021-12-30 11:02:17,780 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,786 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,788 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,792 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,794 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : add node to lab] ****************************************************************************************************************
-2021-12-30 11:02:17,808 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,813 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,816 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,818 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,820 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : start node] *********************************************************************************************************************
-2021-12-30 11:02:17,833 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,839 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,841 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,845 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,847 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : get node infos] *****************************************************************************************************************
-2021-12-30 11:02:17,860 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,866 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,869 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,871 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,874 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : set_fact] ***********************************************************************************************************************
-2021-12-30 11:02:17,887 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,893 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,895 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,899 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,902 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : copy file] **********************************************************************************************************************
-2021-12-30 11:02:17,916 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,920 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,922 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,927 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,930 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : run expect script] **************************************************************************************************************
-2021-12-30 11:02:17,942 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,948 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,950 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,953 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,956 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : Login to EVE-NG and get Cookie (due timeout)] ***********************************************************************************
-2021-12-30 11:02:17,968 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:17,975 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:17,977 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:17,980 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:17,982 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : stop node] **********************************************************************************************************************
-2021-12-30 11:02:17,994 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:18,000 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:18,002 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:18,005 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:18,008 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : Pause to wait node is shutdown] *************************************************************************************************
-2021-12-30 11:02:18,017 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:18,019 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : delete iso] *********************************************************************************************************************
-2021-12-30 11:02:18,032 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:18,038 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:18,040 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:18,043 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:18,045 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : commit virtioa.qcow2] ***********************************************************************************************************
-2021-12-30 11:02:18,058 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:18,064 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:18,065 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:18,069 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:18,072 p=88031 u=rob n=ansible | TASK [eve-ng-create-node : delete lab for node install] ****************************************************************************************************
-2021-12-30 11:02:18,115 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:18,124 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:18,126 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:18,131 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:18,140 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Get env file content] **************************************************************************************************************
-2021-12-30 11:02:18,403 p=88031 u=rob n=ansible | ok: [vyos-oobm -> localhost]
-2021-12-30 11:02:18,403 p=88031 u=rob n=ansible | ok: [eveng -> localhost]
-2021-12-30 11:02:18,403 p=88031 u=rob n=ansible | ok: [client -> localhost]
-2021-12-30 11:02:18,405 p=88031 u=rob n=ansible | ok: [vyos-wan -> localhost]
-2021-12-30 11:02:18,408 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Load facts] ************************************************************************************************************************
-2021-12-30 11:02:18,432 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:02:18,433 p=88031 u=rob n=ansible | ok: [vyos-oobm]
-2021-12-30 11:02:19,340 p=88286 u=rob n=ansible | network_os is set to vyos
-2021-12-30 11:02:19,340 p=88287 u=rob n=ansible | network_os is set to vyos
-2021-12-30 11:02:19,347 p=88031 u=rob n=ansible | ok: [client]
-2021-12-30 11:02:19,348 p=88031 u=rob n=ansible | ok: [vyos-wan]
-2021-12-30 11:02:19,360 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : fail] ******************************************************************************************************************************
-2021-12-30 11:02:19,388 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:19,400 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:19,402 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:19,409 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:19,413 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] ****************************************************************************************************
-2021-12-30 11:02:19,440 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:19,441 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:19,447 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:20,241 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:02:20,250 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : get running lab list] **************************************************************************************************************
-2021-12-30 11:02:20,289 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:20,290 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:20,296 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:20,922 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:02:20,933 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : delete existing lab] ***************************************************************************************************************
-2021-12-30 11:02:20,969 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:20,972 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:20,978 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:21,631 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:02:21,643 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Ensure labtest is present] *********************************************************************************************************
-2021-12-30 11:02:21,677 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:21,678 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:21,684 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:22,205 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:02:22,216 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Create tunnelbroker Lab] ***********************************************************************************************************
-2021-12-30 11:02:22,252 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:22,253 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:22,258 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:23,384 p=88031 u=rob n=ansible | changed: [eveng]
-2021-12-30 11:02:23,402 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] ****************************************************************************************************
-2021-12-30 11:02:23,426 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:23,429 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:23,434 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:24,279 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:02:24,287 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : start vyos-oobm] *******************************************************************************************************************
-2021-12-30 11:02:24,325 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:02:24,328 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:24,333 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:02:25,493 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:02:25,502 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Wait for vyos-oobm] ****************************************************************************************************************
-2021-12-30 11:02:25,520 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:02:25,530 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:02:25,535 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:03:04,681 p=88031 u=rob n=ansible | ok: [vyos-oobm]
-2021-12-30 11:03:04,695 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] ****************************************************************************************************
-2021-12-30 11:03:04,734 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:03:04,735 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:03:04,742 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:03:05,464 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:03:05,471 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : get lab status] ********************************************************************************************************************
-2021-12-30 11:03:05,503 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:03:05,505 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:03:05,512 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:03:06,058 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:03:06,068 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : start all nodes] *******************************************************************************************************************
-2021-12-30 11:03:06,105 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:03:06,108 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:03:06,116 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:03:07,104 p=88031 u=rob n=ansible | ok: [eveng] => (item=4)
-2021-12-30 11:03:07,757 p=88031 u=rob n=ansible | ok: [eveng] => (item=1)
-2021-12-30 11:03:08,876 p=88031 u=rob n=ansible | ok: [eveng] => (item=2)
-2021-12-30 11:03:08,885 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Wait for vyos nodes] ***************************************************************************************************************
-2021-12-30 11:03:08,907 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:03:08,915 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:03:24,818 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Exception: Error reading SSH protocol banner
-2021-12-30 11:03:24,818 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Exception: Error reading SSH protocol banner
-2021-12-30 11:03:24,821 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Traceback (most recent call last):
-2021-12-30 11:03:24,821 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
-2021-12-30 11:03:24,821 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
-2021-12-30 11:03:24,821 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
-2021-12-30 11:03:24,821 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     buf = self.packetizer.readline(timeout)
-2021-12-30 11:03:24,821 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     buf = self.packetizer.readline(timeout)
-2021-12-30 11:03:24,821 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
-2021-12-30 11:03:24,821 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
-2021-12-30 11:03:24,821 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     buf += self._read_timeout(timeout)
-2021-12-30 11:03:24,821 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     buf += self._read_timeout(timeout)
-2021-12-30 11:03:24,821 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
-2021-12-30 11:03:24,821 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
-2021-12-30 11:03:24,821 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     raise socket.timeout()
-2021-12-30 11:03:24,821 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     raise socket.timeout()
-2021-12-30 11:03:24,822 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | socket.timeout
-2021-12-30 11:03:24,822 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | socket.timeout
-2021-12-30 11:03:24,822 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | 
-2021-12-30 11:03:24,822 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | 
-2021-12-30 11:03:24,822 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | During handling of the above exception, another exception occurred:
-2021-12-30 11:03:24,822 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | During handling of the above exception, another exception occurred:
-2021-12-30 11:03:24,822 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | 
-2021-12-30 11:03:24,822 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | 
-2021-12-30 11:03:24,822 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Traceback (most recent call last):
-2021-12-30 11:03:24,822 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
-2021-12-30 11:03:24,822 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
-2021-12-30 11:03:24,822 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
-2021-12-30 11:03:24,822 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     self._check_banner()
-2021-12-30 11:03:24,822 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     self._check_banner()
-2021-12-30 11:03:24,823 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
-2021-12-30 11:03:24,823 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
-2021-12-30 11:03:24,823 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     raise SSHException(
-2021-12-30 11:03:24,823 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     raise SSHException(
-2021-12-30 11:03:24,823 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2021-12-30 11:03:24,823 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2021-12-30 11:03:24,823 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | 
-2021-12-30 11:03:24,823 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | 
-2021-12-30 11:03:40,853 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Exception: Error reading SSH protocol banner
-2021-12-30 11:03:40,855 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Traceback (most recent call last):
-2021-12-30 11:03:40,855 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
-2021-12-30 11:03:40,855 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     buf = self.packetizer.readline(timeout)
-2021-12-30 11:03:40,855 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
-2021-12-30 11:03:40,856 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     buf += self._read_timeout(timeout)
-2021-12-30 11:03:40,856 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
-2021-12-30 11:03:40,856 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     raise socket.timeout()
-2021-12-30 11:03:40,856 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | socket.timeout
-2021-12-30 11:03:40,856 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Exception: Error reading SSH protocol banner
-2021-12-30 11:03:40,856 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | 
-2021-12-30 11:03:40,856 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | During handling of the above exception, another exception occurred:
-2021-12-30 11:03:40,856 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | 
-2021-12-30 11:03:40,857 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Traceback (most recent call last):
-2021-12-30 11:03:40,857 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
-2021-12-30 11:03:40,857 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
-2021-12-30 11:03:40,857 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
-2021-12-30 11:03:40,857 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     self._check_banner()
-2021-12-30 11:03:40,857 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     buf = self.packetizer.readline(timeout)
-2021-12-30 11:03:40,857 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
-2021-12-30 11:03:40,857 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
-2021-12-30 11:03:40,857 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     raise SSHException(
-2021-12-30 11:03:40,857 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     buf += self._read_timeout(timeout)
-2021-12-30 11:03:40,857 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2021-12-30 11:03:40,857 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
-2021-12-30 11:03:40,857 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | 
-2021-12-30 11:03:40,857 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     raise socket.timeout()
-2021-12-30 11:03:40,858 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | socket.timeout
-2021-12-30 11:03:40,858 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | 
-2021-12-30 11:03:40,858 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | During handling of the above exception, another exception occurred:
-2021-12-30 11:03:40,858 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | 
-2021-12-30 11:03:40,858 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
-2021-12-30 11:03:40,858 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
-2021-12-30 11:03:40,858 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     self._check_banner()
-2021-12-30 11:03:40,859 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
-2021-12-30 11:03:40,859 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     raise SSHException(
-2021-12-30 11:03:40,859 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2021-12-30 11:03:40,859 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | 
-2021-12-30 11:03:56,888 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Exception: Error reading SSH protocol banner
-2021-12-30 11:03:56,889 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
-2021-12-30 11:03:56,889 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
-2021-12-30 11:03:56,889 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     buf = self.packetizer.readline(timeout)
-2021-12-30 11:03:56,889 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
-2021-12-30 11:03:56,889 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     buf += self._read_timeout(timeout)
-2021-12-30 11:03:56,891 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
-2021-12-30 11:03:56,891 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     raise socket.timeout()
-2021-12-30 11:03:56,891 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | socket.timeout
-2021-12-30 11:03:56,891 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | 
-2021-12-30 11:03:56,891 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | During handling of the above exception, another exception occurred:
-2021-12-30 11:03:56,891 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | 
-2021-12-30 11:03:56,891 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
-2021-12-30 11:03:56,892 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
-2021-12-30 11:03:56,892 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     self._check_banner()
-2021-12-30 11:03:56,892 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
-2021-12-30 11:03:56,892 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] |     raise SSHException(
-2021-12-30 11:03:56,892 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2021-12-30 11:03:56,892 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | 
-2021-12-30 11:03:56,893 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Exception: Error reading SSH protocol banner
-2021-12-30 11:03:56,894 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Traceback (most recent call last):
-2021-12-30 11:03:56,894 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
-2021-12-30 11:03:56,894 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     buf = self.packetizer.readline(timeout)
-2021-12-30 11:03:56,894 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
-2021-12-30 11:03:56,895 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     buf += self._read_timeout(timeout)
-2021-12-30 11:03:56,895 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
-2021-12-30 11:03:56,895 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     raise socket.timeout()
-2021-12-30 11:03:56,895 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | socket.timeout
-2021-12-30 11:03:56,895 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | 
-2021-12-30 11:03:56,895 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | During handling of the above exception, another exception occurred:
-2021-12-30 11:03:56,895 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | 
-2021-12-30 11:03:56,896 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Traceback (most recent call last):
-2021-12-30 11:03:56,896 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
-2021-12-30 11:03:56,896 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     self._check_banner()
-2021-12-30 11:03:56,896 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
-2021-12-30 11:03:56,896 p=88556 u=rob n=p=88556 u=rob | paramiko [client] |     raise SSHException(
-2021-12-30 11:03:56,896 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2021-12-30 11:03:56,896 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | 
-2021-12-30 11:03:58,625 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
-2021-12-30 11:03:58,627 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Connected (version 2.0, client OpenSSH_8.4p1)
-2021-12-30 11:03:58,732 p=88556 u=rob n=p=88556 u=rob | paramiko [client] | Authentication (publickey) successful!
-2021-12-30 11:03:58,740 p=88555 u=rob n=p=88555 u=rob | paramiko [vyos-wan] | Authentication (publickey) successful!
-2021-12-30 11:03:59,655 p=88031 u=rob n=ansible | ok: [client]
-2021-12-30 11:03:59,655 p=88031 u=rob n=ansible | ok: [vyos-wan]
-2021-12-30 11:03:59,657 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : include tunnelbroker lab_config.yml] ***********************************************************************************************
-2021-12-30 11:03:59,672 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:03:59,678 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:03:59,690 p=88031 u=rob n=ansible | included: /Users/rob/git/_vyos/vyos-eveng/labs/tunnelbroker/lab_config.yml for vyos-wan, client
-2021-12-30 11:03:59,717 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : setup nodes] ***********************************************************************************************************************
-2021-12-30 11:04:01,503 p=88295 u=rob n=p=88295 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
-2021-12-30 11:04:01,513 p=88296 u=rob n=p=88296 u=rob | paramiko [vyos-wan] | Connected (version 2.0, client OpenSSH_8.4p1)
-2021-12-30 11:04:01,587 p=88295 u=rob n=p=88295 u=rob | paramiko [client] | Authentication (publickey) successful!
-2021-12-30 11:04:01,589 p=88296 u=rob n=p=88296 u=rob | paramiko [vyos-wan] | Authentication (publickey) successful!
-2021-12-30 11:04:05,583 p=88031 u=rob n=ansible | [WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar to how they appear if present in the running
-configuration on device including the indentation
+2022-03-28 16:16:20,119 p=60842 u=rob n=ansible | [WARNING]: While constructing a mapping from /Users/rob/git/_vyos/vyos-eveng/roles/eve-ng-lab-test/defaults/main.yml, line 4, column 1, found a duplicate dict
+key (upgrade_iso). Using last defined value only.
 
-2021-12-30 11:04:05,585 p=88031 u=rob n=ansible | changed: [client]
-2021-12-30 11:04:05,939 p=88031 u=rob n=ansible | changed: [vyos-wan]
-2021-12-30 11:04:05,949 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Register external IP in Tunnelbroker] **********************************************************************************************
-2021-12-30 11:04:05,968 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:04:07,608 p=88031 u=rob n=ansible | ok: [vyos-wan -> eveng]
-2021-12-30 11:04:07,621 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : get ipv4 address of vyos-wan (eth1)] ***********************************************************************************************
-2021-12-30 11:04:07,644 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:04:08,862 p=88031 u=rob n=ansible | ok: [vyos-wan]
-2021-12-30 11:04:08,867 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Set variables] *********************************************************************************************************************
-2021-12-30 11:04:08,881 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:04:09,702 p=88031 u=rob n=ansible | ok: [vyos-wan]
-2021-12-30 11:04:09,718 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : setup vyos-wan] ********************************************************************************************************************
-2021-12-30 11:04:09,736 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:04:18,705 p=88031 u=rob n=ansible | changed: [vyos-wan]
-2021-12-30 11:04:18,709 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] ****************************************************************************************************
-2021-12-30 11:04:18,736 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:04:18,737 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:04:18,741 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:04:19,463 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:04:19,472 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : stop nodes id] *********************************************************************************************************************
-2021-12-30 11:04:19,526 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait after stop] *******************************************************************************************************************
-2021-12-30 11:04:19,536 p=88729 u=rob n=ansible | Pausing for 5 seconds
-2021-12-30 11:04:19,537 p=88729 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2021-12-30 11:04:24,547 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:04:24,557 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : start nodes id] ********************************************************************************************************************
-2021-12-30 11:04:24,614 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait after start] ******************************************************************************************************************
-2021-12-30 11:04:24,624 p=88735 u=rob n=ansible | Pausing for 5 seconds
-2021-12-30 11:04:24,624 p=88735 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2021-12-30 11:04:29,634 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:04:29,646 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait, b/c the ping often failed without a short break] *****************************************************************************
-2021-12-30 11:04:29,664 p=88736 u=rob n=ansible | Pausing for 30 seconds
-2021-12-30 11:04:29,664 p=88736 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2021-12-30 11:04:59,672 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:04:59,686 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : do ping test] **********************************************************************************************************************
-2021-12-30 11:04:59,722 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:04:59,732 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:05:05,156 p=88031 u=rob n=ansible | ok: [client] => (item=2001:470:20::2)
-2021-12-30 11:05:05,522 p=88031 u=rob n=ansible | ok: [vyos-wan] => (item=tunnelbroker.net)
-2021-12-30 11:05:05,528 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : execute test commands] *************************************************************************************************************
-2021-12-30 11:05:05,553 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:05:05,554 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:05:05,557 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:05:05,563 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:05:05,565 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : register stdout commands] **********************************************************************************************************
-2021-12-30 11:05:05,584 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:05:05,585 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:05:09,874 p=88031 u=rob n=ansible | ok: [client] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'})
-2021-12-30 11:05:09,874 p=88031 u=rob n=ansible | ok: [vyos-wan] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'})
-2021-12-30 11:05:13,543 p=88031 u=rob n=ansible | ok: [vyos-wan] => (item={'name': 'ping_name', 'command': 'ping tunnelbroker.net count 4'})
-2021-12-30 11:05:13,548 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Set variables] *********************************************************************************************************************
-2021-12-30 11:05:13,573 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:05:13,573 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:05:14,442 p=88031 u=rob n=ansible | ok: [client]
-2021-12-30 11:05:14,444 p=88031 u=rob n=ansible | ok: [vyos-wan]
-2021-12-30 11:05:14,455 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Reboot vyos] ***********************************************************************************************************************
-2021-12-30 11:05:14,486 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:05:14,493 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:05:15,789 p=88031 u=rob n=ansible | ok: [vyos-wan]
-2021-12-30 11:05:15,794 p=88031 u=rob n=ansible | ok: [client]
-2021-12-30 11:05:15,797 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait while shutdown] ***************************************************************************************************************
-2021-12-30 11:05:15,807 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:05:15,810 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Wait for vyos nodes] ***************************************************************************************************************
-2021-12-30 11:05:15,825 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:05:15,830 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:05:17,376 p=88898 u=rob n=p=88898 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
-2021-12-30 11:05:17,387 p=88897 u=rob n=p=88897 u=rob | paramiko [vyos-wan] | Connected (version 2.0, client OpenSSH_8.4p1)
-2021-12-30 11:05:17,474 p=88898 u=rob n=p=88898 u=rob | paramiko [client] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
-2021-12-30 11:05:17,537 p=88897 u=rob n=p=88897 u=rob | paramiko [vyos-wan] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
-2021-12-30 11:07:16,047 p=88296 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+2022-03-28 16:16:20,119 p=60842 u=rob n=ansible | [WARNING]: While constructing a mapping from /Users/rob/git/_vyos/vyos-eveng/roles/eve-ng-lab-test/defaults/main.yml, line 4, column 1, found a duplicate dict
+key (upgrade_iso_version). Using last defined value only.
+
+2022-03-28 16:16:20,153 p=60842 u=rob n=ansible | PLAY [prepare node and Lab] ***********************************************************************************************************************************
+2022-03-28 16:16:20,172 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : fail] ******************************************************************************************************************************
+2022-03-28 16:16:20,192 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:20,205 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:20,206 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:20,208 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:20,210 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : fail] ******************************************************************************************************************************
+2022-03-28 16:16:20,224 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:20,232 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:20,233 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:20,237 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:20,240 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : Login to EVE-NG and get Cookie] ****************************************************************************************************
+2022-03-28 16:16:20,258 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:20,260 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:20,265 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:21,290 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:16:21,295 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : get template facts] ****************************************************************************************************************
+2022-03-28 16:16:21,322 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:21,325 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:21,329 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:21,880 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:16:21,883 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : Register path status] **************************************************************************************************************
+2022-03-28 16:16:21,906 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:21,908 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:21,913 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,309 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:16:22,313 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : create path] ***********************************************************************************************************************
+2022-03-28 16:16:22,332 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,339 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,340 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,344 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,348 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : Download iso] **********************************************************************************************************************
+2022-03-28 16:16:22,360 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,367 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,368 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,372 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,376 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : create virtioa.qcow2 file] *********************************************************************************************************
+2022-03-28 16:16:22,393 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,394 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,396 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,398 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,401 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : Login to EVE-NG and get Cookie] ****************************************************************************************************
+2022-03-28 16:16:22,413 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,418 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,420 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,423 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,425 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : create lab for node install] *******************************************************************************************************
+2022-03-28 16:16:22,437 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,443 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,445 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,449 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,451 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : open lab] **************************************************************************************************************************
+2022-03-28 16:16:22,462 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,467 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,469 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,473 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,476 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : set_fact] **************************************************************************************************************************
+2022-03-28 16:16:22,487 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,493 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,495 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,498 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,500 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : add node to lab] *******************************************************************************************************************
+2022-03-28 16:16:22,511 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,517 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,519 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,522 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,524 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : start node] ************************************************************************************************************************
+2022-03-28 16:16:22,535 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,540 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,542 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,546 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,548 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : get node infos] ********************************************************************************************************************
+2022-03-28 16:16:22,559 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,564 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,566 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,570 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,572 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : set_fact] **************************************************************************************************************************
+2022-03-28 16:16:22,584 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,589 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,591 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,594 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,596 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : copy file] *************************************************************************************************************************
+2022-03-28 16:16:22,608 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,614 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,616 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,619 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,621 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : run expect script] *****************************************************************************************************************
+2022-03-28 16:16:22,632 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,638 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,640 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,643 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,645 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : Login to EVE-NG and get Cookie (due timeout)] **************************************************************************************
+2022-03-28 16:16:22,657 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,662 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,664 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,667 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,669 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : stop node] *************************************************************************************************************************
+2022-03-28 16:16:22,681 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,686 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,689 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,691 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,694 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : Pause to wait node is shutdown] ****************************************************************************************************
+2022-03-28 16:16:22,703 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,705 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : delete iso] ************************************************************************************************************************
+2022-03-28 16:16:22,717 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,722 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,724 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,727 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,729 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : commit virtioa.qcow2] **************************************************************************************************************
+2022-03-28 16:16:22,740 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,747 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,749 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,752 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,754 p=60842 u=rob n=ansible | TASK [eve-ng-create-node : delete lab for node install] *******************************************************************************************************
+2022-03-28 16:16:22,764 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:22,770 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:22,772 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:22,776 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:22,782 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Get env file content] *****************************************************************************************************************
+2022-03-28 16:16:22,991 p=60842 u=rob n=ansible | ok: [vyos-wan -> localhost]
+2022-03-28 16:16:22,992 p=60842 u=rob n=ansible | ok: [vyos-oobm -> localhost]
+2022-03-28 16:16:22,992 p=60842 u=rob n=ansible | ok: [eveng -> localhost]
+2022-03-28 16:16:22,992 p=60842 u=rob n=ansible | ok: [client -> localhost]
+2022-03-28 16:16:22,994 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Load facts] ***************************************************************************************************************************
+2022-03-28 16:16:23,015 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:16:23,015 p=60842 u=rob n=ansible | ok: [vyos-oobm]
+2022-03-28 16:16:23,893 p=61070 u=rob n=ansible | network_os is set to vyos
+2022-03-28 16:16:23,893 p=61071 u=rob n=ansible | network_os is set to vyos
+2022-03-28 16:16:23,902 p=60842 u=rob n=ansible | ok: [client]
+2022-03-28 16:16:23,903 p=60842 u=rob n=ansible | ok: [vyos-wan]
+2022-03-28 16:16:23,908 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : fail] *********************************************************************************************************************************
+2022-03-28 16:16:23,929 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:23,938 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:23,939 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:23,946 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:23,949 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] *******************************************************************************************************
+2022-03-28 16:16:23,969 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:23,970 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:23,975 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:24,685 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:16:24,687 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : get running lab list] *****************************************************************************************************************
+2022-03-28 16:16:24,715 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:24,716 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:24,722 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:25,241 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:16:25,246 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : delete existing lab] ******************************************************************************************************************
+2022-03-28 16:16:25,273 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:25,275 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:25,281 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:25,799 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:16:25,807 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Ensure labtest is present] ************************************************************************************************************
+2022-03-28 16:16:25,833 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:25,835 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:25,841 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:26,246 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:16:26,252 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Create tunnelbroker Lab] **************************************************************************************************************
+2022-03-28 16:16:26,277 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:26,280 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:26,285 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:27,154 p=60842 u=rob n=ansible | changed: [eveng]
+2022-03-28 16:16:27,157 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] *******************************************************************************************************
+2022-03-28 16:16:27,183 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:27,184 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:27,189 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:27,888 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:16:27,893 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : start vyos-oobm] **********************************************************************************************************************
+2022-03-28 16:16:27,920 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:16:27,923 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:27,929 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:16:28,943 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:16:28,950 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Wait for vyos-oobm] *******************************************************************************************************************
+2022-03-28 16:16:28,967 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:16:28,976 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:16:28,982 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:17:18,054 p=60842 u=rob n=ansible | ok: [vyos-oobm]
+2022-03-28 16:17:18,061 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] *******************************************************************************************************
+2022-03-28 16:17:18,088 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:17:18,091 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:17:18,095 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:17:18,823 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:17:18,828 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : get lab status] ***********************************************************************************************************************
+2022-03-28 16:17:18,855 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:17:18,856 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:17:18,862 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:17:19,413 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:17:19,419 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : start all nodes] **********************************************************************************************************************
+2022-03-28 16:17:19,448 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:17:19,451 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:17:19,456 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:17:20,418 p=60842 u=rob n=ansible | ok: [eveng] => (item=4)
+2022-03-28 16:17:21,057 p=60842 u=rob n=ansible | ok: [eveng] => (item=1)
+2022-03-28 16:17:22,044 p=60842 u=rob n=ansible | ok: [eveng] => (item=2)
+2022-03-28 16:17:22,050 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Wait for vyos nodes] ******************************************************************************************************************
+2022-03-28 16:17:22,071 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:17:22,077 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:17:37,944 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Exception: Error reading SSH protocol banner
+2022-03-28 16:17:37,946 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Exception: Error reading SSH protocol banner
+2022-03-28 16:17:37,948 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
+2022-03-28 16:17:37,948 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Traceback (most recent call last):
+2022-03-28 16:17:37,948 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
+2022-03-28 16:17:37,948 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
+2022-03-28 16:17:37,948 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     buf = self.packetizer.readline(timeout)
+2022-03-28 16:17:37,948 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     buf = self.packetizer.readline(timeout)
+2022-03-28 16:17:37,948 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
+2022-03-28 16:17:37,948 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
+2022-03-28 16:17:37,949 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     buf += self._read_timeout(timeout)
+2022-03-28 16:17:37,949 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     buf += self._read_timeout(timeout)
+2022-03-28 16:17:37,949 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
+2022-03-28 16:17:37,949 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
+2022-03-28 16:17:37,949 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     raise socket.timeout()
+2022-03-28 16:17:37,949 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     raise socket.timeout()
+2022-03-28 16:17:37,949 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | socket.timeout
+2022-03-28 16:17:37,949 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | socket.timeout
+2022-03-28 16:17:37,949 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | 
+2022-03-28 16:17:37,949 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | 
+2022-03-28 16:17:37,949 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | During handling of the above exception, another exception occurred:
+2022-03-28 16:17:37,949 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | During handling of the above exception, another exception occurred:
+2022-03-28 16:17:37,949 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | 
+2022-03-28 16:17:37,949 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | 
+2022-03-28 16:17:37,949 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
+2022-03-28 16:17:37,949 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Traceback (most recent call last):
+2022-03-28 16:17:37,949 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
+2022-03-28 16:17:37,949 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
+2022-03-28 16:17:37,950 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     self._check_banner()
+2022-03-28 16:17:37,950 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     self._check_banner()
+2022-03-28 16:17:37,950 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
+2022-03-28 16:17:37,950 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
+2022-03-28 16:17:37,950 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     raise SSHException(
+2022-03-28 16:17:37,950 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     raise SSHException(
+2022-03-28 16:17:37,950 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2022-03-28 16:17:37,950 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2022-03-28 16:17:37,950 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | 
+2022-03-28 16:17:37,950 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | 
+2022-03-28 16:17:53,976 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Exception: Error reading SSH protocol banner
+2022-03-28 16:17:53,976 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Exception: Error reading SSH protocol banner
+2022-03-28 16:17:53,976 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
+2022-03-28 16:17:53,976 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Traceback (most recent call last):
+2022-03-28 16:17:53,977 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
+2022-03-28 16:17:53,977 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
+2022-03-28 16:17:53,977 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     buf = self.packetizer.readline(timeout)
+2022-03-28 16:17:53,977 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     buf = self.packetizer.readline(timeout)
+2022-03-28 16:17:53,977 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
+2022-03-28 16:17:53,977 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
+2022-03-28 16:17:53,977 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     buf += self._read_timeout(timeout)
+2022-03-28 16:17:53,977 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     buf += self._read_timeout(timeout)
+2022-03-28 16:17:53,977 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
+2022-03-28 16:17:53,977 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
+2022-03-28 16:17:53,977 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     raise socket.timeout()
+2022-03-28 16:17:53,977 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     raise socket.timeout()
+2022-03-28 16:17:53,977 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | socket.timeout
+2022-03-28 16:17:53,977 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | socket.timeout
+2022-03-28 16:17:53,977 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | 
+2022-03-28 16:17:53,977 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | 
+2022-03-28 16:17:53,978 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | During handling of the above exception, another exception occurred:
+2022-03-28 16:17:53,978 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | During handling of the above exception, another exception occurred:
+2022-03-28 16:17:53,978 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | 
+2022-03-28 16:17:53,978 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | 
+2022-03-28 16:17:53,978 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
+2022-03-28 16:17:53,978 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Traceback (most recent call last):
+2022-03-28 16:17:53,978 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
+2022-03-28 16:17:53,978 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
+2022-03-28 16:17:53,978 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     self._check_banner()
+2022-03-28 16:17:53,978 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     self._check_banner()
+2022-03-28 16:17:53,978 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
+2022-03-28 16:17:53,978 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
+2022-03-28 16:17:53,978 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     raise SSHException(
+2022-03-28 16:17:53,978 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     raise SSHException(
+2022-03-28 16:17:53,978 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2022-03-28 16:17:53,978 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2022-03-28 16:17:53,979 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | 
+2022-03-28 16:17:53,979 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | 
+2022-03-28 16:18:09,998 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Exception: Error reading SSH protocol banner
+2022-03-28 16:18:09,999 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
+2022-03-28 16:18:09,999 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
+2022-03-28 16:18:09,999 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     buf = self.packetizer.readline(timeout)
+2022-03-28 16:18:09,999 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
+2022-03-28 16:18:09,999 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     buf += self._read_timeout(timeout)
+2022-03-28 16:18:09,999 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
+2022-03-28 16:18:09,999 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     raise socket.timeout()
+2022-03-28 16:18:09,999 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | socket.timeout
+2022-03-28 16:18:10,000 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | 
+2022-03-28 16:18:10,000 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | During handling of the above exception, another exception occurred:
+2022-03-28 16:18:10,000 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | 
+2022-03-28 16:18:10,000 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Traceback (most recent call last):
+2022-03-28 16:18:10,000 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
+2022-03-28 16:18:10,000 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     self._check_banner()
+2022-03-28 16:18:10,000 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
+2022-03-28 16:18:10,000 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] |     raise SSHException(
+2022-03-28 16:18:10,000 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2022-03-28 16:18:10,001 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | 
+2022-03-28 16:18:10,001 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Exception: Error reading SSH protocol banner
+2022-03-28 16:18:10,002 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Traceback (most recent call last):
+2022-03-28 16:18:10,002 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2211, in _check_banner
+2022-03-28 16:18:10,002 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     buf = self.packetizer.readline(timeout)
+2022-03-28 16:18:10,002 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 380, in readline
+2022-03-28 16:18:10,002 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     buf += self._read_timeout(timeout)
+2022-03-28 16:18:10,003 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 622, in _read_timeout
+2022-03-28 16:18:10,003 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     raise socket.timeout()
+2022-03-28 16:18:10,003 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | socket.timeout
+2022-03-28 16:18:10,003 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | 
+2022-03-28 16:18:10,003 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | During handling of the above exception, another exception occurred:
+2022-03-28 16:18:10,003 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | 
+2022-03-28 16:18:10,003 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Traceback (most recent call last):
+2022-03-28 16:18:10,003 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2039, in run
+2022-03-28 16:18:10,003 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     self._check_banner()
+2022-03-28 16:18:10,004 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2215, in _check_banner
+2022-03-28 16:18:10,004 p=61345 u=rob n=p=61345 u=rob | paramiko [client] |     raise SSHException(
+2022-03-28 16:18:10,004 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2022-03-28 16:18:10,004 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | 
+2022-03-28 16:18:11,568 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
+2022-03-28 16:18:11,593 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Connected (version 2.0, client OpenSSH_8.4p1)
+2022-03-28 16:18:11,682 p=61345 u=rob n=p=61345 u=rob | paramiko [client] | Authentication (publickey) successful!
+2022-03-28 16:18:11,695 p=61344 u=rob n=p=61344 u=rob | paramiko [vyos-wan] | Authentication (publickey) successful!
+2022-03-28 16:18:12,595 p=60842 u=rob n=ansible | ok: [client]
+2022-03-28 16:18:12,595 p=60842 u=rob n=ansible | ok: [vyos-wan]
+2022-03-28 16:18:12,598 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : include tunnelbroker lab_config.yml] **************************************************************************************************
+2022-03-28 16:18:12,612 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:18:12,618 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:18:12,629 p=60842 u=rob n=ansible | included: /Users/rob/git/_vyos/vyos-eveng/labs/tunnelbroker/lab_config.yml for vyos-wan, client
+2022-03-28 16:18:12,656 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : setup nodes] **************************************************************************************************************************
+2022-03-28 16:18:14,211 p=61078 u=rob n=p=61078 u=rob | paramiko [vyos-wan] | Connected (version 2.0, client OpenSSH_8.4p1)
+2022-03-28 16:18:14,236 p=61079 u=rob n=p=61079 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
+2022-03-28 16:18:14,303 p=61078 u=rob n=p=61078 u=rob | paramiko [vyos-wan] | Authentication (publickey) successful!
+2022-03-28 16:18:14,316 p=61079 u=rob n=p=61079 u=rob | paramiko [client] | Authentication (publickey) successful!
+2022-03-28 16:18:18,648 p=60842 u=rob n=ansible | [WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar to how they appear if present in the running configuration
+on device including the indentation
+
+2022-03-28 16:18:18,648 p=60842 u=rob n=ansible | changed: [client]
+2022-03-28 16:18:19,025 p=60842 u=rob n=ansible | changed: [vyos-wan]
+2022-03-28 16:18:19,033 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Register external IP in Tunnelbroker] *************************************************************************************************
+2022-03-28 16:18:19,053 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:18:20,682 p=60842 u=rob n=ansible | ok: [vyos-wan -> eveng]
+2022-03-28 16:18:20,692 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : get ipv4 address of vyos-wan (eth1)] **************************************************************************************************
+2022-03-28 16:18:20,713 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:18:21,906 p=60842 u=rob n=ansible | ok: [vyos-wan]
+2022-03-28 16:18:21,912 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Set variables] ************************************************************************************************************************
+2022-03-28 16:18:21,927 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:18:22,746 p=60842 u=rob n=ansible | ok: [vyos-wan]
+2022-03-28 16:18:22,759 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : setup vyos-wan] ***********************************************************************************************************************
+2022-03-28 16:18:22,782 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:18:30,210 p=60842 u=rob n=ansible | changed: [vyos-wan]
+2022-03-28 16:18:30,213 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] *******************************************************************************************************
+2022-03-28 16:18:30,239 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:18:30,241 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:18:30,245 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:18:30,957 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:18:30,963 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : stop nodes id] ************************************************************************************************************************
+2022-03-28 16:18:31,010 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait after stop] **********************************************************************************************************************
+2022-03-28 16:18:31,019 p=61529 u=rob n=ansible | Pausing for 5 seconds
+2022-03-28 16:18:31,019 p=61529 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2022-03-28 16:18:36,029 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:18:36,035 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : start nodes id] ***********************************************************************************************************************
+2022-03-28 16:18:36,084 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait after start] *********************************************************************************************************************
+2022-03-28 16:18:36,093 p=61544 u=rob n=ansible | Pausing for 5 seconds
+2022-03-28 16:18:36,093 p=61544 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2022-03-28 16:18:41,101 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:18:41,108 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait, b/c the ping often failed without a short break] ********************************************************************************
+2022-03-28 16:18:41,123 p=61551 u=rob n=ansible | Pausing for 30 seconds
+2022-03-28 16:18:41,123 p=61551 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2022-03-28 16:19:11,126 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:19:11,136 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : do ping test] *************************************************************************************************************************
+2022-03-28 16:19:11,170 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:19:11,181 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:19:16,564 p=60842 u=rob n=ansible | ok: [client] => (item=2001:470:20::2)
+2022-03-28 16:19:16,843 p=60842 u=rob n=ansible | ok: [vyos-wan] => (item=tunnelbroker.net)
+2022-03-28 16:19:16,848 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : execute test commands] ****************************************************************************************************************
+2022-03-28 16:19:16,866 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:19:16,874 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:19:16,876 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:19:16,883 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:19:16,885 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : register stdout commands] *************************************************************************************************************
+2022-03-28 16:19:16,904 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:19:16,906 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:19:21,183 p=60842 u=rob n=ansible | ok: [vyos-wan] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'})
+2022-03-28 16:19:21,197 p=60842 u=rob n=ansible | ok: [client] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'})
+2022-03-28 16:19:24,853 p=60842 u=rob n=ansible | ok: [vyos-wan] => (item={'name': 'ping_name', 'command': 'ping tunnelbroker.net count 4'})
+2022-03-28 16:19:24,857 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Set variables] ************************************************************************************************************************
+2022-03-28 16:19:24,879 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:19:24,880 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:19:25,726 p=60842 u=rob n=ansible | ok: [vyos-wan]
+2022-03-28 16:19:25,728 p=60842 u=rob n=ansible | ok: [client]
+2022-03-28 16:19:25,738 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Reboot vyos] **************************************************************************************************************************
+2022-03-28 16:19:25,765 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:19:25,773 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:19:27,051 p=60842 u=rob n=ansible | ok: [client]
+2022-03-28 16:19:27,052 p=60842 u=rob n=ansible | ok: [vyos-wan]
+2022-03-28 16:19:27,055 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait while shutdown] ******************************************************************************************************************
+2022-03-28 16:19:27,065 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:19:27,068 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Wait for vyos nodes] ******************************************************************************************************************
+2022-03-28 16:19:27,082 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:19:27,088 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:19:28,536 p=61750 u=rob n=p=61750 u=rob | paramiko [vyos-wan] | Connected (version 2.0, client OpenSSH_8.4p1)
+2022-03-28 16:19:28,543 p=61751 u=rob n=p=61751 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
+2022-03-28 16:19:28,647 p=61751 u=rob n=p=61751 u=rob | paramiko [client] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
+2022-03-28 16:19:28,698 p=61750 u=rob n=p=61750 u=rob | paramiko [vyos-wan] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
+2022-03-28 16:21:27,293 p=61078 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
 See the timeout setting options in the Network Debug and Troubleshooting Guide.
-2021-12-30 11:07:16,050 p=88295 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+2022-03-28 16:21:27,297 p=61079 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
 See the timeout setting options in the Network Debug and Troubleshooting Guide.
-2021-12-30 11:07:16,153 p=88296 u=rob n=ansible | shutdown complete
-2021-12-30 11:07:16,153 p=88295 u=rob n=ansible | shutdown complete
-2021-12-30 11:07:19,142 p=88898 u=rob n=p=88898 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
-2021-12-30 11:07:19,147 p=88897 u=rob n=p=88897 u=rob | paramiko [vyos-wan] | Connected (version 2.0, client OpenSSH_8.4p1)
-2021-12-30 11:07:19,210 p=88898 u=rob n=p=88898 u=rob | paramiko [client] | Authentication (publickey) successful!
-2021-12-30 11:07:19,261 p=88897 u=rob n=p=88897 u=rob | paramiko [vyos-wan] | Authentication (publickey) successful!
-2021-12-30 11:07:20,467 p=88031 u=rob n=ansible | ok: [client]
-2021-12-30 11:07:20,485 p=88031 u=rob n=ansible | ok: [vyos-wan]
-2021-12-30 11:07:20,487 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] ****************************************************************************************************
-2021-12-30 11:07:20,506 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:07:20,507 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:07:20,512 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:07:21,473 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:07:21,479 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : stop nodes id] *********************************************************************************************************************
-2021-12-30 11:07:21,527 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait after stop] *******************************************************************************************************************
-2021-12-30 11:07:21,535 p=88983 u=rob n=ansible | Pausing for 5 seconds
-2021-12-30 11:07:21,536 p=88983 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2021-12-30 11:07:26,542 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:07:26,554 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : start nodes id] ********************************************************************************************************************
-2021-12-30 11:07:26,608 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait after start] ******************************************************************************************************************
-2021-12-30 11:07:26,618 p=88989 u=rob n=ansible | Pausing for 5 seconds
-2021-12-30 11:07:26,618 p=88989 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2021-12-30 11:07:31,627 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:07:31,637 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait, b/c the ping often failed without a short break] *****************************************************************************
-2021-12-30 11:07:31,655 p=88990 u=rob n=ansible | Pausing for 30 seconds
-2021-12-30 11:07:31,655 p=88990 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2021-12-30 11:08:01,666 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:08:01,677 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : do ping test] **********************************************************************************************************************
-2021-12-30 11:08:01,706 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:01,717 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:02,687 p=88996 u=rob n=ansible | network_os is set to vyos
-2021-12-30 11:08:02,687 p=88997 u=rob n=ansible | network_os is set to vyos
-2021-12-30 11:08:03,598 p=89005 u=rob n=p=89005 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
-2021-12-30 11:08:03,604 p=89004 u=rob n=p=89004 u=rob | paramiko [vyos-wan] | Connected (version 2.0, client OpenSSH_8.4p1)
-2021-12-30 11:08:03,701 p=89005 u=rob n=p=89005 u=rob | paramiko [client] | Authentication (publickey) successful!
-2021-12-30 11:08:03,761 p=89004 u=rob n=p=89004 u=rob | paramiko [vyos-wan] | Authentication (publickey) successful!
-2021-12-30 11:08:09,310 p=88031 u=rob n=ansible | ok: [client] => (item=2001:470:20::2)
-2021-12-30 11:08:09,625 p=88031 u=rob n=ansible | ok: [vyos-wan] => (item=tunnelbroker.net)
-2021-12-30 11:08:09,630 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : execute test commands] *************************************************************************************************************
-2021-12-30 11:08:09,657 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,657 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,660 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:09,667 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:09,669 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : register stdout commands] **********************************************************************************************************
-2021-12-30 11:08:09,690 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,690 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,698 p=88031 u=rob n=ansible | skipping: [vyos-wan] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'}) 
-2021-12-30 11:08:09,699 p=88031 u=rob n=ansible | skipping: [vyos-wan] => (item={'name': 'ping_name', 'command': 'ping tunnelbroker.net count 4'}) 
-2021-12-30 11:08:09,703 p=88031 u=rob n=ansible | skipping: [client] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'}) 
-2021-12-30 11:08:09,706 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Set variables] *********************************************************************************************************************
-2021-12-30 11:08:09,725 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,725 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,727 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:09,732 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:09,735 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : make sure tmp dir exist] ***********************************************************************************************************
-2021-12-30 11:08:09,750 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,757 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,758 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:09,762 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:09,765 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : register status of tmp/vyos-1.4-rolling-202111090317-amd64.iso] ********************************************************************
-2021-12-30 11:08:09,778 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,785 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,787 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:09,789 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:09,793 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Download upgrade_iso] **************************************************************************************************************
-2021-12-30 11:08:09,808 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,816 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,817 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:09,821 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:09,825 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Copy iso to host] ******************************************************************************************************************
-2021-12-30 11:08:09,839 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,845 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,847 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:09,850 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:09,852 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : upgrade vyos] **********************************************************************************************************************
-2021-12-30 11:08:09,866 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,872 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,874 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:09,876 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:09,879 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Reboot vyos] ***********************************************************************************************************************
-2021-12-30 11:08:09,895 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,900 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,902 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:09,905 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:09,907 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait while shutdown] ***************************************************************************************************************
-2021-12-30 11:08:09,916 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,918 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Wait for vyos nodes] ***************************************************************************************************************
-2021-12-30 11:08:09,933 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,939 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,941 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:09,944 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:09,948 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : clear tmp dir] *********************************************************************************************************************
-2021-12-30 11:08:09,957 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,959 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] ****************************************************************************************************
-2021-12-30 11:08:09,973 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:09,979 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:09,981 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:09,985 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:09,988 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : stop nodes id] *********************************************************************************************************************
-2021-12-30 11:08:10,022 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait after stop] *******************************************************************************************************************
-2021-12-30 11:08:10,030 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:10,032 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : start nodes id] ********************************************************************************************************************
-2021-12-30 11:08:10,063 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait after start] ******************************************************************************************************************
-2021-12-30 11:08:10,071 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:10,073 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : wait, b/c the ping often failed without a short break] *****************************************************************************
-2021-12-30 11:08:10,081 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:10,083 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : do ping test] **********************************************************************************************************************
-2021-12-30 11:08:10,096 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:10,102 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:10,108 p=88031 u=rob n=ansible | skipping: [vyos-wan] => (item=tunnelbroker.net) 
-2021-12-30 11:08:10,113 p=88031 u=rob n=ansible | skipping: [client] => (item=2001:470:20::2) 
-2021-12-30 11:08:10,117 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : execute test commands] *************************************************************************************************************
-2021-12-30 11:08:10,129 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:10,138 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:10,140 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:10,144 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:10,147 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : register stdout commands] **********************************************************************************************************
-2021-12-30 11:08:10,161 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:10,167 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:10,174 p=88031 u=rob n=ansible | skipping: [vyos-wan] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'}) 
-2021-12-30 11:08:10,174 p=88031 u=rob n=ansible | skipping: [vyos-wan] => (item={'name': 'ping_name', 'command': 'ping tunnelbroker.net count 4'}) 
-2021-12-30 11:08:10,178 p=88031 u=rob n=ansible | skipping: [client] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'}) 
-2021-12-30 11:08:10,181 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Set variables] *********************************************************************************************************************
-2021-12-30 11:08:10,194 p=88031 u=rob n=ansible | skipping: [eveng]
-2021-12-30 11:08:10,201 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:10,203 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:10,206 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:10,209 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : make sure output dir exist] ********************************************************************************************************
-2021-12-30 11:08:10,236 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:10,237 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:10,241 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:10,413 p=88031 u=rob n=ansible | changed: [eveng -> localhost]
-2021-12-30 11:08:10,416 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : make sure output include dir exist] ************************************************************************************************
-2021-12-30 11:08:10,438 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:10,441 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:10,444 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:10,545 p=88031 u=rob n=ansible | changed: [eveng -> localhost]
-2021-12-30 11:08:10,548 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Get timestamp from the system] *****************************************************************************************************
-2021-12-30 11:08:10,568 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:10,569 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:10,572 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:10,966 p=88031 u=rob n=ansible | changed: [eveng]
-2021-12-30 11:08:10,969 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : Set variables] *********************************************************************************************************************
-2021-12-30 11:08:10,993 p=88031 u=rob n=ansible | ok: [eveng]
-2021-12-30 11:08:10,995 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:10,995 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:11,000 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:11,004 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : generate lab rst file] *************************************************************************************************************
-2021-12-30 11:08:11,028 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:11,029 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:11,035 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:11,240 p=88031 u=rob n=ansible | changed: [eveng -> localhost]
-2021-12-30 11:08:11,243 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : find all *.conf files in Lab] ******************************************************************************************************
-2021-12-30 11:08:11,265 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:11,266 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:11,271 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:11,440 p=88031 u=rob n=ansible | ok: [eveng -> localhost]
-2021-12-30 11:08:11,451 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : copy all *.conf files] *************************************************************************************************************
-2021-12-30 11:08:11,471 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:11,481 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:11,487 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:11,692 p=88031 u=rob n=ansible | changed: [eveng -> localhost] => (item={'path': 'labs/tunnelbroker/vyos-wan_tun0.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 928, 'inode': 36875583, 'dev': 16777233, 'nlink': 1, 'atime': 1640856203.0528371, 'mtime': 1640856200.7240307, 'ctime': 1640856200.7240307, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2021-12-30 11:08:11,932 p=88031 u=rob n=ansible | changed: [eveng -> localhost] => (item={'path': 'labs/tunnelbroker/client.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 50, 'inode': 36873984, 'dev': 16777233, 'nlink': 1, 'atime': 1640790113.0346394, 'mtime': 1640790111.5590541, 'ctime': 1640790111.5590541, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2021-12-30 11:08:12,147 p=88031 u=rob n=ansible | changed: [eveng -> localhost] => (item={'path': 'labs/tunnelbroker/vyos-wan.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 42, 'inode': 36873705, 'dev': 16777233, 'nlink': 1, 'atime': 1640790798.5500834, 'mtime': 1640790798.1185577, 'ctime': 1640790798.1185577, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2021-12-30 11:08:12,356 p=88031 u=rob n=ansible | changed: [eveng -> localhost] => (item={'path': 'labs/tunnelbroker/transport.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 107, 'inode': 36873709, 'dev': 16777233, 'nlink': 1, 'atime': 1640789900.4369605, 'mtime': 1640789898.1980178, 'ctime': 1640789898.198139, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2021-12-30 11:08:12,360 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : find all *.png files in Lab] *******************************************************************************************************
-2021-12-30 11:08:12,383 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:12,384 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:12,389 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:12,484 p=88031 u=rob n=ansible | ok: [eveng -> localhost]
-2021-12-30 11:08:12,489 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : copy all *.png files] **************************************************************************************************************
-2021-12-30 11:08:12,515 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:12,516 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:12,522 p=88031 u=rob n=ansible | skipping: [client]
-2021-12-30 11:08:12,715 p=88031 u=rob n=ansible | changed: [eveng -> localhost] => (item={'path': 'labs/tunnelbroker/topology.png', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 34614, 'inode': 36953794, 'dev': 16777233, 'nlink': 1, 'atime': 1640857963.8541129, 'mtime': 1640857962.162, 'ctime': 1640857962.1624134, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2021-12-30 11:08:12,718 p=88031 u=rob n=ansible | TASK [eve-ng-lab-test : copy ansible log files] ************************************************************************************************************
-2021-12-30 11:08:12,741 p=88031 u=rob n=ansible | skipping: [vyos-oobm]
-2021-12-30 11:08:12,742 p=88031 u=rob n=ansible | skipping: [vyos-wan]
-2021-12-30 11:08:12,747 p=88031 u=rob n=ansible | skipping: [client]
+2022-03-28 16:21:27,397 p=61078 u=rob n=ansible | shutdown complete
+2022-03-28 16:21:27,399 p=61079 u=rob n=ansible | shutdown complete
+2022-03-28 16:21:30,302 p=61750 u=rob n=p=61750 u=rob | paramiko [vyos-wan] | Connected (version 2.0, client OpenSSH_8.4p1)
+2022-03-28 16:21:30,302 p=61751 u=rob n=p=61751 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
+2022-03-28 16:21:30,415 p=61751 u=rob n=p=61751 u=rob | paramiko [client] | Authentication (publickey) successful!
+2022-03-28 16:21:30,417 p=61750 u=rob n=p=61750 u=rob | paramiko [vyos-wan] | Authentication (publickey) successful!
+2022-03-28 16:21:31,586 p=60842 u=rob n=ansible | ok: [client]
+2022-03-28 16:21:31,600 p=60842 u=rob n=ansible | ok: [vyos-wan]
+2022-03-28 16:21:31,601 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] *******************************************************************************************************
+2022-03-28 16:21:31,619 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:21:31,621 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:21:31,625 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:21:32,557 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:21:32,562 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : stop nodes id] ************************************************************************************************************************
+2022-03-28 16:21:32,607 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait after stop] **********************************************************************************************************************
+2022-03-28 16:21:32,616 p=61852 u=rob n=ansible | Pausing for 5 seconds
+2022-03-28 16:21:32,616 p=61852 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2022-03-28 16:21:37,625 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:21:37,631 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : start nodes id] ***********************************************************************************************************************
+2022-03-28 16:21:37,682 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait after start] *********************************************************************************************************************
+2022-03-28 16:21:37,692 p=61857 u=rob n=ansible | Pausing for 5 seconds
+2022-03-28 16:21:37,692 p=61857 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2022-03-28 16:21:42,699 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:21:42,706 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait, b/c the ping often failed without a short break] ********************************************************************************
+2022-03-28 16:21:42,721 p=61873 u=rob n=ansible | Pausing for 30 seconds
+2022-03-28 16:21:42,721 p=61873 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2022-03-28 16:22:12,730 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:22:12,737 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : do ping test] *************************************************************************************************************************
+2022-03-28 16:22:12,767 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:12,768 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:13,714 p=61886 u=rob n=ansible | network_os is set to vyos
+2022-03-28 16:22:13,714 p=61885 u=rob n=ansible | network_os is set to vyos
+2022-03-28 16:22:14,440 p=61893 u=rob n=p=61893 u=rob | paramiko [vyos-wan] | Connected (version 2.0, client OpenSSH_8.4p1)
+2022-03-28 16:22:14,440 p=61894 u=rob n=p=61894 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
+2022-03-28 16:22:14,535 p=61894 u=rob n=p=61894 u=rob | paramiko [client] | Authentication (publickey) successful!
+2022-03-28 16:22:14,590 p=61893 u=rob n=p=61893 u=rob | paramiko [vyos-wan] | Authentication (publickey) successful!
+2022-03-28 16:22:20,300 p=60842 u=rob n=ansible | ok: [client] => (item=2001:470:20::2)
+2022-03-28 16:22:20,598 p=60842 u=rob n=ansible | ok: [vyos-wan] => (item=tunnelbroker.net)
+2022-03-28 16:22:20,602 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : execute test commands] ****************************************************************************************************************
+2022-03-28 16:22:20,627 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,628 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,631 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:20,636 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:20,639 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : register stdout commands] *************************************************************************************************************
+2022-03-28 16:22:20,659 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,659 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,666 p=60842 u=rob n=ansible | skipping: [vyos-wan] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'}) 
+2022-03-28 16:22:20,667 p=60842 u=rob n=ansible | skipping: [vyos-wan] => (item={'name': 'ping_name', 'command': 'ping tunnelbroker.net count 4'}) 
+2022-03-28 16:22:20,670 p=60842 u=rob n=ansible | skipping: [client] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'}) 
+2022-03-28 16:22:20,673 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Set variables] ************************************************************************************************************************
+2022-03-28 16:22:20,692 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,693 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,694 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:20,700 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:20,703 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : make sure tmp dir exist] **************************************************************************************************************
+2022-03-28 16:22:20,718 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,725 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,727 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:20,729 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:20,732 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : register status of tmp/] **************************************************************************************************************
+2022-03-28 16:22:20,746 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,752 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,754 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:20,757 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:20,760 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Download upgrade_iso] *****************************************************************************************************************
+2022-03-28 16:22:20,775 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,782 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,784 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:20,786 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:20,791 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Copy iso to host] *********************************************************************************************************************
+2022-03-28 16:22:20,804 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,810 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,812 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:20,815 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:20,817 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : upgrade vyos] *************************************************************************************************************************
+2022-03-28 16:22:20,830 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,836 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,838 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:20,841 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:20,843 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Reboot vyos] **************************************************************************************************************************
+2022-03-28 16:22:20,856 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,862 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,864 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:20,867 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:20,869 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait while shutdown] ******************************************************************************************************************
+2022-03-28 16:22:20,876 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,878 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Wait for vyos nodes] ******************************************************************************************************************
+2022-03-28 16:22:20,890 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,897 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,899 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:20,901 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:20,904 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : clear tmp dir] ************************************************************************************************************************
+2022-03-28 16:22:20,912 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,914 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Login to EVE-NG and get Cookie] *******************************************************************************************************
+2022-03-28 16:22:20,927 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,933 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:20,935 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:20,937 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:20,940 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : stop nodes id] ************************************************************************************************************************
+2022-03-28 16:22:20,970 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait after stop] **********************************************************************************************************************
+2022-03-28 16:22:20,978 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:20,980 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : start nodes id] ***********************************************************************************************************************
+2022-03-28 16:22:21,011 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait after start] *********************************************************************************************************************
+2022-03-28 16:22:21,019 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:21,021 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : wait, b/c the ping often failed without a short break] ********************************************************************************
+2022-03-28 16:22:21,028 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:21,030 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : do ping test] *************************************************************************************************************************
+2022-03-28 16:22:21,043 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:21,049 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:21,056 p=60842 u=rob n=ansible | skipping: [vyos-wan] => (item=tunnelbroker.net) 
+2022-03-28 16:22:21,061 p=60842 u=rob n=ansible | skipping: [client] => (item=2001:470:20::2) 
+2022-03-28 16:22:21,063 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : execute test commands] ****************************************************************************************************************
+2022-03-28 16:22:21,077 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:21,084 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:21,084 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:21,088 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:21,090 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : register stdout commands] *************************************************************************************************************
+2022-03-28 16:22:21,103 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:21,109 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:21,116 p=60842 u=rob n=ansible | skipping: [vyos-wan] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'}) 
+2022-03-28 16:22:21,117 p=60842 u=rob n=ansible | skipping: [vyos-wan] => (item={'name': 'ping_name', 'command': 'ping tunnelbroker.net count 4'}) 
+2022-03-28 16:22:21,120 p=60842 u=rob n=ansible | skipping: [client] => (item={'name': 'ping_ip', 'command': 'ping 2001:470:20::2 count 4'}) 
+2022-03-28 16:22:21,123 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Set variables] ************************************************************************************************************************
+2022-03-28 16:22:21,136 p=60842 u=rob n=ansible | skipping: [eveng]
+2022-03-28 16:22:21,142 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:21,145 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:21,147 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:21,150 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : make sure output dir exist] ***********************************************************************************************************
+2022-03-28 16:22:21,172 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:21,173 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:21,178 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:21,349 p=60842 u=rob n=ansible | ok: [eveng -> localhost]
+2022-03-28 16:22:21,352 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : make sure output include dir exist] ***************************************************************************************************
+2022-03-28 16:22:21,374 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:21,375 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:21,379 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:21,479 p=60842 u=rob n=ansible | ok: [eveng -> localhost]
+2022-03-28 16:22:21,482 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Get timestamp from the system] ********************************************************************************************************
+2022-03-28 16:22:21,501 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:21,502 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:21,506 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:21,908 p=60842 u=rob n=ansible | changed: [eveng]
+2022-03-28 16:22:21,913 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : Set variables] ************************************************************************************************************************
+2022-03-28 16:22:21,938 p=60842 u=rob n=ansible | ok: [eveng]
+2022-03-28 16:22:21,939 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:21,941 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:21,945 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:21,949 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : generate lab rst file] ****************************************************************************************************************
+2022-03-28 16:22:21,974 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:21,975 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:21,979 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:22,202 p=60842 u=rob n=ansible | changed: [eveng -> localhost]
+2022-03-28 16:22:22,206 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : find all *.conf files in Lab] *********************************************************************************************************
+2022-03-28 16:22:22,227 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:22,229 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:22,233 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:22,394 p=60842 u=rob n=ansible | ok: [eveng -> localhost]
+2022-03-28 16:22:22,403 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : copy all *.conf files] ****************************************************************************************************************
+2022-03-28 16:22:22,427 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:22,429 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:22,433 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:22,700 p=60842 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/tunnelbroker/vyos-wan_tun0.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 931, 'inode': 43810362, 'dev': 16777234, 'nlink': 1, 'atime': 1648472649.4966028, 'mtime': 1648472647.8311803, 'ctime': 1648472647.8311803, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2022-03-28 16:22:22,916 p=60842 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/tunnelbroker/client.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 50, 'inode': 43214260, 'dev': 16777234, 'nlink': 1, 'atime': 1648155112.2819037, 'mtime': 1648155110.8026924, 'ctime': 1648155110.8026924, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2022-03-28 16:22:23,132 p=60842 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/tunnelbroker/vyos-wan.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 42, 'inode': 43214267, 'dev': 16777234, 'nlink': 1, 'atime': 1648155112.2896059, 'mtime': 1648155110.8037791, 'ctime': 1648155110.8037791, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2022-03-28 16:22:23,347 p=60842 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/tunnelbroker/transport.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 107, 'inode': 43214264, 'dev': 16777234, 'nlink': 1, 'atime': 1648155112.290648, 'mtime': 1648155110.8034177, 'ctime': 1648155110.8034177, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2022-03-28 16:22:23,351 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : find all *.png files in Lab] **********************************************************************************************************
+2022-03-28 16:22:23,374 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:23,376 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:23,379 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:23,477 p=60842 u=rob n=ansible | ok: [eveng -> localhost]
+2022-03-28 16:22:23,482 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : copy all *.png files] *****************************************************************************************************************
+2022-03-28 16:22:23,508 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:23,509 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:23,513 p=60842 u=rob n=ansible | skipping: [client]
+2022-03-28 16:22:23,708 p=60842 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/tunnelbroker/topology.png', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 34614, 'inode': 43214263, 'dev': 16777234, 'nlink': 1, 'atime': 1648155124.1539645, 'mtime': 1648155110.8032978, 'ctime': 1648155110.8032978, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2022-03-28 16:22:23,711 p=60842 u=rob n=ansible | TASK [eve-ng-lab-test : copy ansible log files] ***************************************************************************************************************
+2022-03-28 16:22:23,733 p=60842 u=rob n=ansible | skipping: [vyos-oobm]
+2022-03-28 16:22:23,734 p=60842 u=rob n=ansible | skipping: [vyos-wan]
+2022-03-28 16:22:23,739 p=60842 u=rob n=ansible | skipping: [client]
