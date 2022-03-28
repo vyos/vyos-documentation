@@ -15,13 +15,13 @@ span.cfgcmd:before {
   margin-right: 0px;
 }
 
-td p a.cmdlink span.cfgcmd:before,
-td p a.cmdlink span.opcmd:before  {
+td a.cmdlink span.cfgcmd:before,
+td a.cmdlink span.opcmd:before  {
   content: "";
 }
 
-td p a.cmdlink,
-td p a.cmdlink {
+td a.cmdlink,
+td a.cmdlink {
   margin-left: 0px;
 }
 
