@@ -3,8 +3,8 @@ Wireguard
 #########
 
 
-| Testdate: 2021-11-30
-| Version: 1.4-rolling-202104132216
+| Testdate: 2022-03-28
+| Version: 1.4-rolling-202203280217
 
 
 This simple structure show how to connect two offices. One remote branch and the
@@ -44,9 +44,9 @@ After this, the public key can be displayed, to save for later.
 
 .. code-block:: none
 
-   vyos@central:~$ generate wireguard default-keypair
-   vyos@central:~$ show wireguard keypairs pubkey default
-   P9y9TTRzIOVl27Ij9n/BXjZUdQFADZ5WnHV0kQr1ulQ=
+   vyos@central:~$ generate pki wireguard
+   Private key: 2BmTwXO1NpakOsa2ynnIqW3c1s3aT/gVtCUJnecefXY=
+   Public key: BU+4Dyr3VldI2DJiBji50Egqr58071puYdXhoyRvuH8=
 
 
 After you have each public key. The wireguard interfaces can be setup.
@@ -56,13 +56,13 @@ Central
 
 .. literalinclude:: _include/central.conf
    :language: none
-   :lines: 4-11
+   :lines: 4-12
 
 Branch
 
 .. literalinclude:: _include/branch.conf
    :language: none
-   :lines: 4-11
+   :lines: 4-12
 
 
 To reach the network, a route must be set on each VyOS host.
@@ -72,13 +72,13 @@ Central
 
 .. literalinclude:: _include/central.conf
    :language: none
-   :lines: 13
+   :lines: 14
 
 Branch
 
 .. literalinclude:: _include/branch.conf
    :language: none
-   :lines: 13
+   :lines: 14
 
 *********************
 Testing and debugging
@@ -102,11 +102,11 @@ And ping the Branch PC from your central router to check the response.
 
    vyos@central:~$ ping 10.0.2.100 count 4
    PING 10.0.2.100 (10.0.2.100) 56(84) bytes of data.
-   64 bytes from 10.0.2.100: icmp_seq=1 ttl=63 time=0.526 ms
-   64 bytes from 10.0.2.100: icmp_seq=2 ttl=63 time=0.583 ms
-   64 bytes from 10.0.2.100: icmp_seq=3 ttl=63 time=0.873 ms
-   64 bytes from 10.0.2.100: icmp_seq=4 ttl=63 time=0.753 ms
+   64 bytes from 10.0.2.100: icmp_seq=1 ttl=63 time=0.580 ms
+   64 bytes from 10.0.2.100: icmp_seq=2 ttl=63 time=0.862 ms
+   64 bytes from 10.0.2.100: icmp_seq=3 ttl=63 time=0.754 ms
+   64 bytes from 10.0.2.100: icmp_seq=4 ttl=63 time=0.669 ms
    
    --- 10.0.2.100 ping statistics ---
-   4 packets transmitted, 4 received, 0% packet loss, time 48ms
-   rtt min/avg/max/mdev = 0.526/0.683/0.873/0.141 ms
+   4 packets transmitted, 4 received, 0% packet loss, time 3094ms
+   rtt min/avg/max/mdev = 0.580/0.716/0.862/0.104 ms
