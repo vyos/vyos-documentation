@@ -479,20 +479,45 @@ class CfgCmdDirective(CmdDirective):
 
 
 def strip_cmd(cmd, debug=False):
+
+    # find all [...] and also nested [...]
+    # regex and str.find() had problems with nested [...]
+    appearance = 0
+    cmd_new = ""
+    for c in cmd:
+        if c == "[":
+            appearance = appearance + 1
+        if appearance == 0:
+            cmd_new = f"{cmd_new}{c}"
+        if c == "]":
+            appearance = appearance - 1
+
+    # only if all [..] will be delete if appearance > 0 there is a syntax errror
+    if appearance == 0:
+        cmd = cmd_new
+    
+    # same for <...>
+    appearance = 0
+    cmd_new = ""
+    for c in cmd:
+        if c == "<":
+            appearance = appearance + 1
+        if appearance == 0:
+            cmd_new = f"{cmd_new}{c}"
+        if c == ">":
+            appearance = appearance - 1
+
+    # only if all <..> will be delete if appearance > 0 there is a syntax errror
+    if appearance == 0:
+        cmd = cmd_new
+
     if debug:
         print("")
         print(cmd)
-    cmd = re.sub('set','',cmd)
+    cmd = re.sub('^set','',cmd)
     if debug:
         print(cmd)
-    #while " | " in cmd:
-    cmd = re.sub('\s+\|\s+','',cmd)
-    if debug:
-        print(cmd)
-    cmd = re.sub('<\S*>','',cmd)
-    if debug:
-        print(cmd)
-    cmd = re.sub('\[\S\]','',cmd)
+    cmd = cmd.replace('|','')
     if debug:
         print(cmd)
     cmd = re.sub('\s+','',cmd)
@@ -544,9 +569,6 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
 
         coverage_list[strip_cmd(cmd['cmd'])] = dict(coverage_item)
 
-    
-    #print(coverage_list.keys())
-    
     for cmd in xmlcmd:
         
         strip = strip_cmd(cmd['cmd'])
@@ -710,5 +732,3 @@ def handle_document_meta_data(app, document):
     else:
         pass
         #logger.warning(f'lastproofread meta data missing in {app.env.doc2path(docname)}')
-
-        
