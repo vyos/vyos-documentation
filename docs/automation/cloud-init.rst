@@ -275,8 +275,10 @@ In this lab, we are using 1.3.0 VyOS version and setting a disk of 10G.
 Download VyOS .iso file and save it as ``/tmp/vyos.iso``. Command used for
 generating qcow image:
 
-.. cfgcmd:: sudo ansible-playbook qemu.yml -e disk_size=10
-   -e iso_local=/tmp/vyos.iso -e grub_console=serial -e vyos_version=1.3.0
+.. code-block:: sh
+
+  sudo ansible-playbook qemu.yml -e disk_size=10 \
+   -e iso_local=/tmp/vyos.iso -e grub_console=serial -e vyos_version=1.3.0 \
    -e cloud_init=true -e cloud_init_ds=NoCloud
 
 File generated with previous command:
@@ -284,8 +286,9 @@ File generated with previous command:
 
 Now, that file needs to be copied to proxmox server:
 
-.. cfgcmd:: sudo scp /tmp/vyos-1.3.0-cloud-init-10G-qemu.qcow2
-   root@192.168.0.253:/tmp/
+.. code-block:: sh
+  
+  sudo scp /tmp/vyos-1.3.0-cloud-init-10G-qemu.qcow2 root@192.168.0.253:/tmp/
 
 
 ------------------------
@@ -304,7 +307,9 @@ In Proxmox server three files are going to be used for this setup:
 In this lab, all files are located in ``/tmp/``. So, before going on, lets
 move to that directory:
 
-.. cfgcmd:: cd /tmp/
+.. code-block:: sh
+  
+  cd /tmp/
 
 **user-data** file must start with ``#cloud-config`` and contains
 vyos-commands. For example:
@@ -350,8 +355,10 @@ image, which needs to be mounted to the new VM as a cd.
 
 Command for generating ``seed.iso``
 
-.. cfgcmd:: mkisofs -joliet -rock -volid "cidata" -output seed.iso meta-data
-   user-data network-config
+.. code-block:: sh
+  
+  mkisofs -joliet -rock -volid "cidata" -output seed.iso meta-data \
+  user-data network-config
 
 **NOTE**: be carefull while copying and pasting previous commands. Doble
 quotes may need to be corrected. 
@@ -376,7 +383,9 @@ setups:
 ``seed.iso`` was previously created in directory ``/tmp/``. It's necessary to
 move it to ``/var/lib/vz/template/iso``
 
-.. cfgcmd:: mv /tmp/seed.iso /var/lib/vz/template/iso/
+.. code-block:: sh
+
+  mv /tmp/seed.iso /var/lib/vz/template/iso/
 
 On proxmox server:
 
