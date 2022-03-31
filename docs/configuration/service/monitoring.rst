@@ -1,7 +1,7 @@
 Monitoring
 ----------
 
-Monitoring functionality with ``telefgraf`` and ``InfluxDB 2`` is provided.
+Monitoring functionality with ``telegraf`` and ``InfluxDB 2`` is provided.
 
 Telegraf
 ========
