@@ -144,7 +144,7 @@ the connection.
 
   Local path that includes the private key file of the router.
 
-.. cfgcmd:: set protocols rpki cache <address> ssh public-key-file <filepath
+.. cfgcmd:: set protocols rpki cache <address> ssh public-key-file <filepath>
 
   Local path that includes the public key file of the router.
 

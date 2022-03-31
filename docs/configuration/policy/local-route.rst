@@ -34,11 +34,11 @@ Local Route IPv6
 
    Set routing table to forward packet to.
 
-.. cfgcmd:: set policy local-route6 rule <1-32765> source <h:h:h:h:h:h:h:h|<h:h:h:h:h:h:h:h/x>
+.. cfgcmd:: set policy local-route6 rule <1-32765> source <h:h:h:h:h:h:h:h | h:h:h:h:h:h:h:h/x>
 
    Set source address or prefix to match.
 
-.. cfgcmd:: set policy local-route6 rule <1-32765> destination <h:h:h:h:h:h:h:h|<h:h:h:h:h:h:h:h/x>
+.. cfgcmd:: set policy local-route6 rule <1-32765> destination <h:h:h:h:h:h:h:h | h:h:h:h:h:h:h:h/x>
 
    Set destination address or prefix to match.
 
