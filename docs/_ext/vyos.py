@@ -597,6 +597,11 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
 
     strip_true_list = list(set(strip_true_list))
 
+    # to find syntax errors in cfg or cmd commands
+    #for k in coverage_list.keys():
+    #    if ("[" in k) or ("]" in k) or ("<" in k) or (">" in k) or ("|" in k):
+    #        print(coverage_list[k])
+
     
 
     table = nodes.table()
