@@ -1,7 +1,7 @@
-Sphinx>=1.4.3
-sphinx-rtd-theme
-setuptools
-docutils
-lxml
-sphinx-notfound-page
-docutils<0.18
+Sphinx==4.5.0
+sphinx-rtd-theme==1.0.0
+sphinx-autobuild==2021.3.14
+sphinx-notfound-page==0.8
+lxml==4.8.0
+myst-parser==0.17.0
+sphinx-panels==0.6.0
