@@ -7,4 +7,5 @@ Sorry, We could not find a page.
 Try using the search box or go to the release homepage:
 
   * `1.2.x (crux) <https://docs.vyos.io/en/crux/>`_
+  * `1.3.x (crux) <https://docs.vyos.io/en/equuleus/>`_
   * `rolling release (equuleus) <https://docs.vyos.io/en/latest/>`_
