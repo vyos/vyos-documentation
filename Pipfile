@@ -9,6 +9,7 @@ docutils = "*"
 lxml = "*"
 sphinx-notfound-page = "*"
 Sphinx = ">=1.4.3"
+sphinx-panels = "*"
 
 [dev-packages]
 

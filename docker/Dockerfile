@@ -35,6 +35,7 @@ RUN pip3 install sphinx-autobuild
 RUN pip3 install sphinx-notfound-page
 RUN pip3 install lxml
 RUN pip3 install myst-parser
+RUN pip3 install sphinx-panels
 
 
 # Cleanup

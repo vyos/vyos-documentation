@@ -47,6 +47,7 @@ extensions = ['sphinx.ext.intersphinx',
               'notfound.extension',
               'autosectionlabel',
               'myst_parser',
+              'sphinx_panels',
               'vyos'
 ]
 

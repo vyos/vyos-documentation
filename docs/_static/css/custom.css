@@ -1,3 +1,8 @@
+div.card-header {
+  font-weight: bold;
+  background: #fdab10;
+}
+
 span.opcmd,
 span.cfgcmd {
     font-weight: bold;
