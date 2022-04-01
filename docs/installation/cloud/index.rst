@@ -1,3 +1,5 @@
+.. _cloud_env:
+
 ##################################
 Running VyOS in Cloud Environments
 ##################################

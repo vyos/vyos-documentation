@@ -1,3 +1,5 @@
+.. _virtual_env:
+
 ####################################
 Running VyOS in Virtual Environments
 ####################################

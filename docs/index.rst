@@ -10,22 +10,22 @@ VyOS User Guide
    
    Get / Build VyOS
    ^^^^^^^^^^^^^^^^
-   Quickly :ref:`Build<contributing/build-vyos:build vyos>` your own Image or take a look at how to :ref:`download<installation/install:download>` a free or supported version.
+   Quickly :ref:`Build<build>` your own Image or take a look at how to :ref:`download<download>` a free or supported version.
    ---
 
    Install VyOS
    ^^^^^^^^^^^^
-   Read about how to install VyOS on :ref:`Bare Metall<installation/install:installation>` or in a
-   :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>` and
-   how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>` providers 
+   Read about how to install VyOS on :ref:`Bare Metall<installation>` or in a
+   :ref:`Virtual Environment<virtual_env>` and
+   how to use an image with the usual :ref:`cloud<cloud_env>` providers 
    ---
 
    Configuration and Operation
    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   Use the :ref:`Quickstart Guide<quick-start:Quick Start>`, to have a fast overview. Or go deeper and
-   set up :ref:`advanced routing<configuration/protocols/index:protocols>`,
-   :ref:`VRFs<configuration/vrf/index:vrf>`, or
-   :ref:`VPNs<configuration/vpn/index:vpn>` for example.
+   Use the :ref:`Quickstart Guide<quick-start>`, to have a fast overview. Or go deeper and
+   set up :ref:`advanced routing<protocols>`,
+   :ref:`VRFs<vrf>`, or
+   :ref:`VPNs<vpn>` for example.
    ---
 
    Automate
@@ -37,16 +37,16 @@ VyOS User Guide
 
    Examples
    ^^^^^^^^
-   Get some inspiration from the :ref:`Configuration Blueprints<configexamples/index:Configuration Blueprints>`
+   Get some inspiration from the :ref:`Configuration Blueprints<examples>`
    to build your infrastructure.
    ---
 
    Contribute and Community
    ^^^^^^^^^^^^^^^^^^^^^^^^
    | There are many ways to contribute to the project.
-   | Add missing parts or improve the :ref:`Documentation<documentation:Write Documentation>`.
+   | Add missing parts or improve the :ref:`Documentation<documentation>`.
    | Discuss in `Slack <https://slack.vyos.io/>`_ or the `Forum <https://forum.vyos.io>`_.
-   | Or you can pick up a `Task <https://phabricator.vyos.net/>`_ and fix the :ref:`code<contributing/development:development>`.
+   | Or you can pick up a `Task <https://phabricator.vyos.net/>`_ and fix the :ref:`code<development>`.
 
 
 .. toctree::
