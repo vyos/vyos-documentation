@@ -850,6 +850,9 @@ For outbound updates the order of preference is:
    must create an IP prefix list for the specified BGP peer applied in inbound
    derection.
 
+.. cfgcmd:: set protocols bgp neighbor <address|interface> solo
+
+   This command prevents from sending back prefixes learned from the neighbor.
 
 BGP Scaling Configuration
 -------------------------
