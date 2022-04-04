@@ -8,16 +8,36 @@
    _ext/releasenotes.py
 
 
+2022-04-02
+==========
+
+* :vytask:`T4335` (bug): open-vmdk fails to build under gcc-10.+
+
+
+2022-04-01
+==========
+
+* :vytask:`T4332` (bug): bgp: deterministic-med cannot be disabled while addpath-tx-bestpath-per-AS is in use
+
+
+2022-03-31
+==========
+
+* :vytask:`T4326` (feature): Add bgp option no-suppress-duplicates
+* :vytask:`T4323` (default): ospf6d crashes on latest vyos nightly
+
+
+2022-03-29
+==========
+
+* :vytask:`T3686` (bug): Bridging OpenVPN tap with no local-address breaks
+* :vytask:`T3635` (default): Add ability to use mDNS repeater with VRRP
+
+
 2022-03-26
 ==========
 
 * :vytask:`T4321` (default): Allow BGP neighbors between different VIFs on the same VyOS
-
-
-2022-03-25
-==========
-
-* :vytask:`T4319` (bug): The command "set system ipv6 disable" doesn't work as expected.
 
 
 2022-03-24
