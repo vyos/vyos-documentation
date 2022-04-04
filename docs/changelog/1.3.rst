@@ -8,10 +8,10 @@
    _ext/releasenotes.py
 
 
-2022-03-25
+2022-03-29
 ==========
 
-* :vytask:`T4319` (bug): The command "set system ipv6 disable" doesn't work as expected.
+* :vytask:`T3686` (bug): Bridging OpenVPN tap with no local-address breaks
 
 
 2022-03-24
