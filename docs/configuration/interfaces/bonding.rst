@@ -20,7 +20,7 @@ Common interface configuration
 ==============================
 
 .. cmdinclude:: /_include/interface-common-with-dhcp.txt
-   :var0: bond
+   :var0: bonding
    :var1: bond0
 
 Member Interfaces
@@ -275,21 +275,21 @@ Offloading
 ----------
 
 .. cmdinclude:: /_include/interface-xdp.txt
-   :var0: bonding
+   :var0: bondinging
    :var1: bond0
 
 VLAN
 ====
 
 .. cmdinclude:: /_include/interface-vlan-8021q.txt
-   :var0: bond
+   :var0: bonding
    :var1: bond0
 
 Port Mirror (SPAN)
 ==================
 
 .. cmdinclude:: ../../_include/interface-mirror.txt
-   :var0: bonding
+   :var0: bondinging
    :var1: bond1
    :var2: eth3
 
