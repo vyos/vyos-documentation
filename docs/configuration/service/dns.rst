@@ -106,6 +106,13 @@ avoid being tracked by the provider of your upstream DNS server.
    This setting, which defaults to 3600 seconds, puts a maximum on the amount
    of time negative entries are cached.
 
+.. cfgcmd:: set service dns forwarding timeout <10-60000>
+
+   The number of milliseconds to wait for a remote authoritative server to
+   respond before timing out and responding with SERVFAIL.
+
+   This setting defaults to 1500 and is valid between 10 and 60000.
+
 .. cfgcmd:: set service dns forwarding listen-address <address>
 
    The local IPv4 or IPv6 addresses to bind the DNS forwarder to. The forwarder
