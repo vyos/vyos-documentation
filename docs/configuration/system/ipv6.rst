@@ -5,11 +5,6 @@ IPv6
 System configuration commands
 -----------------------------
 
-.. cfgcmd:: set system ipv6 disable
-
-   Use this command to disable assignment of IPv6 addresses on all
-   interfaces.
-
 .. cfgcmd:: set system ipv6 disable-forwarding
 
    Use this command to disable IPv6 forwarding on all interfaces.
