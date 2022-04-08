@@ -10,6 +10,9 @@ System configuration commands
    Use this command to disable assignment of IPv6 addresses on all
    interfaces.
 
+   .. note:: This command is deprecated in VyOS 1.3 (equuleus) and removed in
+      VyOS 1.4 (sagitta). IPv6 address family can no longer be disabled.
+
 .. cfgcmd:: set system ipv6 disable-forwarding
 
    Use this command to disable IPv6 forwarding on all interfaces.
