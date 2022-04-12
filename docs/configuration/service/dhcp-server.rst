@@ -305,6 +305,11 @@ Options
      - bootfile-name, filename
      - Bootstrap file name
      - N
+   * - bootfile-size
+     - 13
+     - boot-size
+     - Boot image length in 512-octet blocks
+     - N
    * - smtp-server
      - 69
      - smtp-server
