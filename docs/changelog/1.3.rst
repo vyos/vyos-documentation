@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2022-04-08
+==========
+
+* :vytask:`T4331` (bug): IPv6 link local addresses are not configured when an interface is in a VRF
+* :vytask:`T4339` (bug): wwan: tab-completion results in "No such file or directory" if there is no WWAN interface
+* :vytask:`T4338` (bug): wwan: changing interface description should not trigger reconnect
+* :vytask:`T4324` (bug): wwan: check alive script should only be run via cron if a wwan interface is configured at all
+
+
+2022-04-07
+==========
+
+* :vytask:`T4330` (bug): MTU settings cannot be applied when IPv6 is disabled
+* :vytask:`T4346` (feature): Deprecate "system ipv6 disable" option to disable address family within OS kernel
+* :vytask:`T4337` (bug): isis: IETF SPF delay algorithm can not be configured - results in vyos.frr.CommitError
+* :vytask:`T4319` (bug): The command "set system ipv6 disable" doesn't work as expected.
+* :vytask:`T4341` (feature): login: disable user-account prior to deletion and wait until deletion is complete
+* :vytask:`T4336` (feature): isis: add support for MD5 authentication password on a circuit
+
+
+2022-04-06
+==========
+
+* :vytask:`T4308` (feature): Op-comm "Show log frr"  to view specific protocol logs
+
+
 2022-03-29
 ==========
 
