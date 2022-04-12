@@ -44,7 +44,7 @@ Prefix Lists
 
 .. cfgcmd:: set policy prefix-list <text> rule <1-65535> le <0-32>
 
-   Netmask less than lenght
+   Netmask less than length
 
 IPv6 Prefix Lists
 =================
@@ -77,4 +77,4 @@ IPv6 Prefix Lists
 
 .. cfgcmd:: set policy prefix-list6 <text> rule <1-65535> le <0-128>
 
-   Netmask less than lenght
+   Netmask less than length
