@@ -24,7 +24,7 @@ jobs:
           PHABRICATOR_API: ${{ secrets.PHABRICATOR_API }}
         if: env.PHABRICATOR_API != null
         run: |
-          pip3 install phabricator
+          pip3 install phabricator==0.8.0
           python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b current equuleus
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -61,7 +61,7 @@ jobs:
           PHABRICATOR_API: ${{ secrets.PHABRICATOR_API }}
         if: env.PHABRICATOR_API != null
         run: |
-          pip3 install phabricator
+          pip3 install phabricator==0.8.0
           python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b equuleus
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
