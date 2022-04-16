@@ -214,7 +214,7 @@ Operation
 =========
 
 It is not sufficient to only configure a VRF but VRFs must be maintained, too.
-For VR Fmaintenance the followin operational commands are in place.
+For VRF maintenance, the following operational commands are in place.
 
 .. opcmd:: show vrf
 
