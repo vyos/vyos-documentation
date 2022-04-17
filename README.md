@@ -62,7 +62,7 @@ Then run:
 sudo pip install sphinx-rtd-theme
 ```
 
-Do the following to build the HTML and start a webserver:
+Do the following to build the HTML and start a web server:
 * Run `make livehtml` inside the `docs` folder
 
 Then, to view the live output:
