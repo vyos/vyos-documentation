@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2022-04-15
+==========
+
+* :vytask:`T4327` (default): Ethernet interface configuration fails on Hyper-V due to speed/duplex/autoneg ethtool command error
+* :vytask:`T4364` (feature): salt-minion: Upgrade to 3004 and migrate to get_config_dict()
+
+
+2022-04-13
+==========
+
+* :vytask:`T4333` (feature): Jinja2: add plugin to test if a variable is defined and not none to reduce template complexity
+
+
 2022-04-08
 ==========
 
@@ -1987,7 +2000,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.185 / 5.10.106
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.188 / 5.10.111
 
 
 2021-02-15
