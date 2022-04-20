@@ -16,6 +16,8 @@ where you might need that some network can access other in a different VRF.
 The scope of this document is to cover such cases in a dynamic way without the
 use of MPLS-LDP.
 
+General information about L3VPNs can be found in the :ref:`configuration/vrf/index:L3VPN VRFs` chapter.
+
 ********
 Overview
 ********
@@ -68,11 +70,13 @@ community(ies) into that prefix.
 ********
 Topology
 ********
-
 .. image:: /_static/images/inter-vrf-routing-vrf-lite.png
    :width: 70%
-   :align: left
+   :align: center
    :alt: Network Topology Diagram
+
+
+
 
 IP Schema
 =========
@@ -133,7 +137,8 @@ Step 1: VRF and Configurations to remote networks
 -------------------------------------------------
 
 - Configuration
-^^^^^^^^^^^^^^^
+
+
 
 Set the VRF name and Table ID, set interface address and bind it to the VRF.
 Last add the static route to the remote network.
@@ -153,7 +158,8 @@ Last add the static route to the remote network.
    set vrf name <VRF> protocols static route <NETWORK/CIDR> next-hop <REMOTE IP ADDRESS>
 
 - Verification
-^^^^^^^^^^^^^^
+
+
 
 Checking the routing table of the VRF should reveal both static and connected
 entries active. A PING test between the Core and remote router is a way to
@@ -221,8 +227,10 @@ validate connectivity within the VRF.
 Step 2: BGP Configuration for VRF-Lite
 --------------------------------------
 
+
 - Configuration
-^^^^^^^^^^^^^^^
+
+
 
 Setting BGP global local-as as well inside the VRF. Redistribute static routes
 to inject configured networks into the BGP process but still inside the VRF.
@@ -238,7 +246,8 @@ to inject configured networks into the BGP process but still inside the VRF.
    set vrf name <VRF> protocols bgp address-family <AF IPv4/IPv6> redistribute static
 
 - Verification
-^^^^^^^^^^^^^^
+
+
 
 Check the BGP VRF table and verify if the static routes are injected showing
 the correct next-hop information.
@@ -277,8 +286,9 @@ the correct next-hop information.
 Step 3: VPN Configuration
 -------------------------
 
+
 - Configuration
-^^^^^^^^^^^^^^^
+
 
 Within the VRF we set the Route-Distinguisher (RD) and Route-Targets (RT), then
 we enable the export/import VPN.
@@ -308,7 +318,8 @@ There are some cases where this is not needed -for example, in some
 DDoS appliance- but most inter-vrf routing designs use the above configurations.
 
 - Verification
-^^^^^^^^^^^^^^
+
+
 
 After configured all the VRFs involved in this topology we take a deeper look
 at both BGP and Routing table for the VRF LAN1
@@ -410,10 +421,11 @@ installed, we can see -between round brackets- the exported VRF table.
 Step 4: End to End verification
 -------------------------------
 
+
 Now we perform some end-to-end testing
 
 - From Management to LAN1/LAN2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 .. code-block:: none
 
@@ -455,7 +467,8 @@ Now we perform some end-to-end testing
    rtt min/avg/max/mdev = 1.660/1.960/2.315/0.236 ms
 
 - From Management to Outside (fails as intended)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 
 .. code-block:: none
 
@@ -505,7 +518,8 @@ Now we perform some end-to-end testing
 
 
 - LAN1 to Outside
-^^^^^^^^^^^^^^^^^
+
+
 
 .. code-block:: none
 
@@ -559,7 +573,8 @@ Now we perform some end-to-end testing
    route and ping will fail.
 
 - LAN1 to LAN2
-^^^^^^^^^^^^^^
+
+
 
 .. code-block:: none
 
@@ -596,10 +611,10 @@ Appendix-A
 **********
 
 Full configuration from all devices
------------------------------------
+===================================
 
 - Core
-^^^^^^
+
 
 .. code-block:: none
 
@@ -684,7 +699,7 @@ Full configuration from all devices
 
 
 - LAN1
-^^^^^^
+
 
 .. code-block:: none
 
@@ -696,9 +711,11 @@ Full configuration from all devices
    set protocols static route6 ::/0 next-hop 2001:db8::*
 
 - LAN2
-^^^^^^
+
+
 
 .. code-block:: none
+
    set interfaces dummy dum0 address '172.16.0.1/24'
    set interfaces dummy dum0 address '2001:db8:0:2::1/64'
    set interfaces ethernet eth0 hw-id '50:00:00:03:00:00'
@@ -708,7 +725,7 @@ Full configuration from all devices
    set protocols static route6 ::/0 next-hop 2001:db8::2
 
 - Management
-^^^^^^^^^^^^
+
 
 .. code-block:: none
 
@@ -720,7 +737,7 @@ Full configuration from all devices
    set protocols static route6 ::/0 next-hop 2001:db8::4
 
 - ISP
-^^^^^
+
 
 .. code-block:: none
 
@@ -747,14 +764,16 @@ Appendix-B
 **********
 
 Route-Filtering
----------------
+===============
+
 
 When importing routes using MP-BGP it is possible to filter a subset of them
 before are injected in the BGP table. One of the most common case is to use a
 route-map with an prefix-list.
 
 - Configuration
-^^^^^^^^^^^^^^^
+
+
 
 We create a prefix-list first and add all the routes we need to.
 
@@ -794,11 +813,11 @@ actions inside the rules of the route-map.
    set policy route-map LAN2-Internet-v6 rule 1 match ipv6 address prefix-list 'LAN2-Internet-v6'
 
 We are using a "white list" approach by allowing only what is necessary. In case
-that need to implement a "black list" approach you will ned to change the action
-in the route-map for a deny BUT you need to add a rule that permit the rest due
-to the implicit deny in the route-map.
+that need to implement a "black list" approach then you will need to change the
+action in the route-map for a deny BUT you need to add a rule that permits the
+rest due to the implicit deny in the route-map.
 
-Then we need to attach the policy into the bgp process. This needs to be under
+Then we need to attach the policy to the BGP process. This needs to be under
 the import statement in the vrf we need to filter.
 
 .. code-block:: none
@@ -808,7 +827,7 @@ the import statement in the vrf we need to filter.
 
 
 - Verification
-^^^^^^^^^^^^^^
+
 
 .. code-block:: none
 
