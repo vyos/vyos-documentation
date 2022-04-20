@@ -17,6 +17,7 @@ This chapter contains various configuration examples:
    wan-load-balancing
    pppoe-ipv6-basic
    l3vpn-hub-and-spoke
+   inter-vrf-routing-vrf-lite
 
 
 Configuration Blueprints (autotest)
