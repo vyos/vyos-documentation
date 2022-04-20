@@ -32,7 +32,8 @@ Configuration
 
    Enforce strict path checking
 
-.. cfgcmd:: set service https virtual-host <vhost> listen-address
+.. cfgcmd:: set service https virtual-host <vhost> listen-address 
+            <ipv4 or ipv6 address>
 
    Address to listen for HTTPS requests
 
