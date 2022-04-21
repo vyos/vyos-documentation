@@ -115,24 +115,26 @@ PPPoE options
    timeout period, after which an idle PPPoE link will be disconnected. A
    non-zero idle timeout will never disconnect the link after it first came up.
 
-.. cfgcmd:: set interfaces pppoe <interface> default-route [auto | force | none]
+.. cfgcmd:: set interfaces pppoe <interface> no-default-route
 
-   Use this command to specify whether to automatically add a default route
-   pointing to the endpoint of the PPPoE when the link comes up. The default
-   route is only added if no other default route already exists in the system.
+   Only request an address from the PPPoE server but do not install any default
+   route.
 
-   **default:** A default route to the remote endpoint is automatically added
-   when the link comes up (i.e. auto).
+   Example:
 
-   * auto: A default route is added if no other default route (From any
-     source) already exists.
-   * force: A default route is added after removing *all* existing default
-     routes.
-   * none: No default route is installed.
+   .. code-block:: none
 
-.. note:: In all modes except 'none', all default routes using this interface
-   will be removed when the interface is torn down - even manually installed
-   static routes.
+     set interfaces pppoe pppoe0 no-default-route
+
+.. cfgcmd:: set interfaces pppoe <interface> default-route-distance <distance>
+
+   Set the distance for the default gateway sent by the PPPoE server.
+
+   Example:
+
+   .. code-block:: none
+
+     set interfaces pppoe pppoe0 default-route-distance 220
 
 .. cfgcmd:: set interfaces pppoe <interface> idle-timeout <time>
 
@@ -190,7 +192,7 @@ PPPoE options
   .. hint:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in
     1452 bytes on a 1492 byte MTU.
 
-  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to 
+  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to
   automatically set the proper value.
 
 .. cfgcmd:: set interfaces pppoe <interface> ip disable-forwarding
@@ -235,8 +237,8 @@ IPv6
 
   .. hint:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in
     1452 bytes on a 1492 byte MTU.
-  
-  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to 
+
+  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to
   automatically set the proper value.
 
 .. cfgcmd:: set interfaces pppoe <interface> ipv6 disable-forwarding
