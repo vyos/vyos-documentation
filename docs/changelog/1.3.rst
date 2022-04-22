@@ -1626,7 +1626,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.185 / 5.10.106
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.188 / 5.10.111
 
 
 2021-02-14
