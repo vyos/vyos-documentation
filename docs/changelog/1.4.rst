@@ -8,6 +8,55 @@
    _ext/releasenotes.py
 
 
+2022-04-24
+==========
+
+* :vytask:`T4342` (bug): "show ip ospf neighbor address x.x.x.x"  gives "unknown command" error
+
+
+2022-04-23
+==========
+
+* :vytask:`T4386` (default): Applying limiter on traffic-policy "in" fails, incorrectly reports mirror or redirect policy in use
+
+
+2022-04-22
+==========
+
+* :vytask:`T4389` (feature): dhcp: add vendor option support for Ubiquity Unifi controller
+
+
+2022-04-21
+==========
+
+* :vytask:`T4385` (bug): bgp: peer-group member cannot override remote-as of peer-group
+* :vytask:`T4384` (feature): pppoe: replace default-route CLI option with common CLI nodes already present for DHCP
+
+
+2022-04-20
+==========
+
+* :vytask:`T4345` (bug): New firewall code does not accept "rate/time interval" syntax used in old config
+* :vytask:`T4231` (feature): Feature Request: ocserv: 2FA (password+OTP) support in Openconnect
+
+
+2022-04-19
+==========
+
+* :vytask:`T4379` (bug): PPPoE: default-route lost after applying additional static routes
+* :vytask:`T4344` (bug): DHCP statistics not matching, conf-mode generates incorrect pool name with dash
+* :vytask:`T4268` (bug): Elevated LA while using VyOS monitoring feature
+
+
+2022-04-18
+==========
+
+* :vytask:`T4351` (bug): Openvpn conf-mode "openvpn-option" is not respected
+* :vytask:`T4278` (default): vyos-vm-images: fix vagrant libvirt box
+* :vytask:`T4368` (bug): bgp: AS specified for local as is the same as the remote as and this is not allowed.
+* :vytask:`T4370` (feature): vxlan: geneve: support configuration of df bit option
+
+
 2022-04-15
 ==========
 
