@@ -154,8 +154,6 @@ either a source or destination. Members can be added or removed from a
 group without changes to, or the need to reload, individual firewall
 rules.
 
-.. note:: Groups can also be referenced by NAT configuration.
-
 Groups need to have unique names. Even though some contain IPv4
 addresses and others contain IPv6 addresses, they still need to have
 unique names, so you may want to append "-v4" or "-v6" to your group

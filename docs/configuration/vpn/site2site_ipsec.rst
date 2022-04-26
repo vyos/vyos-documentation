@@ -74,15 +74,18 @@ Each site-to-site peer has the next options:
 * ``connection-type`` - how to handle this connection process. Possible
   variants:
 
- * ``initiate`` - do initial connection to remote peer immediately after
+ * ``initiate`` - does initial connection to remote peer immediately after
    configuring and after boot. In this mode the connection will not be restarted
    in case of disconnection, therefore should be used only together with DPD or
    another session tracking methods;
 
- * ``respond`` - do not try to initiate a connection to a remote peer. In this
+ * ``respond`` - does not try to initiate a connection to a remote peer. In this
    mode, the IPSec session will be established only after initiation from a
    remote peer. Could be useful when there is no direct connectivity to the
    peer due to firewall or NAT in the middle of the local and remote side.
+
+ * ``none`` - loads the connection only, which then can be manually initiated or
+   used as a responder configuration.
 
 * ``default-esp-group`` - ESP group to use by default for traffic encryption.
   Might be overwritten by individual settings for tunnel or VTI interface
