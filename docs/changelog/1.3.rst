@@ -8,6 +8,13 @@
    _ext/releasenotes.py
 
 
+2022-04-19
+==========
+
+* :vytask:`T4344` (bug): DHCP statistics not matching, conf-mode generates incorrect pool name with dash
+* :vytask:`T4268` (bug): Elevated LA while using VyOS monitoring feature
+
+
 2022-04-08
 ==========
 
