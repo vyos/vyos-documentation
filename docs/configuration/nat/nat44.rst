@@ -105,7 +105,7 @@ Bidirectional NAT
 
 This is a common scenario where both :ref:`source-nat` and
 :ref:`destination-nat` are configured at the same time. It's commonly
-used then internal (private) hosts need to establish a connection with
+used when internal (private) hosts need to establish a connection with
 external resources and external systems need to access internal
 (private) resources.
 
