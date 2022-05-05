@@ -8,7 +8,7 @@ BGP Example
 
   # Create policy
   set policy route-map setmet rule 2 action 'permit'
-  set policy route-map setmet rule 2 set as-path-prepend '2 2 2'
+  set policy route-map setmet rule 2 set as-path prepend '2 2 2'
 
   # Apply policy to BGP
   set protocols bgp local-as 1

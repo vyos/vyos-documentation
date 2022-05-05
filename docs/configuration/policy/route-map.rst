@@ -149,15 +149,20 @@ Route Map
 
    BGP aggregator attribute: AS number or IP address of an aggregation.
 
-.. cfgcmd:: set policy route-map <text> rule <1-65535> set as-path-exclude
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set as-path exclude
    <text>
 
-   Remove ASN(s) from a BGP AS-path attribute. For example "456 64500 45001".
+   Drop AS-NUMBER from the BGP AS path.
 
-.. cfgcmd:: set policy route-map <text> rule <1-65535> set as-path-prepend
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set as-path prepend
    <text>
 
-   Prepend string for a BGP AS-path attribute. For example "64501 64501".
+   Prepend the given string of AS numbers to the AS_PATH of the BGP path's NLRI.
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set as-path
+   prepend-last-as <n>
+
+   Prepend the existing last AS number (the leftmost ASN) to the AS_PATH.
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set atomic-aggregate
 
@@ -211,8 +216,8 @@ Route Map
    peer-address
 
    Set the BGP nexthop address to the address of the peer. For an incoming
-   route-map this means the ip address of our peer is used. For an 
-   outgoing route-map this means the ip address of our self is used to 
+   route-map this means the ip address of our peer is used. For an
+   outgoing route-map this means the ip address of our self is used to
    establish the peering with our neighbor.
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set ipv6-next-hop
@@ -224,17 +229,17 @@ Route Map
    peer-address
 
    Set the BGP nexthop address to the address of the peer. For an incoming
-   route-map this means the ip address of our peer is used. For an 
-   outgoing route-map this means the ip address of our self is used to 
+   route-map this means the ip address of our peer is used. For an
+   outgoing route-map this means the ip address of our self is used to
    establish the peering with our neighbor.
-   
+
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set ipv6-next-hop
    prefer-global
-   
+
    For Incoming and Import Route-maps if we receive a v6 global and v6 LL
    address for the route, then prefer to use the global address as the
    nexthop.
-   
+
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set large-community
    <text>
 

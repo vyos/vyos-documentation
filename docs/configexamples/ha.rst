@@ -563,7 +563,7 @@ it is not 203.0.113.0/24.
    set policy route-map BGPOUT rule 10000 action 'deny'
    set policy route-map BGPPREPENDOUT description 'BGP Export Filter'
    set policy route-map BGPPREPENDOUT rule 10 action 'permit'
-   set policy route-map BGPPREPENDOUT rule 10 set as-path-prepend '65551 65551 65551'
+   set policy route-map BGPPREPENDOUT rule 10 set as-path prepend '65551 65551 65551'
    set policy route-map BGPPREPENDOUT rule 10 match ip address prefix-list 'BGPOUT'
    set policy route-map BGPPREPENDOUT rule 10000 action 'deny'
 
