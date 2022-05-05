@@ -8,6 +8,49 @@
    _ext/releasenotes.py
 
 
+2022-05-01
+==========
+
+* :vytask:`T4369` (bug): OpenVPN: daemon not restarted on changes to "openvpn-option" CLI node
+* :vytask:`T4363` (bug): salt-minion: default mine_interval option is not set
+* :vytask:`T4353` (feature): Add Jinja2 linter to vyos-1x build process
+
+
+2022-04-29
+==========
+
+* :vytask:`T4388` (bug): dhcp-server: missing constraint on tftp-server-name option
+* :vytask:`T4366` (bug): geneve: interface is removed on changes to e.g. description
+
+
+2022-04-28
+==========
+
+* :vytask:`T4400` (bug): Container OP mode has delete where show and update should be
+
+
+2022-04-27
+==========
+
+* :vytask:`T4398` (bug): IPSec site-to-site generates unexpected passthrough option
+* :vytask:`T4397` (feature): arp: migrate static ARP entry configuration to get_config_dict() and make it VRF aware
+* :vytask:`T4357` (feature): Allow free-form setting of DHCPv6 server options
+
+
+2022-04-26
+==========
+
+* :vytask:`T4210` (bug): NAT source/destination negated ports throws an error
+* :vytask:`T4235` (default): Add config tree diff algorithm
+
+
+2022-04-25
+==========
+
+* :vytask:`T4390` (feature): op-mode: extend "show log" and "monitor log" with additional daemons/subsystems to read journalctl logs
+* :vytask:`T4391` (bug): PPPoE: IPv6 not working after system boot
+
+
 2022-04-24
 ==========
 
@@ -2049,7 +2092,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.188 / 5.10.111
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.191 / 5.10.113
 
 
 2021-02-15
