@@ -165,16 +165,17 @@ implemented.
 Configure
 *********
 
-.. cfgcmd:: set protocols static arp <address> hwaddr <mac>
+.. cfgcmd:: set protocols static arp interface <interface> address <host>
+   mac <mac>
 
    This will configure a static ARP entry always resolving `<address>` to
-   `<mac>`.
+   `<mac>` for interface `<interface>`.
 
    Example:
 
    .. code-block:: none
 
-     set protocols static arp 192.0.2.100 hwaddr 00:53:27:de:23:aa
+     set protocols static arp interface eth0 address 192.0.2.1 mac 01:23:45:67:89:01
 
 
 *********
