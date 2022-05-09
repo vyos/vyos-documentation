@@ -215,3 +215,9 @@ and then the OTP key.
 .. warning:: When using Time-based one-time password (TOTP) (OTP HOTP-time),
   be sure that the time on the server and the 
   OTP token generator are synchronized by NTP
+
+To display the configured OTP user settings, use the command:
+
+.. code-block:: none
+
+  show openconnect-server user <username> otp <full|key-b32|key-hex|qrcode|uri>
