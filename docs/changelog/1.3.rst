@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2022-05-07
+==========
+
+* :vytask:`T4361` (bug): `vyos.config.exists()` does not work for nodes with multiple values
+* :vytask:`T4354` (bug): Slave interfaces fall out from bonding during configuration change
+
+
+2022-05-03
+==========
+
+* :vytask:`T4395` (feature): Extend show vpn debug 
+
+
 2022-05-01
 ==========
 
