@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2022-05-07
+==========
+
+* :vytask:`T4361` (bug): `vyos.config.exists()` does not work for nodes with multiple values
+* :vytask:`T4354` (bug): Slave interfaces fall out from bonding during configuration change
+* :vytask:`T4419` (feature): vrf: support to disable IP forwarding within a given VRF
+
+
+2022-05-06
+==========
+
+* :vytask:`T4385` (bug): bgp: peer-group member cannot override remote-as of peer-group
+
+
+2022-05-05
+==========
+
+* :vytask:`T4414` (feature): Add route-map "as-path prepend last-as x" option
+
+
+2022-05-03
+==========
+
+* :vytask:`T4395` (feature): Extend show vpn debug 
+
+
 2022-05-01
 ==========
 
@@ -72,7 +98,6 @@
 2022-04-21
 ==========
 
-* :vytask:`T4385` (bug): bgp: peer-group member cannot override remote-as of peer-group
 * :vytask:`T4384` (feature): pppoe: replace default-route CLI option with common CLI nodes already present for DHCP
 
 
