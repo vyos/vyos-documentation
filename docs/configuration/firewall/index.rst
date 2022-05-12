@@ -290,6 +290,12 @@ Matching criteria
 
 There are a lot of matching criteria against which the package can be tested.
 
+.. cfgcmd:: set firewall name <name> rule <1-999999> connection-status nat
+   [destination | source]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> connection-status
+   nat [destination | source]
+
+   Match criteria based on nat connection status.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source address
    [address | addressrange | CIDR]
