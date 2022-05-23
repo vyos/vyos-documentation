@@ -8,6 +8,36 @@
    _ext/releasenotes.py
 
 
+2022-05-19
+==========
+
+* :vytask:`T4430` (bug): Show firewall output with visual shift default rule
+
+
+2022-05-16
+==========
+
+* :vytask:`T4377` (default): generate tech-support archive includes previous archives
+
+
+2022-05-12
+==========
+
+* :vytask:`T4100` (feature): Firewall increase maximum number of rules
+
+
+2022-05-11
+==========
+
+* :vytask:`T4405` (bug): DHCP client sometimes ignores `no-default-route` option of an interface
+
+
+2022-05-10
+==========
+
+* :vytask:`T1972` (feature): Allow setting interface name for virtual_ipaddress in VRRP VRID
+
+
 2022-05-07
 ==========
 
