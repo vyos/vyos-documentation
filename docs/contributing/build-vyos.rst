@@ -757,7 +757,9 @@ Run following command after building the ISO image.
 VMware
 ------
 
-Run following command after building the QEMU image.
+Requires ovftool already installed.
+
+Run following command after building the ISO image.
 
 .. code-block:: none
 
