@@ -8,6 +8,58 @@
    _ext/releasenotes.py
 
 
+2022-05-21
+==========
+
+* :vytask:`T4437` (bug): flow-accounting: support IPv6 flow collectors
+
+
+2022-05-20
+==========
+
+* :vytask:`T4418` (feature): Telegraf - output Plugin azure-data-explorer
+
+
+2022-05-19
+==========
+
+* :vytask:`T4434` (bug): DMVPN: cisco-authentication password length is 8 characters
+* :vytask:`T3938` (default): Rewrite the uptime script in Python to allow using it as a library
+* :vytask:`T4334` (default): Make the config lexer reentrant
+
+
+2022-05-17
+==========
+
+* :vytask:`T4424` (bug): policy local-route6 shows ipv4 format
+
+
+2022-05-16
+==========
+
+* :vytask:`T4377` (default): generate tech-support archive includes previous archives
+
+
+2022-05-12
+==========
+
+* :vytask:`T4417` (bug): VRRP doesn't start with conntrack-sync
+* :vytask:`T4100` (feature): Firewall increase maximum number of rules
+
+
+2022-05-11
+==========
+
+* :vytask:`T4405` (bug): DHCP client sometimes ignores `no-default-route` option of an interface
+
+
+2022-05-10
+==========
+
+* :vytask:`T4156` (default): Adding DHCP Option 13 (bootfile-size)
+* :vytask:`T1972` (feature): Allow setting interface name for virtual_ipaddress in VRRP VRID
+
+
 2022-05-07
 ==========
 
