@@ -111,6 +111,11 @@ Configuration
   interfaces.
 
 
+.. cfgcmd:: set vpn sstp port <port>
+
+  Specifies the port `<port>` that the SSTP port will listen on (default 443).
+
+
 .. cfgcmd:: set vpn sstp client-ip-pool subnet <subnet>
 
   Use `<subnet>` as the IP pool for all connecting clients.
