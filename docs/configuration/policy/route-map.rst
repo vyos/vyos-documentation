@@ -75,9 +75,24 @@ Route Map
    IP next-hop of route to match, based on access-list.
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> match ip nexthop
+   address <x.x.x.x>
+
+   IP next-hop of route to match, based on ip address.
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> match ip nexthop
+   prefix-len <0-32>
+
+   IP next-hop of route to match, based on prefix length.
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> match ip nexthop
    prefix-list <text>
 
    IP next-hop of route to match, based on prefix-list.
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> match ip nexthop
+   type <blackhole>
+
+   IP next-hop of route to match, based on type.
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> match ip route-source
    access-list <1-2699>
