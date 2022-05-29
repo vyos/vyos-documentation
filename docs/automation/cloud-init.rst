@@ -50,7 +50,7 @@ In VyOS, by default, enables only two modules:
 
 * ``write_files`` - this module allows to insert any files into the filesystem
   before the first boot, for example, pre-generated encryption keys,
-  certificates, or even a whole ``config.boot`` file.
+  certificates, or even a whole ``config.boot`` file. The format is described in the cloudinit documentation `Cloud-init-write_files`_.
 
 * ``vyos_userdata`` - the module accepts a list of CLI configuration commands in
   a ``vyos_config_commands`` section, which gives an easy way to configure the
@@ -427,5 +427,6 @@ References
 .. _vyos-vm-images: https://github.com/vyos/vyos-vm-images
 .. _cloud-init-docs: https://docs.vyos.io/en/equuleus/automation/cloud-init.html?highlight=cloud-init#vyos-cloud-init
 .. _Cloud-init-Support: https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_cloud_init
+.. _Cloud-init-write_files: https://cloudinit.readthedocs.io/en/latest/topics/examples.html#writing-out-arbitrary-files
 
 .. start_vyoslinter
