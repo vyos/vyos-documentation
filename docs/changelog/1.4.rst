@@ -8,6 +8,31 @@
    _ext/releasenotes.py
 
 
+2022-05-29
+==========
+
+* :vytask:`T2473` (feature): Xml for EIGRP [conf_mode]
+
+
+2022-05-28
+==========
+
+* :vytask:`T4448` (feature): rip: add support for explicit version selection
+
+
+2022-05-26
+==========
+
+* :vytask:`T4442` (feature): HTTP API add action "reset"
+
+
+2022-05-25
+==========
+
+* :vytask:`T4410` (feature): Telegraf - Output to Splunk
+* :vytask:`T4382` (bug): Replacing legacy loadFile exposes missing steps in migration scripts and other errors
+
+
 2022-05-21
 ==========
 
