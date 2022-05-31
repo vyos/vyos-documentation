@@ -109,6 +109,36 @@ Configuration
 
   Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 
+Dynamic-protection
+==================
+Protects host from brute-force attacks against
+SSH. Log messages are parsed, line-by-line, for recognized patterns. If an
+attack, such as several login failures within a few seconds, is detected, the
+offending IP is blocked. Offenders are unblocked after a set interval.
+
+.. cfgcmd:: set service ssh dynamic-protection
+
+  Allow ``ssh`` dynamic-protection.
+
+.. cfgcmd:: set service ssh dynamic-protection allow-from <address | prefix>
+
+  Whitelist of addresses and networks. Always allow inbound connections from
+  these systems.
+
+.. cfgcmd:: set service ssh dynamic-protection block-time <sec>
+
+  Block source IP in seconds. Subsequent blocks increase by a factor of 1.5
+  The default is 120.
+
+.. cfgcmd:: set service ssh dynamic-protection detect-time <sec>
+
+  Remember source IP in seconds before reset their score. The default is 1800.
+
+.. cfgcmd:: set service ssh dynamic-protection threshold <sec>
+
+  Block source IP when their cumulative attack score exceeds threshold. The
+  default is 30.
+
 Operation
 =========
 
