@@ -8,7 +8,7 @@ from docutils.parsers.rst import Directive, directives, states
 
 from sphinx.util.docutils import SphinxDirective
 
-from testcoverage import get_working_commands
+from testcoverage import get_working_commands, get_vyos_commands
 
 from sphinx.util import logging
 
@@ -26,6 +26,11 @@ def setup(app):
         'vyos_working_commands',
         get_working_commands(),
         #{"cfgcmd": [], "opcmd": []},
+        'html'
+    )
+    app.add_config_value(
+        'vyos_commands',
+        get_vyos_commands(),
         'html'
     )
     app.add_config_value(
@@ -550,17 +555,20 @@ def build_row(app, fromdocname, rowdata):
 
 
 
-def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
+def process_coverage(app, fromdocname, doccmd, xmlcmd, vyoscmd, cli_type):
     coverage_list = {}
     strip_true_list = []
     for cmd in doccmd:
         coverage_item = {
             'doccmd': None,
             'xmlcmd': None,
+            'vyoscmd': None,
             'doccmd_item': None,
             'xmlcmd_item': None,
+            'vyoscmd_item': None,
             'indocs': False,
             'inxml': False,
+            'invyos': False,
             'xmlfilename': None
         }
         coverage_item['doccmd'] = cmd['cmd']
@@ -576,10 +584,13 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
             coverage_item = {
                 'doccmd': None,
                 'xmlcmd': None,
+                'vyoscmd': None,
                 'doccmd_item': None,
                 'xmlcmd_item': None,
+                'vyoscmd_item': None,
                 'indocs': False,
                 'inxml': False,
+                'invyos': False,
                 'xmlfilename': None
             }
             coverage_item['xmlcmd'] = cmd['cmd']
@@ -592,7 +603,33 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
             coverage_list[strip]['xmlcmd_item'] = cmd
             coverage_list[strip]['inxml'] = True
             coverage_list[strip]['xmlfilename'] = cmd['filename']
-            strip_true_list.append(strip)
+
+    
+    for item in vyoscmd[cli_type]:
+        cmd = ' '.join(item['cmd'])
+        strip = strip_cmd(cmd)
+        if strip not in coverage_list.keys():
+            coverage_item = {
+                'doccmd': None,
+                'xmlcmd': None,
+                'vyoscmd': None,
+                'doccmd_item': None,
+                'xmlcmd_item': None,
+                'vyoscmd_item': None,
+                'indocs': False,
+                'inxml': False,
+                'invyos': False,
+                'xmlfilename': None
+            }
+            coverage_item['vyoscmd'] = cmd
+            coverage_item['invyos'] = True
+            coverage_list[strip] = dict(coverage_item)
+        else:
+            coverage_list[strip]['vyoscmd'] = cmd
+            coverage_list[strip]['invyos'] = True
+            if coverage_list[strip]['indocs'] and coverage_list[strip]['inxml']:
+                strip_true_list.append(strip)
+
     
 
     strip_true_list = list(set(strip_true_list))
@@ -605,11 +642,11 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
     
 
     table = nodes.table()
-    tgroup = nodes.tgroup(cols=3)
+    tgroup = nodes.tgroup(cols=4)
     table += tgroup
 
-    header = (f'Status {len(strip_true_list)}/{len(coverage_list)}', 'Documentaion', 'XML')
-    colwidths = (5, 50 , 50)
+    header = (f'Status {len(strip_true_list)}/{len(coverage_list)}', 'Documentation', 'XML', f'in VyOS {vyoscmd["os"]}')
+    colwidths = (5, 33 , 33, 33)
     table = nodes.table()
     tgroup = nodes.tgroup(cols=len(header))
     table += tgroup
@@ -623,6 +660,7 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
     for entry in sorted(coverage_list):
         doc_cmd_text = []
         doc_xml_text = []
+        doc_vyos_text = []
         if coverage_list[entry]['indocs']:
             doc_cmd_text.append(coverage_list[entry]['doccmd_item'])
         else:
@@ -633,8 +671,14 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
             doc_xml_text.append(coverage_list[entry]['xmlcmd'])
         else:
             doc_xml_text.append('Nothing found in XML Definitions')
+        
+        if coverage_list[entry]['invyos']:
+            doc_vyos_text.append(coverage_list[entry]['vyoscmd'])
+        else:
+            doc_vyos_text.append('Nothing found in VyOS')
 
-        if not coverage_list[entry]['indocs'] or not coverage_list[entry]['inxml']:
+
+        if not coverage_list[entry]['indocs'] or not coverage_list[entry]['inxml'] or not coverage_list[entry]['invyos']:
             status = False
         else:
             status = True
@@ -643,7 +687,8 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, cli_type):
             (
                 status,
                 doc_cmd_text,
-                doc_xml_text
+                doc_xml_text,
+                doc_vyos_text
 
             )
         )
@@ -678,6 +723,7 @@ def process_cmd_nodes(app, doctree, fromdocname):
                         fromdocname,
                         env.vyos_cfgcmd,
                         app.config.vyos_working_commands['cfgcmd'],
+                        app.config.vyos_commands,
                         'cfgcmd'
                         )
                     )
@@ -695,6 +741,7 @@ def process_cmd_nodes(app, doctree, fromdocname):
                         fromdocname,
                         env.vyos_opcmd,
                         app.config.vyos_working_commands['opcmd'],
+                        app.config.vyos_commands,
                         'opcmd'
                         )
                     )
