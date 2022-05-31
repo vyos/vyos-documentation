@@ -1,14 +1,13 @@
 '''
 generate json with all commands from xml for vyos documentation coverage
-
 '''
-
 
 import sys
 import os
 import json
 import re
 import logging
+import datetime
 
 from io import BytesIO
 from lxml import etree as ET
@@ -33,10 +32,31 @@ input_data = [
     }
 ]
 
+vyos_commands_dir = "_include/coverage"
+
 node_data = {
     'cfgcmd': {},
     'opcmd': {},
 }
+
+
+def get_vyos_commands():
+    return_data = None
+    for (dirpath, dirnames, filenames) in os.walk(vyos_commands_dir):
+        for file in filenames:
+            with open(f"{vyos_commands_dir}/{file}") as f:
+                data = json.load(f)
+            
+            if not return_data:
+                return_data = data
+            
+            # find latestes export
+            if datetime.datetime.fromisoformat(return_data['date']) < datetime.datetime.fromisoformat(data['date']):
+                return_data = data
+    
+    return return_data
+
+
 
 def get_properties(p):
     props = {}
@@ -378,6 +398,4 @@ def override_element(l: list):
         el.getparent().remove(el)
 
 if __name__ == "__main__":
-    res = get_working_commands()
-    print(json.dumps(res))
-    #print(res['cfgcmd'][0])
+    get_vyos_commands()
