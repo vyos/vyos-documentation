@@ -208,7 +208,7 @@ peer-address.
    set high-availability vrrp group int peer-address '10.200.201.3'
    set high-availability vrrp group int no-preempt
    set high-availability vrrp group int priority '200'
-   set high-availability vrrp group int virtual-address '10.200.201.1/24'
+   set high-availability vrrp group int address '10.200.201.1/24'
    set high-availability vrrp group int vrid '201'
 
 
@@ -222,7 +222,7 @@ peer-address.
    set high-availability vrrp group int peer-address '10.200.201.2'
    set high-availability vrrp group int no-preempt
    set high-availability vrrp group int priority '100'
-   set high-availability vrrp group int virtual-address '10.200.201.1/24'
+   set high-availability vrrp group int address '10.200.201.1/24'
    set high-availability vrrp group int vrid '201'
 
 
@@ -244,7 +244,7 @@ enterprise-wide.
    set high-availability vrrp group public peer-address '203.0.113.3'
    set high-availability vrrp group public no-preempt
    set high-availability vrrp group public priority '200'
-   set high-availability vrrp group public virtual-address '203.0.113.1/24'
+   set high-availability vrrp group public address '203.0.113.1/24'
    set high-availability vrrp group public vrid '113'
 
 **router2**
@@ -257,7 +257,7 @@ enterprise-wide.
    set high-availability vrrp group public peer-address '203.0.113.2'
    set high-availability vrrp group public no-preempt
    set high-availability vrrp group public priority '100'
-   set high-availability vrrp group public virtual-address '203.0.113.1/24'
+   set high-availability vrrp group public address '203.0.113.1/24'
    set high-availability vrrp group public vrid '113'
 
 
