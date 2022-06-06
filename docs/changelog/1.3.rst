@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2022-05-30
+==========
+
+* :vytask:`T4315` (feature): Telegraf - Output to prometheus
+
+
 2022-05-27
 ==========
 
