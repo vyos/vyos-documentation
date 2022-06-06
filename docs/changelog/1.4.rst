@@ -8,6 +8,21 @@
    _ext/releasenotes.py
 
 
+2022-05-31
+==========
+
+* :vytask:`T4212` (default): PermissionError when generating/installing server Certificate (generate pki certificate sign ...)
+* :vytask:`T4199` (bug): Commit failed when setting icmpv6 type any
+* :vytask:`T4148` (bug): Firewall - Error messages not that clear as it were in old firewall
+* :vytask:`T3659` (bug): Configuration won't accept IPv6 addresses for site-to-site VPN tunnel prefixes/traffic selectors
+
+
+2022-05-30
+==========
+
+* :vytask:`T4315` (feature): Telegraf - Output to prometheus
+
+
 2022-05-29
 ==========
 
