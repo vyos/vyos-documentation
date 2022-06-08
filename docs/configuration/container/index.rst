@@ -26,7 +26,7 @@ Configuration
     image that does not include the registry in the image name, Vyos will use 
     docker.io as the container registry. 
 
-.. cfgcmd:: set container <name> image        
+.. cfgcmd:: set container name <name> image        
     
     Sets the image name in the hub registry 
 
@@ -42,7 +42,7 @@ Configuration
 
       set container name mysql-server image quay.io/mysql:8.0
 
-.. cfgcmd:: set container <name> allow-host-networks
+.. cfgcmd:: set container name <name> allow-host-networks
     
     Allow host networking in a container. The network stack of the container is 
     not isolated from the host and will use the host IP.
@@ -52,11 +52,11 @@ Configuration
 
     .. note:: **allow-host-networks** cannot be used with **network** 
 
-.. cfgcmd:: set container <name> description <text>
+.. cfgcmd:: set container name <name> description <text>
 
     Sets the container description
 
-.. cfgcmd:: set container <name> environment '<key>' value '<value>'
+.. cfgcmd:: set container name <name> environment '<key>' value '<value>'
 
     Add custom environment variables.
     Multiple environment variables are allowed.
@@ -70,7 +70,7 @@ Configuration
         set container name mysql-server environment 'MYSQL_PASSWORD' value 'zabbix_pwd'
         set container name mysql-server environment 'MYSQL_ROOT_PASSWORD' value 'root_pwd'
 
-.. cfgcmd:: set container <name> network <networkname> 
+.. cfgcmd:: set container name <name> network <networkname> 
 
     Attaches user-defined network to a container.
     Only one network must be specified and must already exist.
@@ -84,7 +84,7 @@ Configuration
 
     .. note:: The first IP in the container network is reserved by the engine and cannot be used
 
-.. cfgcmd:: set container <name> port <portname> [source | destination ] <portnumber>
+.. cfgcmd:: set container name <name> port <portname> [source | destination ] <portnumber>
 
     Publishes a port for the container
 
@@ -93,7 +93,7 @@ Configuration
         set container name zabbix-web-nginx-mysql port http source 80
         set container name zabbix-web-nginx-mysql port http destination 8080
 
-.. cfgcmd:: set container <name> volume <volumename> [source | destination ] <path>
+.. cfgcmd:: set container name <name> volume <volumename> [source | destination ] <path>
 
     Mount a volume into the container
 
