@@ -119,7 +119,7 @@ software) and even distribute them, given you rename it and remove
 such assets before building. Although note that we do not provide
 support for images distributed by a third-party. See the
 `artwork license <https://github.com/vyos/vyos-build/blob/current/LICENSE.artwork>`_
-and the end-user license agreement at ``/usr/share/doc/vyos/EULA`` in
+and the end-user license agreement at ``/usr/share/vyos/EULA`` in
 any pre-built image for more precise information.
 
 
