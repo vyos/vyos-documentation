@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2022-06-09
+==========
+
+* :vytask:`T2580` (feature): Support for ip pools for ippoe
+
+
+2022-06-08
+==========
+
+* :vytask:`T4447` (bug): DHCPv6 prefix delegation `sla-id` limited to 128 
+* :vytask:`T4350` (bug): DMVPN opennhrp spokes dont work behind NAT
+
+
 2022-05-30
 ==========
 
@@ -384,7 +397,7 @@
 2021-12-28
 ==========
 
-* :vytask:`T3380` (bug): Show vpn ike sa with IPv6 remote peer
+* :vytask:`T3380` (bug): "show vpn ike sa" does not display IPv6 peers
 * :vytask:`T2933` (feature): VRRP add option virtual_ipaddress_excluded
 
 
@@ -1720,7 +1733,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.191 / 5.10.113
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.197 / 5.10.121
 
 
 2021-02-14
