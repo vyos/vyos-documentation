@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2022-06-12
+==========
+
+* :vytask:`T4380` (default): Feature Request: ocserv: 2FA OTP key generator in VyOS CLI
+
+
+2022-06-10
+==========
+
+* :vytask:`T4365` (bug): NAT - Error on setting up tables
+* :vytask:`T4465` (feature): node.def generation misses whitespace on multiple use of <path>
+
+
+2022-06-09
+==========
+
+* :vytask:`T4444` (default): sstp: Feature request. Port number changing support
+* :vytask:`T2580` (feature): Support for ip pools for ippoe
+
+
+2022-06-08
+==========
+
+* :vytask:`T4447` (bug): DHCPv6 prefix delegation `sla-id` limited to 128 
+
+
 2022-05-31
 ==========
 
@@ -721,7 +747,7 @@
 2021-12-28
 ==========
 
-* :vytask:`T3380` (bug): Show vpn ike sa with IPv6 remote peer
+* :vytask:`T3380` (bug): "show vpn ike sa" does not display IPv6 peers
 
 
 2021-12-27
@@ -2209,7 +2235,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.191 / 5.10.113
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.197 / 5.10.121
 
 
 2021-02-15
