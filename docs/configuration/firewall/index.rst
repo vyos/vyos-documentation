@@ -264,7 +264,7 @@ the action of the rule will be executed.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> action [drop | reject |
    accept]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> action [drop | 
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> action [drop |
    reject | accept]
 
    This required setting defines the action of the current rule.
@@ -275,10 +275,17 @@ the action of the rule will be executed.
    Provide a description for each rule.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> log [disable | enable]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log [disable | 
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log [disable |
    enable]
 
    Enable or disable logging for the matched packet.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> log-level [emerg |
+   alert | crit | err | warn | notice | info | debug]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log-level [emerg |
+   alert | crit | err | warn | notice | info | debug]
+
+   Define log-level. Only applicable if rule log is enable.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> disable
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> disable
@@ -355,37 +362,40 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall ipv6-name WAN-IN-v6 rule 10 source port '!22,https,3333-3338'
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
-   address-group <name>
+   address-group <name | !name>
 .. cfgcmd:: set firewall name <name> rule <1-999999> destination group
-   address-group <name>
+   address-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
-   address-group <name>
+   address-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
-   address-group <name>
+   address-group <name | !name>
 
-   Use a specific address-group
+   Use a specific address-group. Prepend character '!' for inverted matching
+   criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
-   network-group <name>
+   network-group <name | !name>
 .. cfgcmd:: set firewall name <name> rule <1-999999> destination group
-   network-group <name>
+   network-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
-   network-group <name>
+   network-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
-   network-group <name>
+   network-group <name | !name>
 
-   Use a specific network-group
+   Use a specific network-group. Prepend character '!' for inverted matching
+   criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
-   port-group <name>
+   port-group <name | !name>
 .. cfgcmd:: set firewall name <name> rule <1-999999> destination group
-   port-group <name>
+   port-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
-   port-group <name>
+   port-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
-   port-group <name>
+   port-group <name | !name>
 
-   Use a specific port-group
+   Use a specific port-group. Prepend character '!' for inverted matching
+   criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> protocol [<text> |
    <0-255> | all | tcp_udp]
@@ -423,6 +433,16 @@ There are a lot of matching criteria against which the package can be tested.
 
    Match against the state of a packet.
 
+.. cfgcmd:: set firewall name <name> rule <1-999999> ttl <eq | gt | lt> <0-255>
+
+   Match time to live parameter, where 'eq' stands for 'equal'; 'gt' stands for
+   'greater than', and 'lt' stands for 'less than'.
+
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> hop-limit <eq | gt |
+   lt> <0-255>
+
+   Match hop-limit parameter, where 'eq' stands for 'equal'; 'gt' stands for
+   'greater than', and 'lt' stands for 'less than'.
 
 ***********************************
 Applying a Rule-Set to an Interface
