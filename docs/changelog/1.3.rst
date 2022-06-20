@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2022-06-16
+==========
+
+* :vytask:`T3866` (bug): Configs with DNS forwarding listening on OpenVPN interfaces or interfaces without a fixed address cannot be migrated to the new syntax
+
+
+2022-06-15
+==========
+
+* :vytask:`T1890` (feature): Metatask: rewrite flow-accounting to XML and Python
+
+
 2022-06-09
 ==========
 
@@ -1733,7 +1745,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.197 / 5.10.121
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.197 / 5.10.123
 
 
 2021-02-14
