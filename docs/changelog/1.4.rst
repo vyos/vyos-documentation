@@ -8,9 +8,36 @@
    _ext/releasenotes.py
 
 
+2022-06-18
+==========
+
+* :vytask:`T4467` (bug): Validator Does Not Accept Signed Numbers
+
+
+2022-06-17
+==========
+
+* :vytask:`T4209` (bug): Firewall incorrect handler for recent count and time
+
+
+2022-06-16
+==========
+
+* :vytask:`T4352` (bug): wan-load balance - priority traffic rule doesn't work 
+
+
+2022-06-15
+==========
+
+* :vytask:`T4450` (feature): Route-map - Extend options for ip|ipv6 address match
+* :vytask:`T4449` (feature): Route-map - Extend options for ip next-hop match
+* :vytask:`T990` (feature): Make DNAT/SNAT a valid state in firewall rules.  
+
+
 2022-06-12
 ==========
 
+* :vytask:`T4420` (feature): Feature Request: ocserv: show configured 2FA OTP key
 * :vytask:`T4380` (default): Feature Request: ocserv: 2FA OTP key generator in VyOS CLI
 
 
@@ -2235,7 +2262,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.197 / 5.10.121
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.197 / 5.10.123
 
 
 2021-02-15
