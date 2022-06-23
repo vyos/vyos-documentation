@@ -28,6 +28,11 @@ Configuration
    want to receive/relay packets on both `eth1` and `eth2` both interfaces need
    to be added.
 
+.. cfgcmd:: set service broadcast-relay id <n> address <address>
+
+   Set a optional source IP of the forwarded packets,
+   otherwise the original sender address is used.
+
 .. cfgcmd:: set service broadcast-relay id <n> port <port>
 
    The UDP port number used by your apllication. It is mandatory for this kind
