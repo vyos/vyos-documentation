@@ -26,25 +26,25 @@ times are used to send a single character, and so dividing the signalling
 bit-rate by ten results in the overall transmission speed in characters per
 second. This is also the default setting if none of those options are defined.
 
-.. cfgcmd:: set service console-server <device> data-bits [7 | 8]
+.. cfgcmd:: set service console-server device <device> data-bits [7 | 8]
 
   Configure either seven or eight data bits. This defaults to eight data
   bits if left unconfigured.
 
-.. cfgcmd:: set service console-server <device> description <string>
+.. cfgcmd:: set service console-server device <device> description <string>
 
   A user friendly description identifying the connected peripheral.
 
-.. cfgcmd:: set service console-server <device> parity [even | odd | none]
+.. cfgcmd:: set service console-server device <device> parity [even | odd | none]
 
   Set the parity option for the console. If unset this will default to none.
 
-.. cfgcmd:: set service console-server <device> stop-bits [1 | 2]
+.. cfgcmd:: set service console-server device <device> stop-bits [1 | 2]
 
   Configure either one or two stop bits. This defaults to one stop bits if
   left unconfigured.
 
-.. cfgcmd:: set service console-server <device> speed 
+.. cfgcmd:: set service console-server device <device> speed 
    [ 300 | 1200 | 2400 | 4800 | 9600 | 19200 | 38400 | 57600 | 115200 ]
 
   .. note:: USB to serial converters will handle most of their work in software
@@ -58,7 +58,7 @@ Each individual configured console-server device can be directly exposed to
 the outside world. A user can directly connect via SSH to the configured
 port.
 
-.. cfgcmd:: set service console-server <device> ssh port <port>
+.. cfgcmd:: set service console-server device <device> ssh port <port>
 
   Accept SSH connections for the given `<device>` on TCP port `<port>`.
   After successfull authentication the user will be directly dropped to
@@ -106,3 +106,7 @@ Operation
 
   .. hint:: The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit
      the session use: ``Ctrl+E c .``
+
+.. opcmd:: show log console-server
+
+  Show the console server log.
