@@ -26,11 +26,6 @@ Configuration
    Configure IP address of the DHCP `<server>` which will handle the relayed
    packets.
 
-.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packets discard
-
-   The router should discard DHCP packages already containing relay agent
-   information to ensure that only requests from DHCP clients are forwarded.
-
 Options
 -------
 
@@ -45,7 +40,7 @@ Options
    DHCP packet size surpasses this value it will be forwarded without appending
    relay agent information. Range 64...1400, default 576.
 
-.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packet
+.. cfgcmd:: set service dhcp-relay relay-options relay-agents-packets
    <append | discard | forward | replace>
 
    Four policies for reforwarding DHCP packets exist:
@@ -117,7 +112,7 @@ Configuration
 Options
 -------
 
-.. cfgcmd:: set service dhcpv6-relay max-hop-count 'count'
+.. cfgcmd:: set service dhcpv6-relay max-hop-count <count>
 
    Set maximum hop count before packets are discarded, default: 10
 
