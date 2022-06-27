@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2022-06-20
+==========
+
+* :vytask:`T1856` (feature): Support configuring IPSec SA bytes
+
+
 2022-06-16
 ==========
 
