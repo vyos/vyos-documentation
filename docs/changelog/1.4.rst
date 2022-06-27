@@ -8,6 +8,25 @@
    _ext/releasenotes.py
 
 
+2022-06-25
+==========
+
+* :vytask:`T4482` (bug): dhcp: toggle of "dhcp-options no-default-route" has no effect
+* :vytask:`T4483` (feature): Upgrade fastnetmon to v1.2.2 community edition
+
+
+2022-06-22
+==========
+
+* :vytask:`T1748` (feature): vbash: beautify tab completion output/line breaks
+
+
+2022-06-20
+==========
+
+* :vytask:`T1856` (feature): Support configuring IPSec SA bytes
+
+
 2022-06-18
 ==========
 
