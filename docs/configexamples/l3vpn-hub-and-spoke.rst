@@ -104,9 +104,10 @@ Configuration
 Step-1: Configuring IGP and enabling MPLS LDP
 =============================================
 
-At the first step we need to configure the IP/MPLS backbone network using OSPF as 
-IGP protocol and LDP as label-switching protocol for the base connectivity between 
-**P** (rovider), **P** (rovider) **E** (dge) and **R** (oute) **R** (eflector) nodes:
+At the first step we need to configure the IP/MPLS backbone network using OSPF 
+as IGP protocol and LDP as label-switching protocol for the base connectivity 
+between **P** (rovider), **P** (rovider) **E** (dge) and **R** (oute) **R** 
+(eflector) nodes:
 
 - VyOS-P1:
 
@@ -333,12 +334,9 @@ VPN (L3VPN) routes between them:
    set protocols bgp neighbor 10.0.0.7 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.8 address-family ipv4-vpn route-reflector-client
    set protocols bgp neighbor 10.0.0.8 peer-group 'RR_VPNv4'
-   set protocols bgp neighbor 10.0.0.9 address-family ipv4-vpn route-reflector-client
-   set protocols bgp neighbor 10.0.0.9 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.10 address-family ipv4-vpn route-reflector-client
    set protocols bgp neighbor 10.0.0.10 peer-group 'RR_VPNv4'
    set protocols bgp parameters cluster-id '10.0.0.1'
-   set protocols bgp parameters default no-ipv4-unicast
    set protocols bgp parameters log-neighbor-changes
    set protocols bgp parameters router-id '10.0.0.1'
    set protocols bgp peer-group RR_VPNv4 remote-as '65001'
@@ -353,12 +351,9 @@ VPN (L3VPN) routes between them:
    set protocols bgp neighbor 10.0.0.7 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.8 address-family ipv4-vpn route-reflector-client
    set protocols bgp neighbor 10.0.0.8 peer-group 'RR_VPNv4'
-   set protocols bgp neighbor 10.0.0.9 address-family ipv4-vpn route-reflector-client
-   set protocols bgp neighbor 10.0.0.9 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.10 address-family ipv4-vpn route-reflector-client
    set protocols bgp neighbor 10.0.0.10 peer-group 'RR_VPNv4'
    set protocols bgp parameters cluster-id '10.0.0.1'
-   set protocols bgp parameters default no-ipv4-unicast
    set protocols bgp parameters log-neighbor-changes
    set protocols bgp parameters router-id '10.0.0.2'
    set protocols bgp peer-group RR_VPNv4 remote-as '65001'
@@ -373,7 +368,6 @@ VPN (L3VPN) routes between them:
    set protocols bgp neighbor 10.0.0.1 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.2 address-family ipv4-vpn nexthop-self
    set protocols bgp neighbor 10.0.0.2 peer-group 'RR_VPNv4'
-   set protocols bgp parameters default no-ipv4-unicast
    set protocols bgp parameters log-neighbor-changes
    set protocols bgp parameters router-id '10.0.0.7'
    set protocols bgp peer-group RR_VPNv4 remote-as '65001'
@@ -388,7 +382,6 @@ VPN (L3VPN) routes between them:
    set protocols bgp neighbor 10.0.0.1 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.2 address-family ipv4-vpn nexthop-self
    set protocols bgp neighbor 10.0.0.2 peer-group 'RR_VPNv4'
-   set protocols bgp parameters default no-ipv4-unicast
    set protocols bgp parameters log-neighbor-changes
    set protocols bgp parameters router-id '10.0.0.8'
    set protocols bgp peer-group RR_VPNv4 remote-as '65001'
@@ -403,7 +396,6 @@ VPN (L3VPN) routes between them:
    set protocols bgp neighbor 10.0.0.1 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.2 address-family ipv4-vpn nexthop-self
    set protocols bgp neighbor 10.0.0.2 peer-group 'RR_VPNv4'
-   set protocols bgp parameters default no-ipv4-unicast
    set protocols bgp parameters log-neighbor-changes
    set protocols bgp parameters router-id '10.0.0.10'
    set protocols bgp peer-group RR_VPNv4 remote-as '65001'
@@ -504,13 +496,13 @@ configured L3VPN parameters.
    set interfaces ethernet eth0 address '10.50.50.2/24'
    
    # BGP for peering with PE
-   set protocols bgp 65035 address-family ipv4-unicast network 10.0.0.80/32
-   set protocols bgp 65035 neighbor 10.50.50.1 ebgp-multihop '2'
-   set protocols bgp 65035 neighbor 10.50.50.1 remote-as '65001'
-   set protocols bgp 65035 neighbor 10.50.50.1 update-source 'eth0'
-   set protocols bgp 65035 parameters default no-ipv4-unicast
-   set protocols bgp 65035 parameters log-neighbor-changes
-   set protocols bgp 65035 parameters router-id '10.50.50.2'
+   set protocols bgp local-as 65035 
+   set protocols bgp address-family ipv4-unicast network 10.0.0.80/32
+   set protocols bgp neighbor 10.50.50.1 ebgp-multihop '2'
+   set protocols bgp neighbor 10.50.50.1 remote-as '65001'
+   set protocols bgp neighbor 10.50.50.1 update-source 'eth0'
+   set protocols bgp parameters log-neighbor-changes
+   set protocols bgp parameters router-id '10.50.50.2'
 
 - VyOS-CE1-HUB:
 
@@ -521,14 +513,14 @@ configured L3VPN parameters.
    set interfaces ethernet eth0 address '10.80.80.2/24'
    
    # BGP for peering with PE
-   set protocols bgp 65035 address-family ipv4-unicast network 10.0.0.100/32
-   set protocols bgp 65035 address-family ipv4-unicast redistribute connected
-   set protocols bgp 65035 neighbor 10.80.80.1 ebgp-multihop '2'
-   set protocols bgp 65035 neighbor 10.80.80.1 remote-as '65001'
-   set protocols bgp 65035 neighbor 10.80.80.1 update-source 'eth0'
-   set protocols bgp 65035 parameters default no-ipv4-unicast
-   set protocols bgp 65035 parameters log-neighbor-changes
-   set protocols bgp 65035 parameters router-id '10.80.80.2'
+   set protocols bgp local-as 65035 
+   set protocols bgp address-family ipv4-unicast network 10.0.0.100/32
+   set protocols bgp address-family ipv4-unicast redistribute connected
+   set protocols bgp neighbor 10.80.80.1 ebgp-multihop '2'
+   set protocols bgp neighbor 10.80.80.1 remote-as '65001'
+   set protocols bgp neighbor 10.80.80.1 update-source 'eth0'
+   set protocols bgp parameters log-neighbor-changes
+   set protocols bgp parameters router-id '10.80.80.2'
 
 - VyOS-CE2-SPOKE:
 
@@ -539,13 +531,13 @@ configured L3VPN parameters.
    set interfaces ethernet eth0 address '10.60.60.2/24'
    
    # BGP for peering with PE 
-   set protocols bgp 65035 address-family ipv4-unicast network 10.0.0.90/32
-   set protocols bgp 65035 neighbor 10.60.60.1 ebgp-multihop '2'
-   set protocols bgp 65035 neighbor 10.60.60.1 remote-as '65001'
-   set protocols bgp 65035 neighbor 10.60.60.1 update-source 'eth0'
-   set protocols bgp 65035 parameters default no-ipv4-unicast
-   set protocols bgp 65035 parameters log-neighbor-changes
-   set protocols bgp 65035 parameters router-id '10.60.60.2'
+   set protocols bgp local-as 65035 
+   set protocols bgp address-family ipv4-unicast network 10.0.0.90/32
+   set protocols bgp neighbor 10.60.60.1 ebgp-multihop '2'
+   set protocols bgp neighbor 10.60.60.1 remote-as '65001'
+   set protocols bgp neighbor 10.60.60.1 update-source 'eth0'
+   set protocols bgp parameters log-neighbor-changes
+   set protocols bgp parameters router-id '10.60.60.2'
 
 
 

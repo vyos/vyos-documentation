@@ -23,7 +23,7 @@ also set up your own build machine and run a :ref:`build_native`.
    The source code remains public and an ISO can be built using the process
    outlined in this chapter.
 
-This will guide you though the process of building a VyOS ISO using Docker_.
+This will guide you through the process of building a VyOS ISO using Docker_.
 This process has been tested on clean installs of Debian Jessie, Stretch, and
 Buster.
 
@@ -59,11 +59,11 @@ yourusername``.
 Build Container
 ---------------
 
-The container can built by hand or by fetching the pre-built one from DockerHub.
-Using the pre-built containers from the `VyOS DockerHub organisation`_ will
-ensure that the container is always up-to-date. A rebuild is triggered once the
-container changes (please note this will take 2-3 hours after pushing to the
-vyos-build repository).
+The container can be built by hand or by fetching the pre-built one from 
+DockerHub. Using the pre-built containers from the `VyOS DockerHub 
+organisation`_ will ensure that the container is always up-to-date. A rebuild 
+is triggered once the container changes (please note this will take 2-3 hours 
+after pushing to the vyos-build repository).
 
 .. note: If you are using the pre-built container, it will be automatically
    downloaded from DockerHub if it is not found on your local machine when
@@ -131,7 +131,7 @@ your development containers in your current working directory.
 
 .. note:: Some VyOS packages (namely vyos-1x) come with build-time tests which
    verify some of the internal library calls that they work as expected. Those
-   tests are carried out through the Python Unittest module. If you wan't to
+   tests are carried out through the Python Unittest module. If you want to
    build the ``vyos-1x`` package (which is our main development package) you need
    to start your Docker container using the following argument:
    ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will fail.
@@ -304,8 +304,8 @@ more or less similar looking error message:
   (10:13) vyos_bld ece068908a5b:/vyos [current] #
 
 To debug the build process and gain additional information of what could be the
-root cause wou need to `chroot` into the build directry. This is explained in
-the following step by step procedure:
+root cause, you need to use `chroot` to change into the build directry. This is 
+explained in the following step by step procedure:
 
 .. code-block:: none
 
@@ -729,7 +729,7 @@ package from our GitHub organisation - this is the place to be.
 Any "modified" package may refer to an altered version of e.g. vyos-1x package
 that you would like to test before filing a pull request on GitHub.
 
-Building an ISO with any customized package is in no way different then
+Building an ISO with any customized package is in no way different than
 building a regular (customized or not) ISO image. Simply place your modified
 `*.deb` package inside the `packages` folder within `vyos-build`. The build
 process will then pickup your custom package and integrate it into your ISO.
@@ -771,7 +771,7 @@ Virtualization Platforms
 QEMU
 ----
 
-Run following command after building the ISO image.
+Run the following command after building the ISO image.
 
 .. code-block:: none
 
@@ -780,7 +780,7 @@ Run following command after building the ISO image.
 VMware
 ------
 
-Run following command after building the QEMU image.
+Run the following command after building the QEMU image.
 
 .. code-block:: none
 

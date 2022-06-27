@@ -332,7 +332,7 @@ before using under the openvpn interface configuration.
 
 Now we need to specify the server network settings. In all cases we need to
 specify the subnet for client tunnel endpoints. Since we want clients to access
-a specific network behind out router, we will use a push-route option for
+a specific network behind our router, we will use a push-route option for
 installing that route on clients.
 
 .. code-block:: none
