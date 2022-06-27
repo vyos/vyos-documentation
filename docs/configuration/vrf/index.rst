@@ -197,7 +197,7 @@ Example
 VRF route leaking
 -----------------
 
-The following example topology was build using EVE-NG.
+The following example topology was built using EVE-NG.
 
 .. figure:: /_static/images/vrf-example-topology-01.png
    :alt: VRF topology example
@@ -338,7 +338,7 @@ VRF Route Leaking
 BGP routes may be leaked (i.e. copied) between a unicast VRF RIB and the VPN
 SAFI RIB of the default VRF for use in MPLS-based L3VPNs. Unicast routes may 
 also be leaked between any VRFs (including the unicast RIB of the default BGP
-instanced). A shortcut syntax is also available for specifying leaking from 
+instance). A shortcut syntax is also available for specifying leaking from 
 one VRF to another VRF using the default instance’s VPN RIB as the intemediary
 . A common application of the VRF-VRF feature is to connect a customer’s 
 private routing domain to a provider’s VPN service. Leaking is configured from
