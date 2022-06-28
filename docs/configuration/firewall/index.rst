@@ -323,6 +323,22 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall name WAN-IN-v4 rule 101 source address !203.0.113.0/24
       set firewall ipv6-name WAN-IN-v6 rule 100 source address 2001:db8::202
 
+.. cfgcmd:: set firewall name <name> rule <1-999999> source geoip country-code
+   <country>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source geoip
+   country-code <country>
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination geoip
+   country-code <country>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination geoip
+   country-code <country>
+
+Match IP addresses based on its geolocation. More info: `geoip matching
+<https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_
+
+Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required,
+permits redistribution so we can include a database in images(~3MB
+compressed). Includes cron script (manually callable by op-mode update
+geoip) to keep database and rules updated.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source mac-address
    <mac-address>
@@ -806,3 +822,11 @@ Example Partial Config
          }
      }
   }
+
+
+Update geoip database
+=====================
+
+.. opcmd:: update geoip
+
+   Command used to update GeoIP database and firewall sets.
