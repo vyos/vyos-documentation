@@ -177,7 +177,7 @@ process. The BGP process starts when the first neighbor is configured.
 .. cfgcmd:: set protocols bgp local-as <asn>
 
   Set local autonomous system number that this router represents. This is a
-  a mandatory option!
+  mandatory option!
 
 Peers Configuration
 -------------------
@@ -431,7 +431,7 @@ Peer Parameters
 
    This command enforces Generalized TTL Security Mechanism (GTSM),
    as specified in :rfc:`5082`. With this command, only neighbors
-   that are the specified number of hops away will be allowed to
+   that are specified number of hops away will be allowed to
    become neighbors. The number of hops range is 1 to 254. This
    command is mutually exclusive with :cfgcmd:`ebgp-multihop`.
 
@@ -562,11 +562,6 @@ Common parameters
    following attributes have to match: Weight, Local Preference, AS
    Path (both AS number and AS path length), Origin code, MED, IGP
    metric. Also, the next hop address for each path must be different.
-
-.. cfgcmd:: set protocols bgp parameters default no-ipv4-unicast
-
-   This command allows the user to specify that IPv4 peering is turned off by
-   default.
 
 .. cfgcmd:: set protocols bgp parameters log-neighbor-changes
 
@@ -984,7 +979,7 @@ Show
 
 .. opcmd:: show ip bgp filter-list <name>
 
-   This command displays BGP routes allowed by by the specified AS Path
+   This command displays BGP routes allowed by the specified AS Path
    access list.
 
 .. opcmd:: show <ip|ipv6> bgp neighbors <address> advertised-routes
