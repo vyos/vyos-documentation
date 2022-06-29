@@ -83,10 +83,10 @@ Here is a simple example:
 
 .. code-block:: python
 
-  #!/usr/bin/env python
-  print "delete firewall group address-group somehosts"
-  print "set firewall group address-group somehosts address '192.0.2.3'"
-  print "set firewall group address-group somehosts address '203.0.113.55'"
+  #!/usr/bin/env python3
+  print("delete firewall group address-group somehosts")
+  print("set firewall group address-group somehosts address '192.0.2.3'")
+  print("set firewall group address-group somehosts address '203.0.113.55'")
 
 
 .. code-block:: none
