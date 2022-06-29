@@ -267,7 +267,7 @@ Most important keys that needs to be considered:
 Generate qcow image
 -------------------
 
-A VyOS qcow image with cloud-init options is needed. This can be obteined
+A VyOS qcow image with cloud-init options is needed. This can be obtained
 using `vyos-vm-images`_ repo. After clonning the repo, edit the file
 **qemu.yml** and comment the **download-iso** role.
 
