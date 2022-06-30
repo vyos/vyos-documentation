@@ -7,6 +7,7 @@ System
    :maxdepth: 1
    :includehidden:
 
+   acceleration
    console
    flow-accounting
    host-name
