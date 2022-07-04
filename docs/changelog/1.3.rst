@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2022-07-01
+==========
+
+* :vytask:`T4489` (bug): MPLS sysctl not persistent for tunnel interfaces
+
+
 2022-06-20
 ==========
 
