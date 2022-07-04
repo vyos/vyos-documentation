@@ -590,3 +590,24 @@ To get it to work as an access point with this configuration you will need
 to set up a DHCP server to work with that network. You can - of course - also
 bridge the Wireless interface with any configured bridge
 (:ref:`bridge-interface`) on the system.
+
+.. _wireless-interface-intel-ax200:
+
+Intel AX200
+===========
+
+The Intel AX200 card does not work out of the box in AP mode, see
+https://unix.stackexchange.com/questions/598275/intel-ax200-ap-mode. You can
+still put this card into AP mode using the following configuration:
+
+.. stop_vyoslinter
+.. code-block:: none
+
+  set interfaces wireless wlan0 channel '1'
+  set interfaces wireless wlan0 country-code 'us'
+  set interfaces wireless wlan0 mode 'n'
+  set interfaces wireless wlan0 physical-device 'phy0'
+  set interfaces wireless wlan0 ssid 'VyOS'
+  set interfaces wireless wlan0 type 'access-point'
+
+.. start_vyoslinter
