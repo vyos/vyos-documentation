@@ -37,6 +37,22 @@ Intel® QAT
         Checking status of all devices.
         There is 1 QAT acceleration device(s) in the system:
         qat_dev0 - type: c3xxx,  inst_id: 0,  node_id: 0,  bsf: 0000:01:00.0,  #accel: 3 #engines: 6 state: up
+    
+Operation Mode
+==============
+
+.. opcmd:: show system acceleration qat device <device> config
+
+    Show the full config uploaded to the QAT device.
+
+.. opcmd:: show system acceleration qat device <device> flows
+
+    Get an overview over the encryption counters.
+
+.. opcmd:: show system acceleration qat interrupts
+
+    Show binded qat device interrupts to certain core.
+
 
 Example
 =======
