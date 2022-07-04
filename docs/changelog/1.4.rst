@@ -8,6 +8,35 @@
    _ext/releasenotes.py
 
 
+2022-07-01
+==========
+
+* :vytask:`T2455` (bug): No support for the IPv6 VTI
+* :vytask:`T4490` (feature): BGP- warning message that AFI/SAFI is needed to establish the neighborship
+* :vytask:`T4489` (bug): MPLS sysctl not persistent for tunnel interfaces
+
+
+2022-06-29
+==========
+
+* :vytask:`T4477` (feature): router-advert: support RDNSS lifetime option
+
+
+2022-06-28
+==========
+
+* :vytask:`T4486` (bug): Container can't be deleted
+* :vytask:`T4473` (bug): Use container network without network declaration error
+* :vytask:`T4458` (feature): Firewall - add support for matching ip ttl in firewall rules
+* :vytask:`T3907` (feature): Firewall - Set log levels
+
+
+2022-06-27
+==========
+
+* :vytask:`T4484` (default): Firewall op-mode summary doesn't correctly handle address group containing ranges
+
+
 2022-06-25
 ==========
 
