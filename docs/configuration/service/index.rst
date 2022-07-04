@@ -25,3 +25,4 @@ Service
    ssh
    tftp-server
    webproxy
+   eventhandler

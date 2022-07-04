@@ -29,4 +29,3 @@ System
    :includehidden:
 
    default-route
-   eventhandler
