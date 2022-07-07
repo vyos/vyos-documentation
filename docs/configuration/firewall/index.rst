@@ -325,15 +325,25 @@ There are a lot of matching criteria against which the package can be tested.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source geoip country-code
    <country>
+.. cfgcmd:: set firewall name <name> rule <1-999999> source geoip inverse-match
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source geoip
    country-code <country>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source geoip
+   inverse-match
 .. cfgcmd:: set firewall name <name> rule <1-999999> destination geoip
    country-code <country>
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination geoip
+   inverse-match
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination geoip
    country-code <country>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination geoip
+   inverse-match
 
-Match IP addresses based on its geolocation. More info: `geoip matching
-<https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_
+Match IP addresses based on its geolocation.
+More info: `geoip matching
+<https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_.
+
+Use inverse-match to match anything except the given country-codes.
 
 Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required,
 permits redistribution so we can include a database in images(~3MB
@@ -531,10 +541,10 @@ Applying a Rule-Set to a Zone
 Before you are able to apply a rule-set to a zone you have to create the zones
 first.
 
-It helps to think of the syntax as: (see below). The 'rule-set' should be 
+It helps to think of the syntax as: (see below). The 'rule-set' should be
 written from the perspective of: *Source Zone*-to->*Destination Zone*
 
-.. cfgcmd::  set zone-policy zone <Destination Zone> from <Source Zone> 
+.. cfgcmd::  set zone-policy zone <Destination Zone> from <Source Zone>
    firewall name <rule-set>
 
 .. cfgcmd::  set zone-policy zone <name> from <name> firewall name
