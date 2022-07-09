@@ -78,7 +78,11 @@ Bridge Options
 
 .. cfgcmd:: set interfaces bridge <interface> igmp querier
 
-   Enable IGMP querier
+   Enable IGMP and MLD querier.
+
+.. cfgcmd:: set interfaces bridge <interface> igmp snooping
+
+   Enable IGMP and MLD snooping.
 
 .. _stp:
 
