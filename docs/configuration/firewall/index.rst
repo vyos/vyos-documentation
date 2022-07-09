@@ -469,6 +469,16 @@ geoip) to keep database and rules updated.
 
    Match hop-limit parameter, where 'eq' stands for 'equal'; 'gt' stands for
    'greater than', and 'lt' stands for 'less than'.
+   
+.. cfgcmd:: set firewall name <name> rule <1-999999> recent count <1-255>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> recent count <1-255>
+.. cfgcmd:: set firewall name <name> rule <1-999999> recent time <second | 
+   minute | hour>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> recent time <second | 
+   minute | hour>
+
+   Match when 'count' amount of connections are seen within 'time'. These 
+   matching criteria can be used to block brute-force attempts.
 
 ***********************************
 Applying a Rule-Set to an Interface
