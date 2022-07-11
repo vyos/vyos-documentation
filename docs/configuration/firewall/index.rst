@@ -417,6 +417,15 @@ There are a lot of matching criteria against which the package can be tested.
 
    Match against the state of a packet.
 
+.. cfgcmd:: set firewall name <name> rule <1-999999> recent count <1-255>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> recent count <1-255>
+.. cfgcmd:: set firewall name <name> rule <1-999999> recent time <second | 
+   minute | hour>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> recent time <second | 
+   minute | hour>
+
+   Match when 'count' amount of connections are seen within 'time'. These 
+   matching criteria can be used to block brute-force attempts.
 
 ***********************************
 Applying a Rule-Set to an Interface
