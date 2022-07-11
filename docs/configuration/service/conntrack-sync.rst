@@ -127,11 +127,11 @@ Operation
     conntrack is not enabled. To enable conntrack, just create a NAT or a firewall
     rule. :cfgcmd:`set firewall state-policy established action accept`
 
-.. opcmd:: show conntrack-sync external-cache
+.. opcmd:: show conntrack-sync cache external
 
   Show connection syncing external cache entries
 
-.. opcmd:: show conntrack-sync internal-cache
+.. opcmd:: show conntrack-sync cache internal
 
   Show connection syncing internal cache entries
 
