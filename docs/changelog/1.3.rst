@@ -8,6 +8,35 @@
    _ext/releasenotes.py
 
 
+2022-07-09
+==========
+
+* :vytask:`T4507` (feature): IPoE-server add multiplier option for shaper
+* :vytask:`T4468` (bug): web-proxy source group cannot start with a number bug
+* :vytask:`T4373` (feature): PPPoE-server add multiplier option for shaper
+
+
+2022-07-07
+==========
+
+* :vytask:`T4456` (bug): NTP client in VRF tries to bind to interfaces outside VRF, logs many messages
+* :vytask:`T4509` (feature): Feature Request: DNS64
+
+
+2022-07-06
+==========
+
+* :vytask:`T4513` (bug): Webproxy monitor commands do not work
+
+
+2022-07-05
+==========
+
+* :vytask:`T4510` (bug): set system static-host-mapping doesn't allow IPv4 and IPv6 for same name.
+* :vytask:`T2654` (bug): Multiple names unable to be assigned to the same static mapping
+* :vytask:`T2683` (default): no dual stack in system static-host-mapping host-name 
+
+
 2022-07-01
 ==========
 
@@ -297,12 +326,6 @@
 
 * :vytask:`T4233` (bug): ssh: sync regex for allow/deny usernames to "system login"
 * :vytask:`T4087` (feature): IPsec IKE-group proposals limit of 10 pieces 
-
-
-2022-02-06
-==========
-
-* :vytask:`T4228` (bug): bond: OS error thrown when two bonds use the same member
 
 
 2022-02-05
