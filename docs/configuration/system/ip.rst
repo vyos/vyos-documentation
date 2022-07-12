@@ -9,7 +9,7 @@ System configuration commands
 
    Use this command to disable IPv4 forwarding on all interfaces.
 
-.. cfgcmd:: set system ip disable-directed-broadcast-forwarding
+.. cfgcmd:: set system ip disable-directed-broadcast
 
    Use this command to disable IPv4 directed broadcast forwarding on all
    interfaces.
