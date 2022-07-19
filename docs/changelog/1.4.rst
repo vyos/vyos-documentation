@@ -8,6 +8,40 @@
    _ext/releasenotes.py
 
 
+2022-07-17
+==========
+
+* :vytask:`T4028` (bug): FRR 8.1 routes not being applied to routing table after reboot if an interface has 2 ip addresses
+
+
+2022-07-15
+==========
+
+* :vytask:`T4494` (bug): Cannot reset BGP peer within VRF
+* :vytask:`T4536` (feature): FRR: move to systemd for daemon control
+
+
+2022-07-14
+==========
+
+* :vytask:`T4491` (bug): Use empty string for internal name of root node of config_tree
+
+
+2022-07-13
+==========
+
+* :vytask:`T1375` (feature): Add clear  dhcp server  lease function
+
+
+2022-07-12
+==========
+
+* :vytask:`T4527` (bug): Prevent to create VRF name default
+* :vytask:`T4084` (default): Dehardcode the default login banner
+* :vytask:`T3948` (feature): IPSec VPN:  Add a new option "none" for the connection-type
+* :vytask:`T235` (feature): Ability to configure manual IP Rules
+
+
 2022-07-10
 ==========
 
@@ -916,7 +950,6 @@
 2021-12-22
 ==========
 
-* :vytask:`T4056` (bug): Traffic policy not set in live configuration
 * :vytask:`T3678` (bug): VyOS 1.4: Invalid error message while deleting ipsec vpn configuration
 * :vytask:`T3356` (feature): Script for remote file transfers
 
@@ -2357,7 +2390,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.197 / 5.10.123
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.204 / 5.10.129
 
 
 2021-02-15
