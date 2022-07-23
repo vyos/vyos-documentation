@@ -61,6 +61,8 @@ Advertising a Prefix
     :header: "VyOS Field", "Description"
     :widths: 10,30
 
+    "decrement-lifetime", "Lifetime is decremented by the number of seconds since the last RA - use in conjunction with a DHCPv6-PD prefix"
+    "deprecate-prefix", "Upon shutdown, this option will deprecate the prefix by announcing it in the shutdown RA"
     "no-autonomous-flag","Prefix can not be used for stateless address auto-configuration"
     "no-on-link-flag","Prefix can not be used for on-link determination"
     "preferred-lifetime","Time in seconds that the prefix will remain preferred (default 4 hours)"
