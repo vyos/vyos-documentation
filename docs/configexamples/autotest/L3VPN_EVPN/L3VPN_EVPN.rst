@@ -3,8 +3,8 @@
 L3VPN EVPN with VyOS
 ####################
 
-| Testdate: 2022-03-28
-| Version: 1.4-rolling-202203280217
+| Testdate: 2022-07-11
+| Version: 1.4-rolling-202207090632
 
 I spun up a new lab in EVE-NG, which represents this as the
 "Foo Bar - Service Provider Inc." that has 3 points of presence (PoP) in random
@@ -159,32 +159,32 @@ Show routes for all VRFs
           t - trapped, o - offload failure
    
    VRF blue:
-   C>* 10.1.1.0/24 is directly connected, br2000, 00:01:05
-   B>* 10.1.2.0/24 [200/0] via 172.29.255.2, br2000 onlink, weight 1, 00:00:47
-   B>* 10.1.3.0/24 [200/0] via 172.29.255.3, br2000 onlink, weight 1, 00:00:42
+   C>* 10.1.1.0/24 is directly connected, br2000, 00:01:07
+   B>* 10.1.2.0/24 [200/0] via 172.29.255.2, br2000 onlink, weight 1, 00:00:48
+   B>* 10.1.3.0/24 [200/0] via 172.29.255.3, br2000 onlink, weight 1, 00:00:44
    
    VRF default:
-   O   172.29.0.2/31 [110/1] is directly connected, eth1, weight 1, 00:01:02
-   C>* 172.29.0.2/31 is directly connected, eth1, 00:01:04
-   O>* 172.29.0.4/31 [110/2] via 172.29.0.3, eth1, weight 1, 00:00:39
-     *                       via 172.29.0.7, eth3, weight 1, 00:00:39
-   O   172.29.0.6/31 [110/1] is directly connected, eth3, weight 1, 00:01:02
-   C>* 172.29.0.6/31 is directly connected, eth3, 00:01:05
-   C>* 172.29.255.1/32 is directly connected, dum0, 00:01:06
-   O>* 172.29.255.2/32 [110/20] via 172.29.0.3, eth1, weight 1, 00:00:48
-   O>* 172.29.255.3/32 [110/20] via 172.29.0.7, eth3, weight 1, 00:00:38
+   O   172.29.0.2/31 [110/1] is directly connected, eth1, weight 1, 00:01:03
+   C>* 172.29.0.2/31 is directly connected, eth1, 00:01:06
+   O>* 172.29.0.4/31 [110/2] via 172.29.0.3, eth1, weight 1, 00:00:41
+     *                       via 172.29.0.7, eth3, weight 1, 00:00:41
+   O   172.29.0.6/31 [110/1] is directly connected, eth3, weight 1, 00:01:03
+   C>* 172.29.0.6/31 is directly connected, eth3, 00:01:06
+   C>* 172.29.255.1/32 is directly connected, dum0, 00:01:07
+   O>* 172.29.255.2/32 [110/20] via 172.29.0.3, eth1, weight 1, 00:00:49
+   O>* 172.29.255.3/32 [110/20] via 172.29.0.7, eth3, weight 1, 00:00:40
    
    VRF green:
-   C>* 10.3.1.0/24 is directly connected, br4000, 00:01:05
-   B>* 10.3.3.0/24 [200/0] via 172.29.255.3, br4000 onlink, weight 1, 00:00:42
+   C>* 10.3.1.0/24 is directly connected, br4000, 00:01:07
+   B>* 10.3.3.0/24 [200/0] via 172.29.255.3, br4000 onlink, weight 1, 00:00:44
    
    VRF mgmt:
-   S>* 0.0.0.0/0 [210/0] via 10.100.0.1, eth0, weight 1, 00:01:39
-   C>* 10.100.0.0/24 is directly connected, eth0, 00:01:40
+   S>* 0.0.0.0/0 [210/0] via 10.100.0.1, eth0, weight 1, 00:01:42
+   C>* 10.100.0.0/24 is directly connected, eth0, 00:01:42
    
    VRF red:
-   C>* 10.2.1.0/24 is directly connected, br3000, 00:01:04
-   B>* 10.2.2.0/24 [200/0] via 172.29.255.2, br3000 onlink, weight 1, 00:00:47
+   C>* 10.2.1.0/24 is directly connected, br3000, 00:01:06
+   B>* 10.2.2.0/24 [200/0] via 172.29.255.2, br3000 onlink, weight 1, 00:00:48
 
 Information about Ethernet Virtual Private Networks
 
@@ -209,7 +209,7 @@ Information about Ethernet Virtual Private Networks
    Route Distinguisher: 10.1.2.1:4
    *>i[5]:[0]:[24]:[10.1.2.0]
                        172.29.255.2             0    100      0 ?
-                       RT:100:2000 ET:8 Rmac:02:18:c8:f9:1a:d1
+                       RT:100:2000 ET:8 Rmac:12:22:ff:6c:a5:6f
    Route Distinguisher: 10.1.3.1:4
    *>i[5]:[0]:[24]:[10.1.3.0]
                        172.29.255.3             0    100      0 ?
@@ -221,7 +221,7 @@ Information about Ethernet Virtual Private Networks
    Route Distinguisher: 10.2.2.1:5
    *>i[5]:[0]:[24]:[10.2.2.0]
                        172.29.255.2             0    100      0 ?
-                       RT:100:3000 ET:8 Rmac:36:17:df:67:bd:bc
+                       RT:100:3000 ET:8 Rmac:1e:1b:a2:af:7d:62
    Route Distinguisher: 10.3.1.1:7
    *> [5]:[0]:[24]:[10.3.1.0]
                        172.29.255.1             0         32768 ?
@@ -248,4 +248,4 @@ the EVPN network we need to run
        172.29.255.1 (metric 20) from 172.29.255.1 (172.29.255.1)
          Origin incomplete, metric 0, localpref 100, valid, internal, best (First path received)
          Extended Community: RT:100:4000 ET:8 Rmac:50:00:00:01:00:06
-         Last update: Mon Mar 28 15:46:02 2022
+         Last update: Mon Jul 11 19:30:13 2022

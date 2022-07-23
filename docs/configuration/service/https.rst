@@ -28,6 +28,10 @@ Configuration
    Set the listen port of the local API, this has no effect on the
    webserver. The default is port 8080
 
+.. cfgcmd:: set service https api socket
+
+   Use local socket for API
+
 .. cfgcmd:: set service https api strict
 
    Enforce strict path checking
@@ -89,4 +93,4 @@ To use this full configuration we asume a public accessible hostname.
    set service https virtual-host rtr01 listen-address 198.51.100.2
    set service https virtual-host rtr01 listen-port 11443
    set service https virtual-host rtr01 server-name rtr01.example.com
-   set service https api-restrict virtual-host rtr01.example.com
+   set service https api-restrict virtual-host rtr01

@@ -9,6 +9,15 @@ System configuration commands
 
    Use this command to disable IPv4 forwarding on all interfaces.
 
+.. cfgcmd:: set system ip disable-directed-broadcast
+
+   Use this command to disable IPv4 directed broadcast forwarding on all
+   interfaces.
+
+   If set, IPv4 directed broadcast forwarding will be completely disabled
+   regardless of whether per-interface directed broadcast forwarding is
+   enabled or not.
+
 .. cfgcmd:: set system ip arp table-size <number>
 
    Use this command to define the maximum number of entries to keep in

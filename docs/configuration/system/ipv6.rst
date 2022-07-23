@@ -160,7 +160,7 @@ Show commands
 Reset commands
 ^^^^^^^^^^^^^^
 
-.. opcmd:: reset ipv6 bgp <address>
+.. opcmd:: reset bgp ipv6 <address>
 
    Use this command to clear Border Gateway Protocol statistics or
    status.

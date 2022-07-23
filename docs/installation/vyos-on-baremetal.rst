@@ -115,6 +115,8 @@ Refer to :ref:`wireless-interface` for additional information, below listed
 modules have been tested successfully on this Hardware platform:
 
 * Compex WLE900VX mini-PCIe WiFi module, only supported in mPCIe slot 1.
+* Intel Corporation AX200 mini-PCIe WiFi module, only supported in mPCIe slot 1.
+  (see :ref:`wireless-interface-intel-ax200`)
 
 WWAN
 """"

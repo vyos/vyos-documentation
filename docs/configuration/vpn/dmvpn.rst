@@ -278,6 +278,7 @@ spoke01-spoke04
    ip nhrp registration timeout 75
    tunnel source FastEthernet0/0
    tunnel mode gre multipoint
+   tunnel protection ipsec profile DMVPN
    tunnel key 1
   !
   interface FastEthernet0/0

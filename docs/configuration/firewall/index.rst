@@ -264,7 +264,7 @@ the action of the rule will be executed.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> action [drop | reject |
    accept]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> action [drop | 
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> action [drop |
    reject | accept]
 
    This required setting defines the action of the current rule.
@@ -275,10 +275,17 @@ the action of the rule will be executed.
    Provide a description for each rule.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> log [disable | enable]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log [disable | 
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log [disable |
    enable]
 
    Enable or disable logging for the matched packet.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> log-level [emerg |
+   alert | crit | err | warn | notice | info | debug]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log-level [emerg |
+   alert | crit | err | warn | notice | info | debug]
+
+   Define log-level. Only applicable if rule log is enable.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> disable
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> disable
@@ -316,6 +323,32 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall name WAN-IN-v4 rule 101 source address !203.0.113.0/24
       set firewall ipv6-name WAN-IN-v6 rule 100 source address 2001:db8::202
 
+.. cfgcmd:: set firewall name <name> rule <1-999999> source geoip country-code
+   <country>
+.. cfgcmd:: set firewall name <name> rule <1-999999> source geoip inverse-match
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source geoip
+   country-code <country>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source geoip
+   inverse-match
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination geoip
+   country-code <country>
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination geoip
+   inverse-match
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination geoip
+   country-code <country>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination geoip
+   inverse-match
+
+Match IP addresses based on its geolocation.
+More info: `geoip matching
+<https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_.
+
+Use inverse-match to match anything except the given country-codes.
+
+Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required,
+permits redistribution so we can include a database in images(~3MB
+compressed). Includes cron script (manually callable by op-mode update
+geoip) to keep database and rules updated.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source mac-address
    <mac-address>
@@ -355,37 +388,40 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall ipv6-name WAN-IN-v6 rule 10 source port '!22,https,3333-3338'
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
-   address-group <name>
+   address-group <name | !name>
 .. cfgcmd:: set firewall name <name> rule <1-999999> destination group
-   address-group <name>
+   address-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
-   address-group <name>
+   address-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
-   address-group <name>
+   address-group <name | !name>
 
-   Use a specific address-group
+   Use a specific address-group. Prepend character '!' for inverted matching
+   criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
-   network-group <name>
+   network-group <name | !name>
 .. cfgcmd:: set firewall name <name> rule <1-999999> destination group
-   network-group <name>
+   network-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
-   network-group <name>
+   network-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
-   network-group <name>
+   network-group <name | !name>
 
-   Use a specific network-group
+   Use a specific network-group. Prepend character '!' for inverted matching
+   criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
-   port-group <name>
+   port-group <name | !name>
 .. cfgcmd:: set firewall name <name> rule <1-999999> destination group
-   port-group <name>
+   port-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
-   port-group <name>
+   port-group <name | !name>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
-   port-group <name>
+   port-group <name | !name>
 
-   Use a specific port-group
+   Use a specific port-group. Prepend character '!' for inverted matching
+   criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> protocol [<text> |
    <0-255> | all | tcp_udp]
@@ -423,6 +459,26 @@ There are a lot of matching criteria against which the package can be tested.
 
    Match against the state of a packet.
 
+.. cfgcmd:: set firewall name <name> rule <1-999999> ttl <eq | gt | lt> <0-255>
+
+   Match time to live parameter, where 'eq' stands for 'equal'; 'gt' stands for
+   'greater than', and 'lt' stands for 'less than'.
+
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> hop-limit <eq | gt |
+   lt> <0-255>
+
+   Match hop-limit parameter, where 'eq' stands for 'equal'; 'gt' stands for
+   'greater than', and 'lt' stands for 'less than'.
+   
+.. cfgcmd:: set firewall name <name> rule <1-999999> recent count <1-255>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> recent count <1-255>
+.. cfgcmd:: set firewall name <name> rule <1-999999> recent time <second | 
+   minute | hour>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> recent time <second | 
+   minute | hour>
+
+   Match when 'count' amount of connections are seen within 'time'. These 
+   matching criteria can be used to block brute-force attempts.
 
 ***********************************
 Applying a Rule-Set to an Interface
@@ -495,10 +551,10 @@ Applying a Rule-Set to a Zone
 Before you are able to apply a rule-set to a zone you have to create the zones
 first.
 
-It helps to think of the syntax as: (see below). The 'rule-set' should be 
+It helps to think of the syntax as: (see below). The 'rule-set' should be
 written from the perspective of: *Source Zone*-to->*Destination Zone*
 
-.. cfgcmd::  set zone-policy zone <Destination Zone> from <Source Zone> 
+.. cfgcmd::  set zone-policy zone <Destination Zone> from <Source Zone>
    firewall name <rule-set>
 
 .. cfgcmd::  set zone-policy zone <name> from <name> firewall name
@@ -786,3 +842,11 @@ Example Partial Config
          }
      }
   }
+
+
+Update geoip database
+=====================
+
+.. opcmd:: update geoip
+
+   Command used to update GeoIP database and firewall sets.

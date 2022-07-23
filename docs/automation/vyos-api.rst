@@ -125,6 +125,24 @@ For example, get the addresses of a ``dum0`` interface.
       "error": null
    }
 
+/reset
+======
+
+The ``reset`` endpoint run a ``reset`` command.
+
+.. code-block:: none
+
+   curl --location --request POST 'https://vyos/reset' \
+   --form data='{"op": "reset", "path": ["ip", "bgp", "192.0.2.11"]}' \
+   --form key='MY-HTTPS-API-PLAINTEXT-KEY'
+
+   respone:
+   {
+     "success": true,
+     "data": "",
+     "error": null
+   }
+
 /image
 ======
 

@@ -8,6 +8,229 @@
    _ext/releasenotes.py
 
 
+2022-07-17
+==========
+
+* :vytask:`T4028` (bug): FRR 8.1 routes not being applied to routing table after reboot if an interface has 2 ip addresses
+
+
+2022-07-15
+==========
+
+* :vytask:`T4494` (bug): Cannot reset BGP peer within VRF
+* :vytask:`T4536` (feature): FRR: move to systemd for daemon control
+
+
+2022-07-14
+==========
+
+* :vytask:`T4491` (bug): Use empty string for internal name of root node of config_tree
+
+
+2022-07-13
+==========
+
+* :vytask:`T1375` (feature): Add clear  dhcp server  lease function
+
+
+2022-07-12
+==========
+
+* :vytask:`T4527` (bug): Prevent to create VRF name default
+* :vytask:`T4084` (default): Dehardcode the default login banner
+* :vytask:`T3948` (feature): IPSec VPN:  Add a new option "none" for the connection-type
+* :vytask:`T235` (feature): Ability to configure manual IP Rules
+
+
+2022-07-10
+==========
+
+* :vytask:`T3836` (bug): Setting a default IPv6 route while getting IPv4 gateway via DHCP removes the IPv4 gateway
+
+
+2022-07-09
+==========
+
+* :vytask:`T4507` (feature): IPoE-server add multiplier option for shaper
+* :vytask:`T4499` (bug): NAT source translation not showing a single output
+* :vytask:`T4468` (bug): web-proxy source group cannot start with a number bug
+* :vytask:`T4373` (feature): PPPoE-server add multiplier option for shaper
+* :vytask:`T3353` (bug): PPPoE server wrong vlan-range generating config
+* :vytask:`T3648` (bug): op-mode: nat rules broken
+* :vytask:`T4517` (feature): ip: Add options to enable directed broadcast forwarding
+
+
+2022-07-07
+==========
+
+* :vytask:`T4456` (bug): NTP client in VRF tries to bind to interfaces outside VRF, logs many messages
+* :vytask:`T4509` (feature): Feature Request: DNS64
+
+
+2022-07-06
+==========
+
+* :vytask:`T4513` (bug): Webproxy monitor commands do not work
+* :vytask:`T4299` (feature): Firewall - GeoIP filtering
+
+
+2022-07-05
+==========
+
+* :vytask:`T4378` (bug): Unable to submit wildcard ("*.example.com") A or AAAA records in dns forwarder
+* :vytask:`T2683` (default): no dual stack in system static-host-mapping host-name 
+* :vytask:`T478` (feature): Firewall address group (multi and nesting)
+
+
+2022-07-04
+==========
+
+* :vytask:`T4501` (bug): Syslog-identifier does not work in event handler
+* :vytask:`T3600` (bug): DHCP Interface static route breaks PBR
+* :vytask:`T4498` (feature): bridge: Add option to enable/disable IGMP/MLD snooping
+
+
+2022-07-01
+==========
+
+* :vytask:`T2455` (bug): No support for the IPv6 VTI
+* :vytask:`T4490` (feature): BGP- warning message that AFI/SAFI is needed to establish the neighborship
+* :vytask:`T4489` (bug): MPLS sysctl not persistent for tunnel interfaces
+
+
+2022-06-29
+==========
+
+* :vytask:`T4477` (feature): router-advert: support RDNSS lifetime option
+
+
+2022-06-28
+==========
+
+* :vytask:`T4486` (bug): Container can't be deleted
+* :vytask:`T4473` (bug): Use container network without network declaration error
+* :vytask:`T4458` (feature): Firewall - add support for matching ip ttl in firewall rules
+* :vytask:`T3907` (feature): Firewall - Set log levels
+
+
+2022-06-27
+==========
+
+* :vytask:`T4484` (default): Firewall op-mode summary doesn't correctly handle address group containing ranges
+
+
+2022-06-25
+==========
+
+* :vytask:`T4482` (bug): dhcp: toggle of "dhcp-options no-default-route" has no effect
+* :vytask:`T4483` (feature): Upgrade fastnetmon to v1.2.2 community edition
+
+
+2022-06-22
+==========
+
+* :vytask:`T1748` (feature): vbash: beautify tab completion output/line breaks
+
+
+2022-06-20
+==========
+
+* :vytask:`T1856` (feature): Support configuring IPSec SA bytes
+
+
+2022-06-18
+==========
+
+* :vytask:`T4467` (bug): Validator Does Not Accept Signed Numbers
+
+
+2022-06-17
+==========
+
+* :vytask:`T4209` (bug): Firewall incorrect handler for recent count and time
+
+
+2022-06-16
+==========
+
+* :vytask:`T4352` (bug): wan-load balance - priority traffic rule doesn't work 
+
+
+2022-06-15
+==========
+
+* :vytask:`T4450` (feature): Route-map - Extend options for ip|ipv6 address match
+* :vytask:`T4449` (feature): Route-map - Extend options for ip next-hop match
+* :vytask:`T990` (feature): Make DNAT/SNAT a valid state in firewall rules.  
+
+
+2022-06-12
+==========
+
+* :vytask:`T4420` (feature): Feature Request: ocserv: show configured 2FA OTP key
+* :vytask:`T4380` (default): Feature Request: ocserv: 2FA OTP key generator in VyOS CLI
+
+
+2022-06-10
+==========
+
+* :vytask:`T4365` (bug): NAT - Error on setting up tables
+* :vytask:`T4465` (feature): node.def generation misses whitespace on multiple use of <path>
+
+
+2022-06-09
+==========
+
+* :vytask:`T4444` (default): sstp: Feature request. Port number changing support
+* :vytask:`T2580` (feature): Support for ip pools for ippoe
+
+
+2022-06-08
+==========
+
+* :vytask:`T4447` (bug): DHCPv6 prefix delegation `sla-id` limited to 128 
+
+
+2022-05-31
+==========
+
+* :vytask:`T4212` (default): PermissionError when generating/installing server Certificate (generate pki certificate sign ...)
+* :vytask:`T4199` (bug): Commit failed when setting icmpv6 type any
+* :vytask:`T4148` (bug): Firewall - Error messages not that clear as it were in old firewall
+* :vytask:`T3659` (bug): Configuration won't accept IPv6 addresses for site-to-site VPN tunnel prefixes/traffic selectors
+
+
+2022-05-30
+==========
+
+* :vytask:`T4315` (feature): Telegraf - Output to prometheus
+
+
+2022-05-29
+==========
+
+* :vytask:`T2473` (feature): Xml for EIGRP [conf_mode]
+
+
+2022-05-28
+==========
+
+* :vytask:`T4448` (feature): rip: add support for explicit version selection
+
+
+2022-05-26
+==========
+
+* :vytask:`T4442` (feature): HTTP API add action "reset"
+
+
+2022-05-25
+==========
+
+* :vytask:`T4410` (feature): Telegraf - Output to Splunk
+* :vytask:`T4382` (bug): Replacing legacy loadFile exposes missing steps in migration scripts and other errors
+
+
 2022-05-21
 ==========
 
@@ -450,7 +673,6 @@
 * :vytask:`T4164` (bug): PBR: network groups (as well as address and port groups) don't resolve in `nftables_policy.conf`
 * :vytask:`T3970` (feature): Add support for op-mode PKI direct install into an active config session
 * :vytask:`T3828` (bug): ipsec: Subtle change in "pfs enable" behavior from equuleus -> sagitta
-* :vytask:`T4228` (bug): bond: OS error thrown when two bonds use the same member
 
 
 2022-02-05
@@ -681,7 +903,7 @@
 2021-12-28
 ==========
 
-* :vytask:`T3380` (bug): Show vpn ike sa with IPv6 remote peer
+* :vytask:`T3380` (bug): "show vpn ike sa" does not display IPv6 peers
 
 
 2021-12-27
@@ -728,7 +950,6 @@
 2021-12-22
 ==========
 
-* :vytask:`T4056` (bug): Traffic policy not set in live configuration
 * :vytask:`T3678` (bug): VyOS 1.4: Invalid error message while deleting ipsec vpn configuration
 * :vytask:`T3356` (feature): Script for remote file transfers
 
@@ -2169,7 +2390,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.191 / 5.10.113
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.204 / 5.10.129
 
 
 2021-02-15

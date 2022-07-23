@@ -8,6 +8,116 @@
    _ext/releasenotes.py
 
 
+2022-07-14
+==========
+
+* :vytask:`T4491` (bug): Use empty string for internal name of root node of config_tree
+
+
+2022-07-13
+==========
+
+* :vytask:`T1375` (feature): Add clear  dhcp server  lease function
+
+
+2022-07-12
+==========
+
+* :vytask:`T4527` (bug): Prevent to create VRF name default
+* :vytask:`T4084` (default): Dehardcode the default login banner
+* :vytask:`T3864` (enhancment): Add Edgecore build to VyOS 1.3 Equuleus
+
+
+2022-07-09
+==========
+
+* :vytask:`T4507` (feature): IPoE-server add multiplier option for shaper
+* :vytask:`T4468` (bug): web-proxy source group cannot start with a number bug
+* :vytask:`T4373` (feature): PPPoE-server add multiplier option for shaper
+
+
+2022-07-07
+==========
+
+* :vytask:`T4456` (bug): NTP client in VRF tries to bind to interfaces outside VRF, logs many messages
+* :vytask:`T4509` (feature): Feature Request: DNS64
+
+
+2022-07-06
+==========
+
+* :vytask:`T4513` (bug): Webproxy monitor commands do not work
+
+
+2022-07-05
+==========
+
+* :vytask:`T4510` (bug): set system static-host-mapping doesn't allow IPv4 and IPv6 for same name.
+* :vytask:`T2654` (bug): Multiple names unable to be assigned to the same static mapping
+* :vytask:`T2683` (default): no dual stack in system static-host-mapping host-name 
+
+
+2022-07-01
+==========
+
+* :vytask:`T4489` (bug): MPLS sysctl not persistent for tunnel interfaces
+
+
+2022-06-20
+==========
+
+* :vytask:`T1856` (feature): Support configuring IPSec SA bytes
+
+
+2022-06-16
+==========
+
+* :vytask:`T3866` (bug): Configs with DNS forwarding listening on OpenVPN interfaces or interfaces without a fixed address cannot be migrated to the new syntax
+
+
+2022-06-15
+==========
+
+* :vytask:`T1890` (feature): Metatask: rewrite flow-accounting to XML and Python
+
+
+2022-06-09
+==========
+
+* :vytask:`T2580` (feature): Support for ip pools for ippoe
+
+
+2022-06-08
+==========
+
+* :vytask:`T4447` (bug): DHCPv6 prefix delegation `sla-id` limited to 128 
+* :vytask:`T4350` (bug): DMVPN opennhrp spokes dont work behind NAT
+
+
+2022-05-30
+==========
+
+* :vytask:`T4315` (feature): Telegraf - Output to prometheus
+
+
+2022-05-27
+==========
+
+* :vytask:`T4441` (bug): wwan: connection not possible after a change added after 1.3.1-S1 release
+
+
+2022-05-26
+==========
+
+* :vytask:`T4442` (feature): HTTP API add action "reset"
+
+
+2022-05-25
+==========
+
+* :vytask:`T2194` (default): "show firewall" garbled output
+
+
 2022-05-19
 ==========
 
@@ -238,12 +348,6 @@
 * :vytask:`T4087` (feature): IPsec IKE-group proposals limit of 10 pieces 
 
 
-2022-02-06
-==========
-
-* :vytask:`T4228` (bug): bond: OS error thrown when two bonds use the same member
-
-
 2022-02-05
 ==========
 
@@ -360,7 +464,7 @@
 2021-12-28
 ==========
 
-* :vytask:`T3380` (bug): Show vpn ike sa with IPv6 remote peer
+* :vytask:`T3380` (bug): "show vpn ike sa" does not display IPv6 peers
 * :vytask:`T2933` (feature): VRRP add option virtual_ipaddress_excluded
 
 
@@ -1696,7 +1800,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.191 / 5.10.113
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.204 / 5.10.129
 
 
 2021-02-14
