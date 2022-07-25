@@ -8,6 +8,16 @@
    _ext/releasenotes.py
 
 
+2022-07-18
+==========
+
+* :vytask:`T4228` (bug): bond: OS error thrown when two bonds use the same member
+* :vytask:`T4534` (bug): bond: bridge: error out if member interface is assigned to a VRF instance
+* :vytask:`T4525` (bug): Delete interface from VRF and add it to bonding error
+* :vytask:`T4522` (feature): bond: add ability to specify mii monitor interval via CLI
+* :vytask:`T4521` (bug): bond: ARP monitor interval is not configured despite set via CLI
+
+
 2022-07-14
 ==========
 
