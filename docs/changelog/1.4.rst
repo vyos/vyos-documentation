@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2022-07-22
+==========
+
+* :vytask:`T4145` (bug): Conntrack table not showing after firewall rewriting
+
+
+2022-07-21
+==========
+
+* :vytask:`T4555` (feature): fastnetmon: add IPv6 support
+* :vytask:`T4553` (default): Allow to set ban time on ddos-protection configuration
+
+
+2022-07-20
+==========
+
+* :vytask:`T4056` (bug): Traffic policy not set in live configuration
+
+
+2022-07-18
+==========
+
+* :vytask:`T4523` (feature): OP-mode Extend conntrack output to get marks, zones and directions
+* :vytask:`T4228` (bug): bond: OS error thrown when two bonds use the same member
+* :vytask:`T4539` (feature): qat: update Intel QuickAssist release version 1.7.L.4.16.0-00017
+* :vytask:`T4534` (bug): bond: bridge: error out if member interface is assigned to a VRF instance
+* :vytask:`T4525` (bug): Delete interface from VRF and add it to bonding error
+* :vytask:`T4522` (feature): bond: add ability to specify mii monitor interval via CLI
+* :vytask:`T4535` (feature): FRR: upgrade to stable/8.3 version
+* :vytask:`T4521` (bug): bond: ARP monitor interval is not configured despite set via CLI
+* :vytask:`T4540` (feature): firmware: update to Linux release 20220708
+
+
 2022-07-17
 ==========
 
@@ -827,7 +860,6 @@
 
 * :vytask:`T4149` (bug): [Firewall-IPV6] Error delete Fw rules on VIF/INT
 * :vytask:`T3950` (bug): CLI backtrace on update if DNS not defined 
-* :vytask:`T4170` (feature): Rename "policy ipv6-route" -> "policy route6"
 * :vytask:`T4166` (bug): Debug output missing when frr.py called under vyos-configd
 
 
