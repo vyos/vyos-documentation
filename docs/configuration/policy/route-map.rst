@@ -73,8 +73,9 @@ Route Map
    prefix-len <0-32>
 
    IP address of route to match, based on specified prefix-length.
-   Note that this does not work with BGP routes.
-   When applied to BGP it can lead to unexpected results.
+   Note that this can be used for kernel routes only.
+   Do not apply to the routes of dynamic routing protocols (e.g. BGP,
+   RIP, OSFP), as this can lead to unexpected results..
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> match ip nexthop
    access-list <1-2699>
@@ -125,8 +126,9 @@ Route Map
    prefix-len <0-128>
 
    IPv6 address of route to match, based on specified prefix-length.
-   Note that this match rule does not work with BGP routes.
-   When applied to BGP it can lead to unexpected results.
+   Note that this can be used for kernel routes only.
+   Do not apply to the routes of dynamic routing protocols (e.g. BGP,
+   RIP, OSFP), as this can lead to unexpected results..
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> match ipv6 nexthop
    <h:h:h:h:h:h:h:h>
