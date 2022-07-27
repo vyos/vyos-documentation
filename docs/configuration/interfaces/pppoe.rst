@@ -1,4 +1,4 @@
-:lastproofread: 2021-07-09
+:lastproofread: 2022-07-27
 
 .. _pppoe-interface:
 
@@ -125,6 +125,9 @@ PPPoE options
    .. code-block:: none
 
      set interfaces pppoe pppoe0 no-default-route
+
+   .. note:: This command got added in VyOS 1.4 and inverts the logic from the old
+     ``default-route`` CLI option.
 
 .. cfgcmd:: set interfaces pppoe <interface> default-route-distance <distance>
 
@@ -310,11 +313,6 @@ Requirements:
   If you are switching from a DHCP based ISP like cable then be aware that
   things like VPN links may need to have their MTU sizes adjusted to work
   within this limit.
-* With the ``default-route`` option set to ``auto``, VyOS will only add the
-  default gateway you receive from your DSL ISP to the routing table if you
-  have no other WAN connections. If you wish to use a dual WAN connection,
-  change the ``default-route`` option to ``force``.  You could also install
-  a static route and set the ``default-route`` option to ``none``.
 * With the ``name-server`` option set to ``none``, VyOS will ignore the
   nameservers your ISP sends you and thus you can fully rely on the ones you
   have configured statically.
@@ -322,10 +320,11 @@ Requirements:
 .. note:: Syntax has changed from VyOS 1.2 (crux) and it will be automatically
    migrated during an upgrade.
 
+.. note:: A default route is automatically installed once the interface is up.
+  To change this behavior use the ``no-default-route`` CLI option.
+
 .. code-block:: none
 
-  set interfaces pppoe pppoe0 default-route 'auto'
-  set interfaces pppoe pppoe0 mtu 1492
   set interfaces pppoe pppoe0 authentication user 'userid'
   set interfaces pppoe pppoe0 authentication password 'secret'
   set interfaces pppoe pppoe0 source-interface 'eth0'
@@ -351,8 +350,6 @@ which is the default VLAN for Deutsche Telekom:
 
 .. code-block:: none
 
-  set interfaces pppoe pppoe0 default-route 'auto'
-  set interfaces pppoe pppoe0 mtu 1492
   set interfaces pppoe pppoe0 authentication user 'userid'
   set interfaces pppoe pppoe0 authentication password 'secret'
   set interfaces pppoe pppoe0 source-interface 'eth0.7'
