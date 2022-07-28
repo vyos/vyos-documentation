@@ -69,9 +69,16 @@ Configuration
    respond to the client. The lease will remain abandoned for a minimum of
    abandon-lease-time seconds (defaults to 24 hours).
 
-   If a there are no free addressses but there are abandoned IP addresses, the
+   If there are no free addresses but there are abandoned IP addresses, the
    DHCP server will attempt to reclaim an abandoned IP address regardless of the
    value of abandon-lease-time.
+
+.. cfgcmd:: set service dhcp-server listen-address <address>
+
+   This configuration parameter lets the DHCP server to listen for DHCP 
+   requests sent to the specified address, it is only realistically useful for 
+   a server whose only clients are reached via unicasts, such as via DHCP relay 
+   agents.
 
 Individual Client Subnet
 -------------------------
@@ -151,7 +158,7 @@ Individual Client Subnet
    respond to the client. The lease will remain abandoned for a minimum of
    abandon-lease-time seconds (defaults to 24 hours).
 
-   If a there are no free addressses but there are abandoned IP addresses, the
+   If a there are no free addresses but there are abandoned IP addresses, the
    DHCP server will attempt to reclaim an abandoned IP address regardless of the
    value of abandon-lease-time.
 
@@ -495,18 +502,6 @@ Operation Mode
 
    Show logs from specific `interface` DHCP client process.
 
-.. opcmd:: show log dhcpv6 server
-
-   Show DHCPv6 server daemon log file
-
-.. opcmd:: show log dhcpv6 client
-
-   Show logs from all DHCPv6 client processes.
-
-.. opcmd:: show log dhcpv6 client interface <interface>
-
-   Show logs from specific `interface` DHCPv6 client process.
-
 .. opcmd:: restart dhcp server
 
    Restart the DHCP server
@@ -722,6 +717,18 @@ The configuration will look as follows:
 Operation Mode
 ==============
 
+.. opcmd:: show log dhcpv6 server
+
+   Show DHCPv6 server daemon log file
+
+.. opcmd:: show log dhcpv6 client
+
+   Show logs from all DHCPv6 client processes.
+
+.. opcmd:: show log dhcpv6 client interface <interface>
+
+   Show logs from specific `interface` DHCPv6 client process.
+
 .. opcmd:: restart dhcpv6 server
 
    To restart the DHCPv6 server
@@ -732,7 +739,7 @@ Operation Mode
 
 .. opcmd:: show dhcpv6 server leases
 
-   Show statuses of all assigned leases:
+   Shows status of all assigned leases:
 
 .. code-block:: none
 
