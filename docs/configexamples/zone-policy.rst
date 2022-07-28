@@ -25,7 +25,7 @@ adapted for however many NICs you have**:
 * Internet - 192.168.200.100 - TCP/443
 * Internet - 192.168.200.100 - TCP/25
 * Internet - 192.168.200.100 - TCP/53
-* VyOS actis as DHCP, DNS forwarder, NAT, router and firewall.
+* VyOS acts as DHCP, DNS forwarder, NAT, router and firewall.
 * 192.168.200.200/2001:0DB8:0:BBBB::200 is an internal/external DNS, web
   and mail (SMTP/IMAP) server.
 * 192.168.100.10/2001:0DB8:0:AAAA::10 is the administrator's console. It
