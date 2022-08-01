@@ -8,6 +8,62 @@
    _ext/releasenotes.py
 
 
+2022-07-31
+==========
+
+* :vytask:`T4580` (bug): Handle the case of op-mode file names with hyphens in GraphQL schema/resolver generation
+
+
+2022-07-30
+==========
+
+* :vytask:`T4575` (feature): vyos.utill add new wrapper "rc_cmd" to get the return code and output
+* :vytask:`T4562` (feature): Rewrite show vrf to new format
+* :vytask:`T4545` (feature): Rewrite show nat source rules
+* :vytask:`T4543` (bug): Show source nat statistics shows incorrect interface
+* :vytask:`T4503` (default): Prevent op mode scripts from restarting services if there's a commit in progress
+* :vytask:`T4411` (feature): Add migration for service monitoring telegraf influxdb
+
+
+2022-07-29
+==========
+
+* :vytask:`T4554` (enhancment): Implement GraphQL resolvers for standardized op-mode scripts
+* :vytask:`T4518` (feature): Add XML for CLI conf mode load-balancing wan 
+* :vytask:`T4544` (enhancment): Generate schema definitions from standardized op-mode scripts
+
+
+2022-07-28
+==========
+
+* :vytask:`T4531` (bug): NAT op-mode errors with exclude rules
+* :vytask:`T3435` (bug): NAT rules show corruption
+
+
+2022-07-27
+==========
+
+* :vytask:`T4571` (bug): Sflow with vrf configured does not use vrf to validate agent-address IP from vrf-configured interfaces
+* :vytask:`T4552` (bug): Unable to reset IPsec IPv6 peer
+
+
+2022-07-26
+==========
+
+* :vytask:`T4568` (bug): show vpn debug peer doesn't work
+* :vytask:`T4556` (feature): fastnetmon: Allow configure white_list_path and populate with hosts/networks that should be ignored.
+* :vytask:`T4495` (feature): Combine BGP reset op commands
+
+
+2022-07-25
+==========
+
+* :vytask:`T4567` (default): Merge experimental branch of GraphQL development
+* :vytask:`T4560` (bug): VRF and BGP neighbor local-as error
+* :vytask:`T4493` (bug): Incorrect help for "show bgp neighbors"
+* :vytask:`T1233` (bug): ipsec vpn sa showing down
+
+
 2022-07-22
 ==========
 
