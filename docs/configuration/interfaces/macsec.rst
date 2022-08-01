@@ -53,11 +53,12 @@ individual peers.
 .. cfgcmd:: set interfaces macsec <interface> security mka cak <key>
 
   IEEE 802.1X/MACsec pre-shared key mode. This allows configuring MACsec with
-  a pre-shared key using a (CAK,CKN) pair.
+  a pre-shared key using a :abbr:`CAK (MACsec connectivity association key)` and
+  :abbr:`CKN (MACsec connectivity association name)` pair.
 
 .. cfgcmd:: set interfaces macsec <interface> security mka ckn <key>
 
-  CAK Name
+  :abbr:`CKN (MACsec connectivity association name)` key
 
 .. cfgcmd:: set interfaces macsec <interface> security mka priority <priority>
 
@@ -88,7 +89,6 @@ Operation
 
     vyos@vyos:~$ generate macsec mka cak gcm-aes-128
     20693b6e08bfa482703a563898c9e3ad
-
 
 .. opcmd:: run generate macsec mka ckn
 
