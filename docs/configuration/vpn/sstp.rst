@@ -158,9 +158,6 @@ SSL Certificates
 
   Path to `<file>` pointing to the servers certificate (public portion).
 
-.. cfgcmd:: set vpn sstp ssl key-file <file>
-
-  Path to `<file>` pointing to the servers certificate (private portion).
 
 PPP Settings
 ------------
