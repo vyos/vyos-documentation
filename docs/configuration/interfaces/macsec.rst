@@ -80,19 +80,19 @@ Replay protection
 Operation
 *********
 
-.. opcmd:: run generate macsec mka-cak
+.. opcmd:: run generate macsec mka cak <gcm-aes-128|gcm-aes-256>
 
-  Generate :abbr:`MKA (MACsec Key Agreement protocol)` CAK key
+  Generate :abbr:`MKA (MACsec Key Agreement protocol)` CAK key 128 or 256 bits.
 
   .. code-block:: none
 
-    vyos@vyos:~$ generate macsec mka-cak
+    vyos@vyos:~$ generate macsec mka cak gcm-aes-128
     20693b6e08bfa482703a563898c9e3ad
 
 
-.. opcmd:: run generate macsec mka-ckn
+.. opcmd:: run generate macsec mka ckn
 
-  Generate :abbr:`MKA (MACsec Key Agreement protocol)` CAK key
+  Generate :abbr:`MKA (MACsec Key Agreement protocol)` CAK key.
 
   .. code-block:: none
 
@@ -101,7 +101,7 @@ Operation
 
 .. opcmd:: show interfaces macsec
 
-  List all MACsec interfaces
+  List all MACsec interfaces.
 
   .. code-block:: none
 
