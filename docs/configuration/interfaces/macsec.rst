@@ -96,7 +96,7 @@ Operation
 
   .. code-block:: none
 
-    vyos@vyos:~$ generate macsec mka-ckn
+    vyos@vyos:~$ generate macsec mka ckn
     88737efef314ee319b2cbf30210a5f164957d884672c143aefdc0f5f6bc49eb2
 
 .. opcmd:: show interfaces macsec
