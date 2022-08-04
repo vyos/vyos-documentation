@@ -78,6 +78,7 @@ The generated configuration will look like:
 
   show service dhcp-relay
       interface eth1
+      interface eth2
       server 10.0.1.4
       relay-options {
          relay-agents-packets discard
