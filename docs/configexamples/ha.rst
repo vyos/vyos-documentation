@@ -567,7 +567,7 @@ it is not 203.0.113.0/24.
    set policy route-map BGPPREPENDOUT rule 10 match ip address prefix-list 'BGPOUT'
    set policy route-map BGPPREPENDOUT rule 10000 action 'deny'
 
-   set protocols bgp local-as 65551
+   set protocols bgp system-as 65551
    set protocols bgp address-family ipv4-unicast network 192.0.2.0/24
    set protocols bgp address-family ipv4-unicast redistribute connected metric '50'
    set protocols bgp address-family ipv4-unicast redistribute ospf metric '50'

@@ -37,7 +37,7 @@ The :abbr:`ASN (Autonomous System Number)` is one of the essential elements of
 BGP. BGP is a distance vector routing protocol, and the AS-Path framework
 provides distance vector metric and loop detection to BGP.
 
-.. cfgcmd:: set protocols bgp local-as <asn>
+.. cfgcmd:: set protocols bgp system-as <asn>
 
   Set local :abbr:`ASN (Autonomous System Number)` that this router represents.
   This is a a mandatory option!
@@ -174,7 +174,7 @@ The BGP protocol uses the AS number for detecting whether the BGP connection
 is internal or external. VyOS does not have a special command to start the BGP
 process. The BGP process starts when the first neighbor is configured.
 
-.. cfgcmd:: set protocols bgp local-as <asn>
+.. cfgcmd:: set protocols bgp system-as <asn>
 
   Set local autonomous system number that this router represents. This is a
   mandatory option!
@@ -1069,7 +1069,7 @@ A simple eBGP configuration:
 
 .. code-block:: none
 
-  set protocols bgp local-as 65534
+  set protocols bgp system-as 65534
   set protocols bgp neighbor 192.168.0.2 ebgp-multihop '2'
   set protocols bgp neighbor 192.168.0.2 remote-as '65535'
   set protocols bgp neighbor 192.168.0.2 update-source '192.168.0.1'
@@ -1080,7 +1080,7 @@ A simple eBGP configuration:
 
 .. code-block:: none
 
-  set protocols bgp local-as 65535
+  set protocols bgp system-as 65535
   set protocols bgp neighbor 192.168.0.1 ebgp-multihop '2'
   set protocols bgp neighbor 192.168.0.1 remote-as '65534'
   set protocols bgp neighbor 192.168.0.1 update-source '192.168.0.2'
@@ -1114,7 +1114,7 @@ A simple BGP configuration via IPv6.
 
 .. code-block:: none
 
-  set protocols bgp local-as 65534
+  set protocols bgp system-as 65534
   set protocols bgp neighbor 2001:db8::2 ebgp-multihop '2'
   set protocols bgp neighbor 2001:db8::2 remote-as '65535'
   set protocols bgp neighbor 2001:db8::2 update-source '2001:db8::1'
@@ -1126,7 +1126,7 @@ A simple BGP configuration via IPv6.
 
 .. code-block:: none
 
-  set protocols bgp local-as 65535
+  set protocols bgp system-as 65535
   set protocols bgp neighbor 2001:db8::1 ebgp-multihop '2'
   set protocols bgp neighbor 2001:db8::1 remote-as '65534'
   set protocols bgp neighbor 2001:db8::1 update-source '2001:db8::2'
@@ -1177,7 +1177,7 @@ Route filter can be applied using a route-map:
   set policy route-map AS65535-OUT rule 10 match ipv6 address prefix-list 'AS65535-OUT'
   set policy route-map AS65535-OUT rule 20 action 'permit'
 
-  set protocols bgp local-as 65534
+  set protocols bgp system-as 65534
   set protocols bgp neighbor 2001:db8::2 address-family ipv4-unicast route-map export 'AS65535-OUT'
   set protocols bgp neighbor 2001:db8::2 address-family ipv4-unicast route-map import 'AS65535-IN'
   set protocols bgp neighbor 2001:db8::2 address-family ipv6-unicast route-map export 'AS65535-OUT'
@@ -1205,7 +1205,7 @@ Route filter can be applied using a route-map:
   set policy route-map AS65534-OUT rule 10 match ipv6 address prefix-list 'AS65534-OUT'
   set policy route-map AS65534-OUT rule 20 action 'permit'
 
-  set protocols bgp local-as 65535
+  set protocols bgp system-as 65535
   set protocols bgp neighbor 2001:db8::1 address-family ipv4-unicast route-map export 'AS65534-OUT'
   set protocols bgp neighbor 2001:db8::1 address-family ipv4-unicast route-map import 'AS65534-IN'
   set protocols bgp neighbor 2001:db8::1 address-family ipv6-unicast route-map export 'AS65534-OUT'

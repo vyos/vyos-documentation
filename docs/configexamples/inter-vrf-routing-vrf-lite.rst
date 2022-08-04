@@ -239,10 +239,10 @@ to inject configured networks into the BGP process but still inside the VRF.
 .. code-block:: none
 
    # set BGP global local-as
-   set protocols bgp local-as <ASN>
+   set protocols bgp system-as <ASN>
 
    # set BGP VRF local-as and redistribution
-   set vrf name <VRF> protocols bgp local-as <ASN>
+   set vrf name <VRF> protocols bgp system-as <ASN>
    set vrf name <VRF> protocols bgp address-family <AF IPv4/IPv6> redistribute static
 
 - Verification
@@ -631,7 +631,7 @@ Full configuration from all devices
    set interfaces ethernet eth3 address '2001:db8::6/127'
    set interfaces ethernet eth3 vrf 'Internet'
    set protocols bgp address-family ipv4-unicast
-   set protocols bgp local-as '64496'
+   set protocols bgp system-as '64496'
    set vrf name Internet protocols bgp address-family ipv4-unicast export vpn
    set vrf name Internet protocols bgp address-family ipv4-unicast import vpn
    set vrf name Internet protocols bgp address-family ipv4-unicast rd vpn export '64496:100'
@@ -642,7 +642,7 @@ Full configuration from all devices
    set vrf name Internet protocols bgp address-family ipv6-unicast rd vpn export '64496:100'
    set vrf name Internet protocols bgp address-family ipv6-unicast route-target vpn export '64496:100'
    set vrf name Internet protocols bgp address-family ipv6-unicast route-target vpn import '64496:1 64496:2'
-   set vrf name Internet protocols bgp local-as '64496'
+   set vrf name Internet protocols bgp system-as '64496'
    set vrf name Internet protocols bgp neighbor 10.2.2.2 address-family ipv4-unicast
    set vrf name Internet protocols bgp neighbor 10.2.2.2 remote-as '64497'
    set vrf name Internet protocols bgp neighbor 2001:db8::7 address-family ipv6-unicast
@@ -660,7 +660,7 @@ Full configuration from all devices
    set vrf name LAN1 protocols bgp address-family ipv6-unicast redistribute static
    set vrf name LAN1 protocols bgp address-family ipv6-unicast route-target vpn export '64496:1'
    set vrf name LAN1 protocols bgp address-family ipv6-unicast route-target vpn import '64496:100 64496:50 64496:2'
-   set vrf name LAN1 protocols bgp local-as '64496'
+   set vrf name LAN1 protocols bgp system-as '64496'
    set vrf name LAN1 protocols static route 10.0.0.0/24 next-hop 10.1.1.2
    set vrf name LAN1 protocols static route6 2001:db8:0:1::/64 next-hop 2001:db8::1
    set vrf name LAN1 table '101'
@@ -676,7 +676,7 @@ Full configuration from all devices
    set vrf name LAN2 protocols bgp address-family ipv6-unicast redistribute static
    set vrf name LAN2 protocols bgp address-family ipv6-unicast route-target vpn export '64496:2'
    set vrf name LAN2 protocols bgp address-family ipv6-unicast route-target vpn import '64496:100 64496:50 64496:1'
-   set vrf name LAN2 protocols bgp local-as '64496'
+   set vrf name LAN2 protocols bgp system-as '64496'
    set vrf name LAN2 protocols static route 172.16.0.0/24 next-hop 172.16.2.2
    set vrf name LAN2 protocols static route6 2001:db8:0:2::/64 next-hop 2001:db8::3
    set vrf name LAN2 table '102'
@@ -692,7 +692,7 @@ Full configuration from all devices
    set vrf name Management protocols bgp address-family ipv6-unicast redistribute static
    set vrf name Management protocols bgp address-family ipv6-unicast route-target vpn export '64496:50'
    set vrf name Management protocols bgp address-family ipv6-unicast route-target vpn import '64496:1 64496:2'
-   set vrf name Management protocols bgp local-as '64496'
+   set vrf name Management protocols bgp system-as '64496'
    set vrf name Management protocols static route 192.168.0.0/24 next-hop 192.168.3.2
    set vrf name Management protocols static route6 2001:db8:0:3::/64 next-hop 2001:db8::5
    set vrf name Management table '103'
@@ -751,7 +751,7 @@ Full configuration from all devices
    set interfaces ethernet eth3 address '2001:db8::7/127'
    set protocols bgp address-family ipv4-unicast redistribute connected
    set protocols bgp address-family ipv6-unicast redistribute connected
-   set protocols bgp local-as '64497'
+   set protocols bgp system-as '64497'
    set protocols bgp neighbor 10.2.2.1 address-family ipv4-unicast default-originate
    set protocols bgp neighbor 10.2.2.1 remote-as '64496'
    set protocols bgp neighbor 2001:db8::6 address-family ipv6-unicast default-originate

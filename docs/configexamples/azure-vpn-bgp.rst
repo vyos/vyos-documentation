@@ -122,7 +122,7 @@ Vyos configuration
 
 .. code-block:: none
 
-  set protocols bgp local-as 64499
+  set protocols bgp system-as 64499
   set protocols bgp neighbor 10.0.0.4 remote-as '65540'
   set protocols bgp neighbor 10.0.0.4 address-family ipv4-unicast soft-reconfiguration 'inbound'
   set protocols bgp neighbor 10.0.0.4 timers holdtime '30'

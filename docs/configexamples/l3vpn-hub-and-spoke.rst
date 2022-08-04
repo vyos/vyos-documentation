@@ -329,7 +329,7 @@ VPN (L3VPN) routes between them:
 
 .. code-block:: none
    
-   set protocols bgp local-as '65001'
+   set protocols bgp system-as '65001'
    set protocols bgp neighbor 10.0.0.7 address-family ipv4-vpn route-reflector-client
    set protocols bgp neighbor 10.0.0.7 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.8 address-family ipv4-vpn route-reflector-client
@@ -346,7 +346,7 @@ VPN (L3VPN) routes between them:
 
 .. code-block:: none
    
-   set protocols bgp local-as '65001'
+   set protocols bgp system-as '65001'
    set protocols bgp neighbor 10.0.0.7 address-family ipv4-vpn route-reflector-client
    set protocols bgp neighbor 10.0.0.7 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.8 address-family ipv4-vpn route-reflector-client
@@ -363,7 +363,7 @@ VPN (L3VPN) routes between them:
 
 .. code-block:: none
    
-   set protocols bgp local-as '65001'
+   set protocols bgp system-as '65001'
    set protocols bgp neighbor 10.0.0.1 address-family ipv4-vpn nexthop-self
    set protocols bgp neighbor 10.0.0.1 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.2 address-family ipv4-vpn nexthop-self
@@ -377,7 +377,7 @@ VPN (L3VPN) routes between them:
 
 .. code-block:: none
    
-   set protocols bgp local-as '65001'
+   set protocols bgp system-as '65001'
    set protocols bgp neighbor 10.0.0.1 address-family ipv4-vpn nexthop-self
    set protocols bgp neighbor 10.0.0.1 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.2 address-family ipv4-vpn nexthop-self
@@ -391,7 +391,7 @@ VPN (L3VPN) routes between them:
 
 .. code-block:: none
    
-   set protocols bgp local-as '65001'
+   set protocols bgp system-as '65001'
    set protocols bgp neighbor 10.0.0.1 address-family ipv4-vpn nexthop-self
    set protocols bgp neighbor 10.0.0.1 peer-group 'RR_VPNv4'
    set protocols bgp neighbor 10.0.0.2 address-family ipv4-vpn nexthop-self
@@ -424,7 +424,7 @@ import/export based on the pre-defined parameters.
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast redistribute connected
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast route-target vpn export '65035:1011'
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast route-target vpn import '65035:1030'
-   set vrf name BLUE_SPOKE protocols bgp local-as '65001'
+   set vrf name BLUE_SPOKE protocols bgp system-as '65001'
    set vrf name BLUE_SPOKE protocols bgp neighbor 10.50.50.2 address-family ipv4-unicast as-override
    set vrf name BLUE_SPOKE protocols bgp neighbor 10.50.50.2 remote-as '65035'
    
@@ -446,7 +446,7 @@ import/export based on the pre-defined parameters.
    set vrf name BLUE_HUB protocols bgp address-family ipv4-unicast redistribute connected
    set vrf name BLUE_HUB protocols bgp address-family ipv4-unicast route-target vpn export '65035:1030'
    set vrf name BLUE_HUB protocols bgp address-family ipv4-unicast route-target vpn import '65035:1011 65050:2011 65035:1030'
-   set vrf name BLUE_HUB protocols bgp local-as '65001'
+   set vrf name BLUE_HUB protocols bgp system-as '65001'
    set vrf name BLUE_HUB protocols bgp neighbor 10.80.80.2 address-family ipv4-unicast as-override
    set vrf name BLUE_HUB protocols bgp neighbor 10.80.80.2 remote-as '65035'
    
@@ -468,7 +468,7 @@ import/export based on the pre-defined parameters.
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast redistribute connected
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast route-target vpn export '65035:1011'
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast route-target vpn import '65035:1030'
-   set vrf name BLUE_SPOKE protocols bgp local-as '65001'
+   set vrf name BLUE_SPOKE protocols bgp system-as '65001'
    set vrf name BLUE_SPOKE protocols bgp neighbor 10.60.60.2 address-family ipv4-unicast as-override
    set vrf name BLUE_SPOKE protocols bgp neighbor 10.60.60.2 remote-as '65035'
    
@@ -496,7 +496,7 @@ configured L3VPN parameters.
    set interfaces ethernet eth0 address '10.50.50.2/24'
    
    # BGP for peering with PE
-   set protocols bgp local-as 65035 
+   set protocols bgp system-as 65035 
    set protocols bgp address-family ipv4-unicast network 10.0.0.80/32
    set protocols bgp neighbor 10.50.50.1 ebgp-multihop '2'
    set protocols bgp neighbor 10.50.50.1 remote-as '65001'
@@ -513,7 +513,7 @@ configured L3VPN parameters.
    set interfaces ethernet eth0 address '10.80.80.2/24'
    
    # BGP for peering with PE
-   set protocols bgp local-as 65035 
+   set protocols bgp system-as 65035 
    set protocols bgp address-family ipv4-unicast network 10.0.0.100/32
    set protocols bgp address-family ipv4-unicast redistribute connected
    set protocols bgp neighbor 10.80.80.1 ebgp-multihop '2'
@@ -531,7 +531,7 @@ configured L3VPN parameters.
    set interfaces ethernet eth0 address '10.60.60.2/24'
    
    # BGP for peering with PE 
-   set protocols bgp local-as 65035 
+   set protocols bgp system-as 65035 
    set protocols bgp address-family ipv4-unicast network 10.0.0.90/32
    set protocols bgp neighbor 10.60.60.1 ebgp-multihop '2'
    set protocols bgp neighbor 10.60.60.1 remote-as '65001'

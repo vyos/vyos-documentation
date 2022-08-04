@@ -15,7 +15,7 @@ Configuration
 
 .. code-block:: none
 
-  set protocols bgp local-as 64496
+  set protocols bgp system-as 64496
   set protocols bgp address-family ipv4-unicast redistribute connected
   set protocols bgp address-family ipv6-unicast redistribute connected
   set protocols bgp neighbor eth1 interface v6only
@@ -35,7 +35,7 @@ Configuration
 
 .. code-block:: none
 
-  set protocols bgp local-as 64499
+  set protocols bgp system-as 64499
   set protocols bgp address-family ipv4-unicast redistribute connected
   set protocols bgp address-family ipv6-unicast redistribute connected
   set protocols bgp neighbor eth1 interface v6only

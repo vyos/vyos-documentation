@@ -11,7 +11,7 @@ BGP Example
   set policy route-map setmet rule 2 set as-path prepend '2 2 2'
 
   # Apply policy to BGP
-  set protocols bgp local-as 1
+  set protocols bgp system-as 1
   set protocols bgp neighbor 203.0.113.2 address-family ipv4-unicast route-map import 'setmet'
   set protocols bgp neighbor 203.0.113.2 address-family ipv4-unicast soft-reconfiguration 'inbound'
 
