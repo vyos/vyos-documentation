@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2022-07-30
+==========
+
+* :vytask:`T4532` (bug): Flow-accounting IPv6 server/receiver bug
+
+
+2022-07-27
+==========
+
+* :vytask:`T4571` (bug): Sflow with vrf configured does not use vrf to validate agent-address IP from vrf-configured interfaces
+
+
 2022-07-18
 ==========
 
