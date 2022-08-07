@@ -272,7 +272,7 @@ also to display them.
 
   Show only information for specified Certificate Authority.
 
-.. opcmd:: show pki certificates
+.. opcmd:: show pki certificate
 
   Show a list of installed certificates
 
@@ -285,7 +285,7 @@ also to display them.
     ac2        Server  CN=ac2.vyos.net        CN=R3          2021-07-05 07:29:59  2021-10-03 07:29:58  No         Yes            Yes (R3)
     rw_server  Server  CN=VyOS RW             CN=VyOS RW CA  2021-07-05 13:48:02  2022-07-05 13:48:02  No         Yes            Yes (vyos_rw)
 
-.. opcmd:: show pki certificates <name>
+.. opcmd:: show pki certificate <name>
 
   Show only information for specified certificate.
 
