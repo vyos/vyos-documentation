@@ -8,6 +8,26 @@
    _ext/releasenotes.py
 
 
+2022-08-04
+==========
+
+* :vytask:`T4257` (feature): Discussion on changing BGP autonomous system number syntax
+
+
+2022-08-02
+==========
+
+* :vytask:`T4585` (feature): Rewrite op-mode containers to vyos.opmode 
+* :vytask:`T4515` (default): Reduce telegraf binary size
+
+
+2022-08-01
+==========
+
+* :vytask:`T4581` (bug): 'show system cpu' not working
+* :vytask:`T4578` (feature): Rewrite show dns forwarding statistics to new format
+
+
 2022-07-31
 ==========
 
@@ -2478,7 +2498,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.204 / 5.10.129
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.208 / 5.10.135
 
 
 2021-02-15
