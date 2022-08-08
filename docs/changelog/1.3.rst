@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2022-08-02
+==========
+
+* :vytask:`T4515` (default): Reduce telegraf binary size
+
+
 2022-07-30
 ==========
 
@@ -1822,7 +1828,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.204 / 5.10.129
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.208 / 5.10.135
 
 
 2021-02-14
