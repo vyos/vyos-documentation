@@ -352,8 +352,10 @@ system:
 
 .. note::
    ``5.10.135-amd64-vyos`` represents the kernel version at the time the
-   documentation was updated for VyOS 1.4 (Sagitta). It may not reflect the version
-   used in the latest release. VyOS 1.3 (Equuleus) uses 5.4.x Linux kernels.
+   documentation was updated for VyOS 1.4 (Sagitta). It may not reflect the
+   version used in the latest release. VyOS 1.3 (Equuleus) uses 5.4.x Linux
+   kernels. https://phabricator.vyos.net/T3318 tracks Kernel changes for the
+   current release.
 
 Other packages (e.g. vyos-1x) add dependencies to the ISO build procedure on
 e.g. the wireguard-modules package which itself adds a dependency on the kernel
