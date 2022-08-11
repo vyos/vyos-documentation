@@ -348,12 +348,12 @@ system:
 .. code-block:: none
 
   vyos@vyos:~$ uname -r
-  5.10.128-amd64-vyos
+  5.10.135-amd64-vyos
 
 .. note::
-   ``5.10.128-amd64-vyos`` represents the kernel version at the time the
-   documentation was updated on July 5, 2022. It does not reflect the version
-   used in the latest release.
+   ``5.10.135-amd64-vyos`` represents the kernel version at the time the
+   documentation was updated for VyOS 1.4 (Sagitta). It may not reflect the version
+   used in the latest release. VyOS 1.3 (Equuleus) uses 5.4.x Linux kernels.
 
 Other packages (e.g. vyos-1x) add dependencies to the ISO build procedure on
 e.g. the wireguard-modules package which itself adds a dependency on the kernel
