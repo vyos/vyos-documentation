@@ -2,6 +2,7 @@ import re
 import json
 import os
 from datetime import datetime
+from unittest import defaultTestLoader
 from docutils import io, nodes, utils, statemachine
 from docutils.parsers.rst.roles import set_classes
 from docutils.parsers.rst import Directive, directives, states
@@ -398,6 +399,21 @@ class OpcmdlistDirective(Directive):
         return [oplist]
 
 
+def get_default_value(title_text, config, cfgmode):
+    title_text = strip_cmd(title_text)
+    for cmd in config.vyos_working_commands[cfgmode]:
+        cmd_joined = ' '.join(cmd['name'])
+        cmd_striped = strip_cmd(cmd_joined)
+        if "table-size" in cmd['name']:
+            pass
+            #print(cmd)
+            #print(cmd_striped)
+            #print(title_text)
+            #print()
+        if cmd_striped == title_text:
+            if cmd['defaultvalue']:
+                return cmd['defaultvalue']
+    return None
 
 class CmdDirective(SphinxDirective):
 
@@ -410,19 +426,31 @@ class CmdDirective(SphinxDirective):
         content_list = []
         title_text = ''
         content_text = ''
+        defaultvalue = None
         has_body = False
 
         cfgmode = self.custom_class + "cmd"
+        try:
+            if '' in self.content:
+                index = self.content.index('')
+                title_list = self.content[0:index]
+                content_list = self.content[index + 1:]
 
-        if '' in self.content:
-            index = self.content.index('')
-            title_list = self.content[0:index]
-            content_list = self.content[index + 1:]
-            title_text = ' '.join(title_list)
-            content_text = '\n'.join(content_list)
-            has_body = True
-        else:
-            title_text = ' '.join(self.content)
+                title_text = ' '.join(title_list)
+                content_text = content_text + '\n'.join(content_list)
+                has_body = True
+            else:
+                title_list = self.content
+                title_text = ' '.join(title_list)
+        except Exception as e:
+            print("error", e)
+
+        # render defaultvalue
+        if os.getenv('VYOS_DEFAULT') or ':defaultvalue:' in title_text:
+            value = get_default_value(title_list, self.config, cfgmode)
+            title_text = title_text.replace(":defaultvalue:", '')
+            if value:
+                defaultvalue = f"default: {value}\n"
 
         anchor_id = nodes.make_id(self.custom_class + "cmd-" + title_text)
         target = nodes.target(ids=[anchor_id])
@@ -444,6 +472,11 @@ class CmdDirective(SphinxDirective):
         heading_element['classes'] += [self.custom_class + 'cmd-heading']
 
         panel_element.append(heading_element)
+        if defaultvalue:
+            defaultvalue_element = nodes.paragraph(text=defaultvalue)
+            defaultvalue_element['classes'] = ["defaultvalue"]
+            panel_element.append(defaultvalue_element)
+
 
         append_list = {
             'docname': self.env.docname,
@@ -526,9 +559,11 @@ def strip_cmd(cmd, debug=False):
     if debug:
         print(cmd)
     cmd = re.sub('\s+','',cmd)
+    cmd = cmd.replace(':defaultvalue:','')
     if debug:
         print(cmd)
         print("")
+    
     return cmd
 
 def build_row(app, fromdocname, rowdata):   

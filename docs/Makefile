@@ -27,3 +27,7 @@ livehtml:
 	sphinx-autobuild --host $(AUTOHOST) --port $(AUTOPORT) $(AUTOOPTS) \
 		"$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
+
+defaultvalue: export VYOS_DEFAULT=True
+defaultvalue:	
+	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
