@@ -137,6 +137,17 @@ Configuration
 
     set service webproxy reply-body-max-size 2048
 
+.. cfgcmd:: set service webproxy safe-ports <port>
+
+  Add new port to Safe-ports acl. Ports included by default in Safe-ports acl:
+  21, 70, 80, 210, 280, 443, 488, 591, 777, 873, 1025-65535
+
+.. cfgcmd:: set service webproxy ssl-safe-ports <port>
+
+  Add new port to SSL-ports acl. Ports included by default in SSL-ports acl:
+  443
+
+
 Authentication
 ==============
 
