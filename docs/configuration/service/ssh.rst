@@ -187,7 +187,7 @@ Operation
   ``/config/auth/id_rsa_rpki.pub``
   will be created.
 
-.. opcmd:: generate public-key-command name <username> path <location>
+.. opcmd:: generate public-key-command user <username> path <location>
 
    Generate the configuration mode commands to add a public key for
    :ref:`ssh_key_based_authentication`.
