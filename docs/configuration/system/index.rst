@@ -8,6 +8,7 @@ System
    :includehidden:
 
    acceleration
+   conntrack
    console
    flow-accounting
    host-name
