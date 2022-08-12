@@ -225,6 +225,27 @@ inside the subnet definition but can be outside of the range statement.
    .. hint:: This is the equivalent of the host block in dhcpd.conf of
       isc-dhcpd.
 
+**Example:**
+
+* IP address ``192.168.1.100`` shall be statically mapped to client named ``client100``
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 ip-address 192.168.1.100
+  set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 mac-address aa:bb:11:22:33:00
+
+The configuration will look as follows:
+
+.. code-block:: none
+
+  show service dhcp-server shared-network-name NET1
+   subnet 192.168.1.0/24 {
+       static-mapping client1 {
+           ip-address 192.168.1.100
+           mac-address aa:bb:11:22:33:00
+       }
+   }
+
 Options
 =======
 
