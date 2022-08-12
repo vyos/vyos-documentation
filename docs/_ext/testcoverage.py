@@ -175,12 +175,18 @@ def get_properties(p):
 
 def process_node(n, f):
 
+
     props_elem = n.find("properties")
     children = n.find("children")
     command = n.find("command")
     children_nodes = []
     owner = n.get("owner")
     node_type = n.tag
+    defaultvalue = n.find("defaultValue")
+
+    if defaultvalue is not None:
+        defaultvalue = defaultvalue.text
+
 
     name = n.get("name")
     props = get_properties(props_elem)
@@ -218,7 +224,9 @@ def process_node(n, f):
         'children': children_nodes,
         'props': props,
         'command': test_command,
-        'filename': f
+        'filename': f,
+        'defaultvalue': defaultvalue
+
     }
     return node
 
@@ -232,9 +240,11 @@ def create_commands(data, parent_list=[], level=0):
         'tag_help': [],
         'level': level,
         'no_childs': False,
-        'filename': None
+        'filename': None,
+        'defaultvalue': None,
     }
     command['filename'] = data['filename']
+    command['defaultvalue'] = data['defaultvalue']
     command['name'].extend(parent_list)
     command['name'].append(data['name'])
 
@@ -348,6 +358,7 @@ def get_working_commands():
                     'children': [],
                     'command': node_data[kind][entry]['command'],
                     'filename': node_data[kind][entry]['filename'],
+                    'defaultvalue': node_data[kind][entry]['defaultvalue']
                 }
             config_tree_new[kind][node_0]['children'].extend(node_data[kind][entry]['children'])
     

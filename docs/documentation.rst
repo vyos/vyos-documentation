@@ -244,6 +244,21 @@ For a inline configuration level command use ``:cfgcmd:``
 
   :cfgcmd:`set interface ethernet eth0`
 
+
+To extract a defaultvalue from the XML definitions add a ``:defaultvalue:``
+to ``.. cfgcmd::`` directive.
+To have this feature locally, the vyos-1x submodule must be initialized before.
+Please be aware to not update the submodule in your PR.
+
+.. code-block:: none
+
+  .. cfgcmd:: set system conntrack table-size <1-50000000>
+      :defaultvalue:
+
+      The connection tracking table contains one entry for each connection being
+      tracked by the system.
+
+
 opcmd
 """""
 

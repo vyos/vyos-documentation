@@ -87,6 +87,12 @@ span.opcmd:before {
     display: none;
 }
 
+.defaultvalue{
+  font-size: 90%;
+  color: gray;
+  margin-bottom: 5px;
+
+}
 
 a.cmdlink {
     font-size: 80%;
