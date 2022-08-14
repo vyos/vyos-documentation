@@ -71,8 +71,8 @@ Ethernet options
 Offloading
 ----------
 
-.. cfgcmd:: set interfaces ethernet <interface> offload <gro | gso | sg | tso |
-  ufo | rps>
+.. cfgcmd:: set interfaces ethernet <interface> offload <gro | gso | lro | rps |
+  sg | tso>
 
   Enable different types of hardware offloading on the given NIC.
 
