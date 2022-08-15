@@ -8,6 +8,26 @@
    _ext/releasenotes.py
 
 
+2022-08-14
+==========
+
+* :vytask:`T4579` (bug): bridge: can not delete member interface CLI option when VLAN is enabled
+* :vytask:`T4421` (default): Add support for floating point numbers in the numeric validator
+* :vytask:`T4415` (bug): Include license/copyright files in the image but remove user documentation from /usr/share/doc to reduce its size
+* :vytask:`T4313` (bug): "generate public-key-command" throws unhandled exceptions when it cannot retrieve the key
+* :vytask:`T4082` (bug): Add op mode command to restart ldpd
+* :vytask:`T3714` (bug): Some sysctl custom parameters disappear after reboot
+* :vytask:`T4260` (bug): Extend vyos.configdict.node_changed() to support recursiveness
+* :vytask:`T3785` (default): Add unicode support to configtree backend
+* :vytask:`T3507` (bug): Bond with mode LACP show u/u in show interfaces even if peer is not configured
+
+
+2022-08-11
+==========
+
+* :vytask:`T4476` (default): Next steps after installation is not communicated properly to new users
+
+
 2022-08-02
 ==========
 
