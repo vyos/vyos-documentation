@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2022-08-14
+==========
+
+* :vytask:`T4579` (bug): bridge: can not delete member interface CLI option when VLAN is enabled
+* :vytask:`T4421` (default): Add support for floating point numbers in the numeric validator
+* :vytask:`T3507` (bug): Bond with mode LACP show u/u in show interfaces even if peer is not configured
+
+
+2022-08-12
+==========
+
+* :vytask:`T4603` (feature): Need a config option to specify NAS-IP-Address for vpn l2tp
+
+
+2022-08-10
+==========
+
+* :vytask:`T4408` (feature): Add sshguard to protect against brut-forces
+
+
+2022-08-08
+==========
+
+* :vytask:`T4586` (feature): Add to NAT66: SNAT destination address and DNAT source address.
+
+
 2022-08-04
 ==========
 
