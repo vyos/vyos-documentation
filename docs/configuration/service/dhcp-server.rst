@@ -232,6 +232,27 @@ inside the subnet definition but can be outside of the range statement.
    .. hint:: This is the equivalent of the host block in dhcpd.conf of
       isc-dhcpd.
 
+**Example:**
+
+* IP address ``192.168.1.100`` shall be statically mapped to client named ``client100``
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 ip-address 192.168.1.100
+  set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 mac-address aa:bb:11:22:33:00
+
+The configuration will look as follows:
+
+.. code-block:: none
+
+  show service dhcp-server shared-network-name NET1
+   subnet 192.168.1.0/24 {
+       static-mapping client1 {
+           ip-address 192.168.1.100
+           mac-address aa:bb:11:22:33:00
+       }
+   }
+
 Options
 =======
 
@@ -694,21 +715,14 @@ The configuration will look as follows:
 
 .. code-block:: none
 
-  show service dhcp-server shared-network-name NET1
-     shared-network-name NET1 {
-         subnet 2001:db8::/64 {
-            name-server 2001:db8:111::111
-            address-range {
-                start 2001:db8::100 {
-                   stop 2001:db8::199 {
-                }
-            }
-            static-mapping client1 {
-               ipv6-address 2001:db8::101
-               identifier 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
-            }
-         }
-      }
+  show service dhcpv6-server shared-network-name NET1
+   subnet 2001:db8::/64 {
+       static-mapping client1 {
+           identifier 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
+           ipv6-address 2001:db8::101
+           ipv6-prefix 2001:db8:0:101::/64
+       }
+   }
 
 .. start_vyoslinter
 
