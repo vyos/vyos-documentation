@@ -8,6 +8,29 @@
    _ext/releasenotes.py
 
 
+2022-08-19
+==========
+
+* :vytask:`T4616` (bug): openconnect: KeyError: 'local_users'
+* :vytask:`T4614` (feature): OpenConnect split-dns directive
+
+
+2022-08-16
+==========
+
+* :vytask:`T4592` (bug): macsec: can not create two interfaces using the same source-interface
+* :vytask:`T4584` (bug): hostap: create custom package build
+* :vytask:`T4537` (bug): MACsec not working with cipher gcm-aes-256
+
+
+2022-08-15
+==========
+
+* :vytask:`T4565` (bug): vlan aware bridge not working with - Kernel: T3318: update Linux Kernel to v5.4.205 #249 
+* :vytask:`T4206` (bug): Policy Based Routing with DHCP Interface Issue
+* :vytask:`T2763` (feature): New SNMP resource request - SNMP over TCP
+
+
 2022-08-14
 ==========
 
