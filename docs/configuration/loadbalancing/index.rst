@@ -28,6 +28,12 @@ Let's assume we have two DHCP WAN interfaces and one LAN (eth2):
     set load-balancing wan rule 1 interface eth0
     set load-balancing wan rule 1 interface eth1
 
+.. note::
+
+    WAN Load Balacing should not be used when dynamic routing protocol is
+    used/needed. This feature creates customized routing tables and firewall
+    rules, that makes it incompatible to use with routing protocols.
+
 Balancing Rules
 ---------------
 
