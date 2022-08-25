@@ -1,7 +1,7 @@
 # Must be run with --privileged flag
 # Recommended to run the container with a volume mapped
 # in order to easy exprort images built to "external" world
-FROM debian:buster
+FROM debian:11
 LABEL authors="VyOS Maintainers <maintainers@vyos.io>"
 
 ENV DEBIAN_FRONTEND noninteractive
