@@ -27,12 +27,14 @@ network transport of data packets.
 For more information on how MPLS label switching works, please go visit
 `Wikipedia (MPLS)`_.
 
-.. note:: MPLS support in VyOS is not finished yet, and therefore its
-   functionality is limited. Currently there is no support for MPLS enabled VPN
-   services such as L3VPNs, L2VPNs, and mVPNs. RSVP support is also not present
-   as the underlying routing stack (FRR) does not implement it. Currently VyOS
-   can be configured as a label switched router (MPLS P router), in both
-   penultimate and ultimate hop popping operations.
+.. note:: MPLS support in VyOS is not finished yet, and therefore its 
+  functionality is limited. Currently there is no support for MPLS enabled VPN
+  services such as L2VPNs and mVPNs. RSVP support is also not present as the
+  underlying routing stack (FRR) does not implement it. Currently VyOS 
+  implements LDP as described in RFC 5036; other LDP standard are the 
+  following ones: RFC 6720, RFC 6667, RFC 5919, RFC 5561, RFC 7552, RFC 4447. 
+  Because MPLS is already available (FRR also supports RFC 3031).
+
 
 Label Distribution Protocol
 ===========================

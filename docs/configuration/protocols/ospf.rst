@@ -790,7 +790,7 @@ General
 VyOS does not have a special command to start the OSPFv3 process. The OSPFv3
 process starts when the first ospf enabled interface is configured.
 
-.. cfgcmd:: set protocols ospfv3 area <number> interface <interface>
+.. cfgcmd:: set protocols ospfv3 interface <interface> area <number> 
 
    This command specifies the OSPFv3 enabled interface. This command is also
    used to enable the OSPF process. The area number can be specified in
@@ -987,7 +987,7 @@ A typical configuration using 2 nodes.
 
 .. code-block:: none
 
-  set protocols ospfv3 area 0.0.0.0 interface eth1
+  set protocols ospfv3 interface eth1 area 0.0.0.0 
   set protocols ospfv3 area 0.0.0.0 range 2001:db8:1::/64
   set protocols ospfv3 parameters router-id 192.168.1.1
   set protocols ospfv3 redistribute connected
@@ -996,7 +996,7 @@ A typical configuration using 2 nodes.
 
 .. code-block:: none
 
-  set protocols ospfv3 area 0.0.0.0 interface eth1
+  set protocols ospfv3 interface eth1 area 0.0.0.0 
   set protocols ospfv3 area 0.0.0.0 range 2001:db8:2::/64
   set protocols ospfv3 parameters router-id 192.168.2.1
   set protocols ospfv3 redistribute connected
@@ -1025,8 +1025,8 @@ Example configuration for WireGuard interfaces:
   set interfaces wireguard wg01 peer ospf02 pubkey 'ie3...='
   set interfaces wireguard wg01 port '12345'
   set protocols ospfv3 parameters router-id 192.168.1.1
-  set protocols ospfv3 area 0.0.0.0 interface 'wg01'
-  set protocols ospfv3 area 0.0.0.0 interface 'lo'
+  set protocols ospfv3 interface 'wg01' area 0.0.0.0 
+  set protocols ospfv3 interface 'lo' area 0.0.0.0
 
 **Node 2**
 
@@ -1040,8 +1040,8 @@ Example configuration for WireGuard interfaces:
   set interfaces wireguard wg01 peer ospf01 pubkey 'NHI...='
   set interfaces wireguard wg01 port '12345'
   set protocols ospfv3 parameters router-id 192.168.1.2
-  set protocols ospfv3 area 0.0.0.0 interface 'wg01'
-  set protocols ospfv3 area 0.0.0.0 interface 'lo'
+  set protocols ospfv3 interface 'wg01' area 0.0.0.0 
+  set protocols ospfv3 interface 'lo' area 0.0.0.0
 
 **Status**
 
