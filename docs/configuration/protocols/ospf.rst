@@ -43,7 +43,8 @@ starts when the first ospf enabled interface is configured.
    enable ospf on interface with address 192.168.1.1/23, but it does on 
    interface with address 192.168.1.129/25.
 
-   In some cases it may be more convenient to enable OSPF on a per interface/subnet
+   In some cases it may be more convenient to enable OSPF on a per 
+   interface/subnet
    basis :cfgcmd:`set protocols ospf interface <interface> area <x.x.x.x | x>`
 
 .. cfgcmd:: set protocols ospf auto-cost reference-bandwidth <number>
