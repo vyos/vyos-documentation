@@ -1,4 +1,4 @@
-:lastproofread: 2021-07-13
+:lastproofread: 2022-08-26
 
 .. _wireless-interface:
 
