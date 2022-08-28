@@ -20,7 +20,7 @@ Common interface configuration
 ==============================
 
 .. cmdinclude:: /_include/interface-common-with-dhcp.txt
-   :var0: bond
+   :var0: bonding
    :var1: bond0
 
 Member Interfaces
@@ -282,7 +282,7 @@ VLAN
 ====
 
 .. cmdinclude:: /_include/interface-vlan-8021q.txt
-   :var0: bond
+   :var0: bonding
    :var1: bond0
 
 Port Mirror (SPAN)
