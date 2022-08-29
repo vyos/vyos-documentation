@@ -8,6 +8,53 @@
    _ext/releasenotes.py
 
 
+2022-08-29
+==========
+
+* :vytask:`T4645` (bug): show nat source statistics lack argument --family
+
+
+2022-08-27
+==========
+
+* :vytask:`T4647` (feature): Add Google Virtual NIC (gVNIC) support
+
+
+2022-08-26
+==========
+
+* :vytask:`T4642` (bug): proxy: hyphen not allowed in proxy URL
+
+
+2022-08-25
+==========
+
+* :vytask:`T4626` (bug): Error showing nat66 source and destination
+* :vytask:`T4622` (feature): Firewall allow drop packets by TCP MSS size
+
+
+2022-08-24
+==========
+
+* :vytask:`T4641` (bug): prefix-list allows ipv6 prefix as input
+* :vytask:`T4633` (feature): Change keepalived to v2.2.7
+
+
+2022-08-23
+==========
+
+* :vytask:`T4618` (bug): Traffic policy not set on virtual interfaces
+* :vytask:`T4538` (bug): Macsec does not work correctly when the interface status changes.
+
+
+2022-08-22
+==========
+
+* :vytask:`T4089` (bug): Show nat destination rules shows ip address instead of interface 'any'
+* :vytask:`T4632` (bug): Vlan aware bridge not working
+* :vytask:`T4637` (feature): Upgrade to podman 4.2.0
+
+
 2022-08-20
 ==========
 
