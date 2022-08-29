@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2022-08-27
+==========
+
+* :vytask:`T4647` (feature): Add Google Virtual NIC (gVNIC) support
+
+
+2022-08-26
+==========
+
+* :vytask:`T4642` (bug): proxy: hyphen not allowed in proxy URL
+
+
+2022-08-23
+==========
+
+* :vytask:`T4618` (bug): Traffic policy not set on virtual interfaces
+* :vytask:`T4538` (bug): Macsec does not work correctly when the interface status changes.
+
+
+2022-08-22
+==========
+
+* :vytask:`T4629` (bug): Raised ConfigErrors contain dict instead of only the dict key
+* :vytask:`T4632` (bug): Vlan aware bridge not working
+
+
 2022-08-19
 ==========
 
@@ -3319,7 +3345,6 @@
 * :vytask:`T2388` (feature): template rendering should create folder and set permission
 * :vytask:`T2531` (feature): Update Linux Kernel to v4.19.125
 * :vytask:`T2530` (bug): Error creating VRF with a name of exactly 16 characters
-* :vytask:`T2460` (default): Migrate vyatta-nat-translations.pl to Python
 
 
 2020-05-29
