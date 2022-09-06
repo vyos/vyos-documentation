@@ -423,6 +423,85 @@ geoip) to keep database and rules updated.
    Use a specific port-group. Prepend character '!' for inverted matching
    criteria.
 
+.. cfgcmd:: set firewall name <name> rule <1-999999> source group
+   domain-group <name | !name>
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination group
+   domain-group <name | !name>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
+   domain-group <name | !name>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
+   domain-group <name | !name>
+
+   Use a specific domain-group. Prepend character '!' for inverted matching
+   criteria.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> source group
+   mac-group <name | !name>
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination group
+   mac-group <name | !name>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source group
+   mac-group <name | !name>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
+   mac-group <name | !name>
+
+   Use a specific mac-group. Prepend character '!' for inverted matching
+   criteria.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> fragment [match-frag |
+   match-non-frag]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> fragment [match-frag
+   | match-non-frag]
+
+   Match based on fragment criteria.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> icmp [code | type]
+   <0-255>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> icmpv6 [code | type]
+   <0-255>
+
+   Match based on icmp|icmpv6 code and type.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> icmp type-name <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> icmpv6 type-name
+   <text>
+
+   Match based on icmp|icmpv6 type-name criteria. Use tab for information
+   about what **type-name** criteria are supported.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> ipsec [match-ipsec
+   | match-none]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> ipsec [match-ipsec
+   | match-none]
+
+   Match based on ipsec criteria.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> limit burst
+   <0-4294967295>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> limit burst
+   <0-4294967295>
+
+   Match based on the maximum number of packets to allow in excess of rate.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> limit rate
+   <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> limit rate
+   <text>
+
+   Match based on the maximum average rate, specified as **integer/unit**.
+   For example **5/minutes**
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> packet-length
+   <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> packet-length
+   <text>
+.. cfgcmd:: set firewall name <name> rule <1-999999> packet-length-exclude
+   <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> packet-length-exclude
+   <text>
+
+   Match based on packet length criteria. Multiple values from 1 to 65535
+   and ranges are supported.
+
 .. cfgcmd:: set firewall name <name> rule <1-999999> protocol [<text> |
    <0-255> | all | tcp_udp]
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> protocol [<text> |
@@ -438,6 +517,15 @@ geoip) to keep database and rules updated.
       set firewall name WAN-IN-v4 rule 10 protocol tcp_udp
       set firewall name WAN-IN-v4 rule 11 protocol !tcp_udp
       set firewall ipv6-name WAN-IN-v6 rule 10 protocol tcp
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> recent count <1-255>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> recent count <1-255>
+.. cfgcmd:: set firewall name <name> rule <1-999999> recent time
+   [second | minute | hour]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> recent time
+   [second | minute | hour]
+
+   Match bases on recently seen sources.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> tcp flags <text>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> tcp flags <text>
@@ -458,6 +546,19 @@ geoip) to keep database and rules updated.
    invalid | new | related] [enable | disable]
 
    Match against the state of a packet.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> time startdate <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> time startdate <text>
+.. cfgcmd:: set firewall name <name> rule <1-999999> time starttime <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> time starttime <text>
+.. cfgcmd:: set firewall name <name> rule <1-999999> time stopdate <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> time stopdate <text>
+.. cfgcmd:: set firewall name <name> rule <1-999999> time stoptime <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> time stoptime <text>
+.. cfgcmd:: set firewall name <name> rule <1-999999> time weekdays <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> time weekdays <text>
+
+   Time to match the defined rule.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> ttl <eq | gt | lt> <0-255>
 
