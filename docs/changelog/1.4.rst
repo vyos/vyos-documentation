@@ -8,10 +8,47 @@
    _ext/releasenotes.py
 
 
+2022-09-05
+==========
+
+* :vytask:`T4663` (bug): Interface pseudo-ethernet does not change mode
+* :vytask:`T4655` (bug): Firewall in 1.4 sets the default action 'accept' instead of 'drop'
+
+
+2022-09-01
+==========
+
+* :vytask:`T4606` (bug): monitor nat destination translation shows missing script
+* :vytask:`T4435` (bug): Policy route and firewall - error when using undefined group
+* :vytask:`T4147` (bug): New Firewall Implementation - proposed changes on group implementation
+
+
+2022-08-31
+==========
+
+* :vytask:`T4650` (feature): Rewire show nat translation to vyos.opmode format
+* :vytask:`T4644` (bug): Check bind port before assign vpn sstp
+* :vytask:`T4643` (bug): Smoketest exclude either sstp or openconnect from pki-misc default listen port
+* :vytask:`T4569` (feature): Rewrite show bridge to new format
+* :vytask:`T4547` (bug): Show vpn ipsec sa show unexpected prefix 'B' in packets
+* :vytask:`T4367` (bug): NAT - Config tmp file not available
+
+
 2022-08-29
 ==========
 
 * :vytask:`T4645` (bug): show nat source statistics lack argument --family
+* :vytask:`T4634` (bug): Bgp neighbor disable-connected-check does not work
+* :vytask:`T4631` (feature): Add port and protocol to nat66
+* :vytask:`T4623` (feature): Add show conntrack statistics
+* :vytask:`T4595` (bug): DPD interval and timeout do not work in DMVPN
+* :vytask:`T4594` (feature): Rewrite op-mode IPsec to vyos.opmode format
+* :vytask:`T4508` (bug): Problem with values of the same environment in different event handlers
+* :vytask:`T4653` (bug): Interface offload options not being applied correctly
+* :vytask:`T4546` (bug): Does not connect Cisco spoke to VyOS hub.
+* :vytask:`T4061` (default): Add util function to check for completion of boot config
+* :vytask:`T4654` (bug): RPKI cache incorrect description
+* :vytask:`T4572` (bug): Add an option to force interface MTU to the value received from DHCP
 
 
 2022-08-27
