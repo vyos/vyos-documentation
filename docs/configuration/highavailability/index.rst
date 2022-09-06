@@ -18,9 +18,9 @@ VRRP keepalive packets use multicast, and VRRP setups are limited to a single
 datalink layer segment. You can setup multiple VRRP groups
 (also called virtual routers). Virtual routers are identified by a
 VRID (Virtual Router IDentifier). If you setup multiple groups on the same
-interface, their VRIDs must be unique, but it's possible (even if not
-recommended for readability reasons) to use duplicate VRIDs on different
-interfaces.
+interface, their VRIDs must be unique if they use the same address family,
+but it's possible (even if not recommended for readability reasons) to use
+duplicate VRIDs on different interfaces.
 
 Basic setup
 -----------
