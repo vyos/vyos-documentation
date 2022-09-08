@@ -218,7 +218,7 @@ Hub
   set vpn ipsec ike-group IKE-HUB proposal 2 encryption 'aes128'
   set vpn ipsec ike-group IKE-HUB proposal 2 hash 'sha1'
 
-  set vpn ipsec ipsec-interfaces interface 'eth0'
+  set vpn ipsec interface 'eth0'
 
   set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
   set vpn ipsec profile NHRPVPN authentication pre-shared-secret 'secret'
@@ -328,7 +328,7 @@ VyOS can also run in DMVPN spoke mode.
   set vpn ipsec ike-group IKE-HUB proposal 2 encryption 'aes128'
   set vpn ipsec ike-group IKE-HUB proposal 2 hash 'sha1'
 
-  set vpn ipsec ipsec-interfaces interface 'eth0'
+  set vpn ipsec interface 'eth0'
 
   set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
   set vpn ipsec profile NHRPVPN authentication pre-shared-secret 'secret'

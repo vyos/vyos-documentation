@@ -13,7 +13,7 @@ the routing table and balances traffic across the configured interfaces,
 determined by interface health and weight.
 
 
-In a minimal, configuration the following must be provided:
+In a minimal configuration, the following must be provided:
 
  * an interface with a nexthop
  * one rule with a LAN (inbound-interface) and the WAN (interface).

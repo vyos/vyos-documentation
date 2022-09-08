@@ -14,7 +14,7 @@ with native Windows and Mac VPN clients):
 
 .. code-block:: none
 
-  set vpn ipsec ipsec-interfaces interface eth0
+  set vpn ipsec interface eth0
 
   set vpn l2tp remote-access outside-address 192.0.2.2
   set vpn l2tp remote-access client-ip-pool start 192.168.255.2
@@ -24,7 +24,7 @@ with native Windows and Mac VPN clients):
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
-In the example above an external IP of 192.0.2.2 is assumed.
+In the above example, an external IP of 192.0.2.2 is assumed.
 
 If a local firewall policy is in place on your external interface you will need
 to allow the ports below:

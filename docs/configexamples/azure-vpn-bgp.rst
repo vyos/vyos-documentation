@@ -81,7 +81,7 @@ Vyos configuration
 
 .. code-block:: none
 
-  set vpn ipsec ipsec-interfaces interface 'eth0'
+  set vpn ipsec interface 'eth0'
 
 - Configure a VTI with a dummy IP address
 

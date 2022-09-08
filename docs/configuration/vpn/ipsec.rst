@@ -198,7 +198,7 @@ On the LEFT:
   set interfaces tunnel tun0 address 10.10.10.1/30
 
   ## IPsec
-  set vpn ipsec ipsec-interfaces interface eth0
+  set vpn ipsec interface eth0
 
   # IKE group
   set vpn ipsec ike-group MyIKEGroup proposal 1 dh-group '2'

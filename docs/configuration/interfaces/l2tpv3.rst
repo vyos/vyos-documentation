@@ -141,7 +141,7 @@ IPSec:
 
 .. code-block:: none
 
-  set vpn ipsec ipsec-interfaces <VPN-interface>
+  set vpn ipsec interface <VPN-interface>
   set vpn ipsec esp-group test-ESP-1 compression 'disable'
   set vpn ipsec esp-group test-ESP-1 lifetime '3600'
   set vpn ipsec esp-group test-ESP-1 mode 'transport'

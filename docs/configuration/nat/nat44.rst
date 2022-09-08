@@ -684,7 +684,7 @@ external interface in the image above)
   set vpn ipsec esp-group my-esp proposal 1 encryption 'aes256'
   set vpn ipsec esp-group my-esp proposal 1 hash 'sha256'
 
-  set vpn ipsec ipsec-interfaces interface 'eth1'
+  set vpn ipsec interface 'eth1'
 
 IPSec VPN Tunnels
 """""""""""""""""
