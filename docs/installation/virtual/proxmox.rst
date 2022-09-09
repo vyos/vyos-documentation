@@ -4,13 +4,12 @@
 Running on Proxmox
 ******************
 
-Proxmox is an open-source platform for virtualization. Users with a support
-subscription can download a qcow2 image that can be imported into Proxmox.
+Proxmox is an open-source platform for virtualization. Please visit
+https://vyos.io to see how to get a qcow2 image that can be imported
+into Proxmox.
 
 Deploy VyOS from CLI with qcow2 image
 =====================================
-
- A prebuilt image in qcow2 format is available to all VyOS subscribers for download and use directly within Proxmox.
 
 1. Copy the qcow2 image to a temporary directory on the Proxmox server.
 2. The commands below assume that virtual machine ID 200 is unused and that the user wants the disk stored in a storage pool called `local-lvm`.
