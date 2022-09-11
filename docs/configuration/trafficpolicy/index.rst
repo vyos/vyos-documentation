@@ -554,7 +554,7 @@ classes of traffic can be defined and traffic limits can be applied to
 each class. Although the policer uses a token bucket mechanism
 internally, it does not have the capability to delay a packet as a
 shaping mechanism does. Traffic exceeding the defined bandwidth limits
-is directly dropped. A maximum allowed burst can be configured too.
+is directly dropped by default. A maximum allowed burst can be configured too.
 
 You can configure classes (up to 4090) with different settings and a
 default policy which will be applied to any traffic not matching any of
@@ -592,6 +592,19 @@ how you want matching traffic to behave.
    a class identifier (1-4090) and the burst size in bytes for this
    class (default: 15).
 
+.. cfgcmd:: set traffic-policy limiter <policy-name> class <class-ID>
+   exceed-action <continue | drop | ok | reclassify | pipe>
+
+   Use this command to configure an Ingress Policer, defining its name,
+   a class identifier (1-4090) and the action to take for any packets that
+   exceed the predefined bandwidth (default: drop).
+
+.. cfgcmd:: set traffic-policy limiter <policy-name> class <class-ID>
+   notexceed-action <continue | drop | ok | reclassify | pipe>
+
+   Use this command to configure an Ingress Policer, defining its name,
+   a class identifier (1-4090) and the action to take for any packets that
+   do not exceed the predefined bandwidth (default: ok).
 
 .. cfgcmd:: set traffic-policy limiter <policy-name> default bandwidth <rate>
 
@@ -604,6 +617,19 @@ how you want matching traffic to behave.
    Use this command to configure an Ingress Policer, defining its name
    and the burst size in bytes (default: 15) for its default policy.
 
+.. cfgcmd:: set traffic-policy limiter <policy-name> default exceed-action
+   <continue | drop | ok | reclassify | pipe>
+
+   Use this command to configure an Ingress Policer, defining its name
+   and the action to take for any packets that exceed the predefined bandwidth
+   (default: drop) for its default policy.
+
+.. cfgcmd:: set traffic-policy limiter <policy-name> default notexceed-action
+   <continue | drop | ok | reclassify | pipe>
+
+   Use this command to configure an Ingress Policer, defining its name
+   and the action to take for any packets that do not exceed the predefined
+   bandwidth (default: ok) for its default policy.
 
 .. cfgcmd:: set traffic-policy limiter <policy-name> class <class ID> priority
    <value>
