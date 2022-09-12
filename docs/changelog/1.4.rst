@@ -8,11 +8,35 @@
    _ext/releasenotes.py
 
 
+2022-09-09
+==========
+
+* :vytask:`T4682` (feature): Rewrite 'show system storage' in standardized format
+* :vytask:`T4681` (feature): Complete standardization of show_uptime.py
+
+
+2022-09-08
+==========
+
+* :vytask:`T4526` (bug): keepalived-fifo.py unable to load config
+
+
+2022-09-06
+==========
+
+* :vytask:`T4640` (enhancment): Integrate op-mode exception hierarchy into API
+* :vytask:`T4597` (bug): Check bind port before assign service HTTPS API and openconnect
+* :vytask:`T4674` (bug): API should show op-mode error message, if present
+* :vytask:`T4673` (bug): op-mode bridge.py should raise error on show_fdb for nonexistent bridge interface
+
+
 2022-09-05
 ==========
 
+* :vytask:`T4668` (bug): Adding/removing members from bond doesn't work/results in incorrect interface state
 * :vytask:`T4663` (bug): Interface pseudo-ethernet does not change mode
 * :vytask:`T4655` (bug): Firewall in 1.4 sets the default action 'accept' instead of 'drop'
+* :vytask:`T4628` (bug): ConfigTree() throws ValueError() if tagNode contains whitespaces
 
 
 2022-09-01
@@ -44,17 +68,11 @@
 * :vytask:`T4595` (bug): DPD interval and timeout do not work in DMVPN
 * :vytask:`T4594` (feature): Rewrite op-mode IPsec to vyos.opmode format
 * :vytask:`T4508` (bug): Problem with values of the same environment in different event handlers
-* :vytask:`T4653` (bug): Interface offload options not being applied correctly
+* :vytask:`T4653` (bug): Interface offload options are not applied correctly
 * :vytask:`T4546` (bug): Does not connect Cisco spoke to VyOS hub.
 * :vytask:`T4061` (default): Add util function to check for completion of boot config
 * :vytask:`T4654` (bug): RPKI cache incorrect description
 * :vytask:`T4572` (bug): Add an option to force interface MTU to the value received from DHCP
-
-
-2022-08-27
-==========
-
-* :vytask:`T4647` (feature): Add Google Virtual NIC (gVNIC) support
 
 
 2022-08-26
@@ -88,7 +106,7 @@
 ==========
 
 * :vytask:`T4089` (bug): Show nat destination rules shows ip address instead of interface 'any'
-* :vytask:`T4632` (bug): Vlan aware bridge not working
+* :vytask:`T4632` (bug): VLAN-aware bridge not working
 * :vytask:`T4637` (feature): Upgrade to podman 4.2.0
 
 
