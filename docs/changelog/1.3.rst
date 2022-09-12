@@ -8,19 +8,20 @@
    _ext/releasenotes.py
 
 
+2022-09-05
+==========
+
+* :vytask:`T4668` (bug): Adding/removing members from bond doesn't work/results in incorrect interface state
+* :vytask:`T4628` (bug): ConfigTree() throws ValueError() if tagNode contains whitespaces
+
+
 2022-08-29
 ==========
 
-* :vytask:`T4653` (bug): Interface offload options not being applied correctly
+* :vytask:`T4653` (bug): Interface offload options are not applied correctly
 * :vytask:`T4061` (default): Add util function to check for completion of boot config
 * :vytask:`T4654` (bug): RPKI cache incorrect description
 * :vytask:`T4572` (bug): Add an option to force interface MTU to the value received from DHCP
-
-
-2022-08-27
-==========
-
-* :vytask:`T4647` (feature): Add Google Virtual NIC (gVNIC) support
 
 
 2022-08-26
@@ -40,7 +41,7 @@
 ==========
 
 * :vytask:`T4629` (bug): Raised ConfigErrors contain dict instead of only the dict key
-* :vytask:`T4632` (bug): Vlan aware bridge not working
+* :vytask:`T4632` (bug): VLAN-aware bridge not working
 
 
 2022-08-19
