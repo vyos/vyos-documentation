@@ -196,7 +196,7 @@ to use an alternative hyperlink use it this way:
 handle build errors
 """""""""""""""""""
 
-The plugin will warn on build if a headline has a duplicate name in the 
+The plugin will warn on build if a headline has a duplicate name in the
 same document. To prevent this warning, you have to put a custom link on
 top of the headline.
 
@@ -216,7 +216,7 @@ top of the headline.
    ==========
 
    Lorem ipsum dolor sit amet, consetetur sadipscing elitr
-   
+
    .. _section B example:
 
    Example
@@ -404,7 +404,7 @@ stability for URLs used in the forum or blogpost.
 
 For example:
 
-  * ``set zone-policy`` is written in ``zone-policy/index.rst``
+  * ``set firewall zone`` is written in ``firewall/zone.rst``
   * ``set interfaces ethernet`` is written in ``interfaces/ethernet.rst``
 
 The article starts with a short introduction about the command or the

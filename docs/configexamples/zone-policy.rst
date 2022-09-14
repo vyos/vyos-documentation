@@ -5,6 +5,10 @@
 Zone-Policy example
 -------------------
 
+.. note:: In :vytask:`T2199` the syntax of the zone configuration was changed.
+   The zone configuration moved from ``zone-policy zone <name>`` to ``firewall
+   zone <name>``.
+
 Native IPv4 and IPv6
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -171,14 +175,14 @@ the source/destination address is not explicit.
 
 .. code-block:: none
 
-  WAN – DMZ:192.168.200.200 – tcp/80
-  WAN – DMZ:192.168.200.200 – tcp/443
-  WAN – DMZ:192.168.200.200 – tcp/25
-  WAN – DMZ:192.168.200.200 – tcp/53
-  WAN – DMZ:2001:0DB8:0:BBBB::200 – tcp/80
-  WAN – DMZ:2001:0DB8:0:BBBB::200 – tcp/443
-  WAN – DMZ:2001:0DB8:0:BBBB::200 – tcp/25
-  WAN – DMZ:2001:0DB8:0:BBBB::200 – tcp/53
+  WAN - DMZ:192.168.200.200 - tcp/80
+  WAN - DMZ:192.168.200.200 - tcp/443
+  WAN - DMZ:192.168.200.200 - tcp/25
+  WAN - DMZ:192.168.200.200 - tcp/53
+  WAN - DMZ:2001:0DB8:0:BBBB::200 - tcp/80
+  WAN - DMZ:2001:0DB8:0:BBBB::200 - tcp/443
+  WAN - DMZ:2001:0DB8:0:BBBB::200 - tcp/25
+  WAN - DMZ:2001:0DB8:0:BBBB::200 - tcp/53
 
   DMZ - Local - tcp/53
   DMZ - Local - tcp/123
@@ -345,8 +349,8 @@ Start by setting the interface and default action for each zone.
 
 .. code-block:: none
 
-  set zone-policy zone dmz default-action drop
-  set zone-policy zone dmz interface eth0.30
+  set firewall zone dmz default-action drop
+  set firewall zone dmz interface eth0.30
 
 In this case, we are setting the v6 ruleset that represents traffic
 sourced from the LAN, destined for the DMZ. Because the zone-policy
@@ -355,7 +359,7 @@ it backwards.
 
 .. code-block:: none
 
-  set zone-policy zone dmz from lan firewall ipv6-name lan-dmz-6
+  set firewall zone dmz from lan firewall ipv6-name lan-dmz-6
 
 DMZ-LAN policy is LAN-DMZ. You can get a rhythm to it when you build out
 a bunch at one time.

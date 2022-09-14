@@ -65,7 +65,7 @@ Now you should be able to ping a public IPv6 Address
    64 bytes from 2001:470:20::2: icmp_seq=2 ttl=64 time=30.5 ms
    64 bytes from 2001:470:20::2: icmp_seq=3 ttl=64 time=30.8 ms
    64 bytes from 2001:470:20::2: icmp_seq=4 ttl=64 time=90.5 ms
-   
+
    --- 2001:470:20::2 ping statistics ---
    4 packets transmitted, 4 received, 0% packet loss, time 3005ms
    rtt min/avg/max/mdev = 30.519/45.797/90.546/25.837 ms
@@ -89,7 +89,7 @@ You should now be able to ping something by IPv6 DNS name:
    64 bytes from tunnelbroker.net (2001:470:0:63::2): icmp_seq=2 ttl=48 time=234 ms
    64 bytes from tunnelbroker.net (2001:470:0:63::2): icmp_seq=3 ttl=48 time=182 ms
    64 bytes from tunnelbroker.net (2001:470:0:63::2): icmp_seq=4 ttl=48 time=183 ms
-   
+
    --- tunnelbroker.net ping statistics ---
    4 packets transmitted, 4 received, 0% packet loss, time 3005ms
    rtt min/avg/max/mdev = 182.224/195.335/233.869/22.248 ms
@@ -152,7 +152,7 @@ Now the Client is able to ping a public IPv6 address
    64 bytes from 2001:470:20::2: icmp_seq=2 ttl=63 time=31.3 ms
    64 bytes from 2001:470:20::2: icmp_seq=3 ttl=63 time=31.7 ms
    64 bytes from 2001:470:20::2: icmp_seq=4 ttl=63 time=104 ms
-   
+
    --- 2001:470:20::2 ping statistics ---
    4 packets transmitted, 4 received, 0% packet loss, time 3005ms
    rtt min/avg/max/mdev = 31.331/56.908/104.282/29.764 ms
@@ -204,5 +204,4 @@ instead of `set firewall name NAME`, you would use `set firewall ipv6-name
 NAME`.
 
 Similarly, to attach the firewall, you would use `set interfaces ethernet eth0
-firewall in ipv6-name` or `set zone-policy zone LOCAL from WAN firewall
-ipv6-name`.
+firewall in ipv6-name` or `set firewall zone LOCAL from WAN firewall ipv6-name`.

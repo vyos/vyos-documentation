@@ -22,4 +22,3 @@ The following structure respresent the cli structure.
    trafficpolicy/index
    vpn/index
    vrf/index
-   zonepolicy/index
