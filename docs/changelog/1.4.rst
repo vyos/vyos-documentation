@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2022-09-17
+==========
+
+* :vytask:`T4666` (bug): EAP-TLS no longer allows TLSv1.0 after T4537, T4584
+* :vytask:`T4665` (bug): Keepalived cannot use same VRID for VRRPv2 and VRRPv3
+
+
+2022-09-16
+==========
+
+* :vytask:`T4698` (enhancment): Drop validator name="range" and replace it with numeric
+* :vytask:`T4695` (feature): Add 'es' and 'jp106' keymap option keyboard-layout
+* :vytask:`T4669` (enhancment): Extend numeric.ml for inversion of values and range values
+
+
+2022-09-15
+==========
+
+* :vytask:`T4679` (bug): OpenVPN site-to-site incorrect check for IPv6 local and remote address
+* :vytask:`T4691` (feature): Upgrade Linux Kernel to latest 5.15.y train
+* :vytask:`T4630` (bug): Pseudo Ethernet can not use identical source-interface as MACsec
+* :vytask:`T4696` (default): Extend bgp parameters for bgp bestpath peer-type multipath-relax
+
+
+2022-09-12
+==========
+
+* :vytask:`T4617` (feature): VRF specification is needed for telegraf prometheus-client listen-address <address> 
+* :vytask:`T4690` (bug): Update GraphQL resolver for 'SystemStatus' following changes to 'show_uptime' op-mode script
+* :vytask:`T4647` (feature): Add Google Virtual NIC (gVNIC) support
+* :vytask:`T4170` (feature): Rename "policy ipv6-route" -> "policy route6"
+
+
 2022-09-09
 ==========
 
@@ -2673,7 +2706,7 @@
 ==========
 
 * :vytask:`T3313` (bug): ospfv3 interface missing options
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.208 / 5.10.135
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.208 / 5.10.142
 
 
 2021-02-15
