@@ -8,6 +8,25 @@
    _ext/releasenotes.py
 
 
+2022-09-17
+==========
+
+* :vytask:`T4666` (bug): EAP-TLS no longer allows TLSv1.0 after T4537, T4584
+
+
+2022-09-15
+==========
+
+* :vytask:`T4679` (bug): OpenVPN site-to-site incorrect check for IPv6 local and remote address
+* :vytask:`T4630` (bug): Pseudo Ethernet can not use identical source-interface as MACsec
+
+
+2022-09-12
+==========
+
+* :vytask:`T4647` (feature): Add Google Virtual NIC (gVNIC) support
+
+
 2022-09-05
 ==========
 
@@ -1907,7 +1926,7 @@
 2021-02-16
 ==========
 
-* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.208 / 5.10.135
+* :vytask:`T3318` (feature): Update Linux Kernel to v5.4.208 / 5.10.142
 
 
 2021-02-14
