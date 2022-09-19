@@ -245,7 +245,7 @@ an aesthetic problem, but we've had that process fail in the past. But, small
 key size of the Ed25519 algorithm allows passing public keys in command line
 arguments, so verification process can be completely stateless:
 
-:vytask:`T2180` switched the validation system to prefer minisign over GPG keys.
+:vytask:`T2108` switched the validation system to prefer minisign over GPG keys.
 
 To verify a VyOS image starting off with VyOS 1.3.0-rc6 you can run:
 
