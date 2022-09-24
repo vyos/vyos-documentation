@@ -812,10 +812,13 @@ IPv4
 
 
 .. cfgcmd:: set firewall options interface <interface> adjust-mss
-   <number-of-bytes>
+   <mss | clamp-mss-to-pmtu>
 
    Use this command to set the maximum segment size for IPv4 transit
-   packets on a specific interface (500-1460 bytes).
+   packets on a specific interface (536-65535 bytes).
+
+   Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to
+   automatically set the proper value.
 
 Example
 -------
@@ -835,10 +838,13 @@ IPv6
 ====
 
 .. cfgcmd:: set firewall options interface <interface> adjust-mss6
-   <number-of-bytes>
+   <mss | clamp-mss-to-pmtu>
 
    Use this command to set the maximum segment size for IPv6 transit
-   packets on a specific interface (1280-1492 bytes).
+   packets on a specific interface (1220-65535 bytes).
+
+   Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to
+   automatically set the proper value.
 
 .. _firewall:ipv6_example:
 
