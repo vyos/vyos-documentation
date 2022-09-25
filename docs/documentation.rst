@@ -392,7 +392,7 @@ All RST files must follow the same TOC Level syntax and have to start with
 .. code-block::
 
    #####
-   Titel
+   Title
    #####
 
 Configuration mode pages
