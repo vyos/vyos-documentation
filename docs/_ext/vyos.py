@@ -620,7 +620,7 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, vyoscmd, cli_type):
         else:
             coverage_list[strip]['vyoscmd'] = cmd
             coverage_list[strip]['invyos'] = True
-            if coverage_list[strip]['indocs'] and coverage_list[strip]['inxml']:
+            if coverage_list[strip]['indocs'] and coverage_list[strip]['invyos']:
                 strip_true_list.append(strip)
 
     
@@ -666,7 +666,7 @@ def process_coverage(app, fromdocname, doccmd, xmlcmd, vyoscmd, cli_type):
             doc_vyos_text.append('Nothing found in VyOS')
 
 
-        if not coverage_list[entry]['indocs'] or not coverage_list[entry]['inxml'] or not coverage_list[entry]['invyos']:
+        if not coverage_list[entry]['indocs'] or not coverage_list[entry]['invyos']:
             status = False
         else:
             status = True
