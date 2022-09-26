@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2022-09-21
+==========
+
+* :vytask:`T4678` (feature): Rewrite service ipoe-server to get_config_dict
+* :vytask:`T4703` (feature): accel-ppp: combine vlan-id and vlan-range into single CLI node
+
+
+2022-09-20
+==========
+
+* :vytask:`T4693` (bug): ISIS segment routing was broken...
+
+
 2022-09-17
 ==========
 
