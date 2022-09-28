@@ -35,6 +35,11 @@ second. This is also the default setting if none of those options are defined.
 
   A user friendly description identifying the connected peripheral.
 
+.. cfgcmd:: set service console-server <device> alias <string>
+
+  A user friendly alias for this connection. Can be used instead of the
+  device name when connecting.
+
 .. cfgcmd:: set service console-server <device> parity [even | odd | none]
 
   Set the parity option for the console. If unset this will default to none.
@@ -106,3 +111,6 @@ Operation
 
   .. hint:: The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit
      the session use: ``Ctrl+E c .``
+
+  .. hint:: If ``alias`` is set, it can be used instead of the device when
+     connecting.
