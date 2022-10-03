@@ -8,6 +8,20 @@
    _ext/releasenotes.py
 
 
+2022-09-29
+==========
+
+* :vytask:`T4715` (feature): Auto logout user after a period of inactivity
+* :vytask:`T4697` (bug): policy route: Generating ConfigError failes when tcp flag is missing on set tcp-mss rule commit
+
+
+2022-09-27
+==========
+
+* :vytask:`T4711` (feature): Ability to terminate user TTY and PTS sessions
+* :vytask:`T4557` (feature): fastnetmon: allow configure limits per protocol (tcp, udp, icmp)
+
+
 2022-09-21
 ==========
 
