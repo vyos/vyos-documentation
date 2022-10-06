@@ -8,4 +8,5 @@ Operation Mode
 
    information
    boot-options
+   password-recovery
    raid
