@@ -182,3 +182,29 @@ Add multiple source IP in one rule with same priority
   set policy local-route rule 101 source '203.0.113.253'
   set policy local-route rule 101 source '198.51.100.0/24'
 
+Clamp MSS for a specific IP
+===========================
+
+The following example shows how to do targeted MSS clamping (in our example to 
+1360 bytes) on TCP Sessions destined for a specific IP.
+
+.. code-block:: none
+
+set policy route IP-MSS-CLAMP rule 10 description 'Clamp NSS to NN.NNN.NNN.NNN'
+set policy route IP-MSS-CLAMP rule 10 destination address 'NN.NNN.NNN.NNN/32'
+set policy route IP-MSS-CLAMP rule 10 protocol 'tcp'
+set policy route IP-MSS-CLAMP rule 10 set tcp-mss '1360'
+set policy route IP-MSS-CLAMP rule 10 tcp flags 'SYN'
+
+And then on your specific interface (in our example 'eth1') on which the inbound initial SYN packet 
+destined for our targeted host will arrive add:
+
+.. code-block:: none
+
+set interfaces ethernet eth1 policy route IP-MSS-CLAMP
+
+You can then monitor the utilisation or "hits" on this policy with:
+
+.. code-block:: none
+
+show policy route statistics
