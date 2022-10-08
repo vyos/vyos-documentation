@@ -601,7 +601,7 @@ A Rule-Set can be applied to every interface:
       set firewall interface eth1.100 in name LANv4-IN
       set firewall interface eth1.100 out name LANv4-OUT
       set firewall interface bond0 in name LANv4-IN
-      set firewall interfac vtun1 in name LANv4-IN
+      set firewall interface vtun1 in name LANv4-IN
 
    .. note::
       As you can see in the example here, you can assign the same rule-set to
