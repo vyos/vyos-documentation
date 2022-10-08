@@ -815,6 +815,11 @@ Example Partial Config
 .. code-block:: none
 
   firewall {
+     interface eth0 {
+         in {
+             name FROM-INTERNET
+         }
+     }
      all-ping enable
      broadcast-ping disable
      config-trap disable
@@ -871,11 +876,6 @@ Example Partial Config
          address dhcp
          description OUTSIDE
          duplex auto
-         firewall {
-             in {
-                 name FROM-INTERNET
-             }
-         }
      }
   }
 
