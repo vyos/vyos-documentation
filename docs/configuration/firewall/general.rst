@@ -591,7 +591,8 @@ A Rule-Set can be applied to every interface:
 * ``out``: Ruleset for forwarded packets on an outbound interface
 * ``local``: Ruleset for packets destined for this router
 
-.. cfgcmd:: set firewall interface <interface> [in | out | local] [name | ipv6-name] <rule-set>
+.. cfgcmd:: set firewall interface <interface> [in | out | local] [name | ipv6-name]
+   <rule-set>
 
 
    Here are some examples for applying a rule-set to an interface
