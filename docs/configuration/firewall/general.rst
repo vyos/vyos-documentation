@@ -591,17 +591,17 @@ A Rule-Set can be applied to every interface:
 * ``out``: Ruleset for forwarded packets on an outbound interface
 * ``local``: Ruleset for packets destined for this router
 
-.. cfgcmd:: set interface ethernet <ethN> firewall [in | out | local]
-   [name | ipv6-name] <rule-set>
+.. cfgcmd:: set firewall interface <interface> [in | out | local] [name | ipv6-name] <rule-set>
+
 
    Here are some examples for applying a rule-set to an interface
 
    .. code-block:: none
 
-      set interface ethernet eth1 vif 100 firewall in name LANv4-IN
-      set interface ethernet eth1 vif 100 firewall out name LANv4-OUT
-      set interface bonding bond0 firewall in name LANv4-IN
-      set interfaces openvpn vtun1 firewall in name Lanv4-IN
+      set firewall interface eth1.100 in name LANv4-IN
+      set firewall interface eth1.100 out name LANv4-OUT
+      set firewall interface bond0 in name LANv4-IN
+      set firewall interfac vtun1 in name LANv4-IN
 
    .. note::
       As you can see in the example here, you can assign the same rule-set to
