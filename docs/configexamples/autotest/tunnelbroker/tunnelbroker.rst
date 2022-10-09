@@ -4,9 +4,9 @@
 Tunnelbroker.net (IPv6)
 #######################
 
-| Testdate: 2022-07-09
-| Version: 1.3.1-S1
-| Upgrade Version: 1.4-rolling-202207090632
+| Testdate: 2022-10-09
+| Version: 1.3.2
+| Upgrade Version: 1.4-rolling-202210050218
 
 This guide walks through the setup of https://www.tunnelbroker.net/ for an
 IPv6 Tunnel.
@@ -62,14 +62,14 @@ Now you should be able to ping a public IPv6 Address
 
    vyos@vyos-wan:~$ ping 2001:470:20::2 count 4
    PING 2001:470:20::2(2001:470:20::2) 56 data bytes
-   64 bytes from 2001:470:20::2: icmp_seq=1 ttl=64 time=32.2 ms
-   64 bytes from 2001:470:20::2: icmp_seq=2 ttl=64 time=43.2 ms
-   64 bytes from 2001:470:20::2: icmp_seq=3 ttl=64 time=29.9 ms
-   64 bytes from 2001:470:20::2: icmp_seq=4 ttl=64 time=30.0 ms
+   64 bytes from 2001:470:20::2: icmp_seq=1 ttl=64 time=29.6 ms
+   64 bytes from 2001:470:20::2: icmp_seq=2 ttl=64 time=44.2 ms
+   64 bytes from 2001:470:20::2: icmp_seq=3 ttl=64 time=29.6 ms
+   64 bytes from 2001:470:20::2: icmp_seq=4 ttl=64 time=29.6 ms
    
    --- 2001:470:20::2 ping statistics ---
-   4 packets transmitted, 4 received, 0% packet loss, time 7ms
-   rtt min/avg/max/mdev = 29.868/33.798/43.160/5.486 ms
+   4 packets transmitted, 4 received, 0% packet loss, time 8ms
+   rtt min/avg/max/mdev = 29.569/33.245/44.180/6.314 ms
 
 
 Assuming the pings are successful, you need to add some DNS servers.
@@ -87,13 +87,12 @@ You should now be able to ping something by IPv6 DNS name:
    vyos@vyos-wan:~$ ping tunnelbroker.net count 4
    PING tunnelbroker.net(tunnelbroker.net (2001:470:0:63::2)) 56 data bytes
    64 bytes from tunnelbroker.net (2001:470:0:63::2): icmp_seq=1 ttl=48 time=182 ms
-   64 bytes from tunnelbroker.net (2001:470:0:63::2): icmp_seq=2 ttl=48 time=182 ms
+   64 bytes from tunnelbroker.net (2001:470:0:63::2): icmp_seq=2 ttl=48 time=181 ms
    64 bytes from tunnelbroker.net (2001:470:0:63::2): icmp_seq=3 ttl=48 time=181 ms
-   64 bytes from tunnelbroker.net (2001:470:0:63::2): icmp_seq=4 ttl=48 time=181 ms
    
    --- tunnelbroker.net ping statistics ---
-   4 packets transmitted, 4 received, 0% packet loss, time 7ms
-   rtt min/avg/max/mdev = 181.021/181.411/181.800/0.570 ms
+   4 packets transmitted, 3 received, 25% packet loss, time 7ms
+   rtt min/avg/max/mdev = 180.947/181.168/181.609/0.311 ms
 
 
 *****************
@@ -149,14 +148,14 @@ Now the Client is able to ping a public IPv6 address
 
    vyos@client:~$ ping 2001:470:20::2 count 4
    PING 2001:470:20::2(2001:470:20::2) 56 data bytes
-   64 bytes from 2001:470:20::2: icmp_seq=1 ttl=63 time=32.9 ms
-   64 bytes from 2001:470:20::2: icmp_seq=2 ttl=63 time=31.0 ms
-   64 bytes from 2001:470:20::2: icmp_seq=3 ttl=63 time=30.6 ms
-   64 bytes from 2001:470:20::2: icmp_seq=4 ttl=63 time=31.3 ms
+   64 bytes from 2001:470:20::2: icmp_seq=1 ttl=63 time=30.0 ms
+   64 bytes from 2001:470:20::2: icmp_seq=2 ttl=63 time=29.4 ms
+   64 bytes from 2001:470:20::2: icmp_seq=3 ttl=63 time=29.5 ms
+   64 bytes from 2001:470:20::2: icmp_seq=4 ttl=63 time=29.7 ms
    
    --- 2001:470:20::2 ping statistics ---
    4 packets transmitted, 4 received, 0% packet loss, time 8ms
-   rtt min/avg/max/mdev = 30.603/31.453/32.863/0.882 ms
+   rtt min/avg/max/mdev = 29.439/29.651/30.013/0.309 ms
 
 
 Multiple LAN/DMZ Setup
