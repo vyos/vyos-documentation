@@ -3,8 +3,8 @@
 L3VPN EVPN with VyOS
 ####################
 
-| Testdate: 2022-07-11
-| Version: 1.4-rolling-202207090632
+| Testdate: 2022-10-10
+| Version: 1.4-rolling-202210090955
 
 I spun up a new lab in EVE-NG, which represents this as the
 "Foo Bar - Service Provider Inc." that has 3 points of presence (PoP) in random
@@ -159,32 +159,32 @@ Show routes for all VRFs
           t - trapped, o - offload failure
    
    VRF blue:
-   C>* 10.1.1.0/24 is directly connected, br2000, 00:01:07
-   B>* 10.1.2.0/24 [200/0] via 172.29.255.2, br2000 onlink, weight 1, 00:00:48
-   B>* 10.1.3.0/24 [200/0] via 172.29.255.3, br2000 onlink, weight 1, 00:00:44
+   C>* 10.1.1.0/24 is directly connected, br2000, 00:01:06
+   B>* 10.1.2.0/24 [200/0] via 172.29.255.2, br2000 onlink, weight 1, 00:00:42
+   B>* 10.1.3.0/24 [200/0] via 172.29.255.3, br2000 onlink, weight 1, 00:00:42
    
    VRF default:
    O   172.29.0.2/31 [110/1] is directly connected, eth1, weight 1, 00:01:03
-   C>* 172.29.0.2/31 is directly connected, eth1, 00:01:06
-   O>* 172.29.0.4/31 [110/2] via 172.29.0.3, eth1, weight 1, 00:00:41
-     *                       via 172.29.0.7, eth3, weight 1, 00:00:41
+   C>* 172.29.0.2/31 is directly connected, eth1, 00:01:05
+   O>* 172.29.0.4/31 [110/2] via 172.29.0.3, eth1, weight 1, 00:00:39
+     *                       via 172.29.0.7, eth3, weight 1, 00:00:39
    O   172.29.0.6/31 [110/1] is directly connected, eth3, weight 1, 00:01:03
-   C>* 172.29.0.6/31 is directly connected, eth3, 00:01:06
-   C>* 172.29.255.1/32 is directly connected, dum0, 00:01:07
-   O>* 172.29.255.2/32 [110/20] via 172.29.0.3, eth1, weight 1, 00:00:49
-   O>* 172.29.255.3/32 [110/20] via 172.29.0.7, eth3, weight 1, 00:00:40
+   C>* 172.29.0.6/31 is directly connected, eth3, 00:01:05
+   C>* 172.29.255.1/32 is directly connected, dum0, 00:01:06
+   O>* 172.29.255.2/32 [110/20] via 172.29.0.3, eth1, weight 1, 00:00:38
+   O>* 172.29.255.3/32 [110/20] via 172.29.0.7, eth3, weight 1, 00:00:43
    
    VRF green:
-   C>* 10.3.1.0/24 is directly connected, br4000, 00:01:07
-   B>* 10.3.3.0/24 [200/0] via 172.29.255.3, br4000 onlink, weight 1, 00:00:44
+   C>* 10.3.1.0/24 is directly connected, br4000, 00:01:05
+   B>* 10.3.3.0/24 [200/0] via 172.29.255.3, br4000 onlink, weight 1, 00:00:42
    
    VRF mgmt:
-   S>* 0.0.0.0/0 [210/0] via 10.100.0.1, eth0, weight 1, 00:01:42
-   C>* 10.100.0.0/24 is directly connected, eth0, 00:01:42
+   S>* 0.0.0.0/0 [210/0] via 10.100.0.1, eth0, weight 1, 00:01:43
+   C>* 10.100.0.0/24 is directly connected, eth0, 00:01:43
    
    VRF red:
-   C>* 10.2.1.0/24 is directly connected, br3000, 00:01:06
-   B>* 10.2.2.0/24 [200/0] via 172.29.255.2, br3000 onlink, weight 1, 00:00:48
+   C>* 10.2.1.0/24 is directly connected, br3000, 00:01:05
+   B>* 10.2.2.0/24 [200/0] via 172.29.255.2, br3000 onlink, weight 1, 00:00:42
 
 Information about Ethernet Virtual Private Networks
 
@@ -195,7 +195,7 @@ Information about Ethernet Virtual Private Networks
    BGP table version is 1, local router ID is 172.29.255.1
    Status codes: s suppressed, d damped, h history, * valid, > best, i - internal
    Origin codes: i - IGP, e - EGP, ? - incomplete
-   EVPN type-1 prefix: [1]:[EthTag]:[ESI]:[IPlen]:[VTEP-IP]
+   EVPN type-1 prefix: [1]:[EthTag]:[ESI]:[IPlen]:[VTEP-IP]:[Frag-id]
    EVPN type-2 prefix: [2]:[EthTag]:[MAClen]:[MAC]:[IPlen]:[IP]
    EVPN type-3 prefix: [3]:[EthTag]:[IPlen]:[OrigIP]
    EVPN type-4 prefix: [4]:[ESI]:[IPlen]:[OrigIP]
@@ -205,11 +205,11 @@ Information about Ethernet Virtual Private Networks
    Route Distinguisher: 10.1.1.1:5
    *> [5]:[0]:[24]:[10.1.1.0]
                        172.29.255.1             0         32768 ?
-                       ET:8 RT:100:2000 Rmac:50:00:00:01:00:04
+                       ET:8 RT:100:2000 Rmac:16:ea:8a:8d:a8:c0
    Route Distinguisher: 10.1.2.1:4
    *>i[5]:[0]:[24]:[10.1.2.0]
                        172.29.255.2             0    100      0 ?
-                       RT:100:2000 ET:8 Rmac:12:22:ff:6c:a5:6f
+                       RT:100:2000 ET:8 Rmac:50:00:00:02:00:04
    Route Distinguisher: 10.1.3.1:4
    *>i[5]:[0]:[24]:[10.1.3.0]
                        172.29.255.3             0    100      0 ?
@@ -221,11 +221,11 @@ Information about Ethernet Virtual Private Networks
    Route Distinguisher: 10.2.2.1:5
    *>i[5]:[0]:[24]:[10.2.2.0]
                        172.29.255.2             0    100      0 ?
-                       RT:100:3000 ET:8 Rmac:1e:1b:a2:af:7d:62
+                       RT:100:3000 ET:8 Rmac:50:00:00:02:00:05
    Route Distinguisher: 10.3.1.1:7
    *> [5]:[0]:[24]:[10.3.1.0]
                        172.29.255.1             0         32768 ?
-                       ET:8 RT:100:4000 Rmac:50:00:00:01:00:06
+                       ET:8 RT:100:4000 Rmac:36:15:79:23:b9:13
    Route Distinguisher: 10.3.3.1:6
    *>i[5]:[0]:[24]:[10.3.3.0]
                        172.29.255.3             0    100      0 ?
@@ -247,5 +247,5 @@ the EVPN network we need to run
      Local
        172.29.255.1 (metric 20) from 172.29.255.1 (172.29.255.1)
          Origin incomplete, metric 0, localpref 100, valid, internal, best (First path received)
-         Extended Community: RT:100:4000 ET:8 Rmac:50:00:00:01:00:06
-         Last update: Mon Jul 11 19:30:13 2022
+         Extended Community: RT:100:4000 ET:8 Rmac:36:15:79:23:b9:13
+         Last update: Mon Oct 10 14:05:13 2022
