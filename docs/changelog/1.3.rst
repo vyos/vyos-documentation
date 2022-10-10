@@ -8,6 +8,15 @@
    _ext/releasenotes.py
 
 
+2022-10-04
+==========
+
+* :vytask:`T4702` (bug): Wireguard peers configuration is not synchronized with CLI
+* :vytask:`T4652` (feature): Upgrade PowerDNS recursor to 4.7 series
+* :vytask:`T4648` (default): PPPoE: Ignore default router from RA when PPPoE default-route is set to none
+* :vytask:`T4582` (default): Router-advert: Preferred lifetime cannot equal valid lifetime in PIOs
+
+
 2022-09-17
 ==========
 
@@ -18,7 +27,7 @@
 ==========
 
 * :vytask:`T4679` (bug): OpenVPN site-to-site incorrect check for IPv6 local and remote address
-* :vytask:`T4630` (bug): Pseudo Ethernet can not use identical source-interface as MACsec
+* :vytask:`T4630` (bug): Prevent attempts to use the same interface as a source interface for pseudo-ethernet and MACsec at the same time
 
 
 2022-09-12

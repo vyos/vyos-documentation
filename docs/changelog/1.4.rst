@@ -8,6 +8,37 @@
    _ext/releasenotes.py
 
 
+2022-10-09
+==========
+
+* :vytask:`T4738` (enhancment): Extend automatic generation of schema definition files to native configsession functions; use single resolver/directive
+
+
+2022-10-08
+==========
+
+* :vytask:`T4707` (feature): Enable OSPF segment routing
+
+
+2022-10-07
+==========
+
+* :vytask:`T4736` (bug): Error on JSON output of API query ShowConfig
+
+
+2022-10-04
+==========
+
+* :vytask:`T4708` (bug): 'show nat destination rules' throwing an error
+* :vytask:`T4700` (feature): Firewall - Add interface match criteria
+* :vytask:`T4699` (feature): Firewall - Add jump action - Add return action
+* :vytask:`T4651` (feature): Firewall - Add options to match packet size
+* :vytask:`T4702` (bug): Wireguard peers configuration is not synchronized with CLI
+* :vytask:`T4685` (bug): Interface does not exist on boot when used as inbound-interface for local policy route
+* :vytask:`T4652` (feature): Upgrade PowerDNS recursor to 4.7 series
+* :vytask:`T4582` (default): Router-advert: Preferred lifetime cannot equal valid lifetime in PIOs
+
+
 2022-09-29
 ==========
 
@@ -55,7 +86,7 @@
 
 * :vytask:`T4679` (bug): OpenVPN site-to-site incorrect check for IPv6 local and remote address
 * :vytask:`T4691` (feature): Upgrade Linux Kernel to latest 5.15.y train
-* :vytask:`T4630` (bug): Pseudo Ethernet can not use identical source-interface as MACsec
+* :vytask:`T4630` (bug): Prevent attempts to use the same interface as a source interface for pseudo-ethernet and MACsec at the same time
 * :vytask:`T4696` (default): Extend bgp parameters for bgp bestpath peer-type multipath-relax
 
 
