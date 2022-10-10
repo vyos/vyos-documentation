@@ -27,7 +27,7 @@
 ==========
 
 * :vytask:`T4679` (bug): OpenVPN site-to-site incorrect check for IPv6 local and remote address
-* :vytask:`T4630` (bug): Pseudo Ethernet can not use identical source-interface as MACsec
+* :vytask:`T4630` (bug): Prevent attempts to use the same interface as a source interface for pseudo-ethernet and MACsec at the same time
 
 
 2022-09-12
