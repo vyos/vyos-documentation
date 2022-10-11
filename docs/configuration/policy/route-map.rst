@@ -199,38 +199,63 @@ Route Map
 
    BGP atomic aggregate attribute.
 
-.. cfgcmd:: set policy route-map <text> rule <1-65535> set bgp-extcommunity-rt
-   <aa:nn>
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set community
+   <add|replace> <community>
 
-   Set route target value. ExtCommunity in format: asn:value.
+   Add or replace BGP community attribute in format ``<0-65535:0-65535>``
+   or from well-known community list
 
-.. cfgcmd:: set policy route-map <text> rule <1-65535> set comm-list comm-list
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set community none
+
+   Delete all BGP communities
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set community delete
    <text>
-
-   BGP communities with a community-list.
-
-.. cfgcmd:: set policy route-map <text> rule <1-65535> set comm-list delete
 
    Delete BGP communities matching the community-list.
 
-.. cfgcmd:: set policy route-map <text> rule <1-65535> set community
-   <aa:bb|local-AS|no-advertise|no-export|internet|additive|none>
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set large-community
+   <add|replace> <GA:LDP1:LDP2>
 
-   Set BGP community attribute.
+   Add or replace BGP large-community attribute in format 
+   ``<0-4294967295:0-4294967295:0-4294967295>``
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set large-community none
+   
+   Delete all BGP large-communities
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set large-community delete
+   <text>
+
+   Delete BGP communities matching the large-community-list.
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set extcommunity bandwidth
+   <1-25600|cumulative|num-multipaths>
+
+   Set extcommunity bandwidth
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set extcommunity bandwidth-non-transitive
+
+   The link bandwidth extended community is encoded as non-transitive
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set extcommunity rt
+   <text>
+
+   Set route target value in format ``<0-65535:0-4294967295>`` or ``<IP:0-65535>``.
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set extcommunity soo
+   <text>
+
+   Set site of origin value in format ``<0-65535:0-4294967295>`` or ``<IP:0-65535>``.
+
+.. cfgcmd:: set policy route-map <text> rule <1-65535> set extcommunity none
+
+   Clear all BGP extcommunities.
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set distance <0-255>
 
    Locally significant administrative distance.
 
-.. cfgcmd:: set policy route-map <text> rule <1-65535> set extcommunity-rt
-   <text>
-
-   Set route target value.
-
-.. cfgcmd:: set policy route-map <text> rule <1-65535> set extcommunity-soo
-   <text>
-
-   Set site of origin value.
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set ip-next-hop
    <x.x.x.x>
@@ -270,11 +295,6 @@ Route Map
    For Incoming and Import Route-maps if we receive a v6 global and v6 LL
    address for the route, then prefer to use the global address as the
    nexthop.
-
-.. cfgcmd:: set policy route-map <text> rule <1-65535> set large-community
-   <text>
-
-   Set BGP large community value.
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set local-preference
    <0-4294967295>
@@ -319,3 +339,29 @@ Route Map
    <0-4294967295>
 
    Set BGP weight attribute
+
+List of well-known communities
+==============================
+   * ``local-as`` -                     Well-known communities value NO_EXPORT_SUBCONFED 0xFFFFFF03
+   * ``no-advertise`` -                 Well-known communities value NO_ADVERTISE 0xFFFFFF02
+   * ``no-export`` -                    Well-known communities value NO_EXPORT 0xFFFFFF01
+   * ``internet`` -                     Well-known communities value 0
+   * ``graceful-shutdown`` -            Well-known communities value GRACEFUL_SHUTDOWN 0xFFFF0000
+   * ``accept-own`` -                   Well-known communities value ACCEPT_OWN 0xFFFF0001
+   * ``route-filter-translated-v4`` -   Well-known communities value ROUTE_FILTER_TRANSLATED_v4 0xFFFF0002
+   * ``route-filter-v4`` -              Well-known communities value ROUTE_FILTER_v4 0xFFFF0003
+   * ``route-filter-translated-v6`` -   Well-known communities value ROUTE_FILTER_TRANSLATED_v6 0xFFFF0004
+   * ``route-filter-v6`` -              Well-known communities value ROUTE_FILTER_v6 0xFFFF0005
+   * ``llgr-stale`` -                   Well-known communities value LLGR_STALE 0xFFFF0006
+   * ``no-llgr`` -                      Well-known communities value NO_LLGR 0xFFFF0007
+   * ``accept-own-nexthop`` -           Well-known communities value accept-own-nexthop 0xFFFF0008
+   * ``blackhole`` -                    Well-known communities value BLACKHOLE 0xFFFF029A
+   * ``no-peer`` -                      Well-known communities value NOPEER 0xFFFFFF04
+
+
+
+
+
+
+
+
