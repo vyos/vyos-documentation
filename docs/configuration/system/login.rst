@@ -115,6 +115,62 @@ be able to connect from a single IP address.
   set system login user vyos authentication public-keys 'User2' key "AAAAQ39x...fbV3"
   set system login user vyos authentication public-keys 'User2' type ssh-rsa
 
+2FA with OTP
+============
+
+It is possible to enhance authentication security by using OTP 2FA.
+2FA is configured separately for each user. If an OTP key is configured
+for a user, 2FA automatically starts for that user. If a user does
+not have an OTP key configured, there is no 2FA check for that user.
+
+To enable OTP 2FA for a user with default settings,
+a single command is sufficient:
+
+.. cfgcmd:: set system login user <username> authentication otp key <key>
+
+   Assign the OTP 2FA key (base32 encoded secret) `<key>`
+   to the local user `<username>`.
+
+If necessary, a 2FA verification parameters can be changed globally
+(for all users):
+
+.. cfgcmd:: set system login authentication 
+   otp rate-limit <number_of_attempts>
+
+   Limit logins to `<number_of_attempts>` per every `<number_of_seconds>`
+   The rate limit must be between 1 and 10 attempts.
+
+.. cfgcmd:: set system login authentication otp rate-time
+   <number_of_seconds>
+
+   Limit logins to `<number_of_attempts>` per every `<number_of_seconds>`
+   The rate time must be between 15 and 600 seconds.
+
+.. cfgcmd:: set system login authentication otp
+   window-size <size>
+
+   Set window of concurrently valid codes.
+   
+   By default, a new token is generated every 30 seconds by the mobile
+   application. In order to compensate for possible time-skew between
+   the client and the server, an extra token before and after the current
+   time is allowed. This allows for a time skew of up to 30 seconds
+   between authentication server and client.
+
+   For example, if problems with poor time synchronization are experienced,
+   the window can be increased from its default size of 3 permitted codes
+   (one previous code, the current code, the next code) to 17 permitted codes
+   (the 8 previous codes, the current code, and the 8 next codes). This will
+   permit for a time skew of up to 4 minutes between client and server.
+
+   The window size must be between 1 and 21.
+
+Example of enabling 2FA OTP authentication with default parameters:
+
+.. code-block:: none
+   
+   set system login user testuser authentication otp key OHZ3OJ7U2N25BK4G7SOFFJTZDTCFUUE2
+   set system login user testuser authentication plaintext-password My_NotSo_secret_password
 
 RADIUS
 ======
