@@ -335,9 +335,9 @@ assigning it to the pppoe0 itself as shown here:
 
 .. code-block:: none
 
-  set interfaces pppoe pppoe0 firewall in name NET-IN
-  set interfaces pppoe pppoe0 firewall local name NET-LOCAL
-  set interfaces pppoe pppoe0 firewall out name NET-OUT
+  set firewall interface pppoe0 in name NET-IN
+  set firewall interface pppoe0 local name NET-LOCAL
+  set firewall interface pppoe0 out name NET-OUT
 
 VLAN Example
 ============
