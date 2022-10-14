@@ -564,7 +564,7 @@ different levels in the hierarchy.
 
    .. code-block:: none
    
-      vyos@router# set interfaces ethernet eth0 firewall local name FromWorld
+      vyos@router# set firewall interface eth0 local name FromWorld
       vyos@router# commit-confirm 
       commit confirm will be automatically reboot in 10 minutes unless confirmed
       Proceed? [confirm]y

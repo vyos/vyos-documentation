@@ -177,7 +177,7 @@ WAN interface and a direction (local).
 
 .. code-block:: none
 
-    set interfaces ethernet eth0 firewall local name 'OUTSIDE-LOCAL'
+    set firewall interface eth0 local name 'OUTSIDE-LOCAL'
 
 
 Static Routing:
