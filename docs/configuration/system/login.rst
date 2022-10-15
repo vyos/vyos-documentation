@@ -1,8 +1,10 @@
+:lastproofread: 2022-10-15
+
 .. _user_management:
 
-###############
-User Management
-###############
+#####################
+Login/User Management
+#####################
 
 The default VyOS user account (`vyos`), as well as newly created user accounts,
 have all capabilities to configure the system. All accounts have sudo
@@ -100,57 +102,39 @@ The third part is simply an identifier, and is for your own reference.
    * ``http://<host>/<file>`` - Load via HTTP from remote machine
    * ``tftp://<host>/<file>`` - Load via TFTP from remote machine
 
-Example
--------
+MFA/2FA authentication using One-Time-Pad
+-----------------------------------------
 
-In the following example, both `User1` and `User2` will be able to SSH into
-VyOS as user ``vyos`` using their very own keys. `User1` is restricted to only
-be able to connect from a single IP address.
-
-.. code-block:: none
-
-  set system login user vyos authentication public-keys 'User1' key "AAAAB3Nz...KwEW"
-  set system login user vyos authentication public-keys 'User1' type ssh-rsa
-  set system login user vyos authentication public-keys 'User1' options "from=&quot;192.168.0.100&quot;"
-  set system login user vyos authentication public-keys 'User2' key "AAAAQ39x...fbV3"
-  set system login user vyos authentication public-keys 'User2' type ssh-rsa
-
-2FA with OTP
-============
-
-It is possible to enhance authentication security by using OTP 2FA.
-2FA is configured separately for each user. If an OTP key is configured
-for a user, 2FA automatically starts for that user. If a user does
-not have an OTP key configured, there is no 2FA check for that user.
-
-To enable OTP 2FA for a user with default settings,
-a single command is sufficient:
+It is possible to enhance authentication security by using the :abbr:`2FA
+(Two-factor authentication)`/:abbr:`MFA (Multi-factor authentication)` feature
+together with :abbr:`OTP (One-Time-Pad)` on VyOS. :abbr:`2FA (Two-factor
+authentication)`/:abbr:`MFA (Multi-factor authentication)` is configured
+independently per each user. If an OTP key is configured for a user, 2FA/MFA
+is automatically enabled for that particular user. If a user does not have an
+OTP key configured, there is no 2FA/MFA check for that user.
 
 .. cfgcmd:: set system login user <username> authentication otp key <key>
 
-   Assign the OTP 2FA key (base32 encoded secret) `<key>`
-   to the local user `<username>`.
+   Enable OTP 2FA for user `username` with default settings, using the BASE32
+   encoded 2FA/MFA key specified by `<key>`.
 
-If necessary, a 2FA verification parameters can be changed globally
-(for all users):
+Optional/default settings
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set system login authentication 
-   otp rate-limit <number_of_attempts>
+.. cfgcmd:: set system login user <username> authentication otp rate-limit <limit>
 
-   Limit logins to `<number_of_attempts>` per every `<number_of_seconds>`
-   The rate limit must be between 1 and 10 attempts.
+   Limit logins to `<limit>` per every ``rate-time`` seconds. Rate limit must be
+   between 1 and 10 attempts.
 
-.. cfgcmd:: set system login authentication otp rate-time
-   <number_of_seconds>
+.. cfgcmd:: set system login user <username> authentication otp rate-time <seconds>
 
-   Limit logins to `<number_of_attempts>` per every `<number_of_seconds>`
-   The rate time must be between 15 and 600 seconds.
+   Limit logins to ``rate-limit`` attemps per every `<seconds>`. Rate time must
+   be between 15 and 600 seconds.
 
-.. cfgcmd:: set system login authentication otp
-   window-size <size>
+.. cfgcmd:: set system login user <username> authentication otp window-size <size>
 
    Set window of concurrently valid codes.
-   
+
    By default, a new token is generated every 30 seconds by the mobile
    application. In order to compensate for possible time-skew between
    the client and the server, an extra token before and after the current
@@ -164,13 +148,6 @@ If necessary, a 2FA verification parameters can be changed globally
    permit for a time skew of up to 4 minutes between client and server.
 
    The window size must be between 1 and 21.
-
-Example of enabling 2FA OTP authentication with default parameters:
-
-.. code-block:: none
-   
-   set system login user testuser authentication otp key OHZ3OJ7U2N25BK4G7SOFFJTZDTCFUUE2
-   set system login user testuser authentication plaintext-password My_NotSo_secret_password
 
 RADIUS
 ======
@@ -214,7 +191,6 @@ Configuration
    the attribute you will only get regular, non privilegued, system users.
 
 
-
 Login Banner
 ============
 
@@ -232,3 +208,25 @@ information for this system.
 
 .. note:: To create a new line in your login message you need to escape the new
    line character by using ``\\n``.
+
+
+Example
+=======
+
+In the following example, both `User1` and `User2` will be able to SSH into
+VyOS as user ``vyos`` using their very own keys. `User1` is restricted to only
+be able to connect from a single IP address. In addition if password base login
+is wanted for the ``vyos`` user a 2FA/MFA keycode is required in addition to
+the password.
+
+.. code-block:: none
+
+  set system login user vyos authentication public-keys 'User1' key "AAAAB3Nz...KwEW"
+  set system login user vyos authentication public-keys 'User1' type ssh-rsa
+  set system login user vyos authentication public-keys 'User1' options "from=&quot;192.168.0.100&quot;"
+
+  set system login user vyos authentication public-keys 'User2' key "AAAAQ39x...fbV3"
+  set system login user vyos authentication public-keys 'User2' type ssh-rsa
+
+  set system login user vyos authentication otp key OHZ3OJ7U2N25BK4G7SOFFJTZDTCFUUE2
+  set system login user vyos authentication plaintext-password vyos
