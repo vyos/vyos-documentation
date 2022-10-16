@@ -79,10 +79,11 @@ The third part is simply an identifier, and is for your own reference.
 .. cfgcmd:: set system login user <username> authentication public-keys
    <identifier> options <options>
 
-   Set the options for this public key. See the ssh ``authorized_keys`` man page
-   for details of what you can specify here. To place a ``"`` character in the
-   options field, use ``&quot;``, for example ``from=&quot;10.0.0.0/24&quot;``
-   to restrict where the user may connect from when using this key.
+   Set the options for this public key. See the ssh ``authorized_keys`` man
+   page for details of what you can specify here. To place a ``"`` 
+   character in the options field, use ``&quot;``, for example 
+   ``from=&quot;10.0.0.0/24&quot;`` to restrict where the user
+   may connect from when using this key.
 
 .. cfgcmd:: loadkey <username> <location>
 
@@ -102,8 +103,8 @@ The third part is simply an identifier, and is for your own reference.
    * ``http://<host>/<file>`` - Load via HTTP from remote machine
    * ``tftp://<host>/<file>`` - Load via TFTP from remote machine
 
-MFA/2FA authentication using One-Time-Pad
------------------------------------------
+MFA/2FA authentication using OTP (one time passwords)
+-----------------------------------------------------
 
 It is possible to enhance authentication security by using the :abbr:`2FA
 (Two-factor authentication)`/:abbr:`MFA (Multi-factor authentication)` feature
@@ -121,17 +122,20 @@ OTP key configured, there is no 2FA/MFA check for that user.
 Optional/default settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set system login user <username> authentication otp rate-limit <limit>
+.. cfgcmd:: set system login user <username> authentication
+   otp rate-limit <limit>
 
-   Limit logins to `<limit>` per every ``rate-time`` seconds. Rate limit must be
-   between 1 and 10 attempts.
+   Limit logins to `<limit>` per every ``rate-time`` seconds. Rate limit
+   must be between 1 and 10 attempts.
 
-.. cfgcmd:: set system login user <username> authentication otp rate-time <seconds>
+.. cfgcmd:: set system login user <username> authentication
+   otp rate-time <seconds>
 
    Limit logins to ``rate-limit`` attemps per every `<seconds>`. Rate time must
    be between 15 and 600 seconds.
 
-.. cfgcmd:: set system login user <username> authentication otp window-size <size>
+.. cfgcmd:: set system login user <username> authentication
+   otp window-size <size>
 
    Set window of concurrently valid codes.
 
@@ -148,6 +152,99 @@ Optional/default settings
    permit for a time skew of up to 4 minutes between client and server.
 
    The window size must be between 1 and 21.
+
+OTP-key generation
+^^^^^^^^^^^^^^^^^^
+
+The following command can be used to generate the OTP key as well
+as the CLI commands to configure them:
+
+.. cfgcmd:: generate system login username <username> otp-key hotp-time
+   rate-limit <1-10> rate-time <15-600> window-size <1-21>
+
+An example of key generation:
+
+.. code-block:: none
+
+   vyos@vyos:~$ generate system login username otptester otp-key hotp-time rate-limit 2 rate-time 20 window-size 5
+   # You can share it with the user, he just needs to scan the QR in his OTP app
+   # username:  otptester
+   # OTP KEY:  J5A64ERPMGJOZXY6FMHHLKXKANNI6TCY
+   # OTP URL:  otpauth://totp/otptester@vyos?secret=J5A64ERPMGJOZXY6FMHHLKXKANNI6TCY&digits=6&period=30
+   █████████████████████████████████████████████
+   █████████████████████████████████████████████
+   ████ ▄▄▄▄▄ █▀█ █▄   ▀▄▀▄█▀▄  ▀█▀ █ ▄▄▄▄▄ ████
+   ████ █   █ █▀▀▀█ ▄▀ █▄▀ ▀▄ ▄ ▀  ▄█ █   █ ████
+   ████ █▄▄▄█ █▀ █▀▀██▄▄ █ █ ██ ▀▄▀ █ █▄▄▄█ ████
+   ████▄▄▄▄▄▄▄█▄▀ ▀▄█ █ ▀ █ █ █ █▄█▄█▄▄▄▄▄▄▄████
+   ████ ▄   █▄ ▄ ▀▄▀▀▀▀▄▀▄▀▄▄▄▀▀▄▄▄  █ █▄█ █████
+   ████▄▄ ██▀▄▄▄▀▀█▀ ▄ ▄▄▄ ▄▀ ▀ █ ▄ ▄ ██▄█  ████
+   █████▄  ██▄▄▀█▄█▄█▄ ▀█▄▀▄ ▀█▀▄ █▄▄▄ ▄   ▄████
+   ████▀▀▄   ▄█▀▄▀ ▄█▀█▀▄▄▄▀█▄ ██▄▄▄  ▀█ █  ████
+   ████ ▄▀▄█▀▄▄█▀▀▄▀▀▀▀█ ▄▀▄▀ ▄█ ▀▄  ▄ ▄▀ █▄████
+   ████▄ ██ ▀▄▀▀ ▄█▀ ▄ ██ ▀█▄█ ▄█ ▄ ▀▄   ▄▄ ████
+   ████▄█▀▀▄ ▄▄ █▄█▄█▄ █▄▄▀▄▄▀▀▄▄██▀ ▄▀▄▄ ▀▄████
+   ████▀▄▀ ▄ ▄▀█ ▄ ▄█▀ █  ▀▄▄  ▄█▀ ▄▄   ▀▄▄ ████
+   ████  ▀███▄ █▄█▄▀▀▀▀▄ ▄█▄▄▀ ▀███ ▄▄█▄▄  ▄████
+   ████ ███▀ ▄▄▀▀██▀ ▄▀▄█▄▄▄ ██▄▄▀▄▀  ███▄ ▄████
+   ████▄████▄▄▄▀▄ █▄█▄▀▄▄▄▄██▀ ▄▀ ▄ ▄▄▄ █▄▄█████
+   ████ ▄▄▄▄▄ █▄▄▄ ▄█▀█▀▀▀▀█▀█▀ █▄█ █▄█ ▄█  ████
+   ████ █   █ █ ██▄▀▀▀▀▄▄▄▀ ▄▄▄  ▀ ▄    ▄ ▄▄████
+   ████ █▄▄▄█ █ ▀▀█▀ ▄▄█ █▄▄██▀▀█▀ █▄▀▄██▄█ ████
+   ████▄▄▄▄▄▄▄█▄█▄█▄█▄▄▄▄▄█▄▄▄█▄██████▄██▄▄▄████
+   █████████████████████████████████████████████
+   █████████████████████████████████████████████
+   # To add this OTP key to configuration, run the following commands:
+   set system login user otptester authentication otp key 'J5A64ERPMGJOZXY6FMHHLKXKANNI6TCY'
+   set system login user otptester authentication otp rate-limit '2'
+   set system login user otptester authentication otp rate-time '20'
+   set system login user otptester authentication otp window-size '5'
+
+Display OTP key for user
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To display the configured OTP user key, use the command:
+
+.. cfgcmd:: sh system login authentication user <username> otp 
+   <full|key-b32|qrcode|uri>
+
+An example:
+
+.. code-block:: none
+
+   vyos@vyos:~$ sh system login authentication user otptester otp full
+   # You can share it with the user, he just needs to scan the QR in his OTP app
+   # username: otptester
+   # OTP KEY: J5A64ERPMGJOZXY6FMHHLKXKANNI6TCY
+   # OTP URL: otpauth://totp/otptester@vyos?secret=J5A64ERPMGJOZXY6FMHHLKXKANNI6TCY&digits=6&period=30
+   █████████████████████████████████████████████
+   █████████████████████████████████████████████
+   ████ ▄▄▄▄▄ █▀█ █▄   ▀▄▀▄█▀▄  ▀█▀ █ ▄▄▄▄▄ ████
+   ████ █   █ █▀▀▀█ ▄▀ █▄▀ ▀▄ ▄ ▀  ▄█ █   █ ████
+   ████ █▄▄▄█ █▀ █▀▀██▄▄ █ █ ██ ▀▄▀ █ █▄▄▄█ ████
+   ████▄▄▄▄▄▄▄█▄▀ ▀▄█ █ ▀ █ █ █ █▄█▄█▄▄▄▄▄▄▄████
+   ████ ▄   █▄ ▄ ▀▄▀▀▀▀▄▀▄▀▄▄▄▀▀▄▄▄  █ █▄█ █████
+   ████▄▄ ██▀▄▄▄▀▀█▀ ▄ ▄▄▄ ▄▀ ▀ █ ▄ ▄ ██▄█  ████
+   █████▄  ██▄▄▀█▄█▄█▄ ▀█▄▀▄ ▀█▀▄ █▄▄▄ ▄   ▄████
+   ████▀▀▄   ▄█▀▄▀ ▄█▀█▀▄▄▄▀█▄ ██▄▄▄  ▀█ █  ████
+   ████ ▄▀▄█▀▄▄█▀▀▄▀▀▀▀█ ▄▀▄▀ ▄█ ▀▄  ▄ ▄▀ █▄████
+   ████▄ ██ ▀▄▀▀ ▄█▀ ▄ ██ ▀█▄█ ▄█ ▄ ▀▄   ▄▄ ████
+   ████▄█▀▀▄ ▄▄ █▄█▄█▄ █▄▄▀▄▄▀▀▄▄██▀ ▄▀▄▄ ▀▄████
+   ████▀▄▀ ▄ ▄▀█ ▄ ▄█▀ █  ▀▄▄  ▄█▀ ▄▄   ▀▄▄ ████
+   ████  ▀███▄ █▄█▄▀▀▀▀▄ ▄█▄▄▀ ▀███ ▄▄█▄▄  ▄████
+   ████ ███▀ ▄▄▀▀██▀ ▄▀▄█▄▄▄ ██▄▄▀▄▀  ███▄ ▄████
+   ████▄████▄▄▄▀▄ █▄█▄▀▄▄▄▄██▀ ▄▀ ▄ ▄▄▄ █▄▄█████
+   ████ ▄▄▄▄▄ █▄▄▄ ▄█▀█▀▀▀▀█▀█▀ █▄█ █▄█ ▄█  ████
+   ████ █   █ █ ██▄▀▀▀▀▄▄▄▀ ▄▄▄  ▀ ▄    ▄ ▄▄████
+   ████ █▄▄▄█ █ ▀▀█▀ ▄▄█ █▄▄██▀▀█▀ █▄▀▄██▄█ ████
+   ████▄▄▄▄▄▄▄█▄█▄█▄█▄▄▄▄▄█▄▄▄█▄██████▄██▄▄▄████
+   █████████████████████████████████████████████
+   █████████████████████████████████████████████
+   # To add this OTP key to configuration, run the following commands:
+   set system login user otptester authentication otp key 'J5A64ERPMGJOZXY6FMHHLKXKANNI6TCY'
+   set system login user otptester authentication otp rate-limit '2'
+   set system login user otptester authentication otp rate-time '20'
+   set system login user otptester authentication otp window-size '5'
 
 RADIUS
 ======
