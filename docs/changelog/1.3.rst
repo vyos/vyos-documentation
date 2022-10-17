@@ -8,6 +8,24 @@
    _ext/releasenotes.py
 
 
+2022-10-13
+==========
+
+* :vytask:`T4312` (bug): Telegraf configuration doesn't accept IPs for URL
+
+
+2022-10-12
+==========
+
+* :vytask:`T4730` (bug): Conntrack-sync error - listen-address is not the correct type in config as it should be
+
+
+2022-10-11
+==========
+
+* :vytask:`T4680` (bug): Telegraf prometheus-client listen-address invalid format
+
+
 2022-10-04
 ==========
 
