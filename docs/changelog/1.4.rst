@@ -8,6 +8,47 @@
    _ext/releasenotes.py
 
 
+2022-10-14
+==========
+
+* :vytask:`T4750` (feature): Support of higher level SSH keys (sk-ssh-ed25519)
+* :vytask:`T4672` (bug): RADIUS server disable does not work
+* :vytask:`T4749` (enhancment): Use config_dict for conf_mode http-api.py
+
+
+2022-10-13
+==========
+
+* :vytask:`T4746` (bug): Monitoring nft. table vyos_filter by default does not exist but telegraf checks this table
+* :vytask:`T4744` (bug): BGP directly connected neighbors don't compatible with ebgp-multihop
+* :vytask:`T4716` (feature): SSH ability to configure RekeyLimit
+* :vytask:`T4343` (default): Expose powerdns network-timeout for service dns forwarding
+* :vytask:`T4312` (bug): Telegraf configuration doesn't accept IPs for URL
+* :vytask:`T4274` (default): Extend OpenConnect RADIUS Timeout to Permit 2FA Entry
+
+
+2022-10-12
+==========
+
+* :vytask:`T4747` (bug): Monitoring influxdb template input exec plugin does not work
+* :vytask:`T4740` (bug): Show conntrack table ipv6 fail
+* :vytask:`T4730` (bug): Conntrack-sync error - listen-address is not the correct type in config as it should be
+
+
+2022-10-11
+==========
+
+* :vytask:`T4742` (bug): Autocomplete in policy route rule x set table / does not show the tables created in the static protocols
+* :vytask:`T4741` (bug): set firewall zone Local local-zone failed
+* :vytask:`T4680` (bug): Telegraf prometheus-client listen-address invalid format
+
+
+2022-10-10
+==========
+
+* :vytask:`T538` (feature): Support for network mapping in NAT
+
+
 2022-10-09
 ==========
 
@@ -104,12 +145,6 @@
 
 * :vytask:`T4682` (feature): Rewrite 'show system storage' in standardized format
 * :vytask:`T4681` (feature): Complete standardization of show_uptime.py
-
-
-2022-09-08
-==========
-
-* :vytask:`T4526` (bug): keepalived-fifo.py unable to load config
 
 
 2022-09-06
