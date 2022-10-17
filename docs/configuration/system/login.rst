@@ -122,21 +122,18 @@ Optional/default settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. cfgcmd:: set system login user <username> authentication otp rate-limit <limit>
-
    :defaultvalue:
 
    Limit logins to `<limit>` per every ``rate-time`` seconds. Rate limit must be
    between 1 and 10 attempts.
 
 .. cfgcmd:: set system login user <username> authentication otp rate-time <seconds>
-
    :defaultvalue:
 
    Limit logins to ``rate-limit`` attemps per every `<seconds>`. Rate time must
    be between 15 and 600 seconds.
 
 .. cfgcmd:: set system login user <username> authentication otp window-size <size>
-
    :defaultvalue:
 
    Set window of concurrently valid codes.
