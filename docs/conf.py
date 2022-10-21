@@ -74,6 +74,12 @@ master_doc = 'index'
 # Usually you set "language" from the command line for these cases.
 language = None
 
+# https://docs.readthedocs.io/en/stable/guides/manage-translations-sphinx.html#create-translatable-files
+locale_dirs = ['_locale/']
+gettext_compact = False
+gettext_uuid = True
+
+
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
