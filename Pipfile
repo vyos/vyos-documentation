@@ -10,6 +10,7 @@ lxml = "*"
 sphinx-notfound-page = "*"
 Sphinx = ">=1.4.3"
 sphinx-panels = "*"
+transifex-client = "*"
 
 [dev-packages]
 

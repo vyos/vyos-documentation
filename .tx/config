@@ -1,0 +1,974 @@
+[main]
+host = https://www.transifex.com
+
+[documentation-1-4.docs__build_gettext_coverage]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/coverage.po
+source_file = docs/_build/gettext/coverage.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_cli]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/cli.po
+source_file = docs/_build/gettext/cli.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_copyright]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/copyright.po
+source_file = docs/_build/gettext/copyright.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_quick-start]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/quick-start.po
+source_file = docs/_build/gettext/quick-start.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/index.po
+source_file = docs/_build/gettext/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_documentation]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/documentation.po
+source_file = docs/_build/gettext/documentation.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_404]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/404.po
+source_file = docs/_build/gettext/404.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_operation_information]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/operation/information.po
+source_file = docs/_build/gettext/operation/information.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_operation_password-recovery]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/operation/password-recovery.po
+source_file = docs/_build/gettext/operation/password-recovery.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_operation_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/operation/index.po
+source_file = docs/_build/gettext/operation/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_operation_raid]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/operation/raid.po
+source_file = docs/_build/gettext/operation/raid.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_operation_boot-options]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/operation/boot-options.po
+source_file = docs/_build/gettext/operation/boot-options.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/index.po
+source_file = docs/_build/gettext/configuration/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_vpn_dmvpn]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/vpn/dmvpn.po
+source_file = docs/_build/gettext/configuration/vpn/dmvpn.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_vpn_openconnect]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/vpn/openconnect.po
+source_file = docs/_build/gettext/configuration/vpn/openconnect.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_vpn_site2site_ipsec]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/vpn/site2site_ipsec.po
+source_file = docs/_build/gettext/configuration/vpn/site2site_ipsec.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_vpn_rsa-keys]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/vpn/rsa-keys.po
+source_file = docs/_build/gettext/configuration/vpn/rsa-keys.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_vpn_sstp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/vpn/sstp.po
+source_file = docs/_build/gettext/configuration/vpn/sstp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_vpn_ipsec]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/vpn/ipsec.po
+source_file = docs/_build/gettext/configuration/vpn/ipsec.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_vpn_pptp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/vpn/pptp.po
+source_file = docs/_build/gettext/configuration/vpn/pptp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_vpn_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/vpn/index.po
+source_file = docs/_build/gettext/configuration/vpn/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_vpn_l2tp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/vpn/l2tp.po
+source_file = docs/_build/gettext/configuration/vpn/l2tp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_nat_nat66]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/nat/nat66.po
+source_file = docs/_build/gettext/configuration/nat/nat66.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_nat_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/nat/index.po
+source_file = docs/_build/gettext/configuration/nat/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_nat_nat44]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/nat/nat44.po
+source_file = docs/_build/gettext/configuration/nat/nat44.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_loadbalancing_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/loadbalancing/index.po
+source_file = docs/_build/gettext/configuration/loadbalancing/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_firewall_zone]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/firewall/zone.po
+source_file = docs/_build/gettext/configuration/firewall/zone.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_firewall_general]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/firewall/general.po
+source_file = docs/_build/gettext/configuration/firewall/general.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_firewall_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/firewall/index.po
+source_file = docs/_build/gettext/configuration/firewall/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_container_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/container/index.po
+source_file = docs/_build/gettext/configuration/container/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_flow-accounting]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/flow-accounting.po
+source_file = docs/_build/gettext/configuration/system/flow-accounting.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_lcd]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/lcd.po
+source_file = docs/_build/gettext/configuration/system/lcd.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_host-name]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/host-name.po
+source_file = docs/_build/gettext/configuration/system/host-name.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_syslog]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/syslog.po
+source_file = docs/_build/gettext/configuration/system/syslog.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_proxy]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/proxy.po
+source_file = docs/_build/gettext/configuration/system/proxy.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_time-zone]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/time-zone.po
+source_file = docs/_build/gettext/configuration/system/time-zone.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_name-server]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/name-server.po
+source_file = docs/_build/gettext/configuration/system/name-server.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_task-scheduler]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/task-scheduler.po
+source_file = docs/_build/gettext/configuration/system/task-scheduler.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_ip]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/ip.po
+source_file = docs/_build/gettext/configuration/system/ip.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_console]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/console.po
+source_file = docs/_build/gettext/configuration/system/console.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_option]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/option.po
+source_file = docs/_build/gettext/configuration/system/option.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_conntrack]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/conntrack.po
+source_file = docs/_build/gettext/configuration/system/conntrack.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/index.po
+source_file = docs/_build/gettext/configuration/system/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_ipv6]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/ipv6.po
+source_file = docs/_build/gettext/configuration/system/ipv6.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_acceleration]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/acceleration.po
+source_file = docs/_build/gettext/configuration/system/acceleration.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_ntp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/ntp.po
+source_file = docs/_build/gettext/configuration/system/ntp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_default-route]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/default-route.po
+source_file = docs/_build/gettext/configuration/system/default-route.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_system_login]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/system/login.po
+source_file = docs/_build/gettext/configuration/system/login.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_highavailability_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/highavailability/index.po
+source_file = docs/_build/gettext/configuration/highavailability/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_vrf_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/vrf/index.po
+source_file = docs/_build/gettext/configuration/vrf/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_trafficpolicy_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/trafficpolicy/index.po
+source_file = docs/_build/gettext/configuration/trafficpolicy/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_lldp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/lldp.po
+source_file = docs/_build/gettext/configuration/service/lldp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_salt-minion]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/salt-minion.po
+source_file = docs/_build/gettext/configuration/service/salt-minion.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_mdns]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/mdns.po
+source_file = docs/_build/gettext/configuration/service/mdns.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_ipoe-server]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/ipoe-server.po
+source_file = docs/_build/gettext/configuration/service/ipoe-server.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_conntrack-sync]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/conntrack-sync.po
+source_file = docs/_build/gettext/configuration/service/conntrack-sync.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_broadcast-relay]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/broadcast-relay.po
+source_file = docs/_build/gettext/configuration/service/broadcast-relay.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_dhcp-relay]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/dhcp-relay.po
+source_file = docs/_build/gettext/configuration/service/dhcp-relay.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_tftp-server]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/tftp-server.po
+source_file = docs/_build/gettext/configuration/service/tftp-server.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_ssh]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/ssh.po
+source_file = docs/_build/gettext/configuration/service/ssh.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_router-advert]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/router-advert.po
+source_file = docs/_build/gettext/configuration/service/router-advert.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_pppoe-server]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/pppoe-server.po
+source_file = docs/_build/gettext/configuration/service/pppoe-server.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_snmp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/snmp.po
+source_file = docs/_build/gettext/configuration/service/snmp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_webproxy]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/webproxy.po
+source_file = docs/_build/gettext/configuration/service/webproxy.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_monitoring]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/monitoring.po
+source_file = docs/_build/gettext/configuration/service/monitoring.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_https]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/https.po
+source_file = docs/_build/gettext/configuration/service/https.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_dhcp-server]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/dhcp-server.po
+source_file = docs/_build/gettext/configuration/service/dhcp-server.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/index.po
+source_file = docs/_build/gettext/configuration/service/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_console-server]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/console-server.po
+source_file = docs/_build/gettext/configuration/service/console-server.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_dns]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/dns.po
+source_file = docs/_build/gettext/configuration/service/dns.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_service_eventhandler]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/service/eventhandler.po
+source_file = docs/_build/gettext/configuration/service/eventhandler.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_protocols_rip]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/protocols/rip.po
+source_file = docs/_build/gettext/configuration/protocols/rip.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_protocols_rpki]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/protocols/rpki.po
+source_file = docs/_build/gettext/configuration/protocols/rpki.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_protocols_bgp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/protocols/bgp.po
+source_file = docs/_build/gettext/configuration/protocols/bgp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_protocols_bfd]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/protocols/bfd.po
+source_file = docs/_build/gettext/configuration/protocols/bfd.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_protocols_mpls]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/protocols/mpls.po
+source_file = docs/_build/gettext/configuration/protocols/mpls.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_protocols_ospf]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/protocols/ospf.po
+source_file = docs/_build/gettext/configuration/protocols/ospf.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_protocols_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/protocols/index.po
+source_file = docs/_build/gettext/configuration/protocols/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_protocols_igmp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/protocols/igmp.po
+source_file = docs/_build/gettext/configuration/protocols/igmp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_protocols_static]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/protocols/static.po
+source_file = docs/_build/gettext/configuration/protocols/static.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_protocols_isis]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/protocols/isis.po
+source_file = docs/_build/gettext/configuration/protocols/isis.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_as-path-list]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/as-path-list.po
+source_file = docs/_build/gettext/configuration/policy/as-path-list.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_community-list]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/community-list.po
+source_file = docs/_build/gettext/configuration/policy/community-list.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_access-list]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/access-list.po
+source_file = docs/_build/gettext/configuration/policy/access-list.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_route]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/route.po
+source_file = docs/_build/gettext/configuration/policy/route.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_examples]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/examples.po
+source_file = docs/_build/gettext/configuration/policy/examples.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_prefix-list]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/prefix-list.po
+source_file = docs/_build/gettext/configuration/policy/prefix-list.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/index.po
+source_file = docs/_build/gettext/configuration/policy/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_extcommunity-list]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/extcommunity-list.po
+source_file = docs/_build/gettext/configuration/policy/extcommunity-list.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_route-map]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/route-map.po
+source_file = docs/_build/gettext/configuration/policy/route-map.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_large-community-list]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/large-community-list.po
+source_file = docs/_build/gettext/configuration/policy/large-community-list.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_policy_local-route]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/policy/local-route.po
+source_file = docs/_build/gettext/configuration/policy/local-route.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_wireguard]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/wireguard.po
+source_file = docs/_build/gettext/configuration/interfaces/wireguard.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_geneve]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/geneve.po
+source_file = docs/_build/gettext/configuration/interfaces/geneve.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_loopback]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/loopback.po
+source_file = docs/_build/gettext/configuration/interfaces/loopback.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_l2tpv3]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/l2tpv3.po
+source_file = docs/_build/gettext/configuration/interfaces/l2tpv3.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_ethernet]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/ethernet.po
+source_file = docs/_build/gettext/configuration/interfaces/ethernet.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_vti]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/vti.po
+source_file = docs/_build/gettext/configuration/interfaces/vti.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_pppoe]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/pppoe.po
+source_file = docs/_build/gettext/configuration/interfaces/pppoe.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_bonding]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/bonding.po
+source_file = docs/_build/gettext/configuration/interfaces/bonding.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_pseudo-ethernet]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/pseudo-ethernet.po
+source_file = docs/_build/gettext/configuration/interfaces/pseudo-ethernet.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_macsec]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/macsec.po
+source_file = docs/_build/gettext/configuration/interfaces/macsec.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_bridge]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/bridge.po
+source_file = docs/_build/gettext/configuration/interfaces/bridge.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_dummy]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/dummy.po
+source_file = docs/_build/gettext/configuration/interfaces/dummy.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_tunnel]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/tunnel.po
+source_file = docs/_build/gettext/configuration/interfaces/tunnel.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_wwan]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/wwan.po
+source_file = docs/_build/gettext/configuration/interfaces/wwan.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/index.po
+source_file = docs/_build/gettext/configuration/interfaces/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_wireless]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/wireless.po
+source_file = docs/_build/gettext/configuration/interfaces/wireless.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_vxlan]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/vxlan.po
+source_file = docs/_build/gettext/configuration/interfaces/vxlan.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_interfaces_openvpn]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/interfaces/openvpn.po
+source_file = docs/_build/gettext/configuration/interfaces/openvpn.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configuration_pki_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configuration/pki/index.po
+source_file = docs/_build/gettext/configuration/pki/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_changelog_1]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/changelog/1.po
+source_file = docs/_build/gettext/changelog/1.4.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_changelog_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/changelog/index.po
+source_file = docs/_build/gettext/changelog/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_contributing_issues-features]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/contributing/issues-features.po
+source_file = docs/_build/gettext/contributing/issues-features.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_contributing_build-vyos]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/contributing/build-vyos.po
+source_file = docs/_build/gettext/contributing/build-vyos.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_contributing_development]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/contributing/development.po
+source_file = docs/_build/gettext/contributing/development.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_contributing_upstream-packages]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/contributing/upstream-packages.po
+source_file = docs/_build/gettext/contributing/upstream-packages.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_contributing_debugging]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/contributing/debugging.po
+source_file = docs/_build/gettext/contributing/debugging.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_contributing_testing]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/contributing/testing.po
+source_file = docs/_build/gettext/contributing/testing.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_introducing_about]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/introducing/about.po
+source_file = docs/_build/gettext/introducing/about.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_introducing_history]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/introducing/history.po
+source_file = docs/_build/gettext/introducing/history.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_image]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/image.po
+source_file = docs/_build/gettext/installation/image.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_vyos-on-baremetal]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/vyos-on-baremetal.po
+source_file = docs/_build/gettext/installation/vyos-on-baremetal.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_migrate-from-vyatta]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/migrate-from-vyatta.po
+source_file = docs/_build/gettext/installation/migrate-from-vyatta.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/index.po
+source_file = docs/_build/gettext/installation/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_install]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/install.po
+source_file = docs/_build/gettext/installation/install.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_update]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/update.po
+source_file = docs/_build/gettext/installation/update.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_virtual_gns3]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/virtual/gns3.po
+source_file = docs/_build/gettext/installation/virtual/gns3.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_virtual_eve-ng]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/virtual/eve-ng.po
+source_file = docs/_build/gettext/installation/virtual/eve-ng.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_virtual_proxmox]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/virtual/proxmox.po
+source_file = docs/_build/gettext/installation/virtual/proxmox.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_virtual_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/virtual/index.po
+source_file = docs/_build/gettext/installation/virtual/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_virtual_docker]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/virtual/docker.po
+source_file = docs/_build/gettext/installation/virtual/docker.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_virtual_libvirt]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/virtual/libvirt.po
+source_file = docs/_build/gettext/installation/virtual/libvirt.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_virtual_vmware]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/virtual/vmware.po
+source_file = docs/_build/gettext/installation/virtual/vmware.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_cloud_azure]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/cloud/azure.po
+source_file = docs/_build/gettext/installation/cloud/azure.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_cloud_gcp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/cloud/gcp.po
+source_file = docs/_build/gettext/installation/cloud/gcp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_cloud_aws]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/cloud/aws.po
+source_file = docs/_build/gettext/installation/cloud/aws.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_cloud_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/cloud/index.po
+source_file = docs/_build/gettext/installation/cloud/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_installation_cloud_oracel]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/installation/cloud/oracel.po
+source_file = docs/_build/gettext/installation/cloud/oracel.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_troubleshooting_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/troubleshooting/index.po
+source_file = docs/_build/gettext/troubleshooting/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_automation_vyos-napalm]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/automation/vyos-napalm.po
+source_file = docs/_build/gettext/automation/vyos-napalm.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_automation_command-scripting]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/automation/command-scripting.po
+source_file = docs/_build/gettext/automation/command-scripting.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_automation_vyos-api]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/automation/vyos-api.po
+source_file = docs/_build/gettext/automation/vyos-api.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_automation_vyos-netmiko]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/automation/vyos-netmiko.po
+source_file = docs/_build/gettext/automation/vyos-netmiko.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_automation_cloud-init]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/automation/cloud-init.po
+source_file = docs/_build/gettext/automation/cloud-init.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_automation_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/automation/index.po
+source_file = docs/_build/gettext/automation/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_automation_vyos-ansible]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/automation/vyos-ansible.po
+source_file = docs/_build/gettext/automation/vyos-ansible.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_azure-vpn-dual-bgp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/azure-vpn-dual-bgp.po
+source_file = docs/_build/gettext/configexamples/azure-vpn-dual-bgp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_azure-vpn-bgp]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/azure-vpn-bgp.po
+source_file = docs/_build/gettext/configexamples/azure-vpn-bgp.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_l3vpn-hub-and-spoke]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/l3vpn-hub-and-spoke.po
+source_file = docs/_build/gettext/configexamples/l3vpn-hub-and-spoke.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_pppoe-ipv6-basic]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/pppoe-ipv6-basic.po
+source_file = docs/_build/gettext/configexamples/pppoe-ipv6-basic.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_zone-policy]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/zone-policy.po
+source_file = docs/_build/gettext/configexamples/zone-policy.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_bgp-ipv6-unnumbered]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/bgp-ipv6-unnumbered.po
+source_file = docs/_build/gettext/configexamples/bgp-ipv6-unnumbered.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_ha]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/ha.po
+source_file = docs/_build/gettext/configexamples/ha.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_wan-load-balancing]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/wan-load-balancing.po
+source_file = docs/_build/gettext/configexamples/wan-load-balancing.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_index]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/index.po
+source_file = docs/_build/gettext/configexamples/index.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_inter-vrf-routing-vrf-lite]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/inter-vrf-routing-vrf-lite.po
+source_file = docs/_build/gettext/configexamples/inter-vrf-routing-vrf-lite.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_ospf-unnumbered]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/ospf-unnumbered.po
+source_file = docs/_build/gettext/configexamples/ospf-unnumbered.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_autotest_L3VPN_EVPN_L3VPN_EVPN]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.po
+source_file = docs/_build/gettext/configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_autotest_DHCPRelay_through_GRE_DHCPRelay_through_GRE]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.po
+source_file = docs/_build/gettext/configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_autotest_tunnelbroker_tunnelbroker]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/autotest/tunnelbroker/tunnelbroker.po
+source_file = docs/_build/gettext/configexamples/autotest/tunnelbroker/tunnelbroker.pot
+source_lang = en
+type = PO
+
+[documentation-1-4.docs__build_gettext_configexamples_autotest_Wireguard_Wireguard]
+file_filter = docs/_locale/<lang>/LC_MESSAGES/configexamples/autotest/Wireguard/Wireguard.po
+source_file = docs/_build/gettext/configexamples/autotest/Wireguard/Wireguard.pot
+source_lang = en
+type = PO
