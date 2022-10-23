@@ -538,7 +538,8 @@ Common parametrs
    This command specifies the router-ID. If router ID is not specified it will
    use the highest interface IP address.
 
-.. cfgcmd:: set protocols bgp <asn> maximum-paths <ebgp|ibgp> <number>
+.. cfgcmd:: set protocols bgp <asn> address-family <ipv4-unicast|ipv6-unicast> 
+   maximum-paths <ebgp|ibgp> <number>
 
    This command defines the maximum number of parallel routes that 
    the BGP can support. In order for BGP to use the second path, the 
