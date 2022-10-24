@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2022-10-23
+==========
+
+* :vytask:`T3723` (bug): op-mode IPSec show vpn ipsec sa output with underscores
+
+
+2022-10-21
+==========
+
+* :vytask:`T4768` (default): Change name of api child node from 'gql' to 'graphql'
+
+
+2022-10-18
+==========
+
+* :vytask:`T4684` (feature): Rewrite show ip route by protocol to vyos.opmode format
+* :vytask:`T4533` (bug): Radius clients don’t  have simple permissions
+* :vytask:`T4753` (enhancment): Extend automatic generation of schema to query SystemStatus
+
+
+2022-10-17
+==========
+
+* :vytask:`T4725` (bug): Unable to reset vpn IPsec peer
+
+
 2022-10-14
 ==========
 
@@ -2812,7 +2838,6 @@
 ==========
 
 * :vytask:`T2848` (feature): bgp-add-path configuration options
-* :vytask:`T1875` (feature): Add the ability to use network address as BGP neighbor (bgp listen range)
 
 
 2021-02-12
