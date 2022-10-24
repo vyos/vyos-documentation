@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2022-10-21
+==========
+
+* :vytask:`T2189` (bug): Adding a large port-range will take ~ 20 minutes to commit
+
+
+2022-10-18
+==========
+
+* :vytask:`T4533` (bug): Radius clients don’t  have simple permissions
+
+
 2022-10-13
 ==========
 
