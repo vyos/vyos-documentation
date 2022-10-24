@@ -1,0 +1,259 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/protocols/igmp.rst:7 73170b0524e84e909efd5d193436e306
+msgid "Multicast"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:9 f96ce9ad4fe84d10ad5e7eff17ff4e3b
+msgid ""
+"VyOS facilitates IP Multicast by supporting **PIM Sparse Mode**, **IGMP** "
+"and **IGMP-Proxy**."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:14 0fdd2bf63a8343ae9a5a0d72a9cc3c63
+msgid "PIM and IGMP"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:16 4ea16075d11c4e4db86a05694ca6fc82
+msgid ""
+"PIM (Protocol Independent Multicast) must be configured in every interface "
+"of every participating router. Every router must also have the location of "
+"the Rendevouz Point manually configured. Then, unidirectional shared trees "
+"rooted at the Rendevouz Point will automatically be built for multicast "
+"distribution."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:22 aef5c28fd1a54905b814d9d70dd6b60c
+msgid ""
+"Traffic from multicast sources will go to the Rendezvous Point, and "
+"receivers will pull it from a shared tree using IGMP (Internet Group "
+"Management Protocol)."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:26 60422c65d7be4e7bb930547e55500c35
+msgid ""
+"Multicast receivers will talk IGMP to their local router, so, besides having"
+" PIM configured in every router, IGMP must also be configured in any router "
+"where there could be a multicast receiver locally connected."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:30 6ec1b3c2b56240c7aad3f1660166d90c
+msgid ""
+"VyOS supports both IGMP version 2 and version 3 (which allows source-"
+"specific multicast)."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:35
+#: ../../configuration/protocols/igmp.rst:233 056585cb054f40fab1676ef96518255f
+#: d9b9278ab3554f69b10646766da4153a
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:37 1d03bafd27e2451e969aad97e3d10187
+msgid "In the following example we can see a basic multicast setup:"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rstNone a01fe8a799ff4dd7ad87f6b049acfdbd
+msgid "Network Topology Diagram"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:46 cb0856f0a32b4bf193eaecff7ec0d821
+msgid "**Router 1**"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:59 979e527ff5b0426b912a237a6c0ccc25
+msgid "**Router 3**"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:74 2b47ec89cbd84c2794958adf2f7f2dbc
+msgid "**Router 2**"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:91 02b04aded9f746e5a8c00452d76056ec
+msgid "Basic commands"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:93 e44a018c63c246d7a679109a8e875665
+msgid "These are the commands for a basic setup."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:97 f85930e3ed584348ada9abf3e02abd17
+msgid ""
+"Use this command to enable PIM in the selected interface so that it can "
+"communicate with PIM neighbors."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:104 930d2957bbc845a491ef0d7d7c06ff94
+msgid ""
+"Use this command to manually configure a Rendezvous Point for PIM so that "
+"join messages can be sent there. Set the Rendevouz Point address and the "
+"matching prefix of group ranges covered. These values must be shared with "
+"every router participating in the PIM network."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:112 08e1160f8f3d40ae8845f6cb0f720c9c
+msgid ""
+"Use this command to configure an interface with IGMP so that PIM can receive"
+" IGMP reports and query on the selected interface. By default IGMP version 3"
+" will be used."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:119 466b080ac0e4450492cae297012b1fcc
+msgid "Tuning commands"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:121 1585de73aa944260a2b7c22b540ffba3
+msgid "You can also tune multicast with the following commands."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:125 051f73cb374843a9a5c3bf72998dae20
+msgid ""
+"Use this PIM command in the selected interface to set the priority "
+"(1-4294967295) you want to influence in the election of a node to become the"
+" Designated Router for a LAN segment. The default priority is 1, set a  "
+"higher value to give the router more preference in the DR election process."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:134 7053461d00b6473f873cf45081236976
+msgid ""
+"Use this command to configure the PIM hello interval in seconds (1-180) for "
+"the selected interface."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:140 6f62dd225ef642fa893868afc9cb5b44
+msgid ""
+"Use this PIM command to modify the time out value (31-60000 seconds) for an "
+"`(S,G) <https://tools.ietf.org/html/rfc7761#section-4.1>`_ flow. 31 seconds "
+"is chosen for a lower bound as some hardware platforms cannot see data "
+"flowing in better than 30 seconds chunks."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:149 9541bf37e9654d35ac179d280927120d
+msgid ""
+"Use this command to allow the selected interface to join a multicast group "
+"defining the multicast address you want to join and the source IP address "
+"too."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:156 62a1eb5df1194d0f9c1aa107b274d588
+msgid ""
+"Use this command to configure in the selected interface the IGMP host query "
+"interval (1-1800) in seconds that PIM will use."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:163 f719c69f858341b4be984a74c1a1b48b
+msgid ""
+"Use this command to configure in the selected interface the IGMP query "
+"response timeout value (10-250) in deciseconds. If a report is not returned "
+"in the specified time, it will be assumed the `(S,G) or (*,G) state "
+"<https://tools.ietf.org/html/rfc7761#section-4.1>`_ has timed out."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:172 62eb3f5c3734455dab46145b85d8be7c
+msgid ""
+"Use this command to define in the selected interface whether you choose IGMP"
+" version 2 or 3. The default value is 3."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:179 4c819df06e6c499cb3e8a9bba197b37c
+msgid "IGMP Proxy"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:181 f90796cb941b47528f931affc3989d8c
+msgid ""
+":abbr:`IGMP (Internet Group Management Protocol)` proxy sends IGMP host "
+"messages on behalf of a connected client. The configuration must define one,"
+" and only one upstream interface, and one or more downstream interfaces."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:186 d5cc85b57d8b400e861707597f6225e9
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:191 de064b4174854df482039e09b59e8cc3
+msgid ""
+"**upstream:** The upstream network interface is the outgoing interface which"
+" is responsible for communicating to available multicast data sources. There"
+" can only be one upstream interface."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:195 9e94544404fd4a55a2dad363c335e4c4
+msgid ""
+"**downstream:** Downstream network interfaces are the distribution "
+"interfaces to the destination networks, where multicast clients can join "
+"groups and receive multicast data. One or more downstream interfaces must be"
+" configured."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:202 5869fcca67ae4ac4ae0841b192acafe1
+msgid ""
+"Defines alternate sources for multicasting and IGMP data. The network "
+"address must be on the following format 'a.b.c.d/n'. By default, the router "
+"will accept data from sources on the same network as configured on an "
+"interface. If the multicast source lies on a remote network, one must define"
+" from where traffic should be accepted."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:208 cffbb03d247a4b57856e5a6d60330691
+msgid ""
+"This is especially useful for the upstream interface, since the source for "
+"multicast traffic is often from a remote location."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:211 74aeef7f75e74b2ba59c9b590f090c16
+msgid "This option can be supplied multiple times."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:215 16a2dc59682f4f9694955dbe22c2664c
+msgid ""
+"Disables quickleave mode. In this mode the daemon will not send a Leave IGMP"
+" message upstream as soon as it receives a Leave message for any downstream "
+"interface. The daemon will not ask for Membership reports on the downstream "
+"interfaces, and if a report is received the group is not joined again the "
+"upstream."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:221 ffc46e1ae57f4cdc871aa352a623d9f5
+msgid ""
+"If it's vital that the daemon should act exactly like a real multicast "
+"client on the upstream interface, this function should be enabled."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:224 cedb77b217b54e02893243d7452e1d9c
+msgid "Enabling this function increases the risk of bandwidth saturation."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:228 622cb2d280c1450fb2d2bb196a0f4f92
+msgid "Disable this service."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:235 49f590bac93b42a0ba96457016d9bd87
+msgid ""
+"Interface `eth1` LAN is behind NAT. In order to subscribe `10.0.0.0/23` "
+"subnet multicast which is in `eth0` WAN we need to configure igmp-proxy."
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:245 7f937de509164566a36c120ac99ebce8
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/protocols/igmp.rst:249 2d344d86d4934459bb5bbe631f2034b7
+msgid "Restart the IGMP proxy process."
+msgstr ""

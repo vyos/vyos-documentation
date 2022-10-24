@@ -1,0 +1,242 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:02+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/container/index.rst:5 039191360057464e976739d9e11140a7
+msgid "Container"
+msgstr ""
+
+#: ../../configuration/container/index.rst:7 2adeecef2073485caa7ef731dbb1d908
+msgid ""
+"The VyOS container implementation is based on `Podman<https://podman.io/>` "
+"as a deamonless container engine."
+msgstr ""
+
+#: ../../configuration/container/index.rst:12 f9eb9622fe284115804f9ad094eade74
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/container/index.rst:16 390adaa195084fa68cae2d52ff202ad7
+msgid "Sets the image name in the hub registry"
+msgstr ""
+
+#: ../../configuration/container/index.rst:22 7196e6ef2f7a4a2ea97dd7ae1da5b649
+msgid ""
+"If a registry is not specified, Docker.io will be used as the container "
+"registry unless an alternative registry is specified using **set container "
+"registry <name>** or the registry is included in the image name"
+msgstr ""
+
+#: ../../configuration/container/index.rst:32 ac1d6dc699ee4f358bf2e07e812cd642
+msgid ""
+"Allow host networking in a container. The network stack of the container is "
+"not isolated from the host and will use the host IP."
+msgstr ""
+
+#: ../../configuration/container/index.rst:35 980d056cd7e0458abe3286ffc8a64d27
+msgid ""
+"The following commands translate to \"--net host\" when the container is "
+"created"
+msgstr ""
+
+#: ../../configuration/container/index.rst:38 97b53a0d18d34c6da2f1cdf99aeb89e6
+msgid "**allow-host-networks** cannot be used with **network**"
+msgstr ""
+
+#: ../../configuration/container/index.rst:42 4fd9ffd52de941db9660bcb5f873f4a4
+msgid ""
+"Attaches user-defined network to a container. Only one network must be "
+"specified and must already exist."
+msgstr ""
+
+#: ../../configuration/container/index.rst:47 bbfe5816cb1c48d88f6e3f56ed3364f4
+msgid ""
+"Optionally set a specific static IPv4 or IPv6 address for the container. "
+"This address must be within the named network prefix."
+msgstr ""
+
+#: ../../configuration/container/index.rst:50 6816d1315c4241b49438860816340bcc
+msgid ""
+"The first IP in the container network is reserved by the engine and cannot "
+"be used"
+msgstr ""
+
+#: ../../configuration/container/index.rst:54 2720022ba5334a1f956445669de184ad
+msgid "Set a container description"
+msgstr ""
+
+#: ../../configuration/container/index.rst:58 c25b427ae981495d93759ad78e5582be
+msgid ""
+"Add custom environment variables. Multiple environment variables are "
+"allowed. The following commands translate to \"-e key=value\" when the "
+"container is created."
+msgstr ""
+
+#: ../../configuration/container/index.rst:74 d329f77f29fa42a894b89f54f2ccda7c
+msgid "Publish a port for the container."
+msgstr ""
+
+#: ../../configuration/container/index.rst:85 dfc93c6334374953a75c7386a5a943bb
+msgid "Mount a volume into the container"
+msgstr ""
+
+#: ../../configuration/container/index.rst:94 6318eb3b475341418dd4c65c5d3c20f4
+msgid "Set the restart behavior of the container."
+msgstr ""
+
+#: ../../configuration/container/index.rst:96 07c65a65f29645a9a0780d34ef675cb7
+msgid "**no**: Do not restart containers on exit"
+msgstr ""
+
+#: ../../configuration/container/index.rst:97 b249af827afc4afc923cd011aaab9ed9
+msgid ""
+"**on-failure**: Restart containers when they exit with a non-zero exit code,"
+" retrying indefinitely (default)"
+msgstr ""
+
+#: ../../configuration/container/index.rst:98 9b0a646b45844cc5ae8d4c625596b4c4
+msgid ""
+"**always**: Restart containers when they exit, regardless of status, "
+"retrying indefinitely"
+msgstr ""
+
+#: ../../configuration/container/index.rst:102
+#: d612314ec5cd44dd929dc534a648f847
+msgid "Constrain the memory available to the container."
+msgstr ""
+
+#: ../../configuration/container/index.rst:104
+#: bc1ef74797fd4d528a29e534fa671fdf
+msgid "Default is 512 MB. Use 0 MB for unlimited memory."
+msgstr ""
+
+#: ../../configuration/container/index.rst:109
+#: 315b006060874c30bb96a7e10e7ed673
+msgid "Add a host device to the container."
+msgstr ""
+
+#: ../../configuration/container/index.rst:113
+#: 68632205e8c14e2eb2e188544cc9cc1d
+msgid "Set container capabilities or permissions."
+msgstr ""
+
+#: ../../configuration/container/index.rst:115
+#: 4636681f9c7445f7a0234b1de814965f
+msgid ""
+"**net-admin**: Network operations (interface, firewall, routing tables)"
+msgstr ""
+
+#: ../../configuration/container/index.rst:116
+#: 900bfc609b30441d952a332c2b40663e
+msgid ""
+"**net-bind-service**: Bind a socket to privileged ports (port numbers less "
+"than 1024)"
+msgstr ""
+
+#: ../../configuration/container/index.rst:117
+#: 54e552def9f14bc099a5d16c416c0ab2
+msgid "**net-raw**: Permission to create raw network sockets"
+msgstr ""
+
+#: ../../configuration/container/index.rst:118
+#: a9b1dde39dde4cfdbcba244fea22ec14
+msgid "**setpcap**: Capability sets (from bounded or inherited set)"
+msgstr ""
+
+#: ../../configuration/container/index.rst:119
+#: 16481be21dd94a39b62496569d592513
+msgid ""
+"**sys-admin**: Administation operations (quotactl, mount, sethostname, "
+"setdomainame)"
+msgstr ""
+
+#: ../../configuration/container/index.rst:120
+#: 35d062351a9c4f458c94edeb90811e76
+msgid "**sys-time**: Permission to set system clock"
+msgstr ""
+
+#: ../../configuration/container/index.rst:124
+#: 75cec34f8e2e4be1b12848644132cb12
+msgid "Disable a container."
+msgstr ""
+
+#: ../../configuration/container/index.rst:128
+#: 59b8016c6dcf458e8e69abaed6bf76b7
+msgid "Creates a named container network"
+msgstr ""
+
+#: ../../configuration/container/index.rst:132
+#: 5d93d01648af4dc99bf915f6f753c024
+msgid ""
+"Adds registry to list of unqualified-search-registries. By default, for any "
+"image that does not include the registry in the image name, Vyos will use "
+"docker.io as the container registry."
+msgstr ""
+
+#: ../../configuration/container/index.rst:139
+#: bf7c9cb9a093403aaf0ba43d3ad430b6
+msgid "Operation Commands"
+msgstr ""
+
+#: ../../configuration/container/index.rst:143
+#: 3d2536dc92ba40f0baf7e8726d54160c
+msgid "Pull a new image for container"
+msgstr ""
+
+#: ../../configuration/container/index.rst:147
+#: d618ade17b804e44bbb2757823e436b7
+msgid "Show the list of all active containers."
+msgstr ""
+
+#: ../../configuration/container/index.rst:151
+#: 5840b9c48a224101a8903db05b4e813f
+msgid "Show the local container images."
+msgstr ""
+
+#: ../../configuration/container/index.rst:155
+#: 17533e28c8c2408d9f2b2eb1a6005e47
+msgid "Show logs from a given container"
+msgstr ""
+
+#: ../../configuration/container/index.rst:159
+#: a5c84a11b819436f845bf518ee80377f
+msgid "Show a list available container networks"
+msgstr ""
+
+#: ../../configuration/container/index.rst:163
+#: 9de0d2a828e04bf99ce8d3b8f05fd969
+msgid "Restart a given container"
+msgstr ""
+
+#: ../../configuration/container/index.rst:167
+#: 53faa3642cfa4df5a91cbf68624159f8
+msgid "Update container image"
+msgstr ""
+
+#: ../../configuration/container/index.rst:173
+#: b08858a996954ab9af8501e0779aa6cc
+msgid "Example Configuration"
+msgstr ""
+
+#: ../../configuration/container/index.rst:175
+#: adb87bc9114347ed9f9620182be87309
+msgid ""
+"For the sake of demonstration, `example #1 in the official documentation "
+"<https://www.zabbix.com/documentation/current/manual/installation/containers>`_"
+" to the declarative VyOS CLI syntax."
+msgstr ""

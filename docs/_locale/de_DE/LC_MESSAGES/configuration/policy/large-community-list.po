@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/policy/large-community-list.rst:3
+#: e3ebb86dd16b4b129721f5625b96ed7d
+msgid "BGP - Large Community List"
+msgstr ""
+
+#: ../../configuration/policy/large-community-list.rst:5
+#: d464ef9bc8854a7b9ea2774bebca71e4
+msgid ""
+"VyOS provides policies commands exclusively for BGP traffic filtering and "
+"manipulation: **large-community-list** is one of them."
+msgstr ""
+
+#: ../../configuration/policy/large-community-list.rst:10
+#: b3552191def9491fa4f19ed9754e1a3c
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/policy/large-community-list.rst:13
+#: 631c60d44c1342088c4a5664e8bf2bb0
+msgid "policy large-community-list"
+msgstr ""
+
+#: ../../configuration/policy/large-community-list.rst:17
+#: 5b062cd118f244d1bc62febee094f896
+msgid "Creat large-community-list policy identified by name <text>."
+msgstr ""
+
+#: ../../configuration/policy/large-community-list.rst:21
+#: 1182e0e96f0b4ad6b91a9d1810fdb27c
+msgid "Set description for large-community-list policy."
+msgstr ""
+
+#: ../../configuration/policy/large-community-list.rst:26
+#: ec96e0a86ee840739aa57dbfe0fcf0ac
+msgid "Set action to take on entries matching this rule."
+msgstr ""
+
+#: ../../configuration/policy/large-community-list.rst:31
+#: 9c626939aa0144f7b4d5d8649a1ba4b6
+msgid "Set description for rule."
+msgstr ""
+
+#: ../../configuration/policy/large-community-list.rst:36
+#: 247eacd4c7314c7ea9004bf5164b35ff
+msgid "Regular expression to match against a large community list."
+msgstr ""

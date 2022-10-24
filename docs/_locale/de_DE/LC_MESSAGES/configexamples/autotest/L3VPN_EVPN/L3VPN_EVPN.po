@@ -1,0 +1,248 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:4
+#: dca7066243a64ac9bb911c232c07a55c
+msgid "L3VPN EVPN with VyOS"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:6
+#: 40009f7cec44488b973f2aa05da6cf76
+msgid "Testdate: 2022-10-10"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:7
+#: 259b38aa4a6447c4bd22d3d881ef6445
+msgid "Version: 1.4-rolling-202210090955"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:9
+#: a18b811d628d480a83d2d5a41fa905db
+msgid ""
+"I spun up a new lab in EVE-NG, which represents this as the \"Foo Bar - "
+"Service Provider Inc.\" that has 3 points of presence (PoP) in random "
+"datacenters/sites named PE1, PE2, and PE3. Each PoP aggregates at least two "
+"customers."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:14
+#: c847a6183ba6486095e722083c3f7a6d
+msgid ""
+"I named the customers blue, red and green which is common practice in VRF "
+"(Virtual Routing and Forwarding) documentation scenarios."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:17
+#: 59b7c95414774841abc20f1e2f4202d2
+msgid ""
+"PE1 is located in an industrial area that holds multiple office buildings. "
+"All customers have a site in this area."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:19
+#: 6fffa1cde14c4de0a3264303ddab2209
+msgid ""
+"PE2 is located in a smaller area where by coincidence two customers (blue "
+"and red) share an office building."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:21
+#: 84cea04906cc4f6cafbb0a5b05df5eb8
+msgid ""
+"PE3 is located in a smaller area where by coincidence two customers (blue "
+"and green) are located."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:26
+#: 2984bd561ad44a85b369de655fc4c04f
+msgid "Management VRF"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:28
+#: e0c8580baf144bec8f6652c6226fa5d5
+msgid ""
+"A brief excursion into VRFs: This has been one of the longest-standing "
+"feature requests of VyOS (dating back to 2016) which can be described as \"a"
+" VLAN for layer 2 is what a VRF is for layer 3\". With VRFs, a router/system"
+" can hold multiple, isolated routing tables on the same system. If you "
+"wonder what's the difference between multiple tables that people used for "
+"policy-based routing since forever, it's that a VRF also isolates connected "
+"routes rather than just static and dynamically learned routes, so it allows "
+"NICs in different VRFs to use conflicting network ranges without issues."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:38
+#: 1a678edb2c814554987d969567cb843d
+msgid ""
+"VyOS 1.3 added initial support for VRFs (including IPv4/IPv6 static routing)"
+" and VyOS 1.4 now enables full dynamic routing protocol support for OSPF, "
+"IS-IS, and BGP for individual VRFs."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:42
+#: 8308ef8d3eef4bf583ba6ae20941f9e5
+msgid ""
+"The lab I built is using a VRF (called **mgmt**) to provide out-of-band SSH "
+"access to the PE (Provider Edge) routers."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:52
+#: eba9ea05ad7841849983d2705c9410d6
+msgid "Topology"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:54
+#: e2986d31e7ee4bffa5b2e115a952b7ae
+msgid "We use the following network topology in this example:"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rstNone
+#: cec7142cd4c146bf944e487d1c071124
+msgid "L3VPN EVPN with VyOS topology image"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:62
+#: dc04d5ec28614dd58ed11e537c255941
+msgid "Core network"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:64
+#: 79db8a2ac0774a52805405daab666a6e
+msgid ""
+"I chose to run OSPF as the IGP (Interior Gateway Protocol). All required BGP"
+" sessions are established via a dummy interfaces (similar to the loopback, "
+"but in Linux you can have only one loopback, while there can be many dummy "
+"interfaces) on the PE routers. In case of a link failure, traffic is "
+"diverted in the other direction in this triangle setup and BGP sessions will"
+" not go down. One could even enable BFD (Bidirectional Forwarding Detection)"
+" on the links for a faster failover and resilience in the network."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:73
+#: c03653c3a768410a8ba4e3f35a9df6f8
+msgid ""
+"Regular VyOS users will notice that the BGP syntax has changed in VyOS 1.4 "
+"from even the prior post about this subject. This is due to T1711, where it "
+"was finally decided to get rid of the redundant BGP ASN (Autonomous System "
+"Number) specification on the CLI and move it to a single leaf node (set "
+"protocols bgp local-as)."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:79
+#: b54e76d59f2a4879ad57e4d751f44534
+msgid ""
+"It's important to note that all your existing configurations will be "
+"migrated automatically on image upgrade. Nothing to do on your side."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:82
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:123
+#: 778bcf8867dd4742b90af58c3c2974f9 03e0d184dd814620b0ebf2066fe5cd54
+msgid "PE1"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:88
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:129
+#: feca16238d384858bde862fcffc4f668 e764ab9f7c1c464fb6b8ad766e9a97da
+msgid "PE2"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:94
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:135
+#: 418db537cb7e4646b396025335c225fb 34e53a71b2a6421992ee83f3d458883a
+msgid "PE3"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:103
+#: 5a2fa388fab34210972487efc12cc05f
+msgid "Tenant networks (VRFs)"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:105
+#: 54d85baae8274726b442dabf00d643bc
+msgid ""
+"Once all routers can be safely remotely managed and the core network is "
+"operational, we can now setup the tenant networks."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:108
+#: d1d790f73bb545edbcb20f8ded69e5f7
+msgid ""
+"Every tenant is assigned an individual VRF that would support overlapping "
+"address ranges for customers blue, red and green. In our example, we do not "
+"use overlapping ranges to make it easier when showing debug commands."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:112
+#: 6e4c009e66714b06982495a718d7bed4
+msgid "Thus you can easily match it to one of the devices/networks below."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:114
+#: 8eda9841785d48eaa53e33b241c5dfb6
+msgid ""
+"Every router that provides access to a customer network needs to have the "
+"customer network (VRF + VNI) configured. To make our own lives easier, we "
+"utilize the same VRF table id (local routing table number) and VNI (Virtual "
+"Network Identifier) per tenant on all our routers."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:119
+#: 5acd5a7623b2476d9e2e2c66ccb740b4
+msgid "blue uses local routing table id and VNI 2000"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:120
+#: c79bdaa44fb94e9284a8043361262dde
+msgid "red uses local routing table id and VNI 3000"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:121
+#: 2afb2d9e933344099bf7b103aa2f4187
+msgid "green uses local routing table id and VNI 4000"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:143
+#: 6cefa7e52add4fe1a75562495292efe0
+msgid "Testing and debugging"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:145
+#: 4be9bdc170984b6ab7e3ee7e60617ff4
+msgid ""
+"You managed to come this far, now we want to see the network and routing "
+"tables in action."
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:148
+#: c5321083829e4286b93d550d75d5060f
+msgid "Show routes for all VRFs"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:189
+#: 4b9a7dc8ae3849178c5061f8c9e40b00
+msgid "Information about Ethernet Virtual Private Networks"
+msgstr ""
+
+#: ../../configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.rst:236
+#: 0464a050fc0e428bbf2d160f31fa2225
+msgid ""
+"If we need to retrieve information about a specific host/network inside the "
+"EVPN network we need to run"
+msgstr ""

@@ -1,0 +1,153 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/service/lldp.rst:5 6f7052bec41f4735894ab71472565992
+msgid "LLDP"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:7 ab82eb7134f84f359bfeb3d75d29547c
+msgid ""
+":abbr:`LLDP (Link Layer Discovery Protocol)` is a vendor-neutral link layer "
+"protocol in the Internet Protocol Suite used by network devices for "
+"advertising their identity, capabilities, and neighbors on an IEEE 802 local"
+" area network, principally wired Ethernet. The protocol is formally referred"
+" to by the IEEE as Station and Media Access Control Connectivity Discovery "
+"specified in IEEE 802.1AB and IEEE 802.3-2012 section 6 clause 79."
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:14 7b66e09f651e4ba09cd0d30b182d6cd8
+msgid ""
+"LLDP performs functions similar to several proprietary protocols, such as "
+":abbr:`CDP (Cisco Discovery Protocol)`, :abbr:`FDP (Foundry Discovery "
+"Protocol)`, :abbr:`NDP (Nortel Discovery Protocol)` and :abbr:`LLTD (Link "
+"Layer Topology Discovery)`."
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:20 5b85b0f7807041d8ad435b3fb0ee21ba
+msgid ""
+"Information gathered with LLDP is stored in the device as a :abbr:`MIB "
+"(Management Information Database)` and can be queried with :abbr:`SNMP "
+"(Simple Network Management Protocol)` as specified in :rfc:`2922`. The "
+"topology of an LLDP-enabled network can be discovered by crawling the hosts "
+"and querying this database. Information that may be retrieved include:"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:26 81b10f8d665d4665ba2147597b9755a1
+msgid "System Name and Description"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:27 f12327059af34dab97f315144c5597f5
+msgid "Port name and description"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:28 de721962e67b42fca18648b6afa28499
+msgid "VLAN name"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:29 3651d289a73c4f889eab514a076a891c
+msgid "IP management address"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:30 93b55fcddccd4e36881fc89e4e705fa8
+msgid "System capabilities (switching, routing, etc.)"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:31 ec2c5125c2eb4bfe9c8322afdf8b6028
+msgid "MAC/PHY information"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:32 56495c461df3456298f3a83d0a2d90ca
+msgid "MDI power"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:33 1032a065d6444d3caac841d2893c4e1e
+msgid "Link aggregation"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:36 5fe22852d4c849ae9ebd59bde7ba0dd5
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:40 e4765fd56b5544c2883f7783f6b32456
+msgid "Enable LLDP service"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:44 2043e229c59445fdb4ef9f2cbe8d0111
+msgid ""
+"Define IPv4/IPv6 management address transmitted via LLDP. Multiple addresses"
+" can be defined. Only addresses connected to the system will be transmitted."
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:49 35aa51dad35345d49ce9ceae391ab182
+msgid ""
+"Enable transmission of LLDP information on given `<interface>`. You can also"
+" say ``all`` here so LLDP is turned on on every interface."
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:54 72802aadfc444347b85e43bf68390488
+msgid ""
+"Disable transmit of LLDP frames on given `<interface>`. Useful to exclude "
+"certain interfaces from LLDP when ``all`` have been enabled."
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:59 4a7f7e1d26b743b0a4c7eab899884e84
+msgid "Enable SNMP queries of the LLDP database"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:63 eeb07d0a54ba462aadf47a5c315b4056
+msgid ""
+"Enable given legacy protocol on this LLDP instance. Legacy protocols "
+"include:"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:65 3e362554a74741d3b1e4cddaad2e737f
+msgid "``cdp`` - Listen for CDP for Cisco routers/switches"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:66 20fec6625c2c4e669d156a990845b652
+msgid "``edp`` - Listen for EDP for Extreme routers/switches"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:67 e5e5ab325e194cc3b7aaf905c78cda39
+msgid "``fdp`` - Listen for FDP for Foundry routers/switches"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:68 77b00bb648c14fc9b58cad7718d18554
+msgid "``sonmp`` - Listen for SONMP for Nortel routers/switches"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:71 d7ccb8993a1d43b3b80d0855b927a0b7
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:75 9c22ec2ef62f4ac3a201492073b7d2c5
+msgid "Displays information about all neighbors discovered via LLDP."
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:91 d4dc7e4ecb874635803dd84dff2bfcac
+msgid "Get detailed information about LLDP neighbors."
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:138 5de155e2ed5449ffa60185ed491c15b2
+msgid "Show LLDP neighbors connected via interface `<interface>`."
+msgstr ""
+
+#: ../../configuration/service/lldp.rst:142 d1857d308804459d8006d15245604980
+msgid "Used for troubleshooting."
+msgstr ""

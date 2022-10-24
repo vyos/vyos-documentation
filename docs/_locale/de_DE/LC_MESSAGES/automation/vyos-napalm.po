@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../automation/vyos-napalm.rst:6 a458dac8c8414b63b48d2d702f96b7d0
+msgid "Napalm"
+msgstr ""
+
+#: ../../automation/vyos-napalm.rst:8 e192c0db73584de984c9316e63ee6b5d
+msgid ""
+"VyOS supports some napalm_ functions for configuration and op-mode. It "
+"requires more tests."
+msgstr ""
+
+#: ../../automation/vyos-napalm.rst:11 380f8923978046bd999342f858bd3d73
+msgid "Install ``napalm-vyos`` module"
+msgstr ""
+
+#: ../../automation/vyos-napalm.rst:21 1188d17bc22a4b94b26a42f5000971c2
+msgid "Op-mode"
+msgstr ""
+
+#: ../../automation/vyos-napalm.rst:48 e46e17b55de8404198ffce64badd6d2e
+msgid "Output op-mode"
+msgstr ""
+
+#: ../../automation/vyos-napalm.rst:85 4b9386b23f6a4cb097a1a15d688d27b5
+msgid "Configuration"
+msgstr ""
+
+#: ../../automation/vyos-napalm.rst:87 b74837137fea4fce960c3eea4a2a5c73
+msgid "We need 2 files, commands.conf and script itself."
+msgstr ""
+
+#: ../../automation/vyos-napalm.rst:89 bf55d87890744b2996a8bc0f1b3757cc
+msgid "Content of commands.conf"
+msgstr ""
+
+#: ../../automation/vyos-napalm.rst:99 1f1b6521bb624b9393a916124d54d9e1
+msgid "Script vyos-napalm.py"
+msgstr ""
+
+#: ../../automation/vyos-napalm.rst:129 63b5c22d2a674e0cbd6211a2cf5ddce6
+msgid "Output"
+msgstr ""

@@ -1,0 +1,1281 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/interfaces/ethernet.rst:7
+#: 09058f27e87a4735b60ec19a5544dd7f
+msgid "Ethernet"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:9
+#: 7088575c59db45a48ddce28572a8956d
+msgid ""
+"This will be the most widely used interface on a router carrying traffic to "
+"the real world."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:14
+#: 265aeecb70c4482281dfd9a11cd7e002
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:17
+#: 9e969beca4d14d5fba24a8c555ccd22d
+msgid "Common interface configuration"
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:5
+#: ../../_include/interface-address-with-dhcp.txt:5
+#: ../../_include/interface-address-with-dhcp.txt:5
+#: 661365f07b1c4b3da8a2588a0ab6d438 ee0bfab5d99243fba38e02c9041d62ba
+#: cb46c82171d0411aa10bf1b8f140d8ec
+msgid ""
+"Configure interface `<interface>` with one or more interface addresses."
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:7
+#: ../../_include/interface-address-with-dhcp.txt:7
+#: ../../_include/interface-address-with-dhcp.txt:7
+#: 8eda8dd16d3046239aea806771d9ef6f 36bbe89603864bc98f34fa6e5b6e69c8
+#: f896a6e132984774aa169171417ccca9
+msgid ""
+"**address** can be specified multiple times as IPv4 and/or IPv6 address, "
+"e.g. 192.0.2.1/24 and/or 2001:db8::1/64"
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:9
+#: ../../_include/interface-address-with-dhcp.txt:9
+#: ../../_include/interface-address-with-dhcp.txt:9
+#: 6b0c439dd80d4f599e7dd4ae1ab20966 dc4702b7c84947569ae0aeec93a254e8
+#: 526234f21eb74b68a7308c7afbb077b8
+msgid ""
+"**dhcp** interface address is received by DHCP from a DHCP server on this "
+"segment."
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:11
+#: ../../_include/interface-address-with-dhcp.txt:11
+#: ../../_include/interface-address-with-dhcp.txt:11
+#: 9385c3eec6264af4ae53598b1464d3b0 e5eb96b123084237b0720b073646127f
+#: 52cbb89552a5464a96b6dbefb3bef3a9
+msgid ""
+"**dhcpv6** interface address is received by DHCPv6 from a DHCPv6 server on "
+"this segment."
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:14
+#: ../../_include/interface-description.txt:7
+#: ../../_include/interface-disable.txt:7
+#: ../../_include/interface-disable-flow-control.txt:19
+#: ../../_include/interface-disable-link-detect.txt:9
+#: ../../_include/interface-mac.txt:7 ../../_include/interface-mtu.txt:7
+#: ../../_include/interface-ip.txt:27 ../../_include/interface-ip.txt:50
+#: ../../_include/interface-ip.txt:144 ../../_include/interface-ipv6.txt:15
+#: ../../_include/interface-ipv6.txt:28 ../../_include/interface-ipv6.txt:39
+#: ../../_include/interface-ipv6.txt:51 ../../_include/interface-vrf.txt:9
+#: ../../_include/interface-dhcp-options.txt:10
+#: ../../_include/interface-dhcp-options.txt:22
+#: ../../_include/interface-dhcp-options.txt:34
+#: ../../_include/interface-dhcp-options.txt:46
+#: ../../_include/interface-dhcp-options.txt:57
+#: ../../_include/interface-dhcp-options.txt:72
+#: ../../configuration/interfaces/ethernet.rst:65
+#: ../../_include/interface-xdp.txt:28 ../../_include/interface-eapol.txt:18
+#: ../../_include/interface-eapol.txt:33
+#: ../../_include/interface-address-with-dhcp.txt:14
+#: ../../_include/interface-description.txt:7
+#: ../../_include/interface-disable.txt:7
+#: ../../_include/interface-disable-link-detect.txt:9
+#: ../../_include/interface-mac.txt:7 ../../_include/interface-mtu.txt:7
+#: ../../_include/interface-ip.txt:27 ../../_include/interface-ip.txt:50
+#: ../../_include/interface-ip.txt:144 ../../_include/interface-ipv6.txt:15
+#: ../../_include/interface-ipv6.txt:28 ../../_include/interface-ipv6.txt:39
+#: ../../_include/interface-ipv6.txt:51 ../../_include/interface-vrf.txt:9
+#: ../../_include/interface-dhcp-options.txt:10
+#: ../../_include/interface-dhcp-options.txt:22
+#: ../../_include/interface-dhcp-options.txt:34
+#: ../../_include/interface-dhcp-options.txt:46
+#: ../../_include/interface-dhcp-options.txt:57
+#: ../../_include/interface-dhcp-options.txt:72
+#: ../../_include/interface-address-with-dhcp.txt:14
+#: ../../_include/interface-description.txt:7
+#: ../../_include/interface-disable.txt:7
+#: ../../_include/interface-disable-link-detect.txt:9
+#: ../../_include/interface-mac.txt:7 ../../_include/interface-mtu.txt:7
+#: ../../_include/interface-ip.txt:27 ../../_include/interface-ip.txt:50
+#: ../../_include/interface-ip.txt:144 ../../_include/interface-ipv6.txt:15
+#: ../../_include/interface-ipv6.txt:28 ../../_include/interface-ipv6.txt:39
+#: ../../_include/interface-ipv6.txt:51 ../../_include/interface-vrf.txt:9
+#: ../../_include/interface-dhcp-options.txt:10
+#: ../../_include/interface-dhcp-options.txt:22
+#: ../../_include/interface-dhcp-options.txt:34
+#: ../../_include/interface-dhcp-options.txt:46
+#: ../../_include/interface-dhcp-options.txt:57
+#: ../../_include/interface-dhcp-options.txt:72
+#: 0ee9bc49a2a04b318eb0120f5a2019f7 3f2bd7cbc7c241f49892bdf6d38083a8
+#: abcc6421f19b428eb4ba4d42f78c73e1 3c0fc3aed22340748598ee597d428186
+#: 516f69c241424837a60a4caa41e08158 42337226d96e4f93934e7cf86653f243
+#: 13e993039b9e412094dc8687d11f1294 0ac230043d5a4fff931387c0c2811be8
+#: 3a3f12ae6021484bbe77ff9d73e8357b 616b5d2df9a041e389dbfd43701b6921
+#: be1c8d82aa72408f87a26e1c2c83a395 d5b468cc2b5a408c9ee658f5dadcbb10
+#: 0cfd83795a52482a94361d04ce29bba9 dcd8d402df9149d0a8f0d32333797bba
+#: 72a086529577470081dfc040911eb190 de6bc256a68b4ee98702b3d995b845b8
+#: 26396abe682e418f9356a332b069874d 1bdca9db0cc1434f8ff828d2632cdc07
+#: eed69f93008f41e591fc1bc8e93daee1 0254bcd1cd0d43b3b7a22d5836ca3d0c
+#: 4341fb23537a44399c391fa9f5eaeaa3 68031f5f931c4f61b654382d7b0ee907
+#: 80df6b9659794c9a8f1d986d6c4ebcec ccc5d8eeacd742e4883d7722e143027d
+#: eba13c57c03c413b9171995c87109710 5a6b876178d64a7796ac7c1d20c3e4f5
+#: 8f70e844450f4cec8ce9f3a61345f243 81ad121033f4428e8dbd78462bb6831b
+#: bc04113d55344610b3a5ffe7ea168312 ff98c39f5c804bf1a637ced01af8ae96
+#: 1cb0e5ed4f0e4c89a00a62150dcf54e2 17021300636b4f89b441fea58965e101
+#: 7e31837966774f759606e7e4d7cf0592 68429e2de6d34516a56f9a83b477f80c
+#: 2e4c904554cf444e83065a4186743406 cabfe75a8bf44c6bb8b8c84b1a2d079c
+#: 9189cdafabf2408caf1e2dd5de83d66a d0c2d148b6ad461b88b13914fe6f8c53
+#: ee5a4b67f7974091a1486930cb91a78b d2aeaa32f47546a0a22b7e2e3b5d7e1f
+#: 03d61cc322164b329315ed54c0e59200 d6ce6fd22f174fdf92ddf67cfe5f7642
+#: c409c552de41421fa196baaf7f4dd9e5 a8b5b9d2f54e4a6ca213b303bca40603
+#: 27585a25ce4c4900b146854a35b2044c c0fd3539a6324b62b7d42f02f2b869e0
+#: 83c53e7ba1184d2490a14720b4dbca35 3885ccbb840b4ade8a1059e78fb38810
+#: fbff9913f250497ca3f23e300bc08b9d d9d6832ca2264a5187300ec087265aa1
+#: 7b746cb25e0043148ad67b3c08fdb22c 8a8a3e31a6fd4089b64246d3251f77ca
+#: f9a2c02cf0954e19a231a6ffeb197495 e8c49b77144a4ab2827eeaa4309b6c4d
+#: 0daeb7e609d948e0a7be1fb6892f3bc6 24421163210d4eed8f109f5f575dc76b
+#: 25150fd68c374529a5c76db31af52c57 7383ac28a5b94bfcb8c155e1af8d6605
+#: 78442d648a2440a890b9d4946293834f d77c00be6e5e4b85bbdcd90e0b986b6c
+#: b1fbe4de75e745cd8ebf8c4ffd6ac181 808789f715f9448293717804b6b2b74f
+#: f201b61df6124d3aae7ecfc1da9906b2 5d93cd4727c44817b6e7a07553bf7bcb
+#: ab9e9ce88b054a3480b542571fd90aaf
+msgid "Example:"
+msgstr ""
+
+#: ../../_include/interface-description.txt:4
+#: ../../_include/interface-description.txt:4
+#: ../../_include/interface-description.txt:4 14128adb5cab4891bf9dd4fb72397793
+#: a3c20fe0e10b4e13861cec9b40af0276 55b45d7de6da48f8ac174f049ae5772e
+msgid ""
+"Set a human readable, descriptive alias for this connection. Alias is used "
+"by e.g. the :opcmd:`show interfaces` command or SNMP based monitoring tools."
+msgstr ""
+
+#: ../../_include/interface-disable.txt:4
+#: ../../_include/interface-disable.txt:4
+#: ../../_include/interface-disable.txt:4 7382837394fc4e9b97544d5d96c48e2a
+#: cbaaf8f2663b4bbbaaf8592f3ae43836 f3adf99f83e94b0f904c55ad2b5e074e
+msgid ""
+"Disable given `<interface>`. It will be placed in administratively down "
+"(``A/D``) state."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:4
+#: 6d0ccf7ef33140708b51d8729c712e6f
+msgid ""
+"Ethernet flow control is a mechanism for temporarily stopping the "
+"transmission of data on Ethernet family computer networks. The goal of this "
+"mechanism is to ensure zero packet loss in the presence of network "
+"congestion."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:8
+#: 6002aedc2b884dc1963c3da978e0f683
+msgid ""
+"The first flow control mechanism, the pause frame, was defined by the IEEE "
+"802.3x standard."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:11
+#: 9e27d83442624e65913c0f368bc591f4
+msgid ""
+"A sending station (computer or network switch) may be transmitting data "
+"faster than the other end of the link can accept it. Using flow control, the"
+" receiving station can signal the sender requesting suspension of "
+"transmissions until the receiver catches up."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:16
+#: 155fe49b5de6409ba2e72667bb58f5d1
+msgid ""
+"Use this command to disable the generation of Ethernet flow control (pause "
+"frames)."
+msgstr ""
+
+#: ../../_include/interface-disable-link-detect.txt:4
+#: ../../_include/interface-disable-link-detect.txt:4
+#: ../../_include/interface-disable-link-detect.txt:4
+#: 9fff277d5c704b2895bfd26a8f18c638 054cc7368a1c4b75b05e0880f4fbd595
+#: cb86d47970dd4531b847f225f5735cad
+msgid ""
+"Use this command to direct an interface to not detect any physical state "
+"changes on a link, for example, when the cable is unplugged."
+msgstr ""
+
+#: ../../_include/interface-disable-link-detect.txt:7
+#: ../../_include/interface-disable-link-detect.txt:7
+#: ../../_include/interface-disable-link-detect.txt:7
+#: eb96c73290254572adbc02dc2054f265 4435a097e3b14573b2751b19a59df10f
+#: d5c0fbbfc9084af28532ecd2c79d7518
+msgid "Default is to detects physical link state changes."
+msgstr ""
+
+#: ../../_include/interface-mac.txt:4 ../../_include/interface-mac.txt:4
+#: ../../_include/interface-mac.txt:4 312a286d11a44d57853b0e268f294c6e
+#: de9532735c804e69ab179ca98533e945 1e89dbeffcf84317848faed31a237b36
+msgid ""
+"Configure user defined :abbr:`MAC (Media Access Control)` address on given "
+"`<interface>`."
+msgstr ""
+
+#: ../../_include/interface-mtu.txt:4 ../../_include/interface-mtu.txt:4
+#: ../../_include/interface-mtu.txt:4 172868eca6c04952a606651dd9b47148
+#: b2a6e77c4f344333bd4d6554873c03cd 6beac53ee9c94f8790c2c97e22d1ca34
+msgid ""
+"Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It"
+" is the size (in bytes) of the largest ethernet frame sent on this link."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:4 ../../_include/interface-ipv6.txt:60
+#: ../../_include/interface-ip.txt:4 ../../_include/interface-ipv6.txt:60
+#: ../../_include/interface-ip.txt:4 ../../_include/interface-ipv6.txt:60
+#: 72bc496e2ef9432ca91f0cfb35ab1511 c0db694d396a4769b320bd0d9da42d1b
+#: a232239bba8a4e9e9c96d65c22019760 972cdb8293fb418ba5770245fe416cc1
+#: 0e338bf5aecc45698da92a4d9d57bf72 7f13bb5cd6b244efb46e8d858bcce263
+msgid ""
+"As Internet wide PMTU discovery rarely works, we sometimes need to clamp our"
+" TCP MSS value to a specific value. This is a field in the TCP options part "
+"of a SYN packet. By setting the MSS value, you are telling the remote side "
+"unequivocally 'do not try to send me packets bigger than this value'."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:9 ../../_include/interface-ip.txt:9
+#: ../../_include/interface-ip.txt:9 44aedc55cd9448a4b4e5bcc1724e68c4
+#: c3e2026cc59c4e6aabe64db1f2599679 e63ca5ae7fd24da4b9c73cda8e8263e2
+msgid ""
+"This command was introduced in VyOS 1.4 - it was previously called: ``set "
+"firewall options interface <name> adjust-mss <value>``"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:12 ../../_include/interface-ip.txt:12
+#: ../../_include/interface-ip.txt:12 a9fdfbba3a184978972153a397dba4a4
+#: 4e6bf0a9a4d14655bae72d51f4f3655b 82108355302e4086ae5d4f22153aca1a
+msgid ""
+"MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in 1452 bytes "
+"on a 1492 byte MTU."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:15 ../../_include/interface-ipv6.txt:71
+#: ../../_include/interface-ip.txt:15 ../../_include/interface-ipv6.txt:71
+#: ../../_include/interface-ip.txt:15 ../../_include/interface-ipv6.txt:71
+#: 9f60f9caf2e848fd95eeae178ff06e0f 87b3482d743b484f980e45f3c5814a99
+#: 40887b2b494e4c1e93768bb6604dfaa3 398d8ccabea64767bb9cd3e50d7613e2
+#: 23c5b67e99354ff9b826de5c0b35debb 03ac7b1c78444f17aa82e488349afdf4
+msgid ""
+"Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to "
+"automatically set the proper value."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:21 ../../_include/interface-ip.txt:21
+#: ../../_include/interface-ip.txt:21 f308a8e0a95047d6ab9e0e78846f5358
+#: 89f1c9f0d7884421a025ed2194c14a38 57162637f5a94101bf7c1d3ef8394c0b
+msgid ""
+"Once a neighbor has been found, the entry is considered to be valid for at "
+"least for this specific time. An entry's validity will be extended if it "
+"receives positive feedback from higher level protocols."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:25 ../../_include/interface-ip.txt:25
+#: ../../_include/interface-ip.txt:25 67aab97dee9043afa28987dde0945db4
+#: 0949bd0960474dfca922ad669739f100 20763cfcd73e480bbc61acefccadecd2
+msgid "This defaults to 30 seconds."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:36 ../../_include/interface-ip.txt:36
+#: ../../_include/interface-ip.txt:36 1fa53ded48a143c6adfa743b9d0a4f64
+#: bdc049166179490caabc81ba55028614 44846d410cf44487aaf06fea583cca9a
+msgid ""
+"If set the kernel can respond to arp requests with addresses from other "
+"interfaces. This may seem wrong but it usually makes sense, because it "
+"increases the chance of successful communication. IP addresses are owned by "
+"the complete host on Linux, not by particular interfaces. Only for more "
+"complex setups like load-balancing, does this behaviour cause problems."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:42 ../../_include/interface-ip.txt:42
+#: ../../_include/interface-ip.txt:42 cf2fc43e73aa4209a3a40a483a9025be
+#: 6f171ca798ae4d6db5f7d8d14ce7ca86 6dd2351a8f914428981bb6a70bc107f2
+msgid ""
+"If not set (default) allows you to have multiple network interfaces on the "
+"same subnet, and have the ARPs for each interface be answered based on "
+"whether or not the kernel would route a packet from the ARP'd IP out that "
+"interface (therefore you must use source based routing for this to work)."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:47 ../../_include/interface-ip.txt:47
+#: ../../_include/interface-ip.txt:47 79ecc2c4a49e4db89051624b678de40b
+#: e0cb06a77aaa4b6fb085efddf7c6f8d0 26a7e34e859445e18d27fd47db6e1a3b
+msgid ""
+"In other words it allows control of which cards (usually 1) will respond to "
+"an arp request."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:59 ../../_include/interface-ipv6.txt:48
+#: ../../_include/interface-ip.txt:59 ../../_include/interface-ipv6.txt:48
+#: ../../_include/interface-ip.txt:59 ../../_include/interface-ipv6.txt:48
+#: c056634b087c407f80f058a38fdbcd6c b12fc9bf6f6e432ca01edd2f895d509d
+#: 1e9deb5bb47c4b33be37366f5c696773 538e65b9666947619d2361de2ce70691
+#: cb06916ca8124ea1a0eacfe250cb6c52 ad3924218c804824a66c91d3a0a4f29e
+msgid ""
+"Configure interface-specific Host/Router behaviour. If set, the interface "
+"will switch to host mode and IPv6 forwarding will be disabled on this "
+"interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:69 ../../_include/interface-ip.txt:69
+#: ../../_include/interface-ip.txt:69 37dfd493f4524835a3fe84734fd82683
+#: ae7e15e524fc48d3bff56901d8a6ac7d 5f4fba92b0d5463ba00c424f8e3778d7
+msgid ""
+"Define different modes for IP directed broadcast forwarding as described in "
+":rfc:`1812` and :rfc:`2644`."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:72 ../../_include/interface-ip.txt:72
+#: ../../_include/interface-ip.txt:72 cca035d64d2a4560a1046231d318234d
+#: 07ce1fa76aa84a63ae0f23f49d63104a b2966c5b6ecf4008beefcaacba2e59b2
+msgid ""
+"If configured, incoming IP directed broadcast packets on this interface will"
+" be forwarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:75 ../../_include/interface-ip.txt:75
+#: ../../_include/interface-ip.txt:75 d7dbbadc7f1340d3891c736fca1cf610
+#: c176885ed6fe497e95547acce6d61c53 21eb22764c12485eb854d6dd0b24d5db
+msgid ""
+"If this option is unset (default), incoming IP directed broadcast packets "
+"will not be forwarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:85 ../../_include/interface-ip.txt:85
+#: ../../_include/interface-ip.txt:85 9be03ededc784d52a6453d76effb7fb5
+#: 54779bbe19954b1b9a05f0f5743b4f44 cba0e7f0af644a05b55b601dd6e22dae
+msgid ""
+"Define behavior for gratuitous ARP frames who's IP is not already present in"
+" the ARP table. If configured create new entries in the ARP table."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:88 ../../_include/interface-ip.txt:88
+#: ../../_include/interface-ip.txt:88 394ce6b4fce1449188b1996cf3a076c0
+#: 1ec617faa2164728a4f0965bcf789120 178ec702cb9c406bb7c3b668428c715b
+msgid ""
+"Both replies and requests type gratuitous arp will trigger the ARP table to "
+"be updated, if this setting is on."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:91 ../../_include/interface-ip.txt:91
+#: ../../_include/interface-ip.txt:91 6b2ef01fb36c46ee9871cae1d42f677e
+#: 83326ef4d3b34fc99b5300c7e5c16a4b 019141e4865f4ff3a7508731330c72de
+msgid ""
+"If the ARP table already contains the IP address of the gratuitous arp "
+"frame, the arp table will be updated regardless if this setting is on or "
+"off."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:101 ../../_include/interface-ip.txt:101
+#: ../../_include/interface-ip.txt:101 6eedebffcea642af99787a5dd421331e
+#: 596f8e12689e47a88b90a6b5da071f85 54945adf7b014d36a69777120b8d82da
+msgid ""
+"Define different restriction levels for announcing the local source IP "
+"address from IP packets in ARP requests sent on interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:104 ../../_include/interface-ip.txt:104
+#: ../../_include/interface-ip.txt:104 9c99e43fda3440119462ecaa031a6613
+#: 3bee220789d9494790a617695c3610a5 ba7f9e58a214417e98e3fc59bb6ef47a
+msgid "Use any local address, configured on any interface if this is not set."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:106 ../../_include/interface-ip.txt:106
+#: ../../_include/interface-ip.txt:106 bd9bb66d1ca841c6be7478785d40f1eb
+#: 1cc82a6c45e142e0ab03b7f0c771bfa4 a12f76ae29b940b2922352c8370c6656
+msgid ""
+"If configured, try to avoid local addresses that are not in the target's "
+"subnet for this interface. This mode is useful when target hosts reachable "
+"via this interface require the source IP address in ARP requests to be part "
+"of their logical network configured on the receiving interface. When we "
+"generate the request we will check all our subnets that include the target "
+"IP and will preserve the source address if it is from such subnet. If there "
+"is no such subnet we select source address according to the rules for level "
+"2."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:121 ../../_include/interface-ip.txt:121
+#: ../../_include/interface-ip.txt:121 643cfa95293744b3825d75b83a5b9a42
+#: c0bbf8635b63427bae4693c074b0362a ece8136189df44a08209adc12b94852d
+msgid ""
+"Define different modes for sending replies in response to received ARP "
+"requests that resolve local target IP addresses:"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:124 ../../_include/interface-ip.txt:124
+#: ../../_include/interface-ip.txt:124 2c8890fc9bb5410cb03a7527641c22fe
+#: 92f19a28b81e4b7caa000a958e2083bd 75c62aa22cbb4936b868ced0fdbb0fdb
+msgid ""
+"If configured, reply only if the target IP address is local address "
+"configured on the incoming interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:127 ../../_include/interface-ip.txt:127
+#: ../../_include/interface-ip.txt:127 fc7050e1a53f4b4d9a65c55c63fae330
+#: a51158921efa48e3b5791a545d31085d 1153a90d5ff447f08e6c192d38922eb4
+msgid ""
+"If this option is unset (default), reply for any local target IP address, "
+"configured on any interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:137 ../../_include/interface-ip.txt:137
+#: ../../_include/interface-ip.txt:137 c089d376ab59406d8fb57ddf79e794fd
+#: e3d88034f6d1430eab265cff3e0bc7c2 0030b1a847724832bc95bc4d2d97d539
+msgid ""
+"Use this command to enable proxy Address Resolution Protocol (ARP) on this "
+"interface. Proxy ARP allows an Ethernet interface to respond with its own "
+":abbr:`MAC (Media Access Control)` address to ARP requests for destination "
+"IP addresses on subnets attached to other interfaces on the system. "
+"Subsequent packets sent to those destination IP addresses are forwarded "
+"appropriately by the system."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:153 ../../_include/interface-ip.txt:153
+#: ../../_include/interface-ip.txt:153 2beac4ae43c14bcc92f832001ce073fd
+#: f887e0d591994a648379f7bec128987d 4c42e1da216e4a71a9a19bdeb7a6e5cd
+msgid ""
+"Private VLAN proxy arp. Basically allow proxy arp replies back to the same "
+"interface (from which the ARP request/solicitation was received)."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:156 ../../_include/interface-ip.txt:156
+#: ../../_include/interface-ip.txt:156 a798e18f7d0b45be873b494a1119a81a
+#: 9606c60661d344c48b390d87afd800ea 57786847354a43f999e9b9706e22484f
+msgid ""
+"This is done to support (ethernet) switch features, like :rfc:`3069`, where "
+"the individual ports are NOT allowed to communicate with each other, but "
+"they are allowed to talk to the upstream router. As described in "
+":rfc:`3069`, it is possible to allow these hosts to communicate through the "
+"upstream router by proxy_arp'ing."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:162 ../../_include/interface-ip.txt:162
+#: ../../_include/interface-ip.txt:162 bab3a18b6b0147048eb7c215fa51b89b
+#: 5c64a6eb313b4965aa411286c97d21c8 290905b03c8b4ac994315f4241f7cdb1
+msgid "Does not need to be used together with proxy_arp."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:164 ../../_include/interface-ip.txt:164
+#: ../../_include/interface-ip.txt:164 a74451ff11694c82ab315238997c4e74
+#: 5e113fb6e2754154b09d35da61d11727 32c1ccb37bb148028a36b2a77f41cb6f
+msgid "This technology is known by different names:"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:166 ../../_include/interface-ip.txt:166
+#: ../../_include/interface-ip.txt:166 5dab8d5bb6cc4e12a1e42ced9c5ea378
+#: cfa9c50b984c4be2a4fbb420395cdb6b a80a43c4003146b7933fa7aee1aa37d1
+msgid "In :rfc:`3069` it is called VLAN Aggregation"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:168 ../../_include/interface-ip.txt:168
+#: ../../_include/interface-ip.txt:168 7f6a2819687640c6b3029c011af9e2b9
+#: 688521c6ed864f8b8788f6ce9968779b a494f5df4ff944b09d5add5e72ae3f96
+msgid "Cisco and Allied Telesyn call it Private VLAN"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:170 ../../_include/interface-ip.txt:170
+#: ../../_include/interface-ip.txt:170 838eed1d9a274302afe7383c1422f0cc
+#: ee555bd63ef949f7bfba8f779dccac2d 06600fb26348418e90590547a32b8e8d
+msgid "Hewlett-Packard call it Source-Port filtering or port-isolation"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:172 ../../_include/interface-ip.txt:172
+#: ../../_include/interface-ip.txt:172 ebf31bafb44048d0851dfbe640dfe738
+#: a907c6ce3c7b461698f18632d840ae7f f1c47dfc1f2d4f82a04fe21b6806f4b1
+msgid "Ericsson call it MAC-Forced Forwarding (RFC Draft)"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:177 ../../_include/interface-ip.txt:177
+#: ../../_include/interface-ip.txt:177 9b3bee051014452dbe16d58e87b75371
+#: 21e20a80e585462caf2f5a862cc549a1 1b99da5892f94e2b9e9b63e1a4486a49
+msgid ""
+"Enable policy for source validation by reversed path, as specified in "
+":rfc:`3704`. Current recommended practice in :rfc:`3704` is to enable strict"
+" mode to prevent IP spoofing from DDos attacks. If using asymmetric routing "
+"or other complicated routing, then loose mode is recommended."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:182 ../../_include/interface-ip.txt:182
+#: ../../_include/interface-ip.txt:182 5d27ea12840a4fcf8d08f5baaccae5d6
+#: 0f4234a9759b41e3b09bf57300930206 51749f80a1f843e1a88bb4d7a96e060a
+msgid ""
+"strict: Each incoming packet is tested against the FIB and if the interface "
+"is not the best reverse path the packet check will fail. By default failed "
+"packets are discarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:186 ../../_include/interface-ip.txt:186
+#: ../../_include/interface-ip.txt:186 5b5758bf9a02499d9363f79038377076
+#: 7a88c962a23e44bfbc30de94fa30488a fb6010e98a644c30b443d3838adc6b2e
+msgid ""
+"loose: Each incoming packet's source address is also tested against the FIB "
+"and if the source address is not reachable via any interface the packet "
+"check will fail."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:190 ../../_include/interface-ip.txt:190
+#: ../../_include/interface-ip.txt:190 6250e8c4fb1d4437aebff950b9cf949f
+#: 9a3baace32384791a2f2b6b09a8e2291 8d2fd6072af848f08cbd98972e366e76
+msgid "disable: No source validation"
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:4 ../../_include/interface-ipv6.txt:4
+#: ../../_include/interface-ipv6.txt:4 87d1de32b1ae4427afd7a4d64ae813a8
+#: d2bfe576ebe14c6081a64d43243cc1cd abdf8aa1b82041b0876a4f36a35615cc
+msgid ""
+":abbr:`SLAAC (Stateless Address Autoconfiguration)` :rfc:`4862`. IPv6 hosts "
+"can configure themselves automatically when connected to an IPv6 network "
+"using the Neighbor Discovery Protocol via :abbr:`ICMPv6 (Internet Control "
+"Message Protocol version 6)` router discovery messages. When first connected"
+" to a network, a host sends a link-local router solicitation multicast "
+"request for its configuration parameters; routers respond to such a request "
+"with a router advertisement packet that contains Internet Layer "
+"configuration parameters."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:12 ../../_include/interface-ipv6.txt:12
+#: ../../_include/interface-ipv6.txt:12 0aebe44661874547bd729ebe0a563c04
+#: 96f805eae10c4fef85e7a2efa2e9846c 4244513de78f4f68b8bf9003c9671372
+msgid ""
+"This method automatically disables IPv6 traffic forwarding on the interface "
+"in question."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:25 ../../_include/interface-ipv6.txt:25
+#: ../../_include/interface-ipv6.txt:25 8555056d226d45d69d2eadbd03e95a61
+#: e95415b53eda4d16b968c98ed3f88fc0 9f3afd18911549bdade3d707dff88604
+msgid ""
+":abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in "
+":rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:37 ../../_include/interface-ipv6.txt:37
+#: ../../_include/interface-ipv6.txt:37 5d4b8475bed345b582460dbff38f9af2
+#: 9d890adfb1474b4a87ab56925e3bd29d 22b51adc8501402aba48e33e33cab817
+msgid "Do not assign a link-local IPv6 address to this interface."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:65 ../../_include/interface-ipv6.txt:65
+#: ../../_include/interface-ipv6.txt:65 5b6a74eb6e7245c491d6d4079a19bff9
+#: 192a703a4cc44f7daaed7b14855bd92b 5a8c381c6a374523bdfef39722383fc7
+msgid ""
+"This command was introduced in VyOS 1.4 - it was previously called: ``set "
+"firewall options interface <name> adjust-mss6 <value>``"
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:68 ../../_include/interface-ipv6.txt:68
+#: ../../_include/interface-ipv6.txt:68 3fd34f571b054f24a14b87ffd86cebf2
+#: fb947f6bf2f641aa931c41c0a7a68f1e a1f49668d8bf4654a761c893f8b8f6a1
+msgid ""
+"MSS value = MTU - 40 (IPv6 header) - 20 (TCP header), resulting in 1432 "
+"bytes on a 1492 byte MTU."
+msgstr ""
+
+#: ../../_include/interface-vrf.txt:4 ../../_include/interface-vrf.txt:4
+#: ../../_include/interface-vrf.txt:4 ad99f4bc95f64c0990f0e157afd9b924
+#: 59a2880ffece4c87bd19e8e05b67e373 19ff2275ca5f48f797a2151c00c381ca
+msgid "Place interface in given VRF instance."
+msgstr ""
+
+#: ../../_include/interface-vrf.txt:6 ../../_include/interface-vrf.txt:6
+#: ../../_include/interface-vrf.txt:6 e07ef745829b4cbc91cc04d2eeabe1d9
+#: 87a444dc404b4d19ad334429794459db c8b719b89148467a917ec8040b8a91d6
+msgid ""
+"There is an entire chapter about how to configure a :ref:`vrf`, please check"
+" this for additional information."
+msgstr ""
+
+#: ../../_include/interface-common-with-dhcp.txt:9
+#: ../../_include/interface-vlan-8021q.txt:97
+#: ../../_include/interface-vlan-8021ad.txt:121
+#: 07bcd06c9c4b452fadae92d031d0bbe9 67e9521362ee416994d353730d4ef715
+#: be553b4f54914345ac1fa09c15353974
+msgid "**DHCP(v6)**"
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:4
+#: ../../_include/interface-dhcp-options.txt:4
+#: ../../_include/interface-dhcp-options.txt:4
+#: 3e4547b1de824b0f903ef9eeebe4dfcf e516bd5bebcb43cbadf72762134214e2
+#: ec5b420e7da546b08d8114bf0254d69d
+msgid ""
+":rfc:`2131` states: The client MAY choose to explicitly provide the "
+"identifier through the 'client identifier' option. If the client supplies a "
+"'client identifier', the client MUST use the same 'client identifier' in all"
+" subsequent messages, and the server MUST use that identifier to identify "
+"the client."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:19
+#: ../../_include/interface-dhcp-options.txt:19
+#: ../../_include/interface-dhcp-options.txt:19
+#: 14725c12a6ec4a5f8c7afe1156f9c691 dc9e95d62f8b483badb5662db1875011
+#: 7b2b096d395049b3880c4b87ef3e68aa
+msgid ""
+"Instead of sending the real system hostname to the DHCP server, overwrite "
+"the host-name with this given-value."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:31
+#: ../../_include/interface-dhcp-options.txt:31
+#: ../../_include/interface-dhcp-options.txt:31
+#: eb8f4256291b48bc949e3bbd8a27f0de ad94dae15d0240d28a8550faea333cec
+#: f9f16f032adc474dbd182f929aaa3129
+msgid ""
+"The vendor-class-id option can be used to request a specific class of vendor"
+" options from the server."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:43
+#: ../../_include/interface-dhcp-options.txt:43
+#: ../../_include/interface-dhcp-options.txt:43
+#: 9f881ac8e56e4569b7d5ea5666fbec41 18374c082d4f43d4b364a90172f443e5
+#: 7bdc3d4da9844cba862857c72b2f3f6c
+msgid ""
+"Only request an address from the DHCP server but do not request a default "
+"gateway."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:55
+#: ../../_include/interface-dhcp-options.txt:55
+#: ../../_include/interface-dhcp-options.txt:55
+#: ab5c8236a9c5489c96bb11bbf4a6a3a4 2a69df8c3aad4a8a9cb0fa34f21e2f8c
+#: 68e3dff44d0f41e898040209f31eb2d5
+msgid "Set the distance for the default gateway sent by the DHCP server."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:66
+#: ../../_include/interface-dhcp-options.txt:66
+#: ../../_include/interface-dhcp-options.txt:66
+#: 498c40590419428b9b17336925c272f5 1ff76ca1fc8f4569bb47d851109e7a28
+#: e203a26f382041d0885544524830bf24
+msgid ""
+"Reject DHCP leases from a given address or range. This is useful when a "
+"modem gives a local IP when first starting."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:69
+#: ../../_include/interface-dhcp-options.txt:69
+#: ../../_include/interface-dhcp-options.txt:69
+#: 031119c55aad457199be6cc84ee1aaba 7ea67a378deb457ebb554c46cdf548dc
+#: 5dc5dcf283404f6c9543658368b3f4c6
+msgid ""
+"**address** can be specified multiple times, e.g. 192.168.100.1 and/or "
+"192.168.100.0/24"
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:4
+#: ../../_include/interface-dhcpv6-options.txt:4
+#: ../../_include/interface-dhcpv6-options.txt:4
+#: e1cb0e3267d5433f82c91253d1e33c6e 9ff28faeba204659a333352ea8e9a238
+#: 91cf7d77cbef4c0b8eed41d7dd9728bd
+msgid ""
+"The DHCP unique identifier (DUID) is used by a client to get an IP address "
+"from a DHCPv6 server. It has a 2-byte DUID type field, and a variable-length"
+" identifier field up to 128 bytes. Its actual length depends on its type. "
+"The server compares the DUID with its database and delivers configuration "
+"data (address, lease times, DNS servers, etc.) to the client."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:17
+#: ../../_include/interface-dhcpv6-options.txt:17
+#: ../../_include/interface-dhcpv6-options.txt:17
+#: 0aa3e5ea8ee44608bfba74aca406d450 5e2afb5103114e1d8e2f286ae43b270b
+#: 78ba12b7e9604aa29f2f6054238d63bd
+msgid ""
+"This statement specifies dhcp6c to only exchange informational configuration"
+" parameters with servers. A list of DNS server addresses is an example of "
+"such parameters. This statement is useful when the client does not need "
+"stateful configuration parameters such as IPv6 addresses or prefixes."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:29
+#: ../../_include/interface-dhcpv6-options.txt:29
+#: ../../_include/interface-dhcpv6-options.txt:29
+#: a0f70c7740e04bc9bb97e4cc3ec69258 b077fcdc9cc54f81835a47387910d04b
+#: 95f920c709204459adbcace0e2c5c3b6
+msgid ""
+"When rapid-commit is specified, dhcp6c will include a rapid-commit option in"
+" solicit messages and wait for an immediate reply instead of advertisements."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:39
+#: ../../_include/interface-dhcpv6-options.txt:39
+#: ../../_include/interface-dhcpv6-options.txt:39
+#: ca23cbbfe65e4aa88732fdfe7462da38 45b17eddff814e8db81b30a742008064
+#: a5a4717044244f09be6c057804fe92da
+msgid ""
+"Request only a temporary address and not form an IA_NA (Identity Association"
+" for Non-temporary Addresses) partnership."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:1
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:1
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:1
+#: ef1f1476dcf54d46866fc6f9234e866e bb7c4875e4ec482fbec099197d3d49ac
+#: 2d29f6510fde4462871397cdd5f6826e
+msgid "**DHCPv6 Prefix Delegation (PD)**"
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:3
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:3
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:3
+#: 5bed90102b4147be987c934c79860c2a 27a90f05959e465eaa6d5d082516001a
+#: 937fdd0df3724f909177ae1aa0b28429
+msgid ""
+"VyOS 1.3 (equuleus) supports DHCPv6-PD (:rfc:`3633`). DHCPv6 Prefix "
+"Delegation is supported by most ISPs who provide native IPv6 for consumers "
+"on fixed networks."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:10
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:10
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:10
+#: de1b158ca93a41d3811c0a30161b3d90 fb811164682247508ad049e706be3c07
+#: 32bdf48630364598a14d47e8b1a7dfb1
+msgid ""
+"Some ISPs by default only delegate a /64 prefix. To request for a specific "
+"prefix size use this option to request for a bigger delegation for this pd "
+"`<id>`. This value is in the range from 32 - 64 so you could request up to a"
+" /32 prefix (if your ISP allows this) down to a /64 delegation."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:15
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:15
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:15
+#: 21d684c5da60470296a01b2a0e9f8413 141cabb6291a4117bae7d8d4af37a7ef
+#: 9ad1ee3695d441d5bdfdd9f90633241c
+msgid "The default value corresponds to 64."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:17
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:17
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:17
+#: d779f313d027468d8a00b676d38532ad f7a3280f0dcb464ea5ca9c7eb2a0d354
+#: cf322f47036641deb2d100824d46b399
+msgid "To request a /56 prefix from your ISP use:"
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:27
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:27
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:27
+#: 09c9185b4f194154a3d775e2d5a56a5d afea00ada8d948208c865ca4f9aa8def
+#: f28830fa4f1c4f5b99ff13038e52485a
+msgid ""
+"Specify the interface address used locally on the interface where the prefix"
+" has been delegated to. ID must be a decimal integer."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:30
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:30
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:30
+#: 7e39ef3db5834eb1a0a46026b66ce275 f38d1f09f5704e8ba67d5f28d35f8af6
+#: 83a584f270414f549b0649ae658bae4d
+msgid ""
+"It will be combined with the delegated prefix and the sla-id to form a "
+"complete interface address. The default is to use the EUI-64 address of the "
+"interface."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:36
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:36
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:36
+#: f5caa7b0b0f14c808d8133720ee4e09b 9b067d1771984d20afdb8973fa623d08
+#: e1505a5b411c4e2aa42dabd06c9994ad
+msgid ""
+"Example: Delegate a /64 prefix to interface eth8 which will use a local "
+"address on this router of ``<prefix>::ffff``, as the address 65534 will "
+"correspond to ``ffff`` in hexadecimal notation."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:50
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:50
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:50
+#: 8fcb650c15194e13a7640c2cb1290c3a 1694409e9ae64098aa805cdea538fa5c
+#: c8e5bff456e747cdb106c2ab81b61d4a
+msgid ""
+"Specify the identifier value of the site-level aggregator (SLA) on the "
+"interface. ID must be a decimal number greater then 0 which fits in the "
+"length of SLA IDs (see below)."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:54
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:54
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:54
+#: 583d5dc3f92e4e2b840494ede0b2ef89 85e13877aa374db2bd45bb38c41c4987
+#: c6905c0c519241b994ce8decb5797ba8
+msgid ""
+"Example: If ID is 1 and the client is delegated an IPv6 prefix "
+"2001:db8:ffff::/48, dhcp6c will combine the two values into a single IPv6 "
+"prefix, 2001:db8:ffff:1::/64, and will configure the prefix on the specified"
+" interface."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:24
+#: 2d758cdadf0a4e629d689efabb05d7a0
+msgid "Ethernet options"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:28
+#: f373d9fab46d4c77b56ce4b07825cb78
+msgid "Configure physical interface duplex setting."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:30
+#: cc9177a73aaa476d896f4ce254dc1a08
+msgid "auto - interface duplex setting is auto-negotiated"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:31
+#: f3af44ab0644407ebb5003aa3269ee39
+msgid "full - always use full-duplex"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:32
+#: d063ba2f8eca4621b46434d3d0f425ba
+msgid "half - always use half-duplex"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:34
+#: ../../configuration/interfaces/ethernet.rst:53
+#: dbece41b4ca645cf96f8f12e090ccac5 1f98c26ad802483c89d3a7830a75f158
+msgid "VyOS default will be `auto`."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:39
+#: b7a9a08879a74d20adc4be641d3bab5f
+msgid "Configure physical interface speed setting."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:41
+#: 1b445199459346d094792d0cd2d0dedc
+msgid "auto - interface speed is auto-negotiated"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:42
+#: 783123d0d9ad4695b037b78e65345052
+msgid "10 - 10 MBit/s"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:43
+#: a504936515ef4a4c88f76be049de39a5
+msgid "100 - 100 MBit/s"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:44
+#: 5da71e16f5e54e0d8df094dc09114cc8
+msgid "1000 - 1 GBit/s"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:45
+#: b28a18b89ca5461ba0e5ea9911a838b8
+msgid "2500 - 2.5 GBit/s"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:46
+#: 9823cbeda72d47f0b345c96aad385082
+msgid "5000 - 5 GBit/s"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:47
+#: bdd707c6284b49d6958358b79966415e
+msgid "10000 - 10 GBit/s"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:48
+#: f4fa422f2ae3437b8b5fbfadeb4ad9d1
+msgid "25000 - 25 GBit/s"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:49
+#: 28737074bf384a6ea9050297f48c148a
+msgid "40000 - 40 GBit/s"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:50
+#: 5af6cc0ec4954dcda84ff4402185584a
+msgid "50000 - 50 GBit/s"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:51
+#: 40b9eca23846431c85d962765d551db0
+msgid "100000 - 100 GBit/s"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:58
+#: 1a627f2289494457b840175181879b1a
+msgid ""
+"Use this command to mirror the inbound traffic from one Ethernet interface "
+"to another interface. This feature is typically used to provide a copy of "
+"traffic inbound on one interface to a system running a monitoring or IPS "
+"application on another interface. The benefit of mirroring the traffic is "
+"that the application is isolated from the source traffic and so application "
+"processing does not affect the traffic or the system performance."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:72
+#: 7736a035cf55403ab8a4d5d21213373c
+msgid "Offloading"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:77
+#: 82f2342c6f6c4d57a25b2401a404710e
+msgid "Enable different types of hardware offloading on the given NIC."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:79
+#: cccb4aabc45b47aeb02e91af4a4e8117
+msgid ""
+":abbr:`GSO (Generic Segmentation Offload)` is a pure software offload that "
+"is meant to deal with cases where device drivers cannot perform the offloads"
+" described above. What occurs in GSO is that a given skbuff will have its "
+"data broken out over multiple skbuffs that have been resized to match the "
+"MSS provided via skb_shinfo()->gso_size."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:85
+#: 3178743667114d4e82b9f2ebf033928b
+msgid ""
+"Before enabling any hardware segmentation offload a corresponding software "
+"offload is required in GSO. Otherwise it becomes possible for a frame to be "
+"re-routed between devices and end up being unable to be transmitted."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:89
+#: 960af2c4d9b54ad695a13005013b6e98
+msgid ""
+":abbr:`GRO (Generic receive offload)` is the complement to GSO. Ideally any "
+"frame assembled by GRO should be segmented to create an identical sequence "
+"of frames using GSO, and any sequence of frames segmented by GSO should be "
+"able to be reassembled back to the original by GRO. The only exception to "
+"this is IPv4 ID in the case that the DF bit is set for a given IP header. If"
+" the value of the IPv4 ID is not sequentially incrementing it will be "
+"altered so that it is when a frame assembled via GRO is segmented via GSO."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:97
+#: 7b56a858d43e4d41a6e3346c41f605ab
+msgid ""
+":abbr:`RPS (Receive Packet Steering)` is logically a software implementation"
+" of :abbr:`RSS (Receive Side Scaling)`. Being in software, it is necessarily"
+" called later in the datapath. Whereas RSS selects the queue and hence CPU "
+"that will run the hardware interrupt handler, RPS selects the CPU to perform"
+" protocol processing above the interrupt handler. This is accomplished by "
+"placing the packet on the desired CPU's backlog queue and waking up the CPU "
+"for processing. RPS has some advantages over RSS:"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:105
+#: 3fcad7523ce5443aac1e7051e6f65d05
+msgid "it can be used with any NIC,"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:106
+#: ad5e537670d042c790304cfbbd450267
+msgid "software filters can easily be added to hash over new protocols,"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:107
+#: 6924eb6f887b4b78bbb7b7604268a1a2
+msgid ""
+"it does not increase hardware device interrupt rate (although it does "
+"introduce inter-processor interrupts (IPIs))."
+msgstr ""
+
+#: ../../_include/interface-xdp.txt:3 ecf4e5dfd4d0401a95782e9fde09215b
+msgid ""
+"Enable support for Linux :abbr:`XDP (eXpress Data Path)` on recent 1.4 "
+"rolling releases. You must enable it for every interface which should "
+"participate in the XDP forwarding."
+msgstr ""
+
+#: ../../_include/interface-xdp.txt:7 2d8d9c08456a46a398aac217918a8e5a
+msgid ""
+"XDP is an eBPF based high performance data path merged in the Linux kernel "
+"since version 4.8. The idea behind XDP is to add an early hook in the RX "
+"path of the kernel, and let a user supplied eBPF program decide the fate of "
+"the packet. The hook is placed in the NIC driver just after the interrupt "
+"processing, and before any memory allocation needed by the network stack "
+"itself, because memory allocation can be an expensive operation."
+msgstr ""
+
+#: ../../_include/interface-xdp.txt:14 6595e51d6c1b45c58ca2d01a0acd0c02
+msgid "This is highly experimental!"
+msgstr ""
+
+#: ../../_include/interface-xdp.txt:16 c3302a9950ad4e6a9860bf2630dfbea9
+msgid ""
+"Enabling this feature will break any form of NAT or Firewalling on this "
+"interface, as XDP is handled way earlier in the driver then iptables/ "
+"nftables."
+msgstr ""
+
+#: ../../_include/interface-xdp.txt:20 7281710c88ef41a1b6bda094d2ab4d11
+msgid ""
+"Enabling this feature will only load the XDP router code as described here:"
+msgstr ""
+
+#: ../../_include/interface-xdp.txt:24 88c1b4deaec84fa8ae500f042b6561b8
+msgid ""
+"https://blog.apnic.net/2020/04/30/how-to-build-an-xdp-based-bgp-peering-"
+"router/"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:116
+#: d10a9365cce0463ba28cd8b906a72cf2
+msgid "Authentication (EAPoL)"
+msgstr ""
+
+#: ../../_include/interface-eapol.txt:1 a15a1ab99ac64435a2d104e284646d34
+msgid ""
+":abbr:`EAP (Extensible Authentication Protocol)` over LAN (EAPoL) is a "
+"network port authentication protocol used in IEEE 802.1X (Port Based Network"
+" Access Control) developed to give a generic network sign-on to access "
+"network resources."
+msgstr ""
+
+#: ../../_include/interface-eapol.txt:6 3f49b8a8a8ec4f0f94bf5f3453556d8b
+msgid ""
+"EAPoL comes with an identify option. We automatically use the interface MAC "
+"address as identity parameter."
+msgstr ""
+
+#: ../../_include/interface-eapol.txt:12 f15512f3f797418b81a5c4c18181f600
+msgid ""
+"Set the name of the SSL :abbr:`CA (Certificate Authority)` PKI entry used "
+"for authentication of the remote side. If an intermediate CA certificate is "
+"specified, then all parent CA certificates that exist in the PKI, such as "
+"the root CA or additional intermediate CAs, will automatically be used "
+"during certificate validation to ensure that the full chain of trust is "
+"available."
+msgstr ""
+
+#: ../../_include/interface-eapol.txt:29 50963c1bdb3e494bb149a7997ee4811d
+msgid ""
+"Set the name of the x509 client keypair used to authenticate against the "
+"802.1x system. All parent CA certificates of the client certificate, such as"
+" intermediate and root CAs, will be sent as part of the EAP-TLS handshake."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:124
+#: c6831cc65ce44a509e9cb3ce531dce60
+msgid "VLAN"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:127
+#: 069a96b30aca40f3ba3ad568b645c487
+msgid "Regular VLANs (802.1q)"
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:1 6219e33c56cc4139ae7a07874103814b
+msgid ""
+"IEEE 802.1q_, often referred to as Dot1q, is the networking standard that "
+"supports virtual LANs (VLANs) on an IEEE 802.3 Ethernet network. The "
+"standard defines a system of VLAN tagging for Ethernet frames and the "
+"accompanying procedures to be used by bridges and switches in handling such "
+"frames. The standard also contains provisions for a quality-of-service "
+"prioritization scheme commonly known as IEEE 802.1p and defines the Generic "
+"Attribute Registration Protocol."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:9 ab75f226d37042e3b0b08adaaaf83070
+msgid ""
+"Portions of the network which are VLAN-aware (i.e., IEEE 802.1q_ conformant)"
+" can include VLAN tags. When a frame enters the VLAN-aware portion of the "
+"network, a tag is added to represent the VLAN membership. Each frame must be"
+" distinguishable as being within exactly one VLAN. A frame in the VLAN-aware"
+" portion of the network that does not contain a VLAN tag is assumed to be "
+"flowing on the native VLAN."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:16 165034dde5624ceba1d2f7b2b9c2ba97
+msgid ""
+"The standard was developed by IEEE 802.1, a working group of the IEEE 802 "
+"standards committee, and continues to be actively revised. One of the "
+"notable revisions is 802.1Q-2014 which incorporated IEEE 802.1aq (Shortest "
+"Path Bridging) and much of the IEEE 802.1d standard."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:21 2fc81ad16c104e8c93740c6da9764c79
+msgid ""
+"802.1q VLAN interfaces are represented as virtual sub-interfaces in VyOS. "
+"The term used for this is ``vif``."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:26 e3a0ff05b9e94a41a60fd2b2008ec779
+msgid ""
+"Create a new VLAN interface on interface `<interface>` using the VLAN number"
+" provided via `<vlan-id>`."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:29 3abdc1a4f9254146b560b28e3bc2c4ea
+msgid ""
+"You can create multiple VLAN interfaces on a physical interface. The VLAN ID"
+" range is from 0 to 4094."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:32 0dd1381b842c4318a4eb76bba21b0b11
+msgid "Only 802.1Q-tagged packets are accepted on Ethernet vifs."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:134
+#: c587c6e88f074a658738e0028280fea4
+msgid "QinQ (802.1ad)"
+msgstr ""
+
+#: ../../_include/need_improvement.txt:11 1d84fcf5f183415885672bf973640313
+msgid "This section needs improvements, examples and explanations."
+msgstr ""
+
+#: ../../_include/need_improvement.txt:13 6a2a314ccdb141948437c5eb4d419d1e
+msgid ""
+"Please take a look at the Contributing Guide for our :ref:`documentation`."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021ad.txt:3 25717d0a60f44f119c1db8d97999649e
+msgid ""
+"IEEE 802.1ad_ was an Ethernet networking standard informally known as QinQ "
+"as an amendment to IEEE standard 802.1q VLAN interfaces as described above. "
+"802.1ad was incorporated into the base 802.1q_ standard in 2011. The "
+"technique is also known as provider bridging, Stacked VLANs, or simply QinQ "
+"or Q-in-Q. \"Q-in-Q\" can for supported devices apply to C-tag stacking on "
+"C-tag (Ethernet Type = 0x8100)."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021ad.txt:10
+#: 4fa28700b7024f18afa866d5288bb37e
+msgid ""
+"The original 802.1q_ specification allows a single Virtual Local Area "
+"Network (VLAN) header to be inserted into an Ethernet frame. QinQ allows "
+"multiple VLAN tags to be inserted into a single frame, an essential "
+"capability for implementing Metro Ethernet network topologies. Just as QinQ "
+"extends 802.1Q, QinQ itself is extended by other Metro Ethernet protocols."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021ad.txt:16
+#: 90fcad3f700a4f12bd0962b7e2d41e4f
+msgid ""
+"In a multiple VLAN header context, out of convenience the term \"VLAN tag\" "
+"or just \"tag\" for short is often used in place of \"802.1q_ VLAN header\"."
+" QinQ allows multiple VLAN tags in an Ethernet frame; together these tags "
+"constitute a tag stack. When used in the context of an Ethernet frame, a "
+"QinQ frame is a frame that has 2 VLAN 802.1q_ headers (double-tagged)."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021ad.txt:22
+#: 727cea9d32d245a5b05a13c8a229c905
+msgid ""
+"In VyOS the terms ``vif-s`` and ``vif-c`` stand for the ethertype tags that "
+"are used."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021ad.txt:25
+#: f4b7266a17344261a90073d74b4e289a
+msgid ""
+"The inner tag is the tag which is closest to the payload portion of the "
+"frame. It is officially called C-TAG (customer tag, with ethertype 0x8100). "
+"The outer tag is the one closer/closest to the Ethernet header, its name is "
+"S-TAG (service tag with Ethernet Type = 0x88a8)."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:141
+#: ae7bd6d3ab1046f0a4dc0656649e0736
+msgid "Port Mirror (SPAN)"
+msgstr ""
+
+#: ../../_include/interface-mirror.txt:1 11a17100702f410db323e7efdbfb760a
+msgid ""
+"SPAN port mirroring can copy the inbound/outbound traffic of the interface "
+"to the specified interface, usually the interface can be connected to some "
+"special equipment, such as behavior control system, intrusion detection "
+"system and traffic collector, and can copy all related traffic from this "
+"port"
+msgstr ""
+
+#: ../../_include/interface-mirror.txt:6 3f9db384eca74560a46fb145111b7b8c
+msgid ""
+"VyOS uses the `mirror` option to configure port mirroring. The configuration"
+" is divided into 2 different directions. Destination ports should be "
+"configured for different traffic directions."
+msgstr ""
+
+#: ../../_include/interface-mirror.txt:13 5f79058e8f034f8eb92d6e4b513c84f7
+msgid ""
+"Configure port mirroring for `interface` inbound traffic and copy the "
+"traffic to `monitor-interface`"
+msgstr ""
+
+#: ../../_include/interface-mirror.txt:16 2aab909aa60e47c996236fcec753b240
+msgid "Example: Mirror the inbound traffic of `eth1` port to `eth3`"
+msgstr ""
+
+#: ../../_include/interface-mirror.txt:25 1cc17e57e4b74bdb940817570183742d
+msgid ""
+"Configure port mirroring for `interface` outbound traffic and copy the "
+"traffic to `monitor-interface`"
+msgstr ""
+
+#: ../../_include/interface-mirror.txt:28 7fde09dcf26147e4941f382164d5d4da
+msgid "Example: Mirror the outbound traffic of `eth1` port to `eth3`"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:149
+#: 4622f2d460674fcda52627d89af0026f
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:153
+#: 20d2dd9b87b04d29a052da49e2304d97
+msgid "Show brief interface information."
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:167
+#: 229f9a1b17b146e6833082411da1734c
+msgid "Show detailed information on given `<interface>`"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:186
+#: 85176122830a4f3ea117391dd001bd54
+msgid "Show information about physical `<interface>`"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:227
+#: 68fd1830fbce40d4ab41a425f6d5081d
+msgid "Show available offloading functions on given `<interface>`"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:259
+#: 40d23968c4064059970f596d6f8bba0a
+msgid "Show transceiver information from plugin modules, e.g SFP+, QSFP"
+msgstr ""
+
+#: ../../configuration/interfaces/ethernet.rst:296
+#: e4ce58406b8d45b996ed216c74b661c3
+msgid "Display XDP forwarding statistics"
+msgstr ""

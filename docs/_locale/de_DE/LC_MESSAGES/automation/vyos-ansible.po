@@ -1,0 +1,56 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../automation/vyos-ansible.rst:6 e405b3cd16fd4277a3b245e98f939389
+msgid "Ansible"
+msgstr ""
+
+#: ../../automation/vyos-ansible.rst:8 d20f4882f8ed42c48545b9e08440d24c
+msgid ""
+"VyOS supports configuration via ansible. Need to install ``ansible`` and "
+"``python3-paramiko`` module"
+msgstr ""
+
+#: ../../automation/vyos-ansible.rst:11 b256da61f8fb417e857e02cd654d1a53
+msgid "Structure of files"
+msgstr ""
+
+#: ../../automation/vyos-ansible.rst:24 fe2d6a59800142aa8f7d7089c5903489
+msgid "File contents"
+msgstr ""
+
+#: ../../automation/vyos-ansible.rst:26 b6825e1462764e35ac127d1305adc30e
+msgid "ansible.cfg"
+msgstr ""
+
+#: ../../automation/vyos-ansible.rst:35 dd37dc1fca7042b7a42de60899de039c
+msgid "id_rsa_docker.pub. Needs to declare only public key exactly."
+msgstr ""
+
+#: ../../automation/vyos-ansible.rst:42 244ef3fa45a64870b4c2f93f34f93297
+msgid "hosts"
+msgstr ""
+
+#: ../../automation/vyos-ansible.rst:56 8dcbd822cb6641b8924558f1f81e4076
+msgid "main.yml"
+msgstr ""
+
+#: ../../automation/vyos-ansible.rst:80 592908ab475948ca9d6640d236f6918c
+msgid "Run ansible"
+msgstr ""

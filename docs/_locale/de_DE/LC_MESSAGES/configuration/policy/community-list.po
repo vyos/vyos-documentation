@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/policy/community-list.rst:3
+#: 99faa93400034781812a3c7e51406eb2
+msgid "BGP - Community List"
+msgstr ""
+
+#: ../../configuration/policy/community-list.rst:5
+#: 4e39feb0c06e4ebf827fd77714776680
+msgid ""
+"VyOS provides policies commands exclusively for BGP traffic filtering and "
+"manipulation: **community-list** is one of them."
+msgstr ""
+
+#: ../../configuration/policy/community-list.rst:10
+#: bc29289230ce49008e7e60343b4ecdcb
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/policy/community-list.rst:13
+#: 35093ecf03b04987a9933fdc5111ddce
+msgid "policy community-list"
+msgstr ""
+
+#: ../../configuration/policy/community-list.rst:17
+#: f015388656fb490b814d3dd52d0940b5
+msgid "Creat community-list policy identified by name <text>."
+msgstr ""
+
+#: ../../configuration/policy/community-list.rst:21
+#: b7b5e959d76e4d18bcc3f477087ec3bb
+msgid "Set description for community-list policy."
+msgstr ""
+
+#: ../../configuration/policy/community-list.rst:26
+#: 8e150776ee1a4c078a1d8f8536fe9f80
+msgid "Set action to take on entries matching this rule."
+msgstr ""
+
+#: ../../configuration/policy/community-list.rst:30
+#: cbce67720e674843aba80de00dd91446
+msgid "Set description for rule."
+msgstr ""
+
+#: ../../configuration/policy/community-list.rst:35
+#: 7fdeda325a9a42b69ce5b9d468afadde
+msgid "Regular expression to match against a community-list."
+msgstr ""

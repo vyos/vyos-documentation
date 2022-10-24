@@ -1,0 +1,710 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/interfaces/wwan.rst:7 231ad24e31bf4bae9e51fb542ecb65da
+msgid "WWAN - Wireless Wide-Area-Network"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:9 992449ad4b314c509e739000f706ad8b
+msgid ""
+"The Wireless Wide-Area-Network interface provides access (through a wireless"
+" modem/wwan) to wireless networks provided by various cellular providers."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:12 6943d09f5e43468691c34c43ef0dd9e8
+msgid "VyOS uses the `interfaces wwan` subsystem for configuration."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:16 9e60f4603c07426d9bb2dad3ac8a9726
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:19 bb98d42be4c54cb79102d0d9284d154d
+msgid "Common interface configuration"
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:5
+#: 43eed503a0ab44ea87274b41f64c8040
+msgid ""
+"Configure interface `<interface>` with one or more interface addresses."
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:7
+#: 00a1d95d696b428ca4bfd0a914fee715
+msgid ""
+"**address** can be specified multiple times as IPv4 and/or IPv6 address, "
+"e.g. 192.0.2.1/24 and/or 2001:db8::1/64"
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:9
+#: a911e739d0804fee998e1212318a0f47
+msgid ""
+"**dhcp** interface address is received by DHCP from a DHCP server on this "
+"segment."
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:11
+#: c142efec979e446c9ceb226eb698870f
+msgid ""
+"**dhcpv6** interface address is received by DHCPv6 from a DHCPv6 server on "
+"this segment."
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:14
+#: ../../_include/interface-description.txt:7
+#: ../../_include/interface-disable.txt:7
+#: ../../_include/interface-disable-link-detect.txt:9
+#: ../../_include/interface-mtu.txt:7 ../../_include/interface-ip.txt:27
+#: ../../_include/interface-ip.txt:50 ../../_include/interface-ip.txt:144
+#: ../../_include/interface-ipv6.txt:15 ../../_include/interface-ipv6.txt:28
+#: ../../_include/interface-ipv6.txt:39 ../../_include/interface-ipv6.txt:51
+#: ../../_include/interface-vrf.txt:9
+#: ../../_include/interface-dhcp-options.txt:10
+#: ../../_include/interface-dhcp-options.txt:22
+#: ../../_include/interface-dhcp-options.txt:34
+#: ../../_include/interface-dhcp-options.txt:46
+#: ../../_include/interface-dhcp-options.txt:57
+#: ../../_include/interface-dhcp-options.txt:72
+#: c49654900b14484f964e38d59959c135 d717d1274735424196e53b89855f1fc5
+#: e20c48a9b9d6432c9f04fcf87a2b0ac3 cc255888362948d4899243491dcf537a
+#: a17c14c8dced46e48d5609c2771a92e6 5e7fbda40059408c9e70aa1ebca1db2f
+#: a6cdab28989b42e592bdafe100defdcd 909400dc3a86408293a2240a0e58b6ee
+#: 63308f063926423babd611462d72bae1 776816f619c440b3a73644372e5f6af6
+#: f3c9e2da690a42058d14c869c94e6607 d6e2f7152d66469c97f2feeeeed0fcde
+#: 6a0418c49f5045b0b4a44fa4fcb1ddbd c0081bb19f834487814fc0a5b3dea77b
+#: e6cdb19e2a1e496481a40ab031363478 42faec2a295b4eefa62a0ea824e24440
+#: b1dcebe389ee48cdbb01212136513773 070010405f644fd1af21f74de8e2f439
+#: 9e722ffd4f3348768e4136d4e584b095
+msgid "Example:"
+msgstr ""
+
+#: ../../_include/interface-description.txt:4 50f9869b06c64e0c9f07b632b7f32e21
+msgid ""
+"Set a human readable, descriptive alias for this connection. Alias is used "
+"by e.g. the :opcmd:`show interfaces` command or SNMP based monitoring tools."
+msgstr ""
+
+#: ../../_include/interface-disable.txt:4 af43383d8ff84f7aa41dfc27c324adc8
+msgid ""
+"Disable given `<interface>`. It will be placed in administratively down "
+"(``A/D``) state."
+msgstr ""
+
+#: ../../_include/interface-disable-link-detect.txt:4
+#: a47e96df9e734941a13794d3fa328172
+msgid ""
+"Use this command to direct an interface to not detect any physical state "
+"changes on a link, for example, when the cable is unplugged."
+msgstr ""
+
+#: ../../_include/interface-disable-link-detect.txt:7
+#: 75c2510fb55143f49f6d860f24fd4866
+msgid "Default is to detects physical link state changes."
+msgstr ""
+
+#: ../../_include/interface-mtu.txt:4 10b652a4979545eca88554674139bc70
+msgid ""
+"Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It"
+" is the size (in bytes) of the largest ethernet frame sent on this link."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:4 ../../_include/interface-ipv6.txt:60
+#: 7e9f0242c89640dab2a3b827cf9849b7 b499b697a64846faa35f7707866bd890
+msgid ""
+"As Internet wide PMTU discovery rarely works, we sometimes need to clamp our"
+" TCP MSS value to a specific value. This is a field in the TCP options part "
+"of a SYN packet. By setting the MSS value, you are telling the remote side "
+"unequivocally 'do not try to send me packets bigger than this value'."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:9 81e306041aca440f9706787da9df16a5
+msgid ""
+"This command was introduced in VyOS 1.4 - it was previously called: ``set "
+"firewall options interface <name> adjust-mss <value>``"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:12 57a7f6b80536429a91a1c296d2b1dc2d
+msgid ""
+"MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in 1452 bytes "
+"on a 1492 byte MTU."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:15 ../../_include/interface-ipv6.txt:71
+#: ddfbfdfbf5ec46ef9bcf241ef73c6118 9b8fda98f7934303a3a5c822aa4dabb6
+msgid ""
+"Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to "
+"automatically set the proper value."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:21 f0040f44ce3b42f58b3d4a838e2ef93a
+msgid ""
+"Once a neighbor has been found, the entry is considered to be valid for at "
+"least for this specific time. An entry's validity will be extended if it "
+"receives positive feedback from higher level protocols."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:25 cc6597faf4b249d4bcd18366956037f4
+msgid "This defaults to 30 seconds."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:36 ea95a6a6be094784bf96ce87b4008272
+msgid ""
+"If set the kernel can respond to arp requests with addresses from other "
+"interfaces. This may seem wrong but it usually makes sense, because it "
+"increases the chance of successful communication. IP addresses are owned by "
+"the complete host on Linux, not by particular interfaces. Only for more "
+"complex setups like load-balancing, does this behaviour cause problems."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:42 e1b2f19234094227a3462475cc112e1b
+msgid ""
+"If not set (default) allows you to have multiple network interfaces on the "
+"same subnet, and have the ARPs for each interface be answered based on "
+"whether or not the kernel would route a packet from the ARP'd IP out that "
+"interface (therefore you must use source based routing for this to work)."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:47 5fb3535e049f412e8fca5cb078ae3c47
+msgid ""
+"In other words it allows control of which cards (usually 1) will respond to "
+"an arp request."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:59 ../../_include/interface-ipv6.txt:48
+#: 2d0bcb8299ba4891997f7b91f5d3ba12 ed8895f1d4f645d0886979c22a58238d
+msgid ""
+"Configure interface-specific Host/Router behaviour. If set, the interface "
+"will switch to host mode and IPv6 forwarding will be disabled on this "
+"interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:69 9ef7d844460448df8e53f2889d9b20d2
+msgid ""
+"Define different modes for IP directed broadcast forwarding as described in "
+":rfc:`1812` and :rfc:`2644`."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:72 5f98f57288274f2fa1199334e395a89d
+msgid ""
+"If configured, incoming IP directed broadcast packets on this interface will"
+" be forwarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:75 1c93a73e4b2f4612b8d2050d6baa6d2a
+msgid ""
+"If this option is unset (default), incoming IP directed broadcast packets "
+"will not be forwarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:85 420aaa4a8caa449cb241cfaa8c235c03
+msgid ""
+"Define behavior for gratuitous ARP frames who's IP is not already present in"
+" the ARP table. If configured create new entries in the ARP table."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:88 4c4f518296444c72a56908585d21cfcd
+msgid ""
+"Both replies and requests type gratuitous arp will trigger the ARP table to "
+"be updated, if this setting is on."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:91 81b43184006e4597abb49adbcc2b1677
+msgid ""
+"If the ARP table already contains the IP address of the gratuitous arp "
+"frame, the arp table will be updated regardless if this setting is on or "
+"off."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:101 0b9da423e2c34802a9e3cb1f097a5843
+msgid ""
+"Define different restriction levels for announcing the local source IP "
+"address from IP packets in ARP requests sent on interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:104 3fef637e145a4e36b6c31519a04c1f1e
+msgid "Use any local address, configured on any interface if this is not set."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:106 b9cbb256e4de421f88d5d53440db17f7
+msgid ""
+"If configured, try to avoid local addresses that are not in the target's "
+"subnet for this interface. This mode is useful when target hosts reachable "
+"via this interface require the source IP address in ARP requests to be part "
+"of their logical network configured on the receiving interface. When we "
+"generate the request we will check all our subnets that include the target "
+"IP and will preserve the source address if it is from such subnet. If there "
+"is no such subnet we select source address according to the rules for level "
+"2."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:121 4c001043510b4657b37f667e71f6e0f6
+msgid ""
+"Define different modes for sending replies in response to received ARP "
+"requests that resolve local target IP addresses:"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:124 8cedabddff8c46b099d7498205adac00
+msgid ""
+"If configured, reply only if the target IP address is local address "
+"configured on the incoming interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:127 56aab1ab16034b2ea055b95e51ec904d
+msgid ""
+"If this option is unset (default), reply for any local target IP address, "
+"configured on any interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:137 a0113b8c4af14f6a9628b3eaf5e46612
+msgid ""
+"Use this command to enable proxy Address Resolution Protocol (ARP) on this "
+"interface. Proxy ARP allows an Ethernet interface to respond with its own "
+":abbr:`MAC (Media Access Control)` address to ARP requests for destination "
+"IP addresses on subnets attached to other interfaces on the system. "
+"Subsequent packets sent to those destination IP addresses are forwarded "
+"appropriately by the system."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:153 fcc8686cf0c34219a91c115c589514fb
+msgid ""
+"Private VLAN proxy arp. Basically allow proxy arp replies back to the same "
+"interface (from which the ARP request/solicitation was received)."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:156 10c82886a9fd479ab18c609da348b773
+msgid ""
+"This is done to support (ethernet) switch features, like :rfc:`3069`, where "
+"the individual ports are NOT allowed to communicate with each other, but "
+"they are allowed to talk to the upstream router. As described in "
+":rfc:`3069`, it is possible to allow these hosts to communicate through the "
+"upstream router by proxy_arp'ing."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:162 f94dc7a593104a938d1e3b39a3d6d0f9
+msgid "Does not need to be used together with proxy_arp."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:164 3c0554f13f61454db9de8d4bf6ce86e8
+msgid "This technology is known by different names:"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:166 0709e9a3c9bc40baad7310fad184e0e3
+msgid "In :rfc:`3069` it is called VLAN Aggregation"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:168 c54d5675f813483181273a1a8efe2d93
+msgid "Cisco and Allied Telesyn call it Private VLAN"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:170 a83194ba2b354d0d9f5848c1e6603041
+msgid "Hewlett-Packard call it Source-Port filtering or port-isolation"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:172 f233bb60fc044a34956b95ab0ea07e02
+msgid "Ericsson call it MAC-Forced Forwarding (RFC Draft)"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:177 14de387da9d94cb5a2ed52c1ffc30950
+msgid ""
+"Enable policy for source validation by reversed path, as specified in "
+":rfc:`3704`. Current recommended practice in :rfc:`3704` is to enable strict"
+" mode to prevent IP spoofing from DDos attacks. If using asymmetric routing "
+"or other complicated routing, then loose mode is recommended."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:182 cf36da1daf8a45a5a1181a7c2ad2cf86
+msgid ""
+"strict: Each incoming packet is tested against the FIB and if the interface "
+"is not the best reverse path the packet check will fail. By default failed "
+"packets are discarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:186 26ada7c06b9649ae9fdd8d51852362db
+msgid ""
+"loose: Each incoming packet's source address is also tested against the FIB "
+"and if the source address is not reachable via any interface the packet "
+"check will fail."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:190 7eac584eecf6438599b9980fb835acf7
+msgid "disable: No source validation"
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:4 e8f2ce9363a345ccb0ea12a35014d715
+msgid ""
+":abbr:`SLAAC (Stateless Address Autoconfiguration)` :rfc:`4862`. IPv6 hosts "
+"can configure themselves automatically when connected to an IPv6 network "
+"using the Neighbor Discovery Protocol via :abbr:`ICMPv6 (Internet Control "
+"Message Protocol version 6)` router discovery messages. When first connected"
+" to a network, a host sends a link-local router solicitation multicast "
+"request for its configuration parameters; routers respond to such a request "
+"with a router advertisement packet that contains Internet Layer "
+"configuration parameters."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:12 cd540d2584da421490378bf3e831122e
+msgid ""
+"This method automatically disables IPv6 traffic forwarding on the interface "
+"in question."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:25 6f3aa6ae21e040779b6ca6d0fd95865b
+msgid ""
+":abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in "
+":rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:37 661b9d644aaf45fb8dcf2d1aad1897aa
+msgid "Do not assign a link-local IPv6 address to this interface."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:65 68ccfbe56259486d827279f784960845
+msgid ""
+"This command was introduced in VyOS 1.4 - it was previously called: ``set "
+"firewall options interface <name> adjust-mss6 <value>``"
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:68 70e961e874c547d3a2a239fe4cad82d8
+msgid ""
+"MSS value = MTU - 40 (IPv6 header) - 20 (TCP header), resulting in 1432 "
+"bytes on a 1492 byte MTU."
+msgstr ""
+
+#: ../../_include/interface-vrf.txt:4 6a36ef03d12f47da8614fe8e817e69d5
+msgid "Place interface in given VRF instance."
+msgstr ""
+
+#: ../../_include/interface-vrf.txt:6 b0ae9521dcd246b69806f893fd1ce7c0
+msgid ""
+"There is an entire chapter about how to configure a :ref:`vrf`, please check"
+" this for additional information."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:54 be1222941fae4434bb9528104345da7f
+msgid "**DHCP(v6)**"
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:4
+#: b6193a92af4946b3bb865520ca8534f0
+msgid ""
+":rfc:`2131` states: The client MAY choose to explicitly provide the "
+"identifier through the 'client identifier' option. If the client supplies a "
+"'client identifier', the client MUST use the same 'client identifier' in all"
+" subsequent messages, and the server MUST use that identifier to identify "
+"the client."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:19
+#: c047021d3b264227bf2b140808628d47
+msgid ""
+"Instead of sending the real system hostname to the DHCP server, overwrite "
+"the host-name with this given-value."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:31
+#: 5e8e884d082048d68e3f93a1904f1003
+msgid ""
+"The vendor-class-id option can be used to request a specific class of vendor"
+" options from the server."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:43
+#: a71ea77bb8ae4fff998a21e933fcb752
+msgid ""
+"Only request an address from the DHCP server but do not request a default "
+"gateway."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:55
+#: 7f4baa304c034d7287c3d5c64fa7fc00
+msgid "Set the distance for the default gateway sent by the DHCP server."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:66
+#: ea1d6d6d35d54df0992662a6ea231c26
+msgid ""
+"Reject DHCP leases from a given address or range. This is useful when a "
+"modem gives a local IP when first starting."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:69
+#: 2941f6b5d5ea4265b4ca81a4ff6ec788
+msgid ""
+"**address** can be specified multiple times, e.g. 192.168.100.1 and/or "
+"192.168.100.0/24"
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:4
+#: 5281378f797f4c51ace9a5c8f60eaf7f
+msgid ""
+"The DHCP unique identifier (DUID) is used by a client to get an IP address "
+"from a DHCPv6 server. It has a 2-byte DUID type field, and a variable-length"
+" identifier field up to 128 bytes. Its actual length depends on its type. "
+"The server compares the DUID with its database and delivers configuration "
+"data (address, lease times, DNS servers, etc.) to the client."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:17
+#: 7d0eb274334c44ac8707035db5e42ef0
+msgid ""
+"This statement specifies dhcp6c to only exchange informational configuration"
+" parameters with servers. A list of DNS server addresses is an example of "
+"such parameters. This statement is useful when the client does not need "
+"stateful configuration parameters such as IPv6 addresses or prefixes."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:29
+#: 641b4e0060a841d6914310f11739fa00
+msgid ""
+"When rapid-commit is specified, dhcp6c will include a rapid-commit option in"
+" solicit messages and wait for an immediate reply instead of advertisements."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:39
+#: 38b55a8d8770499488a25ac3d0247f5b
+msgid ""
+"Request only a temporary address and not form an IA_NA (Identity Association"
+" for Non-temporary Addresses) partnership."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:1
+#: 964d131501d0439bb5582fc387f21aa0
+msgid "**DHCPv6 Prefix Delegation (PD)**"
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:3
+#: 9bebbc60e2554c35ad2fc16b61cad324
+msgid ""
+"VyOS 1.3 (equuleus) supports DHCPv6-PD (:rfc:`3633`). DHCPv6 Prefix "
+"Delegation is supported by most ISPs who provide native IPv6 for consumers "
+"on fixed networks."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:10
+#: ab9a16df68474805bd0f169876c893dd
+msgid ""
+"Some ISPs by default only delegate a /64 prefix. To request for a specific "
+"prefix size use this option to request for a bigger delegation for this pd "
+"`<id>`. This value is in the range from 32 - 64 so you could request up to a"
+" /32 prefix (if your ISP allows this) down to a /64 delegation."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:15
+#: a17e2b05141e458db342754e33d86492
+msgid "The default value corresponds to 64."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:17
+#: 393b4e3ad57844cdbfa33ef246dfb356
+msgid "To request a /56 prefix from your ISP use:"
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:27
+#: 1f53c131486c4d01a755cd9b36bb1571
+msgid ""
+"Specify the interface address used locally on the interface where the prefix"
+" has been delegated to. ID must be a decimal integer."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:30
+#: ed8206eddcc44d5ebf5b04870fb70ded
+msgid ""
+"It will be combined with the delegated prefix and the sla-id to form a "
+"complete interface address. The default is to use the EUI-64 address of the "
+"interface."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:36
+#: 31e8c898b32c44a7be3a896c510aa44f
+msgid ""
+"Example: Delegate a /64 prefix to interface eth8 which will use a local "
+"address on this router of ``<prefix>::ffff``, as the address 65534 will "
+"correspond to ``ffff`` in hexadecimal notation."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:50
+#: 373885c3a2fb41a3a19cc533d689e575
+msgid ""
+"Specify the identifier value of the site-level aggregator (SLA) on the "
+"interface. ID must be a decimal number greater then 0 which fits in the "
+"length of SLA IDs (see below)."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:54
+#: b3717515150e4d0d930b5a27b555c60a
+msgid ""
+"Example: If ID is 1 and the client is delegated an IPv6 prefix "
+"2001:db8:ffff::/48, dhcp6c will combine the two values into a single IPv6 "
+"prefix, 2001:db8:ffff:1::/64, and will configure the prefix on the specified"
+" interface."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:69 315e5e5f9bd940d298bf51260adb99a0
+msgid "WirelessModem (WWAN) options"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:73 afb346a57af6412280fd9917014cbeee
+msgid ""
+"Every WWAN connection requires an :abbr:`APN (Access Point Name)` which is "
+"used by the client to dial into the ISPs network. This is a mandatory "
+"parameter. Contact your Service Provider for correct APN."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:80 b6b605d0acd64827aa669538ec3cddd1
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:84 a142e54046e84b668d16364d4dc6b2f3
+msgid "Show detailed information on given `<interface>`"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:103
+#: 4be1cdcdb94346c78fbc408c3a071941
+msgid "Show detailed information summary on given `<interface>`"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:170
+#: 2554d1c57ec847d9935f1a450939b8ab
+msgid "Show WWAN module hardware capabilities."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:185
+#: 32e59af3aee3445ab3208d6aa92769f9
+msgid "Show WWAN module firmware."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:201
+#: c1b838c53f6948c6bd895cae41fd565e
+msgid "Show WWAN module IMEI."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:212
+#: b63eaa3f23ee4dd89b497e015f18fd89
+msgid "Show WWAN module IMSI."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:221
+#: e323d5cbe6be49d6ae0ac1ecb74f554a
+msgid "Show WWAN module model."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:230
+#: 286e154437444060b11011946f83862f
+msgid "Show WWAN module MSISDN."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:239
+#: 6bd9633c1b3f4b73ae1b22f1eb783411
+msgid "Show WWAN module hardware revision."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:248
+#: de452cea54584b3dbd77135e508adf82
+msgid "Show WWAN module signal strength."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:264
+#: 9332150ebb51464fbf27dfd47a82ffb3
+msgid "Show WWAN module SIM card information."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:295
+#: 787dd9a9ffa84ea383b74bc9f8c263ae
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:297
+#: 7f26d04f336c43c28e578611a22b59a7
+msgid ""
+"The following example is based on a Sierra Wireless MC7710 miniPCIe card "
+"(only the form factor in reality it runs UBS) and Deutsche Telekom as ISP. "
+"The card is assembled into a :ref:`pc-engines-apu4`."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:308
+#: f76ad889f5e5420ebbf0f927a23641de
+msgid "Supported Modules"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:310
+#: d6a7cdc8dc6541d39a84f303e029848b
+msgid ""
+"The following hardware modules have been tested successfully in an :ref:`pc-"
+"engines-apu4` board:"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:313
+#: 07727509a31d4182b9b509488028bc19
+msgid "Sierra Wireless AirPrime MC7304 miniPCIe card (LTE)"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:314
+#: 0b662895705e4f7bb0b43495db3f4d0b
+msgid "Sierra Wireless AirPrime MC7430 miniPCIe card (LTE)"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:315
+#: d015c5f5dd7645659acafab0c65d61a3
+msgid "Sierra Wireless AirPrime MC7455 miniPCIe card (LTE)"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:316
+#: c0265d6c4c374f988ae7463ec005f516
+msgid "Sierra Wireless AirPrime MC7710 miniPCIe card (LTE)"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:317
+#: 1d726fdddfae4f059228ab8bf24847d2
+msgid "Huawei ME909u-521 miniPCIe card (LTE)"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:318
+#: 2e2f6d7818df4077974b8168cca0135f
+msgid "Huawei ME909s-120 miniPCIe card (LTE)"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:322
+#: 441bc83d707e4052a307f76ac4e1bdb6
+msgid "Firmware Update"
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:324
+#: 62d86826f13d4874ab0542360526c1c1
+msgid ""
+"All available WWAN cards have a build in, reprogrammable firmware. Most of "
+"the vendors provide a regular update to the firmware used in the baseband "
+"chip."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:327
+#: ef6020a1d3854fa18115e9acd98f1c63
+msgid ""
+"As VyOS makes use of the QMI interface to connect to the WWAN modem cards, "
+"also the firmware can be reprogrammed."
+msgstr ""
+
+#: ../../configuration/interfaces/wwan.rst:330
+#: 25873f16f3d8445fb1bf073788fc370d
+msgid ""
+"To update the firmware, VyOS also ships the `qmi-firmware-update` binary. To"
+" upgrade the firmware of an e.g. Sierra Wireless MC7710 module to the "
+"firmware provided in the file "
+"``9999999_9999999_9200_03.05.14.00_00_generic_000.000_001_SPKG_MC.cwe`` use "
+"the following command:"
+msgstr ""

@@ -1,0 +1,36 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../automation/vyos-netmiko.rst:6 1e1871eb1060440dba0e768d6b404310
+msgid "Netmiko"
+msgstr ""
+
+#: ../../automation/vyos-netmiko.rst:8 6ecaf43a6559480484b28c5cf9b91652
+msgid ""
+"VyOS supports configuration via netmiko_. It requires to install "
+"``python3-netmiko`` module."
+msgstr ""
+
+#: ../../automation/vyos-netmiko.rst:12 fd4e8a489d28462dbcb0fded5000da1a
+msgid "Example"
+msgstr ""
+
+#: ../../automation/vyos-netmiko.rst:47 7741fe48ac53415bb39935b122505e2d
+msgid "Output"
+msgstr ""

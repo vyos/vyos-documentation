@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/service/broadcast-relay.rst:5
+#: 9f06b22b56ce4807a8e313f22df58bdb
+msgid "UDP Broadcast Relay"
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:7
+#: 1631755745c943578b053fddaaf1e714
+msgid ""
+"Certain vendors use broadcasts to identify their equipment within one "
+"ethernet segment. Unfortunately if you split your network with multiple "
+"VLANs you loose the ability of identifying your equipment."
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:11
+#: 63312ea281104fcaac7d39b3b90c52a3
+msgid ""
+"This is where \"UDP broadcast relay\" comes into play! It will forward "
+"received broadcasts to other configured networks."
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:14
+#: a1f1a6022bab47fba2e8e13bf6791c14
+msgid ""
+"Every UDP port which will be forward requires one unique ID. Currently we "
+"support 99 IDs!"
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:18
+#: f38a03b32557452091c28bbb859db352
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:22
+#: e82639efc84b4282adff04f352dbf147
+msgid ""
+"A description can be added for each and every unique relay ID. This is "
+"useful to distinguish between multiple different ports/appliactions."
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:27
+#: 7092920df24f4224907df1d5e383c663
+msgid ""
+"The interface used to receive and relay individual broadcast packets. If you"
+" want to receive/relay packets on both `eth1` and `eth2` both interfaces "
+"need to be added."
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:33
+#: 4f69c5bb026640cdb0470e0610b245bd
+msgid ""
+"Set the source IP of forwarded packets, otherwise original senders address "
+"is used."
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:38
+#: a7d648f85d454fd7b66b4ba586487851
+msgid ""
+"The UDP port number used by your apllication. It is mandatory for this kind "
+"of operation."
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:43
+#: 45a8cdfb71784ea69027fc5439c41335
+msgid ""
+"Each broadcast relay instance can be individually disabled without deleting "
+"the configured node by using the following command:"
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:48
+#: 7e5ebed6ce424eb5aa33dede00857afa
+msgid ""
+"In addition you can also disable the whole service without the need to "
+"remove it from the current configuration."
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:51
+#: 5ac7029ed7d94b50ac814147f7f63ee8
+msgid ""
+"You can run the UDP broadcast relay service on multiple routers connected to"
+" a subnet. There is **NO** UDP broadcast relay packet storm!"
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:55
+#: 6c4bb0dd723d4556b03c43078ad207d7
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/service/broadcast-relay.rst:57
+#: e6f77f5519d4448197a90ec3bf701fae
+msgid ""
+"To forward all broadcast packets received on `UDP port 1900` on `eth3`, "
+"`eth4` or `eth5` to all other interfaces in this configuration."
+msgstr ""

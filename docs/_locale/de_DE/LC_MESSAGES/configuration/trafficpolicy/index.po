@@ -1,0 +1,1778 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/trafficpolicy/index.rst:5
+#: 187b3bb14fe0419cbcad6fa1ebf19b7a
+msgid "Traffic Policy"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:10
+#: ced0ff17281c4c8b96f858baefee06c1
+msgid "QoS"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:12
+#: 2038d744215e415fa4c15e9d5980b1b7
+msgid ""
+"The generic name of Quality of Service or Traffic Control involves things "
+"like shaping traffic, scheduling or dropping packets, which are the kind of "
+"things you may want to play with when you have, for instance, a bandwidth "
+"bottleneck in a link and you want to somehow prioritize some type of traffic"
+" over another."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:18
+#: e0114d43f0cd4a1f91ff0a581d3f2797
+msgid ""
+"tc_ is a powerful tool for Traffic Control found at the Linux kernel. "
+"However, its configuration is often considered a cumbersome task. "
+"Fortunately, VyOS eases the job through its CLI, while using ``tc`` as "
+"backend."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:25
+#: edb2fce5292a4b649dd7620395b47ed3
+msgid "How to make it work"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:27
+#: ebc9a418dd1b4bd291418c226e752535
+msgid ""
+"In order to have VyOS Traffic Control working you need to follow 2 steps:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:30
+#: 6bea14563acb4cb1a1a25c4ad8df21b4
+msgid "**Create a traffic policy**."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:32
+#: 218c386199794550a85bdea7235a26c5
+msgid "**Apply the traffic policy to an interface ingress or egress**."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:35
+#: 70c92c3967d04585a9f2ce06b6a047fb
+msgid ""
+"But before learning to configure your policy, we will warn you about the "
+"different units you can use and also show you what *classes* are and how "
+"they work, as some policies may require you to configure them."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:42
+#: aa7ffadd0cab43d2956864d799593695
+msgid "Units"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:44
+#: dbd53c94e8424d34b2afa8e7cb5a977c
+msgid ""
+"When configuring your traffic policy, you will have to set data rate values,"
+" watch out the units you are managing, it is easy to get confused with the "
+"different prefixes and suffixes you can use. VyOS will always show you the "
+"different units you can use."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:50
+#: 6a446e0bcff34a3e9cca2c0675054beb
+msgid "Prefixes"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:52
+#: 6cf9fb29b450420fbd73409559924d43
+msgid "They can be **decimal** prefixes."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:66
+#: e19ffdfab2e74d6ab99fc4308b33f91d
+msgid "Or **binary** prefixes."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:82
+#: 44857022bc50421bbc4f7cead7b7a5a5
+msgid "Suffixes"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:84
+#: 39ce8577a6b341ceac29e9b20f22c08c
+msgid "A *bit* is written as **bit**,"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:93
+#: a651386a75cb4c46852c4f2c5f3c636d
+msgid "while a *byte* is written as a single **b**."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:107
+#: 8589badcaa75421e83c242230de7dab2
+msgid "Classes"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:109
+#: 680cd599c43c4204ad93b967d2348757
+msgid ""
+"In the :ref:`creating_a_traffic_policy` section you will see that some of "
+"the policies use *classes*. Those policies let you distribute traffic into "
+"different classes according to different parameters you can choose. So, a "
+"class is just a specific type of traffic you select."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:114
+#: a6844386e265447899b0017b5acdef5e
+msgid ""
+"The ultimate goal of classifying traffic is to give each class a different "
+"treatment."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:119
+#: 1a424286543e41afafa38d2118dedb76
+msgid "Matching traffic"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:121
+#: 91b5e7df6eeb4628b04a4d10c7849d05
+msgid ""
+"In order to define which traffic goes into which class, you define filters "
+"(that is, the matching criteria). Packets go through these matching rules "
+"(as in the rules of a firewall) and, if a packet matches the filter, it is "
+"assigned to that class."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:126
+#: 226f1dcfbf3642b3860afc99c278b5ee
+msgid ""
+"In VyOS, a class is identified by a number you can choose when configuring "
+"it."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:130
+#: 2407e7a84d614d50a76651b241548ebf
+msgid ""
+"The meaning of the Class ID is not the same for every type of policy. "
+"Normally policies just need a meaningless number to identify a class (Class "
+"ID), but that does not apply to every policy. The the number of a class in a"
+" Priority Queue it does not only identify it, it also defines its priority."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:142
+#: b3f6d389a0784e6c9a5ffeda87af7e90
+msgid ""
+"In the command above, we set the type of policy we are going to work with "
+"and the name we choose for it; a class (so that we can differentiate some "
+"traffic) and an identifiable number for that class; then we configure a "
+"matching rule (or filter) and a name for it."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:147
+#: 1f75ab93e65e4ceaa912e11fea11f5a9
+msgid "A class can have multiple match filters:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:154
+#: df2e26e4f7b3440da44f14da921c7fee
+msgid ""
+"A match filter can contain multiple criteria and will match traffic if all "
+"those criteria are true."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:157
+#: 088b7eaee33d4f188740e071a5cd2e1c
+msgid "For example:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:164
+#: 83df0a1677d34f6e869a0552220aa740
+msgid "This will match TCP traffic with source port 80."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:166
+#: 610fc9c98ff040d08c80d6d2bc0af365
+msgid ""
+"There are many parameters you will be able to use in order to match the "
+"traffic you want for a class:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:169
+#: 622efa2256154651af747d8319fc3d36
+msgid "**Ethernet (protocol, destination address or source address)**"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:170
+#: f547fd9d1e234259a41a79730aeacd21
+msgid "**Interface name**"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:171
+#: 598c40faa1e242c386066465746fc63d
+msgid ""
+"**IPv4 (DSCP value, maximum packet length, protocol, source address,** "
+"**destination address, source port, destination port or TCP flags)**"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:173
+#: 14d6849328d645019c0961efb98ef54f
+msgid ""
+"**IPv6 (DSCP value, maximum payload length, protocol, source address,** "
+"**destination address, source port, destination port or TCP flags)**"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:175
+#: 7a9cc4593fed4c2ea82c4657de3d5d1c
+msgid "**Firewall mark**"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:176
+#: d89943f371604f1882ecc7975305b7c3
+msgid "**VLAN ID**"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:178
+#: edc41e53e6dd43afb7d58011aaa0b1f9
+msgid ""
+"When configuring your filter, you can use the ``Tab`` key to see the many "
+"different parameters you can configure."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:196
+#: b77fd857b1b144aa98dc37f78b626df7
+msgid ""
+"As shown in the example above, one of the possibilities to match packets is "
+"based on marks done by the firewall, `that can give you a great deal of "
+"flexibility`_."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:200
+#: 224b64d2460b43ca97a4041153f773fe
+msgid "You can also write a description for a filter:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:208
+#: d87d05f73763466a8741506c9ac0d248
+msgid ""
+"An IPv4 TCP filter will only match packets with an IPv4 header length of 20 "
+"bytes (which is the majority of IPv4 packets anyway)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:212
+#: c19d116c61f8491085eef940dbbaa01a
+msgid ""
+"IPv6 TCP filters will only match IPv6 packets with no header extension, see "
+"https://en.wikipedia.org/wiki/IPv6_packet#Extension_headers"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:217
+#: ecfa44dfc8114c48971843ffcae37397
+msgid "Default"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:219
+#: 7493dd73b91e4db1b98f92d39108bb5b
+msgid ""
+"Often you will also have to configure your *default* traffic in the same way"
+" you do with a class. *Default* can be considered a class as it behaves like"
+" that. It contains any traffic that did not match any of the defined "
+"classes, so it is like an open class, a class without matching filters."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:227
+#: 97765e293140464182426585f7af1f7a
+msgid "Class treatment"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:229
+#: 6864dfa3282a430292b1fee3526ee7f8
+msgid ""
+"Once a class has a filter configured, you will also have to define what you "
+"want to do with the traffic of that class, what specific Traffic-Control "
+"treatment you want to give it. You will have different possibilities "
+"depending on the Traffic Policy you are configuring."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:254
+#: a9acd81de51b46e3bc5ec0b3bb8c21ba
+msgid ""
+"For instance, with :code:`set traffic-policy shaper MY-SHAPER class 30 set-"
+"dscp EF` you would be modifying the DSCP field value of packets in that "
+"class to Expedite Forwarding."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:259
+#: 1c59e42db3de491aabe33cf86328d171
+msgid "DSCP values as per :rfc:`2474` and :rfc:`4595`:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:262
+#: 0378928b2a1e4e4c95edfef87e4dfd7f
+msgid "Binary value"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:262
+#: 87375a2d8698487c8bc5b222884d179d
+msgid "Configured value"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:262
+#: 4e04c75c453347158e157ee30a928c5b
+msgid "Drop rate"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:262
+#: 9152b07e9e0a41b3831fbb7c5c6e75f7
+msgid "Description"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:265
+#: 7f8861dbc18840c7adc761359aeda92a
+msgid "101110"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:265
+#: 7f4faf2290e947d8ad6f26120d5e446a
+msgid "46"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:265
+#: 81f6d371855f4e6f827a46031e3afdf7
+msgid "Expedited forwarding (EF)"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:267
+#: fbe1334c09eb48e39a6064be25802c96
+msgid "000000"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:267
+#: ../../configuration/trafficpolicy/index.rst:803
+#: ../../configuration/trafficpolicy/index.rst:878
+#: 2c508a4593ce455ca7bd7e6d372500ae 4a1f42c55335462ebb4a3d643ee16a8e
+#: 163f3139d11342ba85a87e6f0056738e
+msgid "0"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:267
+#: bde50debfeb843ff9edc44341112c32d
+msgid "Best effort traffic, default"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:269
+#: 624d6ae413f34191b08f1617f6b76544
+msgid "001010"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:269
+#: ../../configuration/trafficpolicy/index.rst:876
+#: 9e9b35c8b41c42bebdc573d88858a3b9 614751c0c341411588dd44c4c7f1e323
+msgid "10"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:269
+#: ../../configuration/trafficpolicy/index.rst:275
+#: ../../configuration/trafficpolicy/index.rst:281
+#: ../../configuration/trafficpolicy/index.rst:287
+#: ca9f2723fc3b41b2972d841be4f10dc8 e9fdf92facbb40aaa5c0698db72a98bd
+#: 23efdd77545e4aa48bbedddfd11110fb 6f08c1fe88f74d2b878d4a7f2c3940ef
+msgid "Low"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:269
+#: 1ad2259ab03c4175bf3af0704bf7ebcf
+msgid "Assured Forwarding(AF) 11"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:271
+#: bdd7128f770d4cf78aa655116e8c86af
+msgid "001100"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:271
+#: ../../configuration/trafficpolicy/index.rst:872
+#: 2db0060506c4489d8b31291d72cc6a9e d7cd2cc6d609441083dfab220c1d44fd
+msgid "12"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:271
+#: ../../configuration/trafficpolicy/index.rst:277
+#: ../../configuration/trafficpolicy/index.rst:283
+#: ../../configuration/trafficpolicy/index.rst:289
+#: d658410fd171453c9e4fa98ebd8d4405 a954f5ac107d41d287325a9daef126a5
+#: 94c77369f139466185aa959a124dd6ff db61c63a009b49b9a26d2bc5807634ab
+msgid "Medium"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:271
+#: 250be957cc10481a8edc473191c87f80
+msgid "Assured Forwarding(AF) 12"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:273
+#: 2c3d6ed7ae4549d89321b978bcdc2a1a
+msgid "001110"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:273
+#: ../../configuration/trafficpolicy/index.rst:868
+#: 928682a11a2e46f290cfcc98e87b2081 4f57f40027a44904a6c31a4b23c4eaf9
+msgid "14"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:273
+#: ../../configuration/trafficpolicy/index.rst:279
+#: ../../configuration/trafficpolicy/index.rst:285
+#: ../../configuration/trafficpolicy/index.rst:291
+#: c728ae3c08f14bfda8a18004d5a1e8a4 5bd7c9dd4b1d496db3e85830a9480852
+#: 6294976b96a74604b8b1c5d7ec655f12 7bb000490eff4a779b6010ad352d9fcd
+msgid "High"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:273
+#: 01073e420f574b89a7437266a4840fd4
+msgid "Assured Forwarding(AF) 13"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:275
+#: 0cb26a7d69a946289f1af48c9059fce9
+msgid "010010"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:275
+#: a65444d8d1844cbd91f2c471de55b8e2
+msgid "18"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:275
+#: 8306d6054ae34d5d8ed07170ba7e4428
+msgid "Assured Forwarding(AF) 21"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:277
+#: 8362f1432b334f81885857a48446d578
+msgid "010100"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:277
+#: e03e97f94c984fe488d73d6714c72597
+msgid "20"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:277
+#: f70b4c0245044979b5ee11063d97885a
+msgid "Assured Forwarding(AF) 22"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:279
+#: 11f72f8818ed4515b876719ffc1c1c5c
+msgid "010110"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:279
+#: bf3ef2d33e7e440a84570683702fbda3
+msgid "22"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:279
+#: 44ad385ffa4b418dba2450487ff6fc0d
+msgid "Assured Forwarding(AF) 23"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:281
+#: cf7a61987f07467b8ce96a7fbb00e180
+msgid "011010"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:281
+#: 2b8fef42d90145aa944660ef8cf12ca7
+msgid "26"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:281
+#: 7ee0fd2e30df4e2c95a0d2e508d52fc9
+msgid "Assured Forwarding(AF) 31"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:283
+#: b7df08925f0b4ef7b5128786f700f935
+msgid "011100"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:283
+#: 57d783ba13ce407e963748ccdd381232
+msgid "28"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:283
+#: 2cd9c107a68d454399fcbcf2e18a7ab7
+msgid "Assured Forwarding(AF) 32"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:285
+#: a0bd6be126ab4322be4fa65b2c2aa4b8
+msgid "011110"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:285
+#: bf997cd4c5324ae89da56cd7c326b1d1
+msgid "30"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:285
+#: 10525538708c405f80f86650cb18ddb8
+msgid "Assured Forwarding(AF) 33"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:287
+#: 1867aeaf1da4474d84f6d77cd8ac4b6f
+msgid "100010"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:287
+#: ff0c425aa904410eb570f6f6ad51dc9a
+msgid "34"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:287
+#: 4f7d879071344c128781400993d77af6
+msgid "Assured Forwarding(AF) 41"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:289
+#: 8b33b187d6844fc480e99ce769e683a6
+msgid "100100"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:289
+#: 5603464bc84746789e3e367ba4809793
+msgid "36"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:289
+#: 2b90bf99bace4ce1ab3fd4c0ee9741ee
+msgid "Assured Forwarding(AF) 42"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:291
+#: d8d459f6bd0a439ea6bf5ff7c6a784b9
+msgid "100110"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:291
+#: 23e4f58dc20844ef87aca4f66f5e63eb
+msgid "38"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:291
+#: 22b0fc700bbc451f9baa51dfb63d1ab0
+msgid "Assured Forwarding(AF) 43"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:300
+#: ab5eb1fd4ae247e18b7d6706cecaecf8
+msgid "Embedding one policy into another one"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:302
+#: beb2d8b557a84f4cac61c0501fe39144
+msgid ""
+"Often we need to embed one policy into another one. It is possible to do so "
+"on classful policies, by attaching a new policy into a class. For instance, "
+"you might want to apply different policies to the different classes of a "
+"Round-Robin policy you have configured."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:307
+#: 1527858507e746dca5d61c9a4b36257c
+msgid ""
+"A common example is the case of some policies which, in order to be "
+"effective, they need to be applied to an interface that is directly "
+"connected where the bottleneck is. If your router is not directly connected "
+"to the bottleneck, but some hop before it, you can emulate the bottleneck by"
+" embedding your non-shaping policy into a classful shaping one so that it "
+"takes effect."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:314
+#: 14c136ad29184d21abb8ceda81b70426
+msgid ""
+"You can configure a policy into a class through the ``queue-type`` setting."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:323
+#: d402a8c67a344417b221c8a16363dc3b
+msgid ""
+"As shown in the last command of the example above, the `queue-type` setting "
+"allows these combinations. You will be able to use it in many policies."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:327
+#: 1d2285888f5144f1bc3491fe8b92b8e9
+msgid ""
+"Some policies already include other embedded policies inside. That is the "
+"case of Shaper_: each of its classes use fair-queue unless you change it."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:335
+#: 3422374c84af404aaa552b50b34f3164
+msgid "Creating a traffic policy"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:337
+#: 2a09c178df0d4aa6a43e1b79daa22aa2
+msgid ""
+"VyOS lets you control traffic in many different ways, here we will cover "
+"every possibility. You can configure as many policies as you want, but you "
+"will only be able to apply one policy per interface and direction (inbound "
+"or outbound)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:342
+#: 696e844c1e4b4f4f964433228e8e19f2
+msgid ""
+"Some policies can be combined, you will be able to embed_ a different policy"
+" that will be applied to a class of the main policy."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:345
+#: a82eaa7199274692a199db26854617be
+msgid ""
+"**If you are looking for a policy for your outbound traffic** but you don't "
+"know which one you need and you don't want to go through every possible "
+"policy shown here, **our bet is that highly likely you are looking for a** "
+"Shaper_ **policy and you want to** :ref:`set its queues <embed>` **as FQ-"
+"CoDel**."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:352
+#: 9d038f8420e84af091d5fd47e2679d86
+msgid "Drop Tail"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:354
+#: 556ced294024417dbb424f8fc415d118
+msgid "**Queueing discipline:** PFIFO (Packet First In First Out)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:355
+#: ../../configuration/trafficpolicy/index.rst:387
+#: ../../configuration/trafficpolicy/index.rst:622
+#: ../../configuration/trafficpolicy/index.rst:691
+#: ../../configuration/trafficpolicy/index.rst:767
+#: ../../configuration/trafficpolicy/index.rst:916
+#: ../../configuration/trafficpolicy/index.rst:961
+#: ../../configuration/trafficpolicy/index.rst:1018
+#: f8e1aa15d2eb4b63aff592fe4cb52300 0234d836b20c4f508829d8180f1b3149
+#: f1a4028ebe924be79f55ebfaf2041e61 5ee08687e97148ccb01e00bdb0c50a1a
+#: f33e706fbbf04dc697619d6b049bc1ea 36f68476f5b34e2fa66529e0af9e0396
+#: e40834bb14074137ade0459724bd3587 6bfd864b8b8941519364a486fce1d606
+msgid "**Applies to:** Outbound traffic."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:357
+#: 799cece092f649b297306771b2a744eb
+msgid ""
+"This the simplest queue possible you can apply to your traffic. Traffic must"
+" go through a finite queue before it is actually sent. You must define how "
+"many packets that queue can contain."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:361
+#: 70a7bb29523d47b590efb1d3a62fb477
+msgid ""
+"When a packet is to be sent, it will have to go through that queue, so the "
+"packet will be placed at the tail of it. When the packet completely goes "
+"through it, it will be dequeued emptying its place in the queue and being "
+"eventually handed to the NIC to be actually sent out."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:366
+#: 8ce0a3442f8d4d30ac1c6d72b260f872
+msgid ""
+"Despite the Drop-Tail policy does not slow down packets, if many packets are"
+" to be sent, they could get dropped when trying to get enqueued at the tail."
+" This can happen if the queue has still not been able to release enough "
+"packets from its head."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:371
+#: b7fd60ba7d8a419fa2597fd4bbd94e9f
+msgid ""
+"This is the policy that requieres the lowest resources for the same amount "
+"of traffic. But **very likely you do not need it as you cannot get much from"
+" it. Sometimes it is used just to enable logging.**"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:378
+#: b09be3767c614a62808fc694c91d802b
+msgid ""
+"Use this command to configure a drop-tail policy (PFIFO). Choose a unique "
+"name for this policy and the size of the queue by setting the number of "
+"packets it can contain (maximum 4294967295)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:384
+#: 2c2b92d8dd664d3fb05e37c0c3ac6378
+msgid "Fair Queue"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:386
+#: a3e5395b9e8242ff8f178072882ecc90
+msgid "**Queueing discipline:** SFQ (Stochastic Fairness Queuing)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:389
+#: 8031d91dc4654980a7f23e99fa38a543
+msgid ""
+"Fair Queue is a work-conserving scheduler which schedules the transmission "
+"of packets based on flows, that is, it balances traffic distributing it "
+"through different sub-queues in order to ensure fairness so that each flow "
+"is able to send data in turn, preventing any single one from drowning out "
+"the rest."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:398
+#: 086427f3037b4005ad54993247918160
+msgid ""
+"Use this command to create a Fair-Queue policy and give it a name. It is "
+"based on the Stochastic Fairness Queueing and can be applied to outbound "
+"traffic."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:402
+#: 909f08c51bc74f468d2acb7f93704130
+msgid ""
+"In order to separate traffic, Fair Queue uses a classifier based on source "
+"address, destination address and source port. The algorithm enqueues packets"
+" to hash buckets based on those tree parameters. Each of these buckets "
+"should represent a unique flow. Because multiple flows may get hashed to the"
+" same bucket, the hashing algorithm is perturbed at configurable intervals "
+"so that the unfairness lasts only for a short while. Perturbation may "
+"however cause some inadvertent packet reordering to occur. An advisable "
+"value could be 10 seconds."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:411
+#: 587a3fbd4e1e4157882145b7d20f7bce
+msgid ""
+"One of the uses of Fair Queue might be the mitigation of Denial of Service "
+"attacks."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:416
+#: 46f0331f592c4332915f86c74c24e2a5
+msgid ""
+"Use this command to define a Fair-Queue policy, based on the Stochastic "
+"Fairness Queueing, and set the number of seconds at which a new queue "
+"algorithm perturbation will occur (maximum 4294967295)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:420
+#: 84ec36bd95844d4aa54460c82cbe625b
+msgid ""
+"When dequeuing, each hash-bucket with data is queried in a round robin "
+"fashion. You can configure the length of the queue."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:425
+#: 52f5098789c245bba0efd52ad2a96640
+msgid ""
+"Use this command to define a Fair-Queue policy, based on the Stochastic "
+"Fairness Queueing, and set the number of maximum packets allowed to wait in "
+"the queue. Any other packet will be dropped."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:429
+#: a7c2a913b8ed46dc8afd9c7f86134d2d
+msgid ""
+"Fair Queue is a non-shaping (work-conserving) policy, so it will only be "
+"useful if your outgoing interface is really full. If it is not, VyOS will "
+"not own the queue and Fair Queue will have no effect. If there is bandwidth "
+"available on the physical link, you can embed_ Fair-Queue into a classful "
+"shaping policy to make sure it owns the queue."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:441
+#: b8bc8f694542463d8638c47107201a94
+msgid "FQ-CoDel"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:443
+#: 4b934008264f40aaa59fc1c32cdce03b
+msgid "**Queueing discipline** Fair/Flow Queue CoDel."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:444
+#: cbb990eb1741483c983d5200dc0b7471
+msgid "**Applies to:** Outbound Traffic."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:446
+#: 2a2809b1b6d840428f2de1a8caa67db6
+msgid ""
+"The FQ-CoDel policy distributes the traffic into 1024 FIFO queues and tries "
+"to provide good service between all of them. It also tries to keep the "
+"length of all the queues short."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:450
+#: 0c590ae32ed947b2bd0d244dc13b568e
+msgid ""
+"FQ-CoDel fights bufferbloat and reduces latency without the need of complex "
+"configurations. It has become the new default Queueing Discipline for the "
+"interfaces of some GNU/Linux distributions."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:454
+#: 5ac912b3376e4c5389dd09b0c0bc8474
+msgid ""
+"It uses a stochastic model to classify incoming packets into different flows"
+" and is used to provide a fair share of the bandwidth to all the flows using"
+" the queue. Each flow is managed by the CoDel queuing  discipline. "
+"Reordering within a flow is avoided since Codel internally uses a FIFO "
+"queue."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:460
+#: a17ebb4ab2be4d72ab6c8229eb34ac87
+msgid ""
+"FQ-CoDel is based on a modified Deficit Round Robin (DRR_) queue scheduler "
+"with the CoDel Active Queue Management (AQM) algorithm operating on each "
+"queue."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:465
+#: 08a708a6b3ae455c8623a7fd5b0a65a8
+msgid ""
+"FQ-Codel is a non-shaping (work-conserving) policy, so it will only be "
+"useful if your outgoing interface is really full. If it is not, VyOS will "
+"not own the queue and FQ-Codel will have no effect. If there is bandwidth "
+"available on the physical link, you can embed_ FQ-Codel into a classful "
+"shaping policy to make sure it owns the queue. If you are not sure if you "
+"need to embed your FQ-CoDel policy into a Shaper, do it."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:474
+#: 399e9f8fce164251b91016dc7c2b6872
+msgid ""
+"FQ-CoDel is tuned to run ok with its default parameters at 10Gbit speeds. It"
+" might work ok too at other speeds without configuring anything, but here we"
+" will explain some cases when you might want to tune its parameters."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:479
+#: 7a72d0578a87432e9f8e36c3de65a119
+msgid ""
+"When running it at 1Gbit and lower, you may want to reduce the `queue-limit`"
+" to 1000 packets or less. In rates like 10Mbit, you may want to set it to "
+"600 packets."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:483
+#: 84d6ca15e2754a898461268271469cba
+msgid ""
+"If you are using FQ-CoDel embedded into Shaper_ and you have large rates "
+"(100Mbit and above), you may consider increasing `quantum` to 8000 or higher"
+" so that the scheduler saves CPU."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:487
+#: abf3f531795043e7a95fc2d0efd2a7eb
+msgid ""
+"On low rates (below 40Mbit) you may want to tune `quantum` down to something"
+" like 300 bytes."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:490
+#: 4be4e8307699418a9dd5d095655ff66e
+msgid ""
+"At very low rates (below 3Mbit), besides tuning `quantum` (300 keeps being "
+"ok) you may also want to increase `target` to something like 15ms and "
+"increase `interval` to something around 150 ms."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:497
+#: c20fa46321304441a1e0ca94162e7531
+msgid ""
+"Use this command to configure an fq-codel policy, set its name and the "
+"maximum number of bytes (default: 1514) to be dequeued from a queue at once."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:503
+#: 7fd4d3dc8619418988c7e24f3ecd9c56
+msgid ""
+"Use this command to configure an fq-codel policy, set its name and the "
+"number of sub-queues (default: 1024) into which packets are classified."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:509
+#: da279fd2e2204c779d49bd6417383925
+msgid ""
+"Use this command to configure an fq-codel policy, set its name and the time "
+"period used by the control loop of CoDel to detect when a persistent queue "
+"is developing, ensuring that the measured minimum delay does not become too "
+"stale (default: 100ms)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:517
+#: 756d71d426564c309f2414b8e8f3c84b
+msgid ""
+"Use this command to configure an fq-codel policy, set its name, and define a"
+" hard limit on the real queue size. When this limit is reached, new packets "
+"are dropped (default: 10240 packets)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:523
+#: 13122c64fd2a4797bc403e42219c9a21
+msgid ""
+"Use this command to configure an fq-codel policy, set its name, and define "
+"the acceptable minimum standing/persistent queue delay. This minimum delay "
+"is identified by tracking the local minimum queue delay that packets "
+"experience (default: 5ms)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:530
+#: ../../configuration/trafficpolicy/index.rst:1120
+#: 236b6a9df8db45f6bfce68217abb130f 29ecb54c9afa447289ef92e7cc707bab
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:532
+#: 12d018428c7c4d68829184933064a21b
+msgid "A simple example of an FQ-CoDel policy working inside a Shaper one."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:544
+#: ebf050cede3943ad995b37cda16480df
+msgid "Limiter"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:546
+#: 819cc7bc5eaa43cbb01f7cb486689818
+msgid "**Queueing discipline:** Ingress policer."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:547
+#: ../../configuration/trafficpolicy/index.rst:1188
+#: 7e4aaecc6ac543ed9e9e9e9c76eaf736 8cdd2d843ac94d95bda8b1e5a937fdaf
+msgid "**Applies to:** Inbound traffic."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:549
+#: 59bd2897e5cf4af59f7f50f965320f39
+msgid ""
+"Limiter is one of those policies that uses classes_ (Ingress qdisc is "
+"actually a classless policy but filters do work in it)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:552
+#: 058d5be4dcbf4cb28297ff878399cf09
+msgid ""
+"The limiter performs basic ingress policing of traffic flows. Multiple "
+"classes of traffic can be defined and traffic limits can be applied to each "
+"class. Although the policer uses a token bucket mechanism internally, it "
+"does not have the capability to delay a packet as a shaping mechanism does. "
+"Traffic exceeding the defined bandwidth limits is directly dropped. A "
+"maximum allowed burst can be configured too."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:559
+#: c172e74fe44b45beb233d1fa3c97cb75
+msgid ""
+"You can configure classes (up to 4090) with different settings and a default"
+" policy which will be applied to any traffic not matching any of the "
+"configured classes."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:564
+#: 3c75c9ad8c2846f0bd8468e8cb6d9618
+msgid ""
+"In the case you want to apply some kind of **shaping** to your **inbound** "
+"traffic, check the ingress-shaping_ section."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:571
+#: 9704dacbd9a849febe36b3b638aa6906
+msgid ""
+"Use this command to configure an Ingress Policer, defining its name, a class"
+" identifier (1-4090), a class matching rule name and its description."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:576
+#: 7d06a044756f49d58f5d50f8a20b76c9
+msgid ""
+"Once the matching rules are set for a class, you can start configuring how "
+"you want matching traffic to behave."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:583
+#: d3411b9d783a40d197e8191992a2a0e4
+msgid ""
+"Use this command to configure an Ingress Policer, defining its name, a class"
+" identifier (1-4090) and the maximum allowed bandwidth for this class."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:591
+#: 3a71268739df4e78ab512ab418ec0643
+msgid ""
+"Use this command to configure an Ingress Policer, defining its name, a class"
+" identifier (1-4090) and the burst size in bytes for this class (default: "
+"15)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:598
+#: 28b6866b9d694b4fa8fdefdf0356d426
+msgid ""
+"Use this command to configure an Ingress Policer, defining its name and the "
+"maximum allowed bandwidth for its default policy."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:604
+#: db146dbfca504e57a8f44a2f114fc401
+msgid ""
+"Use this command to configure an Ingress Policer, defining its name and the "
+"burst size in bytes (default: 15) for its default policy."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:611
+#: 5e646627fa734fa5a1ce8023e18ddd59
+msgid ""
+"Use this command to configure an Ingress Policer, defining its name, a class"
+" identifier (1-4090), and the priority (0-20, default 20) in which the rule "
+"is evaluated (the lower the number, the higher the priority)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:619
+#: 17f1b5076e634101992e7570df46d5f9
+msgid "Network Emulator"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:621
+#: ee2dec03440148aa9dd9df58620a376e
+msgid ""
+"**Queueing discipline:** netem (Network Emulator) + TBF (Token Bucket "
+"Filter)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:624
+#: 57ca17fb81ca49aabf6d0ec1024dfa5c
+msgid ""
+"VyOS Network Emulator policy emulates the conditions you can suffer in a "
+"real network. You will be able to configure things like rate, burst, delay, "
+"packet loss, packet corruption or packet reordering."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:628
+#: ca6e683e5bd2457dae257e569460a9ff
+msgid ""
+"This could be helpful if you want to test how an application behaves under "
+"certain network conditions."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:634
+#: e2da2ac4a86645189f09a66a8088e066
+msgid ""
+"Use this command to configure the maximum rate at which traffic will be "
+"shaped in a Network Emulator policy. Define the name of the policy and the "
+"rate."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:640
+#: e997eb89a9f34c64b8bcd4dbff8c52c2
+msgid ""
+"Use this command to configure the burst size of the traffic in a Network "
+"Emulator policy. Define the name of the Network Emulator policy and its "
+"traffic burst size (it will be configured through the Token Bucket Filter "
+"qdisc). Default:15kb. It will only take effect if you have configured its "
+"bandwidth too."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:649
+#: 2dd8f198290342f68fd2819de9ecab3c
+msgid ""
+"Use this command to configure a Network Emulator policy defining its name "
+"and the fixed amount of time you want to add to all packet going out of the "
+"interface. The latency will be added through the Token Bucket Filter qdisc. "
+"It will only take effect if you have configured its bandwidth too. You can "
+"use secs, ms and us. Default: 50ms."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:659
+#: b55579c2810d41369bfb6c2cf6474b8b
+msgid ""
+"Use this command to emulate noise in a Network Emulator policy. Set the "
+"policy name and the percentage of corrupted packets you want. A random error"
+" will be introduced in a random position for the chosen percent of packets."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:667
+#: aa9875bd7a0146ab810dcc2462152ac3
+msgid ""
+"Use this command to emulate packet-loss conditions in a Network Emulator "
+"policy. Set the policy name and the percentage of loss packets your traffic "
+"will suffer."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:674
+#: f8feabaa77f141e99eef6cf23ecf053e
+msgid ""
+"Use this command to emulate packet-reordering conditions in a Network "
+"Emulator policy. Set the policy name and the percentage of reordered packets"
+" your traffic will suffer."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:681
+#: 74df5ca6ec3d4ecc84556951ea14160f
+msgid ""
+"Use this command to define the length of the queue of your Network Emulator "
+"policy. Set the policy name and the maximum number of packets (1-4294967295)"
+" the queue may hold queued at a time."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:688
+#: 1f93b7d8c40941b5bdf5911b8636109f
+msgid "Priority Queue"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:690
+#: 6e4383b1a76a40dfba2557750ef8b906
+msgid "**Queueing discipline:** PRIO."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:694
+#: 29e29a4e10cc4441857a12d8c574fc8e
+msgid ""
+"The Priority Queue is a classful scheduling policy. It does not delay "
+"packets (Priority Queue is not a shaping policy), it simply dequeues packets"
+" according to their priority."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:698
+#: 9bd3f7bed5b74a4ab943129c08e9fa3a
+msgid ""
+"Priority Queue, as other non-shaping policies, is only useful if your "
+"outgoing interface is really full. If it is not, VyOS will not own the queue"
+" and Priority Queue will have no effect. If there is bandwidth available on "
+"the physical link, you can embed_ Priority Queue into a classful shaping "
+"policy to make sure it owns the queue. In that case packets can be "
+"prioritized based on DSCP."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:705
+#: 1c85180079f548109b5f669e2fec7438
+msgid ""
+"Up to seven queues -defined as classes_ with different priorities- can be "
+"configured. Packets are placed into queues based on associated match "
+"criteria. Packets are transmitted from the queues in priority order. If "
+"classes with a higher priority are being filled with packets continuously, "
+"packets from lower priority classes will only be transmitted after traffic "
+"volume from higher priority classes decreases."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:713
+#: 47dbadb20ce641be976dae0612997b35
+msgid ""
+"In Priority Queue we do not define clases with a meaningless class ID number"
+" but with a class priority number (1-7). The lower the number, the higher "
+"the priority."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:718
+#: 5ab3e22c840a47ce82922629e7405149
+msgid ""
+"As with other policies, you can define different type of matching rules for "
+"your classes:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:734
+#: 2f2afa7aa6804b0080cde56d87226636
+msgid ""
+"As with other policies, you can embed_ other policies into the classes (and "
+"default) of your Priority Queue policy through the ``queue-type`` setting:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:753
+#: 3974873e33824c84a4cc09b4e3c5432a
+msgid ""
+"Use this command to configure a Priority Queue policy, set its name, set a "
+"class with a priority from 1 to 7 and define a hard limit on the real queue "
+"size. When this limit is reached, new packets are dropped."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:763
+#: c54bce50c5c04f8c8a6ff59e77a7d93b
+msgid "Random-Detect"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:766
+#: 8166f8a4c6aa4469837666ad29f1eaa9
+msgid "**Queueing discipline:** Generalized Random Early Drop."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:769
+#: 4eb81e30b6f9418ab13f4b29088a7096
+msgid ""
+"A simple Random Early Detection (RED) policy would start randomly dropping "
+"packets from a queue before it reaches its queue limit thus avoiding "
+"congestion. That is good for TCP connections as the gradual dropping of "
+"packets acts as a signal for the sender to decrease its transmission rate."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:775
+#: 45776341d51542c78fa0ba4b2f9d0c37
+msgid ""
+"In contrast to simple RED, VyOS' Random-Detect uses a Generalized Random "
+"Early Detect policy that provides different virtual queues based on the IP "
+"Precedence value so that some virtual queues can drop more packets than "
+"others."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:780
+#: fb02b4baa9d7434b94e73b2292e41849
+msgid ""
+"This is achieved by using the first three bits of the ToS (Type of Service) "
+"field to categorize data streams and, in accordance with the defined "
+"precedence parameters, a decision is made."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:784
+#: fdbddcc8e53b48e28f4e49134b97ac4b
+msgid "IP precedence as defined in :rfc:`791`:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:787
+#: ../../configuration/trafficpolicy/index.rst:862
+#: e57ae3b63a544900965caaaccdffe29c 8e70d18d9d1740c1b0a5df6963a4464d
+msgid "Precedence"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:787
+#: ../../configuration/trafficpolicy/index.rst:801
+#: 014c2cbf58624686b7d2ca89f2cca074 a162c6579719414aba4b8513ae9f0c5d
+msgid "Priority"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:789
+#: ../../configuration/trafficpolicy/index.rst:864
+#: 75abc331d6da44b1ad0b03ea38fa44cd c10dfcfa97b94637b82513d5660abb30
+msgid "7"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:789
+#: d114a9bf27db4d47bd6c1c78dac22b54
+msgid "Network Control"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:791
+#: ../../configuration/trafficpolicy/index.rst:866
+#: ddfe38e8459447429e5f7dd25f29ccbe f4be5428044e41ddbd04c0ac20d3f96a
+msgid "6"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:791
+#: e260699785114966aff670c15c2a3dda
+msgid "Internetwork Control"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:793
+#: ../../configuration/trafficpolicy/index.rst:868
+#: 5b3edd0db36240a69f9dd1356b2d39ad 96f4db9bb90e4a1a82f565453cbf56a9
+msgid "5"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:793
+#: 5ae13585649b45b2b29e0becc2ec055c
+msgid "CRITIC/ECP"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:795
+#: ../../configuration/trafficpolicy/index.rst:870
+#: 0f5ab94c11b94254b2650c8f1dc8dc38 d747c18f9bd54182b3c73798f2e77c5e
+msgid "4"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:795
+#: 61bfc23cd4fd40eaa97d586fd0b483a2
+msgid "Flash Override"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:797
+#: ../../configuration/trafficpolicy/index.rst:872
+#: 6534d23645534512a49478734f621bf8 866fc1e954d14e44b2276ed3a302326c
+msgid "3"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:797
+#: db12bfce36b647fa95f2b8f3a551b8c0
+msgid "Flash"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:799
+#: ../../configuration/trafficpolicy/index.rst:874
+#: 3fdae921f0dc43fa8b2651e0dd861f96 4053167ad4354a9e8f9d3d1197e0c3d7
+msgid "2"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:799
+#: da98985221ba40ee924f6d34b55f3fbe
+msgid "Immediate"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:801
+#: ../../configuration/trafficpolicy/index.rst:876
+#: eb3a23bf102a43ea9a2a3fc71e938d58 41a66c54507e4df79b576fa15d18d8b9
+msgid "1"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:803
+#: 43c9f33691a640068c2857d52f77fc73
+msgid "Routine"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:807
+#: 632a9746e20c410c94f8ae3c070ec6f5
+msgid ""
+"Random-Detect could be useful for heavy traffic. One use of this algorithm "
+"might be to prevent a backbone overload. But only for TCP (because dropped "
+"packets could be retransmitted), not for UDP."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:814
+#: 74ef2429a7d942e2a34de92cff0c7275
+msgid ""
+"Use this command to configure a Random-Detect policy, set its name and set "
+"the available bandwidth for this policy. It is used for calculating the "
+"average queue size after some idle time. It should be set to the bandwidth "
+"of your interface. Random Detect is not a shaping policy, this command will "
+"not shape."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:823
+#: af7420a3cfae4b7ba39a5f1c1a3607a1
+msgid ""
+"Use this command to configure a Random-Detect policy and set its name, then "
+"state the IP Precedence for the virtual queue you are configuring and what "
+"the size of its average-packet should be (in bytes, default: 1024)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:828
+#: d9074e0d65984ae38570ef5dba793385
+msgid ""
+"When configuring a Random-Detect policy: **the higher the precedence number,"
+" the higher the priority**."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:834
+#: ef5202fe2d9a487590d28d208200758b
+msgid ""
+"Use this command to configure a Random-Detect policy and set its name, then "
+"state the IP Precedence for the virtual queue you are configuring and what "
+"its mark (drop) probability will be. Set the probability by giving the N "
+"value of the fraction 1/N (default: 10)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:843
+#: 2887f3d2cff445e6acbfa6205290d01c
+msgid ""
+"Use this command to configure a Random-Detect policy and set its name, then "
+"state the IP Precedence for the virtual queue you are configuring and what "
+"its maximum threshold for random detection will be (from 0 to 4096 packets, "
+"default: 18). At this size, the marking (drop) probability is maximal."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:852
+#: cf08515de810484a8c6dfdecdcba6e65
+msgid ""
+"Use this command to configure a Random-Detect policy and set its name, then "
+"state the IP Precedence for the virtual queue you are configuring and what "
+"its minimum threshold for random detection will be (from 0 to 4096 packets)."
+"  If this value is exceeded, packets start being eligible for being dropped."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:859
+#: 627d87503daa47efb890d0504a0ebd14
+msgid "The default values for the minimum-threshold depend on IP precedence:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:862
+#: c97dfb19489c428bb46b45d4cb0e3cb7
+msgid "default min-threshold"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:864
+#: bc7d22bce6a84f5cb1f3fcb5b4644c90
+msgid "16"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:866
+#: 4ee3fd1383864152a8a00a4fa47a9647
+msgid "15"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:870
+#: d150aaff8e094c569ae8ce6398f4b225
+msgid "13"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:874
+#: 9db524b330ed472c925cea56a5856f09
+msgid "11"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:878
+#: d586ee6c86194963a1da7e057cb7eddd
+msgid "9"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:885
+#: f96eb05058b848c486e120e73f4fbd0f
+msgid ""
+"Use this command to configure a Random-Detect policy and set its name, then "
+"name the IP Precedence for the virtual queue you are configuring and what "
+"the maximum size of its queue will be (from 1 to 1-4294967295 packets). "
+"Packets are dropped when the current queue length reaches this value."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:892
+#: 2f5d55c8cad342589e2f0a153fa108ca
+msgid ""
+"If the average queue size is lower than the **min-threshold**, an arriving "
+"packet will be placed in the queue."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:895
+#: 106876e2b98940baad26c4e0e1e9b1ca
+msgid ""
+"In the case the average queue size is between **min-threshold** and **max-"
+"threshold**, then an arriving packet would be either dropped or placed in "
+"the queue, it will depend on the defined **mark-probability**."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:899
+#: 9267c138c3c342f2b04f716caa0b9612
+msgid ""
+"If the current queue size is larger than **queue-limit**, then packets will "
+"be dropped. The average queue size depends on its former average size and "
+"its current one."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:903
+#: b4dc392ff3ab4294ac320eb6a77fbdb0
+msgid ""
+"If **max-threshold** is set but **min-threshold is not, then **min-"
+"threshold** is scaled to 50% of **max-threshold**."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:906
+#: 6088f19bdf28427e981f2e971ebbba07
+msgid ""
+"In principle, values must be :code:`min-threshold` < :code:`max-threshold` <"
+" :code:`queue-limit`."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:913
+#: 8a418cbab91046e6953cb06cb8817343
+msgid "Rate Control"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:915
+#: bff6fe6f335e4f4aab167800394b97d3
+msgid "**Queueing discipline:** Tocken Bucket Filter."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:918
+#: b53a66bda5fe4cf9884bea90d313b2b4
+msgid ""
+"Rate-Control is a classless policy that limits the packet flow to a set "
+"rate. It is a pure shaper, it does not schedule traffic. Traffic is filtered"
+" based on the expenditure of tokens. Tokens roughly correspond to bytes."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:923
+#: 05dc26e3f0d2475e982e2bca1030a412
+msgid ""
+"Short bursts can be allowed to exceed the limit. On creation, the Rate-"
+"Control traffic is stocked with tokens which correspond to the amount of "
+"traffic that can be burst in one go. Tokens arrive at a steady rate, until "
+"the bucket is full."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:930
+#: 6b4fff066585435e93814a3f3739f364
+msgid ""
+"Use this command to configure a Rate-Control policy, set its name and the "
+"rate limit you want to have."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:935
+#: 3a1f04797db54164aab93e10748e0676
+msgid ""
+"Use this command to configure a Rate-Control policy, set its name and the "
+"size of the bucket in bytes which will be available for burst."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:940
+#: fe2892fc1f1e4ab8a9ce397d226ff760
+msgid ""
+"As a reference: for 10mbit/s on Intel, you might need at least 10kbyte "
+"buffer if you want to reach your configured rate."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:943
+#: a72609280e45474e9a2c4c5846262b07
+msgid "A very small buffer will soon start dropping packets."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:947
+#: ccf2251b0d4b4ea5a7d3eac836e49d10
+msgid ""
+"Use this command to configure a Rate-Control policy, set its name and the "
+"maximum amount of time a packet can be queued (default: 50 ms)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:952
+#: 03416899f716474eae9865203f8d6d5d
+msgid ""
+"Rate-Control is a CPU-friendly policy. You might consider using it when you "
+"just simply want to slow traffic down."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:958
+#: 96d4e2a99e0f4139b1efad2cdfe593aa
+msgid "Round Robin"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:960
+#: 1589b07c47244235b8a39ca0b6445871
+msgid "**Queueing discipline:** Deficit Round Robin."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:963
+#: 4cb179214ab94068852d4508dcd639b7
+msgid ""
+"The round-robin policy is a classful scheduler that divides traffic in "
+"different classes_ you can configure (up to 4096). You can embed_ a new "
+"policy into each of those classes (default included)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:967
+#: 6cae5c2b623b44f38bf646893754f161
+msgid ""
+"Each class is assigned a deficit counter (the number of bytes that a flow is"
+" allowed to transmit when it is its turn) initialized to quantum. Quantum is"
+" a parameter you configure which acts like a credit of fix bytes the counter"
+" receives on each round. Then the Round-Robin policy starts moving its Round"
+" Robin pointer through the queues. If the deficit counter is greater than "
+"the packet's size at the head of the queue, this packet will be sent and the"
+" value of the counter will be decremented by the packet size. Then, the size"
+" of the next packet will be compared to the counter value again, repeating "
+"the process. Once the queue is empty or the value of the counter is "
+"insufficient, the Round-Robin pointer will move to the next queue. If the "
+"queue is empty, the value of the deficit counter is reset to 0."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:980
+#: bc636b2f42a3400f936e8dddc49e4916
+msgid ""
+"At every round, the deficit counter adds the quantum so that even large "
+"packets will have their opportunity to be dequeued."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:987
+#: c5282fd168fb47edb0be574e8a23ff5f
+msgid ""
+"Use this command to configure a Round-Robin policy, set its name, set a "
+"class ID, and the quantum for that class. The deficit counter will add that "
+"value each round."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:994
+#: d38ed6a380f44c60855ae70f023517d7
+msgid ""
+"Use this command to configure a Round-Robin policy, set its name, set a "
+"class ID, and the queue size in packets."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:997
+#: e94a6802783a484cb369c1db4f154ad1
+msgid ""
+"As with other policies, Round-Robin can embed_ another policy into a class "
+"through the ``queue-type`` setting."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1015
+#: e3122bab0ab14146b5e59dde6a9c8bea
+msgid "Shaper"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1017
+#: 4973ace6952645e8a8b1bf635f9ffeb0
+msgid "**Queueing discipline:** Hierarchical Token Bucket."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1021
+#: b12b63bfe15141c7a57200796134036f
+msgid ""
+"The Shaper policy does not guarantee a low delay, but it does guarantee "
+"bandwidth to different traffic classes and also lets you decide how to "
+"allocate more traffic once the guarantees are met."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1025
+#: 5e4e723fa49c4ea1a277463304f1cb5d
+msgid ""
+"Each class can have a guaranteed part of the total bandwidth defined for the"
+" whole policy, so all those shares together should not be higher than the "
+"policy's whole bandwidth."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1029
+#: b332f092425e4014a187a50a462c3662
+msgid ""
+"If guaranteed traffic for a class is met and there is room for more traffic,"
+" the ceiling parameter can be used to set how much more bandwidth could be "
+"used. If guaranteed traffic is met and there are several classes willing to "
+"use their ceilings, the priority parameter will establish the order in which"
+" that additional traffic will be allocated. Priority can be any number from "
+"0 to 7. The lower the number, the higher the priority."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1040
+#: 02609d0e47a141418d8286c5a0839033
+msgid ""
+"Use this command to configure a Shaper policy, set its name and the maximum "
+"bandwidth for all combined traffic."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1047
+#: ce660b4980a7431e8cd8bf21588d3115
+msgid ""
+"Use this command to configure a Shaper policy, set its name, define a class "
+"and set the guaranteed traffic you want to allocate to that class."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1054
+#: 277ba29ba72a4aea9f66dd355bdae9a9
+msgid ""
+"Use this command to configure a Shaper policy, set its name, define a class "
+"and set the size of the `tocken bucket`_ in bytes, which will be available "
+"to be sent at ceiling speed (default: 15Kb)."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1061
+#: c81b68c249d14520b79f3d02c121cbde
+msgid ""
+"Use this command to configure a Shaper policy, set its name, define a class "
+"and set the maximum speed possible for this class. The default ceiling value"
+" is the bandwidth value."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1068
+#: 1c570bbad96d448d9e2dae36c26e9edb
+msgid ""
+"Use this command to configure a Shaper policy, set its name, define a class "
+"and set the priority for usage of available bandwidth once guarantees have "
+"been met. The lower the priority number, the higher the priority. The "
+"default priority value is 0, the highest priority."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1074
+#: 3dacd2d920034f78a20bc0d599e7dc82
+msgid ""
+"As with other policies, Shaper can embed_ other policies into its classes "
+"through the ``queue-type`` setting and then configure their parameters."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1112
+#: 787be02d15694aea9cc45629169935fa
+msgid ""
+"If you configure a class for **VoIP traffic**, don't give it any *ceiling*, "
+"otherwise new VoIP calls could start when the link is available and get "
+"suddenly dropped when other classes start using their assigned *bandwidth* "
+"share."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1122
+#: 8dcc1e952d434d43ad92a743098fad3d
+msgid "A simple example of Shaper using priorities."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1148
+#: 2e7c469624794aeb96aa8be5e207b4fe
+msgid "Applying a traffic policy"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1150
+#: dc5b7692164c4043902cc093bd93de92
+msgid "Once a traffic-policy is created, you can apply it to an interface:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1156
+#: e44dceb67a7e4c95a1bf3524ca922d5c
+msgid ""
+"You can only apply one policy per interface and direction, but you could "
+"reuse a policy on different interfaces and directions:"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1173
+#: 02a49fa9b95047e5bc7a9f907ed89736
+msgid "Getting queueing information"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1177
+#: 25f5f83156274897b0c39c1808c82b47
+msgid ""
+"Use this command to see the queueing information for an interface. You will "
+"be able to see a packet counter (Sent, Dropped, Overlimit and Backlog) per "
+"policy and class configured."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1186
+#: f84ec3eb958c494ea7f3df5a80c6e813
+msgid "The case of ingress shaping"
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1190
+#: 386987b35e9444d0ac41f42cd93c0ff3
+msgid ""
+"For the ingress traffic of an interface, there is only one policy you can "
+"directly apply, a **Limiter** policy. You cannot apply a shaping policy "
+"directly to the ingress traffic of any interface because shaping only works "
+"for outbound traffic."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1195
+#: 9f9a520c3a4443b6b3a2f21b2fd7951a
+msgid ""
+"This workaround lets you apply a shaping policy to the ingress traffic by "
+"first redirecting it to an in-between virtual interface (`Intermediate "
+"Functional Block`_). There, in that virtual interface, you will be able to "
+"apply any of the policies that work for outbound traffic, for instance, a "
+"shaping one."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1201
+#: 9995de6d4e2741899a475c1b30e2fa46
+msgid "That is how it is possible to do the so-called \"ingress shaping\"."
+msgstr ""
+
+#: ../../configuration/trafficpolicy/index.rst:1215
+#: 6d2e8ae9f63d4d2dad1d12d620eb4b01
+msgid ""
+"Do not configure IFB as the first step. First create everything else of your"
+" traffic-policy, and then you can configure IFB. Otherwise you might get the"
+" ``RTNETLINK answer: File exists`` error, which can be solved with ``sudo ip"
+" link delete ifb0``."
+msgstr ""

@@ -1,0 +1,188 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/policy/examples.rst:3 9e55f6ad75a24bcba4b441264559e633
+msgid "BGP Example"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:5 10034e88d81f49989271f9282aa4d8a8
+msgid "**Policy definition:**"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:18 ee93fa0f387b429ab3f3e4876822eb16
+msgid ""
+"Using 'soft-reconfiguration' we get the policy update without bouncing the "
+"neighbor."
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:21 e163f255b4fd4113bcf2a9c5f9be5e2d
+msgid "**Routes learned before routing policy applied:**"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:36 d3295b12ba8440d3bdee51e32060e34f
+msgid "**Routes learned after routing policy applied:**"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:52 237c690d313c4f2ba372efaf3fbe74bf
+msgid "You now see the longer AS path."
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:56 e92e85398fdf4b49a01a4f22e36b2abe
+msgid "Transparent Proxy"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:58 2077c9ee3d244b7684ad910ce0fd49cb
+msgid ""
+"The following example will show how VyOS can be used to redirect web traffic"
+" to an external transparent proxy:"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:67 96b8b9a9f4d4473c965286c1f33816a0
+msgid ""
+"This creates a route policy called FILTER-WEB with one rule to set the "
+"routing table for matching traffic (TCP port 80) to table ID 100 instead of "
+"the default routing table."
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:71 eff8c2f21f7c495a9e2bb91b2b9878da
+msgid ""
+"To create routing table 100 and add a new default gateway to be used by "
+"traffic matching our route policy:"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:78 37739e639d1041ad8c803f3f25fd1810
+msgid ""
+"This can be confirmed using the ``show ip route table 100`` operational "
+"command."
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:81 5ad4e670582041db8678bac64a470622
+msgid ""
+"Finally, to apply the policy route to ingress traffic on our LAN interface, "
+"we use:"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:90 0cae56ecd4b24377b9af0e0bc8a77b3a
+msgid "Multiple Uplinks"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:92 253b0a5e11e840d399c490ffca8c0a2b
+msgid ""
+"VyOS Policy-Based Routing (PBR) works by matching source IP address ranges "
+"and forwarding the traffic using different routing tables."
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:95 42a14c329d224477908507c501703c12
+msgid "Routing tables that will be used in this example are:"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:97 3d093a961fbb44a1938479e6cff1dda8
+msgid "``table 10`` Routing table used for VLAN 10 (192.168.188.0/24)"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:98 9712766ea94a4b1eb0a48effcb60436c
+msgid "``table 11`` Routing table used for VLAN 11 (192.168.189.0/24)"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:99 7ab026dba85f41cdbc1ba0db436a850c
+msgid ""
+"``main`` Routing table used by VyOS and other interfaces not participating "
+"in PBR"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:106
+#: 8f2646189a294da580e14d0bb6c8da1b
+msgid "PBR multiple uplinks"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:106
+#: 3a38f3e12c9d4797abbbd27a096808b9
+msgid ""
+"Policy-Based Routing with multiple ISP uplinks (source "
+"./draw.io/pbr_example_1.drawio)"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:109
+#: b4a4da7aed5c44c1899c1e6a16b94fbc
+msgid "Add default routes for routing ``table 10`` and ``table 11``"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:116
+#: 306522d6ff8141dfbd7d21e0f99a0827
+msgid "Add policy route matching VLAN source addresses"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:128
+#: 8a47de500c564a928af6e813543fd679
+msgid "Apply routing policy to **inbound** direction of out VLAN interfaces"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:136
+#: 72234245462c49f7bed17c72f90c0030
+msgid ""
+"**OPTIONAL:** Exclude Inter-VLAN traffic (between VLAN10 and VLAN11) from "
+"PBR"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:149
+#: 56cc24934d1240f985376d3171292e7a
+msgid ""
+"These commands allow the VLAN10 and VLAN11 hosts to communicate with each "
+"other using the main routing table."
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:153
+#: 8a697645d6704106ab22fddd87629afd
+msgid "Local route"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:155
+#: 141d084f705c4347b110285e00baf490
+msgid ""
+"The following example allows VyOS to use :abbr:`PBR (Policy-Based Routing)` "
+"for traffic, which originated from the router itself. That solution for "
+"multiple ISP's and VyOS router will respond from the same interface that the"
+" packet was received. Also, it used, if we want that one VPN tunnel to be "
+"through one provider, and the second through another."
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:161
+#: e6f1de3a0b0646c8bc0ff942ce523e7b
+msgid "``203.0.113.254`` IP addreess on VyOS eth1 from ISP1"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:162
+#: db0c4509ae90489fa53d6c2b9c8a0133
+msgid "``192.168.2.254`` IP addreess on VyOS eth2 from ISP2"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:163
+#: f3bda5e8641f4f21945e71ce8e702e8e
+msgid "``table 10`` Routing table used for ISP1"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:164
+#: 1c888a1f93db4158a5bf86084729ad19
+msgid "``table 11`` Routing table used for ISP2"
+msgstr ""
+
+#: ../../configuration/policy/examples.rst:176
+#: 7e71d4669a864c4789fa4b2544ca0f46
+msgid "Add multiple source IP in one rule with same priority"
+msgstr ""

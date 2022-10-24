@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/policy/index.rst:1 17f98f7caf94465491eab10595330f72
+msgid ":lastproofread:2021-07-12"
+msgstr ""
+
+#: ../../_include/need_improvement.txt:11 83c778f38e2947abb7040b5c3dbf130f
+msgid "This section needs improvements, examples and explanations."
+msgstr ""
+
+#: ../../_include/need_improvement.txt:13 c3a92eaa553b41f38ca2bb64795d451e
+msgid ""
+"Please take a look at the Contributing Guide for our :ref:`documentation`."
+msgstr ""
+
+#: ../../configuration/policy/index.rst:7 098008c6e2a344e7aeb4d03fd4b0a5f2
+msgid "Policy"
+msgstr ""
+
+#: ../../configuration/policy/index.rst:9 4dad89f4b549474a9eb02657595da63c
+msgid ""
+"Policies are used for filtering and traffic management. With policies, "
+"network administrators could filter and treat traffic according to their "
+"needs."
+msgstr ""
+
+#: ../../configuration/policy/index.rst:13 3d810a54116d4aafb3e2226b607b1925
+msgid ""
+"There could be a wide range of routing policies. Some examples are listed "
+"below:"
+msgstr ""
+
+#: ../../configuration/policy/index.rst:16 bf7fe34299fb422a8754fba1ddc4066c
+msgid "Filter traffic based on source/destination address."
+msgstr ""
+
+#: ../../configuration/policy/index.rst:17 70e812e0943a4aa5b65cca2d215e8440
+msgid "Set some metric to routes learned from a particular neighbor."
+msgstr ""
+
+#: ../../configuration/policy/index.rst:18 12e2e58b170a4865ac30ce259a00eff4
+msgid ""
+"Set some attributes (like AS PATH or Community value) to advertised routes "
+"to neighbors."
+msgstr ""
+
+#: ../../configuration/policy/index.rst:20 f5fcd246e018486491e976df48e3fa80
+msgid ""
+"Prefer a specific routing protocol routes over another routing protocol "
+"running on the same router."
+msgstr ""
+
+#: ../../configuration/policy/index.rst:23 ae1ee5062c6f4bacbe066dd705abf59f
+msgid ""
+"Policies, in VyOS, are implemented using FRR filtering and route maps. "
+"Detailed information of FRR could be found in http://docs.frrouting.org/"
+msgstr ""
+
+#: ../../configuration/policy/index.rst:28 a1d5b218b3634f95a7112b2cb610e5ce
+msgid "Policy Sections"
+msgstr ""
+
+#: ../../configuration/policy/index.rst:46 9b28c406e8e0409a85a724396ae31b1d
+msgid "Examples"
+msgstr ""
+
+#: ../../configuration/policy/index.rst:48 e3f737fbcc284fb69b30ee14ce1d6a23
+msgid "Examples of policies usage:"
+msgstr ""

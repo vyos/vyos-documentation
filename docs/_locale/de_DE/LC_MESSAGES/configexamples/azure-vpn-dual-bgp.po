@@ -1,0 +1,222 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:6
+#: 9b9db6fa09124662b2a7c3335dbc144a
+msgid "Route-Based Redundant Site-to-Site VPN to Azure (BGP over IKEv2/IPsec)"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:8
+#: 759fb45f3bf44f8fa56771e2b1d8299f
+msgid ""
+"This guide shows an example of a redundant (active-active) route-based IKEv2"
+" site-to-site VPN to Azure using VTI and BGP for dynamic routing updates."
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:13
+#: 73abec87c3ca4f83b32d667d2263bfa1
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:15
+#: 18c0980f9b09457f82b75d3473ff7764
+msgid ""
+"A pair of Azure VNet Gateways deployed in active-active configuration with "
+"BGP enabled."
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:18
+#: 5c5653cb683f464fb3b5880c79c617ac
+msgid ""
+"A local network gateway deployed in Azure representing the Vyos device, "
+"matching the below Vyos settings except for address space, which only "
+"requires the Vyos private IP, in this example 10.10.0.5/32"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:23
+#: bbfc8956ac7443eba627417fdf67d024
+msgid ""
+"A connection resource deployed in Azure linking the Azure VNet gateway and "
+"the local network gateway representing the Vyos device."
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:28
+#: e6ff621563b042338d4425002ae8a78b
+msgid "Example"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:31
+#: 716721a06b7f4669a9b2409eb2aac65d
+msgid "WAN Interface"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:31
+#: dfcb3352016049a98f1d3c0b0be32998
+msgid "eth0"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:33
+#: 5d959b80a81f430f9d86a26a9ad19c3e
+msgid "On-premises address space"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:33
+#: a3ceef7fc78c48949eb6c0eeae0b667a
+msgid "10.10.0.0/16"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:35
+#: 80e725a06e004cc69f8ee875fcc6dfa8
+msgid "Azure address space"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:35
+#: 6d16c5efb5d745cf95e8ff423757616b
+msgid "10.0.0.0/16"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:37
+#: ee5c0ac6e9014725a3fd16837ae0e288
+msgid "Vyos public IP"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:37
+#: fc806f5176d946a9805e3f7baf40c7ce
+msgid "198.51.100.3"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:39
+#: e846499ba5d248af818ff80cd6910265
+msgid "Vyos private IP"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:39
+#: 5e6a6539cd5e45ac9e8f1f9b07c0fc86
+msgid "10.10.0.5"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:41
+#: 90a33f04bce84814be2fb2de47ee9af5
+msgid "Azure VNet Gateway 1 public IP"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:41
+#: 0559c71d81a6400fb5029149976df8d7
+msgid "203.0.113.2"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:43
+#: b834b0cd721542aba5842057601df99e
+msgid "Azure VNet Gateway 2 public IP"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:43
+#: 494e561c165342a995c23b36a38b97f4
+msgid "203.0.113.3"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:45
+#: 801eca976a174615b5cd752c1646d5b6
+msgid "Azure VNet Gateway BGP IP"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:45
+#: 1dd2e30409cb4e1da1af32da8e2ef380
+msgid "10.0.0.4,10.0.0.5"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:47
+#: 500be57e62db42f5a73ba13af5f90661
+msgid "Pre-shared key"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:47
+#: f4e179a9bbd249d0b23c6d6e252a1365
+msgid "ch00s3-4-s3cur3-psk"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:49
+#: 16b7665d8270452080540cc94e6ee8fa
+msgid "Vyos ASN"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:49
+#: 9250aa14f188401d9e4778537e44a36d
+msgid "64499"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:51
+#: 4f57f84278e84e15af808cd47888d74c
+msgid "Azure ASN"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:51
+#: c583b170be9e4aeaaff113835ebee4e1
+msgid "65540"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:55
+#: 58d06a64237740d5921366d353c0cc2e
+msgid "Vyos configuration"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:57
+#: 8752f9b33a9745629c606f160f9f2e18
+msgid ""
+"Configure the IKE and ESP settings to match a subset of those supported by "
+"Azure:"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:79
+#: f91c7ac88fd64a51afaa2497ea5c97a0
+msgid "Enable IPsec on eth0"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:85
+#: b00fe5e7ffe24f7caf9c9ec2145cf006
+msgid "Configure two VTIs with a dummy IP address each"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:95
+#: c78f7df8e90f48d398ddfdf6f25403a1
+msgid "Clamp the VTI's MSS to 1350 to avoid PMTU blackholes."
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:102
+#: 6bad30973bc846639ab878dcf67cbb4f
+msgid "Configure the VPN tunnels"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:130
+#: 44e9904045894f43baea76edb6326273
+msgid ""
+"**Important**: Add an interface route to reach both Azure's BGP listeners"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:137
+#: e86362b48b914a9285d07293c4dfc900
+msgid "Configure your BGP settings"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-dual-bgp.rst:152
+#: 8eff32668c1d4fef849d705526783f9d
+msgid ""
+"**Important**: Disable connected check, otherwise the routes learned from "
+"Azure will not be imported into the routing table."
+msgstr ""

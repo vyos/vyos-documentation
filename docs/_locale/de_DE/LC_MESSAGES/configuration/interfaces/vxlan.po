@@ -1,0 +1,724 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/interfaces/vxlan.rst:7 861f5ae599e742f2919b15bfa636a4a6
+msgid "VXLAN"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:9 3c3d329833414a5687c59245dad6694d
+msgid ""
+":abbr:`VXLAN (Virtual Extensible LAN)` is a network virtualization "
+"technology that attempts to address the scalability problems associated with"
+" large cloud computing deployments. It uses a VLAN-like encapsulation "
+"technique to encapsulate OSI layer 2 Ethernet frames within layer 4 UDP "
+"datagrams, using 4789 as the default IANA-assigned destination UDP port "
+"number. VXLAN endpoints, which terminate VXLAN tunnels and may be either "
+"virtual or physical switch ports, are known as :abbr:`VTEPs (VXLAN tunnel "
+"endpoints)`."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:17
+#: 26316c6cfdfa4532bbd34f3570cd0d48
+msgid ""
+"VXLAN is an evolution of efforts to standardize an overlay encapsulation "
+"protocol. It increases the scalability up to 16 million logical networks and"
+" allows for layer 2 adjacency across IP networks. Multicast or unicast with "
+"head-end replication (HER) is used to flood broadcast, unknown unicast, and "
+"multicast (BUM) traffic."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:23
+#: 79fddbeedccc48119d0e8f371e2eb25d
+msgid ""
+"The VXLAN specification was originally created by VMware, Arista Networks "
+"and Cisco. Other backers of the VXLAN technology include Huawei, Broadcom, "
+"Citrix, Pica8, Big Switch Networks, Cumulus Networks, Dell EMC, Ericsson, "
+"Mellanox, FreeBSD, OpenBSD, Red Hat, Joyent, and Juniper Networks."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:28
+#: 07da17ff720d453cb1e2d8b3893ca56c
+msgid "VXLAN was officially documented by the IETF in :rfc:`7348`."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:30
+#: 312bc701f4ed4e00a097ea0133053efe
+msgid ""
+"If configuring VXLAN in a VyOS virtual machine, ensure that MAC spoofing "
+"(Hyper-V) or Forged Transmits (ESX) are permitted, otherwise forwarded "
+"frames may be blocked by the hypervisor."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:34
+#: ab11a1c69bb5470a801fc2a5f242200f
+msgid ""
+"As VyOS is based on Linux and there was no official IANA port assigned for "
+"VXLAN, VyOS uses a default port of 8472. You can change the port on a per "
+"VXLAN interface basis to get it working across multiple vendors."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:39
+#: 8c5a8c7c253d4b1895bd2ce80f392531
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:42
+#: 02b83fdbc2f04e53bf3c16732716d50b
+msgid "Common interface configuration"
+msgstr ""
+
+#: ../../_include/interface-address.txt:3 653c18aa4561494da3ebea0bf45edd5c
+msgid ""
+"Configure interface `<interface>` with one or more interface addresses."
+msgstr ""
+
+#: ../../_include/interface-address.txt:6 71bd0c05ea8a4652955b410c91695dd5
+msgid ""
+"**address** can be specified multiple times as IPv4 and/or IPv6 address, "
+"e.g. 192.0.2.1/24 and/or 2001:db8::1/64"
+msgstr ""
+
+#: ../../_include/interface-address.txt:9
+#: ../../_include/interface-description.txt:7
+#: ../../_include/interface-disable.txt:7
+#: ../../_include/interface-disable-flow-control.txt:19
+#: ../../_include/interface-disable-link-detect.txt:9
+#: ../../_include/interface-mac.txt:7 ../../_include/interface-mtu.txt:7
+#: ../../_include/interface-ip.txt:27 ../../_include/interface-ip.txt:50
+#: ../../_include/interface-ip.txt:144 ../../_include/interface-ipv6.txt:15
+#: ../../_include/interface-ipv6.txt:28 ../../_include/interface-ipv6.txt:39
+#: ../../_include/interface-ipv6.txt:51 ../../_include/interface-vrf.txt:9
+#: 85c1440ebde046739458cc08b8dc9375 21a27ae41dd0478e8921c4178c3dd960
+#: 1f2088f1d6d44e6c92b7970a0ae6ce60 8e2e4ac8e1274547a54ba61155da6911
+#: 8489c3c9cd2d47eb9b6ef29c3121a2a3 58c30e7dee4a4f1d9083f70b263997ac
+#: 3f2ae39087cc4dc38c8db7c826766559 452f33461dce4124b7858a2cddd10acf
+#: 19bba869306d490280be69696be1252d e2cb58dc453342899a4ef2b53f3a1bc2
+#: f38c70d59faa4518818be55cdb052165 97c4a321888e4ca5bfa0ed0dd14e982c
+#: a6940bfc66f74bd1932c0d4a277cb46f 9bd19c5b8d034647aa83e95f0da0a19b
+#: f96c6d0348b642e5846c46d22ae36eb2
+msgid "Example:"
+msgstr ""
+
+#: ../../_include/interface-description.txt:4 bd5c089ee1fd4f6388d331df1315b0e8
+msgid ""
+"Set a human readable, descriptive alias for this connection. Alias is used "
+"by e.g. the :opcmd:`show interfaces` command or SNMP based monitoring tools."
+msgstr ""
+
+#: ../../_include/interface-disable.txt:4 73c54ed5e5544a939383fdd677f37094
+msgid ""
+"Disable given `<interface>`. It will be placed in administratively down "
+"(``A/D``) state."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:4
+#: e23d83c2bce84b57b30e40f2b301ca2d
+msgid ""
+"Ethernet flow control is a mechanism for temporarily stopping the "
+"transmission of data on Ethernet family computer networks. The goal of this "
+"mechanism is to ensure zero packet loss in the presence of network "
+"congestion."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:8
+#: 676d243f0315463aba3a7c35afe47d38
+msgid ""
+"The first flow control mechanism, the pause frame, was defined by the IEEE "
+"802.3x standard."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:11
+#: fe5cb1e527c24d9eb3fbfee7f33e8f88
+msgid ""
+"A sending station (computer or network switch) may be transmitting data "
+"faster than the other end of the link can accept it. Using flow control, the"
+" receiving station can signal the sender requesting suspension of "
+"transmissions until the receiver catches up."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:16
+#: 489b6f34a79b49ecb8444985b95bec9b
+msgid ""
+"Use this command to disable the generation of Ethernet flow control (pause "
+"frames)."
+msgstr ""
+
+#: ../../_include/interface-disable-link-detect.txt:4
+#: 435f0bca1cee488ab6679c6d3881c6df
+msgid ""
+"Use this command to direct an interface to not detect any physical state "
+"changes on a link, for example, when the cable is unplugged."
+msgstr ""
+
+#: ../../_include/interface-disable-link-detect.txt:7
+#: f9dbed0a960040ce883a30d13efb1836
+msgid "Default is to detects physical link state changes."
+msgstr ""
+
+#: ../../_include/interface-mac.txt:4 77fadc2e085a4ba1abbd89f881fd73c0
+msgid ""
+"Configure user defined :abbr:`MAC (Media Access Control)` address on given "
+"`<interface>`."
+msgstr ""
+
+#: ../../_include/interface-mtu.txt:4 553ada5da7ef461fb618c44671d872c8
+msgid ""
+"Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It"
+" is the size (in bytes) of the largest ethernet frame sent on this link."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:4 ../../_include/interface-ipv6.txt:60
+#: da5725692ac947958eaeb7e09b13c717 8b6801f4e72040a7a5a3b0db8a1e8ce1
+msgid ""
+"As Internet wide PMTU discovery rarely works, we sometimes need to clamp our"
+" TCP MSS value to a specific value. This is a field in the TCP options part "
+"of a SYN packet. By setting the MSS value, you are telling the remote side "
+"unequivocally 'do not try to send me packets bigger than this value'."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:9 c13731a10863498ab456d67a41f9bf4c
+msgid ""
+"This command was introduced in VyOS 1.4 - it was previously called: ``set "
+"firewall options interface <name> adjust-mss <value>``"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:12 ff609c51ef04466d8b56128d61698dcd
+msgid ""
+"MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in 1452 bytes "
+"on a 1492 byte MTU."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:15 ../../_include/interface-ipv6.txt:71
+#: e6647173df5940febea0a7569406e00d 993cc711f0684e82a1c7c00c9fc22554
+msgid ""
+"Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to "
+"automatically set the proper value."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:21 2f039362e97b434babaa612730aa546a
+msgid ""
+"Once a neighbor has been found, the entry is considered to be valid for at "
+"least for this specific time. An entry's validity will be extended if it "
+"receives positive feedback from higher level protocols."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:25 46afb4fa52034043b3cda8fc97a1c8a2
+msgid "This defaults to 30 seconds."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:36 d3f58cb3133d4fbabf001760cf98cba1
+msgid ""
+"If set the kernel can respond to arp requests with addresses from other "
+"interfaces. This may seem wrong but it usually makes sense, because it "
+"increases the chance of successful communication. IP addresses are owned by "
+"the complete host on Linux, not by particular interfaces. Only for more "
+"complex setups like load-balancing, does this behaviour cause problems."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:42 2030c890f148423a9c9c9871641141f5
+msgid ""
+"If not set (default) allows you to have multiple network interfaces on the "
+"same subnet, and have the ARPs for each interface be answered based on "
+"whether or not the kernel would route a packet from the ARP'd IP out that "
+"interface (therefore you must use source based routing for this to work)."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:47 1a49daee52914cb5bb02b9a5ba8f4fa7
+msgid ""
+"In other words it allows control of which cards (usually 1) will respond to "
+"an arp request."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:59 ../../_include/interface-ipv6.txt:48
+#: 18f7de617f3c4486aba7e7a1da21463c 598c280233154eef85320c5c51fae210
+msgid ""
+"Configure interface-specific Host/Router behaviour. If set, the interface "
+"will switch to host mode and IPv6 forwarding will be disabled on this "
+"interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:69 011e73345e9443e1bc481ffba93c4200
+msgid ""
+"Define different modes for IP directed broadcast forwarding as described in "
+":rfc:`1812` and :rfc:`2644`."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:72 f535c0edab444846a03327282fcd46c9
+msgid ""
+"If configured, incoming IP directed broadcast packets on this interface will"
+" be forwarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:75 92d2ce61725e4bfe8b116714e89974f2
+msgid ""
+"If this option is unset (default), incoming IP directed broadcast packets "
+"will not be forwarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:85 e5494815eb8e4cdab930669949a30e29
+msgid ""
+"Define behavior for gratuitous ARP frames who's IP is not already present in"
+" the ARP table. If configured create new entries in the ARP table."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:88 8719d6792af347dcbf90227f8e9ee7f4
+msgid ""
+"Both replies and requests type gratuitous arp will trigger the ARP table to "
+"be updated, if this setting is on."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:91 0284e8a19c8148d18e9ea7dc23f731db
+msgid ""
+"If the ARP table already contains the IP address of the gratuitous arp "
+"frame, the arp table will be updated regardless if this setting is on or "
+"off."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:101 7c37ae8855094bc3afaae4b475cd9cbd
+msgid ""
+"Define different restriction levels for announcing the local source IP "
+"address from IP packets in ARP requests sent on interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:104 a349f62e6831499b8099c5ccff2a96e8
+msgid "Use any local address, configured on any interface if this is not set."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:106 4b5ae8e0d3334aabb04ba418872e9036
+msgid ""
+"If configured, try to avoid local addresses that are not in the target's "
+"subnet for this interface. This mode is useful when target hosts reachable "
+"via this interface require the source IP address in ARP requests to be part "
+"of their logical network configured on the receiving interface. When we "
+"generate the request we will check all our subnets that include the target "
+"IP and will preserve the source address if it is from such subnet. If there "
+"is no such subnet we select source address according to the rules for level "
+"2."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:121 aee5e92031404e79b3cd8257a7c1ccf7
+msgid ""
+"Define different modes for sending replies in response to received ARP "
+"requests that resolve local target IP addresses:"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:124 a571c97ccb5f4be6bb8edd134685c5e7
+msgid ""
+"If configured, reply only if the target IP address is local address "
+"configured on the incoming interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:127 30d493e68a3f4e4ab00048a2007d3797
+msgid ""
+"If this option is unset (default), reply for any local target IP address, "
+"configured on any interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:137 51faa1903f8648e58e874cb3c02f0494
+msgid ""
+"Use this command to enable proxy Address Resolution Protocol (ARP) on this "
+"interface. Proxy ARP allows an Ethernet interface to respond with its own "
+":abbr:`MAC (Media Access Control)` address to ARP requests for destination "
+"IP addresses on subnets attached to other interfaces on the system. "
+"Subsequent packets sent to those destination IP addresses are forwarded "
+"appropriately by the system."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:153 80b676f56c784515b2214e5bb2b92492
+msgid ""
+"Private VLAN proxy arp. Basically allow proxy arp replies back to the same "
+"interface (from which the ARP request/solicitation was received)."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:156 e10e8175f80f4758aff03302083e5867
+msgid ""
+"This is done to support (ethernet) switch features, like :rfc:`3069`, where "
+"the individual ports are NOT allowed to communicate with each other, but "
+"they are allowed to talk to the upstream router. As described in "
+":rfc:`3069`, it is possible to allow these hosts to communicate through the "
+"upstream router by proxy_arp'ing."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:162 0d9b15c1b3d84918937bc20888c57dd8
+msgid "Does not need to be used together with proxy_arp."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:164 bef9c002bf4c43b18dd17314f7155b6f
+msgid "This technology is known by different names:"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:166 c5e66eaa42894b919444ba115db00246
+msgid "In :rfc:`3069` it is called VLAN Aggregation"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:168 139cf4329e5d4b6a833a6b3518a1d828
+msgid "Cisco and Allied Telesyn call it Private VLAN"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:170 6680ee41c8d14b838f93126ec55533e4
+msgid "Hewlett-Packard call it Source-Port filtering or port-isolation"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:172 8dfb99a102aa49d6bdb44d25e7b82a28
+msgid "Ericsson call it MAC-Forced Forwarding (RFC Draft)"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:177 3e9163776b9d426bbebe7024acd9c6ed
+msgid ""
+"Enable policy for source validation by reversed path, as specified in "
+":rfc:`3704`. Current recommended practice in :rfc:`3704` is to enable strict"
+" mode to prevent IP spoofing from DDos attacks. If using asymmetric routing "
+"or other complicated routing, then loose mode is recommended."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:182 90a30406470244ceb8e2010529479723
+msgid ""
+"strict: Each incoming packet is tested against the FIB and if the interface "
+"is not the best reverse path the packet check will fail. By default failed "
+"packets are discarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:186 e3efa5b9d49d4495a2bc0a54bd68dd43
+msgid ""
+"loose: Each incoming packet's source address is also tested against the FIB "
+"and if the source address is not reachable via any interface the packet "
+"check will fail."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:190 d9418e17490c4a22badeebcd573131cb
+msgid "disable: No source validation"
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:4 b1f43c681c274734804516e931f6bf1b
+msgid ""
+":abbr:`SLAAC (Stateless Address Autoconfiguration)` :rfc:`4862`. IPv6 hosts "
+"can configure themselves automatically when connected to an IPv6 network "
+"using the Neighbor Discovery Protocol via :abbr:`ICMPv6 (Internet Control "
+"Message Protocol version 6)` router discovery messages. When first connected"
+" to a network, a host sends a link-local router solicitation multicast "
+"request for its configuration parameters; routers respond to such a request "
+"with a router advertisement packet that contains Internet Layer "
+"configuration parameters."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:12 395b248df78341caadfde30698c7399b
+msgid ""
+"This method automatically disables IPv6 traffic forwarding on the interface "
+"in question."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:25 81e4b4f9b5e640559321657da11cabe7
+msgid ""
+":abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in "
+":rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:37 deec060d699c4d359dbb5ef5186413d5
+msgid "Do not assign a link-local IPv6 address to this interface."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:65 10c9858d52984653b4ea942cfa5695c1
+msgid ""
+"This command was introduced in VyOS 1.4 - it was previously called: ``set "
+"firewall options interface <name> adjust-mss6 <value>``"
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:68 a2b95daa10ba401783fd7434a31bfa3b
+msgid ""
+"MSS value = MTU - 40 (IPv6 header) - 20 (TCP header), resulting in 1432 "
+"bytes on a 1492 byte MTU."
+msgstr ""
+
+#: ../../_include/interface-vrf.txt:4 a9dd6e480e244b208cdd37e605a843b5
+msgid "Place interface in given VRF instance."
+msgstr ""
+
+#: ../../_include/interface-vrf.txt:6 e04116eef19742b7a60d2774810dd5e5
+msgid ""
+"There is an entire chapter about how to configure a :ref:`vrf`, please check"
+" this for additional information."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:49
+#: 1476323fe1c54f98b88e61e3473e54ca
+msgid "VXLAN specific options"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:53
+#: 80dd1b1d972247d99c27e24d530a1401
+msgid ""
+"Each VXLAN segment is identified through a 24-bit segment ID, termed the "
+":abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))`, This allows up"
+" to 16M VXLAN segments to coexist within the same administrative domain."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:59
+#: b064c6b2bebf49c1a0d50f107f200ca3
+msgid "Configure port number of remote VXLAN endpoint."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:61
+#: 88fd9cfc91d74705b8dcf5ee711321cf
+msgid ""
+"As VyOS is Linux based the default port used is not using 4789 as the "
+"default IANA-assigned destination UDP port number. Instead VyOS uses the "
+"Linux default port of 8472."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:67
+#: 3f744f355bef4481bb55ddcedaefb933
+msgid ""
+"Source IP address used for VXLAN underlay. This is mandatory when using "
+"VXLAN via L2VPN/EVPN."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:72
+#: f9f0162c65b54bde997a5a8356580007
+msgid ""
+"Specifies whether an external control plane (e.g. BGP L2VPN/EVPN) or the "
+"internal FDB should be used."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:77
+#: fcf40ec79f7344a0acbb50e2833219d4
+msgid ""
+"Eenables the Generic Protocol extension (VXLAN-GPE). Currently, this is only"
+" supported together with the external keyword."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:81
+#: ea8ed064d99842139fb29f1f91a03472
+msgid "Unicast"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:85
+#: 95b19e1341064663a8897744a5ad653f
+msgid ""
+"IPv4/IPv6 remote address of the VXLAN tunnel. Alternative to multicast, the "
+"remote IPv4/IPv6 address can set directly."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:89
+#: 1800ab3e0d314294a45522b960de7903
+msgid "Multicast"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:93
+#: ec86ed7adb54440fbe1f7f47a4402f7e
+msgid ""
+"Interface used for VXLAN underlay. This is mandatory when using VXLAN via a "
+"multicast network. VXLAN traffic will always enter and exit this interface."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:99
+#: d0b716a849e94f3dbced13299e986051
+msgid ""
+"Multicast group address for VXLAN interface. VXLAN tunnels can be built "
+"either via Multicast or via Unicast."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:102
+#: 9840154fd32c493c910ca16537811da7
+msgid "Both IPv4 and IPv6 multicast is possible."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:105
+#: 37ddf648102d4acdbdc8fd8d8ce0ca5d
+msgid "Multicast VXLAN"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:107
+#: b1fcbb04245b46ba90fc2520b4a31896
+msgid "Topology: PC4 - Leaf2 - Spine1 - Leaf3 - PC5"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:109
+#: a86f72f507ce47fda688f8efd3ffc9e4
+msgid ""
+"PC4 has IP 10.0.0.4/24 and PC5 has IP 10.0.0.5/24, so they believe they are "
+"in the same broadcast domain."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:112
+#: 9e6506a0ad5e47b0bec15a4b12df250f
+msgid ""
+"Let's assume PC4 on Leaf2 wants to ping PC5 on Leaf3. Instead of setting "
+"Leaf3 as our remote end manually, Leaf2 encapsulates the packet into a UDP-"
+"packet and sends it to its designated multicast-address via Spine1. When "
+"Spine1 receives this packet it forwards it to all other leaves who has "
+"joined the same multicast-group, in this case Leaf3. When Leaf3 receives the"
+" packet it forwards it, while at the same time learning that PC4 is "
+"reachable behind Leaf2, because the encapsulated packet had Leaf2's IP "
+"address set as source IP."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:120
+#: 3422507669e04dbeacbf442b9c3475fa
+msgid ""
+"PC5 receives the ping echo, responds with an echo reply that Leaf3 receives "
+"and this time forwards to Leaf2's unicast address directly because it "
+"learned the location of PC4 above. When Leaf2 receives the echo reply from "
+"PC5 it sees that it came from Leaf3 and so remembers that PC5 is reachable "
+"via Leaf3."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:125
+#: 9d0e7a2289144212bc401909e045be60
+msgid ""
+"Thanks to this discovery, any subsequent traffic between PC4 and PC5 will "
+"not be using the multicast-address between the leaves as they both know "
+"behind which Leaf the PCs are connected. This saves traffic as less "
+"multicast packets sent reduces the load on the network, which improves "
+"scalability when more leaves are added."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:131
+#: 73db07c32dc646808feeb341b0c5dd8f
+msgid ""
+"For optimal scalability, Multicast shouldn't be used at all, but instead use"
+" BGP to signal all connected devices between leaves. Unfortunately, VyOS "
+"does not yet support this."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:136
+#: 926a7f86dd7949dfa2c603aaabb8b49e
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:138
+#: 107ad2c3a2ba4decbceb11f7dd0a6dbf
+msgid "The setup is this: Leaf2 - Spine1 - Leaf3"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:140
+#: 916193a4d6204668be8a32c031dd5d13
+msgid ""
+"Spine1 is a Cisco IOS router running version 15.4, Leaf2 and Leaf3 is each a"
+" VyOS router running 1.2."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:143
+#: f9e58e6df40e4d6a811315fbc570286d
+msgid "This topology was built using GNS3."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:145
+#: 8058a20e78a74ed597ac686040016dad
+msgid "Topology:"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:161
+#: 2dce7611b99741e5adbfef04c2aefcec
+msgid "**Spine1 Configuration:**"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:179
+#: 691055343fbb44bb9fbb82905b0925c7
+msgid ""
+"Multicast-routing is required for the leaves to forward traffic between each"
+" other in a more scalable way. This also requires PIM to be enabled towards "
+"the leaves so that the Spine can learn what multicast groups each Leaf "
+"expects traffic from."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:184
+#: 458b3a86f34348e598277ab8179fd711
+msgid "**Leaf2 configuration:**"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:209
+#: 4534495a3a3b476e9de8ff22e94caf20
+msgid "**Leaf3 configuration:**"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:234
+#: fde246b1b0164d30aba06fe4fd8edb92
+msgid ""
+"As you can see, Leaf2 and Leaf3 configuration is almost identical. There are"
+" lots of commands above, I'll try to into more detail below, command "
+"descriptions are placed under the command boxes:"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:242
+#: c9be86b1405540a68f8843486e0b8001
+msgid ""
+"This commands creates a bridge that is used to bind traffic on eth1 vlan 241"
+" with the vxlan241-interface. The IP address is not required. It may however"
+" be used as a default gateway for each Leaf which allows devices on the vlan"
+" to reach other subnets. This requires that the subnets are redistributed by"
+" OSPF so that the Spine will learn how to reach it. To do this you need to "
+"change the OSPF network from '10.0.0.0/8' to '0.0.0.0/0' to allow "
+"172.16/12-networks to be advertised."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:255
+#: 0e61439579354d8d9a45de2547e2c10b
+msgid ""
+"Binds eth1.241 and vxlan241 to each other by making them both member "
+"interfaces of the same bridge."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:262
+#: 6489cee9f7ae49cbac8fe1b2ba49d79e
+msgid ""
+"The multicast-group used by all leaves for this vlan extension. Has to be "
+"the same on all leaves that has this interface."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:269
+#: 2066c6b7213242ce8331e2645c575637
+msgid ""
+"Sets the interface to listen for multicast packets on. Could be a loopback, "
+"not yet tested."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:276
+#: f94113b900fe4be9a24425630b69055d
+msgid ""
+"Sets the unique id for this vxlan-interface. Not sure how it correlates with"
+" multicast-address."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:283
+#: 668dbcb7aaa54add97365968915bfcae
+msgid ""
+"The destination port used for creating a VXLAN interface in Linux defaults "
+"to its pre-standard value of 8472 to preserve backward compatibility. A "
+"configuration directive to support a user-specified destination port to "
+"override that behavior is available using the above command."
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:289
+#: aba21afdabbc4e148e4c30cab03dc66d
+msgid "Unicast VXLAN"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:291
+#: f30d134ae72442c8b1a589d0886f64aa
+msgid ""
+"Alternative to multicast, the remote IPv4 address of the VXLAN tunnel can be"
+" set directly. Let's change the Multicast example from above:"
+msgstr ""
+
+#: ../../configuration/interfaces/vxlan.rst:306
+#: d870be0823214e3aa5ee2fdd008decec
+msgid ""
+"The default port udp is set to 8472. It can be changed with ``set interface "
+"vxlan <vxlanN> port <port>``"
+msgstr ""

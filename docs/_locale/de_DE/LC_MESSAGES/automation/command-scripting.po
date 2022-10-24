@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../automation/command-scripting.rst:6 2c8c2f645849459f89dc1a54980764dc
+msgid "Command Scripting"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:8 a81211b38eec4d71870e462e6651c57f
+msgid ""
+"VyOS supports executing configuration and operational commands non-"
+"interactively from shell scripts."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:11 4cc198a3f7d24c02a154413cabfbcafb
+msgid ""
+"To include VyOS specific functions and aliases you need to ``source "
+"/opt/vyatta/etc/functions/script-template`` files at the top of your script."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:21 195e544d2ec04affbf7cb5f96643fc40
+msgid "Run configuration commands"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:23 17f56fe10e0142e89dae23bf4372c53b
+msgid ""
+"Configuration commands are executed just like from a normal config session. "
+"For example, if you want to disable a BGP peer on VRRP transition to backup:"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:37 be8951ac72144fdf9b0ae534c7040f51
+msgid "Run operational commands"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:39 8c78190b1a15458d9a5f0b0327b58972
+msgid ""
+"Unlike a normal configuration session, all operational commands must be "
+"prepended with ``run``, even if you haven't created a session with "
+"configure."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:50 baf374a95fce4d9a81e78b279342a2ed
+msgid "Run commands remotely"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:52 421af86bb192480ba3dad43c93bd835d
+msgid ""
+"Sometimes you simply wan't to execute a bunch of op-mode commands via SSH on"
+" a remote VyOS system."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:63 db1bcedc53ff4ba8adc0f6efcbc8c6af
+msgid "Will return:"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:77 cbbe6f88dc8d4e009c1e44918d8be89f
+msgid "Other script languages"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:79 46162a174314441ab91c18aa9aaa1323
+msgid ""
+"If you want to script the configs in a language other than bash you can have"
+" your script output commands and then source them in a bash script."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:82 e579b800945a42238f353a642e0a70bc
+msgid "Here is a simple example:"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:102 371f68a335124cc3b41c936e6427fefb
+msgid "Executing Configuration Scripts"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:104 df683ee968244371935d1e5f54381ffc
+msgid ""
+"There is a pitfall when working with configuration scripts. It is tempting "
+"to call configuration scripts with \"sudo\" (i.e., temporary root "
+"permissions), because that's the common way on most Linux platforms to call "
+"system commands."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:108 59f9aad0a42b43fa828f5a80c6dc4b5b
+msgid ""
+"On VyOS this will cause the following problem: After modifying the "
+"configuration via script like this once, it is not possible to manually "
+"modify the config anymore:"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:118 a053834b07a44621845caaa7ea29cec7
+msgid ""
+"This will result in the following error message: ``Set failed`` If this "
+"happens, a reboot is required to be able to edit the config manually again."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:121 9a5ca8218e28475181b872ae7951f075
+msgid ""
+"To avoid these problems, the proper way is to call a script with the "
+"``vyattacfg`` group, e.g., by using the ``sg`` (switch group) command:"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:128 b1877ee52bd24e759b2d42164c56fc63
+msgid ""
+"To make sure that a script is not accidentally called without the "
+"``vyattacfg`` group, the script can be safeguarded like this:"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:138 a73d2d5ad41b4aaca7b8c46e8978f080
+msgid "Executing pre-hooks/post-hooks Scripts"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:140 4b63288775e14ec79d7070908fb6507c
+msgid ""
+"VyOS has the ability to run custom  scripts before and after each commit"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:142 df1cc1dea2984ac18439061fcc497f7e
+msgid ""
+"The default directories where your custom Scripts should be located are:"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:152 512a1b7409f149c09140fe2a7028b912
+msgid ""
+"Scripts are run in alphabetical order. Their names must consist entirely of "
+"ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and "
+"ASCII minus-hyphens.No other characters are allowed."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:156 61e8706e6133433ebf34b6131240b637
+msgid ""
+"Custom scripts are not executed with root privileges (Use sudo inside if "
+"this is necessary)."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:159 a9ffdbf67dd040bbbccabfc967a01f44
+msgid ""
+"A simple example is shown below, where the ops command executed in the post-"
+"hook script is \"show interfaces\"."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:176 364370e38f4e42fbad4a02dc26aadf6b
+msgid "Preconfig on boot"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:178 3015d098134f40f79b42c6cf31397430
+msgid ""
+"The ``/config/scripts/vyos-preconfig-bootup.script`` script is called on "
+"boot before the VyOS configuration during boot process."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:181
+#: ../../automation/command-scripting.rst:200 d6777b5c6e784829a7bcb980465f44d6
+#: fd486e82744a4d9ab8d582376a99fe51
+msgid ""
+"Any modifications were done to work around unfixed bugs and implement "
+"enhancements that are not complete in the VyOS system can be placed here."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:184
+#: ../../automation/command-scripting.rst:203 01578e1114e148bc8c4e57f22fac02b0
+#: 3afb2a6b8ef049fba0b5ee464db29e6d
+msgid "The default file looks like this:"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:195 4122b5cd64b5428b9cea053dd25af3c0
+msgid "Postconfig on boot"
+msgstr ""
+
+#: ../../automation/command-scripting.rst:197 8b08494bbe6340c4bc24143ae5fb4f35
+msgid ""
+"The ``/config/scripts/vyos-postconfig-bootup.script`` script is called on "
+"boot after the VyOS configuration is fully applied."
+msgstr ""
+
+#: ../../automation/command-scripting.rst:212 e7f470d251e24d66affcfc9374388278
+msgid ""
+"For configuration/upgrade management issues, modification of this script "
+"should be the last option. Always try to find solutions based on CLI "
+"commands first."
+msgstr ""

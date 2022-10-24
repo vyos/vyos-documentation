@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../installation/cloud/gcp.rst:3 29b26f15e7f748f1b466543a18a3b4c3
+msgid "Google Cloud Platform"
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:6 654ac50fb3594673935b63dc2a0b440c
+msgid "Deploy VM"
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:8 824ff11aab6846f09998da12e9d4f520
+msgid "To deploy VyOS on GCP (Google Cloud Platform)"
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:10 65206bbef8df4509a3ad6904e6164bf1
+msgid ""
+"Generate SSH key pair type **ssh-rsa** from the host that will connect to "
+"VyOS."
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:13 c6723c5fd1dd4ddd916cb662b9a37b87
+msgid "Example:"
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:20 637f6b97bb07488a9ed985d0552ad68e
+msgid ""
+"In name \"vyos@mypc\" The first value must be \"**vyos**\". Because default "
+"user is vyos and google api uses this option."
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:24 2210aa7c3be34afbbbd3948578f0f1a1
+msgid ""
+"Open GCP console and navigate to the menu **Metadata**. Choose **SSH Keys** "
+"and click ``edit``."
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:30 a0c3238c790c4be58e2ea72525d232c5
+msgid "Click **Add item** and paste your public ssh key. Click ``Save``."
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:35 625c434e3e424928a4db7fca12c0babc
+msgid "On marketplace search \"VyOS\""
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:37 dd43c33369684a1bb19d450963fd403c
+msgid "Change Deployment name/Zone/Machine type and click ``Deploy``"
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:41 84b028ddd69b4a0da06166d2ebf5a4f4
+msgid "After few seconds click to ``instance``"
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:45 bd6a921f1d0544c9bf3c522c4f23d5bc
+msgid "Find out your external IP address"
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:49 3760c0b6b038450583383666136ced6f
+msgid "Connect to the instance. SSH key was generated in the first step."
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:57 f0438e2f4e354413b3b8ea4842f44ea1
+msgid "References"
+msgstr ""
+
+#: ../../installation/cloud/gcp.rst:58 3109982013ca496a99fca54ffa851780
+msgid "https://console.cloud.google.com/"
+msgstr ""

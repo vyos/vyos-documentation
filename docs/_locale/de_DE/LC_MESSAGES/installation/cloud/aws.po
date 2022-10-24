@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../installation/cloud/aws.rst:3 fa54664093364a39981e14f44ddf95cf
+msgid "Amazon AWS"
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:6 bc00657bf70a4765923f6abeb9824406
+msgid "Deploy VM"
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:8 c251a0991fd14e0aba028e50cab126f5
+msgid "Deploy VyOS on Amazon :abbr:`AWS (Amazon Web Services)`"
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:10 95d0e1abb47a4fd4bb576f7ec4bd7b86
+msgid "Click to ``Instances`` and ``Launch Instance``"
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:14 aaf0d9b48f8740fe9f69e609c7f67ef9
+msgid "On the marketplace search \"VyOS\""
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:18 0ba2d2fd5d3f4619b436a224e804e222
+msgid ""
+"Choose the instance type. Minimum recommendation start from ``m3.medium``"
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:22 0c7217547f5545788abcf4d833267f69
+msgid ""
+"Configure instance for your requirements. Select number of instances / "
+"network / subnet"
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:27 80d26657149242d09d4c045e57576bd9
+msgid ""
+"Additional storage. You can remove additional storage ``/dev/sdb``. First "
+"root device will be ``/dev/xvda``. You can skeep this step."
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:32 8d4641263b1c43cbafa717391878a128
+msgid ""
+"Configure Security Group. It's recommended that you configure ssh access "
+"only from certain address sources. Or permit any (by default)."
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:37 55624226e6a94f6cae246dd58fdb9a05
+msgid "Select SSH key pair and click ``Launch Instances``"
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:41 8bf6b966d0fe4d65abfb45134940422d
+msgid "Find out your public IP address."
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:45 69b926ee7952477f85c5e5ad8e84b60f
+msgid "Connect to the instance by SSH key."
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:56 df6c5fc7addb4a20b850a8c4403ec668
+msgid "References"
+msgstr ""
+
+#: ../../installation/cloud/aws.rst:57 7d0ed3dd62674dd48b55e965ea424038
+msgid "https://console.aws.amazon.com/"
+msgstr ""

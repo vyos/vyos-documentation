@@ -1,0 +1,344 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../_include/need_improvement.txt:11 d0332a79660c4150afb4402f262900a7
+msgid "This section needs improvements, examples and explanations."
+msgstr ""
+
+#: ../../_include/need_improvement.txt:13 9dfc4c15b7e44e8984dcdad15c47b498
+msgid ""
+"Please take a look at the Contributing Guide for our :ref:`documentation`."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:7 58089a5ee58b4324926b8bd24b5ff911
+msgid "PKI"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:9 d0b85cf4dfbb4d2ba51e707a187dc818
+msgid ""
+"VyOS 1.4 changed the way in how encrytion keys or certificates are stored on"
+" the system. In the pre VyOS 1.4 era, certificates got stored under /config "
+"and every service referenced a file. That made copying a running "
+"configuration from system A to system B a bit harder, as you had to copy the"
+" files and their permissions by hand."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:15 b0a7c64a5bf34aab8950b7298b7d92f1
+msgid ""
+":vytask:`T3642` describes a new CLI subsystem that serves as a \"certstore\""
+" to all services requiring any kind of encryption key(s). In short, public "
+"and private certificates are now stored in PKCS#8 format in the regular VyOS"
+" CLI. Keys can now be added, edited, and deleted using the regular "
+"set/edit/delete CLI commands."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:21 eef1d7f0ff6d4767917d06224fc7728e
+msgid ""
+"VyOS not only can now manage certificates issued by 3rd party Certificate "
+"Authorities, it can also act as a CA on its own. You can create your own "
+"root CA and sign keys with it by making use of some simple op-mode commands."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:25 025670e87e634f08b5a9f41a2af37e18
+msgid ""
+"Don't be afraid that you need to re-do your configuration. Key "
+"transformation is handled, as always, by our migration scripts, so this will"
+" be a smooth transition for you!"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:30 d0f578b0203e438290794df00b28fe61
+msgid "Key Generation"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:33 e299cfd97020429b926a835ed10e0bea
+msgid "Certificate Authority (CA)"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:35 32f5f0736d0c441dbf6795d6d8d54e31
+msgid ""
+"VyOS now also has the ability to create CAs, keys, Diffie-Hellman and other "
+"keypairs from an easy to access operational level command."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:40 ../../configuration/pki/index.rst:45
+#: b9b023d4836841338b13189b8d0b7a79 2af4158dc4d948a8ae034b6eaf7e21d8
+msgid ""
+"Create a new :abbr:`CA (Certificate Authority)` and output the CAs public "
+"and private key on the console."
+msgstr ""
+
+#: ../../configuration/pki/pki_cli_import_help.txt:1
+#: ../../configuration/pki/pki_cli_import_help.txt:1
+#: ../../configuration/pki/pki_cli_import_help.txt:1
+#: ../../configuration/pki/pki_cli_import_help.txt:1
+#: ../../configuration/pki/pki_cli_import_help.txt:1
+#: ../../configuration/pki/pki_cli_import_help.txt:1
+#: ../../configuration/pki/pki_cli_import_help.txt:1
+#: ../../configuration/pki/index.rst:144 ../../configuration/pki/index.rst:159
+#: a1e969071930495898a24711d52e6055 ef94468c16044b00994bcb18945ca541
+#: 422af7562b05460f876d46e4319dd824 a2f9760b5a6e4ee881fc30e2df681724
+#: cdff35cdb25940959648c2cfffaa193a e9e5c94e0cc344c2a3003441d81a10f0
+#: 72de69f6ab6c48c8ba0c207e1f1e0b56 a3ed3faad7ae47c8a7071ecd7628a399
+#: 18e7c4de5d1e46989c8704cc6b9ea47c
+msgid ""
+"In addition to the command above, the output is in a format which can be "
+"used to directly import the key into the VyOS CLI by simply copy-pasting the"
+" output from op-mode into configuration mode."
+msgstr ""
+
+#: ../../configuration/pki/pki_cli_import_help.txt:5
+#: ../../configuration/pki/pki_cli_import_help.txt:5
+#: ../../configuration/pki/pki_cli_import_help.txt:5
+#: ../../configuration/pki/pki_cli_import_help.txt:5
+#: ../../configuration/pki/pki_cli_import_help.txt:5
+#: ../../configuration/pki/pki_cli_import_help.txt:5
+#: ../../configuration/pki/pki_cli_import_help.txt:5
+#: 7bd63cdab2b643878223df8ddc67c134 9b40e981ee934348918897f4d35e5d5b
+#: 052785e5c3d54a4ca20718f3ee0c003a 53cfdafe80b94c6fb8ca182804c93a4c
+#: b6bbb6c735cf44fa956e361f74a1b9d3 2d2b16d33cc041b08134705823af343d
+#: 45f9ec5324e54cac972831aa3aca8e15
+msgid ""
+"``name`` is used for the VyOS CLI command to identify this key. This key "
+"``name`` is then used in the CLI configuration to reference the key "
+"instance."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:52 0edadd6197464d729bd6d9594f8c9ee4
+msgid ""
+"Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it "
+"using the private key referenced by `ca-name`."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:57 e5a6fb74f0e54295858157bfa9671ad5
+msgid ""
+"Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it "
+"using the private key referenced by `name`."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:63 de9390e7a30c46c5b9a9e0e1f5d359ad
+msgid "Certificates"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:67 ../../configuration/pki/index.rst:71
+#: 9b9586ce09d94e03ab5f4a7ed4436a69 84c9f6fdff794b11ad02cd8fbb45c617
+msgid ""
+"Create a new public/private keypair and output the certificate on the "
+"console."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:77 ../../configuration/pki/index.rst:82
+#: 9b39d3bcff154f7291dcb77f8d7d215a 176a891d00084bb3bbdb222edfb4713c
+msgid ""
+"Create a new self-signed certificate. The public/private is then shown on "
+"the console."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:89 ../../configuration/pki/index.rst:94
+#: adc233cfead6434c90bd93c120881184 93f69a80dbfe4db58d2458c3e7ea6d96
+msgid ""
+"Create a new public/private keypair which is signed by the CA referenced by "
+"`ca-name`. The signed certificate is then output to the console."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:100 c7409b34fbdc42768f0f9e14abfad57c
+msgid "Diffie-Hellman parameters"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:104 ../../configuration/pki/index.rst:111
+#: 4c326571fa8b4cc5b19fd035942f687f 60a0519f0f4640e4a436c118138364ac
+msgid ""
+"Generate a new set of :abbr:`DH (Diffie-Hellman)` parameters. The key size "
+"is requested by the CLI and defaults to 2048 bit."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:107 872bd715596f4d2487c85ab89e3c7b20
+msgid "The generated parameters are then output to the console."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:117 b7068f0a5c0044d2b84586de95a352fa
+msgid "OpenVPN"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:121 ../../configuration/pki/index.rst:126
+#: cb00c6ce7a224e3a97b5c9d0e1cbb161 b209ff7be86646fb924d53d9cd8dbc6f
+msgid ""
+"Genearate a new OpenVPN shared secret. The generated secred is the output to"
+" the console."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:132 c96236236705496793eb9c00fa34236f
+msgid "WireGuard"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:136 ../../configuration/pki/index.rst:141
+#: 7f5e6c564f214a159f1dba0cd285051f 50afb755802a42c880815f69faa88234
+msgid ""
+"Generate a new WireGuard public/private key portion and output the result to"
+" the console."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:148 47d34653b49740ed8dbbcd853b7e9128
+msgid ""
+"``interface`` is used for the VyOS CLI command to identify the WireGuard "
+"interface where this private key is to be used."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:153 ../../configuration/pki/index.rst:157
+#: 5a74fd4cd0c445ef9d092cb055a74587 82eb01b20bac49df927a397f1fcd5fd1
+msgid "Generate a WireGuard pre-shared secret used for peers to communicate."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:163 9d3f174f86564528ab1eed7b9181e228
+msgid ""
+"``peer`` is used for the VyOS CLI command to identify the WireGuard peer "
+"where this secred is to be used."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:167 516304c049c346d9a6a1dccbdb8874d2
+msgid "Key usage (CLI)"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:170 9bedb909ae1a45a0a13129835f7398e5
+msgid "CA (Certificate Authority)"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:174 ff3e925e98474928a7d17726a39147cc
+msgid "Add the public CA certificate for the CA named `name` to the VyOS CLI."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:176 ../../configuration/pki/index.rst:219
+#: 911b233ac4814ad1b2283c1988ab7c1d e9ce9e77d16d4017a52caedd19eee31d
+msgid ""
+"When loading the certificate you need to manually strip the ``-----BEGIN "
+"CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags. Also, the "
+"certificate/key needs to be presented in a single line without line breaks "
+"(``\\n``), this can be done using the following shell command:"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:181 aa32708878c146c0b88e466cd71ed744
+msgid "``$ tail -n +2 ca.pem | head -n -1 | tr -d '\\n'``"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:185 0da7c11604174e6daf3d753dea1896ce
+msgid "Certificate revocation list in PEM format."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:189 286b10ab627e4d2392bdd6ac4ff59354
+msgid "A human readable description what this CA is about."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:193 4d9267b61e82406eb4101fe18343f364
+msgid ""
+"Add the CAs private key to the VyOS CLI. This should never leave the system,"
+" and is only required if you use VyOS as your certificate generator as "
+"mentioned above."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:197 ../../configuration/pki/index.rst:235
+#: 23d3719f7be54a4f93ec3b35b14b11f3 e16474413c02441ea680419546196aea
+msgid ""
+"When loading the certificate you need to manually strip the ``-----BEGIN "
+"KEY-----`` and ``-----END KEY-----`` tags. Also, the certificate/key needs "
+"to be presented in a single line without line breaks (``\\n``), this can be "
+"done using the following shell command:"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:202 34119b41afde4ce1a4336ebf083b64d1
+msgid "``$ tail -n +2 ca.key | head -n -1 | tr -d '\\n'``"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:206 5983b11095fe4c849a0f0c1eb2ba4acd
+msgid ""
+"Mark the CAs private key as password protected. User is asked for the "
+"password when the key is referenced."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:210 4d3078c5c52b4beb85581847a788bb79
+msgid "Server Certificate"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:212 942b65454b1b42188547e9b6d01a45a3
+msgid ""
+"After we have imported the CA certificate(s) we can now import and add "
+"certificates used by services on this router."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:217 3adc1d39ccb24bc38b81bee75b32689c
+msgid ""
+"Add public key portion for the certificate named `name` to the VyOS CLI."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:224 5a4ea3340cce4f4fb04f0bac6d190e63
+msgid "``$ tail -n +2 cert.pem | head -n -1 | tr -d '\\n'``"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:228 075178c064634b7287bb18836609d0f2
+msgid "A human readable description what this certificate is about."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:232 f5ea7285a18945da81673688042c4cd4
+msgid ""
+"Add the private key portion of this certificate to the CLI. This should "
+"never leave the system as it is used to decrypt the data."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:240 9f9d6db54e72405da82063565cea2cf7
+msgid "``$ tail -n +2 cert.key | head -n -1 | tr -d '\\n'``"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:244 84a9bd12ef7a45d480c65a1ac527d824
+msgid ""
+"Mark the private key as password protected. User is asked for the password "
+"when the key is referenced."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:249 22b30725d2e24cc383090337d22521f3
+msgid "If CA is present, this certificate will be included in generated CRLs"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:252 159617d83a264c549e09e7309e8618b4
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:254 be9c4115484a42e997e0daa52057c718
+msgid ""
+"VyOS operational mode commands are not only available for generating keys "
+"but also to display them."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:259 f9e5cb6847b247cdb680b6179bc56873
+msgid ""
+"Show a list of installed :abbr:`CA (Certificate Authority)` certificates."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:273 6a0e9fe0f16942168fdcbac485e8a90d
+msgid "Show only information for specified Certificate Authority."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:277 8eaff6ce373241cb83fca30ec6ad9651
+msgid "Show a list of installed certificates"
+msgstr ""
+
+#: ../../configuration/pki/index.rst:290 3ae771ed47f84509882ae5fb4eb9e2ce
+msgid "Show only information for specified certificate."
+msgstr ""
+
+#: ../../configuration/pki/index.rst:294 34c59f8cae974d68a00f0ae556403c5e
+msgid "Show a list of installed :abbr:`CRLs (Certificate Revocation List)`."
+msgstr ""

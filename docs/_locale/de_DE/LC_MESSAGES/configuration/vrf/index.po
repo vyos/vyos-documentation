@@ -1,0 +1,392 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/vrf/index.rst:7 7d761814c7d748748ca9ff3448151643
+msgid "VRF"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:9 7ecc74eed4ef40ca921d21f519faebe7
+msgid ""
+":abbr:`VRF (Virtual Routing and Forwarding)` devices combined with ip rules "
+"provides the ability to create virtual routing and forwarding domains (aka "
+"VRFs, VRF-lite to be specific) in the Linux network stack. One use case is "
+"the multi-tenancy problem where each tenant has their own unique routing "
+"tables and in the very least need different default gateways."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:16 ../../configuration/vrf/index.rst:216
+#: ../../configuration/vrf/index.rst:361 9b9ed76ed7e040f1b508dd419e6ef863
+#: 2e8beb8193a54e87884f5040f27744aa 6baaa474425f4b5a960e7e5d331ab180
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:18 61621b00c4204c73b89b26a98ca7594e
+msgid ""
+"A VRF device is created with an associated route table. Network interfaces "
+"are then enslaved to a VRF device."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:23 74308367e24143eda443807983b4bedd
+msgid ""
+"Create new VRF instance with `<name>`. The name is used when placing "
+"individual interfaces into the VRF."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:28 3ad5233400b5479aaacc6957cae216d3
+msgid "Configured routing table `<id>` is used by VRF `<name>`."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:30 df8b5fe5b1084459bb8764de0aaec403
+msgid ""
+"A routing table ID can not be modified once it is assigned. It can only be "
+"changed by deleting and re-adding the VRF instance."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:36 1299bcdb976c4355bb471d13ef8250bd
+msgid ""
+"By default the scope of the port bindings for unbound sockets is limited to "
+"the default VRF. That is, it will not be matched by packets arriving on "
+"interfaces enslaved to a VRF and processes may bind to the same port if they"
+" bind to a VRF."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:41 f92ca6b9359946788e73a96bf5b4a577
+msgid ""
+"TCP & UDP services running in the default VRF context (ie., not bound to any"
+" VRF device) can work across all VRF domains by enabling this option."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:45 31ba69922d094ef994df09589e195643
+msgid "Interfaces"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:47 817f51cf082f4901b3774c3c6ce825d4
+msgid ""
+"When VRFs are used it is not only mandatory to create a VRF but also the VRF"
+" itself needs to be assigned to an interface."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:53 ec4e46ac9d5e463dbf836a28d7d67534
+msgid "Assign interface identified by `<interface>` to VRF named `<name>`."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:56 030855681ec24f02942aa9698617f0b0
+msgid "Routing"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:58 4fa761c083bd4ebe84e32bda588d8964
+msgid "VyOS 1.4 (sagitta) introduced dynamic routing support for VRFs."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:60 acec433d33de40b68b8d0c962eb25f33
+msgid "Currently dynamic routing is supported for the following protocols:"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:62 06b99f568f0141d19ec6150f50febc6a
+msgid ":ref:`routing-bgp`"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:63 aea7c0c3c71b4a2a93b4182caa6a9832
+msgid ":ref:`routing-isis`"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:64 4c7a31846d1e4cc083805c58ac041de7
+msgid ":ref:`routing-ospf`"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:65 9bf16542853a47348922a24836a13471
+msgid ":ref:`routing-ospfv3`"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:66 ff57bda3be4c4756896f2a82b7063421
+msgid ":ref:`routing-static`"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:68 f1c5f2f1970d43f7b0858240c5025ee7
+msgid ""
+"The CLI configuration is same as mentioned in above articles. The only "
+"difference is, that each routing protocol used, must be prefixed with the "
+"`vrf name <name>` command."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:73 ../../configuration/vrf/index.rst:195
+#: f1b96234a3ae450cbf4de15c9be250f8 5ba8e9699f654c83b4eb42e39b947e71
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:75 317cc686eec14c2a8c32e2b3bef89df8
+msgid ""
+"The following commands would be required to set options for a given dynamic "
+"routing protocol inside a given vrf:"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:78 28d2bf5789e34304aa03b2139c14b2df
+msgid ":ref:`routing-bgp`: ``set vrf name <name> protocols bgp ...``"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:79 73f6111303e044b28cf0072789e04ce1
+msgid ":ref:`routing-isis`: ``set vrf name <name> protocols isis ...``"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:80 79afdf830d924ec2bc106973c7279d95
+msgid ":ref:`routing-ospf`: ``set vrf name <name> protocols ospf ...``"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:81 19d4f4222f5e4d978cb68f63dff52baa
+msgid ":ref:`routing-ospfv3`: ``set vrf name <name> protocols ospfv3 ...``"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:82 c4389d11b1294257a2645b438b05172d
+msgid ":ref:`routing-static`: ``set vrf name <name> protocols static ...``"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:85 ../../configuration/vrf/index.rst:248
+#: ../../configuration/vrf/index.rst:413 b2a1d23763494c8d931a4c10327cc560
+#: 01b91407df7a4d45b97f9a0df342865c af49ae17fb86491e8e6787764760f4b3
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:87 a71f5b28d2ed42a6971fbe1e5f05e37c
+msgid ""
+"It is not sufficient to only configure a VRF but VRFs must be maintained, "
+"too. For VRF maintenance the following operational commands are in place."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:92 a490343d3c084a568f61ace8a47a629c
+msgid "Lists VRFs that have been created"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:102 ddb282cbf9db483c99f9b44c77876d5a
+msgid ""
+"Command should probably be extended to list also the real interfaces "
+"assigned to this one VRF to get a better overview."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:116 493adc9dedae48199cd1e498c7949f2d
+msgid "Display IPv4 routing table for VRF identified by `<name>`."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:135 626f19bb4b334340a8936c5a1d71abc6
+msgid "Display IPv6 routing table for VRF identified by `<name>`."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:155 24aca736b51349c496b9360158892f36
+msgid ""
+"The ping command is used to test whether a network host is reachable or not."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:157 510df0c7a4a940ebbbae0ce48c001c97
+msgid ""
+"Ping uses ICMP protocol's mandatory ECHO_REQUEST datagram to elicit an ICMP "
+"ECHO_RESPONSE from a host or gateway. ECHO_REQUEST datagrams (pings) will "
+"have an IP and ICMP header, followed by \"struct timeval\" and an arbitrary "
+"number of pad bytes used to fill out the packet."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:162 4cdee88f5cf843b596038b67c5595257
+msgid ""
+"When doing fault isolation with ping, you should first run it on the local "
+"host, to verify that the local network interface is up and running. Then, "
+"continue with hosts and gateways further down the road towards your "
+"destination. Round-trip time and packet loss statistics are computed."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:167 2aa9067f1ef7480eb59979f43304936b
+msgid ""
+"Duplicate packets are not included in the packet loss calculation, although "
+"the round-trip time of these packets is used in calculating the minimum/ "
+"average/maximum round-trip time numbers."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:171 c6c2dc0b0a7248b28b47c4434e2c5581
+msgid ""
+"Ping command can be interrupted at any given time using `<Ctrl>+c`- A brief "
+"statistic is shown afterwards."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:187 01381f302fff45af8258e197b8e92202
+msgid ""
+"Displays the route packets taken to a network host utilizing VRF instance "
+"identified by `<name>`. When using the IPv4 or IPv6 option, displays the "
+"route packets taken to the given hosts IP address family. This option is "
+"useful when the host is specified as a hostname rather than an IP address."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:198 ../../configuration/vrf/index.rst:205
+#: 6ec5cff6507e401982ec84a7259f541d d11d886d6b904d71b90ae07c707abb2c
+msgid "VRF route leaking"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:200 00d3c6f99c45454ba68f0426ef0efbf3
+msgid "The following example topology was built using EVE-NG."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:205 14c8db18a4194e86bb8493a2d5133716
+msgid "VRF topology example"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:207 6216aaa53f164049bff77a478db8bd71
+msgid "PC1 is in the ``default`` VRF and acting as e.g. a \"fileserver\""
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:208 0c4260075db946aaa7af4cdcc693a03e
+msgid "PC2 is in VRF ``blue`` which is the development department"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:209 ff4037cdc9d9459398e7c32aa4dc6282
+msgid ""
+"PC3 and PC4 are connected to a bridge device on router ``R1`` which is in "
+"VRF ``red``. Say this is the HR department."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:211 926c252502c44fb09fdfa0400b741bde
+msgid ""
+"R1 is managed through an out-of-band network that resides in VRF ``mgmt``"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:250 f5363d39ac5c40afbe4fc4022ea12f04
+msgid ""
+"After committing the configuration we can verify all leaked routes are "
+"installed, and try to ICMP ping PC1 from PC3."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:272 fffc413d921c40aa8f402fe8021ed599
+msgid "VRF default routing table"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:288 bdadbd1ddca64a2abae1d2996b21fe5c
+msgid "VRF red routing table"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:305 9363fe69cfc94f9689d90689c009cdb0
+msgid "VRF blue routing table"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:324 2de726d9d2054e07b357ffa7de994323
+msgid "L3VPN VRFs"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:326 847eaf908e594f708b8c67f1bd1fe073
+msgid ""
+":abbr:`L3VPN VRFs ( Layer 3 Virtual Private Networks )` bgpd supports for "
+"IPv4 RFC 4364 and IPv6 RFC 4659. L3VPN routes, and their associated VRF MPLS"
+" labels, can be distributed to VPN SAFI neighbors in the default, i.e., non "
+"VRF, BGP instance. VRF MPLS labels are reached using core MPLS labels which "
+"are distributed using LDP or BGP labeled unicast. bgpd also supports inter-"
+"VRF route leaking."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:336 77ff5331b496455c8c1ce1059e13d014
+msgid "VRF Route Leaking"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:338 3ceaf3190b114e7d87c8681f4d010835
+msgid ""
+"BGP routes may be leaked (i.e. copied) between a unicast VRF RIB and the VPN"
+" SAFI RIB of the default VRF for use in MPLS-based L3VPNs. Unicast routes "
+"may also be leaked between any VRFs (including the unicast RIB of the "
+"default BGP instance). A shortcut syntax is also available for specifying "
+"leaking from one VRF to another VRF using the default instance’s VPN RIB as "
+"the intemediary . A common application of the VRF-VRF feature is to connect "
+"a customer’s private routing domain to a provider’s VPN service. Leaking is "
+"configured from the point of view of an individual VRF: import refers to "
+"routes leaked from VPN to a unicast VRF, whereas export refers to routes "
+"leaked from a unicast VRF to VPN."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:350 ba2c3d1b024b402d91b54d8f6924f192
+msgid ""
+"Routes exported from a unicast VRF to the VPN RIB must be augmented by two "
+"parameters:"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:353 6784799133c5442492a1cc649c90bf23
+msgid "an RD / RTLIST"
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:355 600ffddcba364fb6bd5717da9d8cc718
+msgid ""
+"Configuration for these exported routes must, at a minimum, specify these "
+"two parameters."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:363 79d2c843e7b34cf4b575c9574af95a3b
+msgid ""
+"Configuration of route leaking between a unicast VRF RIB and the VPN SAFI "
+"RIB of the default VRF is accomplished via commands in the context of a VRF "
+"address-family."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:370 e263ca1be65342f5b6f274cc18d0509d
+msgid ""
+"Specifies the route distinguisher to be added to a route exported from the "
+"current unicast VRF to VPN."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:377 b7864249eae64faea2937d78a7deac56
+msgid ""
+"Specifies the route-target list to be attached to a route (export) or the "
+"route-target list to match against (import) when exporting/importing between"
+" the current unicast VRF and VPN.The RTLIST is a space-separated list of "
+"route-targets, which are BGP extended community values as described in "
+"Extended Communities Attribute."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:386 75192081e1974e49953a4590e46c0d69
+msgid ""
+"Enables an MPLS label to be attached to a route exported from the current "
+"unicast VRF to VPN. If the value specified is auto, the label value is "
+"automatically assigned from a pool maintained."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:394 931d1fcabf014d11971011188d45e028
+msgid ""
+"Specifies an optional route-map to be applied to routes imported or exported"
+" between the current unicast VRF and VPN."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:400 4556ffd9c8e9447a9175de384372aab1
+msgid ""
+"Enables import or export of routes between the current unicast VRF and VPN."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:405 001eb3ef87c0483eb046838e7acad218
+msgid ""
+"Shortcut syntax for specifying automatic leaking from vrf VRFNAME to the "
+"current VRF using the VPN RIB as intermediary. The RD and RT are auto "
+"derived and should not be specified explicitly for either the source or "
+"destination VRF’s."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:415 0c3d4e32e3fd4df295c066e3f3fd9b46
+msgid ""
+"It is not sufficient to only configure a L3VPN VRFs but L3VPN VRFs must be "
+"maintained, too.For L3VPN VRF maintenance the following operational commands"
+" are in place."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:421 cc6b1b5a3e764ec78bc1f54491eee717
+msgid "Print active IPV4 or IPV6 routes advertised via the VPN SAFI."
+msgstr ""
+
+#: ../../configuration/vrf/index.rst:442 f94f3971ae8148bbadbc698397d9c1dd
+msgid ""
+"Print a summary of neighbor connections for the specified AFI/SAFI "
+"combination."
+msgstr ""

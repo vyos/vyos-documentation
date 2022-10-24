@@ -1,0 +1,47 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/system/conntrack.rst:3 00592094fdcc4840aa515ed9206b170f
+msgid "Connection tracking"
+msgstr ""
+
+#: ../../configuration/system/conntrack.rst:6 1b3b94e0296241f791b2c73b6fb576f4
+msgid "Modules"
+msgstr ""
+
+#: ../../configuration/system/conntrack.rst:22
+#: 8e49e9ba31a449899efa9ff0fa534a05
+msgid ""
+"Enables ``conntrack`` modules. All modules are now disabled by default, "
+"while they used to be enabled in previous versions. Enabling the modules "
+"ensures backwards compatibility — keeping the previous behavior."
+msgstr ""
+
+#: ../../configuration/system/conntrack.rst:26
+#: bc264b665fae40c595e4ac7dbb3541e9
+msgid ""
+"In most cases they can be disabled by removing the block of configuration."
+msgstr ""
+
+#: ../../configuration/system/conntrack.rst:32
+#: 19bba7dcbe60459e934c51567a5333b8
+msgid ""
+"For some scenarios it is in fact recommended, like in this example: "
+":ref:`example-high-availability`."
+msgstr ""

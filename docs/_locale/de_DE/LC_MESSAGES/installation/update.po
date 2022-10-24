@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../installation/update.rst:4 4bc5dd3bb9754bbd93b1c8ab33bfbe8e
+msgid "Update VyOS"
+msgstr ""
+
+#: ../../installation/update.rst:6 2c9913c0eab849b5b385f91f50e460d2
+msgid ""
+"New system images can be added using the :opcmd:`add system image` command. "
+"The command will extract the chosen image and will prompt you to use the "
+"current system configuration and SSH security keys, allowing for the new "
+"image to boot using the current configuration."
+msgstr ""
+
+#: ../../installation/update.rst:11 05d145d97c464397b34046571b6d3ddf
+msgid "Only LTS releases are PGP-signed."
+msgstr ""
+
+#: ../../installation/update.rst:16 7e5df5fbf3ab461ba2915cadd5106d19
+msgid ""
+"Use this command to install a new system image. You can reach the image from"
+" the web (``http://``, ``https://``) or from your local system, e.g.  "
+"/tmp/vyos-1.2.3-amd64.iso."
+msgstr ""
+
+#: ../../installation/update.rst:20 9c18ec3117204a44838e354b958c6d03
+msgid ""
+"The `add system image` command also supports installing new versions of VyOS"
+" through an optional given VRF. Also if URL in question requires "
+"authentication, you can specify an optional username and password via the "
+"commandline which will be passed as \"Basic-Auth\" to the server."
+msgstr ""
+
+#: ../../installation/update.rst:25 3bd24934870940749266b676c1155f5b
+msgid ""
+"If there is not enough **free disk space available**, the installation will "
+"be canceled. To delete images use the :opcmd:`delete system image` command."
+msgstr ""
+
+#: ../../installation/update.rst:29 059337f189cb4483ace29f3ba214ddce
+msgid ""
+"VyOS configuration is associated to each image, and **each image has a "
+"unique copy of its configuration**. This is different than a traditional "
+"network router where the configuration is shared across all images."
+msgstr ""
+
+#: ../../installation/update.rst:33 955eaf213662477bb905c0d835f51f43
+msgid ""
+"If you have any personal files, like some scripts you created, and you don't"
+" want them to be lost during the upgrade, make sure those files are stored "
+"in ``/config`` as this directory is always copied to newer installed images."
+msgstr ""
+
+#: ../../installation/update.rst:38 11b4d8caacd5449bb9dce5a736da0b62
+msgid ""
+"You can access files from a previous installation and copy them to your "
+"current image if they were located in the ``/config`` directory. This can be"
+" done using the :opcmd:`copy` command. So, for instance, in order to copy "
+"``/config/config.boot`` from VyOS 1.2.1 image, you would use the following "
+"command:"
+msgstr ""
+
+#: ../../installation/update.rst:50 994b192022b1498ea780dfad64ad1fb0
+msgid "Example"
+msgstr ""
+
+#: ../../installation/update.rst:76 f8e9ec6c51bf42559f2a4a77e99e5d91
+msgid ""
+"The most up-do-date Rolling Release for AMD64 can be accessed using the "
+"following URL:"
+msgstr ""
+
+#: ../../installation/update.rst:79 77f511fb439b493db7ff4469006798a4
+msgid "https://vyos.net/get/nightly-builds/"
+msgstr ""
+
+#: ../../installation/update.rst:81 5670c6b63d1e4d9a933c46f87b331c12
+msgid ""
+"After reboot you might want to verify the version you are running with the "
+":opcmd:`show version` command."
+msgstr ""

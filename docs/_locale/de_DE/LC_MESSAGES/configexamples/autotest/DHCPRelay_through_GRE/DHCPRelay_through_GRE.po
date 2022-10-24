@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:3
+#: b6d67f49feb24b3fa122917d1713c0ba
+msgid "DHCP Relay trough GRE-Bridge"
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:6
+#: 1d016bc7120144c1a698121e631b88ce
+msgid "Testdate: 2022-10-09"
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:7
+#: 6e048b6b5d1e4ed6b4f25e94edecf47b
+msgid "Version: 1.4-rolling-202210090955"
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:10
+#: 127597ad8c8f4e5eb5d2b85948c155dd
+msgid ""
+"This simple structure shows how to configure a DHCP Relay over a GRE Bridge "
+"interface."
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:15
+#: 836e04717d9b453d93aa06d489e25a0d
+msgid "Topology"
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:17
+#: 153ef16cb87c40c29370123457b2278c
+msgid ""
+"The topology has 3 VyOS routers and one client. Between the DHCP Server and "
+"the DHCP Relay is a GRE tunnel. The `transport` VyOS represent a large "
+"Network."
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rstNone
+#: e3f84da3f42e4d51862669dd2cb899b2
+msgid "Ansible Example topology image"
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:26
+#: 78c31c77e3374b9287e0f46c5547ff07
+msgid "Configuration"
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:28
+#: 85735f69fefc4e47a6eeb0a79631ea61
+msgid "First, we configure the transport network and the Tunnel interface."
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:31
+#: 635c882d632a43dc83f0f02362c57f56
+msgid "Transport:"
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:37
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:55
+#: e87f4b14b9ae4bfda9bbf5436e2580ee cd57953b80374d54ae35108ce6357ed2
+msgid "DHCP-Server"
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:44
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:62
+#: 379e70552a164cfe986786970522535d 77e16e1cf47f416d9877c94023f07a85
+msgid "DHCP-Relay"
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:51
+#: d6c3ef6fe4d84842af6b47146a6bf09d
+msgid ""
+"After this, we need the DHCP-Server and Relay configuration. To get a "
+"testable result, we just have one IP in the DHCP range. Expand it as you "
+"need it."
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:71
+#: cf696a295396415b829948546d904674
+msgid "Test the result"
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:73
+#: 1c9009bcb8ef4063a0dbc89927cb394e
+msgid "Ping the Client from the DHCP Server."
+msgstr ""
+
+#: ../../configexamples/autotest/DHCPRelay_through_GRE/DHCPRelay_through_GRE.rst:90
+#: 7deadd4f386f48b48429ebd1d788fbf9
+msgid "And show all DHCP Leases"
+msgstr ""

@@ -1,0 +1,267 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/protocols/rpki.rst:5 1bd61b4c15664efdbca3b9b4df271aca
+msgid "RPKI"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:9 e6cfd8941dec4bceb55ae5121148b571
+msgid ""
+"There are two types of Network Admins who deal with BGP, those who have "
+"created an international incident and/or outage, and those who are lying"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:16 220f227c43f1419fb5c051e721c70d08
+msgid "`tweet by EvilMog`_, 2020-02-21"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:14 44119109520d462d86a9d6fc6ccd97b1
+msgid ""
+":abbr:`RPKI (Resource Public Key Infrastructure)` is a framework :abbr:`PKI "
+"(Public Key Infrastructure)` designed to secure the Internet routing "
+"infrastructure. It associates BGP route announcements with the correct "
+"originating :abbr:`ASN (Autonomus System Number)` which BGP routers can then"
+" use to check each route against the corresponding :abbr:`ROA (Route Origin "
+"Authorisation)` for validity. RPKI is described in :rfc:`6480`."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:21 6ad01fd0e5bb48a887151f3178e9d08e
+msgid ""
+"A BGP-speaking router like VyOS can retrieve ROA information from RPKI "
+"\"Relying Party software\" (often just called an \"RPKI server\" or \"RPKI "
+"validator\") by using :abbr:`RTR (RPKI to Router)` protocol. There are "
+"several open source implementations to choose from, such as NLNetLabs' "
+"Routinator_ (written in Rust), Cloudflare's GoRTR_ and OctoRPKI_ (written in"
+" Go), and RIPE NCC's RPKI Validator_ (written in Java). The RTR protocol is "
+"described in :rfc:`8210`."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:30 d954e8652e7544d9bd395c4c794daf58
+msgid ""
+"If you are new to these routing security technologies then there is an "
+"`excellent guide to RPKI`_ by NLnet Labs which will get you up to speed very"
+" quickly. Their documentation explains everything from what RPKI is to "
+"deploying it in production. It also has some `help and operational "
+"guidance`_ including \"What can I do about my route having an Invalid "
+"state?\""
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:39 1cf071e50cfb42289176729dbe394f7a
+msgid "Getting started"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:41 ad74482bc987491b9eaa4621315fc46e
+msgid ""
+"First you will need to deploy an RPKI validator for your routers to use. The"
+" RIPE NCC helpfully provide `some instructions`_ to get you started with "
+"several different options.  Once your server is running you can start "
+"validating announcements."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:46 9f395bc595e14b29ad5e25732eef541d
+msgid "Imported prefixes during the validation may have values:"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:50 77da08266569477f8938c275d180d8b4
+msgid "valid"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:49 cd9d9e6e8d864e1ebf72445b693a6525
+msgid ""
+"The prefix and ASN that originated it match a signed ROA. These are probably"
+" trustworthy route announcements."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:56 fc73537ac7b740018df729dc62c99176
+msgid "invalid"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:53 e51152de42cd45d8a8c4444c541f7a1f
+msgid ""
+"The prefix or prefix length and ASN that originated it doesn't match any "
+"existing ROA. This could be the result of a prefix hijack, or merely a "
+"misconfiguration, but should probably be treated as untrustworthy route "
+"announcements."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:61 393184b5732947f3924f8711c5eb16f7
+msgid "notfound"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:59 0d7810f523da4aaa8ff3af02cdf509b3
+msgid ""
+"No ROA exists which covers that prefix. Unfortunately this is the case for "
+"about 80% of the IPv4 prefixes which were announced to the :abbr:`DFZ "
+"(default-free zone)` at the start of 2020"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:64 ca90c7c8c5d748eab9029abcdcfc9f33
+msgid ""
+"If you are responsible for the global addresses assigned to your network, "
+"please make sure that your prefixes have ROAs associated with them to avoid "
+"being `notfound` by RPKI. For most ASNs this will involve publishing ROAs "
+"via your :abbr:`RIR (Regional Internet Registry)` (RIPE NCC, APNIC, ARIN, "
+"LACNIC or AFRINIC), and is something you are encouraged to do whenever you "
+"plan to announce addresses into the DFZ."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:71 f2f8bc07e9d44ebe9bebb09c45913941
+msgid ""
+"Particularly large networks may wish to run their own RPKI certificate "
+"authority and publication server instead of publishing ROAs via their RIR. "
+"This is a subject far beyond the scope of VyOS' documentation. Consider "
+"reading about Krill_ if this is a rabbit hole you need or especially want to"
+" dive down."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:78 76089628d8ce402ab91e0adde43a2898
+msgid "Features of the Current Implementation"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:80 f8ad2f7d942643beab4327271108a05d
+msgid ""
+"In a nutshell, the current implementation provides the following features:"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:82 19b31ea1b4e74aa79f078b32117ebd89
+msgid ""
+"The BGP router can connect to one or more RPKI cache servers to receive "
+"validated prefix to origin AS mappings. Advanced failover can be implemented"
+" by server sockets with different preference values."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:86 b445b9b18f054e288d8b56cb962a43b5
+msgid ""
+"If no connection to an RPKI cache server can be established after a pre-"
+"defined timeout, the router will process routes without prefix origin "
+"validation. It still will try to establish a connection to an RPKI cache "
+"server in the background."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:91 b9c92a88e7914870ae611a9db500a84b
+msgid ""
+"By default, enabling RPKI does not change best path selection. In "
+"particular, invalid prefixes will still be considered during best path "
+"selection. However, the router can be configured to ignore all invalid "
+"prefixes."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:95 26514a15701044b095230a997dce447d
+msgid ""
+"Route maps can be configured to match a specific RPKI validation state. This"
+" allows the creation of local policies, which handle BGP routes based on the"
+" outcome of the Prefix Origin Validation."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:99 45e342fa456940a4b3b4e5d4b5cea3f9
+msgid ""
+"Updates from the RPKI cache servers are directly applied and path selection "
+"is updated accordingly. (Soft reconfiguration must be enabled for this to "
+"work)."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:104 a7ba2bf755da42f48595901da621cf6e
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:108 03511dc3a83d4e408ade97a500c65232
+msgid "Define the time interval to update the local cache"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:110 9b0b1087ef1846d9996c4e891958b27c
+msgid "The default value is 300 seconds."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:114 e2aef470087c476aab20592744a01950
+msgid ""
+"Defined the IPv4, IPv6 or FQDN and port number of the caching RPKI caching "
+"instance which is used."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:117
+#: ../../configuration/protocols/rpki.rst:124 6c88944bb61342e2883ed1d3566d7db5
+#: 44de7c2448ed40b09a66e47cb98e52f9
+msgid "This is a mandatory setting."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:121 65de0f2c2dfe4d7d8d1bbec0e0592f49
+msgid ""
+"Multiple RPKI caching instances can be supplied and they need a preference "
+"in which their result sets are used."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:127 b6e433899a3a4a4098b5e36c17a864d6
+msgid "SSH"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:129 756c3bee52fe4f42877799de5947d2f3
+msgid ""
+"Connections to the RPKI caching server can not only be established by "
+"HTTP/TLS but you can also rely on a secure SSH session to the server. To "
+"enable SSH you first need to create yoursels an SSH client keypair using "
+"``generate ssh client-key /config/auth/id_rsa_rpki``. Once your key is "
+"created you can setup the connection."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:137 de30b47273e74d7595377eddcab3d1d7
+msgid "SSH username to establish an SSH connection to the cache server."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:141 ca9167aa471a461084c2c9b36d6923a6
+msgid "Local path that includes the known hosts file."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:145 3c75b30efdf14b5fbd98db779033eac4
+msgid "Local path that includes the private key file of the router."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:149 6abc754d30f140b18a58198690f2afd6
+msgid "Local path that includes the public key file of the router."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:151 0f33a93c3f6c4beda15cb4d9246de6e9
+msgid ""
+"When using SSH, known-hosts-file, private-key-file and public-key-file are "
+"mandatory options."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:156 b2100d8f6db146a1bec22156c151cc1c
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:158 71524aff9c254b919fe68224ac362f95
+msgid ""
+"We can build route-maps for import based on these states. Here is a simple "
+"RPKI configuration, where `routinator` is the RPKI-validating \"cache\" "
+"server with ip `192.0.2.1`:"
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:167 0ab8a8f3af1344f88143d6000036a12e
+msgid ""
+"Here is an example route-map to apply to routes learned at import. In this "
+"filter we reject prefixes with the state `invalid`, and set a higher `local-"
+"preference` if the prefix is RPKI `valid` rather than merely `notfound`."
+msgstr ""
+
+#: ../../configuration/protocols/rpki.rst:183 ed77a709999b4ab2bf29c2b7dc4b7fae
+msgid ""
+"Once your routers are configured to reject RPKI-invalid prefixes, you can "
+"test whether the configuration is working correctly using the `RIPE Labs "
+"RPKI Test`_ experimental tool."
+msgstr ""

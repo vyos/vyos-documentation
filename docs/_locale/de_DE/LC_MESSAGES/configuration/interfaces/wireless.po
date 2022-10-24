@@ -1,0 +1,1572 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/interfaces/wireless.rst:7
+#: 20115b15c5c645bea759c2601c38514b
+msgid "WLAN/WIFI - Wireless LAN"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:9
+#: e529c649b2a04616af0b5f31a9fdf7c9
+msgid ""
+":abbr:`WLAN (Wireless LAN)` interface provide 802.11 (a/b/g/n/ac) wireless "
+"support (commonly referred to as Wi-Fi) by means of compatible hardware. If "
+"your hardware supports it, VyOS supports multiple logical wireless "
+"interfaces per physical device."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:14
+#: 50064d15971c4d5b9e5c9ee68cc7ff8a
+msgid "There are three modes of operation for a wireless interface:"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:16
+#: 5b8df8d4acaf483b9cca233de479e192
+msgid ""
+":abbr:`WAP (Wireless Access-Point)` provides network access to connecting "
+"stations if the physical hardware supports acting as a WAP"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:19
+#: a9bd389b390c49ce9f5404460a88e6de
+msgid ""
+"A station acts as a Wi-Fi client accessing the network through an available "
+"WAP"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:22
+#: d7add0b075854fada71bbfb9aa49230b
+msgid "Monitor, the system passively monitors any kind of wireless traffic"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:24
+#: dc7e79b4145b4c14b7ac4b3de6a6007b
+msgid ""
+"If the system detects an unconfigured wireless device, it will be "
+"automatically added the configuration tree, specifying any detected settings"
+" (for example, its MAC address) and configured to run in monitor mode."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:30
+#: 548c76a6090149309972d31ab082e81b
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:33
+#: 43e109ec036348bc90aa19197046175a
+msgid "Common interface configuration"
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:5
+#: ../../_include/interface-address-with-dhcp.txt:5
+#: ../../_include/interface-address-with-dhcp.txt:5
+#: 64e735ebabbc466cb52033a2a082d264 57246a96ef5d497899bcc84172bfff6f
+#: 3453c0b1a3e54883ae4f96a4e5acf68a
+msgid ""
+"Configure interface `<interface>` with one or more interface addresses."
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:7
+#: ../../_include/interface-address-with-dhcp.txt:7
+#: ../../_include/interface-address-with-dhcp.txt:7
+#: faf9c99a90e14410bba71dd33d0f7c2b a9f3d099fcf54607a4dd0a52d2bfe1c9
+#: 301c94dea49d4ade922d327f4ea3095d
+msgid ""
+"**address** can be specified multiple times as IPv4 and/or IPv6 address, "
+"e.g. 192.0.2.1/24 and/or 2001:db8::1/64"
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:9
+#: ../../_include/interface-address-with-dhcp.txt:9
+#: ../../_include/interface-address-with-dhcp.txt:9
+#: 99022064010c415fbdab012ab2c3717b e6d7474943cf4be3a8161f46332c3eff
+#: 80098fc524274a0faaabfa0442f7190f
+msgid ""
+"**dhcp** interface address is received by DHCP from a DHCP server on this "
+"segment."
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:11
+#: ../../_include/interface-address-with-dhcp.txt:11
+#: ../../_include/interface-address-with-dhcp.txt:11
+#: 30ae2f9731094d9aa1f37bdcee8d885c ad5650ad75764e0a886b949b60e20f65
+#: 55331c68164a4374806c0dba56e9abd9
+msgid ""
+"**dhcpv6** interface address is received by DHCPv6 from a DHCPv6 server on "
+"this segment."
+msgstr ""
+
+#: ../../_include/interface-address-with-dhcp.txt:14
+#: ../../_include/interface-description.txt:7
+#: ../../_include/interface-disable.txt:7
+#: ../../_include/interface-disable-flow-control.txt:19
+#: ../../_include/interface-disable-link-detect.txt:9
+#: ../../_include/interface-mac.txt:7 ../../_include/interface-mtu.txt:7
+#: ../../_include/interface-ip.txt:27 ../../_include/interface-ip.txt:50
+#: ../../_include/interface-ip.txt:144 ../../_include/interface-ipv6.txt:15
+#: ../../_include/interface-ipv6.txt:28 ../../_include/interface-ipv6.txt:39
+#: ../../_include/interface-ipv6.txt:51 ../../_include/interface-vrf.txt:9
+#: ../../_include/interface-dhcp-options.txt:10
+#: ../../_include/interface-dhcp-options.txt:22
+#: ../../_include/interface-dhcp-options.txt:34
+#: ../../_include/interface-dhcp-options.txt:46
+#: ../../_include/interface-dhcp-options.txt:57
+#: ../../_include/interface-dhcp-options.txt:72
+#: ../../_include/interface-address-with-dhcp.txt:14
+#: ../../_include/interface-description.txt:7
+#: ../../_include/interface-disable.txt:7
+#: ../../_include/interface-disable-link-detect.txt:9
+#: ../../_include/interface-mac.txt:7 ../../_include/interface-mtu.txt:7
+#: ../../_include/interface-ip.txt:27 ../../_include/interface-ip.txt:50
+#: ../../_include/interface-ip.txt:144 ../../_include/interface-ipv6.txt:15
+#: ../../_include/interface-ipv6.txt:28 ../../_include/interface-ipv6.txt:39
+#: ../../_include/interface-ipv6.txt:51 ../../_include/interface-vrf.txt:9
+#: ../../_include/interface-dhcp-options.txt:10
+#: ../../_include/interface-dhcp-options.txt:22
+#: ../../_include/interface-dhcp-options.txt:34
+#: ../../_include/interface-dhcp-options.txt:46
+#: ../../_include/interface-dhcp-options.txt:57
+#: ../../_include/interface-dhcp-options.txt:72
+#: ../../_include/interface-address-with-dhcp.txt:14
+#: ../../_include/interface-description.txt:7
+#: ../../_include/interface-disable.txt:7
+#: ../../_include/interface-disable-link-detect.txt:9
+#: ../../_include/interface-mac.txt:7 ../../_include/interface-mtu.txt:7
+#: ../../_include/interface-ip.txt:27 ../../_include/interface-ip.txt:50
+#: ../../_include/interface-ip.txt:144 ../../_include/interface-ipv6.txt:15
+#: ../../_include/interface-ipv6.txt:28 ../../_include/interface-ipv6.txt:39
+#: ../../_include/interface-ipv6.txt:51 ../../_include/interface-vrf.txt:9
+#: ../../_include/interface-dhcp-options.txt:10
+#: ../../_include/interface-dhcp-options.txt:22
+#: ../../_include/interface-dhcp-options.txt:34
+#: ../../_include/interface-dhcp-options.txt:46
+#: ../../_include/interface-dhcp-options.txt:57
+#: ../../_include/interface-dhcp-options.txt:72
+#: d075f8db40c5418ea4c1a1704cef6e81 988edef453e3480a810923d8d2bcc92d
+#: 8cfe009b5b634fd0b068fb6e52528497 cca08a922abc41f592773032b9b6b82f
+#: a43c4d4d979c43c498172e526c4d7887 eb8815eb4b0b42c389042a973dd6973f
+#: fa6408bdb6fc4a27ae9487925dc8449d aaf82d9b1b624dd9b3beb53995329719
+#: 02e7e3548d8d414098ee34fbff3cdc6f 4abc7f81cab441bdafb0d8ea664fc278
+#: 0140ef4bb509470b832a1be2008c8446 6eee9dee1c324fe59635d284c0e6c0e3
+#: 49fa76506cff49f9b66a6efbf7cfb52a c2a4b54d20214562ab3233d2fb5ee8c8
+#: 53c11aec868649c0a8e90205edf4f3ed 2c024d4b4e1c45289462454257eda919
+#: 87ec30c119944aea949576fbb979b312 57f099a0cdc9414e810d156a0dc45795
+#: 72c13d0ffa8a40b79d41f89bc8e96236 83202428ee4b40bb9566a4eef0c56dc2
+#: 1d2211629c4f4226a338d5fb5804712a 247372958c3548a2b2e34a830721daa5
+#: 24d512ffd7df401c9b353e819bd1b121 cd79b3b34de04efcbdba01a3e87d5e70
+#: 46cdeb1cd32c4a889e0487fc978ba073 26a2d3ccd36f43d0a23efd91eb837a6f
+#: a22f76e775df4fe3aa0fbd5ba8e2b467 05dabf01a2af4eee978d0b311c6949a8
+#: e946a9404cb54954bc2e0c41cbec94dd 1892051b92284d259973d9a12e432c82
+#: 86c53fd0f4634409bde12b7a88a1d46c 3df471d1a6394e81aa22cb0413fa6630
+#: b74685e1843d46658140a9bde59a3960 f226ac4aaaea4ea4b762ce2f95b3d5ce
+#: fb184aa1935f42ff8f30d59d59dee3fb b3f0ab95287f46fbbebc4121d39eddaf
+#: 18bbffc4efdb4d0da0d4da34c36ef653 8b0092835fc546088690310c5fdfd5ae
+#: a1d7c12738c24411bf8866b734bf454c 40f49e482a204755b38aa2499b346323
+#: b96778269ecd4bcca0b97b9de464be9d f376d894ed514da9bb17b1c87fe88f81
+#: 0d5dd990535948f7be021b6b45071604 695662cd03e542a2b74731f8e63901db
+#: dc4f93b9a1144c9cb40321227219f116 6168bf3874474e88abec4467c5de3b08
+#: bb043b1c32af457786e985b06dd392e2 d68ebc833ff5418cb667cbf73a6a2094
+#: 7e52ba614fb0404d8e7638be6b8125d5 ad5d9162f27043b992c5199ccd288542
+#: ec9c428a47764e81a3d11a4141e1c3e1 69424404178742b7b3cd7e6d34907797
+#: e3a3cb65e1d74dcea992f92b7507fb95 e31e5834ffb7405a925f4ff742d6c2d6
+#: fd14f99be9254cbd80b99f727715dcb8 75d0c545272a465e848e2d09532b6ef1
+#: 7b4d426c9fb741d9a1133904366cdff1 2f2887262c894886957062f197d9868e
+#: 8ed81633f76d43d5843f36ce9c57c52a b7e2945689cd499ba96b92a93b63c8a9
+#: 6b4c42cf10de4e00b9ad94cd2f897dbf
+msgid "Example:"
+msgstr ""
+
+#: ../../_include/interface-description.txt:4
+#: ../../_include/interface-description.txt:4
+#: ../../_include/interface-description.txt:4 b9c4fce4eb7641329335e71fa231642e
+#: 3c7404858f26425f90050f4a6b55b9cf 7287c6ec7eb4480e971fedb60892e2e4
+msgid ""
+"Set a human readable, descriptive alias for this connection. Alias is used "
+"by e.g. the :opcmd:`show interfaces` command or SNMP based monitoring tools."
+msgstr ""
+
+#: ../../_include/interface-disable.txt:4
+#: ../../_include/interface-disable.txt:4
+#: ../../_include/interface-disable.txt:4 2c71155c633441c7ab6e11fe696e996f
+#: a1466ef612fb4ee196ee3c87781e683a 5eee8f3c01b849e6a72472b1f9b7b5b7
+msgid ""
+"Disable given `<interface>`. It will be placed in administratively down "
+"(``A/D``) state."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:4
+#: ec74d93ce97f46bf85f30e4cc4ee4062
+msgid ""
+"Ethernet flow control is a mechanism for temporarily stopping the "
+"transmission of data on Ethernet family computer networks. The goal of this "
+"mechanism is to ensure zero packet loss in the presence of network "
+"congestion."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:8
+#: c4e5bb7639634f9f8bd6fe58638d3966
+msgid ""
+"The first flow control mechanism, the pause frame, was defined by the IEEE "
+"802.3x standard."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:11
+#: 5b7757e131ec427d9f0beaa4db45a908
+msgid ""
+"A sending station (computer or network switch) may be transmitting data "
+"faster than the other end of the link can accept it. Using flow control, the"
+" receiving station can signal the sender requesting suspension of "
+"transmissions until the receiver catches up."
+msgstr ""
+
+#: ../../_include/interface-disable-flow-control.txt:16
+#: e8b99801c6a9491d8d3d9ed85b1d47b2
+msgid ""
+"Use this command to disable the generation of Ethernet flow control (pause "
+"frames)."
+msgstr ""
+
+#: ../../_include/interface-disable-link-detect.txt:4
+#: ../../_include/interface-disable-link-detect.txt:4
+#: ../../_include/interface-disable-link-detect.txt:4
+#: f390c8577952437988612b684bf15254 e83632b9c4804bc18e9268b8039b0df4
+#: 0918f0c4d9864630a811c77d2083960f
+msgid ""
+"Use this command to direct an interface to not detect any physical state "
+"changes on a link, for example, when the cable is unplugged."
+msgstr ""
+
+#: ../../_include/interface-disable-link-detect.txt:7
+#: ../../_include/interface-disable-link-detect.txt:7
+#: ../../_include/interface-disable-link-detect.txt:7
+#: a51d2c64cd224900bc4ab653707616a0 51a7029e2e824e7e9f19b1058c26e4cc
+#: c4ff527da37f40dc8e6614864fe9294e
+msgid "Default is to detects physical link state changes."
+msgstr ""
+
+#: ../../_include/interface-mac.txt:4 ../../_include/interface-mac.txt:4
+#: ../../_include/interface-mac.txt:4 e72eb5bab64f42889fb75b2bda69e198
+#: 93572c9687ea4575bfbdad90689f89a9 264b1049a70f4dfe8874346c20263e5f
+msgid ""
+"Configure user defined :abbr:`MAC (Media Access Control)` address on given "
+"`<interface>`."
+msgstr ""
+
+#: ../../_include/interface-mtu.txt:4 ../../_include/interface-mtu.txt:4
+#: ../../_include/interface-mtu.txt:4 f83f2cc7608647ae82ae7730bbb795d3
+#: 6ba11578219b46e9961d7fcae21e65d6 8f92e31c2d644004aa6f0ff5265b1d64
+msgid ""
+"Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It"
+" is the size (in bytes) of the largest ethernet frame sent on this link."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:4 ../../_include/interface-ipv6.txt:60
+#: ../../_include/interface-ip.txt:4 ../../_include/interface-ipv6.txt:60
+#: ../../_include/interface-ip.txt:4 ../../_include/interface-ipv6.txt:60
+#: 3dabef798955488c9753c6201e5bbfe4 63f88e9e6cfe4c28a49dc1cd6db3f479
+#: 1b0cfc5cee2d462b8e067511b03e3405 f1a7432a5fe548cf8cc4160df068214a
+#: 261e09d5c0f944efa625b870fb341a4f 663f02baaa0b4de39741ada3b6f966fb
+msgid ""
+"As Internet wide PMTU discovery rarely works, we sometimes need to clamp our"
+" TCP MSS value to a specific value. This is a field in the TCP options part "
+"of a SYN packet. By setting the MSS value, you are telling the remote side "
+"unequivocally 'do not try to send me packets bigger than this value'."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:9 ../../_include/interface-ip.txt:9
+#: ../../_include/interface-ip.txt:9 f9e7d65a37464cf7ad165fb694b067fa
+#: e3f8cb9772eb46069938fa5115370b45 451477e166174e62bdb1833d89f8ef34
+msgid ""
+"This command was introduced in VyOS 1.4 - it was previously called: ``set "
+"firewall options interface <name> adjust-mss <value>``"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:12 ../../_include/interface-ip.txt:12
+#: ../../_include/interface-ip.txt:12 986151f86163427ba9a0b734dbedc6d6
+#: c8a9c7319d7b4db4a0abb069b1622731 e7490d46b17f41e1bcd0268ef2e59545
+msgid ""
+"MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in 1452 bytes "
+"on a 1492 byte MTU."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:15 ../../_include/interface-ipv6.txt:71
+#: ../../_include/interface-ip.txt:15 ../../_include/interface-ipv6.txt:71
+#: ../../_include/interface-ip.txt:15 ../../_include/interface-ipv6.txt:71
+#: 94565b0d27eb437c954a27ae7e940aa5 dc3ff4ad684f4479afb314121db647ea
+#: de11dd276a59473693d7bdc6a24a2625 a4efc44607fc415ca512f1ca72e771b0
+#: f685f09511774ffbbbc225989ca53eb7 5c20874f2dca47e5b866db272b3ad5f2
+msgid ""
+"Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to "
+"automatically set the proper value."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:21 ../../_include/interface-ip.txt:21
+#: ../../_include/interface-ip.txt:21 2144bfa77bb34129b375a074907419a0
+#: 6648858a5ae24de185d8e7fb83f7a1ab efdd5438f0874248acfd014aa2aecc54
+msgid ""
+"Once a neighbor has been found, the entry is considered to be valid for at "
+"least for this specific time. An entry's validity will be extended if it "
+"receives positive feedback from higher level protocols."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:25 ../../_include/interface-ip.txt:25
+#: ../../_include/interface-ip.txt:25 d3ae50404503400bb84db7f774e152fa
+#: 1bf65df895c948b88c4bb1042073ca1e e550d7b695f844b69e818844a8470ed0
+msgid "This defaults to 30 seconds."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:36 ../../_include/interface-ip.txt:36
+#: ../../_include/interface-ip.txt:36 037ac34cdbd74c4680e7edf07d25d5ab
+#: ab987580917f4e51ba49aee7fd36a20a c5349412c1bf4d43a7f024eac8b78e6f
+msgid ""
+"If set the kernel can respond to arp requests with addresses from other "
+"interfaces. This may seem wrong but it usually makes sense, because it "
+"increases the chance of successful communication. IP addresses are owned by "
+"the complete host on Linux, not by particular interfaces. Only for more "
+"complex setups like load-balancing, does this behaviour cause problems."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:42 ../../_include/interface-ip.txt:42
+#: ../../_include/interface-ip.txt:42 3948c9fc6b10445b8d197d3534feae3f
+#: 53afd2cb95524084a221332a830d2919 e0374d18d6494e61b6f1e5619a57a479
+msgid ""
+"If not set (default) allows you to have multiple network interfaces on the "
+"same subnet, and have the ARPs for each interface be answered based on "
+"whether or not the kernel would route a packet from the ARP'd IP out that "
+"interface (therefore you must use source based routing for this to work)."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:47 ../../_include/interface-ip.txt:47
+#: ../../_include/interface-ip.txt:47 7d6150450547465fb395db4ae575b1a1
+#: c64abeade4b44298b10c81b674b76217 c8c6952432cb4272b7716fd5d44f9b2e
+msgid ""
+"In other words it allows control of which cards (usually 1) will respond to "
+"an arp request."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:59 ../../_include/interface-ipv6.txt:48
+#: ../../_include/interface-ip.txt:59 ../../_include/interface-ipv6.txt:48
+#: ../../_include/interface-ip.txt:59 ../../_include/interface-ipv6.txt:48
+#: d90b833b8c7142ee821f06f74e02049a 52831c8a3bd445cebe759cc6687b57d4
+#: 2efb82dfd1894597b71f32affca5c42e 37b6a70d2a984ab582b73ab9f1317d8f
+#: 13078d67b47a44cb93f9039d062fc472 9182f1d14dac42df8435cc2246e6a46d
+msgid ""
+"Configure interface-specific Host/Router behaviour. If set, the interface "
+"will switch to host mode and IPv6 forwarding will be disabled on this "
+"interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:69 ../../_include/interface-ip.txt:69
+#: ../../_include/interface-ip.txt:69 5500ab520c22421eae8e05fdae62e87e
+#: 8b2bd307e8c74d69be4f3a566fc41025 22ae6c986ee54029838d40c3a958794a
+msgid ""
+"Define different modes for IP directed broadcast forwarding as described in "
+":rfc:`1812` and :rfc:`2644`."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:72 ../../_include/interface-ip.txt:72
+#: ../../_include/interface-ip.txt:72 a8786e44bc8c4b8d80b3af1a4523ec33
+#: fd27250ab348426288cc60cddd75a0ac 91d24df457854500a94fa5782a4251e1
+msgid ""
+"If configured, incoming IP directed broadcast packets on this interface will"
+" be forwarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:75 ../../_include/interface-ip.txt:75
+#: ../../_include/interface-ip.txt:75 bc455cf9f3fc4658b1caefbb9c85f62a
+#: 710ad7a284174bcfb5f0e69ab1cb3c9b 670ff72f01944ee199992917716d07b7
+msgid ""
+"If this option is unset (default), incoming IP directed broadcast packets "
+"will not be forwarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:85 ../../_include/interface-ip.txt:85
+#: ../../_include/interface-ip.txt:85 6770cb49fa4a44218d99965e973f3c3d
+#: dd6364e2813e40a39d2047fbf23d4997 18c7c0afd62b41369c84cc0bb9fedb33
+msgid ""
+"Define behavior for gratuitous ARP frames who's IP is not already present in"
+" the ARP table. If configured create new entries in the ARP table."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:88 ../../_include/interface-ip.txt:88
+#: ../../_include/interface-ip.txt:88 a77e2d47e8bb4bb1b3785702ce1f8916
+#: 37d8810aaa4744059b9aae965a48d378 9b73b144f7964a08b804cce32ba1a7d9
+msgid ""
+"Both replies and requests type gratuitous arp will trigger the ARP table to "
+"be updated, if this setting is on."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:91 ../../_include/interface-ip.txt:91
+#: ../../_include/interface-ip.txt:91 941a253809f3488a8d6658ecb66d7e0b
+#: 0fc1b79aaa3a41d3bb15a647f23a5ca4 f3809e6cb58b4491ada78c2bacd604ac
+msgid ""
+"If the ARP table already contains the IP address of the gratuitous arp "
+"frame, the arp table will be updated regardless if this setting is on or "
+"off."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:101 ../../_include/interface-ip.txt:101
+#: ../../_include/interface-ip.txt:101 81fdab42abd14de1a4bdc43cd25fbe60
+#: d561c3c3233849d5a72c5f9eb0a20fce e30e2182322d4a678a40d1b6a3c64fb5
+msgid ""
+"Define different restriction levels for announcing the local source IP "
+"address from IP packets in ARP requests sent on interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:104 ../../_include/interface-ip.txt:104
+#: ../../_include/interface-ip.txt:104 e82064fe37004627a564e24ce7409c46
+#: 9ecefefb01f94283aa8e9ac3c9593517 be852c86deb042f3a522a370105b90e1
+msgid "Use any local address, configured on any interface if this is not set."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:106 ../../_include/interface-ip.txt:106
+#: ../../_include/interface-ip.txt:106 84c0fb3da89b45e1924ea54c574c69b2
+#: cb5de94b0cd74b89b1ed8cfc61ee6bad e1d3f15d78784ff0897f6507877a67fb
+msgid ""
+"If configured, try to avoid local addresses that are not in the target's "
+"subnet for this interface. This mode is useful when target hosts reachable "
+"via this interface require the source IP address in ARP requests to be part "
+"of their logical network configured on the receiving interface. When we "
+"generate the request we will check all our subnets that include the target "
+"IP and will preserve the source address if it is from such subnet. If there "
+"is no such subnet we select source address according to the rules for level "
+"2."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:121 ../../_include/interface-ip.txt:121
+#: ../../_include/interface-ip.txt:121 5b6a09daf24e41238d023f9beeff02c0
+#: cf212399b6a64e3a8380ed0e60f1a01b aba21155b15649dfae491c112f1a0467
+msgid ""
+"Define different modes for sending replies in response to received ARP "
+"requests that resolve local target IP addresses:"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:124 ../../_include/interface-ip.txt:124
+#: ../../_include/interface-ip.txt:124 00f48c5b52284e19b92049d4146b31a0
+#: 7bdf494bff17425cab2f5c911b495058 7821487e2f8842a7845e03d0738976a7
+msgid ""
+"If configured, reply only if the target IP address is local address "
+"configured on the incoming interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:127 ../../_include/interface-ip.txt:127
+#: ../../_include/interface-ip.txt:127 217aafcccbfb45ffb1ff30fffe500c73
+#: e22b3de7c68c464585a2673a553527a0 e3ed46079c4244a59241843930b9efdf
+msgid ""
+"If this option is unset (default), reply for any local target IP address, "
+"configured on any interface."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:137 ../../_include/interface-ip.txt:137
+#: ../../_include/interface-ip.txt:137 2abef023c8e142ae95bb55a0c6b8b948
+#: 6fc0debe0ce747999e13eb4ee417251b 9591f808f081473592dbca9e3ff77c5b
+msgid ""
+"Use this command to enable proxy Address Resolution Protocol (ARP) on this "
+"interface. Proxy ARP allows an Ethernet interface to respond with its own "
+":abbr:`MAC (Media Access Control)` address to ARP requests for destination "
+"IP addresses on subnets attached to other interfaces on the system. "
+"Subsequent packets sent to those destination IP addresses are forwarded "
+"appropriately by the system."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:153 ../../_include/interface-ip.txt:153
+#: ../../_include/interface-ip.txt:153 6ff40b7387a541d5a59f515eb5caac15
+#: f8e03cfbb7f14090883d287b231a6d70 df407ae13ffd4201b4d5890d078de2f9
+msgid ""
+"Private VLAN proxy arp. Basically allow proxy arp replies back to the same "
+"interface (from which the ARP request/solicitation was received)."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:156 ../../_include/interface-ip.txt:156
+#: ../../_include/interface-ip.txt:156 6566d360548544c5ab057c171bdb20e5
+#: 1d630fe9739e4d17ae5175599bfdb66a 258268f1669c4be994d5e59991c9be50
+msgid ""
+"This is done to support (ethernet) switch features, like :rfc:`3069`, where "
+"the individual ports are NOT allowed to communicate with each other, but "
+"they are allowed to talk to the upstream router. As described in "
+":rfc:`3069`, it is possible to allow these hosts to communicate through the "
+"upstream router by proxy_arp'ing."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:162 ../../_include/interface-ip.txt:162
+#: ../../_include/interface-ip.txt:162 c674c0b2d5244322bab313dfe5fb39b9
+#: 8290afa5cecc47f6a42fd62fab173320 c03049d394e1426a97fec7f26899fc9b
+msgid "Does not need to be used together with proxy_arp."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:164 ../../_include/interface-ip.txt:164
+#: ../../_include/interface-ip.txt:164 5cee7f4e9b2546db98dcd5bf0a54663b
+#: 5437f92369d94259917b0af42889b3ec 598ff0eae2884a95882e056140645290
+msgid "This technology is known by different names:"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:166 ../../_include/interface-ip.txt:166
+#: ../../_include/interface-ip.txt:166 ec50fa214cd640329bc527ee410e540b
+#: 8bf18eb6a6b749eca0a9f863e41d0c7b be8dc87660f842ada4fe4ca144f96e5e
+msgid "In :rfc:`3069` it is called VLAN Aggregation"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:168 ../../_include/interface-ip.txt:168
+#: ../../_include/interface-ip.txt:168 328966fc62a5452596aff0a331a1ebd3
+#: cc85541ebb5041e185d485be958ecc5c d901d5be914b478eb3ea45a17a08965a
+msgid "Cisco and Allied Telesyn call it Private VLAN"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:170 ../../_include/interface-ip.txt:170
+#: ../../_include/interface-ip.txt:170 927a65f9df014b5d925922d6c200d623
+#: 9c33475fffd846ab844779bd6914272a d4c8db8cf4254595aa413c8564c1a828
+msgid "Hewlett-Packard call it Source-Port filtering or port-isolation"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:172 ../../_include/interface-ip.txt:172
+#: ../../_include/interface-ip.txt:172 1a2f93ca63ca4f7f9883e3ba1098f2ef
+#: f7090f549a85492d9bf61c6e7c267062 78b049bd7e42470d97184197ce5aa9b4
+msgid "Ericsson call it MAC-Forced Forwarding (RFC Draft)"
+msgstr ""
+
+#: ../../_include/interface-ip.txt:177 ../../_include/interface-ip.txt:177
+#: ../../_include/interface-ip.txt:177 7b52fa61951745bbbf25a19f6bb74683
+#: f710269ad5104b39a21067c2ef97c481 f510d183ee1b41a6b7fea307d4fe62b5
+msgid ""
+"Enable policy for source validation by reversed path, as specified in "
+":rfc:`3704`. Current recommended practice in :rfc:`3704` is to enable strict"
+" mode to prevent IP spoofing from DDos attacks. If using asymmetric routing "
+"or other complicated routing, then loose mode is recommended."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:182 ../../_include/interface-ip.txt:182
+#: ../../_include/interface-ip.txt:182 217cd6b7eb7f4ef7ae4f6681c7c3460a
+#: 8cc810f77dc849a09d67e2df6be32db7 8172e8762bce44d7881ddfb4714999ae
+msgid ""
+"strict: Each incoming packet is tested against the FIB and if the interface "
+"is not the best reverse path the packet check will fail. By default failed "
+"packets are discarded."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:186 ../../_include/interface-ip.txt:186
+#: ../../_include/interface-ip.txt:186 6e1783bd5c48487f884552181eb8a317
+#: e02339563cbc46c5aee58be4a0d55315 8e86c2929556418c845ac56492354514
+msgid ""
+"loose: Each incoming packet's source address is also tested against the FIB "
+"and if the source address is not reachable via any interface the packet "
+"check will fail."
+msgstr ""
+
+#: ../../_include/interface-ip.txt:190 ../../_include/interface-ip.txt:190
+#: ../../_include/interface-ip.txt:190 0094eef015b441528293c9e41b26b51a
+#: 09c39b62f418441283b4ba7c0810266a bc572e7078a943a4be43ca7bddab005b
+msgid "disable: No source validation"
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:4 ../../_include/interface-ipv6.txt:4
+#: ../../_include/interface-ipv6.txt:4 d309b5a2910448bea209d5854ba1c272
+#: 395e18ece1374ca5bd3a4968bc1d79c8 cddac1e8a7ed429eb97ff73583d209eb
+msgid ""
+":abbr:`SLAAC (Stateless Address Autoconfiguration)` :rfc:`4862`. IPv6 hosts "
+"can configure themselves automatically when connected to an IPv6 network "
+"using the Neighbor Discovery Protocol via :abbr:`ICMPv6 (Internet Control "
+"Message Protocol version 6)` router discovery messages. When first connected"
+" to a network, a host sends a link-local router solicitation multicast "
+"request for its configuration parameters; routers respond to such a request "
+"with a router advertisement packet that contains Internet Layer "
+"configuration parameters."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:12 ../../_include/interface-ipv6.txt:12
+#: ../../_include/interface-ipv6.txt:12 592b945cbe96435884372874c818303e
+#: 19978eedc53d462f8bb0c87e931e411f aeecd27d5ef441599290fd4df584a3f3
+msgid ""
+"This method automatically disables IPv6 traffic forwarding on the interface "
+"in question."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:25 ../../_include/interface-ipv6.txt:25
+#: ../../_include/interface-ipv6.txt:25 b844a6b2e27b4e94bcb88063f23f9ab6
+#: ec5a93593b1544c3a6a799a69a54b574 a00b6e1d4dc248368447c0d43f5e2a48
+msgid ""
+":abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in "
+":rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:37 ../../_include/interface-ipv6.txt:37
+#: ../../_include/interface-ipv6.txt:37 3aef699886b84a58bb45882560ae9bdb
+#: f2dd11c5a34f4569861e14fafc9a4ab7 c9a1bba41787447b82b1b3716593286c
+msgid "Do not assign a link-local IPv6 address to this interface."
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:65 ../../_include/interface-ipv6.txt:65
+#: ../../_include/interface-ipv6.txt:65 e3978fdd06894de4bb5703cefadb64c9
+#: d312c4aa9a6b44dcbc3da99d7eaef765 c8194a6be3d548ef9a26b9fff2b7a82d
+msgid ""
+"This command was introduced in VyOS 1.4 - it was previously called: ``set "
+"firewall options interface <name> adjust-mss6 <value>``"
+msgstr ""
+
+#: ../../_include/interface-ipv6.txt:68 ../../_include/interface-ipv6.txt:68
+#: ../../_include/interface-ipv6.txt:68 baf9a0fd1d504a02a32c8700071556de
+#: d41ddc1ca6e747cda009a43ae0c58c03 c44ab8d3e83443479ed01dfd76fa51ff
+msgid ""
+"MSS value = MTU - 40 (IPv6 header) - 20 (TCP header), resulting in 1432 "
+"bytes on a 1492 byte MTU."
+msgstr ""
+
+#: ../../_include/interface-vrf.txt:4 ../../_include/interface-vrf.txt:4
+#: ../../_include/interface-vrf.txt:4 cd57f26baaaf4b73b3805b29327f25a6
+#: d8990f97a6444da1b62b863295f1611d 21174672b3a942bd811ce6bc9a3037e6
+msgid "Place interface in given VRF instance."
+msgstr ""
+
+#: ../../_include/interface-vrf.txt:6 ../../_include/interface-vrf.txt:6
+#: ../../_include/interface-vrf.txt:6 532a4a0aa25f4060b7c341be595693c2
+#: ff3ec57d98614338b50cfb5a87b5cdda 6243602f9ef84ea794bd84392f2ed47d
+msgid ""
+"There is an entire chapter about how to configure a :ref:`vrf`, please check"
+" this for additional information."
+msgstr ""
+
+#: ../../_include/interface-common-with-dhcp.txt:9
+#: ../../_include/interface-vlan-8021q.txt:97
+#: ../../_include/interface-vlan-8021ad.txt:121
+#: 91ca0741721b4528b64ae5df4c278701 60df64f163a348fe88d06849c07b364a
+#: 81c6803f96c24c4e99724a441c40d9c8
+msgid "**DHCP(v6)**"
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:4
+#: ../../_include/interface-dhcp-options.txt:4
+#: ../../_include/interface-dhcp-options.txt:4
+#: 1627339130274da883cf987480edc286 13fc0aedf842496a9dd08336ce58744f
+#: a5400995f7ec416487795e173187cf9a
+msgid ""
+":rfc:`2131` states: The client MAY choose to explicitly provide the "
+"identifier through the 'client identifier' option. If the client supplies a "
+"'client identifier', the client MUST use the same 'client identifier' in all"
+" subsequent messages, and the server MUST use that identifier to identify "
+"the client."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:19
+#: ../../_include/interface-dhcp-options.txt:19
+#: ../../_include/interface-dhcp-options.txt:19
+#: d215302d7a194ef495f2fdd950987bde 415832670a8f4dac8729734231a42e7a
+#: d8dd93f386fb44559298c6d6d71e1315
+msgid ""
+"Instead of sending the real system hostname to the DHCP server, overwrite "
+"the host-name with this given-value."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:31
+#: ../../_include/interface-dhcp-options.txt:31
+#: ../../_include/interface-dhcp-options.txt:31
+#: 3733501e2a094c67a6ade535f8ab5f27 ca7dd184f930474f844b3a14d5d205ef
+#: 0f8744b5a5824b4a923782adeee74aa4
+msgid ""
+"The vendor-class-id option can be used to request a specific class of vendor"
+" options from the server."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:43
+#: ../../_include/interface-dhcp-options.txt:43
+#: ../../_include/interface-dhcp-options.txt:43
+#: 5c85e182b0a44c11988376f8140a8093 8c0ae4d451194befb3bf3d46fc6ed06e
+#: f6edf6f2491941849234bcb11f948f6f
+msgid ""
+"Only request an address from the DHCP server but do not request a default "
+"gateway."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:55
+#: ../../_include/interface-dhcp-options.txt:55
+#: ../../_include/interface-dhcp-options.txt:55
+#: b3caa7250ee14099bc2fa3ac63ee00ad d993d5f589d74bd4b043bfe300b1b38a
+#: 78e4f79854d44e6fb2a087d03f1eb620
+msgid "Set the distance for the default gateway sent by the DHCP server."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:66
+#: ../../_include/interface-dhcp-options.txt:66
+#: ../../_include/interface-dhcp-options.txt:66
+#: dfa8ad1494ed40e88ad0f1549db2d6e2 a18cd236c72b46299904fb4c96502a98
+#: c0a047fa222e4bf59ee5684eff3c4afa
+msgid ""
+"Reject DHCP leases from a given address or range. This is useful when a "
+"modem gives a local IP when first starting."
+msgstr ""
+
+#: ../../_include/interface-dhcp-options.txt:69
+#: ../../_include/interface-dhcp-options.txt:69
+#: ../../_include/interface-dhcp-options.txt:69
+#: 23a5646f4954413689ab224d1fc6bd40 73e6feec544841cea3cdfd6ec990e56a
+#: 8787cbf325d74d26b5ee0e25749bb7b5
+msgid ""
+"**address** can be specified multiple times, e.g. 192.168.100.1 and/or "
+"192.168.100.0/24"
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:4
+#: ../../_include/interface-dhcpv6-options.txt:4
+#: ../../_include/interface-dhcpv6-options.txt:4
+#: 63adb4f98f0343549a332b0f9a8c5d5d 3de57dd922d04b9d858d2aafe773a20d
+#: c81b18078aba4810a859e03def4d5eb1
+msgid ""
+"The DHCP unique identifier (DUID) is used by a client to get an IP address "
+"from a DHCPv6 server. It has a 2-byte DUID type field, and a variable-length"
+" identifier field up to 128 bytes. Its actual length depends on its type. "
+"The server compares the DUID with its database and delivers configuration "
+"data (address, lease times, DNS servers, etc.) to the client."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:17
+#: ../../_include/interface-dhcpv6-options.txt:17
+#: ../../_include/interface-dhcpv6-options.txt:17
+#: 1525b5c201694c1cab9bbdfbb0879264 4707b3070d44429fbb2bdf4aaacd1d50
+#: 95868e8da7424e38b76c713b634f455d
+msgid ""
+"This statement specifies dhcp6c to only exchange informational configuration"
+" parameters with servers. A list of DNS server addresses is an example of "
+"such parameters. This statement is useful when the client does not need "
+"stateful configuration parameters such as IPv6 addresses or prefixes."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:29
+#: ../../_include/interface-dhcpv6-options.txt:29
+#: ../../_include/interface-dhcpv6-options.txt:29
+#: 33f8bd07922d42db88c27b303d51a37d 130812449ba042c086c1bf9934afaf58
+#: c7c1783b806740ff8453f90f06b89535
+msgid ""
+"When rapid-commit is specified, dhcp6c will include a rapid-commit option in"
+" solicit messages and wait for an immediate reply instead of advertisements."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-options.txt:39
+#: ../../_include/interface-dhcpv6-options.txt:39
+#: ../../_include/interface-dhcpv6-options.txt:39
+#: 31d5fbc7011b4a6284a8423d329c2b55 6fd9a568f610448aa56a211af2054205
+#: a1bf0349a98f4191b5d8618631916f3a
+msgid ""
+"Request only a temporary address and not form an IA_NA (Identity Association"
+" for Non-temporary Addresses) partnership."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:1
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:1
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:1
+#: 673402fc91ae4d77a6e7903fc9e6a325 4e7375ec296d487083ffa3817c194d53
+#: 858750ab6b334854ba3869d1f9aa217f
+msgid "**DHCPv6 Prefix Delegation (PD)**"
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:3
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:3
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:3
+#: 81d14b60fdf94d43a3a11eacd72dee13 94fe24e1ba0343d6ba6aa2c7d7c962f0
+#: 7627376aaa93472eb6d29f568153b4e2
+msgid ""
+"VyOS 1.3 (equuleus) supports DHCPv6-PD (:rfc:`3633`). DHCPv6 Prefix "
+"Delegation is supported by most ISPs who provide native IPv6 for consumers "
+"on fixed networks."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:10
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:10
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:10
+#: f02c99da86f641da85c8457751b142c7 69b1fe9ad22741359115b63299c8954f
+#: a1517a66b67c4c24858618938825f20a
+msgid ""
+"Some ISPs by default only delegate a /64 prefix. To request for a specific "
+"prefix size use this option to request for a bigger delegation for this pd "
+"`<id>`. This value is in the range from 32 - 64 so you could request up to a"
+" /32 prefix (if your ISP allows this) down to a /64 delegation."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:15
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:15
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:15
+#: eff71a21a83d48c5bdf61caa9e57f008 bd537848961a44c18d3f489ff89fd19f
+#: 8e274d206f964bb5aa41460e38f59bae
+msgid "The default value corresponds to 64."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:17
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:17
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:17
+#: 367ed32258fa485ab24afdb4e5a84d3c be5346a59ada4f5982e3c83645a0f56b
+#: 50021d976b7d4ce9ac2632e563a6bcd5
+msgid "To request a /56 prefix from your ISP use:"
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:27
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:27
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:27
+#: b2b758c76c44428eae88faf7cb1ff454 a20d46d11c884745968755cff18645de
+#: 161229481674458d8930155f7f58dffb
+msgid ""
+"Specify the interface address used locally on the interface where the prefix"
+" has been delegated to. ID must be a decimal integer."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:30
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:30
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:30
+#: b2b40ab0d06b436c99dff071746bdcd2 a4ceb15b61da419c96885a7175316ce4
+#: 895d27b083f847f8bc08f045d9da8d49
+msgid ""
+"It will be combined with the delegated prefix and the sla-id to form a "
+"complete interface address. The default is to use the EUI-64 address of the "
+"interface."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:36
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:36
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:36
+#: 3de30243ca78487ab9900e6e15b8230b 0714e6fb605d4cc3837c515f6b1b8654
+#: ab59acd12cf4433a9243e47e13839aa8
+msgid ""
+"Example: Delegate a /64 prefix to interface eth8 which will use a local "
+"address on this router of ``<prefix>::ffff``, as the address 65534 will "
+"correspond to ``ffff`` in hexadecimal notation."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:50
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:50
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:50
+#: 21a6a82d8f884a1badeff35f86b436d2 d2a96abf30c34339b636e7dd2012ebc4
+#: 36b33093cc63486181998621cad4c049
+msgid ""
+"Specify the identifier value of the site-level aggregator (SLA) on the "
+"interface. ID must be a decimal number greater then 0 which fits in the "
+"length of SLA IDs (see below)."
+msgstr ""
+
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:54
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:54
+#: ../../_include/interface-dhcpv6-prefix-delegation.txt:54
+#: 1e7bd072a67b4c23b6dc6da365a9efdd 58a84b9a1622478f894d862d1052d615
+#: 42139d0175d94681a552a4c7ba78338d
+msgid ""
+"Example: If ID is 1 and the client is delegated an IPv6 prefix "
+"2001:db8:ffff::/48, dhcp6c will combine the two values into a single IPv6 "
+"prefix, 2001:db8:ffff:1::/64, and will configure the prefix on the specified"
+" interface."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:40
+#: 2904640a58f04ae99381ec8c4d111023
+msgid "Wireless options"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:44
+#: de5e875d4b7e47de9ffb2f1d1eeaed04
+msgid ""
+"Channel number (IEEE 802.11), for 2.4Ghz (802.11 b/g/n) channels range from "
+"1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 173"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:49
+#: 960686dd765c4e52819d0b3d84ba4da2
+msgid ""
+"Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed "
+"to indicate country in which device is operating. This can limit available "
+"channels and transmit power."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:53
+#: 63e994c26dd54916bac711230be1166d
+msgid "This option is mandatory in Access-Point mode."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:57
+#: 9a49f2d5bf244133950fb2c4e6ba9df7
+msgid ""
+"Send empty SSID in beacons and ignore probe request frames that do not "
+"specify full SSID, i.e., require stations to know SSID."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:62
+#: 152bf09c3d7444eba0bbb9604534042c
+msgid ""
+"Disassociate stations based on excessive transmission failures or other "
+"indications of connection loss."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:65
+#: f9e8d6bfca5e4076a454b4ae5f8397b5
+msgid ""
+"This depends on the driver capabilities and may not be available with all "
+"drivers."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:70
+#: 03f72daca5f0438d86c02bc5b1160174
+msgid ""
+"Client isolation can be used to prevent low-level bridging of frames between"
+" associated stations in the BSS."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:73
+#: 837a9ae1063040c7b89e55882472cad8
+msgid "By default, this bridging is allowed."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:77
+#: ace4987f3881477fa56ec97bfc4e9dc7
+msgid ""
+"Maximum number of stations allowed in station table. New stations will be "
+"rejected after the station table is full. IEEE 802.11 has a limit of 2007 "
+"different association IDs, so this number should not be larger than that."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:81
+#: 57d42b0dc61e4c13990f8c68ab7d863d
+msgid "This defaults to 2007."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:85
+#: 667ed629780c4b5cb7942f90cef97b42
+msgid "Management Frame Protection (MFP) according to IEEE 802.11w"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:89
+#: 661a7810afb04a7a9dfab2ddf6a3d887
+msgid "Operation mode of wireless radio."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:91
+#: b36d05fb10be4fc8a12f5c0d8b4d89eb
+msgid "``a`` - 802.11a - 54 Mbits/sec"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:92
+#: 6b2565556eef43cbab6754dc24f1734e
+msgid "``b`` - 802.11b - 11 Mbits/sec"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:93
+#: 7d56f145c87d414f80db80b425c47bce
+msgid "``g`` - 802.11g - 54 Mbits/sec (default)"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:94
+#: 4c978cd4a46d4850b9ee0c7e509fac03
+msgid "``n`` - 802.11n - 600 Mbits/sec"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:95
+#: 7149eab9edba4af6b53fe26f7ec9a6ee
+msgid "``ac`` - 802.11ac - 1300 Mbits/sec"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:99
+#: 907aaf6078414aec9a6854e10a8aef9f
+msgid "Wireless hardware device used as underlay radio."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:101
+#: e8dae576f9814292a65a02da7c2f66f4
+msgid "This defaults to phy0."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:105
+#: 2d87980d2fde423f910d24dcb47aaa24
+msgid "Add Power Constraint element to Beacon and Probe Response frames."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:107
+#: 69c32eacedb34cf998a6a447b9203ccb
+msgid ""
+"This option adds Power Constraint element when applicable and Country "
+"element is added. Power Constraint element is required by Transmit Power "
+"Control."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:110
+#: 1d7f22b53bcb4844bb0dc2a7abc823eb
+msgid "Valid values are 0..255."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:114
+#: dfd604eb800f4ed99e12e1d3a98231b7
+msgid "SSID to be used in IEEE 802.11 management frames"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:119
+#: ab56eb74aad744579835a61c403144ab
+msgid "Wireless device type for this interface"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:121
+#: 09ffc21424594b6282cac73a2abc4114
+msgid "``access-point`` - Access-point forwards packets between other nodes"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:122
+#: 47bfa075ff2c47efb446c797347e63e5
+msgid "``station`` - Connects to another access point"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:123
+#: 9312201d3b4542c189420b20f43cb76f
+msgid "``monitor`` - Passively monitor all packets on the frequency/channel"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:126
+#: 8210f6890bcc4b5fb7aa99abadb7efcf
+msgid "PPDU"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:133
+#: 89358b7181664d01b964cc6f4867988f
+msgid "HT (High Throughput) capabilities (802.11n)"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:137
+#: 466294bae5254d77988b5eafa52bce02
+msgid ""
+"Device is incapable of 40 MHz, do not advertise. This sets "
+"``[40-INTOLERANT]``"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:141
+#: 9a0052639c2943df8c01837b4ec382ca
+msgid "WMM-PS Unscheduled Automatic Power Save Delivery [U-APSD]"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:146
+#: e3e427d335814be79ec0e2b4e80f95a6
+msgid "Supported channel width set."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:148
+#: 3289b8966b404c1f8a4440ca1260b76b
+msgid ""
+"``ht40-`` - Both 20 MHz and 40 MHz with secondary channel below the primary "
+"channel"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:150
+#: 45a290c6e2be450e963ba2dfc6ac89fe
+msgid ""
+"``ht40+`` - Both 20 MHz and 40 MHz with secondary channel above the primary "
+"channel"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:153
+#: 06bb81a935314c1fa3dc61524053dc54
+msgid ""
+"There are limits on which channels can be used with HT40- and HT40+. "
+"Following table shows the channels that may be available for HT40- and HT40+"
+" use per IEEE 802.11n Annex J:"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:157
+#: 354ca994dd54403d9d84f07e7d5309fe
+msgid ""
+"Depending on the location, not all of these channels may be available for "
+"use!"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:166
+#: f352bb1b31d64d3cb52de330a9d64f93
+msgid ""
+"40 MHz channels may switch their primary and secondary channels if needed or"
+" creation of 40 MHz channel maybe rejected based on overlapping BSSes. These"
+" changes are done automatically when hostapd is setting up the 40 MHz "
+"channel."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:174
+#: 0b9c58659a3b438bb32bf2d93355b557
+msgid "Enable HT-delayed Block Ack ``[DELAYED-BA]``"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:178
+#: 8d85e5babcba42778ee78dc0ee85f4cf
+msgid "DSSS/CCK Mode in 40 MHz, this sets ``[DSSS_CCK-40]``"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:182
+#: 1040a873a81044289a2317f7015220a9
+msgid "This enables the greenfield option which sets the ``[GF]`` option"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:186
+#: 9fb4373ea1ce4560b802c459e561a236
+msgid "Enable LDPC coding capability"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:190
+#: 462d22845b394f2bbbdd1a3bdacaaf74
+msgid "Enable L-SIG TXOP protection capability"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:195
+#: d2e50cefa0b949d8a45410468cf58d86
+msgid "Maximum A-MSDU length 3839 (default) or 7935 octets"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:200
+#: 64e2338df6164587911b0e2c3105761a
+msgid "Short GI capabilities for 20 and 40 MHz"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:205
+#: 6b739e8822a9425b905e44896467b24d
+msgid "Spatial Multiplexing Power Save (SMPS) settings"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:209
+#: ../../configuration/interfaces/wireless.rst:282
+#: cea0d0d68e0842aca071146dcb9735bc d003fa683348471c8eacf3e7fd05bb36
+msgid "Enable receiving PPDU using STBC (Space Time Block Coding)"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:213
+#: ../../configuration/interfaces/wireless.rst:286
+#: 93651e52d23c449e915c63463f491d8c afe9e0e6d88f4d0a845a24f5fa6ade2a
+msgid "Enable sending PPDU using STBC (Space Time Block Coding)"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:216
+#: 2269485b0b764ac8bbf22c8f73839ae3
+msgid "VHT (Very High Throughput) capabilities (802.11ac)"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:220
+#: 58d37f65db0540ffaa28c06164466337
+msgid "Number of antennas on this card"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:225
+#: 02e3d636354545f39c4d241a95ebcc82
+msgid ""
+"Set if antenna pattern does not change during the lifetime of an association"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:231
+#: b14e3d3926b946798b1ae2396096d424
+msgid "Beamforming capabilities:"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:233
+#: fe37daa2736b4608b5650924ba2b4c2d
+msgid ""
+"``single-user-beamformer`` - Support for operation as single user beamformer"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:234
+#: fa733a01622b45c1b64d7ca4eaae0362
+msgid ""
+"``single-user-beamformee`` - Support for operation as single user beamformee"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:235
+#: b6aff6df70694025ae69a03fa63b1bd0
+msgid ""
+"``multi-user-beamformer`` - Support for operation as single user beamformer"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:236
+#: 4087ece5307e489fa131673d3cf0f6ac
+msgid ""
+"``multi-user-beamformee`` - Support for operation as single user beamformer"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:241
+#: e2838753d9bd4ff4a9db0c188d3fbab8
+msgid ""
+"VHT operating channel center frequency - center freq 1 (for use with 80, "
+"80+80 and 160 modes)"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:244
+#: e4fb37db87f146d5bfe1c66cb37efce0
+msgid ""
+"VHT operating channel center frequency - center freq 2 (for use with the "
+"80+80 mode)"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:247
+#: a3b6f953dcdb47ba95b42b58d193fc7f
+msgid ""
+"<number> must be from 34 - 173. For 80 MHz channels it should be channel + "
+"6."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:252
+#: 0d49a9fe1720490ba7b78119c8ef10ef
+msgid "``0`` - 20 or 40 MHz channel width (default)"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:253
+#: a8dc10e17daf4b6c8009c376ce962894
+msgid "``1`` - 80 MHz channel width"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:254
+#: 29e018cb7a0f4a9982adc9ea72c365fd
+msgid "``2`` - 160 MHz channel width"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:255
+#: 51e6b6a6a9054ad590d22f9f7bf3fd44
+msgid "``3`` - 80+80 MHz channel width"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:259
+#: 4e73700d3f44492498ab22508387ba20
+msgid "Enable LDPC (Low Density Parity Check) coding capability"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:263
+#: 5bffca9bd59c46229ed0779e4bc84e8a
+msgid "VHT link adaptation capabilities"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:268
+#: 068c7bb68fe341b8ab28c4e8aa259c72
+msgid ""
+"Increase Maximum MPDU length to 7991 or 11454 octets (default 3895 octets)"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:273
+#: d02e32a8c53d4a56a220eedfb88d2135
+msgid ""
+"Set the maximum length of A-MPDU pre-EOF padding that the station can "
+"receive"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:278
+#: 9eb70abf9e624147a7743f13d2e69b1a
+msgid "Short GI capabilities"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:290
+#: d019f46d5158472cbc0234dc281c55b0
+msgid "Enable VHT TXOP Power Save Mode"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:294
+#: e65e961671d1455a901dd4e337f54cb3
+msgid "Station supports receiving VHT variant HT Control field"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:297
+#: f246cf2399034369911b9946d054c95f
+msgid "Wireless options (Station/Client)"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:299
+#: 23d2db2a50d540a0a602b4722ef7929d
+msgid ""
+"The example creates a wireless station (commonly referred to as Wi-Fi "
+"client) that accesses the network through the WAP defined in the above "
+"example. The default physical device (``phy0``) is used."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:310
+#: ../../configuration/interfaces/wireless.rst:362
+#: ../../configuration/interfaces/wireless.rst:563
+#: df416e8caad647179af26a155db80bef b65ce78cbe014e09985322285d4de345
+#: e440bff9d4a94f33b58d5e8965410c13
+msgid "Resulting in"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:328
+#: d008384bf3564837a83c09db702c4901
+msgid "Security"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:330
+#: 6170e700fa8247ff8762b129016c8e5a
+msgid ""
+":abbr:`WPA (Wi-Fi Protected Access)` and WPA2 Enterprise in combination with"
+" 802.1x based authentication can be used to authenticate users or computers "
+"in a domain."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:334
+#: b9d23e476a474af892378f42e99e3517
+msgid ""
+"The wireless client (supplicant) authenticates against the RADIUS server "
+"(authentication server) using an :abbr:`EAP (Extensible Authentication "
+"Protocol)`  method configured on the RADIUS server. The WAP (also referred "
+"to as authenticator) role is to send all authentication messages between the"
+" supplicant and the configured authentication server, thus the RADIUS server"
+" is responsible for authenticating the users."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:341
+#: ../../configuration/interfaces/wireless.rst:544
+#: 75aedc1e1b8f4840904baa79ae1d9d81 4cd3f5b3094e4439b7cedcd308fbefe5
+msgid "The WAP in this example has the following characteristics:"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:343
+#: ../../configuration/interfaces/wireless.rst:546
+#: 2da58f20e1914b05991a74df45a766d7 3b2e35bfd8cb4f0c90d767c4e7fb68f4
+msgid "IP address ``192.168.2.1/24``"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:344
+#: 32519c519d204788a6ebbb19cef77dac
+msgid "Network ID (SSID) ``Enterprise-TEST``"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:345
+#: ../../configuration/interfaces/wireless.rst:548
+#: efdd8a4beaa04f4cbb80831e557255f5 c69599b2057346ab9c9ee6aded5b774f
+msgid "WPA passphrase ``12345678``"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:346
+#: ../../configuration/interfaces/wireless.rst:549
+#: 028ed66a0d3f4dceb558199df58b9c99 b8fffe0034fa4a42955bf70866131b8a
+msgid "Use 802.11n protocol"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:347
+#: ../../configuration/interfaces/wireless.rst:550
+#: d65e0c8ca7a7499b970edbcee298519a 55fe54836bbe4c578a09940e5fcb48ed
+msgid "Wireless channel ``1``"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:348
+#: 38b28f4aba4c40dea06c7929d6d87f4a
+msgid "RADIUS server at ``192.168.3.10`` with shared-secret ``VyOSPassword``"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:395
+#: 87e02c644f9d433b8ee7e590592d3126
+msgid "VLAN"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:398
+#: 942913e6372444a8ade0ea202469c78a
+msgid "Regular VLANs (802.1q)"
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:1 7cb91cd5936c4e4f83d732dfeca57dd9
+msgid ""
+"IEEE 802.1q_, often referred to as Dot1q, is the networking standard that "
+"supports virtual LANs (VLANs) on an IEEE 802.3 Ethernet network. The "
+"standard defines a system of VLAN tagging for Ethernet frames and the "
+"accompanying procedures to be used by bridges and switches in handling such "
+"frames. The standard also contains provisions for a quality-of-service "
+"prioritization scheme commonly known as IEEE 802.1p and defines the Generic "
+"Attribute Registration Protocol."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:9 96f9519b4c4643bf841863bc3a2a203a
+msgid ""
+"Portions of the network which are VLAN-aware (i.e., IEEE 802.1q_ conformant)"
+" can include VLAN tags. When a frame enters the VLAN-aware portion of the "
+"network, a tag is added to represent the VLAN membership. Each frame must be"
+" distinguishable as being within exactly one VLAN. A frame in the VLAN-aware"
+" portion of the network that does not contain a VLAN tag is assumed to be "
+"flowing on the native VLAN."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:16 2096a79443f6462886f2a865ef9f7bf7
+msgid ""
+"The standard was developed by IEEE 802.1, a working group of the IEEE 802 "
+"standards committee, and continues to be actively revised. One of the "
+"notable revisions is 802.1Q-2014 which incorporated IEEE 802.1aq (Shortest "
+"Path Bridging) and much of the IEEE 802.1d standard."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:21 dfdc3e6b27fc4e5a8b2336298eba2357
+msgid ""
+"802.1q VLAN interfaces are represented as virtual sub-interfaces in VyOS. "
+"The term used for this is ``vif``."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:26 6e92e8826b2d44b59f3ae1f969bb0c42
+msgid ""
+"Create a new VLAN interface on interface `<interface>` using the VLAN number"
+" provided via `<vlan-id>`."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:29 c5e5fe80d5284efdbde8988e5b6aacd7
+msgid ""
+"You can create multiple VLAN interfaces on a physical interface. The VLAN ID"
+" range is from 0 to 4094."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021q.txt:32 d4a6659a752541869e7f48113c169252
+msgid "Only 802.1Q-tagged packets are accepted on Ethernet vifs."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:405
+#: 8601f7a056e4488997399bc9b2091010
+msgid "QinQ (802.1ad)"
+msgstr ""
+
+#: ../../_include/need_improvement.txt:11 7aa5fbefd01d4aaf9aa1195215e71e5b
+msgid "This section needs improvements, examples and explanations."
+msgstr ""
+
+#: ../../_include/need_improvement.txt:13 b8eb64b0da89481cbd9e222f66122854
+msgid ""
+"Please take a look at the Contributing Guide for our :ref:`documentation`."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021ad.txt:3 98df441ee34a41dda44a65b35758bc65
+msgid ""
+"IEEE 802.1ad_ was an Ethernet networking standard informally known as QinQ "
+"as an amendment to IEEE standard 802.1q VLAN interfaces as described above. "
+"802.1ad was incorporated into the base 802.1q_ standard in 2011. The "
+"technique is also known as provider bridging, Stacked VLANs, or simply QinQ "
+"or Q-in-Q. \"Q-in-Q\" can for supported devices apply to C-tag stacking on "
+"C-tag (Ethernet Type = 0x8100)."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021ad.txt:10
+#: 38562b04cb7149558881b964aeb7ce79
+msgid ""
+"The original 802.1q_ specification allows a single Virtual Local Area "
+"Network (VLAN) header to be inserted into an Ethernet frame. QinQ allows "
+"multiple VLAN tags to be inserted into a single frame, an essential "
+"capability for implementing Metro Ethernet network topologies. Just as QinQ "
+"extends 802.1Q, QinQ itself is extended by other Metro Ethernet protocols."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021ad.txt:16
+#: b4a5fa504e8143e594cfcd703d252957
+msgid ""
+"In a multiple VLAN header context, out of convenience the term \"VLAN tag\" "
+"or just \"tag\" for short is often used in place of \"802.1q_ VLAN header\"."
+" QinQ allows multiple VLAN tags in an Ethernet frame; together these tags "
+"constitute a tag stack. When used in the context of an Ethernet frame, a "
+"QinQ frame is a frame that has 2 VLAN 802.1q_ headers (double-tagged)."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021ad.txt:22
+#: abab830a60564142b407f31daa50178b
+msgid ""
+"In VyOS the terms ``vif-s`` and ``vif-c`` stand for the ethertype tags that "
+"are used."
+msgstr ""
+
+#: ../../_include/interface-vlan-8021ad.txt:25
+#: 550148b534a64b46af854f8165443b3c
+msgid ""
+"The inner tag is the tag which is closest to the payload portion of the "
+"frame. It is officially called C-TAG (customer tag, with ethertype 0x8100). "
+"The outer tag is the one closer/closest to the Ethernet header, its name is "
+"S-TAG (service tag with Ethernet Type = 0x88a8)."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:413
+#: 78348cbc9de04e8490c820e62d151dcf
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:417
+#: 36d7853ec36e4a39a6307d0bea41d0d9
+msgid ""
+"Use this command to view operational status and wireless-specific "
+"information about all wireless interfaces."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:428
+#: 3ad2cd0b819e4098961810680a63c934
+msgid ""
+"Use this command to view operational status and details wireless-specific "
+"information about all wireless interfaces."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:460
+#: c28dfd31b6a74ceb84a7f9446cc98e78
+msgid ""
+"This command shows both status and statistics on the specified wireless "
+"interface. The wireless interface identifier can range from wlan0 to "
+"wlan999."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:481
+#: 59921c40da2d4d74b8427f8be06f6cf2
+msgid ""
+"This command gives a brief status overview of a specified wireless "
+"interface. The wireless interface identifier can range from wlan0 to "
+"wlan999."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:495
+#: aef2b04c0a5f408da3170a78e9aa7e44
+msgid ""
+"Use this command to view wireless interface queue information. The wireless "
+"interface identifier can range from wlan0 to wlan999."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:508
+#: c769a3d471504c0e9f682d870bfa5e6a
+msgid ""
+"This command is used to retrieve information about WAP within the range of "
+"your wireless interface. This command is useful on wireless interfaces "
+"configured in station mode."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:512
+#: 049e2d086d45484aacd9ba45df25aeef
+msgid ""
+"Scanning is not supported on all wireless drivers and wireless hardware. "
+"Refer to your driver and wireless hardware documentation for further "
+"details."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:538
+#: d4809008e8484d2c939520859cb20ca0
+msgid "Examples"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:540
+#: 0af1a2a973254ca08811481b7a3bf65a
+msgid ""
+"The following example creates a WAP. When configuring multiple WAP "
+"interfaces, you must specify unique IP addresses, channels, Network IDs "
+"commonly referred to as :abbr:`SSID (Service Set Identifier)`, and MAC "
+"addresses."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:547
+#: 41f06a5716394f639be9a37499133d69
+msgid "Network ID (SSID) ``TEST``"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:589
+#: 6070b90cc8e046cf886cc42989c26848
+msgid ""
+"To get it to work as an access point with this configuration you will need "
+"to set up a DHCP server to work with that network. You can - of course - "
+"also bridge the Wireless interface with any configured bridge (:ref:`bridge-"
+"interface`) on the system."
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:597
+#: a6d311e36c954c849ff4777c9d96a3b8
+msgid "Intel AX200"
+msgstr ""
+
+#: ../../configuration/interfaces/wireless.rst:599
+#: 27f5dca77aa2405b851030ceb0070baa
+msgid ""
+"The Intel AX200 card does not work out of the box in AP mode, see "
+"https://unix.stackexchange.com/questions/598275/intel-ax200-ap-mode. You can"
+" still put this card into AP mode using the following configuration:"
+msgstr ""

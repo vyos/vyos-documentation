@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:02+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/vpn/l2tp.rst:4 0312a9ff077941589d8c45c82d96ab1e
+msgid "L2TP"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:6 d6aa1e6b79094a1b840a9b3c80b2eeba
+msgid ""
+"VyOS utilizes accel-ppp_ to provide L2TP server functionality. It can be "
+"used with local authentication or a connected RADIUS server."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:10 f06bb113de714627af750e006b1a51cd
+msgid "L2TP over IPsec"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:12 1685b8008875427c9ba3d8c1f28eecaa
+msgid ""
+"Example for configuring a simple L2TP over IPsec VPN for remote access "
+"(works with native Windows and Mac VPN clients):"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:27 0fad303606a542c6bc1dac5d7db341a7
+msgid "In the above example, an external IP of 192.0.2.2 is assumed."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:29 888988247adb4c91b8578c2bb11b1a92
+msgid ""
+"If a local firewall policy is in place on your external interface you will "
+"need to allow the ports below:"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:32 b2ba8ed3002343b4af637676b72ba553
+msgid "UDP port 500 (IKE)"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:33 e874ee33937c4fdaa59e7ce4eb8b272c
+msgid "IP protocol number 50 (ESP)"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:34 8dc89c56bba94c74899e0658645fb407
+msgid "UDP port 1701 for IPsec"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:36 290a38cce9c844f4903fd6e263fdbc9b
+msgid ""
+"As well as the below to allow NAT-traversal (when NAT is detected by the VPN"
+" client, ESP is encapsulated in UDP for NAT-traversal):"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:39 afe4628f3a324e209434380cb3a80289
+msgid "UDP port 4500 (NAT-T)"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:41 26cef9b12cea4d95b580e9e03101b16b
+msgid "Example:"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:58 293854763133405487ebc80cb3a0c5a9
+msgid ""
+"To allow VPN-clients access via your external address, a NAT rule is "
+"required:"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:68 eeb7a7d4d9894d35922118bb8fe406e5
+msgid ""
+"VPN-clients will request configuration parameters, optionally you can DNS "
+"parameter to the client."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:76 9f7a387a34344367b030b02927d4b6f2
+msgid ""
+"Established sessions can be viewed using the **show vpn remote-access** "
+"operational command, or **show l2tp-server sessions**"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:88 360ba87d51bf4dc6a9428b23b8319ce8
+msgid "LNS (L2TP Network Server)"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:90 6caea873d7fe4150aba54a71b866f875
+msgid "LNS are often used to connect to a LAC (L2TP Access Concentrator)."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:92 563e6a63ee2b4994b4d234ae790495eb
+msgid "Below is an example to configure a LNS:"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:104 fadf801541534614b36b133390ad4211
+msgid ""
+"The example above uses 192.0.2.2 as external IP address. A LAC normally "
+"requires an authentication password, which is set in the example "
+"configuration to ``lns shared-secret 'secret'``. This setup requires the "
+"Compression Control Protocol (CCP) being disabled, the command ``set vpn "
+"l2tp remote-access ccp-disable`` accomplishes that."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:112 ab3f6e19105645539de8229b6d6f6bd5
+msgid "Bandwidth Shaping"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:114 e705ba4d16ed467eadf74b63a3f22f10
+msgid ""
+"Bandwidth rate limits can be set for local users or via RADIUS based "
+"attributes."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:117 05624025ccd24fa08457f733ea4247eb
+msgid "Bandwidth Shaping for local users"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:119 02b415aab7314de6aa84c24b495410bc
+msgid "The rate-limit is set in kbit/sec."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:137 38776952c2994e40b514a0f7927e2bf2
+msgid "RADIUS authentication"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:139 1b846dd38aaa4b5d852b576cc5450510
+msgid ""
+"To enable RADIUS based authentication, the authentication mode needs to be "
+"changed within the configuration. Previous settings like the local users, "
+"still exists within the configuration, however they are not used if the mode"
+" has been changed from local to radius. Once changed back to local, it will "
+"use all local accounts again."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:149 5cf2020a023a4b0380282d3a08c029eb
+msgid ""
+"Since the RADIUS server would be a single point of failure, multiple RADIUS "
+"servers can be setup and will be used subsequentially."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:157 5c582e97c2424f0a8d220dd2fc946413
+msgid ""
+"Some RADIUS_ severs use an access control list which allows or denies "
+"queries, make sure to add your VyOS router to the allowed client list."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:161 d6b4c13e331c45398639a292fb8102d4
+msgid "RADIUS source address"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:163 b62ebd03dac1497c8f920bfed6c6c7cf
+msgid ""
+"If you are using OSPF as IGP, always the closest interface connected to the "
+"RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS "
+"requests to a single source IP e.g. the loopback interface."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:171 daba1a7edcc64620b01ec9ec0524e298
+msgid ""
+"Above command will use `10.0.0.3` as source IPv4 address for all RADIUS "
+"queries on this NAS."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:174 a26d0c63d55843cdbac820fe7e69b9e2
+msgid ""
+"The ``source-address`` must be configured on one of VyOS interface. Best "
+"practice would be a loopback or dummy interface."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:178 86241466178f475ea05c6cfb97a9a942
+msgid "RADIUS bandwidth shaping attribute"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:180 cf39edb6c13e423faa13ceb01121a64f
+msgid ""
+"To enable bandwidth shaping via RADIUS, the option rate-limit needs to be "
+"enabled."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:187 f69daa0303754f04827b2c1f6e049676
+msgid ""
+"The default RADIUS attribute for rate limiting is ``Filter-Id``, but you may"
+" also redefine it."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:194 7853faefa6754b67a26aaf046e5161a3
+msgid ""
+"If you set a custom RADIUS attribute you must define it on both dictionaries"
+" at RADIUS server and client, which is the vyos router in our example."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:198 e49fda5345614631bf8e83fe4102d018
+msgid ""
+"The RADIUS dictionaries in VyOS are located at ``/usr/share/accel-"
+"ppp/radius/``"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:201 16f273a3f06f433fb72efacdab8563f1
+msgid "RADIUS advanced features"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:203 3e5a1883011149af9bc8b767fae95598
+msgid ""
+"Received RADIUS attributes have a higher priority than parameters defined "
+"within the CLI configuration, refer to the explanation below."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:207 5ae439b9bde848beb8a6417861550078
+msgid "Allocation clients ip addresses by RADIUS"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:209 db0a61a018c242eeaa24ae06c3b39be4
+msgid ""
+"If the RADIUS server sends the attribute ``Framed-IP-Address`` then this IP "
+"address will be allocated to the client and the option ip-pool within the "
+"CLI config is being ignored."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:214 938f299690ef4722bb30ad1030717bf6
+msgid "Renaming clients interfaces by RADIUS"
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:216 7a545eac95034bd48da879bd79457d46
+msgid ""
+"If the RADIUS server uses the attribute ``NAS-Port-Id``, ppp tunnels will be"
+" renamed."
+msgstr ""
+
+#: ../../configuration/vpn/l2tp.rst:219 204c9ce104194a45b7f1d5870e69fcdb
+msgid ""
+"The value of the attribute ``NAS-Port-Id`` must be less than 16 characters, "
+"otherwise the interface won't be renamed."
+msgstr ""

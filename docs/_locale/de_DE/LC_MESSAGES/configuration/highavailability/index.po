@@ -1,0 +1,423 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/highavailability/index.rst:6
+#: e7d0067351e5444ca36c8cb4d93c5af9
+msgid "High availability"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:8
+#: fee9f33470d64631bc8e70e402dbfe36
+msgid ""
+"VRRP (Virtual Router Redundancy Protocol) provides active/backup redundancy "
+"for routers. Every VRRP router has a physical IP/IPv6 address, and a virtual"
+" address. On startup, routers elect the master, and the router with the "
+"highest priority becomes the master and assigns the virtual address to its "
+"interface. All routers with lower priorities become backup routers. The "
+"master then starts sending keepalive packets to notify other routers that "
+"it's available. If the master fails and stops sending keepalive packets, the"
+" router with the next highest priority becomes the new master and takes over"
+" the virtual address."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:17
+#: 25a3e62efb7c4d2183b983047c244baa
+msgid ""
+"VRRP keepalive packets use multicast, and VRRP setups are limited to a "
+"single datalink layer segment. You can setup multiple VRRP groups (also "
+"called virtual routers). Virtual routers are identified by a VRID (Virtual "
+"Router IDentifier). If you setup multiple groups on the same interface, "
+"their VRIDs must be unique if they use the same address family, but it's "
+"possible (even if not recommended for readability reasons) to use duplicate "
+"VRIDs on different interfaces."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:26
+#: 50e07d38d6674c60bfc4d8afce18e577
+msgid "Basic setup"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:28
+#: bcccc3691f5b49a3acf383f0c3378d1b
+msgid ""
+"VRRP groups are created with the ``set high-availability vrrp group "
+"$GROUP_NAME`` commands. The required parameters are interface, vrid, and "
+"address."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:32
+#: dbb9b6dd1a6d4235ad7fc110fb6e49f2
+msgid "minimal config"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:40
+#: 92dfa1aaaa8142208503b6f301266196
+msgid ""
+"You can verify your VRRP group status with the operational mode ``run show "
+"vrrp`` command:"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:51
+#: 017b3a53fe81487ebe2dc8259ff7f4d2
+msgid "IPv6 support"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:53
+#: 36bcb7945b3a4bd6915096bb3147bff3
+msgid ""
+"The ``address`` parameter can be either an IPv4 or IPv6 address, but you can"
+" not mix IPv4 and IPv6 in the same group, and will need to create groups "
+"with different VRIDs specially for IPv4 and IPv6. If you want to use IPv4 + "
+"IPv6 address you can use option ``excluded-address``"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:59
+#: 44bb40746b9d4d8fb2fd126ed64cce44
+msgid "Address"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:60
+#: 35c31ebae84a417f8703e10a214721f5
+msgid ""
+"The ``address`` can be configured either on the VRRP interface or on not "
+"VRRP interface."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:70
+#: 476c3ac4b65646cf8d5e725c978fc0e8
+msgid "Disabling a VRRP group"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:72
+#: 54daaf1c6d0b442898fdb59362e44ed6
+msgid "You can disable a VRRP group with ``disable`` option:"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:78
+#: 12373c26525c47faab9e90599a8fcc14
+msgid ""
+"A disabled group will be removed from the VRRP process and your router will "
+"not participate in VRRP for that VRID. It will disappear from operational "
+"mode commands output, rather than enter the backup state."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:83
+#: b82e411c327644279cd48efbd5a70bdb
+msgid "Exclude address"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:85
+#: 819ce5a5641945a797a4ddc43a813e2c
+msgid ""
+"Exclude IP addresses from ``VRRP packets``. This option ``excluded-address``"
+" is used when you want to set IPv4 + IPv6 addresses on the same virtual "
+"interface or when used more than 20 IP addresses."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:96
+#: c4a6f6333ae64f5ca601b3549e7bc407
+msgid "Setting VRRP group priority"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:98
+#: 95b3436ef1f24d21abd13275933a2224
+msgid "VRRP priority can be set with ``priority`` option:"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:104
+#: 765d297e220b41e2bedd1df69a1d379f
+msgid ""
+"The priority must be an integer number from 1 to 255. Higher priority value "
+"increases router's precedence in the master elections."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:108
+#: fe4a11d3fdbf46e5a2e5f4f389d7bd28
+msgid "Sync groups"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:110
+#: 9f19a839f9c84fbba9c2318dd41e3f8b
+msgid "A sync group allows VRRP groups to transition together."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:118
+#: a7e01366f1c14a5a861873456eda1b59
+msgid ""
+"In the following example, when VLAN9 transitions, VLAN20 will also "
+"transition:"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:142
+#: fdd8c618b0fa4d12a948061883f450ac
+msgid ""
+"All items in a sync group should be similarly configured. If one VRRP group "
+"is set to a different preemption delay or priority, it would result in an "
+"endless transition loop."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:148
+#: ab27c891a1f6448ea2df6cb6d3df34b1
+msgid "Preemption"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:150
+#: 6a37e5389a064e748629b73dec803da4
+msgid ""
+"VRRP can use two modes: preemptive and non-preemptive. In the preemptive "
+"mode, if a router with a higher priority fails and then comes back, routers "
+"with lower priority will give up their master status. In non-preemptive "
+"mode, the newly elected master will keep the master status and the virtual "
+"address indefinitely."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:155
+#: b7bb9c1034a444a5956033355527158e
+msgid ""
+"By default VRRP uses preemption. You can disable it with the \"no-preempt\" "
+"option:"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:162
+#: d0e96e3976a94e7d89cd3fd1e3dec53f
+msgid ""
+"You can also configure the time interval for preemption with the \"preempt-"
+"delay\" option. For example, to set the higher priority router to take over "
+"in 180 seconds, use:"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:171
+#: 49fe606e3aa84de4a52c96006a543d55
+msgid "Track"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:173
+#: ed3d8925bc214126bd79ea2546fe5e65
+msgid ""
+"Track option to track non VRRP interface states. VRRP changes status to "
+"``FAULT`` if one of the track interfaces in state ``down``."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:181
+#: 56ecfbe000a1440da35b09aeec7d2c12
+msgid "Ignore VRRP main interface faults"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:188
+#: a8d83d134f684d2783d8edbb8b544a60
+msgid "Unicast VRRP"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:190
+#: 2c4a6cc88ea7489b94a8de86f6931799
+msgid ""
+"By default VRRP uses multicast packets. If your network does not support "
+"multicast for whatever reason, you can make VRRP use unicast communication "
+"instead."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:200
+#: 52449fa8f2ab4390a89a9e18401cabcb
+msgid "rfc3768-compatibility"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:202
+#: 2c4ff3cabdde4c89ac827d7870a88a38
+msgid ""
+"RFC 3768 defines a virtual MAC address to each VRRP virtual router. This "
+"virtual router MAC address will be used as the source in all periodic VRRP "
+"messages sent by the active node. When the rfc3768-compatibility option is "
+"set, a new VRRP interface is created, to which the MAC address and the "
+"virtual IP address is automatically assigned."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:212
+#: 8ec5cf8bd8ee4af2b3c5e9c34ad72d2a
+msgid "Verification"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:224
+#: cb133a4a167f4939a19cf39c6dcb430b
+msgid "Scripting"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:226
+#: 8891db909c754134b972d1b43111e2f8
+msgid ""
+"VRRP functionality can be extended with scripts. VyOS supports two kinds of "
+"scripts: health check scripts and transition scripts. Health check scripts "
+"execute custom checks in addition to the master router reachability. "
+"Transition scripts are executed when VRRP state changes from master to "
+"backup or fault and vice versa and can be used to enable or disable certain "
+"services, for example."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:233
+#: 1b16230ec9dd4b17b36e4e54f77e7320
+msgid "Health check scripts"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:235
+#: b21c8fbc7a644edbbf03c53b4a8d0af0
+msgid ""
+"This setup will make the VRRP process execute the ``/config/scripts/vrrp-"
+"check.sh script`` every 60 seconds, and transition the group to the fault "
+"state if it fails (i.e. exits with non-zero status) three times:"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:247
+#: 187a8c6f9d84432ebb272eab2ca267b4
+msgid "Transition scripts"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:249
+#: c2516ea16d1e4ab28d54feff178a1c9e
+msgid ""
+"Transition scripts can help you implement various fixups, such as starting "
+"and stopping services, or even modifying the VyOS config on VRRP transition."
+" This setup will make the VRRP process execute the ``/config/scripts/vrrp-"
+"fail.sh`` with argument ``Foo`` when VRRP fails, and the "
+"``/config/scripts/vrrp-master.sh`` when the router becomes the master:"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:261
+#: 4e011f89b21d4a0e9620cad9c40917cb
+msgid ""
+"To know more about scripting, check the :ref:`command-scripting` section."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:264
+#: 08f7855239604db8b1f19272c6775811
+msgid "Virtual-server"
+msgstr ""
+
+#: ../../_include/need_improvement.txt:11 c945c68683964cb98e4925c4d9d7c722
+msgid "This section needs improvements, examples and explanations."
+msgstr ""
+
+#: ../../_include/need_improvement.txt:13 0cc892ecba514bbb91d33ffea746268c
+msgid ""
+"Please take a look at the Contributing Guide for our :ref:`documentation`."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:267
+#: 5f47de8f78064bebae45e0b39db5512e
+msgid ""
+"Virtual Server allows to Load-balance traffic destination virtual-"
+"address:port between several real servers."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:271
+#: 28705ad5afd34698b67f0973c60741d0
+msgid "Algorithm"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:272
+#: af6c518e0f944e45bab41e7214045c83
+msgid "Load-balancing schedule algorithm:"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:274
+#: 23d7ad76dbfc473e80ef1cc50955bcf8
+msgid "round-robin"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:275
+#: 4e346244fd4a4f6a8d8dabce29c927bb
+msgid "weighted-round-robin"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:276
+#: 232c91c0283e4e12a88438382a30a995
+msgid "least-connection"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:277
+#: 2f5a374ab4cf45059a2f5a83e9fa59fa
+msgid "weighted-least-connection"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:278
+#: c9024d7dc4e9428387069b7d398fb8c0
+msgid "source-hashing"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:279
+#: aa052642dff74d0abcfdd761b1994f7e
+msgid "destination-hashing"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:280
+#: f6c4fbbe8745473d9d08729f77c60b58
+msgid "locality-based-least-connection"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:287
+#: 64ea694d5b9942d9915efb108850b6f1
+msgid "Forward method"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:288
+#: 5a9334aad7df44c6aab7219fb87d8b6d
+msgid "NAT"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:289
+#: 53cf91eddb564854a44a0b4b97c4302e
+msgid "direct"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:290
+#: 9fe0a2533e6846d8b10795af938dfb5e
+msgid "tunnel"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:298
+#: b239f52802a940bf9bcfeb06f95e0ce7
+msgid "Real server"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:299
+#: f743bcaf5d254b53814b81b02a9c313c
+msgid "Real server IP address and port"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:307
+#: 1f0f3fabb3cb420195438fc6a358aad4
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:308
+#: cfe751288bbf4d7bb235ceff4a52dc0e
+msgid ""
+"Virtual-server can be configured with VRRP virtual address or without VRRP."
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:310
+#: 3e1ddf07fc1c4e26bdc35f56a086fcf5
+msgid ""
+"In the next example all traffic destined to ``203.0.113.1`` and port "
+"``8280`` protocol TCP is balanced between 2 real servers ``192.0.2.11`` and "
+"``192.0.2.12`` to port ``80``"
+msgstr ""
+
+#: ../../configuration/highavailability/index.rst:314
+#: 7c81fb7780c546b392f62a9add692246
+msgid "Real server is auto-excluded if port check with this server fail."
+msgstr ""

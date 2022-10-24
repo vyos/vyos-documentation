@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configexamples/azure-vpn-bgp.rst:6 f83fa44add8c41fab8110d1f2e321206
+msgid "Route-Based Site-to-Site VPN to Azure (BGP over IKEv2/IPsec)"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:8 534f72f752e84afb8b770ad8a53a1bd5
+msgid ""
+"This guide shows an example of a route-based IKEv2 site-to-site VPN to Azure"
+" using VTI and BGP for dynamic routing updates."
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:11 049d04f68cd44accb87923158043df03
+msgid ""
+"For redundant / active-active configurations see :ref:`examples-azure-vpn-"
+"dual-bgp`"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:16 54fc3df452904c5ea43d99c856544676
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:18 abec6e0963af4d7fbe1c1162390d4a60
+msgid ""
+"A pair of Azure VNet Gateways deployed in active-passive configuration with "
+"BGP enabled."
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:21 22aeb09e6d9344c4be9e08c70c779758
+msgid ""
+"A local network gateway deployed in Azure representing the Vyos device, "
+"matching the below Vyos settings except for address space, which only "
+"requires the Vyos private IP, in this example 10.10.0.5/32"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:26 e6783a61f8d54c33a95e58407aea2c46
+msgid ""
+"A connection resource deployed in Azure linking the Azure VNet gateway and "
+"the local network gateway representing the Vyos device."
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:31 f6198f4f4b574ab7b36ae8f6ee5dc732
+msgid "Example"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:34 cc5a2912e07c44bfb396b9262365fc92
+msgid "WAN Interface"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:34 df85aea4568748798a33025246e4f9ff
+msgid "eth0"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:36 20ce51d06a40433d84365d4573b1c4bd
+msgid "On-premises address space"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:36 46b911f0e0634cd99a4106fb467df923
+msgid "10.10.0.0/16"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:38 e7d5f286aec147fcaee08602adc1d133
+msgid "Azure address space"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:38 69d765b32e0f4434ab5158857004439d
+msgid "10.0.0.0/16"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:40 806362f58c034acbb2ccd5390bfa3a3f
+msgid "Vyos public IP"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:40 a09e867c84484ac0b7c657ce599b4d76
+msgid "198.51.100.3"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:42 6680466007f8459b8859bba84a6ef5f0
+msgid "Vyos private IP"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:42 05581a563fb248cfbce55b48fc9b516c
+msgid "10.10.0.5"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:44 ab851443a7a74c0dbd76a3d9c2b741ae
+msgid "Azure VNet Gateway public IP"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:44 76422c1c147445248b6990ab012ca135
+msgid "203.0.113.2"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:46 aca3077ca2d946bbb13bfe1d5bc3b9fd
+msgid "Azure VNet Gateway BGP IP"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:46 4d0cb52280314731a2b791c9ac669e5f
+msgid "10.0.0.4"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:48 4170c65ca13340a49596468c75bfeb01
+msgid "Pre-shared key"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:48 240e9cc921f447b897bdbf946b707747
+msgid "ch00s3-4-s3cur3-psk"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:50 4eb2ac883ece41aa9e8d90fb835c8f29
+msgid "Vyos ASN"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:50 f19b0284d6d747f1abea3cd22b340a78
+msgid "64499"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:52 7592137fa3bf405d9bc5c9a66d0c91ec
+msgid "Azure ASN"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:52 1a542064bc174d668ec6c1701490a076
+msgid "65540"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:56 bca5f6372b374ec19f70a3d2ec0ca67e
+msgid "Vyos configuration"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:58 e2d8a5f4046240d0a23ca4e3fd684639
+msgid ""
+"Configure the IKE and ESP settings to match a subset of those supported by "
+"Azure:"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:80 6d547d6d1fa14ccc8948bceef68615b4
+msgid "Enable IPsec on eth0"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:86 62b5ee4ee0924f2cab8739de17862612
+msgid "Configure a VTI with a dummy IP address"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:93 75d6082877044b21a8352a52d5887883
+msgid "Clamp the VTI's MSS to 1350 to avoid PMTU blackholes."
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:99 3a6c4bc871fe4c048e7ead2f2d1eda9a
+msgid "Configure the VPN tunnel"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:115 f49b5c5e37e24e1689dddc469c4608ea
+msgid "**Important**: Add an interface route to reach Azure's BGP listener"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:121 7714f19656884885a022c6df481adf48
+msgid "Configure your BGP settings"
+msgstr ""
+
+#: ../../configexamples/azure-vpn-bgp.rst:131 a3b60878de2a436a895eac195a191428
+msgid "**Important**: Disable connected check \\"
+msgstr ""

@@ -1,0 +1,116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/interfaces/dummy.rst:7 225fa9192f7245189c47d69a79d66d35
+msgid "Dummy"
+msgstr ""
+
+#: ../../configuration/interfaces/dummy.rst:9 25f653d5461546308795a9dcab143c7f
+msgid ""
+"The dummy interface is really a little exotic, but rather useful "
+"nevertheless. Dummy interfaces are much like the :ref:`loopback-interface` "
+"interface, except you can have as many as you want."
+msgstr ""
+
+#: ../../configuration/interfaces/dummy.rst:13
+#: 1e72c2b3315f45928e90e8d30d1923cc
+msgid ""
+"Dummy interfaces can be used as interfaces that always stay up (in the same "
+"fashion to loopbacks in Cisco IOS), or for testing purposes."
+msgstr ""
+
+#: ../../configuration/interfaces/dummy.rst:16
+#: 0f78a91330de49e681900b47a31bb411
+msgid ""
+"On systems with multiple redundant uplinks and routes, it's a good idea to "
+"use a dedicated address for management and dynamic routing protocols. "
+"However, assigning that address to a physical link is risky: if that link "
+"goes down, that address will become inaccessible. A common solution is to "
+"assign the management address to a loopback or a dummy interface and "
+"advertise that address via all physical links, so that it's reachable "
+"through any of them. Since in Linux-based systems, there can be only one "
+"loopback interface, it's better to use a dummy interface for that purpose, "
+"since they can be added, removed, and taken up and down independently."
+msgstr ""
+
+#: ../../configuration/interfaces/dummy.rst:28
+#: 363d47c14c71419298141b7209551463
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/interfaces/dummy.rst:31
+#: 78a0f0518d1045deacbfcb071ee33aad
+msgid "Common interface configuration"
+msgstr ""
+
+#: ../../_include/interface-address.txt:3 becfa4c0c1e144a1abe948450867a0c7
+msgid ""
+"Configure interface `<interface>` with one or more interface addresses."
+msgstr ""
+
+#: ../../_include/interface-address.txt:6 70bcc023c96441598cb38b8a42113441
+msgid ""
+"**address** can be specified multiple times as IPv4 and/or IPv6 address, "
+"e.g. 192.0.2.1/24 and/or 2001:db8::1/64"
+msgstr ""
+
+#: ../../_include/interface-address.txt:9
+#: ../../_include/interface-description.txt:7
+#: ../../_include/interface-disable.txt:7 ../../_include/interface-vrf.txt:9
+#: 9cdcd75236bd4c819652a8d43bba01e4 c9f9403a597241718822a3225fd4362e
+#: c7334a858dfc41798672ae98c0a8fd32 0f64c4e6d05e4c7baf2324c07653d633
+msgid "Example:"
+msgstr ""
+
+#: ../../_include/interface-description.txt:4 a58ea870199b4693b3eda69fc63aa369
+msgid ""
+"Set a human readable, descriptive alias for this connection. Alias is used "
+"by e.g. the :opcmd:`show interfaces` command or SNMP based monitoring tools."
+msgstr ""
+
+#: ../../_include/interface-disable.txt:4 cd74f2aaff3849ae895c4d86a920159b
+msgid ""
+"Disable given `<interface>`. It will be placed in administratively down "
+"(``A/D``) state."
+msgstr ""
+
+#: ../../_include/interface-vrf.txt:4 fb2a2814c8f7412f8070882df988f433
+msgid "Place interface in given VRF instance."
+msgstr ""
+
+#: ../../_include/interface-vrf.txt:6 28a05cc94e584988b99c98e85556c00a
+msgid ""
+"There is an entire chapter about how to configure a :ref:`vrf`, please check"
+" this for additional information."
+msgstr ""
+
+#: ../../configuration/interfaces/dummy.rst:51
+#: 97699624680d4972a9ddf3fb1f96ee89
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/interfaces/dummy.rst:55
+#: 20d8ebe4f85e4f73b50f10134b157bf5
+msgid "Show brief interface information."
+msgstr ""
+
+#: ../../configuration/interfaces/dummy.rst:67
+#: d9802ea9a0f04566bfe1ee1265121260
+msgid "Show detailed information on given `<interface>`"
+msgstr ""

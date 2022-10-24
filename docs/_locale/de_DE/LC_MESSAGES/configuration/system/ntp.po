@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/system/ntp.rst:5 1d7b560fa43c47fd940043e0cdea97f1
+msgid "NTP"
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:7 913c116635fa4defadb10cc3dca493d0
+msgid ""
+":abbr:`NTP (Network Time Protocol`) is a networking protocol for clock "
+"synchronization between computer systems over packet-switched, variable-"
+"latency data networks. In operation since before 1985, NTP is one of the "
+"oldest Internet protocols in current use."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:12 0f3bb585dce14118b59eee2cb9038de2
+msgid ""
+"NTP is intended to synchronize all participating computers to within a few "
+"milliseconds of :abbr:`UTC (Coordinated Universal Time)`. It uses the "
+"intersection algorithm, a modified version of Marzullo's algorithm, to "
+"select accurate time servers and is designed to mitigate the effects of "
+"variable network latency. NTP can usually maintain time to within tens of "
+"milliseconds over the public Internet, and can achieve better than one "
+"millisecond accuracy in local area networks under ideal conditions. "
+"Asymmetric routes and network congestion can cause errors of 100 ms or more."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:21 6c135878ce0c4626a0dca07d41f2a086
+msgid ""
+"The protocol is usually described in terms of a client-server model, but can"
+" as easily be used in peer-to-peer relationships where both peers consider "
+"the other to be a potential time source. Implementations send and receive "
+"timestamps using :abbr:`UDP (User Datagram Protocol)` on port number 123."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:26 7987360f438244e296f08f9fc6e3f420
+msgid ""
+"NTP supplies a warning of any impending leap second adjustment, but no "
+"information about local time zones or daylight saving time is transmitted."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:29 1c048adddd7b4628ade8dcee66fb7c7f
+msgid ""
+"The current protocol is version 4 (NTPv4), which is a proposed standard as "
+"documented in :rfc:`5905`. It is backward compatible with version 3, "
+"specified in :rfc:`1305`."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:34 f9d0f3602ca6401f8cac0a21fa6f9e0e
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:38 db8b893bf53e4128bfe73fef7464fbc7
+msgid ""
+"Configure one or more servers for synchronisation. Server name can be either"
+" an IP address or :abbr:`FQDN (Fully Qualified Domain Name)`."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:41 02a59b915b8640238a0fa1add8eab746
+msgid "There are 3 default NTP server set. You are able to change them."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:43 ad2429ecdfc64800aa1a693852a1cd27
+msgid "``0.pool.ntp.org``"
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:44 c7f5fa2b8d664e2d8f1204a791bee117
+msgid "``1.pool.ntp.org``"
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:45 a6f3b00e474e4fa394cd30e733e1d743
+msgid "``2.pool.ntp.org``"
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:49 f3ef12db95244cfc9ad9dcad31358c13
+msgid "Configure one or more attributes to the given NTP server."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:51 6bd8eb0c1f5843e9bc0f0bd843bb1773
+msgid ""
+"``noselect`` marks the server as unused, except for display purposes. The "
+"server is discarded by the selection algorithm."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:54 e6639e29e7b34dba8bc793d0886ec2cc
+msgid ""
+"``pool`` mobilizes persistent client mode association with a number of "
+"remote servers."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:57 5150e3bb41d343da875e96af2345d68e
+msgid "``preempt`` a preemptable association is expendable."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:59 eaf785a69cad4afc9fb57f41228397b4
+msgid ""
+"``prefer`` marks the server as preferred. All other things being equal, this"
+" host will be chosen for synchronization among a set of correctly operating "
+"hosts."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:65 e12c85bd835d45bc93f8f4f8d5648f7a
+msgid ""
+"NTP process will only listen on the specified IP address. You must specify "
+"the `<address>` and optionally the permitted clients. Multiple listen "
+"addresses can be configured."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:71 ebc6f11bab924530a01aff1c36669244
+msgid ""
+"List of networks or client addresses permitted to contact this NTP server."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:73 ff5cabfec37e49c1847045456b137291
+msgid "Multiple networks can be configured."
+msgstr ""
+
+#: ../../configuration/system/ntp.rst:77 102ee8db603a4921a34d719d76418666
+msgid ""
+"Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance."
+msgstr ""

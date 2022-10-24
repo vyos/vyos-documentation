@@ -1,0 +1,374 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/service/router-advert.rst:5
+#: 0ef10b50d09649b1934411939bead5bc
+msgid "Router Advertisements"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:7
+#: 6d817f4e5274468198036dc88aeac613
+msgid ""
+":abbr:`RAs (Router advertisements)` are described in "
+":rfc:`4861#section-4.6.2`. They are part of what is known as :abbr:`SLAAC "
+"(Stateless Address Autoconfiguration)`."
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:12
+#: abb664f2296249179965db376ed3875f
+msgid "Supported interface types:"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:14
+#: 2802543c48d84cc58c0f5bd4e6f09d91
+msgid "bonding"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:15
+#: b15ce921054a42ab8c05dd73c95def90
+msgid "bridge"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:16
+#: 18e723d8e6ae4744b47d2f068d797120
+msgid "ethernet"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:17
+#: 34427b78a47440d4b2afb06dcb0ec8af
+msgid "l2tpv3"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:18
+#: 9fed4fcf05e149d8a18b09d69d029fab
+msgid "openvpn"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:19
+#: d649cbc695254308b76e51f9c36e142d
+msgid "pseudo-ethernet"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:20
+#: 8677df4e0d04491e83dbff2c7dd2c15f
+msgid "tunnel"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:21
+#: 34f3ee33128f47848db9887d5fd82e32
+msgid "vxlan"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:22
+#: 100ab9bf56a5450392c96579c8ba32f6
+msgid "wireguard"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:23
+#: f7729a45cf2d4b3384673322e6b6b99f
+msgid "wireless"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:24
+#: 58f96528ba7246b4ae40066874f2fdfd
+msgid "wirelessmodem"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:28
+#: 1b381e306213427c97ed933698a0ff71
+msgid "Enabling Advertisments"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: ae6ce5a72cd64b4eaae167f07afb4411
+msgid "Field"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 796a8b8306f744f48140ada3a170bf64
+msgid "VyOS Option"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: ../../configuration/service/router-advert.rst:1
+#: c4e2bcf7db9d4ba5a300cef420c701b4 d0bce4b9ba3a45b1872c55e96189819f
+msgid "Description"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: fd5a460187d64bf1aac160d677c007cd
+msgid "Cur Hop Limit"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 5d7bc99e32ac45f0b4db10ad1758da3d
+msgid "hop-limit"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: ccb83a8b9d78437b8346a6816b5ae6a5
+msgid "Hop count field of the outgoing RA packets"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 2633269240424422a961694fa873556e
+msgid "\"Managed address configuration\" flag"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 2a819e2e708c499aadef365ecab9c2fa
+msgid "managed-flag"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: d9ca9730db5c411dbf6c82ab19bef1b3
+msgid ""
+"Tell hosts to use the administered stateful protocol (i.e. DHCP) for "
+"autoconfiguration"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 5fef1ac872504f13891b93ccfbbf987f
+msgid "\"Other configuration\" flag"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 7626bc314b754ca49863745e63c8d414
+msgid "other-config-flag"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: ed54dca08d364165963afc9606a87359
+msgid ""
+"Tell hosts to use the administered (stateful) protocol (i.e. DHCP) for "
+"autoconfiguration of other (non-address) information"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 0d4b743283914aa08eda7d934ce410b6
+msgid "MTU"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 87a1908f3a134bd2b3d5714a103b2252
+msgid "link-mtu"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 62c2cfb54c4341bf88d70943877f1ad3
+msgid "Link MTU value placed in RAs, exluded in RAs if unset"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 3a90e648c9bd4776bd02690f025faf6d
+msgid "Router Lifetime"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: d9369c5fe0744dc68f65bef4b87a6ef3
+msgid "default-lifetime"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 7f23860e61594c4c834805e8fc02f41e
+msgid "Lifetime associated with the default router in units of seconds"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: dff33d83b2614d449c9597fd51157681
+msgid "Reachable Time"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: b32bcad949cb471899ac7402773fb9f1
+msgid "reachable-time"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 827818796b98440584fad1f44ced8421
+msgid ""
+"Time, in milliseconds, that a node assumes a neighbor is reachable after "
+"having received a reachability confirmation"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 6646f7a9009e4bd8b7dcbd41a1d8ff8f
+msgid "Retransmit Timer"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 90484658449e480e966c38cd42fe70aa
+msgid "retrans-timer"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 0fea090e73f241c59b5550d44efc1edf
+msgid ""
+"Time in milliseconds between retransmitted Neighbor Solicitation messages"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 3080e74da17c410bab107789910cc42c
+msgid "Default Router Preference"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: adf24795662643eb855dd8b61976bef7
+msgid "default-preference"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 221f6121d5e941569752b56dcc5105e9
+msgid "Preference associated with the default router"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: f6e52feb9b574e448c3f8463d8664d9d
+msgid "Interval"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: b970bfd7f34740cfad8c148f5db1da02
+msgid "interval"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 864137937cb44aaea74d2b1aecb59d94
+msgid "Min and max intervals between unsolicited multicast RAs"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 71b2b409722745e7a8275a841b3f835f
+msgid "DNSSL"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 50e9beba53234d41a140feff81631749
+msgid "dnssl"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 27f0315f43224fe690c20f5f1dc000ba
+msgid "DNS search list to advertise"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: c507b73f0db64be086a05c08f0933870
+msgid "Name Server"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: e89e74e81c844feea7f9743e5d77769a
+msgid "name-server"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: d48befc4a0e54de58570c3302202dee2
+msgid "Advertise DNS server per https://tools.ietf.org/html/rfc6106"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:54
+#: bd9131f8f85c4e8fb68b1c1f5cedbd81
+msgid "Advertising a Prefix"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 46005a0517e74a0a8fa2571089364d43
+msgid "VyOS Field"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 6cb98638000b42658591fc43d33495ba
+msgid "decrement-lifetime"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 4847cdb53a6a4dabbb7749c2f2278ff8
+msgid ""
+"Lifetime is decremented by the number of seconds since the last RA - use in "
+"conjunction with a DHCPv6-PD prefix"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: a9fb81bea8d4473fb7a6b49eafd13712
+msgid "deprecate-prefix"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 20503fd5fb7a4d4b9b5b71cdad4f1b7c
+msgid ""
+"Upon shutdown, this option will deprecate the prefix by announcing it in the"
+" shutdown RA"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: db903fb0a47947a0a8d5e75e5bdfa0ff
+msgid "no-autonomous-flag"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: c80ed9c76c93418d877d4933113c6739
+msgid "Prefix can not be used for stateless address auto-configuration"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 1f2e0121b3c74487ba15bb347716a2c3
+msgid "no-on-link-flag"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 64e1124b0f014efc9fbf038a3af0b632
+msgid "Prefix can not be used for on-link determination"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 1ce3440969634606abb1791c4d328075
+msgid "preferred-lifetime"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 83079f15719e4b30bc0ab4a640f9321d
+msgid ""
+"Time in seconds that the prefix will remain preferred (default 4 hours)"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 7920dcc8b5894884bd5e2be8dba4144e
+msgid "valid-lifetime"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:1
+#: 37ca37f336e74f85b35c318397bfab50
+msgid "Time in seconds that the prefix will remain valid (default: 30 days)"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:74
+#: 87e3cc0a5be04315973cdb981df8f658
+msgid "Disabling Advertisements"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:76
+#: fbc1406cdc674ffbabd1704465c33591
+msgid "To disable advertisements without deleting the configuration:"
+msgstr ""
+
+#: ../../configuration/service/router-advert.rst:81
+#: cfe0367334a74a5da873b8b17f8793dc
+msgid "Example Configuration"
+msgstr ""

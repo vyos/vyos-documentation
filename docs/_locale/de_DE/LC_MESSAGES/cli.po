@@ -1,0 +1,638 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 09:54+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../cli.rst:5 21120cf0a35e462896221ba7d3955dbe
+msgid "Command Line Interface"
+msgstr ""
+
+#: ../../cli.rst:7 c4c8616f9aa64506ba32a918e751ba09
+msgid ""
+"The VyOS :abbr:`CLI (Command-Line Interface)` comprises an operational and a"
+" configuration mode."
+msgstr ""
+
+#: ../../cli.rst:11 636d7ebd8bda4c32a2f48642143d3a7a
+msgid "Operational Mode"
+msgstr ""
+
+#: ../../cli.rst:13 057dab6dbd964a17bce2e139dc2c72e2
+msgid ""
+"Operational mode allows for commands to perform operational system tasks and"
+" view system and service status, while configuration mode allows for the "
+"modification of system configuration."
+msgstr ""
+
+#: ../../cli.rst:17 974e4e76b1454a4e8ca19c0f850b2a84
+msgid ""
+"The CLI provides a built-in help system. In the CLI the ``?`` key may be "
+"used to display available commands. The ``TAB`` key can be used to auto-"
+"complete commands and will present the help system upon a conflict or "
+"unknown value."
+msgstr ""
+
+#: ../../cli.rst:21 d1bbdf92bf8348de9e475c14fe95c9dd
+msgid ""
+"For example typing ``sh`` followed by the ``TAB`` key will complete to "
+"``show``. Pressing ``TAB`` a second time will display the possible sub-"
+"commands of the ``show`` command."
+msgstr ""
+
+#: ../../cli.rst:30 2bc6da04f33d4eb8be20b26bd6726241
+msgid "Example showing possible show commands:"
+msgstr ""
+
+#: ../../cli.rst:58 4ca86db4c84640a29821d88b0735f98a
+msgid ""
+"You can scroll up with the keys ``[Shift]+[PageUp]`` and scroll down with "
+"``[Shift]+[PageDown]``."
+msgstr ""
+
+#: ../../cli.rst:61 5973ef10ccfb4177baf6e3b7334a657e
+msgid ""
+"When the output of a command results in more lines than can be displayed on "
+"the terminal screen the output is paginated as indicated by a ``:`` prompt."
+msgstr ""
+
+#: ../../cli.rst:72 d728194e036c4716a3e5df62b26a6f0d
+msgid "When viewing in page mode the following commands are available:"
+msgstr ""
+
+#: ../../cli.rst:65 f156509bc7f441369c63114c298f5567
+msgid "``q`` key can be used to cancel output"
+msgstr ""
+
+#: ../../cli.rst:66 d1da597d959e479faf7ae04e966bb225
+msgid "``space`` will scroll down one page"
+msgstr ""
+
+#: ../../cli.rst:67 e1b5265ce5ee42d7bec396e8f923aaa9
+msgid "``b`` will scroll back one page"
+msgstr ""
+
+#: ../../cli.rst:68 40182dbf44634a399c48c2cd47d56462
+msgid "``return`` will scroll down one line"
+msgstr ""
+
+#: ../../cli.rst:69 64033505e1fc4e56bcb38f0a59d8bd65
+msgid ""
+"``up-arrow`` and ``down-arrow`` will scroll up or down one line at a time "
+"respectively"
+msgstr ""
+
+#: ../../cli.rst:71 313c1a098e59429bab5c553f35b29f59
+msgid ""
+"``left-arrow`` and ``right-arrow`` can be used to scroll left or right in "
+"the event that the output has lines which exceed the terminal size."
+msgstr ""
+
+#: ../../cli.rst:75 d66ecd7309114d0c860911540edfc345
+msgid "Configuration Mode"
+msgstr ""
+
+#: ../../cli.rst:77 76e2cb38ca4b4644bbb92ea0bbc81ad1
+msgid "To enter configuration mode use the ``configure`` command:"
+msgstr ""
+
+#: ../../cli.rst:85 e03339907b6346f895084097041d4c51
+msgid ""
+"Prompt changes from ``$`` to ``#``. To exit configuration mode, type "
+"``exit``."
+msgstr ""
+
+#: ../../cli.rst:94 ad7485be1ea34472bf1e5e77f0989a1c
+msgid ""
+"See the configuration section of this document for more information on "
+"configuration mode."
+msgstr ""
+
+#: ../../cli.rst:102 7dfc482dbadc4882a2e417a29ab5cbf7
+msgid "Configuration Overview"
+msgstr ""
+
+#: ../../cli.rst:104 4bd2c0e5d42f4b0f86b7985adb949dc8
+msgid ""
+"VyOS makes use of a unified configuration file for the entire system's "
+"configuration: ``/config/config.boot``. This allows easy template creation, "
+"backup, and replication of system configuration. A system can thus also be "
+"easily cloned by simply copying the required configuration files."
+msgstr ""
+
+#: ../../cli.rst:111 187a65db793741b58ce69646d651efb6
+msgid "Terminology"
+msgstr ""
+
+#: ../../cli.rst:113 1512f1014e654ba39a66f114f90cd01b
+msgid "A live VyOS system has three major types of configurations:"
+msgstr ""
+
+#: ../../cli.rst:115 b8195128e71541ef922ea1d13eb5291d
+msgid ""
+"**Active** or **running configuration** is the system configuration that is "
+"loaded  and currently active (used by VyOS). Any change in the configuration"
+" will have to be committed to belong to the active/running configuration."
+msgstr ""
+
+#: ../../cli.rst:120 f868599712844158b1d899b814a51c48
+msgid ""
+"**Working configuration** is the one that is currently being modified in "
+"configuration mode. Changes made to the working configuration do not go into"
+" effect until the changes are committed with the :cfgcmd:`commit` command. "
+"At which time the working configuration will become the active or running "
+"configuration."
+msgstr ""
+
+#: ../../cli.rst:126 e5573c12df9943adae64cd8bba01d9b4
+msgid ""
+"**Saved configuration** is the one saved to a file using the :cfgcmd:`save` "
+"command. It allows you to keep safe a configuration for future uses. There "
+"can be multiple configuration files. The default or \"boot\" configuration "
+"is saved and loaded from the file ``/config/config.boot``."
+msgstr ""
+
+#: ../../cli.rst:133 414f4b2d94054beda99ee34d4c6cddf8
+msgid "Seeing and navigating the configuration"
+msgstr ""
+
+#: ../../cli.rst:137 f2187452b1574497be64b5979ae7096e
+msgid ""
+"View the current active configuration, also known as the running "
+"configuration, from the operational mode."
+msgstr ""
+
+#: ../../cli.rst:193 1ac505b1896f4525a8a35db2da65c3f8
+msgid ""
+"By default, the configuration is displayed in a hierarchy like the above "
+"example, this is only one of the possible ways to display the configuration."
+" When the configuration is generated and the device is configured, changes "
+"are added through a collection of :cfgcmd:`set` and :cfgcmd:`delete` "
+"commands."
+msgstr ""
+
+#: ../../cli.rst:201 f305d616417e436eb6d9c3d134502654
+msgid ""
+"Get a collection of all the set commands required which led to the running "
+"configuration."
+msgstr ""
+
+#: ../../cli.rst:221 d63b2f797bf045f48fc49417c906c3a9
+msgid ""
+"Both these ``show`` commands should be executed when in operational mode, "
+"they do not work directly in configuration mode. There is a special way on "
+"how to :ref:`run_opmode_from_config_mode`."
+msgstr ""
+
+#: ../../cli.rst:225 f2d3dc3b3cf5403c83a82d444c1a069c
+msgid ""
+"Use the ``show configuration commands | strip-private`` command when you "
+"want to hide private data. You may want to do so if you want to share your "
+"configuration on the `forum`_."
+msgstr ""
+
+#: ../../cli.rst:233 03f09d2c45bb4f86adc9eede7fffdaf9
+msgid "View the current active configuration in JSON format."
+msgstr ""
+
+#: ../../cli.rst:241 2d3d5eacec064a2392c692c31e9a79d1
+msgid "View the current active configuration in readable JSON format."
+msgstr ""
+
+#: ../../cli.rst:338 177ac8bf938e4b8f8801b35cacae5e30
+msgid "The config mode"
+msgstr ""
+
+#: ../../cli.rst:340 cfe4a5e07e254f808e1a35ab07b7b9e9
+msgid ""
+"When entering the configuration mode you are navigating inside a tree "
+"structure, to enter configuration mode enter the command :opcmd:`configure` "
+"when in operational mode."
+msgstr ""
+
+#: ../../cli.rst:351 30efd4da83d5459db163be96f3d962f5
+msgid ""
+"When going into configuration mode, prompt changes from ``$`` to ``#``."
+msgstr ""
+
+#: ../../cli.rst:355 5566a21e9dbe4083bf97b8cae1e30904
+msgid ""
+"All commands executed here are relative to the configuration level you have "
+"entered. You can do everything from the top level, but commands will be "
+"quite lengthy when manually typing them."
+msgstr ""
+
+#: ../../cli.rst:359 7ff733c108854732841a6ede3f81a49d
+msgid ""
+"The current hierarchy level can be changed by the :cfgcmd:`edit` command."
+msgstr ""
+
+#: ../../cli.rst:370 3e1937e3dd54420bbdd56f60079a09ef
+msgid ""
+"You are now in a sublevel relative to ``interfaces ethernet eth0``, all "
+"commands executed from this point on are relative to this sublevel. Use "
+"eithe the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top of "
+"the hierarchy. You can also use the :cfgcmd:`up` command to move only one "
+"level up at a time."
+msgstr ""
+
+#: ../../cli.rst:378 8f7965edb6714d02a6b695b2db020ee9
+msgid ""
+"The :cfgcmd:`show` command within configuration mode will show the working "
+"configuration indicating line changes with ``+`` for additions, ``>`` for "
+"replacements and ``-`` for deletions."
+msgstr ""
+
+#: ../../cli.rst:382 96f7016a82594c3a91d2972ea7c1a806
+msgid "**Example:**"
+msgstr ""
+
+#: ../../cli.rst:413 14395d359ccd4f09835d9c9a7ceb89b3
+msgid ""
+"It is also possible to display all `set` commands within configuration mode "
+"using :cfgcmd:`show | commands`"
+msgstr ""
+
+#: ../../cli.rst:422 4379bd3c11e1471e984e477f3776de26
+msgid ""
+"These commands are also relative to the level you are inside and only "
+"relevant configuration blocks will be displayed when entering a sub-level."
+msgstr ""
+
+#: ../../cli.rst:433 f280fe6780114f6bb14fbfc79974a6a6
+msgid ""
+"Exiting from the configuration mode is done via the :cfgcmd:`exit` command "
+"from the top level, executing :cfgcmd:`exit` from within a sub-level takes "
+"you back to the top level."
+msgstr ""
+
+#: ../../cli.rst:447 264cd6422a324d2aa97de4518ae5e725
+msgid "Editing the configuration"
+msgstr ""
+
+#: ../../cli.rst:449 114c539fc9bd4b95a193332bb9875f86
+msgid ""
+"The configuration can be edited by the use of :cfgcmd:`set` and "
+":cfgcmd:`delete` commands from within configuration mode."
+msgstr ""
+
+#: ../../cli.rst:454 b628dfa48fca49c0a0e09812e0efc07e
+msgid ""
+"Use this command to set the value of a parameter or to create a new element."
+msgstr ""
+
+#: ../../cli.rst:457 8f3ee422c03c423ab83ea00d2cbcef8a
+msgid ""
+"Configuration commands are flattened from the tree into 'one-liner' commands"
+" shown in :opcmd:`show configuration commands` from operation mode. Commands"
+" are relative to the level where they are executed and all redundant "
+"information from the current level is removed from the command entered."
+msgstr ""
+
+#: ../../cli.rst:475 48ed6b56b27b48b691ba9d45dd4414f6
+msgid ""
+"These two commands above are essentially the same, just executed from "
+"different levels in the hierarchy."
+msgstr ""
+
+#: ../../cli.rst:480 299391b2c4624c48a25d5bd67d613dbb
+msgid ""
+"To delete a configuration entry use the :cfgcmd:`delete` command, this also "
+"deletes all sub-levels under the current level you've specified in the "
+":cfgcmd:`delete` command. Deleting an entry will also result in the element "
+"reverting back to its default value if one exists."
+msgstr ""
+
+#: ../../cli.rst:493 f63691ef1fc44ce29633e2b7b3fef591
+msgid ""
+"Any change you do on the configuration, will not take effect until committed"
+" using the :cfgcmd:`commit` command in configuration mode."
+msgstr ""
+
+#: ../../cli.rst:508 7ca29c616aca49a9b661173a26e82f20
+msgid ""
+"Use this command to preserve configuration changes upon reboot. By default "
+"it is stored at */config/config.boot*. In the case you want to store the "
+"configuration file somewhere else, you can add a local path, a SCP address, "
+"a FTP address or a TFTP address."
+msgstr ""
+
+#: ../../cli.rst:535 bc85992170124de0b767b8248cd55508
+msgid ""
+"Configuration mode can not be exited while uncommitted changes exist. To "
+"exit configuration mode without applying changes, the :cfgcmd:`exit discard`"
+" command must be used."
+msgstr ""
+
+#: ../../cli.rst:539 848cecddb2ec4673bfeb45247cd46f7b
+msgid "All changes in the working config will thus be lost."
+msgstr ""
+
+#: ../../cli.rst:552 ef753ddae18c488a9b84cf835728ac5d
+msgid ""
+"Use this command to temporarily commit your changes and set the number of "
+"minutes available for validation. ``confirm`` must be entered within those "
+"minutes, otherwise the system will reboot into the previous configuration. "
+"The default value is 10 minutes."
+msgstr ""
+
+#: ../../cli.rst:558 119b474b2099422aa174b2c6bc91c7f7
+msgid ""
+"What if you are doing something dangerous? Suppose you want to setup a "
+"firewall, and you are not sure there are no mistakes that will lock you out "
+"of your system. You can use confirmed commit. If you issue the ``commit-"
+"confirm`` command, your changes will be commited, and if you don't issue  "
+"the ``confirm`` command in 10 minutes, your system will reboot into previous"
+" config revision."
+msgstr ""
+
+#: ../../cli.rst:576 d67fd3690dd748e2a517f447aebf3d99
+msgid ""
+"A reboot because you did not enter ``confirm`` will not take you necessarily"
+" to the *saved configuration*, but to the point before the unfortunate "
+"commit."
+msgstr ""
+
+#: ../../cli.rst:583 6591ff7781ce4c219aac0152b516f86f
+msgid "Copy a configuration element."
+msgstr ""
+
+#: ../../cli.rst:585 3005c44d1bba423898370647ead0582f
+msgid ""
+"You can copy and remove configuration subtrees. Suppose you set up a "
+"firewall ruleset ``FromWorld`` with one rule that allows traffic from "
+"specific subnet. Now you want to setup a similar rule, but for different "
+"subnet. Change your edit level to ``firewall name FromWorld`` and use ``copy"
+" rule 10 to rule 20``, then modify rule 20."
+msgstr ""
+
+#: ../../cli.rst:616 d4bc2b2f4cb247f2a542d660c4d15b06
+msgid "Rename a configuration element."
+msgstr ""
+
+#: ../../cli.rst:618 b4568f35db6745d19ea4ffc2b9812507
+msgid "You can also rename config subtrees:"
+msgstr ""
+
+#: ../../cli.rst:627 929db380162e483db7f0e824e917f84a
+msgid ""
+"Note that ``show`` command respects your edit level and from this level you "
+"can view the modified firewall ruleset with just ``show`` with no "
+"parameters."
+msgstr ""
+
+#: ../../cli.rst:651 fee0c71cd0f54c3e9db781d686ca07d9
+msgid "Add comment as an annotation to a configuration node."
+msgstr ""
+
+#: ../../cli.rst:653 87025547a81e4a7c86ddccbee2e1d7f2
+msgid ""
+"The ``comment`` command allows you to insert a comment above the ``<config "
+"node>`` configuration section. When shown, comments are enclosed with ``/*``"
+" and ``*/`` as open/close delimiters. Comments need to be commited, just "
+"like other config changes."
+msgstr ""
+
+#: ../../cli.rst:658 e408cab2d1c44990985e546091a55da8
+msgid ""
+"To remove an existing comment from your current configuration, specify an "
+"empty string enclosed in double quote marks (``\"\"``) as the comment text."
+msgstr ""
+
+#: ../../cli.rst:662 f4f32c52be714bd1ba68aab1ef4e93c0
+msgid "Example:"
+msgstr ""
+
+#: ../../cli.rst:676 dd7cbd1d1e6a4e0b9139c4d8f76a1c9a
+msgid ""
+"An important thing to note is that since the comment is added on top of the "
+"section, it will not appear if the ``show <section>`` command is used. With "
+"the above example, the `show firewall` command would return starting after "
+"the ``firewall {`` line, hiding the comment."
+msgstr ""
+
+#: ../../cli.rst:690 a70b770a4a1648c29883265dfaa1d0ce
+msgid "Access opmode from config mode"
+msgstr ""
+
+#: ../../cli.rst:692 f3c6588821924287ba297b1d64fe8274
+msgid ""
+"When inside configuration mode you are not directly able to execute "
+"operational commands."
+msgstr ""
+
+#: ../../cli.rst:697 68ff26c8c2564460a9fd8ebd24e166e7
+msgid ""
+"Access to these commands are possible through the use of the ``run "
+"[command]`` command. From this command you will have access to everything "
+"accessible from operational mode."
+msgstr ""
+
+#: ../../cli.rst:701 7d68211d96144d49b588c53b2f626905
+msgid ""
+"Command completion and syntax help with ``?`` and ``[tab]`` will also work."
+msgstr ""
+
+#: ../../cli.rst:714 e747f3137f9c464c8c33893aba78ea9a
+msgid "Managing configurations"
+msgstr ""
+
+#: ../../cli.rst:716 2819f3d0832b475eb4165e5ef25c3260
+msgid ""
+"VyOS comes with an integrated versioning system for the system "
+"configuration. It automatically maintains a backup of every previous "
+"configuration which has been committed to the system. The configurations are"
+" versioned locally for rollback but they can also be stored on a remote host"
+" for archiving/backup reasons."
+msgstr ""
+
+#: ../../cli.rst:723 2236c75f85514bb38f672cd59756bc1b
+msgid "Local Archive"
+msgstr ""
+
+#: ../../cli.rst:725 891345c94d15435ba7630ec7a30cac79
+msgid ""
+"Revisions are stored on disk. You can view, compare and rollback them to any"
+" previous revisions if something goes wrong."
+msgstr ""
+
+#: ../../cli.rst:730 0dc22fad77084db89ce2f40e4005861f
+msgid "View all existing revisions on the local system."
+msgstr ""
+
+#: ../../cli.rst:747 503fef0c5d8f4225abc6e58896c4b348
+msgid ""
+"You can specify the number of revisions stored on disk. N can be in the "
+"range of 0 - 65535. When the number of revisions exceeds the configured "
+"value, the oldest revision is removed. The default setting for this value is"
+" to store 100 revisions locally."
+msgstr ""
+
+#: ../../cli.rst:754 198087cd084f4fbdad0394f5501dbaec
+msgid "Compare configurations"
+msgstr ""
+
+#: ../../cli.rst:756 351345bd9aeb421d9ee0a147299255b7
+msgid "VyOS lets you compare different configurations."
+msgstr ""
+
+#: ../../cli.rst:760 0a1afe6b5de948a6accb87224583e888
+msgid ""
+"Use this command to spot what the differences are between different "
+"configurations."
+msgstr ""
+
+#: ../../cli.rst:784 7921c3a125324f148f82df7eb01980b9
+msgid ""
+"The command :cfgcmd:`compare` allows you to compare different type of "
+"configurations. It also lets you compare different revisions through the "
+":cfgcmd:`compare N M` command, where N and M are revision numbers. The "
+"output will describe how the configuration N is when compared to M "
+"indicating with a plus sign (``+``) the additional parts N has when compared"
+" to M, and indicating with a minus sign (``-``) the lacking parts N misses "
+"when compared to M."
+msgstr ""
+
+#: ../../cli.rst:810 bfe635c8c3e94e09a98d7ddc32ce788f
+msgid "Show commit revision difference."
+msgstr ""
+
+#: ../../cli.rst:813 4f906beed751459d8bc34a3445e1e74b
+msgid ""
+"The command above also lets you see the difference between two commits. By "
+"default the difference with the running config is shown."
+msgstr ""
+
+#: ../../cli.rst:824 db6c957f421a444496f8784b79699171
+msgid ""
+"This means four commits ago we did ``set system ipv6 disable-forwarding``."
+msgstr ""
+
+#: ../../cli.rst:828 9c2de0768c6e4f16854f38b5f889a83f
+msgid "Rollback Changes"
+msgstr ""
+
+#: ../../cli.rst:830 e67c1d21f51e49a18387fd9d8cd0f8a6
+msgid ""
+"You can rollback configuration changes using the rollback command. This will"
+" apply the selected revision and trigger a system reboot."
+msgstr ""
+
+#: ../../cli.rst:835 759a6ee824774d68b313f9a431d58e08
+msgid "Rollback to revision N (currently requires reboot)"
+msgstr ""
+
+#: ../../cli.rst:850 285d97e1809e4a8daa89be4dd398a4c9
+msgid "Remote Archive"
+msgstr ""
+
+#: ../../cli.rst:852 970b578f48a74395bff8817fd16af559
+msgid ""
+"VyOS can upload the configuration to a remote location after each call to "
+":cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, "
+"FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is "
+"successfull the ``config.boot`` file will be copied to the defined "
+"destination(s). The filename used on the remote host will be ``config.boot-"
+"hostname.YYYYMMDD_HHMMSS``."
+msgstr ""
+
+#: ../../cli.rst:861 20a82b39f3594b408c46d14465c3f059
+msgid ""
+"Specify remote location of commit archive as any of the below :abbr:`URI "
+"(Uniform Resource Identifier)`"
+msgstr ""
+
+#: ../../cli.rst:864 62cfe72cc99a445bb4fdde3d267d526e
+msgid "``scp://<user>:<passwd>@<host>:/<dir>``"
+msgstr ""
+
+#: ../../cli.rst:865 0ced9798781d45e7b88341ad48889798
+msgid "``sftp://<user>:<passwd>@<host>/<dir>``"
+msgstr ""
+
+#: ../../cli.rst:866 15c574cb9b51484eb2a5bb2c8d549560
+msgid "``ftp://<user>:<passwd>@<host>/<dir>``"
+msgstr ""
+
+#: ../../cli.rst:867 fcb0ee5aba23487a981a1b78d5dea8a0
+msgid "``tftp://<host>/<dir>``"
+msgstr ""
+
+#: ../../cli.rst:869 3d3ee415428c40999ddcbf8e003c8080
+msgid "The number of revisions don't affect the commit-archive."
+msgstr ""
+
+#: ../../cli.rst:871 b6d77c3086db492687bb9376b10093d5
+msgid ""
+"You may find VyOS not allowing the secure connection because it cannot "
+"verify the legitimacy of the remote server. You can use the workaround below"
+" to quickly add the remote host's SSH fingerprint to your "
+"``~/.ssh/known_hosts`` file:"
+msgstr ""
+
+#: ../../cli.rst:881 d517ea3bf3a541c68d04542637086726
+msgid "Saving and loading manually"
+msgstr ""
+
+#: ../../cli.rst:883 20be23aacb3b490aa9e2ff0908360d2a
+msgid ""
+"You can use the ``save`` and ``load`` commands if you want to manually "
+"manage specific configuration files."
+msgstr ""
+
+#: ../../cli.rst:886 51b922b90d7f41b8890f4720cf931423
+msgid ""
+"When using the save_ command, you can add a specific location where to store"
+" your configuration file. And, when needed it, you will be able to load it "
+"with the ``load`` command:"
+msgstr ""
+
+#: ../../cli.rst:892 234408e9886440fe8e8b9ab63f96736d
+msgid ""
+"Use this command to load a configuration which will replace the running "
+"configuration. Define the location of the configuration file to be loaded. "
+"You can use a path to a local file, an SCP address, an SFTP address, an FTP "
+"address, an HTTP address, an HTTPS address or a TFTP address."
+msgstr ""
+
+#: ../../cli.rst:914 b416e5fa71104e75978dcefda0ac7fe6
+msgid "Restore Default"
+msgstr ""
+
+#: ../../cli.rst:916 cb77dda7a9464a1d88ead879c5b011ed
+msgid ""
+"In the case you want to completely delete your configuration and restore the"
+" default one, you can enter the following command in configuration mode:"
+msgstr ""
+
+#: ../../cli.rst:924 2d6d4d7065c24114957b9d91223f7996
+msgid ""
+"You will be asked if you want to continue. If you accept, you will have to "
+"use :cfgcmd:`commit` if you want to make the changes active."
+msgstr ""
+
+#: ../../cli.rst:927 9f9c7cb332794ad780df77618ded6502
+msgid ""
+"Then you may want to :cfgcmd:`save` in order to delete the saved "
+"configuration too."
+msgstr ""
+
+#: ../../cli.rst:930 4a703606ba2d421f9f3a49ad90bbf71d
+msgid ""
+"If you are remotely connected, you will lose your connection. You may want "
+"to copy first the config, edit it to ensure connectivity, and load the "
+"edited config."
+msgstr ""

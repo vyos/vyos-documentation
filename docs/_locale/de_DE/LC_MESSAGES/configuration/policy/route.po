@@ -1,0 +1,294 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/policy/route.rst:3 12046565db894d5cb54f86e2ebd9a46f
+msgid "Route and Route6 Policy"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:5 e7a778fb6c6f4d8ba8c2e2c6e5e10411
+msgid ""
+"IPv4 route and IPv6 route policies are defined in this section. These route "
+"policies can then be associated to interfaces."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:10 fe3fa542c34a4f40a52444e38b226c7d
+msgid "Rule-Sets"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:12 7683b908cc034ce99282d6adfb51b123
+msgid ""
+"A rule-set is a named collection of rules that can be applied to an "
+"interface. Each rule is numbered, has an action to apply if the rule is "
+"matched, and the ability to specify the criteria to match. Data packets go "
+"through the rules from 1 - 999999, at the first match the action of the rule"
+" will be executed."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:20 2fadb9b8d5704f709886ce1b1c68906c
+msgid "Provide a rule-set description."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:25 8c0142822f52485faa39848d43512437
+msgid "Option to log packets hitting default-action."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:30 64141a6b13134149a71e1953b89e3065
+msgid "Provide a description for each rule."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:35 7fb95788f3d84267891f5b1e4b7d2071
+msgid "Option to enable or disable log matching rule."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:38 cffc28a3465448e9be8b69172573f71e
+msgid "Matching criteria"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:40 c4c2728c251344838f143a4454a89677
+msgid ""
+"There are a lot of matching criteria options available, both for ``policy "
+"route`` and ``policy route6``. These options are listed in this section."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:53 1ed5668436044c39b85a140cbc7761e0
+msgid ""
+"Set match criteria based on source or destination ipv4|ipv6 address, where "
+"<match_criteria> could be:"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:62 eb650d146a7744308ac80f552415c95d
+msgid "For ipv4:"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:57 c6e621216a4b40daaff88a7fde897966
+msgid "<x.x.x.x>: IP address to match."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:58 98375a3bba554be59930baf646f3729e
+msgid "<x.x.x.x/x>: Subnet to match."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:59 92acdd0900204fa29d7032ae233e9d54
+msgid "<x.x.x.x>-<x.x.x.x>: IP range to match."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:60 686b5704d39e41718d31bba4cee9fbba
+msgid "!<x.x.x.x>: Match everything except the specified address."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:61 0f8cd4fac8d64b7a80a36c82131bc67f
+msgid "!<x.x.x.x/x>: Match everything except the specified subnet."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:62 bfdb04726e5645289174498e2a62e790
+msgid "!<x.x.x.x>-<x.x.x.x>: Match everything except the specified range."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:71 4507a71f626741f5971311da1d5d0f1c
+msgid "And for ipv6:"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:65 3e5626dbef4c4b258977251031228707
+msgid "<h:h:h:h:h:h:h:h>: IPv6 address to match."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:66 5fc7a4cf419b4f6699b6d600e094ca08
+msgid "<h:h:h:h:h:h:h:h/x>: IPv6 prefix to match."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:67 4e5e57d424ed4d2582ad933e03d5cf10
+msgid "<h:h:h:h:h:h:h:h>-<h:h:h:h:h:h:h:h>: IPv6 range to match."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:68 aa06921e939448b291c2cb14023c17ea
+msgid "!<h:h:h:h:h:h:h:h>: Match everything except the specified address."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:69 4bfb4b8efc3d4874815eb19134d5b2d8
+msgid "!<h:h:h:h:h:h:h:h/x>: Match everything except the specified prefix."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:70 bc0b878829924ed18aa321f9f13d91ef
+msgid ""
+"!<h:h:h:h:h:h:h:h>-<h:h:h:h:h:h:h:h>: Match everything except the specified "
+"range."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:82 b05ef17b6b7e4e1998134c800991e37f
+msgid ""
+"Set match criteria based on source or destination groups, where <text> would"
+" be the group name/identifier. Prepend character '!' for inverted matching "
+"criteria."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:89 d6b58b851d5247ae8911adefd70beecc
+msgid ""
+"Set match criteria based on destination port, where <match_criteria> could "
+"be:"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:92 9a6cd463c3774f8aa53aa2f050899d57
+msgid "<port name>: Named port (any name in /etc/services, e.g., http)."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:93 d830786ca2784f22b920f86b8aee90ba
+msgid "<1-65535>: Numbered port."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:94 a87aee014b2b44e18924070d20d5eac5
+msgid "<start>-<end>: Numbered port range (e.g., 1001-1005)."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:96 06f2f1d47e194c00bd3d91edeb3c9d93
+msgid ""
+"Multiple destination ports can be specified as a comma-separated list. The "
+"whole list can also be \"negated\" using '!'. For example: "
+"'!22,telnet,http,123,1001-1005'"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:103 8e9e32c80ad0480482e7935563d2ec0a
+msgid "Option to disable rule."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:110 dfe8b9e968364e728f8603ef0ba88923
+msgid ""
+"Match based on dscp value criteria. Multiple values from 0 to 63 and ranges "
+"are supported."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:118 dfb2a15e9da84a8cb2709354fc301993
+msgid "Set IP fragment match, where:"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:120 89262846895f4c3a9f97f2883a425796
+msgid "match-frag: Second and further fragments of fragmented packets."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:121 9b2bcec1ce7a4724b4dea926a3a916b6
+msgid "match-non-frag: Head fragments or unfragmented packets."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:126 516d8e1137834731bde4ad51ec30219f
+msgid "Match based on icmp|icmpv6 code and type."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:131 469b60b6819b4c15a3125a889d742178
+msgid ""
+"Match based on icmp|icmpv6 type-name criteria. Use tab for information about"
+" what type-name criteria are supported."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:139 8c0680de716b4c7d9f72ead12638e2b3
+msgid "Set IPSec inbound match criterias, where:"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:141 6df96925bad1492c8fe7fcfe41c41156
+msgid "match-ipsec: match inbound IPsec packets."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:142 3f16b8ae02824909b69431a30accd86f
+msgid "match-none: match inbound non-IPsec packets."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:147 715651ff1aaa469abef0b8a8c3db485a
+msgid "Set maximum number of packets to alow in excess of rate."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:152 02aca6c48ebb4f388f0e5070d3dd63c0
+msgid ""
+"Set maximum average matching rate. Format for rate: integer/time_unit, where"
+" time_unit could be any one of second, minute, hour or day.For example "
+"1/second implies rule to be matched at an average of once per second."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:161 7e49ea28828244cbac07cb55b408e2a3
+msgid ""
+"Match a protocol criteria. A protocol number or a name which is defined in: "
+"``/etc/protocols``. Special names are ``all`` for all protocols and "
+"``tcp_udp`` for tcp and udp based packets. The ``!`` negates the selected "
+"protocol."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:171 81296c39572e4c079bfafc2f1cbae4f0
+msgid ""
+"Set parameters for matching recently seen sources. This match could be used "
+"by seeting count (source address seen more than <1-255> times) and/or time "
+"(source address seen in the last <0-4294967295> seconds)."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:180 10a07af3155b40b496564c06623495ee
+msgid "Set match criteria based on session state."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:185 7dce446cf9104cc3b08b9fa06398e9bd
+msgid ""
+"Set match criteria based on tcp flags. Allowed values for TCP flags: SYN ACK"
+" FIN RST URG PSH ALL. When specifying more than one flag, flags should be "
+"comma-separated. For example : value of 'SYN,!ACK,!FIN,!RST' will only match"
+" packets with the SYN flag set, and the ACK, FIN and RST flags unset."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:205 5f6efb8f27c54cf8951b7c6ccaf664f9
+msgid "Time to match the defined rule."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:209 40e408be46854491ba0e1746a712a8c1
+msgid ""
+"Match time to live parameter, where 'eq' stands for 'equal'; 'gt' stands for"
+" 'greater than', and 'lt' stands for 'less than'."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:214 1d8e701d2da44af290b91322303203e1
+msgid ""
+"Match hop-limit parameter, where 'eq' stands for 'equal'; 'gt' stands for "
+"'greater than', and 'lt' stands for 'less than'."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:218 6ae39e910670474fb08a549fc24a24dd
+msgid "Actions"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:220 443c8888d1754d1fb5a336624176eded
+msgid ""
+"When mathcing all patterns defined in a rule, then different actions can be "
+"made. This includes droping the packet, modifying certain data, or setting a"
+" different routing table."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:227 0d8aa41b2b5f46778a17a651731a1bd3
+msgid "Set rule action to drop."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:232 782f6f4e767f45f8b7787968c4a917ec
+msgid ""
+"Set packet modifications: Packet Differentiated Services Codepoint (DSCP)"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:237 cddc7036de154ee78cbb807465e3b87b
+msgid "Set packet modifications: Packet marking"
+msgstr ""
+
+#: ../../configuration/policy/route.rst:242 f03b3093e7444648adcd66758ca8d80d
+msgid "Set packet modifications: Routing table to forward packet with."
+msgstr ""
+
+#: ../../configuration/policy/route.rst:247 7109221ecb5f463aadc1d9e558efea48
+msgid ""
+"Set packet modifications: Explicitly set TCP Maximum segment size value."
+msgstr ""

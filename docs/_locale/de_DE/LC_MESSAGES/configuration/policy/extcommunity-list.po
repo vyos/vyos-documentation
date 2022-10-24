@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/policy/extcommunity-list.rst:3
+#: 99df285e945b455aac74baeebdfa19b8
+msgid "BGP - Extended Community List"
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:5
+#: a78474bbedf74189be44930fff3cf440
+msgid ""
+"VyOS provides policies commands exclusively for BGP traffic filtering and "
+"manipulation: **extcommunity-list** is one of them."
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:10
+#: fb55866a8e674419bfaf1d452f76da69
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:13
+#: bac7e289b12a42f88b4943491bfcc21f
+msgid "policy extcommunity-list"
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:17
+#: 85cd37c30b044ada853b46d283644265
+msgid "Creat extcommunity-list policy identified by name <text>."
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:21
+#: 6a8eeb36e7984816b4cfdf11404cfdcc
+msgid "Set description for extcommunity-list policy."
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:26
+#: df6922df7a2f4e279f147cd45841fa34
+msgid "Set action to take on entries matching this rule."
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:31
+#: c4b71253eef843cfae190abfbca3eee0
+msgid "Set description for rule."
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:35
+#: c282f229ca1f4b1fb681af9e4ca4c258
+msgid ""
+"Regular expression to match against an extended community list, where text "
+"could be:"
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:38
+#: 0122cf06059748dcbb11ae8128739d88
+msgid "<aa:nn:nn>: Extended community list regular expression."
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:39
+#: 260ea696362845449118b395771701c4
+msgid "<rt aa:nn:nn>: Route Target regular expression."
+msgstr ""
+
+#: ../../configuration/policy/extcommunity-list.rst:40
+#: 02595e6d80324bb3ba5349a3abb6467a
+msgid "<soo aa:nn:nn>: Site of Origin regular expression."
+msgstr ""

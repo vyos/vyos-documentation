@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/policy/as-path-list.rst:3
+#: 36f668e2a2294f829c13016096e01cf3
+msgid "BGP - AS Path Policy"
+msgstr ""
+
+#: ../../configuration/policy/as-path-list.rst:5
+#: 4c64ea2860f6416abec78bd394190bb2
+msgid ""
+"VyOS provides policies commands exclusively for BGP traffic filtering and "
+"manipulation: **as-path-list** is one of them."
+msgstr ""
+
+#: ../../configuration/policy/as-path-list.rst:10
+#: 2c03d0fbe35c42deab0dcf3f58b499c0
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/policy/as-path-list.rst:13
+#: 9e713da3bf3e4838a5d49410c0ee3b50
+msgid "policy as-path-list"
+msgstr ""
+
+#: ../../configuration/policy/as-path-list.rst:17
+#: ccec9bad9987459d8bdc3a51c2590936
+msgid "Create as-path-policy identified by name <text>."
+msgstr ""
+
+#: ../../configuration/policy/as-path-list.rst:21
+#: b35f646a389b46f4bf5305dddc969783
+msgid "Set description for as-path-list policy."
+msgstr ""
+
+#: ../../configuration/policy/as-path-list.rst:25
+#: 9fa6662dee864acfa389ff0869361529
+msgid "Set action to take on entries matching this rule."
+msgstr ""
+
+#: ../../configuration/policy/as-path-list.rst:29
+#: 1e58538f91694b799c5b365343e8d3b7
+msgid "Set description for rule."
+msgstr ""
+
+#: ../../configuration/policy/as-path-list.rst:33
+#: 3a0bf49be6184060b30148c89f64a127
+msgid ""
+"Regular expression to match against an AS path. For example \"64501 64502\"."
+msgstr ""

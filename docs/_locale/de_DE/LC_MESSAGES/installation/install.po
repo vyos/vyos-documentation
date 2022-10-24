@@ -1,0 +1,775 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../installation/install.rst:5 4697f3d343284baf823c522a5f921526
+msgid "Installation"
+msgstr ""
+
+#: ../../installation/install.rst:7 7974dae482ba439c810541b99c457c0d
+msgid ""
+"VyOS installation requires a downloaded VyOS .iso file. That file is a live "
+"install image that lets you boot a live VyOS. From the live system, you can "
+"proceed to a permanent installation on a hard drive or any other type of "
+"storage."
+msgstr ""
+
+#: ../../installation/install.rst:12 bb8f831ab2f443dc8db1d53b39f36db4
+msgid "Comparison of VyOS image releases"
+msgstr ""
+
+#: ../../installation/install.rst:15 3d05be6a315f42b79f9d792170250861
+msgid "Release Type"
+msgstr ""
+
+#: ../../installation/install.rst:15 f39c333f1131471f89cc1b35ee730b69
+msgid "Description"
+msgstr ""
+
+#: ../../installation/install.rst:15 628daa74e3e14e4cb35774f3c7cdcae9
+msgid "Release Cycle"
+msgstr ""
+
+#: ../../installation/install.rst:15 aef72635d6f8490691c97f89bc494101
+msgid "Intended Use"
+msgstr ""
+
+#: ../../installation/install.rst:15 1a46af99cff04708b7ae9e85822e9654
+msgid "Access to Images"
+msgstr ""
+
+#: ../../installation/install.rst:15 93b69721ccbf48828eaf19530c055da4
+msgid "Access to Source"
+msgstr ""
+
+#: ../../installation/install.rst:17 036511dafada4af69569139870d1ce5e
+msgid "**Nightly (Current)**"
+msgstr ""
+
+#: ../../installation/install.rst:17 866a52e5d9ac4ccd80033941f2f2ceca
+msgid ""
+"Automatically built from the current branch. Always up to date with cutting "
+"edge development but guaranteed to contain bugs."
+msgstr ""
+
+#: ../../installation/install.rst:17 ../../installation/install.rst:21
+#: 9c163561cfba43b78be0453e76f0e8b8 946b3f13c40c4dd7b2133f40230b9f9c
+msgid "Every night"
+msgstr ""
+
+#: ../../installation/install.rst:17 b9b2c77eb35745c196ce102510cba788
+msgid "Developing VyOS, testing new features, experimenting."
+msgstr ""
+
+#: ../../installation/install.rst:17 ../../installation/install.rst:17
+#: ../../installation/install.rst:21 ../../installation/install.rst:21
+#: ../../installation/install.rst:25 ../../installation/install.rst:25
+#: ../../installation/install.rst:29 ../../installation/install.rst:29
+#: ../../installation/install.rst:33 ../../installation/install.rst:33
+#: ../../installation/install.rst:37 7d159d569f2b4d11a6864fdabefef4ba
+#: 5d572ad4348b4a04bfd41a04b9ad0951 d538b9eb80064efd9d0ae84cf8e04faa
+#: 9bbf1fb06d3045869c43eb185ff6a603 4731fcf7d9af48e7bf148682379741fb
+#: ebde41ce82e14149b6f99cc1682384cb b0e66accf04a4d049dc93726019e56b9
+#: 19f09669e659440e876b9dc3ca8c4fb7 0c40ccb9284443e3ad7099b9a29356f8
+#: 8b9e703b2ce949d58a3f935640ebdac1 ca09aa34d51d4758b6c72e9333bbf493
+msgid "Everyone"
+msgstr ""
+
+#: ../../installation/install.rst:21 4551b30a9b8944299071351ec49e454f
+msgid "**Nightly (Beta)**"
+msgstr ""
+
+#: ../../installation/install.rst:21 961b280931b7408380ef0a2bac52a55e
+msgid ""
+"Automatically built from the development branch and released alongside "
+"snapshots. Most likely contains bugs."
+msgstr ""
+
+#: ../../installation/install.rst:21 ff4b3b4e252a4659bda3589bf0836de2
+msgid "Developing and testing the latest major version under development."
+msgstr ""
+
+#: ../../installation/install.rst:25 e64e9847c3b34694a72e5687807d3632
+msgid "**Snapshot**"
+msgstr ""
+
+#: ../../installation/install.rst:25 44ea660e9e9b41b68abfa54f8f6ea669
+msgid ""
+"A particularly stable release frozen from nightly each month after manual "
+"testing. Still contains experimental code."
+msgstr ""
+
+#: ../../installation/install.rst:25 ea7f87dc4adf4a3e801106fe9c053775
+msgid "Every month until RC comes out"
+msgstr ""
+
+#: ../../installation/install.rst:25 e71c65ef4d3f4aeaa3a1dfa0fbf74351
+msgid "Home labs and simple networks that call for new features."
+msgstr ""
+
+#: ../../installation/install.rst:29 4c4e33fa52054d02ab9b055926749fac
+msgid "**Release Candidate**"
+msgstr ""
+
+#: ../../installation/install.rst:29 c7d1297685ab4bb289c2cd0c7d215c97
+msgid ""
+"Rather stable. All development focuses on testing and hunting down remaining"
+" bugs following the feature freeze."
+msgstr ""
+
+#: ../../installation/install.rst:29 829c2c564dad433298554627b8781504
+msgid "Irregularly until EPA comes out"
+msgstr ""
+
+#: ../../installation/install.rst:29 faa1f1a0a27940bebc5157beb12fcc39
+msgid ""
+"Labs, small offices and non-critical production systems backed by a high-"
+"availability setup."
+msgstr ""
+
+#: ../../installation/install.rst:33 85e42a3ea69e4ba8ad5c55672099430b
+msgid "**Early Production Access**"
+msgstr ""
+
+#: ../../installation/install.rst:33 cbad3edb18484f87b969d05352b65529
+msgid ""
+"Highly stable with no known bugs. Needs to be tested repeatedly under "
+"different conditions before it can become the final release."
+msgstr ""
+
+#: ../../installation/install.rst:33 38b8cddd7328403781d6b39cf0142db6
+msgid "Irregularly until LTS comes out"
+msgstr ""
+
+#: ../../installation/install.rst:33 e0743db588b04e038d722c32b6aae9f8
+msgid "Non-critical production environments, preparing for the LTS release."
+msgstr ""
+
+#: ../../installation/install.rst:37 e268aa03fb6b458e93dd2e0e3507cf46
+msgid "**Long-Term Support**"
+msgstr ""
+
+#: ../../installation/install.rst:37 2959f709d21e4c53b255b62cf7c58f4e
+msgid ""
+"Guaranteed to be stable and carefully maintained for several years after the"
+" release. No features are introduced but security updates are released in a "
+"timely manner."
+msgstr ""
+
+#: ../../installation/install.rst:37 80c0218feca04782abb4b2dd192a0a5d
+msgid "Every major version"
+msgstr ""
+
+#: ../../installation/install.rst:37 bf8a8ecfa9954b06976e78b909fe9365
+msgid ""
+"Large-scale enterprise networks, internet service providers, critical "
+"production environments that call for minimum downtime."
+msgstr ""
+
+#: ../../installation/install.rst:37 f90206fd823c4ed8943d1dd4ccae0d60
+msgid ""
+"Subscribers, contributors, non-profits, emergency services, academic "
+"institutions"
+msgstr ""
+
+#: ../../installation/install.rst:45 599e8fb473cc4488aa5bc4883a81270f
+msgid "Hardware requirements"
+msgstr ""
+
+#: ../../installation/install.rst:47 276e7c6f4dfd44ed9a3421ac061a44ce
+msgid ""
+"The minimum system requirements are 1024 MiB RAM and 2 GiB storage. "
+"Depending on your use, you might need additional RAM and CPU resources e.g. "
+"when having multiple BGP full tables in your system."
+msgstr ""
+
+#: ../../installation/install.rst:52 62b585b51aaf4c408ad9b9b532c7bcf8
+msgid "Download"
+msgstr ""
+
+#: ../../installation/install.rst:55 f453629f72a7468bb17c239ceac31d79
+msgid "Registered Subscribers"
+msgstr ""
+
+#: ../../installation/install.rst:57 6d2335d59fef48d6b93b9aa10f108007
+msgid ""
+"Registered subscribers can log into https://support.vyos.io/ to access a "
+"variety of different downloads via the \"Downloads\" link. These downloads "
+"include LTS (Long-Term Support), the associated hot-fix releases, early "
+"public access releases, pre-built VM images, as well as device specific "
+"installation ISOs."
+msgstr ""
+
+#: ../../installation/install.rst:66 42a2b77bd2344c53809f37cce7e75af7
+msgid "Building from source"
+msgstr ""
+
+#: ../../installation/install.rst:68 55abb9e50add450099c93af697b8e473
+msgid ""
+"Non-subscribers can always get the LTS release by building it from source. "
+"Instructions can be found in the :ref:`build` section of this manual. VyOS "
+"source code repository is available for everyone at "
+"https://github.com/vyos/vyos-build."
+msgstr ""
+
+#: ../../installation/install.rst:74 99c08df070c44ae09ea3866cccd3e319
+msgid "Rolling Release"
+msgstr ""
+
+#: ../../installation/install.rst:76 60b51ab0cb25412db248c99e1accd2c0
+msgid ""
+"Everyone can download bleeding-edge VyOS rolling images from: "
+"https://downloads.vyos.io/"
+msgstr ""
+
+#: ../../installation/install.rst:79 fef65063b3c84f6c9b7981e6fcb4e58c
+msgid ""
+"Rolling releases contain all the latest enhancements and fixes. This means "
+"that there will be new bugs of course. If you think you hit a bug please "
+"follow the guide at :ref:`bug_report`. We depend on your feedback to improve"
+" vyOS!"
+msgstr ""
+
+#: ../../installation/install.rst:84 a69e606e01354e26a6ca6ab9fd4fe64b
+msgid ""
+"The following link will always fetch the most recent VyOS build for AMD64 "
+"systems from the current branch: "
+"https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso"
+msgstr ""
+
+#: ../../installation/install.rst:90 2e7cd72a18d14bc1801d34f975876989
+msgid "Download Verification"
+msgstr ""
+
+#: ../../installation/install.rst:92 dc2d19bebcf74e45954cf8490750f13a
+msgid ""
+"LTS images are signed by the VyOS lead package-maintainer private key. With "
+"the official public key, the authenticity of the package can be verified. "
+":abbr:`GPG (GNU Privacy Guard)` is used for verification."
+msgstr ""
+
+#: ../../installation/install.rst:96 5d866e91ae59412184f7c28e92835f6e
+msgid ""
+"This subsection only applies to LTS images, for Rolling images please jump "
+"to :ref:`live_installation`."
+msgstr ""
+
+#: ../../installation/install.rst:100 c3b308b517cb43d693b1a9ad4b3ff561
+msgid "Preparing for the verification"
+msgstr ""
+
+#: ../../installation/install.rst:102 95b9a8908ec44a3c9c7a93e5e056e012
+msgid ""
+"First, install GPG or another OpenPGP implementation. On most GNU+Linux "
+"distributions it is installed by default as package managers use it to "
+"verify package signatures. If not pre-installed, it will need to be "
+"downloaded and installed."
+msgstr ""
+
+#: ../../installation/install.rst:107 b2220f4679f946948b03d3ea9330dff4
+msgid ""
+"The official VyOS public key can be retrieved in a number of ways. Skip to "
+":ref:`gpg-verification` if the key is already present."
+msgstr ""
+
+#: ../../installation/install.rst:110 a43fa400b0e64112af2a9789c546a0bd
+msgid "It can be retrieved directly from a key server:"
+msgstr ""
+
+#: ../../installation/install.rst:112 77d08cbc2e514fadaa4a6cdefa3e82ba
+msgid "``gpg --recv-keys FD220285A0FE6D7E``"
+msgstr ""
+
+#: ../../installation/install.rst:114 a59df5a110c64fdfbbdebbe94d46211e
+msgid "Or it can be accessed via a web browser:"
+msgstr ""
+
+#: ../../installation/install.rst:116 cbdc6ca8522b49c5bb020c299031b678
+msgid "https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E"
+msgstr ""
+
+#: ../../installation/install.rst:118 6f092165879b4045a0e890da6b046dc1
+msgid "Or from the following block:"
+msgstr ""
+
+#: ../../installation/install.rst:175 1d1512b69502416fbd9466f40bc755e9
+msgid ""
+"Store the key in a new text file and import it into GPG via: ``gpg --import "
+"file_with_the_public_key``"
+msgstr ""
+
+#: ../../installation/install.rst:178 87e045356a414af695a99b5e19710287
+msgid "The import can be verified with:"
+msgstr ""
+
+#: ../../installation/install.rst:192 29c59500327f40bc94f6bc92730a637f
+msgid "GPG verification"
+msgstr ""
+
+#: ../../installation/install.rst:194 eebc6b4fad544d6a91e1209392f76f1a
+msgid ""
+"With the public key imported, the signature for the desired image needs to "
+"be downloaded."
+msgstr ""
+
+#: ../../installation/install.rst:197 e77512e2030543aeaaf730c445163afd
+msgid ""
+"The signature can be downloaded by appending `.asc` to the URL of the "
+"downloaded VyOS image. That small *.asc* file is the signature for the "
+"associated image."
+msgstr ""
+
+#: ../../installation/install.rst:201 d67224806e1e4be49706c4520fd72b57
+msgid "Finally, verify the authenticity of the downloaded image:"
+msgstr ""
+
+#: ../../installation/install.rst:214 0c19c3f32e064a608d21f7d65b86c2b6
+msgid "Minisign verification"
+msgstr ""
+
+#: ../../installation/install.rst:216 3784baafee5d417ebae792a1307365e0
+msgid ""
+"Currently we are using GPG for release signing (pretty much like everyone "
+"else)."
+msgstr ""
+
+#: ../../installation/install.rst:218 f0dda48d10c74668836623c873b89d87
+msgid ""
+"Popularity of GPG for release signing comes from the fact that many people "
+"already had it installed for email encryption/signing. Inside a VyOS image, "
+"signature checking is the only reason to have it installed. However, it "
+"still comes with all the features no one needs, such as support for multiple"
+" outdated cipher suits and ability to embed a photo in the key file. More "
+"importantly, web of trust, the basic premise of PGP, is never used in "
+"release signing context. Once you have a knowingly authentic image, "
+"authenticity of upgrades is checked using a key that comes in the image, and"
+" to get their first image people never rely on keyservers either."
+msgstr ""
+
+#: ../../installation/install.rst:228 798aa4ce21e74cc8abf96f493684e735
+msgid ""
+"Another point is that we are using RSA now, which requires absurdly large "
+"keys to be secure."
+msgstr ""
+
+#: ../../installation/install.rst:231 bb1a1cdf41ed4b3b9553d6084bc65a08
+msgid ""
+"In 2015, OpenBSD introduced signify. An alternative implementation of the "
+"same protocol is minisign, which is also available for Windows and macOS, "
+"and in most GNU/Linux distros it's in the repositories now."
+msgstr ""
+
+#: ../../installation/install.rst:235 2aabda8d2a35493ca4b8e15e6a018300
+msgid ""
+"Its installed size (complete with libsodium) is less than that of GPG binary"
+" alone (not including libgcrypt and some other libs, which I think we only "
+"use for GPG). Since it uses elliptic curves, it gets away with much smaller "
+"keys, and it doesn't include as much metadata to begin with."
+msgstr ""
+
+#: ../../installation/install.rst:240 60ed8279c10a406baf6527d939f28025
+msgid ""
+"Another issue of GPG is that it creates a /root/.gnupg directory just for "
+"release checking. The dir is small so the fact that it's never used again is"
+" an aesthetic problem, but we've had that process fail in the past. But, "
+"small key size of the Ed25519 algorithm allows passing public keys in "
+"command line arguments, so verification process can be completely stateless:"
+msgstr ""
+
+#: ../../installation/install.rst:246 c1dfea9a8c7548b2bb5a4d9f89ec9340
+msgid ""
+":vytask:`T2108` switched the validation system to prefer minisign over GPG "
+"keys."
+msgstr ""
+
+#: ../../installation/install.rst:248 4c3c092b3caa4a40a45f2ca086172633
+msgid "To verify a VyOS image starting off with VyOS 1.3.0-rc6 you can run:"
+msgstr ""
+
+#: ../../installation/install.rst:256 9a8a82f635064f8795a0391922de8aeb
+msgid "During an image upgrade VyOS performas the following command:"
+msgstr ""
+
+#: ../../installation/install.rst:267 f28633931a064c44848d0ae1a1d30181
+msgid "Live installation"
+msgstr ""
+
+#: ../../installation/install.rst:269 37baa8e6c7c9455abb55f4638e9716ee
+msgid ""
+"A permanent VyOS installation always requires to go first through a live "
+"installation."
+msgstr ""
+
+#: ../../installation/install.rst:272 a4058da6fa504df69340e5ef520c4a8f
+msgid ""
+"VyOS, as other GNU+Linux distributions, can be tested without installing it "
+"in your hard drive. **With your downloaded VyOS .iso file you can create a "
+"bootable USB drive that will let you boot into a fully functional VyOS "
+"system**. Once you have tested it, you can either decide to begin a "
+":ref:`permanent_installation` in your hard drive or power your system off, "
+"remove the USB drive, and leave everything as it was."
+msgstr ""
+
+#: ../../installation/install.rst:280 f4b84be2b833403fa7ffc38fca2fbf80
+msgid ""
+"If you have a GNU+Linux system, you can create your VyOS bootable USB stick "
+"with with the ``dd`` command:"
+msgstr ""
+
+#: ../../installation/install.rst:283 d68b896701f949aba8818702d30e7f4f
+msgid "Open your terminal emulator."
+msgstr ""
+
+#: ../../installation/install.rst:285 ddb69f0142ee435f982c5098e162f37d
+msgid ""
+"Find out the device name of your USB drive (you can use the ``lsblk`` "
+"command)"
+msgstr ""
+
+#: ../../installation/install.rst:288 808781dd34d3478f881a57c10fa6fa37
+msgid ""
+"Unmount the USB drive. Replace X in the example below with the letter of "
+"your device and keep the asterisk (wildcard) to unmount all partitions."
+msgstr ""
+
+#: ../../installation/install.rst:296 42e4274bb534421abc7a68d9c066971c
+msgid ""
+"Write the image (your VyOS .iso file) to the USB drive. Note that here you "
+"want to use the device name (e.g. /dev/sdb), not the partition name (e.g. "
+"/dev/sdb1)."
+msgstr ""
+
+#: ../../installation/install.rst:300 8bab48bde7644a59a9908e2258a6019b
+msgid "**Warning**: This will destroy all data on the USB drive!"
+msgstr ""
+
+#: ../../installation/install.rst:306 a55d73aa4382475a916a2647bd531418
+msgid ""
+"Wait until you get the outcome (bytes copied). Be patient, in some computers"
+" it might take more than one minute."
+msgstr ""
+
+#: ../../installation/install.rst:309 8d954695d706419881d1183d406ff18e
+msgid ""
+"Once ``dd`` has finished, pull the USB drive out and plug it into the "
+"powered-off computer where you want to install (or test) VyOS."
+msgstr ""
+
+#: ../../installation/install.rst:312 5e21c372517d4a78ab9212580b4dc618
+msgid ""
+"Power the computer on, making sure it boots from the USB drive (you might "
+"need to select booting device or change booting settings)."
+msgstr ""
+
+#: ../../installation/install.rst:315 9320aa595bef4dba85fe59dc17b6cdb4
+msgid ""
+"Once VyOS is completely loaded, enter the default credentials (login: vyos, "
+"password: vyos)."
+msgstr ""
+
+#: ../../installation/install.rst:319 2a8634f7d8d04a8fa7c93c4c694bb979
+msgid ""
+"If you find difficulties with this method, prefer to use a GUI program, or "
+"have a different operating system, there are other programs you can use to "
+"create a bootable USB drive, like balenaEtcher_ (for GNU/Linux, macOS and "
+"Windows), Rufus_ (for Windows) and `many others`_. You can follow their "
+"instructions to create a bootable USB drive from an .iso file."
+msgstr ""
+
+#: ../../installation/install.rst:326 4f940e9b00da488693ae3e49c8d047b7
+msgid "The default username and password for the live system is *vyos*."
+msgstr ""
+
+#: ../../installation/install.rst:332 5402cd3ce58d4fd5bed4bf6ba954e728
+msgid "Permanent installation"
+msgstr ""
+
+#: ../../installation/install.rst:334 92d01a9628c44b1b922d6acd9500ebfe
+msgid ""
+"Before a permanent installation, VyOS requires a :ref:`live_installation`."
+msgstr ""
+
+#: ../../installation/install.rst:337 92fb364e254144408f757da39754953f
+msgid ""
+"Unlike general purpose Linux distributions, VyOS uses \"image installation\""
+" that mimics the user experience of traditional hardware routers and allows "
+"keeping multiple VyOS versions installed simultaneously. This makes it "
+"possible to switch to a previous version if something breaks or miss-behaves"
+" after an image upgrade."
+msgstr ""
+
+#: ../../installation/install.rst:343 6e2e3490eedf4c12953f4ef0bc7a570d
+msgid ""
+"Every version is contained in its own squashfs image that is mounted in a "
+"union filesystem together with a directory for mutable data such as "
+"configurations, keys, or custom scripts."
+msgstr ""
+
+#: ../../installation/install.rst:347 4f1fe59b7fa14431bd707e9625f7cfce
+msgid ""
+"Older versions (prior to VyOS 1.1) used to support non-image installation "
+"(``install system`` command). Support for this has been removed from VyOS "
+"1.2 and newer releases. Older releases can still be upgraded via the general"
+" ``add system image <image_path>`` upgrade command (consult :ref:`image-"
+"mgmt` for further information)."
+msgstr ""
+
+#: ../../installation/install.rst:354 1d13008a6cef4388af256070be286436
+msgid "In order to proceed with a permanent installation:"
+msgstr ""
+
+#: ../../installation/install.rst:356 b62d44e0a93a4f3dacb7c2bae4458b79
+msgid ""
+"Log into the VyOS live system (use the default credentials: vyos, vyos)"
+msgstr ""
+
+#: ../../installation/install.rst:359 0e3140c712d8421d9289590fd6e1ab27
+msgid "Run the ``install image`` command and follow the wizard:"
+msgstr ""
+
+#: ../../installation/install.rst:413 f8400b3c3bf04f6983571c30751c259a
+msgid "After the installation is completed, remove the live USB stick or CD."
+msgstr ""
+
+#: ../../installation/install.rst:416 29dcf1b8ecf64e6cadd8f450d813638f
+msgid "Reboot the system."
+msgstr ""
+
+#: ../../installation/install.rst:423 058304c2d4b1438d8fe0ab599f3ddb37
+msgid "You will boot now into a permanent VyOS system."
+msgstr ""
+
+#: ../../installation/install.rst:427 b348f9a0b86343589233d0bb712ac1b4
+msgid "PXE Boot"
+msgstr ""
+
+#: ../../installation/install.rst:429 1c77c0f8f36e4caa9442ae0bc4ab8c55
+msgid ""
+"VyOS can also be installed through PXE. This is a more complex installation "
+"method that allows deploying VyOS through the network."
+msgstr ""
+
+#: ../../installation/install.rst:432 95aed3c6ef9f472cb6e19d7cf586c78e
+msgid "**Requirements**"
+msgstr ""
+
+#: ../../installation/install.rst:434 db3686856aef4cd8b42c20041a8b31cb
+msgid "Clients (where VyOS is to be installed) with a PXE-enabled NIC"
+msgstr ""
+
+#: ../../installation/install.rst:435 751d219d938c41e28f42e54dc60664ce
+msgid ":ref:`dhcp-server`"
+msgstr ""
+
+#: ../../installation/install.rst:436 4acc656a38ef40319ce334c559370752
+msgid ":ref:`tftp-server`"
+msgstr ""
+
+#: ../../installation/install.rst:437 9cd5dbefdeb94a0fa3f35ce32bd02d25
+msgid ""
+"Webserver (HTTP) - optional, but we will use it to speed up installation"
+msgstr ""
+
+#: ../../installation/install.rst:438 b113ebed03c5454da8273ca7fab727e9
+msgid "VyOS ISO image to be installed (do not use images prior to VyOS 1.2.3)"
+msgstr ""
+
+#: ../../installation/install.rst:439 3cf5e9606ae349bb92a1236c3ce98b0a
+msgid ""
+"Files *pxelinux.0* and *ldlinux.c32* `from the Syslinux distribution "
+"<https://kernel.org/pub/linux/utils/boot/syslinux/>`_"
+msgstr ""
+
+#: ../../installation/install.rst:443 2d09550bf3cf407280bea878881548ea
+msgid "Configuration"
+msgstr ""
+
+#: ../../installation/install.rst:446 183cf6fbee624992a3913dc2a09f3123
+msgid "Step 1: DHCP"
+msgstr ""
+
+#: ../../installation/install.rst:448 63acdd02ffd8434c812b6c803584e5be
+msgid "Configure a DHCP server to provide the client with:"
+msgstr ""
+
+#: ../../installation/install.rst:450 21e5fa45742144768fb9756668e85c5d
+msgid "An IP address"
+msgstr ""
+
+#: ../../installation/install.rst:451 798da3f07b7c4f939fd43778980fa7c2
+msgid ""
+"The TFTP server address (DHCP option 66). Sometimes referred as *boot "
+"server*"
+msgstr ""
+
+#: ../../installation/install.rst:452 642bf175ac8a4d1bac90821d6e4ec6c7
+msgid "The *bootfile name* (DHCP option 67), which is *pxelinux.0*"
+msgstr ""
+
+#: ../../installation/install.rst:454 e85c641ed79d4d30bef170f3747313cc
+msgid "In this example we configured an existent VyOS as the DHCP server:"
+msgstr ""
+
+#: ../../installation/install.rst:474 bacf328675604b2da698310be70c774d
+msgid "Step 2: TFTP"
+msgstr ""
+
+#: ../../installation/install.rst:476 f491c1b2544c4f718216d38c480911b8
+msgid "Configure a TFTP server so that it serves the following:"
+msgstr ""
+
+#: ../../installation/install.rst:478 39540401636740a8bb476b182b2d3ff0
+msgid "The *pxelinux.0* file from the Syslinux distribution"
+msgstr ""
+
+#: ../../installation/install.rst:479 10421ba1898d4fed8f1b4d2289925a45
+msgid "The *ldlinux.c32* file from the Syslinux distribution"
+msgstr ""
+
+#: ../../installation/install.rst:480 7b375de997da49d39bc5dcf6a6e669de
+msgid ""
+"The kernel of the VyOS software you want to deploy. That is the *vmlinuz* "
+"file inside the */live* directory of the extracted contents from the ISO "
+"file."
+msgstr ""
+
+#: ../../installation/install.rst:483 d685ee3b0d4d4b079b2ad08e19f9efe3
+msgid ""
+"The initial ramdisk of the VyOS ISO you want to deploy. That is the "
+"*initrd.img* file inside the */live* directory of the extracted contents "
+"from the ISO file. Do not use an empty (0 bytes) initrd.img file you might "
+"find, the correct file may have a longer name."
+msgstr ""
+
+#: ../../installation/install.rst:487 1d03ce83bdb84cb2950d083a00259e0f
+msgid ""
+"A directory named pxelinux.cfg which must contain the configuration file. We"
+" will use the configuration_ file shown below, which we named default_."
+msgstr ""
+
+#: ../../installation/install.rst:491 9b524233146845ecbfbb385ebdc14e42
+msgid "In the example we configured our existent VyOS as the TFTP server too:"
+msgstr ""
+
+#: ../../installation/install.rst:499 0d9cf1fda6534cfb8902a4a3a00a67b4
+msgid "Example of the contents of the TFTP server:"
+msgstr ""
+
+#: ../../installation/install.rst:519 a7446be9a93942cabf8fc8281eb3bd09
+msgid "Example of simple (no menu) configuration file:"
+msgstr ""
+
+#: ../../installation/install.rst:531 9099cfadfdd74308b8df47c767052573
+msgid "Step 3: HTTP"
+msgstr ""
+
+#: ../../installation/install.rst:533 56ecf83ac77146e09844fef2b41a7a06
+msgid ""
+"We also need to provide the *filesystem.squashfs* file. That is a heavy file"
+" and TFTP is slow, so you could send it through HTTP to speed up the "
+"transfer. That is how it is done in our example, you can find that in the "
+"configuration file above."
+msgstr ""
+
+#: ../../installation/install.rst:538 d014438381564bce8557146d5b74c4a5
+msgid ""
+"**First** run a web server - you can use a simple one like `Python's "
+"SimpleHTTPServer`_ and start serving the `filesystem.squashfs` file. The "
+"file can be found inside the `/live` directory of the extracted contents of "
+"the ISO file."
+msgstr ""
+
+#: ../../installation/install.rst:543 b9af7347312f42e9b30055dc3dfaa6e5
+msgid ""
+"**Second**, edit the configuration file of the :ref:`install_from_tftp` so "
+"that it shows the correct URL at "
+"``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``."
+msgstr ""
+
+#: ../../installation/install.rst:547 caf8e161979449f3b9d02838ba475468
+msgid ""
+"Do not change the name of the *filesystem.squashfs* file. If you are working"
+" with different versions, you can create different directories instead."
+msgstr ""
+
+#: ../../installation/install.rst:551 1967c2124d844668a40411b6e369ef77
+msgid ""
+"And **third**, restart the TFTP service. If you are using VyOS as your TFTP "
+"Server, you can restart the service with ``sudo service tftpd-hpa restart``."
+msgstr ""
+
+#: ../../installation/install.rst:555 ac0682ac6a7b4da6b315b5604e69654a
+msgid ""
+"Make sure the available directories and files in both TFTP and HTTP server "
+"have the right permissions to be accessed from the booting clients."
+msgstr ""
+
+#: ../../installation/install.rst:562 c0a46c7586914eeb848eec6e77bc6afb
+msgid "Client Boot"
+msgstr ""
+
+#: ../../installation/install.rst:564 b33d783034a2470bbc7bca2115117ea2
+msgid ""
+"Finally, turn on your PXE-enabled client or clients. They will automatically"
+" get an IP address from the DHCP server and start booting into VyOS live "
+"from the files automatically taken from the TFTP and HTTP servers."
+msgstr ""
+
+#: ../../installation/install.rst:569 77da66e6952d4375bf59933ba844c220
+msgid ""
+"Once finished you will be able to proceed with the ``install image`` command"
+" as in a regular VyOS installation."
+msgstr ""
+
+#: ../../installation/install.rst:575 17b8ccb81b5e42eaae0b1fb53bf3c760
+msgid "Known Issues"
+msgstr ""
+
+#: ../../installation/install.rst:577 72f6a5b3a848479e9f64ace2f494d312
+msgid "This is a list of known issues that can arise during installation."
+msgstr ""
+
+#: ../../installation/install.rst:580 2a729bc304604f4e81f171acac8e6b41
+msgid "Black screen on install"
+msgstr ""
+
+#: ../../installation/install.rst:582 3196bd4e706b42b88aae8f857759d85d
+msgid ""
+"GRUB attempts to redirect all output to a serial port for ease of "
+"installation on headless hosts. This appears to cause an hard lockup on some"
+" hardware that lacks a serial port, with the result being a black screen "
+"after selecting the `Live system` option from the installation image."
+msgstr ""
+
+#: ../../installation/install.rst:587 7970447bb4c8497c8c8f7712f71378c2
+msgid ""
+"The workaround is to type `e` when the boot menu appears and edit the GRUB "
+"boot options.  Specifically, remove the:"
+msgstr ""
+
+#: ../../installation/install.rst:590 320636747e604a29ae8ada6f669642d8
+msgid "`console=ttyS0,115200`"
+msgstr ""
+
+#: ../../installation/install.rst:592 c863f9c5dbab44458349136354715dcc
+msgid "option, and type CTRL-X to boot."
+msgstr ""
+
+#: ../../installation/install.rst:594 f231d84d789e46549e806e34654cbbc4
+msgid "Installation can then continue as outlined above."
+msgstr ""

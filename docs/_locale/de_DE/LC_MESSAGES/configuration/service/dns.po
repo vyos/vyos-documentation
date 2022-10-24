@@ -1,0 +1,442 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/service/dns.rst:5 be0eccf16c3e4744beef004bbf6066ab
+msgid "DNS Forwarding"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:8
+#: ../../configuration/service/dns.rst:198 c3d1290f85a146b18b9fd6ab8513c24b
+#: e90845d6dcd14e20bba245cf44a8ed65
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:10 c1ba3fb5b0de47e091e555c3c59faea6
+msgid ""
+"VyOS provides DNS infrastructure for small networks. It is designed to be "
+"lightweight and have a small footprint, suitable for resource constrained "
+"routers and firewalls. For this we utilize PowerDNS recursor."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:14 ea7fb66c11cb49968d1b11288089abdd
+msgid ""
+"The VyOS DNS forwarder does not require an upstream DNS server. It can serve"
+" as a full recursive DNS server - but it can also forward queries to "
+"configurable upstream DNS servers. By not configuring any upstream DNS "
+"servers you also avoid being tracked by the provider of your upstream DNS "
+"server."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:21 0ff64d30f92a492d96609709622a4dc1
+msgid ""
+"Forward incoming DNS queries to the DNS servers configured under the "
+"``system name-server`` nodes."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:26 87c71c49e60f442ab14fd2a108415c5e
+msgid ""
+"Send all DNS queries to the IPv4/IPv6 DNS server specified under "
+"`<address>`. You can configure multiple nameservers here."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:31 d82ce4936b5a4076bd4193d1c9995cb3
+msgid ""
+"Forward received queries for a particular domain (specified via `domain-"
+"name`) to a given nameserver. Multiple nameservers can be specified. You can"
+" use this feature for a DNS split-horizon configuration."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:36 81c277220d654aa5bc6230e75eca6413
+msgid "This also works for reverse-lookup zones (``18.172.in-addr.arpa``)."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:40 a84fecf9c7b34628b2fe851f21c6353b
+msgid ""
+"Given the fact that open DNS recursors could be used on DDoS amplification "
+"attacks, you must configure the networks which are allowed to use this "
+"recursor. A network of ``0.0.0.0/0`` or ``::/0`` would allow all IPv4 and "
+"IPv6 networks to query this server. This is generally a bad idea."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:48 17494ac035324244983b6cee7001784d
+msgid ""
+"The PowerDNS recursor has 5 different levels of DNSSEC processing, which can"
+" be set with the dnssec setting. In order from least to most processing, "
+"these are:"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:52 66636a78b5c943b78fd7c88054828797
+msgid ""
+"**off** In this mode, no DNSSEC processing takes place. The recursor will "
+"not set the DNSSEC OK (DO) bit in the outgoing queries and will ignore the "
+"DO and AD bits in queries."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:56 2e51660c883c472c9e94b03a4f91e837
+msgid ""
+"**process-no-validate** In this mode the recursor acts as a \"security "
+"aware, non-validating\" nameserver, meaning it will set the DO-bit on "
+"outgoing queries and will provide DNSSEC related RRsets (NSEC, RRSIG) to "
+"clients that ask for them (by means of a DO-bit in the query), except for "
+"zones provided through the auth-zones setting. It will not do any validation"
+" in this mode, not even when requested by the client."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:63 086dce77e4be401887e3ca38fdb91236
+msgid ""
+"**process** When dnssec is set to process the behavior is similar to "
+"process-no-validate. However, the recursor will try to validate the data if "
+"at least one of the DO or AD bits is set in the query; in that case, it will"
+" set the AD-bit in the response when the data is validated successfully, or "
+"send SERVFAIL when the validation comes up bogus."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:69 4b7e5a1ded8c4c00ac5260cab7a9f087
+msgid ""
+"**log-fail** In this mode, the recursor will attempt to validate all data it"
+" retrieves from authoritative servers, regardless of the client's DNSSEC "
+"desires, and will log the validation result. This mode can be used to "
+"determine the extra load and amount of possibly bogus answers before turning"
+" on full-blown validation. Responses to client queries are the same as with "
+"process."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:76 f69f068934044a058c059243af30b7e1
+msgid ""
+"**validate** The highest mode of DNSSEC processing. In this mode, all "
+"queries will be validated and will be answered with a SERVFAIL in case of "
+"bogus data, regardless of the client's request."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:80 701f22b454ba403e8117ac693f793279
+msgid ""
+"The popular Unix/Linux ``dig`` tool sets the AD-bit in the query. This might"
+" lead to unexpected query results when testing. Set ``+noad`` on the ``dig``"
+" command line when this is the case."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:84 427795b5dc2d48ffbd30cf747d0662cc
+msgid ""
+"The ``CD``-bit is honored correctly for process and validate. For log-fail, "
+"failures will be logged too."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:89 8a5cce7228ff4a01b9ebe080d09b3358
+msgid ""
+"Do not use the local ``/etc/hosts`` file in name resolution. VyOS DHCP "
+"server will use this file to add resolvers to assigned addresses."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:94 132f8475ff504a5484d67e003722b96c
+msgid ""
+"Maximum number of DNS cache entries. 1 million per CPU core will generally "
+"suffice for most installations."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:97 5cad4345461c4b63ab0c1b4c614a3673
+msgid "This defaults to 10000."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:101 e995cca58c6344f69f9387c288eff0f0
+msgid ""
+"A query for which there is authoritatively no answer is cached to quickly "
+"deny a record's existence later on, without putting a heavy load on the "
+"remote server. In practice, caches can become saturated with hundreds of "
+"thousands of hosts which are tried only once."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:106 2a2adc3cfd5947e4adb0e90a579b1e25
+msgid ""
+"This setting, which defaults to 3600 seconds, puts a maximum on the amount "
+"of time negative entries are cached."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:111 5c7b57b10b0041d0937ec30cae1b3ed0
+msgid ""
+"The number of milliseconds to wait for a remote authoritative server to "
+"respond before timing out and responding with SERVFAIL."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:114 a54b3cb2b3164d95ac4d56d0f1df5837
+msgid "This setting defaults to 1500 and is valid between 10 and 60000."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:118 276ffb6dd4364b5b93cd944a438ab2e7
+msgid ""
+"The local IPv4 or IPv6 addresses to bind the DNS forwarder to. The forwarder"
+" will listen on this address for incoming connections."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:123 3bf5aa9483ad40f789a2edd621eaa318
+msgid ""
+"The local IPv4 or IPv6 addresses to use as a source address for sending "
+"queries. The forwarder will send forwarded outbound DNS requests from this "
+"address."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:128 24dc8673dab0466f8a2b359ee3dfeb6a
+msgid ""
+"This makes the server authoritatively not aware of: 10.in-addr.arpa, "
+"168.192.in-addr.arpa, 16-31.172.in-addr.arpa, which enabling upstream DNS "
+"server(s) to be used for reverse lookups of these zones."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:133
+#: ../../configuration/service/dns.rst:241 8a465b2de4e3439fb39c6ee29d0c67ca
+#: 54967759465148769f69a36795804bab
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:135 d6029af4910c4ea7b3716931cfd6475d
+msgid ""
+"A VyOS router with two interfaces - eth0 (WAN) and eth1 (LAN) - is required "
+"to implement a split-horizon DNS configuration for example.com."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:138 afc692c11c38469bafc20efe4b623ece
+msgid "In this scenario:"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:140 81cc16add0a944a4a760c1e9a4ae8fba
+msgid ""
+"All DNS requests for example.com must be forwarded to a DNS server at "
+"192.0.2.254 and 2001:db8:cafe::1"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:142 2c8239d1ac3146b2a1ea1a5f4c3c169b
+msgid ""
+"All other DNS requests will be forwarded to a different set of DNS servers "
+"at 192.0.2.1, 192.0.2.2, 2001:db8::1:ffff and 2001:db8::2:ffff"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:144 1fa1ae10d0974f59840c4401ac60fe9f
+msgid ""
+"The VyOS DNS forwarder will only listen for requests on the eth1 (LAN) "
+"interface addresses - 192.168.1.254 for IPv4 and 2001:db8::ffff for IPv6"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:146 ccb222184c96479fb436d1673e318cb5
+msgid ""
+"The VyOS DNS forwarder will only accept lookup requests from the LAN subnets"
+" - 192.168.1.0/24 and 2001:db8::/64"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:148 5f0224105a344c6882e7317eae29f696
+msgid ""
+"The VyOS DNS forwarder will pass reverse lookups for  10.in-addr.arpa, "
+"168.192.in-addr.arpa, 16-31.172.in-addr.arpa zones to upstream server."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:166 4c19d32a1cc94749852143556d10ef69
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:170 f9fc8cbce0ba4f5283cf683b6b0e6636
+msgid ""
+"Resets the local DNS forwarding cache database. You can reset the cache for "
+"all entries or only for entries to a specific domain."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:175 7769c597a8b04ee19bdda039a9a0f6f5
+msgid ""
+"Restarts the DNS recursor process. This also invalidates the local DNS "
+"forwarding cache."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:183 b7d2faafe04e42c5b88c7a8213c3570e
+msgid "Dynamic DNS"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:185 3dd121adbeba4147957d0affee0993f1
+msgid ""
+"VyOS is able to update a remote DNS record when an interface gets a new IP "
+"address. In order to do so, VyOS includes ddclient_, a Perl script written "
+"for this only one purpose."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:189 12bac9daf5484d728534e7b653f2ed13
+msgid ""
+"ddclient_ uses two methods to update a DNS record. The first one will send "
+"updates directly to the DNS daemon, in compliance with :rfc:`2136`. The "
+"second one involves a third party service, like DynDNS.com or any other "
+"similar website. This method uses HTTP requests to transmit the new IP "
+"address. You can configure both in VyOS."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:201 beef4ce428cd41f1bc0fae615f3f26d3
+msgid ":rfc:`2136` Based"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:205 0185af3d408846608e45ec22c9c74b90
+msgid ""
+"Create new :rfc:`2136` DNS update configuration which will update the IP "
+"address assigned to `<interface>` on the service you configured under "
+"`<service-name>`."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:212 00dfe4a3fddb4e98aae958d219e8fdfd
+msgid ""
+"File identified by `<keyfile>` containing the secret RNDC key shared with "
+"remote DNS server."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:218 075300679d594348a07dd38cbd39964b
+msgid ""
+"Configure the DNS `<server>` IP/FQDN used when updating this dynamic "
+"assignment."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:224 2e52bc4fff424997a8b709646f46529b
+msgid "Configure DNS `<zone>` to be updated."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:229 d1d04cf94032406890a9a3b1e5d36c30
+msgid ""
+"Configure DNS `<record>` which should be updated. This can be set multiple "
+"times."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:235 471a9111d60e488ba34b8aeb5537ffdf
+msgid ""
+"Configure optional TTL value on the given resource record. This defaults to "
+"600 seconds."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:243 df5e0158331d4ac88d9c58417d474c5e
+msgid "Register DNS record ``example.vyos.io`` on DNS server ``ns1.vyos.io``"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:244 8ae003c2e37f4e728ca6a65c9ec41cb0
+msgid "Use auth key file at ``/config/auth/my.key``"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:245 2f01cbf85387415492dffdbe6688046f
+msgid "Set TTL to 300 seconds"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:260 166b6d697d3349919a25740eb94f37ed
+msgid "This will render the following ddclient_ configuration entry:"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:277 040885ae0dec4529b7d5d90e7de39470
+msgid ""
+"You can also keep different DNS zone updated. Just create a new config node:"
+" ``set service dns dynamic interface <interface> rfc2136 <other-service-"
+"name>``"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:282 ebf98747db064c8492f7d677c78f6929
+msgid "HTTP based services"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:284 c67d37cc72744b8b9f058e5413707edb
+msgid ""
+"VyOS is also able to use any service relying on protocols supported by "
+"ddclient."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:286 a8468184edef4dfc8bd68523b342eaf4
+msgid ""
+"To use such a service, one must define a login, password, one or multiple "
+"hostnames, protocol and server."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:292 da38549569e44fca90e1e2e8d71a9396
+msgid ""
+"Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS "
+"provider identified by `<service>` when the IP address on interface "
+"`<interface>` changes."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:299 531f541a9bb34ecc9f7db81fe4b7ee02
+msgid ""
+"Configure `<username>` used when authenticating the update request for "
+"DynDNS service identified by `<service>`. For Namecheap, set the <domain> "
+"you wish to update."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:306 0dad594d75284193a92bfbd3c89184a5
+msgid ""
+"Configure `<password>` used when authenticating the update request for "
+"DynDNS service identified by `<service>`."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:312 112f3acfe28f47cebafd0e625fa7122a
+msgid ""
+"When a ``custom`` DynDNS provider is used the protocol used for "
+"communicating to the provider must be specified under `<protocol>`. See the "
+"embedded completion helper for available protocols."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:319 f55b99280f6b4eba9889a6fd4ae4233c
+msgid ""
+"When a ``custom`` DynDNS provider is used the `<server>` where update "
+"requests are being sent to must be specified."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:324 68fac9ba0f3b4f53be712ae9cf855ccf
+msgid "Allow explicit IPv6 address for the interface."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:328 33a460af02ec472f946e09806b27f461
+msgid "Example:"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:330 4b007fab9b8a4012985f03f86145ffcf
+msgid "Use DynDNS as your preferred provider:"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:339 84cdbb65e6dc4a85a4118bc232b5a2ea
+msgid ""
+"Multiple services can be used per interface. Just specify as many services "
+"per interface as you like!"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:343 5052224efcbf4bfd8a69f7c2db923f1c
+msgid "Example IPv6 only:"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:356 2f80ddda6c5a4e8aa2a0bc2826160948
+msgid "Running Behind NAT"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:358 38fc44bb48d64fa49b91f819500f8411
+msgid ""
+"By default, ddclient_ will update a dynamic dns record using the IP address "
+"directly attached to the interface. If your VyOS instance is behind NAT, "
+"your record will be updated to point to your internal IP."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:362 33a4b35a1468486184426de88b8662cb
+msgid ""
+"ddclient_ has another way to determine the WAN IP address. This is "
+"controlled by:"
+msgstr ""
+
+#: ../../configuration/service/dns.rst:367 9096e4ab42264ba5b6216b5f8fe2db23
+msgid ""
+"Use configured `<url>` to determine your IP address. ddclient_ will load "
+"`<url>` and tries to extract your IP address from the response."
+msgstr ""
+
+#: ../../configuration/service/dns.rst:372 786fc7bbabd1405bb33028a77a4bb148
+msgid ""
+"ddclient_ will skip any address located before the string set in "
+"`<pattern>`."
+msgstr ""

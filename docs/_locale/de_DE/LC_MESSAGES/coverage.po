@@ -1,0 +1,117 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 09:54+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../coverage.rst:3 ad57df571147462598e56ecbe5bfcd46
+msgid "Coverage"
+msgstr ""
+
+#: ../../coverage.rst:5 4efd99c6d3464ce9843b40b8a0a69afe
+msgid ""
+"Overview over all commands, which are documented in the ``.. cfgcmd::`` or "
+"``.. opcmd::`` Directives."
+msgstr ""
+
+#: ../../coverage.rst:8 faa3b55382014eafb37de91866d31a86
+msgid ""
+"The build process take all xml definition files from `vyos-1x "
+"<https://github.com/vyos/vyos-1x>`_  and a periodical export of all VyOS "
+"commands and extract each leaf command or executable command. After this the"
+" commands are compare and shown in the following two tables. The script "
+"compare only the fixed part of a command. All varables or values will be "
+"erase and then compare:"
+msgstr ""
+
+#: ../../coverage.rst:15 0e20965b4853403bbdec585165733a2a
+msgid "for example there are these two commands:"
+msgstr ""
+
+#: ../../coverage.rst:17 bedee26d1be14250904f29bc92753de9
+msgid ""
+"documentation: ``interfaces ethernet <interface> address <address | dhcp | "
+"dhcpv6>``"
+msgstr ""
+
+#: ../../coverage.rst:19 a8079b9fcf6f459db96d53a59f36e855
+msgid "xml: ``interfaces ethernet <ethernet> address <address>``"
+msgstr ""
+
+#: ../../coverage.rst:20 696d1160a0a34ff3bdc3257869f000c9
+msgid "VyOS: ``interfaces ethernet <text> address <value>``"
+msgstr ""
+
+#: ../../coverage.rst:22 601927718c7d4f238beed0c5eb918d97
+msgid ""
+"Now the script earse all in between ``<`` and ``>`` and simply compare the "
+"strings."
+msgstr ""
+
+#: ../../coverage.rst:25 21832f1b30434f1da6bd92f2a2a90ad8
+msgid "**There are 3 kind of problems:**"
+msgstr ""
+
+#: ../../coverage.rst:27 d8edc94ed112498ea0ef4e14e8d39c79
+msgid "``Not documented yet``"
+msgstr ""
+
+#: ../../coverage.rst:29 4e6378dbd4c14ced83e0bc0b7d000d7d
+msgid ""
+"A XML command are not found in ``.. cfgcmd::`` or ``.. opcmd::`` Commands"
+msgstr ""
+
+#: ../../coverage.rst:30 95c0f5795a574dd6b6dc567d4bc810de
+msgid "The command should be documented"
+msgstr ""
+
+#: ../../coverage.rst:32 1d603a5cff724e6bb51d58ced4d9a07a
+msgid "``Nothing found in XML Definitions``"
+msgstr ""
+
+#: ../../coverage.rst:34 bb8abe4c56df4202ae378bd68c3cd683
+msgid ""
+"``.. cfgcmd::`` or ``.. opcmd::`` Command are not found in a XML command"
+msgstr ""
+
+#: ../../coverage.rst:35 ed160abf99ab4dfd83673d6707b76176
+msgid ""
+"Maybe the command where changed in the XML Definition, the feature is not "
+"anymore in VyOS, or there is a typo"
+msgstr ""
+
+#: ../../coverage.rst:38 6e70ff80d20342b687f5653e0c742404
+msgid "``Nothing found in VyOS``"
+msgstr ""
+
+#: ../../coverage.rst:40 b4df3d5303d44dfa9b464034c6c8981c
+msgid ""
+"``.. cfgcmd::`` or ``.. opcmd::`` Command are not found in a VyOS command"
+msgstr ""
+
+#: ../../coverage.rst:41 ab7cb7b1fdec457d9ff112da2be60a0e
+msgid ""
+"Maybe the command where changed, the feature is not anymore in VyOS, or "
+"there is a typo"
+msgstr ""
+
+#: ../../coverage.rst:46 06702248c2394b4a86ea357f524bed47
+msgid "Configuration Commands"
+msgstr ""
+
+#: ../../coverage.rst:53 5a9770ca31f64f7d811ff4283c4edad8
+msgid "Operational Commands"
+msgstr ""

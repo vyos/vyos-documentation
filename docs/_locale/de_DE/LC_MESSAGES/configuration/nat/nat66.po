@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:02+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/nat/nat66.rst:5 ca934164b89d4c82a409d55c28fd8dd6
+msgid "NAT66(NPTv6)"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:7 4e2414905e4e4b06a6e46245d87314f0
+msgid ""
+":abbr:`NPTv6 (IPv6-to-IPv6 Network Prefix Translation)` is an address "
+"translation technology basedon IPv6 networks, used to convert an IPv6 "
+"address prefix in an IPv6 message into another IPv6address prefix. We call "
+"this address translation method NAT66. Devices that support the NAT66 "
+"function are called NAT66 devices, which can provide NAT66 source and "
+"destination address translation functions."
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:15 5e46174927104a45bb1ad2917b27dae5
+msgid "Overview"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:18 fdece6d28cd64afdbea2a2461da0b911
+msgid "Different NAT Types"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:23 37b55989de1a4fda8155c0b0173e8416
+msgid "SNAT66"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:25 d7f452fa32164072bd1be883e919847c
+msgid ""
+":abbr:`SNPTv6 (Source IPv6-to-IPv6 Network Prefix Translation)` The "
+"conversion function is mainly used in the following scenarios:"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:28 dc9b6db9a1294771a93cd9585e068bdf
+msgid ""
+"A single internal network and external network. Use the NAT66 device to "
+"connect a single internal network and public network, and the hosts in the "
+"internal network use IPv6 address prefixes that only support routing within "
+"the local range. When a host in the internal network accesses the external "
+"network, the source IPv6 address prefix in the message will be converted "
+"into a global unicast IPv6 address prefix by the NAT66 device."
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:35 aa97d8707d044f35b12f70843edaf49e
+msgid ""
+"Redundancy and load sharing. There are multiple NAT66 devices at the edge of"
+" an IPv6 network to another IPv6 network. The path through the NAT66 device "
+"to another IPv6 network forms an equivalent route, and traffic can be load-"
+"shared on these NAT66 devices. In this case, you can configure the same "
+"source address translation rules on these NAT66 devices, so that any NAT66 "
+"device can handle IPv6 traffic between different sites."
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:42 19c552356f874c6e9a56980ef5bca864
+msgid ""
+"Multi-homed. In a multi-homed network environment, the NAT66 device connects"
+" to an internal network and simultaneously connects to different external "
+"networks. Address translation can be configured on each external network "
+"side interface of the NAT66 device to convert the same internal network "
+"address into different external network addresses, and realize the mapping "
+"of the same internal address to multiple external addresses."
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:53 951f59b27eb942ccb4f7245775b90c04
+msgid "DNAT66"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:55 6b91ae30d11042269e93b9d1bd40f099
+msgid ""
+"The :abbr:`DNPTv6 (Destination IPv6-to-IPv6 Network Prefix Translation)` "
+"destination address translation function is used in scenarios where the "
+"server in the internal network provides services to the external network, "
+"such as providing Web services or FTP services to the external network. By "
+"configuring the mapping relationship between the internal server address and"
+" the external network address on the external network side interface of the "
+"NAT66 device, external network users can access the internal network server "
+"through the designated external network address."
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:66 354d68259cab482096cbf018e91dbbad
+msgid "Prefix Conversion"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:69 0a61dbaeac704e96a17021863013b36b
+msgid "Source Prefix"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:71 e50390dc638a477c9312fbfc79065e37
+msgid ""
+"Every SNAT66 rule has a translation command defined. The prefix defined for "
+"the translation is the prefix used when the address information in a packet "
+"is replaced.、"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:75 2987cee585564527ab449678ea7b8b1a
+msgid ""
+"The :ref:`source-nat66` rule replaces the source address of the packet and "
+"calculates the converted address using the prefix specified in the rule."
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:78 ../../configuration/nat/nat66.rst:96
+#: 3445a1dea2244401a1d2521e4f6d1f66 91dca61fac3f4db1ad685016b5304b7c
+msgid "Example:"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:80 cd858083b5044f44a9777d5988124c87
+msgid ""
+"Convert the address prefix of a single `fc01::/64` network to `fc00::/64`"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:81 da347f39e1fd41d6a043cf92b580aed7
+msgid "Output from `eth0` network interface"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:90 7ae1af8cd3f244d5b0cf4c68dd919362
+msgid "Destination Prefix"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:92 84d1d27cd0144f32b5190cb5dd7ce1ea
+msgid ""
+"For the :ref:`destination-nat66` rule, the destination address of the packet"
+" isreplaced by the address calculated from the specified address or prefix "
+"in the `translation address` command"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:98 442f390a7e754e8fa514eb1b354c835e
+msgid ""
+"Convert the address prefix of a single `fc00::/64` network to `fc01::/64`"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:100 c958a94c8d8543f2aaae440f4c3ef62a
+msgid "Input from `eth0` network interface"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:109 472507579cef4bdf85268aedcfcbf1e7
+msgid "Configuration Examples"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:111 68e29a1099e34939a93f53c42c5c0ff3
+msgid ""
+"Use the following topology to build a nat66 based isolated network between "
+"internal and external networks (dynamic prefix is not supported):"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rstNone 9579e46e32b84f0ba07c75d9747cf078
+msgid "VyOS NAT66 Simple Configure"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:118 3ec19efd1e7a4d60934658d55d5cb28d
+msgid "R1:"
+msgstr ""
+
+#: ../../configuration/nat/nat66.rst:131 ac9bbe06804e4f588d25df97dd0ce32d
+msgid "R2:"
+msgstr ""

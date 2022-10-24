@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:02+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../operation/boot-options.rst:6 34b7aabe1aac4016b8ba784085f880e2
+msgid "Boot Options"
+msgstr ""
+
+#: ../../operation/boot-options.rst:8 5e60c3a947ea45f88678169821c6d2bd
+msgid ""
+"This function may be highly disruptive. It may cause major service "
+"interruption, so make sure you really need it and verify your input "
+"carefully."
+msgstr ""
+
+#: ../../operation/boot-options.rst:14 44b378c12565441d8e8b93cc89dfc525
+msgid ""
+"VyOS has several kernel command line options to modify the normal boot "
+"process. To add an option, select the desired image in GRUB menu at load "
+"time, press **e**, edit the first line, and press **Ctrl-x** to boot when "
+"ready."
+msgstr ""
+
+#: ../../operation/boot-options.rst:26 c8ee85e7861b4d5c8d7864f77d7cec32
+msgid "Specify custom config file"
+msgstr ""
+
+#: ../../operation/boot-options.rst:28 ac051ace16b340d1bd5137e80e669926
+msgid ""
+"Tells the system to use specified file instead of ``/config/config.boot``. "
+"If specified file does not exist or is not readable, fall back to default "
+"config. No additional verification is performed, so make sure you specify a "
+"valid config file."
+msgstr ""
+
+#: ../../operation/boot-options.rst:37 5a29fcef15cb453d9278c986cf92d392
+msgid "To load the *factory default* config, use:"
+msgstr ""
+
+#: ../../operation/boot-options.rst:45 8fadf41c77054a4098b4676c8a98ce53
+msgid "Disable specific boot process steps"
+msgstr ""
+
+#: ../../operation/boot-options.rst:47 27fc00209a43448195723cb19e162ad4
+msgid ""
+"These options disable some boot steps. Make sure you understand the "
+":ref:`boot process <boot-steps>` well before using them!"
+msgstr ""
+
+#: ../../operation/boot-options.rst:51 d1c88ec49cb74b0fb288da67e66f3ed5
+msgid "no-vyos-migrate"
+msgstr ""
+
+#: ../../operation/boot-options.rst:53 069e129f92b444baaf5c1dc74ec39696
+msgid "Do not perform config migration."
+msgstr ""
+
+#: ../../operation/boot-options.rst:54 36e2abe3dfd644be971681c110270abe
+msgid "no-vyos-firewall"
+msgstr ""
+
+#: ../../operation/boot-options.rst:56 265ccf0c13d94cc09c669bc089b59cb9
+msgid ""
+"Do not initialize default firewall chains, renders any firewall "
+"configuration unusable."
+msgstr ""

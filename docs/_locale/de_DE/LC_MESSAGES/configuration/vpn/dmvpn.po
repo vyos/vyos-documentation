@@ -1,0 +1,303 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:02+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/vpn/dmvpn.rst:5 7c9a8cf410c54ea28596e11c9df7bb56
+msgid "DMVPN"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:7 729e9e6c6d1f4d3fbbf8a02158d428bb
+msgid ""
+":abbr:`DMVPN (Dynamic Multipoint Virtual Private Network)` is a dynamic "
+":abbr:`VPN (Virtual Private Network)` technology originally developed by "
+"Cisco. While their implementation was somewhat proprietary, the underlying "
+"technologies are actually standards based. The three technologies are:"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:12 60abdda3dd7d4343b2019df7b3796794
+msgid ":abbr:`NHRP (Next Hop Resolution Protocol)` :rfc:`2332`"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:13 6185670591084c1c845cb98ba2e26af2
+msgid ":abbr:`mGRE (Multipoint Generic Routing Encapsulation)` :rfc:`1702`"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:14 f210aeaadb9a449eb1cf52a72c59912e
+msgid ""
+":abbr:`IPSec (IP Security)` - too many RFCs to list, but start with "
+":rfc:`4301`"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:17 aea04aded5d64f8ea48a62a18ccea475
+msgid ""
+"NHRP provides the dynamic tunnel endpoint discovery mechanism (endpoint "
+"registration, and endpoint discovery/lookup), mGRE provides the tunnel "
+"encapsulation itself, and the IPSec protocols handle the key exchange, and "
+"crypto mechanism."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:22 e85c511ef9884b1884e19bed3ef2aad4
+msgid ""
+"In short, DMVPN provides the capability for creating a dynamic-mesh VPN "
+"network without having to pre-configure (static) all possible tunnel end-"
+"point peers."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:26 e7dd589078ab46099a00cc45e04a6ab2
+msgid ""
+"DMVPN only automates the tunnel endpoint discovery and setup. A complete "
+"solution also incorporates the use of a routing protocol. BGP is "
+"particularly well suited for use with DMVPN."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:34 ../../configuration/vpn/dmvpn.rst:34
+#: 173e9ebcf23740689befef2590a1ed62 8e52d6609cd647e98ecf95e59c19bc89
+msgid "Baseline DMVPN topology"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:38 ../../configuration/vpn/dmvpn.rst:182
+#: fae3cca7593c49d5980e00b8a3aea90b 040cb2747cf64ded9634b1b89ac9d301
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:40 e3477d0706834f84a17b55aba4da6fb9
+msgid ""
+"Please refer to the :ref:`tunnel-interface` documentation for the individual"
+" tunnel related options."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:43 eb73026f3be9426e8cb7f62d2dc3b57c
+msgid ""
+"Please refer to the :ref:`ipsec` documentation for the individual IPSec "
+"related options."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:48 1ba7a426d64a4c2e9b9f83c3d44a454b
+msgid ""
+"Enables Cisco style authentication on NHRP packets. This embeds the secret "
+"plaintext password to the outgoing NHRP packets. Incoming NHRP packets on "
+"this interface are discarded unless the secret password is present. Maximum "
+"length of the secret is 8 characters."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:56 ce3bd628e83648808fa2a432598a704a
+msgid ""
+"Specifies that the :abbr:`NBMA (Non-broadcast multiple-access network)` "
+"addresses of the next hop servers are defined in the domain name nbma-"
+"domain-name. For each A record opennhrp creates a dynamic NHS entry."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:60 b374bebd3cce4f00b8a18fde3d86e843
+msgid ""
+"Each dynamic NHS will get a peer entry with the configured network address "
+"and the discovered NBMA address."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:63 0d0ac199ba934cc68e99644f98828414
+msgid ""
+"The first registration request is sent to the protocol broadcast address, "
+"and the server's real protocol address is dynamically detected from the "
+"first registration reply."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:69 ../../configuration/vpn/dmvpn.rst:155
+#: ca24c98405f34017b0d5f098e002e9bd 8158fa5841bd44b2a30a5f9538c32754
+msgid ""
+"Specifies the holding time for NHRP Registration Requests and Resolution "
+"Replies sent from this interface or shortcut-target. The holdtime is "
+"specified in seconds and defaults to two hours."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:75 26ef440f83f64d58ad66aec552796c46
+msgid ""
+"If the statically mapped peer is running Cisco IOS, specify the cisco "
+"keyword. It is used to fix statically the Registration Request ID so that a "
+"matching Purge Request can be sent if NBMA address has changed. This is to "
+"work around broken IOS which requires Purge Request ID to match the original"
+" Registration Request ID."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:83 d111a5eeccb545dc8c56f398a40ab2c1
+msgid ""
+"Creates static peer mapping of protocol-address to :abbr:`NBMA (Non-"
+"broadcast multiple-access network)` address."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:86 f4b8e24653e64d1288f0760611f3783e
+msgid ""
+"If the IP prefix mask is present, it directs opennhrp to use this peer as a "
+"next hop server when sending Resolution Requests matching this subnet."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:89 1d60fe96c7a44fe88086e695528a44ea
+msgid "This is also known as the HUBs IP address or FQDN."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:93 9c44cfaf5ab8480eae9e11197aee697b
+msgid ""
+"The optional parameter register specifies that Registration Request should "
+"be sent to this peer on startup."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:96 870929c86ca1483ca6c44b498e01f6aa
+msgid "This option is required when running a DMVPN spoke."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:100 ed86b5d20c6845c3be1f7975565b2b17
+msgid ""
+"Determines how opennhrp daemon should soft switch the multicast traffic. "
+"Currently, multicast traffic is captured by opennhrp daemon using a packet "
+"socket, and resent back to proper destinations. This means that multicast "
+"packet sending is CPU intensive."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:105 f11cc73f88f949d5948b1df91da04471
+msgid ""
+"Specfying nhs makes all multicast packets to be repeated to each statically "
+"configured next hop."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:108 bca0df235fbe4ca98d4034741bba43cd
+msgid ""
+"Synamic instructs to forward to all peers which we have a direct connection "
+"with. Alternatively, you can specify the directive multiple times for each "
+"protocol-address the multicast traffic should be sent to."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:112 bb7d1d00c13b43eea58fb050c895ce2a
+msgid ""
+"It is very easy to misconfigure multicast repeating if you have multiple "
+"NHSes."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:117 9ba345a1becf4d30aece029d3fc1cf08
+msgid ""
+"Disables caching of peer information from forwarded NHRP Resolution Reply "
+"packets. This can be used to reduce memory consumption on big NBMA subnets."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:120 af54e7607e16481a8422f7a4ac64d38d
+msgid "Currently does not do much as caching is not implemented."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:124 2506d5f594d740dcae3bd133021ebd25
+msgid ""
+"Enable sending of Cisco style NHRP Traffic Indication packets. If this is "
+"enabled and opennhrp detects a forwarded  packet, it will send a message to "
+"the original sender of the packet instructing it to create a direct "
+"connection with the destination. This is basically a protocol independent "
+"equivalent of ICMP redirect."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:132 fc0982f8173c4c8495c798ac7ba18a27
+msgid "Enable creation of shortcut routes."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:134 626a96c7a8e243b2a6fe1a879c49887b
+msgid ""
+"A received NHRP Traffic Indication will trigger the resolution and "
+"establishment of a shortcut route."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:139 efa45731f220400292a54e71afd15666
+msgid ""
+"This instructs opennhrp to reply with authorative answers on NHRP Resolution"
+" Requests destinied to addresses in this interface (instead of forwarding "
+"the packets). This effectively allows the creation of shortcut routes to "
+"subnets located on the interface."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:144 61049e19a2f846e8b0977a65b9e2e062
+msgid "When specified, this should be the only keyword for the interface."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:148 2dffec4031fb4c34950acaaaab8662b9
+msgid ""
+"Defines an off-NBMA network prefix for which the GRE interface will act as a"
+" gateway. This an alternative to defining local interfaces with shortcut-"
+"destination flag."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:161 0df2145ab8084108b3647ca89870d6ca
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:164 3d55493edaec4954ba955aaa65112281
+msgid ""
+"This blueprint uses VyOS as the DMVPN Hub and Cisco (7206VXR) and VyOS as "
+"multiple spoke sites. The lab was build using :abbr:`EVE-NG (Emulated "
+"Virtual Environment NG)`."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:171 c829c429e34c4b39ac82ce642889d245
+msgid "DMVPN network"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:171 efbbe29693ef4d19ae1663128de50184
+msgid "DMVPN example network"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:173 216fa70d8bbc4d78a761ca604f9235bb
+msgid ""
+"Each node (Hub and Spoke) uses an IP address from the network "
+"172.16.253.128/29."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:175 39bd5306b83848f4b32be49afbc696e6
+msgid ""
+"The below referenced IP address `192.0.2.1` is used as example address "
+"representing a global unicast address under which the HUB can be contacted "
+"by each and every individual spoke."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:185 c9a114232cb84a6c997ca475e1a3e224
+msgid "Hub"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:229 68ccd3eef4cb4560839b960004649066
+msgid ""
+"Setting this up on AWS will require a \"Custom Protocol Rule\" for protocol "
+"number \"47\" (GRE) Allow Rule in TWO places. Firstly on the VPC Network "
+"ACL, and secondly on the security group network ACL attached to the EC2 "
+"instance. This has been tested as working for the official AMI image on the "
+"AWS Marketplace. (Locate the correct VPC and security group by navigating "
+"through the details pane below your EC2 instance in the AWS console)."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:237 c913f5989ce045bd98768fb7e5b74c55
+msgid "Spoke"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:239 39e7bc5380e64d24810a80cd6a46aeee
+msgid ""
+"The individual spoke configurations only differ in the local IP address on "
+"the ``tun10`` interface. See the above diagram for the individual IP "
+"addresses."
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:243 3debe7d75ea543d497aea945019e0c51
+msgid "spoke01-spoke04"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:290 b39f794a81b147708becc21a750a8739
+msgid "spoke05"
+msgstr ""
+
+#: ../../configuration/vpn/dmvpn.rst:292 14fbbce353384871bd8dc1023a55299d
+msgid "VyOS can also run in DMVPN spoke mode."
+msgstr ""

@@ -1,0 +1,259 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../installation/virtual/gns3.rst:5 59f9f91b73204eb1b1ed3bdfc08cfaef
+msgid "Running on GNS3"
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:7 9612e309f2584c87b4648e9517b67eb0
+msgid ""
+"Sometimes you may want to test VyOS in a lab environment. `GNS3 "
+"<http://www.gns3.com>`__ is a network emulation software you might use for "
+"it."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:11 5d27c0c433034219b7e593b335038366
+msgid ""
+"This guide will provide the necessary steps for installing and setting up "
+"VyOS on GNS3."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:15 5f367653ce954824a9778c6fc7d0370f
+msgid "Requirements"
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:17 b73e58dff5ca4376953a057a099dffe4
+msgid "The following items are required:"
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:19 731cb2a742d943689c57f13cc05b39ea
+msgid ""
+"A VyOS installation image (.iso file). You can find how to get it on the "
+":ref:`installation` page"
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:22 a68cb60d89634816a86b9f918ab6944a
+msgid ""
+"A working GNS3 installation. For further information see the `GNS3 "
+"documentation <https://docs.gns3.com/>`__."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:28 c303f61291084965be90084781338f2f
+msgid "VM setup"
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:30 5723b11407a243d9aa0217483ea78f91
+msgid ""
+"First, a virtual machine (VM) for the VyOS installation must be created in "
+"GNS3."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:33 fea664653f1c4d7fb0081fa91a524fd4
+msgid ""
+"Go to the GNS3 **File** menu, click **New template** and choose select "
+"**Manually create a new Template**."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:38 51421048827b497692ac5c2972332167
+msgid "Select **Quemu VMs** and then click on the ``New`` button."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:42 e4020f06acae4d43ae0da0b383f2db7d
+msgid "Write a name for your VM, for instance \"VyOS\", and click ``Next``."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:46 32a4a277c4334766a95d45c5f30b2f93
+msgid ""
+"Select **qemu-system-x86_64** as Quemu binary, then **512MB** of RAM and "
+"click ``Next``."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:51 d997f22a23d04f4ab51d3259a32df3c6
+msgid "Select **telnet** as your console type and click ``Next``."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:55 3d88cddb879d493e93b2c43f0486c8f4
+msgid ""
+"Select **New image** for the base disk image of your VM and click "
+"``Create``."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:60 ea9e73422a7d4457a26d8f1e875e7ddc
+msgid ""
+"Use the defaults in the **Binary and format** window and click ``Next``."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:65 b3aad0a0fbd9428483c9755abf6c0fed
+msgid "Use the defaults in the **Qcow2 options** window and click ``Next``."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:69 2d46a8e8b2fb4c42b79b72af64a46d87
+msgid ""
+"Set the disk size to 2000 MiB, and click ``Finish`` to end the **Quemu image"
+" creator**."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:74 57980132242c41f7847f96511f7864a0
+msgid "Click ``Finish`` to end the **New QEMU VM template** wizard."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:78 9e42c685a4f04e1ca029ed25177c367b
+msgid "Now the VM settings have to be edited."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:80 594c44a3609948a5be5cfd76bef3ca03
+msgid ""
+"Being again at the **Preferences** window, having **Qemu VMs** selected and "
+"having our new VM selected, click the ``Edit`` button."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:85 dea19552d9dc4fa38123006cb62bbf85
+msgid ""
+"In the **General settings** tab of your **QEMU VM template configuration**, "
+"do the following:"
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:88 5b7159e6245b496d80dedcc9ccd03cd4
+msgid ""
+"Click on the ``Browse...`` button to choose the **Symbol** you want to have "
+"representing your VM."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:90 2d0ef5e0b1a84477906dccedf12672a9
+msgid "In **Category** select in which group you want to find your VM."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:91 e6ff44d2cdc54528a013354bbd4c912c
+msgid "Set the **Boot priority** to **CD/DVD-ROM**."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:95 1f629b6e6ac6465594fc705c4849da28
+msgid ""
+"At the **HDD** tab, change the Disk interface to **sata** to speed up the "
+"boot process."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:100 001d9251bfcf4b89b58a301fdfeef3c8
+msgid ""
+"At the **CD/DVD** tab click on ``Browse...`` and locate the VyOS image you "
+"want to install."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:105 eae9f37ff483461a840a3bf270deaf95
+msgid ""
+"You probably will want to accept to copy the .iso file to your default image"
+" directory when you are asked."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:108 890f523013494c0d91680bc4bd25e94e
+msgid ""
+"In the **Network** tab,  set **0** as the number of adapters, set the **Name"
+" format** to **eth{0}** and the **Type** to **Paravirtualized Network I/O "
+"(virtio-net-pci)**."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:114 248a7d78425745fc870e7fb8b7a22f4f
+msgid ""
+"In the **Advanced** tab, unmark the checkbox **Use as a linked base VM** and"
+" click ``OK``, which will save and close the **QEMU VM template "
+"configuration** window."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:120 eab096f81def44528aa5cc6a42033a43
+msgid "At the general **Preferences** window, click ``OK`` to save and close."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:128 b21171fa3c3c4399b80b7dc46f86fdb8
+msgid "VyOS installation"
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:130 7969432b0ff5436ca4214ad4e2630a9a
+msgid "Create a new project."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:131 f7f3ecc9a05d4424b10a288f8d45448c
+msgid "Drag the newly created VyOS VM into it."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:132 2160544141e2421ca6dbf7e78364b9ef
+msgid "Start the VM."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:133 e39f1f4303ee4dafae0e820347879114
+msgid ""
+"Open a console. The console should show the system booting. It will ask for "
+"the login credentials, you are at the VyOS live system."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:136 118f0f467c8749ebaba3a8b3ea92f4e0
+msgid ""
+":ref:`Install VyOS <installation>` as normal (that is, using the ``install "
+"image`` command)."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:139 8f543a9741a943d2ab594d1fb6d39926
+msgid ""
+"After a successful installation, shutdown the VM with the ``poweroff`` "
+"command."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:142 cbe7f865ad8341b3985578738b0676d6
+msgid "**Delete the VM** from the GNS3 project."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:144 1b6c466497914ee0872ac08a2be6aed8
+msgid ""
+"The *VyOS-hda.qcow2* file now contains a working VyOS image and can be used "
+"as a template. But it still needs some fixes before we can deploy VyOS in "
+"our labs."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:151 ab7dffc08b9c4cd9971918547dbcc5bd
+msgid "VyOS VM configuration"
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:153 2d7191527c3f4d1c9403c0dca86d7d29
+msgid ""
+"To turn the template into a working VyOS machine, further steps are "
+"necessary as outlined below:"
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:156 e308eafc6665484e8f9548a50fa467f3
+msgid "**General settings** tab: Set the boot priority to **HDD**"
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:160 cadf4c7803ef4421ae22d52d4bf84e0d
+msgid ""
+"**CD/DVD** tab: Unmount the installation image file by clearing the "
+"**Image** entry field."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:165 9cbd825376ff4f0c9644bfee0c701565
+msgid "Set the number of required network adapters, for example **4**."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:169 f3632f8c0d2f4a67a40ba08748db0af0
+msgid ""
+"**Advanced** settings tab: Mark the checkbox **Use as a linked base VM** and"
+" click ``OK`` to save the changes."
+msgstr ""
+
+#: ../../installation/virtual/gns3.rst:174 4af8928d3af6409d8a8daa4e0cdd2e80
+msgid "The VyOS VM is now ready to be deployed."
+msgstr ""

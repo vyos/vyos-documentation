@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/system/option.rst:5 179b450d28fb4032a2247e53223facab
+msgid "Option"
+msgstr ""
+
+#: ../../configuration/system/option.rst:7 d1a99ec5ca9745b3af57877d49f731cc
+msgid "This chapter describe the possibilities of advanced system behavior."
+msgstr ""
+
+#: ../../configuration/system/option.rst:11 9198a86c948f4be5a24d667f43e78806
+msgid "General"
+msgstr ""
+
+#: ../../configuration/system/option.rst:15 6b8cf7d3cda94965b7ca966ce4226ccf
+msgid "Action which will be run once the ctrl-alt-del keystroke is received."
+msgstr ""
+
+#: ../../configuration/system/option.rst:19 c828e0abd2e14f78b8a68a950e392f8c
+msgid "Automatically reboot system on kernel panic after 60 seconds."
+msgstr ""
+
+#: ../../configuration/system/option.rst:23 ca1c5190e8364027bcf5dd67ee864653
+msgid "Play an audible beep to the system speaker when system is ready."
+msgstr ""
+
+#: ../../configuration/system/option.rst:27 4fa443c30ef941a0bdea875db5001b49
+msgid "HTTP client"
+msgstr ""
+
+#: ../../configuration/system/option.rst:31 458f46c7f6224723aa8ae8cdf58ec7a4
+msgid ""
+"Several commands utilize cURL to initiate transfers. Configure the local "
+"source IPv4/IPv6 address used for all cURL operations."
+msgstr ""
+
+#: ../../configuration/system/option.rst:36 dc708380068544b39c2df55e6fb751fe
+msgid ""
+"Several commands utilize curl to initiate transfers. Configure the local "
+"source interface used for all CURL operations."
+msgstr ""
+
+#: ../../configuration/system/option.rst:39 01339b6cd22e484488cee9e8c26e9cb9
+msgid ""
+"`source-address` and `source-interface` can not be used at the same time."
+msgstr ""
+
+#: ../../configuration/system/option.rst:44 e11b0a746b2a43c7a8ada34dee366ef9
+msgid "Keyboard Layout"
+msgstr ""
+
+#: ../../configuration/system/option.rst:46 4c82f05d61ec46b2b0d3817454e1bb93
+msgid ""
+"When starting a VyOS live system (the installation CD) the configured "
+"keyboard layout defaults to US. As this might not suite everyones use case "
+"you can adjust the used keyboard layout on the system console."
+msgstr ""
+
+#: ../../configuration/system/option.rst:52 eb729955d82e46c4a8e300a9ff240816
+msgid "Change system keyboard layout to given language."
+msgstr ""
+
+#: ../../configuration/system/option.rst:54 92a2246266fc4ec2a14bc28a4245f250
+msgid "Defaults to ``us``."
+msgstr ""
+
+#: ../../configuration/system/option.rst:56 52295a3502de4381958a17a556711b4c
+msgid ""
+"Changing the keymap only has an effect on the system console, using SSH or "
+"Serial remote access to the device is not affected as the keyboard layout "
+"here corresponds to your access system."
+msgstr ""
+
+#: ../../configuration/system/option.rst:64 f0cb4db8c170419e8d7039a5c39460a5
+msgid "Performance"
+msgstr ""
+
+#: ../../configuration/system/option.rst:66 6b527929906d49b8b5e422b3cad9cc8d
+msgid ""
+"As more and more routers run on Hypervisors, expecially with a :abbr:`NOS "
+"(Network Operating System)` as VyOS, it makes fewer and fewer sense to use "
+"static resource bindings like ``smp-affinity`` as present in VyOS 1.2 and "
+"earlier to pin certain interrupt handlers to specific CPUs."
+msgstr ""
+
+#: ../../configuration/system/option.rst:71 53e00593cc4f429c8ef4b501ef0c4bca
+msgid ""
+"We now utilize `tuned` for dynamic resource balancing based on profiles."
+msgstr ""
+
+#: ../../configuration/system/option.rst:75 e104c1975764490d9163e75b4bbfc740
+msgid ""
+"https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-"
+"low-latency-tuning-rhel7-v2.1.pdf"
+msgstr ""
+
+#: ../../configuration/system/option.rst:81 b726dd0835ab4b0d8a3cc4be731e3138
+msgid "Configure one of the predefined system performance profiles."
+msgstr ""
+
+#: ../../configuration/system/option.rst:83 6f06cc1426574ababcbe206066ce6584
+msgid ""
+"``throughput``: A server profile focused on improving network throughput. "
+"This profile favors performance over power savings by setting "
+"``intel_pstate`` and ``max_perf_pct=100`` and increasing kernel network "
+"buffer sizes."
+msgstr ""
+
+#: ../../configuration/system/option.rst:88 f2e88ca4c4fb4f8cb30296328098866e
+msgid ""
+"It enables transparent huge pages, and uses cpupower to set the performance "
+"cpufreq governor. It also sets ``kernel.sched_min_granularity_ns`` to 10 us,"
+" ``kernel.sched_wakeup_granularity_ns`` to 15 uss, and ``vm.dirty_ratio`` to"
+" 40%."
+msgstr ""
+
+#: ../../configuration/system/option.rst:93 fce0175dde7148a3b771d2b19727231c
+msgid ""
+"``latency``: A server profile focused on lowering network latency. This "
+"profile favors performance over power savings by setting ``intel_pstate`` "
+"and ``min_perf_pct=100``."
+msgstr ""
+
+#: ../../configuration/system/option.rst:97 539857446d7a4504a42483d3446e4b36
+msgid ""
+"It disables transparent huge pages, and automatic NUMA balancing. It also "
+"uses cpupower to set the performance cpufreq governor, and requests a "
+"cpu_dma_latency value of 1. It also sets busy_read and busy_poll times to 50"
+" us, and tcp_fastopen to 3."
+msgstr ""

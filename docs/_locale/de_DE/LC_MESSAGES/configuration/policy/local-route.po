@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/policy/local-route.rst:3
+#: 21c3fc85e567490986c42ebf6f54110a
+msgid "Local Route Policy"
+msgstr ""
+
+#: ../../configuration/policy/local-route.rst:5
+#: 92ef96f80f4e47bca2cc30669d5be010
+msgid "Policies for local traffic are defined in this section."
+msgstr ""
+
+#: ../../configuration/policy/local-route.rst:9
+#: e2fc476c2a05442faf693988b4ffeb82
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/policy/local-route.rst:12
+#: d7ecfa9e58a442f998cd4a96b1b83802
+msgid "Local Route IPv4"
+msgstr ""
+
+#: ../../configuration/policy/local-route.rst:16
+#: ../../configuration/policy/local-route.rst:35
+#: 1da519996f084f2d9d69aa99377bab7f de5dc035a805463296738f3200cc6fec
+msgid "Set routing table to forward packet to."
+msgstr ""
+
+#: ../../configuration/policy/local-route.rst:20
+#: ../../configuration/policy/local-route.rst:39
+#: 236093fdd50c4fb0bffc7c6bb8148253 a428322a127e4c8bbcc49ebe7988ef67
+msgid "Set source address or prefix to match."
+msgstr ""
+
+#: ../../configuration/policy/local-route.rst:24
+#: ../../configuration/policy/local-route.rst:43
+#: 5d93a66089c14d08a38188239802b098 c38c5e3071564082be0e927f4bddf286
+msgid "Set destination address or prefix to match."
+msgstr ""
+
+#: ../../configuration/policy/local-route.rst:28
+#: ../../configuration/policy/local-route.rst:47
+#: 2f3012242a81428db86dd84d9230f939 34b19715fec74d1d8c833a0af2c21d3b
+msgid "Set inbound interface to match."
+msgstr ""
+
+#: ../../configuration/policy/local-route.rst:31
+#: 56a1eee20b314aa0b5d773d392a9e2e6
+msgid "Local Route IPv6"
+msgstr ""

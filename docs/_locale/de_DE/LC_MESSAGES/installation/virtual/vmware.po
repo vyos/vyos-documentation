@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../installation/virtual/vmware.rst:4 a2b3cf871b5044be993a3addf745b9ba
+msgid "Running on VMware ESXi"
+msgstr ""
+
+#: ../../installation/virtual/vmware.rst:7 473774cecd0340de9895c4e06ae58c65
+msgid "ESXi 5.5 or later"
+msgstr ""
+
+#: ../../installation/virtual/vmware.rst:9 38ef355b44814e6d9e1149e7d8ad6bbf
+msgid ""
+".ova files are available for supporting users, and a VyOS can also be stood "
+"up using a generic Linux instance, and attaching the bootable ISO file and "
+"installing from the ISO using the normal process around `install image`."
+msgstr ""
+
+#: ../../installation/virtual/vmware.rst:13 a5013b0cc45d465daf2cc3afa30dfd70
+msgid ""
+"There have been previous documented issues with GRE/IPSEC tunneling using "
+"the E1000 adapter on the VyOS guest, and use of the VMXNET3 has been "
+"advised."
+msgstr ""
+
+#: ../../installation/virtual/vmware.rst:18 446e59e446464404bdc1e4961a6157af
+msgid "Memory Contention Considerations"
+msgstr ""
+
+#: ../../installation/virtual/vmware.rst:19 06ffc58e4e5145d7b22820fa538f9b8d
+msgid ""
+"When the underlying ESXi host is approaching ~92% memory utilisation it will"
+" start the balloon process in  a 'soft' state to start reclaiming memory "
+"from guest operating systems. This causes an artificial pressure using the "
+"vmmemctl driver on memory usage on the virtual guest. As VyOS by default "
+"does not have a swap file, this vmmemctl pressure is unable to force "
+"processes to move in memory data to the paging file, and blindly consumes "
+"memory forcing the virtual guest into a low memory state with no way to "
+"escape. The balloon can expand to 65% of guest allocated memory, so a VyOS "
+"guest running >35% of memory usage, can encounter an out of memory "
+"situation, and trigger the kernel oom_kill process. At this point a weighted"
+" lottery favouring memory hungry processes will be run with the unlucky "
+"winner being terminated by the kernel."
+msgstr ""
+
+#: ../../installation/virtual/vmware.rst:31 39109531e93a4492857884e1380a0591
+msgid ""
+"It is advised that VyOS routers are configured in a resource group with "
+"adequate memory reservations so that ballooning is not inflicted on virtual "
+"VyOS guests."
+msgstr ""
+
+#: ../../installation/virtual/vmware.rst:40 df3f0648ee1746588cad5a6b6bbcb671
+msgid "References"
+msgstr ""
+
+#: ../../installation/virtual/vmware.rst:44 ed21fcd7f7ee43fdbf90533fda71ac08
+msgid ""
+"https://muralidba.blogspot.com/2018/03/how-does-linux-out-of-memory-oom-"
+"killer.html"
+msgstr ""

@@ -1,0 +1,582 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../contributing/build-vyos.rst:5 f9b434efcd7a47e6ba9e7a6aaa04434d
+msgid "Build VyOS"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:9 e7859dcaaf73449f97a0e48a37f86172
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:11 17de3ba2c45340499b63d4f5d27bf877
+msgid "There are different ways you can build VyOS."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:13 18040e9a029542619d890b955a7da385
+msgid ""
+"Building using a :ref:`build_docker` container, although not the only way, "
+"is the easiest way as all dependencies are managed for you. However, you can"
+" also set up your own build machine and run a :ref:`build_native`."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:17 34f1314ec9ef47cdb4942d747072dcaf
+msgid ""
+"Starting with VyOS 1.2 the release model of VyOS has changed. VyOS is now "
+"**free as in speech, but not as in beer**. This means that while VyOS is "
+"still an open source project, the release ISOs are no longer free and can "
+"only be obtained via subscription, or by contributing to the community."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:23 6567d7d0b0064e7cbb1b19a7937a0a2e
+msgid ""
+"The source code remains public and an ISO can be built using the process "
+"outlined in this chapter."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:26 8d50098cac234918806bbf90d7c43e77
+msgid ""
+"This will guide you through the process of building a VyOS ISO using "
+"Docker_. This process has been tested on clean installs of Debian Jessie, "
+"Stretch, and Buster."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:33 a5e42057b3ae42fd9dd69626c8d3427b
+msgid "Docker"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:35 b441cd3eaafb4687bcfd3e21158b3277
+msgid "Installing Docker_ and prerequisites:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:46 911751b4040444788ef2bf7f7e02d612
+msgid ""
+"To be able to use Docker_ without ``sudo``, the current non-root user must "
+"be added to the ``docker`` group by calling: ``sudo usermod -aG docker "
+"yourusername``."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:50 05146ea1c05d4c0db6e76b87276c43eb
+msgid ""
+"Doing so grants privileges equivalent to the ``root`` user! It is "
+"recommended to remove the non-root user from the ``docker`` group after "
+"building the VyOS ISO. See also `Docker as non-root`_."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:54 900c5ddbe9174950ab52565784843ba9
+msgid ""
+"The build process needs to be built on a local file system, building on SMB "
+"or NFS shares will result in the container failing to build properly! "
+"VirtualBox Drive Share is also not an option as block device operations are "
+"not implemented and the drive is always mounted as \"nodev\""
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:60 b4b73dd959f849828a9640ee6564615e
+msgid "Build Container"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:62 073648837b614bed812f5e2883bff835
+msgid ""
+"The container can be built by hand or by fetching the pre-built one from "
+"DockerHub. Using the pre-built containers from the `VyOS DockerHub "
+"organisation`_ will ensure that the container is always up-to-date. A "
+"rebuild is triggered once the container changes (please note this will take "
+"2-3 hours after pushing to the vyos-build repository)."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:73 640cb63c32944b0bae642bbbf713260f
+msgid "Dockerhub"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:75 f351d2c9e39544438bc481283aee2750
+msgid "To manually download the container from DockerHub, run:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:83 a5327e673a0247d4acc9734cef314b0d
+msgid "Build from source"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:85 1c11cd53a55b49f497db759f5931b167
+msgid "The container can also be built directly from source:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:98 50d70f507ae740c6a1393ceb353f1b57
+msgid ""
+"Since VyOS has switched to Debian (11) Bullseye in its ``current`` branch, "
+"you will require individual container for `current`, `equuleus` and `crux` "
+"builds."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:103 25325d646f134653bcd53a9e67939997
+msgid "Tips and Tricks"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:105 3335f88bb36f454f9e6fdf9fed044450
+msgid ""
+"You can create yourself some handy Bash aliases to always launch the latest "
+"- per release train (`current` or `crux`) - container. Add the following to "
+"your ``.bash_aliases`` file:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:129 05c7bec68a46426791346de5999e0537
+msgid ""
+"Now you are prepared with two new aliases ``vybld`` and ``vybld_crux`` to "
+"spawn your development containers in your current working directory."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:132 189ec31e898b4bbbadf749952f753b00
+msgid ""
+"Some VyOS packages (namely vyos-1x) come with build-time tests which verify "
+"some of the internal library calls that they work as expected. Those tests "
+"are carried out through the Python Unittest module. If you want to build the"
+" ``vyos-1x`` package (which is our main development package) you need to "
+"start your Docker container using the following argument: ``--sysctl "
+"net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will fail."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:142 c09bcecd4164410f87484de8a531cbae
+msgid "Native Build"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:144 0dffd1bda041451c8f52e52195fd2e89
+msgid ""
+"To build VyOS natively you require a properly configured build host with the"
+" following Debian versions installed:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:147 bc54d4f524704452af0d5498640e59d2
+msgid "Debian Jessie for VyOS 1.2 (crux)"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:148 6bbd23b0a6c842639f5265e9ff79c214
+msgid ""
+"Debian Buster for VyOS 1.3 (equuleus, current) - aka the rolling release"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:150 fcdeba9a35e64863ae7eda72cb5514d1
+msgid "To start, clone the repository to your local machine:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:160 3c61095c1ab14dcf94b5c9529eaf3754
+msgid ""
+"For the packages required, you can refer to the ``docker/Dockerfile`` file "
+"in the repository_. The ``./configure`` script will also warn you if any "
+"dependencies are missing."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:164 31e329aa835e41429ed4dc1a75f15174
+msgid ""
+"Once you have the required dependencies installed, you may proceed with the "
+"steps described in :ref:`build_iso`."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:172 8e95321ef391422a85155e9840aa810f
+msgid "Build ISO"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:174 b789f79b043744b0a88da222720d3754
+msgid ""
+"Now as you are aware of the prerequisites we can continue and build our own "
+"ISO from source. For this we have to fetch the latest source code from "
+"GitHub. Please note as this will differ for both `current` and `crux`."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:186 c59724b4d1bd4e39b68b822e653242ef
+msgid ""
+"Now a fresh build of the VyOS ISO can begin. Change directory to the ``vyos-"
+"build`` directory and run:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:213 83359a6fcc8b45a2a2850676e858f09e
+msgid "Start the build:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:220 813652e166e14361ad000f77ce3c3a76
+msgid ""
+"When the build is successful, the resulting iso can be found inside the "
+"``build`` directory as ``live-image-[architecture].hybrid.iso``."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:223 b6621b905b94486888fc75685dfa79ba
+msgid "Good luck!"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:225 ce7b1c2e720c417eaa2fff65a9910a83
+msgid ""
+"Building VyOS on Windows WSL2 with Docker integrated into WSL2 will work "
+"like a charm. No problems are known so far!"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:234 54aee8b029ce4144a48bfe6d396716f9
+msgid "Customize"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:236 7df61c4ffd844f6dab126ca4f1d041cd
+msgid ""
+"This ISO can be customized with the following list of configure options. The"
+" full and current list can be generated with ``./configure --help``:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:281 29d46fec07694c14926803dd88c9631f
+msgid "ISO Build Issues"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:283 2b860168d39a485ca40730cd97021857
+msgid ""
+"There are (rare) situations where building an ISO image is not possible at "
+"all due to a broken package feed in the background. APT is not very good at "
+"reporting the root cause of the issue. Your ISO build will likely fail with "
+"a more or less similar looking error message:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:306 111028887cdf451aaf5085b1c5bb3eb9
+msgid ""
+"To debug the build process and gain additional information of what could be "
+"the root cause, you need to use `chroot` to change into the build directry. "
+"This is explained in the following step by step procedure:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:314 b91798ddcb664dd0afc0c3e5dc5d22b0
+msgid "We now need to mount some required, volatile filesystems"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:322 13f1f727c4cc44838022d0201b1663ee
+msgid ""
+"We now are free to run any command we would like to use for debugging, e.g. "
+"re-installing the failed package after updating the repository."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:357 99bf13c8aae4486d9b18181cc2ef828e
+msgid ""
+"Now it's time to fix the package mirror and rerun the last step until the "
+"package installation succeeds again!"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:363 9a84c0d47fdd4b168bf3b531a204ead8
+msgid "Linux Kernel"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:365 b6132ca1c1cc4ca2b987f401909b0624
+msgid ""
+"The Linux kernel used by VyOS is heavily tied to the ISO build process. The "
+"file ``data/defaults.json`` hosts a JSON definition of the kernel version "
+"used ``kernel_version`` and the ``kernel_flavor`` of the kernel which "
+"represents the kernel's LOCAL_VERSION. Both together form the kernel version"
+" variable in the system:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:376 5f8e92525fa444fd840775e9b1941c7b
+msgid ""
+"Other packages (e.g. vyos-1x) add dependencies to the ISO build procedure on"
+" e.g. the wireguard-modules package which itself adds a dependency on the "
+"kernel version used due to the module it ships. This may change (for "
+"WireGuard) in future kernel releases but as long as we have out-of-tree "
+"modules."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:381 ../../contributing/build-vyos.rst:570
+#: 2f53ab64046d40618abfa33fc5f91ed1 6c8fe0f76a79488fb1d9a21c41334902
+msgid "WireGuard"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:382 ../../contributing/build-vyos.rst:618
+#: 698978e34d5244558896024b11bcc12b f27c76294f614a5397ea7dd435954de6
+msgid "Accel-PPP"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:383 9daedc35e77f42ba9870cdd7adffb9fb
+msgid "Intel NIC drivers"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:384 2e7c0a9f85544e6695d278414e90e2b9
+msgid "Inter QAT"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:386 27289b3878224bd7b7254f1daed3ee7e
+msgid ""
+"Each of those modules holds a dependency on the kernel version and if you "
+"are lucky enough to receive an ISO build error which sounds like:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:404 09ba89747d10433c848a262d4f50ee42
+msgid "The most obvious reasons could be:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:406 db2b650375644a649f6297dd8afc026d
+msgid ""
+"``vyos-build`` repo is outdated, please ``git pull`` to update to the latest"
+" release kernel version from us."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:409 6046e08b28dd417f974505d3b0a3c40b
+msgid ""
+"You have your own custom kernel `*.deb` packages in the `packages` folder "
+"but neglected to create all required out-of tree modules like Accel-PPP, "
+"WireGuard, Intel QAT, Intel NIC"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:414 a2f814ee71fb49aaa7a5c4623df52c78
+msgid "Building The Kernel"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:416 9516ca81a94d41f98227a52c1e721f1b
+msgid ""
+"The kernel build is quite easy, most of the required steps can be found in "
+"the ``vyos-build/packages/linux-kernel/Jenkinsfile`` but we will walk you "
+"through it."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:420 cdd6bfbaf88242f18fffe5e9bcf18fbb
+msgid "Clone the kernel source to `vyos-build/packages/linux-kernel/`:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:427 d4dc7278e7a84f8c8152e34cbd574939
+msgid ""
+"Check out the required kernel version - see ``vyos-"
+"build/data/defaults.json`` file (example uses kernel 4.19.146):"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:448 8778f37392a942048d61a1a7ccc1fa0e
+msgid ""
+"Now we can use the helper script ``build-kernel.sh`` which does all the "
+"necessary voodoo by applying required patches from the `vyos-"
+"build/packages/linux-kernel/patches` folder, copying our kernel "
+"configuration ``x86_64_vyos_defconfig`` to the right location, and finally "
+"building the Debian packages."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:454 bc21b4fbf014442e828a814ad6125e88
+msgid ""
+"Building the kernel will take some time depending on the speed and quantity "
+"of your CPU/cores and disk speed. Expect 20 minutes (or even longer) on "
+"lower end hardware."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:533 c6a344996c504a93a3bbca90e8770e52
+msgid ""
+"In the end you will be presented with the kernel binary packages which you "
+"can then use in your custom ISO build process, by placing all the `*.deb` "
+"files in the vyos-build/packages folder where they will be used "
+"automatically when building VyOS as documented above."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:539 936f19a82df5456f9288c58ec80a1425
+msgid "Firmware"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:541 9330cf56b314426a9b809003a7f698e5
+msgid ""
+"If you upgrade your kernel or include new drivers you may need new firmware."
+" Build a new ``vyos-linux-firmware`` package with the included helper "
+"scripts."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:551 1163d0a81d2947cb88c5fa0912944c3b
+msgid ""
+"This tries to automatically detect which blobs are needed based on which "
+"drivers were built. If it fails to find the correct files you can add them "
+"manually to ``vyos-build/packages/linux-kernel/build-linux-firmware.sh``:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:561 736268b6ee684258b753e15f46f98568
+msgid "Building Out-Of-Tree Modules"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:563 47b278781793406692070098433d50db
+msgid ""
+"Building the kernel is one part, but now you also need to build the required"
+" out-of-tree modules so everything is lined up and the ABIs match. To do so,"
+" you can again take a look at ``vyos-build/packages/linux-"
+"kernel/Jenkinsfile`` to see all of the required modules and their selected "
+"versions. We will show you how to build all the current required modules."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:572 ../../contributing/build-vyos.rst:620
+#: 3784c59cab18425c939c7eac26664604 b5760a364c314ce6b0f41f69a3ae386b
+msgid ""
+"First, clone the source code and check out the appropriate version by "
+"running:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:581 ../../contributing/build-vyos.rst:627
+#: 4f7da575ba2b41ad9601e543f7232a99 1fb50119001f4deb8dc2f499be966a7d
+msgid ""
+"We again make use of a helper script and some patches to make the build "
+"work. Just run the following command:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:613 ../../contributing/build-vyos.rst:654
+#: ../../contributing/build-vyos.rst:683 ../../contributing/build-vyos.rst:718
+#: e16a0aa8ede84c2d974e5f1a3fa3a05c 942733a6786a4c90888b48e3258925fb
+#: 96de1ad1ca564306874ca693b64ed2f2 2b4b177225ea4ffaa7d921bdaa18f21f
+msgid ""
+"After compiling the packages you will find yourself the newly generated "
+"`*.deb` binaries in ``vyos-build/packages/linux-kernel`` from which you can "
+"copy them to the ``vyos-build/packages`` folder for inclusion during the ISO"
+" build."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:659 09c99b056d4b4b208113b5fd1cf3c178
+msgid "Intel NIC"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:661 8514daf0ed214cc08bcc8362d8ad78f0
+msgid ""
+"The Intel NIC drivers do not come from a Git repository, instead we just "
+"fetch the tarballs from our mirror and compile them."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:664 ../../contributing/build-vyos.rst:693
+#: 26953b5adaaa477884145ddedc79283a 3250ff3979494fd79a01a57e35e38e90
+msgid "Simply use our wrapper script to build all of the driver modules."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:688 4ca472da70ed40c2ba31ea481c27d2e9
+msgid "Intel QAT"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:689 432251d26cbe43ee84f637d19538fa2e
+msgid ""
+"The Intel QAT (Quick Assist Technology) drivers do not come from a Git "
+"repository, instead we just fetch the tarballs from 01.org, Intel's open-"
+"source website."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:724 ../../contributing/build-vyos.rst:793
+#: 0863473aebad423e9ca45ed5d9e9821d a173df96275148daa3d0aaf02801d23c
+msgid "Packages"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:726 a7072cbb80e449e88ce611ec3b84f7a2
+msgid ""
+"If you are brave enough to build yourself an ISO image containing any "
+"modified package from our GitHub organisation - this is the place to be."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:729 8116e03a23d04c309b363093ce82621d
+msgid ""
+"Any \"modified\" package may refer to an altered version of e.g. vyos-1x "
+"package that you would like to test before filing a pull request on GitHub."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:732 5c1d80f2550243af93c07c134bcc56e8
+msgid ""
+"Building an ISO with any customized package is in no way different than "
+"building a regular (customized or not) ISO image. Simply place your modified"
+" `*.deb` package inside the `packages` folder within `vyos-build`. The build"
+" process will then pickup your custom package and integrate it into your "
+"ISO."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:738 0e5753f4c8af477787450aeb71bb7657
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:740 7b10ee6f0426415bb71660552ccf413a
+msgid ""
+"Debian APT is not very verbose when it comes to errors. If your ISO build "
+"breaks for whatever reason and you suspect it's a problem with APT "
+"dependencies or installation you can add this small patch which increases "
+"the APT verbosity during ISO build."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:769 694253006ae1488aa93431b9a8a80aec
+msgid "Virtualization Platforms"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:772 c480920ab1f5426eaf8983d73d3190b2
+msgid "QEMU"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:774 2a108d6c3e804d0eaa95325f12aaa514
+msgid "Run the following command after building the ISO image."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:781 0db23ac276b14114b934de5ca75a3247
+msgid "VMware"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:783 825e9f45a5ac4f1da0948de25c6dc888
+msgid "Run the following command after building the QEMU image."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:795 bfecae5db1254d4686abf116ac4a761d
+msgid ""
+"VyOS itself comes with a bunch of packages that are specific to our system "
+"and thus cannot be found in any Debian mirror. Those packages can be found "
+"at the `VyOS GitHub project`_ in their source format can easily be compiled "
+"into a custom Debian (`*.deb`) package."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:800 ad250e9952604cce8f18577aff2fe5dd
+msgid ""
+"The easiest way to compile your package is with the above mentioned "
+":ref:`build_docker` container, it includes all required dependencies for all"
+" VyOS related packages."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:804 7557ad729d0944729ad7efcc559ca6b3
+msgid ""
+"Assume we want to build the vyos-1x package on our own and modify it to our "
+"needs. We first need to clone the repository from GitHub."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:812 c9bd4af0c6864730ac3f1b9783c47f2e
+msgid "Build"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:814 47f948a1262c4b01a4bc222308a3abee
+msgid "Launch Docker container and build package"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:827 677fe0e847b04bdfa0cfc3b3a64ff9a0
+msgid ""
+"After a minute or two you will find the generated DEB packages next to the "
+"vyos-1x source directory:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:837 54fbfde9deac4d58b273469b9ec25d31
+msgid "Install"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:839 2b42e8916d7a455f84ab2bd89c556b53
+msgid ""
+"To take your newly created package on a test drive you can simply SCP it to "
+"a running VyOS instance and install the new `*.deb` package over the current"
+" running one."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:843 16e510091299422e952a2fd36740b4e8
+msgid "Just install using the following commands:"
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:854 d9c6c6a8d29f43778d826b759a763067
+msgid ""
+"You can also place the generated `*.deb` into your ISO build environment to "
+"include it in a custom iso, see :ref:`build_custom_packages` for more "
+"information."
+msgstr ""
+
+#: ../../contributing/build-vyos.rst:858 406e3d0896054894af4661516b0e1cc2
+msgid ""
+"Any packages in the packages directory will be added to the iso during "
+"build, replacing the upstream ones. Make sure you delete them (both the "
+"source directories and built deb packages) if you want to build an iso from "
+"purely upstream packages."
+msgstr ""

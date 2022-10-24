@@ -1,0 +1,909 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/protocols/ospf.rst:5 be61d874b7254c34941ab334d53c560a
+msgid "OSPF"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:7 404fca00e5c44ac1be74b92b958a21e9
+msgid ""
+":abbr:`OSPF (Open Shortest Path First)` is a routing protocol for Internet "
+"Protocol (IP) networks. It uses a link state routing (LSR) algorithm and "
+"falls into the group of interior gateway protocols (IGPs), operating within "
+"a single autonomous system (AS). It is defined as OSPF Version 2 in "
+":rfc:`2328` (1998) for IPv4. Updates for IPv6 are specified as OSPF Version "
+"3 in :rfc:`5340` (2008). OSPF supports the :abbr:`CIDR (Classless Inter-"
+"Domain Routing)` addressing model."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:15 e5a8a36ba4f34e49b89e240cfec15ea9
+msgid "OSPF is a widely used IGP in large enterprise networks."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:19 2a3290f75c6a4f13915cda6261719d97
+msgid "OSPFv2 (IPv4)"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:22
+#: ../../configuration/protocols/ospf.rst:784 9b9e9cc283334d198f4734b1d1601bc6
+#: 7c2fb58e39aa43f0a5744f8238c10831
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:25
+#: ../../configuration/protocols/ospf.rst:789 1de454bde74d40eea02f6de610bca85b
+#: e8edc51c75a84edf85ee48c9fcd26bfd
+msgid "General"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:27 0de20cb46f3d4c3cb145922486369fe6
+msgid ""
+"VyOS does not have a special command to start the OSPF process. The OSPF "
+"process starts when the first ospf enabled interface is configured."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:32 b2b8e657fc8c4ef4abf96b63ada8d860
+msgid ""
+"This command specifies the OSPF enabled interface(s). If the interface has "
+"an address from defined range then the command enables OSPF on this "
+"interface so router can provide network information to the other ospf "
+"routers via this interface."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:37 10eeebe0b2a546229a358daed76aded9
+msgid ""
+"This command is also used to enable the OSPF process. The area number can be"
+" specified in decimal notation in the range from 0 to 4294967295. Or it can "
+"be specified in dotted decimal notation similar to ip address."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:41 38313e472cd14c11a60466a216e675d2
+msgid ""
+"Prefix length in interface must be equal or bigger (i.e. smaller network) "
+"than prefix length in network statement. For example statement above doesn't"
+" enable ospf on interface with address 192.168.1.1/23, but it does on "
+"interface with address 192.168.1.129/25."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:46 0b8d56d4ccec4bb5aa58f581b6d9b50e
+msgid ""
+"In some cases it may be more convenient to enable OSPF on a per "
+"interface/subnet basis :cfgcmd:`set protocols ospf interface <interface> "
+"area <x.x.x.x | x>`"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:52 453b886df9ec4fd5ae755bdcac3b54f3
+msgid ""
+"This command sets the reference bandwidth for cost calculations, where "
+"bandwidth can be in range from 1 to 4294967, specified in Mbits/s. The "
+"default is 100Mbit/s (i.e. a link of bandwidth 100Mbit/s or higher will have"
+" a cost of 1. Cost of lower bandwidth links will be scaled with reference to"
+" this cost)."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:60 5a6560bf4ae241c490b84b64ad95f1d4
+msgid ""
+"This command sets the router-ID of the OSPF process. The router-ID may be an"
+" IP address of the router, but need not be – it can be any arbitrary 32bit "
+"number. However it MUST be unique within the entire OSPF domain to the OSPF "
+"speaker – bad things will happen if multiple OSPF speakers are configured "
+"with the same router-ID!"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:68
+#: ../../configuration/protocols/ospf.rst:813 33a62e78b3c4426fa0e5b9e74de78f88
+#: e0f7af48e29b491895b103c8d941bdf0
+msgid "Optional"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:73 e80d9334003942e6b91b945dda476851
+msgid ""
+"Originate an AS-External (type-5) LSA describing a default route into all "
+"external-routing capable areas, of the specified metric and metric type. If "
+"the :cfgcmd:`always` keyword is given then the default is always advertised,"
+" even when there is no default present in the routing table. The argument "
+":cfgcmd:`route-map` specifies to advertise the default route if the route "
+"map is satisfied."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:82 6ed61a06807b4d828f6835bc0f35eec3
+msgid ""
+"This command change distance value of OSPF globally. The distance range is 1"
+" to 255."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:88 8d80beb2a9c94ce69e8efef98673148b
+msgid ""
+"This command change distance value of OSPF. The arguments are the distance "
+"values for external routes, inter-area routes and intra-area routes "
+"respectively. The distance range is 1 to 255."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:92 926c049a726b4151880a3ee7a335ae7b
+msgid ""
+"Routes with a distance of 255 are effectively disabled and not installed "
+"into the kernel."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:97 2f6aed6842b249f9a4afd897d885930f
+msgid ""
+"This command allows to log changes in adjacency. With the optional "
+":cfgcmd:`detail` argument, all changes in adjacency status are shown. "
+"Without :cfgcmd:`detail`, only changes to full or regressions are shown."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:104 a53e57f559774eb0844264877be5a12f
+msgid ""
+"This enables :rfc:`3137` support, where the OSPF process describes its "
+"transit links in its router-LSA as having infinite distance so that other "
+"routers will avoid calculating transit paths through the router while still "
+"being able to reach networks through the router."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:109 b3e8ab36152d4b9d8df89e740c60589c
+msgid ""
+"This support may be enabled administratively (and indefinitely) with the "
+":cfgcmd:`administrative` command. It may also be enabled conditionally. "
+"Conditional enabling of max-metric router-lsas can be for a period of "
+"seconds after startup with the :cfgcmd:`on-startup <seconds>` command and/or"
+" for a period of seconds prior to shutdown with the :cfgcmd:`on-shutdown "
+"<seconds>` command. The time range is 5 to 86400."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:119 741dd4ab7f2b48cd80b8e16d88bc5609
+msgid "This command selects ABR model. OSPF router supports four ABR models:"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:121 b8d54022629a4da582d20679edbc90b4
+msgid ""
+"**cisco** – a router will be considered as ABR if it has several configured "
+"links to the networks in different areas one of which is a backbone area. "
+"Moreover, the link to the backbone area should be active (working). **ibm** "
+"– identical to \"cisco\" model but in this case a backbone area link may not"
+" be active. **standard** – router has several active links to different "
+"areas. **shortcut** – identical to \"standard\" but in this model a router "
+"is allowed to use a connected areas topology without involving a backbone "
+"area for inter-area connections."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:131 5a7d9e90d899439f9712802152f21f54
+msgid ""
+"Detailed information about \"cisco\" and \"ibm\" models differences can be "
+"found in :rfc:`3509`. A \"shortcut\" model allows ABR to create routes "
+"between areas based on the topology of the areas connected to this router "
+"but not using a backbone area in case if non-backbone route will be cheaper."
+" For more information about \"shortcut\" model, see :t:`ospf-shortcut-"
+"abr-02.txt`"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:140 bd7972910e124507ba7b6cefc78781af
+msgid ""
+":rfc:`2328`, the successor to :rfc:`1583`, suggests according to section G.2"
+" (changes) in section 16.4.1 a change to the path preference algorithm that "
+"prevents possible routing loops that were possible in the old version of "
+"OSPFv2. More specifically it demands that inter-area paths and intra-area "
+"backbone path are now of equal preference but still both preferred to "
+"external paths."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:147 95b0240454004ab4baf5c13d8f5ab8ad
+msgid "This command should NOT be set normally."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:151
+#: ../../configuration/protocols/ospf.rst:895 44ecb673aeef4dc4a73a2a2a4e4dea85
+#: 518fd8170b8240a9b26331afeab20046
+msgid ""
+"This command specifies interface as passive. Passive interface advertises "
+"its address, but does not run the OSPF protocol (adjacencies are not formed "
+"and hello packets are not generated)."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:155 960c7023fcac447fb3b2f7423392d252
+msgid ""
+"The optional `disable` option allows to exclude interface from passive "
+"state. This command is used if the command :cfgcmd:`passive-interface "
+"default` was configured."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:161 0fc3781eb7714085ab677f82ba0dbdf7
+msgid ""
+"This command specifies all interfaces as passive by default. Because this "
+"command changes the configuration logic to a default passive; therefore, "
+"interfaces where router adjacencies are expected need to be configured with "
+"the :cfgcmd:`passive-interface-exclude` command."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:168 81f2da9c99ce48da8eb7db4675edf20b
+msgid ""
+"Use this command to control the maximum number of equal cost paths to reach "
+"a specific destination. The upper limit may differ if you change the value "
+"of MULTIPATH_NUM during compilation. The default is MULTIPATH_NUM (64)."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:174 a6d13f781e4546f5812bf52ce8d14a07
+msgid ""
+"The router automatically updates link-state information with its neighbors. "
+"Only an obsolete information is updated which age has exceeded a specific "
+"threshold. This parameter changes a threshold value, which by default is "
+"1800 seconds (half an hour). The value is applied to the whole OSPF router. "
+"The timer range is 10 to 1800."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:183 794c8efd6a4a412da7c2943f6c6531eb
+msgid ""
+"This command sets the initial delay, the initial-holdtime and the maximum-"
+"holdtime between when SPF is calculated and the event which triggered the "
+"calculation. The times are specified in milliseconds and must be in the "
+"range of 0 to 600000 milliseconds. :cfgcmd:`delay` sets the initial SPF "
+"schedule delay in milliseconds. The default value is 200 ms. "
+":cfgcmd:`initial-holdtime` sets the minimum hold time between two "
+"consecutive SPF calculations. The default value is 1000 ms. :cfgcmd:`max-"
+"holdtime` sets the maximum wait time between two consecutive SPF "
+"calculations. The default value is 10000 ms."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:195
+#: ../../configuration/protocols/ospf.rst:830 e4a3a6ee09e84df78e3c537cebd1a472
+#: 859f5f1c72f74edda64a0a87c496063f
+msgid "Area Configuration"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:199 2a73fc25e04e423f98f6e33deff238f3
+msgid ""
+"This command specifies the area to be a Stub Area. That is, an area where no"
+" router originates routes external to OSPF and hence an area where all "
+"external routes are via the ABR(s). Hence, ABRs for such an area do not need"
+" to pass AS-External LSAs (type-5) or ASBR-Summary LSAs (type-4) into the "
+"area. They need only pass Network-Summary (type-3) LSAs into such an area, "
+"along with a default-route summary."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:208 5528b6622dff42bf8489ff955359057b
+msgid ""
+"This command specifies the area to be a Totally Stub Area. In addition to "
+"stub area limitations this area type prevents an ABR from injecting Network-"
+"Summary (type-3) LSAs into the specified stub area. Only default summary "
+"route is allowed."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:216 dc30de78fd9045bba5d2775dafec0989
+msgid ""
+"This command sets the cost of default-summary LSAs announced to stubby "
+"areas. The cost range is 0 to 16777215."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:221 be246b56211845a19e17da26a7451f9c
+msgid ""
+"This command specifies the area to be a Not So Stubby Area. External routing"
+" information is imported into an NSSA in Type-7 LSAs. Type-7 LSAs are "
+"similar to Type-5 AS-external LSAs, except that they can only be flooded "
+"into the NSSA. In order to further propagate the NSSA external information, "
+"the Type-7 LSA must be translated to a Type-5 AS-external-LSA by the NSSA "
+"ABR."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:230 e124b837078c4d49acbd1941ee7bd875
+msgid ""
+"This command specifies the area to be a NSSA Totally Stub Area. ABRs for "
+"such an area do not need to pass Network-Summary (type-3) LSAs (except the "
+"default summary route), ASBR-Summary LSAs (type-4) and AS-External LSAs "
+"(type-5) into the area. But Type-7 LSAs that convert to Type-5 at the NSSA "
+"ABR are allowed."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:239 6e57515bcfa84057b4bdd15490a60a76
+msgid ""
+"This command sets the default cost of LSAs announced to NSSA areas. The cost"
+" range is 0 to 16777215."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:245 55f19b3d1d9c49b3aa9a500b4b2d3790
+msgid ""
+"Specifies whether this NSSA border router will unconditionally translate "
+"Type-7 LSAs into Type-5 LSAs. When role is Always, Type-7 LSAs are "
+"translated into Type-5 LSAs regardless of the translator state of other NSSA"
+" border routers. When role is Candidate, this router participates in the "
+"translator election to determine if it will perform the translations duties."
+" When role is Never, this router will never translate Type-7 LSAs into "
+"Type-5 LSAs."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:255 ba4c8ab2af5d4a6b9353c1c619663ef8
+msgid ""
+"This command specifies that simple password authentication should be used "
+"for the given area. The password must also be configured on a per-interface "
+"basis."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:261 0ee207fa134149baa945aaabeb1c9404
+msgid ""
+"This command specify that OSPF packets must be authenticated with MD5 HMACs "
+"within the given area. Keying material must also be configured on a per-"
+"interface basis."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:267 a29e63b95a4e4bd39e5db5a03ba871d1
+msgid ""
+"This command summarizes intra area paths from specified area into one "
+"summary-LSA (Type-3) announced to other areas. This command can be used only"
+" in ABR and ONLY router-LSAs (Type-1) and network-LSAs (Type-2) (i.e. LSAs "
+"with scope area) can be summarized. AS-external-LSAs (Type-5) can’t be "
+"summarized - their scope is AS. The optional argument :cfgcmd:`cost` "
+"specifies the aggregated link metric. The metric range is 0 to 16777215."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:277
+#: ../../configuration/protocols/ospf.rst:840 6bafba4ec8ef48298bbebf74719ab1db
+#: ba22b65b4635427381dd2c138e7ceca2
+msgid ""
+"This command instead of summarizing intra area paths filter them - i.e. "
+"intra area paths from this range are not advertised into other areas. This "
+"command makes sense in ABR only."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:283 96ee74fa7fa441bdb48b2731944845d4
+msgid ""
+"Filter Type-3 summary-LSAs announced to other areas originated from intra- "
+"area paths from specified area. This command makes sense in ABR only."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:289 0666d353b27e472eabc844cedf9aa3dc
+msgid ""
+"Same as export-list, but it applies to paths announced into specified area "
+"as Type-3 summary-LSAs. This command makes sense in ABR only."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:296 542a3c11f01441af98607a8d4e68d0ef
+msgid ""
+"One Type-3 summary-LSA with routing info <E.F.G.H/M> is announced into "
+"backbone area if defined area contains at least one intra-area network (i.e."
+" described with router-LSA or network-LSA) from range <A.B.C.D/M>. This "
+"command makes sense in ABR only."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:303 f3b5a7b1baaf4fd5acf86d85330f9d29
+msgid ""
+"This parameter allows to \"shortcut\" routes (non-backbone) for inter-area "
+"routes. There are three modes available for routes shortcutting:"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:306 d00248dbf3f7495f9bb6cc2231d7a649
+msgid ""
+"**default** –  this area will be used for shortcutting only if ABR does not "
+"have a link to the backbone area or this link was lost. **enable** – the "
+"area will be used for shortcutting every time the route that goes through it"
+" is cheaper. **disable** – this area is never used by ABR for routes "
+"shortcutting."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:314 e9ee79855d4d44cf89cfa834ebe8a79d
+msgid "Provides a backbone area coherence by virtual link establishment."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:316 1aa391335ca8421db7ac2c15fcf8b129
+msgid ""
+"In general, OSPF protocol requires a backbone area (area 0) to be coherent "
+"and fully connected. I.e. any backbone area router must have a route to any "
+"other backbone area router. Moreover, every ABR must have a link to backbone"
+" area. However, it is not always possible to have a physical link to a "
+"backbone area. In this case between two ABR (one of them has a link to the "
+"backbone area) in the area (not stub area) a virtual link is organized."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:323 9a1276600de94a769032c8ca706829ef
+msgid ""
+"<number> – area identifier through which a virtual link goes. <A.B.C.D> – "
+"ABR router-id with which a virtual link is established. Virtual link must be"
+" configured on both routers."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:327 bb9edaa3d59643bca24f800e2b9feb21
+msgid ""
+"Formally, a virtual link looks like a point-to-point network connecting two "
+"ABR from one area one of which physically connected to a backbone area. This"
+" pseudo-network is considered to belong to a backbone area."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:333
+#: ../../configuration/protocols/ospf.rst:847 a726f9fa108f4b8d8d52fd1161bfb5fe
+#: 4f9a3f440cb7458bb5293e70c1058d7c
+msgid "Interface Configuration"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:337 a7e322fabc1e450bb43ad6fe55fe79f5
+msgid "Enable ospf on an interface and set associated area."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:339 8492b58a427a4127b4b64f249b80f1c3
+msgid ""
+"If you have a lot of interfaces, and/or a lot of subnets, then enabling OSPF"
+" via this command may result in a slight performance improvement."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:345 f791acb2614549bea724b77ee4f5756e
+msgid ""
+"This command sets OSPF authentication key to a simple password. After "
+"setting, all OSPF packets are authenticated. Key has length up to 8 chars."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:348 f79d9a7b679245ffb25f5dce05665a3f
+msgid ""
+"Simple text password authentication is insecure and deprecated in favour of "
+"MD5 HMAC authentication."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:354 49ac8ee2b26c486f8b85bea0ce6477a0
+msgid ""
+"This command specifys that MD5 HMAC authentication must be used on this "
+"interface. It sets OSPF authentication key to a cryptographic password. Key-"
+"id identifies secret key used to create the message digest. This ID is part "
+"of the protocol and must be consistent across routers on a link. The key can"
+" be long up to 16 chars (larger strings will be truncated), and is "
+"associated with the given key-id."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:363 81827eb422ce4a74919776b7e7c9c238
+msgid ""
+"This command sets the interface bandwidth for cost calculations, where "
+"bandwidth can be in range from 1 to 100000, specified in Mbits/s."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:368
+#: ../../configuration/protocols/ospf.rst:851 1eb5df790b8b411cad7d031ce16ac429
+#: 0d06f8ac47de4ad090347841638ab23c
+msgid ""
+"This command sets link cost for the specified interface. The cost value is "
+"set to router-LSA’s metric field and used for SPF calculation. The cost "
+"range is 1 to 65535."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:374
+#: ../../configuration/protocols/ospf.rst:857 5271b5e5f52345cb863ea00e1b1cc148
+#: 1831257a6c2f491abb75677d0b55fdca
+msgid ""
+"Set number of seconds for router Dead Interval timer value used for Wait "
+"Timer and Inactivity Timer. This value must be the same for all routers "
+"attached to a common network. The default value is 40 seconds. The interval "
+"range is 1 to 65535."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:381 98e1d855c68f48ccad1d3b16995599ca
+msgid ""
+"The hello-multiplier specifies how many Hellos to send per second, from 1 "
+"(every second) to 10 (every 100ms). Thus one can have 1s convergence time "
+"for OSPF. If this form is specified, then the hello-interval advertised in "
+"Hello packets is set to 0 and the hello-interval on received Hello packets "
+"is not checked, thus the hello-multiplier need NOT be the same across "
+"multiple routers on a common link."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:390
+#: ../../configuration/protocols/ospf.rst:865 4938ebbf6fce435c9af610cb1e419986
+#: 4f07a66d0bee43f7afeda7ae6edc9554
+msgid ""
+"Set number of seconds for Hello Interval timer value. Setting this value, "
+"Hello packet will be sent every timer value seconds on the specified "
+"interface. This value must be the same for all routers attached to a common "
+"network. The default value is 10 seconds. The interval range is 1 to 65535."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:398 abc1c6297d934f1bb434f1646c511db3
+msgid ""
+"This command enables :abbr:`BFD (Bidirectional Forwarding Detection)` on "
+"this OSPF link interface."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:403
+#: ../../configuration/protocols/ospf.rst:873 8127a95f861f4363a7cffada1e500aa3
+#: 07728f0c4b5b4f85b691fe2f86034bfa
+msgid ""
+"This command disables check of the MTU value in the OSPF DBD packets. Thus, "
+"use of this command allows the OSPF adjacency to reach the FULL state even "
+"though there is an interface MTU mismatch between two OSPF routers."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:409
+#: ../../configuration/protocols/ospf.rst:880 290b08ed0f034a6086c7640cea77308e
+#: 137fa4a39e104a058eccddcfe65c4644
+msgid ""
+"This command allows to specify the distribution type for the network "
+"connected to this interface:"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:412 14401f0ad44c4031b665f3f3d263564f
+msgid ""
+"**broadcast** – broadcast IP addresses distribution. **non-broadcast** – "
+"address distribution in NBMA networks topology. **point-to-multipoint** – "
+"address distribution in point-to-multipoint networks. **point-to-point** – "
+"address distribution in point-to-point networks."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:420
+#: ../../configuration/protocols/ospf.rst:888 69ab8c0628a44729bd657fd3d49df480
+#: abb6df45d8c445b78f7c726eedf10191
+msgid ""
+"This command sets Router Priority integer value. The router with the highest"
+" priority will be more eligible to become Designated Router. Setting the "
+"value to 0, makes the router ineligible to become Designated Router. The "
+"default value is 1. The interval range is 0 to 255."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:428
+#: ../../configuration/protocols/ospf.rst:902 597e90c33e5e429ba1dbc89f50437c2d
+#: d85932af73844481a7771e1fa6de9857
+msgid ""
+"This command sets number of seconds for RxmtInterval timer value. This value"
+" is used when retransmitting Database Description and Link State Request "
+"packets if acknowledge was not received. The default value is 5 seconds. The"
+" interval range is 3 to 65535."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:435
+#: ../../configuration/protocols/ospf.rst:910 8f4f220a1ccd4b82b4b8fbb327dbcd24
+#: da2975ef22ec49118511b1e29f07b72a
+msgid ""
+"This command sets number of seconds for InfTransDelay value. It allows to "
+"set and adjust for each interface the delay interval before starting the "
+"synchronizing process of the router's database with all neighbors. The "
+"default value is 1 seconds. The interval range is 3 to 65535."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:442 c67cfc76f5a74a9e862121967f413254
+msgid "Manual Neighbor Configuration"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:444 0577dc47024f491f9b608af640251918
+msgid ""
+"OSPF routing devices normally discover their neighbors dynamically by "
+"listening to the broadcast or multicast hello packets on the network. "
+"Because an NBMA network does not support broadcast (or multicast), the "
+"device cannot discover its neighbors dynamically, so you must configure all "
+"the neighbors statically."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:452 5da2bda408274b6dbb0871ddbc4290cf
+msgid "This command specifies the IP address of the neighboring device."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:456 614a663f1ae544d8bec1bf832029d75f
+msgid ""
+"This command specifies the length of time, in seconds, before the routing "
+"device sends hello packets out of the interface before it establishes "
+"adjacency with a neighbor. The range is 1 to 65535 seconds. The default "
+"value is 60 seconds."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:463 fab22e795bc14f679941ee55921c4866
+msgid ""
+"This command specifies the router priority value of the nonbroadcast "
+"neighbor associated with the IP address specified. The default is 0. This "
+"keyword does not apply to point-to-multipoint interfaces."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:469
+#: ../../configuration/protocols/ospf.rst:918 bf291f71a29949439ef7ab2c384383bf
+#: ddef832b89e24d76a0c584f8a05a5d56
+msgid "Redistribution Configuration"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:473 fd557cfd1b0347c7b8d89dbf66535d8a
+msgid ""
+"This command redistributes routing information from the given route source "
+"to the OSPF process. There are five modes available for route source: bgp, "
+"connected, kernel, rip, static."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:479 f92d857774b14836aa6b2368fca14df8
+msgid ""
+"This command specifies the default metric value of redistributed routes. The"
+" metric range is 0 to 16777214."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:484 5da5b07313054f38b053554209fed43f
+msgid ""
+"This command specifies metric for redistributed routes from the given route "
+"source. There are five modes available for route source: bgp, connected, "
+"kernel, rip, static. The metric range is 1 to 16777214."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:490 1b43a6f618f642d3b554246712bdb0a6
+msgid ""
+"This command specifies metric type for redistributed routes. Difference "
+"between two metric types that metric type 1 is a metric which is "
+"\"commensurable\" with inner OSPF links. When calculating a metric to the "
+"external destination, the full path metric is calculated as a metric sum "
+"path of a router which had advertised this link plus the link metric. Thus, "
+"a route with the least summary metric will be selected. If external link is "
+"advertised with metric type 2 the path is selected which lies through the "
+"router which advertised this link with the least metric despite of the fact "
+"that internal path to this router is longer (with more cost). However, if "
+"two routers advertised an external link and with metric type 2 the "
+"preference is given to the path which lies through the router with a shorter"
+" internal path. If two different routers advertised two links to the same "
+"external destimation but with different metric type, metric type 1 is "
+"preferred. If type of a metric left undefined the router will consider these"
+" external links to have a default metric type 2."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:508 c9e4402b19ce4d3399f2b0e49243d90b
+msgid ""
+"This command allows to use route map to filter redistributed routes from the"
+" given route source. There are five modes available for route source: bgp, "
+"connected, kernel, rip, static."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:514
+#: ../../configuration/protocols/ospf.rst:935 e7b88b6e44724740abc1921f397397a9
+#: d9e5c2dda98f4a12b1f41fae0f67f8dd
+msgid "Operational Mode Commands"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:518
+#: ../../configuration/protocols/ospf.rst:939 42f9057acde047d79212aae12b522d87
+#: ffb613dbfdfb449dae733f692e54fd5d
+msgid "This command displays the neighbors status."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:528
+#: ../../configuration/protocols/ospf.rst:943 941e24d2170c45b0996bb417d3642781
+#: 8f5e59fc82bc4e1a8c51b98e2e45c88f
+msgid ""
+"This command displays the neighbors information in a detailed form, not just"
+" a summary table."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:567 4e9ba9116c604c9bb293440930819345
+msgid ""
+"This command displays the neighbors information in a detailed form for a "
+"neighbor whose IP address is specified."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:572 81335795f2e344b6bf503429098cbf6b
+msgid ""
+"This command displays the neighbors status for a neighbor on the specified "
+"interface."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:577 061d2b04bc8a41a5a89323d4ceb6f71b
+msgid ""
+"This command displays state and configuration of OSPF the specified "
+"interface, or all interfaces if no interface is given."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:608
+#: ../../configuration/protocols/ospf.rst:958 a06d4b330b4e4f34925941a7ba7685a5
+#: 8501269415eb493c97e4e10032eae5e5
+msgid ""
+"This command displays the OSPF routing table, as determined by the most "
+"recent SPF calculation."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:633 b45055e53f114b96a3905e2a11b5edfa
+msgid "The table consists of following data:"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:635 b429c057a65a49ed822f43c91c2f2c18
+msgid ""
+"**OSPF network routing table** – includes a list of acquired routes for all "
+"accessible networks (or aggregated area ranges) of OSPF system. \"IA\" flag "
+"means that route destination is in the area to which the router is not "
+"connected, i.e. it’s an inter-area path. In square brackets a summary metric"
+" for all links through which a path lies to this network is specified. "
+"\"via\" prefix defines a router-gateway, i.e. the first router on the way to"
+" the destination (next hop). **OSPF router routing table** – includes a list"
+" of acquired routes to all accessible ABRs and ASBRs. **OSPF external "
+"routing table** – includes a list of acquired routes that are external to "
+"the OSPF process. \"E\" flag points to the external link metric type (E1 – "
+"metric type 1, E2 – metric type 2). External link metric is printed in the "
+"\"<metric of the router which advertised the link>/<link metric>\" format."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:651
+#: ../../configuration/protocols/ospf.rst:963 a9e91565bcf14a648b55aee8e75f9b6c
+#: a09419bb77c34a4e9dbeebbf8cb45316
+msgid ""
+"This command displays a table of paths to area boundary and autonomous "
+"system boundary routers."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:656
+#: ../../configuration/protocols/ospf.rst:968 503dbe7a048e4550ab93551fa07a79d5
+#: 592df99c8b8c4e20ae4502c00160b09a
+msgid "This command displays a summary table with a database contents (LSA)."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:689
+#: ../../configuration/protocols/ospf.rst:973 de52a2f0d2c54f7a967eec57b3633978
+#: 1a3e6f9274b147e695b659b648a034f7
+msgid ""
+"This command displays a database contents for a specific link advertisement "
+"type."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:692 16e7d6d0bb814021bac9328baa528553
+msgid ""
+"The type can be the following: asbr-summary, external, network, nssa-"
+"external, opaque-area, opaque-as, opaque-link, router, summary."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:696 f979d8fed0db48a980a58e95a20766c5
+msgid ""
+"[A.B.C.D] – link-state-id. With this specified the command displays portion "
+"of the network environment that is being described by the advertisement. The"
+" value entered depends on the advertisement’s LS type. It must be entered in"
+" the form of an IP address."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:701 aa3aac4f91ff49d9b738c29ce3f1bb5d
+msgid ""
+":cfgcmd:`adv-router <A.B.C.D>` – router id, which link advertisements need "
+"to be reviewed."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:704 4604b0c467d74d4e8e25358a1d2e6f44
+msgid ""
+":cfgcmd:`self-originate` displays only self-originated LSAs from the local "
+"router."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:734 2761e59df2974824bdcf42ef0e90abaa
+msgid "This command displays LSAs in MaxAge list."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:738
+#: ../../configuration/protocols/ospf.rst:983 f3bd5bfe30e04359a51f8c703120fb6f
+#: 962c304de3e24d4fba3c75e917364b30
+msgid "Configuration Example"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:740 1d10496abb9044c280388864817bc3a2
+msgid ""
+"Below you can see a typical configuration using 2 nodes, redistribute "
+"loopback address and the node 1 sending the default route:"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:743
+#: ../../configuration/protocols/ospf.rst:1017
+#: f1ecaf7d6f0b4166a628c12401508db4 43e607f4e0b243f0a2b93ace3558dcf1
+msgid "**Node 1**"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:760
+#: ../../configuration/protocols/ospf.rst:1032
+#: 4467de1e6af640b28f4e72d0d14ae1ec 53fde67f06874c5fb01c630a43baa1a4
+msgid "**Node 2**"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:779 9d89f72103424330b534385fc35eade5
+msgid "OSPFv3 (IPv6)"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:791 5f9a19053c6b465fad3165d8ba2b1fde
+msgid ""
+"VyOS does not have a special command to start the OSPFv3 process. The OSPFv3"
+" process starts when the first ospf enabled interface is configured."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:796 c34a749fd1e6469f90ff13e568aa18de
+msgid ""
+"This command specifies the OSPFv3 enabled interface. This command is also "
+"used to enable the OSPF process. The area number can be specified in decimal"
+" notation in the range from 0 to 4294967295. Or it can be specified in "
+"dotted decimal notation similar to ip address."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:803 9b7ac4b5690644c0b0f733783aa3da09
+msgid ""
+"This command sets the router-ID of the OSPFv3 process. The router-ID may be "
+"an IP address of the router, but need not be – it can be any arbitrary 32bit"
+" number. However it MUST be unique within the entire OSPFv3 domain to the "
+"OSPFv3 speaker – bad things will happen if multiple OSPFv3 speakers are "
+"configured with the same router-ID!"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:817 07551c5f39414186a63c37e1eaccd508
+msgid ""
+"This command change distance value of OSPFv3 globally. The distance range is"
+" 1 to 255."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:823 7d5d4c8bbdda484ba796621a5f122e7f
+msgid ""
+"This command change distance value of OSPFv3. The arguments are the distance"
+" values for external routes, inter-area routes and intra-area routes "
+"respectively. The distance range is 1 to 255."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:834 8960447dc53f43b5b101424569061057
+msgid ""
+"This command summarizes intra area paths from specified area into one Type-3"
+" Inter-Area Prefix LSA announced to other areas. This command can be used "
+"only in ABR."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:883 9258d14858ba46bebc7287146143e7a3
+msgid ""
+"**broadcast** – broadcast IP addresses distribution. **point-to-point** – "
+"address distribution in point-to-point networks."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:922 4e72c75a20cf46c5a59831085e3b401b
+msgid ""
+"This command redistributes routing information from the given route source "
+"to the OSPFv3 process. There are five modes available for route source: bgp,"
+" connected, kernel, ripng, static."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:928 f3ac8120abbf45249dd5afcf16e9402e
+msgid ""
+"This command allows to use route map to filter redistributed routes from "
+"given route source. There are five modes available for route source: bgp, "
+"connected, kernel, ripng, static."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:948 6eed6dad78474f369976b9b8e7f4fe46
+msgid "This command displays the neighbor DR choice information."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:952 a4674b2df8c04722b64399c42b7a1a04
+msgid ""
+"This command displays state and configuration of OSPF the specified "
+"interface, or all interfaces if no interface is given. Whith the argument "
+":cfgcmd:`prefix` this command shows connected prefixes to advertise."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:978 f8433124b8e448b9afba90cbce9970cc
+msgid "This command displays external information redistributed into OSPFv3"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:985 31c3373f27a4458d93b048e21abcceef
+msgid "A typical configuration using 2 nodes."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:987 8c3f79a41fef4adfa9745c2d268dfeab
+msgid "**Node 1:**"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:996 8546efdeddcf495daa8192a49465c09b
+msgid "**Node 2:**"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:1005
+#: 26ed2550753b41e2b67abbbe5dcf3e5a
+msgid "**To see the redistributed routes:**"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:1011
+#: 086762874a6b4f128ea2b526ceb26a64
+msgid ""
+"You cannot easily redistribute IPv6 routes via OSPFv3 on a WireGuard "
+"interface link. This requires you to configure link-local addresses manually"
+" on the WireGuard interfaces, see :vytask:`T1483`."
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:1015
+#: 4dc1e885308b4ad1b73894a7484b20de
+msgid "Example configuration for WireGuard interfaces:"
+msgstr ""
+
+#: ../../configuration/protocols/ospf.rst:1047
+#: 6286c008c90a4a67b8fe53bc75c4b54a
+msgid "**Status**"
+msgstr ""

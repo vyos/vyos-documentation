@@ -1,0 +1,329 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:02+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/system/flow-accounting.rst:5
+#: 7c507126ac294633bb2ecfe47674e6c4
+msgid "Flow Accounting"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:7
+#: 4faea2658801476db63363dfb3fe12a9
+msgid ""
+"VyOS supports flow-accounting for both IPv4 and IPv6 traffic. The system "
+"acts as a flow exporter, and you are free to use it with any compatible "
+"collector."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:10
+#: dd690f2e299a40f59ec3e3b390f63f59
+msgid ""
+"Flows can be exported via two different protocols: NetFlow (versions 5, 9 "
+"and 10/IPFIX) and sFlow. Additionally, you may save flows to an in-memory "
+"table internally in a router."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:14
+#: 28f932d5a9bf4962bcb4ab6e1ac4c4e4
+msgid ""
+"You need to disable the in-memory table in production environments! Using "
+":abbr:`IMT (In-Memory Table)` may lead to heavy CPU overloading and unstable"
+" flow-accounting behavior."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:20
+#: 6729abc977804d3aa8dadcad836e9495
+msgid "NetFlow / IPFIX"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:21
+#: b64630766e7048ec9a9f61ff64d47170
+msgid ""
+"NetFlow is a feature that was introduced on Cisco routers around 1996 that "
+"provides the ability to collect IP network traffic as it enters or exits an "
+"interface. By analyzing the data provided by NetFlow, a network "
+"administrator can determine things such as the source and destination of "
+"traffic, class of service, and the causes of congestion. A typical flow "
+"monitoring setup (using NetFlow) consists of three main components:"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:28
+#: 6c8d8f2c39e4449faff60e2069cbd003
+msgid ""
+"**exporter**: aggregates packets into flows and exports flow records towards"
+" one or more flow collectors"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:30
+#: 26cde8ce1615485cbe18aab92b3e315d
+msgid ""
+"**collector**: responsible for reception, storage and pre-processing of flow"
+" data received from a flow exporter"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:32
+#: c4c8324a2e434706b973f016e8605c01
+msgid ""
+"**application**: analyzes received flow data in the context of intrusion "
+"detection or traffic profiling, for example"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:35
+#: 152addad6f744dd7a0c18c8a502c74f3
+msgid ""
+"For connectionless protocols as like ICMP and UDP, a flow is considered "
+"complete once no more packets for this flow appear after configurable "
+"timeout."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:38
+#: 5d984f3b66a242fe9988752877fcc2e6
+msgid ""
+"NetFlow is usually enabled on a per-interface basis to limit load on the "
+"router components involved in NetFlow, or to limit the amount of NetFlow "
+"records exported."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:43
+#: 5f7cb984c5794af28e0c0d60a2845850
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:45
+#: 6b55b581bf824d50824f3462c6284f87
+msgid ""
+"In order for flow accounting information to be collected and displayed for "
+"an interface, the interface must be configured for flow accounting."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:50
+#: acac6e44f7144abf9ed93cd37060bd1f
+msgid ""
+"Configure and enable collection of flow information for the interface "
+"identified by `<interface>`."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:53
+#: 002e8284969f443fae523a8b6811ad66
+msgid ""
+"You can configure multiple interfaces which whould participate in flow "
+"accounting."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:56
+#: 168da2f6210149f095fbb964762c2f1c
+msgid ""
+"Will be recorded only packets/flows on **incoming** direction in configured "
+"interfaces by default."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:60
+#: 4696bc924bc14ef9bd1613cf76546f2a
+msgid ""
+"By default, recorded flows will be saved internally and can be listed with "
+"the CLI command. You may disable using the local in-memory table with the "
+"command:"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:65
+#: d7a3845c649048778f8fb2e4f28ff245
+msgid ""
+"If you need to sample also egress traffic, you may want to configure egress "
+"flow-accounting:"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:70
+#: 984d7349b3ba4eebaae443065ea27cb1
+msgid ""
+"Internally, in flow-accounting processes exist a buffer for data exchanging "
+"between core process and plugins (each export target is a separated plugin)."
+" If you have high traffic levels or noted some problems with missed records "
+"or stopping exporting, you may try to increase a default buffer size (10 "
+"MiB) with the next command:"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:78
+#: 9bff01bb85ad4c61b34cb6ff1ebe0e94
+msgid ""
+"In case, if you need to catch some logs from flow-accounting daemon, you may"
+" configure logging facility:"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:83
+#: 285242b2a836431ba1252c5c55a335c7
+msgid "TBD"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:86
+#: 99a439f8192a4c60b70326e4261dfc62
+msgid "Flow Export"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:88
+#: e5779d05d59b4c608a0bbb730084a32a
+msgid ""
+"In addition to displaying flow accounting information locally, one can also "
+"exported them to a collection server."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:92
+#: cae0d897dd5d40f4b600e56997b91176
+msgid "NetFlow"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:96
+#: 6e3b6b23f45f4f2eae285cb0167dec0d
+msgid ""
+"There are multiple versions available for the NetFlow data. The `<version>` "
+"used in the exported flow data can be configured here. The following "
+"versions are supported:"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:100
+#: 6248f70d055a4abc9805bf6ab005cc46
+msgid "**5** - Most common version, but restricted to IPv4 flows only"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:101
+#: 1d003b9e94cb45c18f09609bd87b1396
+msgid "**9** - NetFlow version 9 (default)"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:102
+#: 273c7b9390824620a80f65218203f773
+msgid "**10** - :abbr:`IPFIX (IP Flow Information Export)` as per :rfc:`3917`"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:106
+#: f30aaa3c140f42e1831113b06cf9b1c4
+msgid ""
+"Configure address of NetFlow collector. NetFlow server at `<address>` can be"
+" both listening on an IPv4 or IPv6 address."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:111
+#: 9222d33e53ed48fc942366baf2e95f3a
+msgid "IPv4 or IPv6 source address of NetFlow packets"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:115
+#: 67c813562f61459ba5de8ad0f7a2057f
+msgid ""
+"NetFlow engine-id which will appear in NetFlow data. The range is 0 to 255."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:119
+#: 5e571bf1e2b840b9bdb0f7782048be85
+msgid ""
+"Use this command to configure the  sampling rate for flow accounting. The "
+"system samples one in every `<rate>` packets, where `<rate>` is the value "
+"configured for the sampling-rate option. The advantage of sampling every n "
+"packets, where n > 1, allows you to decrease the amount of processing "
+"resources required for flow accounting. The disadvantage of not sampling "
+"every packet is that the statistics produced are estimates of actual data "
+"flows."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:127
+#: 9974de1c428c445bbbe002b4314fbd99
+msgid "Per default every packet is sampled (that is, the sampling rate is 1)."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:132
+#: a13fae2fc12d48f5885e9f9776f059ca
+msgid ""
+"Specifies the interval at which Netflow data will be sent to a collector. As"
+" per default, Netflow data will be sent every 60 seconds."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:135
+#: 73db344e4c5041b48d449a4160041493
+msgid ""
+"You may also additionally configure timeouts for different types of "
+"connections."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:140
+#: e493bc928a72478db2179fb8f3de1a64
+msgid ""
+"If you want to change the maximum number of flows, which are tracking "
+"simultaneously, you may do this with this command (default 8192)."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:144
+#: 5d89175c28014dc185b32d44825cba8e
+msgid "sFlow"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:148
+#: 401373b64122454c98a13e16f010c6ef
+msgid ""
+"Configure address of sFlow collector. sFlow server at `<address>` can be an "
+"IPv4 or IPv6 address. But you cannot export to both IPv4 and IPv6 collectors"
+" at the same time!"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:154
+#: 8b283ec707fa4b23b74d9bab3d40466b
+msgid ""
+"Enable sampling of packets, which will be transmitted to sFlow collectors."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:158
+#: 3319c16077694ab2b6cba33c011a9c46
+msgid ""
+"Configure a sFlow agent address. It can be IPv4 or IPv6 address, but you "
+"must set the same protocol, which is used for sFlow collector addresses. By "
+"default, using router-id from BGP or OSPF protocol, or the primary IP "
+"address from the first interface."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:164
+#: 88055d7f47dd44a396ab62d20a529bce
+msgid "Example:"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:166
+#: 39a17c854eca4ba6a653b0b0aab05835
+msgid "NetFlow v5 example:"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:175
+#: 04c95584e414459ba916b8ba2177e9a7
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:177
+#: 4ae86c4c5ccb45d2bcfc3a69d1d31363
+msgid ""
+"Once flow accounting is configured on an interfaces it provides the ability "
+"to display captured network traffic information for all configured "
+"interfaces."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:182
+#: f80509839b634eaa8a8a8e8308fbd9e9
+msgid "Show flow accounting information for given `<interface>`."
+msgstr ""
+
+#: ../../configuration/system/flow-accounting.rst:199
+#: f5b3517b22bf4952b67a1432dd60f2cd
+msgid ""
+"Show flow accounting information for given `<interface>` for a specific host"
+" only."
+msgstr ""

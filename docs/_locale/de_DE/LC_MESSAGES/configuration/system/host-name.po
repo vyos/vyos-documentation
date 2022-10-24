@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:02+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/system/host-name.rst:5 d0bc5c5d489d426b80735313bc60e83b
+msgid "Host Information"
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:7 ceedb0efa31b420886a06d2f1bb5c7b7
+msgid ""
+"This section describes the system's host information and how to configure "
+"them, it covers the following topics:"
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:10
+#: 29d0170b994448f688192ec7bc8612f4
+msgid "Host name"
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:11
+#: e9634b14823944158ad08385bfa2dee4
+msgid "Domain"
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:12
+#: 113e9630d8e0411e9475c415c9df9066
+msgid "IP address"
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:13
+#: 5f8ae80a2c2646f7a55e6b20a35c1361
+msgid "Aliases"
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:16
+#: bf01c992578d4413a6a6fa6efd83df8c
+msgid "Hostname"
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:18
+#: afcc4e87dedb47e195e6fac545734cff
+msgid ""
+"A hostname is the label (name) assigned to a network device (a host) on a "
+"network and is used to distinguish one device from another on specific "
+"networks or over the internet. On the other hand this will be the name which"
+" appears on the command line prompt."
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:25
+#: ab4085e22cd54710b6499bd7aad5deb8
+msgid ""
+"The hostname can be up to 63 characters. A hostname must start and end with "
+"a letter or digit, and have as interior characters only letters, digits, or "
+"a hyphen."
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:29
+#: a0c9f7bd963d4c4fbeba5728b4ae667b
+msgid "The default hostname used is `vyos`."
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:32
+#: 835f70ef00f046f28e557b14602a0b0e
+msgid "Domain Name"
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:34
+#: 5e763071abdc4615b268a1f4f35e90c6
+msgid ""
+"A domain name is the label (name) assigned to a computer network and is thus"
+" unique. VyOS appends the domain name as a suffix to any unqualified name. "
+"For example, if you set the domain name `example.com`, and you would ping "
+"the unqualified name of `crux`, then VyOS qualifies the name to "
+"`crux.example.com`."
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:41
+#: 08807b6ee7f8414cace69327abee7973
+msgid ""
+"Configure system domain name. A domain name must start and end with a letter"
+" or digit, and have as interior characters only letters, digits, or a "
+"hyphen."
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:45
+#: e9b3511ebcd546009c72ac69d8aa3d9c
+msgid "Static Hostname Mapping"
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:47
+#: 0773804cc61146c7aa54aac11f31f9f0
+msgid ""
+"How an IP address is assigned to an interface in :ref:`ethernet-interface`. "
+"This section shows how to statically map an IP address to a hostname for "
+"local (meaning on this VyOS instance) name resolution."
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:53
+#: 896ee5133a8a494a9690d8b07beb5c7b
+msgid ""
+"Create a static hostname mapping which will always resolve the name "
+"`<hostname>` to IP address `<address>`."
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:59
+#: 26593e0901974db1b9ca80f80901671b
+msgid ""
+"Create named `<alias>` for the configured static mapping for `<hostname>`. "
+"Thus the address configured as :cfgcmd:`set system static-host-mapping host-"
+"name <hostname> inet <address>` can be reached via multiple names."
+msgstr ""
+
+#: ../../configuration/system/host-name.rst:63
+#: f09d1c6617874ec1a12fa1573794d9c0
+msgid "Multiple aliases can pe specified per host-name."
+msgstr ""

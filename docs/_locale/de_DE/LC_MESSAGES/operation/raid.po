@@ -1,0 +1,292 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:02+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../operation/raid.rst:5 8abe2416e4c54a95898e5045af714fa2
+msgid "RAID-1"
+msgstr ""
+
+#: ../../operation/raid.rst:7 31b7f797acdd496881d3d456c00500e8
+msgid ""
+"A Redundant Array of Independent Disks (RAID) uses two or more hard disk "
+"drives to improve disk speed, store more data, and/or provide fault "
+"tolerance. There are several storage schemes possible in a RAID array, each "
+"offering a different combination of storage, reliability, and/or "
+"performance. The VyOS system supports a “RAID 1” deployment. RAID 1 allows "
+"two or more disks to mirror one another to provide system fault tolerance. "
+"In a RAID 1 solution, every sector of one disk is duplicated onto every "
+"sector of all disks in the array. Provided even one disk in the RAID 1 set "
+"is operational, the system continues to run, even through disk replacement "
+"(provided that the hardware supports in-service replacement of drives). RAID"
+" 1 can be implemented using special hardware or it can be implemented in "
+"software. The VyOS system supports software RAID 1 on two disks. The VyOS "
+"implementation of RAID 1 allows the following:"
+msgstr ""
+
+#: ../../operation/raid.rst:21 4788db78c4d340969d99270ae08cbb65
+msgid "Detection and reporting of disk failure"
+msgstr ""
+
+#: ../../operation/raid.rst:22 55b0150c476f4b3493cea47002404e35
+msgid "The ability to maintain system operation with one failed disk"
+msgstr ""
+
+#: ../../operation/raid.rst:23 d1086f6db7a64c05884982eda55bcf0b
+msgid "The ability to boot the system with one failed disk"
+msgstr ""
+
+#: ../../operation/raid.rst:24 024971a9abae449d940a39896da17180
+msgid "The ability to replace a failed disk and initiate re-mirroring"
+msgstr ""
+
+#: ../../operation/raid.rst:25 39410eacfb6d4bc38fe02c2b35358c1a
+msgid "The ability to monitor the status of remirroring"
+msgstr ""
+
+#: ../../operation/raid.rst:30 79d828193aa5404fa6e4ee563bd7dab0
+msgid "Installation Implications"
+msgstr ""
+
+#: ../../operation/raid.rst:32 ccb8bfa2250946b39c9ccf53dd52a058
+msgid ""
+"The VyOS systems installation utility provides several options for "
+"installing to a RAID 1 set. You can:"
+msgstr ""
+
+#: ../../operation/raid.rst:35 f384089c069b45489f7851be80562aea
+msgid "Use the install system to create the RAID 1 set"
+msgstr ""
+
+#: ../../operation/raid.rst:36 969d512106294e97a9d295a9348ee785
+msgid ""
+"Use the underlying Linux commands to create a RAID 1 set before running the "
+"install system command."
+msgstr ""
+
+#: ../../operation/raid.rst:38 3b4e260039c148efa4bc50595bec5255
+msgid "Use a previously-created RAID 1 set."
+msgstr ""
+
+#: ../../operation/raid.rst:40 12f4b1891ad645b4b01019dff98bbd9d
+msgid "Before a permanent installation, VyOS runs a live installation"
+msgstr ""
+
+#: ../../operation/raid.rst:43 f18e70b3e08645c6b7eb1131d6973804
+msgid "Configuration"
+msgstr ""
+
+#: ../../operation/raid.rst:46 fe0720c2fbaf4df9b1fd1eb22d694be9
+msgid "Single disk, install as normal"
+msgstr ""
+
+#: ../../operation/raid.rst:48 8346d05daa2c49feb841d76efd00aade
+msgid ""
+"When the VyOS system is installed, it automatically detects the presence of "
+"two disks not currently part of a RAID array. In these cases, the VyOS "
+"installation utility automatically offers you the option of configuring RAID"
+" 1 mirroring for the drives, with the following prompt."
+msgstr ""
+
+#: ../../operation/raid.rst:57 bd4d74601a174e0bb7d10a181a3b83bc
+msgid ""
+"If you do not want to configure RAID 1 mirroring, enter “No” at the prompt "
+"and continue with installation in the normal way."
+msgstr ""
+
+#: ../../operation/raid.rst:61 fd1ebff1312041d083124a13b363d486
+msgid "Empty 2+ Disk"
+msgstr ""
+
+#: ../../operation/raid.rst:63 1cd151d9e58d46b1962b41f8ca28e934
+msgid ""
+"If VyOS system detect two identical disks that are not currently part of a "
+"RAID-1 set, the VyOS installation utility automatically offers you the "
+"option of configuring RAID 1 mirroring for the drives, with the following "
+"prompt."
+msgstr ""
+
+#: ../../operation/raid.rst:71 5841471aeeb24aa98ac6b3268655a75e
+msgid ""
+"1 - To create a new RAID 1 array, enter “Yes” at the prompt. If the system "
+"detects a filesystem on the partitions being used for RAID 1 it will prompt "
+"you to indicate whether you want to continue creating the RAID 1 array."
+msgstr ""
+
+#: ../../operation/raid.rst:79 5d4869f90582472eb02342d1b12d0bb6
+msgid "2 - To overwrite the old filesystem, enter “Yes”."
+msgstr ""
+
+#: ../../operation/raid.rst:81 0b105e01f6704142b22bfb920bb621ce
+msgid ""
+"3 - The system informs you that all data on both drives will be erased. You "
+"are prompted to confirm that you want to continue"
+msgstr ""
+
+#: ../../operation/raid.rst:88 ../../operation/raid.rst:139
+#: cc138b5d85f5473788b29826f887e5e4 291b9edb4d2d4d42b72a269eedad1e11
+msgid ""
+"4 - Enter “Yes” at the prompt to retain the current VyOS configuration once "
+"installation is complete. Enter “No” to delete the current VyOS "
+"configuration."
+msgstr ""
+
+#: ../../operation/raid.rst:96 5c438e5d5dbe440da2f2b24a428dc4b0
+msgid ""
+"5 - Enter “Yes” at the prompt to retain the current VyOS configuration once "
+"installation is complete. Enter “No” to delete the current VyOS "
+"configuration."
+msgstr ""
+
+#: ../../operation/raid.rst:99 216dd9724d8d4d43a0ee8fe42a4c0cb1
+msgid "6 - Continue with installation in the normal way."
+msgstr ""
+
+#: ../../operation/raid.rst:103 cfc585da3a3243968028fa2a7a8907fd
+msgid "Present RAID-1"
+msgstr ""
+
+#: ../../operation/raid.rst:105 d0b6e258e359431b8e6871e8634b02ce
+msgid ""
+"When the VyOS software on a system with a RAID 1 set already configured, the"
+" installation utility will detect the array and will display the following "
+"prompt:"
+msgstr ""
+
+#: ../../operation/raid.rst:113 fea82c29a4c04d3aa8bf297b671e7353
+msgid ""
+"1 - To break apart the current RAID 1 set, enter “No” at the prompt. The"
+msgstr ""
+
+#: ../../operation/raid.rst:115 426f28a4f3e546f7b70e5252bc117d34
+msgid ""
+"installation utility detects that there are two identical disks and offers "
+"you the option of configuring RAID 1 mirroring on them, displaying the "
+"following prompt:"
+msgstr ""
+
+#: ../../operation/raid.rst:123 92b55f0ded11482f88f6dc7a1af08179
+msgid ""
+"2 - To decline to set up a new RAID 1 configuration on the disks, enter “No”"
+" at the prompt. The system prompts you to indicate which partition you would"
+" like the system installed on."
+msgstr ""
+
+#: ../../operation/raid.rst:131 b6fb87ffce4f4801ae7844400ed2cc39
+msgid ""
+"3 - Enter the partition where you would like the system installed. The "
+"system then prompts you to indicate whether you want to save the old "
+"configuration data. This represents the current VyOS configuration."
+msgstr ""
+
+#: ../../operation/raid.rst:142 03208977211a4719b09e2d83ef356ed4
+msgid "5 - Continue with installation in the normal way."
+msgstr ""
+
+#: ../../operation/raid.rst:146 7705c479049f483a904bc2b2f2e35a14
+msgid "Detecting and Replacing a Failed RAID 1 Disk"
+msgstr ""
+
+#: ../../operation/raid.rst:148 1eb8bb0fdd8d4f3a89be1ed9dc3e30eb
+msgid ""
+"The VyOS system automatically detects a disk failure within a RAID 1 set and"
+" reports it to the system console. You can verify the failure by issuing the"
+" show raid command."
+msgstr ""
+
+#: ../../operation/raid.rst:152 7c31217d95824b99a6fe2760cd766a5e
+msgid ""
+"To replace a bad disk within a RAID 1 set, perform the following steps:"
+msgstr ""
+
+#: ../../operation/raid.rst:154 ccee9802198440f78e0ac2f810ef8a84
+msgid ""
+"1 - Remove the failed disk from the RAID 1 set by issuing the following "
+"command:"
+msgstr ""
+
+#: ../../operation/raid.rst:159 ac2d2b70af5c41d298ab9776c4b517cb
+msgid ""
+"where RAID-1-device is the name of the RAID 1 device (for example, md0) and "
+"disk-partition is the name of the failed disk partition (for example, sdb2)."
+msgstr ""
+
+#: ../../operation/raid.rst:162 c128a8085ac44e28b71eab48feb7edac
+msgid ""
+"2- Physically remove the failed disk from the system. If the drives are not "
+"hot-swappable, then you must shut down the system before removing the disk."
+msgstr ""
+
+#: ../../operation/raid.rst:165 8ac3205c869a4ed28c4d94533fb8c640
+msgid "3 - Replace the failed drive with a drive of the same size or larger."
+msgstr ""
+
+#: ../../operation/raid.rst:167 06327ba6cc44456981056752d5627690
+msgid "4 - Format the new disk for RAID 1 by issuing the following command:"
+msgstr ""
+
+#: ../../operation/raid.rst:171 5134ffbe82824c03a5bfa17ac94f8bc4
+msgid ""
+"where disk-device1 is the replacement disk (for example, sdb) and disk-"
+"device2 is the existing healthy disk (for example, sda)."
+msgstr ""
+
+#: ../../operation/raid.rst:174 d6cb6f83dd214db5aff872af888a8ab5
+msgid ""
+"5-Add the replacement disk to the RAID 1 set by issuing the following "
+"command:"
+msgstr ""
+
+#: ../../operation/raid.rst:178 f13dc45bed31465ca275ce18cdc71c8a
+msgid ""
+"where RAID-1-device is the name of the RAID 1 device (for example, md0) and "
+"disk-partition is the name of the replacement disk partition (for example, "
+"sdb2)."
+msgstr ""
+
+#: ../../operation/raid.rst:183 fb1b5f7e98ed489dac1a04dddf8d7c2d
+msgid "Operation"
+msgstr ""
+
+#: ../../operation/raid.rst:185 22bfa805009f418a8c8124a357a580e5
+msgid ""
+"This part introduces how to add a disk partition to a RAID-1 set initiates "
+"mirror synchronization, check and display information."
+msgstr ""
+
+#: ../../operation/raid.rst:190 36c04e2a41274a86b233584f9bf195e4
+msgid ""
+"Use this command to add a member disk partition to the RAID 1 set. Adding a "
+"disk partition to a RAID 1 set initiates mirror synchronization, where all "
+"data on the existing member partition is copied to the new partition."
+msgstr ""
+
+#: ../../operation/raid.rst:196 717bf326991b4fb09de524f8166459d8
+msgid ""
+"This command is typically used to prepare a disk to be added to a "
+"preexisting RAID 1 set (of which disk-device2 is already a member)."
+msgstr ""
+
+#: ../../operation/raid.rst:201 cea60e704d024699b6834b9aab159ab5
+msgid ""
+"shows output for show raid md0 as sdb1 is being added to the RAID 1 set and "
+"is in the process of being resynchronized."
+msgstr ""
+
+#: ../../operation/raid.rst:232 5c2b9eff875444b0baea20af431e36f8
+msgid "Use this command to display the formatting of a hard disk."
+msgstr ""

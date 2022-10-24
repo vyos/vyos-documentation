@@ -1,0 +1,109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/system/acceleration.rst:5
+#: 821f098e97ac42178fce2d1d87697f85
+msgid "Acceleration"
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:7
+#: 1d213449b6694993944862f72fcbbde8
+msgid ""
+"In this command tree, all hardware acceleration options will be handled. At "
+"the moment only `Intel® QAT`_ is supported"
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:12
+#: ef7f658417ec41ba98e541510944379c
+msgid "Intel® QAT"
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:16
+#: e3d1480460b2482ca31ee123fd351265
+msgid ""
+"use this command to check if there is an Intel® QAT supported Processor in "
+"your system."
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:24
+#: 907f542a3245459aadda77377308fc53
+msgid "if there is non device the command will show ```No QAT device found```"
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:28
+#: b6cd70058eec49f4bdab1670c40799de
+msgid "if there is a supported device, enable Intel® QAT"
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:32
+#: ff39e7bf3bbc40968f1f16003607b506
+msgid "Check if the Intel® QAT device is up and ready to do the job."
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:42
+#: d3427a1e78f14ca6af21919f36b7fd9a
+msgid "Operation Mode"
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:46
+#: 7cfa3edf9615495c94f808bc158d47da
+msgid "Show the full config uploaded to the QAT device."
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:50
+#: eb359a2c7fc445fdac4edc54bd502aec
+msgid "Get an overview over the encryption counters."
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:54
+#: 8f890562fd734c4eabe7a823000a0c21
+msgid "Show binded qat device interrupts to certain core."
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:58
+#: 3811a9bf7bd34212a197873637e979e4
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:60
+#: 52abe2f1cd6c4398ad4a1eca77d9f7a9
+msgid "Let's build a simple VPN between 2 Intel® QAT ready devices."
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:62
+#: 11e0d6128fa74778a14f95fa737ceb99
+msgid "Side A:"
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:81
+#: ddeb4d4ef9254382b1808b25e99c5844
+msgid "Side B:"
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:100
+#: 7dfe2d8f3cd94c77a1a24ebbd487716e
+msgid "a bandwidth test over the VPN got these results:"
+msgstr ""
+
+#: ../../configuration/system/acceleration.rst:122
+#: 9afaedaa0e94477da1e54ea3f13b1e7b
+msgid ""
+"with :cfgcmd:`set system acceleration qat` on both systems the bandwidth "
+"increases."
+msgstr ""

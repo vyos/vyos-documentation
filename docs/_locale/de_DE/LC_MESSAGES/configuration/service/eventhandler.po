@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/service/eventhandler.rst:5
+#: d2144e6a1eb24783a4118338afff1d2f
+msgid "Event Handler"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:9
+#: 979573eacaab46ba83f06a4908a214e8
+msgid "Event Handler Technology Overview"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:11
+#: 6970ce32aad54a07935ce20ac3971d00
+msgid ""
+"Event handler allows you to execute scripts when a string that matches a "
+"regex or a regex with a service name appears in journald logs. You can pass "
+"variables, arguments, and a full matching string to the script."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:17
+#: 7f593868fab047028eb13b1a498cb2c9
+msgid "How to configure Event Handler"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:19
+#: fcbb47f848994a879a9676acf45fe90f
+msgid "`1. Create an event handler`_"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:21
+#: 4f27c363c42d4def88f33c7425e0be83
+msgid "`2. Add regex to the script`_"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:23
+#: 484cc3d92219402b8402924350658762
+msgid "`3. Add a full path to the script`_"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:25
+#: 014aed73eeb747bab332bf551cce2a95
+msgid "`4. Add optional parameters`_"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:29
+#: b51d8f8b56c249ab8d1502e997a8cb1d
+msgid "Event Handler Configuration Steps"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:32
+#: e7b303d8fa434dccb27f4026bcda1f66
+msgid "1. Create an event handler"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:36
+#: 3c0f3a0ccebf4c6786f1a410ae008f93
+msgid ""
+"This is an optional command because the event handler will be automatically "
+"created after any of the next commands."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:40
+#: 47b2f6e1e8cd4d8b85c7570fdd8b9326
+msgid "2. Add regex to the script"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:44
+#: 7ff6fcee218446488fe3ddc71cf9fd64
+msgid ""
+"This is a mandatory command. Sets regular expression to match against log "
+"string message."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:46
+#: 98be815d60404249a925a77e47294aa5
+msgid ""
+"The regular expression matches if and only if the entire string matches the "
+"pattern."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:51
+#: e07b0382161d4d08afdd3ed26c23ffd1
+msgid "3. Add a full path to the script"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:55
+#: 89698b6769ce446aa5bc296e302d048e
+msgid ""
+"This is a mandatory command. Sets the full path to the script. The script "
+"file must be executable."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:60
+#: 0ade4da86ca345b19377fb62edda4df2
+msgid "4. Add optional parameters"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:64
+#: bdb4921f90d74fba9a7d7839208c7c3d
+msgid ""
+"This is an optional command. Filters log messages by syslog-identifier."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:68
+#: e3980d34d386476fa74a4a5dce3ddb79
+msgid ""
+"This is an optional command. Adds environment and its value to the script. "
+"Use separate commands for each environment."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:70
+#: dad9affa614246c3af3c9924febb0a9a
+msgid "One implicit environment exists."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:72
+#: 833768ef67264f23902e3481fc3695a0
+msgid "``message``: Full message that has triggered the script."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:76
+#: 76523eafdd644d6ebec41aa58164da17
+msgid ""
+"This is an optional command. Adds arguments to the script. Arguments must be"
+" separated by spaces."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:78
+#: b913e33cf397425bb879ae10c5a4b2d1
+msgid ""
+"We don't recomend to use arguments. Using environments is more preffereble."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:83
+#: 00ec965cf5574110909e47d79675c910
+msgid "Example"
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:85
+#: f6d6849c042d4e118193b3db04e818cb
+msgid "Event handler that monitors the state of interface eth0."
+msgstr ""
+
+#: ../../configuration/service/eventhandler.rst:95
+#: c7ce652b2f6748b5aa8888ba31b74554
+msgid "Event handler script"
+msgstr ""

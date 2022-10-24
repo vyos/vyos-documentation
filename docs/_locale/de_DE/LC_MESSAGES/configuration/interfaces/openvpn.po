@@ -1,0 +1,616 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:04+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/interfaces/openvpn.rst:7
+#: 49a4e313af8b47da8d0c2c000d721255
+msgid "OpenVPN"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:9
+#: 24c641c02ee1432b85457380d5a9442e
+msgid ""
+"Traditionally hardware routers implement IPsec exclusively due to relative "
+"ease of implementing it in hardware and insufficient CPU power for doing "
+"encryption in software. Since VyOS is a software router, this is less of a "
+"concern. OpenVPN has been widely used on UNIX platform for a long time and "
+"is a popular option for remote access VPN, though it's also capable of site-"
+"to-site connections."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:16
+#: 8705ef07eb7c4133898d4093647e1e6e
+msgid "Advantages of OpenVPN are:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:18
+#: 700f4b6c11f74f3aadff507e7d8fa925
+msgid ""
+"It uses a single TCP or UDP connection and does not rely on packet source "
+"addresses, so it will work even through a double NAT: perfect for public "
+"hotspots and such"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:22
+#: 698154b399704e69872d5e27747d0c47
+msgid "It's easy to setup and offers very flexible split tunneling"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:24
+#: 79100fbc787946c29e00895de9a6cce2
+msgid "There's a variety of client GUI frontends for any platform"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:26
+#: e023bf4ba8eb42e2a917425162c2fb05
+msgid "Disadvantages are:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:28
+#: c03b6c6fdace492db97013b65896e7ff
+msgid ""
+"It's slower than IPsec due to higher protocol overhead and the fact it runs "
+"in user mode while IPsec, on Linux, is in kernel mode"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:31
+#: 1f713d3a0e7745159c65166081a76f37
+msgid ""
+"None of the operating systems have client software installed by default"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:33
+#: 6285fb18d721436593aa4e1da721f476
+msgid ""
+"In the VyOS CLI, a key point often overlooked is that rather than being "
+"configured using the `set vpn` stanza, OpenVPN is configured as a network "
+"interface using `set interfaces openvpn`."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:39
+#: ed41362196c84a52b4a00426cb2ea4d7
+msgid "Site-to-Site"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:43
+#: a42219859326463ebc9da64095f2cade
+msgid ""
+"While many are aware of OpenVPN as a Client VPN solution, it is often "
+"overlooked as a site-to-site VPN solution due to lack of support for this "
+"mode in many router platforms."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:47
+#: b35c1ae6e30441548999d4badacc81bb
+msgid ""
+"Site-to-site mode supports x.509 but doesn't require it and can also work "
+"with static keys, which is simpler in many cases. In this example, we'll "
+"configure a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared "
+"key."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:51
+#: d9b2fd8cf2a24b1f9b5e3c8259826240
+msgid ""
+"First, one of the systems generate the key using the :ref:`generate pki "
+"openvpn shared-secret<configuration/pki/index:pki>` command. Once generated,"
+" you will need to install this key on the local system, then copy and "
+"install this key to the remote router."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:55
+#: 2ea4c91c77e94f3e9c0972c6550484e1
+msgid ""
+"In our example, we used the key name ``openvpn-1`` which we will reference "
+"in our configuration."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:58
+#: ae8ce996d0764647b187fa432ab5da73
+msgid ""
+"The public IP address of the local side of the VPN will be 198.51.100.10."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:59
+#: fd9f2b1633cf4882b0fe035111d5015d
+msgid ""
+"The public IP address of the remote side of the VPN will be 203.0.113.11."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:60
+#: 8fb58cd1d9e54b9f84f450766236f4b1
+msgid ""
+"The tunnel will use 10.255.1.1 for the local IP and 10.255.1.2 for the "
+"remote."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:61
+#: 2f7dd832268b45b8978f378358855280
+msgid "The local site will have a subnet of 10.0.0.0/16."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:62
+#: e7fd5219fca14a3c921fd7865e877a2b
+msgid "The remote site will have a subnet of 10.1.0.0/16."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:63
+#: cda1b065f9ae40b29f5ab53a0575ee26
+msgid ""
+"Static Routing or other dynamic routing protocols can be used over the vtun "
+"interface"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:64
+#: 59ba809b2f984230860ef133ce4431d2
+msgid ""
+"OpenVPN allows for either TCP or UDP. UDP will provide the lowest latency, "
+"while TCP will work better for lossy connections; generally UDP is preferred"
+" when possible."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:67
+#: 2645ab57ec6949ed8728b1215eb4ed0d
+msgid ""
+"The official port for OpenVPN is 1194, which we reserve for client VPN; we "
+"will use 1195 for site-to-site VPN."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:69
+#: 761526d038c44f7cbe439eca6cf24a95
+msgid ""
+"The ``persistent-tunnel`` directive will allow us to configure tunnel-"
+"related attributes, such as firewall policy as we would on any normal "
+"network interface."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:72
+#: b18e504b82d446169c94dd325823b185
+msgid ""
+"If known, the IP of the remote router can be configured using the ``remote-"
+"host`` directive; if unknown, it can be omitted. We will assume a dynamic IP"
+" for our remote router."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:77
+#: ../../configuration/interfaces/openvpn.rst:189
+#: cab68ffde37744b59d4cd0a1e0f0d850 422a662d43c6473daa8e0d2cf92dc34e
+msgid "Local Configuration:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:96
+#: db11f80ff5394719aa58ffe0dd9a501b
+msgid "Local Configuration - Annotated:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:120
+#: ../../configuration/interfaces/openvpn.rst:195
+#: b7a3e0e2c3e543bb8d8eff8dd7d5e827 340bb3b25c7a4fce958d9e3fb4444318
+msgid "Remote Configuration:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:137
+#: e65f707bda204e099463092bf0f8c303
+msgid "Remote Configuration - Annotated:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:157
+#: 53eb821bc2c3458cb52668c7de2a18ec
+msgid "Firewall Exceptions"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:159
+#: 385eabf716fc469cb21a61b025282f1e
+msgid ""
+"For the OpenVPN traffic to pass through the WAN interface, you must create a"
+" firewall exception."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:175
+#: 7a1560761c4e4744a421fd7c5e03c7f0
+msgid ""
+"You should also ensure that the OUTISDE_LOCAL firewall group is applied to "
+"the WAN interface and a direction (local)."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:183
+#: 12bceb7181f6434bb48414f2e893a3e2
+msgid "Static Routing:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:185
+#: 2940b3f164b34fccbe2ed317b8aae081
+msgid ""
+"Static routes can be configured referencing the tunnel interface; for "
+"example, the local router will use a network of 10.0.0.0/16, while the "
+"remote has a network of 10.1.0.0/16:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:201
+#: 66ff84e8e5e34de0b0c132a7dff8cf1f
+msgid ""
+"The configurations above will default to using 256-bit AES in GCM mode for "
+"encryption (if both sides support NCP) and SHA-1 for HMAC authentication. "
+"SHA-1 is considered weak, but other hashing algorithms are available, as are"
+" encryption algorithms:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:206
+#: 0b31ab06453141d3b6ba4c441611568c
+msgid "For Encryption:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:208
+#: 86ee9217a4a140728b9e88421d7d86d1
+msgid ""
+"This sets the cipher when NCP (Negotiable Crypto Parameters) is disabled or "
+"OpenVPN version < 2.4.0."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:226
+#: 7b9425a5391b45ee88f872989ebcebbc
+msgid ""
+"This sets the accepted ciphers to use when version => 2.4.0 and NCP is "
+"enabled (which is the default). Default NCP cipher for versions >= 2.4.0 is "
+"aes256gcm. The first cipher in this list is what server pushes to clients."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:243
+#: daaa5904c30b4f09bc8fbaa49b7f42a9
+msgid "For Hashing:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:254
+#: 14ce402c4f214056990108c250a7089e
+msgid ""
+"If you change the default encryption and hashing algorithms, be sure that "
+"the local and remote ends have matching configurations, otherwise the tunnel"
+" will not come up."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:259
+#: 66053eddf2e6491c8f739135a27ce02a
+msgid ""
+"Firewall policy can also be applied to the tunnel interface for `local`, "
+"`in`, and `out` directions and functions identically to ethernet interfaces."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:262
+#: 5bb0689956194c29a85595b417e6f716
+msgid ""
+"If making use of multiple tunnels, OpenVPN must have a way to distinguish "
+"between different tunnels aside from the pre-shared-key. This is either by "
+"referencing IP address or port number. One option is to dedicate a public IP"
+" to each tunnel. Another option is to dedicate a port number to each tunnel "
+"(e.g. 1195,1196,1197...)."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:268
+#: be7b2b4173ad4394a99d325856c10d8c
+msgid ""
+"OpenVPN status can be verified using the `show openvpn` operational "
+"commands. See the built-in help for a complete list of options."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:273
+#: e60ff00a9fdf4f2f81f109d6e3ad2d68
+msgid "Server"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:275
+#: 09af881109e046fca4c58f1633df9d69
+msgid ""
+"Multi-client server is the most popular OpenVPN mode on routers. It always "
+"uses x.509 authentication and therefore requires a PKI setup. Refer this "
+"topic :ref:`configuration/pki/index:pki` to generate a CA certificate, a "
+"server certificate and key, a certificate revocation list, a Diffie-Hellman "
+"key exchange parameters file. You do not need client certificates and keys "
+"for the server setup."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:282
+#: f37e123fc5194cb19176aa1503a58ab2
+msgid ""
+"In this example we will use the most complicated case: a setup where each "
+"client is a router that has its own subnet (think HQ and branch offices), "
+"since simpler setups are subsets of it."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:286
+#: e837488cac2d48ef82c0c2e27488c653
+msgid ""
+"Suppose you want to use 10.23.1.0/24 network for client tunnel endpoints and"
+" all client subnets belong to 10.23.0.0/20. All clients need access to the "
+"192.168.0.0/16 network."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:290
+#: 8dfced3dc81d4ffab1643fdf9b8f15a6
+msgid ""
+"First we need to specify the basic settings. 1194/UDP is the default. The "
+"``persistent-tunnel`` option is recommended, it prevents the TUN/TAP device "
+"from closing on connection resets or daemon reloads."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:294
+#: 29480370e25846f3ad3820a8d19f0b45
+msgid ""
+"Using **openvpn-option -reneg-sec** can be tricky. This option is used to "
+"renegotiate data channel after n seconds. When used at both server and "
+"client, the lower value will trigger the renegotiation. If you set it to 0 "
+"on one side of the connection (to disable it), the chosen value on the other"
+" side will determine when the renegotiation will occur."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:307
+#: 57b1113e85e24c5dbae5ca745935c57b
+msgid ""
+"Then we need to generate, add and specify the names of the cryptographic "
+"materials. Each of the install command should be applied to the "
+"configuration and commited before using under the openvpn interface "
+"configuration."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:333
+#: 756b20926c26490bb8249155d68b413e
+msgid ""
+"Now we need to specify the server network settings. In all cases we need to "
+"specify the subnet for client tunnel endpoints. Since we want clients to "
+"access a specific network behind our router, we will use a push-route option"
+" for installing that route on clients."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:343
+#: abac85d1dbfd4f75aca8ae2ec0d8817a
+msgid ""
+"Since it's a HQ and branch offices setup, we will want all clients to have "
+"fixed addresses and we will route traffic to specific subnets through them. "
+"We need configuration for each client to achieve this."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:347
+#: 7479a7ab758f42569c8c44c4b9529576
+msgid ""
+"Clients are identified by the CN field of their x.509 certificates, in this "
+"example the CN is ``client0``:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:355
+#: d5b2801f47644e74a5b916d60c828783
+msgid ""
+"OpenVPN **will not** automatically create routes in the kernel for client "
+"subnets when they connect and will only use client-subnet association "
+"internally, so we need to create a route to the 10.23.0.0/20 network "
+"ourselves:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:363
+#: e5c52c8f69554323bdaf973188ccc9f7
+msgid ""
+"Additionally, each client needs a copy of ca cert and its own client key and"
+" cert files. The files are plaintext so they may be copied either manually "
+"from the CLI. Client key and cert files should be signed with the proper ca "
+"cert and generated on the server side."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:368
+#: 29182698394c4432aee0199abc60a1e6
+msgid ""
+"HQ's router requires the following steps to generate crypto materials for "
+"the Branch 1:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:376
+#: a554a86bd32a4c0784d62d3ec50adc1c
+msgid "Branch 1's router might have the following lines:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:388
+#: 17b4887e99374bc88d6fce86f4597621
+msgid "Client Authentication"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:391
+#: 038d555a70b04bdaa7ae87f8bf995ef2
+msgid "LDAP"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:393
+#: 5130e1cebbb64b4ba444fc9787f21e10
+msgid ""
+"Enterprise installations usually ship a kind of directory service which is "
+"used to have a single password store for all employees. VyOS and OpenVPN "
+"support using LDAP/AD as single user backend."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:397
+#: e8644bf4cc7a47b1a409d1d182f8ce5b
+msgid ""
+"Authentication is done by using the ``openvpn-auth-ldap.so`` plugin which is"
+" shipped with every VyOS installation. A dedicated configuration file is "
+"required. It is best practise to store it in ``/config`` to survive image "
+"updates"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:406
+#: 38b8b68dc305461d9b94b4333ba7a068
+msgid "The required config file may look like this:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:431
+#: ee85ab9fe267488d88f9b2600b6b5704
+msgid "Active Directory"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:433
+#: a33ecf0d70df4755838c5f71752619f4
+msgid "Despite the fact that AD is a superset of LDAP"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:466
+#: 82ab9b1c8177477face38193289304c3
+msgid ""
+"If you only want to check if the user account is enabled and can "
+"authenticate (against the primary group) the following snipped is "
+"sufficient:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:486
+#: 8f3869732b8e4cf9b4591d6ca13d3019
+msgid ""
+"A complete LDAP auth OpenVPN configuration could look like the following "
+"example:"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:518
+#: 1e0aabccc72f4098bfcb6523647e7c17
+msgid "Client"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:520
+#: 0b1a28801b7143179e523d004c3a857e
+msgid ""
+"VyOS can not only act as an OpenVPN site-to-site or server for multiple "
+"clients. You can indeed also configure any VyOS OpenVPN interface as an "
+"OpenVPN client connecting to a VyOS OpenVPN server or any other OpenVPN "
+"server."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:524
+#: 13dabeeafa784b0aa98cdd5dbf5f8c31
+msgid ""
+"Given the following example we have one VyOS router acting as OpenVPN server"
+" and another VyOS router acting as OpenVPN client. The server also pushes a "
+"static client IP address to the OpenVPN client. Remember, clients are "
+"identified using their CN attribute in the SSL certificate."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:532
+#: 2c6ec6c8ba11405e8461a988a327f20b
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:535
+#: c00ac5ce2f5b4682b9673b07cf934904
+msgid "Server Side"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:561
+#: f312f23678d542d49dc29fe8450f29b3
+msgid "Client Side"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:578
+#: 4fedcc73e58942e3828a272f9e3fa7ee
+msgid "Options"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:580
+#: 31005d6f9b9e458e8c083b953b5c4035
+msgid ""
+"We do not have CLI nodes for every single OpenVPN option. If an option is "
+"missing, a feature request should be opened at Phabricator_ so all users can"
+" benefit from it (see :ref:`issues_features`)."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:584
+#: 03ab237055d04a219aa83a19cac07c45
+msgid ""
+"If you are a hacker or want to try on your own we support passing raw "
+"OpenVPN options to OpenVPN."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:589
+#: 6dbea9b586f14267ac370fa56a7804e7
+msgid ""
+"Will add ``persistent-key`` at the end of the generated OpenVPN "
+"configuration. Please use this only as last resort - things might break and "
+"OpenVPN won't start if you pass invalid options/syntax."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:596
+#: 34f3fbe8e4694912bcad8926f2ead50d
+msgid "Will add ``push \"keepalive 1 10\"`` to the generated OpenVPN config file."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:598
+#: 284f24a2c99b4c14b28c475cc994e2c3
+msgid ""
+"Sometimes option lines in the generated OpenVPN configuration require "
+"quotes. This is done through a hack on our config generator. You can pass "
+"quotes using the ``&quot;`` statement."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:604
+#: 55725e1e11cd4fad85c13e48ab226eba
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:606
+#: a2ed69794d954f78af215653514b9e26
+msgid "VyOS provides some operational commands on OpenVPN."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:609
+#: f927ebdf8c6f4e92924f5a0217e5f83f
+msgid "Check status"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:611
+#: 2525426e9a4844e4b47378ebf5fc6df3
+msgid "The following commands let you check tunnel status."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:615
+#: a440cc7591184a83b546cb32682bcc18
+msgid ""
+"Use this command to check the tunnel status for OpenVPN client interfaces."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:619
+#: 1ffd21f37b644e5582d05a98d86b7d07
+msgid ""
+"Use this command to check the tunnel status for OpenVPN server interfaces."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:623
+#: 545e3d4311594d858c3ce957784e1eb3
+msgid ""
+"Use this command to check the tunnel status for OpenVPN site-to-site "
+"interfaces."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:628
+#: b815ea96d89c452aaa7b1d2f14102780
+msgid "Reset OpenVPN"
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:630
+#: 75698dec800d40c5a8feb3bc9e05a4eb
+msgid "The following commands let you reset OpenVPN."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:634
+#: 43f4e02ebf12449d84b4b2dd81e2c681
+msgid "Use this command to reset the specified OpenVPN client."
+msgstr ""
+
+#: ../../configuration/interfaces/openvpn.rst:638
+#: f4620017a238485c9f6e21a5ef43663f
+msgid "Use this command to reset the OpenVPN process on a specific interface."
+msgstr ""

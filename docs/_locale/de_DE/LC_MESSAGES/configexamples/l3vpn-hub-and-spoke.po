@@ -1,0 +1,588 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:05+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:4
+#: 998a7d4fc7604358b63c64b7e10c9256
+msgid "L3VPN for Hub-and-Spoke connectivity with VyOS"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:6
+#: 686abf9e6407494ea9f8adb1e6a38ba4
+msgid ""
+"IP/MPLS technology is widely used by various service providers and large "
+"enterprises in order to achieve better network scalability, manageability "
+"and flexibility. It also provides the possibility to deliver different "
+"services for the customers in a seamless manner. Layer 3 VPN (L3VPN) is a "
+"type of VPN mode that is built and delivered through OSI layer 3 networking "
+"technologies. Often the border gateway protocol (BGP) is used to send and "
+"receive VPN-related data that is responsible for the control plane. L3VPN "
+"utilizes virtual routing and forwarding (VRF) techniques to receive and "
+"deliver user data as well as separate data planes of the end-users. It is "
+"built using a combination of IP- and MPLS-based information. Generally, "
+"L3VPNs are used to send data on back-end VPN infrastructures, such as for "
+"VPN connections between data centres, HQs and branches."
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:20
+#: 890e7aea999d499bbcd0cdf856d99266
+msgid ""
+"An L3VPN consists of multiple access links, multiple VPN routing and "
+"forwarding (VRF) tables, and multiple MPLS paths or multiple P2MP LSPs. An "
+"L3VPN can be configured to connect two or more customer sites. In hub-and-"
+"spoke MPLS L3VPN environments, the spoke routers need to have unique Route "
+"Distinguishers (RDs). In order to use the hub site as a transit point for "
+"connectivity in such an environment, the spoke sites export their routes to "
+"the hub. Spokes can talk to hubs, but never have direct paths to other "
+"spokes. All traffic between spokes is controlled and delivered over the hub "
+"site."
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:31
+#: e546c7fa938240fbb028a21e16cd21bd
+msgid ""
+"To deploy a Layer3 VPN with MPLS on VyOS, we should meet a couple "
+"requirements in order to properly implement the solution. We'll use the "
+"following nodes in our LAB environment:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:35
+#: 98565fe6ffb947e09692e9b7b1fb9912
+msgid "2 x Route reflectors (VyOS-RRx)"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:36
+#: 56560e4d5b514b569eb498d80ccfd796
+msgid "4 x Provider routers (VyOS-Px)"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:37
+#: 29e234d5eff54c03b262f561d6ba4308
+msgid "3 x Provider Edge (VyOs-PEx)"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:38
+#: b6d0c34166be4ebeb304f7da74c8fedf
+msgid "3 x Customer Edge (VyOS-CEx)"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:40
+#: 95ddfbd9c6d14f0284add13b0b318aeb
+msgid "The following software was used in the creation of this document:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:42
+#: 2e1ff92ea1d34b3380b4735f9231bbaa
+msgid "Operating system: VyOS"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:43
+#: 1a1845ca31364523ac85c14afed17a6b
+msgid "Version: 1.4-rolling-202110310317"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:44
+#: be17aee6c8e24d0a9c81a719c92b962c
+msgid "Image name: vyos-1.4-rolling-202110310317-amd64.iso"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:46
+#: 94e4d99e94914c41b8f5a501b90a9c1a
+msgid ""
+"**NOTE:** VyOS Router (tested with VyOS 1.4-rolling-202110310317) –  The "
+"configurations below are specifically for VyOS 1.4.x."
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:49
+#: cf278ef398a348f19de9082189238ad3
+msgid ""
+"General information can be found in the :ref:`configuration/vrf/index:L3VPN "
+"VRFs` chapter."
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:55
+#: b78300c0062d4f20adb7a5a718366771
+msgid "Topology"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rstNone
+#: 1f165bb067114d18877f62c65d93df63
+msgid "Network Topology Diagram"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:65
+#: 8a0c9d1b570c4c7cbe2de877527a2c8d
+msgid "How does it work?"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:67
+#: cb4349ce8fa34bd391aeef02ba55c8c9
+msgid ""
+"As we know the main assumption of L3VPN “Hub and Spoke” is, that the traffic"
+" between spokes have to pass via hub, in our scenario VyOS-PE2 is the Hub PE"
+" and the VyOS-CE1-HUB is the central customer office device that is "
+"responsible for controlling access between all spokes and announcing its "
+"network prefixes (10.0.0.100/32). VyOS-PE2 has the main VRF (its name is "
+"BLUE_HUB), its own Route-Distinguisher(RD) and route-target import/export "
+"lists. Multiprotocol-BGP(MP-BGP) delivers L3VPN related control-plane "
+"information to the nodes across network where PEs Spokes import the route-"
+"target 60535:1030 (this is export route-target of vrf BLUE_HUB) and export "
+"its own route-target 60535:1011(this is vrf BLUE_SPOKE export route-target)."
+" Therefore, the Customer edge nodes can only learn the network prefixes of "
+"the HUB site [10.0.0.100/32]. For this example VyOS-CE1 has network prefixes"
+" [10.0.0.80/32] / VyOS-CE2 has network prefixes [10.0.0.90/32]. Route-"
+"Reflector devices VyOS-RR1 and VyOS-RR2 are used to simplify network routes "
+"exchange and minimize iBGP peerings between devices."
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:83
+#: 60dd546b31004b06af47f4a1ce701957
+msgid "L3VPN configuration parameters table:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:86
+#: 565d53c1b26a4de38feaa86b567c6b4e
+msgid "Node"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:86
+#: 34eba7825ea54979a42f178e9dcd15bf
+msgid "Role"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:86
+#: b89d4c69529d4488b011d8e8db5aa4b4
+msgid "VRF"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:86
+#: f55441b962624fd6b5c1538290091f7e
+msgid "RD"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:86
+#: 6e72edabaf07419ea0abb13bb7789540
+msgid "RT import"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:86
+#: e547d56f80ca46f1ac625b270ab02628
+msgid "RT export"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:88
+#: ea3d4c4a18ec433b8c7f3ac03981f8c2
+msgid "VyOS-PE2"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:88
+#: 55bc9c2598064d92a3b9fae0fc6a1154
+msgid "Hub"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:88
+#: 1291d942846d4c6cae1e8833e139cb5d
+msgid "BLUE_HUB"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:88
+#: 27596f3bee3d43f28a16a42174e74667
+msgid "10.80.80.1:1011"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:88
+#: a4ca55dd19b14bd9a3b02fddeaf7eb11
+msgid "65035:1011 65035:1030"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:88
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:91
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:93
+#: 21adc69cf2bf4575ae4476a8cb6d056c 4862295b4bae4ea1baac2124700b1236
+#: 5a80925f27574dddb9d476febf102516
+msgid "65035:1030"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:91
+#: a0fdcadaac2946a1bad9533989517a9c
+msgid "VyOS-PE1"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:91
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:93
+#: b4744ce92c634f65b6558eb37e536454 c98d8778bb984c8eab3202150c36d157
+msgid "Spoke"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:91
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:93
+#: bce236afe7fb4c15b1adff31ccdaeea6 b1801511514c4b169d55b38e25b0a021
+msgid "BLUE_SPOKE"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:91
+#: cc8eb3ef69e94ebf81b298848a74f246
+msgid "10.50.50.1:1011"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:91
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:93
+#: b234869593f9450bb4866570315fb225 93a1e9117a7041a4ab0ec98cdde1a35d
+msgid "65035:1011"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:93
+#: 60fdfd315f2a4711a0f2b53299b51566
+msgid "VyOS-PE3"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:93
+#: 23c8e2bb64ab41d593c0e2aa6e921fbe
+msgid "10.60.60.1:1011"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:100
+#: 9e879fff2f324772adfe0bc310edc4a4
+msgid "Configuration"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:105
+#: 7477a6ffa308480fbee1b135a33ae15a
+msgid "Step-1: Configuring IGP and enabling MPLS LDP"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:107
+#: 15b715d0ed4248cf9593d4c8c72bc20c
+msgid ""
+"At the first step we need to configure the IP/MPLS backbone network using "
+"OSPF as IGP protocol and LDP as label-switching protocol for the base "
+"connectivity between **P** (rovider), **P** (rovider) **E** (dge) and **R** "
+"(oute) **R** (eflector) nodes:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:112
+#: 0fdd2f02198142519dfa1b13c7a87d43
+msgid "VyOS-P1:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:142
+#: 6fa7d00718fa44eea0355cfc8d67d9af
+msgid "VyOS-P2:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:168
+#: 405ddfb3d90241e6b9791a694e8c02fc
+msgid "VyOS-P3:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:194
+#: f214a604b9194bceb30e7ad4dcc9cc04
+msgid "VyOS-P4:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:224
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:362
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:413
+#: ed57672a54e540168ca1cb343c953144 91ace2d281b24fd5b0ea37e1876978bc
+#: de90bc4f836b493cad00b4ef434ed1ee
+msgid "VyOS-PE1:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:241
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:376
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:435
+#: 2b0b8e09b36c4192905fd8fcadb3317e a4e9cf5d0fbb4537addb56d6ecff66e3
+#: b6016d3b47a549e0bcfba58d5fa86717
+msgid "VyOS-PE2:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:262
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:390
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:457
+#: dc7cd8343e6743a0815e02f3d65df79a 0d769e475d9c4846ae32e22f5bf3d91c
+#: 77fe05eee30a4adf9df916a5462cd9a5
+msgid "VyOS-PE3:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:279
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:328
+#: 61d86fc34fbd4aed98036cf60f0dd615 fd431069d9f24c3084c24124059724d4
+msgid "VyOS-RR1:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:299
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:345
+#: 55304b8d06834fc69cdb07738e63e625 f8923e269249490fa37cc90c7b1342ec
+msgid "VyOS-RR2:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:322
+#: 2e846b31f9c44dfbab01271d60e398c6
+msgid "Step-2: Configuring iBGP for L3VPN control-plane"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:324
+#: 7b89e4318dec4188b74b6b3f5dab7b59
+msgid ""
+"At this step we are going to enable iBGP protocol on MPLS nodes and Route "
+"Reflectors (two routers for redundancy) that will deliver IPv4 VPN (L3VPN) "
+"routes between them:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:407
+#: 58d3377a35da4d30a1cdb7229a5fe29c
+msgid "Step-3: Configuring L3VPN VRFs on PE nodes"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:409
+#: fe4e7c69c7424e24888c3f3706d8c8b0
+msgid ""
+"This section provides configuration steps for setting up VRFs on our PE "
+"nodes including CE facing interfaces, BGP, rd and route-target import/export"
+" based on the pre-defined parameters."
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:482
+#: fc9f63f8aca0444da7ec55ff854e4676
+msgid "Step-4: Configuring CE nodes"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:484
+#: 925625dcfa774f7f9934408b8214a7f1
+msgid ""
+"Dynamic routing used between CE and PE nodes and eBGP peering established "
+"for the route exchanging between them. All routes received by PEs are then "
+"exported to L3VPN and delivered from Spoke sites to Hub and vise-versa based"
+" on previously configured L3VPN parameters."
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:490
+#: 47a7f4d1ffeb4def9c259e4e6e629cd2
+msgid "VyOS-CE1-SPOKE:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:507
+#: 8f961af78f9b4d888bd12c34cf65ec60
+msgid "VyOS-CE1-HUB:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:525
+#: a41c0ae5954a4760acf3b56323072447
+msgid "VyOS-CE2-SPOKE:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:545
+#: 4c4149624eba4d5b903a371d003f6dba
+msgid "Step-5: Verification"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:547
+#: a82f92d1466d41e994f0679d05553320
+msgid ""
+"This section describes verification commands for MPLS/BGP/LDP protocols and "
+"L3VPN related routes as well as diagnosis and reachability checks between CE"
+" nodes."
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:551
+#: d87f385db4c442eea1c679e29862e55f
+msgid ""
+"Let’s check IPv4 routing and MPLS information on provider nodes (same "
+"procedure for all P nodes):"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:554
+#: 387768aa305a4d89bf9504179b279283
+msgid "“show ip ospf neighbor” for checking ospf relationship"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:567
+#: 14d1985bcdcc43e4a9381ab7d746af1f
+msgid "“show mpls ldp neighbor “ for checking ldp neighbors"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:579
+#: 14f7b630eb854181a68a201cd4ff573b
+msgid "“show mpls ldp binding” for checking mpls label assignment"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:636
+#: 9f0c750511f44cac99373cc626930b21
+msgid ""
+"Now we’re checking iBGP status and routes from route-reflector nodes to "
+"other devices:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:639
+#: 27aef0ad05464cc59458e0f4d7785462
+msgid "“show bgp ipv4 vpn summary” for checking BGP VPNv4 neighbors:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:658
+#: dc50a484ccb14f9ca7e7dec858073973
+msgid "“show bgp ipv4 vpn”  for checking all VPNv4 prefixes information:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:698
+#: fc808be9ede24f739e02e5129eba3963
+msgid ""
+"“show bgp ipv4 vpn x.x.x.x/x” for checking best path selected for specific "
+"VPNv4 destination"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:716
+#: 528fe8121f4640fb96768623ce8ca51d
+msgid ""
+"Also we can verify how PE devices receives VPNv4 networks from the RRs and "
+"installing them to the specific customer VRFs:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:719
+#: ef0c4185fb5d4547b3e2c790769f104d
+msgid ""
+"“show bgp ipv4 vpn summary” for checking iBGP neighbors against route-"
+"reflector devices:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:736
+#: 1f1dbb0745cc43278c22ba38335200df
+msgid "“show bgp vrf all” for checking all the prefix learning on BGP"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:736
+#: 3705f8a528294628a4b27fa3913af275
+msgid "within VRFs:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:764
+#: c668ee5332604c59a958d6d9565e2cfe
+msgid "“show bgp vrf BLUE_SPOKE summary” for checking EBGP neighbor"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:764
+#: 82b64c97c93a4f7c901153092449c801
+msgid "information between PE and CE:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:784
+#: 0ca40736901446fcad91df434b158fb5
+msgid "“show ip route vrf BLUE_SPOKE” for viewing the RIB in our Spoke PE."
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:783
+#: 388ba3e42cfb453682eff0522884b664
+msgid ""
+"Using this command we are also able to check the transport and customer "
+"label (inner/outer) for Hub network prefix (10.0.0.100/32):"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:807
+#: df85772519284579bf2097c0313d76b2
+msgid "“show bgp ipv4 vpn x.x.x.x/32” for checking the best-path to the"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:806
+#: 3ded1eaa580b4d75a1aebdd4248776fe
+msgid ""
+"specific VPNv4 destination including extended community and remotelabel "
+"information. This procedure is the same on all Spoke nodes:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:831
+#: dbb5f2aa2caa4f5aa52ca697597e0f4c
+msgid "Now, let’s check routing information on out Hub PE:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:834
+#: 1e4f350b52274f58ae7a54adaff0b412
+msgid "“show bgp ipv4 vpn summary” for checking iBGP neighbors again"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:834
+#: 8a347810b376407ba2c69b3f23fce640
+msgid "VyOS-RR1/RR2"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:851
+#: 9bc7d0b71fba42b281873b8a1be783d8
+msgid "“show bgp vrf all” for checking all the prefixes learning on BGP"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:891
+#: 118b9f4e005f4e04b1632e4589ddfa17
+msgid "“show bgp vrf BLUE_HUB summary” for checking EBGP neighbor"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:891
+#: 93c455e1b8874441adba6171d4381d59
+msgid "CE Hub device"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:909
+#: 0137b1e74074467495469f4604661c56
+msgid "“show ip route vrf BLUE_HUB” to view the RIB in our Hub PE."
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:907
+#: 54511e5d16824c21a9eeb419cf668caa
+msgid ""
+"With this command we are able to check the transport and customer label "
+"(inner/outer) for network spokes prefixes 10.0.0.80/32 - 10.0.0.90/32"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:941
+#: 0e7f267bff6140e598dee3231a8eadc5
+msgid "“show bgp ipv4 vpn x.x.x.x/32” for checking best-path,"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:941
+#: 2d0e3c0fc3c74b058df139a5fb208aa0
+msgid "extended community and remote label of specific destination"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:985
+#: 3d25f766a7a743f289fdb81b7bbe3168
+msgid "Finally, let’s check the reachability between CEs:"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:987
+#: 08b5c6d6886144fa86ad19ea63c1afb2
+msgid "VyOS-CE1-SPOKE ----->   VyOS-CE-HUB"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:1025
+#: 9cbd876b3f4d48b78595fcb0300221cf
+msgid "VyOS-CE-HUB -------> VyOS-CE1-SPOKE"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:1026
+#: 368f34ba9eb84e7ebeca0b2dafdff68a
+msgid "VyOS-CE-HUB -------> VyOS-CE2-SPOKE"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:1085
+#: 17a80175953c4e24916458908f8443e1
+msgid "VyOS-CE2-SPOKE ------->  VyOS-CE-HUB"
+msgstr ""
+
+#: ../../configexamples/l3vpn-hub-and-spoke.rst:1123
+#: 062bae083b9c48369539bf248ef35b6f
+msgid ""
+"**Note:** At the moment, trace mpls doesn’t show labels/paths. So we’ll see "
+"* * *  for the transit routers of the mpls backbone."
+msgstr ""

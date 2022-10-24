@@ -1,0 +1,254 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/service/ssh.rst:5 fab12a30042344f2aed0bb2927bf95b8
+msgid "SSH"
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:7 7abb8613c7734008a0472737b5269796
+msgid ""
+":abbr:`SSH (Secure Shell)` is a cryptographic network protocol for operating"
+" network services securely over an unsecured network. The standard TCP port "
+"for SSH is 22. The best known example application is for remote login to "
+"computer systems by users."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:12 dad607f902c5476cbb25927f4e9bac1f
+msgid ""
+"SSH provides a secure channel over an unsecured network in a client-server "
+"architecture, connecting an SSH client application with an SSH server. "
+"Common applications include remote command-line login and remote command "
+"execution, but any network service can be secured with SSH. The protocol "
+"specification distinguishes between two major versions, referred to as SSH-1"
+" and SSH-2."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:18 71d4da888ed24a408bda4e8dbc7a614e
+msgid ""
+"The most visible application of the protocol is for access to shell accounts"
+" on Unix-like operating systems, but it sees some limited use on Windows as "
+"well. In 2015, Microsoft announced that they would include native support "
+"for SSH in a future release."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:23 9b765f6c14004a4bacda60ecd6078e50
+msgid ""
+"SSH was designed as a replacement for Telnet and for unsecured remote shell "
+"protocols such as the Berkeley rlogin, rsh, and rexec protocols. Those "
+"protocols send information, notably passwords, in plaintext, rendering them "
+"susceptible to interception and disclosure using packet analysis. The "
+"encryption used by SSH is intended to provide confidentiality and integrity "
+"of data over an unsecured network, such as the Internet."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:30 7c6c65b7a9d1457989890f99d0212084
+msgid ""
+"VyOS 1.1 supported login as user ``root``. This has been removed due to "
+"tighter security in VyOS 1.2."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:33 d8dccf2a289d40a0a6e57ff1145f9538
+msgid "SSH :ref:`ssh_key_based_authentication`"
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:36 6e39da5ae0ca4c118b9986abea83e66f
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:40 c2be9219cb1f4382817419a9d02c83d6
+msgid ""
+"Enabling SSH only requires you to specify the port ``<port>`` you want SSH "
+"to listen on. By default, SSH runs on port 22."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:45 8e12c00d53a24c488196b13f6731bc85
+msgid ""
+"Specify IPv4/IPv6 listen address of SSH server. Multiple addresses can be "
+"defined."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:50 6b9d60576b1b4be89f1063de0909be37
+msgid ""
+"Define allowed ciphers used for the SSH connection. A number of allowed "
+"ciphers can be specified, use multiple occurrences to allow multiple "
+"ciphers."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:53 2053f5d20be24339a08b6eb06b9e4f95
+msgid ""
+"List of supported ciphers: ``3des-cbc``, ``aes128-cbc``, ``aes192-cbc``, "
+"``aes256-cbc``, ``aes128-ctr``, ``aes192-ctr``, ``aes256-ctr``, "
+"``arcfour128``, ``arcfour256``, ``arcfour``, ``blowfish-cbc``, "
+"``cast128-cbc``"
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:59 7e34e9182d234e93b436bc394fcc3ac8
+msgid ""
+"Disable password based authentication. Login via SSH keys only. This hardens"
+" security!"
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:64 856316e7319a4f2ab0eeb18437f4d563
+msgid ""
+"Disable the host validation through reverse DNS lookups - can speedup login "
+"time when reverse lookup is not possible."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:69 67c8bcab57654ee892ab366c20adc3ce
+msgid ""
+"Specifies the available :abbr:`MAC (Message Authentication Code)` "
+"algorithms. The MAC algorithm is used in protocol version 2 for data "
+"integrity protection. Multiple algorithms can be provided."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:73 633357d5f10849e39bb22f8720260716
+msgid ""
+"List of supported MACs: ``hmac-md5``, ``hmac-md5-96``, ``hmac-ripemd160``, "
+"``hmac-sha1``, ``hmac-sha1-96``, ``hmac-sha2-256``, ``hmac-sha2-512``, "
+"``umac-64@openssh.com``, ``umac-128@openssh.com``, ``hmac-"
+"md5-etm@openssh.com``, ``hmac-md5-96-etm@openssh.com``, ``hmac-"
+"ripemd160-etm@openssh.com``, ``hmac-sha1-etm@openssh.com``, ``hmac-"
+"sha1-96-etm@openssh.com``, ``hmac-sha2-256-etm@openssh.com``, ``hmac-"
+"sha2-512-etm@openssh.com``, ``umac-64-etm@openssh.com``, "
+"``umac-128-etm@openssh.com``"
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:84 68b1e555abb74c3bb8ed1f76980f6ad9
+msgid ""
+"Add access-control directive to allow or deny users and groups. Directives "
+"are processed in the following order of precedence: ``deny-users``, ``allow-"
+"users``, ``deny-groups`` and ``allow-groups``."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:90 2c17c4c762bc46ada922db6284971c97
+msgid "Specify timeout interval for keepalive message in seconds."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:94 fa69712b894541f58ab5402262758a2d
+msgid "Specify allowed :abbr:`KEX (Key Exchange)` algorithms."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:96 b9af96b551ca408498c03952ad80ac55
+msgid ""
+"List of supported algorithms: ``diffie-hellman-group1-sha1``, ``diffie-"
+"hellman-group14-sha1``, ``diffie-hellman-group14-sha256``, ``diffie-hellman-"
+"group16-sha512``, ``diffie-hellman-group18-sha512``, ``diffie-hellman-group-"
+"exchange-sha1``, ``diffie-hellman-group-exchange-sha256``, ``ecdh-"
+"sha2-nistp256``, ``ecdh-sha2-nistp384``, ``ecdh-sha2-nistp521``, "
+"``curve25519-sha256`` and ``curve25519-sha256@libssh.org``."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:106 a8e69ca756fa410a8265fbd9994c3d82
+msgid "Set the ``sshd`` log level. The default is ``info``."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:110 f96e71685cab4768918f251afb5e4b44
+msgid ""
+"Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:113 33921a83af8d4c92babfe7a4c8c3e673
+msgid "Dynamic-protection"
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:114 b2ac0add88994fa3a87a3eee898ebe23
+msgid ""
+"Protects host from brute-force attacks against SSH. Log messages are parsed,"
+" line-by-line, for recognized patterns. If an attack, such as several login "
+"failures within a few seconds, is detected, the offending IP is blocked. "
+"Offenders are unblocked after a set interval."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:121 b441c882e2f24de3b38bdd9f8e93019d
+msgid "Allow ``ssh`` dynamic-protection."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:125 7a53d3dd4876492499391f781d8228aa
+msgid ""
+"Whitelist of addresses and networks. Always allow inbound connections from "
+"these systems."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:130 71404cfc03b94a74aa62ed0b8f5ac1bb
+msgid ""
+"Block source IP in seconds. Subsequent blocks increase by a factor of 1.5 "
+"The default is 120."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:135 a6384bbfdd9f4834b6159c84872a43cf
+msgid ""
+"Remember source IP in seconds before reset their score. The default is 1800."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:139 f5229921a8394633bf74412e5b214bee
+msgid ""
+"Block source IP when their cumulative attack score exceeds threshold. The "
+"default is 30."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:143 b13a85e598bb414fa3aa5690ac7edfba
+msgid "Operation"
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:147 d80496915497406cb818cbfbfab02d25
+msgid ""
+"Restart the SSH daemon process, the current session is not affected, only "
+"the background daemon is restarted."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:152 3451e104bd784342aced2b91730f0111
+msgid ""
+"Re-generated the public/private keyportion which SSH uses to secure "
+"connections."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:155 79e13472464647a4aab223fd8a1d744f
+msgid ""
+"Already learned known_hosts files of clients need an update as the public "
+"key will change."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:160 377ebda07bd543e4a6e174ccecf632f8
+msgid ""
+"Re-generated a known pub/private keyfile which can be used to connect to "
+"other services (e.g. RPKI cache)."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:163
+#: ../../configuration/service/ssh.rst:198 640a2f6196594e148280f19bd14d48ee
+#: eaf008d38eff422188f33feba5792f12
+msgid "Example:"
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:186 1509b88ec9454619bc622b8b27487aff
+msgid ""
+"Two new files ``/config/auth/id_rsa_rpki`` and "
+"``/config/auth/id_rsa_rpki.pub`` will be created."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:192 fc470d24be7e4e1eb5fbd4bf84ece1b1
+msgid ""
+"Generate the configuration mode commands to add a public key for "
+":ref:`ssh_key_based_authentication`. ``<location>`` can be a local path or a"
+" URL pointing at a remote file."
+msgstr ""
+
+#: ../../configuration/service/ssh.rst:196 b9efad6b1e24470e9c252126e43fa3ec
+msgid "Supported remote protocols are FTP, HTTP, HTTPS, SCP/SFTP and TFTP."
+msgstr ""

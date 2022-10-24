@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, VyOS maintainers and contributors
+# This file is distributed under the same license as the VyOS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VyOS 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-21 12:01+0200\n"
+"PO-Revision-Date: 2022-10-21 10:03+0000\n"
+"Language-Team: German (Germany) (https://www.transifex.com/vyos/teams/155110/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../configuration/policy/access-list.rst:3
+#: e479568cc6894f98a1efae90378d3500
+msgid "Access List Policy"
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:5
+#: 3eb6473f2ed54c31a3c816a412d84f68
+msgid ""
+"Filtering is used for both input and output of the routing information. Once"
+" filtering is defined, it can be applied in any direction. VyOS makes "
+"filtering possible using acls and prefix lists."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:9
+#: e33c2de462be4f539c61d24a4a41b524
+msgid "Basic filtering can be done using access-list and access-list6."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:13
+#: 08f3d34471c447e186d35551229b9e7b
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:16
+#: 9f4ed8d952854a0f813f3ef7e4490396
+msgid "Access Lists"
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:20
+#: a709dd7898554ee5847187e481419baa
+msgid ""
+"This command creates the new access list policy, where <acl_number> must be "
+"a number from 1 to 2699."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:25
+#: c7fb74648417449682ce300ef3846c3a
+msgid "Set description for the access list."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:30
+#: 568339af5e0143199dbd5ab6711e91ef
+msgid ""
+"This command creates a new rule in the access list and defines an action."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:35
+#: bcf37d6edf8f47118ea1543410674273
+msgid ""
+"This command defines matching parameters for access list rule. Matching "
+"criteria could be applied to destination or source parameters:"
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:38
+#: 87caf8ea2d08472a958cf950f5529ea1
+msgid "any: any IP address to match."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:39
+#: 806627a8147a42ac9aa5bdd4d1e91093
+msgid "host: single host IP address to match."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:40
+#: 9c5e969c7a5244ab89ffd55212de0b3b
+msgid "inverse-match: network/netmask to match (requires network be defined)."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:41
+#: f130437d04e24bfd97ce12460d53073f
+msgid "network: network/netmask to match (requires inverse-match be defined)."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:44
+#: 74fbd8b4573645bdb98daaa8106dd902
+msgid "IPv6 Access List"
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:46
+#: 84feff9b902d494b865574fcbff707e7
+msgid "Basic filtering could also be applied to IPv6 traffic."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:50
+#: b19e9022123348cc8a50e7e7bc471d71
+msgid "This command creates the new IPv6 access list, identified by <text>"
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:54
+#: 9e0689e76b32438dbf550a3bf88823b1
+msgid "Set description for the IPv6 access list."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:58
+#: 1b2a549eeaba430e9be0268ce26413a3
+msgid ""
+"This command creates a new rule in the IPv6 access list and defines an "
+"action."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:64
+#: faac3e4b9abb42c8bfe577c070671be9
+msgid ""
+"This command defines matching parameters for IPv6 access list rule. Matching"
+" criteria could be applied to source parameters:"
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:67
+#: 186a9394be3f4dcd88da16bd60370dc4
+msgid "any: any IPv6 address to match."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:68
+#: 10229d7a7c664e3888f27c9e67eac897
+msgid "exact-match: exact match of the network prefixes."
+msgstr ""
+
+#: ../../configuration/policy/access-list.rst:69
+#: 788b92b7aecd45abb41a8cea35ccf21c
+msgid ""
+"network: network/netmask to match (requires inverse-match be defined) BUG, "
+"NO invert-match option in access-list6"
+msgstr ""
