@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2022-10-31
+==========
+
+* :vytask:`T4785` (feature): snmp: Allow !, @, * and # in community name
+
+
 2022-10-21
 ==========
 

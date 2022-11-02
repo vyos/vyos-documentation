@@ -8,6 +8,52 @@
    _ext/releasenotes.py
 
 
+2022-10-31
+==========
+
+* :vytask:`T4785` (feature): snmp: Allow !, @, * and # in community name
+
+
+2022-10-29
+==========
+
+* :vytask:`T4783` (default): Add support for stunnel
+* :vytask:`T4784` (feature): Add description node for static route/route6 tagNodes
+
+
+2022-10-28
+==========
+
+* :vytask:`T4291` (default): Consolidate component version read/write functions
+
+
+2022-10-27
+==========
+
+* :vytask:`T4763` (feature): Change XML for Show nat destination statistics
+* :vytask:`T4762` (bug): Show nat rules with empty rules incorrect error
+* :vytask:`T4778` (bug): Raise error UnconfiguredSubsystem if op-mode ipsec.py fails initialization
+
+
+2022-10-26
+==========
+
+* :vytask:`T4773` (default): Add camel_case to snake_case conversion utility
+
+
+2022-10-25
+==========
+
+* :vytask:`T4720` (feature): Ability to configure SSH HostKeyAlgorithms
+* :vytask:`T4574` (default): Add token based authentication to GraphQL API
+
+
+2022-10-24
+==========
+
+* :vytask:`T4772` (default): Return list of dicts in 'raw' output of route.py instead of dict with redundant information
+
+
 2022-10-23
 ==========
 
@@ -1239,7 +1285,6 @@
 
 * :vytask:`T4182` (bug): Show vrrp if vrrp not configured bug
 * :vytask:`T4179` (feature): Add op-mode CLI for show high-availability virtual-server
-* :vytask:`T4177` (bug): Strip-private doesn't work for service monitoring
 
 
 2022-01-13
