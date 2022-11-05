@@ -240,9 +240,15 @@ The full and current list can be generated with ``./build-vyos-image --help``:
 
   $ vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --help
     I: Checking if packages required for VyOS image build are installed
-    usage: build-vyos-image [-h] [--architecture ARCHITECTURE] [--build-by BUILD_BY] [--debian-mirror DEBIAN_MIRROR] [--debian-security-mirror DEBIAN_SECURITY_MIRROR] [--pbuilder-debian-mirror PBUILDER_DEBIAN_MIRROR] [--vyos-mirror VYOS_MIRROR] [--build-type BUILD_TYPE]
-                            [--version VERSION] [--build-comment BUILD_COMMENT] [--debug] [--dry-run] [--custom-apt-entry CUSTOM_APT_ENTRY] [--custom-apt-key CUSTOM_APT_KEY] [--custom-package CUSTOM_PACKAGE]
-                            [build_flavor]
+    usage: build-vyos-image [-h] [--architecture ARCHITECTURE]
+    [--build-by BUILD_BY] [--debian-mirror DEBIAN_MIRROR]
+    [--debian-security-mirror DEBIAN_SECURITY_MIRROR]
+    [--pbuilder-debian-mirror PBUILDER_DEBIAN_MIRROR]
+    [--vyos-mirror VYOS_MIRROR] [--build-type BUILD_TYPE]
+    [--version VERSION] [--build-comment BUILD_COMMENT] [--debug] [--dry-run]
+    [--custom-apt-entry CUSTOM_APT_ENTRY] [--custom-apt-key CUSTOM_APT_KEY]
+    [--custom-package CUSTOM_PACKAGE]
+        [build_flavor]
 
     positional arguments:
     build_flavor          Build flavor
