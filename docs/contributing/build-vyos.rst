@@ -132,9 +132,10 @@ your development containers in your current working directory.
 .. note:: Some VyOS packages (namely vyos-1x) come with build-time tests which
    verify some of the internal library calls that they work as expected. Those
    tests are carried out through the Python Unittest module. If you want to
-   build the ``vyos-1x`` package (which is our main development package) you need
-   to start your Docker container using the following argument:
-   ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will fail.
+   build the ``vyos-1x`` package (which is our main development package) you
+   need to start your Docker container using the following argument:
+   ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will
+   fail.
 
 .. _build_native:
 
