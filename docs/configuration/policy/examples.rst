@@ -191,8 +191,8 @@ to a specific destination IP.
 
 .. code-block:: none
 
-  set policy route IP-MSS-CLAMP rule 10 description 'Clamp TCP session MSS to 1360 for NN.NNN.NNN.NNN'
-  set policy route IP-MSS-CLAMP rule 10 destination address 'NN.NNN.NNN.NNN/32'
+  set policy route IP-MSS-CLAMP rule 10 description 'Clamp TCP session MSS to 1360 for 198.51.100.30'
+  set policy route IP-MSS-CLAMP rule 10 destination address '198.51.100.30/32'
   set policy route IP-MSS-CLAMP rule 10 protocol 'tcp'
   set policy route IP-MSS-CLAMP rule 10 set tcp-mss '1360'
   set policy route IP-MSS-CLAMP rule 10 tcp flags 'SYN'
