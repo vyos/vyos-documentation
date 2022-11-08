@@ -8,10 +8,32 @@
    _ext/releasenotes.py
 
 
+2022-11-06
+==========
+
+* :vytask:`T4803` (bug): The header 'Authorization' needs to be explictly allowed in http-api CORS middleware
+
+
+2022-11-05
+==========
+
+* :vytask:`T4802` (feature): Ability to define per container shared-memory size
+
+
+2022-11-01
+==========
+
+* :vytask:`T4764` (bug): NAT tables vyos_nat  and vyos_static_nat not deleting after deleting nat
+* :vytask:`T4177` (bug): Strip-private doesn't work for service monitoring
+
+
 2022-10-31
 ==========
 
+* :vytask:`T4786` (feature): Add package python3-pyhumps
+* :vytask:`T1875` (feature): Add the ability to use network address as BGP neighbor (bgp listen range)
 * :vytask:`T4785` (feature): snmp: Allow !, @, * and # in community name
+* :vytask:`T4787` (feature): ipsec: add support for road-warrior/remote-access RADIUS timeout
 
 
 2022-10-29
@@ -44,7 +66,6 @@
 2022-10-25
 ==========
 
-* :vytask:`T4720` (feature): Ability to configure SSH HostKeyAlgorithms
 * :vytask:`T4574` (default): Add token based authentication to GraphQL API
 
 
@@ -83,7 +104,6 @@
 2022-10-14
 ==========
 
-* :vytask:`T4750` (feature): Support of higher level SSH keys (sk-ssh-ed25519)
 * :vytask:`T4672` (bug): RADIUS server disable does not work
 * :vytask:`T4749` (enhancment): Use config_dict for conf_mode http-api.py
 
@@ -2083,7 +2103,6 @@
 * :vytask:`T3764` (bug): Unconfigurable IKE and ESP lifetime
 * :vytask:`T3234` (bug): multi_to_list fails in certain cases, with root cause an element redundancy in XML interface-definitions
 * :vytask:`T3732` (feature): override-default helper should support adding defaultValues to default less nodes
-* :vytask:`T3574` (default): Add constraintGroup for combining validators with logical AND
 * :vytask:`T3759` (default): [L3VPN] VPNv4/VPNv6 add commands 
 
 

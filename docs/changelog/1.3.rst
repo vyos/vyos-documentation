@@ -8,9 +8,28 @@
    _ext/releasenotes.py
 
 
+2022-11-06
+==========
+
+* :vytask:`T2913` (bug): Failure to install fpm while building builder docker image
+
+
+2022-11-04
+==========
+
+* :vytask:`T2417` (feature): Python validator cleanup
+
+
+2022-11-01
+==========
+
+* :vytask:`T4177` (bug): Strip-private doesn't work for service monitoring
+
+
 2022-10-31
 ==========
 
+* :vytask:`T1875` (feature): Add the ability to use network address as BGP neighbor (bgp listen range)
 * :vytask:`T4785` (feature): snmp: Allow !, @, * and # in community name
 
 
@@ -1301,7 +1320,6 @@
 * :vytask:`T2759` (bug): validate-value prints error messages from validators that fail even if overall validation succeeds
 * :vytask:`T3234` (bug): multi_to_list fails in certain cases, with root cause an element redundancy in XML interface-definitions
 * :vytask:`T3732` (feature): override-default helper should support adding defaultValues to default less nodes
-* :vytask:`T3574` (default): Add constraintGroup for combining validators with logical AND
 * :vytask:`T1962` (default): Add syntax version to schema
 
 
