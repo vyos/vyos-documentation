@@ -166,7 +166,7 @@ VyOS ESP group has the next options:
 ***********************************************
 Options (Global IPsec settings) Attributes
 *********************************************** 
-* ``options`` IPsec settings:
+* ``options``
 
  * ``disable-route-autoinstall`` Do not automatically install routes to remote networks;
  
@@ -210,16 +210,18 @@ On the LEFT:
   set vpn ipsec esp-group MyESPGroup proposal 1 hash 'sha1'
 
   # IPsec tunnel
-  set vpn ipsec site-to-site peer 203.0.113.45 authentication mode pre-shared-secret
-  set vpn ipsec site-to-site peer 203.0.113.45 authentication pre-shared-secret MYSECRETKEY
+  set vpn ipsec site-to-site peer right authentication mode pre-shared-secret
+  set vpn ipsec site-to-site peer right authentication pre-shared-secret MYSECRETKEY
+  set vpn ipsec site-to-site peer right authentication remote-id 203.0.113.45
 
-  set vpn ipsec site-to-site peer 203.0.113.45 ike-group MyIKEGroup
-  set vpn ipsec site-to-site peer 203.0.113.45 default-esp-group MyESPGroup
+  set vpn ipsec site-to-site peer right ike-group MyIKEGroup
+  set vpn ipsec site-to-site peer right default-esp-group MyESPGroup
 
-  set vpn ipsec site-to-site peer 203.0.113.45 local-address 192.0.2.10
+  set vpn ipsec site-to-site peer right local-address 192.0.2.10
+  set vpn ipsec site-to-site peer right remote-address 203.0.113.45
 
   # This will match all GRE traffic to the peer
-  set vpn ipsec site-to-site peer 203.0.113.45 tunnel 1 protocol gre
+  set vpn ipsec site-to-site peer right tunnel 1 protocol gre
 
 On the RIGHT, setup by analogy and swap local and remote addresses.
 
@@ -234,6 +236,8 @@ an IPsec policy to match those loopback addresses.
 
 We assume that the LEFT router has static 192.0.2.10 address on eth0, and the
 RIGHT router has a dynamic address on eth0.
+
+The peer names RIGHT and LEFT are used as informational text.
 
 **Setting up the GRE tunnel**
 
@@ -325,17 +329,17 @@ On the LEFT (static address):
   set vpn ipsec ike-group MyIKEGroup proposal 1 encryption aes128
   set vpn ipsec ike-group MyIKEGroup proposal 1 hash sha1
 
-  set vpn ipsec site-to-site peer @RIGHT authentication id LEFT
-  set vpn ipsec site-to-site peer @RIGHT authentication mode rsa
-  set vpn ipsec site-to-site peer @RIGHT authentication rsa local-key ipsec-LEFT
-  set vpn ipsec site-to-site peer @RIGHT authentication rsa remote-key ipsec-RIGHT
-  set vpn ipsec site-to-site peer @RIGHT authentication remote-id RIGHT
-  set vpn ipsec site-to-site peer @RIGHT default-esp-group MyESPGroup
-  set vpn ipsec site-to-site peer @RIGHT ike-group MyIKEGroup
-  set vpn ipsec site-to-site peer @RIGHT local-address 192.0.2.10
-  set vpn ipsec site-to-site peer @RIGHT connection-type respond
-  set vpn ipsec site-to-site peer @RIGHT tunnel 1 local prefix 192.168.99.1/32  # Additional loopback address on the local
-  set vpn ipsec site-to-site peer @RIGHT tunnel 1 remote prefix 192.168.99.2/32 # Additional loopback address on the remote
+  set vpn ipsec site-to-site peer RIGHT authentication local-id LEFT
+  set vpn ipsec site-to-site peer RIGHT authentication mode rsa
+  set vpn ipsec site-to-site peer RIGHT authentication rsa local-key ipsec-LEFT
+  set vpn ipsec site-to-site peer RIGHT authentication rsa remote-key ipsec-RIGHT
+  set vpn ipsec site-to-site peer RIGHT authentication remote-id RIGHT
+  set vpn ipsec site-to-site peer RIGHT default-esp-group MyESPGroup
+  set vpn ipsec site-to-site peer RIGHT ike-group MyIKEGroup
+  set vpn ipsec site-to-site peer RIGHT local-address 192.0.2.10
+  set vpn ipsec site-to-site peer RIGHT connection-type respond
+  set vpn ipsec site-to-site peer RIGHT tunnel 1 local prefix 192.168.99.1/32  # Additional loopback address on the local
+  set vpn ipsec site-to-site peer RIGHT tunnel 1 remote prefix 192.168.99.2/32 # Additional loopback address on the remote
 
 On the RIGHT (dynamic address):
 
@@ -350,14 +354,15 @@ On the RIGHT (dynamic address):
   set vpn ipsec ike-group MyIKEGroup proposal 1 encryption aes128
   set vpn ipsec ike-group MyIKEGroup proposal 1 hash sha1
 
-  set vpn ipsec site-to-site peer 192.0.2.10 authentication id RIGHT
-  set vpn ipsec site-to-site peer 192.0.2.10 authentication mode rsa
-  set vpn ipsec site-to-site peer 192.0.2.10 authentication rsa local-key ipsec-RIGHT
-  set vpn ipsec site-to-site peer 192.0.2.10 authentication rsa remote-key ipsec-LEFT
-  set vpn ipsec site-to-site peer 192.0.2.10 authentication remote-id LEFT
-  set vpn ipsec site-to-site peer 192.0.2.10 connection-type initiate
-  set vpn ipsec site-to-site peer 192.0.2.10 default-esp-group MyESPGroup
-  set vpn ipsec site-to-site peer 192.0.2.10 ike-group MyIKEGroup
-  set vpn ipsec site-to-site peer 192.0.2.10 local-address any
-  set vpn ipsec site-to-site peer 192.0.2.10 tunnel 1 local prefix 192.168.99.2/32  # Additional loopback address on the local
-  set vpn ipsec site-to-site peer 192.0.2.10 tunnel 1 remote prefix 192.168.99.1/32 # Additional loopback address on the remote
+  set vpn ipsec site-to-site peer LEFT authentication local-id RIGHT
+  set vpn ipsec site-to-site peer LEFT authentication mode rsa
+  set vpn ipsec site-to-site peer LEFT authentication rsa local-key ipsec-RIGHT
+  set vpn ipsec site-to-site peer LEFT authentication rsa remote-key ipsec-LEFT
+  set vpn ipsec site-to-site peer LEFT authentication remote-id LEFT
+  set vpn ipsec site-to-site peer LEFT connection-type initiate
+  set vpn ipsec site-to-site peer LEFT default-esp-group MyESPGroup
+  set vpn ipsec site-to-site peer LEFT ike-group MyIKEGroup
+  set vpn ipsec site-to-site peer LEFT local-address any
+  set vpn ipsec site-to-site peer LEFT remote-address 192.0.2.10
+  set vpn ipsec site-to-site peer LEFT tunnel 1 local prefix 192.168.99.2/32  # Additional loopback address on the local
+  set vpn ipsec site-to-site peer LEFT tunnel 1 remote prefix 192.168.99.1/32 # Additional loopback address on the remote
