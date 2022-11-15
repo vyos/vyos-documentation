@@ -8,6 +8,25 @@
    _ext/releasenotes.py
 
 
+2022-11-12
+==========
+
+* :vytask:`T4814` (bug): Regression in bundled powerdns version
+
+
+2022-11-09
+==========
+
+* :vytask:`T4800` (bug): undefined var includes_chroot_dir in build-vyos-image 
+
+
+2022-11-08
+==========
+
+* :vytask:`T4771` (feature): Rewrite protocol BGP op-mode to vyos.opmode format
+* :vytask:`T4806` (default): Update FRR to 8.4 in 1.4 version
+
+
 2022-11-06
 ==========
 
@@ -1203,12 +1222,6 @@
 * :vytask:`T4225` (bug): Performance degration with latest rolling release
 * :vytask:`T4220` (bug): Commit broke dhclient 78b247b724f74bdabab0706aaa7f5b00e5809bc1
 * :vytask:`T4138` (bug): NAT configuration allows to set incorrect port range and invalid port
-
-
-2022-01-29
-==========
-
-* :vytask:`T4153` (bug): Monitor bandwidth-test initiate not working
 
 
 2022-01-28
