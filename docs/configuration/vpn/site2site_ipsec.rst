@@ -8,19 +8,10 @@ to exchange encrypted information between them and VyOS itself or
 connected/routed networks.
 
 To configure site-to-site connection you need to add peers with the
-``set vpn ipsec site-to-site`` command.
+``set vpn ipsec site-to-site peer <name>`` command.
 
-You can identify a remote peer with:
-
-* IPv4 or IPv6 address. This mode is easiest for configuration and mostly used
-  when a peer has a public static IP address;
-* Hostname. This mode is similar to IP address, only you define DNS name instead
-  of an IP. Could be used when a peer has a public IP address and DNS name, but
-  an IP address could be changed from time to time;
-* Remote ID of the peer. In this mode, there is no predefined remote address
-  nor DNS name of the peer. This mode is useful when a peer doesn't have a
-  publicly available IP address (NAT between it and VyOS), or IP address could
-  be changed.
+The peer name must be an alphanumeric and can have hypen or underscore as 
+special characters. It is purely informational. 
 
 Each site-to-site peer has the next options:
 
@@ -110,6 +101,11 @@ Each site-to-site peer has the next options:
 * ``local-address`` - local IP address for IPSec connection with this peer.
   If defined ``any``, then an IP address which configured on interface with
   default route will be used;
+
+* ``remote-address`` - remote IP address or hostname for IPSec connection.
+  IPv4 or IPv6 address is used when a peer has a public static IP address.
+  Hostname is a DNS name which could be used when a peer has a public IP 
+  address and DNS name, but an IP address could be changed from time to time.
 
 * ``tunnel`` - define criteria for traffic to be matched for encrypting and send
   it to a peer:
