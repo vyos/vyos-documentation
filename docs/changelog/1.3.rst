@@ -562,12 +562,6 @@
 * :vytask:`T4198` (bug): Error shown on commit
 
 
-2022-01-29
-==========
-
-* :vytask:`T4153` (bug): Monitor bandwidth-test initiate not working
-
-
 2022-01-28
 ==========
 
