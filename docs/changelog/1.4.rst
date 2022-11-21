@@ -8,6 +8,38 @@
    _ext/releasenotes.py
 
 
+2022-11-20
+==========
+
+* :vytask:`T4827` (bug): route-map issues , not load configuration FRR
+
+
+2022-11-19
+==========
+
+* :vytask:`T4826` (bug): Wrong key type is used for SSH SK public keys
+* :vytask:`T4720` (feature): Ability to configure SSH HostKeyAlgorithms
+* :vytask:`T4828` (default): Raise appropriate op-mode errors in ipsec.py 'reset_peer'
+
+
+2022-11-18
+==========
+
+* :vytask:`T4821` (bug): Correct calling of config mode script dependencies from firewall.py
+
+
+2022-11-17
+==========
+
+* :vytask:`T4750` (feature): Support of higher level SSH keys (sk-ssh-ed25519)
+
+
+2022-11-15
+==========
+
+* :vytask:`T4808` (feature): Add details of configtree operations to migration log
+
+
 2022-11-12
 ==========
 
