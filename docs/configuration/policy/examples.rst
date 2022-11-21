@@ -83,7 +83,7 @@ interface, we use:
 
 .. code-block:: none
 
-  set interfaces ethernet eth1 policy route FILTER-WEB
+  set policy route FILTER-WEB interface eth1
 
 ################
 Multiple Uplinks
@@ -129,8 +129,8 @@ Apply routing policy to **inbound** direction of out VLAN interfaces
 
 .. code-block:: none
 
-  set interfaces ethernet eth0 vif 10 policy route 'PBR'
-  set interfaces ethernet eth0 vif 11 policy route 'PBR'
+  set policy route 'PBR' interface eth0.10
+  set policy route 'PBR' interface eth0.11
 
 
 **OPTIONAL:** Exclude Inter-VLAN traffic (between VLAN10 and VLAN11)
@@ -203,7 +203,7 @@ destined target host (in our example eth1).
 
 .. code-block:: none
 
-  set interfaces ethernet eth1 policy route IP-MSS-CLAMP
+  set policy route IP-MSS-CLAMP interface eth1
 
 You can view that the policy is being correctly (or incorrectly) utilised
 with the following command:
