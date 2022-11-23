@@ -67,9 +67,9 @@ occur within IS-IS when it comes to said duplication.
 
 .. cfgcmd:: set protocols isis interface <interface>
 
-  This command enables IS-IS on this interface, and allows for adjacency to occur.
-  Note that the name of IS-IS instance must be the same as the one used to
-  configure the IS-IS process.
+  This command enables IS-IS on this interface, and allows for
+  adjacency to occur. Note that the name of IS-IS instance must be
+  the same as the one used to configure the IS-IS process.
 
 IS-IS Global Configuration
 --------------------------
@@ -85,13 +85,13 @@ IS-IS Global Configuration
   This command defines the IS-IS router behavior:
 
   * **level-1** - Act as a station (Level 1) router only.
-  * **level-1-2** - Act as both a station (Level 1) router and area (Level 2) router.
+  * **level-1-2** - Act as a station (Level 1) router and area (Level 2) router.
   * **level-2-only** - Act as an area (Level 2) router only.
 
 .. cfgcmd:: set protocols isis lsp-mtu <size>
 
-  This command configures the maximum size of generated :abbr:`LSPs (Link State PDUs)`
-  , in bytes. The size range is 128 to 4352.
+  This command configures the maximum size of generated
+  :abbr:`LSPs (Link State PDUs)`, in bytes. The size range is 128 to 4352.
 
 .. cfgcmd:: set protocols isis metric-style <narrow|transition|wide>
 
