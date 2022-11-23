@@ -84,9 +84,9 @@ IS-IS Global Configuration
 
   This command defines the IS-IS router behavior:
 
-    * **level-1** - Act as a station (Level 1) router only.
-    * **level-1-2** - Act as both a station (Level 1) router and an area (Level 2) router.
-    * **level-2-only** - Act as an area (Level 2) router only.
+  * **level-1** - Act as a station (Level 1) router only.
+  * **level-1-2** - Act as both a station (Level 1) router and area (Level 2) router.
+  * **level-2-only** - Act as an area (Level 2) router only.
 
 .. cfgcmd:: set protocols isis lsp-mtu <size>
 
@@ -97,9 +97,9 @@ IS-IS Global Configuration
 
   This command sets old-style (ISO 10589) or new style packet formats:
 
-    * **narrow** - Use old style of TLVs with narrow metric.
-    * **transition** - Send and accept both styles of TLVs during transition.
-    * **wide** - Use new style of TLVs to carry wider metric.
+  * **narrow** - Use old style of TLVs with narrow metric.
+  * **transition** - Send and accept both styles of TLVs during transition.
+  * **wide** - Use new style of TLVs to carry wider metric.
 
 .. cfgcmd:: set protocols isis purge-originator
 
@@ -441,7 +441,7 @@ Enable IS-IS with Segment Routing (Experimental)
   
   
   
-This gives us MPLS segment routing enabled, and the labels for the far end loopbacks:
+This gives us MPLS segment routing enabled and labels for far end loopbacks:
 
 .. code-block:: none
 
