@@ -76,9 +76,9 @@ IS-IS Global Configuration
 
 .. cfgcmd:: set protocols isis dynamic-hostname
 
-  This command enables support for dynamic hostname TLV. Dynamic hostname mapping
-  determined as described in :rfc:`2763`, Dynamic Hostname Exchange Mechanism
-  for IS-IS.
+  This command enables support for dynamic hostname TLV. Dynamic hostname
+  mapping determined as described in :rfc:`2763`, Dynamic Hostname
+  Exchange Mechanism for IS-IS.
 
 .. cfgcmd:: set protocols isis level <level-1|level-1-2|level-2>
 
