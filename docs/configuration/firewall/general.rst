@@ -148,11 +148,11 @@ Some firewall settings are global and have an affect on the whole system.
 Groups
 ******
 
-Firewall groups represent collections of IP addresses, networks, or
-ports. Once created, a group can be referenced by firewall rules as
-either a source or destination. Members can be added or removed from a
-group without changes to, or the need to reload, individual firewall
-rules.
+Firewall groups represent collections of IP addresses, networks, ports,
+mac addresses or domains. Once created, a group can be referenced by 
+firewall, nat and policy route rules as either a source or destination
+matcher. Members can be added or removed from a group without changes to,
+or the need to reload, individual firewall rules.
 
 Groups need to have unique names. Even though some contain IPv4
 addresses and others contain IPv6 addresses, they still need to have
@@ -183,7 +183,6 @@ defined.
 
    Provide a IPv4 or IPv6 address group description
 
-
 Network Groups
 ==============
 
@@ -207,7 +206,6 @@ recommended.
 .. cfgcmd::  set firewall group ipv6-network-group <name> description <text>
 
    Provide a IPv4 or IPv6 network group description.
-
 
 Port Groups
 ===========
@@ -233,6 +231,34 @@ filtering unnecessary ports. Ranges of ports can be specified by using
 .. cfgcmd:: set firewall group port-group <name> description <text>
 
    Provide a port group description.
+
+MAC Groups
+==========
+
+A **mac group** represents a collection of mac addresses.
+
+.. cfgcmd::  set firewall group mac-group <name> mac-address <mac-address>
+
+   Define a mac group.
+
+.. code-block:: none
+
+      set firewall group mac-group MAC-G01 mac-address 88:a4:c2:15:b6:4f
+      set firewall group mac-group MAC-G01 mac-address 4c:d5:77:c0:19:81
+
+
+Domain Groups
+=============
+
+A **domain group** represents a collection of domains.
+
+.. cfgcmd::  set firewall group domain-group <name> address <domain>
+
+   Define a domain group.
+
+.. code-block:: none
+
+      set firewall group domain-group DOM address example.com
 
 
 *********
@@ -603,10 +629,14 @@ A Rule-Set can be applied to every interface:
       set firewall interface eth1.100 out name LANv4-OUT
       set firewall interface bond0 in name LANv4-IN
       set firewall interface vtun1 in name LANv4-IN
+      set firewall interface eth2* in name LANv4-IN
 
    .. note::
       As you can see in the example here, you can assign the same rule-set to
       several interfaces. An interface can only have one rule-set per chain.
+
+   .. note::
+      You can use wildcard ``*`` to match a group of interfaces.
 
 ***********************
 Operation-mode Firewall
