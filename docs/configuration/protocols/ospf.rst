@@ -734,11 +734,85 @@ the "<metric of the router which advertised the link>/<link metric>" format.
    This command displays LSAs in MaxAge list.
 
 
-Configuration Example
----------------------
+Examples
+--------
 
-Below you can see a typical configuration using 2 nodes, redistribute loopback
-address and the node 1 sending the default route:
+
+Enable OSPF
+^^^^^^^^^^^
+
+**Node 1**
+
+.. code-block:: none
+
+  set interfaces loopback lo address 10.1.1.1/32
+  set interfaces ethernet eth0 address 192.168.0.1/24
+  set protocols ospf area 0 network 192.168.0.0/24
+  set protocols ospf area 0 network 10.1.1.1/32
+  set protocols ospf parameters router-id 10.1.1.1
+
+**Node 2**
+
+.. code-block:: none
+
+  set interfaces loopback lo address 10.1.1.2/32
+  set interfaces ethernet eth0 address 192.168.0.2/24
+  set protocols ospf area 0 network 192.168.0.0/24
+  set protocols ospf area 0 network 10.1.1.2/32
+  set protocols ospf parameters router-id 10.1.1.2
+
+
+
+Here's the neighbors up:
+
+.. code-block:: none
+
+  Node-1@vyos:~$ show ip ospf neighbor
+
+  Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
+  10.1.1.2          1 Full/DR         3m43s             36.094s 192.168.0.2     eth0:192.168.0.1                     0     0     0
+
+
+
+  Node-2@vyos:~$ show ip ospf neighbor
+
+  Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
+  10.1.1.1          1 Full/Backup     3m47s             31.736s 192.168.0.1     eth0:192.168.0.2                     0     0     0
+
+Here's the routes:
+
+.. code-block:: none
+
+  Node-1@vyos:~$ show ip route ospf
+  Codes: K - kernel route, C - connected, S - static, R - RIP,
+         O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+         T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+         f - OpenFabric,
+         > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+         t - trapped, o - offload failure
+
+  O   10.1.1.1/32 [110/0] is directly connected, lo, weight 1, 00:00:14
+  O>* 10.1.1.2/32 [110/1] via 192.168.0.2, eth0, weight 1, 00:00:07
+  O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:32
+
+  Node-2@vyos:~$ show ip route ospf
+  Codes: K - kernel route, C - connected, S - static, R - RIP,
+         O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+         T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+         f - OpenFabric,
+         > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+         t - trapped, o - offload failure
+
+  O>* 10.1.1.1/32 [110/1] via 192.168.0.1, eth0, weight 1, 00:00:11
+  O   10.1.1.2/32 [110/0] is directly connected, lo, weight 1, 00:00:04
+  O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:18
+
+
+
+
+
+Enable OSPF with route redistribution of the loopback and default originate:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Node 1**
 
@@ -770,6 +844,89 @@ address and the node 1 sending the default route:
 
   set policy route-map CONNECT rule 10 action permit
   set policy route-map CONNECT rule 10 match interface lo
+
+
+Enable OSPF with Segment Routing (Experimental):
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Node 1**
+
+.. code-block:: none
+
+  set interfaces loopback lo address 10.1.1.1/32
+  set interfaces ethernet eth0 address 192.168.0.1/24
+  set protocols ospf area 0 network '192.168.0.0/24'
+  set protocols ospf area 0 network '10.1.1.1/32'
+  set protocols ospf parameters opaque-lsa
+  set protocols ospf parameters router-id '10.1.1.1'
+  set protocols ospf segment-routing global-block high-label-value '1100'
+  set protocols ospf segment-routing global-block low-label-value '1000'
+  set protocols ospf segment-routing prefix 10.1.1.1/32 index explicit-null
+  set protocols ospf segment-routing prefix 10.1.1.1/32 index value '1'
+
+**Node 2**
+
+.. code-block:: none
+
+  set interfaces loopback lo address 10.1.1.2/32
+  set interfaces ethernet eth0 address 192.168.0.2/24
+  set protocols ospf area 0 network '192.168.0.0/24'
+  set protocols ospf area 0 network '10.1.1.2/32'
+  set protocols ospf parameters opaque-lsa
+  set protocols ospf parameters router-id '10.1.1.2'
+  set protocols ospf segment-routing global-block high-label-value '1100'
+  set protocols ospf segment-routing global-block low-label-value '1000'
+  set protocols ospf segment-routing prefix 10.1.1.2/32 index explicit-null
+  set protocols ospf segment-routing prefix 10.1.1.2/32 index value '2'
+
+
+This gives us MPLS segment routing enabled and labels for far end loopbacks:
+
+.. code-block:: none
+
+  Node-1@vyos:~$ show mpls table
+   Inbound Label  Type       Nexthop      Outbound Label
+   -----------------------------------------------------------
+   1002           SR (OSPF)  192.168.0.2  IPv4 Explicit Null  <-- Node-2 loopback learned on Node-1
+   15000          SR (OSPF)  192.168.0.2  implicit-null
+   15001          SR (OSPF)  192.168.0.2  implicit-null
+
+  Node-2@vyos:~$ show mpls table
+   Inbound Label  Type       Nexthop      Outbound Label
+   -----------------------------------------------------------
+   1001           SR (OSPF)  192.168.0.1  IPv4 Explicit Null  <-- Node-1 loopback learned on Node-2
+   15000          SR (OSPF)  192.168.0.1  implicit-null
+   15001          SR (OSPF)  192.168.0.1  implicit-null
+
+Here is the routing tables showing the MPLS segment routing label operations:
+
+.. code-block:: none
+
+  Node-1@vyos:~$ show ip route ospf
+  Codes: K - kernel route, C - connected, S - static, R - RIP,
+         O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+         T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+         f - OpenFabric,
+         > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+         t - trapped, o - offload failure
+
+  O   10.1.1.1/32 [110/0] is directly connected, lo, weight 1, 00:03:43
+  O>* 10.1.1.2/32 [110/1] via 192.168.0.2, eth0, label IPv4 Explicit Null, weight 1, 00:03:32
+  O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:43
+
+  Node-2@vyos:~$ show ip route ospf
+  Codes: K - kernel route, C - connected, S - static, R - RIP,
+         O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+         T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+         f - OpenFabric,
+         > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+         t - trapped, o - offload failure
+
+  O>* 10.1.1.1/32 [110/1] via 192.168.0.1, eth0, label IPv4 Explicit Null, weight 1, 00:03:36
+  O   10.1.1.2/32 [110/0] is directly connected, lo, weight 1, 00:03:51
+  O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:51
+
+
 
 
 .. _routing-ospfv3:
