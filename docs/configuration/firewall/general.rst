@@ -323,6 +323,37 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall name WAN-IN-v4 rule 101 source address !203.0.113.0/24
       set firewall ipv6-name WAN-IN-v6 rule 100 source address 2001:db8::202
 
+.. cfgcmd:: set firewall name <name> rule <1-999999> source address-mask
+   [address]
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination address-mask
+   [address]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source address-mask
+   [address]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination
+   address-mask [address]
+
+   An arbitrary netmask can be applied to mask addresses to only match against
+   a specific portion. This is particularly useful with IPv6 and a zone-based
+   firewall as rules will remain valid if the IPv6 prefix changes and the host
+   portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses
+   <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)
+   
+   This functions for both individual addresses and address groups.
+
+   .. code-block:: none
+
+      # Match any IPv6 address with the suffix ::0000:0000:0000:beef
+      set firewall ipv6-name WAN-LAN-v6 rule 100 destination address ::beef
+      set firewall ipv6-name WAN-LAN-v6 rule 100 destination address-mask ::ffff:ffff:ffff:ffff
+      # Match any IPv4 address with `11` as the 2nd octet and `13` as the forth octet
+      set firewall name WAN-LAN-v4 rule 100 destination address 0.11.0.13
+      set firewall name WAN-LAN-v4 rule 100 destination address-mask 0.255.0.255
+      # Address groups
+      set firewall group ipv6-address-group WEBSERVERS address ::1000
+      set firewall group ipv6-address-group WEBSERVERS address ::2000
+      set firewall name WAN-LAN-v6 rule 200 source group address-group WEBSERVERS
+      set firewall name WAN-LAN-v6 rule 200 source address-mask ::ffff:ffff:ffff:ffff
+
 .. cfgcmd:: set firewall name <name> rule <1-999999> source geoip country-code
    <country>
 .. cfgcmd:: set firewall name <name> rule <1-999999> source geoip inverse-match
