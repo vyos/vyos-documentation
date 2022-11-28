@@ -8,6 +8,49 @@
    _ext/releasenotes.py
 
 
+2022-11-27
+==========
+
+* :vytask:`T4739` (feature): ISIS and OSPF segment routing being refactored
+
+
+2022-11-24
+==========
+
+* :vytask:`T4794` (bug): show firewall name <name> - Can't use .items() on a list
+* :vytask:`T4714` (feature): Delete unused ipset from the filecaps
+* :vytask:`T3541` (bug): Route Map large community set additive is missing
+
+
+2022-11-23
+==========
+
+* :vytask:`T4836` (feature): Kernel: enable new features like switchdev, ESP in TCP and HSR
+* :vytask:`T4835` (bug): SNMPD configuration incorrect for IPv6
+* :vytask:`T4819` (feature): Allow printing Warning messages in multiple lines with \n
+* :vytask:`T4807` (feature): Need to fix traceroute help completion
+* :vytask:`T4660` (feature): Reorganize route map set community CLI 
+* :vytask:`T4526` (bug): keepalived-fifo.py unable to load config
+* :vytask:`T4793` (feature): Create warning message about disable-route-autoinstall when ipsec vti is used
+* :vytask:`T4492` (bug): Incorrect list of neighbors in help for "show bgp vrf VRF neighbors"
+* :vytask:`T4496` (feature): ping vrf help does not list VRFs
+
+
+2022-11-22
+==========
+
+* :vytask:`T4823` (bug): swanctl.conf is broken when ipsec site-to-site peer set.
+* :vytask:`T4706` (bug): NAT and NAT66 issues
+* :vytask:`T4670` (feature): policy route - Update matching criteria
+
+
+2022-11-21
+==========
+
+* :vytask:`T4812` (feature): IPsec ability to show all configured connections
+* :vytask:`T4829` (default): Tunnel argument to 'reset_peer' in ipsec.py should have type hint Optional
+
+
 2022-11-20
 ==========
 

@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2022-11-23
+==========
+
+* :vytask:`T4793` (feature): Create warning message about disable-route-autoinstall when ipsec vti is used
+
+
+2022-11-21
+==========
+
+* :vytask:`T4812` (feature): IPsec ability to show all configured connections
+
+
 2022-11-06
 ==========
 
