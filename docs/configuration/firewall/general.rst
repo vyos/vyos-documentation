@@ -276,24 +276,39 @@ the action of the rule will be executed.
 
    Provide a rule-set description.
 
-.. cfgcmd:: set firewall name <name> default-action [drop | reject | accept]
-.. cfgcmd:: set firewall ipv6-name <name> default-action [drop | reject |
-   accept]
+.. cfgcmd:: set firewall name <name> default-action [accept | drop | jump |
+   reject | return]
+.. cfgcmd:: set firewall ipv6-name <name> default-action [accept | drop |
+   jump | reject | return]
 
    This set the default action of the rule-set if no rule matched a packet
-   criteria.
+   criteria. If defacult-action is set to ``jump``, then
+   ``default-jump-target`` is also needed.
+
+.. cfgcmd:: set firewall name <name> default-jump-target <text>
+.. cfgcmd:: set firewall ipv6-name <name> default-jump-target <text>
+
+   To be used only when ``defult-action`` is set to ``jump``. Use this
+   command to specify jump target for default rule.
 
 .. cfgcmd:: set firewall name <name> enable-default-log
 .. cfgcmd:: set firewall ipv6-name <name> enable-default-log
 
    Use this command to enable the logging of the default action.
 
-.. cfgcmd:: set firewall name <name> rule <1-999999> action [drop | reject |
-   accept]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> action [drop |
-   reject | accept]
+.. cfgcmd:: set firewall name <name> rule <1-999999> action [accept | drop |
+   jump | reject | return]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> action [accept |
+   drop | jump | reject | return]
 
-   This required setting defines the action of the current rule.
+   This required setting defines the action of the current rule. If action
+   is set to ``jump``, then ``jump-target`` is also needed.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> jump-target <text>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> jump-target <text>
+
+   To be used only when ``action`` is set to ``jump``. Use this
+   command to specify jump target.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> description <text>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> description <text>
@@ -348,6 +363,46 @@ There are a lot of matching criteria against which the package can be tested.
       # with a '!' the rule match everything except the specified subnet
       set firewall name WAN-IN-v4 rule 101 source address !203.0.113.0/24
       set firewall ipv6-name WAN-IN-v6 rule 100 source address 2001:db8::202
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> source address-mask
+   [address]
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination address-mask
+   [address]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source address-mask
+   [address]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination
+   address-mask [address]
+
+   An arbitrary netmask can be applied to mask addresses to only match against
+   a specific portion. This is particularly useful with IPv6 and a zone-based
+   firewall as rules will remain valid if the IPv6 prefix changes and the host
+   portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses
+   <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)
+
+   This functions for both individual addresses and address groups.
+
+   .. code-block:: none
+
+      # Match any IPv6 address with the suffix ::0000:0000:0000:beef
+      set firewall ipv6-name WAN-LAN-v6 rule 100 destination address ::beef
+      set firewall ipv6-name WAN-LAN-v6 rule 100 destination address-mask ::ffff:ffff:ffff:ffff
+      # Match any IPv4 address with `11` as the 2nd octet and `13` as the forth octet
+      set firewall name WAN-LAN-v4 rule 100 destination address 0.11.0.13
+      set firewall name WAN-LAN-v4 rule 100 destination address-mask 0.255.0.255
+      # Address groups
+      set firewall group ipv6-address-group WEBSERVERS address ::1000
+      set firewall group ipv6-address-group WEBSERVERS address ::2000
+      set firewall name WAN-LAN-v6 rule 200 source group address-group WEBSERVERS
+      set firewall name WAN-LAN-v6 rule 200 source address-mask ::ffff:ffff:ffff:ffff
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> source fqdn <fqdn>
+.. cfgcmd:: set firewall name <name> rule <1-999999> destination fqdn <fqdn>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source fqdn <fqdn>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination fqdn
+   <fqdn>
+
+   Specify a Fully Qualified Domain Name as source/destination matcher. Ensure
+   router is able to resolve such dns query.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source geoip country-code
    <country>
@@ -407,7 +462,7 @@ geoip) to keep database and rules updated.
       set firewall name WAN-IN-v4 rule 12 source port 'https'
 
    Multiple source ports can be specified as a comma-separated list.
-   The whole list can also be "negated" using '!'. For example:
+   The whole list can also be "negated" using ``!``. For example:
 
    .. code-block:: none
 
@@ -422,7 +477,7 @@ geoip) to keep database and rules updated.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    address-group <name | !name>
 
-   Use a specific address-group. Prepend character '!' for inverted matching
+   Use a specific address-group. Prepend character ``!`` for inverted matching
    criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
@@ -434,7 +489,7 @@ geoip) to keep database and rules updated.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    network-group <name | !name>
 
-   Use a specific network-group. Prepend character '!' for inverted matching
+   Use a specific network-group. Prepend character ``!`` for inverted matching
    criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
@@ -446,7 +501,7 @@ geoip) to keep database and rules updated.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    port-group <name | !name>
 
-   Use a specific port-group. Prepend character '!' for inverted matching
+   Use a specific port-group. Prepend character ``!`` for inverted matching
    criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
@@ -458,7 +513,7 @@ geoip) to keep database and rules updated.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    domain-group <name | !name>
 
-   Use a specific domain-group. Prepend character '!' for inverted matching
+   Use a specific domain-group. Prepend character ``!`` for inverted matching
    criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
@@ -470,8 +525,18 @@ geoip) to keep database and rules updated.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    mac-group <name | !name>
 
-   Use a specific mac-group. Prepend character '!' for inverted matching
+   Use a specific mac-group. Prepend character ``!`` for inverted matching
    criteria.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> dscp [0-63 | start-end]
+.. cfgcmd:: set firewall name <name> rule <1-999999> dscp-exclude [0-63 |
+   start-end]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> dscp [0-63 |
+   start-end]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> dscp-exclude [0-63 |
+   start-end]
+
+   Match based on dscp value.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> fragment [match-frag |
    match-non-frag]
@@ -493,6 +558,18 @@ geoip) to keep database and rules updated.
 
    Match based on icmp|icmpv6 type-name criteria. Use tab for information
    about what **type-name** criteria are supported.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> inbound-interface
+   <iface>
+.. cfgcmd:: set firewall name <name> rule <1-999999> outbound-interface
+   <iface>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> inbound-interface
+   <iface>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> outbound-interface
+   <iface>
+
+   Match based on inbound/outbound interface. Wilcard ``*`` can be used.
+   For example: ``eth2*``
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> ipsec [match-ipsec
    | match-none]
