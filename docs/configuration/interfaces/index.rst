@@ -20,6 +20,7 @@ Interfaces
    pppoe
    pseudo-ethernet
    tunnel
+   virtual-ethernet
    vti
    vxlan
    wireless

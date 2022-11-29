@@ -276,39 +276,24 @@ the action of the rule will be executed.
 
    Provide a rule-set description.
 
-.. cfgcmd:: set firewall name <name> default-action [accept | drop | jump |
-   reject | return]
-.. cfgcmd:: set firewall ipv6-name <name> default-action [accept | drop |
-   jump | reject | return]
+.. cfgcmd:: set firewall name <name> default-action [drop | reject | accept]
+.. cfgcmd:: set firewall ipv6-name <name> default-action [drop | reject |
+   accept]
 
    This set the default action of the rule-set if no rule matched a packet
-   criteria. If defacult-action is set to ``jump``, then
-   ``default-jump-target`` is also needed.
-
-.. cfgcmd:: set firewall name <name> default-jump-target <text>
-.. cfgcmd:: set firewall ipv6-name <name> default-jump-target <text>
-
-   To be used only when ``defult-action`` is set to ``jump``. Use this
-   command to specify jump target for default rule.
+   criteria.
 
 .. cfgcmd:: set firewall name <name> enable-default-log
 .. cfgcmd:: set firewall ipv6-name <name> enable-default-log
 
    Use this command to enable the logging of the default action.
 
-.. cfgcmd:: set firewall name <name> rule <1-999999> action [accept | drop |
-   jump | reject | return]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> action [accept |
-   drop | jump | reject | return]
+.. cfgcmd:: set firewall name <name> rule <1-999999> action [drop | reject |
+   accept]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> action [drop |
+   reject | accept]
 
-   This required setting defines the action of the current rule. If action
-   is set to ``jump``, then ``jump-target`` is also needed.
-
-.. cfgcmd:: set firewall name <name> rule <1-999999> jump-target <text>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> jump-target <text>
-
-   To be used only when ``action`` is set to ``jump``. Use this
-   command to specify jump target.
+   This required setting defines the action of the current rule.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> description <text>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> description <text>
@@ -339,9 +324,9 @@ Matching criteria
 There are a lot of matching criteria against which the package can be tested.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> connection-status nat
-   [destination | source]
+   [destination | source]
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> connection-status
-   nat [destination | source]
+   nat [destination | source]
 
    Match criteria based on nat connection status.
 
@@ -378,7 +363,7 @@ There are a lot of matching criteria against which the package can be tested.
    firewall as rules will remain valid if the IPv6 prefix changes and the host
    portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses
    <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)
-
+   
    This functions for both individual addresses and address groups.
 
    .. code-block:: none
@@ -394,15 +379,6 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall group ipv6-address-group WEBSERVERS address ::2000
       set firewall name WAN-LAN-v6 rule 200 source group address-group WEBSERVERS
       set firewall name WAN-LAN-v6 rule 200 source address-mask ::ffff:ffff:ffff:ffff
-
-.. cfgcmd:: set firewall name <name> rule <1-999999> source fqdn <fqdn>
-.. cfgcmd:: set firewall name <name> rule <1-999999> destination fqdn <fqdn>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> source fqdn <fqdn>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination fqdn
-   <fqdn>
-
-   Specify a Fully Qualified Domain Name as source/destination matcher. Ensure
-   router is able to resolve such dns query.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source geoip country-code
    <country>
@@ -462,7 +438,7 @@ geoip) to keep database and rules updated.
       set firewall name WAN-IN-v4 rule 12 source port 'https'
 
    Multiple source ports can be specified as a comma-separated list.
-   The whole list can also be "negated" using ``!``. For example:
+   The whole list can also be "negated" using '!'. For example:
 
    .. code-block:: none
 
@@ -477,7 +453,7 @@ geoip) to keep database and rules updated.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    address-group <name | !name>
 
-   Use a specific address-group. Prepend character ``!`` for inverted matching
+   Use a specific address-group. Prepend character '!' for inverted matching
    criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
@@ -489,7 +465,7 @@ geoip) to keep database and rules updated.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    network-group <name | !name>
 
-   Use a specific network-group. Prepend character ``!`` for inverted matching
+   Use a specific network-group. Prepend character '!' for inverted matching
    criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
@@ -501,7 +477,7 @@ geoip) to keep database and rules updated.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    port-group <name | !name>
 
-   Use a specific port-group. Prepend character ``!`` for inverted matching
+   Use a specific port-group. Prepend character '!' for inverted matching
    criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
@@ -513,7 +489,7 @@ geoip) to keep database and rules updated.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    domain-group <name | !name>
 
-   Use a specific domain-group. Prepend character ``!`` for inverted matching
+   Use a specific domain-group. Prepend character '!' for inverted matching
    criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
@@ -525,18 +501,8 @@ geoip) to keep database and rules updated.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    mac-group <name | !name>
 
-   Use a specific mac-group. Prepend character ``!`` for inverted matching
+   Use a specific mac-group. Prepend character '!' for inverted matching
    criteria.
-
-.. cfgcmd:: set firewall name <name> rule <1-999999> dscp [0-63 | start-end]
-.. cfgcmd:: set firewall name <name> rule <1-999999> dscp-exclude [0-63 |
-   start-end]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> dscp [0-63 |
-   start-end]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> dscp-exclude [0-63 |
-   start-end]
-
-   Match based on dscp value.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> fragment [match-frag |
    match-non-frag]
@@ -558,18 +524,6 @@ geoip) to keep database and rules updated.
 
    Match based on icmp|icmpv6 type-name criteria. Use tab for information
    about what **type-name** criteria are supported.
-
-.. cfgcmd:: set firewall name <name> rule <1-999999> inbound-interface
-   <iface>
-.. cfgcmd:: set firewall name <name> rule <1-999999> outbound-interface
-   <iface>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> inbound-interface
-   <iface>
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> outbound-interface
-   <iface>
-
-   Match based on inbound/outbound interface. Wilcard ``*`` can be used.
-   For example: ``eth2*``
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> ipsec [match-ipsec
    | match-none]
@@ -841,7 +795,7 @@ Rule-set overview
 
    This will show you a statistic of all rule-sets since the last boot.
 
-.. opcmd:: show firewall [name | ipv6name] <name> rule <1-999999>
+.. opcmd:: show firewall [name | ipv6name] <name> rule <1-999999>
 
    This command will give an overview of a rule in a single rule-set
 
@@ -869,15 +823,15 @@ Rule-set overview
       Members    :
                   10.10.0.0/16
 
-.. opcmd:: show firewall [name | ipv6name] <name>
+.. opcmd:: show firewall [name | ipv6name] <name>
 
    This command will give an overview of a single rule-set.
 
-.. opcmd:: show firewall [name | ipv6name] <name> statistics
+.. opcmd:: show firewall [name | ipv6name] <name> statistics
 
    This will show you a rule-set statistic since the last boot.
 
-.. opcmd:: show firewall [name | ipv6name] <name> rule <1-999999>
+.. opcmd:: show firewall [name | ipv6name] <name> rule <1-999999>
 
    This command will give an overview of a rule in a single rule-set.
 
@@ -906,7 +860,7 @@ Zone-Policy Overview
 Show Firewall log
 =================
 
-.. opcmd:: show log firewall [name | ipv6name] <name>
+.. opcmd:: show log firewall [name | ipv6name] <name>
 
    Show the logs of a specific Rule-Set.
 
