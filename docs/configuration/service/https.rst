@@ -72,9 +72,9 @@ Configuration
    Lifetime in days; default is 365
 
 
-*********************
-Example Configuration
-*********************
+**********************
+Example Configurations
+**********************
 
 Set an API-KEY is the minimal configuration to get a working API Endpoint.
 
@@ -82,14 +82,52 @@ Set an API-KEY is the minimal configuration to get a working API Endpoint.
 
    set service https api keys id MY-HTTPS-API-ID key MY-HTTPS-API-PLAINTEXT-KEY
 
+The following examples demonstrate how to configure TLS certificates and 
+virtual hosts.
 
-To use this full configuration we asume a public accessible hostname.
+Certbot Integration
+===================
+
+This configuration example uses Nginx's certbot integration to set up the API 
+with a TLS certificate acquired from LetsEncrypt. This will require the 
+following conditions:
+
+* The hostname points to your Vyos instance in the public DNS system
+* The instance is reachable by LetsEncrypt's public servers using that hostname
 
 .. code-block:: none
 
    set service https api keys id MY-HTTPS-API-ID key MY-HTTPS-API-PLAINTEXT-KEY
    set service https certificates certbot domain-name rtr01.example.com
    set service https certificates certbot email mail@example.com
+   set service https virtual-host rtr01 listen-address 198.51.100.2
+   set service https virtual-host rtr01 listen-port 11443
+   set service https virtual-host rtr01 server-name rtr01.example.com
+   set service https api-restrict virtual-host rtr01
+
+Manual Certificate 
+==================
+
+If the Vyos instance is not publicly accessible, certbot cannot be used directly 
+to automatically manage certificates using the HTTP challenge method. However, 
+if you have an externally acquired certificate, such as one acquired through 
+LetsEncrypt's DNS challenge method, it can be loaded directly into the PKI 
+and used from there.
+
+To see how to load a full certificate chain, refer to the 
+:ref:`pki-cert-chains-example` documentation. 
+
+As in the example, assume that the certificate in the PKI is stored as 
+``my_cert`` and the associated CA was stored as ``lets_encrypt``. After that, 
+the API can be configured as follows:
+
+.. code-block:: none
+
+   set service https api keys id MY-HTTPS-API-ID key MY-HTTPS-API-PLAINTEXT-KEY
+
+   set service https certificates ca-certificate lets_encrypt
+   set service https certificates certificate my_cert
+
    set service https virtual-host rtr01 listen-address 198.51.100.2
    set service https virtual-host rtr01 listen-port 11443
    set service https virtual-host rtr01 server-name rtr01.example.com

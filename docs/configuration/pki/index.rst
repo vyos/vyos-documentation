@@ -6,7 +6,7 @@
 PKI
 ###
 
-VyOS 1.4 changed the way in how encrytion keys or certificates are stored on the
+VyOS 1.4 changed the way in how encryption keys or certificates are stored on the
 system. In the pre VyOS 1.4 era, certificates got stored under /config and every
 service referenced a file. That made copying a running configuration from system
 A to system B a bit harder, as you had to copy the files and their permissions
@@ -247,6 +247,96 @@ certificates used by services on this router.
 .. cfgcmd:: set pki certificate <name> revoke
 
   If CA is present, this certificate will be included in generated CRLs
+
+.. _pki-cert-chains-example:
+
+Certificate Chains Example
+--------------------------
+
+This example is meant to clarify the role of certificate chains and how to
+import them into Vyos' PKI for those unfamiliar with how they work.
+
+When Vyos is used to terminate a TLS session, such as in the case of enabling
+the :ref:`http-api`, it will not be enough to simply add the server's 
+certificate and key to the PKI unless that certificate is issued directly by
+a root CA which the client already trusts.
+
+RFC 5246 7.4.2 specifies that during a TLS handshake the server must provide the
+entire chain of public certificates (optionally omitting the root certificate) 
+which authenticate its identity to the client. The first certificate in that 
+list will be the server's certificate, for which the server also has the 
+corresponding private key. Each certificate which follows must directly certify
+the one which precedes it, up to the root certificate. These certifying 
+certificates are ones for which the server will not possess the corresponding 
+private key.
+
+As an example, LetsEncrypt supplies a ``fullchain.pem`` file which contains the 
+entire chain of public certificates concatenated in the correct order, starting 
+with the server certificate and ending with the root certificate. When manually
+adding a LetsEncrypt certificate to Vyos' PKI, such as in the case of a DNS 
+wildcard certificate generated somewhere other than Vyos, the server certificate
+and its private key should be added with the ``set pki certificate`` command and 
+all following certificates should be added with the ``set pki ca`` command 
+without a private key.
+
+The following ``sed`` command will break a concatenated file of certificates 
+into several single-line base 64 representations which can be directly used in 
+the ``set pki certificate <name> certificate`` and 
+``set pki ca <name> certificate`` commands.
+
+.. code-block:: bash
+
+  sed -r ':a;N;$!ba;s/\n//g;s/-{5}[A-Z ]+-{5}/ /g;s/(^\s+|\s+$)//g;s/\s+/\n\n/g' fullchain.pem
+
+  # This can also be set as a bash alias with some escaping
+  alias pem-vyos="sed -r ':a;N;\$!ba;s/\\n//g;s/-{5}[A-Z ]+-{5}/ /g;s/(^\\s+|\\s+$)//g;s/\s+/\\n\\n/g'"
+  pem-vyos fullchain.pem
+
+For example, assume you are trying to use an externally generated LetsEncrypt 
+DNS wildcard certificate into Vyos' PKI for use with the :ref:`http-api`. You 
+have four files from LetsEncrypt:
+
+* ``cert.pem`` - contains the wildcard certificate for your server
+* ``privkey.pem`` - contains the private key which matches ``cert.pem``
+* ``chain.pem`` - contains the public certs for LetsEncrypt and ISRG (root CA)
+* ``fullchain.pem`` - concatenation of ``cert.pem`` plus ``chain.pem``
+
+Running the ``sed`` command above on ``chain.pem`` or ``fullchain.pem`` will 
+output two or three (respectively) single line base 64 certificates which can 
+be directly copied and pasted. The last certificate in the output will be the 
+root CA, and the second-to-last will be LetsEncrypt's. 
+
+.. code-block:: none
+
+  set pki ca isrg certificate <ISRG's certificate data>
+  set pki ca lets_encrypt certificate <LetsEncrypt's certificate data>
+
+Then running the ``sed`` command on ``cert.pem`` and ``privkey.pem`` will output
+the prepared forms of your server certificate and its private key, respectively.
+
+.. code-block:: none
+
+  set pki certificate my_cert certificate <certificate data>
+  set pki certificate my_cert private key <key data>
+
+If there are more issuer certificates in the chain, they should also be added 
+as CAs. The configuration can be verified with the ``show pki`` command:
+
+.. code-block:: none 
+
+  vyos@vyos:~$ show pki
+  Certificate Authorities:
+  Name          Subject                                                  Issuer CN          Issued               Expiry               Private Key    Parent
+  ------------  -------------------------------------------------------  -----------------  -------------------  -------------------  -------------  --------
+  isrg          CN=ISRG Root X1,O=Internet Security Research Group,C=US  CN=DST Root CA X3  2021-01-20 19:14:03  2024-09-30 18:14:03  No             N/A
+  lets_encrypt  CN=R3,O=Let's Encrypt,C=US                               CN=ISRG Root X1    2020-09-04 00:00:00  2025-09-15 16:00:00  No             isrg
+  Certificates:
+  Name             Type    Subject CN            Issuer CN    Issued               Expiry               Revoked    Private Key    CA Present
+  ---------------  ------  --------------------  -----------  -------------------  -------------------  ---------  -------------  ------------------
+  my_cert          Server  CN=*.example.com      CN=R3        2022-11-28 10:19:30  2023-02-26 10:19:29  No         Yes            Yes (lets_encrypt)
+
+The certificate should identify the correct CA under the "CA Present" field, and 
+each CA should identify the correct parent down to the root CA.
 
 Operation
 =========
