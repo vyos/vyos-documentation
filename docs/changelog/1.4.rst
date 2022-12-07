@@ -8,6 +8,37 @@
    _ext/releasenotes.py
 
 
+2022-12-04
+==========
+
+* :vytask:`T4825` (feature): interfaces veth/veth-pairs -standalone used
+* :vytask:`T4805` (bug): PPPoE server does not restart service if pool was changed
+
+
+2022-12-02
+==========
+
+* :vytask:`T4830` (bug): nat66 - Error in port translation rules
+* :vytask:`T4859` (bug): Correct calling of config mode script dependencies from http-api.py
+* :vytask:`T4820` (enhancment): Support for inter-config-mode script dependencies
+* :vytask:`T4858` (bug): L3VPN- Route Distinguisher notations 
+* :vytask:`T1024` (feature): Policy Based Routing by DSCP
+
+
+2022-12-01
+==========
+
+* :vytask:`T4841` (feature): add fan control
+* :vytask:`T4847` (bug): Correct calling of config mode script dependencies from pki.py
+
+
+2022-11-29
+==========
+
+* :vytask:`T4842` (bug): Routing config broken if mpls config exists
+* :vytask:`T4845` (default): Add smoketest to detect cycles in config-mode script dependency calls
+
+
 2022-11-27
 ==========
 
