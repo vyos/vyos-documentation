@@ -1,8 +1,8 @@
 .. _sstp:
 
-####
-SSTP
-####
+###########
+SSTP Server
+###########
 
 :abbr:`SSTP (Secure Socket Tunneling Protocol)` is a form of :abbr:`VPN
 (Virtual Private Network)` tunnel that provides a mechanism to transport PPP
