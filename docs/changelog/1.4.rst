@@ -8,6 +8,20 @@
    _ext/releasenotes.py
 
 
+2022-12-09
+==========
+
+* :vytask:`T4865` (bug): container impossible to generate local image from a file if it requires install some pkgs
+
+
+2022-12-05
+==========
+
+* :vytask:`T4860` (bug): Openconnect server incorrect unconfigured check
+* :vytask:`T4804` (bug): PPPoE server incorrect unconfigured check
+* :vytask:`T4854` (feature): BGP-route reflector allows to apply route-maps
+
+
 2022-12-04
 ==========
 
