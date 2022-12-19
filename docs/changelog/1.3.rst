@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2022-12-18
+==========
+
+* :vytask:`T4709` (bug): TCP MSS clamping broken in equuleus
+
+
+2022-12-15
+==========
+
+* :vytask:`T4671` (bug): linux-firmware package is missing symlinks defined in WHENCE file
+
+
 2022-12-02
 ==========
 
