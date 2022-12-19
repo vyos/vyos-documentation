@@ -19,7 +19,9 @@ Interfaces
    wireguard
    pppoe
    pseudo-ethernet
+   sstp-client
    tunnel
+   virtual-ethernet
    vti
    vxlan
    wireless

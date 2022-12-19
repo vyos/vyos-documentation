@@ -8,6 +8,302 @@
    _ext/releasenotes.py
 
 
+2022-12-18
+==========
+
+* :vytask:`T4882` (bug): Missing ICMPv6 type names in firewall configuration
+
+
+2022-12-15
+==========
+
+* :vytask:`T4671` (bug): linux-firmware package is missing symlinks defined in WHENCE file
+
+
+2022-12-14
+==========
+
+* :vytask:`T4881` (bug): Return opmode.Error on openconnect.py show_sessions
+
+
+2022-12-12
+==========
+
+* :vytask:`T4861` (feature): Openconnect restart on adding users - Aborts all active connections
+
+
+2022-12-09
+==========
+
+* :vytask:`T4865` (bug): container impossible to generate local image from a file if it requires install some pkgs
+
+
+2022-12-05
+==========
+
+* :vytask:`T4860` (bug): Openconnect server incorrect unconfigured check
+* :vytask:`T4804` (bug): PPPoE server incorrect unconfigured check
+* :vytask:`T4854` (feature): BGP-route reflector allows to apply route-maps
+
+
+2022-12-04
+==========
+
+* :vytask:`T4825` (feature): interfaces veth/veth-pairs -standalone used
+* :vytask:`T4805` (bug): PPPoE server does not restart service if pool was changed
+
+
+2022-12-02
+==========
+
+* :vytask:`T4830` (bug): nat66 - Error in port translation rules
+* :vytask:`T4859` (bug): Correct calling of config mode script dependencies from http-api.py
+* :vytask:`T4820` (enhancment): Support for inter-config-mode script dependencies
+* :vytask:`T4858` (bug): L3VPN- Route Distinguisher notations 
+* :vytask:`T1024` (feature): Policy Based Routing by DSCP
+
+
+2022-12-01
+==========
+
+* :vytask:`T4841` (feature): add fan control
+* :vytask:`T4847` (bug): Correct calling of config mode script dependencies from pki.py
+
+
+2022-11-29
+==========
+
+* :vytask:`T4842` (bug): Routing config broken if mpls config exists
+* :vytask:`T4845` (default): Add smoketest to detect cycles in config-mode script dependency calls
+
+
+2022-11-27
+==========
+
+* :vytask:`T4739` (feature): ISIS and OSPF segment routing being refactored
+
+
+2022-11-24
+==========
+
+* :vytask:`T4794` (bug): show firewall name <name> - Can't use .items() on a list
+* :vytask:`T4714` (feature): Delete unused ipset from the filecaps
+* :vytask:`T3541` (bug): Route Map large community set additive is missing
+
+
+2022-11-23
+==========
+
+* :vytask:`T4836` (feature): Kernel: enable new features like switchdev, ESP in TCP and HSR
+* :vytask:`T4835` (bug): SNMPD configuration incorrect for IPv6
+* :vytask:`T4819` (feature): Allow printing Warning messages in multiple lines with \n
+* :vytask:`T4807` (feature): Need to fix traceroute help completion
+* :vytask:`T4660` (feature): Reorganize route map set community CLI 
+* :vytask:`T4526` (bug): keepalived-fifo.py unable to load config
+* :vytask:`T4793` (feature): Create warning message about disable-route-autoinstall when ipsec vti is used
+* :vytask:`T4492` (bug): Incorrect list of neighbors in help for "show bgp vrf VRF neighbors"
+* :vytask:`T4496` (feature): ping vrf help does not list VRFs
+
+
+2022-11-22
+==========
+
+* :vytask:`T4823` (bug): swanctl.conf is broken when ipsec site-to-site peer set.
+* :vytask:`T4706` (bug): NAT and NAT66 issues
+* :vytask:`T4670` (feature): policy route - Update matching criteria
+
+
+2022-11-21
+==========
+
+* :vytask:`T4812` (feature): IPsec ability to show all configured connections
+* :vytask:`T4829` (default): Tunnel argument to 'reset_peer' in ipsec.py should have type hint Optional
+
+
+2022-11-20
+==========
+
+* :vytask:`T4827` (bug): route-map issues , not load configuration FRR
+
+
+2022-11-19
+==========
+
+* :vytask:`T4826` (bug): Wrong key type is used for SSH SK public keys
+* :vytask:`T4720` (feature): Ability to configure SSH HostKeyAlgorithms
+* :vytask:`T4828` (default): Raise appropriate op-mode errors in ipsec.py 'reset_peer'
+
+
+2022-11-18
+==========
+
+* :vytask:`T4821` (bug): Correct calling of config mode script dependencies from firewall.py
+
+
+2022-11-17
+==========
+
+* :vytask:`T4750` (feature): Support of higher level SSH keys (sk-ssh-ed25519)
+
+
+2022-11-15
+==========
+
+* :vytask:`T4808` (feature): Add details of configtree operations to migration log
+
+
+2022-11-12
+==========
+
+* :vytask:`T4814` (bug): Regression in bundled powerdns version
+
+
+2022-11-09
+==========
+
+* :vytask:`T4800` (bug): undefined var includes_chroot_dir in build-vyos-image 
+
+
+2022-11-08
+==========
+
+* :vytask:`T4771` (feature): Rewrite protocol BGP op-mode to vyos.opmode format
+* :vytask:`T4806` (default): Update FRR to 8.4 in 1.4 version
+
+
+2022-11-06
+==========
+
+* :vytask:`T4803` (bug): The header 'Authorization' needs to be explictly allowed in http-api CORS middleware
+
+
+2022-11-05
+==========
+
+* :vytask:`T4802` (feature): Ability to define per container shared-memory size
+
+
+2022-11-01
+==========
+
+* :vytask:`T4764` (bug): NAT tables vyos_nat  and vyos_static_nat not deleting after deleting nat
+* :vytask:`T4177` (bug): Strip-private doesn't work for service monitoring
+
+
+2022-10-31
+==========
+
+* :vytask:`T4786` (feature): Add package python3-pyhumps
+* :vytask:`T1875` (feature): Add the ability to use network address as BGP neighbor (bgp listen range)
+* :vytask:`T4785` (feature): snmp: Allow !, @, * and # in community name
+* :vytask:`T4787` (feature): ipsec: add support for road-warrior/remote-access RADIUS timeout
+
+
+2022-10-29
+==========
+
+* :vytask:`T4783` (default): Add support for stunnel
+* :vytask:`T4784` (feature): Add description node for static route/route6 tagNodes
+
+
+2022-10-28
+==========
+
+* :vytask:`T4291` (default): Consolidate component version read/write functions
+
+
+2022-10-27
+==========
+
+* :vytask:`T4763` (feature): Change XML for Show nat destination statistics
+* :vytask:`T4762` (bug): Show nat rules with empty rules incorrect error
+* :vytask:`T4778` (bug): Raise error UnconfiguredSubsystem if op-mode ipsec.py fails initialization
+
+
+2022-10-26
+==========
+
+* :vytask:`T4773` (default): Add camel_case to snake_case conversion utility
+
+
+2022-10-25
+==========
+
+* :vytask:`T4574` (default): Add token based authentication to GraphQL API
+
+
+2022-10-24
+==========
+
+* :vytask:`T4772` (default): Return list of dicts in 'raw' output of route.py instead of dict with redundant information
+
+
+2022-10-23
+==========
+
+* :vytask:`T3723` (bug): op-mode IPSec show vpn ipsec sa output with underscores
+
+
+2022-10-21
+==========
+
+* :vytask:`T4768` (default): Change name of api child node from 'gql' to 'graphql'
+
+
+2022-10-18
+==========
+
+* :vytask:`T4684` (feature): Rewrite show ip route by protocol to vyos.opmode format
+* :vytask:`T4533` (bug): Radius clients don’t  have simple permissions
+* :vytask:`T4753` (enhancment): Extend automatic generation of schema to query SystemStatus
+
+
+2022-10-17
+==========
+
+* :vytask:`T4725` (bug): Unable to reset vpn IPsec peer
+
+
+2022-10-14
+==========
+
+* :vytask:`T4672` (bug): RADIUS server disable does not work
+* :vytask:`T4749` (enhancment): Use config_dict for conf_mode http-api.py
+
+
+2022-10-13
+==========
+
+* :vytask:`T4746` (bug): Monitoring nft. table vyos_filter by default does not exist but telegraf checks this table
+* :vytask:`T4744` (bug): BGP directly connected neighbors don't compatible with ebgp-multihop
+* :vytask:`T4716` (feature): SSH ability to configure RekeyLimit
+* :vytask:`T4343` (default): Expose powerdns network-timeout for service dns forwarding
+* :vytask:`T4312` (bug): Telegraf configuration doesn't accept IPs for URL
+* :vytask:`T4274` (default): Extend OpenConnect RADIUS Timeout to Permit 2FA Entry
+
+
+2022-10-12
+==========
+
+* :vytask:`T4747` (bug): Monitoring influxdb template input exec plugin does not work
+* :vytask:`T4740` (bug): Show conntrack table ipv6 fail
+* :vytask:`T4730` (bug): Conntrack-sync error - listen-address is not the correct type in config as it should be
+
+
+2022-10-11
+==========
+
+* :vytask:`T4742` (bug): Autocomplete in policy route rule x set table / does not show the tables created in the static protocols
+* :vytask:`T4741` (bug): set firewall zone Local local-zone failed
+* :vytask:`T4680` (bug): Telegraf prometheus-client listen-address invalid format
+
+
+2022-10-10
+==========
+
+* :vytask:`T538` (feature): Support for network mapping in NAT
+
+
 2022-10-09
 ==========
 
@@ -104,12 +400,6 @@
 
 * :vytask:`T4682` (feature): Rewrite 'show system storage' in standardized format
 * :vytask:`T4681` (feature): Complete standardization of show_uptime.py
-
-
-2022-09-08
-==========
-
-* :vytask:`T4526` (bug): keepalived-fifo.py unable to load config
 
 
 2022-09-06
@@ -1078,12 +1368,6 @@
 * :vytask:`T4138` (bug): NAT configuration allows to set incorrect port range and invalid port
 
 
-2022-01-29
-==========
-
-* :vytask:`T4153` (bug): Monitor bandwidth-test initiate not working
-
-
 2022-01-28
 ==========
 
@@ -1178,7 +1462,6 @@
 
 * :vytask:`T4182` (bug): Show vrrp if vrrp not configured bug
 * :vytask:`T4179` (feature): Add op-mode CLI for show high-availability virtual-server
-* :vytask:`T4177` (bug): Strip-private doesn't work for service monitoring
 
 
 2022-01-13
@@ -1977,7 +2260,6 @@
 * :vytask:`T3764` (bug): Unconfigurable IKE and ESP lifetime
 * :vytask:`T3234` (bug): multi_to_list fails in certain cases, with root cause an element redundancy in XML interface-definitions
 * :vytask:`T3732` (feature): override-default helper should support adding defaultValues to default less nodes
-* :vytask:`T3574` (default): Add constraintGroup for combining validators with logical AND
 * :vytask:`T3759` (default): [L3VPN] VPNv4/VPNv6 add commands 
 
 
@@ -2777,7 +3059,6 @@
 ==========
 
 * :vytask:`T2848` (feature): bgp-add-path configuration options
-* :vytask:`T1875` (feature): Add the ability to use network address as BGP neighbor (bgp listen range)
 
 
 2021-02-12

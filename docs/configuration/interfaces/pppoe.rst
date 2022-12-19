@@ -69,6 +69,10 @@ Common interface configuration
    :var0: pppoe
    :var1: pppoe0
 
+.. cmdinclude:: /_include/interface-mtu.txt
+   :var0: pppoe
+   :var1: pppoe0
+
 .. cmdinclude:: /_include/interface-vrf.txt
    :var0: pppoe
    :var1: pppoe0
@@ -154,11 +158,6 @@ PPPoE options
 
    Use this command to set the IP address of the local endpoint of a PPPoE
    session. If it is not set it will be negotiated.
-
-.. cfgcmd:: set interfaces pppoe <interface> mtu <mtu>
-
-   Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It
-   is the size (in bytes) of the largest ethernet frame sent on this link.
 
 .. cfgcmd:: set interfaces pppoe <interface> no-peer-dns
 

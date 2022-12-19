@@ -59,10 +59,10 @@ yourusername``.
 Build Container
 ---------------
 
-The container can be built by hand or by fetching the pre-built one from 
-DockerHub. Using the pre-built containers from the `VyOS DockerHub 
-organisation`_ will ensure that the container is always up-to-date. A rebuild 
-is triggered once the container changes (please note this will take 2-3 hours 
+The container can be built by hand or by fetching the pre-built one from
+DockerHub. Using the pre-built containers from the `VyOS DockerHub
+organisation`_ will ensure that the container is always up-to-date. A rebuild
+is triggered once the container changes (please note this will take 2-3 hours
 after pushing to the vyos-build repository).
 
 .. note: If you are using the pre-built container, it will be automatically
@@ -132,9 +132,10 @@ your development containers in your current working directory.
 .. note:: Some VyOS packages (namely vyos-1x) come with build-time tests which
    verify some of the internal library calls that they work as expected. Those
    tests are carried out through the Python Unittest module. If you want to
-   build the ``vyos-1x`` package (which is our main development package) you need
-   to start your Docker container using the following argument:
-   ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will fail.
+   build the ``vyos-1x`` package (which is our main development package) you
+   need to start your Docker container using the following argument:
+   ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will
+   fail.
 
 .. _build_native:
 
@@ -158,7 +159,7 @@ To start, clone the repository to your local machine:
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
 
 For the packages required, you can refer to the ``docker/Dockerfile`` file
-in the repository_. The ``./configure`` script will also warn you if any
+in the repository_. The ``./build-vyos-image`` script will also warn you if any
 dependencies are missing.
 
 Once you have the required dependencies installed, you may proceed with the
@@ -214,8 +215,8 @@ Start the build:
 
 .. code-block:: none
 
-  vyos_bld@d4220bb519a0:/vyos# ./configure --architecture amd64 --build-by "j.randomhacker@vyos.io"
-  vyos_bld@d4220bb519a0:/vyos# sudo make iso
+  vyos_bld@8153428c7e1f:/vyos$ sudo make clean
+  vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image iso --architecture amd64 --build-by "j.randomhacker@vyos.io"
 
 When the build is successful, the resulting iso can be found inside the
 ``build`` directory as ``live-image-[architecture].hybrid.iso``.
@@ -234,46 +235,52 @@ Customize
 =========
 
 This ISO can be customized with the following list of configure options.
-The full and current list can be generated with ``./configure --help``:
+The full and current list can be generated with ``./build-vyos-image --help``:
 
 .. code-block:: none
 
-  $ ./configure --help
-  usage: configure [-h] [--architecture ARCHITECTURE] [--build-by BUILD_BY]
-                   [--debian-mirror DEBIAN_MIRROR]
-                   [--debian-security-mirror DEBIAN_SECURITY_MIRROR]
-                   [--pbuilder-debian-mirror PBUILDER_DEBIAN_MIRROR]
-                   [--vyos-mirror VYOS_MIRROR] [--build-type BUILD_TYPE]
-                   [--version VERSION] [--build-comment BUILD_COMMENT] [--debug]
-                   [--custom-apt-entry CUSTOM_APT_ENTRY]
-                   [--custom-apt-key CUSTOM_APT_KEY]
-                   [--custom-package CUSTOM_PACKAGE]
+  $ vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --help
+    I: Checking if packages required for VyOS image build are installed
+    usage: build-vyos-image [-h] [--architecture ARCHITECTURE]
+    [--build-by BUILD_BY] [--debian-mirror DEBIAN_MIRROR]
+    [--debian-security-mirror DEBIAN_SECURITY_MIRROR]
+    [--pbuilder-debian-mirror PBUILDER_DEBIAN_MIRROR]
+    [--vyos-mirror VYOS_MIRROR] [--build-type BUILD_TYPE]
+    [--version VERSION] [--build-comment BUILD_COMMENT] [--debug] [--dry-run]
+    [--custom-apt-entry CUSTOM_APT_ENTRY] [--custom-apt-key CUSTOM_APT_KEY]
+    [--custom-package CUSTOM_PACKAGE]
+        [build_flavor]
 
-  optional arguments:
+    positional arguments:
+    build_flavor          Build flavor
+
+    optional arguments:
     -h, --help            show this help message and exit
     --architecture ARCHITECTURE
-                          Image target architecture (amd64 or i386 or armhf)
+                            Image target architecture (amd64 or arm64)
     --build-by BUILD_BY   Builder identifier (e.g. jrandomhacker@example.net)
     --debian-mirror DEBIAN_MIRROR
-                          Debian repository mirror for ISO build
+                            Debian repository mirror
     --debian-security-mirror DEBIAN_SECURITY_MIRROR
-                          Debian security updates mirror
+                            Debian security updates mirror
     --pbuilder-debian-mirror PBUILDER_DEBIAN_MIRROR
-                          Debian repository mirror for pbuilder env bootstrap
+                            Debian repository mirror for pbuilder env bootstrap
     --vyos-mirror VYOS_MIRROR
-                          VyOS package mirror
+                            VyOS package mirror
     --build-type BUILD_TYPE
-                          Build type, release or development
+                            Build type, release or development
     --version VERSION     Version number (release builds only)
     --build-comment BUILD_COMMENT
-                          Optional build comment
+                            Optional build comment
     --debug               Enable debug output
+    --dry-run             Check build configuration and exit
     --custom-apt-entry CUSTOM_APT_ENTRY
-                          Custom APT entry
+                            Custom APT entry
     --custom-apt-key CUSTOM_APT_KEY
-                          Custom APT key file
+                            Custom APT key file
     --custom-package CUSTOM_PACKAGE
-                          Custom package to install from repositories
+                            Custom package to install from repositories
+
 
 .. _iso_build_issues:
 
@@ -304,7 +311,7 @@ more or less similar looking error message:
   (10:13) vyos_bld ece068908a5b:/vyos [current] #
 
 To debug the build process and gain additional information of what could be the
-root cause, you need to use `chroot` to change into the build directry. This is 
+root cause, you need to use `chroot` to change into the build directry. This is
 explained in the following step by step procedure:
 
 .. code-block:: none

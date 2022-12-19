@@ -7,14 +7,18 @@ IS-IS
 #####
 
 :abbr:`IS-IS (Intermediate System to Intermediate System)` is a link-state
-interior gateway routing protocol which is described in ISO10589,
-:rfc:`1195`, :rfc:`5308`. Like OSPF, IS-IS runs the Dijkstra shortest-path
-first (SPF) algorithm to create a database of the network’s topology and,
-from that database, to determine the best (that is, shortest) path to a
-destination. The routers exchange topology information with their nearest
-neighbors. IS-IS runs directly on the data link layer (Layer 2). IS-IS
-addresses are called :abbr:`NETs (Network Entity Titles)` and can be
-8 to 20 bytes long, but are generally 10 bytes long.
+interior gateway protocol (IGP) which is described in ISO10589,
+:rfc:`1195`, :rfc:`5308`. IS-IS runs the Dijkstra shortest-path first (SPF)
+algorithm to create a database of the network’s topology, and
+from that database to determine the best (that is, lowest cost) path to a
+destination. The intermediate systems (the name for routers) exchange topology
+information with their directly conencted neighbors. IS-IS runs directly on
+the data link layer (Layer 2). IS-IS addresses are called
+:abbr:`NETs (Network Entity Titles)` and can be 8 to 20 bytes long, but are
+generally 10 bytes long. The tree database that is created with IS-IS is
+similar to the one that is created with OSPF in that the paths chosen should
+be similar. Comparisons to OSPF are inevitable and often are reasonable ones
+to make in regards to the way a network will respond with either IGP.
 
 *******
 General
@@ -26,60 +30,76 @@ Configuration
 Mandatory Settings
 ------------------
 
+For IS-IS top operate correctly, one must do the equivalent of a Router ID in
+CLNS. This Router ID is called the :abbr:`NET (Network Entity Title)`. This
+must be unique for each and every router that is operating in IS-IS. It also
+must not be duplicated otherwise the same issues that occur within OSPF will
+occur within IS-IS when it comes to said duplication.
+
+
 .. cfgcmd:: set protocols isis net <network-entity-title>
 
-  This commad also sets network entity title (NET) provided in ISO format.
+  This commad sets network entity title (NET) provided in ISO format.
 
-  For example :abbr:`NET (Network Entity Title)`
+  Here is an example :abbr:`NET (Network Entity Title)` value:
 
   .. code-block:: none
 
     49.0001.1921.6800.1002.00
 
-  The IS-IS address consists of the following parts:
+  The CLNS address consists of the following parts:
 
   * :abbr:`AFI (Address family authority identifier)` - ``49`` The AFI value
     49 is what IS-IS uses for private addressing.
 
-  * Area identifier: ``0001`` IS-IS area number (Area1)
+  * Area identifier: ``0001`` IS-IS area number (numberical area ``1``)
 
   * System identifier: ``1921.6800.1002`` - for system idetifiers we recommend
-    to use IP address or MAC address of the router itself.
+    to use IP address or MAC address of the router itself. The way to construct
+    this is to keep all of the zeroes of the router IP address, and then change
+    the periods from being every three numbers to every four numbers. The
+    address that is listed here is ``192.168.1.2``, which if expanded will turn
+    into ``192.168.001.002``. Then all one has to do is move the dots to have
+    four numbers instead of three. This gives us ``1921.6800.1002``.
 
-  * NET selector: ``00`` Must always be 00, to indicate "this system".
+  * :abbr:`NET (Network Entity Title)` selector: ``00`` Must always be 00. This
+    setting indicates "this system" or "local system."
 
 .. cfgcmd:: set protocols isis interface <interface>
 
-  This command activates ISIS adjacency on this interface. Note that the name
-  of ISIS instance must be the same as the one used to configure the ISIS
-  process.
+  This command enables IS-IS on this interface, and allows for
+  adjacency to occur. Note that the name of IS-IS instance must be
+  the same as the one used to configure the IS-IS process.
+
+IS-IS Global Configuration
+--------------------------
 
 .. cfgcmd:: set protocols isis dynamic-hostname
 
-  This command enables support for dynamic hostname. Dynamic hostname mapping
-  determined as described in :rfc:`2763`, Dynamic Hostname Exchange Mechanism
-  for IS-IS.
+  This command enables support for dynamic hostname TLV. Dynamic hostname
+  mapping determined as described in :rfc:`2763`, Dynamic Hostname
+  Exchange Mechanism for IS-IS.
 
 .. cfgcmd:: set protocols isis level <level-1|level-1-2|level-2>
 
-  This command defines the ISIS router behavior:
+  This command defines the IS-IS router behavior:
 
-      **level-1** Act as a station router only.
-      **level-1-2** Act as both a station router and an area router.
-      **level-2-only** Act as an area router only.
+  * **level-1** - Act as a station (Level 1) router only.
+  * **level-1-2** - Act as a station (Level 1) router and area (Level 2) router.
+  * **level-2-only** - Act as an area (Level 2) router only.
 
 .. cfgcmd:: set protocols isis lsp-mtu <size>
 
-  This command configures the maximum size of generated LSPs, in bytes. The
-  size range is 128 to 4352.
+  This command configures the maximum size of generated
+  :abbr:`LSPs (Link State PDUs)`, in bytes. The size range is 128 to 4352.
 
 .. cfgcmd:: set protocols isis metric-style <narrow|transition|wide>
 
-  This command sets old-style (ISO 10589) or new-style packet formats:
+  This command sets old-style (ISO 10589) or new style packet formats:
 
-      **narrow** Use old style of TLVs with narrow metric.
-      **transition** Send and accept both styles of TLVs during transition.
-      **wide** Use new style of TLVs to carry wider metric.
+  * **narrow** - Use old style of TLVs with narrow metric.
+  * **transition** - Send and accept both styles of TLVs during transition.
+  * **wide** - Use new style of TLVs to carry wider metric.
 
 .. cfgcmd:: set protocols isis purge-originator
 
@@ -117,9 +137,9 @@ Interface Configuration
 
   This command specifies circuit type for interface:
 
-  * **level-1** Level-1 only adjacencies are formed.
-  * **level-1-2** Level-1-2 adjacencies are formed
-  * **level-2-only** Level-2 only adjacencies are formed
+  * **level-1** - Level-1 only adjacencies are formed.
+  * **level-1-2** - Level-1-2 adjacencies are formed
+  * **level-2-only** - Level-2 only adjacencies are formed
 
 .. cfgcmd:: set protocols isis interface <interface> hello-interval
   <seconds>
@@ -261,12 +281,87 @@ Timers
   to IGP events. The process described in :rfc:`8405`.
 
 
-*******
-Example
-*******
+********
+Examples
+********
 
-Simple IS-IS configuration using 2 nodes and redistributing connected
-interfaces.
+Enable IS-IS
+============
+
+**Node 1:**
+
+.. code-block:: none
+
+  set interfaces loopback lo address '192.168.255.255/32'
+  set interfaces ethernet eth1 address '192.0.2.1/24'
+
+  set protocols isis interface eth1
+  set protocols isis interface lo
+  set protocols isis net '49.0001.1921.6825.5255.00'
+
+**Node 2:**
+
+.. code-block:: none
+
+  set interfaces ethernet eth1 address '192.0.2.2/24'
+
+  set interfaces loopback lo address '192.168.255.254/32'
+  set interfaces ethernet eth1 address '192.0.2.2/24'
+
+  set protocols isis interface eth1
+  set protocols isis interface lo
+  set protocols isis net '49.0001.1921.6825.5254.00'
+
+
+
+This gives us the following neighborships, Level 1 and Level 2:
+
+.. code-block:: none
+
+  Node-1@vyos:~$ show isis neighbor
+  Area VyOS:
+    System Id           Interface   L  State        Holdtime SNPA
+   vyos                eth1        1  Up            28       0c87.6c09.0001
+   vyos                eth1        2  Up            28       0c87.6c09.0001
+
+  Node-2@vyos:~$ show isis neighbor
+  Area VyOS:
+    System Id           Interface   L  State        Holdtime SNPA
+   vyos                eth1        1  Up            29       0c33.0280.0001
+   vyos                eth1        2  Up            28       0c33.0280.0001
+
+
+
+Here's the IP routes that are populated. Just the loopback:
+
+.. code-block:: none
+
+  Node-1@vyos:~$ show ip route isis
+  Codes: K - kernel route, C - connected, S - static, R - RIP,
+         O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+         T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+         f - OpenFabric,
+         > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+         t - trapped, o - offload failure
+
+  I   192.0.2.0/24 [115/20] via 192.0.2.2, eth1 inactive, weight 1, 00:02:22
+  I>* 192.168.255.254/32 [115/20] via 192.0.2.2, eth1, weight 1, 00:02:22
+
+  Node-2@vyos:~$ show ip route isis
+  Codes: K - kernel route, C - connected, S - static, R - RIP,
+         O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+         T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+         f - OpenFabric,
+         > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+         t - trapped, o - offload failure
+
+  I   192.0.2.0/24 [115/20] via 192.0.2.1, eth1 inactive, weight 1, 00:02:21
+  I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, weight 1, 00:02:21
+
+
+
+Enable IS-IS and redistribute routes not natively in IS-IS
+==========================================================
 
 **Node 1:**
 
@@ -293,11 +388,11 @@ interfaces.
   set protocols isis interface eth1
   set protocols isis net '49.0001.1921.6800.2002.00'
 
-Show ip routes on Node2:
+Routes on Node 2:
 
 .. code-block:: none
 
-  vyos@r2:~$ show ip route isis
+  Node-2@r2:~$ show ip route isis
   Codes: K - kernel route, C - connected, S - static, R - RIP,
          O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
          T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
@@ -305,3 +400,91 @@ Show ip routes on Node2:
          > - selected route, * - FIB route, q - queued route, r - rejected route
 
   I   203.0.113.0/24 [115/10] via 192.0.2.1, eth1, 00:03:42
+  
+  
+
+
+Enable IS-IS with Segment Routing (Experimental)
+================================================
+
+**Node 1:**
+
+.. code-block:: none
+
+  set interfaces loopback lo address '192.168.255.255/32'
+  set interfaces ethernet eth1 address '192.0.2.1/24'
+
+  set protocols isis interface eth1
+  set protocols isis interface lo
+  set protocols isis net '49.0001.1921.6825.5255.00'
+  set protocols isis segment-routing global-block high-label-value '599'
+  set protocols isis segment-routing global-block low-label-value '550'
+  set protocols isis segment-routing prefix 192.168.255.255/32 index value '1'
+  set protocols isis segment-routing prefix 192.168.255.255/32 index explicit-null
+  set protocols mpls interface 'eth1'
+  
+**Node 2:**
+
+.. code-block:: none
+
+  set interfaces loopback lo address '192.168.255.254/32'
+  set interfaces ethernet eth1 address '192.0.2.2/24'
+
+  set protocols isis interface eth1
+  set protocols isis interface lo
+  set protocols isis net '49.0001.1921.6825.5254.00'
+  set protocols isis segment-routing global-block high-label-value '599'
+  set protocols isis segment-routing global-block low-label-value '550'
+  set protocols isis segment-routing prefix 192.168.255.254/32 index value '2'
+  set protocols isis segment-routing prefix 192.168.255.254/32 index explicit-null
+  set protocols mpls interface 'eth1'
+  
+  
+  
+This gives us MPLS segment routing enabled and labels for far end loopbacks:
+
+.. code-block:: none
+
+  Node-1@vyos:~$ show mpls table
+   Inbound Label  Type        Nexthop                Outbound Label
+   ----------------------------------------------------------------------
+   552            SR (IS-IS)  192.0.2.2              IPv4 Explicit Null <-- Node-2 loopback learned on Node-1
+   15000          SR (IS-IS)  192.0.2.2              implicit-null
+   15001          SR (IS-IS)  fe80::e87:6cff:fe09:1  implicit-null
+   15002          SR (IS-IS)  192.0.2.2              implicit-null
+   15003          SR (IS-IS)  fe80::e87:6cff:fe09:1  implicit-null
+
+  Node-2@vyos:~$ show mpls table
+   Inbound Label  Type        Nexthop               Outbound Label
+   ---------------------------------------------------------------------
+   551            SR (IS-IS)  192.0.2.1             IPv4 Explicit Null <-- Node-1 loopback learned on Node-2
+   15000          SR (IS-IS)  192.0.2.1             implicit-null
+   15001          SR (IS-IS)  fe80::e33:2ff:fe80:1  implicit-null
+   15002          SR (IS-IS)  192.0.2.1             implicit-null
+   15003          SR (IS-IS)  fe80::e33:2ff:fe80:1  implicit-null
+
+Here is the routing tables showing the MPLS segment routing label operations:
+
+.. code-block:: none
+
+  Node-1@vyos:~$ show ip route isis
+  Codes: K - kernel route, C - connected, S - static, R - RIP,
+         O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+         T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+         f - OpenFabric,
+         > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+         t - trapped, o - offload failure
+
+  I   192.0.2.0/24 [115/20] via 192.0.2.2, eth1 inactive, weight 1, 00:07:48
+  I>* 192.168.255.254/32 [115/20] via 192.0.2.2, eth1, label IPv4 Explicit Null, weight 1, 00:03:39
+
+  Node-2@vyos:~$ show ip route isis
+  Codes: K - kernel route, C - connected, S - static, R - RIP,
+         O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+         T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+         f - OpenFabric,
+         > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+         t - trapped, o - offload failure
+
+  I   192.0.2.0/24 [115/20] via 192.0.2.1, eth1 inactive, weight 1, 00:07:46
+  I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, label IPv4 Explicit Null, weight 1, 00:03:43
