@@ -345,6 +345,13 @@ There are a lot of matching criteria against which the package can be tested.
 
    Match criteria based on nat connection status.
 
+.. cfgcmd:: set firewall name <name> rule <1-999999> connection-mark
+   <1-2147483647>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> connection-mark
+   <1-2147483647>
+
+   Match criteria based on connection mark.
+
 .. cfgcmd:: set firewall name <name> rule <1-999999> source address
    [address | addressrange | CIDR]
 .. cfgcmd:: set firewall name <name> rule <1-999999> destination address

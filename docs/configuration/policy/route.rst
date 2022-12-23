@@ -41,6 +41,11 @@ There are a lot of matching criteria options available, both for
 ``policy route`` and ``policy route6``. These options are listed
 in this section.
 
+.. cfgcmd:: set policy route <name> rule <n> connection-mark <1-2147483647>
+.. cfgcmd:: set policy route6 <name> rule <n> connection-mark <1-2147483647>
+
+  Set match criteria based on connection mark.
+
 .. cfgcmd:: set policy route <name> rule <n> source address
    <match_criteria>
 .. cfgcmd:: set policy route <name> rule <n> destination address
@@ -226,6 +231,13 @@ setting a different routing table.
 
    Set rule action to drop.
 
+.. cfgcmd:: set policy route <name> rule <n> set connection-mark
+   <1-2147483647>
+.. cfgcmd:: set policy route6 <name> rule <n> set connection-mark
+   <1-2147483647>
+
+   Set a specific connection mark.
+
 .. cfgcmd:: set policy route <name> rule <n> set dscp <0-63>
 .. cfgcmd:: set policy route6 <name> rule <n> set dscp <0-63>
 
@@ -234,12 +246,12 @@ setting a different routing table.
 .. cfgcmd:: set policy route <name> rule <n> set mark <1-2147483647>
 .. cfgcmd:: set policy route6 <name> rule <n> set mark <1-2147483647>
 
-   Set packet modifications: Packet marking
+   Set a specific packet mark.
 
 .. cfgcmd:: set policy route <name> rule <n> set table <main | 1-200>
 .. cfgcmd:: set policy route6 <name> rule <n> set table <main | 1-200>
 
-   Set packet modifications: Routing table to forward packet with.
+   Set the routing table to forward packet with.
 
 .. cfgcmd:: set policy route <name> rule <n> set tcp-mss <500-1460>
 .. cfgcmd:: set policy route6 <name> rule <n> set tcp-mss <500-1460>
