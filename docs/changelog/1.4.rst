@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2022-12-25
+==========
+
+* :vytask:`T3579` (feature): Rewrite vyatta-conntrack in new XML and Python flavour
+
+
+2022-12-24
+==========
+
+* :vytask:`T4890` (bug): show conntrack table ipv4 fail
+* :vytask:`T4879` (bug): IPSec migration failed with missing remote-id
+* :vytask:`T4870` (feature): Containers switch to using overlay driver for podman storage
+
+
+2022-12-23
+==========
+
+* :vytask:`T4792` (feature): Add SSTP VPN client
+
+
+2022-12-21
+==========
+
+* :vytask:`T4887` (bug): Schema generation from op-mode functions should set default 'false' on boolean arguments
+
+
 2022-12-18
 ==========
 
