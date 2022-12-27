@@ -353,7 +353,7 @@ Key Parameters:
 
 * ``dead-peer-detection action = clear | hold | restart`` - R_U_THERE 
   notification messages(IKEv1) or empty INFORMATIONAL messages (IKEv2) 
-  are periodically sent in order to check the liveliness of theIPsec peer. The 
+  are periodically sent in order to check the liveliness of the IPsec peer. The 
   values clear, hold, and restart all activate DPD and determine the action to 
   perform on a timeout.
   With ``clear`` the connection is closed with no further actions taken. 
@@ -367,6 +367,17 @@ Key Parameters:
   values). A closeaction should not be used if the peer uses reauthentication or
   uniqueids.
   
-  For a responder, close-action or dead-peer-detection must not be enabled.  
-  For an initiator DPD with `restart` action, and `close-action 'restart'` 
-  is recommended in IKE profile.
+  When the close-action option is set on the peers, the connection-type 
+  of each peer has to considered carefully. For example, if the option is set
+  on both peers, then both would attempt to initiate and hold open multiple 
+  copies of each child SA. This might lead to instability of the device or 
+  cpu/memory utilization.   
+  
+  Below flow-chart could be a quick reference for the close-action 
+  combination depending on how the peer is configured.   
+   
+.. image:: /_static/images/IPSec_site-to-site_IKE_configuration.png
+   :width: 50%
+   :align: center
+   
+  Similar combinations are applicable for the dead-peer-detection.
