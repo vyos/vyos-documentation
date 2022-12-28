@@ -376,7 +376,7 @@ Key Parameters:
   Below flow-chart could be a quick reference for the close-action 
   combination depending on how the peer is configured.   
    
-.. image:: /_static/images/IPSec_site-to-site_IKE_configuration.png
+.. image:: /_static/images/IPSec_close_action_settings.jpg
    :width: 50%
    :align: center
    
