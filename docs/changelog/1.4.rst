@@ -8,6 +8,33 @@
    _ext/releasenotes.py
 
 
+2022-12-31
+==========
+
+* :vytask:`T4898` (feature): Add mtu config option for dummy interfaces
+
+
+2022-12-30
+==========
+
+* :vytask:`T4834` (bug): Limit container network name to 15 characters
+* :vytask:`T4901` (bug): Update Podman to v4.3.1
+* :vytask:`T4899` (bug): Podman systemd services not being installed correctly
+
+
+2022-12-28
+==========
+
+* :vytask:`T4593` (feature): Upgrade strongswan to 5.9.8
+
+
+2022-12-26
+==========
+
+* :vytask:`T4511` (bug): IPv6 DNS lookup
+* :vytask:`T4809` (feature): radvd: Allow use of AdvRASrcAddress
+
+
 2022-12-25
 ==========
 
