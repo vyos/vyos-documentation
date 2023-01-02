@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2022-12-31
+==========
+
+* :vytask:`T4898` (feature): Add mtu config option for dummy interfaces
+
+
+2022-12-26
+==========
+
+* :vytask:`T4511` (bug): IPv6 DNS lookup
+* :vytask:`T4809` (feature): radvd: Allow use of AdvRASrcAddress
+
+
 2022-12-18
 ==========
 
@@ -1069,6 +1082,7 @@
 * :vytask:`T697` (bug): Clean up and sanitize package dependencies
 * :vytask:`T3837` (default): OpenConnect: Fix typo in help property
 * :vytask:`T1440` (bug): Creating two DHCPv6 shared-network-names with the same subnet is allowed, causes dhcpd to fail to start.
+* :vytask:`T578` (feature): Support Linux Container
 
 
 2021-10-16
