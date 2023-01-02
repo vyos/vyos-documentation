@@ -305,7 +305,7 @@ default physical device (``phy0``) is used.
   set interfaces wireless wlan0 type station
   set interfaces wireless wlan0 address dhcp
   set interfaces wireless wlan0 ssid Test
-  set interfaces wireless wlan0 security wpa
+  set interfaces wireless wlan0 security wpa passphrase '12345678'
 
 Resulting in
 
