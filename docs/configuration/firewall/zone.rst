@@ -55,7 +55,7 @@ To define a zone setup either one with interfaces or a local zone.
    Define the zone as a local zone. A local zone has no interfaces and
    will be applied to the router itself.
 
-.. cfgcmd:: set firewall zone <name> default-action [drop | reject]
+.. cfgcmd:: set firewall zone <name> default-action [drop | reject]
 
    Change the default-action with this setting.
 
