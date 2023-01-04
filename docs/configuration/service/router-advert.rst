@@ -8,7 +8,6 @@ Router Advertisements
 They are part of what is known as :abbr:`SLAAC (Stateless Address
 Autoconfiguration)`.
 
-
 Supported interface types:
 
     * bonding
@@ -21,7 +20,7 @@ Supported interface types:
     * vxlan
     * wireguard
     * wireless
-    * wirelessmodem
+    * wwan
 
 
 Enabling Advertisments
@@ -31,7 +30,7 @@ Enabling Advertisments
 
 .. stop_vyoslinter
 
-.. csv-table:: 
+.. csv-table::
    :header: "Field", "VyOS Option", "Description"
    :widths: 10, 10, 20
 
