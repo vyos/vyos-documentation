@@ -39,6 +39,20 @@ HTTP client
 .. note:: `source-address` and `source-interface` can not be used at the same
    time.
 
+**********
+SSH client
+**********
+
+.. cfgcmd:: set system option ssh-client source-address <address>
+
+   Use the specified address on the local machine as the source address of the
+   connection. Only useful on systems with more than one address.
+
+.. cfgcmd:: set system option ssh-client source-interface <interface>
+
+   Use the address of the specified interface on the local machine as the
+   source address of the connection.
+
 ***************
 Keyboard Layout
 ***************
