@@ -15,7 +15,7 @@ VyOS User Guide
 
    Install VyOS
    ^^^^^^^^^^^^
-   Read about how to install VyOS on :ref:`Bare Metall<installation/install:installation>` or in a
+   Read about how to install VyOS on :ref:`Bare Metal<installation/install:installation>` or in a
    :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>` and
    how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>` providers 
    ---
