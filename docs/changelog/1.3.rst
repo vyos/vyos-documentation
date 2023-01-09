@@ -8,6 +8,24 @@
    _ext/releasenotes.py
 
 
+2023-01-07
+==========
+
+* :vytask:`T4884` (bug): Missing a community6 in snmpd config
+
+
+2023-01-05
+==========
+
+* :vytask:`T3937` (default): Rewrite "show system memory" in Python to make it usable as a library function
+
+
+2023-01-03
+==========
+
+* :vytask:`T4869` (bug): A network with `/32` or `/128` mask cannot be removed from a network-group
+
+
 2022-12-31
 ==========
 
