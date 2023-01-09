@@ -344,3 +344,52 @@ Imagine the following topology
   set vpn ipsec site-to-site peer 172.18.201.10 local-address '172.18.202.10'
   set vpn ipsec site-to-site peer 172.18.201.10 vti bind 'vti10'
   set vpn ipsec site-to-site peer 172.18.201.10 vti esp-group 'ESP_DEFAULT'
+
+Key Parameters:
+
+* ``authentication local-id/remote-id`` - IKE identification is used for
+  validation of VPN peer devices during IKE negotiation. If you do not configure
+  local/remote-identity, the device uses the IPv4 or IPv6 address that
+  corresponds to the local/remote peer by default.
+  In certain network setups (like ipsec interface with dynamic address, or
+  behind the NAT ), the IKE ID received from the peer does not match the IKE
+  gateway configured on the device. This can lead to a Phase 1 validation
+  failure.
+  So, make sure to configure the local/remote id explicitly and ensure that the
+  IKE ID is the same as the remote-identity configured on the peer device.
+
+* ``disable-route-autoinstall`` - This option when configured disables the
+  routes installed in the default table 220 for site-to-site ipsec.
+  It is mostly used with VTI configuration.
+
+* ``dead-peer-detection action = clear | hold | restart`` - R_U_THERE
+  notification messages(IKEv1) or empty INFORMATIONAL messages (IKEv2)
+  are periodically sent in order to check the liveliness of the IPsec peer. The
+  values clear, hold, and restart all activate DPD and determine the action to
+  perform on a timeout.
+  With ``clear`` the connection is closed with no further actions taken.
+  ``hold`` installs a trap policy, which will catch matching traffic and tries
+  to re-negotiate the connection on demand.
+  ``restart`` will immediately trigger an attempt to re-negotiate the
+  connection.
+
+* ``close-action = none | clear | hold | restart`` - defines the action to take
+  if the remote peer unexpectedly closes a CHILD_SA (see above for meaning of
+  values). A closeaction should not be used if the peer uses reauthentication or
+  uniqueids.
+
+  When the close-action option is set on the peers, the connection-type
+  of each peer has to considered carefully. For example, if the option is set
+  on both peers, then both would attempt to initiate and hold open multiple
+  copies of each child SA. This might lead to instability of the device or
+  cpu/memory utilization.
+
+  Below flow-chart could be a quick reference for the close-action
+  combination depending on how the peer is configured.
+
+.. figure:: /_static/images/IPSec_site-to-site_IKE_configuration.png
+   :width: 50%
+   :align: center
+
+  Similar combinations are applicable for the dead-peer-detection.
+
