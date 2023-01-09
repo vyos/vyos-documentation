@@ -8,6 +8,47 @@
    _ext/releasenotes.py
 
 
+2023-01-08
+==========
+
+* :vytask:`T4920` (bug): ospf: Fix `passive-interface default` option
+
+
+2023-01-07
+==========
+
+* :vytask:`T4884` (bug): Missing a community6 in snmpd config
+
+
+2023-01-05
+==========
+
+* :vytask:`T4904` (feature): Allow multiple ports for high-availability virtual-server
+* :vytask:`T4789` (feature): Ability to get L2TP/PPTP/SSTP sessions info in a machine readable format
+* :vytask:`T3937` (default): Rewrite "show system memory" in Python to make it usable as a library function
+
+
+2023-01-04
+==========
+
+* :vytask:`T4848` (bug): Minor bug in OpenConnect server with default route
+* :vytask:`T4656` (feature): Support the listen-host config field of openconnect server
+
+
+2023-01-03
+==========
+
+* :vytask:`T4907` (bug):  nat source translations couldn't show metrics
+
+
+2023-01-02
+==========
+
+* :vytask:`T4893` (feature): l2tp add ppp-options IPv6 interface identifier
+* :vytask:`T4717` (feature): Connect to console server by name
+* :vytask:`T725` (feature): Cake and FQ-PIE
+
+
 2022-12-31
 ==========
 
