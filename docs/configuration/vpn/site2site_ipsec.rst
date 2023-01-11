@@ -387,9 +387,7 @@ Key Parameters:
   Below flow-chart could be a quick reference for the close-action
   combination depending on how the peer is configured.
 
-.. figure:: /_static/images/IPSec_site-to-site_IKE_configuration.png
-   :width: 50%
-   :align: center
+.. figure:: /_static/images/IPSec_close_action_settings.jpg
 
   Similar combinations are applicable for the dead-peer-detection.
 
