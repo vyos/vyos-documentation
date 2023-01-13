@@ -49,6 +49,10 @@ This section shows how to statically map an IP address to a hostname for local
 (meaning on this VyOS instance) name resolution. This is the VyOS equivalent to
 `/etc/hosts` file entries.
 
+.. note:: Do *not* manually edit `/etc/hosts`. This file will automatically be
+regenerated on boot based on the settings in this section, which means you'll
+lose all your manual edits. Instead, configure static host mappings, as follows.
+
 .. cfgcmd:: set system static-host-mapping host-name <hostname> inet <address>
 
    Create a static hostname mapping which will always resolve the name
