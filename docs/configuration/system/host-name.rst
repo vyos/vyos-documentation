@@ -46,7 +46,8 @@ Static Hostname Mapping
 
 How an IP address is assigned to an interface in :ref:`ethernet-interface`.
 This section shows how to statically map an IP address to a hostname for local
-(meaning on this VyOS instance) name resolution.
+(meaning on this VyOS instance) name resolution. This is the VyOS equivalent to
+`/etc/hosts` file entries.
 
 .. cfgcmd:: set system static-host-mapping host-name <hostname> inet <address>
 
