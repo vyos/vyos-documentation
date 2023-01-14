@@ -30,10 +30,16 @@ The current protocol is version 4 (NTPv4), which is a proposed standard as
 documented in :rfc:`5905`. It is backward compatible with version 3, specified
 in :rfc:`1305`.
 
+.. note:: VyOS 1.4 uses chrony instead of ntpd (see :vytask:`T3008`) which will
+   no longer accept anonymous NTP requests as in VyOS 1.3. All configurations
+   will be migrated to keep the anonymous functionality. For new setups if you
+   have clients using your VyOS installation as NTP server, you must specify
+   the `allow-client` directive.
+
 Configuration
 =============
 
-.. cfgcmd:: set system ntp server <address>
+.. cfgcmd:: set service ntp server <address>
 
    Configure one or more servers for synchronisation. Server name can be either
    an IP address or :abbr:`FQDN (Fully Qualified Domain Name)`.
@@ -44,7 +50,7 @@ Configuration
    * ``1.pool.ntp.org``
    * ``2.pool.ntp.org``
 
-.. cfgcmd:: set system ntp server <address> <noselect | pool | preempt | prefer>
+.. cfgcmd:: set service ntp server <address> <noselect | pool | prefer>
 
    Configure one or more attributes to the given NTP server.
 
@@ -54,24 +60,22 @@ Configuration
    * ``pool`` mobilizes persistent client mode association with a number of
      remote servers.
 
-   * ``preempt`` a preemptable association is expendable.
-
    * ``prefer`` marks the server as preferred. All other things being equal,
      this host will be chosen for synchronization among a set of correctly
      operating hosts.
 
-.. cfgcmd:: set system ntp listen-address <address>
+.. cfgcmd:: set service ntp listen-address <address>
 
    NTP process will only listen on the specified IP address. You must specify
    the `<address>` and optionally the permitted clients. Multiple listen
    addresses can be configured.
 
-.. cfgcmd:: set system ntp allow-clients address <address>
+.. cfgcmd:: set service ntp allow-client address <address>
 
    List of networks or client addresses permitted to contact this NTP server.
 
-   Multiple networks can be configured.
+   Multiple networks/client IP addresses can be configured.
 
-.. cfgcmd:: set system ntp vrf <name>
+.. cfgcmd:: set service ntp vrf <name>
 
   Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.

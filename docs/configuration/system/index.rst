@@ -17,7 +17,6 @@ System
    lcd
    login
    name-server
-   ntp
    option
    proxy
    syslog
