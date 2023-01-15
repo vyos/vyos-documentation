@@ -18,6 +18,7 @@ Service
    lldp
    mdns
    monitoring
+   ntp
    pppoe-server
    router-advert
    salt-minion
