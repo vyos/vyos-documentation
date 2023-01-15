@@ -110,7 +110,6 @@ files.
 Terminology
 ###########
 
-live
 A VyOS system has three major types of configurations:
 
 * **Active** or **running configuration** is the system configuration
