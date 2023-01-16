@@ -8,6 +8,42 @@
    _ext/releasenotes.py
 
 
+2023-01-15
+==========
+
+* :vytask:`T4832` (feature): dhcp: Add IPv6-only dhcp option support (RFC 8925)
+* :vytask:`T4937` (feature): ocserv: upgrade package to version 1.1.6
+* :vytask:`T4918` (bug): Odd show interface behavior
+* :vytask:`T3008` (feature): Migrate from ntpd to chronyd
+
+
+2023-01-13
+==========
+
+* :vytask:`T4911` (default): Rewrite the LLDP op mode in the new format
+* :vytask:`T4928` (feature): Upgrade Linux Kernel to 6.1.y (2022 LTS edition)
+
+
+2023-01-12
+==========
+
+* :vytask:`T4934` (bug): ospf: Fix inter-area route summarization
+* :vytask:`T4929` (feature): Update Intel QAT drivers to 4.20.0-00001
+
+
+2023-01-10
+==========
+
+* :vytask:`T4880` (feature): Expose 'add/delete container image' in HTTP-API
+
+
+2023-01-09
+==========
+
+* :vytask:`T4922` (feature): Add ssh-client source-interface CLI option
+* :vytask:`T4524` (bug): Squid webproxy not working properly
+
+
 2023-01-08
 ==========
 
