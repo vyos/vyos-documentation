@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2023-01-15
+==========
+
+* :vytask:`T4832` (feature): dhcp: Add IPv6-only dhcp option support (RFC 8925)
+* :vytask:`T4918` (bug): Odd show interface behavior
+
+
+2023-01-09
+==========
+
+* :vytask:`T4922` (feature): Add ssh-client source-interface CLI option
+
+
 2023-01-07
 ==========
 
@@ -241,6 +254,7 @@
 2022-07-30
 ==========
 
+* :vytask:`T4575` (feature): vyos.utill add new wrapper "rc_cmd" to get the return code and output
 * :vytask:`T4532` (bug): Flow-accounting IPv6 server/receiver bug
 
 
