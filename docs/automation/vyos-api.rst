@@ -1,4 +1,4 @@
-:lastproofread: 2022-08-24
+:lastproofread: 2023-01-16
 
 .. _vyosapi:
 
@@ -6,7 +6,7 @@
 VyOS API
 ########
 
-for configuration and enabling the API see :ref:`http-api`
+For configuration and enabling the API see :ref:`http-api`
 
 **************
 Authentication
@@ -208,7 +208,7 @@ For example, show which images are installed.
 /generate
 =========
 
-THe ``generate`` endpoint run a ``generate`` command.
+The ``generate`` endpoint run a ``generate`` command.
 
 .. code-block:: none
 
