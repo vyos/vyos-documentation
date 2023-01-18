@@ -54,6 +54,8 @@ and paste it. Some terminal emulators may accidentally split this over several
 lines. Be attentive when you paste it that it only pastes as a single line.
 The third part is simply an identifier, and is for your own reference.
 
+.. seealso:: SSH :ref:`ssh_operation`
+
 .. cfgcmd:: set system login user <username> authentication public-keys
    <identifier> key <key>
 
@@ -84,24 +86,6 @@ The third part is simply an identifier, and is for your own reference.
    character in the options field, use ``&quot;``, for example 
    ``from=&quot;10.0.0.0/24&quot;`` to restrict where the user
    may connect from when using this key.
-
-.. cfgcmd:: loadkey <username> <location>
-
-   **Deprecation notice:** ``loadkey`` has been deprecated in favour of
-   :opcmd:`generate public-key-commands` and will be removed in a future
-   version. See :ref:`ssh`.
-
-   SSH keys can not only be specified on the command-line but also loaded for
-   a given user with `<username>` from a file pointed to by `<location>.` Keys
-   can be either loaded from local filesystem or any given remote location
-   using one of the following :abbr:`URIs (Uniform Resource Identifier)`:
-
-   * ``<file>`` - Load from file on local filesystem path
-   * ``scp://<user>@<host>:/<file>`` - Load via SCP from remote machine
-   * ``sftp://<user>@<host>/<file>`` - Load via SFTP from remote machine
-   * ``ftp://<user>@<host>/<file>`` - Load via FTP from remote machine
-   * ``http://<host>/<file>`` - Load via HTTP from remote machine
-   * ``tftp://<host>/<file>`` - Load via TFTP from remote machine
 
 MFA/2FA authentication using OTP (one time passwords)
 -----------------------------------------------------
