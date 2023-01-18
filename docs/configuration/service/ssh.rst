@@ -139,6 +139,8 @@ offending IP is blocked. Offenders are unblocked after a set interval.
   Block source IP when their cumulative attack score exceeds threshold. The
   default is 30.
 
+.. _ssh_operation:
+
 Operation
 =========
 
@@ -193,7 +195,7 @@ Operation
    :ref:`ssh_key_based_authentication`.
    ``<location>`` can be a local path or a URL pointing at a remote file.
 
-   Supported remote protocols are FTP, HTTP, HTTPS, SCP/SFTP and TFTP.
+   Supported remote protocols are FTP, FTPS, HTTP, HTTPS, SCP/SFTP and TFTP.
 
   Example:
 
