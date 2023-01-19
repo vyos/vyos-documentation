@@ -111,6 +111,8 @@ VyOS IKE group has the next options:
 
  * ``hash`` hash algorithm.
 
+ * ``prf`` pseudo-random function.
+
 ***********************************************
 ESP (Encapsulating Security Payload) Attributes
 ***********************************************
