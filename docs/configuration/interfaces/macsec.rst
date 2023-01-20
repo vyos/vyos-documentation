@@ -1,4 +1,4 @@
-:lastproofread: 2021-07-05
+:lastproofread: 2023-01-20
 
 .. _macsec-interface:
 
