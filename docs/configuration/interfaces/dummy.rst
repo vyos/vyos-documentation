@@ -1,4 +1,4 @@
-:lastproofread: 2022-08-26
+:lastproofread: 2023-01-20
 
 .. _dummy-interface:
 
@@ -68,7 +68,7 @@ Operation
 
    .. code-block:: none
 
-     vyos@vyos:~$ show interfaces ethernet eth0
+     vyos@vyos:~$ show interfaces dummy dum0
      dum0: <BROADCAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000
          link/ether 26:7c:8e:bc:fc:f5 brd ff:ff:ff:ff:ff:ff
          inet 172.18.254.201/32 scope global dum0
