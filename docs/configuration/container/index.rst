@@ -88,6 +88,10 @@ Configuration
 
         set container name coredns volume 'corefile' source /config/coredns/Corefile
         set container name coredns volume 'corefile' destination /etc/Corefile
+        
+.. cfgcmd:: set container name <name> volume <volumename> mode <ro | rw>
+
+    Volume is either mounted as rw (read-write - default) or ro (read-only)
 
 .. cfgcmd:: set container name <name> restart [no | on-failure | always]
 
