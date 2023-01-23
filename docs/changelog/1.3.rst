@@ -8,6 +8,25 @@
    _ext/releasenotes.py
 
 
+2023-01-22
+==========
+
+* :vytask:`T4906` (bug): ipsec connections shows only one connection as up
+
+
+2023-01-21
+==========
+
+* :vytask:`T4896` (bug): ospfv3: Fix broken not-advertise option
+* :vytask:`T4799` (bug): PowerDNS >= 4.7 does not get reloaded by vyos-hostsd
+
+
+2023-01-17
+==========
+
+* :vytask:`T4902` (bug): snmpd: exclude container storage from monitoring
+
+
 2023-01-15
 ==========
 
