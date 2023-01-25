@@ -220,6 +220,70 @@ Verification
    inet 172.25.0.247/16 scope global eth0v10
    valid_lft forever preferred_lft forever
 
+Global options
+--------------
+
+On most scenarios, there's no need to change specific parameters, and using
+default configuration is enough. But there are cases were extra configuration
+is needed.
+
+.. cfgcmd:: set high-availability vrrp global-parameters startup_delay <1-600>
+
+This option specifies a delay in seconds before vrrp instances start up after
+keepalived starts. 
+
+Gratuitous ARP
+--------------
+
+These configuration is not mandatory and in most cases there's no
+need to configure it. But if necessary, Gratuitous ARP can be configured in
+``global-parameters`` and/or in ``group`` section.
+
+.. cfgcmd:: set high-availability vrrp global-parameters garp interval
+   <0.000-1000>
+
+.. cfgcmd:: set high-availability vrrp group <name> garp interval
+   <0.000-1000>
+
+Set delay between gratuitous ARP messages sent on an interface. 0 if not
+defined.
+
+.. cfgcmd:: set high-availability vrrp global-parameters garp master-delay
+   <1-255>
+
+.. cfgcmd:: set high-availability vrrp group <name> garp master-delay
+   <1-255>
+
+Set delay for second set of gratuitous ARPs after transition to MASTER. 5 if
+not defined.
+
+.. cfgcmd:: set high-availability vrrp global-parameters garp master-refresh
+   <1-600>
+
+.. cfgcmd:: set high-availability vrrp group <name> garp master-refresh
+   <1-600>
+
+Set minimum time interval for refreshing gratuitous ARPs while MASTER. 0 if
+not defined, which means no refreshing.
+
+.. cfgcmd:: set high-availability vrrp global-parameters garp
+   master-refresh-repeat <1-600>
+
+.. cfgcmd:: set high-availability vrrp group <name> garp
+   master-refresh-repeat <1-600>
+
+Set number of gratuitous ARP messages to send at a time while MASTER. 1 if not
+defined.
+
+.. cfgcmd:: set high-availability vrrp global-parameters garp master-repeat
+   <1-600>
+
+.. cfgcmd:: set high-availability vrrp group <name> garp master-repeat
+   <1-600>
+
+Set number of gratuitous ARP messages to send at a time after transition to
+MASTER. 5 if not defined.
+
 Scripting
 ---------
 
