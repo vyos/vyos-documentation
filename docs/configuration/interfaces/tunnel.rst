@@ -1,4 +1,4 @@
-:lastproofread: 2022-08-26
+:lastproofread: 2023-01-26
 
 .. _tunnel-interface:
 
@@ -114,12 +114,12 @@ over either IPv4 (gre) or IPv6 (ip6gre).
 Configuration
 ^^^^^^^^^^^^^
 
-A basic configuration requires a tunnel source (source-address), a tunnel destination
-(remote), an encapsulation type (gre), and an address (ipv4/ipv6). Below is a
-basic IPv4 only configuration example taken from a VyOS router and a Cisco IOS
-router. The main difference between these two configurations is that VyOS
-requires you explicitly configure the encapsulation type. The Cisco router
-defaults to GRE IP otherwise it would have to be configured as well.
+A basic configuration requires a tunnel source (source-address), a tunnel
+destination (remote), an encapsulation type (gre), and an address (ipv4/ipv6).
+Below is a basic IPv4 only configuration example taken from a VyOS router and
+a Cisco IOS router. The main difference between these two configurations is
+that VyOS requires you explicitly configure the encapsulation type. The Cisco
+router defaults to GRE IP otherwise it would have to be configured as well.
 
 **VyOS Router:**
 
@@ -203,22 +203,21 @@ An example:
    set interfaces tunnel tun0 address 172.16.17.18/24
    set interfaces tunnel tun0 parameters ip key 20
 
-GRE-Bridge
-^^^^^^^^^^
+GRETAP
+^^^^^^^
 
-While normal GRE is for layer 3, GRE-Bridge is for layer 2. GRE-Bridge can
-encapsulate Ethernet frames, thus it can be bridged with other interfaces to
-create datalink layer segments that span multiple remote sites.
-
-Layer 2 GRE example:
+While normal GRE is for layer 3, GRETAP is for layer 2. GRETAP can encapsulate
+Ethernet frames, thus it can be bridged with other interfaces to create 
+datalink layer segments that span multiple remote sites.
 
 .. code-block:: none
 
    set interfaces bridge br0 member interface eth0
    set interfaces bridge br0 member interface tun0
    set interfaces tunnel tun0 encapsulation gretap
-   set interfaces tunnel tun0 source-address 192.0.2.100
-   set interfaces tunnel tun0 remote 192.0.2.1
+   set interfaces tunnel tun0 source-address 198.51.100.2
+   set interfaces tunnel tun0 remote 203.0.113.10
+
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
