@@ -1,4 +1,4 @@
-:lastproofread: 2021-10-01
+:lastproofread: 2023-01-26
 
 .. _wireguard:
 
@@ -173,6 +173,7 @@ traffic.
 
   Associates the previously generated private key to a specific WireGuard
   interface. The private key can be generate via the command
+
   :opcmd:`generate pki wireguard key-pair`.
 
   .. code-block:: none
@@ -243,8 +244,8 @@ asymmetric crypto. This is optional.
 
 .. code-block:: none
 
-  vyos@vyos:~$ generate pki wireguard preshared-key install
-  rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc=
+  vyos@vyos:~$ generate pki wireguard preshared-key
+  Pre-shared key: rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc=
 
 Copy the key, as it is not stored on the local filesystem. Because it
 is a symmetric key, only you and your peer should have knowledge of
