@@ -1,4 +1,4 @@
-:lastproofread: 2021-09-30
+:lastproofread: 2023-01-27
 
 .. _multicast:
 
@@ -151,13 +151,13 @@ You can also tune multicast with the following commands.
    IP address too.
 
 
-.. cfgcmd:: set protocols igmp interface <interface query-interval <seconds>
+.. cfgcmd:: set protocols igmp interface <interface> query-interval <seconds>
 
    Use this command to configure in the selected interface the IGMP
    host query interval (1-1800) in seconds that PIM will use.
 
 
-.. cfgcmd:: set protocols igmp interface <interface query-max-response-time
+.. cfgcmd:: set protocols igmp interface <interface> query-max-response-time
    <deciseconds>
 
    Use this command to configure in the selected interface the IGMP
