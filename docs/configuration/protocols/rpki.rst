@@ -58,8 +58,7 @@ Imported prefixes during the validation may have values:
   notfound
     No ROA exists which covers that prefix. Unfortunately this is the case
     for about 80% of the IPv4 prefixes which were announced to the :abbr:`DFZ
-    (default-free zone)` at the start of 2020 (see more detail in
-    NLnet Labs' `RPKI analytics`_).
+    (default-free zone)` at the start of 2020
 
 .. note::
   If you are responsible for the global addresses assigned to your
@@ -104,20 +103,20 @@ In a nutshell, the current implementation provides the following features:
 Configuration
 *************
 
-.. cfgcmd:: protocols rpki polling-period <1-86400>
+.. cfgcmd:: set protocols rpki polling-period <1-86400>
 
   Define the time interval to update the local cache
 
   The default value is 300 seconds.
 
-.. cfgcmd:: protocols rpki cache <address> port <port>
+.. cfgcmd:: set protocols rpki cache <address> port <port>
 
   Defined the IPv4, IPv6 or FQDN and port number of the caching RPKI caching
   instance which is used.
 
   This is a mandatory setting.
 
-.. cfgcmd:: protocols rpki cache <address> preference <preference>
+.. cfgcmd:: set protocols rpki cache <address> preference <preference>
 
   Multiple RPKI caching instances can be supplied and they need a preference in
   which their result sets are used.
@@ -133,19 +132,19 @@ first need to create yoursels an SSH client keypair using ``generate ssh
 client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup
 the connection.
 
-.. cfgcmd:: protocols rpki cache <address> ssh username <user>
+.. cfgcmd:: set protocols rpki cache <address> ssh username <user>
 
   SSH username to establish an SSH connection to the cache server.
 
-.. cfgcmd:: protocols rpki cache <address> ssh known-hosts-file <filepath>
+.. cfgcmd:: set protocols rpki cache <address> ssh known-hosts-file <filepath>
 
   Local path that includes the known hosts file.
 
-.. cfgcmd:: protocols rpki cache <address> ssh private-key-file <filepath>
+.. cfgcmd:: set protocols rpki cache <address> ssh private-key-file <filepath>
 
   Local path that includes the private key file of the router.
 
-.. cfgcmd:: protocols rpki cache <address> ssh public-key-file <filepath
+.. cfgcmd:: set protocols rpki cache <address> ssh public-key-file <filepath>
 
   Local path that includes the public key file of the router.
 
@@ -191,10 +190,9 @@ Test`_ experimental tool.
 .. _Routinator: https://www.nlnetlabs.nl/projects/rpki/routinator/
 .. _GoRTR: https://github.com/cloudflare/gortr
 .. _OctoRPKI: https://github.com/cloudflare/cfrpki#octorpki
-.. _Validator: https://www.ripe.net/manage-ips-and-asns/resource-management/certification/tools-and-resources
+.. _Validator: https://www.ripe.net/manage-ips-and-asns/resource-management/rpki/tools-and-resources
 .. _some instructions: https://labs.ripe.net/Members/tashi_phuntsho_3/how-to-install-an-rpki-validator
 .. _Krill: https://www.nlnetlabs.nl/projects/rpki/krill/
-.. _RPKI analytics: https://www.nlnetlabs.nl/projects/rpki/rpki-analytics/
 .. _RIPE Labs RPKI Test: https://sg-pub.ripe.net/jasper/rpki-web-test/
 .. _excellent guide to RPKI: https://rpki.readthedocs.io/
 .. _help and operational guidance: https://rpki.readthedocs.io/en/latest/about/help.html
