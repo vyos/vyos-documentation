@@ -1,4 +1,4 @@
-:lastproofread: 2022-08-26
+:lastproofread: 2023-01-27
 
 .. _wwan-interface:
 
