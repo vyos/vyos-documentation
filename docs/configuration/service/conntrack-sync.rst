@@ -70,6 +70,14 @@ Configuration
 
     Interface to use for syncing conntrack entries.
 
+.. cfgcmd:: set service conntrack-sync interface <name> port <port>
+
+   Port number used by connection.
+
+.. cfgcmd:: set service conntrack-sync listen-address <ipv4address>
+
+   Local IPv4 addresses for service to listen on.
+
   .. cfgcmd:: set service conntrack-sync mcast-group <x.x.x.x>
 
     Multicast group to use for syncing conntrack entries.
@@ -84,6 +92,11 @@ Configuration
   .. cfgcmd:: set service conntrack-sync sync-queue-size <size>
 
     Queue size for syncing conntrack entries in MB.
+
+.. cfgcmd:: set service conntrack-sync disable-external-cache
+
+   This diable the external cache and directly injects the flow-states into the
+   in-kernel Connection Tracking System of the backup firewall.
 
 *********
 Operation
