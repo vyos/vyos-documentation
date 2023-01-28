@@ -21,6 +21,16 @@ address.
 Configuration
 =============
 
+.. cfgcmd:: set service dhcp-server hostfile-update
+
+   Create DNS record per client lease, by adding clients to /etc/hosts file.
+   Entry will have format: `<shared-network-name>_<hostname>.<domain-name>`
+
+.. cfgcmd:: set service dhcp-server host-decl-name
+
+   Will drop `<shared-network-name>_` from client DNS record, using only the
+   host declaration name and domain: `<hostname>.<domain-name>`
+
 .. cfgcmd:: set service dhcp-server shared-network-name <name> domain-name <domain-name>
 
    The domain-name parameter should be the domain name that will be appended to
@@ -447,7 +457,8 @@ Raw Parameters
 Option 43 for UniFI
 -------------------
 
-* These parameters need to be part of the DHCP global options. They stay unchanged.
+* These parameters need to be part of the DHCP global options.
+  They stay unchanged.
 
 
 .. code-block:: none
