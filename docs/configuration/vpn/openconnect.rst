@@ -221,3 +221,34 @@ To display the configured OTP user settings, use the command:
 .. code-block:: none
 
   show openconnect-server user <username> otp <full|key-b32|key-hex|qrcode|uri>
+
+Configuring RADIUS accounting
+===========================
+
+OpenConnect can be configured to send accounting information to a
+RADIUS server to capture user session data such as time of
+connect/disconnect, data transferred, and so on.
+
+Configure an accounting server and enable accounting with:
+
+.. code-block:: none
+
+  set vpn openconnect accounting mode radius
+  set vpn openconnect accounting radius server 172.20.20.10
+  set vpn openconnect accounting radius server 172.20.20.10 port 1813
+  set vpn openconnect accounting radius server 172.20.20.10 key your_radius_secret
+
+.. warning:: The RADIUS accounting feature must be used with the OpenConnect
+  authentication mode RADIUS. It cannot be used with local authentication.
+  You must configure the OpenConnect authentication mode to "radius".
+
+An example of the data captured by a FREERADIUS server with sql accounting:
+
+.. code-block:: none
+
+  mysql> SELECT username, nasipaddress, acctstarttime, acctstoptime, acctinputoctets, acctoutputoctets, callingstationid, framedipaddress, connectinfo_start FROM radacct;
+  +----------+---------------+---------------------+---------------------+-----------------+------------------+-------------------+-----------------+-----------------------------------+
+  | username | nasipaddress  | acctstarttime       | acctstoptime        | acctinputoctets | acctoutputoctets | callingstationid  | framedipaddress | connectinfo_start                 |
+  +----------+---------------+---------------------+---------------------+-----------------+------------------+-------------------+-----------------+-----------------------------------+
+  | test     | 198.51.100.15 | 2023-01-13 00:59:15 | 2023-01-13 00:59:21 |           10606 |              152 | 192.168.6.1       | 172.20.20.198   | Open AnyConnect VPN Agent v8.05-1 |
+  +----------+---------------+---------------------+---------------------+-----------------+------------------+-------------------+-----------------+-----------------------------------+
