@@ -37,14 +37,14 @@ Most examples below show Multicast, but unicast can be specified by using the
 Configuration
 *************
 
-  .. cfgcmd:: set service conntrack-sync accept-protocol
+.. cfgcmd:: set service conntrack-sync accept-protocol
 
     Accept only certain protocols: You may want to replicate the state of flows
     depending on their layer 4 protocol.
 
     Protocols are: tcp, sctp, dccp, udp, icmp and ipv6-icmp.
 
-  .. cfgcmd:: set service conntrack-sync event-listen-queue-size <size>
+.. cfgcmd:: set service conntrack-sync event-listen-queue-size <size>
 
     The daemon doubles the size of the netlink event socket buffer size if it
     detects netlink event message dropping. This clause sets the maximum buffer
@@ -52,21 +52,21 @@ Configuration
 
     Queue size for listening to local conntrack events in MB.
 
-  .. cfgcmd:: set service conntrack-sync expect-sync <all|ftp|h323|nfs|sip|sqlnet>
+.. cfgcmd:: set service conntrack-sync expect-sync <all|ftp|h323|nfs|sip|sqlnet>
 
     Protocol for which expect entries need to be synchronized.
 
-  .. cfgcmd:: set service conntrack-sync failover-mechanism vrrp sync-group <group>
+.. cfgcmd:: set service conntrack-sync failover-mechanism vrrp sync-group <group>
 
     Failover mechanism to use for conntrack-sync.
 
     Only VRRP is supported. Required option.
 
-  .. cfgcmd:: set service conntrack-sync ignore-address <x.x.x.x>
+.. cfgcmd:: set service conntrack-sync ignore-address <x.x.x.x>
 
     IP addresses or networks for which local conntrack entries will not be synced
 
-  .. cfgcmd:: set service conntrack-sync interface <name>
+.. cfgcmd:: set service conntrack-sync interface <name>
 
     Interface to use for syncing conntrack entries.
 
@@ -78,18 +78,18 @@ Configuration
 
    Local IPv4 addresses for service to listen on.
 
-  .. cfgcmd:: set service conntrack-sync mcast-group <x.x.x.x>
+.. cfgcmd:: set service conntrack-sync mcast-group <x.x.x.x>
 
     Multicast group to use for syncing conntrack entries.
 
     Defaults to 225.0.0.50.
 
-  .. cfgcmd:: set service conntrack-sync interface <name> peer <address>
+.. cfgcmd:: set service conntrack-sync interface <name> peer <address>
 
     Peer to send unicast UDP conntrack sync entires to, if not using Multicast
     configuration from above above.
 
-  .. cfgcmd:: set service conntrack-sync sync-queue-size <size>
+.. cfgcmd:: set service conntrack-sync sync-queue-size <size>
 
     Queue size for syncing conntrack entries in MB.
 
