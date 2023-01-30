@@ -4,7 +4,7 @@
 HTTP-API
 ########
 
-VyOS provides an HTTP API. You can use it to execute op-mode commands,
+VyOS provide an HTTP API. You can use it to execute op-mode commands,
 update VyOS, set or delete config.
 
 Please take a look at the :ref:`vyosapi` page for an detailed how-to.
@@ -15,7 +15,7 @@ Configuration
 
 .. cfgcmd:: set service https api keys id <name> key <apikey>
 
-   Set a named api key, every key has the same, full permissions
+   Set a named api key. Every key has the same, full permissions
    on the system.
 
 .. cfgcmd:: set service https api debug
@@ -37,6 +37,7 @@ Configuration
    Enforce strict path checking
 
 .. cfgcmd:: set service https virtual-host <vhost> listen-address
+            <ipv4 or ipv6 address>
 
    Address to listen for HTTPS requests
 
@@ -46,11 +47,11 @@ Configuration
 
 .. cfgcmd:: set service https virtual-host <vhost> server-name <text>
 
-   Server names for virtual hosts it ca be exact, wildcard or regex.
+   Server names for virtual hosts it can be exact, wildcard or regex.
 
 .. cfgcmd:: set service https api-restrict virtual-host <vhost>
 
-   Nginx exposes the local API on all virtual servers, by default. 
+   By default, nginx exposes the local API on all virtual servers.
    Use this to restrict nginx to one or more virtual hosts.
 
 .. cfgcmd:: set service https certificates certbot domain-name <text>
@@ -75,15 +76,14 @@ Configuration
 Example Configuration
 *********************
 
-Setting an API-KEY is the minimal configuration needed to get a working API 
-Endpoint.
+Set an API-KEY is the minimal configuration to get a working API Endpoint.
 
 .. code-block:: none
 
    set service https api keys id MY-HTTPS-API-ID key MY-HTTPS-API-PLAINTEXT-KEY
 
 
-To use this full configuration we asume a globally resolvable hostname.
+To use this full configuration we asume a public accessible hostname.
 
 .. code-block:: none
 
