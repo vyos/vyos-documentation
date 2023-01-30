@@ -131,7 +131,7 @@ sent in clear text between a manager and agent. Each SNMPv3 message contains
 security parameters which are encoded as an octet string. The meaning of these
 security parameters depends on the security model being used.
 
-The security approach in v3 targets:
+The security approach in SNMPv3 targets:
 
 * Confidentiality – Encryption of packets to prevent snooping by an
   unauthorized source.
@@ -203,7 +203,8 @@ VyOS MIBs
 
 All SNMP MIBs are located in each image of VyOS here: ``/usr/share/snmp/mibs/``
 
-You can download the file to your local host with an active ssh service like this
+You are be able to download the files using SCP, once the SSH service
+has been activated like so
 
 .. code-block:: none
 
