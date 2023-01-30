@@ -8,6 +8,55 @@
    _ext/releasenotes.py
 
 
+2023-01-29
+==========
+
+* :vytask:`T4965` (default): empty description in firewall group causes configuration error on migration
+
+
+2023-01-28
+==========
+
+* :vytask:`T4961` (bug): Uncaught configtree error allows ntp migration 1-to-2 to fail silentlly on config.boot.default
+
+
+2023-01-27
+==========
+
+* :vytask:`T4960` (bug): Bugs in `cc_vyos.py` code (Cloud-Init)
+
+
+2023-01-26
+==========
+
+* :vytask:`T4886` (feature): Firewall and Policy - Add connection mark
+* :vytask:`T4957` (bug): config-mgmt should not attempt to archive config at boot
+* :vytask:`T4962` (bug): Fix typo in regex in vyos.config_mgmt compare function
+* :vytask:`T4912` (default): Rewrite the IGMP op mode in the new style
+
+
+2023-01-25
+==========
+
+* :vytask:`T4941` (bug): Accel-ppp IPoE incompatibility with kernel 6.1
+
+
+2023-01-24
+==========
+
+* :vytask:`T4947` (feature): Support mounting container volumes as ro or rw
+
+
+2023-01-23
+==========
+
+* :vytask:`T4798` (default): Migrate the file-exists validator away from Python
+* :vytask:`T4683` (enhancment): Add kitty-terminfo package to build
+* :vytask:`T4953` (bug): Remove convert_kwargs_to_snake_case decorator in dynamic generation of GraphQL resolvers
+* :vytask:`T4875` (default): Replace Python validator 'interface-name' to avoid Python startup cost
+* :vytask:`T4664` (bug): Add validation to reject whitespace in tag node value names
+
+
 2023-01-22
 ==========
 
