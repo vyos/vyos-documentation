@@ -21,6 +21,10 @@ avoid being tracked by the provider of your upstream DNS server.
    Forward incoming DNS queries to the DNS servers configured under the ``system
    name-server`` nodes.
 
+.. cfgcmd:: set service dns forwarding dhcp <interface>
+
+   Interfaces whose DHCP client nameservers to forward requests to.
+
 .. cfgcmd:: set service dns forwarding name-server <address>
 
    Send all DNS queries to the IPv4/IPv6 DNS server specified under `<address>`.
@@ -34,6 +38,15 @@ avoid being tracked by the provider of your upstream DNS server.
    configuration.
 
    .. note:: This also works for reverse-lookup zones (``18.172.in-addr.arpa``).
+
+.. cfgcmd:: set service dns forwarding domain <domain-name> addnta
+
+   Add NTA (negative trust anchor) for this domain. This must be set if the
+   domain does not support DNSSEC.
+
+.. cfgcmd:: set service dns forwarding domain <domain-name> recursion-desired
+
+   Set the "recursion desired" bit in requests to the upstream nameserver.
 
 .. cfgcmd:: set service dns forwarding allow-from <network>
 
