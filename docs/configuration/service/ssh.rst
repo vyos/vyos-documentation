@@ -201,7 +201,7 @@ Operation
 
   .. code-block:: none
 
-    alyssa@vyos:~$ generate public-key-command name alyssa path sftp://example.net/home/alyssa/.ssh/id_rsa.pub
+    alyssa@vyos:~$ generate public-key-command user alyssa path sftp://example.net/home/alyssa/.ssh/id_rsa.pub
     # To add this key as an embedded key, run the following commands:
     configure
     set system login user alyssa authentication public-keys alyssa@example.net key AAA...
