@@ -172,14 +172,15 @@ Automatic VLAN Creation
 .. cfgcmd:: set service pppoe-server interface <interface>
    <vlan-id | vlan range> <text>
 
-   VLAN's can be created by accel-ppp on the fly via the use of a Kernel
-   module named `vlan_mon`, which is monitoring incoming vlans and
-   creates the necessary VLAN if required and allowed. VyOS supports the
-   use of either VLAN ID's or entire ranges, both values can be defined
-   at the same time for an interface. When configured, the PPPoE will
-   create the necessary VLANs when required. Once the user session has
-   been cancelled and the VLAN is not needed anymore, VyOS will remove
-   it again.
+   VLAN's can be created by Accel-ppp on the fly via the use of a Kernel module
+   named `vlan_mon`, which is monitoring incoming vlans and creates the
+   necessary VLAN if required and allowed. VyOS supports the use of either
+   VLAN ID's or entire ranges, both values can be defined at the same time for
+   an interface.
+
+   When configured, PPPoE will create the necessary VLANs when required. Once
+   the user session has been cancelled and the VLAN is not needed anymore, VyOS
+   will remove it again.
 
 .. code-block:: none
 
