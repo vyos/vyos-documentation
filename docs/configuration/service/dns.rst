@@ -204,6 +204,8 @@ Configuration
 :rfc:`2136` Based
 -----------------
 
+.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+
 Create new :rfc:`2136` DNS update configuration which will update the IP
 address assigned to `<interface>` on the service you configured under
 `<service-name>`.
