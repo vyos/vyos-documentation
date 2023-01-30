@@ -8,6 +8,22 @@
    _ext/releasenotes.py
 
 
+2023-01-24
+==========
+
+* :vytask:`T4949` (feature): Backport "monitor log" and "show log" op-mode definitions from current to equuleus
+* :vytask:`T4947` (feature): Support mounting container volumes as ro or rw
+
+
+2023-01-23
+==========
+
+* :vytask:`T4798` (default): Migrate the file-exists validator away from Python
+* :vytask:`T4683` (enhancment): Add kitty-terminfo package to build
+* :vytask:`T4875` (default): Replace Python validator 'interface-name' to avoid Python startup cost
+* :vytask:`T4664` (bug): Add validation to reject whitespace in tag node value names
+
+
 2023-01-22
 ==========
 
