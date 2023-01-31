@@ -271,13 +271,6 @@ Bond options
    The maximum number of targets that can be specified is 16. The default value
    is no IP address.
 
-Offloading
-----------
-
-.. cmdinclude:: /_include/interface-xdp.txt
-   :var0: bonding
-   :var1: bond0
-
 VLAN
 ====
 
