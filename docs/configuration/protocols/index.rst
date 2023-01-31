@@ -9,6 +9,7 @@ Protocols
 
    bfd
    bgp
+   failover
    igmp
    isis
    mpls
