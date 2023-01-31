@@ -4,9 +4,9 @@
 Installation
 ############
 
-VyOS installation requires to download a VyOS .iso file. That file is
-a live install image that lets you boot a live VyOS. From that live
-system you can proceed to the permanent installation on a hard drive or
+VyOS installation requires a downloaded VyOS .iso file. That file is
+a live install image that lets you boot a live VyOS. From the live
+system, you can proceed to a permanent installation on a hard drive or
 any other type of storage.
 
 .. table:: Comparison of VyOS image releases
@@ -45,7 +45,7 @@ Hardware requirements
 =====================
 
 The minimum system requirements are 512 MiB RAM and 2 GiB storage.
-Depending on your use you might need additional RAM and CPU resources e.g.
+Depending on your use, you might need additional RAM and CPU resources e.g.
 when having multiple BGP full tables in your system.
 
 .. _download:
@@ -56,19 +56,19 @@ Download
 Registered Subscribers
 ----------------------
 
-Registered subscribers can log into https://support.vyos.io/ to have access to
-a variety of different downloads via the "Downloads" link. These downloads
-include LTS (Long-Term-Support) and associated hot-fix releases, early public
+Registered subscribers can log into https://support.vyos.io/ to access a
+variety of different downloads via the "Downloads" link. These downloads
+include LTS (Long-Term Support), the associated hot-fix releases, early public
 access releases, pre-built VM images, as well as device specific installation
 ISOs.
 
 .. figure:: /_static/images/vyos-downloads.png
 
 Building from source
-----------------------
+--------------------
 
 Non-subscribers can always get the LTS release by building it from source.
-Instruction can be found in the :ref:`build` section of this manual. VyOS
+Instructions can be found in the :ref:`build` section of this manual. VyOS
 source code repository is available for everyone at
 https://github.com/vyos/vyos-build.
 
@@ -80,8 +80,8 @@ https://downloads.vyos.io/
 
 .. note:: Rolling releases contain all the latest enhancements and fixes. This
    means that there will be new bugs of course. If you think you hit a bug
-   please follow the guide at :ref:`bug_report`. To improve VyOS we depend on
-   your feedback!
+   please follow the guide at :ref:`bug_report`. We depend on your feedback
+   to improve VyOS!
 
 The following link will always fetch the most recent VyOS build for AMD64
 systems from the current branch:
@@ -91,11 +91,11 @@ https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
 Download Verification
 ---------------------
 
-LTS images are signed by VyOS lead package-maintainer private key. With
+LTS images are signed by the VyOS lead package-maintainer private key. With
 the official public key, the authenticity of the package can be
 verified. :abbr:`GPG (GNU Privacy Guard)` is used for verification.
 
-.. note:: This subsection only applies e applies to LTS images, for
+.. note:: This subsection only applies to LTS images, for
    Rolling images please jump to :ref:`live_installation`.
 
 Preparing for the verification
@@ -271,12 +271,12 @@ Live installation
 .. note:: A permanent VyOS installation always requires to go first
    through a live installation.
 
-VyOS, as other GNU+Linux distributions, can be tasted without installing
+VyOS, as other GNU+Linux distributions, can be tested without installing
 it in your hard drive. **With your downloaded VyOS .iso file you can
 create a bootable USB drive that will let you boot into a fully
 functional VyOS system**. Once you have tested it, you can either decide
 to begin a :ref:`permanent_installation` in your hard drive or power
-your system off, remove the USB drive, and leave everythng as it was.
+your system off, remove the USB drive, and leave everything as it was.
 
 
 If you have a GNU+Linux system, you can create your VyOS bootable USB
@@ -412,7 +412,7 @@ In order to proceed with a permanent installation:
    Done!
 
 
- 3. After the installation is complete, remove the live USB stick or
+ 3. After the installation is completed, remove the live USB stick or
     CD.
 
  4. Reboot the system.
@@ -429,7 +429,7 @@ PXE Boot
 ========
 
 VyOS can also be installed through PXE. This is a more complex
-installation method which allows deploying VyOS through the network.
+installation method that allows deploying VyOS through the network.
 
 **Requirements**
 
