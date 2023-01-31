@@ -79,7 +79,7 @@ https://downloads.vyos.io/
 .. note:: Rolling releases contain all the latest enhancements and fixes. This
    means that there will be new bugs of course. If you think you hit a bug
    please follow the guide at :ref:`bug_report`. We depend on your feedback
-   to improve vyOS!
+   to improve VyOS!
 
 The following link will always fetch the most recent VyOS build for AMD64
 systems from the current branch:
