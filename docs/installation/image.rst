@@ -30,7 +30,7 @@ configured to be the default.
 
 .. opcmd:: show system image
 
-   List all available system images which can be bootet on the current system.
+   List all available system images which can be booted on the current system.
 
    .. code-block:: none
 
