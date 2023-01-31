@@ -369,7 +369,6 @@ Acrosser AND-J190N1
 
 This microbox network appliance was build to create OpenVPN bridges. It can
 saturate a 100Mbps link. It is a small (serial console only) PC with 6 Gb LAN
-http://www.acrosser.com/upload/AND-J190_J180N1-2.pdf
 
 You may have to add your own RAM and HDD/SSD. There is no VGA connector. But
 Acrosser provides a DB25 adapter for the VGA header on the motherboard (not
