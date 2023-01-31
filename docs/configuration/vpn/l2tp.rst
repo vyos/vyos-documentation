@@ -26,7 +26,7 @@ with native Windows and Mac VPN clients):
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
-In the example above an external IP of 192.0.2.2 is assumed.
+In the above example, an external IP of 192.0.2.2 is assumed.
 
 If a local firewall policy is in place on your external interface you will need
 to allow the ports below:
@@ -162,7 +162,7 @@ servers can be setup and will be used subsequentially.
 RADIUS source address
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you are using OSPF as IGP always the closets interface connected to the
+If you are using OSPF as IGP, always the closest interface connected to the
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
 
@@ -174,7 +174,7 @@ Above command will use `10.0.0.3` as source IPv4 address for all RADIUS queries
 on this NAS.
 
 .. note:: The ``source-address`` must be configured on one of VyOS interface.
-   Best proctice would be a loopback or dummy interface.
+   Best practice would be a loopback or dummy interface.
 
 RADIUS bandwidth shaping attribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
