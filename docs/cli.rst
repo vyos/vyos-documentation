@@ -87,9 +87,9 @@ To enter configuration mode use the ``configure`` command:
 
 .. code-block:: none
 
-   vyos@vyos:~# exit
-   exit
-   vyos@vyos:~$
+  vyos@vyos:~# exit
+  exit
+  vyos@vyos:~$
 
 See the configuration section of this document for more information on
 configuration mode.
@@ -334,7 +334,6 @@ special way on how to :ref:`run_opmode_from_config_mode`.
      }
 
 
-
 The config mode
 ---------------
 
@@ -509,7 +508,7 @@ different levels in the hierarchy.
    Use this command to preserve configuration changes upon reboot. By
    default it is stored at */config/config.boot*. In the case you want
    to store the configuration file somewhere else, you can add a local
-   path, an SCP address, an FTP address or a TFTP address. 
+   path, a SCP address, a FTP address or a TFTP address. 
 
    .. code-block:: none
 
@@ -560,7 +559,7 @@ different levels in the hierarchy.
    a firewall, and you are not sure there are no mistakes that will lock
    you out of your system. You can use confirmed commit. If you issue
    the ``commit-confirm`` command, your changes will be commited, and if
-   you don't issue issue the ``confirm`` command in 10 minutes, your
+   you don't issue  the ``confirm`` command in 10 minutes, your
    system will reboot into previous config revision.
 
    .. code-block:: none
