@@ -17,7 +17,7 @@ installing from the ISO using the normal process around `install image`.
 Memory Contention Considerations
 --------------------------------
 When the underlying ESXi host is approaching ~92% memory utilisation it will
-start the balloon process in  a 'soft' state to start reclaiming memory from
+start the balloon process in a 'soft' state to start reclaiming memory from
 guest operating systems. This causes an artificial pressure using the vmmemctl
 driver on memory usage on the virtual guest. As VyOS by default does not have
 a swap file, this vmmemctl pressure is unable to force processes to move in
