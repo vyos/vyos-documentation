@@ -1,13 +1,15 @@
-###################
-Connection tracking
-###################
+
+#########
+Conntrack
+#########
 
 VyOS can be configured to track connections using the connection
 tracking subsystem. Connection tracking becomes operational once either
 stateful firewall or NAT is configured.
 
-Conntrack Table
----------------
+*********
+Configure
+*********
 
 .. cfgcmd:: set system conntrack table-size <1-50000000>
     :defaultvalue:
@@ -30,12 +32,6 @@ Conntrack Table
     searching the connection tracking table faster. The hash table uses
     “buckets” to record entries in the connection tracking table.
 
-
-Modules
--------
-
-Enables ``conntrack`` modules. All modules are enable by default.
-
 .. cfgcmd:: set system conntrack modules ftp
 .. cfgcmd:: set system conntrack modules h323
 .. cfgcmd:: set system conntrack modules nfs
@@ -44,12 +40,15 @@ Enables ``conntrack`` modules. All modules are enable by default.
 .. cfgcmd:: set system conntrack modules sqlnet
 .. cfgcmd:: set system conntrack modules tftp
 
-Use ``delete system conntrack modules`` to deactive all modules.
-Or, for example ftp, ``delete system conntrack modules ftp``.
+    Configure the connection tracking protocol helper modules.
+    All modules are enable by default.
+
+    | Use `delete system conntrack modules` to deactive all modules.
+    | Or, for example ftp, `delete system conntrack modules ftp`.
 
 
-Define Connection Timeouts
---------------------------
+Define Conection Timeouts
+=========================
 
 VyOS supports setting timeouts for connections according to the
 connection type. You can set timeout values for generic connections, for ICMP
@@ -88,43 +87,101 @@ You can also define custom timeout values to apply to a specific subset of
 connections, based on a packet and flow selector. To do this, you need to
 create a rule defining the packet and flow selector.
 
-.. cfgcmd:: set system conntrack timeout custom rule <1-999999>
-   description <test>
-.. cfgcmd:: set system conntrack timeout custom rule <1-999999>
-   destination address <ip-address>
-.. cfgcmd:: set system conntrack timeout custom rule <1-999999>
-   destination port <value>
-.. cfgcmd:: set system conntrack timeout custom rule <1-999999>
-   inbound-interface <interface>
-.. cfgcmd:: set system conntrack timeout custom rule <1-999999>
-   source address <ip-address>
-.. cfgcmd:: set system conntrack timeout custom rule <1-999999>
-   source port <value>
-.. cfgcmd:: set system conntrack timeout custom rule <1-999999>
-   protocol <protocol>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> description <test>
 
-    Configure customized timeout rules for selective connection tracking.
+    Set a rule description.
 
-Conntrack Ignore
-----------------
 
-Customized ignore rules, based on a packet and flow selector, can be
-configured in VyOS. To do this, you can configure as much rules as
-needed using next commands:
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> destination address <ip-address>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> source address <ip-address>
 
-.. cfgcmd:: set system conntrack ignore rule <1-999999>
-   description <text>
-.. cfgcmd:: set system conntrack ignore rule <1-999999>
-   destination address <ip-address>
-.. cfgcmd:: set system conntrack ignore rule <1-999999>
-   destination port <port>
-.. cfgcmd:: set system conntrack ignore rule <1-999999>
-   inbound-interface <interface>
-.. cfgcmd:: set system conntrack ignore rule <1-999999>
-   protocol <protocol>
-.. cfgcmd:: set system conntrack ignore rule <1-999999>
-   source address <ip-address>
-.. cfgcmd:: set system conntrack ignore rule <1-999999>
-   source port <port>
+    set a destination and/or source address. Accepted input:
 
-    Configure customized ignore rules for selective connection tracking.
+    .. code-block:: none
+
+        <x.x.x.x>    IP address to match
+        <x.x.x.x/x>  Subnet to match
+        <x.x.x.x>-<x.x.x.x>
+                        IP range to match
+        !<x.x.x.x>   Match everything except the specified address
+        !<x.x.x.x/x> Match everything except the specified subnet
+        !<x.x.x.x>-<x.x.x.x>
+                        Match everything except the specified range
+
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> destination port <value>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> source port <value>
+
+    Set a destination and/or source port. Accepted input:
+
+    .. code-block:: none
+
+        <port name>    Named port (any name in /etc/services, e.g., http)
+        <1-65535>      Numbered port
+        <start>-<end>  Numbered port range (e.g., 1001-1005)
+    
+    Multiple destination ports can be specified as a comma-separated list.
+    The whole list can also be "negated" using '!'. For example:
+    `!22,telnet,http,123,1001-1005``
+
+            
+
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol icmp <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol other <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp close <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp close-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp established <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp fin-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp last-ack <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp syn-recv <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp syn-sent <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp time-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol udp other <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol udp stream <1-21474836>
+
+    Set the timeout in secounds for a protocol or state in a custom rule.
+
+
+.. cfgcmd:: set system conntrack tcp half-open-connections <1-21474836>
+    :defaultvalue:
+
+    Set the maximum number of TCP half-open connections.
+
+.. cfgcmd:: set system conntrack tcp loose <enable | disable>
+    :defaultvalue:
+
+    Policy to track previously established connections.
+
+.. cfgcmd:: set system conntrack tcp max-retrans <1-2147483647>
+    :defaultvalue:
+
+    Set the number of TCP maximum retransmit attempts.
+
+.. cfgcmd:: set system conntrack ignore rule <1-9999> description <text>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> destination address <ip-address>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> destination port <port>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> inbound-interface <interface>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> protocol <protocol>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> source address <ip-address>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> source port <port>
+
+    Customized ignore rules, based on a packet and flow selector.
+
+.. cfgcmd:: set system conntrack log icmp destroy
+.. cfgcmd:: set system conntrack log icmp new
+.. cfgcmd:: set system conntrack log icmp update
+.. cfgcmd:: set system conntrack log other destroy
+.. cfgcmd:: set system conntrack log other new
+.. cfgcmd:: set system conntrack log other update
+.. cfgcmd:: set system conntrack log tcp destroy
+.. cfgcmd:: set system conntrack log tcp new
+.. cfgcmd:: set system conntrack log tcp update close-wait
+.. cfgcmd:: set system conntrack log tcp update established
+.. cfgcmd:: set system conntrack log tcp update fin-wait
+.. cfgcmd:: set system conntrack log tcp update last-ack
+.. cfgcmd:: set system conntrack log tcp update syn-received
+.. cfgcmd:: set system conntrack log tcp update time-wait
+.. cfgcmd:: set system conntrack log udp destroy
+.. cfgcmd:: set system conntrack log udp new
+.. cfgcmd:: set system conntrack log udp update
+
+    Log the connection tracking events per protocol.
