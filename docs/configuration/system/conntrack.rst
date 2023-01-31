@@ -29,16 +29,16 @@ Configure
     :defaultvalue:
 
     Set the size of the hash table. The connection tracking hash table makes
-    searching the connection tracking table faster. The hash table uses “buckets” to
-    record entries in the connection tracking table.
+    searching the connection tracking table faster. The hash table uses
+    “buckets” to record entries in the connection tracking table.
 
-.. cfgcmd:: system conntrack modules ftp
-.. cfgcmd:: system conntrack modules h323
-.. cfgcmd:: system conntrack modules nfs
-.. cfgcmd:: system conntrack modules pptp
-.. cfgcmd:: system conntrack modules sip
-.. cfgcmd:: system conntrack modules sqlnet
-.. cfgcmd:: system conntrack modules tftp
+.. cfgcmd:: set system conntrack modules ftp
+.. cfgcmd:: set system conntrack modules h323
+.. cfgcmd:: set system conntrack modules nfs
+.. cfgcmd:: set system conntrack modules pptp
+.. cfgcmd:: set system conntrack modules sip
+.. cfgcmd:: set system conntrack modules sqlnet
+.. cfgcmd:: set system conntrack modules tftp
 
     Configure the connection tracking protocol helper modules.
     All modules are enable by default.
@@ -52,47 +52,48 @@ Define Conection Timeouts
 
 VyOS supports setting timeouts for connections according to the
 connection type. You can set timeout values for generic connections, for ICMP
-connections, UDP connections, or for TCP connections in a number of different states.
+connections, UDP connections, or for TCP connections in a number of different
+states.
 
-.. cfgcmd:: system conntrack timeout icmp <1-21474836>
+.. cfgcmd:: set system conntrack timeout icmp <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout other <1-21474836>
+.. cfgcmd:: set system conntrack timeout other <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout tcp close <1-21474836>
+.. cfgcmd:: set system conntrack timeout tcp close <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout tcp close-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout tcp close-wait <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout tcp established <1-21474836>
+.. cfgcmd:: set system conntrack timeout tcp established <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout tcp fin-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout tcp fin-wait <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout tcp last-ack <1-21474836>
+.. cfgcmd:: set system conntrack timeout tcp last-ack <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout tcp syn-recv <1-21474836>
+.. cfgcmd:: set system conntrack timeout tcp syn-recv <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout tcp syn-sent <1-21474836>
+.. cfgcmd:: set system conntrack timeout tcp syn-sent <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout tcp time-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout tcp time-wait <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout udp other <1-21474836>
+.. cfgcmd:: set system conntrack timeout udp other <1-21474836>
     :defaultvalue:
-.. cfgcmd:: system conntrack timeout udp stream <1-21474836>
+.. cfgcmd:: set system conntrack timeout udp stream <1-21474836>
     :defaultvalue:
 
     Set the timeout in secounds for a protocol or state.
 
 
 You can also define custom timeout values to apply to a specific subset of
-connections, based on a packet and flow selector. To do this, you create a rule
-defining the packet and flow selector.
+connections, based on a packet and flow selector. To do this, you need to
+create a rule defining the packet and flow selector.
 
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> description <test>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> description <test>
 
     Set a rule description.
 
 
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> destination address <ip-address>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> source address <ip-address>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> destination address <ip-address>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> source address <ip-address>
 
     set a destination and/or source address. Accepted input:
 
@@ -107,8 +108,8 @@ defining the packet and flow selector.
         !<x.x.x.x>-<x.x.x.x>
                         Match everything except the specified range
 
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> destination port <value>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> source port <value>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> destination port <value>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> source port <value>
 
     Set a destination and/or source port. Accepted input:
 
@@ -124,63 +125,63 @@ defining the packet and flow selector.
 
             
 
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol icmp <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol other <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol tcp close <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol tcp close-wait <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol tcp established <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol tcp fin-wait <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol tcp last-ack <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol tcp syn-recv <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol tcp syn-sent <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol tcp time-wait <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol udp other <1-21474836>
-.. cfgcmd:: system conntrack timeout custom rule <1-9999> protocol udp stream <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol icmp <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol other <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp close <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp close-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp established <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp fin-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp last-ack <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp syn-recv <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp syn-sent <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp time-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol udp other <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol udp stream <1-21474836>
 
     Set the timeout in secounds for a protocol or state in a custom rule.
 
 
-.. cfgcmd:: system conntrack tcp half-open-connections <1-21474836>
+.. cfgcmd:: set system conntrack tcp half-open-connections <1-21474836>
     :defaultvalue:
 
     Set the maximum number of TCP half-open connections.
 
-.. cfgcmd:: system conntrack tcp loose <enable | disable>
+.. cfgcmd:: set system conntrack tcp loose <enable | disable>
     :defaultvalue:
 
     Policy to track previously established connections.
 
-.. cfgcmd:: system conntrack tcp max-retrans <1-2147483647>
+.. cfgcmd:: set system conntrack tcp max-retrans <1-2147483647>
     :defaultvalue:
 
     Set the number of TCP maximum retransmit attempts.
 
-.. cfgcmd:: system conntrack ignore rule <1-9999> description <text>
-.. cfgcmd:: system conntrack ignore rule <1-9999> destination address <ip-address>
-.. cfgcmd:: system conntrack ignore rule <1-9999> destination port <port>
-.. cfgcmd:: system conntrack ignore rule <1-9999> inbound-interface <interface>
-.. cfgcmd:: system conntrack ignore rule <1-9999> protocol <protocol>
-.. cfgcmd:: system conntrack ignore rule <1-9999> source address <ip-address>
-.. cfgcmd:: system conntrack ignore rule <1-9999> source port <port>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> description <text>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> destination address <ip-address>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> destination port <port>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> inbound-interface <interface>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> protocol <protocol>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> source address <ip-address>
+.. cfgcmd:: set system conntrack ignore rule <1-9999> source port <port>
 
-    Configure customized ignore rules for selective connection tracking
+    Customized ignore rules, based on a packet and flow selector.
 
-.. cfgcmd:: system conntrack log icmp destroy
-.. cfgcmd:: system conntrack log icmp new
-.. cfgcmd:: system conntrack log icmp update
-.. cfgcmd:: system conntrack log other destroy
-.. cfgcmd:: system conntrack log other new
-.. cfgcmd:: system conntrack log other update
-.. cfgcmd:: system conntrack log tcp destroy
-.. cfgcmd:: system conntrack log tcp new
-.. cfgcmd:: system conntrack log tcp update close-wait
-.. cfgcmd:: system conntrack log tcp update established
-.. cfgcmd:: system conntrack log tcp update fin-wait
-.. cfgcmd:: system conntrack log tcp update last-ack
-.. cfgcmd:: system conntrack log tcp update syn-received
-.. cfgcmd:: system conntrack log tcp update time-wait
-.. cfgcmd:: system conntrack log udp destroy
-.. cfgcmd:: system conntrack log udp new
-.. cfgcmd:: system conntrack log udp update
+.. cfgcmd:: set system conntrack log icmp destroy
+.. cfgcmd:: set system conntrack log icmp new
+.. cfgcmd:: set system conntrack log icmp update
+.. cfgcmd:: set system conntrack log other destroy
+.. cfgcmd:: set system conntrack log other new
+.. cfgcmd:: set system conntrack log other update
+.. cfgcmd:: set system conntrack log tcp destroy
+.. cfgcmd:: set system conntrack log tcp new
+.. cfgcmd:: set system conntrack log tcp update close-wait
+.. cfgcmd:: set system conntrack log tcp update established
+.. cfgcmd:: set system conntrack log tcp update fin-wait
+.. cfgcmd:: set system conntrack log tcp update last-ack
+.. cfgcmd:: set system conntrack log tcp update syn-received
+.. cfgcmd:: set system conntrack log tcp update time-wait
+.. cfgcmd:: set system conntrack log udp destroy
+.. cfgcmd:: set system conntrack log udp new
+.. cfgcmd:: set system conntrack log udp update
 
     Log the connection tracking events per protocol.
