@@ -2,11 +2,13 @@
 
 .. _examples-openvvpn-ldap:
 
+#########################
 OpenVPN with LDAP example
--------------------
+#########################
 
 Configuration AD and a windows server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=====================================
+
 We aim to configure LDAP authentication between the VYOS router and Windows Server 2019 (role: Active Directory) when our customers connect to our privet network using the OpenVPN client.
 Using the general schema for example:
 
@@ -38,7 +40,7 @@ Picture 1 - Adding the AD role
 Picture 2 - Adding the AD role
 
 Configuration VyOS router
-^^^^^^^^^^^^^^^^^^^^^^^^^
+=========================
 
 Make the configuration file for the LDAP plugin.
 

@@ -56,7 +56,7 @@ Server Configuration
   set vpn openconnect ssl passphrase <pki-password>
 
 2FA OTP support 
-====================
+===============
 
 Instead of password only authentication, 2FA password 
 authentication + OTP key can be used. Alternatively, OTP authentication only,
@@ -223,7 +223,7 @@ To display the configured OTP user settings, use the command:
   show openconnect-server user <username> otp <full|key-b32|key-hex|qrcode|uri>
 
 Configuring RADIUS accounting
-===========================
+=============================
 
 OpenConnect can be configured to send accounting information to a
 RADIUS server to capture user session data such as time of
