@@ -20,6 +20,7 @@ System
    option
    proxy
    syslog
+   sysctl
    task-scheduler
    time-zone
 
