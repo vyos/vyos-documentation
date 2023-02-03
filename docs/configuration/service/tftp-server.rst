@@ -18,9 +18,9 @@ Configuration
    Enable TFTP service by specifying the `<directory>` which will be used to serve
    files.
 
-.. hint:: Choose your ``directory`` location carefully or you will loose the
-   content on image upgrades. Any directory under ``/config`` is save at this
-   will be migrated.
+.. hint:: Choose your ``directory`` location carefully or you will lose the
+   content on image upgrades. We preserve the contents of ``/config``, so we
+   recommend using a directory there, for example ``/config/tftpboot``.
 
 .. cfgcmd:: set service tftp-server listen-address <address>
 
