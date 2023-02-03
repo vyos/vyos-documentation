@@ -3,7 +3,7 @@ VyOS Automation
 ###############
 
 
-  * Saltstack
+  * Nornir
   * startup scripts
 
 
@@ -14,5 +14,6 @@ VyOS Automation
    vyos-ansible
    vyos-napalm
    vyos-netmiko
+   vyos-salt
    command-scripting
    cloud-init
