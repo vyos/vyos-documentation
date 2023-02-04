@@ -682,6 +682,25 @@ Migrating old CLI
      - None
      - All logic should be in the scripts
 
+C++ Backend Code
+================
+
+The CLI parser used in VyOS is a mix of bash, bash-completion helper and the
+C++ backend library [vyatta-cfg](https://github.com/vyos/vyatta-cfg). This
+section is a reference of common CLI commands and the respective entry point
+in the C/C++ code.
+
+* ``set``
+
+  - https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L352
+  - https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L2549
+
+
+* ``commit``
+
+  - https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/commit/commit-algorithm.cpp#L1252
+
+
 Continuous Integration
 ======================
 
