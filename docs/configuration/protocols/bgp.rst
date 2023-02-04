@@ -206,7 +206,8 @@ Defining Peers
    peers ASN is the same as mine as specified under the :cfgcmd:`protocols
    bgp <asn>` command the connection will be denied.
 
-.. cfgcmd:: set protocols bgp neighbor <address|interface> local-role <role> [strict]
+.. cfgcmd:: set protocols bgp neighbor <address|interface> local-role
+   <role> [strict]
 
    BGP roles are defined in RFC :rfc:`9234` and provide an easy way to 
    add route leak prevention, detection and mitigation. The local Role 
