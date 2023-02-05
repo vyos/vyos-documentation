@@ -63,39 +63,50 @@ Side A:
 
 .. code-block::
 
+
     set interfaces vti vti1 address '192.168.1.2/24'
+    set vpn ipsec authentication psk right id '10.10.10.2'
+    set vpn ipsec authentication psk right id '10.10.10.1'
+    set vpn ipsec authentication psk right secret 'Qwerty123'
     set vpn ipsec esp-group MyESPGroup proposal 1 encryption 'aes256'
     set vpn ipsec esp-group MyESPGroup proposal 1 hash 'sha256'
     set vpn ipsec ike-group MyIKEGroup proposal 1 dh-group '14'
     set vpn ipsec ike-group MyIKEGroup proposal 1 encryption 'aes256'
     set vpn ipsec ike-group MyIKEGroup proposal 1 hash 'sha256'
     set vpn ipsec interface 'eth0'
-    set vpn ipsec site-to-site peer 10.10.10.1 authentication mode 'pre-shared-secret'
-    set vpn ipsec site-to-site peer 10.10.10.1 authentication pre-shared-secret 'Qwerty123'
-    set vpn ipsec site-to-site peer 10.10.10.1 connection-type 'initiate'
-    set vpn ipsec site-to-site peer 10.10.10.1 default-esp-group 'MyESPGroup'
-    set vpn ipsec site-to-site peer 10.10.10.1 ike-group 'MyIKEGroup'
-    set vpn ipsec site-to-site peer 10.10.10.1 local-address '10.10.10.2'
-    set vpn ipsec site-to-site peer 10.10.10.1 vti bind 'vti1'
+    set vpn ipsec site-to-site peer right authentication local-id '10.10.10.2'
+    set vpn ipsec site-to-site peer right authentication mode 'pre-shared-secret'
+    set vpn ipsec site-to-site peer right authentication remote-id '10.10.10.1'
+    set vpn ipsec site-to-site peer right connection-type 'initiate'
+    set vpn ipsec site-to-site peer right default-esp-group 'MyESPGroup'
+    set vpn ipsec site-to-site peer right ike-group 'MyIKEGroup'
+    set vpn ipsec site-to-site peer right local-address '10.10.10.2'
+    set vpn ipsec site-to-site peer right remote-address '10.10.10.1'
+    set vpn ipsec site-to-site peer right vti bind 'vti1'
 
 Side B:
 
 .. code-block::
 
     set interfaces vti vti1 address '192.168.1.1/24'
+    set vpn ipsec authentication psk left id '10.10.10.2'
+    set vpn ipsec authentication psk left id '10.10.10.1'
+    set vpn ipsec authentication psk left secret 'Qwerty123'
     set vpn ipsec esp-group MyESPGroup proposal 1 encryption 'aes256'
     set vpn ipsec esp-group MyESPGroup proposal 1 hash 'sha256'
     set vpn ipsec ike-group MyIKEGroup proposal 1 dh-group '14'
     set vpn ipsec ike-group MyIKEGroup proposal 1 encryption 'aes256'
     set vpn ipsec ike-group MyIKEGroup proposal 1 hash 'sha256'
     set vpn ipsec interface 'eth0'
-    set vpn ipsec site-to-site peer 10.10.10.2 authentication mode 'pre-shared-secret'
-    set vpn ipsec site-to-site peer 10.10.10.2 authentication pre-shared-secret 'Qwerty123'
-    set vpn ipsec site-to-site peer 10.10.10.2 connection-type 'initiate'
-    set vpn ipsec site-to-site peer 10.10.10.2 default-esp-group 'MyESPGroup'
-    set vpn ipsec site-to-site peer 10.10.10.2 ike-group 'MyIKEGroup'
-    set vpn ipsec site-to-site peer 10.10.10.2 local-address '10.10.10.1'
-    set vpn ipsec site-to-site peer 10.10.10.2 vti bind 'vti1'
+    set vpn ipsec site-to-site peer left authentication local-id '10.10.10.1'
+    set vpn ipsec site-to-site peer left authentication mode 'pre-shared-secret'
+    set vpn ipsec site-to-site peer left authentication remote-id '10.10.10.2'
+    set vpn ipsec site-to-site peer left connection-type 'initiate'
+    set vpn ipsec site-to-site peer left default-esp-group 'MyESPGroup'
+    set vpn ipsec site-to-site peer left ike-group 'MyIKEGroup'
+    set vpn ipsec site-to-site peer left local-address '10.10.10.1'
+    set vpn ipsec site-to-site peer left remote-address '10.10.10.2'
+    set vpn ipsec site-to-site peer left vti bind 'vti1'
 
 a bandwidth test over the VPN got these results:
 

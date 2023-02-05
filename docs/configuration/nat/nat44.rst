@@ -697,17 +697,22 @@ too.
 
 .. code-block:: none
 
-  set vpn ipsec site-to-site peer 198.51.100.243 authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer 198.51.100.243 authentication pre-shared-secret 'PASSWORD IS HERE'
-  set vpn ipsec site-to-site peer 198.51.100.243 connection-type 'initiate'
-  set vpn ipsec site-to-site peer 198.51.100.243 default-esp-group 'my-esp'
-  set vpn ipsec site-to-site peer 198.51.100.243 ike-group 'my-ike'
-  set vpn ipsec site-to-site peer 198.51.100.243 ikev2-reauth 'inherit'
-  set vpn ipsec site-to-site peer 198.51.100.243 local-address '203.0.113.46'
-  set vpn ipsec site-to-site peer 198.51.100.243 tunnel 0 local prefix '172.29.41.89/32'
-  set vpn ipsec site-to-site peer 198.51.100.243 tunnel 0 remote prefix '172.27.1.0/24'
-  set vpn ipsec site-to-site peer 198.51.100.243 tunnel 1 local prefix '172.29.41.89/32'
-  set vpn ipsec site-to-site peer 198.51.100.243 tunnel 1 remote prefix '10.125.0.0/16'
+  set vpn ipsec authentication psk vyos id '203.0.113.46'
+  set vpn ipsec authentication psk vyos id '198.51.100.243'
+  set vpn ipsec authentication psk vyos secret 'MYSECRETPASSWORD'
+  set vpn ipsec site-to-site peer branch authentication local-id '203.0.113.46'
+  set vpn ipsec site-to-site peer branch authentication mode 'pre-shared-secret'
+  set vpn ipsec site-to-site peer branch authentication remote-id '198.51.100.243'
+  set vpn ipsec site-to-site peer branch connection-type 'initiate'
+  set vpn ipsec site-to-site peer branch default-esp-group 'my-esp'
+  set vpn ipsec site-to-site peer branch ike-group 'my-ike'
+  set vpn ipsec site-to-site peer branch ikev2-reauth 'inherit'
+  set vpn ipsec site-to-site peer branch local-address '203.0.113.46'
+  set vpn ipsec site-to-site peer branch remote-address '198.51.100.243'
+  set vpn ipsec site-to-site peer branch tunnel 0 local prefix '172.29.41.89/32'
+  set vpn ipsec site-to-site peer branch tunnel 0 remote prefix '172.27.1.0/24'
+  set vpn ipsec site-to-site peer branch tunnel 1 local prefix '172.29.41.89/32'
+  set vpn ipsec site-to-site peer branch tunnel 1 remote prefix '10.125.0.0/16'
 
 Testing and Validation
 """"""""""""""""""""""
