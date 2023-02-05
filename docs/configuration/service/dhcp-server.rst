@@ -234,7 +234,7 @@ inside the subnet definition but can be outside of the range statement.
 
 **Example:**
 
-* IP address ``192.168.1.100`` shall be statically mapped to client named ``client100``
+* IP address ``192.168.1.100`` shall be statically mapped to client named ``client1``
 
 .. code-block:: none
 
