@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2023-02-01
+==========
+
+* :vytask:`T4970` (default): pin OCaml pcre package to avoid JIT support
+
+
+2023-01-30
+==========
+
+* :vytask:`T4954` (bug): DNS cannot be configured via Network-Config v1 received from ConfigDrive / Cloud-Init
+
+
 2023-01-24
 ==========
 
