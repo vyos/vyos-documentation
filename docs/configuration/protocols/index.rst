@@ -7,6 +7,7 @@ Protocols
    :maxdepth: 1
    :includehidden:
 
+   babel
    bfd
    bgp
    failover
