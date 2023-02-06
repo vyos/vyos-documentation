@@ -325,7 +325,7 @@ setting allows these combinations. You will be able to use it
 in many policies.
 
 .. note:: Some policies already include other embedded policies inside.
-   That is the case of Shaper_: each of its classes use fair-queue
+   That is the case of Shaper_: each of its classes use fq-codel
    unless you change it.
 
 .. _creating_a_traffic_policy:
