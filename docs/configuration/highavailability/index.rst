@@ -357,6 +357,21 @@ Forward method
 
   set high-availability virtual-server 203.0.113.1 forward-method 'nat'
 
+Health-check
+^^^^^^^^^^^^
+Custom health-check script allows checking real-server availability
+
+.. code-block:: none
+
+  set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 health-check script <path-to-script>
+
+Fwmark
+^^^^^^
+Firewall mark. It possible to loadbalancing traffic based on ``fwmark`` value
+
+.. code-block:: none
+
+  set high-availability virtual-server 203.0.113.1 fwmark '111'
 
 Real server
 ^^^^^^^^^^^
@@ -395,3 +410,47 @@ Real server is auto-excluded if port check with this server fail.
   set high-availability virtual-server 203.0.113.1 protocol 'tcp'
   set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80'
   set high-availability virtual-server 203.0.113.1 real-server 192.0.2.12 port '80'
+
+
+A firewall mark ``fwmark`` allows using multiple ports for high-availability
+virtual-server.
+It uses fwmark value.
+
+In this example all traffic destined to ports "80, 2222, 8888" protocol TCP
+marks to fwmark "111" and balanced between 2 real servers.
+Port "0" is required if multiple ports are used.
+
+.. code-block:: none
+
+  set interfaces ethernet eth0 address 'dhcp'
+  set interfaces ethernet eth0 description 'WAN'
+  set interfaces ethernet eth1 address '192.0.2.1/24'
+  set interfaces ethernet eth1 description 'LAN'
+
+  set policy route PR interface 'eth0'
+  set policy route PR rule 10 destination port '80,2222,8888'
+  set policy route PR rule 10 protocol 'tcp'
+  set policy route PR rule 10 set mark '111'
+
+  set high-availability virtual-server vyos fwmark '111'
+  set high-availability virtual-server vyos protocol 'tcp'
+  set high-availability virtual-server vyos real-server 192.0.2.11 health-check script '/config/scripts/check-real-server-first.sh'
+  set high-availability virtual-server vyos real-server 192.0.2.11 port '0'
+  set high-availability virtual-server vyos real-server 192.0.2.12 health-check script '/config/scripts/check-real-server-second.sh'
+  set high-availability virtual-server vyos real-server 192.0.2.12 port '0'
+
+  set nat source rule 100 outbound-interface 'eth0'
+  set nat source rule 100 source address '192.0.2.0/24'
+  set nat source rule 100 translation address 'masquerade'
+
+Op-mode check virtual-server status
+
+.. code-block:: none
+
+  vyos@r14:~$ run show virtual-server
+  IP Virtual Server version 1.2.1 (size=4096)
+  Prot LocalAddress:Port Scheduler Flags
+    -> RemoteAddress:Port           Forward Weight ActiveConn InActConn
+  FWM  111 lc persistent 300
+    -> 192.0.2.11:0                 Masq    1      0          0
+    -> 192.0.2.12:0                 Masq    1      1          0
