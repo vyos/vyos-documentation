@@ -141,29 +141,26 @@ IPSec:
 
 .. code-block:: none
 
+  set vpn ipsec authentication psk <pre-shared-name> id '%any'
+  set vpn ipsec authentication psk <pre-shared-name> secret <pre-shared-key>
   set vpn ipsec interface <VPN-interface>
-  set vpn ipsec esp-group test-ESP-1 compression 'disable'
   set vpn ipsec esp-group test-ESP-1 lifetime '3600'
   set vpn ipsec esp-group test-ESP-1 mode 'transport'
   set vpn ipsec esp-group test-ESP-1 pfs 'enable'
   set vpn ipsec esp-group test-ESP-1 proposal 1 encryption 'aes128'
   set vpn ipsec esp-group test-ESP-1 proposal 1 hash 'sha1'
-  set vpn ipsec ike-group test-IKE-1 ikev2-reauth 'no'
   set vpn ipsec ike-group test-IKE-1 key-exchange 'ikev1'
   set vpn ipsec ike-group test-IKE-1 lifetime '3600'
   set vpn ipsec ike-group test-IKE-1 proposal 1 dh-group '5'
   set vpn ipsec ike-group test-IKE-1 proposal 1 encryption 'aes128'
   set vpn ipsec ike-group test-IKE-1 proposal 1 hash 'sha1'
-  set vpn ipsec site-to-site peer <peer-ip> authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer <peer-ip> authentication pre-shared-secret <pre-shared-key>
-  set vpn ipsec site-to-site peer <peer-ip> connection-type 'initiate'
-  set vpn ipsec site-to-site peer <peer-ip> ike-group 'test-IKE-1'
-  set vpn ipsec site-to-site peer <peer-ip> ikev2-reauth 'inherit'
-  set vpn ipsec site-to-site peer <peer-ip> local-address <local-ip>
-  set vpn ipsec site-to-site peer <peer-ip> tunnel 1 allow-nat-networks 'disable'
-  set vpn ipsec site-to-site peer <peer-ip> tunnel 1 allow-public-networks 'disable'
-  set vpn ipsec site-to-site peer <peer-ip> tunnel 1 esp-group 'test-ESP-1'
-  set vpn ipsec site-to-site peer <peer-ip> tunnel 1 protocol 'l2tp'
+  set vpn ipsec site-to-site peer <connection-name> authentication mode 'pre-shared-secret'
+  set vpn ipsec site-to-site peer <connection-name> connection-type 'initiate'
+  set vpn ipsec site-to-site peer <connection-name> ike-group 'test-IKE-1'
+  set vpn ipsec site-to-site peer <connection-name> ikev2-reauth 'inherit'
+  set vpn ipsec site-to-site peer <connection-name> local-address <local-ip>
+  set vpn ipsec site-to-site peer <connection-name> tunnel 1 esp-group 'test-ESP-1'
+  set vpn ipsec site-to-site peer <connection-name> tunnel 1 protocol 'l2tp'
 
 Bridge:
 

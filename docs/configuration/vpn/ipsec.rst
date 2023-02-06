@@ -202,6 +202,11 @@ On the LEFT:
   ## IPsec
   set vpn ipsec interface eth0
 
+  # Pre-shared-secret
+  set vpn ipsec authentication psk vyos id 192.0.2.10
+  set vpn ipsec authentication psk vyos id 203.0.113.45
+  set vpn ipsec authentication psk vyos secret MYSECRETKEY
+
   # IKE group
   set vpn ipsec ike-group MyIKEGroup proposal 1 dh-group '2'
   set vpn ipsec ike-group MyIKEGroup proposal 1 encryption 'aes128'
@@ -213,7 +218,6 @@ On the LEFT:
 
   # IPsec tunnel
   set vpn ipsec site-to-site peer right authentication mode pre-shared-secret
-  set vpn ipsec site-to-site peer right authentication pre-shared-secret MYSECRETKEY
   set vpn ipsec site-to-site peer right authentication remote-id 203.0.113.45
 
   set vpn ipsec site-to-site peer right ike-group MyIKEGroup

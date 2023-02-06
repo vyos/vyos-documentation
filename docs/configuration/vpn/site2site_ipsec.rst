@@ -18,22 +18,28 @@ Each site-to-site peer has the next options:
 * ``authentication`` - configure authentication between VyOS and a remote peer.
   Suboptions:
 
+ * ``psk`` - Preshared secret key name:
+
+  * ``dhcp-interface`` - ID for authentication generated from DHCP address 
+    dynamically;
+  * ``id`` - static ID's for authentication. In general local and remote 
+    address ``<x.x.x.x>``, ``<h:h:h:h:h:h:h:h>`` or ``%any``;
+  * ``secret`` - predefined shared secret. Used if configured mode 
+    ``pre-shared-secret``;
+
+
  * ``local-id`` - ID for the local VyOS router. If defined, during the
    authentication
    it will be send to remote peer;
 
  * ``mode`` - mode for authentication between VyOS and remote peer:
 
-  * ``pre-shared-secret`` - use predefined shared secret phrase, must be the
-    same for local and remote side;
+  * ``pre-shared-secret`` - use predefined shared secret phrase;
 
   * ``rsa`` - use simple shared RSA key. The key must be defined in the
     ``set vpn rsa-keys`` section;
 
   * ``x509`` - use certificates infrastructure for authentication.
-
- * ``pre-shared-secret`` - predefined shared secret. Used if configured
-   ``mode pre-shared-secret``;
 
  * ``remote-id`` - define an ID for remote peer, instead of using peer name or
    address. Useful in case if the remote peer is behind NAT or if ``mode x509``
@@ -161,6 +167,9 @@ Example:
 .. code-block:: none
 
   # server config
+  set vpn ipsec authentication psk OFFICE-B id '198.51.100.3'
+  set vpn ipsec authentication psk OFFICE-B id '203.0.113.2'
+  set vpn ipsec authentication psk OFFICE-B secret 'SomePreSharedKey'
   set vpn ipsec esp-group office-srv-esp lifetime '1800'
   set vpn ipsec esp-group office-srv-esp mode 'tunnel'
   set vpn ipsec esp-group office-srv-esp pfs 'enable'
@@ -171,8 +180,8 @@ Example:
   set vpn ipsec ike-group office-srv-ike proposal 1 encryption 'aes256'
   set vpn ipsec ike-group office-srv-ike proposal 1 hash 'sha1'
   set vpn ipsec interface 'eth1'
+  set vpn ipsec site-to-site peer OFFICE-B authentication local-id '198.51.100.3'
   set vpn ipsec site-to-site peer OFFICE-B authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer OFFICE-B authentication pre-shared-secret 'SomePreSharedKey'
   set vpn ipsec site-to-site peer OFFICE-B authentication remote-id '203.0.113.2'
   set vpn ipsec site-to-site peer OFFICE-B ike-group 'office-srv-ike'
   set vpn ipsec site-to-site peer OFFICE-B local-address '198.51.100.3'
@@ -182,6 +191,9 @@ Example:
   set vpn ipsec site-to-site peer OFFICE-B tunnel 0 remote prefix '10.0.0.0/21'
 
   # remote office config
+  set vpn ipsec authentication psk OFFICE-A id '198.51.100.3'
+  set vpn ipsec authentication psk OFFICE-A id '203.0.113.2'
+  set vpn ipsec authentication psk OFFICE-A secret 'SomePreSharedKey'
   set vpn ipsec esp-group office-srv-esp lifetime '1800'
   set vpn ipsec esp-group office-srv-esp mode 'tunnel'
   set vpn ipsec esp-group office-srv-esp pfs 'enable'
@@ -192,8 +204,8 @@ Example:
   set vpn ipsec ike-group office-srv-ike proposal 1 encryption 'aes256'
   set vpn ipsec ike-group office-srv-ike proposal 1 hash 'sha1'
   set vpn ipsec interface 'eth1'
+  set vpn ipsec site-to-site peer OFFICE-A authentication local-id '203.0.113.2'
   set vpn ipsec site-to-site peer OFFICE-A authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer OFFICE-A authentication pre-shared-secret 'SomePreSharedKey'
   set vpn ipsec site-to-site peer OFFICE-A authentication remote-id '198.51.100.3'
   set vpn ipsec site-to-site peer OFFICE-A ike-group 'office-srv-ike'
   set vpn ipsec site-to-site peer OFFICE-A local-address '203.0.113.2'
@@ -279,6 +291,9 @@ Imagine the following topology
 
   set interfaces vti vti10 address '10.0.0.2/31'
 
+  set vpn ipsec authentication psk OFFICE-B id '172.18.201.10'
+  set vpn ipsec authentication psk OFFICE-B id '172.18.202.10'
+  set vpn ipsec authentication psk OFFICE-B secret 'secretkey'
   set vpn ipsec esp-group ESP_DEFAULT lifetime '3600'
   set vpn ipsec esp-group ESP_DEFAULT mode 'tunnel'
   set vpn ipsec esp-group ESP_DEFAULT pfs 'dh-group19'
@@ -293,7 +308,6 @@ Imagine the following topology
   set vpn ipsec interface 'eth0.201'
   set vpn ipsec site-to-site peer OFFICE-B authentication local-id '172.18.201.10'
   set vpn ipsec site-to-site peer OFFICE-B authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer OFFICE-B authentication pre-shared-secret 'secretkey'
   set vpn ipsec site-to-site peer OFFICE-B authentication remote-id '172.18.202.10'
   set vpn ipsec site-to-site peer OFFICE-B connection-type 'respond'
   set vpn ipsec site-to-site peer OFFICE-B ike-group 'IKEv2_DEFAULT'
@@ -308,6 +322,9 @@ Imagine the following topology
 
   set interfaces vti vti10 address '10.0.0.3/31'
 
+  set vpn ipsec authentication psk OFFICE-A id '172.18.201.10'
+  set vpn ipsec authentication psk OFFICE-A id '172.18.202.10'
+  set vpn ipsec authentication psk OFFICE-A secret 'secretkey'
   set vpn ipsec esp-group ESP_DEFAULT lifetime '3600'
   set vpn ipsec esp-group ESP_DEFAULT mode 'tunnel'
   set vpn ipsec esp-group ESP_DEFAULT pfs 'dh-group19'
@@ -325,7 +342,6 @@ Imagine the following topology
   set vpn ipsec interface 'eth0.202'
   set vpn ipsec site-to-site peer OFFICE-A authentication local-id '172.18.202.10'
   set vpn ipsec site-to-site peer OFFICE-A authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer OFFICE-A authentication pre-shared-secret 'secretkey'
   set vpn ipsec site-to-site peer OFFICE-A authentication remote-id '172.18.201.10'
   set vpn ipsec site-to-site peer OFFICE-A connection-type 'initiate'
   set vpn ipsec site-to-site peer OFFICE-A ike-group 'IKEv2_DEFAULT'
