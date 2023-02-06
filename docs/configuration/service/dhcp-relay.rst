@@ -20,8 +20,20 @@ Configuration
 
 .. cfgcmd:: set service dhcp-relay interface <interface>
 
-   Interfaces that participate in the DHCP relay process, including the uplink
-   to the DHCP server.
+   Interfaces that participate in the DHCP relay process. If this command is
+   used, at least two entries of it are required: one for the interface that
+   captures the dhcp-requests, and one for the interface to forward such
+   requests. A warning message will be shown if this command is used, since
+   new implementations should use ``listen-interface`` and
+   ``upstream-interface``.
+
+.. cfgcmd:: set service dhcp-relay listen-interface <interface>
+
+   Interface for DHCP Relay Agent to listen for requests.
+
+.. cfgcmd:: set service dhcp-relay upstream-interface <interface>
+
+   Interface for DHCP Relay Agent to forward requests out.
 
 .. cfgcmd:: set service dhcp-relay server <server>
 
@@ -70,8 +82,8 @@ Example
 
 * Listen for DHCP requests on interface ``eth1``.
 * DHCP server is located at IPv4 address 10.0.1.4 on ``eth2``.
-* Router receives DHCP client requests on ``eth1`` and relays them to the server
-  at 10.0.1.4 on ``eth2``.
+* Router receives DHCP client requests on ``eth1`` and relays them to the
+  server at 10.0.1.4 on ``eth2``.
 
 .. figure:: /_static/images/service_dhcp-relay01.png
    :scale: 80 %
@@ -80,6 +92,19 @@ Example
    DHCP relay example
 
 The generated configuration will look like:
+
+.. code-block:: none
+
+  show service dhcp-relay
+      listen-interface eth1
+      upstrem-interface eth2
+      server 10.0.1.4
+      relay-options {
+         relay-agents-packets discard
+      }
+
+Also, for backwards compatibility this configuration, which uses generic
+interface definition, is still valid:
 
 .. code-block:: none
 
