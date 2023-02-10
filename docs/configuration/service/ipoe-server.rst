@@ -146,4 +146,49 @@ The rate-limit is set in kbit/sec.
   -------+------------+-------------------+-------------+-----+--------+------------+--------+----------+------------------
   ipoe0  | eth2       | 08:00:27:2f:d8:06 | 192.168.0.2 |     |        | 500/500    | active | 00:00:05 | dccc870fd31349fb
 
+Example
+=======
+
+* IPoE server will listen on interfaces eth1.50 and eth1.51
+* There are rate-limited and non rate-limited users (MACs)
+
+Server configuration
+--------------------
+
+.. code-block:: none
+
+    set interfaces dummy dum1000 address 100.64.0.1/32
+    set interfaces dummy dum1000 address 2001:db8::1/128
+
+    set interfaces ethernet eth1 description 'IPoE'
+    set interfaces ethernet eth1 vif 50
+    set interfaces ethernet eth1 vif 51
+
+    set service ipoe-server authentication interface eth1.50 mac 00:0c:29:b7:49:a7
+    set service ipoe-server authentication interface eth1.50 mac 00:0c:29:f0:be:4c rate-limit download '5000'
+    set service ipoe-server authentication interface eth1.50 mac 00:0c:29:f0:be:4c rate-limit upload '5000'
+    set service ipoe-server authentication interface eth1.51 mac 00:0c:29:b7:49:a7 rate-limit download '50000'
+    set service ipoe-server authentication interface eth1.51 mac 00:0c:29:b7:49:a7 rate-limit upload '50000'
+    set service ipoe-server authentication mode 'local'
+    
+    set service ipoe-server client-ipv6-pool delegate 2001:db8:ffff::/48 delegation-prefix '56'
+    set service ipoe-server client-ipv6-pool prefix 2001:db8:fffe::/48 mask '64'
+    set service ipoe-server interface eth1.50 client-subnet '100.64.50.0/24'
+    set service ipoe-server interface eth1.50 mode 'l2'
+    set service ipoe-server interface eth1.51 client-subnet '100.64.51.0/24'
+    set service ipoe-server interface eth1.51 mode 'l2'
+    set service ipoe-server name-server '100.64.0.1'
+    set service ipoe-server name-server '2001:db8::1'
+
+Client configuration
+--------------------
+
+.. code-block:: none
+
+    set interfaces ethernet eth0 mac '00:0c:29:b7:49:a7'
+
+    set interfaces ethernet eth0 vif 50 address 'dhcp'
+    set interfaces ethernet eth0 vif 50 address 'dhcpv6'
+    set interfaces ethernet eth0 vif 50 dhcpv6-options pd 0 interface eth1 sla-id '1'
+
 .. include:: /_include/common-references.txt

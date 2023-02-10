@@ -22,7 +22,6 @@ Common interface configuration
    :var0: wwan
    :var1: wwan0
 
-
 .. cmdinclude:: /_include/interface-description.txt
    :var0: wwan
    :var1: wwan0

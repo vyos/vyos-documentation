@@ -91,7 +91,7 @@ PPPoE options
    This command allows you to select a specific access concentrator when you
    know the access concentrators `<name>`.
 
-.. cfgcmd:: set interfaces pppoe <interface> authentication user <username>
+.. cfgcmd:: set interfaces pppoe <interface> authentication username <username>
 
    Use this command to set the username for authenticating with a remote PPPoE
    endpoint. Authentication is optional from the system's point of view but
@@ -324,7 +324,7 @@ Requirements:
 
 .. code-block:: none
 
-  set interfaces pppoe pppoe0 authentication user 'userid'
+  set interfaces pppoe pppoe0 authentication username 'userid'
   set interfaces pppoe pppoe0 authentication password 'secret'
   set interfaces pppoe pppoe0 source-interface 'eth0'
 
@@ -349,7 +349,7 @@ which is the default VLAN for Deutsche Telekom:
 
 .. code-block:: none
 
-  set interfaces pppoe pppoe0 authentication user 'userid'
+  set interfaces pppoe pppoe0 authentication username 'userid'
   set interfaces pppoe pppoe0 authentication password 'secret'
   set interfaces pppoe pppoe0 source-interface 'eth0.7'
 
@@ -367,7 +367,7 @@ If you do not know the prefix size delegated to you, start with sla-len 0.
 
 .. code-block:: none
 
-  set interfaces pppoe pppoe0 authentication user vyos
+  set interfaces pppoe pppoe0 authentication username vyos
   set interfaces pppoe pppoe0 authentication password vyos
   set interfaces pppoe pppoe0 dhcpv6-options pd 0 interface eth0 address '1'
   set interfaces pppoe pppoe0 dhcpv6-options pd 0 interface eth0 sla-id '0'
