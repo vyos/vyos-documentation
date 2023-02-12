@@ -46,7 +46,7 @@ VyOS User Guide
    | There are many ways to contribute to the project.
    | Add missing parts or improve the :ref:`Documentation<documentation:Write Documentation>`.
    | Discuss in `Slack <https://slack.vyos.io/>`_ or the `Forum <https://forum.vyos.io>`_.
-   | Or you can pick up a `Task <https://phabricator.vyos.net/>`_ and fix the :ref:`code<contributing/development:development>`.
+   | Or you can pick up a `Task <https://vyos.dev/>`_ and fix the :ref:`code<contributing/development:development>`.
 
 
 .. toctree::

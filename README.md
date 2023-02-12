@@ -100,7 +100,7 @@ $ docker run --rm -it -p 8000:8000 -v "$(pwd)":/vyos -w /vyos/docs -e \
 
 ### Test the docs
 
-Discuss in this Phabricator task: [T1731](https://phabricator.vyos.net/T1731)
+Discuss in this Phabricator task: [T1731](https://vyos.dev/T1731)
 
 To test all files run:
 
