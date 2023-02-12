@@ -228,7 +228,7 @@ Defining Peers
    enforce the corresponding configuration at your counter-parts side.
    
    Routes that are sent from provider, rs-server, or the peer local-role 
-   (or if received by customer, rs-clinet, or the peer local-role) will 
+   (or if received by customer, rs-client, or the peer local-role) will 
    be marked with a new Only to Customer (OTC) attribute.
    
    Routes with this attribute can only be sent to your neighbor if your
