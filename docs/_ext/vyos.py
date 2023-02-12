@@ -19,7 +19,7 @@ def setup(app):
 
     app.add_config_value(
         'vyos_phabricator_url',
-        'https://phabricator.vyos.net/',
+        'https://vyos.dev/',
         'html'
     )
 

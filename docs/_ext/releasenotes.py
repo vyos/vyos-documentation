@@ -9,7 +9,7 @@ parser.add_argument("-b", "--branch", nargs="+", help="List of github branches",
 args = parser.parse_args()
 
 
-phab = Phabricator(host='https://phabricator.vyos.net/api/', token=args.token)
+phab = Phabricator(host='https://vyos.dev/api/', token=args.token)
 
 '''
 # code to find new PHIDs

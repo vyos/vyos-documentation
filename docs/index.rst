@@ -7,7 +7,7 @@ VyOS User Guide
 .. panels::
    :container: container-lg pb-3
    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
-   
+
    Get / Build VyOS
    ^^^^^^^^^^^^^^^^
    Quickly :ref:`Build<build>` your own Image or take a look at how to :ref:`download<download>` a free or supported version.
@@ -17,7 +17,7 @@ VyOS User Guide
    ^^^^^^^^^^^^
    Read about how to install VyOS on :ref:`Bare Metall<installation>` or in a
    :ref:`Virtual Environment<virtual_env>` and
-   how to use an image with the usual :ref:`cloud<cloud_env>` providers 
+   how to use an image with the usual :ref:`cloud<cloud_env>` providers
    ---
 
    Configuration and Operation
@@ -30,7 +30,7 @@ VyOS User Guide
 
    Automate
    ^^^^^^^^
-   Integrate VyOS in your automation Workflow with 
+   Integrate VyOS in your automation Workflow with
    :ref:`Ansible<vyos-ansible>`,
    have your own :ref:`local scripts<command-scripting>`, or configure VyOS with the :ref:`HTTPS-API<vyosapi>`.
    ---
@@ -46,8 +46,7 @@ VyOS User Guide
    | There are many ways to contribute to the project.
    | Add missing parts or improve the :ref:`Documentation<documentation>`.
    | Discuss in `Slack <https://slack.vyos.io/>`_ or the `Forum <https://forum.vyos.io>`_.
-   | Or you can pick up a `Task <https://phabricator.vyos.net/>`_ and fix the :ref:`code<development>`.
-
+   | Or you can pick up a `Task <https://vyos.dev/>`_ and fix the :ref:`code<development>`.
 
 .. toctree::
    :hidden:

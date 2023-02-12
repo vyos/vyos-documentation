@@ -29,7 +29,7 @@ interface is now directly identified by the USB root bridge and bus it connects
 to. This somehow mimics the new network interface definitions we see in recend
 Linux distributions.
 
-For additional details you can refer to https://phabricator.vyos.net/T2490.
+For additional details you can refer to https://vyos.dev/T2490.
 
 .. opcmd:: show hardware usb
 
