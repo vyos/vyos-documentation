@@ -14,7 +14,7 @@ policy large-community-list
 
 .. cfgcmd:: set policy large-community-list <text>
 
-   Creat large-community-list policy identified by name <text>.
+   Create large-community-list policy identified by name <text>.
 
 .. cfgcmd:: set policy large-community-list <text> description <text>
 
