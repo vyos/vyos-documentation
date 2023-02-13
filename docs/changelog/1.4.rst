@@ -8,6 +8,33 @@
    _ext/releasenotes.py
 
 
+2023-02-12
+==========
+
+* :vytask:`T4998` (bug): pppoe username validation too restrictive (regression)
+
+
+2023-02-11
+==========
+
+* :vytask:`T2603` (feature): pppoe-server: reduce min MTU
+
+
+2023-02-10
+==========
+
+* :vytask:`T4857` (feature): SNMP - Implement FRR SNMP recommendations
+* :vytask:`T4995` (feature): pppoe, wwan and sstp-client - rename user -> username on authentication
+
+
+2023-02-07
+==========
+
+* :vytask:`T4980` (bug): chrony not listening as a server
+* :vytask:`T4868` (bug): L2TP  ppp-options ipv6 does not work without ipv6 pool but should
+* :vytask:`T4117` (bug): Does not possible to configure PoD/CoA for L2TP vpn
+
+
 2023-02-01
 ==========
 
