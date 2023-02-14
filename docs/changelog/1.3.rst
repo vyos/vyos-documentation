@@ -8,6 +8,24 @@
    _ext/releasenotes.py
 
 
+2023-02-11
+==========
+
+* :vytask:`T2603` (feature): pppoe-server: reduce min MTU
+
+
+2023-02-08
+==========
+
+* :vytask:`T1288` (feature): FRR: rewrite staticd backend (/opt/vyatta/share/vyatta-cfg/templates/protocols/static/*)
+
+
+2023-02-07
+==========
+
+* :vytask:`T4117` (bug): Does not possible to configure PoD/CoA for L2TP vpn
+
+
 2023-02-01
 ==========
 
