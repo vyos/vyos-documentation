@@ -206,6 +206,41 @@ Defining Peers
    peers ASN is the same as mine as specified under the :cfgcmd:`protocols
    bgp <asn>` command the connection will be denied.
 
+.. cfgcmd:: set protocols bgp neighbor <address|interface> local-role
+   <role> [strict]
+
+   BGP roles are defined in RFC :rfc:`9234` and provide an easy way to 
+   add route leak prevention, detection and mitigation. The local Role 
+   value is negotiated with the new BGP Role capability which has a 
+   built-in check of the corresponding value. In case of a mismatch the 
+   new OPEN Roles Mismatch Notification <2, 11> would be sent.
+   The correct Role pairs are:
+   
+   Provider - Customer
+
+   Peer - Peer
+
+   RS-Server - RS-Client
+
+   If :cfgcmd:`strict` is set the BGP session won’t become established 
+   until the BGP neighbor sets local Role on its side. This 
+   configuration parameter is defined in RFC :rfc:`9234` and is used to
+   enforce the corresponding configuration at your counter-parts side.
+   
+   Routes that are sent from provider, rs-server, or the peer local-role 
+   (or if received by customer, rs-client, or the peer local-role) will 
+   be marked with a new Only to Customer (OTC) attribute.
+   
+   Routes with this attribute can only be sent to your neighbor if your
+   local-role is provider or rs-server. Routes with this attribute can
+   be received only if your local-role is customer or rs-client. 
+   
+   In case of peer-peer relationship routes can be received only if OTC
+   value is equal to your neighbor AS number.
+   
+   All these rules with OTC will help to detect and mitigate route leaks
+   and happen automatically if local-role is set.
+
 .. cfgcmd:: set protocols bgp neighbor <address|interface> shutdown
 
    This command disable the peer or peer group. To reenable the peer use
