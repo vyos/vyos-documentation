@@ -22,7 +22,7 @@ the command line prompt.
 
 .. cfgcmd:: set system host-name <hostname>
 
-   Set system hostname. The hostname can be up to 63 characters. A hostname
+   The hostname can be up to 63 characters. A hostname
    must start and end with a letter or digit, and have as interior characters
    only letters, digits, or a hyphen.
 
@@ -46,7 +46,12 @@ Static Hostname Mapping
 
 How an IP address is assigned to an interface in :ref:`ethernet-interface`.
 This section shows how to statically map an IP address to a hostname for local
-(meaning on this VyOS instance) name resolution.
+(meaning on this VyOS instance) name resolution. This is the VyOS equivalent to
+`/etc/hosts` file entries.
+
+.. note:: Do *not* manually edit `/etc/hosts`. This file will automatically be
+   regenerated on boot based on the settings in this section, which means you'll
+   lose all your manual edits. Instead, configure static host mappings as follows.
 
 .. cfgcmd:: set system static-host-mapping host-name <hostname> inet <address>
 
