@@ -747,10 +747,6 @@ Operation Mode
 
    To restart the DHCPv6 server
 
-.. opcmd:: show dhcpv6 server status
-
-   To show the current status of the DHCPv6 server.
-
 .. opcmd:: show dhcpv6 server leases
 
    Shows status of all assigned leases:
