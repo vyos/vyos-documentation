@@ -8,6 +8,31 @@
    _ext/releasenotes.py
 
 
+2023-02-18
+==========
+
+* :vytask:`T4743` (feature): Enable IPv6 address for Dynamic DNS
+
+
+2023-02-15
+==========
+
+* :vytask:`T4993` (bug): Can't delete conntrack ignore rule
+
+
+2023-02-14
+==========
+
+* :vytask:`T4999` (feature): vyos.util backport dict_search_recursive
+* :vytask:`T1993` (feature): Extended pppoe rate-limiter 
+
+
+2023-02-13
+==========
+
+* :vytask:`T4153` (bug): Monitor bandwidth-test initiate not working
+
+
 2023-02-11
 ==========
 

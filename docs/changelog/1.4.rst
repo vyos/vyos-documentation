@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2023-02-16
+==========
+
+* :vytask:`T4971` (feature): Radius attribute "Framed-Pool" for PPPoE
+
+
+2023-02-15
+==========
+
+* :vytask:`T4991` (bug): Restore path level information to compare output
+
+
+2023-02-14
+==========
+
+* :vytask:`T4968` (bug): VPN IPsec check dpd and close action for empty values
+* :vytask:`T1993` (feature): Extended pppoe rate-limiter 
+
+
+2023-02-13
+==========
+
+* :vytask:`T4905` (feature): Convert show nhrp tunnel to tabulate format
+* :vytask:`T4153` (bug): Monitor bandwidth-test initiate not working
+
+
 2023-02-12
 ==========
 
