@@ -191,7 +191,7 @@ Hub
   set interfaces tunnel tun100 address '172.16.253.134/29'
   set interfaces tunnel tun100 encapsulation 'gre'
   set interfaces tunnel tun100 local-ip '192.0.2.1'
-  set interfaces tunnel tun100 multicast 'enable'
+  set interfaces tunnel tun100 enable-multicast
   set interfaces tunnel tun100 parameters ip key '1'
 
   set protocols nhrp tunnel tun100 cisco-authentication 'secret'
@@ -298,7 +298,7 @@ VyOS can also run in DMVPN spoke mode.
   set interfaces tunnel tun100 address '172.16.253.133/29'
   set interfaces tunnel tun100 local-ip 0.0.0.0
   set interfaces tunnel tun100 encapsulation 'gre'
-  set interfaces tunnel tun100 multicast 'enable'
+  set interfaces tunnel tun100 enable-multicast
   set interfaces tunnel tun100 parameters ip key '1'
 
   set protocols nhrp tunnel tun100 cisco-authentication 'secret'
