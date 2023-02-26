@@ -18,7 +18,11 @@ a closer look at the protocols and options currently supported by VyOS.
 Common interface configuration
 ------------------------------
 
-.. cmdinclude:: /_include/interface-common-without-dhcp1.txt
+.. cmdinclude:: /_include/interface-address.txt
+   :var0: tunnel
+   :var1: tun0
+
+.. cmdinclude:: /_include/interface-common-without-mac.txt
    :var0: tunnel
    :var1: tun0
 
@@ -207,7 +211,7 @@ GRETAP
 ^^^^^^^
 
 While normal GRE is for layer 3, GRETAP is for layer 2. GRETAP can encapsulate
-Ethernet frames, thus it can be bridged with other interfaces to create 
+Ethernet frames, thus it can be bridged with other interfaces to create
 datalink layer segments that span multiple remote sites.
 
 .. code-block:: none
