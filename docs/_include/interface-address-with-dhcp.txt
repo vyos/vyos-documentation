@@ -11,6 +11,14 @@
   * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
     server on this segment.
 
+  .. note:: When using DHCP to retrieve IPv4 address and if local
+     customizations are needed, they should be possible using the enter and
+     exit hooks provided. The hook dirs are:
+
+     * ``/config/scripts/dhcp-client/pre-hooks.d/``
+     * ``/config/scripts/dhcp-client/post-hooks.d/``
+
+
   Example:
 
   .. code-block:: none
