@@ -8,6 +8,23 @@
    _ext/releasenotes.py
 
 
+2023-02-25
+==========
+
+* :vytask:`T5008` (bug): MACsec CKN of 32 chars is not allowed in CLI, but works fine
+* :vytask:`T5007` (bug): Interface multicast setting is invalid
+* :vytask:`T5017` (bug): Bug with validator interface-name
+* :vytask:`T4992` (bug): Incorrect check is_local_address for bgp neighbor with option ip_nonlocal_bind set
+* :vytask:`T4978` (bug): KeyError: 'memory' container_config['memory'] on upgrading to 1.4-rolling-202302041536
+* :vytask:`T4948` (feature): pppoe: add CLI option to allow definition of host-uniq flag
+
+
+2023-02-22
+==========
+
+* :vytask:`T5011` (bug): Some interface drivers don't support min_mtu and max_mtu and verify_mtu check should be skipped
+
+
 2023-02-18
 ==========
 

@@ -8,6 +8,57 @@
    _ext/releasenotes.py
 
 
+2023-02-26
+==========
+
+* :vytask:`T4979` (feature): Add API request 'show_user_info' for UI
+
+
+2023-02-25
+==========
+
+* :vytask:`T5008` (bug): MACsec CKN of 32 chars is not allowed in CLI, but works fine
+* :vytask:`T5007` (bug): Interface multicast setting is invalid
+* :vytask:`T5027` (bug): OpenVPN options and site-to-site cannot pass smoketest
+* :vytask:`T4978` (bug): KeyError: 'memory' container_config['memory'] on upgrading to 1.4-rolling-202302041536
+* :vytask:`T5034` (bug): Migrate multicast CLI node to valueLess
+* :vytask:`T4948` (feature): pppoe: add CLI option to allow definition of host-uniq flag
+
+
+2023-02-24
+==========
+
+* :vytask:`T5030` (bug): HTTPS-API delete key without id error
+* :vytask:`T5006` (bug):  Http api segfault with concurrent requests
+
+
+2023-02-23
+==========
+
+* :vytask:`T5013` (feature): Extend accelppp.py op-mode to get subnet start stop info from config
+* :vytask:`T5002` (feature): Add uk (United Kingdom) keymap
+
+
+2023-02-22
+==========
+
+* :vytask:`T5024` (bug): check-qemu-install VM is not shutdown the first time
+* :vytask:`T5011` (bug): Some interface drivers don't support min_mtu and max_mtu and verify_mtu check should be skipped
+
+
+2023-02-21
+==========
+
+* :vytask:`T5021` (bug): IPsec SA is closed before negotiating a new one or it is negotiated on every second if big life-time is set in swanctl.conf
+* :vytask:`T5020` (feature): Extend openvpn.py op-mode to get a list of configured clients
+
+
+2023-02-20
+==========
+
+* :vytask:`T5005` (feature): Skip user authentication for PPPoE Server with noauth option
+
+
 2023-02-16
 ==========
 
