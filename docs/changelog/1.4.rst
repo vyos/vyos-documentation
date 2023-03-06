@@ -8,6 +8,48 @@
    _ext/releasenotes.py
 
 
+2023-03-05
+==========
+
+* :vytask:`T5040` (default): Generate API GraphQL schema on installation, rather than dynamically
+
+
+2023-03-03
+==========
+
+* :vytask:`T4625` (enhancment): Update ocserv to current revision (1.1.6)
+
+
+2023-03-02
+==========
+
+* :vytask:`T4967` (feature): Ability to set hostname for the container
+
+
+2023-03-01
+==========
+
+* :vytask:`T5015` (bug): Invalid format character error at hfsc class settings help text
+
+
+2023-02-28
+==========
+
+* :vytask:`T5029` (feature): Nginx change default root directory and fix regex
+* :vytask:`T5025` (bug): Time-zone validation failed
+* :vytask:`T4955` (bug): Openconnect radiusclient.conf generating with extra authserver
+* :vytask:`T4843` (feature): Command-line arguments in container config
+* :vytask:`T4219` (feature): support incoming-interface (iif) in local PBR 
+* :vytask:`T3903` (bug): Containers: after command "reboot" the host system will reboot after 1.5 minutes
+
+
+2023-02-27
+==========
+
+* :vytask:`T5028` (feature): Add package exfatprogs to VyOS
+* :vytask:`T4985` (bug):  reset vpn ipsec-peer command with peer name does not work 
+
+
 2023-02-26
 ==========
 
