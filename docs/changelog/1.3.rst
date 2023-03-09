@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2023-03-03
+==========
+
+* :vytask:`T4625` (enhancment): Update ocserv to current revision (1.1.6)
+
+
+2023-02-28
+==========
+
+* :vytask:`T4955` (bug): Openconnect radiusclient.conf generating with extra authserver
+* :vytask:`T4219` (feature): support incoming-interface (iif) in local PBR 
+
+
 2023-02-25
 ==========
 
