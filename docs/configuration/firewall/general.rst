@@ -297,9 +297,9 @@ the action of the rule will be executed.
    Use this command to enable the logging of the default action.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> action [accept | drop |
-   jump | reject | return]
+   jump | queue | reject | return]
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> action [accept |
-   drop | jump | reject | return]
+   drop | jump | queue | reject | return]
 
    This required setting defines the action of the current rule. If action
    is set to ``jump``, then ``jump-target`` is also needed.
@@ -309,6 +309,20 @@ the action of the rule will be executed.
 
    To be used only when ``action`` is set to ``jump``. Use this
    command to specify jump target.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> queue <0-65535>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> queue <0-65535>
+
+   Use this command to set the target to use. Action queue must be defined
+   to use this setting
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> queue-options
+   <bypass-fanout>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> queue-options
+   <bypass-fanout>
+
+   Options used for queue target. Action queue must be defined to use this
+   setting
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> description <text>
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> description <text>
@@ -611,6 +625,13 @@ geoip) to keep database and rules updated.
 
    Match based on packet length criteria. Multiple values from 1 to 65535
    and ranges are supported.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> packet-type
+   [broadcast | host | multicast | other]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> packet-type
+   [broadcast | host | multicast | other]
+
+   Match based on packet type criteria.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> protocol [<text> |
    <0-255> | all | tcp_udp]

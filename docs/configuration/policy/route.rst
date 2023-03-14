@@ -168,6 +168,21 @@ And for ipv6:
    ``tcp_udp`` for tcp and udp based packets. The ``!`` negates the selected
    protocol.
 
+.. cfgcmd:: set policy route <name> rule <n> packet-length <text>
+.. cfgcmd:: set policy route6 <name> rule <n> packet-length <text>
+.. cfgcmd:: set policy route <name> rule <n> packet-length-exclude <text>
+.. cfgcmd:: set policy route6 <name> rule <n> packet-length-exclude <text>
+
+   Match based on packet length criteria. Multiple values from 1 to 65535
+   and ranges are supported.
+
+.. cfgcmd:: set policy route <name> rule <n> packet-type [broadcast | host
+   | multicast | other]
+.. cfgcmd:: set policy route6 <name> rule <n> packet-type [broadcast | host
+   | multicast | other]
+
+   Match based on packet type criteria.
+
 .. cfgcmd:: set policy route <name> rule <n> recent count <1-255>
 .. cfgcmd:: set policy route6 <name> rule <n> recent count <1-255>
 .. cfgcmd:: set policy route <name> rule <n> recent time <1-4294967295>
