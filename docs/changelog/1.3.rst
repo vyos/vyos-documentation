@@ -8,6 +8,27 @@
    _ext/releasenotes.py
 
 
+2023-03-09
+==========
+
+* :vytask:`T5066` (bug): Different GRE tunnel but same tunnel keys error
+
+
+2023-03-08
+==========
+
+* :vytask:`T4381` (default): OpenVPN: Add "Tunnel IP" column in "show openvpn server" operational command
+* :vytask:`T4872` (bug): Op-mode show openvpn misses a case when parsing for tunnel IP
+
+
+2023-03-07
+==========
+
+* :vytask:`T2838` (bug): Ethernet device names changing, multiple hw-id being added
+* :vytask:`T2649` (default): Ensure configration mode scripts conform to coding guidelines
+* :vytask:`T4900` (default): Cache intermediary results of get_config_diff in Config instance
+
+
 2023-03-03
 ==========
 

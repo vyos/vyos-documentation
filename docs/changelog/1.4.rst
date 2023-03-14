@@ -8,6 +8,35 @@
    _ext/releasenotes.py
 
 
+2023-03-11
+==========
+
+* :vytask:`T5076` (feature): CI/CD: Docker container is bloated by legacy and conflicting dependencies
+
+
+2023-03-09
+==========
+
+* :vytask:`T5066` (bug): Different GRE tunnel but same tunnel keys error
+* :vytask:`T4952` (feature): Improve interface completion helper CLI experience
+
+
+2023-03-08
+==========
+
+* :vytask:`T4381` (default): OpenVPN: Add "Tunnel IP" column in "show openvpn server" operational command
+* :vytask:`T4872` (bug): Op-mode show openvpn misses a case when parsing for tunnel IP
+
+
+2023-03-07
+==========
+
+* :vytask:`T5057` (bug): IPoE server incorrect interface regex
+* :vytask:`T2838` (bug): Ethernet device names changing, multiple hw-id being added
+* :vytask:`T5051` (feature): Use Literal types to provide op-mode CLI choices and API enums
+* :vytask:`T4900` (default): Cache intermediary results of get_config_diff in Config instance
+
+
 2023-03-05
 ==========
 
@@ -242,7 +271,6 @@
 2023-01-20
 ==========
 
-* :vytask:`T4925` (feature): Need to add the possibility to configure Pseudo-Random Functions (PRF) in IKEv2
 * :vytask:`T4551` (bug): IPsec rekeying collisions bug
 * :vytask:`T4942` (feature): Rewrite vyatta-config-mgmt to Python/XML
 
