@@ -21,7 +21,7 @@ Using the general schema for example:
    :align: center
    :alt: Network Topology Diagram
 
-We have four hosts on the local network 172.17.1.0/0. All hosts are labeled CS0 by default. We need to replace labels on all hosts except vpc8.
+We have four hosts on the local network 172.17.1.0/24. All hosts are labeled CS0 by default. We need to replace labels on all hosts except vpc8.
 We will replace the labels on the nearest router “VyOS3” using the IP addresses of the sources.
 
 * 172.17.1.2 CS0 -> CS4
