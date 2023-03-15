@@ -19,6 +19,7 @@ This chapter contains various configuration examples:
    l3vpn-hub-and-spoke
    inter-vrf-routing-vrf-lite
    openvpn-ldap
+   qos
 
 
 Configuration Blueprints (autotest)
