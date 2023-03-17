@@ -335,12 +335,35 @@ the action of the rule will be executed.
 
    Enable or disable logging for the matched packet.
 
-.. cfgcmd:: set firewall name <name> rule <1-999999> log-level [emerg |
-   alert | crit | err | warn | notice | info | debug]
-.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log-level [emerg |
-   alert | crit | err | warn | notice | info | debug]
+.. cfgcmd:: set firewall name <name> rule <1-999999> log-options level
+   [emerg | alert | crit | err | warn | notice | info | debug]
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log-options level
+   [emerg | alert | crit | err | warn | notice | info | debug]
 
    Define log-level. Only applicable if rule log is enable.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> log-options group
+   <0-65535>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log-options group
+   <0-65535>
+
+   Define log group to send message to. Only applicable if rule log is enable.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> log-options snaplen
+   <0-9000>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log-options snaplen
+   <0-9000>
+
+   Define length of packet payload to include in netlink message. Only
+   applicable if rule log is enable and log group is defined.
+
+.. cfgcmd:: set firewall name <name> rule <1-999999> log-options
+   queue-threshold <0-65535>
+.. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> log-options
+   queue-threshold <0-65535>
+
+   Define number of packets to queue inside the kernel before sending them to
+   userspace. Only applicable if rule log is enable and log group is defined.
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> disable
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> disable
