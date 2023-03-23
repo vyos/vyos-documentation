@@ -154,6 +154,14 @@ PPPoE options
    when it is idle and after the initial establishment of the connection. It
    will stay up forever.
 
+.. cfgcmd:: set interfaces pppoe <interface> holdoff <time>
+
+   Use this command to set re-dial delay time to be used with persist PPPoE
+   sessions. When the PPPoE session is terminated by peer, and on-demand
+   option is not set, the router will attempt to re-establish the PPPoE link.
+
+   If this parameter is not set, the default holdoff time is 30 seconds.
+
 .. cfgcmd:: set interfaces pppoe <interface> local-address <address>
 
    Use this command to set the IP address of the local endpoint of a PPPoE
