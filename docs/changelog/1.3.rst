@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2023-03-19
+==========
+
+* :vytask:`T4925` (feature): Need to add the possibility to configure Pseudo-Random Functions (PRF) in IKEv2
+
+
+2023-03-16
+==========
+
+* :vytask:`T3083` (feature): Add feature event-handler
+* :vytask:`T2516` (bug): vyos-container: cannot configure ethernet interface
+
+
 2023-03-09
 ==========
 

@@ -8,6 +8,36 @@
    _ext/releasenotes.py
 
 
+2023-03-19
+==========
+
+* :vytask:`T4925` (feature): Need to add the possibility to configure Pseudo-Random Functions (PRF) in IKEv2
+
+
+2023-03-17
+==========
+
+* :vytask:`T5092` (bug): IPoE-server named pool must not rely on the authentication type
+* :vytask:`T5091` (bug): IPoE server with RADIUS authentication does not verify radius configuration
+
+
+2023-03-16
+==========
+
+* :vytask:`T5073` (bug): IPoE-server interface option failed to parse
+* :vytask:`T5063` (bug): IPoE-server ethX vlan must not be used with client-subnet
+* :vytask:`T5058` (feature): Extend template filter range_to_regex
+* :vytask:`T3083` (feature): Add feature event-handler
+* :vytask:`T2516` (bug): vyos-container: cannot configure ethernet interface
+
+
+2023-03-13
+==========
+
+* :vytask:`T5074` (bug): Show IPSEC SA failed if remote access IKEv2 vpn is used.
+* :vytask:`T4973` (bug): show dhcp server leases error for lease time 4294967295
+
+
 2023-03-11
 ==========
 
@@ -31,7 +61,6 @@
 2023-03-07
 ==========
 
-* :vytask:`T5057` (bug): IPoE server incorrect interface regex
 * :vytask:`T2838` (bug): Ethernet device names changing, multiple hw-id being added
 * :vytask:`T5051` (feature): Use Literal types to provide op-mode CLI choices and API enums
 * :vytask:`T4900` (default): Cache intermediary results of get_config_diff in Config instance
