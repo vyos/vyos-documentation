@@ -108,10 +108,6 @@ Offloading
     introduce inter-processor interrupts (IPIs)).
 
 
-.. cmdinclude:: /_include/interface-xdp.txt
-   :var0: ethernet
-   :var1: eth0
-
 Authentication (EAPoL)
 ----------------------
 
