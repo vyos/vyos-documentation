@@ -107,6 +107,9 @@ Offloading
   - it does not increase hardware device interrupt rate (although it does
     introduce inter-processor interrupts (IPIs)).
 
+  .. note:: In order to use TSO/LRO with VMXNET3 adaters one must also enable
+     the SG offloading option.
+
 Authentication (EAPoL)
 ----------------------
 
