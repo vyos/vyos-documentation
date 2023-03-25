@@ -5,8 +5,8 @@ NAT66(NPTv6)
 ############
 
 :abbr:`NPTv6 (IPv6-to-IPv6 Network Prefix Translation)` is an address 
-translation technology basedon IPv6 networks, used to convert an IPv6 
-address prefix in an IPv6 message into another IPv6address prefix. 
+translation technology based on IPv6 networks, used to convert an IPv6 
+address prefix in an IPv6 message into another IPv6 address prefix. 
 We call this address translation method NAT66. Devices that support the NAT66
 function are called NAT66 devices, which can provide NAT66 source
 and destination address translation functions.
