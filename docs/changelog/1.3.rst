@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2023-03-21
+==========
+
+* :vytask:`T5098` (feature): PPPoE client holdoff configuration
+
+
 2023-03-19
 ==========
 
