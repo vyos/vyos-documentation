@@ -8,6 +8,35 @@
    _ext/releasenotes.py
 
 
+2023-03-23
+==========
+
+* :vytask:`T5108` (feature): Get rate limit for L2TP/PPTP/SSTP/IPoE in raw format
+* :vytask:`T5086` (feature): Integrate hsflowd for sflow accounting
+* :vytask:`T5107` (bug): Raise error in op-mode dns.py instead of calling exit
+
+
+2023-03-22
+==========
+
+* :vytask:`T5068` (feature): Generate op-mode API client requests along with schema generation
+
+
+2023-03-21
+==========
+
+* :vytask:`T5098` (feature): PPPoE client holdoff configuration
+* :vytask:`T3694` (bug): Static routes not installed into kernel nor frr
+* :vytask:`T5102` (feature): ospf: "redistribute babel" is always set
+
+
+2023-03-20
+==========
+
+* :vytask:`T5057` (bug): IPoE server incorrect interface regex
+* :vytask:`T5095` (feature): Return list instead of dict for 'raw' output of op-mode openvpn
+
+
 2023-03-19
 ==========
 
@@ -2226,7 +2255,6 @@
 
 * :vytask:`T3612` (bug): IPoE Server address pool issues. 
 * :vytask:`T3995` (feature): OpenVPN: do not stop/start service on configuration change
-* :vytask:`T3680` (bug): Static routes with dhcp-interface are flaky
 * :vytask:`T4008` (feature): dhcp: change client retry interval form 300 -> 60 seconds
 * :vytask:`T3795` (bug): WWAN: issues with non connected interface / no signal
 * :vytask:`T3510` (bug): RADIUS usersname is not shown on CLI
