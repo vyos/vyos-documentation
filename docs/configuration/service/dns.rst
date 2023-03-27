@@ -25,10 +25,11 @@ avoid being tracked by the provider of your upstream DNS server.
 
    Interfaces whose DHCP client nameservers to forward requests to.
 
-.. cfgcmd:: set service dns forwarding name-server <address>
+.. cfgcmd:: set service dns forwarding name-server <address> port <port>
 
-   Send all DNS queries to the IPv4/IPv6 DNS server specified under `<address>`.
-   You can configure multiple nameservers here.
+   Send all DNS queries to the IPv4/IPv6 DNS server specified under `<address>`
+   on optional port specified under `<port>`. The port defaults to 53. You can
+   configure multiple nameservers here.
 
 .. cfgcmd:: set service dns forwarding domain <domain-name> server <address>
 
@@ -167,8 +168,10 @@ In this scenario:
   set service dns forwarding domain example.com server 2001:db8:cafe::1
   set service dns forwarding name-server 192.0.2.1
   set service dns forwarding name-server 192.0.2.2
+  set service dns forwarding name-server 192.0.2.3 port 853
   set service dns forwarding name-server 2001:db8::1:ffff
   set service dns forwarding name-server 2001:db8::2:ffff
+  set service dns forwarding name-server 2001:db8::3:ffff port 8053
   set service dns forwarding listen-address 192.168.1.254
   set service dns forwarding listen-address 2001:db8::ffff
   set service dns forwarding allow-from 192.168.1.0/24
