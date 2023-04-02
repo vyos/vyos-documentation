@@ -119,11 +119,6 @@ and create the two new rules as described:
 Example 4: Failover based on rule order - priority traffic
 ----------------------------------------------------------
 
-A rule order for prioritizing traffic is useful in scenarios where the
-secondary link has a lower speed and should only carry high priority
-traffic. It is assumed for this example that eth1 is connected to a
-slower connection than eth0 and should prioritize VoIP traffic.
-
 Overview
 ^^^^^^^^
 A rule order for prioritizing traffic is useful in scenarios where the
