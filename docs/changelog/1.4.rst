@@ -8,6 +8,68 @@
    _ext/releasenotes.py
 
 
+2023-04-02
+==========
+
+* :vytask:`T5134` (feature): Try if netavark networks can be moved to a VRF instance
+
+
+2023-04-01
+==========
+
+* :vytask:`T5082` (feature): container: switch to netavark network stack
+* :vytask:`T5047` (bug): Recreate only a specific container
+* :vytask:`T5132` (default): Operational command "show isis vrf  XXX route | neighbord" aren't working 
+
+
+2023-03-31
+==========
+
+* :vytask:`T5129` (feature): Add AWS build flavour
+* :vytask:`T5126` (feature): http-api: add 'allow-client' to restrict IP address of client connections
+
+
+2023-03-30
+==========
+
+* :vytask:`T5130` (bug): op-mode: drop remaining reference to obsoleted 'show_interfaces.py'
+* :vytask:`T4866` (feature): Rewrite show_interfaces to standardized form
+* :vytask:`T366` (bug): SNMP Query for BGP Tunnels Returns IPv4 Tunnels Only
+
+
+2023-03-29
+==========
+
+* :vytask:`T5100` (feature): Update FRR to 8.5
+* :vytask:`T5094` (bug): FRR systemd logs unknow key LimitNOFILESoft
+* :vytask:`T5085` (bug): ospfv3 route-map not applied in FRR configuration
+* :vytask:`T5056` (bug): IPoE server vlan-mon is not working 
+* :vytask:`T5033` (bug): generate-public-key command fails for address with multiple public keys like GitHub
+* :vytask:`T4876` (bug): mpls - LSP broken on FRR 8.4.1
+* :vytask:`T5097` (bug):  the operational command "show interfaces ethernet ethx" doesn't reflect a call to 'clear counters'
+* :vytask:`T5089` (enhancment): Add unit test of config_diff
+* :vytask:`T5088` (enhancment): Add lexicographical-numeric compare function for vytree/configtree
+* :vytask:`T5087` (enhancment): Add support for lexical ordering of nodes in config_tree
+* :vytask:`T4885` (feature): Rewrite 'clear interfaces counters' from Perl to Python
+* :vytask:`T4846` (bug): L3VPN- network command doesn't install direct connected  prefix
+
+
+2023-03-28
+==========
+
+* :vytask:`T5043` (feature): Need to create reset command for IKEv2 remote-access vpn connections
+
+
+2023-03-27
+==========
+
+* :vytask:`T5099` (feature): IPoE server add option 'next-pool' for named ip pools
+* :vytask:`T5106` (feature): Extend generation of API client requests to configsession native functions and composite requests
+* :vytask:`T5104` (bug): DHCP default route issues with static routes in VRFs
+* :vytask:`T5079` (feature): xml: schema extension to support defaultValues on tagNodes
+* :vytask:`T5114` (feature): bgp: implement new CLI commands introduced in FRR 8.5
+
+
 2023-03-23
 ==========
 
@@ -1867,12 +1929,6 @@
 
 * :vytask:`T4186` (bug): Firewall icmp type - Offered options not supported
 * :vytask:`T4181` (bug): Firewall ipv6-network-group - incorrect description on helper 
-
-
-2022-01-22
-==========
-
-* :vytask:`T4173` (bug): Wan Load Balancing - Error on firewall NAT rules
 
 
 2022-01-21
