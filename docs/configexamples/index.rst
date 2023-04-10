@@ -20,6 +20,7 @@ This chapter contains various configuration examples:
    inter-vrf-routing-vrf-lite
    openvpn-ldap
    qos
+   segment-routing-isis
 
 
 Configuration Blueprints (autotest)
