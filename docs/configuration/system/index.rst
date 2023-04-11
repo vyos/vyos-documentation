@@ -19,6 +19,7 @@ System
    name-server
    option
    proxy
+   sflow
    syslog
    sysctl
    task-scheduler

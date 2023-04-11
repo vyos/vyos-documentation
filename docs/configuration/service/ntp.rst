@@ -50,12 +50,15 @@ Configuration
    * ``1.pool.ntp.org``
    * ``2.pool.ntp.org``
 
-.. cfgcmd:: set service ntp server <address> <noselect | pool | prefer>
+.. cfgcmd:: set service ntp server <address> <noselect | nts | pool | prefer>
 
    Configure one or more attributes to the given NTP server.
 
    * ``noselect`` marks the server as unused, except for display purposes. The
      server is discarded by the selection algorithm.
+
+   * ``nts`` enables Network Time Security (NTS) for the server as specified 
+     in :rfc:`8915`
 
    * ``pool`` mobilizes persistent client mode association with a number of
      remote servers.

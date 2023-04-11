@@ -21,6 +21,7 @@ This chapter contains various configuration examples:
    openvpn-ldap
    qos
    segment-routing-isis
+   nmp
 
 
 Configuration Blueprints (autotest)

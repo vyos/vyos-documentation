@@ -8,6 +8,37 @@
    _ext/releasenotes.py
 
 
+2023-04-01
+==========
+
+* :vytask:`T5047` (bug): Recreate only a specific container
+
+
+2023-03-31
+==========
+
+* :vytask:`T5111` (bug): pppd-dns.service startup failed
+
+
+2023-03-29
+==========
+
+* :vytask:`T5033` (bug): generate-public-key command fails for address with multiple public keys like GitHub
+* :vytask:`T5097` (bug):  the operational command "show interfaces ethernet ethx" doesn't reflect a call to 'clear counters'
+
+
+2023-03-27
+==========
+
+* :vytask:`T4737` (bug): FRRouting/zebra 7.5.1 does not redistribute routes to other protocols
+
+
+2023-03-21
+==========
+
+* :vytask:`T5098` (feature): PPPoE client holdoff configuration
+
+
 2023-03-19
 ==========
 
