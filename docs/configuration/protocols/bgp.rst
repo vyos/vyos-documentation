@@ -939,8 +939,7 @@ IBGP (called confederation BGP). Confederation mechanism is described in
    of the autonomous system that internally includes multiple sub-autonomous
    systems (a confederation).
 
-.. cfgcmd:: set protocols bgp parameters confederation confederation
-   peers <nsubasn>
+.. cfgcmd:: set protocols bgp parameters confederation peers <nsubasn>
 
    This command sets other confederations <nsubasn> as members of autonomous
    system specified by :cfgcmd:`confederation identifier <asn>`.
