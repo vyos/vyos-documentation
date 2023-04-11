@@ -8,6 +8,50 @@
    _ext/releasenotes.py
 
 
+2023-04-10
+==========
+
+* :vytask:`T5151` (bug): EAP-TLS TLSv1.0/1.1 regression after T5003
+
+
+2023-04-07
+==========
+
+* :vytask:`T5149` (bug): op-mode openvpn should not raise error in case interface is disabled
+
+
+2023-04-06
+==========
+
+* :vytask:`T5147` (bug): Can't Commit with Container Network
+* :vytask:`T5142` (feature): One of the requirements is to use a system auditing tool to monitor and log all security-relevant events.
+* :vytask:`T5125` (feature): Add op-mode commands for hsflowd based sflow
+
+
+2023-04-05
+==========
+
+* :vytask:`T5145` (feature): Add maxsyslogins  maximum number of all logins on system 
+* :vytask:`T5135` (default): Rewrite opennhrp script using vyos.ipsec library
+* :vytask:`T4975` (bug): CLI does not work after cutting off the power or reset
+* :vytask:`T5136` (bug): Possible config corruption on upgrade
+
+
+2023-04-04
+==========
+
+* :vytask:`T5141` (feature): Add numbers for dhclient-exit-hooks.d to enforce script order execution
+* :vytask:`T5093` (bug): Command 'reset vpn ipsec-profile' doesn't work
+* :vytask:`T4362` (bug): Wan Load Balancing - Can't create routing tables
+
+
+2023-04-03
+==========
+
+* :vytask:`T5139` (feature): IKE life-time should start from 0 for disable rekey 
+* :vytask:`T4173` (bug): Wan Load Balancing - Error on firewall NAT rules
+
+
 2023-04-02
 ==========
 

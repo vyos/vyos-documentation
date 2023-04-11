@@ -8,6 +8,14 @@
    _ext/releasenotes.py
 
 
+2023-04-05
+==========
+
+* :vytask:`T4975` (bug): CLI does not work after cutting off the power or reset
+* :vytask:`T5136` (bug): Possible config corruption on upgrade
+* :vytask:`T425` (feature): AWS CloudWatch monitoring scripts
+
+
 2023-04-01
 ==========
 
