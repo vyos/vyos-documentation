@@ -14,6 +14,7 @@ Protocols
    igmp
    isis
    mpls
+   segment-routing
    ospf
    rip
    rpki
