@@ -23,6 +23,21 @@ System configuration commands
 
    Use this command to user Layer 4 information for ECMP hashing.
 
+Zebra/Kernel route filtering
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Zebra supports prefix-lists and Route Mapss to match routes received from
+other FRR components. The permit/deny facilities provided by these commands
+can be used to filter which routes zebra will install in the kernel.
+
+.. cfgcmd:: set system ipv6 protocol <protocol> route-map <route-map>
+
+   Apply a route-map filter to routes for the specified protocol. The following
+   protocols can be used: any, babel, bgp, connected, isis, kernel, ospfv3,
+   ripng, static, table
+
+   .. note:: If you choose any as the option that will cause all protocols that
+      are sending routes to zebra.
 
 Operational commands
 --------------------

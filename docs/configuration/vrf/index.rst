@@ -30,7 +30,6 @@ then enslaved to a VRF device.
    .. note:: A routing table ID can not be modified once it is assigned. It can
       only be changed by deleting and re-adding the VRF instance.
 
-
 .. cfgcmd:: set vrf bind-to-all
 
    By default the scope of the port bindings for unbound sockets is limited to
@@ -40,6 +39,33 @@ then enslaved to a VRF device.
 
    TCP & UDP services running in the default VRF context (ie., not bound to any
    VRF device) can work across all VRF domains by enabling this option.
+
+Zebra/Kernel route filtering
+----------------------------
+
+Zebra supports prefix-lists and Route Mapss to match routes received from
+other FRR components. The permit/deny facilities provided by these commands
+can be used to filter which routes zebra will install in the kernel.
+
+.. cfgcmd:: set vrf <name> ip protocol <protocol> route-map <route-map>
+
+   Apply a route-map filter to routes for the specified protocol.
+
+   The following protocols can be used: any, babel, bgp, connected, eigrp,
+   isis, kernel, ospf, rip, static, table
+
+   .. note:: If you choose any as the option that will cause all protocols that
+      are sending routes to zebra.
+
+.. cfgcmd:: set vrf <name> ipv6 protocol <protocol> route-map <route-map>
+
+   Apply a route-map filter to routes for the specified protocol.
+
+   The following protocols can be used: any, babel, bgp, connected, isis,
+   kernel, ospfv3, ripng, static, table
+
+   .. note:: If you choose any as the option that will cause all protocols that
+      are sending routes to zebra.
 
 Interfaces
 ----------
@@ -247,7 +273,7 @@ Configuration
 Operation
 ^^^^^^^^^
 
-After committing the configuration we can verify all leaked routes are 
+After committing the configuration we can verify all leaked routes are
 installed, and try to ICMP ping PC1 from PC3.
 
   .. code-block:: none
@@ -323,8 +349,8 @@ VRF blue routing table
 L3VPN VRFs
 ##########
 
-:abbr:`L3VPN VRFs ( Layer 3 Virtual Private Networks )` bgpd supports for 
-IPv4 RFC 4364 and IPv6 RFC 4659. L3VPN routes, and their associated VRF 
+:abbr:`L3VPN VRFs ( Layer 3 Virtual Private Networks )` bgpd supports for
+IPv4 RFC 4364 and IPv6 RFC 4659. L3VPN routes, and their associated VRF
 MPLS labels, can be distributed to VPN SAFI neighbors in the default, i.e.,
 non VRF, BGP instance. VRF MPLS labels are reached using core MPLS labels
 which are distributed using LDP or BGP labeled unicast.
@@ -336,14 +362,14 @@ VRF Route Leaking
 =================
 
 BGP routes may be leaked (i.e. copied) between a unicast VRF RIB and the VPN
-SAFI RIB of the default VRF for use in MPLS-based L3VPNs. Unicast routes may 
+SAFI RIB of the default VRF for use in MPLS-based L3VPNs. Unicast routes may
 also be leaked between any VRFs (including the unicast RIB of the default BGP
-instance). A shortcut syntax is also available for specifying leaking from 
+instance). A shortcut syntax is also available for specifying leaking from
 one VRF to another VRF using the default instance’s VPN RIB as the intemediary
-. A common application of the VRF-VRF feature is to connect a customer’s 
+. A common application of the VRF-VRF feature is to connect a customer’s
 private routing domain to a provider’s VPN service. Leaking is configured from
 the point of view of an individual VRF: import refers to routes leaked from VPN
-to a unicast VRF, whereas export refers to routes leaked from a unicast VRF to 
+to a unicast VRF, whereas export refers to routes leaked from a unicast VRF to
 VPN.
 
 
@@ -352,7 +378,7 @@ VPN.
 
              an RD / RTLIST
 
-          Configuration for these exported routes must, at a minimum, specify 
+          Configuration for these exported routes must, at a minimum, specify
           these two parameters.
 
 .. _l3vpn-vrf example configuration:
@@ -361,37 +387,37 @@ Configuration
 =============
 
 Configuration of route leaking between a unicast VRF RIB and the VPN SAFI RIB
-of the default VRF is accomplished via commands in the context of a VRF 
+of the default VRF is accomplished via commands in the context of a VRF
 address-family.
 
-.. cfgcmd:: set vrf name <name> protocols bgp address-family 
+.. cfgcmd:: set vrf name <name> protocols bgp address-family
             <ipv4-unicast|ipv6-unicast> rd vpn export <asn:nn|address:nn>
-      
-   Specifies the route distinguisher to be added to a route exported from the 
+
+   Specifies the route distinguisher to be added to a route exported from the
    current unicast VRF to VPN.
 
 .. cfgcmd:: set vrf name <name> protocols bgp address-family
             <ipv4-unicast|ipv6-unicast> route-target vpn <import|export|both>
             [RTLIST]
 
-   Specifies the route-target list to be attached to a route (export) or the 
-   route-target list to match against (import) when exporting/importing 
+   Specifies the route-target list to be attached to a route (export) or the
+   route-target list to match against (import) when exporting/importing
    between the current unicast VRF and VPN.The RTLIST is a space-separated
-   list of route-targets, which are BGP extended community values as 
+   list of route-targets, which are BGP extended community values as
    described in Extended Communities Attribute.
 
 .. cfgcmd:: set vrf name <name> protocols bgp address-family
             <ipv4-unicast|ipv6-unicast> label vpn export <0-1048575|auto>
 
-   Enables an MPLS label to be attached to a route exported from the current 
-   unicast VRF to VPN. If the value specified is auto, the label value is 
+   Enables an MPLS label to be attached to a route exported from the current
+   unicast VRF to VPN. If the value specified is auto, the label value is
    automatically assigned from a pool maintained.
 
 .. cfgcmd:: set vrf name <name> protocols bgp address-family
             <ipv4-unicast|ipv6-unicast> route-map vpn <import|export>
             [route-map <name>]
 
-   Specifies an optional route-map to be applied to routes imported or 
+   Specifies an optional route-map to be applied to routes imported or
    exported between the current unicast VRF and VPN.
 
 .. cfgcmd:: set vrf name <name> protocols bgp address-family
@@ -401,10 +427,10 @@ address-family.
 
 .. cfgcmd:: set vrf name <name> protocols bgp address-family
             <ipv4-unicast|ipv6-unicast> import vrf <name>
-    
-   Shortcut syntax for specifying automatic leaking from vrf VRFNAME to the 
-   current VRF using the VPN RIB as intermediary. The RD and RT are auto 
-   derived and should not be specified explicitly for either the source or 
+
+   Shortcut syntax for specifying automatic leaking from vrf VRFNAME to the
+   current VRF using the VPN RIB as intermediary. The RD and RT are auto
+   derived and should not be specified explicitly for either the source or
    destination VRF’s.
 
 .. _l3vpn-vrf example operation:
@@ -438,8 +464,8 @@ are in place.
         UN=10.0.0.10  EC{65035:1011} label=80 type=bgp, subtype=0
 
 .. opcmd:: show bgp <ipv4|ipv6> vpn summary
-        
-        Print a summary of neighbor connections for the specified AFI/SAFI 
+
+        Print a summary of neighbor connections for the specified AFI/SAFI
         combination.
 
   .. code-block:: none
