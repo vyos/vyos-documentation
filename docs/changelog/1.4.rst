@@ -8,10 +8,33 @@
    _ext/releasenotes.py
 
 
+2023-04-13
+==========
+
+* :vytask:`T5152` (bug): Telegraf agent hostname isn't qualified
+* :vytask:`T4727` (feature): Add RADIUS rate limit support to PPTP server
+* :vytask:`T4939` (bug): VRRP command  no-preempt not work as expected
+* :vytask:`T4791` (default): Consistent normalization of 'raw' output of op-mode scripts for CLI and API
+* :vytask:`T3608` (default): Standardize warnings from configure scripts
+
+
+2023-04-11
+==========
+
+* :vytask:`T4924` (bug): Systemctl strongswan.service for some reason is not disabled
+* :vytask:`T4197` (bug): Vyos arm64-latest build issue with telegraf pkg
+* :vytask:`T4051` (bug): Connected routes strange / not working
+
+
 2023-04-10
 ==========
 
 * :vytask:`T5151` (bug): EAP-TLS TLSv1.0/1.1 regression after T5003
+* :vytask:`T5148` (bug): OpenVPN cannot start due to could not load plugin shared object /openvpn-otp.so
+* :vytask:`T5110` (bug): Show frr op-mode vtysh_pam: Failed in account validation
+* :vytask:`T5078` (feature): VyOS BGP does not support 'show bgp neighbors $NB filtered-routes'
+* :vytask:`T5070` (feature): show bgp nexthop unavailable in VRF
+* :vytask:`T5061` (bug): All containers restart on config change
 
 
 2023-04-07
