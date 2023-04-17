@@ -101,7 +101,7 @@ for project in projects:
             underline = '=' * len(rn['closedate'])
             rst_text += f"{underline}\n\n"
         date = rn['closedate']
-        rst_text += f"* :vytask:`T{rn['id']}` ({rn['type']}): {rn['name']}\n"
+        rst_text += f"* :vytask:`T{rn['id']}` ``({rn['type']}): {rn['name'].strip()}``\n"
     
     f = open(projects[project]['filename'], "w")
     f.write(rst_text)
