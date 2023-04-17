@@ -1,5 +1,3 @@
-.. _routing-static:
-
 ########
 Failover
 ########
