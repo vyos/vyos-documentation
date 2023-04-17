@@ -1,8 +1,8 @@
 .. _babel:
 
-####
+#####
 Babel
-####
+#####
 
 Babel is a modern routing protocol designed to be robust and efficient
 both in ordinary wired networks and in wireless mesh networks.
