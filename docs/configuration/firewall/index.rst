@@ -357,7 +357,11 @@ There are a lot of matching criteria against which the package can be tested.
 .. cfgcmd:: set firewall ipv6-name <name> rule <1-999999> destination group
    address-group <name>
 
-   Use a specific address-group
+   Use a specific address-group. Thes can also be "negated" using '!'. For Example
+   
+   .. code-block:: none
+   
+       set firewall name WAN-IN-v4 rule 20 source group address-group '!TRUSTED-HOSTS'
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source group
    network-group <name>
