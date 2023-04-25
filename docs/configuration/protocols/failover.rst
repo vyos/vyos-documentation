@@ -32,6 +32,19 @@ Failover Routes
 
    Default is ``icmp``.
 
+.. cfgcmd:: set protocols failover route <subnet> next-hop <address> check
+   policy <policy>
+
+   Policy for checking targets
+
+* ``all-available`` all checking target addresses must be available to pass
+  this check
+
+* ``any-available`` any of the checking target addresses must be available
+  to pass this check
+
+   Default is ``any-available``.
+
 .. cfgcmd:: set protocols failover route <subnet> next-hop <address> 
    interface <interface>
 
