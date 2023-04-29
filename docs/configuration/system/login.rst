@@ -290,6 +290,21 @@ information for this system.
 .. note:: To create a new line in your login message you need to escape the new
    line character by using ``\\n``.
 
+Limits
+======
+
+Login limits
+
+.. cfgcmd:: set system login max-login-session <number>
+
+   Set a limit on the maximum number of concurrent logged-in users on
+   the system.
+   This option should be used with ``timeout`` option.
+
+.. cfgcmd:: set system login timeout <timeout>
+
+   Configure session timeout after which the user will be logged out.
+
 
 Example
 =======
