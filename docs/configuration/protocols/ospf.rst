@@ -603,10 +603,11 @@ Operational Mode Commands
        Hello due in 4.563s
      Neighbor Count is 1, Adjacent neighbor count is 1
 
-.. opcmd:: show ip ospf route
+.. opcmd:: show ip ospf route [detail]
 
    This command displays the OSPF routing table, as determined by the most
-   recent SPF calculation.
+   recent SPF calculation. With the optional :cfgcmd:`detail` argument, 
+   each route item's advertiser router and network attribute will be shown.
 
 .. code-block:: none
 
