@@ -8,6 +8,13 @@
    _ext/releasenotes.py
 
 
+2023-04-27
+==========
+
+* :vytask:`T5175` ``(bug): http-api: error in MultiPart parser for FastAPI version >= 0.91.0``
+* :vytask:`T5176` ``(bug): http-api: update vyos-http-api-tools for FastAPI security vulnerability``
+
+
 2023-04-13
 ==========
 
@@ -123,6 +130,12 @@
 ==========
 
 * :vytask:`T4743` ``(feature): Enable IPv6 address for Dynamic DNS``
+
+
+2023-02-16
+==========
+
+* :vytask:`T4971` ``(feature): Radius attribute "Framed-Pool" for PPPoE``
 
 
 2023-02-15

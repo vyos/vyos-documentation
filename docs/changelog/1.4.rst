@@ -8,6 +8,28 @@
    _ext/releasenotes.py
 
 
+2023-04-27
+==========
+
+* :vytask:`T5185` ``(bug): Static IPv6 route with blackhole fails``
+* :vytask:`T5175` ``(bug): http-api: error in MultiPart parser for FastAPI version >= 0.91.0``
+* :vytask:`T5183` ``(bug): IPv6 route6 problem``
+* :vytask:`T5181` ``(bug): Wrong dependencies or priorities for zebra vni vrf interfaces and bgpd``
+* :vytask:`T5128` ``(feature): Policy route - Allow wildcard interfaces``
+* :vytask:`T5055` ``(feature): Firewall - Add packet type matcher (pkttype)``
+* :vytask:`T5050` ``(feature): Firewall - Add options for logging packets``
+* :vytask:`T5037` ``(feature): Firewall - Add queue action``
+* :vytask:`T5176` ``(bug): http-api: update vyos-http-api-tools for FastAPI security vulnerability``
+* :vytask:`T5174` ``(bug): vrf: ensure no duplicate VNIs can be created``
+* :vytask:`T5123` ``(default): Display route originator in show ospf table command``
+
+
+2023-04-25
+==========
+
+* :vytask:`T5179` ``(bug): multi nodes defined in XML are not properly represented as list in get_config_dict()``
+
+
 2023-04-17
 ==========
 
@@ -92,7 +114,6 @@
 2023-04-01
 ==========
 
-* :vytask:`T5082` ``(feature): container: switch to netavark network stack``
 * :vytask:`T5047` ``(bug): Recreate only a specific container``
 * :vytask:`T5132` ``(default): Operational command "show isis vrf  XXX route | neighbord" aren't working``
 
