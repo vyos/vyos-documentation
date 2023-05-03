@@ -164,8 +164,8 @@ In this scenario:
 
 .. code-block:: none
 
-  set service dns forwarding domain example.com server 192.0.2.254
-  set service dns forwarding domain example.com server 2001:db8:cafe::1
+  set service dns forwarding domain example.com name-server 192.0.2.254
+  set service dns forwarding domain example.com name-server 2001:db8:cafe::1
   set service dns forwarding name-server 192.0.2.1
   set service dns forwarding name-server 192.0.2.2
   set service dns forwarding name-server 192.0.2.3 port 853
