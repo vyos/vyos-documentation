@@ -653,7 +653,7 @@ Full configuration from all devices
    set vrf name LAN1 protocols bgp address-family ipv4-unicast rd vpn export '64496:1'
    set vrf name LAN1 protocols bgp address-family ipv4-unicast redistribute static
    set vrf name LAN1 protocols bgp address-family ipv4-unicast route-target vpn export '64496:1'
-   set vrf name LAN1 protocols bgp address-family ipv4-unicast route-target vpn import '64496:100 64996:50 64496:2'
+   set vrf name LAN1 protocols bgp address-family ipv4-unicast route-target vpn import '64496:100 64496:50 64496:2'
    set vrf name LAN1 protocols bgp address-family ipv6-unicast export vpn
    set vrf name LAN1 protocols bgp address-family ipv6-unicast import vpn
    set vrf name LAN1 protocols bgp address-family ipv6-unicast rd vpn export '64496:1'
