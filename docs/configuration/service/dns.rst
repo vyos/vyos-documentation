@@ -31,7 +31,7 @@ avoid being tracked by the provider of your upstream DNS server.
    on optional port specified under `<port>`. The port defaults to 53. You can
    configure multiple nameservers here.
 
-.. cfgcmd:: set service dns forwarding domain <domain-name> server <address>
+.. cfgcmd:: set service dns forwarding domain <domain-name> name-server <address>
 
    Forward received queries for a particular domain
    (specified via `domain-name`) to a given nameserver. Multiple nameservers
@@ -164,8 +164,8 @@ In this scenario:
 
 .. code-block:: none
 
-  set service dns forwarding domain example.com server 192.0.2.254
-  set service dns forwarding domain example.com server 2001:db8:cafe::1
+  set service dns forwarding domain example.com name-server 192.0.2.254
+  set service dns forwarding domain example.com name-server 2001:db8:cafe::1
   set service dns forwarding name-server 192.0.2.1
   set service dns forwarding name-server 192.0.2.2
   set service dns forwarding name-server 192.0.2.3 port 853
