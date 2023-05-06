@@ -97,7 +97,7 @@ DNS server.
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 name-server '192.168.0.1'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 domain-name 'vyos.net'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 lease '86400'
-  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 start 192.168.0.9
+  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 start '192.168.0.9'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 stop '192.168.0.254'
 
   set service dns forwarding cache-size '0'
