@@ -158,6 +158,22 @@ Route Map
 
    Peer IP address to match.
 
+.. cfgcmd:: set policy route-map <text> rule <1-65535> match protocol <protocol>
+
+   Source protocol to match.
+     * ``babel`` - Babel routing protocol (Babel)
+     * ``bgp`` - Border Gateway Protocol (BGP)
+     * ``connected`` - Connected routes (directly attached subnet or host)
+     * ``isis`` - Intermediate System to Intermediate System (IS-IS)
+     * ``kernel`` - Kernel routes
+     * ``ospf`` - Open Shortest Path First (OSPFv2)
+     * ``ospfv3`` - Open Shortest Path First (IPv6) (OSPFv3)
+     * ``rip`` - Routing Information Protocol (RIP)
+     * ``ripng`` - Routing Information Protocol next-generation (IPv6) (RIPng)
+     * ``static`` - Statically configured routes
+     * ``table`` - Non-main Kernel Routing Table
+     * ``vnc`` - Virtual Network Control (VNC)
+
 .. cfgcmd:: set policy route-map <text> rule <1-65535> match rpki
    <invalid|notfound|valid>
 
