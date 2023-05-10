@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2023-05-06
+==========
+
+* :vytask:`T5206` ``(bug): ethtool.py:Ethtool.__init__ has always true conditional due to typo``
+
+
+2023-05-05
+==========
+
+* :vytask:`T5082` ``(feature): container: switch to netavark network stack``
+
+
+2023-05-04
+==========
+
+* :vytask:`T5193` ``(feature): Ability to specify NS records to specify NS servers for subdomains``
+* :vytask:`T3891` ``(bug): X550-T2/Possibly other X550/X540 cards no link on VyOS``
+* :vytask:`T5010` ``(bug): bgp: EVPN route-target not honored``
+* :vytask:`T5196` ``(feature): wwan: op-mode should inform user if there is no WWAN interface``
+
+
+2023-05-03
+==========
+
+* :vytask:`T5163` ``(feature): Policy route-map add match source-protocol``
+
+
+2023-05-02
+==========
+
+* :vytask:`T5042` ``(bug): Command 'show vpn ipsec remote-access' does not work``
+
+
 2023-04-27
 ==========
 
