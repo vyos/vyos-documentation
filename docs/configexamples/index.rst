@@ -18,7 +18,6 @@ This chapter contains various configuration examples:
    pppoe-ipv6-basic
    l3vpn-hub-and-spoke
    inter-vrf-routing-vrf-lite
-   openvpn-ldap
    qos
    segment-routing-isis
    nmp
@@ -52,3 +51,4 @@ The process will do the following steps:
    autotest/tunnelbroker/tunnelbroker
    autotest/L3VPN_EVPN/L3VPN_EVPN
    autotest/Wireguard/Wireguard
+   autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP
