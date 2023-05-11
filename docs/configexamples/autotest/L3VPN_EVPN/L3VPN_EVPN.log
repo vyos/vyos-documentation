@@ -1,844 +1,750 @@
-2023-02-24 12:57:19,631 p=28216 u=rob n=ansible | PLAY [Automatic VyOS Lab test] **********************************************************************************************************************************
-2023-02-24 12:57:19,674 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: fail if node_template_iso is empty] **************************************************************************************
-2023-02-24 12:57:19,690 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:19,700 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:19,705 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:19,708 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:19,712 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:19,716 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: fail if node_template_version is empty] **********************************************************************************
-2023-02-24 12:57:19,738 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:19,746 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:19,746 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:19,748 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:19,752 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:19,756 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: install requirements] ****************************************************************************************************
-2023-02-24 12:57:19,777 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:19,784 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:19,786 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:19,791 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:21,679 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:21,688 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: Login to EVE-NG and get Cookie] ******************************************************************************************
-2023-02-24 12:57:21,718 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:21,726 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:21,729 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:21,734 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:22,408 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:22,413 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: get template facts] ******************************************************************************************************
-2023-02-24 12:57:22,436 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:22,444 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:22,447 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:22,452 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:22,821 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:22,827 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: Register path status] ****************************************************************************************************
-2023-02-24 12:57:22,850 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:22,858 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:22,860 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:22,865 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,054 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:23,058 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: create path] *************************************************************************************************************
-2023-02-24 12:57:23,075 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,083 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,091 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,094 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,098 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,101 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: Upload iso to eve-ng] ****************************************************************************************************
-2023-02-24 12:57:23,121 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,128 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,148 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,148 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,148 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,151 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: create virtioa.qcow2 file] ***********************************************************************************************
-2023-02-24 12:57:23,173 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,181 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,183 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,183 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,187 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,191 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: Login to EVE-NG and get Cookie] ******************************************************************************************
-2023-02-24 12:57:23,204 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,212 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,219 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,221 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,225 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,228 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: create lab for node install] *********************************************************************************************
-2023-02-24 12:57:23,241 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,249 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,256 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,258 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,263 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,266 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: open lab] ****************************************************************************************************************
-2023-02-24 12:57:23,287 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,293 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,294 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,296 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,300 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,303 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : set_fact] ****************************************************************************************************************************
-2023-02-24 12:57:23,323 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,330 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,331 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,333 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,337 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,340 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: add node to lab] *********************************************************************************************************
-2023-02-24 12:57:23,354 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,362 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,370 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,372 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,377 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,380 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: start node] **************************************************************************************************************
-2023-02-24 12:57:23,394 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,401 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,408 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,410 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,414 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,417 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : debug] *******************************************************************************************************************************
-2023-02-24 12:57:23,437 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,444 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,445 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,446 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,450 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,453 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: get node infos] **********************************************************************************************************
-2023-02-24 12:57:23,473 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,480 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,481 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,483 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,487 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,489 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : set_fact] ****************************************************************************************************************************
-2023-02-24 12:57:23,510 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,516 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,516 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,518 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,522 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,525 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: copy file] ***************************************************************************************************************
-2023-02-24 12:57:23,545 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,552 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,553 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,554 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,558 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,561 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: run expect script] *******************************************************************************************************
-2023-02-24 12:57:23,581 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,588 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,588 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,590 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,594 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,597 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: Login to EVE-NG and get Cookie (due timeout)] ****************************************************************************
-2023-02-24 12:57:23,610 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,619 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,625 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,627 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,632 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,635 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: stop node] ***************************************************************************************************************
-2023-02-24 12:57:23,648 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,656 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,663 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,665 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,669 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,673 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: Pause to wait node is shutdown] ******************************************************************************************
-2023-02-24 12:57:23,684 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,687 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: delete iso] **************************************************************************************************************
-2023-02-24 12:57:23,703 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,710 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,717 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,719 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,724 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,727 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: commit virtioa.qcow2] ****************************************************************************************************
-2023-02-24 12:57:23,748 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,754 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,757 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,757 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,762 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,765 p=28216 u=rob n=ansible | TASK [eve-ng-create-node : L3VPN_EVPN: delete lab for node install] *********************************************************************************************
-2023-02-24 12:57:23,780 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:23,787 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:23,795 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:23,797 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:23,801 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:23,811 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : Get env file content] *******************************************************************************************************************
-2023-02-24 12:57:24,030 p=28216 u=rob n=ansible | ok: [PE2 -> localhost]
-2023-02-24 12:57:24,031 p=28216 u=rob n=ansible | ok: [PE1 -> localhost]
-2023-02-24 12:57:24,031 p=28216 u=rob n=ansible | ok: [PE3 -> localhost]
-2023-02-24 12:57:24,031 p=28216 u=rob n=ansible | ok: [eveng -> localhost]
-2023-02-24 12:57:24,031 p=28216 u=rob n=ansible | ok: [vyos-oobm -> localhost]
-2023-02-24 12:57:24,034 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Load facts] *****************************************************************************************************************
-2023-02-24 12:57:24,061 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:24,062 p=28216 u=rob n=ansible | ok: [vyos-oobm]
-2023-02-24 12:57:25,031 p=28216 u=rob n=ansible | network_os is set to vyos
-2023-02-24 12:57:25,032 p=28216 u=rob n=ansible | network_os is set to vyos
-2023-02-24 12:57:25,033 p=28216 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+2023-05-11 15:27:52,852 p=74133 u=rob n=ansible | PLAY [Automatic VyOS Lab test] **************************************************************************************************************************************************************************************************
+2023-05-11 15:27:52,893 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : Get env file content] ***********************************************************************************************************************************************************************************
+2023-05-11 15:27:53,211 p=74133 u=rob n=ansible | ok: [PE1 -> localhost]
+2023-05-11 15:27:53,211 p=74133 u=rob n=ansible | ok: [PE3 -> localhost]
+2023-05-11 15:27:53,211 p=74133 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 15:27:53,211 p=74133 u=rob n=ansible | ok: [PE2 -> localhost]
+2023-05-11 15:27:53,211 p=74133 u=rob n=ansible | ok: [vyos-oobm -> localhost]
+2023-05-11 15:27:53,214 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Load facts] *********************************************************************************************************************************************************************************
+2023-05-11 15:27:53,238 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:27:54,358 p=74133 u=rob n=ansible | network_os is set to vyos
+2023-05-11 15:27:54,358 p=74133 u=rob n=ansible | network_os is set to vyos
+2023-05-11 15:27:54,359 p=74133 u=rob n=ansible | network_os is set to vyos
+2023-05-11 15:27:54,359 p=74133 u=rob n=ansible | network_os is set to vyos
+2023-05-11 15:27:54,360 p=74133 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-02-24 12:57:25,038 p=28216 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+2023-05-11 15:27:54,363 p=74133 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-02-24 12:57:25,038 p=28216 u=rob n=ansible | ok: [PE2]
-2023-02-24 12:57:25,042 p=28216 u=rob n=ansible | network_os is set to vyos
-2023-02-24 12:57:25,042 p=28216 u=rob n=ansible | ok: [PE1]
-2023-02-24 12:57:25,042 p=28216 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+2023-05-11 15:27:54,364 p=74133 u=rob n=ansible | ok: [PE1]
+2023-05-11 15:27:54,367 p=74133 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-02-24 12:57:25,045 p=28216 u=rob n=ansible | ok: [PE3]
-2023-02-24 12:57:25,051 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: fail if node_template_version is empty] *************************************************************************************
-2023-02-24 12:57:25,071 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:25,079 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:25,087 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:25,090 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:25,094 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:25,097 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *********************************************************************************************
-2023-02-24 12:57:25,117 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:25,126 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:25,128 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:25,134 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:25,701 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:25,705 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: get running lab list] *******************************************************************************************************
-2023-02-24 12:57:25,728 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:25,736 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:25,739 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:25,744 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:26,176 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:26,184 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: kill running lab] ***********************************************************************************************************
-2023-02-24 12:57:26,205 p=28216 u=rob n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: item.labname == "{{ eve_ng_folder_name }}/{{
-lab }}"
+2023-05-11 15:27:54,367 p=74133 u=rob n=ansible | ok: [PE3]
+2023-05-11 15:27:54,367 p=74133 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-02-24 12:57:26,208 p=28216 u=rob n=ansible | skipping: [eveng] => (item={'podid': '0', 'username': 'admin', 'online': '1', 'uuid': '588b9164-a3b7-4522-8058-0f6ff6286564', 'size': 0.218, 'sat': '0', 'sat_name': 'master', 'labid': 1001, 'labname': '/Common\n', 'cpu': 0, 'mem': 0}) 
-2023-02-24 12:57:26,218 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:26,223 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:26,224 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:26,227 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:26,233 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:26,236 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: delete existing lab] ********************************************************************************************************
-2023-02-24 12:57:26,256 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:26,264 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:26,267 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:26,272 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:26,831 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:26,840 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Ensure labtest is present] **************************************************************************************************
-2023-02-24 12:57:26,871 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:26,878 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:26,881 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:26,887 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:27,069 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:27,073 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Create L3VPN_EVPN Lab] ******************************************************************************************************
-2023-02-24 12:57:27,095 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:27,103 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:27,106 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:27,111 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:27,714 p=28216 u=rob n=ansible | changed: [eveng]
-2023-02-24 12:57:27,718 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *********************************************************************************************
-2023-02-24 12:57:27,747 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:27,750 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:27,750 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:27,755 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:28,368 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:28,376 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: start vyos-oobm] ************************************************************************************************************
-2023-02-24 12:57:28,411 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:57:28,413 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:28,414 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:28,419 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:57:29,389 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:57:29,398 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Wait for vyos-oobm] *********************************************************************************************************
-2023-02-24 12:57:29,428 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:57:29,433 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:57:29,436 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:57:29,441 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:58:31,889 p=28216 u=rob n=ansible | ok: [vyos-oobm]
-2023-02-24 12:58:31,898 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *********************************************************************************************
-2023-02-24 12:58:31,928 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:58:31,937 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:58:31,939 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:58:31,946 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:58:33,003 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:58:33,009 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: get lab status] *************************************************************************************************************
-2023-02-24 12:58:33,032 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:58:33,040 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:58:33,042 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:58:33,048 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:58:33,499 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 12:58:33,505 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: start all nodes] ************************************************************************************************************
-2023-02-24 12:58:33,535 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:58:33,537 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 12:58:33,537 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 12:58:33,543 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 12:58:34,626 p=28216 u=rob n=ansible | ok: [eveng] => (item=2)
-2023-02-24 12:58:35,958 p=28216 u=rob n=ansible | ok: [eveng] => (item=3)
-2023-02-24 12:58:37,499 p=28216 u=rob n=ansible | ok: [eveng] => (item=4)
-2023-02-24 12:58:38,413 p=28216 u=rob n=ansible | ok: [eveng] => (item=5)
-2023-02-24 12:58:39,267 p=28216 u=rob n=ansible | ok: [eveng] => (item=6)
-2023-02-24 12:58:40,158 p=28216 u=rob n=ansible | ok: [eveng] => (item=7)
-2023-02-24 12:58:41,078 p=28216 u=rob n=ansible | ok: [eveng] => (item=8)
-2023-02-24 12:58:41,979 p=28216 u=rob n=ansible | ok: [eveng] => (item=9)
-2023-02-24 12:58:43,035 p=28216 u=rob n=ansible | ok: [eveng] => (item=10)
-2023-02-24 12:58:44,055 p=28216 u=rob n=ansible | ok: [eveng] => (item=11)
-2023-02-24 12:58:44,676 p=28216 u=rob n=ansible | ok: [eveng] => (item=1)
-2023-02-24 12:58:44,689 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Wait for vyos nodes] ********************************************************************************************************
-2023-02-24 12:58:44,720 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:58:44,727 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:58:45,692 p=28216 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. 
-Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
-2023-02-24 12:58:45,692 p=28216 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. 
-Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
-2023-02-24 12:58:45,692 p=28216 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. 
-Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
-2023-02-24 12:59:15,733 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | Exception (client): Error reading SSH protocol banner
-2023-02-24 12:59:15,733 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | Exception (client): Error reading SSH protocol banner
-2023-02-24 12:59:15,736 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | Exception (client): Error reading SSH protocol banner
-2023-02-24 12:59:15,737 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | Traceback (most recent call last):
-2023-02-24 12:59:15,737 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | Traceback (most recent call last):
-2023-02-24 12:59:15,737 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2268, in _check_banner
-2023-02-24 12:59:15,737 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2268, in _check_banner
-2023-02-24 12:59:15,737 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |     buf = self.packetizer.readline(timeout)
-2023-02-24 12:59:15,737 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |     buf = self.packetizer.readline(timeout)
-2023-02-24 12:59:15,737 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
-2023-02-24 12:59:15,737 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
-2023-02-24 12:59:15,738 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |     buf += self._read_timeout(timeout)
-2023-02-24 12:59:15,738 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |     buf += self._read_timeout(timeout)
-2023-02-24 12:59:15,738 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
-2023-02-24 12:59:15,738 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
-2023-02-24 12:59:15,738 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |     raise socket.timeout()
-2023-02-24 12:59:15,738 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |     raise socket.timeout()
-2023-02-24 12:59:15,738 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | socket.timeout
-2023-02-24 12:59:15,738 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | socket.timeout
-2023-02-24 12:59:15,738 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | 
-2023-02-24 12:59:15,738 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | 
-2023-02-24 12:59:15,738 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | During handling of the above exception, another exception occurred:
-2023-02-24 12:59:15,738 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | During handling of the above exception, another exception occurred:
-2023-02-24 12:59:15,739 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | 
-2023-02-24 12:59:15,739 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | 
-2023-02-24 12:59:15,739 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | Traceback (most recent call last):
-2023-02-24 12:59:15,739 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | Traceback (most recent call last):
-2023-02-24 12:59:15,739 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2091, in run
-2023-02-24 12:59:15,739 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2091, in run
-2023-02-24 12:59:15,739 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |     self._check_banner()
-2023-02-24 12:59:15,739 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |     self._check_banner()
-2023-02-24 12:59:15,739 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2272, in _check_banner
-2023-02-24 12:59:15,739 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2272, in _check_banner
-2023-02-24 12:59:15,739 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |     raise SSHException(
-2023-02-24 12:59:15,739 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | Traceback (most recent call last):
-2023-02-24 12:59:15,739 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |     raise SSHException(
-2023-02-24 12:59:15,740 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2023-02-24 12:59:15,740 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2023-02-24 12:59:15,740 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2268, in _check_banner
-2023-02-24 12:59:15,740 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | 
-2023-02-24 12:59:15,740 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | 
-2023-02-24 12:59:15,740 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |     buf = self.packetizer.readline(timeout)
-2023-02-24 12:59:15,740 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
-2023-02-24 12:59:15,740 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |     buf += self._read_timeout(timeout)
-2023-02-24 12:59:15,740 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
-2023-02-24 12:59:15,740 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |     raise socket.timeout()
-2023-02-24 12:59:15,741 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | socket.timeout
-2023-02-24 12:59:15,741 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | 
-2023-02-24 12:59:15,741 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | During handling of the above exception, another exception occurred:
-2023-02-24 12:59:15,741 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | 
-2023-02-24 12:59:15,741 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | Traceback (most recent call last):
-2023-02-24 12:59:15,741 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2091, in run
-2023-02-24 12:59:15,741 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |     self._check_banner()
-2023-02-24 12:59:15,742 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2272, in _check_banner
-2023-02-24 12:59:15,742 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |     raise SSHException(
-2023-02-24 12:59:15,742 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2023-02-24 12:59:15,742 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | 
-2023-02-24 12:59:46,813 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | Exception (client): Error reading SSH protocol banner
-2023-02-24 12:59:46,814 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | Traceback (most recent call last):
-2023-02-24 12:59:46,814 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2268, in _check_banner
-2023-02-24 12:59:46,814 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |     buf = self.packetizer.readline(timeout)
-2023-02-24 12:59:46,814 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
-2023-02-24 12:59:46,814 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |     buf += self._read_timeout(timeout)
-2023-02-24 12:59:46,814 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
-2023-02-24 12:59:46,815 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |     raise socket.timeout()
-2023-02-24 12:59:46,815 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | socket.timeout
-2023-02-24 12:59:46,815 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | 
-2023-02-24 12:59:46,815 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | During handling of the above exception, another exception occurred:
-2023-02-24 12:59:46,815 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | 
-2023-02-24 12:59:46,815 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | Traceback (most recent call last):
-2023-02-24 12:59:46,815 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2091, in run
-2023-02-24 12:59:46,816 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |     self._check_banner()
-2023-02-24 12:59:46,816 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2272, in _check_banner
-2023-02-24 12:59:46,816 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] |     raise SSHException(
-2023-02-24 12:59:46,816 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2023-02-24 12:59:46,816 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | 
-2023-02-24 12:59:46,818 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | Exception (client): Error reading SSH protocol banner
-2023-02-24 12:59:46,818 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | Traceback (most recent call last):
-2023-02-24 12:59:46,819 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2268, in _check_banner
-2023-02-24 12:59:46,819 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |     buf = self.packetizer.readline(timeout)
-2023-02-24 12:59:46,819 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
-2023-02-24 12:59:46,819 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |     buf += self._read_timeout(timeout)
-2023-02-24 12:59:46,819 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
-2023-02-24 12:59:46,819 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |     raise socket.timeout()
-2023-02-24 12:59:46,820 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | socket.timeout
-2023-02-24 12:59:46,819 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | Exception (client): Error reading SSH protocol banner
-2023-02-24 12:59:46,820 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | 
-2023-02-24 12:59:46,820 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | During handling of the above exception, another exception occurred:
-2023-02-24 12:59:46,820 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | Traceback (most recent call last):
-2023-02-24 12:59:46,820 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | 
-2023-02-24 12:59:46,820 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2268, in _check_banner
-2023-02-24 12:59:46,820 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | Traceback (most recent call last):
-2023-02-24 12:59:46,820 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |     buf = self.packetizer.readline(timeout)
-2023-02-24 12:59:46,820 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2091, in run
-2023-02-24 12:59:46,821 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
-2023-02-24 12:59:46,821 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |     self._check_banner()
-2023-02-24 12:59:46,821 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |     buf += self._read_timeout(timeout)
-2023-02-24 12:59:46,821 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2272, in _check_banner
-2023-02-24 12:59:46,821 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
-2023-02-24 12:59:46,821 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] |     raise SSHException(
-2023-02-24 12:59:46,821 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |     raise socket.timeout()
-2023-02-24 12:59:46,821 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2023-02-24 12:59:46,821 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | socket.timeout
-2023-02-24 12:59:46,821 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | 
-2023-02-24 12:59:46,821 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | 
-2023-02-24 12:59:46,821 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | During handling of the above exception, another exception occurred:
-2023-02-24 12:59:46,822 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | 
-2023-02-24 12:59:46,822 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | Traceback (most recent call last):
-2023-02-24 12:59:46,822 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2091, in run
-2023-02-24 12:59:46,822 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |     self._check_banner()
-2023-02-24 12:59:46,822 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2272, in _check_banner
-2023-02-24 12:59:46,822 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] |     raise SSHException(
-2023-02-24 12:59:46,822 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2023-02-24 12:59:46,823 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | 
-2023-02-24 12:59:48,937 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 12:59:48,940 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 12:59:48,940 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 12:59:49,207 p=28815 u=rob n=p=28815 u=rob | paramiko [PE2] | Authentication (publickey) successful!
-2023-02-24 12:59:49,207 p=28814 u=rob n=p=28814 u=rob | paramiko [PE1] | Authentication (publickey) successful!
-2023-02-24 12:59:49,207 p=28816 u=rob n=p=28816 u=rob | paramiko [PE3] | Authentication (publickey) successful!
-2023-02-24 12:59:50,289 p=28216 u=rob n=ansible | ok: [PE1]
-2023-02-24 12:59:50,289 p=28216 u=rob n=ansible | ok: [PE2]
-2023-02-24 12:59:50,289 p=28216 u=rob n=ansible | ok: [PE3]
-2023-02-24 12:59:50,292 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : setup vyos] *****************************************************************************************************************************
-2023-02-24 12:59:50,313 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 12:59:50,318 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 12:59:51,260 p=28502 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
-ansible.utils.display.Display.verbosity instead. This feature will be removed 
-in version 2.18. Deprecation warnings can be disabled by setting 
+2023-05-11 15:27:54,372 p=74133 u=rob n=ansible | ok: [vyos-oobm]
+2023-05-11 15:27:54,372 p=74133 u=rob n=ansible | ok: [PE2]
+2023-05-11 15:27:54,377 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: fail if node_template_version is empty] *****************************************************************************************************************************************************
+2023-05-11 15:27:54,395 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:27:54,403 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:27:54,414 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:27:54,414 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:27:54,419 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:27:54,423 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *************************************************************************************************************************************************************
+2023-05-11 15:27:54,442 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:27:54,449 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:27:54,451 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:27:54,456 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:27:55,424 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:27:55,429 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: get running lab list] ***********************************************************************************************************************************************************************
+2023-05-11 15:27:55,456 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:27:55,459 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:27:55,459 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:27:55,464 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:27:55,829 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:27:55,836 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: kill running lab] ***************************************************************************************************************************************************************************
+2023-05-11 15:27:55,859 p=74133 u=rob n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: item.labname == "{{ eve_ng_folder_name }}/{{ lab }}"
+
+2023-05-11 15:27:55,863 p=74133 u=rob n=ansible | skipping: [eveng] => (item={'podid': '0', 'username': 'admin', 'online': '1', 'uuid': '0addf0f5-8476-4696-8f9a-05ac0bc44c46', 'size': 0.0057, 'sat': '0', 'sat_name': 'master', 'labid': 1001, 'labname': None, 'cpu': 0, 'mem': 0}) 
+2023-05-11 15:27:55,872 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:27:55,873 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:27:55,873 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:27:55,873 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:27:55,881 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:27:55,884 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: delete existing lab] ************************************************************************************************************************************************************************
+2023-05-11 15:27:55,902 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:27:55,911 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:27:55,912 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:27:55,916 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:27:56,361 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:27:56,368 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Ensure labtest is present] ******************************************************************************************************************************************************************
+2023-05-11 15:27:56,400 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:27:56,400 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:27:56,400 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:27:56,406 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:27:56,619 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:27:56,625 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Create L3VPN_EVPN Lab] **********************************************************************************************************************************************************************
+2023-05-11 15:27:56,648 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:27:56,654 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:27:56,656 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:27:56,661 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:27:57,152 p=74133 u=rob n=ansible | changed: [eveng]
+2023-05-11 15:27:57,156 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *************************************************************************************************************************************************************
+2023-05-11 15:27:57,182 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:27:57,183 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:27:57,185 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:27:57,190 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:27:57,796 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:27:57,804 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: start vyos-oobm] ****************************************************************************************************************************************************************************
+2023-05-11 15:27:57,830 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:27:57,837 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:27:57,840 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:27:57,845 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:27:58,813 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:27:58,822 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Wait for vyos-oobm] *************************************************************************************************************************************************************************
+2023-05-11 15:27:58,842 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:27:58,855 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:27:58,856 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:27:58,860 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:27:59,881 p=74133 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
 deprecation_warnings=False in ansible.cfg.
-2023-02-24 12:59:51,260 p=28504 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
-ansible.utils.display.Display.verbosity instead. This feature will be removed 
-in version 2.18. Deprecation warnings can be disabled by setting 
+2023-05-11 15:28:29,951 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:28:29,963 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | Traceback (most recent call last):
+2023-05-11 15:28:29,964 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:28:29,964 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:28:29,964 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:28:29,965 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |     buf += self._read_timeout(timeout)
+2023-05-11 15:28:29,965 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:28:29,966 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |     raise socket.timeout()
+2023-05-11 15:28:29,966 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | socket.timeout
+2023-05-11 15:28:29,966 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 15:28:29,967 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | During handling of the above exception, another exception occurred:
+2023-05-11 15:28:29,967 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 15:28:29,967 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | Traceback (most recent call last):
+2023-05-11 15:28:29,968 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:28:29,968 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |     self._check_banner()
+2023-05-11 15:28:29,968 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:28:29,969 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |     raise SSHException(
+2023-05-11 15:28:29,969 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:28:29,969 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 15:29:00,990 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:29:00,993 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | Traceback (most recent call last):
+2023-05-11 15:29:00,994 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:29:00,995 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:29:00,995 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:29:00,996 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |     buf += self._read_timeout(timeout)
+2023-05-11 15:29:00,996 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:29:00,996 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |     raise socket.timeout()
+2023-05-11 15:29:00,997 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | socket.timeout
+2023-05-11 15:29:00,997 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 15:29:00,997 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | During handling of the above exception, another exception occurred:
+2023-05-11 15:29:00,998 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 15:29:00,998 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | Traceback (most recent call last):
+2023-05-11 15:29:00,999 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:29:00,999 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |     self._check_banner()
+2023-05-11 15:29:00,999 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:29:01,000 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] |     raise SSHException(
+2023-05-11 15:29:01,000 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:29:01,000 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 15:29:02,704 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:29:02,936 p=74388 u=rob n=p=74388 u=rob | paramiko [vyos-oobm] | Authentication (publickey) successful!
+2023-05-11 15:29:04,114 p=74133 u=rob n=ansible | ok: [vyos-oobm]
+2023-05-11 15:29:04,118 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *************************************************************************************************************************************************************
+2023-05-11 15:29:04,137 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:29:04,145 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:29:04,147 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:29:04,152 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:29:05,011 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:29:05,019 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: get lab status] *****************************************************************************************************************************************************************************
+2023-05-11 15:29:05,046 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:29:05,053 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:29:05,055 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:29:05,060 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:29:05,621 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:29:05,626 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: start all nodes] ****************************************************************************************************************************************************************************
+2023-05-11 15:29:05,648 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:29:05,656 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:29:05,659 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:29:05,664 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:29:06,746 p=74133 u=rob n=ansible | ok: [eveng] => (item=2)
+2023-05-11 15:29:08,194 p=74133 u=rob n=ansible | ok: [eveng] => (item=3)
+2023-05-11 15:29:09,686 p=74133 u=rob n=ansible | ok: [eveng] => (item=4)
+2023-05-11 15:29:10,731 p=74133 u=rob n=ansible | ok: [eveng] => (item=5)
+2023-05-11 15:29:11,730 p=74133 u=rob n=ansible | ok: [eveng] => (item=6)
+2023-05-11 15:29:12,651 p=74133 u=rob n=ansible | ok: [eveng] => (item=7)
+2023-05-11 15:29:13,577 p=74133 u=rob n=ansible | ok: [eveng] => (item=8)
+2023-05-11 15:29:14,611 p=74133 u=rob n=ansible | ok: [eveng] => (item=9)
+2023-05-11 15:29:15,670 p=74133 u=rob n=ansible | ok: [eveng] => (item=10)
+2023-05-11 15:29:16,627 p=74133 u=rob n=ansible | ok: [eveng] => (item=11)
+2023-05-11 15:29:17,257 p=74133 u=rob n=ansible | ok: [eveng] => (item=1)
+2023-05-11 15:29:17,266 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Wait for vyos nodes] ************************************************************************************************************************************************************************
+2023-05-11 15:29:17,289 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:29:17,295 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:29:18,393 p=74133 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
 deprecation_warnings=False in ansible.cfg.
-2023-02-24 12:59:51,267 p=28507 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
-ansible.utils.display.Display.verbosity instead. This feature will be removed 
-in version 2.18. Deprecation warnings can be disabled by setting 
+2023-05-11 15:29:18,393 p=74133 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
 deprecation_warnings=False in ansible.cfg.
-2023-02-24 12:59:52,215 p=28502 u=rob n=p=28502 u=rob | paramiko [PE1] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 12:59:52,233 p=28507 u=rob n=p=28507 u=rob | paramiko [PE3] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 12:59:52,236 p=28504 u=rob n=p=28504 u=rob | paramiko [PE2] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 12:59:52,472 p=28502 u=rob n=p=28502 u=rob | paramiko [PE1] | Authentication (publickey) successful!
-2023-02-24 12:59:52,476 p=28507 u=rob n=p=28507 u=rob | paramiko [PE3] | Authentication (publickey) successful!
-2023-02-24 12:59:52,476 p=28504 u=rob n=p=28504 u=rob | paramiko [PE2] | Authentication (publickey) successful!
-2023-02-24 13:00:26,232 p=28216 u=rob n=ansible | [WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar to how they appear if present in the running configuration on
-device including the indentation
-
-2023-02-24 13:00:26,232 p=28216 u=rob n=ansible | changed: [PE2]
-2023-02-24 13:00:26,239 p=28216 u=rob n=ansible | changed: [PE3]
-2023-02-24 13:00:28,955 p=28216 u=rob n=ansible | changed: [PE1]
-2023-02-24 13:00:28,961 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *********************************************************************************************
-2023-02-24 13:00:28,997 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:00:29,007 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:00:29,009 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:00:29,016 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:00:30,265 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 13:00:30,275 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: stop nodes id] **************************************************************************************************************
-2023-02-24 13:00:30,309 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:00:30,312 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:00:30,315 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:00:30,319 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:00:30,326 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:00:30,329 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after stop] ************************************************************************************************************
-2023-02-24 13:00:30,341 p=28216 u=rob n=ansible | Pausing for 5 seconds
-2023-02-24 13:00:30,342 p=28216 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2023-02-24 13:00:35,356 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 13:00:35,371 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: start nodes id] *************************************************************************************************************
-2023-02-24 13:00:35,416 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:00:35,417 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:00:35,420 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:00:35,425 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:00:35,434 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:00:35,437 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after start] ***********************************************************************************************************
-2023-02-24 13:00:35,450 p=28216 u=rob n=ansible | Pausing for 5 seconds
-2023-02-24 13:00:35,450 p=28216 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2023-02-24 13:00:40,465 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 13:00:40,480 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait, b/c the ping often failed without a short break] **********************************************************************
-2023-02-24 13:00:40,509 p=28216 u=rob n=ansible | Pausing for 30 seconds
-2023-02-24 13:00:40,510 p=28216 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2023-02-24 13:01:10,528 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 13:01:10,543 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: do ping test] ***************************************************************************************************************
-2023-02-24 13:01:10,578 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:01:10,586 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:01:16,090 p=28216 u=rob n=ansible | ok: [PE1] => (item=172.29.255.2)
-2023-02-24 13:01:16,092 p=28216 u=rob n=ansible | ok: [PE2] => (item=172.29.255.1)
-2023-02-24 13:01:16,094 p=28216 u=rob n=ansible | ok: [PE3] => (item=172.29.255.2)
-2023-02-24 13:01:21,417 p=28216 u=rob n=ansible | ok: [PE1] => (item=172.29.255.3)
-2023-02-24 13:01:21,430 p=28216 u=rob n=ansible | ok: [PE2] => (item=172.29.255.3)
-2023-02-24 13:01:21,438 p=28216 u=rob n=ansible | ok: [PE3] => (item=172.29.255.1)
-2023-02-24 13:01:21,449 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: execute test commands] ******************************************************************************************************
-2023-02-24 13:01:21,480 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:01:21,490 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:01:22,770 p=28216 u=rob n=ansible | ok: [PE3] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:01:22,776 p=28216 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:01:22,784 p=28216 u=rob n=ansible | ok: [PE2] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:01:23,974 p=28216 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING blue site 2', 'command': 'ping 10.1.2.10 vrf blue count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:01:25,178 p=28216 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING red site 2', 'command': 'ping 10.2.2.10 vrf red count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:01:26,387 p=28216 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING green site 3', 'command': 'ping 10.3.3.10 vrf green count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:01:26,405 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: register stdout commands] ***************************************************************************************************
-2023-02-24 13:01:26,443 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:01:26,445 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:01:26,461 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:01:27,686 p=28216 u=rob n=ansible | ok: [PE2] => (item={'name': 'bgp_evpn_net', 'command': 'show bgp l2vpn evpn 10.3.1.10'})
-2023-02-24 13:01:27,691 p=28216 u=rob n=ansible | ok: [PE1] => (item={'name': 'vrf_all', 'command': 'show ip route vrf all'})
-2023-02-24 13:01:28,859 p=28216 u=rob n=ansible | ok: [PE1] => (item={'name': 'bgp_evpn', 'command': 'show bgp l2vpn evpn'})
-2023-02-24 13:01:28,875 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Set variables] **************************************************************************************************************
-2023-02-24 13:01:28,915 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:01:28,916 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:01:28,931 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:01:29,866 p=28216 u=rob n=ansible | ok: [PE2]
-2023-02-24 13:01:29,867 p=28216 u=rob n=ansible | ok: [PE1]
-2023-02-24 13:01:29,878 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Reboot vyos] ****************************************************************************************************************
-2023-02-24 13:01:29,914 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:01:29,920 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:01:31,354 p=28216 u=rob n=ansible | ok: [PE1]
-2023-02-24 13:01:31,355 p=28216 u=rob n=ansible | ok: [PE3]
-2023-02-24 13:01:31,355 p=28216 u=rob n=ansible | ok: [PE2]
-2023-02-24 13:01:31,365 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait while shutdown] ********************************************************************************************************
-2023-02-24 13:01:31,390 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:01:31,395 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Wait for vyos nodes] ********************************************************************************************************
-2023-02-24 13:01:31,412 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:01:31,420 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:01:32,386 p=28216 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. 
-Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
-2023-02-24 13:01:32,387 p=28216 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. 
-Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
-2023-02-24 13:01:32,389 p=28216 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. 
-Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
-2023-02-24 13:01:33,484 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 13:01:33,487 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 13:01:33,489 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 13:01:33,757 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
-2023-02-24 13:01:33,759 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
-2023-02-24 13:01:33,763 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
-2023-02-24 13:03:31,734 p=28502 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+2023-05-11 15:29:18,395 p=74133 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 15:29:48,428 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:29:48,432 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | Traceback (most recent call last):
+2023-05-11 15:29:48,432 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:29:48,432 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:29:48,432 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:29:48,433 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:29:48,432 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:29:48,433 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |     buf += self._read_timeout(timeout)
+2023-05-11 15:29:48,433 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:29:48,433 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |     raise socket.timeout()
+2023-05-11 15:29:48,433 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | socket.timeout
+2023-05-11 15:29:48,434 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | 
+2023-05-11 15:29:48,434 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | During handling of the above exception, another exception occurred:
+2023-05-11 15:29:48,434 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | 
+2023-05-11 15:29:48,434 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | Traceback (most recent call last):
+2023-05-11 15:29:48,434 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:29:48,434 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |     self._check_banner()
+2023-05-11 15:29:48,435 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:29:48,435 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |     raise SSHException(
+2023-05-11 15:29:48,435 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:29:48,435 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | Traceback (most recent call last):
+2023-05-11 15:29:48,435 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | 
+2023-05-11 15:29:48,435 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:29:48,435 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | Traceback (most recent call last):
+2023-05-11 15:29:48,435 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:29:48,436 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:29:48,436 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:29:48,436 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:29:48,436 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |     buf += self._read_timeout(timeout)
+2023-05-11 15:29:48,436 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:29:48,436 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:29:48,436 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |     buf += self._read_timeout(timeout)
+2023-05-11 15:29:48,436 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |     raise socket.timeout()
+2023-05-11 15:29:48,436 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:29:48,436 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | socket.timeout
+2023-05-11 15:29:48,436 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |     raise socket.timeout()
+2023-05-11 15:29:48,436 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | 
+2023-05-11 15:29:48,437 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | socket.timeout
+2023-05-11 15:29:48,437 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | During handling of the above exception, another exception occurred:
+2023-05-11 15:29:48,437 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | 
+2023-05-11 15:29:48,437 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | 
+2023-05-11 15:29:48,437 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | During handling of the above exception, another exception occurred:
+2023-05-11 15:29:48,437 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | Traceback (most recent call last):
+2023-05-11 15:29:48,437 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | 
+2023-05-11 15:29:48,437 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:29:48,437 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | Traceback (most recent call last):
+2023-05-11 15:29:48,437 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |     self._check_banner()
+2023-05-11 15:29:48,437 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:29:48,438 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:29:48,438 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |     self._check_banner()
+2023-05-11 15:29:48,438 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |     raise SSHException(
+2023-05-11 15:29:48,438 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:29:48,438 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:29:48,438 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |     raise SSHException(
+2023-05-11 15:29:48,438 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | 
+2023-05-11 15:29:48,438 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:29:48,438 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | 
+2023-05-11 15:29:59,257 p=74270 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
 See the timeout setting options in the Network Debug and Troubleshooting Guide.
-2023-02-24 13:03:31,737 p=28504 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+2023-05-11 15:29:59,361 p=74270 u=rob n=ansible | shutdown complete
+2023-05-11 15:30:19,485 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:30:19,486 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | Traceback (most recent call last):
+2023-05-11 15:30:19,486 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:30:19,486 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:30:19,486 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:30:19,486 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |     buf += self._read_timeout(timeout)
+2023-05-11 15:30:19,487 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:30:19,487 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |     raise socket.timeout()
+2023-05-11 15:30:19,487 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | socket.timeout
+2023-05-11 15:30:19,487 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | 
+2023-05-11 15:30:19,487 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | During handling of the above exception, another exception occurred:
+2023-05-11 15:30:19,487 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | 
+2023-05-11 15:30:19,488 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | Traceback (most recent call last):
+2023-05-11 15:30:19,488 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:30:19,488 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |     self._check_banner()
+2023-05-11 15:30:19,488 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:30:19,488 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] |     raise SSHException(
+2023-05-11 15:30:19,488 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:30:19,489 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | 
+2023-05-11 15:30:19,488 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:30:19,488 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:30:19,489 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | Traceback (most recent call last):
+2023-05-11 15:30:19,489 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | Traceback (most recent call last):
+2023-05-11 15:30:19,489 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:30:19,489 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:30:19,489 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:30:19,490 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:30:19,490 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:30:19,490 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:30:19,490 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |     buf += self._read_timeout(timeout)
+2023-05-11 15:30:19,490 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |     buf += self._read_timeout(timeout)
+2023-05-11 15:30:19,490 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:30:19,490 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:30:19,490 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |     raise socket.timeout()
+2023-05-11 15:30:19,490 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |     raise socket.timeout()
+2023-05-11 15:30:19,490 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | socket.timeout
+2023-05-11 15:30:19,490 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | socket.timeout
+2023-05-11 15:30:19,491 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | 
+2023-05-11 15:30:19,491 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | 
+2023-05-11 15:30:19,491 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | During handling of the above exception, another exception occurred:
+2023-05-11 15:30:19,491 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | During handling of the above exception, another exception occurred:
+2023-05-11 15:30:19,491 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | 
+2023-05-11 15:30:19,491 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | 
+2023-05-11 15:30:19,491 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | Traceback (most recent call last):
+2023-05-11 15:30:19,491 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | Traceback (most recent call last):
+2023-05-11 15:30:19,491 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:30:19,491 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:30:19,491 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |     self._check_banner()
+2023-05-11 15:30:19,491 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |     self._check_banner()
+2023-05-11 15:30:19,492 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:30:19,492 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:30:19,492 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] |     raise SSHException(
+2023-05-11 15:30:19,492 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] |     raise SSHException(
+2023-05-11 15:30:19,492 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:30:19,492 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:30:19,492 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | 
+2023-05-11 15:30:19,492 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | 
+2023-05-11 15:30:21,422 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:30:21,435 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:30:21,452 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:30:21,683 p=74561 u=rob n=p=74561 u=rob | paramiko [PE3] | Authentication (publickey) successful!
+2023-05-11 15:30:21,683 p=74559 u=rob n=p=74559 u=rob | paramiko [PE1] | Authentication (publickey) successful!
+2023-05-11 15:30:21,684 p=74560 u=rob n=p=74560 u=rob | paramiko [PE2] | Authentication (publickey) successful!
+2023-05-11 15:30:22,776 p=74133 u=rob n=ansible | ok: [PE2]
+2023-05-11 15:30:22,776 p=74133 u=rob n=ansible | ok: [PE1]
+2023-05-11 15:30:22,776 p=74133 u=rob n=ansible | ok: [PE3]
+2023-05-11 15:30:22,778 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : setup vyos] *********************************************************************************************************************************************************************************************
+2023-05-11 15:30:22,794 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:30:22,799 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:30:23,879 p=74271 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+ansible.utils.display.Display.verbosity instead. This feature will be removed 
+in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 15:30:23,880 p=74274 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+ansible.utils.display.Display.verbosity instead. This feature will be removed 
+in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 15:30:23,880 p=74266 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+ansible.utils.display.Display.verbosity instead. This feature will be removed 
+in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 15:30:24,800 p=74271 u=rob n=p=74271 u=rob | paramiko [PE2] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:30:24,802 p=74266 u=rob n=p=74266 u=rob | paramiko [PE1] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:30:24,803 p=74274 u=rob n=p=74274 u=rob | paramiko [PE3] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:30:25,038 p=74266 u=rob n=p=74266 u=rob | paramiko [PE1] | Authentication (publickey) successful!
+2023-05-11 15:30:25,052 p=74271 u=rob n=p=74271 u=rob | paramiko [PE2] | Authentication (publickey) successful!
+2023-05-11 15:30:25,063 p=74274 u=rob n=p=74274 u=rob | paramiko [PE3] | Authentication (publickey) successful!
+2023-05-11 15:31:00,971 p=74133 u=rob n=ansible | [WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar to how they appear if present in the running configuration on device including the indentation
+
+2023-05-11 15:31:00,972 p=74133 u=rob n=ansible | changed: [PE2]
+2023-05-11 15:31:01,061 p=74133 u=rob n=ansible | changed: [PE3]
+2023-05-11 15:31:03,212 p=74133 u=rob n=ansible | changed: [PE1]
+2023-05-11 15:31:03,221 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *************************************************************************************************************************************************************
+2023-05-11 15:31:03,247 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:31:03,256 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:31:03,259 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:31:03,264 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:31:04,298 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:31:04,305 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: stop nodes id] ******************************************************************************************************************************************************************************
+2023-05-11 15:31:04,335 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:31:04,336 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:31:04,339 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:31:04,343 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:31:04,348 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:31:04,352 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after stop] ****************************************************************************************************************************************************************************
+2023-05-11 15:31:04,364 p=74133 u=rob n=ansible | Pausing for 5 seconds
+2023-05-11 15:31:04,364 p=74133 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 15:31:09,376 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:31:09,384 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: start nodes id] *****************************************************************************************************************************************************************************
+2023-05-11 15:31:09,419 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:31:09,422 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:31:09,424 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:31:09,429 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:31:09,436 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:31:09,440 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after start] ***************************************************************************************************************************************************************************
+2023-05-11 15:31:09,453 p=74133 u=rob n=ansible | Pausing for 5 seconds
+2023-05-11 15:31:09,453 p=74133 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 15:31:14,465 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:31:14,474 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait, b/c the ping often failed without a short break] **************************************************************************************************************************************
+2023-05-11 15:31:14,495 p=74133 u=rob n=ansible | Pausing for 30 seconds
+2023-05-11 15:31:14,496 p=74133 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 15:31:44,507 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:31:44,517 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: do ping test] *******************************************************************************************************************************************************************************
+2023-05-11 15:31:44,556 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:31:44,556 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:31:50,114 p=74133 u=rob n=ansible | ok: [PE1] => (item=172.29.255.2)
+2023-05-11 15:31:50,116 p=74133 u=rob n=ansible | ok: [PE2] => (item=172.29.255.1)
+2023-05-11 15:31:50,133 p=74133 u=rob n=ansible | ok: [PE3] => (item=172.29.255.2)
+2023-05-11 15:31:55,632 p=74133 u=rob n=ansible | ok: [PE3] => (item=172.29.255.1)
+2023-05-11 15:31:55,638 p=74133 u=rob n=ansible | ok: [PE1] => (item=172.29.255.3)
+2023-05-11 15:31:55,643 p=74133 u=rob n=ansible | ok: [PE2] => (item=172.29.255.3)
+2023-05-11 15:31:55,650 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: execute test commands] **********************************************************************************************************************************************************************
+2023-05-11 15:31:55,681 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:31:55,682 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:31:57,073 p=74133 u=rob n=ansible | ok: [PE2] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:31:57,087 p=74133 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:31:57,089 p=74133 u=rob n=ansible | ok: [PE3] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:31:58,383 p=74133 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING blue site 2', 'command': 'ping 10.1.2.10 vrf blue count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:31:59,683 p=74133 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING red site 2', 'command': 'ping 10.2.2.10 vrf red count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:32:00,993 p=74133 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING green site 3', 'command': 'ping 10.3.3.10 vrf green count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:32:01,003 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: register stdout commands] *******************************************************************************************************************************************************************
+2023-05-11 15:32:01,035 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:32:01,037 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:32:01,051 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:32:02,377 p=74133 u=rob n=ansible | ok: [PE2] => (item={'name': 'bgp_evpn_net', 'command': 'show bgp l2vpn evpn 10.3.1.10'})
+2023-05-11 15:32:02,383 p=74133 u=rob n=ansible | ok: [PE1] => (item={'name': 'vrf_all', 'command': 'show ip route vrf all'})
+2023-05-11 15:32:03,654 p=74133 u=rob n=ansible | ok: [PE1] => (item={'name': 'bgp_evpn', 'command': 'show bgp l2vpn evpn'})
+2023-05-11 15:32:03,667 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Set variables] ******************************************************************************************************************************************************************************
+2023-05-11 15:32:03,701 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:32:03,702 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:32:03,717 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:32:04,766 p=74133 u=rob n=ansible | ok: [PE2]
+2023-05-11 15:32:04,767 p=74133 u=rob n=ansible | ok: [PE1]
+2023-05-11 15:32:04,775 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Reboot vyos] ********************************************************************************************************************************************************************************
+2023-05-11 15:32:04,804 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:32:04,809 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:32:06,218 p=74133 u=rob n=ansible | ok: [PE1]
+2023-05-11 15:32:06,240 p=74133 u=rob n=ansible | ok: [PE3]
+2023-05-11 15:32:06,246 p=74133 u=rob n=ansible | ok: [PE2]
+2023-05-11 15:32:06,252 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait while shutdown] ************************************************************************************************************************************************************************
+2023-05-11 15:32:06,266 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:32:06,269 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Wait for vyos nodes] ************************************************************************************************************************************************************************
+2023-05-11 15:32:06,285 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:32:06,292 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:32:07,370 p=74133 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 15:32:07,373 p=74133 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 15:32:07,375 p=74133 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 15:32:08,222 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:32:08,223 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:32:08,229 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:32:08,459 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
+2023-05-11 15:32:08,468 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
+2023-05-11 15:32:08,480 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
+2023-05-11 15:34:06,738 p=74271 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
 See the timeout setting options in the Network Debug and Troubleshooting Guide.
-2023-02-24 13:03:31,743 p=28507 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+2023-05-11 15:34:06,738 p=74266 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
 See the timeout setting options in the Network Debug and Troubleshooting Guide.
-2023-02-24 13:03:31,838 p=28502 u=rob n=ansible | shutdown complete
-2023-02-24 13:03:31,840 p=28504 u=rob n=ansible | shutdown complete
-2023-02-24 13:03:31,846 p=28507 u=rob n=ansible | shutdown complete
-2023-02-24 13:04:04,793 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | Exception (client): Error reading SSH protocol banner
-2023-02-24 13:04:04,796 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | Traceback (most recent call last):
-2023-02-24 13:04:04,797 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2268, in _check_banner
-2023-02-24 13:04:04,797 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] |     buf = self.packetizer.readline(timeout)
-2023-02-24 13:04:04,797 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
-2023-02-24 13:04:04,797 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] |     buf += self._read_timeout(timeout)
-2023-02-24 13:04:04,797 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
-2023-02-24 13:04:04,798 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] |     raise socket.timeout()
-2023-02-24 13:04:04,798 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | socket.timeout
-2023-02-24 13:04:04,798 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | 
-2023-02-24 13:04:04,798 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | During handling of the above exception, another exception occurred:
-2023-02-24 13:04:04,799 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | 
-2023-02-24 13:04:04,799 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | Traceback (most recent call last):
-2023-02-24 13:04:04,799 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2091, in run
-2023-02-24 13:04:04,799 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] |     self._check_banner()
-2023-02-24 13:04:04,799 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2272, in _check_banner
-2023-02-24 13:04:04,799 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] |     raise SSHException(
-2023-02-24 13:04:04,800 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2023-02-24 13:04:04,800 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | 
-2023-02-24 13:04:04,810 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | Exception (client): Error reading SSH protocol banner
-2023-02-24 13:04:04,812 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | Exception (client): Error reading SSH protocol banner
-2023-02-24 13:04:04,813 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | Traceback (most recent call last):
-2023-02-24 13:04:04,813 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2268, in _check_banner
-2023-02-24 13:04:04,814 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] |     buf = self.packetizer.readline(timeout)
-2023-02-24 13:04:04,814 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
-2023-02-24 13:04:04,814 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] |     buf += self._read_timeout(timeout)
-2023-02-24 13:04:04,814 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
-2023-02-24 13:04:04,814 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] |     raise socket.timeout()
-2023-02-24 13:04:04,814 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | socket.timeout
-2023-02-24 13:04:04,815 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | 
-2023-02-24 13:04:04,815 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | During handling of the above exception, another exception occurred:
-2023-02-24 13:04:04,815 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | 
-2023-02-24 13:04:04,815 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | Traceback (most recent call last):
-2023-02-24 13:04:04,815 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | Traceback (most recent call last):
-2023-02-24 13:04:04,815 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2268, in _check_banner
-2023-02-24 13:04:04,815 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2091, in run
-2023-02-24 13:04:04,815 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] |     buf = self.packetizer.readline(timeout)
-2023-02-24 13:04:04,816 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] |     self._check_banner()
-2023-02-24 13:04:04,816 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
-2023-02-24 13:04:04,816 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2272, in _check_banner
-2023-02-24 13:04:04,816 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] |     buf += self._read_timeout(timeout)
-2023-02-24 13:04:04,816 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] |     raise SSHException(
-2023-02-24 13:04:04,816 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
-2023-02-24 13:04:04,816 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2023-02-24 13:04:04,816 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] |     raise socket.timeout()
-2023-02-24 13:04:04,816 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | socket.timeout
-2023-02-24 13:04:04,816 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | 
-2023-02-24 13:04:04,816 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | 
-2023-02-24 13:04:04,816 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | During handling of the above exception, another exception occurred:
-2023-02-24 13:04:04,817 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | 
-2023-02-24 13:04:04,817 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | Traceback (most recent call last):
-2023-02-24 13:04:04,817 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2091, in run
-2023-02-24 13:04:04,817 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] |     self._check_banner()
-2023-02-24 13:04:04,817 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2272, in _check_banner
-2023-02-24 13:04:04,818 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] |     raise SSHException(
-2023-02-24 13:04:04,818 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
-2023-02-24 13:04:04,818 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | 
-2023-02-24 13:04:06,602 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 13:04:06,717 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 13:04:06,727 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 13:04:06,860 p=29017 u=rob n=p=29017 u=rob | paramiko [PE1] | Authentication (publickey) successful!
-2023-02-24 13:04:06,946 p=29018 u=rob n=p=29018 u=rob | paramiko [PE2] | Authentication (publickey) successful!
-2023-02-24 13:04:06,958 p=29019 u=rob n=p=29019 u=rob | paramiko [PE3] | Authentication (publickey) successful!
-2023-02-24 13:04:08,174 p=28216 u=rob n=ansible | ok: [PE1]
-2023-02-24 13:04:08,213 p=28216 u=rob n=ansible | ok: [PE2]
-2023-02-24 13:04:08,323 p=28216 u=rob n=ansible | ok: [PE3]
-2023-02-24 13:04:08,326 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *********************************************************************************************
-2023-02-24 13:04:08,354 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:04:08,356 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:04:08,356 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:04:08,362 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:04:09,799 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 13:04:09,805 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: stop nodes id] **************************************************************************************************************
-2023-02-24 13:04:09,838 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:04:09,839 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:04:09,843 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:04:09,847 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:04:09,859 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:04:09,863 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after stop] ************************************************************************************************************
-2023-02-24 13:04:09,876 p=28216 u=rob n=ansible | Pausing for 5 seconds
-2023-02-24 13:04:09,876 p=28216 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2023-02-24 13:04:14,892 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 13:04:14,907 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: start nodes id] *************************************************************************************************************
-2023-02-24 13:04:14,946 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:04:14,949 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:04:14,949 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:04:14,954 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:04:14,965 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:04:14,969 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after start] ***********************************************************************************************************
-2023-02-24 13:04:14,982 p=28216 u=rob n=ansible | Pausing for 5 seconds
-2023-02-24 13:04:14,982 p=28216 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2023-02-24 13:04:19,991 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 13:04:20,002 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait, b/c the ping often failed without a short break] **********************************************************************
-2023-02-24 13:04:20,018 p=28216 u=rob n=ansible | Pausing for 30 seconds
-2023-02-24 13:04:20,019 p=28216 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2023-02-24 13:04:50,028 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 13:04:50,046 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: do ping test] ***************************************************************************************************************
-2023-02-24 13:04:50,073 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:04:50,082 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:04:51,088 p=28216 u=rob n=ansible | network_os is set to vyos
-2023-02-24 13:04:51,089 p=28216 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+2023-05-11 15:34:06,740 p=74274 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+See the timeout setting options in the Network Debug and Troubleshooting Guide.
+2023-05-11 15:34:06,842 p=74271 u=rob n=ansible | shutdown complete
+2023-05-11 15:34:06,842 p=74266 u=rob n=ansible | shutdown complete
+2023-05-11 15:34:06,843 p=74274 u=rob n=ansible | shutdown complete
+2023-05-11 15:34:39,518 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:34:39,522 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | Traceback (most recent call last):
+2023-05-11 15:34:39,522 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:34:39,522 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:34:39,523 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:34:39,523 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] |     buf += self._read_timeout(timeout)
+2023-05-11 15:34:39,523 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:34:39,523 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] |     raise socket.timeout()
+2023-05-11 15:34:39,523 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | socket.timeout
+2023-05-11 15:34:39,524 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | 
+2023-05-11 15:34:39,524 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | During handling of the above exception, another exception occurred:
+2023-05-11 15:34:39,524 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | 
+2023-05-11 15:34:39,524 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | Traceback (most recent call last):
+2023-05-11 15:34:39,524 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:34:39,525 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] |     self._check_banner()
+2023-05-11 15:34:39,525 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:34:39,525 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] |     raise SSHException(
+2023-05-11 15:34:39,525 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:34:39,526 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | 
+2023-05-11 15:34:39,529 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:34:39,532 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | Traceback (most recent call last):
+2023-05-11 15:34:39,532 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:34:39,533 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:34:39,533 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:34:39,533 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] |     buf += self._read_timeout(timeout)
+2023-05-11 15:34:39,533 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:34:39,533 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] |     raise socket.timeout()
+2023-05-11 15:34:39,534 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | socket.timeout
+2023-05-11 15:34:39,534 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | 
+2023-05-11 15:34:39,534 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | During handling of the above exception, another exception occurred:
+2023-05-11 15:34:39,534 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | 
+2023-05-11 15:34:39,534 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | Traceback (most recent call last):
+2023-05-11 15:34:39,535 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:34:39,535 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] |     self._check_banner()
+2023-05-11 15:34:39,535 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:34:39,535 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | Exception (client): Error reading SSH protocol banner
+2023-05-11 15:34:39,535 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] |     raise SSHException(
+2023-05-11 15:34:39,535 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:34:39,536 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | 
+2023-05-11 15:34:39,538 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | Traceback (most recent call last):
+2023-05-11 15:34:39,538 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 15:34:39,539 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] |     buf = self.packetizer.readline(timeout)
+2023-05-11 15:34:39,539 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 15:34:39,539 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] |     buf += self._read_timeout(timeout)
+2023-05-11 15:34:39,539 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 15:34:39,539 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] |     raise socket.timeout()
+2023-05-11 15:34:39,539 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | socket.timeout
+2023-05-11 15:34:39,540 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | 
+2023-05-11 15:34:39,540 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | During handling of the above exception, another exception occurred:
+2023-05-11 15:34:39,540 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | 
+2023-05-11 15:34:39,540 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | Traceback (most recent call last):
+2023-05-11 15:34:39,540 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 15:34:39,540 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] |     self._check_banner()
+2023-05-11 15:34:39,541 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 15:34:39,541 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] |     raise SSHException(
+2023-05-11 15:34:39,541 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 15:34:39,541 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | 
+2023-05-11 15:34:41,461 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:34:41,466 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:34:41,468 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:34:41,703 p=74756 u=rob n=p=74756 u=rob | paramiko [PE1] | Authentication (publickey) successful!
+2023-05-11 15:34:41,736 p=74758 u=rob n=p=74758 u=rob | paramiko [PE3] | Authentication (publickey) successful!
+2023-05-11 15:34:41,737 p=74757 u=rob n=p=74757 u=rob | paramiko [PE2] | Authentication (publickey) successful!
+2023-05-11 15:34:43,236 p=74133 u=rob n=ansible | ok: [PE3]
+2023-05-11 15:34:43,280 p=74133 u=rob n=ansible | ok: [PE2]
+2023-05-11 15:34:43,302 p=74133 u=rob n=ansible | ok: [PE1]
+2023-05-11 15:34:43,304 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *************************************************************************************************************************************************************
+2023-05-11 15:34:43,324 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:34:43,331 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:34:43,333 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:34:43,339 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:34:44,523 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:34:44,533 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: stop nodes id] ******************************************************************************************************************************************************************************
+2023-05-11 15:34:44,567 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:34:44,570 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:34:44,573 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:34:44,578 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:34:44,585 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:34:44,588 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after stop] ****************************************************************************************************************************************************************************
+2023-05-11 15:34:44,601 p=74133 u=rob n=ansible | Pausing for 5 seconds
+2023-05-11 15:34:44,601 p=74133 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 15:34:49,622 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:34:49,633 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: start nodes id] *****************************************************************************************************************************************************************************
+2023-05-11 15:34:49,677 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:34:49,680 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:34:49,680 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:34:49,683 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:34:49,694 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:34:49,698 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after start] ***************************************************************************************************************************************************************************
+2023-05-11 15:34:49,710 p=74133 u=rob n=ansible | Pausing for 5 seconds
+2023-05-11 15:34:49,710 p=74133 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 15:34:54,733 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:34:54,747 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait, b/c the ping often failed without a short break] **************************************************************************************************************************************
+2023-05-11 15:34:54,770 p=74133 u=rob n=ansible | Pausing for 30 seconds
+2023-05-11 15:34:54,771 p=74133 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 15:35:24,792 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:35:24,805 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: do ping test] *******************************************************************************************************************************************************************************
+2023-05-11 15:35:24,847 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:24,848 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:25,961 p=74133 u=rob n=ansible | network_os is set to vyos
+2023-05-11 15:35:25,970 p=74133 u=rob n=ansible | network_os is set to vyos
+2023-05-11 15:35:25,970 p=74133 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-02-24 13:04:51,089 p=28216 u=rob n=ansible | network_os is set to vyos
-2023-02-24 13:04:51,089 p=28216 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+2023-05-11 15:35:25,970 p=74133 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-02-24 13:04:51,089 p=28216 u=rob n=ansible | network_os is set to vyos
-2023-02-24 13:04:51,089 p=28216 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+2023-05-11 15:35:25,970 p=74133 u=rob n=ansible | network_os is set to vyos
+2023-05-11 15:35:25,971 p=74133 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-02-24 13:04:51,095 p=29171 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+2023-05-11 15:35:25,979 p=74953 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
 ansible.utils.display.Display.verbosity instead. This feature will be removed 
 in version 2.18. Deprecation warnings can be disabled by setting 
 deprecation_warnings=False in ansible.cfg.
-2023-02-24 13:04:51,095 p=29177 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+2023-05-11 15:35:25,983 p=74955 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
 ansible.utils.display.Display.verbosity instead. This feature will be removed 
 in version 2.18. Deprecation warnings can be disabled by setting 
 deprecation_warnings=False in ansible.cfg.
-2023-02-24 13:04:51,097 p=29175 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+2023-05-11 15:35:25,982 p=74957 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
 ansible.utils.display.Display.verbosity instead. This feature will be removed 
 in version 2.18. Deprecation warnings can be disabled by setting 
 deprecation_warnings=False in ansible.cfg.
-2023-02-24 13:04:52,032 p=29175 u=rob n=p=29175 u=rob | paramiko [PE3] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 13:04:52,055 p=29177 u=rob n=p=29177 u=rob | paramiko [PE2] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 13:04:52,055 p=29171 u=rob n=p=29171 u=rob | paramiko [PE1] | Connected (version 2.0, client OpenSSH_8.4p1)
-2023-02-24 13:04:52,280 p=29175 u=rob n=p=29175 u=rob | paramiko [PE3] | Authentication (publickey) successful!
-2023-02-24 13:04:52,288 p=29171 u=rob n=p=29171 u=rob | paramiko [PE1] | Authentication (publickey) successful!
-2023-02-24 13:04:52,288 p=29177 u=rob n=p=29177 u=rob | paramiko [PE2] | Authentication (publickey) successful!
-2023-02-24 13:04:58,378 p=28216 u=rob n=ansible | ok: [PE2] => (item=172.29.255.1)
-2023-02-24 13:04:58,422 p=28216 u=rob n=ansible | ok: [PE3] => (item=172.29.255.2)
-2023-02-24 13:04:58,465 p=28216 u=rob n=ansible | ok: [PE1] => (item=172.29.255.2)
-2023-02-24 13:05:03,688 p=28216 u=rob n=ansible | ok: [PE2] => (item=172.29.255.3)
-2023-02-24 13:05:03,691 p=28216 u=rob n=ansible | ok: [PE3] => (item=172.29.255.1)
-2023-02-24 13:05:03,793 p=28216 u=rob n=ansible | ok: [PE1] => (item=172.29.255.3)
-2023-02-24 13:05:03,808 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: execute test commands] ******************************************************************************************************
-2023-02-24 13:05:03,834 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:03,843 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:05,122 p=28216 u=rob n=ansible | ok: [PE2] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:05:05,134 p=28216 u=rob n=ansible | ok: [PE3] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:05:05,140 p=28216 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:05:06,330 p=28216 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING blue site 2', 'command': 'ping 10.1.2.10 vrf blue count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:05:07,510 p=28216 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING red site 2', 'command': 'ping 10.2.2.10 vrf red count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:05:08,696 p=28216 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING green site 3', 'command': 'ping 10.3.3.10 vrf green count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
-2023-02-24 13:05:08,703 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: register stdout commands] ***************************************************************************************************
-2023-02-24 13:05:08,747 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:08,748 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:08,754 p=28216 u=rob n=ansible | skipping: [PE1] => (item={'name': 'vrf_all', 'command': 'show ip route vrf all'}) 
-2023-02-24 13:05:08,757 p=28216 u=rob n=ansible | skipping: [PE2] => (item={'name': 'bgp_evpn_net', 'command': 'show bgp l2vpn evpn 10.3.1.10'}) 
-2023-02-24 13:05:08,760 p=28216 u=rob n=ansible | skipping: [PE1] => (item={'name': 'bgp_evpn', 'command': 'show bgp l2vpn evpn'}) 
-2023-02-24 13:05:08,762 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:08,762 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:08,768 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:08,772 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Set variables] **************************************************************************************************************
-2023-02-24 13:05:08,801 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:08,802 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:08,803 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:08,806 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:08,816 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:08,820 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: ake sure tmp dir exist] *****************************************************************************************************
-2023-02-24 13:05:08,839 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:08,847 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:08,857 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:08,858 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:08,865 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:08,868 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: register status of tmp/] ****************************************************************************************************
-2023-02-24 13:05:08,884 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:08,892 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:08,900 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:08,902 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:08,907 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:08,912 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: ownload upgrade_iso] ********************************************************************************************************
-2023-02-24 13:05:08,930 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:08,939 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:08,948 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:08,950 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:08,955 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:08,960 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Copy iso to host] ***********************************************************************************************************
-2023-02-24 13:05:08,976 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:08,984 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:08,993 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:08,995 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,000 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,004 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: upgrade vyos] ***************************************************************************************************************
-2023-02-24 13:05:09,019 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,027 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,035 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,037 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,041 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,045 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Reboot vyos] ****************************************************************************************************************
-2023-02-24 13:05:09,061 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,068 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,077 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,079 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,084 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,088 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait while shutdown] ********************************************************************************************************
-2023-02-24 13:05:09,099 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,102 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Wait for vyos nodes] ********************************************************************************************************
-2023-02-24 13:05:09,117 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,126 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,134 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,136 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,142 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,146 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: clear tmp dir] **************************************************************************************************************
-2023-02-24 13:05:09,158 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,161 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *********************************************************************************************
-2023-02-24 13:05:09,176 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,184 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,192 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,195 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,200 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,204 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: stop nodes id] **************************************************************************************************************
-2023-02-24 13:05:09,232 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,234 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,234 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,238 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,247 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,251 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after stop] ************************************************************************************************************
-2023-02-24 13:05:09,261 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,264 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: start nodes id] *************************************************************************************************************
-2023-02-24 13:05:09,293 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,293 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,295 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,300 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,308 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,312 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after start] ***********************************************************************************************************
-2023-02-24 13:05:09,322 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,325 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait, b/c the ping often failed without a short break] **********************************************************************
-2023-02-24 13:05:09,336 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,340 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: do ping test] ***************************************************************************************************************
-2023-02-24 13:05:09,356 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,364 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,373 p=28216 u=rob n=ansible | skipping: [PE1] => (item=172.29.255.2) 
-2023-02-24 13:05:09,375 p=28216 u=rob n=ansible | skipping: [PE1] => (item=172.29.255.3) 
-2023-02-24 13:05:09,377 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,379 p=28216 u=rob n=ansible | skipping: [PE2] => (item=172.29.255.1) 
-2023-02-24 13:05:09,381 p=28216 u=rob n=ansible | skipping: [PE2] => (item=172.29.255.3) 
-2023-02-24 13:05:09,382 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,385 p=28216 u=rob n=ansible | skipping: [PE3] => (item=172.29.255.2) 
-2023-02-24 13:05:09,386 p=28216 u=rob n=ansible | skipping: [PE3] => (item=172.29.255.1) 
-2023-02-24 13:05:09,387 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,391 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: execute test commands] ******************************************************************************************************
-2023-02-24 13:05:09,413 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,418 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,421 p=28216 u=rob n=ansible | skipping: [PE1] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
-2023-02-24 13:05:09,423 p=28216 u=rob n=ansible | skipping: [PE1] => (item={'desc': 'PING blue site 2', 'command': 'ping 10.1.2.10 vrf blue count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
-2023-02-24 13:05:09,424 p=28216 u=rob n=ansible | skipping: [PE2] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
-2023-02-24 13:05:09,426 p=28216 u=rob n=ansible | skipping: [PE1] => (item={'desc': 'PING red site 2', 'command': 'ping 10.2.2.10 vrf red count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
-2023-02-24 13:05:09,428 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,428 p=28216 u=rob n=ansible | skipping: [PE1] => (item={'desc': 'PING green site 3', 'command': 'ping 10.3.3.10 vrf green count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
-2023-02-24 13:05:09,431 p=28216 u=rob n=ansible | skipping: [PE3] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
-2023-02-24 13:05:09,432 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,432 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,436 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: register stdout commands] ***************************************************************************************************
-2023-02-24 13:05:09,451 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,458 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,467 p=28216 u=rob n=ansible | skipping: [PE1] => (item={'name': 'vrf_all', 'command': 'show ip route vrf all'}) 
-2023-02-24 13:05:09,468 p=28216 u=rob n=ansible | skipping: [PE1] => (item={'name': 'bgp_evpn', 'command': 'show bgp l2vpn evpn'}) 
-2023-02-24 13:05:09,471 p=28216 u=rob n=ansible | skipping: [PE2] => (item={'name': 'bgp_evpn_net', 'command': 'show bgp l2vpn evpn 10.3.1.10'}) 
-2023-02-24 13:05:09,474 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,474 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,474 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,478 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Set variables] **************************************************************************************************************
-2023-02-24 13:05:09,493 p=28216 u=rob n=ansible | skipping: [eveng]
-2023-02-24 13:05:09,500 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,507 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,510 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,515 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,520 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: make sure output dir exist] *************************************************************************************************
-2023-02-24 13:05:09,545 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,554 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,556 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,562 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,682 p=28216 u=rob n=ansible | ok: [eveng -> localhost]
-2023-02-24 13:05:09,687 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: make sure output include dir exist] *****************************************************************************************
-2023-02-24 13:05:09,712 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,721 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,724 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,729 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:09,843 p=28216 u=rob n=ansible | ok: [eveng -> localhost]
-2023-02-24 13:05:09,847 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Get timestamp from the system] **********************************************************************************************
-2023-02-24 13:05:09,869 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:09,876 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:09,879 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:09,884 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:10,471 p=28216 u=rob n=ansible | changed: [eveng]
-2023-02-24 13:05:10,482 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Set variables] **************************************************************************************************************
-2023-02-24 13:05:10,512 p=28216 u=rob n=ansible | ok: [eveng]
-2023-02-24 13:05:10,521 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:10,524 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:10,524 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:10,531 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:10,536 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: generate lab rst file] ******************************************************************************************************
-2023-02-24 13:05:10,565 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:10,572 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:10,574 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:10,579 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:10,833 p=28216 u=rob n=ansible | changed: [eveng -> localhost]
-2023-02-24 13:05:10,838 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: find all *.conf files in Lab] ***********************************************************************************************
-2023-02-24 13:05:10,864 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:10,873 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:10,876 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:10,882 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:11,061 p=28216 u=rob n=ansible | ok: [eveng -> localhost]
-2023-02-24 13:05:11,068 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: copy all *.conf files] ******************************************************************************************************
-2023-02-24 13:05:11,096 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:11,108 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:11,108 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:11,117 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:11,353 p=28216 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/L3VPN_EVPN/PE2.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 3858, 'inode': 2787112, 'dev': 16777233, 'nlink': 1, 'atime': 1676578675.4606283, 'mtime': 1676578673.5838096, 'ctime': 1676578673.5838096, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2023-02-24 13:05:11,614 p=28216 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/L3VPN_EVPN/PE3.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 3864, 'inode': 2787113, 'dev': 16777233, 'nlink': 1, 'atime': 1676578675.4640238, 'mtime': 1676578673.5840552, 'ctime': 1676578673.5840552, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2023-02-24 13:05:11,864 p=28216 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/L3VPN_EVPN/PE1.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 4174, 'inode': 2787111, 'dev': 16777233, 'nlink': 1, 'atime': 1676578675.4893017, 'mtime': 1676578673.5835464, 'ctime': 1676578673.5835464, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2023-02-24 13:05:11,871 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: find all *.png files in Lab] ************************************************************************************************
-2023-02-24 13:05:11,896 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:11,905 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:11,907 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:11,913 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:12,024 p=28216 u=rob n=ansible | ok: [eveng -> localhost]
-2023-02-24 13:05:12,030 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: copy all *.png files] *******************************************************************************************************
-2023-02-24 13:05:12,059 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:12,068 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:12,068 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:12,077 p=28216 u=rob n=ansible | skipping: [PE3]
-2023-02-24 13:05:12,305 p=28216 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/L3VPN_EVPN/topology.png', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 102832, 'inode': 2787116, 'dev': 16777233, 'nlink': 1, 'atime': 1677151276.1839752, 'mtime': 1676578673.585322, 'ctime': 1676578673.585322, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2023-02-24 13:05:12,311 p=28216 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: copy ansible log files] *****************************************************************************************************
-2023-02-24 13:05:12,337 p=28216 u=rob n=ansible | skipping: [vyos-oobm]
-2023-02-24 13:05:12,347 p=28216 u=rob n=ansible | skipping: [PE1]
-2023-02-24 13:05:12,348 p=28216 u=rob n=ansible | skipping: [PE2]
-2023-02-24 13:05:12,356 p=28216 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:26,914 p=74957 u=rob n=p=74957 u=rob | paramiko [PE3] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:35:26,907 p=74953 u=rob n=p=74953 u=rob | paramiko [PE2] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:35:26,916 p=74955 u=rob n=p=74955 u=rob | paramiko [PE1] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 15:35:27,169 p=74955 u=rob n=p=74955 u=rob | paramiko [PE1] | Authentication (publickey) successful!
+2023-05-11 15:35:27,170 p=74953 u=rob n=p=74953 u=rob | paramiko [PE2] | Authentication (publickey) successful!
+2023-05-11 15:35:27,171 p=74957 u=rob n=p=74957 u=rob | paramiko [PE3] | Authentication (publickey) successful!
+2023-05-11 15:35:34,193 p=74133 u=rob n=ansible | ok: [PE1] => (item=172.29.255.2)
+2023-05-11 15:35:34,196 p=74133 u=rob n=ansible | ok: [PE3] => (item=172.29.255.2)
+2023-05-11 15:35:34,200 p=74133 u=rob n=ansible | ok: [PE2] => (item=172.29.255.1)
+2023-05-11 15:35:39,638 p=74133 u=rob n=ansible | ok: [PE2] => (item=172.29.255.3)
+2023-05-11 15:35:39,643 p=74133 u=rob n=ansible | ok: [PE1] => (item=172.29.255.3)
+2023-05-11 15:35:39,667 p=74133 u=rob n=ansible | ok: [PE3] => (item=172.29.255.1)
+2023-05-11 15:35:39,677 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: execute test commands] **********************************************************************************************************************************************************************
+2023-05-11 15:35:39,713 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:39,713 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:41,204 p=74133 u=rob n=ansible | ok: [PE3] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:35:41,207 p=74133 u=rob n=ansible | ok: [PE2] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:35:41,211 p=74133 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:35:42,546 p=74133 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING blue site 2', 'command': 'ping 10.1.2.10 vrf blue count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:35:43,887 p=74133 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING red site 2', 'command': 'ping 10.2.2.10 vrf red count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:35:45,245 p=74133 u=rob n=ansible | ok: [PE1] => (item={'desc': 'PING green site 3', 'command': 'ping 10.3.3.10 vrf green count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]})
+2023-05-11 15:35:45,265 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: register stdout commands] *******************************************************************************************************************************************************************
+2023-05-11 15:35:45,303 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,307 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,313 p=74133 u=rob n=ansible | skipping: [PE1] => (item={'name': 'vrf_all', 'command': 'show ip route vrf all'}) 
+2023-05-11 15:35:45,315 p=74133 u=rob n=ansible | skipping: [PE2] => (item={'name': 'bgp_evpn_net', 'command': 'show bgp l2vpn evpn 10.3.1.10'}) 
+2023-05-11 15:35:45,317 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,319 p=74133 u=rob n=ansible | skipping: [PE1] => (item={'name': 'bgp_evpn', 'command': 'show bgp l2vpn evpn'}) 
+2023-05-11 15:35:45,320 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,323 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,326 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Set variables] ******************************************************************************************************************************************************************************
+2023-05-11 15:35:45,351 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,354 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,354 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,358 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,364 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,368 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: ake sure tmp dir exist] *********************************************************************************************************************************************************************
+2023-05-11 15:35:45,385 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,393 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,401 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,403 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,408 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,411 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: register status of tmp/] ********************************************************************************************************************************************************************
+2023-05-11 15:35:45,427 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,433 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,440 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,442 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,447 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,451 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: ownload upgrade_iso] ************************************************************************************************************************************************************************
+2023-05-11 15:35:45,468 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,478 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,485 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,487 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,491 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,496 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Copy iso to host] ***************************************************************************************************************************************************************************
+2023-05-11 15:35:45,510 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,518 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,525 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,528 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,533 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,537 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: upgrade vyos] *******************************************************************************************************************************************************************************
+2023-05-11 15:35:45,551 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,558 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,565 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,568 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,573 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,576 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Reboot vyos] ********************************************************************************************************************************************************************************
+2023-05-11 15:35:45,590 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,597 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,603 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,606 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,611 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,615 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait while shutdown] ************************************************************************************************************************************************************************
+2023-05-11 15:35:45,625 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,628 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Wait for vyos nodes] ************************************************************************************************************************************************************************
+2023-05-11 15:35:45,649 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,656 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,656 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,658 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,662 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,666 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: clear tmp dir] ******************************************************************************************************************************************************************************
+2023-05-11 15:35:45,677 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,680 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Login to EVE-NG and get Cookie] *************************************************************************************************************************************************************
+2023-05-11 15:35:45,694 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,701 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,708 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,711 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,716 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,719 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: stop nodes id] ******************************************************************************************************************************************************************************
+2023-05-11 15:35:45,744 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,746 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,747 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,752 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,759 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,762 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after stop] ****************************************************************************************************************************************************************************
+2023-05-11 15:35:45,773 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,775 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: start nodes id] *****************************************************************************************************************************************************************************
+2023-05-11 15:35:45,801 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,801 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,804 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,809 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,816 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,820 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait after start] ***************************************************************************************************************************************************************************
+2023-05-11 15:35:45,830 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,833 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: wait, b/c the ping often failed without a short break] **************************************************************************************************************************************
+2023-05-11 15:35:45,844 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,847 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: do ping test] *******************************************************************************************************************************************************************************
+2023-05-11 15:35:45,862 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,869 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,876 p=74133 u=rob n=ansible | skipping: [PE1] => (item=172.29.255.2) 
+2023-05-11 15:35:45,878 p=74133 u=rob n=ansible | skipping: [PE1] => (item=172.29.255.3) 
+2023-05-11 15:35:45,879 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,882 p=74133 u=rob n=ansible | skipping: [PE2] => (item=172.29.255.1) 
+2023-05-11 15:35:45,883 p=74133 u=rob n=ansible | skipping: [PE2] => (item=172.29.255.3) 
+2023-05-11 15:35:45,884 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,888 p=74133 u=rob n=ansible | skipping: [PE3] => (item=172.29.255.2) 
+2023-05-11 15:35:45,889 p=74133 u=rob n=ansible | skipping: [PE3] => (item=172.29.255.1) 
+2023-05-11 15:35:45,890 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,894 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: execute test commands] **********************************************************************************************************************************************************************
+2023-05-11 15:35:45,907 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,914 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,922 p=74133 u=rob n=ansible | skipping: [PE1] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
+2023-05-11 15:35:45,924 p=74133 u=rob n=ansible | skipping: [PE1] => (item={'desc': 'PING blue site 2', 'command': 'ping 10.1.2.10 vrf blue count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
+2023-05-11 15:35:45,925 p=74133 u=rob n=ansible | skipping: [PE2] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
+2023-05-11 15:35:45,928 p=74133 u=rob n=ansible | skipping: [PE1] => (item={'desc': 'PING red site 2', 'command': 'ping 10.2.2.10 vrf red count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
+2023-05-11 15:35:45,929 p=74133 u=rob n=ansible | skipping: [PE1] => (item={'desc': 'PING green site 3', 'command': 'ping 10.3.3.10 vrf green count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
+2023-05-11 15:35:45,931 p=74133 u=rob n=ansible | skipping: [PE3] => (item={'desc': 'PING vyos-oobm with VRF', 'command': 'ping 10.100.0.1 vrf mgmt count 1', 'wait_for': ["result[0] contains '1 packets transmitted, 1 received'"]}) 
+2023-05-11 15:35:45,933 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,933 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,933 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,936 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: register stdout commands] *******************************************************************************************************************************************************************
+2023-05-11 15:35:45,950 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,958 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:45,966 p=74133 u=rob n=ansible | skipping: [PE1] => (item={'name': 'vrf_all', 'command': 'show ip route vrf all'}) 
+2023-05-11 15:35:45,968 p=74133 u=rob n=ansible | skipping: [PE1] => (item={'name': 'bgp_evpn', 'command': 'show bgp l2vpn evpn'}) 
+2023-05-11 15:35:45,970 p=74133 u=rob n=ansible | skipping: [PE2] => (item={'name': 'bgp_evpn_net', 'command': 'show bgp l2vpn evpn 10.3.1.10'}) 
+2023-05-11 15:35:45,972 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:45,973 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:45,973 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:45,976 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Set variables] ******************************************************************************************************************************************************************************
+2023-05-11 15:35:45,990 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:45,997 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:46,005 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:46,008 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:46,013 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:46,018 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: make sure output dir exist] *****************************************************************************************************************************************************************
+2023-05-11 15:35:46,040 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:46,049 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:46,051 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:46,057 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:46,245 p=74133 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 15:35:46,250 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: make sure output include dir exist] *********************************************************************************************************************************************************
+2023-05-11 15:35:46,272 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:46,281 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:46,283 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:46,289 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:46,480 p=74133 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 15:35:46,484 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Get timestamp from the system] **************************************************************************************************************************************************************
+2023-05-11 15:35:46,503 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:46,511 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:46,513 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:46,519 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:47,034 p=74133 u=rob n=ansible | changed: [eveng]
+2023-05-11 15:35:47,044 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: Set variables] ******************************************************************************************************************************************************************************
+2023-05-11 15:35:47,078 p=74133 u=rob n=ansible | ok: [eveng]
+2023-05-11 15:35:47,087 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:47,090 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:47,090 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:47,097 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:47,102 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: generate lab rst file] **********************************************************************************************************************************************************************
+2023-05-11 15:35:47,126 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:47,134 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:47,136 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:47,143 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:47,535 p=74133 u=rob n=ansible | changed: [eveng -> localhost]
+2023-05-11 15:35:47,539 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: find all *.conf files in Lab] ***************************************************************************************************************************************************************
+2023-05-11 15:35:47,565 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:47,571 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:47,573 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:47,579 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:47,833 p=74133 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 15:35:47,840 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: copy all *.conf files] **********************************************************************************************************************************************************************
+2023-05-11 15:35:47,864 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:47,874 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:47,875 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:47,883 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:48,273 p=74133 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/L3VPN_EVPN/PE2.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 3858, 'inode': 7231424, 'dev': 16777229, 'nlink': 1, 'atime': 1682417234.8335862, 'mtime': 1682417232.750722, 'ctime': 1682417232.750722, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-05-11 15:35:48,669 p=74133 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/L3VPN_EVPN/PE3.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 3864, 'inode': 7231425, 'dev': 16777229, 'nlink': 1, 'atime': 1682417234.9271204, 'mtime': 1682417232.751023, 'ctime': 1682417232.751023, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-05-11 15:35:49,062 p=74133 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/L3VPN_EVPN/PE1.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 4174, 'inode': 7231423, 'dev': 16777229, 'nlink': 1, 'atime': 1682417234.852599, 'mtime': 1682417232.7503831, 'ctime': 1682417232.7503831, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-05-11 15:35:49,068 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: find all *.config files in Lab] *************************************************************************************************************************************************************
+2023-05-11 15:35:49,090 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:49,098 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:49,101 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:49,106 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:49,291 p=74133 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 15:35:49,295 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: copy all *.config files] ********************************************************************************************************************************************************************
+2023-05-11 15:35:49,312 p=74133 u=rob n=ansible | skipping: [eveng]
+2023-05-11 15:35:49,321 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:49,331 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:49,332 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:49,340 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:49,344 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: find all *.png files in Lab] ****************************************************************************************************************************************************************
+2023-05-11 15:35:49,368 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:49,376 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:49,379 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:49,384 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:49,572 p=74133 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 15:35:49,577 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: copy all *.png files] ***********************************************************************************************************************************************************************
+2023-05-11 15:35:49,623 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:49,630 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:49,633 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:49,639 p=74133 u=rob n=ansible | skipping: [PE3]
+2023-05-11 15:35:50,009 p=74133 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/L3VPN_EVPN/topology.png', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 102832, 'inode': 7231428, 'dev': 16777229, 'nlink': 1, 'atime': 1683727201.4369452, 'mtime': 1682417232.7522333, 'ctime': 1682417232.7522333, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-05-11 15:35:50,014 p=74133 u=rob n=ansible | TASK [eve-ng-lab-test : L3VPN_EVPN: copy ansible log files] *********************************************************************************************************************************************************************
+2023-05-11 15:35:50,036 p=74133 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 15:35:50,044 p=74133 u=rob n=ansible | skipping: [PE1]
+2023-05-11 15:35:50,047 p=74133 u=rob n=ansible | skipping: [PE2]
+2023-05-11 15:35:50,053 p=74133 u=rob n=ansible | skipping: [PE3]
