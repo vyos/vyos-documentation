@@ -1,293 +1,818 @@
-2023-05-10 15:49:03,125 p=46395 u=rob n=ansible | PLAY [Automatic VyOS Lab test] ****************************************************************************************************************************************************************************************************
-2023-05-10 15:49:03,156 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : Get env file content] *************************************************************************************************************************************************************************************
-2023-05-10 15:49:03,473 p=46395 u=rob n=ansible | ok: [eveng -> localhost]
-2023-05-10 15:49:03,473 p=46395 u=rob n=ansible | ok: [ldap-server -> localhost]
-2023-05-10 15:49:03,473 p=46395 u=rob n=ansible | ok: [ovpn-server -> localhost]
-2023-05-10 15:49:03,474 p=46395 u=rob n=ansible | ok: [vyos-oobm -> localhost]
-2023-05-10 15:49:03,474 p=46395 u=rob n=ansible | ok: [client -> localhost]
-2023-05-10 15:49:03,477 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Load facts] ****************************************************************************************************************************************************************************
-2023-05-10 15:49:03,501 p=46395 u=rob n=ansible | ok: [eveng]
-2023-05-10 15:49:03,516 p=46395 u=rob n=ansible | ok: [ldap-server]
-2023-05-10 15:49:04,604 p=46395 u=rob n=ansible | network_os is set to vyos
-2023-05-10 15:49:04,606 p=46395 u=rob n=ansible | network_os is set to vyos
-2023-05-10 15:49:04,607 p=46395 u=rob n=ansible | network_os is set to vyos
-2023-05-10 15:49:04,607 p=46395 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+2023-05-11 14:34:54,520 p=69617 u=rob n=ansible | PLAY [Automatic VyOS Lab test] **************************************************************************************************************************************************************************************************
+2023-05-11 14:34:54,567 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : Get env file content] ***********************************************************************************************************************************************************************************
+2023-05-11 14:34:54,882 p=69617 u=rob n=ansible | ok: [ldap-server -> localhost]
+2023-05-11 14:34:54,882 p=69617 u=rob n=ansible | ok: [vyos-oobm -> localhost]
+2023-05-11 14:34:54,882 p=69617 u=rob n=ansible | ok: [ovpn-server -> localhost]
+2023-05-11 14:34:54,882 p=69617 u=rob n=ansible | ok: [client -> localhost]
+2023-05-11 14:34:54,882 p=69617 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 14:34:54,885 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Load facts] **************************************************************************************************************************************************************************
+2023-05-11 14:34:54,908 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:34:54,923 p=69617 u=rob n=ansible | ok: [ldap-server]
+2023-05-11 14:34:56,019 p=69617 u=rob n=ansible | network_os is set to vyos
+2023-05-11 14:34:56,021 p=69617 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-05-10 15:49:04,608 p=46395 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+2023-05-11 14:34:56,021 p=69617 u=rob n=ansible | network_os is set to vyos
+2023-05-11 14:34:56,025 p=69617 u=rob n=ansible | network_os is set to vyos
+2023-05-11 14:34:56,025 p=69617 u=rob n=ansible | ok: [vyos-oobm]
+2023-05-11 14:34:56,026 p=69617 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-05-10 15:49:04,608 p=46395 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+2023-05-11 14:34:56,028 p=69617 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-05-10 15:49:04,616 p=46395 u=rob n=ansible | ok: [client]
-2023-05-10 15:49:04,617 p=46395 u=rob n=ansible | ok: [ovpn-server]
-2023-05-10 15:49:04,617 p=46395 u=rob n=ansible | ok: [vyos-oobm]
-2023-05-10 15:49:04,622 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: fail if node_template_version is empty] ************************************************************************************************************************************************
-2023-05-10 15:49:04,646 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:49:04,655 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:49:04,662 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:49:04,665 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:49:04,669 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:49:04,672 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : generate openv-server CA] *********************************************************************************************************************************************************************************
-2023-05-10 15:49:04,687 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:49:04,694 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:49:04,703 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:49:04,707 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:49:05,742 p=46508 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+2023-05-11 14:34:56,031 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:34:56,031 p=69617 u=rob n=ansible | ok: [client]
+2023-05-11 14:34:56,036 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: fail if node_template_version is empty] **********************************************************************************************************************************************
+2023-05-11 14:34:56,056 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:34:56,065 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:34:56,073 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:34:56,075 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:34:56,080 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:34:56,084 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Login to EVE-NG and get Cookie] ******************************************************************************************************************************************************
+2023-05-11 14:34:56,104 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:34:56,111 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:34:56,113 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:34:56,118 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:34:56,916 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:34:56,922 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: get running lab list] ****************************************************************************************************************************************************************
+2023-05-11 14:34:56,948 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:34:56,956 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:34:56,958 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:34:56,964 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:34:57,440 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:34:57,447 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: kill running lab] ********************************************************************************************************************************************************************
+2023-05-11 14:34:57,471 p=69617 u=rob n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: item.labname == "{{ eve_ng_folder_name }}/{{ lab }}"
+
+2023-05-11 14:34:57,474 p=69617 u=rob n=ansible | skipping: [eveng] => (item={'podid': '0', 'username': 'admin', 'online': '1', 'uuid': '0addf0f5-8476-4696-8f9a-05ac0bc44c46', 'size': 0.0057, 'sat': '0', 'sat_name': 'master', 'labid': 1001, 'labname': None, 'cpu': 0, 'mem': 0}) 
+2023-05-11 14:34:57,484 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:34:57,484 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:34:57,484 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:34:57,484 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:34:57,492 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:34:57,495 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: delete existing lab] *****************************************************************************************************************************************************************
+2023-05-11 14:34:57,513 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:34:57,520 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:34:57,522 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:34:57,527 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:34:58,097 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:34:58,103 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Ensure labtest is present] ***********************************************************************************************************************************************************
+2023-05-11 14:34:58,128 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:34:58,136 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:34:58,139 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:34:58,145 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:34:58,429 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:34:58,438 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Create OpenVPN_with_LDAP Lab] ********************************************************************************************************************************************************
+2023-05-11 14:34:58,464 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:34:58,472 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:34:58,475 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:34:58,480 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:34:59,081 p=69617 u=rob n=ansible | changed: [eveng]
+2023-05-11 14:34:59,085 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Login to EVE-NG and get Cookie] ******************************************************************************************************************************************************
+2023-05-11 14:34:59,105 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:34:59,115 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:34:59,115 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:34:59,120 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:34:59,747 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:34:59,753 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: start vyos-oobm] *********************************************************************************************************************************************************************
+2023-05-11 14:34:59,775 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:34:59,782 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:34:59,785 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:34:59,790 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:35:00,809 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:35:00,816 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Wait for vyos-oobm] ******************************************************************************************************************************************************************
+2023-05-11 14:35:00,841 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:35:00,848 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:35:00,850 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:35:00,855 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:35:01,879 p=69617 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 14:35:31,926 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Exception (client): Error reading SSH protocol banner
+2023-05-11 14:35:31,930 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Traceback (most recent call last):
+2023-05-11 14:35:31,931 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 14:35:31,931 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     buf = self.packetizer.readline(timeout)
+2023-05-11 14:35:31,931 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 14:35:31,931 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     buf += self._read_timeout(timeout)
+2023-05-11 14:35:31,931 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 14:35:31,931 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     raise socket.timeout()
+2023-05-11 14:35:31,932 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | socket.timeout
+2023-05-11 14:35:31,932 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 14:35:31,932 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | During handling of the above exception, another exception occurred:
+2023-05-11 14:35:31,932 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 14:35:31,932 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Traceback (most recent call last):
+2023-05-11 14:35:31,932 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 14:35:31,933 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     self._check_banner()
+2023-05-11 14:35:31,933 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 14:35:31,933 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     raise SSHException(
+2023-05-11 14:35:31,933 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 14:35:31,933 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 14:36:02,951 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Exception (client): Error reading SSH protocol banner
+2023-05-11 14:36:02,952 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Traceback (most recent call last):
+2023-05-11 14:36:02,953 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 14:36:02,953 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     buf = self.packetizer.readline(timeout)
+2023-05-11 14:36:02,953 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 14:36:02,953 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     buf += self._read_timeout(timeout)
+2023-05-11 14:36:02,953 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 14:36:02,953 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     raise socket.timeout()
+2023-05-11 14:36:02,954 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | socket.timeout
+2023-05-11 14:36:02,954 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 14:36:02,954 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | During handling of the above exception, another exception occurred:
+2023-05-11 14:36:02,954 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 14:36:02,954 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Traceback (most recent call last):
+2023-05-11 14:36:02,954 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 14:36:02,955 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     self._check_banner()
+2023-05-11 14:36:02,955 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 14:36:02,955 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     raise SSHException(
+2023-05-11 14:36:02,955 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 14:36:02,955 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 14:36:33,972 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Exception (client): Error reading SSH protocol banner
+2023-05-11 14:36:33,973 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Traceback (most recent call last):
+2023-05-11 14:36:33,973 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 14:36:33,973 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     buf = self.packetizer.readline(timeout)
+2023-05-11 14:36:33,973 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 14:36:33,973 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     buf += self._read_timeout(timeout)
+2023-05-11 14:36:33,973 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 14:36:33,974 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     raise socket.timeout()
+2023-05-11 14:36:33,974 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | socket.timeout
+2023-05-11 14:36:33,974 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 14:36:33,974 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | During handling of the above exception, another exception occurred:
+2023-05-11 14:36:33,974 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 14:36:33,974 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Traceback (most recent call last):
+2023-05-11 14:36:33,975 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 14:36:33,975 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     self._check_banner()
+2023-05-11 14:36:33,975 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 14:36:33,975 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] |     raise SSHException(
+2023-05-11 14:36:33,975 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 14:36:33,975 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | 
+2023-05-11 14:36:35,512 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:36:35,754 p=69852 u=rob n=p=69852 u=rob | paramiko [vyos-oobm] | Authentication (publickey) successful!
+2023-05-11 14:36:36,829 p=69617 u=rob n=ansible | ok: [vyos-oobm]
+2023-05-11 14:36:36,832 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Login to EVE-NG and get Cookie] ******************************************************************************************************************************************************
+2023-05-11 14:36:36,850 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:36:36,858 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:36:36,860 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:36:36,865 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:36:37,900 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:36:37,906 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: get lab status] **********************************************************************************************************************************************************************
+2023-05-11 14:36:37,928 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:36:37,935 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:36:37,938 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:36:37,943 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:36:38,394 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:36:38,402 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: start all nodes] *********************************************************************************************************************************************************************
+2023-05-11 14:36:38,425 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:36:38,432 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:36:38,435 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:36:38,441 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:36:38,917 p=69617 u=rob n=ansible | ok: [eveng] => (item=1)
+2023-05-11 14:36:39,863 p=69617 u=rob n=ansible | ok: [eveng] => (item=3)
+2023-05-11 14:36:40,949 p=69617 u=rob n=ansible | ok: [eveng] => (item=4)
+2023-05-11 14:36:42,145 p=69617 u=rob n=ansible | ok: [eveng] => (item=2)
+2023-05-11 14:36:42,152 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Wait for vyos nodes] *****************************************************************************************************************************************************************
+2023-05-11 14:36:42,175 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:36:42,181 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:36:42,190 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:36:43,241 p=69617 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 14:36:43,245 p=69617 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 14:37:01,251 p=69736 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+See the timeout setting options in the Network Debug and Troubleshooting Guide.
+2023-05-11 14:37:01,355 p=69736 u=rob n=ansible | shutdown complete
+2023-05-11 14:37:13,261 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Exception (client): Error reading SSH protocol banner
+2023-05-11 14:37:13,261 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Exception (client): Error reading SSH protocol banner
+2023-05-11 14:37:13,265 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Traceback (most recent call last):
+2023-05-11 14:37:13,265 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Traceback (most recent call last):
+2023-05-11 14:37:13,265 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 14:37:13,265 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 14:37:13,265 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     buf = self.packetizer.readline(timeout)
+2023-05-11 14:37:13,265 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     buf = self.packetizer.readline(timeout)
+2023-05-11 14:37:13,266 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 14:37:13,266 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 14:37:13,266 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     buf += self._read_timeout(timeout)
+2023-05-11 14:37:13,266 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     buf += self._read_timeout(timeout)
+2023-05-11 14:37:13,266 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 14:37:13,266 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 14:37:13,266 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     raise socket.timeout()
+2023-05-11 14:37:13,266 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     raise socket.timeout()
+2023-05-11 14:37:13,266 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | socket.timeout
+2023-05-11 14:37:13,266 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | socket.timeout
+2023-05-11 14:37:13,266 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | 
+2023-05-11 14:37:13,267 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | 
+2023-05-11 14:37:13,267 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | During handling of the above exception, another exception occurred:
+2023-05-11 14:37:13,267 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | During handling of the above exception, another exception occurred:
+2023-05-11 14:37:13,267 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | 
+2023-05-11 14:37:13,267 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | 
+2023-05-11 14:37:13,267 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Traceback (most recent call last):
+2023-05-11 14:37:13,267 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Traceback (most recent call last):
+2023-05-11 14:37:13,267 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 14:37:13,267 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 14:37:13,267 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     self._check_banner()
+2023-05-11 14:37:13,267 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     self._check_banner()
+2023-05-11 14:37:13,268 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 14:37:13,268 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 14:37:13,268 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     raise SSHException(
+2023-05-11 14:37:13,268 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     raise SSHException(
+2023-05-11 14:37:13,268 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 14:37:13,268 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 14:37:13,268 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | 
+2023-05-11 14:37:13,268 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | 
+2023-05-11 14:37:44,327 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Exception (client): Error reading SSH protocol banner
+2023-05-11 14:37:44,328 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Traceback (most recent call last):
+2023-05-11 14:37:44,328 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 14:37:44,329 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     buf = self.packetizer.readline(timeout)
+2023-05-11 14:37:44,329 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 14:37:44,329 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     buf += self._read_timeout(timeout)
+2023-05-11 14:37:44,329 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 14:37:44,329 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     raise socket.timeout()
+2023-05-11 14:37:44,329 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | socket.timeout
+2023-05-11 14:37:44,330 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | 
+2023-05-11 14:37:44,330 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | During handling of the above exception, another exception occurred:
+2023-05-11 14:37:44,330 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | 
+2023-05-11 14:37:44,330 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Traceback (most recent call last):
+2023-05-11 14:37:44,330 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 14:37:44,331 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     self._check_banner()
+2023-05-11 14:37:44,330 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Exception (client): Error reading SSH protocol banner
+2023-05-11 14:37:44,331 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 14:37:44,331 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     raise SSHException(
+2023-05-11 14:37:44,331 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Traceback (most recent call last):
+2023-05-11 14:37:44,331 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 14:37:44,331 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 14:37:44,331 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | 
+2023-05-11 14:37:44,331 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     buf = self.packetizer.readline(timeout)
+2023-05-11 14:37:44,332 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 14:37:44,332 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     buf += self._read_timeout(timeout)
+2023-05-11 14:37:44,332 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 14:37:44,332 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     raise socket.timeout()
+2023-05-11 14:37:44,332 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | socket.timeout
+2023-05-11 14:37:44,332 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | 
+2023-05-11 14:37:44,333 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | During handling of the above exception, another exception occurred:
+2023-05-11 14:37:44,333 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | 
+2023-05-11 14:37:44,333 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Traceback (most recent call last):
+2023-05-11 14:37:44,333 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 14:37:44,333 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     self._check_banner()
+2023-05-11 14:37:44,333 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 14:37:44,334 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     raise SSHException(
+2023-05-11 14:37:44,334 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 14:37:44,334 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | 
+2023-05-11 14:38:15,390 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Exception (client): Error reading SSH protocol banner
+2023-05-11 14:38:15,391 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Traceback (most recent call last):
+2023-05-11 14:38:15,391 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Exception (client): Error reading SSH protocol banner
+2023-05-11 14:38:15,391 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 14:38:15,391 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Traceback (most recent call last):
+2023-05-11 14:38:15,391 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     buf = self.packetizer.readline(timeout)
+2023-05-11 14:38:15,392 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2270, in _check_banner
+2023-05-11 14:38:15,392 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 14:38:15,392 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     buf = self.packetizer.readline(timeout)
+2023-05-11 14:38:15,392 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     buf += self._read_timeout(timeout)
+2023-05-11 14:38:15,392 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 374, in readline
+2023-05-11 14:38:15,392 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 14:38:15,393 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     buf += self._read_timeout(timeout)
+2023-05-11 14:38:15,393 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     raise socket.timeout()
+2023-05-11 14:38:15,393 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/packet.py", line 611, in _read_timeout
+2023-05-11 14:38:15,393 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | socket.timeout
+2023-05-11 14:38:15,393 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     raise socket.timeout()
+2023-05-11 14:38:15,393 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | 
+2023-05-11 14:38:15,394 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | socket.timeout
+2023-05-11 14:38:15,394 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | During handling of the above exception, another exception occurred:
+2023-05-11 14:38:15,394 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | 
+2023-05-11 14:38:15,394 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | 
+2023-05-11 14:38:15,394 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | During handling of the above exception, another exception occurred:
+2023-05-11 14:38:15,394 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Traceback (most recent call last):
+2023-05-11 14:38:15,394 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | 
+2023-05-11 14:38:15,394 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 14:38:15,394 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Traceback (most recent call last):
+2023-05-11 14:38:15,394 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     self._check_banner()
+2023-05-11 14:38:15,395 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2093, in run
+2023-05-11 14:38:15,395 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 14:38:15,395 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     self._check_banner()
+2023-05-11 14:38:15,395 p=69975 u=rob n=p=69975 u=rob | paramiko [client] |     raise SSHException(
+2023-05-11 14:38:15,395 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |   File "/Users/rob/.local/share/virtualenvs/vyos-eveng-b9X2mBdh/lib/python3.9/site-packages/paramiko/transport.py", line 2274, in _check_banner
+2023-05-11 14:38:15,395 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 14:38:15,395 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] |     raise SSHException(
+2023-05-11 14:38:15,395 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | 
+2023-05-11 14:38:15,395 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2023-05-11 14:38:15,395 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | 
+2023-05-11 14:38:17,275 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:38:17,303 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:38:17,539 p=69974 u=rob n=p=69974 u=rob | paramiko [ovpn-server] | Authentication (publickey) successful!
+2023-05-11 14:38:17,554 p=69975 u=rob n=p=69975 u=rob | paramiko [client] | Authentication (publickey) successful!
+2023-05-11 14:38:18,667 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:38:18,968 p=69617 u=rob n=ansible | ok: [client]
+2023-05-11 14:38:18,971 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : generate openv-server CA] *******************************************************************************************************************************************************************************
+2023-05-11 14:38:18,991 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:38:18,996 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:38:19,001 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:38:19,004 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:38:20,059 p=69732 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
 ansible.utils.display.Display.verbosity instead. This feature will be removed 
 in version 2.18. Deprecation warnings can be disabled by setting 
 deprecation_warnings=False in ansible.cfg.
-2023-05-10 15:49:06,402 p=46508 u=rob n=p=46508 u=rob | paramiko [ovpn-server] | Connected (version 2.0, client OpenSSH_9.2p1)
-2023-05-10 15:49:06,706 p=46508 u=rob n=p=46508 u=rob | paramiko [ovpn-server] | Authentication (publickey) successful!
-2023-05-10 15:49:10,581 p=46395 u=rob n=ansible | ok: [ovpn-server]
-2023-05-10 15:49:10,588 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : install openv-server CA] **********************************************************************************************************************************************************************************
-2023-05-10 15:49:10,607 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:49:10,616 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:49:10,626 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:49:10,631 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:49:16,168 p=46395 u=rob n=ansible | [WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar to how they appear if present in the running configuration on device
+2023-05-11 14:38:20,525 p=69732 u=rob n=p=69732 u=rob | paramiko [ovpn-server] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:38:20,769 p=69732 u=rob n=p=69732 u=rob | paramiko [ovpn-server] | Authentication (publickey) successful!
+2023-05-11 14:38:24,046 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:38:24,058 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : install openv-server CA] ********************************************************************************************************************************************************************************
+2023-05-11 14:38:24,076 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:38:24,083 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:38:24,094 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:38:24,099 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:38:29,698 p=69617 u=rob n=ansible | [WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar to how they appear if present in the running configuration on device
 
-2023-05-10 15:49:16,169 p=46395 u=rob n=ansible | changed: [ovpn-server]
-2023-05-10 15:49:16,176 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : generate openv-server SRV] ********************************************************************************************************************************************************************************
-2023-05-10 15:49:16,200 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:49:16,208 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:49:16,217 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:49:16,222 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:49:20,306 p=46395 u=rob n=ansible | ok: [ovpn-server]
-2023-05-10 15:49:20,313 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : install openv-server SRV] *********************************************************************************************************************************************************************************
-2023-05-10 15:49:20,333 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:49:20,341 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:49:20,351 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:49:20,355 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:49:26,238 p=46395 u=rob n=ansible | changed: [ovpn-server]
-2023-05-10 15:49:26,245 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : generate openv-server Client Cert] ************************************************************************************************************************************************************************
-2023-05-10 15:49:26,272 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:49:26,279 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:49:26,283 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:49:26,288 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:49:29,275 p=46395 u=rob n=ansible | ok: [ovpn-server]
-2023-05-10 15:49:29,282 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : install openv-server Client Cert] *************************************************************************************************************************************************************************
-2023-05-10 15:49:29,301 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:49:29,310 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:49:29,321 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:49:29,326 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:49:35,373 p=46395 u=rob n=ansible | changed: [ovpn-server]
-2023-05-10 15:49:35,381 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : generate openv-server DH] *********************************************************************************************************************************************************************************
-2023-05-10 15:49:35,406 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:49:35,414 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:49:35,423 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:49:35,428 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:51:03,970 p=46513 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+2023-05-11 14:38:29,698 p=69617 u=rob n=ansible | changed: [ovpn-server]
+2023-05-11 14:38:29,708 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : generate openv-server SRV] ******************************************************************************************************************************************************************************
+2023-05-11 14:38:29,731 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:38:29,736 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:38:29,748 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:38:29,752 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:38:32,519 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:38:32,528 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : install openv-server SRV] *******************************************************************************************************************************************************************************
+2023-05-11 14:38:32,549 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:38:32,558 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:38:32,568 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:38:32,573 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:38:38,131 p=69617 u=rob n=ansible | changed: [ovpn-server]
+2023-05-11 14:38:38,145 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : generate openv-server Client Cert] **********************************************************************************************************************************************************************
+2023-05-11 14:38:38,164 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:38:38,169 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:38:38,179 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:38:38,184 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:38:40,406 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:38:40,417 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : install openv-server Client Cert] ***********************************************************************************************************************************************************************
+2023-05-11 14:38:40,439 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:38:40,447 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:38:40,457 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:38:40,462 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:38:42,612 p=69735 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
 See the timeout setting options in the Network Debug and Troubleshooting Guide.
-2023-05-10 15:51:03,970 p=46514 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
-See the timeout setting options in the Network Debug and Troubleshooting Guide.
-2023-05-10 15:51:04,081 p=46513 u=rob n=ansible | shutdown complete
-2023-05-10 15:51:04,081 p=46514 u=rob n=ansible | shutdown complete
-2023-05-10 15:51:15,179 p=46395 u=rob n=ansible | ok: [ovpn-server]
-2023-05-10 15:51:15,186 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : install openv-server DH] **********************************************************************************************************************************************************************************
-2023-05-10 15:51:15,206 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:51:15,214 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:51:15,225 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:51:15,229 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:51:20,903 p=46395 u=rob n=ansible | changed: [ovpn-server]
-2023-05-10 15:51:20,913 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : create ldap-auth.config] **********************************************************************************************************************************************************************************
-2023-05-10 15:51:20,938 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:51:20,947 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:51:20,956 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:51:20,961 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:51:22,675 p=46508 u=rob n=p=46508 u=rob | paramiko [ovpn-server] | Connected (version 2.0, client OpenSSH_9.2p1)
-2023-05-10 15:51:22,982 p=46508 u=rob n=p=46508 u=rob | paramiko [ovpn-server] | Authentication (publickey) successful!
-2023-05-10 15:51:23,960 p=46508 u=rob n=p=46508 u=rob | paramiko [ovpn-server] | Connected (version 2.0, client OpenSSH_9.2p1)
-2023-05-10 15:51:24,239 p=46508 u=rob n=p=46508 u=rob | paramiko [ovpn-server] | Authentication (publickey) successful!
-2023-05-10 15:51:24,554 p=46395 u=rob n=ansible | changed: [ovpn-server]
-2023-05-10 15:51:24,562 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : setup openv-server] ***************************************************************************************************************************************************************************************
-2023-05-10 15:51:24,585 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:51:24,594 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:51:24,604 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:51:24,608 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:51:36,392 p=46395 u=rob n=ansible | [WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar to how they appear if present in the running configuration on device including the indentation
+2023-05-11 14:38:42,716 p=69735 u=rob n=ansible | shutdown complete
+2023-05-11 14:38:45,859 p=69617 u=rob n=ansible | changed: [ovpn-server]
+2023-05-11 14:38:45,870 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : generate openv-server DH] *******************************************************************************************************************************************************************************
+2023-05-11 14:38:45,890 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:38:45,898 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:38:45,909 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:38:45,914 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:39:36,379 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:39:36,391 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : install openv-server DH] ********************************************************************************************************************************************************************************
+2023-05-11 14:39:36,411 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:39:36,420 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:39:36,431 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:39:36,436 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:39:40,864 p=69617 u=rob n=ansible | changed: [ovpn-server]
+2023-05-11 14:39:40,877 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : create ldap-auth.config] ********************************************************************************************************************************************************************************
+2023-05-11 14:39:40,896 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:39:40,905 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:39:40,916 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:39:40,920 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:39:42,577 p=69732 u=rob n=p=69732 u=rob | paramiko [ovpn-server] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:39:42,814 p=69732 u=rob n=p=69732 u=rob | paramiko [ovpn-server] | Authentication (publickey) successful!
+2023-05-11 14:39:43,536 p=69732 u=rob n=p=69732 u=rob | paramiko [ovpn-server] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:39:43,775 p=69732 u=rob n=p=69732 u=rob | paramiko [ovpn-server] | Authentication (publickey) successful!
+2023-05-11 14:39:44,033 p=69617 u=rob n=ansible | changed: [ovpn-server]
+2023-05-11 14:39:44,045 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : setup openv-server] *************************************************************************************************************************************************************************************
+2023-05-11 14:39:44,066 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:39:44,074 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:39:44,085 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:39:44,090 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:39:54,941 p=69617 u=rob n=ansible | [WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar to how they appear if present in the running configuration on device including the indentation
 
-2023-05-10 15:51:36,392 p=46395 u=rob n=ansible | changed: [ovpn-server]
-2023-05-10 15:51:36,400 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : generate openvpn client conifg] ***************************************************************************************************************************************************************************
-2023-05-10 15:51:36,425 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:51:36,433 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:51:36,443 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:51:36,447 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:51:37,890 p=46395 u=rob n=ansible | ok: [ovpn-server]
-2023-05-10 15:51:37,899 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : ansible.builtin.set_fact] *********************************************************************************************************************************************************************************
-2023-05-10 15:51:37,922 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:51:37,931 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:51:37,941 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:51:37,946 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:51:38,970 p=46395 u=rob n=ansible | ok: [ovpn-server]
-2023-05-10 15:51:38,980 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : debug] ****************************************************************************************************************************************************************************************************
-2023-05-10 15:51:39,012 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:51:39,018 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:51:39,022 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:51:39,027 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:51:40,051 p=46395 u=rob n=ansible | ok: [ovpn-server] => {
-    "msg": "client\nnobind\nremote 198.51.100.254 1194\nremote-cert-tls server\nproto udp\ndev tun\ndev-type tun\npersist-key\npersist-tun\nverb 3\n\n# Encryption options\n\nkeysize 256\ncomp-lzo no\n\n<ca>\n-----BEGIN CERTIFICATE-----\nMIIFnTCCA4WgAwIBAgIUORUZbBsuy0QupoJFJgXenSJ9AQQwDQYJKoZIhvcNAQEL\nBQAwVzELMAkGA1UEBhMCR0IxEzARBgNVBAgMClNvbWUtU3RhdGUxEjAQBgNVBAcM\nCVNvbWUtQ2l0eTENMAsGA1UECgwEVnlPUzEQMA4GA1UEAwwHdnlvcy5pbzAeFw0y\nMzA1MTAxMzQ5MDlaFw0zMzA1MDcxMzQ5MDlaMFcxCzAJBgNVBAYTAkdCMRMwEQYD\nVQQIDApTb21lLVN0YXRlMRIwEAYDVQQHDAlTb21lLUNpdHkxDTALBgNVBAoMBFZ5\nT1MxEDAOBgNVBAMMB3Z5b3MuaW8wggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIK\nAoICAQCsL2Xui58HXpl+jreqRxYfNDx1ER7umJ0iPw2dyBuJhP1Hy7vlwyZRvdRQ\nd2AexK1BU2lTkYMWh58BU/dxmnnVhfwr34wUYP6Cs10tKhOxTNj/87wfCBU1sCfv\nO77lPSNP9q/Ad7ZCF3K5Aruc6yO7i8Kx5mR9wysgNaVQQWCsZHKB91ZsviIsK51r\nVYNxF9WDxAP0Ms0pO/faSAFf70JbMG2jvRTAgQJ/+R+XXB/Rvg3cJrTYeSeFn+9l\nen5N4HQgraw3tq/OLePYaZBew7a+GZ7YRsVdJbwq2Ch5lRN/jZxAyv4WJoMNEGJv\nb5I8pj/F3ECg6NcEmXaSnRXIO6eaq1v/huIsxNnWT9ns+/JB7OBDmZ88iMKP9z37\nX/AMwLKhcqjMGE9tR8zOMld2vqNgk6bhBzz28WJ6FT3bI30RT2fq+mnvS7rVFVyC\nMlruRg8jIkwa0sictXsO8rl+5i1L+44DC+L7YIlGykAMhc+V1AD3nXRz6sQH6O8E\nsr5hS2t3zEjcQ/jN0amlAKs8KLPaYh+Ui0E1gx0H7wGfVEVQ48IweIrRrZ0h9BG2\ni/9eHaM0kQjUP+I+P00dP6LdOawLWhzNQ8+9ES+1EAP088XpKK4jw9m+o6goqaLq\nHN0QBrfW8wSyMFE4wYin3dYGcykWqyx6Up14DGbF0iBCKSRVQwIDAQABo2EwXzAP\nBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB/wQEAwIBhjAdBgNVHSUEFjAUBggrBgEF\nBQcDAgYIKwYBBQUHAwEwHQYDVR0OBBYEFG1bKeDc0O/cCwaarX59BCMSJDujMA0G\nCSqGSIb3DQEBCwUAA4ICAQBWI+p8tBzy6CO8ImP5DBQFwnVBv+6T59na2JrEq7nZ\nk0aBITWh9PRp5w+ZOe+cL9jHZEJNoaSjq3/bkF/CSKCIoa0YiZX/MAs4d/EnttRh\ncudwgTbE6q0tIKDLlxoYI0Gpo7j48W1rPd0FKAc7igy4eQKOwDmqqG9gVmNTyyrT\n1pVvaic7Ok/c1QmVOEub0f7kW2EA4Zk9+HUVGHYdp3WfOX8QCI5nTrAO6YJrw+d1\nBUly6krnb7NWDkWarJ51e6TAR1dz4zp++jhNVssEHbLQyA7+HzWnRSbxYndxCPBn\noXjQRwx8/3uUubj9l3CDIb1424D0sm8TNslhElD41/Ir1uQ/RRt15O1CKQJg6mpv\nDtgrOik+vpUMqBDYGQ38XgqzHYV1klCjo5NlNP33TRvlQe9B6LtxzBZvoxBfxYDI\nheSRdPbKP8DEHZ6z9d0d1Ubo/waExlcrUfBt4bbxNebsx9nuvVl8hl0R0iEInMjN\n3jaPrSrUEsPcXpBVL+VhzuWG7zTfGGUVIB+5UC/VCiFP+9LPqsfgBvXKIfIlj2db\nLJOsoxZrJtXq7Jvdn7NqFo7vR0hw+YIzmnCFAGpTx6yuWpjuf2y5dY48iTfMuP2v\nUoGRxoO+8wFQONj4psAD524SnOpEwYw+3fuw+P5zC6hT9y4XkZKsEnu6nJjB8T0B\nlA==\n-----END CERTIFICATE-----\n\n</ca>\n\n<cert>\n-----BEGIN CERTIFICATE-----\nMIIFsDCCA5igAwIBAgIUXOnWUTwh0zWkUX+LTlftlfkEGqAwDQYJKoZIhvcNAQEL\nBQAwVzELMAkGA1UEBhMCR0IxEzARBgNVBAgMClNvbWUtU3RhdGUxEjAQBgNVBAcM\nCVNvbWUtQ2l0eTENMAsGA1UECgwEVnlPUzEQMA4GA1UEAwwHdnlvcy5pbzAeFw0y\nMzA1MTAxMzQ5MjhaFw0zMzA1MDcxMzQ5MjhaMFYxCzAJBgNVBAYTAkdCMRMwEQYD\nVQQIDApTb21lLVN0YXRlMRIwEAYDVQQHDAlTb21lLUNpdHkxDTALBgNVBAoMBFZ5\nT1MxDzANBgNVBAMMBmNsaWVudDCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoC\nggIBAJgTHdmee0dFlbohSBF+Xy8XjWpCKnfXGNgr9JgU9+lzQ8SR+Z83XcRocvJX\nasSf4gDZK05pGhyXTx9KzTaYAZi1ZCK4pZ1fXZ+TdHgThLdLW7h/xDF3WU0omydC\nGiBkua3kldcRfhPnBYrWZwvHkeUOYNybRezM/fIGpnp74+YBXybGZ8YRLmRhc/j1\nQDJt0DLvVxfb6YkfU/vuSLnPtu40Ye/EsOhuPcStC9Mmctxx3msZH417z2wWQNvY\n926ZUQCXophkkhNA3kxUcz+gdV5ECCO+KPa7r305olFgv7c4KSNih7MmYBEyKMS7\npA+CF9etEJs3VmHT9avGtKvDMW8XhoqpxTWQ15CNaEFGTxCejPuI+nFCoqtAN9Y9\nO/A6rsLuM6EuaDX2qjSUfDMnUVVclE7yL8JDZEOQZw970Mi+TnhbXfYEyvX8HJLk\n4Vg2JUc67jTDRiQfgWuJHiaPyrYX2ssP8LU/oOis638mHo+7YpJCSeqF0R4m6lSi\nQJNOz8knawp40Uu1iA9RqQrYT8MRt2quCRn2aUolvRmNB4dHS/2TUdHChBdDxylL\nzbFtZLkCiWwKKNvu3ZjxMua2AjYe904r+S4duow4MxfKUFsoMY6GlscGeReMXJVV\nx2i+580wF/tn+3k/9PUS90FoFhQCidfxib/Eo4rOT03awPGBAgMBAAGjdTBzMAwG\nA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMC\nMB0GA1UdDgQWBBTTt3dGY9D07BI8V/0QmVI25bC+gDAfBgNVHSMEGDAWgBRtWyng\n3NDv3AsGmq1+fQQjEiQ7ozANBgkqhkiG9w0BAQsFAAOCAgEAKz+MT9JlvwUope8x\nrUuf+6s/fyiAvmQfGOAN6aBVyxO1+ZIAau6CXGJ9/MaJKF/Ju+V2zTpBVz2bFNxP\nHceY1z9rtQb0l+CG4elcsQY4vhouvDH+HoI8rP/jzFD25zsUmAlMaTZuLWU4WnVT\n2WhO5X1GZFKl5fT8ulyLx3rcb/CaiC6Kg+yi/tktFgpyWyjTMSVp9QBGYRudKVwK\nx585nb5a5Z+uLYBmYcYrRQvLWSQKGLb84qE8gOfek47FZCfoh7rlLpt8prFIW60x\nEarR4Ul/1xhs+2AqMw3mHuQrIxJgHvKoQHBkS/RadsRWglWasE0qm09BtoLeso1h\nZIXO2O830jXOYEZEuhE63iIHxBZUEUpurXt6he/IBL1l8UuRM6ArHtDo2awlnWlL\nUz34e1pSzLAtSfS9Iop+zxt/UDQtMCW/a2MQGB7m/kgCtICC0p8QsuGa8k/+SQOt\nTI1VAj/dJ2O5XFhfFYgDtT/XXa6o3nEmWW+KTtggcvGIyP0Huxq+6ShxrwKkXI0n\nWVffhVafcIkJnsUYTJu+Cx4KpilKV6+lzRQhK7UHfS0hErs0UQoZA4Fpz2uWukNe\n2fezl0IJThWPklGKOYriZyKb4i81i3occ1+9YpzKUrBD2ZI+t0Exp73/cfuQbiCO\niIu80S44myiZMfD2OPvjR0lBSoE=\n-----END CERTIFICATE-----\n\n</cert>\n\n<key>\n-----BEGIN PRIVATE KEY-----\nMIIJQgIBADANBgkqhkiG9w0BAQEFAASCCSwwggkoAgEAAoICAQCYEx3ZnntHRZW6\nIUgRfl8vF41qQip31xjYK/SYFPfpc0PEkfmfN13EaHLyV2rEn+IA2StOaRocl08f\nSs02mAGYtWQiuKWdX12fk3R4E4S3S1u4f8Qxd1lNKJsnQhogZLmt5JXXEX4T5wWK\n1mcLx5HlDmDcm0XszP3yBqZ6e+PmAV8mxmfGES5kYXP49UAybdAy71cX2+mJH1P7\n7ki5z7buNGHvxLDobj3ErQvTJnLccd5rGR+Ne89sFkDb2PdumVEAl6KYZJITQN5M\nVHM/oHVeRAgjvij2u699OaJRYL+3OCkjYoezJmARMijEu6QPghfXrRCbN1Zh0/Wr\nxrSrwzFvF4aKqcU1kNeQjWhBRk8Qnoz7iPpxQqKrQDfWPTvwOq7C7jOhLmg19qo0\nlHwzJ1FVXJRO8i/CQ2RDkGcPe9DIvk54W132BMr1/ByS5OFYNiVHOu40w0YkH4Fr\niR4mj8q2F9rLD/C1P6DorOt/Jh6Pu2KSQknqhdEeJupUokCTTs/JJ2sKeNFLtYgP\nUakK2E/DEbdqrgkZ9mlKJb0ZjQeHR0v9k1HRwoQXQ8cpS82xbWS5AolsCijb7t2Y\n8TLmtgI2HvdOK/kuHbqMODMXylBbKDGOhpbHBnkXjFyVVcdovufNMBf7Z/t5P/T1\nEvdBaBYUAonX8Ym/xKOKzk9N2sDxgQIDAQABAoICAA4nLuhOc620TOHn1nCEwNbX\ncjQfi7R5VcwXxymr2RvzO/oPr3PBPN5Nh2+FC20L1J/i/KdNaJgDMvw4EEI49ZXg\n2wlqNhIGSpnSQnNcaaxML9fLa31CqZJ6dkbtXXro6BwsqA9Xuh9sqQ585rxpBFIV\nIcmjDJs9w5KVsNyF92jnQfpDWjjlgQ2BjlmiRY+/IMwxi/r7kgM1FOVfWon3sJ0A\nGtWsPUSpSEfFTR9UUDmyjt8lYiASRw5WdQ6g5WJExyeiQe69FjIDH803Yz4Nym6N\nliGLDjGF646tevnoFaxqsyI8BmITbu4BK48nrkMG05fUeQIURw6Cu5xf7JE7Vzgy\n7mBwujtkEuRmXz9LsJTaWt5I/sXDUh0Uwe0BGYj5O+8MB7yzQFBjhv6pLJZdySSV\ngSlmupbwtY2BcV48KuvPkzKngHXR8jA6p8XAQV2Xq2njQLsOKJrgEhbIp99h61ao\n5K6gtW056hSN4q01YA00JQZGKZRviUOuQGP71SNDPCl3uvvElVwBFtfEYV12VzFK\nye1fF2CcRThCEML91Qo/IueqrNEBVQHxnCO7R5uwKSkXZNJ5pNArMsAdMfLzXApD\nF3Dcctz/C9I0RG18EdtoW4RjPxEZ1wXHGVkvCpUCwNImsvxWOy78klnfEUyKtOCM\ndnn1flp0CiZzjGAMSiGbAoIBAQC9ZpY4XZ4v68KnaHyiqKjNQDU64wrONGK1XrMS\nwOl5a6Cg8S3n3d51E2AguFKilKZ1LJ721WGdEIO4+J9nFKvXYUSCl711cCh+njya\nE3a9H6louFVZ2X3NxjLUSJtqUyBEOE/NzNxhTt9BoiiR3cKUmhLLlYkHmLnqBv3j\nw4Trl/rU3rDemAf6zOB0eXKM946qjQpfB2LsokCWWsOhnT1XBcSEvkHvSrWv4EH/\n6IDFAROBGtlCW2C8BiosRdpj8thsdnW1lvGAvHs27nLMXz3/NNBX03dlA8YRaelm\nl0EDo0IwrXI7/u4Zy8wL3gfn/NPr0ST3jXz9K8nxvohPxwcfAoIBAQDNjIZs/HT6\nY2rTMH++rC3ZNfLUm/3aNsVl1TB8nkEvfBQHU5HEyqqeE4d/b3+7bRwWhVpfNHLe\nrMV8qNr8iAjvpeL5nvnmUPHLT0CpsI+wUvOlnluHGsCfyLWDNVBPcDL10scediYM\nkKGJGiQSbl355JbIrYxA5AgA7qUGcLQ7mGmwzXyJgmBMOJbDyYvoezh4iogWxC4C\nlh834UgmGWJp2Bi20VuqF00HClN+z1QELQN2Pu2SVK5XTlfXmuYHc3Bi1xvD2KaL\nyqT2BtWVRS9RDG0LOzgOAnG9Mx7SEtPAnRhpydx28HWEwGaFKas6QaIuDo92Blpo\n40ti2Yav4hNfAoIBAQC0m0SYDz2u+KQvuwVOnoII5zdbJfHB3FZcGSettGNus2EC\n17ksp3dgMM+zo9C41AM/LQOQ4L0qZvsUwZBPXXjX8xq/ZS7287LJut6TFgheI/kJ\nsO1CtpCuTldd8raw1v+nzgLbfoSQDgP6tET3g33u8lUF6Vw38D0omu4z6NexSMWZ\ng5kpSdQiJofKyZygK9jRbZj8MTD18WqhdX+jdyts9kUFR9/b7WP/iFunSfCw62vL\n6uxNyJEf+sjwWtP8BzC1jOiF9p/oYNMl+I9jr1aRK62YckAiBU00gchdWdJXQ7D0\ndhC+gURPOPUkQ99KKt9yuYcEwNj1GnKBoWyelm2FAoIBAHoj2bEjZuNudgjeVdpY\nd7oNm6kItJSZXT0ArJowc62ivkgIOaNFhpL+KdLoz27xC/K59RSDlwqIgaVstQvA\nTgcRfMk11WstiDB2fIcY2pk9AXjVm6+xjuqjmnBIGtvJYQ6/3ABW1o861jIg7XRi\nTsdyNMM0lRXuKm9bX4ZvLDoJfCxKPol7hntkWPooZlGT/t9p+ioFEw4IZK6Q2I2D\nIf6hITZpO13cELJxSWIeEt+UW+1EwWjllt9cN0hvy+Z7iznAdsgukfCZTuK+9uWH\nQfGYP6ef3dQ9UZbKrLLJ6zgWYW5jO/UVN8/VgFX6h7vLSnKxxj+s0MZo4d/wQF99\nKGMCggEACAWOCIerQRC51zo8eXOB65mmpR0nX/VuWCZw4uIo5tVZ47JskPIH9MTy\nd/OLbHDa3esJjmZawSl0lI0j7p/yY+J9TEJyOCUU9PCDUw+BeJ39/VqW/fyBn8gI\n1cC3BnPkDf2HnbgHxaCP37sy/aHs7Xn/bNDaLksEDWDblFCQ5tYqGbZhxUNnsx2x\n3z/aYJVmx0lkKXSA+8rKeAk+OnDHUjlJjpRIcAsQJE6Ni+2cHbYygVPXiFbbKk+2\nekNwYkhMZ+DP+t+uY5ZRfwq0jjIrh+5fyw26yG9PoXspGoqPCTcQ9BEqU88J6ziF\nrxWXbmsYdR1dnKCZXcKJVKqJIFCnyg==\n-----END PRIVATE KEY-----\n\n</key>"
-}
-2023-05-10 15:51:40,059 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : debug] ****************************************************************************************************************************************************************************************************
-2023-05-10 15:51:40,091 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:51:40,099 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:51:40,100 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:51:40,108 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:51:41,160 p=46395 u=rob n=ansible | network_os is set to vyos
-2023-05-10 15:51:41,163 p=46395 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+2023-05-11 14:39:54,943 p=69617 u=rob n=ansible | changed: [ovpn-server]
+2023-05-11 14:39:54,954 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : generate openvpn client conifg] *************************************************************************************************************************************************************************
+2023-05-11 14:39:54,977 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:39:54,985 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:39:54,996 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:39:55,001 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:39:56,487 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:39:56,499 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : ansible.builtin.set_fact] *******************************************************************************************************************************************************************************
+2023-05-11 14:39:56,520 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:39:56,529 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:39:56,539 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:39:56,544 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:39:57,588 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:39:57,597 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : get hostname and IP of WIN server] **********************************************************************************************************************************************************************
+2023-05-11 14:39:57,619 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:39:57,634 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:39:57,637 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:39:57,642 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:39:58,689 p=69617 u=rob n=ansible | network_os is set to vyos
+2023-05-11 14:39:58,690 p=69617 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
 
-2023-05-10 15:51:41,169 p=46395 u=rob n=ansible | ok: [client] => {
-    "msg": {
-        "changed": false,
-        "skip_reason": "Conditional result was False",
-        "skipped": true
-    }
-}
-2023-05-10 15:51:41,175 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : install Client Cert] **************************************************************************************************************************************************************************************
-2023-05-10 15:51:41,200 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:51:41,210 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:51:41,218 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:51:41,227 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:51:42,267 p=46644 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+2023-05-11 14:39:58,701 p=70167 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
 ansible.utils.display.Display.verbosity instead. This feature will be removed 
 in version 2.18. Deprecation warnings can be disabled by setting 
 deprecation_warnings=False in ansible.cfg.
-2023-05-10 15:51:42,938 p=46644 u=rob n=p=46644 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_9.2p1)
-2023-05-10 15:51:43,304 p=46644 u=rob n=p=46644 u=rob | paramiko [client] | Authentication (publickey) successful!
-2023-05-10 15:51:51,002 p=46395 u=rob n=ansible | changed: [client]
-2023-05-10 15:51:51,010 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : install CA on Client] *************************************************************************************************************************************************************************************
-2023-05-10 15:51:51,035 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:51:51,043 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:51:51,051 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:51:51,060 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:51:55,745 p=46395 u=rob n=ansible | changed: [client]
-2023-05-10 15:51:55,753 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : setup client] *********************************************************************************************************************************************************************************************
-2023-05-10 15:51:55,778 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:51:55,786 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:51:55,793 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:51:55,802 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:05,361 p=46395 u=rob n=ansible | changed: [client]
-2023-05-10 15:52:05,371 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Login to EVE-NG and get Cookie] ********************************************************************************************************************************************************
-2023-05-10 15:52:05,401 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:05,409 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:05,412 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:05,417 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:07,968 p=46395 u=rob n=ansible | ok: [eveng]
-2023-05-10 15:52:07,978 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: stop nodes id] *************************************************************************************************************************************************************************
-2023-05-10 15:52:08,013 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:52:08,016 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:08,018 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:08,023 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:08,030 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:08,034 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait after stop] ***********************************************************************************************************************************************************************
-2023-05-10 15:52:08,047 p=46395 u=rob n=ansible | Pausing for 5 seconds
-2023-05-10 15:52:08,048 p=46395 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2023-05-10 15:52:13,060 p=46395 u=rob n=ansible | ok: [eveng]
-2023-05-10 15:52:13,069 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: start nodes id] ************************************************************************************************************************************************************************
-2023-05-10 15:52:13,106 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:52:13,108 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:13,110 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:13,116 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:13,123 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:13,126 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait after start] **********************************************************************************************************************************************************************
-2023-05-10 15:52:13,139 p=46395 u=rob n=ansible | Pausing for 5 seconds
-2023-05-10 15:52:13,139 p=46395 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2023-05-10 15:52:18,152 p=46395 u=rob n=ansible | ok: [eveng]
-2023-05-10 15:52:18,162 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait, b/c the ping often failed without a short break] *********************************************************************************************************************************
-2023-05-10 15:52:18,182 p=46395 u=rob n=ansible | Pausing for 30 seconds
-2023-05-10 15:52:18,183 p=46395 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
-2023-05-10 15:52:48,196 p=46395 u=rob n=ansible | ok: [eveng]
-2023-05-10 15:52:48,206 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: do ping test] **************************************************************************************************************************************************************************
-2023-05-10 15:52:48,243 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:52:48,246 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:48,246 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:48,257 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:53,912 p=46395 u=rob n=ansible | ok: [client] => (item=192.168.1.1)
-2023-05-10 15:52:53,921 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: execute test commands] *****************************************************************************************************************************************************************
-2023-05-10 15:52:53,947 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:52:53,956 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:53,958 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:53,962 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:53,971 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:53,974 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: register stdout commands] **************************************************************************************************************************************************************
-2023-05-10 15:52:53,999 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:52:54,002 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:54,010 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:54,016 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:56,105 p=46395 u=rob n=ansible | ok: [ovpn-server] => (item={'name': 'show_client', 'command': 'show openvpn server'})
-2023-05-10 15:52:56,113 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Set variables] *************************************************************************************************************************************************************************
-2023-05-10 15:52:56,144 p=46395 u=rob n=ansible | skipping: [eveng]
-2023-05-10 15:52:56,145 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:56,152 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:56,160 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:57,191 p=46395 u=rob n=ansible | ok: [ovpn-server]
-2023-05-10 15:52:57,203 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: make sure output dir exist] ************************************************************************************************************************************************************
-2023-05-10 15:52:57,237 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:57,246 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:57,248 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:57,278 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:57,510 p=46395 u=rob n=ansible | ok: [eveng -> localhost]
-2023-05-10 15:52:57,513 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: make sure output include dir exist] ****************************************************************************************************************************************************
-2023-05-10 15:52:57,536 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:57,547 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:57,547 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:57,555 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:57,742 p=46395 u=rob n=ansible | ok: [eveng -> localhost]
-2023-05-10 15:52:57,746 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Get timestamp from the system] *********************************************************************************************************************************************************
-2023-05-10 15:52:57,765 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:57,771 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:57,774 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:57,779 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:58,651 p=46395 u=rob n=ansible | changed: [eveng]
-2023-05-10 15:52:58,660 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Set variables] *************************************************************************************************************************************************************************
-2023-05-10 15:52:58,690 p=46395 u=rob n=ansible | ok: [eveng]
-2023-05-10 15:52:58,698 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:58,701 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:58,701 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:58,706 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:58,711 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: generate lab rst file] *****************************************************************************************************************************************************************
-2023-05-10 15:52:58,734 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:58,742 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:58,745 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:58,750 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:59,270 p=46395 u=rob n=ansible | changed: [eveng -> localhost]
-2023-05-10 15:52:59,275 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: find all *.conf files in Lab] **********************************************************************************************************************************************************
-2023-05-10 15:52:59,298 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:59,306 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:59,308 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:59,314 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:59,568 p=46395 u=rob n=ansible | ok: [eveng -> localhost]
-2023-05-10 15:52:59,574 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: copy all *.conf files] *****************************************************************************************************************************************************************
-2023-05-10 15:52:59,599 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:52:59,609 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:52:59,611 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:52:59,618 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:52:59,995 p=46395 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/OpenVPN_with_LDAP/ovpn-server.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 810, 'inode': 3231536, 'dev': 16777229, 'nlink': 1, 'atime': 1682786301.5902777, 'mtime': 1682786299.53471, 'ctime': 1682786299.53471, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2023-05-10 15:53:00,389 p=46395 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/OpenVPN_with_LDAP/client.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 477, 'inode': 3231532, 'dev': 16777229, 'nlink': 1, 'atime': 1682681063.1554656, 'mtime': 1682681061.5118814, 'ctime': 1682681061.5118814, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2023-05-10 15:53:00,395 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: find all *.config files in Lab] ********************************************************************************************************************************************************
-2023-05-10 15:53:00,417 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:53:00,425 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:53:00,427 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:53:00,432 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:53:00,617 p=46395 u=rob n=ansible | ok: [eveng -> localhost]
-2023-05-10 15:53:00,622 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: copy all *.config files] ***************************************************************************************************************************************************************
-2023-05-10 15:53:00,646 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:53:00,656 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:53:00,658 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:53:00,664 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:53:01,034 p=46395 u=rob n=ansible | changed: [eveng -> localhost] => (item={'path': 'labs/OpenVPN_with_LDAP/ldap-auth.config', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 241, 'inode': 7385173, 'dev': 16777229, 'nlink': 1, 'atime': 1682687502.4956439, 'mtime': 1682687500.6057715, 'ctime': 1682687500.6057715, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2023-05-10 15:53:01,040 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: find all *.png files in Lab] ***********************************************************************************************************************************************************
-2023-05-10 15:53:01,063 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:53:01,071 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:53:01,074 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:53:01,079 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:53:01,259 p=46395 u=rob n=ansible | ok: [eveng -> localhost]
-2023-05-10 15:53:01,265 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: copy all *.png files] ******************************************************************************************************************************************************************
-2023-05-10 15:53:01,289 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:53:01,298 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:53:01,300 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:53:01,306 p=46395 u=rob n=ansible | skipping: [ldap-server]
-2023-05-10 15:53:01,674 p=46395 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/OpenVPN_with_LDAP/topology.png', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 40891, 'inode': 7535943, 'dev': 16777229, 'nlink': 1, 'atime': 1682894454.9541955, 'mtime': 1682781250.8242838, 'ctime': 1682781303.849814, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
-2023-05-10 15:53:01,679 p=46395 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: copy ansible log files] ****************************************************************************************************************************************************************
-2023-05-10 15:53:01,701 p=46395 u=rob n=ansible | skipping: [vyos-oobm]
-2023-05-10 15:53:01,708 p=46395 u=rob n=ansible | skipping: [ovpn-server]
-2023-05-10 15:53:01,710 p=46395 u=rob n=ansible | skipping: [client]
-2023-05-10 15:53:01,716 p=46395 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:39:59,165 p=70167 u=rob n=p=70167 u=rob | paramiko [vyos-oobm] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:39:59,399 p=70167 u=rob n=p=70167 u=rob | paramiko [vyos-oobm] | Authentication (publickey) successful!
+2023-05-11 14:40:01,688 p=69617 u=rob n=ansible | ok: [vyos-oobm]
+2023-05-11 14:40:01,701 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : set Win IP-Address] *************************************************************************************************************************************************************************************
+2023-05-11 14:40:01,730 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:40:01,738 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:40:01,740 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:40:01,748 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:40:02,786 p=69617 u=rob n=ansible | ok: [vyos-oobm]
+2023-05-11 14:40:02,801 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : debug] **************************************************************************************************************************************************************************************************
+2023-05-11 14:40:02,823 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:40:02,837 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:40:02,839 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:40:02,846 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:40:03,884 p=69617 u=rob n=ansible | ok: [vyos-oobm] => {
+    "msg": "10.100.0.10"
+}
+2023-05-11 14:40:03,889 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : setup windows portforwarding] ***************************************************************************************************************************************************************************
+2023-05-11 14:40:03,907 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:40:03,922 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:40:03,924 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:40:03,929 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:40:10,965 p=69617 u=rob n=ansible | changed: [vyos-oobm]
+2023-05-11 14:40:10,977 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : set IP on Ethernet 2] ***********************************************************************************************************************************************************************************
+2023-05-11 14:40:11,002 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:40:11,010 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:40:11,013 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:40:11,013 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:40:26,601 p=69617 u=rob n=ansible | changed: [ldap-server]
+2023-05-11 14:40:26,617 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : enable Active Directory] ********************************************************************************************************************************************************************************
+2023-05-11 14:40:26,642 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:40:26,652 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:40:26,653 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:40:26,653 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:41:37,631 p=69617 u=rob n=ansible | changed: [ldap-server]
+2023-05-11 14:41:37,635 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : Create Domain] ******************************************************************************************************************************************************************************************
+2023-05-11 14:41:37,656 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:41:37,663 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:41:37,671 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:41:37,674 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:41:56,950 p=69732 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+See the timeout setting options in the Network Debug and Troubleshooting Guide.
+2023-05-11 14:41:57,061 p=69732 u=rob n=ansible | shutdown complete
+2023-05-11 14:42:10,953 p=70167 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+See the timeout setting options in the Network Debug and Troubleshooting Guide.
+2023-05-11 14:42:11,062 p=70167 u=rob n=ansible | shutdown complete
+2023-05-11 14:43:16,371 p=69617 u=rob n=ansible | changed: [ldap-server]
+2023-05-11 14:43:16,392 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : reboot server] ******************************************************************************************************************************************************************************************
+2023-05-11 14:43:16,412 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:43:16,420 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:43:16,429 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:43:16,431 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:46:38,732 p=69617 u=rob n=ansible | changed: [ldap-server]
+2023-05-11 14:46:38,739 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : Ensure bind_user is created] ****************************************************************************************************************************************************************************
+2023-05-11 14:46:38,767 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:46:38,775 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:46:38,778 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:46:38,778 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:46:48,019 p=69617 u=rob n=ansible | changed: [ldap-server]
+2023-05-11 14:46:48,031 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : Ensure user01 is created] *******************************************************************************************************************************************************************************
+2023-05-11 14:46:48,051 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:46:48,060 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:46:48,069 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:46:48,072 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:46:55,085 p=69617 u=rob n=ansible | changed: [ldap-server]
+2023-05-11 14:46:55,093 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : install Client Cert] ************************************************************************************************************************************************************************************
+2023-05-11 14:46:55,111 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:46:55,120 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:46:55,129 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:46:55,139 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:46:56,200 p=69617 u=rob n=ansible | network_os is set to vyos
+2023-05-11 14:46:56,201 p=69617 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+
+2023-05-11 14:46:56,210 p=70343 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+ansible.utils.display.Display.verbosity instead. This feature will be removed 
+in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 14:46:56,974 p=70343 u=rob n=p=70343 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:46:57,239 p=70343 u=rob n=p=70343 u=rob | paramiko [client] | Authentication (publickey) successful!
+2023-05-11 14:47:03,910 p=69617 u=rob n=ansible | changed: [client]
+2023-05-11 14:47:03,929 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : install CA on Client] ***********************************************************************************************************************************************************************************
+2023-05-11 14:47:03,951 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:47:03,960 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:47:03,968 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:47:03,978 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:47:08,110 p=69617 u=rob n=ansible | changed: [client]
+2023-05-11 14:47:08,122 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : setup client] *******************************************************************************************************************************************************************************************
+2023-05-11 14:47:08,143 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:47:08,152 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:47:08,160 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:47:08,170 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:47:15,649 p=69617 u=rob n=ansible | changed: [client]
+2023-05-11 14:47:15,660 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Login to EVE-NG and get Cookie] ******************************************************************************************************************************************************
+2023-05-11 14:47:15,695 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:47:15,698 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:47:15,698 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:47:15,704 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:47:16,951 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:47:16,959 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: stop nodes id] ***********************************************************************************************************************************************************************
+2023-05-11 14:47:16,994 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:47:16,998 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:47:17,000 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:47:17,005 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:47:17,013 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:47:17,017 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait after stop] *********************************************************************************************************************************************************************
+2023-05-11 14:47:17,029 p=69617 u=rob n=ansible | Pausing for 5 seconds
+2023-05-11 14:47:17,030 p=69617 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 14:47:22,045 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:47:22,057 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: start nodes id] **********************************************************************************************************************************************************************
+2023-05-11 14:47:22,092 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:47:22,094 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:47:22,097 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:47:22,102 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:47:22,112 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:47:22,116 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait after start] ********************************************************************************************************************************************************************
+2023-05-11 14:47:22,130 p=69617 u=rob n=ansible | Pausing for 5 seconds
+2023-05-11 14:47:22,130 p=69617 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 14:47:27,153 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:47:27,161 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait, b/c the ping often failed without a short break] *******************************************************************************************************************************
+2023-05-11 14:47:27,181 p=69617 u=rob n=ansible | Pausing for 30 seconds
+2023-05-11 14:47:27,182 p=69617 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 14:47:57,152 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:47:57,160 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: do ping test] ************************************************************************************************************************************************************************
+2023-05-11 14:47:57,198 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:47:57,200 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:47:57,201 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:47:57,212 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:48:02,805 p=69617 u=rob n=ansible | ok: [client] => (item=192.168.1.1)
+2023-05-11 14:48:02,817 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: execute test commands] ***************************************************************************************************************************************************************
+2023-05-11 14:48:02,852 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:48:02,856 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:48:02,856 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:48:02,858 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:48:02,866 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:48:02,870 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: register stdout commands] ************************************************************************************************************************************************************
+2023-05-11 14:48:02,894 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:48:02,897 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:48:02,904 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:48:02,910 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:48:03,963 p=69617 u=rob n=ansible | network_os is set to vyos
+2023-05-11 14:48:03,964 p=69617 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+
+2023-05-11 14:48:03,980 p=70426 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+ansible.utils.display.Display.verbosity instead. This feature will be removed 
+in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 14:48:04,534 p=70426 u=rob n=p=70426 u=rob | paramiko [ovpn-server] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:48:04,789 p=70426 u=rob n=p=70426 u=rob | paramiko [ovpn-server] | Authentication (publickey) successful!
+2023-05-11 14:48:07,118 p=69617 u=rob n=ansible | ok: [ovpn-server] => (item={'name': 'show_client', 'command': 'show openvpn server'})
+2023-05-11 14:48:07,127 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Set variables] ***********************************************************************************************************************************************************************
+2023-05-11 14:48:07,160 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:48:07,160 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:48:07,167 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:48:07,175 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:48:08,188 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:48:08,198 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Reboot vyos] *************************************************************************************************************************************************************************
+2023-05-11 14:48:08,222 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:48:08,231 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:48:08,247 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:48:09,663 p=69617 u=rob n=ansible | ok: [client]
+2023-05-11 14:48:09,664 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:48:09,671 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait while shutdown] *****************************************************************************************************************************************************************
+2023-05-11 14:48:09,693 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:48:09,697 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Wait for vyos nodes] *****************************************************************************************************************************************************************
+2023-05-11 14:48:09,720 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:48:09,725 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:48:09,733 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:48:10,774 p=69617 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 14:48:10,774 p=69617 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use ansible.utils.display.Display.verbosity instead. This feature will be removed in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 14:48:11,370 p=70446 u=rob n=p=70446 u=rob | paramiko [ovpn-server] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:48:11,373 p=70447 u=rob n=p=70447 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:48:11,618 p=70446 u=rob n=p=70446 u=rob | paramiko [ovpn-server] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
+2023-05-11 14:48:11,629 p=70447 u=rob n=p=70447 u=rob | paramiko [client] | Auth banner: b'System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).\n\n'
+2023-05-11 14:50:10,138 p=70426 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+See the timeout setting options in the Network Debug and Troubleshooting Guide.
+2023-05-11 14:50:10,141 p=70343 u=rob n=ansible | persistent connection idle timeout triggered, timeout value is 120 secs.
+See the timeout setting options in the Network Debug and Troubleshooting Guide.
+2023-05-11 14:50:10,242 p=70426 u=rob n=ansible | shutdown complete
+2023-05-11 14:50:10,245 p=70343 u=rob n=ansible | shutdown complete
+2023-05-11 14:50:13,550 p=70446 u=rob n=p=70446 u=rob | paramiko [ovpn-server] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:50:13,554 p=70447 u=rob n=p=70447 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:50:13,781 p=70447 u=rob n=p=70447 u=rob | paramiko [client] | Authentication (publickey) successful!
+2023-05-11 14:50:13,788 p=70446 u=rob n=p=70446 u=rob | paramiko [ovpn-server] | Authentication (publickey) successful!
+2023-05-11 14:50:15,294 p=69617 u=rob n=ansible | ok: [client]
+2023-05-11 14:50:15,449 p=69617 u=rob n=ansible | ok: [ovpn-server]
+2023-05-11 14:50:15,451 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Login to EVE-NG and get Cookie] ******************************************************************************************************************************************************
+2023-05-11 14:50:15,470 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:50:15,478 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:50:15,480 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:50:15,486 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:50:16,718 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:50:16,725 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: stop nodes id] ***********************************************************************************************************************************************************************
+2023-05-11 14:50:16,755 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:50:16,757 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:50:16,760 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:50:16,766 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:50:16,773 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:50:16,777 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait after stop] *********************************************************************************************************************************************************************
+2023-05-11 14:50:16,791 p=69617 u=rob n=ansible | Pausing for 5 seconds
+2023-05-11 14:50:16,791 p=69617 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 14:50:21,807 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:50:21,821 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: start nodes id] **********************************************************************************************************************************************************************
+2023-05-11 14:50:21,858 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:50:21,859 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:50:21,862 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:50:21,867 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:50:21,878 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:50:21,882 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait after start] ********************************************************************************************************************************************************************
+2023-05-11 14:50:21,896 p=69617 u=rob n=ansible | Pausing for 5 seconds
+2023-05-11 14:50:21,896 p=69617 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 14:50:26,904 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:50:26,915 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait, b/c the ping often failed without a short break] *******************************************************************************************************************************
+2023-05-11 14:50:26,933 p=69617 u=rob n=ansible | Pausing for 30 seconds
+2023-05-11 14:50:26,934 p=69617 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-05-11 14:50:56,945 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:50:56,962 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: do ping test] ************************************************************************************************************************************************************************
+2023-05-11 14:50:56,998 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:50:57,001 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:50:57,001 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:50:57,014 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:50:58,092 p=69617 u=rob n=ansible | network_os is set to vyos
+2023-05-11 14:50:58,095 p=69617 u=rob n=ansible | [WARNING]: ansible-pylibssh not installed, falling back to paramiko
+
+2023-05-11 14:50:58,120 p=70570 u=rob n=ansible | [DEPRECATION WARNING]: PlayContext.verbosity is deprecated, use 
+ansible.utils.display.Display.verbosity instead. This feature will be removed 
+in version 2.18. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2023-05-11 14:50:58,661 p=70570 u=rob n=p=70570 u=rob | paramiko [client] | Connected (version 2.0, client OpenSSH_8.4p1)
+2023-05-11 14:50:58,904 p=70570 u=rob n=p=70570 u=rob | paramiko [client] | Authentication (publickey) successful!
+2023-05-11 14:51:05,096 p=69617 u=rob n=ansible | ok: [client] => (item=192.168.1.1)
+2023-05-11 14:51:05,107 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: execute test commands] ***************************************************************************************************************************************************************
+2023-05-11 14:51:05,135 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,145 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,146 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,151 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,161 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,165 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: register stdout commands] ************************************************************************************************************************************************************
+2023-05-11 14:51:05,192 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,192 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,194 p=69617 u=rob n=ansible | skipping: [ovpn-server] => (item={'name': 'show_client', 'command': 'show openvpn server'}) 
+2023-05-11 14:51:05,196 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,200 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,205 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,208 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Set variables] ***********************************************************************************************************************************************************************
+2023-05-11 14:51:05,232 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,236 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,236 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,240 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,246 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,251 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: ake sure tmp dir exist] **************************************************************************************************************************************************************
+2023-05-11 14:51:05,269 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,278 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,284 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,287 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,293 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,296 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: register status of tmp/] *************************************************************************************************************************************************************
+2023-05-11 14:51:05,316 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,323 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,324 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,326 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,331 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,335 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: ownload upgrade_iso] *****************************************************************************************************************************************************************
+2023-05-11 14:51:05,351 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,359 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,367 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,369 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,374 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,378 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Copy iso to host] ********************************************************************************************************************************************************************
+2023-05-11 14:51:05,391 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,399 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,407 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,409 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,414 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,418 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: upgrade vyos] ************************************************************************************************************************************************************************
+2023-05-11 14:51:05,432 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,439 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,447 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,449 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,454 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,458 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Reboot vyos] *************************************************************************************************************************************************************************
+2023-05-11 14:51:05,478 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,486 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,488 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,488 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,493 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,496 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait while shutdown] *****************************************************************************************************************************************************************
+2023-05-11 14:51:05,508 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,511 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Wait for vyos nodes] *****************************************************************************************************************************************************************
+2023-05-11 14:51:05,525 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,532 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,539 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,542 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,547 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,551 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: clear tmp dir] ***********************************************************************************************************************************************************************
+2023-05-11 14:51:05,562 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,565 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Login to EVE-NG and get Cookie] ******************************************************************************************************************************************************
+2023-05-11 14:51:05,585 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,591 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,592 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,594 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,600 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,603 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: stop nodes id] ***********************************************************************************************************************************************************************
+2023-05-11 14:51:05,626 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,628 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,630 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,635 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,641 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,644 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait after stop] *********************************************************************************************************************************************************************
+2023-05-11 14:51:05,655 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,659 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: start nodes id] **********************************************************************************************************************************************************************
+2023-05-11 14:51:05,683 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,684 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,687 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,691 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,699 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,702 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait after start] ********************************************************************************************************************************************************************
+2023-05-11 14:51:05,713 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,716 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: wait, b/c the ping often failed without a short break] *******************************************************************************************************************************
+2023-05-11 14:51:05,727 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,730 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: do ping test] ************************************************************************************************************************************************************************
+2023-05-11 14:51:05,744 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,751 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,758 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,763 p=69617 u=rob n=ansible | skipping: [client] => (item=192.168.1.1) 
+2023-05-11 14:51:05,765 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,767 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,770 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: execute test commands] ***************************************************************************************************************************************************************
+2023-05-11 14:51:05,790 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,797 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,797 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,799 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,806 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,809 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: register stdout commands] ************************************************************************************************************************************************************
+2023-05-11 14:51:05,822 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,829 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,836 p=69617 u=rob n=ansible | skipping: [ovpn-server] => (item={'name': 'show_client', 'command': 'show openvpn server'}) 
+2023-05-11 14:51:05,840 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,840 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,844 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,847 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Set variables] ***********************************************************************************************************************************************************************
+2023-05-11 14:51:05,861 p=69617 u=rob n=ansible | skipping: [eveng]
+2023-05-11 14:51:05,868 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,876 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,878 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,883 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:05,888 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: make sure output dir exist] **********************************************************************************************************************************************************
+2023-05-11 14:51:05,910 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:05,918 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:05,920 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:05,926 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:06,118 p=69617 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 14:51:06,122 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: make sure output include dir exist] **************************************************************************************************************************************************
+2023-05-11 14:51:06,145 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:06,155 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:06,155 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:06,161 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:06,355 p=69617 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 14:51:06,359 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Get timestamp from the system] *******************************************************************************************************************************************************
+2023-05-11 14:51:06,377 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:06,384 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:06,387 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:06,392 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:06,626 p=69617 u=rob n=ansible | changed: [eveng]
+2023-05-11 14:51:06,631 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: Set variables] ***********************************************************************************************************************************************************************
+2023-05-11 14:51:06,655 p=69617 u=rob n=ansible | ok: [eveng]
+2023-05-11 14:51:06,663 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:06,666 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:06,666 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:06,673 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:06,678 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: generate lab rst file] ***************************************************************************************************************************************************************
+2023-05-11 14:51:06,700 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:06,709 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:06,711 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:06,716 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:07,126 p=69617 u=rob n=ansible | changed: [eveng -> localhost]
+2023-05-11 14:51:07,131 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: find all *.conf files in Lab] ********************************************************************************************************************************************************
+2023-05-11 14:51:07,153 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:07,162 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:07,164 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:07,169 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:07,430 p=69617 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 14:51:07,436 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: copy all *.conf files] ***************************************************************************************************************************************************************
+2023-05-11 14:51:07,460 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:07,471 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:07,471 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:07,477 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:07,868 p=69617 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/OpenVPN_with_LDAP/ovpn-server.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 810, 'inode': 8049509, 'dev': 16777229, 'nlink': 1, 'atime': 1683727860.4885256, 'mtime': 1682786299.5347097, 'ctime': 1683727395.9937127, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-05-11 14:51:08,289 p=69617 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/OpenVPN_with_LDAP/client.conf', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 477, 'inode': 8049511, 'dev': 16777229, 'nlink': 1, 'atime': 1683727860.4883726, 'mtime': 1682681061.5118814, 'ctime': 1683727395.9944143, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-05-11 14:51:08,295 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: find all *.config files in Lab] ******************************************************************************************************************************************************
+2023-05-11 14:51:08,318 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:08,326 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:08,329 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:08,334 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:08,528 p=69617 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 14:51:08,533 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: copy all *.config files] *************************************************************************************************************************************************************
+2023-05-11 14:51:08,557 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:08,566 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:08,568 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:08,574 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:08,965 p=69617 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/OpenVPN_with_LDAP/ldap-auth.config', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 241, 'inode': 8049510, 'dev': 16777229, 'nlink': 1, 'atime': 1683727860.4884984, 'mtime': 1682687500.6057715, 'ctime': 1683727395.9940686, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-05-11 14:51:08,971 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: find all *.png files in Lab] *********************************************************************************************************************************************************
+2023-05-11 14:51:09,006 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:09,017 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:09,020 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:09,027 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:09,246 p=69617 u=rob n=ansible | ok: [eveng -> localhost]
+2023-05-11 14:51:09,253 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: copy all *.png files] ****************************************************************************************************************************************************************
+2023-05-11 14:51:09,281 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:09,290 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:09,293 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:09,299 p=69617 u=rob n=ansible | skipping: [ldap-server]
+2023-05-11 14:51:09,686 p=69617 u=rob n=ansible | ok: [eveng -> localhost] => (item={'path': 'labs/OpenVPN_with_LDAP/topology.png', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 501, 'gid': 20, 'size': 40891, 'inode': 8049508, 'dev': 16777229, 'nlink': 1, 'atime': 1683727860.4885535, 'mtime': 1682781250.8242836, 'ctime': 1683727395.99331, 'gr_name': 'staff', 'pw_name': 'rob', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-05-11 14:51:09,692 p=69617 u=rob n=ansible | TASK [eve-ng-lab-test : OpenVPN_with_LDAP: copy ansible log files] **************************************************************************************************************************************************************
+2023-05-11 14:51:09,714 p=69617 u=rob n=ansible | skipping: [vyos-oobm]
+2023-05-11 14:51:09,723 p=69617 u=rob n=ansible | skipping: [ovpn-server]
+2023-05-11 14:51:09,725 p=69617 u=rob n=ansible | skipping: [client]
+2023-05-11 14:51:09,731 p=69617 u=rob n=ansible | skipping: [ldap-server]
