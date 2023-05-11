@@ -3,8 +3,8 @@ DHCP Relay trough GRE-Bridge
 ############################
 
 
-| Testdate: 2023-02-24
-| Version: vyos-1.4-rolling-202302150317
+| Testdate: 2023-05-11
+| Version: 1.4-rolling-202305100734
 
 
 This simple structure shows how to configure a DHCP Relay over a GRE Bridge
@@ -77,14 +77,14 @@ Ping the Client from the DHCP Server.
 
    vyos@dhcp-server:~$ ping 192.168.0.30 count 4
    PING 192.168.0.30 (192.168.0.30) 56(84) bytes of data.
-   64 bytes from 192.168.0.30: icmp_seq=1 ttl=63 time=0.916 ms
-   64 bytes from 192.168.0.30: icmp_seq=2 ttl=63 time=1.01 ms
-   64 bytes from 192.168.0.30: icmp_seq=3 ttl=63 time=1.31 ms
-   64 bytes from 192.168.0.30: icmp_seq=4 ttl=63 time=1.11 ms
+   64 bytes from 192.168.0.30: icmp_seq=1 ttl=63 time=1.02 ms
+   64 bytes from 192.168.0.30: icmp_seq=2 ttl=63 time=1.06 ms
+   64 bytes from 192.168.0.30: icmp_seq=3 ttl=63 time=1.21 ms
+   64 bytes from 192.168.0.30: icmp_seq=4 ttl=63 time=1.16 ms
    
    --- 192.168.0.30 ping statistics ---
    4 packets transmitted, 4 received, 0% packet loss, time 3004ms
-   rtt min/avg/max/mdev = 0.916/1.086/1.313/0.147 ms
+   rtt min/avg/max/mdev = 1.016/1.112/1.214/0.077 ms
 
 
 And show all DHCP Leases
@@ -95,4 +95,4 @@ And show all DHCP Leases
    vyos@dhcp-server:~$ show dhcp server leases
    IP Address    MAC address        State    Lease start          Lease expiration     Remaining    Pool        Hostname
    ------------  -----------------  -------  -------------------  -------------------  -----------  ----------  ----------
-   192.168.0.30  00:50:79:66:68:05  active   2023/02/24 12:08:32  2023/02/25 12:08:32  23:59:16     DHCPTun100  VPCS
+   192.168.0.30  00:50:79:66:68:05  active   2023/05/11 13:08:50  2023/05/12 13:08:50  23:59:16     DHCPTun100  VPCS
