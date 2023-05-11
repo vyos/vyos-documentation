@@ -19,7 +19,7 @@ Telegraf output plugin azure-data-explorer_
 
 .. cfgcmd:: set service monitoring telegraf azure-data-explorer database <name>
 
-   Remote databe name.
+   Remote database name.
 
 .. cfgcmd:: set service monitoring telegraf azure-data-explorer group-metrics <single-table | table-per-metric>
 
