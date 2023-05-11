@@ -74,6 +74,11 @@ sending the messages via port 514/UDP.
    either UDP or TCP.
 
 
+.. cfgcmd:: set system syslog vrf <name>
+
+  Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
+
+
 Local User Account
 ------------------
 
@@ -238,8 +243,8 @@ Delete Logs
 
 Deletes the specified user-defined file <text> in the /var/log/user directory
 
-Note that deleting the log file does not stop the system from logging events. 
-If you use this command while the system is logging events, old log events 
-will be deleted, but events after the delete operation will be recorded in 
-the new file. To delete the file altogether, first delete logging to the 
-file using system syslog :ref:`custom-file` command, and then delete the file. 
+Note that deleting the log file does not stop the system from logging events.
+If you use this command while the system is logging events, old log events
+will be deleted, but events after the delete operation will be recorded in
+the new file. To delete the file altogether, first delete logging to the
+file using system syslog :ref:`custom-file` command, and then delete the file.
