@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2023-05-12
+==========
+
+* :vytask:`T2769` ``(feature): Add VRF support for syslog``
+
+
+2023-05-08
+==========
+
+* :vytask:`T5212` ``(bug): snmp community name -error with special carracter``
+
+
 2023-04-27
 ==========
 
