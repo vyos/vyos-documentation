@@ -8,6 +8,27 @@
    _ext/releasenotes.py
 
 
+2023-05-12
+==========
+
+* :vytask:`T2778` ``(feature): Migrate "system syslog" to get_config_dict() to support new features``
+* :vytask:`T2769` ``(feature): Add VRF support for syslog``
+
+
+2023-05-10
+==========
+
+* :vytask:`T5209` ``(bug): dhclient load-balancing exit hook 04-dhcp-wanlb returned non-zero exit status``
+* :vytask:`T5065` ``(bug): Mixing `destination port xxx` and `destination group port-group yyy` in firewall rules doesn't work, but can be commited``
+* :vytask:`T5060` ``(feature): add a VRRP 'maintenance mode'``
+
+
+2023-05-09
+==========
+
+* :vytask:`T5202` ``(bug): After removal load-balancing a pid remained which used in dhclient-exit-hooks``
+
+
 2023-05-06
 ==========
 
