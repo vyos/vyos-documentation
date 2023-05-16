@@ -13,6 +13,9 @@ Pipfile.lock
 *.vpw
 *.vpwhist
 *.vtg
+.idea/
+.idea
+.idea/*
 
 # python cache files
 *.pyc
