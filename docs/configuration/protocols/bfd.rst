@@ -132,4 +132,58 @@ Operational Commands
                            Transmission interval: 300ms
                            Echo transmission interval: 0ms
 
+BFD Static Route Monitoring 
+===========================
 
+A monitored static route conditions the installation to the RIB on the BFD 
+session running state: when BFD session is up the route is installed to RIB,
+but when the BFD session is down it is removed from the RIB.
+
+Configuration
+-------------
+
+.. cfgcmd::  set protocols static route <subnet> next-hop <address> 
+   bfd profile <profile>
+
+   Configure a static route for <subnet> using gateway <address> 
+   and use the gateway address as BFD peer destination address.
+
+.. cfgcmd::  set protocols static route <subnet> next-hop <address> 
+   bfd multi-hop source <address> profile <profile>
+   
+   Configure a static route for <subnet> using gateway <address> 
+   , use source address to indentify the peer when is multi-hop session 
+   and the gateway address as BFD peer destination address.
+
+.. cfgcmd::  set protocols static route6 <subnet> next-hop <address> 
+   bfd profile <profile>
+
+   Configure a static route for <subnet> using gateway <address> 
+   and use the gateway address as BFD peer destination address.
+
+.. cfgcmd::  set protocols static route6 <subnet> next-hop <address> 
+   bfd multi-hop source <address> profile <profile>
+   
+   Configure a static route for <subnet> using gateway <address> 
+   , use source address to indentify the peer when is multi-hop session 
+   and the gateway address as BFD peer destination address.
+
+Operational Commands
+====================
+
+.. opcmd:: show bfd static routes
+
+   Showing BFD monitored static routes
+
+   .. code-block:: none
+
+      Showing BFD monitored static routes:
+
+        Next hops:
+          VRF default IPv4 Unicast:
+              10.10.13.3/32 peer 192.168.2.3 (status: installed)
+              172.16.10.3/32 peer 192.168.10.1 (status: uninstalled)
+      
+          VRF default IPv4 Multicast:
+      
+          VRF default IPv6 Unicast:
