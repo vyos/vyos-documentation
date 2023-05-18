@@ -105,8 +105,8 @@ Troubleshooting
 ***************
 
 If you encounter problems, verify that the cloud-config document contains
-valid YAML. Online resources such as https://yamlvalidator.com/ provide
-a simple tool for validating YAML.
+valid YAML. Online resources such as https://www.yamllint.com/ provide a
+simple tool for validating YAML.
 
 cloud-init logs to /var/log/cloud-init.log. This file can be helpful in
 determining why the configuration varies from what you expect. You can fetch the
