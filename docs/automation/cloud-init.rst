@@ -96,8 +96,8 @@ first boot.
    #cloud-config
    vyos_config_commands:
      - set system host-name 'vyos-prod-ashburn'
-     - set system ntp server 1.pool.ntp.org
-     - set system ntp server 2.pool.ntp.org
+     - set service ntp server 1.pool.ntp.org
+     - set service ntp server 2.pool.ntp.org
      - delete interfaces ethernet eth1 address 'dhcp'
      - set interfaces ethernet eth1 address '192.0.2.247/24'
      - set protocols static route 198.51.100.0/24 next-hop '192.0.2.1'
@@ -215,7 +215,7 @@ the method with KVM to attach the ISO as a CD drive follows.
 
 
 For more information on the NoCloud data source, visit its `page
-<https://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html>`_
+<https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html>`_
 in the cloud-init documentation. 
 
 ***************
@@ -223,7 +223,7 @@ Troubleshooting
 ***************
 
 If you encounter problems, verify that the cloud-config document contains
-valid YAML. Online resources such as https://yamlvalidator.com/ provide
+valid YAML. Online resources such as https://www.yamllint.com/ provide
 a simple tool for validating YAML.
 
 cloud-init logs to /var/log/cloud-init.log. This file can be helpful in
@@ -319,8 +319,8 @@ vyos-commands. For example:
    #cloud-config
    vyos_config_commands:
      - set system host-name 'vyos-BRAS'
-     - set system ntp server 1.pool.ntp.org
-     - set system ntp server 2.pool.ntp.org
+     - set service ntp server 1.pool.ntp.org
+     - set service ntp server 2.pool.ntp.org
      - delete interfaces ethernet eth0 address 'dhcp'
      - set interfaces ethernet eth0 address '198.51.100.2/30'
      - set interfaces ethernet eth0 description 'WAN - ISP01'
