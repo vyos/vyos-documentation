@@ -244,8 +244,8 @@ users.
   set vpn openconnect authentication identity-based-config default-config /config/auth/ocserv/default-user.conf
 
 .. warning:: The above directory and default-config must be a child directory
-of /config/auth, since files outside this directory are not persisted after an
-image upgrade.
+  of /config/auth, since files outside this directory are not persisted after an
+  image upgrade.
 
 Once you commit the above changes you can create a config file in the
 /config/auth/ocserv/config-per-user directory that matches a username of a
@@ -264,8 +264,8 @@ in group mode except that group mode can only be used with RADIUS
 authentication.
 
 .. warning:: OpenConnect server matches the filename in a case sensitive
-manner, make sure the username/group name you configure matches the
-filename exactly.
+  manner, make sure the username/group name you configure matches the
+  filename exactly.
 
 Configuring RADIUS accounting
 =============================
