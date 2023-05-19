@@ -222,6 +222,51 @@ To display the configured OTP user settings, use the command:
 
   show openconnect-server user <username> otp <full|key-b32|key-hex|qrcode|uri>
 
+Identity Based Configuration
+============================
+
+OpenConnect supports a subset of it's configuration options to be applied on a
+per user/group basis, for configuration purposes we refer to this functionality
+as "Identity based config". The following `OpenConnect Server Manual
+<https://ocserv.gitlab.io/www/manual.html#:~:text=Configuration%20files%20that%
+20will%20be%20applied%20per%20user%20connection%20or%0A%23%20per%20group>`_
+outlines the set of configuration options that are allowed. This can be
+leveraged to apply different sets of configs to different users or groups of
+users.
+
+.. code-block:: none
+
+  sudo mkdir -p /config/auth/ocserv/config-per-user
+  sudo touch /config/auth/ocserv/default-user.conf
+
+  set vpn set vpn openconnect authentication identity-based-config mode user
+  set vpn openconnect authentication identity-based-config directory /config/auth/ocserv/config-per-user
+  set vpn openconnect authentication identity-based-config default-config /config/auth/ocserv/default-user.conf
+
+.. warning:: The above directory and default-config must be a child directory
+of /config/auth, since files outside this directory are not persisted after an
+image upgrade.
+
+Once you commit the above changes you can create a config file in the
+/config/auth/ocserv/config-per-user directory that matches a username of a
+user you have created e.g. "tst". Now when logging in with the "tst" user the
+config options you set in this file will be loaded.
+
+Be sure to set a sane default config in the default config file, this will be
+loaded in the case that a user is authenticated and no file is found in the
+configured directory matching the users username/group.
+
+.. code-block:: node
+  sudo nano /config/auth/ocserv/config-per-user/tst
+
+The same configuration options apply when Identity based config is configured
+in group mode except that group mode can only be used with RADIUS
+authentication.
+
+.. warning:: OpenConnect server matches the filename in a case sensitive
+manner, make sure the username/group name you configure matches the
+filename exactly.
+
 Configuring RADIUS accounting
 =============================
 
