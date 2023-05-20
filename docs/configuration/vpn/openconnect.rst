@@ -256,7 +256,8 @@ Be sure to set a sane default config in the default config file, this will be
 loaded in the case that a user is authenticated and no file is found in the
 configured directory matching the users username/group.
 
-.. code-block:: node
+.. code-block:: none
+
   sudo nano /config/auth/ocserv/config-per-user/tst
 
 The same configuration options apply when Identity based config is configured
