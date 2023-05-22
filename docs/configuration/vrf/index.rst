@@ -194,8 +194,8 @@ For VRF maintenance the following operational commands are in place.
    the round-trip time of these packets is used in calculating the minimum/
    average/maximum round-trip time numbers.
 
-   Ping command can be interrupted at any given time using `<Ctrl>+c`- A brief
-   statistic is shown afterwards.
+   .. note:: Ping command can be interrupted at any given time using ``<Ctrl>+c``.
+     A brief statistic is shown afterwards.
 
    .. code-block:: none
 
@@ -214,6 +214,17 @@ For VRF maintenance the following operational commands are in place.
    identified by `<name>`. When using the IPv4 or IPv6 option, displays the
    route packets taken to the given hosts IP address family. This option is
    useful when the host is specified as a hostname rather than an IP address.
+
+.. opcmd:: force vrf <name>
+
+   Join a given VRF. This will open a new subshell within the specified VRF.
+
+   The prompt is adjusted to reflect this change in both config and op-mode.
+
+   .. code-block:: none
+
+     vyos@vyos:~$ force vrf blue
+     vyos@vyos:blue:~$
 
 .. _vrf example:
 
