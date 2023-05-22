@@ -8,6 +8,33 @@
    _ext/releasenotes.py
 
 
+2023-05-21
+==========
+
+* :vytask:`T4733` ``(default): Feature Request: dhcp server: add VRF support``
+* :vytask:`T5218` ``(enhancment): Revise vyos xml lib for bug fixes and extensions``
+
+
+2023-05-17
+==========
+
+* :vytask:`T5226` ``(default): Deduplicate and standardize validators and constraints for hostname and IP address``
+* :vytask:`T5225` ``(bug): BGP allowas-in unusable``
+* :vytask:`T5208` ``(bug): Failed to start nvmf-autoconnect.service during the boot``
+
+
+2023-05-16
+==========
+
+* :vytask:`T5194` ``(default): Add reference tree to vyos1x-config``
+
+
+2023-05-15
+==========
+
+* :vytask:`T3896` ``(feature): Extend ocserv support to allow for per-group configs``
+
+
 2023-05-12
 ==========
 
