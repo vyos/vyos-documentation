@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2023-05-19
+==========
+
+* :vytask:`T5186` (bug): QoS test cannot pass for 1.3
+
+
 2023-05-12
 ==========
 
