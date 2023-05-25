@@ -130,13 +130,13 @@ configuring it.
 .. note:: The meaning of the Class ID is not the same for every type of
    policy. Normally policies just need a meaningless number to identify
    a class (Class ID), but that does not apply to every policy.
-   The the number of a class in a Priority Queue it does not only
+   The number of a class in a Priority Queue it does not only
    identify it, it also defines its priority.
 
 
 .. code-block:: none
 
-  set traffic-policy <policy> <policy-name> class <class-ID> match <class-matching-rule-name>
+  set qos policy <policy> <policy-name> class <class-ID> match <class-matching-rule-name>
 
 
 In the command above, we set the type of policy we are going to
@@ -148,8 +148,8 @@ A class can have multiple match filters:
 
 .. code-block:: none
 
-  set traffic-policy shaper MY-SHAPER class 30 match HTTP
-  set traffic-policy shaper MY-SHAPER class 30 match HTTPs
+  set qos policy shaper MY-SHAPER class 30 match HTTP
+  set qos policy shaper MY-SHAPER class 30 match HTTPs
 
 A match filter can contain multiple criteria and will match traffic if
 all those criteria are true.
@@ -158,8 +158,8 @@ For example:
 
 .. code-block:: none
 
-  set traffic-policy shaper MY-SHAPER class 30 match HTTP ip protocol tcp
-  set traffic-policy shaper MY-SHAPER class 30 match HTTP ip source port 80
+  set qos policy shaper MY-SHAPER class 30 match HTTP ip protocol tcp
+  set qos policy shaper MY-SHAPER class 30 match HTTP ip source port 80
 
 This will match TCP traffic with source port 80.
 
@@ -181,13 +181,13 @@ different parameters you can configure.
 
 .. code-block:: none
 
-   vyos@vyos# set traffic-policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER 
+   vyos@vyos# set qos policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER 
    Possible completions:
-      description  Description for this match
+      description  Description
     > ether        Ethernet header match
-      interface    Interface name for this match
+      interface    Interface to use
     > ip           Match IP protocol header
-    > ipv6         Match IPV6 header
+    > ipv6         Match IPV6 protocol header
       mark         Match on mark applied by firewall
       vif          Virtual Local Area Network (VLAN) ID for this match
  
@@ -201,7 +201,7 @@ You can also write a description for a filter:
 
 .. code-block:: none
 
-  set traffic-policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER description "My filter description"
+  set qos policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER description "My filter description"
 
 
 
@@ -233,25 +233,25 @@ possibilities depending on the Traffic Policy you are configuring.
 
 .. code-block:: none
 
-   vyos@vyos# set traffic-policy shaper MY-SHAPER class 30 
+   vyos@vyos# set qos policy shaper MY-SHAPER class 30 
    Possible completions:
-      bandwidth    Bandwidth used for this class
-      burst        Burst size for this class (default: 15kb)
+      bandwidth    Available bandwidth for this policy (default: auto)
+      burst        Burst size for this class (default: 15k)
       ceiling      Bandwidth limit for this class
       codel-quantum
-                   fq-codel - Number of bytes used as 'deficit' (default 1514)
-      description  Description for this traffic class
-      flows        fq-codel - Number of flows (default 1024)
-      interval     fq-codel - Interval (milliseconds) used to measure the delay (default 100)
+                   Deficit in the fair queuing algorithm (default 1514)
+      description  Description
+      flows        Number of flows into which the incoming packets are classified(default 1024)
+      interval     Interval used to measure the delay (default 100)
    +> match        Class matching rule name
-      priority     Priority for usage of excess bandwidth
-      queue-limit  Maximum queue size (packets)
-      queue-type   Queue type for this class
+      priority     Priority for rule evaluation
+      queue-limit  Maximum queue size
+      queue-type   Queue type for default traffic (default: fq-codel)
       set-dscp     Change the Differentiated Services (DiffServ) field in the IP header
-      target       fq-codel - Acceptable minimum queue delay (milliseconds)
+      target       Acceptable minimum standing/persistent queue delay (default: 5)
    
 
-For instance, with :code:`set traffic-policy shaper MY-SHAPER
+For instance, with :code:`set qos policy shaper MY-SHAPER
 class 30 set-dscp EF` you would be modifying the DSCP field value of packets in
 that class to Expedite Forwarding.
 
@@ -316,9 +316,9 @@ setting.
 
 .. code-block:: none
 
-   set traffic-policy shaper FQ-SHAPER bandwidth 4gbit
-   set traffic-policy shaper FQ-SHAPER default bandwidth 100%
-   set traffic-policy shaper FQ-SHAPER default queue-type fq-codel
+   set qos policy shaper FQ-SHAPER bandwidth 4gbit
+   set qos policy shaper FQ-SHAPER default bandwidth 100%
+   set qos policy shaper FQ-SHAPER default queue-type fq-codel
 
 As shown in the last command of the example above, the `queue-type`
 setting allows these combinations. You will be able to use it
@@ -372,7 +372,7 @@ This is the policy that requieres the lowest resources for the same
 amount of traffic. But **very likely you do not need it as you cannot
 get much from it. Sometimes it is used just to enable logging.**
 
-.. cfgcmd:: set traffic-policy drop-tail <policy-name> queue-limit
+.. cfgcmd:: set qos policy drop-tail <policy-name> queue-limit
    <number-of-packets>
 
    Use this command to configure a drop-tail policy (PFIFO). Choose a
@@ -393,7 +393,7 @@ fairness so that each flow is able to send data in turn, preventing any
 single one from drowning out the rest.
 
 
-.. cfgcmd:: set traffic-policy fair-queue <policy-name>
+.. cfgcmd:: set qos policy fair-queue <policy-name>
 
    Use this command to create a Fair-Queue policy and give it a name.
    It is based on the Stochastic Fairness Queueing and can be applied to
@@ -411,7 +411,7 @@ packet reordering to occur. An advisable value could be 10 seconds.
 One of the uses of Fair Queue might be the mitigation of Denial of
 Service attacks.
 
-.. cfgcmd:: set traffic-policy fair-queue <policy-name> hash-interval <seconds>`
+.. cfgcmd:: set qos policy fair-queue <policy-name> hash-interval <seconds>
 
    Use this command to define a Fair-Queue policy, based on the
    Stochastic Fairness Queueing, and set the number of seconds at which
@@ -420,7 +420,7 @@ Service attacks.
 When dequeuing, each hash-bucket with data is queried in a round robin
 fashion. You can configure the length of the queue.
 
-.. cfgcmd:: set traffic-policy fair-queue <policy-name> queue-limit <limit>
+.. cfgcmd:: set qos policy fair-queue <policy-name> queue-limit <limit>
 
    Use this command to define a Fair-Queue policy, based on the
    Stochastic Fairness Queueing, and set the number of maximum packets
@@ -492,33 +492,33 @@ being ok) you may also want to increase `target` to something like 15ms
 and increase `interval` to something around 150 ms.
 
 
-.. cfgcmd:: set traffic-policy fq-codel <policy name> codel-quantum <bytes>
+.. cfgcmd:: set qos policy fq-codel <policy name> codel-quantum <bytes>
 
    Use this command to configure an fq-codel policy, set its name and
    the maximum number of bytes (default: 1514) to be dequeued from a
    queue at once.
 
-.. cfgcmd:: set traffic-policy fq-codel <policy name> flows <number-of-flows>
+.. cfgcmd:: set qos policy fq-codel <policy name> flows <number-of-flows>
 
    Use this command to configure an fq-codel policy, set its name and
    the number of sub-queues (default: 1024) into which packets are
    classified.
 
-.. cfgcmd:: set traffic-policy fq-codel <policy name> interval <miliseconds>
+.. cfgcmd:: set qos policy fq-codel <policy name> interval <miliseconds>
 
    Use this command to configure an fq-codel policy, set its name and
    the time period used by the control loop of CoDel to detect when a
    persistent queue is developing, ensuring that the measured minimum
    delay does not become too stale (default: 100ms).
 
-.. cfgcmd:: set traffic-policy fq-codel <policy-name> queue-limit
-   <number-of-packets>`
+.. cfgcmd:: set qos policy fq-codel <policy-name> queue-limit
+   <number-of-packets>
 
    Use this command to configure an fq-codel policy, set its name, and
    define a hard limit on the real queue size. When this limit is
    reached, new packets are dropped (default: 10240 packets).
 
-.. cfgcmd:: set traffic-policy fq-codel <policy-name> target <miliseconds>`
+.. cfgcmd:: set qos policy fq-codel <policy-name> target <miliseconds>
 
    Use this command to configure an fq-codel policy, set its name, and
    define the acceptable minimum standing/persistent queue delay. This
@@ -534,9 +534,9 @@ A simple example of an FQ-CoDel policy working inside a Shaper one.
 
 .. code-block:: none
 
-   set traffic-policy shaper FQ-CODEL-SHAPER bandwidth 2gbit
-   set traffic-policy shaper FQ-CODEL-SHAPER default bandwidth 100%
-   set traffic-policy shaper FQ-CODEL-SHAPER default queue-type fq-codel
+   set qos policy shaper FQ-CODEL-SHAPER bandwidth 2gbit
+   set qos policy shaper FQ-CODEL-SHAPER default bandwidth 100%
+   set qos policy shaper FQ-CODEL-SHAPER default queue-type fq-codel
 
 
 
@@ -565,7 +565,7 @@ the configured classes.
   **inbound** traffic, check the ingress-shaping_ section.
 
 
-.. cfgcmd:: set traffic-policy limiter <policy-name> class <class ID> match
+.. cfgcmd:: set qos policy limiter <policy-name> class <class ID> match
    <match-name> description <description>
 
    Use this command to configure an Ingress Policer, defining its name,
@@ -577,7 +577,7 @@ Once the matching rules are set for a class, you can start configuring
 how you want matching traffic to behave.
 
 
-.. cfgcmd:: set traffic-policy limiter <policy-name> class <class-ID> bandwidth
+.. cfgcmd:: set qos policy limiter <policy-name> class <class-ID> bandwidth
    <rate>
 
    Use this command to configure an Ingress Policer, defining its name,
@@ -585,7 +585,7 @@ how you want matching traffic to behave.
    this class.
 
 
-.. cfgcmd:: set traffic-policy limiter <policy-name> class <class-ID> burst
+.. cfgcmd:: set qos policy limiter <policy-name> class <class-ID> burst
    <burst-size>
 
    Use this command to configure an Ingress Policer, defining its name,
@@ -593,19 +593,19 @@ how you want matching traffic to behave.
    class (default: 15).
 
 
-.. cfgcmd:: set traffic-policy limiter <policy-name> default bandwidth <rate>
+.. cfgcmd:: set qos policy limiter <policy-name> default bandwidth <rate>
 
    Use this command to configure an Ingress Policer, defining its name
    and the maximum allowed bandwidth for its default policy.
 
 
-.. cfgcmd:: set traffic-policy limiter <policy-name> default burst <burst-size>
+.. cfgcmd:: set qos policy limiter <policy-name> default burst <burst-size>
 
    Use this command to configure an Ingress Policer, defining its name
    and the burst size in bytes (default: 15) for its default policy.
 
 
-.. cfgcmd:: set traffic-policy limiter <policy-name> class <class ID> priority
+.. cfgcmd:: set qos policy limiter <policy-name> class <class ID> priority
    <value>
 
    Use this command to configure an Ingress Policer, defining its name,
@@ -629,13 +629,13 @@ This could be helpful if you want to test how an application behaves
 under certain network conditions.
 
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> bandwidth <rate>
+.. cfgcmd:: set qos policy network-emulator <policy-name> bandwidth <rate>
    
    Use this command to configure the maximum rate at which traffic will
    be shaped in a Network Emulator policy. Define the name of the policy
    and the rate.
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> burst <burst-size>
+.. cfgcmd:: set qos policy network-emulator <policy-name> burst <burst-size>
    
    Use this command to configure the burst size of the traffic in a
    Network Emulator policy. Define the name of the Network Emulator
@@ -643,7 +643,7 @@ under certain network conditions.
    Token Bucket Filter qdisc). Default:15kb. It will only take effect if
    you have configured its bandwidth too.
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> network-delay
+.. cfgcmd:: set qos policy network-emulator <policy-name> delay
    <delay>
    
    Use this command to configure a Network Emulator policy defining its
@@ -653,7 +653,7 @@ under certain network conditions.
    configured its bandwidth too. You can use secs, ms and us. Default:
    50ms.
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> packet-corruption
+.. cfgcmd:: set qos policy network-emulator <policy-name> corruption
    <percent>
    
    Use this command to emulate noise in a Network Emulator policy. Set
@@ -661,14 +661,14 @@ under certain network conditions.
    random error will be introduced in a random position for the chosen
    percent of packets.
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> packet-loss
+.. cfgcmd:: set qos policy network-emulator <policy-name> loss
    <percent>
    
    Use this command to emulate packet-loss conditions in a Network
    Emulator policy. Set the policy name and the percentage of loss
    packets your traffic will suffer.
 
-.. cfgcmd:: set traffic-policy network-emulator <policy-name> packet-reordering
+.. cfgcmd:: set traffic-policy network-emulator <policy-name> reordering
    <percent>
    
    Use this command to emulate packet-reordering conditions in a Network
@@ -720,13 +720,13 @@ for your classes:
 
 .. code-block:: none
 
-   vyos@vyos# set traffic-policy priority-queue MY-PRIO class 3 match MY-MATCH-RULE 
+   vyos@vyos# set qos policy priority-queue MY-PRIO class 3 match MY-MATCH-RULE 
    Possible completions:
-      description  Description for this match
+      description  Description
     > ether        Ethernet header match
-      interface    Interface name for this match
+      interface    Interface to use
     > ip           Match IP protocol header
-    > ipv6         Match IPV6 header
+    > ipv6         Match IPV6 protocol header
       mark         Match on mark applied by firewall
       vif          Virtual Local Area Network (VLAN) ID for this match
 
@@ -737,18 +737,18 @@ setting:
 
 .. code-block:: none
 
-   vyos@vyos# set traffic-policy priority-queue MY-PRIO class 3 queue-type 
+   vyos@vyos# set qos policy priority-queue MY-PRIO class 3 queue-type 
    Possible completions:
+      drop-tail    First-In-First-Out (FIFO) (default)
       fq-codel     Fair Queue Codel
       fair-queue   Stochastic Fair Queue (SFQ)
-      drop-tail    First-In-First-Out (FIFO)
-      priority     Priority queueing based on DSCP
+      priority     Priority queueing
       random-detect
                    Random Early Detection (RED)
 
 
-.. cfgcmd:: set traffic-policy priority-queue <policy-name> class <class-ID> 
-   queue-limit <limit>`
+.. cfgcmd:: set qos policy priority-queue <policy-name> class <class-ID> 
+   queue-limit <limit>
 
    Use this command to configure a Priority Queue policy, set its name,
    set a class with a priority from 1 to 7 and define a hard limit on
@@ -809,7 +809,7 @@ algorithm might be to prevent a backbone overload. But only for TCP
 (because dropped packets could be retransmitted), not for UDP.
 
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> bandwidth <bandwidth>
+.. cfgcmd:: set qos policy random-detect <policy-name> bandwidth <bandwidth>
 
    Use this command to configure a Random-Detect policy, set its name
    and set the available bandwidth for this policy. It is used for
@@ -817,7 +817,7 @@ algorithm might be to prevent a backbone overload. But only for TCP
    set to the bandwidth of your interface. Random Detect is not a
    shaping policy, this command will not shape.
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence
+.. cfgcmd:: set qos policy random-detect <policy-name> precedence
    <IP-precedence-value> average-packet <bytes>
    
    Use this command to configure a Random-Detect policy and set its
@@ -828,7 +828,7 @@ algorithm might be to prevent a backbone overload. But only for TCP
 .. note:: When configuring a Random-Detect policy: **the higher the
    precedence number, the higher the priority**.
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence
+.. cfgcmd:: set qos policy random-detect <policy-name> precedence
    <IP-precedence-value> mark-probability <value>
    
    Use this command to configure a Random-Detect policy and set its
@@ -837,7 +837,7 @@ algorithm might be to prevent a backbone overload. But only for TCP
    probability by giving the N value of the fraction 1/N (default: 10).
 
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence
+.. cfgcmd:: set qos policy random-detect <policy-name> precedence
    <IP-precedence-value> maximum-threshold <packets>
    
    Use this command to configure a Random-Detect policy and set its
@@ -846,7 +846,7 @@ algorithm might be to prevent a backbone overload. But only for TCP
    be (from 0 to 4096 packets, default: 18). At this size, the marking
    (drop) probability is maximal.
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence
+.. cfgcmd:: set qos policy random-detect <policy-name> precedence
    <IP-precedence-value> minimum-threshold <packets>
    
    Use this command to configure a Random-Detect policy and set its
@@ -879,7 +879,7 @@ The default values for the minimum-threshold depend on IP precedence:
  +------------+-----------------------+
 
 
-.. cfgcmd:: set traffic-policy random-detect <policy-name> precedence
+.. cfgcmd:: set qos policy random-detect <policy-name> precedence
    <IP-precedence-value> queue-limit <packets>
    
    Use this command to configure a Random-Detect policy and set its
@@ -925,12 +925,12 @@ Rate-Control traffic is stocked with tokens which correspond to the
 amount of traffic that can be burst in one go. Tokens arrive at a steady
 rate, until the bucket is full.
 
-.. cfgcmd:: set traffic-policy rate-control <policy-name> bandwidth <rate>
+.. cfgcmd:: set qos policy rate-control <policy-name> bandwidth <rate>
 
    Use this command to configure a Rate-Control policy, set its name
    and the rate limit you want to have.
 
-.. cfgcmd:: set traffic-policy rate-control <policy-name> burst <burst-size>
+.. cfgcmd:: set qos policy rate-control <policy-name> burst <burst-size>
 
    Use this command to configure a Rate-Control policy, set its name
    and the size of the bucket in bytes which will be available for
@@ -942,7 +942,7 @@ buffer if you want to reach your configured rate.
 
 A very small buffer will soon start dropping packets.
 
-.. cfgcmd:: set traffic-policy rate-control <policy-name> latency 
+.. cfgcmd:: set qos policy rate-control <policy-name> latency 
 
    Use this command to configure a Rate-Control policy, set its name
    and the maximum amount of time a packet can be queued (default: 50
@@ -981,14 +981,14 @@ At every round, the deficit counter adds the quantum so that even large
 packets will have their opportunity to be dequeued.
 
 
-.. cfgcmd:: set traffic-policy round-robin <policy name> class
+.. cfgcmd:: set qos policy round-robin <policy name> class
    <class-ID> quantum <packets>
 
    Use this command to configure a Round-Robin policy, set its name, set
    a class ID, and the quantum for that class. The deficit counter will
    add that value each round.
 
-.. cfgcmd:: set traffic-policy round-robin <policy name> class
+.. cfgcmd:: set qos policy round-robin <policy name> class
    <class ID> queue-limit <packets>
 
    Use this command to configure a Round-Robin policy, set its name, set
@@ -999,12 +999,14 @@ class through the ``queue-type`` setting.
 
 .. code-block:: none
 
-   vyos@vyos# set traffic-policy round-robin DRR class 10 queue-type 
+   vyos@vyos# set qos policy round-robin DRR class 10 queue-type 
    Possible completions:
+      drop-tail    First-In-First-Out (FIFO) (default)
       fq-codel     Fair Queue Codel
       fair-queue   Stochastic Fair Queue (SFQ)
-      drop-tail    First-In-First-Out (FIFO)
-      priority     Priority queueing based on DSCP
+      priority     Priority queueing based
+      random-detect
+                   Random Early Detection (RED)
             
 
 
@@ -1035,34 +1037,34 @@ allocated. Priority can be any number from 0 to 7. The lower the number,
 the higher the priority.
 
 
-.. cfgcmd:: set traffic-policy shaper <policy-name> bandwidth <rate>
+.. cfgcmd:: set qos policy shaper <policy-name> bandwidth <rate>
 
    Use this command to configure a Shaper policy, set its name
    and the maximum bandwidth for all combined traffic.
 
 
-.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> bandwidth
+.. cfgcmd:: set qos policy shaper <policy-name> class <class-ID> bandwidth
    <rate>
 
    Use this command to configure a Shaper policy, set its name, define
    a class and set the guaranteed traffic you want to allocate to that
    class.
 
-.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> burst
+.. cfgcmd:: set qos policy shaper <policy-name> class <class-ID> burst
    <bytes>
 
    Use this command to configure a Shaper policy, set its name, define
    a class and set the size of the `tocken bucket`_ in bytes, which will
    be available to be sent at ceiling speed (default: 15Kb).
 
-.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> ceiling
+.. cfgcmd:: set qos policy shaper <policy-name> class <class-ID> ceiling
    <bandwidth>
 
    Use this command to configure a Shaper policy, set its name, define
    a class and set the maximum speed possible for this class. The
    default ceiling value is the bandwidth value.
 
-.. cfgcmd:: set traffic-policy shaper <policy-name> class <class-ID> priority
+.. cfgcmd:: set qos policy shaper <policy-name> class <class-ID> priority
    <0-7>
 
    Use this command to configure a Shaper policy, set its name, define
@@ -1078,34 +1080,34 @@ parameters.
 
 .. code-block:: none
 
-   vyos@vyos# set traffic-policy shaper HTB class 10 queue-type 
+   vyos@vyos# set qos policy shaper HTB class 10 queue-type 
    Possible completions:
-      fq-codel     Fair Queue Codel
+      fq-codel     Fair Queue Codel (default)
       fair-queue   Stochastic Fair Queue (SFQ)
       drop-tail    First-In-First-Out (FIFO)
-      priority     Priority queueing based on DSCP
+      priority     Priority queueing
       random-detect
                    Random Early Detection (RED)
 
 
 .. code-block:: none
 
-   vyos@vyos# set traffic-policy shaper HTB class 10 
+   vyos@vyos# set qos policy shaper HTB class 10 
    Possible completions:
-      bandwidth    Bandwidth used for this class
-      burst        Burst size for this class (default: 15kb)
+      bandwidth    Available bandwidth for this policy (default: auto)
+      burst        Burst size for this class (default: 15k)
       ceiling      Bandwidth limit for this class
       codel-quantum
-                   fq-codel - Number of bytes used as 'deficit' (default 1514)
-      description  Description for this traffic class
-      flows        fq-codel - Number of flows (default 1024)
-      interval     fq-codel - Interval (milliseconds) used to measure the delay (default 100)
+                   Deficit in the fair queuing algorithm (default 1514)
+      description  Description
+      flows        Number of flows into which the incoming packets are classified (default 1024)
+      interval     Interval used to measure the delay (default 100)
    +> match        Class matching rule name
-      priority     Priority for usage of excess bandwidth
+      priority     Priority for rule evaluation
       queue-limit  Maximum queue size (packets)
-      queue-type   Queue type for this class
+      queue-type   Queue type for default traffic (default: fq-codel)
       set-dscp     Change the Differentiated Services (DiffServ) field in the IP header
-      target       fq-codel - Acceptable minimum queue delay (milliseconds)
+      target       Acceptable minimum standing/persistent queue delay (default: 5)
 
 
 
@@ -1124,24 +1126,24 @@ A simple example of Shaper using priorities.
 
 .. code-block:: none
 
-   set traffic-policy shaper MY-HTB bandwidth '50mbit'
-   set traffic-policy shaper MY-HTB class 10 bandwidth '20%'
-   set traffic-policy shaper MY-HTB class 10 match DSCP ip dscp 'EF'
-   set traffic-policy shaper MY-HTB class 10 queue-type 'fq-codel'
-   set traffic-policy shaper MY-HTB class 20 bandwidth '10%'
-   set traffic-policy shaper MY-HTB class 20 ceiling '50%'
-   set traffic-policy shaper MY-HTB class 20 match PORT666 ip destination port '666'
-   set traffic-policy shaper MY-HTB class 20 priority '3'
-   set traffic-policy shaper MY-HTB class 20 queue-type 'fair-queue'
-   set traffic-policy shaper MY-HTB class 30 bandwidth '10%'
-   set traffic-policy shaper MY-HTB class 30 ceiling '50%'
-   set traffic-policy shaper MY-HTB class 30 match ADDRESS30 ip source address '192.168.30.0/24'
-   set traffic-policy shaper MY-HTB class 30 priority '5'
-   set traffic-policy shaper MY-HTB class 30 queue-type 'fair-queue'
-   set traffic-policy shaper MY-HTB default bandwidth '10%'
-   set traffic-policy shaper MY-HTB default ceiling '100%'
-   set traffic-policy shaper MY-HTB default priority '7'
-   set traffic-policy shaper MY-HTB default queue-type 'fair-queue'
+   set qos policy shaper MY-HTB bandwidth '50mbit'
+   set qos policy shaper MY-HTB class 10 bandwidth '20%'
+   set qos policy shaper MY-HTB class 10 match DSCP ip dscp 'EF'
+   set qos policy shaper MY-HTB class 10 queue-type 'fq-codel'
+   set qos policy shaper MY-HTB class 20 bandwidth '10%'
+   set qos policy shaper MY-HTB class 20 ceiling '50%'
+   set qos policy shaper MY-HTB class 20 match PORT666 ip destination port '666'
+   set qos policy shaper MY-HTB class 20 priority '3'
+   set qos policy shaper MY-HTB class 20 queue-type 'fair-queue'
+   set qos policy shaper MY-HTB class 30 bandwidth '10%'
+   set qos policy shaper MY-HTB class 30 ceiling '50%'
+   set qos policy shaper MY-HTB class 30 match ADDRESS30 ip source address '192.168.30.0/24'
+   set qos policy shaper MY-HTB class 30 priority '5'
+   set qos policy shaper MY-HTB class 30 queue-type 'fair-queue'
+   set qos policy shaper MY-HTB default bandwidth '10%'
+   set qos policy shaper MY-HTB default ceiling '100%'
+   set qos policy shaper MY-HTB default priority '7'
+   set qos policy shaper MY-HTB default queue-type 'fair-queue'
 
 
 Applying a traffic policy
@@ -1151,32 +1153,23 @@ Once a traffic-policy is created, you can apply it to an interface:
 
 .. code-block:: none
 
-  set interfaces etherhet eth0 traffic-policy out WAN-OUT
+  set qos interface eth0 egress WAN-OUT
 
 You can only apply one policy per interface and direction, but you could
 reuse a policy on different interfaces and directions:
 
 .. code-block:: none
 
-  set interfaces ethernet eth0 traffic-policy in WAN-IN
-  set interfaces etherhet eth0 traffic-policy out WAN-OUT
-  set interfaces etherhet eth1 traffic-policy in LAN-IN
-  set interfaces etherhet eth1 traffic-policy out LAN-OUT
-  set interfaces ethernet eth2 traffic-policy in LAN-IN
-  set interfaces ethernet eth2 traffic-policy out LAN-OUT
-  set interfaces etherhet eth3 traffic-policy in TWO-WAY-POLICY
-  set interfaces etherhet eth3 traffic-policy out TWO-WAY-POLICY
-  set interfaces etherhet eth4 traffic-policy in TWO-WAY-POLICY
-  set interfaces etherhet eth4 traffic-policy out TWO-WAY-POLICY
-
-Getting queueing information
-----------------------------
-
-.. opcmd:: show queueing <interface-type> <interface-name>
-
-   Use this command to see the queueing information for an interface.
-   You will be able to see a packet counter (Sent, Dropped, Overlimit
-   and Backlog) per policy and class configured.
+  set qos interface eth0 ingress WAN-IN
+  set qos interface eth0 egress WAN-OUT
+  set qos interface eth1 ingress LAN-IN
+  set qos interface eth1 egress LAN-OUT
+  set qos interface eth2 ingress LAN-IN
+  set qos interface eth2 egress LAN-OUT
+  set qos interface eth3 ingress TWO-WAY-POLICY
+  set qos interface eth3 egress TWO-WAY-POLICY
+  set qos interface eth4 ingress TWO-WAY-POLICY
+  set qos interface eth4 egress TWO-WAY-POLICY
 
 
 
@@ -1203,11 +1196,11 @@ That is how it is possible to do the so-called "ingress shaping".
 
 .. code-block:: none
 
-   set traffic-policy shaper MY-INGRESS-SHAPING bandwidth 1000kbit
-   set traffic-policy shaper MY-INGRESS-SHAPING default bandwidth 1000kbit
-   set traffic-policy shaper MY-INGRESS-SHAPING default queue-type fair-queue
+   set qos policy shaper MY-INGRESS-SHAPING bandwidth 1000kbit
+   set qos policy shaper MY-INGRESS-SHAPING default bandwidth 1000kbit
+   set qos policy shaper MY-INGRESS-SHAPING default queue-type fair-queue
    
-   set interfaces input ifb0 traffic-policy out MY-INGRESS-SHAPING
+   set qos interface ifb0 egress MY-INGRESS-SHAPING
    set interfaces ethernet eth0 redirect ifb0
 
 .. warning::
