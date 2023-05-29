@@ -8,6 +8,41 @@
    _ext/releasenotes.py
 
 
+2023-05-28
+==========
+
+* :vytask:`T5244` ``(feature): dropbear: update to 2022.83``
+* :vytask:`T5242` ``(feature): interfaces: smoketest: automatically detect "capabilities"``
+* :vytask:`T5234` ``(feature): Add bash identifier for given VRF instance``
+
+
+2023-05-25
+==========
+
+* :vytask:`T5237` ``(feature): interfaces virtual-ethernet  - Extend capabilitys of Vlans/QinQ``
+* :vytask:`T4686` ``(feature): Provides support for veth``
+
+
+2023-05-24
+==========
+
+* :vytask:`T4605` ``(feature): Firewall change default table names``
+* :vytask:`T4550` ``(feature): router-advert: Add deprecate-prefix & decrement-lifetimes options``
+
+
+2023-05-23
+==========
+
+* :vytask:`T4916` ``(feature): Rewrite IPsec authentication``
+
+
+2023-05-22
+==========
+
+* :vytask:`T5214` ``(bug): PPPoE-server incorrect warning if a named pool is defined``
+* :vytask:`T4977` ``(feature): Babel routing protocol support``
+
+
 2023-05-21
 ==========
 
