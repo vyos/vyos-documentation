@@ -68,12 +68,6 @@
 * :vytask:`T5097` (bug):  the operational command "show interfaces ethernet ethx" doesn't reflect a call to 'clear counters'
 
 
-2023-03-27
-==========
-
-* :vytask:`T4737` (bug): FRRouting/zebra 7.5.1 does not redistribute routes to other protocols
-
-
 2023-03-21
 ==========
 
