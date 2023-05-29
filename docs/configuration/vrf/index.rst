@@ -224,7 +224,7 @@ For VRF maintenance the following operational commands are in place.
    .. code-block:: none
 
      vyos@vyos:~$ force vrf blue
-     vyos@vyos:blue:~$
+     vyos@vyos(vrf:blue):~$
 
 .. _vrf example:
 
