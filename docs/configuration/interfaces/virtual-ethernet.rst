@@ -26,6 +26,21 @@ Common interface configuration
 .. cmdinclude:: /_include/interface-description.txt
    :var0: virtual-ethernet
    :var1: veth0
+VLAN
+====
+
+Regular VLANs (802.1q)
+----------------------
+.. cmdinclude:: /_include/interface-vlan-8021q.txt
+   :var0: virtual-ethernet
+   :var1: veth0
+
+QinQ (802.1ad)
+--------------
+
+.. cmdinclude:: /_include/interface-vlan-8021ad.txt
+   :var0: virtual-ethernet
+   :var1: veth0
 
 .. cmdinclude:: /_include/interface-disable.txt
    :var0: virtual-ethernet
