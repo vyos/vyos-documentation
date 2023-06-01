@@ -245,8 +245,8 @@ IPv6
   .. note:: This command was introduced in VyOS 1.4 - it was previously called:
     ``set firewall options interface <name> adjust-mss <value>``
 
-  .. hint:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in
-    1452 bytes on a 1492 byte MTU.
+  .. hint:: MSS value = MTU - 40 (IPv6 header) - 20 (TCP header), resulting in
+    1432 bytes on a 1492 byte MTU.
 
   Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to
   automatically set the proper value.
