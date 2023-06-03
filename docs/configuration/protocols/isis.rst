@@ -127,6 +127,19 @@ IS-IS Global Configuration
   level-2
 
   This command will generate a default-route in L2 database.
+  
+  
+.. cfgcmd:: set protocols isis ldp-sync
+
+  This command will enable IGP-LDP synchronization globally for ISIS. This
+  requires for LDP to be functional. This is described in :rfc:`5443`. By
+  default all interfaces operational in IS-IS are enabled for synchronization.
+  Loopbacks are exempt.
+  
+.. cfgcmd:: set protocols isis ldp-sync holddown <seconds>
+
+  This command will change the hold down value globally for IGP-LDP
+  synchronization during convergence/interface flap events. 
 
 
 Interface Configuration
@@ -200,6 +213,15 @@ Interface Configuration
   This command disables Three-Way Handshake for P2P adjacencies which
   described in :rfc:`5303`. Three-Way Handshake is enabled by default.
 
+.. cfgcmd:: set protocols isis interface <interface> ldp-sync disable
+
+  This command disables IGP-LDP sync for this specific interface.
+
+.. cfgcmd:: set protocols isis interface <interface> ldp-sync holddown
+   <seconds>
+
+  This command will change the hold down value for IGP-LDP synchronization
+  during convergence/interface flap events, but for this interface only.
 
 Route Redistribution
 --------------------
@@ -401,7 +423,42 @@ Routes on Node 2:
 
   I   203.0.113.0/24 [115/10] via 192.0.2.1, eth1, 00:03:42
   
-  
+Enable IS-IS and IGP-LDP synchronization
+========================================
+
+**Node 1:**
+
+.. code-block:: none
+
+  set interfaces loopback lo address 192.168.255.255/32
+  set interfaces ethernet eth0 address 192.0.2.1/24
+
+  set protocols isis interface eth0
+  set protocols isis interface lo passive
+  set protocols isis ldp-sync
+  set protocols isis net 49.0001.1921.6825.5255.00
+
+  set protocols mpls interface eth0
+  set protocols mpls ldp discovery transport-ipv4-address 192.168.255.255
+  set protocols mpls ldp interface lo
+  set protocols mpls ldp interface eth0
+  set protocols mpls ldp parameters transport-prefer-ipv4
+  set protocols mpls ldp router-id 192.168.255.255
+
+
+This gives us IGP-LDP synchronization for all non-loopback interfaces with
+a holddown timer of zero seconds:
+
+
+.. code-block:: none
+
+  Node-1@vyos:~$  show isis mpls ldp-sync
+  eth0
+    LDP-IGP Synchronization enabled: yes
+    holddown timer in seconds: 0
+    State: Sync achieved
+
+
 
 
 Enable IS-IS with Segment Routing (Experimental)
