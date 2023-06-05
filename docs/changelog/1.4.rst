@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2023-06-02
+==========
+
+* :vytask:`T5252` ``(bug): Route distinguisher and route targets changing upon adding interface to new VRF``
+* :vytask:`T5251` ``(bug): Uncaught errors for functions delete/delete_value in Python module configtree.py``
+
+
+2023-06-01
+==========
+
+* :vytask:`T5127` ``(bug): VPNv4/VPNv6 routes are not reinstalled following link flap``
+
+
 2023-05-28
 ==========
 
