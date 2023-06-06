@@ -190,6 +190,18 @@ Optional
    :cfgcmd:`max-holdtime` sets the maximum wait time between two
    consecutive SPF calculations. The default value is 10000 ms.
 
+.. cfgcmd:: set protocols ospf ldp-sync
+
+  This command will enable IGP-LDP synchronization globally for OSPF. This
+  requires for LDP to be functional. This is described in :rfc:`5443`. By
+  default all interfaces operational in OSPF are enabled for synchronization.
+  Loopbacks are exempt.
+  
+.. cfgcmd:: set protocols ospf ldp-sync holddown <seconds>
+
+  This command will change the hold down value globally for IGP-LDP
+  synchronization during convergence/interface flap events. 
+
 
 Area Configuration
 ------------------
@@ -437,6 +449,15 @@ Interface Configuration
    synchronizing process of the router's database with all neighbors. The
    default value is 1 seconds. The interval range is 3 to 65535.
 
+.. cfgcmd:: set protocols ospf interface <interface> ldp-sync disable
+
+  This command disables IGP-LDP sync for this specific interface.
+
+.. cfgcmd:: set protocols ospf interface <interface> ldp-sync holddown
+   <seconds>
+
+  This command will change the hold down value for IGP-LDP synchronization
+  during convergence/interface flap events, but for this interface only.
 
 Manual Neighbor Configuration
 -----------------------------
@@ -847,6 +868,43 @@ Enable OSPF with route redistribution of the loopback and default originate:
   set policy route-map CONNECT rule 10 match interface lo
 
 
+Enable OSPF and IGP-LDP synchronization:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Node 1:**
+
+.. code-block:: none
+
+  set interfaces loopback lo address 10.1.1.1/32
+  set interfaces ethernet eth0 address 192.168.0.1/24
+
+  set protocols ospf area 0 network '192.168.0.0/24'
+  set protocols ospf area 0 network '10.1.1.1/32'
+  set protocols ospf parameters router-id '10.1.1.1'
+  set protocols ospf ldp-sync
+
+  set protocols mpls interface eth0
+  set protocols mpls ldp discovery transport-ipv4-address 10.1.1.1
+  set protocols mpls ldp interface lo
+  set protocols mpls ldp interface eth0
+  set protocols mpls ldp parameters transport-prefer-ipv4
+  set protocols mpls ldp router-id 10.1.1.1
+
+
+This gives us IGP-LDP synchronization for all non-loopback interfaces with
+a holddown timer of zero seconds:
+
+
+.. code-block:: none
+
+  Node-1@vyos:~$ show ip ospf mpls ldp-sync
+    eth0
+    LDP-IGP Synchronization enabled: yes
+    Holddown timer in seconds: 0
+    State: Sync achieved
+
+    
+
 Enable OSPF with Segment Routing (Experimental):
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -856,6 +914,7 @@ Enable OSPF with Segment Routing (Experimental):
 
   set interfaces loopback lo address 10.1.1.1/32
   set interfaces ethernet eth0 address 192.168.0.1/24
+  
   set protocols ospf area 0 network '192.168.0.0/24'
   set protocols ospf area 0 network '10.1.1.1/32'
   set protocols ospf parameters opaque-lsa
@@ -871,6 +930,7 @@ Enable OSPF with Segment Routing (Experimental):
 
   set interfaces loopback lo address 10.1.1.2/32
   set interfaces ethernet eth0 address 192.168.0.2/24
+  
   set protocols ospf area 0 network '192.168.0.0/24'
   set protocols ospf area 0 network '10.1.1.2/32'
   set protocols ospf parameters opaque-lsa
