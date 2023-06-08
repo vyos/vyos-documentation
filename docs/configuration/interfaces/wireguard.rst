@@ -194,6 +194,7 @@ traffic.
   set interfaces wireguard wg01 peer to-wg01 port '51820'
   set interfaces wireguard wg01 peer to-wg01 public-key 'EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw='
   set interfaces wireguard wg01 port '51820'
+  set interfaces wireguard wg01 private-key 'OLTQY3HuK5qWDgVs6fJR093SwPgOmCKkDI1+vJLGoFU='
 
   set protocols static route 192.168.1.0/24 interface wg01
 
@@ -291,6 +292,7 @@ value needs to be lower than the UDP timeout.
             pubkey BknHcLFo8nOo8Dwq2CjaC/TedchKQ0ebxC7GYn7Al00=
         }
         port 2224
+        private-key OLTQY3HuK5qWDgVs6fJR093SwPgOmCKkDI1+vJLGoFU=
     }
 
 The following is the config for the iPhone peer above. It's important to
