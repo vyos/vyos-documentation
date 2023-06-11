@@ -82,8 +82,8 @@ The third part is simply an identifier, and is for your own reference.
    <identifier> options <options>
 
    Set the options for this public key. See the ssh ``authorized_keys`` man
-   page for details of what you can specify here. To place a ``"`` 
-   character in the options field, use ``&quot;``, for example 
+   page for details of what you can specify here. To place a ``"``
+   character in the options field, use ``&quot;``, for example
    ``from=&quot;10.0.0.0/24&quot;`` to restrict where the user
    may connect from when using this key.
 
@@ -189,7 +189,7 @@ Display OTP key for user
 
 To display the configured OTP user key, use the command:
 
-.. cfgcmd:: sh system login authentication user <username> otp 
+.. cfgcmd:: sh system login authentication user <username> otp
    <full|key-b32|qrcode|uri>
 
 An example:
@@ -242,34 +242,89 @@ Configuration
 
 .. cfgcmd:: set system login radius server <address> key <secret>
 
-   Specify the `<address>` of the RADIUS server user with the pre-shared-secret
-   given in `<secret>`. Multiple servers can be specified.
+   Specify the IP `<address>` of the RADIUS server user with the pre-shared-secret
+   given in `<secret>`.
+
+   Multiple servers can be specified.
 
 .. cfgcmd:: set system login radius server <address> port <port>
 
    Configure the discrete port under which the RADIUS server can be reached.
+
    This defaults to 1812.
-
-.. cfgcmd:: set system login radius server <address> timeout <timeout>
-
-   Setup the `<timeout>` in seconds when querying the RADIUS server.
 
 .. cfgcmd:: set system login radius server <address> disable
 
    Temporary disable this RADIUS server. It won't be queried.
 
+.. cfgcmd:: set system login radius server <address> timeout <timeout>
+
+   Setup the `<timeout>` in seconds when querying the RADIUS server.
+
 .. cfgcmd:: set system login radius source-address <address>
 
    RADIUS servers could be hardened by only allowing certain IP addresses to
    connect. As of this the source address of each RADIUS query can be
-   configured. If this is not set, incoming connections to the RADIUS server
-   will use the nearest interface address pointing towards the server - making
-   it error prone on e.g. OSPF networks when a link fails and a backup route is
-   taken.
+   configured.
+
+   If unset, incoming connections to the RADIUS server will use the nearest
+   interface address pointing towards the server - making it error prone on
+   e.g. OSPF networks when a link fails and a backup route is taken.
+
+.. cfgcmd:: set system login radius vrf <name>
+
+   Source all connections to the RADIUS servers from given VRF `<name>`.
 
 .. hint:: If you want to have admin users to authenticate via RADIUS it is
    essential to sent the ``Cisco-AV-Pair shell:priv-lvl=15`` attribute. Without
    the attribute you will only get regular, non privilegued, system users.
+
+TACACS+
+=======
+
+In addition to :abbr:`RADIUS (Remote Authentication Dial-In User Service)`,
+:abbr:`TACACS (Terminal Access Controller Access Control System)` can also be
+found in large deployments.
+
+TACACS is defined in :rfc:`8907`.
+
+Configuration
+-------------
+
+.. cfgcmd:: set system login tacas server <address> key <secret>
+
+   Specify the IP `<address>` of the TACACS server user with the pre-shared-secret
+   given in `<secret>`.
+
+   Multiple servers can be specified.
+
+.. cfgcmd:: set system login tacas server <address> port <port>
+
+   Configure the discrete port under which the TACACS server can be reached.
+
+   This defaults to 49.
+
+.. cfgcmd:: set system login tacas server <address> disable
+
+   Temporary disable this TACACS server. It won't be queried.
+
+.. cfgcmd:: set system login tacas server <address> timeout <timeout>
+
+   Setup the `<timeout>` in seconds when querying the TACACS server.
+
+.. cfgcmd:: set system login tacas source-address <address>
+
+   TACACS servers could be hardened by only allowing certain IP addresses to
+   connect. As of this the source address of each TACACS query can be
+   configured.
+
+   If unset, incoming connections to the TACACS server will use the nearest
+   interface address pointing towards the server - making it error prone on
+   e.g. OSPF networks when a link fails and a backup route is taken.
+
+.. cfgcmd:: set system login tacas vrf <name>
+
+   Source all connections to the TACACS servers from given VRF `<name>`.
 
 
 Login Banner
@@ -299,12 +354,12 @@ Login limits
 
    Set a limit on the maximum number of concurrent logged-in users on
    the system.
-   This option should be used with ``timeout`` option.
+
+   This option must be used with ``timeout`` option.
 
 .. cfgcmd:: set system login timeout <timeout>
 
    Configure session timeout after which the user will be logged out.
-
 
 Example
 =======
@@ -326,3 +381,32 @@ the password.
 
   set system login user vyos authentication otp key OHZ3OJ7U2N25BK4G7SOFFJTZDTCFUUE2
   set system login user vyos authentication plaintext-password vyos
+
+TACACS Example
+--------------
+
+We use a vontainer providing the TACACS serve rin this example.
+
+Load the container image in op-mode.
+
+.. code-block:: none
+
+   add container image lfkeitel/tacacs_plus:latest
+
+.. code-block:: none
+
+   set container network tac-test prefix '100.64.0.0/24'
+
+   set container name tacacs1 image 'lfkeitel/tacacs_plus:latest'
+   set container name tacacs1 network tac-test address '100.64.0.11'
+
+   set container name tacacs2 image 'lfkeitel/tacacs_plus:latest'
+   set container name tacacs2 network tac-test address '100.64.0.12'
+
+   set system login tacacs server 100.64.0.11 key 'tac_plus_key'
+   set system login tacacs server 100.64.0.12 key 'tac_plus_key'
+
+   commit
+
+You can now SSH into your system using admin/admin as a default user supplied
+from the ``lfkeitel/tacacs_plus:latest`` container.
