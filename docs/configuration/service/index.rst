@@ -13,6 +13,7 @@ Service
    dhcp-relay
    dhcp-server
    dns
+   eventhandler
    https
    ipoe-server
    lldp
