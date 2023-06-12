@@ -8,6 +8,24 @@
    _ext/releasenotes.py
 
 
+2023-06-10
+==========
+
+* :vytask:`T5231` ``(feature): Add op-mode for load-balancing reverse-proxy``
+
+
+2023-06-09
+==========
+
+* :vytask:`T5253` ``(bug): MPLS config removed at boot when wireguard interfaces present``
+
+
+2023-06-05
+==========
+
+* :vytask:`T5259` ``(bug): Openconnect cannot pass migration 1-to-2``
+
+
 2023-06-02
 ==========
 
