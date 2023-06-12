@@ -289,26 +289,3 @@ Operation
 
 .. stop_vyoslinter
 
-.. opcmd:: show interfaces ethernet <interface> xdp
-
-   Display XDP forwarding statistics
-
-   .. code-block:: none
-
-     vyos@vyos:~$ show interfaces ethernet eth1 xdp
-
-     Collecting stats from BPF map
-      - BPF map (bpf_map_type:6) id:176 name:xdp_stats_map key_size:4 value_size:16 max_entries:5
-     XDP-action
-     XDP_ABORTED            0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:0.250340
-     XDP_DROP               0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:0.250317
-     XDP_PASS               0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:0.250314
-     XDP_TX                 0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:0.250313
-     XDP_REDIRECT           0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:0.250313
-
-     XDP-action
-     XDP_ABORTED            0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:2.000410
-     XDP_DROP               0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:2.000414
-     XDP_PASS               0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:2.000414
-     XDP_TX                 0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:2.000414
-     XDP_REDIRECT           0 pkts (         0 pps)           0 Kbytes (     0 Mbits/s) period:2.000414
