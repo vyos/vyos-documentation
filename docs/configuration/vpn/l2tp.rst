@@ -73,15 +73,16 @@ parameter to the client.
   set vpn l2tp remote-access name-server '198.51.100.8'
   set vpn l2tp remote-access name-server '198.51.100.4'
 
-Established sessions can be viewed using the **show vpn remote-access**
-operational command, or **show l2tp-server sessions**
+Established sessions can be viewed using the **show l2tp-server sessions** 
+operational command
 
 .. code-block:: none
 
-  vyos@vyos:~$ show vpn remote-access
-   ifname | username | calling-sid  |      ip       | rate-limit | type | comp | state  |  uptime
-  --------+----------+--------------+---------------+------------+------+------+--------+----------
-   ppp0   | vyos     | 192.168.0.36 | 192.168.255.1 |            | l2tp |      | active | 00:06:13
+  vyos@vyos:~$ show l2tp-server sessions
+   ifname | username |      ip       | ip6 | ip6-dp | calling-sid | rate-limit | state  |  uptime  | rx-bytes | tx-bytes
+  --------+----------+---------------+-----+--------+-------------+------------+--------+----------+----------+----------
+   l2tp0  | test     | 192.168.255.3 |     |        | 192.168.0.36 |            | active | 02:01:47 | 7.7 KiB  | 1.2 KiB
+
 
 
 LNS (L2TP Network Server)
@@ -128,10 +129,11 @@ The rate-limit is set in kbit/sec.
   set vpn l2tp remote-access authentication local-users username test rate-limit download 20480
   set vpn l2tp remote-access authentication local-users username test rate-limit upload 10240
 
-  vyos@vyos:~$ show vpn remote-access
-  ifname | username | calling-sid  |      ip       | rate-limit  | type | comp | state  |  uptime
-  -------+----------+--------------+---------------+-------------+------+------+--------+-----------
-  ppp0   | test     | 192.168.0.36 | 192.168.255.2 | 20480/10240 | l2tp |      | active | 00:06:30
+  vyos@vyos:~$ show l2tp-server sessions
+   ifname | username |      ip       | ip6 | ip6-dp | calling-sid | rate-limit | state  |  uptime  | rx-bytes | tx-bytes
+  --------+----------+---------------+-----+--------+-------------+------------+--------+----------+----------+----------
+   l2tp0  | test     | 192.168.255.3 |     |        | 192.168.0.36 |            | active | 02:01:47 | 7.7 KiB  | 1.2 KiB
+
 
 RADIUS authentication
 ======================
