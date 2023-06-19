@@ -8,6 +8,30 @@
    _ext/releasenotes.py
 
 
+2023-06-18
+==========
+
+* :vytask:`T5295` ``(bug): QoS shaper incorrect rate limit the traffic``
+* :vytask:`T5256` ``(bug): QoS expects protocol number but not protocol name``
+
+
+2023-06-13
+==========
+
+* :vytask:`T5258` ``(bug): git Actions use ubuntu-22.04 instead of deprecated ubuntu-18.04 for PR conflicts checker``
+* :vytask:`T5222` ``(feature): Add load-balancing reverse-proxy based on haproxy``
+* :vytask:`T5213` ``(feature): Accel-ppp sending accounting interim updates acct-interim-interval option``
+* :vytask:`T5171` ``(feature): Use XML for conf-mode "load-balancing wan" instead of legacy templates``
+
+
+2023-06-12
+==========
+
+* :vytask:`T5282` ``(bug): Poweroff now does not work``
+* :vytask:`T5264` ``(feature): Add Mellanox Technologies firmware flash module mlxfw to kernel``
+* :vytask:`T5286` ``(feature): Remove XDP support``
+
+
 2023-06-10
 ==========
 
