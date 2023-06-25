@@ -55,12 +55,13 @@ Example
 -------
 
 To forward all broadcast packets received on `UDP port 1900` on `eth3`, `eth4`
-or `eth5` to all other interfaces in this configuration.
+to all other interfaces in this configuration.
+
+Reminder: Only two interfaces allowed in UDP Broadcast Relay. If more two interfaces, UDP Broadcast Replay service not work.
 
 .. code-block:: none
 
   set service broadcast-relay id 1 description 'SONOS'
   set service broadcast-relay id 1 interface 'eth3'
   set service broadcast-relay id 1 interface 'eth4'
-  set service broadcast-relay id 1 interface 'eth5'
   set service broadcast-relay id 1 port '1900'
