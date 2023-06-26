@@ -8,10 +8,48 @@
    _ext/releasenotes.py
 
 
+2023-06-25
+==========
+
+* :vytask:`T5240` ``(bug): Service router-advert failed to start radvd with more then 3 name-servers``
+* :vytask:`T5312` ``(bug): Nonescaped special character in help text``
+
+
+2023-06-24
+==========
+
+* :vytask:`T5303` ``(bug): Rsyslog.service is not working``
+* :vytask:`T5298` ``(bug): Add RFKILL support into kernel.``
+* :vytask:`T5308` ``(enhancment): Remove workarounds for incorrect defaults in get_interface_dict``
+* :vytask:`T5228` ``(enhancment): Simplify get_config_dict and add argument with_defaults``
+* :vytask:`T5310` ``(bug): Need some help troubleshooting NIC detection.``
+
+
+2023-06-22
+==========
+
+* :vytask:`T5297` ``(default): Utility function to check if config under node has been changed between revisions``
+
+
+2023-06-20
+==========
+
+* :vytask:`T5300` ``(bug): verification of port availability can return false negative on boot``
+* :vytask:`T5305` ``(bug): REST API configure operation should not be defined as async``
+* :vytask:`T5248` ``(feature): Ability to load config via API in JSON format``
+
+
+2023-06-19
+==========
+
+* :vytask:`T5281` ``(feature): Add kernel options for vhost-net``
+* :vytask:`T5072` ``(default): QOS-Rewrite: protocol name used literally``
+* :vytask:`T4969` ``(bug): QoS Policy - Unable to set class match mark number``
+
+
 2023-06-18
 ==========
 
-* :vytask:`T5295` ``(bug): QoS shaper incorrect rate limit the traffic``
 * :vytask:`T5256` ``(bug): QoS expects protocol number but not protocol name``
 
 
