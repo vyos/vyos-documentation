@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2023-06-25
+==========
+
+* :vytask:`T5240` (bug): Service router-advert failed to start radvd with more then 3 name-servers
+
+
+2023-06-21
+==========
+
+* :vytask:`T5280` (bug): Update Expired keys (2023-06-08) for PowerDNS
+
+
 2023-05-29
 ==========
 
