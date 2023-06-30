@@ -1,9 +1,8 @@
 
-.. _load-balancing:
-
 #############
 Reverse-proxy
 #############
+
 .. include:: /_include/need_improvement.txt
 
 VyOS reverse-proxy is balancer and proxy server that provides
@@ -65,7 +64,8 @@ perform action accordingly.
    * ``req-ssl-sni`` SSL Server Name Indication (SNI) request match
    * ``ssl-fc-sni`` SSL frontend connection Server Name Indication match
    * ``ssl-fc-sni-end`` SSL frontend match end of connection Server Name 
-   Indication
+      
+      Indication
 
 .. cfgcmd:: set load-balancing reverse-proxy service <name> rule <rule>
    url-path <match> <url>

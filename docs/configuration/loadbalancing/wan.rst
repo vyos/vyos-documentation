@@ -1,7 +1,5 @@
 :lastproofread: 2023-01-27
 
-.. _load-balancing:
-
 WAN load balancing
 ==================
 
