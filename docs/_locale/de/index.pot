@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Localazy (https://localazy.com)\n"
+"Project-Id-Version: vyos-documentation\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n==1) ? 0 : 1;\n"
+
+#: ../../index.rst:0
+#: 83e6ee8822934bf19812bc7530830dd5
+msgid "Add missing parts or improve the :ref:`Documentation<documentation:Write Documentation>`."
+msgstr "Add missing parts or improve the :ref:`Documentation<documentation:Write Documentation>`."
+
+#: ../../index.rst:70
+#: 
+msgid "Adminguide"
+msgstr "Adminguide"
+
+#: ../../index.rst:31
+#: 6c6a20d5547e487288bd61385fc71196
+msgid "Automate"
+msgstr "Automate"
+
+#: ../../index.rst:23
+#: a9bb26cc8ad84519b7e55a2e538b987b
+msgid "Configuration and Operation"
+msgstr "Configuration and Operation"
+
+#: ../../index.rst:44
+#: 0448b61afd99466e822c3098b5ecf5f9
+msgid "Contribute and Community"
+msgstr "Contribute and Community"
+
+#: ../../index.rst:83
+#: 
+msgid "Development"
+msgstr "Development"
+
+#: ../../index.rst:0
+#: 06ee79ad3fee49d08c0bfe1bb70d15a5
+msgid "Discuss in `Slack <https://slack.vyos.io/>`_ or the `Forum <https://forum.vyos.io>`_."
+msgstr "Discuss in `Slack <https://slack.vyos.io/>`_ or the `Forum <https://forum.vyos.io>`_."
+
+#: ../../index.rst:38
+#: be3ef8882cbd4ef0ace3de8f0740ee01
+msgid "Examples"
+msgstr "Examples"
+
+#: ../../index.rst:61
+#: 
+msgid "First Steps"
+msgstr "First Steps"
+
+#: ../../index.rst:11
+#: 2642638dd470421d97aeef44b64541a1
+msgid "Get / Build VyOS"
+msgstr "Get / Build VyOS"
+
+#: ../../index.rst:40
+#: 7207a64d58a749d0b5e08bc17214be89
+msgid "Get some inspiration from the :ref:`Configuration Blueprints<configexamples/index:Configuration Blueprints>` to build your infrastructure."
+msgstr "Get some inspiration from the :ref:`Configuration Blueprints<configexamples/index:Configuration Blueprints>` to build your infrastructure."
+
+#: ../../index.rst:16
+#: fb5a707db15d45cf97f4c38b96e5d1d1
+msgid "Install VyOS"
+msgstr "Install VyOS"
+
+#: ../../index.rst:33
+#: 614c0a929eb44ef6b7fbe16aeaee8968
+msgid "Integrate VyOS in your automation Workflow with :ref:`Ansible<vyos-ansible>`, have your own :ref:`local scripts<command-scripting>`, or configure VyOS with the :ref:`HTTPS-API<vyosapi>`."
+msgstr "Integrate VyOS in your automation Workflow with :ref:`Ansible<vyos-ansible>`, have your own :ref:`local scripts<command-scripting>`, or configure VyOS with the :ref:`HTTPS-API<vyosapi>`."
+
+#: ../../index.rst:96
+#: 
+msgid "Misc"
+msgstr "Misc"
+
+#: ../../index.rst:0
+#: adffc63ce5be47649a36862cb411bbd1
+msgid "Or you can pick up a `Task <https://vyos.dev/>`_ and fix the :ref:`code<contributing/development:development>`."
+msgstr "Or you can pick up a `Task <https://vyos.dev/>`_ and fix the :ref:`code<contributing/development:development>`."
+
+#: ../../index.rst:13
+#: 314c69cb80c64a58b53e0fe4bed9bd01
+msgid "Quickly :ref:`Build<contributing/build-vyos:build vyos>` your own Image or take a look at how to :ref:`download<installation/install:download>` a free or supported version."
+msgstr "Quickly :ref:`Build<contributing/build-vyos:build vyos>` your own Image or take a look at how to :ref:`download<installation/install:download>` a free or supported version."
+
+#: ../../index.rst:18
+#: c7dabf8d1abd4064b7fcbbcca847d59a
+msgid "Read about how to install VyOS on :ref:`Bare Metal<installation/install:installation>` or in a :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>` and how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>` providers"
+msgstr "Read about how to install VyOS on :ref:`Bare Metal<installation/install:installation>` or in a :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>` and how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>` providers"
+
+#: ../../index.rst:0
+#: 6d91f60aef1e477fbc87831e92356d76
+msgid "There are many ways to contribute to the project."
+msgstr "There are many ways to contribute to the project."
+
+#: ../../index.rst:25
+#: 16b92bdb9b954171941e47bbe9e65d62
+msgid "Use the :ref:`Quickstart Guide<quick-start:Quick Start>`, to have a fast overview. Or go deeper and set up :ref:`advanced routing<configuration/protocols/index:protocols>`, :ref:`VRFs<configuration/vrf/index:vrf>`, or :ref:`VPNs<configuration/vpn/index:vpn>` for example."
+msgstr "Use the :ref:`Quickstart Guide<quick-start:Quick Start>`, to have a fast overview. Or go deeper and set up :ref:`advanced routing<configuration/protocols/index:protocols>`, :ref:`VRFs<configuration/vrf/index:vrf>`, or :ref:`VPNs<configuration/vpn/index:vpn>` for example."
+
+#: ../../index.rst:5
+#: e9245b1445d24ca0a8bde46fb10e5ecb
+msgid "VyOS User Guide"
+msgstr "VyOS-Benutzerhandbuch"
