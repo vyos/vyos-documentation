@@ -1,0 +1,58 @@
+name: "translation: generate, upload, download"
+on:
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install Dev Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build Documentation
+        run: |
+          cd docs
+          make gettext
+          cd ..
+
+      - name: upload pot files
+        uses: localazy/upload@v1
+        with:
+          read_key: ${{ secrets.LOCALAZY_READ_KEY }}
+          write_key: ${{ secrets.LOCALAZY_WRITE_KEY }}
+
+      - name: download translation files
+        uses: localazy/download@v1
+        with:
+          read_key: ${{ secrets.LOCALAZY_READ_KEY }}
+          write_key: ${{ secrets.LOCALAZY_WRITE_KEY }}
+
+      - name: set file ownership
+        run: |
+          sudo chown -R 1001 docs/_locale
+          ls -l docs/_locale/de
+
+    
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          add-paths: docs/_locale/*
+          commit-message: "Github: update translations"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          title: "Github: update translations"
+          body: |
+            Generate, upload new and download translation files 
+          branch: update-translations-master
+          delete-branch: true

@@ -1,0 +1,32 @@
+{
+  "upload": {  
+    "type": "pot",
+    "folder": "docs/_build/gettext", 
+    "files": {
+      "pattern": "**.pot",
+      "excludes": [ 
+        "changelog/*.pot",
+        "coverage.pot"
+      ],
+      "path": "${path}"
+    }
+  },
+
+  "transformations": [
+    {
+        "name": "trans_path",
+        "source": "${path}",
+        "operations": "remove: docs/_build/gettext"
+    }
+  ],
+
+  "download": {
+    "files": "docs/_locale/${lang}/${trans_path}/${fileWithoutExt}.pot"
+  },
+  "conversion": {
+      "actions": {
+        "type": "mo",
+        "output": "docs/_locale/${lang}/LC_MESSAGES/${trans_path}/${fileWithoutExt}.mo"
+      }
+    }
+}
