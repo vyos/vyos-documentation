@@ -38,12 +38,12 @@ starts when the first ospf enabled interface is configured.
    specified in decimal notation in the range from 0 to 4294967295. Or it
    can be specified in dotted decimal notation similar to ip address.
 
-   Prefix length in interface must be equal or bigger (i.e. smaller network) 
+   Prefix length in interface must be equal or bigger (i.e. smaller network)
    than prefix length in network statement. For example statement above doesn't
-   enable ospf on interface with address 192.168.1.1/23, but it does on 
+   enable ospf on interface with address 192.168.1.1/23, but it does on
    interface with address 192.168.1.129/25.
 
-   In some cases it may be more convenient to enable OSPF on a per 
+   In some cases it may be more convenient to enable OSPF on a per
    interface/subnet
    basis :cfgcmd:`set protocols ospf interface <interface> area <x.x.x.x | x>`
 
@@ -196,11 +196,11 @@ Optional
   requires for LDP to be functional. This is described in :rfc:`5443`. By
   default all interfaces operational in OSPF are enabled for synchronization.
   Loopbacks are exempt.
-  
+
 .. cfgcmd:: set protocols ospf ldp-sync holddown <seconds>
 
   This command will change the hold down value globally for IGP-LDP
-  synchronization during convergence/interface flap events. 
+  synchronization during convergence/interface flap events.
 
 
 Area Configuration
@@ -290,15 +290,15 @@ Area Configuration
    intra area paths from this range are not advertised into other areas.
    This command makes sense in ABR only.
 
-.. cfgcmd:: set protocols ospf area <number> export-list <acl_number> 
+.. cfgcmd:: set protocols ospf area <number> export-list <acl_number>
 
-   Filter Type-3 summary-LSAs announced to other areas originated from 
+   Filter Type-3 summary-LSAs announced to other areas originated from
    intra- area paths from specified area.
    This command makes sense in ABR only.
 
-.. cfgcmd:: set protocols ospf area <number> import-list <acl_number> 
+.. cfgcmd:: set protocols ospf area <number> import-list <acl_number>
 
-   Same as export-list, but it applies to paths announced into specified 
+   Same as export-list, but it applies to paths announced into specified
    area as Type-3 summary-LSAs.
    This command makes sense in ABR only.
 
@@ -458,6 +458,30 @@ Interface Configuration
 
   This command will change the hold down value for IGP-LDP synchronization
   during convergence/interface flap events, but for this interface only.
+
+External Route Summarisation
+----------------------------
+
+This feature summarises originated external LSAs (Type-5 and Type-7). Summary
+Route will be originated on-behalf of all matched external LSAs.
+
+.. cfgcmd:: set protocols ospf aggregation timer <seconds>
+
+   Configure aggregation delay timer interval.
+
+   Summarisation starts only after this delay timer expiry.
+
+.. cfgcmd:: set protocols ospf summary-address x.x.x.x/y [tag (1-4294967295)]
+
+   This command enable/disables summarisation for the configured address range.
+
+   Tag is the optional parameter. If tag configured Summary route will be
+   originated with the configured tag.
+
+.. cfgcmd:: set protocols ospf summary-address x.x.x.x/y no-advertise
+
+   This command to ensure not advertise the summary lsa for the matched
+   external LSAs.
 
 Manual Neighbor Configuration
 -----------------------------
@@ -627,7 +651,7 @@ Operational Mode Commands
 .. opcmd:: show ip ospf route [detail]
 
    This command displays the OSPF routing table, as determined by the most
-   recent SPF calculation. With the optional :cfgcmd:`detail` argument, 
+   recent SPF calculation. With the optional :cfgcmd:`detail` argument,
    each route item's advertiser router and network attribute will be shown.
 
 .. code-block:: none
@@ -903,7 +927,7 @@ a holddown timer of zero seconds:
     Holddown timer in seconds: 0
     State: Sync achieved
 
-    
+
 
 Enable OSPF with Segment Routing (Experimental):
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -914,7 +938,7 @@ Enable OSPF with Segment Routing (Experimental):
 
   set interfaces loopback lo address 10.1.1.1/32
   set interfaces ethernet eth0 address 192.168.0.1/24
-  
+
   set protocols ospf area 0 network '192.168.0.0/24'
   set protocols ospf area 0 network '10.1.1.1/32'
   set protocols ospf parameters opaque-lsa
@@ -930,7 +954,7 @@ Enable OSPF with Segment Routing (Experimental):
 
   set interfaces loopback lo address 10.1.1.2/32
   set interfaces ethernet eth0 address 192.168.0.2/24
-  
+
   set protocols ospf area 0 network '192.168.0.0/24'
   set protocols ospf area 0 network '10.1.1.2/32'
   set protocols ospf parameters opaque-lsa
@@ -1009,7 +1033,7 @@ General
 VyOS does not have a special command to start the OSPFv3 process. The OSPFv3
 process starts when the first ospf enabled interface is configured.
 
-.. cfgcmd:: set protocols ospfv3 interface <interface> area <number> 
+.. cfgcmd:: set protocols ospfv3 interface <interface> area <number>
 
    This command specifies the OSPFv3 enabled interface. This command is also
    used to enable the OSPF process. The area number can be specified in
@@ -1206,7 +1230,7 @@ A typical configuration using 2 nodes.
 
 .. code-block:: none
 
-  set protocols ospfv3 interface eth1 area 0.0.0.0 
+  set protocols ospfv3 interface eth1 area 0.0.0.0
   set protocols ospfv3 area 0.0.0.0 range 2001:db8:1::/64
   set protocols ospfv3 parameters router-id 192.168.1.1
   set protocols ospfv3 redistribute connected
@@ -1215,7 +1239,7 @@ A typical configuration using 2 nodes.
 
 .. code-block:: none
 
-  set protocols ospfv3 interface eth1 area 0.0.0.0 
+  set protocols ospfv3 interface eth1 area 0.0.0.0
   set protocols ospfv3 area 0.0.0.0 range 2001:db8:2::/64
   set protocols ospfv3 parameters router-id 192.168.2.1
   set protocols ospfv3 redistribute connected
@@ -1244,7 +1268,7 @@ Example configuration for WireGuard interfaces:
   set interfaces wireguard wg01 peer ospf02 pubkey 'ie3...='
   set interfaces wireguard wg01 port '12345'
   set protocols ospfv3 parameters router-id 192.168.1.1
-  set protocols ospfv3 interface 'wg01' area 0.0.0.0 
+  set protocols ospfv3 interface 'wg01' area 0.0.0.0
   set protocols ospfv3 interface 'lo' area 0.0.0.0
 
 **Node 2**
@@ -1259,7 +1283,7 @@ Example configuration for WireGuard interfaces:
   set interfaces wireguard wg01 peer ospf01 pubkey 'NHI...='
   set interfaces wireguard wg01 port '12345'
   set protocols ospfv3 parameters router-id 192.168.1.2
-  set protocols ospfv3 interface 'wg01' area 0.0.0.0 
+  set protocols ospfv3 interface 'wg01' area 0.0.0.0
   set protocols ospfv3 interface 'lo' area 0.0.0.0
 
 **Status**
