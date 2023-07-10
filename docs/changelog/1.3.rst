@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2023-07-05
+==========
+
+* :vytask:`T5331` (bug): ath10k_pci not functioning
+
+
+2023-06-30
+==========
+
+* :vytask:`T5315` (feature): vrrp: add support for version 3
+* :vytask:`T5313` (bug): UDP broadcast relay - missing verify() that relay interfaces have an IP address assigned
+
+
+2023-06-28
+==========
+
+* :vytask:`T1237` (feature): Static Route Path Monitoring, failover
+
+
+2023-06-26
+==========
+
+* :vytask:`T5272` (default): Upgrade OpenVPN to 2.6 in Equuleus
+* :vytask:`T5265` (bug): WAN load-balancing: missing completion helpers
+
+
 2023-06-25
 ==========
 
