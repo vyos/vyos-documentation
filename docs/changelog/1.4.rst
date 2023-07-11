@@ -8,6 +8,73 @@
    _ext/releasenotes.py
 
 
+2023-07-10
+==========
+
+* :vytask:`T5345` ``(bug): Error incorrectly raised in revised multi_to_list when tag node value name == tag node name``
+
+
+2023-07-06
+==========
+
+* :vytask:`T5336` ``(feature): Add Swedish keyboard-layout``
+
+
+2023-07-04
+==========
+
+* :vytask:`T5333` ``(bug): Policy base routing PBR generetes incorrect rules with name POSTROUTING``
+* :vytask:`T5081` ``(feature): ISIS and OSPF syncronization with IGP-LDP sync``
+
+
+2023-07-03
+==========
+
+* :vytask:`T5295` ``(bug): QoS shaper incorrect rate limit the traffic``
+* :vytask:`T5334` ``(feature): ospf: add support for External Route Summarisation Type-5 and Type-7``
+
+
+2023-07-02
+==========
+
+* :vytask:`T5332` ``(bug): Show policy route not working when no interface is configured``
+
+
+2023-07-01
+==========
+
+* :vytask:`T5304` ``(feature): Containers add bind-propagation option rshared``
+* :vytask:`T5296` ``(bug): QoS class cannot calculate correctly the default bandwidth auto``
+* :vytask:`T5210` ``(bug): IPSec cosmetic bug for Warning vti inrerface``
+* :vytask:`T5277` ``(bug): Dhcpv6-relay does not start on boot``
+
+
+2023-06-30
+==========
+
+* :vytask:`T5315` ``(feature): vrrp: add support for version 3``
+* :vytask:`T5283` ``(bug): IPoE server assigns network address``
+* :vytask:`T5313` ``(bug): UDP broadcast relay - missing verify() that relay interfaces have an IP address assigned``
+
+
+2023-06-29
+==========
+
+* :vytask:`T5320` ``(enhancment): Add warning when entering config mode after a boot configuration error``
+
+
+2023-06-28
+==========
+
+* :vytask:`T1237` ``(feature): Static Route Path Monitoring, failover``
+
+
+2023-06-26
+==========
+
+* :vytask:`T5159` ``(bug): DHCPv6-server leases op-command shows warning message even if configured``
+
+
 2023-06-25
 ==========
 
