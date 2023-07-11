@@ -228,6 +228,11 @@ Start the build:
 
 .. code-block:: none
 
+  # For VyOS 1.2 (crux) and VyOS 1.3 (equuleus)
+  vyos_bld@8153428c7e1f:/vyos$ ./configure --architecture amd64 --build-by "j.randomhacker@vyos.io"
+  vyos_bld@8153428c7e1f:/vyos$ sudo make iso
+
+  # For VyOS 1.4 (sagitta)
   vyos_bld@8153428c7e1f:/vyos$ sudo make clean
   vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image iso --architecture amd64 --build-by "j.randomhacker@vyos.io"
 
