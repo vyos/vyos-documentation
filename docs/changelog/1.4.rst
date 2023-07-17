@@ -8,10 +8,71 @@
    _ext/releasenotes.py
 
 
+2023-07-16
+==========
+
+* :vytask:`T141` ``(feature): TACACS+ Support``
+
+
+2023-07-15
+==========
+
+* :vytask:`T5341` ``(feature): Improve CLI for high-availability virtual-server to work with multiple ports``
+
+
+2023-07-14
+==========
+
+* :vytask:`T5358` ``(bug): 99-ipsec-dhclient-hook prevents DHCP stateless routes from being installed in VRF table``
+* :vytask:`T4376` ``(bug): DNAT with multiwan and policy routing, incoming connections only work on primary interface``
+* :vytask:`T305` ``(default): loadbalancing does not work with one pppoe connection and another connection of either dhcp or static``
+
+
+2023-07-13
+==========
+
+* :vytask:`T4713` ``(bug): vyos@vyos:~$ show nat destination rules | doesn't work``
+* :vytask:`T2315` ``(feature): Ability to have right address-family for BGP peers.``
+
+
+2023-07-12
+==========
+
+* :vytask:`T5347` ``(bug): Compare commit revision bug``
+* :vytask:`T5161` ``(default): BFD Static Route Monitoring``
+* :vytask:`T5105` ``(bug): DHCP Server - Wrong error message``
+* :vytask:`T4927` ``(bug): Need to change restart to reload-or-restart in Webproxy module``
+* :vytask:`T3835` ``(bug): vyos router 1.2.7 snmp Dos bug``
+* :vytask:`T5352` ``(default): Fix missing dependency for netavark``
+* :vytask:`T4959` ``(feature): Add container registry authentication config for containers``
+
+
+2023-07-11
+==========
+
+* :vytask:`T5314` ``(bug): QOS Default classes are not configured with correct qdisc``
+* :vytask:`T4862` ``(bug): webproxy domain-block does not work``
+* :vytask:`T4844` ``(bug): Incorrect permissions of the safeguard DB directory``
+* :vytask:`T4815` ``(bug): Fix various name server config issues``
+* :vytask:`T4810` ``(bug): Op-mode show/monitor log pppoe interface does not show any logs``
+* :vytask:`T4758` ``(feature): Rewrite show dhcp server to vyos.opmode format``
+* :vytask:`T4460` ``(bug): nhrp not starting due to missing cisco-authentication value``
+* :vytask:`T4262` ``(bug): install image doesn't respect chosen root partition size``
+* :vytask:`T3810` ``(bug): webproxy squidguard rules don't work properly after rewriting to python.``
+* :vytask:`T1928` ``(bug): Is the 'Welcome to VyOS' message when using SSH an information leak?``
+* :vytask:`T1877` ``(default): Feature Request: Allow NAT to use network and address groups``
+* :vytask:`T4813` ``(feature): L3VPN over GRE Tunnels``
+* :vytask:`T4943` ``(bug): Radius SSH login displays "permission denied" on 1.4 rolling release``
+* :vytask:`T4542` ``(default): route-map: "match prefix-len" incorrect behavior``
+* :vytask:`T4392` ``(default): Multiline login banner text reports error on commit``
+
+
 2023-07-10
 ==========
 
 * :vytask:`T5345` ``(bug): Error incorrectly raised in revised multi_to_list when tag node value name == tag node name``
+* :vytask:`T3578` ``(bug): Prefix-List(6) update cause empty prefix-list(6)``
+* :vytask:`T762` ``(feature): Include rulseset in firewall``
 
 
 2023-07-06
@@ -102,7 +163,6 @@
 ==========
 
 * :vytask:`T5300` ``(bug): verification of port availability can return false negative on boot``
-* :vytask:`T5305` ``(bug): REST API configure operation should not be defined as async``
 * :vytask:`T5248` ``(feature): Ability to load config via API in JSON format``
 
 
@@ -592,7 +652,6 @@
 ==========
 
 * :vytask:`T5030` ``(bug): HTTPS-API delete key without id error``
-* :vytask:`T5006` ``(bug): Http api segfault with concurrent requests``
 
 
 2023-02-23

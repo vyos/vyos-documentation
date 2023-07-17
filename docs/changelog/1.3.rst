@@ -8,6 +8,43 @@
    _ext/releasenotes.py
 
 
+2023-07-14
+==========
+
+* :vytask:`T305` ``(default): loadbalancing does not work with one pppoe connection and another connection of either dhcp or static``
+
+
+2023-07-13
+==========
+
+* :vytask:`T2315` ``(feature): Ability to have right address-family for BGP peers.``
+* :vytask:`T3045` ``(bug): Changes to Conntrack-Sync don't apply correctly (Mutlicast->UDP)``
+* :vytask:`T971` ``(bug): authentication public-keys options quoting issue``
+
+
+2023-07-12
+==========
+
+* :vytask:`T5009` ``(bug): op-mode command:  restart dhcp relay-agent not working``
+* :vytask:`T4927` ``(bug): Need to change restart to reload-or-restart in Webproxy module``
+* :vytask:`T3835` ``(bug): vyos router 1.2.7 snmp Dos bug``
+* :vytask:`T4959` ``(feature): Add container registry authentication config for containers``
+* :vytask:`T425` ``(feature): AWS CloudWatch monitoring scripts``
+
+
+2023-07-11
+==========
+
+* :vytask:`T4862` ``(bug): webproxy domain-block does not work``
+* :vytask:`T4844` ``(bug): Incorrect permissions of the safeguard DB directory``
+* :vytask:`T4262` ``(bug): install image doesn't respect chosen root partition size``
+* :vytask:`T3810` ``(bug): webproxy squidguard rules don't work properly after rewriting to python.``
+* :vytask:`T1928` ``(bug): Is the 'Welcome to VyOS' message when using SSH an information leak?``
+* :vytask:`T4737` ``(bug): FRRouting/zebra 7.5.1 does not redistribute routes to other protocols``
+* :vytask:`T3852` ``(bug): DHCP client issue - interface has two dhclient processes when link is unpluged and then plug again``
+* :vytask:`T2118` ``(bug): Failure to boot after power outage due to dirty filesystem and no fsck in initramfs``
+
+
 2023-07-05
 ==========
 
