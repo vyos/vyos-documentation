@@ -45,6 +45,10 @@ Configuration
    The router should discard DHCP packages already containing relay agent
    information to ensure that only requests from DHCP clients are forwarded.
 
+.. cfgcmd:: set service dhcp-relay disable
+
+   Disable dhcp-relay service.
+
 Options
 -------
 
@@ -145,6 +149,10 @@ Configuration
    `<server>` and other relay agents will be accepted.
 
 .. _dhcp-relay:ipv6_options:
+
+.. cfgcmd:: set service dhcpv6-relay disable
+
+   Disable dhcpv6-relay service.
 
 Options
 -------
