@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2023-07-21
+==========
+
+* :vytask:`T5373` ``(bug): LLDP seems to be running even if its disabled on all interfaces``
+* :vytask:`T5328` ``(default): bgp: Incorrect warning showed for address-family configured with neighbor as interface``
+* :vytask:`T5363` ``(bug): Bash history file does not exists after reboot and ony other file in home directory``
+* :vytask:`T5385` ``(bug): reference_tree: catch parse error on non-transcluded files``
+* :vytask:`T5361` ``(bug): "monitor log" behaves like "show log"``
+
+
+2023-07-20
+==========
+
+* :vytask:`T5362` ``(bug): `set high-availability vrrp global-parameters version 3` seems to have no effect``
+* :vytask:`T5355` ``(bug): IPSec: OP cmd : "show vpn ike sa" does not show output``
+* :vytask:`T5330` ``(enhancment): Keep track of source of config dict value when merging defaults``
+* :vytask:`T4497` ``(feature): ping cannot force ipv4 or ipv6``
+* :vytask:`T4288` ``(bug): IPsec tunnel will break when ESP timeout``
+
+
+2023-07-19
+==========
+
+* :vytask:`T5340` ``(bug): SNMP and VRF``
+* :vytask:`T5059` ``(feature): add 'disable' option to DHCP relay config``
+
+
+2023-07-17
+==========
+
+* :vytask:`T2051` ``(bug): Throughput anomalies``
+
+
 2023-07-16
 ==========
 
