@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2023-07-17
+==========
+
+* :vytask:`T2051` (bug): Throughput anomalies
+
+
 2023-07-14
 ==========
 
