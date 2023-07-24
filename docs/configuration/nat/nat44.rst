@@ -273,6 +273,16 @@ Example:
   set nat destination rule 10 translation address 192.0.2.10
 
 
+Also, in :ref:`destination-nat`, redirection to localhost is supported.
+The redirect statement is a special form of dnat which always translates
+the destination address to the local host’s one.
+
+Example of redirection:
+
+.. code-block:: none
+
+  set nat destination rule 10 translation redirect port 22
+
 Configuration Examples
 ======================
 
