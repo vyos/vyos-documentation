@@ -202,6 +202,17 @@ Optional
   This command will change the hold down value globally for IGP-LDP
   synchronization during convergence/interface flap events.
 
+.. cfgcmd:: set protocols ospf capability opaque
+
+   ospfd supports Opaque LSA :rfc:`2370` as partial support for MPLS Traffic
+   Engineering LSAs. The opaque-lsa capability must be enabled in the
+   configuration.
+
+   An alternate command could be "mpls-te on" (Traffic Engineering)
+
+   .. note:: FRR offers only partial support for some of the routing
+      protocol extensions that are used with MPLS-TE; it does not
+      support a complete RSVP-TE solution.
 
 Area Configuration
 ------------------
@@ -482,6 +493,45 @@ Route will be originated on-behalf of all matched external LSAs.
 
    This command to ensure not advertise the summary lsa for the matched
    external LSAs.
+
+Graceful Restart
+----------------
+
+.. cfgcmd:: set protocols ospf graceful-restart [grace-period (1-1800)]
+
+   Configure Graceful Restart :rfc:`3623` restarting support. When enabled,
+   the default grace period is 120 seconds.
+
+   To perform a graceful shutdown, the FRR ``graceful-restart prepare ip
+   ospf`` EXEC-level command needs to be issued before restarting the
+   ospfd daemon.
+
+.. cfgcmd:: set protocols ospf graceful-restart helper enable [router-id A.B.C.D]
+
+   Configure Graceful Restart :rfc:`3623` helper support. By default, helper support
+   is disabled for all neighbours. This config enables/disables helper support
+   on this router for all neighbours.
+
+   To enable/disable helper support for a specific neighbour, the router-id
+   (A.B.C.D) has to be specified.
+
+.. cfgcmd:: set protocols ospf graceful-restart helper no-strict-lsa-checking
+
+   By default `strict-lsa-checking` is configured then the helper will abort
+   the Graceful Restart when a LSA change occurs which affects the restarting
+   router.
+
+   This command disables it.
+
+.. cfgcmd:: set protocols ospf graceful-restart helper supported-grace-time
+
+   Supports as HELPER for configured grace period.
+
+.. cfgcmd:: set protocols ospf graceful-restart helper planned-only
+
+   It helps to support as HELPER only for planned restarts.
+
+   By default, it supports both planned and unplanned outages.
 
 Manual Neighbor Configuration
 -----------------------------
@@ -1155,6 +1205,45 @@ Interface Configuration
    default value is 1 seconds. The interval range is 3 to 65535.
 
 .. _ospf:v3_redistribution_config:
+
+Graceful Restart
+----------------
+
+.. cfgcmd:: set protocols ospfv3 graceful-restart [grace-period (1-1800)]
+
+   Configure Graceful Restart :rfc:`3623` restarting support. When enabled,
+   the default grace period is 120 seconds.
+
+   To perform a graceful shutdown, the FRR ``graceful-restart prepare ip
+   ospf`` EXEC-level command needs to be issued before restarting the
+   ospfd daemon.
+
+.. cfgcmd:: set protocols ospfv3 graceful-restart helper enable [router-id A.B.C.D]
+
+   Configure Graceful Restart :rfc:`3623` helper support. By default, helper support
+   is disabled for all neighbours. This config enables/disables helper support
+   on this router for all neighbours.
+
+   To enable/disable helper support for a specific neighbour, the router-id
+   (A.B.C.D) has to be specified.
+
+.. cfgcmd:: set protocols ospfv3 graceful-restart helper lsa-check-disable
+
+   By default `strict-lsa-checking` is configured then the helper will abort
+   the Graceful Restart when a LSA change occurs which affects the restarting
+   router.
+
+   This command disables it.
+
+.. cfgcmd:: set protocols ospfv3 graceful-restart helper supported-grace-time
+
+   Supports as HELPER for configured grace period.
+
+.. cfgcmd:: set protocols ospfv3 graceful-restart helper planned-only
+
+   It helps to support as HELPER only for planned restarts.
+
+   By default, it supports both planned and unplanned outages.
 
 Redistribution Configuration
 ----------------------------
