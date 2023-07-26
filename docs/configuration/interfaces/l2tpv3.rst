@@ -24,7 +24,7 @@ not be re-engineered in or on top of L2TPv3 in later products.
 
 The protocol overhead of L2TPv3 is also significantly bigger than MPLS.
 
-L2TPv3 is described in :rfc:`3921`.
+L2TPv3 is described in :rfc:`3931`.
 
 *************
 Configuration
