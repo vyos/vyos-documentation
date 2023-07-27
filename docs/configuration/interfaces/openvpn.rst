@@ -534,7 +534,7 @@ anymore, thus boosting the performance of active VPN connections.
   Enable OpenVPN Data Channel Offload feature by loading the appropriate kernel
   module.
 
-  Disbaled by default. No kernel module loaded.
+  Disabled by default - no kernel module loaded.
 
 ******
 Client
