@@ -48,8 +48,8 @@ Site-to-site mode supports x.509 but doesn't require it and can also work with
 static keys, which is simpler in many cases. In this example, we'll configure
 a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared key.
 
-First, one of the systems generate the key using the :ref:`generate pki openvpn shared-secret<configuration/pki/index:pki>` 
-command. Once generated, you will need to install this key on the local system, 
+First, one of the systems generate the key using the :ref:`generate pki openvpn shared-secret<configuration/pki/index:pki>`
+command. Once generated, you will need to install this key on the local system,
 then copy and install this key to the remote router.
 
 In our example, we used the key name ``openvpn-1`` which we will reference
@@ -82,7 +82,7 @@ Local Configuration:
   Configure mode commands to install OpenVPN key:
   set pki openvpn shared-secret openvpn-1 key 'generated_key_string'
   set pki openvpn shared-secret openvpn-1 version '1'
-  
+
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
   set interfaces openvpn vtun1 persistent-tunnel
@@ -97,13 +97,13 @@ Local Configuration - Annotated:
 
 .. code-block:: none
 
-  run generate pki openvpn shared-secret install openvpn-1                        # Locally genearated OpenVPN shared secret. 
-                                                                                    The generated secret is the output to 
+  run generate pki openvpn shared-secret install openvpn-1                        # Locally genearated OpenVPN shared secret.
+                                                                                    The generated secret is the output to
                                                                                     the console.
   Configure mode commands to install OpenVPN key:
-  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'              # Generated secret displayed in the output to 
+  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'              # Generated secret displayed in the output to
                                                                                     the console.
-  set pki openvpn shared-secret openvpn-1 version '1'                             # Generated secret displayed in the output to 
+  set pki openvpn shared-secret openvpn-1 version '1'                             # Generated secret displayed in the output to
                                                                                     the console.
 
   set interfaces openvpn vtun1 mode site-to-site
@@ -138,7 +138,7 @@ Remote Configuration - Annotated:
 
 .. code-block:: none
 
-  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'               # Locally genearated OpenVPN shared secret 
+  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'               # Locally genearated OpenVPN shared secret
                                                                                     (from the Local Configuration Block).
   set pki openvpn shared-secret openvpn-1 version '1'
 
@@ -304,8 +304,8 @@ closing on connection resets or daemon reloads.
   set interfaces openvpn vtun10 persistent-tunnel
   set interfaces openvpn vtun10 protocol udp
 
-Then we need to generate, add and specify the names of the cryptographic materials. 
-Each of the install command should be applied to the configuration and commited 
+Then we need to generate, add and specify the names of the cryptographic materials.
+Each of the install command should be applied to the configuration and commited
 before using under the openvpn interface configuration.
 
 .. code-block:: none
@@ -314,18 +314,18 @@ before using under the openvpn interface configuration.
   Configure mode commands to install:
   set pki ca ca-1 certificate 'generated_cert_string'
   set pki ca ca-1 private key 'generated_private_key'
-  
+
   run generate pki certificate sign ca-1 install srv-1            # Follow the instructions to generate server cert.
   Configure mode commands to install:
   set pki certificate srv-1 certificate 'generated_server_cert'
   set pki certificate srv-1 private key 'generated_private_key'
-  
-  run generate pki dh install dh-1                                # Follow the instructions to generate set of 
+
+  run generate pki dh install dh-1                                # Follow the instructions to generate set of
                                                                     Diffie-Hellman parameters.
   Generating parameters...
   Configure mode commands to install DH parameters:
   set pki dh dh-1 parameters 'generated_dh_params_set'
-  
+
   set interfaces openvpn vtun10 tls ca-certificate ca-1
   set interfaces openvpn vtun10 tls certificate srv-1
   set interfaces openvpn vtun10 tls dh-params dh-1
@@ -361,18 +361,18 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
   set protocols static route 10.23.0.0/20 interface vtun10
 
 Additionally, each client needs a copy of ca cert and its own client key and
-cert files. The files are plaintext so they may be copied either manually from the CLI. 
-Client key and cert files should be signed with the proper ca cert and generated on the 
-server side. 
+cert files. The files are plaintext so they may be copied either manually from the CLI.
+Client key and cert files should be signed with the proper ca cert and generated on the
+server side.
 
 HQ's router requires the following steps to generate crypto materials for the Branch 1:
 
 .. code-block:: none
-  
-  run generate pki certificate sign ca-1 install branch-1            # Follow the instructions to generate client 
+
+  run generate pki certificate sign ca-1 install branch-1            # Follow the instructions to generate client
                                                                        cert for Branch 1
   Configure mode commands to install:
-  
+
 Branch 1's router might have the following lines:
 
 .. code-block:: none
@@ -380,7 +380,7 @@ Branch 1's router might have the following lines:
   set pki ca ca-1 certificate 'generated_cert_string'                # CA cert generated on HQ router
   set pki certificate branch-1 certificate 'generated_branch_cert'   # Client cert generated and signed on HQ router
   set pki certificate branch-1 private key 'generated_private_key'   # Client cert key generated on HQ router
-  
+
   set interfaces openvpn vtun10 tls ca-cert ca-1
   set interfaces openvpn vtun10 tls certificate branch-1
 
@@ -512,6 +512,29 @@ example:
            dh-params dh1024.pem
        }
    }
+
+
+Offloading (DCO)
+================
+
+The expression Data Channel Offload refers to any technique implemented with
+the goal of moving the processing of data packets from the OpenVPN userspace
+program to a separate entity.
+
+Given that OpenVPN spends a considerable amount of time passing data packets
+back and forth from kernel-land to user-land, where decryption and re-routing
+happens, it was decided to offload the data processing directly to the kernel.
+As direct consequence, data packets are not required to leave the kernelspace
+anymore, thus boosting the performance of active VPN connections.
+
+.. warning:: This is experimental!
+
+.. cfgcmd:: set interfaces openvpn <name> offload dco
+
+  Enable OpenVPN Data Channel Offload feature by loading the appropriate kernel
+  module.
+
+  Disbaled by default. No kernel module loaded.
 
 ******
 Client
