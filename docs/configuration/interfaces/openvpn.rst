@@ -514,28 +514,6 @@ example:
    }
 
 
-Offloading (DCO)
-================
-
-The expression Data Channel Offload refers to any technique implemented with
-the goal of moving the processing of data packets from the OpenVPN userspace
-program to a separate entity.
-
-Given that OpenVPN spends a considerable amount of time passing data packets
-back and forth from kernel-land to user-land, where decryption and re-routing
-happens, it was decided to offload the data processing directly to the kernel.
-As direct consequence, data packets are not required to leave the kernelspace
-anymore, thus boosting the performance of active VPN connections.
-
-.. warning:: This is experimental!
-
-.. cfgcmd:: set interfaces openvpn <name> offload dco
-
-  Enable OpenVPN Data Channel Offload feature by loading the appropriate kernel
-  module.
-
-  Disabled by default - no kernel module loaded.
-
 ******
 Client
 ******
@@ -627,19 +605,19 @@ Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
 OpenVPN Data Channel Offload (DCO)
 **********************************
 
-OpenVPN Data Channel Offload (DCO) enables significant performance 
-enhancement in encrypted OpenVPN data processing. By minimizing context 
-switching for each packet, DCO effectively reduces overhead. This optimization 
-is achieved by keeping most data handling tasks within the kernel, avoiding 
-frequent switches between kernel and user space for encryption and packet 
-handling. As a result, the processing of each packet becomes more efficient, 
-potentially leveraging hardware encryption offloading support available in 
-the kernel. 
+OpenVPN Data Channel Offload (DCO) enables significant performance enhancement
+in encrypted OpenVPN data processing. By minimizing context switching for each
+packet, DCO effectively reduces overhead. This optimization is achieved by
+keeping most data handling tasks within the kernel, avoiding frequent switches
+between kernel and user space for encryption and packet handling.
 
-.. note:: OpenVPN DCO is not full OpenVPN features supported , is currently 
-   considered experimental. Furthermore, there are certain OpenVPN features and 
-   use cases that remain incompatible with DCO. To get a comprehensive 
-   understanding of the limitations associated with DCO, refer to the list of 
+As a result, the processing of each packet becomes more efficient, potentially
+leveraging hardware encryption offloading support available in the kernel.
+
+.. note:: OpenVPN DCO is not full OpenVPN features supported , is currently
+   considered experimental. Furthermore, there are certain OpenVPN features and
+   use cases that remain incompatible with DCO. To get a comprehensive
+   understanding of the limitations associated with DCO, refer to the list of
    known limitations in the documentation.
 
    https://community.openvpn.net/openvpn/wiki/DataChannelOffload/Features
@@ -657,10 +635,15 @@ tunnel configuration where we can enable this function  .The current best
 practice is to create a new tunnel with DCO to minimize the chance of problems 
 with existing clients.
 
-.. cfgcmd:: set interfaces openvpn vtun10 enable-dco
+.. cfgcmd:: set interfaces openvpn <name> offload dco
 
-Using this command over the interface is performing DCO ,is necessary reset 
-the tunnel.
+  Enable OpenVPN Data Channel Offload feature by loading the appropriate kernel
+  module.
+
+  Disabled by default - no kernel module loaded.
+
+  .. note:: Enable this feature causes an interface reset.
+
 
 Troubleshooting
 ===============
