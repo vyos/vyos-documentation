@@ -623,6 +623,45 @@ Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
    quotes using the ``&quot;`` statement.
 
 
+**********************************
+OpenVPN Data Channel Offload (DCO)
+**********************************
+
+OpenVPN Data Channel Offload (DCO) enables significant performance 
+enhancement in encrypted OpenVPN data processing. By minimizing context 
+switching for each packet, DCO effectively reduces overhead. This optimization 
+is achieved by keeping most data handling tasks within the kernel, avoiding 
+frequent switches between kernel and user space for encryption and packet 
+handling. As a result, the processing of each packet becomes more efficient, 
+potentially leveraging hardware encryption offloading support available in 
+the kernel. 
+
+.. note:: OpenVPN DCO is not full OpenVPN features supported , is currently 
+   considered experimental. Furthermore, there are certain OpenVPN features and 
+   use cases that remain incompatible with DCO. To get a comprehensive 
+   understanding of the limitations associated with DCO, refer to the list of 
+   known limitations in the documentation.
+
+   https://community.openvpn.net/openvpn/wiki/DataChannelOffload/Features
+
+
+Enabling OpenVPN DCO
+====================
+
+DCO support is a per-tunnel option and it is not automatically enabled by 
+default for new or upgraded tunnels. Existing tunnels will continue to function 
+as they have in the past.
+
+DCO can be enabled for both new and existing tunnels,VyOS adds an option in each 
+tunnel configuration where we can enable this function  .The current best 
+practice is to create a new tunnel with DCO to minimize the chance of problems 
+with existing clients.
+
+.. cfgcmd:: set interfaces openvpn vtun10 enable-dco
+
+Using this command over the interface is performing DCO ,is necessary reset 
+the tunnel.
+
 Troubleshooting
 ===============
 
