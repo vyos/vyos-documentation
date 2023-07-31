@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2023-07-24
+==========
+
+* :vytask:`T5354` ``(feature): Add sshguard to protect against brut-forces for 1.3``
+
+
 2023-07-17
 ==========
 

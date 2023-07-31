@@ -8,6 +8,41 @@
    _ext/releasenotes.py
 
 
+2023-07-29
+==========
+
+* :vytask:`T5403` ``(feature): Add support for extending xml cache``
+
+
+2023-07-28
+==========
+
+* :vytask:`T4602` ``(bug): DHCP `ping-check` enabled by default``
+* :vytask:`T5411` ``(feature): Remove old background monitoring implementation``
+* :vytask:`T5317` ``(enhancment): configtree: remove mutable references``
+* :vytask:`T5316` ``(enhancment): configtree: use a single pass of the diff algorithm``
+
+
+2023-07-27
+==========
+
+* :vytask:`T5368` ``(feature): FastNetmon service ids ddos-protection add support sflow mode``
+
+
+2023-07-26
+==========
+
+* :vytask:`T5398` ``(bug): FRR mangles container network interface names``
+* :vytask:`T5365` ``(bug): Container systemd units require authentication``
+* :vytask:`T4974` ``(feature): OpenVPN- Data Channel Offload(DCO)``
+
+
+2023-07-25
+==========
+
+* :vytask:`T5377` ``(feature): ospf: add graceful restart FRR feature (RFC 3623)``
+
+
 2023-07-21
 ==========
 
@@ -89,7 +124,6 @@
 * :vytask:`T4815` ``(bug): Fix various name server config issues``
 * :vytask:`T4810` ``(bug): Op-mode show/monitor log pppoe interface does not show any logs``
 * :vytask:`T4758` ``(feature): Rewrite show dhcp server to vyos.opmode format``
-* :vytask:`T4460` ``(bug): nhrp not starting due to missing cisco-authentication value``
 * :vytask:`T4262` ``(bug): install image doesn't respect chosen root partition size``
 * :vytask:`T3810` ``(bug): webproxy squidguard rules don't work properly after rewriting to python.``
 * :vytask:`T1928` ``(bug): Is the 'Welcome to VyOS' message when using SSH an information leak?``
