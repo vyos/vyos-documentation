@@ -92,13 +92,13 @@ used, multiple subnets can be setup which are used sequentially.
 
    Use this command for every pool of client IP addresses you want to
    define. The addresses of this pool will be given to PPPoE clients.
-   You must use CIDR notation and it must be within a /24 subnet.
+   You must use CIDR notation.
 
 .. code-block:: none
 
   set service pppoe-server client-ip-pool subnet '10.1.1.0/24'
-  set service pppoe-server client-ip-pool subnet '10.1.2.0/24'
-  set service pppoe-server client-ip-pool subnet '10.1.3.0/24'
+  set service pppoe-server client-ip-pool subnet '10.1.2.0/23'
+  set service pppoe-server client-ip-pool subnet '10.1.4.0/22'
 
 
 **RADIUS based IP pools (Framed-IP-Address)**
