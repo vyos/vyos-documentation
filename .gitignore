@@ -1,5 +1,6 @@
 # Sphinx
 _build/
+localazy_private.json
 
 # python virtualenv
 venv/
