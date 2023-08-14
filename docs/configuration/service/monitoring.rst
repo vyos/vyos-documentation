@@ -142,9 +142,9 @@ An example of a configuration that sends ``telegraf`` metrics to remote
   set service monitoring telegraf authentication token 'ZAml9Uy5wrhA...=='
   set service monitoring telegraf bucket 'bucket_vyos'
   set service monitoring telegraf port '8086'
-  set service monitoring telegraf source 'all'
   set service monitoring telegraf url 'http://r1.influxdb2.local'
-
+  set service monitoring source 'all'
+  
 .. _azure-data-explorer: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 .. _prometheus-client: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client
 .. _splunk: https://www.splunk.com/en_us/blog/it/splunk-metrics-via-telegraf.html
