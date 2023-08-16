@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2023-08-10
+==========
+
+* :vytask:`T5329` (bug): Wireguard interface as GRE tunnel source causes configuration error on boot
+
+
+2023-08-06
+==========
+
+* :vytask:`T3424` (default): PPPoE IA-PD doesn't work in VRF
+
+
 2023-07-24
 ==========
 
