@@ -444,6 +444,13 @@ address-family.
    derived and should not be specified explicitly for either the source or
    destination VRF’s.
 
+.. cfgcmd:: set [vrf name <name>] protocols bgp interface
+            <name> mpls forwarding
+
+   It is possible to permit BGP install VPN prefixes without transport labels.
+   This configuration will install VPN prefixes originated from an e-bgp session,
+   and with the next-hop directly connected.
+
 .. _l3vpn-vrf example operation:
 
 Operation
