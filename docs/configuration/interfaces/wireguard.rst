@@ -183,6 +183,10 @@ traffic.
   The command :opcmd:`show interfaces wireguard wg01 public-key` will then show the
   public key, which needs to be shared with the peer.
 
+.. cmdinclude:: /_include/interface-per-client-thread.txt
+   :var0: wireguard
+   :var1: wg01
+
 **remote side - commands**
 
 .. code-block:: none

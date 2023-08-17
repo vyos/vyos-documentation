@@ -122,6 +122,10 @@ Wireless options
   * ``station`` - Connects to another access point
   * ``monitor`` - Passively monitor all packets on the frequency/channel
 
+.. cmdinclude:: /_include/interface-per-client-thread.txt
+   :var0: wireless
+   :var1: wlan0
+
 PPDU
 ----
 
