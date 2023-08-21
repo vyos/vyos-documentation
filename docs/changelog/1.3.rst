@@ -8,6 +8,26 @@
    _ext/releasenotes.py
 
 
+2023-08-20
+==========
+
+* :vytask:`T5470` ``(bug): wlan: can not disable interface if SSID is not configured``
+
+
+2023-08-17
+==========
+
+* :vytask:`T5486` ``(bug): Service dns dynamic cannot pass the smoketest``
+* :vytask:`T5223` ``(bug): tunnel key doesn't clear``
+
+
+2023-08-15
+==========
+
+* :vytask:`T5273` ``(default): Add op mode commands for displaying certificate details and fingerprints``
+* :vytask:`T5270` ``(default): Make OpenVPN `tls dh-params` optional``
+
+
 2023-08-10
 ==========
 
