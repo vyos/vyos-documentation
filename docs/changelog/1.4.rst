@@ -8,6 +8,52 @@
    _ext/releasenotes.py
 
 
+2023-08-20
+==========
+
+* :vytask:`T5470` ``(bug): wlan: can not disable interface if SSID is not configured``
+
+
+2023-08-18
+==========
+
+* :vytask:`T5488` ``(bug): System conntrack ignore does not take any effect``
+
+
+2023-08-17
+==========
+
+* :vytask:`T4202` ``(bug): NFT: Zone policies fail to apply when "l2tp+" is in the interface list``
+* :vytask:`T5409` ``(feature): Add 'set interfaces wireguard wgX threaded'``
+* :vytask:`T5476` ``(feature): netplug: replace Perl helper scripts with a Python equivalent``
+* :vytask:`T5223` ``(bug): tunnel key doesn't clear``
+* :vytask:`T5490` ``(feature): login: add missing regex for home direcotry and radius server key``
+
+
+2023-08-16
+==========
+
+* :vytask:`T5483` ``(bug): Residual dhcp-server test file causing zabbix-agent smoketest to fail``
+
+
+2023-08-15
+==========
+
+* :vytask:`T5293` ``(feature): Support for Floating Rules (Global Firewall-Rules that are automatically applied before all other Zone Rules)``
+* :vytask:`T5273` ``(default): Add op mode commands for displaying certificate details and fingerprints``
+* :vytask:`T5270` ``(default): Make OpenVPN `tls dh-params` optional``
+
+
+2023-08-14
+==========
+
+* :vytask:`T5477` ``(bug): op-mode pki.py should use Config for defaults``
+* :vytask:`T5461` ``(feature): Improve rootfs directory variable``
+* :vytask:`T5457` ``(feature): Add environmental variable pointing to current rootfs directory``
+* :vytask:`T5440` ``(bug): Restore pre/postconfig scripts if user deleted them``
+* :vytask:`T5436` ``(bug): vyos-preconfig-bootup.script is missing``
+
+
 2023-08-12
 ==========
 
