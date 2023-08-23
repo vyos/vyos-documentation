@@ -425,6 +425,14 @@ address-family.
    automatically assigned from a pool maintained.
 
 .. cfgcmd:: set vrf name <name> protocols bgp address-family
+            <ipv4-unicast|ipv6-unicast> label vpn allocation-mode per-nexthop
+
+   Select how labels are allocated in the given VRF. By default, the per-vrf 
+   mode is selected, and one label is used for all prefixes from the VRF. The 
+   per-nexthop will use a unique label for all prefixes that are reachable via 
+   the same nexthop.
+
+.. cfgcmd:: set vrf name <name> protocols bgp address-family
             <ipv4-unicast|ipv6-unicast> route-map vpn <import|export>
             [route-map <name>]
 
