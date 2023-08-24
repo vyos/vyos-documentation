@@ -426,7 +426,7 @@ There are a lot of matching criteria against which the package can be tested.
    firewall as rules will remain valid if the IPv6 prefix changes and the host
    portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses
    <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)
-   
+
    This functions for both individual addresses and address groups.
 
    .. code-block:: none
