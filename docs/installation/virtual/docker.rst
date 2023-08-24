@@ -49,7 +49,7 @@ Deploy container from ISO
 =========================
 
 Download the ISO on which you want to base the container. In this example, 
-the name of the ISO is ``vyos-1.4-rolling-202111281249-amd64.iso``. If you
+the name of the ISO is ``vyos-1.4-rolling-202308240020-amd64.iso``. If you
 created a custom IPv6-enabled network, the ``docker run`` command below
 will require that this network be included as the ``--net`` parameter to
 ``docker run``.
@@ -57,9 +57,10 @@ will require that this network be included as the ``--net`` parameter to
 .. code-block:: none
 
   $ mkdir vyos && cd vyos
-  $ cp ~/vyos-1.4-rolling-202111281249-amd64.iso .
+  $ curl -o vyos-1.4-rolling-202308240020-amd64.iso https://github.com/vyos/vyos-rolling-night
+ly-builds/releases/download/1.4-rolling-202308240020/vyos-1.4-rolling-202308240020-amd64.iso
   $ mkdir rootfs
-  $ sudo mount -o loop vyos-1.4-rolling-202111281249-amd64.iso rootfs
+  $ sudo mount -o loop vyos-1.4-rolling-202308240020-amd64.iso rootfs
   $ sudo apt-get install -y squashfs-tools
   $ mkdir unsquashfs
   $ sudo unsquashfs -f -d unsquashfs/ rootfs/live/filesystem.squashfs
