@@ -78,10 +78,11 @@ Where, main key words and configuration paths that needs to be understood:
 
 .. note:: **Important note about default-actions:**
    If default action for any chain is not defined, then the default
-   action is set to **drop** for that chain.
+   action is set to **accept** for that chain. Only for custom chains,
+   the default action is set to **drop**.
 
 Custom firewall chains can be created, with commands
-``set firewall [ipv4 | ipv6] [name | ipv6-name] <name> ...``. In Order to use
+``set firewall [ipv4 | ipv6] [name | ipv6-name] <name> ...``. In order to use
 such custom chain, a rule with **action jump**, and the appropiate **target**
 should be defined in a base chain.
 
