@@ -44,6 +44,30 @@ MACsec options
   A physical interface is required to connect this MACsec instance to. Traffic
   leaving this interface will now be authenticated/encrypted.
 
+Static Keys
+-----------
+Static :abbr:`SAK (Secure Authentication Key)` mode can be configured manually on each
+device wishing to use MACsec. Keys must be set statically on all devices for traffic
+to flow properly. Key rotation is dependent on the administrator updating all keys
+manually across connected devices. Static SAK mode can not be used with MKA.
+
+.. cfgcmd:: set interfaces macsec <interface> security static key <key>
+
+  Set the device's transmit (TX) key. This key must be a hex string that is 16-bytes 
+  (GCM-AES-128) or 32-bytes (GCM-AES-256).
+
+.. cfgcmd:: set interfaces macsec <interface> security static peer <peer> mac <mac address>
+
+  Set the peer's MAC address
+
+.. cfgcmd:: set interfaces macsec <interface> security static peer <peer> key <key>
+
+  Set the peer's key used to receive (RX) traffic
+
+.. cfgcmd:: set interfaces macsec <interface> security static peer <peer> disable
+
+  Disable the peer configuration
+
 Key Management
 --------------
 
@@ -188,3 +212,28 @@ the unencrypted but authenticated content.
           0x0070:  3031 3233 3435 3637 87d5 eed3 3a39 d52b  01234567....:9.+
           0x0080:  a282 c842 5254 ef28                      ...BRT.(
 
+**R1 Static Key**
+
+.. code-block:: none
+
+  set interfaces macsec macsec1 address '192.0.2.1/24'
+  set interfaces macsec macsec1 address '2001:db8::1/64'
+  set interfaces macsec macsec1 security cipher 'gcm-aes-128'
+  set interfaces macsec macsec1 security encrypt
+  set interfaces macsec macsec1 security static key 'ddd6f4a7be4d8bbaf88b26f10e1c05f7'
+  set interfaces macsec macsec1 security static peer R2 mac 00:11:22:33:44:02
+  set interfaces macsec macsec1 security static peer R2 key 'eadcc0aa9cf203f3ce651b332bd6e6c7'
+  set interfaces macsec macsec1 source-interface 'eth1'
+
+**R2 Static Key**
+
+.. code-block:: none
+
+  set interfaces macsec macsec1 address '192.0.2.2/24'
+  set interfaces macsec macsec1 address '2001:db8::2/64'
+  set interfaces macsec macsec1 security cipher 'gcm-aes-128'
+  set interfaces macsec macsec1 security encrypt
+  set interfaces macsec macsec1 security static key 'eadcc0aa9cf203f3ce651b332bd6e6c7'
+  set interfaces macsec macsec1 security static peer R2 mac 00:11:22:33:44:01
+  set interfaces macsec macsec1 security static peer R2 key 'ddd6f4a7be4d8bbaf88b26f10e1c05f7'
+  set interfaces macsec macsec1 source-interface 'eth1'
