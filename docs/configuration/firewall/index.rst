@@ -3,7 +3,7 @@ Firewall
 ########
 
 Starting from VyOS 1.4-rolling-202308040557, a new firewall structure
-can be found on all vyos instalations. Documentation for most new firewall
+can be found on all vyos installations. Documentation for most new firewall
 cli can be found here:
 
 .. toctree::
@@ -12,7 +12,7 @@ cli can be found here:
 
    general
 
-Also, for those who haven't update to newer version, legacy documentation is
+Also, for those who haven't updated to newer version, legacy documentation is
 still present and valid for all sagitta version prior to VyOS
 1.4-rolling-202308040557:
 
