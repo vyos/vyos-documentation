@@ -40,8 +40,6 @@ jobs:
       - name: set file ownership
         run: |
           sudo chown -R 1001 docs/_locale
-          ls -l docs/_locale/de
-
     
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
