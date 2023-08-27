@@ -6,6 +6,10 @@
 Zone Based Firewall
 ###################
 
+.. note:: **Important note:**
+   This documentation is valid only for VyOS Sagitta prior to
+   1.4-rolling-YYYYMMDDHHmm
+
 In zone-based policy, interfaces are assigned to zones, and inspection policy
 is applied to traffic moving between the zones and acted on according to
 firewall rules. A Zone is a group of interfaces that have similar functions or

@@ -283,6 +283,32 @@ Example of redirection:
 
   set nat destination rule 10 translation redirect port 22
 
+NAT Load Balance
+----------------
+
+Advanced configuration can be used in order to apply source or destination NAT,
+and within a single rule, be able to define multiple translated addresses,
+so NAT balances the translations among them.
+
+NAT Load Balance uses an algorithm that generates a hash and based on it, then
+it applies corresponding translation. This hash can be generated randomly, or 
+can use data from the ip header: source-address, destination-address,
+source-port and/or destination-port. By default, it will generate the hash
+randomly.
+
+When defining the translated address, called ``backends``, a ``weight`` must
+be configured. This lets the user define load balance distribution according
+to their needs. Them sum of all the weights defined for the backends should
+be equal to 100. In oder words, the weight defined for the backend is the
+percentage of the connections that will receive such backend.
+
+.. cfgcmd:: set nat [source | destination] rule <rule> load-balance hash
+   [source-address | destination-address | source-port | destination-port
+   | random]
+.. cfgcmd:: set nat [source | destination] rule <rule> load-balance backend
+  <x.x.x.x> weight <1-100>
+
+
 Configuration Examples
 ======================
 
@@ -601,6 +627,40 @@ Some application service providers (ASPs) operate a VPN gateway to
 provide access to their internal resources, and require that a
 connecting organisation translate all traffic to the service provider
 network to a source address provided by the ASP.
+
+Load Balance
+------------
+Here we provide two examples on how to apply NAT Load Balance.
+
+First scenario: apply destination NAT for all HTTP traffic comming through
+interface eth0, and user 4 backends. First backend should received 30% of
+the request, second backend should get 20%, third 15% and the fourth 35%
+We will use source and destination address for hash generation.
+
+.. code-block:: none
+
+  set nat destination rule 10 inbound-interface eth0
+  set nat destination rule 10 protocol tcp
+  set nat destination rule 10 destination port 80
+  set nat destination rule 10 load-balance hash source-address
+  set nat destination rule 10 load-balance hash destination-address
+  set nat destination rule 10 laod-balance backend 198.51.100.101 weight 30
+  set nat destination rule 10 laod-balance backend 198.51.100.102 weight 20
+  set nat destination rule 10 laod-balance backend 198.51.100.103 weight 15
+  set nat destination rule 10 laod-balance backend 198.51.100.104 weight 35
+
+Second scenario: apply source NAT for all outgoing connections from
+LAN 10.0.0.0/8, using 3 public addresses and equal distribution.
+We will generate the hash randomly.
+
+.. code-block:: none
+
+  set nat source rule 10 outbound-interface eth0
+  set nat source rule 10 source address 10.0.0.0/8
+  set nat source rule 10 load-balance hash random
+  set nat source rule 10 load-balance backend 192.0.2.251 weight 33
+  set nat source rule 10 load-balance backend 192.0.2.252 weight 33
+  set nat source rule 10 load-balance backend 192.0.2.253 weight 34
 
 Example Network
 ^^^^^^^^^^^^^^^

@@ -251,6 +251,12 @@ Configuration
    Configure optional TTL value on the given resource record. This defaults to
    600 seconds.
 
+.. cfgcmd:: set service dns dynamic timeout <60-3600>
+
+   Specify timeout / update interval to check if IP address changed.
+
+   This defaults to 300 seconds.
+
 .. _dns:dynmaic_example:
 
 Example

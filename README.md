@@ -1,7 +1,6 @@
-Starting with VyOS 1.2 (`crux`) our documentation is being migrated from the old wiki
-to ReadTheDocs. Documentation can be accessed via the following URL: https://docs.vyos.io
+Starting with VyOS 1.2 (`crux`) our documentation is hosted on ReadTheDocs at https://docs.vyos.io
 
-Our old WiKi can still be accessed from the
+Our old wiki with documentation from the VyOS 1.1.x and early 1.2.0 era can still be accessed via the
 [Wayback Machine](https://web.archive.org/web/20200225171529/https://wiki.vyos.net/wiki/Main_Page)
 
 # Build
@@ -28,7 +27,7 @@ largest. There are 88 of them, here's the
 * 1.4.x: `sagitta` (Arrow)
 * ...
 
-### sphinx
+### Sphinx
 Debian requires some extra steps for
 installing `sphinx`, `sphinx-autobuild` and `sphinx-rtd-theme` packages:
 
@@ -100,18 +99,16 @@ $ docker run --rm -it -p 8000:8000 -v "$(pwd)":/vyos -w /vyos/docs -e \
 
 ### Test the docs
 
-Discuss in this Phabricator task: [T1731](https://vyos.dev/T1731)
-
-To test all files run:
+To test all files, run:
 
 ```bash
 $ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs \
   -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation vale .
 ```
 
-to test a specific file (e.g. `clustering.rst`)
+to test a specific file (e.g. `quick-start.rst`)
 
 ```bash
 $ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) \
-  -e GOSU_GID=$(id -g) vyos/vyos-documentation vale clustering.rst
+  -e GOSU_GID=$(id -g) vyos/vyos-documentation vale quick-start.rst
 ```

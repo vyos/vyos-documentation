@@ -122,6 +122,10 @@ Wireless options
   * ``station`` - Connects to another access point
   * ``monitor`` - Passively monitor all packets on the frequency/channel
 
+.. cmdinclude:: /_include/interface-per-client-thread.txt
+   :var0: wireless
+   :var1: wlan0
+
 PPDU
 ----
 
@@ -304,6 +308,7 @@ default physical device (``phy0``) is used.
 
   set interfaces wireless wlan0 type station
   set interfaces wireless wlan0 address dhcp
+  set interfaces wireless wlan0 country-code de
   set interfaces wireless wlan0 ssid Test
   set interfaces wireless wlan0 security wpa passphrase '12345678'
 
@@ -315,6 +320,7 @@ Resulting in
     [...]
     wireless wlan0 {
       address dhcp
+      country-code de
       security {
         wpa {
           passphrase "12345678"
@@ -350,6 +356,7 @@ The WAP in this example has the following characteristics:
 .. code-block:: none
 
   set interfaces wireless wlan0 address '192.168.2.1/24'
+  set interfaces wireless wlan0 country-code de
   set interfaces wireless wlan0 type access-point
   set interfaces wireless wlan0 channel 1
   set interfaces wireless wlan0 mode n
@@ -367,6 +374,7 @@ Resulting in
     [...]
     wireless wlan0 {
           address 192.168.2.1/24
+          country-code de
           channel 1
           mode n
           security {
@@ -385,11 +393,6 @@ Resulting in
           type access-point
       }
   }
-  system {
-    [...]
-    wifi-regulatory-domain DE
-  }
-
 
 VLAN
 ====

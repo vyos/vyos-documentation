@@ -8,6 +8,148 @@
    _ext/releasenotes.py
 
 
+2023-08-20
+==========
+
+* :vytask:`T5470` ``(bug): wlan: can not disable interface if SSID is not configured``
+
+
+2023-08-18
+==========
+
+* :vytask:`T5488` ``(bug): System conntrack ignore does not take any effect``
+
+
+2023-08-17
+==========
+
+* :vytask:`T4202` ``(bug): NFT: Zone policies fail to apply when "l2tp+" is in the interface list``
+* :vytask:`T5409` ``(feature): Add 'set interfaces wireguard wgX threaded'``
+* :vytask:`T5476` ``(feature): netplug: replace Perl helper scripts with a Python equivalent``
+* :vytask:`T5223` ``(bug): tunnel key doesn't clear``
+* :vytask:`T5490` ``(feature): login: add missing regex for home direcotry and radius server key``
+
+
+2023-08-16
+==========
+
+* :vytask:`T5483` ``(bug): Residual dhcp-server test file causing zabbix-agent smoketest to fail``
+
+
+2023-08-15
+==========
+
+* :vytask:`T5293` ``(feature): Support for Floating Rules (Global Firewall-Rules that are automatically applied before all other Zone Rules)``
+* :vytask:`T5273` ``(default): Add op mode commands for displaying certificate details and fingerprints``
+* :vytask:`T5270` ``(default): Make OpenVPN `tls dh-params` optional``
+
+
+2023-08-14
+==========
+
+* :vytask:`T5477` ``(bug): op-mode pki.py should use Config for defaults``
+* :vytask:`T5461` ``(feature): Improve rootfs directory variable``
+* :vytask:`T5457` ``(feature): Add environmental variable pointing to current rootfs directory``
+* :vytask:`T5440` ``(bug): Restore pre/postconfig scripts if user deleted them``
+* :vytask:`T5436` ``(bug): vyos-preconfig-bootup.script is missing``
+
+
+2023-08-12
+==========
+
+* :vytask:`T5467` ``(bug): ospf(v3): removing an interface from the OSPF process does not clear FRR configuration``
+
+
+2023-08-11
+==========
+
+* :vytask:`T5465` ``(feature): adjust-mss: config migration fails if applied to a VLAN or Q-in-Q interface``
+* :vytask:`T2665` ``(bug): vyos.xml.defaults for tag nodes``
+* :vytask:`T5434` ``(enhancment): Replace remaining calls of vyos.xml library``
+* :vytask:`T5319` ``(enhancment): Remove remaining workarounds for incorrect defaults``
+* :vytask:`T5464` ``(feature): ipv6: add support for per-interface dad (duplicate address detection) setting``
+
+
+2023-08-10
+==========
+
+* :vytask:`T5416` ``(bug): Ignoring "ipsec match-none" for firewall``
+* :vytask:`T5329` ``(bug): Wireguard interface as GRE tunnel source causes configuration error on boot``
+
+
+2023-08-09
+==========
+
+* :vytask:`T5452` ``(bug): Uncaught error in generate_cache during vyos-1x build``
+* :vytask:`T5443` ``(enhancment): Add merge_defaults as Config method``
+* :vytask:`T5435` ``(enhancment): Expose utility function for default values at path``
+
+
+2023-08-07
+==========
+
+* :vytask:`T5406` ``(bug): "update webproxy blacklists" fails when vrf is being configured``
+* :vytask:`T5302` ``(bug): QoS class with multiple matches generates one filter rule but expects several rules``
+* :vytask:`T5266` ``(bug): QoS- HTB error when match with  a dscp parameter for queue-type 'priority'``
+* :vytask:`T5071` ``(bug): QOS-Rewrite: DSCP match missing``
+
+
+2023-08-06
+==========
+
+* :vytask:`T5420` ``(feature): nftables - upgrade to latest 1.0.8``
+* :vytask:`T3424` ``(default): PPPoE IA-PD doesn't work in VRF``
+* :vytask:`T5445` ``(feature): dyndns: add possibility to specify update interval (timeout)``
+
+
+2023-08-05
+==========
+
+* :vytask:`T5291` ``(bug): vyatta-cfg-cmd-wrapper missing ${vyos_libexec_dir} variable``
+* :vytask:`T5290` ``(bug): Failing commits for SR-IOV interfaces using ixgbevf driver due to change speed/duplex settings``
+* :vytask:`T5439` ``(bug): Upgrade to FRR version 9.0 added new daemons which must be adjusted``
+
+
+2023-08-04
+==========
+
+* :vytask:`T5427` ``(bug): Change migration script len arguments checking``
+
+
+2023-08-03
+==========
+
+* :vytask:`T5301` ``(bug): NTP: chrony only allows one bind address``
+* :vytask:`T5154` ``(bug): Chrony - multiple listen addresses``
+
+
+2023-08-02
+==========
+
+* :vytask:`T5374` ``(feature): Ability to set 24-hour time format``
+* :vytask:`T5350` ``(bug): Confusing warning message when committing VRRP config``
+* :vytask:`T5430` ``(bug): bridge: vxlan interfaces are not listed as bridgable in completion helpers``
+* :vytask:`T5429` ``(bug): vxlan: source-interface is not honored and throws config error``
+* :vytask:`T5415` ``(feature): Upgrade FRR to version 9.0``
+* :vytask:`T5422` ``(feature): Support LXD Agent``
+
+
+2023-08-01
+==========
+
+* :vytask:`T5399` ``(bug): "show ntp" fails when vrf is being configured``
+* :vytask:`T5346` ``(bug): MPLS sysctl not persistent for L2TP interfaces``
+* :vytask:`T5343` ``(feature): BGP peer group VPNv4 & VPNv6 Address Family Support``
+* :vytask:`T5339` ``(feature): Geneve interface - option to use IPv4 as inner protocol``
+* :vytask:`T5335` ``(bug): ISIS: error when loading config from file``
+
+
+2023-07-31
+==========
+
+* :vytask:`T5421` ``(feature): Add arg to completion helper 'list_interfaces' to filter out vlan subinterfaces``
+
+
 2023-07-29
 ==========
 
