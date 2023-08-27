@@ -1,11 +1,12 @@
 {
-  "upload": {  
+  "upload": {
     "type": "pot",
-    "folder": "docs/_build/gettext", 
+    "folder": "docs/_build/gettext",
     "files": {
       "pattern": "**.pot",
-      "excludes": [ 
+      "excludes": [
         "changelog/*.pot",
+        "changelog.pot",
         "coverage.pot"
       ],
       "path": "${path}"
