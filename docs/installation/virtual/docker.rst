@@ -57,8 +57,7 @@ will require that this network be included as the ``--net`` parameter to
 .. code-block:: none
 
   $ mkdir vyos && cd vyos
-  $ curl -o vyos-1.4-rolling-202308240020-amd64.iso https://github.com/vyos/vyos-rolling-night
-ly-builds/releases/download/1.4-rolling-202308240020/vyos-1.4-rolling-202308240020-amd64.iso
+  $ curl -o vyos-1.4-rolling-202308240020-amd64.iso https://github.com/vyos/vyos-rolling-nightly-builds/releases/download/1.4-rolling-202308240020/vyos-1.4-rolling-202308240020-amd64.iso
   $ mkdir rootfs
   $ sudo mount -o loop vyos-1.4-rolling-202308240020-amd64.iso rootfs
   $ sudo apt-get install -y squashfs-tools
