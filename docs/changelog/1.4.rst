@@ -8,6 +8,62 @@
    _ext/releasenotes.py
 
 
+2023-08-27
+==========
+
+* :vytask:`T4759` ``(bug): domain-group on policy route not working``
+* :vytask:`T1097` ``(feature): Make firewall groups work everywhere that's appropropriate``
+
+
+2023-08-26
+==========
+
+* :vytask:`T5039` ``(bug): Can't add new local user``
+* :vytask:`T5023` ``(bug): PKI commit fails to update dependents``
+* :vytask:`T4512` ``(feature): enable-default-log on zone-policy``
+* :vytask:`T5003` ``(default): Upgrade base system to Debian 12 "Bookworm"``
+
+
+2023-08-25
+==========
+
+* :vytask:`T5468` ``(feature): Remove unused manpages to free up space``
+* :vytask:`T5463` ``(feature): Containers allow publish  IPv6  address port``
+* :vytask:`T4412` ``(bug): commit archive: reboot not working with sftp``
+* :vytask:`T3702` ``(feature): Policy: Allow routing by fwmark``
+* :vytask:`T3536` ``(default): Unable to list all available routes``
+
+
+2023-08-24
+==========
+
+* :vytask:`T5448` ``(feature): Add service zabbix-agent``
+* :vytask:`T5006` ``(bug): Http api segfault with concurrent requests``
+* :vytask:`T5505` ``(feature): system: zebra route-map is not removed from FRR``
+* :vytask:`T5305` ``(bug): REST API configure operation should not be defined as async``
+* :vytask:`T4292` ``(feature): Rewrite vyatta-save-config.pl to Python``
+
+
+2023-08-23
+==========
+
+* :vytask:`T5478` ``(bug): Cannot configure resolver-cache options for firewall``
+* :vytask:`T5466` ``(feature): L3VPN - label allocation mode``
+* :vytask:`T5453` ``(bug): Fix nat66 - broken after load-balance was introduced in nat``
+* :vytask:`T5446` ``(bug): bgp: validity check for bestpath med option``
+* :vytask:`T5500` ``(feature): Minor fixes to configtree render``
+* :vytask:`T5469` ``(default): Incorrect dependency set in the openvpn-dco package when building VyOS for arm64``
+* :vytask:`T5387` ``(feature): dhcp6c: add a no release option``
+* :vytask:`T5491` ``(feature): Hostapd - AP-Mode - allow white-/blacklisting of Clients``
+* :vytask:`T4889` ``(default): Add nftables NAT REDIRECT [to localhost] to CLI``
+
+
+2023-08-22
+==========
+
+* :vytask:`T5407` ``(bug): Static routes pointed to container networks fail to persist after reboot``
+
+
 2023-08-20
 ==========
 
@@ -98,7 +154,6 @@
 ==========
 
 * :vytask:`T5420` ``(feature): nftables - upgrade to latest 1.0.8``
-* :vytask:`T3424` ``(default): PPPoE IA-PD doesn't work in VRF``
 * :vytask:`T5445` ``(feature): dyndns: add possibility to specify update interval (timeout)``
 
 
@@ -3271,7 +3326,6 @@
 ==========
 
 * :vytask:`T3402` ``(feature): Add VyOS programming library for operational level commands``
-* :vytask:`T3275` ``(default): Disable conntrack helpers by default``
 
 
 2021-09-10

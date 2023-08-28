@@ -8,6 +8,27 @@
    _ext/releasenotes.py
 
 
+2023-08-25
+==========
+
+* :vytask:`T4412` ``(bug): commit archive: reboot not working with sftp``
+* :vytask:`T3702` ``(feature): Policy: Allow routing by fwmark``
+* :vytask:`T3536` ``(default): Unable to list all available routes``
+
+
+2023-08-24
+==========
+
+* :vytask:`T5006` ``(bug): Http api segfault with concurrent requests``
+* :vytask:`T5305` ``(bug): REST API configure operation should not be defined as async``
+
+
+2023-08-23
+==========
+
+* :vytask:`T5387` ``(feature): dhcp6c: add a no release option``
+
+
 2023-08-20
 ==========
 
@@ -32,12 +53,6 @@
 ==========
 
 * :vytask:`T5329` ``(bug): Wireguard interface as GRE tunnel source causes configuration error on boot``
-
-
-2023-08-06
-==========
-
-* :vytask:`T3424` ``(default): PPPoE IA-PD doesn't work in VRF``
 
 
 2023-07-24
@@ -413,6 +428,12 @@
 ==========
 
 * :vytask:`T4671` ``(bug): linux-firmware package is missing symlinks defined in WHENCE file``
+
+
+2022-12-04
+==========
+
+* :vytask:`T4825` ``(feature): interfaces veth/veth-pairs -standalone used``
 
 
 2022-12-02
@@ -1582,7 +1603,6 @@
 ==========
 
 * :vytask:`T3402` ``(feature): Add VyOS programming library for operational level commands``
-* :vytask:`T3275` ``(default): Disable conntrack helpers by default``
 
 
 2021-09-10
