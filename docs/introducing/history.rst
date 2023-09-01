@@ -41,8 +41,9 @@ Major releases
 
 VyOS major versions used to be named after elements in order of atomic
 numbers. With 1.2, this naming scheme was replaced with the much
-cooler scheme of Latin names of IAU designated constellations by solid
-angle area, starting from the smallest.
+cooler scheme of Latin names of `IAU
+<https://en.wikipedia.org/wiki/IAU_designated_constellations_by_area>`_
+designated constellations by solid angle area, starting from the smallest.
 
 Hydrogen (1.0)
 --------------
@@ -107,6 +108,12 @@ Sagitta (1.4)
 
 Sagitta (the Arrow) is the codename of the current development
 branch, so there's no VyOS 1.4 yet.
+
+Circinus (1.5)
+-------------
+
+Circinus (the Compass) is the codename of the upcoming development
+branch, so there's no VyOS 1.5 yet.
 
 A note on copyright
 ===================
