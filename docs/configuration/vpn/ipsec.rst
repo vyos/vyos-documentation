@@ -51,8 +51,6 @@ VyOS IKE group has the next options:
  
  * ``hold`` set action to hold;
  
- * ``clear`` set action to clear;
- 
  * ``restart`` set action to restart;
  
 * ``dead-peer-detection`` controls the use of the Dead Peer Detection protocol 
@@ -73,11 +71,9 @@ VyOS IKE group has the next options:
  * ``timeout`` keep-alive timeout in seconds <2-86400> (default 120) IKEv1 only
  
 * ``ikev2-reauth`` whether rekeying of an IKE_SA should also reauthenticate 
-  the peer. In IKEv1, reauthentication is always done:
-  
- * ``yes`` enable remote host re-authentication during an IKE rekey;
- 
- * ``no`` disable remote host re-authenticaton during an IKE rekey;
+  the peer. In IKEv1, reauthentication is always done.
+  Setting this parameter enables remote host re-authentication during an IKE 
+  rekey.
  
 * ``key-exchange`` which protocol should be used to initialize the connection
   If not set both protocols are handled and connections will use IKEv2 when 
@@ -87,13 +83,10 @@ VyOS IKE group has the next options:
  
  * ``ikev2`` use IKEv2 for Key Exchange;
  
-* ``lifetime`` IKE lifetime in seconds <30-86400> (default 28800);
+* ``lifetime`` IKE lifetime in seconds <0-86400> (default 28800);
 
-* ``mobike`` enable MOBIKE Support. MOBIKE is only available for IKEv2:
-
- * ``enable`` enable MOBIKE (default for IKEv2);
- 
- * ``disable`` disable MOBIKE;
+* ``disable-mobike`` disables MOBIKE Support. MOBIKE is only available for IKEv2
+  and enabled by default.
  
 * ``mode`` IKEv1 Phase 1 Mode Selection:
 
@@ -126,12 +119,8 @@ Multiple proposals can be specified in a single group.
 
 VyOS ESP group has the next options:
 
-* ``compression`` whether IPComp compression of content is proposed 
-  on the connection:
-
- * ``disable`` disable IPComp compression (default);
- 
- * ``enable`` enable IPComp compression;
+* ``compression``  Enables the  IPComp(IP Payload Compression) protocol which
+  allows compressing the content of IP packets.  
  
 * ``life-bytes`` ESP life in bytes <1024-26843545600000>. 
   Number of bytes transmitted over an IPsec SA before it expires;

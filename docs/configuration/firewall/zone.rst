@@ -6,13 +6,14 @@
 Zone Based Firewall
 ###################
 
-.. note:: **Important note:**
-   This documentation is valid only for VyOS Sagitta prior to
-   1.4-rolling-YYYYMMDDHHmm
+.. note:: For latest releases, refer the `firewall 
+   <https://docs.vyos.io/en/latest/configuration/firewall/general.html#interface-groups>`_ 
+   main page to configure zone based rules. New syntax was introduced here 
+   :vytask:`T5160`
 
 In zone-based policy, interfaces are assigned to zones, and inspection policy
 is applied to traffic moving between the zones and acted on according to
-firewall rules. A Zone is a group of interfaces that have similar functions or
+firewall rules. A zone is a group of interfaces that have similar functions or
 features. It establishes the security borders of a network. A zone defines a
 boundary where traffic is subjected to policy restrictions as it crosses to
 another region of a network.
@@ -40,7 +41,7 @@ firewall can be created to simplify configuration when multiple interfaces
 belong to the same security zone. Instead of applying rule-sets to interfaces,
 they are applied to source zone-destination zone pairs.
 
-An basic introduction to zone-based firewalls can be found `here
+A basic introduction to zone-based firewalls can be found `here
 <https://support.vyos.io/en/kb/articles/a-primer-to-zone-based-firewall>`_,
 and an example at :ref:`examples-zone-policy`.
 
