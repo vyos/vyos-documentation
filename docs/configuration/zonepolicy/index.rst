@@ -62,10 +62,11 @@ Zone-policy Config:
   set zone-policy zone local from lan firewall name 'local-lan'
   set zone-policy zone local local-zone
 
-A detailed zone-based policy example is written in the Configuration-Blueprints_ section.
+A detailed zone-based policy example is written in the 
+Configuration-Blueprints_ section.
 
 .. stop_vyoslinter
 
-.. _Configuration-Blueprints: https://docs.vyos.io/en/latest/configexamples/zone-policy.html
+.. _Configuration-Blueprints: https://docs.vyos.io/en/equuleus/configexamples/zone-policy.html
 
 .. start_vyoslinter
