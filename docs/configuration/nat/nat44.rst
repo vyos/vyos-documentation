@@ -740,14 +740,12 @@ external interface in the image above)
 
 .. code-block:: none
 
-  set vpn ipsec ike-group my-ike ikev2-reauth 'no'
   set vpn ipsec ike-group my-ike key-exchange 'ikev1'
   set vpn ipsec ike-group my-ike lifetime '7800'
   set vpn ipsec ike-group my-ike proposal 1 dh-group '14'
   set vpn ipsec ike-group my-ike proposal 1 encryption 'aes256'
   set vpn ipsec ike-group my-ike proposal 1 hash 'sha256'
 
-  set vpn ipsec esp-group my-esp compression 'disable'
   set vpn ipsec esp-group my-esp lifetime '3600'
   set vpn ipsec esp-group my-esp mode 'tunnel'
   set vpn ipsec esp-group my-esp pfs 'disable'

@@ -200,7 +200,6 @@ Hub
   set protocols nhrp tunnel tun100 redirect
   set protocols nhrp tunnel tun100 shortcut
 
-  set vpn ipsec esp-group ESP-HUB compression 'disable'
   set vpn ipsec esp-group ESP-HUB lifetime '1800'
   set vpn ipsec esp-group ESP-HUB mode 'transport'
   set vpn ipsec esp-group ESP-HUB pfs 'dh-group2'
@@ -208,7 +207,6 @@ Hub
   set vpn ipsec esp-group ESP-HUB proposal 1 hash 'sha1'
   set vpn ipsec esp-group ESP-HUB proposal 2 encryption '3des'
   set vpn ipsec esp-group ESP-HUB proposal 2 hash 'md5'
-  set vpn ipsec ike-group IKE-HUB ikev2-reauth 'no'
   set vpn ipsec ike-group IKE-HUB key-exchange 'ikev1'
   set vpn ipsec ike-group IKE-HUB lifetime '3600'
   set vpn ipsec ike-group IKE-HUB proposal 1 dh-group '2'
@@ -309,7 +307,6 @@ VyOS can also run in DMVPN spoke mode.
   set protocols nhrp tunnel tun100 redirect
   set protocols nhrp tunnel tun100 shortcut
 
-  set vpn ipsec esp-group ESP-HUB compression 'disable'
   set vpn ipsec esp-group ESP-HUB lifetime '1800'
   set vpn ipsec esp-group ESP-HUB mode 'transport'
   set vpn ipsec esp-group ESP-HUB pfs 'dh-group2'
@@ -318,7 +315,6 @@ VyOS can also run in DMVPN spoke mode.
   set vpn ipsec esp-group ESP-HUB proposal 2 encryption '3des'
   set vpn ipsec esp-group ESP-HUB proposal 2 hash 'md5'
   set vpn ipsec ike-group IKE-HUB close-action 'none'
-  set vpn ipsec ike-group IKE-HUB ikev2-reauth 'no'
   set vpn ipsec ike-group IKE-HUB key-exchange 'ikev1'
   set vpn ipsec ike-group IKE-HUB lifetime '3600'
   set vpn ipsec ike-group IKE-HUB proposal 1 dh-group '2'
