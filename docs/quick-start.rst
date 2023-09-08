@@ -122,6 +122,15 @@ network via IP masquerade.
 Firewall
 ########
 
+.. note:: Starting from VyOS 1.4-rolling-202308040557, a new firewall
+   structure can be found on all vyos instalations. Documentation for most
+   of the new firewall CLI can be found in the `firewall
+   <https://docs.vyos.io/en/latest/configuration/firewall/general.html>`_
+   chapter. The legacy firewall is still available for versions before
+   1.4-rolling-202308040557 and can be found in the :ref:`firewall-legacy`
+   chapter. The examples in this section use the new firewall configuration
+   commands.
+
 Add a set of firewall policies for our outside/WAN interface.
 
 This configuration creates a proper stateful firewall that blocks all traffic
@@ -129,19 +138,25 @@ which was not initiated from the internal/LAN side first.
 
 .. code-block:: none
 
-  set firewall name OUTSIDE-IN default-action 'drop'
-  set firewall name OUTSIDE-IN rule 10 action 'accept'
-  set firewall name OUTSIDE-IN rule 10 state established 'enable'
-  set firewall name OUTSIDE-IN rule 10 state related 'enable'
+  set firewall ipv4 forward filter default-action 'drop'
+  set firewall ipv4 forward filter rule 10 action 'accept'
+  set firewall ipv4 forward filter rule 10 state established 'enable'
+  set firewall ipv4 forward filter rule 10 state related 'enable'
+  set firewall ipv4 forward filter rule 20 action 'drop'
+  set firewall ipv4 forward filter rule 20 state invalid 'enable'
+  set firewall ipv4 forward filter rule 30 inbound-interface interface-name 'eth1'
+  set firewall ipv4 forward filter rule 30 action 'accept'
 
-  set firewall name OUTSIDE-LOCAL default-action 'drop'
-  set firewall name OUTSIDE-LOCAL rule 10 action 'accept'
-  set firewall name OUTSIDE-LOCAL rule 10 state established 'enable'
-  set firewall name OUTSIDE-LOCAL rule 10 state related 'enable'
-  set firewall name OUTSIDE-LOCAL rule 20 action 'accept'
-  set firewall name OUTSIDE-LOCAL rule 20 icmp type-name 'echo-request'
-  set firewall name OUTSIDE-LOCAL rule 20 protocol 'icmp'
-  set firewall name OUTSIDE-LOCAL rule 20 state new 'enable'
+  set firewall ipv4 input filter default-action drop
+  set firewall ipv4 input filter rule 10 action 'accept'
+  set firewall ipv4 input filter rule 10 state established 'enable'
+  set firewall ipv4 input filter rule 10 state related 'enable'
+  set firewall ipv4 input filter rule 20 action 'drop'
+  set firewall ipv4 input filter rule 20 state invalid 'enable'
+  set firewall ipv4 input filter rule 30 action 'accept'
+  set firewall ipv4 input filter rule 30 icmp type-name 'echo-request'
+  set firewall ipv4 input filter rule 30 protocol 'icmp'
+  set firewall ipv4 input filter rule 30 state new 'enable'
 
 If you wanted to enable SSH access to your firewall from the outside/WAN
 interface, you could create some additional rules to allow that kind of
@@ -152,24 +167,19 @@ blocks brute-forcing attempts:
 
 .. code-block:: none
 
-  set firewall name OUTSIDE-LOCAL rule 30 action 'drop'
-  set firewall name OUTSIDE-LOCAL rule 30 destination port '22'
-  set firewall name OUTSIDE-LOCAL rule 30 protocol 'tcp'
-  set firewall name OUTSIDE-LOCAL rule 30 recent count '4'
-  set firewall name OUTSIDE-LOCAL rule 30 recent time 'minute'
-  set firewall name OUTSIDE-LOCAL rule 30 state new 'enable'
+  set firewall ipv4 input filter rule 40 action 'drop'
+  set firewall ipv4 input filter rule 40 inbound-interface interface-name 'eth0'
+  set firewall ipv4 input filter rule 40 destination port '22'
+  set firewall ipv4 input filter rule 40 protocol 'tcp'
+  set firewall ipv4 input filter rule 40 recent count '4'
+  set firewall ipv4 input filter rule 40 recent time 'minute'
+  set firewall ipv4 input filter rule 40 state new 'enable'
 
-  set firewall name OUTSIDE-LOCAL rule 31 action 'accept'
-  set firewall name OUTSIDE-LOCAL rule 31 destination port '22'
-  set firewall name OUTSIDE-LOCAL rule 31 protocol 'tcp'
-  set firewall name OUTSIDE-LOCAL rule 31 state new 'enable'
+  set firewall ipv4 input filter rule 41 action 'accept'
+  set firewall ipv4 input filter rule 41 destination port '22'
+  set firewall ipv4 input filter rule 41 protocol 'tcp'
+  set firewall ipv4 input filter rule 41 state new 'enable'
 
-Apply the firewall policies:
-
-.. code-block:: none
-
-  set firewall interface eth0 in name 'OUTSIDE-IN'
-  set firewall interface eth0 local name 'OUTSIDE-LOCAL'
 
 Commit changes, save the configuration, and exit configuration mode:
 
