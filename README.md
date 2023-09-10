@@ -29,7 +29,8 @@ largest. There are 88 of them, here's the
 
 ### Sphinx
 Debian requires some extra steps for
-installing `sphinx`, `sphinx-autobuild` and `sphinx-rtd-theme` packages:
+installing `sphinx`, `sphinx-autobuild`, `sphinx-notfound-page`, `sphinx-panels`,
+`sphinx-rtd-theme`, `lxml`, and `myst-parser` packages:
 
 First ensure that Python 2 & Python 3 are installed and Python 3 is the default:
 ```bash
@@ -58,7 +59,7 @@ python --version
 Then run:
 
 ```bash
-sudo pip install sphinx-rtd-theme
+sudo pip install sphinx-autobuild sphinx-notfound-page sphinx-panels sphinx-rtd-theme lxml myst-parser
 ```
 
 Do the following to build the HTML and start a web server:
