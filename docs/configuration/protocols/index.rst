@@ -16,6 +16,7 @@ Protocols
    mpls
    segment-routing
    ospf
+   pim6
    rip
    rpki
    static
