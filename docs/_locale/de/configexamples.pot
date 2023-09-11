@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Localazy (https://localazy.com)\n"
-"Project-Id-Version: vyos-documentation\n"
+"Project-Id-Version: VyOS Documentation\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n==1) ? 0 : 1;\n"
 
@@ -12,19 +12,19 @@ msgstr ""
 msgid "''It is important to note, that you do not want to add logging to the established state rule as you will be logging both the inbound and outbound packets for each session instead of just the initiation of the session. Your logs will be massive in a very short period of time.''"
 msgstr "''It is important to note, that you do not want to add logging to the established state rule as you will be logging both the inbound and outbound packets for each session instead of just the initiation of the session. Your logs will be massive in a very short period of time.''"
 
-#: ../../configexamples/azure-vpn-bgp.rst:118
+#: ../../configexamples/azure-vpn-bgp.rst:117
 msgid "**Important**: Add an interface route to reach Azure's BGP listener"
 msgstr "**Important**: Add an interface route to reach Azure's BGP listener"
 
-#: ../../configexamples/azure-vpn-dual-bgp.rst:135
+#: ../../configexamples/azure-vpn-dual-bgp.rst:134
 msgid "**Important**: Add an interface route to reach both Azure's BGP listeners"
 msgstr "**Important**: Add an interface route to reach both Azure's BGP listeners"
 
-#: ../../configexamples/azure-vpn-dual-bgp.rst:157
+#: ../../configexamples/azure-vpn-dual-bgp.rst:156
 msgid "**Important**: Disable connected check, otherwise the routes learned from Azure will not be imported into the routing table."
 msgstr "**Important**: Disable connected check, otherwise the routes learned from Azure will not be imported into the routing table."
 
-#: ../../configexamples/azure-vpn-bgp.rst:134
+#: ../../configexamples/azure-vpn-bgp.rst:133
 msgid "**Important**: Disable connected check \\"
 msgstr "**Important**: Disable connected check \\"
 
@@ -583,8 +583,8 @@ msgstr "Checking the routing table of the VRF should reveal both static and conn
 msgid "Cisco VPC Crossconnect - Ports 39 and 40 bonded between each switch"
 msgstr "Cisco VPC Crossconnect - Ports 39 and 40 bonded between each switch"
 
-#: ../../configexamples/azure-vpn-bgp.rst:93
-#: ../../configexamples/azure-vpn-dual-bgp.rst:95
+#: ../../configexamples/azure-vpn-bgp.rst:92
+#: ../../configexamples/azure-vpn-dual-bgp.rst:94
 msgid "Clamp the VTI's MSS to 1350 to avoid PMTU blackholes."
 msgstr "Clamp the VTI's MSS to 1350 to avoid PMTU blackholes."
 
@@ -647,7 +647,7 @@ msgstr "Configurations"
 msgid "Configure Wireguard"
 msgstr "Configure Wireguard"
 
-#: ../../configexamples/azure-vpn-bgp.rst:86
+#: ../../configexamples/azure-vpn-bgp.rst:85
 msgid "Configure a VTI with a dummy IP address"
 msgstr "Configure a VTI with a dummy IP address"
 
@@ -660,11 +660,11 @@ msgstr "Configure conntrack-sync and enable helpers"
 msgid "Configure the IKE and ESP settings to match a subset of those supported by Azure:"
 msgstr "Configure the IKE and ESP settings to match a subset of those supported by Azure:"
 
-#: ../../configexamples/azure-vpn-bgp.rst:99
+#: ../../configexamples/azure-vpn-bgp.rst:98
 msgid "Configure the VPN tunnel"
 msgstr "Configure the VPN tunnel"
 
-#: ../../configexamples/azure-vpn-dual-bgp.rst:102
+#: ../../configexamples/azure-vpn-dual-bgp.rst:101
 msgid "Configure the VPN tunnels"
 msgstr "Configure the VPN tunnels"
 
@@ -676,12 +676,12 @@ msgstr "Configure the WAN load balancer with the parameters described above:"
 msgid "Configure the load balancer"
 msgstr "Configure the load balancer"
 
-#: ../../configexamples/azure-vpn-dual-bgp.rst:85
+#: ../../configexamples/azure-vpn-dual-bgp.rst:84
 msgid "Configure two VTIs with a dummy IP address each"
 msgstr "Configure two VTIs with a dummy IP address each"
 
-#: ../../configexamples/azure-vpn-bgp.rst:124
-#: ../../configexamples/azure-vpn-dual-bgp.rst:142
+#: ../../configexamples/azure-vpn-bgp.rst:123
+#: ../../configexamples/azure-vpn-dual-bgp.rst:141
 msgid "Configure your BGP settings"
 msgstr "Configure your BGP settings"
 
@@ -811,8 +811,8 @@ msgstr "Each interface is assigned to a zone. The interface can be physical or v
 msgid "Each lab will build an test from an external script. The page content will generate, so changes will not take an effect."
 msgstr "Each lab will build an test from an external script. The page content will generate, so changes will not take an effect."
 
-#: ../../configexamples/azure-vpn-bgp.rst:80
-#: ../../configexamples/azure-vpn-dual-bgp.rst:79
+#: ../../configexamples/azure-vpn-bgp.rst:79
+#: ../../configexamples/azure-vpn-dual-bgp.rst:78
 msgid "Enable IPsec on eth0"
 msgstr "Enable IPsec on eth0"
 
