@@ -8,6 +8,72 @@
    _ext/releasenotes.py
 
 
+2023-09-11
+==========
+
+* :vytask:`T3424` ``(default): PPPoE IA-PD doesn't work in VRF``
+* :vytask:`T2773` ``(feature): EIGRP support for VRF``
+
+
+2023-09-10
+==========
+
+* :vytask:`T5565` ``(bug): Builds as vyos-999-timestamp instead of vyos-1.4-rolling-timestamp``
+* :vytask:`T5555` ``(bug): Fix timezone migrator (system 13-to-14)``
+* :vytask:`T5529` ``(bug): Missing symbolic link in linux-firmware package.``
+
+
+2023-09-09
+==========
+
+* :vytask:`T5540` ``(bug): vyos-1x: Wrong VHT configuration for WiFi 802.11ac``
+* :vytask:`T5423` ``(bug): ipsec: no output for op-cmd "show vpn ike secrets"``
+* :vytask:`T3700` ``(feature): Support VLAN tunnel mapping of VLAN aware bridges``
+
+
+2023-09-08
+==========
+
+* :vytask:`T5502` ``(bug): Firewall - wrong parser for inbound and/or outbound interface``
+* :vytask:`T5460` ``(feature): Firewall - remove config-trap``
+* :vytask:`T5450` ``(feature): Firewall interface group - Allow inverted matcher``
+* :vytask:`T4426` ``(default): Add arpwatch to the image``
+* :vytask:`T4356` ``(bug): DHCP v6 client only supports single interface configuration``
+
+
+2023-09-07
+==========
+
+* :vytask:`T5489` ``(feature): Change to BBR as TCP congestion control, or at least make it an config option``
+* :vytask:`T5510` ``(feature): Shrink imagesize and improve read performance by changing mksquashfs syntax``
+
+
+2023-09-06
+==========
+
+* :vytask:`T5542` ``(bug): ipoe-server: external-dhcp(dhcp-relay) not woking / not implemented``
+* :vytask:`T5548` ``(bug): HAProxy renders timeouts incorrectly``
+* :vytask:`T5544` ``(feature): Allow CAP_SYS_MODULE to be set on containers``
+
+
+2023-09-05
+==========
+
+* :vytask:`T5524` ``(feature): Add config directory to liveCD``
+* :vytask:`T5519` ``(bug): Function `call` sometimes hangs``
+* :vytask:`T5508` ``(bug): Configuration Migration Fails to New Netfilter Firewall Syntax``
+* :vytask:`T5495` ``(feature): Enable snmp module also for frr/ldpd``
+* :vytask:`T2958` ``(bug): DHCP server doesn't work from a live CD``
+* :vytask:`T5428` ``(bug): dhcp: client renewal fails when running inside VRF``
+
+
+2023-09-04
+==========
+
+* :vytask:`T5536` ``(bug): show dhcp client leases caues No module named 'vyos.validate'``
+* :vytask:`T5506` ``(bug): Container bridge interfaces do not have a link-local address``
+
+
 2023-09-03
 ==========
 
