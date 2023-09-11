@@ -8,6 +8,40 @@
    _ext/releasenotes.py
 
 
+2023-09-11
+==========
+
+* :vytask:`T5557` ``(bug): bgp: Use treat-as-withdraw for tunnel encapsulation attribute CVE-2023-38802``
+* :vytask:`T3424` ``(default): PPPoE IA-PD doesn't work in VRF``
+
+
+2023-09-10
+==========
+
+* :vytask:`T5555` ``(bug): Fix timezone migrator (system 13-to-14)``
+* :vytask:`T5545` ``(bug): sflow is not working``
+
+
+2023-09-08
+==========
+
+* :vytask:`T4426` ``(default): Add arpwatch to the image``
+
+
+2023-09-05
+==========
+
+* :vytask:`T5524` ``(feature): Add config directory to liveCD``
+* :vytask:`T2958` ``(bug): DHCP server doesn't work from a live CD``
+* :vytask:`T5428` ``(bug): dhcp: client renewal fails when running inside VRF``
+
+
+2023-09-04
+==========
+
+* :vytask:`T5506` ``(bug): Container bridge interfaces do not have a link-local address``
+
+
 2023-08-31
 ==========
 
