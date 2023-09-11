@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Localazy (https://localazy.com)\n"
-"Project-Id-Version: vyos-documentation\n"
+"Project-Id-Version: VyOS Documentation\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n==1) ? 0 : 1;\n"
 
@@ -194,7 +194,6 @@ msgid "**If you are looking for a policy for your outbound traffic** but you don
 msgstr "**If you are looking for a policy for your outbound traffic** but you don't know which one you need and you don't want to go through every possible policy shown here, **our bet is that highly likely you are looking for a** Shaper_ **policy and you want to** :ref:`set its queues <embed>` **as FQ-CoDel**."
 
 #: ../../configuration/firewall/general-legacy.rst:9
-#: ../../configuration/firewall/zone.rst:9
 msgid "**Important note:** This documentation is valid only for VyOS Sagitta prior to 1.4-rolling-YYYYMMDDHHmm"
 msgstr "**Wichtiger Hinweis: ** Diese Dokumentation ist nur für VyOS Sagitta vor 1.4-Rolling-YYYYMMDDHHMM gültig"
 
@@ -218,11 +217,11 @@ msgstr "**Important note on usage of terms:** The firewall makes use of the term
 msgid "**Interface name**"
 msgstr "**Interface name**"
 
-#: ../../configuration/interfaces/vxlan.rst:184
+#: ../../configuration/interfaces/vxlan.rst:214
 msgid "**Leaf2 configuration:**"
 msgstr "**Leaf2 configuration:**"
 
-#: ../../configuration/interfaces/vxlan.rst:209
+#: ../../configuration/interfaces/vxlan.rst:239
 msgid "**Leaf3 configuration:**"
 msgstr "**Leaf3 configuration:**"
 
@@ -430,15 +429,15 @@ msgstr "**SW2**"
 msgid "**Secondary**"
 msgstr "**Secondary**"
 
-#: ../../configuration/vpn/ipsec.rst:272
+#: ../../configuration/vpn/ipsec.rst:261
 msgid "**Setting up IPSec**"
 msgstr "**Setting up IPSec**"
 
-#: ../../configuration/vpn/ipsec.rst:248
+#: ../../configuration/vpn/ipsec.rst:237
 msgid "**Setting up the GRE tunnel**"
 msgstr "**Setting up the GRE tunnel**"
 
-#: ../../configuration/interfaces/vxlan.rst:161
+#: ../../configuration/interfaces/vxlan.rst:191
 msgid "**Spine1 Configuration:**"
 msgstr "**Spine1 Configuration:**"
 
@@ -1369,6 +1368,10 @@ msgstr "A :abbr:`NIS (Network Information Service)` domain can be set to be used
 msgid "A basic configuration requires a tunnel source (source-address), a tunnel destination (remote), an encapsulation type (gre), and an address (ipv4/ipv6). Below is a basic IPv4 only configuration example taken from a VyOS router and a Cisco IOS router. The main difference between these two configurations is that VyOS requires you explicitly configure the encapsulation type. The Cisco router defaults to GRE IP otherwise it would have to be configured as well."
 msgstr "A basic configuration requires a tunnel source (source-address), a tunnel destination (remote), an encapsulation type (gre), and an address (ipv4/ipv6). Below is a basic IPv4 only configuration example taken from a VyOS router and a Cisco IOS router. The main difference between these two configurations is that VyOS requires you explicitly configure the encapsulation type. The Cisco router defaults to GRE IP otherwise it would have to be configured as well."
 
+#: ../../configuration/firewall/zone.rst:44
+msgid "A basic introduction to zone-based firewalls can be found `here <https://support.vyos.io/en/kb/articles/a-primer-to-zone-based-firewall>`_, and an example at :ref:`examples-zone-policy`."
+msgstr "A basic introduction to zone-based firewalls can be found `here <https://support.vyos.io/en/kb/articles/a-primer-to-zone-based-firewall>`_, and an example at :ref:`examples-zone-policy`."
+
 #: ../../configuration/interfaces/bridge.rst:195
 #: ../../configuration/interfaces/bridge.rst:229
 msgid "A bridge named `br100`"
@@ -1581,7 +1584,7 @@ msgstr "A value of 0 disables ARP monitoring. The default value is 0."
 msgid "A very small buffer will soon start dropping packets."
 msgstr "A very small buffer will soon start dropping packets."
 
-#: ../../configuration/firewall/zone.rst:22
+#: ../../configuration/firewall/zone.rst:23
 msgid "A zone must be configured before an interface is assigned to it and an interface can be assigned to only a single zone."
 msgstr "A zone must be configured before an interface is assigned to it and an interface can be assigned to only a single zone."
 
@@ -1851,11 +1854,11 @@ msgstr "All these rules with OTC will help to detect and mitigate route leaks an
 msgid "All those protocols are grouped under ``interfaces tunnel`` in VyOS. Let's take a closer look at the protocols and options currently supported by VyOS."
 msgstr "All those protocols are grouped under ``interfaces tunnel`` in VyOS. Let's take a closer look at the protocols and options currently supported by VyOS."
 
-#: ../../configuration/firewall/zone.rst:25
+#: ../../configuration/firewall/zone.rst:26
 msgid "All traffic between zones is affected by existing policies"
 msgstr "All traffic between zones is affected by existing policies"
 
-#: ../../configuration/firewall/zone.rst:24
+#: ../../configuration/firewall/zone.rst:25
 msgid "All traffic to and from an interface within a zone is permitted."
 msgstr "All traffic to and from an interface within a zone is permitted."
 
@@ -1940,7 +1943,7 @@ msgstr "Alternate Routing Tables"
 msgid "Alternate routing tables are used with policy based routing by utilizing :ref:`vrf`."
 msgstr "Alternate routing tables are used with policy based routing by utilizing :ref:`vrf`."
 
-#: ../../configuration/interfaces/vxlan.rst:291
+#: ../../configuration/interfaces/vxlan.rst:321
 msgid "Alternative to multicast, the remote IPv4 address of the VXLAN tunnel can be set directly. Let's change the Multicast example from above:"
 msgstr "Alternative to multicast, the remote IPv4 address of the VXLAN tunnel can be set directly. Let's change the Multicast example from above:"
 
@@ -2071,7 +2074,7 @@ msgstr "Apply a route-map filter to routes for the specified protocol. The follo
 msgid "Apply routing policy to **inbound** direction of out VLAN interfaces"
 msgstr "Apply routing policy to **inbound** direction of out VLAN interfaces"
 
-#: ../../configuration/firewall/zone.rst:71
+#: ../../configuration/firewall/zone.rst:72
 msgid "Applying a Rule-Set to a Zone"
 msgstr "Applying a Rule-Set to a Zone"
 
@@ -2174,7 +2177,7 @@ msgstr "As a reference: for 10mbit/s on Intel, you might need at least 10kbyte b
 msgid "As a result, the processing of each packet becomes more efficient, potentially leveraging hardware encryption offloading support available in the kernel."
 msgstr "As a result, the processing of each packet becomes more efficient, potentially leveraging hardware encryption offloading support available in the kernel."
 
-#: ../../configuration/firewall/zone.rst:38
+#: ../../configuration/firewall/zone.rst:39
 msgid "As an alternative to applying policy to an interface directly, a zone-based firewall can be created to simplify configuration when multiple interfaces belong to the same security zone. Instead of applying rule-sets to interfaces, they are applied to source zone-destination zone pairs."
 msgstr "As an alternative to applying policy to an interface directly, a zone-based firewall can be created to simplify configuration when multiple interfaces belong to the same security zone. Instead of applying rule-sets to interfaces, they are applied to source zone-destination zone pairs."
 
@@ -2222,7 +2225,7 @@ msgstr "As with other policies, you can define different type of matching rules 
 msgid "As with other policies, you can embed_ other policies into the classes (and default) of your Priority Queue policy through the ``queue-type`` setting:"
 msgstr "As with other policies, you can embed_ other policies into the classes (and default) of your Priority Queue policy through the ``queue-type`` setting:"
 
-#: ../../configuration/interfaces/vxlan.rst:234
+#: ../../configuration/interfaces/vxlan.rst:264
 msgid "As you can see, Leaf2 and Leaf3 configuration is almost identical. There are lots of commands above, I'll try to into more detail below, command descriptions are placed under the command boxes:"
 msgstr "As you can see, Leaf2 and Leaf3 configuration is almost identical. There are lots of commands above, I'll try to into more detail below, command descriptions are placed under the command boxes:"
 
@@ -2536,6 +2539,7 @@ msgid "Basic Concepts"
 msgstr "Basic Concepts"
 
 #: ../../configuration/protocols/igmp.rst:91
+#: ../../configuration/protocols/pim6.rst:26
 msgid "Basic commands"
 msgstr "Basic commands"
 
@@ -2571,7 +2575,7 @@ msgstr "Because existing sessions do not automatically fail over to a new path, 
 msgid "Before enabling any hardware segmentation offload a corresponding software offload is required in GSO. Otherwise it becomes possible for a frame to be re-routed between devices and end up being unable to be transmitted."
 msgstr "Before enabling any hardware segmentation offload a corresponding software offload is required in GSO. Otherwise it becomes possible for a frame to be re-routed between devices and end up being unable to be transmitted."
 
-#: ../../configuration/firewall/zone.rst:73
+#: ../../configuration/firewall/zone.rst:74
 msgid "Before you are able to apply a rule-set to a zone you have to create the zones first."
 msgstr "Before you are able to apply a rule-set to a zone you have to create the zones first."
 
@@ -2603,7 +2607,7 @@ msgstr "Binary value"
 msgid "Bind listener to specific interface/address, mandatory for IPv6"
 msgstr "Bind listener to specific interface/address, mandatory for IPv6"
 
-#: ../../configuration/interfaces/vxlan.rst:255
+#: ../../configuration/interfaces/vxlan.rst:285
 msgid "Binds eth1.241 and vxlan241 to each other by making them both member interfaces of the same bridge."
 msgstr "Binds eth1.241 and vxlan241 to each other by making them both member interfaces of the same bridge."
 
@@ -2816,7 +2820,7 @@ msgstr "Certificates"
 msgid "Change system keyboard layout to given language."
 msgstr "Change system keyboard layout to given language."
 
-#: ../../configuration/firewall/zone.rst:64
+#: ../../configuration/firewall/zone.rst:65
 msgid "Change the default-action with this setting."
 msgstr "Change the default-action with this setting."
 
@@ -3008,7 +3012,7 @@ msgid "Confidentiality – Encryption of packets to prevent snooping by an unaut
 msgstr "Confidentiality – Encryption of packets to prevent snooping by an unauthorized source."
 
 #: ../../configuration/container/index.rst:12
-#: ../../configuration/firewall/zone.rst:36
+#: ../../configuration/firewall/zone.rst:37
 #: ../../configuration/interfaces/bonding.rst:17
 #: ../../configuration/interfaces/bridge.rst:21
 #: ../../configuration/interfaces/dummy.rst:28
@@ -3080,6 +3084,7 @@ msgstr "Configuration"
 
 #: ../../configuration/protocols/babel.rst:188
 #: ../../configuration/protocols/ospf.rst:1314
+#: ../../configuration/protocols/pim6.rst:78
 #: ../../configuration/protocols/rip.rst:239
 #: ../../configuration/protocols/segment-routing.rst:187
 msgid "Configuration Example"
@@ -3098,7 +3103,7 @@ msgstr "Configuration Guide"
 msgid "Configuration Options"
 msgstr "Configuration Options"
 
-#: ../../configuration/vpn/ipsec.rst:295
+#: ../../configuration/vpn/ipsec.rst:284
 msgid "Configuration commands for the private and public key will be displayed on the screen which needs to be set on the router first. Note the command with the public key (set pki key-pair ipsec-LEFT public key 'MIIBIjANBgkqh...'). Then do the same on the opposite router:"
 msgstr "Configuration commands for the private and public key will be displayed on the screen which needs to be set on the router first. Note the command with the public key (set pki key-pair ipsec-LEFT public key 'MIIBIjANBgkqh...'). Then do the same on the opposite router:"
 
@@ -3987,7 +3992,7 @@ msgstr "Define a IPv4 or IPv6 Network group."
 msgid "Define a IPv4 or a IPv6 address group"
 msgstr "Define a IPv4 or a IPv6 address group"
 
-#: ../../configuration/firewall/zone.rst:48
+#: ../../configuration/firewall/zone.rst:49
 msgid "Define a Zone"
 msgstr "Define a Zone"
 
@@ -4134,7 +4139,7 @@ msgstr "Define number of packets to queue inside the kernel before sending them 
 msgid "Define the time interval to update the local cache"
 msgstr "Define the time interval to update the local cache"
 
-#: ../../configuration/firewall/zone.rst:59
+#: ../../configuration/firewall/zone.rst:60
 msgid "Define the zone as a local zone. A local zone has no interfaces and will be applied to the router itself."
 msgstr "Define the zone as a local zone. A local zone has no interfaces and will be applied to the router itself."
 
@@ -4266,6 +4271,10 @@ msgstr "Different NAT Types"
 #: ../../configuration/pki/index.rst:100
 msgid "Diffie-Hellman parameters"
 msgstr "Diffie-Hellman parameters"
+
+#: ../../configuration/protocols/pim6.rst:37
+msgid "Disable MLD reports and query on the interface."
+msgstr "Disable MLD reports and query on the interface."
 
 #: ../../configuration/vpn/sstp.rst:75
 msgid "Disable `<user>` account."
@@ -4618,11 +4627,11 @@ msgstr "EAPoL comes with an identify option. We automatically use the interface 
 msgid "ESP Phase:"
 msgstr "ESP Phase:"
 
-#: ../../configuration/vpn/ipsec.rst:118
+#: ../../configuration/vpn/ipsec.rst:111
 msgid "ESP (Encapsulating Security Payload) Attributes"
 msgstr "ESP (Encapsulating Security Payload) Attributes"
 
-#: ../../configuration/vpn/ipsec.rst:119
+#: ../../configuration/vpn/ipsec.rst:112
 msgid "ESP is used to provide confidentiality, data origin authentication, connectionless integrity, an anti-replay service (a form of partial sequence integrity), and limited traffic flow confidentiality. https://datatracker.ietf.org/doc/html/rfc4303"
 msgstr "ESP is used to provide confidentiality, data origin authentication, connectionless integrity, an anti-replay service (a form of partial sequence integrity), and limited traffic flow confidentiality. https://datatracker.ietf.org/doc/html/rfc4303"
 
@@ -5088,7 +5097,7 @@ msgstr "Every WWAN connection requires an :abbr:`APN (Access Point Name)` which 
 #: ../../configuration/interfaces/l2tpv3.rst:86
 #: ../../configuration/interfaces/pppoe.rst:310
 #: ../../configuration/interfaces/virtual-ethernet.rst:92
-#: ../../configuration/interfaces/vxlan.rst:136
+#: ../../configuration/interfaces/vxlan.rst:166
 #: ../../configuration/interfaces/wwan.rst:294
 #: ../../configuration/protocols/failover.rst:63
 #: ../../configuration/protocols/igmp.rst:35
@@ -5800,6 +5809,10 @@ msgstr "FQ-Codel is a non-shaping (work-conserving) policy, so it will only be u
 msgid "FRR offers only partial support for some of the routing protocol extensions that are used with MPLS-TE; it does not support a complete RSVP-TE solution."
 msgstr "FRR offers only partial support for some of the routing protocol extensions that are used with MPLS-TE; it does not support a complete RSVP-TE solution."
 
+#: ../../configuration/interfaces/vxlan.rst:138
+msgid "FRR supports a new way of configuring VLAN-to-VNI mappings for EVPN-VXLAN, when working with the Linux kernel. In this new way, the mapping of a VLAN to a :abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))` is configured against a container VXLAN interface which is referred to as a :abbr:`SVD (Single VXLAN device)`."
+msgstr "FRR supports a new way of configuring VLAN-to-VNI mappings for EVPN-VXLAN, when working with the Linux kernel. In this new way, the mapping of a VLAN to a :abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))` is configured against a container VXLAN interface which is referred to as a :abbr:`SVD (Single VXLAN device)`."
+
 #: ../../configuration/system/syslog.rst:134
 msgid "FTP daemon"
 msgstr "FTP daemon"
@@ -5941,7 +5954,7 @@ msgstr "Firmware Update"
 msgid "First, on both routers run the operational command \"generate pki key-pair install <key-pair nam>>\". You may choose different length than 2048 of course."
 msgstr "First, on both routers run the operational command \"generate pki key-pair install <key-pair nam>>\". You may choose different length than 2048 of course."
 
-#: ../../configuration/vpn/ipsec.rst:278
+#: ../../configuration/vpn/ipsec.rst:267
 msgid "First, on both routers run the operational command \"generate pki key-pair install <key-pair name>\". You may choose different length than 2048 of course."
 msgstr "First, on both routers run the operational command \"generate pki key-pair install <key-pair name>\". You may choose different length than 2048 of course."
 
@@ -6108,6 +6121,10 @@ msgstr "For instance, with :code:`set qos policy shaper MY-SHAPER class 30 set-d
 #: ../../configuration/policy/route.rst:67
 msgid "For ipv4:"
 msgstr "For ipv4:"
+
+#: ../../configuration/firewall/zone.rst:9
+msgid "For latest releases, refer the `firewall <https://docs.vyos.io/en/latest/configuration/firewall/general.html#interface-groups>`_ main page to configure zone based rules. New syntax was introduced here :vytask:`T5160`"
+msgstr "For latest releases, refer the `firewall <https://docs.vyos.io/en/latest/configuration/firewall/general.html#interface-groups>`_ main page to configure zone based rules. New syntax was introduced here :vytask:`T5160`"
 
 #: ../../configuration/protocols/mpls.rst:27
 msgid "For more information on how MPLS label switching works, please go visit `Wikipedia (MPLS)`_."
@@ -6534,7 +6551,7 @@ msgstr "How to configure Event Handler"
 msgid "How to make it work"
 msgstr "How to make it work"
 
-#: ../../configuration/vpn/ipsec.rst:274
+#: ../../configuration/vpn/ipsec.rst:263
 msgid "However, now you need to make IPsec work with dynamic address on one side. The tricky part is that pre-shared secret authentication doesn't work with dynamic address, so we'll have to use RSA keys."
 msgstr "However, now you need to make IPsec work with dynamic address on one side. The tricky part is that pre-shared secret authentication doesn't work with dynamic address, so we'll have to use RSA keys."
 
@@ -6641,7 +6658,7 @@ msgstr "IPSec IKEv2 site2site VPN"
 msgid "IPSec IKEv2 site2site VPN (source ./draw.io/vpn_s2s_ikev2.drawio)"
 msgstr "IPSec IKEv2 site2site VPN (source ./draw.io/vpn_s2s_ikev2.drawio)"
 
-#: ../../configuration/nat/nat44.rst:760
+#: ../../configuration/nat/nat44.rst:758
 msgid "IPSec VPN Tunnels"
 msgstr "IPSec VPN Tunnels"
 
@@ -6762,7 +6779,7 @@ msgstr "IPoE server will listen on interfaces eth1.50 and eth1.51"
 msgid "IPsec"
 msgstr "IPsec"
 
-#: ../../configuration/vpn/ipsec.rst:183
+#: ../../configuration/vpn/ipsec.rst:172
 msgid "IPsec policy matching GRE"
 msgstr "IPsec policy matching GRE"
 
@@ -6823,6 +6840,10 @@ msgstr "IPv6 DHCPv6-PD Example"
 #: ../../configuration/service/ipoe-server.rst:69
 msgid "IPv6 DNS addresses are optional."
 msgstr "IPv6 DNS addresses are optional."
+
+#: ../../configuration/protocols/pim6.rst:5
+msgid "IPv6 Multicast"
+msgstr "IPv6 Multicast"
 
 #: ../../configuration/service/pppoe-server.rst:295
 msgid "IPv6 Prefix Delegation"
@@ -7300,7 +7321,7 @@ msgstr "If unset, incoming connections to the RADIUS server will use the nearest
 msgid "If unset, incoming connections to the TACACS server will use the nearest interface address pointing towards the server - making it error prone on e.g. OSPF networks when a link fails and a backup route is taken."
 msgstr "If unset, incoming connections to the TACACS server will use the nearest interface address pointing towards the server - making it error prone on e.g. OSPF networks when a link fails and a backup route is taken."
 
-#: ../../configuration/nat/nat44.rst:790
+#: ../../configuration/nat/nat44.rst:788
 msgid "If you've completed all the above steps you no doubt want to see if it's all working."
 msgstr "If you've completed all the above steps you no doubt want to see if it's all working."
 
@@ -7439,7 +7460,7 @@ msgstr "In Internet Protocol Version 6 (IPv6) networks, the functionality of ARP
 msgid "In Priority Queue we do not define clases with a meaningless class ID number but with a class priority number (1-7). The lower the number, the higher the priority."
 msgstr "In Priority Queue we do not define clases with a meaningless class ID number but with a class priority number (1-7). The lower the number, the higher the priority."
 
-#: ../../configuration/vpn/ipsec.rst:124
+#: ../../configuration/vpn/ipsec.rst:117
 msgid "In VyOS, ESP attributes are specified through ESP groups. Multiple proposals can be specified in a single group."
 msgstr "In VyOS, ESP attributes are specified through ESP groups. Multiple proposals can be specified in a single group."
 
@@ -7480,7 +7501,7 @@ msgstr "In VyOS the terms ``vif-s`` and ``vif-c`` stand for the ethertype tags t
 msgid "In :rfc:`3069` it is called VLAN Aggregation"
 msgstr "In :rfc:`3069` it is called VLAN Aggregation"
 
-#: ../../configuration/firewall/zone.rst:30
+#: ../../configuration/firewall/zone.rst:31
 msgid "In :vytask:`T2199` the syntax of the zone configuration was changed. The zone configuration moved from ``zone-policy zone <name>`` to ``firewall zone <name>``."
 msgstr "In :vytask:`T2199` the syntax of the zone configuration was changed. The zone configuration moved from ``zone-policy zone <name>`` to ``firewall zone <name>``."
 
@@ -7762,6 +7783,10 @@ msgstr "In typical uses of SNMP, one or more administrative computers called man
 msgid "In zone-based policy, interfaces are assigned to zones, and inspection policy is applied to traffic moving between the zones and acted on according to firewall rules. A Zone is a group of interfaces that have similar functions or features. It establishes the security borders of a network. A zone defines a boundary where traffic is subjected to policy restrictions as it crosses to another region of a network."
 msgstr "In zone-based policy, interfaces are assigned to zones, and inspection policy is applied to traffic moving between the zones and acted on according to firewall rules. A Zone is a group of interfaces that have similar functions or features. It establishes the security borders of a network. A zone defines a boundary where traffic is subjected to policy restrictions as it crosses to another region of a network."
 
+#: ../../configuration/firewall/zone.rst:14
+msgid "In zone-based policy, interfaces are assigned to zones, and inspection policy is applied to traffic moving between the zones and acted on according to firewall rules. A zone is a group of interfaces that have similar functions or features. It establishes the security borders of a network. A zone defines a boundary where traffic is subjected to policy restrictions as it crosses to another region of a network."
+msgstr "In zone-based policy, interfaces are assigned to zones, and inspection policy is applied to traffic moving between the zones and acted on according to firewall rules. A zone is a group of interfaces that have similar functions or features. It establishes the security borders of a network. A zone defines a boundary where traffic is subjected to policy restrictions as it crosses to another region of a network."
+
 #: ../../configuration/loadbalancing/wan.rst:201
 msgid "Inbound connections to a WAN interface can be improperly handled when the reply is sent back to the client."
 msgstr "Inbound connections to a WAN interface can be improperly handled when the reply is sent back to the client."
@@ -8008,7 +8033,7 @@ msgstr "It generates the keypair, which includes the public and private parts. T
 msgid "It helps to support as HELPER only for planned restarts."
 msgstr "It helps to support as HELPER only for planned restarts."
 
-#: ../../configuration/firewall/zone.rst:76
+#: ../../configuration/firewall/zone.rst:77
 msgid "It helps to think of the syntax as: (see below). The 'rule-set' should be written from the perspective of: *Source Zone*-to->*Destination Zone*"
 msgstr "It helps to think of the syntax as: (see below). The 'rule-set' should be written from the perspective of: *Source Zone*-to->*Destination Zone*"
 
@@ -8120,7 +8145,7 @@ msgstr "Key Management"
 msgid "Key Parameters:"
 msgstr "Key Parameters:"
 
-#: ../../configuration/firewall/zone.rst:20
+#: ../../configuration/firewall/zone.rst:21
 msgid "Key Points:"
 msgstr "Key Points:"
 
@@ -8636,6 +8661,10 @@ msgstr "Mandatory Settings"
 msgid "Manual Neighbor Configuration"
 msgstr "Manual Neighbor Configuration"
 
+#: ../../configuration/interfaces/vxlan.rst:150
+msgid "Maps the VNI to the specified VLAN id. The VLAN can then be consumed by a bridge."
+msgstr "Maps the VNI to the specified VLAN id. The VLAN can then be consumed by a bridge."
+
 #: ../../configuration/vpn/sstp.rst:212
 msgid "Mark RADIUS server as offline for this given `<time>` in seconds."
 msgstr "Mark RADIUS server as offline for this given `<time>` in seconds."
@@ -8897,7 +8926,7 @@ msgstr "Multi: can be specified multiple times."
 msgid "Multicast"
 msgstr "Multicast"
 
-#: ../../configuration/interfaces/vxlan.rst:179
+#: ../../configuration/interfaces/vxlan.rst:209
 msgid "Multicast-routing is required for the leaves to forward traffic between each other in a more scalable way. This also requires PIM to be enabled towards the leaves so that the Spine can learn what multicast groups each Leaf expects traffic from."
 msgstr "Multicast-routing is required for the leaves to forward traffic between each other in a more scalable way. This also requires PIM to be enabled towards the leaves so that the Spine can learn what multicast groups each Leaf expects traffic from."
 
@@ -8921,6 +8950,10 @@ msgstr "Multicast group to use for syncing conntrack entries."
 msgid "Multicast receivers will talk IGMP to their local router, so, besides having PIM configured in every router, IGMP must also be configured in any router where there could be a multicast receiver locally connected."
 msgstr "Multicast receivers will talk IGMP to their local router, so, besides having PIM configured in every router, IGMP must also be configured in any router where there could be a multicast receiver locally connected."
 
+#: ../../configuration/protocols/pim6.rst:18
+msgid "Multicast receivers will talk MLD to their local router, so, besides having PIMv6 configured in every router, MLD must also be configured in any router where there could be a multicast receiver locally connected."
+msgstr "Multicast receivers will talk MLD to their local router, so, besides having PIMv6 configured in every router, MLD must also be configured in any router where there could be a multicast receiver locally connected."
+
 #: ../../configuration/service/dhcp-server.rst:59
 #: ../../configuration/service/dhcp-server.rst:106
 msgid "Multiple DNS servers can be defined."
@@ -8933,6 +8966,10 @@ msgstr "Multiple RPKI caching instances can be supplied and they need a preferen
 #: ../../configuration/policy/examples.rst:90
 msgid "Multiple Uplinks"
 msgstr "Multiple Uplinks"
+
+#: ../../configuration/interfaces/vxlan.rst:144
+msgid "Multiple VLAN to VNI mappings can be configured against the same SVD. This allows for a significant scaling of the number of VNIs since a separate VXLAN interface is no longer required for each VNI."
+msgstr "Multiple VLAN to VNI mappings can be configured against the same SVD. This allows for a significant scaling of the number of VNIs since a separate VXLAN interface is no longer required for each VNI."
 
 #: ../../configuration/system/host-name.rst:68
 msgid "Multiple aliases can pe specified per host-name."
@@ -9229,7 +9266,7 @@ msgstr "Not all transmit policies may be 802.3ad compliant, particularly in rega
 msgid "Note that deleting the log file does not stop the system from logging events. If you use this command while the system is logging events, old log events will be deleted, but events after the delete operation will be recorded in the new file. To delete the file altogether, first delete logging to the file using system syslog :ref:`custom-file` command, and then delete the file."
 msgstr "Note that deleting the log file does not stop the system from logging events. If you use this command while the system is logging events, old log events will be deleted, but events after the delete operation will be recorded in the new file. To delete the file altogether, first delete logging to the file using system syslog :ref:`custom-file` command, and then delete the file."
 
-#: ../../configuration/vpn/ipsec.rst:305
+#: ../../configuration/vpn/ipsec.rst:294
 #: ../../configuration/vpn/rsa-keys.rst:35
 msgid "Note the command with the public key (set pki key-pair ipsec-RIGHT public key 'FAAOCAQ8AMII...')."
 msgstr "Note the command with the public key (set pki key-pair ipsec-RIGHT public key 'FAAOCAQ8AMII...')."
@@ -9242,7 +9279,7 @@ msgstr "Notice"
 msgid "Now configure conntrack-sync service on ``router1`` **and** ``router2``"
 msgstr "Now configure conntrack-sync service on ``router1`` **and** ``router2``"
 
-#: ../../configuration/vpn/ipsec.rst:308
+#: ../../configuration/vpn/ipsec.rst:297
 msgid "Now the noted public keys should be entered on the opposite routers."
 msgstr "Now the noted public keys should be entered on the opposite routers."
 
@@ -9262,7 +9299,7 @@ msgstr "Now when connecting the user will first be asked for the password and th
 msgid "Now you are ready to setup IPsec. The key points:"
 msgstr "Now you are ready to setup IPsec. The key points:"
 
-#: ../../configuration/vpn/ipsec.rst:322
+#: ../../configuration/vpn/ipsec.rst:311
 msgid "Now you are ready to setup IPsec. You'll need to use an ID instead of address for the peer."
 msgstr "Now you are ready to setup IPsec. You'll need to use an ID instead of address for the peer."
 
@@ -9338,29 +9375,29 @@ msgstr "On standby router run:"
 msgid "On systems with multiple redundant uplinks and routes, it's a good idea to use a dedicated address for management and dynamic routing protocols. However, assigning that address to a physical link is risky: if that link goes down, that address will become inaccessible. A common solution is to assign the management address to a loopback or a dummy interface and advertise that address via all physical links, so that it's reachable through any of them. Since in Linux-based systems, there can be only one loopback interface, it's better to use a dummy interface for that purpose, since they can be added, removed, and taken up and down independently."
 msgstr "On systems with multiple redundant uplinks and routes, it's a good idea to use a dedicated address for management and dynamic routing protocols. However, assigning that address to a physical link is risky: if that link goes down, that address will become inaccessible. A common solution is to assign the management address to a loopback or a dummy interface and advertise that address via all physical links, so that it's reachable through any of them. Since in Linux-based systems, there can be only one loopback interface, it's better to use a dummy interface for that purpose, since they can be added, removed, and taken up and down independently."
 
-#: ../../configuration/vpn/ipsec.rst:192
-#: ../../configuration/vpn/ipsec.rst:250
-#: ../../configuration/vpn/ipsec.rst:310
+#: ../../configuration/vpn/ipsec.rst:181
+#: ../../configuration/vpn/ipsec.rst:239
+#: ../../configuration/vpn/ipsec.rst:299
 #: ../../configuration/vpn/rsa-keys.rst:40
 msgid "On the LEFT:"
 msgstr "On the LEFT:"
 
-#: ../../configuration/vpn/ipsec.rst:325
+#: ../../configuration/vpn/ipsec.rst:314
 #: ../../configuration/vpn/rsa-keys.rst:59
 msgid "On the LEFT (static address):"
 msgstr "On the LEFT (static address):"
 
-#: ../../configuration/vpn/ipsec.rst:232
+#: ../../configuration/vpn/ipsec.rst:221
 msgid "On the RIGHT, setup by analogy and swap local and remote addresses."
 msgstr "On the RIGHT, setup by analogy and swap local and remote addresses."
 
-#: ../../configuration/vpn/ipsec.rst:261
-#: ../../configuration/vpn/ipsec.rst:316
+#: ../../configuration/vpn/ipsec.rst:250
+#: ../../configuration/vpn/ipsec.rst:305
 #: ../../configuration/vpn/rsa-keys.rst:46
 msgid "On the RIGHT:"
 msgstr "On the RIGHT:"
 
-#: ../../configuration/vpn/ipsec.rst:350
+#: ../../configuration/vpn/ipsec.rst:339
 #: ../../configuration/vpn/rsa-keys.rst:84
 msgid "On the RIGHT (dynamic address):"
 msgstr "On the RIGHT (dynamic address):"
@@ -9712,7 +9749,7 @@ msgstr "Optionally set a specific static IPv4 or IPv6 address for the container.
 msgid "Options"
 msgstr "Options"
 
-#: ../../configuration/vpn/ipsec.rst:170
+#: ../../configuration/vpn/ipsec.rst:159
 msgid "Options (Global IPsec settings) Attributes"
 msgstr "Options (Global IPsec settings) Attributes"
 
@@ -9823,6 +9860,10 @@ msgstr "PIM (Protocol Independent Multicast) must be configured in every interfa
 #: ../../configuration/protocols/igmp.rst:14
 msgid "PIM and IGMP"
 msgstr "PIM and IGMP"
+
+#: ../../configuration/protocols/pim6.rst:9
+msgid "PIMv6 (Protocol Independent Multicast for IPv6) must be configured in every interface of every participating router. Every router must also have the location of the Rendevouz Point manually configured. Then, unidirectional shared trees rooted at the Rendevouz Point will automatically be built for multicast distribution."
+msgstr "PIMv6 (Protocol Independent Multicast for IPv6) must be configured in every interface of every participating router. Every router must also have the location of the Rendevouz Point manually configured. Then, unidirectional shared trees rooted at the Rendevouz Point will automatically be built for multicast distribution."
 
 #: ../../configuration/pki/index.rst:7
 msgid "PKI"
@@ -11104,6 +11145,10 @@ msgstr "SaltStack_ is Python-based, open-source software for event-driven IT aut
 msgid "Same as export-list, but it applies to paths announced into specified area as Type-3 summary-LSAs. This command makes sense in ABR only."
 msgstr "Same as export-list, but it applies to paths announced into specified area as Type-3 summary-LSAs. This command makes sense in ABR only."
 
+#: ../../configuration/interfaces/vxlan.rst:153
+msgid "Sample configuration of SVD with VLAN to VNI mappings is shown below."
+msgstr "Sample configuration of SVD with VLAN to VNI mappings is shown below."
+
 #: ../../configuration/protocols/mpls.rst:201
 msgid "Sample configuration to setup LDP on VyOS"
 msgstr "Sample configuration to setup LDP on VyOS"
@@ -11343,7 +11388,7 @@ msgstr "Set a human readable, descriptive alias for this connection. Alias is us
 msgid "Set a limit on the maximum number of concurrent logged-in users on the system."
 msgstr "Set a limit on the maximum number of concurrent logged-in users on the system."
 
-#: ../../configuration/firewall/zone.rst:68
+#: ../../configuration/firewall/zone.rst:69
 msgid "Set a meaningful description."
 msgstr "Set a meaningful description."
 
@@ -11483,7 +11528,7 @@ msgstr "Set if antenna pattern does not change during the lifetime of an associa
 msgid "Set inbound interface to match."
 msgstr "Set inbound interface to match."
 
-#: ../../configuration/firewall/zone.rst:54
+#: ../../configuration/firewall/zone.rst:55
 msgid "Set interfaces to a zone. A zone can have multiple interfaces. But an interface can only be a member in one zone."
 msgstr "Set interfaces to a zone. A zone can have multiple interfaces. But an interface can only be a member in one zone."
 
@@ -11644,6 +11689,22 @@ msgstr "Set the IP address of the remote peer. It may be specified as an IPv4 ad
 #: ../../configuration/firewall/general-legacy.rst:112
 msgid "Set the IPv4 source validation mode. The following system parameter will be altered:"
 msgstr "Set the IPv4 source validation mode. The following system parameter will be altered:"
+
+#: ../../configuration/protocols/pim6.rst:62
+msgid "Set the MLD last member query count. The default value is 2."
+msgstr "Set the MLD last member query count. The default value is 2."
+
+#: ../../configuration/protocols/pim6.rst:66
+msgid "Set the MLD last member query interval in milliseconds (100-6553500). The default value is 1000 milliseconds."
+msgstr "Set the MLD last member query interval in milliseconds (100-6553500). The default value is 1000 milliseconds."
+
+#: ../../configuration/protocols/pim6.rst:70
+msgid "Set the MLD query response timeout in milliseconds (100-6553500). The default value is 10000 milliseconds."
+msgstr "Set the MLD query response timeout in milliseconds (100-6553500). The default value is 10000 milliseconds."
+
+#: ../../configuration/protocols/pim6.rst:74
+msgid "Set the MLD version used on this interface. The default value is 2."
+msgstr "Set the MLD version used on this interface. The default value is 2."
 
 #: ../../configuration/protocols/segment-routing.rst:85
 #: ../../configuration/protocols/segment-routing.rst:163
@@ -11834,7 +11895,7 @@ msgstr "Set window of concurrently valid codes."
 msgid "Sets the image name in the hub registry"
 msgstr "Sets the image name in the hub registry"
 
-#: ../../configuration/interfaces/vxlan.rst:269
+#: ../../configuration/interfaces/vxlan.rst:299
 msgid "Sets the interface to listen for multicast packets on. Could be a loopback, not yet tested."
 msgstr "Sets the interface to listen for multicast packets on. Could be a loopback, not yet tested."
 
@@ -11842,7 +11903,7 @@ msgstr "Sets the interface to listen for multicast packets on. Could be a loopba
 msgid "Sets the listening port for a listening address. This overrides the default port of 3128 on the specific listen address."
 msgstr "Sets the listening port for a listening address. This overrides the default port of 3128 on the specific listen address."
 
-#: ../../configuration/interfaces/vxlan.rst:276
+#: ../../configuration/interfaces/vxlan.rst:306
 msgid "Sets the unique id for this vxlan-interface. Not sure how it correlates with multicast-address."
 msgstr "Sets the unique id for this vxlan-interface. Not sure how it correlates with multicast-address."
 
@@ -11854,7 +11915,7 @@ msgstr "Setting VRRP group priority"
 msgid "Setting name"
 msgstr "Setting name"
 
-#: ../../configuration/vpn/dmvpn.rst:229
+#: ../../configuration/vpn/dmvpn.rst:227
 msgid "Setting this up on AWS will require a \"Custom Protocol Rule\" for protocol number \"47\" (GRE) Allow Rule in TWO places. Firstly on the VPC Network ACL, and secondly on the security group network ACL attached to the EC2 instance. This has been tested as working for the official AMI image on the AWS Marketplace. (Locate the correct VPC and security group by navigating through the details pane below your EC2 instance in the AWS console)."
 msgstr "Setting this up on AWS will require a \"Custom Protocol Rule\" for protocol number \"47\" (GRE) Allow Rule in TWO places. Firstly on the VPC Network ACL, and secondly on the security group network ACL attached to the EC2 instance. This has been tested as working for the official AMI image on the AWS Marketplace. (Locate the correct VPC and security group by navigating through the details pane below your EC2 instance in the AWS console)."
 
@@ -12257,6 +12318,10 @@ msgstr "Since the RADIUS server would be a single point of failure, multiple RAD
 msgid "Since the mDNS protocol sends the AA records in the packet itself, the repeater does not need to forge the source address. Instead, the source address is of the interface that repeats the packet."
 msgstr "Since the mDNS protocol sends the AA records in the packet itself, the repeater does not need to forge the source address. Instead, the source address is of the interface that repeats the packet."
 
+#: ../../configuration/interfaces/vxlan.rst:136
+msgid "Single VXLAN device (SVD)"
+msgstr "Single VXLAN device (SVD)"
+
 #: ../../configuration/interfaces/openvpn.rst:39
 #: ../../configuration/vpn/site2site_ipsec.rst:4
 msgid "Site-to-Site"
@@ -12395,7 +12460,7 @@ msgstr "Source all connections to the TACACS servers from given VRF `<name>`."
 msgid "Source protocol to match."
 msgstr "Source protocol to match."
 
-#: ../../configuration/vpn/ipsec.rst:236
+#: ../../configuration/vpn/ipsec.rst:225
 msgid "Source tunnel from loopbacks"
 msgstr "Source tunnel from loopbacks"
 
@@ -12671,7 +12736,7 @@ msgstr "Specify timeout / update interval to check if IP address changed."
 msgid "Specify timeout interval for keepalive message in seconds."
 msgstr "Specify timeout interval for keepalive message in seconds."
 
-#: ../../configuration/interfaces/vxlan.rst:140
+#: ../../configuration/interfaces/vxlan.rst:170
 msgid "Spine1 is a Cisco IOS router running version 15.4, Leaf2 and Leaf3 is each a VyOS router running 1.2."
 msgstr "Spine1 is a Cisco IOS router running version 15.4, Leaf2 and Leaf3 is each a VyOS router running 1.2."
 
@@ -12679,7 +12744,7 @@ msgstr "Spine1 is a Cisco IOS router running version 15.4, Leaf2 and Leaf3 is ea
 msgid "Splunk"
 msgstr "Splunk"
 
-#: ../../configuration/vpn/dmvpn.rst:237
+#: ../../configuration/vpn/dmvpn.rst:235
 msgid "Spoke"
 msgstr "Spoke"
 
@@ -12687,7 +12752,7 @@ msgstr "Spoke"
 msgid "Squid_ is a caching and forwarding HTTP web proxy. It has a wide variety of uses, including speeding up a web server by caching repeated requests, caching web, DNS and other computer network lookups for a group of people sharing network resources, and aiding security by filtering traffic. Although primarily used for HTTP and FTP, Squid includes limited support for several other protocols including Internet Gopher, SSL,[6] TLS and HTTPS. Squid does not support the SOCKS protocol."
 msgstr "Squid_ is a caching and forwarding HTTP web proxy. It has a wide variety of uses, including speeding up a web server by caching repeated requests, caching web, DNS and other computer network lookups for a group of people sharing network resources, and aiding security by filtering traffic. Although primarily used for HTTP and FTP, Squid includes limited support for several other protocols including Internet Gopher, SSL,[6] TLS and HTTPS. Squid does not support the SOCKS protocol."
 
-#: ../../configuration/nat/nat44.rst:793
+#: ../../configuration/nat/nat44.rst:791
 msgid "Start by checking for IPSec SAs (Security Associations) with:"
 msgstr "Start by checking for IPSec SAs (Security Associations) with:"
 
@@ -12802,7 +12867,7 @@ msgstr "Supported versions of RIP are:"
 msgid "Supports as HELPER for configured grace period."
 msgstr "Supports as HELPER for configured grace period."
 
-#: ../../configuration/vpn/ipsec.rst:189
+#: ../../configuration/vpn/ipsec.rst:178
 msgid "Suppose the LEFT router has external address 192.0.2.10 on its eth0 interface, and the RIGHT router is 203.0.113.45"
 msgstr "Suppose the LEFT router has external address 192.0.2.10 on its eth0 interface, and the RIGHT router is 203.0.113.45"
 
@@ -12984,7 +13049,7 @@ msgstr "Test disconnecting given connection-oriented interface. `<interface>` ca
 msgid "Testing SSTP"
 msgstr "Testing SSTP"
 
-#: ../../configuration/nat/nat44.rst:788
+#: ../../configuration/nat/nat44.rst:786
 msgid "Testing and Validation"
 msgstr "Testing and Validation"
 
@@ -12996,7 +13061,7 @@ msgstr "Thanks to this discovery, any subsequent traffic between PC4 and PC5 wil
 msgid "That is how it is possible to do the so-called \"ingress shaping\"."
 msgstr "That is how it is possible to do the so-called \"ingress shaping\"."
 
-#: ../../configuration/nat/nat44.rst:808
+#: ../../configuration/nat/nat44.rst:806
 msgid "That looks good - we defined 2 tunnels and they're both up and running."
 msgstr "That looks good - we defined 2 tunnels and they're both up and running."
 
@@ -13321,7 +13386,7 @@ msgstr "The default hostname used is `vyos`."
 msgid "The default lease time for DHCPv6 leases is 24 hours. This can be changed by supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All values need to be supplied in seconds."
 msgstr "The default lease time for DHCPv6 leases is 24 hours. This can be changed by supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All values need to be supplied in seconds."
 
-#: ../../configuration/interfaces/vxlan.rst:306
+#: ../../configuration/interfaces/vxlan.rst:336
 msgid "The default port udp is set to 8472. It can be changed with ``set interface vxlan <vxlanN> port <port>``"
 msgstr "The default port udp is set to 8472. It can be changed with ``set interface vxlan <vxlanN> port <port>``"
 
@@ -13365,7 +13430,7 @@ msgstr "The default value is slow."
 msgid "The default values for the minimum-threshold depend on IP precedence:"
 msgstr "The default values for the minimum-threshold depend on IP precedence:"
 
-#: ../../configuration/interfaces/vxlan.rst:283
+#: ../../configuration/interfaces/vxlan.rst:313
 msgid "The destination port used for creating a VXLAN interface in Linux defaults to its pre-standard value of 8472 to preserve backward compatibility. A configuration directive to support a user-specified destination port to override that behavior is available using the above command."
 msgstr "The destination port used for creating a VXLAN interface in Linux defaults to its pre-standard value of 8472 to preserve backward compatibility. A configuration directive to support a user-specified destination port to override that behavior is available using the above command."
 
@@ -13435,7 +13500,7 @@ msgstr "The first IP in the container network is reserved by the engine and cann
 msgid "The first address of the parameter ``client-subnet``, will be used as the default gateway. Connected sessions can be checked via the ``show ipoe-server sessions`` command."
 msgstr "The first address of the parameter ``client-subnet``, will be used as the default gateway. Connected sessions can be checked via the ``show ipoe-server sessions`` command."
 
-#: ../../configuration/vpn/ipsec.rst:185
+#: ../../configuration/vpn/ipsec.rst:174
 msgid "The first and arguably cleaner option is to make your IPsec policy match GRE packets between external addresses of your routers. This is the best option if both routers have static external addresses."
 msgstr "The first and arguably cleaner option is to make your IPsec policy match GRE packets between external addresses of your routers. This is the best option if both routers have static external addresses."
 
@@ -13483,6 +13548,10 @@ msgstr "The following commands would be required to set options for a given dyna
 #: ../../configuration/loadbalancing/reverse-proxy.rst:212
 msgid "The following configuration demonstrates how to use VyOS to achieve load balancing based on the domain name."
 msgstr "The following configuration demonstrates how to use VyOS to achieve load balancing based on the domain name."
+
+#: ../../configuration/protocols/pim6.rst:87
+msgid "The following configuration explicitly joins multicast group `ff15::1234` on interface `eth1` and source-specific multicast group `ff15::5678` with source address `2001:db8::1` on interface `eth1`:"
+msgstr "The following configuration explicitly joins multicast group `ff15::1234` on interface `eth1` and source-specific multicast group `ff15::5678` with source address `2001:db8::1` on interface `eth1`:"
 
 #: ../../configuration/interfaces/bonding.rst:293
 msgid "The following configuration on VyOS applies to all following 3rd party vendors. It creates a bond with two links and VLAN 10, 100 on the bonded interfaces with a per VIF IPv4 address."
@@ -13581,7 +13650,7 @@ msgstr "The hostname or IP address of the master"
 msgid "The identifier is the device's DUID: colon-separated hex list (as used by isc-dhcp option dhcpv6.client-id). If the device already has a dynamic lease from the DHCPv6 server, its DUID can be found with ``show service dhcpv6 server leases``. The DUID begins at the 5th octet (after the 4th colon) of IAID_DUID."
 msgstr "The identifier is the device's DUID: colon-separated hex list (as used by isc-dhcp option dhcpv6.client-id). If the device already has a dynamic lease from the DHCPv6 server, its DUID can be found with ``show service dhcpv6 server leases``. The DUID begins at the 5th octet (after the 4th colon) of IAID_DUID."
 
-#: ../../configuration/vpn/dmvpn.rst:239
+#: ../../configuration/vpn/dmvpn.rst:237
 msgid "The individual spoke configurations only differ in the local IP address on the ``tun10`` interface. See the above diagram for the individual IP addresses."
 msgstr "The individual spoke configurations only differ in the local IP address on the ``tun10`` interface. See the above diagram for the individual IP addresses."
 
@@ -13663,7 +13732,7 @@ msgstr "The minimal echo receive transmission interval that this system is capab
 msgid "The most visible application of the protocol is for access to shell accounts on Unix-like operating systems, but it sees some limited use on Windows as well. In 2015, Microsoft announced that they would include native support for SSH in a future release."
 msgstr "The most visible application of the protocol is for access to shell accounts on Unix-like operating systems, but it sees some limited use on Windows as well. In 2015, Microsoft announced that they would include native support for SSH in a future release."
 
-#: ../../configuration/interfaces/vxlan.rst:262
+#: ../../configuration/interfaces/vxlan.rst:292
 msgid "The multicast-group used by all leaves for this vlan extension. Has to be the same on all leaves that has this interface."
 msgstr "The multicast-group used by all leaves for this vlan extension. Has to be the same on all leaves that has this interface."
 
@@ -13721,7 +13790,7 @@ msgstr "The outgoing interface to perform the translation on"
 msgid "The peer name must be an alphanumeric and can have hypen or underscore as special characters. It is purely informational."
 msgstr "The peer name must be an alphanumeric and can have hypen or underscore as special characters. It is purely informational."
 
-#: ../../configuration/vpn/ipsec.rst:246
+#: ../../configuration/vpn/ipsec.rst:235
 msgid "The peer names RIGHT and LEFT are used as informational text."
 msgstr "The peer names RIGHT and LEFT are used as informational text."
 
@@ -13858,7 +13927,7 @@ msgstr "The sFlow accounting based on hsflowd https://sflow.net/"
 msgid "The same configuration options apply when Identity based config is configured in group mode except that group mode can only be used with RADIUS authentication."
 msgstr "The same configuration options apply when Identity based config is configured in group mode except that group mode can only be used with RADIUS authentication."
 
-#: ../../configuration/vpn/ipsec.rst:238
+#: ../../configuration/vpn/ipsec.rst:227
 msgid "The scheme above doesn't work when one of the routers has a dynamic external address though. The classic workaround for this is to setup an address on a loopback interface and use it as a source address for the GRE tunnel, then setup an IPsec policy to match those loopback addresses."
 msgstr "The scheme above doesn't work when one of the routers has a dynamic external address though. The classic workaround for this is to setup an address on a loopback interface and use it as a source address for the GRE tunnel, then setup an IPsec policy to match those loopback addresses."
 
@@ -13878,7 +13947,7 @@ msgstr "The security approach in SNMPv3 targets:"
 msgid "The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit the session use: ``Ctrl+E c .``"
 msgstr "The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit the session use: ``Ctrl+E c .``"
 
-#: ../../configuration/interfaces/vxlan.rst:138
+#: ../../configuration/interfaces/vxlan.rst:168
 msgid "The setup is this: Leaf2 - Spine1 - Leaf3"
 msgstr "The setup is this: Leaf2 - Spine1 - Leaf3"
 
@@ -14075,6 +14144,7 @@ msgid "There is an entire chapter about how to configure a :ref:`vrf`, please ch
 msgstr "There is an entire chapter about how to configure a :ref:`vrf`, please check this for additional information."
 
 #: ../../configuration/protocols/igmp.rst:93
+#: ../../configuration/protocols/pim6.rst:27
 msgid "These are the commands for a basic setup."
 msgstr "These are the commands for a basic setup."
 
@@ -15213,7 +15283,7 @@ msgstr "This command will give an overview of a single rule-set."
 msgid "This command would allow the dynamic update of capabilities over an established BGP session."
 msgstr "This command would allow the dynamic update of capabilities over an established BGP session."
 
-#: ../../configuration/interfaces/vxlan.rst:242
+#: ../../configuration/interfaces/vxlan.rst:272
 msgid "This commands creates a bridge that is used to bind traffic on eth1 vlan 241 with the vxlan241-interface. The IP address is not required. It may however be used as a default gateway for each Leaf which allows devices on the vlan to reach other subnets. This requires that the subnets are redistributed by OSPF so that the Spine will learn how to reach it. To do this you need to change the OSPF network from '10.0.0.0/8' to '0.0.0.0/0' to allow 172.16/12-networks to be advertised."
 msgstr "This commands creates a bridge that is used to bind traffic on eth1 vlan 241 with the vxlan241-interface. The IP address is not required. It may however be used as a default gateway for each Leaf which allows devices on the vlan to reach other subnets. This requires that the subnets are redistributed by OSPF so that the Spine will learn how to reach it. To do this you need to change the OSPF network from '10.0.0.0/8' to '0.0.0.0/0' to allow 172.16/12-networks to be advertised."
 
@@ -15707,7 +15777,7 @@ msgstr "This technology is known by different names:"
 msgid "This the simplest queue possible you can apply to your traffic. Traffic must go through a finite queue before it is actually sent. You must define how many packets that queue can contain."
 msgstr "This the simplest queue possible you can apply to your traffic. Traffic must go through a finite queue before it is actually sent. You must define how many packets that queue can contain."
 
-#: ../../configuration/interfaces/vxlan.rst:143
+#: ../../configuration/interfaces/vxlan.rst:173
 msgid "This topology was built using GNS3."
 msgstr "This topology was built using GNS3."
 
@@ -15890,7 +15960,7 @@ msgstr "To create more than one tunnel, use distinct UDP ports."
 msgid "To create routing table 100 and add a new default gateway to be used by traffic matching our route policy:"
 msgstr "To create routing table 100 and add a new default gateway to be used by traffic matching our route policy:"
 
-#: ../../configuration/firewall/zone.rst:50
+#: ../../configuration/firewall/zone.rst:51
 msgid "To define a zone setup either one with interfaces or a local zone."
 msgstr "To define a zone setup either one with interfaces or a local zone."
 
@@ -15910,6 +15980,10 @@ msgstr "To display the configured OTP user settings, use the command:"
 #: ../../configuration/protocols/ospf.rst:1227
 msgid "To enable/disable helper support for a specific neighbour, the router-id (A.B.C.D) has to be specified."
 msgstr "To enable/disable helper support for a specific neighbour, the router-id (A.B.C.D) has to be specified."
+
+#: ../../configuration/protocols/pim6.rst:80
+msgid "To enable MLD reports and query on interfaces `eth0` and `eth1`:"
+msgstr "To enable MLD reports and query on interfaces `eth0` and `eth1`:"
 
 #: ../../configuration/vpn/l2tp.rst:141
 msgid "To enable RADIUS based authentication, the authentication mode needs to be changed within the configuration. Previous settings like the local users, still exists within the configuration, however they are not used if the mode has been changed from local to radius. Once changed back to local, it will use all local accounts again."
@@ -16024,7 +16098,7 @@ msgstr "To use the Salt-Minion, a running Salt-Master is required. You can find 
 msgid "To use this full configuration we asume a public accessible hostname."
 msgstr "To use this full configuration we asume a public accessible hostname."
 
-#: ../../configuration/interfaces/vxlan.rst:145
+#: ../../configuration/interfaces/vxlan.rst:175
 msgid "Topology:"
 msgstr "Topology:"
 
@@ -16060,13 +16134,17 @@ msgstr "Traffic Filters are used to control which packets will have the defined 
 msgid "Traffic Policy"
 msgstr "Traffic Policy"
 
-#: ../../configuration/firewall/zone.rst:26
+#: ../../configuration/firewall/zone.rst:27
 msgid "Traffic cannot flow between zone member interface and any interface that is not a zone member."
 msgstr "Traffic cannot flow between zone member interface and any interface that is not a zone member."
 
 #: ../../configuration/protocols/igmp.rst:22
 msgid "Traffic from multicast sources will go to the Rendezvous Point, and receivers will pull it from a shared tree using IGMP (Internet Group Management Protocol)."
 msgstr "Traffic from multicast sources will go to the Rendezvous Point, and receivers will pull it from a shared tree using IGMP (Internet Group Management Protocol)."
+
+#: ../../configuration/protocols/pim6.rst:15
+msgid "Traffic from multicast sources will go to the Rendezvous Point, and receivers will pull it from a shared tree using MLD (Multicast Listener Discovery)."
+msgstr "Traffic from multicast sources will go to the Rendezvous Point, and receivers will pull it from a shared tree using MLD (Multicast Listener Discovery)."
 
 #: ../../configuration/highavailability/index.rst:322
 msgid "Transition scripts"
@@ -16086,6 +16164,7 @@ msgid "Troubleshooting"
 msgstr "Troubleshooting"
 
 #: ../../configuration/protocols/igmp.rst:119
+#: ../../configuration/protocols/pim6.rst:41
 msgid "Tuning commands"
 msgstr "Tuning commands"
 
@@ -16165,7 +16244,7 @@ msgstr "Unicast"
 msgid "Unicast VRRP"
 msgstr "Unicast VRRP"
 
-#: ../../configuration/interfaces/vxlan.rst:289
+#: ../../configuration/interfaces/vxlan.rst:319
 msgid "Unicast VXLAN"
 msgstr "Unicast VXLAN"
 
@@ -16387,9 +16466,17 @@ msgstr "Use this command if you would like to control the local FEC allocations 
 msgid "Use this command if you would like to set the TCP session hold time intervals."
 msgstr "Use this command if you would like to set the TCP session hold time intervals."
 
+#: ../../configuration/protocols/pim6.rst:53
+msgid "Use this command to allow the selected interface to join a multicast group."
+msgstr "Use this command to allow the selected interface to join a multicast group."
+
 #: ../../configuration/protocols/igmp.rst:149
 msgid "Use this command to allow the selected interface to join a multicast group defining the multicast address you want to join and the source IP address too."
 msgstr "Use this command to allow the selected interface to join a multicast group defining the multicast address you want to join and the source IP address too."
+
+#: ../../configuration/protocols/pim6.rst:57
+msgid "Use this command to allow the selected interface to join a source-specific multicast group."
+msgstr "Use this command to allow the selected interface to join a source-specific multicast group."
 
 #: ../../configuration/interfaces/openvpn.rst:660
 msgid "Use this command to check the tunnel status for OpenVPN client interfaces."
@@ -16568,6 +16655,10 @@ msgstr "Use this command to configure in the selected interface the IGMP host qu
 msgid "Use this command to configure in the selected interface the IGMP query response timeout value (10-250) in deciseconds. If a report is not returned in the specified time, it will be assumed the `(S,G) or (*,G) state <https://tools.ietf.org/html/rfc7761#section-4.1>`_ has timed out."
 msgstr "Use this command to configure in the selected interface the IGMP query response timeout value (10-250) in deciseconds. If a report is not returned in the specified time, it will be assumed the `(S,G) or (*,G) state <https://tools.ietf.org/html/rfc7761#section-4.1>`_ has timed out."
 
+#: ../../configuration/protocols/pim6.rst:47
+msgid "Use this command to configure in the selected interface the MLD host query interval (1-65535) in seconds that PIM will use. The default value is 125 seconds."
+msgstr "Use this command to configure in the selected interface the MLD host query interval (1-65535) in seconds that PIM will use. The default value is 125 seconds."
+
 #: ../../configuration/service/pppoe-server.rst:112
 msgid "Use this command to configure the IP address and the shared secret key of your RADIUS server.  You can have multiple RADIUS servers configured if you wish to achieve redundancy."
 msgstr "Use this command to configure the IP address and the shared secret key of your RADIUS server.  You can have multiple RADIUS servers configured if you wish to achieve redundancy."
@@ -16735,6 +16826,10 @@ msgstr "Use this command to enable MPLS processing on the interface you define."
 #: ../../configuration/protocols/igmp.rst:97
 msgid "Use this command to enable PIM in the selected interface so that it can communicate with PIM neighbors."
 msgstr "Use this command to enable PIM in the selected interface so that it can communicate with PIM neighbors."
+
+#: ../../configuration/protocols/pim6.rst:31
+msgid "Use this command to enable PIMv6 in the selected interface so that it can communicate with PIMv6 neighbors. This command also enables MLD reports and query on the interface unless :cfgcmd:`mld disable` is configured."
+msgstr "Use this command to enable PIMv6 in the selected interface so that it can communicate with PIMv6 neighbors. This command also enables MLD reports and query on the interface unless :cfgcmd:`mld disable` is configured."
 
 #: ../../configuration/interfaces/pppoe.rst:235
 msgid "Use this command to enable acquisition of IPv6 address using stateless autoconfig (SLAAC)."
@@ -17244,7 +17339,7 @@ msgstr "VyOS 1.4 uses chrony instead of ntpd (see :vytask:`T3008`) which will no
 msgid "VyOS Arista EOS setup"
 msgstr "VyOS Arista EOS setup"
 
-#: ../../configuration/vpn/ipsec.rst:127
+#: ../../configuration/vpn/ipsec.rst:120
 msgid "VyOS ESP group has the next options:"
 msgstr "VyOS ESP group has the next options:"
 
@@ -17288,7 +17383,7 @@ msgstr "VyOS also comes with a build in SSTP server, see :ref:`sstp`."
 msgid "VyOS also provides DHCPv6 server functionality which is described in this section."
 msgstr "VyOS also provides DHCPv6 server functionality which is described in this section."
 
-#: ../../configuration/vpn/dmvpn.rst:292
+#: ../../configuration/vpn/dmvpn.rst:290
 msgid "VyOS can also run in DMVPN spoke mode."
 msgstr "VyOS can also run in DMVPN spoke mode."
 
@@ -17320,6 +17415,10 @@ msgstr "VyOS does not have a special command to start the OSPFv3 process. The OS
 #: ../../configuration/protocols/igmp.rst:9
 msgid "VyOS facilitates IP Multicast by supporting **PIM Sparse Mode**, **IGMP** and **IGMP-Proxy**."
 msgstr "VyOS facilitates IP Multicast by supporting **PIM Sparse Mode**, **IGMP** and **IGMP-Proxy**."
+
+#: ../../configuration/protocols/pim6.rst:7
+msgid "VyOS facilitates IPv6 Multicast by supporting **PIMv6** and **MLD**."
+msgstr "VyOS facilitates IPv6 Multicast by supporting **PIMv6** and **MLD**."
 
 #: ../../configuration/service/dns.rst:201
 msgid "VyOS is able to update a remote DNS record when an interface gets a new IP address. In order to do so, VyOS includes ddclient_, a Perl script written for this only one purpose."
@@ -17397,6 +17496,10 @@ msgstr "VyOS reverse-proxy is balancer and proxy server that provides high-avail
 #: ../../configuration/protocols/igmp.rst:30
 msgid "VyOS supports both IGMP version 2 and version 3 (which allows source-specific multicast)."
 msgstr "VyOS supports both IGMP version 2 and version 3 (which allows source-specific multicast)."
+
+#: ../../configuration/protocols/pim6.rst:22
+msgid "VyOS supports both MLD version 1 and version 2 (which allows source-specific multicast)."
+msgstr "VyOS supports both MLD version 1 and version 2 (which allows source-specific multicast)."
 
 #: ../../configuration/system/flow-accounting.rst:7
 msgid "VyOS supports flow-accounting for both IPv4 and IPv6 traffic. The system acts as a flow exporter, and you are free to use it with any compatible collector."
@@ -17481,11 +17584,11 @@ msgstr "Warning"
 msgid "Warning conditions"
 msgstr "Warning conditions"
 
-#: ../../configuration/nat/nat44.rst:762
+#: ../../configuration/nat/nat44.rst:760
 msgid "We'll use the IKE and ESP groups created above for this VPN. Because we need access to 2 different subnets on the far side, we will need two different tunnels. If you changed the names of the ESP group and IKE group in the previous step, make sure you use the correct names here too."
 msgstr "We'll use the IKE and ESP groups created above for this VPN. Because we need access to 2 different subnets on the far side, we will need two different tunnels. If you changed the names of the ESP group and IKE group in the previous step, make sure you use the correct names here too."
 
-#: ../../configuration/vpn/ipsec.rst:243
+#: ../../configuration/vpn/ipsec.rst:232
 msgid "We assume that the LEFT router has static 192.0.2.10 address on eth0, and the RIGHT router has a dynamic address on eth0."
 msgstr "We assume that the LEFT router has static 192.0.2.10 address on eth0, and the RIGHT router has a dynamic address on eth0."
 
@@ -17921,7 +18024,7 @@ msgstr "With this command, you can specify how the URL path should be matched ag
 msgid "Y"
 msgstr "Y"
 
-#: ../../configuration/firewall/zone.rst:88
+#: ../../configuration/firewall/zone.rst:89
 msgid "You apply a rule-set always to a zone from an other zone, it is recommended to create one rule-set for each zone pair."
 msgstr "You apply a rule-set always to a zone from an other zone, it is recommended to create one rule-set for each zone pair."
 
@@ -17950,6 +18053,7 @@ msgid "You can also specify which IPv6 access-list should be shown:"
 msgstr "You can also specify which IPv6 access-list should be shown:"
 
 #: ../../configuration/protocols/igmp.rst:121
+#: ../../configuration/protocols/pim6.rst:42
 msgid "You can also tune multicast with the following commands."
 msgstr "You can also tune multicast with the following commands."
 
@@ -18066,7 +18170,7 @@ msgstr "You may prefer locally configured capabilities more than the negotiated 
 msgid "You may want to disable sending Capability Negotiation OPEN message optional parameter to the peer when remote peer does not implement Capability Negotiation. Please use :cfgcmd:`disable-capability-negotiation` command to disable the feature."
 msgstr "You may want to disable sending Capability Negotiation OPEN message optional parameter to the peer when remote peer does not implement Capability Negotiation. Please use :cfgcmd:`disable-capability-negotiation` command to disable the feature."
 
-#: ../../configuration/firewall/zone.rst:28
+#: ../../configuration/firewall/zone.rst:29
 msgid "You need 2 separate firewalls to define traffic: one for each direction."
 msgstr "You need 2 separate firewalls to define traffic: one for each direction."
 
@@ -18644,7 +18748,7 @@ msgstr "``802.3ad`` - IEEE 802.3ad Dynamic link aggregation. Creates aggregation
 msgid "``9600`` - 9600 bps"
 msgstr "``9600`` - 9600 bps"
 
-#: ../../configuration/vpn/ipsec.rst:160
+#: ../../configuration/vpn/ipsec.rst:149
 msgid "``< dh-group >`` defines a Diffie-Hellman group for PFS;"
 msgstr "``< dh-group >`` defines a Diffie-Hellman group for PFS;"
 
@@ -18684,7 +18788,7 @@ msgstr "``accept``: accept the packet."
 msgid "``access-point`` - Access-point forwards packets between other nodes"
 msgstr "``access-point`` - Access-point forwards packets between other nodes"
 
-#: ../../configuration/vpn/ipsec.rst:63
+#: ../../configuration/vpn/ipsec.rst:61
 msgid "``action`` keep-alive failure action:"
 msgstr "``action`` keep-alive failure action:"
 
@@ -18696,7 +18800,7 @@ msgstr "``active-backup`` - Active-backup policy: Only one slave in the bond is 
 msgid "``adaptive-load-balance`` - Adaptive load balancing: includes transmit-load-balance plus receive load balancing for IPV4 traffic, and does not require any special switch support. The receive load balancing is achieved by ARP negotiation. The bonding driver intercepts the ARP Replies sent by the local system on their way out and overwrites the source hardware address with the unique hardware address of one of the slaves in the bond such that different peers use different hardware addresses for the server."
 msgstr "``adaptive-load-balance`` - Adaptive load balancing: includes transmit-load-balance plus receive load balancing for IPV4 traffic, and does not require any special switch support. The receive load balancing is achieved by ARP negotiation. The bonding driver intercepts the ARP Replies sent by the local system on their way out and overwrites the source hardware address with the unique hardware address of one of the slaves in the bond such that different peers use different hardware addresses for the server."
 
-#: ../../configuration/vpn/ipsec.rst:103
+#: ../../configuration/vpn/ipsec.rst:96
 msgid "``aggressive`` use Aggressive mode for Key Exchanges in the IKEv1 protocol aggressive mode is much more insecure compared to Main mode;"
 msgstr "``aggressive`` use Aggressive mode for Key Exchanges in the IKEv1 protocol aggressive mode is much more insecure compared to Main mode;"
 
@@ -18760,8 +18864,7 @@ msgstr "``cdp`` - Listen for CDP for Cisco routers/switches"
 msgid "``cert-file`` - certificate file, which will be used for authenticating local router on remote peer;"
 msgstr "``cert-file`` - certificate file, which will be used for authenticating local router on remote peer;"
 
-#: ../../configuration/vpn/ipsec.rst:54
-#: ../../configuration/vpn/ipsec.rst:67
+#: ../../configuration/vpn/ipsec.rst:65
 msgid "``clear`` set action to clear;"
 msgstr "``clear`` set action to clear;"
 
@@ -18772,6 +18875,10 @@ msgstr "``close-action = none | clear | hold | restart`` - defines the action to
 #: ../../configuration/vpn/ipsec.rst:47
 msgid "``close-action`` defines the action to take if the remote peer unexpectedly closes a CHILD_SA:"
 msgstr "``close-action`` defines the action to take if the remote peer unexpectedly closes a CHILD_SA:"
+
+#: ../../configuration/vpn/ipsec.rst:122
+msgid "``compression``  Enables the  IPComp(IP Payload Compression) protocol which allows compressing the content of IP packets."
+msgstr "``compression``  Enables the  IPComp(IP Payload Compression) protocol which allows compressing the content of IP packets."
 
 #: ../../configuration/vpn/ipsec.rst:129
 msgid "``compression`` whether IPComp compression of content is proposed on the connection:"
@@ -18797,7 +18904,7 @@ msgstr "``d`` - Execution interval in days"
 msgid "``dead-peer-detection action = clear | hold | restart`` - R_U_THERE notification messages(IKEv1) or empty INFORMATIONAL messages (IKEv2) are periodically sent in order to check the liveliness of the IPsec peer. The values clear, hold, and restart all activate DPD and determine the action to perform on a timeout. With ``clear`` the connection is closed with no further actions taken. ``hold`` installs a trap policy, which will catch matching traffic and tries to re-negotiate the connection on demand. ``restart`` will immediately trigger an attempt to re-negotiate the connection."
 msgstr "``dead-peer-detection action = clear | hold | restart`` - R_U_THERE notification messages(IKEv1) or empty INFORMATIONAL messages (IKEv2) are periodically sent in order to check the liveliness of the IPsec peer. The values clear, hold, and restart all activate DPD and determine the action to perform on a timeout. With ``clear`` the connection is closed with no further actions taken. ``hold`` installs a trap policy, which will catch matching traffic and tries to re-negotiate the connection on demand. ``restart`` will immediately trigger an attempt to re-negotiate the connection."
 
-#: ../../configuration/vpn/ipsec.rst:58
+#: ../../configuration/vpn/ipsec.rst:56
 msgid "``dead-peer-detection`` controls the use of the Dead Peer Detection protocol (DPD, RFC 3706) where R_U_THERE notification messages (IKEv1) or empty INFORMATIONAL messages (IKEv2) are periodically sent in order to check the liveliness of the IPsec peer:"
 msgstr "``dead-peer-detection`` controls the use of the Dead Peer Detection protocol (DPD, RFC 3706) where R_U_THERE notification messages (IKEv1) or empty INFORMATIONAL messages (IKEv2) are periodically sent in order to check the liveliness of the IPsec peer:"
 
@@ -18809,7 +18916,7 @@ msgstr "``default-esp-group`` - ESP group to use by default for traffic encrypti
 msgid "``description`` - description for this peer;"
 msgstr "``description`` - description for this peer;"
 
-#: ../../configuration/vpn/ipsec.rst:108
+#: ../../configuration/vpn/ipsec.rst:101
 msgid "``dh-group`` dh-group;"
 msgstr "``dh-group`` dh-group;"
 
@@ -18821,11 +18928,15 @@ msgstr "``dhcp-interface`` - ID for authentication generated from DHCP address d
 msgid "``dhcp-interface`` - use an IP address, received from DHCP for IPSec connection with this peer, instead of ``local-address``;"
 msgstr "``dhcp-interface`` - use an IP address, received from DHCP for IPSec connection with this peer, instead of ``local-address``;"
 
+#: ../../configuration/vpn/ipsec.rst:88
+msgid "``disable-mobike`` disables MOBIKE Support. MOBIKE is only available for IKEv2 and enabled by default."
+msgstr "``disable-mobike`` disables MOBIKE Support. MOBIKE is only available for IKEv2 and enabled by default."
+
 #: ../../configuration/vpn/site2site_ipsec.rst:366
 msgid "``disable-route-autoinstall`` - This option when configured disables the routes installed in the default table 220 for site-to-site ipsec. It is mostly used with VTI configuration."
 msgstr "``disable-route-autoinstall`` - This option when configured disables the routes installed in the default table 220 for site-to-site ipsec. It is mostly used with VTI configuration."
 
-#: ../../configuration/vpn/ipsec.rst:173
+#: ../../configuration/vpn/ipsec.rst:162
 msgid "``disable-route-autoinstall`` Do not automatically install routes to remote networks;"
 msgstr "``disable-route-autoinstall`` Do not automatically install routes to remote networks;"
 
@@ -18833,7 +18944,7 @@ msgstr "``disable-route-autoinstall`` Do not automatically install routes to rem
 msgid "``disable`` - disable this tunnel;"
 msgstr "``disable`` - disable this tunnel;"
 
-#: ../../configuration/vpn/ipsec.rst:158
+#: ../../configuration/vpn/ipsec.rst:147
 msgid "``disable`` Disable PFS;"
 msgstr "``disable`` Disable PFS;"
 
@@ -18865,7 +18976,7 @@ msgstr "``ecdsa-sha2-nistp521``"
 msgid "``edp`` - Listen for EDP for Extreme routers/switches"
 msgstr "``edp`` - Listen for EDP for Extreme routers/switches"
 
-#: ../../configuration/vpn/ipsec.rst:156
+#: ../../configuration/vpn/ipsec.rst:145
 msgid "``enable`` Inherit Diffie-Hellman group from IKE group (default);"
 msgstr "``enable`` Inherit Diffie-Hellman group from IKE group (default);"
 
@@ -18877,11 +18988,11 @@ msgstr "``enable`` enable IPComp compression;"
 msgid "``enable`` enable MOBIKE (default for IKEv2);"
 msgstr "``enable`` enable MOBIKE (default for IKEv2);"
 
-#: ../../configuration/vpn/ipsec.rst:110
+#: ../../configuration/vpn/ipsec.rst:103
 msgid "``encryption`` encryption algorithm;"
 msgstr "``encryption`` encryption algorithm;"
 
-#: ../../configuration/vpn/ipsec.rst:164
+#: ../../configuration/vpn/ipsec.rst:153
 msgid "``encryption`` encryption algorithm (default 128 bit AES-CBC);"
 msgstr "``encryption`` encryption algorithm (default 128 bit AES-CBC);"
 
@@ -18909,7 +19020,7 @@ msgstr "``fdp`` - Listen for FDP for Foundry routers/switches"
 msgid "``file`` - path to the key file;"
 msgstr "``file`` - path to the key file;"
 
-#: ../../configuration/vpn/ipsec.rst:175
+#: ../../configuration/vpn/ipsec.rst:164
 msgid "``flexvpn`` Allow FlexVPN vendor ID payload (IKEv2 only). Send the Cisco FlexVPN vendor ID payload (IKEv2 only), which is required in order to make Cisco brand devices allow negotiating a local traffic selector (from strongSwan's point of view) that is not the assigned virtual IP address if such an address is requested by strongSwan. Sending the Cisco FlexVPN vendor ID prevents the peer from narrowing the initiator's local traffic selector and allows it to e.g. negotiate a TS of 0.0.0.0/0 == 0.0.0.0/0 instead. This has been tested with a \"tunnel mode ipsec ipv4\" Cisco template but should also work for GRE encapsulation;"
 msgstr "``flexvpn`` Allow FlexVPN vendor ID payload (IKEv2 only). Send the Cisco FlexVPN vendor ID payload (IKEv2 only), which is required in order to make Cisco brand devices allow negotiating a local traffic selector (from strongSwan's point of view) that is not the assigned virtual IP address if such an address is requested by strongSwan. Sending the Cisco FlexVPN vendor ID prevents the peer from narrowing the initiator's local traffic selector and allows it to e.g. negotiate a TS of 0.0.0.0/0 == 0.0.0.0/0 instead. This has been tested with a \"tunnel mode ipsec ipv4\" Cisco template but should also work for GRE encapsulation;"
 
@@ -18929,11 +19040,11 @@ msgstr "``graceful-shutdown`` -            Well-known communities value GRACEFUL
 msgid "``h`` - Execution interval in hours"
 msgstr "``h`` - Execution interval in hours"
 
-#: ../../configuration/vpn/ipsec.rst:112
+#: ../../configuration/vpn/ipsec.rst:105
 msgid "``hash`` hash algorithm."
 msgstr "``hash`` hash algorithm."
 
-#: ../../configuration/vpn/ipsec.rst:166
+#: ../../configuration/vpn/ipsec.rst:155
 msgid "``hash`` hash algorithm (default sha1)."
 msgstr "``hash`` hash algorithm (default sha1)."
 
@@ -18941,7 +19052,7 @@ msgstr "``hash`` hash algorithm (default sha1)."
 msgid "``hold`` set action to hold;"
 msgstr "``hold`` set action to hold;"
 
-#: ../../configuration/vpn/ipsec.rst:65
+#: ../../configuration/vpn/ipsec.rst:63
 msgid "``hold`` set action to hold (default)"
 msgstr "``hold`` set action to hold (default)"
 
@@ -18965,7 +19076,7 @@ msgstr "``id`` - static ID's for authentication. In general local and remote add
 msgid "``ike-group`` - IKE group to use for key exchanges;"
 msgstr "``ike-group`` - IKE group to use for key exchanges;"
 
-#: ../../configuration/vpn/ipsec.rst:86
+#: ../../configuration/vpn/ipsec.rst:82
 msgid "``ikev1`` use IKEv1 for Key Exchange;"
 msgstr "``ikev1`` use IKEv1 for Key Exchange;"
 
@@ -18973,11 +19084,15 @@ msgstr "``ikev1`` use IKEv1 for Key Exchange;"
 msgid "``ikev2-reauth`` - reauthenticate remote peer during the rekeying process. Can be used only with IKEv2. Create a new IKE_SA from the scratch and try to recreate all IPsec SAs;"
 msgstr "``ikev2-reauth`` - reauthenticate remote peer during the rekeying process. Can be used only with IKEv2. Create a new IKE_SA from the scratch and try to recreate all IPsec SAs;"
 
+#: ../../configuration/vpn/ipsec.rst:73
+msgid "``ikev2-reauth`` whether rekeying of an IKE_SA should also reauthenticate the peer. In IKEv1, reauthentication is always done. Setting this parameter enables remote host re-authentication during an IKE rekey."
+msgstr "``ikev2-reauth`` whether rekeying of an IKE_SA should also reauthenticate the peer. In IKEv1, reauthentication is always done. Setting this parameter enables remote host re-authentication during an IKE rekey."
+
 #: ../../configuration/vpn/ipsec.rst:75
 msgid "``ikev2-reauth`` whether rekeying of an IKE_SA should also reauthenticate the peer. In IKEv1, reauthentication is always done:"
 msgstr "``ikev2-reauth`` whether rekeying of an IKE_SA should also reauthenticate the peer. In IKEv1, reauthentication is always done:"
 
-#: ../../configuration/vpn/ipsec.rst:88
+#: ../../configuration/vpn/ipsec.rst:84
 msgid "``ikev2`` use IKEv2 for Key Exchange;"
 msgstr "``ikev2`` use IKEv2 for Key Exchange;"
 
@@ -18989,7 +19104,7 @@ msgstr "``in``: Ruleset for forwarded packets on an inbound interface"
 msgid "``initiate`` - does initial connection to remote peer immediately after configuring and after boot. In this mode the connection will not be restarted in case of disconnection, therefore should be used only together with DPD or another session tracking methods;"
 msgstr "``initiate`` - does initial connection to remote peer immediately after configuring and after boot. In this mode the connection will not be restarted in case of disconnection, therefore should be used only together with DPD or another session tracking methods;"
 
-#: ../../configuration/vpn/ipsec.rst:177
+#: ../../configuration/vpn/ipsec.rst:166
 msgid "``interface`` Interface Name to use. The name of the interface on which virtual IP addresses should be installed. If not specified the addresses will be installed on the outbound interface;"
 msgstr "``interface`` Interface Name to use. The name of the interface on which virtual IP addresses should be installed. If not specified the addresses will be installed on the outbound interface;"
 
@@ -19001,7 +19116,7 @@ msgstr "``interface`` is used for the VyOS CLI command to identify the WireGuard
 msgid "``internet`` -                     Well-known communities value 0"
 msgstr "``internet`` -                     Well-known communities value 0"
 
-#: ../../configuration/vpn/ipsec.rst:71
+#: ../../configuration/vpn/ipsec.rst:69
 msgid "``interval`` keep-alive interval in seconds <2-86400> (default 30);"
 msgstr "``interval`` keep-alive interval in seconds <2-86400> (default 30);"
 
@@ -19017,7 +19132,7 @@ msgstr "``jump``: jump to another custom chain."
 msgid "``kernel`` - Kernel routes"
 msgstr "``kernel`` - Kernel routes"
 
-#: ../../configuration/vpn/ipsec.rst:82
+#: ../../configuration/vpn/ipsec.rst:78
 msgid "``key-exchange`` which protocol should be used to initialize the connection If not set both protocols are handled and connections will use IKEv2 when initiating, but accept any protocol version when responding:"
 msgstr "``key-exchange`` which protocol should be used to initialize the connection If not set both protocols are handled and connections will use IKEv2 when initiating, but accept any protocol version when responding:"
 
@@ -19033,17 +19148,21 @@ msgstr "``latency``: A server profile focused on lowering network latency. This 
 msgid "``least-connection`` Distributes requests tp tje server wotj the fewest active connections"
 msgstr "``least-connection`` Distributes requests tp tje server wotj the fewest active connections"
 
-#: ../../configuration/vpn/ipsec.rst:136
+#: ../../configuration/vpn/ipsec.rst:125
 msgid "``life-bytes`` ESP life in bytes <1024-26843545600000>. Number of bytes transmitted over an IPsec SA before it expires;"
 msgstr "``life-bytes`` ESP life in bytes <1024-26843545600000>. Number of bytes transmitted over an IPsec SA before it expires;"
 
-#: ../../configuration/vpn/ipsec.rst:139
+#: ../../configuration/vpn/ipsec.rst:128
 msgid "``life-packets`` ESP life in packets <1000-26843545600000>. Number of packets transmitted over an IPsec SA before it expires;"
 msgstr "``life-packets`` ESP life in packets <1000-26843545600000>. Number of packets transmitted over an IPsec SA before it expires;"
 
-#: ../../configuration/vpn/ipsec.rst:142
+#: ../../configuration/vpn/ipsec.rst:131
 msgid "``lifetime`` ESP lifetime in seconds <30-86400> (default 3600). How long a particular instance of a connection (a set of encryption/authentication keys for user packets) should last, from successful negotiation to expiry;"
 msgstr "``lifetime`` ESP lifetime in seconds <30-86400> (default 3600). How long a particular instance of a connection (a set of encryption/authentication keys for user packets) should last, from successful negotiation to expiry;"
+
+#: ../../configuration/vpn/ipsec.rst:86
+msgid "``lifetime`` IKE lifetime in seconds <0-86400> (default 28800);"
+msgstr "``lifetime`` IKE lifetime in seconds <0-86400> (default 28800);"
 
 #: ../../configuration/vpn/ipsec.rst:90
 msgid "``lifetime`` IKE lifetime in seconds <30-86400> (default 28800);"
@@ -19081,7 +19200,7 @@ msgstr "``m`` - Execution interval in minutes"
 msgid "``main`` Routing table used by VyOS and other interfaces not participating in PBR"
 msgstr "``main`` Routing table used by VyOS and other interfaces not participating in PBR"
 
-#: ../../configuration/vpn/ipsec.rst:100
+#: ../../configuration/vpn/ipsec.rst:93
 msgid "``main`` use Main mode for Key Exchanges in the IKEv1 Protocol (Recommended Default);"
 msgstr "``main`` use Main mode for Key Exchanges in the IKEv1 Protocol (Recommended Default);"
 
@@ -19097,11 +19216,11 @@ msgstr "``mobike`` enable MOBIKE Support. MOBIKE is only available for IKEv2:"
 msgid "``mode`` - mode for authentication between VyOS and remote peer:"
 msgstr "``mode`` - mode for authentication between VyOS and remote peer:"
 
-#: ../../configuration/vpn/ipsec.rst:98
+#: ../../configuration/vpn/ipsec.rst:91
 msgid "``mode`` IKEv1 Phase 1 Mode Selection:"
 msgstr "``mode`` IKEv1 Phase 1 Mode Selection:"
 
-#: ../../configuration/vpn/ipsec.rst:147
+#: ../../configuration/vpn/ipsec.rst:136
 msgid "``mode`` the type of the connection:"
 msgstr "``mode`` the type of the connection:"
 
@@ -19221,7 +19340,7 @@ msgstr "``noselect`` marks the server as unused, except for display purposes. Th
 msgid "``nts`` enables Network Time Security (NTS) for the server as specified in :rfc:`8915`"
 msgstr "``nts`` enables Network Time Security (NTS) for the server as specified in :rfc:`8915`"
 
-#: ../../configuration/vpn/ipsec.rst:171
+#: ../../configuration/vpn/ipsec.rst:160
 msgid "``options``"
 msgstr "``options``"
 
@@ -19249,7 +19368,7 @@ msgstr "``peer`` is used for the VyOS CLI command to identify the WireGuard peer
 msgid "``period``: Time window for rate calculation. Possible values: ``second`` (one second), ``minute`` (one minute), ``hour`` (one hour). Default is ``second``."
 msgstr "``period``: Time window for rate calculation. Possible values: ``second`` (one second), ``minute`` (one minute), ``hour`` (one hour). Default is ``second``."
 
-#: ../../configuration/vpn/ipsec.rst:153
+#: ../../configuration/vpn/ipsec.rst:142
 msgid "``pfs`` whether Perfect Forward Secrecy of keys is desired on the connection's keying channel and defines a Diffie-Hellman group for PFS:"
 msgstr "``pfs`` whether Perfect Forward Secrecy of keys is desired on the connection's keying channel and defines a Diffie-Hellman group for PFS:"
 
@@ -19278,15 +19397,15 @@ msgstr "``prefix`` - IP network at local side."
 msgid "``prefix`` - IP network at remote side."
 msgstr "``prefix`` - IP network at remote side."
 
-#: ../../configuration/vpn/ipsec.rst:114
+#: ../../configuration/vpn/ipsec.rst:107
 msgid "``prf`` pseudo-random function."
 msgstr "``prf`` pseudo-random function."
 
-#: ../../configuration/vpn/ipsec.rst:162
+#: ../../configuration/vpn/ipsec.rst:151
 msgid "``proposal`` ESP-group proposal with number <1-65535>:"
 msgstr "``proposal`` ESP-group proposal with number <1-65535>:"
 
-#: ../../configuration/vpn/ipsec.rst:106
+#: ../../configuration/vpn/ipsec.rst:99
 msgid "``proposal`` the list of proposals and their parameters:"
 msgstr "``proposal`` the list of proposals and their parameters:"
 
@@ -19334,8 +19453,8 @@ msgstr "``resp-time``: the maximum response time for ping in seconds. Range 1...
 msgid "``respond`` - does not try to initiate a connection to a remote peer. In this mode, the IPSec session will be established only after initiation from a remote peer. Could be useful when there is no direct connectivity to the peer due to firewall or NAT in the middle of the local and remote side."
 msgstr "``respond`` - does not try to initiate a connection to a remote peer. In this mode, the IPSec session will be established only after initiation from a remote peer. Could be useful when there is no direct connectivity to the peer due to firewall or NAT in the middle of the local and remote side."
 
-#: ../../configuration/vpn/ipsec.rst:56
-#: ../../configuration/vpn/ipsec.rst:69
+#: ../../configuration/vpn/ipsec.rst:54
+#: ../../configuration/vpn/ipsec.rst:67
 msgid "``restart`` set action to restart;"
 msgstr "``restart`` set action to restart;"
 
@@ -19475,7 +19594,7 @@ msgstr "``threshold``: ``below`` or ``above`` the specified rate limit."
 msgid "``throughput``: A server profile focused on improving network throughput. This profile favors performance over power savings by setting ``intel_pstate`` and ``max_perf_pct=100`` and increasing kernel network buffer sizes."
 msgstr "``throughput``: A server profile focused on improving network throughput. This profile favors performance over power savings by setting ``intel_pstate`` and ``max_perf_pct=100`` and increasing kernel network buffer sizes."
 
-#: ../../configuration/vpn/ipsec.rst:73
+#: ../../configuration/vpn/ipsec.rst:71
 msgid "``timeout`` keep-alive timeout in seconds <2-86400> (default 120) IKEv1 only"
 msgstr "``timeout`` keep-alive timeout in seconds <2-86400> (default 120) IKEv1 only"
 
@@ -19483,7 +19602,7 @@ msgstr "``timeout`` keep-alive timeout in seconds <2-86400> (default 120) IKEv1 
 msgid "``transmit-load-balance`` - Adaptive transmit load balancing: channel bonding that does not require any special switch support."
 msgstr "``transmit-load-balance`` - Adaptive transmit load balancing: channel bonding that does not require any special switch support."
 
-#: ../../configuration/vpn/ipsec.rst:151
+#: ../../configuration/vpn/ipsec.rst:140
 msgid "``transport`` transport mode;"
 msgstr "``transport`` transport mode;"
 
@@ -19503,7 +19622,7 @@ msgstr "``ttyUSBX`` - USB Serial device name"
 msgid "``tunnel`` - define criteria for traffic to be matched for encrypting and send it to a peer:"
 msgstr "``tunnel`` - define criteria for traffic to be matched for encrypting and send it to a peer:"
 
-#: ../../configuration/vpn/ipsec.rst:149
+#: ../../configuration/vpn/ipsec.rst:138
 msgid "``tunnel`` tunnel mode (default);"
 msgstr "``tunnel`` tunnel mode (default);"
 
@@ -19515,7 +19634,7 @@ msgstr "``type``: Specify the type of test. type can be ping, ttl or a user defi
 msgid "``use-x509-id`` - use local ID from x509 certificate. Cannot be used when ``id`` is defined;"
 msgstr "``use-x509-id`` - use local ID from x509 certificate. Cannot be used when ``id`` is defined;"
 
-#: ../../configuration/vpn/ipsec.rst:179
+#: ../../configuration/vpn/ipsec.rst:168
 msgid "``virtual-ip`` Allow install virtual-ip addresses. Comma separated list of virtual IPs to request in IKEv2 configuration payloads or IKEv1 Mode Config. The wildcard addresses 0.0.0.0 and :: request an arbitrary address, specific addresses may be defined. The responder may return a different address, though, or none at all."
 msgstr "``virtual-ip`` Allow install virtual-ip addresses. Comma separated list of virtual IPs to request in IKEv2 configuration payloads or IKEv1 Mode Config. The wildcard addresses 0.0.0.0 and :: request an arbitrary address, specific addresses may be defined. The responder may return a different address, though, or none at all."
 
@@ -20278,11 +20397,11 @@ msgstr "software filters can easily be added to hash over new protocols,"
 msgid "source-hashing"
 msgstr "source-hashing"
 
-#: ../../configuration/vpn/dmvpn.rst:243
+#: ../../configuration/vpn/dmvpn.rst:241
 msgid "spoke01-spoke04"
 msgstr "spoke01-spoke04"
 
-#: ../../configuration/vpn/dmvpn.rst:290
+#: ../../configuration/vpn/dmvpn.rst:288
 msgid "spoke05"
 msgstr "spoke05"
 
