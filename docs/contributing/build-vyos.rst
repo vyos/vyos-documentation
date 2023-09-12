@@ -77,6 +77,8 @@ To manually download the container from DockerHub, run:
 .. code-block:: none
 
   $ docker pull vyos/vyos-build:crux     # For VyOS 1.2
+  $ docker pull vyos/vyos-build:equuleus # For VyOS 1.3
+  $ docker pull vyos/vyos-build:sagitta  # For VyOS 1.4
   $ docker pull vyos/vyos-build:current  # For rolling release
 
 Build from source
