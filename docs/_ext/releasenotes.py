@@ -19,6 +19,7 @@ for project in projects.response['data']:
     print(projects.response['data'][project]['phid'], projects.response['data'][project]['name'])
 '''
 
+# find phid here https://vyos.dev/conduit/method/project.query/
 projects = {
     'equuleus': {
         'phid': 'PHID-PROJ-zu26ui4vbmvykpjtepij',
@@ -27,10 +28,17 @@ projects = {
         'tasks': [],
         'releasenotes': []
     },
-    'current': {
+    'sagitta': {
         'phid': 'PHID-PROJ-m4utvy456e2shcprpq3b',
         'name': '1.4 Sagitta',
         'filename': 'docs/changelog/1.4.rst',
+        'tasks': [],
+        'releasenotes': []
+    },
+    'circinus': {
+        'phid': 'PHID-PROJ-cfi33xi3uijxyjsxoqzv',
+        'name': '1.5 Circinus',
+        'filename': 'docs/changelog/1.5.rst',
         'tasks': [],
         'releasenotes': []
     }

@@ -17,7 +17,7 @@ jobs:
           git submodule status
           git submodule update --init --force
           cd docs/_include/vyos-1x
-          git checkout current
+          git checkout sagitta
           git pull
           git submodule status
       - name: update releasenotes
@@ -26,7 +26,7 @@ jobs:
         if: env.PHABRICATOR_API != null
         run: |
           pip3 install phabricator==0.8.0
-          python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b current equuleus
+          python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b circinus sagitta equuleus
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
