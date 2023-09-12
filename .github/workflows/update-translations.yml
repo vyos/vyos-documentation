@@ -1,6 +1,9 @@
 name: "translation: generate, upload, download"
 on:
   workflow_dispatch:
+  schedule:
+  # 06:00 UTC on Monday
+    - cron:  '0 6 * * 1'
 
 jobs:
   main:

@@ -3,8 +3,8 @@ Wireguard
 #########
 
 
-| Testdate: 2023-02-24
-| Version: vyos-1.4-rolling-202302150317
+| Testdate: 2023-08-31
+| Version: 1.4-rolling-202308240020
 
 
 This simple structure show how to connect two offices. One remote branch and the
@@ -45,8 +45,8 @@ After this, the public key can be displayed, to save for later.
 .. code-block:: none
 
    vyos@central:~$ generate pki wireguard
-   Private key: oLycRx83P2BZ7eMqi4ysay2AETX318JJ9wE9rPIn/VI=
-   Public key: iuXAfobnPkFq60hQbBn13OX6xi7VymSzV1up/XmW8WI=
+   Private key: cMNGHtb5dW92ORG3HS8JJlvQF8pmVGt2Ydny8hTBLnY=
+   Public key: WyfLCTXi31gL+YbYOwoAHCl2RgS+y56cYHEK6pQsTQ8=
 
 
 After you have each public key. The wireguard interfaces can be setup.
@@ -102,11 +102,11 @@ And ping the Branch PC from your central router to check the response.
 
    vyos@central:~$ ping 10.0.2.100 count 4
    PING 10.0.2.100 (10.0.2.100) 56(84) bytes of data.
-   64 bytes from 10.0.2.100: icmp_seq=1 ttl=63 time=0.865 ms
-   64 bytes from 10.0.2.100: icmp_seq=2 ttl=63 time=0.769 ms
-   64 bytes from 10.0.2.100: icmp_seq=3 ttl=63 time=0.705 ms
-   64 bytes from 10.0.2.100: icmp_seq=4 ttl=63 time=0.791 ms
+   64 bytes from 10.0.2.100: icmp_seq=1 ttl=63 time=0.641 ms
+   64 bytes from 10.0.2.100: icmp_seq=2 ttl=63 time=0.836 ms
+   64 bytes from 10.0.2.100: icmp_seq=3 ttl=63 time=0.792 ms
+   64 bytes from 10.0.2.100: icmp_seq=4 ttl=63 time=1.09 ms
    
    --- 10.0.2.100 ping statistics ---
-   4 packets transmitted, 4 received, 0% packet loss, time 3074ms
-   rtt min/avg/max/mdev = 0.705/0.782/0.865/0.057 ms
+   4 packets transmitted, 4 received, 0% packet loss, time 3013ms
+   rtt min/avg/max/mdev = 0.641/0.838/1.086/0.160 ms

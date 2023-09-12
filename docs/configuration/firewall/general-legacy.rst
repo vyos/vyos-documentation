@@ -1,6 +1,6 @@
 :lastproofread: 2021-06-29
 
-.. _firewall:
+.. _firewall-legacy:
 
 ###############
 Firewall-Legacy
@@ -8,7 +8,7 @@ Firewall-Legacy
 
 .. note:: **Important note:**
    This documentation is valid only for VyOS Sagitta prior to
-   1.4-rolling-YYYYMMDDHHmm
+   1.4-rolling-202308040557
 
 ********
 Overview
@@ -153,7 +153,7 @@ Groups
 ******
 
 Firewall groups represent collections of IP addresses, networks, ports,
-mac addresses or domains. Once created, a group can be referenced by 
+mac addresses or domains. Once created, a group can be referenced by
 firewall, nat and policy route rules as either a source or destination
 matcher. Members can be added or removed from a group without changes to,
 or the need to reload, individual firewall rules.

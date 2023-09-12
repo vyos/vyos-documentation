@@ -60,7 +60,6 @@ Vyos configuration
 
 .. code-block:: none
 
-  set vpn ipsec esp-group AZURE compression 'disable'
   set vpn ipsec esp-group AZURE lifetime '3600'
   set vpn ipsec esp-group AZURE mode 'tunnel'
   set vpn ipsec esp-group AZURE pfs 'dh-group2'
@@ -70,7 +69,7 @@ Vyos configuration
   set vpn ipsec ike-group AZURE dead-peer-detection action 'restart'
   set vpn ipsec ike-group AZURE dead-peer-detection interval '15'
   set vpn ipsec ike-group AZURE dead-peer-detection timeout '30'
-  set vpn ipsec ike-group AZURE ikev2-reauth 'yes'
+  set vpn ipsec ike-group AZURE ikev2-reauth
   set vpn ipsec ike-group AZURE key-exchange 'ikev2'
   set vpn ipsec ike-group AZURE lifetime '28800'
   set vpn ipsec ike-group AZURE proposal 1 dh-group '2'
@@ -94,7 +93,7 @@ Vyos configuration
 
 .. code-block:: none
 
-  set firewall options interface vti1 adjust-mss 1350
+  set interfaces vti vti1 ip adjust-mss 1350
 
 - Configure the VPN tunnel
 

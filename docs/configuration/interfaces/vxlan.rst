@@ -132,6 +132,36 @@ For optimal scalability, Multicast shouldn't be used at all, but instead use BGP
 to signal all connected devices between leaves. Unfortunately, VyOS does not yet
 support this.
 
+Single VXLAN device (SVD)
+=========================
+
+FRR supports a new way of configuring VLAN-to-VNI mappings for EVPN-VXLAN, when
+working with the Linux kernel. In this new way, the mapping of a VLAN to a
+:abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))` is configured
+against a container VXLAN interface which is referred to as a
+:abbr:`SVD (Single VXLAN device)`.
+
+Multiple VLAN to VNI mappings can be configured against the same SVD. This
+allows for a significant scaling of the number of VNIs since a separate VXLAN
+interface is no longer required for each VNI.
+
+.. cfgcmd:: set interfaces vxlan <interface> vlan-to-vni <vlan> vni <vni>
+
+   Maps the VNI to the specified VLAN id. The VLAN can then be consumed by
+   a bridge.
+
+   Sample configuration of SVD with VLAN to VNI mappings is shown below.
+
+   .. code-block:: none
+
+    set interfaces bridge br0 member interface vxlan0
+    set interfaces vxlan vxlan0 external
+    set interfaces vxlan vxlan0 source-interface 'dum0'
+    set interfaces vxlan vxlan0 vlan-to-vni 10 vni '10010'
+    set interfaces vxlan vxlan0 vlan-to-vni 11 vni '10011'
+    set interfaces vxlan vxlan0 vlan-to-vni 30 vni '10030'
+    set interfaces vxlan vxlan0 vlan-to-vni 31 vni '10031'
+
 Example
 -------
 
@@ -252,7 +282,7 @@ advertised.
   set interfaces bridge br241 member interface 'eth1.241'
   set interfaces bridge br241 member interface 'vxlan241'
 
-Binds eth1.241 and vxlan241 to each other by making them both member 
+Binds eth1.241 and vxlan241 to each other by making them both member
 interfaces of the same bridge.
 
 .. code-block:: none

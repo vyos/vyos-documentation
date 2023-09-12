@@ -8,6 +8,90 @@
    _ext/releasenotes.py
 
 
+2023-09-11
+==========
+
+* :vytask:`T5557` ``(bug): bgp: Use treat-as-withdraw for tunnel encapsulation attribute CVE-2023-38802``
+* :vytask:`T3424` ``(default): PPPoE IA-PD doesn't work in VRF``
+
+
+2023-09-10
+==========
+
+* :vytask:`T5555` ``(bug): Fix timezone migrator (system 13-to-14)``
+* :vytask:`T5545` ``(bug): sflow is not working``
+
+
+2023-09-08
+==========
+
+* :vytask:`T4426` ``(default): Add arpwatch to the image``
+
+
+2023-09-05
+==========
+
+* :vytask:`T5524` ``(feature): Add config directory to liveCD``
+* :vytask:`T2958` ``(bug): DHCP server doesn't work from a live CD``
+* :vytask:`T5428` ``(bug): dhcp: client renewal fails when running inside VRF``
+
+
+2023-09-04
+==========
+
+* :vytask:`T5506` ``(bug): Container bridge interfaces do not have a link-local address``
+
+
+2023-08-31
+==========
+
+* :vytask:`T5190` ``(feature): Cloud-Init cannot fetch Meta-data on machines where the main Ethernet interface is not eth0``
+* :vytask:`T5140` ``(bug): Firewall network-group problems``
+* :vytask:`T4895` ``(bug): Tag nodes are overwritten when configured by Cloud-Init from User-Data``
+* :vytask:`T4874` ``(default): Add Warning message to Equuleus``
+* :vytask:`T4855` ``(bug): Trying to create more than one tunnel of the same type to the same address causes unhandled exception``
+* :vytask:`T4776` ``(bug): NVME storage is not detected properly during installation``
+* :vytask:`T3546` ``(feature): Add pppoe-server CLI custom script feature``
+* :vytask:`T738` ``(feature): Add local-port and resolver port options for powerdns in CLI configuration tree``
+
+
+2023-08-30
+==========
+
+* :vytask:`T5221` ``(bug): BGP as-override behavior differs from new FRR and other vendors``
+* :vytask:`T4933` ``(default): Malformed lines cause vyos.util.colon_separated_to_dict fail with a nondescript error``
+* :vytask:`T4790` ``(bug): RADIUS login does not work if sum of timeouts more than 50s``
+* :vytask:`T4475` ``(bug): route-map does not support ipv6 peer``
+* :vytask:`T4459` ``(bug): API service with VRF doesn't work in 1.3.1``
+* :vytask:`T4407` ``(bug): Network-config v2 is broken in Cloud-init 22.1 and VyOS 1.3``
+* :vytask:`T4113` ``(bug): Incorrect GRUB configuration parsing``
+* :vytask:`T1764` ``(bug): Use lists instead of whitespace-separated strings in vyos.config``
+* :vytask:`T4121` ``(bug): Nameservers from DHCP client cannot be used in specific cases``
+* :vytask:`T4151` ``(feature): IPV6 local PBR Support``
+* :vytask:`T4306` ``(default): Do not check for ditry repository when building release images``
+
+
+2023-08-29
+==========
+
+* :vytask:`T3940` ``(bug): DHCP client does not remove IP address when stopped by the 02-vyos-stopdhclient hook``
+* :vytask:`T3713` ``(default): Create a meta-package for user utilities``
+* :vytask:`T3339` ``(bug): Cloud-Init domain search setting not applied``
+* :vytask:`T3144` ``(feature): Support op-mode command to release DHCP leases``
+* :vytask:`T2640` ``(feature): Running VyOS inside Docker containers``
+* :vytask:`T3577` ``(bug): Generating vpn x509 key pair fails with command not found``
+
+
+2023-08-28
+==========
+
+* :vytask:`T4745` ``(bug): CLI TAB issue with values with '-' at the beginning in conf mode``
+* :vytask:`T2611` ``(bug): Prefix list names are shared between ipv4 and ipv6``
+* :vytask:`T2296` ``(default): Upgrade WALinux to 2.2.41``
+* :vytask:`T2123` ``(default): Configure 3 NTP servers``
+* :vytask:`T469` ``(bug): Problem after commit with errors``
+
+
 2023-08-25
 ==========
 
@@ -76,7 +160,6 @@
 2023-07-13
 ==========
 
-* :vytask:`T2315` ``(feature): Ability to have right address-family for BGP peers.``
 * :vytask:`T3045` ``(bug): Changes to Conntrack-Sync don't apply correctly (Mutlicast->UDP)``
 * :vytask:`T971` ``(bug): authentication public-keys options quoting issue``
 

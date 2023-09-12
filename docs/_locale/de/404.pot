@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Localazy (https://localazy.com)\n"
-"Project-Id-Version: vyos-documentation\n"
+"Project-Id-Version: VyOS Documentation\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n==1) ? 0 : 1;\n"
 
@@ -14,7 +14,7 @@ msgstr "Seite nicht gefunden"
 
 #: ../../404.rst:6
 msgid "Sorry, We could not find a page. Try using the search box or go to the release homepage:"
-msgstr "Sorry, We could not find a page. Try using the search box or go to the release homepage:"
+msgstr "Entschuldigung, wir konnten keine Seite finden. Versuchen Sie es mit dem Suchfeld oder gehen Sie auf die Homepage der Veröffentlichung:"
 
 #: ../../404.rst:9
 msgid "`1.2.x (crux) <https://docs.vyos.io/en/crux/>`_"
@@ -26,4 +26,4 @@ msgstr "`1.3.x (equuleus) <https://docs.vyos.io/en/equuleus/>`_"
 
 #: ../../404.rst:11
 msgid "`rolling release (sagitta) <https://docs.vyos.io/en/latest/>`_"
-msgstr "`rolling release (sagitta) <https://docs.vyos.io/en/latest/>`_"
+msgstr "`Rolling Release (Sagitta) <https://docs.vyos.io/en/latest/>`_"
