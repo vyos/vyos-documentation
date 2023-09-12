@@ -396,14 +396,8 @@ system:
 .. code-block:: none
 
   vyos@vyos:~$ uname -r
-  4.19.146-amd64-vyos
+  6.1.52-amd64-vyos
 
-Other packages (e.g. vyos-1x) add dependencies to the ISO build procedure on
-e.g. the wireguard-modules package which itself adds a dependency on the kernel
-version used due to the module it ships. This may change (for WireGuard) in
-future kernel releases but as long as we have out-of-tree modules.
-
-* WireGuard
 * Accel-PPP
 * Intel NIC drivers
 * Inter QAT
@@ -414,7 +408,7 @@ lucky enough to receive an ISO build error which sounds like:
 .. code-block:: none
 
   I: Create initramfs if it does not exist.
-  Extra argument '4.19.146-amd64-vyos'
+  Extra argument '6.1.52-amd64-vyos'
   Usage: update-initramfs {-c|-d|-u} [-k version] [-v] [-b directory]
   Options:
    -k version     Specify kernel version or 'all'
@@ -432,8 +426,8 @@ The most obvious reasons could be:
   release kernel version from us.
 
 * You have your own custom kernel `*.deb` packages in the `packages` folder but
-  neglected to create all required out-of tree modules like Accel-PPP,
-  WireGuard, Intel QAT, Intel NIC
+  neglected to create all required out-of tree modules like Accel-PPP, Intel
+  QAT or Intel NIC drivers
 
 Building The Kernel
 -------------------
@@ -590,54 +584,6 @@ out-of-tree modules so everything is lined up and the ABIs match. To do so,
 you can again take a look at ``vyos-build/packages/linux-kernel/Jenkinsfile``
 to see all of the required modules and their selected versions. We will show
 you how to build all the current required modules.
-
-WireGuard
-^^^^^^^^^
-
-First, clone the source code and check out the appropriate version by running:
-
-.. code-block:: none
-
-  $ cd vyos-build/packages/linux-kernel
-  $ git clone https://salsa.debian.org/debian/wireguard-linux-compat.git
-  $ cd wireguard-linux-compat
-  $ git checkout debian/1.0.20200712-1_bpo10+1
-
-We again make use of a helper script and some patches to make the build work.
-Just run the following command:
-
-.. code-block:: none
-
-  $ cd vyos-build/packages/linux-kernel
-  $ ./build-wireguard-modules.sh
-  I: Apply WireGuard patch: /vyos/packages/linux-kernel/patches/wireguard-linux-compat/0001-Debian-build-wireguard-modules-package.patch
-  patching file debian/control
-  patching file debian/rules
-  I: Build Debian WireGuard package
-  dpkg-buildpackage: info: source package wireguard-linux-compat
-  dpkg-buildpackage: info: source version 1.0.20200712-1~bpo10+1
-  dpkg-buildpackage: info: source distribution buster-backports
-  dpkg-buildpackage: info: source changed by Unit 193 <unit193@debian.org>
-  dpkg-buildpackage: info: host architecture amd64
-   dpkg-source --before-build .
-  dpkg-source: info: using patch list from debian/patches/series
-  dpkg-source: info: applying 0001-Makefile-do-not-use-git-to-get-version-number.patch
-  dpkg-source: info: applying 0002-Avoid-trying-to-compile-on-debian-5.5-kernels-Closes.patch
-
-  ...
-
-  dpkg-genchanges: info: binary-only upload (no source code included)
-   debian/rules clean
-  dh clean
-     dh_clean
-   dpkg-source --after-build .
-  dpkg-source: info: unapplying 0002-Avoid-trying-to-compile-on-debian-5.5-kernels-Closes.patch
-  dpkg-source: info: unapplying 0001-Makefile-do-not-use-git-to-get-version-number.patch
-  dpkg-buildpackage: info: binary-only upload (no source included)
-
-After compiling the packages you will find yourself the newly generated `*.deb`
-binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
-to the ``vyos-build/packages`` folder for inclusion during the ISO build.
 
 Accel-PPP
 ^^^^^^^^^
