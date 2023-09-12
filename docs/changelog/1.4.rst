@@ -11,6 +11,9 @@
 2023-09-11
 ==========
 
+* :vytask:`T5567` ``(bug): vyos-1x: webproxy: maximum-object-size allowed ranges not in sync with Equuleus``
+* :vytask:`T5551` ``(bug): Missing check for boot_configuration_complete raises error in vyos-save-config.py``
+* :vytask:`T5353` ``(bug): config-mgmt: normalize archive updates and commit log entries``
 * :vytask:`T3424` ``(default): PPPoE IA-PD doesn't work in VRF``
 * :vytask:`T2773` ``(feature): EIGRP support for VRF``
 
