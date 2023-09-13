@@ -21,6 +21,7 @@ This chapter contains various configuration examples:
    qos
    segment-routing-isis
    nmp
+   policy-based-ipsec-and-firewall
 
 
 Configuration Blueprints (autotest)
