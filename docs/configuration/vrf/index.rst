@@ -279,6 +279,42 @@ Configuration
     set vrf name red protocols static route 10.0.0.0/24 interface eth1 vrf 'default'
     set vrf name red table '2000'
 
+VRF and NAT
+-----------
+
+Configuration
+^^^^^^^^^^^^^
+
+  .. code-block:: none
+
+    set interfaces ethernet eth0 address '172.16.50.12/24'
+    set interfaces ethernet eth0 vrf 'red'
+
+    set interfaces ethernet eth1 address '192.168.130.100/24'
+    set interfaces ethernet eth1 vrf 'blue'
+
+    set nat destination rule 110 description 'NAT ssh- INSIDE'
+    set nat destination rule 110 destination port '2022'
+    set nat destination rule 110 inbound-interface 'eth0'
+    set nat destination rule 110 protocol 'tcp'
+    set nat destination rule 110 translation address '192.168.130.40'
+
+    set nat source rule 100 outbound-interface 'eth0'
+    set nat source rule 100 protocol 'all'
+    set nat source rule 100 source address '192.168.130.0/24'
+    set nat source rule 100 translation address 'masquerade'
+
+    set service ssh vrf 'red'
+
+    set vrf bind-to-all
+    set vrf name blue protocols static route 0.0.0.0/0 next-hop 172.16.50.1 vrf 'red'
+    set vrf name blue protocols static route 172.16.50.0/24 interface eth0 vrf 'red'
+    set vrf name blue table '1010'
+
+    set vrf name red protocols static route 0.0.0.0/0 next-hop 172.16.50.1
+    set vrf name red protocols static route 192.168.130.0/24 interface eth1 vrf 'blue'
+    set vrf name red table '2020'
+
 .. _vrf example operation:
 
 Operation
@@ -427,9 +463,9 @@ address-family.
 .. cfgcmd:: set vrf name <name> protocols bgp address-family
             <ipv4-unicast|ipv6-unicast> label vpn allocation-mode per-nexthop
 
-   Select how labels are allocated in the given VRF. By default, the per-vrf 
-   mode is selected, and one label is used for all prefixes from the VRF. The 
-   per-nexthop will use a unique label for all prefixes that are reachable via 
+   Select how labels are allocated in the given VRF. By default, the per-vrf
+   mode is selected, and one label is used for all prefixes from the VRF. The
+   per-nexthop will use a unique label for all prefixes that are reachable via
    the same nexthop.
 
 .. cfgcmd:: set vrf name <name> protocols bgp address-family
