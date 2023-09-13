@@ -40,30 +40,27 @@ Site-to-Site
 
 .. figure:: /_static/images/openvpn_site2site_diagram.jpg
 
-While many are aware of OpenVPN as a Client VPN solution, it is often
-overlooked as a site-to-site VPN solution due to lack of support for this mode
-in many router platforms.
+OpenVPN is popular for client-server setups, but its site-to-site mode
+remains a relatively obscure feature, and many router appliances
+still don't support it. However, it's very useful for quickly setting up
+tunnels between routers.
 
-Site-to-site mode supports x.509 but doesn't require it and can also work with
-static keys, which is simpler in many cases. In this example, we'll configure
-a simple site-to-site OpenVPN tunnel using a 2048-bit pre-shared key.
+As of VyOS 1.4, OpenVPN site-to-site mode can use either pre-shared keys or x.509 certificates.
 
-First, one of the systems generate the key using the :ref:`generate pki openvpn shared-secret<configuration/pki/index:pki>`
-command. Once generated, you will need to install this key on the local system,
-then copy and install this key to the remote router.
+The pre-shared key mode is deprecated and will be removed from future OpenVPN versions,
+so VyOS will have to remove support for that option as well. The reason is that using pre-shared keys
+is significantly less secure than using TLS.
 
-In our example, we used the key name ``openvpn-1`` which we will reference
-in our configuration.
+We'll configure OpenVPN using self-signed certificates, and then discuss the legacy
+pre-shared key mode.
+
+In both cases, we will use the following settings:
 
 * The public IP address of the local side of the VPN will be 198.51.100.10.
 * The public IP address of the remote side of the VPN will be 203.0.113.11.
 * The tunnel will use 10.255.1.1 for the local IP and 10.255.1.2 for the remote.
 * The local site will have a subnet of 10.0.0.0/16.
 * The remote site will have a subnet of 10.1.0.0/16.
-* Static Routing or other dynamic routing protocols can be used over the vtun interface
-* OpenVPN allows for either TCP or UDP. UDP will provide the lowest latency,
-  while TCP will work better for lossy connections; generally UDP is preferred
-  when possible.
 * The official port for OpenVPN is 1194, which we reserve for client VPN; we
   will use 1195 for site-to-site VPN.
 * The ``persistent-tunnel`` directive will allow us to configure tunnel-related
@@ -73,74 +70,87 @@ in our configuration.
   ``remote-host`` directive; if unknown, it can be omitted. We will assume a
   dynamic IP for our remote router.
 
+Setting up certificates
+-----------------------
+
+Setting up a full-blown PKI with a CA certificate would arguably defeat the purpose
+of site-to-site OpenVPN, since its main goal is supposed to be configuration simplicity,
+compared to server setups that need to support multiple clients.
+
+However, since VyOS 1.4, it is possible to verify self-signed certificates using
+certificate fingerprints.
+
+On both sides, you need to generate a self-signed certificate, preferrably using the "ec" (elliptic curve) type.
+You can generate them by executing command ``run generate pki certificate self-signed install <name>`` in the configuration mode.
+Once the command is complete, it will add the certificate to the configuration session, to the ``pki`` subtree.
+You can then review the proposed changes and commit them.
+
+.. code-block:: none
+
+  vyos@vyos# run generate pki certificate self-signed install openvpn-local
+  Enter private key type: [rsa, dsa, ec] (Default: rsa) ec
+  Enter private key bits: (Default: 256) 
+  Enter country code: (Default: GB) 
+  Enter state: (Default: Some-State) 
+  Enter locality: (Default: Some-City) 
+  Enter organization name: (Default: VyOS) 
+  Enter common name: (Default: vyos.io) 
+  Do you want to configure Subject Alternative Names? [y/N] 
+  Enter how many days certificate will be valid: (Default: 365) 
+  Enter certificate type: (client, server) (Default: server) 
+  Note: If you plan to use the generated key on this router, do not encrypt the private key.
+  Do you want to encrypt the private key with a passphrase? [y/N] 
+  2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
+  [edit]
+
+  vyos@vyos# compare 
+  [pki]
+  + certificate openvpn-local {
+  +     certificate "MIICJTCCAcugAwIBAgIUMXLfRNJ5iOjk/    uAZqUe4phW8MdgwCgYIKoZIzj0EAwIwVzELMAkGA1UEBhMCR0IxEzARBgNVBAgMClNvbWUtU3RhdGUxEjAQBgNVBAcMCVNvbWUtQ2l0eTENMAsGA1UECgwEVnlPUzEQMA4GA1UEAwwHdnlvcy5pbzAeFw0yMzA5MDcyMTQzMTNaFw0yNDA5MDYyMTQzMTNaMFcxCzAJBgNVBAYTAkdCMRMwEQYDVQQIDApTb21lLVN0YXRlMRIwEAYDVQQHDAlTb21lLUNpdHkxDTALBgNVBAoMBFZ5T1MxEDAOBgNVBAMMB3Z5b3MuaW8wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASp7D0vE3SKSAWAzr/lw9Eq9Q89r247AJR6ec/GT26AIcVA1bsongV1YaWvRwzTPC/yi5pkzV/PcT/WU7JQIyMWo3UwczAMBgNVHRMBAf8EAjAAMA4GA1UdDwEB/wQEAwIHgDATBgNVHSUEDDAKBggrBgEFBQcDATAdBgNVHQ4EFgQUBrAxRdFppdG/UBRdo7qNyHutaTQwHwYDVR0jBBgwFoAUBrAxRdFppdG/UBRdo7qNyHutaTQwCgYIKoZIzj0EAwIDSAAwRQIhAI2+8C92z9wTcTWkQ/goRxs10EBC+h78O+vgo9k97z5iAiBSeqfaVr5taQTS31+McGTAK3cYWNTg0DlOBI8aKO2oRg=="
+  +     private {
+  +         key "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgtOeEb0dMb5P/2Exi09WWvk6Cvz0oOBoDuP68ZimS2LShRANCAASp7D0vE3SKSAWAzr/lw9Eq9Q89r247AJR6ec/GT26AIcVA1bsongV1YaWvRwzTPC/yi5pkzV/PcT/WU7JQIyMW"
+  +     }
+  + }
+
+  [edit]
+
+  vyos@vyos# commit
+
+You do **not** need to copy the certificate to the other router. Instead, you need to retrieve its SHA-256 fingerprint.
+OpenVPN only supports SHA-256 fingerprints at the moment, so you need to use the following command:
+
+.. code-block:: none
+
+  vyos@vyos# run show pki certificate openvpn-local fingerprint sha256 
+  5C:B8:09:64:8B:59:51:DC:F4:DF:2C:12:5C:B7:03:D1:68:94:D7:5B:62:C2:E1:83:79:F1:F0:68:B2:81:26:79
+
+Note: certificate names don't matter, we use 'openvpn-local' and 'openvpn-remote' but they can be arbitrary.
+
+Repeat the procedure on the other router.
+
+Setting up OpenVPN
+------------------
 
 Local Configuration:
 
 .. code-block:: none
 
-  run generate pki openvpn shared-secret install openvpn-1
-  Configure mode commands to install OpenVPN key:
-  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'
-  set pki openvpn shared-secret openvpn-1 version '1'
+  Configure the tunnel:
 
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
   set interfaces openvpn vtun1 persistent-tunnel
-  set interfaces openvpn vtun1 remote-host '203.0.113.11'
+  set interfaces openvpn vtun1 remote-host '203.0.113.11'                         # Public IP of the other side
   set interfaces openvpn vtun1 local-port '1195'
   set interfaces openvpn vtun1 remote-port '1195'
-  set interfaces openvpn vtun1 shared-secret-key openvpn-1
-  set interfaces openvpn vtun1 local-address '10.255.1.1'
-  set interfaces openvpn vtun1 remote-address '10.255.1.2'
-
-Local Configuration - Annotated:
-
-.. code-block:: none
-
-  run generate pki openvpn shared-secret install openvpn-1                        # Locally genearated OpenVPN shared secret.
-                                                                                    The generated secret is the output to
-                                                                                    the console.
-  Configure mode commands to install OpenVPN key:
-  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'              # Generated secret displayed in the output to
-                                                                                    the console.
-  set pki openvpn shared-secret openvpn-1 version '1'                             # Generated secret displayed in the output to
-                                                                                    the console.
-
-  set interfaces openvpn vtun1 mode site-to-site
-  set interfaces openvpn vtun1 protocol udp
-  set interfaces openvpn vtun1 persistent-tunnel
-  set interfaces openvpn vtun1 remote-host '203.0.113.11'                         # Pub IP of other site
-  set interfaces openvpn vtun1 local-port '1195'
-  set interfaces openvpn vtun1 remote-port '1195'
-  set interfaces openvpn vtun1 shared-secret-key openvpn-1                        # Locally generated secret name
   set interfaces openvpn vtun1 local-address '10.255.1.1'                         # Local IP of vtun interface
   set interfaces openvpn vtun1 remote-address '10.255.1.2'                        # Remote IP of vtun interface
-
-
+  set interfaces openvpn vtun1 tls certificate 'openvpn-local'                    # The self-signed certificate
+  set interfaces openvpn vtun1 tls peer-fingerprint <remote cert fingerprint>     # The output of 'run show pki certificate <name> fingerprint sha256
+                                                                                    on the remote rout
 Remote Configuration:
 
 .. code-block:: none
-
-  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'
-  set pki openvpn shared-secret openvpn-1 version '1'
-
-  set interfaces openvpn vtun1 mode site-to-site
-  set interfaces openvpn vtun1 protocol udp
-  set interfaces openvpn vtun1 persistent-tunnel
-  set interfaces openvpn vtun1 remote-host '198.51.100.10'
-  set interfaces openvpn vtun1 local-port '1195'
-  set interfaces openvpn vtun1 remote-port '1195'
-  set interfaces openvpn vtun1 shared-secret-key openvpn-1
-  set interfaces openvpn vtun1 local-address '10.255.1.2'
-  set interfaces openvpn vtun1 remote-address '10.255.1.1'
-
-Remote Configuration - Annotated:
-
-.. code-block:: none
-
-  set pki openvpn shared-secret openvpn-1 key 'generated_key_string'               # Locally genearated OpenVPN shared secret
-                                                                                    (from the Local Configuration Block).
-  set pki openvpn shared-secret openvpn-1 version '1'
 
   set interfaces openvpn vtun1 mode site-to-site
   set interfaces openvpn vtun1 protocol udp
@@ -148,10 +158,49 @@ Remote Configuration - Annotated:
   set interfaces openvpn vtun1 remote-host '198.51.100.10'                         # Pub IP of other site
   set interfaces openvpn vtun1 local-port '1195'
   set interfaces openvpn vtun1 remote-port '1195'
-  set interfaces openvpn vtun1 shared-secret-key openvpn-1                         # Locally generated secret name
   set interfaces openvpn vtun1 local-address '10.255.1.2'                          # Local IP of vtun interface
   set interfaces openvpn vtun1 remote-address '10.255.1.1'                         # Remote IP of vtun interface
+  set interfaces openvpn vtun1 tls certificate 'openvpn-remote'                    # The self-signed certificate
+  set interfaces openvpn vtun1 tls peer-fingerprint <local cert fingerprint>       # The output of 'run show pki certificate <name> fingerprint sha256
+                                                                                    on the local router
+Pre-shared keys
+---------------
 
+Until VyOS 1.4, the only option for site-to-site OpenVPN without PKI was to use pre-shared keys.
+That option is still available but it is deprecated and will be removed in the future.
+However, if you need to set up a tunnel to an older VyOS version or a system with older OpenVPN,
+you need to still need to know how to use it.
+
+First, you need to generate a key by running ``run generate pki openvpn shared-secret install <name>`` from configuration mode.
+You can use any name, we will use ``s2s``.
+
+.. code-block:: none
+
+  vyos@local# run generate pki openvpn shared-secret install s2s
+  2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
+  [edit]
+  vyos@local# compare
+  [pki openvpn shared-secret]
+  + s2s {
+  +     key   "7c73046a9da91e874d31c7ad894a32688cda054bde157c64270f28eceebc0bb2f44dbb70335fad45148b0456aaa78cb34a34c0958eeed4f75e75fd99ff519ef940f7029a316c436d2366a2b0fb8ea1d1c792a65f67d10a461af83ef4530adc25d1c872de6d9c7d5f338223d1f3b66dc3311bbbddc0e05228c47b91c817c721aadc7ed18f0662df52ad14f898904372679e3d9697d062b0869d12de47ceb2e626fa12e1926a3119be37dd29c9b0ad81997230f4038926900d5edb78522d2940cfe207f8e2b948e0d459fa137ebb18064ac5982b28dd1899020b4f2b082a20d5d4eb65710fbb1e62b5e061df39620267eab429d3eedd9a1ae85957457c8e4655f3"
+  +     version "1"
+  + }
+
+  [edit]
+
+  vyos@local# commit
+  [edit]
+
+Then you need to install the key on the remote router:
+
+.. code-block:: none
+
+  vyos@remote# set pki openvpn shared-secret s2s key <generated key string>
+
+Then you need to set the key in your OpenVPN interface settings:
+
+.. code-block:: none
+  set interfaces openvpn vtun1 shared-secret-key s2s
 
 Firewall Exceptions
 ===================
