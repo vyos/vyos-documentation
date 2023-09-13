@@ -176,7 +176,7 @@ taken on the packet.
 The chain we will create is called ``CONN_FILTER`` and has three rules:
 
 - A default action of ``return``, which returns the packet back to the original
-  chain is no action is taken.
+  chain if no action is taken.
 - A rule to ``accept`` packets from established and related connections.
 - A rule to ``drop`` packets from invalid connections.
 
