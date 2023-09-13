@@ -14,9 +14,9 @@ provide a :ref:`nat` gateway for a device with two network interfaces
 Configuration Mode
 ##################
 
-By default, VyOS is in operational mode, and the command prompt displays a ``$``.
-To configure VyOS, you will need to enter configuration mode, resulting in the
-command prompt displaying a ``#``, as demonstrated below:
+By default, VyOS is in operational mode, and the command prompt displays
+a ``$``. To configure VyOS, you will need to enter configuration mode, resulting
+in the command prompt displaying a ``#``, as demonstrated below:
 
 .. code-block:: none
 
@@ -128,8 +128,8 @@ interlinked chains for each
 `Netfilter hook <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_
 and allows for more granular control over the packet filtering process.
 
-.. note:: Documentation for most of the new firewall CLI
-   can be found in the :ref:`firewall` chapter.The legacy firewall is still available
+.. note:: Documentation for most of the new firewall CLI can be found in
+   the :ref:`firewall` chapter.The legacy firewall is still available
    for versions before ``1.4-rolling-202308040557`` and can be found in the
    :ref:`firewall-legacy` chapter. The examples in this section use the
    new configuration.
@@ -148,9 +148,9 @@ our network. We can then use them for filtering within our firewall rulesets,
 allowing for more concise and readable configuration.
 
 In this case, we will create two interface groups—a ``WAN`` group for our
-interfaces connected to the public internet and a ``LAN`` group for the interfaces
-connected to our internal network. Additionally, we will create a network group,
-``NET-INSIDE-v4``, that contains our internal subnet.
+interfaces connected to the public internet and a ``LAN`` group for the
+interfaces connected to our internal network. Additionally, we will create a
+network group, ``NET-INSIDE-v4``, that contains our internal subnet.
 
 .. code-block:: none
 
@@ -191,8 +191,8 @@ The chain we will create is called ``CONN_FILTER`` and has three rules:
   set firewall ipv4 name CONN_FILTER rule 20 action 'drop'
   set firewall ipv4 name CONN_FILTER rule 20 state invalid 'enable'
 
-Then, we can jump to the common chain from both the ``forward`` and ``input`` hooks
-as the first filtering rule in the respective chains:
+Then, we can jump to the common chain from both the ``forward`` and ``input``
+hooks as the first filtering rule in the respective chains:
 
 .. code-block:: none
 
@@ -232,8 +232,8 @@ addressed to our local network.
 
 Create a new chain (``OUTSIDE-IN``) which will drop all traffic that is not
 explicity allowed at some point in the chain. Then, we can jump to that chain
-from the ``forward`` hook when traffic is coming from the ``WAN`` interface group
-and is addressed to our local network.
+from the ``forward`` hook when traffic is coming from the ``WAN`` interface
+group and is addressed to our local network.
 
 .. code-block:: none
 
@@ -279,8 +279,8 @@ chain when new connections are addressed to port 22 (SSH) on the router itself:
   set firewall ipv4 input filter rule 20 protocol tcp
 
 Finally, configure the ``VyOS_MANAGEMENT`` chain to accept connection from the
-``LAN`` interface group while limiting requests coming from the ``WAN`` interface
-group to 4 per minute:
+``LAN`` interface group while limiting requests coming from the ``WAN``
+interface group to 4 per minute:
 
 .. code-block:: none
 
@@ -315,8 +315,8 @@ all hosts on the ``NET-INSIDE-v4`` network:
   set firewall ipv4 input filter rule 40 protocol 'tcp_udp'
   set firewall ipv4 input filter rule 40 source group network-group NET-INSIDE-v4
 
-Finally, we can now configure access to the services running on this router, allowing
-all connections coming from localhost:
+Finally, we can now configure access to the services running on this router,
+allowing all connections coming from localhost:
 
 .. code-block:: none
 
