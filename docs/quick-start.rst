@@ -124,8 +124,8 @@ Firewall
 A new firewall structure—which uses the ``nftables`` backend, rather
 than ``iptables``—is available on all installations starting from
 VyOS ``1.4-rolling-202308040557``. The firewall supports creation of distinct,
-interlinked chains for each
-`Netfilter hook <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_
+interlinked chains for each `Netfilter hook
+<https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_
 and allows for more granular control over the packet filtering process.
 
 .. note:: Documentation for most of the new firewall CLI can be found in
