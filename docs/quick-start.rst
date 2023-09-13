@@ -300,24 +300,28 @@ group to 4 per minute:
 Allow Access to Services
 ------------------------
 
-We can now configure access to the services running on this router, allowing
-all connections coming from localhost:
+Here we're allowing the router to respond to pings. Then, we can allow access to
+the DNS recursor we configured earlier, accepting traffic bound for port 53 from
+all hosts on the ``NET-INSIDE-v4`` network:
 
 .. code-block:: none
-
   set firewall ipv4 input filter rule 30 action 'accept'
-  set firewall ipv4 input filter rule 30 source address 127.0.0.0/8
-
-Finally, we can allow access to the DNS recursor we configured earlier,
-accepting traffic bound for port 53 from all hosts on the ``NET-INSIDE-v4``
-network:
-
-.. code-block:: none
+  set firewall ipv4 input filter rule 30 icmp type-name 'echo-request'
+  set firewall ipv4 input filter rule 30 protocol 'icmp'
+  set firewall ipv4 input filter rule 30 state new 'enable'
 
   set firewall ipv4 input filter rule 40 action 'accept'
   set firewall ipv4 input filter rule 40 destination port '53'
   set firewall ipv4 input filter rule 40 protocol 'tcp_udp'
   set firewall ipv4 input filter rule 40 source group network-group NET-INSIDE-v4
+
+Finally, we can now configure access to the services running on this router, allowing
+all connections coming from localhost:
+
+.. code-block:: none
+
+  set firewall ipv4 input filter rule 50 action 'accept'
+  set firewall ipv4 input filter rule 50 source address 127.0.0.0/8
 
 Commit changes, save the configuration, and exit configuration mode:
 
