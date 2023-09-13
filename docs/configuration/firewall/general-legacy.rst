@@ -424,11 +424,13 @@ There are a lot of matching criteria against which the package can be tested.
    An arbitrary netmask can be applied to mask addresses to only match against
    a specific portion. This is particularly useful with IPv6 and a zone-based
    firewall as rules will remain valid if the IPv6 prefix changes and the host
-   portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses
-   <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)
-   
+   portion of systems IPv6 address is static (for example, with SLAAC or
+   `tokenised IPv6 addresses
+   <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_).
+
    This functions for both individual addresses and address groups.
 
+   .. stop_vyoslinter
    .. code-block:: none
 
       # Match any IPv6 address with the suffix ::0000:0000:0000:beef
@@ -442,6 +444,7 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall group ipv6-address-group WEBSERVERS address ::2000
       set firewall name WAN-LAN-v6 rule 200 source group address-group WEBSERVERS
       set firewall name WAN-LAN-v6 rule 200 source address-mask ::ffff:ffff:ffff:ffff
+   .. start_vyoslinter
 
 .. cfgcmd:: set firewall name <name> rule <1-999999> source fqdn <fqdn>
 .. cfgcmd:: set firewall name <name> rule <1-999999> destination fqdn <fqdn>
