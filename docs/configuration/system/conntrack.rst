@@ -25,6 +25,10 @@ Configure
     “connection tracking helper” modules such as FTP.
     The default size of the expect table is 2048 entries.
 
+.. cfgcmd:: set system conntrack flow-accounting
+
+    Enable connection tracking flow accounting.
+
 .. cfgcmd:: set system conntrack hash-size <1-50000000>
     :defaultvalue:
 
@@ -118,12 +122,12 @@ create a rule defining the packet and flow selector.
         <port name>    Named port (any name in /etc/services, e.g., http)
         <1-65535>      Numbered port
         <start>-<end>  Numbered port range (e.g., 1001-1005)
-    
+
     Multiple destination ports can be specified as a comma-separated list.
     The whole list can also be "negated" using '!'. For example:
     `!22,telnet,http,123,1001-1005``
 
-            
+
 
 .. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol icmp <1-21474836>
 .. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol other <1-21474836>

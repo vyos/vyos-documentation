@@ -130,6 +130,62 @@ Some firewall settings are global and have an affect on the whole system.
 
    * ``net.ipv4.icmp_echo_ignore_broadcasts``
 
+.. cfgcmd:: set firewall global-options flow-offload disable
+
+   This setting disables flow offload even though software or hardware flow
+   offload is enabled on interfaces.
+
+.. cfgcmd:: set firewall global-options flow-offload software interface
+   <interface-name>
+
+   This setting enables software flow offload on the specified interface.
+
+   By default, without flow offload, packets take through the kernel network
+   stack when being forwarded (aka the slowpath).
+   If software flow offload is enabled on both of the input and output
+   interfaces, once the first packet of a flow (packets belonging to a TCP or
+   UDP connection) successfully goes through the slowpath, from the second
+   packet on, the flow will be offloaded in software through the Netfilter
+   flowtable infrastructure in the kernel.
+   This makes packets of that flow bypass most of the steps of the classic
+   forwarding path, which thereby accelerates packet forwarding.
+
+   Interfaces are required for both traffic directions. After a flow is
+   offloaded, packets from the reply direction are also accepted and offloaded.
+
+   If a virtual interface, such as bridge, vlan, or pppoe internace, is enabled,
+   all flows going through that underlying physical interface will be offloaded
+   as well.
+
+   Note that enabling flow offload also enables the Netfilter connection
+   tracking (conntrack) subsystem. You can use
+   :cfgcmd:`set system conntrack flow-accounting` to count packets and bytes
+   for each offloaded flow.
+
+
+.. cfgcmd:: set firewall global-options flow-offload hardware interface
+   <interface-name>
+
+   This setting enables hardware flow offload on the specified interface.
+   You can only enable interfaces with hardware offload support.
+
+   By default, without flow offload, packets take through the kernel network
+   stack when being forwarded (aka the slowpath).
+   If hardware flow offload is enabled on both of the input and output
+   interfaces, once the first packet of a flow (packets belonging to a TCP or
+   UDP connection) successfully goes through the slowpath, from the second
+   packet on, the flow will be offloaded in hardware.
+   This makes packets of that flow bypass most of the steps of the classic
+   forwarding path, which thereby accelerates packet forwarding.
+
+   Interfaces are required for both traffic directions. After a flow is
+   offloaded, packets from the reply direction are also accepted and offloaded.
+
+   Note that enabling flow offload also enables the Netfilter connection
+   tracking (conntrack) subsystem. You can use
+   :cfgcmd:`set system conntrack flow-accounting` to count packets and bytes
+   for each offloaded flow.
+
 .. cfgcmd:: set firewall global-options ip-src-route [enable | disable]
 .. cfgcmd:: set firewall global-options ipv6-src-route [enable | disable]
 
@@ -381,7 +437,7 @@ The action can be :
 
 Also, **default-action** is an action that takes place whenever a packet does
 not match any rule in it's chain. For base chains, possible options for
-**default-action** are **accept** or **drop**. 
+**default-action** are **accept** or **drop**.
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter default-action
    [accept | drop]
@@ -415,7 +471,7 @@ Firewall Logs
 =============
 
 Logging can be enable for every single firewall rule. If enabled, other
-log options can be defined. 
+log options can be defined.
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999> log
    [disable | enable]
@@ -627,7 +683,7 @@ There are a lot of matching criteria against which the package can be tested.
    portion of systems IPv6 address is static (for example, with SLAAC or
    `tokenised IPv6 addresses
    <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)
-   
+
    This functions for both individual addresses and address groups.
 
    .. code-block:: none
@@ -1277,7 +1333,7 @@ Rule-set overview
 
    .. code-block:: none
 
-      vyos@vyos:~$ show firewall 
+      vyos@vyos:~$ show firewall
       Rulesets Information
 
       ---------------------------------
@@ -1340,7 +1396,7 @@ Rule-set overview
 
    .. code-block:: none
 
-      vyos@vyos:~$ show firewall summary 
+      vyos@vyos:~$ show firewall summary
       Ruleset Summary
 
       IPv6 Ruleset:
@@ -1398,7 +1454,7 @@ Rule-set overview
 
    .. code-block:: none
 
-      vyos@vyos:~$ show firewall ipv4 input filter 
+      vyos@vyos:~$ show firewall ipv4 input filter
       Ruleset Information
 
       ---------------------------------
@@ -1425,7 +1481,7 @@ Rule-set overview
 
    .. code-block:: none
 
-      vyos@vyos:~$ show firewall group LAN 
+      vyos@vyos:~$ show firewall group LAN
       Firewall Groups
 
       Name          Type                References               Members
@@ -1497,6 +1553,16 @@ Example Partial Config
           }
       }
   }
+
+Example flow offload config
+===========================
+
+The following commands enable software flow offload on interfaces `eth0` and `eth1`:
+
+.. code-block:: none
+
+   set firewall global-options flow-offload software interface eth0
+   set firewall global-options flow-offload software interface eth1
 
 Update geoip database
 =====================
