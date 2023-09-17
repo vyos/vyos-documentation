@@ -1,10 +1,10 @@
-:lastproofread: 2021-06-29
+:lastproofread: 2023-09-17
 
-.. _firewall:
+.. _firewall-configuration:
 
-########
-Firewall
-########
+######################
+Firewall Configuration
+######################
 
 ********
 Overview
@@ -17,48 +17,41 @@ The firewall supports the creation of groups for addresses, domains,
 interfaces, mac-addresses, networks and port groups. This groups can be used
 later in firewall ruleset as desired.
 
-.. note:: **Important note on usage of terms:**
-   The firewall makes use of the terms `forward`, `input`, and `output`
-   for firewall policy. More information of Netfilter hooks and Linux
-   networking packet flows can be found in `Netfilter-Hooks
-   <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_
-
-
 Main structure is shown next:
 
 .. code-block:: none
 
    - set firewall
        * global-options
-           + all-ping
-           + broadcast-ping
-           + ...
+            + all-ping
+            + broadcast-ping
+            + ...
        * group
-           - address-group
-           - ipv6-address-group
-           - network-group
-           - ipv6-network-group
-           - interface-group
-           - mac-group
-           - port-group
-           - domain-group
+            - address-group
+            - ipv6-address-group
+            - network-group
+            - ipv6-network-group
+            - interface-group
+            - mac-group
+            - port-group
+            - domain-group
        * ipv4
-           - forward
+            - forward
                + filter
-           - input
+            - input
                + filter
-           - output
+            - output
                + filter
-           - name
+            - name
                + custom_name
        * ipv6
-           - forward
+            - forward
                + filter
-           - input
+            - input
                + filter
-           - output
+            - output
                + filter
-           - ipv6-name
+            - ipv6-name
                + custom_name
 
 Where, main key words and configuration paths that needs to be understood:

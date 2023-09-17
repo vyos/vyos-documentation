@@ -2,9 +2,9 @@
 
 .. _firewall-zone:
 
-###################
-Zone Based Firewall
-###################
+################################
+Zone Based Firewall (Deprecated)
+################################
 
 .. note:: Starting from VyOS 1.4-rolling-202308040557, a new firewall
    structure can be found on all vyos instalations, and zone based firewall is
