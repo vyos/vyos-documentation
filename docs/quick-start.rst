@@ -305,6 +305,7 @@ the DNS recursor we configured earlier, accepting traffic bound for port 53 from
 all hosts on the ``NET-INSIDE-v4`` network:
 
 .. code-block:: none
+
   set firewall ipv4 input filter rule 30 action 'accept'
   set firewall ipv4 input filter rule 30 icmp type-name 'echo-request'
   set firewall ipv4 input filter rule 30 protocol 'icmp'
