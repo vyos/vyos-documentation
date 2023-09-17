@@ -16,7 +16,7 @@ Zone Based Firewall
    chapter. The examples in this section use the legacy firewall configuration
    commands, since this feature has been removed in earlier releases.
 
-.. note:: For latest releases, refer the `firewall 
+.. note:: For latest releases, refer the `firewall (interface-groups) 
    <https://docs.vyos.io/en/latest/configuration/firewall/general.html#interface-groups>`_ 
    main page to configure zone based rules. New syntax was introduced here 
    :vytask:`T5160`
