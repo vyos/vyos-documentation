@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2023-09-15
+==========
+
+* :vytask:`T5581` ``(feature): Add "show ip nht" op-mode command (IPv4 nexthop tracking table)``
+
+
 2023-09-11
 ==========
 
