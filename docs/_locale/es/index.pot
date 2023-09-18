@@ -70,7 +70,7 @@ msgstr "O puede seleccionar una `Tarea<https://vyos.dev/> `_ y corregir el :ref:
 
 #: ../../index.rst:13
 msgid "Quickly :ref:`Build<contributing/build-vyos:build vyos>` your own Image or take a look at how to :ref:`download<installation/install:download>` a free or supported version."
-msgstr "Rápidamente :ref:`Construir<contributing/build-vyos:build vyos> ` su propia imagen o eche un vistazo a cómo :ref:`descargar<installation/install:download> ` una versión gratuita o compatible."
+msgstr "Rápidamente :ref:`Construir<contributing/build-vyos:build vyos>` su propia imagen o eche un vistazo a cómo :ref:`descargar<installation/install:download>` una versión gratuita o compatible."
 
 #: ../../index.rst:18
 msgid "Read about how to install VyOS on :ref:`Bare Metal<installation/install:installation>` or in a :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>` and how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>` providers"
