@@ -1,0 +1,29 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Localazy (https://localazy.com)\n"
+"Project-Id-Version: VyOS Documentation\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n==1) ? 0 : 1;\n"
+
+#: ../../copyright.md:1
+msgid "Copyright Notice"
+msgstr "Aviso de copyright"
+
+#: ../../copyright.md:3
+msgid "Copyright (C) 2018-2023 VyOS maintainers and contributors"
+msgstr "Copyright (C) 2018-2023 Mantenedores y colaboradores de VyOS"
+
+#: ../../copyright.md:9
+msgid "Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one."
+msgstr "Se otorga permiso para copiar y distribuir versiones modificadas de este manual bajo las condiciones para la copia textual, siempre que todo el trabajo derivado resultante se distribuya bajo los términos de un aviso de permiso idéntico a este."
+
+#: ../../copyright.md:14
+msgid "Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions, except that this permission notice may be stated in a translation approved by the VyOS maintainers."
+msgstr "Se otorga permiso para copiar y distribuir traducciones de este manual a otro idioma, bajo las condiciones anteriores para versiones modificadas, excepto que este aviso de permiso se puede establecer en una traducción aprobada por los mantenedores de VyOS."
+
+#: ../../copyright.md:5
+msgid "Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies."
+msgstr "Se otorga permiso para hacer y distribuir copias textuales de este manual siempre que el aviso de derechos de autor y este aviso de permiso se conserven en todas las copias."
