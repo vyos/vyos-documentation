@@ -8,6 +8,50 @@
    _ext/releasenotes.py
 
 
+2023-09-24
+==========
+
+* :vytask:`T5511` ``(feature): Cleanup of unused directories (and files) in order to shrink image-size``
+
+
+2023-09-23
+==========
+
+* :vytask:`T5518` ``(default): Add MLD protocol support``
+
+
+2023-09-22
+==========
+
+* :vytask:`T5602` ``(feature): For reverse-proxy type of load-balancing feature, support "backup" option in backends configuration``
+* :vytask:`T5609` ``(enhancment): Add util to get drive device name from id``
+* :vytask:`T5608` ``(enhancment): Rewrite add/delete raid member to Python and remove from vyatta-op``
+* :vytask:`T5607` ``(bug): Adjust RAID smoketest for non-deterministic SCSI device probing``
+
+
+2023-09-20
+==========
+
+* :vytask:`T5588` ``(bug): Add kernel conntrack_bridge module``
+* :vytask:`T5271` ``(default): Add support for peer-fingerprint to OpenVPN``
+* :vytask:`T5241` ``(feature): Support veth interfaces to working with netns``
+* :vytask:`T5238` ``(default): interface virtual-etherne - error when it doesn't use a peer``
+* :vytask:`T5592` ``(feature): salt: upgrade minion to 3005.2``
+
+
+2023-09-19
+==========
+
+* :vytask:`T5597` ``(feature): isis: add new features from FRR 9.``
+* :vytask:`T4284` ``(feature): QoS: rewrite to XML and Python``
+
+
+2023-09-18
+==========
+
+* :vytask:`T5419` ``(feature): Software/Hardware fastpath with nftables flowtable``
+
+
 2023-09-15
 ==========
 

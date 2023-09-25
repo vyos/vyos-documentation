@@ -8,6 +8,43 @@
    _ext/releasenotes.py
 
 
+2023-09-24
+==========
+
+* :vytask:`T5604` ``(bug): List of debian archives is out of date (non-free-firmware is missing)``
+* :vytask:`T5591` ``(feature): Cleanup of FRR daemons-file and various FRR fixes``
+
+
+2023-09-22
+==========
+
+* :vytask:`T5602` ``(feature): For reverse-proxy type of load-balancing feature, support "backup" option in backends configuration``
+* :vytask:`T5609` ``(enhancment): Add util to get drive device name from id``
+* :vytask:`T5608` ``(enhancment): Rewrite add/delete raid member to Python and remove from vyatta-op``
+* :vytask:`T5607` ``(bug): Adjust RAID smoketest for non-deterministic SCSI device probing``
+
+
+2023-09-20
+==========
+
+* :vytask:`T5588` ``(bug): Add kernel conntrack_bridge module``
+* :vytask:`T5241` ``(feature): Support veth interfaces to working with netns``
+* :vytask:`T5592` ``(feature): salt: upgrade minion to 3005.2``
+* :vytask:`T5590` ``(default): Firewall "log enable" logs every packet``
+
+
+2023-09-19
+==========
+
+* :vytask:`T5597` ``(feature): isis: add new features from FRR 9.``
+
+
+2023-09-18
+==========
+
+* :vytask:`T5575` ``(bug): ARP/NDP table-size isnt set properly``
+
+
 2023-09-15
 ==========
 
