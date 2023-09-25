@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2023-09-20
+==========
+
+* :vytask:`T5271` (default): Add support for peer-fingerprint to OpenVPN
+
+
 2023-09-11
 ==========
 
