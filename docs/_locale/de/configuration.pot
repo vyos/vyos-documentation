@@ -205,7 +205,7 @@ msgstr "**Wichtiger Hinweis: ** Diese Dokumentation ist nur für VyOS Sagitta vo
 msgid "**Important note about default-actions:** If default action for any chain is not defined, then the default action is set to **accept** for that chain. Only for custom chains, the default action is set to **drop**."
 msgstr "**Wichtiger Hinweis zu Standardaktionen: ** Wenn die Standardaktion für eine Kette nicht definiert ist, ist die Standardaktion für diese Kette auf ** accept** gesetzt. Nur für benutzerdefinierte Ketten ist die Standardaktion auf **drop** gesetzt."
 
-#: ../../configuration/firewall/general.rst:409
+#: ../../configuration/firewall/general.rst:411
 msgid "**Important note about default-actions:** If default action for any chain is not defined, then the default action is set to **drop** for that chain."
 msgstr "**Important note about default-actions:** If default action for any chain is not defined, then the default action is set to **drop** for that chain."
 
@@ -1481,7 +1481,7 @@ msgstr "A physical interface is required to connect this MACsec instance to. Tra
 msgid "A pool of addresses can be defined by using a hyphen between two IP addresses:"
 msgstr "A pool of addresses can be defined by using a hyphen between two IP addresses:"
 
-#: ../../configuration/firewall/general.rst:766
+#: ../../configuration/firewall/general.rst:768
 #: ../../configuration/firewall/general-legacy.rst:506
 msgid "A port can be set with a port number or a name which is here defined: ``/etc/services``."
 msgstr "A port can be set with a port number or a name which is here defined: ``/etc/services``."
@@ -1898,7 +1898,7 @@ msgstr "Allow host networking in a container. The network stack of the container
 msgid "Allow this BFD peer to not be directly connected"
 msgstr "Allow this BFD peer to not be directly connected"
 
-#: ../../configuration/firewall/general.rst:1142
+#: ../../configuration/firewall/general.rst:1144
 #: ../../configuration/firewall/general-legacy.rst:694
 msgid "Allowed values fpr TCP flags: ``SYN``, ``ACK``, ``FIN``, ``RST``, ``URG``, ``PSH``, ``ALL`` When specifying more than one flag, flags should be comma separated. The ``!`` negate the selected protocol."
 msgstr "Allowed values fpr TCP flags: ``SYN``, ``ACK``, ``FIN``, ``RST``, ``URG``, ``PSH``, ``ALL`` When specifying more than one flag, flags should be comma separated. The ``!`` negate the selected protocol."
@@ -1923,7 +1923,7 @@ msgstr "Allows you to configure the next-hop interface for an interface-based IP
 msgid "Already learned known_hosts files of clients need an update as the public key will change."
 msgstr "Already learned known_hosts files of clients need an update as the public key will change."
 
-#: ../../configuration/firewall/general.rst:382
+#: ../../configuration/firewall/general.rst:384
 msgid "Also, **default-action** is an action that takes place whenever a packet does not match any rule in it's chain. For base chains, possible options for **default-action** are **accept** or **drop**."
 msgstr "Also, **default-action** is an action that takes place whenever a packet does not match any rule in it's chain. For base chains, possible options for **default-action** are **accept** or **drop**."
 
@@ -2007,7 +2007,7 @@ msgstr "An arbitrary netmask can be applied to mask addresses to only match agai
 msgid "An arbitrary netmask can be applied to mask addresses to only match against a specific portion. This is particularly useful with IPv6 and a zone-based firewall as rules will remain valid if the IPv6 prefix changes and the host portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)."
 msgstr "An arbitrary netmask can be applied to mask addresses to only match against a specific portion. This is particularly useful with IPv6 and a zone-based firewall as rules will remain valid if the IPv6 prefix changes and the host portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)."
 
-#: ../../configuration/firewall/general.rst:624
+#: ../../configuration/firewall/general.rst:626
 msgid "An arbitrary netmask can be applied to mask addresses to only match against a specific portion. This is particularly useful with IPv6 as rules will remain valid if the IPv6 prefix changes and the host portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)"
 msgstr "An arbitrary netmask can be applied to mask addresses to only match against a specific portion. This is particularly useful with IPv6 as rules will remain valid if the IPv6 prefix changes and the host portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)"
 
@@ -2333,7 +2333,7 @@ msgstr "Assured Forwarding(AF) 43"
 msgid "At every round, the deficit counter adds the quantum so that even large packets will have their opportunity to be dequeued."
 msgstr "At every round, the deficit counter adds the quantum so that even large packets will have their opportunity to be dequeued."
 
-#: ../../configuration/firewall/general.rst:1451
+#: ../../configuration/firewall/general.rst:1496
 #: ../../configuration/firewall/general-legacy.rst:972
 msgid "At the moment it not possible to look at the whole firewall log with VyOS operational commands. All logs will save to ``/var/logs/messages``. For example: ``grep '10.10.0.10' /var/log/messages``"
 msgstr "At the moment it not possible to look at the whole firewall log with VyOS operational commands. All logs will save to ``/var/logs/messages``. For example: ``grep '10.10.0.10' /var/log/messages``"
@@ -2975,7 +2975,7 @@ msgstr "Clock daemon"
 msgid "Command completion can be used to list available time zones. The adjustment for daylight time will take place automatically based on the time of year."
 msgstr "Command completion can be used to list available time zones. The adjustment for daylight time will take place automatically based on the time of year."
 
-#: ../../configuration/firewall/general.rst:535
+#: ../../configuration/firewall/general.rst:537
 msgid "Command for disabling a rule but keep it in the configuration."
 msgstr "Command for disabling a rule but keep it in the configuration."
 
@@ -2983,7 +2983,7 @@ msgstr "Command for disabling a rule but keep it in the configuration."
 msgid "Command should probably be extended to list also the real interfaces assigned to this one VRF to get a better overview."
 msgstr "Command should probably be extended to list also the real interfaces assigned to this one VRF to get a better overview."
 
-#: ../../configuration/firewall/general.rst:1506
+#: ../../configuration/firewall/general.rst:1551
 #: ../../configuration/firewall/general-legacy.rst:1054
 msgid "Command used to update GeoIP database and firewall sets."
 msgstr "Command used to update GeoIP database and firewall sets."
@@ -3875,7 +3875,7 @@ msgstr "DSCP values as per :rfc:`2474` and :rfc:`4595`:"
 msgid "DSSS/CCK Mode in 40 MHz, this sets ``[DSSS_CCK-40]``"
 msgstr "DSSS/CCK Mode in 40 MHz, this sets ``[DSSS_CCK-40]``"
 
-#: ../../configuration/firewall/general.rst:719
+#: ../../configuration/firewall/general.rst:721
 #: ../../configuration/firewall/general-legacy.rst:480
 msgid "Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required, permits redistribution so we can include a database in images(~3MB compressed). Includes cron script (manually callable by op-mode update geoip) to keep database and rules updated."
 msgstr "Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required, permits redistribution so we can include a database in images(~3MB compressed). Includes cron script (manually callable by op-mode update geoip) to keep database and rules updated."
@@ -4127,22 +4127,22 @@ msgstr "Define different modes for sending replies in response to received ARP r
 msgid "Define different restriction levels for announcing the local source IP address from IP packets in ARP requests sent on interface."
 msgstr "Define different restriction levels for announcing the local source IP address from IP packets in ARP requests sent on interface."
 
-#: ../../configuration/firewall/general.rst:481
+#: ../../configuration/firewall/general.rst:483
 #: ../../configuration/firewall/general-legacy.rst:361
 msgid "Define length of packet payload to include in netlink message. Only applicable if rule log is enable and log group is defined."
 msgstr "Define length of packet payload to include in netlink message. Only applicable if rule log is enable and log group is defined."
 
-#: ../../configuration/firewall/general.rst:455
+#: ../../configuration/firewall/general.rst:457
 #: ../../configuration/firewall/general-legacy.rst:347
 msgid "Define log-level. Only applicable if rule log is enable."
 msgstr "Define log-level. Only applicable if rule log is enable."
 
-#: ../../configuration/firewall/general.rst:468
+#: ../../configuration/firewall/general.rst:470
 #: ../../configuration/firewall/general-legacy.rst:354
 msgid "Define log group to send message to. Only applicable if rule log is enable."
 msgstr "Define log group to send message to. Only applicable if rule log is enable."
 
-#: ../../configuration/firewall/general.rst:495
+#: ../../configuration/firewall/general.rst:497
 #: ../../configuration/firewall/general-legacy.rst:369
 msgid "Define number of packets to queue inside the kernel before sending them to userspace. Only applicable if rule log is enable and log group is defined."
 msgstr "Define number of packets to queue inside the kernel before sending them to userspace. Only applicable if rule log is enable and log group is defined."
@@ -4299,6 +4299,10 @@ msgstr "Disable a BFD peer"
 #: ../../configuration/container/index.rst:128
 msgid "Disable a container."
 msgstr "Disable a container."
+
+#: ../../configuration/firewall/general.rst:1290
+msgid "Disable conntrack loose track option"
+msgstr "Disable conntrack loose track option"
 
 #: ../../configuration/service/dhcp-relay.rst:50
 msgid "Disable dhcp-relay service."
@@ -4872,7 +4876,7 @@ msgstr "Enable or Disable VyOS to be :rfc:`1337` conform. The following system p
 msgid "Enable or Disable if VyOS use IPv4 TCP SYN Cookies. The following system parameter will be altered:"
 msgstr "Enable or Disable if VyOS use IPv4 TCP SYN Cookies. The following system parameter will be altered:"
 
-#: ../../configuration/firewall/general.rst:431
+#: ../../configuration/firewall/general.rst:433
 #: ../../configuration/firewall/general-legacy.rst:340
 msgid "Enable or disable logging for the matched packet."
 msgstr "Enable or disable logging for the matched packet."
@@ -5719,7 +5723,7 @@ msgstr "Example IPv6 only:"
 msgid "Example Network"
 msgstr "Example Network"
 
-#: ../../configuration/firewall/general.rst:1457
+#: ../../configuration/firewall/general.rst:1502
 #: ../../configuration/firewall/general-legacy.rst:979
 msgid "Example Partial Config"
 msgstr "Example Partial Config"
@@ -5739,6 +5743,10 @@ msgstr "Example for configuring a simple L2TP over IPsec VPN for remote access (
 #: ../../configuration/nat/nat44.rst:280
 msgid "Example of redirection:"
 msgstr "Example of redirection:"
+
+#: ../../configuration/firewall/general.rst:1285
+msgid "Example synproxy"
+msgstr "Example synproxy"
 
 #: ../../configuration/interfaces/bridge.rst:187
 #: ../../configuration/interfaces/macsec.rst:153
@@ -5921,7 +5929,7 @@ msgstr "Firewall"
 msgid "Firewall-Legacy"
 msgstr "Firewall-Legacy"
 
-#: ../../configuration/firewall/general.rst:500
+#: ../../configuration/firewall/general.rst:502
 msgid "Firewall Description"
 msgstr "Firewall Description"
 
@@ -5930,7 +5938,7 @@ msgstr "Firewall Description"
 msgid "Firewall Exceptions"
 msgstr "Firewall Exceptions"
 
-#: ../../configuration/firewall/general.rst:415
+#: ../../configuration/firewall/general.rst:417
 msgid "Firewall Logs"
 msgstr "Firewall Logs"
 
@@ -6162,7 +6170,7 @@ msgstr "For optimal scalability, Multicast shouldn't be used at all, but instead
 msgid "For outbound updates the order of preference is:"
 msgstr "For outbound updates the order of preference is:"
 
-#: ../../configuration/firewall/general.rst:502
+#: ../../configuration/firewall/general.rst:504
 msgid "For reference, a description can be defined for every single rule, and for every defined custom chain."
 msgstr "For reference, a description can be defined for every single rule, and for every defined custom chain."
 
@@ -8520,7 +8528,7 @@ msgstr "Log the connection tracking events per protocol."
 msgid "Logging"
 msgstr "Logging"
 
-#: ../../configuration/firewall/general.rst:417
+#: ../../configuration/firewall/general.rst:419
 msgid "Logging can be enable for every single firewall rule. If enabled, other log options can be defined."
 msgstr "Logging can be enable for every single firewall rule. If enabled, other log options can be defined."
 
@@ -8713,7 +8721,7 @@ msgstr "Match BGP large communities."
 msgid "Match IP addresses based on its geolocation. More info: `geoip matching <https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_."
 msgstr "Match IP addresses based on its geolocation. More info: `geoip matching <https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_."
 
-#: ../../configuration/firewall/general.rst:715
+#: ../../configuration/firewall/general.rst:717
 msgid "Match IP addresses based on its geolocation. More info: `geoip matching <https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_. Use inverse-match to match anything except the given country-codes."
 msgstr "Match IP addresses based on its geolocation. More info: `geoip matching <https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_. Use inverse-match to match anything except the given country-codes."
 
@@ -8725,17 +8733,17 @@ msgstr "Match RPKI validation result."
 msgid "Match a protocol criteria. A protocol number or a name which is defined in: ``/etc/protocols``. Special names are ``all`` for all protocols and ``tcp_udp`` for tcp and udp based packets. The ``!`` negates the selected protocol."
 msgstr "Match a protocol criteria. A protocol number or a name which is defined in: ``/etc/protocols``. Special names are ``all`` for all protocols and ``tcp_udp`` for tcp and udp based packets. The ``!`` negates the selected protocol."
 
-#: ../../configuration/firewall/general.rst:1096
+#: ../../configuration/firewall/general.rst:1098
 #: ../../configuration/firewall/general-legacy.rst:671
 msgid "Match a protocol criteria. A protocol number or a name which is here defined: ``/etc/protocols``. Special names are ``all`` for all protocols and ``tcp_udp`` for tcp and udp based packets. The ``!`` negate the selected protocol."
 msgstr "Match a protocol criteria. A protocol number or a name which is here defined: ``/etc/protocols``. Special names are ``all`` for all protocols and ``tcp_udp`` for tcp and udp based packets. The ``!`` negate the selected protocol."
 
-#: ../../configuration/firewall/general.rst:1163
+#: ../../configuration/firewall/general.rst:1165
 #: ../../configuration/firewall/general-legacy.rst:709
 msgid "Match against the state of a packet."
 msgstr "Match against the state of a packet."
 
-#: ../../configuration/firewall/general.rst:929
+#: ../../configuration/firewall/general.rst:931
 #: ../../configuration/firewall/general-legacy.rst:590
 msgid "Match based on dscp value."
 msgstr "Match based on dscp value."
@@ -8744,18 +8752,18 @@ msgstr "Match based on dscp value."
 msgid "Match based on dscp value criteria. Multiple values from 0 to 63 and ranges are supported."
 msgstr "Match based on dscp value criteria. Multiple values from 0 to 63 and ranges are supported."
 
-#: ../../configuration/firewall/general.rst:942
+#: ../../configuration/firewall/general.rst:944
 #: ../../configuration/firewall/general-legacy.rst:597
 msgid "Match based on fragment criteria."
 msgstr "Match based on fragment criteria."
 
-#: ../../configuration/firewall/general.rst:961
+#: ../../configuration/firewall/general.rst:963
 #: ../../configuration/firewall/general-legacy.rst:604
 #: ../../configuration/policy/route.rst:131
 msgid "Match based on icmp|icmpv6 code and type."
 msgstr "Match based on icmp|icmpv6 code and type."
 
-#: ../../configuration/firewall/general.rst:980
+#: ../../configuration/firewall/general.rst:982
 #: ../../configuration/firewall/general-legacy.rst:610
 msgid "Match based on icmp|icmpv6 type-name criteria. Use tab for information about what **type-name** criteria are supported."
 msgstr "Match based on icmp|icmpv6 type-name criteria. Use tab for information about what **type-name** criteria are supported."
@@ -8768,57 +8776,57 @@ msgstr "Match based on icmp|icmpv6 type-name criteria. Use tab for information a
 msgid "Match based on inbound/outbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 msgstr "Match based on inbound/outbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 
-#: ../../configuration/firewall/general.rst:992
+#: ../../configuration/firewall/general.rst:994
 msgid "Match based on inbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 msgstr "Match based on inbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 
-#: ../../configuration/firewall/general.rst:1018
+#: ../../configuration/firewall/general.rst:1020
 #: ../../configuration/firewall/general-legacy.rst:630
 msgid "Match based on ipsec criteria."
 msgstr "Match based on ipsec criteria."
 
-#: ../../configuration/firewall/general.rst:1004
+#: ../../configuration/firewall/general.rst:1006
 msgid "Match based on outbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 msgstr "Match based on outbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 
-#: ../../configuration/firewall/general.rst:1069
+#: ../../configuration/firewall/general.rst:1071
 #: ../../configuration/firewall/general-legacy.rst:656
 #: ../../configuration/policy/route.rst:176
 msgid "Match based on packet length criteria. Multiple values from 1 to 65535 and ranges are supported."
 msgstr "Match based on packet length criteria. Multiple values from 1 to 65535 and ranges are supported."
 
-#: ../../configuration/firewall/general.rst:1083
+#: ../../configuration/firewall/general.rst:1085
 #: ../../configuration/firewall/general-legacy.rst:664
 #: ../../configuration/policy/route.rst:184
 msgid "Match based on packet type criteria."
 msgstr "Match based on packet type criteria."
 
-#: ../../configuration/firewall/general.rst:1044
+#: ../../configuration/firewall/general.rst:1046
 #: ../../configuration/firewall/general-legacy.rst:644
 msgid "Match based on the maximum average rate, specified as **integer/unit**. For example **5/minutes**"
 msgstr "Match based on the maximum average rate, specified as **integer/unit**. For example **5/minutes**"
 
-#: ../../configuration/firewall/general.rst:1031
+#: ../../configuration/firewall/general.rst:1033
 #: ../../configuration/firewall/general-legacy.rst:637
 msgid "Match based on the maximum number of packets to allow in excess of rate."
 msgstr "Match based on the maximum number of packets to allow in excess of rate."
 
-#: ../../configuration/firewall/general.rst:1129
+#: ../../configuration/firewall/general.rst:1131
 #: ../../configuration/firewall/general-legacy.rst:689
 msgid "Match bases on recently seen sources."
 msgstr "Match bases on recently seen sources."
 
-#: ../../configuration/firewall/general.rst:567
+#: ../../configuration/firewall/general.rst:569
 #: ../../configuration/firewall/general-legacy.rst:394
 msgid "Match criteria based on connection mark."
 msgstr "Match criteria based on connection mark."
 
-#: ../../configuration/firewall/general.rst:554
+#: ../../configuration/firewall/general.rst:556
 #: ../../configuration/firewall/general-legacy.rst:387
 msgid "Match criteria based on nat connection status."
 msgstr "Match criteria based on nat connection status."
 
-#: ../../configuration/firewall/general.rst:591
+#: ../../configuration/firewall/general.rst:593
 msgid "Match criteria based on source and/or destination address. This is similar to the network groups part, but here you are able to negate the matching addresses."
 msgstr "Match criteria based on source and/or destination address. This is similar to the network groups part, but here you are able to negate the matching addresses."
 
@@ -8826,7 +8834,7 @@ msgstr "Match criteria based on source and/or destination address. This is simil
 msgid "Match domain name"
 msgstr "Match domain name"
 
-#: ../../configuration/firewall/general.rst:1239
+#: ../../configuration/firewall/general.rst:1241
 #: ../../configuration/firewall/general-legacy.rst:732
 #: ../../configuration/policy/route.rst:234
 msgid "Match hop-limit parameter, where 'eq' stands for 'equal'; 'gt' stands for 'greater than', and 'lt' stands for 'less than'."
@@ -8840,18 +8848,18 @@ msgstr "Match local preference."
 msgid "Match route metric."
 msgstr "Match route metric."
 
-#: ../../configuration/firewall/general.rst:1227
+#: ../../configuration/firewall/general.rst:1229
 #: ../../configuration/firewall/general-legacy.rst:726
 #: ../../configuration/policy/route.rst:229
 msgid "Match time to live parameter, where 'eq' stands for 'equal'; 'gt' stands for 'greater than', and 'lt' stands for 'less than'."
 msgstr "Match time to live parameter, where 'eq' stands for 'equal'; 'gt' stands for 'greater than', and 'lt' stands for 'less than'."
 
-#: ../../configuration/firewall/general.rst:1264
+#: ../../configuration/firewall/general.rst:1266
 #: ../../configuration/firewall/general-legacy.rst:742
 msgid "Match when 'count' amount of connections are seen within 'time'. These matching criteria can be used to block brute-force attempts."
 msgstr "Match when 'count' amount of connections are seen within 'time'. These matching criteria can be used to block brute-force attempts."
 
-#: ../../configuration/firewall/general.rst:539
+#: ../../configuration/firewall/general.rst:541
 #: ../../configuration/firewall/general-legacy.rst:378
 #: ../../configuration/policy/route.rst:38
 msgid "Matching criteria"
@@ -9028,7 +9036,7 @@ msgstr "Multiple servers can be specified."
 msgid "Multiple services can be used per interface. Just specify as many services per interface as you like!"
 msgstr "Multiple services can be used per interface. Just specify as many services per interface as you like!"
 
-#: ../../configuration/firewall/general.rst:775
+#: ../../configuration/firewall/general.rst:777
 #: ../../configuration/firewall/general-legacy.rst:515
 msgid "Multiple source ports can be specified as a comma-separated list. The whole list can also be \"negated\" using ``!``. For example:"
 msgstr "Multiple source ports can be specified as a comma-separated list. The whole list can also be \"negated\" using ``!``. For example:"
@@ -9554,7 +9562,7 @@ msgstr "Only 802.1Q-tagged packets are accepted on Ethernet vifs."
 msgid "Only VRRP is supported. Required option."
 msgstr "Only VRRP is supported. Required option."
 
-#: ../../configuration/firewall/general.rst:736
+#: ../../configuration/firewall/general.rst:738
 #: ../../configuration/firewall/general-legacy.rst:490
 msgid "Only in the source criteria, you can specify a mac-address."
 msgstr "Only in the source criteria, you can specify a mac-address."
@@ -9688,7 +9696,7 @@ msgstr "Operating Modes"
 msgid "Operation"
 msgstr "Operation"
 
-#: ../../configuration/firewall/general.rst:1269
+#: ../../configuration/firewall/general.rst:1314
 #: ../../configuration/firewall/general-legacy.rst:778
 msgid "Operation-mode Firewall"
 msgstr "Operation-mode Firewall"
@@ -9864,7 +9872,7 @@ msgstr "Overview"
 msgid "Overview and basic concepts"
 msgstr "Overview and basic concepts"
 
-#: ../../configuration/firewall/general.rst:1423
+#: ../../configuration/firewall/general.rst:1468
 #: ../../configuration/firewall/general-legacy.rst:908
 msgid "Overview of defined groups. You see the type, the members, and where the group is used."
 msgstr "Overview of defined groups. You see the type, the members, and where the group is used."
@@ -10355,7 +10363,7 @@ msgstr "Provide a IPv4 or IPv6 address group description"
 msgid "Provide a IPv4 or IPv6 network group description."
 msgstr "Provide a IPv4 or IPv6 network group description."
 
-#: ../../configuration/firewall/general.rst:520
+#: ../../configuration/firewall/general.rst:522
 #: ../../configuration/firewall/general-legacy.rst:334
 #: ../../configuration/policy/route.rst:30
 msgid "Provide a description for each rule."
@@ -10379,7 +10387,7 @@ msgstr "Provide a port group description."
 msgid "Provide a rule-set description."
 msgstr "Provide a rule-set description."
 
-#: ../../configuration/firewall/general.rst:508
+#: ../../configuration/firewall/general.rst:510
 msgid "Provide a rule-set description to a custom firewall chain."
 msgstr "Provide a rule-set description to a custom firewall chain."
 
@@ -10808,6 +10816,10 @@ msgstr "Requirements"
 msgid "Requirements:"
 msgstr "Requirements:"
 
+#: ../../configuration/firewall/general.rst:1286
+msgid "Requirements to enable synproxy:"
+msgstr "Requirements to enable synproxy:"
+
 #: ../../configuration/protocols/bgp.rst:1063
 #: ../../configuration/protocols/mpls.rst:248
 msgid "Reset"
@@ -11012,7 +11024,7 @@ msgstr "Routing tables that will be used in this example are:"
 msgid "Rule-Sets"
 msgstr "Rule-Sets"
 
-#: ../../configuration/firewall/general.rst:1272
+#: ../../configuration/firewall/general.rst:1317
 #: ../../configuration/firewall/general-legacy.rst:781
 msgid "Rule-set overview"
 msgstr "Rule-set overview"
@@ -11033,7 +11045,7 @@ msgstr "Rule 20 matches requests with URL paths ending in ``/mail`` or exact pat
 msgid "Rule 20 matches requests with the domain name ``node2.example.com`` forwards to the backend ``bk-api-02``"
 msgstr "Rule 20 matches requests with the domain name ``node2.example.com`` forwards to the backend ``bk-api-02``"
 
-#: ../../configuration/firewall/general.rst:524
+#: ../../configuration/firewall/general.rst:526
 msgid "Rule Status"
 msgstr "Rule Status"
 
@@ -11387,6 +11399,10 @@ msgstr "Set SNAT rule 30 to only NAT packets arriving from the 203.0.113.0/24 ne
 #: ../../configuration/loadbalancing/reverse-proxy.rst:46
 msgid "Set SSL certeficate <name> for service <name>"
 msgstr "Set SSL certeficate <name> for service <name>"
+
+#: ../../configuration/firewall/general.rst:1278
+msgid "Set TCP-MSS (maximum segment size) for the connection"
+msgstr "Set TCP-MSS (maximum segment size) for the connection"
 
 #: ../../configuration/service/dns.rst:267
 msgid "Set TTL to 300 seconds"
@@ -11935,6 +11951,10 @@ msgstr "Set the timeout in secounds for a protocol or state in a custom rule."
 msgid "Set the tunnel id, which is a 32-bit integer value. Uniquely identifies the tunnel into which the session will be created."
 msgstr "Set the tunnel id, which is a 32-bit integer value. Uniquely identifies the tunnel into which the session will be created."
 
+#: ../../configuration/firewall/general.rst:1282
+msgid "Set the window scale factor for TCP window scaling"
+msgstr "Set the window scale factor for TCP window scaling"
+
 #: ../../configuration/system/login.rst:124
 msgid "Set window of concurrently valid codes."
 msgstr "Set window of concurrently valid codes."
@@ -12048,7 +12068,7 @@ msgstr "Show DHCP server daemon log file"
 msgid "Show DHCPv6 server daemon log file"
 msgstr "Show DHCPv6 server daemon log file"
 
-#: ../../configuration/firewall/general.rst:1444
+#: ../../configuration/firewall/general.rst:1489
 #: ../../configuration/firewall/general-legacy.rst:965
 msgid "Show Firewall log"
 msgstr "Show Firewall log"
@@ -12296,7 +12316,7 @@ msgstr "Show the list of all active containers."
 msgid "Show the local container images."
 msgstr "Show the local container images."
 
-#: ../../configuration/firewall/general.rst:1448
+#: ../../configuration/firewall/general.rst:1493
 #: ../../configuration/firewall/general-legacy.rst:969
 msgid "Show the logs of a specific Rule-Set."
 msgstr "Show the logs of a specific Rule-Set."
@@ -12665,7 +12685,7 @@ msgstr "Specifies which RADIUS server attribute contains the rate limit informat
 msgid "Specify IPv4/IPv6 listen address of SSH server. Multiple addresses can be defined."
 msgstr "Specify IPv4/IPv6 listen address of SSH server. Multiple addresses can be defined."
 
-#: ../../configuration/firewall/general.rst:668
+#: ../../configuration/firewall/general.rst:670
 #: ../../configuration/firewall/general-legacy.rst:455
 msgid "Specify a Fully Qualified Domain Name as source/destination matcher. Ensure router is able to resolve such dns query."
 msgstr "Specify a Fully Qualified Domain Name as source/destination matcher. Ensure router is able to resolve such dns query."
@@ -12950,6 +12970,18 @@ msgstr "Synamic instructs to forward to all peers which we have a direct connect
 #: ../../configuration/highavailability/index.rst:108
 msgid "Sync groups"
 msgstr "Sync groups"
+
+#: ../../configuration/firewall/general.rst:1271
+msgid "Synproxy"
+msgstr "Synproxy"
+
+#: ../../configuration/firewall/general.rst:1272
+msgid "Synproxy connections"
+msgstr "Synproxy connections"
+
+#: ../../configuration/firewall/general.rst:1289
+msgid "Synproxy relies on syncookies and TCP timestamps, ensure these are enabled"
+msgstr "Synproxy relies on syncookies and TCP timestamps, ensure these are enabled"
 
 #: ../../configuration/interfaces/pppoe.rst:327
 msgid "Syntax has changed from VyOS 1.2 (crux) and it will be automatically migrated during an upgrade."
@@ -14131,7 +14163,7 @@ msgstr "There's a variety of client GUI frontends for any platform"
 msgid "There are 3 default NTP server set. You are able to change them."
 msgstr "There are 3 default NTP server set. You are able to change them."
 
-#: ../../configuration/firewall/general.rst:541
+#: ../../configuration/firewall/general.rst:543
 #: ../../configuration/firewall/general-legacy.rst:380
 msgid "There are a lot of matching criteria against which the package can be tested."
 msgstr "There are a lot of matching criteria against which the package can be tested."
@@ -15341,7 +15373,7 @@ msgstr "This command will generate a default-route in L1 database."
 msgid "This command will generate a default-route in L2 database."
 msgstr "This command will generate a default-route in L2 database."
 
-#: ../../configuration/firewall/general.rst:1419
+#: ../../configuration/firewall/general.rst:1464
 #: ../../configuration/firewall/general-legacy.rst:904
 msgid "This command will give an overview of a rule in a single rule-set"
 msgstr "This command will give an overview of a rule in a single rule-set"
@@ -15350,7 +15382,7 @@ msgstr "This command will give an overview of a rule in a single rule-set"
 msgid "This command will give an overview of a rule in a single rule-set."
 msgstr "This command will give an overview of a rule in a single rule-set."
 
-#: ../../configuration/firewall/general.rst:1397
+#: ../../configuration/firewall/general.rst:1442
 #: ../../configuration/firewall/general-legacy.rst:932
 msgid "This command will give an overview of a single rule-set."
 msgstr "This command will give an overview of a single rule-set."
@@ -15478,7 +15510,7 @@ msgstr "This example shows how to target an MSS clamp (in our example to 1360 by
 msgid "This feature summarises originated external LSAs (Type-5 and Type-7). Summary Route will be originated on-behalf of all matched external LSAs."
 msgstr "This feature summarises originated external LSAs (Type-5 and Type-7). Summary Route will be originated on-behalf of all matched external LSAs."
 
-#: ../../configuration/firewall/general.rst:631
+#: ../../configuration/firewall/general.rst:633
 #: ../../configuration/firewall/general-legacy.rst:431
 msgid "This functions for both individual addresses and address groups."
 msgstr "This functions for both individual addresses and address groups."
@@ -15719,7 +15751,7 @@ msgstr "This prompted some ISPs to develop a policy within the :abbr:`ARIN (Amer
 msgid "This required setting defines the action of the current rule. If action is set to ``jump``, then ``jump-target`` is also needed."
 msgstr "This required setting defines the action of the current rule. If action is set to ``jump``, then ``jump-target`` is also needed."
 
-#: ../../configuration/firewall/general.rst:365
+#: ../../configuration/firewall/general.rst:367
 msgid "This required setting defines the action of the current rule. If action is set to jump, then jump-target is also needed."
 msgstr "This required setting defines the action of the current rule. If action is set to jump, then jump-target is also needed."
 
@@ -15765,7 +15797,7 @@ msgstr "This section needs improvements, examples and explanations."
 msgid "This set the default action of the rule-set if no rule matched a packet criteria. If defacult-action is set to ``jump``, then ``default-jump-target`` is also needed."
 msgstr "This set the default action of the rule-set if no rule matched a packet criteria. If defacult-action is set to ``jump``, then ``default-jump-target`` is also needed."
 
-#: ../../configuration/firewall/general.rst:397
+#: ../../configuration/firewall/general.rst:399
 msgid "This set the default action of the rule-set if no rule matched a packet criteria. If defacult-action is set to ``jump``, then ``default-jump-target`` is also needed. Note that for base chains, default action can only be set to ``accept`` or ``drop``, while on custom chain, more actions are available."
 msgstr "This set the default action of the rule-set if no rule matched a packet criteria. If defacult-action is set to ``jump``, then ``default-jump-target`` is also needed. Note that for base chains, default action can only be set to ``accept`` or ``drop``, while on custom chain, more actions are available."
 
@@ -15873,7 +15905,7 @@ msgstr "This will match TCP traffic with source port 80."
 msgid "This will render the following ddclient_ configuration entry:"
 msgstr "This will render the following ddclient_ configuration entry:"
 
-#: ../../configuration/firewall/general.rst:1276
+#: ../../configuration/firewall/general.rst:1321
 #: ../../configuration/firewall/general-legacy.rst:785
 msgid "This will show you a basic firewall overview"
 msgstr "This will show you a basic firewall overview"
@@ -15882,12 +15914,12 @@ msgstr "This will show you a basic firewall overview"
 msgid "This will show you a rule-set statistic since the last boot."
 msgstr "This will show you a rule-set statistic since the last boot."
 
-#: ../../configuration/firewall/general.rst:1441
+#: ../../configuration/firewall/general.rst:1486
 #: ../../configuration/firewall/general-legacy.rst:900
 msgid "This will show you a statistic of all rule-sets since the last boot."
 msgstr "This will show you a statistic of all rule-sets since the last boot."
 
-#: ../../configuration/firewall/general.rst:1339
+#: ../../configuration/firewall/general.rst:1384
 #: ../../configuration/firewall/general-legacy.rst:851
 msgid "This will show you a summary of rule-sets and groups"
 msgstr "This will show you a summary of rule-sets and groups"
@@ -15932,7 +15964,7 @@ msgstr "Time in seconds that the prefix will remain valid (default: 30 days)"
 msgid "Time is in minutes and defaults to 60."
 msgstr "Time is in minutes and defaults to 60."
 
-#: ../../configuration/firewall/general.rst:1216
+#: ../../configuration/firewall/general.rst:1218
 #: ../../configuration/firewall/general-legacy.rst:722
 #: ../../configuration/policy/route.rst:225
 msgid "Time to match the defined rule."
@@ -15983,12 +16015,12 @@ msgstr "To automatically assign the client an IP address as tunnel endpoint, a c
 msgid "To be used only when ``action`` is set to ``jump``. Use this command to specify jump target."
 msgstr "To be used only when ``action`` is set to ``jump``. Use this command to specify jump target."
 
-#: ../../configuration/firewall/general.rst:406
+#: ../../configuration/firewall/general.rst:408
 #: ../../configuration/firewall/general-legacy.rst:295
 msgid "To be used only when ``defult-action`` is set to ``jump``. Use this command to specify jump target for default rule."
 msgstr "To be used only when ``defult-action`` is set to ``jump``. Use this command to specify jump target for default rule."
 
-#: ../../configuration/firewall/general.rst:379
+#: ../../configuration/firewall/general.rst:381
 msgid "To be used only when action is set to jump. Use this command to specify jump target."
 msgstr "To be used only when action is set to jump. Use this command to specify jump target."
 
@@ -16222,6 +16254,10 @@ msgstr "Traffic from multicast sources will go to the Rendezvous Point, and rece
 msgid "Traffic from multicast sources will go to the Rendezvous Point, and receivers will pull it from a shared tree using MLD (Multicast Listener Discovery)."
 msgstr "Traffic from multicast sources will go to the Rendezvous Point, and receivers will pull it from a shared tree using MLD (Multicast Listener Discovery)."
 
+#: ../../configuration/firewall/general.rst:1288
+msgid "Traffic must be symmetric"
+msgstr "Traffic must be symmetric"
+
 #: ../../configuration/highavailability/index.rst:322
 msgid "Transition scripts"
 msgstr "Transition scripts"
@@ -16347,7 +16383,7 @@ msgstr "Update"
 msgid "Update container image"
 msgstr "Update container image"
 
-#: ../../configuration/firewall/general.rst:1502
+#: ../../configuration/firewall/general.rst:1547
 #: ../../configuration/firewall/general-legacy.rst:1050
 msgid "Update geoip database"
 msgstr "Update geoip database"
@@ -16401,27 +16437,27 @@ msgstr "Use `delete system conntrack modules` to deactive all modules."
 msgid "Use a persistent LDAP connection. Normally the LDAP connection is only open while validating a username to preserve resources at the LDAP server. This option causes the LDAP connection to be kept open, allowing it to be reused for further user validations."
 msgstr "Use a persistent LDAP connection. Normally the LDAP connection is only open while validating a username to preserve resources at the LDAP server. This option causes the LDAP connection to be kept open, allowing it to be reused for further user validations."
 
-#: ../../configuration/firewall/general.rst:804
+#: ../../configuration/firewall/general.rst:806
 #: ../../configuration/firewall/general-legacy.rst:531
 msgid "Use a specific address-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Use a specific address-group. Prepend character ``!`` for inverted matching criteria."
 
-#: ../../configuration/firewall/general.rst:879
+#: ../../configuration/firewall/general.rst:881
 #: ../../configuration/firewall/general-legacy.rst:567
 msgid "Use a specific domain-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Use a specific domain-group. Prepend character ``!`` for inverted matching criteria."
 
-#: ../../configuration/firewall/general.rst:904
+#: ../../configuration/firewall/general.rst:906
 #: ../../configuration/firewall/general-legacy.rst:579
 msgid "Use a specific mac-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Use a specific mac-group. Prepend character ``!`` for inverted matching criteria."
 
-#: ../../configuration/firewall/general.rst:829
+#: ../../configuration/firewall/general.rst:831
 #: ../../configuration/firewall/general-legacy.rst:543
 msgid "Use a specific network-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Use a specific network-group. Prepend character ``!`` for inverted matching criteria."
 
-#: ../../configuration/firewall/general.rst:854
+#: ../../configuration/firewall/general.rst:856
 #: ../../configuration/firewall/general-legacy.rst:555
 msgid "Use a specific port-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Use a specific port-group. Prepend character ``!`` for inverted matching criteria."
@@ -16957,7 +16993,7 @@ msgstr "Use this command to enable the local router to try and connect with a ta
 msgid "Use this command to enable the logging of the default action."
 msgstr "Use this command to enable the logging of the default action."
 
-#: ../../configuration/firewall/general.rst:436
+#: ../../configuration/firewall/general.rst:438
 msgid "Use this command to enable the logging of the default action on custom chains."
 msgstr "Use this command to enable the logging of the default action on custom chains."
 
@@ -17791,7 +17827,7 @@ msgstr "When configuring your filter, you can use the ``Tab`` key to see the man
 msgid "When configuring your traffic policy, you will have to set data rate values, watch out the units you are managing, it is easy to get confused with the different prefixes and suffixes you can use. VyOS will always show you the different units you can use."
 msgstr "When configuring your traffic policy, you will have to set data rate values, watch out the units you are managing, it is easy to get confused with the different prefixes and suffixes you can use. VyOS will always show you the different units you can use."
 
-#: ../../configuration/firewall/general.rst:526
+#: ../../configuration/firewall/general.rst:528
 msgid "When defining a rule, it is enable by default. In some cases, it is useful to just disable the rule, rather than removing it."
 msgstr "When defining a rule, it is enable by default. In some cases, it is useful to just disable the rule, rather than removing it."
 
@@ -19644,6 +19680,10 @@ msgstr "``static`` - Statically configured routes"
 #: ../../configuration/interfaces/wireless.rst:122
 msgid "``station`` - Connects to another access point"
 msgstr "``station`` - Connects to another access point"
+
+#: ../../configuration/firewall/general.rst:354
+msgid "``synproxy``: synproxy the packet."
+msgstr "``synproxy``: synproxy the packet."
 
 #: ../../configuration/system/sysctl.rst:9
 msgid "``sysctl`` is used to modify kernel parameters at runtime.  The parameters available are those listed under /proc/sys/."
