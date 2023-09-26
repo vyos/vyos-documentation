@@ -25,7 +25,6 @@ the virtual network (type Virtio) created by the hypervisor with NAT.
     --ram 4096 \
     --vcpus 2 \
     --cdrom /var/lib/libvirt/images/vyos.iso \
-    --os-type linux \
     --os-variant debian10 \
     --network network=default \
     --graphics vnc \
@@ -68,7 +67,6 @@ Create VM with ``import`` qcow2 disk option.
   $ virt-install -n vyos_r2 \
      --ram 4096 \
      --vcpus 2 \
-     --os-type linux \
      --os-variant debian10 \
      --network network=default \
      --graphics vnc \
@@ -91,6 +89,29 @@ Connect to VM  with command ``virsh console vyos_r2``
   Password:
 
   vyos@vyos:~$
+
+If you can not go to this screen
+
+.. code-block:: none
+
+  vyos login: vyos
+  Password:
+
+Stayed in this stage. This is because the KVM console is chosen as the default boot option.
+
+.. code-block:: none
+
+  Connected to domain vyos_r2
+  Escape character is ^]
+
+Open a secondary/parallel session and use this command to reboot the VM:
+
+.. code-block:: none
+
+  $ virsh reboot vyos_r2
+
+Then go to the first session where you opened the console.
+Select ``VyOS 1.4.x for QEMU (Serial console)`` and press ``Enter``
 
 The system is fully operational.
 
