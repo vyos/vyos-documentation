@@ -1,10 +1,10 @@
 :lastproofread: 2021-06-29
 
-.. _firewall-legacy:
+.. _legacy-firewall:
 
-###############
-Firewall-Legacy
-###############
+###################################
+Firewall Configuration (Deprecated)
+###################################
 
 .. note:: **Important note:**
    This documentation is valid only for VyOS Sagitta prior to
