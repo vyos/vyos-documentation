@@ -275,6 +275,22 @@ Configuration
 
    Source all connections to the RADIUS servers from given VRF `<name>`.
 
+Configuration Example
+---------------------
+
+.. code-block:: none
+
+  set system login radius server 192.168.0.2 key 'test-vyos'
+  set system login radius server 192.168.0.2 port '1812'
+  set system login radius server 192.168.0.2 timeout '5'
+  set system login radius source-address '192.168.0.1'
+
+
+   If there is no communication between VyOS and RADIUS server users can 
+   authenticate from local user accounts. During authentication from the local
+   accounts users can observe some timeouts. Timeout in seconds depends on
+   the configured timeout option.
+
 .. hint:: If you want to have admin users to authenticate via RADIUS it is
    essential to sent the ``Cisco-AV-Pair shell:priv-lvl=15`` attribute. Without
    the attribute you will only get regular, non privilegued, system users.
@@ -328,6 +344,18 @@ Configuration
 
    Source all connections to the TACACS servers from given VRF `<name>`.
 
+Configuration Example
+---------------------
+
+.. code-block:: none
+
+  set system login tacacs server 192.168.0.2 key 'test-vyos'
+  set system login tacacs server 192.168.0.2 port '49'
+  set system login tacacs source-address '192.168.0.1'
+
+
+   If there is no communication between VyOS and TACACS server users can 
+   authenticate from local user accounts.
 
 Login Banner
 ============
