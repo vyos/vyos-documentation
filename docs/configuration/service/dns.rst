@@ -308,40 +308,40 @@ VyOS is also able to use any service relying on protocols supported by ddclient.
 To use such a service, one must define a login, password, one or multiple
 hostnames, protocol and server.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service>
+.. cfgcmd:: set service dns dynamic address <interface> service <service>
    host-name <hostname>
 
    Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS
-   provider identified by `<service>` when the IP address on interface
+   provider identified by `<service>` when the IP address on address
    `<interface>` changes.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service>
-   login <username>
+.. cfgcmd:: set service dns dynamic address <interface> service <service>
+   username <username>
 
    Configure `<username>` used when authenticating the update request for
    DynDNS service identified by `<service>`.
    For Namecheap, set the <domain> you wish to update.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service>
+.. cfgcmd:: set service dns dynamic address <interface> service <service>
    password <password>
 
    Configure `<password>` used when authenticating the update request for
    DynDNS service identified by `<service>`.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service>
+.. cfgcmd:: set service dns dynamic address <interface> service <service>
    protocol <protocol>
 
    When a ``custom`` DynDNS provider is used the protocol used for communicating
    to the provider must be specified under `<protocol>`. See the embedded
    completion helper for available protocols.
 
-.. cfgcmd:: set service dns dynamic interface <interface> service <service>
+.. cfgcmd:: set service dns dynamic address <interface> service <service>
    server <server>
 
    When a ``custom`` DynDNS provider is used the `<server>` where update
    requests are being sent to must be specified.
 
-.. cfgcmd:: set service dns dynamic interface <interface> ipv6-enable
+.. cfgcmd:: set service dns dynamic address <interface> ipv6-enable
 
    Allow explicit IPv6 address for the interface.
 
@@ -353,10 +353,10 @@ Use DynDNS as your preferred provider:
 
 .. code-block:: none
 
-  set service dns dynamic interface eth0 service dyndns
-  set service dns dynamic interface eth0 service dyndns login my-login
-  set service dns dynamic interface eth0 service dyndns password my-password
-  set service dns dynamic interface eth0 service dyndns host-name my-dyndns-hostname
+  set service dns dynamic address eth0 service dyndns
+  set service dns dynamic address eth0 service dyndns username my-login
+  set service dns dynamic address eth0 service dyndns password my-password
+  set service dns dynamic address eth0 service dyndns host-name my-dyndns-hostname
 
 .. note:: Multiple services can be used per interface. Just specify as many
    services per interface as you like!
@@ -366,12 +366,12 @@ Example IPv6 only:
 
 .. code-block:: none
 
-  set service dns dynamic interface eth0 ipv6-enable
-  set service dns dynamic interface eth0 service dyndns6 login my-login
-  set service dns dynamic interface eth0 service dyndns6 password my-password
-  set service dns dynamic interface eth0 service dyndns6 host-name my-dyndns-hostname
-  set service dns dynamic interface eth0 service dyndns6 protocol dyndns2
-  set service dns dynamic interface eth0 service dyndns6 server dyndns-v6-server
+  set service dns dynamic address eth0 ipv6-enable
+  set service dns dynamic address eth0 service dyndns6 username my-login
+  set service dns dynamic address eth0 service dyndns6 password my-password
+  set service dns dynamic address eth0 service dyndns6 host-name my-dyndns-hostname
+  set service dns dynamic address eth0 service dyndns6 protocol dyndns2
+  set service dns dynamic address eth0 service dyndns6 server dyndns-v6-server
 
 
 Running Behind NAT
@@ -384,12 +384,12 @@ record will be updated to point to your internal IP.
 ddclient_ has another way to determine the WAN IP address. This is controlled
 by:
 
-.. cfgcmd:: set service dns dynamic interface <interface> use-web url <url>
+.. cfgcmd:: set service dns dynamic address <interface> web-options url <url>
 
    Use configured `<url>` to determine your IP address. ddclient_ will load
    `<url>` and tries to extract your IP address from the response.
 
-.. cfgcmd:: set service dns dynamic interface <interface> use-web skip <pattern>
+.. cfgcmd:: set service dns dynamic address <interface> web-options skip <pattern>
 
    ddclient_ will skip any address located before the string set in `<pattern>`.
 
