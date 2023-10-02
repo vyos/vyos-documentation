@@ -1,0 +1,817 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Localazy (https://localazy.com)\n"
+"Project-Id-Version: VyOS Documentation\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=((n%10==1) && (n%100!=11)) ? 0 : ((n%10>=2 && n%10<=4) && ((n%100<12 || n%100>14))) ? 1 : 2;\n"
+
+#: ../../automation/cloud-init.rst:363
+msgid "**NOTE**: be carefull while copying and pasting previous commands. Doble quotes may need to be corrected."
+msgstr "**NOTE**: be carefull while copying and pasting previous commands. Doble quotes may need to be corrected."
+
+#: ../../automation/cloud-init.rst:305
+msgid "**meta-data**: empty file (required)."
+msgstr "**meta-data**: empty file (required)."
+
+#: ../../automation/cloud-init.rst:300
+msgid "**network-config**: file that will indicate to avoid dhcp client on first interface."
+msgstr "**network-config**: file that will indicate to avoid dhcp client on first interface."
+
+#: ../../automation/cloud-init.rst:333
+msgid "**network-config** file only has configuration that disables the automatic dhcp client on first interface."
+msgstr "**network-config** file only has configuration that disables the automatic dhcp client on first interface."
+
+#: ../../automation/cloud-init.rst:303
+msgid "**user-data**: includes vyos-commands."
+msgstr "**user-data**: includes vyos-commands."
+
+#: ../../automation/cloud-init.rst:314
+msgid "**user-data** file must start with ``#cloud-config`` and contains vyos-commands. For example:"
+msgstr "**user-data** file must start with ``#cloud-config`` and contains vyos-commands. For example:"
+
+#: ../../automation/vyos-api.rst:285
+msgid "/config-file"
+msgstr "/config-file"
+
+#: ../../automation/vyos-api.rst:228
+msgid "/configure"
+msgstr "/configure"
+
+#: ../../automation/vyos-api.rst:209
+msgid "/generate"
+msgstr "/generate"
+
+#: ../../automation/vyos-api.rst:147
+msgid "/image"
+msgstr "/image"
+
+#: ../../automation/vyos-api.rst:129
+msgid "/reset"
+msgstr "/reset"
+
+#: ../../automation/vyos-api.rst:44
+msgid "/retrieve"
+msgstr "/retrieve"
+
+#: ../../automation/vyos-api.rst:185
+msgid "/show"
+msgstr "/show"
+
+#: ../../automation/vyos-api.rst:41
+msgid "API Endpoints"
+msgstr "API Endpoints"
+
+#: ../../automation/cloud-init.rst:270
+msgid "A VyOS qcow image with cloud-init options is needed. This can be obtained using `vyos-vm-images`_ repo. After clonning the repo, edit the file **qemu.yml** and comment the **download-iso** role."
+msgstr "A VyOS qcow image with cloud-init options is needed. This can be obtained using `vyos-vm-images`_ repo. After clonning the repo, edit the file **qemu.yml** and comment the **download-iso** role."
+
+#: ../../automation/cloud-init.rst:63
+msgid "A cloud-config document is written in YAML. The file must begin with ``#cloud-config`` line. The only supported top-level keys are ``vyos_config_commands`` and ``write_files``. The use of these keys is described in the following two sections."
+msgstr "A cloud-config document is written in YAML. The file must begin with ``#cloud-config`` line. The only supported top-level keys are ``vyos_config_commands`` and ``write_files``. The use of these keys is described in the following two sections."
+
+#: ../../automation/command-scripting.rst:159
+msgid "A simple example is shown below, where the ops command executed in the post-hook script is \"show interfaces\"."
+msgstr "A simple example is shown below, where the ops command executed in the post-hook script is \"show interfaces\"."
+
+#: ../../automation/cloud-init.rst:82
+msgid "A single-quote symbol is not allowed inside command or value."
+msgstr "A single-quote symbol is not allowed inside command or value."
+
+#: ../../automation/vyos-salt.rst:32
+msgid "Accept minion key"
+msgstr "Accept minion key"
+
+#: ../../automation/vyos-api.rst:15
+msgid "All endpoints only listen on HTTP POST requests and the API KEY must set as ``key`` in the formdata."
+msgstr "All endpoints only listen on HTTP POST requests and the API KEY must set as ``key`` in the formdata."
+
+#: ../../automation/cloud-init.rst:115
+msgid "All of these can be overridden using the configuration in user-data."
+msgstr "All of these can be overridden using the configuration in user-data."
+
+#: ../../automation/cloud-init.rst:256
+msgid "Also, this lab considers:"
+msgstr "Also, this lab considers:"
+
+#: ../../automation/vyos-ansible.rst:6
+msgid "Ansible"
+msgstr "Ansible"
+
+#: ../../automation/command-scripting.rst:181
+#: ../../automation/command-scripting.rst:200
+msgid "Any modifications were done to work around unfixed bugs and implement enhancements that are not complete in the VyOS system can be placed here."
+msgstr "Any modifications were done to work around unfixed bugs and implement enhancements that are not complete in the VyOS system can be placed here."
+
+#: ../../automation/vyos-salt.rst:55
+msgid "At this step we can get some op-mode information from VyOS nodes:"
+msgstr "At this step we can get some op-mode information from VyOS nodes:"
+
+#: ../../automation/vyos-api.rst:13
+msgid "Authentication"
+msgstr "Authentication"
+
+#: ../../automation/cloud-init.rst:241
+msgid "Before starting, please refer to cloud-init `network-config-docs`_ in order to know how to import user and network configurations."
+msgstr "Before starting, please refer to cloud-init `network-config-docs`_ in order to know how to import user and network configurations."
+
+#: ../../automation/vyos-api.rst:18
+msgid "Below see one example for curl and one for python. The rest of the documentation is reduced to curl."
+msgstr "Below see one example for curl and one for python. The rest of the documentation is reduced to curl."
+
+#: ../../automation/vyos-salt.rst:20
+msgid "Check salt-keys on the salt master"
+msgstr "Check salt-keys on the salt master"
+
+#: ../../automation/vyos-salt.rst:161
+msgid "Check that proxy minion is alive:"
+msgstr "Check that proxy minion is alive:"
+
+#: ../../automation/vyos-salt.rst:45
+msgid "Check that salt master can communicate with minions"
+msgstr "Check that salt master can communicate with minions"
+
+#: ../../automation/cloud-init.rst:47
+msgid "Cloud-config modules"
+msgstr "Cloud-config modules"
+
+#: ../../automation/cloud-init.rst:420
+msgid "Cloud-init `network-config-docs`_."
+msgstr "Cloud-init `network-config-docs`_."
+
+#: ../../automation/cloud-init.rst:239
+msgid "Cloud-init on Proxmox"
+msgstr "Cloud-init on Proxmox"
+
+#: ../../automation/cloud-init.rst:9
+msgid "Cloud and virtualized instances of VyOS are initialized using the industry-standard cloud-init. Via cloud-init, the system performs tasks such as injecting SSH keys and configuring the network. In addition, the user can supply a custom configuration at the time of instance launch."
+msgstr "Cloud and virtualized instances of VyOS are initialized using the industry-standard cloud-init. Via cloud-init, the system performs tasks such as injecting SSH keys and configuring the network. In addition, the user can supply a custom configuration at the time of instance launch."
+
+#: ../../automation/cloud-init.rst:120
+msgid "Command Execution at Initial Boot"
+msgstr "Command Execution at Initial Boot"
+
+#: ../../automation/command-scripting.rst:6
+msgid "Command Scripting"
+msgstr "Command Scripting"
+
+#: ../../automation/cloud-init.rst:356
+msgid "Command for generating ``seed.iso``"
+msgstr "Command for generating ``seed.iso``"
+
+#: ../../automation/cloud-init.rst:78
+msgid "Commands requirements:"
+msgstr "Commands requirements:"
+
+#: ../../automation/cloud-init.rst:16
+msgid "Config Sources"
+msgstr "Config Sources"
+
+#: ../../automation/vyos-napalm.rst:85
+#: ../../automation/vyos-salt.rst:104
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../../automation/command-scripting.rst:23
+msgid "Configuration commands are executed just like from a normal config session. For example, if you want to disable a BGP peer on VRRP transition to backup:"
+msgstr "Configuration commands are executed just like from a normal config session. For example, if you want to disable a BGP peer on VRRP transition to backup:"
+
+#: ../../automation/vyos-napalm.rst:89
+msgid "Content of commands.conf"
+msgstr "Content of commands.conf"
+
+#: ../../automation/cloud-init.rst:337
+msgid "Content of network-config file:"
+msgstr "Content of network-config file:"
+
+#: ../../automation/cloud-init.rst:351
+msgid "Create seed.iso"
+msgstr "Create seed.iso"
+
+#: ../../automation/cloud-init.rst:189
+msgid "Create text files named user-data and meta-data. On linux-based systems, the mkisofs utility can be used to create the seed ISO. The following syntax will add these files to the ISO 9660 file system."
+msgstr "Create text files named user-data and meta-data. On linux-based systems, the mkisofs utility can be used to create the seed ISO. The following syntax will add these files to the ISO 9660 file system."
+
+#: ../../automation/cloud-init.rst:368
+msgid "Creating the VM"
+msgstr "Creating the VM"
+
+#: ../../automation/command-scripting.rst:156
+msgid "Custom scripts are not executed with root privileges (Use sudo inside if this is necessary)."
+msgstr "Custom scripts are not executed with root privileges (Use sudo inside if this is necessary)."
+
+#: ../../automation/cloud-init.rst:113
+msgid "DHCP on first Ethernet interface if no network configuration is provided."
+msgstr "DHCP on first Ethernet interface if no network configuration is provided."
+
+#: ../../automation/vyos-netmiko.rst:12
+msgid "Example"
+msgstr "Example"
+
+#: ../../automation/vyos-salt.rst:185
+msgid "Example of configuration:"
+msgstr "Example of configuration:"
+
+#: ../../automation/vyos-salt.rst:199
+msgid "Example of configuration commands from the file \"/srv/salt/states/commands.txt\""
+msgstr "Example of configuration commands from the file \"/srv/salt/states/commands.txt\""
+
+#: ../../automation/vyos-salt.rst:173
+msgid "Example of op-mode:"
+msgstr "Example of op-mode:"
+
+#: ../../automation/vyos-salt.rst:171
+msgid "Examples"
+msgstr "Examples"
+
+#: ../../automation/command-scripting.rst:102
+msgid "Executing Configuration Scripts"
+msgstr "Executing Configuration Scripts"
+
+#: ../../automation/command-scripting.rst:138
+msgid "Executing pre-hooks/post-hooks Scripts"
+msgstr "Executing pre-hooks/post-hooks Scripts"
+
+#: ../../automation/vyos-ansible.rst:24
+msgid "File contents"
+msgstr "File contents"
+
+#: ../../automation/cloud-init.rst:284
+msgid "File generated with previous command: ``/tmp/vyos-1.3.0-cloud-init-10G-qemu.qcow2``"
+msgstr "File generated with previous command: ``/tmp/vyos-1.3.0-cloud-init-10G-qemu.qcow2``"
+
+#: ../../automation/cloud-init.rst:347
+msgid "Finaly, file **meta-data** has no content, but it's required."
+msgstr "Finaly, file **meta-data** has no content, but it's required."
+
+#: ../../automation/command-scripting.rst:212
+msgid "For configuration/upgrade management issues, modification of this script should be the last option. Always try to find solutions based on CLI commands first."
+msgstr "For configuration/upgrade management issues, modification of this script should be the last option. Always try to find solutions based on CLI commands first."
+
+#: ../../automation/vyos-api.rst:9
+msgid "For configuration and enabling the API see :ref:`http-api`"
+msgstr "For configuration and enabling the API see :ref:`http-api`"
+
+#: ../../automation/vyos-api.rst:109
+msgid "For example, get the addresses of a ``dum0`` interface."
+msgstr "For example, get the addresses of a ``dum0`` interface."
+
+#: ../../automation/vyos-api.rst:189
+msgid "For example, show which images are installed."
+msgstr "For example, show which images are installed."
+
+#: ../../automation/cloud-init.rst:217
+msgid "For more information on the NoCloud data source, visit its `page <https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html>`_ in the cloud-init documentation."
+msgstr "For more information on the NoCloud data source, visit its `page <https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html>`_ in the cloud-init documentation."
+
+#: ../../automation/cloud-init.rst:411
+msgid "From cli or GUI, power on VM, and after it boots, verify configuration"
+msgstr "From cli or GUI, power on VM, and after it boots, verify configuration"
+
+#: ../../automation/cloud-init.rst:268
+msgid "Generate qcow image"
+msgstr "Generate qcow image"
+
+#: ../../automation/command-scripting.rst:82
+msgid "Here is a simple example:"
+msgstr "Here is a simple example:"
+
+#: ../../automation/cloud-init.rst:91
+msgid "Here is an example cloud-config that appends configuration at the time of first boot."
+msgstr "Here is an example cloud-config that appends configuration at the time of first boot."
+
+#: ../../automation/cloud-init.rst:377
+msgid "ISO files storage: ``local`` volume is used for ``.iso`` file storage. In this scenario ``local`` volume type is set to **directory**, abd attached to ``/var/lib/vz``."
+msgstr "ISO files storage: ``local`` volume is used for ``.iso`` file storage. In this scenario ``local`` volume type is set to **directory**, abd attached to ``/var/lib/vz``."
+
+#: ../../automation/cloud-init.rst:81
+msgid "If command ends in a value, it must be inside single quotes."
+msgstr "If command ends in a value, it must be inside single quotes."
+
+#: ../../automation/cloud-init.rst:250
+msgid "If no networking configuration is provided, then dhcp client is going to be enabled on first interface. Bare in mind that this configuration will be inyected at an OS level, so don't expect to find dhcp client configuration on vyos cli. Because of this behavior, in next example lab we will disable dhcp-client configuration on eth0."
+msgstr "If no networking configuration is provided, then dhcp client is going to be enabled on first interface. Bare in mind that this configuration will be inyected at an OS level, so don't expect to find dhcp client configuration on vyos cli. Because of this behavior, in next example lab we will disable dhcp-client configuration on eth0."
+
+#: ../../automation/cloud-init.rst:225
+msgid "If you encounter problems, verify that the cloud-config document contains valid YAML. Online resources such as https://www.yamllint.com/ provide a simple tool for validating YAML."
+msgstr "If you encounter problems, verify that the cloud-config document contains valid YAML. Online resources such as https://www.yamllint.com/ provide a simple tool for validating YAML."
+
+#: ../../automation/cloud-init.rst:153
+msgid "If you need to gather information from linux commands to configure VyOS, you can execute commands and then configure VyOS in the same script."
+msgstr "If you need to gather information from linux commands to configure VyOS, you can execute commands and then configure VyOS in the same script."
+
+#: ../../automation/command-scripting.rst:79
+msgid "If you want to script the configs in a language other than bash you can have your script output commands and then source them in a bash script."
+msgstr "If you want to script the configs in a language other than bash you can have your script output commands and then source them in a bash script."
+
+#: ../../automation/cloud-init.rst:298
+msgid "In Proxmox server three files are going to be used for this setup:"
+msgstr "In Proxmox server three files are going to be used for this setup:"
+
+#: ../../automation/cloud-init.rst:49
+msgid "In VyOS, by default, enables only two modules:"
+msgstr "In VyOS, by default, enables only two modules:"
+
+#: ../../automation/cloud-init.rst:307
+msgid "In this lab, all files are located in ``/tmp/``. So, before going on, lets move to that directory:"
+msgstr "In this lab, all files are located in ``/tmp/``. So, before going on, lets move to that directory:"
+
+#: ../../automation/cloud-init.rst:274
+msgid "In this lab, we are using 1.3.0 VyOS version and setting a disk of 10G. Download VyOS .iso file and save it as ``/tmp/vyos.iso``. Command used for generating qcow image:"
+msgstr "In this lab, we are using 1.3.0 VyOS version and setting a disk of 10G. Download VyOS .iso file and save it as ``/tmp/vyos.iso``. Command used for generating qcow image:"
+
+#: ../../automation/cloud-init.rst:71
+msgid "Initial Configuration"
+msgstr "Initial Configuration"
+
+#: ../../automation/cloud-init.rst:180
+msgid "Injecting configuration data is not limited to cloud platforms. Users can employ the NoCloud data source to inject user-data and meta-data on virtualization platforms such as VMware, Hyper-V and KVM."
+msgstr "Injecting configuration data is not limited to cloud platforms. Users can employ the NoCloud data source to inject user-data and meta-data on virtualization platforms such as VMware, Hyper-V and KVM."
+
+#: ../../automation/vyos-napalm.rst:11
+msgid "Install ``napalm-vyos`` module"
+msgstr "Install ``napalm-vyos`` module"
+
+#: ../../automation/vyos-salt.rst:98
+msgid "It is possible to configure VyOS via netmiko_ proxy module. It requires a minion with installed packet  ``python3-netmiko`` module who has a connection to VyOS nodes. Salt-minion have to communicate with salt master"
+msgstr "It is possible to configure VyOS via netmiko_ proxy module. It requires a minion with installed packet  ``python3-netmiko`` module who has a connection to VyOS nodes. Salt-minion have to communicate with salt master"
+
+#: ../../automation/cloud-init.rst:36
+msgid "Major cloud providers offer a means of providing user-data at the time of instance launch. It can be provided as plain text or as base64-encoded text, depending on cloud provider. Also, it can be compressed using gzip, which makes sense with a long configuration commands list, because of the hard limit to ~16384 bytes for the whole user-data."
+msgstr "Major cloud providers offer a means of providing user-data at the time of instance launch. It can be provided as plain text or as base64-encoded text, depending on cloud provider. Also, it can be compressed using gzip, which makes sense with a long configuration commands list, because of the hard limit to ~16384 bytes for the whole user-data."
+
+#: ../../automation/cloud-init.rst:20
+msgid "Metadata - Metadata is sourced by the cloud platform or hypervisor. In some clouds, there is implemented as an HTTP endpoint at ``http://169.254.169.254``."
+msgstr "Metadata - Metadata is sourced by the cloud platform or hypervisor. In some clouds, there is implemented as an HTTP endpoint at ``http://169.254.169.254``."
+
+#: ../../automation/cloud-init.rst:244
+msgid "Most important keys that needs to be considered:"
+msgstr "Most important keys that needs to be considered:"
+
+#: ../../automation/vyos-napalm.rst:6
+msgid "Napalm"
+msgstr "Napalm"
+
+#: ../../automation/vyos-netmiko.rst:6
+msgid "Netmiko"
+msgstr "Netmiko"
+
+#: ../../automation/vyos-salt.rst:96
+msgid "Netmiko-proxy"
+msgstr "Netmiko-proxy"
+
+#: ../../automation/cloud-init.rst:24
+msgid "Network configuration - This config source informs the system about the network settings like IP addresses, routes, DNS. Available only in several cloud and virtualization platforms."
+msgstr "Network configuration - This config source informs the system about the network settings like IP addresses, routes, DNS. Available only in several cloud and virtualization platforms."
+
+#: ../../automation/cloud-init.rst:248
+msgid "Networking configurations shouldn't be passed in user-data file."
+msgstr "Networking configurations shouldn't be passed in user-data file."
+
+#: ../../automation/cloud-init.rst:178
+msgid "NoCloud"
+msgstr "NoCloud"
+
+#: ../../automation/index.rst:6
+msgid "Nornir"
+msgstr "Nornir"
+
+#: ../../automation/cloud-init.rst:131
+msgid "Note that the /opt/vyatta/etc/config is used instead of the /config/scripts directory referenced in the :ref:`command-scripting` section of the documentation because the /config/script directory isn't mounted when the ``write_files`` module executes."
+msgstr "Note that the /opt/vyatta/etc/config is used instead of the /config/scripts directory referenced in the :ref:`command-scripting` section of the documentation because the /config/script directory isn't mounted when the ``write_files`` module executes."
+
+#: ../../automation/cloud-init.rst:370
+msgid "Notes for this particular example, that may need to be modified in other setups:"
+msgstr "Notes for this particular example, that may need to be modified in other setups:"
+
+#: ../../automation/cloud-init.rst:287
+msgid "Now, that file needs to be copied to proxmox server:"
+msgstr "Now, that file needs to be copied to proxmox server:"
+
+#: ../../automation/command-scripting.rst:108
+msgid "On VyOS this will cause the following problem: After modifying the configuration via script like this once, it is not possible to manually modify the config anymore:"
+msgstr "On VyOS this will cause the following problem: After modifying the configuration via script like this once, it is not possible to manually modify the config anymore:"
+
+#: ../../automation/cloud-init.rst:390
+msgid "On proxmox server:"
+msgstr "On proxmox server:"
+
+#: ../../automation/cloud-init.rst:353
+msgid "Once the three files were created, it's time to generate the ``seed.iso`` image, which needs to be mounted to the new VM as a cd."
+msgstr "Once the three files were created, it's time to generate the ``seed.iso`` image, which needs to be mounted to the new VM as a cd."
+
+#: ../../automation/cloud-init.rst:80
+msgid "One command per line."
+msgstr "One command per line."
+
+#: ../../automation/vyos-napalm.rst:21
+msgid "Op-mode"
+msgstr "Op-mode"
+
+#: ../../automation/command-scripting.rst:77
+msgid "Other script languages"
+msgstr "Other script languages"
+
+#: ../../automation/vyos-napalm.rst:129
+#: ../../automation/vyos-netmiko.rst:47
+msgid "Output"
+msgstr "Output"
+
+#: ../../automation/vyos-napalm.rst:48
+msgid "Output op-mode"
+msgstr "Output op-mode"
+
+#: ../../_include/need_improvement.txt:13
+msgid "Please take a look at the Contributing Guide for our :ref:`documentation`."
+msgstr "Please take a look at the Contributing Guide for our :ref:`documentation`."
+
+#: ../../automation/command-scripting.rst:195
+msgid "Postconfig on boot"
+msgstr "Postconfig on boot"
+
+#: ../../automation/cloud-init.rst:409
+msgid "Power on VM and verifications"
+msgstr "Power on VM and verifications"
+
+#: ../../automation/command-scripting.rst:176
+msgid "Preconfig on boot"
+msgstr "Preconfig on boot"
+
+#: ../../automation/cloud-init.rst:296
+msgid "Prepare cloud-init files"
+msgstr "Prepare cloud-init files"
+
+#: ../../automation/cloud-init.rst:258
+msgid "Proxmox IP address: **192.168.0.253/24**"
+msgstr "Proxmox IP address: **192.168.0.253/24**"
+
+#: ../../automation/cloud-init.rst:422
+msgid "Proxmox `Cloud-init-Support`_."
+msgstr "Proxmox `Cloud-init-Support`_."
+
+#: ../../automation/cloud-init.rst:416
+msgid "References"
+msgstr "References"
+
+#: ../../automation/cloud-init.rst:263
+msgid "Remove default dhcp client on first interface, and load other configuration during first boot, using cloud-init."
+msgstr "Remove default dhcp client on first interface, and load other configuration during first boot, using cloud-init."
+
+#: ../../automation/vyos-ansible.rst:80
+msgid "Run ansible"
+msgstr "Run ansible"
+
+#: ../../automation/command-scripting.rst:50
+msgid "Run commands remotely"
+msgstr "Run commands remotely"
+
+#: ../../automation/command-scripting.rst:21
+msgid "Run configuration commands"
+msgstr "Run configuration commands"
+
+#: ../../automation/command-scripting.rst:37
+msgid "Run operational commands"
+msgstr "Run operational commands"
+
+#: ../../automation/cloud-init.rst:111
+msgid "SSH is configured on port 22."
+msgstr "SSH is configured on port 22."
+
+#: ../../automation/vyos-salt.rst:8
+msgid "Salt"
+msgstr "Salt"
+
+#: ../../automation/vyos-salt.rst:106
+msgid "Salt master configuration:"
+msgstr "Salt master configuration:"
+
+#: ../../automation/vyos-api.rst:307
+msgid "Save a running configuration to a file."
+msgstr "Save a running configuration to a file."
+
+#: ../../automation/vyos-api.rst:289
+msgid "Save a running configuration to the startup configuration. When you don't specify the file when saving, it saves to ``/config/config.boot``."
+msgstr "Save a running configuration to the startup configuration. When you don't specify the file when saving, it saves to ``/config/config.boot``."
+
+#: ../../automation/vyos-napalm.rst:99
+msgid "Script vyos-napalm.py"
+msgstr "Script vyos-napalm.py"
+
+#: ../../automation/command-scripting.rst:152
+msgid "Scripts are run in alphabetical order. Their names must consist entirely of ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and ASCII minus-hyphens.No other characters are allowed."
+msgstr "Scripts are run in alphabetical order. Their names must consist entirely of ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and ASCII minus-hyphens.No other characters are allowed."
+
+#: ../../automation/command-scripting.rst:52
+msgid "Sometimes you simply wan't to execute a bunch of op-mode commands via SSH on a remote VyOS system."
+msgstr "Sometimes you simply wan't to execute a bunch of op-mode commands via SSH on a remote VyOS system."
+
+#: ../../automation/cloud-init.rst:260
+msgid "Storaged used: volume local, which is mounted on directory **/var/lib/vz**, and contains all type of content, including snippets."
+msgstr "Storaged used: volume local, which is mounted on directory **/var/lib/vz**, and contains all type of content, including snippets."
+
+#: ../../automation/vyos-salt.rst:119
+msgid "Structure of /srv/salt:"
+msgstr "Structure of /srv/salt:"
+
+#: ../../automation/vyos-ansible.rst:11
+msgid "Structure of files"
+msgstr "Structure of files"
+
+#: ../../automation/cloud-init.rst:107
+msgid "System Defaults/Fallbacks"
+msgstr "System Defaults/Fallbacks"
+
+#: ../../automation/vyos-api.rst:264
+msgid "The API pushes every request to a session and commit it. But some of VyOS components like DHCP and PPPoE Servers, IPSec, VXLAN, and other tunnels require full configuration for commit. The endpoint will process multiple commands when you pass them as a list to the ``data`` field."
+msgstr "The API pushes every request to a session and commit it. But some of VyOS components like DHCP and PPPoE Servers, IPSec, VXLAN, and other tunnels require full configuration for commit. The endpoint will process multiple commands when you pass them as a list to the ``data`` field."
+
+#: ../../automation/command-scripting.rst:197
+msgid "The ``/config/scripts/vyos-postconfig-bootup.script`` script is called on boot after the VyOS configuration is fully applied."
+msgstr "The ``/config/scripts/vyos-postconfig-bootup.script`` script is called on boot after the VyOS configuration is fully applied."
+
+#: ../../automation/command-scripting.rst:178
+msgid "The ``/config/scripts/vyos-preconfig-bootup.script`` script is called on boot before the VyOS configuration during boot process."
+msgstr "The ``/config/scripts/vyos-preconfig-bootup.script`` script is called on boot before the VyOS configuration during boot process."
+
+#: ../../automation/vyos-api.rst:187
+msgid "The ``/show`` endpoint is to show everything in the operational mode."
+msgstr "The ``/show`` endpoint is to show everything in the operational mode."
+
+#: ../../automation/vyos-api.rst:211
+msgid "The ``generate`` endpoint run a ``generate`` command."
+msgstr "The ``generate`` endpoint run a ``generate`` command."
+
+#: ../../automation/vyos-api.rst:131
+msgid "The ``reset`` endpoint run a ``reset`` command."
+msgstr "The ``reset`` endpoint run a ``reset`` command."
+
+#: ../../automation/cloud-init.rst:84
+msgid "The commands list produced by the ``show configuration commands`` command on a VyOS router should comply with all the requirements, so it is easy to get a proper commands list by copying it from another router."
+msgstr "The commands list produced by the ``show configuration commands`` command on a VyOS router should comply with all the requirements, so it is easy to get a proper commands list by copying it from another router."
+
+#: ../../automation/cloud-init.rst:88
+msgid "The configuration specified in the cloud-config document overwrites default configuration values and values configured via Metadata."
+msgstr "The configuration specified in the cloud-config document overwrites default configuration values and values configured via Metadata."
+
+#: ../../automation/command-scripting.rst:142
+msgid "The default directories where your custom Scripts should be located are:"
+msgstr "The default directories where your custom Scripts should be located are:"
+
+#: ../../automation/command-scripting.rst:184
+#: ../../automation/command-scripting.rst:203
+msgid "The default file looks like this:"
+msgstr "The default file looks like this:"
+
+#: ../../automation/cloud-init.rst:42
+msgid "The easiest way to configure the system via user-data is the Cloud-config syntax described below."
+msgstr "The easiest way to configure the system via user-data is the Cloud-config syntax described below."
+
+#: ../../automation/vyos-api.rst:287
+msgid "The endpoint ``/config-file`` is to save or load a configuration."
+msgstr "The endpoint ``/config-file`` is to save or load a configuration."
+
+#: ../../automation/cloud-init.rst:156
+msgid "The following example sets the hostname based on the instance identifier obtained from the EC2 metadata service."
+msgstr "The following example sets the hostname based on the instance identifier obtained from the EC2 metadata service."
+
+#: ../../automation/cloud-init.rst:136
+msgid "The following example shows how to execute commands after the initial configuration."
+msgstr "The following example shows how to execute commands after the initial configuration."
+
+#: ../../automation/cloud-init.rst:74
+msgid "The key used to designate a VyOS configuration is ``vyos_config_commands``. What follows is VyOS configuration using the \"set-style\" syntax. Both \"set\" and \"delete\" commands are supported."
+msgstr "The key used to designate a VyOS configuration is ``vyos_config_commands``. What follows is VyOS configuration using the \"set-style\" syntax. Both \"set\" and \"delete\" commands are supported."
+
+#: ../../automation/cloud-init.rst:197
+msgid "The seed.iso file can be attached to the virtual machine. As an example, the method with KVM to attach the ISO as a CD drive follows."
+msgstr "The seed.iso file can be attached to the virtual machine. As an example, the method with KVM to attach the ISO as a CD drive follows."
+
+#: ../../automation/command-scripting.rst:104
+msgid "There is a pitfall when working with configuration scripts. It is tempting to call configuration scripts with \"sudo\" (i.e., temporary root permissions), because that's the common way on most Linux platforms to call system commands."
+msgstr "There is a pitfall when working with configuration scripts. It is tempting to call configuration scripts with \"sudo\" (i.e., temporary root permissions), because that's the common way on most Linux platforms to call system commands."
+
+#: ../../automation/cloud-init.rst:109
+msgid "These are the VyOS defaults and fallbacks."
+msgstr "These are the VyOS defaults and fallbacks."
+
+#: ../../_include/need_improvement.txt:11
+msgid "This section needs improvements, examples and explanations."
+msgstr "This section needs improvements, examples and explanations."
+
+#: ../../automation/command-scripting.rst:118
+msgid "This will result in the following error message: ``Set failed`` If this happens, a reboot is required to be able to edit the config manually again."
+msgstr "This will result in the following error message: ``Set failed`` If this happens, a reboot is required to be able to edit the config manually again."
+
+#: ../../automation/vyos-api.rst:323
+msgid "To Load a configuration file."
+msgstr "To Load a configuration file."
+
+#: ../../automation/vyos-api.rst:149
+msgid "To add or delete an image, use the ``/image`` endpoint."
+msgstr "To add or delete an image, use the ``/image`` endpoint."
+
+#: ../../automation/command-scripting.rst:121
+msgid "To avoid these problems, the proper way is to call a script with the ``vyattacfg`` group, e.g., by using the ``sg`` (switch group) command:"
+msgstr "To avoid these problems, the proper way is to call a script with the ``vyattacfg`` group, e.g., by using the ``sg`` (switch group) command:"
+
+#: ../../automation/vyos-api.rst:48
+msgid "To get the whole configuration, pass an empty list to the ``path`` field"
+msgstr "To get the whole configuration, pass an empty list to the ``path`` field"
+
+#: ../../automation/command-scripting.rst:11
+msgid "To include VyOS specific functions and aliases you need to ``source /opt/vyatta/etc/functions/script-template`` files at the top of your script."
+msgstr "To include VyOS specific functions and aliases you need to ``source /opt/vyatta/etc/functions/script-template`` files at the top of your script."
+
+#: ../../automation/command-scripting.rst:128
+msgid "To make sure that a script is not accidentally called without the ``vyattacfg`` group, the script can be safeguarded like this:"
+msgstr "To make sure that a script is not accidentally called without the ``vyattacfg`` group, the script can be safeguarded like this:"
+
+#: ../../automation/vyos-api.rst:79
+msgid "To only get a part of the configuration, for example ``system syslog``."
+msgstr "To only get a part of the configuration, for example ``system syslog``."
+
+#: ../../automation/cloud-init.rst:223
+msgid "Troubleshooting"
+msgstr "Troubleshooting"
+
+#: ../../automation/command-scripting.rst:39
+msgid "Unlike a normal configuration session, all operational commands must be prepended with ``run``, even if you haven't created a session with configure."
+msgstr "Unlike a normal configuration session, all operational commands must be prepended with ``run``, even if you haven't created a session with configure."
+
+#: ../../automation/cloud-init.rst:34
+msgid "User-data"
+msgstr "User-data"
+
+#: ../../automation/cloud-init.rst:28
+msgid "User-data - User-data is specified by the user. This config source offers the ability to insert any CLI configuration commands into the configuration before the first boot."
+msgstr "User-data - User-data is specified by the user. This config source offers the ability to insert any CLI configuration commands into the configuration before the first boot."
+
+#: ../../automation/cloud-init.rst:373
+msgid "VM ID: in this example, VM ID used is 555."
+msgstr "VM ID: in this example, VM ID used is 555."
+
+#: ../../automation/cloud-init.rst:381
+msgid "VM Resources: these parameters can be modified as needed."
+msgstr "VM Resources: these parameters can be modified as needed."
+
+#: ../../automation/cloud-init.rst:375
+msgid "VM Storage: ``local`` volume is used."
+msgstr "VM Storage: ``local`` volume is used."
+
+#: ../../automation/vyos-api.rst:7
+msgid "VyOS API"
+msgstr "VyOS API"
+
+#: ../../automation/index.rst:3
+msgid "VyOS Automation"
+msgstr "VyOS Automation"
+
+#: ../../automation/cloud-init.rst:418
+msgid "VyOS `cloud-init-docs`_."
+msgstr "VyOS `cloud-init-docs`_."
+
+#: ../../automation/cloud-init.rst:7
+msgid "VyOS cloud-init"
+msgstr "VyOS cloud-init"
+
+#: ../../automation/cloud-init.rst:246
+msgid "VyOS configuration commands are defined in user-data file."
+msgstr "VyOS configuration commands are defined in user-data file."
+
+#: ../../automation/command-scripting.rst:140
+msgid "VyOS has the ability to run custom  scripts before and after each commit"
+msgstr "VyOS has the ability to run custom  scripts before and after each commit"
+
+#: ../../automation/cloud-init.rst:18
+msgid "VyOS support three types of config sources."
+msgstr "VyOS support three types of config sources."
+
+#: ../../automation/vyos-ansible.rst:8
+msgid "VyOS supports configuration via ansible. Need to install ``ansible`` and ``python3-paramiko`` module"
+msgstr "VyOS supports configuration via ansible. Need to install ``ansible`` and ``python3-paramiko`` module"
+
+#: ../../automation/vyos-netmiko.rst:8
+msgid "VyOS supports configuration via netmiko_. It requires to install ``python3-netmiko`` module."
+msgstr "VyOS supports configuration via netmiko_. It requires to install ``python3-netmiko`` module."
+
+#: ../../automation/command-scripting.rst:8
+msgid "VyOS supports executing configuration and operational commands non-interactively from shell scripts."
+msgstr "VyOS supports executing configuration and operational commands non-interactively from shell scripts."
+
+#: ../../automation/vyos-salt.rst:10
+msgid "VyOS supports op-mode and configuration via salt_."
+msgstr "VyOS supports op-mode and configuration via salt_."
+
+#: ../../automation/vyos-napalm.rst:8
+msgid "VyOS supports some napalm_ functions for configuration and op-mode. It requires more tests."
+msgstr "VyOS supports some napalm_ functions for configuration and op-mode. It requires more tests."
+
+#: ../../automation/cloud-init.rst:122
+msgid "VyOS supports the execution of operational commands and linux commands at initial boot. This is accomplished using ``write_files`` to certain files in the /opt/vyatta/etc/config/scripts directory. Commands specified in opt/vyatta/etc/config/scripts/vyos-preconfig-bootup.script are executed prior to configuration. The /opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script file contains commands to be executed after configuration. In both cases, commands are executed as the root user."
+msgstr "VyOS supports the execution of operational commands and linux commands at initial boot. This is accomplished using ``write_files`` to certain files in the /opt/vyatta/etc/config/scripts directory. Commands specified in opt/vyatta/etc/config/scripts/vyos-preconfig-bootup.script are executed prior to configuration. The /opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script file contains commands to be executed after configuration. In both cases, commands are executed as the root user."
+
+#: ../../automation/vyos-napalm.rst:87
+msgid "We need 2 files, commands.conf and script itself."
+msgstr "We need 2 files, commands.conf and script itself."
+
+#: ../../automation/cloud-init.rst:184
+msgid "While other methods exist, the most straightforward method for using the NoCloud data source is creating a seed ISO and attaching it to the virtual machine as a CD drive. The volume must be formatted as a vfat or ISO 9660 file system with the label \"cidata\" or \"CIDATA\"."
+msgstr "While other methods exist, the most straightforward method for using the NoCloud data source is creating a seed ISO and attaching it to the virtual machine as a CD drive. The volume must be formatted as a vfat or ISO 9660 file system with the label \"cidata\" or \"CIDATA\"."
+
+#: ../../automation/command-scripting.rst:63
+msgid "Will return:"
+msgstr "Will return:"
+
+#: ../../automation/vyos-api.rst:46
+msgid "With the ``retrieve`` endpoint you get parts or the whole configuration."
+msgstr "With the ``retrieve`` endpoint you get parts or the whole configuration."
+
+#: ../../automation/vyos-salt.rst:12
+msgid "Without proxy it requires VyOS minion configuration and support op-mode data:"
+msgstr "Without proxy it requires VyOS minion configuration and support op-mode data:"
+
+#: ../../automation/vyos-salt.rst:12
+msgid "Without proxy it requires VyOS minion configuration and supports op-mode data:"
+msgstr "Without proxy it requires VyOS minion configuration and supports op-mode data:"
+
+#: ../../automation/vyos-api.rst:230
+msgid "You can pass a ``set``, ``delete`` or ``comment`` command to the ``/configure`` endpoint."
+msgstr "You can pass a ``set``, ``delete`` or ``comment`` command to the ``/configure`` endpoint."
+
+#: ../../automation/vyos-api.rst:249
+msgid "``delete`` a single command"
+msgstr "``delete`` a single command"
+
+#: ../../automation/cloud-init.rst:383
+msgid "``seed.iso`` was previously created in directory ``/tmp/``. It's necessary to move it to ``/var/lib/vz/template/iso``"
+msgstr "``seed.iso`` was previously created in directory ``/tmp/``. It's necessary to move it to ``/var/lib/vz/template/iso``"
+
+#: ../../automation/vyos-api.rst:233
+msgid "``set`` a single command"
+msgstr "``set`` a single command"
+
+#: ../../automation/cloud-init.rst:55
+msgid "``vyos_userdata`` - the module accepts a list of CLI configuration commands in a ``vyos_config_commands`` section, which gives an easy way to configure the system during deployment."
+msgstr "``vyos_userdata`` - the module accepts a list of CLI configuration commands in a ``vyos_config_commands`` section, which gives an easy way to configure the system during deployment."
+
+#: ../../automation/cloud-init.rst:112
+msgid "``vyos``/``vyos`` credentials if no others specified by data source."
+msgstr "``vyos``/``vyos`` credentials if no others specified by data source."
+
+#: ../../automation/cloud-init.rst:51
+msgid "``write_files`` - this module allows to insert any files into the filesystem before the first boot, for example, pre-generated encryption keys, certificates, or even a whole ``config.boot`` file. The format is described in the cloudinit documentation `Cloud-init-write_files`_."
+msgstr "``write_files`` - this module allows to insert any files into the filesystem before the first boot, for example, pre-generated encryption keys, certificates, or even a whole ``config.boot`` file. The format is described in the cloudinit documentation `Cloud-init-write_files`_."
+
+#: ../../automation/vyos-api.rst:151
+msgid "add an image"
+msgstr "add an image"
+
+#: ../../automation/vyos-ansible.rst:26
+msgid "ansible.cfg"
+msgstr "ansible.cfg"
+
+#: ../../automation/cloud-init.rst:61
+msgid "cloud-config file format"
+msgstr "cloud-config file format"
+
+#: ../../automation/cloud-init.rst:229
+msgid "cloud-init logs to /var/log/cloud-init.log. This file can be helpful in determining why the configuration varies from what you expect. You can fetch the most important data filtering output for ``vyos`` keyword:"
+msgstr "cloud-init logs to /var/log/cloud-init.log. This file can be helpful in determining why the configuration varies from what you expect. You can fetch the most important data filtering output for ``vyos`` keyword:"
+
+#: ../../automation/vyos-salt.rst:153
+msgid "commands.txt"
+msgstr "commands.txt"
+
+#: ../../automation/vyos-api.rst:168
+msgid "delete an image, for example ``1.3-rolling-202006070117``"
+msgstr "delete an image, for example ``1.3-rolling-202006070117``"
+
+#: ../../automation/vyos-ansible.rst:42
+msgid "hosts"
+msgstr "hosts"
+
+#: ../../automation/vyos-ansible.rst:35
+msgid "id_rsa_docker.pub. Needs to declare only public key exactly."
+msgstr "id_rsa_docker.pub. Needs to declare only public key exactly."
+
+#: ../../automation/vyos-api.rst:106
+msgid "if you just want the Value of a multi-valued node, use the ``returnValues`` operation."
+msgstr "if you just want the Value of a multi-valued node, use the ``returnValues`` operation."
+
+#: ../../automation/vyos-ansible.rst:56
+msgid "main.yml"
+msgstr "main.yml"
+
+#: ../../automation/vyos-salt.rst:141
+msgid "r11-proxy.sls Includes parameters for connecting to salt-proxy minion"
+msgstr "r11-proxy.sls Includes parameters for connecting to salt-proxy minion"
+
+#: ../../automation/index.rst:7
+msgid "startup scripts"
+msgstr "startup scripts"
+
+#: ../../automation/vyos-salt.rst:131
+msgid "top.sls"
+msgstr "top.sls"

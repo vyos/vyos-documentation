@@ -177,6 +177,10 @@ msgstr "**Comprobación externa**"
 msgid "**Firewall mark**"
 msgstr "**Marca de cortafuegos**"
 
+#: ../../configuration/firewall/index.rst:41
+msgid "**For more information** of Netfilter hooks and Linux networking packet flows can be found in `Netfilter-Hooks <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_"
+msgstr "**For more information** of Netfilter hooks and Linux networking packet flows can be found in `Netfilter-Hooks <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_"
+
 #: ../../configuration/protocols/bgp.rst:94
 msgid "**IGP cost check**"
 msgstr "**Consulta de costos IGP**"
@@ -201,11 +205,11 @@ msgstr "**Important note:** This documentation is valid only for VyOS Sagitta pr
 msgid "**Important note:** This documentation is valid only for VyOS Sagitta prior to 1.4-rolling-YYYYMMDDHHmm"
 msgstr "**Important note:** This documentation is valid only for VyOS Sagitta prior to 1.4-rolling-YYYYMMDDHHmm"
 
-#: ../../configuration/firewall/general.rst:79
+#: ../../configuration/firewall/general.rst:72
 msgid "**Important note about default-actions:** If default action for any chain is not defined, then the default action is set to **accept** for that chain. Only for custom chains, the default action is set to **drop**."
 msgstr "**Important note about default-actions:** If default action for any chain is not defined, then the default action is set to **accept** for that chain. Only for custom chains, the default action is set to **drop**."
 
-#: ../../configuration/firewall/general.rst:411
+#: ../../configuration/firewall/general.rst:404
 msgid "**Important note about default-actions:** If default action for any chain is not defined, then the default action is set to **drop** for that chain."
 msgstr "**Important note about default-actions:** If default action for any chain is not defined, then the default action is set to **drop** for that chain."
 
@@ -623,7 +627,7 @@ msgstr "**exportador**: agrega paquetes en flujos y exporta registros de flujo h
 msgid "**firewall all-ping** affects only to LOCAL and it always behaves in the most restrictive way"
 msgstr "**firewall all-ping** afecta solo a LOCAL y siempre se comporta de la manera más restrictiva"
 
-#: ../../configuration/firewall/general.rst:106
+#: ../../configuration/firewall/general.rst:99
 msgid "**firewall global-options all-ping** affects only to LOCAL and it always behaves in the most restrictive way"
 msgstr "**firewall global-options all-ping** affects only to LOCAL and it always behaves in the most restrictive way"
 
@@ -1309,17 +1313,17 @@ msgstr "<x.x.x.x>: dirección IP para hacer coincidir."
 msgid "ARP"
 msgstr "ARP"
 
-#: ../../configuration/firewall/general.rst:309
+#: ../../configuration/firewall/general.rst:302
 #: ../../configuration/firewall/general-legacy.rst:257
 msgid "A **domain group** represents a collection of domains."
 msgstr "Un **grupo de dominio** representa una colección de dominios."
 
-#: ../../configuration/firewall/general.rst:291
+#: ../../configuration/firewall/general.rst:284
 #: ../../configuration/firewall/general-legacy.rst:242
 msgid "A **mac group** represents a collection of mac addresses."
 msgstr "Un **grupo mac** representa una colección de direcciones mac."
 
-#: ../../configuration/firewall/general.rst:266
+#: ../../configuration/firewall/general.rst:259
 #: ../../configuration/firewall/general-legacy.rst:217
 msgid "A **port group** represents only port numbers, not the protocol. Port groups can be referenced for either TCP or UDP. It is recommended that TCP and UDP groups are created separately to avoid accidentally filtering unnecessary ports. Ranges of ports can be specified by using `-`."
 msgstr "Un **grupo de puertos** representa solo números de puerto, no el protocolo. Se puede hacer referencia a los grupos de puertos para TCP o UDP. Se recomienda que los grupos TCP y UDP se creen por separado para evitar el filtrado accidental de puertos innecesarios. Los rangos de puertos se pueden especificar usando `-`."
@@ -1481,7 +1485,7 @@ msgstr "Se requiere una interfaz física para conectar esta instancia de MACsec.
 msgid "A pool of addresses can be defined by using a hyphen between two IP addresses:"
 msgstr "Se puede definir un grupo de direcciones usando un guión entre dos direcciones IP:"
 
-#: ../../configuration/firewall/general.rst:768
+#: ../../configuration/firewall/general.rst:761
 #: ../../configuration/firewall/general-legacy.rst:506
 msgid "A port can be set with a port number or a name which is here defined: ``/etc/services``."
 msgstr "Un puerto se puede configurar con un número de puerto o un nombre que se define aquí: ``/etc/services``."
@@ -1624,7 +1628,7 @@ msgstr "Se debe tomar acción inmediatamente: una condición que se debe corregi
 msgid "Action which will be run once the ctrl-alt-del keystroke is received."
 msgstr "Acción que se ejecutará una vez recibida la pulsación de tecla ctrl-alt-del."
 
-#: ../../configuration/firewall/general.rst:334
+#: ../../configuration/firewall/general.rst:327
 #: ../../configuration/policy/route.rst:238
 msgid "Actions"
 msgstr "Acciones"
@@ -1697,6 +1701,10 @@ msgstr "Agregue una parte de la clave pública para el certificado llamado `nomb
 msgid "Add the CAs private key to the VyOS CLI. This should never leave the system, and is only required if you use VyOS as your certificate generator as mentioned above."
 msgstr "Agregue la clave privada de las CA a la CLI de VyOS. Esto nunca debe salir del sistema y solo es necesario si usa VyOS como su generador de certificados como se mencionó anteriormente."
 
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:163
+msgid "Add the commands from Snippet in the Windows side via PowerShell. Also import the root CA cert to the Windows “Trusted Root Certification Authorities” and establish the connection."
+msgstr "Add the commands from Snippet in the Windows side via PowerShell. Also import the root CA cert to the Windows “Trusted Root Certification Authorities” and establish the connection."
+
 #: ../../configuration/pki/index.rst:232
 msgid "Add the private key portion of this certificate to the CLI. This should never leave the system as it is used to decrypt the data."
 msgstr "Agregue la parte de la clave privada de este certificado a la CLI. Esto nunca debe salir del sistema, ya que se utiliza para descifrar los datos."
@@ -1741,7 +1749,7 @@ msgstr "Conversión de direcciones"
 msgid "Address Families"
 msgstr "Familias de direcciones"
 
-#: ../../configuration/firewall/general.rst:199
+#: ../../configuration/firewall/general.rst:192
 #: ../../configuration/firewall/general-legacy.rst:168
 msgid "Address Groups"
 msgstr "Grupos de direcciones"
@@ -1789,6 +1797,10 @@ msgstr "Después de confirmar, las contraseñas de texto sin formato se cifrará
 #: ../../configuration/vrf/index.rst:323
 msgid "After committing the configuration we can verify all leaked routes are installed, and try to ICMP ping PC1 from PC3."
 msgstr "Después de confirmar la configuración, podemos verificar que todas las rutas filtradas estén instaladas e intentar hacer ping ICMP a la PC1 desde la PC3."
+
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:80
+msgid "After the PKI certs are all set up we can start configuring our IPSec/IKE proposals used for key-exchange end data encryption. The used encryption ciphers and integrity algorithms vary from operating system to operating system. The ones used in this example are validated to work on Windows 10."
+msgstr "After the PKI certs are all set up we can start configuring our IPSec/IKE proposals used for key-exchange end data encryption. The used encryption ciphers and integrity algorithms vary from operating system to operating system. The ones used in this example are validated to work on Windows 10."
 
 #: ../../configuration/pki/index.rst:212
 msgid "After we have imported the CA certificate(s) we can now import and add certificates used by services on this router."
@@ -1898,7 +1910,7 @@ msgstr "Permitir redes de host en un contenedor. La pila de red del contenedor n
 msgid "Allow this BFD peer to not be directly connected"
 msgstr "Permitir que este par BFD no se conecte directamente"
 
-#: ../../configuration/firewall/general.rst:1144
+#: ../../configuration/firewall/general.rst:1137
 #: ../../configuration/firewall/general-legacy.rst:694
 msgid "Allowed values fpr TCP flags: ``SYN``, ``ACK``, ``FIN``, ``RST``, ``URG``, ``PSH``, ``ALL`` When specifying more than one flag, flags should be comma separated. The ``!`` negate the selected protocol."
 msgstr "Valores permitidos para indicadores TCP: ``SYN``, ``ACK``, ``FIN``, ``RST``, ``URG``, ``PSH``, ``ALL`` Al especificar más de una bandera, las banderas deben estar separadas por comas. El ``!`` niega el protocolo seleccionado."
@@ -1923,7 +1935,7 @@ msgstr "Le permite configurar la interfaz de siguiente salto para una ruta está
 msgid "Already learned known_hosts files of clients need an update as the public key will change."
 msgstr "Los archivos de hosts conocidos ya aprendidos de los clientes necesitan una actualización ya que la clave pública cambiará."
 
-#: ../../configuration/firewall/general.rst:384
+#: ../../configuration/firewall/general.rst:377
 msgid "Also, **default-action** is an action that takes place whenever a packet does not match any rule in it's chain. For base chains, possible options for **default-action** are **accept** or **drop**."
 msgstr "Also, **default-action** is an action that takes place whenever a packet does not match any rule in it's chain. For base chains, possible options for **default-action** are **accept** or **drop**."
 
@@ -1955,7 +1967,7 @@ msgstr "Como alternativa a la multidifusión, la dirección IPv4 remota del tún
 msgid "Always exclude this address from any defined range. This address will never be assigned by the DHCP server."
 msgstr "Siempre excluya esta dirección de cualquier rango definido. Esta dirección nunca será asignada por el servidor DHCP."
 
-#: ../../configuration/firewall/general.rst:248
+#: ../../configuration/firewall/general.rst:241
 msgid "An **interface group** represents a collection of interfaces."
 msgstr "An **interface group** represents a collection of interfaces."
 
@@ -2007,7 +2019,7 @@ msgstr "Se puede aplicar una máscara de red arbitraria a las direcciones de má
 msgid "An arbitrary netmask can be applied to mask addresses to only match against a specific portion. This is particularly useful with IPv6 and a zone-based firewall as rules will remain valid if the IPv6 prefix changes and the host portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)."
 msgstr "An arbitrary netmask can be applied to mask addresses to only match against a specific portion. This is particularly useful with IPv6 and a zone-based firewall as rules will remain valid if the IPv6 prefix changes and the host portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)."
 
-#: ../../configuration/firewall/general.rst:626
+#: ../../configuration/firewall/general.rst:619
 msgid "An arbitrary netmask can be applied to mask addresses to only match against a specific portion. This is particularly useful with IPv6 as rules will remain valid if the IPv6 prefix changes and the host portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)"
 msgstr "An arbitrary netmask can be applied to mask addresses to only match against a specific portion. This is particularly useful with IPv6 as rules will remain valid if the IPv6 prefix changes and the host portion of systems IPv6 address is static (for example, with SLAAC or `tokenised IPv6 addresses <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt>`_)"
 
@@ -2213,6 +2225,14 @@ msgstr "Como se muestra en el ejemplo anterior, una de las posibilidades para ha
 msgid "As shown in the last command of the example above, the `queue-type` setting allows these combinations. You will be able to use it in many policies."
 msgstr "Como se muestra en el último comando del ejemplo anterior, la configuración `tipo de cola` permite estas combinaciones. Podrás usarlo en muchas pólizas."
 
+#: ../../configuration/firewall/index.rst:81
+msgid "As the example image below shows, the device now needs rules to allow/block traffic to or from the services running on the device that have open connections on that interface."
+msgstr "As the example image below shows, the device now needs rules to allow/block traffic to or from the services running on the device that have open connections on that interface."
+
+#: ../../configuration/firewall/index.rst:60
+msgid "As the example image below shows, the device was configured with rules blocking inbound or outbound traffic on each interface."
+msgstr "As the example image below shows, the device was configured with rules blocking inbound or outbound traffic on each interface."
+
 #: ../../configuration/interfaces/tunnel.rst:69
 msgid "As the name implies, it's IPv4 encapsulated in IPv6, as simple as that."
 msgstr "Como su nombre lo indica, es IPv4 encapsulado en IPv6, tan simple como eso."
@@ -2333,7 +2353,7 @@ msgstr "Reenvío asegurado (AF) 43"
 msgid "At every round, the deficit counter adds the quantum so that even large packets will have their opportunity to be dequeued."
 msgstr "En cada ronda, el contador de déficit agrega el cuanto para que incluso los paquetes grandes tengan la oportunidad de ser eliminados."
 
-#: ../../configuration/firewall/general.rst:1496
+#: ../../configuration/firewall/general.rst:1489
 #: ../../configuration/firewall/general-legacy.rst:972
 msgid "At the moment it not possible to look at the whole firewall log with VyOS operational commands. All logs will save to ``/var/logs/messages``. For example: ``grep '10.10.0.10' /var/log/messages``"
 msgstr "Por el momento, no es posible ver todo el registro del firewall con los comandos operativos de VyOS. Todos los registros se guardarán en ``/var/logs/messages``. Por ejemplo: ``grep &#39;10.10.0.10&#39; /var/log/messages``"
@@ -2764,7 +2784,7 @@ msgstr "De forma predeterminada, el prefijo BGP se anuncia incluso si no está p
 msgid "By default, this bridging is allowed."
 msgstr "De forma predeterminada, este puente está permitido."
 
-#: ../../configuration/firewall/general.rst:97
+#: ../../configuration/firewall/general.rst:90
 #: ../../configuration/firewall/general-legacy.rst:42
 msgid "By default, when VyOS receives an ICMP echo request packet destined for itself, it will answer with an ICMP echo reply, unless you avoid it through its firewall."
 msgstr "De manera predeterminada, cuando VyOS recibe un paquete de solicitud de eco ICMP destinado a sí mismo, responderá con una respuesta de eco ICMP, a menos que lo evite a través de su firewall."
@@ -2935,6 +2955,10 @@ msgstr "Grupos de direcciones de clientes"
 msgid "Client Authentication"
 msgstr "Autenticación del cliente"
 
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:137
+msgid "Client Configuration"
+msgstr "Client Configuration"
+
 #: ../../configuration/vpn/sstp.rst:278
 msgid "Client IP addresses will be provided from pool `192.0.2.0/25`"
 msgstr "Las direcciones IP de los clientes se proporcionarán desde el grupo `192.0.2.0/25`"
@@ -2975,7 +2999,7 @@ msgstr "Demonio del reloj"
 msgid "Command completion can be used to list available time zones. The adjustment for daylight time will take place automatically based on the time of year."
 msgstr "La finalización del comando se puede utilizar para enumerar las zonas horarias disponibles. El ajuste del horario de verano se realizará automáticamente en función de la época del año."
 
-#: ../../configuration/firewall/general.rst:537
+#: ../../configuration/firewall/general.rst:530
 msgid "Command for disabling a rule but keep it in the configuration."
 msgstr "Command for disabling a rule but keep it in the configuration."
 
@@ -2983,7 +3007,7 @@ msgstr "Command for disabling a rule but keep it in the configuration."
 msgid "Command should probably be extended to list also the real interfaces assigned to this one VRF to get a better overview."
 msgstr "El comando probablemente debería extenderse para enumerar también las interfaces reales asignadas a este VRF para obtener una mejor visión general."
 
-#: ../../configuration/firewall/general.rst:1551
+#: ../../configuration/firewall/general.rst:1544
 #: ../../configuration/firewall/general-legacy.rst:1054
 msgid "Command used to update GeoIP database and firewall sets."
 msgstr "Comando utilizado para actualizar la base de datos GeoIP y los conjuntos de firewall."
@@ -3081,7 +3105,7 @@ msgstr "Confidencialidad: cifrado de paquetes para evitar la intromisión de una
 #: ../../configuration/system/flow-accounting.rst:43
 #: ../../configuration/system/lcd.rst:17
 #: ../../configuration/system/login.rst:241
-#: ../../configuration/system/login.rst:294
+#: ../../configuration/system/login.rst:310
 #: ../../configuration/system/sflow.rst:12
 #: ../../configuration/vpn/dmvpn.rst:38
 #: ../../configuration/vpn/dmvpn.rst:182
@@ -3099,6 +3123,8 @@ msgstr "Configuración"
 #: ../../configuration/protocols/pim6.rst:78
 #: ../../configuration/protocols/rip.rst:239
 #: ../../configuration/protocols/segment-routing.rst:187
+#: ../../configuration/system/login.rst:279
+#: ../../configuration/system/login.rst:348
 msgid "Configuration Example"
 msgstr "Ejemplo de configuración"
 
@@ -3211,11 +3237,11 @@ msgstr "Configure la regla SNAT (40) solo para paquetes NAT con una dirección d
 msgid "Configure :abbr:`MTU (Maximum Transmission Unit)` on given `<interface>`. It is the size (in bytes) of the largest ethernet frame sent on this link."
 msgstr "Configure :abbr:`MTU (Unidad máxima de transmisión)` en ` dado<interface> `. Es el tamaño (en bytes) de la trama Ethernet más grande enviada en este enlace."
 
-#: ../../configuration/system/login.rst:345
+#: ../../configuration/system/login.rst:373
 msgid "Configure `<message>` which is shown after user has logged in to the system."
 msgstr "Configurar `<message> ` que se muestra después de que el usuario haya iniciado sesión en el sistema."
 
-#: ../../configuration/system/login.rst:340
+#: ../../configuration/system/login.rst:368
 msgid "Configure `<message>` which is shown during SSH connect and before a user is logged in."
 msgstr "Configurar `<message> ` que se muestra durante la conexión SSH y antes de que un usuario inicie sesión."
 
@@ -3441,7 +3467,7 @@ msgstr "Configurar servicio `<name> ` modo TCP o HTTP"
 msgid "Configure service `<name>` to use the backend <name>"
 msgstr "Configurar servicio `<name> ` para usar el backend<name>"
 
-#: ../../configuration/system/login.rst:364
+#: ../../configuration/system/login.rst:392
 msgid "Configure session timeout after which the user will be logged out."
 msgstr "Configure el tiempo de espera de la sesión después del cual se cerrará la sesión del usuario."
 
@@ -3465,7 +3491,7 @@ msgstr "Configure los módulos auxiliares del protocolo de seguimiento de conexi
 msgid "Configure the discrete port under which the RADIUS server can be reached."
 msgstr "Configure el puerto discreto bajo el cual se puede acceder al servidor RADIUS."
 
-#: ../../configuration/system/login.rst:305
+#: ../../configuration/system/login.rst:321
 msgid "Configure the discrete port under which the TACACS server can be reached."
 msgstr "Configure el puerto discreto bajo el cual se puede acceder al servidor TACACS."
 
@@ -3744,7 +3770,7 @@ msgstr "Actualmente, el enrutamiento dinámico es compatible con los siguientes 
 msgid "Custom File"
 msgstr "Archivo personalizado"
 
-#: ../../configuration/firewall/general.rst:84
+#: ../../configuration/firewall/general.rst:77
 msgid "Custom firewall chains can be created, with commands ``set firewall [ipv4 | ipv6] [name | ipv6-name] <name> ...``. In order to use such custom chain, a rule with **action jump**, and the appropiate **target** should be defined in a base chain."
 msgstr "Custom firewall chains can be created, with commands ``set firewall [ipv4 | ipv6] [name | ipv6-name] <name> ...``. In order to use such custom chain, a rule with **action jump**, and the appropiate **target** should be defined in a base chain."
 
@@ -3875,7 +3901,7 @@ msgstr "Valores DSCP según :rfc:`2474` y :rfc:`4595`:"
 msgid "DSSS/CCK Mode in 40 MHz, this sets ``[DSSS_CCK-40]``"
 msgstr "Modo DSSS/CCK en 40 MHz, esto establece ``[DSSS_CCK-40]``"
 
-#: ../../configuration/firewall/general.rst:721
+#: ../../configuration/firewall/general.rst:714
 #: ../../configuration/firewall/general-legacy.rst:480
 msgid "Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required, permits redistribution so we can include a database in images(~3MB compressed). Includes cron script (manually callable by op-mode update geoip) to keep database and rules updated."
 msgstr "Los datos son proporcionados por DB-IP.com bajo licencia CC-BY-4.0. Se requiere atribución, permite la redistribución para que podamos incluir una base de datos en imágenes (~3 MB comprimidos). Incluye secuencia de comandos cron (invocable manualmente por geoip de actualización de modo operativo) para mantener la base de datos y las reglas actualizadas."
@@ -3994,12 +4020,12 @@ msgstr "Definir tiempos de espera de conexión"
 msgid "Define IPv4/IPv6 management address transmitted via LLDP. Multiple addresses can be defined. Only addresses connected to the system will be transmitted."
 msgstr "Defina la dirección de administración IPv4/IPv6 transmitida a través de LLDP. Se pueden definir varias direcciones. Solo se transmitirán las direcciones conectadas al sistema."
 
-#: ../../configuration/firewall/general.rst:232
+#: ../../configuration/firewall/general.rst:225
 #: ../../configuration/firewall/general-legacy.rst:201
 msgid "Define a IPv4 or IPv6 Network group."
 msgstr "Defina un grupo de red IPv4 o IPv6."
 
-#: ../../configuration/firewall/general.rst:208
+#: ../../configuration/firewall/general.rst:201
 #: ../../configuration/firewall/general-legacy.rst:177
 msgid "Define a IPv4 or a IPv6 address group"
 msgstr "Definir un grupo de direcciones IPv4 o IPv6"
@@ -4012,17 +4038,17 @@ msgstr "Definir una zona"
 msgid "Define a discrete source IP address of 100.64.0.1 for SNAT rule 20"
 msgstr "Defina una dirección IP de origen discreta de 100.64.0.1 para la regla SNAT 20"
 
-#: ../../configuration/firewall/general.rst:313
+#: ../../configuration/firewall/general.rst:306
 #: ../../configuration/firewall/general-legacy.rst:261
 msgid "Define a domain group."
 msgstr "Defina un grupo de dominio."
 
-#: ../../configuration/firewall/general.rst:295
+#: ../../configuration/firewall/general.rst:288
 #: ../../configuration/firewall/general-legacy.rst:246
 msgid "Define a mac group."
 msgstr "Defina un grupo mac."
 
-#: ../../configuration/firewall/general.rst:275
+#: ../../configuration/firewall/general.rst:268
 #: ../../configuration/firewall/general-legacy.rst:226
 msgid "Define a port group. A port name can be any name defined in /etc/services. e.g.: http"
 msgstr "Defina un grupo de puertos. Un nombre de puerto puede ser cualquier nombre definido en /etc/services. por ejemplo: http"
@@ -4031,7 +4057,7 @@ msgstr "Defina un grupo de puertos. Un nombre de puerto puede ser cualquier nomb
 msgid "Define allowed ciphers used for the SSH connection. A number of allowed ciphers can be specified, use multiple occurrences to allow multiple ciphers."
 msgstr "Defina los cifrados permitidos utilizados para la conexión SSH. Se puede especificar una cantidad de cifrados permitidos, use múltiples ocurrencias para permitir múltiples cifrados."
 
-#: ../../configuration/firewall/general.rst:252
+#: ../../configuration/firewall/general.rst:245
 msgid "Define an interface group. Wildcard are accepted too."
 msgstr "Define an interface group. Wildcard are accepted too."
 
@@ -4127,22 +4153,22 @@ msgstr "Defina diferentes modos para enviar respuestas en respuesta a las solici
 msgid "Define different restriction levels for announcing the local source IP address from IP packets in ARP requests sent on interface."
 msgstr "Defina diferentes niveles de restricción para anunciar la dirección IP de origen local de los paquetes IP en las solicitudes ARP enviadas en la interfaz."
 
-#: ../../configuration/firewall/general.rst:483
+#: ../../configuration/firewall/general.rst:476
 #: ../../configuration/firewall/general-legacy.rst:361
 msgid "Define length of packet payload to include in netlink message. Only applicable if rule log is enable and log group is defined."
 msgstr "Defina la longitud de la carga útil del paquete para incluir en el mensaje de enlace de red. Solo se aplica si el registro de reglas está habilitado y el grupo de registros está definido."
 
-#: ../../configuration/firewall/general.rst:457
+#: ../../configuration/firewall/general.rst:450
 #: ../../configuration/firewall/general-legacy.rst:347
 msgid "Define log-level. Only applicable if rule log is enable."
 msgstr "Defina el nivel de registro. Solo se aplica si el registro de reglas está habilitado."
 
-#: ../../configuration/firewall/general.rst:470
+#: ../../configuration/firewall/general.rst:463
 #: ../../configuration/firewall/general-legacy.rst:354
 msgid "Define log group to send message to. Only applicable if rule log is enable."
 msgstr "Defina el grupo de registro al que enviar el mensaje. Solo se aplica si el registro de reglas está habilitado."
 
-#: ../../configuration/firewall/general.rst:497
+#: ../../configuration/firewall/general.rst:490
 #: ../../configuration/firewall/general-legacy.rst:369
 msgid "Define number of packets to queue inside the kernel before sending them to userspace. Only applicable if rule log is enable and log group is defined."
 msgstr "Defina la cantidad de paquetes para poner en cola dentro del kernel antes de enviarlos al espacio de usuario. Solo se aplica si el registro de reglas está habilitado y el grupo de registros está definido."
@@ -4300,7 +4326,7 @@ msgstr "Deshabilitar un compañero BFD"
 msgid "Disable a container."
 msgstr "Deshabilitar un contenedor."
 
-#: ../../configuration/firewall/general.rst:1290
+#: ../../configuration/firewall/general.rst:1283
 msgid "Disable conntrack loose track option"
 msgstr "Disable conntrack loose track option"
 
@@ -4541,7 +4567,7 @@ msgstr "No es necesario utilizarlo junto con proxy_arp."
 msgid "Domain"
 msgstr "Dominio"
 
-#: ../../configuration/firewall/general.rst:307
+#: ../../configuration/firewall/general.rst:300
 #: ../../configuration/firewall/general-legacy.rst:255
 msgid "Domain Groups"
 msgstr "Grupos de dominio"
@@ -4866,17 +4892,17 @@ msgstr "Habilite el protocolo heredado dado en esta instancia LLDP. Los protocol
 msgid "Enable layer 7 HTTP health check"
 msgstr "Habilitar la comprobación de estado HTTP de la capa 7"
 
-#: ../../configuration/firewall/general.rst:184
+#: ../../configuration/firewall/general.rst:177
 #: ../../configuration/firewall/general-legacy.rst:126
 msgid "Enable or Disable VyOS to be :rfc:`1337` conform. The following system parameter will be altered:"
 msgstr "Habilite o deshabilite VyOS para que se ajuste a :rfc:`1337`. Se modificará el siguiente parámetro del sistema:"
 
-#: ../../configuration/firewall/general.rst:176
+#: ../../configuration/firewall/general.rst:169
 #: ../../configuration/firewall/general-legacy.rst:119
 msgid "Enable or Disable if VyOS use IPv4 TCP SYN Cookies. The following system parameter will be altered:"
 msgstr "Habilite o deshabilite si VyOS usa cookies IPv4 TCP SYN. Se modificará el siguiente parámetro del sistema:"
 
-#: ../../configuration/firewall/general.rst:433
+#: ../../configuration/firewall/general.rst:426
 #: ../../configuration/firewall/general-legacy.rst:340
 msgid "Enable or disable logging for the matched packet."
 msgstr "Habilite o deshabilite el registro para el paquete coincidente."
@@ -5108,6 +5134,10 @@ msgstr "Cada interfaz Ethernet virtual se comporta como una interfaz Ethernet re
 msgid "Every WWAN connection requires an :abbr:`APN (Access Point Name)` which is used by the client to dial into the ISPs network. This is a mandatory parameter. Contact your Service Provider for correct APN."
 msgstr "Cada conexión WWAN requiere un :abbr:`APN (Nombre de punto de acceso)` que utiliza el cliente para conectarse a la red del ISP. Este es un parámetro obligatorio. Póngase en contacto con su proveedor de servicios para obtener el APN correcto."
 
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:98
+msgid "Every connection/remote-access pool we configure also needs a pool where we can draw our client IP addresses from. We provide one IPv4 and IPv6 pool. Authorized clients will receive an IPv4 address from the configured IPv4 prefix and an IPv6 address from the IPv6 prefix. We can also send some DNS nameservers down to our clients used on their connection."
+msgstr "Every connection/remote-access pool we configure also needs a pool where we can draw our client IP addresses from. We provide one IPv4 and IPv6 pool. Authorized clients will receive an IPv4 address from the configured IPv4 prefix and an IPv6 address from the IPv6 prefix. We can also send some DNS nameservers down to our clients used on their connection."
+
 #: ../../configuration/highavailability/index.rst:397
 #: ../../configuration/interfaces/bonding.rst:291
 #: ../../configuration/interfaces/l2tpv3.rst:86
@@ -5134,7 +5164,7 @@ msgstr "Cada conexión WWAN requiere un :abbr:`APN (Nombre de punto de acceso)` 
 #: ../../configuration/service/snmp.rst:145
 #: ../../configuration/service/tftp-server.rst:47
 #: ../../configuration/system/acceleration.rst:58
-#: ../../configuration/system/login.rst:367
+#: ../../configuration/system/login.rst:395
 #: ../../configuration/system/name-server.rst:28
 #: ../../configuration/system/name-server.rst:63
 #: ../../configuration/system/sflow.rst:49
@@ -5723,7 +5753,7 @@ msgstr "Ejemplo de solo IPv6:"
 msgid "Example Network"
 msgstr "Red de ejemplo"
 
-#: ../../configuration/firewall/general.rst:1502
+#: ../../configuration/firewall/general.rst:1495
 #: ../../configuration/firewall/general-legacy.rst:979
 msgid "Example Partial Config"
 msgstr "Ejemplo de configuración parcial"
@@ -5744,7 +5774,7 @@ msgstr "Ejemplo para configurar una VPN L2TP simple sobre IPsec para acceso remo
 msgid "Example of redirection:"
 msgstr "Ejemplo de redirección:"
 
-#: ../../configuration/firewall/general.rst:1285
+#: ../../configuration/firewall/general.rst:1278
 msgid "Example synproxy"
 msgstr "Example synproxy"
 
@@ -5920,8 +5950,7 @@ msgstr "El filtrado se utiliza tanto para la entrada como para la salida de la i
 msgid "Finally, to apply the policy route to ingress traffic on our LAN interface, we use:"
 msgstr "Finalmente, para aplicar la política de ruta al tráfico de entrada en nuestra interfaz LAN, usamos:"
 
-#: ../../configuration/firewall/general.rst:7
-#: ../../configuration/firewall/index.rst:3
+#: ../../configuration/firewall/index.rst:5
 msgid "Firewall"
 msgstr "cortafuegos"
 
@@ -5929,7 +5958,15 @@ msgstr "cortafuegos"
 msgid "Firewall-Legacy"
 msgstr "Firewall-Legacy"
 
-#: ../../configuration/firewall/general.rst:502
+#: ../../configuration/firewall/general.rst:7
+msgid "Firewall Configuration"
+msgstr "Firewall Configuration"
+
+#: ../../configuration/firewall/general-legacy.rst:7
+msgid "Firewall Configuration (Deprecated)"
+msgstr "Firewall Configuration (Deprecated)"
+
+#: ../../configuration/firewall/general.rst:495
 msgid "Firewall Description"
 msgstr "Firewall Description"
 
@@ -5938,15 +5975,15 @@ msgstr "Firewall Description"
 msgid "Firewall Exceptions"
 msgstr "Excepciones de cortafuegos"
 
-#: ../../configuration/firewall/general.rst:417
+#: ../../configuration/firewall/general.rst:410
 msgid "Firewall Logs"
 msgstr "Firewall Logs"
 
-#: ../../configuration/firewall/general.rst:325
+#: ../../configuration/firewall/general.rst:318
 msgid "Firewall Rules"
 msgstr "Firewall Rules"
 
-#: ../../configuration/firewall/general.rst:193
+#: ../../configuration/firewall/general.rst:186
 msgid "Firewall groups represent collections of IP addresses, networks, ports, mac addresses, domains or interfaces. Once created, a group can be referenced by firewall, nat and policy route rules as either a source or destination matcher, and as inbpund/outbound in the case of interface group."
 msgstr "Firewall groups represent collections of IP addresses, networks, ports, mac addresses, domains or interfaces. Once created, a group can be referenced by firewall, nat and policy route rules as either a source or destination matcher, and as inbpund/outbound in the case of interface group."
 
@@ -5989,6 +6026,10 @@ msgstr "First, you need to generate a key by running ``run generate pki openvpn 
 #: ../../configuration/policy/route-map.rst:60
 msgid "First hop interface of a route to match."
 msgstr "Interfaz de primer salto de una ruta a igualar."
+
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:20
+msgid "First of all, we need to create a CA root certificate and server certificate on the server side."
+msgstr "First of all, we need to create a CA root certificate and server certificate on the server side."
 
 #: ../../configuration/protocols/bgp.rst:171
 msgid "First of all you must configure BGP router with the :abbr:`ASN (Autonomous System Number)`. The AS number is an identifier for the autonomous system. The BGP protocol uses the AS number for detecting whether the BGP connection is internal or external. VyOS does not have a special command to start the BGP process. The BGP process starts when the first neighbor is configured."
@@ -6118,11 +6159,11 @@ msgstr "Por ejemplo, si se experimentan problemas con la sincronización horaria
 msgid "For example:"
 msgstr "Por ejemplo:"
 
-#: ../../configuration/firewall/general.rst:66
+#: ../../configuration/firewall/general.rst:59
 msgid "For firewall filtering, configuration should be done in ``set firewall [ipv4 | ipv6] ...``"
 msgstr "For firewall filtering, configuration should be done in ``set firewall [ipv4 | ipv6] ...``"
 
-#: ../../configuration/firewall/general.rst:327
+#: ../../configuration/firewall/general.rst:320
 msgid "For firewall filtering, firewall rules needs to be created. Each rule is numbered, has an action to apply if the rule is matched, and the ability to specify multiple criteria matchers. Data packets go through the rules from 1 - 999999, so order is crucial. At the first match the action of the rule will be executed."
 msgstr "For firewall filtering, firewall rules needs to be created. Each rule is numbered, has an action to apply if the rule is matched, and the ability to specify multiple criteria matchers. Data packets go through the rules from 1 - 999999, so order is crucial. At the first match the action of the rule will be executed."
 
@@ -6170,7 +6211,7 @@ msgstr "Para una escalabilidad óptima, no se debe usar Multicast en absoluto, s
 msgid "For outbound updates the order of preference is:"
 msgstr "Para las actualizaciones salientes, el orden de preferencia es:"
 
-#: ../../configuration/firewall/general.rst:504
+#: ../../configuration/firewall/general.rst:497
 msgid "For reference, a description can be defined for every single rule, and for every defined custom chain."
 msgstr "For reference, a description can be defined for every single rule, and for every defined custom chain."
 
@@ -6210,15 +6251,15 @@ msgstr "Para el tráfico de entrada de una interfaz, solo hay una política que 
 msgid "For the sake of demonstration, `example #1 in the official documentation <https://www.zabbix.com/documentation/current/manual/installation/containers>`_ to the declarative VyOS CLI syntax."
 msgstr "En aras de la demostración, `ejemplo #1 en la documentación oficial<https://www.zabbix.com/documentation/current/manual/installation/containers> `_ a la sintaxis declarativa de la CLI de VyOS."
 
-#: ../../configuration/firewall/general.rst:73
+#: ../../configuration/firewall/general.rst:66
 msgid "For traffic originated by the router, base chain is **output filter**: ``set firewall [ipv4 | ipv6] output filter ...``"
 msgstr "For traffic originated by the router, base chain is **output filter**: ``set firewall [ipv4 | ipv6] output filter ...``"
 
-#: ../../configuration/firewall/general.rst:76
+#: ../../configuration/firewall/general.rst:69
 msgid "For traffic towards the router itself, base chain is **input filter**: ``set firewall [ipv4 | ipv6] input filter ...``"
 msgstr "For traffic towards the router itself, base chain is **input filter**: ``set firewall [ipv4 | ipv6] input filter ...``"
 
-#: ../../configuration/firewall/general.rst:69
+#: ../../configuration/firewall/general.rst:62
 msgid "For transit traffic, which is received by the router and forwarded, base chain is **forward filter**: ``set firewall [ipv4 | ipv6] forward filter ...``"
 msgstr "For transit traffic, which is received by the router and forwarded, base chain is **forward filter**: ``set firewall [ipv4 | ipv6] forward filter ...``"
 
@@ -6375,7 +6416,7 @@ msgstr "Dado el siguiente ejemplo, tenemos un enrutador VyOS que actúa como ser
 msgid "Gloabal"
 msgstr "global"
 
-#: ../../configuration/firewall/general.rst:91
+#: ../../configuration/firewall/general.rst:84
 msgid "Global Options"
 msgstr "Global Options"
 
@@ -6400,7 +6441,7 @@ msgstr "Reinicio elegante"
 msgid "Gratuitous ARP"
 msgstr "ARP gratuito"
 
-#: ../../configuration/firewall/general.rst:191
+#: ../../configuration/firewall/general.rst:184
 #: ../../configuration/firewall/general-legacy.rst:153
 msgid "Groups"
 msgstr "Grupos"
@@ -6681,6 +6722,10 @@ msgstr "IPSec IKE y ESP"
 #: ../../configuration/nat/nat44.rst:687
 msgid "IPSec IKE and ESP Groups;"
 msgstr "Grupos IPSec IKE y ESP;"
+
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:4
+msgid "IPSec IKEv2 Remote Access VPN"
+msgstr "IPSec IKEv2 Remote Access VPN"
 
 #: ../../configuration/vpn/site2site_ipsec.rst:281
 msgid "IPSec IKEv2 site2site VPN"
@@ -7003,7 +7048,7 @@ msgstr "Si se escucha una respuesta, se abandona la concesión y el servidor no 
 msgid "If a route has an ORIGINATOR_ID attribute because it has been reflected, that ORIGINATOR_ID will be used. Otherwise, the router-ID of the peer the route was received from will be used."
 msgstr "Si una ruta tiene un atributo ORIGINATOR_ID porque se ha reflejado, se utilizará ese ORIGINATOR_ID. De lo contrario, se utilizará la ID del enrutador del par del que se recibió la ruta."
 
-#: ../../configuration/firewall/general.rst:336
+#: ../../configuration/firewall/general.rst:329
 msgid "If a rule is defined, then an action must be defined for it. This tells the firewall what to do if all criteria matchers defined for such rule do match."
 msgstr "If a rule is defined, then an action must be defined for it. This tells the firewall what to do if all criteria matchers defined for such rule do match."
 
@@ -7349,7 +7394,7 @@ msgstr "Si este parámetro no se establece o es 0, un enlace bajo demanda no se 
 msgid "If unset, incoming connections to the RADIUS server will use the nearest interface address pointing towards the server - making it error prone on e.g. OSPF networks when a link fails and a backup route is taken."
 msgstr "Si no se establece, las conexiones entrantes al servidor RADIUS utilizarán la dirección de interfaz más cercana que apunta hacia el servidor, lo que lo hace propenso a errores, por ejemplo, en redes OSPF cuando falla un enlace y se toma una ruta de respaldo."
 
-#: ../../configuration/system/login.rst:323
+#: ../../configuration/system/login.rst:339
 msgid "If unset, incoming connections to the TACACS server will use the nearest interface address pointing towards the server - making it error prone on e.g. OSPF networks when a link fails and a backup route is taken."
 msgstr "Si no se establece, las conexiones entrantes al servidor TACACS utilizarán la dirección de interfaz más cercana que apunta hacia el servidor, lo que lo hace propenso a errores, por ejemplo, en redes OSPF cuando falla un enlace y se toma una ruta de respaldo."
 
@@ -7448,7 +7493,7 @@ msgstr "Si desea cambiar el número máximo de flujos, que se rastrean simultán
 msgid "If you want to disable a rule but let it in the configuration."
 msgstr "Si desea deshabilitar una regla pero dejarla en la configuración."
 
-#: ../../configuration/system/login.rst:278
+#: ../../configuration/system/login.rst:294
 msgid "If you want to have admin users to authenticate via RADIUS it is essential to sent the ``Cisco-AV-Pair shell:priv-lvl=15`` attribute. Without the attribute you will only get regular, non privilegued, system users."
 msgstr "Si desea que los usuarios administradores se autentiquen a través de RADIUS, es esencial que envíe el atributo ``Cisco-AV-Pair shell:priv-lvl=15``. Sin el atributo, solo obtendrá usuarios del sistema normales y sin privilegios."
 
@@ -7555,7 +7600,7 @@ msgstr "En pocas palabras, la implementación actual proporciona las siguientes 
 msgid "In addition, you can specify many other parameters to get BGP information:"
 msgstr "Además, puede especificar muchos otros parámetros para obtener información de BGP:"
 
-#: ../../configuration/system/login.rst:285
+#: ../../configuration/system/login.rst:301
 msgid "In addition to :abbr:`RADIUS (Remote Authentication Dial-In User Service)`, :abbr:`TACACS (Terminal Access Controller Access Control System)` can also be found in large deployments."
 msgstr "Además de :abbr:`RADIUS (Servicio de usuario de marcación de autenticación remota)`, :abbr:`TACACS (Terminal Access Controller Access Control System)` también se puede encontrar en implementaciones grandes."
 
@@ -7583,7 +7628,7 @@ msgstr "Además también puedes deshabilitar todo el servicio sin necesidad de e
 msgid "In addition you will specifiy the IP address or FQDN for the client where it will connect to. The address parameter can be used up to two times and is used to assign the clients specific IPv4 (/32) or IPv6 (/128) address."
 msgstr "Además, especificará la dirección IP o FQDN del cliente al que se conectará. El parámetro de dirección se puede usar hasta dos veces y se usa para asignar direcciones IPv4 (/32) o IPv6 (/128) específicas a los clientes."
 
-#: ../../configuration/firewall/general.rst:201
+#: ../../configuration/firewall/general.rst:194
 #: ../../configuration/firewall/general-legacy.rst:170
 msgid "In an **address group** a single IP address or IP address ranges are defined."
 msgstr "En un **grupo de direcciones** se define una sola dirección IP o rangos de direcciones IP."
@@ -7747,7 +7792,7 @@ msgstr "En el ejemplo anterior, las primeras 499 sesiones se conectan sin demora
 msgid "In the example used for the Quick Start configuration above, we demonstrate the following configuration:"
 msgstr "En el ejemplo utilizado para la configuración de inicio rápido anterior, demostramos la siguiente configuración:"
 
-#: ../../configuration/system/login.rst:369
+#: ../../configuration/system/login.rst:397
 msgid "In the following example, both `User1` and `User2` will be able to SSH into VyOS as user ``vyos`` using their very own keys. `User1` is restricted to only be able to connect from a single IP address. In addition if password base login is wanted for the ``vyos`` user a 2FA/MFA keycode is required in addition to the password."
 msgstr "En el siguiente ejemplo, tanto `User1` como `User2` podrán acceder a VyOS mediante SSH como usuario ``vyos`` utilizando sus propias claves. El &#39;Usuario 1&#39; está restringido para que solo pueda conectarse desde una única dirección IP. Además, si se desea iniciar sesión con contraseña para el usuario ``vyos``, se requiere un código de clave 2FA/MFA además de la contraseña."
 
@@ -7794,6 +7839,10 @@ msgstr "En este ejemplo, utilizaremos el ejemplo de configuración de inicio rá
 #: ../../configuration/highavailability/index.rst:430
 msgid "In this example all traffic destined to ports \"80, 2222, 8888\" protocol TCP marks to fwmark \"111\" and balanced between 2 real servers. Port \"0\" is required if multiple ports are used."
 msgstr "En este ejemplo todo el tráfico destinado a los puertos &quot;80, 2222, 8888&quot; protocolo TCP marca al fwmark &quot;111&quot; y balanceado entre 2 servidores reales. Se requiere el puerto &quot;0&quot; si se utilizan múltiples puertos."
+
+#: ../../configuration/firewall/index.rst:36
+msgid "In this example image, a simplifed traffic flow is shown to help provide context to the terms of `forward`, `input`, and `output` for the new firewall CLI format."
+msgstr "In this example image, a simplifed traffic flow is shown to help provide context to the terms of `forward`, `input`, and `output` for the new firewall CLI format."
 
 #: ../../configuration/interfaces/openvpn.rst:334
 msgid "In this example we will use the most complicated case: a setup where each client is a router that has its own subnet (think HQ and branch offices), since simpler setups are subsets of it."
@@ -7958,7 +8007,7 @@ msgstr "Interconecte el VRF global con vrf &quot;rojo&quot; usando el par veth10
 msgid "Interface Configuration"
 msgstr "Configuración de la interfaz"
 
-#: ../../configuration/firewall/general.rst:246
+#: ../../configuration/firewall/general.rst:239
 msgid "Interface Groups"
 msgstr "Interface Groups"
 
@@ -8019,6 +8068,10 @@ msgstr "Interfaces a cuyos servidores de nombres de cliente DHCP se reenvían la
 #: ../../configuration/system/flow-accounting.rst:70
 msgid "Internally, in flow-accounting processes exist a buffer for data exchanging between core process and plugins (each export target is a separated plugin). If you have high traffic levels or noted some problems with missed records or stopping exporting, you may try to increase a default buffer size (10 MiB) with the next command:"
 msgstr "Internamente, en los procesos de contabilidad de flujo existe un búfer para el intercambio de datos entre el proceso central y los complementos (cada destino de exportación es un complemento separado). Si tiene altos niveles de tráfico o notó algunos problemas con los registros perdidos o si detiene la exportación, puede intentar aumentar el tamaño del búfer predeterminado (10 MiB) con el siguiente comando:"
+
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:6
+msgid "Internet Key Exchange version 2 (IKEv2) is a tunneling protocol, based on IPsec, that establishes a secure VPN communication between VPN devices,  and defines negotiation and authentication processes for IPsec security associations (SAs). It is often known as IKEv2/IPSec or IPSec IKEv2 remote-access — or road-warriors as others call it."
+msgstr "Internet Key Exchange version 2 (IKEv2) is a tunneling protocol, based on IPsec, that establishes a secure VPN communication between VPN devices,  and defines negotiation and authentication processes for IPsec security associations (SAs). It is often known as IKEv2/IPSec or IPSec IKEv2 remote-access — or road-warriors as others call it."
 
 #: ../../configuration/trafficpolicy/index.rst:791
 msgid "Internetwork Control"
@@ -8185,6 +8238,10 @@ msgstr "Parámetros clave:"
 msgid "Key Points:"
 msgstr "Puntos clave:"
 
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:12
+msgid "Key exchange and payload encryption is done using IKE and ESP proposals as known from IKEv1 but the connections are faster to establish, more reliable, and also support roaming from IP to IP (called MOBIKE which makes sure your connection does not drop when changing networks from e.g. WIFI to LTE and back). Authentication can be achieved with X.509 certificates."
+msgstr "Key exchange and payload encryption is done using IKE and ESP proposals as known from IKEv1 but the connections are faster to establish, more reliable, and also support roaming from IP to IP (called MOBIKE which makes sure your connection does not drop when changing networks from e.g. WIFI to LTE and back). Authentication can be achieved with X.509 certificates."
+
 #: ../../configuration/pki/index.rst:167
 msgid "Key usage (CLI)"
 msgstr "Uso de claves (CLI)"
@@ -8283,6 +8340,10 @@ msgstr "El tiempo de concesión se dejará en el valor predeterminado, que es de
 msgid "Lease timeout in seconds (default: 86400)"
 msgstr "Tiempo de espera de arrendamiento en segundos (predeterminado: 86400)"
 
+#: ../../configuration/firewall/index.rst:47
+msgid "Legacy Firewall"
+msgstr "Legacy Firewall"
+
 #: ../../configuration/interfaces/vxlan.rst:112
 msgid "Let's assume PC4 on Leaf2 wants to ping PC5 on Leaf3. Instead of setting Leaf3 as our remote end manually, Leaf2 encapsulates the packet into a UDP-packet and sends it to its designated multicast-address via Spine1. When Spine1 receives this packet it forwards it to all other leaves who has joined the same multicast-group, in this case Leaf3. When Leaf3 receives the packet it forwards it, while at the same time learning that PC4 is reachable behind Leaf2, because the encapsulated packet had Leaf2's IP address set as source IP."
 msgstr "Supongamos que PC4 en Leaf2 quiere hacer ping a PC5 en Leaf3. En lugar de configurar Leaf3 como nuestro extremo remoto manualmente, Leaf2 encapsula el paquete en un paquete UDP y lo envía a su dirección de multidifusión designada a través de Spine1. Cuando Spine1 recibe este paquete, lo reenvía a todas las demás hojas que se han unido al mismo grupo de multidifusión, en este caso Leaf3. Cuando Leaf3 recibe el paquete, lo reenvía, mientras que al mismo tiempo aprende que se puede acceder a PC4 detrás de Leaf2, porque el paquete encapsulado tenía la dirección IP de Leaf2 configurada como IP de origen."
@@ -8347,7 +8408,7 @@ msgstr "limitador"
 msgid "Limiter is one of those policies that uses classes_ (Ingress qdisc is actually a classless policy but filters do work in it)."
 msgstr "Limiter es una de esas políticas que usa clases_ (Ingress qdisc es en realidad una política sin clases, pero los filtros funcionan en ella)."
 
-#: ../../configuration/system/login.rst:351
+#: ../../configuration/system/login.rst:379
 msgid "Limits"
 msgstr "Límites"
 
@@ -8423,7 +8484,7 @@ msgstr "Load Balance"
 msgid "Load Balancing"
 msgstr "Balanceo de carga"
 
-#: ../../configuration/system/login.rst:392
+#: ../../configuration/system/login.rst:420
 msgid "Load the container image in op-mode."
 msgstr "Cargue la imagen del contenedor en modo operativo."
 
@@ -8528,7 +8589,7 @@ msgstr "Registre los eventos de seguimiento de conexión por protocolo."
 msgid "Logging"
 msgstr "Inicio sesión"
 
-#: ../../configuration/firewall/general.rst:419
+#: ../../configuration/firewall/general.rst:412
 msgid "Logging can be enable for every single firewall rule. If enabled, other log options can be defined."
 msgstr "Logging can be enable for every single firewall rule. If enabled, other log options can be defined."
 
@@ -8540,11 +8601,11 @@ msgstr "El inicio de sesión en un host remoto deja intacta la configuración de
 msgid "Login/User Management"
 msgstr "Inicio de sesión/Administración de usuarios"
 
-#: ../../configuration/system/login.rst:333
+#: ../../configuration/system/login.rst:361
 msgid "Login Banner"
 msgstr "Bandera de inicio de sesión"
 
-#: ../../configuration/system/login.rst:353
+#: ../../configuration/system/login.rst:381
 msgid "Login limits"
 msgstr "Límites de inicio de sesión"
 
@@ -8571,7 +8632,7 @@ msgstr "Información MAC/PHY"
 msgid "MACVLAN - Pseudo Ethernet"
 msgstr "MACVLAN - PseudoEthernet"
 
-#: ../../configuration/firewall/general.rst:289
+#: ../../configuration/firewall/general.rst:282
 #: ../../configuration/firewall/general-legacy.rst:240
 msgid "MAC Groups"
 msgstr "Grupos MAC"
@@ -8669,7 +8730,7 @@ msgstr "PERSONA"
 msgid "Mail system"
 msgstr "sistema de correo"
 
-#: ../../configuration/firewall/general.rst:27
+#: ../../configuration/firewall/general.rst:20
 msgid "Main structure is shown next:"
 msgstr "Main structure is shown next:"
 
@@ -8721,7 +8782,7 @@ msgstr "Haga coincidir grandes comunidades BGP."
 msgid "Match IP addresses based on its geolocation. More info: `geoip matching <https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_."
 msgstr "Haga coincidir las direcciones IP en función de su geolocalización. Más información: `coincidencia geoip<https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching> `_."
 
-#: ../../configuration/firewall/general.rst:717
+#: ../../configuration/firewall/general.rst:710
 msgid "Match IP addresses based on its geolocation. More info: `geoip matching <https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_. Use inverse-match to match anything except the given country-codes."
 msgstr "Match IP addresses based on its geolocation. More info: `geoip matching <https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_. Use inverse-match to match anything except the given country-codes."
 
@@ -8733,17 +8794,17 @@ msgstr "Coincide con el resultado de la validación de RPKI."
 msgid "Match a protocol criteria. A protocol number or a name which is defined in: ``/etc/protocols``. Special names are ``all`` for all protocols and ``tcp_udp`` for tcp and udp based packets. The ``!`` negates the selected protocol."
 msgstr "Coincidir con un criterio de protocolo. Un número de protocolo o un nombre que se define en: ``/etc/protocols``. Los nombres especiales son ``all`` para todos los protocolos y ``tcp_udp`` para paquetes basados en tcp y udp. El ``!`` niega el protocolo seleccionado."
 
-#: ../../configuration/firewall/general.rst:1098
+#: ../../configuration/firewall/general.rst:1091
 #: ../../configuration/firewall/general-legacy.rst:671
 msgid "Match a protocol criteria. A protocol number or a name which is here defined: ``/etc/protocols``. Special names are ``all`` for all protocols and ``tcp_udp`` for tcp and udp based packets. The ``!`` negate the selected protocol."
 msgstr "Coincidir con un criterio de protocolo. Un número de protocolo o un nombre que se define aquí: ``/etc/protocols``. Los nombres especiales son ``all`` para todos los protocolos y ``tcp_udp`` para paquetes basados en tcp y udp. El ``!`` niega el protocolo seleccionado."
 
-#: ../../configuration/firewall/general.rst:1165
+#: ../../configuration/firewall/general.rst:1158
 #: ../../configuration/firewall/general-legacy.rst:709
 msgid "Match against the state of a packet."
 msgstr "Comparar con el estado de un paquete."
 
-#: ../../configuration/firewall/general.rst:931
+#: ../../configuration/firewall/general.rst:924
 #: ../../configuration/firewall/general-legacy.rst:590
 msgid "Match based on dscp value."
 msgstr "Coincidencia basada en el valor de dscp."
@@ -8752,18 +8813,18 @@ msgstr "Coincidencia basada en el valor de dscp."
 msgid "Match based on dscp value criteria. Multiple values from 0 to 63 and ranges are supported."
 msgstr "Coincidencia basada en criterios de valor de dscp. Se admiten múltiples valores de 0 a 63 y rangos."
 
-#: ../../configuration/firewall/general.rst:944
+#: ../../configuration/firewall/general.rst:937
 #: ../../configuration/firewall/general-legacy.rst:597
 msgid "Match based on fragment criteria."
 msgstr "Coincidencia basada en criterios de fragmentos."
 
-#: ../../configuration/firewall/general.rst:963
+#: ../../configuration/firewall/general.rst:956
 #: ../../configuration/firewall/general-legacy.rst:604
 #: ../../configuration/policy/route.rst:131
 msgid "Match based on icmp|icmpv6 code and type."
 msgstr "Coincidencia basada en código y tipo icmp|icmpv6."
 
-#: ../../configuration/firewall/general.rst:982
+#: ../../configuration/firewall/general.rst:975
 #: ../../configuration/firewall/general-legacy.rst:610
 msgid "Match based on icmp|icmpv6 type-name criteria. Use tab for information about what **type-name** criteria are supported."
 msgstr "Coincidencia basada en criterios de nombre de tipo icmp|icmpv6. Use la pestaña para obtener información sobre qué criterios de **nombre de tipo** se admiten."
@@ -8776,57 +8837,57 @@ msgstr "Coincidencia basada en criterios de nombre de tipo icmp|icmpv6. Use la p
 msgid "Match based on inbound/outbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 msgstr "Coincidencia basada en la interfaz de entrada/salida. Se puede utilizar Wilcard ``*``. Por ejemplo: ``eth2*``"
 
-#: ../../configuration/firewall/general.rst:994
+#: ../../configuration/firewall/general.rst:987
 msgid "Match based on inbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 msgstr "Match based on inbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 
-#: ../../configuration/firewall/general.rst:1020
+#: ../../configuration/firewall/general.rst:1013
 #: ../../configuration/firewall/general-legacy.rst:630
 msgid "Match based on ipsec criteria."
 msgstr "Coincidencia basada en criterios de ipsec."
 
-#: ../../configuration/firewall/general.rst:1006
+#: ../../configuration/firewall/general.rst:999
 msgid "Match based on outbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 msgstr "Match based on outbound interface. Wilcard ``*`` can be used. For example: ``eth2*``"
 
-#: ../../configuration/firewall/general.rst:1071
+#: ../../configuration/firewall/general.rst:1064
 #: ../../configuration/firewall/general-legacy.rst:656
 #: ../../configuration/policy/route.rst:176
 msgid "Match based on packet length criteria. Multiple values from 1 to 65535 and ranges are supported."
 msgstr "Coincidencia basada en criterios de longitud de paquete. Se admiten varios valores de 1 a 65535 y rangos."
 
-#: ../../configuration/firewall/general.rst:1085
+#: ../../configuration/firewall/general.rst:1078
 #: ../../configuration/firewall/general-legacy.rst:664
 #: ../../configuration/policy/route.rst:184
 msgid "Match based on packet type criteria."
 msgstr "Coincidencia basada en criterios de tipo de paquete."
 
-#: ../../configuration/firewall/general.rst:1046
+#: ../../configuration/firewall/general.rst:1039
 #: ../../configuration/firewall/general-legacy.rst:644
 msgid "Match based on the maximum average rate, specified as **integer/unit**. For example **5/minutes**"
 msgstr "Coincidencia basada en la tasa promedio máxima, especificada como **entero/unidad**. Por ejemplo **5/minutos**"
 
-#: ../../configuration/firewall/general.rst:1033
+#: ../../configuration/firewall/general.rst:1026
 #: ../../configuration/firewall/general-legacy.rst:637
 msgid "Match based on the maximum number of packets to allow in excess of rate."
 msgstr "Coincidencia basada en el número máximo de paquetes que se permiten por encima de la tasa."
 
-#: ../../configuration/firewall/general.rst:1131
+#: ../../configuration/firewall/general.rst:1124
 #: ../../configuration/firewall/general-legacy.rst:689
 msgid "Match bases on recently seen sources."
 msgstr "Coincide con las bases de las fuentes vistas recientemente."
 
-#: ../../configuration/firewall/general.rst:569
+#: ../../configuration/firewall/general.rst:562
 #: ../../configuration/firewall/general-legacy.rst:394
 msgid "Match criteria based on connection mark."
 msgstr "Criterios de coincidencia basados en la marca de conexión."
 
-#: ../../configuration/firewall/general.rst:556
+#: ../../configuration/firewall/general.rst:549
 #: ../../configuration/firewall/general-legacy.rst:387
 msgid "Match criteria based on nat connection status."
 msgstr "Criterios de coincidencia basados en el estado de la conexión nacional."
 
-#: ../../configuration/firewall/general.rst:593
+#: ../../configuration/firewall/general.rst:586
 msgid "Match criteria based on source and/or destination address. This is similar to the network groups part, but here you are able to negate the matching addresses."
 msgstr "Match criteria based on source and/or destination address. This is similar to the network groups part, but here you are able to negate the matching addresses."
 
@@ -8834,7 +8895,7 @@ msgstr "Match criteria based on source and/or destination address. This is simil
 msgid "Match domain name"
 msgstr "Coincidencia de nombre de dominio"
 
-#: ../../configuration/firewall/general.rst:1241
+#: ../../configuration/firewall/general.rst:1234
 #: ../../configuration/firewall/general-legacy.rst:732
 #: ../../configuration/policy/route.rst:234
 msgid "Match hop-limit parameter, where 'eq' stands for 'equal'; 'gt' stands for 'greater than', and 'lt' stands for 'less than'."
@@ -8848,18 +8909,18 @@ msgstr "Coincide con la preferencia local."
 msgid "Match route metric."
 msgstr "Coincidir con la métrica de la ruta."
 
-#: ../../configuration/firewall/general.rst:1229
+#: ../../configuration/firewall/general.rst:1222
 #: ../../configuration/firewall/general-legacy.rst:726
 #: ../../configuration/policy/route.rst:229
 msgid "Match time to live parameter, where 'eq' stands for 'equal'; 'gt' stands for 'greater than', and 'lt' stands for 'less than'."
 msgstr "Igualar el tiempo de vida del parámetro, donde &#39;eq&#39; significa &#39;igual&#39;; &#39;gt&#39; significa &#39;mayor que&#39; y &#39;lt&#39; significa &#39;menor que&#39;."
 
-#: ../../configuration/firewall/general.rst:1266
+#: ../../configuration/firewall/general.rst:1259
 #: ../../configuration/firewall/general-legacy.rst:742
 msgid "Match when 'count' amount of connections are seen within 'time'. These matching criteria can be used to block brute-force attempts."
 msgstr "Coincidencia cuando se ve la cantidad de conexiones &#39;recuento&#39; dentro de &#39;tiempo&#39;. Estos criterios coincidentes se pueden utilizar para bloquear los intentos de fuerza bruta."
 
-#: ../../configuration/firewall/general.rst:541
+#: ../../configuration/firewall/general.rst:534
 #: ../../configuration/firewall/general-legacy.rst:378
 #: ../../configuration/policy/route.rst:38
 msgid "Matching criteria"
@@ -8936,6 +8997,10 @@ msgstr "Se proporciona la funcionalidad de monitoreo con ``telegraf`` e ``Influx
 #: ../../configuration/interfaces/vti.rst:32
 msgid "More details about the IPsec and VTI issue and option disable-route-autoinstall https://blog.vyos.io/vyos-1-dot-2-0-development-news-in-july"
 msgstr "Más detalles sobre el problema de IPsec y VTI y la opción deshabilitar ruta de instalación automática https://blog.vyos.io/vyos-1-dot-2-0-development-news-in-july"
+
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:139
+msgid "Most operating systems include native client support for IPsec IKEv2 VPN connections, and others typically have an app or add-on package which adds the capability. This section covers IPsec IKEv2 client configuration for Windows 10."
+msgstr "Most operating systems include native client support for IPsec IKEv2 VPN connections, and others typically have an app or add-on package which adds the capability. This section covers IPsec IKEv2 client configuration for Windows 10."
 
 #: ../../configuration/container/index.rst:85
 msgid "Mount a volume into the container"
@@ -9028,7 +9093,7 @@ msgid "Multiple networks/client IP addresses can be configured."
 msgstr "Se pueden configurar múltiples redes/direcciones IP de clientes."
 
 #: ../../configuration/system/login.rst:248
-#: ../../configuration/system/login.rst:301
+#: ../../configuration/system/login.rst:317
 msgid "Multiple servers can be specified."
 msgstr "Se pueden especificar varios servidores."
 
@@ -9036,7 +9101,7 @@ msgstr "Se pueden especificar varios servidores."
 msgid "Multiple services can be used per interface. Just specify as many services per interface as you like!"
 msgstr "Se pueden utilizar múltiples servicios por interfaz. ¡Simplemente especifique tantos servicios por interfaz como desee!"
 
-#: ../../configuration/firewall/general.rst:777
+#: ../../configuration/firewall/general.rst:770
 #: ../../configuration/firewall/general-legacy.rst:515
 msgid "Multiple source ports can be specified as a comma-separated list. The whole list can also be \"negated\" using ``!``. For example:"
 msgstr "Se pueden especificar varios puertos de origen como una lista separada por comas. La lista completa también se puede &quot;negar&quot; usando ``!``. Por ejemplo:"
@@ -9183,6 +9248,10 @@ msgstr "NetFlow generalmente se habilita por interfaz para limitar la carga en l
 msgid "NetFlow v5 example:"
 msgstr "Ejemplo de NetFlow v5:"
 
+#: ../../configuration/firewall/index.rst:16
+msgid "Netfilter based"
+msgstr "Netfilter based"
+
 #: ../../configuration/policy/prefix-list.rst:43
 #: ../../configuration/policy/prefix-list.rst:76
 msgid "Netmask greater than length."
@@ -9205,7 +9274,7 @@ msgstr "Control de red"
 msgid "Network Emulator"
 msgstr "Emulador de red"
 
-#: ../../configuration/firewall/general.rst:222
+#: ../../configuration/firewall/general.rst:215
 #: ../../configuration/firewall/general-legacy.rst:191
 msgid "Network Groups"
 msgstr "Grupos de red"
@@ -9505,6 +9574,10 @@ msgstr "Una vez creadas en el sistema, se puede hacer referencia a las interface
 msgid "Once flow accounting is configured on an interfaces it provides the ability to display captured network traffic information for all configured interfaces."
 msgstr "Una vez que la contabilidad de flujo está configurada en una interfaz, proporciona la capacidad de mostrar información de tráfico de red capturada para todas las interfaces configuradas."
 
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:73
+msgid "Once the command is completed, it will add the certificate to the configuration session, to the pki subtree. You can then review the proposed changes and commit them."
+msgstr "Once the command is completed, it will add the certificate to the configuration session, to the pki subtree. You can then review the proposed changes and commit them."
+
 #: ../../configuration/service/pppoe-server.rst:63
 msgid "Once the local tunnel endpoint ``set service pppoe-server gateway-address '10.1.1.2'`` has been defined, the client IP pool can be either defined as a range or as subnet using CIDR notation. If the CIDR notation is used, multiple subnets can be setup which are used sequentially."
 msgstr "Una vez que se ha definido el extremo del túnel local ``set service pppoe-server gateway-address &#39;10.1.1.2&#39;&#39;``, el conjunto de direcciones IP del cliente se puede definir como un rango o como una subred mediante la notación CIDR. Si se usa la notación CIDR, se pueden configurar varias subredes que se usan secuencialmente."
@@ -9562,7 +9635,7 @@ msgstr "Solo se aceptan paquetes con etiquetas 802.1Q en vifs de Ethernet."
 msgid "Only VRRP is supported. Required option."
 msgstr "Solo se admite VRRP. Opción requerida."
 
-#: ../../configuration/firewall/general.rst:738
+#: ../../configuration/firewall/general.rst:731
 #: ../../configuration/firewall/general-legacy.rst:490
 msgid "Only in the source criteria, you can specify a mac-address."
 msgstr "Solo en los criterios de origen, puede especificar una dirección MAC."
@@ -9696,7 +9769,7 @@ msgstr "Modos de funcionamiento"
 msgid "Operation"
 msgstr "Operación"
 
-#: ../../configuration/firewall/general.rst:1314
+#: ../../configuration/firewall/general.rst:1307
 #: ../../configuration/firewall/general-legacy.rst:778
 msgid "Operation-mode Firewall"
 msgstr "Cortafuegos en modo operativo"
@@ -9872,7 +9945,7 @@ msgstr "Descripción general"
 msgid "Overview and basic concepts"
 msgstr "Resumen y conceptos básicos"
 
-#: ../../configuration/firewall/general.rst:1468
+#: ../../configuration/firewall/general.rst:1461
 #: ../../configuration/firewall/general-legacy.rst:908
 msgid "Overview of defined groups. You see the type, the members, and where the group is used."
 msgstr "Resumen de grupos definidos. Verá el tipo, los miembros y dónde se usa el grupo."
@@ -10133,7 +10206,7 @@ msgstr "Política de verificación de objetivos"
 msgid "Policy to track previously established connections."
 msgstr "Política para rastrear conexiones previamente establecidas."
 
-#: ../../configuration/firewall/general.rst:264
+#: ../../configuration/firewall/general.rst:257
 #: ../../configuration/firewall/general-legacy.rst:215
 msgid "Port Groups"
 msgstr "Grupos de puertos"
@@ -10354,7 +10427,7 @@ msgstr "Los protocolos son: tcp, sctp, dccp, udp, icmp e ipv6-icmp."
 msgid "Provide TFTP server listening on both IPv4 and IPv6 addresses ``192.0.2.1`` and ``2001:db8::1`` serving the content from ``/config/tftpboot``. Uploading via TFTP to this server is disabled."
 msgstr "Proporcione un servidor TFTP que escuche en las direcciones IPv4 e IPv6 ``192.0.2.1`` y ``2001:db8::1`` sirviendo el contenido de ``/config/tftpboot``. La carga a través de TFTP a este servidor está deshabilitada."
 
-#: ../../configuration/firewall/general.rst:219
+#: ../../configuration/firewall/general.rst:212
 #: ../../configuration/firewall/general-legacy.rst:188
 msgid "Provide a IPv4 or IPv6 address group description"
 msgstr "Proporcione una descripción del grupo de direcciones IPv4 o IPv6"
@@ -10363,21 +10436,21 @@ msgstr "Proporcione una descripción del grupo de direcciones IPv4 o IPv6"
 msgid "Provide a IPv4 or IPv6 network group description."
 msgstr "Proporcione una descripción del grupo de red IPv4 o IPv6."
 
-#: ../../configuration/firewall/general.rst:522
+#: ../../configuration/firewall/general.rst:515
 #: ../../configuration/firewall/general-legacy.rst:334
 #: ../../configuration/policy/route.rst:30
 msgid "Provide a description for each rule."
 msgstr "Proporcione una descripción para cada regla."
 
-#: ../../configuration/firewall/general.rst:321
+#: ../../configuration/firewall/general.rst:314
 msgid "Provide a domain group description."
 msgstr "Provide a domain group description."
 
-#: ../../configuration/firewall/general.rst:304
+#: ../../configuration/firewall/general.rst:297
 msgid "Provide a mac group description."
 msgstr "Provide a mac group description."
 
-#: ../../configuration/firewall/general.rst:286
+#: ../../configuration/firewall/general.rst:279
 #: ../../configuration/firewall/general-legacy.rst:237
 msgid "Provide a port group description."
 msgstr "Proporcione una descripción del grupo de puertos."
@@ -10387,15 +10460,15 @@ msgstr "Proporcione una descripción del grupo de puertos."
 msgid "Provide a rule-set description."
 msgstr "Proporcione una descripción del conjunto de reglas."
 
-#: ../../configuration/firewall/general.rst:510
+#: ../../configuration/firewall/general.rst:503
 msgid "Provide a rule-set description to a custom firewall chain."
 msgstr "Provide a rule-set description to a custom firewall chain."
 
-#: ../../configuration/firewall/general.rst:243
+#: ../../configuration/firewall/general.rst:236
 msgid "Provide an IPv4 or IPv6 network group description."
 msgstr "Provide an IPv4 or IPv6 network group description."
 
-#: ../../configuration/firewall/general.rst:261
+#: ../../configuration/firewall/general.rst:254
 msgid "Provide an interface group description"
 msgstr "Provide an interface group description"
 
@@ -10816,7 +10889,7 @@ msgstr "Requisitos"
 msgid "Requirements:"
 msgstr "Requisitos:"
 
-#: ../../configuration/firewall/general.rst:1286
+#: ../../configuration/firewall/general.rst:1279
 msgid "Requirements to enable synproxy:"
 msgstr "Requirements to enable synproxy:"
 
@@ -11024,7 +11097,7 @@ msgstr "Las tablas de enrutamiento que se utilizarán en este ejemplo son:"
 msgid "Rule-Sets"
 msgstr "Conjuntos de reglas"
 
-#: ../../configuration/firewall/general.rst:1317
+#: ../../configuration/firewall/general.rst:1310
 #: ../../configuration/firewall/general-legacy.rst:781
 msgid "Rule-set overview"
 msgstr "Descripción general del conjunto de reglas"
@@ -11045,7 +11118,7 @@ msgstr "La regla 20 coincide con las solicitudes con rutas URL que terminan en `
 msgid "Rule 20 matches requests with the domain name ``node2.example.com`` forwards to the backend ``bk-api-02``"
 msgstr "La regla 20 hace coincidir las solicitudes con el nombre de dominio ``node2.example.com`` reenvía al backend ``bk-api-02``"
 
-#: ../../configuration/firewall/general.rst:526
+#: ../../configuration/firewall/general.rst:519
 msgid "Rule Status"
 msgstr "Rule Status"
 
@@ -11400,7 +11473,7 @@ msgstr "Establezca la regla SNAT 30 para que solo lleguen paquetes NAT de la red
 msgid "Set SSL certeficate <name> for service <name>"
 msgstr "Establecer certificado SSL<name> para servicio<name>"
 
-#: ../../configuration/firewall/general.rst:1278
+#: ../../configuration/firewall/general.rst:1271
 msgid "Set TCP-MSS (maximum segment size) for the connection"
 msgstr "Set TCP-MSS (maximum segment size) for the connection"
 
@@ -11448,7 +11521,7 @@ msgstr "Establezca un destino y/o un puerto de origen. Entrada aceptada:"
 msgid "Set a human readable, descriptive alias for this connection. Alias is used by e.g. the :opcmd:`show interfaces` command or SNMP based monitoring tools."
 msgstr "Establezca un alias descriptivo y legible por humanos para esta conexión. El alias se utiliza, por ejemplo, con el comando :opcmd:`show interfaces` o herramientas de supervisión basadas en SNMP."
 
-#: ../../configuration/system/login.rst:357
+#: ../../configuration/system/login.rst:385
 msgid "Set a limit on the maximum number of concurrent logged-in users on the system."
 msgstr "Establezca un límite en el número máximo de usuarios conectados simultáneamente en el sistema."
 
@@ -11749,7 +11822,7 @@ msgstr "Establezca la dirección IP de la interfaz local que se utilizará para 
 msgid "Set the IP address of the remote peer. It may be specified as an IPv4 address or an IPv6 address."
 msgstr "Establezca la dirección IP del par remoto. Puede especificarse como una dirección IPv4 o una dirección IPv6."
 
-#: ../../configuration/firewall/general.rst:169
+#: ../../configuration/firewall/general.rst:162
 #: ../../configuration/firewall/general-legacy.rst:112
 msgid "Set the IPv4 source validation mode. The following system parameter will be altered:"
 msgstr "Configure el modo de validación de origen de IPv4. Se modificará el siguiente parámetro del sistema:"
@@ -11951,7 +12024,7 @@ msgstr "Establezca el tiempo de espera en segundos para un protocolo o estado en
 msgid "Set the tunnel id, which is a 32-bit integer value. Uniquely identifies the tunnel into which the session will be created."
 msgstr "Establezca la identificación del túnel, que es un valor entero de 32 bits. Identifica de forma exclusiva el túnel en el que se creará la sesión."
 
-#: ../../configuration/firewall/general.rst:1282
+#: ../../configuration/firewall/general.rst:1275
 msgid "Set the window scale factor for TCP window scaling"
 msgstr "Set the window scale factor for TCP window scaling"
 
@@ -11987,6 +12060,10 @@ msgstr "Nombre del ajuste"
 msgid "Setting this up on AWS will require a \"Custom Protocol Rule\" for protocol number \"47\" (GRE) Allow Rule in TWO places. Firstly on the VPC Network ACL, and secondly on the security group network ACL attached to the EC2 instance. This has been tested as working for the official AMI image on the AWS Marketplace. (Locate the correct VPC and security group by navigating through the details pane below your EC2 instance in the AWS console)."
 msgstr "Configurar esto en AWS requerirá una &quot;Regla de protocolo personalizado&quot; para el número de protocolo &quot;47&quot; (GRE) Permitir regla en DOS lugares. En primer lugar, en la ACL de la red de VPC y, en segundo lugar, en la ACL de la red del grupo de seguridad adjunta a la instancia EC2. Se ha probado que funciona para la imagen oficial de AMI en AWS Marketplace. (Ubique la VPC y el grupo de seguridad correctos navegando por el panel de detalles debajo de su instancia EC2 en la consola de AWS)."
 
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:78
+msgid "Setting up IPSec:"
+msgstr "Setting up IPSec:"
+
 #: ../../configuration/interfaces/openvpn.rst:132
 msgid "Setting up OpenVPN"
 msgstr "Setting up OpenVPN"
@@ -11998,6 +12075,14 @@ msgstr "Setting up a full-blown PKI with a CA certificate would arguably defeat 
 #: ../../configuration/interfaces/openvpn.rst:74
 msgid "Setting up certificates"
 msgstr "Setting up certificates"
+
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:19
+msgid "Setting up certificates:"
+msgstr "Setting up certificates:"
+
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:113
+msgid "Setting up tunnel:"
+msgstr "Setting up tunnel:"
 
 #: ../../configuration/service/dhcp-server.rst:432
 msgid "Setup DHCP failover for network 192.0.2.0/24"
@@ -12011,7 +12096,7 @@ msgstr "Configure la contraseña cifrada para el nombre de usuario dado. Esto es
 msgid "Setup the `<timeout>` in seconds when querying the RADIUS server."
 msgstr "Configure el `<timeout> ` en segundos al consultar el servidor RADIUS."
 
-#: ../../configuration/system/login.rst:315
+#: ../../configuration/system/login.rst:331
 msgid "Setup the `<timeout>` in seconds when querying the TACACS server."
 msgstr "Configure el `<timeout> ` en segundos al consultar el servidor TACACS."
 
@@ -12068,7 +12153,7 @@ msgstr "Mostrar el archivo de registro del demonio del servidor DHCP"
 msgid "Show DHCPv6 server daemon log file"
 msgstr "Mostrar el archivo de registro del demonio del servidor DHCPv6"
 
-#: ../../configuration/firewall/general.rst:1489
+#: ../../configuration/firewall/general.rst:1482
 #: ../../configuration/firewall/general-legacy.rst:965
 msgid "Show Firewall log"
 msgstr "Mostrar registro de cortafuegos"
@@ -12316,7 +12401,7 @@ msgstr "Muestra la lista de todos los contenedores activos."
 msgid "Show the local container images."
 msgstr "Muestra las imágenes del contenedor local."
 
-#: ../../configuration/firewall/general.rst:1493
+#: ../../configuration/firewall/general.rst:1486
 #: ../../configuration/firewall/general-legacy.rst:969
 msgid "Show the logs of a specific Rule-Set."
 msgstr "Muestra los registros de un conjunto de reglas específico."
@@ -12463,7 +12548,7 @@ msgstr "Algunos servidores RADIUS_ utilizan una lista de control de acceso que p
 msgid "Some application service providers (ASPs) operate a VPN gateway to provide access to their internal resources, and require that a connecting organisation translate all traffic to the service provider network to a source address provided by the ASP."
 msgstr "Algunos proveedores de servicios de aplicaciones (ASP) operan una puerta de enlace VPN para proporcionar acceso a sus recursos internos y requieren que una organización de conexión traduzca todo el tráfico a la red del proveedor de servicios a una dirección de origen proporcionada por el ASP."
 
-#: ../../configuration/firewall/general.rst:93
+#: ../../configuration/firewall/general.rst:86
 #: ../../configuration/firewall/general-legacy.rst:38
 msgid "Some firewall settings are global and have an affect on the whole system."
 msgstr "Algunas configuraciones de firewall son globales y tienen un efecto en todo el sistema."
@@ -12532,7 +12617,7 @@ msgstr "Prefijo de origen"
 msgid "Source all connections to the RADIUS servers from given VRF `<name>`."
 msgstr "Fuente todas las conexiones a los servidores RADIUS de VRF dado `<name> `."
 
-#: ../../configuration/system/login.rst:329
+#: ../../configuration/system/login.rst:345
 msgid "Source all connections to the TACACS servers from given VRF `<name>`."
 msgstr "Fuente todas las conexiones a los servidores TACACS de VRF dado `<name> `."
 
@@ -12685,7 +12770,7 @@ msgstr "Especifica qué atributo del servidor RADIUS contiene la información de
 msgid "Specify IPv4/IPv6 listen address of SSH server. Multiple addresses can be defined."
 msgstr "Especifique la dirección de escucha IPv4/IPv6 del servidor SSH. Se pueden definir varias direcciones."
 
-#: ../../configuration/firewall/general.rst:670
+#: ../../configuration/firewall/general.rst:663
 #: ../../configuration/firewall/general-legacy.rst:455
 msgid "Specify a Fully Qualified Domain Name as source/destination matcher. Ensure router is able to resolve such dns query."
 msgstr "Especifique un nombre de dominio completo como comparador de origen/destino. Asegúrese de que el enrutador pueda resolver dicha consulta DNS."
@@ -12736,7 +12821,7 @@ msgstr "Especifique una ruta estática en la tabla de enrutamiento enviando todo
 msgid "Specify the IP `<address>` of the RADIUS server user with the pre-shared-secret given in `<secret>`."
 msgstr "Especifique la IP `<address> ` del usuario del servidor RADIUS con el secreto previamente compartido dado en `<secret> `."
 
-#: ../../configuration/system/login.rst:298
+#: ../../configuration/system/login.rst:314
 msgid "Specify the IP `<address>` of the TACACS server user with the pre-shared-secret given in `<secret>`."
 msgstr "Especifique la IP `<address> ` del usuario del servidor TACACS con el secreto previamente compartido dado en `<secret> `."
 
@@ -12839,6 +12924,10 @@ msgstr "Comience por buscar IPSec SA (asociaciones de seguridad) con:"
 #: ../../configuration/firewall/zone.rst:9
 msgid "Starting from VyOS 1.4-rolling-202308040557, a new firewall structure can be found on all vyos instalations, and zone based firewall is no longer supported. Documentation for most of the new firewall CLI can be found in the `firewall <https://docs.vyos.io/en/latest/configuration/firewall/general.html>`_ chapter. The legacy firewall is still available for versions before 1.4-rolling-202308040557 and can be found in the :ref:`firewall-legacy` chapter. The examples in this section use the legacy firewall configuration commands, since this feature has been removed in earlier releases."
 msgstr "Starting from VyOS 1.4-rolling-202308040557, a new firewall structure can be found on all vyos instalations, and zone based firewall is no longer supported. Documentation for most of the new firewall CLI can be found in the `firewall <https://docs.vyos.io/en/latest/configuration/firewall/general.html>`_ chapter. The legacy firewall is still available for versions before 1.4-rolling-202308040557 and can be found in the :ref:`firewall-legacy` chapter. The examples in this section use the legacy firewall configuration commands, since this feature has been removed in earlier releases."
+
+#: ../../configuration/firewall/index.rst:8
+msgid "Starting from VyOS 1.4-rolling-202308040557, a new firewall structure can be found on all vyos installations."
+msgstr "Starting from VyOS 1.4-rolling-202308040557, a new firewall structure can be found on all vyos installations."
 
 #: ../../configuration/firewall/index.rst:5
 msgid "Starting from VyOS 1.4-rolling-202308040557, a new firewall structure can be found on all vyos installations. Documentation for most new firewall cli can be found here:"
@@ -12971,15 +13060,15 @@ msgstr "Synamic instruye a reenviar a todos los compañeros con los que tenemos 
 msgid "Sync groups"
 msgstr "Sincronizar grupos"
 
-#: ../../configuration/firewall/general.rst:1271
+#: ../../configuration/firewall/general.rst:1264
 msgid "Synproxy"
 msgstr "Synproxy"
 
-#: ../../configuration/firewall/general.rst:1272
+#: ../../configuration/firewall/general.rst:1265
 msgid "Synproxy connections"
 msgstr "Synproxy connections"
 
-#: ../../configuration/firewall/general.rst:1289
+#: ../../configuration/firewall/general.rst:1282
 msgid "Synproxy relies on syncookies and TCP timestamps, ensure these are enabled"
 msgstr "Synproxy relies on syncookies and TCP timestamps, ensure these are enabled"
 
@@ -13048,19 +13137,19 @@ msgstr "Identificador del sistema: ``1921.6800.1002``: para los identificadores 
 msgid "System is unusable - a panic condition"
 msgstr "El sistema no se puede usar: una condición de pánico"
 
-#: ../../configuration/system/login.rst:283
+#: ../../configuration/system/login.rst:299
 msgid "TACACS+"
 msgstr "TACACS+"
 
-#: ../../configuration/system/login.rst:388
+#: ../../configuration/system/login.rst:416
 msgid "TACACS Example"
 msgstr "Ejemplo de TACACS"
 
-#: ../../configuration/system/login.rst:289
+#: ../../configuration/system/login.rst:305
 msgid "TACACS is defined in :rfc:`8907`."
 msgstr "TACACS se define en :rfc:`8907`."
 
-#: ../../configuration/system/login.rst:319
+#: ../../configuration/system/login.rst:335
 msgid "TACACS servers could be hardened by only allowing certain IP addresses to connect. As of this the source address of each TACACS query can be configured."
 msgstr "Los servidores TACACS podrían fortalecerse al permitir que solo se conecten ciertas direcciones IP. A partir de esto se puede configurar la dirección de origen de cada consulta TACACS."
 
@@ -13117,7 +13206,7 @@ msgstr "Deshabilite temporalmente este servidor RADIUS."
 msgid "Temporary disable this RADIUS server. It won't be queried."
 msgstr "Deshabilite temporalmente este servidor RADIUS. No será consultado."
 
-#: ../../configuration/system/login.rst:311
+#: ../../configuration/system/login.rst:327
 msgid "Temporary disable this TACACS server. It won't be queried."
 msgstr "Deshabilite temporalmente este servidor TACACS. No será consultado."
 
@@ -13345,7 +13434,7 @@ msgstr "El comando operativo `show bridge` se puede utilizar para mostrar los pu
 msgid "The above directory and default-config must be a child directory of /config/auth, since files outside this directory are not persisted after an image upgrade."
 msgstr "El directorio anterior y la configuración predeterminada deben ser un directorio secundario de /config/auth, ya que los archivos fuera de este directorio no se conservan después de una actualización de imagen."
 
-#: ../../configuration/firewall/general.rst:339
+#: ../../configuration/firewall/general.rst:332
 msgid "The action can be :"
 msgstr "The action can be :"
 
@@ -13780,6 +13869,10 @@ msgstr "El tamaño de MTU más grande que puede usar con DSL es 1492 debido a la
 msgid "The last step is to define an interface route for 192.168.2.0/24 to get through the WireGuard interface `wg01`. Multiple IPs or networks can be defined and routed. The last check is allowed-ips which either prevents or allows the traffic."
 msgstr "El último paso es definir una ruta de interfaz para 192.168.2.0/24 para atravesar la interfaz WireGuard `wg01`. Se pueden definir y enrutar varias direcciones IP o redes. La última comprobación es allow-ips, que impide o permite el tráfico."
 
+#: ../../configuration/firewall/index.rst:12
+msgid "The legacy and zone-based firewall configuration options is not longer supported. They are here for reference purposes only."
+msgstr "The legacy and zone-based firewall configuration options is not longer supported. They are here for reference purposes only."
+
 #: ../../configuration/trafficpolicy/index.rst:552
 msgid "The limiter performs basic ingress policing of traffic flows. Multiple classes of traffic can be defined and traffic limits can be applied to each class. Although the policer uses a token bucket mechanism internally, it does not have the capability to delay a packet as a shaping mechanism does. Traffic exceeding the defined bandwidth limits is directly dropped. A maximum allowed burst can be configured too."
 msgstr "El limitador realiza una vigilancia de entrada básica de los flujos de tráfico. Se pueden definir múltiples clases de tráfico y se pueden aplicar límites de tráfico a cada clase. Aunque el vigilante utiliza internamente un mecanismo de cubeta de fichas, no tiene la capacidad de retrasar un paquete como lo hace un mecanismo de modelado. El tráfico que excede los límites de ancho de banda definidos se elimina directamente. También se puede configurar una ráfaga máxima permitida."
@@ -13863,6 +13956,10 @@ msgstr "El parámetro de número (1-10) configura la cantidad de ocurrencias ace
 #: ../../configuration/interfaces/openvpn.rst:64
 msgid "The official port for OpenVPN is 1194, which we reserve for client VPN; we will use 1195 for site-to-site VPN."
 msgstr "El puerto oficial para OpenVPN es 1194, que reservamos para cliente VPN; Usaremos 1195 para VPN de sitio a sitio."
+
+#: ../../configuration/firewall/index.rst:32
+msgid "The only stages VyOS will process as part of the firewall configuration is the `forward` (F4 stage), `input` (L4 stage), and `output` (L5 stage). All the other stages and steps are for reference and cant be manipulated through VyOS."
+msgstr "The only stages VyOS will process as part of the firewall configuration is the `forward` (F4 stage), `input` (L4 stage), and `output` (L5 stage). All the other stages and steps are for reference and cant be manipulated through VyOS."
 
 #: ../../configuration/protocols/ospf.rst:155
 msgid "The optional `disable` option allows to exclude interface from passive state. This command is used if the command :cfgcmd:`passive-interface default` was configured."
@@ -14163,7 +14260,7 @@ msgstr "Hay una variedad de interfaces GUI de cliente para cualquier plataforma"
 msgid "There are 3 default NTP server set. You are able to change them."
 msgstr "Hay 3 servidores NTP predeterminados establecidos. Usted es capaz de cambiarlos."
 
-#: ../../configuration/firewall/general.rst:543
+#: ../../configuration/firewall/general.rst:536
 #: ../../configuration/firewall/general-legacy.rst:380
 msgid "There are a lot of matching criteria against which the package can be tested."
 msgstr "Hay muchos criterios coincidentes con los que se puede probar el paquete."
@@ -15373,7 +15470,7 @@ msgstr "Este comando generará una ruta predeterminada en la base de datos L1."
 msgid "This command will generate a default-route in L2 database."
 msgstr "Este comando generará una ruta predeterminada en la base de datos L2."
 
-#: ../../configuration/firewall/general.rst:1464
+#: ../../configuration/firewall/general.rst:1457
 #: ../../configuration/firewall/general-legacy.rst:904
 msgid "This command will give an overview of a rule in a single rule-set"
 msgstr "Este comando brindará una descripción general de una regla en un solo conjunto de reglas"
@@ -15382,7 +15479,7 @@ msgstr "Este comando brindará una descripción general de una regla en un solo 
 msgid "This command will give an overview of a rule in a single rule-set."
 msgstr "Este comando le dará una descripción general de una regla en un solo conjunto de reglas."
 
-#: ../../configuration/firewall/general.rst:1442
+#: ../../configuration/firewall/general.rst:1435
 #: ../../configuration/firewall/general-legacy.rst:932
 msgid "This command will give an overview of a single rule-set."
 msgstr "Este comando le dará una visión general de un solo conjunto de reglas."
@@ -15462,7 +15559,7 @@ msgstr "This defaults to 300 seconds."
 msgid "This defaults to 30 seconds."
 msgstr "Esto por defecto es de 30 segundos."
 
-#: ../../configuration/system/login.rst:307
+#: ../../configuration/system/login.rst:323
 msgid "This defaults to 49."
 msgstr "Esto por defecto es 49."
 
@@ -15510,7 +15607,7 @@ msgstr "Este ejemplo muestra cómo apuntar una abrazadera MSS (en nuestro ejempl
 msgid "This feature summarises originated external LSAs (Type-5 and Type-7). Summary Route will be originated on-behalf of all matched external LSAs."
 msgstr "Esta característica resume los LSA externos originados (Tipo 5 y Tipo 7). La ruta resumida se originará en nombre de todos los LSA externos coincidentes."
 
-#: ../../configuration/firewall/general.rst:633
+#: ../../configuration/firewall/general.rst:626
 #: ../../configuration/firewall/general-legacy.rst:431
 msgid "This functions for both individual addresses and address groups."
 msgstr "Esto funciona tanto para direcciones individuales como para grupos de direcciones."
@@ -15722,7 +15819,7 @@ msgstr "Esta opción es obligatoria en el modo Punto de Acceso."
 msgid "This option is required when running a DMVPN spoke."
 msgstr "Esta opción es necesaria cuando se ejecuta un radio DMVPN."
 
-#: ../../configuration/system/login.rst:360
+#: ../../configuration/system/login.rst:388
 msgid "This option must be used with ``timeout`` option."
 msgstr "Esta opción debe usarse con la opción ``timeout``."
 
@@ -15751,7 +15848,7 @@ msgstr "Esto llevó a algunos ISP a desarrollar una política dentro del :abbr:`
 msgid "This required setting defines the action of the current rule. If action is set to ``jump``, then ``jump-target`` is also needed."
 msgstr "Esta configuración obligatoria define la acción de la regla actual. Si la acción se establece en ``jump``, entonces también se necesita ``jump-target``."
 
-#: ../../configuration/firewall/general.rst:367
+#: ../../configuration/firewall/general.rst:360
 msgid "This required setting defines the action of the current rule. If action is set to jump, then jump-target is also needed."
 msgstr "This required setting defines the action of the current rule. If action is set to jump, then jump-target is also needed."
 
@@ -15797,7 +15894,7 @@ msgstr "Esta sección necesita mejoras, ejemplos y explicaciones."
 msgid "This set the default action of the rule-set if no rule matched a packet criteria. If defacult-action is set to ``jump``, then ``default-jump-target`` is also needed."
 msgstr "Esto establece la acción predeterminada del conjunto de reglas si ninguna regla coincide con un criterio de paquete. Si la acción predeterminada se establece en ``jump``, entonces también se necesita ``default-jump-target``."
 
-#: ../../configuration/firewall/general.rst:399
+#: ../../configuration/firewall/general.rst:392
 msgid "This set the default action of the rule-set if no rule matched a packet criteria. If defacult-action is set to ``jump``, then ``default-jump-target`` is also needed. Note that for base chains, default action can only be set to ``accept`` or ``drop``, while on custom chain, more actions are available."
 msgstr "This set the default action of the rule-set if no rule matched a packet criteria. If defacult-action is set to ``jump``, then ``default-jump-target`` is also needed. Note that for base chains, default action can only be set to ``accept`` or ``drop``, while on custom chain, more actions are available."
 
@@ -15817,12 +15914,12 @@ msgstr "Esta configuración, que por defecto es de 3600 segundos, pone un máxim
 msgid "This setting defaults to 1500 and is valid between 10 and 60000."
 msgstr "Esta configuración predeterminada es 1500 y es válida entre 10 y 60000."
 
-#: ../../configuration/firewall/general.rst:128
+#: ../../configuration/firewall/general.rst:121
 #: ../../configuration/firewall/general-legacy.rst:73
 msgid "This setting enable or disable the response of icmp broadcast messages. The following system parameter will be altered:"
 msgstr "Esta configuración activa o desactiva la respuesta de los mensajes de difusión icmp. Se modificará el siguiente parámetro del sistema:"
 
-#: ../../configuration/firewall/general.rst:136
+#: ../../configuration/firewall/general.rst:129
 #: ../../configuration/firewall/general-legacy.rst:81
 msgid "This setting handle if VyOS accept packets with a source route option. The following system parameter will be altered:"
 msgstr "Esta configuración maneja si VyOS acepta paquetes con una opción de ruta de origen. Se modificará el siguiente parámetro del sistema:"
@@ -15905,7 +16002,7 @@ msgstr "Esto hará coincidir el tráfico TCP con el puerto de origen 80."
 msgid "This will render the following ddclient_ configuration entry:"
 msgstr "Esto generará la siguiente entrada de configuración ddclient_:"
 
-#: ../../configuration/firewall/general.rst:1321
+#: ../../configuration/firewall/general.rst:1314
 #: ../../configuration/firewall/general-legacy.rst:785
 msgid "This will show you a basic firewall overview"
 msgstr "Esto le mostrará una descripción general básica del firewall"
@@ -15914,12 +16011,12 @@ msgstr "Esto le mostrará una descripción general básica del firewall"
 msgid "This will show you a rule-set statistic since the last boot."
 msgstr "Esto le mostrará una estadística de conjunto de reglas desde el último arranque."
 
-#: ../../configuration/firewall/general.rst:1486
+#: ../../configuration/firewall/general.rst:1479
 #: ../../configuration/firewall/general-legacy.rst:900
 msgid "This will show you a statistic of all rule-sets since the last boot."
 msgstr "Esto le mostrará una estadística de todos los conjuntos de reglas desde el último arranque."
 
-#: ../../configuration/firewall/general.rst:1384
+#: ../../configuration/firewall/general.rst:1377
 #: ../../configuration/firewall/general-legacy.rst:851
 msgid "This will show you a summary of rule-sets and groups"
 msgstr "Esto le mostrará un resumen de conjuntos de reglas y grupos."
@@ -15964,7 +16061,7 @@ msgstr "Tiempo en segundos que el prefijo seguirá siendo válido (predeterminad
 msgid "Time is in minutes and defaults to 60."
 msgstr "El tiempo es en minutos y el valor predeterminado es 60."
 
-#: ../../configuration/firewall/general.rst:1218
+#: ../../configuration/firewall/general.rst:1211
 #: ../../configuration/firewall/general-legacy.rst:722
 #: ../../configuration/policy/route.rst:225
 msgid "Time to match the defined rule."
@@ -16015,12 +16112,12 @@ msgstr "Para asignar automáticamente al cliente una dirección IP como extremo 
 msgid "To be used only when ``action`` is set to ``jump``. Use this command to specify jump target."
 msgstr "Para ser usado solo cuando ``action`` se establece en ``jump``. Utilice este comando para especificar el objetivo de salto."
 
-#: ../../configuration/firewall/general.rst:408
+#: ../../configuration/firewall/general.rst:401
 #: ../../configuration/firewall/general-legacy.rst:295
 msgid "To be used only when ``defult-action`` is set to ``jump``. Use this command to specify jump target for default rule."
 msgstr "Para usarse solo cuando ``defult-action`` está configurado en ``jump``. Utilice este comando para especificar el destino de salto para la regla predeterminada."
 
-#: ../../configuration/firewall/general.rst:381
+#: ../../configuration/firewall/general.rst:374
 msgid "To be used only when action is set to jump. Use this command to specify jump target."
 msgstr "To be used only when action is set to jump. Use this command to specify jump target."
 
@@ -16035,6 +16132,18 @@ msgstr "Para omitir el proxy para cada solicitud que se dirige a un destino espe
 #: ../../configuration/service/ipoe-server.rst:65
 msgid "To configure IPv6 assignments for clients, two options need to be configured. A global prefix which is terminated on the clients cpe and a delegated prefix, the client can use for devices routed via the clients cpe."
 msgstr "Para configurar asignaciones de IPv6 para clientes, se deben configurar dos opciones. Un prefijo global que termina en el cpe del cliente y un prefijo delegado que el cliente puede usar para los dispositivos enrutados a través del cpe del cliente."
+
+#: ../../configuration/firewall/index.rst:58
+msgid "To configure VyOS with the :doc:`legacy firewall configuration </configuration/firewall/general-legacy>`"
+msgstr "To configure VyOS with the :doc:`legacy firewall configuration </configuration/firewall/general-legacy>`"
+
+#: ../../configuration/firewall/index.rst:79
+msgid "To configure VyOS with the :doc:`zone-based firewall configuration </configuration/firewall/zone>`"
+msgstr "To configure VyOS with the :doc:`zone-based firewall configuration </configuration/firewall/zone>`"
+
+#: ../../configuration/firewall/index.rst:30
+msgid "To configure VyOS with the new :doc:`firewall configuration </configuration/firewall/general>`"
+msgstr "To configure VyOS with the new :doc:`firewall configuration </configuration/firewall/general>`"
 
 #: ../../configuration/service/webproxy.rst:386
 msgid "To configure blocking add the following to the configuration"
@@ -16056,7 +16165,7 @@ msgstr "Para configurar su pantalla LCD, primero debe identificar el hardware ut
 msgid "To create VLANs per user during runtime, the following settings are required on a per interface basis. VLAN ID and VLAN range can be present in the configuration at the same time."
 msgstr "Para crear VLAN por usuario durante el tiempo de ejecución, se requieren las siguientes configuraciones por interfaz. El ID de VLAN y el rango de VLAN pueden estar presentes en la configuración al mismo tiempo."
 
-#: ../../configuration/system/login.rst:347
+#: ../../configuration/system/login.rst:375
 msgid "To create a new line in your login message you need to escape the new line character by using ``\\\\n``."
 msgstr "Para crear una nueva línea en su mensaje de inicio de sesión, debe escapar del carácter de nueva línea usando ``\\\\n``."
 
@@ -16226,6 +16335,10 @@ msgstr "Opción de seguimiento para rastrear estados de interfaz no VRRP. VRRP c
 msgid "Traditional BGP did not have the feature to detect a remote peer's capabilities, e.g. whether it can handle prefix types other than IPv4 unicast routes. This was a big problem using Multiprotocol Extension for BGP in an operational network. :rfc:`2842` adopted a feature called Capability Negotiation. *bgpd* use this Capability Negotiation to detect the remote peer's capabilities. If a peer is only configured as an IPv4 unicast neighbor, *bgpd* does not send these Capability Negotiation packets (at least not unless other optional BGP features require capability negotiation)."
 msgstr "El BGP tradicional no tenía la función para detectar las capacidades de un par remoto, por ejemplo, si puede manejar tipos de prefijos distintos de las rutas de unidifusión IPv4. Este fue un gran problema al usar Multiprotocol Extension para BGP en una red operativa. :rfc:`2842` adoptó una característica llamada negociación de capacidad. *bgpd* utiliza esta negociación de capacidad para detectar las capacidades del par remoto. Si un par solo está configurado como un vecino de unidifusión IPv4, *bgpd* no envía estos paquetes de negociación de capacidad (al menos no a menos que otras características BGP opcionales requieran negociación de capacidad)."
 
+#: ../../configuration/firewall/index.rst:54
+msgid "Traditionally firewalls weere configured with the concept of data going in and out of an interface. The router just listened to the data flowing through and responding as required if it was directed at the router itself."
+msgstr "Traditionally firewalls weere configured with the concept of data going in and out of an interface. The router just listened to the data flowing through and responding as required if it was directed at the router itself."
+
 #: ../../configuration/interfaces/openvpn.rst:9
 msgid "Traditionally hardware routers implement IPsec exclusively due to relative ease of implementing it in hardware and insufficient CPU power for doing encryption in software. Since VyOS is a software router, this is less of a concern. OpenVPN has been widely used on UNIX platform for a long time and is a popular option for remote access VPN, though it's also capable of site-to-site connections."
 msgstr "Tradicionalmente, los enrutadores de hardware implementan IPsec exclusivamente debido a la relativa facilidad de implementarlo en el hardware y la potencia insuficiente de la CPU para realizar el cifrado en el software. Dado que VyOS es un enrutador de software, esto es una preocupación menor. OpenVPN se ha utilizado ampliamente en la plataforma UNIX durante mucho tiempo y es una opción popular para VPN de acceso remoto, aunque también es capaz de conexiones de sitio a sitio."
@@ -16254,7 +16367,7 @@ msgstr "El tráfico de las fuentes de multidifusión irá al punto de encuentro 
 msgid "Traffic from multicast sources will go to the Rendezvous Point, and receivers will pull it from a shared tree using MLD (Multicast Listener Discovery)."
 msgstr "Traffic from multicast sources will go to the Rendezvous Point, and receivers will pull it from a shared tree using MLD (Multicast Listener Discovery)."
 
-#: ../../configuration/firewall/general.rst:1288
+#: ../../configuration/firewall/general.rst:1281
 msgid "Traffic must be symmetric"
 msgstr "Traffic must be symmetric"
 
@@ -16383,7 +16496,7 @@ msgstr "Actualizar"
 msgid "Update container image"
 msgstr "Actualizar la imagen del contenedor"
 
-#: ../../configuration/firewall/general.rst:1547
+#: ../../configuration/firewall/general.rst:1540
 #: ../../configuration/firewall/general-legacy.rst:1050
 msgid "Update geoip database"
 msgstr "Actualizar base de datos geoip"
@@ -16437,27 +16550,27 @@ msgstr "Use `eliminar módulos de seguimiento del sistema` para desactivar todos
 msgid "Use a persistent LDAP connection. Normally the LDAP connection is only open while validating a username to preserve resources at the LDAP server. This option causes the LDAP connection to be kept open, allowing it to be reused for further user validations."
 msgstr "Utilice una conexión LDAP persistente. Normalmente, la conexión LDAP solo se abre mientras se valida un nombre de usuario para preservar los recursos en el servidor LDAP. Esta opción hace que la conexión LDAP se mantenga abierta, lo que permite reutilizarla para posteriores validaciones de usuarios."
 
-#: ../../configuration/firewall/general.rst:806
+#: ../../configuration/firewall/general.rst:799
 #: ../../configuration/firewall/general-legacy.rst:531
 msgid "Use a specific address-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Utilice un grupo de direcciones específico. Anteponga el carácter ``!`` para los criterios de coincidencia invertidos."
 
-#: ../../configuration/firewall/general.rst:881
+#: ../../configuration/firewall/general.rst:874
 #: ../../configuration/firewall/general-legacy.rst:567
 msgid "Use a specific domain-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Utilice un grupo de dominio específico. Anteponga el carácter ``!`` para los criterios de coincidencia invertidos."
 
-#: ../../configuration/firewall/general.rst:906
+#: ../../configuration/firewall/general.rst:899
 #: ../../configuration/firewall/general-legacy.rst:579
 msgid "Use a specific mac-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Utilice un grupo Mac específico. Anteponga el carácter ``!`` para los criterios de coincidencia invertidos."
 
-#: ../../configuration/firewall/general.rst:831
+#: ../../configuration/firewall/general.rst:824
 #: ../../configuration/firewall/general-legacy.rst:543
 msgid "Use a specific network-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Utilice un grupo de red específico. Anteponga el carácter ``!`` para los criterios de coincidencia invertidos."
 
-#: ../../configuration/firewall/general.rst:856
+#: ../../configuration/firewall/general.rst:849
 #: ../../configuration/firewall/general-legacy.rst:555
 msgid "Use a specific port-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Utilice un grupo de puertos específico. Anteponga el carácter ``!`` para los criterios de coincidencia invertidos."
@@ -16993,7 +17106,7 @@ msgstr "Utilice este comando para permitir que el enrutador local intente conect
 msgid "Use this command to enable the logging of the default action."
 msgstr "Utilice este comando para habilitar el registro de la acción predeterminada."
 
-#: ../../configuration/firewall/general.rst:438
+#: ../../configuration/firewall/general.rst:431
 msgid "Use this command to enable the logging of the default action on custom chains."
 msgstr "Use this command to enable the logging of the default action on custom chains."
 
@@ -17394,6 +17507,10 @@ msgstr "Valor para enviar al servidor RADIUS en el atributo NAS-Identifier y par
 msgid "Verification"
 msgstr "Verificación"
 
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:168
+msgid "Verification:"
+msgstr "Verification:"
+
 #: ../../configuration/highavailability/index.rst:291
 msgid "Version"
 msgstr "Versión"
@@ -17502,6 +17619,10 @@ msgstr "VyOS también viene con un servidor SSTP integrado, consulte :ref:`sstp`
 msgid "VyOS also provides DHCPv6 server functionality which is described in this section."
 msgstr "VyOS también proporciona la funcionalidad del servidor DHCPv6 que se describe en esta sección."
 
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:127
+msgid "VyOS also supports two different modes of authentication, local and RADIUS. To create a new local user named \"vyos\" with a password of \"vyos\" use the following commands."
+msgstr "VyOS also supports two different modes of authentication, local and RADIUS. To create a new local user named \"vyos\" with a password of \"vyos\" use the following commands."
+
 #: ../../configuration/vpn/dmvpn.rst:290
 msgid "VyOS can also run in DMVPN spoke mode."
 msgstr "VyOS también puede ejecutarse en modo radial DMVPN."
@@ -17583,6 +17704,10 @@ msgstr "VyOS proporciona una API HTTP. Puede usarlo para ejecutar comandos de mo
 #: ../../configuration/service/dns.rst:10
 msgid "VyOS provides DNS infrastructure for small networks. It is designed to be lightweight and have a small footprint, suitable for resource constrained routers and firewalls. For this we utilize PowerDNS recursor."
 msgstr "VyOS proporciona infraestructura de DNS para redes pequeñas. Está diseñado para ser liviano y tener una huella pequeña, adecuado para enrutadores y firewalls con recursos limitados. Para esto utilizamos el recursor PowerDNS."
+
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:144
+msgid "VyOS provides a command to generate a connection profile used by Windows clients that will connect to the \"rw\" connection on our VyOS server."
+msgstr "VyOS provides a command to generate a connection profile used by Windows clients that will connect to the \"rw\" connection on our VyOS server."
 
 #: ../../configuration/policy/as-path-list.rst:5
 msgid "VyOS provides policies commands exclusively for BGP traffic filtering and manipulation: **as-path-list** is one of them."
@@ -17763,7 +17888,7 @@ msgstr "Solo necesitamos un solo paso para esta interfaz:"
 msgid "We route all traffic for the 192.168.2.0/24 network to interface `wg01`"
 msgstr "Enrutamos todo el tráfico de la red 192.168.2.0/24 a la interfaz `wg01`"
 
-#: ../../configuration/system/login.rst:390
+#: ../../configuration/system/login.rst:418
 msgid "We use a vontainer providing the TACACS serve rin this example."
 msgstr "Usamos un contenedor que proporciona el servicio TACACS en este ejemplo."
 
@@ -17827,7 +17952,7 @@ msgstr "Al configurar su filtro, puede usar la tecla ``Tab`` para ver los difere
 msgid "When configuring your traffic policy, you will have to set data rate values, watch out the units you are managing, it is easy to get confused with the different prefixes and suffixes you can use. VyOS will always show you the different units you can use."
 msgstr "A la hora de configurar tu política de tráfico tendrás que establecer valores de tasa de datos, ojo con las unidades que estás gestionando, es fácil confundirse con los diferentes prefijos y sufijos que puedes utilizar. VyOS siempre te mostrará las diferentes unidades que puedes usar."
 
-#: ../../configuration/firewall/general.rst:528
+#: ../../configuration/firewall/general.rst:521
 msgid "When defining a rule, it is enable by default. In some cases, it is useful to just disable the rule, rather than removing it."
 msgstr "When defining a rule, it is enable by default. In some cases, it is useful to just disable the rule, rather than removing it."
 
@@ -17932,12 +18057,12 @@ msgstr "Cuando el servidor DHCP está considerando asignar dinámicamente una di
 msgid "When the close-action option is set on the peers, the connection-type of each peer has to considered carefully. For example, if the option is set on both peers, then both would attempt to initiate and hold open multiple copies of each child SA. This might lead to instability of the device or cpu/memory utilization."
 msgstr "Cuando la opción de acción de cierre se establece en los pares, el tipo de conexión de cada par debe considerarse cuidadosamente. Por ejemplo, si la opción está configurada en ambos pares, ambos intentarán iniciar y mantener abiertas varias copias de cada SA secundario. Esto podría conducir a la inestabilidad del dispositivo o la utilización de la CPU/memoria."
 
-#: ../../configuration/firewall/general.rst:113
+#: ../../configuration/firewall/general.rst:106
 #: ../../configuration/firewall/general-legacy.rst:58
 msgid "When the command above is set, VyOS will answer every ICMP echo request addressed to itself, but that will only happen if no other rule is applied dropping or rejecting local echo requests. In case of conflict, VyOS will not answer ICMP echo requests."
 msgstr "Cuando se establece el comando anterior, VyOS responderá a todas las solicitudes de eco ICMP dirigidas a sí mismo, pero eso solo sucederá si no se aplica ninguna otra regla que descarte o rechace las solicitudes de eco locales. En caso de conflicto, VyOS no responderá a las solicitudes de eco ICMP."
 
-#: ../../configuration/firewall/general.rst:122
+#: ../../configuration/firewall/general.rst:115
 #: ../../configuration/firewall/general-legacy.rst:67
 msgid "When the command above is set, VyOS will answer no ICMP echo request addressed to itself at all, no matter where it comes from or whether more specific rules are being applied to accept them."
 msgstr "Cuando se establece el comando anterior, VyOS no responderá ninguna solicitud de eco ICMP dirigida a sí mismo, sin importar de dónde provenga o si se aplican reglas más específicas para aceptarlas."
@@ -17990,7 +18115,7 @@ msgstr "Cuando utilice IPsec de sitio a sitio con interfaces VTI, asegúrese de 
 msgid "When utilizing VyOS in an environment with Arista gear you can use this blue print as an initial setup to get an LACP bond / port-channel operational between those two devices."
 msgstr "Cuando utilice VyOS en un entorno con equipo Arista, puede usar este modelo como una configuración inicial para obtener un vínculo/canal de puerto LACP operativo entre esos dos dispositivos."
 
-#: ../../configuration/firewall/general.rst:64
+#: ../../configuration/firewall/general.rst:57
 msgid "Where, main key words and configuration paths that needs to be understood:"
 msgstr "Where, main key words and configuration paths that needs to be understood:"
 
@@ -18037,7 +18162,7 @@ msgstr "Lo que resulta en una configuración de:"
 msgid "Which would generate the following NAT destination configuration:"
 msgstr "Lo que generaría la siguiente configuración de destino NAT:"
 
-#: ../../configuration/firewall/general.rst:224
+#: ../../configuration/firewall/general.rst:217
 #: ../../configuration/firewall/general-legacy.rst:193
 msgid "While **network groups** accept IP networks in CIDR notation, specific IP addresses can be added as a 32-bit prefix. If you foresee the need to add a mix of addresses and networks, the network group is recommended."
 msgstr "Si bien los **grupos de red** aceptan redes IP en notación CIDR, se pueden agregar direcciones IP específicas como un prefijo de 32 bits. Si prevé la necesidad de agregar una combinación de direcciones y redes, se recomienda el grupo de red."
@@ -18069,6 +18194,10 @@ msgstr "Se registrarán solo los paquetes/flujos en la dirección **entrante** e
 #: ../../configuration/service/dhcp-server.rst:31
 msgid "Will drop `<shared-network-name>_` from client DNS record, using only the host declaration name and domain: `<hostname>.<domain-name>`"
 msgstr "Caerá `<shared-network-name> _` del registro DNS del cliente, usando solo el nombre de declaración de host y el dominio: `<hostname> .<domain-name> `"
+
+#: ../../configuration/vpn/remoteaccess_ipsec.rst:147
+msgid "Windows expects the server name to be also used in the server's certificate common name, so it's best to use this DNS name for your VPN connection."
+msgstr "Windows expects the server name to be also used in the server's certificate common name, so it's best to use this DNS name for your VPN connection."
 
 #: ../../configuration/interfaces/wireguard.rst:7
 #: ../../configuration/pki/index.rst:132
@@ -18116,6 +18245,10 @@ msgstr "Opciones inalámbricas"
 msgid "Wireless options (Station/Client)"
 msgstr "Opciones inalámbricas (Estación/Cliente)"
 
+#: ../../configuration/firewall/index.rst:23
+msgid "With VyOS being based on top of Linux and its kernel, the Netfilter project created the iptables and now the successor nftables for the Linux kernel to work directly on the data flows. This now extends the concept of zone-based security to allow for manipulating the data at multiple stages once accepted by the network interface and the driver before being handed off to the destination (e.g. a web server OR another device)."
+msgstr "With VyOS being based on top of Linux and its kernel, the Netfilter project created the iptables and now the successor nftables for the Linux kernel to work directly on the data flows. This now extends the concept of zone-based security to allow for manipulating the data at multiple stages once accepted by the network interface and the driver before being handed off to the destination (e.g. a web server OR another device)."
+
 #: ../../configuration/interfaces/wireguard.rst:269
 msgid "With WireGuard, a Road Warrior VPN config is similar to a site-to-site VPN. It just lacks the ``address`` and ``port`` statements."
 msgstr "Con WireGuard, una configuración de VPN de Road Warrior es similar a una VPN de sitio a sitio. Simplemente le faltan las declaraciones ``dirección`` y ``puerto``."
@@ -18124,7 +18257,7 @@ msgstr "Con WireGuard, una configuración de VPN de Road Warrior es similar a un
 msgid "With the ``name-server`` option set to ``none``, VyOS will ignore the nameservers your ISP sends you and thus you can fully rely on the ones you have configured statically."
 msgstr "Con la opción ``servidor de nombres`` establecida en ``ninguno``, VyOS ignorará los servidores de nombres que le envíe su ISP y, por lo tanto, puede confiar plenamente en los que ha configurado estáticamente."
 
-#: ../../configuration/firewall/general.rst:101
+#: ../../configuration/firewall/general.rst:94
 #: ../../configuration/firewall/general-legacy.rst:46
 msgid "With the firewall you can set rules to accept, drop or reject ICMP in, out or local traffic. You can also use the general **firewall all-ping** command. This command affects only to LOCAL (packets destined for your VyOS system), not to IN or OUT traffic."
 msgstr "Con el cortafuegos, puede establecer reglas para aceptar, descartar o rechazar tráfico local, entrante o saliente de ICMP. También puede usar el comando general **firewall all-ping**. Este comando afecta solo a LOCAL (paquetes destinados a su sistema VyOS), no al tráfico de ENTRADA o SALIDA."
@@ -18132,6 +18265,10 @@ msgstr "Con el cortafuegos, puede establecer reglas para aceptar, descartar o re
 #: ../../configuration/loadbalancing/reverse-proxy.rst:75
 msgid "With this command, you can specify how the URL path should be matched against incoming requests."
 msgstr "Con este comando, puede especificar cómo debe coincidir la ruta de URL con las solicitudes entrantes."
+
+#: ../../configuration/firewall/index.rst:73
+msgid "With zone-based firewalls a new concept was implemented, in addtion to the standard in and out traffic flows, a local flow was added. This local was for traffic originating and destined to the router itself. Which means additional rules were required to secure the firewall itself from the network, in addition to the existing inbound and outbound rules from the traditional concept above."
+msgstr "With zone-based firewalls a new concept was implemented, in addtion to the standard in and out traffic flows, a local flow was added. This local was for traffic originating and destined to the router itself. Which means additional rules were required to secure the firewall itself from the network, in addition to the existing inbound and outbound rules from the traditional concept above."
 
 #: ../../configuration/service/dhcp-server.rst:290
 #: ../../configuration/service/dhcp-server.rst:295
@@ -18151,7 +18288,7 @@ msgstr "y"
 msgid "You apply a rule-set always to a zone from an other zone, it is recommended to create one rule-set for each zone pair."
 msgstr "Siempre aplica un conjunto de reglas a una zona desde otra zona, se recomienda crear un conjunto de reglas para cada par de zonas."
 
-#: ../../configuration/system/login.rst:335
+#: ../../configuration/system/login.rst:363
 msgid "You are able to set post-login or pre-login banner messages to display certain information for this system."
 msgstr "Puede configurar mensajes de banner posteriores o previos al inicio de sesión para mostrar cierta información para este sistema."
 
@@ -18245,7 +18382,7 @@ msgstr "No puede ejecutar esto en una configuración VRRP, si se lanzan múltipl
 msgid "You can now \"dial\" the peer with the follwoing command: ``sstpc --log-level 4 --log-stderr --user vyos --password vyos vpn.example.com -- call vyos``."
 msgstr "Ahora puede &quot;marcar&quot; al interlocutor con el siguiente comando: ``sstpc --log-level 4 --log-stderr --user vyos --password vyos vpn.example.com -- call vyos``."
 
-#: ../../configuration/system/login.rst:413
+#: ../../configuration/system/login.rst:441
 msgid "You can now SSH into your system using admin/admin as a default user supplied from the ``lfkeitel/tacacs_plus:latest`` container."
 msgstr "Ahora puede usar SSH en su sistema usando admin/admin como un usuario predeterminado suministrado desde el contenedor ``lfkeitel/tacacs_plus:latest``."
 
@@ -18346,9 +18483,17 @@ msgstr "Zebra admite listas de prefijos y mapas de rutas para hacer coincidir la
 msgid "Zone-Policy Overview"
 msgstr "Descripción general de la política de zona"
 
+#: ../../configuration/firewall/index.rst:66
+msgid "Zone-based firewall"
+msgstr "Zone-based firewall"
+
 #: ../../configuration/firewall/zone.rst:7
 msgid "Zone Based Firewall"
 msgstr "Cortafuegos basado en zonas"
+
+#: ../../configuration/firewall/zone.rst:7
+msgid "Zone Based Firewall (Deprecated)"
+msgstr "Zone Based Firewall (Deprecated)"
 
 #: ../../configuration/protocols/ospf.rst:792
 msgid "[A.B.C.D] – link-state-id. With this specified the command displays portion of the network environment that is being described by the advertisement. The value entered depends on the advertisement’s LS type. It must be entered in the form of an IP address."
@@ -18907,7 +19052,7 @@ msgstr "``accept-own-nexthop`` - Las comunidades conocidas valoran accept-own-ne
 msgid "``accept-own`` -                   Well-known communities value ACCEPT_OWN 0xFFFF0001"
 msgstr "``accept-own`` - Valor de comunidades conocidas ACCEPT_OWN 0xFFFF0001"
 
-#: ../../configuration/firewall/general.rst:341
+#: ../../configuration/firewall/general.rst:334
 msgid "``accept``: accept the packet."
 msgstr "``accept``: accept the packet."
 
@@ -19083,7 +19228,7 @@ msgstr "``disable`` deshabilita la compresión IPComp (predeterminado);"
 msgid "``disable`` disable MOBIKE;"
 msgstr "``deshabilitar`` deshabilitar MOBIKE;"
 
-#: ../../configuration/firewall/general.rst:343
+#: ../../configuration/firewall/general.rst:336
 msgid "``drop``: drop the packet."
 msgstr "``drop``: drop the packet."
 
@@ -19251,7 +19396,7 @@ msgstr "``interval`` intervalo de actividad en segundos &lt;2-86400&gt; (predete
 msgid "``isis`` - Intermediate System to Intermediate System (IS-IS)"
 msgstr "``isis`` - Sistema intermedio a sistema intermedio (IS-IS)"
 
-#: ../../configuration/firewall/general.rst:347
+#: ../../configuration/firewall/general.rst:340
 msgid "``jump``: jump to another custom chain."
 msgstr "``jump``: jump to another custom chain."
 
@@ -19377,52 +19522,52 @@ msgstr "``n`` - 802.11n - 600 Mbits/seg"
 msgid "``name`` is used for the VyOS CLI command to identify this key. This key ``name`` is then used in the CLI configuration to reference the key instance."
 msgstr "``nombre`` se usa para que el comando CLI de VyOS identifique esta clave. Esta clave ``nombre`` se usa luego en la configuración de la CLI para hacer referencia a la instancia de la clave."
 
-#: ../../configuration/firewall/general.rst:149
+#: ../../configuration/firewall/general.rst:142
 #: ../../configuration/firewall/general-legacy.rst:93
 msgid "``net.ipv4.conf.all.accept_redirects``"
 msgstr "``net.ipv4.conf.all.accept_redirects``"
 
-#: ../../configuration/firewall/general.rst:139
+#: ../../configuration/firewall/general.rst:132
 #: ../../configuration/firewall/general-legacy.rst:84
 msgid "``net.ipv4.conf.all.accept_source_route``"
 msgstr "``net.ipv4.conf.all.accept_source_route``"
 
-#: ../../configuration/firewall/general.rst:164
+#: ../../configuration/firewall/general.rst:157
 #: ../../configuration/firewall/general-legacy.rst:108
 msgid "``net.ipv4.conf.all.log_martians``"
 msgstr "``net.ipv4.conf.all.log_martians``"
 
-#: ../../configuration/firewall/general.rst:172
+#: ../../configuration/firewall/general.rst:165
 #: ../../configuration/firewall/general-legacy.rst:115
 msgid "``net.ipv4.conf.all.rp_filter``"
 msgstr "``net.ipv4.conf.all.rp_filter``"
 
-#: ../../configuration/firewall/general.rst:157
+#: ../../configuration/firewall/general.rst:150
 #: ../../configuration/firewall/general-legacy.rst:101
 msgid "``net.ipv4.conf.all.send_redirects``"
 msgstr "``net.ipv4.conf.all.send_redirects``"
 
-#: ../../configuration/firewall/general.rst:131
+#: ../../configuration/firewall/general.rst:124
 #: ../../configuration/firewall/general-legacy.rst:76
 msgid "``net.ipv4.icmp_echo_ignore_broadcasts``"
 msgstr "``net.ipv4.icmp_echo_ignore_broadcasts``"
 
-#: ../../configuration/firewall/general.rst:187
+#: ../../configuration/firewall/general.rst:180
 #: ../../configuration/firewall/general-legacy.rst:129
 msgid "``net.ipv4.tcp_rfc1337``"
 msgstr "``net.ipv4.tcp_rfc1337&#39;&#39;"
 
-#: ../../configuration/firewall/general.rst:179
+#: ../../configuration/firewall/general.rst:172
 #: ../../configuration/firewall/general-legacy.rst:122
 msgid "``net.ipv4.tcp_syncookies``"
 msgstr "``net.ipv4.tcp_syncookies``"
 
-#: ../../configuration/firewall/general.rst:150
+#: ../../configuration/firewall/general.rst:143
 #: ../../configuration/firewall/general-legacy.rst:94
 msgid "``net.ipv6.conf.all.accept_redirects``"
 msgstr "``net.ipv6.conf.all.accept_redirects``"
 
-#: ../../configuration/firewall/general.rst:140
+#: ../../configuration/firewall/general.rst:133
 #: ../../configuration/firewall/general-legacy.rst:85
 msgid "``net.ipv6.conf.all.accept_source_route``"
 msgstr "``net.ipv6.conf.all.accept_source_route``"
@@ -19544,7 +19689,7 @@ msgstr "``protocolo``: defina el protocolo para el tráfico de coincidencias, qu
 msgid "``psk`` - Preshared secret key name:"
 msgstr "``psk`` - Nombre de la clave secreta precompartida:"
 
-#: ../../configuration/firewall/general.rst:352
+#: ../../configuration/firewall/general.rst:345
 msgid "``queue``: Enqueue packet to userspace."
 msgstr "``queue``: Enqueue packet to userspace."
 
@@ -19552,7 +19697,7 @@ msgstr "``queue``: Enqueue packet to userspace."
 msgid "``rate``: Number of packets. Default 5."
 msgstr "``tasa``: Número de paquetes. Predeterminado 5."
 
-#: ../../configuration/firewall/general.rst:345
+#: ../../configuration/firewall/general.rst:338
 msgid "``reject``: reject the packet."
 msgstr "``reject``: reject the packet."
 
@@ -19585,7 +19730,7 @@ msgstr "``responder``: no intenta iniciar una conexión con un compañero remoto
 msgid "``restart`` set action to restart;"
 msgstr "``restart`` establece la acción para reiniciar;"
 
-#: ../../configuration/firewall/general.rst:349
+#: ../../configuration/firewall/general.rst:342
 msgid "``return``: Return from the current chain and continue at the next rule of the last chain."
 msgstr "``return``: Return from the current chain and continue at the next rule of the last chain."
 
@@ -19681,7 +19826,7 @@ msgstr "``static`` - Rutas configuradas estáticamente"
 msgid "``station`` - Connects to another access point"
 msgstr "``estación`` - Se conecta a otro punto de acceso"
 
-#: ../../configuration/firewall/general.rst:354
+#: ../../configuration/firewall/general.rst:347
 msgid "``synproxy``: synproxy the packet."
 msgstr "``synproxy``: synproxy the packet."
 
@@ -20019,7 +20164,7 @@ msgstr "búsqueda de dominio"
 msgid "emerg"
 msgstr "emergente"
 
-#: ../../configuration/firewall/general.rst:154
+#: ../../configuration/firewall/general.rst:147
 msgid "enable or disable ICMPv4 redirect messages send by VyOS The following system parameter will be altered:"
 msgstr "enable or disable ICMPv4 redirect messages send by VyOS The following system parameter will be altered:"
 
@@ -20027,12 +20172,12 @@ msgstr "enable or disable ICMPv4 redirect messages send by VyOS The following sy
 msgid "enable or disable  ICMPv4 redirect messages send by VyOS The following system parameter will be altered:"
 msgstr "habilitar o deshabilitar los mensajes de redirección ICMPv4 enviados por VyOS Se modificará el siguiente parámetro del sistema:"
 
-#: ../../configuration/firewall/general.rst:146
+#: ../../configuration/firewall/general.rst:139
 #: ../../configuration/firewall/general-legacy.rst:90
 msgid "enable or disable of ICMPv4 or ICMPv6 redirect messages accepted by VyOS. The following system parameter will be altered:"
 msgstr "habilite o deshabilite los mensajes de redirección ICMPv4 o ICMPv6 aceptados por VyOS. Se modificará el siguiente parámetro del sistema:"
 
-#: ../../configuration/firewall/general.rst:161
+#: ../../configuration/firewall/general.rst:154
 #: ../../configuration/firewall/general-legacy.rst:105
 msgid "enable or disable the logging of martian IPv4 packets. The following system parameter will be altered:"
 msgstr "habilitar o deshabilitar el registro de paquetes IPv4 marcianos. Se modificará el siguiente parámetro del sistema:"

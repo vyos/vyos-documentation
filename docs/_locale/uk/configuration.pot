@@ -5,8 +5,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Localazy (https://localazy.com)\n"
 "Project-Id-Version: VyOS Documentation\n"
-"Language: de\n"
-"Plural-Forms: nplurals=2; plural=(n==1) ? 0 : 1;\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=((n%10==1) && (n%100!=11)) ? 0 : ((n%10>=2 && n%10<=4) && ((n%100<12 || n%100>14))) ? 1 : 2;\n"
 
 #: ../../configuration/policy/route.rst:74
 msgid "!<h:h:h:h:h:h:h:h/x>: Match everything except the specified prefix."
@@ -203,11 +203,11 @@ msgstr "**Important note:** This documentation is valid only for VyOS Sagitta pr
 
 #: ../../configuration/firewall/general-legacy.rst:9
 msgid "**Important note:** This documentation is valid only for VyOS Sagitta prior to 1.4-rolling-YYYYMMDDHHmm"
-msgstr "**Wichtiger Hinweis: ** Diese Dokumentation ist nur für VyOS Sagitta vor 1.4-Rolling-YYYYMMDDHHMM gültig"
+msgstr "**Important note:** This documentation is valid only for VyOS Sagitta prior to 1.4-rolling-YYYYMMDDHHmm"
 
 #: ../../configuration/firewall/general.rst:72
 msgid "**Important note about default-actions:** If default action for any chain is not defined, then the default action is set to **accept** for that chain. Only for custom chains, the default action is set to **drop**."
-msgstr "**Wichtiger Hinweis zu Standardaktionen: ** Wenn die Standardaktion für eine Kette nicht definiert ist, ist die Standardaktion für diese Kette auf ** accept** gesetzt. Nur für benutzerdefinierte Ketten ist die Standardaktion auf **drop** gesetzt."
+msgstr "**Important note about default-actions:** If default action for any chain is not defined, then the default action is set to **accept** for that chain. Only for custom chains, the default action is set to **drop**."
 
 #: ../../configuration/firewall/general.rst:404
 msgid "**Important note about default-actions:** If default action for any chain is not defined, then the default action is set to **drop** for that chain."
