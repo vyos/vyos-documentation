@@ -216,36 +216,36 @@ Configuration
 :rfc:`2136` Based
 -----------------
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+.. cfgcmd:: set service dns dynamic address <interface> rfc2136 <service-name>
 
    Create new :rfc:`2136` DNS update configuration which will update the IP
    address assigned to `<interface>` on the service you configured under
    `<service-name>`.
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+.. cfgcmd:: set service dns dynamic address <interface> rfc2136 <service-name>
    key <keyfile>
 
    File identified by `<keyfile>` containing the secret RNDC key shared with
    remote DNS server.
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+.. cfgcmd:: set service dns dynamic address <interface> rfc2136 <service-name>
    server <server>
 
    Configure the DNS `<server>` IP/FQDN used when updating this dynamic
    assignment.
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+.. cfgcmd:: set service dns dynamic address <interface> rfc2136 <service-name>
    zone <zone>
 
    Configure DNS `<zone>` to be updated.
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+.. cfgcmd:: set service dns dynamic address <interface> rfc2136 <service-name>
    record <record>
 
    Configure DNS `<record>` which should be updated. This can be set multiple
    times.
 
-.. cfgcmd:: set service dns dynamic interface <interface> rfc2136 <service-name>
+.. cfgcmd:: set service dns dynamic address <interface> rfc2136 <service-name>
    ttl <ttl>
 
    Configure optional TTL value on the given resource record. This defaults to
@@ -381,15 +381,21 @@ By default, ddclient_ will update a dynamic dns record using the IP address
 directly attached to the interface. If your VyOS instance is behind NAT, your
 record will be updated to point to your internal IP.
 
-ddclient_ has another way to determine the WAN IP address. This is controlled
-by:
+Above, command syntax isn noted to configure dynamic dns on a specific interface. 
+It is possible to overlook the additional address option, web, when completeing 
+those commands. ddclient_ has another way to determine the WAN IP address, using 
+a web-based url to determine the external IP. Each of the commands above will 
+need to be modified to use 'web' as the 'interface' specified if this functionality 
+is to be utilized. 
 
-.. cfgcmd:: set service dns dynamic address <interface> web-options url <url>
+This functionality is controlled by adding the following configuration:
+
+.. cfgcmd:: set service dns dynamic address web web-options url <url>
 
    Use configured `<url>` to determine your IP address. ddclient_ will load
    `<url>` and tries to extract your IP address from the response.
 
-.. cfgcmd:: set service dns dynamic address <interface> web-options skip <pattern>
+.. cfgcmd:: set service dns dynamic address web web-options skip <pattern>
 
    ddclient_ will skip any address located before the string set in `<pattern>`.
 
