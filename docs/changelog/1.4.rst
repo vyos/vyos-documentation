@@ -8,6 +8,38 @@
    _ext/releasenotes.py
 
 
+2023-10-01
+==========
+
+* :vytask:`T936` ``(feature): Reimplementation of tech-support diagnostic file generation``
+
+
+2023-09-30
+==========
+
+* :vytask:`T5048` ``(bug): QoS doesn't work correctly root task``
+* :vytask:`T4989` ``(bug): QoS Policy Limiter - classes for marked traffic do not work``
+
+
+2023-09-28
+==========
+
+* :vytask:`T5596` ``(feature): bgp: add new features from FRR 9``
+* :vytask:`T5412` ``(feature): Add support for extending config-mode dependencies in supplemental package``
+
+
+2023-09-26
+==========
+
+* :vytask:`T5480` ``(bug): Ability to disable SNMP for VRRP keepalived service``
+
+
+2023-09-25
+==========
+
+* :vytask:`T5533` ``(bug): Keepalived VRRP IPv6 group enters in FAULT state``
+
+
 2023-09-24
 ==========
 
@@ -270,7 +302,6 @@
 * :vytask:`T5461` ``(feature): Improve rootfs directory variable``
 * :vytask:`T5457` ``(feature): Add environmental variable pointing to current rootfs directory``
 * :vytask:`T5440` ``(bug): Restore pre/postconfig scripts if user deleted them``
-* :vytask:`T5436` ``(bug): vyos-preconfig-bootup.script is missing``
 
 
 2023-08-12

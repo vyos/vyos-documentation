@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2023-09-25
+==========
+
+* :vytask:`T5533` ``(bug): Keepalived VRRP IPv6 group enters in FAULT state``
+
+
 2023-09-20
 ==========
 
@@ -57,7 +63,7 @@
 * :vytask:`T4874` ``(default): Add Warning message to Equuleus``
 * :vytask:`T4855` ``(bug): Trying to create more than one tunnel of the same type to the same address causes unhandled exception``
 * :vytask:`T4776` ``(bug): NVME storage is not detected properly during installation``
-* :vytask:`T3546` ``(feature): Add pppoe-server CLI custom script feature``
+* :vytask:`T3546` ``(feature): Add support for running scripts on PPPoE server session events``
 * :vytask:`T738` ``(feature): Add local-port and resolver port options for powerdns in CLI configuration tree``
 
 
@@ -83,7 +89,6 @@
 * :vytask:`T3940` ``(bug): DHCP client does not remove IP address when stopped by the 02-vyos-stopdhclient hook``
 * :vytask:`T3713` ``(default): Create a meta-package for user utilities``
 * :vytask:`T3339` ``(bug): Cloud-Init domain search setting not applied``
-* :vytask:`T3144` ``(feature): Support op-mode command to release DHCP leases``
 * :vytask:`T2640` ``(feature): Running VyOS inside Docker containers``
 * :vytask:`T3577` ``(bug): Generating vpn x509 key pair fails with command not found``
 
