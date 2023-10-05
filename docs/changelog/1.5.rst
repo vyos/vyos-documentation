@@ -8,6 +8,13 @@
    _ext/releasenotes.py
 
 
+2023-09-28
+==========
+
+* :vytask:`T5596` ``(feature): bgp: add new features from FRR 9``
+* :vytask:`T5412` ``(feature): Add support for extending config-mode dependencies in supplemental package``
+
+
 2023-09-24
 ==========
 
