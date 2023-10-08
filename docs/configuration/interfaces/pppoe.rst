@@ -134,6 +134,19 @@ PPPoE options
    will be removed when the interface is torn down - even manually installed
    static interface-routes.
 
+.. cfgcmd:: set interfaces pppoe <interface> mru <mru>
+
+   Set the :abbr:`MRU (Maximum Receive Unit)` to `mru`. PPPd will ask the peer to
+   send packets of no more than `mru` bytes. The value of `mru` must be between 128
+   and 16384.
+
+   A value of 296 works well on very slow links (40 bytes for TCP/IP header + 256
+   bytes of data).
+
+   The default is 1492.
+
+   .. note:: When using the IPv6 protocol, MRU must be at least 1280 bytes.
+
 .. cfgcmd:: set interfaces pppoe <interface> idle-timeout <time>
 
    Use this command to set the idle timeout interval to be used with on-demand
