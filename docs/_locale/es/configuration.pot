@@ -1401,7 +1401,7 @@ msgstr "Una configuración OpenVPN de autenticación LDAP completa podría parec
 msgid "A connection attempt will be shown as:"
 msgstr "Un intento de conexión se mostrará como:"
 
-#: ../../configuration/interfaces/pppoe.rst:330
+#: ../../configuration/interfaces/pppoe.rst:343
 msgid "A default route is automatically installed once the interface is up. To change this behavior use the ``no-default-route`` CLI option."
 msgstr "Una ruta predeterminada se instala automáticamente una vez que la interfaz está activa. Para cambiar este comportamiento, utilice la opción CLI ``no-default-route``."
 
@@ -1588,6 +1588,10 @@ msgstr "Una descripción fácil de usar que identifica el periférico conectado.
 msgid "A value of 0 disables ARP monitoring. The default value is 0."
 msgstr "Un valor de 0 deshabilita la supervisión de ARP. El valor predeterminado es 0."
 
+#: ../../configuration/interfaces/pppoe.rst:152
+msgid "A value of 296 works well on very slow links (40 bytes for TCP/IP header + 256 bytes of data)."
+msgstr "A value of 296 works well on very slow links (40 bytes for TCP/IP header + 256 bytes of data)."
+
 #: ../../configuration/trafficpolicy/index.rst:943
 msgid "A very small buffer will soon start dropping packets."
 msgstr "Un búfer muy pequeño pronto comenzará a descartar paquetes."
@@ -1595,6 +1599,10 @@ msgstr "Un búfer muy pequeño pronto comenzará a descartar paquetes."
 #: ../../configuration/firewall/zone.rst:33
 msgid "A zone must be configured before an interface is assigned to it and an interface can be assigned to only a single zone."
 msgstr "Una zona debe configurarse antes de que se le asigne una interfaz y una interfaz se puede asignar a una sola zona."
+
+#: ../../configuration/service/dns.rst:384
+msgid "Above, command syntax isn noted to configure dynamic dns on a specific interface. It is possible to overlook the additional address option, web, when completeing those commands. ddclient_ has another way to determine the WAN IP address, using a web-based url to determine the external IP. Each of the commands above will need to be modified to use 'web' as the 'interface' specified if this functionality is to be utilized."
+msgstr "Above, command syntax isn noted to configure dynamic dns on a specific interface. It is possible to overlook the additional address option, web, when completeing those commands. ddclient_ has another way to determine the WAN IP address, using a web-based url to determine the external IP. Each of the commands above will need to be modified to use 'web' as the 'interface' specified if this functionality is to be utilized."
 
 #: ../../configuration/vpn/l2tp.rst:173
 msgid "Above command will use `10.0.0.3` as source IPv4 address for all RADIUS queries on this NAS."
@@ -2147,8 +2155,8 @@ msgstr "Aruba/HP"
 #: ../../_include/interface-ipv6.txt:60
 #: ../../_include/interface-ip.txt:4
 #: ../../_include/interface-ipv6.txt:60
-#: ../../configuration/interfaces/pppoe.rst:194
-#: ../../configuration/interfaces/pppoe.rst:240
+#: ../../configuration/interfaces/pppoe.rst:207
+#: ../../configuration/interfaces/pppoe.rst:253
 #: ../../_include/interface-ip.txt:4
 #: ../../_include/interface-ipv6.txt:60
 #: ../../_include/interface-ip.txt:4
@@ -3335,8 +3343,8 @@ msgstr "Configurar puerto de puente individual `<priority> `."
 #: ../../_include/interface-ipv6.txt:48
 #: ../../_include/interface-ip.txt:59
 #: ../../_include/interface-ipv6.txt:48
-#: ../../configuration/interfaces/pppoe.rst:210
-#: ../../configuration/interfaces/pppoe.rst:256
+#: ../../configuration/interfaces/pppoe.rst:223
+#: ../../configuration/interfaces/pppoe.rst:269
 #: ../../_include/interface-ip.txt:59
 #: ../../_include/interface-ipv6.txt:48
 #: ../../_include/interface-ip.txt:59
@@ -3540,7 +3548,7 @@ msgstr "Configuración de la contabilidad de RADIUS"
 msgid "Configuring a listen-address is essential for the service to work."
 msgstr "La configuración de una dirección de escucha es esencial para que el servicio funcione."
 
-#: ../../configuration/interfaces/pppoe.rst:296
+#: ../../configuration/interfaces/pppoe.rst:309
 #: ../../configuration/interfaces/sstp-client.rst:140
 msgid "Connect/Disconnect"
 msgstr "Conectar/Desconectar"
@@ -4497,7 +4505,7 @@ msgstr "Muestra los archivos de registro de la categoría dada en la consola. Ut
 msgid "Displays information about all neighbors discovered via LLDP."
 msgstr "Muestra información sobre todos los vecinos descubiertos a través de LLDP."
 
-#: ../../configuration/interfaces/pppoe.rst:286
+#: ../../configuration/interfaces/pppoe.rst:299
 msgid "Displays queue information for a PPPoE interface."
 msgstr "Muestra información de la cola para una interfaz PPPoE."
 
@@ -4921,7 +4929,7 @@ msgstr "Habilite ospf en una interfaz y configure el área asociada."
 #: ../../_include/interface-ip.txt:177
 #: ../../_include/interface-ip.txt:177
 #: ../../_include/interface-ip.txt:177
-#: ../../configuration/interfaces/pppoe.rst:215
+#: ../../configuration/interfaces/pppoe.rst:228
 #: ../../_include/interface-ip.txt:177
 #: ../../_include/interface-ip.txt:177
 #: ../../configuration/interfaces/sstp-client.rst:100
@@ -5141,7 +5149,7 @@ msgstr "Every connection/remote-access pool we configure also needs a pool where
 #: ../../configuration/highavailability/index.rst:397
 #: ../../configuration/interfaces/bonding.rst:291
 #: ../../configuration/interfaces/l2tpv3.rst:86
-#: ../../configuration/interfaces/pppoe.rst:310
+#: ../../configuration/interfaces/pppoe.rst:323
 #: ../../configuration/interfaces/virtual-ethernet.rst:92
 #: ../../configuration/interfaces/vxlan.rst:166
 #: ../../configuration/interfaces/wwan.rst:294
@@ -6900,7 +6908,7 @@ msgstr "Origen de la ruta IPv4: bgp, conectado, eigrp, isis, kernel, nhrp, ospf,
 msgid "IPv4 server"
 msgstr "servidor IPv4"
 
-#: ../../configuration/interfaces/pppoe.rst:231
+#: ../../configuration/interfaces/pppoe.rst:244
 #: ../../configuration/service/pppoe-server.rst:280
 #: ../../configuration/system/ipv6.rst:3
 msgid "IPv6"
@@ -6910,7 +6918,7 @@ msgstr "IPv6"
 msgid "IPv6 Access List"
 msgstr "Lista de acceso IPv6"
 
-#: ../../configuration/interfaces/pppoe.rst:366
+#: ../../configuration/interfaces/pppoe.rst:379
 msgid "IPv6 DHCPv6-PD Example"
 msgstr "Ejemplo de IPv6 DHCPv6-PD"
 
@@ -7382,11 +7390,11 @@ msgstr "Si esta opción no está configurada (predeterminada), los paquetes de d
 msgid "If this option is unset (default), reply for any local target IP address, configured on any interface."
 msgstr "Si esta opción no está configurada (predeterminada), responda para cualquier dirección IP de destino local, configurada en cualquier interfaz."
 
-#: ../../configuration/interfaces/pppoe.rst:163
+#: ../../configuration/interfaces/pppoe.rst:176
 msgid "If this parameter is not set, the default holdoff time is 30 seconds."
 msgstr "Si no se establece este parámetro, el tiempo de espera predeterminado es de 30 segundos."
 
-#: ../../configuration/interfaces/pppoe.rst:153
+#: ../../configuration/interfaces/pppoe.rst:166
 msgid "If this parameter is not set or 0, an on-demand link will not be taken down when it is idle and after the initial establishment of the connection. It will stay up forever."
 msgstr "Si este parámetro no se establece o es 0, un enlace bajo demanda no se desactivará cuando esté inactivo y después del establecimiento inicial de la conexión. Se mantendrá para siempre."
 
@@ -7936,8 +7944,8 @@ msgstr "Instale el software del cliente a través de apt y ejecute pptpsetup par
 #: ../../_include/interface-ipv6.txt:71
 #: ../../_include/interface-ip.txt:15
 #: ../../_include/interface-ipv6.txt:71
-#: ../../configuration/interfaces/pppoe.rst:205
-#: ../../configuration/interfaces/pppoe.rst:251
+#: ../../configuration/interfaces/pppoe.rst:218
+#: ../../configuration/interfaces/pppoe.rst:264
 #: ../../_include/interface-ip.txt:15
 #: ../../_include/interface-ipv6.txt:71
 #: ../../_include/interface-ip.txt:15
@@ -8683,7 +8691,7 @@ msgstr "El soporte de MPLS en VyOS aún no está terminado y, por lo tanto, su f
 #: ../../_include/interface-ip.txt:12
 #: ../../_include/interface-ip.txt:12
 #: ../../_include/interface-ip.txt:12
-#: ../../configuration/interfaces/pppoe.rst:202
+#: ../../configuration/interfaces/pppoe.rst:215
 #: ../../_include/interface-ip.txt:12
 #: ../../_include/interface-ip.txt:12
 #: ../../configuration/interfaces/sstp-client.rst:87
@@ -8708,7 +8716,7 @@ msgstr "Valor MSS = MTU - 20 (encabezado IP) - 20 (encabezado TCP), lo que da co
 #: ../../_include/interface-ipv6.txt:68
 #: ../../_include/interface-ipv6.txt:68
 #: ../../_include/interface-ipv6.txt:68
-#: ../../configuration/interfaces/pppoe.rst:248
+#: ../../configuration/interfaces/pppoe.rst:261
 #: ../../_include/interface-ipv6.txt:68
 #: ../../_include/interface-ipv6.txt:68
 #: ../../_include/interface-ipv6.txt:68
@@ -9331,7 +9339,7 @@ msgstr "Dirección IPv6 de Nexthop para que coincida."
 msgid "No ROA exists which covers that prefix. Unfortunately this is the case for about 80% of the IPv4 prefixes which were announced to the :abbr:`DFZ (default-free zone)` at the start of 2020"
 msgstr "No existe ROA que cubra ese prefijo. Desafortunadamente, este es el caso de aproximadamente el 80% de los prefijos IPv4 que se anunciaron en :abbr:`DFZ (zona libre por defecto)` a principios de 2020."
 
-#: ../../configuration/interfaces/pppoe.rst:315
+#: ../../configuration/interfaces/pppoe.rst:328
 msgid "No VLAN tagging required by your ISP."
 msgstr "Su ISP no requiere etiquetado de VLAN."
 
@@ -9745,7 +9753,7 @@ msgstr "Modos de funcionamiento"
 #: ../../configuration/interfaces/ethernet.rst:132
 #: ../../configuration/interfaces/loopback.rst:41
 #: ../../configuration/interfaces/macsec.rst:106
-#: ../../configuration/interfaces/pppoe.rst:265
+#: ../../configuration/interfaces/pppoe.rst:278
 #: ../../configuration/interfaces/sstp-client.rst:117
 #: ../../configuration/interfaces/virtual-ethernet.rst:55
 #: ../../configuration/interfaces/wireless.rst:416
@@ -10885,7 +10893,7 @@ msgstr "Requiera que el par se autentique usando uno de los siguientes protocolo
 msgid "Requirements"
 msgstr "Requisitos"
 
-#: ../../configuration/interfaces/pppoe.rst:312
+#: ../../configuration/interfaces/pppoe.rst:325
 msgid "Requirements:"
 msgstr "Requisitos:"
 
@@ -11868,6 +11876,10 @@ msgstr "Establezca el bloque local de enrutamiento de segmentos, es decir, el ra
 msgid "Set the Segment Routing Local Block i.e. the low label range used by MPLS to store label in the MPLS FIB for Prefix SID. Note that the block size may not exceed 65535.Segment Routing Local Block, The negative command always unsets both."
 msgstr "Establezca el bloque local de enrutamiento de segmento, es decir, el rango de etiqueta bajo utilizado por MPLS para almacenar la etiqueta en la FIB de MPLS para el SID de prefijo. Tenga en cuenta que el tamaño del bloque no puede exceder 65535.Bloque local de enrutamiento de segmento, el comando negativo siempre desarma ambos."
 
+#: ../../configuration/interfaces/pppoe.rst:148
+msgid "Set the :abbr:`MRU (Maximum Receive Unit)` to `mru`. PPPd will ask the peer to send packets of no more than `mru` bytes. The value of `mru` must be between 128 and 16384."
+msgstr "Set the :abbr:`MRU (Maximum Receive Unit)` to `mru`. PPPd will ask the peer to send packets of no more than `mru` bytes. The value of `mru` must be between 128 and 16384."
+
 #: ../../configuration/service/ssh.rst:106
 msgid "Set the ``sshd`` log level. The default is ``info``."
 msgstr "Establezca el nivel de registro ``sshd``. El valor predeterminado es ``info``."
@@ -12101,6 +12113,10 @@ msgid "Setup the `<timeout>` in seconds when querying the TACACS server."
 msgstr "Configure el `<timeout> ` en segundos al consultar el servidor TACACS."
 
 #: ../../configuration/service/dns.rst:314
+msgid "Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS provider identified by `<service>` when the IP address on address `<interface>` changes."
+msgstr "Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS provider identified by `<service>` when the IP address on address `<interface>` changes."
+
+#: ../../configuration/service/dns.rst:314
 msgid "Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS provider identified by `<service>` when the IP address on interface `<interface>` changes."
 msgstr "Configure el nombre de host DNS dinámico `<hostname> ` asociado con el proveedor DynDNS identificado por `<service> ` cuando la dirección IP en la interfaz `<interface> ` cambios."
 
@@ -12285,7 +12301,7 @@ msgstr "Mostrar información detallada sobre los enlaces físicos subyacentes en
 #: ../../configuration/interfaces/bonding.rst:531
 #: ../../configuration/interfaces/dummy.rst:67
 #: ../../configuration/interfaces/ethernet.rst:150
-#: ../../configuration/interfaces/pppoe.rst:269
+#: ../../configuration/interfaces/pppoe.rst:282
 #: ../../configuration/interfaces/sstp-client.rst:121
 #: ../../configuration/interfaces/virtual-ethernet.rst:72
 #: ../../configuration/interfaces/wwan.rst:83
@@ -12569,7 +12585,7 @@ msgstr "Algunos proxy requieren/soportan el esquema de autenticación HTTP &quot
 msgid "Some proxys require/support the \"basic\" HTTP authentication scheme as per :rfc:`7617`, thus a username can be configured."
 msgstr "Algunos proxy requieren/soportan el esquema de autenticación HTTP &quot;básico&quot; según :rfc:`7617`, por lo que se puede configurar un nombre de usuario."
 
-#: ../../configuration/interfaces/pppoe.rst:352
+#: ../../configuration/interfaces/pppoe.rst:365
 msgid "Some recent ISPs require you to build the PPPoE connection through a VLAN interface. One of those ISPs is e.g. Deutsche Telekom in Germany. VyOS can easily create a PPPoE session through an encapsulated VLAN interface. The following configuration will run your PPPoE connection through VLAN7 which is the default VLAN for Deutsche Telekom:"
 msgstr "Algunos ISP recientes requieren que cree la conexión PPPoE a través de una interfaz VLAN. Uno de esos ISP es, por ejemplo, Deutsche Telekom en Alemania. VyOS puede crear fácilmente una sesión PPPoE a través de una interfaz VLAN encapsulada. La siguiente configuración ejecutará su conexión PPPoE a través de VLAN7, que es la VLAN predeterminada para Deutsche Telekom:"
 
@@ -13072,7 +13088,7 @@ msgstr "Synproxy connections"
 msgid "Synproxy relies on syncookies and TCP timestamps, ensure these are enabled"
 msgstr "Synproxy relies on syncookies and TCP timestamps, ensure these are enabled"
 
-#: ../../configuration/interfaces/pppoe.rst:327
+#: ../../configuration/interfaces/pppoe.rst:340
 msgid "Syntax has changed from VyOS 1.2 (crux) and it will be automatically migrated during an upgrade."
 msgstr "La sintaxis ha cambiado desde VyOS 1.2 (crux) y se migrará automáticamente durante una actualización."
 
@@ -13214,7 +13230,7 @@ msgstr "Deshabilite temporalmente este servidor TACACS. No será consultado."
 msgid "Terminate SSL"
 msgstr "Terminar SSL"
 
-#: ../../configuration/interfaces/pppoe.rst:305
+#: ../../configuration/interfaces/pppoe.rst:318
 msgid "Test connecting given connection-oriented interface. `<interface>` can be ``pppoe0`` as the example."
 msgstr "Pruebe la conexión de una interfaz orientada a la conexión dada. `<interface> ` puede ser ``pppoe0`` como ejemplo."
 
@@ -13222,7 +13238,7 @@ msgstr "Pruebe la conexión de una interfaz orientada a la conexión dada. `<int
 msgid "Test connecting given connection-oriented interface. `<interface>` can be ``sstpc0`` as the example."
 msgstr "Pruebe la conexión de una interfaz orientada a la conexión dada. `<interface> ` puede ser ``sstpc0`` como ejemplo."
 
-#: ../../configuration/interfaces/pppoe.rst:300
+#: ../../configuration/interfaces/pppoe.rst:313
 msgid "Test disconnecting given connection-oriented interface. `<interface>` can be ``pppoe0`` as the example."
 msgstr "Pruebe la desconexión dada la interfaz orientada a la conexión. `<interface> ` puede ser ``pppoe0`` como ejemplo."
 
@@ -13567,6 +13583,10 @@ msgstr "La cuenta de usuario predeterminada de VyOS (`vyos`), así como las cuen
 msgid "The default hostname used is `vyos`."
 msgstr "El nombre de host predeterminado utilizado es `vyos`."
 
+#: ../../configuration/interfaces/pppoe.rst:155
+msgid "The default is 1492."
+msgstr "The default is 1492."
+
 #: ../../configuration/service/dhcp-server.rst:596
 msgid "The default lease time for DHCPv6 leases is 24 hours. This can be changed by supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All values need to be supplied in seconds."
 msgstr "El tiempo de concesión predeterminado para las concesiones de DHCPv6 es de 24 horas. Esto se puede cambiar proporcionando un ``tiempo predeterminado``, ``tiempo máximo`` y ``tiempo mínimo``. Todos los valores deben proporcionarse en segundos."
@@ -13746,7 +13766,7 @@ msgstr "La siguiente configuración en VyOS se aplica a todos los siguientes pro
 msgid "The following configuration reverse-proxy terminate SSL."
 msgstr "La siguiente configuración de proxy inverso termina SSL."
 
-#: ../../configuration/interfaces/pppoe.rst:370
+#: ../../configuration/interfaces/pppoe.rst:383
 msgid "The following configuration will assign a /64 prefix out of a /56 delegation to eth0. The IPv6 address assigned to eth0 will be <prefix>::ffff/64. If you do not know the prefix size delegated to you, start with sla-len 0."
 msgstr "La siguiente configuración asignará un prefijo /64 de una delegación /56 a eth0. La dirección IPv6 asignada a eth0 será<prefix> ::ffff/64. Si no conoce el tamaño del prefijo que se le delegó, comience con sla-len 0."
 
@@ -13861,7 +13881,7 @@ msgstr "Las direcciones IP internas que queremos traducir"
 msgid "The inverse configuration has to be applied to the remote side."
 msgstr "La configuración inversa debe aplicarse al lado remoto."
 
-#: ../../configuration/interfaces/pppoe.rst:319
+#: ../../configuration/interfaces/pppoe.rst:332
 msgid "The largest MTU size you can use with DSL is 1492 due to PPPoE overhead. If you are switching from a DHCP based ISP like cable then be aware that things like VPN links may need to have their MTU sizes adjusted to work within this limit."
 msgstr "El tamaño de MTU más grande que puede usar con DSL es 1492 debido a la sobrecarga de PPPoE. Si está cambiando de un ISP basado en DHCP como el cable, tenga en cuenta que cosas como los enlaces VPN pueden necesitar que se ajusten sus tamaños de MTU para que funcionen dentro de este límite."
 
@@ -15428,8 +15448,8 @@ msgstr "Este comando se introdujo en VyOS 1.4; anteriormente se llamaba: ``estab
 #: ../../_include/interface-ip.txt:9
 #: ../../_include/interface-ip.txt:9
 #: ../../_include/interface-ip.txt:9
-#: ../../configuration/interfaces/pppoe.rst:199
-#: ../../configuration/interfaces/pppoe.rst:245
+#: ../../configuration/interfaces/pppoe.rst:212
+#: ../../configuration/interfaces/pppoe.rst:258
 #: ../../_include/interface-ip.txt:9
 #: ../../_include/interface-ip.txt:9
 #: ../../configuration/interfaces/sstp-client.rst:84
@@ -15606,6 +15626,10 @@ msgstr "Este ejemplo muestra cómo apuntar una abrazadera MSS (en nuestro ejempl
 #: ../../configuration/protocols/ospf.rst:476
 msgid "This feature summarises originated external LSAs (Type-5 and Type-7). Summary Route will be originated on-behalf of all matched external LSAs."
 msgstr "Esta característica resume los LSA externos originados (Tipo 5 y Tipo 7). La ruta resumida se originará en nombre de todos los LSA externos coincidentes."
+
+#: ../../configuration/service/dns.rst:391
+msgid "This functionality is controlled by adding the following configuration:"
+msgstr "This functionality is controlled by adding the following configuration:"
 
 #: ../../configuration/firewall/general.rst:626
 #: ../../configuration/firewall/general-legacy.rst:431
@@ -16610,7 +16634,7 @@ msgstr "Use cualquier dirección local, configurada en cualquier interfaz si no 
 msgid "Use auth key file at ``/config/auth/my.key``"
 msgstr "Use el archivo de clave de autenticación en ``/config/auth/my.key``"
 
-#: ../../configuration/service/dns.rst:389
+#: ../../configuration/service/dns.rst:395
 msgid "Use configured `<url>` to determine your IP address. ddclient_ will load `<url>` and tries to extract your IP address from the response."
 msgstr "Usar configurado `<url> ` para determinar su dirección IP. ddclient_ cargará `<url> ` e intenta extraer su dirección IP de la respuesta."
 
@@ -17059,7 +17083,7 @@ msgstr "Utilice este comando para habilitar PIM en la interfaz seleccionada para
 msgid "Use this command to enable PIMv6 in the selected interface so that it can communicate with PIMv6 neighbors. This command also enables MLD reports and query on the interface unless :cfgcmd:`mld disable` is configured."
 msgstr "Use this command to enable PIMv6 in the selected interface so that it can communicate with PIMv6 neighbors. This command also enables MLD reports and query on the interface unless :cfgcmd:`mld disable` is configured."
 
-#: ../../configuration/interfaces/pppoe.rst:235
+#: ../../configuration/interfaces/pppoe.rst:248
 msgid "Use this command to enable acquisition of IPv6 address using stateless autoconfig (SLAAC)."
 msgstr "Utilice este comando para habilitar la adquisición de direcciones IPv6 mediante la configuración automática sin estado (SLAAC)."
 
@@ -17130,7 +17154,7 @@ msgstr "Use este comando para obtener información sobre el protocolo RIPNG"
 msgid "Use this command to instruct the system to establish a PPPoE connection automatically once traffic passes through the interface. A disabled on-demand connection is established at boot time and remains up. If the link fails for any reason, the link is brought back up immediately."
 msgstr "Utilice este comando para indicarle al sistema que establezca una conexión PPPoE automáticamente una vez que el tráfico pase por la interfaz. Se establece una conexión bajo demanda deshabilitada en el momento del arranque y permanece activa. Si el enlace falla por algún motivo, se vuelve a activar inmediatamente."
 
-#: ../../configuration/interfaces/pppoe.rst:188
+#: ../../configuration/interfaces/pppoe.rst:201
 msgid "Use this command to link the PPPoE connection to a physical interface. Each PPPoE connection must be established over a physical interface. Interfaces can be regular Ethernet interfaces, VIFs or bonding interfaces/VIFs."
 msgstr "Utilice este comando para vincular la conexión PPPoE a una interfaz física. Cada conexión PPPoE debe establecerse a través de una interfaz física. Las interfaces pueden ser interfaces Ethernet normales, VIF o interfaces/VIF de vinculación."
 
@@ -17142,7 +17166,7 @@ msgstr "Utilice este comando para verificar localmente las sesiones activas en e
 msgid "Use this command to manually configure a Rendezvous Point for PIM so that join messages can be sent there. Set the Rendevouz Point address and the matching prefix of group ranges covered. These values must be shared with every router participating in the PIM network."
 msgstr "Use este comando para configurar manualmente un punto de encuentro para PIM para que los mensajes de unión se puedan enviar allí. Establezca la dirección del punto Rendevouz y el prefijo correspondiente de los rangos de grupo cubiertos. Estos valores deben compartirse con todos los enrutadores que participan en la red PIM."
 
-#: ../../configuration/interfaces/pppoe.rst:172
+#: ../../configuration/interfaces/pppoe.rst:185
 #: ../../configuration/interfaces/sstp-client.rst:70
 msgid "Use this command to not install advertised DNS nameservers into the local system."
 msgstr "Utilice este comando para no instalar servidores de nombres DNS anunciados en el sistema local."
@@ -17195,15 +17219,15 @@ msgstr "Utilice este comando para ver la Base de información de etiquetas."
 msgid "Use this command to set a name for this PPPoE-server access concentrator."
 msgstr "Utilice este comando para establecer un nombre para este concentrador de acceso al servidor PPPoE."
 
-#: ../../configuration/interfaces/pppoe.rst:159
+#: ../../configuration/interfaces/pppoe.rst:172
 msgid "Use this command to set re-dial delay time to be used with persist PPPoE sessions. When the PPPoE session is terminated by peer, and on-demand option is not set, the router will attempt to re-establish the PPPoE link."
 msgstr "Utilice este comando para configurar el tiempo de retraso de rellamada que se usará con las sesiones persistentes de PPPoE. Cuando la sesión PPPoE es terminada por el par y la opción a pedido no está configurada, el enrutador intentará restablecer el enlace PPPoE."
 
-#: ../../configuration/interfaces/pppoe.rst:167
+#: ../../configuration/interfaces/pppoe.rst:180
 msgid "Use this command to set the IP address of the local endpoint of a PPPoE session. If it is not set it will be negotiated."
 msgstr "Utilice este comando para configurar la dirección IP del extremo local de una sesión PPPoE. Si no se establece, se negociará."
 
-#: ../../configuration/interfaces/pppoe.rst:177
+#: ../../configuration/interfaces/pppoe.rst:190
 msgid "Use this command to set the IP address of the remote endpoint of a PPPoE session. If it is not set it will be negotiated."
 msgstr "Utilice este comando para configurar la dirección IP del extremo remoto de una sesión PPPoE. Si no se establece, se negociará."
 
@@ -17215,7 +17239,7 @@ msgstr "Utilice este comando para establecer la dirección IPv4 o IPv6 de cada s
 msgid "Use this command to set the IPv4 or IPv6 transport-address used by LDP."
 msgstr "Utilice este comando para configurar la dirección de transporte IPv4 o IPv6 utilizada por LDP."
 
-#: ../../configuration/interfaces/pppoe.rst:148
+#: ../../configuration/interfaces/pppoe.rst:161
 msgid "Use this command to set the idle timeout interval to be used with on-demand PPPoE sessions. When an on-demand connection is established, the link is brought up only when traffic is sent and is disabled when the link is idle for the interval specified."
 msgstr "Use este comando para configurar el intervalo de tiempo de espera inactivo que se usará con las sesiones PPPoE bajo demanda. Cuando se establece una conexión bajo demanda, el enlace se activa solo cuando se envía tráfico y se desactiva cuando el enlace está inactivo durante el intervalo especificado."
 
@@ -17271,7 +17295,7 @@ msgstr "Use este comando para especificar un servidor DNS para que el sistema se
 msgid "Use this command to specify a domain name to be appended to domain-names within URLs that do not include a dot ``.`` the domain is appended."
 msgstr "Utilice este comando para especificar un nombre de dominio que se agregará a los nombres de dominio dentro de las URL que no incluyen un punto ``.`` se adjunta el dominio."
 
-#: ../../configuration/interfaces/pppoe.rst:182
+#: ../../configuration/interfaces/pppoe.rst:195
 msgid "Use this command to specify a service name by which the local PPPoE interface can select access concentrators to connect with. It will connect to any access concentrator if not set."
 msgstr "Utilice este comando para especificar un nombre de servicio por el cual la interfaz PPPoE local puede seleccionar concentradores de acceso para conectarse. Se conectará a cualquier concentrador de acceso si no está configurado."
 
@@ -17384,7 +17408,7 @@ msgstr "Accel-ppp puede crear VLAN sobre la marcha mediante el uso de un módulo
 msgid "VLAN 10 on member interface `eth2` (ACCESS mode)"
 msgstr "VLAN 10 en la interfaz de miembro `eth2` (modo ACCESO)"
 
-#: ../../configuration/interfaces/pppoe.rst:350
+#: ../../configuration/interfaces/pppoe.rst:363
 msgid "VLAN Example"
 msgstr "Ejemplo de VLAN"
 
@@ -18111,6 +18135,10 @@ msgstr "Cuando utilice una contraseña de un solo uso basada en el tiempo (TOTP)
 msgid "When using site-to-site IPsec with VTI interfaces, be sure to disable route autoinstall"
 msgstr "Cuando utilice IPsec de sitio a sitio con interfaces VTI, asegúrese de desactivar la instalación automática de rutas"
 
+#: ../../configuration/interfaces/pppoe.rst:157
+msgid "When using the IPv6 protocol, MRU must be at least 1280 bytes."
+msgstr "When using the IPv6 protocol, MRU must be at least 1280 bytes."
+
 #: ../../configuration/interfaces/bonding.rst:398
 msgid "When utilizing VyOS in an environment with Arista gear you can use this blue print as an initial setup to get an LACP bond / port-channel operational between those two devices."
 msgstr "Cuando utilice VyOS en un entorno con equipo Arista, puede usar este modelo como una configuración inicial para obtener un vínculo/canal de puerto LACP operativo entre esos dos dispositivos."
@@ -18253,7 +18281,7 @@ msgstr "With VyOS being based on top of Linux and its kernel, the Netfilter proj
 msgid "With WireGuard, a Road Warrior VPN config is similar to a site-to-site VPN. It just lacks the ``address`` and ``port`` statements."
 msgstr "Con WireGuard, una configuración de VPN de Road Warrior es similar a una VPN de sitio a sitio. Simplemente le faltan las declaraciones ``dirección`` y ``puerto``."
 
-#: ../../configuration/interfaces/pppoe.rst:323
+#: ../../configuration/interfaces/pppoe.rst:336
 msgid "With the ``name-server`` option set to ``none``, VyOS will ignore the nameservers your ISP sends you and thus you can fully rely on the ones you have configured statically."
 msgstr "Con la opción ``servidor de nombres`` establecida en ``ninguno``, VyOS ignorará los servidores de nombres que le envíe su ISP y, por lo tanto, puede confiar plenamente en los que ha configurado estáticamente."
 
@@ -18442,7 +18470,7 @@ msgstr "Necesita 2 firewalls separados para definir el tráfico: uno para cada d
 msgid "You need to disable the in-memory table in production environments! Using :abbr:`IMT (In-Memory Table)` may lead to heavy CPU overloading and unstable flow-accounting behavior."
 msgstr "¡Debe deshabilitar la tabla en memoria en entornos de producción! El uso de :abbr:`IMT (tabla en memoria)` puede provocar una gran sobrecarga de la CPU y un comportamiento inestable de contabilidad de flujo."
 
-#: ../../configuration/interfaces/pppoe.rst:316
+#: ../../configuration/interfaces/pppoe.rst:329
 msgid "You need your PPPoE credentials from your DSL ISP in order to configure this. The usual username is in the form of name@host.net but may vary depending on ISP."
 msgstr "Necesita sus credenciales PPPoE de su ISP DSL para configurar esto. El nombre de usuario habitual tiene la forma de nombre@host.net, pero puede variar según el ISP."
 
@@ -18450,7 +18478,7 @@ msgstr "Necesita sus credenciales PPPoE de su ISP DSL para configurar esto. El n
 msgid "You now see the longer AS path."
 msgstr "Ahora ve la ruta AS más larga."
 
-#: ../../configuration/interfaces/pppoe.rst:340
+#: ../../configuration/interfaces/pppoe.rst:353
 msgid "You should add a firewall to your configuration above as well by assigning it to the pppoe0 itself as shown here:"
 msgstr "También debe agregar un firewall a su configuración anterior asignándolo al propio pppoe0 como se muestra aquí:"
 
@@ -18463,7 +18491,7 @@ msgstr "También debe asegurarse de que el grupo de firewall OUTISDE_LOCAL se ap
 msgid "You will also need the public key of your peer as well as the network(s) you want to tunnel (allowed-ips) to configure a WireGuard tunnel. The public key below is always the public key from your peer, not your local one."
 msgstr "También necesitará la clave pública de su par, así como la(s) red(es) que desea tunelizar (ips permitidas) para configurar un túnel WireGuard. La clave pública a continuación es siempre la clave pública de su par, no la local."
 
-#: ../../configuration/interfaces/pppoe.rst:314
+#: ../../configuration/interfaces/pppoe.rst:327
 msgid "Your ISPs modem is connected to port ``eth0`` of your VyOS box."
 msgstr "El módem de su ISP está conectado al puerto ``eth0`` de su caja VyOS."
 
@@ -20065,7 +20093,7 @@ msgstr "ddclient_ tiene otra forma de determinar la dirección IP de WAN. Esto e
 msgid "ddclient_ uses two methods to update a DNS record. The first one will send updates directly to the DNS daemon, in compliance with :rfc:`2136`. The second one involves a third party service, like DynDNS.com or any other similar website. This method uses HTTP requests to transmit the new IP address. You can configure both in VyOS."
 msgstr "ddclient_ utiliza dos métodos para actualizar un registro DNS. El primero enviará actualizaciones directamente al demonio DNS, de conformidad con :rfc:`2136`. El segundo implica un servicio de terceros, como DynDNS.com o cualquier otro sitio web similar. Este método utiliza solicitudes HTTP para transmitir la nueva dirección IP. Puede configurar ambos en VyOS."
 
-#: ../../configuration/service/dns.rst:394
+#: ../../configuration/service/dns.rst:400
 msgid "ddclient_ will skip any address located before the string set in `<pattern>`."
 msgstr "ddclient_ omitirá cualquier dirección ubicada antes de la cadena establecida en `<pattern> `."
 
@@ -20127,7 +20155,7 @@ msgstr "directorio"
 #: ../../_include/interface-ip.txt:190
 #: ../../_include/interface-ip.txt:190
 #: ../../_include/interface-ip.txt:190
-#: ../../configuration/interfaces/pppoe.rst:228
+#: ../../configuration/interfaces/pppoe.rst:241
 #: ../../_include/interface-ip.txt:190
 #: ../../_include/interface-ip.txt:190
 #: ../../configuration/interfaces/sstp-client.rst:113
@@ -20398,7 +20426,7 @@ msgstr "auditoría de registro"
 #: ../../_include/interface-ip.txt:186
 #: ../../_include/interface-ip.txt:186
 #: ../../_include/interface-ip.txt:186
-#: ../../configuration/interfaces/pppoe.rst:224
+#: ../../configuration/interfaces/pppoe.rst:237
 #: ../../_include/interface-ip.txt:186
 #: ../../_include/interface-ip.txt:186
 #: ../../configuration/interfaces/sstp-client.rst:109
@@ -20699,7 +20727,7 @@ msgstr "ruta estática"
 #: ../../_include/interface-ip.txt:182
 #: ../../_include/interface-ip.txt:182
 #: ../../_include/interface-ip.txt:182
-#: ../../configuration/interfaces/pppoe.rst:220
+#: ../../configuration/interfaces/pppoe.rst:233
 #: ../../_include/interface-ip.txt:182
 #: ../../_include/interface-ip.txt:182
 #: ../../configuration/interfaces/sstp-client.rst:105
