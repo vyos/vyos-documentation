@@ -8,6 +8,24 @@
    _ext/releasenotes.py
 
 
+2023-10-08
+==========
+
+* :vytask:`T5630` ``(feature): pppoe: allow to specify MRU in addition to already configurable MTU``
+
+
+2023-10-06
+==========
+
+* :vytask:`T5576` ``(feature): Add bgp remove-private-as all option``
+
+
+2023-10-04
+==========
+
+* :vytask:`T5632` ``(feature): Add jq package to parse JSON files``
+
+
 2023-09-25
 ==========
 
@@ -234,6 +252,12 @@
 ==========
 
 * :vytask:`T5280` ``(bug): Update Expired keys (2023-06-08) for PowerDNS``
+
+
+2023-06-13
+==========
+
+* :vytask:`T5213` ``(feature): Accel-ppp sending accounting interim updates acct-interim-interval option``
 
 
 2023-05-29
