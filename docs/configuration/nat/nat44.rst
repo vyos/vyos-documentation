@@ -148,23 +148,35 @@ rule.
 
 * **outbound-interface** - applicable only to :ref:`source-nat`. It
   configures the interface which is used for the outside traffic that
-  this translation rule applies to.
+  this translation rule applies to. Interface groups, inverted
+  selection and wildcard, are also supported.
 
-  Example:
+  Examples:
 
   .. code-block:: none
 
-    set nat source rule 20 outbound-interface eth0
+    set nat source rule 20 outbound-interface interface-name eth0
+    set nat source rule 30 outbound-interface interface-name bond1*
+    set nat source rule 20 outbound-interface interface-name !vtun2
+    set nat source rule 20 outbound-interface interface-group GROUP1
+    set nat source rule 20 outbound-interface interface-group !GROUP2
+
 
 * **inbound-interface** - applicable only to :ref:`destination-nat`. It
   configures the interface which is used for the inside traffic the
-  translation rule applies to.
+  translation rule applies to. Interface groups, inverted
+  selection and wildcard, are also supported.
 
   Example:
 
   .. code-block:: none
 
-    set nat destination rule 20 inbound-interface eth1
+    set nat destination rule 20 inbound-interface interface-name eth0
+    set nat destination rule 30 inbound-interface interface-name bond1*
+    set nat destination rule 20 inbound-interface interface-name !vtun2
+    set nat destination rule 20 inbound-interface interface-group GROUP1
+    set nat destination rule 20 inbound-interface interface-group !GROUP2
+
 
 * **protocol** - specify which types of protocols this translation rule
   applies to. Only packets matching the specified protocol are NATed.
@@ -323,7 +335,7 @@ demonstrate the following configuration:
 
 .. code-block:: none
 
-  set nat source rule 100 outbound-interface 'eth0'
+  set nat source rule 100 outbound-interface interface-name 'eth0'
   set nat source rule 100 source address '192.168.0.0/24'
   set nat source rule 100 translation address 'masquerade'
 
@@ -332,7 +344,9 @@ Which generates the following configuration:
 .. code-block:: none
 
   rule 100 {
-      outbound-interface eth0
+      outbound-interface {
+          interface-name eth0
+      }
       source {
           address 192.168.0.0/24
       }
@@ -424,19 +438,19 @@ Example:
 
   set nat destination rule 100 description 'Regular destination NAT from external'
   set nat destination rule 100 destination port '3389'
-  set nat destination rule 100 inbound-interface 'pppoe0'
+  set nat destination rule 100 inbound-interface interface-name 'pppoe0'
   set nat destination rule 100 protocol 'tcp'
   set nat destination rule 100 translation address '192.0.2.40'
 
   set nat destination rule 110 description 'NAT Reflection: INSIDE'
   set nat destination rule 110 destination port '3389'
-  set nat destination rule 110 inbound-interface 'eth0.10'
+  set nat destination rule 110 inbound-interface interface-name 'eth0.10'
   set nat destination rule 110 protocol 'tcp'
   set nat destination rule 110 translation address '192.0.2.40'
 
   set nat source rule 110 description 'NAT Reflection: INSIDE'
   set nat source rule 110 destination address '192.0.2.0/24'
-  set nat source rule 110 outbound-interface 'eth0.10'
+  set nat source rule 110 outbound-interface interface-name 'eth0.10'
   set nat source rule 110 protocol 'tcp'
   set nat source rule 110 source address '192.0.2.0/24'
   set nat source rule 110 translation address 'masquerade'
@@ -452,7 +466,9 @@ Which results in a configuration of:
            destination {
                port 3389
            }
-           inbound-interface pppoe0
+           inbound-interface {
+               interface-name pppoe0
+           }
            protocol tcp
            translation {
                address 192.0.2.40
@@ -463,7 +479,9 @@ Which results in a configuration of:
            destination {
                port 3389
            }
-           inbound-interface eth0.10
+           inbound-interface {
+               interface-name eth0.10
+           }
            protocol tcp
            translation {
                address 192.0.2.40
@@ -476,7 +494,9 @@ Which results in a configuration of:
            destination {
                address 192.0.2.0/24
            }
-           outbound-interface eth0.10
+           outbound-interface {
+               interface-name eth0.10
+           }
            protocol tcp
            source {
                address 192.0.2.0/24
@@ -515,7 +535,7 @@ Our configuration commands would be:
 
   set nat destination rule 10 description 'Port Forward: HTTP to 192.168.0.100'
   set nat destination rule 10 destination port '80'
-  set nat destination rule 10 inbound-interface 'eth0'
+  set nat destination rule 10 inbound-interface interface-name 'eth0'
   set nat destination rule 10 protocol 'tcp'
   set nat destination rule 10 translation address '192.168.0.100'
 
@@ -530,7 +550,9 @@ Which would generate the following NAT destination configuration:
               destination {
                   port 80
               }
-              inbound-interface eth0
+              inbound-interface {
+                  interface-name eth0
+              }
               protocol tcp
               translation {
                   address 192.168.0.100
@@ -546,43 +568,45 @@ Which would generate the following NAT destination configuration:
 This establishes our Port Forward rule, but if we created a firewall
 policy it will likely block the traffic.
 
-It is important to note that when creating firewall rules that the DNAT
+Firewall rules for Destination NAT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is important to note that when creating firewall rules, the DNAT
 translation occurs **before** traffic traverses the firewall. In other
 words, the destination address has already been translated to
 192.168.0.100.
 
-So in our firewall policy, we want to allow traffic coming in on the
-outside interface, destined for TCP port 80 and the IP address of
-192.168.0.100.
+So in our firewall ruleset, we want to allow traffic which previously matched
+a destination nat rule. In order to avoid creating many rules, one for each
+destination nat rule, we can accept all **'dnat'** connections with one simple
+rule, using ``connection-status`` matcher:
 
 .. code-block:: none
 
-  set firewall name OUTSIDE-IN rule 20 action 'accept'
-  set firewall name OUTSIDE-IN rule 20 destination address '192.168.0.100'
-  set firewall name OUTSIDE-IN rule 20 destination port '80'
-  set firewall name OUTSIDE-IN rule 20 protocol 'tcp'
-  set firewall name OUTSIDE-IN rule 20 state new 'enable'
+  set firewall ipv4 forward filter rule 10 action accept
+  set firewall ipv4 forward filter rule 10 connection-status nat destination
+  set firewall ipv4 forward filter rule 10 state new enable
 
 This would generate the following configuration:
 
 .. code-block:: none
 
-  rule 20 {
-      action accept
-      destination {
-          address 192.168.0.100
-          port 80
-      }
-      protocol tcp
-      state {
-          new enable
+  ipv4 {
+      forward {
+          filter {
+              rule 10 {
+                  action accept
+                  connection-status {
+                      nat destination
+                  }
+                  state {
+                      new enable
+                  }
+              }
+          }
       }
   }
 
-.. note::
-
-  If you have configured the `INSIDE-OUT` policy, you will need to add
-  additional rules to permit inbound NAT traffic.
 
 1-to-1 NAT
 ----------
@@ -610,10 +634,10 @@ and one external interface:
   set interfaces ethernet eth1 description 'Outside interface'
   set nat destination rule 2000 description '1-to-1 NAT example'
   set nat destination rule 2000 destination address '192.0.2.30'
-  set nat destination rule 2000 inbound-interface 'eth1'
+  set nat destination rule 2000 inbound-interface interface-name 'eth1'
   set nat destination rule 2000 translation address '192.168.1.10'
   set nat source rule 2000 description '1-to-1 NAT example'
-  set nat source rule 2000 outbound-interface 'eth1'
+  set nat source rule 2000 outbound-interface interface-name 'eth1'
   set nat source rule 2000 source address '192.168.1.10'
   set nat source rule 2000 translation address '192.0.2.30'
 
@@ -639,7 +663,7 @@ We will use source and destination address for hash generation.
 
 .. code-block:: none
 
-  set nat destination rule 10 inbound-interface eth0
+  set nat destination rule 10 inbound-interface inbound-interface eth0
   set nat destination rule 10 protocol tcp
   set nat destination rule 10 destination port 80
   set nat destination rule 10 load-balance hash source-address
@@ -655,7 +679,7 @@ We will generate the hash randomly.
 
 .. code-block:: none
 
-  set nat source rule 10 outbound-interface eth0
+  set nat source rule 10 outbound-interface interface-name eth0
   set nat source rule 10 source address 10.0.0.0/8
   set nat source rule 10 load-balance hash random
   set nat source rule 10 load-balance backend 192.0.2.251 weight 33
@@ -709,12 +733,10 @@ NAT Configuration
 
   set nat source rule 110 description 'Internal to ASP'
   set nat source rule 110 destination address '172.27.1.0/24'
-  set nat source rule 110 outbound-interface 'any'
   set nat source rule 110 source address '192.168.43.0/24'
   set nat source rule 110 translation address '172.29.41.89'
   set nat source rule 120 description 'Internal to ASP'
   set nat source rule 120 destination address '10.125.0.0/16'
-  set nat source rule 120 outbound-interface 'any'
   set nat source rule 120 source address '192.168.43.0/24'
   set nat source rule 120 translation address '172.29.41.89'
 
