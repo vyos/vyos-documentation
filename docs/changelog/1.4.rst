@@ -8,6 +8,39 @@
    _ext/releasenotes.py
 
 
+2023-10-14
+==========
+
+* :vytask:`T5629` ``(bug): Policy local-route bug after migration to destination node address``
+
+
+2023-10-13
+==========
+
+* :vytask:`T5227` ``(feature): mDNS reflector should allow additional domains to browse and allow filtering services``
+* :vytask:`T5166` ``(feature): Remove local minisign package from build repo for 1.4``
+* :vytask:`T5118` ``(bug): Cleanup vestigial ntp completion script``
+* :vytask:`T5115` ``(default): Support custom port for name servers for forwarding zones``
+* :vytask:`T5113` ``(default): PDNS: Support custom port for DNS forwarders``
+* :vytask:`T5112` ``(feature): Enable support for Network Time Security (NTS) for chrony``
+* :vytask:`T5143` ``(enhancment): Apply constraint on powerdns forward-zones configuration``
+
+
+2023-10-12
+==========
+
+* :vytask:`T5649` ``(bug): vyos-1x should generate XML cache after building command templates for less cryptic error on typo``
+
+
+2023-10-10
+==========
+
+* :vytask:`T5489` ``(feature): Change to BBR as TCP congestion control, or at least make it an config option``
+* :vytask:`T5479` ``(bug): Helper leftovers found in nftables (firewall) even with all helpers disabled``
+* :vytask:`T5436` ``(bug): vyos-preconfig-bootup.script is missing``
+* :vytask:`T5014` ``(feature): Destination NAT - Add Load Balancing capabilities``
+
+
 2023-10-08
 ==========
 

@@ -229,12 +229,6 @@
 * :vytask:`T5313` ``(bug): UDP broadcast relay - missing verify() that relay interfaces have an IP address assigned``
 
 
-2023-06-28
-==========
-
-* :vytask:`T1237` ``(feature): Static Route Path Monitoring, failover``
-
-
 2023-06-26
 ==========
 
