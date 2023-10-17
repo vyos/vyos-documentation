@@ -562,6 +562,7 @@ The WAP in this example has the following characteristics:
   set interfaces wireless wlan0 security wpa mode wpa2
   set interfaces wireless wlan0 security wpa cipher CCMP
   set interfaces wireless wlan0 security wpa passphrase '12345678'
+  set interfaces wireless wlan0 country-code de
 
 Resulting in
 
@@ -572,6 +573,7 @@ Resulting in
     wireless wlan0 {
           address 192.168.2.1/24
           channel 1
+          country-code de
           mode n
           security {
               wpa {
