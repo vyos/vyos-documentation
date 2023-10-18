@@ -222,7 +222,7 @@ firewall exception.
     set firewall ipv4 name OUTSIDE_LOCAL rule 20 protocol udp
     set firewall ipv4 name OUTSIDE_LOCAL rule 20 source
 
-You should also ensure that the OUTISDE_LOCAL firewall group is applied to the
+You should also ensure that the OUTSIDE_LOCAL firewall group is applied to the
 WAN interface and a direction (local).
 
 .. code-block:: none
@@ -413,7 +413,7 @@ the VyOS CLI.
   into the VyOS CLI if needed. The supplied ``<name>`` on the CLI will become
   the peer name in the snippet.
 
-  In addition you will specifiy the IP address or FQDN for the client where it
+  In addition you will specify the IP address or FQDN for the client where it
   will connect to. The address parameter can be used up to two times and is used
   to assign the clients specific IPv4 (/32) or IPv6 (/128) address.
 
