@@ -276,13 +276,13 @@ Imagine the following topology
 * WAN interface on `eth0.201`
 * `eth0.201` interface IP: `172.18.201.10/24`
 * `vti10` interface IP: `10.0.0.2/31`
-* `dum0` interface IP: `10.0.11.1/24` (for testing purposes we create the `dummy` interface)
+* `dum0` interface IP: `10.0.11.1/24` (for testing purposes)
 
 **RIGHT:**
 * WAN interface on `eth0.202`
 * `eth0.201` interface IP: `172.18.202.10/24`
 * `vti10` interface IP: `10.0.0.3/31`
-* `dum0` interface IP: `10.0.12.1/24` (for testing purposes we create the `dummy` interface)
+* `dum0` interface IP: `10.0.12.1/24` (for testing purposes)
 
 .. note:: Don't get confused about the used /31 tunnel subnet. :rfc:`3021`
    gives you additional information for using /31 subnets on point-to-point
