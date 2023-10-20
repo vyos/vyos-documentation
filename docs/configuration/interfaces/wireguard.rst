@@ -211,18 +211,18 @@ firewall exception.
 
 .. code-block:: none
 
-    set firewall name OUTSIDE_LOCAL rule 10 action accept
-    set firewall name OUTSIDE_LOCAL rule 10 description 'Allow established/related'
-    set firewall name OUTSIDE_LOCAL rule 10 state established enable
-    set firewall name OUTSIDE_LOCAL rule 10 state related enable
-    set firewall name OUTSIDE_LOCAL rule 20 action accept
-    set firewall name OUTSIDE_LOCAL rule 20 description WireGuard_IN
-    set firewall name OUTSIDE_LOCAL rule 20 destination port 51820
-    set firewall name OUTSIDE_LOCAL rule 20 log enable
-    set firewall name OUTSIDE_LOCAL rule 20 protocol udp
-    set firewall name OUTSIDE_LOCAL rule 20 source
+    set firewall ipv4 name OUTSIDE_LOCAL rule 10 action accept
+    set firewall ipv4 name OUTSIDE_LOCAL rule 10 description 'Allow established/related'
+    set firewall ipv4 name OUTSIDE_LOCAL rule 10 state established enable
+    set firewall ipv4 name OUTSIDE_LOCAL rule 10 state related enable
+    set firewall ipv4 name OUTSIDE_LOCAL rule 20 action accept
+    set firewall ipv4 name OUTSIDE_LOCAL rule 20 description WireGuard_IN
+    set firewall ipv4 name OUTSIDE_LOCAL rule 20 destination port 51820
+    set firewall ipv4 name OUTSIDE_LOCAL rule 20 log enable
+    set firewall ipv4 name OUTSIDE_LOCAL rule 20 protocol udp
+    set firewall ipv4 name OUTSIDE_LOCAL rule 20 source
 
-You should also ensure that the OUTISDE_LOCAL firewall group is applied to the
+You should also ensure that the OUTSIDE_LOCAL firewall group is applied to the
 WAN interface and a direction (local).
 
 .. code-block:: none
@@ -413,7 +413,7 @@ the VyOS CLI.
   into the VyOS CLI if needed. The supplied ``<name>`` on the CLI will become
   the peer name in the snippet.
 
-  In addition you will specifiy the IP address or FQDN for the client where it
+  In addition you will specify the IP address or FQDN for the client where it
   will connect to. The address parameter can be used up to two times and is used
   to assign the clients specific IPv4 (/32) or IPv6 (/128) address.
 

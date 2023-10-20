@@ -8,6 +8,79 @@
    _ext/releasenotes.py
 
 
+2023-10-14
+==========
+
+* :vytask:`T5629` ``(bug): Policy local-route bug after migration to destination node address``
+
+
+2023-10-13
+==========
+
+* :vytask:`T5227` ``(feature): mDNS reflector should allow additional domains to browse and allow filtering services``
+* :vytask:`T5166` ``(feature): Remove local minisign package from build repo for 1.4``
+* :vytask:`T5118` ``(bug): Cleanup vestigial ntp completion script``
+* :vytask:`T5115` ``(default): Support custom port for name servers for forwarding zones``
+* :vytask:`T5113` ``(default): PDNS: Support custom port for DNS forwarders``
+* :vytask:`T5112` ``(feature): Enable support for Network Time Security (NTS) for chrony``
+* :vytask:`T5143` ``(enhancment): Apply constraint on powerdns forward-zones configuration``
+
+
+2023-10-12
+==========
+
+* :vytask:`T5649` ``(bug): vyos-1x should generate XML cache after building command templates for less cryptic error on typo``
+
+
+2023-10-10
+==========
+
+* :vytask:`T5489` ``(feature): Change to BBR as TCP congestion control, or at least make it an config option``
+* :vytask:`T5479` ``(bug): Helper leftovers found in nftables (firewall) even with all helpers disabled``
+* :vytask:`T5436` ``(bug): vyos-preconfig-bootup.script is missing``
+* :vytask:`T5014` ``(feature): Destination NAT - Add Load Balancing capabilities``
+
+
+2023-10-08
+==========
+
+* :vytask:`T5630` ``(feature): pppoe: allow to specify MRU in addition to already configurable MTU``
+
+
+2023-10-06
+==========
+
+* :vytask:`T5096` ``(feature): Change 'accept' firewall rule action from 'return' to 'accept'``
+* :vytask:`T5576` ``(feature): Add bgp remove-private-as all option``
+* :vytask:`T3506` ``(default): Migrate loadkey command to op-mode``
+
+
+2023-10-05
+==========
+
+* :vytask:`T4320` ``(default): Remove legacy version files in vyatta-cfg-system/cfg-version``
+
+
+2023-10-04
+==========
+
+* :vytask:`T5632` ``(feature): Add jq package to parse JSON files``
+* :vytask:`T3655` ``(bug): NAT  Problem with VRF``
+* :vytask:`T5585` ``(bug): Fix file access mode for dynamic dns configuration``
+
+
+2023-10-03
+==========
+
+* :vytask:`T5618` ``(bug): Flow-accounting crushes when IMT is enabled``
+* :vytask:`T5561` ``(feature): NAT - Inbound or outbound interface should not be mandatory``
+* :vytask:`T5553` ``(feature): Firewall - Add action continue``
+* :vytask:`T5250` ``(bug): Firewall - show firewall group``
+* :vytask:`T4383` ``(bug): Flow Accounting returns permission error and fails to start``
+* :vytask:`T5626` ``(feature): Only select required Kernel CGROUP controllers``
+* :vytask:`T5628` ``(feature): op-mode: login: DeprecationWarning: 'spwd'``
+
+
 2023-10-01
 ==========
 
@@ -129,7 +202,6 @@
 2023-09-07
 ==========
 
-* :vytask:`T5489` ``(feature): Change to BBR as TCP congestion control, or at least make it an config option``
 * :vytask:`T5510` ``(feature): Shrink imagesize and improve read performance by changing mksquashfs syntax``
 
 
@@ -2651,12 +2723,6 @@
 ==========
 
 * :vytask:`T4272` ``(feature): lldp: migrate Python script to use get_config_dict()``
-
-
-2022-02-25
-==========
-
-* :vytask:`T4269` ``(feature): node.def generator should automatically add default values``
 
 
 2022-02-24
