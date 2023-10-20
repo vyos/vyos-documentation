@@ -64,7 +64,7 @@ msgid "Allow Access to Services"
 msgstr "Allow Access to Services"
 
 msgid "Allow Management Access"
-msgstr "Allow Management Access"
+msgstr "允许管理访问"
 
 msgid ""
 "Alternatively, instead of configuring the ``CONN_FILTER`` chain described "
