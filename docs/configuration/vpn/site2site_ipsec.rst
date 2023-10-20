@@ -280,17 +280,31 @@ Imagine the following topology
 
    IPSec IKEv2 site2site VPN (source ./draw.io/vpn_s2s_ikev2.drawio)
 
+**LEFT:**
+* WAN interface on `eth0.201`
+* `eth0.201` interface IP: `172.18.201.10/24`
+* `vti10` interface IP: `10.0.0.2/31`
+* `dum0` interface IP: `10.0.11.1/24` (for testing purposes)
+
+**RIGHT:**
+* WAN interface on `eth0.202`
+* `eth0.201` interface IP: `172.18.202.10/24`
+* `vti10` interface IP: `10.0.0.3/31`
+* `dum0` interface IP: `10.0.12.1/24` (for testing purposes)
 
 .. note:: Don't get confused about the used /31 tunnel subnet. :rfc:`3021`
    gives you additional information for using /31 subnets on point-to-point
    links.
 
-**left**
+**LEFT**
 
 .. code-block:: none
 
+  set interfaces ethernet eth0 vif 201 address '172.18.201.10/24'
+  set interfaces dummy dum0 address '10.0.11.1/24'
   set interfaces vti vti10 address '10.0.0.2/31'
 
+  set vpn ipsec option disable-route-autoinstall
   set vpn ipsec authentication psk OFFICE-B id '172.18.201.10'
   set vpn ipsec authentication psk OFFICE-B id '172.18.202.10'
   set vpn ipsec authentication psk OFFICE-B secret 'secretkey'
@@ -311,17 +325,22 @@ Imagine the following topology
   set vpn ipsec site-to-site peer OFFICE-B authentication remote-id '172.18.202.10'
   set vpn ipsec site-to-site peer OFFICE-B connection-type 'respond'
   set vpn ipsec site-to-site peer OFFICE-B ike-group 'IKEv2_DEFAULT'
-  set vpn ipsec site-to-site peer OFFICE-B local-address '192.168.0.10'
+  set vpn ipsec site-to-site peer OFFICE-B local-address '172.18.201.10'
   set vpn ipsec site-to-site peer OFFICE-B remote-address '172.18.202.10'
   set vpn ipsec site-to-site peer OFFICE-B vti bind 'vti10'
   set vpn ipsec site-to-site peer OFFICE-B vti esp-group 'ESP_DEFAULT'
 
-**right**
+  set protocols static interface-route 10.0.12.0/24 next-hop-interface vti10
+
+**RIGHT**
 
 .. code-block:: none
 
+  set interfaces ethernet eth0 vif 202 address '172.18.202.10/24'
+  set interfaces dummy dum0 address '10.0.12.1/24'
   set interfaces vti vti10 address '10.0.0.3/31'
 
+  set vpn ipsec option disable-route-autoinstall
   set vpn ipsec authentication psk OFFICE-A id '172.18.201.10'
   set vpn ipsec authentication psk OFFICE-A id '172.18.202.10'
   set vpn ipsec authentication psk OFFICE-A secret 'secretkey'
@@ -349,6 +368,8 @@ Imagine the following topology
   set vpn ipsec site-to-site peer OFFICE-A remote-address '172.18.201.10'
   set vpn ipsec site-to-site peer OFFICE-A vti bind 'vti10'
   set vpn ipsec site-to-site peer OFFICE-A vti esp-group 'ESP_DEFAULT'
+
+  set protocols static interface-route 10.0.11.0/24 next-hop-interface vti10
 
 Key Parameters:
 
