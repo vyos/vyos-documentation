@@ -155,11 +155,11 @@ rule.
 
   .. code-block:: none
 
-    set nat source rule 20 outbound-interface interface-name eth0
-    set nat source rule 30 outbound-interface interface-name bond1*
-    set nat source rule 20 outbound-interface interface-name !vtun2
-    set nat source rule 20 outbound-interface interface-group GROUP1
-    set nat source rule 20 outbound-interface interface-group !GROUP2
+    set nat source rule 20 outbound-interface name eth0
+    set nat source rule 30 outbound-interface name bond1*
+    set nat source rule 20 outbound-interface name !vtun2
+    set nat source rule 20 outbound-interface group GROUP1
+    set nat source rule 20 outbound-interface group !GROUP2
 
 
 * **inbound-interface** - applicable only to :ref:`destination-nat`. It
@@ -171,11 +171,11 @@ rule.
 
   .. code-block:: none
 
-    set nat destination rule 20 inbound-interface interface-name eth0
-    set nat destination rule 30 inbound-interface interface-name bond1*
-    set nat destination rule 20 inbound-interface interface-name !vtun2
-    set nat destination rule 20 inbound-interface interface-group GROUP1
-    set nat destination rule 20 inbound-interface interface-group !GROUP2
+    set nat destination rule 20 inbound-interface name eth0
+    set nat destination rule 30 inbound-interface name bond1*
+    set nat destination rule 20 inbound-interface name !vtun2
+    set nat destination rule 20 inbound-interface group GROUP1
+    set nat destination rule 20 inbound-interface group !GROUP2
 
 
 * **protocol** - specify which types of protocols this translation rule
@@ -335,7 +335,7 @@ demonstrate the following configuration:
 
 .. code-block:: none
 
-  set nat source rule 100 outbound-interface interface-name 'eth0'
+  set nat source rule 100 outbound-interface name 'eth0'
   set nat source rule 100 source address '192.168.0.0/24'
   set nat source rule 100 translation address 'masquerade'
 
@@ -345,7 +345,7 @@ Which generates the following configuration:
 
   rule 100 {
       outbound-interface {
-          interface-name eth0
+          name eth0
       }
       source {
           address 192.168.0.0/24
@@ -438,19 +438,19 @@ Example:
 
   set nat destination rule 100 description 'Regular destination NAT from external'
   set nat destination rule 100 destination port '3389'
-  set nat destination rule 100 inbound-interface interface-name 'pppoe0'
+  set nat destination rule 100 inbound-interface name 'pppoe0'
   set nat destination rule 100 protocol 'tcp'
   set nat destination rule 100 translation address '192.0.2.40'
 
   set nat destination rule 110 description 'NAT Reflection: INSIDE'
   set nat destination rule 110 destination port '3389'
-  set nat destination rule 110 inbound-interface interface-name 'eth0.10'
+  set nat destination rule 110 inbound-interface name 'eth0.10'
   set nat destination rule 110 protocol 'tcp'
   set nat destination rule 110 translation address '192.0.2.40'
 
   set nat source rule 110 description 'NAT Reflection: INSIDE'
   set nat source rule 110 destination address '192.0.2.0/24'
-  set nat source rule 110 outbound-interface interface-name 'eth0.10'
+  set nat source rule 110 outbound-interface name 'eth0.10'
   set nat source rule 110 protocol 'tcp'
   set nat source rule 110 source address '192.0.2.0/24'
   set nat source rule 110 translation address 'masquerade'
@@ -467,7 +467,7 @@ Which results in a configuration of:
                port 3389
            }
            inbound-interface {
-               interface-name pppoe0
+               name pppoe0
            }
            protocol tcp
            translation {
@@ -480,7 +480,7 @@ Which results in a configuration of:
                port 3389
            }
            inbound-interface {
-               interface-name eth0.10
+               name eth0.10
            }
            protocol tcp
            translation {
@@ -495,7 +495,7 @@ Which results in a configuration of:
                address 192.0.2.0/24
            }
            outbound-interface {
-               interface-name eth0.10
+               name eth0.10
            }
            protocol tcp
            source {
@@ -535,7 +535,7 @@ Our configuration commands would be:
 
   set nat destination rule 10 description 'Port Forward: HTTP to 192.168.0.100'
   set nat destination rule 10 destination port '80'
-  set nat destination rule 10 inbound-interface interface-name 'eth0'
+  set nat destination rule 10 inbound-interface name 'eth0'
   set nat destination rule 10 protocol 'tcp'
   set nat destination rule 10 translation address '192.168.0.100'
 
@@ -551,7 +551,7 @@ Which would generate the following NAT destination configuration:
                   port 80
               }
               inbound-interface {
-                  interface-name eth0
+                  name eth0
               }
               protocol tcp
               translation {
@@ -634,10 +634,10 @@ and one external interface:
   set interfaces ethernet eth1 description 'Outside interface'
   set nat destination rule 2000 description '1-to-1 NAT example'
   set nat destination rule 2000 destination address '192.0.2.30'
-  set nat destination rule 2000 inbound-interface interface-name 'eth1'
+  set nat destination rule 2000 inbound-interface name 'eth1'
   set nat destination rule 2000 translation address '192.168.1.10'
   set nat source rule 2000 description '1-to-1 NAT example'
-  set nat source rule 2000 outbound-interface interface-name 'eth1'
+  set nat source rule 2000 outbound-interface name 'eth1'
   set nat source rule 2000 source address '192.168.1.10'
   set nat source rule 2000 translation address '192.0.2.30'
 
@@ -679,7 +679,7 @@ We will generate the hash randomly.
 
 .. code-block:: none
 
-  set nat source rule 10 outbound-interface interface-name eth0
+  set nat source rule 10 outbound-interface name eth0
   set nat source rule 10 source address 10.0.0.0/8
   set nat source rule 10 load-balance hash random
   set nat source rule 10 load-balance backend 192.0.2.251 weight 33
