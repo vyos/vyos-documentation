@@ -22,6 +22,7 @@ This chapter contains various configuration examples:
    segment-routing-isis
    nmp
    policy-based-ipsec-and-firewall
+   site-2-site-cisco
 
 
 Configuration Blueprints (autotest)

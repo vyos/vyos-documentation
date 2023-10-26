@@ -149,6 +149,10 @@ Each site-to-site peer has the next options:
  * ``esp-group`` - define ESP group for encrypt traffic, passed this VTI
    interface.
 
+* ``virtual-address`` - Defines a virtual IP address which is requested by the 
+  initiator and one or several IPv4 and/or IPv6 addresses are assigned from 
+  multiple pools by the responder. 
+
 Examples:
 ------------------
 
