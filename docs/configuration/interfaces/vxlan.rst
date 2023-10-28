@@ -77,6 +77,12 @@ VXLAN specific options
   Enables the Generic Protocol extension (VXLAN-GPE). Currently, this is only
   supported together with the external keyword.
 
+.. cfgcmd:: set interfaces vxlan <interface> parameters neighbor-suppress
+
+  In order to minimize the flooding of ARP and ND messages in the VXLAN network,
+  EVPN includes provisions :rfc:`7432#section-10` that allow participating VTEPs
+  to suppress such messages in case they know the MAC-IP binding and can reply
+  on behalf of the remote host.
 
 .. cfgcmd:: set interfaces vxlan <interface> parameters nolearning
 
