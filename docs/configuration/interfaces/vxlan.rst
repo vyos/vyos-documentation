@@ -74,8 +74,14 @@ VXLAN specific options
 
 .. cfgcmd:: set interfaces vxlan <interface> gpe
 
-  Eenables the Generic Protocol extension (VXLAN-GPE). Currently, this is only
+  Enables the Generic Protocol extension (VXLAN-GPE). Currently, this is only
   supported together with the external keyword.
+
+
+.. cfgcmd:: set interfaces vxlan <interface> parameters nolearning
+
+   Specifies if unknown source link layer addresses and IP addresses are entered
+   into the VXLAN device forwarding database.
 
 Unicast
 ^^^^^^^
