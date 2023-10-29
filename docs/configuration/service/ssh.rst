@@ -223,9 +223,17 @@ Operation
 
   Show SSH server log.
 
+.. opcmd:: monitor log ssh
+
+  Follow the SSH server log.
+
 .. opcmd:: show log ssh dynamic-protection
 
   Show SSH dynamic-protection log.
+
+.. opcmd:: monitor log ssh dynamic-protection
+
+  Follow the SSH dynamic-protection log.
 
 .. opcmd:: show ssh dynamic-protection
 
