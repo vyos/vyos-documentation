@@ -8,6 +8,53 @@
    _ext/releasenotes.py
 
 
+2023-10-22
+==========
+
+* :vytask:`T5254` ``(bug): Modification of any interface setting sets MTU back to default when MTU has been inherited from a bond``
+* :vytask:`T5671` ``(feature): vxlan: change port to IANA assigned default port``
+
+
+2023-10-21
+==========
+
+* :vytask:`T5670` ``(bug): bridge: missing member interface validator``
+* :vytask:`T5617` ``(feature): Add an option to exclude single values to the numeric validator``
+
+
+2023-10-20
+==========
+
+* :vytask:`T5233` ``(bug): Op-mode flow-accounting netflow with disable-imt errors``
+* :vytask:`T5232` ``(bug): Flow-accounting uacctd.service cannot restart correctly``
+
+
+2023-10-19
+==========
+
+* :vytask:`T4913` ``(default): Rewrite the wireless op mode in the new style``
+
+
+2023-10-18
+==========
+
+* :vytask:`T5642` ``(bug): op cmd: generate tech-support archive: does not work``
+* :vytask:`T5521` ``(bug): Home owner directory changed to vyos for the user after reboot``
+
+
+2023-10-17
+==========
+
+* :vytask:`T5662` ``(bug): Fix indexing error in configdep script organization``
+* :vytask:`T5644` ``(bug): Firewall groups deletion can break config``
+
+
+2023-10-16
+==========
+
+* :vytask:`T5165` ``(feature): Policy local-route ability set protocol and port``
+
+
 2023-10-14
 ==========
 
