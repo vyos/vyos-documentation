@@ -225,6 +225,14 @@ msgstr "**Nota importante sobre el uso de términos:** El cortafuegos utiliza lo
 msgid "**Interface name**"
 msgstr "**Nombre de interfaz**"
 
+#: ../../configuration/vpn/site2site_ipsec.rst:299
+msgid "**LEFT**"
+msgstr "**LEFT**"
+
+#: ../../configuration/vpn/site2site_ipsec.rst:283
+msgid "**LEFT:** * WAN interface on `eth0.201` * `eth0.201` interface IP: `172.18.201.10/24` * `vti10` interface IP: `10.0.0.2/31` * `dum0` interface IP: `10.0.11.1/24` (for testing purposes)"
+msgstr "**LEFT:** * WAN interface on `eth0.201` * `eth0.201` interface IP: `172.18.201.10/24` * `vti10` interface IP: `10.0.0.2/31` * `dum0` interface IP: `10.0.11.1/24` (for testing purposes)"
+
 #: ../../configuration/interfaces/vxlan.rst:214
 msgid "**Leaf2 configuration:**"
 msgstr "**Configuración hoja2:**"
@@ -400,6 +408,14 @@ msgstr "**Grupos de IP basados en RADIUS (dirección IP enmarcada)**"
 #: ../../configuration/service/pppoe-server.rst:128
 msgid "**RADIUS sessions management DM/CoA**"
 msgstr "**Administración de sesiones RADIUS DM/CoA**"
+
+#: ../../configuration/vpn/site2site_ipsec.rst:335
+msgid "**RIGHT**"
+msgstr "**RIGHT**"
+
+#: ../../configuration/vpn/site2site_ipsec.rst:289
+msgid "**RIGHT:** * WAN interface on `eth0.202` * `eth0.201` interface IP: `172.18.202.10/24` * `vti10` interface IP: `10.0.0.3/31` * `dum0` interface IP: `10.0.12.1/24` (for testing purposes)"
+msgstr "**RIGHT:** * WAN interface on `eth0.202` * `eth0.201` interface IP: `172.18.202.10/24` * `vti10` interface IP: `10.0.0.3/31` * `dum0` interface IP: `10.0.12.1/24` (for testing purposes)"
 
 #: ../../configuration/protocols/bgp.rst:113
 msgid "**Router-ID check**"
@@ -2619,7 +2635,7 @@ msgstr "Antes de habilitar cualquier descarga de segmentación de hardware, se r
 msgid "Before you are able to apply a rule-set to a zone you have to create the zones first."
 msgstr "Antes de poder aplicar un conjunto de reglas a una zona, primero debe crear las zonas."
 
-#: ../../configuration/vpn/site2site_ipsec.rst:392
+#: ../../configuration/vpn/site2site_ipsec.rst:413
 msgid "Below flow-chart could be a quick reference for the close-action combination depending on how the peer is configured."
 msgstr "El siguiente diagrama de flujo podría ser una referencia rápida para la combinación de acción de cierre, según cómo esté configurado el par."
 
@@ -4609,7 +4625,7 @@ msgstr "No olvide, el CIDR declarado en la declaración de red **DEBE existir en
 msgid "Don't forget, the CIDR declared in the network statement MUST **exist in your routing table (dynamic or static), the best way to make sure that is true is creating a static route:**"
 msgstr "No olvide que el CIDR declarado en la declaración de red DEBE **existir en su tabla de enrutamiento (dinámico o estático), la mejor manera de asegurarse de que sea cierto es creando una ruta estática:**"
 
-#: ../../configuration/vpn/site2site_ipsec.rst:284
+#: ../../configuration/vpn/site2site_ipsec.rst:295
 msgid "Don't get confused about the used /31 tunnel subnet. :rfc:`3021` gives you additional information for using /31 subnets on point-to-point links."
 msgstr "No se confunda con la subred del túnel /31 utilizada. :rfc:`3021` le brinda información adicional para usar subredes /31 en enlaces punto a punto."
 
@@ -7636,6 +7652,10 @@ msgstr "Además también puedes deshabilitar todo el servicio sin necesidad de e
 msgid "In addition you will specifiy the IP address or FQDN for the client where it will connect to. The address parameter can be used up to two times and is used to assign the clients specific IPv4 (/32) or IPv6 (/128) address."
 msgstr "Además, especificará la dirección IP o FQDN del cliente al que se conectará. El parámetro de dirección se puede usar hasta dos veces y se usa para asignar direcciones IPv4 (/32) o IPv6 (/128) específicas a los clientes."
 
+#: ../../configuration/interfaces/wireguard.rst:416
+msgid "In addition you will specify the IP address or FQDN for the client where it will connect to. The address parameter can be used up to two times and is used to assign the clients specific IPv4 (/32) or IPv6 (/128) address."
+msgstr "In addition you will specify the IP address or FQDN for the client where it will connect to. The address parameter can be used up to two times and is used to assign the clients specific IPv4 (/32) or IPv6 (/128) address."
+
 #: ../../configuration/firewall/general.rst:194
 #: ../../configuration/firewall/general-legacy.rst:170
 msgid "In an **address group** a single IP address or IP address ranges are defined."
@@ -7997,7 +8017,7 @@ msgstr "En lugar de enviar el nombre de host real del sistema al servidor DHCP, 
 msgid "Integrity – Message integrity to ensure that a packet has not been tampered while in transit including an optional packet replay protection mechanism."
 msgstr "Integridad: integridad del mensaje para garantizar que un paquete no haya sido manipulado durante el tránsito, incluido un mecanismo opcional de protección de reproducción de paquetes."
 
-#: ../../configuration/interfaces/wireless.rst:600
+#: ../../configuration/interfaces/wireless.rst:602
 msgid "Intel AX200"
 msgstr "Intel AX200"
 
@@ -8238,7 +8258,7 @@ msgstr "Generación de claves"
 msgid "Key Management"
 msgstr "Gestión de claves"
 
-#: ../../configuration/vpn/site2site_ipsec.rst:353
+#: ../../configuration/vpn/site2site_ipsec.rst:374
 msgid "Key Parameters:"
 msgstr "Parámetros clave:"
 
@@ -10952,7 +10972,7 @@ msgstr "Reinicia el proceso de recurso de DNS. Esto también invalida el caché 
 
 #: ../../configuration/interfaces/wireless.rst:315
 #: ../../configuration/interfaces/wireless.rst:369
-#: ../../configuration/interfaces/wireless.rst:566
+#: ../../configuration/interfaces/wireless.rst:567
 msgid "Resulting in"
 msgstr "Resultando en"
 
@@ -12463,7 +12483,7 @@ msgstr "Tarjeta miniPCIe (LTE) Sierra Wireless AirPrime MC7455"
 msgid "Sierra Wireless AirPrime MC7710 miniPCIe card (LTE)"
 msgstr "Sierra Wireless AirPrime MC7710 tarjeta miniPCIe (LTE)"
 
-#: ../../configuration/vpn/site2site_ipsec.rst:397
+#: ../../configuration/vpn/site2site_ipsec.rst:418
 msgid "Similar combinations are applicable for the dead-peer-detection."
 msgstr "Se aplican combinaciones similares para la detección de pares muertos."
 
@@ -13325,7 +13345,7 @@ msgstr "El servicio HTTP escucha en el puerto TCP 80."
 msgid "The IP address of the internal system we wish to forward traffic to."
 msgstr "La dirección IP del sistema interno al que deseamos reenviar el tráfico."
 
-#: ../../configuration/interfaces/wireless.rst:602
+#: ../../configuration/interfaces/wireless.rst:604
 msgid "The Intel AX200 card does not work out of the box in AP mode, see https://unix.stackexchange.com/questions/598275/intel-ax200-ap-mode. You can still put this card into AP mode using the following configuration:"
 msgstr "La tarjeta Intel AX200 no funciona de fábrica en modo AP, consulte https://unix.stackexchange.com/questions/598275/intel-ax200-ap-mode. Todavía puede poner esta tarjeta en modo AP usando la siguiente configuración:"
 
@@ -16258,7 +16278,7 @@ msgstr "Para reenviar todos los paquetes de difusión recibidos en el &quot;puer
 msgid "To generate the CA, the server private key and certificates the following commands can be used."
 msgstr "Para generar la CA, la clave privada del servidor y los certificados, se pueden utilizar los siguientes comandos."
 
-#: ../../configuration/interfaces/wireless.rst:592
+#: ../../configuration/interfaces/wireless.rst:594
 msgid "To get it to work as an access point with this configuration you will need to set up a DHCP server to work with that network. You can - of course - also bridge the Wireless interface with any configured bridge (:ref:`bridge-interface`) on the system."
 msgstr "Para que funcione como un punto de acceso con esta configuración, deberá configurar un servidor DHCP para que funcione con esa red. Por supuesto, también puede unir la interfaz inalámbrica con cualquier puente configurado (:ref:`bridge-interface`) en el sistema."
 
@@ -18077,7 +18097,7 @@ msgstr "Al iniciar un sistema VyOS en vivo (el CD de instalación), el diseño d
 msgid "When the DHCP server is considering dynamically allocating an IP address to a client, it first sends an ICMP Echo request (a ping) to the address being assigned. It waits for a second, and if no ICMP Echo response has been heard, it assigns the address."
 msgstr "Cuando el servidor DHCP está considerando asignar dinámicamente una dirección IP a un cliente, primero envía una solicitud de eco ICMP (un ping) a la dirección asignada. Espera un segundo y, si no se escucha ninguna respuesta de eco ICMP, asigna la dirección."
 
-#: ../../configuration/vpn/site2site_ipsec.rst:386
+#: ../../configuration/vpn/site2site_ipsec.rst:407
 msgid "When the close-action option is set on the peers, the connection-type of each peer has to considered carefully. For example, if the option is set on both peers, then both would attempt to initiate and hold open multiple copies of each child SA. This might lead to instability of the device or cpu/memory utilization."
 msgstr "Cuando la opción de acción de cierre se establece en los pares, el tipo de conexión de cada par debe considerarse cuidadosamente. Por ejemplo, si la opción está configurada en ambos pares, ambos intentarán iniciar y mantener abiertas varias copias de cada SA secundario. Esto podría conducir a la inestabilidad del dispositivo o la utilización de la CPU/memoria."
 
@@ -18483,9 +18503,12 @@ msgid "You should add a firewall to your configuration above as well by assignin
 msgstr "También debe agregar un firewall a su configuración anterior asignándolo al propio pppoe0 como se muestra aquí:"
 
 #: ../../configuration/interfaces/openvpn.rst:227
-#: ../../configuration/interfaces/wireguard.rst:225
 msgid "You should also ensure that the OUTISDE_LOCAL firewall group is applied to the WAN interface and a direction (local)."
 msgstr "También debe asegurarse de que el grupo de firewall OUTISDE_LOCAL se aplique a la interfaz WAN y una dirección (local)."
+
+#: ../../configuration/interfaces/wireguard.rst:225
+msgid "You should also ensure that the OUTSIDE_LOCAL firewall group is applied to the WAN interface and a direction (local)."
+msgstr "You should also ensure that the OUTSIDE_LOCAL firewall group is applied to the WAN interface and a direction (local)."
 
 #: ../../configuration/interfaces/wireguard.rst:136
 msgid "You will also need the public key of your peer as well as the network(s) you want to tunnel (allowed-ips) to configure a WireGuard tunnel. The public key below is always the public key from your peer, not your local one."
@@ -19112,7 +19135,7 @@ msgstr "``todas disponibles`` todas las direcciones de destino de verificación 
 msgid "``any-available`` any of the checking target addresses must be available to pass this check"
 msgstr "``cualquiera disponible`` cualquiera de las direcciones de destino de verificación debe estar disponible para pasar esta verificación"
 
-#: ../../configuration/vpn/site2site_ipsec.rst:355
+#: ../../configuration/vpn/site2site_ipsec.rst:376
 msgid "``authentication local-id/remote-id`` - IKE identification is used for validation of VPN peer devices during IKE negotiation. If you do not configure local/remote-identity, the device uses the IPv4 or IPv6 address that corresponds to the local/remote peer by default. In certain network setups (like ipsec interface with dynamic address, or behind the NAT ), the IKE ID received from the peer does not match the IKE gateway configured on the device. This can lead to a Phase 1 validation failure. So, make sure to configure the local/remote id explicitly and ensure that the IKE ID is the same as the remote-identity configured on the peer device."
 msgstr "``authentication local-id/remote-id``: la identificación de IKE se utiliza para la validación de los dispositivos del mismo nivel de VPN durante la negociación de IKE. Si no configura la identidad local/remota, el dispositivo utiliza la dirección IPv4 o IPv6 que corresponde al par local/remoto de forma predeterminada. En ciertas configuraciones de red (como la interfaz ipsec con dirección dinámica o detrás de NAT), la ID de IKE recibida del par no coincide con la puerta de enlace IKE configurada en el dispositivo. Esto puede conducir a una falla de validación de Fase 1. Por lo tanto, asegúrese de configurar la identificación local/remota explícitamente y asegúrese de que la identificación IKE sea la misma que la identidad remota configurada en el dispositivo par."
 
@@ -19168,7 +19191,7 @@ msgstr "``cert-file``: archivo de certificado, que se usará para autenticar el 
 msgid "``clear`` set action to clear;"
 msgstr "``borrar`` establece la acción para borrar;"
 
-#: ../../configuration/vpn/site2site_ipsec.rst:381
+#: ../../configuration/vpn/site2site_ipsec.rst:402
 msgid "``close-action = none | clear | hold | restart`` - defines the action to take if the remote peer unexpectedly closes a CHILD_SA (see above for meaning of values). A closeaction should not be used if the peer uses reauthentication or uniqueids."
 msgstr "``cierre-acción = ninguno | claro | espera | restart`` - define la acción a tomar si el par remoto cierra inesperadamente un CHILD_SA (ver arriba para el significado de los valores). No se debe usar una acción de cierre si el par usa reautenticación o identificadores únicos."
 
@@ -19200,7 +19223,7 @@ msgstr "``crl-file`` - archivo con la Lista de Revocación de Certificados. Uso 
 msgid "``d`` - Execution interval in days"
 msgstr "``d`` - Intervalo de ejecución en días"
 
-#: ../../configuration/vpn/site2site_ipsec.rst:370
+#: ../../configuration/vpn/site2site_ipsec.rst:391
 msgid "``dead-peer-detection action = clear | hold | restart`` - R_U_THERE notification messages(IKEv1) or empty INFORMATIONAL messages (IKEv2) are periodically sent in order to check the liveliness of the IPsec peer. The values clear, hold, and restart all activate DPD and determine the action to perform on a timeout. With ``clear`` the connection is closed with no further actions taken. ``hold`` installs a trap policy, which will catch matching traffic and tries to re-negotiate the connection on demand. ``restart`` will immediately trigger an attempt to re-negotiate the connection."
 msgstr "``acción de detección de pares muertos = borrar | espera | reiniciar``: los mensajes de notificación R_U_THERE (IKEv1) o los mensajes INFORMATIVOS vacíos (IKEv2) se envían periódicamente para verificar la actividad del par IPsec. Los valores borrar, mantener y reiniciar activan DPD y determinan la acción a realizar en un tiempo de espera. Con ``clear`` la conexión se cierra sin que se realicen más acciones. ``hold`` instala una política de captura, que capturará el tráfico coincidente e intentará renegociar la conexión a pedido. ``reiniciar`` activará inmediatamente un intento de renegociar la conexión."
 
@@ -19232,7 +19255,7 @@ msgstr "``dhcp-interface``: use una dirección IP, recibida de DHCP para la cone
 msgid "``disable-mobike`` disables MOBIKE Support. MOBIKE is only available for IKEv2 and enabled by default."
 msgstr "``disable-mobike`` disables MOBIKE Support. MOBIKE is only available for IKEv2 and enabled by default."
 
-#: ../../configuration/vpn/site2site_ipsec.rst:366
+#: ../../configuration/vpn/site2site_ipsec.rst:387
 msgid "``disable-route-autoinstall`` - This option when configured disables the routes installed in the default table 220 for site-to-site ipsec. It is mostly used with VTI configuration."
 msgstr "``disable-route-autoinstall``: esta opción, cuando se configura, deshabilita las rutas instaladas en la tabla predeterminada 220 para ipsec de sitio a sitio. Se utiliza sobre todo con la configuración de VTI."
 
