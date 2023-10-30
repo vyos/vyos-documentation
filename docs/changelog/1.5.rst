@@ -8,6 +8,36 @@
    _ext/releasenotes.py
 
 
+2023-10-27
+==========
+
+* :vytask:`T5663` ``(bug): pmacct package contains unwanted data``
+* :vytask:`T5652` ``(bug): Config migrate to image upgrade does not properly generate home directory``
+
+
+2023-10-26
+==========
+
+* :vytask:`T5683` ``(bug): reverse-proxy pki filenames mismatch``
+* :vytask:`T5600` ``(bug): Firewall - Remove or extend constraint on 'interface-name'``
+* :vytask:`T5598` ``(bug): unknown parameter 'nf_conntrack_helper' ignored``
+* :vytask:`T5571` ``(bug): Firewall does not delete networks from the table raw``
+* :vytask:`T4903` ``(bug): conntrack ignore does not suppotr IPv6 addresses``
+* :vytask:`T4309` ``(feature): Support network/address-groups and  ipv6-network/ipv6-address-groups in conntrack ignore``
+* :vytask:`T5594` ``(bug): VRRP - Error if using IPv6 Link Local as hello source address``
+* :vytask:`T5606` ``(feature): IPSec VPN: Allow multiple CAs certificates``
+* :vytask:`T5568` ``(default): Install image from live ISO always defaults boot to KVM entry``
+* :vytask:`T5558` ``(default): Update config test to check resulting migrations``
+
+
+2023-10-23
+==========
+
+* :vytask:`T5637` ``(bug): Firewall default-action log``
+* :vytask:`T5299` ``(bug): QoS shaper ceiling does not work``
+* :vytask:`T5667` ``(feature): BGP label-unicast - enable ecmp``
+
+
 2023-10-22
 ==========
 
