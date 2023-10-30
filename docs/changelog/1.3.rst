@@ -8,6 +8,13 @@
    _ext/releasenotes.py
 
 
+2023-10-26
+==========
+
+* :vytask:`T5684` (bug): services using VRF generates the error "Failed to load BPF prog: 'Operation not permitted'" when the system boots.
+* :vytask:`T5594` (bug): VRRP - Error if using IPv6 Link Local as hello source address
+
+
 2023-10-21
 ==========
 
