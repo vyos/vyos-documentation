@@ -8,6 +8,13 @@
    _ext/releasenotes.py
 
 
+2023-10-31
+==========
+
+* :vytask:`T5699` ``(feature): vxlan: migrate "external" CLI know to "parameters external"``
+* :vytask:`T5668` ``(feature): Disable VXLAN bridge learning and enable neigh_suppress when using EVPN``
+
+
 2023-10-27
 ==========
 
