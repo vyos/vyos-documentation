@@ -8,6 +8,33 @@
    _ext/releasenotes.py
 
 
+2023-10-27
+==========
+
+* :vytask:`T5652` ``(bug): Config migrate to image upgrade does not properly generate home directory``
+* :vytask:`T4057` ``(bug): Commit time for deleting sflow configuration ~1.5 min``
+
+
+2023-10-26
+==========
+
+* :vytask:`T5683` ``(bug): reverse-proxy pki filenames mismatch``
+* :vytask:`T4903` ``(bug): conntrack ignore does not suppotr IPv6 addresses``
+* :vytask:`T4309` ``(feature): Support network/address-groups and  ipv6-network/ipv6-address-groups in conntrack ignore``
+* :vytask:`T5606` ``(feature): IPSec VPN: Allow multiple CAs certificates``
+* :vytask:`T5650` ``(default): Progressbars suffer from staircasing effect``
+* :vytask:`T5568` ``(default): Install image from live ISO always defaults boot to KVM entry``
+* :vytask:`T3509` ``(default): No BCP38 for IPv6 on VyOS``
+
+
+2023-10-23
+==========
+
+* :vytask:`T5299` ``(bug): QoS shaper ceiling does not work``
+* :vytask:`T5667` ``(feature): BGP label-unicast - enable ecmp``
+* :vytask:`T5337` ``(bug): MPLS/BGP: Route leak does not happen from the VPNv4 table to specific vrf``
+
+
 2023-10-22
 ==========
 
