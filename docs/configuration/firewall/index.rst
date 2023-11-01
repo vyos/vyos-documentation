@@ -1,4 +1,4 @@
-:lastproofread: 2023-09-17
+:lastproofread: 2023-11-01
 
 ########
 Firewall
@@ -7,10 +7,6 @@ Firewall
 .. attention:: 
    Starting from VyOS 1.4-rolling-202308040557, a new firewall structure
    can be found on all vyos installations.
-
-.. note:: 
-   The legacy and zone-based firewall configuration options is not longer
-   supported. They are here for reference purposes only.
 
 Netfilter based
 ^^^^^^^^^^^^^^^

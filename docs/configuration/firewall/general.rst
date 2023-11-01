@@ -22,6 +22,12 @@ Main structure is shown next:
 .. code-block:: none
 
    - set firewall
+       * bridge
+            - forward
+               + filter
+       * flowtable
+            - custom_flow_table
+               + ...
        * global-options
             + all-ping
             + broadcast-ping
@@ -53,6 +59,9 @@ Main structure is shown next:
                + filter
             - ipv6-name
                + custom_name
+       * zone
+            - custom_zone_name
+               + ...
 
 Where, main key words and configuration paths that needs to be understood:
 
@@ -75,7 +84,7 @@ Where, main key words and configuration paths that needs to be understood:
    the default action is set to **drop**.
 
 Custom firewall chains can be created, with commands
-``set firewall [ipv4 | ipv6] [name | ipv6-name] <name> ...``. In order to use
+``set firewall [ipv4 | ipv6] name <name> ...``. In order to use
 such custom chain, a rule with **action jump**, and the appropiate **target**
 should be defined in a base chain.
 
@@ -313,9 +322,9 @@ A **domain group** represents a collection of domains.
 
    Provide a domain group description.
 
-**************
-Firewall Rules
-**************
+******************************
+Firewall - IPv4 and IPv6 Rules
+******************************
 
 For firewall filtering, firewall rules needs to be created. Each rule is
 numbered, has an action to apply if the rule is matched, and the ability
@@ -333,6 +342,8 @@ The action can be :
 
    * ``accept``: accept the packet.
 
+   * ``continue``: continue parsing next rule.
+
    * ``drop``: drop the packet.
 
    * ``reject``: reject the packet.
@@ -347,15 +358,13 @@ The action can be :
    * ``synproxy``: synproxy the packet.
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999> action
-   [accept | drop | jump | queue | reject | return | synproxy]
+   [accept | continue | drop | jump | queue | reject | return | synproxy]
 .. cfgcmd:: set firewall [ipv4 | ipv6] input filter rule <1-999999> action
-   [accept | drop | jump | queue | reject | return | synproxy]
+   [accept | continue | drop | jump | queue | reject | return | synproxy]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999> action
-   [accept | drop | jump | queue | reject | return]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999> action
-   [accept | drop | jump | queue | reject | return]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999> action
-   [accept | drop | jump | queue | reject | return]
+   [accept | continue | drop | jump | queue | reject | return]
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999> action
+   [accept | continue | drop | jump | queue | reject | return]
 
    This required setting defines the action of the current rule. If action is
    set to jump, then jump-target is also needed.
@@ -366,9 +375,7 @@ The action can be :
    jump-target <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    jump-target <text>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   jump-target <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    jump-target <text>
 
    To be used only when action is set to jump. Use this command to specify
@@ -379,15 +386,13 @@ not match any rule in it's chain. For base chains, possible options for
 **default-action** are **accept** or **drop**. 
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter default-action
-   [accept | drop]
+   [accept | drop]
 .. cfgcmd:: set firewall [ipv4 | ipv6] input filter default-action
-   [accept | drop]
+   [accept | drop]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter default-action
-   [accept | drop]
-.. cfgcmd:: set firewall ipv4 name <name> default-action
-   [accept | drop | jump | queue | reject | return]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> default-action
-   [accept | drop | jump | queue | reject | return]
+   [accept | drop]
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> default-action
+   [accept | drop | jump | queue | reject | return]
 
    This set the default action of the rule-set if no rule matched a packet
    criteria. If defacult-action is set to ``jump``, then
@@ -395,8 +400,7 @@ not match any rule in it's chain. For base chains, possible options for
    action can only be set to ``accept`` or ``drop``, while on custom chain,
    more actions are available.
 
-.. cfgcmd:: set firewall name <name> default-jump-target <text>
-.. cfgcmd:: set firewall ipv6-name <name> default-jump-target <text>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> default-jump-target <text>
 
    To be used only when ``defult-action`` is set to ``jump``. Use this
    command to specify jump target for default rule.
@@ -418,18 +422,18 @@ log options can be defined.
    [disable | enable]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999> log
    [disable | enable]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999> log
-   [disable | enable]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999> log
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999> log
    [disable | enable]
 
    Enable or disable logging for the matched packet.
 
-.. cfgcmd:: set firewall ipv4 name <name> enable-default-log
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> enable-default-log
+.. cfgcmd:: set firewall [ipv4 | ipv6] forward filter enable-default-log
+.. cfgcmd:: set firewall [ipv4 | ipv6] input filter enable-default-log
+.. cfgcmd:: set firewall [ipv4 | ipv6] output filter enable-default-log
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> enable-default-log
 
    Use this command to enable the logging of the default action on
-   custom chains.
+   the specified chain.
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    log-options level [emerg | alert | crit | err | warn | notice
@@ -440,10 +444,7 @@ log options can be defined.
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    log-options level [emerg | alert | crit | err | warn | notice
    | info | debug]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   log-options level [emerg | alert | crit | err | warn | notice
-   | info | debug]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    log-options level [emerg | alert | crit | err | warn | notice
    | info | debug]
 
@@ -455,9 +456,7 @@ log options can be defined.
    log-options group <0-65535>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    log-options group <0-65535>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   log-options group <0-65535>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    log-options group <0-65535>
 
    Define log group to send message to. Only applicable if rule log is enable.
@@ -468,9 +467,7 @@ log options can be defined.
    log-options snapshot-length <0-9000>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    log-options snapshot-length <0-9000>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   log-options snapshot-length <0-9000>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    log-options snapshot-length <0-9000>
 
    Define length of packet payload to include in netlink message. Only
@@ -482,9 +479,7 @@ log options can be defined.
    log-options queue-threshold <0-65535>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    log-options queue-threshold <0-65535>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   log-options queue-threshold <0-65535>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    log-options queue-threshold <0-65535>
 
    Define number of packets to queue inside the kernel before sending them to
@@ -497,8 +492,7 @@ Firewall Description
 For reference, a description can be defined for every single rule, and for
 every defined custom chain.
 
-.. cfgcmd:: set firewall ipv4 name <name> description <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> description <text>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> description <text>
 
    Provide a rule-set description to a custom firewall chain.
 
@@ -508,9 +502,7 @@ every defined custom chain.
    description <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    description <text>
-
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999> description <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999> description <text>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999> description <text>
 
    Provide a description for each rule.
 
@@ -524,8 +516,7 @@ just disable the rule, rather than removing it.
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999> disable
 .. cfgcmd:: set firewall [ipv4 | ipv6] input filter rule <1-999999> disable
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999> disable
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999> disable
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999> disable
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999> disable
 
    Command for disabling a rule but keep it in the configuration.
 
@@ -541,9 +532,7 @@ There are a lot of matching criteria against which the package can be tested.
    connection-status nat [destination | source]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    connection-status nat [destination | source]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   connection-status nat [destination | source]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    connection-status nat [destination | source]
 
    Match criteria based on nat connection status.
@@ -554,9 +543,7 @@ There are a lot of matching criteria against which the package can be tested.
    connection-mark <1-2147483647>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    connection-mark <1-2147483647>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   connection-mark <1-2147483647>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    connection-mark <1-2147483647>
 
    Match criteria based on connection mark.
@@ -567,9 +554,7 @@ There are a lot of matching criteria against which the package can be tested.
    source address [address | addressrange | CIDR]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source address [address | addressrange | CIDR]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source address [address | addressrange | CIDR]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source address [address | addressrange | CIDR]
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -578,9 +563,7 @@ There are a lot of matching criteria against which the package can be tested.
    destination address [address | addressrange | CIDR]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination address [address | addressrange | CIDR]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination address [address | addressrange | CIDR]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination address [address | addressrange | CIDR]
 
    Match criteria based on source and/or destination address. This is similar
@@ -592,7 +575,7 @@ There are a lot of matching criteria against which the package can be tested.
       set firewall ipv4 name FOO rule 50 source address 192.0.2.10-192.0.2.11
       # with a '!' the rule match everything except the specified subnet
       set firewall ipv4 input filter FOO rule 51 source address !203.0.113.0/24
-      set firewall ipv6 ipv6-name FOO rule 100 source address 2001:db8::202
+      set firewall ipv6 name FOO rule 100 source address 2001:db8::202
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    source address-mask [address]
@@ -600,9 +583,7 @@ There are a lot of matching criteria against which the package can be tested.
    source address-mask [address]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source address-mask [address]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source address-mask [address]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source address-mask [address]
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -611,9 +592,7 @@ There are a lot of matching criteria against which the package can be tested.
    destination address-mask [address]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination address-mask [address]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination address-mask [address]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination address-mask [address]
 
    An arbitrary netmask can be applied to mask addresses to only match against
@@ -645,9 +624,7 @@ There are a lot of matching criteria against which the package can be tested.
    source fqdn <fqdn>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source fqdn <fqdn>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source fqdn <fqdn>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source fqdn <fqdn>
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    destination fqdn <fqdn>
@@ -655,9 +632,7 @@ There are a lot of matching criteria against which the package can be tested.
    destination fqdn <fqdn>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination fqdn <fqdn>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination fqdn <fqdn>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination fqdn <fqdn>
 
    Specify a Fully Qualified Domain Name as source/destination matcher. Ensure
@@ -669,9 +644,7 @@ There are a lot of matching criteria against which the package can be tested.
    source geoip country-code <country>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source geoip country-code <country>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source geoip country-code <country>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source geoip country-code <country>
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -680,9 +653,7 @@ There are a lot of matching criteria against which the package can be tested.
    destination geoip country-code <country>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination geoip country-code <country>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination geoip country-code <country>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination geoip country-code <country>
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -691,9 +662,7 @@ There are a lot of matching criteria against which the package can be tested.
    source geoip inverse-match
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source geoip inverse-match
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source geoip inverse-match
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source geoip inverse-match
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -702,9 +671,7 @@ There are a lot of matching criteria against which the package can be tested.
    destination geoip inverse-match
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination geoip inverse-match
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination geoip inverse-match
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination geoip inverse-match
 
    Match IP addresses based on its geolocation. More info: `geoip matching
@@ -723,9 +690,7 @@ geoip) to keep database and rules updated.
    source mac-address <mac-address>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source mac-address <mac-address>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source mac-address <mac-address>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source mac-address <mac-address>
 
    Only in the source criteria, you can specify a mac-address.
@@ -742,9 +707,7 @@ geoip) to keep database and rules updated.
    source port [1-65535 | portname | start-end]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source port [1-65535 | portname | start-end]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source port [1-65535 | portname | start-end]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source port [1-65535 | portname | start-end]
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -753,9 +716,7 @@ geoip) to keep database and rules updated.
    destination port [1-65535 | portname | start-end]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination port [1-65535 | portname | start-end]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination port [1-65535 | portname | start-end]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination port [1-65535 | portname | start-end]
 
    A port can be set with a port number or a name which is here
@@ -780,9 +741,7 @@ geoip) to keep database and rules updated.
    source group address-group <name | !name>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source group address-group <name | !name>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source group address-group <name | !name>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source group address-group <name | !name>
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -791,9 +750,7 @@ geoip) to keep database and rules updated.
    destination group address-group <name | !name>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination group address-group <name | !name>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination group address-group <name | !name>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination group address-group <name | !name>
 
    Use a specific address-group. Prepend character ``!`` for inverted matching
@@ -805,9 +762,7 @@ geoip) to keep database and rules updated.
    source group network-group <name | !name>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source group network-group <name | !name>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source group network-group <name | !name>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source group network-group <name | !name>
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -816,9 +771,7 @@ geoip) to keep database and rules updated.
    destination group network-group <name | !name>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination group network-group <name | !name>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination group network-group <name | !name>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination group network-group <name | !name>
 
    Use a specific network-group. Prepend character ``!`` for inverted matching
@@ -841,9 +794,7 @@ geoip) to keep database and rules updated.
    destination group port-group <name | !name>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination group port-group <name | !name>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination group port-group <name | !name>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination group port-group <name | !name>
 
    Use a specific port-group. Prepend character ``!`` for inverted matching
@@ -855,9 +806,7 @@ geoip) to keep database and rules updated.
    source group domain-group <name | !name>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source group domain-group <name | !name>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source group domain-group <name | !name>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source group domain-group <name | !name>
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -866,9 +815,7 @@ geoip) to keep database and rules updated.
    destination group domain-group <name | !name>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination group domain-group <name | !name>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination group domain-group <name | !name>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination group domain-group <name | !name>
 
    Use a specific domain-group. Prepend character ``!`` for inverted matching
@@ -880,9 +827,7 @@ geoip) to keep database and rules updated.
    source group mac-group <name | !name>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    source group mac-group <name | !name>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   source group mac-group <name | !name>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    source group mac-group <name | !name>
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -891,9 +836,7 @@ geoip) to keep database and rules updated.
    destination group mac-group <name | !name>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    destination group mac-group <name | !name>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   destination group mac-group <name | !name>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    destination group mac-group <name | !name>
 
    Use a specific mac-group. Prepend character ``!`` for inverted matching
@@ -905,9 +848,7 @@ geoip) to keep database and rules updated.
    dscp [0-63 | start-end]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    dscp [0-63 | start-end]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   dscp [0-63 | start-end]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    dscp [0-63 | start-end]
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -916,9 +857,7 @@ geoip) to keep database and rules updated.
    dscp-exclude [0-63 | start-end]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    dscp-exclude [0-63 | start-end]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   dscp-exclude [0-63 | start-end]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    dscp-exclude [0-63 | start-end]
 
    Match based on dscp value.
@@ -929,9 +868,7 @@ geoip) to keep database and rules updated.
    fragment [match-frag | match-non-frag]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    fragment [match-frag | match-non-frag]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   fragment [match-frag | match-non-frag]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    fragment [match-frag | match-non-frag]
 
    Match based on fragment criteria.
@@ -950,7 +887,7 @@ geoip) to keep database and rules updated.
    icmpv6 [code | type] <0-255>
 .. cfgcmd:: set firewall ipv6 output filter rule <1-999999>
    icmpv6 [code | type] <0-255>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall ipv6 name <name> rule <1-999999>
    icmpv6 [code | type] <0-255>
 
    Match based on icmp|icmpv6 code and type.
@@ -969,35 +906,53 @@ geoip) to keep database and rules updated.
    icmpv6 type-name <text>
 .. cfgcmd:: set firewall ipv6 output filter rule <1-999999>
    icmpv6 type-name <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall ipv6 name <name> rule <1-999999>
    icmpv6 type-name <text>
 
    Match based on icmp|icmpv6 type-name criteria. Use tab for information
    about what **type-name** criteria are supported.
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
-   inbound-interface <iface>
+   inbound-interface name <iface>
 .. cfgcmd:: set firewall [ipv4 | ipv6] input filter rule <1-999999>
-   inbound-interface <iface>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   inbound-interface <iface>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
-   inbound-interface <iface>
+   inbound-interface name <iface>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
+   inbound-interface name <iface>
 
    Match based on inbound interface. Wilcard ``*`` can be used.
-   For example: ``eth2*``
+   For example: ``eth2*``. Prepending character ``!`` for inverted matching
+   criteria is also supportd. For example ``!eth2``
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
-   outbound-interface <iface>
+   inbound-interface group <iface_group>
+.. cfgcmd:: set firewall [ipv4 | ipv6] input filter rule <1-999999>
+   inbound-interface group <iface_group>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
+   inbound-interface group <iface_group>
+
+   Match based on inbound interface group. Prepending character ``!`` for
+   inverted matching criteria is also supportd. For example ``!IFACE_GROUP``
+
+.. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
+   outbound-interface name <iface>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
-   outbound-interface <iface>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   outbound-interface <iface>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
-   outbound-interface <iface>
+   outbound-interface name <iface>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
+   outbound-interface name <iface>
 
    Match based on outbound interface. Wilcard ``*`` can be used.
-   For example: ``eth2*``
+   For example: ``eth2*``. Prepending character ``!`` for inverted matching
+   criteria is also supportd. For example ``!eth2``
+
+.. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
+   outbound-interface group <iface_group>
+.. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
+   outbound-interface group <iface_group>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
+   outbound-interface group <iface_group>
+
+   Match based on outbound interface group. Prepending character ``!`` for
+   inverted matching criteria is also supportd. For example ``!IFACE_GROUP``
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    ipsec [match-ipsec | match-none]
@@ -1005,9 +960,7 @@ geoip) to keep database and rules updated.
    ipsec [match-ipsec | match-none]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    ipsec [match-ipsec | match-none]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   ipsec [match-ipsec | match-none]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    ipsec [match-ipsec | match-none]
 
    Match based on ipsec criteria.
@@ -1018,9 +971,7 @@ geoip) to keep database and rules updated.
    limit burst <0-4294967295>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    limit burst <0-4294967295>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   limit burst <0-4294967295>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    limit burst <0-4294967295>
 
    Match based on the maximum number of packets to allow in excess of rate.
@@ -1031,9 +982,7 @@ geoip) to keep database and rules updated.
    limit rate <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    limit rate <text>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   limit rate <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    limit rate <text>
 
    Match based on the maximum average rate, specified as **integer/unit**.
@@ -1045,9 +994,7 @@ geoip) to keep database and rules updated.
    packet-length <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    packet-length <text>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   packet-length <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    packet-length <text>
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -1056,9 +1003,7 @@ geoip) to keep database and rules updated.
    packet-length-exclude <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    packet-length-exclude <text>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   packet-length-exclude <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    packet-length-exclude <text>
 
    Match based on packet length criteria. Multiple values from 1 to 65535
@@ -1070,9 +1015,7 @@ geoip) to keep database and rules updated.
    packet-type [broadcast | host | multicast | other]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    packet-type [broadcast | host | multicast | other]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   packet-type [broadcast | host | multicast | other]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    packet-type [broadcast | host | multicast | other]
 
    Match based on packet type criteria.
@@ -1083,9 +1026,7 @@ geoip) to keep database and rules updated.
    protocol [<text> | <0-255> | all | tcp_udp]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    protocol [<text> | <0-255> | all | tcp_udp]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   protocol [<text> | <0-255> | all | tcp_udp]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    protocol [<text> | <0-255> | all | tcp_udp]
 
    Match a protocol criteria. A protocol number or a name which is here
@@ -1105,9 +1046,7 @@ geoip) to keep database and rules updated.
    recent count <1-255>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    recent count <1-255>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   recent count <1-255>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    recent count <1-255>
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -1116,9 +1055,7 @@ geoip) to keep database and rules updated.
    recent time [second | minute | hour]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    recent time [second | minute | hour]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   recent time [second | minute | hour]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    recent time [second | minute | hour]
 
    Match bases on recently seen sources.
@@ -1129,9 +1066,7 @@ geoip) to keep database and rules updated.
    tcp flags <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    tcp flags <text>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   tcp flags <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    tcp flags <text>
 
    Allowed values fpr TCP flags: ``SYN``, ``ACK``, ``FIN``, ``RST``, ``URG``,
@@ -1150,9 +1085,7 @@ geoip) to keep database and rules updated.
    state [established | invalid | new | related] [enable | disable]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    state [established | invalid | new | related] [enable | disable]
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   state [established | invalid | new | related] [enable | disable]
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    state [established | invalid | new | related] [enable | disable]
 
    Match against the state of a packet.
@@ -1163,9 +1096,7 @@ geoip) to keep database and rules updated.
    time startdate <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    time startdate <text>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   time startdate <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    time startdate <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    time starttime <text>
@@ -1173,9 +1104,7 @@ geoip) to keep database and rules updated.
    time starttime <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    time starttime <text>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   time starttime <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    time starttime <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    time stopdate <text>
@@ -1183,9 +1112,7 @@ geoip) to keep database and rules updated.
    time stopdate <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    time stopdate <text>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   time stopdate <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    time stopdate <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    time stoptime <text>
@@ -1193,9 +1120,7 @@ geoip) to keep database and rules updated.
    time stoptime <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    time stoptime <text>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   time stoptime <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    time stoptime <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    time weekdays <text>
@@ -1203,9 +1128,7 @@ geoip) to keep database and rules updated.
    time weekdays <text>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    time weekdays <text>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   time weekdays <text>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    time weekdays <text>
 
    Time to match the defined rule.
@@ -1228,7 +1151,7 @@ geoip) to keep database and rules updated.
    hop-limit <eq | gt | lt> <0-255>
 .. cfgcmd:: set firewall ipv6 output filter rule <1-999999>
    hop-limit <eq | gt | lt> <0-255>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall ipv6 name <name> rule <1-999999>
    hop-limit <eq | gt | lt> <0-255>
 
    Match hop-limit parameter, where 'eq' stands for 'equal'; 'gt' stands for
@@ -1240,9 +1163,7 @@ geoip) to keep database and rules updated.
    recent count <1-255>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    recent count <1-255>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   recent count <1-255>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    recent count <1-255>
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
@@ -1251,13 +1172,19 @@ geoip) to keep database and rules updated.
    recent time <second | minute | hour>
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999>
    recent time <second | minute | hour>
-.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   recent time <second | minute | hour>
-.. cfgcmd:: set firewall ipv6 ipv6-name <name> rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] name <name> rule <1-999999>
    recent time <second | minute | hour>
 
    Match when 'count' amount of connections are seen within 'time'. These
    matching criteria can be used to block brute-force attempts.
+
+*****************
+Firewall - Bridge
+*****************
+
+*********************
+Firewall - Flowtables
+*********************
 
 ********
 Synproxy

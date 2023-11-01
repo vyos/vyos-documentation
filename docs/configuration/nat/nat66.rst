@@ -82,7 +82,7 @@ Example:
 
 .. code-block:: none
 
-  set nat66 source rule 1 outbound-interface 'eth0'
+  set nat66 source rule 1 outbound-interface name 'eth0'
   set nat66 source rule 1 source prefix 'fc01::/64'
   set nat66 source rule 1 translation address 'fc00::/64'
 
@@ -101,7 +101,7 @@ Example:
 
 .. code-block:: none
 
-  set nat66 destination rule 1 inbound-interface 'eth0'
+  set nat66 destination rule 1 inbound-interface name 'eth0'
   set nat66 destination rule 1 destination address 'fc00::/64'
   set nat66 destination rule 1 translation address 'fc01::/64'
 
@@ -122,9 +122,9 @@ R1:
   set interfaces ethernet eth0 ipv6 address autoconf
   set interfaces ethernet eth1 address 'fc01::1/64'
   set nat66 destination rule 1 destination address 'fc00:470:f1cd:101::/64'
-  set nat66 destination rule 1 inbound-interface 'eth0'
+  set nat66 destination rule 1 inbound-interface name 'eth0'
   set nat66 destination rule 1 translation address 'fc01::/64'
-  set nat66 source rule 1 outbound-interface 'eth0'
+  set nat66 source rule 1 outbound-interface name 'eth0'
   set nat66 source rule 1 source prefix 'fc01::/64'
   set nat66 source rule 1 translation address 'fc00:470:f1cd:101::/64'
 
