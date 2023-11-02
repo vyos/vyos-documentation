@@ -92,8 +92,8 @@ The container can also be built directly from source:
   $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
   # For VyOS 1.3 (equuleus)
   $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
-  # For VyOS 1.4 (sagitta, current)
-  $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+  # For VyOS 1.4 (sagitta)
+  $ git clone -b sagitta --single-branch https://github.com/vyos/vyos-build
   
   $ cd vyos-build
   $ docker build -t vyos/vyos-build:crux docker # For VyOS 1.2
@@ -151,7 +151,7 @@ following Debian versions installed:
 
 - Debian Jessie for VyOS 1.2 (crux)
 - Debian Buster for VyOS 1.3 (equuleus) 
-- Debian Bullseye for VyOS 1.4 (sagitta, current) - aka the rolling release
+- Debian Bullseye for VyOS 1.4 (sagitta)
 
 To start, clone the repository to your local machine:
 
@@ -163,8 +163,8 @@ To start, clone the repository to your local machine:
   # For VyOS 1.3 (equuleus)
   $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
 
-  # For VyOS 1.4 (sagitta, current)
-  $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+  # For VyOS 1.4 (sagitta)
+  $ git clone -b sagitta --single-branch https://github.com/vyos/vyos-build
 
 
 For the packages required, you can refer to the ``docker/Dockerfile`` file
@@ -193,8 +193,8 @@ Please note as this will differ for both `current` and `crux`.
   # For VyOS 1.3 (equuleus)
   $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
 
-  # For VyOS 1.4 (sagitta, current)
-  $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+  # For VyOS 1.4 (sagitta)
+  $ git clone -b sagitta --single-branch https://github.com/vyos/vyos-build
 
 Now a fresh build of the VyOS ISO can begin. Change directory to the
 ``vyos-build`` directory and run:
@@ -208,8 +208,8 @@ Now a fresh build of the VyOS ISO can begin. Change directory to the
   # For VyOS 1.3 (equuleus)
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:equuleus bash
 
-  # For VyOS 1.4 (sagitta, current)
-  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
+  # For VyOS 1.4 (sagitta)
+  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:sagitta bash
   
 .. code-block:: none
 
