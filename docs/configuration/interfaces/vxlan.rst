@@ -67,15 +67,27 @@ VXLAN specific options
   Source IP address used for VXLAN underlay. This is mandatory when using VXLAN
   via L2VPN/EVPN.
 
-.. cfgcmd:: set interfaces vxlan <interface> external
+.. cfgcmd:: set interfaces vxlan <interface> gpe
+
+  Enables the Generic Protocol extension (VXLAN-GPE). Currently, this is only
+  supported together with the external keyword.
+
+.. cfgcmd:: set interfaces vxlan <interface> parameters external
 
   Specifies whether an external control plane (e.g. BGP L2VPN/EVPN) or the
   internal FDB should be used.
 
-.. cfgcmd:: set interfaces vxlan <interface> gpe
+.. cfgcmd:: set interfaces vxlan <interface> parameters neighbor-suppress
 
-  Eenables the Generic Protocol extension (VXLAN-GPE). Currently, this is only
-  supported together with the external keyword.
+  In order to minimize the flooding of ARP and ND messages in the VXLAN network,
+  EVPN includes provisions :rfc:`7432#section-10` that allow participating VTEPs
+  to suppress such messages in case they know the MAC-IP binding and can reply
+  on behalf of the remote host.
+
+.. cfgcmd:: set interfaces vxlan <interface> parameters nolearning
+
+   Specifies if unknown source link layer addresses and IP addresses are entered
+   into the VXLAN device forwarding database.
 
 Unicast
 ^^^^^^^
@@ -155,7 +167,7 @@ interface is no longer required for each VNI.
    .. code-block:: none
 
     set interfaces bridge br0 member interface vxlan0
-    set interfaces vxlan vxlan0 external
+    set interfaces vxlan vxlan0 parameters external
     set interfaces vxlan vxlan0 source-interface 'dum0'
     set interfaces vxlan vxlan0 vlan-to-vni 10 vni '10010'
     set interfaces vxlan vxlan0 vlan-to-vni 11 vni '10011'

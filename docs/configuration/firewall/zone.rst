@@ -2,9 +2,9 @@
 
 .. _firewall-zone:
 
-###################
-Zone Based Firewall
-###################
+################################
+Zone Based Firewall (Deprecated)
+################################
 
 .. note:: Starting from VyOS 1.4-rolling-202308040557, a new firewall
    structure can be found on all vyos instalations, and zone based firewall is
@@ -16,7 +16,7 @@ Zone Based Firewall
    chapter. The examples in this section use the legacy firewall configuration
    commands, since this feature has been removed in earlier releases.
 
-.. note:: For latest releases, refer the `firewall 
+.. note:: For latest releases, refer the `firewall (interface-groups) 
    <https://docs.vyos.io/en/latest/configuration/firewall/general.html#interface-groups>`_ 
    main page to configure zone based rules. New syntax was introduced here 
    :vytask:`T5160`

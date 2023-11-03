@@ -8,6 +8,196 @@
    _ext/releasenotes.py
 
 
+2023-10-31
+==========
+
+* :vytask:`T5699` ``(feature): vxlan: migrate "external" CLI know to "parameters external"``
+* :vytask:`T5668` ``(feature): Disable VXLAN bridge learning and enable neigh_suppress when using EVPN``
+
+
+2023-10-27
+==========
+
+* :vytask:`T5663` ``(bug): pmacct package contains unwanted data``
+* :vytask:`T5652` ``(bug): Config migrate to image upgrade does not properly generate home directory``
+
+
+2023-10-26
+==========
+
+* :vytask:`T5683` ``(bug): reverse-proxy pki filenames mismatch``
+* :vytask:`T5600` ``(bug): Firewall - Remove or extend constraint on 'interface-name'``
+* :vytask:`T5598` ``(bug): unknown parameter 'nf_conntrack_helper' ignored``
+* :vytask:`T5571` ``(bug): Firewall does not delete networks from the table raw``
+* :vytask:`T4903` ``(bug): conntrack ignore does not suppotr IPv6 addresses``
+* :vytask:`T4309` ``(feature): Support network/address-groups and  ipv6-network/ipv6-address-groups in conntrack ignore``
+* :vytask:`T5594` ``(bug): VRRP - Error if using IPv6 Link Local as hello source address``
+* :vytask:`T5606` ``(feature): IPSec VPN: Allow multiple CAs certificates``
+* :vytask:`T5568` ``(default): Install image from live ISO always defaults boot to KVM entry``
+* :vytask:`T5558` ``(default): Update config test to check resulting migrations``
+
+
+2023-10-23
+==========
+
+* :vytask:`T5637` ``(bug): Firewall default-action log``
+* :vytask:`T5299` ``(bug): QoS shaper ceiling does not work``
+* :vytask:`T5667` ``(feature): BGP label-unicast - enable ecmp``
+
+
+2023-10-22
+==========
+
+* :vytask:`T5254` ``(bug): Modification of any interface setting sets MTU back to default when MTU has been inherited from a bond``
+* :vytask:`T5671` ``(feature): vxlan: change port to IANA assigned default port``
+
+
+2023-10-21
+==========
+
+* :vytask:`T5670` ``(bug): bridge: missing member interface validator``
+* :vytask:`T5617` ``(feature): Add an option to exclude single values to the numeric validator``
+
+
+2023-10-20
+==========
+
+* :vytask:`T5233` ``(bug): Op-mode flow-accounting netflow with disable-imt errors``
+* :vytask:`T5232` ``(bug): Flow-accounting uacctd.service cannot restart correctly``
+
+
+2023-10-19
+==========
+
+* :vytask:`T4913` ``(default): Rewrite the wireless op mode in the new style``
+
+
+2023-10-18
+==========
+
+* :vytask:`T5642` ``(bug): op cmd: generate tech-support archive: does not work``
+* :vytask:`T5521` ``(bug): Home owner directory changed to vyos for the user after reboot``
+
+
+2023-10-17
+==========
+
+* :vytask:`T5662` ``(bug): Fix indexing error in configdep script organization``
+* :vytask:`T5644` ``(bug): Firewall groups deletion can break config``
+
+
+2023-10-16
+==========
+
+* :vytask:`T5165` ``(feature): Policy local-route ability set protocol and port``
+
+
+2023-10-14
+==========
+
+* :vytask:`T5629` ``(bug): Policy local-route bug after migration to destination node address``
+
+
+2023-10-12
+==========
+
+* :vytask:`T5649` ``(bug): vyos-1x should generate XML cache after building command templates for less cryptic error on typo``
+
+
+2023-10-10
+==========
+
+* :vytask:`T5589` ``(bug): Nonstripped binaries exists in VyOS``
+* :vytask:`T5489` ``(feature): Change to BBR as TCP congestion control, or at least make it an config option``
+
+
+2023-10-08
+==========
+
+* :vytask:`T5630` ``(feature): pppoe: allow to specify MRU in addition to already configurable MTU``
+
+
+2023-10-06
+==========
+
+* :vytask:`T5576` ``(feature): Add bgp remove-private-as all option``
+
+
+2023-10-05
+==========
+
+* :vytask:`T4320` ``(default): Remove legacy version files in vyatta-cfg-system/cfg-version``
+
+
+2023-10-04
+==========
+
+* :vytask:`T5632` ``(feature): Add jq package to parse JSON files``
+* :vytask:`T3655` ``(bug): NAT  Problem with VRF``
+* :vytask:`T5585` ``(bug): Fix file access mode for dynamic dns configuration``
+
+
+2023-10-03
+==========
+
+* :vytask:`T5618` ``(bug): Flow-accounting crushes when IMT is enabled``
+* :vytask:`T5579` ``(bug): Log firewall - Wrong command after firewall refactor``
+* :vytask:`T5561` ``(feature): NAT - Inbound or outbound interface should not be mandatory``
+* :vytask:`T5626` ``(feature): Only select required Kernel CGROUP controllers``
+* :vytask:`T5628` ``(feature): op-mode: login: DeprecationWarning: 'spwd'``
+
+
+2023-09-28
+==========
+
+* :vytask:`T5596` ``(feature): bgp: add new features from FRR 9``
+* :vytask:`T5412` ``(feature): Add support for extending config-mode dependencies in supplemental package``
+
+
+2023-09-24
+==========
+
+* :vytask:`T5604` ``(bug): List of debian archives is out of date (non-free-firmware is missing)``
+* :vytask:`T5591` ``(feature): Cleanup of FRR daemons-file and various FRR fixes``
+
+
+2023-09-22
+==========
+
+* :vytask:`T5602` ``(feature): For reverse-proxy type of load-balancing feature, support "backup" option in backends configuration``
+* :vytask:`T5609` ``(enhancment): Add util to get drive device name from id``
+* :vytask:`T5608` ``(enhancment): Rewrite add/delete raid member to Python and remove from vyatta-op``
+* :vytask:`T5607` ``(bug): Adjust RAID smoketest for non-deterministic SCSI device probing``
+
+
+2023-09-20
+==========
+
+* :vytask:`T5588` ``(bug): Add kernel conntrack_bridge module``
+* :vytask:`T5241` ``(feature): Support veth interfaces to working with netns``
+* :vytask:`T5592` ``(feature): salt: upgrade minion to 3005.2``
+* :vytask:`T5590` ``(default): Firewall "log enable" logs every packet``
+
+
+2023-09-19
+==========
+
+* :vytask:`T5597` ``(feature): isis: add new features from FRR 9.``
+
+
+2023-09-18
+==========
+
+* :vytask:`T5575` ``(bug): ARP/NDP table-size isnt set properly``
+
+
+2023-09-15
+==========
+
+* :vytask:`T5587` ``(bug): Firwall can not pass the smoketest``
+* :vytask:`T5581` ``(feature): Add "show ip nht" op-mode command (IPv4 nexthop tracking table)``
+
+
 2023-09-11
 ==========
 
@@ -38,7 +228,6 @@
 ==========
 
 * :vytask:`T5556` ``(bug): reboot now and  poweroff does not work``
-* :vytask:`T5489` ``(feature): Change to BBR as TCP congestion control, or at least make it an config option``
 
 
 2023-09-06

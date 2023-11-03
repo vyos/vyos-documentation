@@ -1,0 +1,89 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Localazy (https://localazy.com)\n"
+"Project-Id-Version: VyOS Documentation\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n==1) ? 0 : 1;\n"
+
+#: ../../index.rst:0
+msgid "Add missing parts or improve the :ref:`Documentation<documentation:Write Documentation>`."
+msgstr "Agregue partes faltantes o mejore la :ref:`Documentación<documentation:Write Documentation> `."
+
+#: ../../index.rst:70
+msgid "Adminguide"
+msgstr "Guía de administración"
+
+#: ../../index.rst:31
+msgid "Automate"
+msgstr "Automatizar"
+
+#: ../../index.rst:23
+msgid "Configuration and Operation"
+msgstr "Configuración y Operación"
+
+#: ../../index.rst:44
+msgid "Contribute and Community"
+msgstr "Contribuir y Comunidad"
+
+#: ../../index.rst:83
+msgid "Development"
+msgstr "Desarrollo"
+
+#: ../../index.rst:0
+msgid "Discuss in `Slack <https://slack.vyos.io/>`_ or the `Forum <https://forum.vyos.io>`_."
+msgstr "Discutir en `Slack<https://slack.vyos.io/> `_ o el `Foro<https://forum.vyos.io> `_."
+
+#: ../../index.rst:38
+msgid "Examples"
+msgstr "Ejemplos"
+
+#: ../../index.rst:61
+msgid "First Steps"
+msgstr "Primeros pasos"
+
+#: ../../index.rst:11
+msgid "Get / Build VyOS"
+msgstr "Obtener/Crear VyOS"
+
+#: ../../index.rst:40
+msgid "Get some inspiration from the :ref:`Configuration Blueprints<configexamples/index:Configuration Blueprints>` to build your infrastructure."
+msgstr "Inspírese con los :ref:`Planos de configuración<configexamples/index:Configuration Blueprints> ` para construir su infraestructura."
+
+#: ../../index.rst:16
+msgid "Install VyOS"
+msgstr "Instalar VyOS"
+
+#: ../../index.rst:33
+msgid "Integrate VyOS in your automation Workflow with :ref:`Ansible<vyos-ansible>`, have your own :ref:`local scripts<command-scripting>`, or configure VyOS with the :ref:`HTTPS-API<vyosapi>`."
+msgstr "Integre VyOS en su flujo de trabajo de automatización con :ref:`Ansible<vyos-ansible> `, tenga sus propios scripts locales :ref:`<command-scripting> `, o configure VyOS con :ref:`HTTPS-API<vyosapi> `."
+
+#: ../../index.rst:96
+msgid "Misc"
+msgstr "Misc"
+
+#: ../../index.rst:0
+msgid "Or you can pick up a `Task <https://vyos.dev/>`_ and fix the :ref:`code<contributing/development:development>`."
+msgstr "O puede seleccionar una `Tarea<https://vyos.dev/> `_ y corregir el :ref:`código<contributing/development:development> `."
+
+#: ../../index.rst:13
+msgid "Quickly :ref:`Build<contributing/build-vyos:build vyos>` your own Image or take a look at how to :ref:`download<installation/install:download>` a free or supported version."
+msgstr "Rápidamente :ref:`Construir<contributing/build-vyos:build vyos>` su propia imagen o eche un vistazo a cómo :ref:`descargar<installation/install:download>` una versión gratuita o compatible."
+
+#: ../../index.rst:18
+msgid "Read about how to install VyOS on :ref:`Bare Metal<installation/install:installation>` or in a :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>` and how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>` providers"
+msgstr "Lea acerca de cómo instalar VyOS en :ref:`Bare Metal<installation/install:installation> ` o en un :ref:`Entorno Virtual<installation/virtual/index:running vyos in virtual environments> ` y cómo usar una imagen con la habitual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments> ` proveedores"
+
+#: ../../index.rst:0
+msgid "There are many ways to contribute to the project."
+msgstr "Hay muchas maneras de contribuir al proyecto."
+
+#: ../../index.rst:25
+msgid "Use the :ref:`Quickstart Guide<quick-start:Quick Start>`, to have a fast overview. Or go deeper and set up :ref:`advanced routing<configuration/protocols/index:protocols>`, :ref:`VRFs<configuration/vrf/index:vrf>`, or :ref:`VPNs<configuration/vpn/index:vpn>` for example."
+msgstr "Utilice la :ref:`Guía de inicio rápido<quick-start:Quick Start> `, para tener una visión general rápida. O profundice y configure :ref:`enrutamiento avanzado<configuration/protocols/index:protocols> `, :ref:`VRF<configuration/vrf/index:vrf> `, o :ref:`VPN<configuration/vpn/index:vpn> `por ejemplo."
+
+#: ../../index.rst:5
+msgid "VyOS User Guide"
+msgstr "Guía del usuario de VyOS"

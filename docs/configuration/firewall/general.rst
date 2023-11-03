@@ -1,10 +1,10 @@
-:lastproofread: 2021-06-29
+:lastproofread: 2023-09-17
 
-.. _firewall:
+.. _firewall-configuration:
 
-########
-Firewall
-########
+######################
+Firewall Configuration
+######################
 
 ********
 Overview
@@ -17,48 +17,41 @@ The firewall supports the creation of groups for addresses, domains,
 interfaces, mac-addresses, networks and port groups. This groups can be used
 later in firewall ruleset as desired.
 
-.. note:: **Important note on usage of terms:**
-   The firewall makes use of the terms `forward`, `input`, and `output`
-   for firewall policy. More information of Netfilter hooks and Linux
-   networking packet flows can be found in `Netfilter-Hooks
-   <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_
-
-
 Main structure is shown next:
 
 .. code-block:: none
 
    - set firewall
        * global-options
-           + all-ping
-           + broadcast-ping
-           + ...
+            + all-ping
+            + broadcast-ping
+            + ...
        * group
-           - address-group
-           - ipv6-address-group
-           - network-group
-           - ipv6-network-group
-           - interface-group
-           - mac-group
-           - port-group
-           - domain-group
+            - address-group
+            - ipv6-address-group
+            - network-group
+            - ipv6-network-group
+            - interface-group
+            - mac-group
+            - port-group
+            - domain-group
        * ipv4
-           - forward
+            - forward
                + filter
-           - input
+            - input
                + filter
-           - output
+            - output
                + filter
-           - name
+            - name
                + custom_name
        * ipv6
-           - forward
+            - forward
                + filter
-           - input
+            - input
                + filter
-           - output
+            - output
                + filter
-           - ipv6-name
+            - ipv6-name
                + custom_name
 
 Where, main key words and configuration paths that needs to be understood:
@@ -351,10 +344,12 @@ The action can be :
 
    * ``queue``: Enqueue packet to userspace.
 
+   * ``synproxy``: synproxy the packet.
+
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999> action
-   [accept | drop | jump | queue | reject | return]
+   [accept | drop | jump | queue | reject | return | synproxy]
 .. cfgcmd:: set firewall [ipv4 | ipv6] input filter rule <1-999999> action
-   [accept | drop | jump | queue | reject | return]
+   [accept | drop | jump | queue | reject | return | synproxy]
 .. cfgcmd:: set firewall [ipv4 | ipv6] output filter rule <1-999999> action
    [accept | drop | jump | queue | reject | return]
 .. cfgcmd:: set firewall ipv4 name <name> rule <1-999999> action
@@ -1263,6 +1258,49 @@ geoip) to keep database and rules updated.
 
    Match when 'count' amount of connections are seen within 'time'. These
    matching criteria can be used to block brute-force attempts.
+
+********
+Synproxy
+********
+Synproxy connections
+
+.. cfgcmd:: set firewall [ipv4 | ipv6] [input | forward] filter rule <1-999999> action synproxy
+.. cfgcmd:: set firewall [ipv4 | ipv6] [input | forward] filter rule <1-999999> protocol tcp
+.. cfgcmd:: set firewall [ipv4 | ipv6] [input | forward] filter rule <1-999999> synproxy tcp mss <501-65535>
+
+    Set TCP-MSS (maximum segment size) for the connection
+
+.. cfgcmd:: set firewall [ipv4 | ipv6] [input | forward] filter rule <1-999999> synproxy tcp window-scale <1-14>
+
+    Set the window scale factor for TCP window scaling
+
+Example synproxy
+================
+Requirements to enable synproxy:
+
+  * Traffic must be symmetric
+  * Synproxy relies on syncookies and TCP timestamps, ensure these are enabled
+  * Disable conntrack loose track option
+
+.. code-block:: none
+
+  set system sysctl parameter net.ipv4.tcp_timestamps value '1'
+
+  set system conntrack tcp loose disable
+  set system conntrack ignore ipv4 rule 10 destination port '8080'
+  set system conntrack ignore ipv4 rule 10 protocol 'tcp'
+  set system conntrack ignore ipv4 rule 10 tcp flags syn
+
+  set firewall global-options syn-cookies 'enable'
+  set firewall ipv4 input filter rule 10 action 'synproxy'
+  set firewall ipv4 input filter rule 10 destination port '8080'
+  set firewall ipv4 input filter rule 10 inbound-interface interface-name 'eth1'
+  set firewall ipv4 input filter rule 10 protocol 'tcp'
+  set firewall ipv4 input filter rule 10 synproxy tcp mss '1460'
+  set firewall ipv4 input filter rule 10 synproxy tcp window-scale '7'
+  set firewall ipv4 input filter rule 1000 action 'drop'
+  set firewall ipv4 input filter rule 1000 state invalid 'enable'
+
 
 ***********************
 Operation-mode Firewall

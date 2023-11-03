@@ -148,6 +148,7 @@ Local Configuration:
   set interfaces openvpn vtun1 tls certificate 'openvpn-local'                    # The self-signed certificate
   set interfaces openvpn vtun1 tls peer-fingerprint <remote cert fingerprint>     # The output of 'run show pki certificate <name> fingerprint sha256
                                                                                     on the remote rout
+
 Remote Configuration:
 
 .. code-block:: none
@@ -163,6 +164,7 @@ Remote Configuration:
   set interfaces openvpn vtun1 tls certificate 'openvpn-remote'                    # The self-signed certificate
   set interfaces openvpn vtun1 tls peer-fingerprint <local cert fingerprint>       # The output of 'run show pki certificate <name> fingerprint sha256
                                                                                     on the local router
+
 Pre-shared keys
 ---------------
 
@@ -200,6 +202,7 @@ Then you need to install the key on the remote router:
 Then you need to set the key in your OpenVPN interface settings:
 
 .. code-block:: none
+
   set interfaces openvpn vtun1 shared-secret-key s2s
 
 Firewall Exceptions
