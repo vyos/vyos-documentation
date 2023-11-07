@@ -18,7 +18,9 @@ jobs:
           python-version: 3.x
 
       - name: install lxml dependencies
-        run: sudo apt-get install -y libxml2-dev libxslt-dev python-dev
+        run: |
+          sudo apt update
+          sudo apt install -y libxml2-dev libxslt-dev python-dev
 
       - name: Install Dev Dependencies
         run: |
