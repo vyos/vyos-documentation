@@ -8,6 +8,31 @@
    _ext/releasenotes.py
 
 
+2023-11-05
+==========
+
+* :vytask:`T4020` ``(feature): Add ability to control FRR daemons options``
+
+
+2023-11-03
+==========
+
+* :vytask:`T5700` ``(bug): Monitoring telegraf deprecated plugins inputs outputs``
+* :vytask:`T5018` ``(bug): Redirect to IFB removed after change in qos policy``
+
+
+2023-11-02
+==========
+
+* :vytask:`T5701` ``(feature): Update telegraf package``
+
+
+2023-11-01
+==========
+
+* :vytask:`T5690` ``(bug): Change to definition of environment variable 'vyos_rootfs_dir' is incorrect``
+
+
 2023-10-31
 ==========
 
