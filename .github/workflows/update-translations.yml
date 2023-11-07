@@ -20,7 +20,7 @@ jobs:
       - name: install lxml dependencies
         run: |
           sudo apt update
-          sudo apt install -y python3-lxml
+          sudo apt install -y libxml2-dev libxslt-dev python3-lxml
 
       - name: Install Dev Dependencies
         run: |
