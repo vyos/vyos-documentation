@@ -218,3 +218,31 @@ Operation
     commit
     save
     exit
+
+.. opcmd:: show log ssh
+
+  Show SSH server log.
+
+.. opcmd:: monitor log ssh
+
+  Follow the SSH server log.
+
+.. opcmd:: show log ssh dynamic-protection
+
+  Show SSH dynamic-protection log.
+
+.. opcmd:: monitor log ssh dynamic-protection
+
+  Follow the SSH dynamic-protection log.
+
+.. opcmd:: show ssh dynamic-protection
+
+  Show list of IPs currently blocked by SSH dynamic-protection.
+
+.. opcmd:: show ssh fingerprints
+
+  Show SSH server public key fingerprints.
+
+.. opcmd:: show ssh fingerprints ascii
+
+  Show SSH server public key fingerprints, including a visual ASCII art representation.
