@@ -6,6 +6,10 @@
 Zone Based Firewall
 ###################
 
+********
+Overview
+********
+
 .. note:: Starting from VyOS 1.4-rolling-202308040557, a new firewall
    structure can be found on all vyos instalations. Zone based firewall was
    removed in that version, but re introduced in VyOS 1.4 and 1.5. All
@@ -17,6 +21,24 @@ Zone Based Firewall
    1.4-rolling-202308040557 and can be found in the
    :doc:`legacy firewall configuration </configuration/firewall/general-legacy>`
    chapter.
+
+In this section there's useful information of all firewall configuration that
+is needed for zone-based firewall.
+Configuration commands covered in this section:
+
+.. cfgcmd:: set firewall zone ...
+
+From main structure defined in
+:doc:`Firewall Overview</configuration/firewall/index>`
+in this section you can find detailed information only for the next part
+of the general structure:
+
+.. code-block:: none
+
+   - set firewall
+       * zone
+            - custom_zone_name
+               + ...
 
 In zone-based policy, interfaces are assigned to zones, and inspection policy
 is applied to traffic moving between the zones and acted on according to
