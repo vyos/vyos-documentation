@@ -410,7 +410,7 @@ working configuration indicating line changes with ``+`` for additions,
   loopback lo {
   }
 
-It is also possible to display all `set` commands within configuration
+It is also possible to display all :cfgcmd:`set` commands within configuration
 mode using :cfgcmd:`show | commands`
 
 .. code-block:: none
