@@ -369,7 +369,7 @@ command.
 
 You are now in a sublevel relative to ``interfaces ethernet eth0``, all
 commands executed from this point on are relative to this sublevel. Use
-eithe the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top
+either the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top
 of the hierarchy. You can also use the :cfgcmd:`up` command to move only
 one level up at a time.
 
