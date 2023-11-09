@@ -127,8 +127,8 @@ SSH
 ===
 
 Connections to the RPKI caching server can not only be established by HTTP/TLS
-but you can also rely on a secure SSH session to the server. To enable SSH you
-first need to create yoursels an SSH client keypair using ``generate ssh
+but you can also rely on a secure SSH session to the server. To enable SSH,
+first you need to create an SSH client keypair using ``generate ssh
 client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup
 the connection.
 
