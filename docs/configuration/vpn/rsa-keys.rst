@@ -17,7 +17,7 @@ install <key-pair nam>>". You may choose different length than 2048 of course.
   Note: If you plan to use the generated key on this router, do not encrypt the private key.
   Do you want to encrypt the private key with a passphrase? [y/N] N
   Configure mode commands to install key pair:
-  Do you want to install the public key? [Y/n] Yrgerg
+  Do you want to install the public key? [Y/n] Y
   set pki key-pair ipsec-LEFT public key 'MIIBIjANBgkqh...'
   Do you want to install the private key? [Y/n] Y
   set pki key-pair ipsec-LEFT private key 'MIIEvgIBADAN...'
