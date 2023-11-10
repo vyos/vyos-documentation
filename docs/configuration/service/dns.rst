@@ -206,15 +206,59 @@ ddclient_ uses two methods to update a DNS record. The first one will send
 updates directly to the DNS daemon, in compliance with :rfc:`2136`. The second
 one involves a third party service, like DynDNS.com or any other similar
 website. This method uses HTTP requests to transmit the new IP address. You
-can configure both in VyOS.
+can configure both methods (with multiple services per method) in VyOS.
 
 .. _dns:dynmaic_config:
 
 Configuration
 =============
 
-:rfc:`2136` Based
------------------
+Ddclient configuration
+-----------------------
+
+These configuration commands control the overall behavior of ddclient_ service.
+
+.. cfgcmd:: set service dns dynamic interval <seconds>
+
+   Specify Time interval in seconds to wait between Dynamic DNS updates. This
+   defaults to 300 seconds.
+
+.. cfgcmd:: set service dns dynamic vrf <name>
+
+   Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
+
+.. _dns:dynmaic_example:
+
+Common configuration
+--------------------
+
+These configuration commands are common to both :rfc:`2136` based and HTTP
+service based methods.
+
+.. cfgcmd:: set service dns dynamic address [<interface> | web]
+
+   Use one of the configured `<interface>` or external HTTP(S) web request to
+   obtain the IPv4 or IPv6 address to send Dynamic DNS update. Multiple addresses
+   can be added, configuring one at a time.
+
+.. cfgcmd:: set service dns dynamic address [<interface> | web] [rfc2136 | service] <name>
+
+   Create a Dynamic DNS update configuration under `<name>` which will apply
+   Dynamic DNS update based on RFC method or HTTP service based method.
+
+.. cfgcmd:: set service dns dynamic address [<interface> | web] [rfc2136 | service] <name> server <server>
+.. cfgcmd:: set service dns dynamic address [<interface> | web] [rfc2136 | service] <name> host-name <hostname>
+.. cfgcmd:: set service dns dynamic address [<interface> | web] [rfc2136 | service] <name> zone <zone>
+.. cfgcmd:: set service dns dynamic address [<interface> | web] [rfc2136 | service] <name> ttl <seconds>
+.. cfgcmd:: set service dns dynamic address [<interface> | web] [rfc2136 | service] <name> wait-time <seconds>
+.. cfgcmd:: set service dns dynamic address [<interface> | web] [rfc2136 | service] <name> expiry-time <seconds>
+
+   Use one of the configured interface or external HTTP(S) web request to obtain
+   the IPv4 or IPv6 address to send Dynamic DNS update. Multiple addresses can
+   be added, configuring one at a time.
+
+:rfc:`2136` specific configuration
+----------------------------------
 
 .. cfgcmd:: set service dns dynamic address <interface> rfc2136 <service-name>
 
@@ -250,14 +294,6 @@ Configuration
 
    Configure optional TTL value on the given resource record. This defaults to
    600 seconds.
-
-.. cfgcmd:: set service dns dynamic timeout <60-3600>
-
-   Specify timeout / update interval to check if IP address changed.
-
-   This defaults to 300 seconds.
-
-.. _dns:dynmaic_example:
 
 Example
 ^^^^^^^
@@ -300,8 +336,8 @@ This will render the following ddclient_ configuration entry:
    config node: ``set service dns dynamic interface <interface> rfc2136
    <other-service-name>``
 
-HTTP based services
--------------------
+HTTP service based configuration
+--------------------------------
 
 VyOS is also able to use any service relying on protocols supported by ddclient.
 
@@ -346,8 +382,8 @@ hostnames, protocol and server.
    Allow explicit IPv6 address for the interface.
 
 
-Example:
-^^^^^^^^
+Example IPv4 only:
+^^^^^^^^^^^^^^^^^^
 
 Use DynDNS as your preferred provider:
 
@@ -357,9 +393,6 @@ Use DynDNS as your preferred provider:
   set service dns dynamic address eth0 service dyndns username my-login
   set service dns dynamic address eth0 service dyndns password my-password
   set service dns dynamic address eth0 service dyndns host-name my-dyndns-hostname
-
-.. note:: Multiple services can be used per interface. Just specify as many
-   services per interface as you like!
 
 Example IPv6 only:
 ^^^^^^^^^^^^^^^^^^
@@ -373,6 +406,33 @@ Example IPv6 only:
   set service dns dynamic address eth0 service dyndns6 protocol dyndns2
   set service dns dynamic address eth0 service dyndns6 server dyndns-v6-server
 
+Example dual IPv4 and IPv6:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using Cloudflare as your preferred provider:
+
+.. code-block:: none
+
+  set service dns dynamic address eth0 service cloudflare protocol cloudflare
+  set service dns dynamic address eth0 service cloudflare ip-version both
+  set service dns dynamic address eth0 service cloudflare password my-password
+  set service dns dynamic address eth0 service cloudflare zone example.com
+  set service dns dynamic address eth0 service cloudflare host-name dyn.sub.example.com
+
+Using Dynv6 as your preferred provider:
+
+.. code-block:: none
+
+  set service dns dynamic address eth0 service dynv6 protocol dyndns2
+  set service dns dynamic address eth0 service dynv6 ip-version both
+  set service dns dynamic address eth0 service dynv6 server dynv6.com
+  set service dns dynamic address eth0 service dynv6 username none
+  set service dns dynamic address eth0 service dynv6 password my-password
+  set service dns dynamic address eth0 service dynv6 host-name dyn-host.dynv6.net
+
+.. note:: Multiple services can be used per interface. Just specify as many
+   services per interface as you like!
+
 
 Running Behind NAT
 ------------------
@@ -381,12 +441,12 @@ By default, ddclient_ will update a dynamic dns record using the IP address
 directly attached to the interface. If your VyOS instance is behind NAT, your
 record will be updated to point to your internal IP.
 
-Above, command syntax isn noted to configure dynamic dns on a specific interface. 
-It is possible to overlook the additional address option, web, when completeing 
-those commands. ddclient_ has another way to determine the WAN IP address, using 
-a web-based url to determine the external IP. Each of the commands above will 
-need to be modified to use 'web' as the 'interface' specified if this functionality 
-is to be utilized. 
+Above, command syntax isn noted to configure dynamic dns on a specific interface.
+It is possible to overlook the additional address option, web, when completeing
+those commands. ddclient_ has another way to determine the WAN IP address, using
+a web-based url to determine the external IP. Each of the commands above will
+need to be modified to use 'web' as the 'interface' specified if this functionality
+is to be utilized.
 
 This functionality is controlled by adding the following configuration:
 
