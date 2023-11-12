@@ -1,25 +1,44 @@
-:lastproofread: 2022-09-14
+:lastproofread: 2023-11-01
 
 .. _firewall-zone:
 
-################################
-Zone Based Firewall (Deprecated)
-################################
+###################
+Zone Based Firewall
+###################
+
+********
+Overview
+********
 
 .. note:: Starting from VyOS 1.4-rolling-202308040557, a new firewall
-   structure can be found on all vyos instalations, and zone based firewall is
-   no longer supported. Documentation for most of the new firewall CLI can be
+   structure can be found on all vyos instalations. Zone based firewall was
+   removed in that version, but re introduced in VyOS 1.4 and 1.5. All
+   versions built after 2023-10-22 has this feature.
+   Documentation for most of the new firewall CLI can be
    found in the `firewall
    <https://docs.vyos.io/en/latest/configuration/firewall/general.html>`_
    chapter. The legacy firewall is still available for versions before
-   1.4-rolling-202308040557 and can be found in the :ref:`firewall-legacy`
-   chapter. The examples in this section use the legacy firewall configuration
-   commands, since this feature has been removed in earlier releases.
+   1.4-rolling-202308040557 and can be found in the
+   :doc:`legacy firewall configuration </configuration/firewall/general-legacy>`
+   chapter.
 
-.. note:: For latest releases, refer the `firewall (interface-groups) 
-   <https://docs.vyos.io/en/latest/configuration/firewall/general.html#interface-groups>`_ 
-   main page to configure zone based rules. New syntax was introduced here 
-   :vytask:`T5160`
+In this section there's useful information of all firewall configuration that
+is needed for zone-based firewall.
+Configuration commands covered in this section:
+
+.. cfgcmd:: set firewall zone ...
+
+From main structure defined in
+:doc:`Firewall Overview</configuration/firewall/index>`
+in this section you can find detailed information only for the next part
+of the general structure:
+
+.. code-block:: none
+
+   - set firewall
+       * zone
+            - custom_zone_name
+               + ...
 
 In zone-based policy, interfaces are assigned to zones, and inspection policy
 is applied to traffic moving between the zones and acted on according to
