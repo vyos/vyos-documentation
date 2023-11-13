@@ -2,7 +2,7 @@
 
 .. _firewall-flowtables-configuration:
 
-###################ä#############
+#################################
 Flowtables Firewall Configuration
 #################################
 
