@@ -8,6 +8,41 @@
    _ext/releasenotes.py
 
 
+2023-11-10
+==========
+
+* :vytask:`T5727` ``(bug): validator: Use native URL validator instead of regex-based validator``
+
+
+2023-11-08
+==========
+
+* :vytask:`T5720` ``(bug): PPPoE-server adding new interface does not work``
+* :vytask:`T5716` ``(bug): PPPoE-server shaper template bug down-limiter option does not rely on fwmark``
+* :vytask:`T5702` ``(feature): Add ability to set include_ifmib_iface_prefix and ifmib_max_num_ifaces  for SNMP``
+* :vytask:`T5648` ``(bug): ldpd neighbour template errors``
+* :vytask:`T5564` ``(bug): Both show firewall group and show firewall summary fails``
+* :vytask:`T5559` ``(feature): Selective proxy-arp/proxy-ndp when doing SNAT/DNAT``
+* :vytask:`T5541` ``(bug): Zone-Based Firewalling in VyOS Sagitta 1.4``
+* :vytask:`T5513` ``(bug): Anomalies in show firewall command after refactoring``
+* :vytask:`T4864` ``(bug): `show firewall` command errors``
+
+
+2023-11-07
+==========
+
+* :vytask:`T5586` ``(feature): Disable by default SNMP for Keepalived VRRP``
+
+
+2023-11-06
+==========
+
+* :vytask:`T5705` ``(bug): rsyslog - Not working when using facility=all``
+* :vytask:`T5704` ``(feature): PPPoE-server add max-starting option``
+* :vytask:`T5707` ``(bug): Wireguard peer public key update leaves redundant peers and breaks connectivity``
+* :vytask:`T4269` ``(feature): node.def generator should automatically add default values``
+
+
 2023-11-05
 ==========
 
