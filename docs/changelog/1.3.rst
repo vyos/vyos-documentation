@@ -8,6 +8,18 @@
    _ext/releasenotes.py
 
 
+2023-11-07
+==========
+
+* :vytask:`T5586` (feature): Disable by default SNMP for Keepalived VRRP
+
+
+2023-11-06
+==========
+
+* :vytask:`T4269` (feature): node.def generator should automatically add default values
+
+
 2023-10-26
 ==========
 
