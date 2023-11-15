@@ -1,8 +1,8 @@
 .. _pim6:
 
-##############
-IPv6 Multicast
-##############
+##############################################
+PIM6 - Protocol Independent Multicast for IPv6
+##############################################
 
 VyOS facilitates IPv6 Multicast by supporting **PIMv6** and **MLD**.
 

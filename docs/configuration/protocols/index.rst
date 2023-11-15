@@ -2,7 +2,6 @@
 Protocols
 #########
 
-
 .. toctree::
    :maxdepth: 1
    :includehidden:
@@ -11,11 +10,12 @@ Protocols
    bfd
    bgp
    failover
-   igmp
+   igmp-proxy
    isis
    mpls
    segment-routing
    ospf
+   pim
    pim6
    rip
    rpki
