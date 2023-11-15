@@ -450,7 +450,7 @@ Port "0" is required if multiple ports are used.
   set high-availability virtual-server vyos real-server 192.0.2.12 health-check script '/config/scripts/check-real-server-second.sh'
   set high-availability virtual-server vyos real-server 192.0.2.12 port '0'
 
-  set nat source rule 100 outbound-interface 'eth0'
+  set nat source rule 100 outbound-interface name 'eth0'
   set nat source rule 100 source address '192.0.2.0/24'
   set nat source rule 100 translation address 'masquerade'
 

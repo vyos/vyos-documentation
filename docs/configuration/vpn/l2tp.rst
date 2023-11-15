@@ -60,7 +60,7 @@ To allow VPN-clients access via your external address, a NAT rule is required:
 
 .. code-block:: none
 
-  set nat source rule 110 outbound-interface 'eth0'
+  set nat source rule 110 outbound-interface name 'eth0'
   set nat source rule 110 source address '192.168.255.0/24'
   set nat source rule 110 translation address masquerade
 

@@ -295,11 +295,11 @@ Configuration
 
     set nat destination rule 110 description 'NAT ssh- INSIDE'
     set nat destination rule 110 destination port '2022'
-    set nat destination rule 110 inbound-interface 'eth0'
+    set nat destination rule 110 inbound-interface name 'eth0'
     set nat destination rule 110 protocol 'tcp'
     set nat destination rule 110 translation address '192.168.130.40'
 
-    set nat source rule 100 outbound-interface 'eth0'
+    set nat source rule 100 outbound-interface name 'eth0'
     set nat source rule 100 protocol 'all'
     set nat source rule 100 source address '192.168.130.0/24'
     set nat source rule 100 translation address 'masquerade'
