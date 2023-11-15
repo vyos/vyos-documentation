@@ -94,7 +94,7 @@ Here is a simple example:
   #!/bin/vbash
   source /opt/vyatta/etc/functions/script-template
   configure
-  source < /config/scripts/setfirewallgroup.py
+  source <(/config/scripts/setfirewallgroup.py)
   commit
 
 
