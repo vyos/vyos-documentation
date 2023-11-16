@@ -44,7 +44,7 @@ After this, the public key can be displayed, to save for later.
 
 .. code-block:: none
 
-   vyos@central:~$ generate pki wireguard
+   vyos@central:~$ generate pki wireguard key-pair
    Private key: cMNGHtb5dW92ORG3HS8JJlvQF8pmVGt2Ydny8hTBLnY=
    Public key: WyfLCTXi31gL+YbYOwoAHCl2RgS+y56cYHEK6pQsTQ8=
 
