@@ -22,14 +22,14 @@ from docutils.parsers.rst.roles import set_classes
 # -- Project information -----------------------------------------------------
 
 project = u'VyOS'
-copyright = u'2021, VyOS maintainers and contributors'
+copyright = u'2023, VyOS maintainers and contributors'
 author = u'VyOS maintainers and contributors'
 
 # The short X.Y version
-version = u'1.4'
+version = u'1.5'
 
 # The full version, including alpha/beta/rc tags
-release = u'1.4.x (sagitta)'
+release = u'1.5.x (circinus)'
 
 # -- General configuration ---------------------------------------------------
 
