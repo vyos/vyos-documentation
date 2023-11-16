@@ -194,9 +194,9 @@ And NAT Configuration:
 
     set nat source rule 10 destination group network-group 'REMOTE-NETS'
     set nat source rule 10 exclude
-    set nat source rule 10 outbound-interface 'eth0'
+    set nat source rule 10 outbound-interface name 'eth0'
     set nat source rule 10 source group network-group 'LOCAL-NETS'
-    set nat source rule 20 outbound-interface 'eth0'
+    set nat source rule 20 outbound-interface name 'eth0'
     set nat source rule 20 source group network-group 'LOCAL-NETS'
     set nat source rule 20 translation address 'masquerade'
 

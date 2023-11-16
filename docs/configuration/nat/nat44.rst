@@ -663,7 +663,7 @@ We will use source and destination address for hash generation.
 
 .. code-block:: none
 
-  set nat destination rule 10 inbound-interface inbound-interface eth0
+  set nat destination rule 10 inbound-interface name eth0
   set nat destination rule 10 protocol tcp
   set nat destination rule 10 destination port 80
   set nat destination rule 10 load-balance hash source-address

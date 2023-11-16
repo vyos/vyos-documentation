@@ -303,7 +303,7 @@ public interface.
 .. code-block:: none
 
    set nat source rule 10 destination address '!192.0.2.0/24'
-   set nat source rule 10 outbound-interface 'eth0.50'
+   set nat source rule 10 outbound-interface name 'eth0.50'
    set nat source rule 10 source address '10.200.201.0/24'
    set nat source rule 10 translation address '203.0.113.1'
 

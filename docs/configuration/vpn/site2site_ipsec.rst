@@ -245,13 +245,13 @@ If there is SNAT rules on eth1, need to add exclude rule
   # server side
   set nat source rule 10 destination address '10.0.0.0/24'
   set nat source rule 10 'exclude'
-  set nat source rule 10 outbound-interface 'eth1'
+  set nat source rule 10 outbound-interface name 'eth1'
   set nat source rule 10 source address '192.168.0.0/24'
 
   # remote office side
   set nat source rule 10 destination address '192.168.0.0/24'
   set nat source rule 10 'exclude'
-  set nat source rule 10 outbound-interface 'eth1'
+  set nat source rule 10 outbound-interface name 'eth1'
   set nat source rule 10 source address '10.0.0.0/24'
 
 To allow traffic to pass through to clients, you need to add the following
