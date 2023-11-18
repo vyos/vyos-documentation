@@ -89,6 +89,15 @@ VXLAN specific options
    Specifies if unknown source link layer addresses and IP addresses are entered
    into the VXLAN device forwarding database.
 
+.. cfgcmd:: set interfaces vxlan <interface> parameters vni-filter
+
+   Specifies whether the VXLAN device is capable of vni filtering.
+
+   Only works with a VXLAN device with external flag set.
+
+   .. note::  The device can only receive packets with VNIs configured in
+      the VNI filtering table.
+
 Unicast
 ^^^^^^^
 
