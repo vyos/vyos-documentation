@@ -858,24 +858,27 @@ be ``config.boot-hostname.YYYYMMDD_HHMMSS``.
 
 .. cfgcmd:: set system config-management commit-archive location <URI>
 
-   Specify remote location of commit archive as any of the below
-   :abbr:`URI (Uniform Resource Identifier)`
+  Specify remote location of commit archive as any of the below
+  :abbr:`URI (Uniform Resource Identifier)`
 
-   * ``scp://<user>:<passwd>@<host>:/<dir>``
-   * ``sftp://<user>:<passwd>@<host>/<dir>``
-   * ``ftp://<user>:<passwd>@<host>/<dir>``
-   * ``tftp://<host>/<dir>``
+  * ``http://<user>:<passwd>@<host>:/<dir>``
+  * ``https://<user>:<passwd>@<host>:/<dir>``
+  * ``ftp://<user>:<passwd>@<host>/<dir>``
+  * ``sftp://<user>:<passwd>@<host>/<dir>``
+  * ``scp://<user>:<passwd>@<host>:/<dir>``
+  * ``tftp://<host>/<dir>``
+  * ``git+https://<user>:<passwd>@<host>/<path>``
 
-.. note:: The number of revisions don't affect the commit-archive.
+  .. note:: The number of revisions don't affect the commit-archive.
 
-.. note:: You may find VyOS not allowing the secure connection because
-   it cannot verify the legitimacy of the remote server. You can use
-   the workaround below to quickly add the remote host's SSH
-   fingerprint to your ``~/.ssh/known_hosts`` file:
+  .. note:: You may find VyOS not allowing the secure connection because
+     it cannot verify the legitimacy of the remote server. You can use
+     the workaround below to quickly add the remote host's SSH
+     fingerprint to your ``~/.ssh/known_hosts`` file:
 
-   .. code-block:: none
+  .. code-block:: none
 
-     vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
+    vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
 
 Saving and loading manually
 ---------------------------
