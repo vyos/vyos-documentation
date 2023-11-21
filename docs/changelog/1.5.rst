@@ -8,6 +8,41 @@
    _ext/releasenotes.py
 
 
+2023-11-18
+==========
+
+* :vytask:`T1354` ``(feature): Add support for VLAN-Aware bridges``
+
+
+2023-11-16
+==========
+
+* :vytask:`T5726` ``(bug): HTTPS API image cannot be updated``
+* :vytask:`T5738` ``(feature): Extend XML building blocks``
+* :vytask:`T5736` ``(feature): igmp: migrate "protocols igmp" to "protocols pim"``
+* :vytask:`T5733` ``(feature): pim(6): rewrite FRR PIM daemon configuration to get_config_dict() and add missing IGMP features``
+* :vytask:`T5689` ``(default): FRR 9.0.1 in VyOS current segfaults on show rpki prefix $prefix``
+* :vytask:`T5595` ``(feature): Multicast - PIM  bfd feature enable``
+
+
+2023-11-15
+==========
+
+* :vytask:`T5695` ``(feature): Build FRR with LUA scripts --enable-scripting option``
+* :vytask:`T5677` ``(bug): show lldp neighbors generates TypeError when neighbor has no `descr```
+* :vytask:`T5728` ``(bug): Improve compatibility between OpenVPN on VyOS 1.5 and OpenVPN Connect Client``
+* :vytask:`T5732` ``(bug): generate firewall rule-resequence drops geoip country-code from output``
+* :vytask:`T5661` ``(enhancment): Add show show ssh dynamic-protection attacker and show log ssh dynamic-protection``
+
+
+2023-11-13
+==========
+
+* :vytask:`T5698` ``(feature): EVPN ESI Multihoming``
+* :vytask:`T5563` ``(bug): container: Container environment variable cannot be set``
+* :vytask:`T5706` ``(bug): Systemd-udevd high CPU utilization for multiple dynamic ppp/l2tp/ipoe interfaces``
+
+
 2023-11-10
 ==========
 
@@ -91,7 +126,6 @@
 2023-10-23
 ==========
 
-* :vytask:`T5637` ``(bug): Firewall default-action log``
 * :vytask:`T5299` ``(bug): QoS shaper ceiling does not work``
 * :vytask:`T5667` ``(feature): BGP label-unicast - enable ecmp``
 
@@ -227,7 +261,6 @@
 * :vytask:`T5588` ``(bug): Add kernel conntrack_bridge module``
 * :vytask:`T5241` ``(feature): Support veth interfaces to working with netns``
 * :vytask:`T5592` ``(feature): salt: upgrade minion to 3005.2``
-* :vytask:`T5590` ``(default): Firewall "log enable" logs every packet``
 
 
 2023-09-19
