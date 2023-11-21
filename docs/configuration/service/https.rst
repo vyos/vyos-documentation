@@ -20,23 +20,14 @@ Configuration
 
 .. cfgcmd:: set service https api debug
 
-   To enable debug messages. Available via :opcmd:`show log` or 
+   To enable debug messages. Available via :opcmd:`show log` or
    :opcmd:`monitor log`
-
-.. cfgcmd:: set service https api port
-
-   Set the listen port of the local API, this has no effect on the
-   webserver. The default is port 8080
-
-.. cfgcmd:: set service https api socket
-
-   Use local socket for API
 
 .. cfgcmd:: set service https api strict
 
    Enforce strict path checking
 
-.. cfgcmd:: set service https virtual-host <vhost> listen-address 
+.. cfgcmd:: set service https virtual-host <vhost> listen-address
             <ipv4 or ipv6 address>
 
    Address to listen for HTTPS requests
