@@ -148,11 +148,11 @@ WireGuard
     ``interface`` is used for the VyOS CLI command to identify the WireGuard
     interface where this private key is to be used.
 
-.. opcmd:: generate pki wireguard pre-shared-key
+.. opcmd:: generate pki wireguard preshared-key
 
   Generate a WireGuard pre-shared secret used for peers to communicate.
 
-.. opcmd:: generate pki wireguard pre-shared-key install <peer>
+.. opcmd:: generate pki wireguard preshared-key install <peer>
 
   Generate a WireGuard pre-shared secret used for peers to communicate.
 
