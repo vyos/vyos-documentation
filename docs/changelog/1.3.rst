@@ -8,6 +8,13 @@
    _ext/releasenotes.py
 
 
+2023-11-15
+==========
+
+* :vytask:`T5661` (enhancment): Add show show ssh dynamic-protection attacker and show log ssh dynamic-protection
+* :vytask:`T1276` (bug): dhcp relay + VLAN fails
+
+
 2023-11-07
 ==========
 
