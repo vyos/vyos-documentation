@@ -28,6 +28,11 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options vendor-class-id <vendor-id>
 
+  This option is used by some DHCP clients to identify the vendor type and
+  possibly the configuration of a DHCP client. The information is a string of
+  bytes whose contents are specific to the vendor and are not specified in a
+  standard.
+
   The vendor-class-id option can be used to request a specific class of vendor
   options from the server.
 
@@ -74,3 +79,17 @@
   .. code-block:: none
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options reject 192.168.100.0/24
+
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+  {{ var5 }} {{ var6 }} dhcp-options user-class <string>
+
+  This option is used by some DHCP clients as a way for users to specify
+  identifying information to the client. This can be used in a similar way to
+  the vendor-class-identifier option, but the value of the option is specified
+  by the user, not the vendor.
+
+  Example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options user-class VyOS
