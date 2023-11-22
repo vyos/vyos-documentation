@@ -32,7 +32,7 @@ Configuration
 
    Address to listen for HTTPS requests
 
-.. cfgcmd:: set service https virtual-host <vhost> listen-port <1-65535>
+.. cfgcmd:: set service https virtual-host <vhost> port <1-65535>
 
    Port to listen for HTTPS requests; default 443
 
@@ -82,6 +82,6 @@ To use this full configuration we asume a public accessible hostname.
    set service https certificates certbot domain-name rtr01.example.com
    set service https certificates certbot email mail@example.com
    set service https virtual-host rtr01 listen-address 198.51.100.2
-   set service https virtual-host rtr01 listen-port 11443
+   set service https virtual-host rtr01 port 11443
    set service https virtual-host rtr01 server-name rtr01.example.com
    set service https api-restrict virtual-host rtr01
