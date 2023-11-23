@@ -11,7 +11,7 @@ Zone-Policy example
    found in the `firewall
    <https://docs.vyos.io/en/latest/configuration/firewall/general.html>`_
    chapter. The legacy firewall is still available for versions before
-   1.4-rolling-202308040557 and can be found in the :ref:`firewall-legacy`
+   1.4-rolling-202308040557 and can be found in the :ref:`legacy-firewall`
    chapter. The examples in this section use the legacy firewall configuration
    commands, since this feature has been removed in earlier releases.
 
