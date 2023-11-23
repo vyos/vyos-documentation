@@ -47,7 +47,7 @@ Configuration
    are launched in a subnet you will experience the mDNS packet storm death!
 
 Example
--------
+=======
 
 To listen on both `eth0` and `eth1` mDNS packets and also repeat packets
 received on `eth0` to `eth1` (and vice-versa) use the following commands:
