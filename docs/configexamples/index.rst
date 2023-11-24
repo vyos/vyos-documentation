@@ -21,6 +21,7 @@ This chapter contains various configuration examples:
    qos
    segment-routing-isis
    nmp
+   ansible
    policy-based-ipsec-and-firewall
    site-2-site-cisco
 
