@@ -143,6 +143,43 @@ The ``reset`` endpoint run a ``reset`` command.
      "error": null
    }
 
+/reboot
+=======
+
+To initiate a reboot use the ``reboot`` endpoint.
+
+.. code-block:: none
+
+   curl --location --request POST 'https://vyos/reboot' \
+   --form data='{"op": "reboot", "path": ["now"]}' \
+   --form key='MY-HTTPS-API-PLAINTEXT-KEY'
+
+   respone:
+   {
+     "success": true,
+     "data": "",
+     "error": null
+   }
+
+/poweroff
+=========
+
+To power off the system use the ``poweroff`` endpoint.
+
+.. code-block:: none
+
+   curl --location --request POST 'https://vyos/poweroff' \
+   --form data='{"op": "poweroff", "path": ["now"]}' \
+   --form key='MY-HTTPS-API-PLAINTEXT-KEY'
+
+   respone:
+   {
+     "success": true,
+     "data": "",
+     "error": null
+   }
+
+
 /image
 ======
 
