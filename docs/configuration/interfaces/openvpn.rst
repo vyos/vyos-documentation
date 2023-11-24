@@ -71,7 +71,7 @@ In both cases, we will use the following settings:
   dynamic IP for our remote router.
 
 Setting up certificates
------------------------
+=======================
 
 Setting up a full-blown PKI with a CA certificate would arguably defeat the purpose
 of site-to-site OpenVPN, since its main goal is supposed to be configuration simplicity,
@@ -129,7 +129,7 @@ Note: certificate names don't matter, we use 'openvpn-local' and 'openvpn-remote
 Repeat the procedure on the other router.
 
 Setting up OpenVPN
-------------------
+==================
 
 Local Configuration:
 
@@ -148,6 +148,7 @@ Local Configuration:
   set interfaces openvpn vtun1 tls certificate 'openvpn-local'                    # The self-signed certificate
   set interfaces openvpn vtun1 tls peer-fingerprint <remote cert fingerprint>     # The output of 'run show pki certificate <name> fingerprint sha256
                                                                                     on the remote rout
+
 Remote Configuration:
 
 .. code-block:: none
@@ -163,8 +164,9 @@ Remote Configuration:
   set interfaces openvpn vtun1 tls certificate 'openvpn-remote'                    # The self-signed certificate
   set interfaces openvpn vtun1 tls peer-fingerprint <local cert fingerprint>       # The output of 'run show pki certificate <name> fingerprint sha256
                                                                                     on the local router
+
 Pre-shared keys
----------------
+===============
 
 Until VyOS 1.4, the only option for site-to-site OpenVPN without PKI was to use pre-shared keys.
 That option is still available but it is deprecated and will be removed in the future.
@@ -200,6 +202,7 @@ Then you need to install the key on the remote router:
 Then you need to set the key in your OpenVPN interface settings:
 
 .. code-block:: none
+
   set interfaces openvpn vtun1 shared-secret-key s2s
 
 Firewall Exceptions
@@ -432,6 +435,7 @@ Branch 1's router might have the following lines:
 
   set interfaces openvpn vtun10 tls ca-cert ca-1
   set interfaces openvpn vtun10 tls certificate branch-1
+
 
 Client Authentication
 =====================

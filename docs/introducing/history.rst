@@ -110,7 +110,7 @@ Sagitta (the Arrow) is the codename of the current development
 branch, so there's no VyOS 1.4 yet.
 
 Circinus (1.5)
--------------
+--------------
 
 Circinus (the Compass) is the codename of the upcoming development
 branch, so there's no VyOS 1.5 yet.
