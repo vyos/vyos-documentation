@@ -221,8 +221,8 @@ On the LEFT:
 On the RIGHT, setup by analogy and swap local and remote addresses.
 
 
-Source tunnel from loopbacks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Source tunnel from dummy interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The scheme above doesn't work when one of the routers has a dynamic external
 address though. The classic workaround for this is to setup an address on a
@@ -240,7 +240,7 @@ On the LEFT:
 
 .. code-block:: none
 
-  set interfaces loopback lo address 192.168.99.1/32
+  set interfaces dummy dum0 address 192.168.99.1/32
 
   set interfaces tunnel tun0 encapsulation gre
   set interfaces tunnel tun0 address 10.10.10.1/30
@@ -251,7 +251,7 @@ On the RIGHT:
 
 .. code-block:: none
 
-  set interfaces loopback lo address 192.168.99.2/32
+  set interfaces dummy dum0 address 192.168.99.2/32
 
   set interfaces tunnel tun0 encapsulation gre
   set interfaces tunnel tun0 address 10.10.10.2/30
