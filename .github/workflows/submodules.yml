@@ -41,6 +41,42 @@ jobs:
           branch: update-dependencies-master
           delete-branch: true
 
+  update_sagitta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}
+          ref: sagitta
+      - name: update submodule
+        run: |
+          git submodule status
+          git submodule update --init --force
+          cd docs/_include/vyos-1x
+          git checkout sagitta
+          git pull
+          git submodule status
+      - name: update releasenotes
+        env:
+          PHABRICATOR_API: ${{ secrets.PHABRICATOR_API }}
+        if: env.PHABRICATOR_API != null
+        run: |
+          pip3 install phabricator==0.8.0
+          python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b sagitta
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          commit-message: "Github: update sagitta branch"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          title: "Github: update sagitta branch"
+          body: |
+            Autoupdate vyos-1x submodule
+            update releasenotes
+          branch: update-dependencies-sagitta
+          delete-branch: true
+
 
   update_equuleus:
     runs-on: ubuntu-latest
