@@ -8,6 +8,62 @@
    _ext/releasenotes.py
 
 
+2023-11-26
+==========
+
+* :vytask:`T5760` ``(feature): DHCP client custom dhcp-options``
+* :vytask:`T2405` ``(feature): archive to GIT or other platform``
+
+
+2023-11-25
+==========
+
+* :vytask:`T5655` ``(bug): commit-archive: Ctrl+C should not eror out with stack trace, signal should be cought``
+* :vytask:`T4946` ``(default): Rewrite "add system image" in the new op-mode``
+* :vytask:`T4454` ``(default): `install-image` should check free storage``
+
+
+2023-11-24
+==========
+
+* :vytask:`T5776` ``(feature): Enable VFIO support``
+* :vytask:`T5402` ``(bug): VRRP router with rfc3768-compatibility sends multiple ARP replies``
+* :vytask:`T3895` ``(default): VYOS firewall rules do not adhere to time schedule unless placed in UTC mode.``
+
+
+2023-11-23
+==========
+
+* :vytask:`T4891` ``(bug): BFD flapping loop``
+* :vytask:`T4867` ``(bug): "show bgp neighbors ... advertised-routes" and some other commands fail for IPv4 neighbors``
+
+
+2023-11-22
+==========
+
+* :vytask:`T5767` ``(feature): Add reboot and poweroff the system via API``
+* :vytask:`T5729` ``(bug): Firewall, nat and policy route - Switch to valueless``
+* :vytask:`T5681` ``(feature): Interface match - Simplified and unified cli``
+* :vytask:`T4877` ``(bug): Need verification in using import vrf and import vpn, export vpn commands``
+* :vytask:`T4021` ``(bug): Long commit time on bridge interface with 1-4094 allowed VLAN tags``
+* :vytask:`T5338` ``(feature): Add 'mpls bgp forwarding' feature``
+* :vytask:`T3818` ``(bug): BGP export route-map only works after bgpd restart``
+* :vytask:`T5590` ``(default): Firewall "log enable" logs every packet``
+* :vytask:`T5426` ``(default): Add exceptions in vici functions calls``
+
+
+2023-11-21
+==========
+
+* :vytask:`T5762` ``(bug): http: api: smoketests fail as they can not establish IPv6 connection to uvicorn backend server``
+
+
+2023-11-20
+==========
+
+* :vytask:`T2816` ``(default): Rewrite IPsec scripts with the new XML/Python approach``
+
+
 2023-11-18
 ==========
 
