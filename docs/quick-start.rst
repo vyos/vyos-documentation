@@ -144,7 +144,7 @@ which was not initiated from the internal/LAN side first.
   set firewall ipv4 forward filter rule 10 state related 'enable'
   set firewall ipv4 forward filter rule 20 action 'drop'
   set firewall ipv4 forward filter rule 20 state invalid 'enable'
-  set firewall ipv4 forward filter rule 30 inbound-interface interface-name 'eth1'
+  set firewall ipv4 forward filter rule 30 inbound-interface name 'eth1'
   set firewall ipv4 forward filter rule 30 action 'accept'
 
   set firewall ipv4 input filter default-action drop
@@ -168,7 +168,7 @@ blocks brute-forcing attempts:
 .. code-block:: none
 
   set firewall ipv4 input filter rule 40 action 'drop'
-  set firewall ipv4 input filter rule 40 inbound-interface interface-name 'eth0'
+  set firewall ipv4 input filter rule 40 inbound-interface name 'eth0'
   set firewall ipv4 input filter rule 40 destination port '22'
   set firewall ipv4 input filter rule 40 protocol 'tcp'
   set firewall ipv4 input filter rule 40 recent count '4'

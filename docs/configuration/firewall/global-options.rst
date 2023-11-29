@@ -111,7 +111,7 @@ Configuration
 .. cfgcmd:: set firewall global-options twa-hazards-protection
    [enable | disable]
 
-   Enable or Disable VyOS to be :rfc:`1337` conform.
+   Enable or Disable VyOS to be :rfc:`1337` conforming.
    The following system parameter will be altered:
 
    * ``net.ipv4.tcp_rfc1337``
