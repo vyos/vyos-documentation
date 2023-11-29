@@ -8,6 +8,24 @@
    _ext/releasenotes.py
 
 
+2023-11-25
+==========
+
+* :vytask:`T5655` (bug): commit-archive: Ctrl+C should not eror out with stack trace, signal should be cought
+
+
+2023-11-24
+==========
+
+* :vytask:`T5402` (bug): VRRP router with rfc3768-compatibility sends multiple ARP replies 
+
+
+2023-11-22
+==========
+
+* :vytask:`T5578` (bug): "ikev2-reauth" description contains outdated information
+
+
 2023-11-15
 ==========
 
