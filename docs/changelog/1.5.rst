@@ -8,6 +8,49 @@
    _ext/releasenotes.py
 
 
+2023-11-26
+==========
+
+* :vytask:`T5760` ``(feature): DHCP client custom dhcp-options``
+* :vytask:`T2405` ``(feature): archive to GIT or other platform``
+
+
+2023-11-25
+==========
+
+* :vytask:`T5655` ``(bug): commit-archive: Ctrl+C should not eror out with stack trace, signal should be cought``
+
+
+2023-11-24
+==========
+
+* :vytask:`T5776` ``(feature): Enable VFIO support``
+* :vytask:`T5402` ``(bug): VRRP router with rfc3768-compatibility sends multiple ARP replies``
+
+
+2023-11-23
+==========
+
+* :vytask:`T5659` ``(bug): VPP cannot add interface to dataplane if it already has an address configured``
+
+
+2023-11-22
+==========
+
+* :vytask:`T5767` ``(feature): Add reboot and poweroff the system via API``
+* :vytask:`T5729` ``(bug): Firewall, nat and policy route - Switch to valueless``
+* :vytask:`T5681` ``(feature): Interface match - Simplified and unified cli``
+* :vytask:`T5643` ``(feature): NAT - Allow interface groups on nat rules``
+* :vytask:`T5616` ``(feature): Firewall mark - Add capabilities for matching firewall mark``
+* :vytask:`T5590` ``(default): Firewall "log enable" logs every packet``
+
+
+2023-11-21
+==========
+
+* :vytask:`T5762` ``(bug): http: api: smoketests fail as they can not establish IPv6 connection to uvicorn backend server``
+
+
 2023-11-18
 ==========
 
