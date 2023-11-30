@@ -71,7 +71,7 @@ In both cases, we will use the following settings:
   dynamic IP for our remote router.
 
 Setting up certificates
------------------------
+=======================
 
 Setting up a full-blown PKI with a CA certificate would arguably defeat the purpose
 of site-to-site OpenVPN, since its main goal is supposed to be configuration simplicity,
@@ -129,7 +129,7 @@ Note: certificate names don't matter, we use 'openvpn-local' and 'openvpn-remote
 Repeat the procedure on the other router.
 
 Setting up OpenVPN
-------------------
+==================
 
 Local Configuration:
 
@@ -166,7 +166,7 @@ Remote Configuration:
                                                                                     on the local router
 
 Pre-shared keys
----------------
+===============
 
 Until VyOS 1.4, the only option for site-to-site OpenVPN without PKI was to use pre-shared keys.
 That option is still available but it is deprecated and will be removed in the future.

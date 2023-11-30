@@ -128,12 +128,6 @@ interlinked chains for each `Netfilter hook
 <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_
 and allows for more granular control over the packet filtering process.
 
-.. note:: Documentation for most of the new firewall CLI can be found in
-   the :ref:`firewall` chapter.The legacy firewall is still available
-   for versions before ``1.4-rolling-202308040557`` and can be found in the
-   :ref:`firewall-legacy` chapter. The examples in this section use the
-   new configuration.
-
 The firewall begins with the base ``filter`` tables you define for each of the
 ``forward``, ``input``, and ``output`` Netfiter hooks. Each of these tables is
 populated with rules that are processed in order and can jump to other chains

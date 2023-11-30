@@ -154,6 +154,8 @@ Configuration
 
    Disable dhcpv6-relay service.
 
+.. _dhcp_relay:v6_options:
+
 Options
 -------
 

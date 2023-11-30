@@ -180,6 +180,8 @@ IGMP - Internet Group Management Protocol)
    Configure watermark warning generation for an IGMP group limit. Generates
    warning once the configured group limit is reached while adding new groups.
 
+.. _pim:igmp_interface_commands:
+
 Interface specific commands
 ===========================
 
@@ -202,7 +204,7 @@ Interface specific commands
    Use this command to configure in the selected interface the IGMP
    query response timeout value (10-250) in deciseconds. If a report is
    not returned in the specified time, it will be assumed the (S,G) or
-   (*,G) state :rfc:`7761#section-4.1` has timed out.
+   (\*,G) state :rfc:`7761#section-4.1` has timed out.
 
 .. cfgcmd:: set protocols pim interface <interface> igmp version <version-number>
 

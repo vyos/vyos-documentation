@@ -282,6 +282,8 @@ Configuration
 VRF and NAT
 -----------
 
+.. _vrf:nat_configuration:
+
 Configuration
 ^^^^^^^^^^^^^
 

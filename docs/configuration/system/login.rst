@@ -344,6 +344,8 @@ Configuration
 
    Source all connections to the TACACS servers from given VRF `<name>`.
 
+.. _login:tacacs_example:
+
 Configuration Example
 ---------------------
 

@@ -119,7 +119,7 @@ Add the simple playbook with the tasks for each router:
 			true
 	
 Start the playbook:
-==================
+===================
 
 .. code-block:: none
 
@@ -158,7 +158,7 @@ Check the result on the vyos10 router:
 	set system name-server '8.8.8.8'
 
 The simple way without configuration of the hostname (one task for all routers):
-============================================================================
+================================================================================
 
 .. code-block:: none
 

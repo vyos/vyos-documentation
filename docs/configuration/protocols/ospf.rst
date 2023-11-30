@@ -1204,7 +1204,7 @@ Interface Configuration
    synchronizing process of the router's database with all neighbors. The
    default value is 1 seconds. The interval range is 3 to 65535.
 
-.. _ospf:v3_redistribution_config:
+.. _ospf:v3_graceful_restart:
 
 Graceful Restart
 ----------------
@@ -1244,6 +1244,8 @@ Graceful Restart
    It helps to support as HELPER only for planned restarts.
 
    By default, it supports both planned and unplanned outages.
+
+.. _ospf:v3_redistribution_config:
 
 Redistribution Configuration
 ----------------------------
