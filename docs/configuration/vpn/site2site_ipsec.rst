@@ -10,8 +10,8 @@ connected/routed networks.
 To configure site-to-site connection you need to add peers with the
 ``set vpn ipsec site-to-site peer <name>`` command.
 
-The peer name must be an alphanumeric and can have hypen or underscore as 
-special characters. It is purely informational. 
+The peer name must be an alphanumeric and can have hypen or underscore as
+special characters. It is purely informational.
 
 Each site-to-site peer has the next options:
 
@@ -20,11 +20,11 @@ Each site-to-site peer has the next options:
 
  * ``psk`` - Preshared secret key name:
 
-  * ``dhcp-interface`` - ID for authentication generated from DHCP address 
+  * ``dhcp-interface`` - ID for authentication generated from DHCP address
     dynamically;
-  * ``id`` - static ID's for authentication. In general local and remote 
+  * ``id`` - static ID's for authentication. In general local and remote
     address ``<x.x.x.x>``, ``<h:h:h:h:h:h:h:h>`` or ``%any``;
-  * ``secret`` - predefined shared secret. Used if configured mode 
+  * ``secret`` - predefined shared secret. Used if configured mode
     ``pre-shared-secret``;
 
 
@@ -110,7 +110,7 @@ Each site-to-site peer has the next options:
 
 * ``remote-address`` - remote IP address or hostname for IPSec connection.
   IPv4 or IPv6 address is used when a peer has a public static IP address.
-  Hostname is a DNS name which could be used when a peer has a public IP 
+  Hostname is a DNS name which could be used when a peer has a public IP
   address and DNS name, but an IP address could be changed from time to time.
 
 * ``tunnel`` - define criteria for traffic to be matched for encrypting and send
@@ -148,6 +148,10 @@ Each site-to-site peer has the next options:
 
  * ``esp-group`` - define ESP group for encrypt traffic, passed this VTI
    interface.
+
+* ``virtual-address`` - Defines a virtual IP address which is requested by the
+  initiator and one or several IPv4 and/or IPv6 addresses are assigned from
+  multiple pools by the responder.
 
 Examples:
 ------------------
@@ -241,13 +245,13 @@ If there is SNAT rules on eth1, need to add exclude rule
   # server side
   set nat source rule 10 destination address '10.0.0.0/24'
   set nat source rule 10 'exclude'
-  set nat source rule 10 outbound-interface 'eth1'
+  set nat source rule 10 outbound-interface name 'eth1'
   set nat source rule 10 source address '192.168.0.0/24'
 
   # remote office side
   set nat source rule 10 destination address '192.168.0.0/24'
   set nat source rule 10 'exclude'
-  set nat source rule 10 outbound-interface 'eth1'
+  set nat source rule 10 outbound-interface name 'eth1'
   set nat source rule 10 source address '10.0.0.0/24'
 
 To allow traffic to pass through to clients, you need to add the following
@@ -280,118 +284,144 @@ Imagine the following topology
 
    IPSec IKEv2 site2site VPN (source ./draw.io/vpn_s2s_ikev2.drawio)
 
+**LEFT:**
+* WAN interface on `eth0.201`
+* `eth0.201` interface IP: `172.18.201.10/24`
+* `vti10` interface IP: `10.0.0.2/31`
+* `dum0` interface IP: `10.0.11.1/24` (for testing purposes)
+
+**RIGHT:**
+* WAN interface on `eth0.202`
+* `eth0.201` interface IP: `172.18.202.10/24`
+* `vti10` interface IP: `10.0.0.3/31`
+* `dum0` interface IP: `10.0.12.1/24` (for testing purposes)
 
 .. note:: Don't get confused about the used /31 tunnel subnet. :rfc:`3021`
    gives you additional information for using /31 subnets on point-to-point
    links.
 
-**left**
+**LEFT**
 
 .. code-block:: none
 
+  set interfaces ethernet eth0 vif 201 address '172.18.201.10/24'
+  set interfaces dummy dum0 address '10.0.11.1/24'
   set interfaces vti vti10 address '10.0.0.2/31'
 
-  set vpn ipsec authentication psk OFFICE-B id '172.18.201.10'
-  set vpn ipsec authentication psk OFFICE-B id '172.18.202.10'
-  set vpn ipsec authentication psk OFFICE-B secret 'secretkey'
+  set vpn ipsec authentication psk peer_172-18-202-10 id '172.18.201.10'
+  set vpn ipsec authentication psk peer_172-18-202-10 id '172.18.202.10'
+  set vpn ipsec authentication psk peer_172-18-202-10 secret 'secretkey'
   set vpn ipsec esp-group ESP_DEFAULT lifetime '3600'
   set vpn ipsec esp-group ESP_DEFAULT mode 'tunnel'
   set vpn ipsec esp-group ESP_DEFAULT pfs 'dh-group19'
   set vpn ipsec esp-group ESP_DEFAULT proposal 10 encryption 'aes256gcm128'
   set vpn ipsec esp-group ESP_DEFAULT proposal 10 hash 'sha256'
+  set vpn ipsec ike-group IKEv2_DEFAULT close-action 'none'
+  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection action 'hold'
+  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection interval '30'
+  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection timeout '120'
+  set vpn ipsec ike-group IKEv2_DEFAULT disable-mobike
   set vpn ipsec ike-group IKEv2_DEFAULT key-exchange 'ikev2'
   set vpn ipsec ike-group IKEv2_DEFAULT lifetime '10800'
-  set vpn ipsec ike-group IKEv2_DEFAULT disable-mobike
   set vpn ipsec ike-group IKEv2_DEFAULT proposal 10 dh-group '19'
   set vpn ipsec ike-group IKEv2_DEFAULT proposal 10 encryption 'aes256gcm128'
   set vpn ipsec ike-group IKEv2_DEFAULT proposal 10 hash 'sha256'
   set vpn ipsec interface 'eth0.201'
-  set vpn ipsec site-to-site peer OFFICE-B authentication local-id '172.18.201.10'
-  set vpn ipsec site-to-site peer OFFICE-B authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer OFFICE-B authentication remote-id '172.18.202.10'
-  set vpn ipsec site-to-site peer OFFICE-B connection-type 'respond'
-  set vpn ipsec site-to-site peer OFFICE-B ike-group 'IKEv2_DEFAULT'
-  set vpn ipsec site-to-site peer OFFICE-B local-address '192.168.0.10'
-  set vpn ipsec site-to-site peer OFFICE-B remote-address '172.18.202.10'
-  set vpn ipsec site-to-site peer OFFICE-B vti bind 'vti10'
-  set vpn ipsec site-to-site peer OFFICE-B vti esp-group 'ESP_DEFAULT'
+  set vpn ipsec site-to-site peer peer_172-18-202-10 authentication local-id '172.18.201.10'
+  set vpn ipsec site-to-site peer peer_172-18-202-10 authentication mode 'pre-shared-secret'
+  set vpn ipsec site-to-site peer peer_172-18-202-10 authentication remote-id '172.18.202.10'
+  set vpn ipsec site-to-site peer peer_172-18-202-10 connection-type 'initiate'
+  set vpn ipsec site-to-site peer peer_172-18-202-10 ike-group 'IKEv2_DEFAULT'
+  set vpn ipsec site-to-site peer peer_172-18-202-10 ikev2-reauth 'inherit'
+  set vpn ipsec site-to-site peer peer_172-18-202-10 local-address '172.18.201.10'
+  set vpn ipsec site-to-site peer peer_172-18-202-10 remote-address '172.18.202.10'
+  set vpn ipsec site-to-site peer peer_172-18-202-10 vti bind 'vti10'
+  set vpn ipsec site-to-site peer peer_172-18-202-10 vti esp-group 'ESP_DEFAULT'
 
-**right**
+  set protocols static interface-route 10.0.12.0/24 next-hop-interface vti10
+
+**RIGHT**
 
 .. code-block:: none
 
+  set interfaces ethernet eth0 vif 202 address '172.18.202.10/24'
+  set interfaces dummy dum0 address '10.0.12.1/24'
   set interfaces vti vti10 address '10.0.0.3/31'
 
-  set vpn ipsec authentication psk OFFICE-A id '172.18.201.10'
-  set vpn ipsec authentication psk OFFICE-A id '172.18.202.10'
-  set vpn ipsec authentication psk OFFICE-A secret 'secretkey'
+  set vpn ipsec authentication psk peer_172-18-201-10 id '172.18.202.10'
+  set vpn ipsec authentication psk peer_172-18-201-10 id '172.18.201.10'
+  set vpn ipsec authentication psk peer_172-18-201-10 secret 'secretkey'
   set vpn ipsec esp-group ESP_DEFAULT lifetime '3600'
   set vpn ipsec esp-group ESP_DEFAULT mode 'tunnel'
   set vpn ipsec esp-group ESP_DEFAULT pfs 'dh-group19'
   set vpn ipsec esp-group ESP_DEFAULT proposal 10 encryption 'aes256gcm128'
   set vpn ipsec esp-group ESP_DEFAULT proposal 10 hash 'sha256'
-  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection action 'restart'
+  set vpn ipsec ike-group IKEv2_DEFAULT close-action 'none'
+  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection action 'hold'
   set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection interval '30'
   set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection timeout '120'
+  set vpn ipsec ike-group IKEv2_DEFAULT disable-mobike
   set vpn ipsec ike-group IKEv2_DEFAULT key-exchange 'ikev2'
   set vpn ipsec ike-group IKEv2_DEFAULT lifetime '10800'
-  set vpn ipsec ike-group IKEv2_DEFAULT disable-mobike
   set vpn ipsec ike-group IKEv2_DEFAULT proposal 10 dh-group '19'
   set vpn ipsec ike-group IKEv2_DEFAULT proposal 10 encryption 'aes256gcm128'
   set vpn ipsec ike-group IKEv2_DEFAULT proposal 10 hash 'sha256'
   set vpn ipsec interface 'eth0.202'
-  set vpn ipsec site-to-site peer OFFICE-A authentication local-id '172.18.202.10'
-  set vpn ipsec site-to-site peer OFFICE-A authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer OFFICE-A authentication remote-id '172.18.201.10'
-  set vpn ipsec site-to-site peer OFFICE-A connection-type 'initiate'
-  set vpn ipsec site-to-site peer OFFICE-A ike-group 'IKEv2_DEFAULT'
-  set vpn ipsec site-to-site peer OFFICE-A local-address '172.18.202.10'
-  set vpn ipsec site-to-site peer OFFICE-A remote-address '172.18.201.10'
-  set vpn ipsec site-to-site peer OFFICE-A vti bind 'vti10'
-  set vpn ipsec site-to-site peer OFFICE-A vti esp-group 'ESP_DEFAULT'
+  set vpn ipsec site-to-site peer peer_172-18-201-10 authentication local-id '172.18.202.10'
+  set vpn ipsec site-to-site peer peer_172-18-201-10 authentication mode 'pre-shared-secret'
+  set vpn ipsec site-to-site peer peer_172-18-201-10 authentication remote-id '172.18.201.10'
+  set vpn ipsec site-to-site peer peer_172-18-201-10 connection-type 'initiate'
+  set vpn ipsec site-to-site peer peer_172-18-201-10 ike-group 'IKEv2_DEFAULT'
+  set vpn ipsec site-to-site peer peer_172-18-201-10 ikev2-reauth 'inherit'
+  set vpn ipsec site-to-site peer peer_172-18-201-10 local-address '172.18.202.10'
+  set vpn ipsec site-to-site peer peer_172-18-201-10 remote-address '172.18.201.10'
+  set vpn ipsec site-to-site peer peer_172-18-201-10 vti bind 'vti10'
+  set vpn ipsec site-to-site peer peer_172-18-201-10 vti esp-group 'ESP_DEFAULT'
+
+  set protocols static interface-route 10.0.11.0/24 next-hop-interface vti10
 
 Key Parameters:
 
 * ``authentication local-id/remote-id`` - IKE identification is used for
   validation of VPN peer devices during IKE negotiation. If you do not configure
-  local/remote-identity, the device uses the IPv4 or IPv6 address that 
+  local/remote-identity, the device uses the IPv4 or IPv6 address that
   corresponds to the local/remote peer by default.
-  In certain network setups (like ipsec interface with dynamic address, or 
-  behind the NAT ), the IKE ID received from the peer does not match the IKE 
-  gateway configured on the device. This can lead to a Phase 1 validation 
+  In certain network setups (like ipsec interface with dynamic address, or
+  behind the NAT ), the IKE ID received from the peer does not match the IKE
+  gateway configured on the device. This can lead to a Phase 1 validation
   failure.
-  So, make sure to configure the local/remote id explicitly and ensure that the 
+  So, make sure to configure the local/remote id explicitly and ensure that the
   IKE ID is the same as the remote-identity configured on the peer device.
 
 * ``disable-route-autoinstall`` - This option when configured disables the
   routes installed in the default table 220 for site-to-site ipsec.
   It is mostly used with VTI configuration.
 
-* ``dead-peer-detection action = clear | hold | restart`` - R_U_THERE 
-  notification messages(IKEv1) or empty INFORMATIONAL messages (IKEv2) 
-  are periodically sent in order to check the liveliness of the IPsec peer. The 
-  values clear, hold, and restart all activate DPD and determine the action to 
+* ``dead-peer-detection action = clear | hold | restart`` - R_U_THERE
+  notification messages(IKEv1) or empty INFORMATIONAL messages (IKEv2)
+  are periodically sent in order to check the liveliness of the IPsec peer. The
+  values clear, hold, and restart all activate DPD and determine the action to
   perform on a timeout.
-  With ``clear`` the connection is closed with no further actions taken. 
-  ``hold`` installs a trap policy, which will catch matching traffic and tries 
-  to re-negotiate the connection on demand. 
-  ``restart`` will immediately trigger an attempt to re-negotiate the 
+  With ``clear`` the connection is closed with no further actions taken.
+  ``hold`` installs a trap policy, which will catch matching traffic and tries
+  to re-negotiate the connection on demand.
+  ``restart`` will immediately trigger an attempt to re-negotiate the
   connection.
 
-* ``close-action = none | clear | hold | restart`` - defines the action to take 
-  if the remote peer unexpectedly closes a CHILD_SA (see above for meaning of 
+* ``close-action = none | clear | hold | restart`` - defines the action to take
+  if the remote peer unexpectedly closes a CHILD_SA (see above for meaning of
   values). A closeaction should not be used if the peer uses reauthentication or
   uniqueids.
-  
-  When the close-action option is set on the peers, the connection-type 
+
+  When the close-action option is set on the peers, the connection-type
   of each peer has to considered carefully. For example, if the option is set
-  on both peers, then both would attempt to initiate and hold open multiple 
-  copies of each child SA. This might lead to instability of the device or 
-  cpu/memory utilization.   
-  
-  Below flow-chart could be a quick reference for the close-action 
-  combination depending on how the peer is configured.   
+  on both peers, then both would attempt to initiate and hold open multiple
+  copies of each child SA. This might lead to instability of the device or
+  cpu/memory utilization.
+
+  Below flow-chart could be a quick reference for the close-action
+  combination depending on how the peer is configured.
 
 .. figure:: /_static/images/IPSec_close_action_settings.jpg
-   
+
   Similar combinations are applicable for the dead-peer-detection.
