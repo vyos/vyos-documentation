@@ -8,6 +8,24 @@
    _ext/releasenotes.py
 
 
+2023-11-30
+==========
+
+* :vytask:`T4601` (bug): dhcp : relay agent IP address issue.
+
+
+2023-11-28
+==========
+
+* :vytask:`T5777` (bug): frr: backport and upstream recent bgpd daemon crashes
+
+
+2023-11-27
+==========
+
+* :vytask:`T5763` (bug): Fix imprecise check for remote file name in vyos-load-config.py
+
+
 2023-11-25
 ==========
 
