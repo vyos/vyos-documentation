@@ -8,6 +8,20 @@
    _ext/releasenotes.py
 
 
+2023-12-03
+==========
+
+* :vytask:`T5753` ``(feature): Add VXLAN vnifilter support``
+* :vytask:`T5759` ``(feature): Change VXLAN default MTU to 1500 bytes``
+
+
+2023-11-27
+==========
+
+* :vytask:`T5763` ``(bug): Fix imprecise check for remote file name in vyos-load-config.py``
+* :vytask:`T5783` ``(feature): frr: smoketests must notice any daemon crash``
+
+
 2023-11-26
 ==========
 
