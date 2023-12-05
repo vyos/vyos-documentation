@@ -57,48 +57,35 @@ Client Address Pools
 --------------------
 
 To automatically assign the client an IP address as tunnel endpoint, a
-client IP pool is needed. The source can be either RADIUS or a local
-subnet or IP range definition.
-
-Once the local tunnel endpoint ``set service pppoe-server gateway-address
-'10.1.1.2'`` has been defined, the client IP pool can be either defined
-as a range or as subnet using CIDR notation. If the CIDR notation is
-used, multiple subnets can be setup which are used sequentially.
+client IP pool is needed. The source can be either RADIUS or a
+named pool. There is possibility to create multiple named pools.
+Each named pool can include only one address range. To use multiple
+address ranges configure ``next-pool`` option.
 
 
 **Client IP address via IP range definition**
 
-.. cfgcmd:: set service pppoe-server client-ip-pool start <address>
+.. cfgcmd:: set service pppoe-server client-ip-pool <POOL-NAME> range <x.x.x.x-x.x.x.x | x.x.x.x/x>
 
-   Use this command to define the first IP address of a pool of
-   addresses to be given to PPPoE clients. It must be within a /24
-   subnet.
+   Use this command to define the IP address range to be given
+   to PPPoE clients. If notation ``x.x.x.x-x.x.x.x``,
+   it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
+   used there is possibility to set host/netmask.
 
-.. cfgcmd:: set service pppoe-server client-ip-pool stop <address>
+.. cfgcmd:: set service pppoe-server client-ip-pool <POOL-NAME> next-pool <NEXT-POOL-NAME>
 
-   Use this command to define the last IP address of a pool of
-   addresses to be given to PPPoE clients. It must be within a /24
-   subnet.
+   Use this command to define the next address pool name.
 
-.. code-block:: none
+.. cfgcmd:: set service pppoe-server default-pool <POOL-NAME>
 
-  set service pppoe-server client-ip-pool start '10.1.1.100'
-  set service pppoe-server client-ip-pool stop '10.1.1.111'
-
-
-**Client IP subnets via CIDR notation**
-
-.. cfgcmd:: set service pppoe-server client-ip-pool subnet <address>
-
-   Use this command for every pool of client IP addresses you want to
-   define. The addresses of this pool will be given to PPPoE clients.
-   You must use CIDR notation.
+   Use this command to define default address pool name.
 
 .. code-block:: none
 
-  set service pppoe-server client-ip-pool subnet '10.1.1.0/24'
-  set service pppoe-server client-ip-pool subnet '10.1.2.0/23'
-  set service pppoe-server client-ip-pool subnet '10.1.4.0/22'
+  set service pppoe-server client-ip-pool IP-POOL next-pool 'IP-POOL2'
+  set service pppoe-server client-ip-pool IP-POOL range '10.0.10.5/24'
+  set service pppoe-server client-ip-pool IP-POOL2 range '10.0.0.10-10.0.0.12'
+  set service pppoe-server default-pool 'IP-POOL'
 
 
 **RADIUS based IP pools (Framed-IP-Address)**
@@ -213,8 +200,8 @@ For Local Users
   set service pppoe-server authentication local-users username foo rate-limit download '20480'
   set service pppoe-server authentication local-users username foo rate-limit upload '10240'
   set service pppoe-server authentication mode 'local'
-  set service pppoe-server client-ip-pool start '10.1.1.100'
-  set service pppoe-server client-ip-pool stop '10.1.1.111'
+  set service pppoe-server client-ip-pool IP-POOL range '10.1.1.100/24'
+  set service pppoe-server default-pool 'IP-POOL'
   set service pppoe-server name-server '10.100.100.1'
   set service pppoe-server name-server '10.100.200.1'
   set service pppoe-server interface 'eth1'
@@ -367,8 +354,8 @@ address from the pool 10.1.1.100-111, terminates at the local endpoint
   set service pppoe-server access-concentrator 'ACN'
   set service pppoe-server authentication local-users username foo password 'bar'
   set service pppoe-server authentication mode 'local'
-  set service pppoe-server client-ip-pool start '10.1.1.100'
-  set service pppoe-server client-ip-pool stop '10.1.1.111'
+  set service pppoe-server client-ip-pool IP-POOL range '10.1.1.100-10.1.1.111'
+  set service pppoe-server default-pool 'IP-POOL'
   set service pppoe-server interface eth1
   set service pppoe-server gateway-address '10.1.1.2'
   set service pppoe-server name-server '10.100.100.1'
@@ -385,8 +372,8 @@ The example below covers a dual-stack configuration via pppoe-server.
 
   set service pppoe-server authentication local-users username test password 'test'
   set service pppoe-server authentication mode 'local'
-  set service pppoe-server client-ip-pool start '192.168.0.1'
-  set service pppoe-server client-ip-pool stop '192.168.0.10'
+  set service pppoe-server client-ip-pool IP-POOL range '192.168.0.1/24'
+  set service pppoe-server default-pool 'IP-POOL'
   set service pppoe-server client-ipv6-pool delegate '2001:db8:8003::/48' delegation-prefix '56'
   set service pppoe-server client-ipv6-pool prefix '2001:db8:8002::/48' mask '64'
   set service pppoe-server ppp-options ipv6 allow

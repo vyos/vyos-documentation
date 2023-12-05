@@ -17,8 +17,8 @@ with native Windows and Mac VPN clients):
   set vpn ipsec interface eth0
 
   set vpn l2tp remote-access outside-address 192.0.2.2
-  set vpn l2tp remote-access client-ip-pool start 192.168.255.2
-  set vpn l2tp remote-access client-ip-pool stop 192.168.255.254
+  set vpn l2tp remote-access client-ip-pool L2TP-POOL range 192.168.255.2-192.168.255.254
+  set vpn l2tp remote-access default-pool 'L2TP-POOL'
   set vpn l2tp remote-access ipsec-settings authentication mode pre-shared-secret
   set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret <secret>
   set vpn l2tp remote-access authentication mode local
@@ -95,8 +95,8 @@ Below is an example to configure a LNS:
 .. code-block:: none
 
   set vpn l2tp remote-access outside-address 192.0.2.2
-  set vpn l2tp remote-access client-ip-pool start 192.168.255.2
-  set vpn l2tp remote-access client-ip-pool stop 192.168.255.254
+  set vpn l2tp remote-access client-ip-pool L2TP-POOL range 192.168.255.2-192.168.255.254
+  set vpn l2tp remote-access default-pool 'L2TP-POOL'
   set vpn l2tp remote-access lns shared-secret 'secret'
   set vpn l2tp remote-access ccp-disable
   set vpn l2tp remote-access authentication mode local
@@ -122,8 +122,8 @@ The rate-limit is set in kbit/sec.
 .. code-block:: none
 
   set vpn l2tp remote-access outside-address 192.0.2.2
-  set vpn l2tp remote-access client-ip-pool start 192.168.255.2
-  set vpn l2tp remote-access client-ip-pool stop 192.168.255.254
+  set vpn l2tp remote-access client-ip-pool L2TP-POOL range 192.168.255.2-192.168.255.254
+  set vpn l2tp remote-access default-pool 'L2TP-POOL'
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password test
   set vpn l2tp remote-access authentication local-users username test rate-limit download 20480
