@@ -123,8 +123,45 @@ The action can be :
 .. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
    jump-target <text>
 
-   To be used only when action is set to jump. Use this command to specify
+   To be used only when action is set to ``jump``. Use this command to specify
    jump target.
+
+.. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
+   queue <0-65535>
+.. cfgcmd:: set firewall ipv4 input filter rule <1-999999>
+   queue <0-65535>
+.. cfgcmd:: set firewall ipv4 output filter rule <1-999999>
+   queue <0-65535>
+.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
+   queue <0-65535>
+
+   To be used only when action is set to ``queue``. Use this command to specify
+   queue target to use. Queue range is also supported.
+
+.. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
+   queue-options bypass
+.. cfgcmd:: set firewall ipv4 input filter rule <1-999999>
+   queue-options bypass
+.. cfgcmd:: set firewall ipv4 output filter rule <1-999999>
+   queue-options bypass
+.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
+   queue-options bypass
+
+   To be used only when action is set to ``queue``. Use this command to let
+   packet go through firewall when no userspace software is connected to the
+   queue.
+
+.. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
+   queue-options fanout
+.. cfgcmd:: set firewall ipv4 input filter rule <1-999999>
+   queue-options fanout
+.. cfgcmd:: set firewall ipv4 output filter rule <1-999999>
+   queue-options fanout
+.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
+   queue-options fanout
+
+   To be used only when action is set to ``queue``. Use this command to
+   distribute packets between several queues.
 
 Also, **default-action** is an action that takes place whenever a packet does
 not match any rule in it's chain. For base chains, possible options for
@@ -140,7 +177,7 @@ not match any rule in it's chain. For base chains, possible options for
    [accept | drop | jump | queue | reject | return]
 
    This set the default action of the rule-set if no rule matched a packet
-   criteria. If defacult-action is set to ``jump``, then
+   criteria. If default-action is set to ``jump``, then
    ``default-jump-target`` is also needed. Note that for base chains, default
    action can only be set to ``accept`` or ``drop``, while on custom chain,
    more actions are available.
@@ -153,7 +190,7 @@ not match any rule in it's chain. For base chains, possible options for
 .. note:: **Important note about default-actions:**
    If default action for any base chain is not defined, then the default
    action is set to **accept** for that chain. For custom chains, if default
-   action is not defined, then the default-action is set to **drop**
+   action is not defined, then the default-action is set to **drop**.
 
 Firewall Logs
 =============
@@ -162,15 +199,12 @@ Logging can be enable for every single firewall rule. If enabled, other
 log options can be defined. 
 
 .. cfgcmd:: set firewall ipv4 forward filter rule <1-999999> log
-   [disable | enable]
 .. cfgcmd:: set firewall ipv4 input filter rule <1-999999> log
-   [disable | enable]
 .. cfgcmd:: set firewall ipv4 output filter rule <1-999999> log
-   [disable | enable]
 .. cfgcmd:: set firewall ipv4 name <name> rule <1-999999> log
-   [disable | enable]
 
-   Enable or disable logging for the matched packet.
+   Enable logging for the matched packet. If this configuration command is not
+   present, then log is not enabled.
 
 .. cfgcmd:: set firewall ipv4 forward filter enable-default-log
 .. cfgcmd:: set firewall ipv4 input filter enable-default-log
@@ -266,7 +300,7 @@ just disable the rule, rather than removing it.
 Matching criteria
 =================
 
-There are a lot of matching criteria against which the package can be tested.
+There are a lot of matching criteria against which the packet can be tested.
 
 .. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
    connection-status nat [destination | source]
