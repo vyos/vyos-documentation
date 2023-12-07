@@ -81,6 +81,7 @@ Show commands
         static        Show IPv6 static routes
         summary       Show IPv6 routes summary
         table         Show IP routes in policy table
+        tag           Show only routes with tag
         vrf           Show IPv6 routes in VRF
 
 
@@ -112,33 +113,6 @@ Show commands
         <Enter>       Execute the current command
         <text>        Show specified IPv6 access-list
 
-.. opcmd:: show ipv6 bgp
-
-   Use this command to show IPv6 Border Gateway Protocol information.
-
-
-   In addition, you can specify many other parameters to get BGP
-   information:
-
-   .. code-block:: none
-
-      vyos@vyos:~$ show ipv6 bgp
-      Possible completions:
-        <Enter>       Execute the current command
-        <X:X::X:X>    Show BGP information for given address or prefix
-        <X:X::X:X/M>
-        community     Show routes matching the communities
-        community-list
-                      Show routes matching the community-list
-        filter-list   Show routes conforming to the filter-list
-        large-community
-                      Show routes matching the large-community-list
-        large-community-list
-        neighbors     Show detailed information on TCP and BGP neighbor connections
-        prefix-list   Show routes matching the prefix-list
-        regexp        Show routes matching the AS path regular expression
-        route-map     Show BGP routes matching the specified route map
-        summary       Show summary of BGP neighbor status
 
 
 .. opcmd:: show ipv6 ospfv3

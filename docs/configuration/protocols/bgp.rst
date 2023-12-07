@@ -952,7 +952,7 @@ Operational Mode Commands
 Show
 ====
 
-.. opcmd:: show <ip|ipv6> bgp
+.. opcmd:: show bgp <ipv4|ipv6>
 
    This command displays all entries in BGP routing table.
 
@@ -964,6 +964,7 @@ Show
                   i internal, r RIB-failure, S Stale, R Removed
    Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
    Origin codes:  i - IGP, e - EGP, ? - incomplete
+   RPKI validation codes: V valid, I invalid, N Not found
 
       Network          Next Hop            Metric LocPrf Weight Path
    *> 198.51.100.0/24  10.0.34.4                0             0 65004 i
@@ -971,7 +972,7 @@ Show
 
    Displayed  2 routes and 2 total paths
 
-.. opcmd:: show <ip|ipv6> bgp <address|prefix>
+.. opcmd:: show bgp <ipv4|ipv6> <address|prefix>
 
    This command displays information about the particular entry in the BGP
    routing table.
@@ -991,55 +992,55 @@ Show
 
    This command displays routes with classless interdomain routing (CIDR).
 
-.. opcmd:: show <ip|ipv6> bgp community <value>
+.. opcmd:: show bgp <ipv4|ipv6> community <value>
 
    This command displays routes that belong to specified BGP communities.
    Valid value is a community number in the range from 1 to 4294967200,
    or AA:NN (autonomous system-community number/2-byte number), no-export,
    local-as, or no-advertise.
 
-.. opcmd:: show <ip|ipv6> bgp community-list <name>
+.. opcmd:: show bgp <ipv4|ipv6> community-list <name>
 
    This command displays routes that are permitted by the BGP
    community list.
 
-.. opcmd:: show ip bgp dampened-paths
+.. opcmd:: show bgp <ipv4|ipv6> dampening dampened-paths
 
    This command displays BGP dampened routes.
 
-.. opcmd:: show ip bgp flap-statistics
+.. opcmd:: show bgp <ipv4|ipv6> dampening flap-statistics
 
    This command displays information about flapping BGP routes.
 
-.. opcmd:: show ip bgp filter-list <name>
+.. opcmd:: show bgp <ipv4|ipv6> filter-list <name>
 
    This command displays BGP routes allowed by the specified AS Path
    access list.
 
-.. opcmd:: show <ip|ipv6> bgp neighbors <address> advertised-routes
+.. opcmd:: show bgp <ipv4|ipv6> neighbors <address> advertised-routes
 
    This command displays BGP routes advertised to a neighbor.
 
-.. opcmd:: show <ip|ipv6> bgp neighbors <address> received-routes
+.. opcmd:: show bgp <ipv4|ipv6> neighbors <address> received-routes
 
    This command displays BGP routes originating from the specified BGP
    neighbor before inbound policy is applied. To use this command inbound
    soft reconfiguration must be enabled.
 
-.. opcmd:: show <ip|ipv6> bgp neighbors <address> routes
+.. opcmd:: show bgp <ipv4|ipv6> neighbors <address> routes
 
    This command displays BGP received-routes that are accepted after filtering.
 
-.. opcmd:: show <ip|ipv6> bgp neighbors <address> dampened-routes
+.. opcmd:: show bgp <ipv4|ipv6> neighbors <address> dampened-routes
 
    This command displays dampened routes received from BGP neighbor.
 
-.. opcmd:: show <ip|ipv6> bgp regexp <text>
+.. opcmd:: show bgp <ipv4|ipv6> regexp <text>
 
    This command displays information about BGP routes whose AS path
    matches the specified regular expression.
 
-.. opcmd:: show <ip|ipv6> bgp summary
+.. opcmd:: show bgp <ipv4|ipv6> summary
 
    This command displays the status of all BGP connections.
 
