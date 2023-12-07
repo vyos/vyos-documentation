@@ -8,6 +8,32 @@
    _ext/releasenotes.py
 
 
+2023-12-03
+==========
+
+* :vytask:`T5753` ``(feature): Add VXLAN vnifilter support``
+* :vytask:`T5759` ``(feature): Change VXLAN default MTU to 1500 bytes``
+
+
+2023-11-30
+==========
+
+* :vytask:`T4601` ``(bug): dhcp : relay agent IP address issue.``
+
+
+2023-11-28
+==========
+
+* :vytask:`T4276` ``(bug): IPsec peers dh-group negotiation issue with pfs enabled and multiple proposals configured with IKEv1``
+
+
+2023-11-27
+==========
+
+* :vytask:`T5763` ``(bug): Fix imprecise check for remote file name in vyos-load-config.py``
+* :vytask:`T5783` ``(feature): frr: smoketests must notice any daemon crash``
+
+
 2023-11-26
 ==========
 
