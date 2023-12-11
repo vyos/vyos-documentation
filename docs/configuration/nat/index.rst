@@ -9,4 +9,5 @@ NAT
    :includehidden:
 
    nat44
+   nat64
    nat66
