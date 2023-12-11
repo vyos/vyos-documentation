@@ -318,10 +318,12 @@ Route Map
    Set BGP local preference attribute.
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set metric
-   <+/-metric|0-4294967295>
+   <+/-metric|0-4294967295|rtt|+rtt|-rtt>
 
-   Set destination routing protocol metric. Add or subtract metric, or set
-   metric value.
+   Set the route metric. When used with BGP, set the BGP attribute MED
+   to a specific value. Use ``+/-`` to add or subtract the specified value
+   to/from the existing/MED. Use ``rtt`` to set the MED to the round trip
+   time or ``+rtt/-rtt`` to add/subtract the round trip time to/from the MED.
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set metric-type
    <type-1|type-2>
