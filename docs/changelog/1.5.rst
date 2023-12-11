@@ -8,6 +8,34 @@
    _ext/releasenotes.py
 
 
+2023-12-10
+==========
+
+* :vytask:`T5658` ``(default): Add VRF support for mtr``
+
+
+2023-12-09
+==========
+
+* :vytask:`T5808` ``(bug): op-mode: ipv6 ospfv3 graceful-restart description contains incorrect info``
+* :vytask:`T5802` ``(bug): ping (ip or hostname) interface <tab> produces error``
+* :vytask:`T5747` ``(feature): op-mode add MAC VRF and MTU for show interfaces summary``
+* :vytask:`T3983` ``(bug): show pki certificate Doesnt show x509 certificates``
+
+
+2023-12-08
+==========
+
+* :vytask:`T5782` ``(enhancment): Use a single config mode script for https and http-api``
+* :vytask:`T5768` ``(enhancment): Remove auxiliary http-api.conf for simplification of http-api config mode script``
+
+
+2023-12-04
+==========
+
+* :vytask:`T5769` ``(bug): VTI tunnels lose their v6 Link Local addresses when set down/up``
+
+
 2023-12-03
 ==========
 
