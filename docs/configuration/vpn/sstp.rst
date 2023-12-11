@@ -293,7 +293,8 @@ Example
   set vpn sstp authentication local-users username vyos password vyos
   set vpn sstp authentication mode local
   set vpn sstp gateway-address 192.0.2.254
-  set vpn sstp client-ip-pool subnet 192.0.2.0/25
+  set vpn sstp client-ip-pool SSTP-POOL range 192.0.2.0/25
+  set vpn sstp default-pool 'SSTP-POOL'
   set vpn sstp name-server 10.0.0.1
   set vpn sstp name-server 10.0.0.2
   set vpn sstp ssl ca-cert-file /config/auth/ca.crt
