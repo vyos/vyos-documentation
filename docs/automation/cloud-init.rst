@@ -44,7 +44,7 @@ described below.
 Cloud-config modules
 ********************
 
-In VyOS, by default, enabled only two modules:
+In VyOS, by default, enabled three modules:
 
 * ``write_files`` - this module allows to insert any files into the filesystem
   before the first boot, for example, pre-generated encryption keys,
@@ -52,13 +52,19 @@ In VyOS, by default, enabled only two modules:
 * ``vyos_userdata`` - the module accepts a list of CLI configuration commands in
   a ``vyos_config_commands`` section, which gives an easy way to configure the
   system during deployment.
+* ``vyos_install`` - this module allows to install VyOS without human intervention.
 
 ************************
 cloud-config file format
 ************************
 
 A cloud-config document is written in YAML. The file must begin
-with ``#cloud-config`` line. The key used to designate a VyOS configuration
+with ``#cloud-config`` line.
+
+************************
+Module vyos_userdata
+************************
+The key used to designate a VyOS configuration
 is ``vyos_config_commands``. What follows is VyOS configuration using
 the "set-style" syntax. Both "set" and "delete" commands are supported.
 
@@ -87,6 +93,28 @@ Here is an example cloud-config.
      - delete interfaces ethernet eth1 address 'dhcp'
      - set interfaces ethernet eth1 address '192.0.2.247/24'
      - set protocols static route 198.51.100.0/24 next-hop '192.0.2.1'
+
+************************
+Module vyos_install
+************************
+This module allows to install VyOS without human intervention.
+It will be useful for the installation via a network like PXE or USB flash install.
+After network boot or USB drive boot, this module runs automatic system installation with
+predefined grub parameters.
+The next possible option can be used.
+
+.. code-block:: yaml
+
+    #cloud-config
+    vyos_install:
+      activated: true # true - enable installer, false - disable. Default: false
+      post_reboot: true # true - reboot after installation, false - do not reboot. Default: false
+      ci_disable: true # true - disable cloud-init after installation, false - do not disable. Default: false
+      boot_params:
+        console_type: serial # type of console: kvm, serial. Default: kvm
+        serial_console_num: 1 # serial console number. Default: 0
+        serial_console_speed: 115200 # serial console speed. Default: 9600
+        cmdline_extra: nosmt mitigations=off # add extra parameters for kernel cmdline
 
 *************************
 System Defaults/Fallbacks
