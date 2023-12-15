@@ -11,6 +11,7 @@ System
    conntrack
    console
    flow-accounting
+   frr
    host-name
    ip
    ipv6
