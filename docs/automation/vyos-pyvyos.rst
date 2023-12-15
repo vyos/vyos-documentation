@@ -145,4 +145,4 @@ Configure, then Load File
     response = device.config_file_load(file="/config/test300.config")
 
 
-. _pyvyos: https://github.com/robertoberto/pyvyos
+.. _pyvyos: https://github.com/robertoberto/pyvyos
