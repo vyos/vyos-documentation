@@ -23,14 +23,16 @@ You can install PyVyOS using pip:
 Getting Started
 ---------------
 
-### Importing and Disabling Warnings for verify=False
+Importing and Disabling Warnings for verify=False
+-------------------------------------------------
 
 .. code-block:: none
 
     import urllib3
     urllib3.disable_warnings()
 
-### Using API Response Class
+Using API Response Class
+------------------------
 
 .. code-block:: none
 
@@ -41,7 +43,8 @@ Getting Started
         result: dict
         error: str
 
-### Initializing a VyDevice Object
+Initializing a VyDevice Object
+------------------------------
 
 .. code-block:: none
 
@@ -61,7 +64,8 @@ Getting Started
 Using PyVyOS
 ------------
 
-### Configure, then Set
+Configure, then Set
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -69,14 +73,16 @@ Using PyVyOS
     if not response.error:
         print(response.result)
 
-### Configure, then Show a Single Object Value
+Configure, then Show a Single Object Value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
     response = device.retrieve_return_values(path=["interfaces", "dummy", "dum1", "address"])
     print(response.result)
 
-### Configure, then Show Object
+Configure, then Show Object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -84,32 +90,37 @@ Using PyVyOS
     if not response.error:
         print(response.result)
 
-### Configure, then Delete Object
+Configure, then Delete Object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
     response = device.configure_delete(path=["interfaces", "dummy", "dum1"])
 
-### Configure, then Save
+Configure, then Save
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
     response = device.config_file_save()
 
-### Configure, then Save File
+Configure, then Save File
+-------------------------
 
 .. code-block:: none
 
     response = device.config_file_save(file="/config/test300.config")
 
-### Show Object
+Show Object
+^^^^^^^^^^^^^^
 
 .. code-block:: none
 
     response = device.show(path=["system", "image"])
     print(response.result)
 
-### Generate Object
+Generate Object
+^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -117,7 +128,8 @@ Using PyVyOS
     keyrand =  f'/tmp/key_{randstring}'
     response = device.generate(path=["ssh", "client-key", keyrand])
 
-### Reset Object
+Reset Object
+^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -125,10 +137,12 @@ Using PyVyOS
     if not response.error:
         print(response.result)
 
-### Configure, then Load File
+Configure, then Load File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
     response = device.config_file_load(file="/config/test300.config")
+
 
 . _pyvyos: https://github.com/robertoberto/pyvyos
