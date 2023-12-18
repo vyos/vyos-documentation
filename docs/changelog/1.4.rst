@@ -8,6 +8,45 @@
    _ext/releasenotes.py
 
 
+2023-12-15
+==========
+
+* :vytask:`T5824` ``(bug): busybox cannot connect some websites from initramfs``
+* :vytask:`T5803` ``(default): git/github: Adjust configuration for safe and baseline defaults``
+
+
+2023-12-14
+==========
+
+* :vytask:`T5773` ``(bug): Unable to load config via HTTP``
+* :vytask:`T5816` ``(bug): BGP Large Community List Validation Broken``
+* :vytask:`T5812` ``(bug): rollback check max revision number does not work``
+* :vytask:`T5749` ``(feature): Show MAC address VRF and MTU by default for "show interfaces"``
+* :vytask:`T5774` ``(bug): commit-archive to FTP server broken after update (VyOS 1.5-rolling)``
+* :vytask:`T5826` ``(default): Add dmicode as an explicit dependency``
+* :vytask:`T5793` ``(default): mdns-repeater: Cleanup avahi-daemon configuration in /etc``
+
+
+2023-12-13
+==========
+
+* :vytask:`T591` ``(feature): Support SRv6``
+
+
+2023-12-12
+==========
+
+* :vytask:`T4704` ``(feature): Allow to set metric  (MED) to rtt with rtt,+rtt or -rtt``
+* :vytask:`T5815` ``(enhancment): Add load_config module``
+* :vytask:`T5413` ``(default): Deny the opportunity to use one public/private key pair on both wireguard peers.``
+
+
+2023-12-11
+==========
+
+* :vytask:`T5741` ``(bug): WAN Load Balancing failover route tables aren't created``
+
+
 2023-12-10
 ==========
 

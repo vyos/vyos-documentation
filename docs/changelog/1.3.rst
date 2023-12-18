@@ -8,6 +8,19 @@
    _ext/releasenotes.py
 
 
+2023-12-15
+==========
+
+* :vytask:`T5824` ``(bug): busybox cannot connect some websites from initramfs``
+
+
+2023-12-12
+==========
+
+* :vytask:`T5817` ``(bug): Show openvpn server fails in some cases``
+* :vytask:`T5413` ``(default): Deny the opportunity to use one public/private key pair on both wireguard peers.``
+
+
 2023-11-30
 ==========
 
