@@ -196,7 +196,7 @@ traffic.
   set interfaces wireguard wg01 peer to-wg01 allowed-ips '192.168.1.0/24'
   set interfaces wireguard wg01 peer to-wg01 address '192.0.2.2'
   set interfaces wireguard wg01 peer to-wg01 port '51820'
-  set interfaces wireguard wg01 peer to-wg01 public-key 'EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw='
+  set interfaces wireguard wg01 peer to-wg01 pubkey 'EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw='
   set interfaces wireguard wg01 port '51820'
   set interfaces wireguard wg01 private-key 'OLTQY3HuK5qWDgVs6fJR093SwPgOmCKkDI1+vJLGoFU='
 
