@@ -24,8 +24,8 @@ also set up your own build machine and run a :ref:`build_native`.
    outlined in this chapter.
 
 This will guide you through the process of building a VyOS ISO using Docker_.
-This process has been tested on clean installs of Debian Jessie, Stretch, and
-Buster.
+This process has been tested on clean installs of Debian Bullseye (11) and 
+Bookworm (12).
 
 .. _build_docker:
 
