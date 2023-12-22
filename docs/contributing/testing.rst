@@ -4,10 +4,11 @@
 Testing
 #######
 
-One of the major advantages introduced in VyOS 1.3 is an autmated test framework.
-When assembling an ISO image multiple things can go wrong badly and publishing
-a faulty ISO makes no sense. The user is disappointed by the quality of the image
-and the developers get flodded with bug reports over and over again.
+One of the major advantages introduced in VyOS 1.3 is an automated test
+framework. When assembling an ISO image multiple things can go wrong badly and
+publishing a faulty ISO makes no sense. The user is disappointed by the quality
+of the image and the developers get flodded with bug reports over and over
+again.
 
 As the VyOS documentation is not only for users but also for the developers -
 and we keep no secret documentation - this section describes how the automated
