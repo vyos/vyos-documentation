@@ -23,9 +23,53 @@ also set up your own build machine and run a :ref:`build_native`.
    The source code remains public and an ISO can be built using the process
    outlined in this chapter.
 
+.. _build_native:
+
+Native Build
+============
+
+To build VyOS natively you require a properly configured build host with the
+following Debian versions installed:
+
+- Debian Jessie for VyOS 1.2 (crux)
+- Debian Buster for VyOS 1.3 (equuleus) 
+- Debian Bullseye for VyOS 1.4 (sagitta) 
+- Debian unknown for VyOS 1.5 (circinus, current) - aka the rolling release
+
+To start, clone the repository to your local machine:
+
+.. code-block:: none
+
+  # For VyOS 1.2 (crux)
+  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
+
+  # For VyOS 1.3 (equuleus)
+  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
+
+  # For VyOS 1.4 (sagitta)
+  $ git clone -b sagitta --single-branch https://github.com/vyos/vyos-build
+
+  # For VyOS 1.5 (circinus, current)
+  $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+
+  $ cd vyos-build
+
+  # For VyOS 1.2 (crux) and VyOS 1.3 (equuleus)
+  $ ./configure --architecture amd64 --build-by "j.randomhacker@vyos.io"
+  $ sudo make iso
+
+  # For VyOS 1.4 (sagitta)
+  $ sudo make clean
+  $ sudo ./build-vyos-image iso --architecture amd64 --build-by "j.randomhacker@vyos.io"
+
+For the packages required, you can refer to the ``docker/Dockerfile`` file
+in the repository_. The ``./build-vyos-image`` script will also warn you if any
+dependencies are missing.
+
+
 This will guide you through the process of building a VyOS ISO using Docker_.
-This process has been tested on clean installs of Debian Jessie, Stretch, and
-Buster.
+This process has been tested on clean installs of Debian Bullseye (11) and 
+Bookworm (12).
 
 .. _build_docker:
 
@@ -140,40 +184,6 @@ your development containers in your current working directory.
    need to start your Docker container using the following argument:
    ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will
    fail.
-
-.. _build_native:
-
-Native Build
-============
-
-To build VyOS natively you require a properly configured build host with the
-following Debian versions installed:
-
-- Debian Jessie for VyOS 1.2 (crux)
-- Debian Buster for VyOS 1.3 (equuleus) 
-- Debian Bullseye for VyOS 1.4 (sagitta, current) - aka the rolling release
-
-To start, clone the repository to your local machine:
-
-.. code-block:: none
-
-  # For VyOS 1.2 (crux)
-  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
-
-  # For VyOS 1.3 (equuleus)
-  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
-
-  # For VyOS 1.4 (sagitta, current)
-  $ git clone -b current --single-branch https://github.com/vyos/vyos-build
-
-
-For the packages required, you can refer to the ``docker/Dockerfile`` file
-in the repository_. The ``./build-vyos-image`` script will also warn you if any
-dependencies are missing.
-
-Once you have the required dependencies installed, you may proceed with the
-steps described in :ref:`build_iso`.
-
 
 .. _build_iso:
 
