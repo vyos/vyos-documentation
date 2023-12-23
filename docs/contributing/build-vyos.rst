@@ -23,6 +23,10 @@ also set up your own build machine and run a :ref:`build_native`.
    The source code remains public and an ISO can be built using the process
    outlined in this chapter.
 
+   Due to changes in software versions, VyOS 1.3 and earlier versions are no 
+   longer available below. Please refer to the instructions for previous 
+   versions if needed.
+
 .. _build_native:
 
 Native Build
@@ -31,20 +35,12 @@ Native Build
 To build VyOS natively you require a properly configured build host with the
 following Debian versions installed:
 
-- Debian Jessie for VyOS 1.2 (crux)
-- Debian Buster for VyOS 1.3 (equuleus) 
 - Debian Bookworm for VyOS 1.4 (sagitta) 
 - Debian Bookworm for VyOS 1.5 (circinus, current) - aka the rolling release
 
 To start, clone the repository to your local machine:
 
 .. code-block:: none
-
-  # For VyOS 1.2 (crux)
-  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
-
-  # For VyOS 1.3 (equuleus)
-  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
 
   # For VyOS 1.4 (sagitta)
   $ git clone -b sagitta --single-branch https://github.com/vyos/vyos-build
@@ -54,11 +50,7 @@ To start, clone the repository to your local machine:
 
   $ cd vyos-build
 
-  # For VyOS 1.2 (crux) and VyOS 1.3 (equuleus)
-  $ ./configure --architecture amd64 --build-by "j.randomhacker@vyos.io"
-  $ sudo make iso
-
-  # For VyOS 1.4 (sagitta)
+  # For VyOS 1.4 (sagitta) and For VyOS 1.5 (circinus, current)
   $ sudo make clean
   $ sudo ./build-vyos-image iso --architecture amd64 --build-by "j.randomhacker@vyos.io"
 
@@ -67,14 +59,14 @@ in the repository_. The ``./build-vyos-image`` script will also warn you if any
 dependencies are missing.
 
 
-This will guide you through the process of building a VyOS ISO using Docker_.
-This process has been tested on clean installs of Debian Bullseye (11) and 
-Bookworm (12).
-
 .. _build_docker:
 
 Docker
 ======
+
+This will guide you through the process of building a VyOS ISO using Docker_.
+This process has been tested on clean installs of Debian Bullseye (11) and 
+Bookworm (12).
 
 Installing Docker_ and prerequisites:
 
@@ -846,7 +838,7 @@ information.
 
 .. stop_vyoslinter
 
-.. _Docker: https://www.docker.com
+.. _Docker: https://docs.docker.com/engine/install/debian/
 .. _`Docker as non-root`: https://docs.docker.com/engine/install/linux-postinstall
 .. _VyOS DockerHub organisation: https://hub.docker.com/u/vyos
 .. _repository: https://github.com/vyos/vyos-build
