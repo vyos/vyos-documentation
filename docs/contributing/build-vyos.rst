@@ -33,8 +33,8 @@ following Debian versions installed:
 
 - Debian Jessie for VyOS 1.2 (crux)
 - Debian Buster for VyOS 1.3 (equuleus) 
-- Debian Bullseye for VyOS 1.4 (sagitta) 
-- Debian unknown for VyOS 1.5 (circinus, current) - aka the rolling release
+- Debian Bookworm for VyOS 1.4 (sagitta) 
+- Debian Bookworm for VyOS 1.5 (circinus, current) - aka the rolling release
 
 To start, clone the repository to your local machine:
 
