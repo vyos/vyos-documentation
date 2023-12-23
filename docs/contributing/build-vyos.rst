@@ -836,7 +836,7 @@ information.
 
 .. stop_vyoslinter
 
-.. _Docker: https://www.docker.com
+.. _Docker: https://docs.docker.com/engine/install/debian/
 .. _`Docker as non-root`: https://docs.docker.com/engine/install/linux-postinstall
 .. _VyOS DockerHub organisation: https://hub.docker.com/u/vyos
 .. _repository: https://github.com/vyos/vyos-build
