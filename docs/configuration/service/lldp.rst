@@ -54,7 +54,7 @@ Configuration
    Disable transmit of LLDP frames on given `<interface>`. Useful to exclude
    certain interfaces from LLDP when ``all`` have been enabled.
 
-.. cfgcmd:: set service lldp snmp enable
+.. cfgcmd:: set service lldp snmp
 
    Enable SNMP queries of the LLDP database
 
