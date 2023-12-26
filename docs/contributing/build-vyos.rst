@@ -158,7 +158,7 @@ per release train (`current` or `crux`) - container. Add the following to your
 
   alias vybld='docker pull vyos/vyos-build:current && docker run --rm -it \
       -v "$(pwd)":/vyos \
-      -v "$HOME/.gitconfig":/etc/gitconfig \
+      -v "$HOME/.gitconfig":/etc/.gitconfig \
       -v "$HOME/.bash_aliases":/home/vyos_bld/.bash_aliases \
       -v "$HOME/.bashrc":/home/vyos_bld/.bashrc \
       -w /vyos --privileged --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
@@ -167,7 +167,7 @@ per release train (`current` or `crux`) - container. Add the following to your
 
   alias vybld_crux='docker pull vyos/vyos-build:crux && docker run --rm -it \
       -v "$(pwd)":/vyos \
-      -v "$HOME/.gitconfig":/etc/gitconfig \
+      -v "$HOME/.gitconfig":/etc/.gitconfig \
       -v "$HOME/.bash_aliases":/home/vyos_bld/.bash_aliases \
       -v "$HOME/.bashrc":/home/vyos_bld/.bashrc \
       -w /vyos --privileged --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
