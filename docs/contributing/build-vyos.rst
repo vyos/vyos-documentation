@@ -165,16 +165,16 @@ per release train (`current` or `crux`) - container. Add the following to your
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:current bash'
 
-  alias vybld_crux='docker pull vyos/vyos-build:crux && docker run --rm -it \
+  alias vybld_sagitta='docker pull vyos/vyos-build:sagitta && docker run --rm -it \
       -v "$(pwd)":/vyos \
       -v "$HOME/.gitconfig":/etc/gitconfig \
       -v "$HOME/.bash_aliases":/home/vyos_bld/.bash_aliases \
       -v "$HOME/.bashrc":/home/vyos_bld/.bashrc \
       -w /vyos --privileged --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
-      vyos/vyos-build:crux bash'
+      vyos/vyos-build:sagitta bash'
 
-Now you are prepared with two new aliases ``vybld`` and ``vybld_crux`` to spawn
+Now you are prepared with two new aliases ``vybld`` and ``vybld_sagitta`` to spawn
 your development containers in your current working directory.
 
 .. note:: Some VyOS packages (namely vyos-1x) come with build-time tests which
@@ -400,7 +400,7 @@ Linux Kernel
 ============
 
 The Linux kernel used by VyOS is heavily tied to the ISO build process. The
-file ``data/defaults.json`` hosts a JSON definition of the kernel version used
+file ``data/defaults.toml`` hosts a TOML definition of the kernel version used
 ``kernel_version`` and the ``kernel_flavor`` of the kernel which represents the
 kernel's LOCAL_VERSION. Both together form the kernel version variable in the
 system:
@@ -455,7 +455,7 @@ Clone the kernel source to `vyos-build/packages/linux-kernel/`:
   $ cd vyos-build/packages/linux-kernel/
   $ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 
-Check out the required kernel version - see ``vyos-build/data/defaults.json``
+Check out the required kernel version - see ``vyos-build/data/defaults.toml``
 file (example uses kernel 4.19.146):
 
 .. code-block:: none
