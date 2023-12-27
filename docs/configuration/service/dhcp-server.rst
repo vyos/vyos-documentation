@@ -549,17 +549,42 @@ Operation Mode
 .. code-block:: none
 
   vyos@vyos:~$ show dhcp server leases
-  IP address      Hardware address    State    Lease start          Lease expiration     Remaining   Pool         Hostname
-  --------------  ------------------  -------  -------------------  -------------------  ----------  -----------  ---------
-  192.0.2.104     00:53:01:dd:ee:ff   active   2019/12/05 14:24:23  2019/12/06 02:24:23  6:05:35     dhcpexample  test1
-  192.0.2.115     00:53:01:ae:af:bf   active   2019/12/05 18:02:37  2019/12/06 06:02:37  9:43:49     dhcpexample  test2
+  IP Address      MAC address        State    Lease start          Lease expiration     Remaining    Pool      Hostname    Origin
+  --------------  -----------------  -------  -------------------  -------------------  -----------  --------  ----------  --------
+  192.168.11.134  00:50:79:66:68:09  active   2023/11/29 09:51:05  2023/11/29 10:21:05  0:24:10      LAN       VPCS1       local
+  192.168.11.133  50:00:00:06:00:00  active   2023/11/29 09:51:38  2023/11/29 10:21:38  0:24:43      LAN       VYOS-6      local
+  10.11.11.108    50:00:00:05:00:00  active   2023/11/29 09:51:43  2023/11/29 10:21:43  0:24:48      VIF-1001  VYOS5       local
+  192.168.11.135  00:50:79:66:68:07  active   2023/11/29 09:55:16  2023/11/29 09:59:16  0:02:21                            remote
+  vyos@vyos:~$
 
 .. hint:: Static mappings aren't shown. To show all states, use
    ``show dhcp server leases state all``.
 
+.. opcmd:: show dhcp server leases origin [local | remote]
+
+   Show statuses of all active leases granted by local (this server) or
+   remote (failover server):
+
+.. code-block:: none
+
+  vyos@vyos:~$ show dhcp server leases origin remote
+  IP Address      MAC address        State    Lease start          Lease expiration     Remaining    Pool      Hostname    Origin
+  --------------  -----------------  -------  -------------------  -------------------  -----------  --------  ----------  --------
+  192.168.11.135  00:50:79:66:68:07  active   2023/11/29 09:55:16  2023/11/29 09:59:16  0:02:21                            remote
+  vyos@vyos:~$
+
 .. opcmd:: show dhcp server leases pool <pool>
 
    Show only leases in the specified pool.
+
+.. code-block:: none
+
+  vyos@vyos:~$ show dhcp server leases pool LAN
+  IP Address      MAC address        State    Lease start          Lease expiration     Remaining    Pool    Hostname    Origin
+  --------------  -----------------  -------  -------------------  -------------------  -----------  ------  ----------  --------
+  192.168.11.134  00:50:79:66:68:09  active   2023/11/29 09:51:05  2023/11/29 10:21:05  0:23:55      LAN     VPCS1       local
+  192.168.11.133  50:00:00:06:00:00  active   2023/11/29 09:51:38  2023/11/29 10:21:38  0:24:28      LAN     VYOS-6      local
+  vyos@vyos:~$
 
 .. opcmd:: show dhcp server leases sort <key>
 
@@ -570,7 +595,6 @@ Operation Mode
 
    Show only leases with the specified state. Possible states: all, active,
    free, expired, released, abandoned, reset, backup (default = active)
-
 
 
 ***********
