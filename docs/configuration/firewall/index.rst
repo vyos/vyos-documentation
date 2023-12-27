@@ -1,16 +1,8 @@
-:lastproofread: 2023-11-08
+:lastproofread: 2023-11-23
 
 ########
 Firewall
 ########
-
-.. attention:: 
-   Starting from VyOS 1.4-rolling-202308040557, a new firewall structure
-   can be found on all vyos installations.
-
-***************
-Netfilter based
-***************
 
 With VyOS being based on top of Linux and its kernel, the Netfilter project
 created the iptables and now the successor nftables for the Linux kernel to
@@ -155,34 +147,12 @@ configuration:
    ipv4
    ipv6
    flowtables
-   zone
 
 .. note:: **For more information**
    of Netfilter hooks and Linux networking packet flows can be
    found in `Netfilter-Hooks
    <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_
 
-***************
-Legacy Firewall
-***************
-
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
-
-   general-legacy
-
-Traditionally firewalls weere configured with the concept of data going in and
-out of an interface. The router just listened to the data flowing through and
-responding as required if it was directed at the router itself.
-
-To configure VyOS with the
-:doc:`legacy firewall configuration </configuration/firewall/general-legacy>`
-
-As the example image below shows, the device was configured with rules blocking
-inbound or outbound traffic on each interface.
-
-.. figure:: /_static/images/firewall-traditional.png
 
 Zone-based firewall
 ^^^^^^^^^^^^^^^^^^^
