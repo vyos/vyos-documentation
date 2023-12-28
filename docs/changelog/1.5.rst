@@ -8,6 +8,55 @@
    _ext/releasenotes.py
 
 
+2023-12-23
+==========
+
+* :vytask:`T5678` ``(feature): Improvements in PPPoE configuration``
+
+
+2023-12-22
+==========
+
+* :vytask:`T5804` ``(bug): SNAT "any" interface error``
+
+
+2023-12-21
+==========
+
+* :vytask:`T5807` ``(bug): NAT66  op-mode bugs``
+* :vytask:`T5778` ``(bug): The show dhcp server leases operation mode command does not work as expected``
+* :vytask:`T5775` ``(default): Migrated Firewall Global State Policy ineffective on latest firewall zone config``
+* :vytask:`T5676` ``(bug): NAT66 source rule with negation source/destination prefix causes TypeError``
+* :vytask:`T5637` ``(bug): Firewall default-action log``
+* :vytask:`T5796` ``(bug): Openconnect - HTTPS  security headers are missing``
+
+
+2023-12-20
+==========
+
+* :vytask:`T5823` ``(feature): Protocol BGP add default values for config dictionary``
+* :vytask:`T5798` ``(enhancment): reverse-proxy load-balancing service should support multiple certificates for frontend``
+
+
+2023-12-19
+==========
+
+* :vytask:`T5828` ``(default): Fix GRUB installation on arm64``
+
+
+2023-12-18
+==========
+
+* :vytask:`T5751` ``(feature): Adjust new image tools for non-interactive use``
+* :vytask:`T5831` ``(feature): show system image should reverse order by addition date``
+* :vytask:`T5825` ``(bug): image-tools: restore authentication on 'add system image'``
+* :vytask:`T5821` ``(bug): image-tools: restore vrf-aware 'add system image'``
+* :vytask:`T5819` ``(bug): Don't echo password on install image``
+* :vytask:`T5806` ``(bug): Clear old raid data on new install image``
+* :vytask:`T5789` ``(bug): image-tools should copy ssh host keys on image update``
+* :vytask:`T5758` ``(default): Restore scanning configs when live installing``
+
+
 2023-12-15
 ==========
 

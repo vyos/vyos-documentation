@@ -8,6 +8,34 @@
    _ext/releasenotes.py
 
 
+2023-12-22
+==========
+
+* :vytask:`T4760` ``(bug): VyOS does not support running multiple instances of DHCPv6 clients``
+
+
+2023-12-21
+==========
+
+* :vytask:`T5714` ``(bug): IPSec VPN: op-mode: "show log vpn" does not show results``
+* :vytask:`T3039` ``(feature): Resize a root partition and filesystem automatically during deployment in virtual environments``
+* :vytask:`T2404` ``(bug): Cannot change MTU``
+* :vytask:`T2353` ``(bug): Interface [conf_mode] errors parent task``
+* :vytask:`T5796` ``(bug): Openconnect - HTTPS  security headers are missing``
+
+
+2023-12-19
+==========
+
+* :vytask:`T2116` ``(feature): Processing configuration via Cloud-init User-Data``
+
+
+2023-12-18
+==========
+
+* :vytask:`T2191` ``(feature): Using tallow to block sshd probes``
+
+
 2023-12-15
 ==========
 
