@@ -84,7 +84,8 @@ Docker
 
 Installing Docker_ and prerequisites:
 
-.. hint:: Due to the updated version of Docker, the following examples may become invalid.
+.. hint:: Due to the updated version of Docker, the following examples may 
+   become invalid.
 
 .. code-block:: none
 
