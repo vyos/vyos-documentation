@@ -1,4 +1,4 @@
-:lastproofread: 2023-12-026
+:lastproofread: 2023-12-26
 
 .. _firewall-global-options-configuration:
 

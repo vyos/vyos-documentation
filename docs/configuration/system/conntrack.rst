@@ -46,9 +46,23 @@ Configure
     | Use `delete system conntrack modules` to deactive all modules.
     | Or, for example ftp, `delete system conntrack modules ftp`.
 
+.. cfgcmd:: set system conntrack tcp half-open-connections <1-21474836>
+    :defaultvalue:
 
-Define Conection Timeouts
-=========================
+    Set the maximum number of TCP half-open connections.
+
+.. cfgcmd:: set system conntrack tcp loose <enable | disable>
+    :defaultvalue:
+
+    Policy to track previously established connections.
+
+.. cfgcmd:: set system conntrack tcp max-retrans <1-2147483647>
+    :defaultvalue:
+
+    Set the number of TCP maximum retransmit attempts.
+
+Contrack Timeouts
+=================
 
 VyOS supports setting timeouts for connections according to the
 connection type. You can set timeout values for generic connections, for ICMP
@@ -82,34 +96,48 @@ states.
 
     Set the timeout in secounds for a protocol or state.
 
-
 You can also define custom timeout values to apply to a specific subset of
 connections, based on a packet and flow selector. To do this, you need to
 create a rule defining the packet and flow selector.
 
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> description <test>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   description <test>
 
     Set a rule description.
 
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   destination address <ip-address>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   source address <ip-address>
 
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> destination address <ip-address>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> source address <ip-address>
-
-    set a destination and/or source address. Accepted input:
+    Set a destination and/or source address. Accepted input for ipv4:
 
     .. code-block:: none
 
-        <x.x.x.x>    IP address to match
-        <x.x.x.x/x>  Subnet to match
-        <x.x.x.x>-<x.x.x.x>
-                        IP range to match
-        !<x.x.x.x>   Match everything except the specified address
-        !<x.x.x.x/x> Match everything except the specified subnet
-        !<x.x.x.x>-<x.x.x.x>
-                        Match everything except the specified range
+        set system conntrack timeout custom ipv4 rule <1-999999> [source | destination] address
+        Possible completions:
+           <x.x.x.x>            IPv4 address to match
+           <x.x.x.x/x>          IPv4 prefix to match
+           <x.x.x.x>-<x.x.x.x>  IPv4 address range to match
+           !<x.x.x.x>           Match everything except the specified address
+           !<x.x.x.x/x>         Match everything except the specified prefix
+           !<x.x.x.x>-<x.x.x.x> Match everything except the specified range
 
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> destination port <value>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> source port <value>
+        set system conntrack timeout custom ipv6 rule <1-999999> [source | destination] address
+        Possible completions:
+           <h:h:h:h:h:h:h:h>    IP address to match
+           <h:h:h:h:h:h:h:h/x>  Subnet to match
+           <h:h:h:h:h:h:h:h>-<h:h:h:h:h:h:h:h>
+                                IP range to match
+           !<h:h:h:h:h:h:h:h>   Match everything except the specified address
+           !<h:h:h:h:h:h:h:h/x> Match everything except the specified prefix
+           !<h:h:h:h:h:h:h:h>-<h:h:h:h:h:h:h:h>
+                                Match everything except the specified range
+
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   destination port <value>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   source port <value>
 
     Set a destination and/or source port. Accepted input:
 
@@ -123,48 +151,57 @@ create a rule defining the packet and flow selector.
     The whole list can also be "negated" using '!'. For example:
     `!22,telnet,http,123,1001-1005``
 
-            
-
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol icmp <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol other <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp close <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp close-wait <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp established <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp fin-wait <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp last-ack <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp syn-recv <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp syn-sent <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol tcp time-wait <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol udp other <1-21474836>
-.. cfgcmd:: set system conntrack timeout custom rule <1-9999> protocol udp stream <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   protocol tcp close <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   protocol tcp close-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   protocol tcp established <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   protocol tcp fin-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   protocol tcp last-ack <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   protocol tcp syn-recv <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   protocol tcp syn-sent <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   protocol tcp time-wait <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   protocol udp replied <1-21474836>
+.. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+   protocol udp unreplied <1-21474836>
 
     Set the timeout in secounds for a protocol or state in a custom rule.
 
-
-.. cfgcmd:: set system conntrack tcp half-open-connections <1-21474836>
-    :defaultvalue:
-
-    Set the maximum number of TCP half-open connections.
-
-.. cfgcmd:: set system conntrack tcp loose <enable | disable>
-    :defaultvalue:
-
-    Policy to track previously established connections.
-
-.. cfgcmd:: set system conntrack tcp max-retrans <1-2147483647>
-    :defaultvalue:
-
-    Set the number of TCP maximum retransmit attempts.
-
-.. cfgcmd:: set system conntrack ignore rule <1-9999> description <text>
-.. cfgcmd:: set system conntrack ignore rule <1-9999> destination address <ip-address>
-.. cfgcmd:: set system conntrack ignore rule <1-9999> destination port <port>
-.. cfgcmd:: set system conntrack ignore rule <1-9999> inbound-interface <interface>
-.. cfgcmd:: set system conntrack ignore rule <1-9999> protocol <protocol>
-.. cfgcmd:: set system conntrack ignore rule <1-9999> source address <ip-address>
-.. cfgcmd:: set system conntrack ignore rule <1-9999> source port <port>
+Conntrack ignore rules
+======================
 
     Customized ignore rules, based on a packet and flow selector.
+
+.. cfgcmd:: set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+   description <text>
+.. cfgcmd:: set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+   destination address <ip-address>
+.. cfgcmd:: set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+   destination port <port>
+.. cfgcmd:: set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+   inbound-interface <interface>
+.. cfgcmd:: set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+   protocol <protocol>
+.. cfgcmd:: set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+   source address <ip-address>
+.. cfgcmd:: set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+   source port <port>
+.. cfgcmd:: set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+   tcp flags [not] <text>
+
+   Allowed values fpr TCP flags: ``ack``, ``cwr``, ``ecn``, ``fin``, ``psh``,
+   ``rst``, ``syn`` and ``urg``. Multiple values are supported, and for
+   inverted selection use ``not``, as shown in the example.
+
+Conntrack log
+=============
 
 .. cfgcmd:: set system conntrack log icmp destroy
 .. cfgcmd:: set system conntrack log icmp new
