@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2023-12-29
+==========
+
+* :vytask:`T5852` ``(bug): Reboots fail with eapol WAN interface``
+
+
 2023-12-22
 ==========
 

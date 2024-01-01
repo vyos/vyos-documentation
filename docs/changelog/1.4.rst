@@ -8,6 +8,41 @@
    _ext/releasenotes.py
 
 
+2023-12-30
+==========
+
+* :vytask:`T5875` ``(bug): login: removing and re-adding a user keeps the home directory but UID will change, thus SSH keys no longer work``
+* :vytask:`T5653` ``(feature): Command to display fingerprint``
+
+
+2023-12-29
+==========
+
+* :vytask:`T5829` ``(bug): Can't Add IPv6 Address to Containers``
+* :vytask:`T5852` ``(bug): Reboots fail with eapol WAN interface``
+* :vytask:`T5869` ``(bug): vyos.template.first_host_address() does not honor RFC4291 section 2.6.1``
+
+
+2023-12-28
+==========
+
+* :vytask:`T4163` ``(feature): [BMP-BGP]  Routing monitoring  feature``
+* :vytask:`T5867` ``(feature): Upgrade podman to Debian Trixie version 4.7.x``
+* :vytask:`T5866` ``(feature): Add op-mode command to restart IPv6 RA daemon``
+* :vytask:`T5861` ``(bug): Flavor build system fails with third-party packages``
+* :vytask:`T5854` ``(feature): Extend override-default script to allow embedded defaultValue settings``
+* :vytask:`T5566` ``(feature): Be able to disable 802.3az/EEE (energy efficient ethernet) for a particular interface``
+* :vytask:`T5792` ``(default): Upgrade ddclient 3.11.2 release``
+
+
+2023-12-25
+==========
+
+* :vytask:`T5855` ``(feature): Migrate "set service lldp snmp enable" -> `set service lldp snmp"``
+* :vytask:`T5837` ``(bug): vyos.configdict.node_changed does not return keys per adding``
+* :vytask:`T5856` ``(bug): SNMP service removal fails``
+
+
 2023-12-24
 ==========
 
