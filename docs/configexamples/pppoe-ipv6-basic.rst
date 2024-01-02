@@ -89,24 +89,28 @@ To have basic protection while keeping IPv6 network functional, we need to:
 
 .. code-block:: none
 
-   set firewall ipv6-name WAN_IN default-action 'drop'
-   set firewall ipv6-name WAN_IN rule 10 action 'accept'
-   set firewall ipv6-name WAN_IN rule 10 state established 'enable'
-   set firewall ipv6-name WAN_IN rule 10 state related 'enable'
-   set firewall ipv6-name WAN_IN rule 20 action 'accept'
-   set firewall ipv6-name WAN_IN rule 20 protocol 'icmpv6'
-   set firewall ipv6-name WAN_LOCAL default-action 'drop'
-   set firewall ipv6-name WAN_LOCAL rule 10 action 'accept'
-   set firewall ipv6-name WAN_LOCAL rule 10 state established 'enable'
-   set firewall ipv6-name WAN_LOCAL rule 10 state related 'enable'
-   set firewall ipv6-name WAN_LOCAL rule 20 action 'accept'
-   set firewall ipv6-name WAN_LOCAL rule 20 protocol 'icmpv6'
-   set firewall ipv6-name WAN_LOCAL rule 30 action 'accept'
-   set firewall ipv6-name WAN_LOCAL rule 30 destination port '546'
-   set firewall ipv6-name WAN_LOCAL rule 30 protocol 'udp'
-   set firewall ipv6-name WAN_LOCAL rule 30 source port '547'
-   set interfaces pppoe pppoe0 firewall in ipv6-name 'WAN_IN'
-   set interfaces pppoe pppoe0 firewall local ipv6-name 'WAN_LOCAL'
+   set firewall ipv6 name WAN_IN default-action 'drop'
+   set firewall ipv6 name WAN_IN rule 10 action 'accept'
+   set firewall ipv6 name WAN_IN rule 10 state established 'enable'
+   set firewall ipv6 name WAN_IN rule 10 state related 'enable'
+   set firewall ipv6 name WAN_IN rule 20 action 'accept'
+   set firewall ipv6 name WAN_IN rule 20 protocol 'icmpv6'
+   set firewall ipv6 name WAN_LOCAL default-action 'drop'
+   set firewall ipv6 name WAN_LOCAL rule 10 action 'accept'
+   set firewall ipv6 name WAN_LOCAL rule 10 state established 'enable'
+   set firewall ipv6 name WAN_LOCAL rule 10 state related 'enable'
+   set firewall ipv6 name WAN_LOCAL rule 20 action 'accept'
+   set firewall ipv6 name WAN_LOCAL rule 20 protocol 'icmpv6'
+   set firewall ipv6 name WAN_LOCAL rule 30 action 'accept'
+   set firewall ipv6 name WAN_LOCAL rule 30 destination port '546'
+   set firewall ipv6 name WAN_LOCAL rule 30 protocol 'udp'
+   set firewall ipv6 name WAN_LOCAL rule 30 source port '547'
+   set firewall ipv6 forward filter rule 10 action jump
+   set firewall ipv6 forward filter rule 10 jump-target 'WAN_IN'
+   set firewall ipv6 forward filter rule 10 inbound-interface name 'pppoe0'
+   set firewall ipv6 input filter rule 10 action jump
+   set firewall ipv6 input filter rule 10 jump-target 'WAN_LOCAL'
+   set firewall ipv6 input filter rule 10 inbound-interface name 'pppoe0'
 
 Note to allow the router to receive DHCPv6 response from ISP. We need to allow
 packets with source port 547 (server) and destination port 546 (client).
