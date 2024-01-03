@@ -191,8 +191,8 @@ your ``.bash_aliases`` file:
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:sagitta bash'
 
-Now you are prepared with two new aliases ``vybld`` and ``vybld_sagitta`` to spawn
-your development containers in your current working directory.
+Now you are prepared with two new aliases ``vybld`` and ``vybld_sagitta`` to 
+spawn your development containers in your current working directory.
 
 .. note:: Some VyOS packages (namely vyos-1x) come with build-time tests which
    verify some of the internal library calls that they work as expected. Those
