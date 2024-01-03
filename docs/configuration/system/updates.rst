@@ -35,3 +35,5 @@ Check:
   Update available: 1.5-rolling-202312250024
   Update URL: https://github.com/vyos/vyos-rolling-nightly-builds/releases/download/1.5-rolling-202312250024/1.5-rolling-202312250024-amd64.iso
   vyos@r4:~$
+
+  vyos@r4:~$ add system image latest
