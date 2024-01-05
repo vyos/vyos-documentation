@@ -5,30 +5,30 @@ Firewall
 ########
 
 With VyOS being based on top of Linux and its kernel, the Netfilter project
-created the iptables and now the successor nftables for the Linux kernel to
+created iptables and its successor nftables for the Linux kernel to
 work directly on the data flows. This now extends the concept of zone-based
 security to allow for manipulating the data at multiple stages once accepted
 by the network interface and the driver before being handed off to the
-destination (e.g. a web server OR another device).
+destination (e.g., a web server OR another device).
 
-A simplified traffic flow, based on Netfilter packet flow, is shown next, in
+A simplified traffic flow diagram, based on Netfilter packet flow, is shown next, in
 order to have a full view and understanding of how packets are processed, and
-what possible paths can take.
+what possible paths traffic can take.
 
 .. figure:: /_static/images/firewall-gral-packet-flow.png
 
-Main notes regarding this packet flow and terminology used in VyOS firewall:
+Main points regarding this packet flow and terminology used in VyOS firewall are below:
 
-   * **Bridge Port?**: choose appropiate path based on if interface were the
+   * **Bridge Port?**: choose appropriate path based on whether interface where the
      packet was received is part of a bridge, or not.
 
-If interface were the packet was received isn't part of a bridge, then packet
+If interface where the packet was received isn't part of a bridge, then packet
 is processed at the **IP Layer**:
 
    * **Prerouting**: several actions can be done in this stage, and currently
-     these actions are defined in different parts in vyos configuration. Order
+     these actions are defined in different parts in VyOS configuration. Order
      is important, and all these actions are performed before any actions
-     define under ``firewall`` section. Relevant configuration that acts in
+     defined under ``firewall`` section. Relevant configuration that acts in
      this stage are:
 
       * **Conntrack Ignore**: rules defined under ``set system conntrack ignore
@@ -40,12 +40,12 @@ is processed at the **IP Layer**:
       * **Destination NAT**: rules defined under ``set [nat | nat66]
         destination...``.
 
-   * **Destination is the router?**: choose appropiate path based on
-     destination IP address. Transit forward continunes to **forward**,
+   * **Destination is the router?**: choose appropriate path based on
+     destination IP address. Transit forward continues to **forward**,
      while traffic that destination IP address is configured on the router
      continues to **input**.
 
-   * **Input**: stage where traffic destinated to the router itself can be
+   * **Input**: stage where traffic destined for the router itself can be
      filtered and controlled. This is where all rules for securing the router
      should take place. This includes ipv4 and ipv6 filtering rules, defined
      in:
@@ -61,10 +61,10 @@ is processed at the **IP Layer**:
 
      * ``set firewall ipv6 forward filter ...``.
 
-   * **Output**: stage where traffic that is originated by the router itself
-     can be filtered and controlled. Bare in mind that this traffic can be a
-     new connection originted by a internal process running on VyOS router,
-     such as NTP, or can be a response to traffic received externaly through
+   * **Output**: stage where traffic that originates from the router itself
+     can be filtered and controlled. Bear in mind that this traffic can be a
+     new connection originated by a internal process running on VyOS router,
+     such as NTP, or a response to traffic received externaly through
      **inputt** (for example response to an ssh login attempt to the router).
      This includes ipv4 and ipv6 filtering rules, defined in:
 
@@ -79,11 +79,11 @@ is processed at the **IP Layer**:
      * **Source NAT**: rules defined under ``set [nat | nat66]
        destination...``.
 
-If interface were the packet was received is part of a bridge, then packet
-is processed at the **Bridge Layer**, which contains a ver basic setup where
-for bridge filtering:
+If interface where the packet was received is part of a bridge, then packet
+is processed at the **Bridge Layer**, which contains a basic setup for
+bridge filtering:
 
-   * **Forward (Bridge)**: stage where traffic that is trasspasing through the
+   * **Forward (Bridge)**: stage where traffic that is trespasing through the
      bridge is filtered and controlled:
 
      * ``set firewall bridge forward filter ...``.
