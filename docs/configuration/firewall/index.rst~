@@ -4,27 +4,26 @@
 Firewall
 ########
 
-As VyOS is based on Linux it leverages its firewall. The Netfilter project
+With VyOS being based on top of Linux and its kernel, the Netfilter project
 created iptables and its successor nftables for the Linux kernel to
-work directly on packet data flows. This now extends the concept of 
-zone-based security to allow for manipulating the data at multiple stages once 
-accepted by the network interface and the driver before being handed off to 
-the destination (e.g., a web server OR another device).
+work directly on the data flows. This now extends the concept of zone-based
+security to allow for manipulating the data at multiple stages once accepted
+by the network interface and the driver before being handed off to the
+destination (e.g., a web server OR another device).
 
-A simplified traffic flow diagram, based on Netfilter packet flow, is shown 
-next, in order to have a full view and understanding of how packets are 
-processed, and what possible paths traffic can take.
+A simplified traffic flow diagram, based on Netfilter packet flow, is shown next, in
+order to have a full view and understanding of how packets are processed, and
+what possible paths traffic can take.
 
 .. figure:: /_static/images/firewall-gral-packet-flow.png
 
-The main points regarding this packet flow and terminology used in VyOS 
-firewall are covered below:
+Main points regarding this packet flow and terminology used in VyOS firewall are below:
 
-   * **Bridge Port?**: choose appropriate path based on whether interface 
-     where the packet was received is part of a bridge, or not.
+   * **Bridge Port?**: choose appropriate path based on whether interface where the
+     packet was received is part of a bridge, or not.
 
-If the interface where the packet was received isn't part of a bridge, then 
-packetis processed at the **IP Layer**:
+If interface where the packet was received isn't part of a bridge, then packet
+is processed at the **IP Layer**:
 
    * **Prerouting**: several actions can be done in this stage, and currently
      these actions are defined in different parts in VyOS configuration. Order
@@ -80,8 +79,8 @@ packetis processed at the **IP Layer**:
      * **Source NAT**: rules defined under ``set [nat | nat66]
        destination...``.
 
-If the interface where the packet was received is part of a bridge, then 
-packetis processed at the **Bridge Layer**, which contains a basic setup for
+If interface where the packet was received is part of a bridge, then packet
+is processed at the **Bridge Layer**, which contains a basic setup for
 bridge filtering:
 
    * **Forward (Bridge)**: stage where traffic that is trespasing through the
@@ -89,7 +88,7 @@ bridge filtering:
 
      * ``set firewall bridge forward filter ...``.
 
-The main structure VyOS firewall cli is shown next:
+Main structure VyOS firewall cli is shown next:
 
 .. code-block:: none
 
@@ -135,7 +134,7 @@ The main structure VyOS firewall cli is shown next:
             - custom_zone_name
                + ...
 
-Please, refer to appropriate section for more information about firewall
+Please, refer to appropiate section for more information about firewall
 configuration:
 
 .. toctree::
