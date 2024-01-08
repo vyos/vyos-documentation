@@ -33,8 +33,9 @@ following Debian versions installed:
 
 - Debian Jessie for VyOS 1.2 (crux)
 - Debian Buster for VyOS 1.3 (equuleus) 
-- Debian Bullseye for VyOS 1.4 (sagitta) 
-- Debian unknown for VyOS 1.5 (circinus, current) - aka the rolling release
+- Debian Bookworm for VyOS 1.4 (sagitta) 
+- Debian Bookworm or updated for VyOS 1.5 (circinus, current) - aka the 
+  rolling release
 
 To start, clone the repository to your local machine:
 
@@ -58,7 +59,7 @@ To start, clone the repository to your local machine:
   $ ./configure --architecture amd64 --build-by "j.randomhacker@vyos.io"
   $ sudo make iso
 
-  # For VyOS 1.4 (sagitta)
+  # For VyOS 1.4 (sagitta) and VyOS 1.5 (circinus, current)
   $ sudo make clean
   $ sudo ./build-vyos-image iso --architecture amd64 --build-by "j.randomhacker@vyos.io"
 
@@ -67,25 +68,43 @@ in the repository_. The ``./build-vyos-image`` script will also warn you if any
 dependencies are missing.
 
 
-This will guide you through the process of building a VyOS ISO using Docker_.
-This process has been tested on clean installs of Debian Bullseye (11) and 
-Bookworm (12).
-
 .. _build_docker:
 
 Docker
 ======
 
+This will guide you through the process of building a VyOS ISO using Docker_.
+This process has been tested on clean installs of Debian Bullseye (11) and 
+Bookworm (12).
+
 Installing Docker_ and prerequisites:
+
+.. hint:: Due to the updated version of Docker, the following examples may 
+   become invalid.
+
+   Due to differences in version updates and build processes, content related 
+   to VyOS 1.3 and below is no longer included below.
+
+`On Debian`_
 
 .. code-block:: none
 
+  # Add Docker's official GPG key:
   $ sudo apt-get update
-  $ sudo apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
-  $ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-  $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+  $ sudo apt-get install ca-certificates curl gnupg
+  $ sudo install -m 0755 -d /etc/apt/keyrings
+  $ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  $ sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+  # Add the repository to Apt sources:
+  $ echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+      https://download.docker.com/linux/debian \
+      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
   $ sudo apt-get update
-  $ sudo apt-get install -y docker-ce
+  $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 To be able to use Docker_ without ``sudo``, the current non-root user must be
 added to the ``docker`` group by calling: ``sudo usermod -aG docker
@@ -120,8 +139,6 @@ To manually download the container from DockerHub, run:
 
 .. code-block:: none
 
-  $ docker pull vyos/vyos-build:crux     # For VyOS 1.2
-  $ docker pull vyos/vyos-build:equuleus # For VyOS 1.3
   $ docker pull vyos/vyos-build:sagitta  # For VyOS 1.4
   $ docker pull vyos/vyos-build:current  # For rolling release
 
@@ -132,27 +149,27 @@ The container can also be built directly from source:
 
 .. code-block:: none
 
-  # For VyOS 1.2 (crux)
-  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
-  # For VyOS 1.3 (equuleus)
-  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
-  # For VyOS 1.4 (sagitta, current)
+  # For VyOS 1.4 (sagitta)
+  $ git clone -b sagitta --single-branch https://github.com/vyos/vyos-build
+
+  # For VyOS 1.5 (circinus, current)
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
+
   
   $ cd vyos-build
-  $ docker build -t vyos/vyos-build:crux docker # For VyOS 1.2
-  $ docker build -t vyos/vyos-build:current docker      # For rolling release
+  $ docker build -t vyos/vyos-build:sagitta docker     # For VyOS 1.4
+  $ docker build -t vyos/vyos-build:current docker     # For rolling release
 
-.. note:: Since VyOS has switched to Debian (11) Bullseye in its ``current``
-   branch, you will require individual container for `current`, `equuleus` and
-   `crux` builds.
+.. note:: Since VyOS has switched to Debian (12) Bookworm in its ``current``
+   branch, It is recommended to use the official Docker Hub container image 
+   to build ``equleus`` and ``crux``.
 
 Tips and Tricks
 ---------------
 
 You can create yourself some handy Bash aliases to always launch the latest -
-per release train (`current` or `crux`) - container. Add the following to your
-``.bash_aliases`` file:
+per release train (`current` or `sagitta`) - container. Add the following to 
+your ``.bash_aliases`` file:
 
 .. code-block:: none
 
@@ -174,8 +191,8 @@ per release train (`current` or `crux`) - container. Add the following to your
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:sagitta bash'
 
-Now you are prepared with two new aliases ``vybld`` and ``vybld_sagitta`` to spawn
-your development containers in your current working directory.
+Now you are prepared with two new aliases ``vybld`` and ``vybld_sagitta`` to 
+spawn your development containers in your current working directory.
 
 .. note:: Some VyOS packages (namely vyos-1x) come with build-time tests which
    verify some of the internal library calls that they work as expected. Those
@@ -197,13 +214,10 @@ Please note as this will differ for both `current` and `crux`.
 
 .. code-block:: none
 
-  # For VyOS 1.2 (crux)
-  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
+  # For VyOS 1.4 (sagitta)
+  $ git clone -b sagitta --single-branch https://github.com/vyos/vyos-build
 
-  # For VyOS 1.3 (equuleus)
-  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
-
-  # For VyOS 1.4 (sagitta, current)
+  # For VyOS 1.5 (circinus, current)
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
 
 Now a fresh build of the VyOS ISO can begin. Change directory to the
@@ -212,13 +226,11 @@ Now a fresh build of the VyOS ISO can begin. Change directory to the
 .. code-block:: none
 
   $ cd vyos-build
-  # For VyOS 1.2 (crux)
-  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:crux bash
 
-  # For VyOS 1.3 (equuleus)
-  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:equuleus bash
+  # For VyOS 1.4 (sagitta)
+  $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:sagitta bash
 
-  # For VyOS 1.4 (sagitta, current)
+  # For VyOS 1.5 (circinus, current)
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
   
 .. code-block:: none
@@ -240,11 +252,7 @@ Start the build:
 
 .. code-block:: none
 
-  # For VyOS 1.2 (crux) and VyOS 1.3 (equuleus)
-  vyos_bld@8153428c7e1f:/vyos$ ./configure --architecture amd64 --build-by "j.randomhacker@vyos.io"
-  vyos_bld@8153428c7e1f:/vyos$ sudo make iso
-
-  # For VyOS 1.4 (sagitta)
+  # For VyOS 1.4 (sagitta) and For VyOS 1.5 (circinus, current)
   vyos_bld@8153428c7e1f:/vyos$ sudo make clean
   vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image iso --architecture amd64 --build-by "j.randomhacker@vyos.io"
 
@@ -851,6 +859,7 @@ information.
 .. _VyOS DockerHub organisation: https://hub.docker.com/u/vyos
 .. _repository: https://github.com/vyos/vyos-build
 .. _VyOS GitHub project: https://github.com/vyos
+.. _`On Debian`: https://docs.docker.com/engine/install/debian/
 
 .. start_vyoslinter
 
