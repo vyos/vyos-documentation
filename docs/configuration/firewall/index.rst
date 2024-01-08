@@ -65,7 +65,7 @@ is processed at the **IP Layer**:
      can be filtered and controlled. Bare in mind that this traffic can be a
      new connection originted by a internal process running on VyOS router,
      such as NTP, or can be a response to traffic received externaly through
-     **inputt** (for example response to an ssh login attempt to the router).
+     **input** (for example response to an ssh login attempt to the router).
      This includes ipv4 and ipv6 filtering rules, defined in:
 
      * ``set firewall ipv4 input filter ...``.
