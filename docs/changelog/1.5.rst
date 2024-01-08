@@ -8,6 +8,45 @@
    _ext/releasenotes.py
 
 
+2024-01-07
+==========
+
+* :vytask:`T5899` ``(feature): VyOS vm images use bookworm repo``
+* :vytask:`T5887` ``(feature): Upgrade Linux Kernel to 6.6.y (2023 LTS edition)``
+
+
+2024-01-06
+==========
+
+* :vytask:`T3214` ``(bug): OpenVPN IPv6 fixes``
+
+
+2024-01-05
+==========
+
+* :vytask:`T5894` ``(feature): Extend get_config_dict() with additional parameter with_pki that defaults to False``
+
+
+2024-01-03
+==========
+
+* :vytask:`T5880` ``(bug): verify_source_interface should not allow dynamic interfaces like ppp, l2tp, ipoe or sstpc client interfaces``
+* :vytask:`T5879` ``(bug): tunnel: sourceing from dynamic pppoe0 interface will fail on reboots``
+
+
+2024-01-02
+==========
+
+* :vytask:`T5885` ``(default): image-tools: relax restriction on image-name length from 32 to 64``
+
+
+2024-01-01
+==========
+
+* :vytask:`T5883` ``(bug): Preserve file ownership in /config subdirs on add system image``
+* :vytask:`T5474` ``(feature): Establish common file name pattern for XML conf mode commands``
+
+
 2023-12-30
 ==========
 
