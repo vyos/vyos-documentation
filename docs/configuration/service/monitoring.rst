@@ -109,11 +109,11 @@ Monitoring functionality with ``telegraf`` and ``InfluxDB 2`` is provided.
 Telegraf is the open source server agent to help you collect metrics, events
 and logs from your routers.
 
-.. cfgcmd:: set service monitoring telegraf authentication organization <organization>
+.. cfgcmd:: set service monitoring telegraf influxdb authentication organization <organization>
 
    Authentication organization name
 
-.. cfgcmd:: set service monitoring telegraf authentication token <token>
+.. cfgcmd:: set service monitoring telegraf influxdb authentication token <token>
 
    Authentication token
 
@@ -121,11 +121,11 @@ and logs from your routers.
 
    Remote ``InfluxDB`` bucket name
 
-.. cfgcmd:: set service monitoring port <port>
+.. cfgcmd:: set service monitoring telegraf influxdb port <port>
 
    Remote port
 
-.. cfgcmd:: set service monitoring telegraf url <url>
+.. cfgcmd:: set service monitoring telegraf influxdb url <url>
 
    Remote URL
 
@@ -138,12 +138,11 @@ An example of a configuration that sends ``telegraf`` metrics to remote
 
 .. code-block:: none
 
-  set service monitoring telegraf authentication organization 'vyos'
-  set service monitoring telegraf authentication token 'ZAml9Uy5wrhA...=='
-  set service monitoring telegraf bucket 'bucket_vyos'
-  set service monitoring telegraf port '8086'
-  set service monitoring telegraf source 'all'
-  set service monitoring telegraf url 'http://r1.influxdb2.local'
+  set service monitoring telegraf influxdb authentication organization 'vyos'
+  set service monitoring telegraf influxdb authentication token 'ZAml9Uy5wrhA...=='
+  set service monitoring telegraf influxdb bucket 'bucket_vyos'
+  set service monitoring telegraf influxdb port '8086'
+  set service monitoring telegraf influxdb url 'http://r1.influxdb2.local'
 
 .. _azure-data-explorer: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 .. _prometheus-client: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client
