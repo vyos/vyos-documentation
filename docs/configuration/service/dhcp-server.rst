@@ -4,7 +4,7 @@
 DHCP Server
 ###########
 
-VyOS uses ISC DHCP server for both IPv4 and IPv6 address assignment.
+VyOS uses Kea DHCP server for both IPv4 and IPv6 address assignment.
 
 ***********
 IPv4 server
@@ -26,12 +26,7 @@ Configuration
    Create DNS record per client lease, by adding clients to /etc/hosts file.
    Entry will have format: `<shared-network-name>_<hostname>.<domain-name>`
 
-.. cfgcmd:: set service dhcp-server host-decl-name
-
-   Will drop `<shared-network-name>_` from client DNS record, using only the
-   host declaration name and domain: `<hostname>.<domain-name>`
-
-.. cfgcmd:: set service dhcp-server shared-network-name <name> domain-name <domain-name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> option domain-name <domain-name>
 
    The domain-name parameter should be the domain name that will be appended to
    the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
@@ -40,7 +35,7 @@ Configuration
    This is the configuration parameter for the entire shared network definition.
    All subnets will inherit this configuration item if not specified locally.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> domain-search <domain-name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> option domain-search <domain-name>
 
    The domain-name parameter should be the domain name used when completing DNS
    request where no full FQDN is passed. This option can be given multiple times
@@ -49,7 +44,7 @@ Configuration
    This is the configuration parameter for the entire shared network definition.
    All subnets will inherit this configuration item if not specified locally.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> name-server <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name> option name-server <address>
 
    Inform client that the DNS server can be found at `<address>`.
 
@@ -57,21 +52,6 @@ Configuration
    All subnets will inherit this configuration item if not specified locally.
 
    Multiple DNS servers can be defined.
-
-.. cfgcmd:: set service dhcp-server shared-network-name <name> ping-check
-
-   When the DHCP server is considering dynamically allocating an IP address to a
-   client, it first sends an ICMP Echo request (a ping) to the address being
-   assigned. It waits for a second, and if no ICMP Echo response has been heard,
-   it assigns the address.
-
-   If a response is heard, the lease is abandoned, and the server does not
-   respond to the client. The lease will remain abandoned for a minimum of
-   abandon-lease-time seconds (defaults to 24 hours).
-
-   If there are no free addresses but there are abandoned IP addresses, the
-   DHCP server will attempt to reclaim an abandoned IP address regardless of the
-   value of abandon-lease-time.
 
 .. cfgcmd:: set service dhcp-server listen-address <address>
 
@@ -91,14 +71,14 @@ Individual Client Subnet
    network.
 
 .. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
-   default-router <address>
+   option default-router <address>
 
    This is a configuration parameter for the `<subnet>`, saying that as part of
    the response, tell the client that the default gateway can be reached at
    `<address>`.
 
 .. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
-   name-server <address>
+   option name-server <address>
 
    This is a configuration parameter for the subnet, saying that as part of the
    response, tell the client that the DNS server can be found at `<address>`.
@@ -133,39 +113,18 @@ Individual Client Subnet
    This option can be specified multiple times.
 
 .. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
-   domain-name <domain-name>
+   option domain-name <domain-name>
 
    The domain-name parameter should be the domain name that will be appended to
    the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
    Option 015).
 
 .. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
-   domain-search <domain-name>
+   option domain-search <domain-name>
 
    The domain-name parameter should be the domain name used when completing DNS
    request where no full FQDN is passed. This option can be given multiple times
    if you need multiple search domains (DHCP Option 119).
-
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
-   ping-check
-
-   When the DHCP server is considering dynamically allocating an IP address to a
-   client, it first sends an ICMP Echo request (a ping) to the address being
-   assigned. It waits for a second, and if no ICMP Echo response has been heard,
-   it assigns the address.
-
-   If a response is heard, the lease is abandoned, and the server does not
-   respond to the client. The lease will remain abandoned for a minimum of
-   abandon-lease-time seconds (defaults to 24 hours).
-
-   If a there are no free addresses but there are abandoned IP addresses, the
-   DHCP server will attempt to reclaim an abandoned IP address regardless of the
-   value of abandon-lease-time.
-
-.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
-   enable-failover
-
-   Enable DHCP failover configuration for this address pool.
 
 Failover
 --------
@@ -391,32 +350,6 @@ Options
 
 Multi: can be specified multiple times.
 
-Raw Parameters
-==============
-
-Raw parameters can be passed to shared-network-name, subnet and static-mapping:
-
-.. code-block:: none
-
-  set service dhcp-server shared-network-name <name> shared-network-parameters
-     <text>       Additional shared-network parameters for DHCP server.
-  set service dhcp-server shared-network-name <name> subnet <subnet> subnet-parameters
-     <text>       Additional subnet parameters for DHCP server.
-  set service dhcp-server shared-network-name <name> subnet <subnet> static-mapping <description> static-mapping-parameters
-     <text>       Additional static-mapping parameters for DHCP server.
-                  Will be placed inside the "host" block of the mapping.
-
-These parameters are passed as-is to isc-dhcp's dhcpd.conf under the
-configuration node they are defined in. They are not validated so an error in
-the raw parameters won't be caught by vyos's scripts and will cause dhcpd to
-fail to start. Always verify that the parameters are correct before committing
-the configuration. Refer to isc-dhcp's dhcpd.conf manual for more information:
-https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcpdconf
-
-Quotes can be used inside parameter values by replacing all quote characters
-with the string ``&quot;``. They will be replaced with literal quote characters
-when generating dhcpd.conf.
-
 Example
 =======
 
@@ -439,12 +372,11 @@ Common configuration, valid for both primary and secondary node.
 
 .. code-block:: none
 
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 default-router '192.0.2.254'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 name-server '192.0.2.254'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 domain-name 'vyos.net'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 option default-router '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 option name-server '192.0.2.254'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 option domain-name 'vyos.net'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.0.2.10'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
-  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 enable-failover
 
 
 **Primary**
@@ -466,47 +398,6 @@ Common configuration, valid for both primary and secondary node.
   set service dhcp-server failover status 'secondary'
 
 .. _dhcp-server:v4_example_raw:
-
-Raw Parameters
---------------
-
-* Override static-mapping's name-server with a custom one that will be sent only
-  to this host.
-* An option that takes a quoted string is set by replacing all quote characters
-  with the string ``&quot;`` inside the static-mapping-parameters value.
-  The resulting line in dhcpd.conf will be
-  ``option pxelinux.configfile "pxelinux.cfg/01-00-15-17-44-2d-aa";``.
-
-
-.. code-block:: none
-
-  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option domain-name-servers 192.0.2.11, 192.0.2.12;"
-  set service dhcp-server shared-network-name dhcpexample subnet 192.0.2.0/24 static-mapping example static-mapping-parameters "option pxelinux.configfile &quot;pxelinux.cfg/01-00-15-17-44-2d-aa&quot;;"
-
-Option 43 for UniFI
--------------------
-
-* These parameters need to be part of the DHCP global options.
-  They stay unchanged.
-
-
-.. code-block:: none
-
- set service dhcp-server global-parameters 'option space ubnt;'
- set service dhcp-server global-parameters 'option ubnt.unifi-address code 1 = ip-address;'
- set service dhcp-server global-parameters 'class &quot;ubnt&quot; {'
- set service dhcp-server global-parameters 'match if substring (option vendor-class-identifier, 0, 4) = &quot;ubnt&quot;;'
- set service dhcp-server global-parameters 'option vendor-class-identifier &quot;ubnt&quot;;'
- set service dhcp-server global-parameters 'vendor-option-space ubnt;'
- set service dhcp-server global-parameters '}'
-
-* Now we add the option to the scope, adapt to your setup
-
-
-.. code-block:: none
-
- set service dhcp-server shared-network-name example-scope subnet 10.1.1.0/24 subnet-parameters 'option ubnt.unifi-address 172.16.1.10;'
-
 
 Operation Mode
 ==============
