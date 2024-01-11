@@ -19468,8 +19468,8 @@ msgid "``latency``: A server profile focused on lowering network latency. This p
 msgstr "``latency``: A server profile focused on lowering network latency. This profile favors performance over power savings by setting ``intel_pstate`` and ``min_perf_pct=100``."
 
 #: ../../configuration/loadbalancing/reverse-proxy.rst:108
-msgid "``least-connection`` Distributes requests tp tje server wotj the fewest active connections"
-msgstr "``least-connection`` Distributes requests tp tje server wotj the fewest active connections"
+msgid "``least-connection`` Distributes requests to the server with the fewest active connections"
+msgstr "``least-connection`` Distributes requests to the server with the fewest active connections"
 
 #: ../../configuration/vpn/ipsec.rst:125
 msgid "``life-bytes`` ESP life in bytes <1024-26843545600000>. Number of bytes transmitted over an IPsec SA before it expires;"
