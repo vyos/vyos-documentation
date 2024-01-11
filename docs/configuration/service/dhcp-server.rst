@@ -71,6 +71,12 @@ Individual Client Subnet
    network.
 
 .. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
+   subnet-id <id>
+
+   This configuration parameter is required and must be unique to each subnet.
+   It is required to map subnets to lease file entries.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet>
    option default-router <address>
 
    This is a configuration parameter for the `<subnet>`, saying that as part of
@@ -197,6 +203,7 @@ inside the subnet definition but can be outside of the range statement.
 
 .. code-block:: none
 
+  set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 subnet-id 1
   set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 ip-address 192.168.1.100
   set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 mac-address aa:bb:11:22:33:00
 
@@ -210,6 +217,7 @@ The configuration will look as follows:
            ip-address 192.168.1.100
            mac-address aa:bb:11:22:33:00
        }
+       subnet-id 1
    }
 
 Options
@@ -377,6 +385,7 @@ Common configuration, valid for both primary and secondary node.
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 option domain-name 'vyos.net'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.0.2.10'
   set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
+  set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 subnet-id '1'
 
 
 **Primary**
@@ -505,6 +514,12 @@ Configuration
    Clients receiving advertise messages from multiple servers choose the server
    with the highest preference value. The range for this value is ``0...255``.
 
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <subnet>
+   subnet-id <id>
+
+   This configuration parameter is required and must be unique to each subnet.
+   It is required to map subnets to lease file entries.
+
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
    <prefix> lease-time {default | maximum | minimum}
 
@@ -581,6 +596,7 @@ server. The following example describes a common scenario.
 
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 address-range start 2001:db8::100 stop 2001:db8::199
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 name-server 2001:db8::ffff
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 subnet-id 1
 
 The configuration will look as follows:
 
@@ -595,6 +611,7 @@ The configuration will look as follows:
                 }
              }
              name-server 2001:db8::ffff
+             subnet-id 1
           }
       }
 

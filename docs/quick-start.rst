@@ -99,6 +99,7 @@ DNS server.
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 lease '86400'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 start '192.168.0.9'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 stop '192.168.0.254'
+  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 subnet-id '1'
 
   set service dns forwarding cache-size '0'
   set service dns forwarding listen-address '192.168.0.1'

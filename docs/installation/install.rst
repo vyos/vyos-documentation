@@ -467,6 +467,7 @@ In this example we configured an existent VyOS as the DHCP server:
                start 192.168.1.70
                stop 192.168.1.100
            }
+           subnet-id 1
        }
    }
 
