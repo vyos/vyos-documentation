@@ -137,3 +137,100 @@ R2:
   set interfaces bridge br1 member interface eth1
   set protocols static route6 ::/0 next-hop fc01::1
   set service router-advert interface br1 prefix ::/0
+
+
+Use the following topology to translate internal user local addresses (``fc::/7``)
+to DHCPv6-PD provided prefixes from an ISP connected to a VyOS HA pair.
+
+.. figure:: /_static/images/vyos_1_5_nat66_dhcpv6_wdummy.png
+   :alt: VyOS NAT66 DHCPv6 using a dummy interface
+
+Configure both routers (a and b) for DHCPv6-PD via dummy interface:
+
+.. code-block:: none
+
+  set interfaces dummy dum1 description 'DHCPv6-PD NPT dummy'
+  set interfaces bonding bond0 vif 20 dhcpv6-options pd 0 interface dum1 address '0'
+  set interfaces bonding bond0 vif 20 dhcpv6-options pd 1 interface dum1 address '0'
+  set interfaces bonding bond0 vif 20 dhcpv6-options pd 2 interface dum1 address '0'
+  set interfaces bonding bond0 vif 20 dhcpv6-options pd 3 interface dum1 address '0'
+  set interfaces bonding bond0 vif 20 dhcpv6-options rapid-commit
+  commit
+
+Get the DHCPv6-PD prefixes from both routers:
+
+.. code-block:: none
+
+  trae@cr01a-vyos# run show interfaces dummy dum1 br
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  Interface        IP Address                        S/L  Description
+  ---------        ----------                        ---  -----------
+  dum1             2001:db8:123:b008::/64           u/u  DHCPv6-PD NPT dummy
+                   2001:db8:123:b00a::/64
+                   2001:db8:123:b00b::/64
+                   2001:db8:123:b009::/64
+
+  trae@cr01b-vyos# run show int dummy dum1 brief
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  Interface        IP Address                        S/L  Description
+  ---------        ----------                        ---  -----------
+  dum1             2001:db8:123:b00d::/64           u/u  DHCPv6-PD NPT dummy
+                   2001:db8:123:b00c::/64
+                   2001:db8:123:b00e::/64
+                   2001:db8:123:b00f::/64
+
+Configure the A-side router for NPTv6 using the prefixes above:
+
+.. code-block:: none
+
+  set nat66 source rule 10 description 'NPT to VLAN 10'
+  set nat66 source rule 10 outbound-interface name 'bond0.20'
+  set nat66 source rule 10 source prefix 'fd52:d62e:8011:a::/64'
+  set nat66 source rule 10 translation address '2001:db8:123:b008::/64'
+  set nat66 source rule 20 description 'NPT to VLAN 70'
+  set nat66 source rule 20 outbound-interface name 'bond0.20'
+  set nat66 source rule 20 source prefix 'fd52:d62e:8011:46::/64'
+  set nat66 source rule 20 translation address '2001:db8:123:b009::/64'
+  set nat66 source rule 30 description 'NPT to VLAN 200'
+  set nat66 source rule 30 outbound-interface name 'bond0.20'
+  set nat66 source rule 30 source prefix 'fd52:d62e:8011:c8::/64'
+  set nat66 source rule 30 translation address '2001:db8:123:b00a::/64'
+  set nat66 source rule 40 description 'NPT to VLAN 240'
+  set nat66 source rule 40 outbound-interface name 'bond0.20'
+  set nat66 source rule 40 source prefix 'fd52:d62e:8011:f0::/64'
+  set nat66 source rule 40 translation address '2001:db8:123:b00b::/64'
+  commit
+
+Configure the B-side router for NPTv6 using the prefixes above:
+
+.. code-block:: none
+
+  set nat66 source rule 10 description 'NPT to VLAN 10'
+  set nat66 source rule 10 outbound-interface name 'bond0.20'
+  set nat66 source rule 10 source prefix 'fd52:d62e:8011:a::/64'
+  set nat66 source rule 10 translation address '2001:db8:123:b00c::/64'
+  set nat66 source rule 20 description 'NPT to VLAN 70'
+  set nat66 source rule 20 outbound-interface name 'bond0.20'
+  set nat66 source rule 20 source prefix 'fd52:d62e:8011:46::/64'
+  set nat66 source rule 20 translation address '2001:db8:123:b00d::/64'
+  set nat66 source rule 30 description 'NPT to VLAN 200'
+  set nat66 source rule 30 outbound-interface name 'bond0.20'
+  set nat66 source rule 30 source prefix 'fd52:d62e:8011:c8::/64'
+  set nat66 source rule 30 translation address '2001:db8:123:b00e::/64'
+  set nat66 source rule 40 description 'NPT to VLAN 240'
+  set nat66 source rule 40 outbound-interface name 'bond0.20'
+  set nat66 source rule 40 source prefix 'fd52:d62e:8011:f0::/64'
+  set nat66 source rule 40 translation address '2001:db8:123:b00f::/64'
+  commit
+
+Verify that connections are hitting the rule on both sides:
+
+.. code-block:: none
+
+  trae@cr01a-vyos# run show nat66 source statistics
+  Rule    Packets    Bytes    Interface
+  ------  ---------  -------  -----------
+  10      1          104      bond0.20
+  20      1          104      bond0.20
+  30      8093       669445   bond0.20
+  40      2446       216912   bond0.20
