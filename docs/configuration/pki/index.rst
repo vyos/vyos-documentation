@@ -1,4 +1,4 @@
-:lastproofread: 2021-09-01
+:lastproofread: 2024-01-05
 
 .. include:: /_include/need_improvement.txt
 
@@ -248,6 +248,44 @@ certificates used by services on this router.
 
   If CA is present, this certificate will be included in generated CRLs
 
+ACME
+^^^^
+
+The VyOS PKI subsystem can also be used to automatically retrieve Certificates
+using the :abbr:`ACME (Automatic Certificate Management Environment)` protocol.
+
+.. cfgcmd:: set pki certificate <name> acme domain-name <name>
+
+  Domain names to apply, multiple domain-names can be specified.
+
+  This is a mandatory option
+
+.. cfgcmd:: set pki certificate <name> acme email <address>
+
+  Email used for registration and recovery contact.
+
+  This is a mandatory option
+
+.. cfgcmd:: set pki certificate <name> acme listen-address <address>
+
+  The address the server listens to during http-01 challenge
+
+.. cfgcmd:: set pki certificate <name> acme rsa-key-size <2048 | 3072 | 4096>
+
+  Size of the RSA key.
+
+  This options defaults to 2048
+
+.. cfgcmd:: set pki certificate <name> acme url <url>
+
+  ACME Directory Resource URI.
+
+  This defaults to https://acme-v02.api.letsencrypt.org/directory
+
+  .. note:: During initial deployment we recommend using the staging API
+    of LetsEncrypt to prevent and blacklisting of your system. The API
+    endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
+
 Operation
 =========
 
@@ -292,3 +330,7 @@ also to display them.
 .. opcmd:: show pki crl
 
   Show a list of installed :abbr:`CRLs (Certificate Revocation List)`.
+
+.. opcmd:: renew certbot
+
+  Manually trigger certificate renewal. This will be done twice a day.
