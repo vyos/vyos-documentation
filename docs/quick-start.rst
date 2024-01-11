@@ -141,7 +141,7 @@ networks, addresses, ports, and domains that describe different parts of
 our network. We can then use them for filtering within our firewall rulesets,
 allowing for more concise and readable configuration.
 
-In this case, we will create two interface groups—a ``WAN`` group for our
+In this case, we will create two interface groups — a ``WAN`` group for our
 interfaces connected to the public internet and a ``LAN`` group for the
 interfaces connected to our internal network. Additionally, we will create a
 network group, ``NET-INSIDE-v4``, that contains our internal subnet.
@@ -156,10 +156,26 @@ Configure Stateful Packet Filtering
 -----------------------------------
 
 With the new firewall structure, we have have a lot of flexibility in how we
-group and order our rules, as shown by the two alternative approaches below.
+group and order our rules, as shown by the three alternative approaches below.
 
-Option 1: Common Chain
-^^^^^^^^^^^^^^^^^^^^^^
+Option 1: Global State Policies
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using options defined in ``set firewall global-options state-policy``, state
+policy rules that applies for both IPv4 and IPv6 are created. These global
+state policies also applies for all traffic that passes through the router
+(transit) and for traffic originated/destinated to/from the router itself, and
+will be avaluated before any other rule defined in the firewall.
+
+Most installations would choose this option, and will contain:
+
+.. code-block:: none
+
+  set firewall global-options state-policy established action accept
+  set firewall global-options state-policy related action accept
+  set firewall global-options state-policy invalid action drop
+
+Option 2: Common/Custom Chain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We can create a common chain for stateful connection filtering of multiple
 interfaces (or multiple netfilter hooks on one interface). Those individual
@@ -196,12 +212,11 @@ hooks as the first filtering rule in the respective chains:
   set firewall ipv4 input filter rule 10 action 'jump'
   set firewall ipv4 input filter rule 10 jump-target CONN_FILTER
 
-Option 2: Per-Hook Chain
+Option 3: Per-Hook Chain
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Alternatively, instead of configuring the ``CONN_FILTER`` chain described above,
-you can take the more traditional stateful connection filtering approach by
-creating rules on each hook's chain:
+Alternatively, you can take the more traditional stateful connection
+filtering approach by creating rules on each base hook's chain:
 
 .. code-block:: none
 
