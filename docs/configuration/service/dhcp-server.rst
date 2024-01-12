@@ -528,35 +528,35 @@ Configuration
    values need to be supplied in seconds.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
-   <prefix> nis-domain <domain-name>
+   <prefix> option nis-domain <domain-name>
 
    A :abbr:`NIS (Network Information Service)` domain can be set to be used for
    DHCPv6 clients.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
-   <prefix> nisplus-domain <domain-name>
+   <prefix> option nisplus-domain <domain-name>
 
    The procedure to specify a :abbr:`NIS+ (Network Information Service Plus)`
    domain is similar to the NIS domain one:
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
-   <prefix> nis-server <address>
+   <prefix> option nis-server <address>
 
    Specify a NIS server address for DHCPv6 clients.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
-   <prefix> nisplus-server <address>
+   <prefix> option nisplus-server <address>
 
    Specify a NIS+ server address for DHCPv6 clients.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
-   <prefix> sip-server <address | fqdn>
+   <prefix> option sip-server <address | fqdn>
 
    Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6
    address of Fully Qualified Domain Name for all DHCPv6 clients.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
-   <prefix> sntp-server-address <address>
+   <prefix> option sntp-server-address <address>
 
    A SNTP server address can be specified for DHCPv6 clients.
 
@@ -594,8 +594,9 @@ server. The following example describes a common scenario.
 
 .. code-block:: none
 
-  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 address-range start 2001:db8::100 stop 2001:db8::199
-  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 name-server 2001:db8::ffff
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 range 1 start 2001:db8::100 stop 2001:db8::199
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 range 1 stop 2001:db8::199
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 option name-server 2001:db8::ffff
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 subnet-id 1
 
 The configuration will look as follows:
@@ -605,12 +606,13 @@ The configuration will look as follows:
   show service dhcpv6-server
       shared-network-name NET1 {
           subnet 2001:db8::/64 {
-             address-range {
-                start 2001:db8::100 {
-                   stop 2001:db8::199
-                }
+             range 1 {
+                start 2001:db8::100
+                stop 2001:db8::199
              }
-             name-server 2001:db8::ffff
+             option {
+                name-server 2001:db8::ffff
+             }
              subnet-id 1
           }
       }
