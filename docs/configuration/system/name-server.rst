@@ -48,7 +48,7 @@ In order for the system to use and complete unqualified host names, a
 list can be defined which will be used for domain searches.
 
 
-.. cfgcmd:: set system domain-search domain <domain>
+.. cfgcmd:: set system domain-search <domain>
 
    Use this command to define domains, one at a time, so that the system
    uses them to complete unqualified host names. Maximum: 6 entries.
@@ -68,7 +68,7 @@ order: vyos.io (first), vyos.net (second) and vyos.network (last):
 
 .. code-block:: none
 
-   set system domain-search domain vyos.io
-   set system domain-search domain vyos.net
-   set system domain-search domain vyos.network
+   set system domain-search vyos.io
+   set system domain-search vyos.net
+   set system domain-search vyos.network
 

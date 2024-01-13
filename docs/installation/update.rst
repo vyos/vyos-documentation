@@ -10,7 +10,7 @@ for the new image to boot using the current configuration.
 
 .. note:: Only LTS releases are PGP-signed.
 
-.. opcmd:: add system image <url | path> [vrf name]
+.. opcmd:: add system image <url | path> | [latest] [vrf name]
    [username user [password pass]]
 
    Use this command to install a new system image. You can reach the
@@ -72,6 +72,13 @@ Example
 
      OK.  This image will be named: vyos-1.3-rolling-201912201452
 
+You can use ``latest`` option. It loads the latest available Rolling release.
+
+.. code-block:: none
+
+     vyos@vyos:~$ add system image latest
+
+.. note:: To use the `latest` option the "system update-check url" must be configured.
 
 .. hint:: The most up-do-date Rolling Release for AMD64 can be accessed using
    the following URL:

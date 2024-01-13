@@ -123,8 +123,45 @@ The action can be :
 .. cfgcmd:: set firewall ipv6 name <name> rule <1-999999>
    jump-target <text>
 
-   To be used only when action is set to jump. Use this command to specify
+   To be used only when action is set to ``jump``. Use this command to specify
    jump target.
+
+.. cfgcmd:: set firewall ipv6 forward filter rule <1-999999>
+   queue <0-65535>
+.. cfgcmd:: set firewall ipv6 input filter rule <1-999999>
+   queue <0-65535>
+.. cfgcmd:: set firewall ipv6 output filter rule <1-999999>
+   queue <0-65535>
+.. cfgcmd:: set firewall ipv6 name <name> rule <1-999999>
+   queue <0-65535>
+
+   To be used only when action is set to ``queue``. Use this command to specify
+   queue target to use. Queue range is also supported.
+
+.. cfgcmd:: set firewall ipv6 forward filter rule <1-999999>
+   queue-options bypass
+.. cfgcmd:: set firewall ipv6 input filter rule <1-999999>
+   queue-options bypass
+.. cfgcmd:: set firewall ipv6 output filter rule <1-999999>
+   queue-options bypass
+.. cfgcmd:: set firewall ipv6 name <name> rule <1-999999>
+   queue-options bypass
+
+   To be used only when action is set to ``queue``. Use this command to let
+   packet go through firewall when no userspace software is connected to the
+   queue.
+
+.. cfgcmd:: set firewall ipv6 forward filter rule <1-999999>
+   queue-options fanout
+.. cfgcmd:: set firewall ipv6 input filter rule <1-999999>
+   queue-options fanout
+.. cfgcmd:: set firewall ipv6 output filter rule <1-999999>
+   queue-options fanout
+.. cfgcmd:: set firewall ipv6 name <name> rule <1-999999>
+   queue-options fanout
+
+   To be used only when action is set to ``queue``. Use this command to
+   distribute packets between several queues.
 
 Also, **default-action** is an action that takes place whenever a packet does
 not match any rule in it's chain. For base chains, possible options for
@@ -140,7 +177,7 @@ not match any rule in it's chain. For base chains, possible options for
    [accept | drop | jump | queue | reject | return]
 
    This set the default action of the rule-set if no rule matched a packet
-   criteria. If defacult-action is set to ``jump``, then
+   criteria. If default-action is set to ``jump``, then
    ``default-jump-target`` is also needed. Note that for base chains, default
    action can only be set to ``accept`` or ``drop``, while on custom chain,
    more actions are available.
@@ -153,7 +190,7 @@ not match any rule in it's chain. For base chains, possible options for
 .. note:: **Important note about default-actions:**
    If default action for any base chain is not defined, then the default
    action is set to **accept** for that chain. For custom chains, if default
-   action is not defined, then the default-action is set to **drop**
+   action is not defined, then the default-action is set to **drop**.
 
 Firewall Logs
 =============
@@ -162,15 +199,12 @@ Logging can be enable for every single firewall rule. If enabled, other
 log options can be defined. 
 
 .. cfgcmd:: set firewall ipv6 forward filter rule <1-999999> log
-   [disable | enable]
 .. cfgcmd:: set firewall ipv6 input filter rule <1-999999> log
-   [disable | enable]
 .. cfgcmd:: set firewall ipv6 output filter rule <1-999999> log
-   [disable | enable]
 .. cfgcmd:: set firewall ipv6 name <name> rule <1-999999> log
-   [disable | enable]
 
-   Enable or disable logging for the matched packet.
+   Enable logging for the matched packet. If this configuration command is not
+   present, then log is not enabled.
 
 .. cfgcmd:: set firewall ipv6 forward filter enable-default-log
 .. cfgcmd:: set firewall ipv6 input filter enable-default-log
@@ -266,7 +300,7 @@ just disable the rule, rather than removing it.
 Matching criteria
 =================
 
-There are a lot of matching criteria against which the package can be tested.
+There are a lot of matching criteria against which the packet can be tested.
 
 .. cfgcmd:: set firewall ipv6 forward filter rule <1-999999>
    connection-status nat [destination | source]
@@ -936,7 +970,7 @@ Rule-set overview
 
    .. code-block:: none
 
-      vyos@vyos:~$ show firewall 
+      vyos@vyos:~$ show firewall
       Rulesets Information
 
       ---------------------------------
@@ -999,7 +1033,7 @@ Rule-set overview
 
    .. code-block:: none
 
-      vyos@vyos:~$ show firewall summary 
+      vyos@vyos:~$ show firewall summary
       Ruleset Summary
 
       IPv6 Ruleset:
@@ -1049,29 +1083,30 @@ Rule-set overview
 
 .. opcmd:: show firewall ipv6 [forward | input | output] filter
 
-.. opcmd:: show firewall ipv4 name <name>
-
 .. opcmd:: show firewall ipv6 ipv6-name <name>
 
    This command will give an overview of a single rule-set.
 
    .. code-block:: none
 
-      vyos@vyos:~$ show firewall ipv4 input filter 
+      vyos@vyos:~$ show firewall ipv6 input filter
       Ruleset Information
 
       ---------------------------------
-      IPv4 Firewall "input filter"
+      ipv6 Firewall "input filter"
 
       Rule     Action    Protocol      Packets    Bytes  Conditions
-      -------  --------  ----------  ---------  -------  -----------------------------------------
-      5        jump      all                 0        0  iifname "eth2"  jump NAME_VyOS_MANAGEMENT
-      default  accept    all
+      -------  --------  ----------  ---------  -------  ------------------------------------------------------------------------------
+      10       jump      all                13     1456  iifname "eth1"  jump NAME6_INP-ETH1
+      20       accept    ipv6-icmp          10     1112  meta l4proto ipv6-icmp iifname "eth0"  prefix "[ipv6-INP-filter-20-A]"  accept
+      default  accept    all                14     1584
+
+      vyos@vyos:~$
 
 .. opcmd:: show firewall ipv6 [forward | input | output]
    filter rule <1-999999>
 
-.. opcmd:: show firewall ipv4 name <name> rule <1-999999>
+.. opcmd:: show firewall ipv6 name <name> rule <1-999999>
 
 .. opcmd:: show firewall ipv6 ipv6-name <name> rule <1-999999>
 
@@ -1084,7 +1119,7 @@ Rule-set overview
 
    .. code-block:: none
 
-      vyos@vyos:~$ show firewall group LAN 
+      vyos@vyos:~$ show firewall group LAN
       Firewall Groups
 
       Name          Type                References               Members
@@ -1119,45 +1154,38 @@ Example Partial Config
 
 .. code-block:: none
 
-  firewall {
-      group {
-          network-group BAD-NETWORKS {
-              network 198.51.100.0/24
-              network 203.0.113.0/24
-          }
-          network-group GOOD-NETWORKS {
-              network 192.0.2.0/24
-          }
-          port-group BAD-PORTS {
-              port 65535
-          }
-      }
-      ipv4 {
-          forward {
-              filter {
-                  default-action accept
-                  rule 5 {
-                      action accept
-                      source {
-                          group {
-                              network-group GOOD-NETWORKS
+      firewall {
+          ipv6 {
+              input {
+                  filter {
+                      rule 10 {
+                          action jump
+                          inbound-interface {
+                              name eth1
                           }
+                          jump-target INP-ETH1
+                      }
+                      rule 20 {
+                          action accept
+                          inbound-interface {
+                              name eth0
+                          }
+                          log
+                          protocol ipv6-icmp
                       }
                   }
+              }
+              name INP-ETH1 {
+                  default-action drop
+                  enable-default-log
                   rule 10 {
-                      action drop
-                      description "Bad Networks"
-                      protocol all
-                      source {
-                          group {
-                              network-group BAD-NETWORKS
-                          }
-                      }
+                      action accept
+                      protocol tcp_udp
                   }
               }
           }
       }
-  }
+
 
 Update geoip database
 =====================

@@ -20,8 +20,8 @@ server example
 
   set vpn pptp remote-access authentication local-users username test password 'test'
   set vpn pptp remote-access authentication mode 'local'
-  set vpn pptp remote-access client-ip-pool start '192.168.0.10'
-  set vpn pptp remote-access client-ip-pool stop '192.168.0.15'
+  set vpn pptp remote-access client-ip-pool PPTP-POOL range 192.168.0.10-192.168.0.15
+  set vpn pptp remote-access default-pool 'PPTP-POOL'
   set vpn pptp remote-access gateway-address '10.100.100.1'
   set vpn pptp remote-access outside-address '10.1.1.120'
 
