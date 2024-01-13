@@ -1,8 +1,8 @@
-urllib3==1.26.18
-Sphinx==4.5.0
-sphinx-rtd-theme==1.0.0
+urllib3==2.1.0
+Sphinx==7.2.6
+sphinx-rtd-theme==2.0.0
 sphinx-autobuild==2021.3.14
-sphinx-notfound-page==0.8
-lxml==4.9.1
-myst-parser==0.17.1
-sphinx-panels==0.6.0
+sphinx-notfound-page==1.0.0
+lxml==5.1.0
+myst-parser==2.0.0
+sphinx_design==0.5.0
