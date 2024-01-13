@@ -143,6 +143,19 @@ avoid being tracked by the provider of your upstream DNS server.
    168.192.in-addr.arpa, 16-31.172.in-addr.arpa, which enabling upstream
    DNS server(s) to be used for reverse lookups of these zones.
 
+.. cfgcmd:: set service dns forwarding serve-stale-extension <0-65535>
+
+   Maximum number of times an expired record’s TTL is extended by 30s when
+   serving stale. Extension only occurs if a record cannot be refreshed. A
+   value of 0 means the Serve Stale mechanism is not used. To allow records
+   becoming stale to be served for an hour, use a value of 120.
+
+.. cfgcmd:: set service dns forwarding exclude-throttle-address <ip|prefix>
+
+   When an authoritative server does not answer a query or sends a reply the
+   recursor does not like, it is throttled. Any servers matching the supplied
+   netmasks will never be throttled.
+
 Example
 =======
 
@@ -381,12 +394,12 @@ By default, ddclient_ will update a dynamic dns record using the IP address
 directly attached to the interface. If your VyOS instance is behind NAT, your
 record will be updated to point to your internal IP.
 
-Above, command syntax isn noted to configure dynamic dns on a specific interface. 
-It is possible to overlook the additional address option, web, when completeing 
-those commands. ddclient_ has another way to determine the WAN IP address, using 
-a web-based url to determine the external IP. Each of the commands above will 
-need to be modified to use 'web' as the 'interface' specified if this functionality 
-is to be utilized. 
+Above, command syntax isn noted to configure dynamic dns on a specific interface.
+It is possible to overlook the additional address option, web, when completeing
+those commands. ddclient_ has another way to determine the WAN IP address, using
+a web-based url to determine the external IP. Each of the commands above will
+need to be modified to use 'web' as the 'interface' specified if this functionality
+is to be utilized.
 
 This functionality is controlled by adding the following configuration:
 

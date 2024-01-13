@@ -458,13 +458,16 @@ In this example we configured an existent VyOS as the DHCP server:
   vyos@vyos# show service dhcp-server
    shared-network-name mydhcp {
        subnet 192.168.1.0/24 {
-           bootfile-name pxelinux.0
-           bootfile-server 192.168.1.50
-           default-router 192.168.1.50
+           option {
+               bootfile-name pxelinux.0
+               bootfile-server 192.168.1.50
+               default-router 192.168.1.50
+           }
            range 0 {
                start 192.168.1.70
                stop 192.168.1.100
            }
+           subnet-id 1
        }
    }
 

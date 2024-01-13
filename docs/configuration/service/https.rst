@@ -1,7 +1,7 @@
 .. _http-api:
 
 ########
-HTTP-API
+HTTP API
 ########
 
 VyOS provide an HTTP API. You can use it to execute op-mode commands,
@@ -12,6 +12,51 @@ Please take a look at the :ref:`vyosapi` page for an detailed how-to.
 *************
 Configuration
 *************
+
+.. cfgcmd:: set service https allow-client address <address>
+
+   Only allow certain IP addresses or prefixes to access the https
+   webserver.
+
+.. cfgcmd:: set service https certificates ca-certificate <name>
+
+   Use CA certificate from PKI subsystem
+
+.. cfgcmd:: set service https certificates certificate <name>
+
+   Use certificate from PKI subsystem
+
+.. cfgcmd:: set service https certificates dh-params <name>
+
+   Use :abbr:`DH (Diffie–Hellman)` parameters from PKI subsystem.
+   Must be at least 2048 bits in length.
+
+.. cfgcmd:: set service https listen-address <address>
+
+   Webserver should only listen on specified IP address
+
+.. cfgcmd:: set service https port <number>
+
+   Webserver should listen on specified port.
+
+   Default: 443
+
+.. cfgcmd:: set service https enable-http-redirect
+
+   Enable automatic redirect from http to https.
+
+.. cfgcmd:: set service https tls-version <1.2 | 1.3>
+
+   Select TLS version used.
+
+   This defaults to both 1.2 and 1.3.
+
+.. cfgcmd:: set service https vrf <name>
+
+   Start Webserver in given  VRF.
+
+API
+===
 
 .. cfgcmd:: set service https api keys id <name> key <apikey>
 
@@ -27,42 +72,6 @@ Configuration
 
    Enforce strict path checking
 
-.. cfgcmd:: set service https virtual-host <vhost> listen-address
-            <ipv4 or ipv6 address>
-
-   Address to listen for HTTPS requests
-
-.. cfgcmd:: set service https virtual-host <vhost> port <1-65535>
-
-   Port to listen for HTTPS requests; default 443
-
-.. cfgcmd:: set service https virtual-host <vhost> server-name <text>
-
-   Server names for virtual hosts it can be exact, wildcard or regex.
-
-.. cfgcmd:: set service https api-restrict virtual-host <vhost>
-
-   By default, nginx exposes the local API on all virtual servers.
-   Use this to restrict nginx to one or more virtual hosts.
-
-.. cfgcmd:: set service https certificates certbot domain-name <text>
-
-   Domain name(s) for which to obtain certificate
-
-.. cfgcmd:: set service https certificates certbot email
-
-   Email address to associate with certificate
-
-.. cfgcmd:: set service https certificates system-generated-certificate
-
-   Use an automatically generated self-signed certificate
-
-.. cfgcmd:: set service https certificates system-generated-certificate
-   lifetime <days>
-
-   Lifetime in days; default is 365
-
-
 *********************
 Example Configuration
 *********************
@@ -72,16 +81,3 @@ Set an API-KEY is the minimal configuration to get a working API Endpoint.
 .. code-block:: none
 
    set service https api keys id MY-HTTPS-API-ID key MY-HTTPS-API-PLAINTEXT-KEY
-
-
-To use this full configuration we asume a public accessible hostname.
-
-.. code-block:: none
-
-   set service https api keys id MY-HTTPS-API-ID key MY-HTTPS-API-PLAINTEXT-KEY
-   set service https certificates certbot domain-name rtr01.example.com
-   set service https certificates certbot email mail@example.com
-   set service https virtual-host rtr01 listen-address 198.51.100.2
-   set service https virtual-host rtr01 port 11443
-   set service https virtual-host rtr01 server-name rtr01.example.com
-   set service https api-restrict virtual-host rtr01

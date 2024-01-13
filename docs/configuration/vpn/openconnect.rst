@@ -165,6 +165,13 @@ Simple setup with one user added and password authentication:
   set vpn openconnect ssl ca-certificate 'ca-ocserv'
   set vpn openconnect ssl certificate 'srv-ocserv'
 
+To enable the HTTP security headers in the configuration file, use the command:
+
+.. code-block:: none
+
+  set vpn openconnect http-security-headers
+
+
 Adding a 2FA with an OTP-key
 ============================
 

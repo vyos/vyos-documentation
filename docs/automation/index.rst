@@ -17,3 +17,5 @@ VyOS Automation
    vyos-salt
    command-scripting
    cloud-init
+   vyos-pyvyos
+   

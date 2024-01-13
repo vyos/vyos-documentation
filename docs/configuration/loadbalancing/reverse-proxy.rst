@@ -105,7 +105,7 @@ Backend
      of the client
    * ``round-robin`` Distributes requests in a circular manner,
      sequentially sending each request to the next server in line
-   * ``least-connection`` Distributes requests tp tje server wotj the fewest 
+   * ``least-connection`` Distributes requests to the server with the fewest
      active connections
 
 .. cfgcmd:: set load-balancing reverse-proxy backend <name> mode

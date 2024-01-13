@@ -116,9 +116,20 @@ Configuration
   Specifies the port `<port>` that the SSTP port will listen on (default 443).
 
 
-.. cfgcmd:: set vpn sstp client-ip-pool subnet <subnet>
+.. cfgcmd:: set vpn sstp client-ip-pool <POOL-NAME> range <x.x.x.x-x.x.x.x | x.x.x.x/x>
 
-  Use `<subnet>` as the IP pool for all connecting clients.
+   Use this command to define the first IP address of a pool of
+   addresses to be given to SSTP clients. If notation ``x.x.x.x-x.x.x.x``,
+   it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
+   used there is possibility to set host/netmask.
+
+.. cfgcmd:: set vpn sstp client-ip-pool <POOL-NAME> next-pool <NEXT-POOL-NAME>
+
+   Use this command to define the next address pool name.
+
+.. cfgcmd:: set vpn sstp default-pool <POOL-NAME>
+
+   Use this command to define default address pool name.
 
 
 .. cfgcmd:: set vpn sstp client-ipv6-pool prefix <address> mask <number-of-bits>
@@ -282,7 +293,8 @@ Example
   set vpn sstp authentication local-users username vyos password vyos
   set vpn sstp authentication mode local
   set vpn sstp gateway-address 192.0.2.254
-  set vpn sstp client-ip-pool subnet 192.0.2.0/25
+  set vpn sstp client-ip-pool SSTP-POOL range 192.0.2.0/25
+  set vpn sstp default-pool 'SSTP-POOL'
   set vpn sstp name-server 10.0.0.1
   set vpn sstp name-server 10.0.0.2
   set vpn sstp ssl ca-cert-file /config/auth/ca.crt
