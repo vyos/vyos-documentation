@@ -12,6 +12,7 @@ VyOS Automation
    
    vyos-api
    vyos-ansible
+   vyos-terraform
    vyos-napalm
    vyos-netmiko
    vyos-salt
