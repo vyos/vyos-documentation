@@ -178,10 +178,16 @@ MAC address of the station and your desired IP address. The address must be
 inside the subnet definition but can be outside of the range statement.
 
 .. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
-   <subnet> static-mapping <description> mac-address <address>
+   <subnet> static-mapping <description> mac <address>
 
    Create a new DHCP static mapping named `<description>` which is valid for
    the host identified by its MAC `<address>`.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
+   <subnet> static-mapping <description> duid <identifier>
+
+   Create a new DHCP static mapping named `<description>` which is valid for
+   the host identified by its DHCP unique identifier (DUID) `<identifier>`.
 
 .. cfgcmd:: set service dhcp-server shared-network-name <name> subnet
    <subnet> static-mapping <description> ip-address <address>
@@ -205,7 +211,7 @@ inside the subnet definition but can be outside of the range statement.
 
   set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 subnet-id 1
   set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 ip-address 192.168.1.100
-  set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 mac-address aa:bb:11:22:33:00
+  set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 mac aa:bb:11:22:33:00
 
 The configuration will look as follows:
 
@@ -215,7 +221,7 @@ The configuration will look as follows:
    subnet 192.168.1.0/24 {
        static-mapping client1 {
            ip-address 192.168.1.100
-           mac-address aa:bb:11:22:33:00
+           mac aa:bb:11:22:33:00
        }
        subnet-id 1
    }
@@ -641,7 +647,7 @@ be created. The following example explains the process.
 
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-address 2001:db8::101
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-prefix 2001:db8:0:101::/64
-  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 identifier 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 duid 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
 
 The configuration will look as follows:
 
@@ -652,7 +658,7 @@ The configuration will look as follows:
   show service dhcpv6-server shared-network-name NET1
    subnet 2001:db8::/64 {
        static-mapping client1 {
-           identifier 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
+           duid 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
            ipv6-address 2001:db8::101
            ipv6-prefix 2001:db8:0:101::/64
        }
