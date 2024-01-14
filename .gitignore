@@ -1,11 +1,13 @@
 # Sphinx
 _build/
+localazy_private.json
 
 # python virtualenv
 venv/
 ENV/
 .venv
 Pipfile.lock
+Pipfile
 
 # put various editor ignores here
 .vscode/
@@ -13,6 +15,9 @@ Pipfile.lock
 *.vpw
 *.vpwhist
 *.vtg
+.idea/
+.idea
+.idea/*
 
 # python cache files
 *.pyc
