@@ -8,6 +8,122 @@
    _ext/releasenotes.py
 
 
+2024-01-14
+==========
+
+* :vytask:`T4428` ``(feature): Update ddclient to newer version``
+
+
+2024-01-12
+==========
+
+* :vytask:`T5925` ``(feature): Containers change systemd KillMode``
+* :vytask:`T5920` ``(bug): Quick Start documentation contains error``
+* :vytask:`T5919` ``(bug): Firewall - opmode for ipv6``
+* :vytask:`T5306` ``(default): bgp config migration failed with v6only option configured with peer-group``
+* :vytask:`T3429` ``(bug): Hyper-V integration services not working on VyOS 1.4 (sagitta/current)``
+
+
+2024-01-11
+==========
+
+* :vytask:`T5896` ``(bug): Config Error on Boot with Podman and Firewall``
+* :vytask:`T5532` ``(bug): After add system image the boot stuck and works again after the second reboot``
+* :vytask:`T5512` ``(bug): build linux-firmware script cannot expand asterisks if firmware name is a glob string``
+* :vytask:`T5379` ``(bug): show system updates doesnt seem to be working``
+* :vytask:`T5275` ``(default): Add op mode commands for exporting certificates to PEM files with correct headers``
+* :vytask:`T5274` ``(default): Add a deprecation warning for OpenVPN site-to-site with pre-shared secret``
+* :vytask:`T5262` ``(default): Warn the user about unsaved config on reboot/shutdown attempts``
+* :vytask:`T5257` ``(feature): Cannont assign netflow source ip to ip in non default VRF``
+* :vytask:`T5026` ``(feature): Python3 modules crypt and spwd are deprecated``
+* :vytask:`T5814` ``(bug): VyOS 1.3 to 1.4 LTS Firewall ruleset migration script breaks configuration``
+* :vytask:`T4610` ``(bug): Firewall with 20K entries cannot load after reboot``
+* :vytask:`T3191` ``(bug): PAM RADIUS freezing when accounting does not configured on RADIUS server``
+* :vytask:`T5917` ``(feature): Restore annotations of (running)/(default boot) in select image list``
+* :vytask:`T5916` ``(default): Added segment routing check for index size and SRGB size``
+* :vytask:`T5913` ``(feature): Allow for Peer-Groups in ipv4-labeled-unicast SAFI``
+
+
+2024-01-10
+==========
+
+* :vytask:`T5918` ``(bug): Verification problem for `set vpn ipsec interface```
+* :vytask:`T5911` ``(bug): pki: service update ignored if certificate name contains a hyphen (-)``
+* :vytask:`T5886` ``(feature): Add support for ACME protocol (LetsEncrypt)``
+* :vytask:`T5766` ``(bug): http: rewrite conf-mode script to get_config_dict()``
+* :vytask:`T5144` ``(default): Modernize dynamic dns operation``
+* :vytask:`T4689` ``(feature): Support RFS(Receive Flow Steering)``
+* :vytask:`T4659` ``(feature): Use vtysh to display bridge and some interface parameter information``
+* :vytask:`T4646` ``(bug): USB serial output console does not work``
+* :vytask:`T4577` ``(bug): WWAN commit failed which simple config``
+* :vytask:`T4502` ``(feature): Consider implementing (NAT/other) flow table offload``
+* :vytask:`T4446` ``(default): Unified CLI for displaying neithbors (ARP, IP, and NDP)``
+* :vytask:`T4427` ``(default): Remove the vyos-utils package list from vyos-build``
+* :vytask:`T4300` ``(feature): Extend list of supported interfaces for Cloud-init Network Configuration``
+* :vytask:`T4250` ``(bug): Organize logrotate settings to avoid duplicates``
+* :vytask:`T4236` ``(feature): Generate ovpn openvpn client configuration files``
+* :vytask:`T4222` ``(feature): Support for TWAMP as round-trip metric``
+* :vytask:`T3833` ``(bug): Cloud-init not finding data source in OpenStack``
+* :vytask:`T5902` ``(bug): http: remove virtual-host configuration in webserver``
+* :vytask:`T3499` ``(bug): Podman is not compatible with nat rules``
+* :vytask:`T3430` ``(bug): Cloud-init failing with “Unable to render networking” on VyOS 1.3``
+* :vytask:`T3011` ``(bug): router becomes unreachable for few minutes when vti interfaces goes down``
+* :vytask:`T5791` ``(default): Update dynamic dns configuration path to be consistent with other areas of VyOS``
+* :vytask:`T5708` ``(default): Additional dynamic dns improvements to align with ddclient 3.11.1 release``
+* :vytask:`T5573` ``(bug): Fix ddclient cache entries``
+* :vytask:`T5012` ``(feature): Control network configuration from Cloud-Init config``
+* :vytask:`T3116` ``(feature): Support back-end L4 level load balancing``
+* :vytask:`T5614` ``(default): Add conntrack helper matching on firewall``
+* :vytask:`T5080` ``(bug): Conntrack enabled by default``
+* :vytask:`T4782` ``(enhancment): Allow multiple CA certificates (on e.g. EAPoL)``
+* :vytask:`T2199` ``(default): Rewrite firewall in new XML/Python style``
+
+
+2024-01-09
+==========
+
+* :vytask:`T5898` ``(bug): Replace partprobe with partx due to unable to install VyOS``
+* :vytask:`T5838` ``(feature): Add Infiniband kernel modules``
+* :vytask:`T5785` ``(bug): API output of show container image broken``
+* :vytask:`T5410` ``(feature): Improve `utils.convert.convert_data()` to process all stdtypes``
+* :vytask:`T5269` ``(default): OpenVPN non-TLS site-to-site mode deprecation``
+* :vytask:`T5249` ``(feature): Add rollback-soft feature to rollback without a reboot``
+* :vytask:`T4944` ``(default): Prevent op mode functions from returning bare literals in raw output``
+* :vytask:`T4910` ``(default): Rewrite the remote access VPN op mode in the new style``
+* :vytask:`T4470` ``(feature): Rewrite load-balancing wan to XML/Python``
+* :vytask:`T3763` ``(bug): wireguard checks if port already binding``
+* :vytask:`T3489` ``(bug): NUMA has been disabled for the past few years and no-one has noticed``
+* :vytask:`T3476` ``(feature): Update availability check``
+* :vytask:`T2845` ``(bug): BGP conf_mode unable to delete configuration with peer-group``
+* :vytask:`T2844` ``(bug): BGP conf_mode errors disable-send-community``
+* :vytask:`T2755` ``(default): Requirements for partial interface setup``
+* :vytask:`T2721` ``(enhancment): Set FQ-CoDel as the default queueing mechanism for every class in Shaper``
+* :vytask:`T2511` ``(feature): Migrate vyatta-op-quagga to new XML format``
+* :vytask:`T2302` ``(default): Convert configuration scripts from executables to modules and use a script runner``
+* :vytask:`T2281` ``(feature): DHCP and Static IPs on Same Interface``
+* :vytask:`T2216` ``(default): Containerized third-party applications for VyOS``
+* :vytask:`T2171` ``(feature): Unify creation and manipulation of interfaces``
+* :vytask:`T1759` ``(feature): Replacing Vyatta::Interface perl``
+* :vytask:`T2408` ``(enhancment): DHCP Relay upstream and downstream interfaces``
+* :vytask:`T1297` ``(feature): Add GARP settings to VRRP/keepalived``
+
+
+2024-01-08
+==========
+
+* :vytask:`T5888` ``(bug): Firewall upgrade fails because of icmpv6``
+* :vytask:`T5844` ``(bug): HTTPS API doesn't start without configured keys even when GraphQL authentication type is set to token``
+* :vytask:`T5664` ``(bug): 1.4 user has no permissions?``
+* :vytask:`T5215` ``(default): Add a built-in ICMP health check for VRRP groups``
+* :vytask:`T5045` ``(bug): BFD is not starting after upgrade to 1.4-rolling-202302150317``
+* :vytask:`T4193` ``(default): Add support for transparent firewall``
+* :vytask:`T3754` ``(default): Make config scripts more testable``
+* :vytask:`T3663` ``(default): Use inotify file watching where applicable``
+* :vytask:`T3480` ``(bug): Does not possible to change console baud-rate``
+* :vytask:`T2897` ``(default): Remove cluster command``
+* :vytask:`T5904` ``(feature): op-mode: add "show ipv6 route vrf <name> <prefix>" command``
+
+
 2024-01-07
 ==========
 
