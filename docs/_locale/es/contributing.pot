@@ -80,8 +80,8 @@ msgstr "Un resumen único y breve de la confirmación (se recomiendan 50 caracte
 msgid "Abbreviations and acronyms **must** be capitalized."
 msgstr "Las abreviaturas y los acrónimos **deben** estar en mayúscula."
 
-#: ../../contributing/build-vyos.rst:403
-#: ../../contributing/build-vyos.rst:591
+#: ../../contributing/build-vyos.rst:443
+#: ../../contributing/build-vyos.rst:631
 msgid "Accel-PPP"
 msgstr "Accel-PPP"
 
@@ -93,7 +93,7 @@ msgstr "Los acrónimos también **deben** escribirse en mayúscula para distingu
 msgid "Add file to Git index using ``git add myfile``, or for a whole directory: ``git add somedir/*``"
 msgstr "Agregue un archivo al índice de Git usando ``git add myfile``, o para un directorio completo: ``git add somedir/*``"
 
-#: ../../contributing/testing.rst:99
+#: ../../contributing/testing.rst:100
 msgid "Add one or more IP addresses"
 msgstr "Agregar una o más direcciones IP"
 
@@ -101,17 +101,17 @@ msgstr "Agregar una o más direcciones IP"
 msgid "Address"
 msgstr "DIRECCIÓN"
 
-#: ../../contributing/build-vyos.rst:800
+#: ../../contributing/build-vyos.rst:840
 msgid "After a minute or two you will find the generated DEB packages next to the vyos-1x source directory:"
 msgstr "Después de uno o dos minutos, encontrará los paquetes DEB generados junto al directorio fuente de vyos-1x:"
 
-#: ../../contributing/build-vyos.rst:627
-#: ../../contributing/build-vyos.rst:656
-#: ../../contributing/build-vyos.rst:691
+#: ../../contributing/build-vyos.rst:667
+#: ../../contributing/build-vyos.rst:696
+#: ../../contributing/build-vyos.rst:731
 msgid "After compiling the packages you will find yourself the newly generated `*.deb` binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them to the ``vyos-build/packages`` folder for inclusion during the ISO build."
 msgstr "Después de compilar los paquetes, encontrará los binarios `*.deb` recién generados en ``vyos-build/packages/linux-kernel`` desde los cuales puede copiarlos a la carpeta ``vyos-build/packages`` para inclusión durante la compilación ISO."
 
-#: ../../contributing/testing.rst:50
+#: ../../contributing/testing.rst:51
 msgid "After its first boot into the newly installed system the main Smoketest script is executed, it can be found here: `/usr/bin/vyos-smoketest`"
 msgstr "Después de su primer arranque en el sistema recién instalado, se ejecuta el script principal de Smoketest, se puede encontrar aquí: `/usr/bin/vyos-smoketest`"
 
@@ -147,23 +147,23 @@ msgstr "Utilice siempre la opción ``-x`` para el comando ``git cherry-pick`` cu
 msgid "Another advantage is testability of the code. Mocking the entire config subsystem is hard, while constructing an internal representation by hand is way simpler."
 msgstr "Otra ventaja es la capacidad de prueba del código. Burlarse de todo el subsistema de configuración es difícil, mientras que construir una representación interna a mano es mucho más simple."
 
-#: ../../contributing/build-vyos.rst:702
+#: ../../contributing/build-vyos.rst:742
 msgid "Any \"modified\" package may refer to an altered version of e.g. vyos-1x package that you would like to test before filing a pull request on GitHub."
 msgstr "Cualquier paquete &quot;modificado&quot; puede hacer referencia a una versión alterada de, por ejemplo, el paquete vyos-1x que le gustaría probar antes de presentar una solicitud de extracción en GitHub."
 
-#: ../../contributing/build-vyos.rst:831
+#: ../../contributing/build-vyos.rst:871
 msgid "Any packages in the packages directory will be added to the iso during build, replacing the upstream ones. Make sure you delete them (both the source directories and built deb packages) if you want to build an iso from purely upstream packages."
 msgstr "Cualquier paquete en el directorio de paquetes se agregará a la iso durante la compilación, reemplazando a los anteriores. Asegúrese de eliminarlos (tanto los directorios de origen como los paquetes deb creados) si desea crear una iso a partir de paquetes puramente ascendentes."
 
-#: ../../contributing/testing.rst:56
+#: ../../contributing/testing.rst:57
 msgid "As Smoketests will alter the system configuration and you are logged in remote you may loose your connection to the system."
 msgstr "Como Smoketests alterará la configuración del sistema y usted está conectado de forma remota, puede perder su conexión con el sistema."
 
-#: ../../contributing/testing.rst:12
+#: ../../contributing/testing.rst:13
 msgid "As the VyOS documentation is not only for users but also for the developers - and we keep no secret documentation - this section describes how the automated testing works."
 msgstr "Como la documentación de VyOS no es solo para los usuarios, sino también para los desarrolladores, y no guardamos documentación secreta, esta sección describe cómo funcionan las pruebas automatizadas."
 
-#: ../../contributing/build-vyos.rst:777
+#: ../../contributing/build-vyos.rst:817
 msgid "Assume we want to build the vyos-1x package on our own and modify it to our needs. We first need to clone the repository from GitHub."
 msgstr "Supongamos que queremos construir el paquete vyos-1x por nuestra cuenta y modificarlo según nuestras necesidades. Primero necesitamos clonar el repositorio de GitHub."
 
@@ -215,15 +215,15 @@ msgstr "Temporización de arranque"
 msgid "Bug Report/Issue"
 msgstr "Informe de error/problema"
 
-#: ../../contributing/build-vyos.rst:785
+#: ../../contributing/build-vyos.rst:825
 msgid "Build"
 msgstr "Construir"
 
-#: ../../contributing/build-vyos.rst:60
+#: ../../contributing/build-vyos.rst:122
 msgid "Build Container"
 msgstr "Contenedor de construcción"
 
-#: ../../contributing/build-vyos.rst:182
+#: ../../contributing/build-vyos.rst:215
 msgid "Build ISO"
 msgstr "Construir ISO"
 
@@ -231,31 +231,31 @@ msgstr "Construir ISO"
 msgid "Build VyOS"
 msgstr "Construir VyOS"
 
-#: ../../contributing/build-vyos.rst:85
+#: ../../contributing/build-vyos.rst:147
 msgid "Build from source"
 msgstr "Construir desde la fuente"
 
-#: ../../contributing/build-vyos.rst:582
+#: ../../contributing/build-vyos.rst:622
 msgid "Building Out-Of-Tree Modules"
 msgstr "Construcción de módulos fuera del árbol"
 
-#: ../../contributing/build-vyos.rst:435
+#: ../../contributing/build-vyos.rst:475
 msgid "Building The Kernel"
 msgstr "Construyendo el núcleo"
 
-#: ../../contributing/build-vyos.rst:246
+#: ../../contributing/build-vyos.rst:286
 msgid "Building VyOS on Windows WSL2 with Docker integrated into WSL2 will work like a charm. No problems are known so far!"
 msgstr "Construir VyOS en Windows WSL2 con Docker integrado en WSL2 funcionará de maravilla. ¡No se conocen problemas hasta ahora!"
 
-#: ../../contributing/build-vyos.rst:705
+#: ../../contributing/build-vyos.rst:745
 msgid "Building an ISO with any customized package is in no way different than building a regular (customized or not) ISO image. Simply place your modified `*.deb` package inside the `packages` folder within `vyos-build`. The build process will then pickup your custom package and integrate it into your ISO."
 msgstr "Crear una imagen ISO con cualquier paquete personalizado no es diferente de crear una imagen ISO normal (personalizada o no). Simplemente coloque su paquete `*.deb` modificado dentro de la carpeta `packages` dentro de `vyos-build`. El proceso de compilación recogerá su paquete personalizado y lo integrará en su ISO."
 
-#: ../../contributing/build-vyos.rst:584
+#: ../../contributing/build-vyos.rst:624
 msgid "Building the kernel is one part, but now you also need to build the required out-of-tree modules so everything is lined up and the ABIs match. To do so, you can again take a look at ``vyos-build/packages/linux-kernel/Jenkinsfile`` to see all of the required modules and their selected versions. We will show you how to build all the current required modules."
 msgstr "Construir el kernel es una parte, pero ahora también necesita construir los módulos fuera del árbol requeridos para que todo esté alineado y las ABI coincidan. Para hacerlo, puede volver a echar un vistazo a ``vyos-build/packages/linux-kernel/Jenkinsfile`` para ver todos los módulos requeridos y sus versiones seleccionadas. Le mostraremos cómo construir todos los módulos requeridos actualmente."
 
-#: ../../contributing/build-vyos.rst:475
+#: ../../contributing/build-vyos.rst:515
 msgid "Building the kernel will take some time depending on the speed and quantity of your CPU/cores and disk speed. Expect 20 minutes (or even longer) on lower end hardware."
 msgstr "Construir el núcleo llevará algún tiempo dependiendo de la velocidad y la cantidad de su CPU/núcleos y la velocidad del disco. Espere 20 minutos (o incluso más) en hardware de gama baja."
 
@@ -275,7 +275,7 @@ msgstr "Código de fondo de C++"
 msgid "Capitalization and punctuation"
 msgstr "Mayúsculas y puntuación"
 
-#: ../../contributing/build-vyos.rst:448
+#: ../../contributing/build-vyos.rst:488
 msgid "Check out the required kernel version - see ``vyos-build/data/defaults.json`` file (example uses kernel 4.19.146):"
 msgstr "Verifique la versión de kernel requerida; consulte el archivo ``vyos-build/data/defaults.json`` (el ejemplo usa el kernel 4.19.146):"
 
@@ -283,7 +283,7 @@ msgstr "Verifique la versión de kernel requerida; consulte el archivo ``vyos-bu
 msgid "Clone: ``git clone https://github.com/<user>/vyos-1x.git``"
 msgstr "Clonar: ``git clon https://github.com/<user> /vyos-1x.git``"
 
-#: ../../contributing/build-vyos.rst:441
+#: ../../contributing/build-vyos.rst:481
 msgid "Clone the kernel source to `vyos-build/packages/linux-kernel/`:"
 msgstr "Clone la fuente del kernel en `vyos-build/packages/linux-kernel/`:"
 
@@ -299,7 +299,7 @@ msgstr "Las definiciones de comandos son puramente declarativas y no pueden cont
 msgid "Commit the changes by calling ``git commit``. Please use a meaningful commit headline (read above) and don't forget to reference the Phabricator_ ID."
 msgstr "Confirma los cambios llamando a ``git commit``. Utilice un título de compromiso significativo (lea arriba) y no olvide hacer referencia al ID de Phabricator_."
 
-#: ../../contributing/testing.rst:151
+#: ../../contributing/testing.rst:152
 msgid "Config Load Tests"
 msgstr "Pruebas de carga de configuración"
 
@@ -323,11 +323,11 @@ msgstr "Consulta la documentación_ para asegurarte de haber configurado correct
 msgid "Continuous Integration"
 msgstr "Integración continua"
 
-#: ../../contributing/build-vyos.rst:255
+#: ../../contributing/build-vyos.rst:295
 msgid "Customize"
 msgstr "personalizar"
 
-#: ../../contributing/testing.rst:100
+#: ../../contributing/testing.rst:101
 msgid "DHCP client and DHCPv6 prefix delegation"
 msgstr "Cliente DHCP y delegación de prefijos DHCPv6"
 
@@ -335,19 +335,31 @@ msgstr "Cliente DHCP y delegación de prefijos DHCPv6"
 msgid "DMVPN patches are added by this commit: https://github.com/vyos/vyos-strongswan/commit/1cf12b0f2f921bfc51affa3b81226"
 msgstr "Los parches DMVPN se agregan mediante este compromiso: https://github.com/vyos/vyos-strongswan/commit/1cf12b0f2f921bfc51affa3b81226"
 
-#: ../../contributing/build-vyos.rst:713
+#: ../../contributing/build-vyos.rst:753
 msgid "Debian APT is not very verbose when it comes to errors. If your ISO build breaks for whatever reason and you suspect it's a problem with APT dependencies or installation you can add this small patch which increases the APT verbosity during ISO build."
 msgstr "Debian APT no es muy detallado cuando se trata de errores. Si su compilación ISO se rompe por cualquier motivo y sospecha que es un problema con las dependencias o la instalación de APT, puede agregar este pequeño parche que aumenta la verbosidad de APT durante la compilación ISO."
+
+#: ../../contributing/build-vyos.rst:42
+msgid "Debian Bookworm for VyOS 1.4 (sagitta)"
+msgstr "Debian Bookworm for VyOS 1.4 (sagitta)"
+
+#: ../../contributing/build-vyos.rst:43
+msgid "Debian Bookworm for the upcoming VyOS 1.5/circinus/current (subject to change) - aka the rolling release"
+msgstr "Debian Bookworm for the upcoming VyOS 1.5/circinus/current (subject to change) - aka the rolling release"
 
 #: ../../contributing/build-vyos.rst:154
 msgid "Debian Bullseye for VyOS 1.4 (sagitta, current) - aka the rolling release"
 msgstr "Debian Bullseye para VyOS 1.4 (sagitta, actual) - también conocido como lanzamiento continuo"
 
-#: ../../contributing/build-vyos.rst:153
+#: ../../contributing/build-vyos.rst:154
+msgid "Debian Bullseye for VyOS 1.4 (sagitta)"
+msgstr "Debian Bullseye for VyOS 1.4 (sagitta)"
+
+#: ../../contributing/build-vyos.rst:41
 msgid "Debian Buster for VyOS 1.3 (equuleus)"
 msgstr "Debian Buster para VyOS 1.3 (equuleus)"
 
-#: ../../contributing/build-vyos.rst:152
+#: ../../contributing/build-vyos.rst:40
 msgid "Debian Jessie for VyOS 1.2 (crux)"
 msgstr "Debian Jessie para VyOS 1.2 (crux)"
 
@@ -379,21 +391,25 @@ msgstr "Desarrollo"
 msgid "Do not add angle brackets around the format, they will be inserted automatically"
 msgstr "No agregue corchetes angulares alrededor del formato, se insertarán automáticamente"
 
-#: ../../contributing/build-vyos.rst:33
+#: ../../contributing/build-vyos.rst:83
 msgid "Docker"
 msgstr "Estibador"
 
-#: ../../contributing/build-vyos.rst:73
+#: ../../contributing/build-vyos.rst:135
 msgid "Dockerhub"
 msgstr "Dockerhub"
 
-#: ../../contributing/build-vyos.rst:50
+#: ../../contributing/build-vyos.rst:112
 msgid "Doing so grants privileges equivalent to the ``root`` user! It is recommended to remove the non-root user from the ``docker`` group after building the VyOS ISO. See also `Docker as non-root`_."
 msgstr "¡Hacerlo otorga privilegios equivalentes a los del usuario ``root``! Se recomienda eliminar al usuario no root del grupo ``docker`` después de compilar la ISO de VyOS. Consulte también `Docker como no root`_."
 
 #: ../../contributing/upstream-packages.rst:17
 msgid "Due to issues in the upstream version that sometimes set interfaces down, a modified version is used."
 msgstr "Debido a problemas en la versión anterior que a veces desactivan las interfaces, se utiliza una versión modificada."
+
+#: ../../contributing/build-vyos.rst:87
+msgid "Due to the updated version of Docker, the following examples may become invalid."
+msgstr "Due to the updated version of Docker, the following examples may become invalid."
 
 #: ../../contributing/debugging.rst:172
 msgid "During the migration and extensive rewrite of functionality from Perl into Python a significant increase in the overall system boottime was noticed. The system boot time can be analysed and a graph can be generated in the end which shows in detail who called whom during the system startup phase."
@@ -403,7 +419,7 @@ msgstr "Durante la migración y la extensa reescritura de la funcionalidad de Pe
 msgid "Each module is build on demand if a new commit on the branch in question is found. After a successful run the resulting Debian Package(s) will be deployed to our Debian repository which is used during build time. It is located here: http://dev.packages.vyos.net/repositories/."
 msgstr "Cada módulo se crea bajo demanda si se encuentra una nueva confirmación en la rama en cuestión. Después de una ejecución exitosa, los paquetes Debian resultantes se implementarán en nuestro repositorio Debian, que se usa durante el tiempo de compilación. Se encuentra aquí: http://dev.packages.vyos.net/repositories/."
 
-#: ../../contributing/build-vyos.rst:407
+#: ../../contributing/build-vyos.rst:447
 msgid "Each of those modules holds a dependency on the kernel version and if you are lucky enough to receive an ISO build error which sounds like:"
 msgstr "Cada uno de esos módulos tiene una dependencia de la versión del kernel y, si tiene la suerte de recibir un error de compilación ISO que suena como:"
 
@@ -420,7 +436,7 @@ msgid "Every change set must be consistent (self containing)! Do not fix multipl
 msgstr "¡Cada conjunto de cambios debe ser consistente (autocontenido)! No corrija varios errores en una sola confirmación. Si ya trabajó en varias correcciones en el mismo archivo, use `git add --patch` para agregar solo las partes relacionadas con el problema en su próxima confirmación."
 
 #: ../../contributing/development.rst:412
-#: ../../contributing/testing.rst:65
+#: ../../contributing/testing.rst:66
 msgid "Example:"
 msgstr "Ejemplo:"
 
@@ -453,11 +469,11 @@ msgstr "FRR"
 msgid "Feature Request"
 msgstr "Solicitud de función"
 
-#: ../../contributing/build-vyos.rst:560
+#: ../../contributing/build-vyos.rst:600
 msgid "Firmware"
 msgstr "firmware"
 
-#: ../../contributing/build-vyos.rst:593
+#: ../../contributing/build-vyos.rst:633
 msgid "First, clone the source code and check out the appropriate version by running:"
 msgstr "Primero, clone el código fuente y verifique la versión apropiada ejecutando:"
 
@@ -485,7 +501,7 @@ msgstr "Por ejemplo, se puede crear ``/tmp/vyos.ifconfig.debug`` para habilitar 
 msgid "For example running, ``export VYOS_IFCONFIG_DEBUG=\"\"`` on your vbash, will have the same effect as ``touch /tmp/vyos.ifconfig.debug``."
 msgstr "Por ejemplo, ejecutar ``export VYOS_IFCONFIG_DEBUG=&quot;&quot;`` en su vbash tendrá el mismo efecto que ``touch /tmp/vyos.ifconfig.debug``."
 
-#: ../../contributing/build-vyos.rst:170
+#: ../../contributing/build-vyos.rst:72
 msgid "For the packages required, you can refer to the ``docker/Dockerfile`` file in the repository_. The ``./build-vyos-image`` script will also warn you if any dependencies are missing."
 msgstr "Para los paquetes necesarios, puede consultar el archivo ``docker/Dockerfile`` en el repositorio_. El script ``./build-vyos-image`` también le avisará si falta alguna dependencia."
 
@@ -534,7 +550,7 @@ msgstr "Bueno: PPPoE, IPsec"
 msgid "Good: RADIUS (as in remote authentication for dial-in user services)"
 msgstr "Bueno: RADIUS (como en la autenticación remota para servicios de acceso telefónico de usuarios)"
 
-#: ../../contributing/build-vyos.rst:244
+#: ../../contributing/build-vyos.rst:284
 msgid "Good luck!"
 msgstr "¡Buena suerte!"
 
@@ -562,11 +578,11 @@ msgstr "Horrible: &quot;algoritmo de frobnicación&quot;."
 msgid "How can we reproduce this Bug?"
 msgstr "¿Cómo podemos reproducir este Bug?"
 
-#: ../../contributing/testing.rst:102
+#: ../../contributing/testing.rst:103
 msgid "IP and IPv6 options"
 msgstr "Opciones de IP e IPv6"
 
-#: ../../contributing/build-vyos.rst:308
+#: ../../contributing/build-vyos.rst:348
 msgid "ISO Build Issues"
 msgstr "Problemas de compilación ISO"
 
@@ -590,11 +606,11 @@ msgstr "Si corresponde, se debe hacer una referencia a una confirmación anterio
 msgid "If there is no Phabricator_ reference in the commits of your pull request, we have to ask you to amend the commit message. Otherwise we will have to reject it."
 msgstr "Si no hay una referencia de Phabricator_ en las confirmaciones de su solicitud de extracción, debemos pedirle que modifique el mensaje de confirmación. De lo contrario tendremos que rechazarlo."
 
-#: ../../contributing/build-vyos.rst:699
+#: ../../contributing/build-vyos.rst:739
 msgid "If you are brave enough to build yourself an ISO image containing any modified package from our GitHub organisation - this is the place to be."
 msgstr "Si es lo suficientemente valiente como para crear una imagen ISO que contenga cualquier paquete modificado de nuestra organización GitHub, este es el lugar para estar."
 
-#: ../../contributing/build-vyos.rst:562
+#: ../../contributing/build-vyos.rst:602
 msgid "If you upgrade your kernel or include new drivers you may need new firmware. Build a new ``vyos-linux-firmware`` package with the included helper scripts."
 msgstr "Si actualiza su kernel o incluye nuevos controladores, es posible que necesite un nuevo firmware. Cree un nuevo paquete ``vyos-linux-firmware`` con los scripts auxiliares incluidos."
 
@@ -622,7 +638,7 @@ msgstr "Para recuperar la salida de depuración en la línea de comandos, tambi�
 msgid "In some contexts, the first line is treated as the subject of an email and the rest of the text as the body. The blank line separating the summary from the body is critical (unless you omit the body entirely); tools like rebase can get confused if you run the two together."
 msgstr "En algunos contextos, la primera línea se trata como el asunto de un correo electrónico y el resto del texto como el cuerpo. La línea en blanco que separa el resumen del cuerpo es fundamental (a menos que omita el cuerpo por completo); herramientas como rebase pueden confundirse si ejecuta las dos juntas."
 
-#: ../../contributing/build-vyos.rst:554
+#: ../../contributing/build-vyos.rst:594
 msgid "In the end you will be presented with the kernel binary packages which you can then use in your custom ISO build process, by placing all the `*.deb` files in the vyos-build/packages folder where they will be used automatically when building VyOS as documented above."
 msgstr "Al final, se le presentarán los paquetes binarios del kernel que luego puede usar en su proceso de compilación ISO personalizado, colocando todos los archivos `*.deb` en la carpeta vyos-build/packages donde se usarán automáticamente al compilar VyOS como se documentó anteriormente."
 
@@ -638,7 +654,7 @@ msgstr "Incluir salida"
 msgid "Insert the following statement right before the section where you want to investigate a problem (e.g. a statement you see in a backtrace): ``import pdb; pdb.set_trace()`` Optionally you can surrounded this statement by an ``if`` which only triggers under the condition you are interested in."
 msgstr "Inserte la siguiente declaración justo antes de la sección en la que desea investigar un problema (por ejemplo, una declaración que ve en un seguimiento): ``import pdb; pdb.set_trace()`` Opcionalmente, puede rodear esta declaración con un ``if`` que solo se activa bajo la condición que le interesa."
 
-#: ../../contributing/build-vyos.rst:810
+#: ../../contributing/build-vyos.rst:850
 msgid "Install"
 msgstr "Instalar"
 
@@ -646,7 +662,7 @@ msgstr "Instalar"
 msgid "Install https://pypi.org/project/stdeb/"
 msgstr "Instale https://pypi.org/project/stdeb/"
 
-#: ../../contributing/build-vyos.rst:35
+#: ../../contributing/build-vyos.rst:85
 msgid "Installing Docker_ and prerequisites:"
 msgstr "Instalación de Docker_ y requisitos previos:"
 
@@ -654,23 +670,23 @@ msgstr "Instalación de Docker_ y requisitos previos:"
 msgid "Instead of supplying all those XML nodes multiple times there are now include files with predefined features. Brief overview:"
 msgstr "En lugar de proporcionar todos esos nodos XML varias veces, ahora se incluyen archivos con características predefinidas. Breve descripción:"
 
-#: ../../contributing/build-vyos.rst:632
+#: ../../contributing/build-vyos.rst:672
 msgid "Intel NIC"
 msgstr "NIC de Intel"
 
-#: ../../contributing/build-vyos.rst:404
+#: ../../contributing/build-vyos.rst:444
 msgid "Intel NIC drivers"
 msgstr "Controladores de NIC de Intel"
 
-#: ../../contributing/build-vyos.rst:661
+#: ../../contributing/build-vyos.rst:701
 msgid "Intel QAT"
 msgstr "QAT de Intel"
 
-#: ../../contributing/build-vyos.rst:405
+#: ../../contributing/build-vyos.rst:445
 msgid "Inter QAT"
 msgstr "Inter QAT"
 
-#: ../../contributing/testing.rst:90
+#: ../../contributing/testing.rst:91
 msgid "Interface based tests"
 msgstr "Pruebas basadas en interfaz"
 
@@ -690,11 +706,11 @@ msgstr "Es un programa Ada y requiere GNAT y gprbuild para compilar, las depende
 msgid "It is also possible to set up the debugging using environment variables. In that case, the name will be (in uppercase) VYOS_FEATURE_DEBUG."
 msgstr "También es posible configurar la depuración utilizando variables de entorno. En ese caso, el nombre será (en mayúsculas) VYOS_FEATURE_DEBUG."
 
-#: ../../contributing/testing.rst:17
+#: ../../contributing/testing.rst:18
 msgid "Jenkins CI"
 msgstr "CI de Jenkins"
 
-#: ../../contributing/build-vyos.rst:816
+#: ../../contributing/build-vyos.rst:856
 msgid "Just install using the following commands:"
 msgstr "Simplemente instale usando los siguientes comandos:"
 
@@ -710,7 +726,7 @@ msgstr "Keepalived normalmente no se actualiza a versiones de funciones más nue
 msgid "Kernel"
 msgstr "Núcleo"
 
-#: ../../contributing/build-vyos.rst:787
+#: ../../contributing/build-vyos.rst:827
 msgid "Launch Docker container and build package"
 msgstr "Inicie el contenedor Docker y cree el paquete"
 
@@ -734,7 +750,7 @@ msgstr "Como cualquier otro proyecto, también tenemos algunas pequeñas pautas 
 msgid "Limits:"
 msgstr "Límites:"
 
-#: ../../contributing/build-vyos.rst:390
+#: ../../contributing/build-vyos.rst:430
 msgid "Linux Kernel"
 msgstr "Núcleo de Linux"
 
@@ -742,7 +758,7 @@ msgstr "Núcleo de Linux"
 msgid "Live System"
 msgstr "Sistema en vivo"
 
-#: ../../contributing/testing.rst:101
+#: ../../contributing/testing.rst:102
 msgid "MTU size"
 msgstr "Tamaño de la PERSONA"
 
@@ -750,11 +766,11 @@ msgstr "Tamaño de la PERSONA"
 msgid "Make your changes and save them. Do the following for all changes files to record them in your created Git commit:"
 msgstr "Realice sus cambios y guárdelos. Haga lo siguiente para todos los archivos de cambios para registrarlos en su confirmación de Git creada:"
 
-#: ../../contributing/testing.rst:60
+#: ../../contributing/testing.rst:61
 msgid "Manual Smoketest Run"
 msgstr "Ejecución manual de prueba de humo"
 
-#: ../../contributing/testing.rst:168
+#: ../../contributing/testing.rst:169
 msgid "Manual config load test"
 msgstr "Prueba de carga de configuración manual"
 
@@ -770,7 +786,7 @@ msgstr "Migración de la CLI antigua"
 msgid "Move default values to scripts"
 msgstr "Mover valores predeterminados a scripts"
 
-#: ../../contributing/build-vyos.rst:147
+#: ../../contributing/build-vyos.rst:35
 msgid "Native Build"
 msgstr "Construcción nativa"
 
@@ -807,23 +823,23 @@ msgstr "Ninguno"
 msgid "Notes"
 msgstr "notas"
 
-#: ../../contributing/build-vyos.rst:199
+#: ../../contributing/build-vyos.rst:236
 msgid "Now a fresh build of the VyOS ISO can begin. Change directory to the ``vyos-build`` directory and run:"
 msgstr "Ahora puede comenzar una nueva compilación de VyOS ISO. Cambie el directorio al directorio ``vyos-build`` y ejecute:"
 
-#: ../../contributing/build-vyos.rst:184
+#: ../../contributing/build-vyos.rst:217
 msgid "Now as you are aware of the prerequisites we can continue and build our own ISO from source. For this we have to fetch the latest source code from GitHub. Please note as this will differ for both `current` and `crux`."
 msgstr "Ahora que conoce los requisitos previos, podemos continuar y construir nuestro propio ISO desde la fuente. Para esto, tenemos que obtener el código fuente más reciente de GitHub. Tenga en cuenta que esto diferirá tanto para `current` como para `crux`."
 
-#: ../../contributing/build-vyos.rst:384
+#: ../../contributing/build-vyos.rst:424
 msgid "Now it's time to fix the package mirror and rerun the last step until the package installation succeeds again!"
 msgstr "¡Ahora es el momento de arreglar el espejo del paquete y volver a ejecutar el último paso hasta que la instalación del paquete vuelva a tener éxito!"
 
-#: ../../contributing/build-vyos.rst:469
+#: ../../contributing/build-vyos.rst:509
 msgid "Now we can use the helper script ``build-kernel.sh`` which does all the necessary voodoo by applying required patches from the `vyos-build/packages/linux-kernel/patches` folder, copying our kernel configuration ``x86_64_vyos_defconfig`` to the right location, and finally building the Debian packages."
 msgstr "Ahora podemos usar el script de ayuda ``build-kernel.sh`` que hace todo el vudú necesario al aplicar los parches necesarios de la carpeta `vyos-build/packages/linux-kernel/patches`, copiando nuestra configuración del kernel ``x86_64_vyos_defconfig `` a la ubicación correcta y, finalmente, construir los paquetes de Debian."
 
-#: ../../contributing/build-vyos.rst:133
+#: ../../contributing/build-vyos.rst:199
 msgid "Now you are prepared with two new aliases ``vybld`` and ``vybld_crux`` to spawn your development containers in your current working directory."
 msgstr "Ahora está preparado con dos nuevos alias ``vybld`` y ``vybld_crux`` para generar sus contenedores de desarrollo en su directorio de trabajo actual."
 
@@ -831,7 +847,7 @@ msgstr "Ahora está preparado con dos nuevos alias ``vybld`` y ``vybld_crux`` pa
 msgid "Old concept/syntax"
 msgstr "Viejo concepto/sintaxis"
 
-#: ../../contributing/testing.rst:62
+#: ../../contributing/testing.rst:63
 msgid "On the other hand - as each test is contain in its own file - one can always execute a single Smoketest by hand by simply running the Python test scripts."
 msgstr "Por otro lado, como cada prueba está contenida en su propio archivo, siempre se puede ejecutar una sola prueba de humo a mano simplemente ejecutando los scripts de prueba de Python."
 
@@ -843,13 +859,17 @@ msgstr "Una vez que haya instalado las dependencias requeridas, puede continuar 
 msgid "Once you run ``show xyz`` and your condition is triggered you should be dropped into the python debugger:"
 msgstr "Una vez que ejecutes ``show xyz`` y tu condición se active, deberías ingresar al depurador de python:"
 
-#: ../../contributing/testing.rst:170
+#: ../../contributing/testing.rst:171
 msgid "One is not bound to load all configurations one after another but can also load individual test configurations on his own."
 msgstr "Uno no está obligado a cargar todas las configuraciones una tras otra, sino que también puede cargar configuraciones de prueba individuales por su cuenta."
 
 #: ../../contributing/testing.rst:7
 msgid "One of the major advantages introduced in VyOS 1.3 is an autmated test framework. When assembling an ISO image multiple things can go wrong badly and publishing a faulty ISO makes no sense. The user is disappointed by the quality of the image and the developers get flodded with bug reports over and over again."
 msgstr "Una de las principales ventajas introducidas en VyOS 1.3 es un marco de prueba automatizado. Al ensamblar una imagen ISO, varias cosas pueden salir mal y publicar una imagen ISO defectuosa no tiene sentido. El usuario está decepcionado por la calidad de la imagen y los desarrolladores se ven inundados con informes de errores una y otra vez."
+
+#: ../../contributing/testing.rst:7
+msgid "One of the major advantages introduced in VyOS 1.3 is an automated test framework. When assembling an ISO image multiple things can go wrong badly and publishing a faulty ISO makes no sense. The user is disappointed by the quality of the image and the developers get flodded with bug reports over and over again."
+msgstr "One of the major advantages introduced in VyOS 1.3 is an automated test framework. When assembling an ISO image multiple things can go wrong badly and publishing a faulty ISO makes no sense. The user is disappointed by the quality of the image and the developers get flodded with bug reports over and over again."
 
 #: ../../contributing/development.rst:665
 msgid "Only applicable to leaf nodes"
@@ -863,7 +883,7 @@ msgstr "Otros paquetes (p. ej., vyos-1x) agregan dependencias al procedimiento d
 msgid "Our StrongSWAN build differs from the upstream:"
 msgstr "Nuestra construcción StrongSWAN difiere de la anterior:"
 
-#: ../../contributing/testing.rst:19
+#: ../../contributing/testing.rst:20
 msgid "Our `VyOS CI`_ system is based on Jenkins and builds all our required packages for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build Job which builds and tests the VyOS ISO image which is published after a successfull test drive."
 msgstr "Nuestro sistema `VyOS CI`_ se basa en Jenkins y crea todos nuestros paquetes necesarios para VyOS 1.2 a 1.4. Además de la compilación del paquete, existe el trabajo vyos-build que compila y prueba la imagen ISO de VyOS que se publica después de una prueba de manejo exitosa."
 
@@ -875,12 +895,12 @@ msgstr "Nuestro código se divide en varios módulos. VyOS se compone de varios 
 msgid "Our op mode scripts use the python-vici module, which is not included in Debian's build, and isn't quite easy to integrate in that build. For this reason we debianize that module by hand now, using this procedure:"
 msgstr "Nuestros scripts de modo operativo utilizan el módulo python-vici, que no está incluido en la compilación de Debian y no es muy fácil de integrar en esa compilación. Por esta razón, debianizamos ese módulo a mano ahora, usando este procedimiento:"
 
-#: ../../contributing/testing.rst:92
+#: ../../contributing/testing.rst:93
 msgid "Our smoketests not only test daemons and serives, but also check if what we configure for an interface works. Thus there is a common base classed named: ``base_interfaces_test.py`` which holds all the common code that an interface supports and is tested."
 msgstr "Nuestras pruebas de humo no solo prueban demonios y servicios, sino que también verifican si lo que configuramos para una interfaz funciona. Por lo tanto, existe una base común clasificada denominada: ``base_interfaces_test.py`` que contiene todo el código común que admite una interfaz y se prueba."
 
-#: ../../contributing/build-vyos.rst:697
-#: ../../contributing/build-vyos.rst:766
+#: ../../contributing/build-vyos.rst:737
+#: ../../contributing/build-vyos.rst:806
 msgid "Packages"
 msgstr "Paquetes"
 
@@ -904,11 +924,11 @@ msgstr "Envíe sus parches utilizando la conocida solicitud de extracción de Gi
 msgid "Please use the following template as good starting point when developing new modules or even rewrite a whole bunch of code in the new style XML/Pyhon interface."
 msgstr "Utilice la siguiente plantilla como un buen punto de partida cuando desarrolle nuevos módulos o incluso reescriba un montón de código en el nuevo estilo de interfaz XML/Pyhon."
 
-#: ../../contributing/testing.rst:103
+#: ../../contributing/testing.rst:104
 msgid "Port description"
 msgstr "Descripción del puerto"
 
-#: ../../contributing/testing.rst:104
+#: ../../contributing/testing.rst:105
 msgid "Port disable"
 msgstr "Deshabilitar puerto"
 
@@ -952,7 +972,7 @@ msgstr "Python 3 **deberá** ser utilizado. ¿Cuánto tiempo podemos mantener vi
 msgid "Python (or any other language, for that matter) does not provide automatic protection from bad design, so we need to also devise design guidelines and follow them to keep the system extensible and maintainable."
 msgstr "Python (o cualquier otro lenguaje, para el caso) no brinda protección automática contra un mal diseño, por lo que también debemos diseñar pautas de diseño y seguirlas para mantener el sistema extensible y mantenible."
 
-#: ../../contributing/build-vyos.rst:745
+#: ../../contributing/build-vyos.rst:785
 msgid "QEMU"
 msgstr "QEMU"
 
@@ -968,16 +988,16 @@ msgstr "Las versiones recientes usan el framework ``vyos.frr``. La clase Python 
 msgid "Report a Bug"
 msgstr "Reportar un error"
 
-#: ../../contributing/build-vyos.rst:747
+#: ../../contributing/build-vyos.rst:787
 msgid "Run the following command after building the ISO image."
 msgstr "Ejecute el siguiente comando después de crear la imagen ISO."
 
-#: ../../contributing/build-vyos.rst:756
+#: ../../contributing/build-vyos.rst:796
 msgid "Run the following command after building the QEMU image."
 msgstr "Ejecute el siguiente comando después de crear la imagen de QEMU."
 
-#: ../../contributing/build-vyos.rst:637
-#: ../../contributing/build-vyos.rst:666
+#: ../../contributing/build-vyos.rst:677
+#: ../../contributing/build-vyos.rst:706
 msgid "Simply use our wrapper script to build all of the driver modules."
 msgstr "Simplemente use nuestra secuencia de comandos contenedora para compilar todos los módulos del controlador."
 
@@ -985,19 +1005,19 @@ msgstr "Simplemente use nuestra secuencia de comandos contenedora para compilar 
 msgid "Since VyOS has switched to Debian (11) Bullseye in its ``current`` branch, you will require individual container for `current`, `equuleus` and `crux` builds."
 msgstr "Dado que VyOS ha cambiado a Debian (11) Bullseye en su rama ``actual``, necesitará un contenedor individual para las compilaciones ``actual`, `equuleus` y `crux`."
 
-#: ../../contributing/testing.rst:29
+#: ../../contributing/testing.rst:30
 msgid "Smoketests"
 msgstr "pruebas de humo"
 
-#: ../../contributing/testing.rst:31
+#: ../../contributing/testing.rst:32
 msgid "Smoketests executes predefined VyOS CLI commands and checks if the desired daemon/service configuration is rendert - that is how to put it \"short\"."
 msgstr "Smoketests ejecuta comandos predefinidos de la CLI de VyOS y verifica si la configuración deseada del demonio/servicio está renderizada, así es como decirlo &quot;brevemente&quot;."
 
-#: ../../contributing/testing.rst:44
+#: ../../contributing/testing.rst:45
 msgid "So if you plan to build your own custom ISO image and wan't to make use of our smoketests, ensure that you have the `vyos-1x-smoketest` package installed."
 msgstr "Entonces, si planea crear su propia imagen ISO personalizada y no quiere utilizar nuestras pruebas de humo, asegúrese de tener instalado el paquete `vyos-1x-smoketest`."
 
-#: ../../contributing/build-vyos.rst:136
+#: ../../contributing/build-vyos.rst:202
 msgid "Some VyOS packages (namely vyos-1x) come with build-time tests which verify some of the internal library calls that they work as expected. Those tests are carried out through the Python Unittest module. If you want to build the ``vyos-1x`` package (which is our main development package) you need to start your Docker container using the following argument: ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will fail."
 msgstr "Algunos paquetes de VyOS (a saber, vyos-1x) vienen con pruebas de tiempo de compilación que verifican que algunas de las llamadas de la biblioteca interna funcionan como se esperaba. Estas pruebas se realizan a través del módulo Unittest de Python. Si desea compilar el paquete ``vyos-1x`` (que es nuestro paquete de desarrollo principal), debe iniciar su contenedor Docker con el siguiente argumento: ``--sysctl net.ipv6.conf.lo.disable_ipv6=0 ``, de lo contrario esas pruebas fallarán."
 
@@ -1005,7 +1025,7 @@ msgstr "Algunos paquetes de VyOS (a saber, vyos-1x) vienen con pruebas de tiempo
 msgid "Some abbreviations are traditionally written in mixed case. Generally, if it contains words \"over\" or \"version\", the letter **should** be lowercase. If there's an accepted spelling (especially if defined by an RFC or another standard), it **must** be followed."
 msgstr "Algunas abreviaturas se escriben tradicionalmente en mayúsculas y minúsculas. Generalmente, si contiene palabras &quot;over&quot; o &quot;version&quot;, la letra **debe** estar en minúscula. Si hay una ortografía aceptada (especialmente si está definida por un RFC u otro estándar), **debe** seguirse."
 
-#: ../../contributing/testing.rst:201
+#: ../../contributing/testing.rst:202
 msgid "Some of the configurations have preconditions which need to be met. Those most likely include generation of crypographic keys before the config can be applied - you will get a commit error otherwise. If you are interested how those preconditions are fulfilled check the vyos-build_ repository and the ``scripts/check-qemu-install`` file."
 msgstr "Algunas de las configuraciones tienen condiciones previas que deben cumplirse. Lo más probable es que incluyan la generación de claves criptográficas antes de que se pueda aplicar la configuración; de lo contrario, obtendrá un error de confirmación. Si está interesado en cómo se cumplen esas condiciones previas, consulte el repositorio vyos-build_ y el archivo ``scripts/check-qemu-install``."
 
@@ -1013,7 +1033,7 @@ msgstr "Algunas de las configuraciones tienen condiciones previas que deben cump
 msgid "Sometimes it might be useful to debug Python code interactively on the live system rather than a IDE. This can be achieved using pdb."
 msgstr "A veces puede ser útil depurar el código de Python de forma interactiva en el sistema en vivo en lugar de un IDE. Esto se puede lograr usando pdb."
 
-#: ../../contributing/build-vyos.rst:229
+#: ../../contributing/build-vyos.rst:269
 msgid "Start the build:"
 msgstr "Comience la compilación:"
 
@@ -1057,15 +1077,15 @@ msgstr "Generación de texto"
 msgid "The CLI parser used in VyOS is a mix of bash, bash-completion helper and the C++ backend library [vyatta-cfg](https://github.com/vyos/vyatta-cfg). This section is a reference of common CLI commands and the respective entry point in the C/C++ code."
 msgstr "El analizador CLI que se usa en VyOS es una combinación de bash, bash-completion helper y la biblioteca de back-end de C++ [vyatta-cfg](https://github.com/vyos/vyatta-cfg). Esta sección es una referencia de los comandos CLI comunes y el punto de entrada respectivo en el código C/C++."
 
-#: ../../contributing/build-vyos.rst:634
+#: ../../contributing/build-vyos.rst:674
 msgid "The Intel NIC drivers do not come from a Git repository, instead we just fetch the tarballs from our mirror and compile them."
 msgstr "Los controladores de NIC de Intel no provienen de un repositorio de Git, sino que solo buscamos los tarballs de nuestro espejo y los compilamos."
 
-#: ../../contributing/build-vyos.rst:662
+#: ../../contributing/build-vyos.rst:702
 msgid "The Intel QAT (Quick Assist Technology) drivers do not come from a Git repository, instead we just fetch the tarballs from 01.org, Intel's open-source website."
 msgstr "Los controladores Intel QAT (tecnología de asistencia rápida) no provienen de un repositorio de Git, sino que solo obtenemos los tarballs de 01.org, el sitio web de código abierto de Intel."
 
-#: ../../contributing/build-vyos.rst:392
+#: ../../contributing/build-vyos.rst:432
 msgid "The Linux kernel used by VyOS is heavily tied to the ISO build process. The file ``data/defaults.json`` hosts a JSON definition of the kernel version used ``kernel_version`` and the ``kernel_flavor`` of the kernel which represents the kernel's LOCAL_VERSION. Both together form the kernel version variable in the system:"
 msgstr "El kernel de Linux utilizado por VyOS está fuertemente ligado al proceso de construcción ISO. El archivo ``data/defaults.json`` aloja una definición JSON de la versión del kernel utilizada ``kernel_version`` y el ``kernel_flavor`` del kernel que representa la VERSIÓN_LOCAL del kernel. Ambos juntos forman la variable de versión del kernel en el sistema:"
 
@@ -1089,7 +1109,7 @@ msgstr "La función ``generate()`` genera archivos de configuración para los co
 msgid "The ``get_config()`` function must convert the VyOS config to an abstract, internal representation. No other function is allowed to call the ``vyos.config. Config`` object method directly. The rationale for it is that when config reads are mixed with other logic, it's very hard to change the config syntax since you need to weed out every occurrence of the old syntax. If syntax-specific code is confined to a single function, the rest of the code can be left untouched as long as the internal representation remains compatible."
 msgstr "La función ``get_config()`` debe convertir la configuración de VyOS en una representación interna abstracta. No se permite que ninguna otra función llame a ``vyos.config. Config`` método de objeto directamente. La razón de esto es que cuando las lecturas de configuración se mezclan con otra lógica, es muy difícil cambiar la sintaxis de configuración, ya que debe eliminar todas las apariciones de la sintaxis anterior. Si el código específico de la sintaxis se limita a una sola función, el resto del código se puede dejar intacto siempre que la representación interna siga siendo compatible."
 
-#: ../../contributing/testing.rst:47
+#: ../../contributing/testing.rst:48
 msgid "The ``make test`` command from the vyos-build_ repository will launch a new QEmu instance and the ISO image is first installed to the virtual harddisk."
 msgstr "El comando ``make test`` del repositorio vyos-build_ lanzará una nueva instancia de QEmu y la imagen ISO se instalará primero en el disco duro virtual."
 
@@ -1101,19 +1121,19 @@ msgstr "La función ``verify()`` toma su representación interna de la configura
 msgid "The bash (or better vbash) completion in VyOS is defined in *templates*. Templates are text files (called ``node.def``) stored in a directory tree. The directory names define the command names, and template files define the command behaviour. Before VyOS 1.2 (crux) this files were created by hand. After a complex redesign process_ the new style template are automatically generated from a XML input file."
 msgstr "La finalización de bash (o mejor vbash) en VyOS se define en *templates*. Las plantillas son archivos de texto (llamados ``node.def``) almacenados en un árbol de directorios. Los nombres de los directorios definen los nombres de los comandos y los archivos de plantilla definen el comportamiento de los comandos. Antes de VyOS 1.2 (crux), estos archivos se creaban a mano. Después de un complejo proceso de rediseño, la nueva plantilla de estilo se genera automáticamente a partir de un archivo de entrada XML."
 
-#: ../../contributing/build-vyos.rst:54
+#: ../../contributing/build-vyos.rst:116
 msgid "The build process needs to be built on a local file system, building on SMB or NFS shares will result in the container failing to build properly! VirtualBox Drive Share is also not an option as block device operations are not implemented and the drive is always mounted as \"nodev\""
 msgstr "El proceso de compilación debe crearse en un sistema de archivos local; la compilación en recursos compartidos SMB o NFS hará que el contenedor no se compile correctamente. VirtualBox Drive Share tampoco es una opción, ya que las operaciones de dispositivos de bloque no están implementadas y la unidad siempre se monta como &quot;nodev&quot;"
 
-#: ../../contributing/testing.rst:158
+#: ../../contributing/testing.rst:159
 msgid "The configurations are all derived from production systems and can not only act as a testcase but also as reference if one wants to enable a certain feature. The configurations can be found here: https://github.com/vyos/vyos-1x/tree/current/smoketest/configs"
 msgstr "Todas las configuraciones se derivan de los sistemas de producción y no solo pueden actuar como un caso de prueba, sino también como referencia si se desea habilitar una característica determinada. Las configuraciones se pueden encontrar aquí: https://github.com/vyos/vyos-1x/tree/current/smoketest/configs"
 
-#: ../../contributing/build-vyos.rst:87
+#: ../../contributing/build-vyos.rst:149
 msgid "The container can also be built directly from source:"
 msgstr "El contenedor también se puede construir directamente desde la fuente:"
 
-#: ../../contributing/build-vyos.rst:62
+#: ../../contributing/build-vyos.rst:124
 msgid "The container can be built by hand or by fetching the pre-built one from DockerHub. Using the pre-built containers from the `VyOS DockerHub organisation`_ will ensure that the container is always up-to-date. A rebuild is triggered once the container changes (please note this will take 2-3 hours after pushing to the vyos-build repository)."
 msgstr "El contenedor se puede construir a mano o obteniendo el preconstruido de DockerHub. El uso de contenedores prediseñados de la `organización VyOS DockerHub`_ garantizará que el contenedor esté siempre actualizado. Se activa una reconstrucción una vez que cambia el contenedor (tenga en cuenta que esto llevará de 2 a 3 horas después de enviar al repositorio de vyos-build)."
 
@@ -1121,11 +1141,11 @@ msgstr "El contenedor se puede construir a mano o obteniendo el preconstruido de
 msgid "The default template processor for VyOS code is Jinja2_."
 msgstr "El procesador de plantillas predeterminado para el código VyOS es Jinja2_."
 
-#: ../../contributing/build-vyos.rst:773
+#: ../../contributing/build-vyos.rst:813
 msgid "The easiest way to compile your package is with the above mentioned :ref:`build_docker` container, it includes all required dependencies for all VyOS related packages."
 msgstr "La forma más fácil de compilar su paquete es con el contenedor :ref:`build_docker` mencionado anteriormente, que incluye todas las dependencias requeridas para todos los paquetes relacionados con VyOS."
 
-#: ../../contributing/testing.rst:163
+#: ../../contributing/testing.rst:164
 msgid "The entire test is controlled by the main wrapper script ``/usr/bin/vyos-configtest`` which behaves in the same way as the main smoketest script. It scans the folder for potential configuration files and issues a ``load`` command one after another."
 msgstr "Toda la prueba está controlada por la secuencia de comandos contenedora principal ``/usr/bin/vyos-configtest`` que se comporta de la misma manera que la secuencia de comandos principal de smoketest. Escanea la carpeta en busca de posibles archivos de configuración y emite un comando de ``cargar`` uno tras otro."
 
@@ -1136,6 +1156,10 @@ msgstr "El archivo se puede colocar en ``/tmp`` para una depuración única (ya 
 #: ../../contributing/development.rst:553
 msgid "The first word of every help string **must** be capitalized. There **must not** be a period at the end of help strings."
 msgstr "La primera palabra de cada cadena de ayuda **debe** estar en mayúscula. **No debe** haber un punto al final de las cadenas de ayuda."
+
+#: ../../contributing/build-vyos.rst:26
+msgid "The following includes the build process for VyOS 1.2 to the latest version."
+msgstr "The following includes the build process for VyOS 1.2 to the latest version."
 
 #: ../../contributing/development.rst:71
 msgid "The format should be and is inspired by: https://git-scm.com/book/ch5-2.html It is also worth reading https://chris.beams.io/posts/git-commit/"
@@ -1149,11 +1173,11 @@ msgstr "Lo mejor de los esquemas no es solo que las personas pueden conocer la g
 msgid "The information is used in three ways:"
 msgstr "La información se utiliza de tres maneras:"
 
-#: ../../contributing/build-vyos.rst:437
+#: ../../contributing/build-vyos.rst:477
 msgid "The kernel build is quite easy, most of the required steps can be found in the ``vyos-build/packages/linux-kernel/Jenkinsfile`` but we will walk you through it."
 msgstr "La compilación del kernel es bastante fácil, la mayoría de los pasos necesarios se pueden encontrar en ``vyos-build/packages/linux-kernel/Jenkinsfile`` pero lo guiaremos a través de él."
 
-#: ../../contributing/build-vyos.rst:425
+#: ../../contributing/build-vyos.rst:465
 msgid "The most obvious reasons could be:"
 msgstr "Las razones más obvias podrían ser:"
 
@@ -1161,7 +1185,7 @@ msgstr "Las razones más obvias podrían ser:"
 msgid "The original repo is at https://github.com/dmbaturin/hvinfo"
 msgstr "El repositorio original está en https://github.com/dmbaturin/hvinfo"
 
-#: ../../contributing/testing.rst:153
+#: ../../contributing/testing.rst:154
 msgid "The other part of our tests are called \"config load tests\". The config load tests will load - one after another - arbitrary configuration files to test if the configuration migration scripts work as designed and that a given set of functionality still can be loaded with a fresh VyOS ISO image."
 msgstr "La otra parte de nuestras pruebas se llama &quot;pruebas de carga de configuración&quot;. Las pruebas de carga de configuración cargarán, uno tras otro, archivos de configuración arbitrarios para probar si los scripts de migración de configuración funcionan según lo diseñado y si un conjunto determinado de funcionalidad aún se puede cargar con una nueva imagen ISO de VyOS."
 
@@ -1181,7 +1205,7 @@ msgstr "La razón es que el backend de migración de configuración se reescribe
 msgid "The repository that contains all the ISO build scripts is: https://github.com/vyos/vyos-build"
 msgstr "El repositorio que contiene todos los scripts de compilación ISO es: https://github.com/vyos/vyos-build"
 
-#: ../../contributing/testing.rst:53
+#: ../../contributing/testing.rst:54
 msgid "The script only searches for executable \"test-cases\" under ``/usr/libexec/vyos/tests/smoke/cli/`` and executes them one by one."
 msgstr "El script solo busca &quot;casos de prueba&quot; ejecutables en ``/usr/libexec/vyos/tests/smoke/cli/`` y los ejecuta uno por uno."
 
@@ -1205,7 +1229,7 @@ msgstr "El cambio al lenguaje de programación Python para código nuevo no es s
 msgid "The system startup can be debugged (like loading in the configuration file from ``/config/config.boot``. This can be achieve by extending the Kernel command-line in the bootloader."
 msgstr "El inicio del sistema se puede depurar (como cargar el archivo de configuración desde ``/config/config.boot``). Esto se puede lograr extendiendo la línea de comandos del Kernel en el gestor de arranque."
 
-#: ../../contributing/build-vyos.rst:310
+#: ../../contributing/build-vyos.rst:350
 msgid "There are (rare) situations where building an ISO image is not possible at all due to a broken package feed in the background. APT is not very good at reporting the root cause of the issue. Your ISO build will likely fail with a more or less similar looking error message:"
 msgstr "Hay situaciones (raras) en las que no es posible crear una imagen ISO debido a un feed de paquete roto en segundo plano. APT no es muy bueno para informar la causa raíz del problema. Su compilación ISO probablemente fallará con un mensaje de error de aspecto más o menos similar:"
 
@@ -1221,7 +1245,7 @@ msgstr "Hay extensiones para, por ejemplo, VIM (xmllint) que le ayudarán a obte
 msgid "There are two flags available to aid in debugging configuration scripts. Since configuration loading issues will manifest during boot, the flags are passed as kernel boot parameters."
 msgstr "Hay dos banderas disponibles para ayudar en la depuración de scripts de configuración. Dado que los problemas de carga de la configuración se manifestarán durante el arranque, los indicadores se pasan como parámetros de arranque del kernel."
 
-#: ../../contributing/build-vyos.rst:257
+#: ../../contributing/build-vyos.rst:297
 msgid "This ISO can be customized with the following list of configure options. The full and current list can be generated with ``./build-vyos-image --help``:"
 msgstr "Esta ISO se puede personalizar con la siguiente lista de opciones de configuración. La lista completa y actual se puede generar con ``./build-vyos-image --help``:"
 
@@ -1249,31 +1273,35 @@ msgstr "Este paquete no existe en Debian. Se mantiene una bifurcación debianiza
 msgid "This package doesn't exist in Debian. A debianized fork is kept at https://github.com/vyos/udp-broadcast-relay"
 msgstr "Este paquete no existe en Debian. Se mantiene una bifurcación debianizada en https://github.com/vyos/udp-broadcast-relay"
 
-#: ../../contributing/build-vyos.rst:572
+#: ../../contributing/build-vyos.rst:612
 msgid "This tries to automatically detect which blobs are needed based on which drivers were built. If it fails to find the correct files you can add them manually to ``vyos-build/packages/linux-kernel/build-linux-firmware.sh``:"
 msgstr "Esto intenta detectar automáticamente qué blobs se necesitan en función de los controladores que se crearon. Si no encuentra los archivos correctos, puede agregarlos manualmente a ``vyos-build/packages/linux-kernel/build-linux-firmware.sh``:"
 
-#: ../../contributing/build-vyos.rst:26
+#: ../../contributing/build-vyos.rst:76
+msgid "This will guide you through the process of building a VyOS ISO using Docker. This process has been tested on clean installs of Debian Bullseye (11) and Bookworm (12)."
+msgstr "This will guide you through the process of building a VyOS ISO using Docker. This process has been tested on clean installs of Debian Bullseye (11) and Bookworm (12)."
+
+#: ../../contributing/build-vyos.rst:28
 msgid "This will guide you through the process of building a VyOS ISO using Docker_. This process has been tested on clean installs of Debian Jessie, Stretch, and Buster."
 msgstr "Esto lo guiará a través del proceso de creación de una imagen ISO de VyOS con Docker_. Este proceso ha sido probado en instalaciones limpias de Debian Jessie, Stretch y Buster."
 
-#: ../../contributing/testing.rst:147
+#: ../../contributing/testing.rst:148
 msgid "This will limit the `bond` interface test to only make use of `eth1` and `eth2` as member ports."
 msgstr "Esto limitará la prueba de interfaz `bond` para usar solo `eth1` y `eth2` como puertos miembro."
 
-#: ../../contributing/testing.rst:97
+#: ../../contributing/testing.rst:98
 msgid "Those common tests consists out of:"
 msgstr "Esas pruebas comunes consisten en:"
 
-#: ../../contributing/build-vyos.rst:107
+#: ../../contributing/build-vyos.rst:173
 msgid "Tips and Tricks"
 msgstr "Consejos y trucos"
 
-#: ../../contributing/build-vyos.rst:46
+#: ../../contributing/build-vyos.rst:108
 msgid "To be able to use Docker_ without ``sudo``, the current non-root user must be added to the ``docker`` group by calling: ``sudo usermod -aG docker yourusername``."
 msgstr "Para poder usar Docker_ sin ``sudo``, el usuario no root actual debe agregarse al grupo ``docker`` llamando: ``sudo usermod -aG docker yourusername``."
 
-#: ../../contributing/build-vyos.rst:149
+#: ../../contributing/build-vyos.rst:37
 msgid "To build VyOS natively you require a properly configured build host with the following Debian versions installed:"
 msgstr "Para compilar VyOS de forma nativa, necesita un host de compilación configurado correctamente con las siguientes versiones de Debian instaladas:"
 
@@ -1285,7 +1313,7 @@ msgstr "Para construir nuestros módulos, utilizamos un script Pipeline de CI/CD
 msgid "To debug issues in priorities or to see what's going on in the background you can use the ``/opt/vyatta/sbin/priority.pl`` script which lists to you the execution order of the scripts."
 msgstr "Para depurar problemas en las prioridades o para ver lo que sucede en segundo plano, puede usar el script ``/opt/vyatta/sbin/priority.pl`` que enumera el orden de ejecución de los scripts."
 
-#: ../../contributing/build-vyos.rst:333
+#: ../../contributing/build-vyos.rst:373
 msgid "To debug the build process and gain additional information of what could be the root cause, you need to use `chroot` to change into the build directry. This is explained in the following step by step procedure:"
 msgstr "Para depurar el proceso de compilación y obtener información adicional sobre cuál podría ser la causa principal, debe usar `chroot` para cambiar al directorio de compilación. Esto se explica en el siguiente procedimiento paso a paso:"
 
@@ -1305,19 +1333,19 @@ msgstr "Para garantizar una apariencia uniforme y mejorar la legibilidad, debemo
 msgid "To make this approach work, every change must be associated with a task number (prefixed with **T**) and a component. If there is no bug report/feature request for the changes you are going to make, you have to create a Phabricator_ task first. Once there is an entry in Phabricator_, you should reference its id in your commit message, as shown below:"
 msgstr "Para que este enfoque funcione, cada cambio debe asociarse con un número de tarea (con el prefijo **T**) y un componente. Si no hay un informe de error/solicitud de funciones para los cambios que va a realizar, primero debe crear una tarea Phabricator_. Una vez que haya una entrada en Phabricator_, debe hacer referencia a su id en su mensaje de confirmación, como se muestra a continuación:"
 
-#: ../../contributing/build-vyos.rst:75
+#: ../../contributing/build-vyos.rst:137
 msgid "To manually download the container from DockerHub, run:"
 msgstr "Para descargar manualmente el contenedor desde DockerHub, ejecute:"
 
-#: ../../contributing/build-vyos.rst:156
+#: ../../contributing/build-vyos.rst:46
 msgid "To start, clone the repository to your local machine:"
 msgstr "Para comenzar, clone el repositorio en su máquina local:"
 
-#: ../../contributing/build-vyos.rst:812
+#: ../../contributing/build-vyos.rst:852
 msgid "To take your newly created package on a test drive you can simply SCP it to a running VyOS instance and install the new `*.deb` package over the current running one."
 msgstr "Para llevar su paquete recién creado a una prueba de manejo, simplemente puede SCP a una instancia de VyOS en ejecución e instalar el nuevo paquete `*.deb` sobre el actual en ejecución."
 
-#: ../../contributing/build-vyos.rst:711
+#: ../../contributing/build-vyos.rst:751
 msgid "Troubleshooting"
 msgstr "Solución de problemas"
 
@@ -1357,11 +1385,11 @@ msgstr "Los comandos útiles son:"
 msgid "VIF (incl. VIF-S/VIF-C)"
 msgstr "VIF (incl. VIF-S/VIF-C)"
 
-#: ../../contributing/testing.rst:105
+#: ../../contributing/testing.rst:106
 msgid "VLANs (QinQ and regular 802.1q)"
 msgstr "VLAN (QinQ y 802.1q regular)"
 
-#: ../../contributing/build-vyos.rst:754
+#: ../../contributing/build-vyos.rst:794
 msgid "VMware"
 msgstr "vmware"
 
@@ -1373,7 +1401,7 @@ msgstr "Los verbos, cuando son necesarios, **deben** estar en su forma infinitiv
 msgid "Verbs **should** be avoided. If a verb can be omitted, omit it."
 msgstr "Los verbos **deben** evitarse. Si se puede omitir un verbo, omítalo."
 
-#: ../../contributing/build-vyos.rst:742
+#: ../../contributing/build-vyos.rst:782
 msgid "Virtualization Platforms"
 msgstr "Plataformas de virtualización"
 
@@ -1381,7 +1409,11 @@ msgstr "Plataformas de virtualización"
 msgid "VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def`` file and possibly an attached script that is executed when the node is present. Nodes can have a priority, and on system bootup - or any other ``commit`` to the config all scripts are executed from lowest to higest priority. This is good as this gives a deterministic behavior."
 msgstr "VyOS CLI tiene que ver con las prioridades. Cada nodo CLI tiene un archivo ``node.def`` correspondiente y posiblemente un script adjunto que se ejecuta cuando el nodo está presente. Los nodos pueden tener una prioridad, y en el arranque del sistema, o cualquier otro &quot;commit&quot; a la configuración, todos los scripts se ejecutan de menor a mayor prioridad. Esto es bueno ya que da un comportamiento determinista."
 
-#: ../../contributing/build-vyos.rst:768
+#: ../../contributing/build-vyos.rst:168
+msgid "VyOS has switched to Debian (12) Bookworm in its ``current`` branch, Due to software version updates, it is recommended to use the official Docker Hub image to build VyOS ISO."
+msgstr "VyOS has switched to Debian (12) Bookworm in its ``current`` branch, Due to software version updates, it is recommended to use the official Docker Hub image to build VyOS ISO."
+
+#: ../../contributing/build-vyos.rst:808
 msgid "VyOS itself comes with a bunch of packages that are specific to our system and thus cannot be found in any Debian mirror. Those packages can be found at the `VyOS GitHub project`_ in their source format can easily be compiled into a custom Debian (`*.deb`) package."
 msgstr "VyOS en sí viene con un montón de paquetes que son específicos de nuestro sistema y, por lo tanto, no se pueden encontrar en ningún espejo de Debian. Esos paquetes se pueden encontrar en el `VyOS GitHub project`_ en su formato fuente y se pueden compilar fácilmente en un paquete Debian personalizado (`*.deb`)."
 
@@ -1389,19 +1421,19 @@ msgstr "VyOS en sí viene con un montón de paquetes que son específicos de nue
 msgid "VyOS makes use of Jenkins_ as our Continuous Integration (CI) service. Our `VyOS CI`_ server is publicly accessible here: https://ci.vyos.net. You can get a brief overview of all required components shipped in a VyOS ISO."
 msgstr "VyOS utiliza Jenkins_ como nuestro servicio de integración continua (CI). Nuestro servidor `VyOS CI`_ es de acceso público aquí: https://ci.vyos.net. Puede obtener una breve descripción general de todos los componentes necesarios enviados en una ISO de VyOS."
 
-#: ../../contributing/build-vyos.rst:600
+#: ../../contributing/build-vyos.rst:640
 msgid "We again make use of a helper script and some patches to make the build work. Just run the following command:"
 msgstr "Nuevamente hacemos uso de un script de ayuda y algunos parches para que la compilación funcione. Simplemente ejecute el siguiente comando:"
 
-#: ../../contributing/testing.rst:24
+#: ../../contributing/testing.rst:25
 msgid "We differentiate in two independent tests, which are both run in parallel by two separate QEmu instances which are launched via ``make test`` and ``make testc`` from within the vyos-build_ repository."
 msgstr "Nos diferenciamos en dos pruebas independientes, ambas ejecutadas en paralelo por dos instancias QEmu separadas que se inician a través de ``make test`` y ``make testc`` desde el repositorio vyos-build_."
 
-#: ../../contributing/build-vyos.rst:349
+#: ../../contributing/build-vyos.rst:389
 msgid "We now are free to run any command we would like to use for debugging, e.g. re-installing the failed package after updating the repository."
 msgstr "Ahora somos libres de ejecutar cualquier comando que nos gustaría usar para la depuración, por ejemplo, reinstalar el paquete fallido después de actualizar el repositorio."
 
-#: ../../contributing/build-vyos.rst:341
+#: ../../contributing/build-vyos.rst:381
 msgid "We now need to mount some required, volatile filesystems"
 msgstr "Ahora necesitamos montar algunos sistemas de archivos volátiles requeridos"
 
@@ -1425,7 +1457,7 @@ msgstr "¿Cuál era la configuración antes del cambio?"
 msgid "What were you attempting to achieve?"
 msgstr "¿Qué estabas tratando de lograr?"
 
-#: ../../contributing/testing.rst:34
+#: ../../contributing/testing.rst:35
 msgid "When and ISO image is assembled by the `VyOS CI`_, the ``BUILD_SMOKETEST`` parameter is enabled by default, which will extend the ISO configuration line with the following packages:"
 msgstr "Cuando `VyOS CI`_ ensambla una imagen ISO, el parámetro ``BUILD_SMOKETEST`` está habilitado de manera predeterminada, lo que extenderá la línea de configuración ISO con los siguientes paquetes:"
 
@@ -1437,7 +1469,7 @@ msgstr "Cuando tenga problemas para compilar su propia imagen ISO o depurar prob
 msgid "When modifying the source code, remember these rules of the legacy elimination campaign:"
 msgstr "Al modificar el código fuente, recuerde estas reglas de la campaña de eliminación heredada:"
 
-#: ../../contributing/build-vyos.rst:241
+#: ../../contributing/build-vyos.rst:281
 msgid "When the build is successful, the resulting iso can be found inside the ``build`` directory as ``live-image-[architecture].hybrid.iso``."
 msgstr "Cuando la construcción es exitosa, el iso resultante se puede encontrar dentro del directorio ``build`` como ``live-image-[architecture].hybrid.iso``."
 
@@ -1449,7 +1481,7 @@ msgstr "Al escribir un nuevo migrador de configuración, puede suceder que vea u
 msgid "When you are able to verify that it is actually a bug, spend some time to document how to reproduce the issue. This documentation can be invaluable."
 msgstr "Cuando pueda verificar que en realidad se trata de un error, dedique algún tiempo a documentar cómo reproducir el problema. Esta documentación puede ser invaluable."
 
-#: ../../contributing/testing.rst:108
+#: ../../contributing/testing.rst:109
 msgid "When you are working on interface configuration and you also wan't to test if the Smoketests pass you would normally loose the remote SSH connection to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the interface based tests can be called with an environment variable beforehand to limit the number of interfaces used in the test. By default all interface e.g. all Ethernet interfaces are used."
 msgstr "Cuando está trabajando en la configuración de la interfaz y tampoco quiere probar si las pruebas de humo pasan, normalmente perdería la conexión SSH remota a su :abbr:`DUT (Dispositivo bajo prueba)`. Para manejar este problema, algunas de las pruebas basadas en interfaz se pueden llamar con una variable de entorno de antemano para limitar la cantidad de interfaces utilizadas en la prueba. De forma predeterminada, se utilizan todas las interfaces, por ejemplo, todas las interfaces Ethernet."
 
@@ -1490,11 +1522,11 @@ msgstr "Los archivos de definición de interfaz XML utilizan la extensión de ar
 msgid "XML interface definitions for VyOS come with a RelaxNG schema and are located in the vyos-1x_ module. This schema is a slightly modified schema from VyConf_ alias VyOS 2.0 So VyOS 1.2.x interface definitions will be reusable in Nextgen VyOS Versions with very minimal changes."
 msgstr "Las definiciones de interfaz XML para VyOS vienen con un esquema RelaxNG y se encuentran en el módulo vyos-1x_. Este esquema es un esquema ligeramente modificado de VyConf_ alias VyOS 2.0, por lo que las definiciones de interfaz de VyOS 1.2.x serán reutilizables en las versiones de Nextgen VyOS con cambios mínimos."
 
-#: ../../contributing/build-vyos.rst:827
+#: ../../contributing/build-vyos.rst:867
 msgid "You can also place the generated `*.deb` into your ISO build environment to include it in a custom iso, see :ref:`build_custom_packages` for more information."
 msgstr "También puede colocar el `*.deb` generado en su entorno de compilación ISO para incluirlo en un iso personalizado, consulte :ref:`build_custom_packages` para obtener más información."
 
-#: ../../contributing/build-vyos.rst:109
+#: ../../contributing/build-vyos.rst:175
 msgid "You can create yourself some handy Bash aliases to always launch the latest - per release train (`current` or `crux`) - container. Add the following to your ``.bash_aliases`` file:"
 msgstr "Puede crear algunos alias de Bash útiles para lanzar siempre el contenedor más reciente, por tren de lanzamiento (`current` o `crux`). Agregue lo siguiente a su archivo ``.bash_aliases``:"
 
@@ -1506,7 +1538,7 @@ msgstr "Puede escribir ``ayuda`` para obtener una descripción general de los co
 msgid "You have an idea of how to make VyOS better or you are in need of a specific feature which all users of VyOS would benefit from? To send a feature request please search Phabricator_ if there is already a request pending. You can enhance it or if you don't find one, create a new one by use the quick link in the left side under the specific project."
 msgstr "¿Tiene una idea de cómo mejorar VyOS o necesita una función específica de la que se beneficiarían todos los usuarios de VyOS? Para enviar una solicitud de función, busque Phabricator_ si ya hay una solicitud pendiente. Puede mejorarlo o, si no encuentra uno, crear uno nuevo usando el enlace rápido en el lado izquierdo debajo del proyecto específico."
 
-#: ../../contributing/build-vyos.rst:430
+#: ../../contributing/build-vyos.rst:470
 msgid "You have your own custom kernel `*.deb` packages in the `packages` folder but neglected to create all required out-of tree modules like Accel-PPP, Intel QAT or Intel NIC drivers"
 msgstr "You have your own custom kernel `*.deb` packages in the `packages` folder but neglected to create all required out-of tree modules like Accel-PPP, Intel QAT or Intel NIC drivers"
 
@@ -1526,7 +1558,7 @@ msgstr "Luego puede continuar con la clonación de su bifurcación o agregar un 
 msgid "Your configuration script or operation mode script which is also written in Python3 should have a line break on 80 characters. This seems to be a bit odd nowadays but as some people also work remotely or program using vi(m) this is a fair good standard which I hope we can rely on."
 msgstr "Su secuencia de comandos de configuración o secuencia de comandos de modo de operación, que también está escrita en Python3, debe tener un salto de línea de 80 caracteres. Esto parece un poco extraño hoy en día, pero como algunas personas también trabajan de forma remota o programan usando vi(m), este es un buen estándar en el que espero podamos confiar."
 
-#: ../../contributing/testing.rst:106
+#: ../../contributing/testing.rst:107
 msgid "..."
 msgstr "..."
 
@@ -1582,7 +1614,7 @@ msgstr "``log``: en algunos casos excepcionales, puede ser útil ver qué está 
 msgid "``set``"
 msgstr "``establecer``"
 
-#: ../../contributing/build-vyos.rst:427
+#: ../../contributing/build-vyos.rst:467
 msgid "``vyos-build`` repo is outdated, please ``git pull`` to update to the latest release kernel version from us."
 msgstr "El repositorio ``vyos-build`` está desactualizado, por favor ``git pull`` para actualizar a la última versión de nuestro kernel."
 
