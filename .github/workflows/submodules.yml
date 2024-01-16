@@ -62,7 +62,7 @@ jobs:
         if: env.PHABRICATOR_API != null
         run: |
           pip3 install phabricator==0.8.0
-          python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b sagitta
+          python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b sagitta equuleus
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:

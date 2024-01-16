@@ -8,6 +8,64 @@
    _ext/releasenotes.py
 
 
+2024-01-12
+==========
+
+* :vytask:`T5925` ``(feature): Containers change systemd KillMode``
+* :vytask:`T5919` ``(bug): Firewall - opmode for ipv6``
+* :vytask:`T5306` ``(default): bgp config migration failed with v6only option configured with peer-group``
+* :vytask:`T3429` ``(bug): Hyper-V integration services not working on VyOS 1.4 (sagitta/current)``
+
+
+2024-01-11
+==========
+
+* :vytask:`T5713` ``(bug): strip-private doesn't strip string after "secret"``
+* :vytask:`T5532` ``(bug): After add system image the boot stuck and works again after the second reboot``
+* :vytask:`T5814` ``(bug): VyOS 1.3 to 1.4 LTS Firewall ruleset migration script breaks configuration``
+* :vytask:`T3191` ``(bug): PAM RADIUS freezing when accounting does not configured on RADIUS server``
+* :vytask:`T5917` ``(feature): Restore annotations of (running)/(default boot) in select image list``
+* :vytask:`T5916` ``(default): Added segment routing check for index size and SRGB size``
+* :vytask:`T5913` ``(feature): Allow for Peer-Groups in ipv4-labeled-unicast SAFI``
+
+
+2024-01-10
+==========
+
+* :vytask:`T5918` ``(bug): Verification problem for `set vpn ipsec interface```
+* :vytask:`T5911` ``(bug): pki: service update ignored if certificate name contains a hyphen (-)``
+* :vytask:`T5886` ``(feature): Add support for ACME protocol (LetsEncrypt)``
+* :vytask:`T5766` ``(bug): http: rewrite conf-mode script to get_config_dict()``
+* :vytask:`T4256` ``(feature): Display static DHCP server leases in the operational command output``
+* :vytask:`T5902` ``(bug): http: remove virtual-host configuration in webserver``
+* :vytask:`T3316` ``(feature): Use Kea DHCP(v6) instead of ISC DHCP(v6)``
+* :vytask:`T5791` ``(default): Update dynamic dns configuration path to be consistent with other areas of VyOS``
+* :vytask:`T5708` ``(default): Additional dynamic dns improvements to align with ddclient 3.11.1 release``
+* :vytask:`T5573` ``(bug): Fix ddclient cache entries``
+* :vytask:`T5614` ``(default): Add conntrack helper matching on firewall``
+
+
+2024-01-09
+==========
+
+* :vytask:`T5898` ``(bug): Replace partprobe with partx due to unable to install VyOS``
+* :vytask:`T5862` ``(bug): Default MTU is not acceptable in some environments``
+* :vytask:`T5840` ``(feature): Upgrade Kea to 2.4.x``
+* :vytask:`T5838` ``(feature): Add Infiniband kernel modules``
+* :vytask:`T5785` ``(bug): API output of show container image broken``
+* :vytask:`T5249` ``(feature): Add rollback-soft feature to rollback without a reboot``
+* :vytask:`T2511` ``(feature): Migrate vyatta-op-quagga to new XML format``
+* :vytask:`T5905` ``(bug): pki: IPsec and VTI interface priority inversion when using x509 site-to-site peer``
+
+
+2024-01-08
+==========
+
+* :vytask:`T5888` ``(bug): Firewall upgrade fails because of icmpv6``
+* :vytask:`T5844` ``(bug): HTTPS API doesn't start without configured keys even when GraphQL authentication type is set to token``
+* :vytask:`T5904` ``(feature): op-mode: add "show ipv6 route vrf <name> <prefix>" command``
+
+
 2024-01-07
 ==========
 
