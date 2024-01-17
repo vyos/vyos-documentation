@@ -32,7 +32,7 @@ Example
                      'set interfaces ethernet eth1 description LAN',
                     ]
 
-  # set congiguration
+  # set configuration
   output = net_connect.send_config_set(config_commands, exit_config_mode=False)
   print(output)
 
