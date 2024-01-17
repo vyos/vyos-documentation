@@ -165,7 +165,7 @@ Using options defined in ``set firewall global-options state-policy``, state
 policy rules that applies for both IPv4 and IPv6 are created. These global
 state policies also applies for all traffic that passes through the router
 (transit) and for traffic originated/destinated to/from the router itself, and
-will be avaluated before any other rule defined in the firewall.
+will be evaluated before any other rule defined in the firewall.
 
 Most installations would choose this option, and will contain:
 
@@ -241,7 +241,7 @@ established and related connections, we can block all other incoming traffic
 addressed to our local network.
 
 Create a new chain (``OUTSIDE-IN``) which will drop all traffic that is not
-explicity allowed at some point in the chain. Then, we can jump to that chain
+explicitly allowed at some point in the chain. Then, we can jump to that chain
 from the ``forward`` hook when traffic is coming from the ``WAN`` interface
 group and is addressed to our local network.
 
