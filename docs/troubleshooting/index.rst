@@ -378,7 +378,7 @@ to clear interface counters
   # clear all interfaces
   vyos@vyos:~$ clear interface ethernet counters
   # clear specific interface
-  vyos@vyos:~$ clear interface ehternet eth0 counters
+  vyos@vyos:~$ clear interface ethernet eth0 counters
 
 The command follow the same logic as the ``set`` command in configuration mode.
 
