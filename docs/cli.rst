@@ -558,7 +558,7 @@ different levels in the hierarchy.
    What if you are doing something dangerous? Suppose you want to setup
    a firewall, and you are not sure there are no mistakes that will lock
    you out of your system. You can use confirmed commit. If you issue
-   the ``commit-confirm`` command, your changes will be commited, and if
+   the ``commit-confirm`` command, your changes will be committed, and if
    you don't issue  the ``confirm`` command in 10 minutes, your
    system will reboot into previous config revision.
 
@@ -653,7 +653,7 @@ different levels in the hierarchy.
    The ``comment`` command allows you to insert a comment above the
    ``<config node>`` configuration section. When shown, comments are
    enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments
-   need to be commited, just like other config changes.
+   need to be committed, just like other config changes.
 
    To remove an existing comment from your current configuration,
    specify an empty string enclosed in double quote marks (``""``) as
@@ -852,7 +852,7 @@ Remote Archive
 VyOS can upload the configuration to a remote location after each call
 to :cfgcmd:`commit`. You will have to set the commit-archive location.
 TFTP, FTP, SCP and SFTP servers are supported. Every time a
-:cfgcmd:`commit` is successfull the ``config.boot`` file will be copied
+:cfgcmd:`commit` is successful the ``config.boot`` file will be copied
 to the defined destination(s). The filename used on the remote host will
 be ``config.boot-hostname.YYYYMMDD_HHMMSS``. 
 
