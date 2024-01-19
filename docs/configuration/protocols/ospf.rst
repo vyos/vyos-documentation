@@ -161,7 +161,7 @@ Optional
    This command specifies all interfaces as passive by default. Because this
    command changes the configuration logic to a default passive; therefore,
    interfaces where router adjacencies are expected need to be configured
-   with the :cfgcmd:`passive-interface-exclude` command.
+   by setting the :cfgcmd:`passive disable` flag for the specific interface.
 
 .. cfgcmd:: set protocols ospf maximum-paths <1-64>
 
