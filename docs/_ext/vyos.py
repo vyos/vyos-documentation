@@ -530,7 +530,7 @@ def strip_cmd(cmd, debug=False):
         if c == "]":
             appearance = appearance - 1
 
-    # only if all [..] will be delete if appearance > 0 there is a syntax errror
+    # only if all [..] will be delete if appearance > 0 there is a syntax error
     if appearance == 0:
         cmd = cmd_new
     
@@ -545,7 +545,7 @@ def strip_cmd(cmd, debug=False):
         if c == ">":
             appearance = appearance - 1
 
-    # only if all <..> will be delete if appearance > 0 there is a syntax errror
+    # only if all <..> will be delete if appearance > 0 there is a syntax error
     if appearance == 0:
         cmd = cmd_new
 
