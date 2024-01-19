@@ -49,9 +49,9 @@ VyOS IKE group has the next options:
 
  * ``none`` set action to none (default);
  
- * ``hold`` set action to hold;
+ * ``trap`` installs a trap policy for the CHILD_SA;
  
- * ``restart`` set action to restart;
+ * ``start`` tries to immediately re-create the CHILD_SA;
  
 * ``dead-peer-detection`` controls the use of the Dead Peer Detection protocol 
   (DPD, RFC 3706) where R_U_THERE notification messages (IKEv1) or empty 
@@ -60,11 +60,13 @@ VyOS IKE group has the next options:
   
  * ``action`` keep-alive failure action:
  
-  * ``hold`` set action to hold (default)
+  * ``trap``  installs a trap policy, which will catch matching traffic
+    and tries to re-negotiate the tunnel on-demand;
   
-  * ``clear`` set action to clear;
+  * ``clear`` closes the CHILD_SA and does not take further action (default);
   
-  * ``restart`` set action to restart;
+  * ``restart`` immediately tries to re-negotiate the CHILD_SA
+    under a fresh IKE_SA;
   
  * ``interval`` keep-alive interval in seconds <2-86400> (default 30);
  
