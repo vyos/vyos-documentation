@@ -72,8 +72,9 @@ IPv6 DNS addresses are optional.
 
   set service ipoe-server authentication interface eth3 mac 08:00:27:2F:D8:06
   set service ipoe-server authentication mode 'local'
-  set service ipoe-server client-ipv6-pool delegate '2001:db8:1::/48' delegation-prefix '56'
-  set service ipoe-server client-ipv6-pool prefix '2001:db8::/48' mask '64'
+  set service ipoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:1::/48' delegation-prefix '56'
+  set service ipoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8::/48' mask '64'
+  set service ipoe-server default-ipv6-pool IPv6-POOL
   set service ipoe-server name-server '2001:db8::'
   set service ipoe-server name-server '2001:db8:aaa::'
   set service ipoe-server name-server '2001:db8:bbb::'
@@ -171,8 +172,9 @@ Server configuration
     set service ipoe-server authentication interface eth1.51 mac 00:0c:29:b7:49:a7 rate-limit upload '50000'
     set service ipoe-server authentication mode 'local'
     
-    set service ipoe-server client-ipv6-pool delegate 2001:db8:ffff::/48 delegation-prefix '56'
-    set service ipoe-server client-ipv6-pool prefix 2001:db8:fffe::/48 mask '64'
+    set service ipoe-server client-ipv6-pool IPv6-POOL delegate 2001:db8:ffff::/48 delegation-prefix '56'
+    set service ipoe-server client-ipv6-pool IPv6-POOL prefix 2001:db8:fffe::/48 mask '64'
+    set service ipoe-server default-ipv6-pool IPv6-POOL
     set service ipoe-server interface eth1.50 client-subnet '100.64.50.0/24'
     set service ipoe-server interface eth1.50 mode 'l2'
     set service ipoe-server interface eth1.51 client-subnet '100.64.51.0/24'

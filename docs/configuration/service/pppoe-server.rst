@@ -266,11 +266,11 @@ other servers. Last command says that this PPPoE server can serve only
 IPv6
 ----
 
-IPv6 client's prefix assignment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IPv6 client's prefix
+^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set service pppoe-server client-ipv6-pool prefix <address>
-   mask <number-of-bits>
+.. cfgcmd:: set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME>
+   prefix <address> mask <number-of-bits>
 
    Use this comand to set the IPv6 address pool from which a PPPoE
    client will get an IPv6 prefix of your defined length (mask) to
@@ -281,14 +281,22 @@ IPv6 client's prefix assignment
 IPv6 Prefix Delegation
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set service pppoe-server client-ipv6-pool delegate <address>
-   delegation-prefix <number-of-bits>
+.. cfgcmd:: set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME>
+   delegate <address> delegation-prefix <number-of-bits>
 
    Use this command to configure DHCPv6 Prefix Delegation (RFC3633). You
    will have to set your IPv6 pool and the length of the delegation
    prefix. From the defined IPv6 pool you will be handing out networks
    of the defined length (delegation-prefix). The length of the
    delegation prefix can be set from 32 to 64 bit long.
+
+
+IPv6 default client's pool assignment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. cfgcmd:: set service pppoe-server default-ipv6-pool <POOL-NAME>
+
+   Use this command to define default IPv6 address pool name.
 
 
 Maintenance mode
@@ -374,8 +382,9 @@ The example below covers a dual-stack configuration via pppoe-server.
   set service pppoe-server authentication mode 'local'
   set service pppoe-server client-ip-pool IP-POOL range '192.168.0.1/24'
   set service pppoe-server default-pool 'IP-POOL'
-  set service pppoe-server client-ipv6-pool delegate '2001:db8:8003::/48' delegation-prefix '56'
-  set service pppoe-server client-ipv6-pool prefix '2001:db8:8002::/48' mask '64'
+  set service pppoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
+  set service pppoe-server client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
+  set service pppoe-server default-ipv6-pool IPv6-POOL
   set service pppoe-server ppp-options ipv6 allow
   set service pppoe-server name-server '10.1.1.1'
   set service pppoe-server name-server '2001:db8:4860::8888'
