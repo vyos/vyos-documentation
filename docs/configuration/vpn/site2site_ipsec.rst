@@ -317,7 +317,7 @@ Imagine the following topology
   set vpn ipsec esp-group ESP_DEFAULT proposal 10 encryption 'aes256gcm128'
   set vpn ipsec esp-group ESP_DEFAULT proposal 10 hash 'sha256'
   set vpn ipsec ike-group IKEv2_DEFAULT close-action 'none'
-  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection action 'hold'
+  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection action 'trap'
   set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection interval '30'
   set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection timeout '120'
   set vpn ipsec ike-group IKEv2_DEFAULT disable-mobike
@@ -357,7 +357,7 @@ Imagine the following topology
   set vpn ipsec esp-group ESP_DEFAULT proposal 10 encryption 'aes256gcm128'
   set vpn ipsec esp-group ESP_DEFAULT proposal 10 hash 'sha256'
   set vpn ipsec ike-group IKEv2_DEFAULT close-action 'none'
-  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection action 'hold'
+  set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection action 'trap'
   set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection interval '30'
   set vpn ipsec ike-group IKEv2_DEFAULT dead-peer-detection timeout '120'
   set vpn ipsec ike-group IKEv2_DEFAULT disable-mobike
@@ -397,18 +397,18 @@ Key Parameters:
   routes installed in the default table 220 for site-to-site ipsec.
   It is mostly used with VTI configuration.
 
-* ``dead-peer-detection action = clear | hold | restart`` - R_U_THERE
+* ``dead-peer-detection action = clear | trap | restart`` - R_U_THERE
   notification messages(IKEv1) or empty INFORMATIONAL messages (IKEv2)
   are periodically sent in order to check the liveliness of the IPsec peer. The
-  values clear, hold, and restart all activate DPD and determine the action to
+  values clear, trap, and restart all activate DPD and determine the action to
   perform on a timeout.
   With ``clear`` the connection is closed with no further actions taken.
-  ``hold`` installs a trap policy, which will catch matching traffic and tries
+  ``trap`` installs a trap policy, which will catch matching traffic and tries
   to re-negotiate the connection on demand.
   ``restart`` will immediately trigger an attempt to re-negotiate the
   connection.
 
-* ``close-action = none | clear | hold | restart`` - defines the action to take
+* ``close-action = none | clear | trap | start`` - defines the action to take
   if the remote peer unexpectedly closes a CHILD_SA (see above for meaning of
   values). A closeaction should not be used if the peer uses reauthentication or
   uniqueids.

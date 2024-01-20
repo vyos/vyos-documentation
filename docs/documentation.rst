@@ -146,7 +146,7 @@ access to the official codebase.
 Style Guide
 ===========
 
-Formating and Sphinxmarkup
+Formatting and Sphinxmarkup
 --------------------------
 
 TOC Level

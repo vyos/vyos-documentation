@@ -268,7 +268,7 @@ Generate qcow image
 -------------------
 
 A VyOS qcow image with cloud-init options is needed. This can be obtained
-using `vyos-vm-images`_ repo. After clonning the repo, edit the file
+using `vyos-vm-images`_ repo. After cloning the repo, edit the file
 **qemu.yml** and comment the **download-iso** role.
 
 In this lab, we are using 1.3.0 VyOS version and setting a disk of 10G.
@@ -344,7 +344,7 @@ Content of network-config file:
        dhcp4: false
        dhcp6: false
 
-Finaly, file **meta-data** has no content, but it's required.
+Finally, file **meta-data** has no content, but it's required.
 
 ---------------
 Create seed.iso
@@ -360,7 +360,7 @@ Command for generating ``seed.iso``
   mkisofs -joliet -rock -volid "cidata" -output seed.iso meta-data \
   user-data network-config
 
-**NOTE**: be carefull while copying and pasting previous commands. Doble
+**NOTE**: be careful while copying and pasting previous commands. Double
 quotes may need to be corrected. 
 
 ---------------

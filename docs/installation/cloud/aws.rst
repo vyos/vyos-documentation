@@ -25,7 +25,7 @@ Deploy VyOS on Amazon :abbr:`AWS (Amazon Web Services)`
 .. figure:: /_static/images/cloud-aws-04.png
 
 5. Additional storage. You can remove additional storage ``/dev/sdb``. First
-   root device will be ``/dev/xvda``. You can skeep this step.
+   root device will be ``/dev/xvda``. You can skip this step.
 
 .. figure:: /_static/images/cloud-aws-05.png
 
@@ -66,7 +66,7 @@ To use Amazon CloudWatch Agent, configure it within the Amazon SSM Parameter Sto
 
   .. note:: The amazon-cloudwatch-agent package is normally included in VyOS 1.3.3+ and 1.4+
 
-3. Retreive an existing CloudWatch Agent configuration from the :abbr:`SSM (Systems Manager)` Parameter Store.
+3. Retrieve an existing CloudWatch Agent configuration from the :abbr:`SSM (Systems Manager)` Parameter Store.
 
   .. code-block:: none
 
@@ -85,7 +85,7 @@ Creating the Amazon Cloudwatch Agent Configuration in Amazon :abbr:`SSM (Systems
 
 1. Create an :abbr:`IAM (Identity and Access Management)` role for your :abbr:`EC2 (Elastic Compute Cloud)` instance to access the CloudWatch service. Name it CloudWatchAgentAdminRole. The role should contain at two default policies: CloudWatchAgentAdminPolicy and AmazonSSMManagedInstanceCore.  
 
-  .. note:: CloudWatchAgentServerRole is too permisive and should be used for single configuration creation and deployment. That's why after completion of step #3 higly recommended to replace instance CloudWatchAgentAdminRole role with CloudWatchAgentServerRole.
+  .. note:: CloudWatchAgentServerRole is too permissive and should be used for single configuration creation and deployment. That's why after completion of step #3 highly recommended to replace instance CloudWatchAgentAdminRole role with CloudWatchAgentServerRole.
 
 2. Run Cloudwatch configuration wizard.
 

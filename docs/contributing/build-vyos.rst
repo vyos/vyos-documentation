@@ -371,7 +371,7 @@ more or less similar looking error message:
   (10:13) vyos_bld ece068908a5b:/vyos [current] #
 
 To debug the build process and gain additional information of what could be the
-root cause, you need to use `chroot` to change into the build directry. This is
+root cause, you need to use `chroot` to change into the build directory. This is
 explained in the following step by step procedure:
 
 .. code-block:: none
