@@ -13,7 +13,9 @@ Service
    dhcp-relay
    dhcp-server
    dns
+   eventhandler
    https
+   ids
    ipoe-server
    lldp
    mdns
@@ -26,4 +28,4 @@ Service
    ssh
    tftp-server
    webproxy
-   eventhandler
+   
