@@ -1,4 +1,4 @@
-.. _build:
+.. _build_vyos:
 
 ##########
 Build VyOS
