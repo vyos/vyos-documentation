@@ -10,14 +10,18 @@ VyOS User Guide
    .. grid-item-card:: Get / Build VyOS
 
    
-      Quickly :ref:`Build<contributing/build_vyos:build vyos>` your own Image or take a look at how to :ref:`download<installation/install:download>` a free or supported version.
+      Quickly :ref:`Build<contributing/build_vyos:build vyos>` your own Image
+      or take a look at how to :ref:`download<installation/install:download>`
+      a free or supported version.
    
 
    .. grid-item-card:: Install VyOS
 
-      Read about how to install VyOS on :ref:`Bare Metal<installation/install:installation>` or in a
-      :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>` and
-      how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>` providers 
+      Read about how to install VyOS on
+      :ref:`Bare Metal<installation/install:installation>` or in a
+      :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>`
+      and how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>`
+      providers 
    
 
    .. grid-item-card:: Configuration and Operation
