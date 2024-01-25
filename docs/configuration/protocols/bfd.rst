@@ -56,6 +56,13 @@ Configure BFD
 
    Disable a BFD peer
 
+.. cfgcmd:: set protocols bfd peer <address> minimum-ttl <1-254>
+
+   For multi hop sessions only. Configure the minimum expected TTL for an
+   incoming BFD control packet.
+
+   This feature serves the purpose of thightening the packet validation
+   requirements to avoid receiving BFD control packets from other sessions.
 
 Enable BFD in BGP
 -----------------
