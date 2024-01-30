@@ -10,7 +10,7 @@ VyOS User Guide
    .. grid-item-card:: Get / Build VyOS
 
    
-      Quickly :ref:`Build<contributing/build_vyos:build vyos>` your own Image
+      Quickly :ref:`Build<contributing/build-vyos:build-vyos>` your own Image
       or take a look at how to :ref:`download<installation/install:download>`
       a free or supported version.
    
