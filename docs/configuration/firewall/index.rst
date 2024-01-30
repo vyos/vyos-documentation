@@ -66,10 +66,10 @@ packetis processed at the **IP Layer**:
      can be filtered and controlled. Bear in mind that this traffic can be a
      new connection originated by a internal process running on VyOS router,
      such as NTP, or a response to traffic received externaly through
-     **inputt** (for example response to an ssh login attempt to the router).
+     **input** (for example response to an ssh login attempt to the router).
      This includes ipv4 and ipv6 filtering rules, defined in:
 
-     * ``set firewall ipv4 input filter ...``.
+     * ``set firewall ipv4 output filter ...``.
 
      * ``set firewall ipv6 output filter ...``.
 
@@ -81,7 +81,7 @@ packetis processed at the **IP Layer**:
        destination...``.
 
 If the interface where the packet was received is part of a bridge, then 
-packetis processed at the **Bridge Layer**, which contains a basic setup for
+the packet is processed at the **Bridge Layer**, which contains a basic setup for
 bridge filtering:
 
    * **Forward (Bridge)**: stage where traffic that is trespasing through the
@@ -89,7 +89,7 @@ bridge filtering:
 
      * ``set firewall bridge forward filter ...``.
 
-The main structure VyOS firewall cli is shown next:
+The main structure of the VyOS firewall CLI is shown next:
 
 .. code-block:: none
 
