@@ -156,6 +156,20 @@ avoid being tracked by the provider of your upstream DNS server.
    recursor does not like, it is throttled. Any servers matching the supplied
    netmasks will never be throttled.
 
+.. cfgcmd:: set service dns forwarding options ecs-add-for <address>
+
+   The requestor netmask for which the requestor IP Address should be used as the
+   EDNS Client Subnet for outgoing queries.
+
+.. cfgcmd:: set service dns forwarding options ecs-ipv4-bits <number>
+
+   Number of bits of client IPv4 address to pass when sending EDNS Client Subnet
+   address information.
+
+.. cfgcmd:: set service dns forwarding options edns-subnet-allow-list <address|domain>
+
+   The netmask or domain that EDNS Client Subnet should be enabled for in outgoing queries.
+
 Example
 =======
 
