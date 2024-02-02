@@ -93,6 +93,11 @@ Configuration
 
     Volume is either mounted as rw (read-write - default) or ro (read-only)
 
+.. cfgcmd:: set container name <name> uid <number>
+.. cfgcmd:: set container name <name> gid <number>
+
+    Set the User ID or Group ID of the container
+
 .. cfgcmd:: set container name <name> restart [no | on-failure | always]
 
    Set the restart behavior of the container.
