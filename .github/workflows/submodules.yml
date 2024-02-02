@@ -32,8 +32,6 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           commit-message: "Github: update current branch"
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: "Github: update current branch"
           body: |
             Autoupdate vyos-1x submodule
@@ -68,8 +66,6 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           commit-message: "Github: update sagitta branch"
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: "Github: update sagitta branch"
           body: |
             Autoupdate vyos-1x submodule
@@ -105,8 +101,6 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           commit-message: "Github: update equuleus branch"
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: "Github: update equuleus branch"
           body: |
             Autoupdate vyos-1x submodule
