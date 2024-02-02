@@ -22,6 +22,7 @@ General
 
     Play an audible beep to the system speaker when system is ready.
 
+<<<<<<< HEAD
 Kernel
 ======
 
@@ -29,6 +30,12 @@ Kernel
 
     Disable all optional CPU mitigations. This improves system performance,
     but it may also expose users to several CPU vulnerabilities.
+=======
+.. cfgcmd:: set system option root-partition-auto-resize
+
+    Enables the root partition auto-extension and resizes to the maximum 
+    available space on system boot.
+>>>>>>> 09511c59 (Added information related to root-partition-auto-resize)
 
 ***********
 HTTP client
