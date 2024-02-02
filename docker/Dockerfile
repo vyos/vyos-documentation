@@ -1,7 +1,7 @@
 # Must be run with --privileged flag
 # Recommended to run the container with a volume mapped
 # in order to easy exprort images built to "external" world
-FROM debian:buster
+FROM debian:11
 LABEL authors="VyOS Maintainers <maintainers@vyos.io>"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -35,7 +35,7 @@ RUN pip3 install sphinx-autobuild
 RUN pip3 install sphinx-notfound-page
 RUN pip3 install lxml
 RUN pip3 install myst-parser
-RUN pip3 install sphinx-panels
+RUN pip3 install sphinx_design
 
 
 # Cleanup

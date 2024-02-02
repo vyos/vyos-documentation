@@ -954,3 +954,50 @@ deprecation_warnings=False in ansible.cfg.
 2023-06-07 10:36:50,812 p=81964 u=rob n=ansible | skipping: [dhcp-relay]
 2023-06-07 10:36:50,814 p=81964 u=rob n=ansible | skipping: [dhcp-server]
 2023-06-07 10:36:50,820 p=81964 u=rob n=ansible | skipping: [transport]
+2023-06-07 10:36:51,263 p=81964 u=rob n=ansible | changed: [eveng -> localhost]
+2023-06-07 10:36:51,267 p=81964 u=rob n=ansible | TASK [eve-ng-lab-test : DHCPRelay_through_GRE: Login to EVE-NG and get Cookie] ********************************************************************************
+2023-06-07 10:36:51,285 p=81964 u=rob n=ansible | skipping: [vyos-oobm]
+2023-06-07 10:36:51,293 p=81964 u=rob n=ansible | skipping: [dhcp-relay]
+2023-06-07 10:36:51,295 p=81964 u=rob n=ansible | skipping: [dhcp-server]
+2023-06-07 10:36:51,300 p=81964 u=rob n=ansible | skipping: [transport]
+2023-06-07 10:36:51,896 p=81964 u=rob n=ansible | ok: [eveng]
+2023-06-07 10:36:51,904 p=81964 u=rob n=ansible | TASK [eve-ng-lab-test : DHCPRelay_through_GRE: get lab status] ************************************************************************************************
+2023-06-07 10:36:51,929 p=81964 u=rob n=ansible | skipping: [vyos-oobm]
+2023-06-07 10:36:51,937 p=81964 u=rob n=ansible | skipping: [dhcp-relay]
+2023-06-07 10:36:51,939 p=81964 u=rob n=ansible | skipping: [dhcp-server]
+2023-06-07 10:36:51,945 p=81964 u=rob n=ansible | skipping: [transport]
+2023-06-07 10:36:52,378 p=81964 u=rob n=ansible | ok: [eveng]
+2023-06-07 10:36:52,384 p=81964 u=rob n=ansible | TASK [eve-ng-lab-test : DHCPRelay_through_GRE: stop all nodes] ************************************************************************************************
+2023-06-07 10:36:52,408 p=81964 u=rob n=ansible | skipping: [vyos-oobm]
+2023-06-07 10:36:52,416 p=81964 u=rob n=ansible | skipping: [dhcp-relay]
+2023-06-07 10:36:52,419 p=81964 u=rob n=ansible | skipping: [dhcp-server]
+2023-06-07 10:36:52,426 p=81964 u=rob n=ansible | skipping: [transport]
+2023-06-07 10:36:53,506 p=81964 u=rob n=ansible | ok: [eveng] => (item=2)
+2023-06-07 10:36:54,752 p=81964 u=rob n=ansible | ok: [eveng] => (item=3)
+2023-06-07 10:36:55,953 p=81964 u=rob n=ansible | ok: [eveng] => (item=4)
+2023-06-07 10:36:57,038 p=81964 u=rob n=ansible | ok: [eveng] => (item=1)
+2023-06-07 10:36:57,939 p=81964 u=rob n=ansible | ok: [eveng] => (item=5)
+2023-06-07 10:36:57,944 p=81964 u=rob n=ansible | TASK [eve-ng-lab-test : DHCPRelay_through_GRE: wait while shutdown] *******************************************************************************************
+2023-06-07 10:36:57,956 p=81964 u=rob n=ansible | Pausing for 30 seconds
+2023-06-07 10:36:57,957 p=81964 u=rob n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2023-06-07 10:37:27,966 p=81964 u=rob n=ansible | ok: [eveng]
+2023-06-07 10:37:27,974 p=81964 u=rob n=ansible | TASK [eve-ng-lab-test : DHCPRelay_through_GRE: Login to EVE-NG and get Cookie] ********************************************************************************
+2023-06-07 10:37:28,011 p=81964 u=rob n=ansible | skipping: [vyos-oobm]
+2023-06-07 10:37:28,014 p=81964 u=rob n=ansible | skipping: [dhcp-relay]
+2023-06-07 10:37:28,014 p=81964 u=rob n=ansible | skipping: [dhcp-server]
+2023-06-07 10:37:28,020 p=81964 u=rob n=ansible | skipping: [transport]
+2023-06-07 10:37:28,581 p=81964 u=rob n=ansible | ok: [eveng]
+2023-06-07 10:37:28,586 p=81964 u=rob n=ansible | TASK [eve-ng-lab-test : DHCPRelay_through_GRE: delte lab] *****************************************************************************************************
+2023-06-07 10:37:28,607 p=81964 u=rob n=ansible | skipping: [vyos-oobm]
+2023-06-07 10:37:28,615 p=81964 u=rob n=ansible | skipping: [dhcp-relay]
+2023-06-07 10:37:28,617 p=81964 u=rob n=ansible | skipping: [dhcp-server]
+2023-06-07 10:37:28,623 p=81964 u=rob n=ansible | skipping: [transport]
+2023-06-07 10:37:29,181 p=81964 u=rob n=ansible | ok: [eveng]
+2023-06-07 10:37:29,220 p=81964 u=rob n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2023-06-07 10:37:29,220 p=81964 u=rob n=ansible | dhcp-relay                 : ok=14   changed=2    unreachable=0    failed=0    skipped=76   rescued=0    ignored=0   
+2023-06-07 10:37:29,220 p=81964 u=rob n=ansible | dhcp-server                : ok=16   changed=2    unreachable=0    failed=0    skipped=74   rescued=0    ignored=0   
+2023-06-07 10:37:29,220 p=81964 u=rob n=ansible | eveng                      : ok=55   changed=4    unreachable=0    failed=0    skipped=49   rescued=0    ignored=0   
+2023-06-07 10:37:29,220 p=81964 u=rob n=ansible | transport                  : ok=11   changed=2    unreachable=0    failed=0    skipped=79   rescued=0    ignored=0   
+2023-06-07 10:37:29,220 p=81964 u=rob n=ansible | vyos-oobm                  : ok=4    changed=0    unreachable=0    failed=0    skipped=86   rescued=0    ignored=0   
+2023-06-07 10:37:29,319 p=83204 u=rob n=ansible | shutdown complete
+2023-06-07 10:37:29,320 p=83203 u=rob n=ansible | shutdown complete

@@ -26,13 +26,45 @@ also set up your own build machine and run a :ref:`build_native`.
    Due to some differences in the version update and construction process, 
    this page no longer includes content related to VyOS 1.4 and above.
 
-This will guide you though the process of building a VyOS ISO using Docker_.
-This process has been tested on clean installs of Debian Jessie and Buster.
+.. _build_native:
+
+Native Build
+============
+
+To build VyOS natively you require a properly configured build host with the
+following Debian versions installed:
+
+- Debian Jessie for VyOS 1.2 (crux)
+- Debian Buster for VyOS 1.3 (equuleus) 
+
+To start, clone the repository to your local machine:
+
+.. code-block:: none
+
+  # For VyOS 1.2 (crux)
+  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
+
+  # For VyOS 1.3 (equuleus)
+  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
+
+  $ cd vyos-build
+
+  # For VyOS 1.2 (crux) and VyOS 1.3 (equuleus)
+  $ ./configure --architecture amd64 --build-by "j.randomhacker@vyos.io"
+  $ sudo make iso
+
+For the packages required, you can refer to the ``docker/Dockerfile`` file
+in the repository_. The ``./build-vyos-image`` script will also warn you if any
+dependencies are missing.
 
 .. _build_docker:
 
 Docker
 ======
+
+This will guide you though the process of building a VyOS ISO using Docker_.
+This process has been tested on clean installs of Debian Bullseye (11) and 
+Bookworm (12).
 
 Installing Docker_ and prerequisites:
 
@@ -43,12 +75,21 @@ Installing Docker_ and prerequisites:
 
 .. code-block:: bash
 
+  # Add Docker's official GPG key:
   sudo apt-get update
-  sudo apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
-  curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+  sudo apt-get install ca-certificates curl gnupg
+  sudo install -m 0755 -d /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+  # Add the repository to Apt sources:
+  echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
   sudo apt-get update
-  sudo apt-get install -y docker-ce
+  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 `On Ubuntu`_
 
@@ -197,34 +238,6 @@ directory.
    you need to start your Docker container using the following argument:
    ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests 
    will fail.
-
-.. _build_native:
-
-Native Build
-============
-
-To build VyOS natively you require a properly configured build host with the
-following Debian versions installed:
-
-- Debian Jessie for VyOS 1.2 (crux)
-- Debian Buster for VyOS 1.3 (equuleus)
-
-To start, clone the repository to your local machine:
-
-.. code-block:: none
-
-  # For VyOS 1.2 (crux)
-  $ git clone -b crux --single-branch https://github.com/vyos/vyos-build
-
-  # For VyOS 1.3 (equuleus)
-  $ git clone -b equuleus --single-branch https://github.com/vyos/vyos-build
-  
-For the packages required, you can refer to the ``docker/Dockerfile`` file
-in the repository_. The ``./configure`` script will also warn you if any
-dependencies are missing.
-
-Once you have the required dependencies installed, you may proceed with the
-steps described in :ref:`build_iso`.
 
 
 .. _build_iso:
