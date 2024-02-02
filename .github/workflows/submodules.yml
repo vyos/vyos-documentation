@@ -28,7 +28,7 @@ jobs:
           pip3 install phabricator==0.8.0
           python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b circinus sagitta equuleus
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           commit-message: "Github: update current branch"
@@ -64,7 +64,7 @@ jobs:
           pip3 install phabricator==0.8.0
           python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b sagitta equuleus
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           commit-message: "Github: update sagitta branch"
@@ -101,7 +101,7 @@ jobs:
           pip3 install phabricator==0.8.0
           python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b equuleus
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           commit-message: "Github: update equuleus branch"
