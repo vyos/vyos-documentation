@@ -132,7 +132,8 @@ Configuration
    Use this command to define default address pool name.
 
 
-.. cfgcmd:: set vpn sstp client-ipv6-pool prefix <address> mask <number-of-bits>
+.. cfgcmd:: set vpn sstp client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
+   mask <number-of-bits>
 
   Use this comand to set the IPv6 address pool from which an SSTP client
   will get an IPv6 prefix of your defined length (mask) to terminate the
@@ -140,14 +141,19 @@ Configuration
   bit long, the default value is 64.
 
 
-.. cfgcmd:: set vpn sstp client-ipv6-pool delegate <address> delegation-prefix
-   <number-of-bits>
+.. cfgcmd:: set vpn sstp client-ipv6-pool <IPv6-POOL-NAME> delegate <address>
+   delegation-prefix <number-of-bits>
 
   Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
   SSTP. You will have to set your IPv6 pool and the length of the
   delegation prefix. From the defined IPv6 pool you will be handing out
   networks of the defined length (delegation-prefix). The length of the
   delegation prefix can be set from 32 to 64 bit long.
+
+
+.. cfgcmd:: set vpn sstp default-ipv6-pool <IPv6-POOL-NAME>
+
+   Use this command to define default IPv6 address pool name.
 
 
 .. cfgcmd:: set vpn sstp name-server <address>
