@@ -22,6 +22,14 @@ General
 
     Play an audible beep to the system speaker when system is ready.
 
+Kernel
+======
+
+.. cfgcmd:: set system option kernel disable-mitigations
+
+    Disable all optional CPU mitigations. This improves system performance,
+    but it may also expose users to several CPU vulnerabilities.
+
 ***********
 HTTP client
 ***********
