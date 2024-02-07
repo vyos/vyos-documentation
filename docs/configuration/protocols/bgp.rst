@@ -209,35 +209,35 @@ Defining Peers
 .. cfgcmd:: set protocols bgp neighbor <address|interface> local-role
    <role> [strict]
 
-   BGP roles are defined in RFC :rfc:`9234` and provide an easy way to 
-   add route leak prevention, detection and mitigation. The local Role 
-   value is negotiated with the new BGP Role capability which has a 
-   built-in check of the corresponding value. In case of a mismatch the 
+   BGP roles are defined in RFC :rfc:`9234` and provide an easy way to
+   add route leak prevention, detection and mitigation. The local Role
+   value is negotiated with the new BGP Role capability which has a
+   built-in check of the corresponding value. In case of a mismatch the
    new OPEN Roles Mismatch Notification <2, 11> would be sent.
    The correct Role pairs are:
-   
+
    Provider - Customer
 
    Peer - Peer
 
    RS-Server - RS-Client
 
-   If :cfgcmd:`strict` is set the BGP session won’t become established 
-   until the BGP neighbor sets local Role on its side. This 
+   If :cfgcmd:`strict` is set the BGP session won’t become established
+   until the BGP neighbor sets local Role on its side. This
    configuration parameter is defined in RFC :rfc:`9234` and is used to
    enforce the corresponding configuration at your counter-parts side.
-   
-   Routes that are sent from provider, rs-server, or the peer local-role 
-   (or if received by customer, rs-client, or the peer local-role) will 
+
+   Routes that are sent from provider, rs-server, or the peer local-role
+   (or if received by customer, rs-client, or the peer local-role) will
    be marked with a new Only to Customer (OTC) attribute.
-   
+
    Routes with this attribute can only be sent to your neighbor if your
    local-role is provider or rs-server. Routes with this attribute can
-   be received only if your local-role is customer or rs-client. 
-   
+   be received only if your local-role is customer or rs-client.
+
    In case of peer-peer relationship routes can be received only if OTC
    value is equal to your neighbor AS number.
-   
+
    All these rules with OTC will help to detect and mitigate route leaks
    and happen automatically if local-role is set.
 
@@ -584,6 +584,12 @@ General Configuration
 Common parameters
 ^^^^^^^^^^^^^^^^^
 
+.. cfgcmd:: set protocols bgp parameters allow-martian-nexthop
+
+   When a peer receives a martian nexthop as part of the NLRI for a route
+   permit the nexthop to be used as such, instead of rejecting and resetting
+   the connection.
+
 .. cfgcmd:: set protocols bgp parameters router-id <id>
 
    This command specifies the router-ID. If router ID is not specified it will
@@ -597,6 +603,12 @@ Common parameters
    following attributes have to match: Weight, Local Preference, AS
    Path (both AS number and AS path length), Origin code, MED, IGP
    metric. Also, the next hop address for each path must be different.
+
+.. cfgcmd:: set protocols bgp parameters no-hard-administrative-reset
+
+   Do not send Hard Reset CEASE Notification for "Administrative Reset"
+   events. When set and Graceful Restart Notification capability is exchanged
+   between the peers, Graceful Restart procedures apply, and routes will be retained.
 
 .. cfgcmd:: set protocols bgp parameters log-neighbor-changes
 
@@ -642,6 +654,16 @@ Common parameters
    RFC functionality disabled by default so that we can preserve backwards
    compatibility with older versions of VyOS. With this option one can
    enable :rfc:`8212` functionality to operate.
+
+.. cfgcmd:: set protocols bgp parameters labeled-unicast <explicit-null |
+   ipv4-explicit-null | ipv6-explicit-null>
+
+   By default, locally advertised prefixes use the implicit-null label to
+   encode in the outgoing NLRI.
+
+   The following command uses the explicit-null label value for all the
+   BGP instances.
+
 
 Administrative Distance
 ^^^^^^^^^^^^^^^^^^^^^^^
