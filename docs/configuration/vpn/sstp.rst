@@ -179,34 +179,97 @@ SSL Certificates
 PPP Settings
 ------------
 
+.. cfgcmd:: set vpn sstp ppp-options disable-ccp
+
+  Disable Compression Control Protocol (CCP).
+  CCP is enabled by default.
+
+.. cfgcmd:: set vpn sstp ppp-options interface-cache <number>
+
+  Specifies number of interfaces to keep in cache. It means that don’t
+  destroy interface after corresponding session is destroyed, instead
+  place it to cache and use it later for new sessions repeatedly.
+  This should reduce kernel-level interface creation/deletion rate lack.
+  Default value is **0**.
+
+.. cfgcmd:: set vpn sstp ppp-options ipv4 <require | prefer | allow | deny>
+
+  Specifies IPv4 negotiation preference.
+
+  * **require** - Require IPv4 negotiation
+  * **prefer** - Ask client for IPv4 negotiation, do not fail if it rejects
+  * **allow** - Negotiate IPv4 only if client requests (Default value)
+  * **deny** - Do not negotiate IPv4
+
+.. cfgcmd:: set vpn sstp ppp-options ipv6 <require | prefer | allow | deny>
+
+  Specifies IPv6 negotiation preference.
+
+  * **require** - Require IPv6 negotiation
+  * **prefer** - Ask client for IPv6 negotiation, do not fail if it rejects
+  * **allow** - Negotiate IPv6 only if client requests
+  * **deny** - Do not negotiate IPv6 (default value)
+
+.. cfgcmd:: set vpn sstp ppp-options ipv6-accept-peer-interface-id
+
+  Accept peer interface identifier. By default is not defined.
+
+.. cfgcmd:: set vpn sstp ppp-options ipv6-interface-id <random | x:x:x:x>
+
+  Specifies fixed or random interface identifier for IPv6.
+  By default is fixed.
+
+  * **random** - Random interface identifier for IPv6
+  * **x:x:x:x** - Specify interface identifier for IPv6
+
+.. cfgcmd:: set vpn sstp ppp-options ipv6-interface-id <random | x:x:x:x>
+
+  Specifies peer interface identifier for IPv6. By default is fixed.
+
+  * **random** - Random interface identifier for IPv6
+  * **x:x:x:x** - Specify interface identifier for IPv6
+  * **ipv4-addr** - Calculate interface identifier from IPv4 address.
+  * **calling-sid** - Calculate interface identifier from calling-station-id.
+
 .. cfgcmd:: set vpn sstp ppp-options lcp-echo-failure <number>
 
   Defines the maximum `<number>` of unanswered echo requests. Upon reaching the
-  value `<number>`, the session will be reset.
+  value `<number>`, the session will be reset. Default value is **3**.
 
 .. cfgcmd:: set vpn sstp ppp-options lcp-echo-interval <interval>
 
   If this option is specified and is greater than 0, then the PPP module will
   send LCP pings of the echo request every `<interval>` seconds.
+  Default value is **30**.
 
 .. cfgcmd:: set vpn sstp ppp-options lcp-echo-timeout
 
   Specifies timeout in seconds to wait for any peer activity. If this option
   specified it turns on adaptive lcp echo functionality and "lcp-echo-failure"
-  is not used.
+  is not used. Default value is **0**.
+
+.. cfgcmd:: set vpn sstp ppp-options min-mtu <number>
+
+  Defines minimum acceptable MTU. If client will try to negotiate less then
+  specified MTU then it will be NAKed or disconnected if rejects greater MTU.
+  Default value is **100**.
 
 .. cfgcmd:: set vpn sstp ppp-options mppe <require | prefer | deny>
 
-  Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotioation
+  Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotiation
   preference.
 
   * **require** - ask client for mppe, if it rejects drop connection
-  * **prefer** - ask client for mppe, if it rejects don't fail
+  * **prefer** - ask client for mppe, if it rejects don't fail. (Default value)
   * **deny** - deny mppe
 
   Default behavior - don't ask client for mppe, but allow it if client wants.
   Please note that RADIUS may override this option by MS-MPPE-Encryption-Policy
   attribute.
+
+.. cfgcmd:: set vpn sstp ppp-options mru <number>
+
+  Defines preferred MRU. By default is not defined.
 
 
 RADIUS
