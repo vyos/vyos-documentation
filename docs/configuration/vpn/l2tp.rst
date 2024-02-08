@@ -98,7 +98,7 @@ Below is an example to configure a LNS:
   set vpn l2tp remote-access client-ip-pool L2TP-POOL range 192.168.255.2-192.168.255.254
   set vpn l2tp remote-access default-pool 'L2TP-POOL'
   set vpn l2tp remote-access lns shared-secret 'secret'
-  set vpn l2tp remote-access ccp-disable
+  set vpn l2tp remote-access ppp-options disable-ccp
   set vpn l2tp remote-access authentication mode local
   set vpn l2tp remote-access authentication local-users username test password 'test'
 
