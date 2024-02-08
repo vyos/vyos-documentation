@@ -250,13 +250,14 @@ The ``generate`` endpoint run a ``generate`` command.
 .. code-block:: none
 
    curl -k --location --request POST 'https://vyos/generate' \
-   --form data='{"op": "generate", "path": ["wireguard", "default-keypair"]}' \
+   --form data='{"op": "generate", "path": ["pki", "wireguard", "key-pair"]}' \
    --form key='MY-HTTPS-API-PLAINTEXT-KEY'
 
    response:
    {
       "success": true,
-      "data": "",
+      "data": "Private key: CFZR2eyhoVZwk4n3JFPMJx3E145f1EYgDM+ubytXYVY=\n
+               Public key: jjtpPT8ycI1Q0bNtrWuxAkO4k88Xwzg5VHV9xGZ58lU=\n\n",
       "error": null
    }
 
