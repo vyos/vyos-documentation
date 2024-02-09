@@ -60,14 +60,15 @@ p.devwarning {
 	&.overlay > div > div[role=navigation] .wy-breadcrumbs > li a::after,
 	&.overlay > div > div[role=navigation] .wy-breadcrumbs > li::before,
 	&.overlay > div > div[role=navigation] .wy-breadcrumbs > li::after,
-	&.overlay > div > div.document div.card,
-	&.overlay > div > div.document div.card-header {
+	&.overlay > div > div.document div.sd-card,
+	&.overlay > div > div.document div.sd-card-title {
 		background-color: #E7E7E7;
 	} 
 
 	&.overlay > div.rst-content > footer > .rst-footer-buttons > a {
 		background-color: #E7E7E7 !important;
 	}
+
 }
 
 /* main-page content */

@@ -22,9 +22,8 @@
   & > li > .icon-home::after {
     content: url('../images/breadcrumbs-icon.svg');
     visibility: visible;
-    right: 0px;
     top: 6px;
-    position: absolute
+    position: absolute;
   }
 
   & > li > .icon-home::before {
@@ -41,6 +40,10 @@
     position: relative;
   }
 
+  & > li:nth-child(n + 1)::before {
+    display: none;
+  }
+
   & > li:nth-last-child(2) {
     color: #121010;
   }
@@ -52,7 +55,6 @@
 
   & > li:nth-child(n + 1)::after {
     content: url('../images/breadcrumbs-icon.svg');
-    right: -7px;
     top: 0;
     position: absolute;
     width: 20px;
@@ -98,6 +100,17 @@
 }
 
 @media screen and (max-width: 375px) {
+
+  .wy-breadcrumbs {
+    & > li > .icon-home::after {
+      right: -2px;
+    }
+
+    & > li:nth-child(n + 1)::after {
+      right: -13px;
+    }
+  }
+
   .wy-breadcrumbs > li {
     padding: 5px 5px 5px 0;
   }
@@ -113,6 +126,16 @@
 }
 
 @media screen and (min-width: 376px) {
+  .wy-breadcrumbs {
+    & > li > .icon-home::after {
+      right: -8px;
+    }
+
+    & > li:nth-child(n + 1)::after {
+      right: -13px;
+    }
+  }
+
   .wy-breadcrumbs > li {
     padding: 5px 5px 5px 10px;
   }
