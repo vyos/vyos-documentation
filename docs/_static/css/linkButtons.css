@@ -1,9 +1,9 @@
 .rst-footer-buttons {
-  & > .fa-arrow-circle-left {
-    padding-left: 20px;
+  .fa-arrow-circle-left {
+    padding-left: 25px;
   } 
 
-  & > .fa-arrow-circle-left::before {
+  .fa-arrow-circle-left::before {
     content: url('../images/arrow-left.svg');
     position: absolute;
     top: 10px;
@@ -22,10 +22,10 @@
     letter-spacing: -0.02em;
     position: relative;
     text-align: left;
-    padding-left: 16px;
-    padding-right: 18px;
     box-shadow: none;
     transition: transform 250ms linear;
+    display: flex;
+    align-items: center;
 
     &:hover,
     &:active {
@@ -37,7 +37,7 @@
       outline: none;  
     }
 
-    & > .fa-arrow-circle-right::before {
+    .fa-arrow-circle-right::before {
       content: url('../images/arrow-right.svg');
       position: absolute;
       top: 10px;

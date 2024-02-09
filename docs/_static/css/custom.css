@@ -72,24 +72,31 @@ p.devwarning {
 
 /* main-page content */
 #vyos-user-guide {
-	& .container {
+	& .sd-container-fluid {
 		padding-left: 0;
 		padding-right: 0;
 	}
 	
-	& .container > .docutils > .p-2 {
+	& .sd-container-fluid > .docutils > .sd-col {
 		max-width: 387px;
 		box-shadow: none;
 		flex: none;
+		width: 100% !important;
+		padding: 0 !important;
+		margin-top: 0 !important;
 	
-		& .card-body .card-text {
+		& .sd-card-body .sd-card-text {
 			min-height: 120px;
 		}
 	}
 	
-	& .container > .row {
-		margin: 0;
-		display: grid;
+	& > div.sd-container-fluid {
+		margin-top: 30px;
+
+		& > div.docutils {
+			margin: 0;
+			display: grid;
+		}
 	}
 	
 	& > .pb-4 {
@@ -97,13 +104,13 @@ p.devwarning {
 	}
 }
 
-div.card-header {
+div.sd-card-title {
 	font-weight: bold;
 	background: #fff;
 	border: none;
 }
 
-.card {
+.sd-card {
 	background: #fff;
 	border: none;
 	border-bottom: 1px solid #ffae12;
@@ -111,8 +118,12 @@ div.card-header {
 	box-shadow: none !important;
 }
 
-.card-header,
-.card-body {
+.sd-card-body {
+	padding: 0 0 16px 0
+}
+
+.sd-card-title,
+.sd-card-text {
 	padding: 0;
 }
 
@@ -317,10 +328,6 @@ html {
 		}
 	}
 
-	#vyos-user-guide .container > .row {
-		grid-template-columns: 1fr;
-	}
-
 	.wy-nav-content-wrap-opened-sidebar {
 		max-width: 100%;
 		margin-left: unset;
@@ -362,8 +369,8 @@ html {
 }
 
 @media screen and (min-width: 575px) {
-	#vyos-user-guide .container > .row {
-		grid-gap: 0px 40px;
+	#vyos-user-guide div.sd-container-fluid > div.docutils {
+		grid-gap: 30px;
 		grid-template-columns: 1fr 1fr;
 	}
 }
