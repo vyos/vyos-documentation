@@ -26,7 +26,6 @@
     color: #fff;
     line-height: 1.2;
     overflow-x: scroll;
-    scrollbar-color: #99A0A5 transparent;
     scroll-behavior: smooth;
   }
 
@@ -34,6 +33,7 @@
   & div[class^=highlight] pre::-webkit-scrollbar, 
   & pre.literal-block::-webkit-scrollbar {
     height: 3px;
+    color: #99A0A5 transparent;
   }
 
   & .linenodiv pre::-webkit-scrollbar-track, 
@@ -41,7 +41,7 @@
   & pre.literal-block::-webkit-scrollbar-track {
     background-color: transparent;
     border-radius: 8px;
-    margin: 0 10px;
+    margin: 0 36px;
   }
 
   & .linenodiv pre::-webkit-scrollbar-thumb, 
