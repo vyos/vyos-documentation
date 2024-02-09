@@ -41,7 +41,7 @@
   & pre.literal-block::-webkit-scrollbar-track {
     background-color: transparent;
     border-radius: 8px;
-    margin: 0 36px;
+    margin: 0 18px;
   }
 
   & .linenodiv pre::-webkit-scrollbar-thumb, 

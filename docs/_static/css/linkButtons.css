@@ -26,11 +26,14 @@
     transition: transform 250ms linear;
     display: flex;
     align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 4px;
 
     &:hover,
     &:active {
       transform: scale(1.05);
-      padding-left: 16px;
+      /* padding-left: 16px; */
     }
 
     &:focus {

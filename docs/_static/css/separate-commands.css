@@ -49,7 +49,6 @@ span {
     padding: 4px 8px 8px 30px;
     align-items: center;
     color: #121010 !important;
-    font-size: 13px !important;
     font-family: 'Roboto Mono', monospace !important;
     letter-spacing: -0.04em !important;
     font-weight: 500 !important;
@@ -74,6 +73,16 @@ span {
   &.cfgcmd {
     background-color: #FFF4E6;
   }
+}
+
+span.opcmd,
+span.cfgcmd {
+  font-size: 16px !important;
+}
+
+table span.opcmd,
+table span.cfgcmd {
+  font-size: 13px !important;
 }
 
 .opcmd-heading > a.cmdlink,
