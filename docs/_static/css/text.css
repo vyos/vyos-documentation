@@ -81,6 +81,18 @@ p .caption-text {
   font-family: 'Roboto', sans-serif;
 }
 
+aside.footnote  .label {
+  & > a[role=doc-backlink] {
+    color: #fd8f01;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+  }
+}
+
+aside.footnote > p {
+  padding-bottom: 15px !important;
+}
+
 #about a .external,
 #a-note-on-copyright > dl.brackets > dt,
 #a-note-on-copyright > dl.brackets > dt > .brackets > a,
@@ -92,6 +104,7 @@ a.footnote-reference.brackets,
 #history p {
   padding-bottom: 22px;
   margin-bottom: 0;
+  font-size: 16px;
 }
 
 #a-note-on-copyright > dl p {
