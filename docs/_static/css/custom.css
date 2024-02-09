@@ -153,6 +153,14 @@ footer {
 	letter-spacing: -0.5px;
 	color: #636a6d;
 
+	& > a {
+		color: #fd8f01;
+		font-family: 'Roboto', sans-serif;
+		font-size: 16px;
+		letter-spacing: -0.5px;
+		font-weight: 400;
+	}
+
 	& > hr {
 		display: none;
 	}
