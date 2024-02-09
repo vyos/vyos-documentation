@@ -252,7 +252,7 @@ contributors to navigate through the sources and all the implied logic of
 the spaghetti code.
 
 Please use the following template as good starting point when developing new
-modules or even rewrite a whole bunch of code in the new style XML/Pyhon
+modules or even rewrite a whole bunch of code in the new style XML/Python
 interface.
 
 
