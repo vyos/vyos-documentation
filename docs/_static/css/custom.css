@@ -109,6 +109,7 @@ div.sd-card-title {
 	font-weight: bold;
 	background: #fff;
 	border: none;
+	font-family: 'Archivo', sans-serif;
 }
 
 .sd-card {
@@ -120,7 +121,7 @@ div.sd-card-title {
 }
 
 .sd-card-body {
-	padding: 0 0 16px 0
+	padding: 0;
 }
 
 .sd-card-title,
