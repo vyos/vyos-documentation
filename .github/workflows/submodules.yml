@@ -30,7 +30,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.PR_ACTION_DOCUMENTATION_SUBMODULE_UPDATE }}
           commit-message: "Github: update current branch"
           title: "Github: update current branch"
           body: |
@@ -64,7 +64,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.PR_ACTION_DOCUMENTATION_SUBMODULE_UPDATE }}
           commit-message: "Github: update sagitta branch"
           title: "Github: update sagitta branch"
           body: |
@@ -79,7 +79,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: ${{ github.repository }}
+          repository: ${{ secrets.PR_ACTION_DOCUMENTATION_SUBMODULE_UPDATE }}
           ref: equuleus
       - name: update submodule
         run: |
