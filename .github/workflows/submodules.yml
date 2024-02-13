@@ -30,7 +30,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.PR_ACTION_DOCUMENTATION_SUBMODULE_UPDATE }}
           commit-message: "Github: update current branch"
           title: "Github: update current branch"
           body: |
@@ -64,7 +64,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.PR_ACTION_DOCUMENTATION_SUBMODULE_UPDATE }}
           commit-message: "Github: update sagitta branch"
           title: "Github: update sagitta branch"
           body: |
@@ -99,7 +99,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.PR_ACTION_DOCUMENTATION_SUBMODULE_UPDATE }}
           commit-message: "Github: update equuleus branch"
           title: "Github: update equuleus branch"
           body: |

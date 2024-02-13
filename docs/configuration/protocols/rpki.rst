@@ -30,8 +30,8 @@ in :rfc:`8210`.
   If you are new to these routing security technologies then there is an
   `excellent guide to RPKI`_ by NLnet Labs which will get you up to speed
   very quickly. Their documentation explains everything from what RPKI is to
-  deploying it in production. It also has some 
-  `help and operational guidance`_ including "What can I do about my route 
+  deploying it in production. It also has some
+  `help and operational guidance`_ including "What can I do about my route
   having an Invalid state?"
 
 ***************
@@ -109,6 +109,20 @@ Configuration
 
   The default value is 300 seconds.
 
+.. cfgcmd:: set protocols rpki expire-interval <600-172800>
+
+  Set the number of seconds the router waits until the router
+  expires the cache.
+
+  The default value is 7200 seconds.
+
+.. cfgcmd:: set protocols rpki retry-interval <1-7200>
+
+  Set the number of seconds the router waits until retrying to connect
+  to the cache server.
+
+  The default value is 600 seconds.
+
 .. cfgcmd:: set protocols rpki cache <address> port <port>
 
   Defined the IPv4, IPv6 or FQDN and port number of the caching RPKI caching
@@ -136,10 +150,6 @@ the connection.
 
   SSH username to establish an SSH connection to the cache server.
 
-.. cfgcmd:: set protocols rpki cache <address> ssh known-hosts-file <filepath>
-
-  Local path that includes the known hosts file.
-
 .. cfgcmd:: set protocols rpki cache <address> ssh private-key-file <filepath>
 
   Local path that includes the private key file of the router.
@@ -148,7 +158,7 @@ the connection.
 
   Local path that includes the public key file of the router.
 
-.. note:: When using SSH, known-hosts-file, private-key-file and public-key-file
+.. note:: When using SSH, private-key-file and public-key-file
   are mandatory options.
 
 *******
