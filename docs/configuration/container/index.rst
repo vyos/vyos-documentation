@@ -117,7 +117,7 @@ Configuration
 
    Add a host device to the container.
 
-.. cfgcmd:: container name <name> cap-add <text>
+.. cfgcmd:: set container name <name> cap-add <text>
 
    Set container capabilities or permissions.
 
