@@ -22,6 +22,11 @@ General
 
     Play an audible beep to the system speaker when system is ready.
 
+.. cfgcmd:: set system option root-partition-auto-resize
+
+    Enables the root partition auto-extension and resizes to the maximum 
+    available space on system boot.
+
 Kernel
 ======
 
