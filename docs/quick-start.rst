@@ -158,10 +158,6 @@ Configure Stateful Packet Filtering
 With the new firewall structure, we have have a lot of flexibility in how we
 group and order our rules, as shown by the two alternative approaches below.
 
-<<<<<<< HEAD
-Option 1: Common Chain
-^^^^^^^^^^^^^^^^^^^^^^
-=======
 Option 1: Global State Policies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Using options defined in ``set firewall global-options state-policy``, state
@@ -180,7 +176,6 @@ Most installations would choose this option, and will contain:
 
 Option 2: Common/Custom Chain
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->>>>>>> 32460e70 (Fix typos in quick-start)
 
 We can create a common chain for stateful connection filtering of multiple
 interfaces (or multiple netfilter hooks on one interface). Those individual
@@ -200,11 +195,11 @@ The chain we will create is called ``CONN_FILTER`` and has three rules:
   set firewall ipv4 name CONN_FILTER default-action 'return'
 
   set firewall ipv4 name CONN_FILTER rule 10 action 'accept'
-  set firewall ipv4 name CONN_FILTER rule 10 state established 
-  set firewall ipv4 name CONN_FILTER rule 10 state related 
+  set firewall ipv4 name CONN_FILTER rule 10 state established
+  set firewall ipv4 name CONN_FILTER rule 10 state related
 
   set firewall ipv4 name CONN_FILTER rule 20 action 'drop'
-  set firewall ipv4 name CONN_FILTER rule 20 state invalid 
+  set firewall ipv4 name CONN_FILTER rule 20 state invalid
 
 Then, we can jump to the common chain from both the ``forward`` and ``input``
 hooks as the first filtering rule in the respective chains:
@@ -227,16 +222,16 @@ creating rules on each hook's chain:
 .. code-block:: none
 
   set firewall ipv4 forward filter rule 5 action 'accept'
-  set firewall ipv4 forward filter rule 5 state established 
-  set firewall ipv4 forward filter rule 5 state related 
+  set firewall ipv4 forward filter rule 5 state established
+  set firewall ipv4 forward filter rule 5 state related
   set firewall ipv4 forward filter rule 10 action 'drop'
-  set firewall ipv4 forward filter rule 10 state invalid 
+  set firewall ipv4 forward filter rule 10 state invalid
 
   set firewall ipv4 input filter rule 5 action 'accept'
-  set firewall ipv4 input filter rule 5 state established 
-  set firewall ipv4 input filter rule 5 state related 
+  set firewall ipv4 input filter rule 5 state established
+  set firewall ipv4 input filter rule 5 state related
   set firewall ipv4 input filter rule 10 action 'drop'
-  set firewall ipv4 input filter rule 10 state invalid 
+  set firewall ipv4 input filter rule 10 state invalid
 
 Block Incoming Traffic
 ----------------------
@@ -305,11 +300,11 @@ interface group to 4 per minute:
   set firewall ipv4 name VyOS_MANAGEMENT rule 20 action 'drop'
   set firewall ipv4 name VyOS_MANAGEMENT rule 20 recent count 4
   set firewall ipv4 name VyOS_MANAGEMENT rule 20 recent time minute
-  set firewall ipv4 name VyOS_MANAGEMENT rule 20 state new 
+  set firewall ipv4 name VyOS_MANAGEMENT rule 20 state new
   set firewall ipv4 name VyOS_MANAGEMENT rule 20 inbound-interface group 'WAN'
 
   set firewall ipv4 name VyOS_MANAGEMENT rule 21 action 'accept'
-  set firewall ipv4 name VyOS_MANAGEMENT rule 21 state new 
+  set firewall ipv4 name VyOS_MANAGEMENT rule 21 state new
   set firewall ipv4 name VyOS_MANAGEMENT rule 21 inbound-interface group 'WAN'
 
 Allow Access to Services
@@ -324,7 +319,7 @@ all hosts on the ``NET-INSIDE-v4`` network:
   set firewall ipv4 input filter rule 30 action 'accept'
   set firewall ipv4 input filter rule 30 icmp type-name 'echo-request'
   set firewall ipv4 input filter rule 30 protocol 'icmp'
-  set firewall ipv4 input filter rule 30 state new 
+  set firewall ipv4 input filter rule 30 state new
 
   set firewall ipv4 input filter rule 40 action 'accept'
   set firewall ipv4 input filter rule 40 destination port '53'
