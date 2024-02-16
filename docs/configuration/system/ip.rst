@@ -43,6 +43,19 @@ can be used to filter which routes zebra will install in the kernel.
    .. note:: If you choose any as the option that will cause all protocols that
       are sending routes to zebra.
 
+Nexthop Tracking
+^^^^^^^^^^^^^^^^
+
+Nexthop tracking resolve nexthops via the default route by default. This is enabled
+by default for a traditional profile of FRR which we use. It and can be disabled if
+you do not wan't to e.g. allow BGP to peer across the default route.
+
+.. cfgcmd:: set system ip nht no-resolve-via-default
+
+   Do not allow IPv4 nexthop tracking to resolve via the default route. This
+   parameter is configured per-VRF, so the command is also available in the VRF
+   subnode.
+
 Operational commands
 --------------------
 
