@@ -34,6 +34,10 @@ Local
    Setup encrypted password for given username. This is useful for
    transferring a hashed password from system to system.
 
+.. cfgcmd:: set system login user <name> disable
+
+   Disable (lock) account. User will not be able to log in.
+
 .. _ssh_key_based_authentication:
 
 Key Based Authentication
