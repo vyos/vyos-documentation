@@ -28,7 +28,7 @@ msgstr "**Delete the VM** from the GNS3 project."
 msgid "**Early Production Access**"
 msgstr "**Early Production Access**"
 
-#: ../../installation/install.rst:538
+#: ../../installation/install.rst:541
 msgid "**First** run a web server - you can use a simple one like `Python's SimpleHTTPServer`_ and start serving the `filesystem.squashfs` file. The file can be found inside the `/live` directory of the extracted contents of the ISO file."
 msgstr "**First** run a web server - you can use a simple one like `Python's SimpleHTTPServer`_ and start serving the `filesystem.squashfs` file. The file can be found inside the `/live` directory of the extracted contents of the ISO file."
 
@@ -56,7 +56,7 @@ msgstr "**Release Candidate**"
 msgid "**Requirements**"
 msgstr "**Requirements**"
 
-#: ../../installation/install.rst:543
+#: ../../installation/install.rst:546
 msgid "**Second**, edit the configuration file of the :ref:`install_from_tftp` so that it shows the correct URL at ``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``."
 msgstr "**Second**, edit the configuration file of the :ref:`install_from_tftp` so that it shows the correct URL at ``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``."
 
@@ -128,37 +128,35 @@ msgstr "4 Gigabit Ethernet channels using Intel i211AT NICs"
 msgid "AMD Embedded G series GX-412TC, 1 GHz quad Jaguar core with 64 bit and AES-NI support, 32K data + 32K instruction cache per core, shared 2MB L2 cache."
 msgstr "AMD Embedded G series GX-412TC, 1 GHz quad Jaguar core with 64 bit and AES-NI support, 32K data + 32K instruction cache per core, shared 2MB L2 cache."
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 custom VyOS powder coat"
 msgstr "APU4 custom VyOS powder coat"
 
-#: ../../installation/vyos-on-baremetal.rst:None
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 desktop back"
 msgstr "APU4 desktop back"
 
-#: ../../installation/vyos-on-baremetal.rst:None
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 desktop closed"
 msgstr "APU4 desktop closed"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 rack closed"
 msgstr "APU4 rack closed"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 rack front"
 msgstr "APU4 rack front"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 rack module #1"
 msgstr "APU4 rack module #1"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 rack module #2"
 msgstr "APU4 rack module #2"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 rack module #3 with PSU"
 msgstr "APU4 rack module #3 with PSU"
 
@@ -166,7 +164,7 @@ msgstr "APU4 rack module #3 with PSU"
 msgid "A VyOS installation image (.iso file). You can find how to get it on the :ref:`installation` page"
 msgstr "A VyOS installation image (.iso file). You can find how to get it on the :ref:`installation` page"
 
-#: ../../installation/install.rst:487
+#: ../../installation/install.rst:490
 msgid "A directory named pxelinux.cfg which must contain the configuration file. We will use the configuration_ file shown below, which we named default_."
 msgstr "A directory named pxelinux.cfg which must contain the configuration file. We will use the configuration_ file shown below, which we named default_."
 
@@ -234,7 +232,7 @@ msgstr "After installation - exit from the console using the key combination ``C
 msgid "After installation has completed, remove the installation iso using the GUI or ``qm set 200 --ide2 none``."
 msgstr "After installation has completed, remove the installation iso using the GUI or ``qm set 200 --ide2 none``."
 
-#: ../../installation/update.rst:81
+#: ../../installation/update.rst:88
 msgid "After reboot you might want to verify the version you are running with the :opcmd:`show version` command."
 msgstr "After reboot you might want to verify the version you are running with the :opcmd:`show version` command."
 
@@ -262,7 +260,7 @@ msgstr "An IP address"
 msgid "An external RS232 serial port is available, internally a GPIO header as well. It does have Realtek based audio on board for some reason, but you can disable that. Booting works on both USB2 and USB3 ports. Switching between serial BIOS mode and HDMI BIOS mode depends on what is connected at startup; it goes into serial mode if you disconnect HDMI and plug in serial, in all other cases it's HDMI mode."
 msgstr "An external RS232 serial port is available, internally a GPIO header as well. It does have Realtek based audio on board for some reason, but you can disable that. Booting works on both USB2 and USB3 ports. Switching between serial BIOS mode and HDMI BIOS mode depends on what is connected at startup; it goes into serial mode if you disconnect HDMI and plug in serial, in all other cases it's HDMI mode."
 
-#: ../../installation/install.rst:551
+#: ../../installation/install.rst:554
 msgid "And **third**, restart the TFTP service. If you are using VyOS as your TFTP Server, you can restart the service with ``sudo service tftpd-hpa restart``."
 msgstr "And **third**, restart the TFTP service. If you are using VyOS as your TFTP Server, you can restart the service with ``sudo service tftpd-hpa restart``."
 
@@ -338,7 +336,7 @@ msgstr "Being again at the **Preferences** window, having **Qemu VMs** selected 
 msgid "Bits per second : 9600"
 msgstr "Bits per second : 9600"
 
-#: ../../installation/install.rst:580
+#: ../../installation/install.rst:583
 msgid "Black screen on install"
 msgstr "Black screen on install"
 
@@ -358,39 +356,39 @@ msgstr "Building from source"
 msgid "CLI"
 msgstr "CLI"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B Back"
 msgstr "CSE-505-203B Back"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B Front"
 msgstr "CSE-505-203B Front"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B Open 1"
 msgstr "CSE-505-203B Open 1"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B Open 2"
 msgstr "CSE-505-203B Open 2"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B Open 3"
 msgstr "CSE-505-203B Open 3"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B w/ 10GE Open"
 msgstr "CSE-505-203B w/ 10GE Open"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B w/ 10GE Open 1"
 msgstr "CSE-505-203B w/ 10GE Open 1"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B w/ 10GE Open 2"
 msgstr "CSE-505-203B w/ 10GE Open 2"
 
-#: ../../installation/vyos-on-baremetal.rst:None
+#: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B w/ 10GE Open 3"
 msgstr "CSE-505-203B w/ 10GE Open 3"
 
@@ -455,7 +453,7 @@ msgstr "Click to ``Instances`` and ``Launch Instance``"
 msgid "Click to your new vm and find out your Public IP address."
 msgstr "Click to your new vm and find out your Public IP address."
 
-#: ../../installation/install.rst:562
+#: ../../installation/install.rst:565
 msgid "Client Boot"
 msgstr "Client Boot"
 
@@ -491,7 +489,7 @@ msgstr "Configure Security Group. It's recommended that you configure ssh access
 msgid "Configure a DHCP server to provide the client with:"
 msgstr "Configure a DHCP server to provide the client with:"
 
-#: ../../installation/install.rst:476
+#: ../../installation/install.rst:479
 msgid "Configure a TFTP server so that it serves the following:"
 msgstr "Configure a TFTP server so that it serves the following:"
 
@@ -525,10 +523,7 @@ msgid "Connect to the instance by SSH key."
 msgstr "Connect to the instance by SSH key."
 
 #: ../../installation/cloud/index.rst:7
-#: ../../installation/cloud/index.rst:7
 #: ../../installation/index.rst:7
-#: ../../installation/index.rst:7
-#: ../../installation/virtual/index.rst:5
 #: ../../installation/virtual/index.rst:5
 msgid "Content"
 msgstr "Content"
@@ -649,7 +644,7 @@ msgstr "Disable XHCI"
 msgid "Disk size"
 msgstr "Disk size"
 
-#: ../../installation/install.rst:547
+#: ../../installation/install.rst:550
 msgid "Do not change the name of the *filesystem.squashfs* file. If you are working with different versions, you can create different directories instead."
 msgstr "Do not change the name of the *filesystem.squashfs* file. If you are working with different versions, you can create different directories instead."
 
@@ -727,14 +722,9 @@ msgid "Every version is contained in its own squashfs image that is mounted in a
 msgstr "Every version is contained in its own squashfs image that is mounted in a union filesystem together with a directory for mutable data such as configurations, keys, or custom scripts."
 
 #: ../../installation/install.rst:17
-#: ../../installation/install.rst:17
-#: ../../installation/install.rst:21
 #: ../../installation/install.rst:21
 #: ../../installation/install.rst:25
-#: ../../installation/install.rst:25
 #: ../../installation/install.rst:29
-#: ../../installation/install.rst:29
-#: ../../installation/install.rst:33
 #: ../../installation/install.rst:33
 #: ../../installation/install.rst:37
 msgid "Everyone"
@@ -752,11 +742,11 @@ msgstr "Example"
 msgid "Example:"
 msgstr "Example:"
 
-#: ../../installation/install.rst:519
+#: ../../installation/install.rst:522
 msgid "Example of simple (no menu) configuration file:"
 msgstr "Example of simple (no menu) configuration file:"
 
-#: ../../installation/install.rst:499
+#: ../../installation/install.rst:502
 msgid "Example of the contents of the TFTP server:"
 msgstr "Example of the contents of the TFTP server:"
 
@@ -768,7 +758,7 @@ msgstr "Extension Modules"
 msgid "Files *pxelinux.0* and *ldlinux.c32* `from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_"
 msgstr "Files *pxelinux.0* and *ldlinux.c32* `from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_"
 
-#: ../../installation/install.rst:564
+#: ../../installation/install.rst:567
 msgid "Finally, turn on your PXE-enabled client or clients. They will automatically get an IP address from the DHCP server and start booting into VyOS live from the files automatically taken from the TFTP and HTTP servers."
 msgstr "Finally, turn on your PXE-enabled client or clients. They will automatically get an IP address from the DHCP server and start booting into VyOS live from the files automatically taken from the TFTP and HTTP servers."
 
@@ -816,7 +806,7 @@ msgstr "Future releases of VyOS will break the direct upgrade path from Vyatta c
 msgid "GPG verification"
 msgstr "GPG verification"
 
-#: ../../installation/install.rst:582
+#: ../../installation/install.rst:585
 msgid "GRUB attempts to redirect all output to a serial port for ease of installation on headless hosts. This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a black screen after selecting the `Live system` option from the installation image."
 msgstr "GRUB attempts to redirect all output to a serial port for ease of installation on headless hosts. This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a black screen after selecting the `Live system` option from the installation image."
 
@@ -964,7 +954,7 @@ msgstr "In the **General settings** tab of your **QEMU VM template configuration
 msgid "In the **Network** tab,  set **0** as the number of adapters, set the **Name format** to **eth{0}** and the **Type** to **Paravirtualized Network I/O (virtio-net-pci)**."
 msgstr "In the **Network** tab,  set **0** as the number of adapters, set the **Name format** to **eth{0}** and the **Type** to **Paravirtualized Network I/O (virtio-net-pci)**."
 
-#: ../../installation/install.rst:491
+#: ../../installation/install.rst:494
 msgid "In the example we configured our existent VyOS as the TFTP server too:"
 msgstr "In the example we configured our existent VyOS as the TFTP server too:"
 
@@ -985,7 +975,7 @@ msgstr "Installation"
 msgid "Installation and Image Management"
 msgstr "Installation and Image Management"
 
-#: ../../installation/install.rst:594
+#: ../../installation/install.rst:597
 msgid "Installation can then continue as outlined above."
 msgstr "Installation can then continue as outlined above."
 
@@ -1021,7 +1011,7 @@ msgstr "It is advised that VyOS routers are configured in a resource group with 
 msgid "Its installed size (complete with libsodium) is less than that of GPG binary alone (not including libgcrypt and some other libs, which I think we only use for GPG). Since it uses elliptic curves, it gets away with much smaller keys, and it doesn't include as much metadata to begin with."
 msgstr "Its installed size (complete with libsodium) is less than that of GPG binary alone (not including libgcrypt and some other libs, which I think we only use for GPG). Since it uses elliptic curves, it gets away with much smaller keys, and it doesn't include as much metadata to begin with."
 
-#: ../../installation/install.rst:575
+#: ../../installation/install.rst:578
 msgid "Known Issues"
 msgstr "Known Issues"
 
@@ -1057,7 +1047,7 @@ msgstr "Live installation"
 msgid "Log into the VyOS live system (use the default credentials: vyos, vyos)"
 msgstr "Log into the VyOS live system (use the default credentials: vyos, vyos)"
 
-#: ../../installation/install.rst:555
+#: ../../installation/install.rst:558
 msgid "Make sure the available directories and files in both TFTP and HTTP server have the right permissions to be accessed from the booting clients."
 msgstr "Make sure the available directories and files in both TFTP and HTTP server have the right permissions to be accessed from the booting clients."
 
@@ -1138,7 +1128,7 @@ msgstr "Once ``dd`` has finished, pull the USB drive out and plug it into the po
 msgid "Once booted into the live system, type ``install image`` into the command line and follow the prompts to install VyOS to the virtual drive."
 msgstr "Once booted into the live system, type ``install image`` into the command line and follow the prompts to install VyOS to the virtual drive."
 
-#: ../../installation/install.rst:569
+#: ../../installation/install.rst:572
 msgid "Once finished you will be able to proceed with the ``install image`` command as in a regular VyOS installation."
 msgstr "Once finished you will be able to proceed with the ``install image`` command as in a regular VyOS installation."
 
@@ -1462,11 +1452,11 @@ msgstr "Stayed in this stage. This is because the KVM console is chosen as the d
 msgid "Step 1: DHCP"
 msgstr "Step 1: DHCP"
 
-#: ../../installation/install.rst:474
+#: ../../installation/install.rst:477
 msgid "Step 2: TFTP"
 msgstr "Step 2: TFTP"
 
-#: ../../installation/install.rst:531
+#: ../../installation/install.rst:534
 msgid "Step 3: HTTP"
 msgstr "Step 3: HTTP"
 
@@ -1498,11 +1488,11 @@ msgstr "The *VyOS-hda.qcow2* file now contains a working VyOS image and can be u
 msgid "The *bootfile name* (DHCP option 67), which is *pxelinux.0*"
 msgstr "The *bootfile name* (DHCP option 67), which is *pxelinux.0*"
 
-#: ../../installation/install.rst:479
+#: ../../installation/install.rst:482
 msgid "The *ldlinux.c32* file from the Syslinux distribution"
 msgstr "The *ldlinux.c32* file from the Syslinux distribution"
 
-#: ../../installation/install.rst:478
+#: ../../installation/install.rst:481
 msgid "The *pxelinux.0* file from the Syslinux distribution"
 msgstr "The *pxelinux.0* file from the Syslinux distribution"
 
@@ -1582,7 +1572,7 @@ msgstr "The image will be loaded and the last lines you will get will be:"
 msgid "The import can be verified with:"
 msgstr "The import can be verified with:"
 
-#: ../../installation/install.rst:483
+#: ../../installation/install.rst:486
 msgid "The initial ramdisk of the VyOS ISO you want to deploy. That is the *initrd.img* file inside the */live* directory of the extracted contents from the ISO file. Do not use an empty (0 bytes) initrd.img file you might find, the correct file may have a longer name."
 msgstr "The initial ramdisk of the VyOS ISO you want to deploy. That is the *initrd.img* file inside the */live* directory of the extracted contents from the ISO file. Do not use an empty (0 bytes) initrd.img file you might find, the correct file may have a longer name."
 
@@ -1590,7 +1580,7 @@ msgstr "The initial ramdisk of the VyOS ISO you want to deploy. That is the *ini
 msgid "The install on this Q355G4 box is pretty much plug and play. The port numbering the OS does might differ from the labels on the outside, but the UEFI firmware has a port blink test built in with MAC addresses so you can very quickly identify which is which. MAC labels are on the inside as well, and this test can be done from VyOS or plain Linux too. Default settings in the UEFI will make it boot, but depending on your installation wishes (i.e. storage type, boot type, console type) you might want to adjust them. This Qotom company seems to be the real OEM/ODM for many other relabelling companies like Protectli."
 msgstr "The install on this Q355G4 box is pretty much plug and play. The port numbering the OS does might differ from the labels on the outside, but the UEFI firmware has a port blink test built in with MAC addresses so you can very quickly identify which is which. MAC labels are on the inside as well, and this test can be done from VyOS or plain Linux too. Default settings in the UEFI will make it boot, but depending on your installation wishes (i.e. storage type, boot type, console type) you might want to adjust them. This Qotom company seems to be the real OEM/ODM for many other relabelling companies like Protectli."
 
-#: ../../installation/install.rst:480
+#: ../../installation/install.rst:483
 msgid "The kernel of the VyOS software you want to deploy. That is the *vmlinuz* file inside the */live* directory of the extracted contents from the ISO file."
 msgstr "The kernel of the VyOS software you want to deploy. That is the *vmlinuz* file inside the */live* directory of the extracted contents from the ISO file."
 
@@ -1598,7 +1588,7 @@ msgstr "The kernel of the VyOS software you want to deploy. That is the *vmlinuz
 msgid "The minimum system requirements are 1024 MiB RAM and 2 GiB storage. Depending on your use, you might need additional RAM and CPU resources e.g. when having multiple BGP full tables in your system."
 msgstr "The minimum system requirements are 1024 MiB RAM and 2 GiB storage. Depending on your use, you might need additional RAM and CPU resources e.g. when having multiple BGP full tables in your system."
 
-#: ../../installation/update.rst:76
+#: ../../installation/update.rst:83
 msgid "The most up-do-date Rolling Release for AMD64 can be accessed using the following URL:"
 msgstr "The most up-do-date Rolling Release for AMD64 can be accessed using the following URL:"
 
@@ -1618,7 +1608,7 @@ msgstr "The system is fully operational."
 msgid "The virt-manager application is a desktop user interface for managing virtual machines through libvirt. On the linux open :abbr:`VMM (Virtual Machine Manager)`."
 msgstr "The virt-manager application is a desktop user interface for managing virtual machines through libvirt. On the linux open :abbr:`VMM (Virtual Machine Manager)`."
 
-#: ../../installation/install.rst:587
+#: ../../installation/install.rst:590
 msgid "The workaround is to type `e` when the boot menu appears and edit the GRUB boot options.  Specifically, remove the:"
 msgstr "The workaround is to type `e` when the boot menu appears and edit the GRUB boot options.  Specifically, remove the:"
 
@@ -1663,7 +1653,7 @@ msgstr "This guide was developed using an APU4C4 board with the following specs:
 msgid "This guide will provide the necessary steps for installing and setting up VyOS on GNS3."
 msgstr "This guide will provide the necessary steps for installing and setting up VyOS on GNS3."
 
-#: ../../installation/install.rst:577
+#: ../../installation/install.rst:580
 msgid "This is a list of known issues that can arise during installation."
 msgstr "This is a list of known issues that can arise during installation."
 
@@ -1694,6 +1684,10 @@ msgstr "To turn the template into a working VyOS machine, further steps are nece
 #: ../../installation/cloud/aws.rst:55
 msgid "To use Amazon CloudWatch Agent, configure it within the Amazon SSM Parameter Store. If you don't have a configuration yet, do :ref:`configuration_creation`."
 msgstr "To use Amazon CloudWatch Agent, configure it within the Amazon SSM Parameter Store. If you don't have a configuration yet, do :ref:`configuration_creation`."
+
+#: ../../installation/update.rst:81
+msgid "To use the `latest` option the \"system update-check url\" must be configured."
+msgstr "To use the `latest` option the \"system update-check url\" must be configured."
 
 #: ../../installation/install.rst:248
 msgid "To verify a VyOS image starting off with VyOS 1.3.0-rc6 you can run:"
@@ -1827,7 +1821,7 @@ msgstr "Wait until you get the outcome (bytes copied). Be patient, in some compu
 msgid "Warning the interface labels on my device are backwards; the left-most \"LAN4\" port is eth0 and the right-most \"LAN1\" port is eth3."
 msgstr "Warning the interface labels on my device are backwards; the left-most \"LAN4\" port is eth0 and the right-most \"LAN1\" port is eth3."
 
-#: ../../installation/install.rst:533
+#: ../../installation/install.rst:536
 msgid "We also need to provide the *filesystem.squashfs* file. That is a heavy file and TFTP is slow, so you could send it through HTTP to speed up the transfer. That is how it is done in our example, you can find that in the configuration file above."
 msgstr "We also need to provide the *filesystem.squashfs* file. That is a heavy file and TFTP is slow, so you could send it through HTTP to speed up the transfer. That is how it is done in our example, you can find that in the configuration file above."
 
@@ -1879,6 +1873,10 @@ msgstr "You can go back to your Vyatta install using the ``set system image defa
 msgid "You can now proceed with a regular image installation as described in :ref:`installation`."
 msgstr "You can now proceed with a regular image installation as described in :ref:`installation`."
 
+#: ../../installation/update.rst:75
+msgid "You can use ``latest`` option. It loads the latest available Rolling release."
+msgstr "You can use ``latest`` option. It loads the latest available Rolling release."
+
 #: ../../installation/migrate-from-vyatta.rst:28
 msgid "You just use ``add system image``, as if it was a new VC release (see :ref:`update_vyos` for additional information). The only thing you want to do is to verify the new images digital signature. You will have to add the public key manually once as it is not shipped the first time."
 msgstr "You just use ``add system image``, as if it was a new VC release (see :ref:`update_vyos` for additional information). The only thing you want to do is to verify the new images digital signature. You will have to add the public key manually once as it is not shipped the first time."
@@ -1923,7 +1921,7 @@ msgstr "`Manufacturer product page <http://www.inctel.com.cn/product/detail/338.
 msgid "``gpg --recv-keys FD220285A0FE6D7E``"
 msgstr "``gpg --recv-keys FD220285A0FE6D7E``"
 
-#: ../../installation/install.rst:590
+#: ../../installation/install.rst:593
 msgid "`console=ttyS0,115200`"
 msgstr "`console=ttyS0,115200`"
 
@@ -1955,7 +1953,7 @@ msgstr "https://muralidba.blogspot.com/2018/03/how-does-linux-out-of-memory-oom-
 msgid "https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E"
 msgstr "https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E"
 
-#: ../../installation/update.rst:79
+#: ../../installation/update.rst:86
 msgid "https://vyos.net/get/nightly-builds/"
 msgstr "https://vyos.net/get/nightly-builds/"
 
@@ -1971,6 +1969,6 @@ msgstr "https://www.oracle.com/cloud/"
 msgid "ly-builds/releases/download/1.4-rolling-202308240020/vyos-1.4-rolling-202308240020-amd64.iso"
 msgstr "ly-builds/releases/download/1.4-rolling-202308240020/vyos-1.4-rolling-202308240020-amd64.iso"
 
-#: ../../installation/install.rst:592
+#: ../../installation/install.rst:595
 msgid "option, and type CTRL-X to boot."
 msgstr "option, and type CTRL-X to boot."

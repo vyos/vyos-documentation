@@ -124,13 +124,17 @@ msgstr "Por ejemplo, al escribir ``sh`` seguido de la tecla ``TAB`` se completar
 msgid "Get a collection of all the set commands required which led to the running configuration."
 msgstr "Obtenga una colección de todos los comandos establecidos necesarios que condujeron a la configuración en ejecución."
 
-#: ../../cli.rst:930
+#: ../../cli.rst:933
 msgid "If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config."
 msgstr "Si está conectado de forma remota, perderá su conexión. Es posible que desee copiar primero la configuración, editarla para garantizar la conectividad y cargar la configuración editada."
 
-#: ../../cli.rst:916
+#: ../../cli.rst:919
 msgid "In the case you want to completely delete your configuration and restore the default one, you can enter the following command in configuration mode:"
 msgstr "En el caso de que desee eliminar completamente su configuración y restaurar la predeterminada, puede ingresar el siguiente comando en el modo de configuración:"
+
+#: ../../cli.rst:413
+msgid "It is also possible to display all :cfgcmd:`set` commands within configuration mode using :cfgcmd:`show | commands`"
+msgstr "It is also possible to display all :cfgcmd:`set` commands within configuration mode using :cfgcmd:`show | commands`"
 
 #: ../../cli.rst:413
 msgid "It is also possible to display all `set` commands within configuration mode using :cfgcmd:`show | commands`"
@@ -168,7 +172,7 @@ msgstr "Archivo remoto"
 msgid "Rename a configuration element."
 msgstr "Cambiar el nombre de un elemento de configuración."
 
-#: ../../cli.rst:914
+#: ../../cli.rst:917
 msgid "Restore Default"
 msgstr "Restaurar predeterminado"
 
@@ -184,7 +188,7 @@ msgstr "Cambios de reversión"
 msgid "Rollback to revision N (currently requires reboot)"
 msgstr "Retroceder a la revisión N (actualmente requiere reiniciar)"
 
-#: ../../cli.rst:881
+#: ../../cli.rst:884
 msgid "Saving and loading manually"
 msgstr "Guardar y cargar manualmente"
 
@@ -244,11 +248,11 @@ msgstr "La configuración se puede editar mediante el uso de los comandos :cfgcm
 msgid "The current hierarchy level can be changed by the :cfgcmd:`edit` command."
 msgstr "El nivel de jerarquía actual se puede cambiar con el comando :cfgcmd:`edit`."
 
-#: ../../cli.rst:869
+#: ../../cli.rst:872
 msgid "The number of revisions don't affect the commit-archive."
 msgstr "El número de revisiones no afecta el archivo de confirmación."
 
-#: ../../cli.rst:927
+#: ../../cli.rst:930
 msgid "Then you may want to :cfgcmd:`save` in order to delete the saved configuration too."
 msgstr "Entonces es posible que desee :cfgcmd:`save` para eliminar también la configuración guardada."
 
@@ -280,7 +284,7 @@ msgstr "Para eliminar un comentario existente de su configuración actual, espec
 msgid "Use the ``show configuration commands | strip-private`` command when you want to hide private data. You may want to do so if you want to share your configuration on the `forum`_."
 msgstr "Use los comandos ``mostrar configuración | comando strip-private`` cuando desee ocultar datos privados. Es posible que desee hacerlo si desea compartir su configuración en el `foro`_."
 
-#: ../../cli.rst:892
+#: ../../cli.rst:895
 msgid "Use this command to load a configuration which will replace the running configuration. Define the location of the configuration file to be loaded. You can use a path to a local file, an SCP address, an SFTP address, an FTP address, an HTTP address, an HTTPS address or a TFTP address."
 msgstr "Utilice este comando para cargar una configuración que reemplazará la configuración en ejecución. Defina la ubicación del archivo de configuración que se va a cargar. Puede utilizar una ruta a un archivo local, una dirección SCP, una dirección SFTP, una dirección FTP, una dirección HTTP, una dirección HTTPS o una dirección TFTP."
 
@@ -352,7 +356,7 @@ msgstr "Cuando está dentro del modo de configuración, no puede ejecutar direct
 msgid "When the output of a command results in more lines than can be displayed on the terminal screen the output is paginated as indicated by a ``:`` prompt."
 msgstr "Cuando la salida de un comando da como resultado más líneas de las que se pueden mostrar en la pantalla de la terminal, la salida se pagina como lo indica un indicador ``:``."
 
-#: ../../cli.rst:886
+#: ../../cli.rst:889
 msgid "When using the save_ command, you can add a specific location where to store your configuration file. And, when needed it, you will be able to load it with the ``load`` command:"
 msgstr "Al usar el comando save_, puede agregar una ubicación específica donde almacenar su archivo de configuración. Y, cuando lo necesites, podrás cargarlo con el comando ``load``:"
 
@@ -363,6 +367,10 @@ msgstr "Cuando se visualiza en modo página, están disponibles los siguientes c
 #: ../../cli.rst:370
 msgid "You are now in a sublevel relative to ``interfaces ethernet eth0``, all commands executed from this point on are relative to this sublevel. Use eithe the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top of the hierarchy. You can also use the :cfgcmd:`up` command to move only one level up at a time."
 msgstr "Ahora se encuentra en un subnivel relativo a ``interfaces ethernet eth0``, todos los comandos ejecutados a partir de este punto son relativos a este subnivel. Utilice el comando :cfgcmd:`top` o :cfgcmd:`exit` para volver a la parte superior de la jerarquía. También puede usar el comando :cfgcmd:`up` para subir solo un nivel a la vez."
+
+#: ../../cli.rst:370
+msgid "You are now in a sublevel relative to ``interfaces ethernet eth0``, all commands executed from this point on are relative to this sublevel. Use either the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top of the hierarchy. You can also use the :cfgcmd:`up` command to move only one level up at a time."
+msgstr "You are now in a sublevel relative to ``interfaces ethernet eth0``, all commands executed from this point on are relative to this sublevel. Use either the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top of the hierarchy. You can also use the :cfgcmd:`up` command to move only one level up at a time."
 
 #: ../../cli.rst:618
 msgid "You can also rename config subtrees:"
@@ -384,15 +392,15 @@ msgstr "Puedes desplazarte hacia arriba con las teclas ``[Shift]+[PageUp]`` y de
 msgid "You can specify the number of revisions stored on disk. N can be in the range of 0 - 65535. When the number of revisions exceeds the configured value, the oldest revision is removed. The default setting for this value is to store 100 revisions locally."
 msgstr "Puede especificar el número de revisiones almacenadas en el disco. N puede estar en el rango de 0 a 65535. Cuando el número de revisiones supera el valor configurado, se elimina la revisión más antigua. La configuración predeterminada para este valor es almacenar 100 revisiones localmente."
 
-#: ../../cli.rst:883
+#: ../../cli.rst:886
 msgid "You can use the ``save`` and ``load`` commands if you want to manually manage specific configuration files."
 msgstr "Puede usar los comandos ``guardar`` y ``cargar`` si desea administrar manualmente archivos de configuración específicos."
 
-#: ../../cli.rst:871
+#: ../../cli.rst:874
 msgid "You may find VyOS not allowing the secure connection because it cannot verify the legitimacy of the remote server. You can use the workaround below to quickly add the remote host's SSH fingerprint to your ``~/.ssh/known_hosts`` file:"
 msgstr "Es posible que VyOS no permita la conexión segura porque no puede verificar la legitimidad del servidor remoto. Puede usar la solución a continuación para agregar rápidamente la huella digital SSH del host remoto a su archivo ``~/.ssh/known_hosts``:"
 
-#: ../../cli.rst:924
+#: ../../cli.rst:927
 msgid "You will be asked if you want to continue. If you accept, you will have to use :cfgcmd:`commit` if you want to make the changes active."
 msgstr "Se le preguntará si desea continuar. Si acepta, deberá usar :cfgcmd:`commit` si desea activar los cambios."
 
@@ -403,6 +411,18 @@ msgstr "``b`` retrocederá una página"
 #: ../../cli.rst:866
 msgid "``ftp://<user>:<passwd>@<host>/<dir>``"
 msgstr "``ftp://<user> :<passwd> @<host> /<dir> ``"
+
+#: ../../cli.rst:870
+msgid "``git+https://<user>:<passwd>@<host>/<path>``"
+msgstr "``git+https://<user>:<passwd>@<host>/<path>``"
+
+#: ../../cli.rst:864
+msgid "``http://<user>:<passwd>@<host>:/<dir>``"
+msgstr "``http://<user>:<passwd>@<host>:/<dir>``"
+
+#: ../../cli.rst:865
+msgid "``https://<user>:<passwd>@<host>:/<dir>``"
+msgstr "``https://<user>:<passwd>@<host>:/<dir>``"
 
 #: ../../cli.rst:71
 msgid "``left-arrow`` and ``right-arrow`` can be used to scroll left or right in the event that the output has lines which exceed the terminal size."
@@ -416,11 +436,11 @@ msgstr "La tecla ``q`` se puede utilizar para cancelar la salida"
 msgid "``return`` will scroll down one line"
 msgstr "``return`` se desplazará una línea hacia abajo"
 
-#: ../../cli.rst:864
+#: ../../cli.rst:868
 msgid "``scp://<user>:<passwd>@<host>:/<dir>``"
 msgstr "``scp://<user> :<passwd> @<host> :/<dir> ``"
 
-#: ../../cli.rst:865
+#: ../../cli.rst:867
 msgid "``sftp://<user>:<passwd>@<host>/<dir>``"
 msgstr "``sftp://<user> :<passwd> @<host> /<dir> ``"
 
@@ -428,7 +448,7 @@ msgstr "``sftp://<user> :<passwd> @<host> /<dir> ``"
 msgid "``space`` will scroll down one page"
 msgstr "``espacio`` se desplazará hacia abajo una página"
 
-#: ../../cli.rst:867
+#: ../../cli.rst:869
 msgid "``tftp://<host>/<dir>``"
 msgstr "``tftp://<host> /<dir> ``"
 
