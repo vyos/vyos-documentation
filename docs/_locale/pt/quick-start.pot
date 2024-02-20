@@ -8,19 +8,19 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n>=0 && n<=1) ? 0 : 1;\n"
 
-#: ../../quick-start.rst:178
+#: ../../quick-start.rst:189
 msgid "A default action of ``return``, which returns the packet back to the original chain if no action is taken."
 msgstr "A default action of ``return``, which returns the packet back to the original chain if no action is taken."
 
-#: ../../quick-start.rst:124
+#: ../../quick-start.rst:125
 msgid "A new firewall structure—which uses the ``nftables`` backend, rather than ``iptables``—is available on all installations starting from VyOS ``1.4-rolling-202308040557``. The firewall supports creation of distinct, interlinked chains for each `Netfilter hook <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_ and allows for more granular control over the packet filtering process."
 msgstr "A new firewall structure—which uses the ``nftables`` backend, rather than ``iptables``—is available on all installations starting from VyOS ``1.4-rolling-202308040557``. The firewall supports creation of distinct, interlinked chains for each `Netfilter hook <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_ and allows for more granular control over the packet filtering process."
 
-#: ../../quick-start.rst:180
+#: ../../quick-start.rst:191
 msgid "A rule to ``accept`` packets from established and related connections."
 msgstr "A rule to ``accept`` packets from established and related connections."
 
-#: ../../quick-start.rst:181
+#: ../../quick-start.rst:192
 msgid "A rule to ``drop`` packets from invalid connections."
 msgstr "A rule to ``drop`` packets from invalid connections."
 
@@ -40,27 +40,31 @@ msgstr "After switching to :ref:`quick-start-configuration-mode` issue the follo
 msgid "After switching to :ref:`quick-start-configuration-mode` issue the following commands:"
 msgstr "After switching to :ref:`quick-start-configuration-mode` issue the following commands:"
 
-#: ../../quick-start.rst:301
+#: ../../quick-start.rst:311
 msgid "Allow Access to Services"
 msgstr "Allow Access to Services"
 
-#: ../../quick-start.rst:257
+#: ../../quick-start.rst:267
 msgid "Allow Management Access"
 msgstr "Allow Management Access"
 
-#: ../../quick-start.rst:208
+#: ../../quick-start.rst:202
 msgid "Alternatively, instead of configuring the ``CONN_FILTER`` chain described above, you can take the more traditional stateful connection filtering approach by creating rules on each hook's chain:"
 msgstr "Alternatively, instead of configuring the ``CONN_FILTER`` chain described above, you can take the more traditional stateful connection filtering approach by creating rules on each hook's chain:"
+
+#: ../../quick-start.rst:219
+msgid "Alternatively, you can take the more traditional stateful connection filtering approach by creating rules on each base hook's chain:"
+msgstr "Alternatively, you can take the more traditional stateful connection filtering approach by creating rules on each base hook's chain:"
 
 #: ../../quick-start.rst:167
 msgid "Apply the firewall policies:"
 msgstr "Apply the firewall policies:"
 
-#: ../../quick-start.rst:367
+#: ../../quick-start.rst:377
 msgid "As above, commit your changes, save the configuration, and exit configuration mode:"
 msgstr "As above, commit your changes, save the configuration, and exit configuration mode:"
 
-#: ../../quick-start.rst:227
+#: ../../quick-start.rst:237
 msgid "Block Incoming Traffic"
 msgstr "Block Incoming Traffic"
 
@@ -76,7 +80,7 @@ msgstr "By default, VyOS is in operational mode, and the command prompt displays
 msgid "Commit and Save"
 msgstr "Commit and Save"
 
-#: ../../quick-start.rst:327
+#: ../../quick-start.rst:337
 msgid "Commit changes, save the configuration, and exit configuration mode:"
 msgstr "Commit changes, save the configuration, and exit configuration mode:"
 
@@ -84,19 +88,19 @@ msgstr "Commit changes, save the configuration, and exit configuration mode:"
 msgid "Configuration Mode"
 msgstr "Configuration Mode"
 
-#: ../../quick-start.rst:143
+#: ../../quick-start.rst:138
 msgid "Configure Firewall Groups"
 msgstr "Configure Firewall Groups"
 
-#: ../../quick-start.rst:162
+#: ../../quick-start.rst:157
 msgid "Configure Stateful Packet Filtering"
 msgstr "Configure Stateful Packet Filtering"
 
-#: ../../quick-start.rst:271
+#: ../../quick-start.rst:281
 msgid "Configure a rule on the ``input`` hook filter to jump to the ``VyOS_MANAGEMENT`` chain when new connections are addressed to port 22 (SSH) on the router itself:"
 msgstr "Configure a rule on the ``input`` hook filter to jump to the ``VyOS_MANAGEMENT`` chain when new connections are addressed to port 22 (SSH) on the router itself:"
 
-#: ../../quick-start.rst:233
+#: ../../quick-start.rst:243
 msgid "Create a new chain (``OUTSIDE-IN``) which will drop all traffic that is not explicity allowed at some point in the chain. Then, we can jump to that chain from the ``forward`` hook when traffic is coming from the ``WAN`` interface group and is addressed to our local network."
 msgstr "Create a new chain (``OUTSIDE-IN``) which will drop all traffic that is not explicity allowed at some point in the chain. Then, we can jump to that chain from the ``forward`` hook when traffic is coming from the ``WAN`` interface group and is addressed to our local network."
 
@@ -120,35 +124,35 @@ msgstr "DHCP leases will hold for one day (86400 seconds)"
 msgid "Documentation for most of the new firewall CLI can be found in the :ref:`firewall` chapter.The legacy firewall is still available for versions before ``1.4-rolling-202308040557`` and can be found in the :ref:`firewall-legacy` chapter. The examples in this section use the new configuration."
 msgstr "Documentation for most of the new firewall CLI can be found in the :ref:`firewall` chapter.The legacy firewall is still available for versions before ``1.4-rolling-202308040557`` and can be found in the :ref:`firewall-legacy` chapter. The examples in this section use the new configuration."
 
-#: ../../quick-start.rst:341
+#: ../../quick-start.rst:351
 msgid "Especially if you are allowing SSH remote access from the outside/WAN interface, there are a few additional configuration steps that should be taken."
 msgstr "Especially if you are allowing SSH remote access from the outside/WAN interface, there are a few additional configuration steps that should be taken."
 
-#: ../../quick-start.rst:281
+#: ../../quick-start.rst:291
 msgid "Finally, configure the ``VyOS_MANAGEMENT`` chain to accept connection from the ``LAN`` interface group while limiting requests coming from the ``WAN`` interface group to 4 per minute:"
 msgstr "Finally, configure the ``VyOS_MANAGEMENT`` chain to accept connection from the ``LAN`` interface group while limiting requests coming from the ``WAN`` interface group to 4 per minute:"
 
-#: ../../quick-start.rst:357
+#: ../../quick-start.rst:367
 msgid "Finally, try and SSH into the VyOS install as your new user. Once you have confirmed that your new user can access your router without a password, delete the original ``vyos`` user and completely disable password authentication for :ref:`ssh`:"
 msgstr "Finally, try and SSH into the VyOS install as your new user. Once you have confirmed that your new user can access your router without a password, delete the original ``vyos`` user and completely disable password authentication for :ref:`ssh`:"
 
-#: ../../quick-start.rst:319
+#: ../../quick-start.rst:329
 msgid "Finally, we can now configure access to the services running on this router, allowing all connections coming from localhost:"
 msgstr "Finally, we can now configure access to the services running on this router, allowing all connections coming from localhost:"
 
-#: ../../quick-start.rst:122
+#: ../../quick-start.rst:123
 msgid "Firewall"
 msgstr "Firewall"
 
-#: ../../quick-start.rst:263
+#: ../../quick-start.rst:273
 msgid "First, create a new dedicated chain (``VyOS_MANAGEMENT``) for management access, which returns to the parent chain if no action is taken. Add a rule to accept traffic from the ``LAN`` interface group:"
 msgstr "First, create a new dedicated chain (``VyOS_MANAGEMENT``) for management access, which returns to the parent chain if no action is taken. Add a rule to accept traffic from the ``LAN`` interface group:"
 
-#: ../../quick-start.rst:339
+#: ../../quick-start.rst:349
 msgid "Hardening"
 msgstr "Hardening"
 
-#: ../../quick-start.rst:303
+#: ../../quick-start.rst:313
 msgid "Here we're allowing the router to respond to pings. Then, we can allow access to the DNS recursor we configured earlier, accepting traffic bound for port 53 from all hosts on the ``NET-INSIDE-v4`` network:"
 msgstr "Here we're allowing the router to respond to pings. Then, we can allow access to the DNS recursor we configured earlier, accepting traffic bound for port 53 from all hosts on the ``NET-INSIDE-v4`` network:"
 
@@ -156,7 +160,11 @@ msgstr "Here we're allowing the router to respond to pings. Then, we can allow a
 msgid "If you wanted to enable SSH access to your firewall from the outside/WAN interface, you could create some additional rules to allow that kind of traffic."
 msgstr "If you wanted to enable SSH access to your firewall from the outside/WAN interface, you could create some additional rules to allow that kind of traffic."
 
-#: ../../quick-start.rst:150
+#: ../../quick-start.rst:145
+msgid "In this case, we will create two interface groups — a ``WAN`` group for our interfaces connected to the public internet and a ``LAN`` group for the interfaces connected to our internal network. Additionally, we will create a network group, ``NET-INSIDE-v4``, that contains our internal subnet."
+msgstr "In this case, we will create two interface groups — a ``WAN`` group for our interfaces connected to the public internet and a ``LAN`` group for the interfaces connected to our internal network. Additionally, we will create a network group, ``NET-INSIDE-v4``, that contains our internal subnet."
+
+#: ../../quick-start.rst:144
 msgid "In this case, we will create two interface groups—a ``WAN`` group for our interfaces connected to the public internet and a ``LAN`` group for the interfaces connected to our internal network. Additionally, we will create a network group, ``NET-INSIDE-v4``, that contains our internal subnet."
 msgstr "In this case, we will create two interface groups—a ``WAN`` group for our interfaces connected to the public internet and a ``LAN`` group for the interfaces connected to our internal network. Additionally, we will create a network group, ``NET-INSIDE-v4``, that contains our internal subnet."
 
@@ -164,11 +172,15 @@ msgstr "In this case, we will create two interface groups—a ``WAN`` group for 
 msgid "Interface Configuration"
 msgstr "Interface Configuration"
 
-#: ../../quick-start.rst:109
+#: ../../quick-start.rst:170
+msgid "Most installations would choose this option, and will contain:"
+msgstr "Most installations would choose this option, and will contain:"
+
+#: ../../quick-start.rst:110
 msgid "NAT"
 msgstr "NAT"
 
-#: ../../quick-start.rst:229
+#: ../../quick-start.rst:239
 msgid "Now that we have configured stateful connection filtering to allow traffic from established and related connections, we can block all other incoming traffic addressed to our local network."
 msgstr "Now that we have configured stateful connection filtering to allow traffic from established and related connections, we can block all other incoming traffic addressed to our local network."
 
@@ -180,19 +192,31 @@ msgstr "Once your configuration works as expected, you can save it permanently b
 msgid "Only hosts from your internal/LAN network can use the DNS recursor"
 msgstr "Only hosts from your internal/LAN network can use the DNS recursor"
 
-#: ../../quick-start.rst:168
+#: ../../quick-start.rst:162
 msgid "Option 1: Common Chain"
 msgstr "Option 1: Common Chain"
 
-#: ../../quick-start.rst:206
+#: ../../quick-start.rst:163
+msgid "Option 1: Global State Policies"
+msgstr "Option 1: Global State Policies"
+
+#: ../../quick-start.rst:179
+msgid "Option 2: Common/Custom Chain"
+msgstr "Option 2: Common/Custom Chain"
+
+#: ../../quick-start.rst:200
 msgid "Option 2: Per-Hook Chain"
 msgstr "Option 2: Per-Hook Chain"
+
+#: ../../quick-start.rst:217
+msgid "Option 3: Per-Hook Chain"
+msgstr "Option 3: Per-Hook Chain"
 
 #: ../../quick-start.rst:5
 msgid "Quick Start"
 msgstr "Quick Start"
 
-#: ../../quick-start.rst:344
+#: ../../quick-start.rst:354
 msgid "Replace the default ``vyos`` system user:"
 msgstr "Replace the default ``vyos`` system user:"
 
@@ -204,7 +228,7 @@ msgstr "Replace the default `vyos` system user:"
 msgid "SSH Management"
 msgstr "SSH Management"
 
-#: ../../quick-start.rst:350
+#: ../../quick-start.rst:360
 msgid "Set up :ref:`ssh_key_based_authentication`:"
 msgstr "Set up :ref:`ssh_key_based_authentication`:"
 
@@ -216,7 +240,7 @@ msgstr "The address range `192.168.0.2/24 - 192.168.0.8/24` will be reserved for
 msgid "The address range ``192.168.0.2/24 - 192.168.0.8/24`` will be reserved for static assignments"
 msgstr "The address range ``192.168.0.2/24 - 192.168.0.8/24`` will be reserved for static assignments"
 
-#: ../../quick-start.rst:176
+#: ../../quick-start.rst:187
 msgid "The chain we will create is called ``CONN_FILTER`` and has three rules:"
 msgstr "The chain we will create is called ``CONN_FILTER`` and has three rules:"
 
@@ -228,7 +252,7 @@ msgstr "The default gateway and DNS recursor address will be `192.168.0.1/24`"
 msgid "The default gateway and DNS recursor address will be ``192.168.0.1/24``"
 msgstr "The default gateway and DNS recursor address will be ``192.168.0.1/24``"
 
-#: ../../quick-start.rst:137
+#: ../../quick-start.rst:132
 msgid "The firewall begins with the base ``filter`` tables you define for each of the ``forward``, ``input``, and ``output`` Netfiter hooks. Each of these tables is populated with rules that are processed in order and can jump to other chains for more granular filtering."
 msgstr "The firewall begins with the base ``filter`` tables you define for each of the ``forward``, ``input``, and ``output`` Netfiter hooks. Each of these tables is populated with rules that are processed in order and can jump to other chains for more granular filtering."
 
@@ -236,11 +260,11 @@ msgstr "The firewall begins with the base ``filter`` tables you define for each 
 msgid "The following settings will configure DHCP and DNS services on your internal/LAN network, where VyOS will act as the default gateway and DNS server."
 msgstr "The following settings will configure DHCP and DNS services on your internal/LAN network, where VyOS will act as the default gateway and DNS server."
 
-#: ../../quick-start.rst:111
+#: ../../quick-start.rst:112
 msgid "The following settings will configure :ref:`source-nat` rules for our internal/LAN network, allowing hosts to communicate through the outside/WAN network via IP masquerade."
 msgstr "The following settings will configure :ref:`source-nat` rules for our internal/LAN network, allowing hosts to communicate through the outside/WAN network via IP masquerade."
 
-#: ../../quick-start.rst:194
+#: ../../quick-start.rst:205
 msgid "Then, we can jump to the common chain from both the ``forward`` and ``input`` hooks as the first filtering rule in the respective chains:"
 msgstr "Then, we can jump to the common chain from both the ``forward`` and ``input`` hooks as the first filtering rule in the respective chains:"
 
@@ -260,31 +284,39 @@ msgstr "This chapter will guide you on how to get up to speed quickly using your
 msgid "This configuration creates a proper stateful firewall that blocks all traffic which was not initiated from the internal/LAN side first."
 msgstr "This configuration creates a proper stateful firewall that blocks all traffic which was not initiated from the internal/LAN side first."
 
-#: ../../quick-start.rst:145
+#: ../../quick-start.rst:140
 msgid "To make firewall configuration easier, we can create groups of interfaces, networks, addresses, ports, and domains that describe different parts of our network. We can then use them for filtering within our firewall rulesets, allowing for more concise and readable configuration."
 msgstr "To make firewall configuration easier, we can create groups of interfaces, networks, addresses, ports, and domains that describe different parts of our network. We can then use them for filtering within our firewall rulesets, allowing for more concise and readable configuration."
+
+#: ../../quick-start.rst:164
+msgid "Using options defined in ``set firewall global-options state-policy``, state policy rules that applies for both IPv4 and IPv6 are created. These global state policies also applies for all traffic that passes through the router (transit) and for traffic originated/destinated to/from the router itself, and will be avaluated before any other rule defined in the firewall."
+msgstr "Using options defined in ``set firewall global-options state-policy``, state policy rules that applies for both IPv4 and IPv6 are created. These global state policies also applies for all traffic that passes through the router (transit) and for traffic originated/destinated to/from the router itself, and will be avaluated before any other rule defined in the firewall."
 
 #: ../../quick-start.rst:90
 msgid "VyOS will serve as a full DNS recursor, replacing the need to utilize Google, Cloudflare, or other public DNS servers (which is good for privacy)"
 msgstr "VyOS will serve as a full DNS recursor, replacing the need to utilize Google, Cloudflare, or other public DNS servers (which is good for privacy)"
 
-#: ../../quick-start.rst:170
+#: ../../quick-start.rst:181
 msgid "We can create a common chain for stateful connection filtering of multiple interfaces (or multiple netfilter hooks on one interface). Those individual chains can then jump to the common chain for stateful connection filtering, returning to the original chain for further rule processing if no action is taken on the packet."
 msgstr "We can create a common chain for stateful connection filtering of multiple interfaces (or multiple netfilter hooks on one interface). Those individual chains can then jump to the common chain for stateful connection filtering, returning to the original chain for further rule processing if no action is taken on the packet."
 
-#: ../../quick-start.rst:259
+#: ../../quick-start.rst:269
 msgid "We can now configure access to the router itself, allowing SSH access from the inside/LAN network and rate limiting SSH access from the outside/WAN network."
 msgstr "We can now configure access to the router itself, allowing SSH access from the inside/LAN network and rate limiting SSH access from the outside/WAN network."
 
-#: ../../quick-start.rst:247
+#: ../../quick-start.rst:257
 msgid "We should also block all traffic destinated to the router itself that isn't explicitly allowed at some point in the chain for the ``input`` hook. As we've already configured stateful packet filtering above, we only need to set the default action to ``drop``:"
 msgstr "We should also block all traffic destinated to the router itself that isn't explicitly allowed at some point in the chain for the ``input`` hook. As we've already configured stateful packet filtering above, we only need to set the default action to ``drop``:"
 
-#: ../../quick-start.rst:164
+#: ../../quick-start.rst:159
+msgid "With the new firewall structure, we have have a lot of flexibility in how we group and order our rules, as shown by the three alternative approaches below."
+msgstr "With the new firewall structure, we have have a lot of flexibility in how we group and order our rules, as shown by the three alternative approaches below."
+
+#: ../../quick-start.rst:158
 msgid "With the new firewall structure, we have have a lot of flexibility in how we group and order our rules, as shown by the two alternative approaches below."
 msgstr "With the new firewall structure, we have have a lot of flexibility in how we group and order our rules, as shown by the two alternative approaches below."
 
-#: ../../quick-start.rst:379
+#: ../../quick-start.rst:389
 msgid "You now should have a simple yet secure and functioning router to experiment with further. Enjoy!"
 msgstr "You now should have a simple yet secure and functioning router to experiment with further. Enjoy!"
 

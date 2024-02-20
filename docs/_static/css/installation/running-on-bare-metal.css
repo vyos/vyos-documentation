@@ -1,0 +1,11 @@
+.toctree-l1 {
+  background-color: transparent;
+}
+
+.current > .current > .internal {
+  background-color: #fff;
+  color: #FD8F01;
+  border: transparent;
+  padding: 11px 12px 11px 28px;
+  border: none !important;
+}

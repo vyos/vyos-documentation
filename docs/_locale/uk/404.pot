@@ -25,5 +25,13 @@ msgid "`1.3.x (equuleus) <https://docs.vyos.io/en/equuleus/>`_"
 msgstr "`1.3.x (equuleus) <https://docs.vyos.io/en/equuleus/>`_"
 
 #: ../../404.rst:11
+msgid "`1.4.x (sagitta) <https://docs.vyos.io/en/sagitta/>`_"
+msgstr "`1.4.x (sagitta) <https://docs.vyos.io/en/sagitta/>`_"
+
+#: ../../404.rst:12
+msgid "`rolling release (circinus) <https://docs.vyos.io/en/latest/>`_"
+msgstr "`rolling release (circinus) <https://docs.vyos.io/en/latest/>`_"
+
+#: ../../404.rst:11
 msgid "`rolling release (sagitta) <https://docs.vyos.io/en/latest/>`_"
 msgstr "`rolling release (sagitta) <https://docs.vyos.io/en/latest/>`_"

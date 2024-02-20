@@ -1,0 +1,56 @@
+.simple > li,
+.compound > ul > li,
+.simple > li > ul > li,
+#installation-and-image-management > div > ul > li.toctree-l1 > ul > li.toctree-l2,
+#running-vyos-in-virtual-environments > div > ul > li.toctree-l1 > ul > li.toctree-l2,
+#running-vyos-in-virtual-environments > div > ul > li.toctree-l1 > ul > li.toctree-l2 > ul > li.toctree-l3,
+#running-vyos-in-cloud-environments > div > ul > li.toctree-l1 > ul > li.toctree-l2,
+#running-vyos-in-cloud-environments > div > ul > li.toctree-l1 > ul > li.toctree-l2 > ul > li.toctree-l3,
+#configuration-blueprints > div > ul > li.toctree-l1 > ul > li.toctree-l2,
+#configuration-blueprints > div > ul > li.toctree-l1 > ul > li.toctree-l2 > ul > li.toctree-l3,
+#contributing > div > ul > li.toctree-l1 > ul > li.toctree-l2,
+#contributing > div > ul > li.toctree-l1 > ul > li.toctree-l2 > ul > li.toctree-l3 {
+  list-style: none !important;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: -15px;
+    width: 6px;
+    height: 6px;
+    background-color: #000;
+    border-radius: 50%;
+  }
+}
+
+.simple > li a,
+.compound > ul > li a,
+.simple > li > ul > li a {
+  color: #FD8F01;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  height: 26px;
+}
+
+.simple > li > ul > li p {
+  color: #525659;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  height: 26px;
+}
+
+#site-to-site ul,
+#troubleshooting ol,
+#troubleshooting ul {
+  margin-bottom: 0 !important;
+}
+
+.rst-content:has(#troubleshooting) .rst-footer-buttons {
+  margin-top: 20px !important;
+}

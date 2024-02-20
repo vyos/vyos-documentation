@@ -1,0 +1,120 @@
+.docutils .card-header p {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.05em;
+  padding-bottom: 18px;
+  color: #121010;
+}
+
+p,
+blockquote > div > dl,
+blockquote > div > dd,
+#container dl,
+#firewall dl,
+#high-availability dl,
+#development td,
+#development th,
+caption.caption-text,
+.simple > dt,
+div.line-block,
+.paginate_button,
+.dataTables_info,
+#operational-commands label,
+.card-body .card-text,
+#search-results a {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+  font-weight: 400;
+  color: #525659;
+  line-height: 1.6;
+}
+
+p > strong {
+  color: #121010;
+}
+
+.card-body .card-text {
+  padding-bottom: 22px;
+  display: block;
+}
+
+.simple > dt {
+  font-weight: 600;
+}
+
+#dual-hub-dmvpn-with-vyos td > p,
+#route-based-redundant-site-to-site-vpn-to-azure-bgp-over-ikev2-ipsec td > p,
+#route-based-site-to-site-vpn-to-azure-bgp-over-ikev2-ipsec td > p,
+#development td p,
+#development th p {
+  font-size: 14px !important;
+}
+
+#development #writing-good-commit-messages > ul.simple > li > ul {
+
+  & > li:nth-child(2) {
+    padding-bottom: 23px;
+  }
+
+  & > li:nth-child(2) {
+    padding-bottom: 53px;
+  }
+}
+
+#installation-and-image-management > div > p > span {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 24px;
+  color: #121010;
+}
+
+.caption-text {
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+}
+
+p .caption-text {
+  color: #8D9499;
+  font-family: 'Roboto', sans-serif;
+}
+
+aside.footnote  .label {
+  & > a[role=doc-backlink] {
+    color: #fd8f01;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+  }
+}
+
+aside.footnote > p {
+  padding-bottom: 15px !important;
+}
+
+#about a .external,
+#a-note-on-copyright > dl.brackets > dt,
+#a-note-on-copyright > dl.brackets > dt > .brackets > a,
+a.footnote-reference.brackets,
+#search-results a {
+  color: #FD8F01;
+}
+
+#history p {
+  padding-bottom: 22px;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+#a-note-on-copyright > dl p {
+  padding-bottom: 12px;
+}
+
+#search-results a {
+  font-size: 19px;
+}
+
+#specify-custom-config-file {
+  padding-top: 15px;
+}

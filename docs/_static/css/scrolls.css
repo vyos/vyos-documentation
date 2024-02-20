@@ -1,0 +1,20 @@
+.wy-table-responsive {
+  scrollbar-color: #99A0A5 transparent;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 8px;
+    margin: 0 10px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: #99A0A5;
+    border-radius: 8px;
+    margin: 0 10px;
+  }
+}
