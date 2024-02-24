@@ -11,16 +11,16 @@ a deamonless container engine.
 Configuration
 *************
 
-.. cfgcmd:: set container name <name> image        
-    
+.. cfgcmd:: set container name <name> image
+
     Sets the image name in the hub registry
 
     .. code-block:: none
 
       set container name mysql-server image mysql:8.0
 
-    If a registry is not specified, Docker.io will be used as the container 
-    registry unless an alternative registry is specified using 
+    If a registry is not specified, Docker.io will be used as the container
+    registry unless an alternative registry is specified using
     **set container registry <name>** or the registry is included in the image name
 
     .. code-block:: none
@@ -28,21 +28,21 @@ Configuration
       set container name mysql-server image quay.io/mysql:8.0
 
 .. cfgcmd:: set container name <name> allow-host-networks
-    
-    Allow host networking in a container. The network stack of the container is 
+
+    Allow host networking in a container. The network stack of the container is
     not isolated from the host and will use the host IP.
 
     The following commands translate to "--net host" when the container
-    is created 
+    is created
 
     .. note:: **allow-host-networks** cannot be used with **network**
 
-.. cfgcmd:: set container name <name> network <networkname> 
+.. cfgcmd:: set container name <name> network <networkname>
 
     Attaches user-defined network to a container.
     Only one network must be specified and must already exist.
 
-.. cfgcmd:: set container name <name> network <networkname> address <address> 
+.. cfgcmd:: set container name <name> network <networkname> address <address>
 
     Optionally set a specific static IPv4 or IPv6 address for the container.
     This address must be within the named network prefix.
@@ -58,7 +58,7 @@ Configuration
     Add custom environment variables.
     Multiple environment variables are allowed.
     The following commands translate to "-e key=value" when the container
-    is created. 
+    is created.
 
     .. code-block:: none
 
@@ -88,7 +88,7 @@ Configuration
 
         set container name coredns volume 'corefile' source /config/coredns/Corefile
         set container name coredns volume 'corefile' destination /etc/Corefile
-        
+
 .. cfgcmd:: set container name <name> volume <volumename> mode <ro | rw>
 
     Volume is either mounted as rw (read-write - default) or ro (read-only)
@@ -107,9 +107,9 @@ Configuration
    - **always**: Restart containers when they exit, regardless of status, retrying indefinitely
 
 .. cfgcmd:: set container name <name> memory <MB>
-   
+
    Constrain the memory available to the container.
-   
+
    Default is 512 MB. Use 0 MB for unlimited memory.
 
 .. cfgcmd:: set container name <name> device <devicename> source <path>
@@ -129,18 +129,49 @@ Configuration
    - **sys-time**: Permission to set system clock
 
 .. cfgcmd:: set container name <name> disable
-   
+
    Disable a container.
 
-.. cfgcmd:: set container network <networkname>
+Container Networks
+==================
+
+.. cfgcmd:: set container network <name>
 
     Creates a named container network
+
+.. cfgcmd:: set container network <name> description
+
+    A brief description what this network is all about.
+
+.. cfgcmd:: set container network <name> prefix <ipv4|ipv6>
+
+    Define IPv4 or IPv6 prefix for a given network name. Only one IPv4 and
+    one IPv6 prefix can be used per network name.
+
+.. cfgcmd:: set container network <name> vrf <nme>
+
+    Bind container network to a given VRF instance.
+
+Container Registry
+==================
 
 .. cfgcmd:: set container registry <name>
 
     Adds registry to list of unqualified-search-registries. By default, for any
-    image that does not include the registry in the image name, Vyos will use 
-    docker.io as the container registry.
+    image that does not include the registry in the image name, VyOS will use
+    docker.io and quay.io as the container registry.
+
+.. cfgcmd:: set container registry <name> disable
+
+    Disable a given container registry
+
+.. cfgcmd:: set container registry <name> authentication username
+.. cfgcmd:: set container registry <name> authentication password
+
+    Some container registries require credentials to be used.
+
+    Credentials can be defined here and will only be used when adding a
+    container image to the system.
 
 
 ******************
@@ -148,7 +179,7 @@ Operation Commands
 ******************
 
 .. opcmd:: add container image <containername>
-    
+
     Pull a new image for container
 
 .. opcmd:: show container
@@ -156,7 +187,7 @@ Operation Commands
     Show the list of all active containers.
 
 .. opcmd:: show container image
-    
+
     Show the local container images.
 
 .. opcmd:: show container log <containername>
@@ -175,7 +206,10 @@ Operation Commands
 
     Update container image
 
+.. opcmd:: delete container image [image id|all]
 
+    Delete a particular container image based on it's image ID.
+    You can also delete all container images at once.
 
 *********************
 Example Configuration
@@ -196,7 +230,7 @@ Example Configuration
         set container name mysql-server environment 'MYSQL_DATABASE' value 'zabbix'
         set container name mysql-server environment 'MYSQL_USER' value 'zabbix'
         set container name mysql-server environment 'MYSQL_PASSWORD' value 'zabbix_pwd'
-        set container name mysql-server environment 'MYSQL_ROOT_PASSWORD' value 'root_pwd' 
+        set container name mysql-server environment 'MYSQL_ROOT_PASSWORD' value 'root_pwd'
 
         set container name zabbix-java-gateway image zabbix/zabbix-java-gateway:alpine-5.2-latest
         set container name zabbix-java-gateway network zabbix-net
