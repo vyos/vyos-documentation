@@ -1203,6 +1203,8 @@ That is how it is possible to do the so-called "ingress shaping".
    set qos interface ifb0 egress MY-INGRESS-SHAPING
    set interfaces ethernet eth0 redirect ifb0
 
+   set interfaces input ifb0
+
 .. warning::
 
   Do not configure IFB as the first step. First create everything else
