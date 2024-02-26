@@ -1,30 +1,80 @@
 .. _l2tp:
 
+####
 L2TP
-----
+####
 
 VyOS utilizes accel-ppp_ to provide L2TP server functionality. It can be used
 with local authentication or a connected RADIUS server.
 
-L2TP over IPsec
-===============
+***********************
+Configuring L2TP Server
+***********************
 
-Example for configuring a simple L2TP over IPsec VPN for remote access (works
-with native Windows and Mac VPN clients):
+.. code-block:: none
+
+  set vpn l2tp remote-access authentication mode local
+  set vpn l2tp remote-access authentication local-users username test password 'test'
+  set vpn l2tp remote-access client-ip-pool L2TP-POOL range 192.168.255.2-192.168.255.254
+  set vpn l2tp remote-access default-pool 'L2TP-POOL'
+  set vpn l2tp remote-access outside-address 192.0.2.2
+  set vpn l2tp remote-access gateway-address 192.168.255.1
+
+
+.. cfgcmd:: set vpn l2tp remote-access authentication mode <local | radius>
+
+  Set authentication backend. The configured authentication backend is used
+  for all queries.
+
+  * **radius**: All authentication queries are handled by a configured RADIUS
+    server.
+  * **local**: All authentication queries are handled locally.
+
+.. cfgcmd:: set vpn l2tp remote-access authentication local-users username <user> password
+   <pass>
+
+  Create `<user>` for local authentication on this system. The users password
+  will be set to `<pass>`.
+
+.. cfgcmd:: set vpn l2tp remote-access client-ip-pool <POOL-NAME> range <x.x.x.x-x.x.x.x | x.x.x.x/x>
+
+   Use this command to define the first IP address of a pool of
+   addresses to be given to l2tp clients. If notation ``x.x.x.x-x.x.x.x``,
+   it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
+   used there is possibility to set host/netmask.
+
+.. cfgcmd:: set vpn l2tp remote-access default-pool <POOL-NAME>
+
+   Use this command to define default address pool name.
+
+.. cfgcmd:: set vpn l2tp remote-access gateway-address <gateway>
+
+  Specifies single `<gateway>` IP address to be used as local address of PPP
+  interfaces.
+
+*****************
+Configuring IPsec
+*****************
 
 .. code-block:: none
 
   set vpn ipsec interface eth0
-
-  set vpn l2tp remote-access outside-address 192.0.2.2
-  set vpn l2tp remote-access client-ip-pool L2TP-POOL range 192.168.255.2-192.168.255.254
-  set vpn l2tp remote-access default-pool 'L2TP-POOL'
   set vpn l2tp remote-access ipsec-settings authentication mode pre-shared-secret
   set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret <secret>
-  set vpn l2tp remote-access authentication mode local
-  set vpn l2tp remote-access authentication local-users username test password 'test'
 
-In the above example, an external IP of 192.0.2.2 is assumed.
+
+.. cfgcmd:: set vpn ipsec interface <INTERFACE>
+
+   Use this command to define IPsec interface.
+
+.. cfgcmd:: set vpn l2tp remote-access ipsec-settings authentication mode <pre-shared-secret | x509>
+
+   Set mode for IPsec authentication between VyOS and L2TP clients.
+
+.. cfgcmd:: set vpn l2tp remote-access ipsec-settings authentication mode <pre-shared-secret | x509>
+
+   Set predefined shared secret phrase.
+
 
 If a local firewall policy is in place on your external interface you will need
 to allow the ports below:
@@ -64,79 +114,9 @@ To allow VPN-clients access via your external address, a NAT rule is required:
   set nat source rule 110 source address '192.168.255.0/24'
   set nat source rule 110 translation address masquerade
 
-
-VPN-clients will request configuration parameters, optionally you can DNS
-parameter to the client.
-
-.. code-block:: none
-
-  set vpn l2tp remote-access name-server '198.51.100.8'
-  set vpn l2tp remote-access name-server '198.51.100.4'
-
-Established sessions can be viewed using the **show l2tp-server sessions** 
-operational command
-
-.. code-block:: none
-
-  vyos@vyos:~$ show l2tp-server sessions
-   ifname | username |      ip       | ip6 | ip6-dp | calling-sid | rate-limit | state  |  uptime  | rx-bytes | tx-bytes
-  --------+----------+---------------+-----+--------+-------------+------------+--------+----------+----------+----------
-   l2tp0  | test     | 192.168.255.3 |     |        | 192.168.0.36 |            | active | 02:01:47 | 7.7 KiB  | 1.2 KiB
-
-
-
-LNS (L2TP Network Server)
-=========================
-
-LNS are often used to connect to a LAC (L2TP Access Concentrator).
-
-Below is an example to configure a LNS:
-
-.. code-block:: none
-
-  set vpn l2tp remote-access outside-address 192.0.2.2
-  set vpn l2tp remote-access client-ip-pool L2TP-POOL range 192.168.255.2-192.168.255.254
-  set vpn l2tp remote-access default-pool 'L2TP-POOL'
-  set vpn l2tp remote-access lns shared-secret 'secret'
-  set vpn l2tp remote-access ppp-options disable-ccp
-  set vpn l2tp remote-access authentication mode local
-  set vpn l2tp remote-access authentication local-users username test password 'test'
-
-The example above uses 192.0.2.2 as external IP address. A LAC normally requires
-an authentication password, which is set in the example configuration to
-``lns shared-secret 'secret'``. This setup requires the Compression Control
-Protocol (CCP) being disabled, the command ``set vpn l2tp remote-access
-ccp-disable`` accomplishes that.
-
-
-Bandwidth Shaping
-=================
-
-Bandwidth rate limits can be set for local users or via RADIUS based attributes.
-
-Bandwidth Shaping for local users
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The rate-limit is set in kbit/sec.
-
-.. code-block:: none
-
-  set vpn l2tp remote-access outside-address 192.0.2.2
-  set vpn l2tp remote-access client-ip-pool L2TP-POOL range 192.168.255.2-192.168.255.254
-  set vpn l2tp remote-access default-pool 'L2TP-POOL'
-  set vpn l2tp remote-access authentication mode local
-  set vpn l2tp remote-access authentication local-users username test password test
-  set vpn l2tp remote-access authentication local-users username test rate-limit download 20480
-  set vpn l2tp remote-access authentication local-users username test rate-limit upload 10240
-
-  vyos@vyos:~$ show l2tp-server sessions
-   ifname | username |      ip       | ip6 | ip6-dp | calling-sid | rate-limit | state  |  uptime  | rx-bytes | tx-bytes
-  --------+----------+---------------+-----+--------+-------------+------------+--------+----------+----------+----------
-   l2tp0  | test     | 192.168.255.3 |     |        | 192.168.0.36 |            | active | 02:01:47 | 7.7 KiB  | 1.2 KiB
-
-
-RADIUS authentication
-======================
+*********************************
+Configuring RADIUS authentication
+*********************************
 
 To enable RADIUS based authentication, the authentication mode needs to be
 changed within the configuration. Previous settings like the local users, still
@@ -146,10 +126,16 @@ accounts again.
 
 .. code-block:: none
 
-  set vpn l2tp remote-access authentication mode <local|radius>
+  set vpn l2tp remote-access authentication mode radius
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius server <server> key <secret>
+
+  Configure RADIUS `<server>` and its required shared `<secret>` for
+  communicating with the RADIUS server.
 
 Since the RADIUS server would be a single point of failure, multiple RADIUS
 servers can be setup and will be used subsequentially.
+For example:
 
 .. code-block:: none
 
@@ -160,66 +146,419 @@ servers can be setup and will be used subsequentially.
    queries, make sure to add your VyOS router to the allowed client list.
 
 RADIUS source address
-^^^^^^^^^^^^^^^^^^^^^
+=====================
 
 If you are using OSPF as IGP, always the closest interface connected to the
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
 
-.. code-block:: none
+.. cfgcmd:: set vpn l2tp remote-access authentication radius source-address <address>
 
-  set vpn l2tp remote-access authentication radius source-address 10.0.0.3
-
-Above command will use `10.0.0.3` as source IPv4 address for all RADIUS queries
-on this NAS.
+  Source IPv4 address used in all RADIUS server queires.
 
 .. note:: The ``source-address`` must be configured on one of VyOS interface.
    Best practice would be a loopback or dummy interface.
 
-RADIUS bandwidth shaping attribute
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RADIUS advanced options
+=======================
 
-To enable bandwidth shaping via RADIUS, the option rate-limit needs to be
-enabled.
+.. cfgcmd:: set vpn l2tp remote-access authentication radius server <server> port <port>
 
-.. code-block:: none
+  Configure RADIUS `<server>` and its required port for authentication requests.
 
-  set vpn l2tp remote-access authentication radius rate-limit enable
+.. cfgcmd:: set vpn l2tp remote-access authentication radius server <server> fail-time <time>
 
-The default RADIUS attribute for rate limiting is ``Filter-Id``, but you may
-also redefine it.
+  Mark RADIUS server as offline for this given `<time>` in seconds.
 
-.. code-block:: none
+.. cfgcmd:: set vpn l2tp remote-access authentication radius server <server> disable
 
-  set vpn l2tp remote-access authentication radius rate-limit attribute Download-Speed
+  Temporary disable this RADIUS server.
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius acct-timeout <timeout>
+
+  Timeout to wait reply for Interim-Update packets. (default 3 seconds)
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius dynamic-author server <address>
+
+  Specifies IP address for Dynamic Authorization Extension server (DM/CoA)
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius dynamic-author port <port>
+
+  Port for Dynamic Authorization Extension server (DM/CoA)
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius dynamic-author key <secret>
+
+  Secret for Dynamic Authorization Extension server (DM/CoA)
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius max-try <number>
+
+  Maximum number of tries to send Access-Request/Accounting-Request queries
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius timeout <timeout>
+
+  Timeout to wait response from server (seconds)
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius nas-identifier <identifier>
+
+  Value to send to RADIUS server in NAS-Identifier attribute and to be matched
+  in DM/CoA requests.
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius nas-ip-address <address>
+
+  Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
+  in DM/CoA requests. Also DM/CoA server will bind to that address.
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius source-address <address>
+
+  Source IPv4 address used in all RADIUS server queires.
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius rate-limit attribute <attribute>
+
+  Specifies which RADIUS server attribute contains the rate limit information.
+  The default attribute is `Filter-Id`.
 
 .. note:: If you set a custom RADIUS attribute you must define it on both
-   dictionaries at RADIUS server and client, which is the vyos router in our
-   example.
+   dictionaries at RADIUS server and client.
 
-The RADIUS dictionaries in VyOS are located at ``/usr/share/accel-ppp/radius/``
+.. cfgcmd:: set vpn l2tp remote-access authentication radius rate-limit enable
 
-RADIUS advanced features
-^^^^^^^^^^^^^^^^^^^^^^^^
+  Enables bandwidth shaping via RADIUS.
+
+.. cfgcmd:: set vpn l2tp remote-access authentication radius rate-limit vendor
+
+  Specifies the vendor dictionary, dictionary needs to be in
+  /usr/share/accel-ppp/radius.
 
 Received RADIUS attributes have a higher priority than parameters defined within
 the CLI configuration, refer to the explanation below.
 
 Allocation clients ip addresses by RADIUS
-*****************************************
+=========================================
 
 If the RADIUS server sends the attribute ``Framed-IP-Address`` then this IP
-address will be allocated to the client and the option ip-pool within the CLI
+address will be allocated to the client and the option ``default-pool`` within the CLI
 config is being ignored.
 
+If the RADIUS server sends the attribute ``Framed-Pool``, IP address will be allocated
+from a predefined IP pool whose name equals the attribute value.
+
+If the RADIUS server sends the attribute ``Stateful-IPv6-Address-Pool``, IPv6 address
+will be allocated from a predefined IPv6 pool ``prefix`` whose name equals the attribute value.
+
+If the RADIUS server sends the attribute ``Delegated-IPv6-Prefix-Pool``, IPv6
+delegation pefix will be allocated from a predefined IPv6 pool ``delegate``
+whose name equals the attribute value.
+
+.. note:: ``Stateful-IPv6-Address-Pool`` and ``Delegated-IPv6-Prefix-Pool`` are defined in
+          RFC6911. If they are not defined in your RADIUS server, add new dictionary_.
+
+User interface can be put to VRF context via RADIUS Access-Accept packet, or change
+it via RADIUS CoA. ``Accel-VRF-Name`` is used from these purposes. It is custom `ACCEL-PPP attribute`_.
+Define it in your RADIUS server.
+
 Renaming clients interfaces by RADIUS
-*************************************
+=====================================
 
 If the RADIUS server uses the attribute ``NAS-Port-Id``, ppp tunnels will be
 renamed.
 
 .. note:: The value of the attribute ``NAS-Port-Id`` must be less than 16
    characters, otherwise the interface won't be renamed.
+
+*************************************
+Configuring LNS (L2TP Network Server)
+*************************************
+
+LNS are often used to connect to a LAC (L2TP Access Concentrator).
+
+.. cfgcmd:: set vpn l2tp remote-access lns host-name <hostname>
+
+  Sent to the client (LAC) in the Host-Name attribute
+
+.. cfgcmd:: set vpn l2tp remote-access lns shared-secret <secret>
+
+   Tunnel password used to authenticate the client (LAC)
+
+To explain the usage of LNS follow our blueprint :ref:`examples-lac-lns`.
+
+****
+IPv6
+****
+.. cfgcmd:: set vpn l2tp remote-access ppp-options ipv6 <require | prefer | allow | deny>
+
+  Specifies IPv6 negotiation preference.
+
+  * **require** - Require IPv6 negotiation
+  * **prefer** - Ask client for IPv6 negotiation, do not fail if it rejects
+  * **allow** - Negotiate IPv6 only if client requests
+  * **deny** - Do not negotiate IPv6 (default value)
+
+.. cfgcmd:: set vpn l2tp remote-access client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
+   mask <number-of-bits>
+
+  Use this comand to set the IPv6 address pool from which an l2tp client
+  will get an IPv6 prefix of your defined length (mask) to terminate the
+  l2tp endpoint at their side. The mask length can be set from 48 to 128
+  bit long, the default value is 64.
+
+.. cfgcmd:: set vpn l2tp remote-access client-ipv6-pool <IPv6-POOL-NAME> delegate <address>
+   delegation-prefix <number-of-bits>
+
+  Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
+  l2tp. You will have to set your IPv6 pool and the length of the
+  delegation prefix. From the defined IPv6 pool you will be handing out
+  networks of the defined length (delegation-prefix). The length of the
+  delegation prefix can be set from 32 to 64 bit long.
+
+.. cfgcmd:: set vpn l2tp remote-access default-ipv6-pool <IPv6-POOL-NAME>
+
+   Use this command to define default IPv6 address pool name.
+
+.. code-block:: none
+
+  set vpn l2tp remote-access ppp-options ipv6 allow
+  set vpn l2tp remote-access client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
+  set vpn l2tp remote-access client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
+  set vpn l2tp remote-access default-ipv6-pool IPv6-POOL
+
+IPv6 Advanced Options
+=====================
+.. cfgcmd:: set vpn l2tp remote-access ppp-options ipv6-accept-peer-interface-id
+
+  Accept peer interface identifier. By default is not defined.
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options ipv6-interface-id <random | x:x:x:x>
+
+  Specifies fixed or random interface identifier for IPv6.
+  By default is fixed.
+
+  * **random** - Random interface identifier for IPv6
+  * **x:x:x:x** - Specify interface identifier for IPv6
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options ipv6-interface-id <random | x:x:x:x>
+
+  Specifies peer interface identifier for IPv6. By default is fixed.
+
+  * **random** - Random interface identifier for IPv6
+  * **x:x:x:x** - Specify interface identifier for IPv6
+  * **ipv4-addr** - Calculate interface identifier from IPv4 address.
+  * **calling-sid** - Calculate interface identifier from calling-station-id.
+
+*********
+Scripting
+*********
+
+.. cfgcmd:: set vpn l2tp remote-access extended-scripts on-change <path_to_script>
+
+  Script to run when session interface changed by RADIUS CoA handling
+
+.. cfgcmd:: set vpn l2tp remote-access extended-scripts on-down <path_to_script>
+
+  Script to run when session interface going to terminate
+
+.. cfgcmd:: set vpn l2tp remote-access extended-scripts on-pre-up <path_to_script>
+
+  Script to run before session interface comes up
+
+.. cfgcmd:: set vpn l2tp remote-access extended-scripts on-up <path_to_script>
+
+  Script to run when session interface is completely configured and started
+
+****************
+Advanced Options
+****************
+
+Authentication Advanced Options
+===============================
+
+.. cfgcmd:: set vpn l2tp remote-access authentication local-users username <user> disable
+
+  Disable `<user>` account.
+
+.. cfgcmd:: set vpn l2tp remote-access authentication local-users username <user> static-ip
+   <address>
+
+  Assign static IP address to `<user>` account.
+
+.. cfgcmd:: set vpn l2tp remote-access authentication local-users username <user> rate-limit
+   download <bandwidth>
+
+  Download bandwidth limit in kbit/s for `<user>`.
+
+.. cfgcmd:: set vpn l2tp remote-access authentication local-users username <user> rate-limit
+   upload <bandwidth>
+
+  Upload bandwidth limit in kbit/s for `<user>`.
+
+.. cfgcmd:: set vpn l2tp remote-access authentication protocols
+   <pap | chap | mschap | mschap-v2>
+
+  Require the peer to authenticate itself using one of the following protocols:
+  pap, chap, mschap, mschap-v2.
+
+Client IP Pool Advanced Options
+===============================
+
+.. cfgcmd:: set vpn l2tp remote-access client-ip-pool <POOL-NAME> next-pool <NEXT-POOL-NAME>
+
+   Use this command to define the next address pool name.
+
+PPP Advanced Options
+====================
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options disable-ccp
+
+  Disable Compression Control Protocol (CCP).
+  CCP is enabled by default.
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options interface-cache <number>
+
+  Specifies number of interfaces to keep in cache. It means that don’t
+  destroy interface after corresponding session is destroyed, instead
+  place it to cache and use it later for new sessions repeatedly.
+  This should reduce kernel-level interface creation/deletion rate lack.
+  Default value is **0**.
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options ipv4 <require | prefer | allow | deny>
+
+  Specifies IPv4 negotiation preference.
+
+  * **require** - Require IPv4 negotiation
+  * **prefer** - Ask client for IPv4 negotiation, do not fail if it rejects
+  * **allow** - Negotiate IPv4 only if client requests (Default value)
+  * **deny** - Do not negotiate IPv4
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options lcp-echo-failure <number>
+
+  Defines the maximum `<number>` of unanswered echo requests. Upon reaching the
+  value `<number>`, the session will be reset. Default value is **3**.
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options lcp-echo-interval <interval>
+
+  If this option is specified and is greater than 0, then the PPP module will
+  send LCP pings of the echo request every `<interval>` seconds.
+  Default value is **30**.
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options lcp-echo-timeout
+
+  Specifies timeout in seconds to wait for any peer activity. If this option
+  specified it turns on adaptive lcp echo functionality and "lcp-echo-failure"
+  is not used. Default value is **0**.
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options min-mtu <number>
+
+  Defines minimum acceptable MTU. If client will try to negotiate less then
+  specified MTU then it will be NAKed or disconnected if rejects greater MTU.
+  Default value is **100**.
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options mppe <require | prefer | deny>
+
+  Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotiation
+  preference.
+
+  * **require** - ask client for mppe, if it rejects drop connection
+  * **prefer** - ask client for mppe, if it rejects don't fail. (Default value)
+  * **deny** - deny mppe
+
+  Default behavior - don't ask client for mppe, but allow it if client wants.
+  Please note that RADIUS may override this option by MS-MPPE-Encryption-Policy
+  attribute.
+
+.. cfgcmd:: set vpn l2tp remote-access ppp-options mru <number>
+
+  Defines preferred MRU. By default is not defined.
+
+Global Advanced options
+=======================
+
+.. cfgcmd:: set vpn l2tp remote-access description <description>
+
+  Set description.
+
+.. cfgcmd::  set vpn l2tp remote-access limits burst <value>
+
+  Burst count
+
+.. cfgcmd:: set vpn l2tp remote-access limits connection-limit <value>
+
+  Acceptable rate of connections (e.g. 1/min, 60/sec)
+
+.. cfgcmd:: set vpn l2tp remote-access limits timeout <value>
+
+  Timeout in seconds
+
+.. cfgcmd:: set vpn l2tp remote-access mtu
+
+  Maximum Transmission Unit (MTU) (default: **1436**)
+
+.. cfgcmd:: set vpn l2tp remote-access max-concurrent-sessions
+
+  Maximum number of concurrent session start attempts
+
+.. cfgcmd:: set vpn l2tp remote-access name-server <address>
+
+  Connected client should use `<address>` as their DNS server. This
+  command accepts both IPv4 and IPv6 addresses. Up to two nameservers
+  can be configured for IPv4, up to three for IPv6.
+
+.. cfgcmd:: set vpn l2tp remote-access shaper fwmark <1-2147483647>
+
+  Match firewall mark value
+
+.. cfgcmd:: set vpn l2tp remote-access snmp master-agent
+
+  Enable SNMP
+
+.. cfgcmd:: set vpn l2tp remote-access wins-server <address>
+
+  Windows Internet Name Service (WINS) servers propagated to client
+
+**********
+Monitoring
+**********
+
+.. code-block:: none
+
+  vyos@vyos:~$ show l2tp-server sessions
+   ifname | username |      ip       | ip6 | ip6-dp | calling-sid | rate-limit | state  |  uptime  | rx-bytes | tx-bytes
+  --------+----------+---------------+-----+--------+-------------+------------+--------+----------+----------+----------
+   l2tp0  | test     | 192.168.255.3 |     |        | 192.168.0.36 |            | active | 02:01:47 | 7.7 KiB  | 1.2 KiB
+
+.. code-block:: none
+
+    vyos@vyos:~$ show l2tp-server statistics
+     uptime: 0.02:49:49
+    cpu: 0%
+    mem(rss/virt): 5920/100892 kB
+    core:
+      mempool_allocated: 133202
+      mempool_available: 131770
+      thread_count: 1
+      thread_active: 1
+      context_count: 5
+      context_sleeping: 0
+      context_pending: 0
+      md_handler_count: 3
+      md_handler_pending: 0
+      timer_count: 0
+      timer_pending: 0
+    sessions:
+      starting: 0
+      active: 0
+      finishing: 0
+    l2tp:
+      tunnels:
+        starting: 0
+        active: 0
+        finishing: 0
+      sessions (control channels):
+        starting: 0
+        active: 0
+        finishing: 0
+      sessions (data channels):
+        starting: 0
+        active: 0
+        finishing: 0
 
 
 .. _`Google Public DNS`: https://developers.google.com/speed/public-dns
@@ -230,3 +569,5 @@ renamed.
 .. _FreeRADIUS: https://freeradius.org
 .. _`Network Policy Server`: https://en.wikipedia.org/wiki/Network_Policy_Server
 .. _accel-ppp: https://accel-ppp.org/
+.. _dictionary: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+.. _`ACCEL-PPP attribute`: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
