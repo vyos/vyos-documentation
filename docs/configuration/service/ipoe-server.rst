@@ -1,5 +1,3 @@
-.. include:: /_include/need_improvement.txt
-
 .. _ipoe_server:
 
 ###########
@@ -24,8 +22,9 @@ functionality as PPPoE, but in a less robust manner.
    will restart the ppp daemon and will reset existing IPoE sessions,
    in order to become effective.
 
-Configuration
-=============
+***********************
+Configuring IPoE Server
+***********************
 
 IPoE can be configure on different interfaces, it will depend on each specific
 situation which interface will provide IPoE to clients. The clients mac address
@@ -39,158 +38,417 @@ the configuration.
 
 .. code-block:: none
 
-  set service ipoe-server authentication interface eth2 mac 08:00:27:2f:d8:06
-  set service ipoe-server authentication mode 'local'
-  set service ipoe-server name-server '10.10.1.1'
-  set service ipoe-server name-server '10.10.1.2'
-  set service ipoe-server interface eth2 client-subnet '192.168.0.0/24'
-
-
-The first address of the parameter ``client-subnet``, will be used as the
-default gateway. Connected sessions can be checked via the ``show ipoe-server
-sessions`` command.
-
-.. code-block:: none
-
-  vyos@vyos:~$ show ipoe-server sessions
-
-  ifname | called-sid |    calling-sid    |     ip      | ip6 | ip6-dp | rate-limit | state  |  uptime  |        sid
-  -------+------------+-------------------+-------------+-----+--------+------------+--------+----------+------------------
-  ipoe0  | eth2       | 08:00:27:2f:d8:06 | 192.168.0.2 |     |        |            | active | 00:45:05 | dccc870fd3134612
-
-
-IPv6 SLAAC and IA-PD
---------------------
-
-To configure IPv6 assignments for clients, two options need to be configured.
-A global prefix which is terminated on the clients cpe and a delegated prefix,
-the client can use for devices routed via the clients cpe.
-
-IPv6 DNS addresses are optional.
-
-.. code-block:: none
-
-  set service ipoe-server authentication interface eth3 mac 08:00:27:2F:D8:06
-  set service ipoe-server authentication mode 'local'
-  set service ipoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:1::/48' delegation-prefix '56'
-  set service ipoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8::/48' mask '64'
-  set service ipoe-server default-ipv6-pool IPv6-POOL
-  set service ipoe-server name-server '2001:db8::'
-  set service ipoe-server name-server '2001:db8:aaa::'
-  set service ipoe-server name-server '2001:db8:bbb::'
-  set service ipoe-server interface eth3 client-subnet '192.168.1.0/24'
-
-.. code-block:: none
-
-  vyos@ipoe-server# run sh ipoe-server sessions
-  ifname | called-sid |    calling-sid    |     ip      |               ip6               | ip6-dp          | rate-limit | state  |  uptime  |        sid
-  -------+------------+-------------------+-------------+---------------------------------+-----------------+------------+--------+----------+------------------
-  ipoe0  | eth3       | 08:00:27:2f:d8:06 | 192.168.1.2 | 2001:db8::a00:27ff:fe2f:d806/64 | 2001:db8:1::/56 |            | active | 01:02:59 | 4626faf71b12cc25
-
-
-The clients :abbr:`CPE (Customer Premises Equipment)` can now communicate via
-IPv4 or IPv6. All devices behind ``2001:db8::a00:27ff:fe2f:d806/64`` can use
-addresses from ``2001:db8:1::/56`` and can globally communicate without the
-need of any NAT rules.
-
-Automatic VLAN creation
------------------------
-
-To create VLANs per user during runtime, the following settings are required on
-a per interface basis. VLAN ID and VLAN range can be present in the
-configuration at the same time.
-
-.. code-block:: none
-
-  set service ipoe-server interface eth2 network vlan
-  set service ipoe-server interface eth2 vlan-id 100
-  set service ipoe-server interface eth2 vlan-id 200
-  set service ipoe-server interface eth2 vlan-range 1000-2000
-  set service ipoe-server interface eth2 vlan-range 2500-2700
-
-RADIUS Setup
-------------
-
-To use a RADIUS server for authentication and bandwidth-shaping, the following
-example configuration can be used.
-
-.. code-block:: none
-
-  set service ipoe-server authentication mode 'radius'
-  set service ipoe-server authentication radius server 10.100.100.1 key 'password'
-
-Bandwidth Shaping
-=================
-
-Bandwidth rate limits can be set for local users within the configuration or
-via RADIUS based attributes.
-
-Bandwidth Shaping for local users
----------------------------------
-
-The rate-limit is set in kbit/sec.
-
-.. code-block:: none
-
-  set service ipoe-server authentication interface eth2 mac 08:00:27:2f:d8:06 rate-limit download '500'
-  set service ipoe-server authentication interface eth2 mac 08:00:27:2f:d8:06 rate-limit upload '500'
-  set service ipoe-server authentication mode 'local'
-  set service ipoe-server name-server '10.10.1.1'
-  set service ipoe-server name-server '10.10.1.2'
-  set service ipoe-server interface eth2 client-subnet '192.168.0.0/24'
-
-.. code-block:: none
-
-  vyos@vyos# run show ipoe-server sessions
-
-  ifname | called-sid |    calling-sid    |     ip      | ip6 | ip6-dp | rate-limit | state  |  uptime  |        sid
-  -------+------------+-------------------+-------------+-----+--------+------------+--------+----------+------------------
-  ipoe0  | eth2       | 08:00:27:2f:d8:06 | 192.168.0.2 |     |        | 500/500    | active | 00:00:05 | dccc870fd31349fb
-
-Example
-=======
-
-* IPoE server will listen on interfaces eth1.50 and eth1.51
-* There are rate-limited and non rate-limited users (MACs)
-
-Server configuration
---------------------
-
-.. code-block:: none
-
-    set interfaces dummy dum1000 address 100.64.0.1/32
-    set interfaces dummy dum1000 address 2001:db8::1/128
-
-    set interfaces ethernet eth1 description 'IPoE'
-    set interfaces ethernet eth1 vif 50
-    set interfaces ethernet eth1 vif 51
-
-    set service ipoe-server authentication interface eth1.50 mac 00:0c:29:b7:49:a7
-    set service ipoe-server authentication interface eth1.50 mac 00:0c:29:f0:be:4c rate-limit download '5000'
-    set service ipoe-server authentication interface eth1.50 mac 00:0c:29:f0:be:4c rate-limit upload '5000'
-    set service ipoe-server authentication interface eth1.51 mac 00:0c:29:b7:49:a7 rate-limit download '50000'
-    set service ipoe-server authentication interface eth1.51 mac 00:0c:29:b7:49:a7 rate-limit upload '50000'
+    set interfaces ethernet eth1 address '192.168.0.1/24'
+    set service ipoe-server authentication interface eth1.100 mac 00:50:79:66:68:00
+    set service ipoe-server authentication interface eth1.101 mac 00:50:79:66:68:01
     set service ipoe-server authentication mode 'local'
-    
-    set service ipoe-server client-ipv6-pool IPv6-POOL delegate 2001:db8:ffff::/48 delegation-prefix '56'
-    set service ipoe-server client-ipv6-pool IPv6-POOL prefix 2001:db8:fffe::/48 mask '64'
-    set service ipoe-server default-ipv6-pool IPv6-POOL
-    set service ipoe-server interface eth1.50 client-subnet '100.64.50.0/24'
-    set service ipoe-server interface eth1.50 mode 'l2'
-    set service ipoe-server interface eth1.51 client-subnet '100.64.51.0/24'
-    set service ipoe-server interface eth1.51 mode 'l2'
-    set service ipoe-server name-server '100.64.0.1'
-    set service ipoe-server name-server '2001:db8::1'
+    set service ipoe-server client-ip-pool IPOE-POOL range '192.168.0.2-192.168.0.254'
+    set service ipoe-server default-pool 'IPOE-POOL'
+    set service ipoe-server gateway-address '192.168.0.1/24'
+    set service ipoe-server interface eth1 mode 'l2'
+    set service ipoe-server interface eth1 network 'vlan'
+    set service ipoe-server interface eth1 vlan '100-200'
 
-Client configuration
---------------------
+
+.. cfgcmd:: set service ipoe-server authentication interface <interface> mac <MAC>
+
+    Creates local pppoe user with username=**<interface>** and
+    password=**<MAC>** (mac-address)
+
+.. cfgcmd:: set service ipoe-server authentication mode <local | radius>
+
+  Set authentication backend. The configured authentication backend is used
+  for all queries.
+
+  * **radius**: All authentication queries are handled by a configured RADIUS
+    server.
+  * **local**: All authentication queries are handled locally.
+  * **noauth**: Authentication disabled
+
+.. cfgcmd:: set service ipoe-server client-ip-pool <POOL-NAME> range <x.x.x.x-x.x.x.x | x.x.x.x/x>
+
+   Use this command to define the first IP address of a pool of
+   addresses to be given to l2tp clients. If notation ``x.x.x.x-x.x.x.x``,
+   it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
+   used there is possibility to set host/netmask.
+
+.. cfgcmd:: set service ipoe-server default-pool <POOL-NAME>
+
+   Use this command to define default address pool name.
+
+.. cfgcmd:: set service ipoe-server gateway-address <x.x.x.x/x>
+
+   Specifies address to be used as server ip address if radius can assign
+   only client address. In such case if client address is matched network
+   and mask then specified address and mask will be used. You can specify
+   multiple such options.
+
+.. cfgcmd:: set service ipoe-server interface <interface> mode <l2 | l3>
+
+  Set authentication backend. The configured authentication backend is used
+  for all queries.
+
+  * **l2**: It means that clients are on same network where interface
+    is.**(default)**
+  * **local**: It means that client are behind some router.
+
+.. cfgcmd:: set service ipoe-server interface <interface> network <shared | vlan>
+
+  Specify where interface is shared by multiple users or it is vlan-per-user.
+
+  * **shared**: Multiple clients share the same network. **(default)**
+  * **vlan**: One VLAN per client.
 
 .. code-block:: none
 
-    set interfaces ethernet eth0 mac '00:0c:29:b7:49:a7'
+    vyos@vyos:~$ show ipoe-server sessions
 
-    set interfaces ethernet eth0 vif 50 address 'dhcp'
-    set interfaces ethernet eth0 vif 50 address 'dhcpv6'
-    set interfaces ethernet eth0 vif 50 dhcpv6-options pd 0 interface eth1 sla-id '1'
+     ifname | username |    calling-sid    |     ip      | rate-limit | type | comp | state  |  uptime
+    --------+----------+-------------------+-------------+------------+------+------+--------+----------
+     ipoe0  | eth1.100 | 00:50:79:66:68:00 | 192.168.0.2 |            | ipoe |      | active | 00:04:55
+     ipoe1  | eth1.101 | 00:50:79:66:68:01 | 192.168.0.3 |            | ipoe |      | active | 00:04:44
+
+
+*********************************
+Configuring RADIUS authentication
+*********************************
+
+To enable RADIUS based authentication, the authentication mode needs to be
+changed within the configuration. Previous settings like the local users, still
+exists within the configuration, however they are not used if the mode has been
+changed from local to radius. Once changed back to local, it will use all local
+accounts again.
+
+.. code-block:: none
+
+  set service ipoe-server authentication mode radius
+
+.. cfgcmd:: set service ipoe-server authentication radius server <server> key <secret>
+
+  Configure RADIUS `<server>` and its required shared `<secret>` for
+  communicating with the RADIUS server.
+
+Since the RADIUS server would be a single point of failure, multiple RADIUS
+servers can be setup and will be used subsequentially.
+For example:
+
+.. code-block:: none
+
+  set service ipoe-server authentication radius server 10.0.0.1 key 'foo'
+  set service ipoe-server authentication radius server 10.0.0.2 key 'foo'
+
+.. note:: Some RADIUS severs use an access control list which allows or denies
+   queries, make sure to add your VyOS router to the allowed client list.
+
+RADIUS source address
+=====================
+
+If you are using OSPF as IGP, always the closest interface connected to the
+RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
+to a single source IP e.g. the loopback interface.
+
+.. cfgcmd:: set service ipoe-server authentication radius source-address <address>
+
+  Source IPv4 address used in all RADIUS server queires.
+
+.. note:: The ``source-address`` must be configured on one of VyOS interface.
+   Best practice would be a loopback or dummy interface.
+
+RADIUS advanced options
+=======================
+
+.. cfgcmd:: set service ipoe-server authentication radius server <server> port <port>
+
+  Configure RADIUS `<server>` and its required port for authentication requests.
+
+.. cfgcmd:: set service ipoe-server authentication radius server <server> fail-time <time>
+
+  Mark RADIUS server as offline for this given `<time>` in seconds.
+
+.. cfgcmd:: set service ipoe-server authentication radius server <server> disable
+
+  Temporary disable this RADIUS server.
+
+.. cfgcmd:: set service ipoe-server authentication radius acct-timeout <timeout>
+
+  Timeout to wait reply for Interim-Update packets. (default 3 seconds)
+
+.. cfgcmd:: set service ipoe-server authentication radius dynamic-author server <address>
+
+  Specifies IP address for Dynamic Authorization Extension server (DM/CoA)
+
+.. cfgcmd:: set service ipoe-server authentication radius dynamic-author port <port>
+
+  Port for Dynamic Authorization Extension server (DM/CoA)
+
+.. cfgcmd:: set service ipoe-server authentication radius dynamic-author key <secret>
+
+  Secret for Dynamic Authorization Extension server (DM/CoA)
+
+.. cfgcmd:: set service ipoe-server authentication radius max-try <number>
+
+  Maximum number of tries to send Access-Request/Accounting-Request queries
+
+.. cfgcmd:: set service ipoe-server authentication radius timeout <timeout>
+
+  Timeout to wait response from server (seconds)
+
+.. cfgcmd:: set service ipoe-server authentication radius nas-identifier <identifier>
+
+  Value to send to RADIUS server in NAS-Identifier attribute and to be matched
+  in DM/CoA requests.
+
+.. cfgcmd:: set service ipoe-server authentication radius nas-ip-address <address>
+
+  Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
+  in DM/CoA requests. Also DM/CoA server will bind to that address.
+
+.. cfgcmd:: set service ipoe-server authentication radius source-address <address>
+
+  Source IPv4 address used in all RADIUS server queires.
+
+.. cfgcmd:: set service ipoe-server authentication radius rate-limit attribute <attribute>
+
+  Specifies which RADIUS server attribute contains the rate limit information.
+  The default attribute is `Filter-Id`.
+
+.. note:: If you set a custom RADIUS attribute you must define it on both
+   dictionaries at RADIUS server and client.
+
+.. cfgcmd:: set service ipoe-server authentication radius rate-limit enable
+
+  Enables bandwidth shaping via RADIUS.
+
+.. cfgcmd:: set service ipoe-server authentication radius rate-limit vendor
+
+  Specifies the vendor dictionary, dictionary needs to be in
+  /usr/share/accel-ppp/radius.
+
+Received RADIUS attributes have a higher priority than parameters defined within
+the CLI configuration, refer to the explanation below.
+
+Allocation clients ip addresses by RADIUS
+=========================================
+
+If the RADIUS server sends the attribute ``Framed-IP-Address`` then this IP
+address will be allocated to the client and the option ``default-pool`` within the CLI
+config is being ignored.
+
+If the RADIUS server sends the attribute ``Framed-Pool``, IP address will be allocated
+from a predefined IP pool whose name equals the attribute value.
+
+If the RADIUS server sends the attribute ``Stateful-IPv6-Address-Pool``, IPv6 address
+will be allocated from a predefined IPv6 pool ``prefix`` whose name equals the attribute value.
+
+If the RADIUS server sends the attribute ``Delegated-IPv6-Prefix-Pool``, IPv6
+delegation pefix will be allocated from a predefined IPv6 pool ``delegate``
+whose name equals the attribute value.
+
+.. note:: ``Stateful-IPv6-Address-Pool`` and ``Delegated-IPv6-Prefix-Pool`` are defined in
+          RFC6911. If they are not defined in your RADIUS server, add new dictionary_.
+
+User interface can be put to VRF context via RADIUS Access-Accept packet, or change
+it via RADIUS CoA. ``Accel-VRF-Name`` is used from these purposes. It is custom `ACCEL-PPP attribute`_.
+Define it in your RADIUS server.
+
+Renaming clients interfaces by RADIUS
+=====================================
+
+If the RADIUS server uses the attribute ``NAS-Port-Id``, ppp tunnels will be
+renamed.
+
+.. note:: The value of the attribute ``NAS-Port-Id`` must be less than 16
+   characters, otherwise the interface won't be renamed.
+
+****
+IPv6
+****
+
+.. cfgcmd:: set service ipoe-server client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
+   mask <number-of-bits>
+
+  Use this comand to set the IPv6 address pool from which an l2tp client
+  will get an IPv6 prefix of your defined length (mask) to terminate the
+  l2tp endpoint at their side. The mask length can be set from 48 to 128
+  bit long, the default value is 64.
+
+.. cfgcmd:: set service ipoe-server client-ipv6-pool <IPv6-POOL-NAME> delegate <address>
+   delegation-prefix <number-of-bits>
+
+  Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
+  l2tp. You will have to set your IPv6 pool and the length of the
+  delegation prefix. From the defined IPv6 pool you will be handing out
+  networks of the defined length (delegation-prefix). The length of the
+  delegation prefix can be set from 32 to 64 bit long.
+
+.. cfgcmd:: set service ipoe-server default-ipv6-pool <IPv6-POOL-NAME>
+
+   Use this command to define default IPv6 address pool name.
+
+.. code-block:: none
+
+  set service ipoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
+  set service ipoe-server client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
+  set service ipoe-server default-ipv6-pool IPv6-POOL
+
+*********
+Scripting
+*********
+
+.. cfgcmd:: set service ipoe-server extended-scripts on-change <path_to_script>
+
+  Script to run when session interface changed by RADIUS CoA handling
+
+.. cfgcmd:: set service ipoe-server extended-scripts on-down <path_to_script>
+
+  Script to run when session interface going to terminate
+
+.. cfgcmd:: set service ipoe-server extended-scripts on-pre-up <path_to_script>
+
+  Script to run before session interface comes up
+
+.. cfgcmd:: set service ipoe-server extended-scripts on-up <path_to_script>
+
+  Script to run when session interface is completely configured and started
+
+****************
+Advanced Options
+****************
+
+Authentication Advanced Options
+===============================
+
+.. cfgcmd:: set service ipoe-server authentication interface <interface> mac <MAC> vlan
+   <vlan-id>
+
+  VLAN monitor for automatic creation of VLAN interfaces for specific user on specific <interface>
+
+.. cfgcmd:: set service ipoe-server authentication interface <interface> mac <MAC> rate-limit
+   download <bandwidth>
+
+  Download bandwidth limit in kbit/s for user on interface `<interface>`.
+
+.. cfgcmd:: set service ipoe-server authentication interface <interface> mac <MAC> rate-limit
+   upload <bandwidth>
+
+  Upload bandwidth limit in kbit/s for for user on interface `<interface>`.
+
+Client IP Pool Advanced Options
+===============================
+
+.. cfgcmd:: set service ipoe-server client-ip-pool <POOL-NAME> next-pool <NEXT-POOL-NAME>
+
+   Use this command to define the next address pool name.
+
+Advanced Interface Options
+==============================
+
+.. cfgcmd:: set service ipoe-server interface <interface> client-subnet <x.x.x.x/x>
+
+   Specify local range of ip address to give to dhcp clients. First IP in range is router IP.
+   If you need more customization use `client-ip-pool`
+
+.. cfgcmd:: set service ipoe-server interface <interface> external-dhcp dhcp-relay <x.x.x.x>
+
+   Specify DHCPv4 relay IP address to pass requests to. If specified giaddr is also needed.
+
+.. cfgcmd:: set service ipoe-server interface <interface> external-dhcp giaddr <x.x.x.x>
+
+   Specifies relay agent IP addre
+
+
+Global Advanced options
+=======================
+
+.. cfgcmd:: set service ipoe-server description <description>
+
+  Set description.
+
+.. cfgcmd::  set service ipoe-server limits burst <value>
+
+  Burst count
+
+.. cfgcmd:: set service ipoe-server limits connection-limit <value>
+
+  Acceptable rate of connections (e.g. 1/min, 60/sec)
+
+.. cfgcmd:: set service ipoe-server limits timeout <value>
+
+  Timeout in seconds
+
+.. cfgcmd:: set service ipoe-server max-concurrent-sessions
+
+  Maximum number of concurrent session start attempts
+
+.. cfgcmd:: set service ipoe-server name-server <address>
+
+  Connected client should use `<address>` as their DNS server. This
+  command accepts both IPv4 and IPv6 addresses. Up to two nameservers
+  can be configured for IPv4, up to three for IPv6.
+
+.. cfgcmd:: set service ipoe-server shaper fwmark <1-2147483647>
+
+  Match firewall mark value
+
+.. cfgcmd:: set service ipoe-server snmp master-agent
+
+  Enable SNMP
+
+**********
+Monitoring
+**********
+
+.. code-block:: none
+
+    vyos@vyos:~$ show ipoe-server sessions
+    ifname  | username |    calling-sid    |     ip      | rate-limit | type | comp | state  |  uptime
+    ----------+----------+-------------------+-------------+------------+------+------+--------+----------
+     eth1.100 | eth1.100 | 0c:98:bd:b8:00:01 | 192.168.0.3 |            | ipoe |      | active | 03:03:58
+
+.. code-block:: none
+
+    vyos@vyos:~$ show ipoe-server statistics
+    uptime: 0.03:31:36
+    cpu: 0%
+    mem(rss/virt): 6044/101360 kB
+    core:
+      mempool_allocated: 148628
+      mempool_available: 144748
+      thread_count: 1
+      thread_active: 1
+      context_count: 10
+      context_sleeping: 0
+      context_pending: 0
+      md_handler_count: 6
+      md_handler_pending: 0
+      timer_count: 1
+      timer_pending: 0
+    sessions:
+      starting: 0
+      active: 1
+      finishing: 0
+    ipoe:
+      starting: 0
+      active: 1
+      delayed: 0
+
+**************
+Toubleshooting
+**************
+
+.. code-block:: none
+
+    vyos@vyos:~$sudo journalctl -u accel-ppp@ipoe -b 0
+
+    Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:: recv [DHCPv4 Discover xid=55df9228 chaddr=0c:98:bd:b8:00:01 <Message-Type Discover> <Request-IP 192.168.0.3> <Host-Name vyos> <Request-List Subnet,Broadcast,Router,DNS,Classless-Route,Domain-Name,MTU>]
+    Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: eth1.100: authentication succeeded
+    Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: send [DHCPv4 Offer xid=55df9228 yiaddr=192.168.0.4 chaddr=0c:98:bd:b8:00:01 <Message-Type Offer> <Server-ID 192.168.0.1> <Lease-Time 600> <T1 300> <T2 525> <Router 192.168.0.1> <Subnet 255.255.255.0>]
+    Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: recv [DHCPv4 Request xid=55df9228 chaddr=0c:98:bd:b8:00:01 <Message-Type Request> <Server-ID 192.168.0.1> <Request-IP 192.168.0.4> <Host-Name vyos> <Request-List Subnet,Broadcast,Router,DNS,Classless-Route,Domain-Name,MTU>]
+    Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: ipoe: activate session
+    Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: ipoe: no free IPv6 address
+    Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: ipoe: session started
+    Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: send [DHCPv4 Ack xid=55df9228 yiaddr=192.168.0.4 chaddr=0c:98:bd:b8:00:01 <Message-Type Ack> <Server-ID 192.168.0.1> <Lease-Time 600> <T1 300> <T2 525> <Router 192.168.0.1> <Subnet 255.255.255.0>]
 
 .. include:: /_include/common-references.txt
+.. _dictionary: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+.. _`ACCEL-PPP attribute`: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
