@@ -2,6 +2,8 @@
 
 .. include:: /_include/need_improvement.txt
 
+.. _pki:
+
 ###
 PKI
 ###
