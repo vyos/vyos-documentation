@@ -2,6 +2,8 @@
 
 .. include:: /_include/need_improvement.txt
 
+.. _pki:
+
 ###
 PKI
 ###
@@ -118,12 +120,12 @@ OpenVPN
 
 .. opcmd:: generate pki openvpn shared-secret
 
-  Genearate a new OpenVPN shared secret. The generated secred is the output to
+  Genearate a new OpenVPN shared secret. The generated secret is the output to
   the console.
 
 .. opcmd:: generate pki openvpn shared-secret install <name>
 
-  Genearate a new OpenVPN shared secret. The generated secred is the output to
+  Genearate a new OpenVPN shared secret. The generated secret is the output to
   the console.
 
   .. include:: pki_cli_import_help.txt
@@ -247,6 +249,35 @@ certificates used by services on this router.
 .. cfgcmd:: set pki certificate <name> revoke
 
   If CA is present, this certificate will be included in generated CRLs
+
+Import files to PKI format
+-------------------------- 
+VyOS provides this utility to import existing certificates/key files directly 
+into PKI from op-mode. Previous to VyOS 1.4, certificates were stored under the 
+/config folder permanently and will be retained post upgrade.
+
+.. opcmd:: import pki ca <name> file <Path to CA certificate file>
+
+  Import the public CA certificate from the defined file to VyOS CLI.
+
+.. opcmd:: import pki ca <name> key-file <Path to private key file> 
+
+  Import the CAs private key portion to the CLI. This should never leave the 
+  system as it is used to decrypt the data. The key is required if you use 
+  VyOS as your certificate generator.
+
+.. opcmd:: import pki certificate <name> file <path to certificate>
+
+  Import the certificate from the file to VyOS CLI.
+
+.. opcmd:: import pki certificate <name> key-file <path to private key>
+
+  Import the private key of the certificate to the VyOS CLI. This should never
+  leave the system as it is used to decrypt the data.
+
+.. opcmd:: import pki openvpn shared-secret <name> file <path to OpenVPN secret key>
+
+  Import the OpenVPN shared secret stored in file to the VyOS CLI.
 
 ACME
 ^^^^

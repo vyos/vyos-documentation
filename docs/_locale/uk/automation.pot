@@ -32,21 +32,29 @@ msgstr "**user-data**: includes vyos-commands."
 msgid "**user-data** file must start with ``#cloud-config`` and contains vyos-commands. For example:"
 msgstr "**user-data** file must start with ``#cloud-config`` and contains vyos-commands. For example:"
 
-#: ../../automation/vyos-api.rst:285
+#: ../../automation/vyos-api.rst:322
 msgid "/config-file"
 msgstr "/config-file"
 
-#: ../../automation/vyos-api.rst:228
+#: ../../automation/vyos-api.rst:265
 msgid "/configure"
 msgstr "/configure"
 
-#: ../../automation/vyos-api.rst:209
+#: ../../automation/vyos-api.rst:246
 msgid "/generate"
 msgstr "/generate"
 
-#: ../../automation/vyos-api.rst:147
+#: ../../automation/vyos-api.rst:184
 msgid "/image"
 msgstr "/image"
+
+#: ../../automation/vyos-api.rst:165
+msgid "/poweroff"
+msgstr "/poweroff"
+
+#: ../../automation/vyos-api.rst:147
+msgid "/reboot"
+msgstr "/reboot"
 
 #: ../../automation/vyos-api.rst:129
 msgid "/reset"
@@ -56,7 +64,7 @@ msgstr "/reset"
 msgid "/retrieve"
 msgstr "/retrieve"
 
-#: ../../automation/vyos-api.rst:185
+#: ../../automation/vyos-api.rst:222
 msgid "/show"
 msgstr "/show"
 
@@ -178,6 +186,34 @@ msgstr "Configuration"
 msgid "Configuration commands are executed just like from a normal config session. For example, if you want to disable a BGP peer on VRRP transition to backup:"
 msgstr "Configuration commands are executed just like from a normal config session. For example, if you want to disable a BGP peer on VRRP transition to backup:"
 
+#: ../../automation/vyos-pyvyos.rst:94
+msgid "Configure, then Delete Object"
+msgstr "Configure, then Delete Object"
+
+#: ../../automation/vyos-pyvyos.rst:141
+msgid "Configure, then Load File"
+msgstr "Configure, then Load File"
+
+#: ../../automation/vyos-pyvyos.rst:101
+msgid "Configure, then Save"
+msgstr "Configure, then Save"
+
+#: ../../automation/vyos-pyvyos.rst:108
+msgid "Configure, then Save File"
+msgstr "Configure, then Save File"
+
+#: ../../automation/vyos-pyvyos.rst:68
+msgid "Configure, then Set"
+msgstr "Configure, then Set"
+
+#: ../../automation/vyos-pyvyos.rst:85
+msgid "Configure, then Show Object"
+msgstr "Configure, then Show Object"
+
+#: ../../automation/vyos-pyvyos.rst:77
+msgid "Configure, then Show a Single Object Value"
+msgstr "Configure, then Show a Single Object Value"
+
 #: ../../automation/vyos-napalm.rst:89
 msgid "Content of commands.conf"
 msgstr "Content of commands.conf"
@@ -258,7 +294,7 @@ msgstr "For configuration and enabling the API see :ref:`http-api`"
 msgid "For example, get the addresses of a ``dum0`` interface."
 msgstr "For example, get the addresses of a ``dum0`` interface."
 
-#: ../../automation/vyos-api.rst:189
+#: ../../automation/vyos-api.rst:226
 msgid "For example, show which images are installed."
 msgstr "For example, show which images are installed."
 
@@ -270,9 +306,17 @@ msgstr "For more information on the NoCloud data source, visit its `page <https:
 msgid "From cli or GUI, power on VM, and after it boots, verify configuration"
 msgstr "From cli or GUI, power on VM, and after it boots, verify configuration"
 
+#: ../../automation/vyos-pyvyos.rst:123
+msgid "Generate Object"
+msgstr "Generate Object"
+
 #: ../../automation/cloud-init.rst:268
 msgid "Generate qcow image"
 msgstr "Generate qcow image"
+
+#: ../../automation/vyos-pyvyos.rst:24
+msgid "Getting Started"
+msgstr "Getting Started"
 
 #: ../../automation/command-scripting.rst:82
 msgid "Here is a simple example:"
@@ -306,6 +350,10 @@ msgstr "If you need to gather information from linux commands to configure VyOS,
 msgid "If you want to script the configs in a language other than bash you can have your script output commands and then source them in a bash script."
 msgstr "If you want to script the configs in a language other than bash you can have your script output commands and then source them in a bash script."
 
+#: ../../automation/vyos-pyvyos.rst:27
+msgid "Importing and Disabling Warnings for verify=False"
+msgstr "Importing and Disabling Warnings for verify=False"
+
 #: ../../automation/cloud-init.rst:298
 msgid "In Proxmox server three files are going to be used for this setup:"
 msgstr "In Proxmox server three files are going to be used for this setup:"
@@ -326,6 +374,10 @@ msgstr "In this lab, we are using 1.3.0 VyOS version and setting a disk of 10G. 
 msgid "Initial Configuration"
 msgstr "Initial Configuration"
 
+#: ../../automation/vyos-pyvyos.rst:47
+msgid "Initializing a VyDevice Object"
+msgstr "Initializing a VyDevice Object"
+
 #: ../../automation/cloud-init.rst:180
 msgid "Injecting configuration data is not limited to cloud platforms. Users can employ the NoCloud data source to inject user-data and meta-data on virtualization platforms such as VMware, Hyper-V and KVM."
 msgstr "Injecting configuration data is not limited to cloud platforms. Users can employ the NoCloud data source to inject user-data and meta-data on virtualization platforms such as VMware, Hyper-V and KVM."
@@ -333,6 +385,10 @@ msgstr "Injecting configuration data is not limited to cloud platforms. Users ca
 #: ../../automation/vyos-napalm.rst:11
 msgid "Install ``napalm-vyos`` module"
 msgstr "Install ``napalm-vyos`` module"
+
+#: ../../automation/vyos-pyvyos.rst:15
+msgid "Installation"
+msgstr "Installation"
 
 #: ../../automation/vyos-salt.rst:98
 msgid "It is possible to configure VyOS via netmiko_ proxy module. It requires a minion with installed packet  ``python3-netmiko`` module who has a connection to VyOS nodes. Salt-minion have to communicate with salt master"
@@ -451,6 +507,14 @@ msgstr "Proxmox IP address: **192.168.0.253/24**"
 msgid "Proxmox `Cloud-init-Support`_."
 msgstr "Proxmox `Cloud-init-Support`_."
 
+#: ../../automation/vyos-pyvyos.rst:6
+msgid "PyVyOS"
+msgstr "PyVyOS"
+
+#: ../../automation/vyos-pyvyos.rst:8
+msgid "PyVyOS is a Python library for interacting with VyOS devices via their API. This documentation guides you on using PyVyOS to manage your VyOS devices programmatically. The complete PyVyOS documentation is available on [Read the Docs](https://pyvyos.readthedocs.io/en/latest/), and the library can be found on [GitHub](https://github.com/robertoberto/pyvyos) and [PyPI](https://pypi.org/project/pyvyos/)."
+msgstr "PyVyOS is a Python library for interacting with VyOS devices via their API. This documentation guides you on using PyVyOS to manage your VyOS devices programmatically. The complete PyVyOS documentation is available on [Read the Docs](https://pyvyos.readthedocs.io/en/latest/), and the library can be found on [GitHub](https://github.com/robertoberto/pyvyos) and [PyPI](https://pypi.org/project/pyvyos/)."
+
 #: ../../automation/cloud-init.rst:416
 msgid "References"
 msgstr "References"
@@ -458,6 +522,10 @@ msgstr "References"
 #: ../../automation/cloud-init.rst:263
 msgid "Remove default dhcp client on first interface, and load other configuration during first boot, using cloud-init."
 msgstr "Remove default dhcp client on first interface, and load other configuration during first boot, using cloud-init."
+
+#: ../../automation/vyos-pyvyos.rst:132
+msgid "Reset Object"
+msgstr "Reset Object"
 
 #: ../../automation/vyos-ansible.rst:80
 msgid "Run ansible"
@@ -487,11 +555,11 @@ msgstr "Salt"
 msgid "Salt master configuration:"
 msgstr "Salt master configuration:"
 
-#: ../../automation/vyos-api.rst:307
+#: ../../automation/vyos-api.rst:344
 msgid "Save a running configuration to a file."
 msgstr "Save a running configuration to a file."
 
-#: ../../automation/vyos-api.rst:289
+#: ../../automation/vyos-api.rst:326
 msgid "Save a running configuration to the startup configuration. When you don't specify the file when saving, it saves to ``/config/config.boot``."
 msgstr "Save a running configuration to the startup configuration. When you don't specify the file when saving, it saves to ``/config/config.boot``."
 
@@ -502,6 +570,10 @@ msgstr "Script vyos-napalm.py"
 #: ../../automation/command-scripting.rst:152
 msgid "Scripts are run in alphabetical order. Their names must consist entirely of ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and ASCII minus-hyphens.No other characters are allowed."
 msgstr "Scripts are run in alphabetical order. Their names must consist entirely of ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and ASCII minus-hyphens.No other characters are allowed."
+
+#: ../../automation/vyos-pyvyos.rst:115
+msgid "Show Object"
+msgstr "Show Object"
 
 #: ../../automation/command-scripting.rst:52
 msgid "Sometimes you simply wan't to execute a bunch of op-mode commands via SSH on a remote VyOS system."
@@ -523,7 +595,7 @@ msgstr "Structure of files"
 msgid "System Defaults/Fallbacks"
 msgstr "System Defaults/Fallbacks"
 
-#: ../../automation/vyos-api.rst:264
+#: ../../automation/vyos-api.rst:301
 msgid "The API pushes every request to a session and commit it. But some of VyOS components like DHCP and PPPoE Servers, IPSec, VXLAN, and other tunnels require full configuration for commit. The endpoint will process multiple commands when you pass them as a list to the ``data`` field."
 msgstr "The API pushes every request to a session and commit it. But some of VyOS components like DHCP and PPPoE Servers, IPSec, VXLAN, and other tunnels require full configuration for commit. The endpoint will process multiple commands when you pass them as a list to the ``data`` field."
 
@@ -535,11 +607,11 @@ msgstr "The ``/config/scripts/vyos-postconfig-bootup.script`` script is called o
 msgid "The ``/config/scripts/vyos-preconfig-bootup.script`` script is called on boot before the VyOS configuration during boot process."
 msgstr "The ``/config/scripts/vyos-preconfig-bootup.script`` script is called on boot before the VyOS configuration during boot process."
 
-#: ../../automation/vyos-api.rst:187
+#: ../../automation/vyos-api.rst:224
 msgid "The ``/show`` endpoint is to show everything in the operational mode."
 msgstr "The ``/show`` endpoint is to show everything in the operational mode."
 
-#: ../../automation/vyos-api.rst:211
+#: ../../automation/vyos-api.rst:248
 msgid "The ``generate`` endpoint run a ``generate`` command."
 msgstr "The ``generate`` endpoint run a ``generate`` command."
 
@@ -568,7 +640,7 @@ msgstr "The default file looks like this:"
 msgid "The easiest way to configure the system via user-data is the Cloud-config syntax described below."
 msgstr "The easiest way to configure the system via user-data is the Cloud-config syntax described below."
 
-#: ../../automation/vyos-api.rst:287
+#: ../../automation/vyos-api.rst:324
 msgid "The endpoint ``/config-file`` is to save or load a configuration."
 msgstr "The endpoint ``/config-file`` is to save or load a configuration."
 
@@ -604,11 +676,11 @@ msgstr "This section needs improvements, examples and explanations."
 msgid "This will result in the following error message: ``Set failed`` If this happens, a reboot is required to be able to edit the config manually again."
 msgstr "This will result in the following error message: ``Set failed`` If this happens, a reboot is required to be able to edit the config manually again."
 
-#: ../../automation/vyos-api.rst:323
+#: ../../automation/vyos-api.rst:360
 msgid "To Load a configuration file."
 msgstr "To Load a configuration file."
 
-#: ../../automation/vyos-api.rst:149
+#: ../../automation/vyos-api.rst:186
 msgid "To add or delete an image, use the ``/image`` endpoint."
 msgstr "To add or delete an image, use the ``/image`` endpoint."
 
@@ -624,6 +696,10 @@ msgstr "To get the whole configuration, pass an empty list to the ``path`` field
 msgid "To include VyOS specific functions and aliases you need to ``source /opt/vyatta/etc/functions/script-template`` files at the top of your script."
 msgstr "To include VyOS specific functions and aliases you need to ``source /opt/vyatta/etc/functions/script-template`` files at the top of your script."
 
+#: ../../automation/vyos-api.rst:149
+msgid "To initiate a reboot use the ``reboot`` endpoint."
+msgstr "To initiate a reboot use the ``reboot`` endpoint."
+
 #: ../../automation/command-scripting.rst:128
 msgid "To make sure that a script is not accidentally called without the ``vyattacfg`` group, the script can be safeguarded like this:"
 msgstr "To make sure that a script is not accidentally called without the ``vyattacfg`` group, the script can be safeguarded like this:"
@@ -631,6 +707,10 @@ msgstr "To make sure that a script is not accidentally called without the ``vyat
 #: ../../automation/vyos-api.rst:79
 msgid "To only get a part of the configuration, for example ``system syslog``."
 msgstr "To only get a part of the configuration, for example ``system syslog``."
+
+#: ../../automation/vyos-api.rst:167
+msgid "To power off the system use the ``poweroff`` endpoint."
+msgstr "To power off the system use the ``poweroff`` endpoint."
 
 #: ../../automation/cloud-init.rst:223
 msgid "Troubleshooting"
@@ -647,6 +727,14 @@ msgstr "User-data"
 #: ../../automation/cloud-init.rst:28
 msgid "User-data - User-data is specified by the user. This config source offers the ability to insert any CLI configuration commands into the configuration before the first boot."
 msgstr "User-data - User-data is specified by the user. This config source offers the ability to insert any CLI configuration commands into the configuration before the first boot."
+
+#: ../../automation/vyos-pyvyos.rst:35
+msgid "Using API Response Class"
+msgstr "Using API Response Class"
+
+#: ../../automation/vyos-pyvyos.rst:65
+msgid "Using PyVyOS"
+msgstr "Using PyVyOS"
 
 #: ../../automation/cloud-init.rst:373
 msgid "VM ID: in this example, VM ID used is 555."
@@ -736,11 +824,15 @@ msgstr "Without proxy it requires VyOS minion configuration and support op-mode 
 msgid "Without proxy it requires VyOS minion configuration and supports op-mode data:"
 msgstr "Without proxy it requires VyOS minion configuration and supports op-mode data:"
 
-#: ../../automation/vyos-api.rst:230
+#: ../../automation/vyos-pyvyos.rst:17
+msgid "You can install PyVyOS using pip:"
+msgstr "You can install PyVyOS using pip:"
+
+#: ../../automation/vyos-api.rst:267
 msgid "You can pass a ``set``, ``delete`` or ``comment`` command to the ``/configure`` endpoint."
 msgstr "You can pass a ``set``, ``delete`` or ``comment`` command to the ``/configure`` endpoint."
 
-#: ../../automation/vyos-api.rst:249
+#: ../../automation/vyos-api.rst:286
 msgid "``delete`` a single command"
 msgstr "``delete`` a single command"
 
@@ -748,7 +840,7 @@ msgstr "``delete`` a single command"
 msgid "``seed.iso`` was previously created in directory ``/tmp/``. It's necessary to move it to ``/var/lib/vz/template/iso``"
 msgstr "``seed.iso`` was previously created in directory ``/tmp/``. It's necessary to move it to ``/var/lib/vz/template/iso``"
 
-#: ../../automation/vyos-api.rst:233
+#: ../../automation/vyos-api.rst:270
 msgid "``set`` a single command"
 msgstr "``set`` a single command"
 
@@ -764,7 +856,7 @@ msgstr "``vyos``/``vyos`` credentials if no others specified by data source."
 msgid "``write_files`` - this module allows to insert any files into the filesystem before the first boot, for example, pre-generated encryption keys, certificates, or even a whole ``config.boot`` file. The format is described in the cloudinit documentation `Cloud-init-write_files`_."
 msgstr "``write_files`` - this module allows to insert any files into the filesystem before the first boot, for example, pre-generated encryption keys, certificates, or even a whole ``config.boot`` file. The format is described in the cloudinit documentation `Cloud-init-write_files`_."
 
-#: ../../automation/vyos-api.rst:151
+#: ../../automation/vyos-api.rst:188
 msgid "add an image"
 msgstr "add an image"
 
@@ -784,7 +876,7 @@ msgstr "cloud-init logs to /var/log/cloud-init.log. This file can be helpful in 
 msgid "commands.txt"
 msgstr "commands.txt"
 
-#: ../../automation/vyos-api.rst:168
+#: ../../automation/vyos-api.rst:205
 msgid "delete an image, for example ``1.3-rolling-202006070117``"
 msgstr "delete an image, for example ``1.3-rolling-202006070117``"
 
