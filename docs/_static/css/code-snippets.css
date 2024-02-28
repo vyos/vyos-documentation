@@ -201,6 +201,10 @@
   margin: 0
 }
 
+.rst-content #site-to-site blockquote {
+  margin: 15px 0 15px 24px
+}
+
 @media screen and (max-width: 991px) {
   .rst-content .linenodiv pre, 
   .rst-content div[class^=highlight] pre, 
