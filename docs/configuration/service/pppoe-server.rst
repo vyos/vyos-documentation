@@ -352,16 +352,16 @@ IPv6
 .. cfgcmd:: set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
    mask <number-of-bits>
 
-  Use this comand to set the IPv6 address pool from which an l2tp client
+  Use this comand to set the IPv6 address pool from which an PPPoE client
   will get an IPv6 prefix of your defined length (mask) to terminate the
-  l2tp endpoint at their side. The mask length can be set from 48 to 128
+  PPPoE endpoint at their side. The mask length can be set from 48 to 128
   bit long, the default value is 64.
 
 .. cfgcmd:: set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME> delegate <address>
    delegation-prefix <number-of-bits>
 
   Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
-  l2tp. You will have to set your IPv6 pool and the length of the
+  PPPoE. You will have to set your IPv6 pool and the length of the
   delegation prefix. From the defined IPv6 pool you will be handing out
   networks of the defined length (delegation-prefix). The length of the
   delegation prefix can be set from 32 to 64 bit long.
@@ -624,7 +624,7 @@ address from the pool 10.1.1.100-111, terminates at the local endpoint
 Dual-Stack IPv4/IPv6 provisioning with Prefix Delegation
 ========================================================
 
-The example below covers a dual-stack configuration via pppoe-server.
+The example below covers a dual-stack configuration.
 
 .. code-block:: none
 
@@ -642,7 +642,7 @@ The example below covers a dual-stack configuration via pppoe-server.
   set service pppoe-server gateway-address '10.100.100.1'
 
 The client, once successfully authenticated, will receive an IPv4 and an
-IPv6 /64 address to terminate the pppoe endpoint on the client side and
+IPv6 /64 address to terminate the PPPoE endpoint on the client side and
 a /56 subnet for the clients internal use.
 
 .. code-block:: none

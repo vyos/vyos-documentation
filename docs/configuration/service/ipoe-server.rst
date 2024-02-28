@@ -52,7 +52,7 @@ the configuration.
 
 .. cfgcmd:: set service ipoe-server authentication interface <interface> mac <MAC>
 
-    Creates local pppoe user with username=**<interface>** and
+    Creates local IPoE user with username=**<interface>** and
     password=**<MAC>** (mac-address)
 
 .. cfgcmd:: set service ipoe-server authentication mode <local | radius>
@@ -68,7 +68,7 @@ the configuration.
 .. cfgcmd:: set service ipoe-server client-ip-pool <POOL-NAME> range <x.x.x.x-x.x.x.x | x.x.x.x/x>
 
    Use this command to define the first IP address of a pool of
-   addresses to be given to l2tp clients. If notation ``x.x.x.x-x.x.x.x``,
+   addresses to be given to IPoE clients. If notation ``x.x.x.x-x.x.x.x``,
    it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
    used there is possibility to set host/netmask.
 
@@ -251,15 +251,6 @@ User interface can be put to VRF context via RADIUS Access-Accept packet, or cha
 it via RADIUS CoA. ``Accel-VRF-Name`` is used from these purposes. It is custom `ACCEL-PPP attribute`_.
 Define it in your RADIUS server.
 
-Renaming clients interfaces by RADIUS
-=====================================
-
-If the RADIUS server uses the attribute ``NAS-Port-Id``, ppp tunnels will be
-renamed.
-
-.. note:: The value of the attribute ``NAS-Port-Id`` must be less than 16
-   characters, otherwise the interface won't be renamed.
-
 ****
 IPv6
 ****
@@ -267,16 +258,16 @@ IPv6
 .. cfgcmd:: set service ipoe-server client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
    mask <number-of-bits>
 
-  Use this comand to set the IPv6 address pool from which an l2tp client
+  Use this comand to set the IPv6 address pool from which an IPoE client
   will get an IPv6 prefix of your defined length (mask) to terminate the
-  l2tp endpoint at their side. The mask length can be set from 48 to 128
+  IPoE endpoint at their side. The mask length can be set from 48 to 128
   bit long, the default value is 64.
 
 .. cfgcmd:: set service ipoe-server client-ipv6-pool <IPv6-POOL-NAME> delegate <address>
    delegation-prefix <number-of-bits>
 
   Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
-  l2tp. You will have to set your IPv6 pool and the length of the
+  IPoE. You will have to set your IPv6 pool and the length of the
   delegation prefix. From the defined IPv6 pool you will be handing out
   networks of the defined length (delegation-prefix). The length of the
   delegation prefix can be set from 32 to 64 bit long.
@@ -397,6 +388,11 @@ Global Advanced options
 **********
 Monitoring
 **********
+
+.. opcmd:: show ipoe-server sessions
+
+   Use this command to locally check the active sessions in the IPoE
+   server.
 
 .. code-block:: none
 
