@@ -201,7 +201,7 @@
   margin: 0
 }
 
-.rst-content #site-to-site blockquote {
+.rst-content div:has(ul + blockquote) blockquote {
   margin: 15px 0 15px 24px
 }
 
