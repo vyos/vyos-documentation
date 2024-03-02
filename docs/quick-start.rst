@@ -56,7 +56,7 @@ commands:
   set interfaces ethernet eth0 address dhcp
   set interfaces ethernet eth0 description 'OUTSIDE'
   set interfaces ethernet eth1 address '192.168.0.1/24'
-  set interfaces ethernet eth1 description 'INSIDE'
+  set interfaces ethernet eth1 description 'LAN'
 
 
 SSH Management
