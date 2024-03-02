@@ -53,6 +53,11 @@ Advertising a Prefix
 ''''''''''''''''''''
 
 .. cfgcmd:: set service router-advert interface <interface> prefix 2001:DB8::/32
+If you're receving a prefix delegated from another interface then:
+.. cfgcmd:: set service router-advert interface <interface> prefix ::/xx (xx prefix length, usually /64)
+
+
+
 
 .. stop_vyoslinter
 
