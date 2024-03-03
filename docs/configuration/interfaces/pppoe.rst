@@ -380,9 +380,13 @@ IPv6 DHCPv6-PD Example
 
 .. stop_vyoslinter
 
-The following configuration will assign a /64 prefix out of a /56 delegation
-to eth0. The IPv6 address assigned to eth0 will be <prefix>::ffff/64.
-If you do not know the prefix size delegated to you, start with sla-len 0.
+The following configuration will setup a PPPoE session source from eth1 and
+assign a /64 prefix out of a /56 delegation (requested from the ISP) to eth0.
+The IPv6 address assigned to eth0 will be <prefix>::1/64. If you do not know
+the prefix size delegated to you, start with sla-len 0.
+
+In addition we setup IPv6 :abbr:`RA (Router Advertisements)` to make the
+prefix known on the eth0 link.
 
 .. start_vyoslinter
 
@@ -395,3 +399,5 @@ If you do not know the prefix size delegated to you, start with sla-len 0.
   set interfaces pppoe pppoe0 dhcpv6-options pd 0 length '56'
   set interfaces pppoe pppoe0 ipv6 address autoconf
   set interfaces pppoe pppoe0 source-interface eth1
+
+  set service router-advert interface eth0 prefix ::/64

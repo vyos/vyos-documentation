@@ -26,7 +26,7 @@ Supported interface types:
 Enabling Advertisments
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. cfgcmd:: set service router-advert interface <interface> ....
+.. cfgcmd:: set service router-advert interface <interface> ...
 
 .. stop_vyoslinter
 
@@ -52,7 +52,11 @@ Enabling Advertisments
 Advertising a Prefix
 ''''''''''''''''''''
 
-.. cfgcmd:: set service router-advert interface <interface> prefix 2001:DB8::/32
+.. cfgcmd:: set service router-advert interface <interface> prefix <prefix/mask>
+
+   .. note:: You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
+    Advertisements)`. This will take the IPv6 GUA prefix assigned to the interface,
+    which comes in handy when using DHCPv6-PD.
 
 .. stop_vyoslinter
 
