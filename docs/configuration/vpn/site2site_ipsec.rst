@@ -16,7 +16,8 @@ special characters. It is purely informational.
 Each site-to-site peer has the next options:
 
 * ``authentication`` - configure authentication between VyOS and a remote peer.
-  Suboptions:
+  If pre-shared-secret mode is used, the secret key must be defined in 
+  ``set vpn ipsec authentication`` and suboptions:
 
  * ``psk`` - Preshared secret key name:
 
@@ -36,8 +37,7 @@ Each site-to-site peer has the next options:
 
   * ``pre-shared-secret`` - use predefined shared secret phrase;
 
-  * ``rsa`` - use simple shared RSA key. The key must be defined in the
-    ``set vpn rsa-keys`` section;
+  * ``rsa`` - use simple shared RSA key.
 
   * ``x509`` - use certificates infrastructure for authentication.
 
@@ -45,29 +45,26 @@ Each site-to-site peer has the next options:
    address. Useful in case if the remote peer is behind NAT or if ``mode x509``
    is used;
 
- * ``rsa-key-name`` - shared RSA key for authentication. The key must be defined
-   in the ``set vpn rsa-keys`` section;
+ * ``rsa`` - options for RSA authentication mode:
+
+  * ``local-key`` - name of PKI key-pair with local private key
+
+  * ``remote-key`` - name of PKI key-pair with remote public key
+
+  * ``passphrase`` - local private key passphrase
 
  * ``use-x509-id`` - use local ID from x509 certificate. Cannot be used when
    ``id`` is defined;
 
  * ``x509`` - options for x509 authentication mode:
 
-  * ``ca-cert-file`` - CA certificate file. Using for authenticating
-    remote peer;
+  * ``ca-certificate`` - CA certificate in PKI configuration. Using for 
+    authenticating remote peer;
 
-  * ``cert-file`` - certificate file, which will be used for authenticating
-    local router on remote peer;
+  * ``certificate`` - certificate file in PKI configuration, which will be used
+    for authenticating local router on remote peer;
 
-  * ``crl-file`` - file with the Certificate Revocation List. Using to check if
-    a certificate for the remote peer is valid or revoked;
-
-  * ``key`` - a private key, which will be used for authenticating local router
-    on remote peer:
-
-   * ``file`` - path to the key file;
-
-   * ``password`` - passphrase private key, if needed.
+  * ``passphrase`` - private key passphrase, if needed.
 
 * ``connection-type`` - how to handle this connection process. Possible
   variants:
@@ -113,6 +110,9 @@ Each site-to-site peer has the next options:
   Hostname is a DNS name which could be used when a peer has a public IP
   address and DNS name, but an IP address could be changed from time to time.
 
+* ``replay-window`` - IPsec replay window to configure for this CHILD_SA 
+  (default: 32), a value of 0 disables IPsec replay protection
+
 * ``tunnel`` - define criteria for traffic to be matched for encrypting and send
   it to a peer:
 
@@ -126,6 +126,9 @@ Each site-to-site peer has the next options:
   * ``port`` - define port. Have effect only when used together with ``prefix``;
 
   * ``prefix`` - IP network at local side.
+
+ * ``priority`` - Add priority for policy-based IPSec VPN tunnels(lowest value 
+   more preferable)
 
  * ``protocol`` - define the protocol for match traffic, which should be
    encrypted and send to this peer;
