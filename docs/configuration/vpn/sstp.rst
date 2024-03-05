@@ -274,22 +274,10 @@ IPv6
 
 .. code-block:: none
 
-<<<<<<< HEAD
-  set vpn sstp authentication local-users username vyos password vyos
-  set vpn sstp authentication mode local
-  set vpn sstp gateway-address 192.0.2.254
-  set vpn sstp client-ip-pool subnet 192.0.2.0/25
-  set vpn sstp name-server 10.0.0.1
-  set vpn sstp name-server 10.0.0.2
-  set vpn sstp ssl ca-cert-file /config/auth/ca.crt
-  set vpn sstp ssl cert-file /config/auth/server.crt
-  set vpn sstp ssl key-file /config/auth/server.key
-=======
   set vpn sstp ppp-options ipv6 allow
   set vpn sstp client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
   set vpn sstp client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
   set vpn sstp default-ipv6-pool IPv6-POOL
->>>>>>> d71c4607 (Rewritten the SSTP server documentation)
 
 IPv6 Advanced Options
 =====================
