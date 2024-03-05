@@ -2,11 +2,6 @@
 VyOS Automation
 ###############
 
-
-  * Nornir
-  * startup scripts
-
-
 .. toctree::
    :maxdepth: 1
    
