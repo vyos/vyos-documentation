@@ -242,7 +242,7 @@ Configuration
 
 .. cfgcmd:: set service dns dynamic name <service-name> host-name <record>
 
-   Configure DNS `<record>` which should be updated. This can be set multiple times..
+   Configure DNS `<record>` which should be updated. This can be set multiple times.
 
 .. cfgcmd:: set service dns dynamic name <service-name> ttl <ttl>
 
