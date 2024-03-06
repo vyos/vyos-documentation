@@ -98,6 +98,10 @@ Configuration
    This diable the external cache and directly injects the flow-states into the
    in-kernel Connection Tracking System of the backup firewall.
 
+.. cfgcmd:: set service conntrack-sync disable-syslog
+
+   Disable connection logging via Syslog.
+
 *********
 Operation
 *********
