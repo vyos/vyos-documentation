@@ -318,6 +318,16 @@ times:
   set high-availability vrrp group Foo health-check interval 60
   set high-availability vrrp group Foo health-check failure-count 3
 
+When the vrrp group is a member of the sync group will use only
+the sync group health check script.
+This example shows how to configure it for the sync group:
+
+.. code-block:: none
+
+  set high-availability vrrp sync-group Bar health-check script /config/scripts/vrrp-check.sh
+  set high-availability vrrp sync-group Bar health-check interval 60
+  set high-availability vrrp sync-group Bar health-check failure-count 3
+
 Transition scripts
 ^^^^^^^^^^^^^^^^^^
 
