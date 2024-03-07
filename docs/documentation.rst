@@ -18,16 +18,16 @@ guide how to do so.
    documentation.
 
 VyOS documentation is written in reStructuredText and generated to Read the Docs
-pages with Sphinx, as per the Python tradition, as well as PDF files for offline
-use through LaTeX. We welcome all sorts of contributions to the documentation.
+pages with Sphinx, as per the Python tradition. We welcome all sorts of
+contributions to the documentation.
 Not just new additions but also corrections to existing documentation.
 
 The documentation source is kept in the Git repository at
 https://github.com/vyos/vyos-documentation and you can follow the instructions
 in the README.md_ to build and test your changes.
 
-You can either install Sphinx (and TeX Live for PDF output) and build the
-documentation locally, or use the Dockerfile_ to build it in a container.
+You can either install Sphinx and build the documentation locally,
+or use the Dockerfile_ to build it in a container.
 
 Guidelines
 ==========
@@ -35,8 +35,6 @@ Guidelines
 There are a few things to keep in mind when contributing to the
 documentation, for the sake of consistency and readability.
 
-Take a look at the :doc:`/documentation` page for an intricate explanation
-of the documentation process.
 
 The following is a quick summary of the rules:
 
@@ -54,94 +52,73 @@ And finally, remember that the reStructuredText files aren't
 exclusively for generating HTML and PDF. They should be human-readable
 and easily perused from a console.
 
-Forking Workflow
-================
+Page content
+============
 
-The Forking Workflow is fundamentally different from other popular Git
-workflows. Instead of using a single server-side repository to act as the
-"central" codebase, it gives every developer their own server-side repository.
-This means that each contributor has not one, but two Git repositories: a
-private local one and a public server-side one.
+All RST files must follow the same TOC Level syntax and have to start with
 
-The main advantage of the Forking Workflow is that contributions can be
-integrated without the need for everybody to push to a single central
-repository. Developers push to their own server-side repositories, and only the
-project maintainer can push to the official repository. This allows the
-maintainer to accept commits from any developer without giving them write
-access to the official codebase.
+.. code-block::
 
-.. note:: Updates to our documentation should be delivered by a GitHub
-   pull-request. This requires you already have a GitHub account.
+   #####
+   Title
+   #####
 
-* Fork this project on GitHub https://github.com/vyos/vyos-documentation/fork
+The configuration mode folder and the articles cover the specific level of
+the commands. The exact level depends on the command. This should provide
+stability for URLs used in the forum or blogpost.
 
-* Clone fork to local machine, then change to that directory
-  ``$ cd vyos-documentation``
+For example:
 
-* Install the requirements ``$ pip install -r requirements.txt``
-  (or something similar)
+  * ``set firewall zone`` is written in ``firewall/zone.rst``
+  * ``set interfaces ethernet`` is written in ``interfaces/ethernet.rst``
 
-* Create a new branch for your work, use a descriptive name of your work:
-  ``$ git checkout -b <branch-name>``
+In the configuration part of the page, all possible configuration options
+should be documented. Use ``.. cfgcmd::`` described above.
 
-* Make all your changes - please keep our commit rules in mind
-  (:ref:`prepare_commit`). This mainly applies to proper commit messages
-  describing your change (how and why). Please check out the documentation of
-  Sphinx-doc_ or reStructuredText_ if you are not familiar with it. This is used
-  for writing our docs. Additional directives how to write in RST can be
-  obtained from reStructuredTextDirectives_.
+Related operation command must be documented in the next part of the article.
+Use ``::opcmd..`` for these commands.
 
-* Check your changes by locally building the documentation ``$ make livehtml``.
-  Sphinx will build the html files in the ``docs/_build`` folder. We provide
-  you with a Docker container for an easy-to-use user experience. Check the
-  README.md_ file of this repository.
+Each page must contain the following parts:
 
-* View modified files by calling ``$ git status``. You will get an overview of
-  all files modified by you. You can add individual files to the Git Index in
-  the next step.
+1. Theoretical information
+--------------------------
 
-* Add modified files to Git index ``$ git add path/to/filename`` or add all
-  unstaged files ``$ git add .``. All files added to the Git index will be part
-  of you following Git commit.
+Theoretical information required for users to understand the next document sections:
 
-* Commit your changes with the message, ``$ git commit -m "<commit message>"``
-  or  use ``$ git commit -v`` to have your configured editor launched. You can
-  type in a commit message. Again please make yourself comfortable without
-  rules (:ref:`prepare_commit`).
+  - a simple explanation of what is this page about, why or when it is required to be used
+  - references to standards, RFCs
 
-* Push commits to your GitHub project: ``$ git push -u origin <branch-name>``
+2. Configuration description
+----------------------------
 
-* Submit pull-request. In GitHub visit the main repository and you should
-  see a banner suggesting to make a pull request. Fill out the form and
-  describe what you do.
+    Describe CLI items related to the service or use case. Each config line
+    or section must be explained, using information provided in the 1st part
+    of the page.
 
-* Once pull requests have been approved, you may want to locally update
-  your forked repository too. First you'll have to add a second remote
-  called `upstream` which points to our main repository. ``$ git remote add
-  upstream https://github.com/vyos/vyos-documentation.git``
+3. Configuration examples
+-------------------------
 
-  Check your configured remote repositories:
+    Practical examples of the service or use case configuration. They must
+    contain topology maps (if applicable) and short descriptions.
 
-  .. code-block:: none
+4. Known issues
+---------------
 
-    $ git remote -v
-    origin    https://github.com/<username>/vyos-documentation.git (fetch)
-    origin    https://github.com/<username>/vyos.documentation.git (push)
-    upstream  https://github.com/vyos/vyos-documentation.git (fetch)
-    upstream  https://github.com/vyos/vyos-documentation.git (push)
+This section must contain a list of:
 
-  Your remote repo on Github is called ``origin``, while the original repo you
-  have forked is called ``upstream``. Now you can locally update your forked
-  repo.
+  - known issues or potential problems for the service or use case
+  - workarounds for known issues (if any exist)
 
-  .. code-block:: none
+5. Debugging
+------------
 
-    $ git fetch upstream
-    $ git checkout master
-    $ git merge upstream/master
+Described procedures for debugging a service:
 
-* If you also want to update your fork on GitHub, use the following: ``$ git
-  push origin master``
+  - how to collect logs or other debugging information (like `show` commands output)
+  - how to read and what to search for in logs and collected information
+  - what are indicators of good and bad states in debugging outputs
+
+
 
 Style Guide
 ===========
@@ -381,63 +358,95 @@ URL. This is heavily used in the :ref:`release-notes` section.
   * :vytask:`T1605` Fixed regression in L2TP/IPsec server
   * :vytask:`T1613` Netflow/sFlow captures IPv6 traffic correctly
 
-Page content
-------------
 
-The documentation has 3 different types of pages. The same kind of pages must
-have the same structure to achieve a recognition factor.
+Forking Workflow
+================
 
-All RST files must follow the same TOC Level syntax and have to start with
+The Forking Workflow is fundamentally different from other popular Git
+workflows. Instead of using a single server-side repository to act as the
+"central" codebase, it gives every developer their own server-side repository.
+This means that each contributor has not one, but two Git repositories: a
+private local one and a public server-side one.
 
-.. code-block::
+The main advantage of the Forking Workflow is that contributions can be
+integrated without the need for everybody to push to a single central
+repository. Developers push to their own server-side repositories, and only the
+project maintainer can push to the official repository. This allows the
+maintainer to accept commits from any developer without giving them write
+access to the official codebase.
 
-   #####
-   Title
-   #####
+.. note:: Updates to our documentation should be delivered by a GitHub
+   pull-request. This requires you already have a GitHub account.
 
-Configuration mode pages
-^^^^^^^^^^^^^^^^^^^^^^^^
+* Fork this project on GitHub https://github.com/vyos/vyos-documentation/fork
 
-The configuration mode folder and the articles cover the specific level of
-the commands. The exact level depends on the command. This should provide
-stability for URLs used in the forum or blogpost.
+* Clone fork to local machine, then change to that directory
+  ``$ cd vyos-documentation``
 
-For example:
+* Install the requirements ``$ pip install -r requirements.txt``
+  (or something similar)
 
-  * ``set firewall zone`` is written in ``firewall/zone.rst``
-  * ``set interfaces ethernet`` is written in ``interfaces/ethernet.rst``
+* Create a new branch for your work, use a descriptive name of your work:
+  ``$ git checkout -b <branch-name>``
 
-The article starts with a short introduction about the command or the
-technology. Please include some helpful links or background information.
+* Make all your changes - please keep our commit rules in mind
+  (:ref:`prepare_commit`). This mainly applies to proper commit messages
+  describing your change (how and why). Please check out the documentation of
+  Sphinx-doc_ or reStructuredText_ if you are not familiar with it. This is used
+  for writing our docs. Additional directives how to write in RST can be
+  obtained from reStructuredTextDirectives_.
 
-An optional section follows. Some commands have requirements like compatible
-hardware (e.g. Wifi) or some commands you have to set before. For
-example, it is recommended to set a route-map before configuring BGP.
+* Check your changes by locally building the documentation ``$ make livehtml``.
+  Sphinx will build the html files in the ``docs/_build`` folder. We provide
+  you with a Docker container for an easy-to-use user experience. Check the
+  README.md_ file of this repository.
 
-In the configuration part of the page, all possible configuration options
-should be documented. Use ``.. cfgcmd::`` described above.
+* View modified files by calling ``$ git status``. You will get an overview of
+  all files modified by you. You can add individual files to the Git Index in
+  the next step.
 
-Related operation command must be documented in the next part of the article.
-Use ``::opcmd..`` for these commands.
+* Add modified files to Git index ``$ git add path/to/filename`` or add all
+  unstaged files ``$ git add .``. All files added to the Git index will be part
+  of you following Git commit.
 
-If there some troubleshooting guides related to the commands. Explain it in the
-next optional part.
+* Commit your changes with the message, ``$ git commit -m "<commit message>"``
+  or  use ``$ git commit -v`` to have your configured editor launched. You can
+  type in a commit message. Again please make yourself comfortable without
+  rules (:ref:`prepare_commit`).
 
-Operation mode pages
-^^^^^^^^^^^^^^^^^^^^
+* Push commits to your GitHub project: ``$ git push -u origin <branch-name>``
 
-Operation mode commands that do not fit in a related configuration mode command
-must be documented in this part of the documentation.
+* Submit pull-request. In GitHub visit the main repository and you should
+  see a banner suggesting to make a pull request. Fill out the form and
+  describe what you do.
 
-General concepts for troubleshooting and detailed process descriptions belong
-here.
+* Once pull requests have been approved, you may want to locally update
+  your forked repository too. First you'll have to add a second remote
+  called `upstream` which points to our main repository. ``$ git remote add
+  upstream https://github.com/vyos/vyos-documentation.git``
 
-Anything else
-^^^^^^^^^^^^^
+  Check your configured remote repositories:
 
-Anything else that is not a configuration or an operation command has no
-predefined structure.
+  .. code-block:: none
 
+    $ git remote -v
+    origin    https://github.com/<username>/vyos-documentation.git (fetch)
+    origin    https://github.com/<username>/vyos.documentation.git (push)
+    upstream  https://github.com/vyos/vyos-documentation.git (fetch)
+    upstream  https://github.com/vyos/vyos-documentation.git (push)
+
+  Your remote repo on Github is called ``origin``, while the original repo you
+  have forked is called ``upstream``. Now you can locally update your forked
+  repo.
+
+  .. code-block:: none
+
+    $ git fetch upstream
+    $ git checkout master
+    $ git merge upstream/master
+
+* If you also want to update your fork on GitHub, use the following: ``$ git
+  push origin master``
 
 .. stop_vyoslinter
 
