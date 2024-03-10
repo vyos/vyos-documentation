@@ -325,6 +325,29 @@ There are a lot of matching criteria against which the packet can be tested.
    Match criteria based on connection mark.
 
 .. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
+   conntrack-helper <module>
+.. cfgcmd:: set firewall ipv4 input filter rule <1-999999>
+   conntrack-helper <module>
+.. cfgcmd:: set firewall ipv4 output filter rule <1-999999>
+   conntrack-helper <module>
+.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
+   conntrack-helper <module>
+
+   Match based on connection tracking protocol helper module to secure use of 
+   that helper module. See below for possible completions `<module>`. 
+
+   .. code-block:: none
+
+      Possible completions:
+      ftp                  Related traffic from FTP helper
+      h323                 Related traffic from H.323 helper
+      pptp                 Related traffic from PPTP helper
+      nfs                  Related traffic from NFS helper
+      sip                  Related traffic from SIP helper
+      tftp                 Related traffic from TFTP helper
+      sqlnet               Related traffic from SQLNet helper
+
+.. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
    source address [address | addressrange | CIDR]
 .. cfgcmd:: set firewall ipv4 input filter rule <1-999999>
    source address [address | addressrange | CIDR]
