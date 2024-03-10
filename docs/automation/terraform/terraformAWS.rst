@@ -1,43 +1,11 @@
 :lastproofread: 2024-01-11
 
-.. _vyos-terraform:
+.. _terraformAWS:
 
-Terraform for VyOS
-==================
+Deploying VyOS in the AWS cloud
+===============================
 
-VyOS supports development infrastructure via Terraform and provisioning via Ansible.
-Terraform allows you to automate the process of deploying instances on many cloud and virtual platforms. 
-In this article, we will look at using terraforms to deploy vyos on platforms - AWS, AZURE, and vSphere.
-More detailed about what is Terraform you can write using the link_.
-
-Need to install_ Terraform
-
-Structure of files in the standard Terraform project:
-
-.. code-block:: none
-
- .
- ├── main.tf             # The main script
- ├── version.tf          # File for the changing version of Terraform.
- ├── variables.tf        # The file of all variables in "main.tf"
- └── terraform.tfvars    # The value of all variables (passwords, login, ip adresses and so on)
-
-
-General commands that we will use for running Terraform scripts
-
-
-.. code-block:: none
-
-  #cd /<your folder>         # go to the Terrafom project
-  #terraform init          # install all addons and provider (aws az and so on)
-  #terraform plan          # show wtah is changing
-  #terraform apply         # run script
-  #yes                     # apply running
-
-
-Deploying vyos in the AWS cloud
--------------------------------
-With the help of terraforms, you can quickly deploy Vyos-based infrastructure in the AWS cloud. If necessary, the infrastructure can be removed using terraform.
+With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the AWS cloud. If necessary, the infrastructure can be removed using terraform.
 Also we will make provisioning using Ansible.
 
 
@@ -58,16 +26,16 @@ Step by step:
 AWS
 
 
-1.1 Create an account with AWS and get your "access_key", "secret key"
+  1 Create an account with AWS and get your "access_key", "secret key"
 
-1.2 Create a key pair_ and download your .pem key
+  2 Create a key pair_ and download your .pem key
 
 .. image:: /_static/images/keypairs.png
    :width: 50%
    :align: center
    :alt: Network Topology Diagram
 
-1.3 Create a security group_ for the new VyOS instance and open all traffic
+  3 Create a security group_ for the new VyOS instance and open all traffic
 
 .. image:: /_static/images/sg.png
    :width: 50%
@@ -83,36 +51,36 @@ AWS
 Terraform
 
 
-2.1 Create a0 UNIX or Windows instance
+  1 Create an UNIX or Windows instance
 
-2.2 Download and install Terraform
+  2 Download and install Terraform
 
-2.3 Create the folder for example /root/awsterraform
+  3 Create the folder for example /root/awsterraform
 
 .. code-block:: none
 
  mkdir /root/awsterraform
 
-2.4 Copy all files into your Terraform project "/root/awsterraform" (vyos.tf, var.tf, terraform.tfvars,version.tf), more detailed see `Structure of files Terrafom for AWS`_
+  4 Copy all files into your Terraform project "/root/awsterraform" (vyos.tf, var.tf, terraform.tfvars,version.tf), more detailed see `Structure of files Terrafom for AWS`_
 
-2.5 Type the commands :
+  5 Type the commands :
 
 .. code-block:: none
 
-   #cd /<your folder> 
-   #terraform init
+   cd /<your folder> 
+   terraform init
 
 
 Ansible
 
 
-3.1 Create a UNIX instance whenever you want (local, cloud, and so on)
+  1 Create an UNIX instance whenever you want (local, cloud, and so on)
 
-3.2 Download and install Ansible
+  2 Download and install Ansible
 
-3.3 Create the folder for example /root/aws/
+  3 Create the folder for example /root/aws/
 
-3.4 Copy all files into your Ansible project "/root/aws/" (ansible.cfg, instance.yml, mykey.pem and "all"), more detailed see `Structure of files Ansible for AWS`_
+  4 Copy all files into your Ansible project "/root/aws/" (ansible.cfg, instance.yml, mykey.pem and "all"), more detailed see `Structure of files Ansible for AWS`_
 
 mykey.pem you have to get using step 1.2
 
@@ -120,14 +88,14 @@ mykey.pem you have to get using step 1.2
 Start 
 
 
-4.1 Type the commands on your Terrafom instance:
+Type the commands on your Terrafom instance:
    
 .. code-block:: none
 
-   #cd /<your folder>
-   #terraform plan  
-   #terraform apply  
-   #yes
+   cd /<your folder>
+   terraform plan  
+   terraform apply  
+   yes
 
 
 Start creating an AWS instance and check the result 
@@ -265,14 +233,14 @@ Start creating an AWS instance and check the result
   null_resource.SSHconnection2: Still creating... [40s elapsed]
   null_resource.SSHconnection2: Still creating... [50s elapsed]
   null_resource.SSHconnection2: Still creating... [1m0s elapsed]
-  null_resource.SSHconnection2 (remote-exec): ok: [54.144.84.120]
+  null_resource.SSHconnection2 (remote-exec): ok: [54.xxx.xxx.xxx]
   
   null_resource.SSHconnection2 (remote-exec): TASK [Configure general settings for the vyos hosts group] *********************
   null_resource.SSHconnection2: Still creating... [1m10s elapsed]
-  null_resource.SSHconnection2 (remote-exec): changed: [54.144.84.120]
+  null_resource.SSHconnection2 (remote-exec): changed: [54.xxx.xxx.xxx]
   
   null_resource.SSHconnection2 (remote-exec): PLAY RECAP *********************************************************************
-  null_resource.SSHconnection2 (remote-exec): 54.144.84.120              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+  null_resource.SSHconnection2 (remote-exec): 54.xxx.xxx.xxx              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
   
   null_resource.SSHconnection2: Creation complete after 1m16s [id=4902256962410024771]
   
@@ -280,7 +248,7 @@ Start creating an AWS instance and check the result
   
   Outputs:
   
-  my_IP = "54.144.84.120"
+  my_IP = "54.xxx.xxx.xxx"
   
 
 
@@ -289,17 +257,17 @@ If you need to delete the instance please type the command:
 
 .. code-block:: none
 
-   #terraform destroy
+   terraform destroy
 
 
 Troubleshooting
 ---------------
 
-1. Ansible doesn't connect via SSH to your AWS instance: you have to check that your SSH key has copied into the path /root/aws/.
+  1 Ansible doesn't connect via SSH to your AWS instance: you have to check that your SSH key has copied into the path /root/aws/.
 Also, increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location).
 Make sure that you have opened access to the instance in the security group.
 
-2. Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file vyos. tf
+  2 Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file VyOS. tf
 
 .. code-block:: none
 
@@ -320,8 +288,8 @@ Structure of files Terrafom for AWS
 
  .
  ├── vyos.tf				# The main script
- ├── var.tf					# File for the changing version of Terraform.
- ├── versions.tf			# The file of all variables in "vyos.tf"
+ ├── var.tf					# The file of all variables in "vyos.tf"
+ ├── versions.tf			# File for the changing version of Terraform.
  └── terraform.tfvars		# The value of all variables (passwords, login, ip adresses and so on)
  
 
@@ -533,7 +501,7 @@ instance.yml
   ##############################################################################
   # About tasks:
   # "Wait 300 seconds, but only start checking after 60 seconds" - try to make ssh connection every 60 seconds until 300 seconds
-  # "Configure general settings for the vyos hosts group" - make provisioning into AWS VyOS node
+  # "Configure general settings for the VyOS hosts group" - make provisioning into AWS VyOS node
   # You have to add all necessary cammans of VyOS under the block "lines:"
   ##############################################################################
 
@@ -549,15 +517,15 @@ instance.yml
           delay: 60
           timeout: 300
   
-      - name: "Configure general settings for the vyos hosts group"
+      - name: "Configure general settings for the VyOS hosts group"
         vyos_config:
           lines:
-            - set system name-server 8.8.8.8
+            - set system name-server xxx.xxx.xxx.xxx
           save:
             true
 
 
-all
+group_vars/all
 
 .. code-block:: none
 

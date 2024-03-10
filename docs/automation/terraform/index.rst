@@ -2,17 +2,13 @@
 VyOS Terraform
 ##############
 
-
-  * Nornir
-  * startup scripts
-
-
 .. toctree::
    :maxdepth: 1
    :caption: Content
    
+   terraformvyos
    terraformAWS
-#   terraformAZ
-#   terraformvSphere
-#   terraformGoogle
+   terraformAZ
+   terraformvSphere
+   terraformGoogle
    
