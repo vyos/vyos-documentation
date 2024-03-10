@@ -7,9 +7,26 @@ PyVyOS
 
 PyVyOS is a Python library for interacting with VyOS devices via their API. 
 This documentation guides you on using PyVyOS to manage your VyOS devices programmatically. 
-The complete PyVyOS documentation is available on [Read the Docs](https://pyvyos.readthedocs.io/en/latest/), 
-and the library can be found on [GitHub](https://github.com/robertoberto/pyvyos) 
-and [PyPI](https://pypi.org/project/pyvyos/).
+
+
+
+Full and updated Documentation at Read the Docs
+-------------------------------------
+
+- `PyVyOS Documentation <https://pyvyos.readthedocs.io/en/latest/>`_ on Read the Docs guides you through the installation, configuration, and usage of the PyVyOS library.
+
+
+Download by Source Code: GitHub
+----------------------------------------
+
+- The `PyVyOS Source Code <https://github.com/robertoberto/pyvyos>`_ on GitHub offers access to the library's code, allowing for review and contributions.
+
+
+Download via pip:
+------------------------------
+
+- PyVyOS can be easily installed via pip, Python's package installer. Simply run `pip install pyvyos` in your terminal. For more details, visit `PyVyOS on PyPI <https://pypi.org/project/pyvyos/>`_.
+
 
 Installation
 ------------
@@ -145,4 +162,3 @@ Configure, then Load File
     response = device.config_file_load(file="/config/test300.config")
 
 
-.. _pyvyos: https://github.com/robertoberto/pyvyos
