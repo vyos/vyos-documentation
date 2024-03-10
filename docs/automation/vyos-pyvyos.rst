@@ -1,20 +1,28 @@
-:lastproofread: 2023-12-15
+:lastproofread: 2024-03-10
 
 .. _vyos-pyvyos:
 
-PyVyOS
+pyvyos
 ======
 
-PyVyOS is a Python library for interacting with VyOS devices via their API. 
-This documentation guides you on using PyVyOS to manage your VyOS devices programmatically. 
-The complete PyVyOS documentation is available on [Read the Docs](https://pyvyos.readthedocs.io/en/latest/), 
-and the library can be found on [GitHub](https://github.com/robertoberto/pyvyos) 
-and [PyPI](https://pypi.org/project/pyvyos/).
+pyvyos is a Python library designed for interacting with VyOS devices through
+their API. This documentation is intended to guide you in using pyvyos for
+programmatic management of your VyOS devices. 
+
+- `pyvyos Documentation on Read the Docs 
+  <https://pyvyos.readthedocs.io/en/latest/>`_ provides detailed instructions
+  on the installation, configuration, and operation of the pyvyos library.
+- `pyvyos Source Code on GitHub <https://github.com/robertoberto/pyvyos>`_ 
+  allows you to access and contribute to the library's code.
+- `pyvyos on PyPI <https://pypi.org/project/pyvyos/>`_ for easy installation
+  via pip, the Python package installer. Execute `pip install pyvyos` in your
+  terminal to install.
+
 
 Installation
 ------------
 
-You can install PyVyOS using pip:
+You can install pyvyos using pip:
 
 .. code-block:: bash
 
@@ -61,7 +69,7 @@ Initializing a VyDevice Object
 
     device = VyDevice(hostname=hostname, apikey=apikey, port=port, protocol=protocol, verify=verify)
 
-Using PyVyOS
+Using pyvyos
 ------------
 
 Configure, then Set
