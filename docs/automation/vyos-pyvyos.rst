@@ -8,9 +8,12 @@ pyvyos
 pyvyos is a Python library designed for interacting with VyOS devices through their API. 
 This documentation is intended to guide you in using pyvyos for programmatic management of your VyOS devices. 
 
-- `pyvyos Documentation on Read the Docs <https://pyvyos.readthedocs.io/en/latest/>`_ provides detailed instructions on the installation, configuration, and operation of the pyvyos library.
-- `pyvyos Source Code on GitHub <https://github.com/robertoberto/pyvyos>`_ allows you to access and contribute to the library's code.
-- `pyvyos on PyPI <https://pypi.org/project/pyvyos/>`_ for easy installation via pip, the Python package installer. Execute `pip install pyvyos` in your terminal to install.
+- `pyvyos Documentation on Read the Docs <https://pyvyos.readthedocs.io/en/latest/>`_ 
+provides detailed instructions on the installation, configuration, and operation of the pyvyos library.
+- `pyvyos Source Code on GitHub <https://github.com/robertoberto/pyvyos>`_ allows you 
+to access and contribute to the library's code.
+- `pyvyos on PyPI <https://pypi.org/project/pyvyos/>`_ for easy installation via pip, the 
+Python package installer. Execute `pip install pyvyos` in your terminal to install.
 
 Installation
 ------------
