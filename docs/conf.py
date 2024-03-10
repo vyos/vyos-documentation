@@ -22,7 +22,7 @@ from docutils.parsers.rst.roles import set_classes
 # -- Project information -----------------------------------------------------
 
 project = u'VyOS'
-copyright = u'2023, VyOS maintainers and contributors'
+copyright = u'2024, VyOS maintainers and contributors'
 author = u'VyOS maintainers and contributors'
 
 # The short X.Y version
@@ -47,7 +47,7 @@ extensions = ['sphinx.ext.intersphinx',
               'notfound.extension',
               'autosectionlabel',
               'myst_parser',
-              'sphinx_panels',
+              'sphinx_design',
               'vyos'
 ]
 

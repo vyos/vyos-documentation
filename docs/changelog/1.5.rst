@@ -8,6 +8,226 @@
    _ext/releasenotes.py
 
 
+2024-01-12
+==========
+
+* :vytask:`T5925` ``(feature): Containers change systemd KillMode``
+* :vytask:`T5919` ``(bug): Firewall - opmode for ipv6``
+* :vytask:`T5306` ``(default): bgp config migration failed with v6only option configured with peer-group``
+* :vytask:`T3429` ``(bug): Hyper-V integration services not working on VyOS 1.4 (sagitta/current)``
+
+
+2024-01-11
+==========
+
+* :vytask:`T5713` ``(bug): strip-private doesn't strip string after "secret"``
+* :vytask:`T5532` ``(bug): After add system image the boot stuck and works again after the second reboot``
+* :vytask:`T5814` ``(bug): VyOS 1.3 to 1.4 LTS Firewall ruleset migration script breaks configuration``
+* :vytask:`T3191` ``(bug): PAM RADIUS freezing when accounting does not configured on RADIUS server``
+* :vytask:`T5917` ``(feature): Restore annotations of (running)/(default boot) in select image list``
+* :vytask:`T5916` ``(default): Added segment routing check for index size and SRGB size``
+* :vytask:`T5913` ``(feature): Allow for Peer-Groups in ipv4-labeled-unicast SAFI``
+
+
+2024-01-10
+==========
+
+* :vytask:`T5918` ``(bug): Verification problem for `set vpn ipsec interface```
+* :vytask:`T5911` ``(bug): pki: service update ignored if certificate name contains a hyphen (-)``
+* :vytask:`T5886` ``(feature): Add support for ACME protocol (LetsEncrypt)``
+* :vytask:`T5766` ``(bug): http: rewrite conf-mode script to get_config_dict()``
+* :vytask:`T4256` ``(feature): Display static DHCP server leases in the operational command output``
+* :vytask:`T5902` ``(bug): http: remove virtual-host configuration in webserver``
+* :vytask:`T3316` ``(feature): Use Kea DHCP(v6) instead of ISC DHCP(v6)``
+* :vytask:`T5791` ``(default): Update dynamic dns configuration path to be consistent with other areas of VyOS``
+* :vytask:`T5708` ``(default): Additional dynamic dns improvements to align with ddclient 3.11.1 release``
+* :vytask:`T5573` ``(bug): Fix ddclient cache entries``
+* :vytask:`T5614` ``(default): Add conntrack helper matching on firewall``
+
+
+2024-01-09
+==========
+
+* :vytask:`T5898` ``(bug): Replace partprobe with partx due to unable to install VyOS``
+* :vytask:`T5862` ``(bug): Default MTU is not acceptable in some environments``
+* :vytask:`T5840` ``(feature): Upgrade Kea to 2.4.x``
+* :vytask:`T5838` ``(feature): Add Infiniband kernel modules``
+* :vytask:`T5785` ``(bug): API output of show container image broken``
+* :vytask:`T5249` ``(feature): Add rollback-soft feature to rollback without a reboot``
+* :vytask:`T2511` ``(feature): Migrate vyatta-op-quagga to new XML format``
+* :vytask:`T5905` ``(bug): pki: IPsec and VTI interface priority inversion when using x509 site-to-site peer``
+
+
+2024-01-08
+==========
+
+* :vytask:`T5888` ``(bug): Firewall upgrade fails because of icmpv6``
+* :vytask:`T5844` ``(bug): HTTPS API doesn't start without configured keys even when GraphQL authentication type is set to token``
+* :vytask:`T5904` ``(feature): op-mode: add "show ipv6 route vrf <name> <prefix>" command``
+
+
+2024-01-07
+==========
+
+* :vytask:`T5899` ``(feature): VyOS vm images use bookworm repo``
+* :vytask:`T5887` ``(feature): Upgrade Linux Kernel to 6.6.y (2023 LTS edition)``
+
+
+2024-01-06
+==========
+
+* :vytask:`T3214` ``(bug): OpenVPN IPv6 fixes``
+
+
+2024-01-05
+==========
+
+* :vytask:`T5894` ``(feature): Extend get_config_dict() with additional parameter with_pki that defaults to False``
+
+
+2024-01-03
+==========
+
+* :vytask:`T5880` ``(bug): verify_source_interface should not allow dynamic interfaces like ppp, l2tp, ipoe or sstpc client interfaces``
+* :vytask:`T5879` ``(bug): tunnel: sourceing from dynamic pppoe0 interface will fail on reboots``
+
+
+2024-01-02
+==========
+
+* :vytask:`T5885` ``(default): image-tools: relax restriction on image-name length from 32 to 64``
+
+
+2024-01-01
+==========
+
+* :vytask:`T5883` ``(bug): Preserve file ownership in /config subdirs on add system image``
+* :vytask:`T5474` ``(feature): Establish common file name pattern for XML conf mode commands``
+
+
+2023-12-30
+==========
+
+* :vytask:`T5875` ``(bug): login: removing and re-adding a user keeps the home directory but UID will change, thus SSH keys no longer work``
+* :vytask:`T5653` ``(feature): Command to display fingerprint``
+
+
+2023-12-29
+==========
+
+* :vytask:`T5829` ``(bug): Can't Add IPv6 Address to Containers``
+* :vytask:`T5852` ``(bug): Reboots fail with eapol WAN interface``
+* :vytask:`T5869` ``(bug): vyos.template.first_host_address() does not honor RFC4291 section 2.6.1``
+
+
+2023-12-28
+==========
+
+* :vytask:`T5827` ``(bug): image-tools: 'show system image' Command Not in Order``
+* :vytask:`T4163` ``(feature): [BMP-BGP]  Routing monitoring  feature``
+* :vytask:`T5867` ``(feature): Upgrade podman to Debian Trixie version 4.7.x``
+* :vytask:`T5866` ``(feature): Add op-mode command to restart IPv6 RA daemon``
+* :vytask:`T5861` ``(bug): Flavor build system fails with third-party packages``
+* :vytask:`T5854` ``(feature): Extend override-default script to allow embedded defaultValue settings``
+* :vytask:`T5566` ``(feature): Be able to disable 802.3az/EEE (energy efficient ethernet) for a particular interface``
+* :vytask:`T5792` ``(default): Upgrade ddclient 3.11.2 release``
+
+
+2023-12-25
+==========
+
+* :vytask:`T5855` ``(feature): Migrate "set service lldp snmp enable" -> `set service lldp snmp"``
+* :vytask:`T5837` ``(bug): vyos.configdict.node_changed does not return keys per adding``
+* :vytask:`T5856` ``(bug): SNMP service removal fails``
+
+
+2023-12-23
+==========
+
+* :vytask:`T5678` ``(feature): Improvements in PPPoE configuration``
+
+
+2023-12-22
+==========
+
+* :vytask:`T5804` ``(bug): SNAT "any" interface error``
+
+
+2023-12-21
+==========
+
+* :vytask:`T5807` ``(bug): NAT66  op-mode bugs``
+* :vytask:`T5778` ``(bug): The show dhcp server leases operation mode command does not work as expected``
+* :vytask:`T5775` ``(default): Migrated Firewall Global State Policy ineffective on latest firewall zone config``
+* :vytask:`T5676` ``(bug): NAT66 source rule with negation source/destination prefix causes TypeError``
+* :vytask:`T5637` ``(bug): Firewall default-action log``
+* :vytask:`T5796` ``(bug): Openconnect - HTTPS  security headers are missing``
+
+
+2023-12-20
+==========
+
+* :vytask:`T5823` ``(feature): Protocol BGP add default values for config dictionary``
+* :vytask:`T5798` ``(enhancment): reverse-proxy load-balancing service should support multiple certificates for frontend``
+
+
+2023-12-19
+==========
+
+* :vytask:`T5828` ``(default): Fix GRUB installation on arm64``
+
+
+2023-12-18
+==========
+
+* :vytask:`T5751` ``(feature): Adjust new image tools for non-interactive use``
+* :vytask:`T5831` ``(feature): show system image should reverse order by addition date``
+* :vytask:`T5825` ``(bug): image-tools: restore authentication on 'add system image'``
+* :vytask:`T5821` ``(bug): image-tools: restore vrf-aware 'add system image'``
+* :vytask:`T5819` ``(bug): Don't echo password on install image``
+* :vytask:`T5806` ``(bug): Clear old raid data on new install image``
+* :vytask:`T5789` ``(bug): image-tools should copy ssh host keys on image update``
+* :vytask:`T5758` ``(default): Restore scanning configs when live installing``
+
+
+2023-12-15
+==========
+
+* :vytask:`T5824` ``(bug): busybox cannot connect some websites from initramfs``
+* :vytask:`T5770` ``(bug): MACsec not encrypting``
+* :vytask:`T5803` ``(default): git/github: Adjust configuration for safe and baseline defaults``
+
+
+2023-12-14
+==========
+
+* :vytask:`T5773` ``(bug): Unable to load config via HTTP``
+* :vytask:`T5816` ``(bug): BGP Large Community List Validation Broken``
+* :vytask:`T5812` ``(bug): rollback check max revision number does not work``
+* :vytask:`T5749` ``(feature): Show MAC address VRF and MTU by default for "show interfaces"``
+* :vytask:`T5774` ``(bug): commit-archive to FTP server broken after update (VyOS 1.5-rolling)``
+* :vytask:`T5826` ``(default): Add dmicode as an explicit dependency``
+* :vytask:`T5793` ``(default): mdns-repeater: Cleanup avahi-daemon configuration in /etc``
+
+
+2023-12-13
+==========
+
+* :vytask:`T591` ``(feature): Support SRv6``
+
+
+2023-12-12
+==========
+
+* :vytask:`T5815` ``(enhancment): Add load_config module``
+
+
+2023-12-11
+==========
+
+* :vytask:`T5741` ``(bug): WAN Load Balancing failover route tables aren't created``
+
+
 2023-12-10
 ==========
 

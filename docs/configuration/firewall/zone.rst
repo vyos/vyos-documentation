@@ -123,3 +123,41 @@ written from the perspective of: *Source Zone*-to->*Destination Zone*
       set firewall zone DMZ from LAN firewall name LANv4-to-DMZv4
       set firewall zone LAN from DMZ firewall name DMZv4-to-LANv4
 
+**************
+Operation-mode
+**************
+
+.. opcmd:: show firewall zone-policy
+
+   This will show you a basic summary of zones configuration.
+
+   .. code-block:: none
+
+      vyos@vyos:~$ show firewall zone-policy
+      Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
+      ------  ------------  -----------  ---------------  ---------------
+      LAN     eth1          WAN          WAN_to_LAN
+              eth2
+      LOCAL   LOCAL         LAN          LAN_to_LOCAL
+                            WAN          WAN_to_LOCAL     WAN_to_LOCAL_v6
+      WAN     eth3          LAN          LAN_to_WAN
+              eth0          LOCAL        LOCAL_to_WAN
+      vyos@vyos:~$
+
+.. opcmd:: show firewall zone-policy zone <zone>
+
+   This will show you a basic summary of a particular zone.
+
+   .. code-block:: none
+
+      vyos@vyos:~$ show firewall zone-policy zone WAN
+      Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
+      ------  ------------  -----------  ---------------  ---------------
+      WAN     eth3          LAN          LAN_to_WAN
+              eth0          LOCAL        LOCAL_to_WAN
+      vyos@vyos:~$ show firewall zone-policy zone LOCAL
+      Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
+      ------  ------------  -----------  ---------------  ---------------
+      LOCAL   LOCAL         LAN          LAN_to_LOCAL
+                            WAN          WAN_to_LOCAL     WAN_to_LOCAL_v6
+      vyos@vyos:~$

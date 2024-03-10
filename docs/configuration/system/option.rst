@@ -22,6 +22,36 @@ General
 
     Play an audible beep to the system speaker when system is ready.
 
+.. cfgcmd:: set system option root-partition-auto-resize
+
+    Enables the root partition auto-extension and resizes to the maximum
+    available space on system boot.
+
+Kernel
+======
+
+.. cfgcmd:: set system option kernel disable-mitigations
+
+    Disable all optional CPU mitigations. This improves system performance,
+    but it may also expose users to several CPU vulnerabilities.
+
+    This will add the following option to the Kernel commandline:
+
+    * ``mitigations=off``
+
+    .. note:: Setting will only become active with the next reboot!
+
+.. cfgcmd:: set system option kernel disable-power-saving
+
+    Disable CPU power saving mechanisms also known as C states.
+
+    This will add the following two options to the Kernel commandline:
+
+    * ``intel_idle.max_cstate=0`` Disable intel_idle and fall back on acpi_idle
+    * ``processor.max_cstate=1`` Limit processor to maximum C-state 1
+
+    .. note:: Setting will only become active with the next reboot!
+
 ***********
 HTTP client
 ***********

@@ -1,6 +1,8 @@
-:lastproofread: 2021-09-01
+:lastproofread: 2024-01-05
 
 .. include:: /_include/need_improvement.txt
+
+.. _pki:
 
 ###
 PKI
@@ -118,12 +120,12 @@ OpenVPN
 
 .. opcmd:: generate pki openvpn shared-secret
 
-  Genearate a new OpenVPN shared secret. The generated secred is the output to
+  Genearate a new OpenVPN shared secret. The generated secret is the output to
   the console.
 
 .. opcmd:: generate pki openvpn shared-secret install <name>
 
-  Genearate a new OpenVPN shared secret. The generated secred is the output to
+  Genearate a new OpenVPN shared secret. The generated secret is the output to
   the console.
 
   .. include:: pki_cli_import_help.txt
@@ -248,6 +250,73 @@ certificates used by services on this router.
 
   If CA is present, this certificate will be included in generated CRLs
 
+Import files to PKI format
+-------------------------- 
+VyOS provides this utility to import existing certificates/key files directly 
+into PKI from op-mode. Previous to VyOS 1.4, certificates were stored under the 
+/config folder permanently and will be retained post upgrade.
+
+.. opcmd:: import pki ca <name> file <Path to CA certificate file>
+
+  Import the public CA certificate from the defined file to VyOS CLI.
+
+.. opcmd:: import pki ca <name> key-file <Path to private key file> 
+
+  Import the CAs private key portion to the CLI. This should never leave the 
+  system as it is used to decrypt the data. The key is required if you use 
+  VyOS as your certificate generator.
+
+.. opcmd:: import pki certificate <name> file <path to certificate>
+
+  Import the certificate from the file to VyOS CLI.
+
+.. opcmd:: import pki certificate <name> key-file <path to private key>
+
+  Import the private key of the certificate to the VyOS CLI. This should never
+  leave the system as it is used to decrypt the data.
+
+.. opcmd:: import pki openvpn shared-secret <name> file <path to OpenVPN secret key>
+
+  Import the OpenVPN shared secret stored in file to the VyOS CLI.
+
+ACME
+^^^^
+
+The VyOS PKI subsystem can also be used to automatically retrieve Certificates
+using the :abbr:`ACME (Automatic Certificate Management Environment)` protocol.
+
+.. cfgcmd:: set pki certificate <name> acme domain-name <name>
+
+  Domain names to apply, multiple domain-names can be specified.
+
+  This is a mandatory option
+
+.. cfgcmd:: set pki certificate <name> acme email <address>
+
+  Email used for registration and recovery contact.
+
+  This is a mandatory option
+
+.. cfgcmd:: set pki certificate <name> acme listen-address <address>
+
+  The address the server listens to during http-01 challenge
+
+.. cfgcmd:: set pki certificate <name> acme rsa-key-size <2048 | 3072 | 4096>
+
+  Size of the RSA key.
+
+  This options defaults to 2048
+
+.. cfgcmd:: set pki certificate <name> acme url <url>
+
+  ACME Directory Resource URI.
+
+  This defaults to https://acme-v02.api.letsencrypt.org/directory
+
+  .. note:: During initial deployment we recommend using the staging API
+    of LetsEncrypt to prevent and blacklisting of your system. The API
+    endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
+
 Operation
 =========
 
@@ -292,3 +361,7 @@ also to display them.
 .. opcmd:: show pki crl
 
   Show a list of installed :abbr:`CRLs (Certificate Revocation List)`.
+
+.. opcmd:: renew certbot
+
+  Manually trigger certificate renewal. This will be done twice a day.

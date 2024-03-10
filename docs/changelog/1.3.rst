@@ -8,6 +8,103 @@
    _ext/releasenotes.py
 
 
+2024-01-14
+==========
+
+* :vytask:`T5715` ``(bug): IPSec VPN: restart vpn is not working``
+
+
+2024-01-13
+==========
+
+* :vytask:`T5924` ``(bug): Build cannot pass the smoketest dialup-router-medium-vpn``
+
+
+2024-01-11
+==========
+
+* :vytask:`T5275` ``(default): Add op mode commands for exporting certificates to PEM files with correct headers``
+* :vytask:`T5274` ``(default): Add a deprecation warning for OpenVPN site-to-site with pre-shared secret``
+* :vytask:`T3191` ``(bug): PAM RADIUS freezing when accounting does not configured on RADIUS server``
+
+
+2024-01-10
+==========
+
+* :vytask:`T4646` ``(bug): USB serial output console does not work``
+* :vytask:`T4466` ``(bug): intel i225-v nic does not detect link after boot``
+* :vytask:`T4222` ``(feature): Support for TWAMP as round-trip metric``
+* :vytask:`T1369` ``(bug): GCP Networking Failure``
+
+
+2024-01-09
+==========
+
+* :vytask:`T3242` ``(bug): PPPoE Server overhead on virtual interfaces creation``
+* :vytask:`T2755` ``(default): Requirements for partial interface setup``
+* :vytask:`T2494` ``(bug): systemd dependencies issues``
+* :vytask:`T2343` ``(feature): Disable memory ballooning in VM templates``
+* :vytask:`T2254` ``(default): Provide more information on the build branch in the version data``
+* :vytask:`T2223` ``(feature): convert operational show interfaces to python/XML``
+* :vytask:`T1925` ``(bug): DMVPN is always listed as down in "show vpn ipsec sa"``
+* :vytask:`T1297` ``(feature): Add GARP settings to VRRP/keepalived``
+
+
+2024-01-08
+==========
+
+* :vytask:`T5318` ``(bug): Security Vulnerabilities for VyOS 1.3.3``
+* :vytask:`T3980` ``(bug): vrrp transition-script validator makes warning fatal and also causes a python NameError exception``
+* :vytask:`T2799` ``(feature): VyOS Certificates Manager``
+
+
+2023-12-29
+==========
+
+* :vytask:`T5852` ``(bug): Reboots fail with eapol WAN interface``
+
+
+2023-12-22
+==========
+
+* :vytask:`T4760` ``(bug): VyOS does not support running multiple instances of DHCPv6 clients``
+
+
+2023-12-21
+==========
+
+* :vytask:`T5714` ``(bug): IPSec VPN: op-mode: "show log vpn" does not show results``
+* :vytask:`T3039` ``(feature): Resize a root partition and filesystem automatically during deployment in virtual environments``
+* :vytask:`T2404` ``(bug): Cannot change MTU``
+* :vytask:`T2353` ``(bug): Interface [conf_mode] errors parent task``
+* :vytask:`T5796` ``(bug): Openconnect - HTTPS  security headers are missing``
+
+
+2023-12-19
+==========
+
+* :vytask:`T2116` ``(feature): Processing configuration via Cloud-init User-Data``
+
+
+2023-12-18
+==========
+
+* :vytask:`T2191` ``(feature): Using tallow to block sshd probes``
+
+
+2023-12-15
+==========
+
+* :vytask:`T5824` ``(bug): busybox cannot connect some websites from initramfs``
+
+
+2023-12-12
+==========
+
+* :vytask:`T5817` ``(bug): Show openvpn server fails in some cases``
+* :vytask:`T5413` ``(default): Deny the opportunity to use one public/private key pair on both wireguard peers.``
+
+
 2023-11-30
 ==========
 
@@ -1942,7 +2039,6 @@
 ==========
 
 * :vytask:`T3682` ``(bug): Remove running dhclient from ether-resume.py``
-* :vytask:`T3681` ``(default): The VMware Tools resume script did not run successfully in this virtual machine.``
 
 
 2021-08-20

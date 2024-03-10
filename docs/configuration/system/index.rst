@@ -25,6 +25,7 @@ System
    sysctl
    task-scheduler
    time-zone
+   updates
 
 
 .. toctree::

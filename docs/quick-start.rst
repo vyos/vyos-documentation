@@ -56,7 +56,7 @@ commands:
   set interfaces ethernet eth0 address dhcp
   set interfaces ethernet eth0 description 'OUTSIDE'
   set interfaces ethernet eth1 address '192.168.0.1/24'
-  set interfaces ethernet eth1 description 'INSIDE'
+  set interfaces ethernet eth1 description 'LAN'
 
 
 SSH Management
@@ -93,12 +93,13 @@ DNS server.
 
 .. code-block:: none
 
-  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 default-router '192.168.0.1'
-  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 name-server '192.168.0.1'
-  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 domain-name 'vyos.net'
+  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 option default-router '192.168.0.1'
+  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 option name-server '192.168.0.1'
+  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 option domain-name 'vyos.net'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 lease '86400'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 start '192.168.0.9'
   set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 stop '192.168.0.254'
+  set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 subnet-id '1'
 
   set service dns forwarding cache-size '0'
   set service dns forwarding listen-address '192.168.0.1'
@@ -141,7 +142,7 @@ networks, addresses, ports, and domains that describe different parts of
 our network. We can then use them for filtering within our firewall rulesets,
 allowing for more concise and readable configuration.
 
-In this case, we will create two interface groups—a ``WAN`` group for our
+In this case, we will create two interface groups — a ``WAN`` group for our
 interfaces connected to the public internet and a ``LAN`` group for the
 interfaces connected to our internal network. Additionally, we will create a
 network group, ``NET-INSIDE-v4``, that contains our internal subnet.
@@ -156,10 +157,26 @@ Configure Stateful Packet Filtering
 -----------------------------------
 
 With the new firewall structure, we have have a lot of flexibility in how we
-group and order our rules, as shown by the two alternative approaches below.
+group and order our rules, as shown by the three alternative approaches below.
 
-Option 1: Common Chain
-^^^^^^^^^^^^^^^^^^^^^^
+Option 1: Global State Policies
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using options defined in ``set firewall global-options state-policy``, state
+policy rules that applies for both IPv4 and IPv6 are created. These global
+state policies also applies for all traffic that passes through the router
+(transit) and for traffic originated/destinated to/from the router itself, and
+will be evaluated before any other rule defined in the firewall.
+
+Most installations would choose this option, and will contain:
+
+.. code-block:: none
+
+  set firewall global-options state-policy established action accept
+  set firewall global-options state-policy related action accept
+  set firewall global-options state-policy invalid action drop
+
+Option 2: Common/Custom Chain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We can create a common chain for stateful connection filtering of multiple
 interfaces (or multiple netfilter hooks on one interface). Those individual
@@ -196,12 +213,11 @@ hooks as the first filtering rule in the respective chains:
   set firewall ipv4 input filter rule 10 action 'jump'
   set firewall ipv4 input filter rule 10 jump-target CONN_FILTER
 
-Option 2: Per-Hook Chain
+Option 3: Per-Hook Chain
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Alternatively, instead of configuring the ``CONN_FILTER`` chain described above,
-you can take the more traditional stateful connection filtering approach by
-creating rules on each hook's chain:
+Alternatively, you can take the more traditional stateful connection
+filtering approach by creating rules on each base hook's chain:
 
 .. code-block:: none
 
@@ -225,7 +241,7 @@ established and related connections, we can block all other incoming traffic
 addressed to our local network.
 
 Create a new chain (``OUTSIDE-IN``) which will drop all traffic that is not
-explicity allowed at some point in the chain. Then, we can jump to that chain
+explicitly allowed at some point in the chain. Then, we can jump to that chain
 from the ``forward`` hook when traffic is coming from the ``WAN`` interface
 group and is addressed to our local network.
 

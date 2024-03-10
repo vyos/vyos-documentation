@@ -1,0 +1,57 @@
+.rst-footer-buttons {
+  .fa-arrow-circle-left {
+    padding-left: 25px;
+  } 
+
+  .fa-arrow-circle-left::before {
+    content: url('../images/arrow-left.svg');
+    position: absolute;
+    top: 10px;
+    left: 15px;
+  }
+
+  & > .btn-neutral {
+    background: #fff !important;
+    min-width: 90px;
+    height: 40px;
+    border: 2px solid #FD8F01;
+    color: #121010 !important;
+    font-family: 'Archivo', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    position: relative;
+    text-align: left;
+    box-shadow: none;
+    transition: transform 250ms linear;
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 4px;
+
+    &:hover,
+    &:active {
+      transform: scale(1.05);
+      /* padding-left: 16px; */
+    }
+
+    &:focus {
+      outline: none;  
+    }
+
+    .fa-arrow-circle-right::before {
+      content: url('../images/arrow-right.svg');
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+  }
+}
+
+p > a.reference.external,
+p > a,
+#partaker-i5 > p > a.external {
+  color: #FD8F01;
+  word-break: break-word;
+}

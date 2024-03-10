@@ -49,7 +49,7 @@ prepended with ``run``, even if you haven't created a session with configure.
 Run commands remotely
 ---------------------
 
-Sometimes you simply wan't to execute a bunch of op-mode commands via SSH on
+Sometimes you simply want to execute a bunch of op-mode commands via SSH on
 a remote VyOS system.
 
 .. code-block:: none

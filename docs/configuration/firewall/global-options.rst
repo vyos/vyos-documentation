@@ -1,4 +1,4 @@
-:lastproofread: 2023-11-07
+:lastproofread: 2023-12-26
 
 .. _firewall-global-options-configuration:
 
@@ -115,3 +115,33 @@ Configuration
    The following system parameter will be altered:
 
    * ``net.ipv4.tcp_rfc1337``
+
+.. cfgcmd:: set firewall global-options state-policy established action
+   [accept | drop | reject]
+
+.. cfgcmd:: set firewall global-options state-policy established log
+
+.. cfgcmd:: set firewall global-options state-policy established log-level
+   [emerg | alert | crit | err | warn | notice | info | debug]
+
+   Set the global setting for an established connection.
+
+.. cfgcmd:: set firewall global-options state-policy invalid action
+   [accept | drop | reject]
+
+.. cfgcmd:: set firewall global-options state-policy invalid log
+
+.. cfgcmd:: set firewall global-options state-policy invalid log-level
+   [emerg | alert | crit | err | warn | notice | info | debug]
+
+   Set the global setting for invalid packets.
+
+.. cfgcmd:: set firewall global-options state-policy related action
+   [accept | drop | reject]
+
+.. cfgcmd:: set firewall global-options state-policy related log
+
+.. cfgcmd:: set firewall global-options state-policy related log-level
+   [emerg | alert | crit | err | warn | notice | info | debug]
+
+   Set the global setting for related connections.

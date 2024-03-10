@@ -125,7 +125,7 @@ You can type ``help`` to get an overview of the available commands, and
 Useful commands are:
 
 * examine variables using ``pp(var)``
-* contine execution using ``cont``
+* continue execution using ``cont``
 * get a backtrace using ``bt``
 
 Config Migration Scripts
@@ -147,7 +147,7 @@ look like:
 
 The reason is that the configuration migration backend is rewritten and uses
 a new form of "magic string" which is applied on demand when real config
-migration is run on boot. When runnint individual migrators for testing,
+migration is run on boot. When running individual migrators for testing,
 you need to convert the "magic string" on your own by:
 
 .. code-block:: none
@@ -157,13 +157,13 @@ you need to convert the "magic string" on your own by:
 Configuration Error on System Boot
 ----------------------------------
 
-Beeing brave and running the latest rolling releases will sometimes trigger
+Being brave and running the latest rolling releases will sometimes trigger
 bugs due to corner cases we missed in our design. Those bugs should be filed
-via Phabricator_ but you can help us to narrow doen the issue. Login to your
+via Phabricator_ but you can help us to narrow down the issue. Login to your
 VyOS system and change into configuration mode by typing ``configure``. Now
 re-load your boot configuration by simply typing ``load`` followed by return.
 
-You shoudl now see a Python backtrace which will help us to handle the issue,
+You should now see a Python backtrace which will help us to handle the issue,
 please attach it to the Phabricator_ task.
 
 Boot Timing
@@ -179,7 +179,7 @@ installed by default on the VyOS 1.3 (equuleus) branch. The configuration is
 also versioned so we get comparable results. ``systemd-bootchart`` is configured
 using this file: bootchart.conf_
 
-To enable boot time graphing change the Kernel commandline and add the folowing
+To enable boot time graphing change the Kernel commandline and add the following
 string: ``init=/usr/lib/systemd/systemd-bootchart``
 
 This can also be done permanently by changing ``/boot/grub/grub.cfg``.
@@ -190,7 +190,7 @@ Priorities
 VyOS CLI is all about priorities. Every CLI node has a corresponding
 ``node.def`` file and possibly an attached script that is executed when the
 node is present. Nodes can have a priority, and on system bootup - or any
-other ``commit`` to the config all scripts are executed from lowest to higest
+other ``commit`` to the config all scripts are executed from lowest to highest
 priority. This is good as this gives a deterministic behavior.
 
 To debug issues in priorities or to see what's going on in the background

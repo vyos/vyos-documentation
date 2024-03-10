@@ -28,12 +28,10 @@ jobs:
           pip3 install phabricator==0.8.0
           python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b circinus sagitta equuleus
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.PR_ACTION_DOCUMENTATION_SUBMODULE_UPDATE }}
           commit-message: "Github: update current branch"
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: "Github: update current branch"
           body: |
             Autoupdate vyos-1x submodule
@@ -62,14 +60,12 @@ jobs:
         if: env.PHABRICATOR_API != null
         run: |
           pip3 install phabricator==0.8.0
-          python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b sagitta
+          python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b sagitta equuleus
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.PR_ACTION_DOCUMENTATION_SUBMODULE_UPDATE }}
           commit-message: "Github: update sagitta branch"
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: "Github: update sagitta branch"
           body: |
             Autoupdate vyos-1x submodule
@@ -101,12 +97,10 @@ jobs:
           pip3 install phabricator==0.8.0
           python3 docs/_ext/releasenotes.py -t ${{ secrets.PHABRICATOR_API }} -b equuleus
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.PR_ACTION_DOCUMENTATION_SUBMODULE_UPDATE }}
           commit-message: "Github: update equuleus branch"
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: "Github: update equuleus branch"
           body: |
             Autoupdate vyos-1x submodule

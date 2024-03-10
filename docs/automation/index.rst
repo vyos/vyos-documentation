@@ -8,10 +8,11 @@ VyOS Automation
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    
    vyos-api
    vyos-ansible
+   terraform/index
    vyos-napalm
    vyos-netmiko
    vyos-salt

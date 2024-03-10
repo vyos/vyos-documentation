@@ -4,10 +4,11 @@
 Testing
 #######
 
-One of the major advantages introduced in VyOS 1.3 is an autmated test framework.
-When assembling an ISO image multiple things can go wrong badly and publishing
-a faulty ISO makes no sense. The user is disappointed by the quality of the image
-and the developers get flodded with bug reports over and over again.
+One of the major advantages introduced in VyOS 1.3 is an automated test
+framework. When assembling an ISO image multiple things can go wrong badly and
+publishing a faulty ISO makes no sense. The user is disappointed by the quality
+of the image and the developers get flodded with bug reports over and over
+again.
 
 As the VyOS documentation is not only for users but also for the developers -
 and we keep no secret documentation - this section describes how the automated
@@ -19,7 +20,7 @@ Jenkins CI
 Our `VyOS CI`_ system is based on Jenkins and builds all our required packages
 for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build
 Job which builds and tests the VyOS ISO image which is published after a
-successfull test drive.
+successful test drive.
 
 We differentiate in two independent tests, which are both run in parallel by
 two separate QEmu instances which are launched via ``make test`` and ``make
@@ -41,7 +42,7 @@ with the following packages:
     if (params.BUILD_SMOKETESTS)
       CUSTOM_PACKAGES = '--custom-package vyos-1x-smoketest'
 
-So if you plan to build your own custom ISO image and wan't to make use of our
+So if you plan to build your own custom ISO image and want to make use of our
 smoketests, ensure that you have the `vyos-1x-smoketest` package installed.
 
 The ``make test`` command from the vyos-build_ repository will launch a new
@@ -105,7 +106,7 @@ Those common tests consists out of:
 * VLANs (QinQ and regular 802.1q)
 * ...
 
-.. note:: When you are working on interface configuration and you also wan't to
+.. note:: When you are working on interface configuration and you also want to
    test if the Smoketests pass you would normally loose the remote SSH connection
    to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the
    interface based tests can be called with an environment variable beforehand
