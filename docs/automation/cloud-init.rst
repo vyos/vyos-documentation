@@ -219,7 +219,7 @@ the method with KVM to attach the ISO as a CD drive follows.
 
 
 For more information on the NoCloud data source, visit its 
-page `_nocloud`_ in the cloud-init documentation. 
+page `nocloud`_ in the cloud-init documentation. 
 
 ***************
 Troubleshooting
