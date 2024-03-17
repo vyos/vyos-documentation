@@ -218,9 +218,8 @@ the method with KVM to attach the ISO as a CD drive follows.
      --noautoconsole
 
 
-For more information on the NoCloud data source, visit its `page
-<https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html>`_
-in the cloud-init documentation. 
+For more information on the NoCloud data source, visit its 
+page `_nocloud`_ in the cloud-init documentation. 
 
 ***************
 Troubleshooting
@@ -432,5 +431,5 @@ References
 .. _cloud-init-docs: https://docs.vyos.io/en/equuleus/automation/cloud-init.html?highlight=cloud-init#vyos-cloud-init
 .. _Cloud-init-Support: https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_cloud_init
 .. _Cloud-init-write_files: https://cloudinit.readthedocs.io/en/latest/topics/examples.html#writing-out-arbitrary-files
-
+.. _nocloud: https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html
 .. start_vyoslinter
