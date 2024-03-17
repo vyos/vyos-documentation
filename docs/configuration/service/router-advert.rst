@@ -13,6 +13,7 @@ Supported interface types:
     * bonding
     * bridge
     * ethernet
+    * geneve
     * l2tpv3
     * openvpn
     * pseudo-ethernet
@@ -22,9 +23,9 @@ Supported interface types:
     * wireless
     * wwan
 
-
-Enabling Advertisments
-~~~~~~~~~~~~~~~~~~~~~~~
+*************
+Configuration
+*************
 
 .. cfgcmd:: set service router-advert interface <interface> ...
 
@@ -50,7 +51,7 @@ Enabling Advertisments
 
 
 Advertising a Prefix
-''''''''''''''''''''
+--------------------
 
 .. cfgcmd:: set service router-advert interface <interface> prefix <prefix/mask>
 
@@ -73,30 +74,48 @@ Advertising a Prefix
 
 .. start_vyoslinter
 
+Advertising a NAT64 Prefix
+--------------------------
+
+.. cfgcmd:: set service router-advert interface <interface> nat64prefix <prefix/mask>
+
+   Enable PREF64 option as outlined in :rfc:`8781`.
+
+   NAT64 prefix mask must be one of: /32, /40, /48, /56, /64 or 96.
+
+   .. note:: The well known NAT64 prefix is ``64:ff9b::/96``
+
+.. stop_vyoslinter
+
+.. csv-table::
+    :header: "VyOS Field", "Description"
+    :widths: 10,30
+
+    "valid-lifetime","Time in seconds that the prefix will remain valid (default: 65528 seconds)"
+
+.. start_vyoslinter
+
 Disabling Advertisements
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 To disable advertisements without deleting the configuration:
 
 .. cfgcmd:: set service router-advert interface <interface> no-send-advert
 
-Example Configuration
-~~~~~~~~~~~~~~~~~~~~~
+
+*******
+Example
+*******
+
+Your LAN connected on eth0 uses prefix ``2001:db8:beef:2::/64`` with the router
+beeing ``2001:db8:beef:2::1``
 
 .. code-block:: none
 
-     interface eth0.2 {
-        default-preference high
-        hop-limit 64
-        interval {
-            max 600
-        }
-        name-server 2001:db8::1
-        name-server 2001:db8::2
-        other-config-flag
-        prefix 2001:db8:beef:2::/64 {
-            valid-lifetime 2592000
-        }
-        reachable-time 0
-        retrans-timer 0
-     }
+    set interfaces ethernet eth0 address 2001:db8:beef:2::1/64
+
+    set service router-advert interface eth0 default-preference 'high'
+    set service router-advert interface eth0 name-server '2001:db8::1'
+    set service router-advert interface eth0 name-server '2001:db8::2'
+    set service router-advert interface eth0 other-config-flag
+    set service router-advert interface eth0 prefix 2001:db8:beef:2::/64
