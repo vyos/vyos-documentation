@@ -88,6 +88,9 @@ proper commands list by copying it from another router.
 The configuration specified in the cloud-config document overwrites default
 configuration values and values configured via Metadata.
 
+After the ``vyos_config_commands`` are executed, cloud-init will automatically 
+perform a ``commit`` and ``save`` operation. 
+
 Here is an example cloud-config that appends configuration at the time of
 first boot.
 
