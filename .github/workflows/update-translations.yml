@@ -48,17 +48,15 @@ jobs:
       - name: set file ownership
         run: |
           sudo chown -R 1001 docs/_locale
-    
+  
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
-          add-paths: docs/_locale/*
+          token: ${{ secrets.PR_ACTION_DOCUMENTATION_SUBMODULE_UPDATE }}
           commit-message: "Github: update translations"
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: "Github: update translations"
           body: |
             Generate, upload new and download translation files 
           branch: update-translations-master
           delete-branch: true
+    
