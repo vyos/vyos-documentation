@@ -207,6 +207,10 @@ msgstr "Schlecht: radius (unless it's about the distance between a center of a c
 msgid "Beeing brave and running the latest rolling releases will sometimes trigger bugs due to corner cases we missed in our design. Those bugs should be filed via Phabricator_ but you can help us to narrow doen the issue. Login to your VyOS system and change into configuration mode by typing ``configure``. Now re-load your boot configuration by simply typing ``load`` followed by return."
 msgstr "Wenn man mutig ist und die neuesten Rolling Releases einsetzt, kann es manchmal zu Fehlern kommen, die wir in unserem Design übersehen haben. Diese Bugs sollten über Phabricator_ gemeldet werden, aber Sie können uns helfen, das Problem einzugrenzen. Loggen Sie sich in Ihr VyOS-System ein und wechseln Sie in den Konfigurationsmodus, indem Sie ``configure`` eingeben. Laden Sie nun Ihre Boot-Konfiguration neu, indem Sie einfach ``load`` gefolgt von Return eingeben."
 
+#: ../../contributing/debugging.rst:160
+msgid "Being brave and running the latest rolling releases will sometimes trigger bugs due to corner cases we missed in our design. Those bugs should be filed via Phabricator_ but you can help us to narrow down the issue. Login to your VyOS system and change into configuration mode by typing ``configure``. Now re-load your boot configuration by simply typing ``load`` followed by return."
+msgstr "Being brave and running the latest rolling releases will sometimes trigger bugs due to corner cases we missed in our design. Those bugs should be filed via Phabricator_ but you can help us to narrow down the issue. Login to your VyOS system and change into configuration mode by typing ``configure``. Now re-load your boot configuration by simply typing ``load`` followed by return."
+
 #: ../../contributing/debugging.rst:170
 msgid "Boot Timing"
 msgstr "Startzeitpunkt"
@@ -884,6 +888,10 @@ msgid "Our StrongSWAN build differs from the upstream:"
 msgstr "Our StrongSWAN build differs from the upstream:"
 
 #: ../../contributing/testing.rst:20
+msgid "Our `VyOS CI`_ system is based on Jenkins and builds all our required packages for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build Job which builds and tests the VyOS ISO image which is published after a successful test drive."
+msgstr "Our `VyOS CI`_ system is based on Jenkins and builds all our required packages for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build Job which builds and tests the VyOS ISO image which is published after a successful test drive."
+
+#: ../../contributing/testing.rst:20
 msgid "Our `VyOS CI`_ system is based on Jenkins and builds all our required packages for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build Job which builds and tests the VyOS ISO image which is published after a successfull test drive."
 msgstr "Our `VyOS CI`_ system is based on Jenkins and builds all our required packages for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build Job which builds and tests the VyOS ISO image which is published after a successfull test drive."
 
@@ -923,6 +931,10 @@ msgstr "Please submit your patches using the well-known GitHub pull-request agai
 #: ../../contributing/development.rst:254
 msgid "Please use the following template as good starting point when developing new modules or even rewrite a whole bunch of code in the new style XML/Pyhon interface."
 msgstr "Please use the following template as good starting point when developing new modules or even rewrite a whole bunch of code in the new style XML/Pyhon interface."
+
+#: ../../contributing/development.rst:254
+msgid "Please use the following template as good starting point when developing new modules or even rewrite a whole bunch of code in the new style XML/Python interface."
+msgstr "Please use the following template as good starting point when developing new modules or even rewrite a whole bunch of code in the new style XML/Python interface."
 
 #: ../../contributing/testing.rst:104
 msgid "Port description"
@@ -1016,6 +1028,10 @@ msgstr "Smoketests executes predefined VyOS CLI commands and checks if the desir
 #: ../../contributing/testing.rst:45
 msgid "So if you plan to build your own custom ISO image and wan't to make use of our smoketests, ensure that you have the `vyos-1x-smoketest` package installed."
 msgstr "So if you plan to build your own custom ISO image and wan't to make use of our smoketests, ensure that you have the `vyos-1x-smoketest` package installed."
+
+#: ../../contributing/testing.rst:45
+msgid "So if you plan to build your own custom ISO image and want to make use of our smoketests, ensure that you have the `vyos-1x-smoketest` package installed."
+msgstr "So if you plan to build your own custom ISO image and want to make use of our smoketests, ensure that you have the `vyos-1x-smoketest` package installed."
 
 #: ../../contributing/build-vyos.rst:202
 msgid "Some VyOS packages (namely vyos-1x) come with build-time tests which verify some of the internal library calls that they work as expected. Those tests are carried out through the Python Unittest module. If you want to build the ``vyos-1x`` package (which is our main development package) you need to start your Docker container using the following argument: ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will fail."
@@ -1198,6 +1214,10 @@ msgid "The package ends up in deb_dist dir."
 msgstr "The package ends up in deb_dist dir."
 
 #: ../../contributing/debugging.rst:148
+msgid "The reason is that the configuration migration backend is rewritten and uses a new form of \"magic string\" which is applied on demand when real config migration is run on boot. When running individual migrators for testing, you need to convert the \"magic string\" on your own by:"
+msgstr "The reason is that the configuration migration backend is rewritten and uses a new form of \"magic string\" which is applied on demand when real config migration is run on boot. When running individual migrators for testing, you need to convert the \"magic string\" on your own by:"
+
+#: ../../contributing/debugging.rst:148
 msgid "The reason is that the configuration migration backend is rewritten and uses a new form of \"magic string\" which is applied on demand when real config migration is run on boot. When runnint individual migrators for testing, you need to convert the \"magic string\" on your own by:"
 msgstr "The reason is that the configuration migration backend is rewritten and uses a new form of \"magic string\" which is applied on demand when real config migration is run on boot. When runnint individual migrators for testing, you need to convert the \"magic string\" on your own by:"
 
@@ -1314,8 +1334,16 @@ msgid "To debug issues in priorities or to see what's going on in the background
 msgstr "To debug issues in priorities or to see what's going on in the background you can use the ``/opt/vyatta/sbin/priority.pl`` script which lists to you the execution order of the scripts."
 
 #: ../../contributing/build-vyos.rst:373
+msgid "To debug the build process and gain additional information of what could be the root cause, you need to use `chroot` to change into the build directory. This is explained in the following step by step procedure:"
+msgstr "To debug the build process and gain additional information of what could be the root cause, you need to use `chroot` to change into the build directory. This is explained in the following step by step procedure:"
+
+#: ../../contributing/build-vyos.rst:373
 msgid "To debug the build process and gain additional information of what could be the root cause, you need to use `chroot` to change into the build directry. This is explained in the following step by step procedure:"
 msgstr "To debug the build process and gain additional information of what could be the root cause, you need to use `chroot` to change into the build directry. This is explained in the following step by step procedure:"
+
+#: ../../contributing/debugging.rst:182
+msgid "To enable boot time graphing change the Kernel commandline and add the following string: ``init=/usr/lib/systemd/systemd-bootchart``"
+msgstr "To enable boot time graphing change the Kernel commandline and add the following string: ``init=/usr/lib/systemd/systemd-bootchart``"
 
 #: ../../contributing/debugging.rst:182
 msgid "To enable boot time graphing change the Kernel commandline and add the folowing string: ``init=/usr/lib/systemd/systemd-bootchart``"
@@ -1409,6 +1437,10 @@ msgstr "Virtualization Platforms"
 msgid "VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def`` file and possibly an attached script that is executed when the node is present. Nodes can have a priority, and on system bootup - or any other ``commit`` to the config all scripts are executed from lowest to higest priority. This is good as this gives a deterministic behavior."
 msgstr "VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def`` file and possibly an attached script that is executed when the node is present. Nodes can have a priority, and on system bootup - or any other ``commit`` to the config all scripts are executed from lowest to higest priority. This is good as this gives a deterministic behavior."
 
+#: ../../contributing/debugging.rst:190
+msgid "VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def`` file and possibly an attached script that is executed when the node is present. Nodes can have a priority, and on system bootup - or any other ``commit`` to the config all scripts are executed from lowest to highest priority. This is good as this gives a deterministic behavior."
+msgstr "VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def`` file and possibly an attached script that is executed when the node is present. Nodes can have a priority, and on system bootup - or any other ``commit`` to the config all scripts are executed from lowest to highest priority. This is good as this gives a deterministic behavior."
+
 #: ../../contributing/build-vyos.rst:168
 msgid "VyOS has switched to Debian (12) Bookworm in its ``current`` branch, Due to software version updates, it is recommended to use the official Docker Hub image to build VyOS ISO."
 msgstr "VyOS has switched to Debian (12) Bookworm in its ``current`` branch, Due to software version updates, it is recommended to use the official Docker Hub image to build VyOS ISO."
@@ -1485,6 +1517,10 @@ msgstr "When you are able to verify that it is actually a bug, spend some time t
 msgid "When you are working on interface configuration and you also wan't to test if the Smoketests pass you would normally loose the remote SSH connection to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the interface based tests can be called with an environment variable beforehand to limit the number of interfaces used in the test. By default all interface e.g. all Ethernet interfaces are used."
 msgstr "When you are working on interface configuration and you also wan't to test if the Smoketests pass you would normally loose the remote SSH connection to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the interface based tests can be called with an environment variable beforehand to limit the number of interfaces used in the test. By default all interface e.g. all Ethernet interfaces are used."
 
+#: ../../contributing/testing.rst:109
+msgid "When you are working on interface configuration and you also want to test if the Smoketests pass you would normally loose the remote SSH connection to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the interface based tests can be called with an environment variable beforehand to limit the number of interfaces used in the test. By default all interface e.g. all Ethernet interfaces are used."
+msgstr "When you are working on interface configuration and you also want to test if the Smoketests pass you would normally loose the remote SSH connection to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the interface based tests can be called with an environment variable beforehand to limit the number of interfaces used in the test. By default all interface e.g. all Ethernet interfaces are used."
+
 #: ../../contributing/issues-features.rst:21
 msgid "When you believe you have found a bug, it is always a good idea to verify the issue prior to opening a bug request."
 msgstr "When you believe you have found a bug, it is always a good idea to verify the issue prior to opening a bug request."
@@ -1549,6 +1585,10 @@ msgstr "You have your own custom kernel `*.deb` packages in the `packages` folde
 #: ../../contributing/debugging.rst:166
 msgid "You shoudl now see a Python backtrace which will help us to handle the issue, please attach it to the Phabricator_ task."
 msgstr "You shoudl now see a Python backtrace which will help us to handle the issue, please attach it to the Phabricator_ task."
+
+#: ../../contributing/debugging.rst:166
+msgid "You should now see a Python backtrace which will help us to handle the issue, please attach it to the Phabricator_ task."
+msgstr "You should now see a Python backtrace which will help us to handle the issue, please attach it to the Phabricator_ task."
 
 #: ../../contributing/development.rst:146
 msgid "You then can proceed with cloning your fork or add a new remote to your local repository:"
@@ -1665,6 +1705,10 @@ msgstr "commit:expression:"
 #: ../../contributing/debugging.rst:128
 msgid "contine execution using ``cont``"
 msgstr "contine execution using ``cont``"
+
+#: ../../contributing/debugging.rst:128
+msgid "continue execution using ``cont``"
+msgstr "continue execution using ``cont``"
 
 #: ../../contributing/development.rst:675
 msgid "default:"

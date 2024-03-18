@@ -272,7 +272,7 @@ msgstr "A brief excursion into VRFs: This has been one of the longest-standing f
 msgid "A connection resource deployed in Azure linking the Azure VNet gateway and the local network gateway representing the Vyos device."
 msgstr "A connection resource deployed in Azure linking the Azure VNet gateway and the local network gateway representing the Vyos device."
 
-#: ../../configexamples/index.rst:37
+#: ../../configexamples/index.rst:38
 msgid "A host ``vyos-oobm`` will use as a ssh proxy. This host is just necessary for the Lab test."
 msgstr "A host ``vyos-oobm`` will use as a ssh proxy. This host is just necessary for the Lab test."
 
@@ -656,6 +656,10 @@ msgstr "Cisco VPC Crossconnect - Ports 39 and 40 bonded between each switch"
 msgid "Clamp the VTI's MSS to 1350 to avoid PMTU blackholes."
 msgstr "Clamp the VTI's MSS to 1350 to avoid PMTU blackholes."
 
+#: ../../configexamples/lac-lns.rst:96
+msgid "Client"
+msgstr "Client"
+
 #: ../../configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP.rst:94
 msgid "Client configuration"
 msgstr "Client configuration"
@@ -704,7 +708,7 @@ msgstr "Configuration 'dcsp' and shaper using QoS"
 msgid "Configuration Blueprints"
 msgstr "Configuration Blueprints"
 
-#: ../../configexamples/index.rst:30
+#: ../../configexamples/index.rst:31
 msgid "Configuration Blueprints (autotest)"
 msgstr "Configuration Blueprints (autotest)"
 
@@ -717,6 +721,7 @@ msgid "Configuration of basic firewall in one site, in order to:"
 msgstr "Configuration of basic firewall in one site, in order to:"
 
 #: ../../configexamples/inter-vrf-routing-vrf-lite.rst:113
+#: ../../configexamples/lac-lns.rst:29
 #: ../../configexamples/pppoe-ipv6-basic.rst:26
 msgid "Configurations"
 msgstr "Configurations"
@@ -885,7 +890,7 @@ msgstr "Dynamic routing used between CE and PE nodes and eBGP peering establishe
 msgid "Each interface is assigned to a zone. The interface can be physical or virtual such as tunnels (VPN, PPTP, GRE, etc) and are treated exactly the same."
 msgstr "Each interface is assigned to a zone. The interface can be physical or virtual such as tunnels (VPN, PPTP, GRE, etc) and are treated exactly the same."
 
-#: ../../configexamples/index.rst:34
+#: ../../configexamples/index.rst:35
 msgid "Each lab will build an test from an external script. The page content will generate, so changes will not take an effect."
 msgstr "Each lab will build an test from an external script. The page content will generate, so changes will not take an effect."
 
@@ -1252,6 +1257,14 @@ msgstr "In this example two LAN interfaces exist in different subnets instead of
 msgid "In this example we have 4 zones. LAN, WAN, DMZ, Local. The local zone is the firewall itself."
 msgstr "In this example we have 4 zones. LAN, WAN, DMZ, Local. The local zone is the firewall itself."
 
+#: ../../configexamples/lac-lns.rst:17
+msgid "In this example we use VyOS 1.5 as LNS and Cisco IOS as LAC. All users with domain **vyos.io** will be tunneled to LNS via L2TP."
+msgstr "In this example we use VyOS 1.5 as LNS and Cisco IOS as LAC. All users with domain **vyos.io** will be tunneled to LNS via L2TP."
+
+#: ../../configexamples/lac-lns.rst:98
+msgid "In this lab we use Windows PPPoE client."
+msgstr "In this lab we use Windows PPPoE client."
+
 #: ../../configexamples/zone-policy.rst:50
 msgid "Inbound WAN connect to DMZ host."
 msgstr "Inbound WAN connect to DMZ host."
@@ -1345,6 +1358,10 @@ msgstr "L3VPN configuration parameters table:"
 msgid "L3VPN for Hub-and-Spoke connectivity with VyOS"
 msgstr "L3VPN for Hub-and-Spoke connectivity with VyOS"
 
+#: ../../configexamples/lac-lns.rst:32
+msgid "LAC"
+msgstr "LAC"
+
 #: ../../configexamples/zone-policy.rst:392
 msgid "LAN, WAN, DMZ, local and TUN (tunnel)"
 msgstr "LAN, WAN, DMZ, local and TUN (tunnel)"
@@ -1388,6 +1405,10 @@ msgstr "LAN and DMZ hosts have basic outbound access: Web, FTP, SSH."
 #: ../../configexamples/zone-policy.rst:48
 msgid "LAN can access DMZ resources."
 msgstr "LAN can access DMZ resources."
+
+#: ../../configexamples/lac-lns.rst:72
+msgid "LNS"
+msgstr "LNS"
 
 #: ../../configexamples/l3vpn-hub-and-spoke.rst:551
 msgid "Let’s check IPv4 routing and MPLS information on provider nodes (same procedure for all P nodes):"
@@ -1433,8 +1454,21 @@ msgid "Masquerade Traffic originating from 10.200.201.0/24 that is heading out t
 msgstr "Masquerade Traffic originating from 10.200.201.0/24 that is heading out the public interface."
 
 #: ../../configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP.rst:254
+#: ../../configexamples/lac-lns.rst:106
 msgid "Monitoring"
 msgstr "Monitoring"
+
+#: ../../configexamples/lac-lns.rst:117
+msgid "Monitoring on LAC side"
+msgstr "Monitoring on LAC side"
+
+#: ../../configexamples/lac-lns.rst:108
+msgid "Monitoring on LNS side"
+msgstr "Monitoring on LNS side"
+
+#: ../../configexamples/lac-lns.rst:140
+msgid "Monitoring on RADIUS Server side"
+msgstr "Monitoring on RADIUS Server side"
 
 #: ../../configexamples/autotest/tunnelbroker/tunnelbroker.rst:162
 msgid "Multiple LAN/DMZ Setup"
@@ -1456,6 +1490,7 @@ msgstr "Native IPv4 and IPv6"
 msgid "Network Cabling"
 msgstr "Network Cabling"
 
+#: ../../configexamples/lac-lns.rst:21
 #: ../../configexamples/pppoe-ipv6-basic.rst:18
 msgid "Network Topology"
 msgstr "Network Topology"
@@ -1463,6 +1498,7 @@ msgstr "Network Topology"
 #: ../../configexamples/ansible.rst:-1
 #: ../../configexamples/inter-vrf-routing-vrf-lite.rst:-1
 #: ../../configexamples/l3vpn-hub-and-spoke.rst:-1
+#: ../../configexamples/lac-lns.rst:-1
 #: ../../configexamples/nmp.rst:-1
 #: ../../configexamples/pppoe-ipv6-basic.rst:-1
 #: ../../configexamples/qos.rst:-1
@@ -1654,6 +1690,10 @@ msgstr "PPPoE IPv6 Basic Setup for Home Network"
 #: ../../configexamples/pppoe-ipv6-basic.rst:29
 msgid "PPPoE Setup"
 msgstr "PPPoE Setup"
+
+#: ../../configexamples/lac-lns.rst:7
+msgid "PPPoE over L2TP"
+msgstr "PPPoE over L2TP"
 
 #: ../../configexamples/segment-routing-isis.rst:255
 msgid "Ping between VyOS-P1 / VyOS-P2 to confirm reachability:"
@@ -2046,7 +2086,7 @@ msgstr "The lab I built is using a VRF (called **mgmt**) to provide out-of-band 
 msgid "The lab was built using EVE-NG."
 msgstr "The lab was built using EVE-NG."
 
-#: ../../configexamples/index.rst:32
+#: ../../configexamples/index.rst:33
 msgid "The next pages contains automatic full tested configuration examples."
 msgstr "The next pages contains automatic full tested configuration examples."
 
@@ -2054,7 +2094,7 @@ msgstr "The next pages contains automatic full tested configuration examples."
 msgid "The previous example used the failover command to send traffic through eth1 if eth0 fails. In this example, failover functionality is provided by rule order."
 msgstr "The previous example used the failover command to send traffic through eth1 if eth0 fails. In this example, failover functionality is provided by rule order."
 
-#: ../../configexamples/index.rst:40
+#: ../../configexamples/index.rst:41
 msgid "The process will do the following steps:"
 msgstr "The process will do the following steps:"
 
@@ -2129,6 +2169,10 @@ msgstr "This configuration example and the requirments consists on:"
 #: ../../configexamples/ha.rst:13
 msgid "This document aims to walk you through setting everything up, so at a point where you can reboot any machine and not lose more than a few seconds worth of connectivity."
 msgstr "This document aims to walk you through setting everything up, so at a point where you can reboot any machine and not lose more than a few seconds worth of connectivity."
+
+#: ../../configexamples/lac-lns.rst:9
+msgid "This document is to describe a basic setup using PPPoE over L2TP. LAC and LNS are components of the broadband topology. LAC - L2TP access concentrator LNS -  L2TP Network Server LAC and LNS forms L2TP tunnel. LAC receives packets from PPPoE clients and forward them to LNS. LNS is the termination point that comes from PPP packets from the remote client."
+msgstr "This document is to describe a basic setup using PPPoE over L2TP. LAC and LNS are components of the broadband topology. LAC - L2TP access concentrator LNS -  L2TP Network Server LAC and LNS forms L2TP tunnel. LAC receives packets from PPPoE clients and forward them to LNS. LNS is the termination point that comes from PPP packets from the remote client."
 
 #: ../../configexamples/pppoe-ipv6-basic.rst:9
 msgid "This document is to describe a basic setup using PPPoE with DHCPv6-PD + SLAAC to construct a typical home network. The user can follow the steps described here to quickly setup a working network and use this as a starting point to further configure or fine-tune other settings."
@@ -2209,6 +2253,10 @@ msgstr "This section describes verification commands for MPLS/BGP/LDP protocols 
 #: ../../configexamples/l3vpn-hub-and-spoke.rst:409
 msgid "This section provides configuration steps for setting up VRFs on our PE nodes including CE facing interfaces, BGP, rd and route-target import/export based on the pre-defined parameters."
 msgstr "This section provides configuration steps for setting up VRFs on our PE nodes including CE facing interfaces, BGP, rd and route-target import/export based on the pre-defined parameters."
+
+#: ../../configexamples/lac-lns.rst:91
+msgid "This setup requires the Compression Control Protocol (CCP) being disabled, the command ``set vpn l2tp remote-access ppp-options disable-ccp`` accomplishes that."
+msgstr "This setup requires the Compression Control Protocol (CCP) being disabled, the command ``set vpn l2tp remote-access ppp-options disable-ccp`` accomplishes that."
 
 #: ../../configexamples/autotest/Wireguard/Wireguard.rst:10
 msgid "This simple structure show how to connect two offices. One remote branch and the central office."
@@ -2580,6 +2628,10 @@ msgstr "When you have both routers up, you should be able to establish a connect
 msgid "When you have enabled OSPF on both routers, you should be able to see each other with the command ``show ip ospf neighbour``. The state must be 'Full' or '2-Way'. If it is not, then there is a network connectivity issue between the hosts. This is often caused by NAT or MTU issues. You should not see any new routes (unless this is the second pass) in the output of ``show ip route``"
 msgstr "When you have enabled OSPF on both routers, you should be able to see each other with the command ``show ip ospf neighbour``. The state must be 'Full' or '2-Way'. If it is not, then there is a network connectivity issue between the hosts. This is often caused by NAT or MTU issues. You should not see any new routes (unless this is the second pass) in the output of ``show ip route``"
 
+#: ../../configexamples/lac-lns.rst:-1
+msgid "Window PPPoE Client Configuration"
+msgstr "Window PPPoE Client Configuration"
+
 #: ../../configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP.rst:13
 msgid "Windows Server 2019 with a running Active Directory"
 msgstr "Windows Server 2019 with a running Active Directory"
@@ -2713,15 +2765,15 @@ msgstr "compute3 - Port 11 of each switch"
 msgid "compute3 (VMware ESXi 6.5)"
 msgstr "compute3 (VMware ESXi 6.5)"
 
-#: ../../configexamples/index.rst:43
+#: ../../configexamples/index.rst:44
 msgid "configure each host in the lab"
 msgstr "configure each host in the lab"
 
-#: ../../configexamples/index.rst:42
+#: ../../configexamples/index.rst:43
 msgid "create the lab on a eve-ng server"
 msgstr "create the lab on a eve-ng server"
 
-#: ../../configexamples/index.rst:44
+#: ../../configexamples/index.rst:45
 msgid "do some defined tests"
 msgstr "do some defined tests"
 
@@ -2742,7 +2794,7 @@ msgstr "extended community and remote label of specific destination"
 msgid "first the PCA"
 msgstr "first the PCA"
 
-#: ../../configexamples/index.rst:46
+#: ../../configexamples/index.rst:47
 msgid "generate the documentation and include files"
 msgstr "generate the documentation and include files"
 
@@ -2754,7 +2806,7 @@ msgstr "green uses local routing table id and VNI 4000"
 msgid "information between PE and CE:"
 msgstr "information between PE and CE:"
 
-#: ../../configexamples/index.rst:45
+#: ../../configexamples/index.rst:46
 msgid "optional do an upgrade to a higher version and do step 3 again."
 msgstr "optional do an upgrade to a higher version and do step 3 again."
 
@@ -2770,7 +2822,7 @@ msgstr "router2 (Random 1RU machine with 4 NICs)"
 msgid "save the output to a file and import it in nearly all openvpn clients."
 msgstr "save the output to a file and import it in nearly all openvpn clients."
 
-#: ../../configexamples/index.rst:47
+#: ../../configexamples/index.rst:48
 msgid "shutdown and destroy the lab, if there is no error"
 msgstr "shutdown and destroy the lab, if there is no error"
 

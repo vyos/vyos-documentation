@@ -212,6 +212,10 @@ msgstr "Agregue una o más rutas para las redes que desea pasar a través de la 
 msgid "Additional storage. You can remove additional storage ``/dev/sdb``. First root device will be ``/dev/xvda``. You can skeep this step."
 msgstr "Almacenamiento adicional. Puede eliminar el almacenamiento adicional ``/dev/sdb``. El primer dispositivo raíz será ``/dev/xvda``. Puedes mantener este paso."
 
+#: ../../installation/cloud/aws.rst:27
+msgid "Additional storage. You can remove additional storage ``/dev/sdb``. First root device will be ``/dev/xvda``. You can skip this step."
+msgstr "Additional storage. You can remove additional storage ``/dev/sdb``. First root device will be ``/dev/xvda``. You can skip this step."
+
 #: ../../installation/vyos-on-baremetal.rst:394
 msgid "Advanced > Serial Port Console Redirection > Console Redirection Settings:"
 msgstr "Avanzado &gt; Redirección de consola de puerto serie &gt; Configuración de redirección de consola:"
@@ -464,6 +468,10 @@ msgstr "Clientes (donde se instalará VyOS) con una NIC habilitada para PXE"
 #: ../../installation/cloud/aws.rst:88
 msgid "CloudWatchAgentServerRole is too permisive and should be used for single configuration creation and deployment. That's why after completion of step #3 higly recommended to replace instance CloudWatchAgentAdminRole role with CloudWatchAgentServerRole."
 msgstr "CloudWatchAgentServerRole es demasiado permisivo y debe usarse para la creación e implementación de una configuración única. Es por eso que después de completar el paso n.º 3, se recomienda encarecidamente reemplazar la función CloudWatchAgentAdminRole de la instancia con CloudWatchAgentServerRole."
+
+#: ../../installation/cloud/aws.rst:88
+msgid "CloudWatchAgentServerRole is too permissive and should be used for single configuration creation and deployment. That's why after completion of step #3 highly recommended to replace instance CloudWatchAgentAdminRole role with CloudWatchAgentServerRole."
+msgstr "CloudWatchAgentServerRole is too permissive and should be used for single configuration creation and deployment. That's why after completion of step #3 highly recommended to replace instance CloudWatchAgentAdminRole role with CloudWatchAgentServerRole."
 
 #: ../../installation/cloud/aws.rst:82
 msgid "CloudWatch SSM Configuration creation"
@@ -1302,6 +1310,10 @@ msgstr "Requisitos"
 #: ../../installation/cloud/aws.rst:69
 msgid "Retreive an existing CloudWatch Agent configuration from the :abbr:`SSM (Systems Manager)` Parameter Store."
 msgstr "Recupere una configuración existente del agente de CloudWatch del almacén de parámetros :abbr:`SSM (Administrador de sistemas)`."
+
+#: ../../installation/cloud/aws.rst:69
+msgid "Retrieve an existing CloudWatch Agent configuration from the :abbr:`SSM (Systems Manager)` Parameter Store."
+msgstr "Retrieve an existing CloudWatch Agent configuration from the :abbr:`SSM (Systems Manager)` Parameter Store."
 
 #: ../../installation/install.rst:74
 msgid "Rolling Release"
