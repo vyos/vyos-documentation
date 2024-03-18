@@ -228,6 +228,10 @@ msgstr "The :cfgcmd:`show` command within configuration mode will show the worki
 msgid "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be commited, just like other config changes."
 msgstr "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be commited, just like other config changes."
 
+#: ../../cli.rst:653
+msgid "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be committed, just like other config changes."
+msgstr "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be committed, just like other config changes."
+
 #: ../../cli.rst:784
 msgid "The command :cfgcmd:`compare` allows you to compare different type of configurations. It also lets you compare different revisions through the :cfgcmd:`compare N M` command, where N and M are revision numbers. The output will describe how the configuration N is when compared to M indicating with a plus sign (``+``) the additional parts N has when compared to M, and indicating with a minus sign (``-``) the lacking parts N misses when compared to M."
 msgstr "The command :cfgcmd:`compare` allows you to compare different type of configurations. It also lets you compare different revisions through the :cfgcmd:`compare N M` command, where N and M are revision numbers. The output will describe how the configuration N is when compared to M indicating with a plus sign (``+``) the additional parts N has when compared to M, and indicating with a minus sign (``-``) the lacking parts N misses when compared to M."
@@ -321,6 +325,10 @@ msgid "View the current active configuration in readable JSON format."
 msgstr "View the current active configuration in readable JSON format."
 
 #: ../../cli.rst:852
+msgid "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successful the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
+msgstr "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successful the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
+
+#: ../../cli.rst:852
 msgid "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successfull the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
 msgstr "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successfull the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
 
@@ -339,6 +347,10 @@ msgstr "VyOS makes use of a unified configuration file for the entire system's c
 #: ../../cli.rst:558
 msgid "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be commited, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
 msgstr "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be commited, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
+
+#: ../../cli.rst:558
+msgid "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be committed, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
+msgstr "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be committed, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
 
 #: ../../cli.rst:340
 msgid "When entering the configuration mode you are navigating inside a tree structure, to enter configuration mode enter the command :opcmd:`configure` when in operational mode."

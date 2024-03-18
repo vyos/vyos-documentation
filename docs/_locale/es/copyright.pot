@@ -13,8 +13,12 @@ msgid "Copyright Notice"
 msgstr "Aviso de copyright"
 
 #: ../../copyright.md:3
+msgid "Copyright (C) 2018-2023 VyOS maintainers and contributors"
+msgstr "Copyright (C) 2018-2023 Mantenedores y colaboradores de VyOS"
+
+#: ../../copyright.md:3
 msgid "Copyright (C) 2018-2024 VyOS maintainers and contributors"
-msgstr "Copyright (C) 2018-2024 Mantenedores y colaboradores de VyOS"
+msgstr "Copyright (C) 2018-2024 VyOS maintainers and contributors"
 
 #: ../../copyright.md:9
 msgid "Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one."
