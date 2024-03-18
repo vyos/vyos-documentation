@@ -125,6 +125,38 @@ For example, get the addresses of a ``dum0`` interface.
       "error": null
    }
 
+To check existence of a configuration path, use the ``exists`` operation.
+
+For example, check an existing path:
+
+.. code-block:: none
+
+   curl -k --location --request POST 'https://vyos/retrieve' \
+   --form data='{"op": "exists", "path": ["service","https","api"]}' \
+   --form key='MY-HTTPS-API-PLAINTEXT-KEY'
+
+   response:
+   {
+      "success": true,
+      "data": true,
+      "error": null
+   }
+
+versus a non-existent path:
+
+.. code-block:: none
+
+   curl -k --location --request POST 'https://vyos/retrieve' \
+   --form data='{"op": "exists", "path": ["service","non","existent","path"]}' \
+   --form key='MY-HTTPS-API-PLAINTEXT-KEY'
+
+   response:
+   {
+      "success": true,
+      "data": false,
+      "error": null
+   }
+
 /reset
 ======
 
