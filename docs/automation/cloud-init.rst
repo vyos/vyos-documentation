@@ -8,8 +8,8 @@ VyOS cloud-init
 
 Cloud and virtualized instances of VyOS are initialized using the
 industry-standard cloud-init. Via cloud-init, the system performs tasks such as
-injecting SSH keys and configuring the network. In addition, the user can supply
-a custom configuration at the time of instance launch.
+injecting SSH keys and configuring the network. In addition, the user can 
+supply a custom configuration at the time of instance launch.
 
 **************
 Config Sources
@@ -25,9 +25,9 @@ VyOS support three types of config sources.
   network settings like IP addresses, routes, DNS. Available only in several
   cloud and virtualization platforms.
 
-* User-data - User-data is specified by the user. This config source offers the
-  ability to insert any CLI configuration commands into the configuration before
-  the first boot.
+* User-data - User-data is specified by the user. This config source offers
+  the ability to insert any CLI configuration commands into the configuration 
+  before   the first boot.
 
 *********
 User-data
@@ -39,8 +39,8 @@ depending on cloud provider. Also, it can be compressed using gzip, which makes
 sense with a long configuration commands list, because of the hard limit to
 ~16384 bytes for the whole user-data.
 
-The easiest way to configure the system via user-data is the Cloud-config syntax
-described below.
+The easiest way to configure the system via user-data is the Cloud-config
+syntax described below.
 
 ********************
 Cloud-config modules
@@ -50,11 +50,12 @@ In VyOS, by default, enables only two modules:
 
 * ``write_files`` - this module allows to insert any files into the filesystem
   before the first boot, for example, pre-generated encryption keys,
-  certificates, or even a whole ``config.boot`` file. The format is described in the cloudinit documentation `Cloud-init-write_files`_.
+  certificates, or even a whole ``config.boot`` file. The format is described 
+  in the cloudinit documentation `Cloud-init-write_files`_.
 
-* ``vyos_userdata`` - the module accepts a list of CLI configuration commands in
-  a ``vyos_config_commands`` section, which gives an easy way to configure the
-  system during deployment.
+* ``vyos_userdata`` - the module accepts a list of CLI configuration commands
+  in a ``vyos_config_commands`` section, which gives an easy way to configure 
+  the system during deployment.
 
 ************************
 cloud-config file format
@@ -62,8 +63,8 @@ cloud-config file format
 
 A cloud-config document is written in YAML. The file must begin
 with ``#cloud-config`` line. The only supported top-level keys are
-``vyos_config_commands`` and ``write_files``. The use of these keys is described
-in the following two sections.
+``vyos_config_commands`` and ``write_files``. The use of these keys is 
+described in the following two sections.
 
 
 ************************
@@ -81,12 +82,15 @@ Commands requirements:
 * If command ends in a value, it must be inside single quotes.
 * A single-quote symbol is not allowed inside command or value.
 
-The commands list produced by the ``show configuration commands`` command on a
-VyOS router should comply with all the requirements, so it is easy to get a 
-proper commands list by copying it from another router.
+The commands list produced by the ``show configuration commands`` command 
+on a VyOS router should comply with all the requirements, so it is easy 
+to get a proper commands list by copying it from another router.
 
 The configuration specified in the cloud-config document overwrites default
 configuration values and values configured via Metadata.
+
+After the ``vyos_config_commands`` are executed, cloud-init will 
+automatically  perform a ``commit`` and ``save`` operation. 
 
 Here is an example cloud-config that appends configuration at the time of
 first boot.
@@ -214,9 +218,8 @@ the method with KVM to attach the ISO as a CD drive follows.
      --noautoconsole
 
 
-For more information on the NoCloud data source, visit its `page
-<https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html>`_
-in the cloud-init documentation. 
+For more information on the NoCloud data source, visit its 
+page `nocloud`_ in the cloud-init documentation. 
 
 ***************
 Troubleshooting
@@ -227,8 +230,8 @@ valid YAML. Online resources such as https://www.yamllint.com/ provide
 a simple tool for validating YAML.
 
 cloud-init logs to /var/log/cloud-init.log. This file can be helpful in
-determining why the configuration varies from what you expect. You can fetch the
-most important data filtering output for ``vyos`` keyword:
+determining why the configuration varies from what you expect. You can fetch
+the most important data filtering output for ``vyos`` keyword:
 
 .. code-block:: none
 
@@ -428,5 +431,5 @@ References
 .. _cloud-init-docs: https://docs.vyos.io/en/equuleus/automation/cloud-init.html?highlight=cloud-init#vyos-cloud-init
 .. _Cloud-init-Support: https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_cloud_init
 .. _Cloud-init-write_files: https://cloudinit.readthedocs.io/en/latest/topics/examples.html#writing-out-arbitrary-files
-
+.. _nocloud: https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html
 .. start_vyoslinter
