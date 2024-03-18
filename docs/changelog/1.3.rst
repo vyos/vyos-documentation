@@ -8,6 +8,308 @@
    _ext/releasenotes.py
 
 
+2024-03-11
+==========
+
+* :vytask:`T2998` ``(bug): SNMP v3 oid "exclude" option doesn't work``
+* :vytask:`T6096` ``(bug): Config commits are not synced properly because 00vyos-sync is deleted by vyos-router``
+* :vytask:`T6057` ``(feature): Add ability to disable syslog for conntrackd``
+* :vytask:`T5504` ``(feature): Keepalived VRRP ability to set more than one peer-address``
+
+
+2024-03-07
+==========
+
+* :vytask:`T3992` ``(bug): Traceback on adding interface to bridge with configured ip address``
+
+
+2024-03-06
+==========
+
+* :vytask:`T6088` ``(bug): Configuration corrupted after saving and powercut or force reboot``
+
+
+2024-02-16
+==========
+
+* :vytask:`T2113` ``(bug): OpenVPN Options error: you cannot use --verify-x509-name with --compat-names or --no-name-remapping``
+* :vytask:`T5418` ``(bug): PPPoE-Server Client IP pool Subnet``
+
+
+2024-02-15
+==========
+
+* :vytask:`T2612` ``(bug): HTTPS API, changing API key fails but goes through``
+* :vytask:`T656` ``(enhancment): Rewrite wirelessmodem in new style XML interface definition``
+
+
+2024-02-14
+==========
+
+* :vytask:`T2044` ``(bug): RPKI doesn't boot properly``
+
+
+2024-02-08
+==========
+
+* :vytask:`T6014` ``(feature): Bump keepalived version``
+
+
+2024-02-07
+==========
+
+* :vytask:`T6017` ``(bug): Update vyos-http-api-tools for security advisory``
+
+
+2024-02-02
+==========
+
+* :vytask:`T5914` ``(bug): CVE-2023-48795 - Terrapin vulnerability``
+* :vytask:`T5739` ``(bug): Password recovery does not work if public keys are configured``
+
+
+2024-02-01
+==========
+
+* :vytask:`T5967` ``(bug): Multi-hop BFD connections can't be established; please add minimum-ttl option.``
+
+
+2024-01-22
+==========
+
+* :vytask:`T4721` ``(feature): Static IPv6 Route Tags Missing``
+
+
+2024-01-20
+==========
+
+* :vytask:`T5187` ``(bug): Update Realtek r8152 driver``
+* :vytask:`T5182` ``(bug): Update Intel ice driver``
+* :vytask:`T5180` ``(bug): initramfs-tools ignores firmware from updates directory``
+* :vytask:`T4990` ``(bug): Commit results may not be properly saved if power is cut immediately after a successful commit``
+* :vytask:`T4039` ``(feature): Rsyslog to use 'protocol23format' for protocol UDP``
+* :vytask:`T3813` ``(bug): Some custom sysctl parameters can't be applied bug``
+* :vytask:`T2579` ``(feature): The root task for VRF features``
+* :vytask:`T2546` ``(feature): The root task for rewriting [op-mode] to XML``
+* :vytask:`T2452` ``(default): Serial console related issues``
+
+
+2024-01-19
+==========
+
+* :vytask:`T5543` ``(bug): Fix source address handling in static joins``
+
+
+2024-01-14
+==========
+
+* :vytask:`T5715` ``(bug): IPSec VPN: restart vpn is not working``
+
+
+2024-01-13
+==========
+
+* :vytask:`T5924` ``(bug): Build cannot pass the smoketest dialup-router-medium-vpn``
+
+
+2024-01-11
+==========
+
+* :vytask:`T5275` ``(default): Add op mode commands for exporting certificates to PEM files with correct headers``
+* :vytask:`T5274` ``(default): Add a deprecation warning for OpenVPN site-to-site with pre-shared secret``
+* :vytask:`T3191` ``(bug): PAM RADIUS freezing when accounting does not configured on RADIUS server``
+
+
+2024-01-10
+==========
+
+* :vytask:`T4646` ``(bug): USB serial output console does not work``
+* :vytask:`T4466` ``(bug): intel i225-v nic does not detect link after boot``
+* :vytask:`T4222` ``(feature): Support for TWAMP as round-trip metric``
+* :vytask:`T1369` ``(bug): GCP Networking Failure``
+
+
+2024-01-09
+==========
+
+* :vytask:`T3242` ``(bug): PPPoE Server overhead on virtual interfaces creation``
+* :vytask:`T2755` ``(default): Requirements for partial interface setup``
+* :vytask:`T2494` ``(bug): systemd dependencies issues``
+* :vytask:`T2343` ``(feature): Disable memory ballooning in VM templates``
+* :vytask:`T2254` ``(default): Provide more information on the build branch in the version data``
+* :vytask:`T2223` ``(feature): convert operational show interfaces to python/XML``
+* :vytask:`T1925` ``(bug): DMVPN is always listed as down in "show vpn ipsec sa"``
+* :vytask:`T1297` ``(feature): Add GARP settings to VRRP/keepalived``
+
+
+2024-01-08
+==========
+
+* :vytask:`T5318` ``(bug): Security Vulnerabilities for VyOS 1.3.3``
+* :vytask:`T3980` ``(bug): vrrp transition-script validator makes warning fatal and also causes a python NameError exception``
+* :vytask:`T2799` ``(feature): VyOS Certificates Manager``
+
+
+2023-12-29
+==========
+
+* :vytask:`T5852` ``(bug): Reboots fail with eapol WAN interface``
+
+
+2023-12-22
+==========
+
+* :vytask:`T4760` ``(bug): VyOS does not support running multiple instances of DHCPv6 clients``
+
+
+2023-12-21
+==========
+
+* :vytask:`T5714` ``(bug): IPSec VPN: op-mode: "show log vpn" does not show results``
+* :vytask:`T3039` ``(feature): Resize a root partition and filesystem automatically during deployment in virtual environments``
+* :vytask:`T2404` ``(bug): Cannot change MTU``
+* :vytask:`T2353` ``(bug): Interface [conf_mode] errors parent task``
+* :vytask:`T5796` ``(bug): Openconnect - HTTPS  security headers are missing``
+
+
+2023-12-19
+==========
+
+* :vytask:`T2116` ``(feature): Processing configuration via Cloud-init User-Data``
+
+
+2023-12-18
+==========
+
+* :vytask:`T2191` ``(feature): Using tallow to block sshd probes``
+
+
+2023-12-15
+==========
+
+* :vytask:`T5824` ``(bug): busybox cannot connect some websites from initramfs``
+
+
+2023-12-12
+==========
+
+* :vytask:`T5817` ``(bug): Show openvpn server fails in some cases``
+* :vytask:`T5413` ``(default): Deny the opportunity to use one public/private key pair on both wireguard peers.``
+
+
+2023-11-30
+==========
+
+* :vytask:`T4601` ``(bug): dhcp : relay agent IP address issue.``
+
+
+2023-11-28
+==========
+
+* :vytask:`T5777` ``(bug): frr: backport and upstream recent bgpd daemon crashes``
+
+
+2023-11-27
+==========
+
+* :vytask:`T5763` ``(bug): Fix imprecise check for remote file name in vyos-load-config.py``
+
+
+2023-11-25
+==========
+
+* :vytask:`T5655` ``(bug): commit-archive: Ctrl+C should not eror out with stack trace, signal should be cought``
+
+
+2023-11-24
+==========
+
+* :vytask:`T5402` ``(bug): VRRP router with rfc3768-compatibility sends multiple ARP replies``
+
+
+2023-11-22
+==========
+
+* :vytask:`T5578` ``(bug): "ikev2-reauth" description contains outdated information``
+
+
+2023-11-15
+==========
+
+* :vytask:`T5661` ``(enhancment): Add show show ssh dynamic-protection attacker and show log ssh dynamic-protection``
+* :vytask:`T1276` ``(bug): dhcp relay + VLAN fails``
+
+
+2023-11-07
+==========
+
+* :vytask:`T5586` ``(feature): Disable by default SNMP for Keepalived VRRP``
+
+
+2023-11-06
+==========
+
+* :vytask:`T4269` ``(feature): node.def generator should automatically add default values``
+
+
+2023-10-26
+==========
+
+* :vytask:`T5684` ``(bug): services using VRF generates the error "Failed to load BPF prog: 'Operation not permitted'" when the system boots.``
+* :vytask:`T5594` ``(bug): VRRP - Error if using IPv6 Link Local as hello source address``
+
+
+2023-10-21
+==========
+
+* :vytask:`T5670` ``(bug): bridge: missing member interface validator``
+* :vytask:`T5191` ``(default): Replace underscores with hyphens in command-line options generated by vyos.opmode``
+* :vytask:`T4402` ``(bug): OpenVPN client-ip-pool option is broken``
+* :vytask:`T2719` ``(feature): Standardized op mode script structure``
+
+
+2023-10-19
+==========
+
+* :vytask:`T5669` ``(bug): VXLAN interface changing port does not work``
+
+
+2023-10-17
+==========
+
+* :vytask:`T5235` ``(bug): SSH keys with special characters cannot be applied via Cloud-init``
+
+
+2023-10-08
+==========
+
+* :vytask:`T5630` ``(feature): pppoe: allow to specify MRU in addition to already configurable MTU``
+
+
+2023-10-06
+==========
+
+* :vytask:`T5576` ``(feature): Add bgp remove-private-as all option``
+
+
+2023-10-04
+==========
+
+* :vytask:`T5632` ``(feature): Add jq package to parse JSON files``
+
+
+2023-09-25
+==========
+
+* :vytask:`T5533` ``(bug): Keepalived VRRP IPv6 group enters in FAULT state``
+
+
+2023-09-20
+==========
+
+* :vytask:`T5271` ``(default): Add support for peer-fingerprint to OpenVPN``
+
+
 2023-09-11
 ==========
 
@@ -51,7 +353,7 @@
 * :vytask:`T4874` ``(default): Add Warning message to Equuleus``
 * :vytask:`T4855` ``(bug): Trying to create more than one tunnel of the same type to the same address causes unhandled exception``
 * :vytask:`T4776` ``(bug): NVME storage is not detected properly during installation``
-* :vytask:`T3546` ``(feature): Add pppoe-server CLI custom script feature``
+* :vytask:`T3546` ``(feature): Add support for running scripts on PPPoE server session events``
 * :vytask:`T738` ``(feature): Add local-port and resolver port options for powerdns in CLI configuration tree``
 
 
@@ -77,7 +379,6 @@
 * :vytask:`T3940` ``(bug): DHCP client does not remove IP address when stopped by the 02-vyos-stopdhclient hook``
 * :vytask:`T3713` ``(default): Create a meta-package for user utilities``
 * :vytask:`T3339` ``(bug): Cloud-Init domain search setting not applied``
-* :vytask:`T3144` ``(feature): Support op-mode command to release DHCP leases``
 * :vytask:`T2640` ``(feature): Running VyOS inside Docker containers``
 * :vytask:`T3577` ``(bug): Generating vpn x509 key pair fails with command not found``
 
@@ -200,12 +501,6 @@
 * :vytask:`T5313` ``(bug): UDP broadcast relay - missing verify() that relay interfaces have an IP address assigned``
 
 
-2023-06-28
-==========
-
-* :vytask:`T1237` ``(feature): Static Route Path Monitoring, failover``
-
-
 2023-06-26
 ==========
 
@@ -223,6 +518,12 @@
 ==========
 
 * :vytask:`T5280` ``(bug): Update Expired keys (2023-06-08) for PowerDNS``
+
+
+2023-06-13
+==========
+
+* :vytask:`T5213` ``(feature): Accel-ppp sending accounting interim updates acct-interim-interval option``
 
 
 2023-05-29
@@ -1830,7 +2131,6 @@
 ==========
 
 * :vytask:`T3682` ``(bug): Remove running dhclient from ether-resume.py``
-* :vytask:`T3681` ``(default): The VMware Tools resume script did not run successfully in this virtual machine.``
 
 
 2021-08-20
