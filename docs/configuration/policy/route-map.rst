@@ -197,12 +197,15 @@ Route Map
    BGP aggregator attribute: AS number or IP address of an aggregation.
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set as-path exclude
-   <text>
+   <1-4294967295 | all>
 
    Drop AS-NUMBER from the BGP AS path.
 
+   If ``all`` is specified, remove all AS numbers from the AS_PATH of the BGP
+   path's NLRI.
+
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set as-path prepend
-   <text>
+   <1-4294967295>
 
    Prepend the given string of AS numbers to the AS_PATH of the BGP path's NLRI.
 
@@ -233,11 +236,11 @@ Route Map
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set large-community
    <add|replace> <GA:LDP1:LDP2>
 
-   Add or replace BGP large-community attribute in format 
+   Add or replace BGP large-community attribute in format
    ``<0-4294967295:0-4294967295:0-4294967295>``
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set large-community none
-   
+
    Delete all BGP large-communities
 
 .. cfgcmd:: set policy route-map <text> rule <1-65535> set large-community delete
@@ -375,11 +378,3 @@ List of well-known communities
    * ``accept-own-nexthop`` -           Well-known communities value accept-own-nexthop 0xFFFF0008
    * ``blackhole`` -                    Well-known communities value BLACKHOLE 0xFFFF029A
    * ``no-peer`` -                      Well-known communities value NOPEER 0xFFFFFF04
-
-
-
-
-
-
-
-
