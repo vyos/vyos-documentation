@@ -673,7 +673,7 @@ msgid "Download the ISO on which you want to base the container. In this example
 msgstr "Download the ISO on which you want to base the container. In this example, the name of the ISO is ``vyos-1.4-rolling-202308240020-amd64.iso``. If you created a custom IPv6-enabled network, the ``docker run`` command below will require that this network be included as the ``--net`` parameter to ``docker run``."
 
 #: ../../installation/virtual/proxmox.rst:37
-msgid "Download the rolling release iso from https://vyos.net/get/nightly-builds/. Non-subscribers are not able to build the LTS but can always build the rolling release from source. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available https://github.com/vyos/vyos-build."
+msgid "Download the rolling release iso from https://vyos.net/get/nightly-builds/. Non-subscribers can always get the LTS release by building it from source. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available https://github.com/vyos/vyos-build."
 msgstr "Descargue la ISO de lanzamiento continuo desde https://vyos.net/get/nightly-builds/. Los no suscriptores siempre pueden obtener el lanzamiento de LTS compilándolo desde la fuente. Las instrucciones se pueden encontrar en la sección :ref:`build` de este manual. El repositorio de código fuente de VyOS está disponible en https://github.com/vyos/vyos-build."
 
 #: ../../installation/virtual/gns3.rst:131
@@ -1089,7 +1089,7 @@ msgid "Non-critical production environments, preparing for the LTS release."
 msgstr "Entornos de producción no críticos, preparándose para el lanzamiento de LTS."
 
 #: ../../installation/install.rst:68
-msgid "Non-subscribers are not able to build the LTS but can always build the rolling release from source. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available for everyone at https://github.com/vyos/vyos-build."
+msgid "Non-subscribers can always get the LTS release by building it from source. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available for everyone at https://github.com/vyos/vyos-build."
 msgstr "Los no suscriptores siempre pueden obtener el lanzamiento de LTS compilándolo desde la fuente. Las instrucciones se pueden encontrar en la sección :ref:`build` de este manual. El repositorio de código fuente de VyOS está disponible para todos en https://github.com/vyos/vyos-build."
 
 #: ../../installation/vyos-on-baremetal.rst:166
