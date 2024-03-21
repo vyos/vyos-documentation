@@ -127,15 +127,24 @@ Enable VLAN-Aware Bridge
 
 .. cfgcmd:: set interfaces bridge <interface> enable-vlan
 
-   To activate the VLAN aware bridge, you must activate this setting to use VLAN 
+   To activate the VLAN aware bridge, you must activate this setting to use VLAN
    settings for the bridge
+
+.. cfgcmd:: set interfaces bridge <interface> protocol <802.1ad|802.1q>
+
+   Define used ethertype of bridge interface.
+
+   Ethertype ``0x8100`` is used for ``802.1q`` and ethertype ``0x88a8`` is used
+   for ``802.1ad``.
+
+   The default is ``802.1q``.
 
 VLAN Options
 ------------
 
 .. note:: It is not valid to use the `vif 1` option for VLAN aware bridges
-   because VLAN aware bridges assume that all unlabeled packets belong to 
-   the default VLAN 1 member and that the VLAN ID of the bridge's parent 
+   because VLAN aware bridges assume that all unlabeled packets belong to
+   the default VLAN 1 member and that the VLAN ID of the bridge's parent
    interface is always 1
 
 .. cmdinclude:: /_include/interface-vlan-8021q.txt
@@ -149,9 +158,9 @@ VLAN Options
    VLAN tag enters the port, the data packet will be forced to add a tag of a
    specific vlan id. When the vlan id flag flows out, the tag of the vlan id
    will be stripped
-   
+
    Example: Set `eth0` member port to be native VLAN 2
-   
+
    .. code-block:: none
 
      set interfaces bridge br1 member interface eth0 native-vlan 2
@@ -162,17 +171,17 @@ VLAN Options
    Allows specific VLAN IDs to pass through the bridge member interface. This
    can either be an individual VLAN id or a range of VLAN ids delimited by a
    hyphen.
-   
+
    Example: Set `eth0` member port to be allowed VLAN 4
-   
+
    .. code-block:: none
-   
+
      set interfaces bridge br1 member interface eth0 allowed-vlan 4
-  
+
    Example: Set `eth0` member port to be allowed VLAN 6-8
-   
+
    .. code-block:: none
-   
+
      set interfaces bridge br1 member interface eth0 allowed-vlan 6-8
 
 Port Mirror (SPAN)
@@ -265,17 +274,17 @@ This results in the active configuration:
 Using the operation mode command to view Bridge Information
 ===========================================================
 
-.. opcmd:: show bridge 
+.. opcmd:: show bridge
 
    The `show bridge` operational command can be used to display
    configured bridges:
 
    .. code-block:: none
 
-     vyos@vyos:~$ show bridge 
-     3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding 
-     priority 32 cost 100   
-     4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding 
+     vyos@vyos:~$ show bridge
+     3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding
+     priority 32 cost 100
+     4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding
      priority 32 cost 100
 
 .. opcmd:: show bridge <name> fdb
@@ -304,11 +313,11 @@ Using the operation mode command to view Bridge Information
      33:33:00:00:00:6a dev br0 self permanent
      01:00:5e:00:00:01 dev br0 self permanent
      33:33:ff:00:00:00 dev br0 self permanent
- 
+
 .. opcmd:: show bridge <name> mdb
 
-   Show bridge `<name>` mdb displays the current multicast group membership 
-   table.The table is populated by IGMP and MLD snooping in the bridge driver 
+   Show bridge `<name>` mdb displays the current multicast group membership
+   table.The table is populated by IGMP and MLD snooping in the bridge driver
    automatically.
 
    .. code-block:: none
