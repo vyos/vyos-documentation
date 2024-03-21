@@ -65,7 +65,7 @@ ISOs.
 Building from source
 --------------------
 
-Non-subscribers are not able to build the LTS but can always build the rolling release from source.
+Non-subscribers will have a small window of opportunity to build the latest LTS release from source when the LTS tags are created, otherwise they will only be able to build rolling releases from the source LTS branch.
 Instructions can be found in the :ref:`build` section of this manual. VyOS
 source code repository is available for everyone at
 https://github.com/vyos/vyos-build.

@@ -34,7 +34,7 @@ Deploy VyOS from CLI with qcow2 image
 Deploy VyOS from CLI with rolling release ISO
 =============================================
 
-1. Download the rolling release iso from https://vyos.net/get/nightly-builds/. Non-subscribers are not able to build the LTS but can always build the rolling release from source. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available https://github.com/vyos/vyos-build.
+1. Download the rolling release iso from https://vyos.net/get/nightly-builds/. Non-subscribers will have a small window of opportunity to build the latest LTS release from source when the LTS tags are created, otherwise they will only be able to build rolling releases from the source LTS branch. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available https://github.com/vyos/vyos-build.
 2. Prepare VM for installation from ISO media. The commands below assume that your iso is available in a storage pool 'local', that you want it to have a VM ID '200' and want to create a new disk on storage pool 'local-lvm' of size 15GB.
 
 .. code-block:: none
