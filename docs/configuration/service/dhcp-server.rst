@@ -67,7 +67,7 @@ Pass address of Unifi controller at ``172.16.100.1`` to all clients of ``NET1``
 .. code-block:: none
 
   set service dhcp-server shared-network-name 'NET1' option vendor-option  
-  ubiquiti '192.168.1.100'
+  ubiquiti '172.16.100.1'
 
 .. cfgcmd:: set service dhcp-server listen-address <address>
 
@@ -163,7 +163,7 @@ Unifi controller at ``172.16.100.1`` to clients of that subnet.
 .. code-block:: none
 
   set service dhcp-server shared-network-name 'NET1' subnet 
-  '172.18.201.0/24' option vendor-option ubiquiti '192.168.1.100'
+  '172.18.201.0/24' option vendor-option ubiquiti '172.16.100.1'
 
 
 Failover
