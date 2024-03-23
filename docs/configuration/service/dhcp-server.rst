@@ -49,9 +49,25 @@ Configuration
    Inform client that the DNS server can be found at `<address>`.
 
    This is the configuration parameter for the entire shared network definition.
-   All subnets will inherit this configuration item if not specified locally.
-
+   All subnets will inherit this configuration item if not specified locally. 
    Multiple DNS servers can be defined.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> option 
+   vendor-option <option-name>
+
+   This configuration parameter lets you specify a vendor-option for the 
+   entire shared network definition. All subnets will inherit this 
+   configuration item if not specified locally. An example for Ubiquiti is 
+   shown below:
+
+**Example:**
+
+Pass address of Unifi controller at ``172.16.100.1`` to all clients of ``NET1``
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name 'NET1' option vendor-option  
+  ubiquiti '172.16.100.1'
 
 .. cfgcmd:: set service dhcp-server listen-address <address>
 
@@ -131,6 +147,24 @@ Individual Client Subnet
    The domain-name parameter should be the domain name used when completing DNS
    request where no full FQDN is passed. This option can be given multiple times
    if you need multiple search domains (DHCP Option 119).
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> 
+   option vendor-option <option-name>
+
+   This configuration parameter lets you specify a vendor-option for the
+   subnet specified within the shared network definition. An example for  
+   Ubiquiti is shown below:
+
+**Example:**
+
+Create ``172.18.201.0/24`` as a subnet within ``NET1`` and pass address of  
+Unifi controller at ``172.16.100.1`` to clients of that subnet.
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name 'NET1' subnet 
+  '172.18.201.0/24' option vendor-option ubiquiti '172.16.100.1'
+
 
 Failover
 --------
