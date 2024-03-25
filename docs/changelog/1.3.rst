@@ -8,6 +8,13 @@
    _ext/releasenotes.py
 
 
+2024-03-22
+==========
+
+* :vytask:`T6110` ``(bug): dhcp server - If failover is defined, range is required``
+* :vytask:`T5624` ``(default): Remove /etc/debian_version from the image``
+
+
 2024-03-11
 ==========
 
