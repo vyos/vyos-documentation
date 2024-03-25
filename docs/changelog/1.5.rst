@@ -8,6 +8,60 @@
    _ext/releasenotes.py
 
 
+2024-03-25
+==========
+
+* :vytask:`T6145` ``(bug): Service config-sync does not rely on priorities but must``
+
+
+2024-03-24
+==========
+
+* :vytask:`T6161` ``(feature): Output container images as JSON``
+* :vytask:`T6165` ``(bug): grub: vyos-grub-update failed to start on "slow" systems``
+* :vytask:`T6085` ``(bug): VTI interfaces are in UP state by default``
+* :vytask:`T6152` ``(bug): Kernel panic for ZimaBoard 232``
+
+
+2024-03-23
+==========
+
+* :vytask:`T6160` ``(bug): isis: NameError: name 'process' is not defined``
+* :vytask:`T6131` ``(bug): Disabling openvpn interface(s) causes OSPF to fail to load on reboot``
+* :vytask:`T4022` ``(feature): Add package nat-rtsp-dkms``
+
+
+2024-03-22
+==========
+
+* :vytask:`T6136` ``(bug): Configuring a dynamic address group, config script did not check whether the group was created``
+* :vytask:`T6130` ``(bug): [1.3.6->1.4.0-epa2 Migration] BGP "set community" missing``
+* :vytask:`T6090` ``(bug): [1.3.6->1.4.0-epa1 Migration] policy route fails due tcp flag case sensitivity``
+* :vytask:`T6155` ``(default): ixgbe: failed to initialize because an unsupported SFP+ module type was detected.``
+* :vytask:`T6137` ``(bug): dhcp files and directory permission not correct after image uprgading``
+* :vytask:`T6125` ``(feature): Support 802.1ad (0x88a8) vlan filtering for bridge``
+
+
+2024-03-21
+==========
+
+* :vytask:`T6143` ``(feature): Increase configuration timeout range for service config-sync``
+
+
+2024-03-20
+==========
+
+* :vytask:`T6133` ``(feature): Add domain-name to commit-archive``
+* :vytask:`T6129` ``(feature): bgp: add route-map option "as-path exclude all"``
+
+
+2024-03-19
+==========
+
+* :vytask:`T6127` ``(bug): Ability to view logs for rules with Offload not functional``
+* :vytask:`T6138` ``(bug): Conntrack table op-mode fails with flowtable offload entries``
+
+
 2024-03-15
 ==========
 
@@ -515,7 +569,6 @@
 * :vytask:`T5866` ``(feature): Add op-mode command to restart IPv6 RA daemon``
 * :vytask:`T5861` ``(bug): Flavor build system fails with third-party packages``
 * :vytask:`T5854` ``(feature): Extend override-default script to allow embedded defaultValue settings``
-* :vytask:`T5566` ``(feature): Be able to disable 802.3az/EEE (energy efficient ethernet) for a particular interface``
 * :vytask:`T5792` ``(default): Upgrade ddclient 3.11.2 release``
 
 
