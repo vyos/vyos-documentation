@@ -8,6 +8,33 @@
    _ext/releasenotes.py
 
 
+2024-03-31
+==========
+
+* :vytask:`T6186` ``(bug): Fix regression in 'set system image default-boot'``
+* :vytask:`T5832` ``(feature): Keepalived: Allow using the 'dev' statement on excluded-addresses``
+
+
+2024-03-29
+==========
+
+* :vytask:`T6159` ``(bug): Openvpn Server Op-cmd adds heading "OpenVPN status on vtunx" for every client connection``
+
+
+2024-03-28
+==========
+
+* :vytask:`T6147` ``(bug): Conntrack not working as expected with global state-policy``
+* :vytask:`T6175` ``(bug): op-mode: "renew dhcp interface <name>" does not check if it's an actual DHCP interface``
+* :vytask:`T6102` ``(bug): Clear dhcp-server lease throws python exception on 1.5-rolling``
+
+
+2024-03-26
+==========
+
+* :vytask:`T6066` ``(bug): Setting same network in different ospf area will raise exception``
+
+
 2024-03-25
 ==========
 
