@@ -66,6 +66,11 @@ Configuration
    the `<address>` and optionally the permitted clients. Multiple listen
    addresses can be configured.
 
+.. cfgcmd:: set system ntp interface <interface>
+
+   NTP process will listen on the specified interface. Multiple listen
+   interfaces can be configured.
+
 .. cfgcmd:: set system ntp allow-clients address <address>
 
    List of networks or client addresses permitted to contact this NTP server.
