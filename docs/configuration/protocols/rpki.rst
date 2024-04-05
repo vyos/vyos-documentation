@@ -54,9 +54,9 @@ Imported prefixes during the validation may have values:
     untrustworthy route announcements.
 
   notfound
-	No ROA exists which covers that prefix. Unfortunately this is the case for
-	about 40%-50% of the prefixes which were announced to the :abbr:`DFZ
-	(default-free zone)` at the start of 2024.
+    No ROA exists which covers that prefix. Unfortunately this is the case for
+    about 40%-50% of the prefixes which were announced to the :abbr:`DFZ
+    (default-free zone)` at the start of 2024.
 
 .. note::
   If you are responsible for the global addresses assigned to your
