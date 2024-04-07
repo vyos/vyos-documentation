@@ -4,7 +4,7 @@
 NTP
 ###
 
-:abbr:`NTP (Network Time Protocol`) is a networking protocol for clock
+:abbr:`NTP (Network Time Protocol)` is a networking protocol for clock
 synchronization between computer systems over packet-switched, variable-latency
 data networks. In operation since before 1985, NTP is one of the oldest Internet
 protocols in current use.
@@ -65,6 +65,11 @@ Configuration
    NTP process will only listen on the specified IP address. You must specify
    the `<address>` and optionally the permitted clients. Multiple listen
    addresses can be configured.
+
+.. cfgcmd:: set system ntp interface <interface>
+
+   NTP process will listen on the specified interface. Multiple listen
+   interfaces can be configured.
 
 .. cfgcmd:: set system ntp allow-clients address <address>
 
