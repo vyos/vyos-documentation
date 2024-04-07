@@ -39,36 +39,36 @@ Configuration
 
 .. cfgcmd:: set service conntrack-sync accept-protocol
 
-   Accept only certain protocols: You may want to replicate the state of flows
-   depending on their layer 4 protocol.
+    Accept only certain protocols: You may want to replicate the state of flows
+    depending on their layer 4 protocol.
 
-   Protocols are: tcp, sctp, dccp, udp, icmp and ipv6-icmp.
+    Protocols are: tcp, sctp, dccp, udp, icmp and ipv6-icmp.
 
 .. cfgcmd:: set service conntrack-sync event-listen-queue-size <size>
 
-   The daemon doubles the size of the netlink event socket buffer size if it
-   detects netlink event message dropping. This clause sets the maximum buffer
-   size growth that can be reached.
+    The daemon doubles the size of the netlink event socket buffer size if it
+    detects netlink event message dropping. This clause sets the maximum buffer
+    size growth that can be reached.
 
-   Queue size for listening to local conntrack events in MB.
+    Queue size for listening to local conntrack events in MB.
 
 .. cfgcmd:: set service conntrack-sync expect-sync <all|ftp|h323|nfs|sip|sqlnet>
 
-   Protocol for which expect entries need to be synchronized.
+    Protocol for which expect entries need to be synchronized.
 
 .. cfgcmd:: set service conntrack-sync failover-mechanism vrrp sync-group <group>
 
-   Failover mechanism to use for conntrack-sync.
+    Failover mechanism to use for conntrack-sync.
 
-   Only VRRP is supported. Required option.
+    Only VRRP is supported. Required option.
 
 .. cfgcmd:: set service conntrack-sync ignore-address <x.x.x.x>
 
-   IP addresses or networks for which local conntrack entries will not be synced
+    IP addresses or networks for which local conntrack entries will not be synced
 
 .. cfgcmd:: set service conntrack-sync interface <name>
 
-   Interface to use for syncing conntrack entries.
+    Interface to use for syncing conntrack entries.
 
 .. cfgcmd:: set service conntrack-sync interface <name> port <port>
 
@@ -80,23 +80,28 @@ Configuration
 
 .. cfgcmd:: set service conntrack-sync mcast-group <x.x.x.x>
 
-   Multicast group to use for syncing conntrack entries.
+    Multicast group to use for syncing conntrack entries.
 
-   Defaults to 225.0.0.50.
+    Defaults to 225.0.0.50.
 
 .. cfgcmd:: set service conntrack-sync interface <name> peer <address>
 
-   Peer to send unicast UDP conntrack sync entires to, if not using Multicast
-   configuration from above above.
+    Peer to send unicast UDP conntrack sync entires to, if not using Multicast
+    configuration from above above.
 
 .. cfgcmd:: set service conntrack-sync sync-queue-size <size>
 
-   Queue size for syncing conntrack entries in MB.
+    Queue size for syncing conntrack entries in MB.
 
 .. cfgcmd:: set service conntrack-sync disable-external-cache
 
    This diable the external cache and directly injects the flow-states into the
    in-kernel Connection Tracking System of the backup firewall.
+
+.. cfgcmd:: set service conntrack-sync startup-resync
+
+   Order conntrackd to request a complete conntrack table resync against
+   the other node at startup.
 
 *********
 Operation
@@ -122,7 +127,7 @@ Operation
     1006239392 10.35.101.221          172.31.120.21          icmp [1]         29
 
   .. note::
-
+  
     If the table is empty and you have a warning message, it means
     conntrack is not enabled. To enable conntrack, just create a NAT or a firewall
     rule. :cfgcmd:`set firewall state-policy established action accept`
