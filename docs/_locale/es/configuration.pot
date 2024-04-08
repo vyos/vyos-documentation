@@ -76,6 +76,14 @@ msgstr "**9** - NetFlow versión 9 (predeterminado)"
 msgid "**AS path length check**"
 msgstr "**Comprobación de longitud de ruta AS**"
 
+#: ../../configuration/service/dhcp-server.rst:175
+msgid "**Active-active**: both DHCP servers will respond to DHCP requests. If ``mode`` is not defined, this is the default behavior."
+msgstr "**Active-active**: both DHCP servers will respond to DHCP requests. If ``mode`` is not defined, this is the default behavior."
+
+#: ../../configuration/service/dhcp-server.rst:178
+msgid "**Active-passive**: only ``primary`` server will respond to DHCP requests. If this server goes offline, then ``secondary`` server will take place."
+msgstr "**Active-passive**: only ``primary`` server will respond to DHCP requests. If this server goes offline, then ``secondary`` server will take place."
+
 #: ../../configuration/protocols/bgp.rst:106
 msgid "**Already-selected external check**"
 msgstr "**Comprobación externa ya seleccionada**"
@@ -170,9 +178,9 @@ msgstr "**Ethernet (protocolo, dirección de destino o dirección de origen)**"
 
 #: ../../configuration/service/dhcp-server.rst:63
 #: ../../configuration/service/dhcp-server.rst:158
-#: ../../configuration/service/dhcp-server.rst:240
-#: ../../configuration/service/dhcp-server.rst:627
-#: ../../configuration/service/dhcp-server.rst:668
+#: ../../configuration/service/dhcp-server.rst:256
+#: ../../configuration/service/dhcp-server.rst:646
+#: ../../configuration/service/dhcp-server.rst:687
 msgid "**Example:**"
 msgstr "**Ejemplo:**"
 
@@ -417,7 +425,7 @@ msgstr "**Prerouting**: several actions can be done in this stage, and currently
 msgid "**Prerouting**: several actions can be done in this stage, and currently these actions are defined in different parts in vyos configuration. Order is important, and all these actions are performed before any actions define under ``firewall`` section. Relevant configuration that acts in this stage are:"
 msgstr "**Prerouting**: several actions can be done in this stage, and currently these actions are defined in different parts in vyos configuration. Order is important, and all these actions are performed before any actions define under ``firewall`` section. Relevant configuration that acts in this stage are:"
 
-#: ../../configuration/service/dhcp-server.rst:431
+#: ../../configuration/service/dhcp-server.rst:448
 msgid "**Primary**"
 msgstr "**Primario**"
 
@@ -527,7 +535,7 @@ msgstr "**SW1**"
 msgid "**SW2**"
 msgstr "**SW2**"
 
-#: ../../configuration/service/dhcp-server.rst:440
+#: ../../configuration/service/dhcp-server.rst:458
 msgid "**Secondary**"
 msgstr "**Secundario**"
 
@@ -1047,7 +1055,7 @@ msgstr "0 si no está definido, lo que significa que no se actualiza."
 msgid "0 if not defined."
 msgstr "0 si no está definido."
 
-#: ../../configuration/service/dhcp-server.rst:277
+#: ../../configuration/service/dhcp-server.rst:293
 #: ../../configuration/system/syslog.rst:114
 #: ../../configuration/system/syslog.rst:173
 #: ../../configuration/trafficpolicy/index.rst:801
@@ -1110,7 +1118,7 @@ msgstr "10 - 10 MBit/s"
 msgid "11"
 msgstr "11"
 
-#: ../../configuration/service/dhcp-server.rst:359
+#: ../../configuration/service/dhcp-server.rst:375
 msgid "119"
 msgstr "119"
 
@@ -1120,11 +1128,11 @@ msgstr "119"
 msgid "12"
 msgstr "12"
 
-#: ../../configuration/service/dhcp-server.rst:364
+#: ../../configuration/service/dhcp-server.rst:380
 msgid "121, 249"
 msgstr "121, 249"
 
-#: ../../configuration/service/dhcp-server.rst:344
+#: ../../configuration/service/dhcp-server.rst:360
 #: ../../configuration/system/syslog.rst:138
 #: ../../configuration/trafficpolicy/index.rst:870
 msgid "13"
@@ -1136,7 +1144,7 @@ msgstr "13"
 msgid "14"
 msgstr "14"
 
-#: ../../configuration/service/dhcp-server.rst:304
+#: ../../configuration/service/dhcp-server.rst:320
 #: ../../configuration/system/syslog.rst:142
 #: ../../configuration/trafficpolicy/index.rst:866
 msgid "15"
@@ -1160,7 +1168,7 @@ msgstr "172.16.0.0 a 172.31.255.255 (CIDR: 172.16.0.0/12)"
 msgid "18"
 msgstr "18"
 
-#: ../../configuration/service/dhcp-server.rst:309
+#: ../../configuration/service/dhcp-server.rst:325
 #: ../../configuration/system/syslog.rst:150
 msgid "19"
 msgstr "19"
@@ -1185,7 +1193,7 @@ msgstr "1: Enable DAD (default)"
 msgid "1 if not defined."
 msgstr "1 si no está definido."
 
-#: ../../configuration/service/dhcp-server.rst:283
+#: ../../configuration/service/dhcp-server.rst:299
 #: ../../configuration/system/syslog.rst:116
 #: ../../configuration/system/syslog.rst:178
 #: ../../configuration/trafficpolicy/index.rst:799
@@ -1219,7 +1227,7 @@ msgstr "25000 - 25 GBit/s"
 msgid "2500 - 2.5 GBit/s"
 msgstr "2500 - 2,5 GBit/s"
 
-#: ../../configuration/service/dhcp-server.rst:369
+#: ../../configuration/service/dhcp-server.rst:385
 msgid "252"
 msgstr "252"
 
@@ -1247,7 +1255,7 @@ msgstr "2. Since this is the first packet, connection status of this connection,
 msgid "2: Enable DAD, and disable IPv6 operation if MAC-based duplicate link-local address has been found."
 msgstr "2: Enable DAD, and disable IPv6 operation if MAC-based duplicate link-local address has been found."
 
-#: ../../configuration/service/dhcp-server.rst:289
+#: ../../configuration/service/dhcp-server.rst:305
 #: ../../configuration/system/syslog.rst:118
 #: ../../configuration/system/syslog.rst:181
 #: ../../configuration/trafficpolicy/index.rst:797
@@ -1275,7 +1283,7 @@ msgstr "38"
 msgid "3. Add a full path to the script"
 msgstr "3. Agregue una ruta completa al script"
 
-#: ../../configuration/service/dhcp-server.rst:294
+#: ../../configuration/service/dhcp-server.rst:310
 #: ../../configuration/system/syslog.rst:120
 #: ../../configuration/system/syslog.rst:183
 #: ../../configuration/trafficpolicy/index.rst:795
@@ -1291,11 +1299,11 @@ msgstr "40000 - 40 GBit/s"
 msgid "40 MHz channels may switch their primary and secondary channels if needed or creation of 40 MHz channel maybe rejected based on overlapping BSSes. These changes are done automatically when hostapd is setting up the 40 MHz channel."
 msgstr "Los canales de 40 MHz pueden cambiar sus canales primarios y secundarios si es necesario o la creación de un canal de 40 MHz puede rechazarse en función de los BSS superpuestos. Estos cambios se realizan automáticamente cuando hostapd está configurando el canal de 40 MHz."
 
-#: ../../configuration/service/dhcp-server.rst:314
+#: ../../configuration/service/dhcp-server.rst:330
 msgid "42"
 msgstr "42"
 
-#: ../../configuration/service/dhcp-server.rst:319
+#: ../../configuration/service/dhcp-server.rst:335
 msgid "44"
 msgstr "44"
 
@@ -1326,7 +1334,7 @@ msgstr "50000 - 50 GBit/s"
 msgid "5000 - 5 GBit/s"
 msgstr "5000 - 5 GBit/s"
 
-#: ../../configuration/service/dhcp-server.rst:324
+#: ../../configuration/service/dhcp-server.rst:340
 msgid "54"
 msgstr "54"
 
@@ -1339,7 +1347,7 @@ msgstr "5. Second packet for this connection is received by the router. Since co
 msgid "5 if not defined."
 msgstr "5 si no está definido."
 
-#: ../../configuration/service/dhcp-server.rst:299
+#: ../../configuration/service/dhcp-server.rst:315
 #: ../../configuration/system/syslog.rst:124
 #: ../../configuration/system/syslog.rst:189
 #: ../../configuration/trafficpolicy/index.rst:791
@@ -1347,7 +1355,7 @@ msgstr "5 si no está definido."
 msgid "6"
 msgstr "6"
 
-#: ../../configuration/service/dhcp-server.rst:334
+#: ../../configuration/service/dhcp-server.rst:350
 msgid "66"
 msgstr "66"
 
@@ -1355,11 +1363,11 @@ msgstr "66"
 msgid "66% of traffic is routed to eth0, eth1 gets 33% of traffic."
 msgstr "El 66% del tráfico se enruta a eth0, eth1 obtiene el 33% del tráfico."
 
-#: ../../configuration/service/dhcp-server.rst:339
+#: ../../configuration/service/dhcp-server.rst:355
 msgid "67"
 msgstr "67"
 
-#: ../../configuration/service/dhcp-server.rst:349
+#: ../../configuration/service/dhcp-server.rst:365
 msgid "69"
 msgstr "69"
 
@@ -1382,7 +1390,7 @@ msgstr "6in4 usa túneles para encapsular el tráfico IPv6 sobre enlaces IPv4 co
 msgid "7"
 msgstr "7"
 
-#: ../../configuration/service/dhcp-server.rst:354
+#: ../../configuration/service/dhcp-server.rst:370
 msgid "70"
 msgstr "70"
 
@@ -1511,7 +1519,7 @@ msgstr "Un túnel GRE opera en la capa 3 del modelo OSI y está representado por
 msgid "A Rule-Set can be applied to every interface:"
 msgstr "Se puede aplicar un conjunto de reglas a cada interfaz:"
 
-#: ../../configuration/service/dhcp-server.rst:601
+#: ../../configuration/service/dhcp-server.rst:620
 msgid "A SNTP server address can be specified for DHCPv6 clients."
 msgstr "Se puede especificar una dirección de servidor SNTP para clientes DHCPv6."
 
@@ -1527,7 +1535,7 @@ msgstr "Un túnel VyOS GRE puede transportar tráfico IPv4 e IPv6 y también se 
 msgid "A VyOS router with two interfaces - eth0 (WAN) and eth1 (LAN) - is required to implement a split-horizon DNS configuration for example.com."
 msgstr "Se requiere un enrutador VyOS con dos interfaces, eth0 (WAN) y eth1 (LAN), para implementar una configuración de DNS de horizonte dividido para example.com."
 
-#: ../../configuration/service/dhcp-server.rst:573
+#: ../../configuration/service/dhcp-server.rst:592
 msgid "A :abbr:`NIS (Network Information Service)` domain can be set to be used for DHCPv6 clients."
 msgstr "Se puede configurar un dominio :abbr:`NIS (Servicio de información de red)` para que se use con clientes DHCPv6."
 
@@ -1596,7 +1604,7 @@ msgstr "Una marca de firewall ``fwmark`` permite usar múltiples puertos para un
 msgid "A full example of a Tunnelbroker.net config can be found at :ref:`here <examples-tunnelbroker-ipv6>`."
 msgstr "Puede encontrar un ejemplo completo de una configuración de Tunnelbroker.net en :ref:`aquí<examples-tunnelbroker-ipv6> `."
 
-#: ../../configuration/service/dhcp-server.rst:186
+#: ../../configuration/service/dhcp-server.rst:201
 msgid "A generic `<name>` referencing this sync service."
 msgstr "Un genérico `<name> ` que hace referencia a este servicio de sincronización."
 
@@ -1694,7 +1702,7 @@ msgstr "Un ID de segmento que contiene un prefijo de dirección IP calculado por
 msgid "A sending station (computer or network switch) may be transmitting data faster than the other end of the link can accept it. Using flow control, the receiving station can signal the sender requesting suspension of transmissions until the receiver catches up."
 msgstr "Una estación de envío (computadora o conmutador de red) puede estar transmitiendo datos más rápido de lo que el otro extremo del enlace puede aceptarlos. Mediante el control de flujo, la estación receptora puede señalar al remitente solicitando la suspensión de las transmisiones hasta que el receptor se ponga al día."
 
-#: ../../configuration/service/dhcp-server.rst:629
+#: ../../configuration/service/dhcp-server.rst:648
 msgid "A shared network named ``NET1`` serves subnet ``2001:db8::/64``"
 msgstr "Una red compartida llamada ``NET1`` sirve a la subred ``2001:db8::/64``"
 
@@ -1948,11 +1956,11 @@ msgstr "Familias de direcciones"
 msgid "Address Groups"
 msgstr "Grupos de direcciones"
 
-#: ../../configuration/service/dhcp-server.rst:632
+#: ../../configuration/service/dhcp-server.rst:651
 msgid "Address pool shall be ``2001:db8::100`` through ``2001:db8::199``."
 msgstr "El grupo de direcciones será ``2001:db8::100`` hasta ``2001:db8::199``."
 
-#: ../../configuration/service/dhcp-server.rst:622
+#: ../../configuration/service/dhcp-server.rst:641
 msgid "Address pools"
 msgstr "Grupos de direcciones"
 
@@ -2948,11 +2956,11 @@ msgstr "Agregación de bonos/enlaces"
 msgid "Bond options"
 msgstr "Opciones de bonos"
 
-#: ../../configuration/service/dhcp-server.rst:346
+#: ../../configuration/service/dhcp-server.rst:362
 msgid "Boot image length in 512-octet blocks"
 msgstr "Longitud de la imagen de arranque en bloques de 512 octetos"
 
-#: ../../configuration/service/dhcp-server.rst:341
+#: ../../configuration/service/dhcp-server.rst:357
 msgid "Bootstrap file name"
 msgstr "Nombre de archivo de arranque"
 
@@ -3197,7 +3205,7 @@ msgstr "trato de clase"
 msgid "Classes"
 msgstr "Clases"
 
-#: ../../configuration/service/dhcp-server.rst:366
+#: ../../configuration/service/dhcp-server.rst:382
 msgid "Classless static route"
 msgstr "Ruta estática sin clase"
 
@@ -3245,11 +3253,11 @@ msgstr "Lado del cliente"
 msgid "Client configuration"
 msgstr "Configuración del cliente"
 
-#: ../../configuration/service/dhcp-server.rst:306
+#: ../../configuration/service/dhcp-server.rst:322
 msgid "Client domain name"
 msgstr "nombre de dominio del cliente"
 
-#: ../../configuration/service/dhcp-server.rst:361
+#: ../../configuration/service/dhcp-server.rst:377
 msgid "Client domain search"
 msgstr "Búsqueda de dominio de cliente"
 
@@ -3261,7 +3269,7 @@ msgstr "El aislamiento del cliente se puede utilizar para evitar puentes de tram
 msgid "Clients are identified by the CN field of their x.509 certificates, in this example the CN is ``client0``:"
 msgstr "Los clientes se identifican por el campo CN de sus certificados x.509, en este ejemplo el CN es ``client0``:"
 
-#: ../../configuration/service/dhcp-server.rst:554
+#: ../../configuration/service/dhcp-server.rst:573
 msgid "Clients receiving advertise messages from multiple servers choose the server with the highest preference value. The range for this value is ``0...255``."
 msgstr "Los clientes que reciben mensajes publicitarios de varios servidores eligen el servidor con el valor de preferencia más alto. El rango para este valor es ``0...255``."
 
@@ -3292,7 +3300,7 @@ msgstr "Comando utilizado para actualizar la base de datos GeoIP y los conjuntos
 msgid "Commands"
 msgstr "Commands"
 
-#: ../../configuration/service/dhcp-server.rst:419
+#: ../../configuration/service/dhcp-server.rst:436
 msgid "Common configuration, valid for both primary and secondary node."
 msgstr "Configuración común, válida tanto para el nodo primario como para el secundario."
 
@@ -3371,7 +3379,7 @@ msgstr "Confidencialidad: cifrado de paquetes para evitar la intromisión de una
 #: ../../configuration/service/dhcp-relay.rst:19
 #: ../../configuration/service/dhcp-relay.rst:137
 #: ../../configuration/service/dhcp-server.rst:22
-#: ../../configuration/service/dhcp-server.rst:550
+#: ../../configuration/service/dhcp-server.rst:569
 #: ../../configuration/service/dns.rst:8
 #: ../../configuration/service/dns.rst:214
 #: ../../configuration/service/https.rst:14
@@ -3450,6 +3458,10 @@ msgstr "La configuración de estas rutas exportadas debe, como mínimo, especifi
 #: ../../configuration/system/default-route.rst:39
 msgid "Configuration of :ref:`routing-static`"
 msgstr "Configuración de :ref:`routing-static`"
+
+#: ../../configuration/service/dhcp-server.rst:427
+msgid "Configuration of a DHCP HA pair:"
+msgstr "Configuration of a DHCP HA pair:"
 
 #: ../../configuration/service/dhcp-server.rst:411
 msgid "Configuration of a DHCP failover pair"
@@ -3882,6 +3894,10 @@ msgstr "Connections to the RPKI caching server can not only be established by HT
 msgid "Connections to the RPKI caching server can not only be established by HTTP/TLS but you can also rely on a secure SSH session to the server. To enable SSH you first need to create yoursels an SSH client keypair using ``generate ssh client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup the connection."
 msgstr "Las conexiones al servidor de almacenamiento en caché RPKI no solo pueden establecerse mediante HTTP/TLS, sino que también puede confiar en una sesión SSH segura con el servidor. Para habilitar SSH, primero debe crear usted mismo un par de claves de cliente SSH usando ``generate ssh client-key /config/auth/id_rsa_rpki``. Una vez que se crea su clave, puede configurar la conexión."
 
+#: ../../configuration/protocols/rpki.rst:143
+msgid "Connections to the RPKI caching server can not only be established by TCP using the RTR protocol but you can also rely on a secure SSH session to the server. This provides transport integrity and confidentiality and it is a good idea if your validation software supports it.  To enable SSH, first you need to create an SSH client keypair using ``generate ssh client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup the connection."
+msgstr "Connections to the RPKI caching server can not only be established by TCP using the RTR protocol but you can also rely on a secure SSH session to the server. This provides transport integrity and confidentiality and it is a good idea if your validation software supports it.  To enable SSH, first you need to create an SSH client keypair using ``generate ssh client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup the connection."
+
 #: ../../configuration/system/conntrack.rst:4
 msgid "Conntrack"
 msgstr "Contraseña"
@@ -3989,11 +4005,11 @@ msgstr "Cree un archivo llamado ``VyOS-1.3.6.1.4.1.44641.ConfigMgmt-Commands`` u
 msgid "Create a load balancing rule, it can be a number between 1 and 9999:"
 msgstr "Cree una regla de equilibrio de carga, puede ser un número entre 1 y 9999:"
 
-#: ../../configuration/service/dhcp-server.rst:223
+#: ../../configuration/service/dhcp-server.rst:239
 msgid "Create a new DHCP static mapping named `<description>` which is valid for the host identified by its DHCP unique identifier (DUID) `<identifier>`."
 msgstr "Create a new DHCP static mapping named `<description>` which is valid for the host identified by its DHCP unique identifier (DUID) `<identifier>`."
 
-#: ../../configuration/service/dhcp-server.rst:217
+#: ../../configuration/service/dhcp-server.rst:233
 msgid "Create a new DHCP static mapping named `<description>` which is valid for the host identified by its MAC `<address>`."
 msgstr "Cree una nueva asignación estática de DHCP llamada `<description> ` que es válido para el host identificado por su MAC `<address> `."
 
@@ -4198,6 +4214,10 @@ msgstr "La compatibilidad con DCO es una opción por túnel y no se habilita aut
 msgid "DDoS Protection"
 msgstr "DDoS Protection"
 
+#: ../../configuration/service/dhcp-server.rst:181
+msgid "DHCP High Availability must be configured explicitly by the following statements on both servers:"
+msgstr "DHCP High Availability must be configured explicitly by the following statements on both servers:"
+
 #: ../../configuration/service/dhcp-relay.rst:5
 msgid "DHCP Relay"
 msgstr "Retransmisión DHCP"
@@ -4206,15 +4226,15 @@ msgstr "Retransmisión DHCP"
 msgid "DHCP Server"
 msgstr "servidor DHCP"
 
-#: ../../configuration/service/dhcp-server.rst:391
+#: ../../configuration/service/dhcp-server.rst:407
 msgid "DHCP failover parameters"
 msgstr "Parámetros de conmutación por error de DHCP"
 
-#: ../../configuration/service/dhcp-server.rst:381
+#: ../../configuration/service/dhcp-server.rst:397
 msgid "DHCP lease range"
 msgstr "Rango de concesión de DHCP"
 
-#: ../../configuration/service/dhcp-server.rst:417
+#: ../../configuration/service/dhcp-server.rst:434
 msgid "DHCP range spans from `192.168.189.10` - `192.168.189.250`"
 msgstr "El rango de DHCP abarca desde `192.168.189.10` - `192.168.189.250`"
 
@@ -4226,7 +4246,7 @@ msgstr "Ejemplo de retransmisión DHCP"
 msgid "DHCP server is located at IPv4 address 10.0.1.4 on ``eth2``."
 msgstr "El servidor DHCP está ubicado en la dirección IPv4 10.0.1.4 en ``eth2``."
 
-#: ../../configuration/service/dhcp-server.rst:624
+#: ../../configuration/service/dhcp-server.rst:643
 msgid "DHCPv6 address pools must be configured for the system to act as a DHCPv6 server. The following example describes a common scenario."
 msgstr "Los grupos de direcciones DHCPv6 deben configurarse para que el sistema actúe como un servidor DHCPv6. El siguiente ejemplo describe un escenario común."
 
@@ -4291,11 +4311,11 @@ msgstr "servidores de nombres DNS"
 msgid "DNS search list to advertise"
 msgstr "Lista de búsqueda de DNS para anunciar"
 
-#: ../../configuration/service/dhcp-server.rst:301
+#: ../../configuration/service/dhcp-server.rst:317
 msgid "DNS server IPv4 address"
 msgstr "Dirección IPv4 del servidor DNS"
 
-#: ../../configuration/service/dhcp-server.rst:631
+#: ../../configuration/service/dhcp-server.rst:650
 msgid "DNS server is located at ``2001:db8::ffff``"
 msgstr "El servidor DNS está ubicado en ``2001:db8::ffff``"
 
@@ -4351,7 +4371,7 @@ msgstr "Preferencia de enrutador predeterminado"
 msgid "Default behavior - don't ask client for mppe, but allow it if client wants. Please note that RADIUS may override this option by MS-MPPE-Encryption-Policy attribute."
 msgstr "Comportamiento predeterminado: no le pida al cliente mppe, pero permítalo si el cliente lo desea. Tenga en cuenta que RADIUS puede anular esta opción mediante el atributo MS-MPPE-Encryption-Policy."
 
-#: ../../configuration/service/dhcp-server.rst:414
+#: ../../configuration/service/dhcp-server.rst:431
 msgid "Default gateway and DNS server is at `192.0.2.254`"
 msgstr "La puerta de enlace predeterminada y el servidor DNS están en `192.0.2.254`"
 
@@ -4483,6 +4503,10 @@ msgstr "Defina el grupo de registro al que enviar el mensaje. Solo se aplica si 
 msgid "Define number of packets to queue inside the kernel before sending them to userspace. Only applicable if rule log is enable and log group is defined."
 msgstr "Defina la cantidad de paquetes para poner en cola dentro del kernel antes de enviarlos al espacio de usuario. Solo se aplica si el registro de reglas está habilitado y el grupo de registros está definido."
 
+#: ../../configuration/service/dhcp-server.rst:187
+msgid "Define operation mode of High Availability feature. Default value if command is not specified is `active-active`"
+msgstr "Define operation mode of High Availability feature. Default value if command is not specified is `active-active`"
+
 #: ../../configuration/protocols/rpki.rst:108
 msgid "Define the time interval to update the local cache"
 msgstr "Definir el intervalo de tiempo para actualizar el caché local"
@@ -4560,7 +4584,7 @@ msgstr "Define el dispositivo especificado como una consola del sistema. Los dis
 msgid "Defining Peers"
 msgstr "Definición de compañeros"
 
-#: ../../configuration/service/dhcp-server.rst:619
+#: ../../configuration/service/dhcp-server.rst:638
 msgid "Delegate prefixes from the range indicated by the start and stop qualifier."
 msgstr "Prefijos delegados del rango indicado por el calificador de inicio y fin."
 
@@ -5154,7 +5178,7 @@ msgstr "Habilite el buscador IGMP y MLD."
 msgid "Enable IGMP and MLD snooping."
 msgstr "Habilite la indagación IGMP y MLD."
 
-#: ../../configuration/service/dhcp-server.rst:311
+#: ../../configuration/service/dhcp-server.rst:327
 msgid "Enable IP forwarding on client"
 msgstr "Habilitar el reenvío de IP en el cliente"
 
@@ -5511,12 +5535,12 @@ msgstr "Every connection/remote-access pool we configure also needs a pool where
 #: ../../configuration/protocols/failover.rst:63
 #: ../../configuration/protocols/igmp-proxy.rst:61
 #: ../../configuration/protocols/pim.rst:217
-#: ../../configuration/protocols/rpki.rst:166
+#: ../../configuration/protocols/rpki.rst:168
 #: ../../configuration/service/broadcast-relay.rst:55
-#: ../../configuration/service/conntrack-sync.rst:190
+#: ../../configuration/service/conntrack-sync.rst:195
 #: ../../configuration/service/dhcp-relay.rst:85
 #: ../../configuration/service/dhcp-relay.rst:174
-#: ../../configuration/service/dhcp-server.rst:402
+#: ../../configuration/service/dhcp-server.rst:418
 #: ../../configuration/service/dns.rst:147
 #: ../../configuration/service/dns.rst:260
 #: ../../configuration/service/eventhandler.rst:83
@@ -5810,8 +5834,6 @@ msgstr "Código de instalación"
 
 #: ../../configuration/loadbalancing/wan.rst:218
 #: ../../configuration/protocols/failover.rst:3
-#: ../../configuration/service/dhcp-server.rst:170
-#: ../../configuration/service/dhcp-server.rst:409
 msgid "Failover"
 msgstr "conmutación por error"
 
@@ -6533,7 +6555,7 @@ msgstr "Capacidades HT (alto rendimiento) (802.11n)"
 msgid "Hairpin NAT/NAT Reflection"
 msgstr "Horquilla NAT/NAT Reflexión"
 
-#: ../../configuration/service/dhcp-server.rst:613
+#: ../../configuration/service/dhcp-server.rst:632
 msgid "Hand out prefixes of size `<length>` to clients in subnet `<prefix>` when they request for prefix delegation."
 msgstr "Reparta prefijos de tamaño `<length> ` a los clientes en la subred `<prefix> ` cuando solicitan delegación de prefijo."
 
@@ -6589,7 +6611,7 @@ msgstr "Aquí hay un segundo ejemplo de un túnel de doble pila sobre IPv6 entre
 msgid "Here is an example :abbr:`NET (Network Entity Title)` value:"
 msgstr "Aquí hay un ejemplo de valor :abbr:`NET (Título de entidad de red)`:"
 
-#: ../../configuration/protocols/rpki.rst:177
+#: ../../configuration/protocols/rpki.rst:179
 msgid "Here is an example route-map to apply to routes learned at import. In this filter we reject prefixes with the state `invalid`, and set a higher `local-preference` if the prefix is RPKI `valid` rather than merely `notfound`."
 msgstr "Aquí hay un mapa de ruta de ejemplo para aplicar a las rutas aprendidas en la importación. En este filtro, rechazamos los prefijos con el estado &quot;no válido&quot; y establecemos una &quot;preferencia local&quot; más alta si el prefijo es RPKI &quot;válido&quot; en lugar de simplemente &quot;no encontrado&quot;."
 
@@ -6619,6 +6641,11 @@ msgstr "Hewlett-Packard lo llama filtrado de puerto de origen o aislamiento de p
 msgid "High"
 msgstr "Alto"
 
+#: ../../configuration/service/dhcp-server.rst:170
+#: ../../configuration/service/dhcp-server.rst:425
+msgid "High Availability"
+msgstr "High Availability"
+
 #: ../../configuration/highavailability/index.rst:6
 msgid "High availability"
 msgstr "Alta disponibilidad"
@@ -6639,7 +6666,7 @@ msgstr "Información del anfitrión"
 msgid "Host name"
 msgstr "Nombre de anfitrión"
 
-#: ../../configuration/service/dhcp-server.rst:672
+#: ../../configuration/service/dhcp-server.rst:691
 msgid "Host specific mapping shall be named ``client1``"
 msgstr "El mapeo específico del host se llamará ``client1``"
 
@@ -6787,7 +6814,7 @@ msgstr "Túneles VPN IPSec."
 msgid "IP address"
 msgstr "dirección IP"
 
-#: ../../configuration/service/dhcp-server.rst:242
+#: ../../configuration/service/dhcp-server.rst:258
 msgid "IP address ``192.168.1.100`` shall be statically mapped to client named ``client1``"
 msgstr "La dirección IP ``192.168.1.100`` se asignará estáticamente al cliente llamado ``client1``"
 
@@ -6796,19 +6823,19 @@ msgstr "La dirección IP ``192.168.1.100`` se asignará estáticamente al client
 msgid "IP address ``192.168.2.1/24``"
 msgstr "Dirección IP ``192.168.2.1/24``"
 
-#: ../../configuration/service/dhcp-server.rst:326
+#: ../../configuration/service/dhcp-server.rst:342
 msgid "IP address for DHCP server identifier"
 msgstr "Dirección IP para el identificador del servidor DHCP"
 
-#: ../../configuration/service/dhcp-server.rst:316
+#: ../../configuration/service/dhcp-server.rst:332
 msgid "IP address of NTP server"
 msgstr "Dirección IP del servidor NTP"
 
-#: ../../configuration/service/dhcp-server.rst:356
+#: ../../configuration/service/dhcp-server.rst:372
 msgid "IP address of POP3 server"
 msgstr "Dirección IP del servidor POP3"
 
-#: ../../configuration/service/dhcp-server.rst:351
+#: ../../configuration/service/dhcp-server.rst:367
 msgid "IP address of SMTP server"
 msgstr "Dirección IP del servidor SMTP"
 
@@ -6824,7 +6851,7 @@ msgstr "Dirección IP de la ruta para hacer coincidir, según la lista de prefij
 msgid "IP address of route to match, based on specified prefix-length. Note that this can be used for kernel routes only. Do not apply to the routes of dynamic routing protocols (e.g. BGP, RIP, OSFP), as this can lead to unexpected results.."
 msgstr "Dirección IP de la ruta para hacer coincidir, según la longitud de prefijo especificada. Tenga en cuenta que esto solo se puede usar para rutas del kernel. No aplique a las rutas de los protocolos de enrutamiento dinámico (por ejemplo, BGP, RIP, OSFP), ya que esto puede conducir a resultados inesperados."
 
-#: ../../configuration/service/dhcp-server.rst:386
+#: ../../configuration/service/dhcp-server.rst:402
 msgid "IP address to exclude from DHCP lease range"
 msgstr "Dirección IP para excluir del rango de concesión de DHCP"
 
@@ -6912,11 +6939,11 @@ msgstr "Dirección remota IPv4/IPv6 del túnel VXLAN. Alternativa a la multidifu
 msgid "IPv4 Firewall Configuration"
 msgstr "IPv4 Firewall Configuration"
 
-#: ../../configuration/service/dhcp-server.rst:331
+#: ../../configuration/service/dhcp-server.rst:347
 msgid "IPv4 address of next bootstrap server"
 msgstr "Dirección IPv4 del próximo servidor de arranque"
 
-#: ../../configuration/service/dhcp-server.rst:291
+#: ../../configuration/service/dhcp-server.rst:307
 msgid "IPv4 address of router on the client's subnet"
 msgstr "Dirección IPv4 del enrutador en la subred del cliente"
 
@@ -6997,7 +7024,7 @@ msgstr "IPv6 SLAAC e IA-PD"
 msgid "IPv6 TCP filters will only match IPv6 packets with no header extension, see https://en.wikipedia.org/wiki/IPv6_packet#Extension_headers"
 msgstr "Los filtros IPv6 TCP solo coincidirán con paquetes IPv6 sin extensión de encabezado, consulte https://en.wikipedia.org/wiki/IPv6_packet#Extension_headers"
 
-#: ../../configuration/service/dhcp-server.rst:670
+#: ../../configuration/service/dhcp-server.rst:689
 msgid "IPv6 address ``2001:db8::101`` shall be statically mapped"
 msgstr "La dirección IPv6 ``2001:db8::101`` se mapeará estáticamente"
 
@@ -7033,7 +7060,7 @@ msgstr "emparejamiento IPv6"
 msgid "IPv6 prefix."
 msgstr "Prefijo IPv6."
 
-#: ../../configuration/service/dhcp-server.rst:671
+#: ../../configuration/service/dhcp-server.rst:690
 msgid "IPv6 prefix ``2001:db8:0:101::/64`` shall be statically mapped"
 msgstr "El prefijo IPv6 ``2001:db8:0:101::/64`` se mapeará estáticamente"
 
@@ -7045,7 +7072,7 @@ msgstr "retransmisión IPv6"
 msgid "IPv6 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospfv3, ripng, static."
 msgstr "Origen de la ruta IPv6: bgp, conectado, eigrp, isis, kernel, nhrp, ospfv3, ripng, estático."
 
-#: ../../configuration/service/dhcp-server.rst:542
+#: ../../configuration/service/dhcp-server.rst:561
 msgid "IPv6 server"
 msgstr "servidor IPv6"
 
@@ -7065,7 +7092,7 @@ msgstr "Configuración global IS-IS"
 msgid "IS-IS SR Configuration"
 msgstr "Configuración IS-IS SR"
 
-#: ../../configuration/service/dhcp-server.rst:273
+#: ../../configuration/service/dhcp-server.rst:289
 msgid "ISC-DHCP Option name"
 msgstr "Nombre de la opción ISC-DHCP"
 
@@ -7336,7 +7363,7 @@ msgstr "Si el par mapeado estáticamente ejecuta Cisco IOS, especifique la palab
 msgid "If the system detects an unconfigured wireless device, it will be automatically added the configuration tree, specifying any detected settings (for example, its MAC address) and configured to run in monitor mode."
 msgstr "Si el sistema detecta un dispositivo inalámbrico no configurado, se agregará automáticamente al árbol de configuración, especificando cualquier configuración detectada (por ejemplo, su dirección MAC) y configurado para ejecutarse en modo de monitor."
 
-#: ../../configuration/service/conntrack-sync.rst:130
+#: ../../configuration/service/conntrack-sync.rst:135
 msgid "If the table is empty and you have a warning message, it means conntrack is not enabled. To enable conntrack, just create a NAT or a firewall rule. :cfgcmd:`set firewall state-policy established action accept`"
 msgstr "Si la tabla está vacía y tiene un mensaje de advertencia, significa que conntrack no está habilitado. Para habilitar conntrack, simplemente cree una NAT o una regla de firewall. :cfgcmd:`establecer la acción establecida de la política de estado del cortafuegos aceptar`"
 
@@ -7704,7 +7731,7 @@ msgstr "En implementaciones grandes, no es razonable configurar cada usuario ind
 msgid "In order for flow accounting information to be collected and displayed for an interface, the interface must be configured for flow accounting."
 msgstr "Para que la información de contabilidad de flujo se recopile y muestre para una interfaz, la interfaz debe estar configurada para la contabilidad de flujo."
 
-#: ../../configuration/service/dhcp-server.rst:195
+#: ../../configuration/service/dhcp-server.rst:211
 msgid "In order for the primary and the secondary DHCP server to keep their lease tables in sync, they must be able to reach each other on TCP port 647. If you have firewall rules in effect, adjust them accordingly."
 msgstr "Para que el servidor DHCP primario y secundario mantengan sus tablas de arrendamiento sincronizadas, deben poder comunicarse entre sí en el puerto TCP 647. Si tiene reglas de firewall vigentes, ajústelas en consecuencia."
 
@@ -7732,7 +7759,7 @@ msgstr "Para que VyOS Traffic Control funcione, debe seguir 2 pasos:"
 msgid "In order to have full control and make use of multiple static public IP addresses, your VyOS will have to initiate the PPPoE connection and control it. In order for this method to work, you will have to figure out how to make your DSL Modem/Router switch into a Bridged Mode so it only acts as a DSL Transceiver device to connect between the Ethernet link of your VyOS and the phone cable. Once your DSL Transceiver is in Bridge Mode, you should get no IP address from it. Please make sure you connect to the Ethernet Port 1 if your DSL Transceiver has a switch, as some of them only work this way."
 msgstr "Para tener control total y hacer uso de múltiples direcciones IP públicas estáticas, su VyOS deberá iniciar la conexión PPPoE y controlarla. Para que este método funcione, tendrá que descubrir cómo hacer que su módem/enrutador DSL cambie a un modo puente para que solo actúe como un dispositivo transceptor DSL para conectarse entre el enlace Ethernet de su VyOS y el cable del teléfono. Una vez que su transceptor DSL esté en modo puente, no debería obtener ninguna dirección IP. Asegúrese de conectarse al puerto Ethernet 1 si su transceptor DSL tiene un interruptor, ya que algunos de ellos solo funcionan de esta manera."
 
-#: ../../configuration/service/dhcp-server.rst:665
+#: ../../configuration/service/dhcp-server.rst:684
 msgid "In order to map specific IPv6 addresses to specific hosts static mappings can be created. The following example explains the process."
 msgstr "Para asignar direcciones IPv6 específicas a hosts específicos, se pueden crear asignaciones estáticas. El siguiente ejemplo explica el proceso."
 
@@ -8170,7 +8197,7 @@ msgstr "Ayuda pensar en la sintaxis como: (ver más abajo). El &#39;conjunto de 
 msgid "It is compatible with Cisco (R) AnyConnect (R) clients."
 msgstr "Es compatible con clientes Cisco (R) AnyConnect (R)."
 
-#: ../../configuration/service/dhcp-server.rst:630
+#: ../../configuration/service/dhcp-server.rst:649
 msgid "It is connected to ``eth1``"
 msgstr "Está conectado a ``eth1``"
 
@@ -8373,11 +8400,11 @@ msgstr "Protocolo de distribución de etiquetas"
 msgid "Layer 2 Tunnelling Protocol Version 3 is an IETF standard related to L2TP that can be used as an alternative protocol to :ref:`mpls` for encapsulation of multiprotocol Layer 2 communications traffic over IP networks. Like L2TP, L2TPv3 provides a pseudo-wire service but is scaled to fit carrier requirements."
 msgstr "Layer 2 Tunneling Protocol Version 3 es un estándar IETF relacionado con L2TP que se puede utilizar como un protocolo alternativo a :ref:`mpls` para la encapsulación del tráfico de comunicaciones multiprotocolo de Capa 2 a través de redes IP. Al igual que L2TP, L2TPv3 proporciona un servicio de pseudocable, pero está escalado para adaptarse a los requisitos del operador."
 
-#: ../../configuration/service/dhcp-server.rst:633
+#: ../../configuration/service/dhcp-server.rst:652
 msgid "Lease time will be left at the default value which is 24 hours"
 msgstr "El tiempo de concesión se dejará en el valor predeterminado, que es de 24 horas."
 
-#: ../../configuration/service/dhcp-server.rst:376
+#: ../../configuration/service/dhcp-server.rst:392
 msgid "Lease timeout in seconds (default: 86400)"
 msgstr "Tiempo de espera de arrendamiento en segundos (predeterminado: 86400)"
 
@@ -8546,6 +8573,10 @@ msgstr "Configuración local:"
 msgid "Local Configuration - Annotated:"
 msgstr "Configuración local - Anotada:"
 
+#: ../../configuration/service/dhcp-server.rst:192
+msgid "Local IP `<address>` used when communicating to the HA peer."
+msgstr "Local IP `<address>` used when communicating to the HA peer."
+
 #: ../../configuration/service/dhcp-server.rst:177
 msgid "Local IP `<address>` used when communicating to the failover peer."
 msgstr "IP local`<address> ` utilizado cuando se comunica con el compañero de conmutación por error."
@@ -8578,11 +8609,11 @@ msgstr "Cuenta de usuario local"
 msgid "Local path that includes the known hosts file."
 msgstr "Ruta local que incluye el archivo de hosts conocidos."
 
-#: ../../configuration/protocols/rpki.rst:155
+#: ../../configuration/protocols/rpki.rst:157
 msgid "Local path that includes the private key file of the router."
 msgstr "Ruta local que incluye el archivo de clave privada del enrutador."
 
-#: ../../configuration/protocols/rpki.rst:159
+#: ../../configuration/protocols/rpki.rst:161
 msgid "Local path that includes the public key file of the router."
 msgstr "Ruta local que incluye el archivo de clave pública del enrutador."
 
@@ -8758,7 +8789,7 @@ msgstr "Main structure is shown next:"
 msgid "Maintenance mode"
 msgstr "Modo de mantenimiento"
 
-#: ../../configuration/service/conntrack-sync.rst:111
+#: ../../configuration/service/conntrack-sync.rst:116
 msgid "Make sure conntrack is enabled by running and show connection tracking table."
 msgstr "Asegúrese de que conntrack esté habilitado al ejecutar y mostrar la tabla de seguimiento de conexiones."
 
@@ -9151,7 +9182,7 @@ msgstr "Most operating systems include native client support for IPsec IKEv2 VPN
 msgid "Mount a volume into the container"
 msgstr "Montar un volumen en el contenedor."
 
-#: ../../configuration/service/dhcp-server.rst:275
+#: ../../configuration/service/dhcp-server.rst:291
 msgid "Multi"
 msgstr "Multi"
 
@@ -9163,7 +9194,7 @@ msgstr "El servidor multicliente es el modo OpenVPN más popular en los enrutado
 msgid "Multi-homed. In a multi-homed network environment, the NAT66 device connects to an internal network and simultaneously connects to different external networks. Address translation can be configured on each external network side interface of the NAT66 device to convert the same internal network address into different external network addresses, and realize the mapping of the same internal address to multiple external addresses."
 msgstr "multihogar. En un entorno de red de alojamiento múltiple, el dispositivo NAT66 se conecta a una red interna y se conecta simultáneamente a diferentes redes externas. La traducción de direcciones se puede configurar en cada interfaz del lado de la red externa del dispositivo NAT66 para convertir la misma dirección de red interna en diferentes direcciones de red externa y realizar la asignación de la misma dirección interna a varias direcciones externas."
 
-#: ../../configuration/service/dhcp-server.rst:399
+#: ../../configuration/service/dhcp-server.rst:415
 msgid "Multi: can be specified multiple times."
 msgstr "Multi: se puede especificar varias veces."
 
@@ -9266,18 +9297,18 @@ msgstr "Varios usuarios pueden conectarse al mismo dispositivo serie, pero solo 
 msgid "Multiprotocol extensions enable BGP to carry routing information for multiple network layer protocols. BGP supports an Address Family Identifier (AFI) for IPv4 and IPv6."
 msgstr "Las extensiones multiprotocolo permiten que BGP transporte información de enrutamiento para múltiples protocolos de capa de red. BGP admite un identificador de familia de direcciones (AFI) para IPv4 e IPv6."
 
-#: ../../configuration/service/dhcp-server.rst:281
-#: ../../configuration/service/dhcp-server.rst:287
-#: ../../configuration/service/dhcp-server.rst:292
-#: ../../configuration/service/dhcp-server.rst:312
-#: ../../configuration/service/dhcp-server.rst:327
-#: ../../configuration/service/dhcp-server.rst:332
-#: ../../configuration/service/dhcp-server.rst:337
-#: ../../configuration/service/dhcp-server.rst:342
-#: ../../configuration/service/dhcp-server.rst:347
-#: ../../configuration/service/dhcp-server.rst:367
-#: ../../configuration/service/dhcp-server.rst:372
-#: ../../configuration/service/dhcp-server.rst:377
+#: ../../configuration/service/dhcp-server.rst:297
+#: ../../configuration/service/dhcp-server.rst:303
+#: ../../configuration/service/dhcp-server.rst:308
+#: ../../configuration/service/dhcp-server.rst:328
+#: ../../configuration/service/dhcp-server.rst:343
+#: ../../configuration/service/dhcp-server.rst:348
+#: ../../configuration/service/dhcp-server.rst:353
+#: ../../configuration/service/dhcp-server.rst:358
+#: ../../configuration/service/dhcp-server.rst:363
+#: ../../configuration/service/dhcp-server.rst:383
+#: ../../configuration/service/dhcp-server.rst:388
+#: ../../configuration/service/dhcp-server.rst:393
 msgid "N"
 msgstr "norte"
 
@@ -9378,7 +9409,7 @@ msgstr "Name of installed certificate authority certificate."
 msgid "Name of installed server certificate."
 msgstr "Name of installed server certificate."
 
-#: ../../configuration/service/dhcp-server.rst:396
+#: ../../configuration/service/dhcp-server.rst:412
 msgid "Name of static mapping"
 msgstr "Nombre del mapeo estático"
 
@@ -9386,11 +9417,11 @@ msgstr "Nombre del mapeo estático"
 msgid "Name of the single table Only if set group-metrics single-table."
 msgstr "Nombre de la tabla única Solo si se establece una tabla única de métricas de grupo."
 
-#: ../../configuration/service/dhcp-server.rst:336
+#: ../../configuration/service/dhcp-server.rst:352
 msgid "Name or IPv4 address of TFTP server"
 msgstr "Nombre o dirección IPv4 del servidor TFTP"
 
-#: ../../configuration/service/dhcp-server.rst:321
+#: ../../configuration/service/dhcp-server.rst:337
 msgid "NetBIOS over TCP/IP name server"
 msgstr "Servidor de nombres NetBIOS sobre TCP/IP"
 
@@ -9569,7 +9600,7 @@ msgstr "Tenga en cuenta el comando con la clave pública (set pki key-pair ipsec
 msgid "Notice"
 msgstr "Aviso"
 
-#: ../../configuration/service/conntrack-sync.rst:198
+#: ../../configuration/service/conntrack-sync.rst:203
 msgid "Now configure conntrack-sync service on ``router1`` **and** ``router2``"
 msgstr "Ahora configure el servicio conntrack-sync en ``router1`` **y** ``router2``"
 
@@ -9641,7 +9672,7 @@ msgstr "Generación de claves OTP"
 msgid "Offloading"
 msgstr "Descarga"
 
-#: ../../configuration/service/dhcp-server.rst:285
+#: ../../configuration/service/dhcp-server.rst:301
 msgid "Offset of the client's subnet in seconds from Coordinated Universal Time (UTC)"
 msgstr "Desplazamiento de la subred del cliente en segundos desde el tiempo universal coordinado (UTC)"
 
@@ -9653,7 +9684,7 @@ msgstr "A menudo necesitamos integrar una política en otra. Es posible hacerlo 
 msgid "Often you will also have to configure your *default* traffic in the same way you do with a class. *Default* can be considered a class as it behaves like that. It contains any traffic that did not match any of the defined classes, so it is like an open class, a class without matching filters."
 msgstr "A menudo, también tendrá que configurar su tráfico *predeterminado* de la misma manera que lo hace con una clase. *Predeterminado* puede considerarse una clase ya que se comporta así. Contiene todo el tráfico que no coincide con ninguna de las clases definidas, por lo que es como una clase abierta, una clase sin filtros coincidentes."
 
-#: ../../configuration/service/conntrack-sync.rst:215
+#: ../../configuration/service/conntrack-sync.rst:220
 msgid "On active router run:"
 msgstr "En el enrutador activo, ejecute:"
 
@@ -9669,7 +9700,7 @@ msgstr "En velocidades bajas (por debajo de 40 Mbit), es posible que desee ajust
 msgid "On most scenarios, there's no need to change specific parameters, and using default configuration is enough. But there are cases were extra configuration is needed."
 msgstr "En la mayoría de los escenarios, no es necesario cambiar parámetros específicos y basta con usar la configuración predeterminada. Pero hay casos en los que se necesita una configuración adicional."
 
-#: ../../configuration/service/conntrack-sync.rst:246
+#: ../../configuration/service/conntrack-sync.rst:251
 msgid "On standby router run:"
 msgstr "En el enrutador en espera, ejecute:"
 
@@ -9704,7 +9735,7 @@ msgstr "A la derecha:"
 msgid "On the RIGHT (dynamic address):"
 msgstr "A la DERECHA (dirección dinámica):"
 
-#: ../../configuration/service/conntrack-sync.rst:211
+#: ../../configuration/service/conntrack-sync.rst:216
 msgid "On the active router, you should have information in the internal-cache of conntrack-sync. The same current active connections number should be shown in the external-cache of the standby router"
 msgstr "En el enrutador activo, debe tener información en el caché interno de conntrack-sync. El mismo número de conexiones activas actuales debe mostrarse en el caché externo del enrutador en espera"
 
@@ -9784,7 +9815,7 @@ msgstr "Una vez que tenga un dispositivo Ethernet conectado, es decir, `eth0`, p
 msgid "Once you have setup your SSTP server there comes the time to do some basic testing. The Linux client used for testing is called sstpc_. sstpc_ requires a PPP configuration/peer file."
 msgstr "Una vez que haya configurado su servidor SSTP, llega el momento de realizar algunas pruebas básicas. El cliente de Linux utilizado para las pruebas se llama sstpc_. sstpc_ requiere un archivo de configuración/par de PPP."
 
-#: ../../configuration/protocols/rpki.rst:193
+#: ../../configuration/protocols/rpki.rst:195
 msgid "Once your routers are configured to reject RPKI-invalid prefixes, you can test whether the configuration is working correctly using the `RIPE Labs RPKI Test`_ experimental tool."
 msgstr "Una vez que sus enrutadores estén configurados para rechazar prefijos no válidos para RPKI, puede probar si la configuración funciona correctamente utilizando la herramienta experimental `RIPE Labs RPKI Test`_."
 
@@ -9923,7 +9954,7 @@ msgstr "Modos de funcionamiento"
 #: ../../configuration/pki/index.rst:321
 #: ../../configuration/protocols/igmp-proxy.rst:73
 #: ../../configuration/protocols/static.rst:216
-#: ../../configuration/service/conntrack-sync.rst:107
+#: ../../configuration/service/conntrack-sync.rst:112
 #: ../../configuration/service/console-server.rst:76
 #: ../../configuration/service/dhcp-relay.rst:124
 #: ../../configuration/service/dhcp-relay.rst:201
@@ -9955,8 +9986,8 @@ msgstr "Cortafuegos en modo operativo"
 msgid "Operation Commands"
 msgstr "Comandos de operación"
 
-#: ../../configuration/service/dhcp-server.rst:452
-#: ../../configuration/service/dhcp-server.rst:706
+#: ../../configuration/service/dhcp-server.rst:471
+#: ../../configuration/service/dhcp-server.rst:725
 #: ../../configuration/system/acceleration.rst:42
 msgid "Operation Mode"
 msgstr "Modo de operación"
@@ -9992,11 +10023,11 @@ msgstr "Opción"
 msgid "Option 43 for UniFI"
 msgstr "Opción 43 para UniFI"
 
-#: ../../configuration/service/dhcp-server.rst:274
+#: ../../configuration/service/dhcp-server.rst:290
 msgid "Option description"
 msgstr "Descripción de la opción"
 
-#: ../../configuration/service/dhcp-server.rst:272
+#: ../../configuration/service/dhcp-server.rst:288
 msgid "Option number"
 msgstr "Número de opción"
 
@@ -10046,7 +10077,7 @@ msgstr "Opcionalmente, establezca una dirección IPv4 o IPv6 estática específi
 #: ../../configuration/interfaces/openvpn.rst:631
 #: ../../configuration/service/dhcp-relay.rst:53
 #: ../../configuration/service/dhcp-relay.rst:160
-#: ../../configuration/service/dhcp-server.rst:264
+#: ../../configuration/service/dhcp-server.rst:280
 msgid "Options"
 msgstr "Opciones"
 
@@ -10065,6 +10096,10 @@ msgstr "O, por ejemplo, ftp, `eliminar módulos de control de seguimiento del si
 #: ../../configuration/trafficpolicy/index.rst:66
 msgid "Or **binary** prefixes."
 msgstr "O prefijos **binarios**."
+
+#: ../../configuration/service/conntrack-sync.rst:107
+msgid "Order conntrackd to request a complete conntrack table resync against the other node at startup."
+msgstr "Order conntrackd to request a complete conntrack table resync against the other node at startup."
 
 #: ../../configuration/protocols/ospf.rst:73
 msgid "Originate an AS-External (type-5) LSA describing a default route into all external-routing capable areas, of the specified metric and metric type. If the :cfgcmd:`always` keyword is given then the default is always advertised, even when there is no default present in the routing table. The argument :cfgcmd:`route-map` specifies to advertise the default route if the route map is satisfied."
@@ -10338,7 +10373,7 @@ msgstr "Consulte la documentación de :ref:`ipsec` para ver las opciones individ
 msgid "Please refer to the :ref:`tunnel-interface` documentation for the individual tunnel related options."
 msgstr "Consulte la documentación de :ref:`tunnel-interface` para conocer las opciones individuales relacionadas con los túneles."
 
-#: ../../configuration/service/dhcp-server.rst:404
+#: ../../configuration/service/dhcp-server.rst:420
 msgid "Please see the :ref:`dhcp-dns-quick-start` configuration."
 msgstr "Consulte la configuración de :ref:`dhcp-dns-quick-start`."
 
@@ -10485,7 +10520,7 @@ msgstr "Preferencia asociada con el enrutador predeterminado"
 msgid "Prefix Conversion"
 msgstr "Conversión de prefijo"
 
-#: ../../configuration/service/dhcp-server.rst:604
+#: ../../configuration/service/dhcp-server.rst:623
 msgid "Prefix Delegation"
 msgstr "Prefijo Delegación"
 
@@ -10772,7 +10807,7 @@ msgstr "dirección de origen RADIUS"
 msgid "RFC 3768 defines a virtual MAC address to each VRRP virtual router. This virtual router MAC address will be used as the source in all periodic VRRP messages sent by the active node. When the rfc3768-compatibility option is set, a new VRRP interface is created, to which the MAC address and the virtual IP address is automatically assigned."
 msgstr "RFC 3768 define una dirección MAC virtual para cada enrutador virtual VRRP. Esta dirección MAC del enrutador virtual se utilizará como fuente en todos los mensajes VRRP periódicos enviados por el nodo activo. Cuando se establece la opción de compatibilidad con rfc3768, se crea una nueva interfaz VRRP, a la que se asignan automáticamente la dirección MAC y la dirección IP virtual."
 
-#: ../../configuration/service/dhcp-server.rst:296
+#: ../../configuration/service/dhcp-server.rst:312
 msgid "RFC 868 time server IPv4 address"
 msgstr "Dirección IPv4 del servidor horario RFC 868"
 
@@ -10995,6 +11030,10 @@ msgstr "Nombre del depósito ``InfluxDB`` remoto"
 msgid "Remote database name."
 msgstr "Nombre de la base de datos remota."
 
+#: ../../configuration/service/dhcp-server.rst:196
+msgid "Remote peer IP `<address>` of the second DHCP server in this HA cluster."
+msgstr "Remote peer IP `<address>` of the second DHCP server in this HA cluster."
+
 #: ../../configuration/service/dhcp-server.rst:181
 msgid "Remote peer IP `<address>` of the second DHCP server in this failover cluster."
 msgstr "IP de par remoto `<address> ` del segundo servidor DHCP en este clúster de conmutación por error."
@@ -11087,7 +11126,7 @@ msgstr "Reiniciar un contenedor dado"
 msgid "Restart mDNS repeater service."
 msgstr "Restart mDNS repeater service."
 
-#: ../../configuration/service/dhcp-server.rst:468
+#: ../../configuration/service/dhcp-server.rst:487
 msgid "Restart the DHCP server"
 msgstr "Reinicie el servidor DHCP"
 
@@ -11117,11 +11156,11 @@ msgstr "Resultados en:"
 msgid "Retransmit Timer"
 msgstr "Temporizador de retransmisión"
 
-#: ../../configuration/service/conntrack-sync.rst:144
+#: ../../configuration/service/conntrack-sync.rst:149
 msgid "Retrieve current statistics of connection tracking subsystem."
 msgstr "Recuperar estadísticas actuales del subsistema de seguimiento de conexiones."
 
-#: ../../configuration/service/conntrack-sync.rst:177
+#: ../../configuration/service/conntrack-sync.rst:182
 msgid "Retrieve current status of connection tracking subsystem."
 msgstr "Recuperar el estado actual del subsistema de seguimiento de conexiones."
 
@@ -11386,7 +11425,7 @@ msgstr "cliente SSH"
 msgid "SSH provides a secure channel over an unsecured network in a client-server architecture, connecting an SSH client application with an SSH server. Common applications include remote command-line login and remote command execution, but any network service can be secured with SSH. The protocol specification distinguishes between two major versions, referred to as SSH-1 and SSH-2."
 msgstr "SSH proporciona un canal seguro a través de una red no segura en una arquitectura cliente-servidor, conectando una aplicación de cliente SSH con un servidor SSH. Las aplicaciones comunes incluyen inicio de sesión de línea de comandos remotos y ejecución de comandos remotos, pero cualquier servicio de red puede protegerse con SSH. La especificación del protocolo distingue entre dos versiones principales, denominadas SSH-1 y SSH-2."
 
-#: ../../configuration/protocols/rpki.rst:151
+#: ../../configuration/protocols/rpki.rst:153
 msgid "SSH username to establish an SSH connection to the cache server."
 msgstr "Nombre de usuario SSH para establecer una conexión SSH con el servidor de caché."
 
@@ -12292,7 +12331,7 @@ msgstr "Establece la identificación única para esta interfaz vxlan. No estoy s
 msgid "Setting VRRP group priority"
 msgstr "Configuración de la prioridad del grupo VRRP"
 
-#: ../../configuration/service/dhcp-server.rst:271
+#: ../../configuration/service/dhcp-server.rst:287
 msgid "Setting name"
 msgstr "Nombre del ajuste"
 
@@ -12328,6 +12367,10 @@ msgstr "Setting up tunnel:"
 #: ../../configuration/system/option.rst:53
 msgid "Setting will only become active with the next reboot!"
 msgstr "Setting will only become active with the next reboot!"
+
+#: ../../configuration/service/dhcp-server.rst:429
+msgid "Setup DHCP HA for network 192.0.2.0/24"
+msgstr "Setup DHCP HA for network 192.0.2.0/24"
 
 #: ../../configuration/service/dhcp-server.rst:413
 msgid "Setup DHCP failover for network 192.0.2.0/24"
@@ -12398,11 +12441,11 @@ msgstr "Sintaxis de acceso directo para especificar la fuga automática de vrf V
 msgid "Show"
 msgstr "Espectáculo"
 
-#: ../../configuration/service/dhcp-server.rst:456
+#: ../../configuration/service/dhcp-server.rst:475
 msgid "Show DHCP server daemon log file"
 msgstr "Mostrar el archivo de registro del demonio del servidor DHCP"
 
-#: ../../configuration/service/dhcp-server.rst:710
+#: ../../configuration/service/dhcp-server.rst:729
 msgid "Show DHCPv6 server daemon log file"
 msgstr "Mostrar el archivo de registro del demonio del servidor DHCPv6"
 
@@ -12528,11 +12571,11 @@ msgstr "Muestra los puertos seriales configurados y su respectiva configuración
 msgid "Show connection data of load balanced traffic:"
 msgstr "Mostrar datos de conexión del tráfico con equilibrio de carga:"
 
-#: ../../configuration/service/conntrack-sync.rst:136
+#: ../../configuration/service/conntrack-sync.rst:141
 msgid "Show connection syncing external cache entries"
 msgstr "Mostrar conexión sincronizando entradas de caché externas"
 
-#: ../../configuration/service/conntrack-sync.rst:140
+#: ../../configuration/service/conntrack-sync.rst:145
 msgid "Show connection syncing internal cache entries"
 msgstr "Mostrar conexión sincronizando entradas de caché interna"
 
@@ -12602,19 +12645,19 @@ msgstr "Show logs for mDNS repeater service."
 msgid "Show logs from a given container"
 msgstr "Mostrar registros de un contenedor dado"
 
-#: ../../configuration/service/dhcp-server.rst:460
+#: ../../configuration/service/dhcp-server.rst:479
 msgid "Show logs from all DHCP client processes."
 msgstr "Muestra los registros de todos los procesos del cliente DHCP."
 
-#: ../../configuration/service/dhcp-server.rst:714
+#: ../../configuration/service/dhcp-server.rst:733
 msgid "Show logs from all DHCPv6 client processes."
 msgstr "Muestra registros de todos los procesos de cliente DHCPv6."
 
-#: ../../configuration/service/dhcp-server.rst:464
+#: ../../configuration/service/dhcp-server.rst:483
 msgid "Show logs from specific `interface` DHCP client process."
 msgstr "Muestra los registros del proceso de cliente DHCP de `interfaz` específico."
 
-#: ../../configuration/service/dhcp-server.rst:718
+#: ../../configuration/service/dhcp-server.rst:737
 msgid "Show logs from specific `interface` DHCPv6 client process."
 msgstr "Muestra los registros del proceso de cliente DHCPv6 de `interfaz` específico."
 
@@ -12626,16 +12669,16 @@ msgstr "Mostrar solo información para la autoridad de certificación especifica
 msgid "Show only information for specified certificate."
 msgstr "Mostrar solo información para el certificado especificado."
 
-#: ../../configuration/service/dhcp-server.rst:518
-#: ../../configuration/service/dhcp-server.rst:741
+#: ../../configuration/service/dhcp-server.rst:537
+#: ../../configuration/service/dhcp-server.rst:760
 msgid "Show only leases in the specified pool."
 msgstr "Mostrar solo arrendamientos en el grupo especificado."
 
-#: ../../configuration/service/dhcp-server.rst:750
+#: ../../configuration/service/dhcp-server.rst:769
 msgid "Show only leases with the specified state. Possible states: abandoned, active, all, backup, expired, free, released, reset (default = active)"
 msgstr "Mostrar solo arrendamientos con el estado especificado. Estados posibles: abandonado, activo, todo, copia de seguridad, caducado, libre, liberado, restablecer (predeterminado = activo)"
 
-#: ../../configuration/service/dhcp-server.rst:536
+#: ../../configuration/service/dhcp-server.rst:555
 msgid "Show only leases with the specified state. Possible states: all, active, free, expired, released, abandoned, reset, backup (default = active)"
 msgstr "Mostrar solo arrendamientos con el estado especificado. Estados posibles: todo, activo, libre, caducado, liberado, abandonado, restablecer, copia de seguridad (predeterminado = activo)"
 
@@ -12651,19 +12694,19 @@ msgstr "Mostrar información específica de la interfaz MACsec"
 msgid "Show status of new setup:"
 msgstr "Mostrar el estado de la nueva configuración:"
 
-#: ../../configuration/service/dhcp-server.rst:487
+#: ../../configuration/service/dhcp-server.rst:506
 msgid "Show statuses of all active leases:"
 msgstr "Mostrar estados de todas las concesiones activas:"
 
-#: ../../configuration/service/dhcp-server.rst:505
+#: ../../configuration/service/dhcp-server.rst:524
 msgid "Show statuses of all active leases granted by local (this server) or remote (failover server):"
 msgstr "Show statuses of all active leases granted by local (this server) or remote (failover server):"
 
-#: ../../configuration/service/dhcp-server.rst:472
+#: ../../configuration/service/dhcp-server.rst:491
 msgid "Show the DHCP server statistics:"
 msgstr "Mostrar las estadísticas del servidor DHCP:"
 
-#: ../../configuration/service/dhcp-server.rst:483
+#: ../../configuration/service/dhcp-server.rst:502
 msgid "Show the DHCP server statistics for the specified pool."
 msgstr "Muestra las estadísticas del servidor DHCP para el grupo especificado."
 
@@ -12712,7 +12755,7 @@ msgstr "Mostrar información del transceptor de los módulos de complemento, por
 msgid "Showing BFD monitored static routes"
 msgstr "Mostrando rutas estáticas monitoreadas por BFD"
 
-#: ../../configuration/service/dhcp-server.rst:726
+#: ../../configuration/service/dhcp-server.rst:745
 msgid "Shows status of all assigned leases:"
 msgstr "Muestra el estado de todos los arrendamientos asignados:"
 
@@ -12904,11 +12947,11 @@ msgstr "Algunos usuarios tienden a conectar sus dispositivos móviles mediante W
 msgid "Sometimes option lines in the generated OpenVPN configuration require quotes. This is done through a hack on our config generator. You can pass quotes using the ``&quot;`` statement."
 msgstr "A veces, las líneas de opción en la configuración de OpenVPN generada requieren comillas. Esto se hace a través de un truco en nuestro generador de configuración. Puede pasar comillas usando la instrucción ``&quot;``."
 
-#: ../../configuration/service/dhcp-server.rst:745
+#: ../../configuration/service/dhcp-server.rst:764
 msgid "Sort the output by the specified key. Possible keys: expires, iaid_duid, ip, last_comm, pool, remaining, state, type (default = ip)"
 msgstr "Ordene la salida por la clave especificada. Claves posibles: expira, iaid_duid, ip, last_comm, pool, restante, estado, tipo (predeterminado = ip)"
 
-#: ../../configuration/service/dhcp-server.rst:531
+#: ../../configuration/service/dhcp-server.rst:550
 msgid "Sort the output by the specified key. Possible keys: ip, hardware_address, state, start, end, remaining, pool, hostname (default = ip)"
 msgstr "Ordene la salida por la clave especificada. Claves posibles: ip, dirección_de_hardware, estado, inicio, fin, restante, grupo, nombre de host (predeterminado = ip)"
 
@@ -13098,7 +13141,7 @@ msgstr "Especifica los algoritmos :abbr:`MAC (Código de autenticación de mensa
 msgid "Specifies the base DN under which the users are located."
 msgstr "Especifica el DN base bajo el cual se ubican los usuarios."
 
-#: ../../configuration/service/dhcp-server.rst:279
+#: ../../configuration/service/dhcp-server.rst:295
 msgid "Specifies the clients subnet mask as per RFC 950. If unset, subnet declaration is used."
 msgstr "Especifica la máscara de subred de los clientes según RFC 950. Si no se establece, se utiliza la declaración de subred."
 
@@ -13206,15 +13249,15 @@ msgstr "Specify IPv4 and/or IPv6 networks which are going to be excluded."
 msgid "Specify a Fully Qualified Domain Name as source/destination matcher. Ensure router is able to resolve such dns query."
 msgstr "Especifique un nombre de dominio completo como comparador de origen/destino. Asegúrese de que el enrutador pueda resolver dicha consulta DNS."
 
-#: ../../configuration/service/dhcp-server.rst:590
+#: ../../configuration/service/dhcp-server.rst:609
 msgid "Specify a NIS+ server address for DHCPv6 clients."
 msgstr "Especifique una dirección de servidor NIS+ para clientes DHCPv6."
 
-#: ../../configuration/service/dhcp-server.rst:585
+#: ../../configuration/service/dhcp-server.rst:604
 msgid "Specify a NIS server address for DHCPv6 clients."
 msgstr "Especifique una dirección de servidor NIS para clientes DHCPv6."
 
-#: ../../configuration/service/dhcp-server.rst:595
+#: ../../configuration/service/dhcp-server.rst:614
 msgid "Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6 address of Fully Qualified Domain Name for all DHCPv6 clients."
 msgstr "Especifique un servidor :abbr:`SIP (protocolo de inicio de sesión)` por dirección IPv6 de nombre de dominio completo para todos los clientes DHCPv6."
 
@@ -13368,7 +13411,7 @@ msgstr "A partir de VyOS 1.2, se proporciona una funcionalidad de repetidor :abb
 msgid "Static"
 msgstr "Estático"
 
-#: ../../configuration/service/dhcp-server.rst:229
+#: ../../configuration/service/dhcp-server.rst:245
 msgid "Static DHCP IP address assign to host identified by `<description>`. IP address must be inside the `<subnet>` which is defined but can be outside the dynamic range created with :cfgcmd:`set service dhcp-server shared-network-name <name> subnet <subnet> range <n>`. If no ip-address is specified, an IP from the dynamic pool is used."
 msgstr "Dirección IP DHCP estática asignada al host identificado por `<description> `. La dirección IP debe estar dentro de `<subnet> ` que está definido pero puede estar fuera del rango dinámico creado con :cfgcmd:`set service dhcp-server shared-network-name<name> subred<subnet> rango<n> `. Si no se especifica una dirección IP, se utiliza una IP del grupo dinámico."
 
@@ -13396,13 +13439,13 @@ msgstr "El enrutamiento estático u otros protocolos de enrutamiento dinámico s
 msgid "Static :abbr:`SAK (Secure Authentication Key)` mode can be configured manually on each device wishing to use MACsec. Keys must be set statically on all devices for traffic to flow properly. Key rotation is dependent on the administrator updating all keys manually across connected devices. Static SAK mode can not be used with MKA."
 msgstr "Static :abbr:`SAK (Secure Authentication Key)` mode can be configured manually on each device wishing to use MACsec. Keys must be set statically on all devices for traffic to flow properly. Key rotation is dependent on the administrator updating all keys manually across connected devices. Static SAK mode can not be used with MKA."
 
-#: ../../configuration/service/dhcp-server.rst:208
-#: ../../configuration/service/dhcp-server.rst:663
+#: ../../configuration/service/dhcp-server.rst:224
+#: ../../configuration/service/dhcp-server.rst:682
 msgid "Static mappings"
 msgstr "Mapeos estáticos"
 
-#: ../../configuration/service/dhcp-server.rst:500
-#: ../../configuration/service/dhcp-server.rst:736
+#: ../../configuration/service/dhcp-server.rst:519
+#: ../../configuration/service/dhcp-server.rst:755
 msgid "Static mappings aren't shown. To show all states, use ``show dhcp server leases state all``."
 msgstr "Las asignaciones estáticas no se muestran. Para mostrar todos los estados, utilice ``show dhcp server leases state all``."
 
@@ -13950,9 +13993,9 @@ msgstr "El comando pon TESTUNNEL establece el túnel PPTP al sistema remoto."
 msgid "The computers on an internal network can use any of the addresses set aside by the :abbr:`IANA (Internet Assigned Numbers Authority)` for private addressing (see :rfc:`1918`). These reserved IP addresses are not in use on the Internet, so an external machine will not directly route to them. The following addresses are reserved for private use:"
 msgstr "Las computadoras en una red interna pueden usar cualquiera de las direcciones reservadas por la :abbr:`IANA (Autoridad de Números Asignados en Internet)` para direccionamiento privado (ver :rfc:`1918`). Estas direcciones IP reservadas no están en uso en Internet, por lo que una máquina externa no las enrutará directamente. Las siguientes direcciones están reservadas para uso privado:"
 
-#: ../../configuration/service/dhcp-server.rst:250
-#: ../../configuration/service/dhcp-server.rst:642
-#: ../../configuration/service/dhcp-server.rst:686
+#: ../../configuration/service/dhcp-server.rst:266
+#: ../../configuration/service/dhcp-server.rst:661
+#: ../../configuration/service/dhcp-server.rst:705
 msgid "The configuration will look as follows:"
 msgstr "La configuración se verá de la siguiente manera:"
 
@@ -14008,7 +14051,7 @@ msgstr "The default is 1492."
 msgid "The default is ``802.1q``."
 msgstr "The default is ``802.1q``."
 
-#: ../../configuration/service/dhcp-server.rst:566
+#: ../../configuration/service/dhcp-server.rst:585
 msgid "The default lease time for DHCPv6 leases is 24 hours. This can be changed by supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All values need to be supplied in seconds."
 msgstr "El tiempo de concesión predeterminado para las concesiones de DHCPv6 es de 24 horas. Esto se puede cambiar proporcionando un ``tiempo predeterminado``, ``tiempo máximo`` y ``tiempo mínimo``. Todos los valores deben proporcionarse en segundos."
 
@@ -14067,6 +14110,10 @@ msgstr "El puerto de destino utilizado para crear una interfaz VXLAN en Linux ti
 #: ../../configuration/interfaces/vxlan.rst:98
 msgid "The device can only receive packets with VNIs configured in the VNI filtering table."
 msgstr "The device can only receive packets with VNIs configured in the VNI filtering table."
+
+#: ../../configuration/service/dhcp-server.rst:215
+msgid "The dialogue between HA partners is neither encrypted nor authenticated. Since most DHCP servers exist within an organisation's own secure Intranet, this would be an unnecessary overhead. However, if you have DHCP HA peers whose communications traverse insecure networks, then we recommend that you consider the use of VPN tunneling between them to ensure that the HA partnership is immune to disruption (accidental or otherwise) via third parties."
+msgstr "The dialogue between HA partners is neither encrypted nor authenticated. Since most DHCP servers exist within an organisation's own secure Intranet, this would be an unnecessary overhead. However, if you have DHCP HA peers whose communications traverse insecure networks, then we recommend that you consider the use of VPN tunneling between them to ensure that the HA partnership is immune to disruption (accidental or otherwise) via third parties."
 
 #: ../../configuration/service/dhcp-server.rst:199
 msgid "The dialogue between failover partners is neither encrypted nor authenticated. Since most DHCP servers exist within an organisation's own secure Intranet, this would be an unnecessary overhead. However, if you have DHCP failover peers whose communications traverse insecure networks, then we recommend that you consider the use of VPN tunneling between them to ensure that the failover partnership is immune to disruption (accidental or otherwise) via third parties."
@@ -14291,7 +14338,7 @@ msgstr "El nombre de host puede tener hasta 63 caracteres. Un nombre de host deb
 msgid "The hostname or IP address of the master"
 msgstr "El nombre de host o la dirección IP del maestro"
 
-#: ../../configuration/service/dhcp-server.rst:674
+#: ../../configuration/service/dhcp-server.rst:693
 msgid "The identifier is the device's DUID: colon-separated hex list (as used by isc-dhcp option dhcpv6.client-id). If the device already has a dynamic lease from the DHCPv6 server, its DUID can be found with ``show service dhcpv6 server leases``. The DUID begins at the 5th octet (after the 4th colon) of IAID_DUID."
 msgstr "El identificador es el DUID del dispositivo: lista hexadecimal separada por dos puntos (como se usa en la opción dhcpv6.client-id de isc-dhcp). Si el dispositivo ya tiene una concesión dinámica del servidor DHCPv6, su DUID se puede encontrar con ``show service dhcpv6 server leases``. El DUID comienza en el 5.° octeto (después de los 4.° dos puntos) de IAID_DUID."
 
@@ -14407,7 +14454,7 @@ msgstr "The netmask or domain that EDNS Client Subnet should be enabled for in o
 msgid "The network topology is declared by shared-network-name and the subnet declarations. The DHCP service can serve multiple shared networks, with each shared network having 1 or more subnets. Each subnet must be present on an interface. A range can be declared inside a subnet to define a pool of dynamic addresses. Multiple ranges can be defined and can contain holes. Static mappings can be set to assign \"static\" addresses to clients based on their MAC address."
 msgstr "La topología de red se declara mediante el nombre de red compartida y las declaraciones de subred. El servicio DHCP puede servir a múltiples redes compartidas, y cada red compartida tiene 1 o más subredes. Cada subred debe estar presente en una interfaz. Se puede declarar un rango dentro de una subred para definir un conjunto de direcciones dinámicas. Se pueden definir múltiples rangos y pueden contener huecos. Las asignaciones estáticas se pueden configurar para asignar direcciones &quot;estáticas&quot; a los clientes en función de su dirección MAC."
 
-#: ../../configuration/service/conntrack-sync.rst:192
+#: ../../configuration/service/conntrack-sync.rst:197
 msgid "The next example is a simple configuration of conntrack-sync."
 msgstr "El siguiente ejemplo es una configuración simple de conntrack-sync."
 
@@ -14483,11 +14530,11 @@ msgstr "El prefijo y el ASN que lo originaron coinciden con un ROA firmado. Esto
 msgid "The prefix or prefix length and ASN that originated it doesn't match any existing ROA. This could be the result of a prefix hijack, or merely a misconfiguration, but should probably be treated as untrustworthy route announcements."
 msgstr "El prefijo o la longitud del prefijo y el ASN que lo originó no coincide con ningún ROA existente. Esto podría ser el resultado de un secuestro de prefijo, o simplemente una configuración incorrecta, pero probablemente debería tratarse como anuncios de ruta no confiables."
 
-#: ../../configuration/service/dhcp-server.rst:415
+#: ../../configuration/service/dhcp-server.rst:432
 msgid "The primary DHCP server uses address `192.168.189.252`"
 msgstr "El servidor DHCP primario usa la dirección `192.168.189.252`"
 
-#: ../../configuration/service/dhcp-server.rst:192
+#: ../../configuration/service/dhcp-server.rst:208
 msgid "The primary and secondary statements determines whether the server is primary or secondary."
 msgstr "Las sentencias principal y secundaria determinan si el servidor es principal o secundario."
 
@@ -14499,7 +14546,7 @@ msgstr "La opción principal solo es válida para el modo de copia de seguridad 
 msgid "The priority must be an integer number from 1 to 255. Higher priority value increases router's precedence in the master elections."
 msgstr "La prioridad debe ser un número entero de 1 a 255. Un valor de prioridad más alto aumenta la precedencia del enrutador en las elecciones de maestro."
 
-#: ../../configuration/service/dhcp-server.rst:579
+#: ../../configuration/service/dhcp-server.rst:598
 msgid "The procedure to specify a :abbr:`NIS+ (Network Information Service Plus)` domain is similar to the NIS domain one:"
 msgstr "El procedimiento para especificar un dominio :abbr:`NIS+ (Network Information Service Plus)` es similar al del dominio NIS:"
 
@@ -14608,7 +14655,7 @@ msgstr "Sin embargo, el esquema anterior no funciona cuando uno de los enrutador
 msgid "The search filter can contain up to 15 occurrences of %s which will be replaced by the username, as in \"uid=%s\" for :rfc:`2037` directories. For a detailed description of LDAP search filter syntax see :rfc:`2254`."
 msgstr "El filtro de búsqueda puede contener hasta 15 ocurrencias de %s que serán reemplazadas por el nombre de usuario, como en &quot;uid=%s&quot; para los directorios :rfc:`2037`. Para obtener una descripción detallada de la sintaxis del filtro de búsqueda LDAP, consulte :rfc:`2254`."
 
-#: ../../configuration/service/dhcp-server.rst:416
+#: ../../configuration/service/dhcp-server.rst:433
 msgid "The secondary DHCP server uses address `192.168.189.253`"
 msgstr "El servidor DHCP secundario usa la dirección `192.168.189.253`"
 
@@ -15951,7 +15998,7 @@ msgid "This configuration modifies the behavior of the network statement. If you
 msgstr "Esta configuración modifica el comportamiento de la sentencia de red. Si tiene esto configurado, la red subyacente debe existir en la tabla de enrutamiento."
 
 #: ../../configuration/service/dhcp-server.rst:92
-#: ../../configuration/service/dhcp-server.rst:560
+#: ../../configuration/service/dhcp-server.rst:579
 msgid "This configuration parameter is required and must be unique to each subnet. It is required to map subnets to lease file entries."
 msgstr "This configuration parameter is required and must be unique to each subnet. It is required to map subnets to lease file entries."
 
@@ -16188,7 +16235,7 @@ msgstr "Este es el parámetro de configuración para toda la definición de red 
 msgid "This is the configuration parameter for the entire shared network definition. All subnets will inherit this configuration item if not specified locally. Multiple DNS servers can be defined."
 msgstr "This is the configuration parameter for the entire shared network definition. All subnets will inherit this configuration item if not specified locally. Multiple DNS servers can be defined."
 
-#: ../../configuration/service/dhcp-server.rst:237
+#: ../../configuration/service/dhcp-server.rst:253
 msgid "This is the equivalent of the host block in dhcpd.conf of isc-dhcpd."
 msgstr "Este es el equivalente del bloque host en dhcpd.conf de isc-dhcpd."
 
@@ -16200,7 +16247,7 @@ msgstr "Este es el nombre de la interfaz física utilizada para conectarse a su 
 msgid "This is the policy that requieres the lowest resources for the same amount of traffic. But **very likely you do not need it as you cannot get much from it. Sometimes it is used just to enable logging.**"
 msgstr "Esta es la política que requiere los menores recursos para la misma cantidad de tráfico. Pero ** muy probablemente no lo necesite ya que no puede obtener mucho de él. A veces se usa solo para habilitar el registro.**"
 
-#: ../../configuration/service/dhcp-server.rst:235
+#: ../../configuration/service/dhcp-server.rst:251
 msgid "This is useful, for example, in combination with hostfile update."
 msgstr "Esto es útil, por ejemplo, en combinación con la actualización del archivo de host."
 
@@ -16732,7 +16779,7 @@ msgstr "Para generar la CA, la clave privada del servidor y los certificados, se
 msgid "To get it to work as an access point with this configuration you will need to set up a DHCP server to work with that network. You can - of course - also bridge the Wireless interface with any configured bridge (:ref:`bridge-interface`) on the system."
 msgstr "Para que funcione como un punto de acceso con esta configuración, deberá configurar un servidor DHCP para que funcione con esa red. Por supuesto, también puede unir la interfaz inalámbrica con cualquier puente configurado (:ref:`bridge-interface`) en el sistema."
 
-#: ../../configuration/service/dhcp-server.rst:606
+#: ../../configuration/service/dhcp-server.rst:625
 msgid "To hand out individual prefixes to your clients the following configuration is used:"
 msgstr "Para repartir prefijos individuales a sus clientes se utiliza la siguiente configuración:"
 
@@ -16761,7 +16808,7 @@ msgstr "Para realizar un apagado ordenado, se debe emitir el comando de nivel EX
 msgid "To request a /56 prefix from your ISP use:"
 msgstr "Para solicitar un prefijo /56 de su ISP, use:"
 
-#: ../../configuration/service/dhcp-server.rst:722
+#: ../../configuration/service/dhcp-server.rst:741
 msgid "To restart the DHCPv6 server"
 msgstr "Para reiniciar el servidor DHCPv6"
 
@@ -17098,6 +17145,10 @@ msgstr "Utilice un grupo de red específico. Anteponga el carácter ``!`` para l
 #: ../../configuration/firewall/ipv6.rst:567
 msgid "Use a specific port-group. Prepend character ``!`` for inverted matching criteria."
 msgstr "Utilice un grupo de puertos específico. Anteponga el carácter ``!`` para los criterios de coincidencia invertidos."
+
+#: ../../configuration/service/dhcp-server.rst:430
+msgid "Use active-active HA mode."
+msgstr "Use active-active HA mode."
 
 #: ../../configuration/nat/nat44.rst:259
 msgid "Use address `masquerade` (the interfaces primary address) on rule 30"
@@ -18219,7 +18270,7 @@ msgstr "VyOS SNMP admite tanto IPv4 como IPv6."
 msgid "VyOS also comes with a build in SSTP server, see :ref:`sstp`."
 msgstr "VyOS también viene con un servidor SSTP integrado, consulte :ref:`sstp`."
 
-#: ../../configuration/service/dhcp-server.rst:544
+#: ../../configuration/service/dhcp-server.rst:563
 msgid "VyOS also provides DHCPv6 server functionality which is described in this section."
 msgstr "VyOS también proporciona la funcionalidad del servidor DHCPv6 que se describe en esta sección."
 
@@ -18315,6 +18366,10 @@ msgstr "VyOS proporciona una API HTTP. Puede usarlo para ejecutar comandos de mo
 #: ../../configuration/service/dns.rst:10
 msgid "VyOS provides DNS infrastructure for small networks. It is designed to be lightweight and have a small footprint, suitable for resource constrained routers and firewalls. For this we utilize PowerDNS recursor."
 msgstr "VyOS proporciona infraestructura de DNS para redes pequeñas. Está diseñado para ser liviano y tener una huella pequeña, adecuado para enrutadores y firewalls con recursos limitados. Para esto utilizamos el recursor PowerDNS."
+
+#: ../../configuration/service/dhcp-server.rst:172
+msgid "VyOS provides High Availability support for DHCP server. DHCP High Availability can act in two different modes:"
+msgstr "VyOS provides High Availability support for DHCP server. DHCP High Availability can act in two different modes:"
 
 #: ../../configuration/vpn/remoteaccess_ipsec.rst:144
 msgid "VyOS provides a command to generate a connection profile used by Windows clients that will connect to the \"rw\" connection on our VyOS server."
@@ -18481,7 +18536,7 @@ msgstr "No podemos admitir todas las pantallas desde el principio. Si falta su t
 msgid "We can also create the certificates using Cerbort which is an easy-to-use client that fetches a certificate from Let's Encrypt an open certificate authority launched by the EFF, Mozilla, and others and deploys it to a web server."
 msgstr "También podemos crear los certificados usando Cerbort, que es un cliente fácil de usar que obtiene un certificado de Let&#39;s Encrypt, una autoridad de certificación abierta lanzada por EFF, Mozilla y otros, y lo implementa en un servidor web."
 
-#: ../../configuration/protocols/rpki.rst:168
+#: ../../configuration/protocols/rpki.rst:170
 msgid "We can build route-maps for import based on these states. Here is a simple RPKI configuration, where `routinator` is the RPKI-validating \"cache\" server with ip `192.0.2.1`:"
 msgstr "Podemos construir mapas de ruta para importar basados en estos estados. Aquí hay una configuración simple de RPKI, donde `routinator` es el servidor de &quot;caché&quot; de validación de RPKI con ip `192.0.2.1`:"
 
@@ -18537,7 +18592,7 @@ msgstr "Usamos un contenedor que proporciona el servicio TACACS en este ejemplo.
 msgid "We will only accept traffic comming from interface eth0, protocol tcp and destination port 1122. All other traffic traspassing the router should be blocked."
 msgstr "We will only accept traffic comming from interface eth0, protocol tcp and destination port 1122. All other traffic traspassing the router should be blocked."
 
-#: ../../configuration/service/dhcp-server.rst:371
+#: ../../configuration/service/dhcp-server.rst:387
 msgid "Web Proxy Autodiscovery (WPAD) URL"
 msgstr "URL de detección automática de proxy web (WPAD)"
 
@@ -18742,7 +18797,7 @@ msgstr "Cuando se usa NAT para una gran cantidad de sistemas host, se recomienda
 msgid "When using SSH, known-hosts-file, private-key-file and public-key-file are mandatory options."
 msgstr "Cuando se utiliza SSH, el archivo de hosts conocidos, el archivo de clave privada y el archivo de clave pública son opciones obligatorias."
 
-#: ../../configuration/protocols/rpki.rst:161
+#: ../../configuration/protocols/rpki.rst:163
 msgid "When using SSH, private-key-file and public-key-file are mandatory options."
 msgstr "When using SSH, private-key-file and public-key-file are mandatory options."
 
@@ -18912,20 +18967,24 @@ msgid "With this command, you can specify how the URL path should be matched aga
 msgstr "Con este comando, puede especificar cómo debe coincidir la ruta de URL con las solicitudes entrantes."
 
 #: ../../configuration/firewall/index.rst:166
+msgid "With zone-based firewalls a new concept was implemented, in addition to the standard in and out traffic flows, a local flow was added. This local was for traffic originating and destined to the router itself. Which means additional rules were required to secure the firewall itself from the network, in addition to the existing inbound and outbound rules from the traditional concept above."
+msgstr "With zone-based firewalls a new concept was implemented, in addition to the standard in and out traffic flows, a local flow was added. This local was for traffic originating and destined to the router itself. Which means additional rules were required to secure the firewall itself from the network, in addition to the existing inbound and outbound rules from the traditional concept above."
+
+#: ../../configuration/firewall/index.rst:166
 msgid "With zone-based firewalls a new concept was implemented, in addtion to the standard in and out traffic flows, a local flow was added. This local was for traffic originating and destined to the router itself. Which means additional rules were required to secure the firewall itself from the network, in addition to the existing inbound and outbound rules from the traditional concept above."
 msgstr "With zone-based firewalls a new concept was implemented, in addtion to the standard in and out traffic flows, a local flow was added. This local was for traffic originating and destined to the router itself. Which means additional rules were required to secure the firewall itself from the network, in addition to the existing inbound and outbound rules from the traditional concept above."
 
-#: ../../configuration/service/dhcp-server.rst:297
-#: ../../configuration/service/dhcp-server.rst:302
-#: ../../configuration/service/dhcp-server.rst:307
-#: ../../configuration/service/dhcp-server.rst:317
-#: ../../configuration/service/dhcp-server.rst:322
-#: ../../configuration/service/dhcp-server.rst:352
-#: ../../configuration/service/dhcp-server.rst:357
-#: ../../configuration/service/dhcp-server.rst:362
-#: ../../configuration/service/dhcp-server.rst:382
-#: ../../configuration/service/dhcp-server.rst:387
-#: ../../configuration/service/dhcp-server.rst:397
+#: ../../configuration/service/dhcp-server.rst:313
+#: ../../configuration/service/dhcp-server.rst:318
+#: ../../configuration/service/dhcp-server.rst:323
+#: ../../configuration/service/dhcp-server.rst:333
+#: ../../configuration/service/dhcp-server.rst:338
+#: ../../configuration/service/dhcp-server.rst:368
+#: ../../configuration/service/dhcp-server.rst:373
+#: ../../configuration/service/dhcp-server.rst:378
+#: ../../configuration/service/dhcp-server.rst:398
+#: ../../configuration/service/dhcp-server.rst:403
+#: ../../configuration/service/dhcp-server.rst:413
 msgid "Y"
 msgstr "y"
 
@@ -19037,7 +19096,7 @@ msgstr "Solo puede aplicar una política por interfaz y dirección, pero puede r
 msgid "You can run the UDP broadcast relay service on multiple routers connected to a subnet. There is **NO** UDP broadcast relay packet storm!"
 msgstr "Puede ejecutar el servicio de retransmisión de difusión UDP en varios enrutadores conectados a una subred. **NO** Hay una tormenta de paquetes de retransmisión de difusión UDP."
 
-#: ../../configuration/service/dhcp-server.rst:210
+#: ../../configuration/service/dhcp-server.rst:226
 msgid "You can specify a static DHCP assignment on a per host basis. You will need the MAC address of the station and your desired IP address. The address must be inside the subnet definition but can be outside of the range statement."
 msgstr "Puede especificar una asignación de DHCP estática por host. Necesitará la dirección MAC de la estación y la dirección IP deseada. La dirección debe estar dentro de la definición de subred pero puede estar fuera de la declaración de rango."
 
@@ -19481,7 +19540,7 @@ msgstr "`3. Agregue una ruta completa al script`_"
 msgid "`4. Add optional parameters`_"
 msgstr "`4. Añadir parámetros opcionales`_"
 
-#: ../../configuration/service/dhcp-server.rst:188
+#: ../../configuration/service/dhcp-server.rst:203
 msgid "`<name>` must be identical on both sides!"
 msgstr "`<name> ` debe ser idéntico en ambos lados!"
 
@@ -20744,23 +20803,23 @@ msgstr "bgpd"
 msgid "bonding"
 msgstr "unión"
 
-#: ../../configuration/service/dhcp-server.rst:345
+#: ../../configuration/service/dhcp-server.rst:361
 msgid "boot-size"
 msgstr "tamaño de bota"
 
-#: ../../configuration/service/dhcp-server.rst:338
+#: ../../configuration/service/dhcp-server.rst:354
 msgid "bootfile-name"
 msgstr "bootfile-name"
 
-#: ../../configuration/service/dhcp-server.rst:340
+#: ../../configuration/service/dhcp-server.rst:356
 msgid "bootfile-name, filename"
 msgstr "bootfile-name, nombre de archivo"
 
-#: ../../configuration/service/dhcp-server.rst:328
+#: ../../configuration/service/dhcp-server.rst:344
 msgid "bootfile-server"
 msgstr "servidor de archivos de arranque"
 
-#: ../../configuration/service/dhcp-server.rst:343
+#: ../../configuration/service/dhcp-server.rst:359
 msgid "bootfile-size"
 msgstr "tamaño del archivo de arranque"
 
@@ -20768,7 +20827,7 @@ msgstr "tamaño del archivo de arranque"
 msgid "bridge"
 msgstr "Puente"
 
-#: ../../configuration/service/dhcp-server.rst:276
+#: ../../configuration/service/dhcp-server.rst:292
 msgid "client-prefix-length"
 msgstr "cliente-prefijo-longitud"
 
@@ -20820,7 +20879,7 @@ msgstr "Depurar"
 msgid "decrement-lifetime"
 msgstr "decremento-vida útil"
 
-#: ../../configuration/service/dhcp-server.rst:375
+#: ../../configuration/service/dhcp-server.rst:391
 msgid "default-lease-time, max-lease-time"
 msgstr "tiempo de arrendamiento predeterminado, tiempo de arrendamiento máximo"
 
@@ -20832,7 +20891,7 @@ msgstr "vida útil predeterminada"
 msgid "default-preference"
 msgstr "preferencia predeterminada"
 
-#: ../../configuration/service/dhcp-server.rst:288
+#: ../../configuration/service/dhcp-server.rst:304
 msgid "default-router"
 msgstr "enrutador predeterminado"
 
@@ -20848,7 +20907,7 @@ msgstr "prefijo obsoleto"
 msgid "destination-hashing"
 msgstr "hash de destino"
 
-#: ../../configuration/service/dhcp-server.rst:325
+#: ../../configuration/service/dhcp-server.rst:341
 msgid "dhcp-server-identifier"
 msgstr "dhcp-servidor-identificador"
 
@@ -20870,17 +20929,17 @@ msgstr "deshabilitar: sin validación de fuente"
 msgid "dnssl"
 msgstr "DNSSL"
 
-#: ../../configuration/service/dhcp-server.rst:303
-#: ../../configuration/service/dhcp-server.rst:305
+#: ../../configuration/service/dhcp-server.rst:319
+#: ../../configuration/service/dhcp-server.rst:321
 msgid "domain-name"
 msgstr "nombre de dominio"
 
-#: ../../configuration/service/dhcp-server.rst:300
+#: ../../configuration/service/dhcp-server.rst:316
 msgid "domain-name-servers"
 msgstr "servidores de nombres de dominio"
 
-#: ../../configuration/service/dhcp-server.rst:358
-#: ../../configuration/service/dhcp-server.rst:360
+#: ../../configuration/service/dhcp-server.rst:374
+#: ../../configuration/service/dhcp-server.rst:376
 msgid "domain-search"
 msgstr "búsqueda de dominio"
 
@@ -20916,11 +20975,11 @@ msgstr "ethernet"
 msgid "exact-match: exact match of the network prefixes."
 msgstr "coincidencia exacta: coincidencia exacta de los prefijos de red."
 
-#: ../../configuration/service/dhcp-server.rst:383
+#: ../../configuration/service/dhcp-server.rst:399
 msgid "exclude"
 msgstr "Excluir"
 
-#: ../../configuration/service/dhcp-server.rst:388
+#: ../../configuration/service/dhcp-server.rst:404
 msgid "failover"
 msgstr "conmutación por error"
 
@@ -20993,8 +21052,8 @@ msgstr "INVÁLIDO"
 msgid "inverse-match: network/netmask to match (requires network be defined)."
 msgstr "coincidencia inversa: red/máscara de red para coincidir (requiere que se defina la red)."
 
-#: ../../configuration/service/dhcp-server.rst:308
-#: ../../configuration/service/dhcp-server.rst:310
+#: ../../configuration/service/dhcp-server.rst:324
+#: ../../configuration/service/dhcp-server.rst:326
 msgid "ip-forwarding"
 msgstr "reenvío de ip"
 
@@ -21022,7 +21081,7 @@ msgstr "L2TPv3"
 msgid "ldpd"
 msgstr "ldpd"
 
-#: ../../configuration/service/dhcp-server.rst:373
+#: ../../configuration/service/dhcp-server.rst:389
 msgid "lease"
 msgstr "Alquiler"
 
@@ -21184,12 +21243,12 @@ msgstr "más información relacionada con IGP - :ref:`routing-isis`"
 msgid "more information related IGP  - :ref:`routing-ospf`"
 msgstr "más información relacionada con IGP - :ref:`routing-ospf`"
 
-#: ../../configuration/service/dhcp-server.rst:298
+#: ../../configuration/service/dhcp-server.rst:314
 #: ../../configuration/service/router-advert.rst:1
 msgid "name-server"
 msgstr "nombre del servidor"
 
-#: ../../configuration/service/dhcp-server.rst:320
+#: ../../configuration/service/dhcp-server.rst:336
 msgid "netbios-name-servers"
 msgstr "servidores de nombres netbios"
 
@@ -21205,7 +21264,7 @@ msgstr "red: red/máscara de red para hacer coincidir (requiere que se defina la
 msgid "news"
 msgstr "Novedades"
 
-#: ../../configuration/service/dhcp-server.rst:330
+#: ../../configuration/service/dhcp-server.rst:346
 msgid "next-server"
 msgstr "próximo servidor"
 
@@ -21229,11 +21288,11 @@ msgstr "Aviso"
 msgid "ntp"
 msgstr "NTP"
 
-#: ../../configuration/service/dhcp-server.rst:313
+#: ../../configuration/service/dhcp-server.rst:329
 msgid "ntp-server"
 msgstr "servidor ntp"
 
-#: ../../configuration/service/dhcp-server.rst:315
+#: ../../configuration/service/dhcp-server.rst:331
 msgid "ntp-servers"
 msgstr "servidores ntp"
 
@@ -21281,8 +21340,8 @@ msgstr "política extcommunity-list"
 msgid "policy large-community-list"
 msgstr "política lista-comunidad-grande"
 
-#: ../../configuration/service/dhcp-server.rst:353
-#: ../../configuration/service/dhcp-server.rst:355
+#: ../../configuration/service/dhcp-server.rst:369
+#: ../../configuration/service/dhcp-server.rst:371
 msgid "pop-server"
 msgstr "servidor pop"
 
@@ -21299,8 +21358,8 @@ msgstr "lista de prefijos, lista de distribución"
 msgid "pseudo-ethernet"
 msgstr "pseudo-ethernet"
 
-#: ../../configuration/service/dhcp-server.rst:378
-#: ../../configuration/service/dhcp-server.rst:380
+#: ../../configuration/service/dhcp-server.rst:394
+#: ../../configuration/service/dhcp-server.rst:396
 msgid "range"
 msgstr "Distancia"
 
@@ -21316,7 +21375,7 @@ msgstr "Restablecer comandos"
 msgid "retrans-timer"
 msgstr "retrans-temporizador"
 
-#: ../../configuration/service/dhcp-server.rst:365
+#: ../../configuration/service/dhcp-server.rst:381
 msgid "rfc3442-static-route, windows-static-route"
 msgstr "rfc3442-ruta-estática, ruta-estática-windows"
 
@@ -21349,7 +21408,7 @@ msgstr "todos contra todos"
 msgid "route-map"
 msgstr "mapa de ruta"
 
-#: ../../configuration/service/dhcp-server.rst:290
+#: ../../configuration/service/dhcp-server.rst:306
 msgid "routers"
 msgstr "enrutadores"
 
@@ -21366,7 +21425,7 @@ msgstr "sFlow es una tecnología que permite monitorear el tráfico de la red me
 msgid "security"
 msgstr "Seguridad"
 
-#: ../../configuration/service/dhcp-server.rst:323
+#: ../../configuration/service/dhcp-server.rst:339
 msgid "server-identifier"
 msgstr "identificador de servidor"
 
@@ -21387,7 +21446,7 @@ msgstr "sha256 hash"
 msgid "show commands"
 msgstr "Mostrar comandos"
 
-#: ../../configuration/service/dhcp-server.rst:329
+#: ../../configuration/service/dhcp-server.rst:345
 msgid "siaddr"
 msgstr "ver"
 
@@ -21395,8 +21454,8 @@ msgstr "ver"
 msgid "slow: Request partner to transmit LACPDUs every 30 seconds"
 msgstr "lento: solicite al socio que transmita LACPDU cada 30 segundos"
 
-#: ../../configuration/service/dhcp-server.rst:348
-#: ../../configuration/service/dhcp-server.rst:350
+#: ../../configuration/service/dhcp-server.rst:364
+#: ../../configuration/service/dhcp-server.rst:366
 msgid "smtp-server"
 msgstr "servidor SMTP"
 
@@ -21416,11 +21475,11 @@ msgstr "habla01-habla04"
 msgid "spoke05"
 msgstr "habló05"
 
-#: ../../configuration/service/dhcp-server.rst:393
+#: ../../configuration/service/dhcp-server.rst:409
 msgid "static-mapping"
 msgstr "mapeo estático"
 
-#: ../../configuration/service/dhcp-server.rst:363
+#: ../../configuration/service/dhcp-server.rst:379
 msgid "static-route"
 msgstr "ruta estática"
 
@@ -21430,7 +21489,7 @@ msgstr "ruta estática"
 msgid "strict: Each incoming packet is tested against the FIB and if the interface is not the best reverse path the packet check will fail. By default failed packets are discarded."
 msgstr "estricto: cada paquete entrante se prueba con la FIB y si la interfaz no es la mejor ruta inversa, la verificación del paquete fallará. Por defecto, los paquetes fallidos se descartan."
 
-#: ../../configuration/service/dhcp-server.rst:278
+#: ../../configuration/service/dhcp-server.rst:294
 msgid "subnet-mask"
 msgstr "máscara de subred"
 
@@ -21446,8 +21505,8 @@ msgstr "cola"
 msgid "tc_ is a powerful tool for Traffic Control found at the Linux kernel. However, its configuration is often considered a cumbersome task. Fortunately, VyOS eases the job through its CLI, while using ``tc`` as backend."
 msgstr "tc_ es una poderosa herramienta para el control de tráfico que se encuentra en el kernel de Linux. Sin embargo, su configuración a menudo se considera una tarea engorrosa. Afortunadamente, VyOS facilita el trabajo a través de su CLI, mientras usa ``tc`` como backend."
 
-#: ../../configuration/service/dhcp-server.rst:333
-#: ../../configuration/service/dhcp-server.rst:335
+#: ../../configuration/service/dhcp-server.rst:349
+#: ../../configuration/service/dhcp-server.rst:351
 msgid "tftp-server-name"
 msgstr "nombre-servidor-tftp"
 
@@ -21456,16 +21515,16 @@ msgstr "nombre-servidor-tftp"
 msgid "this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO Penultimate Hop Popping that allows SR node to request to its neighbor to not pop the label. The ‘explicit-null’ flag allows SR node to request to its neighbor to send IP packet with the EXPLICIT-NULL label. The ‘n-flag-clear’ option can be used to explicitly clear the Node flag that is set by default for Prefix-SIDs associated to loopback addresses. This option is necessary to configure Anycast-SIDs."
 msgstr "esta opción permite configurar prefix-sid en SR. El &#39;no-php-flag&#39; significa que NO hay aparición de penúltimo salto que permite que el nodo SR solicite a su vecino que no haga estallar la etiqueta. El indicador &#39;explícito-nulo&#39; permite que el nodo SR solicite a su vecino que envíe un paquete IP con la etiqueta EXPLÍCITO-NULO. La opción &#39;n-flag-clear&#39; se puede usar para borrar explícitamente el indicador de nodo que está configurado de forma predeterminada para los SID de prefijo asociados a las direcciones de bucle invertido. Esta opción es necesaria para configurar Anycast-SID."
 
-#: ../../configuration/service/dhcp-server.rst:282
-#: ../../configuration/service/dhcp-server.rst:284
+#: ../../configuration/service/dhcp-server.rst:298
+#: ../../configuration/service/dhcp-server.rst:300
 msgid "time-offset"
 msgstr "desplazamiento de tiempo"
 
-#: ../../configuration/service/dhcp-server.rst:293
+#: ../../configuration/service/dhcp-server.rst:309
 msgid "time-server"
 msgstr "contemporizador"
 
-#: ../../configuration/service/dhcp-server.rst:295
+#: ../../configuration/service/dhcp-server.rst:311
 msgid "time-servers"
 msgstr "servidores de tiempo"
 
@@ -21526,7 +21585,7 @@ msgstr "round-robin ponderado"
 msgid "while a *byte* is written as a single **b**."
 msgstr "mientras que un *byte* se escribe como una sola **b**."
 
-#: ../../configuration/service/dhcp-server.rst:318
+#: ../../configuration/service/dhcp-server.rst:334
 msgid "wins-server"
 msgstr "gana-servidor"
 
@@ -21542,11 +21601,11 @@ msgstr "inalámbrico"
 msgid "with :cfgcmd:`set system acceleration qat` on both systems the bandwidth increases."
 msgstr "con :cfgcmd:`establecer la aceleración del sistema qat` en ambos sistemas aumenta el ancho de banda."
 
-#: ../../configuration/service/dhcp-server.rst:368
+#: ../../configuration/service/dhcp-server.rst:384
 msgid "wpad-url"
 msgstr "wpad-url"
 
-#: ../../configuration/service/dhcp-server.rst:370
+#: ../../configuration/service/dhcp-server.rst:386
 msgid "wpad-url, wpad-url code 252 = text"
 msgstr "wpad-url, wpad-url código 252 = texto"
 
