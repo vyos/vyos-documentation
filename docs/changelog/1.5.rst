@@ -8,6 +8,67 @@
    _ext/releasenotes.py
 
 
+2024-04-07
+==========
+
+* :vytask:`T6205` ``(bug): ipoe: error in migration script logic while renaming mac-address to mac node``
+* :vytask:`T5862` ``(bug): Default MTU is not acceptable in some environments``
+* :vytask:`T6208` ``(feature): container: rename "cap-add" CLI node to "capability"``
+* :vytask:`T6188` ``(feature): Add Firewall Rule Description to "show firewall" commands``
+* :vytask:`T1244` ``(default): Support for StartupResync in conntrackd``
+
+
+2024-04-06
+==========
+
+* :vytask:`T6203` ``(enhancment): Remove obsoleted xml lib``
+* :vytask:`T6202` ``(bug): Multi-Protocol BGP is broken by 6PE patch in upstream FRR 9.1``
+
+
+2024-04-05
+==========
+
+* :vytask:`T6089` ``(bug): [1.3.6->1.4.0-epa1 Migration] "ospf passive-interface default" incorrectly added``
+* :vytask:`T2590` ``(bug): DHCPv6 not updating nameservers and search domains since replacing isc-dhcp-client with WIDE dhcp6c``
+* :vytask:`T6199` ``(feature): spring cleaning - drop unused Python imports``
+
+
+2024-04-04
+==========
+
+* :vytask:`T6119` ``(default): Use a compliant TOML parser``
+* :vytask:`T6171` ``(feature): dhcp server fail-over - Rename fail-over node``
+* :vytask:`T6128` ``(bug): minisign.pub is wrong on https://vyos.net/get/nightly-builds/``
+* :vytask:`T5882` ``(feature): vyos-utils: move to Dune as build system``
+* :vytask:`T5864` ``(default): 'show ntp' Commands Not Working``
+* :vytask:`T3843` ``(bug): l2tp configuration not cleared after delete``
+* :vytask:`T2187` ``(feature): Python Unit testing``
+* :vytask:`T788` ``(bug): Nightly builds are not signed``
+
+
+2024-04-03
+==========
+
+* :vytask:`T6198` ``(feature): configverify: add common helper for PKI certificate validation``
+* :vytask:`T6192` ``(feature): Multi VRF support for SSH``
+
+
+2024-04-02
+==========
+
+* :vytask:`T6167` ``(bug): VNI not set on VRF after reboot``
+* :vytask:`T6151` ``(default): BGP VRF - Route-leaking not work when the next-hop is a recursive route.``
+* :vytask:`T6033` ``(bug): hsflowd fails to start when using a tunnel interface``
+
+
+2024-04-01
+==========
+
+* :vytask:`T6195` ``(feature): dropbear: package upgrade 2022.83-1 -> 2022.83-1+deb12u1``
+* :vytask:`T6193` ``(bug): dhcp-client: invalid warning "is not a DHCP interface but uses DHCP name-server option" for VLAN interfaces``
+* :vytask:`T6178` ``(bug): Reverse-proxy should check that certificate exists during commit``
+
+
 2024-03-31
 ==========
 
@@ -65,7 +126,6 @@
 * :vytask:`T6130` ``(bug): [1.3.6->1.4.0-epa2 Migration] BGP "set community" missing``
 * :vytask:`T6090` ``(bug): [1.3.6->1.4.0-epa1 Migration] policy route fails due tcp flag case sensitivity``
 * :vytask:`T6155` ``(default): ixgbe: failed to initialize because an unsupported SFP+ module type was detected.``
-* :vytask:`T6137` ``(bug): dhcp files and directory permission not correct after image uprgading``
 * :vytask:`T6125` ``(feature): Support 802.1ad (0x88a8) vlan filtering for bridge``
 
 
@@ -516,7 +576,6 @@
 ==========
 
 * :vytask:`T5898` ``(bug): Replace partprobe with partx due to unable to install VyOS``
-* :vytask:`T5862` ``(bug): Default MTU is not acceptable in some environments``
 * :vytask:`T5840` ``(feature): Upgrade Kea to 2.4.x``
 * :vytask:`T5838` ``(feature): Add Infiniband kernel modules``
 * :vytask:`T5785` ``(bug): API output of show container image broken``
