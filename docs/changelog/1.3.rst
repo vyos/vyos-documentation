@@ -8,6 +8,44 @@
    _ext/releasenotes.py
 
 
+2024-04-07
+==========
+
+* :vytask:`T1244` ``(default): Support for StartupResync in conntrackd``
+
+
+2024-04-05
+==========
+
+* :vytask:`T2590` ``(bug): DHCPv6 not updating nameservers and search domains since replacing isc-dhcp-client with WIDE dhcp6c``
+
+
+2024-04-04
+==========
+
+* :vytask:`T4146` ``(bug): Nginx should not listen on port 80``
+* :vytask:`T1976` ``(default): deleting address-family under neighbor will disable neighbor``
+* :vytask:`T5625` ``(default): "restart vpn" does not work if ipsec-interfaces is not set``
+* :vytask:`T3020` ``(bug): The "scp" example is wrong in the bash-completion for "set system config-management commit-archive location"``
+* :vytask:`T2250` ``(default): vyos-build "make iso" error if configure was ran outside of the docker container``
+* :vytask:`T2139` ``(default): openvpn: allow "dh-file none" to disable DH for ECDH keys``
+* :vytask:`T2014` ``(default): Use vendor specific NTP Pool hostname``
+* :vytask:`T1118` ``(bug): Obsolete "utc" option in time selector in firewall``
+* :vytask:`T948` ``(feature): integrate aws cloud watch scripts into AMI``
+
+
+2024-04-02
+==========
+
+* :vytask:`T6150` ``(bug): Impossible to set a static IP address via Radius in IPoE``
+
+
+2024-04-01
+==========
+
+* :vytask:`T6193` ``(bug): dhcp-client: invalid warning "is not a DHCP interface but uses DHCP name-server option" for VLAN interfaces``
+
+
 2024-03-22
 ==========
 
