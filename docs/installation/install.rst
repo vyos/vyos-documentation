@@ -30,9 +30,11 @@ any other type of storage.
   | Candidate**  | and hunting down remaining bugs following the     | EPA comes out     | production systems backed by a        |                       |                  |
   |              | feature freeze.                                   |                   | high-availability setup.              |                       |                  |
   +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
-  | **Early      | Highly stable with no known bugs. Needs to be     | Irregularly until | Non-critical production environments, | Everyone              | Everyone         |
-  | Production   | tested repeatedly under different conditions      | LTS comes out     | preparing for the LTS release.        |                       |                  |
-  | Access**     | before it can become the final release.           |                   |                                       |                       |                  |
+  | **Early      | Highly stable with no known bugs. Needs to be     | Irregularly until | Non-critical production environments, | Subscribers,          | Everyone         |
+  | Production   | tested repeatedly under different conditions      | LTS comes out     | preparing for the LTS release.        | contributors,         |                  |
+  | Access**     | before it can become the final release.           |                   |                                       | non-profits,          |                  |
+  |              |                                                   |                   |                                       | emergency services,   |                  |
+  |              |                                                   |                   |                                       | academic institutions |                  |
   +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
   | **Long-Term  | Guaranteed to be stable and carefully maintained  | Every major       | Large-scale enterprise networks,      | Subscribers,          | Everyone         |
   | Support**    | for several years after the release. No features  | version           | internet service providers,           | contributors,         |                  |
