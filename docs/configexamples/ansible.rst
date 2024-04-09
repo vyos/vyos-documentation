@@ -1,4 +1,4 @@
-:lastproofread: 2023-10-18
+:lastproofread: 2024-04-09
 
 .. _examples-ansible:
 
@@ -33,14 +33,14 @@ We have four pre-configured routers with this configuration:
 * vyos9 - 192.0.2.107
 * vyos10 - 192.0.2.108
 
-Install the Ansible:
+Install Ansible:
 ====================
 .. code-block:: none
 
 	# apt-get install ansible
 	Do you want to continue? [Y/n] y
 
-Install the paramiko:
+Install Paramiko:
 =====================
 
 .. code-block:: none
@@ -60,7 +60,7 @@ Check the version:
 	executable location = /usr/bin/ansible
 	python version = 3.9.2 (default, Feb 28 2021, 17:03:44) [GCC 10.2.1 20210110]
 
-Basik configuration of the ansible.cfg:
+Basic configuration of ansible.cfg:
 =======================================
 
 .. code-block:: none
@@ -69,8 +69,8 @@ Basik configuration of the ansible.cfg:
 	[defaults]
 	host_key_checking = no
 
-Add all the hosts of VyOS:
-==========================
+Add all the VyOS hosts:
+=======================
 
 .. code-block:: none
 
@@ -95,8 +95,8 @@ Add general variables:
 	ansible_ssh_pass: vyos
 
 
-Add the simple playbook with the tasks for each router:
-=======================================================
+Add a simple playbook with the tasks for each router:
+=====================================================
 
 .. code-block:: none
 
@@ -213,4 +213,4 @@ The simple way without configuration of the hostname (one task for all routers):
 	vyos9                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 	
 
-In the next chapter of the example, we'll use the Ansible with jinja2 templates and variables.
+In the next chapter of the example, we'll use Ansible with jinja2 templates and variables.
