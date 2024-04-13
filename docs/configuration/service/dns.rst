@@ -143,6 +143,100 @@ avoid being tracked by the provider of your upstream DNS server.
    168.192.in-addr.arpa, 16-31.172.in-addr.arpa, which enabling upstream
    DNS server(s) to be used for reverse lookups of these zones.
 
+Authoritative zones
+-------------------
+
+The VyOS DNS forwarder can also be configured to host authoritative records for a domain.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> disable
+
+   Disable hosting authoritative zone for `<domain-name>` without deleting from
+   configuration.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records <type>
+   <name> disable
+
+   Disable specific record without deleting it from configuration.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records <type>
+   <name> ttl <seconds>
+
+   Set the :abbr:`TTL (Time-to-live)` for the record in seconds. Default is 300 seconds.
+
+Record types
+^^^^^^^^^^^^
+
+Below are a list of record types available to be configured within VyOS. Some records
+support special `<name>` keywords:
+
+* ``@`` Use @ as record name to set the record for the root domain.
+
+* ``any`` Use any as record name to configure the record as a wildcard.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records
+   a <name> address <x.x.x.x>
+
+   Set an :abbr:`A (Address)` record. Supports ``@`` and ``any`` keywords.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records
+   aaaa <name> address <h:h:h:h:h:h:h:h>
+
+   Set an :abbr:`AAAA (IPv6 Address)` record. Supports ``@`` and ``any`` keywords.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records
+   cname <name> target <target-domain-name>
+
+   Set an :abbr:`CNAME (Canonical name)` record. Supports ``@`` keyword.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records
+   naptr <name> rule <rule-number> <option> <value>
+
+   Set an :abbr:`NAPTR (Naming authority pointer)` record. Supports ``@`` keyword.
+   NAPTR records support the following options:
+
+   * **lookup-a** A Flag.
+
+   * **lookup-srv** S flag.
+
+   * **order** Rule order. Requires `<value>`.
+
+   * **preference** Rule preference. Requires `<value>`. Defaults to 0 if not set.
+
+   * **protocol-specific** P flag.
+
+   * **regexp** Regular expression. Requires `<value>`.
+
+   * **replacement** Replacement DNS name.
+
+   * **resolve-uri** U flag.
+
+   * **service** Service type. Requires `<value>`.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records
+   ns <name> target <target-name>
+
+   Set an :abbr:`NS (Nameserver)` record.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records
+   ptr <name> target <target-name>
+
+   Set an :abbr:`PTR (Pointer record)` record. Supports ``@`` keyword.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records
+   spf <name> value <value>
+
+   Set an :abbr:`SPF (Sender policy framework)` record. Supports ``@`` keyword.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records
+   srv <name> entry <entry-number> [hostname | port | priority | weight] <value>
+
+   Set an :abbr:`SRV (Service)` record. Supports ``@`` keyword.
+
+.. cfgcmd:: set service dns forwarding authoritative-domain <domain-name> records
+   txt <name> value <value>
+
+   Set an :abbr:`TXT (Text)` record. Supports ``@`` keyword.
+
 Example
 =======
 
@@ -208,7 +302,7 @@ one involves a third party service, like DynDNS.com or any other such
 service provider. This method uses HTTP requests to transmit the new IP address. You
 can configure both in VyOS.
 
-.. _dns:dynmaic_config:
+.. _dns:dynamic_config:
 
 Configuration
 =============
@@ -254,7 +348,7 @@ Configuration
    Specify interval in seconds to wait between Dynamic DNS updates.
    The default is  300 seconds.
 
-.. _dns:dynmaic_example:
+.. _dns:dynamic_example:
 
 Example
 ^^^^^^^
