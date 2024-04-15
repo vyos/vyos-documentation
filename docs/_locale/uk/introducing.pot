@@ -10,31 +10,31 @@ msgstr ""
 
 #: ../../introducing/history.rst:134
 msgid "A business model comparable to that of Redis, rather than that of VyOS today."
-msgstr "A business model comparable to that of Redis, rather than that of VyOS today."
+msgstr "Бізнес-модель, яку можна порівняти з Redis, а не з VyOS сьогодні."
 
 #: ../../introducing/history.rst:119
 msgid "A note on copyright"
-msgstr "A note on copyright"
+msgstr "Пам&#39;ятка про авторське право"
 
 #: ../../introducing/about.rst:5
 msgid "About"
-msgstr "About"
+msgstr "Про"
 
 #: ../../introducing/history.rst:74
 msgid "Although Crux came with too many new features to mention here, some noteworthy ones are: an mDNS repeater, a broadcast relay, a high-performance PPPoE server, an HFSC scheduler, as well as support for Wireguard, unicast VRRP, RPKI for BGP and fully 802.1ad-compliant QinQ ethertype. The telnet server and support for P2P filtering were removed."
-msgstr "Although Crux came with too many new features to mention here, some noteworthy ones are: an mDNS repeater, a broadcast relay, a high-performance PPPoE server, an HFSC scheduler, as well as support for Wireguard, unicast VRRP, RPKI for BGP and fully 802.1ad-compliant QinQ ethertype. The telnet server and support for P2P filtering were removed."
+msgstr "Незважаючи на те, що Crux має надто багато нових функцій, щоб згадати тут, деякі з них заслуговують на увагу: повторювач mDNS, широкомовна ретрансляція, високопродуктивний сервер PPPoE, планувальник HFSC, а також підтримка Wireguard, unicast VRRP, RPKI для BGP і повністю сумісний з 802.1ad QinQ ethertype. Сервер telnet і підтримку фільтрації P2P видалено."
 
 #: ../../introducing/history.rst:88
 msgid "As of 2022, Crux is still supported and maintained."
-msgstr "As of 2022, Crux is still supported and maintained."
+msgstr "Станом на 2022 рік Crux все ще підтримується."
 
 #: ../../introducing/history.rst:104
 msgid "As of 2022, Equuleus is in the stable."
-msgstr "As of 2022, Equuleus is in the stable."
+msgstr "Станом на 2022 рік Equuleus знаходиться в стайні."
 
 #: ../../introducing/history.rst:35
 msgid "Brocade was acquired by Broadcom in 2016 and sold what remains of erstwhile Vyatta to AT&T in 2017, who in turn sold it to Ciena in 2021."
-msgstr "Brocade was acquired by Broadcom in 2016 and sold what remains of erstwhile Vyatta to AT&T in 2017, who in turn sold it to Ciena in 2021."
+msgstr "Brocade була придбана Broadcom у 2016 році та продала те, що залишилося від колишньої Vyatta компанії AT&amp;T у 2017 році, яка, у свою чергу, продала її Ciena у 2021 році."
 
 #: ../../introducing/history.rst:113
 msgid "Circinus (1.5)"
@@ -46,103 +46,103 @@ msgstr "Circinus (the Compass) is the codename of the upcoming development branc
 
 #: ../../introducing/history.rst:68
 msgid "Crux (1.2)"
-msgstr "Crux (1.2)"
+msgstr "Суть (1.2)"
 
 #: ../../introducing/history.rst:70
 msgid "Crux (the Southern Cross) came out on 28 January 2019 and was the first major release of VyOS as we know it today. The underlying Debian base was upgraded from Squeeze (6) to Jessie (8)."
-msgstr "Crux (the Southern Cross) came out on 28 January 2019 and was the first major release of VyOS as we know it today. The underlying Debian base was upgraded from Squeeze (6) to Jessie (8)."
+msgstr "Crux (Південний Хрест) вийшов 28 січня 2019 року і став першим великим випуском VyOS, яким ми його знаємо сьогодні. Основну базу Debian було оновлено з Squeeze (6) до Jessie (8)."
 
 #: ../../introducing/history.rst:81
 msgid "Crux is the first version to feature the modular image build system. CLI definitions began to be written in the modern, verifiable XML templates. Python APIs were introduced for command scripting and configuration migration. Introduction of new Perl and shell code was proscribed and the rewriting of legacy Perl code in pure Python began with Crux."
-msgstr "Crux is the first version to feature the modular image build system. CLI definitions began to be written in the modern, verifiable XML templates. Python APIs were introduced for command scripting and configuration migration. Introduction of new Perl and shell code was proscribed and the rewriting of legacy Perl code in pure Python began with Crux."
+msgstr "Crux є першою версією з модульною системою створення зображень. Визначення CLI почали записувати в сучасних шаблонах XML, які можна перевірити. API Python були представлені для командного сценарію та міграції конфігурації. Впровадження нового Perl і коду оболонки було заборонено, а переписування застарілого коду Perl на чистому Python почалося з Crux."
 
 #: ../../introducing/history.rst:91
 msgid "Equuleus (1.3)"
-msgstr "Equuleus (1.3)"
+msgstr "Вершник (1.3)"
 
 #: ../../introducing/history.rst:97
 msgid "Equuleus brought many long-desired features with it, most notably an SSTP VPN server, an IPoE server, an OpenConnect VPN server and a serial console server, in addition to reworked support for WWAN interfaces, support for GENEVE and MACSec interfaces, VRF, IS-IS routing, preliminary support for MPLS and LDP, and many other initialisms."
-msgstr "Equuleus brought many long-desired features with it, most notably an SSTP VPN server, an IPoE server, an OpenConnect VPN server and a serial console server, in addition to reworked support for WWAN interfaces, support for GENEVE and MACSec interfaces, VRF, IS-IS routing, preliminary support for MPLS and LDP, and many other initialisms."
+msgstr "Equuleus приніс із собою багато довгоочікуваних функцій, зокрема сервер SSTP VPN, сервер IPoE, сервер VPN OpenConnect і сервер послідовної консолі, а також перероблену підтримку інтерфейсів WWAN, підтримку інтерфейсів GENEVE та MACSec, VRF, IS -Маршрутизація IS, попередня підтримка MPLS і LDP і багато інших ініціалізацій."
 
 #: ../../introducing/history.rst:133
 msgid "From the Sanskrit adjective \"Vyātta\" (व्यात्त), meaning opened."
-msgstr "From the Sanskrit adjective \"Vyātta\" (व्यात्त), meaning opened."
+msgstr "Від санскритського прикметника «Vyātta» (व्यात्त), що означає відкритий."
 
 #: ../../introducing/history.rst:58
 msgid "Helium (1.1)"
-msgstr "Helium (1.1)"
+msgstr "Гелій (1.1)"
 
 #: ../../introducing/history.rst:60
 msgid "Helium was released on 9 October 2014, exactly on the day VyOS Project first came into being in the previous year. Helium came with a lot of new features, including an event handler and support for L2TPv3, 802.1ad QinQ and IGMP proxy, as well as experimental support for VXLAN and DMVPN (the latter of which was also broken in Vyatta Core due to its reliance on a proprietary NHRP implementation)."
-msgstr "Helium was released on 9 October 2014, exactly on the day VyOS Project first came into being in the previous year. Helium came with a lot of new features, including an event handler and support for L2TPv3, 802.1ad QinQ and IGMP proxy, as well as experimental support for VXLAN and DMVPN (the latter of which was also broken in Vyatta Core due to its reliance on a proprietary NHRP implementation)."
+msgstr "Helium був випущений 9 жовтня 2014 року, точно в день, коли VyOS Project вперше з’явився в минулому році. Helium отримав багато нових функцій, зокрема обробник подій і підтримку L2TPv3, 802.1ad QinQ і проксі-сервер IGMP, а також експериментальну підтримку VXLAN і DMVPN (останній також не працює у Vyatta Core через його залежність від запатентована реалізація NHRP)."
 
 #: ../../introducing/history.rst:5
 msgid "History"
-msgstr "History"
+msgstr "Історія"
 
 #: ../../introducing/history.rst:49
 msgid "Hydrogen (1.0)"
-msgstr "Hydrogen (1.0)"
+msgstr "водень (1,0)"
 
 #: ../../introducing/history.rst:28
 msgid "In 2013, soon after Vyatta Core was abandoned, the community forked the last Vyatta Core version (6.6R1) and VyOS Project came into being. `Sentrium SL <https://blog.vyos.io/sentrium-what-sentrium>`_ was established by VyOS maintainers in 2014 to fund VyOS development by selling support, consulting services and prebuilt long-term support images."
-msgstr "In 2013, soon after Vyatta Core was abandoned, the community forked the last Vyatta Core version (6.6R1) and VyOS Project came into being. `Sentrium SL <https://blog.vyos.io/sentrium-what-sentrium>`_ was established by VyOS maintainers in 2014 to fund VyOS development by selling support, consulting services and prebuilt long-term support images."
+msgstr "У 2013 році, незабаром після того, як Vyatta Core було залишено, спільнота розгалужила останню версію Vyatta Core (6.6R1), і виник проект VyOS. `Sentrium SL<https://blog.vyos.io/sentrium-what-sentrium> `_ було створено супроводжувачами VyOS у 2014 році для фінансування розробки VyOS шляхом продажу підтримки, консультаційних послуг і готових образів довгострокової підтримки."
 
 #: ../../introducing/history.rst:8
 msgid "In the beginning..."
-msgstr "In the beginning..."
+msgstr "На початку..."
 
 #: ../../introducing/history.rst:22
 msgid "It's worth noting that by the time Brocade acquired Vyatta, development of Vyatta Core was already stagnated. Vyatta Subscription Edition (and thus, Vyatta development as a whole) had been replacing core components with proprietary software, meaning few features made it to Vyatta Core, and those that did were bug-ridden and hamstrung."
-msgstr "It's worth noting that by the time Brocade acquired Vyatta, development of Vyatta Core was already stagnated. Vyatta Subscription Edition (and thus, Vyatta development as a whole) had been replacing core components with proprietary software, meaning few features made it to Vyatta Core, and those that did were bug-ridden and hamstrung."
+msgstr "Варто зазначити, що на той момент, коли Brocade придбала Vyatta, розвиток Vyatta Core вже був у стагнації. Vyatta Subscription Edition (і, отже, розробка Vyatta в цілому) замінювала основні компоненти власним програмним забезпеченням, тобто лише деякі функції потрапили до Vyatta Core, а ті, які були, мали помилки та були утруднені."
 
 #: ../../introducing/history.rst:40
 msgid "Major releases"
-msgstr "Major releases"
+msgstr "Основні випуски"
 
 #: ../../introducing/history.rst:51
 msgid "Released just in time for holidays on 22 December 2013, Hydrogen was the first major VyOS release. It fixed features that were broken in Vyatta Core 6.6 (such as IPv4 BGP peer groups and DHCPv6 relay) and introduced command scripting, a task scheduler and web proxy LDAP authentication."
-msgstr "Released just in time for holidays on 22 December 2013, Hydrogen was the first major VyOS release. It fixed features that were broken in Vyatta Core 6.6 (such as IPv4 BGP peer groups and DHCPv6 relay) and introduced command scripting, a task scheduler and web proxy LDAP authentication."
+msgstr "Випущений якраз перед святами 22 грудня 2013 року, Hydrogen став першим великим випуском VyOS. У ньому виправлено функції, які були зламані у Vyatta Core 6.6 (такі як однорангові групи IPv4 BGP і ретрансляція DHCPv6), а також представлено командний сценарій, планувальник завдань і автентифікацію веб-проксі LDAP."
 
 #: ../../introducing/history.rst:107
 msgid "Sagitta (1.4)"
-msgstr "Sagitta (1.4)"
+msgstr "Стрілка (1.4)"
 
 #: ../../introducing/history.rst:109
 msgid "Sagitta (the Arrow) is the codename of the current development branch, so there's no VyOS 1.4 yet."
-msgstr "Sagitta (the Arrow) is the codename of the current development branch, so there's no VyOS 1.4 yet."
+msgstr "Sagitta (Стріла) — кодова назва поточної гілки розробки, тому VyOS 1.4 ще немає."
 
 #: ../../introducing/history.rst:93
 msgid "The current long-term support version of VyOS, Equuleus (the Pony) came out on 21 December 2021, once again in time for the winter holidays."
-msgstr "The current long-term support version of VyOS, Equuleus (the Pony) came out on 21 December 2021, once again in time for the winter holidays."
+msgstr "Поточна довгострокова версія VyOS, Equuleus (the Pony), вийшла 21 грудня 2021 року, знову вчасно до зимових свят."
 
 #: ../../introducing/about.rst:19
 msgid "The manual version is selected/specified by it's Git branch name. You can switch between versions of the documentation by selecting the appropriate branch on the bottom left corner."
-msgstr "The manual version is selected/specified by it's Git branch name. You can switch between versions of the documentation by selecting the appropriate branch on the bottom left corner."
+msgstr "Версія вручну вибирається/визначається за назвою гілки Git. Ви можете перемикатися між версіями документації, вибираючи відповідну гілку в нижньому лівому куті."
 
 #: ../../introducing/history.rst:10
 msgid "There once was a network operating system based on Debian GNU/Linux, called Vyatta. [*]_ 2006 onwards, it was a great free software alternative to Cisco IOS and Jupiter JUNOS. It came in two editions: Vyatta Core (previously Vyatta Community Edition) that was completely free software, and Vyatta Subscription Edition that had proprietary features and was only available to paying customers. [*]_"
-msgstr "There once was a network operating system based on Debian GNU/Linux, called Vyatta. [*]_ 2006 onwards, it was a great free software alternative to Cisco IOS and Jupiter JUNOS. It came in two editions: Vyatta Core (previously Vyatta Community Edition) that was completely free software, and Vyatta Subscription Edition that had proprietary features and was only available to paying customers. [*]_"
+msgstr "Колись існувала мережева операційна система на основі Debian GNU/Linux під назвою Vyatta. [*]_ Починаючи з 2006 року, це була чудова безкоштовна альтернатива Cisco IOS і Jupiter JUNOS. Він випускався у двох версіях: Vyatta Core (раніше Vyatta Community Edition), яка була повністю безкоштовним програмним забезпеченням, і Vyatta Subscription Edition, яка мала власні функції та була доступна лише платним клієнтам. [*]_"
 
 #: ../../introducing/history.rst:136
 msgid "This is not unlike how Linus Torvalds owns the trademark \"Linux\"."
-msgstr "This is not unlike how Linus Torvalds owns the trademark \"Linux\"."
+msgstr "Це мало чим відрізняється від того, як Лінус Торвальдс володіє торговою маркою &quot;Linux&quot;."
 
 #: ../../introducing/history.rst:121
 msgid "Unlike Vyatta, VyOS never had (nor will ever have) proprietary code. The only proprietary material in VyOS is non-code assets, such as graphics and the trademark \"VyOS\". [*]_ This means you can build your own long-term support images (as the entire toolchain we use is free software) and even distribute them, given you rename it and remove such assets before building. Although note that we do not provide support for images distributed by a third-party. See the `artwork license <https://github.com/vyos/vyos-build/blob/current/LICENSE.artwork>`_ and the end-user license agreement at ``/usr/share/vyos/EULA`` in any pre-built image for more precise information."
-msgstr "Unlike Vyatta, VyOS never had (nor will ever have) proprietary code. The only proprietary material in VyOS is non-code assets, such as graphics and the trademark \"VyOS\". [*]_ This means you can build your own long-term support images (as the entire toolchain we use is free software) and even distribute them, given you rename it and remove such assets before building. Although note that we do not provide support for images distributed by a third-party. See the `artwork license <https://github.com/vyos/vyos-build/blob/current/LICENSE.artwork>`_ and the end-user license agreement at ``/usr/share/vyos/EULA`` in any pre-built image for more precise information."
+msgstr "На відміну від Vyatta, у VyOS ніколи не було (і ніколи не буде) власного коду. Єдиним запатентованим матеріалом у VyOS є активи без коду, такі як графіка та торгова марка &quot;VyOS&quot;. [*]_ Це означає, що ви можете створювати власні довгострокові образи підтримки (оскільки весь ланцюжок інструментів, який ми використовуємо, є безкоштовним програмним забезпеченням) і навіть поширювати їх, перейменовуючи їх і видаляючи такі ресурси перед створенням. Хоча зауважте, що ми не надаємо підтримку для зображень, які розповсюджуються третіми особами. Див. ліцензію на художній твір<https://github.com/vyos/vyos-build/blob/current/LICENSE.artwork> `_ та ліцензійну угоду кінцевого користувача за адресою ``/usr/share/vyos/EULA`` у будь-якому попередньо створеному образі для більш точної інформації."
 
 #: ../../introducing/about.rst:23
 msgid "VyOS CLI syntax may change between major (and sometimes minor) versions. Please always refer to the documentation matching your current, running installation. If a change in the CLI is required, VyOS will ship a so called migration script which will take care of adjusting the syntax. No action needs to be taken by you."
-msgstr "VyOS CLI syntax may change between major (and sometimes minor) versions. Please always refer to the documentation matching your current, running installation. If a change in the CLI is required, VyOS will ship a so called migration script which will take care of adjusting the syntax. No action needs to be taken by you."
+msgstr "Синтаксис командного рядка VyOS може змінюватися між основними (а іноді й другорядними) версіями. Завжди дивіться документацію, що відповідає вашій поточній інсталяції. Якщо потрібні зміни в CLI, VyOS надішле так званий сценарій міграції, який подбає про налаштування синтаксису. Вам не потрібно виконувати жодних дій."
 
 #: ../../introducing/about.rst:7
 msgid "VyOS is an open source network operating system based on Debian GNU/Linux."
-msgstr "VyOS is an open source network operating system based on Debian GNU/Linux."
+msgstr "VyOS — мережева операційна система з відкритим вихідним кодом, заснована на Debian GNU/Linux."
 
 #: ../../introducing/history.rst:42
 msgid "VyOS major versions used to be named after elements in order of atomic numbers. With 1.2, this naming scheme was replaced with the much cooler scheme of Latin names of IAU designated constellations by solid angle area, starting from the smallest."
-msgstr "VyOS major versions used to be named after elements in order of atomic numbers. With 1.2, this naming scheme was replaced with the much cooler scheme of Latin names of IAU designated constellations by solid angle area, starting from the smallest."
+msgstr "Основні версії VyOS раніше називалися за елементами в порядку атомних номерів. У версії 1.2 цю схему іменування було замінено на набагато прохолоднішу схему латинських назв IAU, позначених сузір’ями площею тілесного кута, починаючи з найменшого."
 
 #: ../../introducing/history.rst:42
 msgid "VyOS major versions used to be named after elements in order of atomic numbers. With 1.2, this naming scheme was replaced with the much cooler scheme of Latin names of `IAU <https://en.wikipedia.org/wiki/IAU_designated_constellations_by_area>`_ designated constellations by solid angle area, starting from the smallest."
@@ -150,12 +150,12 @@ msgstr "VyOS major versions used to be named after elements in order of atomic n
 
 #: ../../introducing/about.rst:9
 msgid "VyOS provides a free routing platform that competes directly with other commercially available solutions from well known network providers. Because VyOS runs on standard amd64, i586 and ARM systems, it is able to be used as a router and firewall platform for cloud deployments."
-msgstr "VyOS provides a free routing platform that competes directly with other commercially available solutions from well known network providers. Because VyOS runs on standard amd64, i586 and ARM systems, it is able to be used as a router and firewall platform for cloud deployments."
+msgstr "VyOS надає безкоштовну платформу маршрутизації, яка безпосередньо конкурує з іншими комерційно доступними рішеннями від відомих постачальників мереж. Оскільки VyOS працює на стандартних системах amd64, i586 і ARM, її можна використовувати як маршрутизатор і платформу брандмауера для хмарних розгортань."
 
 #: ../../introducing/history.rst:17
 msgid "Vyatta was acquired by Brocade Communication Systems in 2012. Shortly after, Brocade renamed Vyatta Subscription Edition to Brocade vRouter, discontinued Vyatta Core and shut down the community forum without a notice. The bug tracker and Git repositories followed next year."
-msgstr "Vyatta was acquired by Brocade Communication Systems in 2012. Shortly after, Brocade renamed Vyatta Subscription Edition to Brocade vRouter, discontinued Vyatta Core and shut down the community forum without a notice. The bug tracker and Git repositories followed next year."
+msgstr "Vyatta була придбана Brocade Communication Systems у 2012 році. Незабаром після цього Brocade перейменувала Vyatta Subscription Edition на Brocade vRouter, припинила роботу Vyatta Core і закрила форум спільноти без попередження. Відстеження помилок і репозиторії Git з’явилися наступного року."
 
 #: ../../introducing/about.rst:14
 msgid "We use multiple live versions of our manual, hosted thankfully by https://readthedocs.org. We will provide one version of the manual for every VyOS major version starting with VyOS 1.2 which will receive Long-term support (LTS)."
-msgstr "We use multiple live versions of our manual, hosted thankfully by https://readthedocs.org. We will provide one version of the manual for every VyOS major version starting with VyOS 1.2 which will receive Long-term support (LTS)."
+msgstr "Ми використовуємо кілька оперативних версій нашого посібника, які, на щастя, розміщені на https://readthedocs.org. Ми надамо одну версію посібника для кожної основної версії VyOS, починаючи з VyOS 1.2, яка отримає довгострокову підтримку (LTS)."

@@ -10,7 +10,7 @@ msgstr ""
 
 #: ../../index.rst:0
 msgid "Add missing parts or improve the :ref:`Documentation<documentation:Write Documentation>`."
-msgstr "Add missing parts or improve the :ref:`Documentation<documentation:Write Documentation>`."
+msgstr "Додайте відсутні частини або вдосконаліть :ref:`документацію<documentation:Write Documentation> `."
 
 #: ../../index.rst:72
 msgid "Adminguide"
@@ -18,72 +18,72 @@ msgstr "Adminguide"
 
 #: ../../index.rst:33
 msgid "Automate"
-msgstr "Automate"
+msgstr "Автоматизувати"
 
 #: ../../index.rst:25
 msgid "Configuration and Operation"
-msgstr "Configuration and Operation"
+msgstr "Конфігурація та експлуатація"
 
 #: ../../index.rst:46
 msgid "Contribute and Community"
-msgstr "Contribute and Community"
+msgstr "Зробіть внесок і спільноту"
 
 #: ../../index.rst:85
 msgid "Development"
-msgstr "Development"
+msgstr "розвиток"
 
 #: ../../index.rst:0
 msgid "Discuss in `Slack <https://slack.vyos.io/>`_ or the `Forum <https://forum.vyos.io>`_."
-msgstr "Discuss in `Slack <https://slack.vyos.io/>`_ or the `Forum <https://forum.vyos.io>`_."
+msgstr "Обговорити в `Slack<https://slack.vyos.io/> `_ або `Форум<https://forum.vyos.io> `_."
 
 #: ../../index.rst:40
 msgid "Examples"
-msgstr "Examples"
+msgstr "Приклади"
 
 #: ../../index.rst:63
 msgid "First Steps"
-msgstr "First Steps"
+msgstr "Перші кроки"
 
 #: ../../index.rst:12
 msgid "Get / Build VyOS"
-msgstr "Get / Build VyOS"
+msgstr "Отримати / зібрати VyOS"
 
 #: ../../index.rst:42
 msgid "Get some inspiration from the :ref:`Configuration Blueprints<configexamples/index:Configuration Blueprints>` to build your infrastructure."
-msgstr "Get some inspiration from the :ref:`Configuration Blueprints<configexamples/index:Configuration Blueprints>` to build your infrastructure."
+msgstr "Почерпніть натхнення з :ref:`Configuration Blueprints<configexamples/index:Configuration Blueprints> ` для створення вашої інфраструктури."
 
 #: ../../index.rst:18
 msgid "Install VyOS"
-msgstr "Install VyOS"
+msgstr "Встановіть VyOS"
 
 #: ../../index.rst:35
 msgid "Integrate VyOS in your automation Workflow with :ref:`Ansible<vyos-ansible>`, have your own :ref:`local scripts<command-scripting>`, or configure VyOS with the :ref:`HTTPS-API<vyosapi>`."
-msgstr "Integrate VyOS in your automation Workflow with :ref:`Ansible<vyos-ansible>`, have your own :ref:`local scripts<command-scripting>`, or configure VyOS with the :ref:`HTTPS-API<vyosapi>`."
+msgstr "Інтегруйте VyOS у свій робочий процес автоматизації за допомогою :ref:`Ansible<vyos-ansible> `, мати власні :ref:`локальні сценарії<command-scripting> ` або налаштуйте VyOS за допомогою :ref:`HTTPS-API<vyosapi> `."
 
 #: ../../index.rst:98
 msgid "Misc"
-msgstr "Misc"
+msgstr "Різне"
 
 #: ../../index.rst:0
 msgid "Or you can pick up a `Task <https://vyos.dev/>`_ and fix the :ref:`code<contributing/development:development>`."
-msgstr "Or you can pick up a `Task <https://vyos.dev/>`_ and fix the :ref:`code<contributing/development:development>`."
+msgstr "Або ви можете вибрати «Завдання<https://vyos.dev/> `_ і виправте код :ref:`<contributing/development:development> `."
 
 #: ../../index.rst:15
 msgid "Quickly :ref:`Build<contributing/build-vyos:build vyos>` your own Image or take a look at how to :ref:`download<installation/install:download>` a free or supported version."
-msgstr "Quickly :ref:`Build<contributing/build-vyos:build vyos>` your own Image or take a look at how to :ref:`download<installation/install:download>` a free or supported version."
+msgstr "Швидко :ref:`Будуйте<contributing/build-vyos:build vyos> ` ваше власне зображення або подивіться, як :ref:`завантажити<installation/install:download> ` безкоштовна або підтримувана версія."
 
 #: ../../index.rst:20
 msgid "Read about how to install VyOS on :ref:`Bare Metal<installation/install:installation>` or in a :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>` and how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>` providers"
-msgstr "Read about how to install VyOS on :ref:`Bare Metal<installation/install:installation>` or in a :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>` and how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>` providers"
+msgstr "Прочитайте, як встановити VyOS на :ref:`Bare Metal<installation/install:installation> ` або у :ref:`Віртуальному середовищі<installation/virtual/index:running vyos in virtual environments> ` і як використовувати зображення зі звичайною :ref:`хмарою<installation/cloud/index:running VyOS in Cloud Environments> ` провайдери"
 
 #: ../../index.rst:0
 msgid "There are many ways to contribute to the project."
-msgstr "There are many ways to contribute to the project."
+msgstr "Є багато способів зробити внесок у проект."
 
 #: ../../index.rst:27
 msgid "Use the :ref:`Quickstart Guide<quick-start:Quick Start>`, to have a fast overview. Or go deeper and set up :ref:`advanced routing<configuration/protocols/index:protocols>`, :ref:`VRFs<configuration/vrf/index:vrf>`, or :ref:`VPNs<configuration/vpn/index:vpn>` for example."
-msgstr "Use the :ref:`Quickstart Guide<quick-start:Quick Start>`, to have a fast overview. Or go deeper and set up :ref:`advanced routing<configuration/protocols/index:protocols>`, :ref:`VRFs<configuration/vrf/index:vrf>`, or :ref:`VPNs<configuration/vpn/index:vpn>` for example."
+msgstr "Скористайтеся :ref:`коротким посібником<quick-start:Quick Start> `, щоб мати швидкий огляд. Або зайдіть глибше та налаштуйте :ref:`розширену маршрутизацію<configuration/protocols/index:protocols> `, :ref:`VRF<configuration/vrf/index:vrf> ` або :ref:`VPN<configuration/vpn/index:vpn> ` наприклад."
 
 #: ../../index.rst:5
 msgid "VyOS User Guide"
-msgstr "VyOS User Guide"
+msgstr "Посібник користувача VyOS"
