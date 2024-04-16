@@ -802,6 +802,14 @@ msgstr "**lado local - comandos**"
 msgid "**log-fail** In this mode, the recursor will attempt to validate all data it retrieves from authoritative servers, regardless of the client's DNSSEC desires, and will log the validation result. This mode can be used to determine the extra load and amount of possibly bogus answers before turning on full-blown validation. Responses to client queries are the same as with process."
 msgstr "**log-fail** En este modo, el recursor intentará validar todos los datos que recupera de los servidores autorizados, independientemente de los deseos de DNSSEC del cliente, y registrará el resultado de la validación. Este modo se puede usar para determinar la carga adicional y la cantidad de respuestas posiblemente falsas antes de activar la validación completa. Las respuestas a las consultas de los clientes son las mismas que con el proceso."
 
+#: ../../configuration/service/dns.rst:197
+msgid "**lookup-a** A Flag."
+msgstr "**lookup-a** A Flag."
+
+#: ../../configuration/service/dns.rst:199
+msgid "**lookup-srv** S flag."
+msgstr "**lookup-srv** S flag."
+
 #: ../../configuration/protocols/isis.rst:100
 msgid "**narrow** - Use old style of TLVs with narrow metric."
 msgstr "**estrecho**: use el estilo antiguo de TLV con métrica estrecha."
@@ -839,6 +847,10 @@ msgstr "**apagado** En este modo, no se lleva a cabo ningún procesamiento de DN
 msgid "**on-failure**: Restart containers when they exit with a non-zero exit code, retrying indefinitely (default)"
 msgstr "**en caso de error**: reiniciar los contenedores cuando salen con un código de salida distinto de cero, reintentando indefinidamente (predeterminado)"
 
+#: ../../configuration/service/dns.rst:201
+msgid "**order** Rule order. Requires `<value>`."
+msgstr "**order** Rule order. Requires `<value>`."
+
 #: ../../configuration/nat/nat44.rst:149
 msgid "**outbound-interface** - applicable only to :ref:`source-nat`. It configures the interface which is used for the outside traffic that this translation rule applies to."
 msgstr "**interfaz de salida** - aplicable solo a :ref:`source-nat`. Configura la interfaz que se utiliza para el tráfico externo al que se aplica esta regla de traducción."
@@ -872,6 +884,10 @@ msgstr "**preferir** - preguntar al cliente por mppe, si lo rechaza no fallar"
 msgid "**prefer** - ask client for mppe, if it rejects don't fail. (Default value)"
 msgstr "**prefer** - ask client for mppe, if it rejects don't fail. (Default value)"
 
+#: ../../configuration/service/dns.rst:203
+msgid "**preference** Rule preference. Requires `<value>`. Defaults to 0 if not set."
+msgstr "**preference** Rule preference. Requires `<value>`. Defaults to 0 if not set."
+
 #: ../../configuration/service/dns.rst:77
 msgid "**process** When dnssec is set to process the behavior is similar to process-no-validate. However, the recursor will try to validate the data if at least one of the DO or AD bits is set in the query; in that case, it will set the AD-bit in the response when the data is validated successfully, or send SERVFAIL when the validation comes up bogus."
 msgstr "**proceso** Cuando dnssec está configurado para procesar, el comportamiento es similar a procesar sin validar. Sin embargo, el recursor intentará validar los datos si al menos uno de los bits DO o AD está configurado en la consulta; en ese caso, establecerá el bit AD en la respuesta cuando los datos se validen con éxito, o enviará SERVFAIL cuando la validación resulte falsa."
@@ -883,6 +899,10 @@ msgstr "**procesar sin validar** En este modo, el recursor actúa como un servid
 #: ../../configuration/nat/nat44.rst:181
 msgid "**protocol** - specify which types of protocols this translation rule applies to. Only packets matching the specified protocol are NATed. By default this applies to `all` protocols."
 msgstr "**protocolo**: especifique a qué tipos de protocolos se aplica esta regla de traducción. Solo los paquetes que coinciden con el protocolo especificado reciben NAT. Por defecto, esto se aplica a `todos` los protocolos."
+
+#: ../../configuration/service/dns.rst:205
+msgid "**protocol-specific** P flag."
+msgstr "**protocol-specific** P flag."
 
 #: ../../configuration/service/ipoe-server.rst:63
 #: ../../configuration/service/pppoe-server.rst:41
@@ -903,6 +923,10 @@ msgstr "**radius**: Todas las consultas de autenticación son manejadas por un s
 msgid "**random** - Random interface identifier for IPv6"
 msgstr "**random** - Random interface identifier for IPv6"
 
+#: ../../configuration/service/dns.rst:207
+msgid "**regexp** Regular expression. Requires `<value>`."
+msgstr "**regexp** Regular expression. Requires `<value>`."
+
 #: ../../configuration/interfaces/wireguard.rst:190
 msgid "**remote side - commands**"
 msgstr "**lado remoto - comandos**"
@@ -914,6 +938,10 @@ msgstr "**replace**: Terminate first session when second is authorized **(defaul
 #: ../../configuration/service/dhcp-relay.rst:81
 msgid "**replace:** Relay information already present in a packet is stripped and replaced with the router's own relay information set."
 msgstr "**reemplazar:** la información de retransmisión que ya está presente en un paquete se elimina y se reemplaza con el propio conjunto de información de retransmisión del enrutador."
+
+#: ../../configuration/service/dns.rst:209
+msgid "**replacement** Replacement DNS name."
+msgstr "**replacement** Replacement DNS name."
 
 #: ../../configuration/service/pppoe-server.rst:472
 #: ../../configuration/vpn/l2tp.rst:426
@@ -936,9 +964,17 @@ msgstr "**require** - Require IPv6 negotiation"
 msgid "**require** - ask client for mppe, if it rejects drop connection"
 msgstr "**requerir**: solicitar al cliente mppe, si rechaza la conexión de caída"
 
+#: ../../configuration/service/dns.rst:211
+msgid "**resolve-uri** U flag."
+msgstr "**resolve-uri** U flag."
+
 #: ../../configuration/vpn/site2site_ipsec.rst:319
 msgid "**right**"
 msgstr "**bien**"
+
+#: ../../configuration/service/dns.rst:213
+msgid "**service** Service type. Requires `<value>`."
+msgstr "**service** Service type. Requires `<value>`."
 
 #: ../../configuration/container/index.rst:127
 msgid "**setpcap**: Capability sets (from bounded or inherited set)"
@@ -1503,6 +1539,10 @@ msgstr "Un *bit* se escribe como **bit**,"
 msgid "A BGP-speaking router like VyOS can retrieve ROA information from RPKI \"Relying Party software\" (often just called an \"RPKI server\" or \"RPKI validator\") by using :abbr:`RTR (RPKI to Router)` protocol. There are several open source implementations to choose from, such as NLNetLabs' Routinator_ (written in Rust), Cloudflare's GoRTR_ and OctoRPKI_ (written in Go), and RIPE NCC's RPKI Validator_ (written in Java). The RTR protocol is described in :rfc:`8210`."
 msgstr "Un enrutador que habla BGP como VyOS puede recuperar información de ROA del &quot;software de usuario de confianza&quot; RPKI (a menudo llamado simplemente &quot;servidor RPKI&quot; o &quot;validador RPKI&quot;) mediante el uso del protocolo :abbr:`RTR (RPKI to Router)`. Hay varias implementaciones de código abierto para elegir, como Routinator_ de NLNetLabs (escrito en Rust), GoRTR_ y OctoRPKI_ de Cloudflare (escrito en Go) y RPKI Validator_ de RIPE NCC (escrito en Java). El protocolo RTR se describe en :rfc:`8210`."
 
+#: ../../configuration/protocols/rpki.rst:21
+msgid "A BGP-speaking router like VyOS can retrieve ROA information from RPKI \"Relying Party software\" (often just called an \"RPKI server\" or \"RPKI validator\") by using :abbr:`RTR (RPKI to Router)` protocol. There are several open source implementations to choose from, such as NLNetLabs' Routinator_ (written in Rust), OpenBSD's rpki-client_ (written in C), and StayRTR_ (written in Go). The RTR protocol is described in :rfc:`8210`."
+msgstr "A BGP-speaking router like VyOS can retrieve ROA information from RPKI \"Relying Party software\" (often just called an \"RPKI server\" or \"RPKI validator\") by using :abbr:`RTR (RPKI to Router)` protocol. There are several open source implementations to choose from, such as NLNetLabs' Routinator_ (written in Rust), OpenBSD's rpki-client_ (written in C), and StayRTR_ (written in Go). The RTR protocol is described in :rfc:`8210`."
+
 #: ../../configuration/protocols/bgp.rst:951
 msgid "A BGP confederation divides our AS into sub-ASes to reduce the number of required IBGP peerings. Within a sub-AS we still require full-mesh IBGP but between these sub-ASes we use something that looks like EBGP but behaves like IBGP (called confederation BGP). Confederation mechanism is described in :rfc:`5065`"
 msgstr "Una confederación BGP divide nuestro AS en sub-AS para reducir la cantidad de interconexiones IBGP requeridas. Dentro de un sub-AS aún requerimos IBGP de malla completa, pero entre estos sub-AS usamos algo que se parece a EBGP pero se comporta como IBGP (llamado BGP de confederación). El mecanismo de confederación se describe en :rfc:`5065`"
@@ -1531,7 +1571,7 @@ msgstr "Se crea un dispositivo VRF con una tabla de rutas asociada. Luego, las i
 msgid "A VyOS GRE tunnel can carry both IPv4 and IPv6 traffic and can also be created over either IPv4 (gre) or IPv6 (ip6gre)."
 msgstr "Un túnel VyOS GRE puede transportar tráfico IPv4 e IPv6 y también se puede crear sobre IPv4 (gre) o IPv6 (ip6gre)."
 
-#: ../../configuration/service/dns.rst:149
+#: ../../configuration/service/dns.rst:243
 msgid "A VyOS router with two interfaces - eth0 (WAN) and eth1 (LAN) - is required to implement a split-horizon DNS configuration for example.com."
 msgstr "Se requiere un enrutador VyOS con dos interfaces, eth0 (WAN) y eth1 (LAN), para implementar una configuración de DNS de horizonte dividido para example.com."
 
@@ -1623,6 +1663,10 @@ msgstr "Una descripción legible por humanos de qué se trata este certificado."
 #: ../../configuration/interfaces/loopback.rst:17
 msgid "A lookback interface is always up, thus it could be used for management traffic or as source/destination for and :abbr:`IGP (Interior Gateway Protocol)` like :ref:`routing-bgp` so your internal BGP link is not dependent on physical link states and multiple routes can be chosen to the destination. A :ref:`dummy-interface` Interface should always be preferred over a :ref:`loopback-interface` interface."
 msgstr "Una interfaz de búsqueda siempre está activa, por lo que podría usarse para administrar el tráfico o como origen/destino para y :abbr:`IGP (Protocolo de puerta de enlace interior)` como :ref:`routing-bgp` para que su enlace BGP interno no dependa en los estados del enlace físico y se pueden elegir múltiples rutas hacia el destino. Siempre se debe preferir una interfaz :ref:`dummy-interface` a una interfaz :ref:`loopback-interface`."
+
+#: ../../configuration/interfaces/loopback.rst:17
+msgid "A loopback interface is always up, thus it could be used for management traffic or as source/destination for and :abbr:`IGP (Interior Gateway Protocol)` like :ref:`routing-bgp` so your internal BGP link is not dependent on physical link states and multiple routes can be chosen to the destination. A :ref:`dummy-interface` Interface should always be preferred over a :ref:`loopback-interface` interface."
+msgstr "A loopback interface is always up, thus it could be used for management traffic or as source/destination for and :abbr:`IGP (Interior Gateway Protocol)` like :ref:`routing-bgp` so your internal BGP link is not dependent on physical link states and multiple routes can be chosen to the destination. A :ref:`dummy-interface` Interface should always be preferred over a :ref:`loopback-interface` interface."
 
 #: ../../configuration/service/snmp.rst:42
 msgid "A managed device is a network node that implements an SNMP interface that allows unidirectional (read-only) or bidirectional (read and write) access to node-specific information. Managed devices exchange node-specific information with the NMSs. Sometimes called network elements, the managed devices can be any type of device, including, but not limited to, routers, access servers, switches, cable modems, bridges, hubs, IP telephones, IP video cameras, computer hosts, and printers."
@@ -1920,7 +1964,7 @@ msgstr "Agregue el certificado de CA público para la CA denominada &quot;nombre
 msgid "Adding a 2FA with an OTP-key"
 msgstr "Agregar un 2FA con una clave OTP"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:260
+#: ../../configuration/loadbalancing/reverse-proxy.rst:263
 msgid "Additional global parameters are set, including the maximum number connection limit of 4000 and a minimum TLS version of 1.3."
 msgstr "Se establecen parámetros globales adicionales, incluido el límite de número máximo de conexiones de 4000 y una versión mínima de TLS de 1.3."
 
@@ -2052,7 +2096,7 @@ msgstr "Algoritmo"
 msgid "Aliases"
 msgstr "Alias"
 
-#: ../../configuration/service/dns.rst:154
+#: ../../configuration/service/dns.rst:248
 msgid "All DNS requests for example.com must be forwarded to a DNS server at 192.0.2.254 and 2001:db8:cafe::1"
 msgstr "Todas las solicitudes de DNS para ejemplo.com deben reenviarse a un servidor DNS en 192.0.2.254 y 2001:db8:cafe::1"
 
@@ -2080,7 +2124,7 @@ msgstr "Todas las interfaces utilizadas para el relé DHCP deben configurarse. E
 msgid "All items in a sync group should be similarly configured. If one VRRP group is set to a different preemption delay or priority, it would result in an endless transition loop."
 msgstr "Todos los elementos de un grupo de sincronización deben configurarse de manera similar. Si un grupo de VRRP se configura con un retraso o una prioridad de prioridad diferente, se produciría un ciclo de transición sin fin."
 
-#: ../../configuration/service/dns.rst:156
+#: ../../configuration/service/dns.rst:250
 msgid "All other DNS requests will be forwarded to a different set of DNS servers at 192.0.2.1, 192.0.2.2, 2001:db8::1:ffff and 2001:db8::2:ffff"
 msgstr "Todas las demás solicitudes de DNS se reenviarán a un conjunto diferente de servidores DNS en 192.0.2.1, 192.0.2.2, 2001:db8::1:ffff y 2001:db8::2:ffff"
 
@@ -2136,7 +2180,7 @@ msgstr "Permita el acceso a los sitios de un dominio sin recuperarlos de la memo
 msgid "Allow bgp to negotiate the extended-nexthop capability with it’s peer. If you are peering over a IPv6 Link-Local address then this capability is turned on automatically. If you are peering over a IPv6 Global Address then turning on this command will allow BGP to install IPv4 routes with IPv6 nexthops if you do not have IPv4 configured on interfaces."
 msgstr "Permita que bgp negocie la capacidad de próximo salto extendido con su par. Si está interconectando una dirección local de enlace IPv6, esta capacidad se activa automáticamente. Si está interconectando una dirección global IPv6, al activar este comando permitirá que BGP instale rutas IPv4 con nexthops IPv6 si no tiene IPv4 configurado en las interfaces."
 
-#: ../../configuration/service/dns.rst:362
+#: ../../configuration/service/dns.rst:456
 msgid "Allow explicit IPv6 address for the interface."
 msgstr "Permita una dirección IPv6 explícita para la interfaz."
 
@@ -2679,6 +2723,10 @@ msgstr "token de autenticación"
 msgid "Authentication – to verify that the message is from a valid source."
 msgstr "Autenticación: para verificar que el mensaje proviene de una fuente válida."
 
+#: ../../configuration/service/dns.rst:147
+msgid "Authoritative zones"
+msgstr "Authoritative zones"
+
 #: ../../configuration/service/monitoring.rst:92
 msgid "Authorization token"
 msgstr "token de autorización"
@@ -2803,6 +2851,10 @@ msgstr "Babel es un protocolo de enrutamiento moderno diseñado para ser robusto
 msgid "Backend"
 msgstr "back-end"
 
+#: ../../configuration/loadbalancing/reverse-proxy.rst:299
+msgid "Backend service certificates are checked against the certificate authority specified in the configuration, which could be an internal CA."
+msgstr "Backend service certificates are checked against the certificate authority specified in the configuration, which could be an internal CA."
+
 #: ../../configuration/loadbalancing/reverse-proxy.rst:108
 msgid "Balance algorithms:"
 msgstr "Algoritmos de equilibrio:"
@@ -2811,7 +2863,7 @@ msgstr "Algoritmos de equilibrio:"
 msgid "Balancing Rules"
 msgstr "Reglas de equilibrio"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:211
+#: ../../configuration/loadbalancing/reverse-proxy.rst:214
 msgid "Balancing based on domain name"
 msgstr "Equilibrio basado en el nombre de dominio"
 
@@ -2891,6 +2943,10 @@ msgstr "Antes de habilitar cualquier descarga de segmentación de hardware, se r
 #: ../../configuration/firewall/zone.rst:103
 msgid "Before you are able to apply a rule-set to a zone you have to create the zones first."
 msgstr "Antes de poder aplicar un conjunto de reglas a una zona, primero debe crear las zonas."
+
+#: ../../configuration/service/dns.rst:169
+msgid "Below are a list of record types available to be configured within VyOS. Some records support special `<name>` keywords:"
+msgstr "Below are a list of record types available to be configured within VyOS. Some records support special `<name>` keywords:"
 
 #: ../../configuration/vpn/site2site_ipsec.rst:425
 msgid "Below flow-chart could be a quick reference for the close-action combination depending on how the peer is configured."
@@ -3037,11 +3093,11 @@ msgstr "De forma predeterminada, VyOS no anuncia una ruta predeterminada (0.0.0.
 msgid "By default, a new token is generated every 30 seconds by the mobile application. In order to compensate for possible time-skew between the client and the server, an extra token before and after the current time is allowed. This allows for a time skew of up to 30 seconds between authentication server and client."
 msgstr "De forma predeterminada, la aplicación móvil genera un nuevo token cada 30 segundos. Para compensar el posible desfase temporal entre el cliente y el servidor, se permite un token adicional antes y después de la hora actual. Esto permite un sesgo de tiempo de hasta 30 segundos entre el servidor de autenticación y el cliente."
 
-#: ../../configuration/service/dns.rst:401
+#: ../../configuration/service/dns.rst:495
 msgid "By default, ddclient_ will update a dynamic dns record using the IP address directly attached to the interface. If your VyOS instance is behind NAT, your record will be updated to point to your internal IP."
 msgstr "De manera predeterminada, ddclient_ actualizará un registro dns dinámico usando la dirección IP directamente adjunta a la interfaz. Si su instancia de VyOS está detrás de NAT, su registro se actualizará para apuntar a su IP interna."
 
-#: ../../configuration/protocols/rpki.rst:91
+#: ../../configuration/protocols/rpki.rst:89
 msgid "By default, enabling RPKI does not change best path selection. In particular, invalid prefixes will still be considered during best path selection. However, the router can be configured to ignore all invalid prefixes."
 msgstr "De manera predeterminada, habilitar RPKI no cambia la selección de la mejor ruta. En particular, los prefijos no válidos aún se considerarán durante la selección de la mejor ruta. Sin embargo, el enrutador se puede configurar para ignorar todos los prefijos no válidos."
 
@@ -3372,7 +3428,7 @@ msgstr "Confidencialidad: cifrado de paquetes para evitar la intromisión de una
 #: ../../configuration/protocols/isis.rst:28
 #: ../../configuration/protocols/ospf.rst:22
 #: ../../configuration/protocols/ospf.rst:1076
-#: ../../configuration/protocols/rpki.rst:104
+#: ../../configuration/protocols/rpki.rst:102
 #: ../../configuration/service/broadcast-relay.rst:18
 #: ../../configuration/service/conntrack-sync.rst:38
 #: ../../configuration/service/console-server.rst:21
@@ -3381,7 +3437,7 @@ msgstr "Confidencialidad: cifrado de paquetes para evitar la intromisión de una
 #: ../../configuration/service/dhcp-server.rst:22
 #: ../../configuration/service/dhcp-server.rst:569
 #: ../../configuration/service/dns.rst:8
-#: ../../configuration/service/dns.rst:214
+#: ../../configuration/service/dns.rst:308
 #: ../../configuration/service/https.rst:14
 #: ../../configuration/service/ids.rst:20
 #: ../../configuration/service/lldp.rst:36
@@ -3480,11 +3536,11 @@ msgstr "Configurar"
 msgid "Configure BFD"
 msgstr "Configurar BFD"
 
-#: ../../configuration/service/dns.rst:245
+#: ../../configuration/service/dns.rst:339
 msgid "Configure DNS `<record>` which should be updated. This can be set multiple times."
 msgstr "Configurar DNS `<record> ` que debe ser actualizado. Esto se puede configurar varias veces."
 
-#: ../../configuration/service/dns.rst:241
+#: ../../configuration/service/dns.rst:335
 msgid "Configure DNS `<zone>` to be updated."
 msgstr "Configurar DNS `<zone> ` para ser actualizado."
 
@@ -3550,7 +3606,7 @@ msgstr "Configurar `<message> ` que se muestra después de que el usuario haya i
 msgid "Configure `<message>` which is shown during SSH connect and before a user is logged in."
 msgstr "Configurar `<message> ` que se muestra durante la conexión SSH y antes de que un usuario inicie sesión."
 
-#: ../../configuration/service/dns.rst:346
+#: ../../configuration/service/dns.rst:440
 msgid "Configure `<password>` used when authenticating the update request for DynDNS service identified by `<service-name>`."
 msgstr "Configure `<password>` used when authenticating the update request for DynDNS service identified by `<service-name>`."
 
@@ -3558,7 +3614,7 @@ msgstr "Configure `<password>` used when authenticating the update request for D
 msgid "Configure `<password>` used when authenticating the update request for DynDNS service identified by `<service>`."
 msgstr "Configurar `<password> ` utilizado al autenticar la solicitud de actualización para el servicio DynDNS identificado por `<service> `."
 
-#: ../../configuration/service/dns.rst:341
+#: ../../configuration/service/dns.rst:435
 msgid "Configure `<username>` used when authenticating the update request for DynDNS service identified by `<service-name>`."
 msgstr "Configure `<username>` used when authenticating the update request for DynDNS service identified by `<service-name>`."
 
@@ -3705,7 +3761,7 @@ msgstr "Configure uno o más atributos para el servidor NTP dado."
 msgid "Configure one or more servers for synchronisation. Server name can be either an IP address or :abbr:`FQDN (Fully Qualified Domain Name)`."
 msgstr "Configure uno o más servidores para la sincronización. El nombre del servidor puede ser una dirección IP o :abbr:`FQDN (Nombre de dominio completo)`."
 
-#: ../../configuration/service/dns.rst:249
+#: ../../configuration/service/dns.rst:343
 msgid "Configure optional TTL value on the given resource record. This defaults to 600 seconds."
 msgstr "Configure el valor TTL opcional en el registro de recursos dado. Esto por defecto es de 600 segundos."
 
@@ -3741,6 +3797,10 @@ msgstr "Configure el protocolo utilizado para la comunicación con el host de sy
 msgid "Configure proxy port if it does not listen to the default port 80."
 msgstr "Configure el puerto proxy si no escucha el puerto predeterminado 80."
 
+#: ../../configuration/loadbalancing/reverse-proxy.rst:149
+msgid "Configure requests to the backend server to use SSL encryption and authenticate backend against <ca-certificate>"
+msgstr "Configure requests to the backend server to use SSL encryption and authenticate backend against <ca-certificate>"
+
 #: ../../configuration/system/sflow.rst:16
 msgid "Configure sFlow agent IPv4 or IPv6 address"
 msgstr "Configurar la dirección IPv4 o IPv6 del agente sFlow"
@@ -3773,7 +3833,7 @@ msgstr "Configure the A-side router for NPTv6 using the prefixes above:"
 msgid "Configure the B-side router for NPTv6 using the prefixes above:"
 msgstr "Configure the B-side router for NPTv6 using the prefixes above:"
 
-#: ../../configuration/service/dns.rst:236
+#: ../../configuration/service/dns.rst:330
 msgid "Configure the DNS `<server>` IP/FQDN used when updating this dynamic assignment."
 msgstr "Configurar el DNS `<server> ` IP/FQDN utilizado al actualizar esta asignación dinámica."
 
@@ -3793,7 +3853,7 @@ msgstr "Configure el puerto discreto bajo el cual se puede acceder al servidor R
 msgid "Configure the discrete port under which the TACACS server can be reached."
 msgstr "Configure el puerto discreto bajo el cual se puede acceder al servidor TACACS."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:172
+#: ../../configuration/loadbalancing/reverse-proxy.rst:175
 msgid "Configure the load-balancing reverse-proxy service for HTTP."
 msgstr "Configure el servicio de proxy inverso de equilibrio de carga para HTTP."
 
@@ -3894,7 +3954,7 @@ msgstr "Connections to the RPKI caching server can not only be established by HT
 msgid "Connections to the RPKI caching server can not only be established by HTTP/TLS but you can also rely on a secure SSH session to the server. To enable SSH you first need to create yoursels an SSH client keypair using ``generate ssh client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup the connection."
 msgstr "Las conexiones al servidor de almacenamiento en caché RPKI no solo pueden establecerse mediante HTTP/TLS, sino que también puede confiar en una sesión SSH segura con el servidor. Para habilitar SSH, primero debe crear usted mismo un par de claves de cliente SSH usando ``generate ssh client-key /config/auth/id_rsa_rpki``. Una vez que se crea su clave, puede configurar la conexión."
 
-#: ../../configuration/protocols/rpki.rst:143
+#: ../../configuration/protocols/rpki.rst:141
 msgid "Connections to the RPKI caching server can not only be established by TCP using the RTR protocol but you can also rely on a secure SSH session to the server. This provides transport integrity and confidentiality and it is a good idea if your validation software supports it.  To enable SSH, first you need to create an SSH client keypair using ``generate ssh client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup the connection."
 msgstr "Connections to the RPKI caching server can not only be established by TCP using the RTR protocol but you can also rely on a secure SSH session to the server. This provides transport integrity and confidentiality and it is a good idea if your validation software supports it.  To enable SSH, first you need to create an SSH client keypair using ``generate ssh client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup the connection."
 
@@ -4093,8 +4153,8 @@ msgstr "Crea una nueva instancia VRF con `<name> `. El nombre se utiliza al colo
 msgid "Create new :rfc:`2136` DNS update configuration which will update the IP address assigned to `<interface>` on the service you configured under `<service-name>`."
 msgstr "Cree una nueva configuración de actualización de DNS :rfc:`2136` que actualizará la dirección IP asignada a `<interface> ` en el servicio que configuró en `<service-name> `."
 
-#: ../../configuration/service/dns.rst:221
-#: ../../configuration/service/dns.rst:326
+#: ../../configuration/service/dns.rst:315
+#: ../../configuration/service/dns.rst:420
 msgid "Create new dynamic DNS update configuration which will update the IP address assigned to `<interface>` on the service you configured under `<service-name>`."
 msgstr "Create new dynamic DNS update configuration which will update the IP address assigned to `<interface>` on the service you configured under `<service-name>`."
 
@@ -4507,7 +4567,7 @@ msgstr "Defina la cantidad de paquetes para poner en cola dentro del kernel ante
 msgid "Define operation mode of High Availability feature. Default value if command is not specified is `active-active`"
 msgstr "Define operation mode of High Availability feature. Default value if command is not specified is `active-active`"
 
-#: ../../configuration/protocols/rpki.rst:108
+#: ../../configuration/protocols/rpki.rst:106
 msgid "Define the time interval to update the local cache"
 msgstr "Definir el intervalo de tiempo para actualizar el caché local"
 
@@ -4523,7 +4583,7 @@ msgstr "Define type of offload to be used by the flowtable: ``hardware`` or ``so
 msgid "Define used ethertype of bridge interface."
 msgstr "Define used ethertype of bridge interface."
 
-#: ../../configuration/protocols/rpki.rst:128
+#: ../../configuration/protocols/rpki.rst:126
 msgid "Defined the IPv4, IPv6 or FQDN and port number of the caching RPKI caching instance which is used."
 msgstr "Definió el IPv4, IPv6 o FQDN y el número de puerto de la instancia de almacenamiento en caché RPKI de almacenamiento en caché que se utiliza."
 
@@ -4744,6 +4804,10 @@ msgstr "Deshabilite el servicio de retransmisión dhcpv6."
 msgid "Disable given `<interface>`. It will be placed in administratively down (``A/D``) state."
 msgstr "Deshabilitar dado `<interface> `. Se colocará en estado administrativamente inactivo (``A/D``)."
 
+#: ../../configuration/service/dns.rst:153
+msgid "Disable hosting authoritative zone for `<domain-name>` without deleting from configuration."
+msgstr "Disable hosting authoritative zone for `<domain-name>` without deleting from configuration."
+
 #: ../../configuration/protocols/bgp.rst:628
 msgid "Disable immediate session reset if peer's connected link goes down."
 msgstr "Deshabilite el restablecimiento inmediato de la sesión si el enlace conectado del compañero se cae."
@@ -4755,6 +4819,10 @@ msgstr "Deshabilite la autenticación basada en contraseña. Inicie sesión solo
 #: ../../configuration/protocols/pim.rst:167
 msgid "Disable sending and receiving PIM control packets on the interface."
 msgstr "Disable sending and receiving PIM control packets on the interface."
+
+#: ../../configuration/service/dns.rst:159
+msgid "Disable specific record without deleting it from configuration."
+msgstr "Disable specific record without deleting it from configuration."
 
 #: ../../configuration/service/ssh.rst:64
 msgid "Disable the host validation through reverse DNS lookups - can speedup login time when reverse lookup is not possible."
@@ -5034,7 +5102,7 @@ msgstr "During profile import, the user is asked to enter its IPSec credentials 
 msgid "Dynamic-protection"
 msgstr "Protección dinámica"
 
-#: ../../configuration/service/dns.rst:199
+#: ../../configuration/service/dns.rst:293
 msgid "Dynamic DNS"
 msgstr "DNS Dinámico"
 
@@ -5535,14 +5603,14 @@ msgstr "Every connection/remote-access pool we configure also needs a pool where
 #: ../../configuration/protocols/failover.rst:63
 #: ../../configuration/protocols/igmp-proxy.rst:61
 #: ../../configuration/protocols/pim.rst:217
-#: ../../configuration/protocols/rpki.rst:168
+#: ../../configuration/protocols/rpki.rst:166
 #: ../../configuration/service/broadcast-relay.rst:55
 #: ../../configuration/service/conntrack-sync.rst:195
 #: ../../configuration/service/dhcp-relay.rst:85
 #: ../../configuration/service/dhcp-relay.rst:174
 #: ../../configuration/service/dhcp-server.rst:418
-#: ../../configuration/service/dns.rst:147
-#: ../../configuration/service/dns.rst:260
+#: ../../configuration/service/dns.rst:241
+#: ../../configuration/service/dns.rst:354
 #: ../../configuration/service/eventhandler.rst:83
 #: ../../configuration/service/ids.rst:82
 #: ../../configuration/service/mdns.rst:50
@@ -5586,7 +5654,7 @@ msgstr "Ejemplo, desde el comando de envío del servidor de radio para desconect
 #: ../../configuration/protocols/static.rst:67
 #: ../../configuration/protocols/static.rst:135
 #: ../../configuration/protocols/static.rst:207
-#: ../../configuration/service/dns.rst:366
+#: ../../configuration/service/dns.rst:460
 #: ../../configuration/service/monitoring.rst:69
 #: ../../configuration/service/monitoring.rst:98
 #: ../../configuration/service/ssh.rst:165
@@ -5683,7 +5751,7 @@ msgstr "Ejemplo: para agregar se establece en ``vyos.net`` y la URL recibida es 
 msgid "Example Configuration"
 msgstr "Configuración de ejemplo"
 
-#: ../../configuration/service/dns.rst:384
+#: ../../configuration/service/dns.rst:478
 msgid "Example IPv6 only:"
 msgstr "Ejemplo de solo IPv6:"
 
@@ -5721,7 +5789,7 @@ msgstr "Example synproxy"
 #: ../../configuration/interfaces/bridge.rst:196
 #: ../../configuration/interfaces/macsec.rst:153
 #: ../../configuration/interfaces/wireless.rst:541
-#: ../../configuration/loadbalancing/reverse-proxy.rst:187
+#: ../../configuration/loadbalancing/reverse-proxy.rst:190
 #: ../../configuration/policy/index.rst:46
 #: ../../configuration/protocols/bgp.rst:1118
 #: ../../configuration/protocols/isis.rst:336
@@ -5849,6 +5917,10 @@ msgstr "Mecanismo de conmutación por error que se utilizará para conntrack-syn
 msgid "Failover routes are manually configured routes, but they install to the routing table if the health-check target is alive. If the target is not alive the route is removed from the routing table until the target will be available."
 msgstr "Las rutas de conmutación por error son rutas configuradas manualmente, pero se instalan en la tabla de enrutamiento si el objetivo de verificación de estado está activo. Si el destino no está activo, la ruta se elimina de la tabla de enrutamiento hasta que el destino esté disponible."
 
+#: ../../configuration/protocols/failover.rst:5
+msgid "Failover routes are manually configured routes, but they only install to the routing table if the health-check target is alive. If the target is not alive the route is removed from the routing table until the target becomes available."
+msgstr "Failover routes are manually configured routes, but they only install to the routing table if the health-check target is alive. If the target is not alive the route is removed from the routing table until the target becomes available."
+
 #: ../../configuration/trafficpolicy/index.rst:384
 msgid "Fair Queue"
 msgstr "Cola justa"
@@ -5869,7 +5941,7 @@ msgstr "FastNetMon"
 msgid "FastNetMon is a high-performance DDoS detector/sensor built on top of multiple packet capture engines: NetFlow, IPFIX, sFlow, AF_PACKET (port mirror). It can detect hosts in the deployed network sending or receiving large volumes of traffic, packets/bytes/flows per second and perform a configurable action to handle that event, such as calling a custom script."
 msgstr "FastNetMon is a high-performance DDoS detector/sensor built on top of multiple packet capture engines: NetFlow, IPFIX, sFlow, AF_PACKET (port mirror). It can detect hosts in the deployed network sending or receiving large volumes of traffic, packets/bytes/flows per second and perform a configurable action to handle that event, such as calling a custom script."
 
-#: ../../configuration/protocols/rpki.rst:78
+#: ../../configuration/protocols/rpki.rst:76
 msgid "Features of the Current Implementation"
 msgstr "Características de la implementación actual"
 
@@ -5877,7 +5949,7 @@ msgstr "Características de la implementación actual"
 msgid "Field"
 msgstr "Campo"
 
-#: ../../configuration/service/dns.rst:231
+#: ../../configuration/service/dns.rst:325
 msgid "File identified by `<filename>` containing the TSIG authentication key for RFC2136 nsupdate on remote DNS server."
 msgstr "File identified by `<filename>` containing the TSIG authentication key for RFC2136 nsupdate on remote DNS server."
 
@@ -6037,6 +6109,10 @@ msgstr "Primero se deben generar las claves OTP y enviarlas al usuario y a la co
 #: ../../configuration/interfaces/openvpn.rst:342
 msgid "First we need to specify the basic settings. 1194/UDP is the default. The ``persistent-tunnel`` option is recommended, it prevents the TUN/TAP device from closing on connection resets or daemon reloads."
 msgstr "Primero necesitamos especificar la configuración básica. 1194/UDP es el predeterminado. Se recomienda la opción ``persistent-tunnel``, que evita que el dispositivo TUN/TAP se cierre al reiniciar la conexión o recargar el daemon."
+
+#: ../../configuration/protocols/rpki.rst:40
+msgid "First you will need to deploy an RPKI validator for your routers to use. NLnet Labs provides a collection of software_ you can compare and settle on one. Once your server is running you can start validating announcements."
+msgstr "First you will need to deploy an RPKI validator for your routers to use. NLnet Labs provides a collection of software_ you can compare and settle on one. Once your server is running you can start validating announcements."
 
 #: ../../configuration/protocols/rpki.rst:41
 msgid "First you will need to deploy an RPKI validator for your routers to use. The RIPE NCC helpfully provide `some instructions`_ to get you started with several different options.  Once your server is running you can start validating announcements."
@@ -6461,7 +6537,7 @@ msgstr "Obtenga información detallada sobre los vecinos LLDP."
 msgid "Get the DHCPv6-PD prefixes from both routers:"
 msgstr "Get the DHCPv6-PD prefixes from both routers:"
 
-#: ../../configuration/protocols/rpki.rst:39
+#: ../../configuration/protocols/rpki.rst:38
 msgid "Getting started"
 msgstr "Empezando"
 
@@ -6476,6 +6552,10 @@ msgstr "Dado el siguiente ejemplo, tenemos un enrutador VyOS que actúa como ser
 #: ../../configuration/loadbalancing/reverse-proxy.rst:150
 msgid "Gloabal"
 msgstr "global"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:153
+msgid "Global"
+msgstr "Global"
 
 #: ../../configuration/service/ipoe-server.rst:352
 #: ../../configuration/service/pppoe-server.rst:518
@@ -6497,7 +6577,7 @@ msgstr "Global Options Firewall Configuration"
 msgid "Global options"
 msgstr "Opciones globales"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:152
+#: ../../configuration/loadbalancing/reverse-proxy.rst:155
 msgid "Global parameters"
 msgstr "Parámetros globales"
 
@@ -6534,7 +6614,7 @@ msgstr "HTTP-API"
 msgid "HTTP API"
 msgstr "HTTP API"
 
-#: ../../configuration/service/dns.rst:317
+#: ../../configuration/service/dns.rst:411
 msgid "HTTP based services"
 msgstr "Servicios basados en HTTP"
 
@@ -6611,7 +6691,7 @@ msgstr "Aquí hay un segundo ejemplo de un túnel de doble pila sobre IPv6 entre
 msgid "Here is an example :abbr:`NET (Network Entity Title)` value:"
 msgstr "Aquí hay un ejemplo de valor :abbr:`NET (Título de entidad de red)`:"
 
-#: ../../configuration/protocols/rpki.rst:179
+#: ../../configuration/protocols/rpki.rst:177
 msgid "Here is an example route-map to apply to routes learned at import. In this filter we reject prefixes with the state `invalid`, and set a higher `local-preference` if the prefix is RPKI `valid` rather than merely `notfound`."
 msgstr "Aquí hay un mapa de ruta de ejemplo para aplicar a las rutas aprendidas en la importación. En este filtro, rechazamos los prefijos con el estado &quot;no válido&quot; y establecemos una &quot;preferencia local&quot; más alta si el prefijo es RPKI &quot;válido&quot; en lugar de simplemente &quot;no encontrado&quot;."
 
@@ -7227,7 +7307,7 @@ msgstr "Si utiliza múltiples túneles, OpenVPN debe tener una forma de distingu
 msgid "If multi-pathing is enabled, then check whether the routes not yet distinguished in preference may be considered equal. If :cfgcmd:`bgp bestpath as-path multipath-relax` is set, all such routes are considered equal, otherwise routes received via iBGP with identical AS_PATHs or routes received from eBGP neighbours in the same AS are considered equal."
 msgstr "Si la ruta múltiple está habilitada, verifique si las rutas que aún no se han distinguido en preferencia pueden considerarse iguales. Si se establece :cfgcmd:`bgp bestpath as-path multipath-relax`, todas esas rutas se consideran iguales; de lo contrario, las rutas recibidas a través de iBGP con AS_PATH idénticos o las rutas recibidas de vecinos eBGP en el mismo AS se consideran iguales."
 
-#: ../../configuration/protocols/rpki.rst:86
+#: ../../configuration/protocols/rpki.rst:84
 msgid "If no connection to an RPKI cache server can be established after a pre-defined timeout, the router will process routes without prefix origin validation. It still will try to establish a connection to an RPKI cache server in the background."
 msgstr "Si no se puede establecer una conexión con un servidor de caché RPKI después de un tiempo de espera predefinido, el enrutador procesará rutas sin validación de origen de prefijo. Todavía intentará establecer una conexión con un servidor de caché RPKI en segundo plano."
 
@@ -7439,9 +7519,13 @@ msgstr "Si es un hacker o quiere intentarlo por su cuenta, admitimos pasar las o
 msgid "If you are configuring a VRF for management purposes, there is currently no way to force system DNS traffic via a specific VRF."
 msgstr "Si está configurando un VRF con fines de administración, actualmente no hay forma de forzar el tráfico DNS del sistema a través de un VRF específico."
 
-#: ../../configuration/protocols/rpki.rst:30
+#: ../../configuration/protocols/rpki.rst:29
 msgid "If you are new to these routing security technologies then there is an `excellent guide to RPKI`_ by NLnet Labs which will get you up to speed very quickly. Their documentation explains everything from what RPKI is to deploying it in production. It also has some `help and operational guidance`_ including \"What can I do about my route having an Invalid state?\""
 msgstr "Si es nuevo en estas tecnologías de seguridad de enrutamiento, existe una `excelente guía de RPKI`_ de NLnet Labs que lo pondrá al día rápidamente. Su documentación explica todo, desde lo que es RPKI hasta su implementación en producción. También tiene algo de `ayuda y guía operativa`_ que incluye &quot;¿Qué puedo hacer si mi ruta tiene un estado Inválido?&quot;"
+
+#: ../../configuration/protocols/rpki.rst:62
+msgid "If you are responsible for the global addresses assigned to your network, please make sure that your prefixes have ROAs associated with them to avoid being `notfound` by RPKI. For most ASNs this will involve publishing ROAs via your :abbr:`RIR (Regional Internet Registry)` (RIPE NCC, APNIC, ARIN, LACNIC, or AFRINIC), and is something you are encouraged to do whenever you plan to announce addresses into the DFZ."
+msgstr "If you are responsible for the global addresses assigned to your network, please make sure that your prefixes have ROAs associated with them to avoid being `notfound` by RPKI. For most ASNs this will involve publishing ROAs via your :abbr:`RIR (Regional Internet Registry)` (RIPE NCC, APNIC, ARIN, LACNIC, or AFRINIC), and is something you are encouraged to do whenever you plan to announce addresses into the DFZ."
 
 #: ../../configuration/protocols/rpki.rst:64
 msgid "If you are responsible for the global addresses assigned to your network, please make sure that your prefixes have ROAs associated with them to avoid being `notfound` by RPKI. For most ASNs this will involve publishing ROAs via your :abbr:`RIR (Regional Internet Registry)` (RIPE NCC, APNIC, ARIN, LACNIC or AFRINIC), and is something you are encouraged to do whenever you plan to announce addresses into the DFZ."
@@ -7609,7 +7693,7 @@ msgstr "Import the private key of the certificate to the VyOS CLI. This should n
 msgid "Import the public CA certificate from the defined file to VyOS CLI."
 msgstr "Import the public CA certificate from the defined file to VyOS CLI."
 
-#: ../../configuration/protocols/rpki.rst:46
+#: ../../configuration/protocols/rpki.rst:44
 msgid "Imported prefixes during the validation may have values:"
 msgstr "Los prefijos importados durante la validación pueden tener valores:"
 
@@ -7653,7 +7737,7 @@ msgstr "En una configuración mínima, se debe proporcionar lo siguiente:"
 msgid "In a multiple VLAN header context, out of convenience the term \"VLAN tag\" or just \"tag\" for short is often used in place of \"802.1q_ VLAN header\". QinQ allows multiple VLAN tags in an Ethernet frame; together these tags constitute a tag stack. When used in the context of an Ethernet frame, a QinQ frame is a frame that has 2 VLAN 802.1q_ headers (double-tagged)."
 msgstr "En un contexto de encabezado de VLAN múltiple, por conveniencia, el término &quot;etiqueta de VLAN&quot; o simplemente &quot;etiqueta&quot; para abreviar se usa a menudo en lugar de &quot;802.1q_ encabezado de VLAN&quot;. QinQ permite múltiples etiquetas VLAN en un marco de Ethernet; juntas, estas etiquetas constituyen una pila de etiquetas. Cuando se usa en el contexto de una trama Ethernet, una trama QinQ es una trama que tiene 2 encabezados VLAN 802.1q_ (doble etiqueta)."
 
-#: ../../configuration/protocols/rpki.rst:80
+#: ../../configuration/protocols/rpki.rst:78
 msgid "In a nutshell, the current implementation provides the following features:"
 msgstr "En pocas palabras, la implementación actual proporciona las siguientes características:"
 
@@ -7919,7 +8003,7 @@ msgstr "En este ejemplo, usaremos el caso más complicado: una configuración en
 msgid "In this method, the DSL Modem/Router connects to the ISP for you with your credentials preprogrammed into the device. This gives you an :rfc:`1918` address, such as ``192.168.1.0/24`` by default."
 msgstr "En este método, el módem/enrutador DSL se conecta al ISP por usted con sus credenciales preprogramadas en el dispositivo. Esto le da una dirección :rfc:`1918`, como ``192.168.1.0/24`` por defecto."
 
-#: ../../configuration/service/dns.rst:152
+#: ../../configuration/service/dns.rst:246
 msgid "In this scenario:"
 msgstr "En este escenario:"
 
@@ -8436,7 +8520,7 @@ msgstr "Deje que el demonio SNMP escuche solo en la dirección IP 192.0.2.1"
 msgid "Lets assume the following topology:"
 msgstr "Supongamos la siguiente topología:"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:190
+#: ../../configuration/loadbalancing/reverse-proxy.rst:193
 msgid "Level 4 balancing"
 msgstr "Equilibrio de nivel 4"
 
@@ -8456,7 +8540,7 @@ msgstr "La vida útil se reduce según la cantidad de segundos desde el último 
 msgid "Like on Microsoft Windows, Apple iOS/iPadOS out of the box does not expose all available VPN options via the device GUI."
 msgstr "Like on Microsoft Windows, Apple iOS/iPadOS out of the box does not expose all available VPN options via the device GUI."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:162
+#: ../../configuration/loadbalancing/reverse-proxy.rst:165
 msgid "Limit allowed cipher algorithms used during SSL/TLS handshake"
 msgstr "Limite los algoritmos de cifrado permitidos utilizados durante el protocolo de enlace SSL/TLS"
 
@@ -8468,7 +8552,7 @@ msgstr "Limite los inicios de sesión a `<limit> ` por cada ``rate-time`` segund
 msgid "Limit logins to ``rate-limit`` attemps per every `<seconds>`. Rate time must be between 15 and 600 seconds."
 msgstr "Limite los inicios de sesión a ``rate-limit`` intentos por cada `<seconds> `. El tiempo de tasa debe estar entre 15 y 600 segundos."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:157
+#: ../../configuration/loadbalancing/reverse-proxy.rst:160
 msgid "Limit maximum number of connections"
 msgstr "Limite el número máximo de conexiones"
 
@@ -8541,6 +8625,10 @@ msgid "Load-balancing"
 msgstr "Balanceo de carga"
 
 #: ../../configuration/loadbalancing/reverse-proxy.rst:100
+msgid "Load-balancing algorithms to be used for distributed requests among the available servers"
+msgstr "Load-balancing algorithms to be used for distributed requests among the available servers"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:100
 msgid "Load-balancing algorithms to be used for distributind requests among the vailable servers"
 msgstr "Algoritmos de equilibrio de carga que se utilizarán para distribuir solicitudes entre los servidores disponibles"
 
@@ -8609,11 +8697,11 @@ msgstr "Cuenta de usuario local"
 msgid "Local path that includes the known hosts file."
 msgstr "Ruta local que incluye el archivo de hosts conocidos."
 
-#: ../../configuration/protocols/rpki.rst:157
+#: ../../configuration/protocols/rpki.rst:155
 msgid "Local path that includes the private key file of the router."
 msgstr "Ruta local que incluye el archivo de clave privada del enrutador."
 
-#: ../../configuration/protocols/rpki.rst:161
+#: ../../configuration/protocols/rpki.rst:159
 msgid "Local path that includes the public key file of the router."
 msgstr "Ruta local que incluye el archivo de clave pública del enrutador."
 
@@ -9238,7 +9326,7 @@ msgstr "Multicast receivers will talk MLD to their local router, so, besides hav
 msgid "Multiple DNS servers can be defined."
 msgstr "Se pueden definir varios servidores DNS."
 
-#: ../../configuration/protocols/rpki.rst:135
+#: ../../configuration/protocols/rpki.rst:133
 msgid "Multiple RPKI caching instances can be supplied and they need a preference in which their result sets are used."
 msgstr "Se pueden proporcionar múltiples instancias de almacenamiento en caché de RPKI y necesitan una preferencia en la que se utilizan sus conjuntos de resultados."
 
@@ -9275,7 +9363,7 @@ msgstr "Se pueden configurar múltiples redes/direcciones IP de clientes."
 msgid "Multiple servers can be specified."
 msgstr "Se pueden especificar varios servidores."
 
-#: ../../configuration/service/dns.rst:380
+#: ../../configuration/service/dns.rst:474
 msgid "Multiple services can be used per interface. Just specify as many services per interface as you like!"
 msgstr "Se pueden utilizar múltiples servicios por interfaz. ¡Simplemente especifique tantos servicios por interfaz como desee!"
 
@@ -9542,6 +9630,10 @@ msgstr "Nexthop Tracking"
 #: ../../configuration/vrf/index.rst:73
 msgid "Nexthop tracking resolve nexthops via the default route by default. This is enabled by default for a traditional profile of FRR which we use. It and can be disabled if you do not wan't to e.g. allow BGP to peer across the default route."
 msgstr "Nexthop tracking resolve nexthops via the default route by default. This is enabled by default for a traditional profile of FRR which we use. It and can be disabled if you do not wan't to e.g. allow BGP to peer across the default route."
+
+#: ../../configuration/protocols/rpki.rst:57
+msgid "No ROA exists which covers that prefix. Unfortunately this is the case for about 40%-50% of the prefixes which were announced to the :abbr:`DFZ (default-free zone)` at the start of 2024."
+msgstr "No ROA exists which covers that prefix. Unfortunately this is the case for about 40%-50% of the prefixes which were announced to the :abbr:`DFZ (default-free zone)` at the start of 2024."
 
 #: ../../configuration/protocols/rpki.rst:59
 msgid "No ROA exists which covers that prefix. Unfortunately this is the case for about 80% of the IPv4 prefixes which were announced to the :abbr:`DFZ (default-free zone)` at the start of 2020"
@@ -9815,6 +9907,10 @@ msgstr "Una vez que tenga un dispositivo Ethernet conectado, es decir, `eth0`, p
 msgid "Once you have setup your SSTP server there comes the time to do some basic testing. The Linux client used for testing is called sstpc_. sstpc_ requires a PPP configuration/peer file."
 msgstr "Una vez que haya configurado su servidor SSTP, llega el momento de realizar algunas pruebas básicas. El cliente de Linux utilizado para las pruebas se llama sstpc_. sstpc_ requiere un archivo de configuración/par de PPP."
 
+#: ../../configuration/protocols/rpki.rst:193
+msgid "Once your routers are configured to reject RPKI-invalid prefixes, you can test whether the configuration is working correctly using Cloudflare's test_ website. Keep in mind that in order for this to work, you need to have no default routes or anything else that would still send traffic to RPKI-invalid destinations."
+msgstr "Once your routers are configured to reject RPKI-invalid prefixes, you can test whether the configuration is working correctly using Cloudflare's test_ website. Keep in mind that in order for this to work, you need to have no default routes or anything else that would still send traffic to RPKI-invalid destinations."
+
 #: ../../configuration/protocols/rpki.rst:195
 msgid "Once your routers are configured to reject RPKI-invalid prefixes, you can test whether the configuration is working correctly using the `RIPE Labs RPKI Test`_ experimental tool."
 msgstr "Una vez que sus enrutadores estén configurados para rechazar prefijos no válidos para RPKI, puede probar si la configuración funciona correctamente utilizando la herramienta experimental `RIPE Labs RPKI Test`_."
@@ -9958,7 +10054,7 @@ msgstr "Modos de funcionamiento"
 #: ../../configuration/service/console-server.rst:76
 #: ../../configuration/service/dhcp-relay.rst:124
 #: ../../configuration/service/dhcp-relay.rst:201
-#: ../../configuration/service/dns.rst:182
+#: ../../configuration/service/dns.rst:276
 #: ../../configuration/service/lldp.rst:71
 #: ../../configuration/service/mdns.rst:79
 #: ../../configuration/service/ssh.rst:145
@@ -10257,7 +10353,7 @@ msgstr "Servidor PPTP"
 msgid "Packet-based balancing can lead to a better balance across interfaces when out of order packets are no issue. Per-packet-based balancing can be set for a balancing rule with:"
 msgstr "El equilibrio basado en paquetes puede conducir a un mejor equilibrio entre las interfaces cuando los paquetes fuera de servicio no son un problema. El equilibrio basado en paquetes se puede configurar para una regla de equilibrio con:"
 
-#: ../../configuration/protocols/rpki.rst:71
+#: ../../configuration/protocols/rpki.rst:69
 msgid "Particularly large networks may wish to run their own RPKI certificate authority and publication server instead of publishing ROAs via their RIR. This is a subject far beyond the scope of VyOS' documentation. Consider reading about Krill_ if this is a rabbit hole you need or especially want to dive down."
 msgstr "Es posible que las redes particularmente grandes deseen ejecutar su propia autoridad de certificación RPKI y servidor de publicación en lugar de publicar ROA a través de su RIR. Este es un tema mucho más allá del alcance de la documentación de VyOS. Considere leer sobre Krill_ si este es un agujero de conejo que necesita o si desea sumergirse especialmente."
 
@@ -10923,7 +11019,11 @@ msgstr "Los atributos de RADIUS recibidos tienen una prioridad más alta que los
 msgid "Recommended for larger installations."
 msgstr "Recomendado para instalaciones más grandes."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:171
+#: ../../configuration/service/dns.rst:167
+msgid "Record types"
+msgstr "Record types"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:174
 msgid "Redirect HTTP to HTTPS"
 msgstr "Redirigir HTTP a HTTPS"
 
@@ -10951,7 +11051,7 @@ msgstr "Configuración de redistribución"
 msgid "Redundancy and load sharing. There are multiple NAT66 devices at the edge of an IPv6 network to another IPv6 network. The path through the NAT66 device to another IPv6 network forms an equivalent route, and traffic can be load-shared on these NAT66 devices. In this case, you can configure the same source address translation rules on these NAT66 devices, so that any NAT66 device can handle IPv6 traffic between different sites."
 msgstr "Redundancia y carga compartida. Hay varios dispositivos NAT66 en el borde de una red IPv6 a otra red IPv6. La ruta a través del dispositivo NAT66 a otra red IPv6 forma una ruta equivalente y el tráfico se puede compartir en carga en estos dispositivos NAT66. En este caso, puede configurar las mismas reglas de traducción de direcciones de origen en estos dispositivos NAT66, de modo que cualquier dispositivo NAT66 pueda manejar el tráfico IPv6 entre diferentes sitios."
 
-#: ../../configuration/service/dns.rst:262
+#: ../../configuration/service/dns.rst:356
 msgid "Register DNS record ``example.vyos.io`` on DNS server ``ns1.vyos.io``"
 msgstr "Registre el registro DNS ``example.vyos.io`` en el servidor DNS ``ns1.vyos.io``"
 
@@ -11102,7 +11202,7 @@ msgstr "Restablecer OpenVPN"
 msgid "Reset commands"
 msgstr "Restablecer comandos"
 
-#: ../../configuration/service/dns.rst:186
+#: ../../configuration/service/dns.rst:280
 msgid "Resets the local DNS forwarding cache database. You can reset the cache for all entries or only for entries to a specific domain."
 msgstr "Restablece la base de datos de caché de reenvío de DNS local. Puede restablecer la memoria caché para todas las entradas o solo para las entradas de un dominio específico."
 
@@ -11138,7 +11238,7 @@ msgstr "Reinicie el proceso de proxy IGMP."
 msgid "Restart the SSH daemon process, the current session is not affected, only the background daemon is restarted."
 msgstr "Reinicie el proceso del demonio SSH, la sesión actual no se ve afectada, solo se reinicia el demonio en segundo plano."
 
-#: ../../configuration/service/dns.rst:191
+#: ../../configuration/service/dns.rst:285
 msgid "Restarts the DNS recursor process. This also invalidates the local DNS forwarding cache."
 msgstr "Reinicia el proceso de recurso de DNS. Esto también invalida el caché de reenvío de DNS local."
 
@@ -11232,7 +11332,7 @@ msgstr "El filtro de ruta se puede aplicar usando un mapa de ruta:"
 msgid "Route map is a powerfull command, that gives network administrators a very useful and flexible tool for traffic manipulation."
 msgstr "El mapa de rutas es un comando poderoso que brinda a los administradores de red una herramienta muy útil y flexible para la manipulación del tráfico."
 
-#: ../../configuration/protocols/rpki.rst:95
+#: ../../configuration/protocols/rpki.rst:93
 msgid "Route maps can be configured to match a specific RPKI validation state. This allows the creation of local policies, which handle BGP routes based on the outcome of the Prefix Origin Validation."
 msgstr "Los mapas de ruta se pueden configurar para que coincidan con un estado de validación de RPKI específico. Esto permite la creación de políticas locales, que manejan las rutas BGP en función del resultado de la validación del origen del prefijo."
 
@@ -11302,11 +11402,11 @@ msgstr "Conjuntos de reglas"
 msgid "Rule-set overview"
 msgstr "Descripción general del conjunto de reglas"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:217
+#: ../../configuration/loadbalancing/reverse-proxy.rst:220
 msgid "Rule 10 matches requests with the domain name ``node1.example.com`` forwards to the backend ``bk-api-01``"
 msgstr "La regla 10 hace coincidir las solicitudes con el nombre de dominio ``node1.example.com`` reenvía al backend ``bk-api-01``"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:254
+#: ../../configuration/loadbalancing/reverse-proxy.rst:257
 msgid "Rule 10 matches requests with the exact URL path ``/.well-known/xxx`` and redirects to location ``/certs/``."
 msgstr "La regla 10 hace coincidir las solicitudes con la ruta URL exacta ``/.well-known/xxx`` y redirige a la ubicación ``/certs/``."
 
@@ -11314,11 +11414,11 @@ msgstr "La regla 10 hace coincidir las solicitudes con la ruta URL exacta ``/.we
 msgid "Rule 110 is hit, so connection is accepted."
 msgstr "Rule 110 is hit, so connection is accepted."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:257
+#: ../../configuration/loadbalancing/reverse-proxy.rst:260
 msgid "Rule 20 matches requests with URL paths ending in ``/mail`` or exact path ``/email/bar`` redirect to location ``/postfix/``."
 msgstr "La regla 20 coincide con las solicitudes con rutas URL que terminan en ``/mail`` o la ruta exacta ``/email/bar`` redirige a la ubicación ``/postfix/``."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:220
+#: ../../configuration/loadbalancing/reverse-proxy.rst:223
 msgid "Rule 20 matches requests with the domain name ``node2.example.com`` forwards to the backend ``bk-api-02``"
 msgstr "La regla 20 hace coincidir las solicitudes con el nombre de dominio ``node2.example.com`` reenvía al backend ``bk-api-02``"
 
@@ -11340,7 +11440,7 @@ msgstr "Las reglas permiten controlar y enrutar el tráfico entrante a un backen
 msgid "Rules will be created for both :ref:`source-nat` and :ref:`destination-nat`."
 msgstr "Se crearán reglas para :ref:`source-nat` y :ref:`destination-nat`."
 
-#: ../../configuration/service/dns.rst:399
+#: ../../configuration/service/dns.rst:493
 msgid "Running Behind NAT"
 msgstr "Correr detrás de NAT"
 
@@ -11404,7 +11504,7 @@ msgstr "SNMPv3 (versión 3 del protocolo SNMP) introdujo una gran cantidad de nu
 msgid "SPAN port mirroring can copy the inbound/outbound traffic of the interface to the specified interface, usually the interface can be connected to some special equipment, such as behavior control system, intrusion detection system and traffic collector, and can copy all related traffic from this port. The benefit of mirroring the traffic is that the application is isolated from the source traffic and so application processing does not affect the traffic or the system performance."
 msgstr "La duplicación del puerto SPAN puede copiar el tráfico entrante/saliente de la interfaz a la interfaz especificada; normalmente la interfaz se puede conectar a algún equipo especial, como un sistema de control de comportamiento, un sistema de detección de intrusiones y un recolector de tráfico, y puede copiar todo el tráfico relacionado desde este puerto. El beneficio de duplicar el tráfico es que la aplicación está aislada del tráfico de origen y, por lo tanto, el procesamiento de la aplicación no afecta el tráfico ni el rendimiento del sistema."
 
-#: ../../configuration/protocols/rpki.rst:141
+#: ../../configuration/protocols/rpki.rst:139
 #: ../../configuration/service/ssh.rst:5
 msgid "SSH"
 msgstr "SSH"
@@ -11425,7 +11525,7 @@ msgstr "cliente SSH"
 msgid "SSH provides a secure channel over an unsecured network in a client-server architecture, connecting an SSH client application with an SSH server. Common applications include remote command-line login and remote command execution, but any network service can be secured with SSH. The protocol specification distinguishes between two major versions, referred to as SSH-1 and SSH-2."
 msgstr "SSH proporciona un canal seguro a través de una red no segura en una arquitectura cliente-servidor, conectando una aplicación de cliente SSH con un servidor SSH. Las aplicaciones comunes incluyen inicio de sesión de línea de comandos remotos y ejecución de comandos remotos, pero cualquier servicio de red puede protegerse con SSH. La especificación del protocolo distingue entre dos versiones principales, denominadas SSH-1 y SSH-2."
 
-#: ../../configuration/protocols/rpki.rst:153
+#: ../../configuration/protocols/rpki.rst:151
 msgid "SSH username to establish an SSH connection to the cache server."
 msgstr "Nombre de usuario SSH para establecer una conexión SSH con el servidor de caché."
 
@@ -11436,6 +11536,10 @@ msgstr "SSH se diseñó como reemplazo de Telnet y de los protocolos de shell re
 #: ../../configuration/interfaces/wireless.rst:114
 msgid "SSID to be used in IEEE 802.11 management frames"
 msgstr "SSID que se utilizará en tramas de administración IEEE 802.11"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:294
+msgid "SSL Bridging"
+msgstr "SSL Bridging"
 
 #: ../../configuration/vpn/openconnect.rst:24
 msgid "SSL Certificates"
@@ -11732,12 +11836,16 @@ msgstr "Establezca la regla SNAT 30 para que solo lleguen paquetes NAT de la red
 msgid "Set SSL certeficate <name> for service <name>"
 msgstr "Establecer certificado SSL<name> para servicio<name>"
 
+#: ../../configuration/loadbalancing/reverse-proxy.rst:46
+msgid "Set SSL certificate <name> for service <name>"
+msgstr "Set SSL certificate <name> for service <name>"
+
 #: ../../configuration/firewall/ipv4.rst:941
 #: ../../configuration/firewall/ipv6.rst:927
 msgid "Set TCP-MSS (maximum segment size) for the connection"
 msgstr "Set TCP-MSS (maximum segment size) for the connection"
 
-#: ../../configuration/service/dns.rst:264
+#: ../../configuration/service/dns.rst:358
 msgid "Set TTL to 300 seconds"
 msgstr "Establecer TTL a 300 segundos"
 
@@ -11800,6 +11908,42 @@ msgstr "Establezca la acción a realizar en las entradas que coincidan con esta 
 msgid "Set an API-KEY is the minimal configuration to get a working API Endpoint."
 msgstr "Establecer una API-KEY es la configuración mínima para obtener un punto final de API que funcione."
 
+#: ../../configuration/service/dns.rst:184
+msgid "Set an :abbr:`AAAA (IPv6 Address)` record. Supports ``@`` and ``any`` keywords."
+msgstr "Set an :abbr:`AAAA (IPv6 Address)` record. Supports ``@`` and ``any`` keywords."
+
+#: ../../configuration/service/dns.rst:179
+msgid "Set an :abbr:`A (Address)` record. Supports ``@`` and ``any`` keywords."
+msgstr "Set an :abbr:`A (Address)` record. Supports ``@`` and ``any`` keywords."
+
+#: ../../configuration/service/dns.rst:189
+msgid "Set an :abbr:`CNAME (Canonical name)` record. Supports ``@`` keyword."
+msgstr "Set an :abbr:`CNAME (Canonical name)` record. Supports ``@`` keyword."
+
+#: ../../configuration/service/dns.rst:194
+msgid "Set an :abbr:`NAPTR (Naming authority pointer)` record. Supports ``@`` keyword. NAPTR records support the following options:"
+msgstr "Set an :abbr:`NAPTR (Naming authority pointer)` record. Supports ``@`` keyword. NAPTR records support the following options:"
+
+#: ../../configuration/service/dns.rst:218
+msgid "Set an :abbr:`NS (Nameserver)` record."
+msgstr "Set an :abbr:`NS (Nameserver)` record."
+
+#: ../../configuration/service/dns.rst:223
+msgid "Set an :abbr:`PTR (Pointer record)` record. Supports ``@`` keyword."
+msgstr "Set an :abbr:`PTR (Pointer record)` record. Supports ``@`` keyword."
+
+#: ../../configuration/service/dns.rst:228
+msgid "Set an :abbr:`SPF (Sender policy framework)` record. Supports ``@`` keyword."
+msgstr "Set an :abbr:`SPF (Sender policy framework)` record. Supports ``@`` keyword."
+
+#: ../../configuration/service/dns.rst:233
+msgid "Set an :abbr:`SRV (Service)` record. Supports ``@`` keyword."
+msgstr "Set an :abbr:`SRV (Service)` record. Supports ``@`` keyword."
+
+#: ../../configuration/service/dns.rst:238
+msgid "Set an :abbr:`TXT (Text)` record. Supports ``@`` keyword."
+msgstr "Set an :abbr:`TXT (Text)` record. Supports ``@`` keyword."
+
 #: ../../configuration/service/ipoe-server.rst:60
 #: ../../configuration/service/ipoe-server.rst:88
 #: ../../configuration/service/pppoe-server.rst:38
@@ -11829,8 +11973,8 @@ msgstr "Establezca la demora para el segundo conjunto de ARP gratuitos después 
 msgid "Set description."
 msgstr "Set description."
 
-#: ../../configuration/service/dns.rst:227
-#: ../../configuration/service/dns.rst:332
+#: ../../configuration/service/dns.rst:321
+#: ../../configuration/service/dns.rst:426
 msgid "Set description `<text>` for dynamic DNS service being configured."
 msgstr "Set description `<text>` for dynamic DNS service being configured."
 
@@ -12149,6 +12293,10 @@ msgstr "Set the :abbr:`DR (Designated Router)` Priority for the interface. This 
 msgid "Set the :abbr:`MRU (Maximum Receive Unit)` to `mru`. PPPd will ask the peer to send packets of no more than `mru` bytes. The value of `mru` must be between 128 and 16384."
 msgstr "Set the :abbr:`MRU (Maximum Receive Unit)` to `mru`. PPPd will ask the peer to send packets of no more than `mru` bytes. The value of `mru` must be between 128 and 16384."
 
+#: ../../configuration/service/dns.rst:164
+msgid "Set the :abbr:`TTL (Time-to-live)` for the record in seconds. Default is 300 seconds."
+msgstr "Set the :abbr:`TTL (Time-to-live)` for the record in seconds. Default is 300 seconds."
+
 #: ../../configuration/service/ssh.rst:106
 msgid "Set the ``sshd`` log level. The default is ``info``."
 msgstr "Establezca el nivel de registro ``sshd``. El valor predeterminado es ``info``."
@@ -12237,11 +12385,11 @@ msgstr "Establezca el número máximo de intentos de retransmisión de TCP."
 msgid "Set the number of health check failures before an interface is marked as unavailable, range for number is 1 to 10, default 1. Or set the number of successful health checks before an interface is added back to the interface pool, range for number is 1 to 10, default 1."
 msgstr "Establezca la cantidad de fallas de verificación de estado antes de que una interfaz se marque como no disponible, el rango de número es 1 a 10, predeterminado 1. O establezca la cantidad de verificaciones de estado exitosas antes de que una interfaz se vuelva a agregar al grupo de interfaces, el rango de número es 1 a 10, por defecto 1."
 
-#: ../../configuration/protocols/rpki.rst:121
+#: ../../configuration/protocols/rpki.rst:119
 msgid "Set the number of seconds the router waits until retrying to connect to the cache server."
 msgstr "Set the number of seconds the router waits until retrying to connect to the cache server."
 
-#: ../../configuration/protocols/rpki.rst:114
+#: ../../configuration/protocols/rpki.rst:112
 msgid "Set the number of seconds the router waits until the router expires the cache."
 msgstr "Set the number of seconds the router waits until the router expires the cache."
 
@@ -12388,7 +12536,7 @@ msgstr "Configure el `<timeout> ` en segundos al consultar el servidor RADIUS."
 msgid "Setup the `<timeout>` in seconds when querying the TACACS server."
 msgstr "Configure el `<timeout> ` en segundos al consultar el servidor TACACS."
 
-#: ../../configuration/service/dns.rst:336
+#: ../../configuration/service/dns.rst:430
 msgid "Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS provider identified by `<service-name>`."
 msgstr "Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS provider identified by `<service-name>`."
 
@@ -13281,7 +13429,7 @@ msgstr "Especifique un AS alternativo para este proceso BGP al interactuar con e
 msgid "Specify an alternate TCP port where the ldap server is listening if other than the default LDAP port 389."
 msgstr "Especifique un puerto TCP alternativo en el que escuche el servidor ldap si no es el puerto LDAP predeterminado 389."
 
-#: ../../configuration/service/dns.rst:254
+#: ../../configuration/service/dns.rst:348
 msgid "Specify interval in seconds to wait between Dynamic DNS updates. The default is  300 seconds."
 msgstr "Specify interval in seconds to wait between Dynamic DNS updates. The default is  300 seconds."
 
@@ -13327,7 +13475,7 @@ msgstr "Especifique el valor del identificador del agregador de nivel de sitio (
 msgid "Specify the interface address used locally on the interface where the prefix has been delegated to. ID must be a decimal integer."
 msgstr "Especifique la dirección de la interfaz utilizada localmente en la interfaz a la que se ha delegado el prefijo. El ID debe ser un entero decimal."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:167
+#: ../../configuration/loadbalancing/reverse-proxy.rst:170
 msgid "Specify the minimum required TLS version 1.2 or 1.3"
 msgstr "Especifique la versión mínima requerida de TLS 1.2 o 1.3"
 
@@ -13695,7 +13843,7 @@ msgstr "Deshabilite temporalmente este servidor RADIUS. No será consultado."
 msgid "Temporary disable this TACACS server. It won't be queried."
 msgstr "Deshabilite temporalmente este servidor TACACS. No será consultado."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:245
+#: ../../configuration/loadbalancing/reverse-proxy.rst:248
 msgid "Terminate SSL"
 msgstr "Terminar SSL"
 
@@ -13747,7 +13895,7 @@ msgstr "El monitor ARP funciona comprobando periódicamente los dispositivos esc
 msgid "The ASP has documented their IPSec requirements:"
 msgstr "El ASP ha documentado sus requisitos de IPSec:"
 
-#: ../../configuration/protocols/rpki.rst:82
+#: ../../configuration/protocols/rpki.rst:80
 msgid "The BGP router can connect to one or more RPKI cache servers to receive validated prefix to origin AS mappings. Advanced failover can be implemented by server sockets with different preference values."
 msgstr "El enrutador BGP puede conectarse a uno o más servidores de caché RPKI para recibir el prefijo validado para las asignaciones AS de origen. La conmutación por error avanzada se puede implementar mediante sockets de servidor con diferentes valores de preferencia."
 
@@ -13775,7 +13923,7 @@ msgstr "El DN y la contraseña para enlazar mientras se realizan búsquedas. Com
 msgid "The FQ-CoDel policy distributes the traffic into 1024 FIFO queues and tries to provide good service between all of them. It also tries to keep the length of all the queues short."
 msgstr "La política FQ-CoDel distribuye el tráfico en 1024 colas FIFO e intenta brindar un buen servicio entre todas ellas. También trata de mantener corta la longitud de todas las colas."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:215
+#: ../../configuration/loadbalancing/reverse-proxy.rst:218
 msgid "The HTTP service listen on TCP port 80."
 msgstr "El servicio HTTP escucha en el puerto TCP 80."
 
@@ -13827,19 +13975,23 @@ msgstr "El número de puerto UDP utilizado por su aplicación. Es obligatorio pa
 msgid "The VXLAN specification was originally created by VMware, Arista Networks and Cisco. Other backers of the VXLAN technology include Huawei, Broadcom, Citrix, Pica8, Big Switch Networks, Cumulus Networks, Dell EMC, Ericsson, Mellanox, FreeBSD, OpenBSD, Red Hat, Joyent, and Juniper Networks."
 msgstr "La especificación VXLAN fue creada originalmente por VMware, Arista Networks y Cisco. Otros patrocinadores de la tecnología VXLAN incluyen Huawei, Broadcom, Citrix, Pica8, Big Switch Networks, Cumulus Networks, Dell EMC, Ericsson, Mellanox, FreeBSD, OpenBSD, Red Hat, Joyent y Juniper Networks."
 
+#: ../../configuration/service/dns.rst:149
+msgid "The VyOS DNS forwarder can also be configured to host authoritative records for a domain."
+msgstr "The VyOS DNS forwarder can also be configured to host authoritative records for a domain."
+
 #: ../../configuration/service/dns.rst:14
 msgid "The VyOS DNS forwarder does not require an upstream DNS server. It can serve as a full recursive DNS server - but it can also forward queries to configurable upstream DNS servers. By not configuring any upstream DNS servers you also avoid being tracked by the provider of your upstream DNS server."
 msgstr "El reenviador DNS de VyOS no requiere un servidor DNS ascendente. Puede servir como un servidor DNS recursivo completo, pero también puede reenviar consultas a servidores DNS ascendentes configurables. Al no configurar ningún servidor DNS ascendente, también evita que el proveedor de su servidor DNS ascendente lo rastree."
 
-#: ../../configuration/service/dns.rst:160
+#: ../../configuration/service/dns.rst:254
 msgid "The VyOS DNS forwarder will only accept lookup requests from the LAN subnets - 192.168.1.0/24 and 2001:db8::/64"
 msgstr "El reenviador de DNS de VyOS solo aceptará solicitudes de búsqueda de las subredes LAN: 192.168.1.0/24 y 2001:db8::/64"
 
-#: ../../configuration/service/dns.rst:158
+#: ../../configuration/service/dns.rst:252
 msgid "The VyOS DNS forwarder will only listen for requests on the eth1 (LAN) interface addresses - 192.168.1.254 for IPv4 and 2001:db8::ffff for IPv6"
 msgstr "El reenviador de DNS de VyOS solo escuchará solicitudes en las direcciones de interfaz eth1 (LAN): 192.168.1.254 para IPv4 y 2001:db8::ffff para IPv6"
 
-#: ../../configuration/service/dns.rst:162
+#: ../../configuration/service/dns.rst:256
 msgid "The VyOS DNS forwarder will pass reverse lookups for  10.in-addr.arpa, 168.192.in-addr.arpa, 16-31.172.in-addr.arpa zones to upstream server."
 msgstr "El reenviador de DNS de VyOS pasará búsquedas inversas para las zonas 10.in-addr.arpa, 168.192.in-addr.arpa, 16-31.172.in-addr.arpa al servidor ascendente."
 
@@ -13888,9 +14040,25 @@ msgstr "La ``dirección`` se puede configurar en la interfaz VRRP o no en la int
 msgid "The ``address`` parameter can be either an IPv4 or IPv6 address, but you can not mix IPv4 and IPv6 in the same group, and will need to create groups with different VRIDs specially for IPv4 and IPv6. If you want to use IPv4 + IPv6 address you can use option ``excluded-address``"
 msgstr "El parámetro ``dirección`` puede ser una dirección IPv4 o IPv6, pero no puede mezclar IPv4 e IPv6 en el mismo grupo, y deberá crear grupos con diferentes VRID especialmente para IPv4 e IPv6. Si desea utilizar la dirección IPv4 + IPv6, puede utilizar la opción ``dirección-excluida``"
 
+#: ../../configuration/loadbalancing/reverse-proxy.rst:305
+msgid "The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS and checks backend server has a valid certificate trusted by CA ``cacert``"
+msgstr "The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS and checks backend server has a valid certificate trusted by CA ``cacert``"
+
 #: ../../configuration/loadbalancing/reverse-proxy.rst:248
 msgid "The ``http`` service is lestens on port 80 and force redirects from HTTP to HTTPS."
 msgstr "El servicio ``http`` se reduce en el puerto 80 y fuerza los redireccionamientos de HTTP a HTTPS."
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:251
+msgid "The ``http`` service is listens on port 80 and force redirects from HTTP to HTTPS."
+msgstr "The ``http`` service is listens on port 80 and force redirects from HTTP to HTTPS."
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:302
+msgid "The ``https`` service listens on port 443 with backend ``bk-bridge-ssl`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
+msgstr "The ``https`` service listens on port 443 with backend ``bk-bridge-ssl`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:254
+msgid "The ``https`` service listens on port 443 with backend ``bk-default`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
+msgstr "The ``https`` service listens on port 443 with backend ``bk-default`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
 
 #: ../../configuration/loadbalancing/reverse-proxy.rst:251
 msgid "The ``https`` service listens on port 443 with backend `bk-default` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
@@ -14071,7 +14239,7 @@ msgstr "El valor por defecto corresponde a 64."
 msgid "The default value is 0. This will cause the carrier to be asserted (for 802.3ad mode) whenever there is an active aggregator, regardless of the number of available links in that aggregator."
 msgstr "El valor predeterminado es 0. Esto hará que se afirme el operador (para el modo 802.3ad) siempre que haya un agregador activo, independientemente de la cantidad de enlaces disponibles en ese agregador."
 
-#: ../../configuration/protocols/rpki.rst:110
+#: ../../configuration/protocols/rpki.rst:108
 msgid "The default value is 300 seconds."
 msgstr "El valor predeterminado es 300 segundos."
 
@@ -14083,11 +14251,11 @@ msgstr "The default value is 3."
 msgid "The default value is 3 packets."
 msgstr "The default value is 3 packets."
 
-#: ../../configuration/protocols/rpki.rst:124
+#: ../../configuration/protocols/rpki.rst:122
 msgid "The default value is 600 seconds."
 msgstr "The default value is 600 seconds."
 
-#: ../../configuration/protocols/rpki.rst:117
+#: ../../configuration/protocols/rpki.rst:115
 msgid "The default value is 7200 seconds."
 msgstr "The default value is 7200 seconds."
 
@@ -14229,7 +14397,7 @@ msgstr "Los siguientes comandos se traducen a &quot;--net host&quot; cuando se c
 msgid "The following commands would be required to set options for a given dynamic routing protocol inside a given vrf:"
 msgstr "Se requerirían los siguientes comandos para establecer opciones para un protocolo de enrutamiento dinámico dado dentro de un vrf dado:"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:212
+#: ../../configuration/loadbalancing/reverse-proxy.rst:215
 msgid "The following configuration demonstrates how to use VyOS to achieve load balancing based on the domain name."
 msgstr "La siguiente configuración demuestra cómo usar VyOS para lograr un equilibrio de carga basado en el nombre de dominio."
 
@@ -14244,6 +14412,14 @@ msgstr "La siguiente configuración en VyOS se aplica a todos los siguientes pro
 #: ../../configuration/loadbalancing/reverse-proxy.rst:246
 msgid "The following configuration reverse-proxy terminate SSL."
 msgstr "La siguiente configuración de proxy inverso termina SSL."
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:249
+msgid "The following configuration terminates SSL on the router."
+msgstr "The following configuration terminates SSL on the router."
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:295
+msgid "The following configuration terminates incoming HTTPS traffic on the router, then re-encrypts the traffic and sends to the backend server via HTTPS. This is useful if encryption is required for both legs, but you do not want to install publicly trusted certificates on each backend server."
+msgstr "The following configuration terminates incoming HTTPS traffic on the router, then re-encrypts the traffic and sends to the backend server via HTTPS. This is useful if encryption is required for both legs, but you do not want to install publicly trusted certificates on each backend server."
 
 #: ../../configuration/interfaces/pppoe.rst:383
 msgid "The following configuration will assign a /64 prefix out of a /56 delegation to eth0. The IPv6 address assigned to eth0 will be <prefix>::ffff/64. If you do not know the prefix size delegated to you, start with sla-len 0."
@@ -14442,7 +14618,7 @@ msgstr "La aplicación más visible del protocolo es para el acceso a cuentas sh
 msgid "The multicast-group used by all leaves for this vlan extension. Has to be the same on all leaves that has this interface."
 msgstr "El grupo de multidifusión utilizado por todas las hojas para esta extensión de vlan. Tiene que ser igual en todas las hojas que tenga esta interfaz."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:182
+#: ../../configuration/loadbalancing/reverse-proxy.rst:185
 msgid "The name of the service can be different, in this example it is only for convenience."
 msgstr "El nombre del servicio puede ser diferente, en este ejemplo es solo por conveniencia."
 
@@ -14522,11 +14698,11 @@ msgstr "La popular herramienta ``dig`` de Unix/Linux establece el bit AD en la c
 msgid "The pre-shared key mode is deprecated and will be removed from future OpenVPN versions, so VyOS will have to remove support for that option as well. The reason is that using pre-shared keys is significantly less secure than using TLS."
 msgstr "The pre-shared key mode is deprecated and will be removed from future OpenVPN versions, so VyOS will have to remove support for that option as well. The reason is that using pre-shared keys is significantly less secure than using TLS."
 
-#: ../../configuration/protocols/rpki.rst:49
+#: ../../configuration/protocols/rpki.rst:47
 msgid "The prefix and ASN that originated it match a signed ROA. These are probably trustworthy route announcements."
 msgstr "El prefijo y el ASN que lo originaron coinciden con un ROA firmado. Estos son probablemente anuncios de ruta confiables."
 
-#: ../../configuration/protocols/rpki.rst:53
+#: ../../configuration/protocols/rpki.rst:51
 msgid "The prefix or prefix length and ASN that originated it doesn't match any existing ROA. This could be the result of a prefix hijack, or merely a misconfiguration, but should probably be treated as untrustworthy route announcements."
 msgstr "El prefijo o la longitud del prefijo y el ASN que lo originó no coincide con ningún ROA existente. Esto podría ser el resultado de un secuestro de prefijo, o simplemente una configuración incorrecta, pero probablemente debería tratarse como anuncios de ruta no confiables."
 
@@ -15985,11 +16161,11 @@ msgstr "Este comando crea un puente que se usa para vincular el tráfico en eth1
 msgid "This commands specifies the Finite State Machine (FSM) intended to control the timing of the execution of SPF calculations in response to IGP events. The process described in :rfc:`8405`."
 msgstr "Este comando especifica la máquina de estados finitos (FSM) destinada a controlar el tiempo de ejecución de los cálculos SPF en respuesta a eventos IGP. El proceso descrito en :rfc:`8405`."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:192
+#: ../../configuration/loadbalancing/reverse-proxy.rst:195
 msgid "This configuration enables the TCP reverse proxy for the \"my-tcp-api\" service. Incoming TCP connections on port 8888 will be load balanced across the backend servers (srv01 and srv02) using the round-robin load-balancing algorithm."
 msgstr "Esta configuración habilita el proxy inverso TCP para el servicio &quot;my-tcp-api&quot;. Las conexiones TCP entrantes en el puerto 8888 se equilibrarán en la carga de los servidores backend (srv01 y srv02) mediante el algoritmo de equilibrio de carga por turnos."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:174
+#: ../../configuration/loadbalancing/reverse-proxy.rst:177
 msgid "This configuration listen on port 80 and redirect incoming requests to HTTPS:"
 msgstr "Esta configuración escucha en el puerto 80 y redirige las solicitudes entrantes a HTTPS:"
 
@@ -16164,8 +16340,8 @@ msgstr "Este es un comando obligatorio. Establece la ruta completa al script. El
 msgid "This is a mandatory option"
 msgstr "This is a mandatory option"
 
-#: ../../configuration/protocols/rpki.rst:131
-#: ../../configuration/protocols/rpki.rst:138
+#: ../../configuration/protocols/rpki.rst:129
+#: ../../configuration/protocols/rpki.rst:136
 msgid "This is a mandatory setting."
 msgstr "Esta es una configuración obligatoria."
 
@@ -16455,7 +16631,7 @@ msgstr "Esto configurará una entrada ARP estática siempre resolviendo `<addres
 msgid "This will match TCP traffic with source port 80."
 msgstr "Esto hará coincidir el tráfico TCP con el puerto de origen 80."
 
-#: ../../configuration/service/dns.rst:295
+#: ../../configuration/service/dns.rst:389
 msgid "This will render the following ddclient_ configuration entry:"
 msgstr "Esto generará la siguiente entrada de configuración ddclient_:"
 
@@ -16832,7 +17008,7 @@ msgstr "Para usar un servidor RADIUS para la autenticación y la configuración 
 msgid "To use a radius server, you need to switch to authentication mode RADIUS and then configure it."
 msgstr "Para usar un servidor Radius, debe cambiar al modo de autenticación RADIUS y luego configurarlo."
 
-#: ../../configuration/service/dns.rst:321
+#: ../../configuration/service/dns.rst:415
 msgid "To use such a service, one must define a login, password, one or multiple hostnames, protocol and server."
 msgstr "Para utilizar dicho servicio, se debe definir un nombre de usuario, contraseña, uno o varios nombres de host, protocolo y servidor."
 
@@ -17057,7 +17233,7 @@ msgstr "Actualizar base de datos geoip"
 msgid "Updates"
 msgstr "Updates"
 
-#: ../../configuration/protocols/rpki.rst:99
+#: ../../configuration/protocols/rpki.rst:97
 msgid "Updates from the RPKI cache servers are directly applied and path selection is updated accordingly. (Soft reconfiguration must be enabled for this to work)."
 msgstr "Las actualizaciones de los servidores de caché RPKI se aplican directamente y la selección de ruta se actualiza en consecuencia. (La reconfiguración suave debe estar habilitada para que esto funcione)."
 
@@ -17162,7 +17338,7 @@ msgstr "Utilice un certificado autofirmado generado automáticamente"
 msgid "Use any local address, configured on any interface if this is not set."
 msgstr "Use cualquier dirección local, configurada en cualquier interfaz si no está configurada."
 
-#: ../../configuration/service/dns.rst:263
+#: ../../configuration/service/dns.rst:357
 msgid "Use auth key file at ``/config/auth/my.key``"
 msgstr "Use el archivo de clave de autenticación en ``/config/auth/my.key``"
 
@@ -17170,11 +17346,11 @@ msgstr "Use el archivo de clave de autenticación en ``/config/auth/my.key``"
 msgid "Use certificate from PKI subsystem"
 msgstr "Use certificate from PKI subsystem"
 
-#: ../../configuration/service/dns.rst:410
+#: ../../configuration/service/dns.rst:504
 msgid "Use configured `<url>` to determine your IP address. ddclient_ will load `<url>` and tries to extract your IP address from the response."
 msgstr "Usar configurado `<url> ` para determinar su dirección IP. ddclient_ cargará `<url> ` e intenta extraer su dirección IP de la respuesta."
 
-#: ../../configuration/service/dns.rst:368
+#: ../../configuration/service/dns.rst:462
 msgid "Use deSEC (dedyn.io) as your preferred provider:"
 msgstr "Use deSEC (dedyn.io) as your preferred provider:"
 
@@ -18323,11 +18499,11 @@ msgstr "VyOS facilitates IPv6 Multicast by supporting **PIMv6** and **MLD**."
 msgid "VyOS includes the FastNetMon Community Edition."
 msgstr "VyOS includes the FastNetMon Community Edition."
 
-#: ../../configuration/service/dns.rst:201
+#: ../../configuration/service/dns.rst:295
 msgid "VyOS is able to update a remote DNS record when an interface gets a new IP address. In order to do so, VyOS includes ddclient_, a Perl script written for this only one purpose."
 msgstr "VyOS puede actualizar un registro DNS remoto cuando una interfaz obtiene una nueva dirección IP. Para hacerlo, VyOS incluye ddclient_, un script de Perl escrito para este único propósito."
 
-#: ../../configuration/service/dns.rst:319
+#: ../../configuration/service/dns.rst:413
 msgid "VyOS is also able to use any service relying on protocols supported by ddclient."
 msgstr "VyOS también puede usar cualquier servicio que dependa de los protocolos compatibles con ddclient."
 
@@ -18536,7 +18712,7 @@ msgstr "No podemos admitir todas las pantallas desde el principio. Si falta su t
 msgid "We can also create the certificates using Cerbort which is an easy-to-use client that fetches a certificate from Let's Encrypt an open certificate authority launched by the EFF, Mozilla, and others and deploys it to a web server."
 msgstr "También podemos crear los certificados usando Cerbort, que es un cliente fácil de usar que obtiene un certificado de Let&#39;s Encrypt, una autoridad de certificación abierta lanzada por EFF, Mozilla y otros, y lo implementa en un servidor web."
 
-#: ../../configuration/protocols/rpki.rst:170
+#: ../../configuration/protocols/rpki.rst:168
 msgid "We can build route-maps for import based on these states. Here is a simple RPKI configuration, where `routinator` is the RPKI-validating \"cache\" server with ip `192.0.2.1`:"
 msgstr "Podemos construir mapas de ruta para importar basados en estos estados. Aquí hay una configuración simple de RPKI, donde `routinator` es el servidor de &quot;caché&quot; de validación de RPKI con ip `192.0.2.1`:"
 
@@ -18620,11 +18796,11 @@ msgstr "When PIM receives a register packet the source of the packet will be com
 msgid "When VRFs are used it is not only mandatory to create a VRF but also the VRF itself needs to be assigned to an interface."
 msgstr "Cuando se utilizan VRF, no solo es obligatorio crear un VRF, sino que también es necesario asignar el VRF a una interfaz."
 
-#: ../../configuration/service/dns.rst:351
+#: ../../configuration/service/dns.rst:445
 msgid "When a ``custom`` DynDNS provider is used, the protocol used for communicating to the provider must be specified under `<protocol>`. See the embedded completion helper when entering above command for available protocols."
 msgstr "When a ``custom`` DynDNS provider is used, the protocol used for communicating to the provider must be specified under `<protocol>`. See the embedded completion helper when entering above command for available protocols."
 
-#: ../../configuration/service/dns.rst:357
+#: ../../configuration/service/dns.rst:451
 msgid "When a ``custom`` DynDNS provider is used the `<server>` where update requests are being sent to must be specified."
 msgstr "Cuando se utiliza un proveedor DynDNS ``personalizado``, el `<server> ` Debe especificarse a dónde se envían las solicitudes de actualización."
 
@@ -18797,7 +18973,7 @@ msgstr "Cuando se usa NAT para una gran cantidad de sistemas host, se recomienda
 msgid "When using SSH, known-hosts-file, private-key-file and public-key-file are mandatory options."
 msgstr "Cuando se utiliza SSH, el archivo de hosts conocidos, el archivo de clave privada y el archivo de clave pública son opciones obligatorias."
 
-#: ../../configuration/protocols/rpki.rst:163
+#: ../../configuration/protocols/rpki.rst:161
 msgid "When using SSH, private-key-file and public-key-file are mandatory options."
 msgstr "When using SSH, private-key-file and public-key-file are mandatory options."
 
@@ -19008,7 +19184,7 @@ msgstr "También puede configurar el intervalo de tiempo para la preferencia con
 msgid "You can also define custom timeout values to apply to a specific subset of connections, based on a packet and flow selector. To do this, you need to create a rule defining the packet and flow selector."
 msgstr "También puede definir valores de tiempo de espera personalizados para aplicar a un subconjunto específico de conexiones, según un paquete y un selector de flujo. Para hacer esto, debe crear una regla que defina el paquete y el selector de flujo."
 
-#: ../../configuration/service/dns.rst:312
+#: ../../configuration/service/dns.rst:406
 msgid "You can also keep different DNS zone updated. Just create a new config node: ``set service dns dynamic interface <interface> rfc2136 <other-service-name>``"
 msgstr "También puede mantener actualizadas diferentes zonas DNS. Simplemente cree un nuevo nodo de configuración: `` establezca la interfaz dinámica de dns del servicio<interface> rfc2136<other-service-name> ``"
 
@@ -19348,6 +19524,10 @@ msgstr ":abbr:`RIP (Protocolo de información de enrutamiento)` es un protocolo 
 msgid ":abbr:`RPKI (Resource Public Key Infrastructure)` is a framework :abbr:`PKI (Public Key Infrastructure)` designed to secure the Internet routing infrastructure. It associates BGP route announcements with the correct originating :abbr:`ASN (Autonomus System Number)` which BGP routers can then use to check each route against the corresponding :abbr:`ROA (Route Origin Authorisation)` for validity. RPKI is described in :rfc:`6480`."
 msgstr ":abbr:`RPKI (Infraestructura de clave pública de recursos)` es un marco :abbr:`PKI (Infraestructura de clave pública)` diseñado para asegurar la infraestructura de enrutamiento de Internet. Asocia los anuncios de ruta BGP con el :abbr:`ASN (Número de sistema autónomo)` de origen correcto que los enrutadores BGP pueden usar para verificar cada ruta con la correspondiente :abbr:`ROA (Autorización de origen de ruta)` para verificar su validez. RPKI se describe en :rfc:`6480`."
 
+#: ../../configuration/protocols/rpki.rst:14
+msgid ":abbr:`RPKI (Resource Public Key Infrastructure)` is a framework designed to secure the Internet routing infrastructure. It associates BGP route announcements with the correct originating :abbr:`ASN (Autonomus System Number)` which BGP routers can then use to check each route against the corresponding :abbr:`ROA (Route Origin Authorisation)` for validity. RPKI is described in :rfc:`6480`."
+msgstr ":abbr:`RPKI (Resource Public Key Infrastructure)` is a framework designed to secure the Internet routing infrastructure. It associates BGP route announcements with the correct originating :abbr:`ASN (Autonomus System Number)` which BGP routers can then use to check each route against the corresponding :abbr:`ROA (Route Origin Authorisation)` for validity. RPKI is described in :rfc:`6480`."
+
 #: ../../configuration/interfaces/ethernet.rst:82
 msgid ":abbr:`RPS (Receive Packet Steering)` is logically a software implementation of :abbr:`RSS (Receive Side Scaling)`. Being in software, it is necessarily called later in the datapath. Whereas RSS selects the queue and hence CPU that will run the hardware interrupt handler, RPS selects the CPU to perform protocol processing above the interrupt handler. This is accomplished by placing the packet on the desired CPU's backlog queue and waking up the CPU for processing. RPS has some advantages over RSS:"
 msgstr ":abbr:`RPS (Receive Packet Steering)` es lógicamente una implementación de software de :abbr:`RSS (Receive Side Scaling)`. Al estar en el software, necesariamente se llama más adelante en la ruta de datos. Mientras que RSS selecciona la cola y, por lo tanto, la CPU que ejecutará el controlador de interrupciones de hardware, RPS selecciona la CPU para realizar el procesamiento del protocolo por encima del controlador de interrupciones. Esto se logra colocando el paquete en la cola de trabajos pendientes de la CPU deseada y activando la CPU para su procesamiento. RPS tiene algunas ventajas sobre RSS:"
@@ -19512,7 +19692,7 @@ msgstr ":ref:`routing-static`: ``establecer nombre vrf<name> protocolos estátic
 msgid ":rfc:`2131` states: The client MAY choose to explicitly provide the identifier through the 'client identifier' option. If the client supplies a 'client identifier', the client MUST use the same 'client identifier' in all subsequent messages, and the server MUST use that identifier to identify the client."
 msgstr ":rfc:`2131` estados: El cliente PUEDE optar por proporcionar explícitamente el identificador a través de la opción &#39;identificador de cliente&#39;. Si el cliente proporciona un &#39;identificador de cliente&#39;, el cliente DEBE usar el mismo &#39;identificador de cliente&#39; en todos los mensajes subsiguientes, y el servidor DEBE usar ese identificador para identificar al cliente."
 
-#: ../../configuration/service/dns.rst:217
+#: ../../configuration/service/dns.rst:311
 msgid ":rfc:`2136` Based"
 msgstr ":rfc:`2136` Basado"
 
@@ -19664,6 +19844,10 @@ msgstr "``9600`` - 9600 bps"
 msgid "``< dh-group >`` defines a Diffie-Hellman group for PFS;"
 msgstr "``&lt; dh-group &gt;`` define un grupo Diffie-Hellman para PFS;"
 
+#: ../../configuration/service/dns.rst:172
+msgid "``@`` Use @ as record name to set the record for the root domain."
+msgstr "``@`` Use @ as record name to set the record for the root domain."
+
 #: ../../configuration/protocols/segment-routing.rst:41
 msgid "``Known limitations:``"
 msgstr "``Limitaciones conocidas:``"
@@ -19733,6 +19917,10 @@ msgstr "``todas disponibles`` todas las direcciones de destino de verificación 
 #: ../../configuration/protocols/failover.rst:43
 msgid "``any-available`` any of the checking target addresses must be available to pass this check"
 msgstr "``cualquiera disponible`` cualquiera de las direcciones de destino de verificación debe estar disponible para pasar esta verificación"
+
+#: ../../configuration/service/dns.rst:174
+msgid "``any`` Use any as record name to configure the record as a wildcard."
+msgstr "``any`` Use any as record name to configure the record as a wildcard."
 
 #: ../../configuration/vpn/site2site_ipsec.rst:388
 msgid "``authentication local-id/remote-id`` - IKE identification is used for validation of VPN peer devices during IKE negotiation. If you do not configure local/remote-identity, the device uses the IPv4 or IPv6 address that corresponds to the local/remote peer by default. In certain network setups (like ipsec interface with dynamic address, or behind the NAT ), the IKE ID received from the peer does not match the IKE gateway configured on the device. This can lead to a Phase 1 validation failure. So, make sure to configure the local/remote id explicitly and ensure that the IKE ID is the same as the remote-identity configured on the peer device."
@@ -20855,7 +21043,7 @@ msgstr "cron"
 msgid "daemon"
 msgstr "demonio"
 
-#: ../../configuration/service/dns.rst:405
+#: ../../configuration/service/dns.rst:499
 msgid "ddclient_ has another way to determine the WAN IP address. This is controlled by:"
 msgstr "ddclient_ tiene otra forma de determinar la dirección IP de WAN. Esto es controlado por:"
 
@@ -20863,11 +21051,11 @@ msgstr "ddclient_ tiene otra forma de determinar la dirección IP de WAN. Esto e
 msgid "ddclient_ uses two methods to update a DNS record. The first one will send updates directly to the DNS daemon, in compliance with :rfc:`2136`. The second one involves a third party service, like DynDNS.com or any other similar website. This method uses HTTP requests to transmit the new IP address. You can configure both in VyOS."
 msgstr "ddclient_ utiliza dos métodos para actualizar un registro DNS. El primero enviará actualizaciones directamente al demonio DNS, de conformidad con :rfc:`2136`. El segundo implica un servicio de terceros, como DynDNS.com o cualquier otro sitio web similar. Este método utiliza solicitudes HTTP para transmitir la nueva dirección IP. Puede configurar ambos en VyOS."
 
-#: ../../configuration/service/dns.rst:205
+#: ../../configuration/service/dns.rst:299
 msgid "ddclient_ uses two methods to update a DNS record. The first one will send updates directly to the DNS daemon, in compliance with :rfc:`2136`. The second one involves a third party service, like DynDNS.com or any other such service provider. This method uses HTTP requests to transmit the new IP address. You can configure both in VyOS."
 msgstr "ddclient_ uses two methods to update a DNS record. The first one will send updates directly to the DNS daemon, in compliance with :rfc:`2136`. The second one involves a third party service, like DynDNS.com or any other such service provider. This method uses HTTP requests to transmit the new IP address. You can configure both in VyOS."
 
-#: ../../configuration/service/dns.rst:415
+#: ../../configuration/service/dns.rst:509
 msgid "ddclient_ will skip any address located before the string set in `<pattern>`."
 msgstr "ddclient_ omitirá cualquier dirección ubicada antes de la cadena establecida en `<pattern> `."
 
@@ -21044,7 +21232,7 @@ msgstr "información"
 msgid "interval"
 msgstr "Intervalo"
 
-#: ../../configuration/protocols/rpki.rst:56
+#: ../../configuration/protocols/rpki.rst:54
 msgid "invalid"
 msgstr "INVÁLIDO"
 
@@ -21276,7 +21464,7 @@ msgstr "sin-bandera-autonoma"
 msgid "no-on-link-flag"
 msgstr "no-on-link-flag"
 
-#: ../../configuration/protocols/rpki.rst:61
+#: ../../configuration/protocols/rpki.rst:59
 msgid "notfound"
 msgstr "Extraviado"
 
@@ -21549,7 +21737,7 @@ msgstr "usuario"
 msgid "uucp"
 msgstr "uucp"
 
-#: ../../configuration/protocols/rpki.rst:50
+#: ../../configuration/protocols/rpki.rst:48
 msgid "valid"
 msgstr "Válido"
 

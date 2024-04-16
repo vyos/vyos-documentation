@@ -10,152 +10,152 @@ msgstr ""
 
 #: ../../operation/raid.rst:154
 msgid "1 - Remove the failed disk from the RAID 1 set by issuing the following command:"
-msgstr "1 - Remove the failed disk from the RAID 1 set by issuing the following command:"
+msgstr "1. Видаліть несправний диск із набору RAID 1, виконавши таку команду:"
 
 #: ../../operation/raid.rst:113
 msgid "1 - To break apart the current RAID 1 set, enter “No” at the prompt. The"
-msgstr "1 - To break apart the current RAID 1 set, enter “No” at the prompt. The"
+msgstr "1. Щоб розбити поточний набір RAID 1, у запиті введіть «Ні». The"
 
 #: ../../operation/raid.rst:71
 msgid "1 - To create a new RAID 1 array, enter “Yes” at the prompt. If the system detects a filesystem on the partitions being used for RAID 1 it will prompt you to indicate whether you want to continue creating the RAID 1 array."
-msgstr "1 - To create a new RAID 1 array, enter “Yes” at the prompt. If the system detects a filesystem on the partitions being used for RAID 1 it will prompt you to indicate whether you want to continue creating the RAID 1 array."
+msgstr "1. Щоб створити новий масив RAID 1, у запиті введіть «Так». Якщо система виявить файлову систему на розділах, що використовуються для RAID 1, вона запропонує вам вказати, чи бажаєте ви продовжити створення масиву RAID 1."
 
 #: ../../operation/raid.rst:162
 msgid "2- Physically remove the failed disk from the system. If the drives are not hot-swappable, then you must shut down the system before removing the disk."
-msgstr "2- Physically remove the failed disk from the system. If the drives are not hot-swappable, then you must shut down the system before removing the disk."
+msgstr "2- Фізично видаліть несправний диск із системи. Якщо диски не підтримують гарячу заміну, перед видаленням диска необхідно вимкнути систему."
 
 #: ../../operation/raid.rst:123
 msgid "2 - To decline to set up a new RAID 1 configuration on the disks, enter “No” at the prompt. The system prompts you to indicate which partition you would like the system installed on."
-msgstr "2 - To decline to set up a new RAID 1 configuration on the disks, enter “No” at the prompt. The system prompts you to indicate which partition you would like the system installed on."
+msgstr "2. Щоб відмовитися від налаштування нової конфігурації RAID 1 на дисках, у запиті введіть «Ні». Система запропонує вам вказати, на який розділ ви хочете встановити систему."
 
 #: ../../operation/raid.rst:79
 msgid "2 - To overwrite the old filesystem, enter “Yes”."
-msgstr "2 - To overwrite the old filesystem, enter “Yes”."
+msgstr "2 - Щоб перезаписати стару файлову систему, введіть «Так»."
 
 #: ../../operation/raid.rst:131
 msgid "3 - Enter the partition where you would like the system installed. The system then prompts you to indicate whether you want to save the old configuration data. This represents the current VyOS configuration."
-msgstr "3 - Enter the partition where you would like the system installed. The system then prompts you to indicate whether you want to save the old configuration data. This represents the current VyOS configuration."
+msgstr "3 - Введіть розділ, у який ви хочете встановити систему. Після цього система запропонує вам вказати, чи хочете ви зберегти старі дані конфігурації. Це поточна конфігурація VyOS."
 
 #: ../../operation/raid.rst:165
 msgid "3 - Replace the failed drive with a drive of the same size or larger."
-msgstr "3 - Replace the failed drive with a drive of the same size or larger."
+msgstr "3 - Замініть несправний диск диском того самого розміру або більшого."
 
 #: ../../operation/raid.rst:81
 msgid "3 - The system informs you that all data on both drives will be erased. You are prompted to confirm that you want to continue"
-msgstr "3 - The system informs you that all data on both drives will be erased. You are prompted to confirm that you want to continue"
+msgstr "3 - Система повідомляє, що всі дані на обох дисках буде видалено. Вам буде запропоновано підтвердити, що ви хочете продовжити"
 
 #: ../../operation/raid.rst:88
 #: ../../operation/raid.rst:139
 msgid "4 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
-msgstr "4 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
+msgstr "4 - Введіть «Так» у запиті, щоб зберегти поточну конфігурацію VyOS після завершення встановлення. Введіть «Ні», щоб видалити поточну конфігурацію VyOS."
 
 #: ../../operation/raid.rst:167
 msgid "4 - Format the new disk for RAID 1 by issuing the following command:"
-msgstr "4 - Format the new disk for RAID 1 by issuing the following command:"
+msgstr "4. Відформатуйте новий диск для RAID 1, виконавши таку команду:"
 
 #: ../../operation/raid.rst:174
 msgid "5-Add the replacement disk to the RAID 1 set by issuing the following command:"
-msgstr "5-Add the replacement disk to the RAID 1 set by issuing the following command:"
+msgstr "5-Додайте диск для заміни до набору RAID 1, виконавши таку команду:"
 
 #: ../../operation/raid.rst:142
 msgid "5 - Continue with installation in the normal way."
-msgstr "5 - Continue with installation in the normal way."
+msgstr "5 - Продовжте встановлення звичайним способом."
 
 #: ../../operation/raid.rst:96
 msgid "5 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
-msgstr "5 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
+msgstr "5 - Введіть «Так» у запиті, щоб зберегти поточну конфігурацію VyOS після завершення встановлення. Введіть «Ні», щоб видалити поточну конфігурацію VyOS."
 
 #: ../../operation/raid.rst:99
 msgid "6 - Continue with installation in the normal way."
-msgstr "6 - Continue with installation in the normal way."
+msgstr "6 - Продовжте встановлення звичайним способом."
 
 #: ../../operation/raid.rst:7
 msgid "A Redundant Array of Independent Disks (RAID) uses two or more hard disk drives to improve disk speed, store more data, and/or provide fault tolerance. There are several storage schemes possible in a RAID array, each offering a different combination of storage, reliability, and/or performance. The VyOS system supports a “RAID 1” deployment. RAID 1 allows two or more disks to mirror one another to provide system fault tolerance. In a RAID 1 solution, every sector of one disk is duplicated onto every sector of all disks in the array. Provided even one disk in the RAID 1 set is operational, the system continues to run, even through disk replacement (provided that the hardware supports in-service replacement of drives). RAID 1 can be implemented using special hardware or it can be implemented in software. The VyOS system supports software RAID 1 on two disks. The VyOS implementation of RAID 1 allows the following:"
-msgstr "A Redundant Array of Independent Disks (RAID) uses two or more hard disk drives to improve disk speed, store more data, and/or provide fault tolerance. There are several storage schemes possible in a RAID array, each offering a different combination of storage, reliability, and/or performance. The VyOS system supports a “RAID 1” deployment. RAID 1 allows two or more disks to mirror one another to provide system fault tolerance. In a RAID 1 solution, every sector of one disk is duplicated onto every sector of all disks in the array. Provided even one disk in the RAID 1 set is operational, the system continues to run, even through disk replacement (provided that the hardware supports in-service replacement of drives). RAID 1 can be implemented using special hardware or it can be implemented in software. The VyOS system supports software RAID 1 on two disks. The VyOS implementation of RAID 1 allows the following:"
+msgstr "Надлишковий масив незалежних дисків (RAID) використовує два або більше жорстких дисків для підвищення швидкості диска, зберігання більшої кількості даних і/або забезпечення відмовостійкості. У масиві RAID існує кілька схем зберігання, кожна з яких пропонує різну комбінацію пам’яті, надійності та/або продуктивності. Система VyOS підтримує розгортання «RAID 1». RAID 1 дозволяє двом або більше дискам дублювати один одного, щоб забезпечити відмовостійкість системи. У рішенні RAID 1 кожен сектор одного диска дублюється на кожен сектор усіх дисків у масиві. За умови, що навіть один диск у наборі RAID 1 працює, система продовжує працювати навіть після заміни диска (за умови, що апаратне забезпечення підтримує заміну дисків під час експлуатації). RAID 1 може бути реалізований за допомогою спеціального апаратного забезпечення або програмно. Система VyOS підтримує програмний RAID 1 на двох дисках. Реалізація RAID 1 у VyOS дозволяє:"
 
 #: ../../operation/raid.rst:40
 msgid "Before a permanent installation, VyOS runs a live installation"
-msgstr "Before a permanent installation, VyOS runs a live installation"
+msgstr "Перед постійним встановленням VyOS запускає живе встановлення"
 
 #: ../../operation/boot-options.rst:6
 msgid "Boot Options"
-msgstr "Boot Options"
+msgstr "Параметри завантаження"
 
 #: ../../operation/raid.rst:43
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Конфігурація"
 
 #: ../../operation/raid.rst:146
 msgid "Detecting and Replacing a Failed RAID 1 Disk"
-msgstr "Detecting and Replacing a Failed RAID 1 Disk"
+msgstr "Виявлення та заміна несправного диска RAID 1"
 
 #: ../../operation/raid.rst:21
 msgid "Detection and reporting of disk failure"
-msgstr "Detection and reporting of disk failure"
+msgstr "Виявлення та повідомлення про збій диска"
 
 #: ../../operation/boot-options.rst:45
 msgid "Disable specific boot process steps"
-msgstr "Disable specific boot process steps"
+msgstr "Вимкніть певні кроки процесу завантаження"
 
 #: ../../operation/boot-options.rst:56
 msgid "Do not initialize default firewall chains, renders any firewall configuration unusable."
-msgstr "Do not initialize default firewall chains, renders any firewall configuration unusable."
+msgstr "Не ініціалізуйте ланцюжки брандмауера за замовчуванням, будь-яка конфігурація брандмауера стає непридатною для використання."
 
 #: ../../operation/boot-options.rst:53
 msgid "Do not perform config migration."
-msgstr "Do not perform config migration."
+msgstr "Не виконувати міграцію конфігурації."
 
 #: ../../operation/raid.rst:61
 msgid "Empty 2+ Disk"
-msgstr "Empty 2+ Disk"
+msgstr "Порожній диск 2+"
 
 #: ../../operation/information.rst:34
 msgid "For additional details you can refer to https://vyos.dev/T2490."
-msgstr "For additional details you can refer to https://vyos.dev/T2490."
+msgstr "Для отримання додаткової інформації ви можете звернутися до https://vyos.dev/T2490."
 
 #: ../../operation/information.rst:14
 msgid "Hardware"
-msgstr "Hardware"
+msgstr "Обладнання"
 
 #: ../../operation/raid.rst:63
 msgid "If VyOS system detect two identical disks that are not currently part of a RAID-1 set, the VyOS installation utility automatically offers you the option of configuring RAID 1 mirroring for the drives, with the following prompt."
-msgstr "If VyOS system detect two identical disks that are not currently part of a RAID-1 set, the VyOS installation utility automatically offers you the option of configuring RAID 1 mirroring for the drives, with the following prompt."
+msgstr "Якщо система VyOS виявить два ідентичні диски, які на даний момент не є частиною набору RAID-1, утиліта встановлення VyOS автоматично запропонує вам можливість налаштувати дзеркальне відображення RAID 1 для дисків із наступним запитом."
 
 #: ../../operation/information.rst:40
 msgid "If a device is unplugged and re-plugged it will receive a new Port, Dev, If identification."
-msgstr "If a device is unplugged and re-plugged it will receive a new Port, Dev, If identification."
+msgstr "Якщо пристрій відключити та знову підключити, він отримає новий ідентифікатор Port, Dev, If."
 
 #: ../../operation/raid.rst:57
 msgid "If you do not want to configure RAID 1 mirroring, enter “No” at the prompt and continue with installation in the normal way."
-msgstr "If you do not want to configure RAID 1 mirroring, enter “No” at the prompt and continue with installation in the normal way."
+msgstr "Якщо ви не хочете налаштовувати дзеркальне відображення RAID 1, у запиті введіть «Ні» та продовжте інсталяцію звичайним способом."
 
 #: ../../operation/information.rst:21
 msgid "In the past serial interface have been defined as ttySx and ttyUSBx where x was an instance number of the serial interface. It was discovered that from system boot to system boot the mapping of USB based serial interfaces will differ, depending which driver was loaded first by the operating system. This will become rather painful if you not only have serial interfaces for a console server connected but in addition also a serial backed :ref:`wwan-interface`."
-msgstr "In the past serial interface have been defined as ttySx and ttyUSBx where x was an instance number of the serial interface. It was discovered that from system boot to system boot the mapping of USB based serial interfaces will differ, depending which driver was loaded first by the operating system. This will become rather painful if you not only have serial interfaces for a console server connected but in addition also a serial backed :ref:`wwan-interface`."
+msgstr "У минулому послідовний інтерфейс визначався як ttySx і ttyUSBx, де x був номером екземпляра послідовного інтерфейсу. Було виявлено, що від завантаження системи до завантаження системи відображення послідовних інтерфейсів на основі USB буде відрізнятися залежно від того, який драйвер операційна система завантажила першим. Це стане досить болісним, якщо у вас є не лише послідовні інтерфейси для підключеного консольного сервера, але й додатково послідовний :ref:`wwan-interface`."
 
 #: ../../operation/information.rst:7
 msgid "Information"
-msgstr "Information"
+msgstr "ІНФОРМАЦІЯ"
 
 #: ../../operation/raid.rst:30
 msgid "Installation Implications"
-msgstr "Installation Implications"
+msgstr "Наслідки встановлення"
 
 #: ../../operation/raid.rst:183
 msgid "Operation"
-msgstr "Operation"
+msgstr "Операція"
 
 #: ../../operation/index.rst:3
 msgid "Operation Mode"
-msgstr "Operation Mode"
+msgstr "Режим роботи"
 
 #: ../../operation/password-recovery.rst:5
 msgid "Password Recovery"
-msgstr "Password Recovery"
+msgstr "Відновлення паролю"
 
 #: ../../operation/raid.rst:103
 msgid "Present RAID-1"
-msgstr "Present RAID-1"
+msgstr "Присутній RAID-1"
 
 #: ../../operation/raid.rst:5
 msgid "RAID-1"
@@ -163,91 +163,91 @@ msgstr "RAID-1"
 
 #: ../../operation/information.rst:74
 msgid "Retrieve a list and description of all connected USB serial devices. The device name displayed, e.g. `usb0b2.4p1.0` can be directly used when accessing the serial console as console-server device."
-msgstr "Retrieve a list and description of all connected USB serial devices. The device name displayed, e.g. `usb0b2.4p1.0` can be directly used when accessing the serial console as console-server device."
+msgstr "Отримайте список і опис усіх підключених послідовних пристроїв USB. Відображуване ім’я пристрою, наприклад `usb0b2.4p1.0`, можна безпосередньо використовувати під час доступу до послідовної консолі як пристрою консолі-сервера."
 
 #: ../../operation/information.rst:38
 msgid "Retrieve a tree like representation of all connected USB devices."
-msgstr "Retrieve a tree like representation of all connected USB devices."
+msgstr "Отримайте деревоподібне представлення всіх підключених USB-пристроїв."
 
 #: ../../operation/information.rst:108
 msgid "Return the current running VyOS version and build information. This includes also the name of the release train which is ``crux`` on VyOS 1.2, ``equuleus`` on VyOS 1.3 and ``sagitta`` on VyOS 1.4."
-msgstr "Return the current running VyOS version and build information. This includes also the name of the release train which is ``crux`` on VyOS 1.2, ``equuleus`` on VyOS 1.3 and ``sagitta`` on VyOS 1.4."
+msgstr "Повернути поточну запущену версію VyOS і інформацію про збірку. Це включає назву ``crux`` у VyOS 1.2, ``equuleus`` у VyOS 1.3 та ``sagitta`` у VyOS"
 
 #: ../../operation/information.rst:146
 msgid "Return version number of FRR (Free Range Routing - https://frrouting.org/) used in this release. This is the routing control plane and a successor to GNU Zebra and Quagga."
-msgstr "Return version number of FRR (Free Range Routing - https://frrouting.org/) used in this release. This is the routing control plane and a successor to GNU Zebra and Quagga."
+msgstr "Повернути номер версії FRR (Free Range Routing - https://frrouting.org/), який використовується в цьому випуску. Це площина керування маршрутизацією та наступник GNU Zebra та Quagga."
 
 #: ../../operation/information.rst:137
 msgid "Return version number of the Linux Kernel used in this release."
-msgstr "Return version number of the Linux Kernel used in this release."
+msgstr "Повернути номер версії ядра Linux, що використовується в цьому випуску."
 
 #: ../../operation/raid.rst:46
 msgid "Single disk, install as normal"
-msgstr "Single disk, install as normal"
+msgstr "Один диск, установіть як зазвичай"
 
 #: ../../operation/boot-options.rst:26
 msgid "Specify custom config file"
-msgstr "Specify custom config file"
+msgstr "Укажіть спеціальний файл конфігурації"
 
 #: ../../operation/boot-options.rst:28
 msgid "Tells the system to use specified file instead of ``/config/config.boot``. If specified file does not exist or is not readable, fall back to default config. No additional verification is performed, so make sure you specify a valid config file."
-msgstr "Tells the system to use specified file instead of ``/config/config.boot``. If specified file does not exist or is not readable, fall back to default config. No additional verification is performed, so make sure you specify a valid config file."
+msgstr "Вказує системі використовувати вказаний файл замість ``/config/config.boot``. Якщо вказаний файл не існує або не читається, поверніться до конфігурації за замовчуванням. Додаткова перевірка не виконується, тому переконайтеся, що ви вказали дійсний файл конфігурації."
 
 #: ../../operation/raid.rst:148
 msgid "The VyOS system automatically detects a disk failure within a RAID 1 set and reports it to the system console. You can verify the failure by issuing the show raid command."
-msgstr "The VyOS system automatically detects a disk failure within a RAID 1 set and reports it to the system console. You can verify the failure by issuing the show raid command."
+msgstr "Система VyOS автоматично виявляє збій диска в наборі RAID 1 і повідомляє про це на системну консоль. Ви можете перевірити помилку, виконавши команду show raid."
 
 #: ../../operation/raid.rst:32
 msgid "The VyOS systems installation utility provides several options for installing to a RAID 1 set. You can:"
-msgstr "The VyOS systems installation utility provides several options for installing to a RAID 1 set. You can:"
+msgstr "Утиліта встановлення системи VyOS надає кілька варіантів встановлення до набору RAID 1. Ти можеш:"
 
 #: ../../operation/raid.rst:23
 msgid "The ability to boot the system with one failed disk"
-msgstr "The ability to boot the system with one failed disk"
+msgstr "Можливість завантаження системи з одного несправного диска"
 
 #: ../../operation/raid.rst:22
 msgid "The ability to maintain system operation with one failed disk"
-msgstr "The ability to maintain system operation with one failed disk"
+msgstr "Можливість підтримувати роботу системи з одним вийшов з ладу диском"
 
 #: ../../operation/raid.rst:25
 msgid "The ability to monitor the status of remirroring"
-msgstr "The ability to monitor the status of remirroring"
+msgstr "Можливість моніторингу статусу повторного віддзеркалення"
 
 #: ../../operation/raid.rst:24
 msgid "The ability to replace a failed disk and initiate re-mirroring"
-msgstr "The ability to replace a failed disk and initiate re-mirroring"
+msgstr "Можливість заміни несправного диска та ініціювання повторного віддзеркалення"
 
 #: ../../operation/password-recovery.rst:14
 msgid "The stand-alone user-password recovery tool starts running and prompts you to reset the local system user password."
-msgstr "The stand-alone user-password recovery tool starts running and prompts you to reset the local system user password."
+msgstr "Автономний інструмент відновлення пароля користувача починає працювати та пропонує вам скинути пароль користувача локальної системи."
 
 #: ../../operation/boot-options.rst:47
 msgid "These options disable some boot steps. Make sure you understand the :ref:`boot process <boot-steps>` well before using them!"
-msgstr "These options disable some boot steps. Make sure you understand the :ref:`boot process <boot-steps>` well before using them!"
+msgstr "Ці параметри вимикають деякі етапи завантаження. Переконайтеся, що ви розумієте процес завантаження :ref:`<boot-steps> ` задовго до їх використання!"
 
 #: ../../operation/raid.rst:196
 msgid "This command is typically used to prepare a disk to be added to a preexisting RAID 1 set (of which disk-device2 is already a member)."
-msgstr "This command is typically used to prepare a disk to be added to a preexisting RAID 1 set (of which disk-device2 is already a member)."
+msgstr "Ця команда зазвичай використовується для підготовки диска до додавання до існуючого набору RAID 1 (до якого вже входить disk-device2)."
 
 #: ../../operation/boot-options.rst:8
 msgid "This function may be highly disruptive. It may cause major service interruption, so make sure you really need it and verify your input carefully."
-msgstr "This function may be highly disruptive. It may cause major service interruption, so make sure you really need it and verify your input carefully."
+msgstr "Ця функція може бути дуже руйнівною. Це може призвести до серйозних перебоїв у роботі служби, тому переконайтеся, що вам це дійсно потрібно, і ретельно перевіряйте введені дані."
 
 #: ../../operation/raid.rst:185
 msgid "This part introduces how to add a disk partition to a RAID-1 set initiates mirror synchronization, check and display information."
-msgstr "This part introduces how to add a disk partition to a RAID-1 set initiates mirror synchronization, check and display information."
+msgstr "У цій частині описано, як додати розділ диска до набору RAID-1, ініціювати дзеркальну синхронізацію, перевірити та відобразити інформацію."
 
 #: ../../operation/boot-options.rst:37
 msgid "To load the *factory default* config, use:"
-msgstr "To load the *factory default* config, use:"
+msgstr "Щоб завантажити *заводську* конфігурацію за замовчуванням, використовуйте:"
 
 #: ../../operation/information.rst:28
 msgid "To overcome this issue and the fact that in almost 50% of all cheap USB to serial converters there is no serial number programmed, the USB to serial interface is now directly identified by the USB root bridge and bus it connects to. This somehow mimics the new network interface definitions we see in recent Linux distributions."
-msgstr "To overcome this issue and the fact that in almost 50% of all cheap USB to serial converters there is no serial number programmed, the USB to serial interface is now directly identified by the USB root bridge and bus it connects to. This somehow mimics the new network interface definitions we see in recent Linux distributions."
+msgstr "Щоб подолати цю проблему та той факт, що майже в 50% усіх дешевих перетворювачів USB на послідовний порт не запрограмовано серійний номер, інтерфейс USB на послідовний порт тепер безпосередньо ідентифікується кореневим мостом USB і шиною, до якої він підключається. Це якось імітує нові визначення мережевого інтерфейсу, які ми бачимо в останніх дистрибутивах Linux."
 
 #: ../../operation/raid.rst:152
 msgid "To replace a bad disk within a RAID 1 set, perform the following steps:"
-msgstr "To replace a bad disk within a RAID 1 set, perform the following steps:"
+msgstr "Щоб замінити несправний диск у наборі RAID 1, виконайте такі дії:"
 
 #: ../../operation/information.rst:19
 msgid "USB"
@@ -255,51 +255,51 @@ msgstr "USB"
 
 #: ../../operation/raid.rst:38
 msgid "Use a previously-created RAID 1 set."
-msgstr "Use a previously-created RAID 1 set."
+msgstr "Використовуйте раніше створений набір RAID 1."
 
 #: ../../operation/raid.rst:35
 msgid "Use the install system to create the RAID 1 set"
-msgstr "Use the install system to create the RAID 1 set"
+msgstr "Використовуйте систему встановлення, щоб створити набір RAID 1"
 
 #: ../../operation/raid.rst:36
 msgid "Use the underlying Linux commands to create a RAID 1 set before running the install system command."
-msgstr "Use the underlying Linux commands to create a RAID 1 set before running the install system command."
+msgstr "Використовуйте основні команди Linux, щоб створити набір RAID 1 перед виконанням команди install system."
 
 #: ../../operation/raid.rst:190
 msgid "Use this command to add a member disk partition to the RAID 1 set. Adding a disk partition to a RAID 1 set initiates mirror synchronization, where all data on the existing member partition is copied to the new partition."
-msgstr "Use this command to add a member disk partition to the RAID 1 set. Adding a disk partition to a RAID 1 set initiates mirror synchronization, where all data on the existing member partition is copied to the new partition."
+msgstr "Використовуйте цю команду, щоб додати членський розділ диска до набору RAID 1. Додавання розділу диска до набору RAID 1 ініціює дзеркальну синхронізацію, коли всі дані з існуючого розділу-учасника копіюються в новий розділ."
 
 #: ../../operation/raid.rst:232
 msgid "Use this command to display the formatting of a hard disk."
-msgstr "Use this command to display the formatting of a hard disk."
+msgstr "Використовуйте цю команду, щоб відобразити форматування жорсткого диска."
 
 #: ../../operation/password-recovery.rst:7
 msgid "Using the console, restart the VyOS router. The GRUB menu appears. Select the relevant option from the GRUB menu and press Enter. The option must start with “Lost password change.”"
-msgstr "Using the console, restart the VyOS router. The GRUB menu appears. Select the relevant option from the GRUB menu and press Enter. The option must start with “Lost password change.”"
+msgstr "За допомогою консолі перезапустіть маршрутизатор VyOS. З’явиться меню GRUB. Виберіть відповідний параметр у меню GRUB і натисніть Enter. Опція має починатися з «Зміна втраченого пароля»."
 
 #: ../../operation/information.rst:104
 msgid "Version"
-msgstr "Version"
+msgstr "Версія"
 
 #: ../../operation/information.rst:9
 msgid "VyOS features a rich set of operational level commands to retrieve arbitrary information about your running system."
-msgstr "VyOS features a rich set of operational level commands to retrieve arbitrary information about your running system."
+msgstr "VyOS має багатий набір команд робочого рівня для отримання довільної інформації про вашу запущену систему."
 
 #: ../../operation/boot-options.rst:14
 msgid "VyOS has several kernel command line options to modify the normal boot process. To add an option, select the desired image in GRUB menu at load time, press **e**, edit the first line, and press **Ctrl-x** to boot when ready."
-msgstr "VyOS has several kernel command line options to modify the normal boot process. To add an option, select the desired image in GRUB menu at load time, press **e**, edit the first line, and press **Ctrl-x** to boot when ready."
+msgstr "VyOS має кілька параметрів командного рядка ядра для зміни нормального процесу завантаження. Щоб додати параметр, виберіть потрібне зображення в меню GRUB під час завантаження, натисніть **e**, відредагуйте перший рядок і натисніть **Ctrl-x** для завантаження, коли все буде готове."
 
 #: ../../operation/raid.rst:105
 msgid "When the VyOS software on a system with a RAID 1 set already configured, the installation utility will detect the array and will display the following prompt:"
-msgstr "When the VyOS software on a system with a RAID 1 set already configured, the installation utility will detect the array and will display the following prompt:"
+msgstr "Коли програмне забезпечення VyOS у системі з уже налаштованим RAID 1, утиліта встановлення виявить масив і відобразить таке повідомлення:"
 
 #: ../../operation/raid.rst:48
 msgid "When the VyOS system is installed, it automatically detects the presence of two disks not currently part of a RAID array. In these cases, the VyOS installation utility automatically offers you the option of configuring RAID 1 mirroring for the drives, with the following prompt."
-msgstr "When the VyOS system is installed, it automatically detects the presence of two disks not currently part of a RAID array. In these cases, the VyOS installation utility automatically offers you the option of configuring RAID 1 mirroring for the drives, with the following prompt."
+msgstr "Коли встановлено систему VyOS, вона автоматично визначає наявність двох дисків, які наразі не є частиною масиву RAID. У цих випадках утиліта встановлення VyOS автоматично пропонує вам налаштувати віддзеркалення RAID 1 для дисків із наступною підказкою."
 
 #: ../../operation/raid.rst:115
 msgid "installation utility detects that there are two identical disks and offers you the option of configuring RAID 1 mirroring on them, displaying the following prompt:"
-msgstr "installation utility detects that there are two identical disks and offers you the option of configuring RAID 1 mirroring on them, displaying the following prompt:"
+msgstr "утиліта інсталяції виявляє наявність двох ідентичних дисків і пропонує вам налаштувати віддзеркалення RAID 1 на них, відображаючи таке повідомлення:"
 
 #: ../../operation/boot-options.rst:54
 msgid "no-vyos-firewall"
@@ -311,16 +311,16 @@ msgstr "no-vyos-migrate"
 
 #: ../../operation/raid.rst:201
 msgid "shows output for show raid md0 as sdb1 is being added to the RAID 1 set and is in the process of being resynchronized."
-msgstr "shows output for show raid md0 as sdb1 is being added to the RAID 1 set and is in the process of being resynchronized."
+msgstr "показує вихід для show raid md0, оскільки sdb1 додається до набору RAID 1 і знаходиться в процесі повторної синхронізації."
 
 #: ../../operation/raid.rst:159
 msgid "where RAID-1-device is the name of the RAID 1 device (for example, md0) and disk-partition is the name of the failed disk partition (for example, sdb2)."
-msgstr "where RAID-1-device is the name of the RAID 1 device (for example, md0) and disk-partition is the name of the failed disk partition (for example, sdb2)."
+msgstr "де RAID-1-device — це ім’я пристрою RAID 1 (наприклад, md0), а disk-partition — ім’я несправного розділу диска (наприклад, sdb2)."
 
 #: ../../operation/raid.rst:178
 msgid "where RAID-1-device is the name of the RAID 1 device (for example, md0) and disk-partition is the name of the replacement disk partition (for example, sdb2)."
-msgstr "where RAID-1-device is the name of the RAID 1 device (for example, md0) and disk-partition is the name of the replacement disk partition (for example, sdb2)."
+msgstr "де RAID-1-device — це ім’я пристрою RAID 1 (наприклад, md0), а disk-partition — це ім’я розділу диска для заміни (наприклад, sdb2)."
 
 #: ../../operation/raid.rst:171
 msgid "where disk-device1 is the replacement disk (for example, sdb) and disk-device2 is the existing healthy disk (for example, sda)."
-msgstr "where disk-device1 is the replacement disk (for example, sdb) and disk-device2 is the existing healthy disk (for example, sda)."
+msgstr "де disk-device1 — диск для заміни (наприклад, sdb), а disk-device2 — існуючий справний диск (наприклад, sda)."

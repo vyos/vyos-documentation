@@ -442,7 +442,7 @@ msgstr "Jeder Änderungssatz muss konsistent (in sich geschlossen) sein! Beheben
 #: ../../contributing/development.rst:412
 #: ../../contributing/testing.rst:66
 msgid "Example:"
-msgstr "Beispiel:"
+msgstr "Example:"
 
 #: ../../contributing/development.rst:559
 #: ../../contributing/development.rst:571
