@@ -32,6 +32,7 @@ for the cipher and hash. Adjust this as necessary.
 **************************************
 IKE (Internet Key Exchange) Attributes
 **************************************
+
 IKE performs mutual authentication between two parties and establishes
 an IKE security association (SA) that includes shared secret information
 that can be used to efficiently establish SAs for Encapsulating Security
@@ -226,7 +227,7 @@ On the RIGHT, setup by analogy and swap local and remote addresses.
 
 
 Source tunnel from dummy interface
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==================================
 
 The scheme above doesn't work when one of the routers has a dynamic external
 address though. The classic workaround for this is to setup an address on a

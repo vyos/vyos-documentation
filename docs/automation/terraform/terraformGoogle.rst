@@ -19,14 +19,14 @@ Step by step:
 google cloud
 
 
-  1 Create an account with google cloud and a new project
+1 Create an account with google cloud and a new project
 
 .. image:: /_static/images/project.png
    :width: 50%
    :align: center
    :alt: Network Topology Diagram
 
-  2 Create a service aacount and download your key (.JSON)
+2 Create a service aacount and download your key (.JSON)
 
 .. image:: /_static/images/service.png
    :width: 50%
@@ -49,19 +49,19 @@ The .JSON file download automaticly after creating and will look like:
 Terraform
 
 
-  1 Create an UNIX or Windows instance
+1 Create an UNIX or Windows instance
 
-  2 Download and install Terraform
+2 Download and install Terraform
 
-  3 Create the folder for example /root/google
+3 Create the folder for example /root/google
 
 .. code-block:: none
 
    mkdir /root/google
 
- 4 Copy all files into your Terraform project "/root/google" (vyos.tf, var.tf, terraform.tfvars, .JSON), more detailed see `Structure of files Terrafom for google cloud`_
+4 Copy all files into your Terraform project "/root/google" (vyos.tf, var.tf, terraform.tfvars, .JSON), more detailed see `Structure of files Terrafom for google cloud`_
 
- 5 Type the commands :
+5 Type the commands :
 
 
 .. code-block:: none
@@ -73,13 +73,13 @@ Terraform
 Ansible
 
 
-  1 Create an UNIX instance whenever you want (local, cloud, and so on)
+1 Create an UNIX instance whenever you want (local, cloud, and so on)
 
-  2 Download and install Ansible
+2 Download and install Ansible
 
-  3 Create the folder for example /root/google/
+3 Create the folder for example /root/google/
 
-  4 Copy all files into your Ansible project "/root/google/" (ansible.cfg, instance.yml, mykey.json and "all"), more detailed see `Structure of files Ansible for google cloud`_
+4 Copy all files into your Ansible project "/root/google/" (ansible.cfg, instance.yml, mykey.json and "all"), more detailed see `Structure of files Ansible for google cloud`_
 
 mykey.json you have to get using step 2 of the google cloud
 
@@ -341,10 +341,10 @@ If you need to delete the instance please type the command:
 Troubleshooting
 ---------------
 
-  1 Increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location).
+1 Increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location).
 Make sure that you have opened access to the instance in the security group.
 
-  2 Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file VyOS.tf
+2 Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file VyOS.tf
 
 .. code-block:: none
 

@@ -124,7 +124,7 @@ Style Guide
 ===========
 
 Formatting and Sphinxmarkup
---------------------------
+---------------------------
 
 TOC Level
 ^^^^^^^^^^

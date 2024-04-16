@@ -199,7 +199,7 @@ Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default,
 Firewall
 ========
 
-Finally, don't forget the :ref:`firewall`. The usage is identical, except for
+Finally, don't forget the :ref:`Firewall<configuration/firewall/index:Firewall>`. The usage is identical, except for
 instead of `set firewall name NAME`, you would use `set firewall ipv6-name
 NAME`.
 

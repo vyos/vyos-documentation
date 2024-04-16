@@ -26,16 +26,16 @@ Step by step:
 AWS
 
 
-  1 Create an account with AWS and get your "access_key", "secret key"
+1 Create an account with AWS and get your "access_key", "secret key"
 
-  2 Create a key pair_ and download your .pem key
+2 Create a key pair_ and download your .pem key
 
 .. image:: /_static/images/keypairs.png
    :width: 50%
    :align: center
    :alt: Network Topology Diagram
 
-  3 Create a security group_ for the new VyOS instance and open all traffic
+3 Create a security group_ for the new VyOS instance and open all traffic
 
 .. image:: /_static/images/sg.png
    :width: 50%
@@ -263,7 +263,7 @@ If you need to delete the instance please type the command:
 Troubleshooting
 ---------------
 
-  1 Ansible doesn't connect via SSH to your AWS instance: you have to check that your SSH key has copied into the path /root/aws/.
+1 Ansible doesn't connect via SSH to your AWS instance: you have to check that your SSH key has copied into the path /root/aws/.
 Also, increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location).
 Make sure that you have opened access to the instance in the security group.
 
