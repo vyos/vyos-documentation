@@ -43,7 +43,7 @@ Service
 .. cfgcmd:: set load-balancing reverse-proxy service <name> ssl
    certificate <name>
 
-  Set SSL certeficate <name> for service <name>
+  Set SSL certificate <name> for service <name>
 
 
 Rules
@@ -97,8 +97,8 @@ Backend
 .. cfgcmd:: set load-balancing reverse-proxy backend <name> balance
    <balance>
 
-  Load-balancing algorithms to be used for distributind requests among the
-  vailable servers
+  Load-balancing algorithms to be used for distributed requests among the
+  available servers
 
   Balance algorithms:
    * ``source-address`` Distributes requests based on the source IP address
@@ -144,9 +144,12 @@ Backend
 
   Send a Proxy Protocol version 2 header (binary format)
 
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> ssl ca-certificate <ca-certificate>
 
+  Configure requests to the backend server to use SSL encryption and
+  authenticate backend against <ca-certificate>
 
-Gloabal
+Global
 -------
 
 Global parameters
@@ -243,12 +246,12 @@ to the backend ``bk-api-02``
 
 Terminate SSL
 -------------
-The following configuration reverse-proxy terminate SSL.
+The following configuration terminates SSL on the router.
 
-The ``http`` service is lestens on port 80 and force redirects from HTTP to
+The ``http`` service is listens on port 80 and force redirects from HTTP to
 HTTPS.
 
-The ``https`` service listens on port 443 with backend `bk-default` to 
+The ``https`` service listens on port 443 with backend ``bk-default`` to
 handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination.
 
 Rule 10 matches requests with the exact URL path ``/.well-known/xxx``
@@ -286,4 +289,34 @@ connection limit of 4000 and a minimum TLS version of 1.3.
 
     set load-balancing reverse-proxy global-parameters max-connections '4000'
     set load-balancing reverse-proxy global-parameters tls-version-min '1.3'
+
+SSL Bridging
+-------------
+The following configuration terminates incoming HTTPS traffic on the router, then re-encrypts the traffic and sends
+to the backend server via HTTPS. This is useful if encryption is required for both legs, but you do not want to
+install publicly trusted certificates on each backend server.
+
+Backend service certificates are checked against the certificate authority specified in the configuration, which
+could be an internal CA.
+
+The ``https`` service listens on port 443 with backend ``bk-bridge-ssl`` to
+handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination.
+
+The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS and checks backend
+server has a valid certificate trusted by CA ``cacert``
+
+
+.. code-block:: none
+
+    set load-balancing reverse-proxy service https backend 'bk-bridge-ssl'
+    set load-balancing reverse-proxy service https description 'listen on 443 port'
+    set load-balancing reverse-proxy service https mode 'http'
+    set load-balancing reverse-proxy service https port '443'
+    set load-balancing reverse-proxy service https ssl certificate 'cert'
+
+    set load-balancing reverse-proxy backend bk-bridge-ssl description 'SSL backend'
+    set load-balancing reverse-proxy backend bk-bridge-ssl mode 'http'
+    set load-balancing reverse-proxy backend bk-bridge-ssl ssl ca-certificate 'cacert'
+    set load-balancing reverse-proxy backend bk-bridge-ssl server sr01 address '192.0.2.23'
+    set load-balancing reverse-proxy backend bk-bridge-ssl server sr01 port '443'
 
