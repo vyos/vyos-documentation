@@ -149,6 +149,11 @@ Backend
   Configure requests to the backend server to use SSL encryption and
   authenticate backend against <ca-certificate>
 
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> ssl no-verify
+
+  Configure requests to the backend server to use SSL encryption without
+  validating server certificate
+
 Global
 -------
 
