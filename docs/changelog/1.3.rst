@@ -8,6 +8,24 @@
    _ext/releasenotes.py
 
 
+2024-04-12
+==========
+
+* :vytask:`T3437` (bug): BGP Confederation Addition Causes Error
+
+
+2024-04-10
+==========
+
+* :vytask:`T6124` (bug): Docker equuleus build image doesn't build due to fpm
+
+
+2024-04-08
+==========
+
+* :vytask:`T6196` (bug): Route-map and summary-only do not work in BGP aggregation at the same time
+
+
 2024-04-07
 ==========
 
