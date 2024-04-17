@@ -154,6 +154,37 @@ Backend
   Configure requests to the backend server to use SSL encryption without
   validating server certificate
 
+
+HTTP health check
+^^^^^^^^^^^^^^^^^
+For web application providing information about their state HTTP health
+checks can be used to determine their availability.
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+
+  Enables HTTP health checks using OPTION HTTP requests against '/' and
+  expecting a successful response code in the 200-399 range.
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+   method <method>
+
+  Sets the HTTP method to be used, can be either: option, get, post, put
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+   uri <path>
+
+  Sets the endpoint to be used for health checks
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+   expect <condition>
+
+  Sets the expected result condition for considering a server healthy.
+  Some possible examples are:
+   * ``status 200`` Expecting a 200 response code
+   * ``status 200-399`` Expecting a non-failure response code
+   * ``string success`` Expecting the string `success` in the response body
+
+
 Global
 -------
 
@@ -295,6 +326,7 @@ connection limit of 4000 and a minimum TLS version of 1.3.
     set load-balancing reverse-proxy global-parameters max-connections '4000'
     set load-balancing reverse-proxy global-parameters tls-version-min '1.3'
 
+
 SSL Bridging
 -------------
 The following configuration terminates incoming HTTPS traffic on the router, then re-encrypts the traffic and sends
@@ -324,4 +356,30 @@ server has a valid certificate trusted by CA ``cacert``
     set load-balancing reverse-proxy backend bk-bridge-ssl ssl ca-certificate 'cacert'
     set load-balancing reverse-proxy backend bk-bridge-ssl server sr01 address '192.0.2.23'
     set load-balancing reverse-proxy backend bk-bridge-ssl server sr01 port '443'
+
+
+Balancing with HTTP health checks
+---------------------------------
+
+This configuration enables HTTP health checks on backend servers.
+
+.. code-block:: none
+
+    set load-balancing reverse-proxy service my-tcp-api backend 'bk-01'
+    set load-balancing reverse-proxy service my-tcp-api mode 'tcp'
+    set load-balancing reverse-proxy service my-tcp-api port '8888'
+
+    set load-balancing reverse-proxy backend bk-01 balance 'round-robin'
+    set load-balancing reverse-proxy backend bk-01 mode 'tcp'
+
+    set load-balancing reverse-proxy backend bk-01 http-check method 'get'
+    set load-balancing reverse-proxy backend bk-01 http-check uri '/health'
+    set load-balancing reverse-proxy backend bk-01 http-check expect 'status 200'
+
+    set load-balancing reverse-proxy backend bk-01 server srv01 address '192.0.2.11'
+    set load-balancing reverse-proxy backend bk-01 server srv01 port '8881'
+    set load-balancing reverse-proxy backend bk-01 server srv01 check
+    set load-balancing reverse-proxy backend bk-01 server srv02 address '192.0.2.12'
+    set load-balancing reverse-proxy backend bk-01 server srv02 port '8882'
+    set load-balancing reverse-proxy backend bk-01 server srv02 check
 
