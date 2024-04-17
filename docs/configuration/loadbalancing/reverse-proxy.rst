@@ -144,7 +144,8 @@ Backend
 
   Send a Proxy Protocol version 2 header (binary format)
 
-.. cfgcmd:: set load-balancing reverse-proxy backend <name> ssl ca-certificate <ca-certificate>
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> ssl
+   ca-certificate <ca-certificate>
 
   Configure requests to the backend server to use SSL encryption and
   authenticate backend against <ca-certificate>
@@ -246,6 +247,7 @@ servers (srv01 and srv02) using the round-robin load-balancing algorithm.
     set load-balancing reverse-proxy backend bk-01 server srv02 address '192.0.2.12'
     set load-balancing reverse-proxy backend bk-01 server srv02 port '8882'
 
+
 Balancing based on domain name
 ------------------------------
 The following configuration demonstrates how to use VyOS
@@ -329,18 +331,19 @@ connection limit of 4000 and a minimum TLS version of 1.3.
 
 SSL Bridging
 -------------
-The following configuration terminates incoming HTTPS traffic on the router, then re-encrypts the traffic and sends
-to the backend server via HTTPS. This is useful if encryption is required for both legs, but you do not want to
+The following configuration terminates incoming HTTPS traffic on the router,
+then re-encrypts the traffic and sends to the backend server via HTTPS.
+This is useful if encryption is required for both legs, but you do not want to
 install publicly trusted certificates on each backend server.
 
-Backend service certificates are checked against the certificate authority specified in the configuration, which
-could be an internal CA.
+Backend service certificates are checked against the certificate authority
+specified in the configuration, which could be an internal CA.
 
 The ``https`` service listens on port 443 with backend ``bk-bridge-ssl`` to
 handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination.
 
-The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS and checks backend
-server has a valid certificate trusted by CA ``cacert``
+The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS
+and checks backend server has a valid certificate trusted by CA ``cacert``
 
 
 .. code-block:: none
