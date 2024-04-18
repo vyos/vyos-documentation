@@ -20,13 +20,13 @@ echo "Current UID/GID: $NEW_UID/$NEW_GID"
 
 # Create UNIX group on the fly if it does not exist
 if ! grep -q $NEW_GID /etc/group; then
-    groupadd --gid $NEW_GID $USER_NAME
+    sudo groupadd --gid $NEW_GID $USER_NAME
 fi
 
-useradd --shell /bin/bash --uid $NEW_UID --gid $NEW_GID --non-unique --create-home $USER_NAME
-usermod --append --groups sudo $USER_NAME
+sudo useradd --shell /bin/bash --uid $NEW_UID --gid $NEW_GID --non-unique --create-home $USER_NAME --key UID_MIN=500
+sudo usermod --append --groups sudo $USER_NAME
 sudo chown $NEW_UID:$NEW_GID /home/$USER_NAME
 export HOME=/home/$USER_NAME
 
 # Execute process
-exec /usr/sbin/gosu $USER_NAME "$@"
+sudo exec /usr/sbin/gosu $USER_NAME "$@"
