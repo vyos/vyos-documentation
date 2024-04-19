@@ -146,7 +146,16 @@ Backend
 
 
 
+<<<<<<< HEAD
 Gloabal
+=======
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> ssl no-verify
+
+  Configure requests to the backend server to use SSL encryption without
+  validating server certificate
+
+Global
+>>>>>>> 6703aeb4 (T6242: reverse-proxy: Document new backend option ssl no-verify)
 -------
 
 Global parameters
