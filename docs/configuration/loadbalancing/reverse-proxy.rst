@@ -169,7 +169,7 @@ checks can be used to determine their availability.
 .. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
    method <method>
 
-  Sets the HTTP method to be used, can be either: option, get, post, put
+  Sets the HTTP method to be used, can be either: option, head, get, post, put
 
 .. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
    uri <path>
@@ -177,13 +177,19 @@ checks can be used to determine their availability.
   Sets the endpoint to be used for health checks
 
 .. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
-   expect <condition>
+   expect status <code>
 
-  Sets the expected result condition for considering a server healthy.
-  Some possible examples are:
-   * ``status 200`` Expecting a 200 response code
-   * ``status 200-399`` Expecting a non-failure response code
-   * ``string success`` Expecting the string `success` in the response body
+  Sets the expected result status code for considering a server healthy.
+  Must be between 200 and 399.
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+   expect string '<content>'
+
+  Sets the expected string that should be contained in the result body
+  for considering a server healthy.
+
+  Note that only either ``expect string`` or ``expect status`` can be set
+  as success condition.
 
 
 Global
