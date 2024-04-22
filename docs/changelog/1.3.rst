@@ -8,6 +8,12 @@
    _ext/releasenotes.py
 
 
+2024-04-17
+==========
+
+* :vytask:`T6243` (bug): Update vyos-http-api-tools for package idna security advisory
+
+
 2024-04-12
 ==========
 
