@@ -89,7 +89,7 @@ msgid "**Already-selected external check**"
 msgstr "**Вже вибраний зовнішній чек**"
 
 #: ../../configuration/trafficpolicy/index.rst:547
-#: ../../configuration/trafficpolicy/index.rst:1181
+#: ../../configuration/trafficpolicy/index.rst:1249
 msgid "**Applies to:** Inbound traffic."
 msgstr "**Застосовується до:** Вхідного трафіку."
 
@@ -105,6 +105,7 @@ msgstr "**Застосовується до:** вихідного трафіку
 #: ../../configuration/trafficpolicy/index.rst:916
 #: ../../configuration/trafficpolicy/index.rst:961
 #: ../../configuration/trafficpolicy/index.rst:1020
+#: ../../configuration/trafficpolicy/index.rst:1154
 msgid "**Applies to:** Outbound traffic."
 msgstr "**Застосовується до:** вихідного трафіку."
 
@@ -437,6 +438,10 @@ msgstr "**Дисципліна черги** Fair/Flow Queue CoDel."
 msgid "**Queueing discipline:** Deficit Round Robin."
 msgstr "**Дисципліна стояння в черзі:** Дефіцитна кругова система."
 
+#: ../../configuration/trafficpolicy/index.rst:1153
+msgid "**Queueing discipline:** Deficit mode."
+msgstr "**Queueing discipline:** Deficit mode."
+
 #: ../../configuration/trafficpolicy/index.rst:766
 msgid "**Queueing discipline:** Generalized Random Early Drop."
 msgstr "**Дисципліна черги: ** Узагальнене випадкове раннє скидання."
@@ -579,6 +584,10 @@ msgstr "**Маршрутизатор VyOS:**"
 #: ../../configuration/protocols/bgp.rst:63
 msgid "**Weight check**"
 msgstr "**Перевірка ваги**"
+
+#: ../../configuration/trafficpolicy/index.rst:1208
+msgid "**(Default)** Flows are defined by the 5-tuple, fairness is applied over source and destination addresses and also over individual flows."
+msgstr "**(Default)** Flows are defined by the 5-tuple, fairness is applied over source and destination addresses and also over individual flows."
 
 #: ../../_include/interface-dhcp-options.txt:74
 msgid "**address** can be specified multiple times, e.g. 192.168.100.1 and/or 192.168.100.0/24"
@@ -1511,7 +1520,7 @@ msgstr "ACME"
 msgid "ACME Directory Resource URI."
 msgstr "ACME Directory Resource URI."
 
-#: ../../configuration/service/https.rst:59
+#: ../../configuration/service/https.rst:63
 msgid "API"
 msgstr "API"
 
@@ -1964,7 +1973,7 @@ msgstr "Додайте загальнодоступний сертифікат �
 msgid "Adding a 2FA with an OTP-key"
 msgstr "Додавання 2FA з OTP-ключем"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:263
+#: ../../configuration/loadbalancing/reverse-proxy.rst:301
 msgid "Additional global parameters are set, including the maximum number connection limit of 4000 and a minimum TLS version of 1.3."
 msgstr "Встановлюються додаткові глобальні параметри, включаючи обмеження на максимальну кількість з’єднань у 4000 і мінімальну версію TLS 1.3."
 
@@ -2179,6 +2188,10 @@ msgstr "Дозволити доступ до сайтів у домені без
 #: ../../configuration/protocols/bgp.rst:274
 msgid "Allow bgp to negotiate the extended-nexthop capability with it’s peer. If you are peering over a IPv6 Link-Local address then this capability is turned on automatically. If you are peering over a IPv6 Global Address then turning on this command will allow BGP to install IPv4 routes with IPv6 nexthops if you do not have IPv4 configured on interfaces."
 msgstr "Дозволити bgp узгоджувати можливості extended-nexthop зі своїм партнером. Якщо ви переглядаєте локальну адресу IPv6 Link-Local, ця можливість вмикається автоматично. Якщо ви переглядаєте через глобальну адресу IPv6, увімкнення цієї команди дозволить BGP інсталювати маршрути IPv4 із IPv6 nexthops, якщо IPv4 не налаштовано на інтерфейсах."
+
+#: ../../configuration/service/https.rst:81
+msgid "Allow cross-origin requests from `<origin>`."
+msgstr "Allow cross-origin requests from `<origin>`."
 
 #: ../../configuration/service/dns.rst:456
 msgid "Allow explicit IPv6 address for the interface."
@@ -2431,7 +2444,7 @@ msgstr "Застосування набору правил до зони"
 msgid "Applying a Rule-Set to an Interface"
 msgstr "Застосування набору правил до інтерфейсу"
 
-#: ../../configuration/trafficpolicy/index.rst:1150
+#: ../../configuration/trafficpolicy/index.rst:1218
 msgid "Applying a traffic policy"
 msgstr "Застосування політики дорожнього руху"
 
@@ -2691,7 +2704,7 @@ msgstr "Аутентифікація"
 msgid "Authentication Advanced Options"
 msgstr "Authentication Advanced Options"
 
-#: ../../configuration/interfaces/ethernet.rst:99
+#: ../../configuration/interfaces/ethernet.rst:115
 msgid "Authentication (EAPoL)"
 msgstr "Автентифікація (EAPoL)"
 
@@ -2851,7 +2864,7 @@ msgstr "Babel — це сучасний протокол маршрутизац�
 msgid "Backend"
 msgstr "Backend"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:299
+#: ../../configuration/loadbalancing/reverse-proxy.rst:339
 msgid "Backend service certificates are checked against the certificate authority specified in the configuration, which could be an internal CA."
 msgstr "Backend service certificates are checked against the certificate authority specified in the configuration, which could be an internal CA."
 
@@ -2863,9 +2876,13 @@ msgstr "Алгоритми балансу:"
 msgid "Balancing Rules"
 msgstr "Правила балансування"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:214
+#: ../../configuration/loadbalancing/reverse-proxy.rst:252
 msgid "Balancing based on domain name"
 msgstr "Балансування на основі доменного імені"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:365
+msgid "Balancing with HTTP health checks"
+msgstr "Balancing with HTTP health checks"
 
 #: ../../configuration/service/pppoe-server.rst:251
 msgid "Bandwidth Shaping"
@@ -2936,7 +2953,7 @@ msgstr "Оскільки агрегатор не може бути активн�
 msgid "Because existing sessions do not automatically fail over to a new path, the session table can be flushed on each connection state change:"
 msgstr "Оскільки наявні сеанси не переходять автоматично на новий шлях, таблицю сеансів можна скидати під час кожної зміни стану з’єднання:"
 
-#: ../../configuration/interfaces/ethernet.rst:70
+#: ../../configuration/interfaces/ethernet.rst:86
 msgid "Before enabling any hardware segmentation offload a corresponding software offload is required in GSO. Otherwise it becomes possible for a frame to be re-routed between devices and end up being unable to be transmitted."
 msgstr "Перш ніж увімкнути будь-яке розвантаження сегментації апаратного забезпечення, у GSO потрібне відповідне розвантаження програмного забезпечення. Інакше стає можливим перенаправлення кадру між пристроями та його передача буде неможливою."
 
@@ -3154,6 +3171,10 @@ msgstr "Використовуючи інтерфейси Pseudo-Ethernet, си�
 #: ../../configuration/service/webproxy.rst:393
 msgid "Bypassing the webproxy"
 msgstr "Обхід webproxy"
+
+#: ../../configuration/trafficpolicy/index.rst:1151
+msgid "CAKE"
+msgstr "CAKE"
 
 #: ../../configuration/pki/index.rst:172
 msgid "CA (Certificate Authority)"
@@ -3797,9 +3818,13 @@ msgstr "Налаштувати протокол, який використову
 msgid "Configure proxy port if it does not listen to the default port 80."
 msgstr "Налаштуйте проксі-порт, якщо він не слухає порт за замовчуванням 80."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:149
+#: ../../configuration/loadbalancing/reverse-proxy.rst:150
 msgid "Configure requests to the backend server to use SSL encryption and authenticate backend against <ca-certificate>"
 msgstr "Configure requests to the backend server to use SSL encryption and authenticate backend against <ca-certificate>"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:155
+msgid "Configure requests to the backend server to use SSL encryption without validating server certificate"
+msgstr "Configure requests to the backend server to use SSL encryption without validating server certificate"
 
 #: ../../configuration/system/sflow.rst:16
 msgid "Configure sFlow agent IPv4 or IPv6 address"
@@ -3853,7 +3878,7 @@ msgstr "Налаштуйте дискретний порт, через який 
 msgid "Configure the discrete port under which the TACACS server can be reached."
 msgstr "Налаштуйте дискретний порт, через який можна отримати доступ до сервера TACACS."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:175
+#: ../../configuration/loadbalancing/reverse-proxy.rst:212
 msgid "Configure the load-balancing reverse-proxy service for HTTP."
 msgstr "Налаштуйте службу зворотного проксі-сервера балансування навантаження для HTTP."
 
@@ -4636,6 +4661,10 @@ msgstr "Визначає максимум `<number> ` ехо-запитів бе
 msgid "Defines the maximum `<number>` of unanswered echo requests. Upon reaching the value `<number>`, the session will be reset. Default value is **3**."
 msgstr "Defines the maximum `<number>` of unanswered echo requests. Upon reaching the value `<number>`, the session will be reset. Default value is **3**."
 
+#: ../../configuration/trafficpolicy/index.rst:1213
+msgid "Defines the round-trip time used for active queue management (AQM) in milliseconds. The default value is 100."
+msgstr "Defines the round-trip time used for active queue management (AQM) in milliseconds. The default value is 100."
+
 #: ../../configuration/system/console.rst:21
 msgid "Defines the specified device as a system console. Available console devices can be (see completion helper):"
 msgstr "Визначає вказаний пристрій як системну консоль. Доступні консольні пристрої (див. помічник завершення):"
@@ -4856,6 +4885,10 @@ msgstr "Вимкнено за замовчуванням – модуль ядр
 msgid "Disables caching of peer information from forwarded NHRP Resolution Reply packets. This can be used to reduce memory consumption on big NBMA subnets."
 msgstr "Вимикає кешування однорангової інформації з пересланих пакетів відповіді NHRP Resolution Reply. Це можна використовувати для зменшення споживання пам’яті у великих підмережах NBMA."
 
+#: ../../configuration/trafficpolicy/index.rst:1173
+msgid "Disables flow isolation, all traffic passes through a single queue."
+msgstr "Disables flow isolation, all traffic passes through a single queue."
+
 #: ../../configuration/protocols/static.rst:99
 msgid "Disables interface-based IPv4 static route."
 msgstr "Вимикає статичний маршрут IPv4 на основі інтерфейсу."
@@ -4974,9 +5007,13 @@ msgstr "Do not allow IPv6 nexthop tracking to resolve via the default route. Thi
 msgid "Do not assign a link-local IPv6 address to this interface."
 msgstr "Не призначайте локальну IPv6-адресу для цього інтерфейсу."
 
-#: ../../configuration/trafficpolicy/index.rst:1210
+#: ../../configuration/trafficpolicy/index.rst:1278
 msgid "Do not configure IFB as the first step. First create everything else of your traffic-policy, and then you can configure IFB. Otherwise you might get the ``RTNETLINK answer: File exists`` error, which can be solved with ``sudo ip link delete ifb0``."
 msgstr "Не налаштовуйте IFB як перший крок. Спочатку створіть усе інше у своїй політиці трафіку, а потім можете налаштувати IFB. Інакше ви можете отримати помилку ``RTNETLINK answer: File exists``, яку можна вирішити за допомогою ``sudo ip link delete ifb0``."
+
+#: ../../configuration/service/https.rst:90
+msgid "Do not leave introspection enabled in production, it is a security risk."
+msgstr "Do not leave introspection enabled in production, it is a security risk."
 
 #: ../../configuration/protocols/bgp.rst:609
 msgid "Do not send Hard Reset CEASE Notification for \"Administrative Reset\" events. When set and Graceful Restart Notification capability is exchanged between the peers, Graceful Restart procedures apply, and routes will be retained."
@@ -5230,6 +5267,10 @@ msgstr "Увімкніть BFD на одному сусідньому BGP"
 msgid "Enable DHCP failover configuration for this address pool."
 msgstr "Увімкніть конфігурацію відмов DHCP для цього пулу адрес."
 
+#: ../../configuration/service/https.rst:88
+msgid "Enable GraphQL Schema introspection."
+msgstr "Enable GraphQL Schema introspection."
+
 #: ../../configuration/interfaces/wireless.rst:178
 msgid "Enable HT-delayed Block Ack ``[DELAYED-BA]``"
 msgstr "Увімкнути HT-Delayed Block Ack ``[DELAYED-BA]``"
@@ -5440,6 +5481,10 @@ msgstr "Увімкнені з’єднання PPPoE на вимогу викл�
 msgid "Enables Cisco style authentication on NHRP packets. This embeds the secret plaintext password to the outgoing NHRP packets. Incoming NHRP packets on this interface are discarded unless the secret password is present. Maximum length of the secret is 8 characters."
 msgstr "Вмикає автентифікацію в стилі Cisco для пакетів NHRP. Це вбудовує секретний відкритий пароль у вихідні пакети NHRP. Вхідні пакети NHRP на цьому інтерфейсі відхиляються, якщо немає секретного пароля. Максимальна довжина секрету – 8 символів."
 
+#: ../../configuration/loadbalancing/reverse-proxy.rst:166
+msgid "Enables HTTP health checks using OPTION HTTP requests against '/' and expecting a successful response code in the 200-399 range."
+msgstr "Enables HTTP health checks using OPTION HTTP requests against '/' and expecting a successful response code in the 200-399 range."
+
 #: ../../configuration/vrf/index.rst:480
 msgid "Enables an MPLS label to be attached to a route exported from the current unicast VRF to VPN. If the value specified is auto, the label value is automatically assigned from a pool maintained."
 msgstr "Дозволяє додавати мітку MPLS до маршруту, експортованого з поточного одноадресного VRF до VPN. Якщо вказано значення auto, значення мітки автоматично призначається з пулу, який підтримується."
@@ -5487,6 +5532,10 @@ msgstr "Увімкнення цієї функції збільшує ризик
 #: ../../configuration/service/https.rst:73
 msgid "Enforce strict path checking"
 msgstr "Забезпечити сувору перевірку шляху"
+
+#: ../../configuration/service/https.rst:77
+msgid "Enforce strict path checking."
+msgstr "Enforce strict path checking."
 
 #: ../../configuration/interfaces/bonding.rst:31
 msgid "Enslave `<member>` interface to bond `<interface>`."
@@ -5747,7 +5796,7 @@ msgid "Example: to be appended is set to ``vyos.net`` and the URL received is ``
 msgstr "Приклад: для додавання встановлено значення ``vyos.net``, а отримана URL-адреса ``www/foo.html``, система використовуватиме згенеровану кінцеву URL-адресу ``www.vyos.net/foo``. html``."
 
 #: ../../configuration/container/index.rst:216
-#: ../../configuration/service/https.rst:77
+#: ../../configuration/service/https.rst:110
 msgid "Example Configuration"
 msgstr "Приклад конфігурації"
 
@@ -5789,7 +5838,7 @@ msgstr "Example synproxy"
 #: ../../configuration/interfaces/bridge.rst:196
 #: ../../configuration/interfaces/macsec.rst:153
 #: ../../configuration/interfaces/wireless.rst:541
-#: ../../configuration/loadbalancing/reverse-proxy.rst:190
+#: ../../configuration/loadbalancing/reverse-proxy.rst:227
 #: ../../configuration/policy/index.rst:46
 #: ../../configuration/protocols/bgp.rst:1118
 #: ../../configuration/protocols/isis.rst:336
@@ -6138,6 +6187,30 @@ msgstr "Експорт потоку"
 msgid "Flow and packet-based balancing"
 msgstr "Балансування потоків і пакетів"
 
+#: ../../configuration/trafficpolicy/index.rst:1196
+msgid "Flows are defined by source-destination host pairs."
+msgstr "Flows are defined by source-destination host pairs."
+
+#: ../../configuration/trafficpolicy/index.rst:1181
+msgid "Flows are defined by the 5-tuple. Fairness is applied first over destination addresses, then over individual flows."
+msgstr "Flows are defined by the 5-tuple. Fairness is applied first over destination addresses, then over individual flows."
+
+#: ../../configuration/trafficpolicy/index.rst:1186
+msgid "Flows are defined by the 5-tuple. Fairness is applied first over source addresses, then over individual flows."
+msgstr "Flows are defined by the 5-tuple. Fairness is applied first over source addresses, then over individual flows."
+
+#: ../../configuration/trafficpolicy/index.rst:1191
+msgid "Flows are defined by the entire 5-tuple (source IP address, source port, destination IP address, destination port, transport protocol)."
+msgstr "Flows are defined by the entire 5-tuple (source IP address, source port, destination IP address, destination port, transport protocol)."
+
+#: ../../configuration/trafficpolicy/index.rst:1177
+msgid "Flows are defined only by destination address."
+msgstr "Flows are defined only by destination address."
+
+#: ../../configuration/trafficpolicy/index.rst:1204
+msgid "Flows are defined only by source address."
+msgstr "Flows are defined only by source address."
+
 #: ../../configuration/system/flow-accounting.rst:10
 msgid "Flows can be exported via two different protocols: NetFlow (versions 5, 9 and 10/IPFIX) and sFlow. Additionally, you may save flows to an in-memory table internally in a router."
 msgstr "Потоки можна експортувати за допомогою двох різних протоколів: NetFlow (версії 5, 9 і 10/IPFIX) і sFlow. Крім того, ви можете зберігати потоки у внутрішній таблиці в пам’яті маршрутизатора."
@@ -6341,7 +6414,7 @@ msgstr "Для правила :ref:`destination-nat66` адреса призна
 msgid "For the average user a serial console has no advantage over a console offered by a directly attached keyboard and screen. Serial consoles are much slower, taking up to a second to fill a 80 column by 24 line screen. Serial consoles generally only support non-proportional ASCII text, with limited support for languages other than English."
 msgstr "Для звичайного користувача послідовна консоль не має переваг перед консоллю, що пропонується безпосередньо підключеною клавіатурою та екраном. Послідовні консолі набагато повільніші, їм потрібна до секунди, щоб заповнити екран із 80 стовпців на 24 рядки. Послідовні консолі зазвичай підтримують лише непропорційний текст ASCII з обмеженою підтримкою інших мов, крім англійської."
 
-#: ../../configuration/trafficpolicy/index.rst:1183
+#: ../../configuration/trafficpolicy/index.rst:1251
 msgid "For the ingress traffic of an interface, there is only one policy you can directly apply, a **Limiter** policy. You cannot apply a shaping policy directly to the ingress traffic of any interface because shaping only works for outbound traffic."
 msgstr "Для вхідного трафіку інтерфейсу існує лише одна політика, яку можна застосувати безпосередньо, політика **Limiter**. Ви не можете застосувати політику формування безпосередньо до вхідного трафіку будь-якого інтерфейсу, оскільки формування працює лише для вихідного трафіку."
 
@@ -6378,6 +6451,10 @@ msgstr "For transit traffic, which is received by the router and forwarded, base
 #: ../../configuration/firewall/general.rst:62
 msgid "For transit traffic, which is received by the router and forwarded, base chain is **forward filter**: ``set firewall [ipv4 | ipv6] forward filter ...``"
 msgstr "For transit traffic, which is received by the router and forwarded, base chain is **forward filter**: ``set firewall [ipv4 | ipv6] forward filter ...``"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:161
+msgid "For web application providing information about their state HTTP health checks can be used to determine their availability."
+msgstr "For web application providing information about their state HTTP health checks can be used to determine their availability."
 
 #: ../../configuration/protocols/ospf.rst:350
 msgid "Formally, a virtual link looks like a point-to-point network connecting two ABR from one area one of which physically connected to a backbone area. This pseudo-network is considered to belong to a backbone area."
@@ -6553,7 +6630,7 @@ msgstr "У наведеному нижче прикладі ми маємо од
 msgid "Gloabal"
 msgstr "Глобальний"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:153
+#: ../../configuration/loadbalancing/reverse-proxy.rst:190
 msgid "Global"
 msgstr "Global"
 
@@ -6577,7 +6654,7 @@ msgstr "Global Options Firewall Configuration"
 msgid "Global options"
 msgstr "Глобальні опції"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:155
+#: ../../configuration/loadbalancing/reverse-proxy.rst:192
 msgid "Global parameters"
 msgstr "Глобальні параметри"
 
@@ -6589,6 +6666,10 @@ msgstr "Глобальні налаштування"
 #: ../../configuration/protocols/ospf.rst:1210
 msgid "Graceful Restart"
 msgstr "Витончений перезапуск"
+
+#: ../../configuration/service/https.rst:84
+msgid "GraphQL"
+msgstr "GraphQL"
 
 #: ../../configuration/highavailability/index.rst:236
 msgid "Gratuitous ARP"
@@ -6626,6 +6707,10 @@ msgstr "Ім&#39;я користувача базової автентифіка
 #: ../../configuration/system/option.rst:57
 msgid "HTTP client"
 msgstr "HTTP клієнт"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:160
+msgid "HTTP health check"
+msgstr "HTTP health check"
 
 #: ../../configuration/interfaces/wireless.rst:137
 msgid "HT (High Throughput) capabilities (802.11n)"
@@ -7859,6 +7944,10 @@ msgstr "Щоб розділити трафік, Fair Queue використов�
 msgid "In order to use PIM, it is necessary to configure a :abbr:`RP (Rendezvous Point)` for join messages to be sent to. Currently the only methodology to do this is via static rendezvous point commands."
 msgstr "In order to use PIM, it is necessary to configure a :abbr:`RP (Rendezvous Point)` for join messages to be sent to. Currently the only methodology to do this is via static rendezvous point commands."
 
+#: ../../configuration/interfaces/ethernet.rst:111
+msgid "In order to use TSO/LRO with VMXNET3 adapters, the SG offloading option must also be enabled."
+msgstr "In order to use TSO/LRO with VMXNET3 adapters, the SG offloading option must also be enabled."
+
 #: ../../configuration/interfaces/ethernet.rst:95
 msgid "In order to use TSO/LRO with VMXNET3 adaters one must also enable the SG offloading option."
 msgstr "Щоб використовувати TSO/LRO з адатерами VMXNET3, потрібно також увімкнути опцію розвантаження SG."
@@ -8520,7 +8609,7 @@ msgstr "Дозвольте демону SNMP слухати лише IP-адре
 msgid "Lets assume the following topology:"
 msgstr "Припустимо таку топологію:"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:193
+#: ../../configuration/loadbalancing/reverse-proxy.rst:230
 msgid "Level 4 balancing"
 msgstr "4 рівень балансування"
 
@@ -8540,7 +8629,7 @@ msgstr "Тривалість життя зменшується на кількі
 msgid "Like on Microsoft Windows, Apple iOS/iPadOS out of the box does not expose all available VPN options via the device GUI."
 msgstr "Like on Microsoft Windows, Apple iOS/iPadOS out of the box does not expose all available VPN options via the device GUI."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:165
+#: ../../configuration/loadbalancing/reverse-proxy.rst:202
 msgid "Limit allowed cipher algorithms used during SSL/TLS handshake"
 msgstr "Обмеження дозволених алгоритмів шифрування, які використовуються під час рукостискання SSL/TLS"
 
@@ -8552,7 +8641,7 @@ msgstr "Обмежити вхід до `<limit> ` за кожну секунду
 msgid "Limit logins to ``rate-limit`` attemps per every `<seconds>`. Rate time must be between 15 and 600 seconds."
 msgstr "Обмежити вхід до ``рейт-ліміт`` спроб за кожну `<seconds> `. Час ставки має становити від 15 до 600 секунд."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:160
+#: ../../configuration/loadbalancing/reverse-proxy.rst:197
 msgid "Limit maximum number of connections"
 msgstr "Обмежити максимальну кількість підключень"
 
@@ -9859,7 +9948,7 @@ msgstr "Після того, як сусід знайдено, запис вва
 msgid "Once a route is assessed a penalty, the penalty is decreased by half each time a predefined amount of time elapses (half-life-time). When the accumulated penalties fall below a predefined threshold (reuse-value), the route is unsuppressed and added back into the BGP routing table."
 msgstr "Щойно маршрут отримує штраф, штраф зменшується вдвічі кожного разу, коли спливає заздалегідь визначений проміжок часу (період напіврозпаду). Коли накопичені штрафні санкції падають нижче попередньо визначеного порогу (значення повторного використання), маршрут не пригнічується та додається назад у таблицю маршрутизації BGP."
 
-#: ../../configuration/trafficpolicy/index.rst:1152
+#: ../../configuration/trafficpolicy/index.rst:1220
 msgid "Once a traffic-policy is created, you can apply it to an interface:"
 msgstr "Після створення політики трафіку ви можете застосувати її до інтерфейсу:"
 
@@ -10039,7 +10128,7 @@ msgstr "Режими роботи"
 
 #: ../../configuration/interfaces/bonding.rst:512
 #: ../../configuration/interfaces/dummy.rst:51
-#: ../../configuration/interfaces/ethernet.rst:132
+#: ../../configuration/interfaces/ethernet.rst:148
 #: ../../configuration/interfaces/loopback.rst:41
 #: ../../configuration/interfaces/macsec.rst:106
 #: ../../configuration/interfaces/pppoe.rst:278
@@ -10417,6 +10506,10 @@ msgstr "За замовчуванням відбирається кожен па
 msgid "Per default the user session is being replaced if a second authentication request succeeds. Such session requests can be either denied or allowed entirely, which would allow multiple sessions for a user in the latter case. If it is denied, the second session is being rejected even if the authentication succeeds, the user has to terminate its first session and can then authentication again."
 msgstr "За замовчуванням сеанс користувача замінюється, якщо другий запит на автентифікацію вдається. Такі запити на сеанс можна відхилити або повністю дозволити, що в останньому випадку дозволить користувачу кілька сеансів. Якщо його відхилено, другий сеанс відхиляється, навіть якщо автентифікація пройшла успішно, користувач має припинити свій перший сеанс і може знову пройти автентифікацію."
 
+#: ../../configuration/trafficpolicy/index.rst:1200
+msgid "Perform NAT lookup before applying flow-isolation rules."
+msgstr "Perform NAT lookup before applying flow-isolation rules."
+
 #: ../../configuration/system/option.rst:108
 msgid "Performance"
 msgstr "Продуктивність"
@@ -10523,7 +10616,7 @@ msgstr "Групи портів"
 
 #: ../../configuration/interfaces/bonding.rst:282
 #: ../../configuration/interfaces/bridge.rst:188
-#: ../../configuration/interfaces/ethernet.rst:124
+#: ../../configuration/interfaces/ethernet.rst:140
 msgid "Port Mirror (SPAN)"
 msgstr "Дзеркало порту (SPAN)"
 
@@ -10809,7 +10902,7 @@ msgstr "Опублікуйте порт для контейнера."
 msgid "Pull a new image for container"
 msgstr "Витягніть нове зображення для контейнера"
 
-#: ../../configuration/interfaces/ethernet.rst:117
+#: ../../configuration/interfaces/ethernet.rst:133
 #: ../../configuration/interfaces/virtual-ethernet.rst:39
 #: ../../configuration/interfaces/wireless.rst:408
 msgid "QinQ (802.1ad)"
@@ -11023,7 +11116,7 @@ msgstr "Рекомендується для великих установок."
 msgid "Record types"
 msgstr "Record types"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:174
+#: ../../configuration/loadbalancing/reverse-proxy.rst:211
 msgid "Redirect HTTP to HTTPS"
 msgstr "Перенаправлення HTTP на HTTPS"
 
@@ -11055,7 +11148,7 @@ msgstr "Резервування та розподіл навантаження.
 msgid "Register DNS record ``example.vyos.io`` on DNS server ``ns1.vyos.io``"
 msgstr "Зареєструвати DNS-запис ``example.vyos.io`` на DNS-сервері ``ns1.vyos.io``"
 
-#: ../../configuration/interfaces/ethernet.rst:110
+#: ../../configuration/interfaces/ethernet.rst:126
 #: ../../configuration/interfaces/virtual-ethernet.rst:33
 #: ../../configuration/interfaces/wireless.rst:401
 msgid "Regular VLANs (802.1q)"
@@ -11402,11 +11495,11 @@ msgstr "Набори правил"
 msgid "Rule-set overview"
 msgstr "Огляд набору правил"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:220
+#: ../../configuration/loadbalancing/reverse-proxy.rst:258
 msgid "Rule 10 matches requests with the domain name ``node1.example.com`` forwards to the backend ``bk-api-01``"
 msgstr "Правило 10 зіставляє запити з доменним іменем `` node1.example.com ``, які пересилають до серверної частини `` bk-api-01``"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:257
+#: ../../configuration/loadbalancing/reverse-proxy.rst:295
 msgid "Rule 10 matches requests with the exact URL path ``/.well-known/xxx`` and redirects to location ``/certs/``."
 msgstr "Правило 10 зіставляє запити з точним URL-шляхом ``/.well-known/xxx`` і переспрямовує до розташування ``/certs/``."
 
@@ -11414,11 +11507,11 @@ msgstr "Правило 10 зіставляє запити з точним URL-ш
 msgid "Rule 110 is hit, so connection is accepted."
 msgstr "Rule 110 is hit, so connection is accepted."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:260
+#: ../../configuration/loadbalancing/reverse-proxy.rst:298
 msgid "Rule 20 matches requests with URL paths ending in ``/mail`` or exact path ``/email/bar`` redirect to location ``/postfix/``."
 msgstr "Правило 20 зіставляє запити з URL-шляхами, що закінчуються на ``/mail`` або точним шляхом ``/email/bar``, перенаправляють до розташування ``/postfix/``."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:223
+#: ../../configuration/loadbalancing/reverse-proxy.rst:261
 msgid "Rule 20 matches requests with the domain name ``node2.example.com`` forwards to the backend ``bk-api-02``"
 msgstr "Правило 20 зіставляє запити з доменним іменем ``node2.example.com``, які пересилають на серверну частину ``bk-api-02``"
 
@@ -11537,7 +11630,7 @@ msgstr "SSH був розроблений як заміна Telnet і незах
 msgid "SSID to be used in IEEE 802.11 management frames"
 msgstr "SSID для використання в кадрах керування IEEE 802.11"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:294
+#: ../../configuration/loadbalancing/reverse-proxy.rst:333
 msgid "SSL Bridging"
 msgstr "SSL Bridging"
 
@@ -11857,6 +11950,10 @@ msgstr "Налаштувати інтерфейс віртуального ту�
 msgid "Set a container description"
 msgstr "Встановіть опис контейнера"
 
+#: ../../configuration/trafficpolicy/index.rst:1169
+msgid "Set a description for the shaper."
+msgstr "Set a description for the shaper."
+
 #: ../../configuration/system/conntrack.rst:113
 msgid "Set a destination and/or source address. Accepted input for ipv4:"
 msgstr "Set a destination and/or source address. Accepted input for ipv4:"
@@ -11877,7 +11974,7 @@ msgstr "Встановіть обмеження на максимальну кі
 msgid "Set a meaningful description."
 msgstr "Складіть змістовний опис."
 
-#: ../../configuration/service/https.rst:63
+#: ../../configuration/service/https.rst:67
 msgid "Set a named api key. Every key has the same, full permissions on the system."
 msgstr "Установіть іменований ключ API. Кожен ключ має однакові повні дозволи в системі."
 
@@ -11904,7 +12001,7 @@ msgstr "Встановіть дію для політики маршрутної
 msgid "Set action to take on entries matching this rule."
 msgstr "Встановіть дію для записів, які відповідають цьому правилу."
 
-#: ../../configuration/service/https.rst:79
+#: ../../configuration/service/https.rst:112
 msgid "Set an API-KEY is the minimal configuration to get a working API Endpoint."
 msgstr "Встановлення API-KEY є мінімальною конфігурацією для отримання робочої кінцевої точки API."
 
@@ -12309,6 +12406,14 @@ msgstr "Встановіть адресу внутрішнього порту"
 msgid "Set the address of the backend server to which the incoming traffic will be forwarded"
 msgstr "Встановіть адресу внутрішнього сервера, на який буде перенаправлятися вхідний трафік"
 
+#: ../../configuration/service/https.rst:94
+msgid "Set the authentication type for GraphQL, default option is key. Available options are:"
+msgstr "Set the authentication type for GraphQL, default option is key. Available options are:"
+
+#: ../../configuration/service/https.rst:106
+msgid "Set the byte length of the JWT secret. Default is 32."
+msgstr "Set the byte length of the JWT secret. Default is 32."
+
 #: ../../configuration/highavailability/index.rst:295
 msgid "Set the default VRRP version to use. This defaults to 2, but IPv6 instances will always use version 3."
 msgstr "Встановіть стандартну версію VRRP для використання. За умовчанням це значення 2, але екземпляри IPv6 завжди використовуватимуть версію 3."
@@ -12345,6 +12450,10 @@ msgstr "Установіть глобальне налаштування для 
 msgid "Set the global setting for related connections."
 msgstr "Установіть глобальне налаштування для пов’язаних з’єднань."
 
+#: ../../configuration/service/https.rst:102
+msgid "Set the lifetime for JWT tokens in seconds. Default is 3600 seconds."
+msgstr "Set the lifetime for JWT tokens in seconds. Default is 3600 seconds."
+
 #: ../../configuration/service/https.rst:28
 msgid "Set the listen port of the local API, this has no effect on the webserver. The default is port 8080"
 msgstr "Встановіть порт прослуховування локального API, це не впливає на веб-сервер. Типовим є порт 8080"
@@ -12360,6 +12469,10 @@ msgstr "Встановіть максимальну довжину заповн�
 #: ../../configuration/system/conntrack.rst:52
 msgid "Set the maximum number of TCP half-open connections."
 msgstr "Встановіть максимальну кількість напіввідкритих підключень TCP."
+
+#: ../../configuration/service/https.rst:60
+msgid "Set the maximum request body size in megabytes. Default is 1MB."
+msgstr "Set the maximum request body size in megabytes. Default is 1MB."
 
 #: ../../_include/interface-eapol.txt:12
 msgid "Set the name of the SSL :abbr:`CA (Certificate Authority)` PKI entry used for authentication of the remote side. If an intermediate CA certificate is specified, then all parent CA certificates that exist in the PKI, such as the root CA or additional intermediate CAs, will automatically be used during certificate validation to ensure that the full chain of trust is available."
@@ -12429,6 +12542,10 @@ msgstr "Налаштуйте таблицю маршрутизації для п
 msgid "Set the session id, which is a 32-bit integer value. Uniquely identifies the session being created. The value used must match the peer_session_id value being used at the peer."
 msgstr "Установіть ідентифікатор сеансу, який є 32-розрядним цілим значенням. Унікально ідентифікує створюваний сеанс. Використане значення має відповідати значенню peer_session_id, яке використовується на одноранговому пристрої."
 
+#: ../../configuration/trafficpolicy/index.rst:1164
+msgid "Set the shaper bandwidth, either as an explicit bitrate or a percentage of the interface bandwidth."
+msgstr "Set the shaper bandwidth, either as an explicit bitrate or a percentage of the interface bandwidth."
+
 #: ../../configuration/system/conntrack.rst:31
 msgid "Set the size of the hash table. The connection tracking hash table makes searching the connection tracking table faster. The hash table uses “buckets” to record entries in the connection tracking table."
 msgstr "Встановити розмір хеш-таблиці. Хеш-таблиця відстеження з’єднань пришвидшує пошук у таблиці відстеження з’єднань. Хеш-таблиця використовує «відра» для запису записів у таблицю відстеження з’єднань."
@@ -12458,6 +12575,18 @@ msgstr "Set the window scale factor for TCP window scaling"
 #: ../../configuration/system/login.rst:128
 msgid "Set window of concurrently valid codes."
 msgstr "Встановити вікно одночасно дійсних кодів."
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:172
+msgid "Sets the HTTP method to be used, can be either: option, get, post, put"
+msgstr "Sets the HTTP method to be used, can be either: option, get, post, put"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:177
+msgid "Sets the endpoint to be used for health checks"
+msgstr "Sets the endpoint to be used for health checks"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:182
+msgid "Sets the expected result condition for considering a server healthy. Some possible examples are:"
+msgstr "Sets the expected result condition for considering a server healthy. Some possible examples are:"
 
 #: ../../configuration/container/index.rst:16
 msgid "Sets the image name in the hub registry"
@@ -12683,7 +12812,7 @@ msgstr "Показати список встановлених сертифік�
 msgid "Show all BFD peers"
 msgstr "Показати всі аналоги BFD"
 
-#: ../../configuration/interfaces/ethernet.rst:210
+#: ../../configuration/interfaces/ethernet.rst:226
 msgid "Show available offloading functions on given `<interface>`"
 msgstr "Показати доступні функції розвантаження для даного `<interface> `"
 
@@ -12701,7 +12830,7 @@ msgstr "Показати міст `<name> ` mdb відображає поточ�
 
 #: ../../configuration/interfaces/bonding.rst:516
 #: ../../configuration/interfaces/dummy.rst:55
-#: ../../configuration/interfaces/ethernet.rst:136
+#: ../../configuration/interfaces/ethernet.rst:152
 #: ../../configuration/interfaces/loopback.rst:45
 #: ../../configuration/interfaces/virtual-ethernet.rst:59
 msgid "Show brief interface information."
@@ -12745,7 +12874,7 @@ msgstr "Показати детальну інформацію про базов
 
 #: ../../configuration/interfaces/bonding.rst:531
 #: ../../configuration/interfaces/dummy.rst:67
-#: ../../configuration/interfaces/ethernet.rst:150
+#: ../../configuration/interfaces/ethernet.rst:166
 #: ../../configuration/interfaces/pppoe.rst:282
 #: ../../configuration/interfaces/sstp-client.rst:121
 #: ../../configuration/interfaces/virtual-ethernet.rst:72
@@ -12777,7 +12906,7 @@ msgstr "Показати загальну інформацію про конкр
 msgid "Show info about the Wireguard service. It also shows the latest handshake."
 msgstr "Показати інформацію про службу Wireguard. Він також показує останнє рукостискання."
 
-#: ../../configuration/interfaces/ethernet.rst:169
+#: ../../configuration/interfaces/ethernet.rst:185
 msgid "Show information about physical `<interface>`"
 msgstr "Показати інформацію про фізичний `<interface> `"
 
@@ -12895,7 +13024,7 @@ msgstr "Show the logs of all firewall; show all ipv6 firewall logs; show all log
 msgid "Show the route"
 msgstr "Показати маршрут"
 
-#: ../../configuration/interfaces/ethernet.rst:242
+#: ../../configuration/interfaces/ethernet.rst:258
 msgid "Show transceiver information from plugin modules, e.g SFP+, QSFP"
 msgstr "Показати інформацію про трансивер із модулів плагінів, наприклад SFP+, QSFP"
 
@@ -13475,7 +13604,7 @@ msgstr "Укажіть значення ідентифікатора агрег�
 msgid "Specify the interface address used locally on the interface where the prefix has been delegated to. ID must be a decimal integer."
 msgstr "Укажіть адресу інтерфейсу, яка використовується локально на інтерфейсі, якому було делеговано префікс. ID має бути десятковим цілим числом."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:170
+#: ../../configuration/loadbalancing/reverse-proxy.rst:207
 msgid "Specify the minimum required TLS version 1.2 or 1.3"
 msgstr "Укажіть мінімально необхідну версію TLS 1.2 або 1.3"
 
@@ -13522,6 +13651,10 @@ msgstr "Говорив"
 #: ../../configuration/service/webproxy.rst:9
 msgid "Squid_ is a caching and forwarding HTTP web proxy. It has a wide variety of uses, including speeding up a web server by caching repeated requests, caching web, DNS and other computer network lookups for a group of people sharing network resources, and aiding security by filtering traffic. Although primarily used for HTTP and FTP, Squid includes limited support for several other protocols including Internet Gopher, SSL,[6] TLS and HTTPS. Squid does not support the SOCKS protocol."
 msgstr "Squid_ — веб-проксі HTTP, що кешує та пересилає. Він має широкий спектр застосувань, включаючи прискорення веб-сервера шляхом кешування повторюваних запитів, кешування пошуку в Інтернеті, DNS та інших комп’ютерних мережах для групи людей, які спільно використовують мережеві ресурси, а також сприяння безпеці шляхом фільтрації трафіку. Хоча в основному використовується для HTTP і FTP, Squid включає обмежену підтримку кількох інших протоколів, включаючи Internet Gopher, SSL, [6] TLS і HTTPS. Squid не підтримує протокол SOCKS."
+
+#: ../../configuration/service/https.rst:56
+msgid "Start Webserver in given VRF."
+msgstr "Start Webserver in given VRF."
 
 #: ../../configuration/service/https.rst:56
 msgid "Start Webserver in given  VRF."
@@ -13843,7 +13976,7 @@ msgstr "Тимчасово вимкніть цей сервер RADIUS. Його
 msgid "Temporary disable this TACACS server. It won't be queried."
 msgstr "Тимчасово вимкніть цей сервер TACACS. Його не запитуватимуть."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:248
+#: ../../configuration/loadbalancing/reverse-proxy.rst:286
 msgid "Terminate SSL"
 msgstr "Завершити SSL"
 
@@ -13879,7 +14012,7 @@ msgstr "Тестування та валідація"
 msgid "Thanks to this discovery, any subsequent traffic between PC4 and PC5 will not be using the multicast-address between the leaves as they both know behind which Leaf the PCs are connected. This saves traffic as less multicast packets sent reduces the load on the network, which improves scalability when more leaves are added."
 msgstr "Завдяки цьому відкриттю будь-який подальший трафік між PC4 і PC5 не використовуватиме багатоадресну адресу між листами, оскільки вони обидва знають, за яким листом підключені ПК. Це економить трафік, оскільки менше надісланих багатоадресних пакетів зменшує навантаження на мережу, що покращує масштабованість, коли додається більше листів."
 
-#: ../../configuration/trafficpolicy/index.rst:1194
+#: ../../configuration/trafficpolicy/index.rst:1262
 msgid "That is how it is possible to do the so-called \"ingress shaping\"."
 msgstr "Таким чином можна зробити так зване «вхідне формування»."
 
@@ -13923,7 +14056,7 @@ msgstr "DN і пароль для прив’язки під час викона
 msgid "The FQ-CoDel policy distributes the traffic into 1024 FIFO queues and tries to provide good service between all of them. It also tries to keep the length of all the queues short."
 msgstr "Політика FQ-CoDel розподіляє трафік у 1024 черги FIFO та намагається забезпечити якісне обслуговування між усіма ними. Він також намагається зберегти коротку довжину всіх черг."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:218
+#: ../../configuration/loadbalancing/reverse-proxy.rst:256
 msgid "The HTTP service listen on TCP port 80."
 msgstr "Служба HTTP слухає TCP-порт 80."
 
@@ -14040,7 +14173,7 @@ msgstr "``Адресу`` можна налаштувати як на інтер�
 msgid "The ``address`` parameter can be either an IPv4 or IPv6 address, but you can not mix IPv4 and IPv6 in the same group, and will need to create groups with different VRIDs specially for IPv4 and IPv6. If you want to use IPv4 + IPv6 address you can use option ``excluded-address``"
 msgstr "Параметр ``address`` може бути як адресою IPv4, так і IPv6, але ви не можете змішувати IPv4 і IPv6 в одній групі, і вам потрібно буде створити групи з різними VRID спеціально для IPv4 і IPv6. Якщо ви хочете використовувати адресу IPv4 + IPv6, ви можете скористатися опцією ``excluded-address``"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:305
+#: ../../configuration/loadbalancing/reverse-proxy.rst:345
 msgid "The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS and checks backend server has a valid certificate trusted by CA ``cacert``"
 msgstr "The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS and checks backend server has a valid certificate trusted by CA ``cacert``"
 
@@ -14048,15 +14181,15 @@ msgstr "The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HT
 msgid "The ``http`` service is lestens on port 80 and force redirects from HTTP to HTTPS."
 msgstr "Служба ``http`` зменшується на порту 80 і примусово перенаправляє з HTTP на HTTPS."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:251
+#: ../../configuration/loadbalancing/reverse-proxy.rst:289
 msgid "The ``http`` service is listens on port 80 and force redirects from HTTP to HTTPS."
 msgstr "The ``http`` service is listens on port 80 and force redirects from HTTP to HTTPS."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:302
+#: ../../configuration/loadbalancing/reverse-proxy.rst:342
 msgid "The ``https`` service listens on port 443 with backend ``bk-bridge-ssl`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
 msgstr "The ``https`` service listens on port 443 with backend ``bk-bridge-ssl`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:254
+#: ../../configuration/loadbalancing/reverse-proxy.rst:292
 msgid "The ``https`` service listens on port 443 with backend ``bk-default`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
 msgstr "The ``https`` service listens on port 443 with backend ``bk-default`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
 
@@ -14121,7 +14254,7 @@ msgstr "Наведена нижче IP-адреса `192.0.2.1` використ
 msgid "The bonding interface provides a method for aggregating multiple network interfaces into a single logical \"bonded\" interface, or LAG, or ether-channel, or port-channel. The behavior of the bonded interfaces depends upon the mode; generally speaking, modes provide either hot standby or load balancing services. Additionally, link integrity monitoring may be performed."
 msgstr "Інтерфейс зв’язування надає метод для об’єднання кількох мережевих інтерфейсів в один логічний «зв’язаний» інтерфейс, або LAG, або ether-channel, або port-channel. Поведінка з’єднаних інтерфейсів залежить від режиму; загалом, режими забезпечують або гаряче очікування, або послуги балансування навантаження. Крім того, може здійснюватися моніторинг цілісності посилання."
 
-#: ../../configuration/trafficpolicy/index.rst:1179
+#: ../../configuration/trafficpolicy/index.rst:1247
 msgid "The case of ingress shaping"
 msgstr "Випадок вхідного формування"
 
@@ -14397,7 +14530,7 @@ msgstr "Наступні команди перетворюються на &quot;
 msgid "The following commands would be required to set options for a given dynamic routing protocol inside a given vrf:"
 msgstr "Для встановлення параметрів для даного протоколу динамічної маршрутизації в даному vrf знадобляться наступні команди:"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:215
+#: ../../configuration/loadbalancing/reverse-proxy.rst:253
 msgid "The following configuration demonstrates how to use VyOS to achieve load balancing based on the domain name."
 msgstr "Наступна конфігурація демонструє, як використовувати VyOS для досягнення балансування навантаження на основі доменного імені."
 
@@ -14413,11 +14546,11 @@ msgstr "Наступна конфігурація на VyOS застосовує
 msgid "The following configuration reverse-proxy terminate SSL."
 msgstr "Наступна конфігурація зворотного проксі завершує SSL."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:249
+#: ../../configuration/loadbalancing/reverse-proxy.rst:287
 msgid "The following configuration terminates SSL on the router."
 msgstr "The following configuration terminates SSL on the router."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:295
+#: ../../configuration/loadbalancing/reverse-proxy.rst:334
 msgid "The following configuration terminates incoming HTTPS traffic on the router, then re-encrypts the traffic and sends to the backend server via HTTPS. This is useful if encryption is required for both legs, but you do not want to install publicly trusted certificates on each backend server."
 msgstr "The following configuration terminates incoming HTTPS traffic on the router, then re-encrypts the traffic and sends to the backend server via HTTPS. This is useful if encryption is required for both legs, but you do not want to install publicly trusted certificates on each backend server."
 
@@ -14618,7 +14751,7 @@ msgstr "Найпомітнішим застосуванням протоколу
 msgid "The multicast-group used by all leaves for this vlan extension. Has to be the same on all leaves that has this interface."
 msgstr "Багатоадресна група, яка використовується всіма, залишає це розширення vlan. Має бути однаковим на всіх листах, які мають цей інтерфейс."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:185
+#: ../../configuration/loadbalancing/reverse-proxy.rst:222
 msgid "The name of the service can be different, in this example it is only for convenience."
 msgstr "Назва послуги може бути різною, в даному прикладі лише для зручності."
 
@@ -16161,11 +16294,15 @@ msgstr "Ці команди створюють міст, який викорис
 msgid "This commands specifies the Finite State Machine (FSM) intended to control the timing of the execution of SPF calculations in response to IGP events. The process described in :rfc:`8405`."
 msgstr "Ці команди вказують кінцевий автомат (FSM), призначений для керування часом виконання обчислень SPF у відповідь на події IGP. Процес, описаний у :rfc:`8405`."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:195
+#: ../../configuration/loadbalancing/reverse-proxy.rst:367
+msgid "This configuration enables HTTP health checks on backend servers."
+msgstr "This configuration enables HTTP health checks on backend servers."
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:232
 msgid "This configuration enables the TCP reverse proxy for the \"my-tcp-api\" service. Incoming TCP connections on port 8888 will be load balanced across the backend servers (srv01 and srv02) using the round-robin load-balancing algorithm."
 msgstr "Ця конфігурація вмикає зворотний проксі TCP для служби &quot;my-tcp-api&quot;. Вхідні TCP-з’єднання на порт 8888 розподілятимуть навантаження між внутрішніми серверами (srv01 і srv02) за допомогою циклічного алгоритму балансування навантаження."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:177
+#: ../../configuration/loadbalancing/reverse-proxy.rst:214
 msgid "This configuration listen on port 80 and redirect incoming requests to HTTPS:"
 msgstr "Ця конфігурація прослуховує порт 80 і перенаправляє вхідні запити на HTTPS:"
 
@@ -16665,7 +16802,7 @@ msgstr "Це покаже вам статистику всіх наборів п
 msgid "This will show you a summary of rule-sets and groups"
 msgstr "Це покаже вам підсумок наборів правил і груп"
 
-#: ../../configuration/trafficpolicy/index.rst:1188
+#: ../../configuration/trafficpolicy/index.rst:1256
 msgid "This workaround lets you apply a shaping policy to the ingress traffic by first redirecting it to an in-between virtual interface (`Intermediate Functional Block`_). There, in that virtual interface, you will be able to apply any of the policies that work for outbound traffic, for instance, a shaping one."
 msgstr "Це обхідне рішення дає змогу застосувати політику формування до вхідного трафіку, спершу перенаправляючи його на проміжний віртуальний інтерфейс (`Проміжний функціональний блок`_). Там, у цьому віртуальному інтерфейсі, ви зможете застосувати будь-яку політику, яка працює для вихідного трафіку, наприклад, політику формування."
 
@@ -16915,7 +17052,7 @@ msgstr "Щоб увімкнути автентифікацію на основі
 msgid "To enable bandwidth shaping via RADIUS, the option rate-limit needs to be enabled."
 msgstr "Щоб увімкнути формування пропускної здатності через RADIUS, потрібно ввімкнути опцію обмеження швидкості."
 
-#: ../../configuration/service/https.rst:68
+#: ../../configuration/service/https.rst:72
 msgid "To enable debug messages. Available via :opcmd:`show log` or :opcmd:`monitor log`"
 msgstr "Щоб увімкнути повідомлення про налагодження. Доступно через :opcmd:`show log` або :opcmd:`monitor log`"
 
@@ -17187,6 +17324,10 @@ msgstr "Перетворювачі USB на послідовний порт ви
 #: ../../configuration/system/syslog.rst:128
 msgid "UUCP subsystem"
 msgstr "Підсистема UUCP"
+
+#: ../../configuration/interfaces/ethernet.rst:73
+msgid "Under some circumstances, LRO is known to modify the packet headers of forwarded traffic, which breaks the end-to-end principle of computer networking. LRO is also only able to offload TCP segments encapsulated in IPv4 packets. Due to these limitations, it is recommended to use GRO (Generic Receive Offload) where possible. More information on the limitations of LRO can be found here: https://lwn.net/Articles/358910/"
+msgstr "Under some circumstances, LRO is known to modify the packet headers of forwarded traffic, which breaks the end-to-end principle of computer networking. LRO is also only able to offload TCP segments encapsulated in IPv4 packets. Due to these limitations, it is recommended to use GRO (Generic Receive Offload) where possible. More information on the limitations of LRO can be found here: https://lwn.net/Articles/358910/"
 
 #: ../../configuration/interfaces/vxlan.rst:102
 msgid "Unicast"
@@ -18192,7 +18333,7 @@ msgstr "Центральна частота робочого каналу VHT - 
 
 #: ../../configuration/interfaces/bonding.rst:275
 #: ../../configuration/interfaces/bridge.rst:123
-#: ../../configuration/interfaces/ethernet.rst:107
+#: ../../configuration/interfaces/ethernet.rst:123
 #: ../../configuration/interfaces/pseudo-ethernet.rst:63
 #: ../../configuration/interfaces/virtual-ethernet.rst:30
 #: ../../configuration/interfaces/wireless.rst:398
@@ -19264,7 +19405,7 @@ msgstr "Тепер ви можете «набрати» вузла за допо
 msgid "You can now SSH into your system using admin/admin as a default user supplied from the ``lfkeitel/tacacs_plus:latest`` container."
 msgstr "Тепер ви можете підключатися до вашої системи через SSH, використовуючи admin/admin як користувача за замовчуванням, який надається з контейнера ``lfkeitel/tacacs_plus:latest``."
 
-#: ../../configuration/trafficpolicy/index.rst:1158
+#: ../../configuration/trafficpolicy/index.rst:1226
 msgid "You can only apply one policy per interface and direction, but you could reuse a policy on different interfaces and directions:"
 msgstr "Ви можете застосувати лише одну політику для кожного інтерфейсу та напрямку, але ви можете повторно використовувати політику для різних інтерфейсів та напрямків:"
 
@@ -19432,11 +19573,11 @@ msgstr ":abbr:`GENEVE (Generic Network Virtualization Encapsulation)` підтр
 msgid ":abbr:`GRE (Generic Routing Encapsulation)`, GRE/IPsec (or IPIP/IPsec, SIT/IPsec, or any other stateless tunnel protocol over IPsec) is the usual way to protect the traffic inside a tunnel."
 msgstr ":abbr:`GRE (Generic Routing Encapsulation)`, GRE/IPsec (або IPIP/IPsec, SIT/IPsec або будь-який інший тунельний протокол без збереження стану через IPsec) — це звичайний спосіб захисту трафіку всередині тунелю."
 
-#: ../../configuration/interfaces/ethernet.rst:74
+#: ../../configuration/interfaces/ethernet.rst:90
 msgid ":abbr:`GRO (Generic receive offload)` is the complement to GSO. Ideally any frame assembled by GRO should be segmented to create an identical sequence of frames using GSO, and any sequence of frames segmented by GSO should be able to be reassembled back to the original by GRO. The only exception to this is IPv4 ID in the case that the DF bit is set for a given IP header. If the value of the IPv4 ID is not sequentially incrementing it will be altered so that it is when a frame assembled via GRO is segmented via GSO."
 msgstr ":abbr:`GRO (Generic receive offload)` є доповненням до GSO. В ідеалі будь-який кадр, зібраний за допомогою GRO, повинен бути сегментований для створення ідентичної послідовності кадрів за допомогою GSO, а будь-яка послідовність кадрів, сегментована за допомогою GSO, повинна мати можливість повторно зібратися до оригіналу за допомогою GRO. Єдиним винятком із цього є ідентифікатор IPv4 у випадку, якщо біт DF встановлено для певного IP-заголовка. Якщо значення ідентифікатора IPv4 не збільшується послідовно, воно буде змінено таким чином, коли кадр, зібраний через GRO, сегментується через GSO."
 
-#: ../../configuration/interfaces/ethernet.rst:64
+#: ../../configuration/interfaces/ethernet.rst:80
 msgid ":abbr:`GSO (Generic Segmentation Offload)` is a pure software offload that is meant to deal with cases where device drivers cannot perform the offloads described above. What occurs in GSO is that a given skbuff will have its data broken out over multiple skbuffs that have been resized to match the MSS provided via skb_shinfo()->gso_size."
 msgstr ":abbr:`GSO (Generic Segmentation Offload)` — це чисте програмне розвантаження, призначене для вирішення випадків, коли драйвери пристроїв не можуть виконувати описані вище розвантаження. Що відбувається в GSO, так це те, що даний skbuff матиме свої дані, розбиті на кілька skbuff, розмір яких було змінено відповідно до MSS, наданого через skb_shinfo()-&gt;gso_size."
 
@@ -19463,6 +19604,10 @@ msgstr ":abbr:`LDP (Label Distribution Protocol)` — це протокол си
 #: ../../configuration/service/lldp.rst:7
 msgid ":abbr:`LLDP (Link Layer Discovery Protocol)` is a vendor-neutral link layer protocol in the Internet Protocol Suite used by network devices for advertising their identity, capabilities, and neighbors on an IEEE 802 local area network, principally wired Ethernet. The protocol is formally referred to by the IEEE as Station and Media Access Control Connectivity Discovery specified in IEEE 802.1AB and IEEE 802.3-2012 section 6 clause 79."
 msgstr ":abbr:`LLDP (Link Layer Discovery Protocol)` — це протокол рівня зв’язку, який не залежить від постачальника, у пакеті Інтернет-протоколів, який використовується мережевими пристроями для реклами своєї ідентичності, можливостей і сусідів у локальній мережі IEEE 802, головним чином дротовому Ethernet. Протокол офіційно називається IEEE як Station and Media Access Control Connectivity Discovery, визначений у IEEE 802.1AB та IEEE 802.3-2012, розділ 6, пункт 79."
+
+#: ../../configuration/interfaces/ethernet.rst:64
+msgid ":abbr:`LRO (Large Receive Offload)` is a technique designed to boost the efficiency of how your computer's network interface card (NIC) processes incoming network traffic. Typically, network data arrives in smaller chunks called packets. Processing each packet individually consumes CPU (central processing unit) resources. Lots of small packets can lead to a performance bottleneck. Instead of handing the CPU each packet as it comes in, LRO instructs the NIC to combine multiple incoming packets into a single, larger packet. This larger packet is then passed to the CPU for processing."
+msgstr ":abbr:`LRO (Large Receive Offload)` is a technique designed to boost the efficiency of how your computer's network interface card (NIC) processes incoming network traffic. Typically, network data arrives in smaller chunks called packets. Processing each packet individually consumes CPU (central processing unit) resources. Lots of small packets can lead to a performance bottleneck. Instead of handing the CPU each packet as it comes in, LRO instructs the NIC to combine multiple incoming packets into a single, larger packet. This larger packet is then passed to the CPU for processing."
 
 #: ../../configuration/interfaces/macsec.rst:74
 msgid ":abbr:`MKA (MACsec Key Agreement protocol)` is used to synchronize keys between individual peers."
@@ -19528,7 +19673,7 @@ msgstr ":abbr:`RPKI (інфраструктура відкритих ключі�
 msgid ":abbr:`RPKI (Resource Public Key Infrastructure)` is a framework designed to secure the Internet routing infrastructure. It associates BGP route announcements with the correct originating :abbr:`ASN (Autonomus System Number)` which BGP routers can then use to check each route against the corresponding :abbr:`ROA (Route Origin Authorisation)` for validity. RPKI is described in :rfc:`6480`."
 msgstr ":abbr:`RPKI (Resource Public Key Infrastructure)` is a framework designed to secure the Internet routing infrastructure. It associates BGP route announcements with the correct originating :abbr:`ASN (Autonomus System Number)` which BGP routers can then use to check each route against the corresponding :abbr:`ROA (Route Origin Authorisation)` for validity. RPKI is described in :rfc:`6480`."
 
-#: ../../configuration/interfaces/ethernet.rst:82
+#: ../../configuration/interfaces/ethernet.rst:98
 msgid ":abbr:`RPS (Receive Packet Steering)` is logically a software implementation of :abbr:`RSS (Receive Side Scaling)`. Being in software, it is necessarily called later in the datapath. Whereas RSS selects the queue and hence CPU that will run the hardware interrupt handler, RPS selects the CPU to perform protocol processing above the interrupt handler. This is accomplished by placing the packet on the desired CPU's backlog queue and waking up the CPU for processing. RPS has some advantages over RSS:"
 msgstr ":abbr:`RPS (Receive Packet Steering)` є логічно програмною реалізацією :abbr:`RSS (Receive Side Scaling)`. Перебуваючи в програмному забезпеченні, він обов&#39;язково викликається пізніше в шляху даних. У той час як RSS вибирає чергу і, отже, ЦП, який запускатиме обробник апаратних переривань, RPS вибирає ЦП для виконання обробки протоколу над обробником переривань. Це досягається шляхом розміщення пакета в черзі резервування потрібного ЦП і пробудження ЦП для обробки. RPS має деякі переваги перед RSS:"
 
@@ -19723,6 +19868,10 @@ msgstr "`4. Додайте додаткові параметри`_"
 #: ../../configuration/service/dhcp-server.rst:203
 msgid "`<name>` must be identical on both sides!"
 msgstr "`<name> ` повинні бути однаковими з обох сторін!"
+
+#: ../../configuration/trafficpolicy/index.rst:1156
+msgid "`Common Applications Kept Enhanced`_ (CAKE) is a comprehensive queue management system, implemented as a queue discipline (qdisc) for the Linux kernel. It is designed to replace and improve upon the complex hierarchy of simple qdiscs presently required to effectively tackle the bufferbloat problem at the network edge."
+msgstr "`Common Applications Kept Enhanced`_ (CAKE) is a comprehensive queue management system, implemented as a queue discipline (qdisc) for the Linux kernel. It is designed to replace and improve upon the complex hierarchy of simple qdiscs presently required to effectively tackle the bufferbloat problem at the network edge."
 
 #: ../../configuration/pki/index.rst:204
 msgid "``$ tail -n +2 ca.key | head -n -1 | tr -d '\\n'``"
@@ -20292,6 +20441,10 @@ msgstr "``обмін ключами``, який протокол слід вик
 msgid "``key`` - a private key, which will be used for authenticating local router on remote peer:"
 msgstr "``key`` - приватний ключ, який буде використовуватися для автентифікації локального маршрутизатора на віддаленому пірі:"
 
+#: ../../configuration/service/https.rst:96
+msgid "``key`` use API keys configured in ``service https api keys``"
+msgstr "``key`` use API keys configured in ``service https api keys``"
+
 #: ../../configuration/system/option.rst:137
 msgid "``latency``: A server profile focused on lowering network latency. This profile favors performance over power savings by setting ``intel_pstate`` and ``min_perf_pct=100``."
 msgstr "``latency``: профіль сервера, спрямований на зниження затримки мережі. Цей профіль надає перевагу продуктивності, а не енергозбереженню, встановлюючи ``intel_pstate`` і ``min_perf_pct=100``."
@@ -20775,6 +20928,18 @@ msgstr "``static`` - Статично налаштовані маршрути"
 msgid "``station`` - Connects to another access point"
 msgstr "``станція`` - Підключається до іншої точки доступу"
 
+#: ../../configuration/loadbalancing/reverse-proxy.rst:185
+msgid "``status 200-399`` Expecting a non-failure response code"
+msgstr "``status 200-399`` Expecting a non-failure response code"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:184
+msgid "``status 200`` Expecting a 200 response code"
+msgstr "``status 200`` Expecting a 200 response code"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:186
+msgid "``string success`` Expecting the string `success` in the response body"
+msgstr "``string success`` Expecting the string `success` in the response body"
+
 #: ../../configuration/firewall/ipv4.rst:103
 #: ../../configuration/firewall/ipv6.rst:103
 msgid "``synproxy``: synproxy the packet."
@@ -20823,6 +20988,10 @@ msgstr "``пропускна здатність``: профіль сервера
 #: ../../configuration/vpn/ipsec.rst:73
 msgid "``timeout`` keep-alive timeout in seconds <2-86400> (default 120) IKEv1 only"
 msgstr "``timeout`` тайм-аут підтримки активності в секундах &lt;2-86400&gt; (за замовчуванням 120) Лише IKEv1"
+
+#: ../../configuration/service/https.rst:98
+msgid "``token`` use JWT tokens."
+msgstr "``token`` use JWT tokens."
 
 #: ../../configuration/interfaces/bonding.rst:80
 msgid "``transmit-load-balance`` - Adaptive transmit load balancing: channel bonding that does not require any special switch support."
@@ -21249,9 +21418,17 @@ msgstr "ip-переадресація"
 msgid "isisd"
 msgstr "isisd"
 
+#: ../../configuration/interfaces/ethernet.rst:106
+msgid "it can be used with any NIC"
+msgstr "it can be used with any NIC"
+
 #: ../../configuration/interfaces/ethernet.rst:90
 msgid "it can be used with any NIC,"
 msgstr "його можна використовувати з будь-якою мережевою карткою,"
+
+#: ../../configuration/interfaces/ethernet.rst:108
+msgid "it does not increase hardware device interrupt rate, although it does introduce inter-processor interrupts (IPIs)"
+msgstr "it does not increase hardware device interrupt rate, although it does introduce inter-processor interrupts (IPIs)"
 
 #: ../../configuration/interfaces/ethernet.rst:92
 msgid "it does not increase hardware device interrupt rate (although it does introduce inter-processor interrupts (IPIs))."
@@ -21646,6 +21823,10 @@ msgstr "повільно: попросіть партнера передават
 #: ../../configuration/service/dhcp-server.rst:366
 msgid "smtp-server"
 msgstr "smtp-сервер"
+
+#: ../../configuration/interfaces/ethernet.rst:107
+msgid "software filters can easily be added to hash over new protocols"
+msgstr "software filters can easily be added to hash over new protocols"
 
 #: ../../configuration/interfaces/ethernet.rst:91
 msgid "software filters can easily be added to hash over new protocols,"

@@ -177,6 +177,10 @@ msgid "If there some troubleshooting guides related to the commands. Explain it 
 msgstr "Якщо є деякі посібники з усунення несправностей, пов’язані з командами. Поясніть це в наступній додатковій частині."
 
 #: ../../documentation.rst:448
+msgid "If you also want to update your fork on GitHub, use the following: ``$ git push origin current``"
+msgstr "If you also want to update your fork on GitHub, use the following: ``$ git push origin current``"
+
+#: ../../documentation.rst:448
 msgid "If you also want to update your fork on GitHub, use the following: ``$ git push origin master``"
 msgstr "Якщо ви також хочете оновити свій форк на GitHub, використовуйте наступне: ``$ git push origin master``"
 
