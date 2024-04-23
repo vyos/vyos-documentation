@@ -65,4 +65,4 @@ This section shows how to statically map an IP address to a hostname for local
    Thus the address configured as :cfgcmd:`set system static-host-mapping
    host-name <hostname> inet <address>` can be reached via multiple names.
 
-   Multiple aliases can pe specified per host-name.
+   Multiple aliases can be specified per host-name.
