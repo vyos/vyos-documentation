@@ -501,6 +501,9 @@ different levels in the hierarchy.
     Warning: configuration changes have not been saved.
     vyos@vyos:~$
 
+.. hint:: You can specify a commit message with
+  :cfgcmd:`commit comment <message>`.
+
 .. _save:
 
 .. cfgcmd:: save
