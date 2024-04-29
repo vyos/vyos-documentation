@@ -8,6 +8,40 @@
    _ext/releasenotes.py
 
 
+2024-04-25
+==========
+
+* :vytask:`T6263` ``(bug): Multicast: Could not commit multicast config with multicast join group using source-address``
+* :vytask:`T5833` ``(bug): Not all AFIs compatible with VRF``
+
+
+2024-04-24
+==========
+
+* :vytask:`T6255` ``(bug): Static table description should not contain white-space``
+* :vytask:`T6226` ``(feature): add HAPROXY `tcp-request content accept` related block to load-balancing reverse proxy config``
+* :vytask:`T6109` ``(bug): remote syslog do not get all the logs``
+* :vytask:`T6217` ``(feature): VRRP contrack-sync script change name of the logger``
+* :vytask:`T6244` ``(feature): Spacing of "Show System Uptime" hard to parse``
+
+
+2024-04-23
+==========
+
+* :vytask:`T6260` ``(bug): image-tools: remove failed image directory if 'No space left on device' error``
+* :vytask:`T6261` ``(default): Typo in op_mode connect_disconnect print statement for check_ppp_running``
+* :vytask:`T6237` ``(feature): IPSec remote access VPN: ability to set EAP ID of clients``
+
+
+2024-04-22
+==========
+
+* :vytask:`T5996` ``(bug): unescape backslashes for config save, compare commands``
+* :vytask:`T6103` ``(bug): DHCP-server bootfile-name double slash syntax weird behaviour``
+* :vytask:`T6080` ``(default): Default NTP server settings``
+* :vytask:`T5986` ``(bug): Container: Error on commit when environment variable value contains \n line break``
+
+
 2024-04-21
 ==========
 
@@ -28,12 +62,6 @@
 * :vytask:`T6035` ``(bug): QoS policy shaper queue-type random-detect requires  limit avpkt``
 * :vytask:`T6246` ``(feature): Enable basic haproxy http-check configuration options``
 * :vytask:`T6242` ``(feature): Loadbalancer reverse-proxy: SSL backend skip CA certificate verification``
-
-
-2024-04-18
-==========
-
-* :vytask:`T6245` ``(bug): Show openvpn server fails sometime``
 
 
 2024-04-17
