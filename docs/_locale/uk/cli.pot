@@ -28,23 +28,23 @@ msgstr "**Робоча конфігурація** – це конфігурац�
 msgid "A VyOS system has three major types of configurations:"
 msgstr "Система VyOS має три основні типи конфігурацій:"
 
-#: ../../cli.rst:576
+#: ../../cli.rst:579
 msgid "A reboot because you did not enter ``confirm`` will not take you necessarily to the *saved configuration*, but to the point before the unfortunate commit."
 msgstr "Перезавантаження через те, що ви не ввели ``confirm``, не обов’язково переведе вас до *збереженої конфігурації*, а до точки перед невдалим комітом."
 
-#: ../../cli.rst:690
+#: ../../cli.rst:693
 msgid "Access opmode from config mode"
 msgstr "Доступ до opmode з режиму конфігурації"
 
-#: ../../cli.rst:697
+#: ../../cli.rst:700
 msgid "Access to these commands are possible through the use of the ``run [command]`` command. From this command you will have access to everything accessible from operational mode."
 msgstr "Доступ до цих команд можливий за допомогою команди ``run [command]``. За допомогою цієї команди ви матимете доступ до всього, доступного з робочого режиму."
 
-#: ../../cli.rst:651
+#: ../../cli.rst:654
 msgid "Add comment as an annotation to a configuration node."
 msgstr "Додайте коментар як анотацію до вузла конфігурації."
 
-#: ../../cli.rst:539
+#: ../../cli.rst:542
 msgid "All changes in the working config will thus be lost."
 msgstr "Таким чином, усі зміни в робочій конфігурації буде втрачено."
 
@@ -52,7 +52,7 @@ msgstr "Таким чином, усі зміни в робочій конфіг�
 msgid "All commands executed here are relative to the configuration level you have entered. You can do everything from the top level, but commands will be quite lengthy when manually typing them."
 msgstr "Усі команди, що виконуються тут, відносяться до рівня конфігурації, який ви ввели. Ви можете робити все з верхнього рівня, але команди будуть досить довгими, якщо їх вводити вручну."
 
-#: ../../cli.rst:676
+#: ../../cli.rst:679
 msgid "An important thing to note is that since the comment is added on top of the section, it will not appear if the ``show <section>`` command is used. With the above example, the `show firewall` command would return starting after the ``firewall {`` line, hiding the comment."
 msgstr "Важливо зауважити, що оскільки коментар додається вгорі розділу, він не відображатиметься, якщо ``показати<section> `` використовується команда. У наведеному вище прикладі команда `show firewall` повертатиметься після рядка ``firewall {``, приховуючи коментар."
 
@@ -72,11 +72,11 @@ msgstr "За замовчуванням конфігурація відобра�
 msgid "Command Line Interface"
 msgstr "Інтерфейс командного рядка"
 
-#: ../../cli.rst:701
+#: ../../cli.rst:704
 msgid "Command completion and syntax help with ``?`` and ``[tab]`` will also work."
 msgstr "Доповнення команд і синтаксична довідка з ``?`` і ``[tab]`` також працюватимуть."
 
-#: ../../cli.rst:754
+#: ../../cli.rst:757
 msgid "Compare configurations"
 msgstr "Порівняйте конфігурації"
 
@@ -92,11 +92,11 @@ msgstr "Огляд конфігурації"
 msgid "Configuration commands are flattened from the tree into 'one-liner' commands shown in :opcmd:`show configuration commands` from operation mode. Commands are relative to the level where they are executed and all redundant information from the current level is removed from the command entered."
 msgstr "Команди конфігурації зведені з дерева в команди «одного рядка», показані в :opcmd:`показати команди конфігурації` з режиму роботи. Команди відносяться до рівня, на якому вони виконуються, і вся зайва інформація з поточного рівня видаляється з введеної команди."
 
-#: ../../cli.rst:535
+#: ../../cli.rst:538
 msgid "Configuration mode can not be exited while uncommitted changes exist. To exit configuration mode without applying changes, the :cfgcmd:`exit discard` command must be used."
 msgstr "Неможливо вийти з режиму конфігурації, поки існують незафіксовані зміни. Щоб вийти з режиму налаштування без застосування змін, необхідно використати команду :cfgcmd:`exit discard`."
 
-#: ../../cli.rst:583
+#: ../../cli.rst:586
 msgid "Copy a configuration element."
 msgstr "Скопіюйте елемент конфігурації."
 
@@ -104,7 +104,7 @@ msgstr "Скопіюйте елемент конфігурації."
 msgid "Editing the configuration"
 msgstr "Редагування конфігурації"
 
-#: ../../cli.rst:662
+#: ../../cli.rst:665
 msgid "Example:"
 msgstr "приклад:"
 
@@ -124,11 +124,11 @@ msgstr "Наприклад, введення ``sh`` і клавіша ``TAB`` п
 msgid "Get a collection of all the set commands required which led to the running configuration."
 msgstr "Отримайте збірку всіх необхідних команд, які призвели до запущеної конфігурації."
 
-#: ../../cli.rst:933
+#: ../../cli.rst:936
 msgid "If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config."
 msgstr "Якщо ви підключені віддалено, ви втратите з’єднання. Ви можете спочатку скопіювати конфігурацію, відредагувати її, щоб забезпечити з’єднання, і завантажити відредаговану конфігурацію."
 
-#: ../../cli.rst:919
+#: ../../cli.rst:922
 msgid "In the case you want to completely delete your configuration and restore the default one, you can enter the following command in configuration mode:"
 msgstr "Якщо ви хочете повністю видалити конфігурацію та відновити стандартну, ви можете ввести таку команду в режимі конфігурації:"
 
@@ -140,15 +140,15 @@ msgstr "It is also possible to display all :cfgcmd:`set` commands within configu
 msgid "It is also possible to display all `set` commands within configuration mode using :cfgcmd:`show | commands`"
 msgstr "Також можна відобразити всі команди `set` в режимі конфігурації за допомогою :cfgcmd:`show | команди`"
 
-#: ../../cli.rst:723
+#: ../../cli.rst:726
 msgid "Local Archive"
 msgstr "Місцевий архів"
 
-#: ../../cli.rst:714
+#: ../../cli.rst:717
 msgid "Managing configurations"
 msgstr "Керування конфігураціями"
 
-#: ../../cli.rst:627
+#: ../../cli.rst:630
 msgid "Note that ``show`` command respects your edit level and from this level you can view the modified firewall ruleset with just ``show`` with no parameters."
 msgstr "Зауважте, що команда ``show`` поважає ваш рівень редагування, і на цьому рівні ви можете переглядати змінений набір правил брандмауера лише за допомогою ``show`` без параметрів."
 
@@ -164,31 +164,31 @@ msgstr "Оперативний режим дозволяє командам ви
 msgid "Prompt changes from ``$`` to ``#``. To exit configuration mode, type ``exit``."
 msgstr "Підказка змінюється з ``$`` на ``#``. Щоб вийти з режиму налаштування, введіть ``вихід``."
 
-#: ../../cli.rst:850
+#: ../../cli.rst:853
 msgid "Remote Archive"
 msgstr "Віддалений архів"
 
-#: ../../cli.rst:616
+#: ../../cli.rst:619
 msgid "Rename a configuration element."
 msgstr "Перейменувати елемент конфігурації."
 
-#: ../../cli.rst:917
+#: ../../cli.rst:920
 msgid "Restore Default"
 msgstr "Відновити значення за замовчуванням"
 
-#: ../../cli.rst:725
+#: ../../cli.rst:728
 msgid "Revisions are stored on disk. You can view, compare and rollback them to any previous revisions if something goes wrong."
 msgstr "Ревізії зберігаються на диску. Ви можете переглядати, порівнювати та повертати їх до будь-яких попередніх версій, якщо щось піде не так."
 
-#: ../../cli.rst:828
+#: ../../cli.rst:831
 msgid "Rollback Changes"
 msgstr "Відкат змін"
 
-#: ../../cli.rst:835
+#: ../../cli.rst:838
 msgid "Rollback to revision N (currently requires reboot)"
 msgstr "Відкат до версії N (наразі вимагає перезавантаження)"
 
-#: ../../cli.rst:884
+#: ../../cli.rst:887
 msgid "Saving and loading manually"
 msgstr "Збереження та завантаження вручну"
 
@@ -200,11 +200,11 @@ msgstr "Дивіться розділ конфігурації цього док
 msgid "Seeing and navigating the configuration"
 msgstr "Перегляд конфігурації та навігація"
 
-#: ../../cli.rst:810
+#: ../../cli.rst:813
 msgid "Show commit revision difference."
 msgstr "Показати різницю в редакції фіксації."
 
-#: ../../cli.rst:861
+#: ../../cli.rst:864
 msgid "Specify remote location of commit archive as any of the below :abbr:`URI (Uniform Resource Identifier)`"
 msgstr "Укажіть віддалене розташування архіву комітів як будь-яке з наведених нижче :abbr:`URI (уніфікований ідентифікатор ресурсу)`"
 
@@ -228,15 +228,15 @@ msgstr "Команда :cfgcmd:`show` у режимі конфігурації �
 msgid "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be commited, just like other config changes."
 msgstr "Команда ``comment`` дозволяє вставити коментар над ``<config node> `` розділ конфігурації. Коли відображаються, коментарі обмежуються ``/*`` і ``*/`` як розділювачі відкриття/закриття. Коментарі потрібно зафіксувати, як і інші зміни конфігурації."
 
-#: ../../cli.rst:653
+#: ../../cli.rst:656
 msgid "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be committed, just like other config changes."
 msgstr "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be committed, just like other config changes."
 
-#: ../../cli.rst:784
+#: ../../cli.rst:787
 msgid "The command :cfgcmd:`compare` allows you to compare different type of configurations. It also lets you compare different revisions through the :cfgcmd:`compare N M` command, where N and M are revision numbers. The output will describe how the configuration N is when compared to M indicating with a plus sign (``+``) the additional parts N has when compared to M, and indicating with a minus sign (``-``) the lacking parts N misses when compared to M."
 msgstr "Команда :cfgcmd:`compare` дозволяє порівнювати різні типи конфігурацій. Це також дозволяє порівнювати різні версії за допомогою команди :cfgcmd:`compare NM`, де N і M є номерами версій. Вихідні дані описуватимуть конфігурацію N у порівнянні з M, вказуючи знаком плюс (``+``) додаткові частини, які N має порівняно з M, і вказуючи знаком мінус (``-``) недоліки частини N відсутні в порівнянні з M."
 
-#: ../../cli.rst:813
+#: ../../cli.rst:816
 msgid "The command above also lets you see the difference between two commits. By default the difference with the running config is shown."
 msgstr "Наведена вище команда також дозволяє побачити різницю між двома комітами. За умовчанням показано різницю з поточною конфігурацією."
 
@@ -252,11 +252,11 @@ msgstr "Конфігурацію можна редагувати за допом
 msgid "The current hierarchy level can be changed by the :cfgcmd:`edit` command."
 msgstr "Поточний рівень ієрархії можна змінити командою :cfgcmd:`edit`."
 
-#: ../../cli.rst:872
+#: ../../cli.rst:875
 msgid "The number of revisions don't affect the commit-archive."
 msgstr "Кількість редагувань не впливає на архів комітів."
 
-#: ../../cli.rst:930
+#: ../../cli.rst:933
 msgid "Then you may want to :cfgcmd:`save` in order to delete the saved configuration too."
 msgstr "Тоді ви можете :cfgcmd:`зберегти`, щоб також видалити збережену конфігурацію."
 
@@ -268,7 +268,7 @@ msgstr "Ці команди також пов’язані з рівнем, на
 msgid "These two commands above are essentially the same, just executed from different levels in the hierarchy."
 msgstr "Ці дві наведені вище команди по суті однакові, просто виконуються з різних рівнів ієрархії."
 
-#: ../../cli.rst:824
+#: ../../cli.rst:827
 msgid "This means four commits ago we did ``set system ipv6 disable-forwarding``."
 msgstr "Це означає, що чотири коміти тому ми зробили ``налаштування системного ipv6 disable-forwarding``."
 
@@ -280,7 +280,7 @@ msgstr "Щоб видалити запис конфігурації, скори�
 msgid "To enter configuration mode use the ``configure`` command:"
 msgstr "Щоб увійти в режим налаштування, використовуйте команду ``configure``:"
 
-#: ../../cli.rst:658
+#: ../../cli.rst:661
 msgid "To remove an existing comment from your current configuration, specify an empty string enclosed in double quote marks (``\"\"``) as the comment text."
 msgstr "Щоб видалити наявний коментар із вашої поточної конфігурації, укажіть порожній рядок у подвійних лапках (``&quot;&quot;``) як текст коментаря."
 
@@ -288,11 +288,11 @@ msgstr "Щоб видалити наявний коментар із вашої 
 msgid "Use the ``show configuration commands | strip-private`` command when you want to hide private data. You may want to do so if you want to share your configuration on the `forum`_."
 msgstr "Використовуйте ``показати команди конфігурації | strip-private``, коли ви хочете приховати особисті дані. Ви можете зробити це, якщо хочете поділитися своєю конфігурацією на `форумі`_."
 
-#: ../../cli.rst:895
+#: ../../cli.rst:898
 msgid "Use this command to load a configuration which will replace the running configuration. Define the location of the configuration file to be loaded. You can use a path to a local file, an SCP address, an SFTP address, an FTP address, an HTTP address, an HTTPS address or a TFTP address."
 msgstr "Використовуйте цю команду, щоб завантажити конфігурацію, яка замінить поточну конфігурацію. Визначте розташування файлу конфігурації, який потрібно завантажити. Ви можете використовувати шлях до локального файлу, адресу SCP, адресу SFTP, адресу FTP, адресу HTTP, адресу HTTPS або адресу TFTP."
 
-#: ../../cli.rst:508
+#: ../../cli.rst:511
 msgid "Use this command to preserve configuration changes upon reboot. By default it is stored at */config/config.boot*. In the case you want to store the configuration file somewhere else, you can add a local path, a SCP address, a FTP address or a TFTP address."
 msgstr "Використовуйте цю команду, щоб зберегти зміни конфігурації після перезавантаження. За замовчуванням він зберігається в */config/config.boot*. Якщо ви хочете зберегти файл конфігурації в іншому місці, ви можете додати локальний шлях, адресу SCP, адресу FTP або адресу TFTP."
 
@@ -300,15 +300,15 @@ msgstr "Використовуйте цю команду, щоб зберегт�
 msgid "Use this command to set the value of a parameter or to create a new element."
 msgstr "Використовуйте цю команду, щоб встановити значення параметра або створити новий елемент."
 
-#: ../../cli.rst:760
+#: ../../cli.rst:763
 msgid "Use this command to spot what the differences are between different configurations."
 msgstr "Використовуйте цю команду, щоб визначити відмінності між різними конфігураціями."
 
-#: ../../cli.rst:552
+#: ../../cli.rst:555
 msgid "Use this command to temporarily commit your changes and set the number of minutes available for validation. ``confirm`` must be entered within those minutes, otherwise the system will reboot into the previous configuration. The default value is 10 minutes."
 msgstr "Використовуйте цю команду, щоб тимчасово зафіксувати зміни та встановити кількість хвилин, доступних для перевірки. ``confirm`` необхідно ввести протягом цих хвилин, інакше система перезавантажиться до попередньої конфігурації. Стандартне значення становить 10 хвилин."
 
-#: ../../cli.rst:730
+#: ../../cli.rst:733
 msgid "View all existing revisions on the local system."
 msgstr "Переглянути всі існуючі версії в локальній системі."
 
@@ -324,7 +324,7 @@ msgstr "Перегляньте поточну активну конфігура�
 msgid "View the current active configuration in readable JSON format."
 msgstr "Перегляньте поточну активну конфігурацію в читабельному форматі JSON."
 
-#: ../../cli.rst:852
+#: ../../cli.rst:855
 msgid "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successful the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
 msgstr "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successful the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
 
@@ -332,11 +332,11 @@ msgstr "VyOS can upload the configuration to a remote location after each call t
 msgid "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successfull the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
 msgstr "VyOS може завантажити конфігурацію у віддалене місце після кожного виклику :cfgcmd:`commit`. Вам потрібно буде встановити розташування архіву комітів. Підтримуються сервери TFTP, FTP, SCP і SFTP. Кожного разу, коли :cfgcmd:`commit` є успішним, файл ``config.boot`` буде скопійовано до визначеного місця призначення. Ім’я файлу, що використовується на віддаленому хості, буде ``config.boot-hostname.YYYYMMDD_HHMMSS``."
 
-#: ../../cli.rst:716
+#: ../../cli.rst:719
 msgid "VyOS comes with an integrated versioning system for the system configuration. It automatically maintains a backup of every previous configuration which has been committed to the system. The configurations are versioned locally for rollback but they can also be stored on a remote host for archiving/backup reasons."
 msgstr "VyOS поставляється з інтегрованою системою керування версіями для конфігурації системи. Він автоматично підтримує резервну копію кожної попередньої конфігурації, яка була зафіксована в системі. Конфігурації керуються локальними версіями для відкоту, але їх також можна зберігати на віддаленому хості для архівування/резервного копіювання."
 
-#: ../../cli.rst:756
+#: ../../cli.rst:759
 msgid "VyOS lets you compare different configurations."
 msgstr "VyOS дозволяє порівнювати різні конфігурації."
 
@@ -348,7 +348,7 @@ msgstr "VyOS використовує уніфікований файл конф
 msgid "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be commited, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
 msgstr "А якщо ви робите щось небезпечне? Припустімо, що ви хочете налаштувати брандмауер і не впевнені, що немає помилок, які заблокують вас у вашій системі. Ви можете використовувати підтверджену фіксацію. Якщо ви введете команду ``commit-confirm``, ваші зміни буде зафіксовано, і якщо ви не введете команду ``confirm`` протягом 10 хвилин, ваша система перезавантажиться до попередньої версії конфігурації."
 
-#: ../../cli.rst:558
+#: ../../cli.rst:561
 msgid "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be committed, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
 msgstr "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be committed, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
 
@@ -360,7 +360,7 @@ msgstr "Під час входу в режим конфігурації ви п�
 msgid "When going into configuration mode, prompt changes from ``$`` to ``#``."
 msgstr "Під час переходу в режим налаштування підказка змінюється з ``$`` на ``#``."
 
-#: ../../cli.rst:692
+#: ../../cli.rst:695
 msgid "When inside configuration mode you are not directly able to execute operational commands."
 msgstr "У режимі конфігурації ви не можете безпосередньо виконувати робочі команди."
 
@@ -368,7 +368,7 @@ msgstr "У режимі конфігурації ви не можете безп
 msgid "When the output of a command results in more lines than can be displayed on the terminal screen the output is paginated as indicated by a ``:`` prompt."
 msgstr "Якщо вихід команди призводить до більшої кількості рядків, ніж може бути відображено на екрані терміналу, результат розбивається на сторінки, як вказує підказка ``:``."
 
-#: ../../cli.rst:889
+#: ../../cli.rst:892
 msgid "When using the save_ command, you can add a specific location where to store your configuration file. And, when needed it, you will be able to load it with the ``load`` command:"
 msgstr "Використовуючи команду save_, ви можете додати конкретне місце для збереження файлу конфігурації. І за потреби ви зможете завантажити його за допомогою команди ``load``:"
 
@@ -384,15 +384,15 @@ msgstr "Тепер ви перебуваєте на підрівні відно�
 msgid "You are now in a sublevel relative to ``interfaces ethernet eth0``, all commands executed from this point on are relative to this sublevel. Use either the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top of the hierarchy. You can also use the :cfgcmd:`up` command to move only one level up at a time."
 msgstr "You are now in a sublevel relative to ``interfaces ethernet eth0``, all commands executed from this point on are relative to this sublevel. Use either the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top of the hierarchy. You can also use the :cfgcmd:`up` command to move only one level up at a time."
 
-#: ../../cli.rst:618
+#: ../../cli.rst:621
 msgid "You can also rename config subtrees:"
 msgstr "Ви також можете перейменувати піддерева конфігурації:"
 
-#: ../../cli.rst:585
+#: ../../cli.rst:588
 msgid "You can copy and remove configuration subtrees. Suppose you set up a firewall ruleset ``FromWorld`` with one rule that allows traffic from specific subnet. Now you want to setup a similar rule, but for different subnet. Change your edit level to ``firewall name FromWorld`` and use ``copy rule 10 to rule 20``, then modify rule 20."
 msgstr "Ви можете копіювати та видаляти піддерева конфігурації. Припустімо, ви встановили набір правил брандмауера ``FromWorld`` з одним правилом, яке дозволяє трафік із певної підмережі. Тепер ви хочете налаштувати подібне правило, але для іншої підмережі. Змініть рівень редагування на ``назва брандмауера FromWorld`` і використовуйте ``копіювати правило 10 до правила 20``, а потім змініть правило 20."
 
-#: ../../cli.rst:830
+#: ../../cli.rst:833
 msgid "You can rollback configuration changes using the rollback command. This will apply the selected revision and trigger a system reboot."
 msgstr "Ви можете скасувати зміни конфігурації за допомогою команди rollback. Це застосує вибрану версію та ініціює перезавантаження системи."
 
@@ -400,19 +400,23 @@ msgstr "Ви можете скасувати зміни конфігурації
 msgid "You can scroll up with the keys ``[Shift]+[PageUp]`` and scroll down with ``[Shift]+[PageDown]``."
 msgstr "Ви можете прокручувати вгору за допомогою клавіш ``[Shift]+[PageUp]`` і прокручувати вниз за допомогою ``[Shift]+[PageDown]``."
 
-#: ../../cli.rst:747
+#: ../../cli.rst:504
+msgid "You can specify a commit message with :cfgcmd:`commit comment <message>`."
+msgstr "You can specify a commit message with :cfgcmd:`commit comment <message>`."
+
+#: ../../cli.rst:750
 msgid "You can specify the number of revisions stored on disk. N can be in the range of 0 - 65535. When the number of revisions exceeds the configured value, the oldest revision is removed. The default setting for this value is to store 100 revisions locally."
 msgstr "Ви можете вказати кількість версій, що зберігаються на диску. N може бути в діапазоні від 0 до 65535. Коли кількість версій перевищує встановлене значення, найстаріша версія видаляється. За замовчуванням це значення зберігає 100 редакцій локально."
 
-#: ../../cli.rst:886
+#: ../../cli.rst:889
 msgid "You can use the ``save`` and ``load`` commands if you want to manually manage specific configuration files."
 msgstr "Ви можете використовувати команди ``save`` і ``load``, якщо ви хочете вручну керувати певними конфігураційними файлами."
 
-#: ../../cli.rst:874
+#: ../../cli.rst:877
 msgid "You may find VyOS not allowing the secure connection because it cannot verify the legitimacy of the remote server. You can use the workaround below to quickly add the remote host's SSH fingerprint to your ``~/.ssh/known_hosts`` file:"
 msgstr "Ви можете виявити, що VyOS не дозволяє безпечне з’єднання, оскільки не може перевірити легітимність віддаленого сервера. Щоб швидко додати відбиток SSH віддаленого хоста до вашого файлу ``~/.ssh/known_hosts``, ви можете скористатися наведеним нижче обхідним шляхом:"
 
-#: ../../cli.rst:927
+#: ../../cli.rst:930
 msgid "You will be asked if you want to continue. If you accept, you will have to use :cfgcmd:`commit` if you want to make the changes active."
 msgstr "Вас запитають, чи хочете ви продовжити. Якщо ви приймаєте, вам доведеться використовувати :cfgcmd:`commit`, якщо ви хочете зробити зміни активними."
 
@@ -420,19 +424,19 @@ msgstr "Вас запитають, чи хочете ви продовжити. 
 msgid "``b`` will scroll back one page"
 msgstr "``b`` прокрутить на одну сторінку назад"
 
-#: ../../cli.rst:866
+#: ../../cli.rst:869
 msgid "``ftp://<user>:<passwd>@<host>/<dir>``"
 msgstr "``ftp://<user> :<passwd> @<host> /<dir> ``"
 
-#: ../../cli.rst:870
+#: ../../cli.rst:873
 msgid "``git+https://<user>:<passwd>@<host>/<path>``"
 msgstr "``git+https://<user>:<passwd>@<host>/<path>``"
 
-#: ../../cli.rst:864
+#: ../../cli.rst:867
 msgid "``http://<user>:<passwd>@<host>:/<dir>``"
 msgstr "``http://<user>:<passwd>@<host>:/<dir>``"
 
-#: ../../cli.rst:865
+#: ../../cli.rst:868
 msgid "``https://<user>:<passwd>@<host>:/<dir>``"
 msgstr "``https://<user>:<passwd>@<host>:/<dir>``"
 
@@ -448,11 +452,11 @@ msgstr "Для скасування виводу можна використов
 msgid "``return`` will scroll down one line"
 msgstr "``return`` прокрутить на один рядок вниз"
 
-#: ../../cli.rst:868
+#: ../../cli.rst:871
 msgid "``scp://<user>:<passwd>@<host>:/<dir>``"
 msgstr "``scp://<user> :<passwd> @<host> :/<dir> ``"
 
-#: ../../cli.rst:867
+#: ../../cli.rst:870
 msgid "``sftp://<user>:<passwd>@<host>/<dir>``"
 msgstr "``sftp://<user> :<passwd> @<host> /<dir> ``"
 
@@ -460,7 +464,7 @@ msgstr "``sftp://<user> :<passwd> @<host> /<dir> ``"
 msgid "``space`` will scroll down one page"
 msgstr "``пробіл`` прокрутить на одну сторінку вниз"
 
-#: ../../cli.rst:869
+#: ../../cli.rst:872
 msgid "``tftp://<host>/<dir>``"
 msgstr "``tftp://<host> /<dir> ``"
 

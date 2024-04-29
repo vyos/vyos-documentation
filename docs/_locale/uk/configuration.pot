@@ -4078,6 +4078,10 @@ msgstr "Створити `<user> ` для локальної автентифі�
 msgid "Create ``172.18.201.0/24`` as a subnet within ``NET1`` and pass address of Unifi controller at ``172.16.100.1`` to clients of that subnet."
 msgstr "Create ``172.18.201.0/24`` as a subnet within ``NET1`` and pass address of Unifi controller at ``172.16.100.1`` to clients of that subnet."
 
+#: ../../configuration/pki/index.rst:373
+msgid "Create a CA chain and leaf certificates"
+msgstr "Create a CA chain and leaf certificates"
+
 #: ../../configuration/interfaces/bridge.rst:199
 msgid "Create a basic bridge"
 msgstr "Створіть базовий міст"
@@ -5839,6 +5843,7 @@ msgstr "Example synproxy"
 #: ../../configuration/interfaces/macsec.rst:153
 #: ../../configuration/interfaces/wireless.rst:541
 #: ../../configuration/loadbalancing/reverse-proxy.rst:227
+#: ../../configuration/pki/index.rst:370
 #: ../../configuration/policy/index.rst:46
 #: ../../configuration/protocols/bgp.rst:1118
 #: ../../configuration/protocols/isis.rst:336
@@ -6126,6 +6131,10 @@ msgstr "Спочатку на обох маршрутизаторах викон
 #: ../../configuration/interfaces/openvpn.rst:51
 msgid "First, one of the systems generate the key using the :ref:`generate pki openvpn shared-secret<configuration/pki/index:pki>` command. Once generated, you will need to install this key on the local system, then copy and install this key to the remote router."
 msgstr "Спочатку одна із систем генерує ключ за допомогою :ref:`generate pki openvpn shared-secret<configuration/pki/index:pki> ` команда. Після створення вам потрібно буде встановити цей ключ у локальній системі, а потім скопіювати та встановити цей ключ на віддалений маршрутизатор."
+
+#: ../../configuration/pki/index.rst:393
+msgid "First, we create the root certificate authority."
+msgstr "First, we create the root certificate authority."
 
 #: ../../configuration/interfaces/openvpn.rst:176
 msgid "First, you need to generate a key by running ``run generate pki openvpn shared-secret install <name>`` from configuration mode. You can use any name, we will use ``s2s``."
@@ -8569,6 +8578,10 @@ msgstr "LNS часто використовуються для підключе�
 msgid "Label Distribution Protocol"
 msgstr "Протокол розподілу етикеток"
 
+#: ../../configuration/pki/index.rst:447
+msgid "Lastly, we can create the leaf certificates that devices and users will utilise."
+msgstr "Lastly, we can create the leaf certificates that devices and users will utilise."
+
 #: ../../configuration/interfaces/l2tpv3.rst:11
 msgid "Layer 2 Tunnelling Protocol Version 3 is an IETF standard related to L2TP that can be used as an alternative protocol to :ref:`mpls` for encapsulation of multiprotocol Layer 2 communications traffic over IP networks. Like L2TP, L2TPv3 provides a pseudo-wire service but is scaled to fit carrier requirements."
 msgstr "Layer 2 Tunneling Protocol Version 3 — це стандарт IETF, пов’язаний із L2TP, який можна використовувати як альтернативний протокол до :ref:`mpls` для інкапсуляції багатопротокольного трафіку зв’язку рівня 2 через IP-мережі. Як і L2TP, L2TPv3 надає послугу псевдодротового зв’язку, але масштабується відповідно до вимог оператора."
@@ -9426,6 +9439,10 @@ msgstr "Кілька вихідних каналів"
 #: ../../configuration/interfaces/vxlan.rst:165
 msgid "Multiple VLAN to VNI mappings can be configured against the same SVD. This allows for a significant scaling of the number of VNIs since a separate VXLAN interface is no longer required for each VNI."
 msgstr "Multiple VLAN to VNI mappings can be configured against the same SVD. This allows for a significant scaling of the number of VNIs since a separate VXLAN interface is no longer required for each VNI."
+
+#: ../../configuration/system/host-name.rst:68
+msgid "Multiple aliases can be specified per host-name."
+msgstr "Multiple aliases can be specified per host-name."
 
 #: ../../configuration/system/host-name.rst:68
 msgid "Multiple aliases can pe specified per host-name."
@@ -11742,6 +11759,10 @@ msgstr "Сценарії"
 #: ../../configuration/nat/nat44.rst:676
 msgid "Second scenario: apply source NAT for all outgoing connections from LAN 10.0.0.0/8, using 3 public addresses and equal distribution. We will generate the hash randomly."
 msgstr "Second scenario: apply source NAT for all outgoing connections from LAN 10.0.0.0/8, using 3 public addresses and equal distribution. We will generate the hash randomly."
+
+#: ../../configuration/pki/index.rst:411
+msgid "Secondly, we create the intermediary certificate authorities, which are used to sign the leaf certificates."
+msgstr "Secondly, we create the intermediary certificate authorities, which are used to sign the leaf certificates."
 
 #: ../../configuration/service/ipoe-server.rst:186
 #: ../../configuration/service/pppoe-server.rst:148
@@ -16301,6 +16322,10 @@ msgstr "This configuration enables HTTP health checks on backend servers."
 #: ../../configuration/loadbalancing/reverse-proxy.rst:232
 msgid "This configuration enables the TCP reverse proxy for the \"my-tcp-api\" service. Incoming TCP connections on port 8888 will be load balanced across the backend servers (srv01 and srv02) using the round-robin load-balancing algorithm."
 msgstr "Ця конфігурація вмикає зворотний проксі TCP для служби &quot;my-tcp-api&quot;. Вхідні TCP-з’єднання на порт 8888 розподілятимуть навантаження між внутрішніми серверами (srv01 і srv02) за допомогою циклічного алгоритму балансування навантаження."
+
+#: ../../configuration/pki/index.rst:375
+msgid "This configuration generates & installs into the VyOS PKI system a root certificate authority, alongside two intermediary certificate authorities for client & server certificates. These CAs are then used to generate a server certificate for the router, and a client certificate for a user."
+msgstr "This configuration generates & installs into the VyOS PKI system a root certificate authority, alongside two intermediary certificate authorities for client & server certificates. These CAs are then used to generate a server certificate for the router, and a client certificate for a user."
 
 #: ../../configuration/loadbalancing/reverse-proxy.rst:214
 msgid "This configuration listen on port 80 and redirect incoming requests to HTTPS:"
@@ -21056,6 +21081,22 @@ msgstr "``vnc`` - керування віртуальною мережею (VNC)
 #: ../../configuration/vpn/site2site_ipsec.rst:143
 msgid "``vti`` - use a VTI interface for traffic encryption. Any traffic, which will be send to VTI interface will be encrypted and send to this peer. Using VTI makes IPSec configuration much flexible and easier in complex situation, and allows to dynamically add/delete remote networks, reachable via a peer, as in this mode router don't need to create additional SA/policy for each remote network:"
 msgstr "``vti`` - використовувати інтерфейс VTI для шифрування трафіку. Будь-який трафік, який надсилатиметься до інтерфейсу VTI, буде зашифровано та надсилатиметься цьому вузлу. Використання VTI робить конфігурацію IPSec набагато гнучкою та простішою в складних ситуаціях, а також дозволяє динамічно додавати/видаляти віддалені мережі, доступні через одноранговий пристрій, оскільки в цьому режимі маршрутизатору не потрібно створювати додаткові SA/політики для кожної віддаленої мережі:"
+
+#: ../../configuration/pki/index.rst:386
+msgid "``vyos_cert`` is a leaf server certificate used to identify the VyOS router, signed by the server intermediary CA."
+msgstr "``vyos_cert`` is a leaf server certificate used to identify the VyOS router, signed by the server intermediary CA."
+
+#: ../../configuration/pki/index.rst:383
+msgid "``vyos_client_ca`` and ``vyos_server_ca`` are intermediary certificate authorities, which are signed by the root CA."
+msgstr "``vyos_client_ca`` and ``vyos_server_ca`` are intermediary certificate authorities, which are signed by the root CA."
+
+#: ../../configuration/pki/index.rst:389
+msgid "``vyos_example_user`` is a leaf client certificate used to identify a user, signed by client intermediary CA."
+msgstr "``vyos_example_user`` is a leaf client certificate used to identify a user, signed by client intermediary CA."
+
+#: ../../configuration/pki/index.rst:381
+msgid "``vyos_root_ca`` is the root certificate authority."
+msgstr "``vyos_root_ca`` is the root certificate authority."
 
 #: ../../configuration/vpn/site2site_ipsec.rst:59
 msgid "``x509`` - options for x509 authentication mode:"
