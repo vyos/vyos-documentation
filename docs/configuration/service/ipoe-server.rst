@@ -279,7 +279,7 @@ IPv6
 .. code-block:: none
 
   set service ipoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
-  set service ipoe-server client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
+  set service ipoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
   set service ipoe-server default-ipv6-pool IPv6-POOL
 
 *********
