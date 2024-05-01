@@ -2,10 +2,10 @@
 Failover
 ########
 
-Failover routes are manually configured routes, but they install
+Failover routes are manually configured routes, but they only install
 to the routing table if the health-check target is alive.
 If the target is not alive the route is removed from the routing table
-until the target will be available.
+until the target becomes available.
 
 ***************
 Failover Routes

@@ -547,7 +547,7 @@ example:
        openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
        openvpn-option "--push redirect-gateway"
        openvpn-option --duplicate-cn
-       openvpn-option --client-cert-not-required
+       openvpn-option "--verify-client-cert none"
        openvpn-option --comp-lzo
        openvpn-option --persist-key
        openvpn-option --persist-tun

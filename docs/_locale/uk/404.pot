@@ -10,19 +10,19 @@ msgstr ""
 
 #: ../../404.rst:4
 msgid "Page Not Found"
-msgstr "Page Not Found"
+msgstr "Сторінку не знайдено"
 
 #: ../../404.rst:6
 msgid "Sorry, We could not find a page. Try using the search box or go to the release homepage:"
-msgstr "Sorry, We could not find a page. Try using the search box or go to the release homepage:"
+msgstr "Вибачте, не вдалося знайти сторінку. Спробуйте скористатися вікном пошуку або перейдіть на домашню сторінку випуску:"
 
 #: ../../404.rst:9
 msgid "`1.2.x (crux) <https://docs.vyos.io/en/crux/>`_"
-msgstr "`1.2.x (crux) <https://docs.vyos.io/en/crux/>`_"
+msgstr "`1.2.x (суть)<https://docs.vyos.io/en/crux/> `_"
 
 #: ../../404.rst:10
 msgid "`1.3.x (equuleus) <https://docs.vyos.io/en/equuleus/>`_"
-msgstr "`1.3.x (equuleus) <https://docs.vyos.io/en/equuleus/>`_"
+msgstr "`1.3.x (дорівнює)<https://docs.vyos.io/en/equuleus/> `_"
 
 #: ../../404.rst:11
 msgid "`1.4.x (sagitta) <https://docs.vyos.io/en/sagitta/>`_"
@@ -34,4 +34,4 @@ msgstr "`rolling release (circinus) <https://docs.vyos.io/en/latest/>`_"
 
 #: ../../404.rst:11
 msgid "`rolling release (sagitta) <https://docs.vyos.io/en/latest/>`_"
-msgstr "`rolling release (sagitta) <https://docs.vyos.io/en/latest/>`_"
+msgstr "`прокатний випуск (sagitta)<https://docs.vyos.io/en/latest/> `_"

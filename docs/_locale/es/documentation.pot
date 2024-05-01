@@ -177,6 +177,10 @@ msgid "If there some troubleshooting guides related to the commands. Explain it 
 msgstr "Si hay algunas guías de solución de problemas relacionadas con los comandos. Explícalo en la siguiente parte opcional."
 
 #: ../../documentation.rst:448
+msgid "If you also want to update your fork on GitHub, use the following: ``$ git push origin current``"
+msgstr "If you also want to update your fork on GitHub, use the following: ``$ git push origin current``"
+
+#: ../../documentation.rst:448
 msgid "If you also want to update your fork on GitHub, use the following: ``$ git push origin master``"
 msgstr "Si también desea actualizar su bifurcación en GitHub, use lo siguiente: ``$ git push origin master``"
 

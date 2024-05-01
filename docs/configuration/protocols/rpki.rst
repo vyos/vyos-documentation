@@ -11,20 +11,19 @@ RPKI
 
    -- `tweet by EvilMog`_, 2020-02-21
 
-:abbr:`RPKI (Resource Public Key Infrastructure)` is a framework :abbr:`PKI
-(Public Key Infrastructure)` designed to secure the Internet routing
-infrastructure. It associates BGP route announcements with the correct
-originating :abbr:`ASN (Autonomus System Number)` which BGP routers can then
-use to check each route against the corresponding :abbr:`ROA (Route Origin
-Authorisation)` for validity. RPKI is described in :rfc:`6480`.
+:abbr:`RPKI (Resource Public Key Infrastructure)` is a framework designed to
+secure the Internet routing infrastructure. It associates BGP route
+announcements with the correct originating :abbr:`ASN (Autonomus System
+Number)` which BGP routers can then use to check each route against the
+corresponding :abbr:`ROA (Route Origin Authorisation)` for validity. RPKI is
+described in :rfc:`6480`.
 
 A BGP-speaking router like VyOS can retrieve ROA information from RPKI
 "Relying Party software" (often just called an "RPKI server" or "RPKI
 validator") by using :abbr:`RTR (RPKI to Router)` protocol. There are several
 open source implementations to choose from, such as NLNetLabs' Routinator_
-(written in Rust), Cloudflare's GoRTR_ and OctoRPKI_ (written in Go), and
-RIPE NCC's RPKI Validator_ (written in Java). The RTR protocol is described
-in :rfc:`8210`.
+(written in Rust), OpenBSD's rpki-client_ (written in C), and StayRTR_ (written
+in Go). The RTR protocol is described in :rfc:`8210`.
 
 .. tip::
   If you are new to these routing security technologies then there is an
@@ -38,10 +37,9 @@ in :rfc:`8210`.
 Getting started
 ***************
 
-First you will need to deploy an RPKI validator for your routers to use. The
-RIPE NCC helpfully provide `some instructions`_ to get you started with
-several different options.  Once your server is running you can start
-validating announcements.
+First you will need to deploy an RPKI validator for your routers to use. NLnet
+Labs provides a collection of software_ you can compare and settle on one.
+Once your server is running you can start validating announcements.
 
 Imported prefixes during the validation may have values:
 
@@ -56,16 +54,16 @@ Imported prefixes during the validation may have values:
     untrustworthy route announcements.
 
   notfound
-    No ROA exists which covers that prefix. Unfortunately this is the case
-    for about 80% of the IPv4 prefixes which were announced to the :abbr:`DFZ
-    (default-free zone)` at the start of 2020
+    No ROA exists which covers that prefix. Unfortunately this is the case for
+    about 40%-50% of the prefixes which were announced to the :abbr:`DFZ
+    (default-free zone)` at the start of 2024.
 
 .. note::
   If you are responsible for the global addresses assigned to your
   network, please make sure that your prefixes have ROAs associated with them
   to avoid being `notfound` by RPKI. For most ASNs this will involve
   publishing ROAs via your :abbr:`RIR (Regional Internet Registry)` (RIPE
-  NCC, APNIC, ARIN, LACNIC or AFRINIC), and is something you are encouraged
+  NCC, APNIC, ARIN, LACNIC, or AFRINIC), and is something you are encouraged
   to do whenever you plan to announce addresses into the DFZ.
 
   Particularly large networks may wish to run their own RPKI certificate
@@ -140,11 +138,13 @@ Configuration
 SSH
 ===
 
-Connections to the RPKI caching server can not only be established by HTTP/TLS
-but you can also rely on a secure SSH session to the server. To enable SSH,
-first you need to create an SSH client keypair using ``generate ssh
-client-key /config/auth/id_rsa_rpki``. Once your key is created you can setup
-the connection.
+Connections to the RPKI caching server can not only be established by TCP using
+the RTR protocol but you can also rely on a secure SSH session to the server.
+This provides transport integrity and confidentiality and it is a good idea if
+your validation software supports it.  To enable SSH, first you need to create
+an SSH client keypair using ``generate ssh client-key
+/config/auth/id_rsa_rpki``. Once your key is created you can setup the
+connection.
 
 .. cfgcmd:: set protocols rpki cache <address> ssh username <user>
 
@@ -191,20 +191,21 @@ filter we reject prefixes with the state `invalid`, and set a higher
   set policy route-map ROUTES-IN rule 30 match rpki 'invalid'
 
 Once your routers are configured to reject RPKI-invalid prefixes, you can
-test whether the configuration is working correctly using the `RIPE Labs RPKI
-Test`_ experimental tool.
+test whether the configuration is working correctly using Cloudflare's test_
+website. Keep in mind that in order for this to work, you need to have no
+default routes or anything else that would still send traffic to RPKI-invalid
+destinations.
 
 .. stop_vyoslinter
 
 .. _tweet by EvilMog: https://twitter.com/Evil_Mog/status/1230924170508169216
 .. _Routinator: https://www.nlnetlabs.nl/projects/rpki/routinator/
-.. _GoRTR: https://github.com/cloudflare/gortr
-.. _OctoRPKI: https://github.com/cloudflare/cfrpki#octorpki
-.. _Validator: https://www.ripe.net/manage-ips-and-asns/resource-management/rpki/tools-and-resources
-.. _some instructions: https://labs.ripe.net/Members/tashi_phuntsho_3/how-to-install-an-rpki-validator
 .. _Krill: https://www.nlnetlabs.nl/projects/rpki/krill/
-.. _RIPE Labs RPKI Test: https://sg-pub.ripe.net/jasper/rpki-web-test/
 .. _excellent guide to RPKI: https://rpki.readthedocs.io/
 .. _help and operational guidance: https://rpki.readthedocs.io/en/latest/about/help.html
+.. _rpki-client: https://www.rpki-client.org/
+.. _StayRTR: https://github.com/bgp/stayrtr/
+.. _software: https://rpki.readthedocs.io/en/latest/ops/tools.html#relying-party-software
+.. _test: https://isbgpsafeyet.com/
 
 .. start_vyoslinter

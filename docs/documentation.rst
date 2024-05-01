@@ -442,19 +442,19 @@ access to the official codebase.
   .. code-block:: none
 
     $ git fetch upstream
-    $ git checkout master
-    $ git merge upstream/master
+    $ git checkout current
+    $ git merge upstream/current
 
 * If you also want to update your fork on GitHub, use the following: ``$ git
-  push origin master``
+  push origin current``
 
 .. stop_vyoslinter
 
 .. _Sphinx-doc: https://www.sphinx-doc.org
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
 .. _reStructuredTextDirectives: https://docutils.sourceforge.io/docs/ref/rst/directives.html
-.. _README.md: https://github.com/vyos/vyos-documentation/blob/master/README.md
-.. _Dockerfile: https://github.com/vyos/vyos-documentation/blob/master/docker/Dockerfile
+.. _README.md: https://github.com/vyos/vyos-documentation/blob/current/README.md
+.. _Dockerfile: https://github.com/vyos/vyos-documentation/blob/current/docker/Dockerfile
 .. _Grammarly: https://www.grammarly.com/
 .. include:: /_include/common-references.txt
 

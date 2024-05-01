@@ -163,7 +163,7 @@ Zone-based firewall
 
    zone
 
-With zone-based firewalls a new concept was implemented, in addtion to the
+With zone-based firewalls a new concept was implemented, in addition to the
 standard in and out traffic flows, a local flow was added. This local was for
 traffic originating and destined to the router itself. Which means additional
 rules were required to secure the firewall itself from the network, in
