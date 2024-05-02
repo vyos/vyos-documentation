@@ -156,6 +156,12 @@ can execute commands and then configure VyOS in the same script.
 The following example sets the hostname based on the instance identifier
 obtained from the EC2 metadata service.
 
+Please observe that the same configuration pitfall described in :ref:`command-scripting`
+exists here when running ``configure`` in any context as without user group 
+'vyattacfg' will cause the error message ``Set failed`` to appear.
+We therefor need to wrap it and have the script re-execute itself with the correct 
+group permissions. 
+
 .. code-block:: yaml
 
 
@@ -166,6 +172,9 @@ obtained from the EC2 metadata service.
        permissions: '0775'
        content: |
          #!/bin/vbash
+         if [ "$(id -g -n)" != 'vyattacfg' ] ; then
+             exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
+         fi
          source /opt/vyatta/etc/functions/script-template
          hostname=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
          configure
