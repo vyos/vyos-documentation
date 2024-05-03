@@ -48,7 +48,15 @@ Now we are able to setup the tunnel interface.
    :language: none
    :lines: 1-5
 
-Setup the ipv6 default route to the tunnel interface
+.. note:: The `source-address` is the Tunnelbroker client IPv4 
+          address or if there is NAT the current WAN interface address.
+
+          If `source-address` is  dynamic, the tunnel will cease working once 
+          the address changes. To avoid having to manually update
+          `source-address` each time the dynamic IP changes, an address of  
+          '0.0.0.0' can be specified.
+
+Setup the IPv6 default route to the tunnel interface
 
 .. literalinclude:: _include/vyos-wan_tun0.conf
    :language: none
@@ -204,4 +212,5 @@ instead of `set firewall name NAME`, you would use `set firewall ipv6-name
 NAME`.
 
 Similarly, to attach the firewall, you would use `set interfaces ethernet eth0
-firewall in ipv6-name` or `et firewall zone LOCAL from WAN firewall ipv6-name`.
+firewall in ipv6-name` or `set firewall zone LOCAL from WAN firewall 
+ipv6-name`.
