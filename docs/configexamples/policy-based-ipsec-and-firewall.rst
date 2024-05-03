@@ -5,35 +5,35 @@ Policy-Based Site-to-Site VPN and Firewall Configuration
 --------------------------------------------------------
 
 This guide shows an example policy-based IKEv2 site-to-site VPN between two
-VyOS routers, and firewall configiuration.
+VyOS routers, and firewall configuration.
 
-For simplicity, configuration and tests are done only using ipv4, and firewall
-configuration in done only on one router.
+For simplicity, configuration and tests are done only using IPv4, and firewall
+configuration is done only on one router.
 
 Network Topology and requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This configuration example and the requirments consists on:
+This configuration example and the requirments consists of:
 
 - Two VyOS routers with public IP address.
 
 - 2 private subnets on each site.
 
-- Local subnets should be able to reach internet using source nat.
+- Local subnets should be able to reach internet using source NAT.
 
-- Communication between private subnets should be done through ipsec tunnel
-  without nat.
+- Communication between private subnets should be done through IPSec tunnel
+  without NAT.
 
 - Configuration of basic firewall in one site, in order to:
 
-    - Protect the router on 'WAN' interface, allowing only ipsec connections
-      and ssh access from trusted ips.
+    - Protect the router on 'WAN' interface, allowing only IPSec connections
+      and SSH access from trusted IPs.
 
     - Allow access to the router only from trusted networks.
     
-    - Allow dns requests only only for local networks.
+    - Allow DNS requests only only for local networks.
 
-    - Allow icmp on all interfaces.
+    - Allow ICMP on all interfaces.
 
     - Allow all new connections from local subnets.
 
@@ -203,7 +203,7 @@ And NAT Configuration:
 Checking through op-mode commands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After some testing, we can check ipsec status, and counter on every tunnel:
+After some testing, we can check IPSec status, and counter on every tunnel:
 
 .. code-block:: none
 

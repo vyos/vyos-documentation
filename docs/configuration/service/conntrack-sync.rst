@@ -102,6 +102,11 @@ Configuration
 
    Disable connection logging via Syslog.
 
+.. cfgcmd:: set service conntrack-sync startup-resync
+
+   Order conntrackd to request a complete conntrack table resync against
+   the other node at startup.
+
 *********
 Operation
 *********

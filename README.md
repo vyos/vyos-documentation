@@ -11,10 +11,10 @@ Our old wiki with documentation from the VyOS 1.1.x and early 1.2.0 era can stil
 
 Our version follows the very same branching scheme as the VyOS source modules
 itself. We maintain one documentation branch per VyOS release. The default
-branch that contains the most recent VyOS documentation is called `master`
+branch that contains the most recent VyOS documentation is called `current`
 and matches the latest VyOS release which is 1.4 at the time.
 
-All new documentation enhancements go to the `master` branch. If those changes
+All new documentation enhancements go to the `current` branch. If those changes
 are beneficial for previous VyOS documentation versions they will be
 cherry-picked to the appropriate branch(es).
 

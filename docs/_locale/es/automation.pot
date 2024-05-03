@@ -49,7 +49,7 @@ msgstr "#terraform plan"
 msgid "#yes"
 msgstr "#yes"
 
-#: ../../automation/cloud-init.rst:363
+#: ../../automation/cloud-init.rst:366
 msgid "**NOTE**: be careful while copying and pasting previous commands. Double quotes may need to be corrected."
 msgstr "**NOTE**: be careful while copying and pasting previous commands. Double quotes may need to be corrected."
 
@@ -57,51 +57,51 @@ msgstr "**NOTE**: be careful while copying and pasting previous commands. Double
 msgid "**NOTE**: be carefull while copying and pasting previous commands. Doble quotes may need to be corrected."
 msgstr "**NOTA**: tenga cuidado al copiar y pegar comandos anteriores. Es posible que sea necesario corregir las comillas dobles."
 
-#: ../../automation/cloud-init.rst:305
+#: ../../automation/cloud-init.rst:308
 msgid "**meta-data**: empty file (required)."
 msgstr "**metadatos**: archivo vacío (obligatorio)."
 
-#: ../../automation/cloud-init.rst:300
+#: ../../automation/cloud-init.rst:303
 msgid "**network-config**: file that will indicate to avoid dhcp client on first interface."
 msgstr "**network-config**: archivo que indicará evitar el cliente dhcp en la primera interfaz."
 
-#: ../../automation/cloud-init.rst:333
+#: ../../automation/cloud-init.rst:336
 msgid "**network-config** file only has configuration that disables the automatic dhcp client on first interface."
 msgstr "El archivo **network-config** solo tiene una configuración que deshabilita el cliente dhcp automático en la primera interfaz."
 
-#: ../../automation/cloud-init.rst:303
+#: ../../automation/cloud-init.rst:306
 msgid "**user-data**: includes vyos-commands."
 msgstr "**datos de usuario**: incluye comandos vyos."
 
-#: ../../automation/cloud-init.rst:314
+#: ../../automation/cloud-init.rst:317
 msgid "**user-data** file must start with ``#cloud-config`` and contains vyos-commands. For example:"
 msgstr "El archivo **datos de usuario** debe comenzar con ``#cloud-config`` y contiene comandos vyos. Por ejemplo:"
 
-#: ../../automation/vyos-api.rst:323
+#: ../../automation/vyos-api.rst:355
 msgid "/config-file"
 msgstr "/archivo de configuración"
 
-#: ../../automation/vyos-api.rst:266
+#: ../../automation/vyos-api.rst:298
 msgid "/configure"
 msgstr "/configurar"
 
-#: ../../automation/vyos-api.rst:246
+#: ../../automation/vyos-api.rst:278
 msgid "/generate"
 msgstr "/generar"
 
-#: ../../automation/vyos-api.rst:184
+#: ../../automation/vyos-api.rst:216
 msgid "/image"
 msgstr "/imagen"
 
-#: ../../automation/vyos-api.rst:165
+#: ../../automation/vyos-api.rst:197
 msgid "/poweroff"
 msgstr "/poweroff"
 
-#: ../../automation/vyos-api.rst:147
+#: ../../automation/vyos-api.rst:179
 msgid "/reboot"
 msgstr "/reboot"
 
-#: ../../automation/vyos-api.rst:129
+#: ../../automation/vyos-api.rst:161
 msgid "/reset"
 msgstr "/reiniciar"
 
@@ -109,7 +109,7 @@ msgstr "/reiniciar"
 msgid "/retrieve"
 msgstr "/recuperar"
 
-#: ../../automation/vyos-api.rst:222
+#: ../../automation/vyos-api.rst:254
 msgid "/show"
 msgstr "/espectáculo"
 
@@ -155,12 +155,14 @@ msgstr "1 Collect all data in to file \"terraform.tfvars\" and create resources 
 
 #: ../../automation/terraform/terraformAWS.rst:77
 #: ../../automation/terraform/terraformAZ.rst:54
+#: ../../automation/terraform/terraformGoogle.rst:76
 #: ../../automation/terraform/terraformvSphere.rst:53
 msgid "1 Create an UNIX instance whenever you want (local, cloud, and so on)"
 msgstr "1 Create an UNIX instance whenever you want (local, cloud, and so on)"
 
 #: ../../automation/terraform/terraformAWS.rst:54
 #: ../../automation/terraform/terraformAZ.rst:26
+#: ../../automation/terraform/terraformGoogle.rst:52
 #: ../../automation/terraform/terraformvSphere.rst:29
 msgid "1 Create an UNIX or Windows instance"
 msgstr "1 Create an UNIX or Windows instance"
@@ -172,6 +174,14 @@ msgstr "1 Create an account with AWS and get your \"access_key\", \"secret key\"
 #: ../../automation/terraform/terraformAZ.rst:21
 msgid "1 Create an account with Azure"
 msgstr "1 Create an account with Azure"
+
+#: ../../automation/terraform/terraformGoogle.rst:22
+msgid "1 Create an account with google cloud and a new project"
+msgstr "1 Create an account with google cloud and a new project"
+
+#: ../../automation/terraform/terraformGoogle.rst:344
+msgid "1 Increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location)."
+msgstr "1 Increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location)."
 
 #: ../../automation/terraform/terraformAWS.rst:86
 msgid "2.1 Create a0 UNIX or Windows instance"
@@ -237,12 +247,14 @@ msgstr "2 Create a key pair_ and download your .pem key"
 
 #: ../../automation/terraform/terraformAWS.rst:79
 #: ../../automation/terraform/terraformAZ.rst:56
+#: ../../automation/terraform/terraformGoogle.rst:78
 #: ../../automation/terraform/terraformvSphere.rst:55
 msgid "2 Download and install Ansible"
 msgstr "2 Download and install Ansible"
 
 #: ../../automation/terraform/terraformAWS.rst:56
 #: ../../automation/terraform/terraformAZ.rst:28
+#: ../../automation/terraform/terraformGoogle.rst:54
 #: ../../automation/terraform/terraformvSphere.rst:31
 msgid "2 Download and install Terraform"
 msgstr "2 Download and install Terraform"
@@ -250,6 +262,10 @@ msgstr "2 Download and install Terraform"
 #: ../../automation/terraform/terraformAWS.rst:270
 msgid "2 Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file VyOS. tf"
 msgstr "2 Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file VyOS. tf"
+
+#: ../../automation/terraform/terraformGoogle.rst:347
+msgid "2 Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file VyOS.tf"
+msgstr "2 Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file VyOS.tf"
 
 #: ../../automation/vyos-terraform.rst:268
 #: ../../automation/vyos-terraform.rst:718
@@ -306,6 +322,14 @@ msgstr "3 Create the folder for example /root/az/"
 msgid "3 Create the folder for example /root/azvyos/"
 msgstr "3 Create the folder for example /root/azvyos/"
 
+#: ../../automation/terraform/terraformGoogle.rst:56
+msgid "3 Create the folder for example /root/google"
+msgstr "3 Create the folder for example /root/google"
+
+#: ../../automation/terraform/terraformGoogle.rst:80
+msgid "3 Create the folder for example /root/google/"
+msgstr "3 Create the folder for example /root/google/"
+
 #: ../../automation/terraform/terraformvSphere.rst:33
 msgid "3 Create the folder for example /root/vsphereterraform"
 msgstr "3 Create the folder for example /root/vsphereterraform"
@@ -326,6 +350,10 @@ msgstr "4 Copy all files into your Ansible project \"/root/aws/\" (ansible.cfg, 
 msgid "4 Copy all files into your Ansible project \"/root/az/\" (ansible.cfg, instance.yml,\"all\"), more detailed see `Structure of files Ansible for Azure`_"
 msgstr "4 Copy all files into your Ansible project \"/root/az/\" (ansible.cfg, instance.yml,\"all\"), more detailed see `Structure of files Ansible for Azure`_"
 
+#: ../../automation/terraform/terraformGoogle.rst:82
+msgid "4 Copy all files into your Ansible project \"/root/google/\" (ansible.cfg, instance.yml, mykey.json and \"all\"), more detailed see `Structure of files Ansible for google cloud`_"
+msgstr "4 Copy all files into your Ansible project \"/root/google/\" (ansible.cfg, instance.yml, mykey.json and \"all\"), more detailed see `Structure of files Ansible for google cloud`_"
+
 #: ../../automation/terraform/terraformvSphere.rst:59
 msgid "4 Copy all files into your Ansible project \"/root/vsphereterraform/\" (ansible.cfg, instance.yml,\"all\"), more detailed see `Structure of files Ansible for vSphere`_"
 msgstr "4 Copy all files into your Ansible project \"/root/vsphereterraform/\" (ansible.cfg, instance.yml,\"all\"), more detailed see `Structure of files Ansible for vSphere`_"
@@ -342,7 +370,7 @@ msgstr "AWS"
 msgid "AWS_terraform_ansible_single_vyos_instance"
 msgstr "AWS_terraform_ansible_single_vyos_instance"
 
-#: ../../automation/cloud-init.rst:270
+#: ../../automation/cloud-init.rst:273
 msgid "A VyOS qcow image with cloud-init options is needed. This can be obtained using `vyos-vm-images`_ repo. After cloning the repo, edit the file **qemu.yml** and comment the **download-iso** role."
 msgstr "A VyOS qcow image with cloud-init options is needed. This can be obtained using `vyos-vm-images`_ repo. After cloning the repo, edit the file **qemu.yml** and comment the **download-iso** role."
 
@@ -350,7 +378,7 @@ msgstr "A VyOS qcow image with cloud-init options is needed. This can be obtaine
 msgid "A VyOS qcow image with cloud-init options is needed. This can be obtained using `vyos-vm-images`_ repo. After clonning the repo, edit the file **qemu.yml** and comment the **download-iso** role."
 msgstr "Se necesita una imagen qcow de VyOS con opciones de inicialización en la nube. Esto se puede obtener usando `vyos-vm-images`_ repo. Después de clonar el repositorio, edite el archivo **qemu.yml** y comente el rol **download-iso**."
 
-#: ../../automation/cloud-init.rst:63
+#: ../../automation/cloud-init.rst:64
 msgid "A cloud-config document is written in YAML. The file must begin with ``#cloud-config`` line. The only supported top-level keys are ``vyos_config_commands`` and ``write_files``. The use of these keys is described in the following two sections."
 msgstr "Un documento de configuración de la nube está escrito en YAML. El archivo debe comenzar con la línea ``#cloud-config``. Las únicas claves de nivel superior admitidas son ``vyos_config_commands`` y ``write_files``. El uso de estas teclas se describe en las dos secciones siguientes."
 
@@ -358,7 +386,7 @@ msgstr "Un documento de configuración de la nube está escrito en YAML. El arch
 msgid "A simple example is shown below, where the ops command executed in the post-hook script is \"show interfaces\"."
 msgstr "A continuación se muestra un ejemplo simple, donde el comando ops ejecutado en el script posterior al enlace es &quot;mostrar interfaces&quot;."
 
-#: ../../automation/cloud-init.rst:82
+#: ../../automation/cloud-init.rst:83
 msgid "A single-quote symbol is not allowed inside command or value."
 msgstr "No se permite un símbolo de comillas simples dentro de un comando o valor."
 
@@ -374,9 +402,17 @@ msgstr "After executing all the commands you will have your VyOS instance on the
 msgid "After executing all the commands you will have your VyOS instance on the Azure cloud with your configuration, it's a very convenient desition. If you need to delete the instance please type the command:"
 msgstr "After executing all the commands you will have your VyOS instance on the Azure cloud with your configuration, it's a very convenient desition. If you need to delete the instance please type the command:"
 
+#: ../../automation/terraform/terraformGoogle.rst:333
+msgid "After executing all the commands you will have your VyOS instance on the google cloud with your configuration, it's a very convenient desition. If you need to delete the instance please type the command:"
+msgstr "After executing all the commands you will have your VyOS instance on the google cloud with your configuration, it's a very convenient desition. If you need to delete the instance please type the command:"
+
 #: ../../automation/terraform/terraformvSphere.rst:75
 msgid "After executing all the commands you will have your VyOS instance on the vSphere with your configuration, it's a very convenient desition. If you need to delete the instance please type the command:"
 msgstr "After executing all the commands you will have your VyOS instance on the vSphere with your configuration, it's a very convenient desition. If you need to delete the instance please type the command:"
+
+#: ../../automation/cloud-init.rst:92
+msgid "After the ``vyos_config_commands`` are executed, cloud-init will automatically  perform a ``commit`` and ``save`` operation."
+msgstr "After the ``vyos_config_commands`` are executed, cloud-init will automatically  perform a ``commit`` and ``save`` operation."
 
 #: ../../automation/vyos-api.rst:15
 msgid "All endpoints only listen on HTTP POST requests and the API KEY must set as ``key`` in the formdata."
@@ -384,11 +420,12 @@ msgstr "Todos los puntos finales solo escuchan solicitudes HTTP POST y la CLAVE 
 
 #: ../../automation/terraform/terraformAWS.rst:539
 #: ../../automation/terraform/terraformAZ.rst:484
+#: ../../automation/terraform/terraformGoogle.rst:705
 #: ../../automation/terraform/terraformvSphere.rst:397
 msgid "All files about the article can be found here_"
 msgstr "All files about the article can be found here_"
 
-#: ../../automation/cloud-init.rst:115
+#: ../../automation/cloud-init.rst:119
 msgid "All of these can be overridden using the configuration in user-data."
 msgstr "Todos estos pueden anularse mediante la configuración en los datos de usuario."
 
@@ -396,12 +433,13 @@ msgstr "Todos estos pueden anularse mediante la configuración en los datos de u
 msgid "Also, increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location). Make sure that you have opened access to the instance in the security group."
 msgstr "Also, increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location). Make sure that you have opened access to the instance in the security group."
 
-#: ../../automation/cloud-init.rst:256
+#: ../../automation/cloud-init.rst:259
 msgid "Also, this lab considers:"
 msgstr "Además, este laboratorio considera:"
 
 #: ../../automation/terraform/terraformAWS.rst:74
 #: ../../automation/terraform/terraformAZ.rst:51
+#: ../../automation/terraform/terraformGoogle.rst:73
 #: ../../automation/terraform/terraformvSphere.rst:50
 #: ../../automation/vyos-ansible.rst:6
 msgid "Ansible"
@@ -429,7 +467,7 @@ msgstr "Azur"
 msgid "Azure_terraform_ansible_single_vyos_instance"
 msgstr "Azure_terraform_ansible_single_vyos_instance"
 
-#: ../../automation/cloud-init.rst:241
+#: ../../automation/cloud-init.rst:244
 msgid "Before starting, please refer to cloud-init `network-config-docs`_ in order to know how to import user and network configurations."
 msgstr "Antes de comenzar, consulte cloud-init `network-config-docs`_ para saber cómo importar configuraciones de usuario y de red."
 
@@ -453,11 +491,11 @@ msgstr "Comprueba que el maestro de la sal puede comunicarse con los minions"
 msgid "Cloud-config modules"
 msgstr "Módulos de configuración en la nube"
 
-#: ../../automation/cloud-init.rst:420
+#: ../../automation/cloud-init.rst:423
 msgid "Cloud-init `network-config-docs`_."
 msgstr "Cloud-init `red-config-docs`_."
 
-#: ../../automation/cloud-init.rst:239
+#: ../../automation/cloud-init.rst:242
 msgid "Cloud-init on Proxmox"
 msgstr "Cloud-init en Proxmox"
 
@@ -465,7 +503,7 @@ msgstr "Cloud-init en Proxmox"
 msgid "Cloud and virtualized instances of VyOS are initialized using the industry-standard cloud-init. Via cloud-init, the system performs tasks such as injecting SSH keys and configuring the network. In addition, the user can supply a custom configuration at the time of instance launch."
 msgstr "Las instancias en la nube y virtualizadas de VyOS se inicializan mediante el estándar de la industria cloud-init. A través de cloud-init, el sistema realiza tareas como inyectar claves SSH y configurar la red. Además, el usuario puede proporcionar una configuración personalizada en el momento del lanzamiento de la instancia."
 
-#: ../../automation/cloud-init.rst:120
+#: ../../automation/cloud-init.rst:124
 msgid "Command Execution at Initial Boot"
 msgstr "Ejecución de comandos en el arranque inicial"
 
@@ -473,11 +511,11 @@ msgstr "Ejecución de comandos en el arranque inicial"
 msgid "Command Scripting"
 msgstr "Secuencias de comandos de comandos"
 
-#: ../../automation/cloud-init.rst:356
+#: ../../automation/cloud-init.rst:359
 msgid "Command for generating ``seed.iso``"
 msgstr "Comando para generar ``seed.iso``"
 
-#: ../../automation/cloud-init.rst:78
+#: ../../automation/cloud-init.rst:79
 msgid "Commands requirements:"
 msgstr "Requisitos de los comandos:"
 
@@ -530,19 +568,19 @@ msgstr "Content"
 msgid "Content of commands.conf"
 msgstr "Contenido de comandos.conf"
 
-#: ../../automation/cloud-init.rst:337
+#: ../../automation/cloud-init.rst:340
 msgid "Content of network-config file:"
 msgstr "Contenido del archivo de configuración de red:"
 
-#: ../../automation/cloud-init.rst:351
+#: ../../automation/cloud-init.rst:354
 msgid "Create seed.iso"
 msgstr "Crear semilla.iso"
 
-#: ../../automation/cloud-init.rst:189
+#: ../../automation/cloud-init.rst:193
 msgid "Create text files named user-data and meta-data. On linux-based systems, the mkisofs utility can be used to create the seed ISO. The following syntax will add these files to the ISO 9660 file system."
 msgstr "Cree archivos de texto llamados datos de usuario y metadatos. En los sistemas basados en Linux, la utilidad mkisofs se puede utilizar para crear la ISO inicial. La siguiente sintaxis agregará estos archivos al sistema de archivos ISO 9660."
 
-#: ../../automation/cloud-init.rst:368
+#: ../../automation/cloud-init.rst:371
 msgid "Creating the VM"
 msgstr "Creación de la máquina virtual"
 
@@ -550,7 +588,7 @@ msgstr "Creación de la máquina virtual"
 msgid "Custom scripts are not executed with root privileges (Use sudo inside if this is necessary)."
 msgstr "Los scripts personalizados no se ejecutan con privilegios de root (Use sudo inside si es necesario)."
 
-#: ../../automation/cloud-init.rst:113
+#: ../../automation/cloud-init.rst:117
 msgid "DHCP on first Ethernet interface if no network configuration is provided."
 msgstr "DHCP en la primera interfaz Ethernet si no se proporciona ninguna configuración de red."
 
@@ -561,6 +599,10 @@ msgstr "Deploying VyOS in the AWS cloud"
 #: ../../automation/terraform/terraformAZ.rst:6
 msgid "Deploying VyOS in the Azure cloud"
 msgstr "Deploying VyOS in the Azure cloud"
+
+#: ../../automation/terraform/terraformGoogle.rst:6
+msgid "Deploying VyOS in the google cloud"
+msgstr "Deploying VyOS in the google cloud"
 
 #: ../../automation/terraform/terraformvSphere.rst:6
 msgid "Deploying VyOS in the vSphere infrastructure"
@@ -618,6 +660,10 @@ msgstr "File contents of Ansible for AWS"
 msgid "File contents of Ansible for Azure"
 msgstr "File contents of Ansible for Azure"
 
+#: ../../automation/terraform/terraformGoogle.rst:651
+msgid "File contents of Ansible for google cloud"
+msgstr "File contents of Ansible for google cloud"
+
 #: ../../automation/terraform/terraformvSphere.rst:338
 msgid "File contents of Ansible for vSphere"
 msgstr "File contents of Ansible for vSphere"
@@ -630,15 +676,19 @@ msgstr "File contents of Terrafom for AWS"
 msgid "File contents of Terrafom for Azure"
 msgstr "File contents of Terrafom for Azure"
 
+#: ../../automation/terraform/terraformGoogle.rst:375
+msgid "File contents of Terrafom for google cloud"
+msgstr "File contents of Terrafom for google cloud"
+
 #: ../../automation/terraform/terraformvSphere.rst:96
 msgid "File contents of Terrafom for vSphere"
 msgstr "File contents of Terrafom for vSphere"
 
-#: ../../automation/cloud-init.rst:284
+#: ../../automation/cloud-init.rst:287
 msgid "File generated with previous command: ``/tmp/vyos-1.3.0-cloud-init-10G-qemu.qcow2``"
 msgstr "Archivo generado con el comando anterior: ``/tmp/vyos-1.3.0-cloud-init-10G-qemu.qcow2``"
 
-#: ../../automation/cloud-init.rst:347
+#: ../../automation/cloud-init.rst:350
 msgid "Finally, file **meta-data** has no content, but it's required."
 msgstr "Finally, file **meta-data** has no content, but it's required."
 
@@ -654,11 +704,15 @@ msgstr "Para problemas de administración de configuración/actualización, la m
 msgid "For configuration and enabling the API see :ref:`http-api`"
 msgstr "Para configurar y habilitar la API, consulte :ref:`http-api`"
 
+#: ../../automation/vyos-api.rst:130
+msgid "For example, check an existing path:"
+msgstr "For example, check an existing path:"
+
 #: ../../automation/vyos-api.rst:109
 msgid "For example, get the addresses of a ``dum0`` interface."
 msgstr "Por ejemplo, obtenga las direcciones de una interfaz ``dum0``."
 
-#: ../../automation/vyos-api.rst:226
+#: ../../automation/vyos-api.rst:258
 msgid "For example, show which images are installed."
 msgstr "Por ejemplo, muestre qué imágenes están instaladas."
 
@@ -666,7 +720,11 @@ msgstr "Por ejemplo, muestre qué imágenes están instaladas."
 msgid "For more information on the NoCloud data source, visit its `page <https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html>`_ in the cloud-init documentation."
 msgstr "Para obtener más información sobre la fuente de datos NoCloud, visite su `página<https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html> `_ en la documentación de inicio de nube."
 
-#: ../../automation/cloud-init.rst:411
+#: ../../automation/cloud-init.rst:221
+msgid "For more information on the NoCloud data source, visit its page `nocloud`_ in the cloud-init documentation."
+msgstr "For more information on the NoCloud data source, visit its page `nocloud`_ in the cloud-init documentation."
+
+#: ../../automation/cloud-init.rst:414
 msgid "From cli or GUI, power on VM, and after it boots, verify configuration"
 msgstr "Desde cli o GUI, encienda la VM y, después de que arranque, verifique la configuración"
 
@@ -678,7 +736,7 @@ msgstr "General commands that we will use for running Terraform scripts"
 msgid "Generate Object"
 msgstr "Generate Object"
 
-#: ../../automation/cloud-init.rst:268
+#: ../../automation/cloud-init.rst:271
 msgid "Generate qcow image"
 msgstr "Generar imagen qcow"
 
@@ -690,7 +748,7 @@ msgstr "Getting Started"
 msgid "Here is a simple example:"
 msgstr "Aquí hay un ejemplo simple:"
 
-#: ../../automation/cloud-init.rst:91
+#: ../../automation/cloud-init.rst:95
 msgid "Here is an example cloud-config that appends configuration at the time of first boot."
 msgstr "Aquí hay un ejemplo de configuración en la nube que agrega la configuración en el momento del primer arranque."
 
@@ -706,27 +764,31 @@ msgstr "How to create a single instance and install your configuration using Ter
 msgid "How to create a single instance and install your configuration using Terraform+Ansible+Vsphere Step by step:"
 msgstr "How to create a single instance and install your configuration using Terraform+Ansible+Vsphere Step by step:"
 
+#: ../../automation/terraform/terraformGoogle.rst:16
+msgid "How to create a single instance and install your configuration using Terraform+Ansible+google Step by step:"
+msgstr "How to create a single instance and install your configuration using Terraform+Ansible+google Step by step:"
+
 #: ../../automation/terraform/terraformvSphere.rst:16
 msgid "How to create a single instance and install your configuration using Terraform+Ansible+vSphere Step by step:"
 msgstr "How to create a single instance and install your configuration using Terraform+Ansible+vSphere Step by step:"
 
-#: ../../automation/cloud-init.rst:377
+#: ../../automation/cloud-init.rst:380
 msgid "ISO files storage: ``local`` volume is used for ``.iso`` file storage. In this scenario ``local`` volume type is set to **directory**, abd attached to ``/var/lib/vz``."
 msgstr "Almacenamiento de archivos ISO: el volumen ``local`` se utiliza para el almacenamiento de archivos ``.iso``. En este escenario, el tipo de volumen ``local`` se establece en **directorio**, y se adjunta a ``/var/lib/vz``."
 
-#: ../../automation/cloud-init.rst:81
+#: ../../automation/cloud-init.rst:82
 msgid "If command ends in a value, it must be inside single quotes."
 msgstr "Si el comando termina en un valor, debe estar entre comillas simples."
 
-#: ../../automation/cloud-init.rst:250
+#: ../../automation/cloud-init.rst:253
 msgid "If no networking configuration is provided, then dhcp client is going to be enabled on first interface. Bare in mind that this configuration will be inyected at an OS level, so don't expect to find dhcp client configuration on vyos cli. Because of this behavior, in next example lab we will disable dhcp-client configuration on eth0."
 msgstr "Si no se proporciona una configuración de red, el cliente dhcp se habilitará en la primera interfaz. Tenga en cuenta que esta configuración se inyectará a nivel del sistema operativo, así que no espere encontrar la configuración del cliente dhcp en vyos cli. Debido a este comportamiento, en el siguiente laboratorio de ejemplo, deshabilitaremos la configuración de dhcp-client en eth0."
 
-#: ../../automation/cloud-init.rst:225
+#: ../../automation/cloud-init.rst:228
 msgid "If you encounter problems, verify that the cloud-config document contains valid YAML. Online resources such as https://www.yamllint.com/ provide a simple tool for validating YAML."
 msgstr "Si encuentra problemas, verifique que el documento de configuración de la nube contenga YAML válido. Los recursos en línea como https://www.yamllint.com/ brindan una herramienta simple para validar YAML."
 
-#: ../../automation/cloud-init.rst:153
+#: ../../automation/cloud-init.rst:157
 msgid "If you need to gather information from linux commands to configure VyOS, you can execute commands and then configure VyOS in the same script."
 msgstr "Si necesita recopilar información de los comandos de Linux para configurar VyOS, puede ejecutar los comandos y luego configurar VyOS en el mismo script."
 
@@ -738,7 +800,7 @@ msgstr "Si desea programar las configuraciones en un idioma que no sea bash, pue
 msgid "Importing and Disabling Warnings for verify=False"
 msgstr "Importing and Disabling Warnings for verify=False"
 
-#: ../../automation/cloud-init.rst:298
+#: ../../automation/cloud-init.rst:301
 msgid "In Proxmox server three files are going to be used for this setup:"
 msgstr "En el servidor Proxmox, se utilizarán tres archivos para esta configuración:"
 
@@ -754,19 +816,23 @@ msgstr "In this case, we'll create the necessary files for Terraform and Ansible
 msgid "In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the Azure cloud and make provisioning using Ansible."
 msgstr "In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the Azure cloud and make provisioning using Ansible."
 
+#: ../../automation/terraform/terraformGoogle.rst:11
+msgid "In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the google cloud and make provisioning using Ansible."
+msgstr "In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the google cloud and make provisioning using Ansible."
+
 #: ../../automation/terraform/terraformvSphere.rst:11
 msgid "In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the vSphere cloud and make provisioning using Ansible."
 msgstr "In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the vSphere cloud and make provisioning using Ansible."
 
-#: ../../automation/cloud-init.rst:307
+#: ../../automation/cloud-init.rst:310
 msgid "In this lab, all files are located in ``/tmp/``. So, before going on, lets move to that directory:"
 msgstr "En esta práctica de laboratorio, todos los archivos se encuentran en ``/tmp/``. Entonces, antes de continuar, pasemos a ese directorio:"
 
-#: ../../automation/cloud-init.rst:274
+#: ../../automation/cloud-init.rst:277
 msgid "In this lab, we are using 1.3.0 VyOS version and setting a disk of 10G. Download VyOS .iso file and save it as ``/tmp/vyos.iso``. Command used for generating qcow image:"
 msgstr "En esta práctica de laboratorio, usamos la versión 1.3.0 de VyOS y configuramos un disco de 10G. Descargue el archivo .iso de VyOS y guárdelo como ``/tmp/vyos.iso``. Comando utilizado para generar la imagen qcow:"
 
-#: ../../automation/cloud-init.rst:71
+#: ../../automation/cloud-init.rst:72
 msgid "Initial Configuration"
 msgstr "Configuracion inicial"
 
@@ -774,7 +840,7 @@ msgstr "Configuracion inicial"
 msgid "Initializing a VyDevice Object"
 msgstr "Initializing a VyDevice Object"
 
-#: ../../automation/cloud-init.rst:180
+#: ../../automation/cloud-init.rst:184
 msgid "Injecting configuration data is not limited to cloud platforms. Users can employ the NoCloud data source to inject user-data and meta-data on virtualization platforms such as VMware, Hyper-V and KVM."
 msgstr "La inyección de datos de configuración no se limita a las plataformas en la nube. Los usuarios pueden emplear la fuente de datos NoCloud para inyectar datos de usuario y metadatos en plataformas de virtualización como VMware, Hyper-V y KVM."
 
@@ -795,14 +861,19 @@ msgid "Major cloud providers offer a means of providing user-data at the time of
 msgstr "Los principales proveedores de la nube ofrecen un medio para proporcionar datos de usuario en el momento del lanzamiento de la instancia. Se puede proporcionar como texto sin formato o como texto codificado en base64, según el proveedor de la nube. Además, se puede comprimir usando gzip, lo que tiene sentido con una larga lista de comandos de configuración, debido al límite estricto de ~16384 bytes para todos los datos del usuario."
 
 #: ../../automation/terraform/terraformAWS.rst:282
+#: ../../automation/terraform/terraformGoogle.rst:359
 msgid "Make sure that Ansible is pinging from Terrafom."
 msgstr "Make sure that Ansible is pinging from Terrafom."
+
+#: ../../automation/terraform/terraformGoogle.rst:345
+msgid "Make sure that you have opened access to the instance in the security group."
+msgstr "Make sure that you have opened access to the instance in the security group."
 
 #: ../../automation/cloud-init.rst:20
 msgid "Metadata - Metadata is sourced by the cloud platform or hypervisor. In some clouds, there is implemented as an HTTP endpoint at ``http://169.254.169.254``."
 msgstr "Metadatos: los metadatos provienen de la plataforma en la nube o el hipervisor. En algunas nubes, se implementa como punto final HTTP en ``http://169.254.169.254``."
 
-#: ../../automation/cloud-init.rst:244
+#: ../../automation/cloud-init.rst:247
 msgid "Most important keys that needs to be considered:"
 msgstr "Claves más importantes a tener en cuenta:"
 
@@ -823,6 +894,7 @@ msgid "Netmiko-proxy"
 msgstr "Netmiko-proxy"
 
 #: ../../automation/terraform/terraformAWS.rst:-1
+#: ../../automation/terraform/terraformGoogle.rst:-1
 msgid "Network Topology Diagram"
 msgstr "Diagrama de topología de red"
 
@@ -830,11 +902,11 @@ msgstr "Diagrama de topología de red"
 msgid "Network configuration - This config source informs the system about the network settings like IP addresses, routes, DNS. Available only in several cloud and virtualization platforms."
 msgstr "Configuración de red: esta fuente de configuración informa al sistema sobre la configuración de red, como direcciones IP, rutas, DNS. Disponible solo en varias plataformas de nube y virtualización."
 
-#: ../../automation/cloud-init.rst:248
+#: ../../automation/cloud-init.rst:251
 msgid "Networking configurations shouldn't be passed in user-data file."
 msgstr "Las configuraciones de red no deben pasarse en el archivo de datos de usuario."
 
-#: ../../automation/cloud-init.rst:178
+#: ../../automation/cloud-init.rst:182
 msgid "NoCloud"
 msgstr "Sin Nube"
 
@@ -843,15 +915,15 @@ msgstr "Sin Nube"
 msgid "Nornir"
 msgstr "brujas"
 
-#: ../../automation/cloud-init.rst:131
+#: ../../automation/cloud-init.rst:135
 msgid "Note that the /opt/vyatta/etc/config is used instead of the /config/scripts directory referenced in the :ref:`command-scripting` section of the documentation because the /config/script directory isn't mounted when the ``write_files`` module executes."
 msgstr "Tenga en cuenta que /opt/vyatta/etc/config se usa en lugar del directorio /config/scripts al que se hace referencia en la sección :ref:`command-scripting` de la documentación porque el directorio /config/script no está montado cuando ` Se ejecuta el módulo `write_files``."
 
-#: ../../automation/cloud-init.rst:370
+#: ../../automation/cloud-init.rst:373
 msgid "Notes for this particular example, that may need to be modified in other setups:"
 msgstr "Notas para este ejemplo en particular, que puede necesitar ser modificado en otras configuraciones:"
 
-#: ../../automation/cloud-init.rst:287
+#: ../../automation/cloud-init.rst:290
 msgid "Now, that file needs to be copied to proxmox server:"
 msgstr "Ahora, ese archivo debe copiarse en el servidor proxmox:"
 
@@ -859,15 +931,15 @@ msgstr "Ahora, ese archivo debe copiarse en el servidor proxmox:"
 msgid "On VyOS this will cause the following problem: After modifying the configuration via script like this once, it is not possible to manually modify the config anymore:"
 msgstr "En VyOS, esto causará el siguiente problema: después de modificar la configuración a través de un script como este una vez, ya no es posible modificar manualmente la configuración:"
 
-#: ../../automation/cloud-init.rst:390
+#: ../../automation/cloud-init.rst:393
 msgid "On proxmox server:"
 msgstr "En el servidor proxmox:"
 
-#: ../../automation/cloud-init.rst:353
+#: ../../automation/cloud-init.rst:356
 msgid "Once the three files were created, it's time to generate the ``seed.iso`` image, which needs to be mounted to the new VM as a cd."
 msgstr "Una vez que se crearon los tres archivos, es hora de generar la imagen ``seed.iso``, que debe montarse en la nueva VM como un cd."
 
-#: ../../automation/cloud-init.rst:80
+#: ../../automation/cloud-init.rst:81
 msgid "One command per line."
 msgstr "Un comando por línea."
 
@@ -896,7 +968,7 @@ msgstr "Por favor, eche un vistazo a la Guía de contribución para nuestra :ref
 msgid "Postconfig on boot"
 msgstr "Postconfig en el arranque"
 
-#: ../../automation/cloud-init.rst:409
+#: ../../automation/cloud-init.rst:412
 msgid "Power on VM and verifications"
 msgstr "Encendido de VM y verificaciones"
 
@@ -912,19 +984,23 @@ msgstr "Preparation steps for deploying VyOS on AWS"
 msgid "Preparation steps for deploying VyOS on Azure"
 msgstr "Preparation steps for deploying VyOS on Azure"
 
+#: ../../automation/terraform/terraformGoogle.rst:14
+msgid "Preparation steps for deploying VyOS on google"
+msgstr "Preparation steps for deploying VyOS on google"
+
 #: ../../automation/terraform/terraformvSphere.rst:14
 msgid "Preparation steps for deploying VyOS on vSphere"
 msgstr "Preparation steps for deploying VyOS on vSphere"
 
-#: ../../automation/cloud-init.rst:296
+#: ../../automation/cloud-init.rst:299
 msgid "Prepare cloud-init files"
 msgstr "Preparar archivos de inicialización en la nube"
 
-#: ../../automation/cloud-init.rst:258
+#: ../../automation/cloud-init.rst:261
 msgid "Proxmox IP address: **192.168.0.253/24**"
 msgstr "Dirección IP de proximidad: **192.168.0.253/24**"
 
-#: ../../automation/cloud-init.rst:422
+#: ../../automation/cloud-init.rst:425
 msgid "Proxmox `Cloud-init-Support`_."
 msgstr "Proxmox `Cloud-init-Support`_."
 
@@ -936,11 +1012,11 @@ msgstr "PyVyOS"
 msgid "PyVyOS is a Python library for interacting with VyOS devices via their API. This documentation guides you on using PyVyOS to manage your VyOS devices programmatically. The complete PyVyOS documentation is available on [Read the Docs](https://pyvyos.readthedocs.io/en/latest/), and the library can be found on [GitHub](https://github.com/robertoberto/pyvyos) and [PyPI](https://pypi.org/project/pyvyos/)."
 msgstr "PyVyOS is a Python library for interacting with VyOS devices via their API. This documentation guides you on using PyVyOS to manage your VyOS devices programmatically. The complete PyVyOS documentation is available on [Read the Docs](https://pyvyos.readthedocs.io/en/latest/), and the library can be found on [GitHub](https://github.com/robertoberto/pyvyos) and [PyPI](https://pypi.org/project/pyvyos/)."
 
-#: ../../automation/cloud-init.rst:416
+#: ../../automation/cloud-init.rst:419
 msgid "References"
 msgstr "Referencias"
 
-#: ../../automation/cloud-init.rst:263
+#: ../../automation/cloud-init.rst:266
 msgid "Remove default dhcp client on first interface, and load other configuration during first boot, using cloud-init."
 msgstr "Elimine el cliente dhcp predeterminado en la primera interfaz y cargue otra configuración durante el primer arranque, usando cloud-init."
 
@@ -968,7 +1044,7 @@ msgstr "Ejecutar comandos de configuración"
 msgid "Run operational commands"
 msgstr "Ejecutar comandos operativos"
 
-#: ../../automation/cloud-init.rst:111
+#: ../../automation/cloud-init.rst:115
 msgid "SSH is configured on port 22."
 msgstr "SSH está configurado en el puerto 22."
 
@@ -980,11 +1056,11 @@ msgstr "Sal"
 msgid "Salt master configuration:"
 msgstr "Configuración maestra de sal:"
 
-#: ../../automation/vyos-api.rst:345
+#: ../../automation/vyos-api.rst:377
 msgid "Save a running configuration to a file."
 msgstr "Guarde una configuración en ejecución en un archivo."
 
-#: ../../automation/vyos-api.rst:327
+#: ../../automation/vyos-api.rst:359
 msgid "Save a running configuration to the startup configuration. When you don't specify the file when saving, it saves to ``/config/config.boot``."
 msgstr "Guarde una configuración en ejecución en la configuración de inicio. Cuando no especifica el archivo al guardar, se guarda en ``/config/config.boot``."
 
@@ -1016,21 +1092,30 @@ msgstr "Sourse files for AWS from GIT"
 msgid "Sourse files for Azure from GIT"
 msgstr "Sourse files for Azure from GIT"
 
+#: ../../automation/terraform/terraformGoogle.rst:703
+msgid "Sourse files for google cloud from GIT"
+msgstr "Sourse files for google cloud from GIT"
+
 #: ../../automation/terraform/terraformvSphere.rst:395
 msgid "Sourse files for vSphere from GIT"
 msgstr "Sourse files for vSphere from GIT"
 
 #: ../../automation/terraform/terraformAWS.rst:88
 #: ../../automation/terraform/terraformAZ.rst:63
+#: ../../automation/terraform/terraformGoogle.rst:87
 #: ../../automation/terraform/terraformvSphere.rst:62
 msgid "Start"
 msgstr "Start"
+
+#: ../../automation/terraform/terraformGoogle.rst:101
+msgid "Start creating a google cloud instance and check the result"
+msgstr "Start creating a google cloud instance and check the result"
 
 #: ../../automation/terraform/terraformAWS.rst:102
 msgid "Start creating an AWS instance and check the result"
 msgstr "Start creating an AWS instance and check the result"
 
-#: ../../automation/cloud-init.rst:260
+#: ../../automation/cloud-init.rst:263
 msgid "Storaged used: volume local, which is mounted on directory **/var/lib/vz**, and contains all type of content, including snippets."
 msgstr "Storaged used: volumen local, que está montado en el directorio **/var/lib/vz**, y contiene todo tipo de contenido, incluidos fragmentos."
 
@@ -1055,6 +1140,10 @@ msgstr "Structure of files Ansible for AWS"
 msgid "Structure of files Ansible for Azure"
 msgstr "Structure of files Ansible for Azure"
 
+#: ../../automation/terraform/terraformGoogle.rst:639
+msgid "Structure of files Ansible for google cloud"
+msgstr "Structure of files Ansible for google cloud"
+
 #: ../../automation/terraform/terraformvSphere.rst:326
 msgid "Structure of files Ansible for vSphere"
 msgstr "Structure of files Ansible for vSphere"
@@ -1073,6 +1162,10 @@ msgstr "Structure of files Terrafom for AWS"
 msgid "Structure of files Terrafom for Azure"
 msgstr "Structure of files Terrafom for Azure"
 
+#: ../../automation/terraform/terraformGoogle.rst:362
+msgid "Structure of files Terrafom for google cloud"
+msgstr "Structure of files Terrafom for google cloud"
+
 #: ../../automation/terraform/terraformvSphere.rst:84
 msgid "Structure of files Terrafom for vSphere"
 msgstr "Structure of files Terrafom for vSphere"
@@ -1081,12 +1174,13 @@ msgstr "Structure of files Terrafom for vSphere"
 msgid "Structure of files in the standard Terraform project:"
 msgstr "Structure of files in the standard Terraform project:"
 
-#: ../../automation/cloud-init.rst:107
+#: ../../automation/cloud-init.rst:111
 msgid "System Defaults/Fallbacks"
 msgstr "Valores predeterminados/alternativos del sistema"
 
 #: ../../automation/terraform/terraformAWS.rst:51
 #: ../../automation/terraform/terraformAZ.rst:23
+#: ../../automation/terraform/terraformGoogle.rst:49
 #: ../../automation/terraform/terraformvSphere.rst:26
 msgid "Terraform"
 msgstr "Terraform"
@@ -1099,9 +1193,13 @@ msgstr "Terraform doesn't connect via SSH to your Ansible instance: you have to 
 msgid "Terraform for VyOS"
 msgstr "Terraform for VyOS"
 
-#: ../../automation/vyos-api.rst:302
+#: ../../automation/vyos-api.rst:334
 msgid "The API pushes every request to a session and commit it. But some of VyOS components like DHCP and PPPoE Servers, IPSec, VXLAN, and other tunnels require full configuration for commit. The endpoint will process multiple commands when you pass them as a list to the ``data`` field."
 msgstr "La API envía cada solicitud a una sesión y la confirma. Pero algunos de los componentes de VyOS, como los servidores DHCP y PPPoE, IPSec, VXLAN y otros túneles, requieren una configuración completa para la confirmación. El punto final procesará múltiples comandos cuando los pase como una lista al campo ``datos``."
+
+#: ../../automation/terraform/terraformGoogle.rst:41
+msgid "The .JSON file download automaticly after creating and will look like:"
+msgstr "The .JSON file download automaticly after creating and will look like:"
 
 #: ../../automation/command-scripting.rst:197
 msgid "The ``/config/scripts/vyos-postconfig-bootup.script`` script is called on boot after the VyOS configuration is fully applied."
@@ -1111,23 +1209,23 @@ msgstr "El script ``/config/scripts/vyos-postconfig-bootup.script`` se llama en 
 msgid "The ``/config/scripts/vyos-preconfig-bootup.script`` script is called on boot before the VyOS configuration during boot process."
 msgstr "El script ``/config/scripts/vyos-preconfig-bootup.script`` se llama en el arranque antes de la configuración de VyOS durante el proceso de arranque."
 
-#: ../../automation/vyos-api.rst:224
+#: ../../automation/vyos-api.rst:256
 msgid "The ``/show`` endpoint is to show everything in the operational mode."
 msgstr "El punto final ``/show`` es mostrar todo en el modo operativo."
 
-#: ../../automation/vyos-api.rst:248
+#: ../../automation/vyos-api.rst:280
 msgid "The ``generate`` endpoint run a ``generate`` command."
 msgstr "El extremo ``generar`` ejecuta un comando ``generar``."
 
-#: ../../automation/vyos-api.rst:131
+#: ../../automation/vyos-api.rst:163
 msgid "The ``reset`` endpoint run a ``reset`` command."
 msgstr "El extremo ``reset`` ejecuta un comando ``reset``."
 
-#: ../../automation/cloud-init.rst:84
+#: ../../automation/cloud-init.rst:85
 msgid "The commands list produced by the ``show configuration commands`` command on a VyOS router should comply with all the requirements, so it is easy to get a proper commands list by copying it from another router."
 msgstr "La lista de comandos producida por el comando ``mostrar comandos de configuración`` en un enrutador VyOS debe cumplir con todos los requisitos, por lo que es fácil obtener una lista de comandos adecuada copiándola desde otro enrutador."
 
-#: ../../automation/cloud-init.rst:88
+#: ../../automation/cloud-init.rst:89
 msgid "The configuration specified in the cloud-config document overwrites default configuration values and values configured via Metadata."
 msgstr "La configuración especificada en el documento de configuración de la nube sobrescribe los valores de configuración predeterminados y los valores configurados a través de metadatos."
 
@@ -1144,23 +1242,23 @@ msgstr "El archivo predeterminado se ve así:"
 msgid "The easiest way to configure the system via user-data is the Cloud-config syntax described below."
 msgstr "La forma más fácil de configurar el sistema a través de los datos del usuario es la sintaxis de configuración de la nube que se describe a continuación."
 
-#: ../../automation/vyos-api.rst:325
+#: ../../automation/vyos-api.rst:357
 msgid "The endpoint ``/config-file`` is to save or load a configuration."
 msgstr "El punto final ``/config-file`` es para guardar o cargar una configuración."
 
-#: ../../automation/cloud-init.rst:156
+#: ../../automation/cloud-init.rst:160
 msgid "The following example sets the hostname based on the instance identifier obtained from the EC2 metadata service."
 msgstr "El siguiente ejemplo establece el nombre de host en función del identificador de instancia obtenido del servicio de metadatos de EC2."
 
-#: ../../automation/cloud-init.rst:136
+#: ../../automation/cloud-init.rst:140
 msgid "The following example shows how to execute commands after the initial configuration."
 msgstr "El siguiente ejemplo muestra cómo ejecutar comandos después de la configuración inicial."
 
-#: ../../automation/cloud-init.rst:74
+#: ../../automation/cloud-init.rst:75
 msgid "The key used to designate a VyOS configuration is ``vyos_config_commands``. What follows is VyOS configuration using the \"set-style\" syntax. Both \"set\" and \"delete\" commands are supported."
 msgstr "La clave utilizada para designar una configuración de VyOS es ``vyos_config_commands``. Lo que sigue es la configuración de VyOS utilizando la sintaxis &quot;set-style&quot;. Se admiten los comandos &quot;establecer&quot; y &quot;eliminar&quot;."
 
-#: ../../automation/cloud-init.rst:197
+#: ../../automation/cloud-init.rst:201
 msgid "The seed.iso file can be attached to the virtual machine. As an example, the method with KVM to attach the ISO as a CD drive follows."
 msgstr "El archivo seed.iso se puede adjuntar a la máquina virtual. A modo de ejemplo, a continuación se muestra el método con KVM para adjuntar la ISO como una unidad de CD."
 
@@ -1168,7 +1266,7 @@ msgstr "El archivo seed.iso se puede adjuntar a la máquina virtual. A modo de e
 msgid "There is a pitfall when working with configuration scripts. It is tempting to call configuration scripts with \"sudo\" (i.e., temporary root permissions), because that's the common way on most Linux platforms to call system commands."
 msgstr "Hay una trampa cuando se trabaja con scripts de configuración. Es tentador llamar a los scripts de configuración con &quot;sudo&quot; (es decir, permisos temporales de raíz), porque esa es la forma común en la mayoría de las plataformas Linux de llamar a los comandos del sistema."
 
-#: ../../automation/cloud-init.rst:109
+#: ../../automation/cloud-init.rst:113
 msgid "These are the VyOS defaults and fallbacks."
 msgstr "Estos son los valores predeterminados y alternativos de VyOS."
 
@@ -1180,17 +1278,21 @@ msgstr "Esta sección necesita mejoras, ejemplos y explicaciones."
 msgid "This will result in the following error message: ``Set failed`` If this happens, a reboot is required to be able to edit the config manually again."
 msgstr "Esto dará como resultado el siguiente mensaje de error: ``Establecimiento fallido`` Si esto sucede, se requiere reiniciar para poder editar la configuración manualmente nuevamente."
 
-#: ../../automation/vyos-api.rst:361
+#: ../../automation/vyos-api.rst:393
 msgid "To Load a configuration file."
 msgstr "Para cargar un archivo de configuración."
 
-#: ../../automation/vyos-api.rst:186
+#: ../../automation/vyos-api.rst:218
 msgid "To add or delete an image, use the ``/image`` endpoint."
 msgstr "Para agregar o eliminar una imagen, use el punto final ``/image``."
 
 #: ../../automation/command-scripting.rst:121
 msgid "To avoid these problems, the proper way is to call a script with the ``vyattacfg`` group, e.g., by using the ``sg`` (switch group) command:"
 msgstr "Para evitar estos problemas, la forma adecuada es llamar a un script con el grupo ``vyattacfg``, por ejemplo, utilizando el comando ``sg`` (cambiar de grupo):"
+
+#: ../../automation/vyos-api.rst:128
+msgid "To check existence of a configuration path, use the ``exists`` operation."
+msgstr "To check existence of a configuration path, use the ``exists`` operation."
 
 #: ../../automation/vyos-api.rst:48
 msgid "To get the whole configuration, pass an empty list to the ``path`` field"
@@ -1200,7 +1302,7 @@ msgstr "Para obtener la configuración completa, pase una lista vacía al campo 
 msgid "To include VyOS specific functions and aliases you need to ``source /opt/vyatta/etc/functions/script-template`` files at the top of your script."
 msgstr "Para incluir funciones y alias específicos de VyOS, necesita archivos ``fuente /opt/vyatta/etc/functions/script-template`` en la parte superior de su secuencia de comandos."
 
-#: ../../automation/vyos-api.rst:149
+#: ../../automation/vyos-api.rst:181
 msgid "To initiate a reboot use the ``reboot`` endpoint."
 msgstr "To initiate a reboot use the ``reboot`` endpoint."
 
@@ -1212,17 +1314,19 @@ msgstr "Para asegurarse de que una secuencia de comandos no se llame accidentalm
 msgid "To only get a part of the configuration, for example ``system syslog``."
 msgstr "Para obtener solo una parte de la configuración, por ejemplo ``system syslog``."
 
-#: ../../automation/vyos-api.rst:167
+#: ../../automation/vyos-api.rst:199
 msgid "To power off the system use the ``poweroff`` endpoint."
 msgstr "To power off the system use the ``poweroff`` endpoint."
 
-#: ../../automation/cloud-init.rst:223
+#: ../../automation/cloud-init.rst:226
 #: ../../automation/terraform/terraformAWS.rst:264
+#: ../../automation/terraform/terraformGoogle.rst:342
 msgid "Troubleshooting"
 msgstr "Solución de problemas"
 
 #: ../../automation/terraform/terraformAWS.rst:91
 #: ../../automation/terraform/terraformAZ.rst:66
+#: ../../automation/terraform/terraformGoogle.rst:90
 #: ../../automation/terraform/terraformvSphere.rst:65
 msgid "Type the commands on your Terrafom instance:"
 msgstr "Type the commands on your Terrafom instance:"
@@ -1234,6 +1338,10 @@ msgstr "A diferencia de una sesión de configuración normal, todos los comandos
 #: ../../automation/cloud-init.rst:34
 msgid "User-data"
 msgstr "Datos del usuario"
+
+#: ../../automation/cloud-init.rst:28
+msgid "User-data - User-data is specified by the user. This config source offers the ability to insert any CLI configuration commands into the configuration before   the first boot."
+msgstr "User-data - User-data is specified by the user. This config source offers the ability to insert any CLI configuration commands into the configuration before   the first boot."
 
 #: ../../automation/cloud-init.rst:28
 msgid "User-data - User-data is specified by the user. This config source offers the ability to insert any CLI configuration commands into the configuration before the first boot."
@@ -1251,15 +1359,15 @@ msgstr "Using PyVyOS"
 msgid "Using pyvyos"
 msgstr "Using pyvyos"
 
-#: ../../automation/cloud-init.rst:373
+#: ../../automation/cloud-init.rst:376
 msgid "VM ID: in this example, VM ID used is 555."
 msgstr "ID de VM: en este ejemplo, el ID de VM utilizado es 555."
 
-#: ../../automation/cloud-init.rst:381
+#: ../../automation/cloud-init.rst:384
 msgid "VM Resources: these parameters can be modified as needed."
 msgstr "Recursos de VM: estos parámetros se pueden modificar según sea necesario."
 
-#: ../../automation/cloud-init.rst:375
+#: ../../automation/cloud-init.rst:378
 msgid "VM Storage: ``local`` volume is used."
 msgstr "Almacenamiento de VM: se utiliza el volumen ``local``."
 
@@ -1279,7 +1387,7 @@ msgstr "Automatización VyOS"
 msgid "VyOS Terraform"
 msgstr "VyOS Terraform"
 
-#: ../../automation/cloud-init.rst:418
+#: ../../automation/cloud-init.rst:421
 msgid "VyOS `cloud-init-docs`_."
 msgstr "VyOS `nube-init-docs`_."
 
@@ -1287,7 +1395,7 @@ msgstr "VyOS `nube-init-docs`_."
 msgid "VyOS cloud-init"
 msgstr "Inicialización en la nube de VyOS"
 
-#: ../../automation/cloud-init.rst:246
+#: ../../automation/cloud-init.rst:249
 msgid "VyOS configuration commands are defined in user-data file."
 msgstr "Los comandos de configuración de VyOS se definen en el archivo de datos de usuario."
 
@@ -1331,7 +1439,7 @@ msgstr "VyOS admite el modo operativo y la configuración a través de salt_."
 msgid "VyOS supports some napalm_ functions for configuration and op-mode. It requires more tests."
 msgstr "VyOS admite algunas funciones de napalm_ para la configuración y el modo operativo. Requiere más pruebas."
 
-#: ../../automation/cloud-init.rst:122
+#: ../../automation/cloud-init.rst:126
 msgid "VyOS supports the execution of operational commands and linux commands at initial boot. This is accomplished using ``write_files`` to certain files in the /opt/vyatta/etc/config/scripts directory. Commands specified in opt/vyatta/etc/config/scripts/vyos-preconfig-bootup.script are executed prior to configuration. The /opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script file contains commands to be executed after configuration. In both cases, commands are executed as the root user."
 msgstr "VyOS admite la ejecución de comandos operativos y comandos de Linux en el arranque inicial. Esto se logra usando ``write_files`` para ciertos archivos en el directorio /opt/vyatta/etc/config/scripts. Los comandos especificados en opt/vyatta/etc/config/scripts/vyos-preconfig-bootup.script se ejecutan antes de la configuración. El archivo /opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script contiene comandos que se ejecutarán después de la configuración. En ambos casos, los comandos se ejecutan como usuario root."
 
@@ -1339,7 +1447,7 @@ msgstr "VyOS admite la ejecución de comandos operativos y comandos de Linux en 
 msgid "We need 2 files, commands.conf and script itself."
 msgstr "Necesitamos 2 archivos, commands.conf y el propio script."
 
-#: ../../automation/cloud-init.rst:184
+#: ../../automation/cloud-init.rst:188
 msgid "While other methods exist, the most straightforward method for using the NoCloud data source is creating a seed ISO and attaching it to the virtual machine as a CD drive. The volume must be formatted as a vfat or ISO 9660 file system with the label \"cidata\" or \"CIDATA\"."
 msgstr "Si bien existen otros métodos, el método más sencillo para usar la fuente de datos de NoCloud es crear una semilla ISO y adjuntarla a la máquina virtual como una unidad de CD. El volumen debe estar formateado como un sistema de archivos vfat o ISO 9660 con la etiqueta &quot;cidata&quot; o &quot;CIDATA&quot;."
 
@@ -1358,6 +1466,10 @@ msgstr "With the help of Terraform, you can quickly deploy VyOS-based infrastruc
 #: ../../automation/terraform/terraformAZ.rst:8
 msgid "With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the Azure cloud. If necessary, the infrastructure can be removed using terraform. Also we will make provisioning using Ansible."
 msgstr "With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the Azure cloud. If necessary, the infrastructure can be removed using terraform. Also we will make provisioning using Ansible."
+
+#: ../../automation/terraform/terraformGoogle.rst:8
+msgid "With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the google cloud. If necessary, the infrastructure can be removed using terraform. Also we will make provisioning using Ansible."
+msgstr "With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the google cloud. If necessary, the infrastructure can be removed using terraform. Also we will make provisioning using Ansible."
 
 #: ../../automation/terraform/terraformvSphere.rst:8
 msgid "With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the vSphere. Also we will make provisioning using Ansible."
@@ -1391,27 +1503,27 @@ msgstr "You can install PyVyOS using pip:"
 msgid "You can install pyvyos using pip:"
 msgstr "You can install pyvyos using pip:"
 
-#: ../../automation/vyos-api.rst:268
+#: ../../automation/vyos-api.rst:300
 msgid "You can pass a ``set``, ``delete`` or ``comment`` command to the ``/configure`` endpoint."
 msgstr "Puede pasar un comando ``set``, ``delete`` o ``comment`` al extremo ``/configure``."
 
-#: ../../automation/vyos-api.rst:287
+#: ../../automation/vyos-api.rst:319
 msgid "``delete`` a single command"
 msgstr "``borrar`` un solo comando"
 
-#: ../../automation/cloud-init.rst:383
+#: ../../automation/cloud-init.rst:386
 msgid "``seed.iso`` was previously created in directory ``/tmp/``. It's necessary to move it to ``/var/lib/vz/template/iso``"
 msgstr "``seed.iso`` se creó previamente en el directorio ``/tmp/``. Es necesario moverlo a ``/var/lib/vz/template/iso``"
 
-#: ../../automation/vyos-api.rst:271
+#: ../../automation/vyos-api.rst:303
 msgid "``set`` a single command"
 msgstr "``establecer`` un solo comando"
 
-#: ../../automation/cloud-init.rst:55
+#: ../../automation/cloud-init.rst:56
 msgid "``vyos_userdata`` - the module accepts a list of CLI configuration commands in a ``vyos_config_commands`` section, which gives an easy way to configure the system during deployment."
 msgstr "``vyos_userdata``: el módulo acepta una lista de comandos de configuración de la CLI en una sección ``vyos_config_commands``, que brinda una forma fácil de configurar el sistema durante la implementación."
 
-#: ../../automation/cloud-init.rst:112
+#: ../../automation/cloud-init.rst:116
 msgid "``vyos``/``vyos`` credentials if no others specified by data source."
 msgstr "Credenciales ``vyos&#39;&#39;/``vyos&#39;&#39; si no hay otras especificadas por la fuente de datos."
 
@@ -1431,7 +1543,7 @@ msgstr "`pyvyos Source Code on GitHub <https://github.com/robertoberto/pyvyos>`_
 msgid "`pyvyos on PyPI <https://pypi.org/project/pyvyos/>`_ for easy installation via pip, the Python package installer. Execute `pip install pyvyos` in your terminal to install."
 msgstr "`pyvyos on PyPI <https://pypi.org/project/pyvyos/>`_ for easy installation via pip, the Python package installer. Execute `pip install pyvyos` in your terminal to install."
 
-#: ../../automation/vyos-api.rst:188
+#: ../../automation/vyos-api.rst:220
 msgid "add an image"
 msgstr "Añadir una imagen"
 
@@ -1441,16 +1553,17 @@ msgstr "todo"
 
 #: ../../automation/terraform/terraformAWS.rst:478
 #: ../../automation/terraform/terraformAZ.rst:428
+#: ../../automation/terraform/terraformGoogle.rst:653
 #: ../../automation/terraform/terraformvSphere.rst:340
 #: ../../automation/vyos-ansible.rst:26
 msgid "ansible.cfg"
 msgstr "ansible.cfg"
 
-#: ../../automation/cloud-init.rst:61
+#: ../../automation/cloud-init.rst:62
 msgid "cloud-config file format"
 msgstr "formato de archivo de configuración en la nube"
 
-#: ../../automation/cloud-init.rst:229
+#: ../../automation/cloud-init.rst:232
 msgid "cloud-init logs to /var/log/cloud-init.log. This file can be helpful in determining why the configuration varies from what you expect. You can fetch the most important data filtering output for ``vyos`` keyword:"
 msgstr "cloud-init registra en /var/log/cloud-init.log. Este archivo puede ser útil para determinar por qué la configuración varía de lo esperado. Puede obtener la salida de filtrado de datos más importante para la palabra clave ``vyos``:"
 
@@ -1458,12 +1571,17 @@ msgstr "cloud-init registra en /var/log/cloud-init.log. Este archivo puede ser �
 msgid "commands.txt"
 msgstr "comandos.txt"
 
-#: ../../automation/vyos-api.rst:205
+#: ../../automation/vyos-api.rst:237
 msgid "delete an image, for example ``1.3-rolling-202006070117``"
 msgstr "borrar una imagen, por ejemplo ``1.3-rolling-202006070117``"
 
+#: ../../automation/terraform/terraformGoogle.rst:19
+msgid "google cloud"
+msgstr "google cloud"
+
 #: ../../automation/terraform/terraformAWS.rst:528
 #: ../../automation/terraform/terraformAZ.rst:470
+#: ../../automation/terraform/terraformGoogle.rst:693
 #: ../../automation/terraform/terraformvSphere.rst:381
 msgid "group_vars/all"
 msgstr "group_vars/all"
@@ -1482,6 +1600,7 @@ msgstr "si solo desea el valor de un nodo de varios valores, utilice la operaci�
 
 #: ../../automation/terraform/terraformAWS.rst:495
 #: ../../automation/terraform/terraformAZ.rst:438
+#: ../../automation/terraform/terraformGoogle.rst:662
 #: ../../automation/terraform/terraformvSphere.rst:350
 msgid "instance.yml"
 msgstr "instance.yml"
@@ -1494,6 +1613,10 @@ msgstr "main.tf"
 #: ../../automation/vyos-ansible.rst:56
 msgid "main.yml"
 msgstr "principal.yml"
+
+#: ../../automation/terraform/terraformGoogle.rst:84
+msgid "mykey.json you have to get using step 2 of the google cloud"
+msgstr "mykey.json you have to get using step 2 of the google cloud"
 
 #: ../../automation/terraform/terraformAWS.rst:488
 msgid "mykey.pem"
@@ -1522,6 +1645,7 @@ msgstr "guiones de inicio"
 
 #: ../../automation/terraform/terraformAWS.rst:452
 #: ../../automation/terraform/terraformAZ.rst:405
+#: ../../automation/terraform/terraformGoogle.rst:623
 #: ../../automation/terraform/terraformvSphere.rst:307
 msgid "terraform.tfvars"
 msgstr "terraform.tfvars"
@@ -1536,6 +1660,7 @@ msgstr "vSphere"
 
 #: ../../automation/terraform/terraformAWS.rst:415
 #: ../../automation/terraform/terraformAZ.rst:298
+#: ../../automation/terraform/terraformGoogle.rst:538
 #: ../../automation/terraform/terraformvSphere.rst:239
 msgid "var.tf"
 msgstr "var.tf"
@@ -1550,8 +1675,13 @@ msgstr "variables.tf"
 msgid "versions.tf"
 msgstr "versions.tf"
 
+#: ../../automation/vyos-api.rst:145
+msgid "versus a non-existent path:"
+msgstr "versus a non-existent path:"
+
 #: ../../automation/terraform/terraformAWS.rst:300
 #: ../../automation/terraform/terraformAZ.rst:95
+#: ../../automation/terraform/terraformGoogle.rst:377
 #: ../../automation/terraform/terraformvSphere.rst:98
 msgid "vyos.tf"
 msgstr "vyos.tf"

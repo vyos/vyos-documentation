@@ -53,7 +53,11 @@ Configuration
 
 .. cfgcmd:: set service https vrf <name>
 
-   Start Webserver in given  VRF.
+   Start Webserver in given VRF.
+
+.. cfgcmd:: set service https request-body-size-limit <size>
+
+   Set the maximum request body size in megabytes. Default is 1MB.
 
 API
 ===
@@ -70,7 +74,36 @@ API
 
 .. cfgcmd:: set service https api strict
 
-   Enforce strict path checking
+   Enforce strict path checking.
+
+.. cfgcmd:: set service https api cors allow-origin <origin>
+
+   Allow cross-origin requests from `<origin>`.
+
+GraphQL
+=======
+
+.. cfgcmd:: set service https api graphql introspection
+
+   Enable GraphQL Schema introspection.
+
+.. note:: Do not leave introspection enabled in production, it is a security risk.
+
+.. cfgcmd:: set service https api graphql authentication type <key | token>
+
+   Set the authentication type for GraphQL, default option is key. Available options are:
+
+   * ``key`` use API keys configured in ``service https api keys``
+
+   * ``token`` use JWT tokens.
+
+.. cfgcmd:: set service https api graphql authentication expiration
+
+   Set the lifetime for JWT tokens in seconds. Default is 3600 seconds.
+
+.. cfgcmd:: set service https api graphql authentication secret-length
+
+   Set the byte length of the JWT secret. Default is 32.
 
 *********************
 Example Configuration

@@ -8,6 +8,87 @@
    _ext/releasenotes.py
 
 
+2024-04-25
+==========
+
+* :vytask:`T6249` ``(default): ISO builder fails because of changed buster-backport repository``
+
+
+2024-04-23
+==========
+
+* :vytask:`T6261` ``(default): Typo in op_mode connect_disconnect print statement for check_ppp_running``
+
+
+2024-04-17
+==========
+
+* :vytask:`T6243` ``(bug): Update vyos-http-api-tools for package idna security advisory``
+
+
+2024-04-12
+==========
+
+* :vytask:`T3437` ``(bug): BGP Confederation Addition Causes Error``
+
+
+2024-04-10
+==========
+
+* :vytask:`T6124` ``(bug): Docker equuleus build image doesn't build due to fpm``
+
+
+2024-04-08
+==========
+
+* :vytask:`T6196` ``(bug): Route-map and summary-only do not work in BGP aggregation at the same time``
+
+
+2024-04-07
+==========
+
+* :vytask:`T1244` ``(default): Support for StartupResync in conntrackd``
+
+
+2024-04-05
+==========
+
+* :vytask:`T2590` ``(bug): DHCPv6 not updating nameservers and search domains since replacing isc-dhcp-client with WIDE dhcp6c``
+
+
+2024-04-04
+==========
+
+* :vytask:`T4146` ``(bug): Nginx should not listen on port 80``
+* :vytask:`T1976` ``(default): deleting address-family under neighbor will disable neighbor``
+* :vytask:`T5625` ``(default): "restart vpn" does not work if ipsec-interfaces is not set``
+* :vytask:`T3020` ``(bug): The "scp" example is wrong in the bash-completion for "set system config-management commit-archive location"``
+* :vytask:`T2250` ``(default): vyos-build "make iso" error if configure was ran outside of the docker container``
+* :vytask:`T2139` ``(default): openvpn: allow "dh-file none" to disable DH for ECDH keys``
+* :vytask:`T2014` ``(default): Use vendor specific NTP Pool hostname``
+* :vytask:`T1118` ``(bug): Obsolete "utc" option in time selector in firewall``
+* :vytask:`T948` ``(feature): integrate aws cloud watch scripts into AMI``
+
+
+2024-04-02
+==========
+
+* :vytask:`T6150` ``(bug): Impossible to set a static IP address via Radius in IPoE``
+
+
+2024-04-01
+==========
+
+* :vytask:`T6193` ``(bug): dhcp-client: invalid warning "is not a DHCP interface but uses DHCP name-server option" for VLAN interfaces``
+
+
+2024-03-22
+==========
+
+* :vytask:`T6110` ``(bug): dhcp server - If failover is defined, range is required``
+* :vytask:`T5624` ``(default): Remove /etc/debian_version from the image``
+
+
 2024-03-11
 ==========
 
