@@ -374,7 +374,7 @@ IPv6
 
   set service pppoe-server ppp-options ipv6 allow
   set service pppoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
-  set service pppoe-server client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
+  set service pppoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
   set service pppoe-server default-ipv6-pool IPv6-POOL
 
 IPv6 Advanced Options
