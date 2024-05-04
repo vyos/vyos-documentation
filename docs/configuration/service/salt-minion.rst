@@ -17,7 +17,7 @@ Requirements
 ************
 
 To use the Salt-Minion, a running Salt-Master is required. You can find more
-in the `Salt Poject Documentaion
+in the `Salt Project Documentation
 <https://docs.saltproject.io/en/latest/contents.html>`_
 
 *************

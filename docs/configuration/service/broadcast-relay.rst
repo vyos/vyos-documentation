@@ -20,7 +20,7 @@ Configuration
 .. cfgcmd:: set service broadcast-relay id <n> description <description>
 
    A description can be added for each and every unique relay ID. This is
-   useful to distinguish between multiple different ports/appliactions.
+   useful to distinguish between multiple different ports/applications.
 
 .. cfgcmd:: set service broadcast-relay id <n> interface <interface>
 
@@ -35,7 +35,7 @@ Configuration
 
 .. cfgcmd:: set service broadcast-relay id <n> port <port>
 
-   The UDP port number used by your apllication. It is mandatory for this kind
+   The UDP port number used by your application. It is mandatory for this kind
    of operation.
 
 .. cfgcmd:: set service broadcast-relay id <n> disable
