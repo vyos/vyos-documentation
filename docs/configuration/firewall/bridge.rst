@@ -13,7 +13,7 @@ Overview
 ********
 
 In this section there's useful information of all firewall configuration that
-can be done regarding bridge, and appropiate op-mode commands.
+can be done regarding bridge, and appropriate op-mode commands.
 Configuration commands covered in this section:
 
 .. cfgcmd:: set firewall bridge ...
@@ -37,13 +37,13 @@ for this layer is shown next:
 
 .. figure:: /_static/images/firewall-bridge-packet-flow.png
 
-For traffic that needs to be forwared internally by the bridge, base chain is
+For traffic that needs to be forwarded internally by the bridge, base chain is
 is **forward**, and it's base command for filtering is ``set firewall bridge
-forward filter ...``, which happens in stage 4, highlightened with red color.
+forward filter ...``, which happens in stage 4, highlighted with red color.
 
 Custom bridge firewall chains can be create with command ``set firewall bridge
 name <name> ...``. In order to use such custom chain, a rule with action jump,
-and the appropiate target should be defined in a base chain.
+and the appropriate target should be defined in a base chain.
 
 .. note:: **Layer 3 bridge**:
       When an IP address is assigned to the bridge interface, and if traffic
@@ -137,7 +137,7 @@ not match any rule in it's chain. For base chains, possible options for
 
 .. cfgcmd:: set firewall bridge name <name> default-jump-target <text>
 
-   To be used only when ``defult-action`` is set to ``jump``. Use this
+   To be used only when ``default-action`` is set to ``jump``. Use this
    command to specify jump target for default rule.
 
 .. note:: **Important note about default-actions:**
@@ -236,9 +236,9 @@ There are a lot of matching criteria against which the packet can be tested.
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    inbound-interface name <iface>
 
-   Match based on inbound interface. Wilcard ``*`` can be used.
+   Match based on inbound interface. Wildcard ``*`` can be used.
    For example: ``eth2*``. Prepending character ``!`` for inverted matching
-   criteria is also supportd. For example ``!eth2``
+   criteria is also supported. For example ``!eth2``
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    inbound-interface group <iface_group>
@@ -246,16 +246,16 @@ There are a lot of matching criteria against which the packet can be tested.
    inbound-interface group <iface_group>
 
    Match based on inbound interface group. Prepending character ``!`` for
-   inverted matching criteria is also supportd. For example ``!IFACE_GROUP``
+   inverted matching criteria is also supported. For example ``!IFACE_GROUP``
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    outbound-interface name <iface>
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    outbound-interface name <iface>
 
-   Match based on outbound interface. Wilcard ``*`` can be used.
+   Match based on outbound interface. Wildcard ``*`` can be used.
    For example: ``eth2*``. Prepending character ``!`` for inverted matching
-   criteria is also supportd. For example ``!eth2``
+   criteria is also supported. For example ``!eth2``
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    outbound-interface group <iface_group>
@@ -263,7 +263,7 @@ There are a lot of matching criteria against which the packet can be tested.
    outbound-interface group <iface_group>
 
    Match based on outbound interface group. Prepending character ``!`` for
-   inverted matching criteria is also supportd. For example ``!IFACE_GROUP``
+   inverted matching criteria is also supported. For example ``!IFACE_GROUP``
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    vlan id <0-4096>
@@ -288,7 +288,7 @@ Rule-set overview
 
 In this section you can find all useful firewall op-mode commands.
 
-General commands for firewall configuration, counter and statiscits:
+General commands for firewall configuration, counter and statistics:
 
 .. opcmd:: show firewall
 .. opcmd:: show firewall summary
