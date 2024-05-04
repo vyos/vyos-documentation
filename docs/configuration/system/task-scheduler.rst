@@ -7,7 +7,7 @@ Task Scheduler
 The task scheduler allows you to execute tasks on a given schedule. It makes
 use of UNIX cron_.
 
-.. note:: All scripts excecuted this way are executed as root user - this may
+.. note:: All scripts executed this way are executed as root user - this may
    be dangerous. Together with :ref:`command-scripting` this can be used for
    automating (re-)configuration.
 

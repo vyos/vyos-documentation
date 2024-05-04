@@ -94,7 +94,7 @@ states.
 .. cfgcmd:: set system conntrack timeout udp stream <1-21474836>
     :defaultvalue:
 
-    Set the timeout in secounds for a protocol or state.
+    Set the timeout in seconds for a protocol or state.
 
 You can also define custom timeout values to apply to a specific subset of
 connections, based on a packet and flow selector. To do this, you need to
@@ -172,7 +172,7 @@ create a rule defining the packet and flow selector.
 .. cfgcmd:: set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
    protocol udp unreplied <1-21474836>
 
-    Set the timeout in secounds for a protocol or state in a custom rule.
+    Set the timeout in seconds for a protocol or state in a custom rule.
 
 Conntrack ignore rules
 ======================
