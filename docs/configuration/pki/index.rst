@@ -8,7 +8,7 @@
 PKI
 ###
 
-VyOS 1.4 changed the way in how encrytion keys or certificates are stored on the
+VyOS 1.4 changed the way in how encryption keys or certificates are stored on the
 system. In the pre VyOS 1.4 era, certificates got stored under /config and every
 service referenced a file. That made copying a running configuration from system
 A to system B a bit harder, as you had to copy the files and their permissions
@@ -120,12 +120,12 @@ OpenVPN
 
 .. opcmd:: generate pki openvpn shared-secret
 
-  Genearate a new OpenVPN shared secret. The generated secret is the output to
+  Generate a new OpenVPN shared secret. The generated secret is the output to
   the console.
 
 .. opcmd:: generate pki openvpn shared-secret install <name>
 
-  Genearate a new OpenVPN shared secret. The generated secret is the output to
+  Generate a new OpenVPN shared secret. The generated secret is the output to
   the console.
 
   .. include:: pki_cli_import_help.txt
@@ -163,7 +163,7 @@ WireGuard
     the output from op-mode into configuration mode.
 
     ``peer`` is used for the VyOS CLI command to identify the WireGuard peer where
-    this secred is to be used.
+    this secret is to be used.
 
 Key usage (CLI)
 ===============
