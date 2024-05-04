@@ -368,7 +368,7 @@ are to be sent, they could get dropped when trying to get enqueued at
 the tail. This can happen if the queue has still not been able to
 release enough packets from its head.
 
-This is the policy that requieres the lowest resources for the same
+This is the policy that requires the lowest resources for the same
 amount of traffic. But **very likely you do not need it as you cannot
 get much from it. Sometimes it is used just to enable logging.**
 
@@ -504,7 +504,7 @@ and increase `interval` to something around 150 ms.
    the number of sub-queues (default: 1024) into which packets are
    classified.
 
-.. cfgcmd:: set qos policy fq-codel <policy name> interval <miliseconds>
+.. cfgcmd:: set qos policy fq-codel <policy name> interval <milliseconds>
 
    Use this command to configure an fq-codel policy, set its name and
    the time period used by the control loop of CoDel to detect when a
@@ -518,7 +518,7 @@ and increase `interval` to something around 150 ms.
    define a hard limit on the real queue size. When this limit is
    reached, new packets are dropped (default: 10240 packets).
 
-.. cfgcmd:: set qos policy fq-codel <policy-name> target <miliseconds>
+.. cfgcmd:: set qos policy fq-codel <policy-name> target <milliseconds>
 
    Use this command to configure an fq-codel policy, set its name, and
    define the acceptable minimum standing/persistent queue delay. This
@@ -710,7 +710,7 @@ continuously, packets from lower priority classes will only be
 transmitted after traffic volume from higher priority classes decreases.
 
 
-.. note:: In Priority Queue we do not define clases with a meaningless
+.. note:: In Priority Queue we do not define classes with a meaningless
    class ID number but with a class priority number (1-7). The lower the
    number, the higher the priority.
 
@@ -912,7 +912,7 @@ In principle, values must be
 Rate Control
 ------------
 
-| **Queueing discipline:** Tocken Bucket Filter.
+| **Queueing discipline:** Token Bucket Filter.
 | **Applies to:** Outbound traffic.
 
 Rate-Control is a classless policy that limits the packet flow to a set
