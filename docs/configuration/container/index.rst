@@ -125,7 +125,7 @@ Configuration
    - **net-bind-service**: Bind a socket to privileged ports (port numbers less than 1024)
    - **net-raw**: Permission to create raw network sockets
    - **setpcap**: Capability sets (from bounded or inherited set)
-   - **sys-admin**: Administation operations (quotactl, mount, sethostname, setdomainame)
+   - **sys-admin**: Administration operations (quotactl, mount, sethostname, setdomainame)
    - **sys-time**: Permission to set system clock
 
 .. cfgcmd:: set container name <name> disable
