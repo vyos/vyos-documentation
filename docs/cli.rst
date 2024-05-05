@@ -872,6 +872,9 @@ be ``config.boot-hostname.YYYYMMDD_HHMMSS``.
   * ``tftp://<host>/<dir>``
   * ``git+https://<user>:<passwd>@<host>/<path>``
 
+  Since username and password are part of the URI, they need to be
+  properly url encoded if containing special characters.
+
   .. note:: The number of revisions don't affect the commit-archive.
 
   .. note:: You may find VyOS not allowing the secure connection because
