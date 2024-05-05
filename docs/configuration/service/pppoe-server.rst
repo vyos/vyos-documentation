@@ -24,7 +24,6 @@ Configuring PPPoE Server
   set service pppoe-server authentication local-users username test password 'test'
   set service pppoe-server client-ip-pool PPPOE-POOL range 192.168.255.2-192.168.255.254
   set service pppoe-server default-pool 'PPPOE-POOL'
-  set service pppoe-server outside-address 192.0.2.2
   set service pppoe-server gateway-address 192.168.255.1
   set service pppoe-server interface eth0
 
