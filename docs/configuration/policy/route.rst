@@ -19,8 +19,8 @@ from 1 - 999999, at the first match the action of the rule will be executed.
 
    Provide a rule-set description.
 
-.. cfgcmd:: set policy route <name> enable-default-log
-.. cfgcmd:: set policy route6 <name> enable-default-log
+.. cfgcmd:: set policy route <name> default-log
+.. cfgcmd:: set policy route6 <name> default-log
 
    Option to log packets hitting default-action.
 
