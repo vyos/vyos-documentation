@@ -159,7 +159,7 @@ obtained from the EC2 metadata service.
 Please observe that the same configuration pitfall described in :ref:`command-scripting`
 exists here when running ``configure`` in any context as without user group 
 'vyattacfg' will cause the error message ``Set failed`` to appear.
-We therefor need to wrap it and have the script re-execute itself with the correct 
+We therefore need to wrap it and have the script re-execute itself with the correct 
 group permissions. 
 
 .. code-block:: yaml
