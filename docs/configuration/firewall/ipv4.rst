@@ -206,10 +206,10 @@ log options can be defined.
    Enable logging for the matched packet. If this configuration command is not
    present, then log is not enabled.
 
-.. cfgcmd:: set firewall ipv4 forward filter enable-default-log
-.. cfgcmd:: set firewall ipv4 input filter enable-default-log
-.. cfgcmd:: set firewall ipv4 output filter enable-default-log
-.. cfgcmd:: set firewall ipv4 name <name> enable-default-log
+.. cfgcmd:: set firewall ipv4 forward filter default-log
+.. cfgcmd:: set firewall ipv4 input filter default-log
+.. cfgcmd:: set firewall ipv4 output filter default-log
+.. cfgcmd:: set firewall ipv4 name <name> default-log
 
    Use this command to enable the logging of the default action on
    the specified chain.

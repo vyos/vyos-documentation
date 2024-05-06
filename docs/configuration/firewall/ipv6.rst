@@ -206,10 +206,10 @@ log options can be defined.
    Enable logging for the matched packet. If this configuration command is not
    present, then log is not enabled.
 
-.. cfgcmd:: set firewall ipv6 forward filter enable-default-log
-.. cfgcmd:: set firewall ipv6 input filter enable-default-log
-.. cfgcmd:: set firewall ipv6 output filter enable-default-log
-.. cfgcmd:: set firewall ipv6 name <name> enable-default-log
+.. cfgcmd:: set firewall ipv6 forward filter default-log
+.. cfgcmd:: set firewall ipv6 input filter default-log
+.. cfgcmd:: set firewall ipv6 output filter default-log
+.. cfgcmd:: set firewall ipv6 name <name> default-log
 
    Use this command to enable the logging of the default action on
    the specified chain.
@@ -1177,7 +1177,7 @@ Example Partial Config
               }
               name INP-ETH1 {
                   default-action drop
-                  enable-default-log
+                  default-log
                   rule 10 {
                       action accept
                       protocol tcp_udp
