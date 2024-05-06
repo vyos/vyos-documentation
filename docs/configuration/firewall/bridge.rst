@@ -157,8 +157,8 @@ log options can be defined.
    Enable logging for the matched packet. If this configuration command is not
    present, then log is not enabled.
 
-.. cfgcmd:: set firewall bridge forward filter enable-default-log
-.. cfgcmd:: set firewall bridge name <name> enable-default-log
+.. cfgcmd:: set firewall bridge forward filter default-log
+.. cfgcmd:: set firewall bridge name <name> default-log
 
    Use this command to enable the logging of the default action on
    the specified chain.
@@ -325,7 +325,7 @@ Configuration example:
 .. code-block:: none
 
    set firewall bridge forward filter default-action 'drop'
-   set firewall bridge forward filter enable-default-log
+   set firewall bridge forward filter default-log
    set firewall bridge forward filter rule 10 action 'continue'
    set firewall bridge forward filter rule 10 inbound-interface name 'eth2'
    set firewall bridge forward filter rule 10 vlan id '22'
@@ -341,7 +341,7 @@ Configuration example:
    set firewall bridge forward filter rule 40 destination mac-address '66:55:44:33:22:11'
    set firewall bridge forward filter rule 40 source mac-address '11:22:33:44:55:66'
    set firewall bridge name TEST default-action 'accept'
-   set firewall bridge name TEST enable-default-log
+   set firewall bridge name TEST default-log
    set firewall bridge name TEST rule 10 action 'continue'
    set firewall bridge name TEST rule 10 log
    set firewall bridge name TEST rule 10 vlan priority '0'
