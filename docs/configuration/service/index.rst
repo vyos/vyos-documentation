@@ -8,6 +8,7 @@ Service
    :includehidden:
 
    broadcast-relay
+   config-sync
    conntrack-sync
    console-server
    dhcp-relay
