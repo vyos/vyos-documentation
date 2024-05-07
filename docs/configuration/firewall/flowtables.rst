@@ -152,7 +152,7 @@ Analysis on what happens for desired connection:
 
    4. Once answer from server 192.0.2.100 is seen in opposite direction,
    connection state will be triggered to **established**, so this reply is
-   accepted in rule 10.
+   accepted in rule 20.
 
    5. Second packet for this connection is received by the router. Since
    connection state is **established**, then rule 10 is hit, and a new entry
