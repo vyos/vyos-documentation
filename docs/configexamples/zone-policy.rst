@@ -6,7 +6,7 @@ Zone-Policy example
 -------------------
 
 .. note:: Starting from VyOS 1.4-rolling-202308040557, a new firewall
-   structure can be found on all vyos instalations, and zone based firewall is
+   structure can be found on all vyos installations, and zone based firewall is
    no longer supported. Documentation for most of the new firewall CLI can be
    found in the `firewall
    <https://docs.vyos.io/en/latest/configuration/firewall/general.html>`_

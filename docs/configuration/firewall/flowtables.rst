@@ -99,20 +99,20 @@ Creating rules for using flow tables:
 Configuration Example
 *********************
 
-Things to be considred in this setup:
+Things to be considered in this setup:
 
    * Two interfaces are going to be used in the flowtables: eth0 and eth1
 
-   * Minumum firewall ruleset is provided, which includes some filtering rules,
-     and appropiate rules for using flowtable offload capabilities.
+   * Minimum firewall ruleset is provided, which includes some filtering rules,
+     and appropriate rules for using flowtable offload capabilities.
 
 As described, first packet will be evaluated by all the firewall path, so
-desired connection should be explicitely accepted. Same thing should be taken
+desired connection should be explicitly accepted. Same thing should be taken
 into account for traffic in reverse order. In most cases state policies are
 used in order to accept connection in reverse patch.
 
-We will only accept traffic comming from interface eth0, protocol tcp and
-destination port 1122. All other traffic traspassing the router should be
+We will only accept traffic coming from interface eth0, protocol tcp and
+destination port 1122. All other traffic trespassing the router should be
 blocked.
 
 Commands

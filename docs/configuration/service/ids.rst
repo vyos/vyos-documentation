@@ -33,7 +33,7 @@ Configuration
     Configure direction for processing traffic. 
 
 .. cfgcmd:: set service ids ddos-protection exclude-network <x.x.x.x/x>
-.. cfgcmd:: set service ids ddos-protection exlude-network <h:h:h:h:h:h:h:h/x>
+.. cfgcmd:: set service ids ddos-protection exclude-network <h:h:h:h:h:h:h:h/x>
 
     Specify IPv4 and/or IPv6 networks which are going to be excluded.
 
@@ -56,7 +56,7 @@ Configuration
 
 .. cfgcmd:: set service ids ddos-protection sflow port <1-65535>
 
-    Configure port number to be used for sflow conection. Default port is 6343.
+    Configure port number to be used for sflow connection. Default port is 6343.
 
 .. cfgcmd:: set service ids ddos-protection threshold general
    [fps | mbps | pps] <0-4294967294>
@@ -96,7 +96,7 @@ In this simplified scenario, main things to be considered are:
     * Interface **eth0** used to connect to upstream.
 
 Since we are analyzing attacks to and from our internal network, two types
-of attacks can be identified, and differents actions are needed:
+of attacks can be identified, and different actions are needed:
 
     * External attack: an attack from the internet towards an internal IP
       is identify. In this case, all connections towards such IP will be

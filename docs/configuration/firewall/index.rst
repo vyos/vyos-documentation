@@ -24,7 +24,7 @@ firewall are covered below:
      where the packet was received is part of a bridge, or not.
 
 If the interface where the packet was received isn't part of a bridge, then 
-packetis processed at the **IP Layer**:
+packet is processed at the **IP Layer**:
 
    * **Prerouting**: several actions can be done in this stage, and currently
      these actions are defined in different parts in VyOS configuration. Order
@@ -65,7 +65,7 @@ packetis processed at the **IP Layer**:
    * **Output**: stage where traffic that originates from the router itself
      can be filtered and controlled. Bear in mind that this traffic can be a
      new connection originated by a internal process running on VyOS router,
-     such as NTP, or a response to traffic received externaly through
+     such as NTP, or a response to traffic received externally through
      **input** (for example response to an ssh login attempt to the router).
      This includes ipv4 and ipv6 filtering rules, defined in:
 
@@ -84,7 +84,7 @@ If the interface where the packet was received is part of a bridge, then
 the packet is processed at the **Bridge Layer**, which contains a basic setup for
 bridge filtering:
 
-   * **Forward (Bridge)**: stage where traffic that is trespasing through the
+   * **Forward (Bridge)**: stage where traffic that is trespassing through the
      bridge is filtered and controlled:
 
      * ``set firewall bridge forward filter ...``.

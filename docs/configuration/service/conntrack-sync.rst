@@ -29,7 +29,7 @@ will be mandatorily defragmented.
 
 It is possible to use either Multicast or Unicast to sync conntrack traffic.
 Most examples below show Multicast, but unicast can be specified by using the
-"peer" keywork after the specificed interface, as in the following example:
+"peer" keywork after the specified interface, as in the following example:
 
 :cfgcmd:`set service conntrack-sync interface eth0 peer 192.168.0.250`
 
@@ -204,7 +204,7 @@ Now configure conntrack-sync service on ``router1`` **and** ``router2``
 
 .. code-block:: none
 
-  set high-availablilty vrrp group internal virtual-address ... etc ...
+  set high-availability vrrp group internal virtual-address ... etc ...
   set high-availability vrrp sync-group syncgrp member 'internal'
   set service conntrack-sync accept-protocol 'tcp'
   set service conntrack-sync accept-protocol 'udp'

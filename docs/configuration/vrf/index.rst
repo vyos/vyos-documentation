@@ -43,7 +43,7 @@ then enslaved to a VRF device.
 Zebra/Kernel route filtering
 ----------------------------
 
-Zebra supports prefix-lists and Route Mapss to match routes received from
+Zebra supports prefix-lists and Route Maps to match routes received from
 other FRR components. The permit/deny facilities provided by these commands
 can be used to filter which routes zebra will install in the kernel.
 
@@ -72,7 +72,7 @@ Nexthop Tracking
 
 Nexthop tracking resolve nexthops via the default route by default. This is enabled
 by default for a traditional profile of FRR which we use. It and can be disabled if
-you do not wan't to e.g. allow BGP to peer across the default route.
+you do not want to e.g. allow BGP to peer across the default route.
 
 .. cfgcmd:: set vrf name <name> ip nht no-resolve-via-default
 

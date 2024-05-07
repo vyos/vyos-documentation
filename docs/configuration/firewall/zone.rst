@@ -11,7 +11,7 @@ Overview
 ********
 
 .. note:: Starting from VyOS 1.4-rolling-202308040557, a new firewall
-   structure can be found on all vyos instalations. Zone based firewall was
+   structure can be found on all VyOS installations. Zone based firewall was
    removed in that version, but re introduced in VyOS 1.4 and 1.5. All
    versions built after 2023-10-22 has this feature.
    Documentation for most of the new firewall CLI can be
