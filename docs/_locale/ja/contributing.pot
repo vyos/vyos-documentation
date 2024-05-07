@@ -72,6 +72,18 @@ msgstr "A good approach for writing commit messages is actually to have a look a
 msgid "A number of flags can be set up to change the behaviour of VyOS at runtime. These flags can be toggled using either environment variables or creating files."
 msgstr "A number of flags can be set up to change the behaviour of VyOS at runtime. These flags can be toggled using either environment variables or creating files."
 
+#: ../../contributing/issues-features.rst:86
+msgid "A reasonably detailed description of the feature: what it is, how it's supposed to work, and how you'd use it. The maintainers aren't familiar with every feature of every protocol and tool, and community contributors who are looking for tasks to work on will also appreciate more information that helps them implement and test a feature."
+msgstr "A reasonably detailed description of the feature: what it is, how it's supposed to work, and how you'd use it. The maintainers aren't familiar with every feature of every protocol and tool, and community contributors who are looking for tasks to work on will also appreciate more information that helps them implement and test a feature."
+
+#: ../../contributing/issues-features.rst:42
+msgid "A sequence of actions that triggers the bug. We understand that it's not always possible, but it makes developer's job a lot easier and also allows any community member to independently confirm that the bug still exists or if it's already fixed."
+msgstr "A sequence of actions that triggers the bug. We understand that it's not always possible, but it makes developer's job a lot easier and also allows any community member to independently confirm that the bug still exists or if it's already fixed."
+
+#: ../../contributing/issues-features.rst:33
+msgid "A sequence of configuration commands or a complete configuration file required to recreate a setup where the bug occurs. Please avoid partial configs: a sequence of commands is easy to paste into the console, a complete config is easy to load in a VM, but a partial config is neither! At least not until we implement a \"merge from the CLI\" feature that allows pasting config file chunks into a session."
+msgstr "A sequence of configuration commands or a complete configuration file required to recreate a setup where the bug occurs. Please avoid partial configs: a sequence of commands is easy to paste into the console, a complete config is easy to load in a VM, but a partial config is neither! At least not until we implement a \"merge from the CLI\" feature that allows pasting config file chunks into a session."
+
 #: ../../contributing/development.rst:74
 msgid "A single, short, summary of the commit (recommended 50 characters or less, not exceeding 80 characters) containing a prefix of the changed component and the corresponding Phabricator_ reference e.g. ``snmp: T1111:`` or ``ethernet: T2222:`` - multiple components could be concatenated as in ``snmp: ethernet: T3333``"
 msgstr "A single, short, summary of the commit (recommended 50 characters or less, not exceeding 80 characters) containing a prefix of the changed component and the corresponding Phabricator_ reference e.g. ``snmp: T1111:`` or ``ethernet: T2222:`` - multiple components could be concatenated as in ``snmp: ethernet: T3333``"
@@ -93,7 +105,7 @@ msgstr "Acronyms also **must** be capitalized to visually distinguish them from 
 msgid "Add file to Git index using ``git add myfile``, or for a whole directory: ``git add somedir/*``"
 msgstr "Add file to Git index using ``git add myfile``, or for a whole directory: ``git add somedir/*``"
 
-#: ../../contributing/testing.rst:100
+#: ../../contributing/testing.rst:103
 msgid "Add one or more IP addresses"
 msgstr "Add one or more IP addresses"
 
@@ -155,6 +167,14 @@ msgstr "Any \"modified\" package may refer to an altered version of e.g. vyos-1x
 msgid "Any packages in the packages directory will be added to the iso during build, replacing the upstream ones. Make sure you delete them (both the source directories and built deb packages) if you want to build an iso from purely upstream packages."
 msgstr "Any packages in the packages directory will be added to the iso during build, replacing the upstream ones. Make sure you delete them (both the source directories and built deb packages) if you want to build an iso from purely upstream packages."
 
+#: ../../contributing/issues-features.rst:100
+msgid "Are there any adverse or non-obvious interactions with other features? Should it be mutually exclusive with anything?"
+msgstr "Are there any adverse or non-obvious interactions with other features? Should it be mutually exclusive with anything?"
+
+#: ../../contributing/issues-features.rst:99
+msgid "Are there any limitations (hardware support, resource usage)?"
+msgstr "Are there any limitations (hardware support, resource usage)?"
+
 #: ../../contributing/testing.rst:57
 msgid "As Smoketests will alter the system configuration and you are logged in remote you may loose your connection to the system."
 msgstr "As Smoketests will alter the system configuration and you are logged in remote you may loose your connection to the system."
@@ -207,6 +227,10 @@ msgstr "Bad: radius (unless it's about the distance between a center of a circle
 msgid "Beeing brave and running the latest rolling releases will sometimes trigger bugs due to corner cases we missed in our design. Those bugs should be filed via Phabricator_ but you can help us to narrow doen the issue. Login to your VyOS system and change into configuration mode by typing ``configure``. Now re-load your boot configuration by simply typing ``load`` followed by return."
 msgstr "Beeing brave and running the latest rolling releases will sometimes trigger bugs due to corner cases we missed in our design. Those bugs should be filed via Phabricator_ but you can help us to narrow doen the issue. Login to your VyOS system and change into configuration mode by typing ``configure``. Now re-load your boot configuration by simply typing ``load`` followed by return."
 
+#: ../../contributing/debugging.rst:160
+msgid "Being brave and running the latest rolling releases will sometimes trigger bugs due to corner cases we missed in our design. Those bugs should be filed via Phabricator_ but you can help us to narrow down the issue. Login to your VyOS system and change into configuration mode by typing ``configure``. Now re-load your boot configuration by simply typing ``load`` followed by return."
+msgstr "Being brave and running the latest rolling releases will sometimes trigger bugs due to corner cases we missed in our design. Those bugs should be filed via Phabricator_ but you can help us to narrow down the issue. Login to your VyOS system and change into configuration mode by typing ``configure``. Now re-load your boot configuration by simply typing ``load`` followed by return."
+
 #: ../../contributing/debugging.rst:170
 msgid "Boot Timing"
 msgstr "Boot Timing"
@@ -214,6 +238,10 @@ msgstr "Boot Timing"
 #: ../../contributing/issues-features.rst:10
 msgid "Bug Report/Issue"
 msgstr "Bug Report/Issue"
+
+#: ../../contributing/issues-features.rst:117
+msgid "Bug reports that lack reproducing procedures."
+msgstr "Bug reports that lack reproducing procedures."
 
 #: ../../contributing/build-vyos.rst:825
 msgid "Build"
@@ -299,7 +327,7 @@ msgstr "Command definitions are purely declarative, and cannot contain any logic
 msgid "Commit the changes by calling ``git commit``. Please use a meaningful commit headline (read above) and don't forget to reference the Phabricator_ ID."
 msgstr "Commit the changes by calling ``git commit``. Please use a meaningful commit headline (read above) and don't forget to reference the Phabricator_ ID."
 
-#: ../../contributing/testing.rst:152
+#: ../../contributing/testing.rst:155
 msgid "Config Load Tests"
 msgstr "Config Load Tests"
 
@@ -327,7 +355,7 @@ msgstr "Continuous Integration"
 msgid "Customize"
 msgstr "Customize"
 
-#: ../../contributing/testing.rst:101
+#: ../../contributing/testing.rst:104
 msgid "DHCP client and DHCPv6 prefix delegation"
 msgstr "DHCP client and DHCPv6 prefix delegation"
 
@@ -436,7 +464,7 @@ msgid "Every change set must be consistent (self containing)! Do not fix multipl
 msgstr "Every change set must be consistent (self containing)! Do not fix multiple bugs in a single commit. If you already worked on multiple fixes in the same file use `git add --patch` to only add the parts related to the one issue into your upcoming commit."
 
 #: ../../contributing/development.rst:412
-#: ../../contributing/testing.rst:66
+#: ../../contributing/testing.rst:69
 msgid "Example:"
 msgstr "Example:"
 
@@ -468,6 +496,14 @@ msgstr "FRR"
 #: ../../contributing/issues-features.rst:68
 msgid "Feature Request"
 msgstr "Feature Request"
+
+#: ../../contributing/issues-features.rst:72
+msgid "Feature Requests"
+msgstr "Feature Requests"
+
+#: ../../contributing/issues-features.rst:116
+msgid "Feature requests that do not include required information and need clarification."
+msgstr "Feature requests that do not include required information and need clarification."
 
 #: ../../contributing/build-vyos.rst:600
 msgid "Firmware"
@@ -574,11 +610,15 @@ msgstr "Horrible: \"Tcp connection timeout\""
 msgid "Horrible: \"frobnication algorithm.\""
 msgstr "Horrible: \"frobnication algorithm.\""
 
-#: ../../contributing/issues-features.rst:63
+#: ../../contributing/issues-features.rst:67
 msgid "How can we reproduce this Bug?"
 msgstr "How can we reproduce this Bug?"
 
-#: ../../contributing/testing.rst:103
+#: ../../contributing/issues-features.rst:98
+msgid "How you'd configure it by hand there?"
+msgstr "How you'd configure it by hand there?"
+
+#: ../../contributing/testing.rst:106
 msgid "IP and IPv6 options"
 msgstr "IP and IPv6 options"
 
@@ -602,13 +642,29 @@ msgstr "If a verb is essential, keep it. For example, in the help text of ``set 
 msgid "If applicable a reference to a previous commit should be made linking those commits nicely when browsing the history: ``After commit abcd12ef (\"snmp: this is a headline\") a Python import statement is missing, throwing the following exception: ABCDEF``"
 msgstr "If applicable a reference to a previous commit should be made linking those commits nicely when browsing the history: ``After commit abcd12ef (\"snmp: this is a headline\") a Python import statement is missing, throwing the following exception: ABCDEF``"
 
+#: ../../contributing/issues-features.rst:46
+msgid "If it's a regression, tell us a VyOS version where the feature still worked correctly. It's perfect if you can tell exactly which version broke it, but we understand that it's not always easy or feasible — any working version is acceptable."
+msgstr "If it's a regression, tell us a VyOS version where the feature still worked correctly. It's perfect if you can tell exactly which version broke it, but we understand that it's not always easy or feasible — any working version is acceptable."
+
 #: ../../contributing/development.rst:64
 msgid "If there is no Phabricator_ reference in the commits of your pull request, we have to ask you to amend the commit message. Otherwise we will have to reject it."
 msgstr "If there is no Phabricator_ reference in the commits of your pull request, we have to ask you to amend the commit message. Otherwise we will have to reject it."
 
+#: ../../contributing/issues-features.rst:126
+msgid "If there is no response after further two weeks, the task will be automatically closed."
+msgstr "If there is no response after further two weeks, the task will be automatically closed."
+
+#: ../../contributing/issues-features.rst:124
+msgid "If there is no response from the reporter within two weeks, the task bot will add a comment (\"Any news?\") to remind the reporter to reply."
+msgstr "If there is no response from the reporter within two weeks, the task bot will add a comment (\"Any news?\") to remind the reporter to reply."
+
 #: ../../contributing/build-vyos.rst:739
 msgid "If you are brave enough to build yourself an ISO image containing any modified package from our GitHub organisation - this is the place to be."
 msgstr "If you are brave enough to build yourself an ISO image containing any modified package from our GitHub organisation - this is the place to be."
+
+#: ../../contributing/issues-features.rst:50
+msgid "If you aren't certain what the correct behavior is and if what you see is really a bug, or if you don't have a reproducing procedure that reliably triggers it, please create a post on the forum or ask in the chat first — or, if you have a subscription, create a support ticket. Our team and community members can help you identify the bug and work around it, then create an actionable and testable bug report."
+msgstr "If you aren't certain what the correct behavior is and if what you see is really a bug, or if you don't have a reproducing procedure that reliably triggers it, please create a post on the forum or ask in the chat first — or, if you have a subscription, create a support ticket. Our team and community members can help you identify the bug and work around it, then create an actionable and testable bug report."
 
 #: ../../contributing/build-vyos.rst:602
 msgid "If you upgrade your kernel or include new drivers you may need new firmware. Build a new ``vyos-linux-firmware`` package with the included helper scripts."
@@ -622,7 +678,7 @@ msgstr "In a big system, such as VyOS, that is comprised of multiple components,
 msgid "In addition this also helps when browsing the GitHub codebase on a mobile device if you happen to be a crazy scientist."
 msgstr "In addition this also helps when browsing the GitHub codebase on a mobile device if you happen to be a crazy scientist."
 
-#: ../../contributing/issues-features.rst:56
+#: ../../contributing/issues-features.rst:60
 msgid "In order to open up a bug-report/feature request you need to create yourself an account on VyOS Phabricator_. On the left side of the specific project (VyOS 1.2 or VyOS 1.3) you will find quick-links for opening a bug-report/feature request."
 msgstr "In order to open up a bug-report/feature request you need to create yourself an account on VyOS Phabricator_. On the left side of the specific project (VyOS 1.2 or VyOS 1.3) you will find quick-links for opening a bug-report/feature request."
 
@@ -686,9 +742,13 @@ msgstr "Intel QAT"
 msgid "Inter QAT"
 msgstr "Inter QAT"
 
-#: ../../contributing/testing.rst:91
+#: ../../contributing/testing.rst:94
 msgid "Interface based tests"
 msgstr "Interface based tests"
+
+#: ../../contributing/issues-features.rst:96
+msgid "Is the feature supported by the underlying component (FreeRangeRouting, nftables, Kea...) already?"
+msgstr "Is the feature supported by the underlying component (FreeRangeRouting, nftables, Kea...) already?"
 
 #: ../../contributing/issues-features.rst:5
 msgid "Issues/Feature requests"
@@ -701,6 +761,10 @@ msgstr "Issues or bugs are found in any software project. VyOS is not an excepti
 #: ../../contributing/upstream-packages.rst:85
 msgid "It's an Ada program and requires GNAT and gprbuild for building, dependencies are properly specified so just follow debuild's suggestions."
 msgstr "It's an Ada program and requires GNAT and gprbuild for building, dependencies are properly specified so just follow debuild's suggestions."
+
+#: ../../contributing/issues-features.rst:103
+msgid "It's fine if you cannot provide some of that information, but if you can, it makes the work of developers considerably simpler, so try to do the research to answer those questions."
+msgstr "It's fine if you cannot provide some of that information, but if you can, it makes the work of developers considerably simpler, so try to do the research to answer those questions."
 
 #: ../../contributing/debugging.rst:58
 msgid "It is also possible to set up the debugging using environment variables. In that case, the name will be (in uppercase) VYOS_FEATURE_DEBUG."
@@ -758,7 +822,7 @@ msgstr "Linux Kernel"
 msgid "Live System"
 msgstr "Live System"
 
-#: ../../contributing/testing.rst:102
+#: ../../contributing/testing.rst:105
 msgid "MTU size"
 msgstr "MTU size"
 
@@ -766,11 +830,11 @@ msgstr "MTU size"
 msgid "Make your changes and save them. Do the following for all changes files to record them in your created Git commit:"
 msgstr "Make your changes and save them. Do the following for all changes files to record them in your created Git commit:"
 
-#: ../../contributing/testing.rst:61
+#: ../../contributing/testing.rst:64
 msgid "Manual Smoketest Run"
 msgstr "Manual Smoketest Run"
 
-#: ../../contributing/testing.rst:169
+#: ../../contributing/testing.rst:172
 msgid "Manual config load test"
 msgstr "Manual config load test"
 
@@ -847,7 +911,7 @@ msgstr "Now you are prepared with two new aliases ``vybld`` and ``vybld_crux`` t
 msgid "Old concept/syntax"
 msgstr "Old concept/syntax"
 
-#: ../../contributing/testing.rst:63
+#: ../../contributing/testing.rst:66
 msgid "On the other hand - as each test is contain in its own file - one can always execute a single Smoketest by hand by simply running the Python test scripts."
 msgstr "On the other hand - as each test is contain in its own file - one can always execute a single Smoketest by hand by simply running the Python test scripts."
 
@@ -859,7 +923,7 @@ msgstr "Once you have the required dependencies installed, you may proceed with 
 msgid "Once you run ``show xyz`` and your condition is triggered you should be dropped into the python debugger:"
 msgstr "Once you run ``show xyz`` and your condition is triggered you should be dropped into the python debugger:"
 
-#: ../../contributing/testing.rst:171
+#: ../../contributing/testing.rst:174
 msgid "One is not bound to load all configurations one after another but can also load individual test configurations on his own."
 msgstr "One is not bound to load all configurations one after another but can also load individual test configurations on his own."
 
@@ -884,6 +948,10 @@ msgid "Our StrongSWAN build differs from the upstream:"
 msgstr "Our StrongSWAN build differs from the upstream:"
 
 #: ../../contributing/testing.rst:20
+msgid "Our `VyOS CI`_ system is based on Jenkins and builds all our required packages for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build Job which builds and tests the VyOS ISO image which is published after a successful test drive."
+msgstr "Our `VyOS CI`_ system is based on Jenkins and builds all our required packages for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build Job which builds and tests the VyOS ISO image which is published after a successful test drive."
+
+#: ../../contributing/testing.rst:20
 msgid "Our `VyOS CI`_ system is based on Jenkins and builds all our required packages for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build Job which builds and tests the VyOS ISO image which is published after a successfull test drive."
 msgstr "Our `VyOS CI`_ system is based on Jenkins and builds all our required packages for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build Job which builds and tests the VyOS ISO image which is published after a successfull test drive."
 
@@ -895,7 +963,7 @@ msgstr "Our code is split into several modules. VyOS is composed of multiple ind
 msgid "Our op mode scripts use the python-vici module, which is not included in Debian's build, and isn't quite easy to integrate in that build. For this reason we debianize that module by hand now, using this procedure:"
 msgstr "Our op mode scripts use the python-vici module, which is not included in Debian's build, and isn't quite easy to integrate in that build. For this reason we debianize that module by hand now, using this procedure:"
 
-#: ../../contributing/testing.rst:93
+#: ../../contributing/testing.rst:96
 msgid "Our smoketests not only test daemons and serives, but also check if what we configure for an interface works. Thus there is a common base classed named: ``base_interfaces_test.py`` which holds all the common code that an interface supports and is tested."
 msgstr "Our smoketests not only test daemons and serives, but also check if what we configure for an interface works. Thus there is a common base classed named: ``base_interfaces_test.py`` which holds all the common code that an interface supports and is tested."
 
@@ -924,11 +992,15 @@ msgstr "Please submit your patches using the well-known GitHub pull-request agai
 msgid "Please use the following template as good starting point when developing new modules or even rewrite a whole bunch of code in the new style XML/Pyhon interface."
 msgstr "Please use the following template as good starting point when developing new modules or even rewrite a whole bunch of code in the new style XML/Pyhon interface."
 
-#: ../../contributing/testing.rst:104
+#: ../../contributing/development.rst:254
+msgid "Please use the following template as good starting point when developing new modules or even rewrite a whole bunch of code in the new style XML/Python interface."
+msgstr "Please use the following template as good starting point when developing new modules or even rewrite a whole bunch of code in the new style XML/Python interface."
+
+#: ../../contributing/testing.rst:107
 msgid "Port description"
 msgstr "Port description"
 
-#: ../../contributing/testing.rst:105
+#: ../../contributing/testing.rst:108
 msgid "Port disable"
 msgstr "Port disable"
 
@@ -952,7 +1024,11 @@ msgstr "Prerequisites"
 msgid "Priorities"
 msgstr "Priorities"
 
-#: ../../contributing/issues-features.rst:61
+#: ../../contributing/issues-features.rst:91
+msgid "Proposed CLI syntax, if the feature requires new commands. Please include both configuration and operational mode commands, if both are required."
+msgstr "Proposed CLI syntax, if the feature requires new commands. Please include both configuration and operational mode commands, if both are required."
+
+#: ../../contributing/issues-features.rst:65
 msgid "Provide as much information as you can"
 msgstr "Provide as much information as you can"
 
@@ -984,7 +1060,7 @@ msgstr "Rationale: this seems to be the unwritten standard in network device CLI
 msgid "Recent versions use the ``vyos.frr`` framework. The Python class is located inside our ``vyos-1x:python/vyos/frr.py``. It comes with an embedded debugging/ (print style) debugger as vyos.ifconfig does."
 msgstr "Recent versions use the ``vyos.frr`` framework. The Python class is located inside our ``vyos-1x:python/vyos/frr.py``. It comes with an embedded debugging/ (print style) debugger as vyos.ifconfig does."
 
-#: ../../contributing/issues-features.rst:54
+#: ../../contributing/issues-features.rst:58
 msgid "Report a Bug"
 msgstr "Report a Bug"
 
@@ -1017,6 +1093,10 @@ msgstr "Smoketests executes predefined VyOS CLI commands and checks if the desir
 msgid "So if you plan to build your own custom ISO image and wan't to make use of our smoketests, ensure that you have the `vyos-1x-smoketest` package installed."
 msgstr "So if you plan to build your own custom ISO image and wan't to make use of our smoketests, ensure that you have the `vyos-1x-smoketest` package installed."
 
+#: ../../contributing/testing.rst:45
+msgid "So if you plan to build your own custom ISO image and want to make use of our smoketests, ensure that you have the `vyos-1x-smoketest` package installed."
+msgstr "So if you plan to build your own custom ISO image and want to make use of our smoketests, ensure that you have the `vyos-1x-smoketest` package installed."
+
 #: ../../contributing/build-vyos.rst:202
 msgid "Some VyOS packages (namely vyos-1x) come with build-time tests which verify some of the internal library calls that they work as expected. Those tests are carried out through the Python Unittest module. If you want to build the ``vyos-1x`` package (which is our main development package) you need to start your Docker container using the following argument: ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will fail."
 msgstr "Some VyOS packages (namely vyos-1x) come with build-time tests which verify some of the internal library calls that they work as expected. Those tests are carried out through the Python Unittest module. If you want to build the ``vyos-1x`` package (which is our main development package) you need to start your Docker container using the following argument: ``--sysctl net.ipv6.conf.lo.disable_ipv6=0``, otherwise those tests will fail."
@@ -1025,7 +1105,7 @@ msgstr "Some VyOS packages (namely vyos-1x) come with build-time tests which ver
 msgid "Some abbreviations are traditionally written in mixed case. Generally, if it contains words \"over\" or \"version\", the letter **should** be lowercase. If there's an accepted spelling (especially if defined by an RFC or another standard), it **must** be followed."
 msgstr "Some abbreviations are traditionally written in mixed case. Generally, if it contains words \"over\" or \"version\", the letter **should** be lowercase. If there's an accepted spelling (especially if defined by an RFC or another standard), it **must** be followed."
 
-#: ../../contributing/testing.rst:202
+#: ../../contributing/testing.rst:205
 msgid "Some of the configurations have preconditions which need to be met. Those most likely include generation of crypographic keys before the config can be applied - you will get a commit error otherwise. If you are interested how those preconditions are fulfilled check the vyos-build_ repository and the ``scripts/check-qemu-install`` file."
 msgstr "Some of the configurations have preconditions which need to be met. Those most likely include generation of crypographic keys before the config can be applied - you will get a commit error otherwise. If you are interested how those preconditions are fulfilled check the vyos-build_ repository and the ``scripts/check-qemu-install`` file."
 
@@ -1060,6 +1140,14 @@ msgstr "Suppose you want to make a change in the webproxy script but yet you do 
 #: ../../contributing/debugging.rst:18
 msgid "System Startup"
 msgstr "System Startup"
+
+#: ../../contributing/issues-features.rst:108
+msgid "Task auto-closing"
+msgstr "Task auto-closing"
+
+#: ../../contributing/issues-features.rst:118
+msgid "Tasks that are implemented and tested by the implementation author, but require testing in the real-world environment that only the reporter can replicate (e.g., hardware we do not have, specific network conditions...)."
+msgstr "Tasks that are implemented and tested by the implementation author, but require testing in the real-world environment that only the reporter can replicate (e.g., hardware we do not have, specific network conditions...)."
 
 #: ../../contributing/development.rst:214
 msgid "Template processor **should** be used for generating config files. Built-in string formatting **may** be used for simple line-oriented formats where every line is self-contained, such as iptables rules. Template processor **must** be used for structured, multi-line formats such as those used by ISC DHCPd."
@@ -1121,11 +1209,15 @@ msgstr "The ``verify()`` function takes your internal representation of the conf
 msgid "The bash (or better vbash) completion in VyOS is defined in *templates*. Templates are text files (called ``node.def``) stored in a directory tree. The directory names define the command names, and template files define the command behaviour. Before VyOS 1.2 (crux) this files were created by hand. After a complex redesign process_ the new style template are automatically generated from a XML input file."
 msgstr "The bash (or better vbash) completion in VyOS is defined in *templates*. Templates are text files (called ``node.def``) stored in a directory tree. The directory names define the command names, and template files define the command behaviour. Before VyOS 1.2 (crux) this files were created by hand. After a complex redesign process_ the new style template are automatically generated from a XML input file."
 
+#: ../../contributing/issues-features.rst:39
+msgid "The behavior you expect and how it's different from the behavior you observe. Don't just include command outputs or traffic dumps — try to explain at least briefly why they are wrong and what they should be."
+msgstr "The behavior you expect and how it's different from the behavior you observe. Don't just include command outputs or traffic dumps — try to explain at least briefly why they are wrong and what they should be."
+
 #: ../../contributing/build-vyos.rst:116
 msgid "The build process needs to be built on a local file system, building on SMB or NFS shares will result in the container failing to build properly! VirtualBox Drive Share is also not an option as block device operations are not implemented and the drive is always mounted as \"nodev\""
 msgstr "The build process needs to be built on a local file system, building on SMB or NFS shares will result in the container failing to build properly! VirtualBox Drive Share is also not an option as block device operations are not implemented and the drive is always mounted as \"nodev\""
 
-#: ../../contributing/testing.rst:159
+#: ../../contributing/testing.rst:162
 msgid "The configurations are all derived from production systems and can not only act as a testcase but also as reference if one wants to enable a certain feature. The configurations can be found here: https://github.com/vyos/vyos-1x/tree/current/smoketest/configs"
 msgstr "The configurations are all derived from production systems and can not only act as a testcase but also as reference if one wants to enable a certain feature. The configurations can be found here: https://github.com/vyos/vyos-1x/tree/current/smoketest/configs"
 
@@ -1145,7 +1237,7 @@ msgstr "The default template processor for VyOS code is Jinja2_."
 msgid "The easiest way to compile your package is with the above mentioned :ref:`build_docker` container, it includes all required dependencies for all VyOS related packages."
 msgstr "The easiest way to compile your package is with the above mentioned :ref:`build_docker` container, it includes all required dependencies for all VyOS related packages."
 
-#: ../../contributing/testing.rst:164
+#: ../../contributing/testing.rst:167
 msgid "The entire test is controlled by the main wrapper script ``/usr/bin/vyos-configtest`` which behaves in the same way as the main smoketest script. It scans the folder for potential configuration files and issues a ``load`` command one after another."
 msgstr "The entire test is controlled by the main wrapper script ``/usr/bin/vyos-configtest`` which behaves in the same way as the main smoketest script. It scans the folder for potential configuration files and issues a ``load`` command one after another."
 
@@ -1185,7 +1277,7 @@ msgstr "The most obvious reasons could be:"
 msgid "The original repo is at https://github.com/dmbaturin/hvinfo"
 msgstr "The original repo is at https://github.com/dmbaturin/hvinfo"
 
-#: ../../contributing/testing.rst:154
+#: ../../contributing/testing.rst:157
 msgid "The other part of our tests are called \"config load tests\". The config load tests will load - one after another - arbitrary configuration files to test if the configuration migration scripts work as designed and that a given set of functionality still can be loaded with a fresh VyOS ISO image."
 msgstr "The other part of our tests are called \"config load tests\". The config load tests will load - one after another - arbitrary configuration files to test if the configuration migration scripts work as designed and that a given set of functionality still can be loaded with a fresh VyOS ISO image."
 
@@ -1196,6 +1288,10 @@ msgstr "The output you get when you find a bug can provide lots of information. 
 #: ../../contributing/upstream-packages.rst:60
 msgid "The package ends up in deb_dist dir."
 msgstr "The package ends up in deb_dist dir."
+
+#: ../../contributing/debugging.rst:148
+msgid "The reason is that the configuration migration backend is rewritten and uses a new form of \"magic string\" which is applied on demand when real config migration is run on boot. When running individual migrators for testing, you need to convert the \"magic string\" on your own by:"
+msgstr "The reason is that the configuration migration backend is rewritten and uses a new form of \"magic string\" which is applied on demand when real config migration is run on boot. When running individual migrators for testing, you need to convert the \"magic string\" on your own by:"
 
 #: ../../contributing/debugging.rst:148
 msgid "The reason is that the configuration migration backend is rewritten and uses a new form of \"magic string\" which is applied on demand when real config migration is run on boot. When runnint individual migrators for testing, you need to convert the \"magic string\" on your own by:"
@@ -1245,6 +1341,10 @@ msgstr "There are extensions to e.g. VIM (xmllint) which will help you to get yo
 msgid "There are two flags available to aid in debugging configuration scripts. Since configuration loading issues will manifest during boot, the flags are passed as kernel boot parameters."
 msgstr "There are two flags available to aid in debugging configuration scripts. Since configuration loading issues will manifest during boot, the flags are passed as kernel boot parameters."
 
+#: ../../contributing/issues-features.rst:110
+msgid "There is a special status for tasks where all work on the side of maintainers and contributors is complete: \"Needs reporter action\"."
+msgstr "There is a special status for tasks where all work on the side of maintainers and contributors is complete: \"Needs reporter action\"."
+
 #: ../../contributing/build-vyos.rst:297
 msgid "This ISO can be customized with the following list of configure options. The full and current list can be generated with ``./build-vyos-image --help``:"
 msgstr "This ISO can be customized with the following list of configure options. The full and current list can be generated with ``./build-vyos-image --help``:"
@@ -1260,6 +1360,10 @@ msgstr "This chapter lists those exceptions and gives you a brief overview what 
 #: ../../contributing/debugging.rst:177
 msgid "This is done by utilizing the ``systemd-bootchart`` package which is now installed by default on the VyOS 1.3 (equuleus) branch. The configuration is also versioned so we get comparable results. ``systemd-bootchart`` is configured using this file: bootchart.conf_"
 msgstr "This is done by utilizing the ``systemd-bootchart`` package which is now installed by default on the VyOS 1.3 (equuleus) branch. The configuration is also versioned so we get comparable results. ``systemd-bootchart`` is configured using this file: bootchart.conf_"
+
+#: ../../contributing/issues-features.rst:122
+msgid "This is what will happen when a task is set to \"Needs reporter action\":"
+msgstr "This is what will happen when a task is set to \"Needs reporter action\":"
 
 #: ../../contributing/development.rst:132
 msgid "This means the file in question (``/opt/vyatta/sbin/vyatta-update-webproxy.pl``) is located in the ``vyatta-webproxy`` package which can be found here: https://github.com/vyos/vyatta-webproxy"
@@ -1285,11 +1389,11 @@ msgstr "This will guide you through the process of building a VyOS ISO using Doc
 msgid "This will guide you through the process of building a VyOS ISO using Docker_. This process has been tested on clean installs of Debian Jessie, Stretch, and Buster."
 msgstr "This will guide you through the process of building a VyOS ISO using Docker_. This process has been tested on clean installs of Debian Jessie, Stretch, and Buster."
 
-#: ../../contributing/testing.rst:148
+#: ../../contributing/testing.rst:151
 msgid "This will limit the `bond` interface test to only make use of `eth1` and `eth2` as member ports."
 msgstr "This will limit the `bond` interface test to only make use of `eth1` and `eth2` as member ports."
 
-#: ../../contributing/testing.rst:98
+#: ../../contributing/testing.rst:101
 msgid "Those common tests consists out of:"
 msgstr "Those common tests consists out of:"
 
@@ -1314,8 +1418,16 @@ msgid "To debug issues in priorities or to see what's going on in the background
 msgstr "To debug issues in priorities or to see what's going on in the background you can use the ``/opt/vyatta/sbin/priority.pl`` script which lists to you the execution order of the scripts."
 
 #: ../../contributing/build-vyos.rst:373
+msgid "To debug the build process and gain additional information of what could be the root cause, you need to use `chroot` to change into the build directory. This is explained in the following step by step procedure:"
+msgstr "To debug the build process and gain additional information of what could be the root cause, you need to use `chroot` to change into the build directory. This is explained in the following step by step procedure:"
+
+#: ../../contributing/build-vyos.rst:373
 msgid "To debug the build process and gain additional information of what could be the root cause, you need to use `chroot` to change into the build directry. This is explained in the following step by step procedure:"
 msgstr "To debug the build process and gain additional information of what could be the root cause, you need to use `chroot` to change into the build directry. This is explained in the following step by step procedure:"
+
+#: ../../contributing/debugging.rst:182
+msgid "To enable boot time graphing change the Kernel commandline and add the following string: ``init=/usr/lib/systemd/systemd-bootchart``"
+msgstr "To enable boot time graphing change the Kernel commandline and add the following string: ``init=/usr/lib/systemd/systemd-bootchart``"
 
 #: ../../contributing/debugging.rst:182
 msgid "To enable boot time graphing change the Kernel commandline and add the folowing string: ``init=/usr/lib/systemd/systemd-bootchart``"
@@ -1324,6 +1436,10 @@ msgstr "To enable boot time graphing change the Kernel commandline and add the f
 #: ../../contributing/debugging.rst:93
 msgid "To enable debugging just run: ``$ touch /tmp/vyos.frr.debug``"
 msgstr "To enable debugging just run: ``$ touch /tmp/vyos.frr.debug``"
+
+#: ../../contributing/testing.rst:60
+msgid "To enable smoketest debugging (print of the CLI set commands used) you can run: ``touch /tmp/vyos.smoketest.debug``."
+msgstr "To enable smoketest debugging (print of the CLI set commands used) you can run: ``touch /tmp/vyos.smoketest.debug``."
 
 #: ../../contributing/development.rst:547
 msgid "To ensure uniform look and feel, and improve readability, we should follow a set of guidelines consistently."
@@ -1385,7 +1501,7 @@ msgstr "Useful commands are:"
 msgid "VIF (incl. VIF-S/VIF-C)"
 msgstr "VIF (incl. VIF-S/VIF-C)"
 
-#: ../../contributing/testing.rst:106
+#: ../../contributing/testing.rst:109
 msgid "VLANs (QinQ and regular 802.1q)"
 msgstr "VLANs (QinQ and regular 802.1q)"
 
@@ -1409,6 +1525,10 @@ msgstr "Virtualization Platforms"
 msgid "VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def`` file and possibly an attached script that is executed when the node is present. Nodes can have a priority, and on system bootup - or any other ``commit`` to the config all scripts are executed from lowest to higest priority. This is good as this gives a deterministic behavior."
 msgstr "VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def`` file and possibly an attached script that is executed when the node is present. Nodes can have a priority, and on system bootup - or any other ``commit`` to the config all scripts are executed from lowest to higest priority. This is good as this gives a deterministic behavior."
 
+#: ../../contributing/debugging.rst:190
+msgid "VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def`` file and possibly an attached script that is executed when the node is present. Nodes can have a priority, and on system bootup - or any other ``commit`` to the config all scripts are executed from lowest to highest priority. This is good as this gives a deterministic behavior."
+msgstr "VyOS CLI is all about priorities. Every CLI node has a corresponding ``node.def`` file and possibly an attached script that is executed when the node is present. Nodes can have a priority, and on system bootup - or any other ``commit`` to the config all scripts are executed from lowest to highest priority. This is good as this gives a deterministic behavior."
+
 #: ../../contributing/build-vyos.rst:168
 msgid "VyOS has switched to Debian (12) Bookworm in its ``current`` branch, Due to software version updates, it is recommended to use the official Docker Hub image to build VyOS ISO."
 msgstr "VyOS has switched to Debian (12) Bookworm in its ``current`` branch, Due to software version updates, it is recommended to use the official Docker Hub image to build VyOS ISO."
@@ -1425,6 +1545,10 @@ msgstr "VyOS makes use of Jenkins_ as our Continuous Integration (CI) service. O
 msgid "We again make use of a helper script and some patches to make the build work. Just run the following command:"
 msgstr "We again make use of a helper script and some patches to make the build work. Just run the following command:"
 
+#: ../../contributing/issues-features.rst:114
+msgid "We assign that status to:"
+msgstr "We assign that status to:"
+
 #: ../../contributing/testing.rst:25
 msgid "We differentiate in two independent tests, which are both run in parallel by two separate QEmu instances which are launched via ``make test`` and ``make testc`` from within the vyos-build_ repository."
 msgstr "We differentiate in two independent tests, which are both run in parallel by two separate QEmu instances which are launched via ``make test`` and ``make testc`` from within the vyos-build_ repository."
@@ -1440,6 +1564,10 @@ msgstr "We now need to mount some required, volatile filesystems"
 #: ../../contributing/development.rst:111
 msgid "We only accept bugfixes in packages other than https://github.com/vyos/vyos-1x as no new functionality should use the old style templates (``node.def`` and Perl/BASH code. Use the new style XML/Python interface instead."
 msgstr "We only accept bugfixes in packages other than https://github.com/vyos/vyos-1x as no new functionality should use the old style templates (``node.def`` and Perl/BASH code. Use the new style XML/Python interface instead."
+
+#: ../../contributing/issues-features.rst:128
+msgid "We will not auto-close tasks with any other status and will not close tasks for the lack of maintainer activity!"
+msgstr "We will not auto-close tasks with any other status and will not close tasks for the lack of maintainer activity!"
 
 #: ../../contributing/development.rst:87
 msgid "What/why/how something has been changed, makes everyone's life easier when working with `git bisect`"
@@ -1485,6 +1613,10 @@ msgstr "When you are able to verify that it is actually a bug, spend some time t
 msgid "When you are working on interface configuration and you also wan't to test if the Smoketests pass you would normally loose the remote SSH connection to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the interface based tests can be called with an environment variable beforehand to limit the number of interfaces used in the test. By default all interface e.g. all Ethernet interfaces are used."
 msgstr "When you are working on interface configuration and you also wan't to test if the Smoketests pass you would normally loose the remote SSH connection to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the interface based tests can be called with an environment variable beforehand to limit the number of interfaces used in the test. By default all interface e.g. all Ethernet interfaces are used."
 
+#: ../../contributing/testing.rst:112
+msgid "When you are working on interface configuration and you also want to test if the Smoketests pass you would normally loose the remote SSH connection to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the interface based tests can be called with an environment variable beforehand to limit the number of interfaces used in the test. By default all interface e.g. all Ethernet interfaces are used."
+msgstr "When you are working on interface configuration and you also want to test if the Smoketests pass you would normally loose the remote SSH connection to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the interface based tests can be called with an environment variable beforehand to limit the number of interfaces used in the test. By default all interface e.g. all Ethernet interfaces are used."
+
 #: ../../contributing/issues-features.rst:21
 msgid "When you believe you have found a bug, it is always a good idea to verify the issue prior to opening a bug request."
 msgstr "When you believe you have found a bug, it is always a good idea to verify the issue prior to opening a bug request."
@@ -1493,7 +1625,7 @@ msgstr "When you believe you have found a bug, it is always a good idea to verif
 msgid "When you wish to have a developer fix a bug that you found, helping them reproduce the issue is beneficial to everyone. Be sure to include information about the hardware you are using, commands that you were running, any other activities that you may have been doing at the time. This additional information can be very useful."
 msgstr "When you wish to have a developer fix a bug that you found, helping them reproduce the issue is beneficial to everyone. Be sure to include information about the hardware you are using, commands that you were running, any other activities that you may have been doing at the time. This additional information can be very useful."
 
-#: ../../contributing/issues-features.rst:62
+#: ../../contributing/issues-features.rst:66
 msgid "Which version of VyOS are you using? ``run show version``"
 msgstr "Which version of VyOS are you using? ``run show version``"
 
@@ -1538,6 +1670,10 @@ msgstr "You can type ``help`` to get an overview of the available commands, and 
 msgid "You have an idea of how to make VyOS better or you are in need of a specific feature which all users of VyOS would benefit from? To send a feature request please search Phabricator_ if there is already a request pending. You can enhance it or if you don't find one, create a new one by use the quick link in the left side under the specific project."
 msgstr "You have an idea of how to make VyOS better or you are in need of a specific feature which all users of VyOS would benefit from? To send a feature request please search Phabricator_ if there is already a request pending. You can enhance it or if you don't find one, create a new one by use the quick link in the left side under the specific project."
 
+#: ../../contributing/issues-features.rst:74
+msgid "You have an idea of how to make VyOS better or you are in need of a specific feature which all users of VyOS would benefit from? To send a feature request please search Phabricator_ to check if there is already a request pending. You can enhance it or if you don't find one, create a new one by use the quick link in the left side under the specific project."
+msgstr "You have an idea of how to make VyOS better or you are in need of a specific feature which all users of VyOS would benefit from? To send a feature request please search Phabricator_ to check if there is already a request pending. You can enhance it or if you don't find one, create a new one by use the quick link in the left side under the specific project."
+
 #: ../../contributing/build-vyos.rst:470
 msgid "You have your own custom kernel `*.deb` packages in the `packages` folder but neglected to create all required out-of tree modules like Accel-PPP, Intel QAT or Intel NIC drivers"
 msgstr "You have your own custom kernel `*.deb` packages in the `packages` folder but neglected to create all required out-of tree modules like Accel-PPP, Intel QAT or Intel NIC drivers"
@@ -1546,9 +1682,26 @@ msgstr "You have your own custom kernel `*.deb` packages in the `packages` folde
 msgid "You have your own custom kernel `*.deb` packages in the `packages` folder but neglected to create all required out-of tree modules like Accel-PPP, WireGuard, Intel QAT, Intel NIC"
 msgstr "You have your own custom kernel `*.deb` packages in the `packages` folder but neglected to create all required out-of tree modules like Accel-PPP, WireGuard, Intel QAT, Intel NIC"
 
+#: ../../contributing/issues-features.rst:80
+msgid "You must create a task before you start working on a feature. Yes, even if it's a tiny feature — we use the task tracker to generate release notes, so it's essential that everything is reflected there."
+msgstr "You must create a task before you start working on a feature. Yes, even if it's a tiny feature — we use the task tracker to generate release notes, so it's essential that everything is reflected there."
+
+#: ../../contributing/issues-features.rst:84
+msgid "You must include at least the following:"
+msgstr "You must include at least the following:"
+
 #: ../../contributing/debugging.rst:166
 msgid "You shoudl now see a Python backtrace which will help us to handle the issue, please attach it to the Phabricator_ task."
 msgstr "You shoudl now see a Python backtrace which will help us to handle the issue, please attach it to the Phabricator_ task."
+
+#: ../../contributing/issues-features.rst:31
+#: ../../contributing/issues-features.rst:94
+msgid "You should include the following information:"
+msgstr "You should include the following information:"
+
+#: ../../contributing/debugging.rst:166
+msgid "You should now see a Python backtrace which will help us to handle the issue, please attach it to the Phabricator_ task."
+msgstr "You should now see a Python backtrace which will help us to handle the issue, please attach it to the Phabricator_ task."
 
 #: ../../contributing/development.rst:146
 msgid "You then can proceed with cloning your fork or add a new remote to your local repository:"
@@ -1558,7 +1711,7 @@ msgstr "You then can proceed with cloning your fork or add a new remote to your 
 msgid "Your configuration script or operation mode script which is also written in Python3 should have a line break on 80 characters. This seems to be a bit odd nowadays but as some people also work remotely or program using vi(m) this is a fair good standard which I hope we can rely on."
 msgstr "Your configuration script or operation mode script which is also written in Python3 should have a line break on 80 characters. This seems to be a bit odd nowadays but as some people also work remotely or program using vi(m) this is a fair good standard which I hope we can rely on."
 
-#: ../../contributing/testing.rst:107
+#: ../../contributing/testing.rst:110
 msgid "..."
 msgstr "..."
 
@@ -1665,6 +1818,10 @@ msgstr "commit:expression:"
 #: ../../contributing/debugging.rst:128
 msgid "contine execution using ``cont``"
 msgstr "contine execution using ``cont``"
+
+#: ../../contributing/debugging.rst:128
+msgid "continue execution using ``cont``"
+msgstr "continue execution using ``cont``"
 
 #: ../../contributing/development.rst:675
 msgid "default:"

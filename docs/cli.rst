@@ -501,6 +501,9 @@ different levels in the hierarchy.
     Warning: configuration changes have not been saved.
     vyos@vyos:~$
 
+.. hint:: You can specify a commit message with
+  :cfgcmd:`commit comment <message>`.
+
 .. _save:
 
 .. cfgcmd:: save
@@ -868,6 +871,9 @@ be ``config.boot-hostname.YYYYMMDD_HHMMSS``.
   * ``scp://<user>:<passwd>@<host>:/<dir>``
   * ``tftp://<host>/<dir>``
   * ``git+https://<user>:<passwd>@<host>/<path>``
+
+  Since username and password are part of the URI, they need to be
+  properly url encoded if containing special characters.
 
   .. note:: The number of revisions don't affect the commit-archive.
 

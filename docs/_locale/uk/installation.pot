@@ -14,59 +14,59 @@ msgstr "$ mkdir rootfs $ sudo mount -o loop vyos-1.4-rolling-202308240020-amd64.
 
 #: ../../installation/virtual/gns3.rst:169
 msgid "**Advanced** settings tab: Mark the checkbox **Use as a linked base VM** and click ``OK`` to save the changes."
-msgstr "**Advanced** settings tab: Mark the checkbox **Use as a linked base VM** and click ``OK`` to save the changes."
+msgstr "Вкладка **Додаткові** параметри: поставте прапорець **Використовувати як зв’язану базову віртуальну машину** та натисніть ``OK``, щоб зберегти зміни."
 
 #: ../../installation/virtual/gns3.rst:160
 msgid "**CD/DVD** tab: Unmount the installation image file by clearing the **Image** entry field."
-msgstr "**CD/DVD** tab: Unmount the installation image file by clearing the **Image** entry field."
+msgstr "Вкладка **CD/DVD**: відключіть файл інсталяційного образу, очистивши поле введення **Зображення**."
 
 #: ../../installation/virtual/gns3.rst:142
 msgid "**Delete the VM** from the GNS3 project."
-msgstr "**Delete the VM** from the GNS3 project."
+msgstr "**Видалити віртуальну машину** з проекту GNS3."
 
 #: ../../installation/install.rst:33
 msgid "**Early Production Access**"
-msgstr "**Early Production Access**"
+msgstr "**Доступ до раннього виробництва**"
 
 #: ../../installation/install.rst:541
 msgid "**First** run a web server - you can use a simple one like `Python's SimpleHTTPServer`_ and start serving the `filesystem.squashfs` file. The file can be found inside the `/live` directory of the extracted contents of the ISO file."
-msgstr "**First** run a web server - you can use a simple one like `Python's SimpleHTTPServer`_ and start serving the `filesystem.squashfs` file. The file can be found inside the `/live` directory of the extracted contents of the ISO file."
+msgstr "**Спочатку** запустіть веб-сервер – ви можете використати простий, наприклад `Python&#39;s SimpleHTTPServer`_, і почати обслуговувати файл `filesystem.squashfs`. Файл можна знайти в каталозі `/live` розпакованого вмісту файлу ISO."
 
 #: ../../installation/virtual/gns3.rst:156
 msgid "**General settings** tab: Set the boot priority to **HDD**"
-msgstr "**General settings** tab: Set the boot priority to **HDD**"
+msgstr "Вкладка **Загальні налаштування**: установіть пріоритет завантаження на **HDD**"
 
 #: ../../installation/install.rst:37
 msgid "**Long-Term Support**"
-msgstr "**Long-Term Support**"
+msgstr "**Довгострокова підтримка**"
 
 #: ../../installation/install.rst:21
 msgid "**Nightly (Beta)**"
-msgstr "**Nightly (Beta)**"
+msgstr "**Ніч (бета)**"
 
 #: ../../installation/install.rst:17
 msgid "**Nightly (Current)**"
-msgstr "**Nightly (Current)**"
+msgstr "**Ніч (поточний)**"
 
 #: ../../installation/install.rst:29
 msgid "**Release Candidate**"
-msgstr "**Release Candidate**"
+msgstr "**Кандидат на випуск**"
 
 #: ../../installation/install.rst:432
 msgid "**Requirements**"
-msgstr "**Requirements**"
+msgstr "**Вимоги**"
 
 #: ../../installation/install.rst:546
 msgid "**Second**, edit the configuration file of the :ref:`install_from_tftp` so that it shows the correct URL at ``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``."
-msgstr "**Second**, edit the configuration file of the :ref:`install_from_tftp` so that it shows the correct URL at ``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``."
+msgstr "**По-друге**, відредагуйте файл конфігурації :ref:`install_from_tftp` так, щоб він показував правильну URL-адресу за адресою ``fetch=http://<address_of_your_HTTP_server> /filesystem.squashfs``."
 
 #: ../../installation/install.rst:25
 msgid "**Snapshot**"
-msgstr "**Snapshot**"
+msgstr "**Знімок**"
 
 #: ../../installation/install.rst:300
 msgid "**Warning**: This will destroy all data on the USB drive!"
-msgstr "**Warning**: This will destroy all data on the USB drive!"
+msgstr "**Попередження**: це призведе до знищення всіх даних на USB-накопичувачі!"
 
 #: ../../installation/vyos-on-baremetal.rst:20
 msgid "1x Crucial CT4G4DFS824A (4GB DDR4 RAM 2400 MT/s, PC4-19200)"
@@ -78,171 +78,175 @@ msgstr "1x Kingston SUV500MS/120G"
 
 #: ../../installation/vyos-on-baremetal.rst:21
 msgid "1x SanDisk Ultra Fit 32GB (USB-A 3.0 SDCZ43-032G-G46 mass storage for OS)"
-msgstr "1x SanDisk Ultra Fit 32GB (USB-A 3.0 SDCZ43-032G-G46 mass storage for OS)"
+msgstr "1x SanDisk Ultra Fit 32 ГБ (USB-A 3.0 SDCZ43-032G-G46 накопичувач для ОС)"
 
 #: ../../installation/vyos-on-baremetal.rst:18
 msgid "1x Supermicro A2SDi-2C-HLN4F (Intel Atom C3338, 2C/2T, 4MB cache, Quad LAN with Intel C3000 SoC 1GbE)"
-msgstr "1x Supermicro A2SDi-2C-HLN4F (Intel Atom C3338, 2C/2T, 4MB cache, Quad LAN with Intel C3000 SoC 1GbE)"
+msgstr "1x Supermicro A2SDi-2C-HLN4F (Intel Atom C3338, 2C/2T, 4 МБ кеш-пам’яті, Quad LAN із Intel C3000 SoC 1GbE)"
 
 #: ../../installation/vyos-on-baremetal.rst:16
 msgid "1x Supermicro CSE-505-203B (19\" 1U chassis, inkl. 200W PSU)"
-msgstr "1x Supermicro CSE-505-203B (19\" 1U chassis, inkl. 200W PSU)"
+msgstr "1x Supermicro CSE-505-203B (шасі 19&quot; 1U, вкл. блок живлення 200 Вт)"
 
 #: ../../installation/vyos-on-baremetal.rst:30
 msgid "1x Supermicro MCP-120-00063-0N (Riser Card Bracket)"
-msgstr "1x Supermicro MCP-120-00063-0N (Riser Card Bracket)"
+msgstr "1x Supermicro MCP-120-00063-0N (кронштейн картки Riser)"
 
 #: ../../installation/vyos-on-baremetal.rst:17
 msgid "1x Supermicro MCP-260-00085-0B (I/O Shield for A2SDi-2C-HLN4F)"
-msgstr "1x Supermicro MCP-260-00085-0B (I/O Shield for A2SDi-2C-HLN4F)"
+msgstr "1x Supermicro MCP-260-00085-0B (щит введення/виведення для A2SDi-2C-HLN4F)"
 
 #: ../../installation/vyos-on-baremetal.rst:22
 msgid "1x Supermicro MCP-320-81302-0B (optional FAN tray)"
-msgstr "1x Supermicro MCP-320-81302-0B (optional FAN tray)"
+msgstr "1x Supermicro MCP-320-81302-0B (додатковий лоток ВЕНТИЛЯТОРА)"
 
 #: ../../installation/vyos-on-baremetal.rst:29
 msgid "1x Supermicro RSC-RR1U-E8 (Riser Card)"
-msgstr "1x Supermicro RSC-RR1U-E8 (Riser Card)"
+msgstr "1x Supermicro RSC-RR1U-E8 (плата райзера)"
 
 #: ../../installation/vyos-on-baremetal.rst:103
 msgid "1x VARIA Group Item 326745 19\" dual rack for APU4"
-msgstr "1x VARIA Group Item 326745 19\" dual rack for APU4"
+msgstr "1x VARIA Group Item 326745 19&quot; подвійна стійка для APU4"
 
 #: ../../installation/vyos-on-baremetal.rst:101
 msgid "1x apu4c4 = 4 i211AT LAN / AMD GX-412TC CPU / 4 GB DRAM / dual SIM"
-msgstr "1x apu4c4 = 4 i211AT LAN / AMD GX-412TC CPU / 4 GB DRAM / dual SIM"
+msgstr "1x apu4c4 = 4 i211AT LAN / ЦП AMD GX-412TC / 4 ГБ DRAM / дві SIM-карти"
 
 #: ../../installation/vyos-on-baremetal.rst:91
 msgid "2 miniPCI express (one with SIM socket for 3G modem)."
-msgstr "2 miniPCI express (one with SIM socket for 3G modem)."
+msgstr "2 miniPCI Express (один з гніздом SIM для 3G модему)."
 
 #: ../../installation/vyos-on-baremetal.rst:89
 msgid "4 GB DDR3-1333 DRAM, with optional ECC support"
-msgstr "4 GB DDR3-1333 DRAM, with optional ECC support"
+msgstr "4 ГБ DDR3-1333 DRAM з додатковою підтримкою ECC"
 
 #: ../../installation/vyos-on-baremetal.rst:92
 msgid "4 Gigabit Ethernet channels using Intel i211AT NICs"
-msgstr "4 Gigabit Ethernet channels using Intel i211AT NICs"
+msgstr "4 канали Gigabit Ethernet за допомогою мережевих карт Intel i211AT"
 
 #: ../../installation/vyos-on-baremetal.rst:87
 msgid "AMD Embedded G series GX-412TC, 1 GHz quad Jaguar core with 64 bit and AES-NI support, 32K data + 32K instruction cache per core, shared 2MB L2 cache."
-msgstr "AMD Embedded G series GX-412TC, 1 GHz quad Jaguar core with 64 bit and AES-NI support, 32K data + 32K instruction cache per core, shared 2MB L2 cache."
+msgstr "AMD Embedded G серії GX-412TC, 1 ГГц чотири ядра Jaguar з 64 бітами та підтримкою AES-NI, 32 Кб даних + 32 Кб кеш-пам’яті інструкцій на ядро, спільний кеш L2 об’ємом 2 МБ."
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 custom VyOS powder coat"
-msgstr "APU4 custom VyOS powder coat"
+msgstr "Спеціальне порошкове покриття APU4 VyOS"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 desktop back"
-msgstr "APU4 desktop back"
+msgstr "Задня панель робочого столу APU4"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 desktop closed"
-msgstr "APU4 desktop closed"
+msgstr "Робочий стіл APU4 закрито"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 rack closed"
-msgstr "APU4 rack closed"
+msgstr "Стійка APU4 закрита"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 rack front"
-msgstr "APU4 rack front"
+msgstr "Стійка APU4 передня"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 rack module #1"
-msgstr "APU4 rack module #1"
+msgstr "Стієчний модуль APU4 №1"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 rack module #2"
-msgstr "APU4 rack module #2"
+msgstr "Стієчний модуль APU4 №2"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "APU4 rack module #3 with PSU"
-msgstr "APU4 rack module #3 with PSU"
+msgstr "Стієчний модуль APU4 №3 з блоком живлення"
 
 #: ../../installation/virtual/gns3.rst:19
 msgid "A VyOS installation image (.iso file). You can find how to get it on the :ref:`installation` page"
-msgstr "A VyOS installation image (.iso file). You can find how to get it on the :ref:`installation` page"
+msgstr "Образ інсталяції VyOS (файл .iso). Ви можете дізнатися, як отримати його на сторінці :ref:`installation`"
 
 #: ../../installation/install.rst:490
 msgid "A directory named pxelinux.cfg which must contain the configuration file. We will use the configuration_ file shown below, which we named default_."
-msgstr "A directory named pxelinux.cfg which must contain the configuration file. We will use the configuration_ file shown below, which we named default_."
+msgstr "Каталог під назвою pxelinux.cfg, який має містити файл конфігурації. Ми будемо використовувати файл конфігурації_, показаний нижче, який ми назвали default_."
 
 #: ../../installation/install.rst:25
 msgid "A particularly stable release frozen from nightly each month after manual testing. Still contains experimental code."
-msgstr "A particularly stable release frozen from nightly each month after manual testing. Still contains experimental code."
+msgstr "Особливо стабільний випуск, який зависає щомісяця ввечері після ручного тестування. Все ще містить експериментальний код."
 
 #: ../../installation/install.rst:269
 msgid "A permanent VyOS installation always requires to go first through a live installation."
-msgstr "A permanent VyOS installation always requires to go first through a live installation."
+msgstr "Для постійної інсталяції VyOS завжди потрібно спочатку виконати живу інсталяцію."
 
 #: ../../installation/virtual/gns3.rst:22
 msgid "A working GNS3 installation. For further information see the `GNS3 documentation <https://docs.gns3.com/>`__."
-msgstr "A working GNS3 installation. For further information see the `GNS3 documentation <https://docs.gns3.com/>`__."
+msgstr "Працююча установка GNS3. Для отримання додаткової інформації дивіться документацію GNS3<https://docs.gns3.com/> `__."
 
 #: ../../installation/vyos-on-baremetal.rst:90
 msgid "About 6 to 10W of 12V DC power depending on CPU load"
-msgstr "About 6 to 10W of 12V DC power depending on CPU load"
+msgstr "Приблизно від 6 до 10 Вт живлення 12 В постійного струму залежно від навантаження ЦП"
 
 #: ../../installation/cloud/azure.rst:55
 msgid "Absorbing Routes"
-msgstr "Absorbing Routes"
+msgstr "Поглинаючі маршрути"
 
 #: ../../installation/install.rst:15
 msgid "Access to Images"
-msgstr "Access to Images"
+msgstr "Доступ до зображень"
 
 #: ../../installation/install.rst:15
 msgid "Access to Source"
-msgstr "Access to Source"
+msgstr "Доступ до джерела"
 
 #: ../../installation/vyos-on-baremetal.rst:368
 msgid "Acrosser AND-J190N1"
-msgstr "Acrosser AND-J190N1"
+msgstr "Поперек AND-J190N1"
 
 #: ../../installation/cloud/azure.rst:45
 msgid "Add interface"
-msgstr "Add interface"
+msgstr "Додати інтерфейс"
 
 #: ../../installation/cloud/azure.rst:61
 msgid "Add one or more routes for networks you want to pass through the VyOS VM. Next hop type **Virtual Appliance** with the **Next Hop Address** of the VyOS ``LAN`` interface."
-msgstr "Add one or more routes for networks you want to pass through the VyOS VM. Next hop type **Virtual Appliance** with the **Next Hop Address** of the VyOS ``LAN`` interface."
+msgstr "Додайте один або кілька маршрутів для мереж, які потрібно пропускати через VyOS VM. Наступний крок типу **Virtual Appliance** з **Next Hop Address** інтерфейсу VyOS ``LAN``."
 
 #: ../../installation/cloud/aws.rst:27
 msgid "Additional storage. You can remove additional storage ``/dev/sdb``. First root device will be ``/dev/xvda``. You can skeep this step."
-msgstr "Additional storage. You can remove additional storage ``/dev/sdb``. First root device will be ``/dev/xvda``. You can skeep this step."
+msgstr "Додаткове сховище. Ви можете видалити додаткове сховище ``/dev/sdb``. Перший кореневий пристрій буде ``/dev/xvda``. Ви можете пропустити цей крок."
+
+#: ../../installation/cloud/aws.rst:27
+msgid "Additional storage. You can remove additional storage ``/dev/sdb``. First root device will be ``/dev/xvda``. You can skip this step."
+msgstr "Additional storage. You can remove additional storage ``/dev/sdb``. First root device will be ``/dev/xvda``. You can skip this step."
 
 #: ../../installation/vyos-on-baremetal.rst:394
 msgid "Advanced > Serial Port Console Redirection > Console Redirection Settings:"
-msgstr "Advanced > Serial Port Console Redirection > Console Redirection Settings:"
+msgstr "Додатково &gt; Перенаправлення консолі послідовного порту &gt; Параметри перенаправлення консолі:"
 
 #: ../../installation/virtual/gns3.rst:139
 msgid "After a successful installation, shutdown the VM with the ``poweroff`` command."
-msgstr "After a successful installation, shutdown the VM with the ``poweroff`` command."
+msgstr "Після успішного встановлення вимкніть віртуальну машину за допомогою команди ``poweroff``."
 
 #: ../../installation/cloud/gcp.rst:41
 msgid "After few seconds click to ``instance``"
-msgstr "After few seconds click to ``instance``"
+msgstr "Через кілька секунд клацніть ``екземпляр``"
 
 #: ../../installation/virtual/libvirt.rst:50
 msgid "After installation - exit from the console using the key combination ``Ctrl + ]`` and reboot the system."
-msgstr "After installation - exit from the console using the key combination ``Ctrl + ]`` and reboot the system."
+msgstr "Після встановлення - вийти з консолі за допомогою комбінації клавіш ``Ctrl + ]`` і перезавантажити систему."
 
 #: ../../installation/virtual/proxmox.rst:47
 msgid "After installation has completed, remove the installation iso using the GUI or ``qm set 200 --ide2 none``."
-msgstr "After installation has completed, remove the installation iso using the GUI or ``qm set 200 --ide2 none``."
+msgstr "Після завершення інсталяції видаліть iso інсталяції за допомогою графічного інтерфейсу користувача або ``qm set 200 --ide2 none``."
 
 #: ../../installation/update.rst:88
 msgid "After reboot you might want to verify the version you are running with the :opcmd:`show version` command."
-msgstr "After reboot you might want to verify the version you are running with the :opcmd:`show version` command."
+msgstr "Після перезавантаження ви можете перевірити версію, яку ви використовуєте, за допомогою команди :opcmd:`show version`."
 
 #: ../../installation/install.rst:413
 msgid "After the installation is completed, remove the live USB stick or CD."
-msgstr "After the installation is completed, remove the live USB stick or CD."
+msgstr "Після завершення встановлення вийміть живий USB-накопичувач або компакт-диск."
 
 #: ../../installation/migrate-from-vyatta.rst:20
 msgid "Also, in Vyatta Core 6.5 remote access VPN interfaces have been renamed from ``pppX``  to ``l2tpX`` and ``pptpX``. If you are using zone based firewalling in Vyatta Core pre-6.5 versions, make sure to change interface names in rules for remote access VPN."
-msgstr "Also, in Vyatta Core 6.5 remote access VPN interfaces have been renamed from ``pppX``  to ``l2tpX`` and ``pptpX``. If you are using zone based firewalling in Vyatta Core pre-6.5 versions, make sure to change interface names in rules for remote access VPN."
+msgstr "Крім того, у Vyatta Core 6.5 інтерфейси VPN віддаленого доступу було перейменовано з ``pppX`` на ``l2tpX`` і ``pptpX``. Якщо ви використовуєте брандмауер на основі зон у версіях Vyatta Core до 6.5, обов’язково змініть назви інтерфейсів у правилах для VPN віддаленого доступу."
 
 #: ../../installation/cloud/aws.rst:3
 msgid "Amazon AWS"
@@ -250,107 +254,107 @@ msgstr "Amazon AWS"
 
 #: ../../installation/cloud/aws.rst:53
 msgid "Amazon CloudWatch Agent Usage"
-msgstr "Amazon CloudWatch Agent Usage"
+msgstr "Використання агента Amazon CloudWatch"
 
 #: ../../installation/install.rst:450
 msgid "An IP address"
-msgstr "An IP address"
+msgstr "IP-адреса"
 
 #: ../../installation/vyos-on-baremetal.rst:334
 msgid "An external RS232 serial port is available, internally a GPIO header as well. It does have Realtek based audio on board for some reason, but you can disable that. Booting works on both USB2 and USB3 ports. Switching between serial BIOS mode and HDMI BIOS mode depends on what is connected at startup; it goes into serial mode if you disconnect HDMI and plug in serial, in all other cases it's HDMI mode."
-msgstr "An external RS232 serial port is available, internally a GPIO header as well. It does have Realtek based audio on board for some reason, but you can disable that. Booting works on both USB2 and USB3 ports. Switching between serial BIOS mode and HDMI BIOS mode depends on what is connected at startup; it goes into serial mode if you disconnect HDMI and plug in serial, in all other cases it's HDMI mode."
+msgstr "Доступний зовнішній послідовний порт RS232, а також внутрішній роз’єм GPIO. Він чомусь має на борту аудіо на основі Realtek, але ви можете вимкнути це. Завантаження працює на портах USB2 і USB3. Перемикання між послідовним режимом BIOS і режимом HDMI BIOS залежить від того, що підключено під час запуску; він переходить у послідовний режим, якщо ви від&#39;єднаєте HDMI і підключите послідовний порт, у всіх інших випадках це режим HDMI."
 
 #: ../../installation/install.rst:554
 msgid "And **third**, restart the TFTP service. If you are using VyOS as your TFTP Server, you can restart the service with ``sudo service tftpd-hpa restart``."
-msgstr "And **third**, restart the TFTP service. If you are using VyOS as your TFTP Server, you can restart the service with ``sudo service tftpd-hpa restart``."
+msgstr "І **по-третє**, перезапустіть службу TFTP. Якщо ви використовуєте VyOS як сервер TFTP, ви можете перезапустити службу за допомогою ``sudo service tftpd-hpa restart``."
 
 #: ../../installation/install.rst:240
 msgid "Another issue of GPG is that it creates a /root/.gnupg directory just for release checking. The dir is small so the fact that it's never used again is an aesthetic problem, but we've had that process fail in the past. But, small key size of the Ed25519 algorithm allows passing public keys in command line arguments, so verification process can be completely stateless:"
-msgstr "Another issue of GPG is that it creates a /root/.gnupg directory just for release checking. The dir is small so the fact that it's never used again is an aesthetic problem, but we've had that process fail in the past. But, small key size of the Ed25519 algorithm allows passing public keys in command line arguments, so verification process can be completely stateless:"
+msgstr "Інша проблема GPG полягає в тому, що він створює каталог /root/.gnupg лише для перевірки випуску. Каталог невеликий, тому той факт, що він більше ніколи не використовується, є естетичною проблемою, але в минулому у нас були збої в цьому процесі. Але невеликий розмір ключа алгоритму Ed25519 дозволяє передавати відкриті ключі в аргументах командного рядка, тому процес перевірки може бути повністю без стану:"
 
 #: ../../installation/install.rst:228
 msgid "Another point is that we are using RSA now, which requires absurdly large keys to be secure."
-msgstr "Another point is that we are using RSA now, which requires absurdly large keys to be secure."
+msgstr "Інший момент полягає в тому, що ми зараз використовуємо RSA, який вимагає абсурдно великих ключів для забезпечення безпеки."
 
 #: ../../installation/vyos-on-baremetal.rst:201
 msgid "As the APU board itself still used a serial setting of 115200 8N1 it is strongly recommended that you change the VyOS serial interface settings after your first successful boot."
-msgstr "As the APU board itself still used a serial setting of 115200 8N1 it is strongly recommended that you change the VyOS serial interface settings after your first successful boot."
+msgstr "Оскільки сама плата APU все ще використовувала налаштування послідовного порту 115200 8N1, настійно рекомендується змінити параметри послідовного інтерфейсу VyOS після першого успішного завантаження."
 
 #: ../../installation/vyos-on-baremetal.rst:82
 msgid "As this platform seems to be quite common in terms of noise, cost, power and performance it makes sense to write a small installation manual."
-msgstr "As this platform seems to be quite common in terms of noise, cost, power and performance it makes sense to write a small installation manual."
+msgstr "Оскільки ця платформа здається досить поширеною з точки зору шуму, вартості, потужності та продуктивності, має сенс написати невеликий посібник із встановлення."
 
 #: ../../installation/virtual/gns3.rst:100
 msgid "At the **CD/DVD** tab click on ``Browse...`` and locate the VyOS image you want to install."
-msgstr "At the **CD/DVD** tab click on ``Browse...`` and locate the VyOS image you want to install."
+msgstr "На вкладці **CD/DVD** натисніть ``Огляд...`` і знайдіть образ VyOS, який потрібно встановити."
 
 #: ../../installation/virtual/gns3.rst:95
 msgid "At the **HDD** tab, change the Disk interface to **sata** to speed up the boot process."
-msgstr "At the **HDD** tab, change the Disk interface to **sata** to speed up the boot process."
+msgstr "На вкладці **HDD** змініть інтерфейс диска на **sata**, щоб пришвидшити процес завантаження."
 
 #: ../../installation/virtual/gns3.rst:120
 msgid "At the general **Preferences** window, click ``OK`` to save and close."
-msgstr "At the general **Preferences** window, click ``OK`` to save and close."
+msgstr "У загальному вікні **Налаштування** натисніть ``OK``, щоб зберегти та закрити."
 
 #: ../../installation/cloud/aws.rst:59
 msgid "Attach the created role to your VyOS :abbr:`EC2 (Elastic Compute Cloud)` instance."
-msgstr "Attach the created role to your VyOS :abbr:`EC2 (Elastic Compute Cloud)` instance."
+msgstr "Приєднайте створену роль до свого екземпляра VyOS :abbr:`EC2 (Elastic Compute Cloud)`."
 
 #: ../../installation/install.rst:17
 msgid "Automatically built from the current branch. Always up to date with cutting edge development but guaranteed to contain bugs."
-msgstr "Automatically built from the current branch. Always up to date with cutting edge development but guaranteed to contain bugs."
+msgstr "Автоматично будується з поточної гілки. Завжди в курсі передових розробок, але гарантовано містить помилки."
 
 #: ../../installation/install.rst:21
 msgid "Automatically built from the development branch and released alongside snapshots. Most likely contains bugs."
-msgstr "Automatically built from the development branch and released alongside snapshots. Most likely contains bugs."
+msgstr "Автоматично створюється з гілки розробки та випускається разом зі знімками. Швидше за все містить помилки."
 
 #: ../../installation/cloud/azure.rst:3
 msgid "Azure"
-msgstr "Azure"
+msgstr "Лазурний"
 
 #: ../../installation/cloud/azure.rst:51
 msgid "Azure does not allow you attach interface when the instance in the **Running** state."
-msgstr "Azure does not allow you attach interface when the instance in the **Running** state."
+msgstr "Azure не дозволяє підключати інтерфейс, коли екземпляр перебуває в стані **Виконується**."
 
 #: ../../installation/cloud/azure.rst:68
 msgid "Azure has a way to access the serial console of a VM, but this needs to be configured on the VyOS. It's there by default, but keep it in mind if you are replacing config.boot and rebooting: ``set system console device ttyS0 speed '9600'``"
-msgstr "Azure has a way to access the serial console of a VM, but this needs to be configured on the VyOS. It's there by default, but keep it in mind if you are replacing config.boot and rebooting: ``set system console device ttyS0 speed '9600'``"
+msgstr "Azure має спосіб отримати доступ до послідовної консолі віртуальної машини, але це потрібно налаштувати у VyOS. Він є за замовчуванням, але майте це на увазі, якщо ви замінюєте config.boot і перезавантажуєтеся: ``set system console device ttyS0 speed &#39;9600&#39;``"
 
 #: ../../installation/vyos-on-baremetal.rst:382
 msgid "BIOS Settings:"
-msgstr "BIOS Settings:"
+msgstr "Параметри BIOS:"
 
 #: ../../installation/install.rst:334
 msgid "Before a permanent installation, VyOS requires a :ref:`live_installation`."
-msgstr "Before a permanent installation, VyOS requires a :ref:`live_installation`."
+msgstr "Перед постійним встановленням VyOS вимагає :ref:`live_installation`."
 
 #: ../../installation/vyos-on-baremetal.rst:358
 msgid "Begin rapidly pressing delete on the keyboard. The boot prompt is very quick, but with a few tries you should be able to get into the BIOS."
-msgstr "Begin rapidly pressing delete on the keyboard. The boot prompt is very quick, but with a few tries you should be able to get into the BIOS."
+msgstr "Почніть швидко натискати delete на клавіатурі. Підказка про завантаження дуже швидка, але за кілька спроб ви зможете увійти в BIOS."
 
 #: ../../installation/virtual/gns3.rst:80
 msgid "Being again at the **Preferences** window, having **Qemu VMs** selected and having our new VM selected, click the ``Edit`` button."
-msgstr "Being again at the **Preferences** window, having **Qemu VMs** selected and having our new VM selected, click the ``Edit`` button."
+msgstr "Знову перебуваючи у вікні **Налаштування**, вибравши **Віртуальні машини Qemu** і вибравши нашу нову віртуальну машину, натисніть кнопку ``Редагувати``."
 
 #: ../../installation/vyos-on-baremetal.rst:397
 msgid "Bits per second : 9600"
-msgstr "Bits per second : 9600"
+msgstr "Біт в секунду: 9600"
 
 #: ../../installation/install.rst:583
 msgid "Black screen on install"
-msgstr "Black screen on install"
+msgstr "Чорний екран під час встановлення"
 
 #: ../../installation/vyos-on-baremetal.rst:362
 msgid "Boot to the VyOS installer and install as usual."
-msgstr "Boot to the VyOS installer and install as usual."
+msgstr "Завантажте інсталятор VyOS і встановіть як зазвичай."
 
 #: ../../installation/vyos-on-baremetal.rst:236
 msgid "Both device types operate without any moving parts and emit zero noise."
-msgstr "Both device types operate without any moving parts and emit zero noise."
+msgstr "Обидва типи пристроїв працюють без будь-яких рухомих частин і не видають шуму."
 
 #: ../../installation/install.rst:66
 msgid "Building from source"
-msgstr "Building from source"
+msgstr "Будівництво з джерела"
 
 #: ../../installation/virtual/libvirt.rst:13
 msgid "CLI"
@@ -358,231 +362,235 @@ msgstr "CLI"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B Back"
-msgstr "CSE-505-203B Back"
+msgstr "CSE-505-203B Назад"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B Front"
-msgstr "CSE-505-203B Front"
+msgstr "CSE-505-203B Передня частина"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B Open 1"
-msgstr "CSE-505-203B Open 1"
+msgstr "CSE-505-203B Відкрити 1"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B Open 2"
-msgstr "CSE-505-203B Open 2"
+msgstr "CSE-505-203B Відкрити 2"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B Open 3"
-msgstr "CSE-505-203B Open 3"
+msgstr "CSE-505-203B Відкрити 3"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B w/ 10GE Open"
-msgstr "CSE-505-203B w/ 10GE Open"
+msgstr "CSE-505-203B з відкритим 10GE"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B w/ 10GE Open 1"
-msgstr "CSE-505-203B w/ 10GE Open 1"
+msgstr "CSE-505-203B з відкритим 10GE 1"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B w/ 10GE Open 2"
-msgstr "CSE-505-203B w/ 10GE Open 2"
+msgstr "CSE-505-203B з 10GE Open 2"
 
 #: ../../installation/vyos-on-baremetal.rst:-1
 msgid "CSE-505-203B w/ 10GE Open 3"
-msgstr "CSE-505-203B w/ 10GE Open 3"
+msgstr "CSE-505-203B з відкритим 10GE 3"
 
 #: ../../installation/cloud/gcp.rst:37
 msgid "Change Deployment name/Zone/Machine type and click ``Deploy``"
-msgstr "Change Deployment name/Zone/Machine type and click ``Deploy``"
+msgstr "Змініть назву розгортання/зону/тип комп’ютера та натисніть ``Deploy``"
 
 #: ../../installation/vyos-on-baremetal.rst:360
 msgid "Chipset > South Bridge > USB Configuration: set XHCI to Disabled and USB 2.0 (EHCI) to Enabled. Without doing this, the USB drive won't boot."
-msgstr "Chipset > South Bridge > USB Configuration: set XHCI to Disabled and USB 2.0 (EHCI) to Enabled. Without doing this, the USB drive won't boot."
+msgstr "Набір мікросхем &gt; Південний міст &gt; Конфігурація USB: встановіть XHCI на Disabled і USB 2.0 (EHCI) на Enabled. Без цього USB-накопичувач не завантажиться."
 
 #: ../../installation/virtual/libvirt.rst:140
 #: ../../installation/virtual/libvirt.rst:180
 msgid "Choose Memory and CPU"
-msgstr "Choose Memory and CPU"
+msgstr "Виберіть Пам&#39;ять і ЦП"
 
 #: ../../installation/virtual/libvirt.rst:171
 msgid "Choose ``Import existing disk`` image"
-msgstr "Choose ``Import existing disk`` image"
+msgstr "Виберіть ``Імпортувати існуючий образ диска``"
 
 #: ../../installation/virtual/libvirt.rst:132
 msgid "Choose ``Local install media`` (ISO)"
-msgstr "Choose ``Local install media`` (ISO)"
+msgstr "Виберіть ``Локальний інсталяційний носій`` (ISO)"
 
 #: ../../installation/virtual/libvirt.rst:136
 msgid "Choose path to iso vyos.iso. Operating System can be any Debian based."
-msgstr "Choose path to iso vyos.iso. Operating System can be any Debian based."
+msgstr "Виберіть шлях до iso vyos.iso. Операційна система може бути будь-якою на основі Debian."
 
 #: ../../installation/cloud/aws.rst:18
 msgid "Choose the instance type. Minimum recommendation start from ``m3.medium``"
-msgstr "Choose the instance type. Minimum recommendation start from ``m3.medium``"
+msgstr "Виберіть тип екземпляра. Мінімальна рекомендація починається з ``m3.medium``"
 
 #: ../../installation/virtual/libvirt.rst:175
 msgid "Choose the path to the image ``vyos_kvm.qcow2`` that was previously downloaded . Operation System can be any Debian based."
-msgstr "Choose the path to the image ``vyos_kvm.qcow2`` that was previously downloaded . Operation System can be any Debian based."
+msgstr "Виберіть шлях до попередньо завантаженого образу ``vyos_kvm.qcow2``. Операційна система може бути будь-якою на основі Debian."
 
 #: ../../installation/cloud/azure.rst:12
 msgid "Choose vm name, resource group, region and click **Browse all public and private images**"
-msgstr "Choose vm name, resource group, region and click **Browse all public and private images**"
+msgstr "Виберіть назву віртуальної машини, групу ресурсів, регіон і натисніть **Переглянути всі загальнодоступні та приватні зображення**"
 
 #: ../../installation/cloud/gcp.rst:30
 msgid "Click **Add item** and paste your public ssh key. Click ``Save``."
-msgstr "Click **Add item** and paste your public ssh key. Click ``Save``."
+msgstr "Натисніть **Додати елемент** і вставте відкритий ключ ssh. Натисніть ``Зберегти``."
 
 #: ../../installation/virtual/gns3.rst:74
 msgid "Click ``Finish`` to end the **New QEMU VM template** wizard."
-msgstr "Click ``Finish`` to end the **New QEMU VM template** wizard."
+msgstr "Натисніть ``Готово``, щоб завершити роботу майстра **Новий шаблон віртуальної машини QEMU**."
 
 #: ../../installation/cloud/azure.rst:29
 msgid "Click ``Review + create``. After a few seconds your deployment will be complete"
-msgstr "Click ``Review + create``. After a few seconds your deployment will be complete"
+msgstr "Натисніть ``Переглянути + створити``. Через кілька секунд ваше розгортання буде завершено"
 
 #: ../../installation/virtual/gns3.rst:88
 msgid "Click on the ``Browse...`` button to choose the **Symbol** you want to have representing your VM."
-msgstr "Click on the ``Browse...`` button to choose the **Symbol** you want to have representing your VM."
+msgstr "Натисніть кнопку ``Огляд...``, щоб вибрати **Символ**, який потрібно використовувати для вашої віртуальної машини."
 
 #: ../../installation/cloud/aws.rst:10
 msgid "Click to ``Instances`` and ``Launch Instance``"
-msgstr "Click to ``Instances`` and ``Launch Instance``"
+msgstr "Натисніть ``Екземпляри`` та ``Запустити екземпляр``"
 
 #: ../../installation/cloud/azure.rst:33
 msgid "Click to your new vm and find out your Public IP address."
-msgstr "Click to your new vm and find out your Public IP address."
+msgstr "Натисніть свою нову віртуальну машину та дізнайтеся свою загальнодоступну IP-адресу."
 
 #: ../../installation/install.rst:565
 msgid "Client Boot"
-msgstr "Client Boot"
+msgstr "Завантаження клієнта"
 
 #: ../../installation/install.rst:434
 msgid "Clients (where VyOS is to be installed) with a PXE-enabled NIC"
-msgstr "Clients (where VyOS is to be installed) with a PXE-enabled NIC"
+msgstr "Клієнти (де має бути встановлено VyOS) із мережевою карткою з підтримкою PXE"
 
 #: ../../installation/cloud/aws.rst:88
 msgid "CloudWatchAgentServerRole is too permisive and should be used for single configuration creation and deployment. That's why after completion of step #3 higly recommended to replace instance CloudWatchAgentAdminRole role with CloudWatchAgentServerRole."
-msgstr "CloudWatchAgentServerRole is too permisive and should be used for single configuration creation and deployment. That's why after completion of step #3 higly recommended to replace instance CloudWatchAgentAdminRole role with CloudWatchAgentServerRole."
+msgstr "CloudWatchAgentServerRole є надто дозволеним, тому його слід використовувати для створення та розгортання однієї конфігурації. Ось чому після виконання кроку №3 настійно рекомендується замінити роль CloudWatchAgentAdminRole екземпляра на CloudWatchAgentServerRole."
+
+#: ../../installation/cloud/aws.rst:88
+msgid "CloudWatchAgentServerRole is too permissive and should be used for single configuration creation and deployment. That's why after completion of step #3 highly recommended to replace instance CloudWatchAgentAdminRole role with CloudWatchAgentServerRole."
+msgstr "CloudWatchAgentServerRole is too permissive and should be used for single configuration creation and deployment. That's why after completion of step #3 highly recommended to replace instance CloudWatchAgentAdminRole role with CloudWatchAgentServerRole."
 
 #: ../../installation/cloud/aws.rst:82
 msgid "CloudWatch SSM Configuration creation"
-msgstr "CloudWatch SSM Configuration creation"
+msgstr "Створення конфігурації CloudWatch SSM"
 
 #: ../../installation/install.rst:12
 msgid "Comparison of VyOS image releases"
-msgstr "Comparison of VyOS image releases"
+msgstr "Порівняння випусків образів VyOS"
 
 #: ../../installation/vyos-on-baremetal.rst:117
 msgid "Compex WLE900VX mini-PCIe WiFi module, only supported in mPCIe slot 1."
-msgstr "Compex WLE900VX mini-PCIe WiFi module, only supported in mPCIe slot 1."
+msgstr "Модуль WiFi Compex WLE900VX mini-PCIe, підтримується лише в слоті 1 mPCIe."
 
 #: ../../installation/install.rst:443
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Конфігурація"
 
 #: ../../installation/cloud/aws.rst:32
 msgid "Configure Security Group. It's recommended that you configure ssh access only from certain address sources. Or permit any (by default)."
-msgstr "Configure Security Group. It's recommended that you configure ssh access only from certain address sources. Or permit any (by default)."
+msgstr "Налаштувати групу безпеки. Рекомендується налаштовувати ssh-доступ лише з певних джерел адрес. Або дозволити будь-який (за замовчуванням)."
 
 #: ../../installation/install.rst:448
 msgid "Configure a DHCP server to provide the client with:"
-msgstr "Configure a DHCP server to provide the client with:"
+msgstr "Налаштуйте сервер DHCP, щоб надати клієнту:"
 
 #: ../../installation/install.rst:479
 msgid "Configure a TFTP server so that it serves the following:"
-msgstr "Configure a TFTP server so that it serves the following:"
+msgstr "Налаштуйте сервер TFTP так, щоб він обслуговував наступне:"
 
 #: ../../installation/cloud/aws.rst:22
 msgid "Configure instance for your requirements. Select number of instances / network / subnet"
-msgstr "Configure instance for your requirements. Select number of instances / network / subnet"
+msgstr "Налаштуйте екземпляр відповідно до ваших вимог. Виберіть кількість екземплярів / мережу / підмережу"
 
 #: ../../installation/vyos-on-baremetal.rst:142
 msgid "Connect serial port to a PC through null modem cable (RXD / TXD crossed over). Set terminal emulator to 115200 8N1."
-msgstr "Connect serial port to a PC through null modem cable (RXD / TXD crossed over). Set terminal emulator to 115200 8N1."
+msgstr "Підключіть послідовний порт до ПК через нуль-модемний кабель (RXD / TXD перехресний). Встановіть емулятор терміналу на 115200 8N1."
 
 #: ../../installation/virtual/libvirt.rst:36
 msgid "Connect to VM  with command ``virsh console vyos_r1``"
-msgstr "Connect to VM  with command ``virsh console vyos_r1``"
+msgstr "Підключіться до віртуальної машини за допомогою команди ``virsh console vyos_r1``"
 
 #: ../../installation/virtual/libvirt.rst:79
 msgid "Connect to VM  with command ``virsh console vyos_r2``"
-msgstr "Connect to VM  with command ``virsh console vyos_r2``"
+msgstr "Підключіться до віртуальної машини за допомогою команди ``virsh console vyos_r2``"
 
 #: ../../installation/vyos-on-baremetal.rst:391
 msgid "Connect to serial (115200bps). Power on the appliance and press Del in the console when requested to enter BIOS settings."
-msgstr "Connect to serial (115200bps). Power on the appliance and press Del in the console when requested to enter BIOS settings."
+msgstr "Підключіться до послідовного порту (115200 біт/с). Увімкніть пристрій і натисніть Del на консолі, коли буде запропоновано ввести налаштування BIOS."
 
 #: ../../installation/cloud/gcp.rst:49
 msgid "Connect to the instance. SSH key was generated in the first step."
-msgstr "Connect to the instance. SSH key was generated in the first step."
+msgstr "Підключіться до примірника. Ключ SSH було згенеровано на першому кроці."
 
 #: ../../installation/cloud/aws.rst:45
 #: ../../installation/cloud/azure.rst:37
 msgid "Connect to the instance by SSH key."
-msgstr "Connect to the instance by SSH key."
+msgstr "Підключіться до примірника за допомогою ключа SSH."
 
 #: ../../installation/cloud/index.rst:7
 #: ../../installation/index.rst:7
 #: ../../installation/virtual/index.rst:5
 msgid "Content"
-msgstr "Content"
+msgstr "Зміст"
 
 #: ../../installation/virtual/proxmox.rst:14
 msgid "Copy the qcow2 image to a temporary directory on the Proxmox server."
-msgstr "Copy the qcow2 image to a temporary directory on the Proxmox server."
+msgstr "Скопіюйте зображення qcow2 у тимчасовий каталог на сервері Proxmox."
 
 #: ../../installation/virtual/libvirt.rst:18
 msgid "Create VM name ``vyos_r1``. You must specify the path to the ``ISO`` image, the disk ``qcow2`` will be created automatically. The ``default`` network is the virtual network (type Virtio) created by the hypervisor with NAT."
-msgstr "Create VM name ``vyos_r1``. You must specify the path to the ``ISO`` image, the disk ``qcow2`` will be created automatically. The ``default`` network is the virtual network (type Virtio) created by the hypervisor with NAT."
+msgstr "Створіть назву віртуальної машини ``vyos_r1``. Необхідно вказати шлях до ISO-образу, диск qcow2 буде створено автоматично. Мережа ``за замовчуванням`` — це віртуальна мережа (типу Virtio), створена гіпервізором з NAT."
 
 #: ../../installation/virtual/libvirt.rst:63
 msgid "Create VM with ``import`` qcow2 disk option."
-msgstr "Create VM with ``import`` qcow2 disk option."
+msgstr "Створіть віртуальну машину з опцією диска ``import`` qcow2."
 
 #: ../../installation/vyos-on-baremetal.rst:412
 msgid "Create a VyOS bootable USB key. I used the 64-bit ISO (VyOS 1.1.7) and `LinuxLive USB Creator <http://www.linuxliveusb.com/>`_."
-msgstr "Create a VyOS bootable USB key. I used the 64-bit ISO (VyOS 1.1.7) and `LinuxLive USB Creator <http://www.linuxliveusb.com/>`_."
+msgstr "Створіть завантажувальний USB-ключ VyOS. Я використовував 64-бітний ISO (VyOS 1.1.7) і `LinuxLive USB Creator<http://www.linuxliveusb.com/> `_."
 
 #: ../../installation/vyos-on-baremetal.rst:140
 msgid "Create a bootable USB pendrive using e.g. Rufus_ on a Windows machine."
-msgstr "Create a bootable USB pendrive using e.g. Rufus_ on a Windows machine."
+msgstr "Створіть завантажувальний флеш-накопичувач USB за допомогою, наприклад, Rufus_ на машині Windows."
 
 #: ../../installation/virtual/gns3.rst:130
 msgid "Create a new project."
-msgstr "Create a new project."
+msgstr "Створіть новий проект."
 
 #: ../../installation/cloud/azure.rst:59
 msgid "Create a route table and browse to **Configuration**"
-msgstr "Create a route table and browse to **Configuration**"
+msgstr "Створіть таблицю маршрутів і перейдіть до **Конфігурації**"
 
 #: ../../installation/cloud/aws.rst:57
 msgid "Create an :abbr:`IAM (Identity and Access Management)` role for the :abbr:`EC2 (Elastic Compute Cloud)` instance to access CloudWatch service, and name it CloudWatchAgentServerRole. The role should contain two default policies: CloudWatchAgentServerPolicy and AmazonSSMManagedInstanceCore."
-msgstr "Create an :abbr:`IAM (Identity and Access Management)` role for the :abbr:`EC2 (Elastic Compute Cloud)` instance to access CloudWatch service, and name it CloudWatchAgentServerRole. The role should contain two default policies: CloudWatchAgentServerPolicy and AmazonSSMManagedInstanceCore."
+msgstr "Створіть роль :abbr:`IAM (Identity and Access Management)` для примірника :abbr:`EC2 (Elastic Compute Cloud)` для доступу до служби CloudWatch і назвіть її CloudWatchAgentServerRole. Роль має містити дві політики за замовчуванням: CloudWatchAgentServerPolicy і AmazonSSMManagedInstanceCore."
 
 #: ../../installation/cloud/aws.rst:86
 msgid "Create an :abbr:`IAM (Identity and Access Management)` role for your :abbr:`EC2 (Elastic Compute Cloud)` instance to access the CloudWatch service. Name it CloudWatchAgentAdminRole. The role should contain at two default policies: CloudWatchAgentAdminPolicy and AmazonSSMManagedInstanceCore."
-msgstr "Create an :abbr:`IAM (Identity and Access Management)` role for your :abbr:`EC2 (Elastic Compute Cloud)` instance to access the CloudWatch service. Name it CloudWatchAgentAdminRole. The role should contain at two default policies: CloudWatchAgentAdminPolicy and AmazonSSMManagedInstanceCore."
+msgstr "Створіть роль :abbr:`IAM (Identity and Access Management)` для свого екземпляра :abbr:`EC2 (Elastic Compute Cloud)` для доступу до служби CloudWatch. Назвіть його CloudWatchAgentAdminRole. Роль має містити дві політики за замовчуванням: CloudWatchAgentAdminPolicy і AmazonSSMManagedInstanceCore."
 
 #: ../../installation/cloud/aws.rst:84
 msgid "Creating the Amazon Cloudwatch Agent Configuration in Amazon :abbr:`SSM (Systems Manager)` Parameter Store."
-msgstr "Creating the Amazon Cloudwatch Agent Configuration in Amazon :abbr:`SSM (Systems Manager)` Parameter Store."
+msgstr "Створення конфігурації агента Amazon Cloudwatch у сховищі параметрів Amazon :abbr:`SSM (Systems Manager)`."
 
 #: ../../installation/install.rst:216
 msgid "Currently we are using GPG for release signing (pretty much like everyone else)."
-msgstr "Currently we are using GPG for release signing (pretty much like everyone else)."
+msgstr "Наразі ми використовуємо GPG для підписання випуску (майже як і всі інші)."
 
 #: ../../installation/cloud/azure.rst:25
 msgid "Define network, subnet, Public IP. Or it will be created by default."
-msgstr "Define network, subnet, Public IP. Or it will be created by default."
+msgstr "Визначте мережу, підмережу, загальнодоступну IP-адресу. Або він буде створений за замовчуванням."
 
 #: ../../installation/image.rst:47
 msgid "Delete no longer needed images from the system. You can specify an optional image name to delete, the image name can be retrieved via a list of available images can be shown using the :opcmd:`show system image`."
-msgstr "Delete no longer needed images from the system. You can specify an optional image name to delete, the image name can be retrieved via a list of available images can be shown using the :opcmd:`show system image`."
+msgstr "Видаліть непотрібні зображення з системи. Ви можете вказати необов’язкову назву зображення для видалення, назву зображення можна отримати за допомогою списку доступних зображень, які можна показати за допомогою :opcmd:`показати системне зображення`."
 
 #: ../../installation/vyos-on-baremetal.rst:137
 msgid "Depending on the VyOS versions you intend to install there is a difference in the serial port settings (:vytask:`T1327`)."
-msgstr "Depending on the VyOS versions you intend to install there is a difference in the serial port settings (:vytask:`T1327`)."
+msgstr "Залежно від версії VyOS, яку ви збираєтеся інсталювати, є різниця в налаштуваннях послідовного порту (:vytask:`T1327`)."
 
 #: ../../installation/cloud/aws.rst:6
 #: ../../installation/cloud/azure.rst:6
@@ -592,81 +600,81 @@ msgstr "Deploy VM"
 
 #: ../../installation/virtual/proxmox.rst:12
 msgid "Deploy VyOS from CLI with qcow2 image"
-msgstr "Deploy VyOS from CLI with qcow2 image"
+msgstr "Розгорніть VyOS з CLI за допомогою образу qcow2"
 
 #: ../../installation/virtual/proxmox.rst:35
 msgid "Deploy VyOS from CLI with rolling release ISO"
-msgstr "Deploy VyOS from CLI with rolling release ISO"
+msgstr "Розгортайте VyOS з CLI за допомогою поточного випуску ISO"
 
 #: ../../installation/cloud/aws.rst:8
 msgid "Deploy VyOS on Amazon :abbr:`AWS (Amazon Web Services)`"
-msgstr "Deploy VyOS on Amazon :abbr:`AWS (Amazon Web Services)`"
+msgstr "Розгорніть VyOS на Amazon :abbr:`AWS (Amazon Web Services)`"
 
 #: ../../installation/cloud/azure.rst:8
 msgid "Deploy VyOS on Azure."
-msgstr "Deploy VyOS on Azure."
+msgstr "Розгорніть VyOS на Azure."
 
 #: ../../installation/virtual/docker.rst:49
 msgid "Deploy container from ISO"
-msgstr "Deploy container from ISO"
+msgstr "Розгорнути контейнер із ISO"
 
 #: ../../installation/virtual/libvirt.rst:16
 #: ../../installation/virtual/libvirt.rst:127
 msgid "Deploy from ISO"
-msgstr "Deploy from ISO"
+msgstr "Розгорнути з ISO"
 
 #: ../../installation/virtual/libvirt.rst:54
 #: ../../installation/virtual/libvirt.rst:159
 msgid "Deploy from qcow2"
-msgstr "Deploy from qcow2"
+msgstr "Розгорнути з qcow2"
 
 #: ../../installation/install.rst:15
 msgid "Description"
-msgstr "Description"
+msgstr "Опис"
 
 #: ../../installation/vyos-on-baremetal.rst:270
 msgid "Desktop / Bench Top"
-msgstr "Desktop / Bench Top"
+msgstr "Настільний/настільний"
 
 #: ../../installation/install.rst:17
 msgid "Developing VyOS, testing new features, experimenting."
-msgstr "Developing VyOS, testing new features, experimenting."
+msgstr "Розробка VyOS, тестування нових функцій, експерименти."
 
 #: ../../installation/install.rst:21
 msgid "Developing and testing the latest major version under development."
-msgstr "Developing and testing the latest major version under development."
+msgstr "Розробка та тестування останньої основної версії, що розробляється."
 
 #: ../../installation/vyos-on-baremetal.rst:406
 msgid "Disable XHCI"
-msgstr "Disable XHCI"
+msgstr "Вимкнути XHCI"
 
 #: ../../installation/virtual/libvirt.rst:144
 msgid "Disk size"
-msgstr "Disk size"
+msgstr "Розмір диска"
 
 #: ../../installation/install.rst:550
 msgid "Do not change the name of the *filesystem.squashfs* file. If you are working with different versions, you can create different directories instead."
-msgstr "Do not change the name of the *filesystem.squashfs* file. If you are working with different versions, you can create different directories instead."
+msgstr "Не змінюйте назву файлу *filesystem.squashfs*. Якщо ви працюєте з різними версіями, замість цього можна створити різні каталоги."
 
 #: ../../installation/virtual/docker.rst:7
 msgid "Docker is an open-source project for deploying applications as standardized units called containers. Deploying VyOS in a container provides a simple and lightweight mechanism for both testing and packet routing for container workloads."
-msgstr "Docker is an open-source project for deploying applications as standardized units called containers. Deploying VyOS in a container provides a simple and lightweight mechanism for both testing and packet routing for container workloads."
+msgstr "Docker — це проект із відкритим вихідним кодом для розгортання програм як стандартизованих одиниць, які називаються контейнерами. Розгортання VyOS у контейнері забезпечує простий і легкий механізм як для тестування, так і для маршрутизації пакетів для робочих навантажень контейнера."
 
 #: ../../installation/install.rst:52
 msgid "Download"
-msgstr "Download"
+msgstr "Завантажити"
 
 #: ../../installation/install.rst:90
 msgid "Download Verification"
-msgstr "Download Verification"
+msgstr "Завантажте перевірку"
 
 #: ../../installation/virtual/libvirt.rst:161
 msgid "Download predefined VyOS.qcow2 image for ``KVM``"
-msgstr "Download predefined VyOS.qcow2 image for ``KVM``"
+msgstr "Завантажте попередньо визначений образ VyOS.qcow2 для ``KVM``"
 
 #: ../../installation/virtual/docker.rst:51
 msgid "Download the ISO on which you want to base the container. In this example, the name of the ISO is ``vyos-1.4-rolling-202111281249-amd64.iso``. If you created a custom IPv6-enabled network, the ``docker run`` command below will require that this network be included as the ``--net`` parameter to ``docker run``."
-msgstr "Download the ISO on which you want to base the container. In this example, the name of the ISO is ``vyos-1.4-rolling-202111281249-amd64.iso``. If you created a custom IPv6-enabled network, the ``docker run`` command below will require that this network be included as the ``--net`` parameter to ``docker run``."
+msgstr "Завантажте ISO, на основі якого ви хочете створити контейнер. У цьому прикладі назва ISO – ``vyos-1.4-rolling-202111281249-amd64.iso``. Якщо ви створили спеціальну мережу з підтримкою IPv6, команда ``docker run``, наведена нижче, вимагатиме, щоб ця мережа була включена як параметр ``--net`` до ``docker run``."
 
 #: ../../installation/virtual/docker.rst:51
 msgid "Download the ISO on which you want to base the container. In this example, the name of the ISO is ``vyos-1.4-rolling-202308240020-amd64.iso``. If you created a custom IPv6-enabled network, the ``docker run`` command below will require that this network be included as the ``--net`` parameter to ``docker run``."
@@ -674,52 +682,52 @@ msgstr "Download the ISO on which you want to base the container. In this exampl
 
 #: ../../installation/virtual/proxmox.rst:37
 msgid "Download the rolling release iso from https://vyos.net/get/nightly-builds/. Non-subscribers can always get the LTS release by building it from source. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available https://github.com/vyos/vyos-build."
-msgstr "Download the rolling release iso from https://vyos.net/get/nightly-builds/. Non-subscribers can always get the LTS release by building it from source. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available https://github.com/vyos/vyos-build."
+msgstr "Завантажте поточний випуск iso з https://vyos.net/get/nightly-builds/. Користувачі, які не передплатили, завжди можуть отримати випуск LTS, зібравши його з джерела. Інструкції можна знайти в розділі :ref:`build` цього посібника. Репозиторій вихідного коду VyOS доступний https://github.com/vyos/vyos-build."
 
 #: ../../installation/virtual/gns3.rst:131
 msgid "Drag the newly created VyOS VM into it."
-msgstr "Drag the newly created VyOS VM into it."
+msgstr "Перетягніть туди щойно створену віртуальну машину VyOS."
 
 #: ../../installation/install.rst:256
 msgid "During an image upgrade VyOS performas the following command:"
-msgstr "During an image upgrade VyOS performas the following command:"
+msgstr "Під час оновлення образу VyOS виконує таку команду:"
 
 #: ../../installation/virtual/vmware.rst:7
 msgid "ESXi 5.5 or later"
-msgstr "ESXi 5.5 or later"
+msgstr "ESXi 5.5 або новішої версії"
 
 #: ../../installation/virtual/eve-ng.rst:3
 msgid "EVE-NG"
-msgstr "EVE-NG"
+msgstr "ВЕЧІР-НГ"
 
 #: ../../installation/virtual/docker.rst:31
 msgid "Edit /etc/docker/daemon.json to set the ``ipv6`` key to ``true`` and to specify the ``fixed-cidr-v6`` to your desired IPv6 subnet."
-msgstr "Edit /etc/docker/daemon.json to set the ``ipv6`` key to ``true`` and to specify the ``fixed-cidr-v6`` to your desired IPv6 subnet."
+msgstr "Відредагуйте /etc/docker/daemon.json, щоб встановити для ключа ``ipv6`` значення ``true`` і вказати ``fixed-cidr-v6`` для вашої потрібної підмережі IPv6."
 
 #: ../../installation/vyos-on-baremetal.rst:407
 msgid "Enable USB 2.0 (EHCI) Support"
-msgstr "Enable USB 2.0 (EHCI) Support"
+msgstr "Увімкніть підтримку USB 2.0 (EHCI)."
 
 #: ../../installation/cloud/aws.rst:61
 msgid "Ensure that amazon-cloudwatch-agent package is installed."
-msgstr "Ensure that amazon-cloudwatch-agent package is installed."
+msgstr "Переконайтеся, що встановлено пакет amazon-cloudwatch-agent."
 
 #: ../../installation/install.rst:37
 msgid "Every major version"
-msgstr "Every major version"
+msgstr "Кожна основна версія"
 
 #: ../../installation/install.rst:25
 msgid "Every month until RC comes out"
-msgstr "Every month until RC comes out"
+msgstr "Щомісяця до виходу RC"
 
 #: ../../installation/install.rst:17
 #: ../../installation/install.rst:21
 msgid "Every night"
-msgstr "Every night"
+msgstr "Щоночі"
 
 #: ../../installation/install.rst:343
 msgid "Every version is contained in its own squashfs image that is mounted in a union filesystem together with a directory for mutable data such as configurations, keys, or custom scripts."
-msgstr "Every version is contained in its own squashfs image that is mounted in a union filesystem together with a directory for mutable data such as configurations, keys, or custom scripts."
+msgstr "Кожна версія міститься у власному образі squashfs, який монтується у файловій системі об’єднання разом із каталогом для змінних даних, таких як конфігурації, ключі або власні сценарії."
 
 #: ../../installation/install.rst:17
 #: ../../installation/install.rst:21
@@ -728,167 +736,167 @@ msgstr "Every version is contained in its own squashfs image that is mounted in 
 #: ../../installation/install.rst:33
 #: ../../installation/install.rst:37
 msgid "Everyone"
-msgstr "Everyone"
+msgstr "Всі"
 
 #: ../../installation/install.rst:76
 msgid "Everyone can download bleeding-edge VyOS rolling images from: https://downloads.vyos.io/"
-msgstr "Everyone can download bleeding-edge VyOS rolling images from: https://downloads.vyos.io/"
+msgstr "Кожен може завантажити найсучасніші рухливі образи VyOS з: https://downloads.vyos.io/"
 
 #: ../../installation/update.rst:50
 msgid "Example"
-msgstr "Example"
+msgstr "приклад"
 
 #: ../../installation/cloud/gcp.rst:13
 msgid "Example:"
-msgstr "Example:"
+msgstr "приклад:"
 
 #: ../../installation/install.rst:522
 msgid "Example of simple (no menu) configuration file:"
-msgstr "Example of simple (no menu) configuration file:"
+msgstr "Приклад простого (без меню) файлу конфігурації:"
 
 #: ../../installation/install.rst:502
 msgid "Example of the contents of the TFTP server:"
-msgstr "Example of the contents of the TFTP server:"
+msgstr "Приклад вмісту сервера TFTP:"
 
 #: ../../installation/vyos-on-baremetal.rst:109
 msgid "Extension Modules"
-msgstr "Extension Modules"
+msgstr "Модулі розширення"
 
 #: ../../installation/install.rst:439
 msgid "Files *pxelinux.0* and *ldlinux.c32* `from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_"
-msgstr "Files *pxelinux.0* and *ldlinux.c32* `from the Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_"
+msgstr "Файли *pxelinux.0* і *ldlinux.c32* `з дистрибутива Syslinux<https://kernel.org/pub/linux/utils/boot/syslinux/> `_"
 
 #: ../../installation/install.rst:567
 msgid "Finally, turn on your PXE-enabled client or clients. They will automatically get an IP address from the DHCP server and start booting into VyOS live from the files automatically taken from the TFTP and HTTP servers."
-msgstr "Finally, turn on your PXE-enabled client or clients. They will automatically get an IP address from the DHCP server and start booting into VyOS live from the files automatically taken from the TFTP and HTTP servers."
+msgstr "Нарешті, увімкніть клієнт або клієнти з підтримкою PXE. Вони автоматично отримають IP-адресу від сервера DHCP і почнуть завантажувати VyOS у режимі реального часу з файлів, автоматично отриманих із серверів TFTP і HTTP."
 
 #: ../../installation/install.rst:201
 msgid "Finally, verify the authenticity of the downloaded image:"
-msgstr "Finally, verify the authenticity of the downloaded image:"
+msgstr "Нарешті перевірте автентичність завантаженого зображення:"
 
 #: ../../installation/install.rst:285
 msgid "Find out the device name of your USB drive (you can use the ``lsblk`` command)"
-msgstr "Find out the device name of your USB drive (you can use the ``lsblk`` command)"
+msgstr "Дізнайтеся назву пристрою вашого USB-накопичувача (ви можете скористатися командою ``lsblk``)"
 
 #: ../../installation/cloud/gcp.rst:45
 msgid "Find out your external IP address"
-msgstr "Find out your external IP address"
+msgstr "Дізнайтеся свою зовнішню IP-адресу"
 
 #: ../../installation/cloud/aws.rst:41
 msgid "Find out your public IP address."
-msgstr "Find out your public IP address."
+msgstr "Дізнайтеся свою публічну IP-адресу."
 
 #: ../../installation/virtual/gns3.rst:30
 msgid "First, a virtual machine (VM) for the VyOS installation must be created in GNS3."
-msgstr "First, a virtual machine (VM) for the VyOS installation must be created in GNS3."
+msgstr "По-перше, у GNS3 має бути створена віртуальна машина (VM) для встановлення VyOS."
 
 #: ../../installation/install.rst:102
 msgid "First, install GPG or another OpenPGP implementation. On most GNU+Linux distributions it is installed by default as package managers use it to verify package signatures. If not pre-installed, it will need to be downloaded and installed."
-msgstr "First, install GPG or another OpenPGP implementation. On most GNU+Linux distributions it is installed by default as package managers use it to verify package signatures. If not pre-installed, it will need to be downloaded and installed."
+msgstr "Спочатку встановіть GPG або іншу реалізацію OpenPGP. У більшості дистрибутивів GNU+Linux він встановлений за замовчуванням, оскільки менеджери пакетів використовують його для перевірки підписів пакетів. Якщо попередньо не встановлено, його потрібно буде завантажити та встановити."
 
 #: ../../installation/vyos-on-baremetal.rst:384
 msgid "First thing you want to do is getting a more user friendly console to configure BIOS. Default VT100 brings a lot of issues. Configure VT100+ instead."
-msgstr "First thing you want to do is getting a more user friendly console to configure BIOS. Default VT100 brings a lot of issues. Configure VT100+ instead."
+msgstr "Перше, що ви хочете зробити, це отримати більш зручну консоль для налаштування BIOS. Стандартний VT100 викликає багато проблем. Натомість налаштуйте VT100+."
 
 #: ../../installation/migrate-from-vyatta.rst:42
 msgid "For completion the key below corresponds to the key listed in the URL above."
-msgstr "For completion the key below corresponds to the key listed in the URL above."
+msgstr "Для завершення наведений нижче ключ відповідає ключу, зазначеному в URL-адресі вище."
 
 #: ../../installation/vyos-on-baremetal.rst:387
 msgid "For practical issues change speed from 115200 to 9600. 9600 is the default speed at which both linux kernel and VyOS will reconfigure the serial port when loading."
-msgstr "For practical issues change speed from 115200 to 9600. 9600 is the default speed at which both linux kernel and VyOS will reconfigure the serial port when loading."
+msgstr "З практичних питань змініть швидкість з 115200 на 9600. 9600 — це швидкість за замовчуванням, на якій ядро Linux і VyOS переконфігурують послідовний порт під час завантаження."
 
 #: ../../installation/migrate-from-vyatta.rst:161
 msgid "Future releases of VyOS will break the direct upgrade path from Vyatta core. Please upgrade through an intermediate VyOS version e.g. VyOS 1.2. After this you can continue upgrading to newer releases once you bootet into VyOS 1.2 once."
-msgstr "Future releases of VyOS will break the direct upgrade path from Vyatta core. Please upgrade through an intermediate VyOS version e.g. VyOS 1.2. After this you can continue upgrading to newer releases once you bootet into VyOS 1.2 once."
+msgstr "Майбутні випуски VyOS порушать шлях прямого оновлення ядра Vyatta. Оновіть програму через проміжну версію VyOS, наприклад VyOS 1.2. Після цього ви можете продовжити оновлення до новіших версій, щойно завантажите VyOS 1.2."
 
 #: ../../installation/install.rst:192
 msgid "GPG verification"
-msgstr "GPG verification"
+msgstr "Перевірка GPG"
 
 #: ../../installation/install.rst:585
 msgid "GRUB attempts to redirect all output to a serial port for ease of installation on headless hosts. This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a black screen after selecting the `Live system` option from the installation image."
-msgstr "GRUB attempts to redirect all output to a serial port for ease of installation on headless hosts. This appears to cause an hard lockup on some hardware that lacks a serial port, with the result being a black screen after selecting the `Live system` option from the installation image."
+msgstr "GRUB намагається перенаправити весь вихід на послідовний порт для полегшення встановлення на безголових хостах. Схоже, що це спричиняє жорстке блокування деякого обладнання, у якого відсутній послідовний порт, результатом чого є чорний екран після вибору опції «Live system» із інсталяційного образу."
 
 #: ../../installation/cloud/gcp.rst:10
 msgid "Generate SSH key pair type **ssh-rsa** from the host that will connect to VyOS."
-msgstr "Generate SSH key pair type **ssh-rsa** from the host that will connect to VyOS."
+msgstr "Згенеруйте пару ключів SSH типу **ssh-rsa** з хосту, який підключатиметься до VyOS."
 
 #: ../../installation/cloud/azure.rst:21
 msgid "Generate new SSH key pair or use existing."
-msgstr "Generate new SSH key pair or use existing."
+msgstr "Згенеруйте нову пару ключів SSH або використовуйте наявну."
 
 #: ../../installation/cloud/azure.rst:10
 msgid "Go to the Azure services and Click to **Add new Virtual machine**"
-msgstr "Go to the Azure services and Click to **Add new Virtual machine**"
+msgstr "Перейдіть до служб Azure і натисніть **Додати нову віртуальну машину**"
 
 #: ../../installation/virtual/gns3.rst:33
 msgid "Go to the GNS3 **File** menu, click **New template** and choose select **Manually create a new Template**."
-msgstr "Go to the GNS3 **File** menu, click **New template** and choose select **Manually create a new Template**."
+msgstr "Перейдіть до меню GNS3 **Файл**, натисніть **Новий шаблон** і виберіть **Створити новий шаблон вручну**."
 
 #: ../../installation/cloud/gcp.rst:3
 msgid "Google Cloud Platform"
-msgstr "Google Cloud Platform"
+msgstr "Хмарна платформа Google"
 
 #: ../../installation/install.rst:37
 msgid "Guaranteed to be stable and carefully maintained for several years after the release. No features are introduced but security updates are released in a timely manner."
-msgstr "Guaranteed to be stable and carefully maintained for several years after the release. No features are introduced but security updates are released in a timely manner."
+msgstr "Гарантована стабільність і дбайливе обслуговування протягом кількох років після випуску. Жодних функцій не представлено, але оновлення системи безпеки випускаються своєчасно."
 
 #: ../../installation/vyos-on-baremetal.rst:304
 msgid "Hardware"
-msgstr "Hardware"
+msgstr "Обладнання"
 
 #: ../../installation/install.rst:45
 msgid "Hardware requirements"
-msgstr "Hardware requirements"
+msgstr "Вимоги до обладнання"
 
 #: ../../installation/virtual/docker.rst:22
 msgid "Here is a example using the macvlan driver."
-msgstr "Here is a example using the macvlan driver."
+msgstr "Ось приклад використання драйвера macvlan."
 
 #: ../../installation/install.rst:33
 msgid "Highly stable with no known bugs. Needs to be tested repeatedly under different conditions before it can become the final release."
-msgstr "Highly stable with no known bugs. Needs to be tested repeatedly under different conditions before it can become the final release."
+msgstr "Дуже стабільний без відомих помилок. Потрібно багаторазово тестувати в різних умовах, перш ніж він стане остаточним випуском."
 
 #: ../../installation/install.rst:25
 msgid "Home labs and simple networks that call for new features."
-msgstr "Home labs and simple networks that call for new features."
+msgstr "Домашні лабораторії та прості мережі, які вимагають нових функцій."
 
 #: ../../installation/vyos-on-baremetal.rst:132
 msgid "Huawei ME909u-521 miniPCIe card (LTE)"
-msgstr "Huawei ME909u-521 miniPCIe card (LTE)"
+msgstr "Карта miniPCIe Huawei ME909u-521 (LTE)"
 
 #: ../../installation/vyos-on-baremetal.rst:415
 msgid "I'm not sure if it helps the process but I changed default option to live-serial (line “default xxxx”) on the USB key under syslinux/syslinux.cfg."
-msgstr "I'm not sure if it helps the process but I changed default option to live-serial (line “default xxxx”) on the USB key under syslinux/syslinux.cfg."
+msgstr "Я не впевнений, чи це допомагає процесу, але я змінив опцію за замовчуванням на live-serial (рядок «default xxxx») на USB-ключі в syslinux/syslinux.cfg."
 
 #: ../../installation/virtual/docker.rst:13
 msgid "IPv6 Support for docker"
-msgstr "IPv6 Support for docker"
+msgstr "Підтримка IPv6 для докерів"
 
 #: ../../installation/vyos-on-baremetal.rst:346
 msgid "I believe this is actually the same hardware as the Protectli. I purchased it in June 2018. It came pre-loaded with pfSense."
-msgstr "I believe this is actually the same hardware as the Protectli. I purchased it in June 2018. It came pre-loaded with pfSense."
+msgstr "Я вважаю, що це фактично те саме обладнання, що й Protectli. Я придбав його в червні 2018 року. У нього було попередньо завантажено pfSense."
 
 #: ../../installation/vyos-on-baremetal.rst:418
 msgid "I connected the key to one black USB port on the back and powered on. The first VyOS screen has some readability issues. Press :kbd:`Enter` to continue."
-msgstr "I connected the key to one black USB port on the back and powered on. The first VyOS screen has some readability issues. Press :kbd:`Enter` to continue."
+msgstr "Я підключив ключ до одного чорного порту USB на задній панелі та ввімкнув. Перший екран VyOS має деякі проблеми з читабельністю. Натисніть :kbd:`Enter`, щоб продовжити."
 
 #: ../../installation/vyos-on-baremetal.rst:10
 msgid "I opted to get one of the new Intel Atom C3000 CPUs to spawn VyOS on it. Running VyOS on an UEFI only device is supported as of VyOS release 1.2."
-msgstr "I opted to get one of the new Intel Atom C3000 CPUs to spawn VyOS on it. Running VyOS on an UEFI only device is supported as of VyOS release 1.2."
+msgstr "Я вирішив придбати один із нових процесорів Intel Atom C3000, щоб створити на ньому VyOS. Запуск VyOS на пристрої лише з UEFI підтримується з випуску VyOS 1.2."
 
 #: ../../installation/cloud/azure.rst:47
 msgid "If instance was deployed with one **eth0** ``WAN`` interface and want to add new one. To add new interface an example **eth1** ``LAN`` you need shutdown the instance. Attach the interface in the Azure portal and then start the instance."
-msgstr "If instance was deployed with one **eth0** ``WAN`` interface and want to add new one. To add new interface an example **eth1** ``LAN`` you need shutdown the instance. Attach the interface in the Azure portal and then start the instance."
+msgstr "Якщо екземпляр було розгорнуто з одним інтерфейсом **eth0** ``WAN`` і потрібно додати новий. Щоб додати новий інтерфейс, приклад **eth1** ``LAN``, вам потрібно вимкнути екземпляр. Приєднайте інтерфейс до порталу Azure, а потім запустіть екземпляр."
 
 #: ../../installation/update.rst:25
 msgid "If there is not enough **free disk space available**, the installation will be canceled. To delete images use the :opcmd:`delete system image` command."
-msgstr "If there is not enough **free disk space available**, the installation will be canceled. To delete images use the :opcmd:`delete system image` command."
+msgstr "Якщо недостатньо **вільного місця на диску**, встановлення буде скасовано. Щоб видалити зображення, використовуйте команду :opcmd:`delete system image`."
 
 #: ../../installation/cloud/azure.rst:57
 msgid "If using as a router, you will want your LAN interface to absorb some or all of the traffic from your VNET by using a route table applied to the subnet."
-msgstr "If using as a router, you will want your LAN interface to absorb some or all of the traffic from your VNET by using a route table applied to the subnet."
+msgstr "У разі використання як маршрутизатора вам потрібно, щоб інтерфейс локальної мережі поглинав частину або весь трафік із вашої VNET за допомогою таблиці маршрутів, застосованої до підмережі."
 
 #: ../../installation/virtual/libvirt.rst:93
 msgid "If you can not go to this screen"
@@ -896,262 +904,262 @@ msgstr "If you can not go to this screen"
 
 #: ../../installation/install.rst:319
 msgid "If you find difficulties with this method, prefer to use a GUI program, or have a different operating system, there are other programs you can use to create a bootable USB drive, like balenaEtcher_ (for GNU/Linux, macOS and Windows), Rufus_ (for Windows) and `many others`_. You can follow their instructions to create a bootable USB drive from an .iso file."
-msgstr "If you find difficulties with this method, prefer to use a GUI program, or have a different operating system, there are other programs you can use to create a bootable USB drive, like balenaEtcher_ (for GNU/Linux, macOS and Windows), Rufus_ (for Windows) and `many others`_. You can follow their instructions to create a bootable USB drive from an .iso file."
+msgstr "Якщо у вас виникають труднощі з цим методом, ви віддаєте перевагу використанню програми з графічним інтерфейсом користувача або іншої операційної системи, є інші програми, якими ви можете скористатися для створення завантажувального USB-накопичувача, наприклад balenaEtcher_ (для GNU/Linux, macOS і Windows), Rufus_ (для Windows) та `багато інших`_. Ви можете виконати їхні вказівки, щоб створити завантажувальний USB-накопичувач із файлу .iso."
 
 #: ../../installation/install.rst:280
 msgid "If you have a GNU+Linux system, you can create your VyOS bootable USB stick with with the ``dd`` command:"
-msgstr "If you have a GNU+Linux system, you can create your VyOS bootable USB stick with with the ``dd`` command:"
+msgstr "Якщо у вас система GNU+Linux, ви можете створити свій завантажувальний USB-накопичувач VyOS за допомогою команди ``dd``:"
 
 #: ../../installation/image.rst:114
 msgid "If you have access to the console, there is a another way to select your booting image: reboot and use the GRUB menu at startup."
-msgstr "If you have access to the console, there is a another way to select your booting image: reboot and use the GRUB menu at startup."
+msgstr "Якщо у вас є доступ до консолі, є інший спосіб вибрати завантажувальний образ: перезавантажте комп’ютер і скористайтеся меню GRUB під час запуску."
 
 #: ../../installation/update.rst:33
 msgid "If you have any personal files, like some scripts you created, and you don't want them to be lost during the upgrade, make sure those files are stored in ``/config`` as this directory is always copied to newer installed images."
-msgstr "If you have any personal files, like some scripts you created, and you don't want them to be lost during the upgrade, make sure those files are stored in ``/config`` as this directory is always copied to newer installed images."
+msgstr "Якщо у вас є будь-які особисті файли, як-от деякі сценарії, які ви створили, і ви не хочете, щоб вони були втрачені під час оновлення, переконайтеся, що ці файли зберігаються в ``/config``, оскільки цей каталог завжди копіюється до нових встановлених образів ."
 
 #: ../../installation/image.rst:99
 msgid "If you need to rollback to a previous image, you can easily do so. First check the available images through the :opcmd:`show system image` command and then select your image with the following command:"
-msgstr "If you need to rollback to a previous image, you can easily do so. First check the available images through the :opcmd:`show system image` command and then select your image with the following command:"
+msgstr "Якщо вам потрібно повернутися до попереднього зображення, ви можете легко це зробити. Спочатку перевірте доступні зображення за допомогою команди :opcmd:`show system image`, а потім виберіть зображення за допомогою такої команди:"
 
 #: ../../installation/cloud/azure.rst:63
 msgid "If you want to create a new default route for VMs on the subnet, use **Address Prefix** ``0.0.0.0/0`` Also note that if you want to use this as a typical edge device, you'll want masquerade NAT for the ``WAN`` interface."
-msgstr "If you want to create a new default route for VMs on the subnet, use **Address Prefix** ``0.0.0.0/0`` Also note that if you want to use this as a typical edge device, you'll want masquerade NAT for the ``WAN`` interface."
+msgstr "Якщо ви хочете створити новий маршрут за замовчуванням для віртуальних машин у підмережі, використовуйте **Префікс адреси** ``0.0.0.0/0`` Також зауважте, що якщо ви хочете використовувати це як типовий крайовий пристрій, ви захочете маскарад NAT для інтерфейсу ``WAN``."
 
 #: ../../installation/vyos-on-baremetal.rst:26
 msgid "If you want to get additional ethernet ports or even 10GE connectivity the following optional parts will be required:"
-msgstr "If you want to get additional ethernet ports or even 10GE connectivity the following optional parts will be required:"
+msgstr "Якщо ви хочете отримати додаткові порти Ethernet або навіть підключення 10GE, знадобляться такі додаткові частини:"
 
 #: ../../installation/image.rst:5
 msgid "Image Management"
-msgstr "Image Management"
+msgstr "Управління зображеннями"
 
 #: ../../installation/virtual/gns3.rst:90
 msgid "In **Category** select in which group you want to find your VM."
-msgstr "In **Category** select in which group you want to find your VM."
+msgstr "У **Категорії** виберіть, у якій групі ви хочете знайти свою віртуальну машину."
 
 #: ../../installation/install.rst:231
 msgid "In 2015, OpenBSD introduced signify. An alternative implementation of the same protocol is minisign, which is also available for Windows and macOS, and in most GNU/Linux distros it's in the repositories now."
-msgstr "In 2015, OpenBSD introduced signify. An alternative implementation of the same protocol is minisign, which is also available for Windows and macOS, and in most GNU/Linux distros it's in the repositories now."
+msgstr "У 2015 році OpenBSD представила signify. Альтернативною реалізацією того самого протоколу є minisign, який також доступний для Windows і macOS, і в більшості дистрибутивів GNU/Linux він зараз є в репозиторіях."
 
 #: ../../installation/cloud/gcp.rst:20
 msgid "In name \"vyos@mypc\" The first value must be \"**vyos**\". Because default user is vyos and google api uses this option."
-msgstr "In name \"vyos@mypc\" The first value must be \"**vyos**\". Because default user is vyos and google api uses this option."
+msgstr "В імені &quot;vyos@mypc&quot; Перше значення має бути &quot;**vyos**&quot;. Оскільки користувач за умовчанням — vyos, а google api використовує цей параметр."
 
 #: ../../installation/install.rst:354
 msgid "In order to proceed with a permanent installation:"
-msgstr "In order to proceed with a permanent installation:"
+msgstr "Щоб продовжити постійне встановлення:"
 
 #: ../../installation/virtual/gns3.rst:114
 msgid "In the **Advanced** tab, unmark the checkbox **Use as a linked base VM** and click ``OK``, which will save and close the **QEMU VM template configuration** window."
-msgstr "In the **Advanced** tab, unmark the checkbox **Use as a linked base VM** and click ``OK``, which will save and close the **QEMU VM template configuration** window."
+msgstr "На вкладці **Додатково** зніміть прапорець **Використовувати як зв’язану базову віртуальну машину** та натисніть ``ОК``, що збереже та закриє вікно **Конфігурація шаблону віртуальної машини QEMU**."
 
 #: ../../installation/virtual/gns3.rst:85
 msgid "In the **General settings** tab of your **QEMU VM template configuration**, do the following:"
-msgstr "In the **General settings** tab of your **QEMU VM template configuration**, do the following:"
+msgstr "На вкладці **Загальні налаштування** вашої **Конфігурації шаблону QEMU VM** виконайте такі дії:"
 
 #: ../../installation/virtual/gns3.rst:108
 msgid "In the **Network** tab,  set **0** as the number of adapters, set the **Name format** to **eth{0}** and the **Type** to **Paravirtualized Network I/O (virtio-net-pci)**."
-msgstr "In the **Network** tab,  set **0** as the number of adapters, set the **Name format** to **eth{0}** and the **Type** to **Paravirtualized Network I/O (virtio-net-pci)**."
+msgstr "На вкладці **Мережа** встановіть **0** як кількість адаптерів, встановіть **Формат імені** на **eth{0}** і **Тип** на **Паравіртуалізована мережа I/O (virtio-net-pci)**."
 
 #: ../../installation/install.rst:494
 msgid "In the example we configured our existent VyOS as the TFTP server too:"
-msgstr "In the example we configured our existent VyOS as the TFTP server too:"
+msgstr "У прикладі ми також налаштували нашу існуючу VyOS як сервер TFTP:"
 
 #: ../../installation/install.rst:454
 msgid "In this example we configured an existent VyOS as the DHCP server:"
-msgstr "In this example we configured an existent VyOS as the DHCP server:"
+msgstr "У цьому прикладі ми налаштували існуючу VyOS як сервер DHCP:"
 
 #: ../../installation/vyos-on-baremetal.rst:410
 msgid "Install VyOS:"
-msgstr "Install VyOS:"
+msgstr "Встановити VyOS:"
 
 #: ../../installation/install.rst:5
 #: ../../installation/vyos-on-baremetal.rst:352
 msgid "Installation"
-msgstr "Installation"
+msgstr "монтаж"
 
 #: ../../installation/index.rst:3
 msgid "Installation and Image Management"
-msgstr "Installation and Image Management"
+msgstr "Встановлення та керування зображеннями"
 
 #: ../../installation/install.rst:597
 msgid "Installation can then continue as outlined above."
-msgstr "Installation can then continue as outlined above."
+msgstr "Після цього встановлення можна продовжити, як зазначено вище."
 
 #: ../../installation/vyos-on-baremetal.rst:224
 msgid "Installing the rolling release on an APU2 board does not require any change on the serial console from your host side as :vytask:`T1327` was successfully implemented."
-msgstr "Installing the rolling release on an APU2 board does not require any change on the serial console from your host side as :vytask:`T1327` was successfully implemented."
+msgstr "Встановлення поточного випуску на платі APU2 не потребує жодних змін на послідовній консолі з боку вашого хоста, оскільки :vytask:`T1327` було успішно реалізовано."
 
 #: ../../installation/vyos-on-baremetal.rst:118
 msgid "Intel Corporation AX200 mini-PCIe WiFi module, only supported in mPCIe slot 1. (see :ref:`wireless-interface-intel-ax200`)"
-msgstr "Intel Corporation AX200 mini-PCIe WiFi module, only supported in mPCIe slot 1. (see :ref:`wireless-interface-intel-ax200`)"
+msgstr "Модуль WiFi mini-PCIe Intel Corporation AX200, підтримується лише в гнізді 1 mPCIe. (див. :ref:`wireless-interface-intel-ax200`)"
 
 #: ../../installation/install.rst:15
 msgid "Intended Use"
-msgstr "Intended Use"
+msgstr "Передбачуване використання"
 
 #: ../../installation/install.rst:29
 msgid "Irregularly until EPA comes out"
-msgstr "Irregularly until EPA comes out"
+msgstr "Нерегулярно, поки не вийде EPA"
 
 #: ../../installation/install.rst:33
 msgid "Irregularly until LTS comes out"
-msgstr "Irregularly until LTS comes out"
+msgstr "Нерегулярно, поки не вийде LTS"
 
 #: ../../installation/install.rst:110
 msgid "It can be retrieved directly from a key server:"
-msgstr "It can be retrieved directly from a key server:"
+msgstr "Його можна отримати безпосередньо з сервера ключів:"
 
 #: ../../installation/virtual/vmware.rst:31
 msgid "It is advised that VyOS routers are configured in a resource group with adequate memory reservations so that ballooning is not inflicted on virtual VyOS guests."
-msgstr "It is advised that VyOS routers are configured in a resource group with adequate memory reservations so that ballooning is not inflicted on virtual VyOS guests."
+msgstr "Рекомендується, щоб маршрутизатори VyOS були налаштовані в групі ресурсів з достатнім резервуванням пам’яті, щоб віртуальні гостьові системи VyOS не зазнавали посилення."
 
 #: ../../installation/install.rst:235
 msgid "Its installed size (complete with libsodium) is less than that of GPG binary alone (not including libgcrypt and some other libs, which I think we only use for GPG). Since it uses elliptic curves, it gets away with much smaller keys, and it doesn't include as much metadata to begin with."
-msgstr "Its installed size (complete with libsodium) is less than that of GPG binary alone (not including libgcrypt and some other libs, which I think we only use for GPG). Since it uses elliptic curves, it gets away with much smaller keys, and it doesn't include as much metadata to begin with."
+msgstr "Його встановлений розмір (разом із libsodium) менший, ніж розмір двійкового файлу GPG (не враховуючи libgcrypt та деякі інші бібліотеки, які, я думаю, ми використовуємо лише для GPG). Оскільки він використовує еліптичні криві, він обходиться набагато меншими ключами, і він не містить так багато метаданих."
 
 #: ../../installation/install.rst:578
 msgid "Known Issues"
-msgstr "Known Issues"
+msgstr "відомі проблеми"
 
 #: ../../installation/install.rst:92
 msgid "LTS images are signed by the VyOS lead package-maintainer private key. With the official public key, the authenticity of the package can be verified. :abbr:`GPG (GNU Privacy Guard)` is used for verification."
-msgstr "LTS images are signed by the VyOS lead package-maintainer private key. With the official public key, the authenticity of the package can be verified. :abbr:`GPG (GNU Privacy Guard)` is used for verification."
+msgstr "Зображення LTS підписуються приватним ключем головного пакета супроводжувача VyOS. За допомогою офіційного відкритого ключа можна перевірити справжність пакета. :abbr:`GPG (GNU Privacy Guard)` використовується для перевірки."
 
 #: ../../installation/install.rst:29
 msgid "Labs, small offices and non-critical production systems backed by a high-availability setup."
-msgstr "Labs, small offices and non-critical production systems backed by a high-availability setup."
+msgstr "Лабораторії, невеликі офіси та некритичні виробничі системи з високою надійністю."
 
 #: ../../installation/install.rst:37
 msgid "Large-scale enterprise networks, internet service providers, critical production environments that call for minimum downtime."
-msgstr "Large-scale enterprise networks, internet service providers, critical production environments that call for minimum downtime."
+msgstr "Великі корпоративні мережі, постачальники послуг Інтернету, критичні виробничі середовища, які вимагають мінімального простою."
 
 #: ../../installation/vyos-on-baremetal.rst:32
 msgid "Latest VyOS rolling releases boot without any problem on this board. You also receive a nice IPMI interface realized with an ASPEED AST2400 BMC (no information about `OpenBMC <https://www.openbmc.org/>`_ so far on this motherboard)."
-msgstr "Latest VyOS rolling releases boot without any problem on this board. You also receive a nice IPMI interface realized with an ASPEED AST2400 BMC (no information about `OpenBMC <https://www.openbmc.org/>`_ so far on this motherboard)."
+msgstr "Останні випуски VyOS без проблем завантажуються на цій платі. Ви також отримуєте гарний інтерфейс IPMI, реалізований за допомогою ASPEED AST2400 BMC (немає інформації про OpenBMC<https://www.openbmc.org/> `_ поки що на цій материнській платі)."
 
 #: ../../installation/virtual/libvirt.rst:7
 msgid "Libvirt is an open-source API, daemon and management tool for managing platform virtualization. There are several ways to deploy VyOS on libvirt kvm. Use Virt-manager and native CLI. In an example we will be use use 4 gigabytes of memory, 2 cores CPU and default network virbr0."
-msgstr "Libvirt is an open-source API, daemon and management tool for managing platform virtualization. There are several ways to deploy VyOS on libvirt kvm. Use Virt-manager and native CLI. In an example we will be use use 4 gigabytes of memory, 2 cores CPU and default network virbr0."
+msgstr "Libvirt — це API з відкритим кодом, демон і інструмент керування для керування віртуалізацією платформи. Є кілька способів розгорнути VyOS на libvirt kvm. Використовуйте Virt-manager і нативний CLI. У прикладі ми будемо використовувати 4 гігабайти пам’яті, 2 ядра ЦП і мережу за замовчуванням virbr0."
 
 #: ../../installation/image.rst:33
 msgid "List all available system images which can be booted on the current system."
-msgstr "List all available system images which can be booted on the current system."
+msgstr "Список усіх доступних системних образів, які можна завантажити в поточній системі."
 
 #: ../../installation/install.rst:267
 msgid "Live installation"
-msgstr "Live installation"
+msgstr "Жива установка"
 
 #: ../../installation/install.rst:356
 msgid "Log into the VyOS live system (use the default credentials: vyos, vyos)"
-msgstr "Log into the VyOS live system (use the default credentials: vyos, vyos)"
+msgstr "Увійдіть у живу систему VyOS (використовуйте облікові дані за замовчуванням: vyos, vyos)"
 
 #: ../../installation/install.rst:558
 msgid "Make sure the available directories and files in both TFTP and HTTP server have the right permissions to be accessed from the booting clients."
-msgstr "Make sure the available directories and files in both TFTP and HTTP server have the right permissions to be accessed from the booting clients."
+msgstr "Переконайтеся, що доступні каталоги та файли як на сервері TFTP, так і на HTTP-сервері мають відповідні дозволи для доступу із завантажувальних клієнтів."
 
 #: ../../installation/virtual/vmware.rst:18
 msgid "Memory Contention Considerations"
-msgstr "Memory Contention Considerations"
+msgstr "Розгляд пам’яті"
 
 #: ../../installation/virtual/docker.rst:20
 msgid "Method 1: Create a docker network with IPv6 support"
-msgstr "Method 1: Create a docker network with IPv6 support"
+msgstr "Спосіб 1. Створіть мережу докерів із підтримкою IPv6"
 
 #: ../../installation/virtual/docker.rst:29
 msgid "Method 2: Add IPv6 support to the docker daemon"
-msgstr "Method 2: Add IPv6 support to the docker daemon"
+msgstr "Спосіб 2. Додайте підтримку IPv6 до демона докерів"
 
 #: ../../installation/migrate-from-vyatta.rst:4
 msgid "Migrate from Vyatta Core"
-msgstr "Migrate from Vyatta Core"
+msgstr "Перехід із Vyatta Core"
 
 #: ../../installation/install.rst:214
 msgid "Minisign verification"
-msgstr "Minisign verification"
+msgstr "Перевірка мінізнаку"
 
 #: ../../installation/virtual/libvirt.rst:148
 #: ../../installation/virtual/libvirt.rst:184
 msgid "Name of VM and network selection"
-msgstr "Name of VM and network selection"
+msgstr "Назва віртуальної машини та вибір мережі"
 
 #: ../../installation/update.rst:6
 msgid "New system images can be added using the :opcmd:`add system image` command. The command will extract the chosen image and will prompt you to use the current system configuration and SSH security keys, allowing for the new image to boot using the current configuration."
-msgstr "New system images can be added using the :opcmd:`add system image` command. The command will extract the chosen image and will prompt you to use the current system configuration and SSH security keys, allowing for the new image to boot using the current configuration."
+msgstr "Нові образи системи можна додати за допомогою команди :opcmd:`add system image`. Ця команда витягне вибраний образ і запропонує використати поточну конфігурацію системи та ключі безпеки SSH, що дозволить завантажувати новий образ із використанням поточної конфігурації."
 
 #: ../../installation/migrate-from-vyatta.rst:99
 msgid "Next add the VyOS image."
-msgstr "Next add the VyOS image."
+msgstr "Далі додайте образ VyOS."
 
 #: ../../installation/install.rst:33
 msgid "Non-critical production environments, preparing for the LTS release."
-msgstr "Non-critical production environments, preparing for the LTS release."
+msgstr "Некритичні робочі середовища, підготовка до випуску LTS."
 
 #: ../../installation/install.rst:68
 msgid "Non-subscribers can always get the LTS release by building it from source. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available for everyone at https://github.com/vyos/vyos-build."
-msgstr "Non-subscribers can always get the LTS release by building it from source. Instructions can be found in the :ref:`build` section of this manual. VyOS source code repository is available for everyone at https://github.com/vyos/vyos-build."
+msgstr "Користувачі, які не передплатили, завжди можуть отримати випуск LTS, зібравши його з джерела. Інструкції можна знайти в розділі :ref:`build` цього посібника. Репозиторій вихідного коду VyOS доступний для всіх за адресою https://github.com/vyos/vyos-build."
 
 #: ../../installation/vyos-on-baremetal.rst:166
 msgid "Now boot from the ``USB MSC Drive Generic Flash Disk 8.07`` media by pressing ``2``, the VyOS boot menu will appear, just wait 10 seconds or press ``Enter`` to continue."
-msgstr "Now boot from the ``USB MSC Drive Generic Flash Disk 8.07`` media by pressing ``2``, the VyOS boot menu will appear, just wait 10 seconds or press ``Enter`` to continue."
+msgstr "Тепер завантажтеся з носія ``USB MSC Drive Generic Flash Disk 8.07``, натиснувши ``2``, з’явиться меню завантаження VyOS, просто зачекайте 10 секунд або натисніть ``Enter``, щоб продовжити."
 
 #: ../../installation/virtual/gns3.rst:78
 msgid "Now the VM settings have to be edited."
-msgstr "Now the VM settings have to be edited."
+msgstr "Тепер потрібно відредагувати налаштування віртуальної машини."
 
 #: ../../installation/install.rst:347
 msgid "Older versions (prior to VyOS 1.1) used to support non-image installation (``install system`` command). Support for this has been removed from VyOS 1.2 and newer releases. Older releases can still be upgraded via the general ``add system image <image_path>`` upgrade command (consult :ref:`image-mgmt` for further information)."
-msgstr "Older versions (prior to VyOS 1.1) used to support non-image installation (``install system`` command). Support for this has been removed from VyOS 1.2 and newer releases. Older releases can still be upgraded via the general ``add system image <image_path>`` upgrade command (consult :ref:`image-mgmt` for further information)."
+msgstr "Старіші версії (до VyOS 1.1) використовувалися для підтримки інсталяції без образу (команда ``install system``). Підтримку цього було видалено з VyOS 1.2 і новіших випусків. Старіші випуски все ще можна оновити за допомогою загального ``додавання системного образу<image_path> `` команда оновлення (зверніться до :ref:`image-mgmt` для отримання додаткової інформації)."
 
 #: ../../installation/cloud/gcp.rst:35
 msgid "On marketplace search \"VyOS\""
-msgstr "On marketplace search \"VyOS\""
+msgstr "На торговому майданчику шукайте &quot;VyOS&quot;"
 
 #: ../../installation/cloud/aws.rst:14
 msgid "On the marketplace search \"VyOS\""
-msgstr "On the marketplace search \"VyOS\""
+msgstr "На маркетплейсі шукайте &quot;VyOS&quot;"
 
 #: ../../installation/cloud/azure.rst:17
 msgid "On the marketplace search ``VyOS`` and choose the appropriate subscription"
-msgstr "On the marketplace search ``VyOS`` and choose the appropriate subscription"
+msgstr "На ринку знайдіть ``VyOS`` і виберіть відповідну підписку"
 
 #: ../../installation/install.rst:315
 msgid "Once VyOS is completely loaded, enter the default credentials (login: vyos, password: vyos)."
-msgstr "Once VyOS is completely loaded, enter the default credentials (login: vyos, password: vyos)."
+msgstr "Після повного завантаження VyOS введіть облікові дані за замовчуванням (логін: vyos, пароль: vyos)."
 
 #: ../../installation/install.rst:309
 msgid "Once ``dd`` has finished, pull the USB drive out and plug it into the powered-off computer where you want to install (or test) VyOS."
-msgstr "Once ``dd`` has finished, pull the USB drive out and plug it into the powered-off computer where you want to install (or test) VyOS."
+msgstr "Після завершення ``dd`` витягніть USB-накопичувач і підключіть його до вимкненого комп’ютера, на якому ви хочете встановити (або протестувати) VyOS."
 
 #: ../../installation/virtual/proxmox.rst:46
 msgid "Once booted into the live system, type ``install image`` into the command line and follow the prompts to install VyOS to the virtual drive."
-msgstr "Once booted into the live system, type ``install image`` into the command line and follow the prompts to install VyOS to the virtual drive."
+msgstr "Після завантаження живої системи введіть ``install image`` у командному рядку та дотримуйтесь підказок, щоб установити VyOS на віртуальний диск."
 
 #: ../../installation/install.rst:572
 msgid "Once finished you will be able to proceed with the ``install image`` command as in a regular VyOS installation."
-msgstr "Once finished you will be able to proceed with the ``install image`` command as in a regular VyOS installation."
+msgstr "Після завершення ви зможете продовжити команду ``install image``, як у звичайній установці VyOS."
 
 #: ../../installation/vyos-on-baremetal.rst:211
 msgid "Once you ``commit`` the above changes access to the serial interface is lost until you set your terminal emulator to 115200 8N1 again."
-msgstr "Once you ``commit`` the above changes access to the serial interface is lost until you set your terminal emulator to 115200 8N1 again."
+msgstr "Після ``здійснення`` вищезазначених змін доступ до послідовного інтерфейсу буде втрачено, доки ви знову не встановите емулятор терміналу на 115200 8N1."
 
 #: ../../installation/update.rst:11
 msgid "Only LTS releases are PGP-signed."
-msgstr "Only LTS releases are PGP-signed."
+msgstr "Лише випуски LTS мають підпис PGP."
 
 #: ../../installation/cloud/gcp.rst:24
 msgid "Open GCP console and navigate to the menu **Metadata**. Choose **SSH Keys** and click ``edit``."
-msgstr "Open GCP console and navigate to the menu **Metadata**. Choose **SSH Keys** and click ``edit``."
+msgstr "Відкрийте консоль GCP і перейдіть до меню **Метадані**. Виберіть **Ключі SSH** і натисніть ``редагувати``."
 
 #: ../../installation/virtual/libvirt.rst:129
 #: ../../installation/virtual/libvirt.rst:168
 msgid "Open :abbr:`VMM (Virtual Machine Manager)` and Create a new :abbr:`VM (Virtual Machine)`"
-msgstr "Open :abbr:`VMM (Virtual Machine Manager)` and Create a new :abbr:`VM (Virtual Machine)`"
+msgstr "Відкрийте :abbr:`VMM (Virtual Machine Manager)` і створіть нову :abbr:`VM (Virtual Machine)`"
 
 #: ../../installation/virtual/gns3.rst:133
 msgid "Open a console. The console should show the system booting. It will ask for the login credentials, you are at the VyOS live system."
-msgstr "Open a console. The console should show the system booting. It will ask for the login credentials, you are at the VyOS live system."
+msgstr "Відкрийте консоль. На консолі повинно відображатися завантаження системи. Він запитає облікові дані для входу, ви перебуваєте в живій системі VyOS."
 
 #: ../../installation/virtual/libvirt.rst:107
 msgid "Open a secondary/parallel session and use this command to reboot the VM:"
@@ -1159,80 +1167,80 @@ msgstr "Open a secondary/parallel session and use this command to reboot the VM:
 
 #: ../../installation/install.rst:283
 msgid "Open your terminal emulator."
-msgstr "Open your terminal emulator."
+msgstr "Відкрийте емулятор терміналу."
 
 #: ../../installation/vyos-on-baremetal.rst:25
 msgid "Optional (10GE)"
-msgstr "Optional (10GE)"
+msgstr "Додатково (10GE)"
 
 #: ../../installation/virtual/proxmox.rst:24
 msgid "Optionally, the user can attach a CDROM with an ISO as a cloud-init data source. The below command assumes the ISO has been uploaded to the `local` storage pool with the name `seed.iso`."
-msgstr "Optionally, the user can attach a CDROM with an ISO as a cloud-init data source. The below command assumes the ISO has been uploaded to the `local` storage pool with the name `seed.iso`."
+msgstr "За бажанням користувач може приєднати компакт-диск із ISO як джерело даних хмарної ініціалізації. Команда нижче припускає, що ISO було завантажено в `локальний` пул зберігання з назвою `seed.iso`."
 
 #: ../../installation/install.rst:118
 msgid "Or from the following block:"
-msgstr "Or from the following block:"
+msgstr "Або з наступного блоку:"
 
 #: ../../installation/install.rst:114
 msgid "Or it can be accessed via a web browser:"
-msgstr "Or it can be accessed via a web browser:"
+msgstr "Або доступ до нього можна отримати через веб-браузер:"
 
 #: ../../installation/cloud/oracel.rst:3
 msgid "Oracle"
-msgstr "Oracle"
+msgstr "Оракул"
 
 #: ../../installation/vyos-on-baremetal.rst:80
 msgid "PC Engines APU4"
-msgstr "PC Engines APU4"
+msgstr "Двигуни ПК APU4"
 
 #: ../../installation/install.rst:427
 msgid "PXE Boot"
-msgstr "PXE Boot"
+msgstr "Завантаження PXE"
 
 #: ../../installation/vyos-on-baremetal.rst:342
 msgid "Partaker i5"
-msgstr "Partaker i5"
+msgstr "Партнер i5"
 
 #: ../../installation/install.rst:332
 msgid "Permanent installation"
-msgstr "Permanent installation"
+msgstr "Стаціонарна установка"
 
 #: ../../installation/vyos-on-baremetal.rst:38
 #: ../../installation/vyos-on-baremetal.rst:234
 msgid "Pictures"
-msgstr "Pictures"
+msgstr "Картинки"
 
 #: ../../installation/vyos-on-baremetal.rst:355
 msgid "Plug in VGA, power, USB keyboard, and USB drive"
-msgstr "Plug in VGA, power, USB keyboard, and USB drive"
+msgstr "Підключіть VGA, живлення, USB-клавіатуру та USB-накопичувач"
 
 #: ../../installation/install.rst:218
 msgid "Popularity of GPG for release signing comes from the fact that many people already had it installed for email encryption/signing. Inside a VyOS image, signature checking is the only reason to have it installed. However, it still comes with all the features no one needs, such as support for multiple outdated cipher suits and ability to embed a photo in the key file. More importantly, web of trust, the basic premise of PGP, is never used in release signing context. Once you have a knowingly authentic image, authenticity of upgrades is checked using a key that comes in the image, and to get their first image people never rely on keyservers either."
-msgstr "Popularity of GPG for release signing comes from the fact that many people already had it installed for email encryption/signing. Inside a VyOS image, signature checking is the only reason to have it installed. However, it still comes with all the features no one needs, such as support for multiple outdated cipher suits and ability to embed a photo in the key file. More importantly, web of trust, the basic premise of PGP, is never used in release signing context. Once you have a knowingly authentic image, authenticity of upgrades is checked using a key that comes in the image, and to get their first image people never rely on keyservers either."
+msgstr "Популярність GPG для підписання випусків пояснюється тим, що багато людей уже встановили його для шифрування/підпису електронної пошти. Усередині образу VyOS перевірка підпису є єдиною причиною його встановлення. Однак він все ще має всі функції, які нікому не потрібні, наприклад підтримку кількох застарілих шифрів і можливість вставляти фотографію у файл ключа. Що ще важливіше, мережа довіри, основна передумова PGP, ніколи не використовується в контексті підписання випуску. Якщо у вас є завідомо автентичне зображення, автентичність оновлень перевіряється за допомогою ключа, який міститься в образі, і щоб отримати своє перше зображення, люди також ніколи не покладаються на сервери ключів."
 
 #: ../../installation/vyos-on-baremetal.rst:324
 msgid "Power supply is a 12VDC barrel jack, and included switching power supply, which is why SATA power regulation is on-board. Internally it has a NUC-board-style on-board 12V input header as well, the molex locking style."
-msgstr "Power supply is a 12VDC barrel jack, and included switching power supply, which is why SATA power regulation is on-board. Internally it has a NUC-board-style on-board 12V input header as well, the molex locking style."
+msgstr "Джерело живлення — це гніздо 12 В постійного струму, а також включений імпульсний блок живлення, тому регулювання живлення SATA є вбудованим. Внутрішньо він також має вбудований вхідний роз’єм 12 В у стилі плати NUC, стиль блокування molex."
 
 #: ../../installation/install.rst:312
 msgid "Power the computer on, making sure it boots from the USB drive (you might need to select booting device or change booting settings)."
-msgstr "Power the computer on, making sure it boots from the USB drive (you might need to select booting device or change booting settings)."
+msgstr "Увімкніть комп’ютер, переконавшись, що він завантажується з USB-накопичувача (може знадобитися вибрати завантажувальний пристрій або змінити параметри завантаження)."
 
 #: ../../installation/virtual/proxmox.rst:38
 msgid "Prepare VM for installation from ISO media. The commands below assume that your iso is available in a storage pool 'local', that you want it to have a VM ID '200' and want to create a new disk on storage pool 'local-lvm' of size 15GB."
-msgstr "Prepare VM for installation from ISO media. The commands below assume that your iso is available in a storage pool 'local', that you want it to have a VM ID '200' and want to create a new disk on storage pool 'local-lvm' of size 15GB."
+msgstr "Підготуйте віртуальну машину до встановлення з носія ISO. Наведені нижче команди припускають, що ваш iso доступний у пулі сховищ «local», що ви хочете, щоб він мав ідентифікатор віртуальної машини «200» і хочете створити новий диск у пулі сховищ «local-lvm» розміром 15 ГБ."
 
 #: ../../installation/install.rst:100
 msgid "Preparing for the verification"
-msgstr "Preparing for the verification"
+msgstr "Підготовка до перевірки"
 
 #: ../../installation/vyos-on-baremetal.rst:356
 msgid "Press \"SW\" button on the front (this is the power button; I don't know what \"SW\" is supposed to mean)."
-msgstr "Press \"SW\" button on the front (this is the power button; I don't know what \"SW\" is supposed to mean)."
+msgstr "Натисніть кнопку «SW» на передній панелі (це кнопка живлення; я не знаю, що означає «SW»)."
 
 #: ../../installation/virtual/proxmox.rst:7
 msgid "Proxmox is an open-source platform for virtualization. Please visit https://vyos.io to see how to get a qcow2 image that can be imported into Proxmox."
-msgstr "Proxmox is an open-source platform for virtualization. Please visit https://vyos.io to see how to get a qcow2 image that can be imported into Proxmox."
+msgstr "Proxmox — це платформа віртуалізації з відкритим кодом. Відвідайте https://vyos.io, щоб дізнатися, як отримати зображення qcow2, яке можна імпортувати в Proxmox."
 
 #: ../../installation/vyos-on-baremetal.rst:291
 msgid "Qotom Q355G4"
@@ -1240,31 +1248,31 @@ msgstr "Qotom Q355G4"
 
 #: ../../installation/vyos-on-baremetal.rst:240
 msgid "Rack Mount"
-msgstr "Rack Mount"
+msgstr "Монтаж в стійку"
 
 #: ../../installation/install.rst:29
 msgid "Rather stable. All development focuses on testing and hunting down remaining bugs following the feature freeze."
-msgstr "Rather stable. All development focuses on testing and hunting down remaining bugs following the feature freeze."
+msgstr "Досить стабільний. Уся розробка зосереджена на тестуванні та пошуку помилок, що залишилися після заморожування функції."
 
 #: ../../installation/vyos-on-baremetal.rst:404
 msgid "Reboot into BIOS, Chipset > South Bridge > USB Configuration:"
-msgstr "Reboot into BIOS, Chipset > South Bridge > USB Configuration:"
+msgstr "Перезавантажте BIOS, Chipset &gt; South Bridge &gt; USB Configuration:"
 
 #: ../../installation/install.rst:416
 msgid "Reboot the system."
-msgstr "Reboot the system."
+msgstr "Перезавантажте систему."
 
 #: ../../installation/virtual/proxmox.rst:48
 msgid "Reboot the virtual machine using the GUI or ``qm reboot 200``."
-msgstr "Reboot the virtual machine using the GUI or ``qm reboot 200``."
+msgstr "Перезавантажте віртуальну машину за допомогою GUI або ``qm reboot 200``."
 
 #: ../../installation/vyos-on-baremetal.rst:114
 msgid "Refer to :ref:`wireless-interface` for additional information, below listed modules have been tested successfully on this Hardware platform:"
-msgstr "Refer to :ref:`wireless-interface` for additional information, below listed modules have been tested successfully on this Hardware platform:"
+msgstr "Зверніться до :ref:`wireless-interface` для отримання додаткової інформації, наведені нижче модулі були успішно протестовані на цій апаратній платформі:"
 
 #: ../../installation/vyos-on-baremetal.rst:124
 msgid "Refer to :ref:`wwan-interface` for additional information, below listed modules have been tested successfully on this Hardware platform using VyOS 1.3 (equuleus):"
-msgstr "Refer to :ref:`wwan-interface` for additional information, below listed modules have been tested successfully on this Hardware platform using VyOS 1.3 (equuleus):"
+msgstr "Зверніться до :ref:`wwan-interface` для отримання додаткової інформації, наведені нижче модулі були успішно протестовані на цій апаратній платформі за допомогою VyOS 1.3 (equuleus):"
 
 #: ../../installation/cloud/aws.rst:99
 #: ../../installation/cloud/azure.rst:71
@@ -1273,35 +1281,39 @@ msgstr "Refer to :ref:`wwan-interface` for additional information, below listed 
 #: ../../installation/virtual/eve-ng.rst:6
 #: ../../installation/virtual/vmware.rst:40
 msgid "References"
-msgstr "References"
+msgstr "Список літератури"
 
 #: ../../installation/install.rst:55
 msgid "Registered Subscribers"
-msgstr "Registered Subscribers"
+msgstr "Зареєстровані передплатники"
 
 #: ../../installation/install.rst:57
 msgid "Registered subscribers can log into https://support.vyos.io/ to access a variety of different downloads via the \"Downloads\" link. These downloads include LTS (Long-Term Support), the associated hot-fix releases, early public access releases, pre-built VM images, as well as device specific installation ISOs."
-msgstr "Registered subscribers can log into https://support.vyos.io/ to access a variety of different downloads via the \"Downloads\" link. These downloads include LTS (Long-Term Support), the associated hot-fix releases, early public access releases, pre-built VM images, as well as device specific installation ISOs."
+msgstr "Зареєстровані передплатники можуть увійти на сторінку https://support.vyos.io/, щоб отримати доступ до різноманітних завантажень за посиланням «Завантаження». Ці завантаження включають LTS (довгострокову підтримку), пов’язані випуски гарячих виправлень, ранні випуски для загального доступу, попередньо зібрані образи віртуальних машин, а також ISO для встановлення для окремих пристроїв."
 
 #: ../../installation/install.rst:15
 msgid "Release Cycle"
-msgstr "Release Cycle"
+msgstr "Цикл випуску"
 
 #: ../../installation/install.rst:15
 msgid "Release Type"
-msgstr "Release Type"
+msgstr "Тип випуску"
 
 #: ../../installation/virtual/docker.rst:41
 msgid "Reload the docker configuration."
-msgstr "Reload the docker configuration."
+msgstr "Перезавантажте конфігурацію докера."
 
 #: ../../installation/virtual/gns3.rst:15
 msgid "Requirements"
-msgstr "Requirements"
+msgstr "вимоги"
 
 #: ../../installation/cloud/aws.rst:69
 msgid "Retreive an existing CloudWatch Agent configuration from the :abbr:`SSM (Systems Manager)` Parameter Store."
-msgstr "Retreive an existing CloudWatch Agent configuration from the :abbr:`SSM (Systems Manager)` Parameter Store."
+msgstr "Отримайте наявну конфігурацію CloudWatch Agent із сховища параметрів :abbr:`SSM (Systems Manager)`."
+
+#: ../../installation/cloud/aws.rst:69
+msgid "Retrieve an existing CloudWatch Agent configuration from the :abbr:`SSM (Systems Manager)` Parameter Store."
+msgstr "Retrieve an existing CloudWatch Agent configuration from the :abbr:`SSM (Systems Manager)` Parameter Store."
 
 #: ../../installation/install.rst:74
 msgid "Rolling Release"
@@ -1309,140 +1321,140 @@ msgstr "Rolling Release"
 
 #: ../../installation/install.rst:79
 msgid "Rolling releases contain all the latest enhancements and fixes. This means that there will be new bugs of course. If you think you hit a bug please follow the guide at :ref:`bug_report`. We depend on your feedback to improve VyOS!"
-msgstr "Rolling releases contain all the latest enhancements and fixes. This means that there will be new bugs of course. If you think you hit a bug please follow the guide at :ref:`bug_report`. We depend on your feedback to improve VyOS!"
+msgstr "Поточні випуски містять усі останні вдосконалення та виправлення. Це означає, що, звичайно, будуть нові помилки. Якщо ви вважаєте, що у вас виникла помилка, будь ласка, дотримуйтеся посібника за адресою :ref:`bug_report`. Ми покладаємося на ваш відгук, щоб покращити VyOS!"
 
 #: ../../installation/cloud/aws.rst:90
 msgid "Run Cloudwatch configuration wizard."
-msgstr "Run Cloudwatch configuration wizard."
+msgstr "Запустіть майстер налаштування Cloudwatch."
 
 #: ../../installation/install.rst:359
 msgid "Run the ``install image`` command and follow the wizard:"
-msgstr "Run the ``install image`` command and follow the wizard:"
+msgstr "Виконайте команду ``install image`` і дотримуйтеся вказівок майстра:"
 
 #: ../../installation/cloud/index.rst:3
 msgid "Running VyOS in Cloud Environments"
-msgstr "Running VyOS in Cloud Environments"
+msgstr "Запуск VyOS у хмарних середовищах"
 
 #: ../../installation/virtual/index.rst:3
 msgid "Running VyOS in Virtual Environments"
-msgstr "Running VyOS in Virtual Environments"
+msgstr "Запуск VyOS у віртуальних середовищах"
 
 #: ../../installation/virtual/docker.rst:5
 msgid "Running in Docker Container"
-msgstr "Running in Docker Container"
+msgstr "Запуск у контейнері Docker"
 
 #: ../../installation/vyos-on-baremetal.rst:5
 msgid "Running on Bare Metal"
-msgstr "Running on Bare Metal"
+msgstr "Працює на Bare Metal"
 
 #: ../../installation/virtual/gns3.rst:5
 msgid "Running on GNS3"
-msgstr "Running on GNS3"
+msgstr "Працює на GNS3"
 
 #: ../../installation/virtual/libvirt.rst:5
 msgid "Running on Libvirt Qemu/KVM"
-msgstr "Running on Libvirt Qemu/KVM"
+msgstr "Працює на Libvirt Qemu/KVM"
 
 #: ../../installation/virtual/proxmox.rst:5
 msgid "Running on Proxmox"
-msgstr "Running on Proxmox"
+msgstr "Працює на Proxmox"
 
 #: ../../installation/virtual/vmware.rst:4
 msgid "Running on VMware ESXi"
-msgstr "Running on VMware ESXi"
+msgstr "Працює на VMware ESXi"
 
 #: ../../installation/vyos-on-baremetal.rst:399
 msgid "Save, reboot and change serial speed to 9600 on your client."
-msgstr "Save, reboot and change serial speed to 9600 on your client."
+msgstr "Збережіть, перезавантажте та змініть послідовну швидкість на 9600 на вашому клієнті."
 
 #: ../../installation/virtual/gns3.rst:55
 msgid "Select **New image** for the base disk image of your VM and click ``Create``."
-msgstr "Select **New image** for the base disk image of your VM and click ``Create``."
+msgstr "Виберіть **Новий образ** для базового образу диска вашої віртуальної машини та натисніть ``Створити``."
 
 #: ../../installation/virtual/gns3.rst:38
 msgid "Select **Quemu VMs** and then click on the ``New`` button."
-msgstr "Select **Quemu VMs** and then click on the ``New`` button."
+msgstr "Виберіть **Quemu VMs**, а потім натисніть кнопку ``Новий``."
 
 #: ../../installation/virtual/gns3.rst:46
 msgid "Select **qemu-system-x86_64** as Quemu binary, then **512MB** of RAM and click ``Next``."
-msgstr "Select **qemu-system-x86_64** as Quemu binary, then **512MB** of RAM and click ``Next``."
+msgstr "Виберіть **qemu-system-x86_64** як двійковий файл Quemu, потім **512 МБ** оперативної пам’яті та натисніть ``Далі``."
 
 #: ../../installation/virtual/gns3.rst:51
 msgid "Select **telnet** as your console type and click ``Next``."
-msgstr "Select **telnet** as your console type and click ``Next``."
+msgstr "Виберіть **telnet** як тип консолі та натисніть ``Далі``."
 
 #: ../../installation/cloud/aws.rst:37
 msgid "Select SSH key pair and click ``Launch Instances``"
-msgstr "Select SSH key pair and click ``Launch Instances``"
+msgstr "Виберіть пару ключів SSH і натисніть ``Запустити екземпляри``"
 
 #: ../../installation/image.rst:105
 msgid "Select the default boot image which will be started on the next boot of the system."
-msgstr "Select the default boot image which will be started on the next boot of the system."
+msgstr "Виберіть стандартний завантажувальний образ, який буде запущено під час наступного завантаження системи."
 
 #: ../../installation/cloud/azure.rst:66
 msgid "Serial Console"
-msgstr "Serial Console"
+msgstr "Послідовна консоль"
 
 #: ../../installation/virtual/gns3.rst:91
 msgid "Set the **Boot priority** to **CD/DVD-ROM**."
-msgstr "Set the **Boot priority** to **CD/DVD-ROM**."
+msgstr "Установіть **Пріоритет завантаження** на **CD/DVD-ROM**."
 
 #: ../../installation/virtual/gns3.rst:69
 msgid "Set the disk size to 2000 MiB, and click ``Finish`` to end the **Quemu image creator**."
-msgstr "Set the disk size to 2000 MiB, and click ``Finish`` to end the **Quemu image creator**."
+msgstr "Встановіть розмір диска на 2000 МБ і натисніть ``Готово``, щоб завершити роботу **Quemu image creator**."
 
 #: ../../installation/virtual/gns3.rst:165
 msgid "Set the number of required network adapters, for example **4**."
-msgstr "Set the number of required network adapters, for example **4**."
+msgstr "Встановіть кількість необхідних мережевих адаптерів, наприклад **4**."
 
 #: ../../installation/vyos-on-baremetal.rst:14
 #: ../../installation/vyos-on-baremetal.rst:99
 msgid "Shopping Cart"
-msgstr "Shopping Cart"
+msgstr "Магазинний візок"
 
 #: ../../installation/image.rst:70
 msgid "Show current system image version."
-msgstr "Show current system image version."
+msgstr "Показати поточну версію образу системи."
 
 #: ../../installation/vyos-on-baremetal.rst:128
 msgid "Sierra Wireless AirPrime MC7304 miniPCIe card (LTE)"
-msgstr "Sierra Wireless AirPrime MC7304 miniPCIe card (LTE)"
+msgstr "Карта Sierra Wireless AirPrime MC7304 miniPCIe (LTE)"
 
 #: ../../installation/vyos-on-baremetal.rst:129
 msgid "Sierra Wireless AirPrime MC7430 miniPCIe card (LTE)"
-msgstr "Sierra Wireless AirPrime MC7430 miniPCIe card (LTE)"
+msgstr "Карта Sierra Wireless AirPrime MC7430 miniPCIe (LTE)"
 
 #: ../../installation/vyos-on-baremetal.rst:130
 msgid "Sierra Wireless AirPrime MC7455 miniPCIe card (LTE)"
-msgstr "Sierra Wireless AirPrime MC7455 miniPCIe card (LTE)"
+msgstr "Карта Sierra Wireless AirPrime MC7455 miniPCIe (LTE)"
 
 #: ../../installation/vyos-on-baremetal.rst:131
 msgid "Sierra Wireless AirPrime MC7710 miniPCIe card (LTE)"
-msgstr "Sierra Wireless AirPrime MC7710 miniPCIe card (LTE)"
+msgstr "Карта Sierra Wireless AirPrime MC7710 miniPCIe (LTE)"
 
 #: ../../installation/vyos-on-baremetal.rst:228
 msgid "Simply proceed with a regular image installation as described in :ref:`installation`."
-msgstr "Simply proceed with a regular image installation as described in :ref:`installation`."
+msgstr "Просто виконайте звичайне встановлення образу, як описано в :ref:`installation`."
 
 #: ../../installation/vyos-on-baremetal.rst:401
 msgid "Some options have to be changed for VyOS to boot correctly. With XHCI enabled the installer can’t access the USB key. Enable EHCI instead."
-msgstr "Some options have to be changed for VyOS to boot correctly. With XHCI enabled the installer can’t access the USB key. Enable EHCI instead."
+msgstr "Для правильного завантаження VyOS потрібно змінити деякі параметри. Якщо XHCI увімкнено, програма встановлення не може отримати доступ до USB-ключа. Натомість увімкніть EHCI."
 
 #: ../../installation/virtual/gns3.rst:7
 msgid "Sometimes you may want to test VyOS in a lab environment. `GNS3 <http://www.gns3.com>`__ is a network emulation software you might use for it."
-msgstr "Sometimes you may want to test VyOS in a lab environment. `GNS3 <http://www.gns3.com>`__ is a network emulation software you might use for it."
+msgstr "Іноді ви можете протестувати VyOS у лабораторному середовищі. `GNS3<http://www.gns3.com> `__ — це програмне забезпечення для емуляції мережі, яке можна використовувати для цього."
 
 #: ../../installation/virtual/gns3.rst:132
 msgid "Start the VM."
-msgstr "Start the VM."
+msgstr "Запустіть віртуальну машину."
 
 #: ../../installation/virtual/proxmox.rst:44
 msgid "Start the VM using the command ``qm start 200`` or using the start button located in the proxmox GUI."
-msgstr "Start the VM using the command ``qm start 200`` or using the start button located in the proxmox GUI."
+msgstr "Запустіть віртуальну машину за допомогою команди ``qm start 200`` або за допомогою кнопки запуску, розташованої в графічному інтерфейсі proxmox."
 
 #: ../../installation/virtual/proxmox.rst:30
 msgid "Start the virtual machine in the proxmox GUI or CLI using ``qm start 200``."
-msgstr "Start the virtual machine in the proxmox GUI or CLI using ``qm start 200``."
+msgstr "Запустіть віртуальну машину в графічному інтерфейсі proxmox або CLI за допомогою ``qm start 200``."
 
 #: ../../installation/virtual/libvirt.rst:100
 msgid "Stayed in this stage. This is because the KVM console is chosen as the default boot option."
@@ -1450,23 +1462,23 @@ msgstr "Stayed in this stage. This is because the KVM console is chosen as the d
 
 #: ../../installation/install.rst:446
 msgid "Step 1: DHCP"
-msgstr "Step 1: DHCP"
+msgstr "Крок 1: DHCP"
 
 #: ../../installation/install.rst:477
 msgid "Step 2: TFTP"
-msgstr "Step 2: TFTP"
+msgstr "Крок 2: TFTP"
 
 #: ../../installation/install.rst:534
 msgid "Step 3: HTTP"
-msgstr "Step 3: HTTP"
+msgstr "Крок 3: HTTP"
 
 #: ../../installation/install.rst:175
 msgid "Store the key in a new text file and import it into GPG via: ``gpg --import file_with_the_public_key``"
-msgstr "Store the key in a new text file and import it into GPG via: ``gpg --import file_with_the_public_key``"
+msgstr "Збережіть ключ у новому текстовому файлі та імпортуйте його до GPG за допомогою: ``gpg --import file_with_the_public_key``"
 
 #: ../../installation/install.rst:37
 msgid "Subscribers, contributors, non-profits, emergency services, academic institutions"
-msgstr "Subscribers, contributors, non-profits, emergency services, academic institutions"
+msgstr "Передплатники, дописувачі, некомерційні організації, екстрені служби, наукові установи"
 
 #: ../../installation/vyos-on-baremetal.rst:8
 msgid "Supermicro A2SDi (Atom C3000)"
@@ -1474,147 +1486,147 @@ msgstr "Supermicro A2SDi (Atom C3000)"
 
 #: ../../installation/image.rst:97
 msgid "System rollback"
-msgstr "System rollback"
+msgstr "Відкат системи"
 
 #: ../../installation/vyos-on-baremetal.rst:396
 msgid "Terminal Type : VT100+"
-msgstr "Terminal Type : VT100+"
+msgstr "Тип клеми: VT100+"
 
 #: ../../installation/virtual/gns3.rst:144
 msgid "The *VyOS-hda.qcow2* file now contains a working VyOS image and can be used as a template. But it still needs some fixes before we can deploy VyOS in our labs."
-msgstr "The *VyOS-hda.qcow2* file now contains a working VyOS image and can be used as a template. But it still needs some fixes before we can deploy VyOS in our labs."
+msgstr "Файл *VyOS-hda.qcow2* тепер містить робочий образ VyOS і може використовуватися як шаблон. Але все ще потребує деяких виправлень, перш ніж ми зможемо розгорнути VyOS у наших лабораторіях."
 
 #: ../../installation/install.rst:452
 msgid "The *bootfile name* (DHCP option 67), which is *pxelinux.0*"
-msgstr "The *bootfile name* (DHCP option 67), which is *pxelinux.0*"
+msgstr "*Назва завантажувального файлу* (параметр DHCP 67), тобто *pxelinux.0*"
 
 #: ../../installation/install.rst:482
 msgid "The *ldlinux.c32* file from the Syslinux distribution"
-msgstr "The *ldlinux.c32* file from the Syslinux distribution"
+msgstr "Файл *ldlinux.c32* із дистрибутива Syslinux"
 
 #: ../../installation/install.rst:481
 msgid "The *pxelinux.0* file from the Syslinux distribution"
-msgstr "The *pxelinux.0* file from the Syslinux distribution"
+msgstr "Файл *pxelinux.0* із дистрибутива Syslinux"
 
 #: ../../installation/vyos-on-baremetal.rst:105
 msgid "The 19\" enclosure can accommodate up to two APU4 boards - there is a single and dual front cover."
-msgstr "The 19\" enclosure can accommodate up to two APU4 boards - there is a single and dual front cover."
+msgstr "19-дюймовий корпус може вмістити до двох плат APU4 - є одинарна та подвійна передня кришка."
 
 #: ../../installation/vyos-on-baremetal.rst:187
 msgid "The Kernel will now spin up using a different console setting. Set terminal emulator to 9600 8N1 and after a while your console will show:"
-msgstr "The Kernel will now spin up using a different console setting. Set terminal emulator to 9600 8N1 and after a while your console will show:"
+msgstr "Тепер ядро розгорнеться, використовуючи інші налаштування консолі. Встановіть емулятор терміналу на 9600 8N1, і через деякий час ваша консоль покаже:"
 
 #: ../../installation/install.rst:451
 msgid "The TFTP server address (DHCP option 66). Sometimes referred as *boot server*"
-msgstr "The TFTP server address (DHCP option 66). Sometimes referred as *boot server*"
+msgstr "Адреса сервера TFTP (параметр 66 DHCP). Іноді називають *сервером завантаження*"
 
 #: ../../installation/virtual/gns3.rst:174
 msgid "The VyOS VM is now ready to be deployed."
-msgstr "The VyOS VM is now ready to be deployed."
+msgstr "Віртуальна машина VyOS тепер готова до розгортання."
 
 #: ../../installation/image.rst:7
 msgid "The VyOS image-based installation is implemented by creating a directory for each image on the storage device selected during the install process."
-msgstr "The VyOS image-based installation is implemented by creating a directory for each image on the storage device selected during the install process."
+msgstr "Встановлення VyOS на основі образу реалізується шляхом створення каталогу для кожного образу на пристрої зберігання, вибраному під час процесу встановлення."
 
 #: ../../installation/cloud/aws.rst:77
 msgid "The VyOS platform-specific scripts feature is under development. Thus, this step should be repeated manually after changing system image (:doc:`/installation/update`)"
-msgstr "The VyOS platform-specific scripts feature is under development. Thus, this step should be repeated manually after changing system image (:doc:`/installation/update`)"
+msgstr "Функція сценаріїв для платформи VyOS знаходиться на стадії розробки. Таким чином, цей крок слід повторити вручну після зміни образу системи (:doc:`/installation/update`)"
 
 #: ../../installation/update.rst:20
 msgid "The `add system image` command also supports installing new versions of VyOS through an optional given VRF. Also if URL in question requires authentication, you can specify an optional username and password via the commandline which will be passed as \"Basic-Auth\" to the server."
-msgstr "The `add system image` command also supports installing new versions of VyOS through an optional given VRF. Also if URL in question requires authentication, you can specify an optional username and password via the commandline which will be passed as \"Basic-Auth\" to the server."
+msgstr "Команда `add system image` також підтримує інсталяцію нових версій VyOS через додатковий заданий VRF. Крім того, якщо відповідна URL-адреса потребує автентифікації, ви можете вказати необов’язкове ім’я користувача та пароль за допомогою командного рядка, який буде передано на сервер як «Basic-Auth»."
 
 #: ../../installation/cloud/aws.rst:67
 msgid "The amazon-cloudwatch-agent package is normally included in VyOS 1.3.3+ and 1.4+"
-msgstr "The amazon-cloudwatch-agent package is normally included in VyOS 1.3.3+ and 1.4+"
+msgstr "Пакет amazon-cloudwatch-agent зазвичай входить у VyOS 1.3.3+ і 1.4+"
 
 #: ../../installation/vyos-on-baremetal.rst:94
 msgid "The board can be powered via 12V from the front or via a 5V onboard connector."
-msgstr "The board can be powered via 12V from the front or via a 5V onboard connector."
+msgstr "Живлення плати може здійснюватися через 12 В спереду або через вбудований роз’єм 5 В."
 
 #: ../../installation/vyos-on-baremetal.rst:314
 msgid "The chassis is a U-shaped alu extrusion with removable I/O plates and removable bottom plate. Cooling is completely passive with a heatsink on the SoC with internal and external fins, a flat interface surface, thermal pad on top of that, which then directly attaches to the chassis, which has fins as well. It comes with mounting hardware and rubber feet, so you could place it like a desktop model or mount it on a VESA mount, or even wall mount it with the provided mounting plate. The closing plate doubles as internal 2.5\" mounting place for an HDD or SSD, and comes supplied with a small SATA cable and SATA power cable."
-msgstr "The chassis is a U-shaped alu extrusion with removable I/O plates and removable bottom plate. Cooling is completely passive with a heatsink on the SoC with internal and external fins, a flat interface surface, thermal pad on top of that, which then directly attaches to the chassis, which has fins as well. It comes with mounting hardware and rubber feet, so you could place it like a desktop model or mount it on a VESA mount, or even wall mount it with the provided mounting plate. The closing plate doubles as internal 2.5\" mounting place for an HDD or SSD, and comes supplied with a small SATA cable and SATA power cable."
+msgstr "Корпус являє собою U-подібний алюмінієвий корпус зі знімними пластинами вводу/виводу та знімною нижньою пластиною. Охолодження повністю пасивне з радіатором на SoC із внутрішніми та зовнішніми ребрами, плоскою поверхнею інтерфейсу, термопрокладкою поверх неї, яка потім безпосередньо кріпиться до шасі, яке також має ребра. Він постачається з монтажними пристроями та гумовими ніжками, тож ви можете розмістити його як настільну модель або встановити на кріплення VESA, або навіть закріпити на стіні за допомогою монтажної пластини, що входить у комплект. Закриваюча пластина служить внутрішнім 2,5-дюймовим місцем для встановлення жорсткого диска або твердотільного накопичувача та постачається з невеликим кабелем SATA та кабелем живлення SATA."
 
 #: ../../installation/virtual/proxmox.rst:15
 msgid "The commands below assume that virtual machine ID 200 is unused and that the user wants the disk stored in a storage pool called `local-lvm`."
-msgstr "The commands below assume that virtual machine ID 200 is unused and that the user wants the disk stored in a storage pool called `local-lvm`."
+msgstr "Наведені нижче команди припускають, що ідентифікатор віртуальної машини 200 не використовується і що користувач хоче зберігати диск у пулі зберігання під назвою `local-lvm`."
 
 #: ../../installation/virtual/libvirt.rst:55
 msgid "The convenience of using :abbr:`KVM (Kernel-based Virtual Machine)` images is that they don't need to be installed. Download predefined VyOS.qcow2 image for ``KVM``"
-msgstr "The convenience of using :abbr:`KVM (Kernel-based Virtual Machine)` images is that they don't need to be installed. Download predefined VyOS.qcow2 image for ``KVM``"
+msgstr "Зручність використання образів :abbr:`KVM (віртуальна машина на основі ядра)` полягає в тому, що їх не потрібно інсталювати. Завантажте попередньо визначений образ VyOS.qcow2 для ``KVM``"
 
 #: ../../installation/install.rst:326
 msgid "The default username and password for the live system is *vyos*."
-msgstr "The default username and password for the live system is *vyos*."
+msgstr "Ім’я користувача та пароль за умовчанням для живої системи — *vyos*."
 
 #: ../../installation/image.rst:10
 msgid "The directory structure of the boot device:"
-msgstr "The directory structure of the boot device:"
+msgstr "Структура каталогів завантажувального пристрою:"
 
 #: ../../installation/virtual/gns3.rst:17
 msgid "The following items are required:"
-msgstr "The following items are required:"
+msgstr "Необхідні такі елементи:"
 
 #: ../../installation/install.rst:84
 msgid "The following link will always fetch the most recent VyOS build for AMD64 systems from the current branch: https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso"
-msgstr "The following link will always fetch the most recent VyOS build for AMD64 systems from the current branch: https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso"
+msgstr "Наступне посилання завжди буде отримувати найновішу збірку VyOS для систем AMD64 із поточної гілки: https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso"
 
 #: ../../installation/image.rst:19
 msgid "The image directory contains the system kernel, a compressed image of the root filesystem for the OS, and a directory for persistent storage, such as configuration. On boot, the system will extract the OS image into memory and mount the appropriate live-rw sub-directories to provide persistent storage system configuration."
-msgstr "The image directory contains the system kernel, a compressed image of the root filesystem for the OS, and a directory for persistent storage, such as configuration. On boot, the system will extract the OS image into memory and mount the appropriate live-rw sub-directories to provide persistent storage system configuration."
+msgstr "Каталог образів містить ядро системи, стислий образ кореневої файлової системи для ОС і каталог для постійного зберігання, наприклад конфігурації. Під час завантаження система витягне образ ОС у пам’ять і змонтує відповідні підкаталоги live-rw, щоб забезпечити постійну конфігурацію системи зберігання."
 
 #: ../../installation/vyos-on-baremetal.rst:180
 msgid "The image will be loaded and the last lines you will get will be:"
-msgstr "The image will be loaded and the last lines you will get will be:"
+msgstr "Зображення буде завантажено, а останні рядки, які ви отримаєте, будуть:"
 
 #: ../../installation/install.rst:178
 msgid "The import can be verified with:"
-msgstr "The import can be verified with:"
+msgstr "Імпорт можна перевірити за допомогою:"
 
 #: ../../installation/install.rst:486
 msgid "The initial ramdisk of the VyOS ISO you want to deploy. That is the *initrd.img* file inside the */live* directory of the extracted contents from the ISO file. Do not use an empty (0 bytes) initrd.img file you might find, the correct file may have a longer name."
-msgstr "The initial ramdisk of the VyOS ISO you want to deploy. That is the *initrd.img* file inside the */live* directory of the extracted contents from the ISO file. Do not use an empty (0 bytes) initrd.img file you might find, the correct file may have a longer name."
+msgstr "Початковий RAM-диск VyOS ISO, який ви хочете розгорнути. Це файл *initrd.img* у каталозі */live* із витягнутим вмістом із файлу ISO. Не використовуйте порожній (0 байт) файл initrd.img, який ви можете знайти, правильний файл може мати довшу назву."
 
 #: ../../installation/vyos-on-baremetal.rst:293
 msgid "The install on this Q355G4 box is pretty much plug and play. The port numbering the OS does might differ from the labels on the outside, but the UEFI firmware has a port blink test built in with MAC addresses so you can very quickly identify which is which. MAC labels are on the inside as well, and this test can be done from VyOS or plain Linux too. Default settings in the UEFI will make it boot, but depending on your installation wishes (i.e. storage type, boot type, console type) you might want to adjust them. This Qotom company seems to be the real OEM/ODM for many other relabelling companies like Protectli."
-msgstr "The install on this Q355G4 box is pretty much plug and play. The port numbering the OS does might differ from the labels on the outside, but the UEFI firmware has a port blink test built in with MAC addresses so you can very quickly identify which is which. MAC labels are on the inside as well, and this test can be done from VyOS or plain Linux too. Default settings in the UEFI will make it boot, but depending on your installation wishes (i.e. storage type, boot type, console type) you might want to adjust them. This Qotom company seems to be the real OEM/ODM for many other relabelling companies like Protectli."
+msgstr "Встановлення на цю коробку Q355G4 відбувається практично підключи та працюй. Нумерація портів ОС може відрізнятися від міток назовні, але мікропрограма UEFI має вбудований тест блимання портів із MAC-адресами, тож ви можете дуже швидко визначити, що є що. Мітки MAC також є всередині, і цей тест також можна виконати з VyOS або простого Linux. Параметри за замовчуванням в UEFI дозволять завантажуватись, але залежно від ваших побажань щодо встановлення (тобто типу сховища, типу завантаження, типу консолі) ви можете змінити їх. Ця компанія Qotom, здається, є справжнім OEM/ODM для багатьох інших компаній з перемаркування, таких як Protectli."
 
 #: ../../installation/install.rst:483
 msgid "The kernel of the VyOS software you want to deploy. That is the *vmlinuz* file inside the */live* directory of the extracted contents from the ISO file."
-msgstr "The kernel of the VyOS software you want to deploy. That is the *vmlinuz* file inside the */live* directory of the extracted contents from the ISO file."
+msgstr "Ядро програмного забезпечення VyOS, яке ви хочете розгорнути. Це файл *vmlinuz* у каталозі */live* із витягнутим вмістом із файлу ISO."
 
 #: ../../installation/install.rst:47
 msgid "The minimum system requirements are 1024 MiB RAM and 2 GiB storage. Depending on your use, you might need additional RAM and CPU resources e.g. when having multiple BGP full tables in your system."
-msgstr "The minimum system requirements are 1024 MiB RAM and 2 GiB storage. Depending on your use, you might need additional RAM and CPU resources e.g. when having multiple BGP full tables in your system."
+msgstr "Мінімальні системні вимоги — 1024 МБ оперативної пам’яті та 2 ГБ пам’яті. Залежно від використання, вам можуть знадобитися додаткові ресурси оперативної пам’яті та ЦП, наприклад, якщо у вашій системі є кілька повних таблиць BGP."
 
 #: ../../installation/update.rst:83
 msgid "The most up-do-date Rolling Release for AMD64 can be accessed using the following URL:"
-msgstr "The most up-do-date Rolling Release for AMD64 can be accessed using the following URL:"
+msgstr "Найновішу поточну версію для AMD64 можна отримати за такою URL-адресою:"
 
 #: ../../installation/install.rst:107
 msgid "The official VyOS public key can be retrieved in a number of ways. Skip to :ref:`gpg-verification` if the key is already present."
-msgstr "The official VyOS public key can be retrieved in a number of ways. Skip to :ref:`gpg-verification` if the key is already present."
+msgstr "Офіційний відкритий ключ VyOS можна отримати кількома способами. Перейдіть до :ref:`gpg-verification`, якщо ключ уже присутній."
 
 #: ../../installation/install.rst:197
 msgid "The signature can be downloaded by appending `.asc` to the URL of the downloaded VyOS image. That small *.asc* file is the signature for the associated image."
-msgstr "The signature can be downloaded by appending `.asc` to the URL of the downloaded VyOS image. That small *.asc* file is the signature for the associated image."
+msgstr "Підпис можна завантажити, додавши `.asc` до URL-адреси завантаженого образу VyOS. Цей маленький файл *.asc* є підписом пов’язаного зображення."
 
 #: ../../installation/virtual/libvirt.rst:116
 msgid "The system is fully operational."
-msgstr "The system is fully operational."
+msgstr "Система повністю працездатна."
 
 #: ../../installation/virtual/libvirt.rst:120
 msgid "The virt-manager application is a desktop user interface for managing virtual machines through libvirt. On the linux open :abbr:`VMM (Virtual Machine Manager)`."
-msgstr "The virt-manager application is a desktop user interface for managing virtual machines through libvirt. On the linux open :abbr:`VMM (Virtual Machine Manager)`."
+msgstr "Програма virt-manager — це настільний інтерфейс користувача для керування віртуальними машинами через libvirt. У Linux відкрийте :abbr:`VMM (Virtual Machine Manager)`."
 
 #: ../../installation/install.rst:590
 msgid "The workaround is to type `e` when the boot menu appears and edit the GRUB boot options.  Specifically, remove the:"
-msgstr "The workaround is to type `e` when the boot menu appears and edit the GRUB boot options.  Specifically, remove the:"
+msgstr "Обхідним шляхом є введення `e`, коли з’явиться меню завантаження, і редагування параметрів завантаження GRUB. Зокрема, видаліть:"
 
 #: ../../installation/vyos-on-baremetal.rst:421
 msgid "Then VyOS should boot and you can perform the ``install image``"
-msgstr "Then VyOS should boot and you can perform the ``install image``"
+msgstr "Потім VyOS має завантажитися, і ви зможете виконати ``інсталяційний образ``"
 
 #: ../../installation/virtual/libvirt.rst:113
 msgid "Then go to the first session where you opened the console. Select ``VyOS 1.4.x for QEMU (Serial console)`` and press ``Enter``"
@@ -1622,68 +1634,68 @@ msgstr "Then go to the first session where you opened the console. Select ``VyOS
 
 #: ../../installation/image.rst:108
 msgid "Then reboot the system."
-msgstr "Then reboot the system."
+msgstr "Потім перезавантажте систему."
 
 #: ../../installation/virtual/libvirt.rst:152
 #: ../../installation/virtual/libvirt.rst:188
 msgid "Then you will be taken to the console."
-msgstr "Then you will be taken to the console."
+msgstr "Потім ви перейдете до консолі."
 
 #: ../../installation/vyos-on-baremetal.rst:328
 msgid "There are WDT options and auto-boot on power enable, which is great for remote setups. Firmware is reasonably secure (no backdoors found, BootGuard is enabled in enforcement mode, which is good but also means no coreboot option), yet has most options available to configure (so it's not locked out like most firmwares are)."
-msgstr "There are WDT options and auto-boot on power enable, which is great for remote setups. Firmware is reasonably secure (no backdoors found, BootGuard is enabled in enforcement mode, which is good but also means no coreboot option), yet has most options available to configure (so it's not locked out like most firmwares are)."
+msgstr "Є параметри WDT і автоматичне завантаження при включенні живлення, що чудово підходить для віддаленого налаштування. Мікропрограмне забезпечення достатньо безпечне (не знайдено бекдорів, BootGuard увімкнено в режимі примусового виконання, що добре, але також означає відсутність опції основного завантаження), але має більшість параметрів, доступних для налаштування (тому воно не заблоковано, як більшість мікропрограм)."
 
 #: ../../installation/vyos-on-baremetal.rst:306
 msgid "There are a number of other options, but they all seem to be close to Intel reference designs, with added features like more serial ports, more network interfaces and the likes. Because they don't deviate too much from standard designs all the hardware is well-supported by mainline. It accepts one LPDDR3 SO-DIMM, but chances are that if you need more than that, you'll also want something even beefier than an i5. There are options for antenna holes, and SIM slots, so you could in theory add an LTE/Cell modem (not tested so far)."
-msgstr "There are a number of other options, but they all seem to be close to Intel reference designs, with added features like more serial ports, more network interfaces and the likes. Because they don't deviate too much from standard designs all the hardware is well-supported by mainline. It accepts one LPDDR3 SO-DIMM, but chances are that if you need more than that, you'll also want something even beefier than an i5. There are options for antenna holes, and SIM slots, so you could in theory add an LTE/Cell modem (not tested so far)."
+msgstr "Існує ряд інших варіантів, але всі вони, здається, близькі до еталонних проектів Intel, з додатковими функціями, такими як більше послідовних портів, більше мережевих інтерфейсів тощо. Оскільки вони не надто відрізняються від стандартних конструкцій, усе обладнання добре підтримується основною лінією. Він приймає один LPDDR3 SO-DIMM, але є ймовірність, що якщо вам потрібно більше, ви також захочете щось ще потужніше, ніж i5. Є варіанти для отворів для антени та слотів для SIM-карт, тож теоретично ви можете додати модем LTE/Cell (ще не перевірено)."
 
 #: ../../installation/virtual/vmware.rst:13
 msgid "There have been previous documented issues with GRE/IPSEC tunneling using the E1000 adapter on the VyOS guest, and use of the VMXNET3 has been advised."
-msgstr "There have been previous documented issues with GRE/IPSEC tunneling using the E1000 adapter on the VyOS guest, and use of the VMXNET3 has been advised."
+msgstr "Раніше були задокументовані проблеми з тунелюванням GRE/IPSEC за допомогою адаптера E1000 на гостьовій системі VyOS, тому було рекомендовано використовувати VMXNET3."
 
 #: ../../installation/migrate-from-vyatta.rst:101
 msgid "This example uses VyOS 1.0.0, however, it's better to install the latest release."
-msgstr "This example uses VyOS 1.0.0, however, it's better to install the latest release."
+msgstr "У цьому прикладі використовується VyOS 1.0.0, однак краще інсталювати останню версію."
 
 #: ../../installation/vyos-on-baremetal.rst:85
 msgid "This guide was developed using an APU4C4 board with the following specs:"
-msgstr "This guide was developed using an APU4C4 board with the following specs:"
+msgstr "Цей посібник розроблено з використанням плати APU4C4 із такими характеристиками:"
 
 #: ../../installation/virtual/gns3.rst:11
 msgid "This guide will provide the necessary steps for installing and setting up VyOS on GNS3."
-msgstr "This guide will provide the necessary steps for installing and setting up VyOS on GNS3."
+msgstr "Цей посібник містить необхідні кроки для встановлення та налаштування VyOS на GNS3."
 
 #: ../../installation/install.rst:580
 msgid "This is a list of known issues that can arise during installation."
-msgstr "This is a list of known issues that can arise during installation."
+msgstr "Це список відомих проблем, які можуть виникнути під час встановлення."
 
 #: ../../installation/vyos-on-baremetal.rst:374
 msgid "This microbox network appliance was build to create OpenVPN bridges. It can saturate a 100Mbps link. It is a small (serial console only) PC with 6 Gb LAN"
-msgstr "This microbox network appliance was build to create OpenVPN bridges. It can saturate a 100Mbps link. It is a small (serial console only) PC with 6 Gb LAN"
+msgstr "Цей мережевий пристрій microbox створено для створення мостів OpenVPN. Він може наситити посилання 100 Мбіт/с. Це невеликий (лише послідовна консоль) ПК з 6 Гб локальної мережі"
 
 #: ../../installation/image.rst:25
 msgid "This process allows for a system to always boot to a known working state, as the OS image is fixed and non-persistent. It also allows for multiple releases of VyOS to be installed on the same storage device. The image can be selected manually at boot if needed, but the system will otherwise boot the image configured to be the default."
-msgstr "This process allows for a system to always boot to a known working state, as the OS image is fixed and non-persistent. It also allows for multiple releases of VyOS to be installed on the same storage device. The image can be selected manually at boot if needed, but the system will otherwise boot the image configured to be the default."
+msgstr "Цей процес дозволяє системі завжди завантажуватися до відомого робочого стану, оскільки образ ОС є фіксованим і непостійним. Це також дозволяє встановлювати кілька версій VyOS на один пристрій зберігання даних. Образ можна вибрати вручну під час завантаження, якщо це необхідно, але інакше система завантажить образ, налаштований як стандартний."
 
 #: ../../installation/cloud/aws.rst:75
 msgid "This step also enables systemd service and runs it."
-msgstr "This step also enables systemd service and runs it."
+msgstr "Цей крок також включає службу systemd і запускає її."
 
 #: ../../installation/install.rst:96
 msgid "This subsection only applies to LTS images, for Rolling images please jump to :ref:`live_installation`."
-msgstr "This subsection only applies to LTS images, for Rolling images please jump to :ref:`live_installation`."
+msgstr "Цей підрозділ стосується лише зображень LTS, для рухомих зображень перейдіть до :ref:`live_installation`."
 
 #: ../../installation/cloud/gcp.rst:8
 msgid "To deploy VyOS on GCP (Google Cloud Platform)"
-msgstr "To deploy VyOS on GCP (Google Cloud Platform)"
+msgstr "Щоб розгорнути VyOS на GCP (Google Cloud Platform)"
 
 #: ../../installation/virtual/gns3.rst:153
 msgid "To turn the template into a working VyOS machine, further steps are necessary as outlined below:"
-msgstr "To turn the template into a working VyOS machine, further steps are necessary as outlined below:"
+msgstr "Щоб перетворити шаблон на робочу машину VyOS, необхідні подальші кроки, як описано нижче:"
 
 #: ../../installation/cloud/aws.rst:55
 msgid "To use Amazon CloudWatch Agent, configure it within the Amazon SSM Parameter Store. If you don't have a configuration yet, do :ref:`configuration_creation`."
-msgstr "To use Amazon CloudWatch Agent, configure it within the Amazon SSM Parameter Store. If you don't have a configuration yet, do :ref:`configuration_creation`."
+msgstr "Щоб використовувати Amazon CloudWatch Agent, налаштуйте його в Amazon SSM Parameter Store. Якщо у вас ще немає конфігурації, виконайте :ref:`configuration_creation`."
 
 #: ../../installation/update.rst:81
 msgid "To use the `latest` option the \"system update-check url\" must be configured."
@@ -1691,123 +1703,123 @@ msgstr "To use the `latest` option the \"system update-check url\" must be confi
 
 #: ../../installation/install.rst:248
 msgid "To verify a VyOS image starting off with VyOS 1.3.0-rc6 you can run:"
-msgstr "To verify a VyOS image starting off with VyOS 1.3.0-rc6 you can run:"
+msgstr "Щоб перевірити образ VyOS, починаючи з VyOS 1.3.0-rc6, ви можете виконати:"
 
 #: ../../installation/install.rst:337
 msgid "Unlike general purpose Linux distributions, VyOS uses \"image installation\" that mimics the user experience of traditional hardware routers and allows keeping multiple VyOS versions installed simultaneously. This makes it possible to switch to a previous version if something breaks or miss-behaves after an image upgrade."
-msgstr "Unlike general purpose Linux distributions, VyOS uses \"image installation\" that mimics the user experience of traditional hardware routers and allows keeping multiple VyOS versions installed simultaneously. This makes it possible to switch to a previous version if something breaks or miss-behaves after an image upgrade."
+msgstr "На відміну від дистрибутивів Linux загального призначення, VyOS використовує «встановлення образу», що імітує роботу з традиційними апаратними маршрутизаторами та дозволяє підтримувати інсталяцію кількох версій VyOS одночасно. Це дає змогу перейти до попередньої версії, якщо щось зламається або не працює після оновлення образу."
 
 #: ../../installation/install.rst:288
 msgid "Unmount the USB drive. Replace X in the example below with the letter of your device and keep the asterisk (wildcard) to unmount all partitions."
-msgstr "Unmount the USB drive. Replace X in the example below with the letter of your device and keep the asterisk (wildcard) to unmount all partitions."
+msgstr "Відключіть USB-накопичувач. Замініть X у наведеному нижче прикладі літерою свого пристрою та збережіть зірочку (знак підстановки), щоб відключити всі розділи."
 
 #: ../../installation/update.rst:4
 msgid "Update VyOS"
-msgstr "Update VyOS"
+msgstr "Оновіть VyOS"
 
 #: ../../installation/migrate-from-vyatta.rst:26
 msgid "Upgrade procedure"
-msgstr "Upgrade procedure"
+msgstr "Процедура оновлення"
 
 #: ../../installation/migrate-from-vyatta.rst:156
 msgid "Upon reboot, you should have a working installation of VyOS."
-msgstr "Upon reboot, you should have a working installation of VyOS."
+msgstr "Після перезавантаження у вас повинна бути робоча інсталяція VyOS."
 
 #: ../../installation/virtual/gns3.rst:60
 msgid "Use the defaults in the **Binary and format** window and click ``Next``."
-msgstr "Use the defaults in the **Binary and format** window and click ``Next``."
+msgstr "Використовуйте значення за замовчуванням у вікні **Двійковий файл і формат** і натисніть ``Далі``."
 
 #: ../../installation/virtual/gns3.rst:65
 msgid "Use the defaults in the **Qcow2 options** window and click ``Next``."
-msgstr "Use the defaults in the **Qcow2 options** window and click ``Next``."
+msgstr "Використовуйте значення за замовчуванням у вікні **параметрів Qcow2** і натисніть ``Далі``."
 
 #: ../../installation/vyos-on-baremetal.rst:205
 msgid "Use the following command to adjust the :ref:`serial-console` settings:"
-msgstr "Use the following command to adjust the :ref:`serial-console` settings:"
+msgstr "Використовуйте таку команду, щоб налаштувати параметри :ref:`serial-console`:"
 
 #: ../../installation/update.rst:16
 msgid "Use this command to install a new system image. You can reach the image from the web (``http://``, ``https://``) or from your local system, e.g.  /tmp/vyos-1.2.3-amd64.iso."
-msgstr "Use this command to install a new system image. You can reach the image from the web (``http://``, ``https://``) or from your local system, e.g.  /tmp/vyos-1.2.3-amd64.iso."
+msgstr "Використовуйте цю команду, щоб інсталювати новий образ системи. Ви можете отримати доступ до зображення з Інтернету (``http://``, ``https://``) або з локальної системи, наприклад, /tmp/vyos-1.2.3-amd64.iso."
 
 #: ../../installation/virtual/proxmox.rst:45
 msgid "Using the proxmox webGUI, open the virtual console for your newly created vm. Login username/password is ``vyos/vyos``."
-msgstr "Using the proxmox webGUI, open the virtual console for your newly created vm. Login username/password is ``vyos/vyos``."
+msgstr "Використовуючи proxmox webGUI, відкрийте віртуальну консоль для новоствореної віртуальної машини. Ім’я користувача/пароль для входу: ``vyos/vyos``."
 
 #: ../../installation/virtual/gns3.rst:28
 msgid "VM setup"
-msgstr "VM setup"
+msgstr "Налаштування віртуальної машини"
 
 #: ../../installation/virtual/libvirt.rst:119
 msgid "Virt-manager"
-msgstr "Virt-manager"
+msgstr "Вірт-менеджер"
 
 #: ../../installation/virtual/proxmox.rst:54
 msgid "Visit https://www.proxmox.com/en/ for more information about the download and installation of this hypervisor."
-msgstr "Visit https://www.proxmox.com/en/ for more information about the download and installation of this hypervisor."
+msgstr "Відвідайте https://www.proxmox.com/en/, щоб дізнатися більше про завантаження та встановлення цього гіпервізора."
 
 #: ../../installation/install.rst:272
 msgid "VyOS, as other GNU+Linux distributions, can be tested without installing it in your hard drive. **With your downloaded VyOS .iso file you can create a bootable USB drive that will let you boot into a fully functional VyOS system**. Once you have tested it, you can either decide to begin a :ref:`permanent_installation` in your hard drive or power your system off, remove the USB drive, and leave everything as it was."
-msgstr "VyOS, as other GNU+Linux distributions, can be tested without installing it in your hard drive. **With your downloaded VyOS .iso file you can create a bootable USB drive that will let you boot into a fully functional VyOS system**. Once you have tested it, you can either decide to begin a :ref:`permanent_installation` in your hard drive or power your system off, remove the USB drive, and leave everything as it was."
+msgstr "VyOS, як і інші дистрибутиви GNU+Linux, можна перевірити, не встановлюючи його на жорсткий диск. **За допомогою завантаженого файлу VyOS .iso ви можете створити завантажувальний USB-накопичувач, який дозволить вам завантажитися в повнофункціональну систему VyOS**. Після перевірки ви можете або почати :ref:`permanent_installation` на жорсткому диску, або вимкнути систему, вийняти USB-накопичувач і залишити все як було."
 
 #: ../../installation/vyos-on-baremetal.rst:135
 msgid "VyOS 1.2 (crux)"
-msgstr "VyOS 1.2 (crux)"
+msgstr "VyOS 1.2 (суть)"
 
 #: ../../installation/vyos-on-baremetal.rst:222
 msgid "VyOS 1.2 (rolling)"
-msgstr "VyOS 1.2 (rolling)"
+msgstr "VyOS 1.2 (пробіг)"
 
 #: ../../installation/migrate-from-vyatta.rst:6
 msgid "VyOS 1.x line aims to preserve backward compatibility and provide a safe upgrade path for existing Vyatta Core users. You may think of VyOS 1.0.0 as VC7.0."
-msgstr "VyOS 1.x line aims to preserve backward compatibility and provide a safe upgrade path for existing Vyatta Core users. You may think of VyOS 1.0.0 as VC7.0."
+msgstr "Лінія VyOS 1.x спрямована на збереження зворотної сумісності та забезпечення безпечного шляху оновлення для існуючих користувачів Vyatta Core. Ви можете вважати VyOS 1.0.0 VC7.0."
 
 #: ../../installation/install.rst:438
 msgid "VyOS ISO image to be installed (do not use images prior to VyOS 1.2.3)"
-msgstr "VyOS ISO image to be installed (do not use images prior to VyOS 1.2.3)"
+msgstr "ISO-образ VyOS для встановлення (не використовуйте образи до VyOS 1.2.3)"
 
 #: ../../installation/virtual/gns3.rst:151
 msgid "VyOS VM configuration"
-msgstr "VyOS VM configuration"
+msgstr "Конфігурація віртуальної машини VyOS"
 
 #: ../../installation/image.rst:110
 msgid "VyOS automatically associates the configuration to the image, so you don't need to worry about that. Each image has a unique copy of its configuration."
-msgstr "VyOS automatically associates the configuration to the image, so you don't need to worry about that. Each image has a unique copy of its configuration."
+msgstr "VyOS автоматично пов’язує конфігурацію з образом, тому вам не потрібно про це турбуватися. Кожне зображення має унікальну копію своєї конфігурації."
 
 #: ../../installation/install.rst:429
 msgid "VyOS can also be installed through PXE. This is a more complex installation method that allows deploying VyOS through the network."
-msgstr "VyOS can also be installed through PXE. This is a more complex installation method that allows deploying VyOS through the network."
+msgstr "VyOS також можна встановити через PXE. Це більш складний метод встановлення, який дозволяє розгортати VyOS через мережу."
 
 #: ../../installation/update.rst:29
 msgid "VyOS configuration is associated to each image, and **each image has a unique copy of its configuration**. This is different than a traditional network router where the configuration is shared across all images."
-msgstr "VyOS configuration is associated to each image, and **each image has a unique copy of its configuration**. This is different than a traditional network router where the configuration is shared across all images."
+msgstr "Конфігурація VyOS пов’язана з кожним образом, і **кожен образ має унікальну копію конфігурації**. Це відрізняється від традиційного мережевого маршрутизатора, де конфігурація спільна для всіх зображень."
 
 #: ../../installation/vyos-on-baremetal.rst:263
 msgid "VyOS custom print"
-msgstr "VyOS custom print"
+msgstr "Спеціальний друк VyOS"
 
 #: ../../installation/virtual/gns3.rst:128
 msgid "VyOS installation"
-msgstr "VyOS installation"
+msgstr "Встановлення VyOS"
 
 #: ../../installation/install.rst:7
 msgid "VyOS installation requires a downloaded VyOS .iso file. That file is a live install image that lets you boot a live VyOS. From the live system, you can proceed to a permanent installation on a hard drive or any other type of storage."
-msgstr "VyOS installation requires a downloaded VyOS .iso file. That file is a live install image that lets you boot a live VyOS. From the live system, you can proceed to a permanent installation on a hard drive or any other type of storage."
+msgstr "Для встановлення VyOS потрібен завантажений файл .iso VyOS. Цей файл є живим інсталяційним образом, який дозволяє завантажувати живу VyOS. З живої системи ви можете перейти до постійної інсталяції на жорсткий диск або будь-який інший тип сховища."
 
 #: ../../installation/virtual/docker.rst:15
 msgid "VyOS requires an IPv6-enabled docker network. Currently linux distributions do not enable docker IPv6 support by default. You can enable IPv6 support in two ways."
-msgstr "VyOS requires an IPv6-enabled docker network. Currently linux distributions do not enable docker IPv6 support by default. You can enable IPv6 support in two ways."
+msgstr "Для VyOS потрібна докерна мережа з підтримкою IPv6. Наразі дистрибутиви Linux не вмикають підтримку докерів IPv6 за замовчуванням. Увімкнути підтримку IPv6 можна двома способами."
 
 #: ../../installation/migrate-from-vyatta.rst:15
 msgid "Vyatta Core 6.4 and earlier may have incompatibilities. In Vyatta 6.5 the \"modify\" firewall was removed and replaced with the ``set policy route`` command family, old configs can not be automatically converted. You will have to adapt it to post-6.5 Vyatta syntax manually."
-msgstr "Vyatta Core 6.4 and earlier may have incompatibilities. In Vyatta 6.5 the \"modify\" firewall was removed and replaced with the ``set policy route`` command family, old configs can not be automatically converted. You will have to adapt it to post-6.5 Vyatta syntax manually."
+msgstr "Vyatta Core 6.4 і попередні версії можуть мати несумісність. У Vyatta 6.5 брандмауер «змінити» було видалено та замінено командою ``set policy route``, старі конфігурації не можна автоматично конвертувати. Вам доведеться адаптувати його до синтаксису Vyatta після 6.5 вручну."
 
 #: ../../installation/migrate-from-vyatta.rst:13
 msgid "Vyatta Core releases from 6.5 to 6.6 should be 100% compatible."
-msgstr "Vyatta Core releases from 6.5 to 6.6 should be 100% compatible."
+msgstr "Версії Vyatta Core від 6.5 до 6.6 мають бути на 100% сумісними."
 
 #: ../../installation/migrate-from-vyatta.rst:11
 msgid "Vyatta release compatibility"
-msgstr "Vyatta release compatibility"
+msgstr "Сумісність з випуском Vyatta"
 
 #: ../../installation/vyos-on-baremetal.rst:122
 msgid "WWAN"
@@ -1815,27 +1827,27 @@ msgstr "WWAN"
 
 #: ../../installation/install.rst:306
 msgid "Wait until you get the outcome (bytes copied). Be patient, in some computers it might take more than one minute."
-msgstr "Wait until you get the outcome (bytes copied). Be patient, in some computers it might take more than one minute."
+msgstr "Зачекайте, поки ви отримаєте результат (байти скопійовано). Наберіться терпіння, на деяких комп’ютерах це може зайняти більше однієї хвилини."
 
 #: ../../installation/vyos-on-baremetal.rst:364
 msgid "Warning the interface labels on my device are backwards; the left-most \"LAN4\" port is eth0 and the right-most \"LAN1\" port is eth3."
-msgstr "Warning the interface labels on my device are backwards; the left-most \"LAN4\" port is eth0 and the right-most \"LAN1\" port is eth3."
+msgstr "Попередження: мітки інтерфейсу на моєму пристрої перевернуті; крайній лівий порт «LAN4» — це eth0, а крайній правий порт «LAN1» — це eth3."
 
 #: ../../installation/install.rst:536
 msgid "We also need to provide the *filesystem.squashfs* file. That is a heavy file and TFTP is slow, so you could send it through HTTP to speed up the transfer. That is how it is done in our example, you can find that in the configuration file above."
-msgstr "We also need to provide the *filesystem.squashfs* file. That is a heavy file and TFTP is slow, so you could send it through HTTP to speed up the transfer. That is how it is done in our example, you can find that in the configuration file above."
+msgstr "Нам також потрібно надати файл *filesystem.squashfs*. Це важкий файл, а TFTP працює повільно, тому ви можете надіслати його через HTTP, щоб пришвидшити передачу. Саме так це зроблено в нашому прикладі, ви можете знайти це у файлі конфігурації вище."
 
 #: ../../installation/install.rst:437
 msgid "Webserver (HTTP) - optional, but we will use it to speed up installation"
-msgstr "Webserver (HTTP) - optional, but we will use it to speed up installation"
+msgstr "Веб-сервер (HTTP) - необов&#39;язковий, але ми будемо використовувати його для прискорення встановлення"
 
 #: ../../installation/cloud/aws.rst:96
 msgid "When prompted, answer \"yes\" to the question \"Do you want to store the config in the SSM parameter store?\"."
-msgstr "When prompted, answer \"yes\" to the question \"Do you want to store the config in the SSM parameter store?\"."
+msgstr "Коли буде запропоновано, дайте відповідь «так» на запитання «Чи хочете ви зберегти конфігурацію в сховищі параметрів SSM?»."
 
 #: ../../installation/virtual/vmware.rst:19
 msgid "When the underlying ESXi host is approaching ~92% memory utilisation it will start the balloon process in a 'soft' state to start reclaiming memory from guest operating systems. This causes an artificial pressure using the vmmemctl driver on memory usage on the virtual guest. As VyOS by default does not have a swap file, this vmmemctl pressure is unable to force processes to move in memory data to the paging file, and blindly consumes memory forcing the virtual guest into a low memory state with no way to escape. The balloon can expand to 65% of guest allocated memory, so a VyOS guest running >35% of memory usage, can encounter an out of memory situation, and trigger the kernel oom_kill process. At this point a weighted lottery favouring memory hungry processes will be run with the unlucky winner being terminated by the kernel."
-msgstr "When the underlying ESXi host is approaching ~92% memory utilisation it will start the balloon process in a 'soft' state to start reclaiming memory from guest operating systems. This causes an artificial pressure using the vmmemctl driver on memory usage on the virtual guest. As VyOS by default does not have a swap file, this vmmemctl pressure is unable to force processes to move in memory data to the paging file, and blindly consumes memory forcing the virtual guest into a low memory state with no way to escape. The balloon can expand to 65% of guest allocated memory, so a VyOS guest running >35% of memory usage, can encounter an out of memory situation, and trigger the kernel oom_kill process. At this point a weighted lottery favouring memory hungry processes will be run with the unlucky winner being terminated by the kernel."
+msgstr "Коли основний хост ESXi наближається до приблизно 92% використання пам’яті, він запускає процес підказки в «м’якому» стані, щоб почати вивільняти пам’ять у гостьових операційних систем. Це спричиняє штучний тиск за допомогою драйвера vmmemctl на використання пам’яті віртуальним гостем. Оскільки VyOS за замовчуванням не має файлу підкачки, цей тиск vmmemctl не в змозі змусити процеси перемістити дані пам’яті до файлу підкачки, і сліпо споживає пам’ять, змушуючи віртуального гостя перейти в стан малої пам’яті без можливості вийти. Повідомлення може розширюватися до 65% виділеної гостьової пам’яті, тому гостьова система VyOS, яка використовує більше 35% пам’яті, може зіткнутися із ситуацією нестачі пам’яті та запустити процес oom_kill ядра. У цей момент буде запущено зважену лотерею на користь процесів, які потребують пам’яті, а невдачливий переможець буде припинено ядром."
 
 #: ../../installation/vyos-on-baremetal.rst:112
 msgid "WiFi"
@@ -1843,35 +1855,35 @@ msgstr "WiFi"
 
 #: ../../installation/install.rst:194
 msgid "With the public key imported, the signature for the desired image needs to be downloaded."
-msgstr "With the public key imported, the signature for the desired image needs to be downloaded."
+msgstr "Після імпорту відкритого ключа потрібно завантажити підпис для потрібного зображення."
 
 #: ../../installation/vyos-on-baremetal.rst:354
 msgid "Write VyOS ISO to USB drive of some sort"
-msgstr "Write VyOS ISO to USB drive of some sort"
+msgstr "Запишіть VyOS ISO на якийсь USB-накопичувач"
 
 #: ../../installation/virtual/gns3.rst:42
 msgid "Write a name for your VM, for instance \"VyOS\", and click ``Next``."
-msgstr "Write a name for your VM, for instance \"VyOS\", and click ``Next``."
+msgstr "Напишіть назву своєї віртуальної машини, наприклад «VyOS», і натисніть ``Далі``."
 
 #: ../../installation/install.rst:296
 msgid "Write the image (your VyOS .iso file) to the USB drive. Note that here you want to use the device name (e.g. /dev/sdb), not the partition name (e.g. /dev/sdb1)."
-msgstr "Write the image (your VyOS .iso file) to the USB drive. Note that here you want to use the device name (e.g. /dev/sdb), not the partition name (e.g. /dev/sdb1)."
+msgstr "Запишіть образ (ваш файл .iso VyOS) на USB-накопичувач. Зауважте, що тут потрібно використовувати назву пристрою (наприклад, /dev/sdb), а не назву розділу (наприклад, /dev/sdb1)."
 
 #: ../../installation/update.rst:38
 msgid "You can access files from a previous installation and copy them to your current image if they were located in the ``/config`` directory. This can be done using the :opcmd:`copy` command. So, for instance, in order to copy ``/config/config.boot`` from VyOS 1.2.1 image, you would use the following command:"
-msgstr "You can access files from a previous installation and copy them to your current image if they were located in the ``/config`` directory. This can be done using the :opcmd:`copy` command. So, for instance, in order to copy ``/config/config.boot`` from VyOS 1.2.1 image, you would use the following command:"
+msgstr "Ви можете отримати доступ до файлів із попередньої інсталяції та скопіювати їх у поточний образ, якщо вони були розташовані в каталозі ``/config``. Це можна зробити за допомогою команди :opcmd:`copy`. Отже, наприклад, щоб скопіювати ``/config/config.boot`` з образу VyOS 1.2.1, ви повинні використати таку команду:"
 
 #: ../../installation/virtual/docker.rst:74
 msgid "You can execute ``docker stop vyos`` when you are finished with the container."
-msgstr "You can execute ``docker stop vyos`` when you are finished with the container."
+msgstr "Ви можете виконати ``docker stop vyos``, коли закінчите роботу з контейнером."
 
 #: ../../installation/migrate-from-vyatta.rst:158
 msgid "You can go back to your Vyatta install using the ``set system image default-boot`` command and selecting the your previous Vyatta Core image."
-msgstr "You can go back to your Vyatta install using the ``set system image default-boot`` command and selecting the your previous Vyatta Core image."
+msgstr "Ви можете повернутися до встановлення Vyatta за допомогою команди ``set system image default-boot`` і вибравши попередній образ Vyatta Core."
 
 #: ../../installation/vyos-on-baremetal.rst:198
 msgid "You can now proceed with a regular image installation as described in :ref:`installation`."
-msgstr "You can now proceed with a regular image installation as described in :ref:`installation`."
+msgstr "Тепер ви можете продовжити звичайне встановлення образу, як описано в :ref:`installation`."
 
 #: ../../installation/update.rst:75
 msgid "You can use ``latest`` option. It loads the latest available Rolling release."
@@ -1879,43 +1891,43 @@ msgstr "You can use ``latest`` option. It loads the latest available Rolling rel
 
 #: ../../installation/migrate-from-vyatta.rst:28
 msgid "You just use ``add system image``, as if it was a new VC release (see :ref:`update_vyos` for additional information). The only thing you want to do is to verify the new images digital signature. You will have to add the public key manually once as it is not shipped the first time."
-msgstr "You just use ``add system image``, as if it was a new VC release (see :ref:`update_vyos` for additional information). The only thing you want to do is to verify the new images digital signature. You will have to add the public key manually once as it is not shipped the first time."
+msgstr "Ви просто використовуєте ``add system image``, як якщо б це був новий випуск VC (перегляньте :ref:`update_vyos` для додаткової інформації). Єдине, що вам потрібно зробити, це перевірити цифровий підпис нових зображень. Вам доведеться додати відкритий ключ вручну один раз, оскільки він не надсилається вперше."
 
 #: ../../installation/vyos-on-baremetal.rst:377
 msgid "You may have to add your own RAM and HDD/SSD. There is no VGA connector. But Acrosser provides a DB25 adapter for the VGA header on the motherboard (not used)."
-msgstr "You may have to add your own RAM and HDD/SSD. There is no VGA connector. But Acrosser provides a DB25 adapter for the VGA header on the motherboard (not used)."
+msgstr "Можливо, вам доведеться додати власну оперативну пам’ять і HDD/SSD. Роз&#39;єм VGA відсутній. Але Acrosser надає адаптер DB25 для роз’єму VGA на материнській платі (не використовується)."
 
 #: ../../installation/virtual/gns3.rst:105
 msgid "You probably will want to accept to copy the .iso file to your default image directory when you are asked."
-msgstr "You probably will want to accept to copy the .iso file to your default image directory when you are asked."
+msgstr "Ймовірно, ви захочете скопіювати файл .iso до каталогу зображень за замовчуванням, коли вас запитають."
 
 #: ../../installation/install.rst:423
 msgid "You will boot now into a permanent VyOS system."
-msgstr "You will boot now into a permanent VyOS system."
+msgstr "Тепер ви завантажите постійну систему VyOS."
 
 #: ../../installation/virtual/vmware.rst:9
 msgid ".ova files are available for supporting users, and a VyOS can also be stood up using a generic Linux instance, and attaching the bootable ISO file and installing from the ISO using the normal process around `install image`."
-msgstr ".ova files are available for supporting users, and a VyOS can also be stood up using a generic Linux instance, and attaching the bootable ISO file and installing from the ISO using the normal process around `install image`."
+msgstr "Файли .ova доступні для допоміжних користувачів, а VyOS також можна встановити за допомогою загального екземпляра Linux, долучивши завантажувальний файл ISO та інсталюючи з ISO за допомогою звичайного процесу навколо «образу встановлення»."
 
 #: ../../installation/virtual/gns3.rst:136
 msgid ":ref:`Install VyOS <installation>` as normal (that is, using the ``install image`` command)."
-msgstr ":ref:`Install VyOS <installation>` as normal (that is, using the ``install image`` command)."
+msgstr ":ref:`Встановіть VyOS<installation> ` як зазвичай (тобто за допомогою команди ``install image``)."
 
 #: ../../installation/install.rst:435
 msgid ":ref:`dhcp-server`"
-msgstr ":ref:`dhcp-server`"
+msgstr ":ref:`dhcp-сервер`"
 
 #: ../../installation/install.rst:436
 msgid ":ref:`tftp-server`"
-msgstr ":ref:`tftp-server`"
+msgstr ":ref:`tftp-сервер`"
 
 #: ../../installation/install.rst:246
 msgid ":vytask:`T2108` switched the validation system to prefer minisign over GPG keys."
-msgstr ":vytask:`T2108` switched the validation system to prefer minisign over GPG keys."
+msgstr ":vytask:`T2108` перемкнув систему перевірки, щоб віддати перевагу minisign над ключами GPG."
 
 #: ../../installation/vyos-on-baremetal.rst:349
 msgid "`Manufacturer product page <http://www.inctel.com.cn/product/detail/338.html>`_."
-msgstr "`Manufacturer product page <http://www.inctel.com.cn/product/detail/338.html>`_."
+msgstr "`Сторінка продукту виробника<http://www.inctel.com.cn/product/detail/338.html> `_."
 
 #: ../../installation/install.rst:112
 msgid "``gpg --recv-keys FD220285A0FE6D7E``"
@@ -1951,7 +1963,7 @@ msgstr "https://muralidba.blogspot.com/2018/03/how-does-linux-out-of-memory-oom-
 
 #: ../../installation/install.rst:116
 msgid "https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E"
-msgstr "https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E"
+msgstr "https://pgp.mit.edu/pks/lookup?op=get&amp;search=0xFD220285A0FE6D7E"
 
 #: ../../installation/update.rst:86
 msgid "https://vyos.net/get/nightly-builds/"
@@ -1971,4 +1983,4 @@ msgstr "ly-builds/releases/download/1.4-rolling-202308240020/vyos-1.4-rolling-20
 
 #: ../../installation/install.rst:595
 msgid "option, and type CTRL-X to boot."
-msgstr "option, and type CTRL-X to boot."
+msgstr "і натисніть CTRL-X для завантаження."

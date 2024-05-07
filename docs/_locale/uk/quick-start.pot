@@ -26,19 +26,19 @@ msgstr "A rule to ``drop`` packets from invalid connections."
 
 #: ../../quick-start.rst:125
 msgid "Add a set of firewall policies for our outside/WAN interface."
-msgstr "Add a set of firewall policies for our outside/WAN interface."
+msgstr "Додайте набір політик брандмауера для зовнішнього/WAN-інтерфейсу."
 
 #: ../../quick-start.rst:29
 msgid "After every configuration change, you need to apply the changes by using the following command:"
-msgstr "After every configuration change, you need to apply the changes by using the following command:"
+msgstr "Після кожної зміни конфігурації вам потрібно застосувати зміни за допомогою такої команди:"
 
 #: ../../quick-start.rst:65
 msgid "After switching to :ref:`quick-start-configuration-mode` issue the following commands, and your system will listen on every interface for incoming SSH connections. You might want to check the :ref:`ssh` chapter on how to listen on specific addresses only."
-msgstr "After switching to :ref:`quick-start-configuration-mode` issue the following commands, and your system will listen on every interface for incoming SSH connections. You might want to check the :ref:`ssh` chapter on how to listen on specific addresses only."
+msgstr "Після переходу в режим :ref:`quick-start-configuration-mode` виконайте наступні команди, і ваша система прослуховуватиме вхідні з’єднання SSH на кожному інтерфейсі. Ви можете переглянути розділ :ref:`ssh` про те, як прослуховувати лише певні адреси."
 
 #: ../../quick-start.rst:51
 msgid "After switching to :ref:`quick-start-configuration-mode` issue the following commands:"
-msgstr "After switching to :ref:`quick-start-configuration-mode` issue the following commands:"
+msgstr "Після переходу в режим :ref:`quick-start-configuration-mode` виконайте такі команди:"
 
 #: ../../quick-start.rst:311
 msgid "Allow Access to Services"
@@ -58,11 +58,11 @@ msgstr "Alternatively, you can take the more traditional stateful connection fil
 
 #: ../../quick-start.rst:167
 msgid "Apply the firewall policies:"
-msgstr "Apply the firewall policies:"
+msgstr "Застосуйте правила брандмауера:"
 
 #: ../../quick-start.rst:377
 msgid "As above, commit your changes, save the configuration, and exit configuration mode:"
-msgstr "As above, commit your changes, save the configuration, and exit configuration mode:"
+msgstr "Як і вище, закріпіть свої зміни, збережіть конфігурацію та вийдіть з режиму конфігурації:"
 
 #: ../../quick-start.rst:237
 msgid "Block Incoming Traffic"
@@ -70,7 +70,7 @@ msgstr "Block Incoming Traffic"
 
 #: ../../quick-start.rst:17
 msgid "By default, VyOS is in operational mode, and the command prompt displays a `$`. To configure VyOS, you will need to enter configuration mode, resulting in the command prompt displaying a `#`, as demonstrated below:"
-msgstr "By default, VyOS is in operational mode, and the command prompt displays a `$`. To configure VyOS, you will need to enter configuration mode, resulting in the command prompt displaying a `#`, as demonstrated below:"
+msgstr "За замовчуванням VyOS знаходиться в робочому режимі, і в командному рядку відображається `$`. Щоб налаштувати VyOS, вам потрібно буде увійти в режим конфігурації, у результаті чого в командному рядку відображатиметься `#`, як показано нижче:"
 
 #: ../../quick-start.rst:17
 msgid "By default, VyOS is in operational mode, and the command prompt displays a ``$``. To configure VyOS, you will need to enter configuration mode, resulting in the command prompt displaying a ``#``, as demonstrated below:"
@@ -78,15 +78,15 @@ msgstr "By default, VyOS is in operational mode, and the command prompt displays
 
 #: ../../quick-start.rst:27
 msgid "Commit and Save"
-msgstr "Commit and Save"
+msgstr "Здійснити та зберегти"
 
 #: ../../quick-start.rst:337
 msgid "Commit changes, save the configuration, and exit configuration mode:"
-msgstr "Commit changes, save the configuration, and exit configuration mode:"
+msgstr "Зафіксувати зміни, зберегти конфігурацію та вийти з режиму конфігурації:"
 
 #: ../../quick-start.rst:15
 msgid "Configuration Mode"
-msgstr "Configuration Mode"
+msgstr "Режим конфігурації"
 
 #: ../../quick-start.rst:138
 msgid "Configure Firewall Groups"
@@ -101,16 +101,20 @@ msgid "Configure a rule on the ``input`` hook filter to jump to the ``VyOS_MANAG
 msgstr "Configure a rule on the ``input`` hook filter to jump to the ``VyOS_MANAGEMENT`` chain when new connections are addressed to port 22 (SSH) on the router itself:"
 
 #: ../../quick-start.rst:243
+msgid "Create a new chain (``OUTSIDE-IN``) which will drop all traffic that is not explicitly allowed at some point in the chain. Then, we can jump to that chain from the ``forward`` hook when traffic is coming from the ``WAN`` interface group and is addressed to our local network."
+msgstr "Create a new chain (``OUTSIDE-IN``) which will drop all traffic that is not explicitly allowed at some point in the chain. Then, we can jump to that chain from the ``forward`` hook when traffic is coming from the ``WAN`` interface group and is addressed to our local network."
+
+#: ../../quick-start.rst:243
 msgid "Create a new chain (``OUTSIDE-IN``) which will drop all traffic that is not explicity allowed at some point in the chain. Then, we can jump to that chain from the ``forward`` hook when traffic is coming from the ``WAN`` interface group and is addressed to our local network."
 msgstr "Create a new chain (``OUTSIDE-IN``) which will drop all traffic that is not explicity allowed at some point in the chain. Then, we can jump to that chain from the ``forward`` hook when traffic is coming from the ``WAN`` interface group and is addressed to our local network."
 
 #: ../../quick-start.rst:78
 msgid "DHCP/DNS quick-start"
-msgstr "DHCP/DNS quick-start"
+msgstr "Швидкий старт DHCP/DNS"
 
 #: ../../quick-start.rst:87
 msgid "DHCP clients will be assigned IP addresses within the range of `192.168.0.9 - 192.168.0.254` and have a domain name of `internal-network`"
-msgstr "DHCP clients will be assigned IP addresses within the range of `192.168.0.9 - 192.168.0.254` and have a domain name of `internal-network`"
+msgstr "Клієнтам DHCP буде призначено IP-адреси в діапазоні `192.168.0.9 - 192.168.0.254` і матиме доменне ім&#39;я `internal-network`"
 
 #: ../../quick-start.rst:87
 msgid "DHCP clients will be assigned IP addresses within the range of ``192.168.0.9 - 192.168.0.254`` and have a domain name of ``internal-network``"
@@ -118,7 +122,7 @@ msgstr "DHCP clients will be assigned IP addresses within the range of ``192.168
 
 #: ../../quick-start.rst:89
 msgid "DHCP leases will hold for one day (86400 seconds)"
-msgstr "DHCP leases will hold for one day (86400 seconds)"
+msgstr "Оренда DHCP триватиме один день (86400 секунд)"
 
 #: ../../quick-start.rst:131
 msgid "Documentation for most of the new firewall CLI can be found in the :ref:`firewall` chapter.The legacy firewall is still available for versions before ``1.4-rolling-202308040557`` and can be found in the :ref:`firewall-legacy` chapter. The examples in this section use the new configuration."
@@ -126,7 +130,7 @@ msgstr "Documentation for most of the new firewall CLI can be found in the :ref:
 
 #: ../../quick-start.rst:351
 msgid "Especially if you are allowing SSH remote access from the outside/WAN interface, there are a few additional configuration steps that should be taken."
-msgstr "Especially if you are allowing SSH remote access from the outside/WAN interface, there are a few additional configuration steps that should be taken."
+msgstr "Особливо якщо ви дозволяєте віддалений доступ через SSH із зовнішнього/WAN-інтерфейсу, необхідно виконати кілька додаткових кроків налаштування."
 
 #: ../../quick-start.rst:291
 msgid "Finally, configure the ``VyOS_MANAGEMENT`` chain to accept connection from the ``LAN`` interface group while limiting requests coming from the ``WAN`` interface group to 4 per minute:"
@@ -134,7 +138,7 @@ msgstr "Finally, configure the ``VyOS_MANAGEMENT`` chain to accept connection fr
 
 #: ../../quick-start.rst:367
 msgid "Finally, try and SSH into the VyOS install as your new user. Once you have confirmed that your new user can access your router without a password, delete the original ``vyos`` user and completely disable password authentication for :ref:`ssh`:"
-msgstr "Finally, try and SSH into the VyOS install as your new user. Once you have confirmed that your new user can access your router without a password, delete the original ``vyos`` user and completely disable password authentication for :ref:`ssh`:"
+msgstr "Нарешті, спробуйте встановити SSH у VyOS як новий користувач. Після того, як ви підтвердите, що ваш новий користувач може отримати доступ до вашого маршрутизатора без пароля, видаліть початкового користувача ``vyos`` і повністю вимкніть автентифікацію пароля для :ref:`ssh`:"
 
 #: ../../quick-start.rst:329
 msgid "Finally, we can now configure access to the services running on this router, allowing all connections coming from localhost:"
@@ -142,7 +146,7 @@ msgstr "Finally, we can now configure access to the services running on this rou
 
 #: ../../quick-start.rst:123
 msgid "Firewall"
-msgstr "Firewall"
+msgstr "Брандмауер"
 
 #: ../../quick-start.rst:273
 msgid "First, create a new dedicated chain (``VyOS_MANAGEMENT``) for management access, which returns to the parent chain if no action is taken. Add a rule to accept traffic from the ``LAN`` interface group:"
@@ -150,7 +154,7 @@ msgstr "First, create a new dedicated chain (``VyOS_MANAGEMENT``) for management
 
 #: ../../quick-start.rst:349
 msgid "Hardening"
-msgstr "Hardening"
+msgstr "Загартовування"
 
 #: ../../quick-start.rst:313
 msgid "Here we're allowing the router to respond to pings. Then, we can allow access to the DNS recursor we configured earlier, accepting traffic bound for port 53 from all hosts on the ``NET-INSIDE-v4`` network:"
@@ -158,7 +162,7 @@ msgstr "Here we're allowing the router to respond to pings. Then, we can allow a
 
 #: ../../quick-start.rst:146
 msgid "If you wanted to enable SSH access to your firewall from the outside/WAN interface, you could create some additional rules to allow that kind of traffic."
-msgstr "If you wanted to enable SSH access to your firewall from the outside/WAN interface, you could create some additional rules to allow that kind of traffic."
+msgstr "Якщо ви хочете ввімкнути SSH-доступ до брандмауера із зовнішнього/WAN-інтерфейсу, ви можете створити деякі додаткові правила, щоб дозволити такий тип трафіку."
 
 #: ../../quick-start.rst:145
 msgid "In this case, we will create two interface groups — a ``WAN`` group for our interfaces connected to the public internet and a ``LAN`` group for the interfaces connected to our internal network. Additionally, we will create a network group, ``NET-INSIDE-v4``, that contains our internal subnet."
@@ -170,7 +174,7 @@ msgstr "In this case, we will create two interface groups—a ``WAN`` group for 
 
 #: ../../quick-start.rst:44
 msgid "Interface Configuration"
-msgstr "Interface Configuration"
+msgstr "Конфігурація інтерфейсу"
 
 #: ../../quick-start.rst:170
 msgid "Most installations would choose this option, and will contain:"
@@ -186,11 +190,11 @@ msgstr "Now that we have configured stateful connection filtering to allow traff
 
 #: ../../quick-start.rst:36
 msgid "Once your configuration works as expected, you can save it permanently by using the following command:"
-msgstr "Once your configuration works as expected, you can save it permanently by using the following command:"
+msgstr "Коли ваша конфігурація запрацює належним чином, ви можете зберегти її назавжди за допомогою такої команди:"
 
 #: ../../quick-start.rst:92
 msgid "Only hosts from your internal/LAN network can use the DNS recursor"
-msgstr "Only hosts from your internal/LAN network can use the DNS recursor"
+msgstr "Тільки хости з вашої внутрішньої/LAN мережі можуть використовувати рекурсор DNS"
 
 #: ../../quick-start.rst:162
 msgid "Option 1: Common Chain"
@@ -214,7 +218,7 @@ msgstr "Option 3: Per-Hook Chain"
 
 #: ../../quick-start.rst:5
 msgid "Quick Start"
-msgstr "Quick Start"
+msgstr "Швидкий початок"
 
 #: ../../quick-start.rst:354
 msgid "Replace the default ``vyos`` system user:"
@@ -222,19 +226,19 @@ msgstr "Replace the default ``vyos`` system user:"
 
 #: ../../quick-start.rst:192
 msgid "Replace the default `vyos` system user:"
-msgstr "Replace the default `vyos` system user:"
+msgstr "Замініть системного користувача за замовчуванням `vyos`:"
 
 #: ../../quick-start.rst:63
 msgid "SSH Management"
-msgstr "SSH Management"
+msgstr "Управління SSH"
 
 #: ../../quick-start.rst:360
 msgid "Set up :ref:`ssh_key_based_authentication`:"
-msgstr "Set up :ref:`ssh_key_based_authentication`:"
+msgstr "Налаштувати :ref:`ssh_key_based_authentication`:"
 
 #: ../../quick-start.rst:85
 msgid "The address range `192.168.0.2/24 - 192.168.0.8/24` will be reserved for static assignments"
-msgstr "The address range `192.168.0.2/24 - 192.168.0.8/24` will be reserved for static assignments"
+msgstr "Діапазон адрес `192.168.0.2/24 - 192.168.0.8/24` буде зарезервовано для статичних призначень"
 
 #: ../../quick-start.rst:85
 msgid "The address range ``192.168.0.2/24 - 192.168.0.8/24`` will be reserved for static assignments"
@@ -246,7 +250,7 @@ msgstr "The chain we will create is called ``CONN_FILTER`` and has three rules:"
 
 #: ../../quick-start.rst:84
 msgid "The default gateway and DNS recursor address will be `192.168.0.1/24`"
-msgstr "The default gateway and DNS recursor address will be `192.168.0.1/24`"
+msgstr "Шлюз за замовчуванням і адреса рекурсора DNS будуть `192.168.0.1/24`."
 
 #: ../../quick-start.rst:84
 msgid "The default gateway and DNS recursor address will be ``192.168.0.1/24``"
@@ -258,11 +262,11 @@ msgstr "The firewall begins with the base ``filter`` tables you define for each 
 
 #: ../../quick-start.rst:80
 msgid "The following settings will configure DHCP and DNS services on your internal/LAN network, where VyOS will act as the default gateway and DNS server."
-msgstr "The following settings will configure DHCP and DNS services on your internal/LAN network, where VyOS will act as the default gateway and DNS server."
+msgstr "Наступні параметри налаштують служби DHCP і DNS у вашій внутрішній мережі/мережі LAN, де VyOS діятиме як шлюз за замовчуванням і сервер DNS."
 
 #: ../../quick-start.rst:112
 msgid "The following settings will configure :ref:`source-nat` rules for our internal/LAN network, allowing hosts to communicate through the outside/WAN network via IP masquerade."
-msgstr "The following settings will configure :ref:`source-nat` rules for our internal/LAN network, allowing hosts to communicate through the outside/WAN network via IP masquerade."
+msgstr "Наступні параметри налаштують правила :ref:`source-nat` для нашої внутрішньої/LAN мережі, дозволяючи хостам спілкуватися через зовнішню/WAN мережу через IP-маскарад."
 
 #: ../../quick-start.rst:205
 msgid "Then, we can jump to the common chain from both the ``forward`` and ``input`` hooks as the first filtering rule in the respective chains:"
@@ -270,7 +274,7 @@ msgstr "Then, we can jump to the common chain from both the ``forward`` and ``in
 
 #: ../../quick-start.rst:150
 msgid "These rules allow SSH traffic and rate limit it to 4 requests per minute. This blocks brute-forcing attempts:"
-msgstr "These rules allow SSH traffic and rate limit it to 4 requests per minute. This blocks brute-forcing attempts:"
+msgstr "Ці правила дозволяють трафік SSH і обмежують його швидкість до 4 запитів на хвилину. Це блокує спроби грубого форсування:"
 
 #: ../../quick-start.rst:7
 msgid "This chapter will guide you on how to get up to speed quickly using your new VyOS system. It will show you a very basic configuration example that will provide a :ref:`nat` gateway for a device with two network interfaces (``eth0`` and ``eth1``)."
@@ -278,11 +282,11 @@ msgstr "This chapter will guide you on how to get up to speed quickly using your
 
 #: ../../quick-start.rst:7
 msgid "This chapter will guide you on how to get up to speed quickly using your new VyOS system. It will show you a very basic configuration example that will provide a :ref:`nat` gateway for a device with two network interfaces (`eth0` and `eth1`)."
-msgstr "This chapter will guide you on how to get up to speed quickly using your new VyOS system. It will show you a very basic configuration example that will provide a :ref:`nat` gateway for a device with two network interfaces (`eth0` and `eth1`)."
+msgstr "У цій главі ви дізнаєтесь, як швидко освоїти нову систему VyOS. Він покаже вам дуже простий приклад конфігурації, який забезпечить :ref:`nat` шлюз для пристрою з двома мережевими інтерфейсами (`eth0` і `eth1`)."
 
 #: ../../quick-start.rst:127
 msgid "This configuration creates a proper stateful firewall that blocks all traffic which was not initiated from the internal/LAN side first."
-msgstr "This configuration creates a proper stateful firewall that blocks all traffic which was not initiated from the internal/LAN side first."
+msgstr "Ця конфігурація створює правильний брандмауер із збереженням стану, який блокує весь трафік, який спочатку не було ініційовано з боку внутрішньої мережі/LAN."
 
 #: ../../quick-start.rst:140
 msgid "To make firewall configuration easier, we can create groups of interfaces, networks, addresses, ports, and domains that describe different parts of our network. We can then use them for filtering within our firewall rulesets, allowing for more concise and readable configuration."
@@ -292,9 +296,13 @@ msgstr "To make firewall configuration easier, we can create groups of interface
 msgid "Using options defined in ``set firewall global-options state-policy``, state policy rules that applies for both IPv4 and IPv6 are created. These global state policies also applies for all traffic that passes through the router (transit) and for traffic originated/destinated to/from the router itself, and will be avaluated before any other rule defined in the firewall."
 msgstr "Using options defined in ``set firewall global-options state-policy``, state policy rules that applies for both IPv4 and IPv6 are created. These global state policies also applies for all traffic that passes through the router (transit) and for traffic originated/destinated to/from the router itself, and will be avaluated before any other rule defined in the firewall."
 
+#: ../../quick-start.rst:164
+msgid "Using options defined in ``set firewall global-options state-policy``, state policy rules that applies for both IPv4 and IPv6 are created. These global state policies also applies for all traffic that passes through the router (transit) and for traffic originated/destinated to/from the router itself, and will be evaluated before any other rule defined in the firewall."
+msgstr "Using options defined in ``set firewall global-options state-policy``, state policy rules that applies for both IPv4 and IPv6 are created. These global state policies also applies for all traffic that passes through the router (transit) and for traffic originated/destinated to/from the router itself, and will be evaluated before any other rule defined in the firewall."
+
 #: ../../quick-start.rst:90
 msgid "VyOS will serve as a full DNS recursor, replacing the need to utilize Google, Cloudflare, or other public DNS servers (which is good for privacy)"
-msgstr "VyOS will serve as a full DNS recursor, replacing the need to utilize Google, Cloudflare, or other public DNS servers (which is good for privacy)"
+msgstr "VyOS слугуватиме повним DNS-рекурсором, замінюючи потребу у використанні Google, Cloudflare або інших загальнодоступних DNS-серверів (що добре для конфіденційності)"
 
 #: ../../quick-start.rst:181
 msgid "We can create a common chain for stateful connection filtering of multiple interfaces (or multiple netfilter hooks on one interface). Those individual chains can then jump to the common chain for stateful connection filtering, returning to the original chain for further rule processing if no action is taken on the packet."
@@ -318,7 +326,7 @@ msgstr "With the new firewall structure, we have have a lot of flexibility in ho
 
 #: ../../quick-start.rst:389
 msgid "You now should have a simple yet secure and functioning router to experiment with further. Enjoy!"
-msgstr "You now should have a simple yet secure and functioning router to experiment with further. Enjoy!"
+msgstr "Тепер у вас повинен бути простий, але безпечний і функціональний маршрутизатор, з яким можна експериментувати далі. Насолоджуйтесь!"
 
 #: ../../quick-start.rst:48
 msgid "Your internal/LAN interface will be ``eth1``. It will use a static IP address of ``192.168.0.1/24``."
@@ -326,7 +334,7 @@ msgstr "Your internal/LAN interface will be ``eth1``. It will use a static IP ad
 
 #: ../../quick-start.rst:48
 msgid "Your internal/LAN interface will be `eth1`. It will use a static IP address of `192.168.0.1/24`."
-msgstr "Your internal/LAN interface will be `eth1`. It will use a static IP address of `192.168.0.1/24`."
+msgstr "Ваш внутрішній/LAN інтерфейс буде `eth1`. Він використовуватиме статичну IP-адресу `192.168.0.1/24`."
 
 #: ../../quick-start.rst:46
 msgid "Your outside/WAN interface will be ``eth0``. It will receive its interface address via DHCP."
@@ -334,4 +342,4 @@ msgstr "Your outside/WAN interface will be ``eth0``. It will receive its interfa
 
 #: ../../quick-start.rst:46
 msgid "Your outside/WAN interface will be `eth0`. It will receive its interface address via DHCP."
-msgstr "Your outside/WAN interface will be `eth0`. It will receive its interface address via DHCP."
+msgstr "Ваш зовнішній/WAN інтерфейс буде `eth0`. Він отримає свою адресу інтерфейсу через DHCP."

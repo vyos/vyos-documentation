@@ -49,9 +49,25 @@ Configuration
    Inform client that the DNS server can be found at `<address>`.
 
    This is the configuration parameter for the entire shared network definition.
-   All subnets will inherit this configuration item if not specified locally.
-
+   All subnets will inherit this configuration item if not specified locally. 
    Multiple DNS servers can be defined.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <name> option 
+   vendor-option <option-name>
+
+   This configuration parameter lets you specify a vendor-option for the 
+   entire shared network definition. All subnets will inherit this 
+   configuration item if not specified locally. An example for Ubiquiti is 
+   shown below:
+
+**Example:**
+
+Pass address of Unifi controller at ``172.16.100.1`` to all clients of ``NET1``
+
+.. code-block:: none
+
+  set service dhcp-server shared-network-name 'NET1' option vendor-option  
+  ubiquiti '172.16.100.1'
 
 .. cfgcmd:: set service dhcp-server listen-address <address>
 
@@ -132,28 +148,62 @@ Individual Client Subnet
    request where no full FQDN is passed. This option can be given multiple times
    if you need multiple search domains (DHCP Option 119).
 
-Failover
---------
+.. cfgcmd:: set service dhcp-server shared-network-name <name> subnet <subnet> 
+   option vendor-option <option-name>
 
-VyOS provides support for DHCP failover. DHCP failover must be configured
-explicitly by the following statements.
+   This configuration parameter lets you specify a vendor-option for the
+   subnet specified within the shared network definition. An example for  
+   Ubiquiti is shown below:
 
-.. cfgcmd:: set service dhcp-server failover source-address <address>
+**Example:**
 
-   Local IP `<address>` used when communicating to the failover peer.
+Create ``172.18.201.0/24`` as a subnet within ``NET1`` and pass address of  
+Unifi controller at ``172.16.100.1`` to clients of that subnet.
 
-.. cfgcmd:: set service dhcp-server failover remote <address>
+.. code-block:: none
 
-   Remote peer IP `<address>` of the second DHCP server in this failover
+  set service dhcp-server shared-network-name 'NET1' subnet 
+  '172.18.201.0/24' option vendor-option ubiquiti '172.16.100.1'
+
+
+High Availability
+-----------------
+
+VyOS provides High Availability support for DHCP server. DHCP High
+Availability can act in two different modes:
+
+* **Active-active**: both DHCP servers will respond to DHCP requests. If
+  ``mode`` is not defined, this is the default behavior.
+
+* **Active-passive**: only ``primary`` server will respond to DHCP requests.
+  If this server goes offline, then ``secondary`` server will take place.
+
+DHCP High Availability must be configured explicitly by the following
+statements on both servers:
+
+.. cfgcmd:: set service dhcp-server high-availability mode [active-active
+   | active-passive]
+
+   Define operation mode of High Availability feature. Default value if command
+   is not specified is `active-active`
+
+.. cfgcmd:: set service dhcp-server high-availability source-address <address>
+
+   Local IP `<address>` used when communicating to the HA peer.
+
+.. cfgcmd:: set service dhcp-server high-availability remote <address>
+
+   Remote peer IP `<address>` of the second DHCP server in this HA
    cluster.
 
-.. cfgcmd:: set service dhcp-server failover name <name>
+.. cfgcmd:: set service dhcp-server high-availability name <name>
 
    A generic `<name>` referencing this sync service.
 
    .. note:: `<name>` must be identical on both sides!
 
-.. cfgcmd:: set service dhcp-server failover status <primary | secondary>
+.. cfgcmd:: set service dhcp-server high-availability status <primary
+   | secondary>
 
    The primary and secondary statements determines whether the server is primary
    or secondary.
@@ -162,12 +212,12 @@ explicitly by the following statements.
       their lease tables in sync, they must be able to reach each other on TCP
       port 647. If you have firewall rules in effect, adjust them accordingly.
 
-   .. hint:: The dialogue between failover partners is neither encrypted nor
+   .. hint:: The dialogue between HA partners is neither encrypted nor
       authenticated. Since most DHCP servers exist within an organisation's own
       secure Intranet, this would be an unnecessary overhead. However, if you
-      have DHCP failover peers whose communications traverse insecure networks,
+      have DHCP HA peers whose communications traverse insecure networks,
       then we recommend that you consider the use of VPN tunneling between them
-      to ensure that the failover partnership is immune to disruption
+      to ensure that the HA partnership is immune to disruption
       (accidental or otherwise) via third parties.
 
 Static mappings
@@ -371,12 +421,13 @@ Please see the :ref:`dhcp-dns-quick-start` configuration.
 
 .. _dhcp-server:v4_example_failover:
 
-Failover
---------
+High Availability
+-----------------
 
-Configuration of a DHCP failover pair
+Configuration of a DHCP HA pair:
 
-* Setup DHCP failover for network 192.0.2.0/24
+* Setup DHCP HA for network 192.0.2.0/24
+* Use active-active HA mode.
 * Default gateway and DNS server is at `192.0.2.254`
 * The primary DHCP server uses address `192.168.189.252`
 * The secondary DHCP server uses address `192.168.189.253`
@@ -398,19 +449,21 @@ Common configuration, valid for both primary and secondary node.
 
 .. code-block:: none
 
-  set service dhcp-server failover source-address '192.168.189.252'
-  set service dhcp-server failover name 'NET-VYOS'
-  set service dhcp-server failover remote '192.168.189.253'
-  set service dhcp-server failover status 'primary'
+  set service dhcp-server high-availability mode 'active-active'
+  set service dhcp-server high-availability source-address '192.168.189.252'
+  set service dhcp-server high-availability name 'NET-VYOS'
+  set service dhcp-server high-availability remote '192.168.189.253'
+  set service dhcp-server high-availability status 'primary'
 
 **Secondary**
 
 .. code-block:: none
 
-  set service dhcp-server failover source-address '192.168.189.253'
-  set service dhcp-server failover name 'NET-VYOS'
-  set service dhcp-server failover remote '192.168.189.252'
-  set service dhcp-server failover status 'secondary'
+  set service dhcp-server high-availability mode 'active-active'
+  set service dhcp-server high-availability source-address '192.168.189.253'
+  set service dhcp-server high-availability name 'NET-VYOS'
+  set service dhcp-server high-availability remote '192.168.189.252'
+  set service dhcp-server high-availability status 'secondary'
 
 .. _dhcp-server:v4_example_raw:
 

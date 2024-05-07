@@ -10,7 +10,11 @@ msgstr ""
 
 #: ../../copyright.md:1
 msgid "Copyright Notice"
-msgstr "Copyright Notice"
+msgstr "Повідомлення про авторські права"
+
+#: ../../copyright.md:3
+msgid "Copyright (C) 2018-2023 VyOS maintainers and contributors"
+msgstr "Авторське право (C) 2018-2023 Супроводжувачі та учасники VyOS"
 
 #: ../../copyright.md:3
 msgid "Copyright (C) 2018-2024 VyOS maintainers and contributors"
@@ -18,12 +22,12 @@ msgstr "Copyright (C) 2018-2024 VyOS maintainers and contributors"
 
 #: ../../copyright.md:9
 msgid "Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one."
-msgstr "Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one."
+msgstr "Надається дозвіл на копіювання та розповсюдження модифікованих версій цього посібника на умовах дослівного копіювання за умови, що вся отримана похідна робота розповсюджується відповідно до умов повідомлення про дозвіл, ідентичного цьому."
 
 #: ../../copyright.md:14
 msgid "Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions, except that this permission notice may be stated in a translation approved by the VyOS maintainers."
-msgstr "Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions, except that this permission notice may be stated in a translation approved by the VyOS maintainers."
+msgstr "Дозволяється копіювати та розповсюджувати переклади цього посібника на іншу мову за наведених вище умов для модифікованих версій, за винятком того, що це повідомлення про дозвіл може бути зазначено в перекладі, схваленому розробниками VyOS."
 
 #: ../../copyright.md:5
 msgid "Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies."
-msgstr "Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies."
+msgstr "Надається дозвіл на створення та розповсюдження дослівних копій цього посібника за умови, що повідомлення про авторські права та це повідомлення про дозвіл збережено на всіх копіях."

@@ -24,7 +24,6 @@ Configuring PPPoE Server
   set service pppoe-server authentication local-users username test password 'test'
   set service pppoe-server client-ip-pool PPPOE-POOL range 192.168.255.2-192.168.255.254
   set service pppoe-server default-pool 'PPPOE-POOL'
-  set service pppoe-server outside-address 192.0.2.2
   set service pppoe-server gateway-address 192.168.255.1
   set service pppoe-server interface eth0
 
@@ -374,7 +373,7 @@ IPv6
 
   set service pppoe-server ppp-options ipv6 allow
   set service pppoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
-  set service pppoe-server client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
+  set service pppoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
   set service pppoe-server default-ipv6-pool IPv6-POOL
 
 IPv6 Advanced Options

@@ -272,7 +272,7 @@ msgstr "Una breve excursión a los VRF: esta ha sido una de las solicitudes de f
 msgid "A connection resource deployed in Azure linking the Azure VNet gateway and the local network gateway representing the Vyos device."
 msgstr "Un recurso de conexión implementado en Azure que vincula la puerta de enlace de la red virtual de Azure y la puerta de enlace de la red local que representa el dispositivo Vyos."
 
-#: ../../configexamples/index.rst:37
+#: ../../configexamples/index.rst:38
 msgid "A host ``vyos-oobm`` will use as a ssh proxy. This host is just necessary for the Lab test."
 msgstr "Se utilizará un host ``vyos-oobm`` como proxy ssh. Este host solo es necesario para la prueba de laboratorio."
 
@@ -318,6 +318,14 @@ msgstr "Directorio activo en el servidor de Windows"
 msgid "Add (temporary) default route"
 msgstr "Agregar ruta predeterminada (temporal)"
 
+#: ../../configexamples/ansible.rst:99
+msgid "Add a simple playbook with the tasks for each router:"
+msgstr "Add a simple playbook with the tasks for each router:"
+
+#: ../../configexamples/ansible.rst:73
+msgid "Add all the VyOS hosts:"
+msgstr "Add all the VyOS hosts:"
+
 #: ../../configexamples/ansible.rst:73
 msgid "Add all the hosts of VyOS:"
 msgstr "Add all the hosts of VyOS:"
@@ -351,6 +359,10 @@ msgid "After configured all the VRFs involved in this topology we take a deeper 
 msgstr "Después de configurar todos los VRF involucrados en esta topología, echamos un vistazo más profundo tanto a BGP como a la tabla de enrutamiento para VRF LAN1."
 
 #: ../../configexamples/policy-based-ipsec-and-firewall.rst:206
+msgid "After some testing, we can check IPSec status, and counter on every tunnel:"
+msgstr "After some testing, we can check IPSec status, and counter on every tunnel:"
+
+#: ../../configexamples/policy-based-ipsec-and-firewall.rst:206
 msgid "After some testing, we can check ipsec status, and counter on every tunnel:"
 msgstr "After some testing, we can check ipsec status, and counter on every tunnel:"
 
@@ -377,6 +389,14 @@ msgstr "Todo el tráfico que ingresa a través de eth2 se equilibra entre eth0 y
 #: ../../configexamples/pppoe-ipv6-basic.rst:88
 msgid "Allow DHCPv6 packets for router"
 msgstr "Permitir paquetes DHCPv6 para el enrutador"
+
+#: ../../configexamples/policy-based-ipsec-and-firewall.rst:34
+msgid "Allow DNS requests only only for local networks."
+msgstr "Allow DNS requests only only for local networks."
+
+#: ../../configexamples/policy-based-ipsec-and-firewall.rst:36
+msgid "Allow ICMP on all interfaces."
+msgstr "Allow ICMP on all interfaces."
 
 #: ../../configexamples/policy-based-ipsec-and-firewall.rst:32
 msgid "Allow access to the router only from trusted networks."
@@ -572,6 +592,10 @@ msgid "Basic Setup (via console)"
 msgstr "Configuración básica (a través de la consola)"
 
 #: ../../configexamples/ansible.rst:64
+msgid "Basic configuration of ansible.cfg:"
+msgstr "Basic configuration of ansible.cfg:"
+
+#: ../../configexamples/ansible.rst:64
 msgid "Basik configuration of the ansible.cfg:"
 msgstr "Basik configuration of the ansible.cfg:"
 
@@ -656,9 +680,17 @@ msgstr "Cisco VPC Crossconnect: puertos 39 y 40 enlazados entre cada switch"
 msgid "Clamp the VTI's MSS to 1350 to avoid PMTU blackholes."
 msgstr "Sujete el MSS de VTI a 1350 para evitar los agujeros negros de PMTU."
 
+#: ../../configexamples/lac-lns.rst:96
+msgid "Client"
+msgstr "Client"
+
 #: ../../configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP.rst:94
 msgid "Client configuration"
 msgstr "Configuración del cliente"
+
+#: ../../configexamples/policy-based-ipsec-and-firewall.rst:24
+msgid "Communication between private subnets should be done through IPSec tunnel without NAT."
+msgstr "Communication between private subnets should be done through IPSec tunnel without NAT."
 
 #: ../../configexamples/policy-based-ipsec-and-firewall.rst:24
 msgid "Communication between private subnets should be done through ipsec tunnel without nat."
@@ -704,7 +736,7 @@ msgstr "Configuración &#39;dcsp&#39; y modelador usando QoS"
 msgid "Configuration Blueprints"
 msgstr "Planos de configuración"
 
-#: ../../configexamples/index.rst:30
+#: ../../configexamples/index.rst:31
 msgid "Configuration Blueprints (autotest)"
 msgstr "Configuración de blueprints (autoprueba)"
 
@@ -717,6 +749,7 @@ msgid "Configuration of basic firewall in one site, in order to:"
 msgstr "Configuration of basic firewall in one site, in order to:"
 
 #: ../../configexamples/inter-vrf-routing-vrf-lite.rst:113
+#: ../../configexamples/lac-lns.rst:29
 #: ../../configexamples/pppoe-ipv6-basic.rst:26
 msgid "Configurations"
 msgstr "Configuraciones"
@@ -885,7 +918,7 @@ msgstr "Enrutamiento dinámico utilizado entre nodos CE y PE y peering eBGP esta
 msgid "Each interface is assigned to a zone. The interface can be physical or virtual such as tunnels (VPN, PPTP, GRE, etc) and are treated exactly the same."
 msgstr "Cada interfaz está asignada a una zona. La interfaz puede ser física o virtual, como túneles (VPN, PPTP, GRE, etc.) y se tratan exactamente de la misma manera."
 
-#: ../../configexamples/index.rst:34
+#: ../../configexamples/index.rst:35
 msgid "Each lab will build an test from an external script. The page content will generate, so changes will not take an effect."
 msgstr "Cada laboratorio creará una prueba a partir de un script externo. El contenido de la página se generará, por lo que los cambios no tendrán efecto."
 
@@ -1006,6 +1039,10 @@ msgstr "Para los usuarios de redes domésticas, la mayoría de las veces el ISP 
 #: ../../configexamples/azure-vpn-bgp.rst:11
 msgid "For redundant / active-active configurations see :ref:`examples-azure-vpn-dual-bgp`"
 msgstr "Para configuraciones redundantes/activo-activo, consulte :ref:`examples-azure-vpn-dual-bgp`"
+
+#: ../../configexamples/policy-based-ipsec-and-firewall.rst:10
+msgid "For simplicity, configuration and tests are done only using IPv4, and firewall configuration is done only on one router."
+msgstr "For simplicity, configuration and tests are done only using IPv4, and firewall configuration is done only on one router."
 
 #: ../../configexamples/policy-based-ipsec-and-firewall.rst:10
 msgid "For simplicity, configuration and tests are done only using ipv4, and firewall configuration in done only on one router."
@@ -1213,6 +1250,10 @@ msgid "In the end, you will end up with something like this config. I took out e
 msgstr "Al final, terminará con algo como esta configuración. Eliminé todo excepto las secciones Firewall, Interfaces y zone-policy. Es lo suficientemente largo como está."
 
 #: ../../configexamples/ansible.rst:216
+msgid "In the next chapter of the example, we'll use Ansible with jinja2 templates and variables."
+msgstr "In the next chapter of the example, we'll use Ansible with jinja2 templates and variables."
+
+#: ../../configexamples/ansible.rst:216
 msgid "In the next chapter of the example, we'll use the Ansible with jinja2 templates and variables."
 msgstr "In the next chapter of the example, we'll use the Ansible with jinja2 templates and variables."
 
@@ -1252,6 +1293,14 @@ msgstr "En este ejemplo, existen dos interfaces LAN en diferentes subredes en lu
 msgid "In this example we have 4 zones. LAN, WAN, DMZ, Local. The local zone is the firewall itself."
 msgstr "En este ejemplo tenemos 4 zonas. LAN, WAN, DMZ, locales. La zona local es el propio cortafuegos."
 
+#: ../../configexamples/lac-lns.rst:17
+msgid "In this example we use VyOS 1.5 as LNS and Cisco IOS as LAC. All users with domain **vyos.io** will be tunneled to LNS via L2TP."
+msgstr "In this example we use VyOS 1.5 as LNS and Cisco IOS as LAC. All users with domain **vyos.io** will be tunneled to LNS via L2TP."
+
+#: ../../configexamples/lac-lns.rst:98
+msgid "In this lab we use Windows PPPoE client."
+msgstr "In this lab we use Windows PPPoE client."
+
 #: ../../configexamples/zone-policy.rst:50
 msgid "Inbound WAN connect to DMZ host."
 msgstr "Conexión WAN entrante al host DMZ."
@@ -1263,6 +1312,14 @@ msgstr "Información sobre Redes Privadas Virtuales Ethernet"
 #: ../../configexamples/segment-routing-isis.rst:223
 msgid "Information about prefix-sid and label-operation from VyOS"
 msgstr "Información sobre prefijo-sid y etiqueta-operación de VyOS"
+
+#: ../../configexamples/ansible.rst:37
+msgid "Install Ansible:"
+msgstr "Install Ansible:"
+
+#: ../../configexamples/ansible.rst:44
+msgid "Install Paramiko:"
+msgstr "Install Paramiko:"
 
 #: ../../configexamples/ansible.rst:37
 msgid "Install the Ansible:"
@@ -1345,6 +1402,10 @@ msgstr "Tabla de parámetros de configuración de L3VPN:"
 msgid "L3VPN for Hub-and-Spoke connectivity with VyOS"
 msgstr "L3VPN para conectividad Hub-and-Spoke con VyOS"
 
+#: ../../configexamples/lac-lns.rst:32
+msgid "LAC"
+msgstr "LAC"
+
 #: ../../configexamples/zone-policy.rst:392
 msgid "LAN, WAN, DMZ, local and TUN (tunnel)"
 msgstr "LAN, WAN, DMZ, local y TUN (túnel)"
@@ -1389,6 +1450,10 @@ msgstr "Los hosts LAN y DMZ tienen acceso de salida básico: Web, FTP, SSH."
 msgid "LAN can access DMZ resources."
 msgstr "La LAN puede acceder a los recursos de la DMZ."
 
+#: ../../configexamples/lac-lns.rst:72
+msgid "LNS"
+msgstr "LNS"
+
 #: ../../configexamples/l3vpn-hub-and-spoke.rst:551
 msgid "Let’s check IPv4 routing and MPLS information on provider nodes (same procedure for all P nodes):"
 msgstr "Verifiquemos el enrutamiento IPv4 y la información de MPLS en los nodos del proveedor (el mismo procedimiento para todos los nodos P):"
@@ -1396,6 +1461,10 @@ msgstr "Verifiquemos el enrutamiento IPv4 y la información de MPLS en los nodos
 #: ../../configexamples/inter-vrf-routing-vrf-lite.rst:25
 msgid "Let’s say we have a requirement to have multiple networks."
 msgstr "Digamos que tenemos un requisito para tener varias redes."
+
+#: ../../configexamples/policy-based-ipsec-and-firewall.rst:22
+msgid "Local subnets should be able to reach internet using source NAT."
+msgstr "Local subnets should be able to reach internet using source NAT."
 
 #: ../../configexamples/policy-based-ipsec-and-firewall.rst:22
 msgid "Local subnets should be able to reach internet using source nat."
@@ -1433,8 +1502,21 @@ msgid "Masquerade Traffic originating from 10.200.201.0/24 that is heading out t
 msgstr "Tráfico de enmascaramiento que se origina en 10.200.201.0/24 que se dirige hacia la interfaz pública."
 
 #: ../../configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP.rst:254
+#: ../../configexamples/lac-lns.rst:106
 msgid "Monitoring"
 msgstr "Supervisión"
+
+#: ../../configexamples/lac-lns.rst:117
+msgid "Monitoring on LAC side"
+msgstr "Monitoring on LAC side"
+
+#: ../../configexamples/lac-lns.rst:108
+msgid "Monitoring on LNS side"
+msgstr "Monitoring on LNS side"
+
+#: ../../configexamples/lac-lns.rst:140
+msgid "Monitoring on RADIUS Server side"
+msgstr "Monitoring on RADIUS Server side"
 
 #: ../../configexamples/autotest/tunnelbroker/tunnelbroker.rst:162
 msgid "Multiple LAN/DMZ Setup"
@@ -1456,6 +1538,7 @@ msgstr "IPv4 e IPv6 nativos"
 msgid "Network Cabling"
 msgstr "Cableado de red"
 
+#: ../../configexamples/lac-lns.rst:21
 #: ../../configexamples/pppoe-ipv6-basic.rst:18
 msgid "Network Topology"
 msgstr "Topología de la red"
@@ -1463,6 +1546,7 @@ msgstr "Topología de la red"
 #: ../../configexamples/ansible.rst:-1
 #: ../../configexamples/inter-vrf-routing-vrf-lite.rst:-1
 #: ../../configexamples/l3vpn-hub-and-spoke.rst:-1
+#: ../../configexamples/lac-lns.rst:-1
 #: ../../configexamples/nmp.rst:-1
 #: ../../configexamples/pppoe-ipv6-basic.rst:-1
 #: ../../configexamples/qos.rst:-1
@@ -1655,6 +1739,10 @@ msgstr "Configuración básica de PPPoE IPv6 para la red doméstica"
 msgid "PPPoE Setup"
 msgstr "Configuración de PPPoE"
 
+#: ../../configexamples/lac-lns.rst:7
+msgid "PPPoE over L2TP"
+msgstr "PPPoE over L2TP"
+
 #: ../../configexamples/segment-routing-isis.rst:255
 msgid "Ping between VyOS-P1 / VyOS-P2 to confirm reachability:"
 msgstr "Haga ping entre VyOS-P1 / VyOS-P2 para confirmar la accesibilidad:"
@@ -1690,6 +1778,10 @@ msgstr "requisitos previos"
 #: ../../configexamples/ha.rst:520
 msgid "Priorities"
 msgstr "Prioridades"
+
+#: ../../configexamples/policy-based-ipsec-and-firewall.rst:29
+msgid "Protect the router on 'WAN' interface, allowing only IPSec connections and SSH access from trusted IPs."
+msgstr "Protect the router on 'WAN' interface, allowing only IPSec connections and SSH access from trusted IPs."
 
 #: ../../configexamples/policy-based-ipsec-and-firewall.rst:29
 msgid "Protect the router on 'WAN' interface, allowing only ipsec connections and ssh access from trusted ips."
@@ -2046,7 +2138,7 @@ msgstr "El laboratorio que construí usa un VRF (llamado **mgmt**) para proporci
 msgid "The lab was built using EVE-NG."
 msgstr "The lab was built using EVE-NG."
 
-#: ../../configexamples/index.rst:32
+#: ../../configexamples/index.rst:33
 msgid "The next pages contains automatic full tested configuration examples."
 msgstr "Las siguientes páginas contienen ejemplos de configuración probados completamente automáticos."
 
@@ -2054,7 +2146,7 @@ msgstr "Las siguientes páginas contienen ejemplos de configuración probados co
 msgid "The previous example used the failover command to send traffic through eth1 if eth0 fails. In this example, failover functionality is provided by rule order."
 msgstr "El ejemplo anterior usó el comando de conmutación por error para enviar tráfico a través de eth1 si falla eth0. En este ejemplo, el orden de las reglas proporciona la funcionalidad de conmutación por error."
 
-#: ../../configexamples/index.rst:40
+#: ../../configexamples/index.rst:41
 msgid "The process will do the following steps:"
 msgstr "El proceso seguirá los siguientes pasos:"
 
@@ -2123,12 +2215,20 @@ msgid "This chapter contains various configuration examples:"
 msgstr "Este capítulo contiene varios ejemplos de configuración:"
 
 #: ../../configexamples/policy-based-ipsec-and-firewall.rst:16
+msgid "This configuration example and the requirments consists of:"
+msgstr "This configuration example and the requirments consists of:"
+
+#: ../../configexamples/policy-based-ipsec-and-firewall.rst:16
 msgid "This configuration example and the requirments consists on:"
 msgstr "This configuration example and the requirments consists on:"
 
 #: ../../configexamples/ha.rst:13
 msgid "This document aims to walk you through setting everything up, so at a point where you can reboot any machine and not lose more than a few seconds worth of connectivity."
 msgstr "Este documento tiene como objetivo guiarlo a través de la configuración de todo, de modo que pueda reiniciar cualquier máquina y no perder más de unos segundos de conectividad."
+
+#: ../../configexamples/lac-lns.rst:9
+msgid "This document is to describe a basic setup using PPPoE over L2TP. LAC and LNS are components of the broadband topology. LAC - L2TP access concentrator LNS -  L2TP Network Server LAC and LNS forms L2TP tunnel. LAC receives packets from PPPoE clients and forward them to LNS. LNS is the termination point that comes from PPP packets from the remote client."
+msgstr "This document is to describe a basic setup using PPPoE over L2TP. LAC and LNS are components of the broadband topology. LAC - L2TP access concentrator LNS -  L2TP Network Server LAC and LNS forms L2TP tunnel. LAC receives packets from PPPoE clients and forward them to LNS. LNS is the termination point that comes from PPP packets from the remote client."
 
 #: ../../configexamples/pppoe-ipv6-basic.rst:9
 msgid "This document is to describe a basic setup using PPPoE with DHCPv6-PD + SLAAC to construct a typical home network. The user can follow the steps described here to quickly setup a working network and use this as a starting point to further configure or fine-tune other settings."
@@ -2165,6 +2265,10 @@ msgstr "Esta guía muestra un ejemplo de una VPN de sitio a sitio IKEv2 basada e
 #: ../../configexamples/policy-based-ipsec-and-firewall.rst:7
 msgid "This guide shows an example policy-based IKEv2 site-to-site VPN between two VyOS routers, and firewall configiuration."
 msgstr "This guide shows an example policy-based IKEv2 site-to-site VPN between two VyOS routers, and firewall configiuration."
+
+#: ../../configexamples/policy-based-ipsec-and-firewall.rst:7
+msgid "This guide shows an example policy-based IKEv2 site-to-site VPN between two VyOS routers, and firewall configuration."
+msgstr "This guide shows an example policy-based IKEv2 site-to-site VPN between two VyOS routers, and firewall configuration."
 
 #: ../../configexamples/autotest/tunnelbroker/tunnelbroker.rst:10
 msgid "This guide walks through the setup of https://www.tunnelbroker.net/ for an IPv6 Tunnel."
@@ -2209,6 +2313,10 @@ msgstr "Esta sección describe los comandos de verificación para los protocolos
 #: ../../configexamples/l3vpn-hub-and-spoke.rst:409
 msgid "This section provides configuration steps for setting up VRFs on our PE nodes including CE facing interfaces, BGP, rd and route-target import/export based on the pre-defined parameters."
 msgstr "Esta sección proporciona pasos de configuración para establecer VRF en nuestros nodos PE, incluidas las interfaces orientadas a CE, BGP, rd e importación/exportación de destino de ruta en función de los parámetros predefinidos."
+
+#: ../../configexamples/lac-lns.rst:91
+msgid "This setup requires the Compression Control Protocol (CCP) being disabled, the command ``set vpn l2tp remote-access ppp-options disable-ccp`` accomplishes that."
+msgstr "This setup requires the Compression Control Protocol (CCP) being disabled, the command ``set vpn l2tp remote-access ppp-options disable-ccp`` accomplishes that."
 
 #: ../../configexamples/autotest/Wireguard/Wireguard.rst:10
 msgid "This simple structure show how to connect two offices. One remote branch and the central office."
@@ -2580,6 +2688,10 @@ msgstr "Cuando tenga ambos enrutadores activos, debería poder establecer una co
 msgid "When you have enabled OSPF on both routers, you should be able to see each other with the command ``show ip ospf neighbour``. The state must be 'Full' or '2-Way'. If it is not, then there is a network connectivity issue between the hosts. This is often caused by NAT or MTU issues. You should not see any new routes (unless this is the second pass) in the output of ``show ip route``"
 msgstr "Cuando haya habilitado OSPF en ambos enrutadores, debería poder verse con el comando ``show ip ospf neighbour``. El estado debe ser &#39;Completo&#39; o &#39;2 vías&#39;. Si no es así, entonces hay un problema de conectividad de red entre los hosts. Esto suele deberse a problemas de NAT o MTU. No debería ver ninguna ruta nueva (a menos que esta sea la segunda pasada) en la salida de ``show ip route``"
 
+#: ../../configexamples/lac-lns.rst:-1
+msgid "Window PPPoE Client Configuration"
+msgstr "Window PPPoE Client Configuration"
+
 #: ../../configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP.rst:13
 msgid "Windows Server 2019 with a running Active Directory"
 msgstr "Windows Server 2019 con Active Directory en ejecución"
@@ -2713,15 +2825,15 @@ msgstr "compute3 - Puerto 11 de cada switch"
 msgid "compute3 (VMware ESXi 6.5)"
 msgstr "computar3 (VMware ESXi 6.5)"
 
-#: ../../configexamples/index.rst:43
+#: ../../configexamples/index.rst:44
 msgid "configure each host in the lab"
 msgstr "configurar cada host en el laboratorio"
 
-#: ../../configexamples/index.rst:42
+#: ../../configexamples/index.rst:43
 msgid "create the lab on a eve-ng server"
 msgstr "crear el laboratorio en un servidor eve-ng"
 
-#: ../../configexamples/index.rst:44
+#: ../../configexamples/index.rst:45
 msgid "do some defined tests"
 msgstr "hacer algunas pruebas definidas"
 
@@ -2742,7 +2854,7 @@ msgstr "comunidad extendida y etiqueta remota de destino específico"
 msgid "first the PCA"
 msgstr "primero el PCA"
 
-#: ../../configexamples/index.rst:46
+#: ../../configexamples/index.rst:47
 msgid "generate the documentation and include files"
 msgstr "generar la documentación e incluir archivos"
 
@@ -2754,7 +2866,7 @@ msgstr "verde usa la identificación de la tabla de enrutamiento local y VNI 400
 msgid "information between PE and CE:"
 msgstr "información entre PE y CE:"
 
-#: ../../configexamples/index.rst:45
+#: ../../configexamples/index.rst:46
 msgid "optional do an upgrade to a higher version and do step 3 again."
 msgstr "opcional, actualice a una versión superior y vuelva a realizar el paso 3."
 
@@ -2770,7 +2882,7 @@ msgstr "router2 (máquina aleatoria de 1RU con 4 NIC)"
 msgid "save the output to a file and import it in nearly all openvpn clients."
 msgstr "guarde el resultado en un archivo e impórtelo en casi todos los clientes de openvpn."
 
-#: ../../configexamples/index.rst:47
+#: ../../configexamples/index.rst:48
 msgid "shutdown and destroy the lab, if there is no error"
 msgstr "apagar y destruir el laboratorio, si no hay ningún error"
 

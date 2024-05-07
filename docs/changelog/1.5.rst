@@ -8,6 +8,678 @@
    _ext/releasenotes.py
 
 
+2024-04-26
+==========
+
+* :vytask:`T6259` ``(feature): PKI: Support RFC822 (email) names in SAN``
+
+
+2024-04-25
+==========
+
+* :vytask:`T6263` ``(bug): Multicast: Could not commit multicast config with multicast join group using source-address``
+* :vytask:`T5833` ``(bug): Not all AFIs compatible with VRF``
+
+
+2024-04-24
+==========
+
+* :vytask:`T6255` ``(bug): Static table description should not contain white-space``
+* :vytask:`T6226` ``(feature): add HAPROXY `tcp-request content accept` related block to load-balancing reverse proxy config``
+* :vytask:`T6109` ``(bug): remote syslog do not get all the logs``
+* :vytask:`T6262` ``(default): Update the boot splash for VyOS 1.5 ISO``
+* :vytask:`T6217` ``(feature): VRRP contrack-sync script change name of the logger``
+* :vytask:`T6244` ``(feature): Spacing of "Show System Uptime" hard to parse``
+
+
+2024-04-23
+==========
+
+* :vytask:`T6260` ``(bug): image-tools: remove failed image directory if 'No space left on device' error``
+* :vytask:`T6261` ``(default): Typo in op_mode connect_disconnect print statement for check_ppp_running``
+* :vytask:`T6237` ``(feature): IPSec remote access VPN: ability to set EAP ID of clients``
+
+
+2024-04-22
+==========
+
+* :vytask:`T5996` ``(bug): unescape backslashes for config save, compare commands``
+
+
+2024-04-21
+==========
+
+* :vytask:`T6191` ``(bug): Policy Route TCP-MSS Behavior Different from 1.3.x``
+* :vytask:`T5535` ``(feature): disable-directed-broadcast should be moved to firewall global-options``
+
+
+2024-04-20
+==========
+
+* :vytask:`T6252` ``(bug): gre tunnel - doesn't allow configure jumbo frame more than 8024``
+
+
+2024-04-19
+==========
+
+* :vytask:`T6221` ``(bug): Enabling VRF breaks connectivity``
+* :vytask:`T6035` ``(bug): QoS policy shaper queue-type random-detect requires  limit avpkt``
+* :vytask:`T6246` ``(feature): Enable basic haproxy http-check configuration options``
+* :vytask:`T6242` ``(feature): Loadbalancer reverse-proxy: SSL backend skip CA certificate verification``
+
+
+2024-04-17
+==========
+
+* :vytask:`T6168` ``(bug): add system image does not set default boot to current console type in compatibility mode``
+* :vytask:`T6243` ``(bug): Update vyos-http-api-tools for package idna security advisory``
+* :vytask:`T6154` ``(enhancment): Installer should ask for password twice``
+* :vytask:`T5966` ``(default): Adjust dynamic dns configuration address subpath to be more intuitive and other op-mode adjustments``
+* :vytask:`T5723` ``(default): mdns repeater: Always reload systemd daemon before applying changes``
+* :vytask:`T5722` ``(bug): Failing to add route in failover if gateway not in the same interface network``
+* :vytask:`T5612` ``(default): Miscellaneous improvements and fixes for dynamic DNS configuration``
+* :vytask:`T5574` ``(default): Support per-service cache management for dynamic dns providers``
+
+
+2024-04-16
+==========
+
+* :vytask:`T6099` ``(bug): Suppress unsupported interfaces from appearing in messages log by Telegraf``
+
+
+2024-04-15
+==========
+
+* :vytask:`T6163` ``(bug): kea-dhcp4-server crashes due to incorrect lease file permissions after 1.5-rolling-202403120022 -> 1.5-rolling-202403230018 upgrade``
+* :vytask:`T6100` ``(bug): NAT config migration error in 1.4.0-epa1 if invalid address/network defined in 1.3.6 version``
+* :vytask:`T6174` ``(bug): can't view dhcp server leases if logged in as a tacacs account``
+* :vytask:`T5734` ``(bug): OpenVPN server dh-params that are not in PKI error``
+
+
+2024-04-14
+==========
+
+* :vytask:`T6210` ``(feature): Add container ability to configure capability sys-nice``
+
+
+2024-04-13
+==========
+
+* :vytask:`T6173` ``(bug): Build Causes Errors When "--version" Contains Slashes ("/")``
+* :vytask:`T2518` ``(feature): Support NAT for ipv6(NPT)``
+
+
+2024-04-12
+==========
+
+* :vytask:`T6214` ``(bug): Error when using some constraints``
+* :vytask:`T6213` ``(bug): Firewall group constraints``
+* :vytask:`T6222` ``(bug): VRRP rfc3768-compatibility not working correctly when resulting interface name is over 15 characters``
+* :vytask:`T6218` ``(bug): Container network interface in VRF fails to generate IPv6 link-local address``
+* :vytask:`T5044` ``(feature): High Availability in DHCPv6 -ISC DHCP Failover/Kea``
+* :vytask:`T6166` ``(bug): Tech support generation error for custom output location``
+* :vytask:`T344` ``(feature): Software basesd FastPath``
+
+
+2024-04-11
+==========
+
+* :vytask:`T4516` ``(feature): Rewrite system image manipulation tools in Python``
+* :vytask:`T4548` ``(feature): GRUB loader configuration rework``
+* :vytask:`T6228` ``(bug): Cleanup of not existing units``
+
+
+2024-04-10
+==========
+
+* :vytask:`T6207` ``(bug): image-tools: restore ability to copy config.boot.default on image install``
+* :vytask:`T6106` ``(bug): Valid commit error for route-reflector-client option defined in peer-group``
+* :vytask:`T5750` ``(bug): Upgrade from 1.3.4 to 1.4 Rolling fails QoS``
+* :vytask:`T5740` ``(bug): Generate wiregurad keys via HTTP-API fails``
+* :vytask:`T5858` ``(bug): Show conntrack statistics formatting is all over the place``
+
+
+2024-04-09
+==========
+
+* :vytask:`T6121` ``(feature): Extend service config-sync for sections  vpn, policy, vrf``
+
+
+2024-04-08
+==========
+
+* :vytask:`T6197` ``(bug): IPoE-server interface client-subnet looks broken or works with the wrong logic``
+* :vytask:`T6196` ``(bug): Route-map and summary-only do not work in BGP aggregation at the same time``
+* :vytask:`T6068` ``(feature): dhcp server: allow switching between load-balanced and hotspare mode``
+
+
+2024-04-07
+==========
+
+* :vytask:`T6205` ``(bug): ipoe: error in migration script logic while renaming mac-address to mac node``
+* :vytask:`T5862` ``(bug): Default MTU is not acceptable in some environments``
+* :vytask:`T6208` ``(feature): container: rename "cap-add" CLI node to "capability"``
+* :vytask:`T6188` ``(feature): Add Firewall Rule Description to "show firewall" commands``
+* :vytask:`T1244` ``(default): Support for StartupResync in conntrackd``
+
+
+2024-04-06
+==========
+
+* :vytask:`T6203` ``(enhancment): Remove obsoleted xml lib``
+* :vytask:`T6202` ``(bug): Multi-Protocol BGP is broken by 6PE patch in upstream FRR 9.1``
+
+
+2024-04-05
+==========
+
+* :vytask:`T6089` ``(bug): [1.3.6->1.4.0-epa1 Migration] "ospf passive-interface default" incorrectly added``
+* :vytask:`T2590` ``(bug): DHCPv6 not updating nameservers and search domains since replacing isc-dhcp-client with WIDE dhcp6c``
+* :vytask:`T6199` ``(feature): spring cleaning - drop unused Python imports``
+
+
+2024-04-04
+==========
+
+* :vytask:`T6119` ``(default): Use a compliant TOML parser``
+* :vytask:`T6171` ``(feature): dhcp server fail-over - Rename fail-over node``
+* :vytask:`T6128` ``(bug): minisign.pub is wrong on https://vyos.net/get/nightly-builds/``
+* :vytask:`T5882` ``(feature): vyos-utils: move to Dune as build system``
+* :vytask:`T5864` ``(default): 'show ntp' Commands Not Working``
+* :vytask:`T3843` ``(bug): l2tp configuration not cleared after delete``
+* :vytask:`T2187` ``(feature): Python Unit testing``
+* :vytask:`T788` ``(bug): Nightly builds are not signed``
+
+
+2024-04-03
+==========
+
+* :vytask:`T6198` ``(feature): configverify: add common helper for PKI certificate validation``
+* :vytask:`T6192` ``(feature): Multi VRF support for SSH``
+
+
+2024-04-02
+==========
+
+* :vytask:`T6167` ``(bug): VNI not set on VRF after reboot``
+* :vytask:`T6151` ``(default): BGP VRF - Route-leaking not work when the next-hop is a recursive route.``
+* :vytask:`T6033` ``(bug): hsflowd fails to start when using a tunnel interface``
+
+
+2024-04-01
+==========
+
+* :vytask:`T6195` ``(feature): dropbear: package upgrade 2022.83-1 -> 2022.83-1+deb12u1``
+* :vytask:`T6193` ``(bug): dhcp-client: invalid warning "is not a DHCP interface but uses DHCP name-server option" for VLAN interfaces``
+* :vytask:`T6178` ``(bug): Reverse-proxy should check that certificate exists during commit``
+
+
+2024-03-31
+==========
+
+* :vytask:`T6186` ``(bug): Fix regression in 'set system image default-boot'``
+* :vytask:`T5832` ``(feature): Keepalived: Allow using the 'dev' statement on excluded-addresses``
+
+
+2024-03-29
+==========
+
+* :vytask:`T6159` ``(bug): Openvpn Server Op-cmd adds heading "OpenVPN status on vtunx" for every client connection``
+
+
+2024-03-28
+==========
+
+* :vytask:`T6147` ``(bug): Conntrack not working as expected with global state-policy``
+* :vytask:`T6175` ``(bug): op-mode: "renew dhcp interface <name>" does not check if it's an actual DHCP interface``
+* :vytask:`T6102` ``(bug): Clear dhcp-server lease throws python exception on 1.5-rolling``
+
+
+2024-03-26
+==========
+
+* :vytask:`T6066` ``(bug): Setting same network in different ospf area will raise exception``
+
+
+2024-03-25
+==========
+
+* :vytask:`T6145` ``(bug): Service config-sync does not rely on priorities but must``
+
+
+2024-03-24
+==========
+
+* :vytask:`T6161` ``(feature): Output container images as JSON``
+* :vytask:`T6165` ``(bug): grub: vyos-grub-update failed to start on "slow" systems``
+* :vytask:`T6085` ``(bug): VTI interfaces are in UP state by default``
+* :vytask:`T6152` ``(bug): Kernel panic for ZimaBoard 232``
+
+
+2024-03-23
+==========
+
+* :vytask:`T6160` ``(bug): isis: NameError: name 'process' is not defined``
+* :vytask:`T6131` ``(bug): Disabling openvpn interface(s) causes OSPF to fail to load on reboot``
+* :vytask:`T4022` ``(feature): Add package nat-rtsp-dkms``
+
+
+2024-03-22
+==========
+
+* :vytask:`T6136` ``(bug): Configuring a dynamic address group, config script did not check whether the group was created``
+* :vytask:`T6130` ``(bug): [1.3.6->1.4.0-epa2 Migration] BGP "set community" missing``
+* :vytask:`T6090` ``(bug): [1.3.6->1.4.0-epa1 Migration] policy route fails due tcp flag case sensitivity``
+* :vytask:`T6155` ``(default): ixgbe: failed to initialize because an unsupported SFP+ module type was detected.``
+* :vytask:`T6125` ``(feature): Support 802.1ad (0x88a8) vlan filtering for bridge``
+
+
+2024-03-21
+==========
+
+* :vytask:`T6143` ``(feature): Increase configuration timeout range for service config-sync``
+
+
+2024-03-20
+==========
+
+* :vytask:`T6133` ``(feature): Add domain-name to commit-archive``
+* :vytask:`T6129` ``(feature): bgp: add route-map option "as-path exclude all"``
+
+
+2024-03-19
+==========
+
+* :vytask:`T6127` ``(bug): Ability to view logs for rules with Offload not functional``
+* :vytask:`T6138` ``(bug): Conntrack table op-mode fails with flowtable offload entries``
+
+
+2024-03-15
+==========
+
+* :vytask:`T6118` ``(feature): radvd: RFC8781: add nat64prefix support``
+
+
+2024-03-12
+==========
+
+* :vytask:`T6020` ``(bug): VRRP health-check script is not applied correctly in keepalived.conf``
+* :vytask:`T5646` ``(bug): QoS policy limiter broken if class without match``
+
+
+2024-03-11
+==========
+
+* :vytask:`T6098` ``(bug): Description doesnt seem to allow for non international characters``
+* :vytask:`T2998` ``(bug): SNMP v3 oid "exclude" option doesn't work``
+* :vytask:`T6107` ``(bug): Nginx does not allow big config queries for configure endpoint API``
+* :vytask:`T6096` ``(bug): Config commits are not synced properly because 00vyos-sync is deleted by vyos-router``
+* :vytask:`T6093` ``(bug): Incorrect dhcp-options vendor-class-id regex``
+* :vytask:`T6083` ``(feature): ethtool: move string parsing to JSON parsing``
+* :vytask:`T6069` ``(bug): HTTP API segfault during concurrent configuration requests``
+* :vytask:`T6057` ``(feature): Add ability to disable syslog for conntrackd``
+* :vytask:`T5504` ``(feature): Keepalived VRRP ability to set more than one peer-address``
+* :vytask:`T5717` ``(feature): ospfv3 - add  allow to set metric-type to ospf redistribution while frr docs says its possible.``
+* :vytask:`T6071` ``(bug): firewall: CLI description limit of 256 characters cause config upgrade issues``
+
+
+2024-03-08
+==========
+
+* :vytask:`T6086` ``(bug): NAT does not work with network-groups``
+* :vytask:`T6094` ``(bug): Destination Nat not Making Firewall Rules``
+* :vytask:`T6061` ``(bug): connection-status nat destination firewall filter not working in 1.4.0-epa1``
+* :vytask:`T6075` ``(bug): Applying firewall rules with a non-existent interface group``
+
+
+2024-03-07
+==========
+
+* :vytask:`T6104` ``(bug): Regression in commit-archive for non-interactive configuration``
+* :vytask:`T6084` ``(bug): OpenNHRP DMVPN configuration file clean after reboot if we have any IPSec configuration``
+* :vytask:`T5348` ``(bug): Service config-sync can freeze the secondary router if it has commit-archive location``
+* :vytask:`T6073` ``(bug): Conntrack/NAT not being disabled when VRFs are defined``
+* :vytask:`T6095` ``(default): Tab completion for "set interfaces wireless wlan0 country-code" incorrect country "uk"``
+
+
+2024-03-06
+==========
+
+* :vytask:`T6079` ``(bug): dhcp: migration fails for duplicate static-mapping``
+* :vytask:`T6063` ``(default): Kea DHCP: Expose match-client-id setting``
+* :vytask:`T5992` ``(default): DHCP: show dhcp server leases not showing all leases``
+
+
+2024-03-05
+==========
+
+* :vytask:`T5903` ``(bug): NHRP don´t start on reboot from version 1.5-rolling-202401010026``
+* :vytask:`T2447` ``(feature): Additional Boot Argument Configuration to limit CPU C-States``
+
+
+2024-03-04
+==========
+
+* :vytask:`T6087` ``(feature): ospfv3: add support to redistribute IS-IS routes``
+
+
+2024-03-02
+==========
+
+* :vytask:`T6081` ``(bug): QoS policy shaper target and interval wrong calcuations``
+
+
+2024-02-29
+==========
+
+* :vytask:`T6078` ``(feature): Update ethtool to 6.6``
+* :vytask:`T6077` ``(feature): banner: implement ASCII contest winner default logo``
+* :vytask:`T6074` ``(feature): container: do not allow deleting images which have a container running``
+
+
+2024-02-28
+==========
+
+* :vytask:`T4270` ``(bug): dns forwarding - When "ignore-hosts-file" is unset, local hostname of router resolves to 127.0.1.1``
+
+
+2024-02-26
+==========
+
+* :vytask:`T6064` ``(bug): Can not build VyOS if repository it not cloned to a branch``
+* :vytask:`T5754` ``(default): Update to StrongSwan 5.9.11``
+
+
+2024-02-25
+==========
+
+* :vytask:`T6060` ``(feature): op-mode: container: support removing all container images at once``
+
+
+2024-02-24
+==========
+
+* :vytask:`T5909` ``(bug): Container registry with authentication prevents config load (section container) after reboot``
+
+
+2024-02-23
+==========
+
+* :vytask:`T5376` ``(bug): Conntrack FTP helper does not work properly``
+
+
+2024-02-22
+==========
+
+* :vytask:`T6048` ``(bug): Exception in event handler script``
+
+
+2024-02-21
+==========
+
+* :vytask:`T6050` ``(bug): Wrong scripting commands descriptions in accel-ppp services``
+* :vytask:`T3771` ``(feature): DHCPv6 server prefix delegation - dynamically add route to delegated prefix via requesting router``
+
+
+2024-02-19
+==========
+
+* :vytask:`T5971` ``(default): Create the same view of ppp section  for all accel-ppp services``
+* :vytask:`T6029` ``(default): Rewrite Accel-PPP services to an identical feature set``
+* :vytask:`T3722` ``(bug): op-mode IPSec show vpn ike sa always shows L-TIME 0``
+
+
+2024-02-18
+==========
+
+* :vytask:`T6043` ``(bug): VxLAN and bridge error bug``
+* :vytask:`T6041` ``(bug): image-tools: install fails from PXE boot into live iso due to restrictive logic``
+
+
+2024-02-17
+==========
+
+* :vytask:`T5972` ``(feature): login: add possibility to disable individual local user accounts``
+
+
+2024-02-16
+==========
+
+* :vytask:`T6009` ``(bug): Firewall - Time not working properly when not using UTC``
+* :vytask:`T6005` ``(bug): Error on adding a wireguard interface to OSPFv3``
+* :vytask:`T6019` ``(feature): Bump nftables and libnftnl version``
+* :vytask:`T6001` ``(default): Add option to enable resolve-via-default``
+* :vytask:`T5965` ``(bug): WWAN modems using raw-ip do not work with dhclient/dhcp6c``
+* :vytask:`T5245` ``(bug): Wireless interfaces do not get IPv6 link-local address assigned``
+
+
+2024-02-15
+==========
+
+* :vytask:`T5977` ``(bug): nftables: Operation not supported when using match-ipsec in outbound firewall``
+* :vytask:`T2612` ``(bug): HTTPS API, changing API key fails but goes through``
+* :vytask:`T5989` ``(bug): IP subnets not usable in UPnP ACLs``
+* :vytask:`T5719` ``(default): mdns repeater: Add op-mode commands``
+* :vytask:`T4839` ``(feature): Dynamic Firewall groups``
+
+
+2024-02-14
+==========
+
+* :vytask:`T6034` ``(feature): rpki: move file based SSH keys for authentication to PKI subsystem``
+* :vytask:`T5981` ``(bug): IPsec site-to-site migrated PKI ca certificates are created with an '@'``
+* :vytask:`T5930` ``(bug): vrf - route-leak not work using route-target both command.``
+* :vytask:`T5709` ``(bug): IPoE-server fails if next pool mentioned but not defined``
+* :vytask:`T2044` ``(bug): RPKI doesn't boot properly``
+* :vytask:`T6032` ``(feature): bgp: add EVPN MAC-VRF Site-of-Origin support``
+* :vytask:`T5960` ``(default): Rewriting authentication section in accel-ppp services``
+
+
+2024-02-13
+==========
+
+* :vytask:`T5928` ``(bug): Configuration fails to load on boot if offloading has VLAN interfaces defined``
+* :vytask:`T5064` ``(bug): Value validation for domain-groups seems to be broken``
+
+
+2024-02-12
+==========
+
+* :vytask:`T6010` ``(bug): Support setting multiple values in BGP path-attribute``
+* :vytask:`T6004` ``(bug): RPKI is not configured``
+* :vytask:`T5952` ``(default): DHCP allow same MAC Address on same subnet``
+* :vytask:`T5849` ``(feature): Add SRv6 route commands``
+
+
+2024-02-10
+==========
+
+* :vytask:`T6023` ``(bug): rpki: add support for CLI knobs expire-interval and retry-interval``
+
+
+2024-02-09
+==========
+
+* :vytask:`T6028` ``(bug): QoS policy shaper wrong class_id_max and default_minor_id``
+* :vytask:`T6026` ``(bug): QoS hide attempts to delete qdisc from devices``
+* :vytask:`T5788` ``(feature): frr: update to 9.1 release``
+* :vytask:`T5703` ``(bug): QoS config on pppoe interface resets back to fq_codel after tunnel reboots``
+* :vytask:`T5685` ``(feature): Keepalived VRRP prefix is not necessary for the virtual address``
+
+
+2024-02-08
+==========
+
+* :vytask:`T6014` ``(feature): Bump keepalived version``
+* :vytask:`T5910` ``(bug): Grub problem(?) Serial Console no longer working``
+* :vytask:`T6021` ``(bug): QoS r2q wrong calculation``
+
+
+2024-02-07
+==========
+
+* :vytask:`T6017` ``(bug): Update vyos-http-api-tools for security advisory``
+* :vytask:`T6016` ``(bug): Resolve intermittent failures in cleanup function after failed image install``
+* :vytask:`T6024` ``(feature): bgp: add additional missing FRR features``
+* :vytask:`T6011` ``(feature): rpki: known-hosts-file is no longer supported by FRR CLI - remove VyOS CLI node``
+* :vytask:`T5998` ``(feature): replay_window setting under vpn in config``
+
+
+2024-02-06
+==========
+
+* :vytask:`T6018` ``(default): smoketest: updating http-api framework requires a pause before test``
+* :vytask:`T5921` ``(bug): Trying to commit an OpenConnect configuration without any local users results in an exception``
+* :vytask:`T5687` ``(feature): Implement ECS settings for PowerDNS recursor``
+
+
+2024-02-05
+==========
+
+* :vytask:`T5974` ``(bug): QoS policy shaper is currently miscalculating bandwidth and ceil values for the default class``
+* :vytask:`T5865` ``(feature): Rewrite ipv6 pool section to ipv6 named pools in Accel-ppp services``
+
+
+2024-02-02
+==========
+
+* :vytask:`T5739` ``(bug): Password recovery does not work if public keys are configured``
+* :vytask:`T5955` ``(feature): Rootless containers/set uid/gid for container``
+* :vytask:`T6003` ``(feature): Add 'show rpki as-number' and 'show rpki prefix'``
+* :vytask:`T5848` ``(feature): Add triple-isolate flow isolation option to CAKE QoS policy``
+
+
+2024-02-01
+==========
+
+* :vytask:`T5995` ``(bug): Kernel NIC-drivers for Huawei NICs are not properly enabled``
+* :vytask:`T5978` ``(bug): ethernet: hw-tc-offload does not actually get enabled on the NIC``
+* :vytask:`T5979` ``(enhancment): Add configurable kernel boot parameters``
+* :vytask:`T5973` ``(bug): vrf: RTNETLINK answers: File exists``
+* :vytask:`T5967` ``(bug): Multi-hop BFD connections can't be established; please add minimum-ttl option.``
+* :vytask:`T5619` ``(default): Update the Intel ixgbe driver due to issues with Intel X533``
+
+
+2024-01-31
+==========
+
+* :vytask:`T6000` ``(bug): [1.3.x -> 1.5.x] migrating threw exception in /opt/vyatta/etc/config-migrate/migrate/https/5-to-6, performed workaround``
+* :vytask:`T5999` ``(bug): load-balancing reverse-proxy can't configure root as a redirect``
+
+
+2024-01-30
+==========
+
+* :vytask:`T5980` ``(feature): Add image-tools support for configurable kernel boot options``
+
+
+2024-01-29
+==========
+
+* :vytask:`T5988` ``(bug): image-tools: a check of valid image name is missing from 'add image'``
+* :vytask:`T5994` ``(bug): Fix typo in 'remote' module preventing 'add system image' via ftp``
+
+
+2024-01-26
+==========
+
+* :vytask:`T5957` ``(bug): Firewall fails to delete inbound-interface name``
+* :vytask:`T5779` ``(bug): custom conntrack timeout rule not applicable``
+* :vytask:`T5984` ``(feature): Add user util numactl``
+
+
+2024-01-25
+==========
+
+* :vytask:`T5983` ``(bug): image-tools: minor regression in pruning version files in compatibility mode``
+* :vytask:`T5927` ``(bug): QoS policy shaper-hfsc class does not have a `bandwidth` node but requires one in the check``
+* :vytask:`T5834` ``(bug): Rename 'enable-default-log' to 'default-log'``
+
+
+2024-01-22
+==========
+
+* :vytask:`T5968` ``(feature): hsflowd: add VRF support``
+* :vytask:`T5961` ``(bug): QoS policy shaper vif with ceiling fails on commit``
+* :vytask:`T5958` ``(bug): QoS policy shaper-hfsc is not implemented``
+* :vytask:`T5969` ``(feature): op-mode: list multicast group membership``
+
+
+2024-01-21
+==========
+
+* :vytask:`T5799` ``(bug): vyos unbootable after 1.4-rolling-202308240020 to 1.5-rolling-202312010026 upgrade``
+* :vytask:`T5787` ``(bug): dhcp-server allows duplicate static-mapping for the same IP address``
+* :vytask:`T5912` ``(bug): DHCP Static mapping don't work on every first lease``
+* :vytask:`T5692` ``(enhancment): NTP leap smear``
+* :vytask:`T5954` ``(feature): Enable nvme_hwmon and drivetemp in KERNEL``
+
+
+2024-01-20
+==========
+
+* :vytask:`T5964` ``(bug): disconnect interface wwan0 throws exception``
+* :vytask:`T5948` ``(bug): pdns-recursor crashes on restart if hostfile-update is enabled and dhcp client sends hostname with trailing dot``
+* :vytask:`T5945` ``(bug): Missing minisign public key for rolling release``
+* :vytask:`T5922` ``(bug): Firewall - bug in zone config``
+* :vytask:`T5915` ``(bug): Firewall zone - Re add op-mode commands``
+* :vytask:`T5724` ``(feature): About dhcp client hooks``
+* :vytask:`T5721` ``(bug): Error in migrating configuration from VyOS 1.4``
+* :vytask:`T5550` ``(bug): Source validation on interface does not work properly``
+* :vytask:`T5239` ``(bug): frr 'hostname' missing or incorrect, and domain-name missing totally``
+* :vytask:`T4726` ``(default): Add completion and validation for the accel-ppp RADIUS vendor option``
+* :vytask:`T4085` ``(feature): Rewrite L2TP/PPTP/SSTP/PPPoE services to get_config_dict``
+* :vytask:`T5963` ``(bug): QoS policy shaper rate calculations could be wrong for some ethernet devices``
+* :vytask:`T5876` ``(bug): Dhcp bug in latest 1.5 rolling releases``
+* :vytask:`T5962` ``(feature): QoS policy set default speed to 100mbit or 1gbit instead of 10mbit``
+
+
+2024-01-19
+==========
+
+* :vytask:`T5897` ``(bug): VyOS with Cloud-init and VRF stucks at reboot/shutdown process``
+* :vytask:`T5554` ``(bug): Disable sudo for PAM RADIUS``
+* :vytask:`T4754` ``(default): Improvement: system login: show configured 2FA OTP key``
+* :vytask:`T5857` ``(bug): show interfaces wireless info``
+* :vytask:`T5841` ``(default): Remove old ssh-session-cleanup.service``
+* :vytask:`T5884` ``(default): Minor description fix (op-mode: generate wireguard)``
+* :vytask:`T5781` ``(default): Add ability to add additional minisign keys``
+
+
+2024-01-18
+==========
+
+* :vytask:`T5863` ``(bug): Failure to Load Config on Recent 1.5 Versions``
+* :vytask:`T4638` ``(bug): Deleting a parent interface does not delete its underlying VLAN interfaces``
+* :vytask:`T5953` ``(default): Rename 'close_action' value from `hold` to `trap` in IPSEC IKE``
+
+
+2024-01-17
+==========
+
+* :vytask:`T5923` ``(bug): Config mode system_console.py is not aware of revised GRUB file structure``
+* :vytask:`T4658` ``(feature): Rename DPD action `hold` to `trap```
+
+
+2024-01-16
+==========
+
+* :vytask:`T5859` ``(bug): Invalid format of pool range in accel-ppp services``
+* :vytask:`T5842` ``(feature): Rewrite PPTP service to get_config_dict``
+* :vytask:`T5801` ``(feature): Rewrite L2TP service to get_config_dict``
+* :vytask:`T5688` ``(default): Create the same view of pool configuration for all accel-ppp services``
+
+
+2024-01-15
+==========
+
+* :vytask:`T5944` ``(bug): "reboot in 1" not working``
+* :vytask:`T5936` ``(bug): [1.3.5 -> 1.4.0-RC1 Migration] OSPF Passive Interface Configuration Not Working Correctly``
+* :vytask:`T5247` ``(bug): the bug of the command "show interfaces system"``
+* :vytask:`T5901` ``(bug): Cloud-init and DHCP exit hook errors``
+* :vytask:`T2556` ``(bug): "show interfaces vrrp" does not return any interface``
+
+
 2024-01-12
 ==========
 
@@ -49,7 +721,6 @@
 ==========
 
 * :vytask:`T5898` ``(bug): Replace partprobe with partx due to unable to install VyOS``
-* :vytask:`T5862` ``(bug): Default MTU is not acceptable in some environments``
 * :vytask:`T5840` ``(feature): Upgrade Kea to 2.4.x``
 * :vytask:`T5838` ``(feature): Add Infiniband kernel modules``
 * :vytask:`T5785` ``(bug): API output of show container image broken``
@@ -129,7 +800,6 @@
 * :vytask:`T5866` ``(feature): Add op-mode command to restart IPv6 RA daemon``
 * :vytask:`T5861` ``(bug): Flavor build system fails with third-party packages``
 * :vytask:`T5854` ``(feature): Extend override-default script to allow embedded defaultValue settings``
-* :vytask:`T5566` ``(feature): Be able to disable 802.3az/EEE (energy efficient ethernet) for a particular interface``
 * :vytask:`T5792` ``(default): Upgrade ddclient 3.11.2 release``
 
 

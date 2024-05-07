@@ -57,6 +57,9 @@ The script only searches for executable "test-cases" under
 .. note:: As Smoketests will alter the system configuration and you are logged
    in remote you may loose your connection to the system.
 
+.. note:: To enable smoketest debugging (print of the CLI set commands used)
+   you can run: ``touch /tmp/vyos.smoketest.debug``.
+
 Manual Smoketest Run
 --------------------
 

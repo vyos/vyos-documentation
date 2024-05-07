@@ -8,27 +8,47 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n==1) ? 0 : 1;\n"
 
-#: ../../documentation.rst:239
+#: ../../documentation.rst:216
 msgid "16bit ASN: ``64496 - 64511``"
 msgstr "16bit ASN: ``64496 - 64511``"
 
-#: ../../documentation.rst:240
+#: ../../documentation.rst:84
+msgid "1. Theoretical information"
+msgstr "1. Theoretical information"
+
+#: ../../documentation.rst:92
+msgid "2. Configuration description"
+msgstr "2. Configuration description"
+
+#: ../../documentation.rst:217
 msgid "32bit ASN: ``65536 - 65551``"
 msgstr "32bit ASN: ``65536 - 65551``"
 
-#: ../../documentation.rst:182
+#: ../../documentation.rst:99
+msgid "3. Configuration examples"
+msgstr "3. Configuration examples"
+
+#: ../../documentation.rst:105
+msgid "4. Known issues"
+msgstr "4. Known issues"
+
+#: ../../documentation.rst:113
+msgid "5. Debugging"
+msgstr "5. Debugging"
+
+#: ../../documentation.rst:159
 msgid "A plugin will be used to generate a reference label for each headline. To reference a page or a section in the documentation use the ``:ref:`` command."
 msgstr "A plugin will be used to generate a reference label for each headline. To reference a page or a section in the documentation use the ``:ref:`` command."
 
-#: ../../documentation.rst:103
+#: ../../documentation.rst:408
 msgid "Add modified files to Git index ``$ git add path/to/filename`` or add all unstaged files ``$ git add .``. All files added to the Git index will be part of you following Git commit."
 msgstr "Add modified files to Git index ``$ git add path/to/filename`` or add all unstaged files ``$ git add .``. All files added to the Git index will be part of you following Git commit."
 
-#: ../../documentation.rst:229
+#: ../../documentation.rst:206
 msgid "Address space"
 msgstr "Address space"
 
-#: ../../documentation.rst:390
+#: ../../documentation.rst:58
 msgid "All RST files must follow the same TOC Level syntax and have to start with"
 msgstr "All RST files must follow the same TOC Level syntax and have to start with"
 
@@ -36,7 +56,7 @@ msgstr "All RST files must follow the same TOC Level syntax and have to start wi
 msgid "An optional section follows. Some commands have requirements like compatible hardware (e.g. Wifi) or some commands you have to set before. For example, it is recommended to set a route-map before configuring BGP."
 msgstr "An optional section follows. Some commands have requirements like compatible hardware (e.g. Wifi) or some commands you have to set before. For example, it is recommended to set a route-map before configuring BGP."
 
-#: ../../documentation.rst:53
+#: ../../documentation.rst:51
 msgid "And finally, remember that the reStructuredText files aren't exclusively for generating HTML and PDF. They should be human-readable and easily perused from a console."
 msgstr "And finally, remember that the reStructuredText files aren't exclusively for generating HTML and PDF. They should be human-readable and easily perused from a console."
 
@@ -48,23 +68,23 @@ msgstr "Anything else"
 msgid "Anything else that is not a configuration or an operation command has no predefined structure."
 msgstr "Anything else that is not a configuration or an operation command has no predefined structure."
 
-#: ../../documentation.rst:257
+#: ../../documentation.rst:234
 msgid "Autolinter"
 msgstr "Autolinter"
 
-#: ../../documentation.rst:94
+#: ../../documentation.rst:399
 msgid "Check your changes by locally building the documentation ``$ make livehtml``. Sphinx will build the html files in the ``docs/_build`` folder. We provide you with a Docker container for an easy-to-use user experience. Check the README.md_ file of this repository."
 msgstr "Check your changes by locally building the documentation ``$ make livehtml``. Sphinx will build the html files in the ``docs/_build`` folder. We provide you with a Docker container for an easy-to-use user experience. Check the README.md_ file of this repository."
 
-#: ../../documentation.rst:123
+#: ../../documentation.rst:428
 msgid "Check your configured remote repositories:"
 msgstr "Check your configured remote repositories:"
 
-#: ../../documentation.rst:78
+#: ../../documentation.rst:383
 msgid "Clone fork to local machine, then change to that directory ``$ cd vyos-documentation``"
 msgstr "Clone fork to local machine, then change to that directory ``$ cd vyos-documentation``"
 
-#: ../../documentation.rst:107
+#: ../../documentation.rst:412
 msgid "Commit your changes with the message, ``$ git commit -m \"<commit message>\"`` or  use ``$ git commit -v`` to have your configured editor launched. You can type in a commit message. Again please make yourself comfortable without rules (:ref:`prepare_commit`)."
 msgstr "Commit your changes with the message, ``$ git commit -m \"<commit message>\"`` or  use ``$ git commit -v`` to have your configured editor launched. You can type in a commit message. Again please make yourself comfortable without rules (:ref:`prepare_commit`)."
 
@@ -72,61 +92,77 @@ msgstr "Commit your changes with the message, ``$ git commit -m \"<commit messag
 msgid "Configuration mode pages"
 msgstr "Configuration mode pages"
 
-#: ../../documentation.rst:84
+#: ../../documentation.rst:389
 msgid "Create a new branch for your work, use a descriptive name of your work: ``$ git checkout -b <branch-name>``"
 msgstr "Create a new branch for your work, use a descriptive name of your work: ``$ git checkout -b <branch-name>``"
 
-#: ../../documentation.rst:180
+#: ../../documentation.rst:157
 msgid "Cross-References"
 msgstr "Cross-References"
 
-#: ../../documentation.rst:268
+#: ../../documentation.rst:245
 msgid "Custom Sphinx-doc Markup"
 msgstr "Custom Sphinx-doc Markup"
 
-#: ../../documentation.rst:270
+#: ../../documentation.rst:247
 msgid "Custom commands have been developed for writing the documentation. Please make yourself comfortable with those commands as this eases the way we render the documentation."
 msgstr "Custom commands have been developed for writing the documentation. Please make yourself comfortable with those commands as this eases the way we render the documentation."
 
-#: ../../documentation.rst:45
+#: ../../documentation.rst:94
+msgid "Describe CLI items related to the service or use case. Each config line or section must be explained, using information provided in the 1st part of the page."
+msgstr "Describe CLI items related to the service or use case. Each config line or section must be explained, using information provided in the 1st part of the page."
+
+#: ../../documentation.rst:115
+msgid "Described procedures for debugging a service:"
+msgstr "Described procedures for debugging a service:"
+
+#: ../../documentation.rst:43
 msgid "Don't forget to update ``index.rst`` when adding a new node."
 msgstr "Don't forget to update ``index.rst`` when adding a new node."
 
-#: ../../documentation.rst:259
+#: ../../documentation.rst:236
 msgid "Each GitHub pull request is automatically linted to check the address space and line length."
 msgstr "Each GitHub pull request is automatically linted to check the address space and line length."
 
-#: ../../documentation.rst:252
+#: ../../documentation.rst:81
+msgid "Each page must contain the following parts:"
+msgstr "Each page must contain the following parts:"
+
+#: ../../documentation.rst:229
 msgid "Except in ``.. code-block::`` because it uses the html tag ``<pre>`` and renders the same line format from the source rst file."
 msgstr "Except in ``.. code-block::`` because it uses the html tag ``<pre>`` and renders the same line format from the source rst file."
 
-#: ../../documentation.rst:292
+#: ../../documentation.rst:269
 msgid "For an inline configuration level command, use ``:cfgcmd:``"
 msgstr "For an inline configuration level command, use ``:cfgcmd:``"
 
-#: ../../documentation.rst:328
+#: ../../documentation.rst:305
 msgid "For an inline operational level command, use ``:opcmd:``"
 msgstr "For an inline operational level command, use ``:opcmd:``"
 
-#: ../../documentation.rst:186
+#: ../../documentation.rst:163
 msgid "For example, you want to reference the headline **VLAN** in the **ethernet.rst** page. The plugin generates the label based on the headline and the file path."
 msgstr "For example, you want to reference the headline **VLAN** in the **ethernet.rst** page. The plugin generates the label based on the headline and the file path."
 
-#: ../../documentation.rst:405
+#: ../../documentation.rst:70
 msgid "For example:"
 msgstr "For example:"
 
-#: ../../documentation.rst:76
+#: ../../documentation.rst:381
 msgid "Fork this project on GitHub https://github.com/vyos/vyos-documentation/fork"
 msgstr "Fork this project on GitHub https://github.com/vyos/vyos-documentation/fork"
 
-#: ../../documentation.rst:58
+#: ../../documentation.rst:363
 msgid "Forking Workflow"
 msgstr "Forking Workflow"
 
 #: ../../documentation.rst:150
 msgid "Formating and Sphinxmarkup"
 msgstr "Formating and Sphinxmarkup"
+
+#: ../../documentation.rst:127
+msgid "Formatting and Sphinxmarkup"
+msgstr "Formatting and Sphinxmarkup"
 
 #: ../../documentation.rst:432
 msgid "General concepts for troubleshooting and detailed process descriptions belong here."
@@ -140,7 +176,11 @@ msgstr "Guidelines"
 msgid "If there some troubleshooting guides related to the commands. Explain it in the next optional part."
 msgstr "If there some troubleshooting guides related to the commands. Explain it in the next optional part."
 
-#: ../../documentation.rst:143
+#: ../../documentation.rst:448
+msgid "If you also want to update your fork on GitHub, use the following: ``$ git push origin current``"
+msgstr "If you also want to update your fork on GitHub, use the following: ``$ git push origin current``"
+
+#: ../../documentation.rst:448
 msgid "If you also want to update your fork on GitHub, use the following: ``$ git push origin master``"
 msgstr "If you also want to update your fork on GitHub, use the following: ``$ git push origin master``"
 
@@ -152,43 +192,43 @@ msgstr "If you are willing to contribute to our documentation this is the defini
 msgid "In contrast to submitting code patches, there is no requirement that you open up a Phabricator_ task prior to submitting a Pull-Request to the documentation."
 msgstr "In contrast to submitting code patches, there is no requirement that you open up a Phabricator_ task prior to submitting a Pull-Request to the documentation."
 
-#: ../../documentation.rst:417
+#: ../../documentation.rst:75
 msgid "In the configuration part of the page, all possible configuration options should be documented. Use ``.. cfgcmd::`` described above."
 msgstr "In the configuration part of the page, all possible configuration options should be documented. Use ``.. cfgcmd::`` described above."
 
-#: ../../documentation.rst:50
+#: ../../documentation.rst:48
 msgid "Indent with two spaces."
 msgstr "Indent with two spaces."
 
-#: ../../documentation.rst:81
+#: ../../documentation.rst:386
 msgid "Install the requirements ``$ pip install -r requirements.txt`` (or something similar)"
 msgstr "Install the requirements ``$ pip install -r requirements.txt`` (or something similar)"
 
-#: ../../documentation.rst:49
+#: ../../documentation.rst:47
 msgid "Leave a newline before and after a header."
 msgstr "Leave a newline before and after a header."
 
-#: ../../documentation.rst:250
+#: ../../documentation.rst:227
 msgid "Limit all lines to a maximum of 80 characters."
 msgstr "Limit all lines to a maximum of 80 characters."
 
-#: ../../documentation.rst:248
+#: ../../documentation.rst:225
 msgid "Line length"
 msgstr "Line length"
 
-#: ../../documentation.rst:87
+#: ../../documentation.rst:392
 msgid "Make all your changes - please keep our commit rules in mind (:ref:`prepare_commit`). This mainly applies to proper commit messages describing your change (how and why). Please check out the documentation of Sphinx-doc_ or reStructuredText_ if you are not familiar with it. This is used for writing our docs. Additional directives how to write in RST can be obtained from reStructuredTextDirectives_."
 msgstr "Make all your changes - please keep our commit rules in mind (:ref:`prepare_commit`). This mainly applies to proper commit messages describing your change (how and why). Please check out the documentation of Sphinx-doc_ or reStructuredText_ if you are not familiar with it. This is used for writing our docs. Additional directives how to write in RST can be obtained from reStructuredTextDirectives_."
 
-#: ../../documentation.rst:242
+#: ../../documentation.rst:219
 msgid "Multicast MAC-Addresses: ``90-10-00`` to ``90-10-FF``"
 msgstr "Multicast MAC-Addresses: ``90-10-00`` to ``90-10-FF``"
 
-#: ../../documentation.rst:231
+#: ../../documentation.rst:208
 msgid "Note the following RFCs (:rfc:`5737`, :rfc:`3849`, :rfc:`5389` and :rfc:`7042`), which describe the reserved public IP addresses and autonomous system numbers for the documentation:"
 msgstr "Note the following RFCs (:rfc:`5737`, :rfc:`3849`, :rfc:`5389` and :rfc:`7042`), which describe the reserved public IP addresses and autonomous system numbers for the documentation:"
 
-#: ../../documentation.rst:118
+#: ../../documentation.rst:423
 msgid "Once pull requests have been approved, you may want to locally update your forked repository too. First you'll have to add a second remote called `upstream` which points to our main repository. ``$ git remote add upstream https://github.com/vyos/vyos-documentation.git``"
 msgstr "Once pull requests have been approved, you may want to locally update your forked repository too. First you'll have to add a second remote called `upstream` which points to our main repository. ``$ git remote add upstream https://github.com/vyos/vyos-documentation.git``"
 
@@ -200,39 +240,43 @@ msgstr "Operation mode commands that do not fit in a related configuration mode 
 msgid "Operation mode pages"
 msgstr "Operation mode pages"
 
-#: ../../documentation.rst:385
+#: ../../documentation.rst:56
 msgid "Page content"
 msgstr "Page content"
 
-#: ../../documentation.rst:244
+#: ../../documentation.rst:221
 msgid "Please do not use other public address space."
 msgstr "Please do not use other public address space."
 
-#: ../../documentation.rst:47
+#: ../../documentation.rst:101
+msgid "Practical examples of the service or use case configuration. They must contain topology maps (if applicable) and short descriptions."
+msgstr "Practical examples of the service or use case configuration. They must contain topology maps (if applicable) and short descriptions."
+
+#: ../../documentation.rst:45
 msgid "Properly quote commands, filenames and brief code snippets with double backticks."
 msgstr "Properly quote commands, filenames and brief code snippets with double backticks."
 
-#: ../../documentation.rst:112
+#: ../../documentation.rst:417
 msgid "Push commits to your GitHub project: ``$ git push -u origin <branch-name>``"
 msgstr "Push commits to your GitHub project: ``$ git push -u origin <branch-name>``"
 
-#: ../../documentation.rst:420
+#: ../../documentation.rst:78
 msgid "Related operation command must be documented in the next part of the article. Use ``::opcmd..`` for these commands."
 msgstr "Related operation command must be documented in the next part of the article. Use ``::opcmd..`` for these commands."
 
-#: ../../documentation.rst:262
+#: ../../documentation.rst:239
 msgid "Sometimes it is necessary to provide real IP addresses like in the :ref:`examples`. For this, please use the sphinx comment syntax ``.. stop_vyoslinter`` to stop the linter and ``.. start_vyoslinter`` to start."
 msgstr "Sometimes it is necessary to provide real IP addresses like in the :ref:`examples`. For this, please use the sphinx comment syntax ``.. stop_vyoslinter`` to stop the linter and ``.. start_vyoslinter`` to start."
 
-#: ../../documentation.rst:147
+#: ../../documentation.rst:124
 msgid "Style Guide"
 msgstr "Style Guide"
 
-#: ../../documentation.rst:114
+#: ../../documentation.rst:419
 msgid "Submit pull-request. In GitHub visit the main repository and you should see a banner suggesting to make a pull request. Fill out the form and describe what you do."
 msgstr "Submit pull-request. In GitHub visit the main repository and you should see a banner suggesting to make a pull request. Fill out the form and describe what you do."
 
-#: ../../documentation.rst:153
+#: ../../documentation.rst:130
 msgid "TOC Level"
 msgstr "TOC Level"
 
@@ -240,7 +284,7 @@ msgstr "TOC Level"
 msgid "Take a look at the :doc:`/documentation` page for an intricate explanation of the documentation process."
 msgstr "Take a look at the :doc:`/documentation` page for an intricate explanation of the documentation process."
 
-#: ../../documentation.rst:60
+#: ../../documentation.rst:365
 msgid "The Forking Workflow is fundamentally different from other popular Git workflows. Instead of using a single server-side repository to act as the \"central\" codebase, it gives every developer their own server-side repository. This means that each contributor has not one, but two Git repositories: a private local one and a public server-side one."
 msgstr "The Forking Workflow is fundamentally different from other popular Git workflows. Instead of using a single server-side repository to act as the \"central\" codebase, it gives every developer their own server-side repository. This means that each contributor has not one, but two Git repositories: a private local one and a public server-side one."
 
@@ -248,7 +292,7 @@ msgstr "The Forking Workflow is fundamentally different from other popular Git w
 msgid "The article starts with a short introduction about the command or the technology. Please include some helpful links or background information."
 msgstr "The article starts with a short introduction about the command or the technology. Please include some helpful links or background information."
 
-#: ../../documentation.rst:401
+#: ../../documentation.rst:66
 msgid "The configuration mode folder and the articles cover the specific level of the commands. The exact level depends on the command. This should provide stability for URLs used in the forum or blogpost."
 msgstr "The configuration mode folder and the articles cover the specific level of the commands. The exact level depends on the command. This should provide stability for URLs used in the forum or blogpost."
 
@@ -260,51 +304,59 @@ msgstr "The documentation has 3 different types of pages. The same kind of pages
 msgid "The documentation source is kept in the Git repository at https://github.com/vyos/vyos-documentation and you can follow the instructions in the README.md_ to build and test your changes."
 msgstr "The documentation source is kept in the Git repository at https://github.com/vyos/vyos-documentation and you can follow the instructions in the README.md_ to build and test your changes."
 
-#: ../../documentation.rst:41
+#: ../../documentation.rst:39
 msgid "The following is a quick summary of the rules:"
 msgstr "The following is a quick summary of the rules:"
 
-#: ../../documentation.rst:66
+#: ../../documentation.rst:371
 msgid "The main advantage of the Forking Workflow is that contributions can be integrated without the need for everybody to push to a single central repository. Developers push to their own server-side repositories, and only the project maintainer can push to the official repository. This allows the maintainer to accept commits from any developer without giving them write access to the official codebase."
 msgstr "The main advantage of the Forking Workflow is that contributions can be integrated without the need for everybody to push to a single central repository. Developers push to their own server-side repositories, and only the project maintainer can push to the official repository. This allows the maintainer to accept commits from any developer without giving them write access to the official codebase."
 
-#: ../../documentation.rst:199
+#: ../../documentation.rst:176
 msgid "The plugin will warn on build if a headline has a duplicate name in the same document. To prevent this warning, you have to put a custom link on top of the headline."
 msgstr "The plugin will warn on build if a headline has a duplicate name in the same document. To prevent this warning, you have to put a custom link on top of the headline."
+
+#: ../../documentation.rst:86
+msgid "Theoretical information required for users to understand the next document sections:"
+msgstr "Theoretical information required for users to understand the next document sections:"
 
 #: ../../documentation.rst:35
 msgid "There are a few things to keep in mind when contributing to the documentation, for the sake of consistency and readability."
 msgstr "There are a few things to keep in mind when contributing to the documentation, for the sake of consistency and readability."
 
-#: ../../documentation.rst:299
+#: ../../documentation.rst:107
+msgid "This section must contain a list of:"
+msgstr "This section must contain a list of:"
+
+#: ../../documentation.rst:276
 msgid "To extract a defaultvalue from the XML definitions add a ``:defaultvalue:`` to ``.. cfgcmd::`` directive. To have this feature locally, the vyos-1x submodule must be initialized before. Please be aware to not update the submodule in your PR."
 msgstr "To extract a defaultvalue from the XML definitions add a ``:defaultvalue:`` to ``.. cfgcmd::`` directive. To have this feature locally, the vyos-1x submodule must be initialized before. Please be aware to not update the submodule in your PR."
 
-#: ../../documentation.rst:337
+#: ../../documentation.rst:314
 msgid "To minimize redundancy, there is a special include directive. It includes a txt file and replace the ``{{ var0 }}`` - ``{{ var9 }}`` with the correct value."
 msgstr "To minimize redundancy, there is a special include directive. It includes a txt file and replace the ``{{ var0 }}`` - ``{{ var9 }}`` with the correct value."
 
-#: ../../documentation.rst:46
+#: ../../documentation.rst:44
 msgid "Try not to exceed 80 characters per line, but don't break URLs over this."
 msgstr "Try not to exceed 80 characters per line, but don't break URLs over this."
 
-#: ../../documentation.rst:241
+#: ../../documentation.rst:218
 msgid "Unicast MAC Addresses: ``00-53-00`` to ``00-53-FF``"
 msgstr "Unicast MAC Addresses: ``00-53-00`` to ``00-53-FF``"
 
-#: ../../documentation.rst:73
+#: ../../documentation.rst:378
 msgid "Updates to our documentation should be delivered by a GitHub pull-request. This requires you already have a GitHub account."
 msgstr "Updates to our documentation should be delivered by a GitHub pull-request. This requires you already have a GitHub account."
 
-#: ../../documentation.rst:43
+#: ../../documentation.rst:41
 msgid "Use American English at all times. It's always a good idea to run your text through a grammar and spell checker, such as `Grammarly`_."
 msgstr "Use American English at all times. It's always a good idea to run your text through a grammar and spell checker, such as `Grammarly`_."
 
-#: ../../documentation.rst:48
+#: ../../documentation.rst:46
 msgid "Use literal blocks for longer snippets."
 msgstr "Use literal blocks for longer snippets."
 
-#: ../../documentation.rst:99
+#: ../../documentation.rst:404
 msgid "View modified files by calling ``$ git status``. You will get an overview of all files modified by you. You can add individual files to the Git Index in the next step."
 msgstr "View modified files by calling ``$ git status``. You will get an overview of all files modified by you. You can add individual files to the Git Index in the next step."
 
@@ -312,35 +364,39 @@ msgstr "View modified files by calling ``$ git status``. You will get an overvie
 msgid "VyOS documentation is written in reStructuredText and generated to Read the Docs pages with Sphinx, as per the Python tradition, as well as PDF files for offline use through LaTeX. We welcome all sorts of contributions to the documentation. Not just new additions but also corrections to existing documentation."
 msgstr "VyOS documentation is written in reStructuredText and generated to Read the Docs pages with Sphinx, as per the Python tradition, as well as PDF files for offline use through LaTeX. We welcome all sorts of contributions to the documentation. Not just new additions but also corrections to existing documentation."
 
+#: ../../documentation.rst:20
+msgid "VyOS documentation is written in reStructuredText and generated to Read the Docs pages with Sphinx, as per the Python tradition. We welcome all sorts of contributions to the documentation. Not just new additions but also corrections to existing documentation."
+msgstr "VyOS documentation is written in reStructuredText and generated to Read the Docs pages with Sphinx, as per the Python tradition. We welcome all sorts of contributions to the documentation. Not just new additions but also corrections to existing documentation."
+
 #: ../../documentation.rst:9
 msgid "We encourage every VyOS user to help us improve our documentation as we have a deficit like most software projects.  This not only helps you when reading but also everyone else."
 msgstr "We encourage every VyOS user to help us improve our documentation as we have a deficit like most software projects.  This not only helps you when reading but also everyone else."
 
-#: ../../documentation.rst:155
+#: ../../documentation.rst:132
 msgid "We use the following syntax for Headlines."
 msgstr "We use the following syntax for Headlines."
 
-#: ../../documentation.rst:277
+#: ../../documentation.rst:254
 msgid "When documenting CLI commands, use the ``.. cfgcmd::`` directive for all configuration mode commands. An explanation of the described command should be added below this statement. Replace all variable contents with <value> or something similar."
 msgstr "When documenting CLI commands, use the ``.. cfgcmd::`` directive for all configuration mode commands. An explanation of the described command should be added below this statement. Replace all variable contents with <value> or something similar."
 
-#: ../../documentation.rst:316
+#: ../../documentation.rst:293
 msgid "When documenting operational level commands, use the ``.. opcmd::`` directive. An explanation of the described command should be added below this statement."
 msgstr "When documenting operational level commands, use the ``.. opcmd::`` directive. An explanation of the described command should be added below this statement."
 
-#: ../../documentation.rst:51
+#: ../../documentation.rst:49
 msgid "When in doubt, follow the style of existing documentation."
 msgstr "When in doubt, follow the style of existing documentation."
 
-#: ../../documentation.rst:375
+#: ../../documentation.rst:352
 msgid "When referencing to VyOS Phabricator Tasks, there is a custom Sphinx Markup command called ``vytask`` that automatically renders to a proper Phabricator URL. This is heavily used in the :ref:`release-notes` section."
 msgstr "When referencing to VyOS Phabricator Tasks, there is a custom Sphinx Markup command called ``vytask`` that automatically renders to a proper Phabricator URL. This is heavily used in the :ref:`release-notes` section."
 
-#: ../../documentation.rst:319
+#: ../../documentation.rst:296
 msgid "With those custom commands, it is possible to render them in a more descriptive way in the resulting HTML/PDF manual."
 msgstr "With those custom commands, it is possible to render them in a more descriptive way in the resulting HTML/PDF manual."
 
-#: ../../documentation.rst:282
+#: ../../documentation.rst:259
 msgid "With those custom commands, it will be possible to render them in a more descriptive way in the resulting HTML/PDF manual."
 msgstr "With those custom commands, it will be possible to render them in a more descriptive way in the resulting HTML/PDF manual."
 
@@ -352,66 +408,98 @@ msgstr "Write Documentation"
 msgid "You can either install Sphinx (and TeX Live for PDF output) and build the documentation locally, or use the Dockerfile_ to build it in a container."
 msgstr "You can either install Sphinx (and TeX Live for PDF output) and build the documentation locally, or use the Dockerfile_ to build it in a container."
 
-#: ../../documentation.rst:133
+#: ../../documentation.rst:29
+msgid "You can either install Sphinx and build the documentation locally, or use the Dockerfile_ to build it in a container."
+msgstr "You can either install Sphinx and build the documentation locally, or use the Dockerfile_ to build it in a container."
+
+#: ../../documentation.rst:438
 msgid "Your remote repo on Github is called ``origin``, while the original repo you have forked is called ``upstream``. Now you can locally update your forked repo."
 msgstr "Your remote repo on Github is called ``origin``, while the original repo you have forked is called ``upstream``. Now you can locally update your forked repo."
 
-#: ../../documentation.rst:235
+#: ../../documentation.rst:212
 msgid "``192.0.2.0/24``"
 msgstr "``192.0.2.0/24``"
 
-#: ../../documentation.rst:236
+#: ../../documentation.rst:213
 msgid "``198.51.100.0/24``"
 msgstr "``198.51.100.0/24``"
 
-#: ../../documentation.rst:238
+#: ../../documentation.rst:215
 msgid "``2001:db8::/32``"
 msgstr "``2001:db8::/32``"
 
-#: ../../documentation.rst:237
+#: ../../documentation.rst:214
 msgid "``203.0.113.0/24``"
 msgstr "``203.0.113.0/24``"
 
-#: ../../documentation.rst:194
+#: ../../documentation.rst:171
 msgid "``:ref:`Check out VLAN<configuration/interfaces/ethernet:vlan>``"
 msgstr "``:ref:`Check out VLAN<configuration/interfaces/ethernet:vlan>``"
 
-#: ../../documentation.rst:190
+#: ../../documentation.rst:167
 msgid "``:ref:`configuration/interfaces/ethernet:vlan``"
 msgstr "``:ref:`configuration/interfaces/ethernet:vlan``"
 
-#: ../../documentation.rst:407
+#: ../../documentation.rst:72
 msgid "``set firewall zone`` is written in ``firewall/zone.rst``"
 msgstr "``set firewall zone`` is written in ``firewall/zone.rst``"
 
-#: ../../documentation.rst:408
+#: ../../documentation.rst:73
 msgid "``set interfaces ethernet`` is written in ``interfaces/ethernet.rst``"
 msgstr "``set interfaces ethernet`` is written in ``interfaces/ethernet.rst``"
 
-#: ../../documentation.rst:275
+#: ../../documentation.rst:88
+msgid "a simple explanation of what is this page about, why or when it is required to be used"
+msgstr "a simple explanation of what is this page about, why or when it is required to be used"
+
+#: ../../documentation.rst:252
 msgid "cfgcmd"
 msgstr "cfgcmd"
 
-#: ../../documentation.rst:335
+#: ../../documentation.rst:312
 msgid "cmdinclude"
 msgstr "cmdinclude"
 
-#: ../../documentation.rst:197
+#: ../../documentation.rst:174
 msgid "handle build errors"
 msgstr "handle build errors"
 
-#: ../../documentation.rst:314
+#: ../../documentation.rst:117
+msgid "how to collect logs or other debugging information (like `show` commands output)"
+msgstr "how to collect logs or other debugging information (like `show` commands output)"
+
+#: ../../documentation.rst:118
+msgid "how to read and what to search for in logs and collected information"
+msgstr "how to read and what to search for in logs and collected information"
+
+#: ../../documentation.rst:109
+msgid "known issues or potential problems for the service or use case"
+msgstr "known issues or potential problems for the service or use case"
+
+#: ../../documentation.rst:291
 msgid "opcmd"
 msgstr "opcmd"
 
-#: ../../documentation.rst:346
+#: ../../documentation.rst:89
+msgid "references to standards, RFCs"
+msgstr "references to standards, RFCs"
+
+#: ../../documentation.rst:323
 msgid "the content of interface-address.txt looks like this"
 msgstr "the content of interface-address.txt looks like this"
 
-#: ../../documentation.rst:192
+#: ../../documentation.rst:169
 msgid "to use an alternative hyperlink use it this way:"
 msgstr "to use an alternative hyperlink use it this way:"
 
-#: ../../documentation.rst:373
+#: ../../documentation.rst:350
 msgid "vytask"
 msgstr "vytask"
+
+#: ../../documentation.rst:119
+msgid "what are indicators of good and bad states in debugging outputs"
+msgstr "what are indicators of good and bad states in debugging outputs"
+
+#: ../../documentation.rst:110
+msgid "workarounds for known issues (if any exist)"
+msgstr "workarounds for known issues (if any exist)"

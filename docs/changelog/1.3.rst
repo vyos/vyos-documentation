@@ -8,6 +8,179 @@
    _ext/releasenotes.py
 
 
+2024-04-25
+==========
+
+* :vytask:`T6249` ``(default): ISO builder fails because of changed buster-backport repository``
+
+
+2024-04-23
+==========
+
+* :vytask:`T6261` ``(default): Typo in op_mode connect_disconnect print statement for check_ppp_running``
+
+
+2024-04-17
+==========
+
+* :vytask:`T6243` ``(bug): Update vyos-http-api-tools for package idna security advisory``
+
+
+2024-04-12
+==========
+
+* :vytask:`T3437` ``(bug): BGP Confederation Addition Causes Error``
+
+
+2024-04-10
+==========
+
+* :vytask:`T6124` ``(bug): Docker equuleus build image doesn't build due to fpm``
+
+
+2024-04-08
+==========
+
+* :vytask:`T6196` ``(bug): Route-map and summary-only do not work in BGP aggregation at the same time``
+
+
+2024-04-07
+==========
+
+* :vytask:`T1244` ``(default): Support for StartupResync in conntrackd``
+
+
+2024-04-05
+==========
+
+* :vytask:`T2590` ``(bug): DHCPv6 not updating nameservers and search domains since replacing isc-dhcp-client with WIDE dhcp6c``
+
+
+2024-04-04
+==========
+
+* :vytask:`T4146` ``(bug): Nginx should not listen on port 80``
+* :vytask:`T1976` ``(default): deleting address-family under neighbor will disable neighbor``
+* :vytask:`T5625` ``(default): "restart vpn" does not work if ipsec-interfaces is not set``
+* :vytask:`T3020` ``(bug): The "scp" example is wrong in the bash-completion for "set system config-management commit-archive location"``
+* :vytask:`T2250` ``(default): vyos-build "make iso" error if configure was ran outside of the docker container``
+* :vytask:`T2139` ``(default): openvpn: allow "dh-file none" to disable DH for ECDH keys``
+* :vytask:`T2014` ``(default): Use vendor specific NTP Pool hostname``
+* :vytask:`T1118` ``(bug): Obsolete "utc" option in time selector in firewall``
+* :vytask:`T948` ``(feature): integrate aws cloud watch scripts into AMI``
+
+
+2024-04-02
+==========
+
+* :vytask:`T6150` ``(bug): Impossible to set a static IP address via Radius in IPoE``
+
+
+2024-04-01
+==========
+
+* :vytask:`T6193` ``(bug): dhcp-client: invalid warning "is not a DHCP interface but uses DHCP name-server option" for VLAN interfaces``
+
+
+2024-03-22
+==========
+
+* :vytask:`T6110` ``(bug): dhcp server - If failover is defined, range is required``
+* :vytask:`T5624` ``(default): Remove /etc/debian_version from the image``
+
+
+2024-03-11
+==========
+
+* :vytask:`T2998` ``(bug): SNMP v3 oid "exclude" option doesn't work``
+* :vytask:`T6096` ``(bug): Config commits are not synced properly because 00vyos-sync is deleted by vyos-router``
+* :vytask:`T6057` ``(feature): Add ability to disable syslog for conntrackd``
+* :vytask:`T5504` ``(feature): Keepalived VRRP ability to set more than one peer-address``
+
+
+2024-03-07
+==========
+
+* :vytask:`T3992` ``(bug): Traceback on adding interface to bridge with configured ip address``
+
+
+2024-03-06
+==========
+
+* :vytask:`T6088` ``(bug): Configuration corrupted after saving and powercut or force reboot``
+
+
+2024-02-16
+==========
+
+* :vytask:`T2113` ``(bug): OpenVPN Options error: you cannot use --verify-x509-name with --compat-names or --no-name-remapping``
+* :vytask:`T5418` ``(bug): PPPoE-Server Client IP pool Subnet``
+
+
+2024-02-15
+==========
+
+* :vytask:`T2612` ``(bug): HTTPS API, changing API key fails but goes through``
+* :vytask:`T656` ``(enhancment): Rewrite wirelessmodem in new style XML interface definition``
+
+
+2024-02-14
+==========
+
+* :vytask:`T2044` ``(bug): RPKI doesn't boot properly``
+
+
+2024-02-08
+==========
+
+* :vytask:`T6014` ``(feature): Bump keepalived version``
+
+
+2024-02-07
+==========
+
+* :vytask:`T6017` ``(bug): Update vyos-http-api-tools for security advisory``
+
+
+2024-02-02
+==========
+
+* :vytask:`T5914` ``(bug): CVE-2023-48795 - Terrapin vulnerability``
+* :vytask:`T5739` ``(bug): Password recovery does not work if public keys are configured``
+
+
+2024-02-01
+==========
+
+* :vytask:`T5967` ``(bug): Multi-hop BFD connections can't be established; please add minimum-ttl option.``
+
+
+2024-01-22
+==========
+
+* :vytask:`T4721` ``(feature): Static IPv6 Route Tags Missing``
+
+
+2024-01-20
+==========
+
+* :vytask:`T5187` ``(bug): Update Realtek r8152 driver``
+* :vytask:`T5182` ``(bug): Update Intel ice driver``
+* :vytask:`T5180` ``(bug): initramfs-tools ignores firmware from updates directory``
+* :vytask:`T4990` ``(bug): Commit results may not be properly saved if power is cut immediately after a successful commit``
+* :vytask:`T4039` ``(feature): Rsyslog to use 'protocol23format' for protocol UDP``
+* :vytask:`T3813` ``(bug): Some custom sysctl parameters can't be applied bug``
+* :vytask:`T2579` ``(feature): The root task for VRF features``
+* :vytask:`T2546` ``(feature): The root task for rewriting [op-mode] to XML``
+* :vytask:`T2452` ``(default): Serial console related issues``
+
+
+2024-01-19
+==========
+
+* :vytask:`T5543` ``(bug): Fix source address handling in static joins``
+
+
 2024-01-14
 ==========
 

@@ -13,6 +13,10 @@ msgid "Copyright Notice"
 msgstr "Copyright Notice"
 
 #: ../../copyright.md:3
+msgid "Copyright (C) 2018-2023 VyOS maintainers and contributors"
+msgstr "Copyright (C) 2018-2023 VyOS maintainers and contributors"
+
+#: ../../copyright.md:3
 msgid "Copyright (C) 2018-2024 VyOS maintainers and contributors"
 msgstr "Copyright (C) 2018-2024 VyOS maintainers and contributors"
 

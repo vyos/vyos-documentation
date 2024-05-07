@@ -28,23 +28,23 @@ msgstr "**Working configuration** is the one that is currently being modified in
 msgid "A VyOS system has three major types of configurations:"
 msgstr "A VyOS system has three major types of configurations:"
 
-#: ../../cli.rst:576
+#: ../../cli.rst:579
 msgid "A reboot because you did not enter ``confirm`` will not take you necessarily to the *saved configuration*, but to the point before the unfortunate commit."
 msgstr "A reboot because you did not enter ``confirm`` will not take you necessarily to the *saved configuration*, but to the point before the unfortunate commit."
 
-#: ../../cli.rst:690
+#: ../../cli.rst:693
 msgid "Access opmode from config mode"
 msgstr "Access opmode from config mode"
 
-#: ../../cli.rst:697
+#: ../../cli.rst:700
 msgid "Access to these commands are possible through the use of the ``run [command]`` command. From this command you will have access to everything accessible from operational mode."
 msgstr "Access to these commands are possible through the use of the ``run [command]`` command. From this command you will have access to everything accessible from operational mode."
 
-#: ../../cli.rst:651
+#: ../../cli.rst:654
 msgid "Add comment as an annotation to a configuration node."
 msgstr "Add comment as an annotation to a configuration node."
 
-#: ../../cli.rst:539
+#: ../../cli.rst:542
 msgid "All changes in the working config will thus be lost."
 msgstr "All changes in the working config will thus be lost."
 
@@ -52,7 +52,7 @@ msgstr "All changes in the working config will thus be lost."
 msgid "All commands executed here are relative to the configuration level you have entered. You can do everything from the top level, but commands will be quite lengthy when manually typing them."
 msgstr "All commands executed here are relative to the configuration level you have entered. You can do everything from the top level, but commands will be quite lengthy when manually typing them."
 
-#: ../../cli.rst:676
+#: ../../cli.rst:679
 msgid "An important thing to note is that since the comment is added on top of the section, it will not appear if the ``show <section>`` command is used. With the above example, the `show firewall` command would return starting after the ``firewall {`` line, hiding the comment."
 msgstr "An important thing to note is that since the comment is added on top of the section, it will not appear if the ``show <section>`` command is used. With the above example, the `show firewall` command would return starting after the ``firewall {`` line, hiding the comment."
 
@@ -72,11 +72,11 @@ msgstr "By default, the configuration is displayed in a hierarchy like the above
 msgid "Command Line Interface"
 msgstr "Command Line Interface"
 
-#: ../../cli.rst:701
+#: ../../cli.rst:704
 msgid "Command completion and syntax help with ``?`` and ``[tab]`` will also work."
 msgstr "Command completion and syntax help with ``?`` and ``[tab]`` will also work."
 
-#: ../../cli.rst:754
+#: ../../cli.rst:757
 msgid "Compare configurations"
 msgstr "Compare configurations"
 
@@ -92,11 +92,11 @@ msgstr "Configuration Overview"
 msgid "Configuration commands are flattened from the tree into 'one-liner' commands shown in :opcmd:`show configuration commands` from operation mode. Commands are relative to the level where they are executed and all redundant information from the current level is removed from the command entered."
 msgstr "Configuration commands are flattened from the tree into 'one-liner' commands shown in :opcmd:`show configuration commands` from operation mode. Commands are relative to the level where they are executed and all redundant information from the current level is removed from the command entered."
 
-#: ../../cli.rst:535
+#: ../../cli.rst:538
 msgid "Configuration mode can not be exited while uncommitted changes exist. To exit configuration mode without applying changes, the :cfgcmd:`exit discard` command must be used."
 msgstr "Configuration mode can not be exited while uncommitted changes exist. To exit configuration mode without applying changes, the :cfgcmd:`exit discard` command must be used."
 
-#: ../../cli.rst:583
+#: ../../cli.rst:586
 msgid "Copy a configuration element."
 msgstr "Copy a configuration element."
 
@@ -104,7 +104,7 @@ msgstr "Copy a configuration element."
 msgid "Editing the configuration"
 msgstr "Editing the configuration"
 
-#: ../../cli.rst:662
+#: ../../cli.rst:665
 msgid "Example:"
 msgstr "Example:"
 
@@ -124,11 +124,11 @@ msgstr "For example typing ``sh`` followed by the ``TAB`` key will complete to `
 msgid "Get a collection of all the set commands required which led to the running configuration."
 msgstr "Get a collection of all the set commands required which led to the running configuration."
 
-#: ../../cli.rst:933
+#: ../../cli.rst:936
 msgid "If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config."
 msgstr "If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config."
 
-#: ../../cli.rst:919
+#: ../../cli.rst:922
 msgid "In the case you want to completely delete your configuration and restore the default one, you can enter the following command in configuration mode:"
 msgstr "In the case you want to completely delete your configuration and restore the default one, you can enter the following command in configuration mode:"
 
@@ -140,15 +140,15 @@ msgstr "It is also possible to display all :cfgcmd:`set` commands within configu
 msgid "It is also possible to display all `set` commands within configuration mode using :cfgcmd:`show | commands`"
 msgstr "It is also possible to display all `set` commands within configuration mode using :cfgcmd:`show | commands`"
 
-#: ../../cli.rst:723
+#: ../../cli.rst:726
 msgid "Local Archive"
 msgstr "Local Archive"
 
-#: ../../cli.rst:714
+#: ../../cli.rst:717
 msgid "Managing configurations"
 msgstr "Managing configurations"
 
-#: ../../cli.rst:627
+#: ../../cli.rst:630
 msgid "Note that ``show`` command respects your edit level and from this level you can view the modified firewall ruleset with just ``show`` with no parameters."
 msgstr "Note that ``show`` command respects your edit level and from this level you can view the modified firewall ruleset with just ``show`` with no parameters."
 
@@ -164,31 +164,31 @@ msgstr "Operational mode allows for commands to perform operational system tasks
 msgid "Prompt changes from ``$`` to ``#``. To exit configuration mode, type ``exit``."
 msgstr "Prompt changes from ``$`` to ``#``. To exit configuration mode, type ``exit``."
 
-#: ../../cli.rst:850
+#: ../../cli.rst:853
 msgid "Remote Archive"
 msgstr "Remote Archive"
 
-#: ../../cli.rst:616
+#: ../../cli.rst:619
 msgid "Rename a configuration element."
 msgstr "Rename a configuration element."
 
-#: ../../cli.rst:917
+#: ../../cli.rst:920
 msgid "Restore Default"
 msgstr "Restore Default"
 
-#: ../../cli.rst:725
+#: ../../cli.rst:728
 msgid "Revisions are stored on disk. You can view, compare and rollback them to any previous revisions if something goes wrong."
 msgstr "Revisions are stored on disk. You can view, compare and rollback them to any previous revisions if something goes wrong."
 
-#: ../../cli.rst:828
+#: ../../cli.rst:831
 msgid "Rollback Changes"
 msgstr "Rollback Changes"
 
-#: ../../cli.rst:835
+#: ../../cli.rst:838
 msgid "Rollback to revision N (currently requires reboot)"
 msgstr "Rollback to revision N (currently requires reboot)"
 
-#: ../../cli.rst:884
+#: ../../cli.rst:887
 msgid "Saving and loading manually"
 msgstr "Saving and loading manually"
 
@@ -200,11 +200,11 @@ msgstr "See the configuration section of this document for more information on c
 msgid "Seeing and navigating the configuration"
 msgstr "Seeing and navigating the configuration"
 
-#: ../../cli.rst:810
+#: ../../cli.rst:813
 msgid "Show commit revision difference."
 msgstr "Show commit revision difference."
 
-#: ../../cli.rst:861
+#: ../../cli.rst:864
 msgid "Specify remote location of commit archive as any of the below :abbr:`URI (Uniform Resource Identifier)`"
 msgstr "Specify remote location of commit archive as any of the below :abbr:`URI (Uniform Resource Identifier)`"
 
@@ -228,11 +228,15 @@ msgstr "The :cfgcmd:`show` command within configuration mode will show the worki
 msgid "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be commited, just like other config changes."
 msgstr "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be commited, just like other config changes."
 
-#: ../../cli.rst:784
+#: ../../cli.rst:656
+msgid "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be committed, just like other config changes."
+msgstr "The ``comment`` command allows you to insert a comment above the ``<config node>`` configuration section. When shown, comments are enclosed with ``/*`` and ``*/`` as open/close delimiters. Comments need to be committed, just like other config changes."
+
+#: ../../cli.rst:787
 msgid "The command :cfgcmd:`compare` allows you to compare different type of configurations. It also lets you compare different revisions through the :cfgcmd:`compare N M` command, where N and M are revision numbers. The output will describe how the configuration N is when compared to M indicating with a plus sign (``+``) the additional parts N has when compared to M, and indicating with a minus sign (``-``) the lacking parts N misses when compared to M."
 msgstr "The command :cfgcmd:`compare` allows you to compare different type of configurations. It also lets you compare different revisions through the :cfgcmd:`compare N M` command, where N and M are revision numbers. The output will describe how the configuration N is when compared to M indicating with a plus sign (``+``) the additional parts N has when compared to M, and indicating with a minus sign (``-``) the lacking parts N misses when compared to M."
 
-#: ../../cli.rst:813
+#: ../../cli.rst:816
 msgid "The command above also lets you see the difference between two commits. By default the difference with the running config is shown."
 msgstr "The command above also lets you see the difference between two commits. By default the difference with the running config is shown."
 
@@ -248,11 +252,11 @@ msgstr "The configuration can be edited by the use of :cfgcmd:`set` and :cfgcmd:
 msgid "The current hierarchy level can be changed by the :cfgcmd:`edit` command."
 msgstr "The current hierarchy level can be changed by the :cfgcmd:`edit` command."
 
-#: ../../cli.rst:872
+#: ../../cli.rst:875
 msgid "The number of revisions don't affect the commit-archive."
 msgstr "The number of revisions don't affect the commit-archive."
 
-#: ../../cli.rst:930
+#: ../../cli.rst:933
 msgid "Then you may want to :cfgcmd:`save` in order to delete the saved configuration too."
 msgstr "Then you may want to :cfgcmd:`save` in order to delete the saved configuration too."
 
@@ -264,7 +268,7 @@ msgstr "These commands are also relative to the level you are inside and only re
 msgid "These two commands above are essentially the same, just executed from different levels in the hierarchy."
 msgstr "These two commands above are essentially the same, just executed from different levels in the hierarchy."
 
-#: ../../cli.rst:824
+#: ../../cli.rst:827
 msgid "This means four commits ago we did ``set system ipv6 disable-forwarding``."
 msgstr "This means four commits ago we did ``set system ipv6 disable-forwarding``."
 
@@ -276,7 +280,7 @@ msgstr "To delete a configuration entry use the :cfgcmd:`delete` command, this a
 msgid "To enter configuration mode use the ``configure`` command:"
 msgstr "To enter configuration mode use the ``configure`` command:"
 
-#: ../../cli.rst:658
+#: ../../cli.rst:661
 msgid "To remove an existing comment from your current configuration, specify an empty string enclosed in double quote marks (``\"\"``) as the comment text."
 msgstr "To remove an existing comment from your current configuration, specify an empty string enclosed in double quote marks (``\"\"``) as the comment text."
 
@@ -284,11 +288,11 @@ msgstr "To remove an existing comment from your current configuration, specify a
 msgid "Use the ``show configuration commands | strip-private`` command when you want to hide private data. You may want to do so if you want to share your configuration on the `forum`_."
 msgstr "Use the ``show configuration commands | strip-private`` command when you want to hide private data. You may want to do so if you want to share your configuration on the `forum`_."
 
-#: ../../cli.rst:895
+#: ../../cli.rst:898
 msgid "Use this command to load a configuration which will replace the running configuration. Define the location of the configuration file to be loaded. You can use a path to a local file, an SCP address, an SFTP address, an FTP address, an HTTP address, an HTTPS address or a TFTP address."
 msgstr "Use this command to load a configuration which will replace the running configuration. Define the location of the configuration file to be loaded. You can use a path to a local file, an SCP address, an SFTP address, an FTP address, an HTTP address, an HTTPS address or a TFTP address."
 
-#: ../../cli.rst:508
+#: ../../cli.rst:511
 msgid "Use this command to preserve configuration changes upon reboot. By default it is stored at */config/config.boot*. In the case you want to store the configuration file somewhere else, you can add a local path, a SCP address, a FTP address or a TFTP address."
 msgstr "Use this command to preserve configuration changes upon reboot. By default it is stored at */config/config.boot*. In the case you want to store the configuration file somewhere else, you can add a local path, a SCP address, a FTP address or a TFTP address."
 
@@ -296,15 +300,15 @@ msgstr "Use this command to preserve configuration changes upon reboot. By defau
 msgid "Use this command to set the value of a parameter or to create a new element."
 msgstr "Use this command to set the value of a parameter or to create a new element."
 
-#: ../../cli.rst:760
+#: ../../cli.rst:763
 msgid "Use this command to spot what the differences are between different configurations."
 msgstr "Use this command to spot what the differences are between different configurations."
 
-#: ../../cli.rst:552
+#: ../../cli.rst:555
 msgid "Use this command to temporarily commit your changes and set the number of minutes available for validation. ``confirm`` must be entered within those minutes, otherwise the system will reboot into the previous configuration. The default value is 10 minutes."
 msgstr "Use this command to temporarily commit your changes and set the number of minutes available for validation. ``confirm`` must be entered within those minutes, otherwise the system will reboot into the previous configuration. The default value is 10 minutes."
 
-#: ../../cli.rst:730
+#: ../../cli.rst:733
 msgid "View all existing revisions on the local system."
 msgstr "View all existing revisions on the local system."
 
@@ -320,15 +324,19 @@ msgstr "View the current active configuration in JSON format."
 msgid "View the current active configuration in readable JSON format."
 msgstr "View the current active configuration in readable JSON format."
 
+#: ../../cli.rst:855
+msgid "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successful the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
+msgstr "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successful the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
+
 #: ../../cli.rst:852
 msgid "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successfull the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
 msgstr "VyOS can upload the configuration to a remote location after each call to :cfgcmd:`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a :cfgcmd:`commit` is successfull the ``config.boot`` file will be copied to the defined destination(s). The filename used on the remote host will be ``config.boot-hostname.YYYYMMDD_HHMMSS``."
 
-#: ../../cli.rst:716
+#: ../../cli.rst:719
 msgid "VyOS comes with an integrated versioning system for the system configuration. It automatically maintains a backup of every previous configuration which has been committed to the system. The configurations are versioned locally for rollback but they can also be stored on a remote host for archiving/backup reasons."
 msgstr "VyOS comes with an integrated versioning system for the system configuration. It automatically maintains a backup of every previous configuration which has been committed to the system. The configurations are versioned locally for rollback but they can also be stored on a remote host for archiving/backup reasons."
 
-#: ../../cli.rst:756
+#: ../../cli.rst:759
 msgid "VyOS lets you compare different configurations."
 msgstr "VyOS lets you compare different configurations."
 
@@ -340,6 +348,10 @@ msgstr "VyOS makes use of a unified configuration file for the entire system's c
 msgid "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be commited, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
 msgstr "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be commited, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
 
+#: ../../cli.rst:561
+msgid "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be committed, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
+msgstr "What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the ``commit-confirm`` command, your changes will be committed, and if you don't issue  the ``confirm`` command in 10 minutes, your system will reboot into previous config revision."
+
 #: ../../cli.rst:340
 msgid "When entering the configuration mode you are navigating inside a tree structure, to enter configuration mode enter the command :opcmd:`configure` when in operational mode."
 msgstr "When entering the configuration mode you are navigating inside a tree structure, to enter configuration mode enter the command :opcmd:`configure` when in operational mode."
@@ -348,7 +360,7 @@ msgstr "When entering the configuration mode you are navigating inside a tree st
 msgid "When going into configuration mode, prompt changes from ``$`` to ``#``."
 msgstr "When going into configuration mode, prompt changes from ``$`` to ``#``."
 
-#: ../../cli.rst:692
+#: ../../cli.rst:695
 msgid "When inside configuration mode you are not directly able to execute operational commands."
 msgstr "When inside configuration mode you are not directly able to execute operational commands."
 
@@ -356,7 +368,7 @@ msgstr "When inside configuration mode you are not directly able to execute oper
 msgid "When the output of a command results in more lines than can be displayed on the terminal screen the output is paginated as indicated by a ``:`` prompt."
 msgstr "When the output of a command results in more lines than can be displayed on the terminal screen the output is paginated as indicated by a ``:`` prompt."
 
-#: ../../cli.rst:889
+#: ../../cli.rst:892
 msgid "When using the save_ command, you can add a specific location where to store your configuration file. And, when needed it, you will be able to load it with the ``load`` command:"
 msgstr "When using the save_ command, you can add a specific location where to store your configuration file. And, when needed it, you will be able to load it with the ``load`` command:"
 
@@ -372,15 +384,15 @@ msgstr "You are now in a sublevel relative to ``interfaces ethernet eth0``, all 
 msgid "You are now in a sublevel relative to ``interfaces ethernet eth0``, all commands executed from this point on are relative to this sublevel. Use either the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top of the hierarchy. You can also use the :cfgcmd:`up` command to move only one level up at a time."
 msgstr "You are now in a sublevel relative to ``interfaces ethernet eth0``, all commands executed from this point on are relative to this sublevel. Use either the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top of the hierarchy. You can also use the :cfgcmd:`up` command to move only one level up at a time."
 
-#: ../../cli.rst:618
+#: ../../cli.rst:621
 msgid "You can also rename config subtrees:"
 msgstr "You can also rename config subtrees:"
 
-#: ../../cli.rst:585
+#: ../../cli.rst:588
 msgid "You can copy and remove configuration subtrees. Suppose you set up a firewall ruleset ``FromWorld`` with one rule that allows traffic from specific subnet. Now you want to setup a similar rule, but for different subnet. Change your edit level to ``firewall name FromWorld`` and use ``copy rule 10 to rule 20``, then modify rule 20."
 msgstr "You can copy and remove configuration subtrees. Suppose you set up a firewall ruleset ``FromWorld`` with one rule that allows traffic from specific subnet. Now you want to setup a similar rule, but for different subnet. Change your edit level to ``firewall name FromWorld`` and use ``copy rule 10 to rule 20``, then modify rule 20."
 
-#: ../../cli.rst:830
+#: ../../cli.rst:833
 msgid "You can rollback configuration changes using the rollback command. This will apply the selected revision and trigger a system reboot."
 msgstr "You can rollback configuration changes using the rollback command. This will apply the selected revision and trigger a system reboot."
 
@@ -388,19 +400,23 @@ msgstr "You can rollback configuration changes using the rollback command. This 
 msgid "You can scroll up with the keys ``[Shift]+[PageUp]`` and scroll down with ``[Shift]+[PageDown]``."
 msgstr "You can scroll up with the keys ``[Shift]+[PageUp]`` and scroll down with ``[Shift]+[PageDown]``."
 
-#: ../../cli.rst:747
+#: ../../cli.rst:504
+msgid "You can specify a commit message with :cfgcmd:`commit comment <message>`."
+msgstr "You can specify a commit message with :cfgcmd:`commit comment <message>`."
+
+#: ../../cli.rst:750
 msgid "You can specify the number of revisions stored on disk. N can be in the range of 0 - 65535. When the number of revisions exceeds the configured value, the oldest revision is removed. The default setting for this value is to store 100 revisions locally."
 msgstr "You can specify the number of revisions stored on disk. N can be in the range of 0 - 65535. When the number of revisions exceeds the configured value, the oldest revision is removed. The default setting for this value is to store 100 revisions locally."
 
-#: ../../cli.rst:886
+#: ../../cli.rst:889
 msgid "You can use the ``save`` and ``load`` commands if you want to manually manage specific configuration files."
 msgstr "You can use the ``save`` and ``load`` commands if you want to manually manage specific configuration files."
 
-#: ../../cli.rst:874
+#: ../../cli.rst:877
 msgid "You may find VyOS not allowing the secure connection because it cannot verify the legitimacy of the remote server. You can use the workaround below to quickly add the remote host's SSH fingerprint to your ``~/.ssh/known_hosts`` file:"
 msgstr "You may find VyOS not allowing the secure connection because it cannot verify the legitimacy of the remote server. You can use the workaround below to quickly add the remote host's SSH fingerprint to your ``~/.ssh/known_hosts`` file:"
 
-#: ../../cli.rst:927
+#: ../../cli.rst:930
 msgid "You will be asked if you want to continue. If you accept, you will have to use :cfgcmd:`commit` if you want to make the changes active."
 msgstr "You will be asked if you want to continue. If you accept, you will have to use :cfgcmd:`commit` if you want to make the changes active."
 
@@ -408,19 +424,19 @@ msgstr "You will be asked if you want to continue. If you accept, you will have 
 msgid "``b`` will scroll back one page"
 msgstr "``b`` will scroll back one page"
 
-#: ../../cli.rst:866
+#: ../../cli.rst:869
 msgid "``ftp://<user>:<passwd>@<host>/<dir>``"
 msgstr "``ftp://<user>:<passwd>@<host>/<dir>``"
 
-#: ../../cli.rst:870
+#: ../../cli.rst:873
 msgid "``git+https://<user>:<passwd>@<host>/<path>``"
 msgstr "``git+https://<user>:<passwd>@<host>/<path>``"
 
-#: ../../cli.rst:864
+#: ../../cli.rst:867
 msgid "``http://<user>:<passwd>@<host>:/<dir>``"
 msgstr "``http://<user>:<passwd>@<host>:/<dir>``"
 
-#: ../../cli.rst:865
+#: ../../cli.rst:868
 msgid "``https://<user>:<passwd>@<host>:/<dir>``"
 msgstr "``https://<user>:<passwd>@<host>:/<dir>``"
 
@@ -436,11 +452,11 @@ msgstr "``q`` key can be used to cancel output"
 msgid "``return`` will scroll down one line"
 msgstr "``return`` will scroll down one line"
 
-#: ../../cli.rst:868
+#: ../../cli.rst:871
 msgid "``scp://<user>:<passwd>@<host>:/<dir>``"
 msgstr "``scp://<user>:<passwd>@<host>:/<dir>``"
 
-#: ../../cli.rst:867
+#: ../../cli.rst:870
 msgid "``sftp://<user>:<passwd>@<host>/<dir>``"
 msgstr "``sftp://<user>:<passwd>@<host>/<dir>``"
 
@@ -448,7 +464,7 @@ msgstr "``sftp://<user>:<passwd>@<host>/<dir>``"
 msgid "``space`` will scroll down one page"
 msgstr "``space`` will scroll down one page"
 
-#: ../../cli.rst:869
+#: ../../cli.rst:872
 msgid "``tftp://<host>/<dir>``"
 msgstr "``tftp://<host>/<dir>``"
 

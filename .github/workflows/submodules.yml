@@ -5,7 +5,7 @@ on:
   # 06:00 UTC on Monday
     - cron:  '0 6 * * 1'
 jobs:
-  update_master:
+  update_current:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,7 +36,7 @@ jobs:
           body: |
             Autoupdate vyos-1x submodule
             update releasenotes
-          branch: update-dependencies-master
+          branch: update-dependencies-current
           delete-branch: true
 
   update_sagitta:
