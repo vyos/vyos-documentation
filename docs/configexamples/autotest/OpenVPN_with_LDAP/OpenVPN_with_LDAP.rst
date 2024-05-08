@@ -7,9 +7,9 @@ OpenVPN with LDAP
 | Testdate: 2023-05-11
 | Version: 1.4-rolling-202305100734
 
-This LAB show how to uwe OpenVPN with a Active Directory authentication backend.
+This LAB shows how to use OpenVPN with a Active Directory authentication method.
 
-The Topology are consists of:
+Topology consists of:
  * Windows Server 2019 with a running Active Directory
  * VyOS as a OpenVPN Server
  * VyOS as Client
@@ -20,7 +20,7 @@ The Topology are consists of:
 Active Directory on Windows server
 ==================================
 
-The Lab asume a full running Active Directory on the Windows Server.
+The lab assumes a full running Active Directory on the Windows Server.
 Here are some PowerShell commands to quickly add a Test Active Directory.
 
 .. code-block:: powershell
@@ -36,7 +36,7 @@ Here are some PowerShell commands to quickly add a Test Active Directory.
     New-ADUser user01 -AccountPassword(Read-Host -AsSecureString "Input Password") -Enabled $true
 
 
-Configuration VyOS as OpenVPN Server
+Configure VyOS as OpenVPN Server
 ====================================
 
 In this example OpenVPN will be setup with a client certificate and username / password authentication.
@@ -53,7 +53,7 @@ Please look :ref:`here <configuration/pki/index:pki>` for more information.
 
 Now generate all required certificates on the ovpn-server:
 
-first the PCA
+First the CA
 
 .. code-block:: none
 
@@ -249,11 +249,27 @@ save the output to a file and import it in nearly all openvpn clients.
    
    </key>
 
+Configure VyOS as client
+------------------------
+
+.. code-block:: none
+
+   set interfaces openvpn vtun10 authentication username 'user01'
+   set interfaces openvpn vtun10 authentication password '$ecret'
+   set interfaces openvpn vtun10 encryption cipher 'aes256'
+   set interfaces openvpn vtun10 hash 'sha512'
+   set interfaces openvpn vtun10 mode 'client'
+   set interfaces openvpn vtun10 persistent-tunnel
+   set interfaces openvpn vtun10 protocol 'udp'
+   set interfaces openvpn vtun10 remote-host '198.51.100.254'
+   set interfaces openvpn vtun10 remote-port '1194'
+   set interfaces openvpn vtun10 tls ca-certificate 'OVPN-CA'
+   set interfaces openvpn vtun10 tls certificate 'CLIENT'
 
 Monitoring
 ==========
 
-If the client is connect successfully you can check the output with
+If the client is connected successfully you can check the status
 
 .. code-block:: none
 
