@@ -29,4 +29,4 @@ sudo chown $NEW_UID:$NEW_GID /home/$USER_NAME
 export HOME=/home/$USER_NAME
 
 # Execute process
-sudo exec /usr/sbin/gosu $USER_NAME "$@"
+sudo /usr/sbin/gosu $USER_NAME "$@"
