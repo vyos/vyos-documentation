@@ -539,6 +539,27 @@ geoip) to keep database and rules updated.
    criteria.
 
 .. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
+   source group dynamic-address-group <name | !name>
+.. cfgcmd:: set firewall ipv4 input filter rule <1-999999>
+   source group dynamic-address-group <name | !name>
+.. cfgcmd:: set firewall ipv4 output filter rule <1-999999>
+   source group dynamic-address-group <name | !name>
+.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
+   source group dynamic-address-group <name | !name>
+
+.. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
+   destination group dynamic-address-group <name | !name>
+.. cfgcmd:: set firewall ipv4 input filter rule <1-999999>
+   destination group dynamic-address-group <name | !name>
+.. cfgcmd:: set firewall ipv4 output filter rule <1-999999>
+   destination group dynamic-address-group <name | !name>
+.. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
+   destination group dynamic-address-group <name | !name>
+
+   Use a specific dynamic-address-group. Prepend character ``!`` for inverted
+   matching criteria.
+
+.. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
    source group network-group <name | !name>
 .. cfgcmd:: set firewall ipv4 input filter rule <1-999999>
    source group network-group <name | !name>
