@@ -668,10 +668,10 @@ We will use source and destination address for hash generation.
   set nat destination rule 10 destination port 80
   set nat destination rule 10 load-balance hash source-address
   set nat destination rule 10 load-balance hash destination-address
-  set nat destination rule 10 laod-balance backend 198.51.100.101 weight 30
-  set nat destination rule 10 laod-balance backend 198.51.100.102 weight 20
-  set nat destination rule 10 laod-balance backend 198.51.100.103 weight 15
-  set nat destination rule 10 laod-balance backend 198.51.100.104 weight 35
+  set nat destination rule 10 load-balance backend 198.51.100.101 weight 30
+  set nat destination rule 10 load-balance backend 198.51.100.102 weight 20
+  set nat destination rule 10 load-balance backend 198.51.100.103 weight 15
+  set nat destination rule 10 load-balance backend 198.51.100.104 weight 35
 
 Second scenario: apply source NAT for all outgoing connections from
 LAN 10.0.0.0/8, using 3 public addresses and equal distribution.
