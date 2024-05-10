@@ -471,6 +471,11 @@ Global Advanced options
 
   Windows Internet Name Service (WINS) servers propagated to client
 
+.. cfgcmd:: set vpn sstp host-name <hostname>
+
+  If this option is given, only SSTP connections to the specified host
+  and with the same TLS SNI will be allowed.
+
 ***********************
 Configuring SSTP client
 ***********************
