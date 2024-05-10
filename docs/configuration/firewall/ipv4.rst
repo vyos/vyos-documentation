@@ -843,13 +843,13 @@ geoip) to keep database and rules updated.
       set firewall ipv4 input filter rule 13 tcp flags not 'fin'
 
 .. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
-   state [established | invalid | new | related] [enable | disable]
+   state [established | invalid | new | related]
 .. cfgcmd:: set firewall ipv4 input filter rule <1-999999>
-   state [established | invalid | new | related] [enable | disable]
+   state [established | invalid | new | related]
 .. cfgcmd:: set firewall ipv4 output filter rule <1-999999>
-   state [established | invalid | new | related] [enable | disable]
+   state [established | invalid | new | related]
 .. cfgcmd:: set firewall ipv4 name <name> rule <1-999999>
-   state [established | invalid | new | related] [enable | disable]
+   state [established | invalid | new | related]
 
    Match against the state of a packet.
 
@@ -964,12 +964,12 @@ Requirements to enable synproxy:
   set firewall global-options syn-cookies 'enable'
   set firewall ipv4 input filter rule 10 action 'synproxy'
   set firewall ipv4 input filter rule 10 destination port '8080'
-  set firewall ipv4 input filter rule 10 inbound-interface interface-name 'eth1'
+  set firewall ipv4 input filter rule 10 inbound-interface name 'eth1'
   set firewall ipv4 input filter rule 10 protocol 'tcp'
   set firewall ipv4 input filter rule 10 synproxy tcp mss '1460'
   set firewall ipv4 input filter rule 10 synproxy tcp window-scale '7'
   set firewall ipv4 input filter rule 1000 action 'drop'
-  set firewall ipv4 input filter rule 1000 state invalid 'enable'
+  set firewall ipv4 input filter rule 1000 state invalid
 
 
 ***********************
