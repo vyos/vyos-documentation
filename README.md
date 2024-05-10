@@ -90,12 +90,14 @@ If the `vyos/vyos-documentation` container could not be found locally it will be
 automatically fetched from Dockerhub.
 
 ```bash
-$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs \
-  -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation make html
+$ git clone https://github.com/vyos/vyos-documentation.git
 
-# sphinx autobuild
-$ docker run --rm -it -p 8000:8000 -v "$(pwd)":/vyos -w /vyos/docs -e \
-  GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation make livehtml
+$ cd vyos-documentation
+
+$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation make html
+
+# For sphinx autobuild
+$ docker run --rm -it -p 8000:8000 -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation make livehtml
 ```
 
 ### Test the docs
@@ -103,13 +105,11 @@ $ docker run --rm -it -p 8000:8000 -v "$(pwd)":/vyos -w /vyos/docs -e \
 To test all files, run:
 
 ```bash
-$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs \
-  -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation vale .
+$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation vale .
 ```
 
 to test a specific file (e.g. `quick-start.rst`)
 
 ```bash
-$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) \
-  -e GOSU_GID=$(id -g) vyos/vyos-documentation vale quick-start.rst
+$ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) vyos/vyos-documentation vale quick-start.rst
 ```
