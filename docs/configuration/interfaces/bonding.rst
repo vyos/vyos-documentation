@@ -156,6 +156,11 @@ Bond options
 
    The default value is slow.
 
+.. cfgcmd:: set interfaces bonding <interface> system-mac <mac address>
+
+   This option allow to specifies the 802.3ad system MAC address.You can set a
+   random mac-address that can be used for these LACPDU exchanges.
+   
 .. cfgcmd:: set interfaces bonding <interface> hash-policy <policy>
 
    * **layer2** - Uses XOR of hardware MAC addresses and packet type ID field
