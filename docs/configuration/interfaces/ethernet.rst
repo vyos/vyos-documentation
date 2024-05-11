@@ -118,6 +118,14 @@ Authentication (EAPoL)
    :var0: ethernet
    :var1: eth0
 
+EVPN Multihoming
+----------------
+
+Uplink/Core tracking.
+
+.. cmdinclude:: /_include/interface-evpn-uplink.txt
+   :var0: ethernet
+   :var1: eth0
 
 VLAN
 ====
@@ -289,4 +297,3 @@ Operation
         Date code               : 0506xx
 
 .. stop_vyoslinter
-
