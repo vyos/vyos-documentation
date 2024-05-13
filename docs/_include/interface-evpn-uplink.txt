@@ -1,0 +1,11 @@
+.. cfgcmd:: set interfaces {{ var0 }} <interface> evpn uplink
+
+  When all the underlay links go down the PE no longer has access
+  to the VxLAN +overlay. To prevent blackholing of traffic the
+  server/ES links are protodowned on the PE.
+
+  A link can be setup for uplink tracking via the following example:
+
+  .. code-block:: none
+
+    set interfaces {{ var0 }} {{ var1 }} evpn uplink
