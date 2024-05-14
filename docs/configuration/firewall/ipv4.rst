@@ -16,7 +16,8 @@ Configuration commands covered in this section:
 
 .. cfgcmd:: set firewall ipv4 ...
 
-From main structure defined in :doc:`Firewall Overview</configuration/firewall/index>`
+From main structure defined in
+:doc:`Firewall Overview</configuration/firewall/index>`
 in this section you can find detailed information only for the next part
 of the general structure:
 
@@ -955,13 +956,17 @@ Synproxy
 ********
 Synproxy connections
 
-.. cfgcmd:: set firewall ipv4 [input | forward] filter rule <1-999999> action synproxy
-.. cfgcmd:: set firewall ipv4 [input | forward] filter rule <1-999999> protocol tcp
-.. cfgcmd:: set firewall ipv4 [input | forward] filter rule <1-999999> synproxy tcp mss <501-65535>
+.. cfgcmd:: set firewall ipv4 [input | forward] filter rule <1-999999>
+   action synproxy
+.. cfgcmd:: set firewall ipv4 [input | forward] filter rule <1-999999>
+   protocol tcp
+.. cfgcmd:: set firewall ipv4 [input | forward] filter rule <1-999999>
+   synproxy tcp mss <501-65535>
 
     Set TCP-MSS (maximum segment size) for the connection
 
-.. cfgcmd:: set firewall ipv4 [input | forward] filter rule <1-999999> synproxy tcp window-scale <1-14>
+.. cfgcmd:: set firewall ipv4 [input | forward] filter rule <1-999999>
+   synproxy tcp window-scale <1-14>
 
     Set the window scale factor for TCP window scaling
 
@@ -1167,8 +1172,8 @@ Show Firewall log
 .. opcmd:: show log firewall ipv4 name <name> rule <rule>
 
    Show the logs of all firewall; show all ipv4 firewall logs; show all logs
-   for particular hook; show all logs for particular hook and priority; show all logs
-   for particular custom chain; show logs for specific Rule-Set.
+   for particular hook; show all logs for particular hook and priority;
+   show all logs for particular custom chain; show logs for specific Rule-Set.
 
 Example Partial Config
 ======================
