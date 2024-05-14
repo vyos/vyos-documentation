@@ -17,7 +17,8 @@ can be done regarding flowtables.
 
 .. cfgcmd:: set firewall flowtables ...
 
-From main structure defined in :doc:`Firewall Overview</configuration/firewall/index>`
+From main structure defined in
+:doc:`Firewall Overview</configuration/firewall/index>`
 in this section you can find detailed information only for the next part
 of the general structure:
 
