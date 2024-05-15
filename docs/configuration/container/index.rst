@@ -27,6 +27,27 @@ Configuration
 
       set container name mysql-server image quay.io/mysql:8.0
 
+.. cfgcmd:: set container name <name> entrypoint <entrypoint>
+
+   Override the default entrypoint from the image for a container.
+
+.. cfgcmd:: set container name <name> command <command>
+
+    Override the default command from the image for a container.
+
+.. cfgcmd:: set container name <name> arguments <arguments>
+
+    Set the command arguments for a container.
+
+.. cfgcmd:: set container name <name> uid <userid>
+.. cfgcmd:: set container name <name> gid <groupid>
+
+    Set user ID and/or group ID a container will run as.
+
+.. cfgcmd:: set container name <name> host-name <hostname>
+
+    Set the host name for a container.
+
 .. cfgcmd:: set container name <name> allow-host-networks
 
     Allow host networking in a container. The network stack of the container is
@@ -127,6 +148,10 @@ Configuration
    - **setpcap**: Capability sets (from bounded or inherited set)
    - **sys-admin**: Administration operations (quotactl, mount, sethostname, setdomainame)
    - **sys-time**: Permission to set system clock
+
+.. cfgcmd:: set container name <name> label <label> value <value>
+
+   Add metadata label for this container.
 
 .. cfgcmd:: set container name <name> disable
 
