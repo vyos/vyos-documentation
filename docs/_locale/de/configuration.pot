@@ -12421,8 +12421,8 @@ msgid "Sometimes option lines in the generated OpenVPN configuration require quo
 msgstr "Sometimes option lines in the generated OpenVPN configuration require quotes. This is done through a hack on our config generator. You can pass quotes using the ``&quot;`` statement."
 
 #: ../../configuration/service/dhcp-server.rst:771
-msgid "Sort the output by the specified key. Possible keys: expires, iaid_duid, ip, last_comm, pool, remaining, state, type (default = ip)"
-msgstr "Sort the output by the specified key. Possible keys: expires, iaid_duid, ip, last_comm, pool, remaining, state, type (default = ip)"
+msgid "Sort the output by the specified key. Possible keys: expires, duid, ip, last_comm, pool, remaining, state, type (default = ip)"
+msgstr "Sort the output by the specified key. Possible keys: expires, duid, ip, last_comm, pool, remaining, state, type (default = ip)"
 
 #: ../../configuration/service/dhcp-server.rst:566
 msgid "Sort the output by the specified key. Possible keys: ip, hardware_address, state, start, end, remaining, pool, hostname (default = ip)"
@@ -13647,8 +13647,8 @@ msgid "The hostname or IP address of the master"
 msgstr "The hostname or IP address of the master"
 
 #: ../../configuration/service/dhcp-server.rst:700
-msgid "The identifier is the device's DUID: colon-separated hex list (as used by isc-dhcp option dhcpv6.client-id). If the device already has a dynamic lease from the DHCPv6 server, its DUID can be found with ``show service dhcpv6 server leases``. The DUID begins at the 5th octet (after the 4th colon) of IAID_DUID."
-msgstr "The identifier is the device's DUID: colon-separated hex list (as used by isc-dhcp option dhcpv6.client-id). If the device already has a dynamic lease from the DHCPv6 server, its DUID can be found with ``show service dhcpv6 server leases``. The DUID begins at the 5th octet (after the 4th colon) of IAID_DUID."
+msgid "The identifier is the device's DUID: colon-separated hex list (as used by isc-dhcp option dhcpv6.client-id). If the device already has a dynamic lease from the DHCPv6 server, its DUID can be found with ``show service dhcpv6 server leases``."
+msgstr "The identifier is the device's DUID: colon-separated hex list (as used by isc-dhcp option dhcpv6.client-id). If the device already has a dynamic lease from the DHCPv6 server, its DUID can be found with ``show service dhcpv6 server leases``."
 
 #: ../../configuration/vpn/dmvpn.rst:237
 msgid "The individual spoke configurations only differ in the local IP address on the ``tun10`` interface. See the above diagram for the individual IP addresses."
