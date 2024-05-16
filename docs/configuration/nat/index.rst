@@ -11,3 +11,4 @@ NAT
    nat44
    nat64
    nat66
+   cgnat
