@@ -724,8 +724,7 @@ be created. The following example explains the process.
 .. hint:: The identifier is the device's DUID: colon-separated hex list (as
    used by isc-dhcp option dhcpv6.client-id). If the device already has a
    dynamic lease from the DHCPv6 server, its DUID can be found with ``show
-   service dhcpv6 server leases``. The DUID begins at the 5th octet (after the
-   4th colon) of IAID_DUID.
+   service dhcpv6 server leases``.
 
 .. code-block:: none
 
@@ -778,10 +777,10 @@ Operation Mode
 .. code-block:: none
 
   vyos@vyos:~$ show dhcpv6 server leases
-  IPv6 address   State    Last communication    Lease expiration     Remaining    Type           Pool   IAID_DUID
+  IPv6 address   State    Last communication    Lease expiration     Remaining    Type           Pool   DUID
   -------------  -------  --------------------  -------------------  -----------  -------------  -----  --------------------------------------------
-  2001:db8::101  active   2019/12/05 19:40:10   2019/12/06 07:40:10  11:45:21     non-temporary  NET1   98:76:54:32:00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
-  2001:db8::102  active   2019/12/05 14:01:23   2019/12/06 02:01:23  6:06:34      non-temporary  NET1   87:65:43:21:00:01:00:01:11:22:33:44:fa:fb:fc:fd:fe:ff
+  2001:db8::101  active   2019/12/05 19:40:10   2019/12/06 07:40:10  11:45:21     non-temporary  NET1   00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
+  2001:db8::102  active   2019/12/05 14:01:23   2019/12/06 02:01:23  6:06:34      non-temporary  NET1   00:01:00:01:11:22:33:44:fa:fb:fc:fd:fe:ff
 
 .. hint:: Static mappings aren't shown. To show all states, use ``show dhcp
    server leases state all``.
@@ -792,7 +791,7 @@ Operation Mode
 
 .. opcmd:: show dhcpv6 server leases sort <key>
 
-   Sort the output by the specified key. Possible keys: expires, iaid_duid, ip,
+   Sort the output by the specified key. Possible keys: expires, duid, ip,
    last_comm, pool, remaining, state, type (default = ip)
 
 .. opcmd:: show dhcpv6 server leases state <state>
