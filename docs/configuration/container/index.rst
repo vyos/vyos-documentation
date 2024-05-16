@@ -176,8 +176,8 @@ Container Networks
 
 .. cfgcmd:: set container network <name> prefix <ipv4|ipv6>
 
-    Define IPv4 or IPv6 prefix for a given network name. Only one IPv4 and
-    one IPv6 prefix can be used per network name.
+    Define IPv4 and/or IPv6 prefix for a given network name.
+    Both IPv4 and IPv6 can be used in parallel.
 
 .. cfgcmd:: set container network <name> vrf <nme>
 
