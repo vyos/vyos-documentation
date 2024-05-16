@@ -21,11 +21,33 @@ Configuration
 
     If a registry is not specified, Docker.io will be used as the container
     registry unless an alternative registry is specified using
-    **set container registry <name>** or the registry is included in the image name
+    **set container registry <name>** or the registry is included
+    in the image name
 
     .. code-block:: none
 
       set container name mysql-server image quay.io/mysql:8.0
+
+.. cfgcmd:: set container name <name> entrypoint <entrypoint>
+
+   Override the default entrypoint from the image for a container.
+
+.. cfgcmd:: set container name <name> command <command>
+
+    Override the default command from the image for a container.
+
+.. cfgcmd:: set container name <name> arguments <arguments>
+
+    Set the command arguments for a container.
+
+.. cfgcmd:: set container name <name> uid <userid>
+.. cfgcmd:: set container name <name> gid <groupid>
+
+    Set user ID and/or group ID a container will run as.
+
+.. cfgcmd:: set container name <name> host-name <hostname>
+
+    Set the host name for a container.
 
 .. cfgcmd:: set container name <name> allow-host-networks
 
@@ -47,7 +69,8 @@ Configuration
     Optionally set a specific static IPv4 or IPv6 address for the container.
     This address must be within the named network prefix.
 
-    .. note:: The first IP in the container network is reserved by the engine and cannot be used
+    .. note:: The first IP in the container network is reserved by the
+       engine and cannot be used
 
 .. cfgcmd:: set container name <name> description <text>
 
@@ -103,8 +126,10 @@ Configuration
    Set the restart behavior of the container.
 
    - **no**: Do not restart containers on exit
-   - **on-failure**: Restart containers when they exit with a non-zero exit code, retrying indefinitely (default)
-   - **always**: Restart containers when they exit, regardless of status, retrying indefinitely
+   - **on-failure**: Restart containers when they exit with a non-zero
+     exit code, retrying indefinitely (default)
+   - **always**: Restart containers when they exit, regardless of status,
+     retrying indefinitely
 
 .. cfgcmd:: set container name <name> memory <MB>
 
@@ -122,11 +147,17 @@ Configuration
    Set container capabilities or permissions.
 
    - **net-admin**: Network operations (interface, firewall, routing tables)
-   - **net-bind-service**: Bind a socket to privileged ports (port numbers less than 1024)
+   - **net-bind-service**: Bind a socket to privileged ports
+     (port numbers less than 1024)
    - **net-raw**: Permission to create raw network sockets
    - **setpcap**: Capability sets (from bounded or inherited set)
-   - **sys-admin**: Administration operations (quotactl, mount, sethostname, setdomainame)
+   - **sys-admin**: Administration operations (quotactl, mount, sethostname,
+     setdomainame)
    - **sys-time**: Permission to set system clock
+
+.. cfgcmd:: set container name <name> label <label> value <value>
+
+   Add metadata label for this container.
 
 .. cfgcmd:: set container name <name> disable
 
@@ -216,7 +247,8 @@ Example Configuration
 *********************
 
     For the sake of demonstration, `example #1 in the official documentation
-    <https://www.zabbix.com/documentation/current/manual/installation/containers>`_
+    <https://www.zabbix.com/documentation/current/manual/
+    installation/containers>`_
     to the declarative VyOS CLI syntax.
 
     .. code-block:: none
