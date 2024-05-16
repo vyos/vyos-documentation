@@ -31,7 +31,8 @@ Configuration
    Will drop `<shared-network-name>_` from client DNS record, using only the
    host declaration name and domain: `<hostname>.<domain-name>`
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> domain-name <domain-name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name>
+   domain-name <domain-name>
 
    The domain-name parameter should be the domain name that will be appended to
    the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
@@ -40,7 +41,8 @@ Configuration
    This is the configuration parameter for the entire shared network definition.
    All subnets will inherit this configuration item if not specified locally.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> domain-search <domain-name>
+.. cfgcmd:: set service dhcp-server shared-network-name <name>
+   domain-search <domain-name>
 
    The domain-name parameter should be the domain name used when completing DNS
    request where no full FQDN is passed. This option can be given multiple times
@@ -49,7 +51,8 @@ Configuration
    This is the configuration parameter for the entire shared network definition.
    All subnets will inherit this configuration item if not specified locally.
 
-.. cfgcmd:: set service dhcp-server shared-network-name <name> name-server <address>
+.. cfgcmd:: set service dhcp-server shared-network-name <name>
+   name-server <address>
 
    Inform client that the DNS server can be found at `<address>`.
 
@@ -234,7 +237,8 @@ inside the subnet definition but can be outside of the range statement.
 
 **Example:**
 
-* IP address ``192.168.1.100`` shall be statically mapped to client named ``client1``
+* IP address ``192.168.1.100`` shall be statically mapped to
+  client named ``client1``
 
 .. code-block:: none
 
