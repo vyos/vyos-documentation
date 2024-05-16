@@ -40,11 +40,6 @@ Configuration
 
     Set the command arguments for a container.
 
-.. cfgcmd:: set container name <name> uid <userid>
-.. cfgcmd:: set container name <name> gid <groupid>
-
-    Set user ID and/or group ID a container will run as.
-
 .. cfgcmd:: set container name <name> host-name <hostname>
 
     Set the host name for a container.
