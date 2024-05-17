@@ -44,13 +44,20 @@ Configuration
 
     Set the host name for a container.
 
+.. cfgcmd:: set container name <name> allow-host-pid
+
+    The container and the host share the same process namespace.
+    This means that processes running on the host are visible inside the
+    container, and processes inside the container are visible on the host.
+
+    The command translates to "--pid host" when the container is created.
+
 .. cfgcmd:: set container name <name> allow-host-networks
 
     Allow host networking in a container. The network stack of the container is
     not isolated from the host and will use the host IP.
 
-    The following commands translate to "--net host" when the container
-    is created
+    The command translates to "--net host" when the container is created.
 
     .. note:: **allow-host-networks** cannot be used with **network**
 
