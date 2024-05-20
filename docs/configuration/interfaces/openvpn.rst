@@ -653,6 +653,88 @@ Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
    quotes. This is done through a hack on our config generator. You can pass
    quotes using the ``&quot;`` statement.
 
+***************************
+Multi-factor Authentication
+***************************
+
+VyOS supports multi-factor authentication (MFA) or two-factor authentication 
+using Time-based One-Time Password (TOTP). Compatible with Google Authenticator
+software token, other software tokens.
+
+MFA TOTP options
+================
+
+.. cfgcmd:: set interfaces openvpn <interface> server mfa totp challenge <enable | disable>
+
+  If set to enable, openvpn-otp will expect password as result of challenge/
+  response protocol.
+
+.. cfgcmd:: set interfaces openvpn <interface> server mfa totp digits <1-65535>    
+
+  Configure number of digits to use for totp hash (default: 6)
+    
+.. cfgcmd:: set interfaces openvpn <interface> server mfa totp drift <1-65535>
+
+  Configure time drift in seconds (default: 0)
+
+.. cfgcmd:: set interfaces openvpn <interface> server mfa totp slop <1-65535>
+
+  Configure maximum allowed clock slop in seconds (default: 180)
+
+.. cfgcmd:: set interfaces openvpn <interface> server mfa totp step <1-65535>
+
+  Configure step value for totp in seconds (default: 30)
+
+Example
+=======
+
+.. code-block:: none
+
+  set interfaces openvpn vtun20 encryption cipher 'aes256'
+  set interfaces openvpn vtun20 hash 'sha512'
+  set interfaces openvpn vtun20 mode 'server'
+  set interfaces openvpn vtun20 persistent-tunnel
+  set interfaces openvpn vtun20 server client user1
+  set interfaces openvpn vtun20 server mfa totp challenge 'disable'
+  set interfaces openvpn vtun20 server subnet '10.10.2.0/24'
+  set interfaces openvpn vtun20 server topology 'subnet'
+  set interfaces openvpn vtun20 tls ca-certificate 'openvpn_vtun20'
+  set interfaces openvpn vtun20 tls certificate 'openvpn_vtun20'
+  set interfaces openvpn vtun20 tls dh-params 'dh-pem'
+
+For every client in the openvpn server configuration a totp secret is created.
+To display the authentication information, use the command:
+
+.. cfgcmd:: show interfaces openvpn <interface> user <username> mfa <qrcode|secret|uri>
+
+An example:
+
+.. code-block:: none
+
+   vyos@vyos:~$ sh interfaces openvpn vtun20 user user1 mfa qrcode
+   █████████████████████████████████████
+   █████████████████████████████████████
+   ████ ▄▄▄▄▄ █▀▄▀ ▀▀▄▀ ▀▀▄ █ ▄▄▄▄▄ ████
+   ████ █   █ █▀▀▄ █▀▀▀█▀██ █ █   █ ████
+   ████ █▄▄▄█ █▀█ ▄ █▀▀ █▄▄▄█ █▄▄▄█ ████
+   ████▄▄▄▄▄▄▄█▄█ █ █ ▀ █▄▀▄█▄▄▄▄▄▄▄████
+   ████▄▄ ▄ █▄▄ ▄▀▄█▄ ▄▀▄█ ▄▄▀ ▀▄█ ▀████
+   ████ ▀██▄▄▄█▄ ██ █▄▄▄▄ █▄▀█ █ █▀█████
+   ████ ▄█▀▀▄▄  ▄█▀  ▀▄ ▄▄▀▄█▀▀▀ ▄▄▀████
+   ████▄█ ▀▄▄▄▀  ▀ ▄█ ▄ █▄█▀ █▀  █▀█████
+   ████▀█▀ ▀ ▄█▀▄▀▀█▄██▄█▀▀  ▀ ▀ ▄█▀████
+   ████ ██▄▄▀▄▄█ ██ ▀█ ▄█ ▀▄█  █▀██▀████
+   ████▄███▄█▄█ ▀█▄ ██▄▄▄█▀ ▄▄▄ █ ▀ ████
+   ████ ▄▄▄▄▄ █▄█▀▄ ▀▄ ▀█▀  █▄█ ██▀█████
+   ████ █   █ █ ▄█▀█▀▀▄ ▄▀▀▄▄▄▄▄▄   ████
+   ████ █▄▄▄█ █ ▄ ▀ █▄▄▄██▄▀█▄▀▄█▄ █████
+   ████▄▄▄▄▄▄▄█▄██▄█▄▄▄▄▄█▄█▄█▄██▄██████
+   █████████████████████████████████████
+   █████████████████████████████████████
+
+Use the QR code to add the user account in Google authenticator application and
+on client side, use the OTP number as password.
+
 
 **********************************
 OpenVPN Data Channel Offload (DCO)
