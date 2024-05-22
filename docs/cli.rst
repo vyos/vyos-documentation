@@ -369,7 +369,7 @@ command.
 
 You are now in a sublevel relative to ``interfaces ethernet eth0``, all
 commands executed from this point on are relative to this sublevel. Use
-eithe the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top
+either the :cfgcmd:`top` or :cfgcmd:`exit` command to go back to the top
 of the hierarchy. You can also use the :cfgcmd:`up` command to move only
 one level up at a time.
 
@@ -410,7 +410,7 @@ working configuration indicating line changes with ``+`` for additions,
   loopback lo {
   }
 
-It is also possible to display all `set` commands within configuration
+It is also possible to display all :cfgcmd:`set` commands within configuration
 mode using :cfgcmd:`show | commands`
 
 .. code-block:: none
@@ -500,6 +500,9 @@ different levels in the hierarchy.
     vyos@vyos# exit
     Warning: configuration changes have not been saved.
     vyos@vyos:~$
+
+.. hint:: You can specify a commit message with
+  :cfgcmd:`commit comment <message>`.
 
 .. _save:
 
@@ -854,28 +857,37 @@ to :cfgcmd:`commit`. You will have to set the commit-archive location.
 TFTP, FTP, SCP and SFTP servers are supported. Every time a
 :cfgcmd:`commit` is successful the ``config.boot`` file will be copied
 to the defined destination(s). The filename used on the remote host will
-be ``config.boot-hostname.YYYYMMDD_HHMMSS``. 
+be ``config.boot-hostname.YYYYMMDD_HHMMSS``.
 
 .. cfgcmd:: set system config-management commit-archive location <URI>
 
-   Specify remote location of commit archive as any of the below
-   :abbr:`URI (Uniform Resource Identifier)`
+  Specify remote location of commit archive as any of the below
+  :abbr:`URI (Uniform Resource Identifier)`
 
-   * ``scp://<user>:<passwd>@<host>:/<dir>``
-   * ``sftp://<user>:<passwd>@<host>/<dir>``
-   * ``ftp://<user>:<passwd>@<host>/<dir>``
-   * ``tftp://<host>/<dir>``
+  * ``http://<user>:<passwd>@<host>:/<dir>``
+  * ``https://<user>:<passwd>@<host>:/<dir>``
+  * ``ftp://<user>:<passwd>@<host>/<dir>``
+  * ``sftp://<user>:<passwd>@<host>/<dir>``
+  * ``scp://<user>:<passwd>@<host>:/<dir>``
+  * ``tftp://<host>/<dir>``
+  * ``git+https://<user>:<passwd>@<host>/<path>``
 
-.. note:: The number of revisions don't affect the commit-archive.
+  Since username and password are part of the URI, they need to be
+  properly url encoded if containing special characters.
 
-.. note:: You may find VyOS not allowing the secure connection because
-   it cannot verify the legitimacy of the remote server. You can use
-   the workaround below to quickly add the remote host's SSH
-   fingerprint to your ``~/.ssh/known_hosts`` file:
+  .. note:: The number of revisions don't affect the commit-archive.
 
-   .. code-block:: none
+  .. note:: When using Git as destination for the commit archive the
+     ``source-address`` CLI option has no effect.
 
-     vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
+  .. note:: You may find VyOS not allowing the secure connection because
+     it cannot verify the legitimacy of the remote server. You can use
+     the workaround below to quickly add the remote host's SSH
+     fingerprint to your ``~/.ssh/known_hosts`` file:
+
+  .. code-block:: none
+
+    vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
 
 Saving and loading manually
 ---------------------------
