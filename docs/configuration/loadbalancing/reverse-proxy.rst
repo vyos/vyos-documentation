@@ -45,6 +45,11 @@ Service
 
   Set SSL certeficate <name> for service <name>
 
+.. cfgcmd:: set load-balancing reverse-proxy service <name>
+  http-response-headers <header-name> value <header-value>
+
+  Set custom HTTP headers to be included in all responses
+
 
 Rules
 ^^^^^
@@ -154,6 +159,45 @@ Gloabal
   Configure requests to the backend server to use SSL encryption without
   validating server certificate
 
+<<<<<<< HEAD
+=======
+.. cfgcmd:: set load-balancing reverse-proxy backend <name>
+  http-response-headers <header-name> value <header-value>
+
+  Set custom HTTP headers to be included in all responses using the backend
+
+
+HTTP health check
+^^^^^^^^^^^^^^^^^
+For web application providing information about their state HTTP health
+checks can be used to determine their availability.
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+
+  Enables HTTP health checks using OPTION HTTP requests against '/' and
+  expecting a successful response code in the 200-399 range.
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+   method <method>
+
+  Sets the HTTP method to be used, can be either: option, get, post, put
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+   uri <path>
+
+  Sets the endpoint to be used for health checks
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+   expect <condition>
+
+  Sets the expected result condition for considering a server healthy.
+  Some possible examples are:
+   * ``status 200`` Expecting a 200 response code
+   * ``status 200-399`` Expecting a non-failure response code
+   * ``string success`` Expecting the string `success` in the response body
+
+
+>>>>>>> 3249752e (reverse-proxy: T6370: Documented usage of http-response-headers option)
 Global
 >>>>>>> 6703aeb4 (T6242: reverse-proxy: Document new backend option ssl no-verify)
 -------
@@ -259,6 +303,7 @@ HTTPS.
 
 The ``https`` service listens on port 443 with backend `bk-default` to 
 handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination.
+HSTS header is set with a 1-year expiry, to tell browsers to always use SSL for site.
 
 Rule 10 matches requests with the exact URL path ``/.well-known/xxx``
 and redirects to location ``/certs/``.
@@ -281,6 +326,7 @@ connection limit of 4000 and a minimum TLS version of 1.3.
     set load-balancing reverse-proxy service https mode 'http'
     set load-balancing reverse-proxy service https port '443'
     set load-balancing reverse-proxy service https ssl certificate 'cert'
+    set load-balancing reverse-proxy service https http-response-headers Strict-Transport-Security value 'max-age=31536000'
 
     set load-balancing reverse-proxy service https rule 10 url-path exact '/.well-known/xxx'
     set load-balancing reverse-proxy service https rule 10 set redirect-location '/certs/'
