@@ -133,7 +133,7 @@ Configuration
    - **always**: Restart containers when they exit, regardless of status,
      retrying indefinitely
 
-.. cfgcmd:: set container name <name> cpus <num>
+.. cfgcmd:: set container name <name> cpu-quota <num>
 
    This specifies the number of CPU resources the container can use.
 
