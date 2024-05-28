@@ -45,6 +45,11 @@ Service
 
   Set SSL certificate <name> for service <name>
 
+.. cfgcmd:: set load-balancing reverse-proxy service <name>
+  http-response-headers <header-name> value <header-value>
+
+  Set custom HTTP headers to be included in all responses
+
 
 Rules
 ^^^^^
@@ -154,6 +159,11 @@ Backend
 
   Configure requests to the backend server to use SSL encryption without
   validating server certificate
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name>
+  http-response-headers <header-name> value <header-value>
+
+  Set custom HTTP headers to be included in all responses using the backend
 
 
 HTTP health check
@@ -291,6 +301,7 @@ HTTPS.
 
 The ``https`` service listens on port 443 with backend ``bk-default`` to
 handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination.
+HSTS header is set with a 1-year expiry, to tell browsers to always use SSL for site.
 
 Rule 10 matches requests with the exact URL path ``/.well-known/xxx``
 and redirects to location ``/certs/``.
@@ -313,6 +324,7 @@ connection limit of 4000 and a minimum TLS version of 1.3.
     set load-balancing reverse-proxy service https mode 'http'
     set load-balancing reverse-proxy service https port '443'
     set load-balancing reverse-proxy service https ssl certificate 'cert'
+    set load-balancing reverse-proxy service https http-response-headers Strict-Transport-Security value 'max-age=31536000'
 
     set load-balancing reverse-proxy service https rule 10 url-path exact '/.well-known/xxx'
     set load-balancing reverse-proxy service https rule 10 set redirect-location '/certs/'
