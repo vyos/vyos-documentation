@@ -43,7 +43,12 @@ Service
 .. cfgcmd:: set load-balancing reverse-proxy service <name> ssl
    certificate <name>
 
-  Set SSL certeficate <name> for service <name>
+  Set SSL certificate <name> for service <name>
+
+.. cfgcmd:: set load-balancing reverse-proxy service <name>
+  http-response-headers <header-name> value <header-value>
+
+  Set custom HTTP headers to be included in all responses
 
 
 Rules
@@ -97,15 +102,15 @@ Backend
 .. cfgcmd:: set load-balancing reverse-proxy backend <name> balance
    <balance>
 
-  Load-balancing algorithms to be used for distributind requests among the
-  vailable servers
+  Load-balancing algorithms to be used for distributed requests among the
+  available servers
 
   Balance algorithms:
    * ``source-address`` Distributes requests based on the source IP address
      of the client
    * ``round-robin`` Distributes requests in a circular manner,
      sequentially sending each request to the next server in line
-   * ``least-connection`` Distributes requests tp tje server wotj the fewest 
+   * ``least-connection`` Distributes requests to the server with the fewest
      active connections
 
 .. cfgcmd:: set load-balancing reverse-proxy backend <name> mode
@@ -144,18 +149,54 @@ Backend
 
   Send a Proxy Protocol version 2 header (binary format)
 
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> ssl
+   ca-certificate <ca-certificate>
 
+  Configure requests to the backend server to use SSL encryption and
+  authenticate backend against <ca-certificate>
 
-<<<<<<< HEAD
-Gloabal
-=======
 .. cfgcmd:: set load-balancing reverse-proxy backend <name> ssl no-verify
 
   Configure requests to the backend server to use SSL encryption without
   validating server certificate
 
+.. cfgcmd:: set load-balancing reverse-proxy backend <name>
+  http-response-headers <header-name> value <header-value>
+
+  Set custom HTTP headers to be included in all responses using the backend
+
+
+HTTP health check
+^^^^^^^^^^^^^^^^^
+For web application providing information about their state HTTP health
+checks can be used to determine their availability.
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+
+  Enables HTTP health checks using OPTION HTTP requests against '/' and
+  expecting a successful response code in the 200-399 range.
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+   method <method>
+
+  Sets the HTTP method to be used, can be either: option, get, post, put
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+   uri <path>
+
+  Sets the endpoint to be used for health checks
+
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> http-check
+   expect <condition>
+
+  Sets the expected result condition for considering a server healthy.
+  Some possible examples are:
+   * ``status 200`` Expecting a 200 response code
+   * ``status 200-399`` Expecting a non-failure response code
+   * ``string success`` Expecting the string `success` in the response body
+
+
 Global
->>>>>>> 6703aeb4 (T6242: reverse-proxy: Document new backend option ssl no-verify)
 -------
 
 Global parameters
@@ -216,6 +257,7 @@ servers (srv01 and srv02) using the round-robin load-balancing algorithm.
     set load-balancing reverse-proxy backend bk-01 server srv02 address '192.0.2.12'
     set load-balancing reverse-proxy backend bk-01 server srv02 port '8882'
 
+
 Balancing based on domain name
 ------------------------------
 The following configuration demonstrates how to use VyOS
@@ -252,13 +294,14 @@ to the backend ``bk-api-02``
 
 Terminate SSL
 -------------
-The following configuration reverse-proxy terminate SSL.
+The following configuration terminates SSL on the router.
 
-The ``http`` service is lestens on port 80 and force redirects from HTTP to
+The ``http`` service is listens on port 80 and force redirects from HTTP to
 HTTPS.
 
-The ``https`` service listens on port 443 with backend `bk-default` to 
+The ``https`` service listens on port 443 with backend ``bk-default`` to
 handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination.
+HSTS header is set with a 1-year expiry, to tell browsers to always use SSL for site.
 
 Rule 10 matches requests with the exact URL path ``/.well-known/xxx``
 and redirects to location ``/certs/``.
@@ -281,6 +324,7 @@ connection limit of 4000 and a minimum TLS version of 1.3.
     set load-balancing reverse-proxy service https mode 'http'
     set load-balancing reverse-proxy service https port '443'
     set load-balancing reverse-proxy service https ssl certificate 'cert'
+    set load-balancing reverse-proxy service https http-response-headers Strict-Transport-Security value 'max-age=31536000'
 
     set load-balancing reverse-proxy service https rule 10 url-path exact '/.well-known/xxx'
     set load-balancing reverse-proxy service https rule 10 set redirect-location '/certs/'
@@ -295,4 +339,62 @@ connection limit of 4000 and a minimum TLS version of 1.3.
 
     set load-balancing reverse-proxy global-parameters max-connections '4000'
     set load-balancing reverse-proxy global-parameters tls-version-min '1.3'
+
+
+SSL Bridging
+-------------
+The following configuration terminates incoming HTTPS traffic on the router,
+then re-encrypts the traffic and sends to the backend server via HTTPS.
+This is useful if encryption is required for both legs, but you do not want to
+install publicly trusted certificates on each backend server.
+
+Backend service certificates are checked against the certificate authority
+specified in the configuration, which could be an internal CA.
+
+The ``https`` service listens on port 443 with backend ``bk-bridge-ssl`` to
+handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination.
+
+The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS
+and checks backend server has a valid certificate trusted by CA ``cacert``
+
+
+.. code-block:: none
+
+    set load-balancing reverse-proxy service https backend 'bk-bridge-ssl'
+    set load-balancing reverse-proxy service https description 'listen on 443 port'
+    set load-balancing reverse-proxy service https mode 'http'
+    set load-balancing reverse-proxy service https port '443'
+    set load-balancing reverse-proxy service https ssl certificate 'cert'
+
+    set load-balancing reverse-proxy backend bk-bridge-ssl description 'SSL backend'
+    set load-balancing reverse-proxy backend bk-bridge-ssl mode 'http'
+    set load-balancing reverse-proxy backend bk-bridge-ssl ssl ca-certificate 'cacert'
+    set load-balancing reverse-proxy backend bk-bridge-ssl server sr01 address '192.0.2.23'
+    set load-balancing reverse-proxy backend bk-bridge-ssl server sr01 port '443'
+
+
+Balancing with HTTP health checks
+---------------------------------
+
+This configuration enables HTTP health checks on backend servers.
+
+.. code-block:: none
+
+    set load-balancing reverse-proxy service my-tcp-api backend 'bk-01'
+    set load-balancing reverse-proxy service my-tcp-api mode 'tcp'
+    set load-balancing reverse-proxy service my-tcp-api port '8888'
+
+    set load-balancing reverse-proxy backend bk-01 balance 'round-robin'
+    set load-balancing reverse-proxy backend bk-01 mode 'tcp'
+
+    set load-balancing reverse-proxy backend bk-01 http-check method 'get'
+    set load-balancing reverse-proxy backend bk-01 http-check uri '/health'
+    set load-balancing reverse-proxy backend bk-01 http-check expect 'status 200'
+
+    set load-balancing reverse-proxy backend bk-01 server srv01 address '192.0.2.11'
+    set load-balancing reverse-proxy backend bk-01 server srv01 port '8881'
+    set load-balancing reverse-proxy backend bk-01 server srv01 check
+    set load-balancing reverse-proxy backend bk-01 server srv02 address '192.0.2.12'
+    set load-balancing reverse-proxy backend bk-01 server srv02 port '8882'
+    set load-balancing reverse-proxy backend bk-01 server srv02 check
 
