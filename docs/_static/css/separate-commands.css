@@ -1,0 +1,116 @@
+.rst-content code.literal {
+  border: unset;
+  background-color: unset;
+  border: 1px solid rgba(253, 143, 1, 0.2);
+  background-color: #FFF4E6;
+  font-family: 'Archivo', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #121010 !important;
+  border-radius: 4px;
+  padding: 3px 6px;
+  word-break: break-all;
+
+  & > span.pre:nth-child(n+ 2) {
+    padding-left: 5px;
+  }
+}
+
+div.opcmd-heading,
+div.cfgcmd-heading,
+table .opcmd,
+table .cfgcmd {
+  padding: 0;
+  display: flex;
+  background-color: unset;
+  border: none;
+  border-radius: 8px 0 0 8px;
+}
+
+div.opcmd-heading,
+div.cfgcmd-heading {
+  margin-bottom: 15px;
+}
+
+div.opcmd-heading,
+table .opcmd {
+  border-left: 5px solid #B8E9F9;
+}
+
+div.cfgcmd-heading,
+table .cfgcmd {
+  border-left: 5px solid #FD8F01;
+}
+
+span {
+  &.opcmd,
+  &.cfgcmd {
+    display: flex;
+    padding: 4px 8px 8px 30px;
+    align-items: center;
+    color: #121010 !important;
+    font-family: 'Roboto Mono', monospace !important;
+    letter-spacing: -0.04em !important;
+    font-weight: 500 !important;
+    position: relative;
+    word-break: break-all;
+
+    &::before {
+      content: url('../images/cmnd-link-dollar-icon.svg');
+      display: flex;
+      padding-right: 8px;
+      align-items: center;
+      position: absolute;
+      top: 6px;
+      left: 8px;
+    }
+  }
+
+  &.opcmd {
+    background-color: #EBF9FF;
+  }
+  
+  &.cfgcmd {
+    background-color: #FFF4E6;
+  }
+}
+
+span.opcmd,
+span.cfgcmd {
+  font-size: 16px !important;
+}
+
+table span.opcmd,
+table span.cfgcmd {
+  font-size: 13px !important;
+}
+
+.opcmd-heading > a.cmdlink,
+.cfgcmd-heading > a.cmdlink {
+  display: flex;
+
+  &::after {
+    display: flex;
+    align-items: center;
+    content: '';
+    height: 100%;
+    align-items: center;
+    padding-right: 12px;
+    padding-top: 3px;
+    border-radius: 0 8px 8px 0;
+  }
+}
+
+.opcmd-heading:hover a.cmdlink:after,
+.cfgcmd-heading:hover a.cmdlink:after {
+  content: url('../images/cmnd-link-icon.svg');
+  padding-right: 10px;
+}
+
+.opcmd-heading a.cmdlink:after {
+  background-color: #EBF9FF;
+}
+
+.cfgcmd-heading a.cmdlink:after {
+  background-color: #FFF4E6;
+}

@@ -1,0 +1,134 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Archivo', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  display: flex;
+  color: #121010;
+  margin-bottom: 15px !important;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  margin-top: 15px !important;
+}
+
+h1:has(a) > a,
+h2:has(a) > a,
+h3:has(a) > a,
+h4:has(a) > a,
+h5:has(a) > a {
+  display: flex !important;
+  position: relative;
+  padding-left: 5px;
+} 
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 28px !important;
+  }
+  
+  h2 {
+    font-size: 22px !important;
+  }
+  
+  h3 {
+    font-size: 20px !important;
+  }
+  
+  h4 {
+    font-size: 18px !important;
+  } 
+  
+  h5 {
+    font-size: 16px !important;
+  } 
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 48px !important;
+  }
+  
+  h2 {
+    font-size: 34px !important;
+  }
+  
+  h3 {
+    font-size: 24px !important;
+  }
+  
+  h4 {
+    font-size: 22px !important;
+  } 
+
+  h5 {
+    font-size: 20px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  h1 {
+    margin-top: 15px;
+  } 
+
+  a.headerlink {
+    opacity: 1 !important;
+    color: transparent;
+  }
+
+  h1:has(a):hover > a::after,
+  h2:has(a):hover > a::after,
+  h3:has(a):hover > a::after,
+  h4:has(a):hover > a::after,
+  h5:has(a):hover > a::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  h1:has(a) > a::before,
+  h2:has(a) > a::before,
+  h3:has(a) > a::before,
+  h4:has(a) > a::before,
+  h5:has(a) > a::before {
+    content: url('../images/cmnd-link-icon.svg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 25%;
+    height: 100%;
+    width: 20px;
+    z-index: 2;
+    background-color: transparent;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  h1:has(a):hover > a::after,
+  h2:has(a):hover > a::after,
+  h3:has(a):hover > a::after,
+  h4:has(a):hover > a::after,
+  h5:has(a):hover > a::after {
+    content: url('../images/cmnd-link-icon.svg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 20px;
+    z-index: 2;
+    background-color: transparent;
+  }
+
+  a.headerlink {
+    color: transparent;
+  }
+}
+

@@ -1,8 +1,32 @@
 {% extends "!layout.html" %}
-{%- set current_version = "1.4.x sagitta" %}
+{%- set current_version = "1.5.x circinus" %}
 {% block extrahead %}
+    <style>#vyos-header-iframe{position:fixed;top:0;left:0;right:0;z-index:999999999;width:100%;border:none}</style>
+    <style>#vyos-footer-iframe{width:100%;border:none}</style>
+    <iframe src='https://vyos.io/iframes/header' id='vyos-header-iframe'></iframe>
+    <script>const iframeHeader=document.getElementById('vyos-header-iframe');const postMessageToIframe=()=>{iframeHeader.contentWindow.postMessage({height:window.innerHeight,width:window.width},'*')};window.addEventListener('message',function(message){if(message.data.headerIframeHeight){iframeHeader.style.height=`${message.data.headerIframeHeight}px`;postMessageToIframe()}});window.addEventListener('resize',event=>{postMessageToIframe()})</script>
     <link href="{{ pathto("_static/css/custom.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/lists.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/hints.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/headers.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/breadcrumbs.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/linkButtons.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/text.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/leftSidebar.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/scrolls.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/tables.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/installation/running-on-bare-metal.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/code-snippets.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/separate-commands.css", True) }}" rel="stylesheet" type="text/css">
+    <link href="{{ pathto("_static/css/configuration/index.css", True) }}" rel="stylesheet" type="text/css">
     <link href="{{ pathto("_static/css/datatables.css", True) }}" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script type="text/javascript" charset="utf8" src="{{ pathto("_static/js/datatables.js", True) }}"></script>
     <script type="text/javascript" charset="utf8" src="{{ pathto("_static/js/tables.js", True) }}"></script>
+    <script type="text/javascript" charset="utf8" src="{{ pathto("_static/js/codecopier.js", True) }}"></script>
+    <script type="text/javascript" charset="utf8" src="{{ pathto("_static/js/sidebar.js", True) }}"></script>
+    <script type="text/javascript" charset="utf8" src="{{ pathto("_static/js/footer.js", True) }}"></script>
+    </script>
 {% endblock %}

@@ -1,0 +1,233 @@
+.rst-content {
+  & div[class^=highlight],
+  & pre.literal-block {
+    border: none;
+    background: linear-gradient(#FF9000, #FFBF12);
+    border-radius: 8px;
+    padding-left: 5px;
+  }
+
+  & div[class^=highlight] div[class^=highlight],
+  & pre.literal-block div[class^=highlight] {
+    background: #525659 !important;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    position: relative;
+  }
+
+  & .linenodiv pre, 
+  & div[class^=highlight] pre, 
+  & pre.literal-block {
+    font-size: 16px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    color: #fff;
+    line-height: 1.2;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+  }
+
+  & .linenodiv pre::-webkit-scrollbar, 
+  & div[class^=highlight] pre::-webkit-scrollbar, 
+  & pre.literal-block::-webkit-scrollbar {
+    height: 3px;
+    color: #99A0A5 transparent;
+  }
+
+  & .linenodiv pre::-webkit-scrollbar-track, 
+  & div[class^=highlight] pre::-webkit-scrollbar-track, 
+  & pre.literal-block::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 8px;
+    margin: 0 18px;
+  }
+
+  & .linenodiv pre::-webkit-scrollbar-thumb, 
+  & div[class^=highlight] pre::-webkit-scrollbar-thumb, 
+  & pre.literal-block::-webkit-scrollbar-thumb {
+    background-color: #99A0A5;
+    border-radius: 8px;
+    margin: 0 10px;
+  }
+
+}
+
+/* copy code div */
+.highlight > .copyDiv {
+  display: flex;
+  align-items: center;
+  transition: transform linear 250ms, width linear 250ms;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 5px 12px;
+  justify-content: end;
+  background-color: #393C3F;
+  height: 32px;
+  margin-top: 4px;
+}
+
+.copiedNotifier > span {
+  font-size: 14px !important;
+  color: #fff !important;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.highlight {
+
+  & .kn {
+    color: #ccffda;
+  }
+  
+  & .nn {
+    color: #d0eefb;
+  }
+  
+  & .o {
+    color: #e6e6e6;
+  }
+  
+  & .s2 {
+    color: #dbe6f0;
+  }
+  
+  & .s1 {
+    color: #dbe6f0;
+  }
+  
+  & .nb {
+    color: #ccffda;
+  }
+  
+  & .c1 {
+    color: #dcebef;
+    font-style: italic;
+  }
+  
+  & .nt {
+    color: #8db1fe;
+    font-weight: bold;
+  }
+  
+  & .k {
+    color: #ccffda;
+    font-weight: bold;
+  }
+  
+  & .se {
+    color: #dbe6f0;
+    font-weight: bold;
+  }
+  
+  & .nv {
+    color: #eed7f4;
+  }
+  
+  & .gh {
+    color: #ccccff;
+    font-weight: bold;
+  }
+  
+  & .gd {
+    color: #ffcccc;
+  }
+  
+  & .gi {
+    color: #ccffcc;
+  }
+  
+  & .gu {
+    color: #ffc2ff;
+    font-weight: bold;
+  }
+  
+  & .na {
+    color: #81c0ff;
+  }
+  
+  & .s {
+    color: #dbe6f0;
+  }
+  
+  & .ni {
+    color: #f4d4cd;
+    font-weight: bold;
+  }
+  
+  & .cm {
+    color: #d5e7ec;
+    font-style: italic;
+  }
+  
+  & .cp {
+    color: #c2ffd3;
+  }
+  
+  & .mi {
+    color: #cef3e0;
+  }
+  
+  & .nf {
+    color: #c5d4fc;
+  }
+  
+  & .kc {
+    color: #c2ffd3;
+    font-weight: bold;
+  }
+  
+  & .ch {
+    color: #d5e7ec;
+    font-style: italic;
+  }
+  
+  & .mf {
+    color: #d6f5e6;
+  }
+  
+  & .go {
+    color: #e6e6e6;
+  }
+  
+  & .m {
+    color: #d6f5e6;
+  }
+}
+
+.rst-content blockquote {
+  margin: 0
+}
+
+.rst-content div:has(ul + blockquote) blockquote {
+  margin: 15px 0 15px 24px
+}
+
+@media screen and (max-width: 991px) {
+  .rst-content .linenodiv pre, 
+  .rst-content div[class^=highlight] pre, 
+  .rst-content pre.literal-block {
+    padding: 16px 20px;
+  }
+
+  .copyDiv > p {
+    margin: 0 10px 0 0;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .rst-content .linenodiv pre, 
+  .rst-content div[class^=highlight] pre, 
+  .rst-content pre.literal-block {
+    padding: 24px 36px 18px;
+  }
+
+  .copyDiv > p {
+    display: none;
+  }
+}
