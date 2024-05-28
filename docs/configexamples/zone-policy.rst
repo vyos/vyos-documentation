@@ -6,7 +6,7 @@ Zone-Policy example
 -------------------
 
 .. note:: Starting from VyOS 1.4-rolling-202308040557, a new firewall
-   structure can be found on all vyos instalations, and zone based firewall is
+   structure can be found on all vyos installations, and zone based firewall is
    no longer supported. Documentation for most of the new firewall CLI can be
    found in the `firewall
    <https://docs.vyos.io/en/latest/configuration/firewall/general.html>`_
@@ -145,7 +145,7 @@ To add logging to the default rule, do:
 
 .. code-block:: none
 
-  set firewall name <ruleSet> enable-default-log
+  set firewall name <ruleSet> default-log
 
 
 By default, iptables does not allow traffic for established sessions to
@@ -251,7 +251,7 @@ Since we have 4 zones, we need to setup the following rulesets.
   Dmz-local
 
 Even if the two zones will never communicate, it is a good idea to
-create the zone-pair-direction rulesets and set enable-default-log. This
+create the zone-pair-direction rulesets and set default-log. This
 will allow you to log attempts to access the networks. Without it, you
 will never see the connection attempts.
 
@@ -261,7 +261,7 @@ This is an example of the three base rules.
 
   name wan-lan {
     default-action drop
-    enable-default-log
+    default-log
     rule 1 {
       action accept
       state {
@@ -285,7 +285,7 @@ Here is an example of an IPv6 DMZ-WAN ruleset.
 
   ipv6-name dmz-wan-6 {
     default-action drop
-    enable-default-log
+    default-log
     rule 1 {
       action accept
       state {

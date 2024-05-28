@@ -45,7 +45,7 @@ Custom File
 
 .. cfgcmd:: set system syslog file <filename> archive file <number>
 
-   Syslog uses logrotate to rotate logiles after a number of gives bytes.
+   Syslog uses logrotate to rotate logfiles after a number of gives bytes.
    We keep as many as `<number>` rotated file before they are deleted on the
    system.
 
@@ -200,7 +200,7 @@ Display Logs
 .. opcmd:: show log [all | authorization | cluster | conntrack-sync | ...]
 
    Display log files of given category on the console. Use tab completion to get
-   a list of available categories. Thos categories could be: all, authorization,
+   a list of available categories. Those categories could be: all, authorization,
    cluster, conntrack-sync, dhcp, directory, dns, file, firewall, https, image
    lldp, nat, openvpn, snmp, tail, vpn, vrrp
 

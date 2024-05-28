@@ -8,6 +8,79 @@
    _ext/releasenotes.py
 
 
+2024-04-26
+==========
+
+* :vytask:`T6259` ``(feature): PKI: Support RFC822 (email) names in SAN``
+
+
+2024-04-25
+==========
+
+* :vytask:`T6263` ``(bug): Multicast: Could not commit multicast config with multicast join group using source-address``
+* :vytask:`T5833` ``(bug): Not all AFIs compatible with VRF``
+
+
+2024-04-24
+==========
+
+* :vytask:`T6255` ``(bug): Static table description should not contain white-space``
+* :vytask:`T6226` ``(feature): add HAPROXY `tcp-request content accept` related block to load-balancing reverse proxy config``
+* :vytask:`T6109` ``(bug): remote syslog do not get all the logs``
+* :vytask:`T6262` ``(default): Update the boot splash for VyOS 1.5 ISO``
+* :vytask:`T6217` ``(feature): VRRP contrack-sync script change name of the logger``
+* :vytask:`T6244` ``(feature): Spacing of "Show System Uptime" hard to parse``
+
+
+2024-04-23
+==========
+
+* :vytask:`T6260` ``(bug): image-tools: remove failed image directory if 'No space left on device' error``
+* :vytask:`T6261` ``(default): Typo in op_mode connect_disconnect print statement for check_ppp_running``
+* :vytask:`T6237` ``(feature): IPSec remote access VPN: ability to set EAP ID of clients``
+
+
+2024-04-22
+==========
+
+* :vytask:`T5996` ``(bug): unescape backslashes for config save, compare commands``
+
+
+2024-04-21
+==========
+
+* :vytask:`T6191` ``(bug): Policy Route TCP-MSS Behavior Different from 1.3.x``
+* :vytask:`T5535` ``(feature): disable-directed-broadcast should be moved to firewall global-options``
+
+
+2024-04-20
+==========
+
+* :vytask:`T6252` ``(bug): gre tunnel - doesn't allow configure jumbo frame more than 8024``
+
+
+2024-04-19
+==========
+
+* :vytask:`T6221` ``(bug): Enabling VRF breaks connectivity``
+* :vytask:`T6035` ``(bug): QoS policy shaper queue-type random-detect requires  limit avpkt``
+* :vytask:`T6246` ``(feature): Enable basic haproxy http-check configuration options``
+* :vytask:`T6242` ``(feature): Loadbalancer reverse-proxy: SSL backend skip CA certificate verification``
+
+
+2024-04-17
+==========
+
+* :vytask:`T6168` ``(bug): add system image does not set default boot to current console type in compatibility mode``
+* :vytask:`T6243` ``(bug): Update vyos-http-api-tools for package idna security advisory``
+* :vytask:`T6154` ``(enhancment): Installer should ask for password twice``
+* :vytask:`T5966` ``(default): Adjust dynamic dns configuration address subpath to be more intuitive and other op-mode adjustments``
+* :vytask:`T5723` ``(default): mdns repeater: Always reload systemd daemon before applying changes``
+* :vytask:`T5722` ``(bug): Failing to add route in failover if gateway not in the same interface network``
+* :vytask:`T5612` ``(default): Miscellaneous improvements and fixes for dynamic DNS configuration``
+* :vytask:`T5574` ``(default): Support per-service cache management for dynamic dns providers``
+
+
 2024-04-16
 ==========
 
@@ -63,7 +136,6 @@
 * :vytask:`T6106` ``(bug): Valid commit error for route-reflector-client option defined in peer-group``
 * :vytask:`T5750` ``(bug): Upgrade from 1.3.4 to 1.4 Rolling fails QoS``
 * :vytask:`T5740` ``(bug): Generate wiregurad keys via HTTP-API fails``
-* :vytask:`T6206` ``(bug): L2tp smoketest fails if vyos-configd is running``
 * :vytask:`T5858` ``(bug): Show conntrack statistics formatting is all over the place``
 
 

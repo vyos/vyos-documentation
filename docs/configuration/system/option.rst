@@ -88,7 +88,7 @@ Keyboard Layout
 ***************
 
 When starting a VyOS live system (the installation CD) the configured keyboard
-layout defaults to US. As this might not suite everyones use case you can adjust
+layout defaults to US. As this might not suite everyone's use case you can adjust
 the used keyboard layout on the system console.
 
 .. cfgcmd:: set system option keyboard-layout <us | fr | de | fi | no | dk>

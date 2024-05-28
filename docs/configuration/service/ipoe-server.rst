@@ -26,13 +26,13 @@ functionality as PPPoE, but in a less robust manner.
 Configuring IPoE Server
 ***********************
 
-IPoE can be configure on different interfaces, it will depend on each specific
-situation which interface will provide IPoE to clients. The clients mac address
+IPoE can be configured on different interfaces, it will depend on each specific
+situation which interface will provide IPoE to clients. The client's mac address
 and the incoming interface is being used as control parameter, to authenticate
 a client.
 
 The example configuration below will assign an IP to the client on the incoming
-interface eth2 with the client mac address 08:00:27:2f:d8:06. Other DHCP
+interface eth1 with the client mac address 00:50:79:66:68:00. Other DHCP
 discovery requests will be ignored, unless the client mac has been enabled in
 the configuration.
 
@@ -85,12 +85,11 @@ the configuration.
 
 .. cfgcmd:: set service ipoe-server interface <interface> mode <l2 | l3>
 
-  Set authentication backend. The configured authentication backend is used
-  for all queries.
+   Specifies the client connectivity mode.
 
   * **l2**: It means that clients are on same network where interface
     is.**(default)**
-  * **local**: It means that client are behind some router.
+  * **l3**: It means that client are behind some router.
 
 .. cfgcmd:: set service ipoe-server interface <interface> network <shared | vlan>
 
@@ -279,7 +278,7 @@ IPv6
 .. code-block:: none
 
   set service ipoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
-  set service ipoe-server client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
+  set service ipoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
   set service ipoe-server default-ipv6-pool IPv6-POOL
 
 *********
@@ -434,7 +433,7 @@ Toubleshooting
 
 .. code-block:: none
 
-    vyos@vyos:~$sudo journalctl -u accel-ppp@ipoe -b 0
+    vyos@vyos:~$ show log ipoe-server
 
     Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:: recv [DHCPv4 Discover xid=55df9228 chaddr=0c:98:bd:b8:00:01 <Message-Type Discover> <Request-IP 192.168.0.3> <Host-Name vyos> <Request-List Subnet,Broadcast,Router,DNS,Classless-Route,Domain-Name,MTU>]
     Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: eth1.100: authentication succeeded

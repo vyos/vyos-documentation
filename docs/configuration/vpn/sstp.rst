@@ -276,7 +276,7 @@ IPv6
 
   set vpn sstp ppp-options ipv6 allow
   set vpn sstp client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
-  set vpn sstp client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
+  set vpn sstp client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
   set vpn sstp default-ipv6-pool IPv6-POOL
 
 IPv6 Advanced Options
@@ -470,6 +470,11 @@ Global Advanced options
 .. cfgcmd:: set vpn sstp wins-server <address>
 
   Windows Internet Name Service (WINS) servers propagated to client
+
+.. cfgcmd:: set vpn sstp host-name <hostname>
+
+  If this option is given, only SSTP connections to the specified host
+  and with the same TLS SNI will be allowed.
 
 ***********************
 Configuring SSTP client

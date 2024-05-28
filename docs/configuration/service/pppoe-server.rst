@@ -24,7 +24,6 @@ Configuring PPPoE Server
   set service pppoe-server authentication local-users username test password 'test'
   set service pppoe-server client-ip-pool PPPOE-POOL range 192.168.255.2-192.168.255.254
   set service pppoe-server default-pool 'PPPOE-POOL'
-  set service pppoe-server outside-address 192.0.2.2
   set service pppoe-server gateway-address 192.168.255.1
   set service pppoe-server interface eth0
 
@@ -49,7 +48,8 @@ Configuring PPPoE Server
   Create `<user>` for local authentication on this system. The users password
   will be set to `<pass>`.
 
-.. cfgcmd:: set service pppoe-server client-ip-pool <POOL-NAME> range <x.x.x.x-x.x.x.x | x.x.x.x/x>
+.. cfgcmd:: set service pppoe-server client-ip-pool <POOL-NAME>
+   range <x.x.x.x-x.x.x.x | x.x.x.x/x>
 
    Use this command to define the first IP address of a pool of
    addresses to be given to pppoe clients. If notation ``x.x.x.x-x.x.x.x``,
@@ -85,7 +85,8 @@ accounts again.
 
   set service pppoe-server authentication mode radius
 
-.. cfgcmd:: set service pppoe-server authentication radius server <server> key <secret>
+.. cfgcmd:: set service pppoe-server authentication radius
+   server <server> key <secret>
 
   Configure RADIUS `<server>` and its required shared `<secret>` for
   communicating with the RADIUS server.
@@ -109,7 +110,8 @@ If you are using OSPF as IGP, always the closest interface connected to the
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
 
-.. cfgcmd:: set service pppoe-server authentication radius source-address <address>
+.. cfgcmd:: set service pppoe-server authentication radius
+   source-address <address>
 
   Source IPv4 address used in all RADIUS server queires.
 
@@ -119,57 +121,70 @@ to a single source IP e.g. the loopback interface.
 RADIUS advanced options
 =======================
 
-.. cfgcmd:: set service pppoe-server authentication radius server <server> port <port>
+.. cfgcmd:: set service pppoe-server authentication radius
+   server <server> port <port>
 
   Configure RADIUS `<server>` and its required port for authentication requests.
 
-.. cfgcmd:: set service pppoe-server authentication radius server <server> fail-time <time>
+.. cfgcmd:: set service pppoe-server authentication radius
+   server <server> fail-time <time>
 
   Mark RADIUS server as offline for this given `<time>` in seconds.
 
-.. cfgcmd:: set service pppoe-server authentication radius server <server> disable
+.. cfgcmd:: set service pppoe-server authentication radius
+   server <server> disable
 
   Temporary disable this RADIUS server.
 
-.. cfgcmd:: set service pppoe-server authentication radius acct-timeout <timeout>
+.. cfgcmd:: set service pppoe-server authentication radius
+   acct-timeout <timeout>
 
   Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 
-.. cfgcmd:: set service pppoe-server authentication radius dynamic-author server <address>
+.. cfgcmd:: set service pppoe-server authentication radius
+   dynamic-author server <address>
 
   Specifies IP address for Dynamic Authorization Extension server (DM/CoA)
 
-.. cfgcmd:: set service pppoe-server authentication radius dynamic-author port <port>
+.. cfgcmd:: set service pppoe-server authentication radius
+   dynamic-author port <port>
 
   Port for Dynamic Authorization Extension server (DM/CoA)
 
-.. cfgcmd:: set service pppoe-server authentication radius dynamic-author key <secret>
+.. cfgcmd:: set service pppoe-server authentication radius dynamic-author
+   key <secret>
 
   Secret for Dynamic Authorization Extension server (DM/CoA)
 
-.. cfgcmd:: set service pppoe-server authentication radius max-try <number>
+.. cfgcmd:: set service pppoe-server authentication radius
+   max-try <number>
 
   Maximum number of tries to send Access-Request/Accounting-Request queries
 
-.. cfgcmd:: set service pppoe-server authentication radius timeout <timeout>
+.. cfgcmd:: set service pppoe-server authentication radius
+   timeout <timeout>
 
   Timeout to wait response from server (seconds)
 
-.. cfgcmd:: set service pppoe-server authentication radius nas-identifier <identifier>
+.. cfgcmd:: set service pppoe-server authentication radius
+   nas-identifier <identifier>
 
   Value to send to RADIUS server in NAS-Identifier attribute and to be matched
   in DM/CoA requests.
 
-.. cfgcmd:: set service pppoe-server authentication radius nas-ip-address <address>
+.. cfgcmd:: set service pppoe-server authentication radius
+   nas-ip-address <address>
 
   Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
   in DM/CoA requests. Also DM/CoA server will bind to that address.
 
-.. cfgcmd:: set service pppoe-server authentication radius source-address <address>
+.. cfgcmd:: set service pppoe-server authentication radius
+   source-address <address>
 
   Source IPv4 address used in all RADIUS server queires.
 
-.. cfgcmd:: set service pppoe-server authentication radius rate-limit attribute <attribute>
+.. cfgcmd:: set service pppoe-server authentication radius
+   rate-limit attribute <attribute>
 
   Specifies which RADIUS server attribute contains the rate limit information.
   The default attribute is ``Filter-Id``.
@@ -177,11 +192,13 @@ RADIUS advanced options
 .. note:: If you set a custom RADIUS attribute you must define it on both
    dictionaries at RADIUS server and client.
 
-.. cfgcmd:: set service pppoe-server authentication radius rate-limit enable
+.. cfgcmd:: set service pppoe-server authentication radius
+   rate-limit enable
 
   Enables bandwidth shaping via RADIUS.
 
-.. cfgcmd:: set service pppoe-server authentication radius rate-limit vendor
+.. cfgcmd:: set service pppoe-server authentication radius
+   rate-limit vendor
 
   Specifies the vendor dictionary, dictionary needs to be in
   /usr/share/accel-ppp/radius.
@@ -193,25 +210,27 @@ Allocation clients ip addresses by RADIUS
 =========================================
 
 If the RADIUS server sends the attribute ``Framed-IP-Address`` then this IP
-address will be allocated to the client and the option ``default-pool`` within the CLI
-config is being ignored.
+address will be allocated to the client and the option ``default-pool``
+within the CLI config is being ignored.
 
-If the RADIUS server sends the attribute ``Framed-Pool``, IP address will be allocated
-from a predefined IP pool whose name equals the attribute value.
+If the RADIUS server sends the attribute ``Framed-Pool``, IP address will
+be allocated from a predefined IP pool whose name equals the attribute value.
 
-If the RADIUS server sends the attribute ``Stateful-IPv6-Address-Pool``, IPv6 address
-will be allocated from a predefined IPv6 pool ``prefix`` whose name equals the attribute value.
-
-If the RADIUS server sends the attribute ``Delegated-IPv6-Prefix-Pool``, IPv6
-delegation pefix will be allocated from a predefined IPv6 pool ``delegate``
+If the RADIUS server sends the attribute ``Stateful-IPv6-Address-Pool``,
+IPv6 address will be allocated from a predefined IPv6 pool ``prefix``
 whose name equals the attribute value.
 
-.. note:: ``Stateful-IPv6-Address-Pool`` and ``Delegated-IPv6-Prefix-Pool`` are defined in
-          RFC6911. If they are not defined in your RADIUS server, add new dictionary_.
+If the RADIUS server sends the attribute ``Delegated-IPv6-Prefix-Pool``,
+IPv6 delegation pefix will be allocated from a predefined IPv6 pool ``delegate``
+whose name equals the attribute value.
 
-User interface can be put to VRF context via RADIUS Access-Accept packet, or change
-it via RADIUS CoA. ``Accel-VRF-Name`` is used from these purposes. It is custom `ACCEL-PPP attribute`_.
-Define it in your RADIUS server.
+.. note:: ``Stateful-IPv6-Address-Pool`` and ``Delegated-IPv6-Prefix-Pool``
+          are defined in RFC6911. If they are not defined in your RADIUS server,
+          add new dictionary_.
+
+User interface can be put to VRF context via RADIUS Access-Accept packet,
+or change it via RADIUS CoA. ``Accel-VRF-Name`` is used from these purposes.
+It is custom `ACCEL-PPP attribute`_. Define it in your RADIUS server.
 
 Renaming clients interfaces by RADIUS
 =====================================
@@ -256,13 +275,13 @@ attributes.
 For Local Users
 ===============
 
-.. cfgcmd:: set service pppoe-server authentication local-users username <user> rate-limit
-   download <bandwidth>
+.. cfgcmd:: set service pppoe-server authentication local-users username
+   <user> rate-limit download <bandwidth>
 
   Download bandwidth limit in kbit/s for `<user>`.
 
-.. cfgcmd:: set service pppoe-server authentication local-users username <user> rate-limit
-   upload <bandwidth>
+.. cfgcmd:: set service pppoe-server authentication local-users username
+   <user> rate-limit upload <bandwidth>
 
   Upload bandwidth limit in kbit/s for `<user>`.
 
@@ -340,7 +359,8 @@ other servers. Last command says that this PPPoE server can serve only
 IPv6
 ****
 
-.. cfgcmd:: set service pppoe-server ppp-options ipv6 <require | prefer | allow | deny>
+.. cfgcmd:: set service pppoe-server ppp-options
+   ipv6 <require | prefer | allow | deny>
 
   Specifies IPv6 negotiation preference.
 
@@ -349,16 +369,16 @@ IPv6
   * **allow** - Negotiate IPv6 only if client requests
   * **deny** - Do not negotiate IPv6 (default value)
 
-.. cfgcmd:: set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
-   mask <number-of-bits>
+.. cfgcmd:: set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME>
+   prefix <address> mask <number-of-bits>
 
   Use this comand to set the IPv6 address pool from which an PPPoE client
   will get an IPv6 prefix of your defined length (mask) to terminate the
   PPPoE endpoint at their side. The mask length can be set from 48 to 128
   bit long, the default value is 64.
 
-.. cfgcmd:: set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME> delegate <address>
-   delegation-prefix <number-of-bits>
+.. cfgcmd:: set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME>
+   delegate <address> delegation-prefix <number-of-bits>
 
   Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
   PPPoE. You will have to set your IPv6 pool and the length of the
@@ -374,7 +394,7 @@ IPv6
 
   set service pppoe-server ppp-options ipv6 allow
   set service pppoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
-  set service pppoe-server client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
+  set service pppoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
   set service pppoe-server default-ipv6-pool IPv6-POOL
 
 IPv6 Advanced Options
@@ -383,7 +403,8 @@ IPv6 Advanced Options
 
   Accept peer interface identifier. By default is not defined.
 
-.. cfgcmd:: set service pppoe-server ppp-options ipv6-interface-id <random | x:x:x:x>
+.. cfgcmd:: set service pppoe-server ppp-options ipv6-interface-id
+   <random | x:x:x:x>
 
   Specifies fixed or random interface identifier for IPv6.
   By default is fixed.
@@ -391,7 +412,8 @@ IPv6 Advanced Options
   * **random** - Random interface identifier for IPv6
   * **x:x:x:x** - Specify interface identifier for IPv6
 
-.. cfgcmd:: set service pppoe-server ppp-options ipv6-interface-id <random | x:x:x:x>
+.. cfgcmd:: set service pppoe-server ppp-options ipv6-interface-id
+   <random | x:x:x:x>
 
   Specifies peer interface identifier for IPv6. By default is fixed.
 
@@ -427,12 +449,13 @@ Advanced Options
 Authentication Advanced Options
 ===============================
 
-.. cfgcmd:: set service pppoe-server authentication local-users username <user> disable
+.. cfgcmd:: set service pppoe-server authentication local-users
+   username <user> disable
 
   Disable `<user>` account.
 
-.. cfgcmd:: set service pppoe-server authentication local-users username <user> static-ip
-   <address>
+.. cfgcmd:: set service pppoe-server authentication local-users
+   username <user> static-ip <address>
 
   Assign static IP address to `<user>` account.
 
@@ -445,7 +468,8 @@ Authentication Advanced Options
 Client IP Pool Advanced Options
 ===============================
 
-.. cfgcmd:: set service pppoe-server client-ip-pool <POOL-NAME> next-pool <NEXT-POOL-NAME>
+.. cfgcmd:: set service pppoe-server client-ip-pool <POOL-NAME>
+   next-pool <NEXT-POOL-NAME>
 
    Use this command to define the next address pool name.
 
@@ -465,7 +489,8 @@ PPP Advanced Options
   This should reduce kernel-level interface creation/deletion rate lack.
   Default value is **0**.
 
-.. cfgcmd:: set service pppoe-server ppp-options ipv4 <require | prefer | allow | deny>
+.. cfgcmd:: set service pppoe-server ppp-options ipv4
+   <require | prefer | allow | deny>
 
   Specifies IPv4 negotiation preference.
 
@@ -653,5 +678,7 @@ a /56 subnet for the clients internal use.
    ppp0   | test     | 192.168.0.1 | 2001:db8:8002:0:200::/64 | 2001:db8:8003::1/56 | 00:53:00:12:42:eb |            | active | 00:00:49 | 875 B    | 2.1 KiB
 
 .. include:: /_include/common-references.txt
-.. _dictionary: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
-.. _`ACCEL-PPP attribute`: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
+.. _dictionary: https://github.com/accel-ppp/accel-ppp/blob/master/
+   accel-pppd/radius/dict/dictionary.rfc6911
+.. _`ACCEL-PPP attribute`: https://github.com/accel-ppp/accel-ppp/
+   blob/master/accel-pppd/radius/dict/dictionary.accel

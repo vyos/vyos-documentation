@@ -17,7 +17,8 @@ can be done regarding flowtables.
 
 .. cfgcmd:: set firewall flowtables ...
 
-From main structure defined in :doc:`Firewall Overview</configuration/firewall/index>`
+From main structure defined in
+:doc:`Firewall Overview</configuration/firewall/index>`
 in this section you can find detailed information only for the next part
 of the general structure:
 
@@ -99,20 +100,20 @@ Creating rules for using flow tables:
 Configuration Example
 *********************
 
-Things to be considred in this setup:
+Things to be considered in this setup:
 
    * Two interfaces are going to be used in the flowtables: eth0 and eth1
 
-   * Minumum firewall ruleset is provided, which includes some filtering rules,
-     and appropiate rules for using flowtable offload capabilities.
+   * Minimum firewall ruleset is provided, which includes some filtering rules,
+     and appropriate rules for using flowtable offload capabilities.
 
 As described, first packet will be evaluated by all the firewall path, so
-desired connection should be explicitely accepted. Same thing should be taken
+desired connection should be explicitly accepted. Same thing should be taken
 into account for traffic in reverse order. In most cases state policies are
 used in order to accept connection in reverse patch.
 
-We will only accept traffic comming from interface eth0, protocol tcp and
-destination port 1122. All other traffic traspassing the router should be
+We will only accept traffic coming from interface eth0, protocol tcp and
+destination port 1122. All other traffic trespassing the router should be
 blocked.
 
 Commands
@@ -152,7 +153,7 @@ Analysis on what happens for desired connection:
 
    4. Once answer from server 192.0.2.100 is seen in opposite direction,
    connection state will be triggered to **established**, so this reply is
-   accepted in rule 10.
+   accepted in rule 20.
 
    5. Second packet for this connection is received by the router. Since
    connection state is **established**, then rule 10 is hit, and a new entry

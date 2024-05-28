@@ -368,7 +368,7 @@ are to be sent, they could get dropped when trying to get enqueued at
 the tail. This can happen if the queue has still not been able to
 release enough packets from its head.
 
-This is the policy that requieres the lowest resources for the same
+This is the policy that requires the lowest resources for the same
 amount of traffic. But **very likely you do not need it as you cannot
 get much from it. Sometimes it is used just to enable logging.**
 
@@ -504,7 +504,7 @@ and increase `interval` to something around 150 ms.
    the number of sub-queues (default: 1024) into which packets are
    classified.
 
-.. cfgcmd:: set qos policy fq-codel <policy name> interval <miliseconds>
+.. cfgcmd:: set qos policy fq-codel <policy name> interval <milliseconds>
 
    Use this command to configure an fq-codel policy, set its name and
    the time period used by the control loop of CoDel to detect when a
@@ -518,7 +518,7 @@ and increase `interval` to something around 150 ms.
    define a hard limit on the real queue size. When this limit is
    reached, new packets are dropped (default: 10240 packets).
 
-.. cfgcmd:: set qos policy fq-codel <policy-name> target <miliseconds>
+.. cfgcmd:: set qos policy fq-codel <policy-name> target <milliseconds>
 
    Use this command to configure an fq-codel policy, set its name, and
    define the acceptable minimum standing/persistent queue delay. This
@@ -710,7 +710,7 @@ continuously, packets from lower priority classes will only be
 transmitted after traffic volume from higher priority classes decreases.
 
 
-.. note:: In Priority Queue we do not define clases with a meaningless
+.. note:: In Priority Queue we do not define classes with a meaningless
    class ID number but with a class priority number (1-7). The lower the
    number, the higher the priority.
 
@@ -912,7 +912,7 @@ In principle, values must be
 Rate Control
 ------------
 
-| **Queueing discipline:** Tocken Bucket Filter.
+| **Queueing discipline:** Token Bucket Filter.
 | **Applies to:** Outbound traffic.
 
 Rate-Control is a classless policy that limits the packet flow to a set
@@ -1145,6 +1145,74 @@ A simple example of Shaper using priorities.
    set qos policy shaper MY-HTB default priority '7'
    set qos policy shaper MY-HTB default queue-type 'fair-queue'
 
+.. _CAKE:
+
+CAKE
+------
+
+| **Queueing discipline:** Deficit mode.
+| **Applies to:** Outbound traffic.
+
+`Common Applications Kept Enhanced`_ (CAKE) is a comprehensive queue management
+system, implemented as a queue discipline (qdisc) for the Linux kernel. It is
+designed to replace and improve upon the complex hierarchy of simple qdiscs
+presently required to effectively tackle the bufferbloat problem at the network
+edge.
+
+.. cfgcmd:: set qos policy cake <text> bandwidth <value>
+
+   Set the shaper bandwidth, either as an explicit bitrate or a percentage
+   of the interface bandwidth.
+
+.. cfgcmd:: set qos policy cake <text> description
+
+   Set a description for the shaper.
+
+.. cfgcmd:: set qos policy cake <text> flow-isolation blind
+
+   Disables flow isolation, all traffic passes through a single queue.
+
+.. cfgcmd:: set qos policy cake <text> flow-isolation dst-host
+
+   Flows are defined only by destination address.
+
+.. cfgcmd:: set qos policy cake <text> flow-isolation dual-dst-host
+
+   Flows are defined by the 5-tuple. Fairness is applied first over destination
+   addresses, then over individual flows.
+
+.. cfgcmd:: set qos policy cake <text> flow-isolation dual-src-host
+
+   Flows are defined by the 5-tuple. Fairness is applied first over source
+   addresses, then over individual flows.
+
+.. cfgcmd:: set qos policy cake <text> flow-isolation flow
+
+   Flows are defined by the entire 5-tuple (source IP address, source port,
+   destination IP address, destination port, transport protocol).
+
+.. cfgcmd:: set qos policy cake <text> flow-isolation host
+
+   Flows are defined by source-destination host pairs.
+
+.. cfgcmd:: set qos policy cake <text> flow-isolation nat
+
+   Perform NAT lookup before applying flow-isolation rules.
+
+.. cfgcmd:: set qos policy cake <text> flow-isolation src-host
+
+   Flows are defined only by source address.
+
+.. cfgcmd:: set qos policy cake <text> flow-isolation triple-isolate
+
+   **(Default)** Flows are defined by the 5-tuple, fairness is applied over source and
+   destination addresses and also over individual flows.
+
+.. cfgcmd:: set qos policy cake <text> rtt
+
+   Defines the round-trip time used for active queue management (AQM) in
+   milliseconds. The default value is 100.
+
 
 Applying a traffic policy
 =========================
@@ -1220,5 +1288,6 @@ That is how it is possible to do the so-called "ingress shaping".
 .. _tocken bucket: https://en.wikipedia.org/wiki/Token_bucket
 .. _HFSC: https://en.wikipedia.org/wiki/Hierarchical_fair-service_curve
 .. _Intermediate Functional Block: https://www.linuxfoundation.org/collaborate/workgroups/networking/ifb
+.. _Common Applications Kept Enhanced: https://www.bufferbloat.net/projects/codel/wiki/Cake/
 
 .. start_vyoslinter

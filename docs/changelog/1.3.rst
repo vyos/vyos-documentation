@@ -8,6 +8,24 @@
    _ext/releasenotes.py
 
 
+2024-04-25
+==========
+
+* :vytask:`T6249` ``(default): ISO builder fails because of changed buster-backport repository``
+
+
+2024-04-23
+==========
+
+* :vytask:`T6261` ``(default): Typo in op_mode connect_disconnect print statement for check_ppp_running``
+
+
+2024-04-17
+==========
+
+* :vytask:`T6243` ``(bug): Update vyos-http-api-tools for package idna security advisory``
+
+
 2024-04-12
 ==========
 

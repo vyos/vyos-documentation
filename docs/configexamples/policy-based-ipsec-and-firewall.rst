@@ -13,7 +13,7 @@ configuration is done only on one router.
 Network Topology and requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This configuration example and the requirments consists of:
+This configuration example and the requirements consists of:
 
 - Two VyOS routers with public IP address.
 
@@ -37,7 +37,7 @@ This configuration example and the requirments consists of:
 
     - Allow all new connections from local subnets.
 
-    - Allow connections from LANs to LANs throught the tunnel.
+    - Allow connections from LANs to LANs through the tunnel.
 
 
 .. image:: /_static/images/policy-based-ipsec-and-firewall.png

@@ -50,7 +50,7 @@ interface, the interface must be configured for flow accounting.
    Configure and enable collection of flow information for the interface
    identified by `<interface>`.
 
-   You can configure multiple interfaces which whould participate in flow
+   You can configure multiple interfaces which would participate in flow
    accounting.
 
 .. note:: Will be recorded only packets/flows on **incoming** direction in

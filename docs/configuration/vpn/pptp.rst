@@ -242,7 +242,7 @@ IPv6
 
   set vpn pptp remote-access ppp-options ipv6 allow
   set vpn pptp remote-access client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation-prefix '56'
-  set vpn pptp remote-access client-ipv6-pool IPV6-POOL prefix '2001:db8:8002::/48' mask '64'
+  set vpn pptp remote-access client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
   set vpn pptp remote-access default-ipv6-pool IPv6-POOL
 
 IPv6 Advanced Options

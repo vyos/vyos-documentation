@@ -89,7 +89,7 @@ msgid "**Already-selected external check**"
 msgstr "**Comprobación externa ya seleccionada**"
 
 #: ../../configuration/trafficpolicy/index.rst:547
-#: ../../configuration/trafficpolicy/index.rst:1181
+#: ../../configuration/trafficpolicy/index.rst:1249
 msgid "**Applies to:** Inbound traffic."
 msgstr "**Se aplica a:** Tráfico entrante."
 
@@ -105,6 +105,7 @@ msgstr "**Se aplica a:** Tráfico saliente."
 #: ../../configuration/trafficpolicy/index.rst:916
 #: ../../configuration/trafficpolicy/index.rst:961
 #: ../../configuration/trafficpolicy/index.rst:1020
+#: ../../configuration/trafficpolicy/index.rst:1154
 msgid "**Applies to:** Outbound traffic."
 msgstr "**Se aplica a:** Tráfico saliente."
 
@@ -437,6 +438,10 @@ msgstr "**Disciplina de colas** Fair/Flow Queue CoDel."
 msgid "**Queueing discipline:** Deficit Round Robin."
 msgstr "**Disciplina de colas:** Déficit Round Robin."
 
+#: ../../configuration/trafficpolicy/index.rst:1153
+msgid "**Queueing discipline:** Deficit mode."
+msgstr "**Queueing discipline:** Deficit mode."
+
 #: ../../configuration/trafficpolicy/index.rst:766
 msgid "**Queueing discipline:** Generalized Random Early Drop."
 msgstr "**Disciplina de colas:** Descenso anticipado aleatorio generalizado."
@@ -579,6 +584,10 @@ msgstr "**Enrutador VyOS:**"
 #: ../../configuration/protocols/bgp.rst:63
 msgid "**Weight check**"
 msgstr "**Comprobación de peso**"
+
+#: ../../configuration/trafficpolicy/index.rst:1208
+msgid "**(Default)** Flows are defined by the 5-tuple, fairness is applied over source and destination addresses and also over individual flows."
+msgstr "**(Default)** Flows are defined by the 5-tuple, fairness is applied over source and destination addresses and also over individual flows."
 
 #: ../../_include/interface-dhcp-options.txt:74
 msgid "**address** can be specified multiple times, e.g. 192.168.100.1 and/or 192.168.100.0/24"
@@ -1511,7 +1520,7 @@ msgstr "ACME"
 msgid "ACME Directory Resource URI."
 msgstr "ACME Directory Resource URI."
 
-#: ../../configuration/service/https.rst:59
+#: ../../configuration/service/https.rst:63
 msgid "API"
 msgstr "API"
 
@@ -1964,7 +1973,7 @@ msgstr "Agregue el certificado de CA público para la CA denominada &quot;nombre
 msgid "Adding a 2FA with an OTP-key"
 msgstr "Agregar un 2FA con una clave OTP"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:263
+#: ../../configuration/loadbalancing/reverse-proxy.rst:301
 msgid "Additional global parameters are set, including the maximum number connection limit of 4000 and a minimum TLS version of 1.3."
 msgstr "Se establecen parámetros globales adicionales, incluido el límite de número máximo de conexiones de 4000 y una versión mínima de TLS de 1.3."
 
@@ -2179,6 +2188,10 @@ msgstr "Permita el acceso a los sitios de un dominio sin recuperarlos de la memo
 #: ../../configuration/protocols/bgp.rst:274
 msgid "Allow bgp to negotiate the extended-nexthop capability with it’s peer. If you are peering over a IPv6 Link-Local address then this capability is turned on automatically. If you are peering over a IPv6 Global Address then turning on this command will allow BGP to install IPv4 routes with IPv6 nexthops if you do not have IPv4 configured on interfaces."
 msgstr "Permita que bgp negocie la capacidad de próximo salto extendido con su par. Si está interconectando una dirección local de enlace IPv6, esta capacidad se activa automáticamente. Si está interconectando una dirección global IPv6, al activar este comando permitirá que BGP instale rutas IPv4 con nexthops IPv6 si no tiene IPv4 configurado en las interfaces."
+
+#: ../../configuration/service/https.rst:81
+msgid "Allow cross-origin requests from `<origin>`."
+msgstr "Allow cross-origin requests from `<origin>`."
 
 #: ../../configuration/service/dns.rst:456
 msgid "Allow explicit IPv6 address for the interface."
@@ -2431,7 +2444,7 @@ msgstr "Aplicar un conjunto de reglas a una zona"
 msgid "Applying a Rule-Set to an Interface"
 msgstr "Aplicar un conjunto de reglas a una interfaz"
 
-#: ../../configuration/trafficpolicy/index.rst:1150
+#: ../../configuration/trafficpolicy/index.rst:1218
 msgid "Applying a traffic policy"
 msgstr "Aplicar una política de tráfico"
 
@@ -2691,7 +2704,7 @@ msgstr "Autenticación"
 msgid "Authentication Advanced Options"
 msgstr "Authentication Advanced Options"
 
-#: ../../configuration/interfaces/ethernet.rst:99
+#: ../../configuration/interfaces/ethernet.rst:115
 msgid "Authentication (EAPoL)"
 msgstr "Autenticación (EAPoL)"
 
@@ -2851,7 +2864,7 @@ msgstr "Babel es un protocolo de enrutamiento moderno diseñado para ser robusto
 msgid "Backend"
 msgstr "back-end"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:299
+#: ../../configuration/loadbalancing/reverse-proxy.rst:339
 msgid "Backend service certificates are checked against the certificate authority specified in the configuration, which could be an internal CA."
 msgstr "Backend service certificates are checked against the certificate authority specified in the configuration, which could be an internal CA."
 
@@ -2863,9 +2876,13 @@ msgstr "Algoritmos de equilibrio:"
 msgid "Balancing Rules"
 msgstr "Reglas de equilibrio"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:214
+#: ../../configuration/loadbalancing/reverse-proxy.rst:252
 msgid "Balancing based on domain name"
 msgstr "Equilibrio basado en el nombre de dominio"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:365
+msgid "Balancing with HTTP health checks"
+msgstr "Balancing with HTTP health checks"
 
 #: ../../configuration/service/pppoe-server.rst:251
 msgid "Bandwidth Shaping"
@@ -2936,7 +2953,7 @@ msgstr "Debido a que un agregador no puede estar activo sin al menos un enlace d
 msgid "Because existing sessions do not automatically fail over to a new path, the session table can be flushed on each connection state change:"
 msgstr "Debido a que las sesiones existentes no conmutan por error automáticamente a una nueva ruta, la tabla de sesión se puede vaciar en cada cambio de estado de conexión:"
 
-#: ../../configuration/interfaces/ethernet.rst:70
+#: ../../configuration/interfaces/ethernet.rst:86
 msgid "Before enabling any hardware segmentation offload a corresponding software offload is required in GSO. Otherwise it becomes possible for a frame to be re-routed between devices and end up being unable to be transmitted."
 msgstr "Antes de habilitar cualquier descarga de segmentación de hardware, se requiere una descarga de software correspondiente en GSO. De lo contrario, es posible que una trama se redirija entre dispositivos y termine sin poder transmitirse."
 
@@ -3154,6 +3171,10 @@ msgstr "Mediante el uso de interfaces Pseudo-Ethernet, habrá menos sobrecarga d
 #: ../../configuration/service/webproxy.rst:393
 msgid "Bypassing the webproxy"
 msgstr "Omitir el webproxy"
+
+#: ../../configuration/trafficpolicy/index.rst:1151
+msgid "CAKE"
+msgstr "CAKE"
 
 #: ../../configuration/pki/index.rst:172
 msgid "CA (Certificate Authority)"
@@ -3797,9 +3818,13 @@ msgstr "Configure el protocolo utilizado para la comunicación con el host de sy
 msgid "Configure proxy port if it does not listen to the default port 80."
 msgstr "Configure el puerto proxy si no escucha el puerto predeterminado 80."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:149
+#: ../../configuration/loadbalancing/reverse-proxy.rst:150
 msgid "Configure requests to the backend server to use SSL encryption and authenticate backend against <ca-certificate>"
 msgstr "Configure requests to the backend server to use SSL encryption and authenticate backend against <ca-certificate>"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:155
+msgid "Configure requests to the backend server to use SSL encryption without validating server certificate"
+msgstr "Configure requests to the backend server to use SSL encryption without validating server certificate"
 
 #: ../../configuration/system/sflow.rst:16
 msgid "Configure sFlow agent IPv4 or IPv6 address"
@@ -3853,7 +3878,7 @@ msgstr "Configure el puerto discreto bajo el cual se puede acceder al servidor R
 msgid "Configure the discrete port under which the TACACS server can be reached."
 msgstr "Configure el puerto discreto bajo el cual se puede acceder al servidor TACACS."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:175
+#: ../../configuration/loadbalancing/reverse-proxy.rst:212
 msgid "Configure the load-balancing reverse-proxy service for HTTP."
 msgstr "Configure el servicio de proxy inverso de equilibrio de carga para HTTP."
 
@@ -4052,6 +4077,10 @@ msgstr "Crear `<user> ` para la autenticación local en este sistema. La contras
 #: ../../configuration/service/dhcp-server.rst:160
 msgid "Create ``172.18.201.0/24`` as a subnet within ``NET1`` and pass address of Unifi controller at ``172.16.100.1`` to clients of that subnet."
 msgstr "Create ``172.18.201.0/24`` as a subnet within ``NET1`` and pass address of Unifi controller at ``172.16.100.1`` to clients of that subnet."
+
+#: ../../configuration/pki/index.rst:373
+msgid "Create a CA chain and leaf certificates"
+msgstr "Create a CA chain and leaf certificates"
 
 #: ../../configuration/interfaces/bridge.rst:199
 msgid "Create a basic bridge"
@@ -4636,6 +4665,10 @@ msgstr "Define el máximo `<number> ` de solicitudes de eco no respondidas. Al l
 msgid "Defines the maximum `<number>` of unanswered echo requests. Upon reaching the value `<number>`, the session will be reset. Default value is **3**."
 msgstr "Defines the maximum `<number>` of unanswered echo requests. Upon reaching the value `<number>`, the session will be reset. Default value is **3**."
 
+#: ../../configuration/trafficpolicy/index.rst:1213
+msgid "Defines the round-trip time used for active queue management (AQM) in milliseconds. The default value is 100."
+msgstr "Defines the round-trip time used for active queue management (AQM) in milliseconds. The default value is 100."
+
 #: ../../configuration/system/console.rst:21
 msgid "Defines the specified device as a system console. Available console devices can be (see completion helper):"
 msgstr "Define el dispositivo especificado como una consola del sistema. Los dispositivos de consola disponibles pueden ser (consulte el asistente de finalización):"
@@ -4856,6 +4889,10 @@ msgstr "Deshabilitado de forma predeterminada: no se ha cargado ningún módulo 
 msgid "Disables caching of peer information from forwarded NHRP Resolution Reply packets. This can be used to reduce memory consumption on big NBMA subnets."
 msgstr "Deshabilita el almacenamiento en caché de la información de pares de los paquetes de respuesta de resolución NHRP reenviados. Esto se puede usar para reducir el consumo de memoria en grandes subredes NBMA."
 
+#: ../../configuration/trafficpolicy/index.rst:1173
+msgid "Disables flow isolation, all traffic passes through a single queue."
+msgstr "Disables flow isolation, all traffic passes through a single queue."
+
 #: ../../configuration/protocols/static.rst:99
 msgid "Disables interface-based IPv4 static route."
 msgstr "Deshabilita la ruta estática IPv4 basada en la interfaz."
@@ -4974,9 +5011,13 @@ msgstr "Do not allow IPv6 nexthop tracking to resolve via the default route. Thi
 msgid "Do not assign a link-local IPv6 address to this interface."
 msgstr "No asigne una dirección IPv6 de enlace local a esta interfaz."
 
-#: ../../configuration/trafficpolicy/index.rst:1210
+#: ../../configuration/trafficpolicy/index.rst:1278
 msgid "Do not configure IFB as the first step. First create everything else of your traffic-policy, and then you can configure IFB. Otherwise you might get the ``RTNETLINK answer: File exists`` error, which can be solved with ``sudo ip link delete ifb0``."
 msgstr "No configure IFB como primer paso. Primero cree todo lo demás de su política de tráfico y luego puede configurar IFB. De lo contrario, es posible que obtenga el error ``RTNETLINK respuesta: el archivo existe``, que se puede resolver con ``sudo ip link delete ifb0``."
+
+#: ../../configuration/service/https.rst:90
+msgid "Do not leave introspection enabled in production, it is a security risk."
+msgstr "Do not leave introspection enabled in production, it is a security risk."
 
 #: ../../configuration/protocols/bgp.rst:609
 msgid "Do not send Hard Reset CEASE Notification for \"Administrative Reset\" events. When set and Graceful Restart Notification capability is exchanged between the peers, Graceful Restart procedures apply, and routes will be retained."
@@ -5230,6 +5271,10 @@ msgstr "Habilite BFD en un único vecino BGP"
 msgid "Enable DHCP failover configuration for this address pool."
 msgstr "Habilite la configuración de conmutación por error de DHCP para este conjunto de direcciones."
 
+#: ../../configuration/service/https.rst:88
+msgid "Enable GraphQL Schema introspection."
+msgstr "Enable GraphQL Schema introspection."
+
 #: ../../configuration/interfaces/wireless.rst:178
 msgid "Enable HT-delayed Block Ack ``[DELAYED-BA]``"
 msgstr "Habilitar reconocimiento de bloque retardado HT ``[DELAYED-BA]``"
@@ -5440,6 +5485,10 @@ msgstr "Las conexiones PPPoE bajo demanda habilitadas abren el enlace solo cuand
 msgid "Enables Cisco style authentication on NHRP packets. This embeds the secret plaintext password to the outgoing NHRP packets. Incoming NHRP packets on this interface are discarded unless the secret password is present. Maximum length of the secret is 8 characters."
 msgstr "Habilita la autenticación estilo Cisco en paquetes NHRP. Esto incrusta la contraseña secreta de texto sin formato en los paquetes NHRP salientes. Los paquetes NHRP entrantes en esta interfaz se descartan a menos que esté presente la contraseña secreta. La longitud máxima del secreto es de 8 caracteres."
 
+#: ../../configuration/loadbalancing/reverse-proxy.rst:166
+msgid "Enables HTTP health checks using OPTION HTTP requests against '/' and expecting a successful response code in the 200-399 range."
+msgstr "Enables HTTP health checks using OPTION HTTP requests against '/' and expecting a successful response code in the 200-399 range."
+
 #: ../../configuration/vrf/index.rst:480
 msgid "Enables an MPLS label to be attached to a route exported from the current unicast VRF to VPN. If the value specified is auto, the label value is automatically assigned from a pool maintained."
 msgstr "Permite adjuntar una etiqueta MPLS a una ruta exportada desde el VRF de unidifusión actual a VPN. Si el valor especificado es automático, el valor de la etiqueta se asigna automáticamente desde un grupo mantenido."
@@ -5487,6 +5536,10 @@ msgstr "Habilitar esta función aumenta el riesgo de saturación del ancho de ba
 #: ../../configuration/service/https.rst:73
 msgid "Enforce strict path checking"
 msgstr "Hacer cumplir la verificación de ruta estricta"
+
+#: ../../configuration/service/https.rst:77
+msgid "Enforce strict path checking."
+msgstr "Enforce strict path checking."
 
 #: ../../configuration/interfaces/bonding.rst:31
 msgid "Enslave `<member>` interface to bond `<interface>`."
@@ -5747,7 +5800,7 @@ msgid "Example: to be appended is set to ``vyos.net`` and the URL received is ``
 msgstr "Ejemplo: para agregar se establece en ``vyos.net`` y la URL recibida es ``www/foo.html``, el sistema usará la URL final generada de ``www.vyos.net/foo. html``."
 
 #: ../../configuration/container/index.rst:216
-#: ../../configuration/service/https.rst:77
+#: ../../configuration/service/https.rst:110
 msgid "Example Configuration"
 msgstr "Configuración de ejemplo"
 
@@ -5789,7 +5842,8 @@ msgstr "Example synproxy"
 #: ../../configuration/interfaces/bridge.rst:196
 #: ../../configuration/interfaces/macsec.rst:153
 #: ../../configuration/interfaces/wireless.rst:541
-#: ../../configuration/loadbalancing/reverse-proxy.rst:190
+#: ../../configuration/loadbalancing/reverse-proxy.rst:227
+#: ../../configuration/pki/index.rst:370
 #: ../../configuration/policy/index.rst:46
 #: ../../configuration/protocols/bgp.rst:1118
 #: ../../configuration/protocols/isis.rst:336
@@ -6078,6 +6132,10 @@ msgstr "Primero, en ambos enrutadores ejecute el comando operativo &quot;generar
 msgid "First, one of the systems generate the key using the :ref:`generate pki openvpn shared-secret<configuration/pki/index:pki>` command. Once generated, you will need to install this key on the local system, then copy and install this key to the remote router."
 msgstr "Primero, uno de los sistemas genera la clave usando :ref:`generate pki openvpn shared-secret<configuration/pki/index:pki> `comando. Una vez generada, deberá instalar esta clave en el sistema local, luego copiar e instalar esta clave en el enrutador remoto."
 
+#: ../../configuration/pki/index.rst:393
+msgid "First, we create the root certificate authority."
+msgstr "First, we create the root certificate authority."
+
 #: ../../configuration/interfaces/openvpn.rst:176
 msgid "First, you need to generate a key by running ``run generate pki openvpn shared-secret install <name>`` from configuration mode. You can use any name, we will use ``s2s``."
 msgstr "First, you need to generate a key by running ``run generate pki openvpn shared-secret install <name>`` from configuration mode. You can use any name, we will use ``s2s``."
@@ -6137,6 +6195,30 @@ msgstr "Exportación de flujo"
 #: ../../configuration/loadbalancing/wan.rst:95
 msgid "Flow and packet-based balancing"
 msgstr "Equilibrio basado en flujo y paquetes"
+
+#: ../../configuration/trafficpolicy/index.rst:1196
+msgid "Flows are defined by source-destination host pairs."
+msgstr "Flows are defined by source-destination host pairs."
+
+#: ../../configuration/trafficpolicy/index.rst:1181
+msgid "Flows are defined by the 5-tuple. Fairness is applied first over destination addresses, then over individual flows."
+msgstr "Flows are defined by the 5-tuple. Fairness is applied first over destination addresses, then over individual flows."
+
+#: ../../configuration/trafficpolicy/index.rst:1186
+msgid "Flows are defined by the 5-tuple. Fairness is applied first over source addresses, then over individual flows."
+msgstr "Flows are defined by the 5-tuple. Fairness is applied first over source addresses, then over individual flows."
+
+#: ../../configuration/trafficpolicy/index.rst:1191
+msgid "Flows are defined by the entire 5-tuple (source IP address, source port, destination IP address, destination port, transport protocol)."
+msgstr "Flows are defined by the entire 5-tuple (source IP address, source port, destination IP address, destination port, transport protocol)."
+
+#: ../../configuration/trafficpolicy/index.rst:1177
+msgid "Flows are defined only by destination address."
+msgstr "Flows are defined only by destination address."
+
+#: ../../configuration/trafficpolicy/index.rst:1204
+msgid "Flows are defined only by source address."
+msgstr "Flows are defined only by source address."
 
 #: ../../configuration/system/flow-accounting.rst:10
 msgid "Flows can be exported via two different protocols: NetFlow (versions 5, 9 and 10/IPFIX) and sFlow. Additionally, you may save flows to an in-memory table internally in a router."
@@ -6341,7 +6423,7 @@ msgstr "Para la regla :ref:`destination-nat66`, la dirección de destino del paq
 msgid "For the average user a serial console has no advantage over a console offered by a directly attached keyboard and screen. Serial consoles are much slower, taking up to a second to fill a 80 column by 24 line screen. Serial consoles generally only support non-proportional ASCII text, with limited support for languages other than English."
 msgstr "Para el usuario promedio, una consola en serie no tiene ninguna ventaja sobre una consola que ofrece un teclado y una pantalla conectados directamente. Las consolas en serie son mucho más lentas y tardan hasta un segundo en llenar una pantalla de 80 columnas por 24 líneas. Las consolas seriales generalmente solo admiten texto ASCII no proporcional, con soporte limitado para idiomas distintos del inglés."
 
-#: ../../configuration/trafficpolicy/index.rst:1183
+#: ../../configuration/trafficpolicy/index.rst:1251
 msgid "For the ingress traffic of an interface, there is only one policy you can directly apply, a **Limiter** policy. You cannot apply a shaping policy directly to the ingress traffic of any interface because shaping only works for outbound traffic."
 msgstr "Para el tráfico de entrada de una interfaz, solo hay una política que puede aplicar directamente, una política **Limitadora**. No puede aplicar una política de configuración directamente al tráfico de entrada de ninguna interfaz porque la configuración solo funciona para el tráfico saliente."
 
@@ -6378,6 +6460,10 @@ msgstr "For transit traffic, which is received by the router and forwarded, base
 #: ../../configuration/firewall/general.rst:62
 msgid "For transit traffic, which is received by the router and forwarded, base chain is **forward filter**: ``set firewall [ipv4 | ipv6] forward filter ...``"
 msgstr "For transit traffic, which is received by the router and forwarded, base chain is **forward filter**: ``set firewall [ipv4 | ipv6] forward filter ...``"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:161
+msgid "For web application providing information about their state HTTP health checks can be used to determine their availability."
+msgstr "For web application providing information about their state HTTP health checks can be used to determine their availability."
 
 #: ../../configuration/protocols/ospf.rst:350
 msgid "Formally, a virtual link looks like a point-to-point network connecting two ABR from one area one of which physically connected to a backbone area. This pseudo-network is considered to belong to a backbone area."
@@ -6553,7 +6639,7 @@ msgstr "Dado el siguiente ejemplo, tenemos un enrutador VyOS que actúa como ser
 msgid "Gloabal"
 msgstr "global"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:153
+#: ../../configuration/loadbalancing/reverse-proxy.rst:190
 msgid "Global"
 msgstr "Global"
 
@@ -6577,7 +6663,7 @@ msgstr "Global Options Firewall Configuration"
 msgid "Global options"
 msgstr "Opciones globales"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:155
+#: ../../configuration/loadbalancing/reverse-proxy.rst:192
 msgid "Global parameters"
 msgstr "Parámetros globales"
 
@@ -6589,6 +6675,10 @@ msgstr "ajustes globales"
 #: ../../configuration/protocols/ospf.rst:1210
 msgid "Graceful Restart"
 msgstr "Reinicio elegante"
+
+#: ../../configuration/service/https.rst:84
+msgid "GraphQL"
+msgstr "GraphQL"
 
 #: ../../configuration/highavailability/index.rst:236
 msgid "Gratuitous ARP"
@@ -6626,6 +6716,10 @@ msgstr "Nombre de usuario de autenticación básica HTTP"
 #: ../../configuration/system/option.rst:57
 msgid "HTTP client"
 msgstr "cliente HTTP"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:160
+msgid "HTTP health check"
+msgstr "HTTP health check"
 
 #: ../../configuration/interfaces/wireless.rst:137
 msgid "HT (High Throughput) capabilities (802.11n)"
@@ -7859,6 +7953,10 @@ msgstr "Para separar el tráfico, Fair Queue utiliza un clasificador basado en l
 msgid "In order to use PIM, it is necessary to configure a :abbr:`RP (Rendezvous Point)` for join messages to be sent to. Currently the only methodology to do this is via static rendezvous point commands."
 msgstr "In order to use PIM, it is necessary to configure a :abbr:`RP (Rendezvous Point)` for join messages to be sent to. Currently the only methodology to do this is via static rendezvous point commands."
 
+#: ../../configuration/interfaces/ethernet.rst:111
+msgid "In order to use TSO/LRO with VMXNET3 adapters, the SG offloading option must also be enabled."
+msgstr "In order to use TSO/LRO with VMXNET3 adapters, the SG offloading option must also be enabled."
+
 #: ../../configuration/interfaces/ethernet.rst:95
 msgid "In order to use TSO/LRO with VMXNET3 adaters one must also enable the SG offloading option."
 msgstr "Para usar TSO/LRO con adaptadores VMXNET3, también se debe habilitar la opción de descarga SG."
@@ -8480,6 +8578,10 @@ msgstr "Los LNS se utilizan a menudo para conectarse a un LAC (concentrador de a
 msgid "Label Distribution Protocol"
 msgstr "Protocolo de distribución de etiquetas"
 
+#: ../../configuration/pki/index.rst:447
+msgid "Lastly, we can create the leaf certificates that devices and users will utilise."
+msgstr "Lastly, we can create the leaf certificates that devices and users will utilise."
+
 #: ../../configuration/interfaces/l2tpv3.rst:11
 msgid "Layer 2 Tunnelling Protocol Version 3 is an IETF standard related to L2TP that can be used as an alternative protocol to :ref:`mpls` for encapsulation of multiprotocol Layer 2 communications traffic over IP networks. Like L2TP, L2TPv3 provides a pseudo-wire service but is scaled to fit carrier requirements."
 msgstr "Layer 2 Tunneling Protocol Version 3 es un estándar IETF relacionado con L2TP que se puede utilizar como un protocolo alternativo a :ref:`mpls` para la encapsulación del tráfico de comunicaciones multiprotocolo de Capa 2 a través de redes IP. Al igual que L2TP, L2TPv3 proporciona un servicio de pseudocable, pero está escalado para adaptarse a los requisitos del operador."
@@ -8520,7 +8622,7 @@ msgstr "Deje que el demonio SNMP escuche solo en la dirección IP 192.0.2.1"
 msgid "Lets assume the following topology:"
 msgstr "Supongamos la siguiente topología:"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:193
+#: ../../configuration/loadbalancing/reverse-proxy.rst:230
 msgid "Level 4 balancing"
 msgstr "Equilibrio de nivel 4"
 
@@ -8540,7 +8642,7 @@ msgstr "La vida útil se reduce según la cantidad de segundos desde el último 
 msgid "Like on Microsoft Windows, Apple iOS/iPadOS out of the box does not expose all available VPN options via the device GUI."
 msgstr "Like on Microsoft Windows, Apple iOS/iPadOS out of the box does not expose all available VPN options via the device GUI."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:165
+#: ../../configuration/loadbalancing/reverse-proxy.rst:202
 msgid "Limit allowed cipher algorithms used during SSL/TLS handshake"
 msgstr "Limite los algoritmos de cifrado permitidos utilizados durante el protocolo de enlace SSL/TLS"
 
@@ -8552,7 +8654,7 @@ msgstr "Limite los inicios de sesión a `<limit> ` por cada ``rate-time`` segund
 msgid "Limit logins to ``rate-limit`` attemps per every `<seconds>`. Rate time must be between 15 and 600 seconds."
 msgstr "Limite los inicios de sesión a ``rate-limit`` intentos por cada `<seconds> `. El tiempo de tasa debe estar entre 15 y 600 segundos."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:160
+#: ../../configuration/loadbalancing/reverse-proxy.rst:197
 msgid "Limit maximum number of connections"
 msgstr "Limite el número máximo de conexiones"
 
@@ -9339,6 +9441,10 @@ msgid "Multiple VLAN to VNI mappings can be configured against the same SVD. Thi
 msgstr "Multiple VLAN to VNI mappings can be configured against the same SVD. This allows for a significant scaling of the number of VNIs since a separate VXLAN interface is no longer required for each VNI."
 
 #: ../../configuration/system/host-name.rst:68
+msgid "Multiple aliases can be specified per host-name."
+msgstr "Multiple aliases can be specified per host-name."
+
+#: ../../configuration/system/host-name.rst:68
 msgid "Multiple aliases can pe specified per host-name."
 msgstr "Se pueden especificar varios alias por nombre de host."
 
@@ -9859,7 +9965,7 @@ msgstr "Una vez que se ha encontrado un vecino, la entrada se considera válida 
 msgid "Once a route is assessed a penalty, the penalty is decreased by half each time a predefined amount of time elapses (half-life-time). When the accumulated penalties fall below a predefined threshold (reuse-value), the route is unsuppressed and added back into the BGP routing table."
 msgstr "Una vez que se impone una penalización a una ruta, la penalización se reduce a la mitad cada vez que transcurre una cantidad de tiempo predefinida (tiempo de vida media). Cuando las penalizaciones acumuladas caen por debajo de un umbral predefinido (valor de reutilización), la ruta se desactiva y se vuelve a agregar a la tabla de enrutamiento BGP."
 
-#: ../../configuration/trafficpolicy/index.rst:1152
+#: ../../configuration/trafficpolicy/index.rst:1220
 msgid "Once a traffic-policy is created, you can apply it to an interface:"
 msgstr "Una vez que se crea una política de tráfico, puede aplicarla a una interfaz:"
 
@@ -10039,7 +10145,7 @@ msgstr "Modos de funcionamiento"
 
 #: ../../configuration/interfaces/bonding.rst:512
 #: ../../configuration/interfaces/dummy.rst:51
-#: ../../configuration/interfaces/ethernet.rst:132
+#: ../../configuration/interfaces/ethernet.rst:148
 #: ../../configuration/interfaces/loopback.rst:41
 #: ../../configuration/interfaces/macsec.rst:106
 #: ../../configuration/interfaces/pppoe.rst:278
@@ -10417,6 +10523,10 @@ msgstr "De forma predeterminada, se muestrean todos los paquetes (es decir, la t
 msgid "Per default the user session is being replaced if a second authentication request succeeds. Such session requests can be either denied or allowed entirely, which would allow multiple sessions for a user in the latter case. If it is denied, the second session is being rejected even if the authentication succeeds, the user has to terminate its first session and can then authentication again."
 msgstr "De manera predeterminada, la sesión de usuario se reemplaza si una segunda solicitud de autenticación tiene éxito. Dichas solicitudes de sesión se pueden denegar o permitir por completo, lo que permitiría múltiples sesiones para un usuario en el último caso. Si se deniega, la segunda sesión se rechaza incluso si la autenticación tiene éxito, el usuario debe finalizar su primera sesión y luego puede volver a autenticarse."
 
+#: ../../configuration/trafficpolicy/index.rst:1200
+msgid "Perform NAT lookup before applying flow-isolation rules."
+msgstr "Perform NAT lookup before applying flow-isolation rules."
+
 #: ../../configuration/system/option.rst:108
 msgid "Performance"
 msgstr "Rendimiento"
@@ -10523,7 +10633,7 @@ msgstr "Grupos de puertos"
 
 #: ../../configuration/interfaces/bonding.rst:282
 #: ../../configuration/interfaces/bridge.rst:188
-#: ../../configuration/interfaces/ethernet.rst:124
+#: ../../configuration/interfaces/ethernet.rst:140
 msgid "Port Mirror (SPAN)"
 msgstr "Espejo de puerto (SPAN)"
 
@@ -10809,7 +10919,7 @@ msgstr "Publique un puerto para el contenedor."
 msgid "Pull a new image for container"
 msgstr "Obtener una nueva imagen para el contenedor"
 
-#: ../../configuration/interfaces/ethernet.rst:117
+#: ../../configuration/interfaces/ethernet.rst:133
 #: ../../configuration/interfaces/virtual-ethernet.rst:39
 #: ../../configuration/interfaces/wireless.rst:408
 msgid "QinQ (802.1ad)"
@@ -11023,7 +11133,7 @@ msgstr "Recomendado para instalaciones más grandes."
 msgid "Record types"
 msgstr "Record types"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:174
+#: ../../configuration/loadbalancing/reverse-proxy.rst:211
 msgid "Redirect HTTP to HTTPS"
 msgstr "Redirigir HTTP a HTTPS"
 
@@ -11055,7 +11165,7 @@ msgstr "Redundancia y carga compartida. Hay varios dispositivos NAT66 en el bord
 msgid "Register DNS record ``example.vyos.io`` on DNS server ``ns1.vyos.io``"
 msgstr "Registre el registro DNS ``example.vyos.io`` en el servidor DNS ``ns1.vyos.io``"
 
-#: ../../configuration/interfaces/ethernet.rst:110
+#: ../../configuration/interfaces/ethernet.rst:126
 #: ../../configuration/interfaces/virtual-ethernet.rst:33
 #: ../../configuration/interfaces/wireless.rst:401
 msgid "Regular VLANs (802.1q)"
@@ -11402,11 +11512,11 @@ msgstr "Conjuntos de reglas"
 msgid "Rule-set overview"
 msgstr "Descripción general del conjunto de reglas"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:220
+#: ../../configuration/loadbalancing/reverse-proxy.rst:258
 msgid "Rule 10 matches requests with the domain name ``node1.example.com`` forwards to the backend ``bk-api-01``"
 msgstr "La regla 10 hace coincidir las solicitudes con el nombre de dominio ``node1.example.com`` reenvía al backend ``bk-api-01``"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:257
+#: ../../configuration/loadbalancing/reverse-proxy.rst:295
 msgid "Rule 10 matches requests with the exact URL path ``/.well-known/xxx`` and redirects to location ``/certs/``."
 msgstr "La regla 10 hace coincidir las solicitudes con la ruta URL exacta ``/.well-known/xxx`` y redirige a la ubicación ``/certs/``."
 
@@ -11414,11 +11524,11 @@ msgstr "La regla 10 hace coincidir las solicitudes con la ruta URL exacta ``/.we
 msgid "Rule 110 is hit, so connection is accepted."
 msgstr "Rule 110 is hit, so connection is accepted."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:260
+#: ../../configuration/loadbalancing/reverse-proxy.rst:298
 msgid "Rule 20 matches requests with URL paths ending in ``/mail`` or exact path ``/email/bar`` redirect to location ``/postfix/``."
 msgstr "La regla 20 coincide con las solicitudes con rutas URL que terminan en ``/mail`` o la ruta exacta ``/email/bar`` redirige a la ubicación ``/postfix/``."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:223
+#: ../../configuration/loadbalancing/reverse-proxy.rst:261
 msgid "Rule 20 matches requests with the domain name ``node2.example.com`` forwards to the backend ``bk-api-02``"
 msgstr "La regla 20 hace coincidir las solicitudes con el nombre de dominio ``node2.example.com`` reenvía al backend ``bk-api-02``"
 
@@ -11537,7 +11647,7 @@ msgstr "SSH se diseñó como reemplazo de Telnet y de los protocolos de shell re
 msgid "SSID to be used in IEEE 802.11 management frames"
 msgstr "SSID que se utilizará en tramas de administración IEEE 802.11"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:294
+#: ../../configuration/loadbalancing/reverse-proxy.rst:333
 msgid "SSL Bridging"
 msgstr "SSL Bridging"
 
@@ -11649,6 +11759,10 @@ msgstr "secuencias de comandos"
 #: ../../configuration/nat/nat44.rst:676
 msgid "Second scenario: apply source NAT for all outgoing connections from LAN 10.0.0.0/8, using 3 public addresses and equal distribution. We will generate the hash randomly."
 msgstr "Second scenario: apply source NAT for all outgoing connections from LAN 10.0.0.0/8, using 3 public addresses and equal distribution. We will generate the hash randomly."
+
+#: ../../configuration/pki/index.rst:411
+msgid "Secondly, we create the intermediary certificate authorities, which are used to sign the leaf certificates."
+msgstr "Secondly, we create the intermediary certificate authorities, which are used to sign the leaf certificates."
 
 #: ../../configuration/service/ipoe-server.rst:186
 #: ../../configuration/service/pppoe-server.rst:148
@@ -11857,6 +11971,10 @@ msgstr "Establecer interfaz de túnel virtual"
 msgid "Set a container description"
 msgstr "Establecer una descripción de contenedor"
 
+#: ../../configuration/trafficpolicy/index.rst:1169
+msgid "Set a description for the shaper."
+msgstr "Set a description for the shaper."
+
 #: ../../configuration/system/conntrack.rst:113
 msgid "Set a destination and/or source address. Accepted input for ipv4:"
 msgstr "Set a destination and/or source address. Accepted input for ipv4:"
@@ -11877,7 +11995,7 @@ msgstr "Establezca un límite en el número máximo de usuarios conectados simul
 msgid "Set a meaningful description."
 msgstr "Establezca una descripción significativa."
 
-#: ../../configuration/service/https.rst:63
+#: ../../configuration/service/https.rst:67
 msgid "Set a named api key. Every key has the same, full permissions on the system."
 msgstr "Establezca una clave API con nombre. Cada clave tiene los mismos permisos completos en el sistema."
 
@@ -11904,7 +12022,7 @@ msgstr "Establezca la acción para la política del mapa de rutas."
 msgid "Set action to take on entries matching this rule."
 msgstr "Establezca la acción a realizar en las entradas que coincidan con esta regla."
 
-#: ../../configuration/service/https.rst:79
+#: ../../configuration/service/https.rst:112
 msgid "Set an API-KEY is the minimal configuration to get a working API Endpoint."
 msgstr "Establecer una API-KEY es la configuración mínima para obtener un punto final de API que funcione."
 
@@ -12309,6 +12427,14 @@ msgstr "Establecer la dirección del puerto backend"
 msgid "Set the address of the backend server to which the incoming traffic will be forwarded"
 msgstr "Establezca la dirección del servidor backend al que se reenviará el tráfico entrante"
 
+#: ../../configuration/service/https.rst:94
+msgid "Set the authentication type for GraphQL, default option is key. Available options are:"
+msgstr "Set the authentication type for GraphQL, default option is key. Available options are:"
+
+#: ../../configuration/service/https.rst:106
+msgid "Set the byte length of the JWT secret. Default is 32."
+msgstr "Set the byte length of the JWT secret. Default is 32."
+
 #: ../../configuration/highavailability/index.rst:295
 msgid "Set the default VRRP version to use. This defaults to 2, but IPv6 instances will always use version 3."
 msgstr "Establezca la versión de VRRP predeterminada que se utilizará. El valor predeterminado es 2, pero las instancias de IPv6 siempre usarán la versión 3."
@@ -12345,6 +12471,10 @@ msgstr "Establezca la configuración global para paquetes no válidos."
 msgid "Set the global setting for related connections."
 msgstr "Establezca la configuración global para las conexiones relacionadas."
 
+#: ../../configuration/service/https.rst:102
+msgid "Set the lifetime for JWT tokens in seconds. Default is 3600 seconds."
+msgstr "Set the lifetime for JWT tokens in seconds. Default is 3600 seconds."
+
 #: ../../configuration/service/https.rst:28
 msgid "Set the listen port of the local API, this has no effect on the webserver. The default is port 8080"
 msgstr "Configure el puerto de escucha de la API local, esto no tiene ningún efecto en el servidor web. El valor predeterminado es el puerto 8080"
@@ -12360,6 +12490,10 @@ msgstr "Establezca la longitud máxima de relleno A-MPDU pre-EOF que la estació
 #: ../../configuration/system/conntrack.rst:52
 msgid "Set the maximum number of TCP half-open connections."
 msgstr "Establezca el número máximo de conexiones TCP semiabiertas."
+
+#: ../../configuration/service/https.rst:60
+msgid "Set the maximum request body size in megabytes. Default is 1MB."
+msgstr "Set the maximum request body size in megabytes. Default is 1MB."
 
 #: ../../_include/interface-eapol.txt:12
 msgid "Set the name of the SSL :abbr:`CA (Certificate Authority)` PKI entry used for authentication of the remote side. If an intermediate CA certificate is specified, then all parent CA certificates that exist in the PKI, such as the root CA or additional intermediate CAs, will automatically be used during certificate validation to ensure that the full chain of trust is available."
@@ -12429,6 +12563,10 @@ msgstr "Configure la tabla de enrutamiento para reenviar paquetes."
 msgid "Set the session id, which is a 32-bit integer value. Uniquely identifies the session being created. The value used must match the peer_session_id value being used at the peer."
 msgstr "Establezca la identificación de la sesión, que es un valor entero de 32 bits. Identifica de forma única la sesión que se está creando. El valor utilizado debe coincidir con el valor peer_session_id que se utiliza en el par."
 
+#: ../../configuration/trafficpolicy/index.rst:1164
+msgid "Set the shaper bandwidth, either as an explicit bitrate or a percentage of the interface bandwidth."
+msgstr "Set the shaper bandwidth, either as an explicit bitrate or a percentage of the interface bandwidth."
+
 #: ../../configuration/system/conntrack.rst:31
 msgid "Set the size of the hash table. The connection tracking hash table makes searching the connection tracking table faster. The hash table uses “buckets” to record entries in the connection tracking table."
 msgstr "Establece el tamaño de la tabla hash. La tabla hash de seguimiento de conexiones hace que la búsqueda en la tabla de seguimiento de conexiones sea más rápida. La tabla hash utiliza &quot;cubos&quot; para registrar entradas en la tabla de seguimiento de conexiones."
@@ -12458,6 +12596,18 @@ msgstr "Set the window scale factor for TCP window scaling"
 #: ../../configuration/system/login.rst:128
 msgid "Set window of concurrently valid codes."
 msgstr "Establecer ventana de códigos válidos concurrentemente."
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:172
+msgid "Sets the HTTP method to be used, can be either: option, get, post, put"
+msgstr "Sets the HTTP method to be used, can be either: option, get, post, put"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:177
+msgid "Sets the endpoint to be used for health checks"
+msgstr "Sets the endpoint to be used for health checks"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:182
+msgid "Sets the expected result condition for considering a server healthy. Some possible examples are:"
+msgstr "Sets the expected result condition for considering a server healthy. Some possible examples are:"
 
 #: ../../configuration/container/index.rst:16
 msgid "Sets the image name in the hub registry"
@@ -12683,7 +12833,7 @@ msgstr "Mostrar una lista de certificados instalados"
 msgid "Show all BFD peers"
 msgstr "Mostrar todos los compañeros de BFD"
 
-#: ../../configuration/interfaces/ethernet.rst:210
+#: ../../configuration/interfaces/ethernet.rst:226
 msgid "Show available offloading functions on given `<interface>`"
 msgstr "Mostrar las funciones de descarga disponibles en ` dado<interface> `"
 
@@ -12701,7 +12851,7 @@ msgstr "Mostrar puente `<name> ` mdb muestra la tabla actual de miembros del gru
 
 #: ../../configuration/interfaces/bonding.rst:516
 #: ../../configuration/interfaces/dummy.rst:55
-#: ../../configuration/interfaces/ethernet.rst:136
+#: ../../configuration/interfaces/ethernet.rst:152
 #: ../../configuration/interfaces/loopback.rst:45
 #: ../../configuration/interfaces/virtual-ethernet.rst:59
 msgid "Show brief interface information."
@@ -12745,7 +12895,7 @@ msgstr "Mostrar información detallada sobre los enlaces físicos subyacentes en
 
 #: ../../configuration/interfaces/bonding.rst:531
 #: ../../configuration/interfaces/dummy.rst:67
-#: ../../configuration/interfaces/ethernet.rst:150
+#: ../../configuration/interfaces/ethernet.rst:166
 #: ../../configuration/interfaces/pppoe.rst:282
 #: ../../configuration/interfaces/sstp-client.rst:121
 #: ../../configuration/interfaces/virtual-ethernet.rst:72
@@ -12777,7 +12927,7 @@ msgstr "Mostrar información general sobre la interfaz específica de WireGuard"
 msgid "Show info about the Wireguard service. It also shows the latest handshake."
 msgstr "Mostrar información sobre el servicio Wireguard. También muestra el último apretón de manos."
 
-#: ../../configuration/interfaces/ethernet.rst:169
+#: ../../configuration/interfaces/ethernet.rst:185
 msgid "Show information about physical `<interface>`"
 msgstr "Mostrar información sobre el ` físico<interface> `"
 
@@ -12895,7 +13045,7 @@ msgstr "Show the logs of all firewall; show all ipv6 firewall logs; show all log
 msgid "Show the route"
 msgstr "mostrar la ruta"
 
-#: ../../configuration/interfaces/ethernet.rst:242
+#: ../../configuration/interfaces/ethernet.rst:258
 msgid "Show transceiver information from plugin modules, e.g SFP+, QSFP"
 msgstr "Mostrar información del transceptor de los módulos de complemento, por ejemplo, SFP+, QSFP"
 
@@ -13475,7 +13625,7 @@ msgstr "Especifique el valor del identificador del agregador de nivel de sitio (
 msgid "Specify the interface address used locally on the interface where the prefix has been delegated to. ID must be a decimal integer."
 msgstr "Especifique la dirección de la interfaz utilizada localmente en la interfaz a la que se ha delegado el prefijo. El ID debe ser un entero decimal."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:170
+#: ../../configuration/loadbalancing/reverse-proxy.rst:207
 msgid "Specify the minimum required TLS version 1.2 or 1.3"
 msgstr "Especifique la versión mínima requerida de TLS 1.2 o 1.3"
 
@@ -13522,6 +13672,10 @@ msgstr "Habló"
 #: ../../configuration/service/webproxy.rst:9
 msgid "Squid_ is a caching and forwarding HTTP web proxy. It has a wide variety of uses, including speeding up a web server by caching repeated requests, caching web, DNS and other computer network lookups for a group of people sharing network resources, and aiding security by filtering traffic. Although primarily used for HTTP and FTP, Squid includes limited support for several other protocols including Internet Gopher, SSL,[6] TLS and HTTPS. Squid does not support the SOCKS protocol."
 msgstr "Squid_ es un proxy web HTTP de almacenamiento en caché y reenvío. Tiene una amplia variedad de usos, incluida la aceleración de un servidor web al almacenar en caché solicitudes repetidas, almacenar en caché web, DNS y otras búsquedas de redes informáticas para un grupo de personas que comparten recursos de red y ayudar a la seguridad al filtrar el tráfico. Aunque se usa principalmente para HTTP y FTP, Squid incluye soporte limitado para varios otros protocolos, incluidos Internet Gopher, SSL, [6] TLS y HTTPS. Squid no es compatible con el protocolo SOCKS."
+
+#: ../../configuration/service/https.rst:56
+msgid "Start Webserver in given VRF."
+msgstr "Start Webserver in given VRF."
 
 #: ../../configuration/service/https.rst:56
 msgid "Start Webserver in given  VRF."
@@ -13843,7 +13997,7 @@ msgstr "Deshabilite temporalmente este servidor RADIUS. No será consultado."
 msgid "Temporary disable this TACACS server. It won't be queried."
 msgstr "Deshabilite temporalmente este servidor TACACS. No será consultado."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:248
+#: ../../configuration/loadbalancing/reverse-proxy.rst:286
 msgid "Terminate SSL"
 msgstr "Terminar SSL"
 
@@ -13879,7 +14033,7 @@ msgstr "Pruebas y Validación"
 msgid "Thanks to this discovery, any subsequent traffic between PC4 and PC5 will not be using the multicast-address between the leaves as they both know behind which Leaf the PCs are connected. This saves traffic as less multicast packets sent reduces the load on the network, which improves scalability when more leaves are added."
 msgstr "Gracias a este descubrimiento, cualquier tráfico posterior entre PC4 y PC5 no utilizará la dirección de multidifusión entre las hojas, ya que ambas saben detrás de qué hoja están conectadas las PC. Esto ahorra tráfico, ya que se envían menos paquetes de multidifusión y se reduce la carga en la red, lo que mejora la escalabilidad cuando se agregan más hojas."
 
-#: ../../configuration/trafficpolicy/index.rst:1194
+#: ../../configuration/trafficpolicy/index.rst:1262
 msgid "That is how it is possible to do the so-called \"ingress shaping\"."
 msgstr "Así es como es posible hacer el llamado &quot;formado de entrada&quot;."
 
@@ -13923,7 +14077,7 @@ msgstr "El DN y la contraseña para enlazar mientras se realizan búsquedas. Com
 msgid "The FQ-CoDel policy distributes the traffic into 1024 FIFO queues and tries to provide good service between all of them. It also tries to keep the length of all the queues short."
 msgstr "La política FQ-CoDel distribuye el tráfico en 1024 colas FIFO e intenta brindar un buen servicio entre todas ellas. También trata de mantener corta la longitud de todas las colas."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:218
+#: ../../configuration/loadbalancing/reverse-proxy.rst:256
 msgid "The HTTP service listen on TCP port 80."
 msgstr "El servicio HTTP escucha en el puerto TCP 80."
 
@@ -14040,7 +14194,7 @@ msgstr "La ``dirección`` se puede configurar en la interfaz VRRP o no en la int
 msgid "The ``address`` parameter can be either an IPv4 or IPv6 address, but you can not mix IPv4 and IPv6 in the same group, and will need to create groups with different VRIDs specially for IPv4 and IPv6. If you want to use IPv4 + IPv6 address you can use option ``excluded-address``"
 msgstr "El parámetro ``dirección`` puede ser una dirección IPv4 o IPv6, pero no puede mezclar IPv4 e IPv6 en el mismo grupo, y deberá crear grupos con diferentes VRID especialmente para IPv4 e IPv6. Si desea utilizar la dirección IPv4 + IPv6, puede utilizar la opción ``dirección-excluida``"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:305
+#: ../../configuration/loadbalancing/reverse-proxy.rst:345
 msgid "The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS and checks backend server has a valid certificate trusted by CA ``cacert``"
 msgstr "The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS and checks backend server has a valid certificate trusted by CA ``cacert``"
 
@@ -14048,15 +14202,15 @@ msgstr "The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HT
 msgid "The ``http`` service is lestens on port 80 and force redirects from HTTP to HTTPS."
 msgstr "El servicio ``http`` se reduce en el puerto 80 y fuerza los redireccionamientos de HTTP a HTTPS."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:251
+#: ../../configuration/loadbalancing/reverse-proxy.rst:289
 msgid "The ``http`` service is listens on port 80 and force redirects from HTTP to HTTPS."
 msgstr "The ``http`` service is listens on port 80 and force redirects from HTTP to HTTPS."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:302
+#: ../../configuration/loadbalancing/reverse-proxy.rst:342
 msgid "The ``https`` service listens on port 443 with backend ``bk-bridge-ssl`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
 msgstr "The ``https`` service listens on port 443 with backend ``bk-bridge-ssl`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:254
+#: ../../configuration/loadbalancing/reverse-proxy.rst:292
 msgid "The ``https`` service listens on port 443 with backend ``bk-default`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
 msgstr "The ``https`` service listens on port 443 with backend ``bk-default`` to handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination."
 
@@ -14121,7 +14275,7 @@ msgstr "La dirección IP a la que se hace referencia a continuación `192.0.2.1`
 msgid "The bonding interface provides a method for aggregating multiple network interfaces into a single logical \"bonded\" interface, or LAG, or ether-channel, or port-channel. The behavior of the bonded interfaces depends upon the mode; generally speaking, modes provide either hot standby or load balancing services. Additionally, link integrity monitoring may be performed."
 msgstr "La interfaz de vinculación proporciona un método para agregar múltiples interfaces de red en una única interfaz lógica &quot;vinculada&quot;, o LAG, o ether-channel, o port-channel. El comportamiento de las interfaces vinculadas depende del modo; en términos generales, los modos proporcionan servicios de equilibrio de carga o de espera activa. Además, se puede realizar la supervisión de la integridad del enlace."
 
-#: ../../configuration/trafficpolicy/index.rst:1179
+#: ../../configuration/trafficpolicy/index.rst:1247
 msgid "The case of ingress shaping"
 msgstr "El caso de la conformación de ingreso"
 
@@ -14397,7 +14551,7 @@ msgstr "Los siguientes comandos se traducen a &quot;--net host&quot; cuando se c
 msgid "The following commands would be required to set options for a given dynamic routing protocol inside a given vrf:"
 msgstr "Se requerirían los siguientes comandos para establecer opciones para un protocolo de enrutamiento dinámico dado dentro de un vrf dado:"
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:215
+#: ../../configuration/loadbalancing/reverse-proxy.rst:253
 msgid "The following configuration demonstrates how to use VyOS to achieve load balancing based on the domain name."
 msgstr "La siguiente configuración demuestra cómo usar VyOS para lograr un equilibrio de carga basado en el nombre de dominio."
 
@@ -14413,11 +14567,11 @@ msgstr "La siguiente configuración en VyOS se aplica a todos los siguientes pro
 msgid "The following configuration reverse-proxy terminate SSL."
 msgstr "La siguiente configuración de proxy inverso termina SSL."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:249
+#: ../../configuration/loadbalancing/reverse-proxy.rst:287
 msgid "The following configuration terminates SSL on the router."
 msgstr "The following configuration terminates SSL on the router."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:295
+#: ../../configuration/loadbalancing/reverse-proxy.rst:334
 msgid "The following configuration terminates incoming HTTPS traffic on the router, then re-encrypts the traffic and sends to the backend server via HTTPS. This is useful if encryption is required for both legs, but you do not want to install publicly trusted certificates on each backend server."
 msgstr "The following configuration terminates incoming HTTPS traffic on the router, then re-encrypts the traffic and sends to the backend server via HTTPS. This is useful if encryption is required for both legs, but you do not want to install publicly trusted certificates on each backend server."
 
@@ -14618,7 +14772,7 @@ msgstr "La aplicación más visible del protocolo es para el acceso a cuentas sh
 msgid "The multicast-group used by all leaves for this vlan extension. Has to be the same on all leaves that has this interface."
 msgstr "El grupo de multidifusión utilizado por todas las hojas para esta extensión de vlan. Tiene que ser igual en todas las hojas que tenga esta interfaz."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:185
+#: ../../configuration/loadbalancing/reverse-proxy.rst:222
 msgid "The name of the service can be different, in this example it is only for convenience."
 msgstr "El nombre del servicio puede ser diferente, en este ejemplo es solo por conveniencia."
 
@@ -16161,11 +16315,19 @@ msgstr "Este comando crea un puente que se usa para vincular el tráfico en eth1
 msgid "This commands specifies the Finite State Machine (FSM) intended to control the timing of the execution of SPF calculations in response to IGP events. The process described in :rfc:`8405`."
 msgstr "Este comando especifica la máquina de estados finitos (FSM) destinada a controlar el tiempo de ejecución de los cálculos SPF en respuesta a eventos IGP. El proceso descrito en :rfc:`8405`."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:195
+#: ../../configuration/loadbalancing/reverse-proxy.rst:367
+msgid "This configuration enables HTTP health checks on backend servers."
+msgstr "This configuration enables HTTP health checks on backend servers."
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:232
 msgid "This configuration enables the TCP reverse proxy for the \"my-tcp-api\" service. Incoming TCP connections on port 8888 will be load balanced across the backend servers (srv01 and srv02) using the round-robin load-balancing algorithm."
 msgstr "Esta configuración habilita el proxy inverso TCP para el servicio &quot;my-tcp-api&quot;. Las conexiones TCP entrantes en el puerto 8888 se equilibrarán en la carga de los servidores backend (srv01 y srv02) mediante el algoritmo de equilibrio de carga por turnos."
 
-#: ../../configuration/loadbalancing/reverse-proxy.rst:177
+#: ../../configuration/pki/index.rst:375
+msgid "This configuration generates & installs into the VyOS PKI system a root certificate authority, alongside two intermediary certificate authorities for client & server certificates. These CAs are then used to generate a server certificate for the router, and a client certificate for a user."
+msgstr "This configuration generates & installs into the VyOS PKI system a root certificate authority, alongside two intermediary certificate authorities for client & server certificates. These CAs are then used to generate a server certificate for the router, and a client certificate for a user."
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:214
 msgid "This configuration listen on port 80 and redirect incoming requests to HTTPS:"
 msgstr "Esta configuración escucha en el puerto 80 y redirige las solicitudes entrantes a HTTPS:"
 
@@ -16665,7 +16827,7 @@ msgstr "Esto le mostrará una estadística de todos los conjuntos de reglas desd
 msgid "This will show you a summary of rule-sets and groups"
 msgstr "Esto le mostrará un resumen de conjuntos de reglas y grupos."
 
-#: ../../configuration/trafficpolicy/index.rst:1188
+#: ../../configuration/trafficpolicy/index.rst:1256
 msgid "This workaround lets you apply a shaping policy to the ingress traffic by first redirecting it to an in-between virtual interface (`Intermediate Functional Block`_). There, in that virtual interface, you will be able to apply any of the policies that work for outbound traffic, for instance, a shaping one."
 msgstr "Esta solución le permite aplicar una política de modelado al tráfico de entrada al redirigirlo primero a una interfaz virtual intermedia (&quot;Bloque funcional intermedio&quot;_). Allí, en esa interfaz virtual, podrá aplicar cualquiera de las políticas que funcionan para el tráfico saliente, por ejemplo, una de configuración."
 
@@ -16915,7 +17077,7 @@ msgstr "Para habilitar la autenticación basada en RADIUS, el modo de autenticac
 msgid "To enable bandwidth shaping via RADIUS, the option rate-limit needs to be enabled."
 msgstr "Para habilitar la configuración del ancho de banda a través de RADIUS, la opción de límite de velocidad debe estar habilitada."
 
-#: ../../configuration/service/https.rst:68
+#: ../../configuration/service/https.rst:72
 msgid "To enable debug messages. Available via :opcmd:`show log` or :opcmd:`monitor log`"
 msgstr "Para habilitar los mensajes de depuración. Disponible a través de :opcmd:`show log` o :opcmd:`monitor log`"
 
@@ -17187,6 +17349,10 @@ msgstr "Los convertidores de USB a serie manejarán la mayor parte de su trabajo
 #: ../../configuration/system/syslog.rst:128
 msgid "UUCP subsystem"
 msgstr "subsistema UUCP"
+
+#: ../../configuration/interfaces/ethernet.rst:73
+msgid "Under some circumstances, LRO is known to modify the packet headers of forwarded traffic, which breaks the end-to-end principle of computer networking. LRO is also only able to offload TCP segments encapsulated in IPv4 packets. Due to these limitations, it is recommended to use GRO (Generic Receive Offload) where possible. More information on the limitations of LRO can be found here: https://lwn.net/Articles/358910/"
+msgstr "Under some circumstances, LRO is known to modify the packet headers of forwarded traffic, which breaks the end-to-end principle of computer networking. LRO is also only able to offload TCP segments encapsulated in IPv4 packets. Due to these limitations, it is recommended to use GRO (Generic Receive Offload) where possible. More information on the limitations of LRO can be found here: https://lwn.net/Articles/358910/"
 
 #: ../../configuration/interfaces/vxlan.rst:102
 msgid "Unicast"
@@ -18192,7 +18358,7 @@ msgstr "Frecuencia central del canal operativo VHT - frecuencia central 2 (para 
 
 #: ../../configuration/interfaces/bonding.rst:275
 #: ../../configuration/interfaces/bridge.rst:123
-#: ../../configuration/interfaces/ethernet.rst:107
+#: ../../configuration/interfaces/ethernet.rst:123
 #: ../../configuration/interfaces/pseudo-ethernet.rst:63
 #: ../../configuration/interfaces/virtual-ethernet.rst:30
 #: ../../configuration/interfaces/wireless.rst:398
@@ -19264,7 +19430,7 @@ msgstr "Ahora puede &quot;marcar&quot; al interlocutor con el siguiente comando:
 msgid "You can now SSH into your system using admin/admin as a default user supplied from the ``lfkeitel/tacacs_plus:latest`` container."
 msgstr "Ahora puede usar SSH en su sistema usando admin/admin como un usuario predeterminado suministrado desde el contenedor ``lfkeitel/tacacs_plus:latest``."
 
-#: ../../configuration/trafficpolicy/index.rst:1158
+#: ../../configuration/trafficpolicy/index.rst:1226
 msgid "You can only apply one policy per interface and direction, but you could reuse a policy on different interfaces and directions:"
 msgstr "Solo puede aplicar una política por interfaz y dirección, pero puede reutilizar una política en diferentes interfaces y direcciones:"
 
@@ -19432,11 +19598,11 @@ msgstr ":abbr:`GENEVE (encapsulación de virtualización de red genérica)` admi
 msgid ":abbr:`GRE (Generic Routing Encapsulation)`, GRE/IPsec (or IPIP/IPsec, SIT/IPsec, or any other stateless tunnel protocol over IPsec) is the usual way to protect the traffic inside a tunnel."
 msgstr ":abbr:`GRE (Generic Routing Encapsulation)`, GRE/IPsec (o IPIP/IPsec, SIT/IPsec, o cualquier otro protocolo de túnel sin estado sobre IPsec) es la forma habitual de proteger el tráfico dentro de un túnel."
 
-#: ../../configuration/interfaces/ethernet.rst:74
+#: ../../configuration/interfaces/ethernet.rst:90
 msgid ":abbr:`GRO (Generic receive offload)` is the complement to GSO. Ideally any frame assembled by GRO should be segmented to create an identical sequence of frames using GSO, and any sequence of frames segmented by GSO should be able to be reassembled back to the original by GRO. The only exception to this is IPv4 ID in the case that the DF bit is set for a given IP header. If the value of the IPv4 ID is not sequentially incrementing it will be altered so that it is when a frame assembled via GRO is segmented via GSO."
 msgstr ":abbr:`GRO (Descarga de recepción genérica)` es el complemento de GSO. Idealmente, cualquier cuadro ensamblado por GRO debe segmentarse para crear una secuencia idéntica de cuadros usando GSO, y cualquier secuencia de cuadros segmentados por GSO debe poder volver a ensamblarse al original por GRO. La única excepción a esto es la ID de IPv4 en el caso de que el bit DF esté configurado para un encabezado IP determinado. Si el valor de la ID de IPv4 no se incrementa secuencialmente, se modificará para que sea así cuando una trama ensamblada a través de GRO se segmente a través de GSO."
 
-#: ../../configuration/interfaces/ethernet.rst:64
+#: ../../configuration/interfaces/ethernet.rst:80
 msgid ":abbr:`GSO (Generic Segmentation Offload)` is a pure software offload that is meant to deal with cases where device drivers cannot perform the offloads described above. What occurs in GSO is that a given skbuff will have its data broken out over multiple skbuffs that have been resized to match the MSS provided via skb_shinfo()->gso_size."
 msgstr ":abbr:`GSO (descarga de segmentación genérica)` es una descarga de software pura que está destinada a tratar los casos en los que los controladores de dispositivos no pueden realizar las descargas descritas anteriormente. Lo que ocurre en GSO es que un skbuff determinado tendrá sus datos desglosados en múltiples skbuffs que se han redimensionado para que coincidan con el MSS proporcionado a través de skb_shinfo()-&gt;gso_size."
 
@@ -19463,6 +19629,10 @@ msgstr ":abbr:`LDP (protocolo de distribución de etiquetas)` es un protocolo de
 #: ../../configuration/service/lldp.rst:7
 msgid ":abbr:`LLDP (Link Layer Discovery Protocol)` is a vendor-neutral link layer protocol in the Internet Protocol Suite used by network devices for advertising their identity, capabilities, and neighbors on an IEEE 802 local area network, principally wired Ethernet. The protocol is formally referred to by the IEEE as Station and Media Access Control Connectivity Discovery specified in IEEE 802.1AB and IEEE 802.3-2012 section 6 clause 79."
 msgstr ":abbr:`LLDP (Protocolo de descubrimiento de capa de enlace)` es un protocolo de capa de enlace independiente del proveedor en el conjunto de protocolos de Internet que utilizan los dispositivos de red para anunciar su identidad, capacidades y vecinos en una red de área local IEEE 802, principalmente Ethernet cableada. El IEEE se refiere formalmente al protocolo como Descubrimiento de conectividad de control de acceso a estaciones y medios especificado en IEEE 802.1AB e IEEE 802.3-2012, sección 6, cláusula 79."
+
+#: ../../configuration/interfaces/ethernet.rst:64
+msgid ":abbr:`LRO (Large Receive Offload)` is a technique designed to boost the efficiency of how your computer's network interface card (NIC) processes incoming network traffic. Typically, network data arrives in smaller chunks called packets. Processing each packet individually consumes CPU (central processing unit) resources. Lots of small packets can lead to a performance bottleneck. Instead of handing the CPU each packet as it comes in, LRO instructs the NIC to combine multiple incoming packets into a single, larger packet. This larger packet is then passed to the CPU for processing."
+msgstr ":abbr:`LRO (Large Receive Offload)` is a technique designed to boost the efficiency of how your computer's network interface card (NIC) processes incoming network traffic. Typically, network data arrives in smaller chunks called packets. Processing each packet individually consumes CPU (central processing unit) resources. Lots of small packets can lead to a performance bottleneck. Instead of handing the CPU each packet as it comes in, LRO instructs the NIC to combine multiple incoming packets into a single, larger packet. This larger packet is then passed to the CPU for processing."
 
 #: ../../configuration/interfaces/macsec.rst:74
 msgid ":abbr:`MKA (MACsec Key Agreement protocol)` is used to synchronize keys between individual peers."
@@ -19528,7 +19698,7 @@ msgstr ":abbr:`RPKI (Infraestructura de clave pública de recursos)` es un marco
 msgid ":abbr:`RPKI (Resource Public Key Infrastructure)` is a framework designed to secure the Internet routing infrastructure. It associates BGP route announcements with the correct originating :abbr:`ASN (Autonomus System Number)` which BGP routers can then use to check each route against the corresponding :abbr:`ROA (Route Origin Authorisation)` for validity. RPKI is described in :rfc:`6480`."
 msgstr ":abbr:`RPKI (Resource Public Key Infrastructure)` is a framework designed to secure the Internet routing infrastructure. It associates BGP route announcements with the correct originating :abbr:`ASN (Autonomus System Number)` which BGP routers can then use to check each route against the corresponding :abbr:`ROA (Route Origin Authorisation)` for validity. RPKI is described in :rfc:`6480`."
 
-#: ../../configuration/interfaces/ethernet.rst:82
+#: ../../configuration/interfaces/ethernet.rst:98
 msgid ":abbr:`RPS (Receive Packet Steering)` is logically a software implementation of :abbr:`RSS (Receive Side Scaling)`. Being in software, it is necessarily called later in the datapath. Whereas RSS selects the queue and hence CPU that will run the hardware interrupt handler, RPS selects the CPU to perform protocol processing above the interrupt handler. This is accomplished by placing the packet on the desired CPU's backlog queue and waking up the CPU for processing. RPS has some advantages over RSS:"
 msgstr ":abbr:`RPS (Receive Packet Steering)` es lógicamente una implementación de software de :abbr:`RSS (Receive Side Scaling)`. Al estar en el software, necesariamente se llama más adelante en la ruta de datos. Mientras que RSS selecciona la cola y, por lo tanto, la CPU que ejecutará el controlador de interrupciones de hardware, RPS selecciona la CPU para realizar el procesamiento del protocolo por encima del controlador de interrupciones. Esto se logra colocando el paquete en la cola de trabajos pendientes de la CPU deseada y activando la CPU para su procesamiento. RPS tiene algunas ventajas sobre RSS:"
 
@@ -19723,6 +19893,10 @@ msgstr "`4. Añadir parámetros opcionales`_"
 #: ../../configuration/service/dhcp-server.rst:203
 msgid "`<name>` must be identical on both sides!"
 msgstr "`<name> ` debe ser idéntico en ambos lados!"
+
+#: ../../configuration/trafficpolicy/index.rst:1156
+msgid "`Common Applications Kept Enhanced`_ (CAKE) is a comprehensive queue management system, implemented as a queue discipline (qdisc) for the Linux kernel. It is designed to replace and improve upon the complex hierarchy of simple qdiscs presently required to effectively tackle the bufferbloat problem at the network edge."
+msgstr "`Common Applications Kept Enhanced`_ (CAKE) is a comprehensive queue management system, implemented as a queue discipline (qdisc) for the Linux kernel. It is designed to replace and improve upon the complex hierarchy of simple qdiscs presently required to effectively tackle the bufferbloat problem at the network edge."
 
 #: ../../configuration/pki/index.rst:204
 msgid "``$ tail -n +2 ca.key | head -n -1 | tr -d '\\n'``"
@@ -20292,6 +20466,10 @@ msgstr "``intercambio de claves`` qué protocolo debe usarse para inicializar la
 msgid "``key`` - a private key, which will be used for authenticating local router on remote peer:"
 msgstr "``clave``: una clave privada, que se utilizará para autenticar el enrutador local en el par remoto:"
 
+#: ../../configuration/service/https.rst:96
+msgid "``key`` use API keys configured in ``service https api keys``"
+msgstr "``key`` use API keys configured in ``service https api keys``"
+
 #: ../../configuration/system/option.rst:137
 msgid "``latency``: A server profile focused on lowering network latency. This profile favors performance over power savings by setting ``intel_pstate`` and ``min_perf_pct=100``."
 msgstr "``latency``: un perfil de servidor centrado en reducir la latencia de la red. Este perfil favorece el rendimiento sobre el ahorro de energía configurando ``intel_pstate`` y ``min_perf_pct=100``."
@@ -20775,6 +20953,18 @@ msgstr "``static`` - Rutas configuradas estáticamente"
 msgid "``station`` - Connects to another access point"
 msgstr "``estación`` - Se conecta a otro punto de acceso"
 
+#: ../../configuration/loadbalancing/reverse-proxy.rst:185
+msgid "``status 200-399`` Expecting a non-failure response code"
+msgstr "``status 200-399`` Expecting a non-failure response code"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:184
+msgid "``status 200`` Expecting a 200 response code"
+msgstr "``status 200`` Expecting a 200 response code"
+
+#: ../../configuration/loadbalancing/reverse-proxy.rst:186
+msgid "``string success`` Expecting the string `success` in the response body"
+msgstr "``string success`` Expecting the string `success` in the response body"
+
 #: ../../configuration/firewall/ipv4.rst:103
 #: ../../configuration/firewall/ipv6.rst:103
 msgid "``synproxy``: synproxy the packet."
@@ -20823,6 +21013,10 @@ msgstr "``rendimiento``: un perfil de servidor centrado en mejorar el rendimient
 #: ../../configuration/vpn/ipsec.rst:73
 msgid "``timeout`` keep-alive timeout in seconds <2-86400> (default 120) IKEv1 only"
 msgstr "``timeout`` tiempo de espera de actividad en segundos &lt;2-86400&gt; (predeterminado 120) solo IKEv1"
+
+#: ../../configuration/service/https.rst:98
+msgid "``token`` use JWT tokens."
+msgstr "``token`` use JWT tokens."
 
 #: ../../configuration/interfaces/bonding.rst:80
 msgid "``transmit-load-balance`` - Adaptive transmit load balancing: channel bonding that does not require any special switch support."
@@ -20887,6 +21081,22 @@ msgstr "``vnc`` - Control de red virtual (VNC)"
 #: ../../configuration/vpn/site2site_ipsec.rst:143
 msgid "``vti`` - use a VTI interface for traffic encryption. Any traffic, which will be send to VTI interface will be encrypted and send to this peer. Using VTI makes IPSec configuration much flexible and easier in complex situation, and allows to dynamically add/delete remote networks, reachable via a peer, as in this mode router don't need to create additional SA/policy for each remote network:"
 msgstr "``vti``: utiliza una interfaz VTI para el cifrado del tráfico. Cualquier tráfico que se envíe a la interfaz VTI se cifrará y se enviará a este par. El uso de VTI hace que la configuración de IPSec sea mucho más flexible y fácil en situaciones complejas, y permite agregar/eliminar dinámicamente redes remotas, accesibles a través de un par, ya que en este modo el enrutador no necesita crear SA/política adicional para cada red remota:"
+
+#: ../../configuration/pki/index.rst:386
+msgid "``vyos_cert`` is a leaf server certificate used to identify the VyOS router, signed by the server intermediary CA."
+msgstr "``vyos_cert`` is a leaf server certificate used to identify the VyOS router, signed by the server intermediary CA."
+
+#: ../../configuration/pki/index.rst:383
+msgid "``vyos_client_ca`` and ``vyos_server_ca`` are intermediary certificate authorities, which are signed by the root CA."
+msgstr "``vyos_client_ca`` and ``vyos_server_ca`` are intermediary certificate authorities, which are signed by the root CA."
+
+#: ../../configuration/pki/index.rst:389
+msgid "``vyos_example_user`` is a leaf client certificate used to identify a user, signed by client intermediary CA."
+msgstr "``vyos_example_user`` is a leaf client certificate used to identify a user, signed by client intermediary CA."
+
+#: ../../configuration/pki/index.rst:381
+msgid "``vyos_root_ca`` is the root certificate authority."
+msgstr "``vyos_root_ca`` is the root certificate authority."
 
 #: ../../configuration/vpn/site2site_ipsec.rst:59
 msgid "``x509`` - options for x509 authentication mode:"
@@ -21249,9 +21459,17 @@ msgstr "reenvío de ip"
 msgid "isisd"
 msgstr "isisd"
 
+#: ../../configuration/interfaces/ethernet.rst:106
+msgid "it can be used with any NIC"
+msgstr "it can be used with any NIC"
+
 #: ../../configuration/interfaces/ethernet.rst:90
 msgid "it can be used with any NIC,"
 msgstr "se puede usar con cualquier NIC,"
+
+#: ../../configuration/interfaces/ethernet.rst:108
+msgid "it does not increase hardware device interrupt rate, although it does introduce inter-processor interrupts (IPIs)"
+msgstr "it does not increase hardware device interrupt rate, although it does introduce inter-processor interrupts (IPIs)"
 
 #: ../../configuration/interfaces/ethernet.rst:92
 msgid "it does not increase hardware device interrupt rate (although it does introduce inter-processor interrupts (IPIs))."
@@ -21646,6 +21864,10 @@ msgstr "lento: solicite al socio que transmita LACPDU cada 30 segundos"
 #: ../../configuration/service/dhcp-server.rst:366
 msgid "smtp-server"
 msgstr "servidor SMTP"
+
+#: ../../configuration/interfaces/ethernet.rst:107
+msgid "software filters can easily be added to hash over new protocols"
+msgstr "software filters can easily be added to hash over new protocols"
 
 #: ../../configuration/interfaces/ethernet.rst:91
 msgid "software filters can easily be added to hash over new protocols,"

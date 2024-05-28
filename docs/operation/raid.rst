@@ -24,7 +24,7 @@ The VyOS implementation of RAID 1 allows the following:
 * The ability to replace a failed disk and initiate re-mirroring
 * The ability to monitor the status of remirroring
 
-.. _raid_instalation:
+.. _raid_installation:
 
 Installation Implications
 =========================

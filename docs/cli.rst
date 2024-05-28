@@ -501,6 +501,9 @@ different levels in the hierarchy.
     Warning: configuration changes have not been saved.
     vyos@vyos:~$
 
+.. hint:: You can specify a commit message with
+  :cfgcmd:`commit comment <message>`.
+
 .. _save:
 
 .. cfgcmd:: save
@@ -854,7 +857,7 @@ to :cfgcmd:`commit`. You will have to set the commit-archive location.
 TFTP, FTP, SCP and SFTP servers are supported. Every time a
 :cfgcmd:`commit` is successful the ``config.boot`` file will be copied
 to the defined destination(s). The filename used on the remote host will
-be ``config.boot-hostname.YYYYMMDD_HHMMSS``. 
+be ``config.boot-hostname.YYYYMMDD_HHMMSS``.
 
 .. cfgcmd:: set system config-management commit-archive location <URI>
 
@@ -869,7 +872,13 @@ be ``config.boot-hostname.YYYYMMDD_HHMMSS``.
   * ``tftp://<host>/<dir>``
   * ``git+https://<user>:<passwd>@<host>/<path>``
 
+  Since username and password are part of the URI, they need to be
+  properly url encoded if containing special characters.
+
   .. note:: The number of revisions don't affect the commit-archive.
+
+  .. note:: When using Git as destination for the commit archive the
+     ``source-address`` CLI option has no effect.
 
   .. note:: You may find VyOS not allowing the secure connection because
      it cannot verify the legitimacy of the remote server. You can use

@@ -61,6 +61,22 @@ Offloading
 
   Enable different types of hardware offloading on the given NIC.
 
+  :abbr:`LRO (Large Receive Offload)` is a technique designed to boost the
+  efficiency of how your computer's network interface card (NIC) processes
+  incoming network traffic. Typically, network data arrives in smaller chunks
+  called packets. Processing each packet individually consumes CPU (central
+  processing unit) resources. Lots of small packets can lead to a performance
+  bottleneck. Instead of handing the CPU each packet as it comes in, LRO
+  instructs the NIC to combine multiple incoming packets into a single, larger
+  packet. This larger packet is then passed to the CPU for processing.
+
+  .. note:: Under some circumstances, LRO is known to modify the packet headers
+     of forwarded traffic, which breaks the end-to-end principle of computer
+     networking. LRO is also only able to offload TCP segments encapsulated in
+     IPv4 packets. Due to these limitations, it is recommended to use GRO
+     (Generic Receive Offload) where possible. More information on the
+     limitations of LRO can be found here: https://lwn.net/Articles/358910/
+
   :abbr:`GSO (Generic Segmentation Offload)` is a pure software offload that is
   meant to deal with cases where device drivers cannot perform the offloads
   described above. What occurs in GSO is that a given skbuff will have its data
@@ -87,13 +103,13 @@ Offloading
   placing the packet on the desired CPU's backlog queue and waking up the CPU
   for processing. RPS has some advantages over RSS:
 
-  - it can be used with any NIC,
-  - software filters can easily be added to hash over new protocols,
-  - it does not increase hardware device interrupt rate (although it does
-    introduce inter-processor interrupts (IPIs)).
+  - it can be used with any NIC
+  - software filters can easily be added to hash over new protocols
+  - it does not increase hardware device interrupt rate, although it does
+    introduce inter-processor interrupts (IPIs)
 
-  .. note:: In order to use TSO/LRO with VMXNET3 adaters one must also enable
-     the SG offloading option.
+  .. note:: In order to use TSO/LRO with VMXNET3 adapters, the SG offloading
+     option must also be enabled.
 
 Authentication (EAPoL)
 ----------------------
@@ -102,6 +118,14 @@ Authentication (EAPoL)
    :var0: ethernet
    :var1: eth0
 
+EVPN Multihoming
+----------------
+
+Uplink/Core tracking.
+
+.. cmdinclude:: /_include/interface-evpn-uplink.txt
+   :var0: ethernet
+   :var1: eth0
 
 VLAN
 ====
@@ -273,4 +297,3 @@ Operation
         Date code               : 0506xx
 
 .. stop_vyoslinter
-

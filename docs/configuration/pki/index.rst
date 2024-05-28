@@ -8,7 +8,7 @@
 PKI
 ###
 
-VyOS 1.4 changed the way in how encrytion keys or certificates are stored on the
+VyOS 1.4 changed the way in how encryption keys or certificates are stored on the
 system. In the pre VyOS 1.4 era, certificates got stored under /config and every
 service referenced a file. That made copying a running configuration from system
 A to system B a bit harder, as you had to copy the files and their permissions
@@ -120,12 +120,12 @@ OpenVPN
 
 .. opcmd:: generate pki openvpn shared-secret
 
-  Genearate a new OpenVPN shared secret. The generated secret is the output to
+  Generate a new OpenVPN shared secret. The generated secret is the output to
   the console.
 
 .. opcmd:: generate pki openvpn shared-secret install <name>
 
-  Genearate a new OpenVPN shared secret. The generated secret is the output to
+  Generate a new OpenVPN shared secret. The generated secret is the output to
   the console.
 
   .. include:: pki_cli_import_help.txt
@@ -163,7 +163,7 @@ WireGuard
     the output from op-mode into configuration mode.
 
     ``peer`` is used for the VyOS CLI command to identify the WireGuard peer where
-    this secred is to be used.
+    this secret is to be used.
 
 Key usage (CLI)
 ===============
@@ -365,3 +365,124 @@ also to display them.
 .. opcmd:: renew certbot
 
   Manually trigger certificate renewal. This will be done twice a day.
+
+Examples
+========
+
+Create a CA chain and leaf certificates
+-------------------------------------
+
+This configuration generates & installs into the VyOS PKI system a root
+certificate authority, alongside two intermediary certificate authorities for
+client & server certificates. These CAs are then used to generate a server
+certificate for the router, and a client certificate for a user.
+
+
+* ``vyos_root_ca`` is the root certificate authority.
+
+* ``vyos_client_ca`` and ``vyos_server_ca`` are intermediary certificate authorities,
+  which are signed by the root CA.
+
+* ``vyos_cert`` is a leaf server certificate used to identify the VyOS router,
+  signed by the server intermediary CA.
+
+* ``vyos_example_user`` is a leaf client certificate used to identify a user,
+  signed by client intermediary CA.
+
+
+First, we create the root certificate authority.
+
+.. code-block:: none
+
+    [edit]
+    vyos@vyos# run generate pki ca install vyos_root_ca
+    Enter private key type: [rsa, dsa, ec] (Default: rsa) rsa
+    Enter private key bits: (Default: 2048) 2048
+    Enter country code: (Default: GB) GB
+    Enter state: (Default: Some-State) Some-State
+    Enter locality: (Default: Some-City) Some-City
+    Enter organization name: (Default: VyOS) VyOS
+    Enter common name: (Default: vyos.io) VyOS Root CA
+    Enter how many days certificate will be valid: (Default: 1825) 1825
+    Note: If you plan to use the generated key on this router, do not encrypt the private key.
+    Do you want to encrypt the private key with a passphrase? [y/N] n
+    2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
+
+Secondly, we create the intermediary certificate authorities, which are used to
+sign the leaf certificates.
+
+.. code-block:: none
+
+    [edit]
+    vyos@vyos# run generate pki ca sign vyos_root_ca install vyos_server_ca
+    Do you already have a certificate request? [y/N] n
+    Enter private key type: [rsa, dsa, ec] (Default: rsa) rsa
+    Enter private key bits: (Default: 2048) 2048
+    Enter country code: (Default: GB) GB
+    Enter state: (Default: Some-State) Some-State
+    Enter locality: (Default: Some-City) Some-City
+    Enter organization name: (Default: VyOS) VyOS
+    Enter common name: (Default: vyos.io) VyOS Intermediary Server CA
+    Enter how many days certificate will be valid: (Default: 1825) 1095
+    Note: If you plan to use the generated key on this router, do not encrypt the private key.
+    Do you want to encrypt the private key with a passphrase? [y/N] n
+    2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
+
+
+    [edit]
+    vyos@vyos# run generate pki ca sign vyos_root_ca install vyos_client_ca
+    Do you already have a certificate request? [y/N] n
+    Enter private key type: [rsa, dsa, ec] (Default: rsa) rsa
+    Enter private key bits: (Default: 2048) 2048
+    Enter country code: (Default: GB) GB
+    Enter state: (Default: Some-State) Some-State
+    Enter locality: (Default: Some-City) Some-City
+    Enter organization name: (Default: VyOS) VyOS
+    Enter common name: (Default: vyos.io) VyOS Intermediary Client CA
+    Enter how many days certificate will be valid: (Default: 1825) 1095
+    Note: If you plan to use the generated key on this router, do not encrypt the private key.
+    Do you want to encrypt the private key with a passphrase? [y/N] n
+    2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
+
+Lastly, we can create the leaf certificates that devices and users will utilise.
+
+.. code-block:: none
+
+    [edit]
+    vyos@vyos# run generate pki certificate sign vyos_server_ca install vyos_cert
+    Do you already have a certificate request? [y/N] n
+    Enter private key type: [rsa, dsa, ec] (Default: rsa) rsa
+    Enter private key bits: (Default: 2048) 2048
+    Enter country code: (Default: GB) GB
+    Enter state: (Default: Some-State) Some-State
+    Enter locality: (Default: Some-City) Some-City
+    Enter organization name: (Default: VyOS) VyOS
+    Enter common name: (Default: vyos.io) vyos.net
+    Do you want to configure Subject Alternative Names? [y/N] y
+    Enter alternative names in a comma separate list, example: ipv4:1.1.1.1,ipv6:fe80::1,dns:vyos.net
+    Enter Subject Alternative Names: dns:vyos.net,dns:www.vyos.net
+    Enter how many days certificate will be valid: (Default: 365) 365
+    Enter certificate type: (client, server) (Default: server) server
+    Note: If you plan to use the generated key on this router, do not encrypt the private key.
+    Do you want to encrypt the private key with a passphrase? [y/N] n
+    2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
+
+
+    [edit]
+    vyos@vyos# run generate pki certificate sign vyos_client_ca install vyos_example_user
+    Do you already have a certificate request? [y/N] n
+    Enter private key type: [rsa, dsa, ec] (Default: rsa) rsa
+    Enter private key bits: (Default: 2048) 2048
+    Enter country code: (Default: GB) GB
+    Enter state: (Default: Some-State) Some-State
+    Enter locality: (Default: Some-City) Some-City
+    Enter organization name: (Default: VyOS) VyOS
+    Enter common name: (Default: vyos.io) Example User
+    Do you want to configure Subject Alternative Names? [y/N] y
+    Enter alternative names in a comma separate list, example: ipv4:1.1.1.1,ipv6:fe80::1,dns:vyos.net,rfc822:user@vyos.net
+    Enter Subject Alternative Names: rfc822:example.user@vyos.net
+    Enter how many days certificate will be valid: (Default: 365) 365
+    Enter certificate type: (client, server) (Default: server) client
+    Note: If you plan to use the generated key on this router, do not encrypt the private key.
+    Do you want to encrypt the private key with a passphrase? [y/N] n
+    2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.

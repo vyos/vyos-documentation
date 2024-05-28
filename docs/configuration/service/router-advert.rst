@@ -38,7 +38,7 @@ Configuration
    "Cur Hop Limit", "hop-limit", "Hop count field of the outgoing RA packets"
    """Managed address configuration"" flag", "managed-flag", "Tell hosts to use the administered stateful protocol (i.e. DHCP) for autoconfiguration"
    """Other configuration"" flag", "other-config-flag", "Tell hosts to use the administered (stateful) protocol (i.e. DHCP) for autoconfiguration of other (non-address) information"
-   "MTU","link-mtu","Link MTU value placed in RAs, exluded in RAs if unset"
+   "MTU","link-mtu","Link MTU value placed in RAs, excluded in RAs if unset"
    "Router Lifetime","default-lifetime","Lifetime associated with the default router in units of seconds"
    "Reachable Time","reachable-time","Time, in milliseconds, that a node assumes a neighbor is reachable after having received a reachability confirmation"
    "Retransmit Timer","retrans-timer","Time in milliseconds between retransmitted Neighbor Solicitation messages"

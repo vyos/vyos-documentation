@@ -12,7 +12,7 @@ interior gateway protocol (IGP) which is described in ISO10589,
 algorithm to create a database of the network’s topology, and
 from that database to determine the best (that is, lowest cost) path to a
 destination. The intermediate systems (the name for routers) exchange topology
-information with their directly conencted neighbors. IS-IS runs directly on
+information with their directly connected neighbors. IS-IS runs directly on
 the data link layer (Layer 2). IS-IS addresses are called
 :abbr:`NETs (Network Entity Titles)` and can be 8 to 20 bytes long, but are
 generally 10 bytes long. The tree database that is created with IS-IS is
@@ -39,7 +39,7 @@ occur within IS-IS when it comes to said duplication.
 
 .. cfgcmd:: set protocols isis net <network-entity-title>
 
-  This commad sets network entity title (NET) provided in ISO format.
+  This command sets network entity title (NET) provided in ISO format.
 
   Here is an example :abbr:`NET (Network Entity Title)` value:
 
@@ -52,9 +52,9 @@ occur within IS-IS when it comes to said duplication.
   * :abbr:`AFI (Address family authority identifier)` - ``49`` The AFI value
     49 is what IS-IS uses for private addressing.
 
-  * Area identifier: ``0001`` IS-IS area number (numberical area ``1``)
+  * Area identifier: ``0001`` IS-IS area number (numerical area ``1``)
 
-  * System identifier: ``1921.6800.1002`` - for system idetifiers we recommend
+  * System identifier: ``1921.6800.1002`` - for system identifiers we recommend
     to use IP address or MAC address of the router itself. The way to construct
     this is to keep all of the zeroes of the router IP address, and then change
     the periods from being every three numbers to every four numbers. The

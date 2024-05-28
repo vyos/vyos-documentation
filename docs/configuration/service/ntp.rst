@@ -46,9 +46,9 @@ Configuration
 
    There are 3 default NTP server set. You are able to change them.
 
-   * ``0.pool.ntp.org``
-   * ``1.pool.ntp.org``
-   * ``2.pool.ntp.org``
+   * ``time1.vyos.net``
+   * ``time2.vyos.net``
+   * ``time3.vyos.net``
 
 .. cfgcmd:: set service ntp server <address> <noselect | nts | pool | prefer>
 
@@ -85,7 +85,7 @@ Configuration
 
 .. cfgcmd:: set service ntp leap-second [ignore|smear|system|timezone]
 
-   Define how to handle leaf-seonds.
+   Define how to handle leap-seconds.
 
    * `ignore`: No correction is applied to the clock for the leap second. The
      clock will be corrected later in normal operation when new measurements are

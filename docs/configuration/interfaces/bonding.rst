@@ -156,6 +156,11 @@ Bond options
 
    The default value is slow.
 
+.. cfgcmd:: set interfaces bonding <interface> system-mac <mac address>
+
+   This option allow to specifies the 802.3ad system MAC address.You can set a
+   random mac-address that can be used for these LACPDU exchanges.
+   
 .. cfgcmd:: set interfaces bonding <interface> hash-policy <policy>
 
    * **layer2** - Uses XOR of hardware MAC addresses and packet type ID field
@@ -285,6 +290,54 @@ Port Mirror (SPAN)
    :var0: bondinging
    :var1: bond1
    :var2: eth3
+
+EVPN Multihoming
+----------------
+
+All-Active Multihoming is used for redundancy and load sharing. Servers are
+attached to two or more PEs and the links are bonded (link-aggregation).
+This group of server links is referred to as an :abbr:`ES (Ethernet Segment)`.
+
+An Ethernet Segment can be configured by specifying a system-MAC and a local
+discriminator or a complete ESINAME against the bond interface on the PE.
+
+.. cfgcmd:: set interfaces bonding <interface> evpn es-id <<1-16777215|10-byte ID>
+.. cfgcmd:: set interfaces bonding <interface> evpn es-sys-mac <xx:xx:xx:xx:xx:xx>
+
+  The sys-mac and local discriminator are used for generating a 10-byte, Type-3
+  Ethernet Segment ID. ESINAME is a 10-byte, Type-0 Ethernet Segment ID -
+  "00:AA:BB:CC:DD:EE:FF:GG:HH:II".
+
+  Type-1 (EAD-per-ES and EAD-per-EVI) routes are used to advertise the locally
+  attached ESs and to learn off remote ESs in the network. Local Type-2/MAC-IP
+  routes are also advertised with a destination ESI allowing for MAC-IP syncing
+  between Ethernet Segment peers. Reference: RFC 7432, RFC 8365
+
+  EVPN-MH is intended as a replacement for MLAG or Anycast VTEPs. In multihoming
+  each PE has an unique VTEP address which requires the introduction of a new
+  dataplane construct, MAC-ECMP. Here a MAC/FDB entry can point to a list of
+  remote PEs/VTEPs.
+
+.. cfgcmd:: set interfaces bonding <interface> evpn es-df-pref <1-65535>
+
+  Type-4 (ESR) routes are used for Designated Forwarder (DF) election.
+  DFs forward BUM traffic received via the overlay network. This
+  implementation uses a preference based DF election specified by
+  draft-ietf-bess-evpn-pref-df.
+
+  The DF preference is configurable per-ES.
+
+  BUM traffic is rxed via the overlay by all PEs attached to a server but
+  only the DF can forward the de-capsulated traffic to the access port.
+  To accommodate that non-DF filters are installed in the dataplane to drop
+  the traffic.
+
+  Similarly traffic received from ES peers via the overlay cannot be forwarded
+  to the server. This is split-horizon-filtering with local bias.
+
+.. cmdinclude:: /_include/interface-evpn-uplink.txt
+   :var0: bonding
+   :var1: bond0
 
 *******
 Example
@@ -590,4 +643,3 @@ Operation
      Partner Churn State: churned
      Actor Churned Count: 1
      Partner Churned Count: 1
-

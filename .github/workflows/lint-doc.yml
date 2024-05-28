@@ -1,0 +1,10 @@
+name: Lint Doc
+on:
+  pull_request:
+
+jobs:
+  lint-doc:
+    uses: vyos/.github/.github/workflows/lint-doc.yml@feature/T6349-reusable-workflows
+    secrets: inherit
+    
+    

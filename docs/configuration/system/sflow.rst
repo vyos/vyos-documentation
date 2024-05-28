@@ -29,7 +29,7 @@ Configuration
 
    Configure and enable collection of flow information for the interface identified by <interface>.
 
-   You can configure multiple interfaces which whould participate in sflow accounting.
+   You can configure multiple interfaces which would participate in sflow accounting.
 
 
 .. cfgcmd:: set system sflow polling <sec>
