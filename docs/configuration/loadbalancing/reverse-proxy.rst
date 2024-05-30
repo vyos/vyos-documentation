@@ -118,11 +118,6 @@ Backend
 
   Configure backend `<name>` mode TCP or HTTP
 
-.. cfgcmd:: set load-balancing reverse-proxy backend <name> parameters
-   http-check
-
-  Enable layer 7 HTTP health check
-
 .. cfgcmd:: set load-balancing reverse-proxy backend <name> server
    <name> address <x.x.x.x>
 
