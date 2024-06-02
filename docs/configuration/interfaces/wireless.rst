@@ -42,7 +42,8 @@ Wireless options
 .. cfgcmd:: set interfaces wireless <interface> channel <number>
 
   Channel number (IEEE 802.11), for 2.4Ghz (802.11 b/g/n) channels range from
-  1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 173
+  1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 173. 
+  On 6GHz (802.11 ax) channels range from 1 to 233.
 
 .. cfgcmd:: set interfaces wireless <interface> country-code <cc>
 
@@ -84,7 +85,14 @@ Wireless options
 
   Management Frame Protection (MFP) according to IEEE 802.11w
 
-.. cfgcmd:: set interfaces wireless <interface> mode <a | b | g | n | ac>
+  .. note:: :abbr:`MFP (Management Frame Protection)` is required for WPA3.
+
+.. cfgcmd:: set interfaces wireless <interface> beacon-frame-protection 
+  <disabled | enabled>
+
+  .. note:: This option requires :abbr:`MFP (Management Frame Protection)` to be enabled.
+
+.. cfgcmd:: set interfaces wireless <interface> mode <a | b | g | n | ac | ax>
 
   Operation mode of wireless radio.
 
@@ -93,6 +101,9 @@ Wireless options
   * ``g`` - 802.11g - 54 Mbits/sec (default)
   * ``n`` - 802.11n - 600 Mbits/sec
   * ``ac`` - 802.11ac - 1300 Mbits/sec
+  * ``ax`` - 802.11ax - exceeds 1GBit/sec
+
+  .. note:: In VyOS, 802.11ax is only implemented for 6GHz as of yet.
 
 .. cfgcmd:: set interfaces wireless <interface> physical-device <device>
 
@@ -131,7 +142,9 @@ PPDU
 
 .. cfgcmd:: set interfaces wireless <interface> capabilities require-ht
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities require-hvt
+.. cfgcmd:: set interfaces wireless <interface> capabilities require-vht
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities require-he
 
 HT (High Throughput) capabilities (802.11n)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -149,6 +162,7 @@ HT (High Throughput) capabilities (802.11n)
 
   Supported channel width set.
 
+  * ``ht20`` - 20 MHz channel width
   * ``ht40-`` - Both 20 MHz and 40 MHz with secondary channel below the primary
     channel
   * ``ht40+`` - Both 20 MHz and 40 MHz with secondary channel above the primary
@@ -297,6 +311,52 @@ VHT (Very High Throughput) capabilities (802.11ac)
 
   Station supports receiving VHT variant HT Control field
 
+HE (High Efficiency) capabilities (802.11ax)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities he antenna-pattern-fixed
+
+  Tell the AP that antenna positions are fixed and will not change
+  during the lifetime of an association.
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities he beamform 
+  <single-user-beamformer | single-user-beamformee | multi-user-beamformer>
+
+  Beamforming capabilities:
+
+  * ``single-user-beamformer`` - Support for operation as single user beamformer
+  * ``single-user-beamformee`` - Support for operation as single user beamformee
+  * ``multi-user-beamformer`` - Support for operation as single user beamformer
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities he bss-color <number>
+
+  BSS coloring helps to prevent channel jamming when multiple APs use 
+  the same channels.
+
+  Valid values are 1..63
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities he 
+  center-channel-freq <freq-1 | freq-2> <number>
+
+  HE operating channel center frequency - center freq 1
+  (for use with 80, 80+80 and 160 modes)
+
+  HE operating channel center frequency - center freq 2
+  (for use with the 80+80 mode)
+
+  <number> must be within 1..233. For 80 MHz channels it should be channel + 6 
+  and for 160 MHz channels, it should be channel + 14.
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities he channel-set-width <number>
+
+  <number> must be one of:
+
+  * ``131`` - 20 MHz channel width
+  * ``132`` - 40 MHz channel width
+  * ``133`` - 80 MHz channel width
+  * ``134`` - 160 MHz channel width
+  * ``135`` - 80+80 MHz channel width
+
 Wireless options (Station/Client)
 =================================
 
@@ -333,13 +393,13 @@ Resulting in
 Security
 ========
 
-:abbr:`WPA (Wi-Fi Protected Access)` and WPA2 Enterprise in combination with
-802.1x based authentication can be used to authenticate users or computers
-in a domain.
+:abbr:`WPA (Wi-Fi Protected Access)`, WPA2 Enterprise and WPA3 Enterprise in 
+combination with 802.1x based authentication can be used to authenticate 
+users or computers in a domain.
 
 The wireless client (supplicant) authenticates against the RADIUS server
 (authentication server) using an :abbr:`EAP (Extensible Authentication
-Protocol)`  method configured on the RADIUS server. The WAP (also referred
+Protocol)` method configured on the RADIUS server. The WAP (also referred
 to as authenticator) role is to send all authentication messages between the
 supplicant and the configured authentication server, thus the RADIUS server
 is responsible for authenticating the users.
