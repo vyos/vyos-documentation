@@ -7,9 +7,9 @@ WLAN/WIFI - Wireless LAN
 ########################
 
 :abbr:`WLAN (Wireless LAN)` interface provide 802.11 (a/b/g/n/ac) wireless
-support (commonly referred to as Wi-Fi) by means of compatible hardware. If your
-hardware supports it, VyOS supports multiple logical wireless interfaces per
-physical device.
+support (commonly referred to as Wi-Fi) by means of compatible hardware. If 
+your hardware supports it, VyOS supports multiple logical wireless interfaces 
+per physical device.
 
 There are three modes of operation for a wireless interface:
 
@@ -90,7 +90,8 @@ Wireless options
 .. cfgcmd:: set interfaces wireless <interface> beacon-frame-protection 
   <disabled | enabled>
 
-  .. note:: This option requires :abbr:`MFP (Management Frame Protection)` to be enabled.
+  .. note:: This option requires :abbr:`MFP (Management Frame Protection)` 
+    to be enabled.
 
 .. cfgcmd:: set interfaces wireless <interface> mode <a | b | g | n | ac | ax>
 
@@ -248,10 +249,14 @@ VHT (Very High Throughput) capabilities (802.11ac)
 
   Beamforming capabilities:
 
-  * ``single-user-beamformer`` - Support for operation as single user beamformer
-  * ``single-user-beamformee`` - Support for operation as single user beamformee
-  * ``multi-user-beamformer`` - Support for operation as single user beamformer
-  * ``multi-user-beamformee`` - Support for operation as single user beamformer
+  * ``single-user-beamformer`` - Support for operation as 
+    single user beamformer
+  * ``single-user-beamformee`` - Support for operation as 
+    single user beamformee
+  * ``multi-user-beamformer`` - Support for operation as 
+    multi user beamformer
+  * ``multi-user-beamformee`` - Support for operation as 
+    multi user beamformee
 
 .. cfgcmd:: set interfaces wireless <interface> capabilities vht
    center-channel-freq <freq-1 | freq-2> <number>
@@ -276,7 +281,8 @@ VHT (Very High Throughput) capabilities (802.11ac)
 
   Enable LDPC (Low Density Parity Check) coding capability
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities vht link-adaptation
+.. cfgcmd:: set interfaces wireless <interface> 
+  capabilities vht link-adaptation
 
   VHT link adaptation capabilities
 
@@ -288,7 +294,8 @@ VHT (Very High Throughput) capabilities (802.11ac)
 .. cfgcmd:: set interfaces wireless <interface> capabilities vht
    max-mpdu-exp <value>
 
-  Set the maximum length of A-MPDU pre-EOF padding that the station can receive
+  Set the maximum length of A-MPDU pre-EOF padding that the station can 
+  receive
 
 .. cfgcmd:: set interfaces wireless <interface> capabilities vht
    short-gi <80 | 160>
@@ -314,7 +321,8 @@ VHT (Very High Throughput) capabilities (802.11ac)
 HE (High Efficiency) capabilities (802.11ax)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities he antenna-pattern-fixed
+.. cfgcmd:: set interfaces wireless <interface> 
+  capabilities he antenna-pattern-fixed
 
   Tell the AP that antenna positions are fixed and will not change
   during the lifetime of an association.
@@ -324,11 +332,15 @@ HE (High Efficiency) capabilities (802.11ax)
 
   Beamforming capabilities:
 
-  * ``single-user-beamformer`` - Support for operation as single user beamformer
-  * ``single-user-beamformee`` - Support for operation as single user beamformee
-  * ``multi-user-beamformer`` - Support for operation as single user beamformer
+  * ``single-user-beamformer`` - Support for operation as 
+    single user beamformer
+  * ``single-user-beamformee`` - Support for operation as 
+    single user beamformee
+  * ``multi-user-beamformer`` - Support for operation as single 
+    user beamformer
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities he bss-color <number>
+.. cfgcmd:: set interfaces wireless <interface> 
+  capabilities he bss-color <number>
 
   BSS coloring helps to prevent channel jamming when multiple APs use 
   the same channels.
@@ -344,10 +356,11 @@ HE (High Efficiency) capabilities (802.11ax)
   HE operating channel center frequency - center freq 2
   (for use with the 80+80 mode)
 
-  <number> must be within 1..233. For 80 MHz channels it should be channel + 6 
-  and for 160 MHz channels, it should be channel + 14.
+  <number> must be within 1..233. For 80 MHz channels it should be 
+  channel + 6 and for 160 MHz channels, it should be channel + 14.
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities he channel-set-width <number>
+.. cfgcmd:: set interfaces wireless <interface> 
+  capabilities he channel-set-width <number>
 
   <number> must be one of:
 
@@ -413,6 +426,7 @@ The WAP in this example has the following characteristics:
 * Wireless channel ``1``
 * RADIUS server at ``192.168.3.10`` with shared-secret ``VyOSPassword``
 
+.. stop_vyoslinter
 .. code-block:: none
 
   set interfaces wireless wlan0 address '192.168.2.1/24'
@@ -425,6 +439,8 @@ The WAP in this example has the following characteristics:
   set interfaces wireless wlan0 security wpa cipher CCMP
   set interfaces wireless wlan0 security wpa radius server 192.168.3.10 key 'VyOSPassword'
   set interfaces wireless wlan0 security wpa radius server 192.168.3.10 port 1812
+
+.. start_vyoslinter
 
 Resulting in
 
@@ -491,6 +507,7 @@ about all wireless interfaces.
 Use this command to view operational status and details wireless-specific
 information about all wireless interfaces.
 
+.. stop_vyoslinter
 .. code-block:: none
 
   vyos@vyos:~$ show interfaces wireless detail
@@ -518,11 +535,14 @@ information about all wireless interfaces.
       TX:  bytes    packets     errors    dropped    carrier collisions
            183413      5430          0          0          0          0
 
+.. start_vyoslinter
+
 .. opcmd:: show interfaces wireless <wlanX>
 
 This command shows both status and statistics on the specified wireless
 interface. The wireless interface identifier can range from wlan0 to wlan999.
 
+.. stop_vyoslinter
 .. code-block:: none
 
   vyos@vyos:~$ show interfaces wireless wlan0
@@ -537,6 +557,8 @@ interface. The wireless interface identifier can range from wlan0 to wlan999.
            66072        282          0          0          0          0
       TX:  bytes    packets     errors    dropped    carrier collisions
            83413        430          0          0          0          0
+
+.. start_vyoslinter
 
 
 .. opcmd:: show interfaces wireless <wlanX> brief
