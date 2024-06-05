@@ -65,9 +65,13 @@ To start, clone the repository to your local machine:
   $ ./configure --architecture amd64 --build-by "j.randomhacker@vyos.io"
   $ sudo make iso
 
-  # For VyOS 1.4 (sagitta) and VyOS 1.5 (circinus,current)
+  # For VyOS 1.4 (sagitta)
   $ sudo make clean
   $ sudo ./build-vyos-image iso --architecture amd64 --build-by "j.randomhacker@vyos.io"
+
+  # For VyOS 1.5 (circinus,current)
+  $ sudo make clean
+  $ sudo ./build-vyos-image generic --architecture amd64 --build-by "j.randomhacker@vyos.io"
 
 For the packages required, you can refer to the ``docker/Dockerfile`` file
 in the repository_. The ``./build-vyos-image`` script will also warn you if any
@@ -274,9 +278,13 @@ Start the build:
   vyos_bld@8153428c7e1f:/vyos$ ./configure --architecture amd64 --build-by "j.randomhacker@vyos.io"
   vyos_bld@8153428c7e1f:/vyos$ sudo make iso
 
-  # For VyOS 1.4 (sagitta) For VyOS 1.5 (circinus,current)
+  # For VyOS 1.4 (sagitta)
   vyos_bld@8153428c7e1f:/vyos$ sudo make clean
   vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image iso --architecture amd64 --build-by "j.randomhacker@vyos.io"
+
+  # For VyOS 1.5 (circinus,current)
+  vyos_bld@8153428c7e1f:/vyos$ sudo make clean
+  vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image generic --architecture amd64 --build-by "j.randomhacker@vyos.io"
 
 When the build is successful, the resulting iso can be found inside the
 ``build`` directory as ``live-image-[architecture].hybrid.iso``.
