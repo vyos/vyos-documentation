@@ -101,6 +101,10 @@ authentication)`/:abbr:`MFA (Multi-factor authentication)` is configured
 independently per each user. If an OTP key is configured for a user, 2FA/MFA
 is automatically enabled for that particular user. If a user does not have an
 OTP key configured, there is no 2FA/MFA check for that user.
+Once OTP is configured for a user, they must login using their password with
+the OTP immediately appended to it.  For example if the users password is
+vyosrules and their OTP code is 62345 they must login with a password of
+vyosrules62345
 
 .. cfgcmd:: set system login user <username> authentication otp key <key>
 
