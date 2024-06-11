@@ -133,6 +133,17 @@ Configuration
    - **always**: Restart containers when they exit, regardless of status,
      retrying indefinitely
 
+.. cfgcmd:: set container name <name> cpu-quota <num>
+
+   This specifies the number of CPU resources the container can use.
+
+   Default is 0 for unlimited.
+   For example, 1.25 limits the container to use up to 1.25 cores
+   worth of CPU time.
+   This can be a decimal number with up to three decimal places.
+
+   The command translates to "--cpus=<num>" when the container is created.
+
 .. cfgcmd:: set container name <name> memory <MB>
 
    Constrain the memory available to the container.
@@ -156,6 +167,17 @@ Configuration
    - **sys-admin**: Administration operations (quotactl, mount, sethostname,
      setdomainame)
    - **sys-time**: Permission to set system clock
+
+.. cfgcmd:: set container name <name> sysctl parameter <parameter> value <value>
+
+   Set container sysctl values.
+
+   The subset of possible parameters are:
+
+   - Kernel Parameters: kernel.msgmax, kernel.msgmnb, kernel.msgmni, kernel.sem,
+     kernel.shmall, kernel.shmmax, kernel.shmmni, kernel.shm_rmid_forced
+   - Parameters beginning with fs.mqueue.*
+   - Parameters beginning with net.* (only if user-defined network is used)
 
 .. cfgcmd:: set container name <name> label <label> value <value>
 

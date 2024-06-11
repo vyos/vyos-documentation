@@ -118,11 +118,6 @@ Backend
 
   Configure backend `<name>` mode TCP or HTTP
 
-.. cfgcmd:: set load-balancing reverse-proxy backend <name> parameters
-   http-check
-
-  Enable layer 7 HTTP health check
-
 .. cfgcmd:: set load-balancing reverse-proxy backend <name> server
    <name> address <x.x.x.x>
 
@@ -166,8 +161,34 @@ Backend
   Set custom HTTP headers to be included in all responses using the backend
 
 
-HTTP health check
-^^^^^^^^^^^^^^^^^
+Global
+-------
+
+Global parameters
+
+.. cfgcmd:: set load-balancing reverse-proxy global-parameters max-connections
+   <num>
+
+  Limit maximum number of connections
+
+.. cfgcmd:: set load-balancing reverse-proxy global-parameters ssl-bind-ciphers
+   <ciphers>
+
+  Limit allowed cipher algorithms used during SSL/TLS handshake
+
+.. cfgcmd:: set load-balancing reverse-proxy global-parameters tls-version-min
+   <version>
+
+  Specify the minimum required TLS version 1.2 or 1.3
+
+
+Health checks
+=============
+
+
+HTTP checks
+-----------
+
 For web application providing information about their state HTTP health
 checks can be used to determine their availability.
 
@@ -190,31 +211,32 @@ checks can be used to determine their availability.
    expect <condition>
 
   Sets the expected result condition for considering a server healthy.
+
   Some possible examples are:
    * ``status 200`` Expecting a 200 response code
    * ``status 200-399`` Expecting a non-failure response code
    * ``string success`` Expecting the string `success` in the response body
 
 
-Global
--------
+TCP checks
+----------
 
-Global parameters
+Health checks can also be configured for TCP mode backends. You can configure
+protocol aware checks for a range of Layer 7 protocols:
 
-.. cfgcmd:: set load-balancing reverse-proxy global-parameters max-connections
-   <num>
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> health-check <protocol>
 
-  Limit maximum number of connections
+  Available health check protocols:
+   * ``ldap`` LDAP protocol check.
+   * ``redis`` Redis protocol check.
+   * ``mysql`` MySQL protocol check.
+   * ``pgsql`` PostgreSQL protocol check.
+   * ``smtp`` SMTP protocol check.
 
-.. cfgcmd:: set load-balancing reverse-proxy global-parameters ssl-bind-ciphers
-   <ciphers>
-
-  Limit allowed cipher algorithms used during SSL/TLS handshake
-
-.. cfgcmd:: set load-balancing reverse-proxy global-parameters tls-version-min
-   <version>
-
-  Specify the minimum required TLS version 1.2 or 1.3
+.. note:: If you specify a server to be checked but do not configure a
+   protocol, a basic TCP health check will be attempted. A server shall be
+   deemed online if it responses to a connection attempt with a valid
+   ``SYN/ACK`` packet.
 
 
 Redirect HTTP to HTTPS
