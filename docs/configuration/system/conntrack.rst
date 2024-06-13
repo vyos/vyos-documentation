@@ -64,39 +64,7 @@ Configure
 Contrack Timeouts
 =================
 
-VyOS supports setting timeouts for connections according to the
-connection type. You can set timeout values for generic connections, for ICMP
-connections, UDP connections, or for TCP connections in a number of different
-states.
-
-.. cfgcmd:: set system conntrack timeout icmp <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout other <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout tcp close <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout tcp close-wait <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout tcp established <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout tcp fin-wait <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout tcp last-ack <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout tcp syn-recv <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout tcp syn-sent <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout tcp time-wait <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout udp other <1-21474836>
-    :defaultvalue:
-.. cfgcmd:: set system conntrack timeout udp stream <1-21474836>
-    :defaultvalue:
-
-    Set the timeout in seconds for a protocol or state.
-
-You can also define custom timeout values to apply to a specific subset of
+You can define custom timeout values to apply to a specific subset of
 connections, based on a packet and flow selector. To do this, you need to
 create a rule defining the packet and flow selector.
 
@@ -176,6 +144,11 @@ create a rule defining the packet and flow selector.
 
 Conntrack ignore rules
 ======================
+
+.. note:: **Important note about conntrack ignore rules:**
+   Starting from vyos-1.5-rolling-202406120020, ignore rules can be defined in
+   ``set firewall [ipv4 | ipv6] prerouting raw ...``. It's expected that in
+   the future the conntrack ignore rules will be removed.
 
     Customized ignore rules, based on a packet and flow selector.
 

@@ -26,14 +26,23 @@ firewall are covered below:
 If the interface where the packet was received isn't part of a bridge, then 
 packet is processed at the **IP Layer**:
 
-   * **Prerouting**: several actions can be done in this stage, and currently
-     these actions are defined in different parts in VyOS configuration. Order
-     is important, and all these actions are performed before any actions
-     defined under ``firewall`` section. Relevant configuration that acts in
-     this stage are:
+   * **Prerouting**: All packets that are received by the router
+     are processed in this stage, regardless of the destination of the packet.
+     Starting from vyos-1.5-rolling-202406120020, a new section was added to
+     firewall configuration. There are several actions that can be done in this
+     stage, and currently these actions are also defined in different parts in
+     VyOS configuration. Order is important, and relevant configuration that
+     acts in this stage are:
+
+      * **Firewall prerouting**: rules defined under ``set firewall [ipv4 |
+        ipv6] prerouting raw...``. All rules defined in this section are
+        processed before connection tracking subsystem.
 
       * **Conntrack Ignore**: rules defined under ``set system conntrack ignore
-        [ipv4 | ipv6] ...``.
+        [ipv4 | ipv6] ...``. Starting from vyos-1.5-rolling-202406120020,
+        configuration done in this section can be done in ``firewall [ipv4 |
+        ipv6] prerouting ...``. For compatibility reasons, this feature is
+        still present, but it will be removed in the future.
 
       * **Policy Route**: rules defined under ``set policy [route | route6]
         ...``.
@@ -67,11 +76,13 @@ packet is processed at the **IP Layer**:
      new connection originated by a internal process running on VyOS router,
      such as NTP, or a response to traffic received externally through
      **input** (for example response to an ssh login attempt to the router).
-     This includes ipv4 and ipv6 filtering rules, defined in:
+     This includes ipv4 and ipv6 rules, and two different sections are present:
 
-     * ``set firewall ipv4 output filter ...``.
+     * **Output Prerouting**: ``set firewall [ipv4 | ipv6] output filter ...``.
+       As described in **Prerouting**, rules defined in this section are
+       processed before connection tracking subsystem.
 
-     * ``set firewall ipv6 output filter ...``.
+     * **Output Filter**: ``set firewall [ipv4 | ipv6] output filter ...``.
 
    * **Postrouting**: as in **Prerouting**, several actions defined in
      different parts of VyOS configuration are performed in this
@@ -120,6 +131,9 @@ The main structure of the VyOS firewall CLI is shown next:
                + filter
             - output
                + filter
+               + raw
+            - prerouting
+               + raw
             - name
                + custom_name
        * ipv6
@@ -129,6 +143,9 @@ The main structure of the VyOS firewall CLI is shown next:
                + filter
             - output
                + filter
+               + raw
+            - prerouting
+               + raw
             - ipv6-name
                + custom_name
        * zone
