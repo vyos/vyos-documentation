@@ -212,6 +212,56 @@ You can also write a description for a filter:
 .. note:: IPv6 TCP filters will only match IPv6 packets with no header
    extension, see https://en.wikipedia.org/wiki/IPv6_packet#Extension_headers
 
+Traffic Match Group 
+-------------------
+In some case where we need to have an organization of our matching selection, 
+in order to be more flexible and organize with our filter definition. We can 
+apply traffic match groups, allowing us to create distinct filter groups within 
+our policy and define various parameters for each group:
+
+.. code-block:: none
+
+  set qos traffic-match-group <group_name> match <match_name> 
+  Possible completions:
+     description          Description
+   > ip                   Match IP protocol header
+   > ipv6                 Match IPv6 protocol header
+     mark                 Match on mark applied by firewall
+     vif                  Virtual Local Area Network (VLAN) ID for this match
+
+inherit matches from another group
+
+.. code-block:: none
+
+  set qos traffic-match-group <group_name> match-group <match_group_name> 
+
+A match group can contain multiple criteria and inherit them in the same policy.
+
+For example:
+
+.. code-block:: none
+
+  set qos traffic-match-group Mission-Critical match AF31 ip dscp 'AF31'
+  set qos traffic-match-group Mission-Critical match AF32 ip dscp 'AF42'
+  set qos traffic-match-group Mission-Critical match CS3 ip dscp 'CS3'
+  set qos traffic-match-group Streaming-Video match AF11 ip dscp 'AF11'
+  set qos traffic-match-group Streaming-Video match AF41 ip dscp 'AF41'
+  set qos traffic-match-group Streaming-Video match AF43 ip dscp 'AF43'
+  set qos policy shaper VyOS-HTB class 10 bandwidth '30%'
+  set qos policy shaper VyOS-HTB class 10 description 'Multimedia'
+  set qos policy shaper VyOS-HTB class 10 match CS4 ip dscp 'CS4'
+  set qos policy shaper VyOS-HTB class 10 match-group 'Streaming-Video'
+  set qos policy shaper VyOS-HTB class 10 priority '1'
+  set qos policy shaper VyOS-HTB class 10 queue-type 'fair-queue'
+  set qos policy shaper VyOS-HTB class 20 description 'MC'
+  set qos policy shaper VyOS-HTB class 20 match-group 'Mission-Critical'
+  set qos policy shaper VyOS-HTB class 20 priority '2'
+  set qos policy shaper VyOS-HTB class 20 queue-type 'fair-queue'
+  set qos policy shaper VyOS-HTB default bandwidth '20%'
+  set qos policy shaper VyOS-HTB default queue-type 'fq-codel'
+
+In this example, we can observe that different DSCP criteria are defined based 
+on our QoS configuration within the same policy group.
 
 Default
 -------
