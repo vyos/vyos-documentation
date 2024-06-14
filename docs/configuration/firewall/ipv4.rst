@@ -686,6 +686,10 @@ geoip) to keep database and rules updated.
    For example: ``eth2*``. Prepending character ``!`` for inverted matching
    criteria is also supportd. For example ``!eth2``
 
+.. note:: If an interface is attached to a non-default vrf, when using
+   **inbound-interface**, vrf name must be used. For example ``set firewall
+   ipv4 forward filter rule 10 inbound-interface name MGMT``
+
 .. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
    inbound-interface group <iface_group>
 .. cfgcmd:: set firewall ipv4 input filter rule <1-999999>
@@ -706,6 +710,10 @@ geoip) to keep database and rules updated.
    Match based on outbound interface. Wilcard ``*`` can be used.
    For example: ``eth2*``. Prepending character ``!`` for inverted matching
    criteria is also supportd. For example ``!eth2``
+
+.. note:: If an interface is attached to a non-default vrf, when using
+   **outbound-interface**, real interface name must be used. For example
+   ``set firewall ipv4 forward filter rule 10 outbound-interface name eth0``
 
 .. cfgcmd:: set firewall ipv4 forward filter rule <1-999999>
    outbound-interface group <iface_group>
