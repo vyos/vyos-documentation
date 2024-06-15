@@ -36,6 +36,17 @@ Common interface configuration
    :var0: wireless
    :var1: wlan0
 
+System Wide configuration
+=========================
+
+.. cfgcmd:: set system wireless country-code <cc>
+
+  Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
+  to indicate country in which device is operating. This can limit available
+  channels and transmit power.
+
+  .. note:: This option is mandatory in Access-Point mode.
+
 Wireless options
 ================
 
@@ -43,14 +54,6 @@ Wireless options
 
   Channel number (IEEE 802.11), for 2.4Ghz (802.11 b/g/n) channels range from
   1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 173
-
-.. cfgcmd:: set interfaces wireless <interface> country-code <cc>
-
-  Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
-  to indicate country in which device is operating. This can limit available
-  channels and transmit power.
-
-  .. note:: This option is mandatory in Access-Point mode.
 
 .. cfgcmd:: set interfaces wireless <interface> disable-broadcast-ssid
 
