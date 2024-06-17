@@ -87,8 +87,9 @@ Wireless options
 
   .. note:: :abbr:`MFP (Management Frame Protection)` is required for WPA3.
 
-.. cfgcmd:: set interfaces wireless <interface> beacon-frame-protection 
-  <disabled | enabled>
+.. cfgcmd:: set interfaces wireless <interface> enable-bf-protection
+
+  Beacon Protection: management frame protection for Beacon frames.
 
   .. note:: This option requires :abbr:`MFP (Management Frame Protection)` 
     to be enabled.
