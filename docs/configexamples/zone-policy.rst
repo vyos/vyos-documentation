@@ -1,19 +1,9 @@
-:lastproofread: 2021-06-29
+:lastproofread: 2024-06-14
 
 .. _examples-zone-policy:
 
 Zone-Policy example
 -------------------
-
-.. note:: Starting from VyOS 1.4-rolling-202308040557, a new firewall
-   structure can be found on all vyos instalations, and zone based firewall is
-   no longer supported. Documentation for most of the new firewall CLI can be
-   found in the `firewall
-   <https://docs.vyos.io/en/latest/configuration/firewall/general.html>`_
-   chapter. The legacy firewall is still available for versions before
-   1.4-rolling-202308040557 and can be found in the :ref:`legacy-firewall`
-   chapter. The examples in this section use the legacy firewall configuration
-   commands, since this feature has been removed in earlier releases.
 
 .. note:: In :vytask:`T2199` the syntax of the zone configuration was changed.
    The zone configuration moved from ``zone-policy zone <name>`` to ``firewall
@@ -428,4 +418,3 @@ Something like:
       address ip.of.tunnel.broker
     }
   }
-
