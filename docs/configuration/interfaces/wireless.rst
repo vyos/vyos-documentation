@@ -45,10 +45,10 @@ Wireless options
   1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 173. 
   On 6GHz (802.11 ax) channels range from 1 to 233.
 
-.. cfgcmd:: set interfaces wireless <interface> country-code <cc>
+.. cfgcmd:: set system wireless country-code <cc>
 
   Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
-  to indicate country in which device is operating. This can limit available
+  to indicate country in which the box is operating. This can limit available
   channels and transmit power.
 
   .. note:: This option is mandatory in Access-Point mode.
@@ -380,9 +380,9 @@ default physical device (``phy0``) is used.
 
 .. code-block:: none
 
+  set system wireless country-code de
   set interfaces wireless wlan0 type station
   set interfaces wireless wlan0 address dhcp
-  set interfaces wireless wlan0 country-code de
   set interfaces wireless wlan0 ssid Test
   set interfaces wireless wlan0 security wpa passphrase '12345678'
 
@@ -390,11 +390,14 @@ Resulting in
 
 .. code-block:: none
 
+  system {
+    wireless {
+      country-code de
+    }
+  }
   interfaces {
-    [...]
     wireless wlan0 {
       address dhcp
-      country-code de
       security {
         wpa {
           passphrase "12345678"
@@ -430,8 +433,8 @@ The WAP in this example has the following characteristics:
 .. stop_vyoslinter
 .. code-block:: none
 
+  set system wireless country-code de
   set interfaces wireless wlan0 address '192.168.2.1/24'
-  set interfaces wireless wlan0 country-code de
   set interfaces wireless wlan0 type access-point
   set interfaces wireless wlan0 channel 1
   set interfaces wireless wlan0 mode n
@@ -447,11 +450,15 @@ Resulting in
 
 .. code-block:: none
 
+  system {
+    wireless {
+      country-code de
+    }
+  }
   interfaces {
     [...]
     wireless wlan0 {
           address 192.168.2.1/24
-          country-code de
           channel 1
           mode n
           security {
@@ -637,6 +644,7 @@ The WAP in this example has the following characteristics:
 
 .. code-block:: none
 
+  set system wireless country-code de
   set interfaces wireless wlan0 address '192.168.2.1/24'
   set interfaces wireless wlan0 type access-point
   set interfaces wireless wlan0 channel 1
@@ -645,18 +653,21 @@ The WAP in this example has the following characteristics:
   set interfaces wireless wlan0 security wpa mode wpa2
   set interfaces wireless wlan0 security wpa cipher CCMP
   set interfaces wireless wlan0 security wpa passphrase '12345678'
-  set interfaces wireless wlan0 country-code de
 
 Resulting in
 
 .. code-block:: none
 
+  system {
+    wireless {
+      country-code de
+    }
+  }
   interfaces {
     [...]
     wireless wlan0 {
           address 192.168.2.1/24
           channel 1
-          country-code de
           mode n
           security {
               wpa {
@@ -691,8 +702,8 @@ still put this card into AP mode using the following configuration:
 .. stop_vyoslinter
 .. code-block:: none
 
+  set system wireless country-code 'us'
   set interfaces wireless wlan0 channel '1'
-  set interfaces wireless wlan0 country-code 'us'
   set interfaces wireless wlan0 mode 'n'
   set interfaces wireless wlan0 physical-device 'phy0'
   set interfaces wireless wlan0 ssid 'VyOS'
