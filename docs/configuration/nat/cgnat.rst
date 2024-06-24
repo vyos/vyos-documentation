@@ -82,9 +82,10 @@ Configuration
     Set external source port limits that will be allocated to each subscriber
     individually. The default value is 2000.
 
-.. cfgcmd:: set nat cgnat pool external <pool-name> range [address | address range | network]
+.. cfgcmd:: set nat cgnat pool external <pool-name> range [address | address range | network] [seq]
 
     Set the range of external IP addresses for the CGNAT pool.
+    The sequence is optional; if set, a lower value means higher priority.
 
 .. cfgcmd:: set nat cgnat pool internal <pool-name> range [address range | network]
 
@@ -98,6 +99,9 @@ Configuration
 
     Set the rule for the translation pool.
 
+.. cfgcmd:: set nat cgnat log-allocation
+
+    Enable logging of IP address and ports allocations.
 
 
 Configuration Examples
@@ -134,6 +138,55 @@ Multiple external addresses
    set nat cgnat rule 10 source pool 'int1'
    set nat cgnat rule 10 translation pool 'ext1'
 
+External address sequences
+-----------------------------------
+
+.. code-block:: none
+
+   set nat cgnat pool external ext-01 per-user-limit port '16000'
+   set nat cgnat pool external ext-01 range 203.0.113.1/32 seq '10'
+   set nat cgnat pool external ext-01 range 192.0.2.1/32 seq '20'
+   set nat cgnat pool internal int-01 range '100.64.0.0/29'
+   set nat cgnat rule 10 source pool 'int-01'
+   set nat cgnat rule 10 translation pool 'ext-01'
+
+
+Operation commands
+==================
+
+.. opcmd:: show nat cgnat allocation
+
+    Show address and port allocations
+
+.. opcmd:: show nat cgnat allocation external-address <address>
+
+    Show all allocations for an external IP address
+
+.. opcmd:: show nat cgnat allocation internal-address <address>
+
+    Show all allocations for an internal IP address
+
+Show CGNAT allocations
+----------------------
+
+.. code-block:: none
+
+   vyos@vyos:~$ show nat cgnat allocation
+   Internal IP    External IP    Port range
+   -------------  -------------  ------------
+   100.64.0.0     203.0.113.1    1024-17023
+   100.64.0.1     203.0.113.1    17024-33023
+   100.64.0.2     203.0.113.1    33024-49023
+   100.64.0.3     203.0.113.1    49024-65023
+   100.64.0.4     192.0.2.1      1024-17023
+   100.64.0.5     192.0.2.1      17024-33023
+   100.64.0.6     192.0.2.1      33024-49023
+   100.64.0.7     192.0.2.1      49024-65023
+
+   vyos@vyos:~$ show nat cgnat allocation internal-address 100.64.0.4
+   Internal IP    External IP    Port range
+   -------------  -------------  ------------
+   100.64.0.4     192.0.2.1      1024-17023
 
 
 Further Reading

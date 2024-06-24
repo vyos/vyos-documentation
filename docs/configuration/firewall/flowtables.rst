@@ -1,4 +1,4 @@
-:lastproofread: 2023-12-26
+:lastproofread: 2024-06-20
 
 .. _firewall-flowtables-configuration:
 
@@ -85,12 +85,12 @@ Provide a description to the flow table.
 
 Creating rules for using flow tables:
 
-.. cfgcmd:: set firewall [ipv4 | ipv4] forward filter rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    action offload
 
    Create firewall rule in forward chain, and set action to ``offload``.
 
-.. cfgcmd:: set firewall [ipv4 | ipv4] forward filter rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    offload-target <flowtable>
 
    Create firewall rule in forward chain, and define which flowtbale
@@ -142,7 +142,7 @@ Explanation
 
 Analysis on what happens for desired connection:
 
-   1. First packet is received on eht0, with destination address 192.0.2.100,
+   1. First packet is received on eth0, with destination address 192.0.2.100,
    protocol tcp and destination port 1122. Assume such destination address is
    reachable through interface eth1.
 
@@ -159,7 +159,7 @@ Analysis on what happens for desired connection:
    connection state is **established**, then rule 10 is hit, and a new entry
    in the flowtable FT01 is added for this connection.
 
-   6. All subsecuent packets will skip traditional path, and will be offloaded
+   6. All the following packets will skip traditional path, and will be offloaded
    and will use the **Fast Path**.
 
 Checks

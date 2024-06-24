@@ -8,7 +8,7 @@ This chapter contains various configuration examples:
 .. toctree::
    :maxdepth: 2
 
-   zone-policy
+   firewall
    bgp-ipv6-unnumbered
    ospf-unnumbered
    azure-vpn-bgp
