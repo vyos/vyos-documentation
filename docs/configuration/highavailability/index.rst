@@ -163,6 +163,7 @@ messages sent by the active node. When the rfc3768-compatibility option is set,
 a new VRRP interface is created, to which the MAC address and the virtual IP 
 address is automatically assigned.
 
+
 .. code-block:: none
 
    set high-availability vrrp group Foo rfc3768-compatibility
@@ -177,6 +178,10 @@ Verification
    link/ether 00:00:5e:00:01:0a brd ff:ff:ff:ff:ff:ff
    inet 172.25.0.247/16 scope global eth0v10
    valid_lft forever preferred_lft forever
+
+.. warning:: RFC 3768 creates a virtual interface. If you want to apply 
+   the destination NAT rule to the traffic sent to the virtual MAC, set 
+   the created virtual interface as `inbound-interface`.
 
 Scripting
 ---------
