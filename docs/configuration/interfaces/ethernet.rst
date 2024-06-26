@@ -52,6 +52,14 @@ Ethernet options
 
    VyOS default will be `auto`.
 
+.. cfgcmd:: set interface ethernet <interface> ring-buffer rx <value>
+.. cfgcmd:: set interface ethernet <interface> ring-buffer tx <value>
+
+  Configures the ring buffer size of the interface.
+
+  The supported values for a specific interface can be obtained
+  with: `ethtool -g <interface>`
+
 
 Offloading
 ----------
