@@ -637,16 +637,22 @@ benefit from it (see :ref:`issues_features`).
 If you are a hacker or want to try on your own we support passing raw OpenVPN
 options to OpenVPN.
 
-.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option 'persistent-key'
+.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option 'persist-key'
 
-Will add ``persistent-key`` at the end of the generated OpenVPN configuration.
+Will add ``persist-key`` to the generated OpenVPN configuration.
 Please use this only as last resort - things might break and OpenVPN won't start
 if you pass invalid options/syntax.
 
 .. cfgcmd:: set interfaces openvpn vtun10 openvpn-option
-   'push &quot;keepalive 1 10&quot;'
+   'push keepalive 10 60'
 
 Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
+
+.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option
+   'route-up &quot;/config/auth/tun_up.sh arg1&quot;'
+
+Will add ``route-up "/config/auth/tun_up.sh arg1"`` to the generated OpenVPN 
+config file. The path and arguments need to be single- or double-quoted.
 
 .. note:: Sometimes option lines in the generated OpenVPN configuration require
    quotes. This is done through a hack on our config generator. You can pass
