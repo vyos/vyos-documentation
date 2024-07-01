@@ -130,6 +130,36 @@ and logs from your routers.
    Remote URL
 
 
+Loki
+====
+
+Telegraf can be used to send logs to Loki using tags as labels.
+
+.. cfgcmd:: set service monitoring telegraf loki port <port>
+
+   Remote Loki port
+
+   Default is 3100
+
+.. cfgcmd:: set service monitoring telegraf loki url <url>
+
+   Remote Loki url
+
+.. cfgcmd:: set service monitoring telegraf loki authentication username <username>
+.. cfgcmd:: set service monitoring telegraf loki authentication password <password>
+
+   HTTP basic authentication.
+
+   If either is set both must be set.
+
+.. cfgcmd:: set service monitoring telegraf loki metric-name-label <label>
+
+   Label to use for the metric name when sending metrics.
+
+   If set to an empty string, the label will not be added.
+   This is NOT recommended, as it makes it impossible to differentiate
+   between multiple metrics.
+
 Example
 =======
 
