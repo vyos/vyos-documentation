@@ -41,9 +41,33 @@ Configuration
 Common interface configuration
 ==============================
 
-.. cmdinclude:: /_include/interface-common-without-dhcp.txt
-   :var0: geneve
-   :var1: gnv0
+.. cmdinclude:: /_include/interface-address.txt
+  :var0: geneve
+  :var1: gnv0
+
+.. cmdinclude:: /_include/interface-description.txt
+  :var0: geneve
+  :var1: gnv0
+
+.. cmdinclude:: /_include/interface-disable.txt
+  :var0: geneve
+  :var1: gnv0
+
+.. cmdinclude:: /_include/interface-mac.txt
+  :var0: geneve
+  :var1: gnv0
+
+.. cmdinclude:: /_include/interface-mtu.txt
+  :var0: geneve
+  :var1: gnv0
+
+.. cmdinclude:: /_include/interface-ip.txt
+  :var0: geneve
+  :var1: gnv0
+
+.. cmdinclude:: /_include/interface-ipv6.txt
+  :var0: geneve
+  :var1: gnv0
 
 GENEVE options
 ==============
