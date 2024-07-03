@@ -1,4 +1,4 @@
-:lastproofread: 2023-11-23
+:lastproofread: 2024-07-03
 
 ########
 Firewall
@@ -28,11 +28,11 @@ packet is processed at the **IP Layer**:
 
    * **Prerouting**: All packets that are received by the router
      are processed in this stage, regardless of the destination of the packet.
-     Starting from vyos-1.5-rolling-202406120020, a new section was added to
-     firewall configuration. There are several actions that can be done in this
-     stage, and currently these actions are also defined in different parts in
-     VyOS configuration. Order is important, and relevant configuration that
-     acts in this stage are:
+     Starting from vyos-1.5-rolling-202406120020, a new section was added to 
+     the firewall configuration. There are several actions that can be done in
+     this stage, and currently these actions are also defined in different
+     parts of the VyOS configuration. Order is important, and the relevant 
+     configuration that acts in this stage are:
 
       * **Firewall prerouting**: rules defined under ``set firewall [ipv4 |
         ipv6] prerouting raw...``. All rules defined in this section are
@@ -50,9 +50,9 @@ packet is processed at the **IP Layer**:
       * **Destination NAT**: rules defined under ``set [nat | nat66]
         destination...``.
 
-   * **Destination is the router?**: choose appropriate path based on
+   * **Destination is the router?**: choose an appropriate path based on
      destination IP address. Transit forward continues to **forward**,
-     while traffic that destination IP address is configured on the router
+     while traffic where the destination IP address is configured on the router
      continues to **input**.
 
    * **Input**: stage where traffic destined for the router itself can be
@@ -73,7 +73,7 @@ packet is processed at the **IP Layer**:
 
    * **Output**: stage where traffic that originates from the router itself
      can be filtered and controlled. Bear in mind that this traffic can be a
-     new connection originated by a internal process running on VyOS router,
+     new connection originated by a internal process running on the VyOS router
      such as NTP, or a response to traffic received externally through
      **input** (for example response to an ssh login attempt to the router).
      This includes ipv4 and ipv6 rules, and two different sections are present:
@@ -181,10 +181,10 @@ Zone-based firewall
    zone
 
 With zone-based firewalls a new concept was implemented, in addition to the
-standard in and out traffic flows, a local flow was added. This local was for
-traffic originating and destined to the router itself. Which means additional
-rules were required to secure the firewall itself from the network, in
-addition to the existing inbound and outbound rules from the traditional
+standard in and out traffic flows, a local flow was added. This local flow was
+for traffic originating and destined to the router itself. Which means that 
+additional rules were required to secure the firewall itself from the network,
+in addition to the existing inbound and outbound rules from the traditional
 concept above.
 
 To configure VyOS with the

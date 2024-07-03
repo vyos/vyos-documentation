@@ -239,7 +239,7 @@ msgstr "2.5 Type the commands :"
 
 #: ../../automation/terraform/terraformAZ.rst:44
 msgid "2.6 Type the commands :"
-msgstr "2.6 Type the commands :"
+msgstr "2.6 Type the commands :in"
 
 #: ../../automation/terraform/terraformAWS.rst:31
 msgid "2 Create a key pair_ and download your .pem key"
@@ -781,8 +781,8 @@ msgid "If command ends in a value, it must be inside single quotes."
 msgstr "If command ends in a value, it must be inside single quotes."
 
 #: ../../automation/cloud-init.rst:253
-msgid "If no networking configuration is provided, then dhcp client is going to be enabled on first interface. Bare in mind that this configuration will be inyected at an OS level, so don't expect to find dhcp client configuration on vyos cli. Because of this behavior, in next example lab we will disable dhcp-client configuration on eth0."
-msgstr "If no networking configuration is provided, then dhcp client is going to be enabled on first interface. Bare in mind that this configuration will be inyected at an OS level, so don't expect to find dhcp client configuration on vyos cli. Because of this behavior, in next example lab we will disable dhcp-client configuration on eth0."
+msgid "If no networking configuration is provided, then dhcp client is going to be enabled on first interface. Bear in mind that this configuration will be injected at an OS level, so don't expect to find dhcp client configuration on vyos cli. Because of this behavior, in next example lab we will disable dhcp-client configuration on eth0."
+msgstr "If no networking configuration is provided, then dhcp client is going to be enabled on first interface. Bear in mind that this configuration will be injected at an OS level, so don't expect to find dhcp client configuration on vyos cli. Because of this behavior, in next example lab we will disable dhcp-client configuration on eth0."
 
 #: ../../automation/cloud-init.rst:228
 msgid "If you encounter problems, verify that the cloud-config document contains valid YAML. Online resources such as https://www.yamllint.com/ provide a simple tool for validating YAML."
