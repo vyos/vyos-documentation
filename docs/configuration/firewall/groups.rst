@@ -1,4 +1,4 @@
-:lastproofread: 2023-11-08
+:lastproofread: 2024-07-03
 
 .. _firewall-groups-configuration:
 
@@ -18,8 +18,7 @@ matcher, and/or as inbound/outbound in the case of interface group.
 Address Groups
 ==============
 
-In an **address group** a single IP address or IP address ranges are
-defined.
+In an **address group** a single IP address or IP address range is defined.
 
 .. cfgcmd:: set firewall group address-group <name> address [address |
    address range]
@@ -43,7 +42,7 @@ Network Groups
 
 While **network groups** accept IP networks in CIDR notation, specific
 IP addresses can be added as a 32-bit prefix. If you foresee the need
-to add a mix of addresses and networks, the network group is
+to add a mix of addresses and networks, then a network group is
 recommended.
 
 .. cfgcmd:: set firewall group network-group <name> network <CIDR>
@@ -197,9 +196,9 @@ Commands used for this task are:
 .. cfgcmd:: set firewall ipv6 name <name> rule <1-999999> add-address-to-group
    source-address address-group <name>
 
-Also, specific timeout can be defined per rule. In case rule gets a hit,
-source or destinatination address will be added to the group, and this
-element will remain in the group until timeout expires. If no timeout
+Also, specific timeouts can be defined per rule. In case rule gets a hit,
+a source or destinatination address will be added to the group, and this
+element will remain in the group until the timeout expires. If no timeout
 is defined, then the element will remain in the group until next reboot,
 or until a new commit that changes firewall configuration is done.
 
@@ -324,7 +323,7 @@ A 4 step port knocking example is shown next:
       set firewall ipv4 input filter rule 99 protocol 'tcp'
       set firewall ipv4 input filter rule 99 source group dynamic-address-group 'ALLOWED'
 
-Before testing, we can check members of firewall groups:
+Before testing, we can check the members of firewall groups:
 
    .. code-block:: none
 
@@ -339,7 +338,7 @@ Before testing, we can check members of firewall groups:
       [edit]
       vyos@vyos#
 
-With this configuration, in order to get ssh access to the router, user
+With this configuration, in order to get ssh access to the router, the user
 needs to:
 
 1. Generate a new TCP connection with destination port 9990. As shown next,
@@ -390,7 +389,7 @@ a new entry was added to dynamic firewall group **ALLOWED**
       [edit]
       vyos@vyos#
 
-4. Now user can connect through ssh to the router (assuming ssh is configured).
+4. Now the user can connect through ssh to the router (assuming ssh is configured).
 
 **************
 Operation-mode

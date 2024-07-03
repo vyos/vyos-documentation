@@ -1,4 +1,4 @@
-:lastproofread: 2023-12-26
+:lastproofread: 2024-07-03
 
 .. _firewall-global-options-configuration:
 
@@ -25,7 +25,7 @@ Configuration
 .. cfgcmd:: set firewall global-options all-ping [enable | disable]
 
    By default, when VyOS receives an ICMP echo request packet destined for
-   itself, it will answer with an ICMP echo reply, unless you avoid it
+   itself, it will answer with an ICMP echo reply, unless you prevent it
    through its firewall.
 
    With the firewall you can set rules to accept, drop or reject ICMP in,
@@ -55,7 +55,7 @@ Configuration
 
 .. cfgcmd:: set firewall global-options broadcast-ping [enable | disable]
 
-   This setting enable or disable the response of icmp broadcast
+   This setting enables or disables the response to icmp broadcast
    messages. The following system parameter will be altered:
 
    * ``net.ipv4.icmp_echo_ignore_broadcasts``
@@ -63,8 +63,8 @@ Configuration
 .. cfgcmd:: set firewall global-options ip-src-route [enable | disable]
 .. cfgcmd:: set firewall global-options ipv6-src-route [enable | disable]
 
-   This setting handle if VyOS accept packets with a source route
-   option. The following system parameter will be altered:
+   This setting handles if VyOS accepts packets with a source route
+   option. The following system parameters will be altered:
 
    * ``net.ipv4.conf.all.accept_source_route``
    * ``net.ipv6.conf.all.accept_source_route``
@@ -73,22 +73,22 @@ Configuration
 .. cfgcmd:: set firewall global-options ipv6-receive-redirects
    [enable | disable]
 
-   enable or disable of ICMPv4 or ICMPv6 redirect messages accepted
-   by VyOS. The following system parameter will be altered:
+   Enable or disable ICMPv4 or ICMPv6 redirect messages being accepted by
+   VyOS. The following system parameters will be altered:
 
    * ``net.ipv4.conf.all.accept_redirects``
    * ``net.ipv6.conf.all.accept_redirects``
 
 .. cfgcmd:: set firewall global-options send-redirects [enable | disable]
 
-   enable or disable ICMPv4 redirect messages send by VyOS
+   Enable or disable ICMPv4 redirect messages being sent by VyOS
    The following system parameter will be altered:
 
    * ``net.ipv4.conf.all.send_redirects``
 
 .. cfgcmd:: set firewall global-options log-martians [enable | disable]
 
-   enable or disable the logging of martian IPv4 packets.
+   Enable or disable the logging of martian IPv4 packets.
    The following system parameter will be altered:
 
    * ``net.ipv4.conf.all.log_martians``
@@ -103,7 +103,7 @@ Configuration
 
 .. cfgcmd:: set firewall global-options syn-cookies [enable | disable]
 
-   Enable or Disable if VyOS use IPv4 TCP SYN Cookies.
+   Enable or disable if VyOS uses IPv4 TCP SYN Cookies.
    The following system parameter will be altered:
 
    * ``net.ipv4.tcp_syncookies``
@@ -111,7 +111,7 @@ Configuration
 .. cfgcmd:: set firewall global-options twa-hazards-protection
    [enable | disable]
 
-   Enable or Disable VyOS to be :rfc:`1337` conform.
+   Enable or Disable VyOS to be :rfc:`1337` conformant.
    The following system parameter will be altered:
 
    * ``net.ipv4.tcp_rfc1337``
