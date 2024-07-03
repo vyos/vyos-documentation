@@ -72,7 +72,7 @@ packet is processed at the **IP Layer**:
      * ``set firewall ipv6 forward filter ...``.
 
    * **Output**: stage where traffic that originates from the router itself
-     can be filtered and controlled. Bear in mind that this traffic can be a
+     can be filtered and controlled. Bare in mind that this traffic can be a
      new connection originated by a internal process running on VyOS router,
      such as NTP, or a response to traffic received externally through
      **input** (for example response to an ssh login attempt to the router).
