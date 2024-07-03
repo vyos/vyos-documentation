@@ -251,8 +251,8 @@ Most important keys that needs to be considered:
 * Networking configurations shouldn't be passed in user-data file.
 
 * If no networking configuration is provided, then dhcp client is going to be
-  enabled on first interface. Bare in mind that this configuration will be
-  inyected at an OS level, so don't expect to find dhcp client configuration
+  enabled on first interface. Bear in mind that this configuration will be
+  injected at an OS level, so don't expect to find dhcp client configuration
   on vyos cli. Because of this behavior, in next example lab we will disable
   dhcp-client configuration on eth0.
 
