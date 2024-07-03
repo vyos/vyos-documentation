@@ -1,4 +1,4 @@
-:lastproofread: 2021-07-12
+:lastproofread: 2024-07-03
 
 .. _cloud-init:
 
@@ -252,7 +252,7 @@ Most important keys that needs to be considered:
 
 * If no networking configuration is provided, then dhcp client is going to be
   enabled on first interface. Bare in mind that this configuration will be
-  inyected at an OS level, so don't expect to find dhcp client configuration
+  injected at an OS level, so don't expect to find dhcp client configuration
   on vyos cli. Because of this behavior, in next example lab we will disable
   dhcp-client configuration on eth0.
 
