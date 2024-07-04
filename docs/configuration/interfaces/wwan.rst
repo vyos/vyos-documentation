@@ -1,4 +1,4 @@
-:lastproofread: 2023-01-27
+:lastproofread: 2024-07-04
 
 .. _wwan-interface:
 
@@ -320,11 +320,11 @@ The following hardware modules have been tested successfully in an
 Firmware Update
 ***************
 
-All available WWAN cards have a build in, reprogrammable firmware. Most of the
-vendors provide a regular update to the firmware used in the baseband chip.
+All available WWAN cards have a built-in, reprogrammable firmware. Most vendors
+provide regular updates to firmware used in the baseband chip.
 
-As VyOS makes use of the QMI interface to connect to the WWAN modem cards, also
-the firmware can be reprogrammed.
+As VyOS makes use of the QMI interface to connect to the WWAN modem cards, the
+firmware can be reprogrammed.
 
 To update the firmware, VyOS also ships the `qmi-firmware-update` binary. To
 upgrade the firmware of an e.g. Sierra Wireless MC7710 module to the firmware
