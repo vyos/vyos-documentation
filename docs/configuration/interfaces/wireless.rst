@@ -1,4 +1,4 @@
-:lastproofread: 2023-01-26
+:lastproofread: 2024-07-04
 
 .. _wireless-interface:
 
@@ -6,20 +6,20 @@
 WLAN/WIFI - Wireless LAN
 ########################
 
-:abbr:`WLAN (Wireless LAN)` interface provide 802.11 (a/b/g/n/ac) wireless
-support (commonly referred to as Wi-Fi) by means of compatible hardware. If your
-hardware supports it, VyOS supports multiple logical wireless interfaces per
-physical device.
+The :abbr:`WLAN (Wireless LAN)` interface provides 802.11 (a/b/g/n/ac) wireless
+support (commonly referred to as Wi-Fi) by means of compatible hardware. If
+your hardware supports it, VyOS supports multiple logical wireless interfaces
+per physical device.
 
 There are three modes of operation for a wireless interface:
 
-* :abbr:`WAP (Wireless Access-Point)` provides network access to connecting
+* :abbr:`WAP (Wireless Access-Point)` mode provides network access to connecting
   stations if the physical hardware supports acting as a WAP
 
-* A station acts as a Wi-Fi client accessing the network through an available
+* Station mode acts as a Wi-Fi client accessing the network through an available
   WAP
 
-* Monitor, the system passively monitors any kind of wireless traffic
+* Monitor mode lets the system passively monitor wireless traffic
 
 If the system detects an unconfigured wireless device, it will be automatically
 added the configuration tree, specifying any detected settings (for example,
@@ -58,7 +58,7 @@ Wireless options
 .. cfgcmd:: set interfaces wireless <interface> disable-broadcast-ssid
 
   Send empty SSID in beacons and ignore probe request frames that do not specify
-  full SSID, i.e., require stations to know SSID.
+  full SSID, i.e., require stations to know the SSID.
 
 .. cfgcmd:: set interfaces wireless <interface> expunge-failing-stations
 
@@ -105,10 +105,12 @@ Wireless options
 
 .. cfgcmd:: set interfaces wireless <interface> reduce-transmit-power <number>
 
-  Add Power Constraint element to Beacon and Probe Response frames.
+  Adds the Power Constraint information element to Beacon and Probe Response
+  frames.
 
-  This option adds Power Constraint element when applicable and Country element
-  is added. Power Constraint element is required by Transmit Power Control.
+  This option adds the Power Constraint information element when applicable
+  and the Country information element is configured. The Power Constraint 
+  element is required by Transmit Power Control.
 
   Valid values are 0..255.
 
