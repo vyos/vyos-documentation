@@ -1,4 +1,4 @@
-:lastproofread: 2023-11-01
+:lastproofread: 2024-07-03
 
 .. _firewall-zone:
 
@@ -11,9 +11,9 @@ Overview
 ********
 
 .. note:: Starting from VyOS 1.4-rolling-202308040557, a new firewall
-   structure can be found on all VyOS installations. Zone based firewall was
-   removed in that version, but re introduced in VyOS 1.4 and 1.5. All
-   versions built after 2023-10-22 has this feature.
+   structure can be found on all VyOS installations. The Zone based firewall
+   was removed in that version, but re introduced in VyOS 1.4 and 1.5. All
+   versions built after 2023-10-22 have this feature.
    Documentation for most of the new firewall CLI can be
    found in the `firewall
    <https://docs.vyos.io/en/latest/configuration/firewall/general.html>`_
@@ -22,13 +22,13 @@ Overview
    :doc:`legacy firewall configuration </configuration/firewall/general-legacy>`
    chapter.
 
-In this section there's useful information of all firewall configuration that
-is needed for zone-based firewall.
+In this section there's useful information on all firewall configuration that
+is needed for the zone-based firewall.
 Configuration commands covered in this section:
 
 .. cfgcmd:: set firewall zone ...
 
-From main structure defined in
+From the main structure defined in
 :doc:`Firewall Overview</configuration/firewall/index>`
 in this section you can find detailed information only for the next part
 of the general structure:
@@ -53,7 +53,7 @@ Key Points:
   interface can be assigned to only a single zone.
 * All traffic to and from an interface within a zone is permitted.
 * All traffic between zones is affected by existing policies
-* Traffic cannot flow between zone member interface and any interface that is
+* Traffic cannot flow between a zone member interface and any interface that is
   not a zone member.
 * You need 2 separate firewalls to define traffic: one for each direction.
 
@@ -129,7 +129,7 @@ Operation-mode
 
 .. opcmd:: show firewall zone-policy
 
-   This will show you a basic summary of zones configuration.
+   This will show you a basic summary of the zone configuration.
 
    .. code-block:: none
 

@@ -781,7 +781,7 @@ msgid "If command ends in a value, it must be inside single quotes."
 msgstr "Si el comando termina en un valor, debe estar entre comillas simples."
 
 #: ../../automation/cloud-init.rst:253
-msgid "If no networking configuration is provided, then dhcp client is going to be enabled on first interface. Bare in mind that this configuration will be inyected at an OS level, so don't expect to find dhcp client configuration on vyos cli. Because of this behavior, in next example lab we will disable dhcp-client configuration on eth0."
+msgid "If no networking configuration is provided, then dhcp client is going to be enabled on first interface. Bear in mind that this configuration will be injected at an OS level, so don't expect to find dhcp client configuration on vyos cli. Because of this behavior, in next example lab we will disable dhcp-client configuration on eth0."
 msgstr "Si no se proporciona una configuración de red, el cliente dhcp se habilitará en la primera interfaz. Tenga en cuenta que esta configuración se inyectará a nivel del sistema operativo, así que no espere encontrar la configuración del cliente dhcp en vyos cli. Debido a este comportamiento, en el siguiente laboratorio de ejemplo, deshabilitaremos la configuración de dhcp-client en eth0."
 
 #: ../../automation/cloud-init.rst:228
