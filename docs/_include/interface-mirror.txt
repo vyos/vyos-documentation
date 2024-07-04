@@ -1,6 +1,6 @@
 SPAN port mirroring can copy the inbound/outbound traffic of the interface to
 the specified interface, usually the interface can be connected to some special
-equipment, such as behavior control system, intrusion detection system and
+equipment, such as a behavior control system, intrusion detection system or
 traffic collector, and can copy all related traffic from this port.
 The benefit of mirroring the traffic is that the application is isolated from 
 the source traffic and so application processing does not affect the traffic 
