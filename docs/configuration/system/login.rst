@@ -234,6 +234,12 @@ An example:
    set system login user otptester authentication otp rate-time '20'
    set system login user otptester authentication otp window-size '5'
 
+Once a user has 2FA/OTP configured against their account, they must login
+using their password with the OTP code appended to it.
+For example: If the users password is vyosrocks and the OTP code is 817454
+then they would enter their password as vyosrocks817454
+
+
 RADIUS
 ======
 
