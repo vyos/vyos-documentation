@@ -16,7 +16,7 @@ entirely.
 GENEVE is designed to support network virtualization use cases, where tunnels
 are typically established to act as a backplane between the virtual switches
 residing in hypervisors, physical switches, or middleboxes or other appliances.
-An arbitrary IP network can be used as an underlay although Clos networks - A
+An arbitrary IP network can be used as an underlay through Clos networks - A
 technique for composing network fabrics larger than a single switch while
 maintaining non-blocking bandwidth across connection points. ECMP is used to
 divide traffic across the multiple links and switches that constitute the

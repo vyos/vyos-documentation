@@ -1,4 +1,4 @@
-:lastproofread: 2021-06-30
+:lastproofread: 2024-07-04
 
 .. _bridge-interface:
 
@@ -155,9 +155,8 @@ VLAN Options
    native-vlan <vlan-id>
 
    Set the native VLAN ID flag of the interface. When a data packet without a
-   VLAN tag enters the port, the data packet will be forced to add a tag of a
-   specific vlan id. When the vlan id flag flows out, the tag of the vlan id
-   will be stripped
+   VLAN tag enters the port, the data packet will have a specific vlan id added
+   to it. When the packet flows out, the native vlan tag will be stripped.
 
    Example: Set `eth0` member port to be native VLAN 2
 
