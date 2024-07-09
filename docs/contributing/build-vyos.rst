@@ -450,7 +450,7 @@ system:
 
 * Accel-PPP
 * Intel NIC drivers
-* Inter QAT
+* Intel QAT
 
 Each of those modules holds a dependency on the kernel version and if you are
 lucky enough to receive an ISO build error which sounds like:
