@@ -148,15 +148,15 @@ For example:
 RADIUS source address
 =====================
 
-If you are using OSPF for your IGP, always use the closest interface connected
-to the RADIUS server. From VyOS 1.2 onwards you can bind all outgoing RADIUS
-requests to a single source IP e.g. the loopback interface.
+If you are using OSPF as your IGP, use the interface connected closest to the
+RADIUS server. You can bind all outgoing RADIUS requests to a single source IP
+e.g. the loopback interface.
 
 .. cfgcmd:: set vpn l2tp remote-access authentication radius source-address <address>
 
   Source IPv4 address used in all RADIUS server queires.
 
-.. note:: The ``source-address`` must be configured on one of VyOS interface.
+.. note:: The ``source-address`` must be configured to that of an interface.
    Best practice would be a loopback or dummy interface.
 
 RADIUS advanced options
@@ -243,9 +243,9 @@ If the RADIUS server sends the attribute ``Framed-Pool``, then the IP address
 will be allocated from a predefined IP pool whose name equals the attribute
 value.
 
-If the RADIUS server sends the attribute ``Stateful-IPv6-Address-Pool``, IPv6
-address will be allocated from a predefined IPv6 pool ``prefix`` whose name
-equals the attribute value.
+If the RADIUS server sends the attribute ``Stateful-IPv6-Address-Pool``, the
+IPv6 address will be allocated from a predefined IPv6 pool ``prefix`` whose
+name equals the attribute value.
 
 If the RADIUS server sends the attribute ``Delegated-IPv6-Prefix-Pool``, an
 IPv6 delegation prefix will be allocated from a predefined IPv6 pool
@@ -255,7 +255,7 @@ IPv6 delegation prefix will be allocated from a predefined IPv6 pool
           RFC6911. If they are not defined in your RADIUS server, add new dictionary_.
 
 The client's interface can be put into a VRF context via a RADIUS Access-Accept
-packet, or changed via RADIUS CoA. ``Accel-VRF-Name`` is used from these
+packet, or changed via RADIUS CoA. ``Accel-VRF-Name`` is used for these
 purposes. This is a custom `ACCEL-PPP attribute`_. Define it in your RADIUS
 server.
 
@@ -418,8 +418,8 @@ PPP Advanced Options
 
   Specifies number of interfaces to cache. This prevents interfaces from being
   removed once the corresponding session is destroyed. Instead, interfaces are
-  cached for later use in new sessions. This should reduce kernel-level
-  interface creation/deletion rate lack.
+  cached for later use in new sessions. This should reduce the kernel-level
+  interface creation/deletion rate.
   Default value is **0**.
 
 .. cfgcmd:: set vpn l2tp remote-access ppp-options ipv4 <require | prefer | allow | deny>
