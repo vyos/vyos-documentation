@@ -567,3 +567,71 @@ be imported.
 
 During profile import, the user is asked to enter its IPSec credentials
 (username and password) which is stored on the mobile.
+
+Operation Mode
+==============
+
+.. opcmd:: show vpn ike sa
+
+   Show all currently active IKE Security Associations.
+
+.. opcmd:: show vpn ike sa nat-traversal
+
+   Show all currently active IKE Security Associations (SA) that are using
+   NAT Traversal.
+
+.. opcmd:: show vpn ike sa peer <peer_name>
+
+   Show all currently active IKE Security Associations (SA) for a specific
+   peer.
+
+.. opcmd:: show vpn ike secrets
+
+   Show all the configured pre-shared secret keys.
+
+.. opcmd:: show vpn ike status
+
+   Show the detailed status information of IKE charon process.
+
+.. opcmd:: show vpn ipsec connections
+
+   Show details of all available VPN connections
+
+.. opcmd:: show vpn ipsec policy
+
+   Print out the list of existing crypto policies
+
+.. opcmd:: show vpn ipsec sa
+
+   Show all active IPsec Security Associations (SA)
+
+.. opcmd:: show vpn ipsec sa detail
+
+   Show a detailed information of all active IPsec Security Associations (SA)
+   in verbose format.
+
+.. opcmd:: show vpn ipsec state
+
+   Print out the list of existing in-kernel crypto state
+
+.. opcmd:: show vpn ipsec status
+
+   Show the status of running IPsec process and process ID.
+
+.. opcmd:: restart ipsec
+
+   Restart the IPsec VPN process and re-establishes the connection.
+
+.. opcmd:: reset vpn ipsec site-to-site all
+
+   Reset all site-to-site IPSec VPN sessions. It terminates all active 
+   child_sa and reinitiates the connection.
+
+.. opcmd:: reset vpn ipsec site-to-site peer <name>
+
+   Reset all tunnels for a given peer, can specify tunnel or vti interface.
+   It terminates a specific child_sa and reinitiates the connection.
+
+.. opcmd:: show log ipsec
+
+   Show logs for IPsec
