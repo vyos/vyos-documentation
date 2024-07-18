@@ -148,15 +148,15 @@ For example:
 RADIUS source address
 =====================
 
-If you are using OSPF as IGP, always the closest interface connected to the
-RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
-to a single source IP e.g. the loopback interface.
+If you are using OSPF as your IGP, use the interface connected closest to the
+RADIUS server. You can bind all outgoing RADIUS requests to a single source IP
+e.g. the loopback interface.
 
 .. cfgcmd:: set vpn l2tp remote-access authentication radius source-address <address>
 
   Source IPv4 address used in all RADIUS server queires.
 
-.. note:: The ``source-address`` must be configured on one of VyOS interface.
+.. note:: The ``source-address`` must be configured to that of an interface.
    Best practice would be a loopback or dummy interface.
 
 RADIUS advanced options
@@ -218,7 +218,7 @@ RADIUS advanced options
   The default attribute is `Filter-Id`.
 
 .. note:: If you set a custom RADIUS attribute you must define it on both
-   dictionaries at RADIUS server and client.
+   dictionaries on the RADIUS server and client.
 
 .. cfgcmd:: set vpn l2tp remote-access authentication radius rate-limit enable
 
@@ -226,7 +226,7 @@ RADIUS advanced options
 
 .. cfgcmd:: set vpn l2tp remote-access authentication radius rate-limit vendor
 
-  Specifies the vendor dictionary, dictionary needs to be in
+  Specifies the vendor dictionary. This dictionary needs to be present in
   /usr/share/accel-ppp/radius.
 
 Received RADIUS attributes have a higher priority than parameters defined within
@@ -236,25 +236,28 @@ Allocation clients ip addresses by RADIUS
 =========================================
 
 If the RADIUS server sends the attribute ``Framed-IP-Address`` then this IP
-address will be allocated to the client and the option ``default-pool`` within the CLI
-config is being ignored.
+address will be allocated to the client and the option ``default-pool`` within
+the CLI config will be ignored.
 
-If the RADIUS server sends the attribute ``Framed-Pool``, IP address will be allocated
-from a predefined IP pool whose name equals the attribute value.
+If the RADIUS server sends the attribute ``Framed-Pool``, then the IP address
+will be allocated from a predefined IP pool whose name equals the attribute
+value.
 
-If the RADIUS server sends the attribute ``Stateful-IPv6-Address-Pool``, IPv6 address
-will be allocated from a predefined IPv6 pool ``prefix`` whose name equals the attribute value.
+If the RADIUS server sends the attribute ``Stateful-IPv6-Address-Pool``, the
+IPv6 address will be allocated from a predefined IPv6 pool ``prefix`` whose
+name equals the attribute value.
 
-If the RADIUS server sends the attribute ``Delegated-IPv6-Prefix-Pool``, IPv6
-delegation pefix will be allocated from a predefined IPv6 pool ``delegate``
-whose name equals the attribute value.
+If the RADIUS server sends the attribute ``Delegated-IPv6-Prefix-Pool``, an
+IPv6 delegation prefix will be allocated from a predefined IPv6 pool
+``delegate`` whose name equals the attribute value.
 
 .. note:: ``Stateful-IPv6-Address-Pool`` and ``Delegated-IPv6-Prefix-Pool`` are defined in
           RFC6911. If they are not defined in your RADIUS server, add new dictionary_.
 
-User interface can be put to VRF context via RADIUS Access-Accept packet, or change
-it via RADIUS CoA. ``Accel-VRF-Name`` is used from these purposes. It is custom `ACCEL-PPP attribute`_.
-Define it in your RADIUS server.
+The client's interface can be put into a VRF context via a RADIUS Access-Accept
+packet, or changed via RADIUS CoA. ``Accel-VRF-Name`` is used for these
+purposes. This is a custom `ACCEL-PPP attribute`_. Define it in your RADIUS
+server.
 
 Renaming clients interfaces by RADIUS
 =====================================
@@ -296,19 +299,19 @@ IPv6
 .. cfgcmd:: set vpn l2tp remote-access client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
    mask <number-of-bits>
 
-  Use this comand to set the IPv6 address pool from which an l2tp client
-  will get an IPv6 prefix of your defined length (mask) to terminate the
-  l2tp endpoint at their side. The mask length can be set from 48 to 128
-  bit long, the default value is 64.
+  Use this comand to set the IPv6 address pool from which an l2tp client will
+  get an IPv6 prefix of your defined length (mask) to terminate the l2tp 
+  endpoint at their side. The mask length can be set between 48 and 128 bits
+  long, the default value is 64.
 
 .. cfgcmd:: set vpn l2tp remote-access client-ipv6-pool <IPv6-POOL-NAME> delegate <address>
    delegation-prefix <number-of-bits>
 
-  Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
-  l2tp. You will have to set your IPv6 pool and the length of the
-  delegation prefix. From the defined IPv6 pool you will be handing out
-  networks of the defined length (delegation-prefix). The length of the
-  delegation prefix can be set from 32 to 64 bit long.
+  Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on l2tp.
+  You will have to set your IPv6 pool and the length of the delegation 
+  prefix. From the defined IPv6 pool you will be handing out networks of the
+  defined length (delegation-prefix). The length of the delegation prefix can
+  be between 32 and 64 bits long.
 
 .. cfgcmd:: set vpn l2tp remote-access default-ipv6-pool <IPv6-POOL-NAME>
 
@@ -325,19 +328,19 @@ IPv6 Advanced Options
 =====================
 .. cfgcmd:: set vpn l2tp remote-access ppp-options ipv6-accept-peer-interface-id
 
-  Accept peer interface identifier. By default is not defined.
+  Accept peer interface identifier. By default this is not defined.
 
 .. cfgcmd:: set vpn l2tp remote-access ppp-options ipv6-interface-id <random | x:x:x:x>
 
-  Specifies fixed or random interface identifier for IPv6.
-  By default is fixed.
+  Specifies if a fixed or random interface identifier is used for IPv6. The
+  default is fixed.
 
   * **random** - Random interface identifier for IPv6
   * **x:x:x:x** - Specify interface identifier for IPv6
 
 .. cfgcmd:: set vpn l2tp remote-access ppp-options ipv6-interface-id <random | x:x:x:x>
 
-  Specifies peer interface identifier for IPv6. By default is fixed.
+  Specifies the peer interface identifier for IPv6. The default is fixed.
 
   * **random** - Random interface identifier for IPv6
   * **x:x:x:x** - Specify interface identifier for IPv6
@@ -350,19 +353,19 @@ Scripting
 
 .. cfgcmd:: set vpn l2tp remote-access extended-scripts on-change <path_to_script>
 
-  Script to run when session interface changed by RADIUS CoA handling
+  Script to run when the session interface is changed by RADIUS CoA handling
 
 .. cfgcmd:: set vpn l2tp remote-access extended-scripts on-down <path_to_script>
 
-  Script to run when session interface going to terminate
+  Script to run when the session interface is about to terminate
 
 .. cfgcmd:: set vpn l2tp remote-access extended-scripts on-pre-up <path_to_script>
 
-  Script to run before session interface comes up
+  Script to run before the session interface comes up
 
 .. cfgcmd:: set vpn l2tp remote-access extended-scripts on-up <path_to_script>
 
-  Script to run when session interface is completely configured and started
+  Script to run when the session interface is completely configured and started
 
 ****************
 Advanced Options
@@ -378,17 +381,17 @@ Authentication Advanced Options
 .. cfgcmd:: set vpn l2tp remote-access authentication local-users username <user> static-ip
    <address>
 
-  Assign static IP address to `<user>` account.
+  Assign a static IP address to `<user>` account.
 
 .. cfgcmd:: set vpn l2tp remote-access authentication local-users username <user> rate-limit
    download <bandwidth>
 
-  Download bandwidth limit in kbit/s for `<user>`.
+  Rate limit the download bandwidth for `<user>` to `<bandwidth>` kbit/s.
 
 .. cfgcmd:: set vpn l2tp remote-access authentication local-users username <user> rate-limit
    upload <bandwidth>
 
-  Upload bandwidth limit in kbit/s for `<user>`.
+  Rate limit the upload bandwidth for `<user>` to `<bandwidth>` kbit/s
 
 .. cfgcmd:: set vpn l2tp remote-access authentication protocols
    <pap | chap | mschap | mschap-v2>
@@ -413,10 +416,10 @@ PPP Advanced Options
 
 .. cfgcmd:: set vpn l2tp remote-access ppp-options interface-cache <number>
 
-  Specifies number of interfaces to keep in cache. It means that don’t
-  destroy interface after corresponding session is destroyed, instead
-  place it to cache and use it later for new sessions repeatedly.
-  This should reduce kernel-level interface creation/deletion rate lack.
+  Specifies number of interfaces to cache. This prevents interfaces from being
+  removed once the corresponding session is destroyed. Instead, interfaces are
+  cached for later use in new sessions. This should reduce the kernel-level
+  interface creation/deletion rate.
   Default value is **0**.
 
 .. cfgcmd:: set vpn l2tp remote-access ppp-options ipv4 <require | prefer | allow | deny>
@@ -436,19 +439,20 @@ PPP Advanced Options
 .. cfgcmd:: set vpn l2tp remote-access ppp-options lcp-echo-interval <interval>
 
   If this option is specified and is greater than 0, then the PPP module will
-  send LCP pings of the echo request every `<interval>` seconds.
+  send LCP echo requests every `<interval>` seconds.
   Default value is **30**.
 
 .. cfgcmd:: set vpn l2tp remote-access ppp-options lcp-echo-timeout
 
-  Specifies timeout in seconds to wait for any peer activity. If this option
+  Specifies timeout in seconds to wait for any peer activity. If this option is
   specified it turns on adaptive lcp echo functionality and "lcp-echo-failure"
   is not used. Default value is **0**.
 
 .. cfgcmd:: set vpn l2tp remote-access ppp-options min-mtu <number>
 
-  Defines minimum acceptable MTU. If client will try to negotiate less then
-  specified MTU then it will be NAKed or disconnected if rejects greater MTU.
+  Defines the minimum acceptable MTU. If a client tries to negotiate an MTU
+  lower than this it will be NAKed, and disconnected if it rejects a greater 
+  MTU.
   Default value is **100**.
 
 .. cfgcmd:: set vpn l2tp remote-access ppp-options mppe <require | prefer | deny>
@@ -460,9 +464,10 @@ PPP Advanced Options
   * **prefer** - ask client for mppe, if it rejects don't fail. (Default value)
   * **deny** - deny mppe
 
-  Default behavior - don't ask client for mppe, but allow it if client wants.
-  Please note that RADIUS may override this option by MS-MPPE-Encryption-Policy
-  attribute.
+  Default behavior - don't ask the client for mppe, but allow it if the client
+  wants.
+  Please note that RADIUS may override this option with the 
+  MS-MPPE-Encryption-Policy attribute.
 
 .. cfgcmd:: set vpn l2tp remote-access ppp-options mru <number>
 
@@ -481,7 +486,7 @@ Global Advanced options
 
 .. cfgcmd:: set vpn l2tp remote-access limits connection-limit <value>
 
-  Acceptable rate of connections (e.g. 1/min, 60/sec)
+  Maximum accepted connection rate (e.g. 1/min, 60/sec)
 
 .. cfgcmd:: set vpn l2tp remote-access limits timeout <value>
 
@@ -497,9 +502,9 @@ Global Advanced options
 
 .. cfgcmd:: set vpn l2tp remote-access name-server <address>
 
-  Connected client should use `<address>` as their DNS server. This
-  command accepts both IPv4 and IPv6 addresses. Up to two nameservers
-  can be configured for IPv4, up to three for IPv6.
+  Connected clients should use `<address>` as their DNS server. This command
+  accepts both IPv4 and IPv6 addresses. Up to two nameservers can be configured
+  for IPv4, up to three for IPv6.
 
 .. cfgcmd:: set vpn l2tp remote-access shaper fwmark <1-2147483647>
 

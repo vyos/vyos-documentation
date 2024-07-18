@@ -162,7 +162,7 @@ Example
 
 
 This blueprint uses VyOS as the DMVPN Hub and Cisco (7206VXR) and VyOS as
-multiple spoke sites. The lab was build using :abbr:`EVE-NG (Emulated Virtual
+multiple spoke sites. The lab was built using :abbr:`EVE-NG (Emulated Virtual
 Environment NG)`.
 
 .. figure:: /_static/images/blueprint-dmvpn.png
