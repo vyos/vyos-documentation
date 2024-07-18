@@ -13,10 +13,10 @@ address, which makes it easier to setup static routes or use dynamic routing
 protocols without having to modify IPsec policies. The other advantage is that
 it greatly simplifies router to router communication, which can be tricky with
 plain IPsec because the external outgoing address of the router usually doesn't
-match the IPsec policy of typical site-to-site setup and you need to add special
-configuration for it, or adjust the source address for outgoing traffic of your
-applications. GRE/IPsec has no such problem and is completely transparent for
-the applications.
+match the IPsec policy of a typical site-to-site setup and you would need to
+add special configuration for it, or adjust the source address of the outgoing 
+traffic of your applications. GRE/IPsec has no such problem and is completely
+transparent for applications.
 
 GRE/IPIP/SIT and IPsec are widely accepted standards, which make this scheme
 easy to implement between VyOS and virtually any other router.
@@ -163,13 +163,29 @@ Options (Global IPsec settings) Attributes
 
 * ``options``
 
- * ``disable-route-autoinstall`` Do not automatically install routes to remote networks;
+ * ``disable-route-autoinstall`` Do not automatically install routes to remote
+    networks;
 
- * ``flexvpn`` Allows FlexVPN vendor ID payload (IKEv2 only). Send the Cisco FlexVPN vendor ID payload (IKEv2 only), which is required in order to make Cisco brand devices allow negotiating a local traffic selector (from strongSwan's point of view) that is not the assigned virtual IP address if such an address is requested by strongSwan. Sending the Cisco FlexVPN vendor ID prevents the peer from narrowing the initiator's local traffic selector and allows it to e.g. negotiate a TS of 0.0.0.0/0 == 0.0.0.0/0 instead. This has been tested with a "tunnel mode ipsec ipv4" Cisco template but should also work for GRE encapsulation;
+ * ``flexvpn`` Allows FlexVPN vendor ID payload (IKEv2 only). Send the Cisco
+    FlexVPN vendor ID payload (IKEv2 only), which is required in order to make
+    Cisco brand devices allow negotiating a local traffic selector (from
+    strongSwan's point of view) that is not the assigned virtual IP address if
+    such an address is requested by strongSwan. Sending the Cisco FlexVPN
+    vendor ID prevents the peer from narrowing the initiator's local traffic
+    selector and allows it to e.g. negotiate a TS of 0.0.0.0/0 == 0.0.0.0/0
+    instead. This has been tested with a "tunnel mode ipsec ipv4" Cisco
+    template but should also work for GRE encapsulation;
 
- * ``interface`` Interface Name to use. The name of the interface on which virtual IP addresses should be installed. If not specified the addresses will be installed on the outbound interface;
+ * ``interface`` Interface Name to use. The name of the interface on which
+    virtual IP addresses should be installed. If not specified the addresses
+    will be installed on the outbound interface;
 
- * ``virtual-ip`` Allows to install virtual-ip addresses. Comma separated list of virtual IPs to request in IKEv2 configuration payloads or IKEv1 Mode Config. The wildcard addresses 0.0.0.0 and :: request an arbitrary address, specific addresses may be defined. The responder may return a different address, though, or none at all. Define the ``virtual-address`` option to configure the IP address in site-to-site hierarchy.
+ * ``virtual-ip`` Allows the installation of virtual-ip addresses. A comma 
+    separated list of virtual IPs to request in IKEv2 configuration payloads or
+    IKEv1 Mode Config. The wildcard addresses 0.0.0.0 and :: request an 
+    arbitrary address, specific addresses may be defined. The responder may
+    return a different address, or none at all. Define the ``virtual-address``
+    option to configure the IP address in a site-to-site hierarchy.
 
 *************************
 IPsec policy matching GRE
@@ -372,8 +388,8 @@ IKEv2 IPSec road-warriors remote-access VPN
 *******************************************
 
 Internet Key Exchange version 2, IKEv2 for short, is a request/response
-protocol developed by both Cisco and Microsoft. It is used to establish
-and secure IPv4/IPv6 connections, be it a site-to-site VPN or from a
+protocol developed by both Cisco and Microsoft. It is used to establish and
+secure IPv4/IPv6 connections, be it a site-to-site VPN or from a
 road-warrior connecting to a hub site. IKEv2, when run in point-to-multipoint,
 or remote-access/road-warrior mode, secures the server-side with another layer
 by using an x509 signed server certificate.
@@ -396,11 +412,11 @@ This example uses CACert as certificate authority.
   set pki ca CAcert_Class_3_Root certificate 'MIIGPTCCBCWgAwIBAgIDFOIoMA0GCSqGSIb3DQEBDQUAMHkxEDAOBgNVBAoTB1Jvb3QgQ0ExHjAcBgNVBAsTFWh0dHA6Ly93d3cuY2FjZXJ0Lm9yZzEiMCAGA1UEAxMZQ0EgQ2VydCBTaWduaW5nIEF1dGhvcml0eTEhMB8GCSqGSIb3DQEJARYSc3VwcG9ydEBjYWNlcnQub3JnMB4XDTIxMDQxOTEyMTgzMFoXDTMxMDQxNzEyMTgzMFowVDEUMBIGA1UEChMLQ0FjZXJ0IEluYy4xHjAcBgNVBAsTFWh0dHA6Ly93d3cuQ0FjZXJ0Lm9yZzEcMBoGA1UEAxMTQ0FjZXJ0IENsYXNzIDMgUm9vdDCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAKtJNRFIfNImflOUz0Op3SjXQiqL84d4GVh8D57aiX3h++tykA10oZZkq5+gJJlz2uJVdscXe/UErEa4w75/ZI0QbCTzYZzA8pD6Ueb1aQFjww9W4kpCz+JEjCUoqMV5CX1GuYrz6fM0KQhF5Byfy5QEHIGoFLOYZcRD7E6CjQnRvapbjZLQ7N6QxX8KwuPr5jFaXnQ+lzNZ6MMDPWAzv/fRb0fEze5ig1JuLgiapNkVGJGmhZJHsK5I6223IeyFGmhyNav/8BBdwPSUp2rVO5J+TJAFfpPBLIukjmJ0FXFuC3ED6q8VOJrU0gVyb4z5K+taciX5OUbjchs+BMNkJyIQKopPWKcDrb60LhPtXapI19V91Cp7XPpGBFDkzA5CW4zt2/LP/JaT4NsRNlRiNDiPDGCbO5dWOK3z0luLoFvqTpa4fNfVoIZwQNORKbeiPK31jLvPGpKK5DR7wNhsX+kKwsOnIJpa3yxdUly6R9Wb7yQocDggL9V/KcCyQQNokszgnMyXS0XvOhAKq3A6mJVwrTWx6oUrpByAITGprmB6gCZIALgBwJNjVSKRPFbnr9s6JfOPMVTqJouBWfmh0VMRxXudA/Z0EeBtsSw/LIaRmXGapneLNGDRFLQsrJ2vjBDTn8Rq+G8T/HNZ92ZCdB6K4/jc0m+YnMtHmJVABfvpAgMBAAGjgfIwge8wDwYDVR0TAQH/BAUwAwEB/zBhBggrBgEFBQcBAQRVMFMwIwYIKwYBBQUHMAGGF2h0dHA6Ly9vY3NwLkNBY2VydC5vcmcvMCwGCCsGAQUFBzAChiBodHRwOi8vd3d3LkNBY2VydC5vcmcvY2xhc3MzLmNydDBFBgNVHSAEPjA8MDoGCysGAQQBgZBKAgMBMCswKQYIKwYBBQUHAgEWHWh0dHA6Ly93d3cuQ0FjZXJ0Lm9yZy9jcHMucGhwMDIGA1UdHwQrMCkwJ6AloCOGIWh0dHBzOi8vd3d3LmNhY2VydC5vcmcvY2xhc3MzLmNybDANBgkqhkiG9w0BAQ0FAAOCAgEAxh6td1y0KJvRyI1EEsC9dnYEgyEH+BGCf2vBlULAOBG1JXCNiwzB1Wz9HBoDfIv4BjGlnd5BKdSLm4TXPcE3hnGjH1thKR5dd3278K25FRkTFOY1gP+mGbQ3hZRB6IjDX+CyBqS7+ECpHTms7eo/mARN+Yz5R3lzUvXs3zSX+z534NzRg4i6iHNHWqakFcQNcA0PnksTB37vGD75pQGqeSmx51L6UzrIpn+274mhsaFNL85jhX+lKuk71MGjzwoThbuZ15xmkITnZtRQs6HhLSIqJWjDILIrxLqYHehK71xYwrRNhFb3TrsWaEJskrhveM0Os/vvoLNkh/L3iEQ5/LnmLMCYJNRALF7I7gsduAJNJrgKGMYvHkt1bo8uIXO8wgNV7qoU4JoaB1ML30QUqGcFr0TI06FFdgK2fwy5hulPxm6wuxW0v+iAtXYx/mRkwQpYbcVQtrIDvx1CT1k50cQxi+jIKjkcFWHw3kBoDnCos0/ukegPT7aQnk2AbL4c7nCkuAcEKw1BAlSETkfqi5btdlhh58MhewZv1LcL5zQyg8w1puclT3wXQvy8VwPGn0J/mGD4gLLZ9rGcHDUECokxFoWk+u5MCcVqmGbsyG4q5suS3CNslsHURfM8bQK4oLvHR8LCHEBMRcdFBn87cSvOK6eB1kdGKLA8ymXxZp8='
   set pki ca CAcert_Signing_Authority certificate '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'
 
-After you obtained your server certificate you can import it from a file
-on the local filesystem, or paste it into the CLI. Please note that
-when entering the certificate manually you need to strip the
-``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the certificate
-or key needs to be presented in a single line without line breaks (``\n``).
+After you obtain your server certificate you can import it from a file on the
+local filesystem, or paste it into the CLI. Please note that when entering the
+certificate manually you need to strip the ``-----BEGIN KEY-----`` and
+``-----END KEY-----`` tags. Also, the certificate or key needs to be presented
+in a single line without line breaks (``\n``).
 
 To import it from the filesystem use:
 
@@ -440,7 +456,7 @@ Every connection/remote-access pool we configure also needs a pool where
 we can draw our client IP addresses from. We provide one IPv4 and IPv6 pool.
 Authorized clients will receive an IPv4 address from the 192.0.2.128/25 prefix
 and an IPv6 address from the 2001:db8:2000::/64 prefix. We can also send some
-DNS nameservers down to our clients used on their connection.
+DNS nameservers down for our clients to use with their connection.
 
 .. code-block::
 
@@ -450,8 +466,8 @@ DNS nameservers down to our clients used on their connection.
   set vpn ipsec remote-access pool ra-rw-ipv6 prefix '2001:db8:2000::/64'
 
 VyOS supports multiple IKEv2 remote-access connections. Every connection can
-have its dedicated IKE/ESP ciphers, certificates or local listen address for
-e.g. inbound load balancing.
+have its own dedicated IKE/ESP ciphers, certificates or local listen address
+for e.g. inbound load balancing.
 
 We configure a new connection named ``rw`` for road-warrior, that identifies
 itself as ``192.0.2.1`` to the clients and uses the ``vyos`` certificate
