@@ -14,8 +14,8 @@ protocols without having to modify IPsec policies. The other advantage is that
 it greatly simplifies router to router communication, which can be tricky with
 plain IPsec because the external outgoing address of the router usually doesn't
 match the IPsec policy of a typical site-to-site setup and you would need to
-add special configuration for it, or adjust the source address for your
-applications' outgoing traffic. GRE/IPsec has no such problem and is completely
+add special configuration for it, or adjust the source address of the outgoing 
+traffic of your applications. GRE/IPsec has no such problem and is completely
 transparent for applications.
 
 GRE/IPIP/SIT and IPsec are widely accepted standards, which make this scheme
