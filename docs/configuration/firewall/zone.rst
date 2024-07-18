@@ -17,9 +17,6 @@ Overview
    Documentation for most of the new firewall CLI can be
    found in the `firewall
    <https://docs.vyos.io/en/latest/configuration/firewall/general.html>`_
-   chapter. The legacy firewall is still available for versions before
-   1.4-rolling-202308040557 and can be found in the
-   :doc:`legacy firewall configuration </configuration/firewall/general-legacy>`
    chapter.
 
 In this section there's useful information on all firewall configuration that
