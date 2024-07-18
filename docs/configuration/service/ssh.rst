@@ -109,6 +109,25 @@ Configuration
 
   Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 
+.. cfgcmd:: set service ssh pubkey-accepted-algorithm <name>
+
+  Specifies the signature algorithms that will be accepted for public key
+  authentication
+
+  List of supported algorithms: ``ssh-ed25519``,
+  ``ssh-ed25519-cert-v01@openssh.com``, ``sk-ssh-ed25519@openssh.com``,
+  ``sk-ssh-ed25519-cert-v01@openssh.com``, ``ecdsa-sha2-nistp256``,
+  ``ecdsa-sha2-nistp256-cert-v01@openssh.com``, ``ecdsa-sha2-nistp384``,
+  ``ecdsa-sha2-nistp384-cert-v01@openssh.com``, ``ecdsa-sha2-nistp521``,
+  ``ecdsa-sha2-nistp521-cert-v01@openssh.com``,
+  ``sk-ecdsa-sha2-nistp256@openssh.com``,
+  ``sk-ecdsa-sha2-nistp256-cert-v01@openssh.com``,
+  ``webauthn-sk-ecdsa-sha2-nistp256@openssh.com``,
+  ``ssh-dss``, ``ssh-dss-cert-v01@openssh.com``, ``ssh-rsa``,
+  ``ssh-rsa-cert-v01@openssh.com``, ``rsa-sha2-256``,
+  ``rsa-sha2-256-cert-v01@openssh.com``, ``rsa-sha2-512``,
+  ``rsa-sha2-512-cert-v01@openssh.com``
+
 Dynamic-protection
 ==================
 Protects host from brute-force attacks against

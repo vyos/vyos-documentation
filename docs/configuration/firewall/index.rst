@@ -1,4 +1,4 @@
-:lastproofread: 2023-11-23
+:lastproofread: 2024-07-03
 
 ########
 Firewall
@@ -26,14 +26,23 @@ firewall are covered below:
 If the interface where the packet was received isn't part of a bridge, then 
 packet is processed at the **IP Layer**:
 
-   * **Prerouting**: several actions can be done in this stage, and currently
-     these actions are defined in different parts in VyOS configuration. Order
-     is important, and all these actions are performed before any actions
-     defined under ``firewall`` section. Relevant configuration that acts in
-     this stage are:
+   * **Prerouting**: All packets that are received by the router
+     are processed in this stage, regardless of the destination of the packet.
+     Starting from vyos-1.5-rolling-202406120020, a new section was added to 
+     the firewall configuration. There are several actions that can be done in
+     this stage, and currently these actions are also defined in different
+     parts of the VyOS configuration. Order is important, and the relevant 
+     configuration that acts in this stage are:
+
+      * **Firewall prerouting**: rules defined under ``set firewall [ipv4 |
+        ipv6] prerouting raw...``. All rules defined in this section are
+        processed before connection tracking subsystem.
 
       * **Conntrack Ignore**: rules defined under ``set system conntrack ignore
-        [ipv4 | ipv6] ...``.
+        [ipv4 | ipv6] ...``. Starting from vyos-1.5-rolling-202406120020,
+        configuration done in this section can be done in ``firewall [ipv4 |
+        ipv6] prerouting ...``. For compatibility reasons, this feature is
+        still present, but it will be removed in the future.
 
       * **Policy Route**: rules defined under ``set policy [route | route6]
         ...``.
@@ -41,9 +50,9 @@ packet is processed at the **IP Layer**:
       * **Destination NAT**: rules defined under ``set [nat | nat66]
         destination...``.
 
-   * **Destination is the router?**: choose appropriate path based on
+   * **Destination is the router?**: choose an appropriate path based on
      destination IP address. Transit forward continues to **forward**,
-     while traffic that destination IP address is configured on the router
+     while traffic where the destination IP address is configured on the router
      continues to **input**.
 
    * **Input**: stage where traffic destined for the router itself can be
@@ -64,14 +73,16 @@ packet is processed at the **IP Layer**:
 
    * **Output**: stage where traffic that originates from the router itself
      can be filtered and controlled. Bear in mind that this traffic can be a
-     new connection originated by a internal process running on VyOS router,
+     new connection originated by a internal process running on the VyOS router
      such as NTP, or a response to traffic received externally through
      **input** (for example response to an ssh login attempt to the router).
-     This includes ipv4 and ipv6 filtering rules, defined in:
+     This includes ipv4 and ipv6 rules, and two different sections are present:
 
-     * ``set firewall ipv4 output filter ...``.
+     * **Output Prerouting**: ``set firewall [ipv4 | ipv6] output filter ...``.
+       As described in **Prerouting**, rules defined in this section are
+       processed before connection tracking subsystem.
 
-     * ``set firewall ipv6 output filter ...``.
+     * **Output Filter**: ``set firewall [ipv4 | ipv6] output filter ...``.
 
    * **Postrouting**: as in **Prerouting**, several actions defined in
      different parts of VyOS configuration are performed in this
@@ -120,6 +131,9 @@ The main structure of the VyOS firewall CLI is shown next:
                + filter
             - output
                + filter
+               + raw
+            - prerouting
+               + raw
             - name
                + custom_name
        * ipv6
@@ -129,6 +143,9 @@ The main structure of the VyOS firewall CLI is shown next:
                + filter
             - output
                + filter
+               + raw
+            - prerouting
+               + raw
             - ipv6-name
                + custom_name
        * zone
@@ -164,10 +181,10 @@ Zone-based firewall
    zone
 
 With zone-based firewalls a new concept was implemented, in addition to the
-standard in and out traffic flows, a local flow was added. This local was for
-traffic originating and destined to the router itself. Which means additional
-rules were required to secure the firewall itself from the network, in
-addition to the existing inbound and outbound rules from the traditional
+standard in and out traffic flows, a local flow was added. This local flow was
+for traffic originating and destined to the router itself. Which means that 
+additional rules were required to secure the firewall itself from the network,
+in addition to the existing inbound and outbound rules from the traditional
 concept above.
 
 To configure VyOS with the

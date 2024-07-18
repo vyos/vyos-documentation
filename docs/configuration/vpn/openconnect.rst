@@ -4,7 +4,7 @@
 OpenConnect
 ###########
 
-OpenConnect-compatible server feature is available from this release.
+OpenConnect-compatible server feature has been available since Equuleus (1.3).
 Openconnect VPN supports SSL connection and offers full network access. SSL VPN
 network extension connects the end-user system to the corporate network with
 access controls based only on network layer information, such as destination IP
@@ -32,7 +32,7 @@ will create a self signed certificates and will be stored in configuration:
   run generate pki ca install <CA name>
   run generate pki certificate sign <CA name> install <Server name>
  
-We can also create the certificates using Cerbort which is an easy-to-use 
+We can also create the certificates using Certbot which is an easy-to-use 
 client that fetches a certificate from Let's Encrypt an open certificate 
 authority launched by the EFF, Mozilla, and others and deploys it to a web 
 server.

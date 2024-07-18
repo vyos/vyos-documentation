@@ -1,4 +1,4 @@
-:lastproofread: 2023-01-26
+:lastproofread: 2024-07-04
 
 .. _wireless-interface:
 
@@ -6,20 +6,20 @@
 WLAN/WIFI - Wireless LAN
 ########################
 
-:abbr:`WLAN (Wireless LAN)` interface provide 802.11 (a/b/g/n/ac) wireless
-support (commonly referred to as Wi-Fi) by means of compatible hardware. If your
-hardware supports it, VyOS supports multiple logical wireless interfaces per
-physical device.
+The :abbr:`WLAN (Wireless LAN)` interface provides 802.11 (a/b/g/n/ac) wireless
+support (commonly referred to as Wi-Fi) by means of compatible hardware. If
+your hardware supports it, VyOS supports multiple logical wireless interfaces
+per physical device.
 
 There are three modes of operation for a wireless interface:
 
-* :abbr:`WAP (Wireless Access-Point)` provides network access to connecting
+* :abbr:`WAP (Wireless Access-Point)` mode provides network access to connecting
   stations if the physical hardware supports acting as a WAP
 
-* A station acts as a Wi-Fi client accessing the network through an available
+* Station mode acts as a Wi-Fi client accessing the network through an available
   WAP
 
-* Monitor, the system passively monitors any kind of wireless traffic
+* Monitor mode lets the system passively monitor wireless traffic
 
 If the system detects an unconfigured wireless device, it will be automatically
 added the configuration tree, specifying any detected settings (for example,
@@ -36,15 +36,10 @@ Common interface configuration
    :var0: wireless
    :var1: wlan0
 
-Wireless options
-================
+System Wide configuration
+=========================
 
-.. cfgcmd:: set interfaces wireless <interface> channel <number>
-
-  Channel number (IEEE 802.11), for 2.4Ghz (802.11 b/g/n) channels range from
-  1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 173
-
-.. cfgcmd:: set interfaces wireless <interface> country-code <cc>
+.. cfgcmd:: set system wireless country-code <cc>
 
   Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
   to indicate country in which device is operating. This can limit available
@@ -52,10 +47,27 @@ Wireless options
 
   .. note:: This option is mandatory in Access-Point mode.
 
+Wireless options
+================
+
+.. cfgcmd:: set system wireless country-code <cc>
+
+  Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
+  to indicate country in which the box is operating. This can limit available
+  channels and transmit power.
+
+  .. note:: This option is mandatory in Access-Point mode.
+
+.. cfgcmd:: set interfaces wireless <interface> channel <number>
+
+  Channel number (IEEE 802.11), for 2.4Ghz (802.11 b/g/n) channels range from
+  1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 173. 
+  On 6GHz (802.11 ax) channels range from 1 to 233.
+
 .. cfgcmd:: set interfaces wireless <interface> disable-broadcast-ssid
 
   Send empty SSID in beacons and ignore probe request frames that do not specify
-  full SSID, i.e., require stations to know SSID.
+  full SSID, i.e., require stations to know the SSID.
 
 .. cfgcmd:: set interfaces wireless <interface> expunge-failing-stations
 
@@ -84,7 +96,16 @@ Wireless options
 
   Management Frame Protection (MFP) according to IEEE 802.11w
 
-.. cfgcmd:: set interfaces wireless <interface> mode <a | b | g | n | ac>
+  .. note:: :abbr:`MFP (Management Frame Protection)` is required for WPA3.
+
+.. cfgcmd:: set interfaces wireless <interface> enable-bf-protection
+
+  Beacon Protection: management frame protection for Beacon frames.
+
+  .. note:: This option requires :abbr:`MFP (Management Frame Protection)` 
+    to be enabled.
+
+.. cfgcmd:: set interfaces wireless <interface> mode <a | b | g | n | ac | ax>
 
   Operation mode of wireless radio.
 
@@ -93,6 +114,9 @@ Wireless options
   * ``g`` - 802.11g - 54 Mbits/sec (default)
   * ``n`` - 802.11n - 600 Mbits/sec
   * ``ac`` - 802.11ac - 1300 Mbits/sec
+  * ``ax`` - 802.11ax - exceeds 1GBit/sec
+
+  .. note:: In VyOS, 802.11ax is only implemented for 6GHz as of yet.
 
 .. cfgcmd:: set interfaces wireless <interface> physical-device <device>
 
@@ -102,10 +126,12 @@ Wireless options
 
 .. cfgcmd:: set interfaces wireless <interface> reduce-transmit-power <number>
 
-  Add Power Constraint element to Beacon and Probe Response frames.
+  Adds the Power Constraint information element to Beacon and Probe Response
+  frames.
 
-  This option adds Power Constraint element when applicable and Country element
-  is added. Power Constraint element is required by Transmit Power Control.
+  This option adds the Power Constraint information element when applicable
+  and the Country information element is configured. The Power Constraint 
+  element is required by Transmit Power Control.
 
   Valid values are 0..255.
 
@@ -131,7 +157,9 @@ PPDU
 
 .. cfgcmd:: set interfaces wireless <interface> capabilities require-ht
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities require-hvt
+.. cfgcmd:: set interfaces wireless <interface> capabilities require-vht
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities require-he
 
 HT (High Throughput) capabilities (802.11n)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -149,6 +177,7 @@ HT (High Throughput) capabilities (802.11n)
 
   Supported channel width set.
 
+  * ``ht20`` - 20 MHz channel width
   * ``ht40-`` - Both 20 MHz and 40 MHz with secondary channel below the primary
     channel
   * ``ht40+`` - Both 20 MHz and 40 MHz with secondary channel above the primary
@@ -234,10 +263,14 @@ VHT (Very High Throughput) capabilities (802.11ac)
 
   Beamforming capabilities:
 
-  * ``single-user-beamformer`` - Support for operation as single user beamformer
-  * ``single-user-beamformee`` - Support for operation as single user beamformee
-  * ``multi-user-beamformer`` - Support for operation as single user beamformer
-  * ``multi-user-beamformee`` - Support for operation as single user beamformer
+  * ``single-user-beamformer`` - Support for operation as 
+    single user beamformer
+  * ``single-user-beamformee`` - Support for operation as 
+    single user beamformee
+  * ``multi-user-beamformer`` - Support for operation as 
+    multi user beamformer
+  * ``multi-user-beamformee`` - Support for operation as 
+    multi user beamformee
 
 .. cfgcmd:: set interfaces wireless <interface> capabilities vht
    center-channel-freq <freq-1 | freq-2> <number>
@@ -262,7 +295,8 @@ VHT (Very High Throughput) capabilities (802.11ac)
 
   Enable LDPC (Low Density Parity Check) coding capability
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities vht link-adaptation
+.. cfgcmd:: set interfaces wireless <interface> 
+  capabilities vht link-adaptation
 
   VHT link adaptation capabilities
 
@@ -274,7 +308,8 @@ VHT (Very High Throughput) capabilities (802.11ac)
 .. cfgcmd:: set interfaces wireless <interface> capabilities vht
    max-mpdu-exp <value>
 
-  Set the maximum length of A-MPDU pre-EOF padding that the station can receive
+  Set the maximum length of A-MPDU pre-EOF padding that the station can 
+  receive
 
 .. cfgcmd:: set interfaces wireless <interface> capabilities vht
    short-gi <80 | 160>
@@ -297,6 +332,58 @@ VHT (Very High Throughput) capabilities (802.11ac)
 
   Station supports receiving VHT variant HT Control field
 
+HE (High Efficiency) capabilities (802.11ax)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. cfgcmd:: set interfaces wireless <interface> 
+  capabilities he antenna-pattern-fixed
+
+  Tell the AP that antenna positions are fixed and will not change
+  during the lifetime of an association.
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities he beamform 
+  <single-user-beamformer | single-user-beamformee | multi-user-beamformer>
+
+  Beamforming capabilities:
+
+  * ``single-user-beamformer`` - Support for operation as 
+    single user beamformer
+  * ``single-user-beamformee`` - Support for operation as 
+    single user beamformee
+  * ``multi-user-beamformer`` - Support for operation as single 
+    user beamformer
+
+.. cfgcmd:: set interfaces wireless <interface> 
+  capabilities he bss-color <number>
+
+  BSS coloring helps to prevent channel jamming when multiple APs use 
+  the same channels.
+
+  Valid values are 1..63
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities he 
+  center-channel-freq <freq-1 | freq-2> <number>
+
+  HE operating channel center frequency - center freq 1
+  (for use with 80, 80+80 and 160 modes)
+
+  HE operating channel center frequency - center freq 2
+  (for use with the 80+80 mode)
+
+  <number> must be within 1..233. For 80 MHz channels it should be 
+  channel + 6 and for 160 MHz channels, it should be channel + 14.
+
+.. cfgcmd:: set interfaces wireless <interface> 
+  capabilities he channel-set-width <number>
+
+  <number> must be one of:
+
+  * ``131`` - 20 MHz channel width
+  * ``132`` - 40 MHz channel width
+  * ``133`` - 80 MHz channel width
+  * ``134`` - 160 MHz channel width
+  * ``135`` - 80+80 MHz channel width
+
 Wireless options (Station/Client)
 =================================
 
@@ -306,9 +393,9 @@ default physical device (``phy0``) is used.
 
 .. code-block:: none
 
+  set system wireless country-code de
   set interfaces wireless wlan0 type station
   set interfaces wireless wlan0 address dhcp
-  set interfaces wireless wlan0 country-code de
   set interfaces wireless wlan0 ssid Test
   set interfaces wireless wlan0 security wpa passphrase '12345678'
 
@@ -316,11 +403,14 @@ Resulting in
 
 .. code-block:: none
 
+  system {
+    wireless {
+      country-code de
+    }
+  }
   interfaces {
-    [...]
     wireless wlan0 {
       address dhcp
-      country-code de
       security {
         wpa {
           passphrase "12345678"
@@ -333,13 +423,13 @@ Resulting in
 Security
 ========
 
-:abbr:`WPA (Wi-Fi Protected Access)` and WPA2 Enterprise in combination with
-802.1x based authentication can be used to authenticate users or computers
-in a domain.
+:abbr:`WPA (Wi-Fi Protected Access)`, WPA2 Enterprise and WPA3 Enterprise in 
+combination with 802.1x based authentication can be used to authenticate 
+users or computers in a domain.
 
 The wireless client (supplicant) authenticates against the RADIUS server
 (authentication server) using an :abbr:`EAP (Extensible Authentication
-Protocol)`  method configured on the RADIUS server. The WAP (also referred
+Protocol)` method configured on the RADIUS server. The WAP (also referred
 to as authenticator) role is to send all authentication messages between the
 supplicant and the configured authentication server, thus the RADIUS server
 is responsible for authenticating the users.
@@ -353,10 +443,11 @@ The WAP in this example has the following characteristics:
 * Wireless channel ``1``
 * RADIUS server at ``192.168.3.10`` with shared-secret ``VyOSPassword``
 
+.. stop_vyoslinter
 .. code-block:: none
 
+  set system wireless country-code de
   set interfaces wireless wlan0 address '192.168.2.1/24'
-  set interfaces wireless wlan0 country-code de
   set interfaces wireless wlan0 type access-point
   set interfaces wireless wlan0 channel 1
   set interfaces wireless wlan0 mode n
@@ -366,15 +457,21 @@ The WAP in this example has the following characteristics:
   set interfaces wireless wlan0 security wpa radius server 192.168.3.10 key 'VyOSPassword'
   set interfaces wireless wlan0 security wpa radius server 192.168.3.10 port 1812
 
+.. start_vyoslinter
+
 Resulting in
 
 .. code-block:: none
 
+  system {
+    wireless {
+      country-code de
+    }
+  }
   interfaces {
     [...]
     wireless wlan0 {
           address 192.168.2.1/24
-          country-code de
           channel 1
           mode n
           security {
@@ -431,6 +528,7 @@ about all wireless interfaces.
 Use this command to view operational status and details wireless-specific
 information about all wireless interfaces.
 
+.. stop_vyoslinter
 .. code-block:: none
 
   vyos@vyos:~$ show interfaces wireless detail
@@ -458,11 +556,14 @@ information about all wireless interfaces.
       TX:  bytes    packets     errors    dropped    carrier collisions
            183413      5430          0          0          0          0
 
+.. start_vyoslinter
+
 .. opcmd:: show interfaces wireless <wlanX>
 
 This command shows both status and statistics on the specified wireless
 interface. The wireless interface identifier can range from wlan0 to wlan999.
 
+.. stop_vyoslinter
 .. code-block:: none
 
   vyos@vyos:~$ show interfaces wireless wlan0
@@ -477,6 +578,8 @@ interface. The wireless interface identifier can range from wlan0 to wlan999.
            66072        282          0          0          0          0
       TX:  bytes    packets     errors    dropped    carrier collisions
            83413        430          0          0          0          0
+
+.. start_vyoslinter
 
 
 .. opcmd:: show interfaces wireless <wlanX> brief
@@ -554,6 +657,7 @@ The WAP in this example has the following characteristics:
 
 .. code-block:: none
 
+  set system wireless country-code de
   set interfaces wireless wlan0 address '192.168.2.1/24'
   set interfaces wireless wlan0 type access-point
   set interfaces wireless wlan0 channel 1
@@ -562,18 +666,21 @@ The WAP in this example has the following characteristics:
   set interfaces wireless wlan0 security wpa mode wpa2
   set interfaces wireless wlan0 security wpa cipher CCMP
   set interfaces wireless wlan0 security wpa passphrase '12345678'
-  set interfaces wireless wlan0 country-code de
 
 Resulting in
 
 .. code-block:: none
 
+  system {
+    wireless {
+      country-code de
+    }
+  }
   interfaces {
     [...]
     wireless wlan0 {
           address 192.168.2.1/24
           channel 1
-          country-code de
           mode n
           security {
               wpa {
@@ -608,8 +715,8 @@ still put this card into AP mode using the following configuration:
 .. stop_vyoslinter
 .. code-block:: none
 
+  set system wireless country-code 'us'
   set interfaces wireless wlan0 channel '1'
-  set interfaces wireless wlan0 country-code 'us'
   set interfaces wireless wlan0 mode 'n'
   set interfaces wireless wlan0 physical-device 'phy0'
   set interfaces wireless wlan0 ssid 'VyOS'

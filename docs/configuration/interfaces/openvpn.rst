@@ -1,4 +1,4 @@
-:lastproofread: 2021-07-05
+:lastproofread: 2024-07-04
 
 .. _openvpn:
 
@@ -9,8 +9,8 @@ OpenVPN
 Traditionally hardware routers implement IPsec exclusively due to relative
 ease of implementing it in hardware and insufficient CPU power for doing
 encryption in software. Since VyOS is a software router, this is less of a
-concern. OpenVPN has been widely used on UNIX platform for a long time and is
-a popular option for remote access VPN, though it's also capable of
+concern. OpenVPN has been widely used on the UNIX platform for a long time and
+is a popular option for remote access VPN, though it's also capable of
 site-to-site connections.
 
 Advantages of OpenVPN are:
@@ -45,14 +45,15 @@ remains a relatively obscure feature, and many router appliances
 still don't support it. However, it's very useful for quickly setting up
 tunnels between routers.
 
-As of VyOS 1.4, OpenVPN site-to-site mode can use either pre-shared keys or x.509 certificates.
+As of VyOS 1.4, OpenVPN site-to-site mode can use either pre-shared keys or
+x.509 certificates.
 
-The pre-shared key mode is deprecated and will be removed from future OpenVPN versions,
-so VyOS will have to remove support for that option as well. The reason is that using pre-shared keys
-is significantly less secure than using TLS.
+The pre-shared key mode is deprecated and will be removed from future OpenVPN
+versions, so VyOS will have to remove support for that option as well. The
+reason is that using pre-shared keys is significantly less secure than using TLS.
 
-We'll configure OpenVPN using self-signed certificates, and then discuss the legacy
-pre-shared key mode.
+We'll configure OpenVPN using self-signed certificates, and then discuss the
+legacy pre-shared key mode.
 
 In both cases, we will use the following settings:
 
@@ -168,10 +169,11 @@ Remote Configuration:
 Pre-shared keys
 ===============
 
-Until VyOS 1.4, the only option for site-to-site OpenVPN without PKI was to use pre-shared keys.
-That option is still available but it is deprecated and will be removed in the future.
-However, if you need to set up a tunnel to an older VyOS version or a system with older OpenVPN,
-you need to still need to know how to use it.
+Until VyOS 1.4, the only option for site-to-site OpenVPN without PKI was to use
+pre-shared keys. That option is still available but it is deprecated and will
+be removed in the future. However, if you need to set up a tunnel to an older
+VyOS version or a system with older OpenVPN, you need to still need to know how
+to use it.
 
 First, you need to generate a key by running ``run generate pki openvpn shared-secret install <name>`` from configuration mode.
 You can use any name, we will use ``s2s``.
@@ -311,11 +313,11 @@ not come up.
 Firewall policy can also be applied to the tunnel interface for `local`, `in`,
 and `out` directions and functions identically to ethernet interfaces.
 
-If making use of multiple tunnels, OpenVPN must have a way to distinguish
-between different tunnels aside from the pre-shared-key. This is either by
-referencing IP address or port number. One option is to dedicate a public IP
-to each tunnel. Another option is to dedicate a port number to each tunnel
-(e.g. 1195,1196,1197...).
+If you're making use of multiple tunnels, OpenVPN must have a way to 
+distinguish between different tunnels aside from the pre-shared-key. This is 
+done either by referencing IP addresses or port numbers. One option is to
+dedicate a public IP to each tunnel. Another option is to dedicate a port 
+number to each tunnel (e.g. 1195,1196,1197...).
 
 OpenVPN status can be verified using the `show openvpn` operational commands.
 See the built-in help for a complete list of options.
@@ -327,7 +329,7 @@ Server
 Multi-client server is the most popular OpenVPN mode on routers. It always uses
 x.509 authentication and therefore requires a PKI setup. Refer this topic
 :ref:`configuration/pki/index:pki` to generate a CA certificate,
-a server certificate and key, a certificate revocation list, a Diffie-Hellman
+a server certificate and key, a certificate revocation list, and a Diffie-Hellman
 key exchange parameters file. You do not need client certificates and keys for
 the server setup.
 
@@ -340,14 +342,14 @@ all client subnets belong to 10.23.0.0/20. All clients need access to the
 192.168.0.0/16 network.
 
 First we need to specify the basic settings. 1194/UDP is the default. The
-``persistent-tunnel`` option is recommended, it prevents the TUN/TAP device from
-closing on connection resets or daemon reloads.
+``persistent-tunnel`` option is recommended, as it prevents the TUN/TAP device
+from closing on connection resets or daemon reloads.
 
 .. note:: Using **openvpn-option -reneg-sec** can be tricky. This option is
-   used to renegotiate data channel after n seconds. When used at both server
-   and client, the lower value will trigger the renegotiation. If you set it to
-   0 on one side of the connection (to disable it), the chosen value on the
-   other side will determine when the renegotiation will occur.
+   used to renegotiate data channel after n seconds. When used on both the 
+   server and client, the lower value will trigger the renegotiation. If you
+   set it to 0 on one side of the connection (to disable it), the chosen value
+   on the other side will determine when the renegotiation will occur.
 
 .. code-block:: none
 
@@ -357,7 +359,7 @@ closing on connection resets or daemon reloads.
   set interfaces openvpn vtun10 protocol udp
 
 Then we need to generate, add and specify the names of the cryptographic materials.
-Each of the install command should be applied to the configuration and commited
+Each of the install commands should be applied to the configuration and commited
 before using under the openvpn interface configuration.
 
 .. code-block:: none
@@ -392,7 +394,7 @@ installing that route on clients.
   set interfaces openvpn vtun10 server push-route 192.168.0.0/16
   set interfaces openvpn vtun10 server subnet 10.23.1.0/24
 
-Since it's a HQ and branch offices setup, we will want all clients to have
+Since it's a HQ with branch offices setup, we will want all clients to have
 fixed addresses and we will route traffic to specific subnets through them. We
 need configuration for each client to achieve this.
 
@@ -413,9 +415,9 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
   set protocols static route 10.23.0.0/20 interface vtun10
 
 Additionally, each client needs a copy of ca cert and its own client key and
-cert files. The files are plaintext so they may be copied either manually from the CLI.
-Client key and cert files should be signed with the proper ca cert and generated on the
-server side.
+cert files. The files are plaintext so they may be copied manually from the CLI.
+Client key and cert files should be signed with the proper ca cert and generated
+on the server side.
 
 HQ's router requires the following steps to generate crypto materials for the Branch 1:
 
@@ -570,12 +572,12 @@ example:
 Client
 ******
 
-VyOS can not only act as an OpenVPN site-to-site or server for multiple clients.
-You can indeed also configure any VyOS OpenVPN interface as an OpenVPN client
-connecting to a VyOS OpenVPN server or any other OpenVPN server.
+VyOS can not only act as an OpenVPN site-to-site or server for multiple clients
+but you can also configure any VyOS OpenVPN interface as an OpenVPN client that
+connects to a VyOS OpenVPN server or any other OpenVPN server.
 
-Given the following example we have one VyOS router acting as OpenVPN server
-and another VyOS router acting as OpenVPN client. The server also pushes a
+Given the following example we have one VyOS router acting as an OpenVPN server
+and another VyOS router acting as an OpenVPN client. The server also pushes a
 static client IP address to the OpenVPN client. Remember, clients are identified
 using their CN attribute in the SSL certificate.
 
@@ -637,16 +639,22 @@ benefit from it (see :ref:`issues_features`).
 If you are a hacker or want to try on your own we support passing raw OpenVPN
 options to OpenVPN.
 
-.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option 'persistent-key'
+.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option 'persist-key'
 
-Will add ``persistent-key`` at the end of the generated OpenVPN configuration.
+Will add ``persist-key`` to the generated OpenVPN configuration.
 Please use this only as last resort - things might break and OpenVPN won't start
 if you pass invalid options/syntax.
 
 .. cfgcmd:: set interfaces openvpn vtun10 openvpn-option
-   'push &quot;keepalive 1 10&quot;'
+   'push keepalive 10 60'
 
 Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
+
+.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option
+   'route-up &quot;/config/auth/tun_up.sh arg1&quot;'
+
+Will add ``route-up "/config/auth/tun_up.sh arg1"`` to the generated OpenVPN 
+config file. The path and arguments need to be single- or double-quoted.
 
 .. note:: Sometimes option lines in the generated OpenVPN configuration require
    quotes. This is done through a hack on our config generator. You can pass
@@ -748,7 +756,7 @@ between kernel and user space for encryption and packet handling.
 As a result, the processing of each packet becomes more efficient, potentially
 leveraging hardware encryption offloading support available in the kernel.
 
-.. note:: OpenVPN DCO is not full OpenVPN features supported , is currently
+.. note:: OpenVPN DCO is not a fully supported OpenVPN feature, and is currently
    considered experimental. Furthermore, there are certain OpenVPN features and
    use cases that remain incompatible with DCO. To get a comprehensive
    understanding of the limitations associated with DCO, refer to the list of
@@ -764,9 +772,9 @@ DCO support is a per-tunnel option and it is not automatically enabled by
 default for new or upgraded tunnels. Existing tunnels will continue to function 
 as they have in the past.
 
-DCO can be enabled for both new and existing tunnels,VyOS adds an option in each 
-tunnel configuration where we can enable this function  .The current best 
-practice is to create a new tunnel with DCO to minimize the chance of problems 
+DCO can be enabled for both new and existing tunnels. VyOS adds an option in
+each tunnel configuration where we can enable this function. The current best
+practice is to create a new tunnel with DCO to minimize the chance of problems
 with existing clients.
 
 .. cfgcmd:: set interfaces openvpn <name> offload dco

@@ -220,6 +220,10 @@ Verification
    inet 172.25.0.247/16 scope global eth0v10
    valid_lft forever preferred_lft forever
 
+.. warning:: RFC 3768 creates a virtual interface. If you want to apply 
+   the destination NAT rule to the traffic sent to the virtual MAC, set 
+   the created virtual interface as `inbound-interface`.
+
 Global options
 --------------
 

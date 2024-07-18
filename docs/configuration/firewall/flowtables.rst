@@ -1,4 +1,4 @@
-:lastproofread: 2023-12-26
+:lastproofread: 2024-07-02
 
 .. _firewall-flowtables-configuration:
 
@@ -12,12 +12,12 @@ Flowtables Firewall Configuration
 Overview
 ********
 
-In this section there's useful information of all firewall configuration that
+In this section there's useful information on all firewall configuration that
 can be done regarding flowtables.
 
 .. cfgcmd:: set firewall flowtables ...
 
-From main structure defined in
+From the main structure defined in
 :doc:`Firewall Overview</configuration/firewall/index>`
 in this section you can find detailed information only for the next part
 of the general structure:
@@ -30,7 +30,7 @@ of the general structure:
                + ...
 
 
-Flowtables  allows you to define a fastpath through the flowtable datapath.
+Flowtables allow you to define a fastpath through the flowtable datapath.
 The flowtable supports for the layer 3 IPv4 and IPv6 and the layer 4 TCP
 and UDP protocols.
 
@@ -85,12 +85,12 @@ Provide a description to the flow table.
 
 Creating rules for using flow tables:
 
-.. cfgcmd:: set firewall [ipv4 | ipv4] forward filter rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    action offload
 
    Create firewall rule in forward chain, and set action to ``offload``.
 
-.. cfgcmd:: set firewall [ipv4 | ipv4] forward filter rule <1-999999>
+.. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    offload-target <flowtable>
 
    Create firewall rule in forward chain, and define which flowtbale
@@ -107,10 +107,10 @@ Things to be considered in this setup:
    * Minimum firewall ruleset is provided, which includes some filtering rules,
      and appropriate rules for using flowtable offload capabilities.
 
-As described, first packet will be evaluated by all the firewall path, so
+As described, the first packet will be evaluated by the firewall path, so a
 desired connection should be explicitly accepted. Same thing should be taken
 into account for traffic in reverse order. In most cases state policies are
-used in order to accept connection in reverse patch.
+used in order to accept a connection in the reverse path.
 
 We will only accept traffic coming from interface eth0, protocol tcp and
 destination port 1122. All other traffic trespassing the router should be
@@ -142,7 +142,7 @@ Explanation
 
 Analysis on what happens for desired connection:
 
-   1. First packet is received on eht0, with destination address 192.0.2.100,
+   1. Firstly, a packet is received on eth0, with destination address 192.0.2.100,
    protocol tcp and destination port 1122. Assume such destination address is
    reachable through interface eth1.
 
@@ -151,22 +151,22 @@ Analysis on what happens for desired connection:
 
    3. Rule 110 is hit, so connection is accepted.
 
-   4. Once answer from server 192.0.2.100 is seen in opposite direction,
+   4. Once an answer from server 192.0.2.100 is seen in opposite direction,
    connection state will be triggered to **established**, so this reply is
    accepted in rule 20.
 
-   5. Second packet for this connection is received by the router. Since
+   5. The second packet for this connection is received by the router. Since
    connection state is **established**, then rule 10 is hit, and a new entry
    in the flowtable FT01 is added for this connection.
 
-   6. All subsecuent packets will skip traditional path, and will be offloaded
-   and will use the **Fast Path**.
+   6. All the following packets will skip the traditional path, will be
+   offloaded and use the **Fast Path**.
 
 Checks
 ------
 
-It's time to check conntrack table, to see if any connection was accepted,
-and if was properly offloaded
+It's time to check the conntrack table, to see if any connections were accepted,
+and if it was properly offloaded
 
 .. code-block:: none
 

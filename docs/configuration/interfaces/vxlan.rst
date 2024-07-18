@@ -1,4 +1,4 @@
-:lastproofread: 2023-01-26
+:lastproofread: 2024-07-04
 
 .. _vxlan-interface:
 
@@ -103,8 +103,8 @@ Unicast
 
 .. cfgcmd:: set interfaces vxlan <interface> remote <address>
 
-  IPv4/IPv6 remote address of the VXLAN tunnel. Alternative to multicast, the
-  remote IPv4/IPv6 address can set directly.
+  IPv4/IPv6 remote address of the VXLAN tunnel. An alternative to multicast,
+  the remote IPv4/IPv6 address can be set directly.
 
 Multicast
 ^^^^^^^^^
@@ -117,7 +117,7 @@ Multicast
 
 .. cfgcmd:: set interfaces vxlan <interface> group <address>
 
-  Multicast group address for VXLAN interface. VXLAN tunnels can be built
+  Multicast group address for the VXLAN interface. VXLAN tunnels can be built
   either via Multicast or via Unicast.
 
   Both IPv4 and IPv6 multicast is possible.
@@ -132,7 +132,7 @@ the same broadcast domain.
 
 Let's assume PC4 on Leaf2 wants to ping PC5 on Leaf3. Instead of setting Leaf3
 as our remote end manually, Leaf2 encapsulates the packet into a UDP-packet and
-sends it to its designated multicast-address via Spine1. When Spine1 receives
+sends it to its' designated multicast-address via Spine1. When Spine1 receives
 this packet it forwards it to all other leaves who has joined the same
 multicast-group, in this case Leaf3. When Leaf3 receives the packet it forwards
 it, while at the same time learning that PC4 is reachable behind Leaf2, because
@@ -188,8 +188,8 @@ Example
 
 The setup is this: Leaf2 - Spine1 - Leaf3
 
-Spine1 is a Cisco IOS router running version 15.4, Leaf2 and Leaf3 is each a
-VyOS router running 1.2.
+Spine1 is a Cisco IOS router running version 15.4, Leaf2 and Leaf3 are each
+VyOS routers running 1.2.
 
 This topology was built using GNS3.
 
@@ -282,8 +282,8 @@ traffic from.
   set interfaces vxlan vxlan242 source-interface 'eth0'
   set interfaces vxlan vxlan242 vni '242'
 
-As you can see, Leaf2 and Leaf3 configuration is almost identical. There are
-lots of commands above, I'll try to into more detail below, command
+As you can see, the Leaf2 and Leaf3 configurations are almost identical. There
+are lots of commands above, I'll try to go into more detail below. Command
 descriptions are placed under the command boxes:
 
 .. code-block:: none
@@ -339,7 +339,7 @@ that behavior is available using the above command.
 Unicast VXLAN
 =============
 
-Alternative to multicast, the remote IPv4 address of the VXLAN tunnel can be
+Alternatively to multicast, the remote IPv4 address of the VXLAN tunnel can be
 set directly. Let's change the Multicast example from above:
 
 .. code-block:: none

@@ -1,4 +1,4 @@
-:lastproofread: 2023-01-26
+:lastproofread: 2024-07-04
 
 .. _wireguard:
 
@@ -30,7 +30,7 @@ Generate Keypair
 
 .. opcmd:: generate pki wireguard key-pair
 
-   It generates the keypair, which includes the public and private parts.
+   Generates the keypair, which includes the public and private parts.
    The key is not stored on the system - only a keypair is generated.
 
    .. code-block:: none
@@ -41,7 +41,7 @@ Generate Keypair
 
 .. opcmd:: generate pki wireguard key-pair install interface <interface>
 
-   Generates a keypair, which includes the public and private parts, and build
+   Generates a keypair, which includes the public and private parts, and builds
    a configuration command to install this key to ``interface``.
 
    .. code-block:: none
@@ -101,8 +101,8 @@ Optional
 .. opcmd:: generate pki wireguard preshared-key install interface <interface> peer <peer>
 
    An additional layer of symmetric-key crypto can be used on top of the
-   asymmetric crypto. This command automatically creates for you the required
-   CLI command to install this PSK for a given peer.
+   asymmetric crypto. This command automatically creates the required CLI
+   command to install this PSK for a given peer.
 
    This is optional.
 
@@ -409,7 +409,7 @@ the VyOS CLI.
   connect to ``interface`` on this router. The public key from the specified
   interface is automatically extracted and embedded into the configuration.
 
-  The command also generates a configuration snipped which can be copy/pasted
+  The command also generates a configuration snippet which can be copy/pasted
   into the VyOS CLI if needed. The supplied ``<name>`` on the CLI will become
   the peer name in the snippet.
 

@@ -1,4 +1,4 @@
-:lastproofread: 2023-11-08
+:lastproofread: 2024-07-03
 
 .. _firewall-configuration:
 
@@ -12,13 +12,13 @@ Bridge Firewall Configuration
 Overview
 ********
 
-In this section there's useful information of all firewall configuration that
-can be done regarding bridge, and appropriate op-mode commands.
+In this section there's useful information on all firewall configuration that
+can be done regarding bridges, and appropriate op-mode commands.
 Configuration commands covered in this section:
 
 .. cfgcmd:: set firewall bridge ...
 
-From main structure defined in :doc:`Firewall Overview</configuration/firewall/index>`
+From the main structure defined in :doc:`Firewall Overview</configuration/firewall/index>`
 in this section you can find detailed information only for the next part
 of the general structure:
 
@@ -41,7 +41,7 @@ For traffic that needs to be forwarded internally by the bridge, base chain is
 is **forward**, and it's base command for filtering is ``set firewall bridge
 forward filter ...``, which happens in stage 4, highlighted with red color.
 
-Custom bridge firewall chains can be create with command ``set firewall bridge
+Custom bridge firewall chains can be created with the command ``set firewall bridge
 name <name> ...``. In order to use such custom chain, a rule with action jump,
 and the appropriate target should be defined in a base chain.
 
@@ -55,9 +55,9 @@ and the appropriate target should be defined in a base chain.
 Bridge Rules
 ************
 
-For firewall filtering, firewall rules needs to be created. Each rule is
+For firewall filtering, firewall rules need to be created. Each rule is
 numbered, has an action to apply if the rule is matched, and the ability
-to specify multiple criteria matchers. Data packets go through the rules
+to specify multiple matching criteria. Data packets go through the rules
 from 1 - 999999, so order is crucial. At the first match the action of the
 rule will be executed.
 
@@ -65,7 +65,7 @@ Actions
 =======
 
 If a rule is defined, then an action must be defined for it. This tells the
-firewall what to do if all criteria matchers defined for such rule do match.
+firewall what to do if all matching criterea in the rule are met.
 
 In firewall bridge rules, the action can be:
 
@@ -101,7 +101,7 @@ In firewall bridge rules, the action can be:
    queue <0-65535>
 
    To be used only when action is set to ``queue``. Use this command to specify
-   queue target to use. Queue range is also supported.
+   the queue target to use. Queue range is also supported.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    queue-options bypass
@@ -121,7 +121,7 @@ In firewall bridge rules, the action can be:
    distribute packets between several queues.
 
 Also, **default-action** is an action that takes place whenever a packet does
-not match any rule in it's chain. For base chains, possible options for
+not match any rule in its' chain. For base chains, possible options for
 **default-action** are **accept** or **drop**.
 
 .. cfgcmd:: set firewall bridge forward filter default-action
@@ -129,10 +129,10 @@ not match any rule in it's chain. For base chains, possible options for
 .. cfgcmd:: set firewall bridge name <name> default-action
    [accept | continue | drop | jump | queue | return]
 
-   This set the default action of the rule-set if no rule matched a packet
-   criteria. If default-action is set to ``jump``, then
+   This sets the default action of the rule-set if a packet does not match
+   any of the rules in that chain. If default-action is set to ``jump``, then
    ``default-jump-target`` is also needed. Note that for base chains, default
-   action can only be set to ``accept`` or ``drop``, while on custom chain,
+   action can only be set to ``accept`` or ``drop``, while on custom chains
    more actions are available.
 
 .. cfgcmd:: set firewall bridge name <name> default-jump-target <text>
@@ -141,9 +141,9 @@ not match any rule in it's chain. For base chains, possible options for
    command to specify jump target for default rule.
 
 .. note:: **Important note about default-actions:**
-   If default action for any base chain is not defined, then the default
-   action is set to **accept** for that chain. For custom chains, if default
-   action is not defined, then the default-action is set to **drop**.
+   If the default action for any base chain is not defined, then the default
+   action is set to **accept** for that chain. For custom chains, if the 
+   default action is not defined, then the default-action is set to **drop**.
 
 Firewall Logs
 =============
@@ -155,7 +155,7 @@ log options can be defined.
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999> log
 
    Enable logging for the matched packet. If this configuration command is not
-   present, then log is not enabled.
+   present, then the log is not enabled.
 
 .. cfgcmd:: set firewall bridge forward filter default-log
 .. cfgcmd:: set firewall bridge name <name> default-log
@@ -170,14 +170,15 @@ log options can be defined.
    log-options level [emerg | alert | crit | err | warn | notice
    | info | debug]
 
-   Define log-level. Only applicable if rule log is enable.
+   Define log-level. Only applicable if rule log is enabled.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    log-options group <0-65535>
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    log-options group <0-65535>
 
-   Define log group to send message to. Only applicable if rule log is enable.
+   Define the log group to send messages to. Only applicable if rule log is
+   enabled.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    log-options snapshot-length <0-9000>
@@ -185,15 +186,16 @@ log options can be defined.
    log-options snapshot-length <0-9000>
 
    Define length of packet payload to include in netlink message. Only
-   applicable if rule log is enable and log group is defined.
+   applicable if rule log is enabled and the log group is defined.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    log-options queue-threshold <0-65535>
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    log-options queue-threshold <0-65535>
 
-   Define number of packets to queue inside the kernel before sending them to
-   userspace. Only applicable if rule log is enable and log group is defined.
+   Define the number of packets to queue inside the kernel before sending them
+   to userspace. Only applicable if rule log is enabled and the log group is 
+   defined.
 
 Firewall Description
 ====================
@@ -207,7 +209,7 @@ For reference, a description can be defined for every defined custom chain.
 Rule Status
 ===========
 
-When defining a rule, it is enable by default. In some cases, it is useful to
+When defining a rule, it is enabled by default. In some cases, it is useful to
 just disable the rule, rather than removing it.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999> disable
