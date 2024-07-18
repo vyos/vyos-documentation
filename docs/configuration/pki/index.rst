@@ -370,7 +370,7 @@ Examples
 ========
 
 Create a CA chain and leaf certificates
--------------------------------------
+---------------------------------------
 
 This configuration generates & installs into the VyOS PKI system a root
 certificate authority, alongside two intermediary certificate authorities for
