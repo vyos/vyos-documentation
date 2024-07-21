@@ -660,3 +660,19 @@ Hardware
    Bus 002 Device 002: ID 05e3:0620 Genesys Logic, Inc. GL3523 Hub
    Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
    Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+WWAN
+^^^^
+
+The LTE module can be enabled as simple as this config snippet:
+
+.. code-block:: none
+
+   interfaces {
+      wwan wwan0 {
+         address "dhcp"
+         apn "YOUR-APN-GOES-HERE"
+      }
+   }
+
+For more information please refer to chapter: :ref:`wwan-interface`
