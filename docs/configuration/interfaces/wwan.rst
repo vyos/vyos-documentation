@@ -315,6 +315,7 @@ The following hardware modules have been tested successfully in an
 * Sierra Wireless AirPrime MC7710 miniPCIe card (LTE)
 * Huawei ME909u-521 miniPCIe card (LTE)
 * Huawei ME909s-120 miniPCIe card (LTE)
+* HP LT4120 Snapdragon X5 LTE
 
 ***************
 Firmware Update

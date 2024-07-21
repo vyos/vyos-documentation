@@ -419,3 +419,244 @@ I connected the key to one black USB port on the back and powered on. The first
 VyOS screen has some readability issues. Press :kbd:`Enter` to continue.
 
 Then VyOS should boot and you can perform the ``install image``
+
+.. _gowin_gw-fn-1ur1-10g:
+
+Gowin GW-FN-1UR1-10G
+====================
+
+A platform utilizing an Intel Alder Lake-N100 CPU with 6M cache, TDP 6W.
+Onboard LPDDR5 16GB RAM and 128GB eMMC (can be used for image installation).
+
+The appliance comes with 2 * 2.5GbE Intel I226-V and 3 * 1GbE Intel I210
+where one supports IEEE802.3at PoE+ (Typical 30W).
+
+In addition there is a Mellanox ConnectX-3 2* 10GbE SFP+ NIC available.
+
+**NOTE:** This is the entry level platform. Other derivates exists with
+i3-N305 CPU and 2x 25GbE!
+
+Shopping Cart
+-------------
+
+* 1x Gowin GW-FN-1UR1-10G
+* 2x 128GB M.2 NVMe SSDs
+
+Optional (WiFi + WWAN)
+----------------------
+
+* 1x MediaTek 7921E M.2 NGFF WIFI module (not tested as this currently leads to a Kernel crash)
+* 1x HP LT4120 Snapdragon X5 LTE WWAN module
+
+Pictures
+--------
+
+.. figure:: ../_static/images/gowin-01.png
+
+.. figure:: ../_static/images/gowin-02.png
+
+.. figure:: ../_static/images/gowin-03.png
+
+.. figure:: ../_static/images/gowin-04.png
+
+Cooling
+-------
+
+The device itself is passivly cooled, whereas the power supply has an active fan.
+Even if the main processor is powered off, the power supply fan is operating and
+the entire chassis draws 7.5W. During operation the chassis drew arround 38W.
+
+BIOS Settings
+-------------
+
+No settings needed to be altered, everything worked out of the box!
+
+Installation
+------------
+
+The system provides a regular RS232 console port using 115200,8n1 setting which
+is sufficient to install VyOS from a USB pendrive.
+
+First Boot
+----------
+
+Please note that there is a weirdness on the network interface mapping.
+The interface <-> MAC mapping is going upwards but the NICs are placed
+somehow swapped on the mainboard/MACs programmed in a swapped order.
+
+See interface description for more detailed mapping.
+
+.. code-block:: none
+
+   vyos@vyos:~$ show interfaces
+   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+   Interface    IP Address      MAC                VRF        MTU  S/L    Description
+   -----------  --------------  -----------------  -------  -----  -----  -------------
+   eth0         -               00:f0:cb:00:00:99  default   1500  u/D    Intel I226-V - Front eth2
+   eth1         -               00:f0:cb:00:00:9a  default   1500  u/D    Intel I226-V - Front eth1
+   eth2         -               00:f0:cb:00:00:9b  default   1500  u/D    Intel I210 - Front eth4
+   eth3         -               00:f0:cb:00:00:9c  default   1500  u/D    Intel I210 - Front eth3
+   eth4         -               00:f0:cb:00:00:9d  default   1500  u/D    Intel I210 - Front POE
+   eth5         -               00:02:c9:00:00:30  default   1500  u/D    Mellanox ConnectX-3 - SFP2
+   eth6         -               00:02:c9:00:00:31  default   1500  u/D    Mellanox ConnectX-3 - SFP1
+   lo           127.0.0.1/8     00:00:00:00:00:00  default  65536  u/u
+                ::1/128
+   wwan0        -               d2:39:76:8e:05:12  default   1500  A/D
+
+VyOS 1.4 (sagitta)
+^^^^^^^^^^^^^^^^^^
+
+Connect serial port to a PC through a USB <-> RJ45 console cable. Set terminal emulator
+to 115200 8N1. You can also perform the installation using VGA or HDMI ports.
+
+In this example I choose to install VyOS as RAID-1 on both NVMe drives. However, a previous
+installation on the 128GB eMMC storage worked without any issues, too.
+
+.. code-block:: none
+
+  Welcome to VyOS - vyos ttyS0
+
+  vyos login:
+
+Perform Image installation using `install image` CLI command. This installation uses two 128GB NVMe
+disks setup as RAID1.
+
+.. code-block:: none
+
+   Welcome to VyOS!
+
+      ┌── ┐
+      . VyOS 1.4.0
+      └ ──┘  sagitta
+
+   * Support portal: https://support.vyos.io
+   * Documentation:  https://docs.vyos.io/en/sagitta
+   * Project news:   https://blog.vyos.io
+   * Bug reports:    https://vyos.dev
+
+   You can change this banner using "set system login banner post-login" command.
+
+   VyOS is a free software distribution that includes multiple components,
+   you can check individual component licenses under /usr/share/doc/*/copyright
+   Use of this pre-built image is governed by the EULA you can find in
+   /usr/share/vyos/EULA
+
+   vyos@vyos:~$ install image
+
+   Welcome to VyOS installation!
+   This command will install VyOS to your permanent storage.
+   Would you like to continue? [y/N] y
+
+   What would you like to name this image? (Default: 1.4.0)
+
+   Please enter a password for the "vyos" user:
+   Please confirm password for the "vyos" user:
+
+   What console should be used by default? (K: KVM, S: Serial)? (Default: S)
+
+   Probing disks
+   4 disk(s) found
+   Would you like to configure RAID-1 mirroring? [Y/n] y
+
+   The following disks were found:
+         /dev/sda (14.4 GB)
+         /dev/mmcblk0 (116.5 GB)
+   Would you like to configure RAID-1 mirroring on them? [Y/n] n
+
+   Would you like to choose two disks for RAID-1 mirroring? [Y/n] y
+   Disks available:
+         1: /dev/sda     (14.4 GB)
+         2: /dev/mmcblk0 (116.5 GB)
+         3: /dev/nvme1n1 (119.2 GB)
+         4: /dev/nvme0n1 (119.2 GB)
+   Select first disk: 3
+
+   Remaining disks:
+         1: /dev/sda     (14.4 GB)
+         2: /dev/mmcblk0 (116.5 GB)
+         3: /dev/nvme0n1 (119.2 GB)
+   Select second disk: 3
+
+   Installation will delete all data on both drives. Continue? [y/N] y
+
+   Searching for data from previous installations
+   No previous installation found
+   Creating partitions on /dev/nvme1n1
+   Creating partition table...
+   Creating partitions on /dev/nvme0n1
+   Creating partition table...
+   Creating RAID array
+   Updating initramfs
+   Creating filesystem on RAID array
+   The following config files are available for boot:
+         1: /opt/vyatta/etc/config/config.boot
+         2: /opt/vyatta/etc/config.boot.default
+
+   Which file would you like as boot config? (Default: 1)
+   Creating temporary directories
+   Mounting new partitions
+   Creating a configuration file
+   Copying system image files
+   Installing GRUB configuration files
+   Installing GRUB to the drives
+   Cleaning up
+   Unmounting target filesystems
+   Removing temporary files
+   The image installed successfully; please reboot now.
+
+Hardware
+--------
+
+.. code-block:: none
+
+   vyos@vyos:~$ lspci
+   00:00.0 Host bridge: Intel Corporation Device 461c
+   00:02.0 VGA compatible controller: Intel Corporation Alder Lake-N [UHD Graphics]
+   00:0a.0 Signal processing controller: Intel Corporation Platform Monitoring Technology (rev 01)
+   00:0d.0 USB controller: Intel Corporation Device 464e
+   00:14.0 USB controller: Intel Corporation Device 54ed
+   00:14.2 RAM memory: Intel Corporation Device 54ef
+   00:15.0 Serial bus controller: Intel Corporation Device 54e8
+   00:16.0 Communication controller: Intel Corporation Device 54e0
+   00:1a.0 SD Host controller: Intel Corporation Device 54c4
+   00:1c.0 PCI bridge: Intel Corporation Device 54b8
+   00:1c.2 PCI bridge: Intel Corporation Device 54ba
+   00:1c.3 PCI bridge: Intel Corporation Device 54bb
+   00:1c.6 PCI bridge: Intel Corporation Device 54be
+   00:1d.0 PCI bridge: Intel Corporation Device 54b0
+   00:1f.0 ISA bridge: Intel Corporation Device 5481
+   00:1f.4 SMBus: Intel Corporation Device 54a3
+   00:1f.5 Serial bus controller: Intel Corporation Device 54a4
+   01:00.0 PCI bridge: ASMedia Technology Inc. Device 1806 (rev 01)
+   02:00.0 PCI bridge: ASMedia Technology Inc. Device 1806 (rev 01)
+   02:02.0 PCI bridge: ASMedia Technology Inc. Device 1806 (rev 01)
+   02:06.0 PCI bridge: ASMedia Technology Inc. Device 1806 (rev 01)
+   02:0e.0 PCI bridge: ASMedia Technology Inc. Device 1806 (rev 01)
+   03:00.0 Ethernet controller: Intel Corporation Ethernet Controller I226-V (rev 04)
+   04:00.0 Ethernet controller: Intel Corporation Ethernet Controller I226-V (rev 04)
+   05:00.0 Network controller: MEDIATEK Corp. MT7922 802.11ax PCI Express Wireless Network Adapter
+   06:00.0 SATA controller: ASMedia Technology Inc. Device 0622 (rev 01)
+   07:00.0 PCI bridge: ASMedia Technology Inc. Device 1806 (rev 01)
+   08:00.0 PCI bridge: ASMedia Technology Inc. Device 1806 (rev 01)
+   08:02.0 PCI bridge: ASMedia Technology Inc. Device 1806 (rev 01)
+   08:06.0 PCI bridge: ASMedia Technology Inc. Device 1806 (rev 01)
+   08:0e.0 PCI bridge: ASMedia Technology Inc. Device 1806 (rev 01)
+   09:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)
+   0a:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)
+   0b:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)
+   0d:00.0 Non-Volatile memory controller: Device 1ed0:2283
+   0f:00.0 Non-Volatile memory controller: Device 1ed0:2283
+   11:00.0 Ethernet controller: Mellanox Technologies MT27500 Family [ConnectX-3]
+
+.. code-block:: none
+
+   vyos@vyos:~$ lsusb
+   Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+   Bus 003 Device 005: ID 0e8d:c616 MediaTek Inc. Wireless_Device
+   Bus 003 Device 003: ID 413c:2113 Dell Computer Corp. KB216 Wired Keyboard
+   Bus 003 Device 004: ID 03f0:9d1d HP, Inc HP lt4120 Snapdragon X5 LTE
+   Bus 003 Device 002: ID 05e3:0610 Genesys Logic, Inc. Hub
+   Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+   Bus 002 Device 002: ID 05e3:0620 Genesys Logic, Inc. GL3523 Hub
+   Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+   Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
