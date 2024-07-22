@@ -176,22 +176,35 @@ Conntrack ignore rules
 Conntrack log
 =============
 
-.. cfgcmd:: set system conntrack log icmp destroy
-.. cfgcmd:: set system conntrack log icmp new
-.. cfgcmd:: set system conntrack log icmp update
-.. cfgcmd:: set system conntrack log other destroy
-.. cfgcmd:: set system conntrack log other new
-.. cfgcmd:: set system conntrack log other update
-.. cfgcmd:: set system conntrack log tcp destroy
-.. cfgcmd:: set system conntrack log tcp new
-.. cfgcmd:: set system conntrack log tcp update close-wait
-.. cfgcmd:: set system conntrack log tcp update established
-.. cfgcmd:: set system conntrack log tcp update fin-wait
-.. cfgcmd:: set system conntrack log tcp update last-ack
-.. cfgcmd:: set system conntrack log tcp update syn-received
-.. cfgcmd:: set system conntrack log tcp update time-wait
-.. cfgcmd:: set system conntrack log udp destroy
-.. cfgcmd:: set system conntrack log udp new
-.. cfgcmd:: set system conntrack log udp update
+.. cfgcmd:: set system conntrack log event destroy
+.. cfgcmd:: set system conntrack log event new
+.. cfgcmd:: set system conntrack log event update
+
+    Log the connection tracking events per type.
+
+.. cfgcmd:: set system conntrack log event destroy icmp
+.. cfgcmd:: set system conntrack log event destroy other
+.. cfgcmd:: set system conntrack log event destroy tcp
+.. cfgcmd:: set system conntrack log event destroy udp
+.. cfgcmd:: set system conntrack log event new icmp
+.. cfgcmd:: set system conntrack log event new other
+.. cfgcmd:: set system conntrack log event new tcp
+.. cfgcmd:: set system conntrack log event new udp
+.. cfgcmd:: set system conntrack log event update icmp
+.. cfgcmd:: set system conntrack log event update other
+.. cfgcmd:: set system conntrack log event update tcp
+.. cfgcmd:: set system conntrack log event update udp
 
     Log the connection tracking events per protocol.
+
+.. cfgcmd:: set system conntrack log timestamp
+
+    Turn on flow-based timestamp extension.
+
+.. cfgcmd:: set system conntrack log queue-size <100-999999>
+
+    Manage internal queue size, default size is 4096 events.
+
+.. cfgcmd:: set system conntrack log log-level <info | debug>
+
+    Manage log level
