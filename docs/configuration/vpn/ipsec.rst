@@ -14,7 +14,7 @@ protocols without having to modify IPsec policies. The other advantage is that
 it greatly simplifies router to router communication, which can be tricky with
 plain IPsec because the external outgoing address of the router usually doesn't
 match the IPsec policy of a typical site-to-site setup and you would need to
-add special configuration for it, or adjust the source address of the outgoing 
+add special configuration for it, or adjust the source address of the outgoing
 traffic of your applications. GRE/IPsec has no such problem and is completely
 transparent for applications.
 
@@ -158,6 +158,9 @@ VyOS ESP group has the next options:
 
  * ``hash`` hash algorithm (default sha1).
 
+ * ``disable-rekey`` Do not locally initiate a re-key of the SA, remote
+   peer must re-key before expiration.
+
 ***********************************************
 Options (Global IPsec settings) Attributes
 ***********************************************
@@ -181,9 +184,9 @@ Options (Global IPsec settings) Attributes
     virtual IP addresses should be installed. If not specified the addresses
     will be installed on the outbound interface;
 
- * ``virtual-ip`` Allows the installation of virtual-ip addresses. A comma 
+ * ``virtual-ip`` Allows the installation of virtual-ip addresses. A comma
     separated list of virtual IPs to request in IKEv2 configuration payloads or
-    IKEv1 Mode Config. The wildcard addresses 0.0.0.0 and :: request an 
+    IKEv1 Mode Config. The wildcard addresses 0.0.0.0 and :: request an
     arbitrary address, specific addresses may be defined. The responder may
     return a different address, or none at all. Define the ``virtual-address``
     option to configure the IP address in a site-to-site hierarchy.
@@ -641,7 +644,7 @@ Operation Mode
 
 .. opcmd:: reset vpn ipsec site-to-site all
 
-   Reset all site-to-site IPSec VPN sessions. It terminates all active 
+   Reset all site-to-site IPSec VPN sessions. It terminates all active
    child_sa and reinitiates the connection.
 
 .. opcmd:: reset vpn ipsec site-to-site peer <name>
