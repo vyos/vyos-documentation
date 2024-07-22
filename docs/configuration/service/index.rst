@@ -29,4 +29,4 @@ Service
    ssh
    tftp-server
    webproxy
-   
+   suricata   
