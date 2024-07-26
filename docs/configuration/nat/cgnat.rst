@@ -77,7 +77,7 @@ Configuration
     Set an external port-range for the external pool, the default range is 
     1024-65535. Multiple entries can be added to the same pool.
 
-.. cfgcmd:: set nat cgnat pool external <pool-name> external-port-range per-user-limit port <num>
+.. cfgcmd:: set nat cgnat pool external <pool-name> per-user-limit port <num>
 
     Set external source port limits that will be allocated to each subscriber
     individually. The default value is 2000.
@@ -91,11 +91,11 @@ Configuration
 
     Set the range of internal IP addresses for the CGNAT pool.
 
-.. cfgcmd:: set nat cgnat pool rule <num> source pool <internal-pool-name>
+.. cfgcmd:: set nat cgnat rule <num> source pool <internal-pool-name>
 
     Set the rule for the source pool.
 
-.. cfgcmd:: set nat cgnat pool rule <num> translation pool <external-pool-name>
+.. cfgcmd:: set nat cgnat rule <num> translation pool <external-pool-name>
 
     Set the rule for the translation pool.
 
