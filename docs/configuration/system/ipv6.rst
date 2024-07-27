@@ -180,16 +180,24 @@ Reset commands
 
 .. opcmd:: reset bgp ipv6 <address>
 
-   Use this command to clear Border Gateway Protocol statistics or
-   status.
+   Use this command to reset :abbr:`BGP (Border Gateway Protocol)` session to
+   address.
 
+.. opcmd:: reset bgp ipv6 <1-4294967295>
 
-.. opcmd:: reset ipv6 neighbors <address | interface>
+   Use this command to reset :abbr:`BGP (Border Gateway Protocol)` session to
+   specific ASN.
 
-   Use this command to reset IPv6 Neighbor Discovery Protocol cache for
-   an address or interface.
+.. opcmd:: reset bgp ipv6 all
 
-.. opcmd:: reset ipv6 route cache
+   Use this command to reset all :abbr:`BGP (Border Gateway Protocol)` sessions.
 
-   Use this command to flush the kernel IPv6 route cache.
-   An address can be added to flush it only for that route.
+.. opcmd:: reset bgp ipv6 external
+
+   Use this command to reset all external :abbr:`BGP (Border Gateway Protocol)`
+   sessions.
+
+.. opcmd:: reset bgp ipv6 peer-group <name>
+
+   Use this command to reset all :abbr:`BGP (Border Gateway Protocol)` member
+   sessions of a peer-group.

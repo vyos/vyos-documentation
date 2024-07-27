@@ -110,14 +110,26 @@ Clear commands
 Reset commands
 ^^^^^^^^^^^^^^
 
-And the different IPv4 **reset** commands available:
+.. opcmd:: reset bgp ipv4 <address>
 
-.. code-block:: none
+   Use this command to reset :abbr:`BGP (Border Gateway Protocol)` session to
+   address.
 
-   vyos@vyos:~$ reset ip
-   Possible completions:
-     arp           Reset Address Resolution Protocol (ARP) cache
-     bgp           Clear Border Gateway Protocol (BGP) statistics or status
-     igmp          IGMP clear commands
-     multicast     IP multicast routing table
-     route         Reset IP route
+.. opcmd:: reset bgp ipv4 <1-4294967295>
+
+   Use this command to reset :abbr:`BGP (Border Gateway Protocol)` session to
+   specific ASN.
+
+.. opcmd:: reset bgp ipv4 all
+
+   Use this command to reset all :abbr:`BGP (Border Gateway Protocol)` sessions.
+
+.. opcmd:: reset bgp ipv4 external
+
+   Use this command to reset all external :abbr:`BGP (Border Gateway Protocol)`
+   sessions.
+
+.. opcmd:: reset bgp ipv4 peer-group <name>
+
+   Use this command to reset all :abbr:`BGP (Border Gateway Protocol)` member
+   sessions of a peer-group.
