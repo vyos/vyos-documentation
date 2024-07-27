@@ -158,6 +158,22 @@ Show commands
 
    Use this command to show the status of the RIPNG protocol
 
+Clear commands
+^^^^^^^^^^^^^^
+
+.. opcmd:: clear ipv6 neighbors <address | interface>
+
+   Use this command to reset IPv6 Neighbor Discovery Protocol cache for
+   an address or interface.
+
+.. opcmd:: clear ipv6 neighbors table
+
+   Flush entire IPv6 ND cache
+
+.. opcmd:: clear ipv6 route cache
+
+   Use this command to flush the kernel IPv6 route cache.
+   An address can be added to flush it only for that route.
 
 Reset commands
 ^^^^^^^^^^^^^^

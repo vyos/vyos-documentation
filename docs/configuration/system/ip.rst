@@ -90,8 +90,24 @@ See below the different parameters available for the IPv4 **show** command:
      rip           Show Routing Information Protocol (RIP) information
      route         Show IP routes
 
+Clear commands
+^^^^^^^^^^^^^^
 
-reset commands
+.. opcmd:: clear ip arp <address | interface | table>
+
+   Use this command to reset IPv6 Neighbor Discovery Protocol cache for
+   an address or interface.
+
+.. opcmd:: clear ip arp table
+
+   Flush entire ARP cache
+
+.. opcmd:: clear ip route cache
+
+   Use this command to flush the kernel IPv6 route cache.
+   An address can be added to flush it only for that route.
+
+Reset commands
 ^^^^^^^^^^^^^^
 
 And the different IPv4 **reset** commands available:
