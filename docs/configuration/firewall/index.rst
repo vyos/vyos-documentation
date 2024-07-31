@@ -92,13 +92,31 @@ packet is processed at the **IP Layer**:
        destination...``.
 
 If the interface where the packet was received is part of a bridge, then 
-the packet is processed at the **Bridge Layer**, which contains a basic setup for
-bridge filtering:
+the packet is processed at the **Bridge Layer**:
+
+   * **Prerouting (Bridge)**: all packets that are received by the bridge are
+     processed in this stage, regardless of the destination of the packet.
+     First filters can be applied here, and/or also configure rules for
+     ignoring connection tracking system, and also apply policy routing using
+     ``set`` option while defining the rule. The relevant configuration that
+     acts in:
+
+     * ``set firewall bridge prerouting filter ...``.
 
    * **Forward (Bridge)**: stage where traffic that is trespassing through the
      bridge is filtered and controlled:
 
      * ``set firewall bridge forward filter ...``.
+
+   * **Input (Bridge)**: stage where traffic destined for the bridge itself can
+     be filtered and controlled:
+
+     * ``set firewall bridge input filter ...``.
+
+   * **Output (Bridge)**: stage where traffic that originates from the bridge
+     itself can be filtered and controlled:
+
+     * ``set firewall bridge output filter ...``.
 
 The main structure of the VyOS firewall CLI is shown next:
 
@@ -108,6 +126,14 @@ The main structure of the VyOS firewall CLI is shown next:
        * bridge
             - forward
                + filter
+            - input
+               + filter
+            - output
+               + filter
+            - prerouting
+               + filter
+            - name
+               + custom_name
        * flowtable
             - custom_flow_table
                + ...

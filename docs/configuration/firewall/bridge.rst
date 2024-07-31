@@ -6,8 +6,6 @@
 Bridge Firewall Configuration
 #############################
 
-.. note:: **Documentation under development**
-
 ********
 Overview
 ********
@@ -28,28 +26,49 @@ of the general structure:
        * bridge
             - forward
                + filter
+            - input
+               + filter
+            - output
+               + filter
+            - prerouting
+               + filter
             - name
                + custom_name
 
 Traffic which is received by the router on an interface which is member of a
-bridge is processed on the **Bridge Layer**. A simplified packet flow diagram
-for this layer is shown next:
+bridge is processed on the **Bridge Layer**. Before the bridge decision is
+made, all packets are analyzed at **Prerouting**. First filters can be applied
+here, and also rules for ignoring connection tracking system can be configured.
+The relevant configuration that acts in **prerouting** is:
 
-.. figure:: /_static/images/firewall-bridge-packet-flow.png
+  * ``set firewall bridge prerouting filter ...``.
 
-For traffic that needs to be forwarded internally by the bridge, base chain is
-is **forward**, and it's base command for filtering is ``set firewall bridge
+For traffic that needs to be switched internally by the bridge, base chain is
+**forward**, and it's base command for filtering is ``set firewall bridge
 forward filter ...``, which happens in stage 4, highlighted with red color.
+
+.. figure:: /_static/images/firewall-bridge-forward.png
+
+For traffic destined to the router itself, or that needs to be routed (assuming
+a layer3 bridge is configured), the base chain is **input**, the base command
+is ``set firewall bridge input filter ...`` and the path is:
+
+.. figure:: /_static/images/firewall-bridge-input.png
+
+If it's not dropped, then the packet is sent to **IP Layer**, and will be
+processed by the **IP Layer** firewall: IPv4 or IPv6 ruleset. Check once again
+the :doc:`general packet flow diagram</configuration/firewall/index>` if
+needed.
+
+And for traffic that originates from the bridge itself, the base chain is
+**output**, base command is ``set firewall bridge output filter ...``, and
+the path is:
+
+.. figure:: /_static/images/firewall-bridge-output.png
 
 Custom bridge firewall chains can be created with the command ``set firewall bridge
 name <name> ...``. In order to use such custom chain, a rule with action jump,
 and the appropriate target should be defined in a base chain.
-
-.. note:: **Layer 3 bridge**:
-      When an IP address is assigned to the bridge interface, and if traffic
-      is sent to the router to this IP (for example using such IP as
-      default gateway), then rules defined for **bridge firewall** won't
-      match, and firewall analysis continues at **IP layer**.
 
 ************
 Bridge Rules
@@ -82,8 +101,17 @@ In firewall bridge rules, the action can be:
 
    * ``queue``: Enqueue packet to userspace.
 
+   * ``notrack``: ignore connection tracking system. This action is only
+     available in prerouting chain.
+
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999> action
    [accept | continue | drop | jump | queue | return]
+.. cfgcmd:: set firewall bridge input filter rule <1-999999> action
+   [accept | continue | drop | jump | queue | return]
+.. cfgcmd:: set firewall bridge output filter rule <1-999999> action
+   [accept | continue | drop | jump | queue | return]
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999> action
+   [accept | continue | drop | jump | notrack | queue | return]
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999> action
    [accept | continue | drop | jump | queue | return]
 
@@ -92,33 +120,53 @@ In firewall bridge rules, the action can be:
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    jump-target <text>
+.. cfgcmd:: set firewall bridge input filter rule <1-999999>
+   jump-target <text>
+.. cfgcmd:: set firewall bridge output filter rule <1-999999>
+   jump-target <text>
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999>
+   jump-target <text>
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    jump-target <text>
 
+   If action is set to ``queue``, use next command to specify the queue
+   target. Range is also supported:
+
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
+   queue <0-65535>
+.. cfgcmd:: set firewall bridge input filter rule <1-999999>
+   queue <0-65535>
+.. cfgcmd:: set firewall bridge output filter rule <1-999999>
+   queue <0-65535>
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999>
    queue <0-65535>
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    queue <0-65535>
 
-   To be used only when action is set to ``queue``. Use this command to specify
-   the queue target to use. Queue range is also supported.
+   Also, if action is set to ``queue``, use next command to specify the queue
+   options. Possible options are ``bypass`` and ``fanout``:
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
+   queue-options bypass
+.. cfgcmd:: set firewall bridge input filter rule <1-999999>
+   queue-options bypass
+.. cfgcmd:: set firewall bridge output filter rule <1-999999>
+   queue-options bypass
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999>
    queue-options bypass
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    queue-options bypass
 
-   To be used only when action is set to ``queue``. Use this command to let
-   packet go through firewall when no userspace software is connected to the
-   queue.
-
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
+   queue-options fanout
+.. cfgcmd:: set firewall bridge input filter rule <1-999999>
+   queue-options fanout
+.. cfgcmd:: set firewall bridge output filter rule <1-999999>
+   queue-options fanout
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999>
    queue-options fanout
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    queue-options fanout
-
-   To be used only when action is set to ``queue``. Use this command to
-   distribute packets between several queues.
 
 Also, **default-action** is an action that takes place whenever a packet does
 not match any rule in its' chain. For base chains, possible options for
@@ -126,8 +174,14 @@ not match any rule in its' chain. For base chains, possible options for
 
 .. cfgcmd:: set firewall bridge forward filter default-action
    [accept | drop]
+.. cfgcmd:: set firewall bridge input filter default-action
+   [accept | drop]
+.. cfgcmd:: set firewall bridge output filter default-action
+   [accept | drop]
+.. cfgcmd:: set firewall bridge prerouting filter default-action
+   [accept | drop]
 .. cfgcmd:: set firewall bridge name <name> default-action
-   [accept | continue | drop | jump | queue | return]
+   [accept | continue | drop | jump | reject | return]
 
    This sets the default action of the rule-set if a packet does not match
    any of the rules in that chain. If default-action is set to ``jump``, then
@@ -152,18 +206,33 @@ Logging can be enable for every single firewall rule. If enabled, other
 log options can be defined.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999> log
+.. cfgcmd:: set firewall bridge input filter rule <1-999999> log
+.. cfgcmd:: set firewall bridge output filter rule <1-999999> log
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999> log
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999> log
 
    Enable logging for the matched packet. If this configuration command is not
    present, then the log is not enabled.
 
 .. cfgcmd:: set firewall bridge forward filter default-log
+.. cfgcmd:: set firewall bridge input filter default-log
+.. cfgcmd:: set firewall bridge output filter default-log
+.. cfgcmd:: set firewall bridge prerouting filter default-log
 .. cfgcmd:: set firewall bridge name <name> default-log
 
    Use this command to enable the logging of the default action on
    the specified chain.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
+   log-options level [emerg | alert | crit | err | warn | notice
+   | info | debug]
+.. cfgcmd:: set firewall bridge input filter rule <1-999999>
+   log-options level [emerg | alert | crit | err | warn | notice
+   | info | debug]
+.. cfgcmd:: set firewall bridge output filter rule <1-999999>
+   log-options level [emerg | alert | crit | err | warn | notice
+   | info | debug]
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999>
    log-options level [emerg | alert | crit | err | warn | notice
    | info | debug]
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
@@ -174,6 +243,12 @@ log options can be defined.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    log-options group <0-65535>
+.. cfgcmd:: set firewall bridge input filter rule <1-999999>
+   log-options group <0-65535>
+.. cfgcmd:: set firewall bridge output filter rule <1-999999>
+   log-options group <0-65535>
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999>
+   log-options group <0-65535>
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    log-options group <0-65535>
 
@@ -182,6 +257,12 @@ log options can be defined.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
    log-options snapshot-length <0-9000>
+.. cfgcmd:: set firewall bridge input filter rule <1-999999>
+   log-options snapshot-length <0-9000>
+.. cfgcmd:: set firewall bridge output filter rule <1-999999>
+   log-options snapshot-length <0-9000>
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999>
+   log-options snapshot-length <0-9000>
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    log-options snapshot-length <0-9000>
 
@@ -189,6 +270,12 @@ log options can be defined.
    applicable if rule log is enabled and the log group is defined.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
+   log-options queue-threshold <0-65535>
+.. cfgcmd:: set firewall bridge input filter rule <1-999999>
+   log-options queue-threshold <0-65535>
+.. cfgcmd:: set firewall bridge output filter rule <1-999999>
+   log-options queue-threshold <0-65535>
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999>
    log-options queue-threshold <0-65535>
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    log-options queue-threshold <0-65535>
@@ -206,6 +293,19 @@ For reference, a description can be defined for every defined custom chain.
 
    Provide a rule-set description to a custom firewall chain.
 
+.. cfgcmd:: set firewall bridge forward filter rule <1-999999>
+   description <text>
+.. cfgcmd:: set firewall bridge input filter rule <1-999999>
+   description <text>
+.. cfgcmd:: set firewall bridge output filter rule <1-999999>
+   description <text>
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999>
+   description <text>
+.. cfgcmd:: set firewall bridge name <name> rule <1-999999>
+   description <text>
+
+   Provide a description for each rule.
+
 Rule Status
 ===========
 
@@ -213,6 +313,9 @@ When defining a rule, it is enabled by default. In some cases, it is useful to
 just disable the rule, rather than removing it.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999> disable
+.. cfgcmd:: set firewall bridge input filter rule <1-999999> disable
+.. cfgcmd:: set firewall bridge output filter rule <1-999999> disable
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999> disable
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999> disable
 
    Command for disabling a rule but keep it in the configuration.
@@ -221,65 +324,31 @@ Matching criteria
 =================
 
 There are a lot of matching criteria against which the packet can be tested.
+Please refer to :doc:`IPv4</configuration/firewall/ipv4>` and
+:doc:`IPv6</configuration/firewall/ipv6>` matching criteria for more details.
 
-.. cfgcmd:: set firewall bridge forward filter rule <1-999999>
-   destination mac-address <mac-address>
-.. cfgcmd:: set firewall bridge name <name> rule <1-999999>
-   destination mac-address <mac-address>
-.. cfgcmd:: set firewall bridge forward filter rule <1-999999>
-   source mac-address <mac-address>
-.. cfgcmd:: set firewall bridge name <name> rule <1-999999>
-   source mac-address <mac-address>
+Since bridges operates at layer 2, both matchers for IPv4 and IPv6 are
+supported in bridge firewall configuration. Same applies for firewall groups.
 
-   Match criteria based on source and/or destination mac-address.
+Use IP firewall
+===============
 
-.. cfgcmd:: set firewall bridge forward filter rule <1-999999>
-   inbound-interface name <iface>
-.. cfgcmd:: set firewall bridge name <name> rule <1-999999>
-   inbound-interface name <iface>
+By default, for switched traffic, only the rules defined under ``set firewall
+bridge`` are applied. There are two global-options that can be configured in
+order to force deeper analysis of the packet on the IP layer. These options
+are:
 
-   Match based on inbound interface. Wildcard ``*`` can be used.
-   For example: ``eth2*``. Prepending character ``!`` for inverted matching
-   criteria is also supported. For example ``!eth2``
+.. cfgcmd:: set firewall global-options apply-to-bridged-traffic ipv4
 
-.. cfgcmd:: set firewall bridge forward filter rule <1-999999>
-   inbound-interface group <iface_group>
-.. cfgcmd:: set firewall bridge name <name> rule <1-999999>
-   inbound-interface group <iface_group>
+   This command enables the IPv4 firewall for bridged traffic. If this
+   options is used, then packet will also be parsed by rules defined in ``set
+   firewall ipv4 ...`` 
 
-   Match based on inbound interface group. Prepending character ``!`` for
-   inverted matching criteria is also supported. For example ``!IFACE_GROUP``
+.. cfgcmd:: set firewall global-options apply-to-bridged-traffic ipv6
 
-.. cfgcmd:: set firewall bridge forward filter rule <1-999999>
-   outbound-interface name <iface>
-.. cfgcmd:: set firewall bridge name <name> rule <1-999999>
-   outbound-interface name <iface>
-
-   Match based on outbound interface. Wildcard ``*`` can be used.
-   For example: ``eth2*``. Prepending character ``!`` for inverted matching
-   criteria is also supported. For example ``!eth2``
-
-.. cfgcmd:: set firewall bridge forward filter rule <1-999999>
-   outbound-interface group <iface_group>
-.. cfgcmd:: set firewall bridge name <name> rule <1-999999>
-   outbound-interface group <iface_group>
-
-   Match based on outbound interface group. Prepending character ``!`` for
-   inverted matching criteria is also supported. For example ``!IFACE_GROUP``
-
-.. cfgcmd:: set firewall bridge forward filter rule <1-999999>
-   vlan id <0-4096>
-.. cfgcmd:: set firewall bridge name <name> rule <1-999999>
-   vlan id <0-4096>
-
-   Match based on vlan ID. Range is also supported.
-
-.. cfgcmd:: set firewall bridge forward filter rule <1-999999>
-   vlan priority <0-7>
-.. cfgcmd:: set firewall bridge name <name> rule <1-999999>
-   vlan priority <0-7>
-
-   Match based on vlan priority(pcp). Range is also supported.
+   This command enables the IPv6 firewall for bridged traffic. If this
+   options is used, then packet will also be parsed by rules defined in ``set
+   firewall ipv6 ...`` 
 
 ***********************
 Operation-mode Firewall

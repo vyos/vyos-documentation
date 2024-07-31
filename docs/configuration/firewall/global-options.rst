@@ -53,6 +53,11 @@ Configuration
    addressed to itself at all, no matter where it comes from or whether
    more specific rules are being applied to accept them.
 
+.. cfgcmd:: set firewall global-options apply-to-bridged-traffic [ipv4 | ipv6]
+
+   Use these commands to also use IPv4, or IPv6 firewall rules for bridged
+   traffic
+
 .. cfgcmd:: set firewall global-options broadcast-ping [enable | disable]
 
    This setting enables or disables the response to icmp broadcast
