@@ -1,4 +1,4 @@
-:lastproofread: 2024-07-03
+:lastproofread: 2024-08-05
 
 .. _firewall-configuration:
 
