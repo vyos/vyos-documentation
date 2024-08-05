@@ -1,4 +1,4 @@
-:lastproofread: 2024-07-03
+:lastproofread: 2024-08-05
 
 ########
 Firewall
@@ -97,8 +97,7 @@ the packet is processed at the **Bridge Layer**:
    * **Prerouting (Bridge)**: all packets that are received by the bridge are
      processed in this stage, regardless of the destination of the packet.
      First filters can be applied here, and/or also configure rules for
-     ignoring connection tracking system, and also apply policy routing using
-     ``set`` option while defining the rule. The relevant configuration that
+     ignoring connection tracking system. The relevant configuration that
      acts in:
 
      * ``set firewall bridge prerouting filter ...``.
