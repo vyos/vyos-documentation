@@ -50,6 +50,13 @@ Service
 
   Set custom HTTP headers to be included in all responses
 
+.. cfgcmd:: set load-balancing reverse-proxy service <name> logging facility
+  <facility> level <level>
+
+  Specify facility and level for logging.
+  For an explanation on :ref:`syslog_facilities` and :ref:`syslog_severity_level`
+  see tables in syslog configuration section.
+
 
 Rules
 ^^^^^
@@ -160,6 +167,13 @@ Backend
 
   Set custom HTTP headers to be included in all responses using the backend
 
+.. cfgcmd:: set load-balancing reverse-proxy backend <name> logging facility
+  <facility> level <level>
+
+  Specify facility and level for logging.
+  For an explanation on :ref:`syslog_facilities` and :ref:`syslog_severity_level`
+  see tables in syslog configuration section.
+
 
 Global
 -------
@@ -181,6 +195,12 @@ Global parameters
 
   Specify the minimum required TLS version 1.2 or 1.3
 
+.. cfgcmd:: set load-balancing reverse-proxy global-parameters logging
+  facility <facility> level <level>
+
+  Specify facility and level for logging.
+  For an explanation on :ref:`syslog_facilities` and :ref:`syslog_severity_level`
+  see tables in syslog configuration section.
 
 Health checks
 =============
