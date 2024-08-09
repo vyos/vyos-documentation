@@ -295,7 +295,7 @@ TACACS+
 In addition to :abbr:`RADIUS (Remote Authentication Dial-In User Service)`,
 :abbr:`TACACS (Terminal Access Controller Access Control System)` can also be
 found in large deployments.
-VyOS supports only `Authentication` via the `TACACS` server. 
+VyOS only supports `Authentication` via `TACACS+` servers but does not support `Authorization` or `Accounting` yet 
 
 TACACS is defined in :rfc:`8907`.
 
