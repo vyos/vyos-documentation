@@ -60,7 +60,7 @@ Configuring IPsec
 
   set vpn ipsec interface eth0
   set vpn l2tp remote-access ipsec-settings authentication mode pre-shared-secret
-  set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret <secret>
+  set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret secret
 
 
 .. cfgcmd:: set vpn ipsec interface <INTERFACE>
@@ -71,7 +71,7 @@ Configuring IPsec
 
    Set mode for IPsec authentication between VyOS and L2TP clients.
 
-.. cfgcmd:: set vpn l2tp remote-access ipsec-settings authentication mode <pre-shared-secret | x509>
+.. cfgcmd:: set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret <secret>
 
    Set predefined shared secret phrase.
 
