@@ -682,7 +682,8 @@ server. The following example describes a common scenario.
 
 .. code-block:: none
 
-  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 range 1 start 2001:db8::100 stop 2001:db8::199
+  set service dhcpv6-server shared-network-name 'NET' interface 'eth1'
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 range 1 start 2001:db8::100
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 range 1 stop 2001:db8::199
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 option name-server 2001:db8::ffff
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 subnet-id 1
