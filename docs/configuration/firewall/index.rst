@@ -4,6 +4,11 @@
 Firewall
 ########
 
+.. warning:: Due to a race condition that can lead to a failure during boot
+   process, all interfaces are initialized before firewall is configured. This
+   leads to a situation where the system is open to all traffic, and can be
+   considered as a security risk.
+
 As VyOS is based on Linux it leverages its firewall. The Netfilter project
 created iptables and its successor nftables for the Linux kernel to
 work directly on packet data flows. This now extends the concept of 
