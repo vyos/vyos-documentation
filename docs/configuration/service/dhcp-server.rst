@@ -627,15 +627,44 @@ used:
 
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
-   <prefix> prefix-delegation start <address> prefix-length <length>
+   <prefix> prefix-delegation prefix <pd-prefix> prefix-length <lenght>
 
-   Hand out prefixes of size `<length>` to clients in subnet `<prefix>` when
-   they request for prefix delegation.
+   Delegate prefixes from `<pd-prefix>` to clients in subnet `<prefix>`. Range
+   is defined by `<lenght>` in bits, 32 to 64.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
-   <prefix> prefix-delegation start <address> stop <address>
+   <prefix> prefix-delegation prefix <pd-prefix> delegated-length <lenght>
 
-   Delegate prefixes from the range indicated by the start and stop qualifier.
+   Hand out prefixes of size `<length>` in bits from `<pd-prefix>` to clients
+   in subnet `<prefix>` when the request for prefix delegation.
+
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> prefix-delegation prefix <pd-prefix> excluded-prefix <exclude-prefix>
+
+   Exclude `<exclude-prefix>` from `<pd-prefix>`.
+
+
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> prefix-delegation prefix <pd-prefix> excluded-prefix-length <length> 
+
+   Define lenght of exclude prefix in `<pd-prefix>`.
+
+**Example:**
+
+* A shared network named ``PD-NET`` serves subnet ``2001:db8::/64``.
+* It is connected to ``eth1``.
+* Address pool shall be ``2001:db8::100`` through ``2001:db8::199``.
+* It hands out prefixes ``2001:db8:0:10::/64`` through ``2001:db8:0:1f::/64``.
+
+.. code-block:: none
+
+  set service dhcpv6-server shared-network-name 'PD-NET' interface 'eth1'
+  set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 range 1 start 2001:db8::100
+  set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 range 1 stop 2001:db8::199
+  set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 prefix-delegation prefix 2001:db8:0:10:: delegated-length '64'
+  set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 prefix-delegation prefix 2001:db8:0:10:: prefix-length '60'
+  
+
 
 Address pools
 -------------
