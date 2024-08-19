@@ -627,15 +627,44 @@ used:
 
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
-   <prefix> prefix-delegation start <address> prefix-length <length>
+   <prefix> prefix-delegation prefix <pd-prefix> prefix-length <lenght>
 
-   Hand out prefixes of size `<length>` to clients in subnet `<prefix>` when
-   they request for prefix delegation.
+   Delegate prefixes from `<pd-prefix>` to clients in subnet `<prefix>`. Range
+   is defined by `<lenght>` in bits, 32 to 64.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
-   <prefix> prefix-delegation start <address> stop <address>
+   <prefix> prefix-delegation prefix <pd-prefix> delegated-length <lenght>
 
-   Delegate prefixes from the range indicated by the start and stop qualifier.
+   Hand out prefixes of size `<length>` in bits from `<pd-prefix>` to clients
+   in subnet `<prefix>` when the request for prefix delegation.
+
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> prefix-delegation prefix <pd-prefix> excluded-prefix <exclude-prefix>
+
+   Exclude `<exclude-prefix>` from `<pd-prefix>`.
+
+
+.. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
+   <prefix> prefix-delegation prefix <pd-prefix> excluded-prefix-length <length> 
+
+   Define lenght of exclude prefix in `<pd-prefix>`.
+
+**Example:**
+
+* A shared network named ``PD-NET`` serves subnet ``2001:db8::/64``.
+* It is connected to ``eth1``.
+* Address pool shall be ``2001:db8::100`` through ``2001:db8::199``.
+* It hands out prefixes ``2001:db8:0:10::/64`` through ``2001:db8:0:1f::/64``.
+
+.. code-block:: none
+
+  set service dhcpv6-server shared-network-name 'PD-NET' interface 'eth1'
+  set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 range 1 start 2001:db8::100
+  set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 range 1 stop 2001:db8::199
+  set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 prefix-delegation prefix 2001:db8:0:10:: delegated-length '64'
+  set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 prefix-delegation prefix 2001:db8:0:10:: prefix-length '60'
+  
+
 
 Address pools
 -------------
@@ -653,7 +682,8 @@ server. The following example describes a common scenario.
 
 .. code-block:: none
 
-  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 range 1 start 2001:db8::100 stop 2001:db8::199
+  set service dhcpv6-server shared-network-name 'NET' interface 'eth1'
+  set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 range 1 start 2001:db8::100
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 range 1 stop 2001:db8::199
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 option name-server 2001:db8::ffff
   set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 subnet-id 1
@@ -747,10 +777,12 @@ Operation Mode
 .. code-block:: none
 
   vyos@vyos:~$ show dhcpv6 server leases
-  IPv6 address   State    Last communication    Lease expiration     Remaining    Type           Pool   IAID_DUID
-  -------------  -------  --------------------  -------------------  -----------  -------------  -----  --------------------------------------------
-  2001:db8::101  active   2019/12/05 19:40:10   2019/12/06 07:40:10  11:45:21     non-temporary  NET1   98:76:54:32:00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
-  2001:db8::102  active   2019/12/05 14:01:23   2019/12/06 02:01:23  6:06:34      non-temporary  NET1   87:65:43:21:00:01:00:01:11:22:33:44:fa:fb:fc:fd:fe:ff
+  IPv6 address      State    Last communication    Lease expiration     Remaining    Type   Pool      DUID
+  ----------------  -------  --------------------  -------------------  -----------  -----  --------  --------------------------------------------
+  2001:db8::101     active   2019/12/05 19:40:10   2019/12/06 07:40:10  11:45:21     IA_NA  NET1      98:76:54:32:00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
+  2001:db8::102     active   2019/12/05 14:01:23   2019/12/06 02:01:23  6:06:34      IA_NA  NET1      87:65:43:21:00:01:00:01:11:22:33:44:fa:fb:fc:fd:fe:ff
+  2001:db8:10::/64  active   2019/12/05 23:20:10   2019/12/06 11:40:10  11:45:21     IA_PD  PD-NET1   98:76:54:32:00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
+
 
 .. hint:: Static mappings aren't shown. To show all states, use ``show dhcp
    server leases state all``.
