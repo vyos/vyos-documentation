@@ -46,6 +46,22 @@ Prefix Lists
 
    Netmask less than length
 
+Example: Prefix Lists
+============
+
+This example creates an IPv4 prefix-list named PL4-EXAMPLE-NAME, defines 3 
+rules each with 1 prefix, and matches le (less than/equal to) /32.
+
+.. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 10 action 'permit'
+.. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 10 le '32'
+.. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 10 prefix '192.0.2.0/24'
+.. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 20 action 'permit'
+.. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 20 le '32'
+.. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 20 prefix '198.51.100.0/24'
+.. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 30 action 'permit'
+.. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 30 le '32'
+.. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 30 prefix '203.0.113.0/24'
+
 IPv6 Prefix Lists
 =================
 
