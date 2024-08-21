@@ -147,8 +147,8 @@ Local Configuration:
   set interfaces openvpn vtun1 local-address '10.255.1.1'                         # Local IP of vtun interface
   set interfaces openvpn vtun1 remote-address '10.255.1.2'                        # Remote IP of vtun interface
   set interfaces openvpn vtun1 tls certificate 'openvpn-local'                    # The self-signed certificate
-  set interfaces openvpn vtun1 tls peer-fingerprint <remote cert fingerprint>     # The output of 'run show pki certificate <name> fingerprint sha256
-                                                                                    on the remote rout
+  set interfaces openvpn vtun1 tls peer-fingerprint <remote cert fingerprint>     # The output of 'run show pki certificate <name> fingerprint sha256 on the remote router
+  set interfaces openvpn vtun1 tls role active
 
 Remote Configuration:
 
@@ -163,8 +163,8 @@ Remote Configuration:
   set interfaces openvpn vtun1 local-address '10.255.1.2'                          # Local IP of vtun interface
   set interfaces openvpn vtun1 remote-address '10.255.1.1'                         # Remote IP of vtun interface
   set interfaces openvpn vtun1 tls certificate 'openvpn-remote'                    # The self-signed certificate
-  set interfaces openvpn vtun1 tls peer-fingerprint <local cert fingerprint>       # The output of 'run show pki certificate <name> fingerprint sha256
-                                                                                    on the local router
+  set interfaces openvpn vtun1 tls peer-fingerprint <local cert fingerprint>       # The output of 'run show pki certificate <name> fingerprint sha256 on the local router
+  set interfaces openvpn vtun1 tls role active
 
 Pre-shared keys
 ===============
@@ -253,14 +253,15 @@ Remote Configuration:
   set protocols static route 10.0.0.0/16 interface vtun1
 
 The configurations above will default to using 256-bit AES in GCM mode
-for encryption (if both sides support NCP) and SHA-1 for HMAC authentication.
+for encryption (if both sides support data cipher negotiation) and SHA-1 for HMAC authentication.
 SHA-1 is considered weak, but other hashing algorithms are available, as are
 encryption algorithms:
 
 For Encryption:
 
 This sets the cipher when NCP (Negotiable Crypto Parameters) is disabled or
-OpenVPN version < 2.4.0.
+OpenVPN version < 2.4.0. This option should not be used any longer in TLS
+mode and still exists for compatibility with old configurations. 
 
 .. code-block:: none
 
@@ -277,15 +278,16 @@ OpenVPN version < 2.4.0.
     aes256       AES algorithm with 256-bit key CBC
     aes256gcm    AES algorithm with 256-bit key GCM
 
-This sets the accepted ciphers to use when version => 2.4.0 and NCP is
-enabled (which is the default). Default NCP cipher for versions >= 2.4.0 is
-aes256gcm. The first cipher in this list is what server pushes to clients.
+This option was called --ncp-ciphers in OpenVPN 2.4 but has been renamed 
+to --data-ciphers in OpenVPN 2.5 to more accurately reflect its meaning.
+The first cipher in that list that is also in the client's --data-ciphers list
+is chosen. If no common cipher is found the client is rejected.
 
 .. code-block:: none
 
-  vyos@vyos# set int open vtun0 encryption ncp-ciphers
+  vyos@vyos# set int open vtun0 encryption data-ciphers
   Possible completions:
-    des          DES algorithm
+    none         Disable encryption
     3des         DES algorithm with triple encryption
     aes128       AES algorithm with 128-bit key CBC
     aes128gcm    AES algorithm with 128-bit key GCM
@@ -591,7 +593,7 @@ Server Side
 
 .. code-block:: none
 
-  set interfaces openvpn vtun10 encryption cipher 'aes256'
+  set interfaces openvpn vtun10 encryption data-ciphers 'aes256'
   set interfaces openvpn vtun10 hash 'sha512'
   set interfaces openvpn vtun10 local-host '172.18.201.10'
   set interfaces openvpn vtun10 local-port '1194'
@@ -617,7 +619,7 @@ Client Side
 
 .. code-block:: none
 
-  set interfaces openvpn vtun10 encryption cipher 'aes256'
+  set interfaces openvpn vtun10 encryption data-ciphers 'aes256'
   set interfaces openvpn vtun10 hash 'sha512'
   set interfaces openvpn vtun10 mode 'client'
   set interfaces openvpn vtun10 persistent-tunnel
@@ -628,6 +630,10 @@ Client Side
   set interfaces openvpn vtun10 tls certificate client-1
   set interfaces openvpn vtun10 tls crypt-key client-1
   set interfaces openvpn vtun10 use-lzo-compression
+
+.. note:: Compression is generally not recommended. VPN tunnels which use
+   compression are susceptible to the VORALCE attack vector. Enable compression
+   if needed.
 
 Options
 =======
@@ -854,6 +860,18 @@ The following commands let you check tunnel status.
 
    Use this command to check the tunnel status for OpenVPN site-to-site
    interfaces.
+
+OpenVPN Logs
+------------
+
+.. opcmd:: show log openvpn
+
+   Use this command to check log messages which include entries for successful
+   connections as well as failures and errors related to all OpenVPN interfaces.
+
+.. opcmd:: show log openvpn interface <name>
+
+   Use this command to check log messages specific to an interface.
 
 
 Reset OpenVPN
