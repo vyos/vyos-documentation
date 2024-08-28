@@ -105,6 +105,18 @@ Example:
   set nat66 destination rule 1 destination address 'fc00::/64'
   set nat66 destination rule 1 translation address 'fc01::/64'
 
+For the destination, groups can also be used instead of an address.
+
+Example:
+
+.. code-block:: none
+
+  set firewall group ipv6-address-group ADR-INSIDE-v6 address fc00::1
+
+  set nat66 destination rule 1 inbound-interface name 'eth0'
+  set nat66 destination rule 1 destination group address-group ADR-INSIDE-v6
+  set nat66 destination rule 1 translation address 'fc01::/64'
+
 Configuration Examples
 ======================
 
