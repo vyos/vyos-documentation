@@ -71,7 +71,8 @@ Configuration
 
    NTP process will only listen on the specified IP address. You must specify
    the `<address>` and optionally the permitted clients. Multiple listen
-   addresses can be configured.
+   addresses for same IP family is no longer supported. Only one IPv4 and one
+   IPv6 address can be configured, using separate commands for each.
 
 .. cfgcmd:: set service ntp allow-client address <address>
 

@@ -64,11 +64,12 @@ Configuration
   Disable the host validation through reverse DNS lookups - can speedup login
   time when reverse lookup is not possible.
 
-.. cfgcmd:: set service ssh macs <mac>
+.. cfgcmd:: set service ssh mac <mac>
 
   Specifies the available :abbr:`MAC (Message Authentication Code)` algorithms.
   The MAC algorithm is used in protocol version 2 for data integrity protection.
-  Multiple algorithms can be provided.
+  Multiple algorithms can be provided by using multiple commands, defining
+  one algorithm per command.
 
   List of supported MACs: ``hmac-md5``, ``hmac-md5-96``, ``hmac-ripemd160``,
   ``hmac-sha1``, ``hmac-sha1-96``, ``hmac-sha2-256``, ``hmac-sha2-512``,
