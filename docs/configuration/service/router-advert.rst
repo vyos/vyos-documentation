@@ -102,6 +102,13 @@ To disable advertisements without deleting the configuration:
 
 .. cfgcmd:: set service router-advert interface <interface> no-send-advert
 
+   If set, the router will no longer send periodic router advertisements and
+   will not respond to router solicitations.
+
+.. cfgcmd:: set service router-advert interface <interface> no-send-interval
+
+   Advertisement Interval Option (specified by Mobile IPv6) is always included in
+   Router Advertisements unless this option is set.
 
 *******
 Example
