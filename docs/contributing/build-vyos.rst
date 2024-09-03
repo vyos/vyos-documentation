@@ -741,6 +741,38 @@ binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
 to the ``vyos-build/packages`` folder for inclusion during the ISO build.
 
 
+Mellanox OFED
+^^^^^^^^^^^^^
+
+The Mellanox OFED drivers do not come from a Git repository, instead we fetch the
+tarball from Nvidia and compile the sources its contains against our kernel tree.
+
+Simply use our wrapper script to build all of the driver modules.
+
+.. code-block:: none
+
+  ./build-mellanox-ofed.sh
+  ...
+  Below is the list of OFED packages that you have chosen
+  (some may have been added by the installer due to package dependencies):
+
+  ofed-scripts
+  mlnx-tools
+  mlnx-ofed-kernel-utils
+  mlnx-ofed-kernel-modules
+  ...
+  Building packages
+  Building DEB for ofed-scripts-24.04.OFED.24.04.0.6.6 (ofed-scripts)...
+  Running  /usr/bin/dpkg-buildpackage -us -uc 
+  Installing ofed-scripts-24.04.OFED.24.04.0.6.6...
+  Running /usr/bin/dpkg -i --force-confmiss '/vyos/packages/linux-kernel/MLNX_OFED_SRC-debian-24.04-0.6.6.0/DEBS/debian12.1/x86_64/ofed-scripts_24.04.OFED.24.04.0.6.6-1_amd64.deb'
+  Building DEB for mlnx-tools-24.04.0 (mlnx-tools)...
+
+
+After compiling the packages you will find yourself the newly generated `*.deb`
+binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
+to the ``vyos-build/packages`` folder for inclusion during the ISO build.
+
 Packages
 ========
 
