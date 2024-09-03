@@ -742,7 +742,7 @@ to the ``vyos-build/packages`` folder for inclusion during the ISO build.
 
 
 Mellanox OFED
-^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 The Mellanox OFED drivers do not come from a Git repository, instead we fetch the
 tarball from Nvidia and compile the sources its contains against our kernel tree.
