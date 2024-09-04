@@ -2,24 +2,24 @@
 
 .. _terraformgoogle:
 
-Deploying VyOS in the google cloud
+Deploying VyOS in the Google Cloud
 ==================================
 
-With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the google cloud. If necessary, the infrastructure can be removed using terraform.
+With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the Google Cloud. If necessary, the infrastructure can be removed using terraform.
 Also we will make provisioning using Ansible.
 
-In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the google cloud and make provisioning using Ansible.
+In this case, we'll create the necessary files for Terraform and Ansible. Next, using Terraform, we'll create a single instance on the Google Cloud and make provisioning using Ansible.
 
-Preparation steps for deploying VyOS on google 
+Preparation steps for deploying VyOS on Google 
 ----------------------------------------------
 
-How to create a single instance and install your configuration using Terraform+Ansible+google 
+How to create a single instance and install your configuration using Terraform+Ansible+Google 
 Step by step:
 
-google cloud
+Google Cloud
 
 
-1 Create an account with google cloud and a new project
+1 Create an account with Google Cloud and a new project
 
 .. image:: /_static/images/project.png
    :width: 50%
@@ -79,15 +79,15 @@ Ansible
 
 3 Create the folder for example /root/google/
 
-4 Copy all files into your Ansible project "/root/google/" (ansible.cfg, instance.yml, mykey.json and "all"), more detailed see `Structure of files Ansible for google cloud`_
+4 Copy all files into your Ansible project "/root/google/" (ansible.cfg, instance.yml, mykey.json and "all"), more detailed see `Structure of files Ansible for Google Cloud`_
 
-mykey.json you have to get using step 2 of the google cloud
+mykey.json you have to get using step 2 of the Google Cloud
 
 
 Start 
 
 
-Type the commands on your Terrafom instance:
+Type the commands on your Terraform instance:
    
 .. code-block:: none
 
@@ -97,7 +97,7 @@ Type the commands on your Terrafom instance:
    yes
 
 
-Start creating a google cloud instance and check the result 
+Start creating a Google Cloud instance and check the result. 
 -----------------------------------------------------------
 
 .. code-block:: none
@@ -330,8 +330,8 @@ Start creating a google cloud instance and check the result
 
 
 
-After executing all the commands you will have your VyOS instance on the google cloud with your configuration, it's a very convenient desition.
-If you need to delete the instance please type the command:
+After executing all the commands, you will have your VyOS instance on the Google Cloud with your configuration; it's a very convenient decision.
+If you need to delete the instance, please type the command:
 
 .. code-block:: none
 
@@ -358,20 +358,20 @@ Make sure that you have opened access to the instance in the security group.
 
 Make sure that Ansible is pinging from Terrafom.
 
-Structure of files Terrafom for google cloud
+Structure of files Terrafom for Google Cloud
 --------------------------------------------
 
 .. code-block:: none
 
  .
  ├── vyos.tf				# The main script
- ├── ***.JSON               # The credential file from google cloud
+ ├── ***.JSON               # The credential file from Google Cloud
  ├── var.tf					# The file of all variables in "vyos.tf"
- └── terraform.tfvars		# The value of all variables (passwords, login, ip adresses and so on)
+ └── terraform.tfvars		# The value of all variables (passwords, login, IP addresses and so on)
  
 
  
-File contents of Terrafom for google cloud
+File contents of Terrafom for Google Cloud
 ------------------------------------------
 
 vyos.tf
@@ -380,7 +380,7 @@ vyos.tf
 
 
   ##############################################################################
-  # Build an VyOS VM from the Marketplace
+  # Build a VyOS VM from the Marketplace
   # 
   # After deploying the GCP instance and getting an IP address, the IP address is copied into the file  
   #"ip.txt" and copied to the Ansible node for provisioning.
@@ -529,7 +529,7 @@ vyos.tf
   provisioner "remote-exec" {
       inline = [
       "cd /root/google/",
-      "ansible-playbook instance.yml"                               # more detailed in "File contents of Ansible for google cloud"
+      "ansible-playbook instance.yml"                               # more detailed in "File contents of Ansible for Google Cloud"
   ]
   }
   }
@@ -635,7 +635,7 @@ terraform.tfvars
   host          = ""                     # IP of my Ansible
 
 
-Structure of files Ansible for google cloud
+Structure of files Ansible for Google Cloud
 -------------------------------------------
 
 .. code-block:: none
@@ -647,7 +647,7 @@ Structure of files Ansible for google cloud
  └── instance.yml
  
  
-File contents of Ansible for google cloud
+File contents of Ansible for Google Cloud
 -----------------------------------------
 
 ansible.cfg
@@ -666,7 +666,7 @@ instance.yml
   ##############################################################################
   # About tasks:
   # "Wait 300 seconds, but only start checking after 60 seconds" - try to make ssh connection every 60 seconds until 300 seconds
-  # "Configure general settings for the VyOS hosts group" - make provisioning into google cloud VyOS node
+  # "Configure general settings for the VyOS hosts group" - make provisioning into Google Cloud VyOS node
   # You have to add all necessary cammans of VyOS under the block "lines:"
   ##############################################################################
 
@@ -699,7 +699,7 @@ group_vars/all
   ansible_user: vyos
   ansible_ssh_pass: vyos
 
-Sourse files for google cloud from GIT
+Sourse files for Google Cloud from GIT
 --------------------------------------
 
 All files about the article can be found here_
