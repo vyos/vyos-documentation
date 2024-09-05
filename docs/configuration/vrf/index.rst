@@ -18,7 +18,7 @@ then enslaved to a VRF device.
 
 .. cfgcmd:: set vrf name <name> table <id>
 
-   Create new VRF instance with `<name>` and <id>. The name is used when placing
+   Create a new VRF instance with `<name>` and <id>. The name is used when placing
    individual interfaces into the VRF.
 
    .. note:: A routing table ID can not be modified once it is assigned. It can
