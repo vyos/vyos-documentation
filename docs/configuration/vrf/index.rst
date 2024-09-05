@@ -21,9 +21,13 @@ then enslaved to a VRF device.
 .. cfgcmd:: set vrf name <name> table <id>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    Configured routing table `<id>` is used by VRF `<name>`.
 =======
    Create new VRF instance with `<name>` and <id>. The name is used when placing
+=======
+   Create a new VRF instance with `<name>` and <id>. The name is used when placing
+>>>>>>> d70a4e22 (Update docs/configuration/vrf/index.rst)
    individual interfaces into the VRF.
 >>>>>>> 63fb97b2 (Update doc config vrf)
 
