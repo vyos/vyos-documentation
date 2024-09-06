@@ -4,7 +4,7 @@ on:
 
 jobs:
   lint-doc:
-    uses: vyos/.github/.github/workflows/lint-doc.yml@feature/T6349-reusable-workflows
+    uses: vyos/.github/.github/workflows/lint-doc.yml@current
     secrets: inherit
     
     
