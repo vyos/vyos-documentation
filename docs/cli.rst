@@ -71,6 +71,115 @@ When viewing in page mode the following commands are available:
  * ``left-arrow`` and ``right-arrow`` can be used to scroll left or right
    in the event that the output has lines which exceed the terminal size.
 
+Operational mode command families
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Many operational mode commands in VyOS are placed in families such as
+``show``, ``clear``, or ``reset``. Every such family has a specific
+meaning to allow the user to guess how the command is going to behave —
+in particular, whether it will be disruptive to the system or not.
+
+Note that this convention was not always followed with perfect
+consistency and some commands may still be in wrong families, so you
+should always check the command help and documentation if you are not
+sure what exactly it does.
+
+clear
+'''''
+
+"Clear" commands are completely non-disruptive to any system operations.
+Generally, they can be used freely without hesitation.
+
+Most often their purpose is to remove or reset various debug and
+diagnostic information such as system logs and packet counters.
+
+Examples:
+
+-  ``clear console`` — clears the screen.
+-  ``clear interfaces ethernet eth0 counters`` — zeroes packet counters
+   on ``eth0``.
+-  ``clear log`` — deletes all system log entries.
+
+reset
+'''''
+
+"Reset" commands can be locally-disruptive. They may, for example,
+terminate a single user session or a session with a dynamic routing
+protocol peer.
+
+They should be used with caution since they may have a significant
+impact on a particular users in the network.
+
+-  ``reset pppoe-server username jsmith`` — terminate all PPPoE sessions
+   from user ``jsmith``.
+-  ``reset bgp 192.0.2.54`` — terminates the BGP session with neighbor
+   192.0.2.54.
+-  ``reset vpn ipsec site-to-site peer vpn.example.com`` — terminates
+   IPsec tunnels to ``vpn.example.com``.
+
+restart
+'''''''
+
+"Restart" operations may disrupt an entire subsystem. Most often they
+initiate a restart of a server process, which causes it to be
+unavailable for a brief period and resets all the process state.
+
+They should be used with extreme caution.
+
+-  ``restart dhcp server`` — restarts the IPv4 DHCP server process (DHCP
+   requests are not served while it is restarting).
+-  ``restart ipsec`` — restarts the IPsec process (which forces all
+   sessions and all IPsec process state to reset).
+
+force
+'''''
+
+"Force" commands force the system to perform an action that it might
+perform by itself at a later point.
+
+Examples:
+
+-  ``force arp request interface eth1 address 10.3.0.2`` — send a
+   gratuitious ARP request.
+-  ``force root-partition-auto-resize`` — grow the root filesystem to
+   the size of the system partition (this is also done on startup, but
+   this command can do it without a reboot).
+
+execute
+'''''''
+
+"Execute" commands are for executing various diagnostic and auxilliary
+actions that the system would never perform by itself.
+
+Examples:
+
+-  ``execute wake-on-lan interface <intf> host <MAC>`` — send a
+   Wake-On-LAN packet to a host.
+
+show
+''''
+
+"Show" commands display various system information. They may
+occasionally use a pager for long outputs, that you can quit by pressing
+the Q button. Their output is always finite, however.
+
+Examples:
+
+-  ``show system login`` — displays current system users.
+-  ``show ip route`` — displays the IPv4 routing table.
+
+monitor
+'''''''
+
+"Monitor" commands initiate various monitoring operations that may
+output information continuously, until terminated with ``Ctrl-C`` or
+disabled.
+
+Examples:
+
+-  ``monitor log`` — continuously outputs latest system logs.
+
+
 Configuration Mode
 ##################
 
