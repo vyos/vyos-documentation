@@ -18,14 +18,10 @@ Configuration
 A VRF device is created with an associated route table. Network interfaces are
 then enslaved to a VRF device.
 
-.. cfgcmd:: set vrf name <name>
-
-   Create new VRF instance with `<name>`. The name is used when placing
-   individual interfaces into the VRF.
-
 .. cfgcmd:: set vrf name <name> table <id>
 
-   Configured routing table `<id>` is used by VRF `<name>`.
+   Create a new VRF instance with `<name>` and `<id>`. The name is used when placing
+   individual interfaces into the VRF.
 
    .. note:: A routing table ID can not be modified once it is assigned. It can
       only be changed by deleting and re-adding the VRF instance.
