@@ -1,8 +1,8 @@
 .. _openfabric:
 
-#####
+##########
 OpenFabric
-#####
+##########
 
 OpenFabric, specified in `draft-white-openfabric-06.txt
 <https://datatracker.ietf.org/doc/html/draft-white-openfabric-06>`_, is
@@ -62,7 +62,7 @@ the network
   allows for adjacency to occur for address family (IPv4 or IPv6 or both).
 
 OpenFabric Global Configuration
---------------------------
+-------------------------------
 
 .. cfgcmd:: set protocols openfabric domain-password <plaintext-password|md5>
   <password>
@@ -82,7 +82,7 @@ OpenFabric Global Configuration
 .. cfgcmd:: set protocols openfabric domain <name> log-adjacency-changes
 
   Log changes in adjacency state.
-  
+
 .. cfgcmd:: set protocols openfabric domain <name> fabric-tier <number>
 
   This command sets a static tier number to advertise as location
@@ -165,7 +165,7 @@ Examples
 ********
 
 Enable OpenFabric
-============
+=================
 
 **Node 1:**
 
@@ -207,8 +207,6 @@ This gives us the following neighborships:
   Area VyOS:
     System Id           Interface   L  State        Holdtime SNPA
    vyos                eth1        2  Up            30       2020.2020.2020
-
-
 
 Here's the IP routes that are populated:
 

@@ -14,6 +14,7 @@ Protocols
    isis
    mpls
    segment-routing
+   openfabric
    ospf
    pim
    pim6
