@@ -43,14 +43,34 @@ Kernel
 
 .. cfgcmd:: set system option kernel disable-power-saving
 
-    Disable CPU power saving mechanisms also known as C states.
-
     This will add the following two options to the Kernel commandline:
 
     * ``intel_idle.max_cstate=0`` Disable intel_idle and fall back on acpi_idle
     * ``processor.max_cstate=1`` Limit processor to maximum C-state 1
 
     .. note:: Setting will only become active with the next reboot!
+
+.. cfgcmd:: set system option kernel amd-pstate-driver <mode>
+
+    Enables and configures p-state driver for modern AMD Ryzen and Epyc CPUs.
+
+    The available modes are:
+
+    * ``active`` This is the low-level firmware control mode based on the profile
+      set and the system governor has no effect.
+    * ``passive`` The driver allows the system governor to manage CPU frequency
+      while providing available performance states.
+    * ``guided`` The driver allows to set desired performance levels and the firmware
+      selects a performance level in this range and fitting to the current workload.
+
+    This will add the following two options to the Kernel commandline:
+
+    * ``initcall_blacklist=acpi_cpufreq_init`` Disable default ACPI CPU frequency scale
+    * ``amd_pstate={mode}`` Sets the p-state mode
+
+    .. note:: Setting will only become active with the next reboot!
+
+    .. seealso:: https://docs.kernel.org/admin-guide/pm/amd-pstate.html
 
 ***********
 HTTP client
