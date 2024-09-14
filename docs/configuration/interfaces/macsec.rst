@@ -237,3 +237,49 @@ the unencrypted but authenticated content.
   set interfaces macsec macsec1 security static peer R2 mac 00:11:22:33:44:01
   set interfaces macsec macsec1 security static peer R2 key 'ddd6f4a7be4d8bbaf88b26f10e1c05f7'
   set interfaces macsec macsec1 source-interface 'eth1'
+
+***************
+MACsec over wan
+***************
+
+MACsec is an interesting alternative to existing tunneling solutions that 
+protects layer 2 by performing integrity, origin authentication, and optionally 
+encryption. The typical use case is to use MACsec between hosts and access 
+switches, between two hosts, or between two switches. in this example below, 
+we use VXLAN and MACsec to secure the tunnel.
+
+**R1 MACsec01**
+
+.. code-block:: none
+
+  set interfaces macsec macsec1 address '192.0.2.1/24'
+  set interfaces macsec macsec1 address '2001:db8::1/64'
+  set interfaces macsec macsec1 security cipher 'gcm-aes-128'
+  set interfaces macsec macsec1 security encrypt
+  set interfaces macsec macsec1 security static key 'ddd6f4a7be4d8bbaf88b26f10e1c05f7'
+  set interfaces macsec macsec1 security static peer SEC02 key 'eadcc0aa9cf203f3ce651b332bd6e6c7'
+  set interfaces macsec macsec1 security static peer SEC02 mac '00:11:22:33:44:02'
+  set interfaces macsec macsec1 source-interface 'vxlan1'
+  set interfaces vxlan vxlan1 mac '00:11:22:33:44:01'
+  set interfaces vxlan vxlan1 remote '10.1.3.3'
+  set interfaces vxlan vxlan1 source-address '172.16.100.1'
+  set interfaces vxlan vxlan1 vni '10'
+  set protocols static route 10.1.3.3/32 next-hop 172.16.100.2
+
+**R2 MACsec02**
+
+.. code-block:: none
+
+  set interfaces macsec macsec1 address '192.0.2.2/24'
+  set interfaces macsec macsec1 address '2001:db8::2/64'
+  set interfaces macsec macsec1 security cipher 'gcm-aes-128'
+  set interfaces macsec macsec1 security encrypt
+  set interfaces macsec macsec1 security static key 'eadcc0aa9cf203f3ce651b332bd6e6c7'
+  set interfaces macsec macsec1 security static peer SEC01 key 'ddd6f4a7be4d8bbaf88b26f10e1c05f7'
+  set interfaces macsec macsec1 security static peer SEC01 mac '00:11:22:33:44:01'
+  set interfaces macsec macsec1 source-interface 'vxlan1'
+  set interfaces vxlan vxlan1 mac '00:11:22:33:44:02'
+  set interfaces vxlan vxlan1 remote '10.1.2.2'
+  set interfaces vxlan vxlan1 source-address '172.16.100.2'
+  set interfaces vxlan vxlan1 vni '10'
+  set protocols static route 10.1.2.2/32 next-hop 172.16.100.1
