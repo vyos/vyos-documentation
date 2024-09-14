@@ -653,6 +653,51 @@ Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
    quotes. This is done through a hack on our config generator. You can pass
    quotes using the ``&quot;`` statement.
 
+Server bridge
+=============
+
+In Ethernet bridging configurations, OpenVPN's server mode can be set as a
+'bridge' where the VPN tunnel encapsulates entire Ethernet frames 
+(up to 1514 bytes) instead of just IP packets (up to 1500 bytes). This setup 
+allows clients to transmit Layer 2 frames through the OpenVPN tunnel. Below,
+we outline a basic configuration to achieve this:
+
+
+Server Side:
+
+.. code-block:: none
+
+  set interfaces bridge br10 member interface eth1.10
+  set interfaces bridge br10 member interface vtun10
+  set interfaces openvpn vtun10 device-type 'tap'
+  set interfaces openvpn vtun10 encryption data-ciphers 'aes192'
+  set interfaces openvpn vtun10 hash 'sha256''
+  set interfaces openvpn vtun10 local-host '172.18.201.10'
+  set interfaces openvpn vtun10 local-port '1194'
+  set interfaces openvpn vtun10 mode 'server'
+  set interfaces openvpn vtun10 server bridge gateway '10.10.0.1'
+  set interfaces openvpn vtun10 server bridge start '10.10.0.100'
+  set interfaces openvpn vtun10 server bridge stop '10.10.0.200'
+  set interfaces openvpn vtun10 server bridge subnet-mask '255.255.255.0'
+  set interfaces openvpn vtun10 server topology 'subnet'
+  set interfaces openvpn vtun10 tls ca-certificate 'ca-1'
+  set interfaces openvpn vtun10 tls certificate 'srv-1'
+  set interfaces openvpn vtun10 tls dh-params 'srv-1'
+
+Client Side :
+
+.. code-block:: none
+
+  set interfaces openvpn vtun10 device-type 'tap'
+  set interfaces openvpn vtun10 encryption data-ciphers 'aes192'
+  set interfaces openvpn vtun10 hash 'sha256''
+  set interfaces openvpn vtun10 mode 'client'
+  set interfaces openvpn vtun10 protocol 'udp'
+  set interfaces openvpn vtun10 remote-host '172.18.201.10'
+  set interfaces openvpn vtun10 remote-port '1194'
+  set interfaces openvpn vtun10 tls ca-certificate 'ca-1'
+  set interfaces openvpn vtun10 tls certificate 'client-1'
+
 ***************************
 Multi-factor Authentication
 ***************************
