@@ -17,6 +17,24 @@ Syslog supports logging to multiple targets, those targets could be a plain
 file on your VyOS installation itself, a serial console or a remote syslog
 server which is reached via :abbr:`IP (Internet Protocol)` UDP/TCP.
 
+Global
+------
+
+.. cfgcmd:: system syslog global marker interval <number>
+
+Interval (in seconds) for sending mark messages to the syslog input to
+indicate that the logging system is functioning.
+
+.. cfgcmd:: system syslog global preserve-fqdn
+
+If set, the domain part of the hostname is always sent,
+even within the same domain as the receiving system.
+
+.. cfgcmd:: system rsyslog global facility <keyword> level <keyword>
+
+Filter syslog messages based on facility and level.
+
+
 Console
 -------
 
