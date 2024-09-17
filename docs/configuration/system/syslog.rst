@@ -30,6 +30,10 @@ indicate that the logging system is functioning.
 If set, the domain part of the hostname is always sent,
 even within the same domain as the receiving system.
 
+.. cfgcmd:: system syslog global local-host-name <fqdn>
+
+Overwrites the local system host name used in syslogs.
+
 .. cfgcmd:: system rsyslog global facility <keyword> level <keyword>
 
 Filter syslog messages based on facility and level.
