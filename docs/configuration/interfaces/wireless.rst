@@ -60,8 +60,8 @@ Wireless options
 
 .. cfgcmd:: set interfaces wireless <interface> channel <number>
 
-  Channel number (IEEE 802.11), for 2.4Ghz (802.11 b/g/n) channels range from
-  1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 173. 
+  Channel number (IEEE 802.11), for 2.4Ghz (802.11 b/g/n/ax) channels range from
+  1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 177. 
   On 6GHz (802.11 ax) channels range from 1 to 233.
 
 .. cfgcmd:: set interfaces wireless <interface> disable-broadcast-ssid
@@ -116,7 +116,7 @@ Wireless options
   * ``ac`` - 802.11ac - 1300 Mbits/sec
   * ``ax`` - 802.11ax - exceeds 1GBit/sec
 
-  .. note:: In VyOS, 802.11ax is only implemented for 6GHz as of yet.
+  .. note:: In VyOS, 802.11ax is only implemented for 2.4GHz and 6GHz.
 
 .. cfgcmd:: set interfaces wireless <interface> physical-device <device>
 
@@ -163,6 +163,8 @@ PPDU
 
 HT (High Throughput) capabilities (802.11n)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  Configuring HT mode options is required when using 802.11n or 802.11ax at 2.4GHz.
 
 .. cfgcmd:: set interfaces wireless <interface> capabilities ht 40mhz-incapable
 
@@ -378,11 +380,30 @@ HE (High Efficiency) capabilities (802.11ax)
 
   <number> must be one of:
 
-  * ``131`` - 20 MHz channel width
-  * ``132`` - 40 MHz channel width
-  * ``133`` - 80 MHz channel width
-  * ``134`` - 160 MHz channel width
-  * ``135`` - 80+80 MHz channel width
+  * ``81`` - 20 MHz channel width (2.4GHz)
+  * ``83`` - 40 MHz channel width, secondary 20MHz channel above primary 
+    channel (2.4GHz)
+  * ``84`` - 40 MHz channel width, secondary 20MHz channel below primary 
+    channel (2.4GHz)
+  * ``131`` - 20 MHz channel width (6GHz)
+  * ``132`` - 40 MHz channel width (6GHz)
+  * ``133`` - 80 MHz channel width (6GHz)
+  * ``134`` - 160 MHz channel width (6GHz)
+  * ``135`` - 80+80 MHz channel width (6GHz)
+
+.. cfgcmd:: set interfaces wireless <interface> 
+  capabilities he coding-scheme <number>
+
+  This setting configures Spacial Stream and Modulation Coding Scheme 
+  settings for HE mode (HE-MCS). It is usually not needed to set this 
+  explicitly, but it might help with some WiFi adapters.
+
+  <number> must be one of:
+
+  * ``0`` - HE-MCS 0-7
+  * ``1`` - HE-MCS 0-9
+  * ``2`` - HE-MCS 0-11
+  * ``3`` - HE-MCS is not supported
 
 Wireless options (Station/Client)
 =================================
@@ -693,15 +714,199 @@ Resulting in
           type access-point
       }
   }
-  system {
-    [...]
-    wifi-regulatory-domain DE
-  }
 
 To get it to work as an access point with this configuration you will need
 to set up a DHCP server to work with that network. You can - of course - also
 bridge the Wireless interface with any configured bridge
 (:ref:`bridge-interface`) on the system.
+
+WiFi-6(e) - 802.11ax
+====================
+
+The following examples will show valid configurations for WiFi-6 (2.4GHz) 
+and WiFi-6e (6GHz) Access-Points with the following characteristics:
+
+* Network ID (SSID) ``test.ax``
+* WPA passphrase ``super-dooper-secure-passphrase``
+* Use 802.11ax protocol
+* Wireless channel ``11`` for 2.4GHz
+* Wireless channel ``5`` for 6GHz 
+
+
+Example Configuration: WiFi-6 at 2.4GHz
+---------------------------------------
+
+You may expect real throughputs around 10MBytes/s or higher in crowded areas.
+
+.. code-block:: none
+
+  set system wireless country-code de
+  set interfaces wireless wlan0 capabilities he antenna-pattern-fixed
+  set interfaces wireless wlan0 capabilities he beamform multi-user-beamformer
+  set interfaces wireless wlan0 capabilities he beamform single-user-beamformee
+  set interfaces wireless wlan0 capabilities he beamform single-user-beamformer
+  set interfaces wireless wlan0 capabilities he bss-color 13
+  set interfaces wireless wlan0 capabilities he channel-set-width 81
+  set interfaces wireless wlan0 capabilities ht 40mhz-incapable
+  set interfaces wireless wlan0 capabilities ht channel-set-width ht20
+  set interfaces wireless wlan0 capabilities ht channel-set-width ht40+
+  set interfaces wireless wlan0 capabilities ht channel-set-width ht40-
+  set interfaces wireless wlan0 capabilities ht short-gi 20
+  set interfaces wireless wlan0 capabilities ht short-gi 40
+  set interfaces wireless wlan0 capabilities ht stbc rx 2
+  set interfaces wireless wlan0 capabilities ht stbc tx
+  set interfaces wireless wlan0 channel 11
+  set interfaces wireless wlan0 description "802.11ax 2.4GHz"
+  set interfaces wireless wlan0 mode ax
+  set interfaces wireless wlan0 security wpa cipher CCMP
+  set interfaces wireless wlan0 security wpa cipher CCMP-256
+  set interfaces wireless wlan0 security wpa cipher GCMP-256
+  set interfaces wireless wlan0 security wpa cipher GCMP
+  set interfaces wireless wlan0 security wpa mode wpa2
+  set interfaces wireless wlan0 security wpa passphrase super-dooper-secure-passphrase
+  set interfaces wireless wlan0 ssid test.ax
+  set interfaces wireless wlan0 type access-point
+  commit
+
+Resulting in
+
+.. code-block:: none
+
+  system {
+    wireless {
+      country-code de
+    }
+  }
+  interfaces {
+    [...]
+    wireless wlan0 {
+          capabilities {
+              he {
+                  antenna-pattern-fixed
+                  beamform {
+                      multi-user-beamformer
+                      single-user-beamformee
+                      single-user-beamformer
+                  }
+                  bss-color 13
+                  channel-set-width 81
+              }
+              ht {
+                  40mhz-incapable
+                  channel-set-width ht20
+                  channel-set-width ht40+
+                  channel-set-width ht40-
+                  short-gi 20
+                  short-gi 40
+                  stbc {
+                      rx 2
+                      tx
+                  }
+              }
+          }
+          channel 11
+          description "802.11ax 2.4GHz"
+          hw-id [...]
+          mode ax
+          physical-device phy0
+          security {
+              wpa {
+                  cipher CCMP
+                  cipher CCMP-256
+                  cipher GCMP-256
+                  cipher GCMP
+                  mode wpa2
+                  passphrase super-dooper-secure-passphrase
+              }
+          }
+          ssid test.ax
+          type access-point
+      }
+  }
+
+Example Configuration: WiFi-6e at 6GHz
+--------------------------------------
+
+You may expect real throughputs around 50MBytes/s to 150MBytes/s, 
+depending on obstructions by walls, water, metal or other materials
+with high electro-magnetic dampening at 6GHz. Best results are achieved 
+with the AP being in the same room and in line-of-sight.
+
+.. code-block:: none
+
+  set system wireless country-code de
+  set interfaces wireless wlan0 capabilities he antenna-pattern-fixed
+  set interfaces wireless wlan0 capabilities he beamform multi-user-beamformer
+  set interfaces wireless wlan0 capabilities he beamform single-user-beamformee
+  set interfaces wireless wlan0 capabilities he beamform single-user-beamformer
+  set interfaces wireless wlan0 capabilities he bss-color 13
+  set interfaces wireless wlan0 capabilities he channel-set-width 134
+  set interfaces wireless wlan0 capabilities he capabilities he center-channel-freq freq-1 15
+  set interfaces wireless wlan0 channel 5
+  set interfaces wireless wlan0 description "802.11ax 6GHz"
+  set interfaces wireless wlan0 mode ax
+  set interfaces wireless wlan0 security wpa cipher CCMP
+  set interfaces wireless wlan0 security wpa cipher CCMP-256
+  set interfaces wireless wlan0 security wpa cipher GCMP-256
+  set interfaces wireless wlan0 security wpa cipher GCMP
+  set interfaces wireless wlan0 security wpa mode wpa3
+  set interfaces wireless wlan0 security wpa passphrase super-dooper-secure-passphrase
+  set interfaces wireless wlan0 mgmt-frame-protection required
+  set interfaces wireless wlan0 enable-bf-protection
+  set interfaces wireless wlan0 ssid test.ax
+  set interfaces wireless wlan0 type access-point
+  set interfaces wireless wlan0 stationary-ap
+  commit
+
+Resulting in
+
+.. code-block:: none
+
+  system {
+    wireless {
+      country-code de
+    }
+  }
+  interfaces {
+    [...]
+    wireless wlan0 {
+          capabilities {
+              he {
+                  antenna-pattern-fixed
+                  beamform {
+                      multi-user-beamformer
+                      single-user-beamformee
+                      single-user-beamformer
+                  }
+                  bss-color 13
+                  center-channel-freq {
+                      freq-1 15
+                  }
+                  channel-set-width 134
+              }
+          }
+          channel 5
+          description "802.11ax 6GHz"
+          enable-bf-protection
+          hw-id [...]
+          mgmt-frame-protection required
+          mode ax
+          physical-device phy0
+          security {
+              wpa {
+                  cipher CCMP
+                  cipher CCMP-256
+                  cipher GCMP-256
+                  cipher GCMP
+                  mode wpa3
+                  passphrase super-dooper-secure-passphrase
+              }
+          }
+          ssid test.ax
+          stationary-ap
+          type access-point
+      }
+  }
 
 .. _wireless-interface-intel-ax200:
 
