@@ -327,8 +327,64 @@ There are a lot of matching criteria against which the packet can be tested.
 Please refer to :doc:`IPv4</configuration/firewall/ipv4>` and
 :doc:`IPv6</configuration/firewall/ipv6>` matching criteria for more details.
 
-Since bridges operates at layer 2, both matchers for IPv4 and IPv6 are
-supported in bridge firewall configuration. Same applies for firewall groups.
+Since bridges operats at layer 2, both matchers for IPv4 and IPv6 are
+supported in bridge firewall configuration. Same applies to firewall groups.
+
+Same specific matching criteria that can be used in bridge firewall are
+described in this section:
+
+.. cfgcmd:: set firewall bridge forward filter rule <1-999999> ethernet-type
+   [802.1q | 802.1ad | arp | ipv4 | ipv6]
+.. cfgcmd:: set firewall bridge input filter rule <1-999999> ethernet-type
+   [802.1q | 802.1ad | arp | ipv4 | ipv6]
+.. cfgcmd:: set firewall bridge output filter rule <1-999999> ethernet-type
+   [802.1q | 802.1ad | arp | ipv4 | ipv6]
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999> ethernet-type
+   [802.1q | 802.1ad | arp | ipv4 | ipv6]
+.. cfgcmd:: set firewall bridge name <name> rule <1-999999> ethernet-type
+   [802.1q | 802.1ad | arp | ipv4 | ipv6]
+
+   Match based on the Ethernet type of the packet.
+
+.. cfgcmd:: set firewall bridge forward filter rule <1-999999> vlan
+   ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
+.. cfgcmd:: set firewall bridge input filter rule <1-999999> vlan
+   ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
+.. cfgcmd:: set firewall bridge output filter rule <1-999999> vlan
+   ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999> vlan
+   ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
+.. cfgcmd:: set firewall bridge name <name> rule <1-999999> vlan
+   ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
+
+   Match based on the Ethernet type of the packet when it is VLAN tagged.
+
+.. cfgcmd:: set firewall bridge forward filter rule <1-999999> vlan id
+   <0-4096>
+.. cfgcmd:: set firewall bridge input filter rule <1-999999> vlan id
+   <0-4096>
+.. cfgcmd:: set firewall bridge output filter rule <1-999999> vlan id
+   <0-4096>
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999> vlan id
+   <0-4096>
+.. cfgcmd:: set firewall bridge name <name> rule <1-999999> vlan id
+   <0-4096>
+
+   Match based on VLAN identifier. Range is also supported.
+
+.. cfgcmd:: set firewall bridge forward filter rule <1-999999> vlan priority
+   <0-7>
+.. cfgcmd:: set firewall bridge input filter rule <1-999999> vlan priority
+   <0-7>
+.. cfgcmd:: set firewall bridge output filter rule <1-999999> vlan priority
+   <0-7>
+.. cfgcmd:: set firewall bridge prerouting filter rule <1-999999> vlan priority
+   <0-7>
+.. cfgcmd:: set firewall bridge name <name> rule <1-999999> vlan priority
+   <0-7>
+
+   Match based on VLAN priority (Priority Code Point - PCP). Range is also
+   supported.
 
 Use IP firewall
 ===============
