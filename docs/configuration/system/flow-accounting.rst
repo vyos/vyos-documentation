@@ -42,6 +42,10 @@ exported.
 Configuration
 =============
 
+.. warning:: Using NetFlow on routers with high traffic levels may lead to
+   high CPU usage and may affect the router's performance. In such cases,
+   consider using sFlow instead.
+
 In order for flow accounting information to be collected and displayed for an
 interface, the interface must be configured for flow accounting.
 
