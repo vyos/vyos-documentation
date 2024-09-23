@@ -50,7 +50,7 @@ Configuration
    * ``time2.vyos.net``
    * ``time3.vyos.net``
 
-.. cfgcmd:: set service ntp server <address> <noselect | nts | pool | prefer>
+.. cfgcmd:: set service ntp server <address> <noselect | nts | pool | prefer | ptp | interleave>
 
    Configure one or more attributes to the given NTP server.
 
@@ -66,6 +66,12 @@ Configuration
    * ``prefer`` marks the server as preferred. All other things being equal,
      this host will be chosen for synchronization among a set of correctly
      operating hosts.
+
+   * ``ptp`` enables the PTP transport for this server (see :ref:`ptp-transport`).
+
+   * ``interleave`` enables NTP interleaved mode (see
+     `draft-ntp-interleaved-modes`_), which can improve synchronization accuracy
+     and stability when supported by both parties.
 
 .. cfgcmd:: set service ntp listen-address <address>
 
@@ -111,4 +117,81 @@ Configuration
      periodically check if 23:59:59 and 23:59:60 are valid times in the
      timezone. This normally works with the right/UTC timezone which is the
      default
+
+.. _draft-ntp-interleaved-modes: https://datatracker.ietf.org/doc/draft-ietf-ntp-interleaved-modes/07/
+
+Hardware Timestamping of NTP Packets
+======================================
+
+The chrony daemon on VyOS can leverage NIC hardware capabilities to record the
+exact time packets are received on the interface, as well as when packets were
+actually transmitted. This provides improved accuracy and stability when the
+system is under load, as queuing and OS context switching can introduce a
+variable delay between when the packet is received on the network and when it
+is actually processed by the NTP daemon.
+
+Hardware timestamping depends on NIC support. Some NICs can be configured to
+apply timestamps to any incoming packet, while others only support applying
+timestamps to specific protocols (e.g. PTP).
+
+When timestamping is enabled on an interface, chrony's default behavior is to
+try to configure the interface to only timestamp NTP packets. If this mode is
+not supported, chrony will attempt to set it to timestamp all packets. If
+neither option is supported (e.g. the NIC can only timestamp received PTP
+packets), chrony will leverage timestamping on transmitted packets only, which
+still provides some benefit.
+
+.. cfgcmd:: set service ntp timestamp interface <interface>
+
+   Configures hardware timestamping on the interface <interface>. The special
+   value `all` can also be specified to enable timestamping on all interfaces
+   that support it.
+
+   Configure the timestamping behavior with the following option:
+
+   * ``receive-filter [all|ntp|ptp|none]`` selects the receive filter mode,
+     which controls which inbound packets the NIC applies timestamps to. The
+     selected mode must be supported by the NIC, or timestamping will be
+     disabled for the interface.
+
+
+The following `receive-filter` modes can be selected:
+
+* `all`: All received packets will be timestamped.
+
+* `ntp`: Only received  NTP protocol packets will be timestamped.
+
+* `ptp`: Only received PTP protocol packets will be timestamped. Combined with
+  the PTP transport for NTP packets, this can be leveraged to take advantage of
+  hardware timestamping on NICs that only support the ptp filter mode.
+
+* `none`: No received packets will be timestamped. Hardware timestamping of
+  transmitted packets will still be leveraged, if supported by the NIC.
+
+.. _ptp-transport:
+
+PTP Transport of NTP Packets
+=============================
+
+The Precision Time Protocol (IEEE 1588) is a local network time synchronization
+protocol that provides high precision time synchronization by leveraging
+hardware clocks in NICs and other network elements. VyOS does not currently
+support standards-based PTP, which can be deployed independently of
+NTP.
+
+For networks consisting of VyOS and other Linux systems running relatively
+recent versions of the chrony daemon, NTP packets can be "tunneled" over
+PTP. NTP over PTP provides the best of both worlds, leveraging hardware support
+for timestamping PTP packets while retaining the configuration flexibility and
+fault tolerance of NTP.
+
+.. cfgcmd:: set service ntp ptp
+
+   Enables the NTP daemon PTP transport. The NTP daemon will listen on the
+   configured PTP port. Note that one or more servers must be individually
+   enabled for PTP before the daemon will synchronize over the transport.
+
+.. cfgcmd:: set service ntp ptp port <port>
+
+   Configures the PTP port. By default, the standard port 319 is used.
 
