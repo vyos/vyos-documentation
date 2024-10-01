@@ -67,18 +67,21 @@ API
    Set a named api key. Every key has the same, full permissions
    on the system.
 
-.. cfgcmd:: set service https api debug
+REST
+====
+
+.. cfgcmd:: set service https api rest
+
+   Enable REST API
+
+.. cfgcmd:: set service https api rest debug
 
    To enable debug messages. Available via :opcmd:`show log` or
    :opcmd:`monitor log`
 
-.. cfgcmd:: set service https api strict
+.. cfgcmd:: set service https api rest strict
 
    Enforce strict path checking.
-
-.. cfgcmd:: set service https api cors allow-origin <origin>
-
-   Allow cross-origin requests from `<origin>`.
 
 GraphQL
 =======
@@ -105,12 +108,17 @@ GraphQL
 
    Set the byte length of the JWT secret. Default is 32.
 
+.. cfgcmd:: set service https api graphql cors allow-origin <origin>
+
+   Allow cross-origin requests from `<origin>`.
+
 *********************
 Example Configuration
 *********************
 
-Set an API-KEY is the minimal configuration to get a working API Endpoint.
+Setting REST API and an API-KEY is the minimal configuration to get a working API Endpoint.
 
 .. code-block:: none
 
    set service https api keys id MY-HTTPS-API-ID key MY-HTTPS-API-PLAINTEXT-KEY
+   set service https api rest
