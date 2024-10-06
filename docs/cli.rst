@@ -662,10 +662,22 @@ different levels in the hierarchy.
 .. cfgcmd:: commit-confirm <minutes>
 
    Use this command to temporarily commit your changes and set the
-   number of minutes available for validation. ``confirm`` must
-   be entered within those minutes, otherwise the system will reboot
-   into the previous configuration. The default value is 10 minutes.
+   number of minutes available for confirmation. ``confirm`` must
+   be entered within those minutes, otherwise the system will revert
+   into a previous configuration. The default value is 10 minutes.
 
+   The definition of 'revert' and 'a previous configuration' depends on
+   the setting:
+
+   .. code-block:: none
+
+     vyos@vyos# set system config-management commit-confirm
+     Possible completions:
+     reload               Reload previous configuration if not confirmed
+     reboot               Reboot to saved configuration if not confirmed (default)
+
+   Note that 'reload' loads the most recent completed configuration and does
+   not require a reboot.
 
    What if you are doing something dangerous? Suppose you want to setup
    a firewall, and you are not sure there are no mistakes that will lock
@@ -683,12 +695,6 @@ different levels in the hierarchy.
       [edit]
       vyos@router# confirm 
       [edit]
-
-
-   .. note:: A reboot because you did not enter ``confirm`` will not
-      take you necessarily to the *saved configuration*, but to the
-      point before the unfortunate commit.
-
 
 .. cfgcmd:: copy
 
