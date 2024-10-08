@@ -1,8 +1,6 @@
-##################################
-Running VyOS in Cloud Environments
-##################################
-
-
+##################
+Cloud Environments
+##################
 
 .. toctree::
    :caption: Content

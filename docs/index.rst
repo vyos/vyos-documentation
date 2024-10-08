@@ -5,22 +5,21 @@ VyOS User Guide
 ###############
 
 
-
 .. grid:: 3
    :gutter: 2
-   
+
    .. grid-item-card:: Get / Build VyOS
 
-   
+
       Quickly :ref:`Build<contributing/build-vyos:build vyos>` your own Image or take a look at how to :ref:`download<installation/install:download>` a free or supported version.
-   
+
 
    .. grid-item-card:: Install VyOS
 
       Read about how to install VyOS on :ref:`Bare Metal<installation/install:installation>` or in a
-      :ref:`Virtual Environment<installation/virtual/index:running vyos in virtual environments>` and
-      how to use an image with the usual :ref:`cloud<installation/cloud/index:running VyOS in Cloud Environments>` providers 
-   
+      :ref:`Virtual Environment<installation/virtual/index:Virtual Environments>` and
+      how to use an image with the usual :ref:`cloud<installation/cloud/index:Cloud Environments>` providers
+
 
    .. grid-item-card:: Configuration and Operation
 
@@ -28,20 +27,20 @@ VyOS User Guide
       set up :ref:`advanced routing<configuration/protocols/index:protocols>`,
       :ref:`VRFs<configuration/vrf/index:vrf>`, or
       :ref:`VPNs<configuration/vpn/index:vpn>` for example.
-   
+
 
    .. grid-item-card:: Automate
 
-      Integrate VyOS in your automation Workflow with 
+      Integrate VyOS in your automation Workflow with
       :ref:`Ansible<vyos-ansible>`,
       have your own :ref:`local scripts<command-scripting>`, or configure VyOS with the :ref:`HTTPS-API<vyosapi>`.
-   
+
 
    .. grid-item-card::  Examples
 
       Get some inspiration from the :ref:`Configuration Blueprints<configexamples/index:Configuration Blueprints>`
       to build your infrastructure.
-   
+
 
    .. grid-item-card:: Contribute and Community
 

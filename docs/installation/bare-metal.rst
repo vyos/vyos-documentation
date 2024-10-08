@@ -1,7 +1,7 @@
 .. _vyosonbaremetal:
 
 #####################
-Running on Bare Metal
+Bare Metal Deployment
 #####################
 
 Supermicro A2SDi (Atom C3000)

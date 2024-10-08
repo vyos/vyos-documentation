@@ -2,8 +2,6 @@
 Installation and Image Management
 #################################
 
-
-
 .. toctree::
    :maxdepth: 2
    :caption: Content
@@ -11,7 +9,7 @@ Installation and Image Management
    install
    virtual/index
    cloud/index
-   vyos-on-baremetal
+   bare-metal
    update
    image
    migrate-from-vyatta

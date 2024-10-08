@@ -1,6 +1,6 @@
-####################################
-Running VyOS in Virtual Environments
-####################################
+####################
+Virtual Environments
+####################
 
 .. toctree::
    :caption: Content

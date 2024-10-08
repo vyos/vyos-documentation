@@ -329,7 +329,7 @@ configured, changes are added through a collection of :cfgcmd:`set` and
 
 Both these ``show`` commands should be executed when in operational
 mode, they do not work directly in configuration mode. There is a
-special way on how to :ref:`run_opmode_from_config_mode`.
+special way on how to :ref:run_opmode_from_config_mode.
 
 .. hint:: Use the ``show configuration commands | strip-private``
    command when you want to hide private data. You may want to do so if
@@ -528,7 +528,7 @@ mode using :cfgcmd:`show | commands`
   set address dhcp
   set hw-id 00:53:ad:44:3b:03
 
-These commands are also relative to the level you are inside and only 
+These commands are also relative to the level you are inside and only
 relevant configuration blocks will be displayed when entering a
 sub-level.
 
@@ -620,7 +620,7 @@ different levels in the hierarchy.
    Use this command to preserve configuration changes upon reboot. By
    default it is stored at */config/config.boot*. In the case you want
    to store the configuration file somewhere else, you can add a local
-   path, a SCP address, a FTP address or a TFTP address. 
+   path, a SCP address, a FTP address or a TFTP address.
 
    .. code-block:: none
 
@@ -675,13 +675,13 @@ different levels in the hierarchy.
    system will reboot into previous config revision.
 
    .. code-block:: none
-   
+
       vyos@router# set firewall interface eth0 local name FromWorld
-      vyos@router# commit-confirm 
+      vyos@router# commit-confirm
       commit confirm will be automatically reboot in 10 minutes unless confirmed
       Proceed? [confirm]y
       [edit]
-      vyos@router# confirm 
+      vyos@router# confirm
       [edit]
 
 
@@ -703,8 +703,8 @@ different levels in the hierarchy.
 
 
    .. code-block:: none
-   
-      vyos@router# show firewall name FromWorld 
+
+      vyos@router# show firewall name FromWorld
        default-action drop
        rule 10 {
            action accept
@@ -713,7 +713,7 @@ different levels in the hierarchy.
            }
        }
       [edit]
-      vyos@router# edit firewall name FromWorld 
+      vyos@router# edit firewall name FromWorld
       [edit firewall name FromWorld]
       vyos@router# copy rule 10 to rule 20
       [edit firewall name FromWorld]
@@ -730,7 +730,7 @@ different levels in the hierarchy.
    You can also rename config subtrees:
 
    .. code-block:: none
-   
+
       vyos@router# rename rule 10 to rule 5
       [edit firewall name FromWorld]
       vyos@router# commit
@@ -741,8 +741,8 @@ different levels in the hierarchy.
    with no parameters.
 
    .. code-block:: none
-   
-      vyos@router# show 
+
+      vyos@router# show
        default-action drop
        rule 5 {
            action accept
@@ -790,11 +790,6 @@ different levels in the hierarchy.
       <section>`` command is used. With the above example, the `show
       firewall` command would return starting after the ``firewall
       {`` line, hiding the comment.
-
-
-
-
-   
 
 .. _run_opmode_from_config_mode:
 
@@ -1018,7 +1013,7 @@ to load it with the ``load`` command:
 
   .. code-block:: none
 
-     vyos@vyos# load 
+     vyos@vyos# load
      Possible completions:
        <Enter>				        Load from system config file
        <file>			        	Load from file on local machine
@@ -1028,7 +1023,7 @@ to load it with the ``load`` command:
        http://<host>/<file>			Load from file on remote machine
        https://<host>/<file>			Load from file on remote machine
        tftp://<host>/<file>			Load from file on remote machine
-     
+
 
 
 Restore Default
@@ -1051,4 +1046,3 @@ configuration too.
 .. note:: If you are remotely connected, you will lose your connection.
    You may want to copy first the config, edit it to ensure
    connectivity, and load the edited config.
-
