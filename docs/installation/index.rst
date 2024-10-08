@@ -12,4 +12,5 @@ Installation and Image Management
    bare-metal
    update
    image
+   secure-boot
    migrate-from-vyatta
