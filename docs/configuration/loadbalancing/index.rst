@@ -9,4 +9,4 @@ Load-balancing
    :includehidden:
 
    wan
-   reverse-proxy
+   haproxy
