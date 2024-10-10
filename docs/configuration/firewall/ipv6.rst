@@ -970,6 +970,56 @@ geoip) to keep database and rules updated.
    Match when 'count' amount of connections are seen within 'time'. These
    matching criteria can be used to block brute-force attempts.
 
+Packet Modifications
+====================
+
+Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
+packets before they are sent out. This feaure provides more flexibility in
+packet handling.
+
+.. cfgcmd:: set firewall ipv6 prerouting raw rule <1-999999>
+   set dscp <0-63>
+.. cfgcmd:: set firewall ipv6 forward filter rule <1-999999>
+   set dscp <0-63>
+.. cfgcmd:: set firewall ipv6 output [filter | raw] rule <1-999999>
+   set dscp <0-63>
+
+   Set a specific value of Differentiated Services Codepoint (DSCP).
+
+.. cfgcmd:: set firewall ipv6 prerouting raw rule <1-999999>
+   set mark <1-2147483647>
+.. cfgcmd:: set firewall ipv6 forward filter rule <1-999999>
+   set mark <1-2147483647>
+.. cfgcmd:: set firewall ipv6 output [filter | raw] rule <1-999999>
+   set mark <1-2147483647>
+
+   Set a specific packet mark value.
+
+.. cfgcmd:: set firewall ipv6 prerouting raw rule <1-999999>
+   set tcp-mss <500-1460>
+.. cfgcmd:: set firewall ipv6 forward filter rule <1-999999>
+   set tcp-mss <500-1460>
+.. cfgcmd:: set firewall ipv6 output [filter | raw] rule <1-999999>
+   set tcp-mss <500-1460>
+
+   Set the TCP-MSS (TCP maximum segment size) for the connection.
+
+.. cfgcmd:: set firewall ipv6 prerouting raw rule <1-999999>
+   set hop-limit <0-255>
+.. cfgcmd:: set firewall ipv6 forward filter rule <1-999999>
+   set hop-limit <0-255>
+.. cfgcmd:: set firewall ipv6 output [filter | raw] rule <1-999999>
+   set hop-limit <0-255>
+
+   Set hop limit value.
+
+.. cfgcmd:: set firewall ipv6 forward filter rule <1-999999>
+   set connection-mark <0-2147483647>
+.. cfgcmd:: set firewall ipv4 output [filter | raw] rule <1-999999>
+   set connection-mark <0-2147483647>
+
+   Set connection mark value.
+
 ********
 Synproxy
 ********
