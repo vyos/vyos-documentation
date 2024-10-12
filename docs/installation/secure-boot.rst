@@ -114,3 +114,18 @@ either one of the commands:
     Hardware UUID:    1f6e7f5c-fb52-4c33-96c9-782fbea36436
 
     Copyright:        VyOS maintainers and contributors
+
+************
+Troubleshoot
+************
+
+In most of the cases if something goes wrong you will see the following error message
+during system boot:
+
+.. code-block:: none
+
+  error: bad shim signature
+  error: you need to load the kernel first
+
+This means that the Machine Owner Key used to sign the Kernel is not trusted by your
+UEFI. You need to install the MOK via ``install mok`` as stated above.
