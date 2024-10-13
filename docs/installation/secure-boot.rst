@@ -20,10 +20,11 @@ commands prior to your ISO image build:
   cd vyos-build
   openssl req -new -x509 -newkey rsa:4096 \
     -keyout data/live-build-config/includes.chroot/var/lib/shim-signed/mok/MOK.key \
-    -outform DER -out MOK.der -days 36500 -subj "/CN=MyMOK/" -nodes
+    -out data/live-build-config/includes.chroot/var/lib/shim-signed/mok/MOK.der \
+    -outform DER -days 36500 -subj "/CN=MyMOK/" -nodes
   openssl x509 -inform der \
     -in data/live-build-config/includes.chroot/var/lib/shim-signed/mok/MOK.der \
-    -out MOK.pem
+    -out data/live-build-config/includes.chroot/var/lib/shim-signed/mok/MOK.pem
 
 ************
 Installation
@@ -114,6 +115,52 @@ either one of the commands:
     Hardware UUID:    1f6e7f5c-fb52-4c33-96c9-782fbea36436
 
     Copyright:        VyOS maintainers and contributors
+
+************
+Image Update
+************
+
+.. note:: There is yet no signed version of ``shim`` for VyOS, thus we
+   provide no signed image for secure boot yet. If you are interested in
+   secure boot you can build an image on your own.
+
+During image installation you will install your :abbr:`MOK (Machine Owner
+Key)` into the UEFI variables to add trust to this key. After enabling
+secure boot support in UEFI again, you can only boot into your signed image.
+
+It is no longer possible to boot into a CI generated rolling release as those
+are currently not signed by a trusted party (:vytask:`T861` work in progress).
+This also means that you need to sign all your successor builds you build on
+your own with the exact same key, otherwise you will see:
+
+.. code-block:: none
+
+  error: bad shim signature
+  error: you need to load the kernel first
+
+************
+Linux Kernel
+************
+
+In order to add an additional layer of security that can already be used in nonesecure
+boot images already is ephem,eral key signing of the Linux Kernel modules.
+
+https://patchwork.kernel.org/project/linux-integrity/patch/20210218220011.67625-5-nayna@linux.ibm.com/
+
+Whenever our CI system builds a Kernel package and the required 3rd party modules,
+we will generate a temporary (ephemeral) public/private key-pair that's used for signing the
+modules. The public key portion is embedded into the Kernel binary to verify the loaded
+modules.
+
+After the Kernel CI build completes, the generated key is discarded - meaning we can no londer
+sign additional modules with out key. Our Kernel configuration also contains the option
+``CONFIG_MODULE_SIG_FORCE=y`` which means that we enforce all modules to be signed. If you
+try to load an unsigned module, it will be rejected with the following error:
+
+``insmod: ERROR: could not insert module malicious.ko: Key was rejected by service``
+
+Thos we close the door to load any malicious stuff after the image was assembled into the
+Kernel as module. You can of course disable this behavior on custom builds.
 
 ************
 Troubleshoot
