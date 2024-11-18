@@ -121,7 +121,7 @@ A note on copyright
 Unlike Vyatta, VyOS never had (nor will ever have) proprietary code.
 The only proprietary material in VyOS is non-code assets, such as
 graphics and the trademark "VyOS". [*]_ This means you can build your
-own long-term support images (as the entire toolchain we use is free
+own rolling images (as the entire toolchain we use is free
 software) and even distribute them, given you rename it and remove
 such assets before building. Although note that we do not provide
 support for images distributed by a third-party. See the
