@@ -4,7 +4,7 @@ VyOS Automation
 
 .. toctree::
    :maxdepth: 2
-   
+
    vyos-api
    vyos-ansible
    terraform/index
@@ -14,4 +14,4 @@ VyOS Automation
    command-scripting
    cloud-init
    vyos-pyvyos
-   
+   vyos-govyos

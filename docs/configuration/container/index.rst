@@ -203,6 +203,15 @@ Container Networks
     Define IPv4 and/or IPv6 prefix for a given network name.
     Both IPv4 and IPv6 can be used in parallel.
 
+.. cfgcmd:: set container network <name> mtu <number>
+
+    Configure :abbr:`MTU (Maximum Transmission Unit)` for a given network. It
+    is the size (in bytes) of the largest ethernet frame sent on this link.
+
+.. cfgcmd:: set container network <name> no-name-server
+
+    Disable Domain Name System (DNS) plugin for this network.
+
 .. cfgcmd:: set container network <name> vrf <nme>
 
     Bind container network to a given VRF instance.
