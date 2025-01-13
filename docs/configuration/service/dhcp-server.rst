@@ -170,28 +170,44 @@ Individual Client Subnet
 
    Enable DHCP failover configuration for this address pool.
 
-Failover
---------
+High Availability
+-----------------
 
-VyOS provides support for DHCP failover. DHCP failover must be configured
-explicitly by the following statements.
+VyOS provides High Availability support for DHCP server. DHCP High
+Availability can act in two different modes:
 
-.. cfgcmd:: set service dhcp-server failover source-address <address>
+* **Active-active**: both DHCP servers will respond to DHCP requests. If
+  ``mode`` is not defined, this is the default behavior.
 
-   Local IP `<address>` used when communicating to the failover peer.
+* **Active-passive**: only ``primary`` server will respond to DHCP requests.
+  If this server goes offline, then ``secondary`` server will take place.
 
-.. cfgcmd:: set service dhcp-server failover remote <address>
+DHCP High Availability must be configured explicitly by the following
+statements on both servers:
 
-   Remote peer IP `<address>` of the second DHCP server in this failover
+.. cfgcmd:: set service dhcp-server high-availability mode [active-active
+   | active-passive]
+
+   Define operation mode of High Availability feature. Default value if command
+   is not specified is `active-active`
+
+.. cfgcmd:: set service dhcp-server high-availability source-address <address>
+
+   Local IP `<address>` used when communicating to the HA peer.
+
+.. cfgcmd:: set service dhcp-server high-availability remote <address>
+
+   Remote peer IP `<address>` of the second DHCP server in this HA
    cluster.
 
-.. cfgcmd:: set service dhcp-server failover name <name>
+.. cfgcmd:: set service dhcp-server high-availability name <name>
 
    A generic `<name>` referencing this sync service.
 
    .. note:: `<name>` must be identical on both sides!
 
-.. cfgcmd:: set service dhcp-server failover status <primary | secondary>
+.. cfgcmd:: set service dhcp-server high-availability status <primary
+   | secondary>
 
    The primary and secondary statements determines whether the server is primary
    or secondary.
@@ -200,12 +216,12 @@ explicitly by the following statements.
       their lease tables in sync, they must be able to reach each other on TCP
       port 647. If you have firewall rules in effect, adjust them accordingly.
 
-   .. hint:: The dialogue between failover partners is neither encrypted nor
+   .. hint:: The dialogue between HA partners is neither encrypted nor
       authenticated. Since most DHCP servers exist within an organisation's own
       secure Intranet, this would be an unnecessary overhead. However, if you
-      have DHCP failover peers whose communications traverse insecure networks,
+      have DHCP HA peers whose communications traverse insecure networks,
       then we recommend that you consider the use of VPN tunneling between them
-      to ensure that the failover partnership is immune to disruption
+      to ensure that the HA partnership is immune to disruption
       (accidental or otherwise) via third parties.
 
 Static mappings
