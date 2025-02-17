@@ -1,0 +1,2 @@
+User-agent: atlassian-bot
+Disallow:
