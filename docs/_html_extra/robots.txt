@@ -1,7 +1,7 @@
 User-agent: *
-Disallow:
+Disallow: # Allow everything
 
 User-agent: atlassian-bot
-Disallow:
+Disallow: 
 
-https://docs.vyos.io/sitemap.xml
+Sitemap: https://docs.vyos.io/sitemap.xml
