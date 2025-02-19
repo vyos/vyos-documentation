@@ -1,5 +1,5 @@
 User-agent: atlassian-bot
-Disallow: 
+Allow: /
 
 User-agent: *
 Disallow: # Allow everything
