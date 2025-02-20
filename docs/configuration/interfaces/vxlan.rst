@@ -62,7 +62,7 @@ VXLAN specific options
      as the default IANA-assigned destination UDP port number. Instead VyOS
      uses the Linux default port of 8472.
 
-.. cfgcmd:: set interfaces vxlan <interface> source-address <interface>
+.. cfgcmd:: set interfaces vxlan <interface> source-address <IP address>
 
   Source IP address used for VXLAN underlay. This is mandatory when using VXLAN
   via L2VPN/EVPN.
