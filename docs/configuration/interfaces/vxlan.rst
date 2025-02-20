@@ -42,7 +42,7 @@ Common interface configuration
 ------------------------------
 
 .. cmdinclude:: /_include/interface-common-without-dhcp.txt
-  :var0: vxlan
+  :var0: vxlan4
   :var1: vxlan0
 
 VXLAN specific options
@@ -57,10 +57,6 @@ VXLAN specific options
 .. cfgcmd:: set interfaces vxlan <interface> port <port>
 
   Configure port number of remote VXLAN endpoint.
-
-  .. note:: As VyOS is Linux based the default port used is not using 4789
-     as the default IANA-assigned destination UDP port number. Instead VyOS
-     uses the Linux default port of 8472.
 
 .. cfgcmd:: set interfaces vxlan <interface> source-address <IP address>
 
