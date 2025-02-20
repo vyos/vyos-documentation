@@ -31,10 +31,6 @@ If configuring VXLAN in a VyOS virtual machine, ensure that MAC spoofing
 (Hyper-V) or Forged Transmits (ESX) are permitted, otherwise forwarded frames
 may be blocked by the hypervisor.
 
-.. note:: As VyOS is based on Linux and there was no official IANA port assigned
-   for VXLAN, VyOS uses a default port of 8472. You can change the port on a
-   per VXLAN interface basis to get it working across multiple vendors.
-
 Configuration
 =============
 
@@ -327,10 +323,9 @@ multicast-address.
 
   set interfaces vxlan vxlan241 port 12345
 
-The destination port used for creating a VXLAN interface in Linux defaults to
-its pre-standard value of 8472 to preserve backward compatibility. A
-configuration directive to support a user-specified destination port to override
-that behavior is available using the above command.
+The destination port used for creating a VXLAN interface defaults to
+4789. Aconfiguration directive to support a user-specified destination port
+to override that behavior is available using the above command.
 
 Unicast VXLAN
 =============
@@ -350,5 +345,5 @@ set directly. Let's change the Multicast example from above:
   # leaf3
   set interface vxlan vxlan241 remote 10.1.2.2
 
-The default port udp is set to 8472.
+The default port udp is set to 4789.
 It can be changed with ``set interface vxlan <vxlanN> port <port>``
