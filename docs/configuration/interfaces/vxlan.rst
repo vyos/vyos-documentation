@@ -42,7 +42,7 @@ Common interface configuration
 ------------------------------
 
 .. cmdinclude:: /_include/interface-common-without-dhcp.txt
-  :var0: vxlan4
+  :var0: vxlan
   :var1: vxlan0
 
 VXLAN specific options
