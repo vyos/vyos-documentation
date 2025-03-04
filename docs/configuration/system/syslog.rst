@@ -27,6 +27,10 @@ Global Settings
 
    This defaults to 1200 seconds.
 
+.. cfgcmd:: system syslog marker disable
+
+   Disable periodic injeciton of mark messages to syslog.
+
 .. cfgcmd:: system syslog preserve-fqdn
 
    If set, the domain part of the hostname is always sent, even within the same
