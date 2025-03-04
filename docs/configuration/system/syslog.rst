@@ -29,7 +29,7 @@ Global Settings
 
 .. cfgcmd:: system syslog marker disable
 
-   Disable periodic injeciton of mark messages to syslog.
+   Disable periodic injection of mark messages.
 
 .. cfgcmd:: system syslog preserve-fqdn
 
