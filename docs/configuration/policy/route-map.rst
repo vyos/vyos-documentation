@@ -179,6 +179,10 @@ Route Map
 
    Match RPKI validation result.
 
+.. cfgcmd:: set policy route-map <text> rule <1-65535> match source-vrf <text>
+
+   Source VRF to match.
+
 .. cfgcmd:: set policy route-map <text> rule <1-65535> match tag <1-65535>
 
    Route tag to match.
