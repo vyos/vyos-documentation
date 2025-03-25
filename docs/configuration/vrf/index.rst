@@ -505,6 +505,12 @@ address-family.
    derived and should not be specified explicitly for either the source or
    destination VRF’s.
 
+.. cfgcmd:: set vrf name <name> protocols bgp address-family
+            <ipv4-unicast|ipv6-unicast> route-map vrf import
+            [route-map <name>]
+
+   Specifies an optional route-map to be applied to routes imported from VRFs.
+
 .. cfgcmd:: set vrf name <name> protocols bgp interface <interface> mpls
             forwarding
 
