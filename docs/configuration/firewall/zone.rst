@@ -65,60 +65,94 @@ Configuration
 As an alternative to applying policy to an interface directly, a zone-based
 firewall can be created to simplify configuration when multiple interfaces
 belong to the same security zone. Instead of applying rule-sets to interfaces,
-they are applied to source zone-destination zone pairs.
+they are applied to source-destination zone pairs.
 
 A basic introduction to zone-based firewalls can be found `here
 <https://support.vyos.io/en/kb/articles/a-primer-to-zone-based-firewall>`_,
 and an example at :ref:`examples-zone-policy`.
 
+The following steps are required to create a zone-based firewall:
+
+1. Define both the source and destination zones
+2. Define the rule-set
+3. Apply the rule-set to the zones
+
 Define a Zone
 =============
 
-To define a zone setup either one with interfaces or a local zone.
+To define a zone setup either one with interfaces or the local zone.
 
 .. cfgcmd:: set firewall zone <name> interface <interface>
 
-   Set interfaces to a zone. A zone can have multiple interfaces.
-   But an interface can only be a member in one zone.
+   Assign interfaces as a member of a zone.
+
+   .. note::
+
+      * An interface can only be a member of one zone.
+      * A zone can have multiple interfaces, with traffic between interfaces in
+        the same zone subject to the intra-zone-filtering policy (allowed by
+        default).
 
 .. cfgcmd:: set firewall zone <name> local-zone
 
-   Define the zone as a local zone. A local zone has no interfaces and
-   will be applied to the router itself.
+   Define the zone as the local zone, for traffic originating from and destined to
+   the router itself.
+
+   .. note::
+
+      * A local zone can not have any member interfaces
+      * There cannot be multiple local zones
 
 .. cfgcmd:: set firewall zone <name> default-action [drop | reject]
 
-   Change the default-action with this setting.
+   Change the zone default-action, which applies to traffic destined to this
+   zone that doesn't match any of the source zone rulesets applied.
+
+.. cfgcmd:: set firewall zone <name> default-log
+
+   Enable logging of packets that hit this zone's default-action (disabled by
+   default).
 
 .. cfgcmd:: set firewall zone <name> description
 
    Set a meaningful description.
 
+Defining a Rule-Set
+=============================
+
+Zone-based firewall rule-sets are for traffic from a *Source Zone* to a
+*Destination Zone*.
+
+The rule-sets are created as a custom firewall chain using the commands below
+(refer to the firewall IPv4/IPv6 sections for the full syntax):
+
+* For :ref:`IPv4<configuration/firewall/ipv4:Firewall - IPv4 Rules>`:
+  ``set firewall ipv4 name <name> ...``
+* For :ref:`IPv6<configuration/firewall/ipv6:Firewall - IPv6 Rules>`:
+  ``set firewall ipv6 name <name> ...``
+
+It can be helpful to name the rule-sets in the format
+``<Sourze Zone>-<Destination Zone>-<v4 | v6>`` to make them easily identifiable.
+
 Applying a Rule-Set to a Zone
 =============================
 
-Before you are able to apply a rule-set to a zone you have to create the zones
-first.
-
-It helps to think of the syntax as: (see below). The 'rule-set' should be
-written from the perspective of: *Source Zone*-to->*Destination Zone*
+Once a rule-set has been defined, it can then be applied to the source and
+destination zones. The configuration syntax is anchored on the destination
+zone, with each of the source zone rulesets listed against the destination.
 
 .. cfgcmd::  set firewall zone <Destination Zone> from <Source Zone>
-   firewall name <rule-set>
+   firewall name <ipv4-rule-set-name>
 
-.. cfgcmd::  set firewall zone <name> from <name> firewall name
-   <rule-set>
+.. cfgcmd::  set firewall zone <Destination Zone> from <Source Zone>
+   firewall ipv6-name <ipv6-rule-set-name>
 
-.. cfgcmd::  set firewall zone <name> from <name> firewall ipv6-name
-   <rule-set>
+It is recommended to create two rule-sets for each source-destination zone pair.
 
-   You apply a rule-set always to a zone from an other zone, it is recommended
-   to create one rule-set for each zone pair.
+.. code-block:: none
 
-   .. code-block:: none
-
-      set firewall zone DMZ from LAN firewall name LANv4-to-DMZv4
-      set firewall zone LAN from DMZ firewall name DMZv4-to-LANv4
+   set firewall zone DMZ from LAN firewall name LAN-DMZ-v4
+   set firewall zone LAN from DMZ firewall name DMZ-LAN-v4
 
 **************
 Operation-mode
@@ -133,13 +167,12 @@ Operation-mode
       vyos@vyos:~$ show firewall zone-policy
       Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
       ------  ------------  -----------  ---------------  ---------------
-      LAN     eth1          WAN          WAN_to_LAN
+      LAN     eth1          WAN          WAN-LAN-v4
               eth2
-      LOCAL   LOCAL         LAN          LAN_to_LOCAL
-                            WAN          WAN_to_LOCAL     WAN_to_LOCAL_v6
-      WAN     eth3          LAN          LAN_to_WAN
-              eth0          LOCAL        LOCAL_to_WAN
-      vyos@vyos:~$
+      LOCAL   LOCAL         LAN          LAN-LOCAL-v4
+                            WAN          WAN-LOCAL-v4     WAN-LOCAL-v6
+      WAN     eth3          LAN          LAN-WAN-v4
+              eth0          LOCAL        LOCAL-WAN-v4
 
 .. opcmd:: show firewall zone-policy zone <zone>
 
@@ -150,11 +183,11 @@ Operation-mode
       vyos@vyos:~$ show firewall zone-policy zone WAN
       Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
       ------  ------------  -----------  ---------------  ---------------
-      WAN     eth3          LAN          LAN_to_WAN
-              eth0          LOCAL        LOCAL_to_WAN
+      WAN     eth3          LAN          LAN-WAN-v4
+              eth0          LOCAL        LOCAL-WAN-v4
+
       vyos@vyos:~$ show firewall zone-policy zone LOCAL
       Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
       ------  ------------  -----------  ---------------  ---------------
-      LOCAL   LOCAL         LAN          LAN_to_LOCAL
-                            WAN          WAN_to_LOCAL     WAN_to_LOCAL_v6
-      vyos@vyos:~$
+      LOCAL   LOCAL         LAN          LAN-LOCAL-v4
+                            WAN          WAN-LOCAL-v4     WAN-LOCAL-v6
