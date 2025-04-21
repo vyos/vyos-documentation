@@ -46,6 +46,7 @@ Configuration
    "Interval", "interval", "Min and max intervals between unsolicited multicast RAs"
    "DNSSL", "dnssl", "DNS search list to advertise"
    "Name Server", "name-server", "Advertise DNS server per https://tools.ietf.org/html/rfc6106"
+   "Auto Ignore Prefix", "auto-ignore", "Exclude a prefix from being advertised when the wildcard ::/64 prefix is used"
 
 .. start_vyoslinter
 
@@ -56,8 +57,8 @@ Advertising a Prefix
 .. cfgcmd:: set service router-advert interface <interface> prefix <prefix/mask>
 
    .. note:: You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
-    Advertisements)`. This will take the IPv6 GUA prefix assigned to the interface,
-    which comes in handy when using DHCPv6-PD.
+    Advertisements)`. This is a special wildcard prefix that will emit :abbr:`RAs (Router Advertisements)` for every prefix assigned to the interface.
+    This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
 
 .. stop_vyoslinter
 
