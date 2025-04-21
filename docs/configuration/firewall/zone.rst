@@ -95,8 +95,8 @@ To define a zone setup either one with interfaces or the local zone.
 
 .. cfgcmd:: set firewall zone <name> local-zone
 
-   Define the zone as the local zone, for traffic originating from and destined to
-   the router itself.
+   Define the zone as the local zone, for traffic originating from and destined
+   to the router itself.
 
    .. note::
 
