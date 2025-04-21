@@ -16,7 +16,6 @@ Service
    dns
    eventhandler
    https
-   ids
    ipoe-server
    lldp
    mdns

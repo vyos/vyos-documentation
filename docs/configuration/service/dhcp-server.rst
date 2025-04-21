@@ -663,8 +663,7 @@ used:
   set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 range 1 stop 2001:db8::199
   set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 prefix-delegation prefix 2001:db8:0:10:: delegated-length '64'
   set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 prefix-delegation prefix 2001:db8:0:10:: prefix-length '60'
-  
-
+  set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 subnet-id 1
 
 Address pools
 -------------

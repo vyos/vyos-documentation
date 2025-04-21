@@ -24,4 +24,3 @@ Installation and Image Management
    update
    image
    secure-boot
-   migrate-from-vyatta
