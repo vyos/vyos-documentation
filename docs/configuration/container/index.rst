@@ -282,6 +282,20 @@ Container Registry
         set container registry 192.168.1.1:8080 insecure
 
 
+Log Configuration
+====================
+
+.. cfgcmd:: set container log-driver [k8s-file | journald]
+
+   Set the default log driver for containers.
+
+   - **k8s-file**: Logs to a plain text new line deliminated json file
+   - **journald**: Logs to the systems journal
+
+   Current default is k8s-file. Using journald will result in the logs
+   not showing up in the container log operation command but the global log command.
+
+
 ******************
 Operation Commands
 ******************
