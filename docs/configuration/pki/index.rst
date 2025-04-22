@@ -255,6 +255,8 @@ ACME
 
 The VyOS PKI subsystem can also be used to automatically retrieve Certificates
 using the :abbr:`ACME (Automatic Certificate Management Environment)` protocol.
+VyOS 1.4.1 does not store the intermediate certificates from ACME. Which makes
+this functionality limited. See :vytask:`T7299`.
 
 .. cfgcmd:: set pki certificate <name> acme domain-name <name>
 
