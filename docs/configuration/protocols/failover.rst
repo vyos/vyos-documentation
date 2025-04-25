@@ -3,7 +3,7 @@ Failover
 ########
 
 Failover routes are manually configured routes, but they only install
-to the routing table if the health-check target is alive.
+to the routing table as kernel routes if the health-check target is alive.
 If the target is not alive the route is removed from the routing table
 until the target becomes available.
 
@@ -28,7 +28,12 @@ Failover Routes
 .. cfgcmd:: set protocols failover route <subnet> next-hop <address> check 
    type <protocol>
 
-   Defines protocols for checking ARP, ICMP, TCP
+   Defines protocols for checking ARP, ICMP, TCP.
+* ICMP probe sends 2 ICMP request packets with a response timeout of 1 second.
+  If one ICMP response is received, the health check is successful.
+* ARP probe sends 2 ARP requests with a response timeout of 1 second.
+  If one response is received, the health check is successful.
+* TCP probe checks whether the destination port is open.
 
    Default is ``icmp``.
 
