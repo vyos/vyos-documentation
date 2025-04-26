@@ -116,6 +116,7 @@ impact on a particular users in the network.
    192.0.2.54.
 -  ``reset vpn ipsec site-to-site peer vpn.example.com`` — terminates
    IPsec tunnels to ``vpn.example.com``.
+-  ``reset session tty1`` — terminates the TTY user session ``tty1``
 
 restart
 '''''''
