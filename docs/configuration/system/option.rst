@@ -52,6 +52,36 @@ Kernel
 
     .. note:: Setting will only become active with the next reboot!
 
+<<<<<<< HEAD
+=======
+.. cfgcmd:: set system option kernel amd-pstate-driver <mode>
+
+    Enables and configures p-state driver for modern AMD Ryzen and Epyc CPUs.
+
+    The available modes are:
+
+    * ``active`` This is the low-level firmware control mode based on the profile
+      set and the system governor has no effect.
+    * ``passive`` The driver allows the system governor to manage CPU frequency
+      while providing available performance states.
+    * ``guided`` The driver allows to set desired performance levels and the firmware
+      selects a performance level in this range and fitting to the current workload.
+
+    This will add the following two options to the Kernel commandline:
+
+    * ``initcall_blacklist=acpi_cpufreq_init`` Disable default ACPI CPU frequency scale
+    * ``amd_pstate={mode}`` Sets the p-state mode
+
+    .. note:: Setting will only become active with the next reboot!
+
+    .. seealso:: https://docs.kernel.org/admin-guide/pm/amd-pstate.html
+
+.. cfgcmd:: set system option kernel quiet
+
+    Suppress most kernel messages during boot. This is useful for systems with
+    embedded serial console interfaces to speed up the boot process.
+
+>>>>>>> fd6b53a (T7397: add "system kernel option quiet" to suppress boot messages)
 ***********
 HTTP client
 ***********
