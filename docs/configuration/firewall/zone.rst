@@ -100,7 +100,7 @@ To define a zone setup either one with interfaces or the local zone.
 
    .. note::
 
-      * A local zone can not have any member interfaces
+      * A local zone cannot have any member interfaces
       * There cannot be multiple local zones
 
 .. cfgcmd:: set firewall zone <name> default-action [drop | reject]
