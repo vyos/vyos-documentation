@@ -72,6 +72,11 @@ Kernel
 
     .. seealso:: https://docs.kernel.org/admin-guide/pm/amd-pstate.html
 
+.. cfgcmd:: set system option kernel quiet
+
+    Suppress most kernel messages during boot. This is useful for systems with
+    embedded serial console interfaces to speed up the boot process.
+
 ***********
 HTTP client
 ***********
