@@ -43,8 +43,6 @@ Kernel
 
 .. cfgcmd:: set system option kernel disable-power-saving
 
-    Disable CPU power saving mechanisms also known as C states.
-
     This will add the following two options to the Kernel commandline:
 
     * ``intel_idle.max_cstate=0`` Disable intel_idle and fall back on acpi_idle
@@ -52,8 +50,6 @@ Kernel
 
     .. note:: Setting will only become active with the next reboot!
 
-<<<<<<< HEAD
-=======
 .. cfgcmd:: set system option kernel amd-pstate-driver <mode>
 
     Enables and configures p-state driver for modern AMD Ryzen and Epyc CPUs.
@@ -81,7 +77,6 @@ Kernel
     Suppress most kernel messages during boot. This is useful for systems with
     embedded serial console interfaces to speed up the boot process.
 
->>>>>>> fd6b53a (T7397: add "system kernel option quiet" to suppress boot messages)
 ***********
 HTTP client
 ***********
