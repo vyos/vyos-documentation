@@ -146,7 +146,7 @@ NHRP protocol configuration
 IPSEC configuration
 ==============================
 
-* Please refer to the :ref:`ipsec` documentation for the individual IPSec
+* Please refer to the :ref:`ipsec_general` documentation for the individual IPSec
   related options.
 
 .. note:: NHRP daemon based on FRR nhrpd. It controls IPSEC. That's why 'close-action'
