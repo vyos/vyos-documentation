@@ -122,6 +122,27 @@ routing protocol inside a given vrf:
 - :ref:`routing-ospfv3`: ``set vrf name <name> protocols ospfv3 ...``
 - :ref:`routing-static`: ``set vrf name <name> protocols static ...``
 
+Services
+-------
+
+Currently the following services can be created isolated in VRFs
+
+- :ref:`dhcp-server`
+
+The CLI configuration is same as mentioned in above articles. The only
+difference is, that each service used, must be prefixed with the `vrf
+name <name>` command.
+
+Example
+^^^^^^^
+
+The following commands would be required to set options for a given service
+inside a given vrf:
+
+- :ref:`dhcp-server`: ``set vrf name <name> service dhcp-server ...``
+- :ref:`dhcp-server`: ``set vrf name <name> service dhcpv6-server ...``
+
+
 Operation
 =========
 
