@@ -285,15 +285,15 @@ Container Registry
 Log Configuration
 ====================
 
-.. cfgcmd:: set container log-driver [k8s-file | journald]
+.. cfgcmd:: set container name <name> log-driver [k8s-file | journald | none]
 
    Set the default log driver for containers.
 
-   - **k8s-file**: Logs to a plain text new line deliminated json file
-   - **journald**: Logs to the systems journal
+   - **k8s-file**: Log to a plain text file in Kubernetes-style format.
+   - **journald**: Log to the system journal
+   - **none**: Disable logging for the container
 
-   Current default is k8s-file. Using journald will result in the logs
-   not showing up in the container log operation command but the global log command.
+   Current default is journald. 
 
 
 ******************
