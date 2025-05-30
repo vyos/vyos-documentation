@@ -548,3 +548,49 @@ request, for example:
       "data": null,
       "error": null
    }
+
+**************
+Commit-confirm
+**************
+
+For the previous two endpoints discussed, a ``commit`` command is implicit
+following a succesful request operation (``set | delete | load | merge``, or
+a list of ``set`` and ``delete`` operations).  One can instead request a
+``commit-confirm`` command by including the field ``confirm_time`` of type
+int > 0. An example follows, in the alternative JSON format, for brevity,
+although the standard form-data format is fine:
+
+.. code-block:: none
+
+   curl -k -X POST -d '{"key": "MY-HTTPS-API-PLAINTEXT-KEY", "op": "merge", "string": "interfaces {\nethernet eth1 {\naddress '192.168.137.1/24'\ndescription 'internal'\n}\n}\n", "confirm_time": 1}' https://vyos/config-file
+
+   response:
+   {
+      "success": true,
+      "data": "Initialized commit-confirm; 1 minutes to confirm before reload\n",
+      "error": null
+   }
+
+The committed changes will be reverted at the timeout unless confirmed.
+To confirm and keep the changes:
+
+.. code-block:: none
+
+   curl -k -X POST -d '{"key": "MY-HTTPS-API-PLAINTEXT-KEY", "op": "confirm"}' https://vyos/config-file
+
+   response:
+   {
+      "success": true,
+      "data": "Reload timer stopped\n",
+      "error": null
+   }
+
+If allowed to revert to the previous configuration, the manner in which
+changes are reverted is governed by:
+
+.. code-block:: none
+
+   vyos@vyos# set system config-management commit-confirm action
+   Possible completions:
+      reload               Reload previous configuration if not confirmed
+      reboot               Reboot to saved configuration if not confirmed (default)
