@@ -27,6 +27,20 @@ System configuration commands
 
    Use this command to use Layer 4 information for IPv4 ECMP hashing.
 
+.. cfgcmd:: set system ip import-table <table-id>
+
+   Use this command to immport the table, by given table id, into the main RIB.
+
+.. cfgcmd:: set system ip import-table <table-id> distance <distance>
+
+   Use this command to override the default distance when importing routers
+   from the alternate table.
+
+.. cfgcmd:: set system ip import-table <table-id> route-map <route-map>
+
+   Use this command to filter routes that are imported into the main table
+   from alternate table using route-map.
+
 Zebra/Kernel route filtering
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
