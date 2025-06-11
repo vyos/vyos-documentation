@@ -26,5 +26,3 @@ Interfaces
    vxlan
    wireless
    wwan
-
-

@@ -1,5 +1,3 @@
-:lastproofread: 2024-07-04
-
 .. _openvpn:
 
 #######
@@ -32,861 +30,417 @@ Disadvantages are:
 
 In the VyOS CLI, a key point often overlooked is that rather than being
 configured using the `set vpn` stanza, OpenVPN is configured as a network
-interface using `set interfaces openvpn`.
+`interface using `set interfaces openvpn`.
 
-************
-Site-to-Site
-************
-
-.. figure:: /_static/images/openvpn_site2site_diagram.jpg
-
-OpenVPN is popular for client-server setups, but its site-to-site mode
-remains a relatively obscure feature, and many router appliances
-still don't support it. However, it's very useful for quickly setting up
-tunnels between routers.
-
-As of VyOS 1.4, OpenVPN site-to-site mode can use either pre-shared keys or
-x.509 certificates.
-
-The pre-shared key mode is deprecated and will be removed from future OpenVPN
-versions, so VyOS will have to remove support for that option as well. The
-reason is that using pre-shared keys is significantly less secure than using TLS.
-
-We'll configure OpenVPN using self-signed certificates, and then discuss the
-legacy pre-shared key mode.
-
-In both cases, we will use the following settings:
-
-* The public IP address of the local side of the VPN will be 198.51.100.10.
-* The public IP address of the remote side of the VPN will be 203.0.113.11.
-* The tunnel will use 10.255.1.1 for the local IP and 10.255.1.2 for the remote.
-* The local site will have a subnet of 10.0.0.0/16.
-* The remote site will have a subnet of 10.1.0.0/16.
-* The official port for OpenVPN is 1194, which we reserve for client VPN; we
-  will use 1195 for site-to-site VPN.
-* The ``persistent-tunnel`` directive will allow us to configure tunnel-related
-  attributes, such as firewall policy as we would on any normal network
-  interface.
-* If known, the IP of the remote router can be configured using the
-  ``remote-host`` directive; if unknown, it can be omitted. We will assume a
-  dynamic IP for our remote router.
-
-Setting up certificates
-=======================
-
-Setting up a full-blown PKI with a CA certificate would arguably defeat the purpose
-of site-to-site OpenVPN, since its main goal is supposed to be configuration simplicity,
-compared to server setups that need to support multiple clients.
-
-However, since VyOS 1.4, it is possible to verify self-signed certificates using
-certificate fingerprints.
-
-On both sides, you need to generate a self-signed certificate, preferrably using the "ec" (elliptic curve) type.
-You can generate them by executing command ``run generate pki certificate self-signed install <name>`` in the configuration mode.
-Once the command is complete, it will add the certificate to the configuration session, to the ``pki`` subtree.
-You can then review the proposed changes and commit them.
-
-.. code-block:: none
-
-  vyos@vyos# run generate pki certificate self-signed install openvpn-local
-  Enter private key type: [rsa, dsa, ec] (Default: rsa) ec
-  Enter private key bits: (Default: 256) 
-  Enter country code: (Default: GB) 
-  Enter state: (Default: Some-State) 
-  Enter locality: (Default: Some-City) 
-  Enter organization name: (Default: VyOS) 
-  Enter common name: (Default: vyos.io) 
-  Do you want to configure Subject Alternative Names? [y/N] 
-  Enter how many days certificate will be valid: (Default: 365) 
-  Enter certificate type: (client, server) (Default: server) 
-  Note: If you plan to use the generated key on this router, do not encrypt the private key.
-  Do you want to encrypt the private key with a passphrase? [y/N] 
-  2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
-  [edit]
-
-  vyos@vyos# compare 
-  [pki]
-  + certificate openvpn-local {
-  +     certificate "MIICJTCCAcugAwIBAgIUMXLfRNJ5iOjk/    uAZqUe4phW8MdgwCgYIKoZIzj0EAwIwVzELMAkGA1UEBhMCR0IxEzARBgNVBAgMClNvbWUtU3RhdGUxEjAQBgNVBAcMCVNvbWUtQ2l0eTENMAsGA1UECgwEVnlPUzEQMA4GA1UEAwwHdnlvcy5pbzAeFw0yMzA5MDcyMTQzMTNaFw0yNDA5MDYyMTQzMTNaMFcxCzAJBgNVBAYTAkdCMRMwEQYDVQQIDApTb21lLVN0YXRlMRIwEAYDVQQHDAlTb21lLUNpdHkxDTALBgNVBAoMBFZ5T1MxEDAOBgNVBAMMB3Z5b3MuaW8wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASp7D0vE3SKSAWAzr/lw9Eq9Q89r247AJR6ec/GT26AIcVA1bsongV1YaWvRwzTPC/yi5pkzV/PcT/WU7JQIyMWo3UwczAMBgNVHRMBAf8EAjAAMA4GA1UdDwEB/wQEAwIHgDATBgNVHSUEDDAKBggrBgEFBQcDATAdBgNVHQ4EFgQUBrAxRdFppdG/UBRdo7qNyHutaTQwHwYDVR0jBBgwFoAUBrAxRdFppdG/UBRdo7qNyHutaTQwCgYIKoZIzj0EAwIDSAAwRQIhAI2+8C92z9wTcTWkQ/goRxs10EBC+h78O+vgo9k97z5iAiBSeqfaVr5taQTS31+McGTAK3cYWNTg0DlOBI8aKO2oRg=="
-  +     private {
-  +         key "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgtOeEb0dMb5P/2Exi09WWvk6Cvz0oOBoDuP68ZimS2LShRANCAASp7D0vE3SKSAWAzr/lw9Eq9Q89r247AJR6ec/GT26AIcVA1bsongV1YaWvRwzTPC/yi5pkzV/PcT/WU7JQIyMW"
-  +     }
-  + }
-
-  [edit]
-
-  vyos@vyos# commit
-
-You do **not** need to copy the certificate to the other router. Instead, you need to retrieve its SHA-256 fingerprint.
-OpenVPN only supports SHA-256 fingerprints at the moment, so you need to use the following command:
-
-.. code-block:: none
-
-  vyos@vyos# run show pki certificate openvpn-local fingerprint sha256 
-  5C:B8:09:64:8B:59:51:DC:F4:DF:2C:12:5C:B7:03:D1:68:94:D7:5B:62:C2:E1:83:79:F1:F0:68:B2:81:26:79
-
-Note: certificate names don't matter, we use 'openvpn-local' and 'openvpn-remote' but they can be arbitrary.
-
-Repeat the procedure on the other router.
-
-Setting up OpenVPN
-==================
-
-Local Configuration:
-
-.. code-block:: none
-
-  Configure the tunnel:
-
-  set interfaces openvpn vtun1 mode site-to-site
-  set interfaces openvpn vtun1 protocol udp
-  set interfaces openvpn vtun1 persistent-tunnel
-  set interfaces openvpn vtun1 remote-host '203.0.113.11'                         # Public IP of the other side
-  set interfaces openvpn vtun1 local-port '1195'
-  set interfaces openvpn vtun1 remote-port '1195'
-  set interfaces openvpn vtun1 local-address '10.255.1.1'                         # Local IP of vtun interface
-  set interfaces openvpn vtun1 remote-address '10.255.1.2'                        # Remote IP of vtun interface
-  set interfaces openvpn vtun1 tls certificate 'openvpn-local'                    # The self-signed certificate
-  set interfaces openvpn vtun1 tls peer-fingerprint <remote cert fingerprint>     # The output of 'run show pki certificate <name> fingerprint sha256 on the remote router
-  set interfaces openvpn vtun1 tls role active
-
-Remote Configuration:
-
-.. code-block:: none
-
-  set interfaces openvpn vtun1 mode site-to-site
-  set interfaces openvpn vtun1 protocol udp
-  set interfaces openvpn vtun1 persistent-tunnel
-  set interfaces openvpn vtun1 remote-host '198.51.100.10'                         # Pub IP of other site
-  set interfaces openvpn vtun1 local-port '1195'
-  set interfaces openvpn vtun1 remote-port '1195'
-  set interfaces openvpn vtun1 local-address '10.255.1.2'                          # Local IP of vtun interface
-  set interfaces openvpn vtun1 remote-address '10.255.1.1'                         # Remote IP of vtun interface
-  set interfaces openvpn vtun1 tls certificate 'openvpn-remote'                    # The self-signed certificate
-  set interfaces openvpn vtun1 tls peer-fingerprint <local cert fingerprint>       # The output of 'run show pki certificate <name> fingerprint sha256 on the local router
-  set interfaces openvpn vtun1 tls role active
-
-Pre-shared keys
-===============
-
-Until VyOS 1.4, the only option for site-to-site OpenVPN without PKI was to use
-pre-shared keys. That option is still available but it is deprecated and will
-be removed in the future. However, if you need to set up a tunnel to an older
-VyOS version or a system with older OpenVPN, you need to still need to know how
-to use it.
-
-First, you need to generate a key by running ``run generate pki openvpn shared-secret install <name>`` from configuration mode.
-You can use any name, we will use ``s2s``.
-
-.. code-block:: none
-
-  vyos@local# run generate pki openvpn shared-secret install s2s
-  2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
-  [edit]
-  vyos@local# compare
-  [pki openvpn shared-secret]
-  + s2s {
-  +     key   "7c73046a9da91e874d31c7ad894a32688cda054bde157c64270f28eceebc0bb2f44dbb70335fad45148b0456aaa78cb34a34c0958eeed4f75e75fd99ff519ef940f7029a316c436d2366a2b0fb8ea1d1c792a65f67d10a461af83ef4530adc25d1c872de6d9c7d5f338223d1f3b66dc3311bbbddc0e05228c47b91c817c721aadc7ed18f0662df52ad14f898904372679e3d9697d062b0869d12de47ceb2e626fa12e1926a3119be37dd29c9b0ad81997230f4038926900d5edb78522d2940cfe207f8e2b948e0d459fa137ebb18064ac5982b28dd1899020b4f2b082a20d5d4eb65710fbb1e62b5e061df39620267eab429d3eedd9a1ae85957457c8e4655f3"
-  +     version "1"
-  + }
-
-  [edit]
-
-  vyos@local# commit
-  [edit]
-
-Then you need to install the key on the remote router:
-
-.. code-block:: none
-
-  vyos@remote# set pki openvpn shared-secret s2s key <generated key string>
-
-Then you need to set the key in your OpenVPN interface settings:
-
-.. code-block:: none
-
-  set interfaces openvpn vtun1 shared-secret-key s2s
-
-Firewall Exceptions
-===================
-
-For the OpenVPN traffic to pass through the WAN interface, you must create a
-firewall exception.
-
-.. code-block:: none
-
-    set firewall name OUTSIDE_LOCAL rule 10 action accept
-    set firewall name OUTSIDE_LOCAL rule 10 description 'Allow established/related'
-    set firewall name OUTSIDE_LOCAL rule 10 state established enable
-    set firewall name OUTSIDE_LOCAL rule 10 state related enable
-    set firewall name OUTSIDE_LOCAL rule 20 action accept
-    set firewall name OUTSIDE_LOCAL rule 20 description OpenVPN_IN
-    set firewall name OUTSIDE_LOCAL rule 20 destination port 1195
-    set firewall name OUTSIDE_LOCAL rule 20 log enable
-    set firewall name OUTSIDE_LOCAL rule 20 protocol udp
-    set firewall name OUTSIDE_LOCAL rule 20 source
-
-You should also ensure that the OUTISDE_LOCAL firewall group is applied to the
-WAN interface and a direction (local).
-
-.. code-block:: none
-
-    set firewall interface eth0 local name 'OUTSIDE-LOCAL'
-
-
-Static Routing:
-
-Static routes can be configured referencing the tunnel interface; for example,
-the local router will use a network of 10.0.0.0/16, while the remote has a
-network of 10.1.0.0/16:
-
-Local Configuration:
-
-.. code-block:: none
-
-  set protocols static route 10.1.0.0/16 interface vtun1
-
-Remote Configuration:
-
-.. code-block:: none
-
-  set protocols static route 10.0.0.0/16 interface vtun1
-
-The configurations above will default to using 256-bit AES in GCM mode
-for encryption (if both sides support data cipher negotiation) and SHA-1 for HMAC authentication.
-SHA-1 is considered weak, but other hashing algorithms are available, as are
-encryption algorithms:
-
-For Encryption:
-
-This sets the cipher when NCP (Negotiable Crypto Parameters) is disabled or
-OpenVPN version < 2.4.0. This option should not be used any longer in TLS
-mode and still exists for compatibility with old configurations. 
-
-.. code-block:: none
-
-  vyos@vyos# set interfaces openvpn vtun1 encryption cipher
-  Possible completions:
-    des          DES algorithm
-    3des         DES algorithm with triple encryption
-    bf128        Blowfish algorithm with 128-bit key
-    bf256        Blowfish algorithm with 256-bit key
-    aes128       AES algorithm with 128-bit key CBC
-    aes128gcm    AES algorithm with 128-bit key GCM
-    aes192       AES algorithm with 192-bit key CBC
-    aes192gcm    AES algorithm with 192-bit key GCM
-    aes256       AES algorithm with 256-bit key CBC
-    aes256gcm    AES algorithm with 256-bit key GCM
-
-This option was called --ncp-ciphers in OpenVPN 2.4 but has been renamed 
-to --data-ciphers in OpenVPN 2.5 to more accurately reflect its meaning.
-The first cipher in that list that is also in the client's --data-ciphers list
-is chosen. If no common cipher is found the client is rejected.
-
-.. code-block:: none
-
-  vyos@vyos# set int open vtun0 encryption data-ciphers
-  Possible completions:
-    none         Disable encryption
-    3des         DES algorithm with triple encryption
-    aes128       AES algorithm with 128-bit key CBC
-    aes128gcm    AES algorithm with 128-bit key GCM
-    aes192       AES algorithm with 192-bit key CBC
-    aes192gcm    AES algorithm with 192-bit key GCM
-    aes256       AES algorithm with 256-bit key CBC
-    aes256gcm    AES algorithm with 256-bit key GCM
-
-For Hashing:
-
-.. code-block:: none
-
-  vyos@vyos# set interfaces openvpn vtun1 hash
-  Possible completions:
-    md5          MD5 algorithm
-    sha1         SHA-1 algorithm
-    sha256       SHA-256 algorithm
-    sha512       SHA-512 algorithm
-
-If you change the default encryption and hashing algorithms, be sure that the
-local and remote ends have matching configurations, otherwise the tunnel will
-not come up.
-
-
-Firewall policy can also be applied to the tunnel interface for `local`, `in`,
-and `out` directions and functions identically to ethernet interfaces.
-
-If you're making use of multiple tunnels, OpenVPN must have a way to 
-distinguish between different tunnels aside from the pre-shared-key. This is 
-done either by referencing IP addresses or port numbers. One option is to
-dedicate a public IP to each tunnel. Another option is to dedicate a port 
-number to each tunnel (e.g. 1195,1196,1197...).
-
-OpenVPN status can be verified using the `show openvpn` operational commands.
-See the built-in help for a complete list of options.
-
-******
-Server
-******
-
-Multi-client server is the most popular OpenVPN mode on routers. It always uses
-x.509 authentication and therefore requires a PKI setup. Refer this topic
-:ref:`configuration/pki/index:pki` to generate a CA certificate,
-a server certificate and key, a certificate revocation list, and a Diffie-Hellman
-key exchange parameters file. You do not need client certificates and keys for
-the server setup.
-
-In this example we will use the most complicated case: a setup where each
-client is a router that has its own subnet (think HQ and branch offices), since
-simpler setups are subsets of it.
-
-Suppose you want to use 10.23.1.0/24 network for client tunnel endpoints and
-all client subnets belong to 10.23.0.0/20. All clients need access to the
-192.168.0.0/16 network.
-
-First we need to specify the basic settings. 1194/UDP is the default. The
-``persistent-tunnel`` option is recommended, as it prevents the TUN/TAP device
-from closing on connection resets or daemon reloads.
-
-.. note:: Using **openvpn-option -reneg-sec** can be tricky. This option is
-   used to renegotiate data channel after n seconds. When used on both the 
-   server and client, the lower value will trigger the renegotiation. If you
-   set it to 0 on one side of the connection (to disable it), the chosen value
-   on the other side will determine when the renegotiation will occur.
-
-.. code-block:: none
-
-  set interfaces openvpn vtun10 mode server
-  set interfaces openvpn vtun10 local-port 1194
-  set interfaces openvpn vtun10 persistent-tunnel
-  set interfaces openvpn vtun10 protocol udp
-
-Then we need to generate, add and specify the names of the cryptographic materials.
-Each of the install commands should be applied to the configuration and commited
-before using under the openvpn interface configuration.
-
-.. code-block:: none
-
-  run generate pki ca install ca-1                                # Follow the instructions to generate CA cert.
-  Configure mode commands to install:
-  set pki ca ca-1 certificate 'generated_cert_string'
-  set pki ca ca-1 private key 'generated_private_key'
-
-  run generate pki certificate sign ca-1 install srv-1            # Follow the instructions to generate server cert.
-  Configure mode commands to install:
-  set pki certificate srv-1 certificate 'generated_server_cert'
-  set pki certificate srv-1 private key 'generated_private_key'
-
-  run generate pki dh install dh-1                                # Follow the instructions to generate set of
-                                                                    Diffie-Hellman parameters.
-  Generating parameters...
-  Configure mode commands to install DH parameters:
-  set pki dh dh-1 parameters 'generated_dh_params_set'
-
-  set interfaces openvpn vtun10 tls ca-certificate ca-1
-  set interfaces openvpn vtun10 tls certificate srv-1
-  set interfaces openvpn vtun10 tls dh-params dh-1
-
-Now we need to specify the server network settings. In all cases we need to
-specify the subnet for client tunnel endpoints. Since we want clients to access
-a specific network behind our router, we will use a push-route option for
-installing that route on clients.
-
-.. code-block:: none
-
-  set interfaces openvpn vtun10 server push-route 192.168.0.0/16
-  set interfaces openvpn vtun10 server subnet 10.23.1.0/24
-
-Since it's a HQ with branch offices setup, we will want all clients to have
-fixed addresses and we will route traffic to specific subnets through them. We
-need configuration for each client to achieve this.
-
-.. note:: Clients are identified by the CN field of their x.509 certificates,
-   in this example the CN is ``client0``:
-
-.. code-block:: none
-
-  set interfaces openvpn vtun10 server client client0 ip 10.23.1.10
-  set interfaces openvpn vtun10 server client client0 subnet 10.23.2.0/25
-
-OpenVPN **will not** automatically create routes in the kernel for client
-subnets when they connect and will only use client-subnet association
-internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
-
-.. code-block:: none
-
-  set protocols static route 10.23.0.0/20 interface vtun10
-
-Additionally, each client needs a copy of ca cert and its own client key and
-cert files. The files are plaintext so they may be copied manually from the CLI.
-Client key and cert files should be signed with the proper ca cert and generated
-on the server side.
-
-HQ's router requires the following steps to generate crypto materials for the Branch 1:
-
-.. code-block:: none
-
-  run generate pki certificate sign ca-1 install branch-1            # Follow the instructions to generate client
-                                                                       cert for Branch 1
-  Configure mode commands to install:
-
-Branch 1's router might have the following lines:
-
-.. code-block:: none
-
-  set pki ca ca-1 certificate 'generated_cert_string'                # CA cert generated on HQ router
-  set pki certificate branch-1 certificate 'generated_branch_cert'   # Client cert generated and signed on HQ router
-  set pki certificate branch-1 private key 'generated_private_key'   # Client cert key generated on HQ router
-
-  set interfaces openvpn vtun10 tls ca-cert ca-1
-  set interfaces openvpn vtun10 tls certificate branch-1
-
-Client Authentication
-=====================
-
-LDAP
-----
-
-Enterprise installations usually ship a kind of directory service which is used
-to have a single password store for all employees. VyOS and OpenVPN support
-using LDAP/AD as single user backend.
-
-Authentication is done by using the ``openvpn-auth-ldap.so`` plugin which is
-shipped with every VyOS installation. A dedicated configuration file is
-required. It is best practise to store it in ``/config`` to survive image
-updates
-
-.. code-block:: none
-
-  set interfaces openvpn vtun0 openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
-
-The required config file may look like this:
-
-.. code-block:: none
-
-  <LDAP>
-  # LDAP server URL
-  URL             ldap://ldap.example.com
-  # Bind DN (If your LDAP server doesn't support anonymous binds)
-  BindDN          cn=LDAPUser,dc=example,dc=com
-  # Bind Password password
-  Password        S3cr3t
-  # Network timeout (in seconds)
-  Timeout         15
-  </LDAP>
-
-  <Authorization>
-  # Base DN
-  BaseDN          "ou=people,dc=example,dc=com"
-  # User Search Filter
-  SearchFilter    "(&(uid=%u)(objectClass=shadowAccount))"
-  # Require Group Membership - allow all users
-  RequireGroup    false
-  </Authorization>
-
-Active Directory
-^^^^^^^^^^^^^^^^
-
-Despite the fact that AD is a superset of LDAP
-
-.. code-block:: none
-
-  <LDAP>
-    # LDAP server URL
-    URL ldap://dc01.example.com
-    # Bind DN (If your LDAP server doesn’t support anonymous binds)
-    BindDN CN=LDAPUser,DC=example,DC=com
-    # Bind Password
-    Password mysecretpassword
-    # Network timeout (in seconds)
-    Timeout  15
-    # Enable Start TLS
-    TLSEnable no
-    # Follow LDAP Referrals (anonymously)
-    FollowReferrals no
-  </LDAP>
-
-  <Authorization>
-    # Base DN
-    BaseDN        "DC=example,DC=com"
-    # User Search Filter, user must be a member of the VPN AD group
-    SearchFilter  "(&(sAMAccountName=%u)(memberOf=CN=VPN,OU=Groups,DC=example,DC=com))"
-    # Require Group Membership
-    RequireGroup    false # already handled by SearchFilter
-    <Group>
-      BaseDN        "OU=Groups,DC=example,DC=com"
-      SearchFilter  "(|(cn=VPN))"
-      MemberAttribute  memberOf
-    </Group>
-  </Authorization>
-
-If you only want to check if the user account is enabled and can authenticate
-(against the primary group) the following snipped is sufficient:
-
-.. code-block:: none
-
-  <LDAP>
-    URL ldap://dc01.example.com
-    BindDN CN=SA_OPENVPN,OU=ServiceAccounts,DC=example,DC=com
-    Password ThisIsTopSecret
-    Timeout  15
-    TLSEnable no
-    FollowReferrals no
-  </LDAP>
-
-  <Authorization>
-    BaseDN          "DC=example,DC=com"
-    SearchFilter    "sAMAccountName=%u"
-    RequireGroup    false
-  </Authorization>
-
-A complete LDAP auth OpenVPN configuration could look like the following
-example:
-
-.. code-block:: none
-
-  vyos@vyos# show interfaces openvpn
-   openvpn vtun0 {
-       mode server
-       openvpn-option "--tun-mtu 1500 --fragment 1300 --mssfix"
-       openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
-       openvpn-option "--push redirect-gateway"
-       openvpn-option --duplicate-cn
-       openvpn-option "--verify-client-cert none"
-       openvpn-option --comp-lzo
-       openvpn-option --persist-key
-       openvpn-option --persist-tun
-       server {
-           domain-name example.com
-           max-connections 5
-           name-server 203.0.113.0.10
-           name-server 198.51.100.3
-           subnet 172.18.100.128/29
-       }
-       tls {
-           ca-certificate ca.crt
-           certificate server.crt
-           dh-params dh1024.pem
-       }
-   }
-
-
-******
-Client
-******
-
-VyOS can not only act as an OpenVPN site-to-site or server for multiple clients
-but you can also configure any VyOS OpenVPN interface as an OpenVPN client that
-connects to a VyOS OpenVPN server or any other OpenVPN server.
-
-Given the following example we have one VyOS router acting as an OpenVPN server
-and another VyOS router acting as an OpenVPN client. The server also pushes a
-static client IP address to the OpenVPN client. Remember, clients are identified
-using their CN attribute in the SSL certificate.
-
-.. _openvpn:client_server:
-
+*************
 Configuration
-=============
+*************
 
-Server Side
------------
+.. cfgcmd:: set interfaces openvpn <interface> authentication password  <text> 
 
-.. code-block:: none
+   Provide a password for auth-user-pass authentication method (client-only option)
 
-  set interfaces openvpn vtun10 encryption data-ciphers 'aes256'
-  set interfaces openvpn vtun10 hash 'sha512'
-  set interfaces openvpn vtun10 local-host '172.18.201.10'
-  set interfaces openvpn vtun10 local-port '1194'
-  set interfaces openvpn vtun10 mode 'server'
-  set interfaces openvpn vtun10 persistent-tunnel
-  set interfaces openvpn vtun10 protocol 'udp'
-  set interfaces openvpn vtun10 server client client1 ip '10.10.0.10'
-  set interfaces openvpn vtun10 server domain-name 'vyos.net'
-  set interfaces openvpn vtun10 server max-connections '250'
-  set interfaces openvpn vtun10 server name-server '172.16.254.30'
-  set interfaces openvpn vtun10 server subnet '10.10.0.0/24'
-  set interfaces openvpn vtun10 server topology 'subnet'
-  set interfaces openvpn vtun10 tls ca-cert ca-1
-  set interfaces openvpn vtun10 tls certificate srv-1
-  set interfaces openvpn vtun10 tls crypt-key srv-1
-  set interfaces openvpn vtun10 tls dh-params dh-1
-  set interfaces openvpn vtun10 use-lzo-compression
+.. cfgcmd:: set interfaces openvpn <interface> authentication username  <text>
 
-.. _openvpn:client_client:
+   Provide a username for auth-user-pass authentication method (client-only option)
 
-Client Side
------------
+.. cfgcmd:: set interfaces openvpn <interface> description <description>
 
-.. code-block:: none
+   set description <text> for openvpn interface being configured
 
-  set interfaces openvpn vtun10 encryption data-ciphers 'aes256'
-  set interfaces openvpn vtun10 hash 'sha512'
-  set interfaces openvpn vtun10 mode 'client'
-  set interfaces openvpn vtun10 persistent-tunnel
-  set interfaces openvpn vtun10 protocol 'udp'
-  set interfaces openvpn vtun10 remote-host '172.18.201.10'
-  set interfaces openvpn vtun10 remote-port '1194'
-  set interfaces openvpn vtun10 tls ca-cert ca-1
-  set interfaces openvpn vtun10 tls certificate client-1
-  set interfaces openvpn vtun10 tls crypt-key client-1
-  set interfaces openvpn vtun10 use-lzo-compression
+.. cfgcmd:: set interfaces openvpn <interface> device-type  <tap | tun>
+ 
+   * ``tun`` - devices encapsulate IPv4 or IPv6 (OSI Layer 3), default value
+   * ``tap`` - devices encapsulate Ethernet 802.3 (OSI Layer 2).
 
-.. note:: Compression is generally not recommended. VPN tunnels which use
-   compression are susceptible to the VORALCE attack vector. Enable compression
-   if needed.
+.. cfgcmd:: set interfaces openvpn <interface> disable
 
-Options
-=======
+   Administratively disable interface
 
-We do not have CLI nodes for every single OpenVPN option. If an option is
-missing, a feature request should be opened at Phabricator_ so all users can
-benefit from it (see :ref:`issues_features`).
+.. cfgcmd:: set interfaces openvpn <interface> encryption <cipher | data-ciphers> < 3des | aes128 | aes128gcm | none | ...> 
+ 
+   * ``cipher`` - Standard Data Encryption Algorithm
+   * ``data-ciphers`` - Cipher negotiation list for use in server or client mode
 
-If you are a hacker or want to try on your own we support passing raw OpenVPN
-options to OpenVPN.
+.. cfgcmd:: set interfaces openvpn <interface> hash <md5 | sha1 | sha256 | ...> 
 
-.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option 'persist-key'
+   Configure a secure hash algorithm
 
-Will add ``persist-key`` to the generated OpenVPN configuration.
-Please use this only as last resort - things might break and OpenVPN won't start
-if you pass invalid options/syntax.
+.. cmdinclude:: /_include/interface-ip.txt
+   :var0: openvpn
+   :var1: vtun0
 
-.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option
-   'push keepalive 10 60'
+.. cmdinclude:: /_include/interface-ipv6.txt
+   :var0: openvpn
+   :var1: vtun0
 
-Will add ``push "keepalive 1 10"`` to the generated OpenVPN config file.
+.. cfgcmd:: set interfaces openvpn <interface> keep-alive failure-count <value>
 
-.. cfgcmd:: set interfaces openvpn vtun10 openvpn-option
-   'route-up &quot;/config/auth/tun_up.sh arg1&quot;'
+   Maximum number of keepalive packet failures. The default value is 60
 
-Will add ``route-up "/config/auth/tun_up.sh arg1"`` to the generated OpenVPN 
-config file. The path and arguments need to be single- or double-quoted.
+.. cfgcmd:: set interfaces openvpn <interface> keep-alive interval <value>
 
-.. note:: Sometimes option lines in the generated OpenVPN configuration require
-   quotes. This is done through a hack on our config generator. You can pass
-   quotes using the ``&quot;`` statement.
+   Send keepalive packet every interval seconds. Default value is 10
 
-Server bridge
-=============
+.. cfgcmd:: set interfaces openvpn <interface> local-address <address>
+ 
+   Define local IP address of tunnel (site-to-site mode only)
 
-In Ethernet bridging configurations, OpenVPN's server mode can be set as a
-'bridge' where the VPN tunnel encapsulates entire Ethernet frames 
-(up to 1514 bytes) instead of just IP packets (up to 1500 bytes). This setup 
-allows clients to transmit Layer 2 frames through the OpenVPN tunnel. Below,
-we outline a basic configuration to achieve this:
+.. cfgcmd:: set interfaces openvpn <interface> local-host <address>
+
+   Local IP address to accept connections. If specified, OpenVPN will bind to 
+   this address only. If unspecified, OpenVPN will bind to all interfaces.
+
+.. cfgcmd:: set interfaces openvpn <interface> local-port <port>
+
+   Define local port number to accept connections
+
+.. cfgcmd:: set interfaces openvpn <interface> mirror egress <monitor-interface>
+
+   Configure port mirroring for interface outbound traffic and copy the traffic 
+   to monitor-interface
+
+.. cfgcmd:: set interfaces openvpn <interface> mirror ingress <monitor-interface>
+
+   Configure port mirroring for interface inbound traffic and copy the traffic 
+   to monitor-interface
+
+.. cfgcmd:: set interfaces openvpn <interface> mode <site-to-site | server | client>
+
+   Define a mode for OpenVPN operation
+
+   * **site-to-site** - enables site-to-site VPN connection
+   * **client** - acts as client in server-client mode
+   * **server** - acts as server in server-client mode
+
+.. cfgcmd:: set interfaces openvpn <interface> offload dco
+
+   OpenVPN Data Channel Offload (DCO) enables significant performance enhancement
+   in encrypted OpenVPN data processing. By minimizing context switching for each
+   packet, DCO effectively reduces overhead. This optimization is achieved by
+   keeping most data handling tasks within the kernel, avoiding frequent switches
+   between kernel and user space for encryption and packet handling.
+
+   As a result, the processing of each packet becomes more efficient, 
+   potentially leveraging hardware encryption offloading support available in 
+   the kernel.
+
+   .. note:: OpenVPN DCO is not a fully supported OpenVPN feature, and is currently
+      considered experimental. Furthermore, there are certain OpenVPN features and
+      use cases that remain incompatible with DCO. To get a comprehensive
+      understanding of the limitations associated with DCO, refer to the list of
+      known limitations in the documentation.
+
+      https://community.openvpn.net/openvpn/wiki/DataChannelOffload/Features
 
 
-Server Side:
+   Enabling OpenVPN DCO
+   ====================
 
-.. code-block:: none
+   DCO support is a per-tunnel option and it is not automatically enabled by
+   default for new or upgraded tunnels. Existing tunnels will continue to function
+   as they have in the past.
 
-  set interfaces bridge br10 member interface eth1.10
-  set interfaces bridge br10 member interface vtun10
-  set interfaces openvpn vtun10 device-type 'tap'
-  set interfaces openvpn vtun10 encryption data-ciphers 'aes192'
-  set interfaces openvpn vtun10 hash 'sha256''
-  set interfaces openvpn vtun10 local-host '172.18.201.10'
-  set interfaces openvpn vtun10 local-port '1194'
-  set interfaces openvpn vtun10 mode 'server'
-  set interfaces openvpn vtun10 server bridge gateway '10.10.0.1'
-  set interfaces openvpn vtun10 server bridge start '10.10.0.100'
-  set interfaces openvpn vtun10 server bridge stop '10.10.0.200'
-  set interfaces openvpn vtun10 server bridge subnet-mask '255.255.255.0'
-  set interfaces openvpn vtun10 server topology 'subnet'
-  set interfaces openvpn vtun10 tls ca-certificate 'ca-1'
-  set interfaces openvpn vtun10 tls certificate 'srv-1'
-  set interfaces openvpn vtun10 tls dh-params 'srv-1'
+   DCO can be enabled for both new and existing tunnels. VyOS adds an option in
+   each tunnel configuration where we can enable this function. The current best
+   practice is to create a new tunnel with DCO to minimize the chance of problems
+   with existing clients.
 
-Client Side :
+   Example:
 
-.. code-block:: none
+   .. code-block:: none
 
-  set interfaces openvpn vtun10 device-type 'tap'
-  set interfaces openvpn vtun10 encryption data-ciphers 'aes192'
-  set interfaces openvpn vtun10 hash 'sha256''
-  set interfaces openvpn vtun10 mode 'client'
-  set interfaces openvpn vtun10 protocol 'udp'
-  set interfaces openvpn vtun10 remote-host '172.18.201.10'
-  set interfaces openvpn vtun10 remote-port '1194'
-  set interfaces openvpn vtun10 tls ca-certificate 'ca-1'
-  set interfaces openvpn vtun10 tls certificate 'client-1'
+     set interfaces openvpn vtun0 offload dco
 
-***************************
-Multi-factor Authentication
-***************************
+   Enable OpenVPN Data Channel Offload feature by loading the appropriate kernel
+   module.
 
-VyOS supports multi-factor authentication (MFA) or two-factor authentication 
-using Time-based One-Time Password (TOTP). Compatible with Google Authenticator
-software token, other software tokens.
+   Disabled by default - no kernel module loaded.
 
-MFA TOTP options
-================
+   .. note:: Enable this feature causes an interface reset.
+ 
+.. cfgcmd:: set interfaces openvpn <interface> openvpn-option <text>
+ 
+   OpenVPN has a lot of options, all of them are not included in VyOS CLI. 
+   If an option is missing, a feature request may be opened at Phabricator_ so 
+   all users can benefit from it (see :ref:`issues_features`). Alternatively,
+   use ``openvpn-option`` for passing raw OpenVPN options to openvpn.conf file.  
+
+   .. note:: Please use this only as last resort - things might break and OpenVPN 
+      won’t start if you pass invalid options/syntax. Check system logs for errors.
+
+   Example:
+
+   .. code-block:: none 
+
+     set interfaces openvpn vtun0 openvpn-option 'persist-key'
+
+   This will add ``persist-key`` to the generated OpenVPN configuration. This 
+   option solves the problem by persisting keys across resets, so they 
+   don't need to be re-read.
+
+   .. code-block:: none
+
+     set interfaces openvpn vtun0 openvpn-option 'route-up &quot;/config/auth/tun_up.sh arg1&quot;'
+
+   This will add ``route-up "/config/auth/tun_up.sh arg1"`` to the generated OpenVPN
+   config file. This option is executed after connection authentication, either
+   immediately after, or some number of seconds after as defined. The path and 
+   arguments need to be single- or double-quoted.
+
+   .. note:: Sometimes option lines in the generated OpenVPN configuration require
+      quotes. This is done through a hack on our config generator. You can pass
+      quotes using the ``&quot;`` statement.
+
+.. cfgcmd:: set interfaces openvpn <interface> persistent-tunnel
+
+   This option prevents the TUN/TAP device from closing or reopening on 
+   connection resets or daemon reloads.
+
+.. cfgcmd:: set interfaces openvpn <interface> protocol <udp | tcp-passive | tcp-active >
+
+   Define a protocol for OpenVPN communication with remote host
+
+ * **udp** - default protocol is udp when not defined
+ * **tcp-passive** - TCP protocol and accepts connections passively
+ * **tcp-active** - TCP protocol and initiates connections actively
+
+.. cfgcmd:: set interfaces openvpn <interface> redirect <interface>
+
+   This option redirects incoming packets to destination
+
+.. cfgcmd:: set interfaces openvpn <interface> remote-address <address>
+
+   Define remote IP address of tunnel (site-to-site mode only)
+
+.. cfgcmd:: set interfaces openvpn <interface> remote-host <address | host>
+
+   Define an IPv4/IPv6 address or hostname of server device if OpenVPN is being 
+   run in client mode, and is undefined in server mode.
+
+.. cfgcmd:: set interfaces openvpn <interface> remote-port <port>
+
+   Define a remote port number to connect to server
+
+.. cfgcmd:: set interfaces openvpn <interface> replace-default-route 
+
+   This option will make OpenVPN tunnel to be used as the default route   
+
+.. cfgcmd:: set interfaces openvpn <interface> server bridge disable
+
+   Disable the given instance.
+
+.. cfgcmd:: set interfaces openvpn <interface> server bridge gateway <ipv4 address>
+
+   Define a gateway ip address
+
+.. cfgcmd:: set interfaces openvpn <interface> server bridge start <ipv4 address>
+
+   First IP address in the pool to allocate to connecting clients
+
+.. cfgcmd:: set interfaces openvpn <interface> server bridge stop <ipv4 address>
+
+   Last IP address in the pool to allocate to connecting clients
+
+.. cfgcmd:: set interfaces openvpn <interface> server bridge subnet-mask <ipv4 subnet mask>
+
+   Define subnet mask pushed to dynamic clients.
+
+.. cfgcmd:: set interfaces openvpn <interface> server client <name>
+
+   Define the common name specified in client certificate
+
+.. cfgcmd:: set interfaces openvpn <interface> server client <name> disable
+
+   Disable the client connection
+
+.. cfgcmd:: set interfaces openvpn <interface> server client <name> ip <address>
+
+   Set a specific IPv4/IPv6 address to the client
+
+.. cfgcmd:: set interfaces openvpn <interface> server client <name> push-route <subnet>
+
+   Define a route to be pushed to a specific client 
+
+.. cfgcmd:: set interfaces openvpn <interface> server client <name> subnet <subnet>
+
+   Define this option to route a fixed subnet from the server to a particular 
+   client. Used as OpenVPN iroute directive.
+
+.. cfgcmd:: set interfaces openvpn <interface> server client-ip-pool start <address>
+
+   Define a first IP address from IPv4 pool of subnet to be dynamically 
+   allocated to connecting clients   
+
+.. cfgcmd:: set interfaces openvpn <interface> server client-ip-pool stop <address>
+
+   Define a last IP address from IPv4 pool of subnet to be dynamically allocated 
+   to connecting clients
+
+.. cfgcmd:: set interfaces openvpn <interface> server client-ip-pool subnet <netmask>
+
+   Define a subnet mask pushed to dynamic clients. This option is only used for 
+   device type tap, not to be used with bridged interfaces.
+
+.. cfgcmd:: set interfaces openvpn <interface> server client-ipv6-pool base <ipv6addr/bits>
+
+   Define an IPv6 address pool for dynamic assignment to clients
+
+.. cfgcmd:: set interfaces openvpn <interface> server domain-name <name>
+
+   DNS suffix to be pushed to all clients
+
+.. cfgcmd:: set interfaces openvpn <interface> server max-connections <1-4096>
+
+   Define the maximum number of client connections
 
 .. cfgcmd:: set interfaces openvpn <interface> server mfa totp challenge <enable | disable>
 
-  If set to enable, openvpn-otp will expect password as result of challenge/
-  response protocol.
+   If set to enable, openvpn-otp will expect password as result of challenge/
+   response protocol.
 
-.. cfgcmd:: set interfaces openvpn <interface> server mfa totp digits <1-65535>    
+.. cfgcmd:: set interfaces openvpn <interface> server mfa totp digits <1-65535>
 
-  Configure number of digits to use for totp hash (default: 6)
-    
+   Configure number of digits to use for totp hash (default: 6)
+
 .. cfgcmd:: set interfaces openvpn <interface> server mfa totp drift <1-65535>
 
-  Configure time drift in seconds (default: 0)
+   Configure time drift in seconds (default: 0)
 
 .. cfgcmd:: set interfaces openvpn <interface> server mfa totp slop <1-65535>
 
-  Configure maximum allowed clock slop in seconds (default: 180)
+   Configure maximum allowed clock slop in seconds (default: 180)
 
 .. cfgcmd:: set interfaces openvpn <interface> server mfa totp step <1-65535>
 
-  Configure step value for totp in seconds (default: 30)
+   Configure step value for totp in seconds (default: 30)
 
-Example
-=======
+.. cfgcmd:: set interfaces openvpn <interface> server name-server <address>
 
-.. code-block:: none
+   Define Client DNS configuration to be used with the connection
 
-  set interfaces openvpn vtun20 encryption cipher 'aes256'
-  set interfaces openvpn vtun20 hash 'sha512'
-  set interfaces openvpn vtun20 mode 'server'
-  set interfaces openvpn vtun20 persistent-tunnel
-  set interfaces openvpn vtun20 server client user1
-  set interfaces openvpn vtun20 server mfa totp challenge 'disable'
-  set interfaces openvpn vtun20 server subnet '10.10.2.0/24'
-  set interfaces openvpn vtun20 server topology 'subnet'
-  set interfaces openvpn vtun20 tls ca-certificate 'openvpn_vtun20'
-  set interfaces openvpn vtun20 tls certificate 'openvpn_vtun20'
-  set interfaces openvpn vtun20 tls dh-params 'dh-pem'
+.. cfgcmd:: set interfaces openvpn <interface> server push-route <subnet>
 
-For every client in the openvpn server configuration a totp secret is created.
-To display the authentication information, use the command:
+   Define a route to be pushed to all clients   
 
-.. cfgcmd:: show interfaces openvpn <interface> user <username> mfa <qrcode|secret|uri>
+.. cfgcmd:: set interfaces openvpn <interface> server reject-unconfigured-client
 
-An example:
+   Reject connections from clients that are not explicitly configured 
 
-.. code-block:: none
+.. cfgcmd:: set interfaces openvpn <interface> server subnet <subnet>
 
-   vyos@vyos:~$ sh interfaces openvpn vtun20 user user1 mfa qrcode
-   █████████████████████████████████████
-   █████████████████████████████████████
-   ████ ▄▄▄▄▄ █▀▄▀ ▀▀▄▀ ▀▀▄ █ ▄▄▄▄▄ ████
-   ████ █   █ █▀▀▄ █▀▀▀█▀██ █ █   █ ████
-   ████ █▄▄▄█ █▀█ ▄ █▀▀ █▄▄▄█ █▄▄▄█ ████
-   ████▄▄▄▄▄▄▄█▄█ █ █ ▀ █▄▀▄█▄▄▄▄▄▄▄████
-   ████▄▄ ▄ █▄▄ ▄▀▄█▄ ▄▀▄█ ▄▄▀ ▀▄█ ▀████
-   ████ ▀██▄▄▄█▄ ██ █▄▄▄▄ █▄▀█ █ █▀█████
-   ████ ▄█▀▀▄▄  ▄█▀  ▀▄ ▄▄▀▄█▀▀▀ ▄▄▀████
-   ████▄█ ▀▄▄▄▀  ▀ ▄█ ▄ █▄█▀ █▀  █▀█████
-   ████▀█▀ ▀ ▄█▀▄▀▀█▄██▄█▀▀  ▀ ▀ ▄█▀████
-   ████ ██▄▄▀▄▄█ ██ ▀█ ▄█ ▀▄█  █▀██▀████
-   ████▄███▄█▄█ ▀█▄ ██▄▄▄█▀ ▄▄▄ █ ▀ ████
-   ████ ▄▄▄▄▄ █▄█▀▄ ▀▄ ▀█▀  █▄█ ██▀█████
-   ████ █   █ █ ▄█▀█▀▀▄ ▄▀▀▄▄▄▄▄▄   ████
-   ████ █▄▄▄█ █ ▄ ▀ █▄▄▄██▄▀█▄▀▄█▄ █████
-   ████▄▄▄▄▄▄▄█▄██▄█▄▄▄▄▄█▄█▄█▄██▄██████
-   █████████████████████████████████████
-   █████████████████████████████████████
+   Manadatory field to define in server mode, set ipv4 or ipv6 network
 
-Use the QR code to add the user account in Google authenticator application and
-on client side, use the OTP number as password.
+.. cfgcmd:: set interfaces openvpn <interface> server topology < net30 | point-to-point | subnet>
+
+   Define virtual addressing topology when running in ``tun`` mode. This directive 
+   has no meaning in ``tap`` mode, which always uses a subnet topology.
+
+   * **subnet** - This topology is the current recommended and default topology.
+     This mode allocates a single IP address per connecting client.
+   * **net30** - This is the old topology for support with Windows clients, by 
+     allocating one /30 subnet per client. It is effictively depcrecated.
+   * **point-to-point** - Use a point-to-point topology where the remote endpoint
+     of the client's tun interface always points to the local endpoint of the 
+     server's tun interface. This mode allocates a single IP address per connecting 
+     client. Only use when none of the connecting clients are Windows systems.
 
 
-**********************************
-OpenVPN Data Channel Offload (DCO)
-**********************************
+.. cfgcmd:: set interfaces openvpn <interface> shared-secret-key <key>
 
-OpenVPN Data Channel Offload (DCO) enables significant performance enhancement
-in encrypted OpenVPN data processing. By minimizing context switching for each
-packet, DCO effectively reduces overhead. This optimization is achieved by
-keeping most data handling tasks within the kernel, avoiding frequent switches
-between kernel and user space for encryption and packet handling.
+   Define a static secret key, used with site-to-site OpenVPN option only
 
-As a result, the processing of each packet becomes more efficient, potentially
-leveraging hardware encryption offloading support available in the kernel.
+.. cfgcmd:: set interfaces openvpn <interface> tls auth-key <key>
 
-.. note:: OpenVPN DCO is not a fully supported OpenVPN feature, and is currently
-   considered experimental. Furthermore, there are certain OpenVPN features and
-   use cases that remain incompatible with DCO. To get a comprehensive
-   understanding of the limitations associated with DCO, refer to the list of
-   known limitations in the documentation.
+   Define a tls secret key for tls-auth which adds an additional HMAC signature 
+   to all SSL/TLS handshake packets for integrity verification. Use ``run generate pki openvpn shared-secret install <name>`` to generate the key. 
 
-   https://community.openvpn.net/openvpn/wiki/DataChannelOffload/Features
+.. cfgcmd:: set interfaces openvpn <interface> tls ca-certificate <name>
 
+   Define Certificate Authority chain in PKI configuration
 
-Enabling OpenVPN DCO
-====================
+.. cfgcmd:: set interfaces openvpn <interface> tls certificate <name>
 
-DCO support is a per-tunnel option and it is not automatically enabled by 
-default for new or upgraded tunnels. Existing tunnels will continue to function 
-as they have in the past.
+   Define a name of certificate in PKI configuration
 
-DCO can be enabled for both new and existing tunnels. VyOS adds an option in
-each tunnel configuration where we can enable this function. The current best
-practice is to create a new tunnel with DCO to minimize the chance of problems
-with existing clients.
+.. cfgcmd:: set interfaces openvpn <interface> tls crypt-key
 
-.. cfgcmd:: set interfaces openvpn <name> offload dco
+   Define a shared secret key to provide an additional level of security, 
+   a variant similar to tls-auth
 
-  Enable OpenVPN Data Channel Offload feature by loading the appropriate kernel
-  module.
+.. cfgcmd:: set interfaces openvpn <interface> tls dh-params
 
-  Disabled by default - no kernel module loaded.
+   Define Diffie Hellman parameters, required only on server mode 
 
-  .. note:: Enable this feature causes an interface reset.
+.. cfgcmd:: set interfaces openvpn <interface> tls peer-fingerprint <text>
 
+   Peer certificate SHA256 fingerprint, configured in site-to-site mode
 
-Troubleshooting
-===============
+.. cfgcmd:: set interfaces openvpn <interface> tls role <active | passive>
 
-VyOS provides some operational commands on OpenVPN.
+   Define a role for TLS negotiation, preferably used in site-to-site mode
 
-Check status
-------------
+   * **active** - Initiate TLS negotiation actively
+   * **passive** - Wait for incoming TLS connection
 
-The following commands let you check tunnel status.
+.. cfgcmd:: set interfaces openvpn <interface> tls tls-version-min <1.0 | 1.1 | 1.2 | 1.4 >
 
-.. opcmd:: show openvpn client
+   This option sets the minimum TLS version which will accept from the peer
 
-   Use this command to check the tunnel status for OpenVPN client interfaces.
+.. cfgcmd:: set interfaces openvpn <interface>  use-lzo-compression
 
-.. opcmd:: show openvpn server
+   Use fast LZO compression on this TUN/TAP interface
 
-   Use this command to check the tunnel status for OpenVPN server interfaces.
+.. cfgcmd:: set interfaces openvpn <interface> vrf <name>
+
+   Place interface in given VRF instance.
+
+**************
+Operation Mode
+**************
 
 .. opcmd:: show openvpn site-to-site
 
-   Use this command to check the tunnel status for OpenVPN site-to-site
-   interfaces.
+   Show tunnel status for OpenVPN site-to-site interfaces
 
-OpenVPN Logs
-------------
+.. opcmd:: show openvpn server
+
+   Shows tunnel status for Openvpn server interfaces
+
+.. opcmd:: show openvpn client
+
+   Shows tunnel status for OpenVPN client interfaces
 
 .. opcmd:: show log openvpn
 
-   Use this command to check log messages which include entries for successful
-   connections as well as failures and errors related to all OpenVPN interfaces.
+   Show logs for all OpenVPN interfaces
 
-.. opcmd:: show log openvpn interface <name>
+.. opcmd:: show log openvpn interface <interface>
 
-   Use this command to check log messages specific to an interface.
-
-
-Reset OpenVPN
--------------
-
-The following commands let you reset OpenVPN.
+   Show logs for specific OpenVPN interface
 
 .. opcmd:: reset openvpn client <text>
 
-   Use this command to reset the specified OpenVPN client.
+   Reset specified OpenVPN client
 
 .. opcmd:: reset openvpn interface <interface>
 
-   Use this command to reset the OpenVPN process on a specific interface.
+   Reset OpenVPN process on specified interface
 
+.. opcmd::  generate openvpn client-config interface <interface> ca <name> certificate <name> 
 
+   Generate OpenVPN client configuration file in ovpn format to load in client machines
+
+********
+Examples
+********
+
+This section covers examples of OpenVPN configurations for various deployments.
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+
+   openvpn-examples
 
 .. include:: /_include/common-references.txt
