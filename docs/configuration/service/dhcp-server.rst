@@ -379,9 +379,7 @@ statements on both servers:
 
 .. cfgcmd:: set service dhcp-server high-availability name <name>
 
-   A generic `<name>` referencing this sync service.
-
-   .. note:: `<name>` must be identical on both sides!
+   Define the name of the peer server to establish and identify the HA (High Availability) connection.
 
 .. cfgcmd:: set service dhcp-server high-availability status <primary
    | secondary>
@@ -610,8 +608,8 @@ Configuration of a DHCP HA pair:
 * Setup DHCP HA for network 192.0.2.0/24
 * Use active-active HA mode.
 * Default gateway and DNS server is at `192.0.2.254`
-* The primary DHCP server uses address `192.168.189.252`
-* The secondary DHCP server uses address `192.168.189.253`
+* The primary DHCP server named dhcp-primary uses address `192.168.189.252`
+* The secondary DHCP server with named dhcp-secondary uses address `192.168.189.253`
 * DHCP range spans from `192.168.189.10` - `192.168.189.250`
 
 Common configuration, valid for both primary and secondary node.
@@ -632,7 +630,7 @@ Common configuration, valid for both primary and secondary node.
 
   set service dhcp-server high-availability mode 'active-active'
   set service dhcp-server high-availability source-address '192.168.189.252'
-  set service dhcp-server high-availability name 'NET-VYOS'
+  set service dhcp-server high-availability name 'dhcp-secondary'
   set service dhcp-server high-availability remote '192.168.189.253'
   set service dhcp-server high-availability status 'primary'
 
@@ -642,7 +640,7 @@ Common configuration, valid for both primary and secondary node.
 
   set service dhcp-server high-availability mode 'active-active'
   set service dhcp-server high-availability source-address '192.168.189.253'
-  set service dhcp-server high-availability name 'NET-VYOS'
+  set service dhcp-server high-availability name 'dhcp-primary'
   set service dhcp-server high-availability remote '192.168.189.252'
   set service dhcp-server high-availability status 'secondary'
 
