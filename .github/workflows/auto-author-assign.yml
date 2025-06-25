@@ -3,7 +3,6 @@ on:
   pull_request_target:
     types: [opened, reopened, ready_for_review, locked]
 
-
 permissions:
   pull-requests: write
   contents: read
@@ -12,3 +11,16 @@ jobs:
   assign-author:
     uses: vyos/.github/.github/workflows/assign-author.yml@current
     secrets: inherit
+
+  label-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v5
+
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-message: 'Thank you for your first pull request! 🎉'
