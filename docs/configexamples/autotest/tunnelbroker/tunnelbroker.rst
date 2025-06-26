@@ -208,9 +208,8 @@ Firewall
 ========
 
 Finally, don't forget the :ref:`Firewall<configuration/firewall/index:Firewall>`. The usage is identical, except for
-instead of `set firewall name NAME`, you would use `set firewall ipv6-name
+instead of `set firewall ipv4 name NAME`, you would use `set firewall ipv6 name
 NAME`.
 
-Similarly, to attach the firewall, you would use `set interfaces ethernet eth0
-firewall in ipv6-name` or `set firewall zone LOCAL from WAN firewall 
+Similarly, to attach the firewall, you would use `set firewall ipv6 name NAME rule N inbound-interface name eth0` or `set firewall zone LOCAL from WAN firewall 
 ipv6-name`.

@@ -220,14 +220,15 @@ firewall exception.
     set firewall ipv4 name OUTSIDE_LOCAL rule 20 destination port 51820
     set firewall ipv4 name OUTSIDE_LOCAL rule 20 log enable
     set firewall ipv4 name OUTSIDE_LOCAL rule 20 protocol udp
-    set firewall ipv4 name OUTSIDE_LOCAL rule 20 source
 
 You should also ensure that the OUTSIDE_LOCAL firewall group is applied to the
-WAN interface and a direction (local).
+WAN interface and in an input (local) direction.
 
 .. code-block:: none
 
-    set interfaces ethernet eth0 firewall local name 'OUTSIDE-LOCAL'
+    set firewall ipv4 input filter rule 10 action jump
+    set firewall ipv4 input filter rule 10 jump-target 'OUTSIDE_LOCAL'
+    set firewall ipv4 input filter rule 10 inbound-interface name 'eth0'
 
 Assure that your firewall rules allow the traffic, in which case you have a
 working VPN using WireGuard.
