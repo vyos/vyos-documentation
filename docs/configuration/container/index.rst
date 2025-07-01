@@ -261,10 +261,14 @@ Operation Commands
 
     Update container image
 
-.. opcmd:: delete container image [image id|all]
+.. opcmd:: delete container image <image id|all> [force]
 
     Delete a particular container image based on it's image ID.
     You can also delete all container images at once.
+
+    You can not delete a container image if it has more then one tag
+    assigned, this is why there is a `force` option to pass down to
+    the container image to also remove those images.
 
 *********************
 Example Configuration
