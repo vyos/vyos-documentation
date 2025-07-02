@@ -43,6 +43,15 @@ Configure BFD
    The minimal echo receive transmission interval that this system is
    capable of handling
 
+.. cfgcmd:: set protocols bfd peer <address> interval echo-receive-interval [disabled | <10-60000>]
+
+   Configures the minimum interval that this system is capable of receiving echo packets.
+   Disabled means that this system doesn't want to receive echo packets
+
+.. cfgcmd:: set protocols bfd peer <address> interval echo-transmit-interval <10-60000>
+
+   The minimum transmission interval (less jitter) that this system wants to use to send BFD echo packets
+
 .. cfgcmd:: set protocols bfd peer <address> interval multiplier <2-255>
 
    Remote transmission interval will be multiplied by this value
