@@ -24,6 +24,9 @@ This chapter contains various configuration examples:
    segment-routing-isis
    nmp
    ansible
+   ipsec-cisco-policy-based
+   ipsec-cisco-route-based
+   ipsec-pa-route-based
    policy-based-ipsec-and-firewall
    site-2-site-cisco
 
