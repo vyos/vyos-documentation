@@ -15,7 +15,7 @@ Prefix filtering can be done using prefix-list and prefix-list6.
 Configuration
 *************
 
-Prefix Lists
+IPv4 Prefix Lists (prefix-list)
 ============
 
 .. cfgcmd:: set policy prefix-list <text>
@@ -46,7 +46,7 @@ Prefix Lists
 
    Netmask less than length
 
-Example: Prefix Lists
+Example: IPv4 Prefix Lists (prefix-list)
 ============
 
 This example creates an IPv4 prefix-list named PL4-EXAMPLE-NAME, defines 3 
@@ -62,7 +62,7 @@ rules each with 1 prefix, and matches le (less than/equal to) /32.
 .. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 30 le '32'
 .. cfgcmd:: set policy prefix-list PL4-EXAMPLE-NAME rule 30 prefix '203.0.113.0/24'
 
-IPv6 Prefix Lists
+IPv6 Prefix Lists (prefix-list6)
 =================
 
 .. cfgcmd:: set policy prefix-list6 <text>
@@ -94,3 +94,19 @@ IPv6 Prefix Lists
 .. cfgcmd:: set policy prefix-list6 <text> rule <1-65535> le <0-128>
 
    Netmask less than length
+
+Example: IPv6 Prefix Lists (prefix-list6)
+============
+
+This example creates an IPv6 prefix-list6 named PL6-EXAMPLE-NAME, defines 3 
+rules each with 1 prefix, and matches le (less than/equal to) /128.
+
+.. cfgcmd:: set policy prefix-list6 PL6-EXAMPLE-NAME rule 10 action 'permit'
+.. cfgcmd:: set policy prefix-list6 PL6-EXAMPLE-NAME rule 10 le '128'
+.. cfgcmd:: set policy prefix-list6 PL6-EXAMPLE-NAME rule 10 prefix '2001:db8:0:0::/64'
+.. cfgcmd:: set policy prefix-list6 PL6-EXAMPLE-NAME rule 20 action 'permit'
+.. cfgcmd:: set policy prefix-list6 PL6-EXAMPLE-NAME rule 20 le '128'
+.. cfgcmd:: set policy prefix-list6 PL6-EXAMPLE-NAME rule 20 prefix '2001:db8:0:1::/64'
+.. cfgcmd:: set policy prefix-list6 PL6-EXAMPLE-NAME rule 30 action 'permit'
+.. cfgcmd:: set policy prefix-list6 PL6-EXAMPLE-NAME rule 30 le '128'
+.. cfgcmd:: set policy prefix-list6 PL6-EXAMPLE-NAME rule 30 prefix '2001:db8:0:2::/64'
