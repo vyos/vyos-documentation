@@ -84,11 +84,9 @@ below a specified threshold. To configure the rate limiting use:
     set load-balancing wan rule <rule> limit <parameter>
 
 * ``burst``: Number of packets allowed to overshoot the limit within ``period``.
-  Default 5.
 * ``period``: Time window for rate calculation. Possible values:
   ``second`` (one second), ``minute`` (one minute), ``hour`` (one hour).
-  Default is ``second``.
-* ``rate``: Number of packets. Default 5.
+* ``rate``: Number of packets.
 * ``threshold``: ``below`` or ``above`` the specified rate limit.
 
 Flow and packet-based balancing
