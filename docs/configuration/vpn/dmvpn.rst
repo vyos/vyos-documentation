@@ -40,7 +40,7 @@ Configuration
 * Please refer to the :ref:`tunnel-interface` documentation for the individual
   tunnel related options.
 
-* Please refer to the :ref:`ipsec` documentation for the individual IPSec
+* Please refer to the :ref:`ipsec_general` documentation for the individual IPSec
   related options.
 
 .. cfgcmd:: set protocols nhrp tunnel <tunnel> cisco-authentication <secret>
