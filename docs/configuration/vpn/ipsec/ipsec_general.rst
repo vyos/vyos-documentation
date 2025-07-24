@@ -106,7 +106,7 @@ every configured interval. The remote peer is considered unreachable
 if no response to these packets is received within the DPD timeout.
 In IKEv2, DPD sends messages every configured interval. If one request
 is not responded, Strongswan execute its retransmission algorithm with
-its timers. https://docs.strongswan.org/docs/5.9/config/retransmission.html
+its timers.  `IKEv2 Retransmission`_
 
 *****************
 Configuration IKE
@@ -306,3 +306,47 @@ Options
 .. cfgcmd:: set vpn ipsec options virtual-ip
 
   Allows the installation of virtual-ip addresses.
+
+IKEv2 Retransmission
+====================
+
+If the peer does not respond on DPD packet, the router starts retransmission procedure.
+
+The following formula is used to calculate the timeout:
+
+.. code-block:: none
+
+  relative timeout = timeout * base ^ (attempts-1)
+
+.. cfgcmd:: set vpn ipsec options retransmission attempts
+
+  Number of attempts before the peer is considered to be in the down state.
+  Default value is **5**.
+
+.. cfgcmd:: set vpn ipsec options retransmission base
+
+  Base number of exponential backoff. Default value is **1.8**.
+
+.. cfgcmd:: set vpn ipsec options retransmission timeout
+
+  Timeout in seconds before the first retransmission. Default value is **4**.
+
+Using the default values, packets are retransmitted as follows:
+
++-----------+-------------+------------------+------------------+
+| Attempts  | Formula     | Relative timeout | Absolute timeout |
++-----------+-------------+------------------+------------------+
+| 1         | 4 * 1.8 ^ 0 | 4s               | 4s               |
++-----------+-------------+------------------+------------------+
+| 2         | 4 * 1.8 ^ 1 | 7s               | 11s              |
++-----------+-------------+------------------+------------------+
+| 3         | 4 * 1.8 ^ 2 | 13s              | 24s              |
++-----------+-------------+------------------+------------------+
+| 4         | 4 * 1.8 ^ 3 | 23s              | 47s              |
++-----------+-------------+------------------+------------------+
+| 5         | 4 * 1.8 ^ 4 | 42s              | 89s              |
++-----------+-------------+------------------+------------------+
+| peer down | 4 * 1.8 ^ 5 | 76s              | 165s             |
++-----------+-------------+------------------+------------------+
+
+
