@@ -1,19 +1,15 @@
-###
-VPN
-###
+#####
+IPsec
+#####
 
 
 .. toctree::
    :maxdepth: 1
    :includehidden:
 
-   ipsec/index
-   l2tp
-   openconnect
-   pptp
-   rsa-keys
-   sstp
-
+   ipsec_general
+   site2site_ipsec
+   troubleshooting_ipsec
 
 pages to sort
 
@@ -21,5 +17,4 @@ pages to sort
    :maxdepth: 1
    :includehidden:
 
-   dmvpn
 
