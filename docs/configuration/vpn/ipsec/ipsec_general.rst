@@ -161,7 +161,7 @@ VyOS IKE group has the next options:
 
 .. cfgcmd:: set vpn ipsec ike-group <name> proposal <number> dh-group <dh-group number>
 
-  Dh-group. Default value is **2**.
+  Diffie-Hellman algorithm group. Default value is **2**.
 
 .. cfgcmd:: set vpn ipsec ike-group <name> proposal <number> encryption <encryption>
 
