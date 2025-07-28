@@ -105,7 +105,7 @@ are sent as ISAKMP R-U-THERE-ACK messages. In IKEv1, DPD sends messages
 every configured interval. The remote peer is considered unreachable
 if no response to these packets is received within the DPD timeout.
 In IKEv2, DPD sends messages every configured interval. If one request
-is not responded, Strongswan execute its retransmission algorithm with
+does not receive a response, strongSwan executes its retransmission algorithm with
 its timers. https://docs.strongswan.org/docs/5.9/config/retransmission.html
 
 *****************
