@@ -11,7 +11,7 @@ Information about IPsec
 IPsec is the framework used to secure data.
 IPsec accomplishes these goals by providing authentication,
 encryption of IP network packets, key exchange, and key management.
-VyOS uses Strongswan package to implement IPsec.
+VyOS uses strongSwan for its IPsec implementation.
 
 **Authentication Header (AH)** is defined in  :rfc:`4302`. It creates
 a hash using the IP header and data payload, and prepends it to the
