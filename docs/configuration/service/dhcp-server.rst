@@ -455,6 +455,111 @@ The configuration will look as follows:
        subnet-id 1
    }
 
+Option 82
+---------
+
+Some DHCP relays support the injection of information into a DHCP request, depending on
+where the request originated from. This is commonly used to determine the
+behaviour of the DHCP server, based on the port/switch combination where the
+request was first detected. I.e. the device plugged into a particular port (or
+set of ports) always gets the same IP address (or range of IP addresses). This
+information is usually included in the request using Option 82, hence this
+is what we call this part of the configuration.
+
+This behaviour is controlled in two parts. First, "client classes" are defined
+which determine which inputs match. Once a positive match has been found the
+request is "tagged" with this client class. Second, when the DHCP server
+processes the request it checks to see if the configuration has a client class
+defined. If it does then that part of the configuration will override the others
+
+Client classes can be applied at either the subnet or range level, depending on
+how you want the server to behave.
+
+**Client Class definition**
+
+.. cfgcmd:: set service dhcp-server client-class <name> option82 circuit-id
+   <value>
+
+   Create a new client class (if not already defined) and set it to match on
+   the "Circuit ID" part of the Option 82 field in the DHCP request. This is
+   sub option "1" as specified by RFC 3046. The value specified here is either
+   interpreted as a raw hex value, if it starts with the prefix 0x, or ASCII text
+   otherwise. e.g. ``e1-5`` and ``0x65312d35`` are the same
+
+.. cfgcmd:: set service dhcp-server client-class <name> option82 remote-id
+   <value>
+
+   Create a new client class (if not already defined) and set it to match on
+   the "Remote ID" part of the Option 82 field in the DHCP request. This is
+   sub option "2" as specified by RFC 3046. The value specified here is either
+   interpreted as a raw hex value, if it starts with the prefix 0x, or ASCII text
+   otherwise. e.g. ``10.100.0.41`` and ``0x31302e3130302e302e3431`` are the
+   same
+
+**Application of Client Class**
+
+.. cfgcmd:: set service dhcp-server shared-network-name <subnet-name> subnet
+   <CIDR> client-class <class-name>
+
+   Applies the Client Class with the name `<class-name>` to the subnet `<subnet-name>`.
+   This means that whenever the client class matches a request it is always
+   routed to this subnet definition first.
+
+.. cfgcmd:: set service dhcp-server shared-network-name <subnet-name> subnet
+   <CIDR> range <range-name> client-class <class-name>
+
+   Applies the Client Class with the name `<class-name>` to the range
+   `<range-name>` which belongs to subnet `<subnet-name>`. This means that whenever the
+   client class matches a request it is always routed to this range definition
+   first.
+
+NB: Kea (the DHCP server used by VyOS) is programmed to offer as many
+alternatives as it can to repeated DHCP Discover requests. Some operating
+systems (Notably Microsoft Windows) make multiple DHCP Discover requests before
+settling on an address. This particularly seems to happen when the DHCP server
+isn't set to authorative. This may explain why the address you espect isn't
+being chosen. Wireshark is helpful in these situations.
+
+**Example:**
+
+The following configuration example will classify requests coming in on port
+``e1-5`` from DHCP Relay ``192.0.2.1`` and make sure that they are allocated the
+address ``192.0.2.4``. Any requests which do not match the circuit and remote ID
+will, instead, be allocated from the range otherRange in the usual manner.
+
+NB: Both the Circuit ID and Remote ID fields are arbitrary free text. *Most*
+switches set the Remote ID to the IP address of the management interface but
+that should not be relied upon. Check the documentation of your DHCP Relay for
+more detail or, as a measure of last resort, inspect the DHCP requests in
+Wireshark.
+
+.. code-block:: none
+
+    service {
+        dhcp-server {
+            client-class className {
+                option82 {
+                    circuit-id e1-5
+                    remote-id 192.0.2.1
+                }
+            }
+            shared-network-name test {
+                subnet 192.0.2.0/24 {
+                    range classNameRange {
+                        client-class className
+                        start 192.0.2.4
+                        stop 192.0.2.4
+                    }
+                    range otherRange {
+                        start 192.0.2.5
+                        stop 192.0.2.100
+                    }
+                    subnet-id 1
+                }
+            }
+        }
+    }
+
 Options
 =======
 
