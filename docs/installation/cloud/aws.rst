@@ -1,5 +1,5 @@
 ##########
-Amazon AWS
+VyOS Deployment on AWS
 ##########
 
 
@@ -601,6 +601,8 @@ Connect to the VyOS instance
  .. code-block:: none
 
    ssh -i vyos-keypair.pem vyos@35.152.131.62
+
+
    
 
 Deployment of VyOS Instance and Required Resources via CloudFormation Template
@@ -619,6 +621,23 @@ You can download or clone these templates from the GitHub repository and use the
 
 https://github.com/vyos/vyos-automation/tree/main/CloudFormation
 
+
+
+Deployment of VyOS Instance and Required Resources via Terraform
+========
+
+These Terraform projects automate the deployment of a VyOS instance on AWS, configuring essential components such as:
+
+- VPC
+- Public and private subnets
+- Internet Gateway
+- Route Tables
+- Elastic IPs
+- Security Groups
+
+You can download or clone these templates from the GitHub repository and use them in your environment:
+
+https://github.com/vyos/vyos-automation/tree/main/Terraform/AWS/
 
 
 Amazon CloudWatch Agent Usage

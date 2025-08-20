@@ -1,5 +1,5 @@
 #####################
-Google Cloud Platform
+VyOS Deployment on Google Cloud Platform
 #####################
 
 This guide provides step-by-step instructions for deploying a VyOS instance with two NICs and the required resources on Google Cloud Platform (GCP).
@@ -126,8 +126,8 @@ Step 3: Create VPC Networks and Subnets
 .. figure:: /_static/images/cloud-gcp-vpc-03.png
 
 .. figure:: /_static/images/cloud-gcp-vpc-04.png
-
-4. Add firewall rules to allow specific network traffic from the Internet. By default all incoming traffic from outside a network is blocked.
+   
+4. Add firewall rules to allow specific network traffic from the Internet if needed. By default, all incoming traffic from outside the network is blocked. Typically, a VyOS deployment from the GCP Marketplace configures this automatically, ensuring that SSH access is enabled after deployment.
 
 .. figure:: /_static/images/cloud-gcp-vpc-05.png
 
@@ -224,7 +224,7 @@ Step 4: Deploy VyOS instance from Marketplace
       - set interfaces ethernet eth1 address 'dhcp'
       - set interfaces ethernet eth1 dhcp-options no-default-route
 
-For more information, please visit the official VyOS documentation:
+For more information, please visit the documentation:
 
 https://docs.vyos.io/en/stable/automation/cloud-init.html#module-vyos-userdata
 
