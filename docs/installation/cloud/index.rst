@@ -8,6 +8,8 @@ Running VyOS in Cloud Environments
    :caption: Content
 
    aws
+   aws-ha
    azure
+   azure-ha
    gcp
-   oracel
+   oracle
