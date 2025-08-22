@@ -53,6 +53,31 @@ Configuration
 
    Defaults to: 4096
 
+Firewall recommendations
+========================
+
+Unlike typical routed traffic, mDNS packets relayed between interfaces do not
+traverse the FORWARD hook chain in the firewall. Instead, they are processed
+through the following hooks:
+
+ - **INPUT**: For packets received by the local system
+ - **OUTPUT**: For packets sent from the local system
+
+To control or allow mDNS packet forwarding via the relay, you must define
+appropriate rules in the INPUT and OUTPUT directions. Rules in the FORWARD
+direction will have no effect on mDNS relay traffic.
+
+.. code-block:: none
+
+ set firewall ipv4 input filter rule 10 action 'accept'
+ set firewall ipv4 input filter rule 10 destination address '224.0.0.251'
+ set firewall ipv4 input filter rule 10 destination port '5353'
+ set firewall ipv4 input filter rule 10 protocol 'udp'
+ set firewall ipv4 output filter rule 10 action 'accept'
+ set firewall ipv4 output filter rule 10 destination address '224.0.0.251'
+ set firewall ipv4 output filter rule 10 destination port '5353'
+ set firewall ipv4 output filter rule 10 protocol 'udp'
+
 Example
 =======
 
