@@ -93,7 +93,10 @@ You can use ``latest`` option. It loads the latest available Rolling release.
 If an Upgrade Fails
 """"""""""""""""""
 
-If an image upgrade fails, VyOS will automatically reboot after 5 minutes using the previously running image. For more information and configuration options, see the :cfgcmd:`set system option reboot-on-upgrade-failure` :ref:`command <system_option>`.
+If an image upgrade fails, VyOS will automatically reboot after 5 minutes
+using the previously running image. For more information and
+configuration options, see the
+:cfgcmd:`set system option reboot-on-upgrade-failure` :ref:`command <system_option>`.
 
 After a successful reboot, verify the VyOS version with
 the :opcmd:`show version` command.
