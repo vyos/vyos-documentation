@@ -78,7 +78,8 @@ You can use ``latest`` option. It loads the latest available Rolling release.
 
      vyos@vyos:~$ add system image latest
 
-.. note:: To use the `latest` option the "system update-check url" must be configured
+.. note:: To use the `latest` option the "system update-check url"
+   must be configured
    appropriately for the installed release.
 
    For updates to the Rolling Release for AMD64, the following URL may be used:
@@ -91,12 +92,13 @@ You can use ``latest`` option. It loads the latest available Rolling release.
    https://vyos.net/get/nightly-builds/
 
 If an Upgrade Fails
-""""""""""""""""""
+"""""""""""""""""""
 
 If an image upgrade fails, VyOS will automatically reboot after 5 minutes
 using the previously running image. For more information and
 configuration options, see the
-:cfgcmd:`set system option reboot-on-upgrade-failure` :ref:`command <system_option>`.
+:cfgcmd:`set system option reboot-on-upgrade-failure`
+:ref:`command <system_option>`.
 
 After a successful reboot, verify the VyOS version with
 the :opcmd:`show version` command.

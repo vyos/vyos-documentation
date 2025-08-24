@@ -66,17 +66,19 @@ Kernel
 
     The available modes are:
 
-    * ``active`` This is the low-level firmware control mode based on the profile
-      set and the system governor has no effect.
+    * ``active`` This is the low-level firmware control mode based
+      on the profile set and the system governor has no effect.
     * ``passive`` The driver allows the system governor to manage CPU frequency
       while providing available performance states.
-    * ``guided`` The driver allows to set desired performance levels and the firmware
-      selects a performance level in this range and fitting to the current workload.
+    * ``guided`` The driver allows to set desired performance levels
+      and the firmware selects a performance level in this
+      range and fitting to the current workload.
 
     This will add the following two options to the Kernel commandline:
 
-    * ``initcall_blacklist=acpi_cpufreq_init`` Disable default ACPI CPU frequency scale
-    * ``amd_pstate={mode}`` Sets the p-state mode
+    * ``initcall_blacklist=acpi_cpufreq_init`` Disable default ACPI CPU
+      frequency scale.
+    * ``amd_pstate={mode}`` Sets the p-state mode.
 
     .. note:: Setting will only become active with the next reboot!
 
@@ -123,8 +125,8 @@ Keyboard Layout
 ***************
 
 When starting a VyOS live system (the installation CD) the configured keyboard
-layout defaults to US. As this might not suite everyone's use case you can adjust
-the used keyboard layout on the system console.
+layout defaults to US. As this might not suite everyone's use case you can
+adjust the used keyboard layout on the system console.
 
 .. cfgcmd:: set system option keyboard-layout <us | fr | de | fi | no | dk>
 
