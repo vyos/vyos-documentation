@@ -92,3 +92,56 @@ You can use ``latest`` option. It loads the latest available Rolling release.
 
 After reboot you might want to verify the version you are running with
 the :opcmd:`show version` command.
+
+Automatic Upgrade Recovery
+""""""""""""""""""
+
+VyOS has introduced an intelligent auto recovery feature that helps protect your device
+whenever a software upgrade goes wrong. Upon detecting an upgrade failure, VyOS
+automatically restores the older version ensuring continuous operation of your device. This
+eliminates VyOS quotes better uptime, giving you peace of mind when keeping
+your network with latest updates.
+
+You will see the following message when a boot failure happens:
+
+.. code-block:: none
+
+   Booting failed, reverting to previous image
+   Automatic reboot in 5 minutes
+   Use "reboot cancel" to cancel
+
+Upon seeing the above error message, you can either wait for 5 minutes to revert to the previous
+image or you can attempt to manually investigate the issue if you wish to.
+
+The VyOS system displays a clear warning message after the system recovers from a failed
+update:
+
+.. code-block:: none
+
+   WARNING: Image update to "VyOS 1.5.2024" failed
+   Please check the logs:
+   /usr/lib/live/mount/persistence/boot/NAME/rv/var/log
+   Message is cleared on next reboot!
+
+**Troubleshooting the Error**
+
+If you prefer to manually troubleshoot the error yourself by cancelling the automatic recovery,
+you can easily do that. Simply run the 'reboot cancel' command to cancel the automatic recovery
+and investigate the issue. **Note**: Remember to carry out the troubleshooting before the system
+reverts to the previous image configuration window.
+
+**Testing the Feature**
+
+You can use the 'vyos fail migration' command line option to simulate and test the automatic
+recovery process without causing a real failure. You can use this to test without risk and build
+some confidence before deploying this feature in a production environment.
+
+**Benefits to You**
+
+With the introduction of this feature, you can reap the following benefits:
+
+• Zero network downtime
+• No more long outages
+•	Auto clean-up of notifications
+•	Manual ability to override 
+
