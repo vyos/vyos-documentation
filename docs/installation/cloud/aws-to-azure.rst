@@ -126,7 +126,7 @@ Azure Environment
 .. code-block:: none
 
    ssh-keygen -t rsa -b 4096 -f keys/id_rsa
-   chmod 400 keys/vyos_custom_key.pem
+   chmod 400 keys/id_rsa
 
 Usage
 -----
