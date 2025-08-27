@@ -11,5 +11,6 @@ Running VyOS in Cloud Environments
    aws-ha
    azure
    azure-ha
+   aws-to-azure
    gcp
    oracle
