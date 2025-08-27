@@ -33,7 +33,7 @@ Architecture
 The architecture consists of VyOS routers deployed in both AWS and Azure, connected via secure IPsec tunnels.  
 BGP is used for dynamic routing between the clouds, allowing for seamless communication.
 
-.. figure:: /_static/images/cloud-to-cloud-aws-and-azure.png
+.. figure:: /_static/images/cloud-aws-to-azure.png
    :alt: VyOS Cloud-to-Cloud topology diagram
 
 Terraform Automation
