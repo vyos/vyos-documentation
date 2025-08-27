@@ -627,6 +627,12 @@ Common parameters
 
    Disable immediate session reset if peer's connected link goes down.
 
+.. cfgcmd:: set protocols bgp parameters no-ipv6-auto-ra
+
+   By default, FRR sends router advertisement packets when Extended Next Hop is
+   on or when a connection is established directly using the device name (Unnumbered BGP).
+   Setting this option prevents FRR from sending router advertisement packets, but could break Unnumbered BGP.
+
 .. cfgcmd:: set protocols bgp listen range <prefix> peer-group <name>
 
    This command is useful if one desires to loosen the requirement for BGP
