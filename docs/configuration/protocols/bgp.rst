@@ -980,7 +980,7 @@ Operational Mode Commands
 Show
 ====
 
-.. opcmd:: show <ip|ipv6> bgp
+.. opcmd:: show bgp <ip|ipv6>
 
    This command displays all entries in BGP routing table.
 
@@ -999,7 +999,7 @@ Show
 
    Displayed  2 routes and 2 total paths
 
-.. opcmd:: show <ip|ipv6> bgp <address|prefix>
+.. opcmd:: show bgp <ip|ipv6> <address|prefix>
 
    This command displays information about the particular entry in the BGP
    routing table.
@@ -1015,59 +1015,59 @@ Show
          Origin IGP, metric 0, valid, external, best (First path received)
          Last update: Wed Jan  6 12:18:53 2021
 
-.. opcmd:: show ip bgp cidr-only
+.. opcmd:: show bgp cidr-only
 
    This command displays routes with classless interdomain routing (CIDR).
 
-.. opcmd:: show <ip|ipv6> bgp community <value>
+.. opcmd:: show bgp <ipv4|ipv6> community <value>
 
    This command displays routes that belong to specified BGP communities.
    Valid value is a community number in the range from 1 to 4294967200,
    or AA:NN (autonomous system-community number/2-byte number), no-export,
    local-as, or no-advertise.
 
-.. opcmd:: show <ip|ipv6> bgp community-list <name>
+.. opcmd:: show bgp <ipv4|ipv6> community-list <name>
 
    This command displays routes that are permitted by the BGP
    community list.
 
-.. opcmd:: show ip bgp dampened-paths
+.. opcmd:: show bgp <ipv4|ipv6> dampening dampened-paths
 
    This command displays BGP dampened routes.
 
-.. opcmd:: show ip bgp flap-statistics
+.. opcmd:: show bgp <ipv4|ipv6> dampening flap-statistics
 
    This command displays information about flapping BGP routes.
 
-.. opcmd:: show ip bgp filter-list <name>
+.. opcmd:: show bgp <ipv4|ipv6> filter-list <name>
 
    This command displays BGP routes allowed by the specified AS Path
    access list.
 
-.. opcmd:: show <ip|ipv6> bgp neighbors <address> advertised-routes
+.. opcmd:: show bgp <ipv4|ipv6> neighbors <address> advertised-routes
 
    This command displays BGP routes advertised to a neighbor.
 
-.. opcmd:: show <ip|ipv6> bgp neighbors <address> received-routes
+.. opcmd:: show bgp <ipv4|ipv6> neighbors <address> received-routes
 
    This command displays BGP routes originating from the specified BGP
    neighbor before inbound policy is applied. To use this command inbound
    soft reconfiguration must be enabled.
 
-.. opcmd:: show <ip|ipv6> bgp neighbors <address> routes
+.. opcmd:: show bgp <ipv4|ipv6> neighbors <address> routes
 
    This command displays BGP received-routes that are accepted after filtering.
 
-.. opcmd:: show <ip|ipv6> bgp neighbors <address> dampened-routes
+.. opcmd:: show bgp <ipv4|ipv6> neighbors <address> dampened-routes
 
    This command displays dampened routes received from BGP neighbor.
 
-.. opcmd:: show <ip|ipv6> bgp regexp <text>
+.. opcmd:: show bgp <ipv4|ipv6> regexp <text>
 
    This command displays information about BGP routes whose AS path
    matches the specified regular expression.
 
-.. opcmd:: show <ip|ipv6> bgp summary
+.. opcmd:: show bgp <ipv4|ipv6> summary
 
    This command displays the status of all BGP connections.
 
@@ -1090,7 +1090,7 @@ Show
 Reset
 =====
 
-.. opcmd:: reset <ip|ipv6> bgp <address> [soft [in|out]]
+.. opcmd:: reset bgp <ipv4|ipv6> <address> [soft [in|out]]
 
    This command resets BGP connections to the specified neighbor IP address.
    With argument :cfgcmd:`soft` this command initiates a soft reset. If
@@ -1101,16 +1101,11 @@ Reset
 
    This command resets all BGP connections of given router.
 
-.. opcmd:: reset ip bgp dampening
-
-   This command uses to clear BGP route dampening information and to
-   unsuppress suppressed routes.
-
-.. opcmd:: reset ip bgp external
+.. opcmd:: reset bgp <ipv4|ipv6> external
 
    This command resets all external BGP peers of given router.
 
-.. opcmd:: reset ip bgp peer-group <name> [soft [in|out]]
+.. opcmd:: reset bgp <ipv4|ipv6> peer-group <name> [soft [in|out]]
 
    This command resets BGP connections to the specified peer group.
    With argument :cfgcmd:`soft` this command initiates a soft reset. If
@@ -1135,6 +1130,7 @@ A simple eBGP configuration:
   set protocols bgp neighbor 192.168.0.2 ebgp-multihop '2'
   set protocols bgp neighbor 192.168.0.2 remote-as '65535'
   set protocols bgp neighbor 192.168.0.2 update-source '192.168.0.1'
+  set protocols bgp neighbor 192.168.0.2 address-family ipv4-unicast
   set protocols bgp address-family ipv4-unicast network '172.16.0.0/16'
   set protocols bgp parameters router-id '192.168.0.1'
 
@@ -1146,6 +1142,7 @@ A simple eBGP configuration:
   set protocols bgp neighbor 192.168.0.1 ebgp-multihop '2'
   set protocols bgp neighbor 192.168.0.1 remote-as '65534'
   set protocols bgp neighbor 192.168.0.1 update-source '192.168.0.2'
+  set protocols bgp neighbor 192.168.0.2 address-family ipv4-unicast
   set protocols bgp address-family ipv4-unicast network '172.17.0.0/16'
   set protocols bgp parameters router-id '192.168.0.2'
 
