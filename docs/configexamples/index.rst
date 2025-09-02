@@ -22,6 +22,9 @@ This chapter contains various configuration examples:
    qos
    segment-routing-isis
    nmp
+   ipsec-cisco-policy-based
+   ipsec-cisco-route-based
+   ipsec-pa-route-based
 
 
 Configuration Blueprints (autotest)
