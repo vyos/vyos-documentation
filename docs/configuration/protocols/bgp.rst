@@ -1016,7 +1016,7 @@ Show
          Origin IGP, metric 0, valid, external, best (First path received)
          Last update: Wed Jan  6 12:18:53 2021
 
-.. opcmd:: show ip bgp cidr-only
+.. opcmd:: show bgp cidr-only
 
    This command displays routes with classless interdomain routing (CIDR).
 
@@ -1091,27 +1091,22 @@ Show
 Reset
 =====
 
-.. opcmd:: reset <ip|ipv6> bgp <address> [soft [in|out]]
+.. opcmd:: reset bgp <ipv4|ipv6> <address> [soft [in|out]]
 
    This command resets BGP connections to the specified neighbor IP address.
    With argument :cfgcmd:`soft` this command initiates a soft reset. If
    you do not specify the :cfgcmd:`in` or :cfgcmd:`out` options, both
    inbound and outbound soft reconfiguration are triggered.
 
-.. opcmd:: reset ip bgp all
+.. opcmd:: reset bgp all
 
    This command resets all BGP connections of given router.
 
-.. opcmd:: reset ip bgp dampening
-
-   This command uses to clear BGP route dampening information and to
-   unsuppress suppressed routes.
-
-.. opcmd:: reset ip bgp external
+.. opcmd:: reset bgp <ipv4|ipv6> external
 
    This command resets all external BGP peers of given router.
 
-.. opcmd:: reset ip bgp peer-group <name> [soft [in|out]]
+.. opcmd:: reset bgp <ipv4|ipv6> peer-group <name> [soft [in|out]]
 
    This command resets BGP connections to the specified peer group.
    With argument :cfgcmd:`soft` this command initiates a soft reset. If
@@ -1136,6 +1131,7 @@ A simple eBGP configuration:
   set protocols bgp neighbor 192.168.0.2 ebgp-multihop '2'
   set protocols bgp neighbor 192.168.0.2 remote-as '65535'
   set protocols bgp neighbor 192.168.0.2 update-source '192.168.0.1'
+  set protocols bgp neighbor 192.168.0.2 address-family ipv4-unicast
   set protocols bgp address-family ipv4-unicast network '172.16.0.0/16'
   set protocols bgp parameters router-id '192.168.0.1'
 
@@ -1147,6 +1143,7 @@ A simple eBGP configuration:
   set protocols bgp neighbor 192.168.0.1 ebgp-multihop '2'
   set protocols bgp neighbor 192.168.0.1 remote-as '65534'
   set protocols bgp neighbor 192.168.0.1 update-source '192.168.0.2'
+  set protocols bgp neighbor 192.168.0.1 address-family ipv4-unicast
   set protocols bgp address-family ipv4-unicast network '172.17.0.0/16'
   set protocols bgp parameters router-id '192.168.0.2'
 
