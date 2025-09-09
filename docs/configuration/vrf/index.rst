@@ -78,7 +78,7 @@ you do not want to e.g. allow BGP to peer across the default route.
 
 .. cfgcmd:: set vrf name <name> ipv6 nht no-resolve-via-default
 
-   Do not allow IPv4 nexthop tracking to resolve via the default route. This
+   Do not allow IPv6 nexthop tracking to resolve via the default route. This
    parameter is configured per-VRF, so the command is also available in the VRF
    subnode.
 
