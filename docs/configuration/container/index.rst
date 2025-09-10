@@ -202,6 +202,31 @@ Configuration
 
    Disable a container.
 
+Container Health checks
+=======================
+
+By default, no health checks are run, even when defined by the image.
+
+.. cfgcmd:: set container name <name> health-check
+
+    Default health check is run for the container if defined by the image.
+
+.. cfgcmd:: set container name <name> health-check command <command>
+
+    Override the default health check command from the image for a container.
+
+.. cfgcmd:: set container name <name> health check interval <interval>
+
+    Override the default health-check interval. For example: `60`
+
+.. cfgcmd:: set container name <name> health check timeout <timeout>
+
+    Override the default health-check timeout. For example: `10`
+
+.. cfgcmd:: set container name <name> health check retries <retries>
+
+    Number of health check retries before container is considered unhealthy. For example: `1`
+
 Container Networks
 ==================
 
