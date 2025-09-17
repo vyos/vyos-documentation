@@ -18,13 +18,16 @@ Buffer Configuration Parameters
 The following parameters can be configured for VPP buffers:
 
 buffers-per-numa
-^^^^^^^^^^^^^^^^
+----------------
 
 Number of buffers allocated per NUMA node. This setting helps in optimizing memory access patterns for multi-CPU systems.
+
 Usually it needs to be tuned if:
+
 - there are a lot of interfaces in the system
 - there are a lot of queues in NICs
 - there are big descriptors size configured for NICs
+
 The value should be set responsibly, overprovisioning can lead to issues with NICs configured with XDP driver.
 
 .. cfgcmd:: set vpp settings buffers buffers-per-numa <value>
@@ -40,7 +43,7 @@ This should be done for each NIC, and then sum the results for all NICs in the s
 Try to avoid setting this value too low to avoid packet drops.
 
 data-size
-^^^^^^^^^
+---------
 
 This value sets how much payload data can be stored in a single buffer allocated by VPP.
 Making it larger can reduce buffer chains for big packets, while a smaller value can save memory for environments handling mostly small packets.
@@ -50,7 +53,7 @@ Making it larger can reduce buffer chains for big packets, while a smaller value
 Optimal size depends on the typical packet size in your network. If you are not sure, use the value of biggest MTU in your network plus some overhead (e.g., 128 bytes).
 
 page-size
-^^^^^^^^^
+---------
 
 A memory pages type used for buffer allocation. Common values are 4K, 2M, or 1G.
 
@@ -59,7 +62,7 @@ Use pages that are configured in system settings.
 .. cfgcmd:: set vpp settings buffers page-size <value>
 
 Potential Issues and Troubleshooting
-------------------------------------
+====================================
 
 Improper buffer configuration can lead to various issues, including:
 
