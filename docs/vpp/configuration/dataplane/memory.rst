@@ -18,10 +18,6 @@ Before configuring memory in VPP dataplane settings, you need to ensure that hug
 
 To configure memory settings for VPP, you can use the following commands in the VPP CLI:
 
-.. cfgcmd:: set vpp settings memory default-hugepage-size <size>
-
-Sets the default hugepage size for VPP.
-
 VPP uses a main heap as a central memory pool for FIB data structures entries allocations.
 
 Efficient memory management is crucial for VPP's performance, and the main heap plays a significant role in this.
