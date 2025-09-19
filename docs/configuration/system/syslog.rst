@@ -120,6 +120,104 @@ sending the messages via port 514/UDP.
    Define IPv4 or IPv6 source address used when forwarding logs to remote
    syslog server.
 
+TLS Options
+^^^^^^^^^^^
+
+When ``set system syslog remote <address> protocol tcp`` is selected,
+an additional ``tls`` sub-node can be used to enable encryption and
+configure certificate handling. TLS is not supported over UDP and
+if you attempt to enable TLS while using UDP, the system will issue a warning.
+
+.. cfgcmd:: set system syslog remote <address> tls enable
+
+   Enable TLS for this remote syslog destination.
+
+.. cfgcmd:: set system syslog remote <address> tls ca-certificate <ca_name>
+
+   Reference to a :abbr:`CA (Certification Authority)` certificate stored
+   in the :abbr:`PKI (Public Key Infrastructure)` subsystem.
+   Used to validate the certificate chain of the remote syslog server.
+   Required when the authentication mode is anything other than ``anon``.
+
+.. cfgcmd:: set system syslog remote <address> tls certificate <cert_name>
+
+   Reference to a client certificate stored in the PKI subsystem.
+   Required when the server enforces client certificate authentication.
+
+.. cfgcmd:: set system syslog remote <address> tls auth-mode <anon|fingerprint|certvalid|name>
+
+   Defines the peer authentication mode:
+
+   * **anon** - allow encrypted connection without verifying peer identity
+     (not recommended, vulnerable to :abbr:`MITM (Man-in-the-Middle)`).
+   * **fingerprint** - verify the peer certificate against an explicitly
+     configured fingerprint list (set with ``permitted-peers``).
+   * **certvalid** - validate that the peer presents a certificate signed by
+     a trusted CA, but do not check the certificate subject name
+     (:abbr:`CN (Common Name)`).
+   * **name** - validate that the peer presents a certificate signed by a
+     trusted CA and that the certificate’s CN matches the value configured in
+     ``permitted-peers``. This is the recommended secure mode for production.
+
+   .. note:: The default value for the authentication mode is ``anon``.
+
+.. cfgcmd:: set system syslog remote <address> tls permitted-peers <peer_list>
+
+   Comma-separated list of permitted peers or certificate’s subject names (CN).
+
+   * In ``fingerprint`` authentication mode: provide one or more peer
+     certificate fingerprints (SHA1 or SHA256).
+   * In ``name`` authentication mode: explicit list of certificate’s CN to enforce.
+   * Ignored in ``anon`` and ``certvalid``.
+
+Examples:
+^^^^^^^^^
+
+.. code-block:: none
+
+   # Example of 'anon' authentication mode
+   set system syslog remote 10.10.2.3 facility all level debug
+   set system syslog remote 10.10.2.3 port 6514
+   set system syslog remote 10.10.2.3 protocol tcp
+   set system syslog remote 10.10.2.3 tls enable
+
+   # Example of 'certvalid' authentication mode
+   set system syslog remote elk.example.com facility all level debug
+   set system syslog remote elk.example.com port 6514
+   set system syslog remote elk.example.com protocol tcp
+   set system syslog remote elk.example.com tls enable
+   set system syslog remote elk.example.com tls ca-certificate my-ca
+   set system syslog remote elk.example.com tls auth-mode certvalid
+
+   # Example of 'fingerprint' authentication mode
+   set system syslog remote syslog.example.com facility all level debug
+   set system syslog remote syslog.example.com port 6514
+   set system syslog remote syslog.example.com protocol tcp
+   set system syslog remote syslog.example.com tls enable
+   set system syslog remote syslog.example.com tls ca-certificate my-ca
+   set system syslog remote syslog.example.com tls auth-mode fingerprint
+   set system syslog remote syslog.example.com tls permitted-peers 'SHA1:10:C4:26:...,SHA256:7B:4B:10:...'
+
+   # Example of 'name' authentication mode
+   set system syslog remote graylog.example.com facility all level debug
+   set system syslog remote graylog.example.com port 6514
+   set system syslog remote graylog.example.com protocol tcp
+   set system syslog remote graylog.example.com tls enable
+   set system syslog remote graylog.example.com tls ca-certificate my-ca
+   set system syslog remote graylog.example.com tls certificate syslog-client
+   set system syslog remote graylog.example.com tls auth-mode name
+   set system syslog remote graylog.example.com tls permitted-peers 'graylog.example.com'
+
+Security Notes
+^^^^^^^^^^^^^^
+
+* Always prefer ``auth-mode name`` for secure deployments, as it ensures
+  both CA trust and server hostname validation.
+* ``anon`` mode should only be used for testing, because it does not
+  authenticate the server.
+* Ensure private keys are stored and managed exclusively in the
+  :doc:`PKI system </configuration/pki/index>`.
+
 .. _syslog_facilities:
 
 Facilities
