@@ -85,9 +85,9 @@ The NMI (Non-Maskable Interrupt) watchdog can interfere with VPP performance by 
    * Range: ``2-5``
    * Mixed: ``1,3-5,7``
 
-   ..important:: 
+   .. important:: 
 
-      Always reserve at least 1-2 cores for the operating system to ensure system stability. For example, on a 4-core system, isolate cores 2-3 for VPP and leave cores 0-1 for the OS.
+      Always reserve at least 2 cores for the operating system to ensure system stability. For example, on a 4-core system, isolate cores 2-3 for VPP and leave cores 0-1 for the OS.
 
       Assign the first isolated core as the VPP main core and the remaining isolated cores as VPP worker cores. Ensure that VPP CPU assignments match the isolated CPU range.
 

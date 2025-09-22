@@ -12,6 +12,12 @@ Buffers are essential for handling network packets efficiently, and proper confi
 
 Buffers are used to temporarily store packets during processing, therefore their configuration should be in sync with NIC configuration, CPU threads, and overall system resources.
 
+.. important::
+
+   VPP buffers are allocated from the physical memory pool (physmem). The total amount of memory available for buffer allocation is controlled by the ``physmem max-size`` setting, while the buffer configuration parameters below control how that memory is used for buffer allocation.
+
+   See :ref:`VPP Physical Memory Configuration <vpp_config_dataplane_physmem>` for details on configuring physmem.
+
 Buffer Configuration Parameters
 ===============================
 
