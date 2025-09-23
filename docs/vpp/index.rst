@@ -20,3 +20,4 @@ the Linux kernel networking stack.
    requirements
    limitations
    configuration/index
+   troubleshooting
