@@ -59,6 +59,23 @@ Sets the inside prefix (private IP range) that will be translated.
 
 Sets the outside prefix (public IP range) that will be used for translation.
 
+.. important::
+
+   **Memory Requirements**
+   
+   CGNAT memory usage scales with the number of internal customers.
+
+   **Each 256 customers** (equivalent to a /24 subnet) requires approximately **4 MB of main heap memory**. This memory is used for maintaining customer-to-port mappings and session state information.
+
+   Ensure your VPP main heap size is configured appropriately based on your expected customer count. See :ref:`VPP Memory Configuration <vpp_config_dataplane_memory>` for details on adjusting main heap size.
+
+Session Limitations
+-------------------
+
+CGNAT has built-in session limitations to ensure fair resource allocation:
+
+**Each customer (internal IP address) is limited to a maximum of 1000 simultaneous sessions**, even if more than 1000 ports are allocated to that customer. This limitation applies to all types of sessions (TCP, UDP, ICMP).
+
 Timeouts Configuration
 ----------------------
 
