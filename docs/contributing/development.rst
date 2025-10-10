@@ -24,6 +24,11 @@ The README.md file will guide you to use the this top level repository.
 Submit a Patch
 ==============
 
+.. warning::
+
+  Please read and sign the :doc:`Contributor License Agreement<cla>` before
+  submitting any patches.
+
 Patches are always more than welcome. To have a clean and easy to maintain
 repository we have some guidelines when working with Git. A clean repository
 eases the automatic generation of a changelog file.
