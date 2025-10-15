@@ -223,6 +223,25 @@ Interface Configuration
   This command will change the hold down value for IGP-LDP synchronization
   during convergence/interface flap events, but for this interface only.
 
+.. cfgcmd:: set protocols isis interface <interface> fast-reroute lfa [level-1 | level-2] enable
+  This command enables per-prefix local LFA fast reroute link protection.
+
+.. cfgcmd:: set protocols isis interface <interface> fast-reroute lfa [level-1 | level-2] exclude
+  This command excludes an interface from the local LFA backup nexthop computation.
+
+.. cfgcmd:: set protocols isis interface <interface> fast-reroute remote-lfa [level-1 | level-2] tunnel mpls-ldp
+  This command enables per-prefix Remote LFA fast reroute link protection.
+  Note that other routers in the network need to be configured to accept LDP
+  targeted hello messages in order for RLFA to work.
+
+.. cfgcmd:: set protocols isis interface <interface> fast-reroute remote-lfa [level-1 | level-2] maximum-metric <metric>
+  This command limits Remote LFA PQ node selection within the specified metric. Metric value range (1-16777215).
+
+.. cfgcmd:: set protocols isis interface <interface> fast-reroute ti-lfa [level-1|level-2] [node-protection [link-fallback]]
+  This command enables per-prefix TI-LFA fast reroute link or node protection.
+  When node protection is used, option link-fallback enables the computation and
+  use of link-protecting LFAs for destinations unprotected by node protection.
+
 Route Redistribution
 --------------------
 
