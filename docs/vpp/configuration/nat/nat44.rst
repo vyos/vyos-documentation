@@ -158,7 +158,6 @@ Pool Requirements
 
    * For dynamic NAT to work, you must configure at least one **translation** pool
    * For static rules with twice-nat options, you must configure a **twice-nat** pool
-   * All external IP addresses used in static rules must belong to one of the configured pools
    * Interface-based pools automatically include main (first) IP address assigned to the specified interface
 
 Pool Selection Priority
@@ -273,7 +272,8 @@ This option rewrites source IP addresses on packets sent only from a local addre
 
 .. important::
 
-   Using self-twice-nat option requires to set interface connected to the local network as both inside and outside interface, because both source and destination NAT need to be applied.
+   * Using self-twice-nat option requires to set interface connected to the local network as both inside and outside interface, because both source and destination NAT need to be applied.
+   * External IP address used in static rules must belong to one of the configured translation pools
 
 Out-to-In Only
 ^^^^^^^^^^^^^^
