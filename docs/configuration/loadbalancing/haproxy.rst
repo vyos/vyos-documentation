@@ -160,7 +160,7 @@ Backend
 .. cfgcmd:: set load-balancing haproxy backend <name> server
    <name> check port <port>
 
-  Set the alternative port number for health checks.
+  Set an alternative port number for health checks.
   Overrides the default server port used for TCP/HTTP checks.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> server
