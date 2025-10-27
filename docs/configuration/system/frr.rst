@@ -4,13 +4,13 @@
 FRR
 ###
 
-VyOS uses [FRRouting](https://frrouting.org/) as the control plane for dynamic
+VyOS uses `FRRouting <https://frrouting.org/>`_ as the control plane for dynamic
 and static routing. The routing daemon behavior can be adjusted during runtime,
-but require either a restart of the routing daemon, or a reboot of the system.
+but requires either a restart of the routing daemon, or a reboot of the system.
 
 .. cfgcmd:: set system frr bmp
 
-   Enable :abbr:`BMP (BGP Monitoring Protocol)` support
+   Enable :abbr:`BMP (BGP Monitoring Protocol)` support.
 
 .. cfgcmd:: set system frr descriptors <numer>
 
@@ -21,7 +21,12 @@ but require either a restart of the routing daemon, or a reboot of the system.
 
 .. cfgcmd:: set system frr irdp
 
-   Enable ICMP Router Discovery Protocol support
+   Enable ICMP Router Discovery Protocol support.
+
+.. cfgcmd:: set system frr profile <traditional | datacenter>
+
+   Select an FRR profile to adapt its default settings. If unset, the
+   traditional profile is applied.
 
 .. cfgcmd:: set system frr snmp <daemon>
 
