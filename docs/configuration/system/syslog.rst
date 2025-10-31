@@ -109,19 +109,19 @@ if you attempt to enable TLS while using UDP, the system will issue a warning.
    * **anon** - allow encrypted connection without verifying peer identity
      (not recommended, vulnerable to :abbr:`MITM (Man-in-the-Middle)`).
    * **fingerprint** - verify the peer certificate against an explicitly
-     configured fingerprint list (set with ``permitted-peers``).
+     configured fingerprint list (set with ``permitted-peer``).
    * **certvalid** - validate that the peer presents a certificate signed by
      a trusted CA, but do not check the certificate subject name
      (:abbr:`CN (Common Name)`).
    * **name** - validate that the peer presents a certificate signed by a
      trusted CA and that the certificate’s CN matches the value configured in
-     ``permitted-peers``. This is the recommended secure mode for production.
+     ``permitted-peer``. This is the recommended secure mode for production.
 
    .. note:: The default value for the authentication mode is ``anon``.
 
-.. cfgcmd:: set system syslog host <address> tls permitted-peers <peer_list>
+.. cfgcmd:: set system syslog host <address> tls permitted-peer <peer>
 
-   Comma-separated list of permitted peers or certificate’s subject names (CN).
+   Allowed peer certificate fingerprint or subject name (CN).
 
    * In ``fingerprint`` authentication mode: provide one or more peer
      certificate fingerprints (SHA1 or SHA256).
@@ -153,7 +153,7 @@ Examples:
    set system syslog host syslog.example.com protocol tcp
    set system syslog host syslog.example.com tls ca-certificate my-ca
    set system syslog host syslog.example.com tls auth-mode fingerprint
-   set system syslog host syslog.example.com tls permitted-peers 'SHA1:10:C4:26:...,SHA256:7B:4B:10:...'
+   set system syslog host syslog.example.com tls permitted-peer 'SHA1:10:C4:26:...'
 
    # Example of 'name' authentication mode
    set system syslog host graylog.example.com facility all level debug
@@ -162,7 +162,7 @@ Examples:
    set system syslog host graylog.example.com tls ca-certificate my-ca
    set system syslog host graylog.example.com tls certificate syslog-client
    set system syslog host graylog.example.com tls auth-mode name
-   set system syslog host graylog.example.com tls permitted-peers 'graylog.example.com'
+   set system syslog host graylog.example.com tls permitted-peer 'graylog.example.com'
 
 Security Notes
 ^^^^^^^^^^^^^^
