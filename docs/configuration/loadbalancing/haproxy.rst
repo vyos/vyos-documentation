@@ -158,6 +158,12 @@ Backend
   Active health check backend server
 
 .. cfgcmd:: set load-balancing haproxy backend <name> server
+   <name> check port <port>
+
+  Set an alternative port number for health checks.
+  Overrides the default server port used for TCP/HTTP checks.
+
+.. cfgcmd:: set load-balancing haproxy backend <name> server
    <name> send-proxy
 
   Send a Proxy Protocol version 1 header (text format)
@@ -494,5 +500,5 @@ This configuration enables HTTP health checks on backend servers.
     set load-balancing haproxy backend bk-01 server srv01 check
     set load-balancing haproxy backend bk-01 server srv02 address '192.0.2.12'
     set load-balancing haproxy backend bk-01 server srv02 port '8882'
-    set load-balancing haproxy backend bk-01 server srv02 check
+    set load-balancing haproxy backend bk-01 server srv02 check port '8892'
 

@@ -79,6 +79,7 @@ VyOS User Guide
    automation/index
    troubleshooting/index
    configexamples/index
+   vpp/index
 
 
 .. toctree::
@@ -88,6 +89,7 @@ VyOS User Guide
 
    contributing/build-vyos
    contributing/development
+   contributing/cla
    contributing/issues-features
    contributing/upstream-packages
    contributing/debugging

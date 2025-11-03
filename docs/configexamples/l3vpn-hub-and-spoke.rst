@@ -424,7 +424,6 @@ import/export based on the pre-defined parameters.
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast redistribute connected
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast route-target vpn export '65035:1011'
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast route-target vpn import '65035:1030'
-   set vrf name BLUE_SPOKE protocols bgp system-as '65001'
    set vrf name BLUE_SPOKE protocols bgp neighbor 10.50.50.2 address-family ipv4-unicast as-override
    set vrf name BLUE_SPOKE protocols bgp neighbor 10.50.50.2 remote-as '65035'
    
@@ -446,7 +445,6 @@ import/export based on the pre-defined parameters.
    set vrf name BLUE_HUB protocols bgp address-family ipv4-unicast redistribute connected
    set vrf name BLUE_HUB protocols bgp address-family ipv4-unicast route-target vpn export '65035:1030'
    set vrf name BLUE_HUB protocols bgp address-family ipv4-unicast route-target vpn import '65035:1011 65050:2011 65035:1030'
-   set vrf name BLUE_HUB protocols bgp system-as '65001'
    set vrf name BLUE_HUB protocols bgp neighbor 10.80.80.2 address-family ipv4-unicast as-override
    set vrf name BLUE_HUB protocols bgp neighbor 10.80.80.2 remote-as '65035'
    
@@ -468,7 +466,6 @@ import/export based on the pre-defined parameters.
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast redistribute connected
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast route-target vpn export '65035:1011'
    set vrf name BLUE_SPOKE protocols bgp address-family ipv4-unicast route-target vpn import '65035:1030'
-   set vrf name BLUE_SPOKE protocols bgp system-as '65001'
    set vrf name BLUE_SPOKE protocols bgp neighbor 10.60.60.2 address-family ipv4-unicast as-override
    set vrf name BLUE_SPOKE protocols bgp neighbor 10.60.60.2 remote-as '65035'
    

@@ -14,7 +14,7 @@ The directory structure of the boot device:
   /
   /boot
   /boot/grub
-  /boot/1.2.0-rolling+201810021347
+  /boot/2025.07.16-0020-rolling.squashfs
 
 The image directory contains the system kernel, a compressed image of the root
 filesystem for the OS, and a directory for persistent storage, such as
@@ -35,11 +35,11 @@ configured to be the default.
    .. code-block:: none
 
      vyos@vyos:~$ show system image
-     The system currently has the following image(s) installed:
-
-        1: 1.2.0-rolling+201810021347 (default boot)
-        2: 1.2.0-rolling+201810021217
-        3: 1.2.0-rolling+201809252218
+     Name                     Default boot    Running
+     -----------------------  --------------  ---------
+     2025.07.16-0020-rolling  Yes             Yes
+     1.4.1
+     1.4.0
 
 
 .. opcmd:: delete system image [image-name]
@@ -51,19 +51,13 @@ configured to be the default.
    .. code-block:: none
 
       vyos@vyos:~$ delete system image
-      The following image(s) can be deleted:
-
-         1: 1.3-rolling-201912181733 (default boot) (running image)
-         2: 1.3-rolling-201912180242
-         3: 1.2.2
-         4: 1.2.1
-
-      Select the image to delete: 2
-
-      Are you sure you want to delete the
-      "1.3-rolling-201912180242" image? (Yes/No) [No]: y
-      Deleting the "1.3-rolling-201912180242" image...
-      Done
+      The following images are installed:
+              1: 2025.07.16-0020-rolling (running) (default boot)
+              2: 1.4.1
+              3: 1.4.0
+      Select an image to delete: 3
+      Do you really want to delete the image 1.4.0? [y/N] y
+      The image "1.4.0" was successfully deleted
 
 .. opcmd:: show version
 
@@ -72,23 +66,26 @@ configured to be the default.
    .. code-block:: none
 
       vyos@vyos:~$ show version
-      Version:          VyOS 1.3-rolling-201912181733
+      Version:          VyOS 2025.07.16-0020-rolling
+      Release train:    current
+      Release flavor:   generic
+
       Built by:         autobuild@vyos.net
-      Built on:         Wed 18 Dec 2019 17:33 UTC
-      Build UUID:       bccde2c3-261c-49cc-b421-9b257204e06c
+      Built on:         Wed 16 Jul 2025 00:21 UTC
+      Build UUID:       20d432ee-6d55-4ebc-8462-46fe836246c9
       Build Commit ID:  f7ce0d8a692f2d
 
       Architecture:     x86_64
       Boot via:         installed image
-      System type:      bare metal
+      System type:      KVM guest
+      Secure Boot:      n/a (BIOS)
 
-      Hardware vendor:  VMware, Inc.
-      Hardware model:   VMware Virtual Platform
-      Hardware S/N:     VMware-42 1d 83 b9 fe c1 bd b2-7d 3d 49 db 94 18 f5 c9
+      Hardware vendor:  QEMU
+      Hardware model:   Standard PC (i440FX + PIIX, 1996)
+      Hardware S/N:     
       Hardware UUID:    b9831d42-c1fe-b2bd-7d3d-49db9418f5c9
 
       Copyright:        VyOS maintainers and contributors
-
 
 
 

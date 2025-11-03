@@ -18,13 +18,10 @@ any other type of storage.
   | (Current)**  | Always up to date with cutting edge development   |                   | features, experimenting.              |                       |                  |
   |              | but guaranteed to contain bugs.                   |                   |                                       |                       |                  |
   +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
-  | **Nightly    | Automatically built from the development branch   | Every night       | Developing and testing the latest     | Everyone              | Everyone         |
-  | (Beta)**     | and released alongside snapshots. Most likely     |                   | major version under development.      |                       |                  |
-  |              | contains bugs.                                    |                   |                                       |                       |                  |
-  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
-  | **Snapshot** | A particularly stable release frozen from nightly | Every month until | Home labs and simple networks that    | Everyone              | Everyone         |
-  |              | each month after manual testing. Still contains   | RC comes out      | call for new features.                |                       |                  |
-  |              | experimental code.                                |                   |                                       |                       |                  |
+  | **Stream**   | VyOS Stream serves as a technology preview and    | Every quarter     | Non-critical production environments, | Everyone              | Everyone         |
+  |              | a qulity gate for the upcoming LTS release.       |                   | preparing for the LTS release.        |                       |                  |
+  |              | Allows everyone to try new features and check if  |                   |                                       |                       |                  |
+  |              | they work well or need improvements.              |                   |                                       |                       |                  |
   +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
   | **Release    | Rather stable. All development focuses on testing | Irregularly until | Labs, small offices and non-critical  | Everyone              | Everyone         |
   | Candidate**  | and hunting down remaining bugs following the     | EPA comes out     | production systems backed by a        |                       |                  |
@@ -34,8 +31,8 @@ any other type of storage.
   | Production   | tested repeatedly under different conditions      | LTS comes out     | preparing for the LTS release.        |                       |                  |
   | Access**     | before it can become the final release.           |                   |                                       |                       |                  |
   +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
-  | **Long-Term  | Guaranteed to be stable and carefully maintained  | Every major       | Large-scale enterprise networks,      | Subscribers,          | Everyone         |
-  | Support**    | for several years after the release. No features  | version           | internet service providers,           | contributors,         |                  |
+  | **Long-Term  | Guaranteed to be stable and carefully maintained  | Every major       | Large-scale enterprise networks,      | Subscribers,          | Subscribers,     |
+  | Support**    | for several years after the release. No features  | version           | internet service providers,           | contributors,         | contributors    |
   |              | are introduced but security updates are released  |                   | critical production environments      | non-profits,          |                  |
   |              | in a timely manner.                               |                   | that call for minimum downtime.       | emergency services,   |                  |
   |              |                                                   |                   |                                       | academic institutions |                  |
@@ -58,16 +55,17 @@ Registered subscribers can log into https://support.vyos.io/ to access a
 variety of different downloads via the "Downloads" link. These downloads
 include LTS (Long-Term Support), the associated hot-fix releases, early public
 access releases, pre-built VM images, as well as device specific installation
-ISOs.
+ISOs. See this article_ for more information on downloads.
 
-.. figure:: /_static/images/vyos-downloads.png
+.. figure:: /_static/images/vyosnew-downloads.png
 
 Building from source
 --------------------
 
-Non-subscribers can always get the LTS release by building it from source.
-Instructions can be found in the :ref:`build` section of this manual. VyOS
-source code repository is available for everyone at
+Subscribers can download the source code for the LTS release from the 
+"Downloads" link, while non-subscribers can access the source code for the 
+Rolling release. Instructions can be found in the :ref:`build` section of this 
+manual. VyOS source code repository is available at
 https://github.com/vyos/vyos-build.
 
 Rolling Release
@@ -81,9 +79,9 @@ https://downloads.vyos.io/
    please follow the guide at :ref:`bug_report`. We depend on your feedback
    to improve VyOS!
 
-The following link will always fetch the most recent VyOS build for AMD64
+The following link contains the list of the most recent VyOS builds for AMD64
 systems from the current branch:
-https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso
+https://vyos.net/get/nightly-builds/
 
 
 Download Verification
@@ -91,157 +89,20 @@ Download Verification
 
 LTS images are signed by the VyOS lead package-maintainer private key. With
 the official public key, the authenticity of the package can be
-verified. :abbr:`GPG (GNU Privacy Guard)` is used for verification.
-
-.. note:: This subsection only applies to LTS images, for
-   Rolling images please jump to :ref:`live_installation`.
-
-Preparing for the verification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-First, install GPG or another OpenPGP implementation. On most GNU+Linux
-distributions it is installed by default as package managers use it to
-verify package signatures. If not pre-installed, it will need to be
-downloaded and installed.
-
-The official VyOS public key can be retrieved in a number of ways. Skip
-to :ref:`gpg-verification` if the key is already present.
-
-It can be retrieved directly from a key server:
-
-``gpg --recv-keys FD220285A0FE6D7E``
-
-Or it can be accessed via a web browser:
-
-https://pgp.mit.edu/pks/lookup?op=get&search=0xFD220285A0FE6D7E
-
-Or from the following block:
-
-.. code-block:: none
-
-  -----BEGIN PGP PUBLIC KEY BLOCK-----
-  Version: GnuPG v1.4.12 (GNU/Linux)
-
-  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
-  8vzPzaWHhkOkU8/J/Ci7+vNtUOZb
-  =Ld8S
-  -----END PGP PUBLIC KEY BLOCK-----
-
-Store the key in a new text file and import it into GPG via: ``gpg --import
-file_with_the_public_key``
-
-The import can be verified with:
-
-.. code-block:: none
-
-  $ gpg --list-keys
-  ...
-  pub   rsa4096 2015-08-12 [SC]
-      0694A9230F5139BF834BA458FD220285A0FE6D7E
-  uid           [ unknown] VyOS Maintainers (VyOS Release) <maintainers@vyos.net>
-  sub   rsa4096 2015-08-12 [E]
-
-.. _gpg-verification:
-
-GPG verification
-^^^^^^^^^^^^^^^^
-
-With the public key imported, the signature for the desired image needs
-to be downloaded.
-
-.. note:: The signature can be downloaded by appending `.asc` to the URL of the
-   downloaded VyOS image. That small *.asc* file is the signature for the
-   associated image.
-
-Finally, verify the authenticity of the downloaded image:
-
-.. code-block:: none
-
-  $ gpg2 --verify vyos-1.2.1-amd64.iso.asc  vyos-1.2.1-amd64.iso
-  gpg: Signature made So 14 Apr 12:58:07 2019 CEST
-  gpg:                using RSA key FD220285A0FE6D7E
-  gpg: Good signature from "VyOS Maintainers (VyOS Release) <maintainers@vyos.net>" [unknown]
-  Primary key fingerprint: 0694 A923 0F51 39BF 834B  A458 FD22 0285 A0FE 6D7E
+verified. Minisign is used for verification.
 
 .. _minisign-verification:
 
 Minisign verification
 ^^^^^^^^^^^^^^^^^^^^^
 
-Currently we are using GPG for release signing (pretty much like everyone else).
-
-Popularity of GPG for release signing comes from the fact that many people
-already had it installed for email encryption/signing. Inside a VyOS image,
-signature checking is the only reason to have it installed. However, it still
-comes with all the features no one needs, such as support for multiple outdated
-cipher suits and ability to embed a photo in the key file. More importantly,
-web of trust, the basic premise of PGP, is never used in release signing
-context. Once you have a knowingly authentic image, authenticity of upgrades is
-checked using a key that comes in the image, and to get their first image people
-never rely on keyservers either.
-
-Another point is that we are using RSA now, which requires absurdly large keys
-to be secure.
+Currently we are using Minisign for release signing which is a simple tool to
+sign files and verify signatures.
 
 In 2015, OpenBSD introduced signify. An alternative implementation of the same
 protocol is minisign, which is also available for Windows and macOS, and in most
-GNU/Linux distros it's in the repositories now.
-
-Its installed size (complete with libsodium) is less than that of GPG binary
-alone (not including libgcrypt and some other libs, which I think we only use
-for GPG). Since it uses elliptic curves, it gets away with much smaller keys,
-and it doesn't include as much metadata to begin with.
-
-Another issue of GPG is that it creates a /root/.gnupg directory just for
-release checking. The dir is small so the fact that it's never used again is
-an aesthetic problem, but we've had that process fail in the past. But, small
-key size of the Ed25519 algorithm allows passing public keys in command line
-arguments, so verification process can be completely stateless:
+GNU/Linux distros it's in the repositories now. It is portable, lightweight, and
+uses the highly secure Ed25519 public-key signature system.
 
 :vytask:`T2108` switched the validation system to prefer minisign over GPG keys.
 
@@ -261,6 +122,12 @@ During an image upgrade VyOS performas the following command:
   $ minisign -V -p /usr/share/vyos/keys/vyos-release.minisign.pub -m vyos-1.3.0-rc6-amd64.iso vyos-1.3.0-rc6-amd64.iso.minisig
   Signature and comment signature verified
   Trusted comment: timestamp:1629997936   file:vyos-1.3.0-rc6-amd64.iso
+
+.. note:: Starting with 1.4.3, VyOS uses Minisign exclusively. This should not
+   be a problem for anyone because Minisign signature verification has already
+   been present in all releases for years. But if you see an unexpected verification
+   error, you can solve that by updating your system to 1.4.2 first.
+   Removed support for GnuPG signatures(:vytask:`T7301`).
 
 .. _live_installation:
 
@@ -345,13 +212,6 @@ Every version is contained in its own squashfs image that is mounted in a union
 filesystem together with a directory for mutable data such as configurations,
 keys, or custom scripts.
 
-.. note:: Older versions (prior to VyOS 1.1) used to support non-image
-   installation (``install system`` command). Support for this has been removed
-   from VyOS 1.2 and newer releases. Older releases can still be upgraded via
-   the general ``add system image <image_path>`` upgrade command (consult
-   :ref:`image-mgmt` for further information).
-
-
 In order to proceed with a permanent installation:
 
  1. Log into the VyOS live system (use the default credentials: vyos,
@@ -360,55 +220,39 @@ In order to proceed with a permanent installation:
  2. Run the ``install image`` command and follow the wizard:
 
  .. code-block:: none
-
+ 
    vyos@vyos:~$ install image
-   Welcome to the VyOS install program.  This script
-   will walk you through the process of installing the
-   VyOS image to a local hard drive.
-   Would you like to continue? (Yes/No) [Yes]: Yes
-   Probing drives: OK
-   Looking for pre-existing RAID groups...none found.
-   The VyOS image will require a minimum 2000MB root.
-   Would you like me to try to partition a drive automatically
-   or would you rather partition it manually with parted?  If
-   you have already setup your partitions, you may skip this step
-
-   Partition (Auto/Parted/Skip) [Auto]:
-
-   I found the following drives on your system:
-    sda    4294MB
-
-   Install the image on? [sda]:
-
-   This will destroy all data on /dev/sda.
-   Continue? (Yes/No) [No]: Yes
-
-   How big of a root partition should I create? (2000MB - 4294MB) [4294]MB:
-
-   Creating filesystem on /dev/sda1: OK
-   Done!
-   Mounting /dev/sda1...
-   What would you like to name this image? [1.2.0-rolling+201809210337]:
-   OK.  This image will be named: 1.2.0-rolling+201809210337
-   Copying squashfs image...
-   Copying kernel and initrd images...
-   Done!
-   I found the following configuration files:
-       /opt/vyatta/etc/config.boot.default
-   Which one should I copy to sda? [/opt/vyatta/etc/config.boot.default]:
-
-   Copying /opt/vyatta/etc/config.boot.default to sda.
-   Enter password for administrator account
-   Enter password for user 'vyos':
-   Retype password for user 'vyos':
-   I need to install the GRUB boot loader.
-   I found the following drives on your system:
-    sda    4294MB
-
-   Which drive should GRUB modify the boot partition on? [sda]:
-
-   Setting up grub: OK
-   Done!
+   Welcome to VyOS installation!
+   This command will install VyOS to your permanent storage.
+   Would you like to continue? [y/N] y
+   What would you like to name this image? (Default: 2025.09.17-0018-rolling)
+   Please enter a password for the "vyos" user:
+   Please confirm password for the "vyos" user:
+   What console should be used by default? (K: KVM, S: Serial)? (Default: S)
+   Probing disks
+   1 disk(s) found
+   The following disks were found:
+   Drive: /dev/vda (10.0 GB)
+   Which one should be used for installation? (Default: /dev/vda)
+   Installation will delete all data on the drive. Continue? [y/N] y
+   Searching for data from previous installations
+   No previous installation found
+   Would you like to use all the free space on the drive? [Y/n] Y
+   Creating partition table...
+   The following config files are available for boot:
+           1: /opt/vyatta/etc/config/config.boot
+           2: /opt/vyatta/etc/config.boot.default
+   Which file would you like as boot config? (Default: 1)
+   Creating temporary directories
+   Mounting new partitions
+   Creating a configuration file
+   Copying system image files
+   Installing GRUB configuration files
+   Installing GRUB to the drive
+   Cleaning up
+   Unmounting target filesystems
+   Removing temporary files
+   The image installed successfully; please reboot now.
 
 
  3. After the installation is completed, remove the live USB stick or
@@ -607,5 +451,6 @@ Installation can then continue as outlined above.
 .. _configuration: https://wiki.syslinux.org/wiki/index.php?title=Config
 .. _default: https://wiki.syslinux.org/wiki/index.php?title=PXELINUX#Configuration
 .. _`Python's SimpleHTTPServer`: https://docs.python.org/2/library/simplehttpserver.html
+.. _article: https://customers.support.vyos.com/servicedesk/customer/portal/1/article/159055913
 
 .. start_vyoslinter

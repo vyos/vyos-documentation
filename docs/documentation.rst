@@ -10,6 +10,12 @@ We encourage every VyOS user to help us improve our documentation as we have
 a deficit like most software projects.  This not only helps you when reading
 but also everyone else.
 
+.. warning::
+
+  Please read and sign the
+  :doc:`Contributor License Agreement<contributing/cla>` before submitting any
+  documentation updates.
+
 If you are willing to contribute to our documentation this is the definite
 guide how to do so.
 

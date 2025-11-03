@@ -67,6 +67,14 @@ LAC
      media-type rj45
      pppoe enable group MAIN-BBA
     !
+    interface Virtual-Template1
+     description pppoe MAIN-BBA
+     no ip address
+     no peer default ip address
+     ppp mtu adaptive
+     ppp authentication chap
+    !
+
 
 LNS
 ---

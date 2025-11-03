@@ -78,7 +78,7 @@ you do not want to e.g. allow BGP to peer across the default route.
 
 .. cfgcmd:: set vrf name <name> ipv6 nht no-resolve-via-default
 
-   Do not allow IPv4 nexthop tracking to resolve via the default route. This
+   Do not allow IPv6 nexthop tracking to resolve via the default route. This
    parameter is configured per-VRF, so the command is also available in the VRF
    subnode.
 
@@ -121,6 +121,27 @@ routing protocol inside a given vrf:
 - :ref:`routing-ospf`: ``set vrf name <name> protocols ospf ...``
 - :ref:`routing-ospfv3`: ``set vrf name <name> protocols ospfv3 ...``
 - :ref:`routing-static`: ``set vrf name <name> protocols static ...``
+
+Services
+-------
+
+Currently the following services can be created isolated in VRFs
+
+- :ref:`dhcp-server`
+
+The CLI configuration is same as mentioned in above articles. The only
+difference is, that each service used, must be prefixed with the `vrf
+name <name>` command.
+
+Example
+^^^^^^^
+
+The following commands would be required to set options for a given service
+inside a given vrf:
+
+- :ref:`dhcp-server`: ``set vrf name <name> service dhcp-server ...``
+- :ref:`dhcp-server`: ``set vrf name <name> service dhcpv6-server ...``
+
 
 Operation
 =========

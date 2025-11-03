@@ -181,8 +181,6 @@ Now a fresh build of the VyOS ISO can begin. Change directory to the
   $ cd vyos-build
   $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
     
-.. code-block:: none
-
 Start the build:
 
 .. code-block:: none

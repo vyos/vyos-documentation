@@ -9,23 +9,25 @@ Our old wiki with documentation from the VyOS 1.1.x and early 1.2.0 era can stil
 
 # Versions
 
-Our version follows the very same branching scheme as the VyOS source modules
-itself. We maintain one documentation branch per VyOS release. The default
-branch that contains the most recent VyOS documentation is called `current`
-and matches the latest VyOS release which is 1.4 at the time.
+Our documentation repository follows the same branching scheme as the VyOS source itself.
+We maintain one documentation branch per VyOS release.
+The default branch that contains the most recent VyOS documentation is called `current`
+and matches the latest VyOS rolling release.
 
 All new documentation enhancements go to the `current` branch. If those changes
 are beneficial for previous VyOS documentation versions they will be
 cherry-picked to the appropriate branch(es).
 
-Post-1.2.0 branches are named after constellations sorted by area from smallest to
-largest. There are 88 of them, here's the
+VyOS branches are named after constellations sorted by area from smallest to largest.
+There are 88 of them, here's the
 [complete list](https://en.wikipedia.org/wiki/IAU_designated_constellations_by_area).
 
-* 1.2.x: `crux` (Southern Cross)
-* 1.3.x: `equuleus` (Little Horse)
+The branches we have had so far:
+
+* 1.5.x: `circinus` (Compasses)
 * 1.4.x: `sagitta` (Arrow)
-* ...
+* 1.3.x: `equuleus` (Little Horse)
+* 1.2.x: `crux` (Southern Cross)
 
 ### Sphinx
 Debian requires some extra steps for
