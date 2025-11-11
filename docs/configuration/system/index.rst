@@ -26,6 +26,7 @@ System
    task-scheduler
    time-zone
    updates
+   watchdog
 
 
 .. toctree::
