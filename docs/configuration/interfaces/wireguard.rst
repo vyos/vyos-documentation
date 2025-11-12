@@ -288,13 +288,13 @@ value needs to be lower than the UDP timeout.
             allowed-ips 10.172.24.30/32
             allowed-ips 2001:db8:470:22::30/128
             persistent-keepalive 15
-            pubkey F5MbW7ye7DsoxdOaixjdrudshjjxN5UdNV+pGFHqehc=
+            public-key F5MbW7ye7DsoxdOaixjdrudshjjxN5UdNV+pGFHqehc=
         }
         peer iPhone {
             allowed-ips 10.172.24.20/32
             allowed-ips 2001:db8:470:22::20/128
             persistent-keepalive 15
-            pubkey BknHcLFo8nOo8Dwq2CjaC/TedchKQ0ebxC7GYn7Al00=
+            public-key BknHcLFo8nOo8Dwq2CjaC/TedchKQ0ebxC7GYn7Al00=
         }
         port 2224
         private-key OLTQY3HuK5qWDgVs6fJR093SwPgOmCKkDI1+vJLGoFU=
@@ -354,7 +354,7 @@ Status
       private key: (hidden)
       listening port: 51820
 
-    peer: <peer pubkey>
+    peer: <peer public-key>
       endpoint: <peer public IP>
       allowed ips: 10.69.69.2/32
       latest handshake: 23 hours, 45 minutes, 26 seconds ago
