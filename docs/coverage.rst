@@ -1,46 +1,51 @@
+:lastproofread: 2021-07-07
+
 ########
 Coverage
 ########
 
-Overview over all commands, which are documented in the
-``.. cfgcmd::`` or ``.. opcmd::`` Directives.
+Overview over all commands that are documented in the
+``.. cfgcmd::`` or ``.. opcmd::`` directives.
 
-The build process take all xml definition files
-from `vyos-1x <https://github.com/vyos/vyos-1x>`_  and a periodical export of
-all VyOS commands and extract each leaf command or executable command.
-After this the commands are compare and shown in
-the following two tables. The script compare only the fixed part of a command.
-All varables or values will be erase and then compare:
+The build process takes all XML definition files
+from the `vyos-1x <https://github.com/vyos/vyos-1x>`_ repository  and a
+periodical export of all VyOS commands and extracts each leaf command, or
+executable command.
+The script compares only the fixed part of a command.
+All variables and values are removed and the string of the commands
+are compared.
 
-for example there are these two commands:
+For example, take the following two commands:
 
   * documentation: ``interfaces ethernet <interface> address
     <address | dhcp | dhcpv6>``
   * xml: ``interfaces ethernet <ethernet> address <address>``
   * VyOS: ``interfaces ethernet <text> address <value>``
 
-Now the script earse all in between ``<`` and ``>`` and simply compare
-the strings.
-
-**There are 3 kind of problems:**   
+**There are 3 kinds of issues with commands in the following tables:**
 
 ``Not documented yet``
 
-  * A XML command are not found in ``.. cfgcmd::`` or ``.. opcmd::`` Commands
-  * The command should be documented
+  * An XML command is not found in ``.. cfgcmd::`` or ``.. opcmd::`` directives.
+  * The command should be documented.
 
 ``Nothing found in XML Definitions``
 
-  * ``.. cfgcmd::`` or ``.. opcmd::`` Command are not found in a XML command
-  * Maybe the command where changed in the XML Definition, the feature is
-    not anymore in VyOS, or there is a typo
+  * ``.. cfgcmd::`` or ``.. opcmd::`` The command is not found in the XML
+    definition.
+  * The command location may have changed in the XML definition, the feature
+    is no longer supported in VyOS, or there is a typo in the command.
 
 ``Nothing found in VyOS``
 
-  * ``.. cfgcmd::`` or ``.. opcmd::`` Command are not found in a VyOS command
-  * Maybe the command where changed, the feature is
-    not anymore in VyOS, or there is a typo
+  * ``.. cfgcmd::`` or ``.. opcmd::`` The command is not found in VyOS
+    documentation or the XML definition.
+  * The command location may have changed in the XML definition, the feature
+    is no longer supported in VyOS, or there is a typo in the command.
 
+
+The final list of commands are shown in
+the following two tables:
 
 Configuration Commands
 ======================
