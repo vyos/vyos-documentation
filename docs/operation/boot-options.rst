@@ -11,9 +11,10 @@ Boot Options
    Run it only when necessary, and verify all input values before proceeding.
 
 
-VyOS provides several kernel command-line options to modify the normal boot process.
+VyOS provides several kernel command-line options to modify the normal boot
+process.
 To add an option, select the desired image in the GRUB menu at load time.
-Press **e** to edit the first line, and then press **Ctrl+x** to boot.
+Type **e** to edit the first line, then type **Ctrl+x** to boot.
 
 .. image:: /_static/images/boot-options.png
    :width: 80%
@@ -23,8 +24,10 @@ Press **e** to edit the first line, and then press **Ctrl+x** to boot.
 Specify custom config file
 ==========================
 
-You can use a configuration file instead of the default ``/config/config.boot`` file.
-If the specified file doesn't exist or isn't readable, the system uses the default configuration file.
+You can use a configuration file instead of the default ``/config/config.boot``
+file.
+If the specified file doesn't exist or isn't readable, the system uses the
+default configuration file.
 No additional verification is performed, so specify a valid configuration file.
 
 .. code-block:: none
