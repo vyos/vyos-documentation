@@ -147,6 +147,9 @@ NetFlow
 sFlow
 ^^^^^
 
+.. note:: Using `system sflow` is recommended in favor of
+          `system flow-accounting`. See `sflow <sflow.html>`_
+
 .. cfgcmd:: set system flow-accounting sflow server <address>
 
    Configure address of sFlow collector. sFlow server at `<address>` can
