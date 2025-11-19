@@ -1,3 +1,5 @@
+:lastproofread: 2025-11-19
+
 .. _password-recovery:
 
 #################
@@ -5,14 +7,14 @@ Password Recovery
 #################
 
 Using the console, restart the VyOS router. The GRUB menu appears.
-Select the relevant option from the GRUB menu and press Enter.
-The option must start with “Lost password change.”
+Select the relevant option from the GRUB menu, then press **Enter**.
+The option must begin with *Lost password change.*
 
 .. figure:: /_static/images/password-recovery-01.png
    :width: 600
 
-The stand-alone user-password recovery tool starts running and prompts 
-you to reset the local system user password.
+The stand-alone user-password recovery tool runs and prompts you to reset the
+local system user password.
 
 .. code-block:: console
 
