@@ -3,11 +3,12 @@
 .. _information:
 
 ***********
-Information
+System Information
 ***********
 
 VyOS features a rich set of operational level commands to retrieve arbitrary
-information about your running system.
+information about your running system. For more information on the VyOS command
+line interface (CLI), see :ref:`cli`.
 
 ########
 Hardware
@@ -18,27 +19,29 @@ Hardware
 USB
 ===
 
-In the past serial interface have been defined as ttySx and ttyUSBx where x was
-an instance number of the serial interface. It was discovered that from system
-boot to system boot the mapping of USB based serial interfaces will differ,
-depending which driver was loaded first by the operating system. This will
-become rather painful if you not only have serial interfaces for a console
-server connected but in addition also a serial backed :ref:`wwan-interface`.
+In the past, serial interfaces were defined as ``ttySx`` and ``ttyUSBx`` where
+``x``
+was the instance number. However, the mapping of USB-based serial interfaces
+can change from one system boot to another, depending on which driver the
+operating system loads first. This inconsistency can be problematic when you
+use multiple serial interfaces.
+For example, both console-server connections and a serial-backed
+:ref:`wwan-interface`.
 
-To overcome this issue and the fact that in almost 50% of all cheap USB to
-serial converters there is no serial number programmed, the USB to serial
-interface is now directly identified by the USB root bridge and bus it connects
-to. This somehow mimics the new network interface definitions we see in recent
-Linux distributions.
+To address this issue, and because of many low-cost USB-to-serial converters
+do not have a programmed serial number, VyOS now identifies USB-to-serial
+interfaces by the USB root bridge and the bus they connect to.
+This approach is similar to the network interface naming conventions used in
+recent Linux distributions.
 
-For additional details you can refer to https://vyos.dev/T2490.
+For details, see  https://vyos.dev/T2490.
 
 .. opcmd:: show hardware usb
 
-  Retrieve a tree like representation of all connected USB devices.
+  Retrieve a tree-like representation of all connected USB devices.
 
-  .. note:: If a device is unplugged and re-plugged it will receive a new
-    Port, Dev, If identification.
+  .. note:: If a device is unplugged and plugged in again, it is assigned a new
+    ``Port``, ``Dev``, and ``If``.
 
   .. code-block:: none
 
@@ -72,8 +75,8 @@ For additional details you can refer to https://vyos.dev/T2490.
 .. opcmd:: show hardware usb serial
 
   Retrieve a list and description of all connected USB serial devices. The
-  device name displayed, e.g. `usb0b2.4p1.0` can be directly used when accessing
-  the serial console as console-server device.
+  device name displayed, (for example ``usb0b2.4p1.0``), can be used
+  directly when accessing the serial console as console-server device.
 
   .. code-block:: none
 
@@ -105,9 +108,9 @@ Version
 
 .. opcmd:: show version
 
-  Return the current running VyOS version and build information. This includes
-  also the name of the release train which is ``crux`` on VyOS 1.2, ``equuleus``
-  on VyOS 1.3 and ``sagitta`` on VyOS 1.4.
+  Return the currently running VyOS version and build information. This includes
+  the name of the release train, which is ``crux`` on VyOS 1.2, ``equuleus``
+  on VyOS 1.3, ``sagitta`` on VyOS 1.4, and ``circinus`` on VyOS 1.5.
 
   .. code-block:: none
   
@@ -134,7 +137,7 @@ Version
 
 .. opcmd:: show version kernel
 
-  Return version number of the Linux Kernel used in this release.
+  Return the version number of the currently running Linux kernel.
 
   .. code-block:: none
 
@@ -143,7 +146,7 @@ Version
 
 .. opcmd:: show version frr
 
-  Return version number of FRR (Free Range Routing - https://frrouting.org/)
+  Return the version number of FRR (Free Range Routing - https://frrouting.org/)
   used in this release. This is the routing control plane and a successor to GNU
   Zebra and Quagga.
 
