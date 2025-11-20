@@ -26,6 +26,7 @@ Features that can be enabled on VPP Dataplane:
    :includehidden:
 
    acl
+   ipfix
    ipsec
    nat/index
    sflow
