@@ -13,7 +13,7 @@ version after a failed upgrade.
 * :ref:`Configuration:  <configuration>` How to enable upgrade recovery
 * :ref:`How it Works: <how_it_works>` Overview of the recovery process
 * :ref:`Cancelling Recovery: <cancelling_recovery>` Overview of the recovery
-   process
+  process
  
 .. _configuration:
 
@@ -21,7 +21,7 @@ version after a failed upgrade.
 Configuration
 *************
 .. warning:: Upgrade recovery is disabled by default. To use it, 
-**enable it first**.
+  **enable it first**.
 
 To enable upgrade recovery, run the following command:
 
@@ -29,14 +29,17 @@ To enable upgrade recovery, run the following command:
 
    set system option reboot-on-upgrade-failure [timeout <min>]
 
-* ``timeout <min>:`` The time in minutes (5 - 30) you have to cancel upgrade recovery. See :ref:`Cancelling Recovery <cancelling_recovery>`.
+* ``timeout <min>:`` The time in minutes (5 - 30) you have to cancel upgrade
+  recovery. See :ref:`Cancelling Recovery <cancelling_recovery>`.
  
 .. _how_it_works:
 
 ************
 How it Works
 ************
-After a VyOS upgrade, the system monitors the boot process. Upon detecting a boot failure, VyOS initiates a revert to the last working version and displays the following warning:
+After a VyOS upgrade, the system monitors the boot process. Upon detecting a
+boot failure, VyOS initiates a revert to the last working version and displays
+the following warning:
 
 .. code-block:: none
 
@@ -44,7 +47,8 @@ After a VyOS upgrade, the system monitors the boot process. Upon detecting a boo
    Automatic reboot in xx minutes
    Use "reboot cancel" to cancel
 
-If no action is taken, the reboot happens automatically after the configured timeout. Upon successful recovery and reboot, the following message appears: 
+If no action is taken, the reboot happens automatically after the configured
+timeout. Upon successful recovery and reboot, the following message appears: 
  
 .. code-block:: none
 
@@ -58,7 +62,9 @@ If no action is taken, the reboot happens automatically after the configured tim
 *******************
 Cancelling Recovery
 *******************
-Upon detecting a boot failure, you have the predefined timeout to cancel upgrade recovery. This is useful if you want to troubleshoot the faulty VyOS version on your own.
+Upon detecting a boot failure, you have the predefined timeout to cancel
+upgrade recovery. This is useful if you want to troubleshoot the faulty VyOS
+version on your own.
 
 To cancel upgrade recovery, run the following command:
 
