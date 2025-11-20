@@ -1,3 +1,5 @@
+:lastproofread: 2025-11-20
+
 .. _upgrade_recovery:
 
 
@@ -5,20 +7,21 @@
 Recovery after Failed Upgrades
 ##############################
 
-This section explains **VyOS’s upgrade recovery**, which restores the system to the last working version after a failed upgrade. It covers the following points:
+Use **VyOS upgrade recovery** to restore the system to the last working
+version after a failed upgrade.
 
 * :ref:`Configuration:  <configuration>` How to enable upgrade recovery
 * :ref:`How it Works: <how_it_works>` Overview of the recovery process
-* :ref:`Cancelling Recovery: <cancelling_recovery>` Overview of the recovery process
+* :ref:`Cancelling Recovery: <cancelling_recovery>` Overview of the recovery
+   process
  
-
-
 .. _configuration:
 
 *************
 Configuration
 *************
-.. warning:: Upgrade recovery is disabled by default. To use it, **enable it first**.
+.. warning:: Upgrade recovery is disabled by default. To use it, 
+**enable it first**.
 
 To enable upgrade recovery, run the following command:
 
@@ -26,7 +29,7 @@ To enable upgrade recovery, run the following command:
 
    set system option reboot-on-upgrade-failure [timeout <min>]
 
-* ``timeout <min>:`` The time in minutes (from 5 to 30) you have to cancel upgrade recovery. See :ref:`Cancelling Recovery <cancelling_recovery>`.
+* ``timeout <min>:`` The time in minutes (5 - 30) you have to cancel upgrade recovery. See :ref:`Cancelling Recovery <cancelling_recovery>`.
  
 .. _how_it_works:
 
