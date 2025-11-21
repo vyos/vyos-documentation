@@ -133,6 +133,14 @@ following commands.
   set vpn ipsec remote-access connection rw authentication client-mode 'eap-mschapv2'
   set vpn ipsec remote-access connection rw authentication local-users username vyos password 'vyos'
 
+Some client operating systems like to see the servers certificate. The following
+option causes the server to voluntarily send its certificate, even if it wasn't
+requested.
+
+.. code-block:: none
+
+  set vpn ipsec remote-access connection rw authentication always-send-cert
+
 Client Configuration
 ^^^^^^^^^^^^^^^^^^^^
 
