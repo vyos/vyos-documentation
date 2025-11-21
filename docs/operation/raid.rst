@@ -1,3 +1,5 @@
+:lastproofread: 2025-11-20
+
 .. _raid:
 
 ######
@@ -7,37 +9,37 @@ RAID-1
 A Redundant Array of Independent Disks (RAID) uses two or more hard disk drives 
 to improve disk speed, store more data, and/or provide fault tolerance. 
 There are several storage schemes possible in a RAID array, each offering a 
-different combination of storage, reliability, and/or performance. 
-The VyOS system supports a “RAID 1” deployment. RAID 1 allows two or more 
-disks to mirror one another to provide system fault tolerance. In a RAID 1 
-solution, every sector of one disk is duplicated onto every sector of all 
+different combination of storage, reliability, and performance.
+VyOS supports **RAID 1** deployments. RAID 1 uses two or more
+disks that mirror one another to provide system fault tolerance. In a RAID 1
+configuration, every sector on one disk is duplicated on every sector of all
 disks in the array. Provided even one disk in the RAID 1 set is operational, 
 the system continues to run, even through disk replacement (provided that the 
 hardware supports in-service replacement of drives). 
 RAID 1 can be implemented using special hardware or it can be implemented in 
-software. The VyOS system supports software RAID 1 on two disks.
-The VyOS implementation of RAID 1 allows the following:
+software. VyOS supports software RAID 1 on two disks.
+The VyOS implementation of RAID 1 features the following:
 
-* Detection and reporting of disk failure
-* The ability to maintain system operation with one failed disk
-* The ability to boot the system with one failed disk
-* The ability to replace a failed disk and initiate re-mirroring
-* The ability to monitor the status of remirroring
+* Detection and reporting of disk failure.
+* Maintain system operation with one failed disk.
+* Boot the system with one failed disk.
+* Replace a failed disk and initiate re-mirroring.
+* Monitor the status of re-mirroring.
 
 .. _raid_installation:
 
 Installation Implications
 =========================
 
-The VyOS systems installation utility provides several options for installing 
+The VyOS installation utility provides several options for installing
 to a RAID 1 set. You can: 
 
 * Use the install system to create the RAID 1 set 
-* Use the underlying Linux commands to create a RAID 1 set before running the 
+* Use the built-in Linux commands to create a RAID 1 set before running the
   install system command.
 * Use a previously-created RAID 1 set.
 
-.. note:: Before a permanent installation, VyOS runs a live installation
+.. note:: Before a permanent installation, VyOS runs a live installation.
 
 Configuration
 =============
@@ -45,17 +47,16 @@ Configuration
 Single disk, install as normal 
 ------------------------------
 
-When the VyOS system is installed, it automatically detects the presence of two 
-disks not currently part of a RAID array. In these cases, the VyOS 
-installation utility automatically offers you the option of configuring RAID 1 
-mirroring for the drives, with the following prompt.
+VyOS automatically detects the presence of two or more
+disks that are not currently part of a RAID array when installed. The VyOS
+installation utility automatically offers you the option to configure RAID 1
+mirroring for eligible drives with the following prompt:
 
 .. code-block:: none
 
    Would you like to configure RAID 1 mirroring on them?
 
-* If you do not want to configure RAID 1 mirroring, enter “No” at the prompt
-  and continue with installation in the normal way.
+* If you do not want to configure RAID 1 mirroring, enter **No** at the prompt.
 
 Empty 2+ Disk 
 -------------
