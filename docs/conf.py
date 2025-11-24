@@ -130,6 +130,11 @@ html_logo = '_static/images/vyos-logo.png'
 # pixels large.
 html_favicon = '_static/images/vyos-logo-icon.png'
 
+# The "title" for HTML documentation generated with Sphinx's own templates.
+# This is appended to the `<title>` tag of individual pages, and used
+# in the navigation bar as the "topmost" element.
+html_title = f'{project} rolling release (current)'
+
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
