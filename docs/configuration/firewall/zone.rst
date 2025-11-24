@@ -139,7 +139,7 @@ Applying a Rule-Set to a Zone
 
 Once a rule-set has been defined, it can then be applied to the source and
 destination zones. The configuration syntax is anchored on the destination
-zone, with each of the source zone rulesets listed against the destination.
+zone, with each of the source zone rule-sets listed against the destination.
 
 .. cfgcmd::  set firewall zone <Destination Zone> from <Source Zone>
    firewall name <ipv4-rule-set-name>
@@ -153,6 +153,21 @@ It is recommended to create two rule-sets for each source-destination zone pair.
 
    set firewall zone DMZ from LAN firewall name LAN-DMZ-v4
    set firewall zone LAN from DMZ firewall name DMZ-LAN-v4
+
+Applying a Default Rule-Set to a Zone
+=====================================
+
+When a destination zone shares a common rule-set for multiple source zones or
+a complex set of default policies are required, an optional default rule-set
+can be applied. The default rule-set applies to all zones that do not have a
+rule-set configured as defined in
+:ref:`IPv4<configuration/firewall/zone:Applying a Rule-Set to a Zone>`
+
+.. cfgcmd:: set firewall zone <Destination Zone> default-firewall name
+   <ipv4-rule-set-name>
+
+.. cfgcmd:: set firewall zone <Destination Zone> default-firewall ipv6-name
+   <ipv6-rule-set-name>
 
 **************
 Operation-mode
