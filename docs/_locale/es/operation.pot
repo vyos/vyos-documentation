@@ -13,11 +13,11 @@ msgid "1 - Remove the failed disk from the RAID 1 set by issuing the following c
 msgstr "1: elimine el disco fallido del conjunto RAID 1 emitiendo el siguiente comando:"
 
 #: ../../operation/raid.rst:113
-msgid "1 - To break apart the current RAID 1 set, enter “No” at the prompt. The"
+msgid "1 - To break apart the current RAID 1 set, enter **No** at the prompt. The"
 msgstr "1 - Para dividir el conjunto RAID 1 actual, ingrese &quot;No&quot; en el indicador. El"
 
 #: ../../operation/raid.rst:71
-msgid "1 - To create a new RAID 1 array, enter “Yes” at the prompt. If the system detects a filesystem on the partitions being used for RAID 1 it will prompt you to indicate whether you want to continue creating the RAID 1 array."
+msgid "1 - To create a new RAID 1 array, enter **Yes** at the prompt. If the system detects a filesystem on the partitions being used for RAID 1 it will prompt you to indicate whether you want to continue creating the RAID 1 array."
 msgstr "1 - Para crear una nueva matriz RAID 1, ingrese &quot;Sí&quot; en el indicador. Si el sistema detecta un sistema de archivos en las particiones que se utilizan para RAID 1, le pedirá que indique si desea continuar creando la matriz RAID 1."
 
 #: ../../operation/raid.rst:162
@@ -25,11 +25,11 @@ msgid "2- Physically remove the failed disk from the system. If the drives are n
 msgstr "2- Retire físicamente el disco fallido del sistema. Si las unidades no son intercambiables en caliente, debe apagar el sistema antes de extraer el disco."
 
 #: ../../operation/raid.rst:123
-msgid "2 - To decline to set up a new RAID 1 configuration on the disks, enter “No” at the prompt. The system prompts you to indicate which partition you would like the system installed on."
+msgid "2 - To decline to set up a new RAID 1 configuration on the disks, enter **No** at the prompt. The system prompts you to indicate which partition you would like the system installed on."
 msgstr "2 - Para negarse a establecer una nueva configuración RAID 1 en los discos, ingrese &quot;No&quot; en el indicador. El sistema le solicita que indique en qué partición desea instalar el sistema."
 
 #: ../../operation/raid.rst:79
-msgid "2 - To overwrite the old filesystem, enter “Yes”."
+msgid "2 - To overwrite the old filesystem, enter **Yes**."
 msgstr "2 - Para sobrescribir el antiguo sistema de archivos, ingrese &quot;Sí&quot;."
 
 #: ../../operation/raid.rst:131
@@ -46,7 +46,7 @@ msgstr "3 - El sistema le informa que se borrarán todos los datos de ambas unid
 
 #: ../../operation/raid.rst:88
 #: ../../operation/raid.rst:139
-msgid "4 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
+msgid "4 - Enter **Yes** at the prompt to retain the current VyOS configuration once installation is complete. Enter **No** to delete the current VyOS configuration."
 msgstr "4 - Ingrese &quot;Sí&quot; en el mensaje para conservar la configuración actual de VyOS una vez que se complete la instalación. Ingrese &quot;No&quot; para eliminar la configuración actual de VyOS."
 
 #: ../../operation/raid.rst:167
@@ -62,7 +62,7 @@ msgid "5 - Continue with installation in the normal way."
 msgstr "5 - Continuar con la instalación de forma normal."
 
 #: ../../operation/raid.rst:96
-msgid "5 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
+msgid "5 - Enter **Yes** at the prompt to retain the current VyOS configuration once installation is complete. Enter **No** to delete the current VyOS configuration."
 msgstr "5 - Ingrese &quot;Sí&quot; en el mensaje para conservar la configuración actual de VyOS una vez que se complete la instalación. Ingrese &quot;No&quot; para eliminar la configuración actual de VyOS."
 
 #: ../../operation/raid.rst:99
@@ -126,7 +126,7 @@ msgid "If a device is unplugged and re-plugged it will receive a new Port, Dev, 
 msgstr "Si un dispositivo se desenchufa y se vuelve a enchufar, recibirá una nueva identificación de Puerto, Dev, If."
 
 #: ../../operation/raid.rst:57
-msgid "If you do not want to configure RAID 1 mirroring, enter “No” at the prompt and continue with installation in the normal way."
+msgid "If you do not want to configure RAID 1 mirroring, enter **No** at the prompt and continue with installation in the normal way."
 msgstr "Si no desea configurar la duplicación de RAID 1, ingrese &quot;No&quot; en el indicador y continúe con la instalación de la manera normal."
 
 #: ../../operation/information.rst:21

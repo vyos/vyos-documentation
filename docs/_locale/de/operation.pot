@@ -13,24 +13,24 @@ msgid "1 - Remove the failed disk from the RAID 1 set by issuing the following c
 msgstr "1 - Remove the failed disk from the RAID 1 set by issuing the following command:"
 
 #: ../../operation/raid.rst:113
-msgid "1 - To break apart the current RAID 1 set, enter “No” at the prompt. The"
-msgstr "1 - To break apart the current RAID 1 set, enter “No” at the prompt. The"
+msgid "1 - To break apart the current RAID 1 set, enter **No** at the prompt. The"
+msgstr "1 - To break apart the current RAID 1 set, enter **No** at the prompt. The"
 
 #: ../../operation/raid.rst:71
-msgid "1 - To create a new RAID 1 array, enter “Yes” at the prompt. If the system detects a filesystem on the partitions being used for RAID 1 it will prompt you to indicate whether you want to continue creating the RAID 1 array."
-msgstr "1 - To create a new RAID 1 array, enter “Yes” at the prompt. If the system detects a filesystem on the partitions being used for RAID 1 it will prompt you to indicate whether you want to continue creating the RAID 1 array."
+msgid "1 - To create a new RAID 1 array, enter **Yes** at the prompt. If the system detects a filesystem on the partitions being used for RAID 1 it will prompt you to indicate whether you want to continue creating the RAID 1 array."
+msgstr "1 - To create a new RAID 1 array, enter **Yes** at the prompt. If the system detects a filesystem on the partitions being used for RAID 1 it will prompt you to indicate whether you want to continue creating the RAID 1 array."
 
 #: ../../operation/raid.rst:162
 msgid "2- Physically remove the failed disk from the system. If the drives are not hot-swappable, then you must shut down the system before removing the disk."
 msgstr "2- Physically remove the failed disk from the system. If the drives are not hot-swappable, then you must shut down the system before removing the disk."
 
 #: ../../operation/raid.rst:123
-msgid "2 - To decline to set up a new RAID 1 configuration on the disks, enter “No” at the prompt. The system prompts you to indicate which partition you would like the system installed on."
-msgstr "2 - To decline to set up a new RAID 1 configuration on the disks, enter “No” at the prompt. The system prompts you to indicate which partition you would like the system installed on."
+msgid "2 - To decline to set up a new RAID 1 configuration on the disks, enter **No** at the prompt. The system prompts you to indicate which partition you would like the system installed on."
+msgstr "2 - To decline to set up a new RAID 1 configuration on the disks, enter **No** at the prompt. The system prompts you to indicate which partition you would like the system installed on."
 
 #: ../../operation/raid.rst:79
-msgid "2 - To overwrite the old filesystem, enter “Yes”."
-msgstr "2 - To overwrite the old filesystem, enter “Yes”."
+msgid "2 - To overwrite the old filesystem, enter **Yes**."
+msgstr "2 - To overwrite the old filesystem, enter **Yes**."
 
 #: ../../operation/raid.rst:131
 msgid "3 - Enter the partition where you would like the system installed. The system then prompts you to indicate whether you want to save the old configuration data. This represents the current VyOS configuration."
@@ -46,8 +46,8 @@ msgstr "3 - The system informs you that all data on both drives will be erased. 
 
 #: ../../operation/raid.rst:88
 #: ../../operation/raid.rst:139
-msgid "4 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
-msgstr "4 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
+msgid "4 - Enter **Yes** at the prompt to retain the current VyOS configuration once installation is complete. Enter **No** to delete the current VyOS configuration."
+msgstr "4 - Enter **Yes** at the prompt to retain the current VyOS configuration once installation is complete. Enter **No** to delete the current VyOS configuration."
 
 #: ../../operation/raid.rst:167
 msgid "4 - Format the new disk for RAID 1 by issuing the following command:"
@@ -62,8 +62,8 @@ msgid "5 - Continue with installation in the normal way."
 msgstr "5 - Continue with installation in the normal way."
 
 #: ../../operation/raid.rst:96
-msgid "5 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
-msgstr "5 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
+msgid "5 - Enter **Yes** at the prompt to retain the current VyOS configuration once installation is complete. Enter **No** to delete the current VyOS configuration."
+msgstr "5 - Enter **Yes** at the prompt to retain the current VyOS configuration once installation is complete. Enter **No** to delete the current VyOS configuration."
 
 #: ../../operation/raid.rst:99
 msgid "6 - Continue with installation in the normal way."
@@ -126,8 +126,8 @@ msgid "If a device is unplugged and re-plugged it will receive a new Port, Dev, 
 msgstr "If a device is unplugged and re-plugged it will receive a new Port, Dev, If identification."
 
 #: ../../operation/raid.rst:57
-msgid "If you do not want to configure RAID 1 mirroring, enter “No” at the prompt and continue with installation in the normal way."
-msgstr "If you do not want to configure RAID 1 mirroring, enter “No” at the prompt and continue with installation in the normal way."
+msgid "If you do not want to configure RAID 1 mirroring, enter **No** at the prompt and continue with installation in the normal way."
+msgstr "If you do not want to configure RAID 1 mirroring, enter **No** at the prompt and continue with installation in the normal way."
 
 #: ../../operation/information.rst:21
 msgid "In the past serial interface have been defined as ttySx and ttyUSBx where x was an instance number of the serial interface. It was discovered that from system boot to system boot the mapping of USB based serial interfaces will differ, depending which driver was loaded first by the operating system. This will become rather painful if you not only have serial interfaces for a console server connected but in addition also a serial backed :ref:`wwan-interface`."

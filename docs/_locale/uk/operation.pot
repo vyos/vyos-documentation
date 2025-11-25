@@ -13,11 +13,11 @@ msgid "1 - Remove the failed disk from the RAID 1 set by issuing the following c
 msgstr "1. Видаліть несправний диск із набору RAID 1, виконавши таку команду:"
 
 #: ../../operation/raid.rst:113
-msgid "1 - To break apart the current RAID 1 set, enter “No” at the prompt. The"
+msgid "1 - To break apart the current RAID 1 set, enter **No** at the prompt. The"
 msgstr "1. Щоб розбити поточний набір RAID 1, у запиті введіть «Ні». The"
 
 #: ../../operation/raid.rst:71
-msgid "1 - To create a new RAID 1 array, enter “Yes” at the prompt. If the system detects a filesystem on the partitions being used for RAID 1 it will prompt you to indicate whether you want to continue creating the RAID 1 array."
+msgid "1 - To create a new RAID 1 array, enter **Yes** at the prompt. If the system detects a filesystem on the partitions being used for RAID 1 it will prompt you to indicate whether you want to continue creating the RAID 1 array."
 msgstr "1. Щоб створити новий масив RAID 1, у запиті введіть «Так». Якщо система виявить файлову систему на розділах, що використовуються для RAID 1, вона запропонує вам вказати, чи бажаєте ви продовжити створення масиву RAID 1."
 
 #: ../../operation/raid.rst:162
@@ -25,11 +25,11 @@ msgid "2- Physically remove the failed disk from the system. If the drives are n
 msgstr "2- Фізично видаліть несправний диск із системи. Якщо диски не підтримують гарячу заміну, перед видаленням диска необхідно вимкнути систему."
 
 #: ../../operation/raid.rst:123
-msgid "2 - To decline to set up a new RAID 1 configuration on the disks, enter “No” at the prompt. The system prompts you to indicate which partition you would like the system installed on."
+msgid "2 - To decline to set up a new RAID 1 configuration on the disks, enter **No** at the prompt. The system prompts you to indicate which partition you would like the system installed on."
 msgstr "2. Щоб відмовитися від налаштування нової конфігурації RAID 1 на дисках, у запиті введіть «Ні». Система запропонує вам вказати, на який розділ ви хочете встановити систему."
 
 #: ../../operation/raid.rst:79
-msgid "2 - To overwrite the old filesystem, enter “Yes”."
+msgid "2 - To overwrite the old filesystem, enter **Yes**."
 msgstr "2 - Щоб перезаписати стару файлову систему, введіть «Так»."
 
 #: ../../operation/raid.rst:131
@@ -46,7 +46,7 @@ msgstr "3 - Система повідомляє, що всі дані на об�
 
 #: ../../operation/raid.rst:88
 #: ../../operation/raid.rst:139
-msgid "4 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
+msgid "4 - Enter **Yes** at the prompt to retain the current VyOS configuration once installation is complete. Enter **No** to delete the current VyOS configuration."
 msgstr "4 - Введіть «Так» у запиті, щоб зберегти поточну конфігурацію VyOS після завершення встановлення. Введіть «Ні», щоб видалити поточну конфігурацію VyOS."
 
 #: ../../operation/raid.rst:167
@@ -62,7 +62,7 @@ msgid "5 - Continue with installation in the normal way."
 msgstr "5 - Продовжте встановлення звичайним способом."
 
 #: ../../operation/raid.rst:96
-msgid "5 - Enter “Yes” at the prompt to retain the current VyOS configuration once installation is complete. Enter “No” to delete the current VyOS configuration."
+msgid "5 - Enter **Yes** at the prompt to retain the current VyOS configuration once installation is complete. Enter **No** to delete the current VyOS configuration."
 msgstr "5 - Введіть «Так» у запиті, щоб зберегти поточну конфігурацію VyOS після завершення встановлення. Введіть «Ні», щоб видалити поточну конфігурацію VyOS."
 
 #: ../../operation/raid.rst:99
@@ -126,7 +126,7 @@ msgid "If a device is unplugged and re-plugged it will receive a new Port, Dev, 
 msgstr "Якщо пристрій відключити та знову підключити, він отримає новий ідентифікатор Port, Dev, If."
 
 #: ../../operation/raid.rst:57
-msgid "If you do not want to configure RAID 1 mirroring, enter “No” at the prompt and continue with installation in the normal way."
+msgid "If you do not want to configure RAID 1 mirroring, enter **No** at the prompt and continue with installation in the normal way."
 msgstr "Якщо ви не хочете налаштовувати дзеркальне відображення RAID 1, у запиті введіть «Ні» та продовжте інсталяцію звичайним способом."
 
 #: ../../operation/information.rst:21
