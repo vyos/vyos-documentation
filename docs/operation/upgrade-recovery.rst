@@ -29,8 +29,9 @@ To enable upgrade recovery, run the following command:
 
    set system option reboot-on-upgrade-failure [timeout <min>]
 
-* ``timeout <min>:`` The time in minutes (5 - 30) you have to cancel upgrade
-  recovery. See :ref:`Cancelling Recovery <cancelling_recovery>`.
+* ``timeout <min>:`` The time in minutes (5 - 30) to cancel upgrade
+  recovery before VyOS reboots.
+  See :ref:`Cancelling Recovery <cancelling_recovery>`.
  
 .. _how_it_works:
 
