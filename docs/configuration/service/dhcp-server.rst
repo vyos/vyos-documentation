@@ -496,7 +496,7 @@ how you want the server to behave.
    otherwise. e.g. ``10.100.0.41`` and ``0x31302e3130302e302e3431`` are the
    same
 
-**Client Class Application**
+**Client Class application**
 
 .. cfgcmd:: set service dhcp-server shared-network-name <subnet-name> subnet
    <CIDR> client-class <class-name>
