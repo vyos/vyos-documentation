@@ -455,8 +455,8 @@ The configuration will look as follows:
        subnet-id 1
    }
 
-Option 82
----------
+Relay agent information (Option 82)
+-----------------------------------
 
 Some DHCP relays support the injection of information into a DHCP request, depending on
 where the request originated from. This is commonly used to determine the
