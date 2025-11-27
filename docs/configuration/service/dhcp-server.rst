@@ -678,7 +678,7 @@ Configuration
 Prefix Delegation
 -----------------
 
-.. note:: VyOS =< 1.4.3 does not add the prefixed to the routing table.
+.. note:: VyOS =< 1.4.3 does not add the prefixes to the routing table.
 
 To hand out individual prefixes to your clients the following configuration is
 used:
