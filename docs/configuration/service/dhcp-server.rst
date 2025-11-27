@@ -538,7 +538,7 @@ Wireshark.
     service {
         dhcp-server {
             client-class className {
-                option82 {
+                relay-agent-information {
                     circuit-id e1-5
                     remote-id 192.0.2.1
                 }
