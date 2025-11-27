@@ -486,7 +486,7 @@ how you want the server to behave.
    interpreted as a raw hex value, if it starts with the prefix 0x, or ASCII text
    otherwise. e.g. ``e1-5`` and ``0x65312d35`` are the same
 
-.. cfgcmd:: set service dhcp-server client-class <name> option82 remote-id
+.. cfgcmd:: set service dhcp-server client-class <name> relay-agent-information remote-id
    <value>
 
    Create a new client class (if not already defined) and set it to match on
