@@ -477,7 +477,7 @@ how you want the server to behave.
 
 **Client Class definition**
 
-.. cfgcmd:: set service dhcp-server client-class <name> option82 circuit-id
+.. cfgcmd:: set service dhcp-server client-class <name> relay-agent-information circuit-id
    <value>
 
    Create a new client class (if not already defined) and set it to match on
