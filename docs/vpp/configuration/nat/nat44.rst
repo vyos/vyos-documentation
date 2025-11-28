@@ -32,6 +32,13 @@ To configure dynamic NAT, you need to define a pool of public IP addresses that 
 
 Static rules are more suitable for scenarios where you need to provide consistent and predictable mappings between private and public IP addresses, also they are the only way to configure DNAT.
 
+How NAT Rules are Applied
+-------------------------
+
+1. **Dynamic Rules only**: The router will try to apply those rules to all incoming traffic, and everything else passes normally
+2. **Static + Dynamic Rules**: The router uses static rules first, and uses dynamic ones only when no static rule applies.
+3. **Static Rules only**: Only the traffic you explicitly define in a static rule gets translated. Everything else passes untouched.
+
 Interfaces Configuration
 ========================
 
@@ -553,24 +560,6 @@ This setting helps prevent memory exhaustion and ensures predictable performance
 
    # Increase session limit for high-capacity deployment
    set vpp settings nat44 session-limit 100000
-
-Forwarding Behavior
--------------------
-
-By default, VyOS NAT44 forwards packets that don't match any NAT rules according to the routing table. This behavior can be controlled:
-
-.. cfgcmd:: set vpp settings nat44 no-forwarding
-
-   Disable forwarding of packets that don't match existing NAT translations. When enabled, only packets that match static or dynamic NAT rules will be processed; all other traffic will be dropped.
-
-.. important::
-
-   This is a significant difference from traditional NAT solutions. By default, VyOS NAT44 allows non-NAT traffic to be forwarded normally. Using ``no-forwarding`` creates a pure NAT-only device that drops any traffic not covered by NAT rules.
-
-**Use cases for no-forwarding:**
-
-* **Pure NAT gateway**: When the router should only handle NAT traffic and drop everything else
-* **Security isolation**: Preventing any non-NAT traffic from traversing the device
 
 Worker Assignment
 -----------------
