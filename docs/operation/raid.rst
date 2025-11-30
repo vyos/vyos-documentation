@@ -45,7 +45,7 @@ Configuration
 =============
 
 Standard installation on a single disk 
-------------------------------
+--------------------------------------
 
 VyOS automatically detects the presence of two or more
 disks that are not currently part of a RAID array when installed. The VyOS
