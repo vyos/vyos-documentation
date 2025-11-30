@@ -100,7 +100,7 @@ Enter **No** to delete the current VyOS configuration.
 
 
 Preexisting RAID 1 configuration
---------------
+--------------------------------
 
 When VyOS detects a previously configured RAID 1 set,
 the installation utility displays the following prompt: 
@@ -175,8 +175,7 @@ To replace a bad disk within a RAID 1 set:
    .. opcmd:: add raid <RAID‐1‐device> member <disk‐partition>
 
    where ``RAID-1-device`` is the name of the RAID 1 device. For example,
-   ``md0`` and 
-   ``disk-partition`` is the name of the replacement disk partition.
+   ``md0`` and ``disk-partition`` is the name of the replacement disk partition.
    For example, ``sdb2``.
 
 Operation

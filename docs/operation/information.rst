@@ -20,15 +20,15 @@ USB
 ===
 
 In the past, serial interfaces were defined as ``ttySx`` and ``ttyUSBx`` where
-``x``
-was the instance number. However, the mapping of USB-based serial interfaces
-can change from one system boot to another, depending on which driver the
-operating system loads first. This inconsistency can be problematic when you
+``x`` was the instance number. However, the mapping of USB-based
+serial interfaces can change from one system boot to another, depending on
+which driver the operating system loads first.
+This inconsistency can be problematic when you
 use multiple serial interfaces.
 For example, both console-server connections and a serial-backed
 :ref:`wwan-interface`.
 
-To address this issue, and because of many low-cost USB-to-serial converters
+To address this issue, and because many low-cost USB-to-serial converters
 do not have a programmed serial number, VyOS now identifies USB-to-serial
 interfaces by the USB root bridge and the bus they connect to.
 This approach is similar to the network interface naming conventions used in
