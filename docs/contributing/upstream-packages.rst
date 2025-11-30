@@ -32,7 +32,8 @@ VyoS builds it from source.
 
 Debian maintains the package in git, but the upstream tarball was imported
 without its original commit history. To allow merging new tags, we maintain
-a fork with packaging files imported from Debian: https://github.com/vyos/keepalived-upstream.
+a fork with packaging files imported from
+Debian: https://github.com/vyos/keepalived-upstream.
 
 ``strongswan``
 --------------
@@ -80,7 +81,8 @@ No special build procedure is required.
 ``hvinfo``
 ----------
 
-A fork with packaging changes for VyOS is available at https://github.com/vyos/hvinfo.
+A fork with packaging changes for VyOS is available
+at https://github.com/vyos/hvinfo.
 
 The original repository is at https://github.com/dmbaturin/hvinfo.
 
