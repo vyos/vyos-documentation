@@ -14,7 +14,7 @@ Boot Options
 VyOS provides several kernel command-line options to modify the normal boot
 process.
 To add an option, select the desired image in the GRUB menu at load time.
-Type **e** to edit the first line, then type **Ctrl+x** to boot.
+Type **e** to edit the first line, then type **Ctrl+X** to boot.
 
 .. image:: /_static/images/boot-options.png
    :width: 80%
