@@ -86,7 +86,7 @@ Confirm you want to continue.
 
    Are you sure you want to do this?
 
-4. Enter **Yes** at the prompt to retain the current VyOS configuration
+4. Enter **Yes** at the prompt to retain the current VyOS configuration.
 Enter **No** to delete the current VyOS configuration. 
 
 .. code-block:: none
