@@ -2,9 +2,9 @@
 
 .. _information:
 
-***********
+******************
 System Information
-***********
+******************
 
 VyOS features a rich set of operational level commands to retrieve arbitrary
 information about your running system. For more information on the VyOS command

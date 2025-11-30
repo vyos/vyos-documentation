@@ -11,8 +11,8 @@ Use **VyOS upgrade recovery** to restore the system to the last working
 version after a failed upgrade.
 
 * :ref:`Configuration:  <configuration>` How to enable upgrade recovery
-* :ref:`How it Works: <how_it_works>` Overview of the recovery process
-* :ref:`Cancelling Recovery: <cancelling_recovery>` Overview of the recovery
+* :ref:`How it works: <how_it_works>` Overview of the recovery process
+* :ref:`Cancelling recovery: <cancelling_recovery>` Overview of the recovery
   process
  
 .. _configuration:
@@ -36,7 +36,7 @@ To enable upgrade recovery, run the following command:
 .. _how_it_works:
 
 ************
-How it Works
+How it works
 ************
 After a VyOS upgrade, the system monitors the boot process. Upon detecting a
 boot failure, VyOS initiates a revert to the last working version and displays
@@ -61,7 +61,7 @@ timeout. Upon successful recovery and reboot, the following message appears:
 .. _cancelling_recovery:
 
 *******************
-Cancelling Recovery
+Cancelling recovery
 *******************
 Upon detecting a boot failure, you have the predefined timeout to cancel
 upgrade recovery. This is useful if you want to troubleshoot the faulty VyOS
