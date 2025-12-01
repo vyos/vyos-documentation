@@ -105,7 +105,7 @@ Vyos configuration
   set vpn ipsec site-to-site peer azure authentication local-id '198.51.100.3'
   set vpn ipsec site-to-site peer 203.0.113.2 authentication mode 'pre-shared-secret'
   set vpn ipsec site-to-site peer 203.0.113.2 authentication remote-id '203.0.113.2'
-  set vpn ipsec site-to-site peer 203.0.113.2 connection-type 'respond'
+  set vpn ipsec site-to-site peer 203.0.113.2 connection-type 'initiate'
   set vpn ipsec site-to-site peer 203.0.113.2 description 'AZURE PRIMARY TUNNEL'
   set vpn ipsec site-to-site peer 203.0.113.2 ike-group 'AZURE'
   set vpn ipsec site-to-site peer 203.0.113.2 ikev2-reauth 'inherit'

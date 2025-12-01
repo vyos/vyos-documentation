@@ -285,13 +285,31 @@ Global Peer Configuration Commands
     after configuring and after boot. In this mode the connection will
     not be restarted in case of disconnection, therefore should be used
     only together with DPD or another session tracking methods.
-  * **respond** - does not try to initiate a connection to a remote
-    peer. In this mode, the IPsec session will be established only
-    after initiation from a remote peer. Could be useful when there
-    is no direct connectivity to the peer due to firewall or NAT in
-    the middle of the local and remote side.
+
+  * **trap** - does not try to initiate a connection to a remote
+    peer immediately. Instead, it installs a trap policy that will
+    trigger IKE negotiation and establish the IPsec session when
+    matching traffic is sent from the local side. This can be useful
+    when there is no direct connectivity to the peer due to firewall
+    or NAT in the middle of the local and remote side.
+
+    .. warning:: The ``trap`` mode is not needed in most environments 
+       and can lead to connection confusion or unintended tunnel uptime 
+       behavior if used incorrectly. Using this mode requires careful
+       coordination with parameters such as ``close-action`` and DPD.
+       For most deployments, use ``initiate`` and ``none`` as described below.
+
   * **none** - loads the connection only, which then can be manually
     initiated or used as a responder configuration.
+
+  .. note:: For most site-to-site VPNs, configure one peer
+     with ``connection-type initiate`` (active side) and the other peer
+     with ``connection-type none`` (passive side) to
+     ensure stable and predictable tunnel behavior.
+     When using ``connection-type initiate``, you must also configure
+     DPD or another session tracking method (such as ``close-action``)
+     to automatically re-establish the tunnel after a disconnection.
+     Otherwise, the tunnel will not reconnect automatically if it goes down.
 
 .. cfgcmd:: set vpn ipsec site-to-site peer <name> default-esp-group <name>
 
@@ -566,7 +584,7 @@ Policy-Based VPN Example
   set vpn ipsec site-to-site peer PEER1 authentication local-id '10.0.2.2'
   set vpn ipsec site-to-site peer PEER1 authentication mode 'pre-shared-secret'
   set vpn ipsec site-to-site peer PEER1 authentication remote-id '10.0.1.2'
-  set vpn ipsec site-to-site peer PEER1 connection-type 'respond'
+  set vpn ipsec site-to-site peer PEER1 connection-type 'none'
   set vpn ipsec site-to-site peer PEER1 default-esp-group 'ESP-GRPOUP'
   set vpn ipsec site-to-site peer PEER1 ike-group 'IKE-GROUP'
   set vpn ipsec site-to-site peer PEER1 local-address '10.0.2.2'
@@ -696,7 +714,7 @@ Route-Based VPN Example
   set vpn ipsec site-to-site peer PEER1 authentication local-id '10.0.2.2'
   set vpn ipsec site-to-site peer PEER1 authentication mode 'pre-shared-secret'
   set vpn ipsec site-to-site peer PEER1 authentication remote-id '10.0.1.2'
-  set vpn ipsec site-to-site peer PEER1 connection-type 'respond'
+  set vpn ipsec site-to-site peer PEER1 connection-type 'none'
   set vpn ipsec site-to-site peer PEER1 default-esp-group 'ESP-GRPOUP'
   set vpn ipsec site-to-site peer PEER1 ike-group 'IKE-GROUP'
   set vpn ipsec site-to-site peer PEER1 local-address '10.0.2.2'

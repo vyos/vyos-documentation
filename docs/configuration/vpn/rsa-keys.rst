@@ -77,7 +77,7 @@ On the LEFT (static address):
   set vpn ipsec site-to-site peer @RIGHT default-esp-group MyESPGroup
   set vpn ipsec site-to-site peer @RIGHT ike-group MyIKEGroup
   set vpn ipsec site-to-site peer @RIGHT local-address 192.0.2.10
-  set vpn ipsec site-to-site peer @RIGHT connection-type respond
+  set vpn ipsec site-to-site peer @RIGHT connection-type none
   set vpn ipsec site-to-site peer @RIGHT tunnel 1 local prefix 192.168.99.1/32  # Additional loopback address on the local
   set vpn ipsec site-to-site peer @RIGHT tunnel 1 remote prefix 192.168.99.2/32 # Additional loopback address on the remote
 

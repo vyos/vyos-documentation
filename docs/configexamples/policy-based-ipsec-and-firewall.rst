@@ -106,7 +106,7 @@ IPSec configuration:
     set vpn ipsec ike-group IKE-GROUP proposal 1 hash 'sha256'
     set vpn ipsec interface 'eth0'
     set vpn ipsec site-to-site peer LEFT authentication mode 'pre-shared-secret'
-    set vpn ipsec site-to-site peer LEFT connection-type 'respond'
+    set vpn ipsec site-to-site peer LEFT connection-type 'none'
     set vpn ipsec site-to-site peer LEFT default-esp-group 'ESP-GROUP'
     set vpn ipsec site-to-site peer LEFT ike-group 'IKE-GROUP'
     set vpn ipsec site-to-site peer LEFT local-address '192.0.2.130'
