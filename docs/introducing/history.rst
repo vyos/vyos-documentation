@@ -9,7 +9,7 @@ In the beginning...
 
 There was a network operating system based on Debian GNU/Linux, called 
 Vyatta. [*]_ Introduced in 2006, it served as a great free-software alternative 
-to Cisco IOS and Juniper JUNOS. Vyatta came in two editions: Vyatta Core 
+to proprietary products. Vyatta came in two editions: Vyatta Core 
 (formerly known as Vyatta Community Edition), which was free software, and 
 Vyatta Subscription Edition, which included proprietary features and was 
 available only to paying customers.
@@ -25,10 +25,10 @@ where core components were replaced with proprietary software. As a result,
 Vyatta Core received fewer new features, and some of those added faced issues.
 
 In 2013, shortly after Vyatta Core was discontinued, the community forked its 
-final version (6.6R1) to create the VyOS project. To fund its development, VyOS 
-maintainers established `Sentrium SL <https://blog.vyos.io/sentrium-what-sentrium>`_ 
-in 2014, offering support, consulting services, and prebuilt long-term support 
-images. The company was later reorganized under the VyOS brand.
+final version (6.6R1) to create the VyOS project.
+In 2014, the maintainers established a company to to fund VyOS development
+through technical support, consulting services, and LTS release access subscriptions.
+The company was originally named Sentrium and was later reorganized under the VyOS brand.
 
 Broadcom acquired Brocade in 2016 and sold Vyatta to AT&T in 2017, which in 
 turn sold it to Ciena in 2021.
@@ -63,9 +63,8 @@ reliance on a proprietary NHRP implementation.
 
 Crux (1.2)
 ----------
-Crux (the Southern Cross) was released on 28 January 2019 as the 
-first major VyOS release. The underlying Debian base was upgraded 
-from Squeeze (6) to Jessie (8).
+Crux (the Southern Cross) was released on 28 January 2019 and marked a departure from legacy Vyatta codebase and the start of the migration from Perl to Python as the primary language.
+The underlying base system was upgraded from Debian 6 (Squeeze) to Debian 8 (Jessie).
 
 Crux introduced many new features, some of the most noteworthy are: 
 an mDNS repeater, a broadcast relay, a high-performance PPPoE server, 
@@ -74,18 +73,17 @@ and fully 802.1ad-compliant QinQ ethertype. The telnet server and support
 for P2P filtering were removed.
 
 Crux was the first VyOS release to feature a modular image build system.
-CLI definitions were written using modern, verifiable XML templates. 
+CLI definitions were written using an XML syntax automatically checked against a schema at build time. 
 Python APIs were introduced for command scripting and
-configuration migration. The introduction of new Perl and shell code was
-prohibited, and the process of rewriting legacy Perl code in pure Python 
-began with Crux.
+configuration migration.
+New Perl code and old-style (non-XML) command definition were no longer accepted from that point.
 
 Crux reached the end of support in 2023.
 
 Equuleus (1.3)
 --------------
 
-Equuleus (the Pony) was a long-term support version released 
+Equuleus (the Little Horse) was a long-term support version released 
 on 21 December 2021, just in time for the winter holidays.
 
 Equuleus brought many long-awaited features, most notably an SSTP VPN 
@@ -104,13 +102,13 @@ Sagitta (the Arrow), released in 2024, is currently a supported LTS release.
 Circinus (1.5)
 --------------
 
-Circinus (the Compass) is the codename for the upcoming development
+Circinus (the Drawing Compass) is the codename for the upcoming development
 branch. VyOS 1.5 Circinus has not been released yet.
 
 A note on copyright
 ===================
 
-Unlike Vyatta, VyOS has never had proprietary code and never will.
+Unlike Vyatta, VyOS has never had closed-source code and never will.
 The only proprietary material in VyOS is non-code assets, such as
 graphics and the trademark "VyOS". [*]_ This means you can build your
 own long-term support images, since the entire toolchain is free software, 
