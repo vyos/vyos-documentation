@@ -25,13 +25,10 @@ where core components were replaced with proprietary software. As a result,
 Vyatta Core received fewer new features, and some of those added faced issues.
 
 In 2013, shortly after Vyatta Core was discontinued, the community forked its 
-final version (6.6R1) to create the VyOS project.
-In 2014, the maintainers established a company to to fund VyOS development
-through technical support, consulting services, and LTS release access subscriptions.
-The company was originally named Sentrium and was later reorganized under the VyOS brand.
-
-Broadcom acquired Brocade in 2016 and sold Vyatta to AT&T in 2017, which in 
-turn sold it to Ciena in 2021.
+final version (6.6R1) to create the VyOS project. In 2014, the maintainers 
+established a company to fund VyOS development through technical support, 
+consulting services, and LTS release access subscriptions. The company was 
+originally named Sentrium and was later reorganized under the VyOS brand.
 
 
 Major releases
@@ -63,8 +60,10 @@ reliance on a proprietary NHRP implementation.
 
 Crux (1.2)
 ----------
-Crux (the Southern Cross) was released on 28 January 2019 and marked a departure from legacy Vyatta codebase and the start of the migration from Perl to Python as the primary language.
-The underlying base system was upgraded from Debian 6 (Squeeze) to Debian 8 (Jessie).
+Crux (the Southern Cross) was released on 28 January 2019 and marked a 
+departure from legacy Vyatta codebase and the start of the migration from 
+Perl to Python as the primary language. The underlying base system was 
+upgraded from Debian 6 (Squeeze) to Debian 8 (Jessie).
 
 Crux introduced many new features, some of the most noteworthy are: 
 an mDNS repeater, a broadcast relay, a high-performance PPPoE server, 
@@ -73,10 +72,10 @@ and fully 802.1ad-compliant QinQ ethertype. The telnet server and support
 for P2P filtering were removed.
 
 Crux was the first VyOS release to feature a modular image build system.
-CLI definitions were written using an XML syntax automatically checked against a schema at build time. 
-Python APIs were introduced for command scripting and
-configuration migration.
-New Perl code and old-style (non-XML) command definition were no longer accepted from that point.
+CLI definitions were written using an XML syntax automatically checked 
+against a schema at build time. Python APIs were introduced for command 
+scripting and configuration migration. New Perl code and old-style (non-XML) 
+command definition were no longer accepted from that point.
 
 Crux reached the end of support in 2023.
 
@@ -110,10 +109,7 @@ A note on copyright
 
 Unlike Vyatta, VyOS has never had closed-source code and never will.
 The only proprietary material in VyOS is non-code assets, such as
-graphics and the trademark "VyOS". [*]_ This means you can build your
-own long-term support images, since the entire toolchain is free software, 
-and even distribute them, provided you rename them and remove any 
-proprietary assets before building. 
+graphics and the trademark "VyOS". [*]_ 
 
 Note that we do not provide support for images distributed by a third party. 
 See the
