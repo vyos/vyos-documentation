@@ -1,39 +1,37 @@
+:lastproofread: 2025-12-02
+
 .. _testing:
 
 #######
 Testing
 #######
 
-One of the major advantages introduced in VyOS 1.3 is an automated test
-framework. When assembling an ISO image multiple things can go wrong badly and
-publishing a faulty ISO makes no sense. The user is disappointed by the quality
-of the image and the developers get flodded with bug reports over and over
-again.
+One of the major features introduced in VyOS 1.3 is an automated test
+framework. When you assemble an ISO image, several things can go wrong.
+VyOS uses this framework to detect issues before they cause downstream problems.
 
-As the VyOS documentation is not only for users but also for the developers -
-and we keep no secret documentation - this section describes how the automated
-testing works.
+This section describes how the automated testing process at VyOS works.
 
 Jenkins CI
 ==========
 
-Our `VyOS CI`_ system is based on Jenkins and builds all our required packages
-for VyOS 1.2 to 1.4. In addition to the package build, there is the vyos-build
-Job which builds and tests the VyOS ISO image which is published after a
-successful test drive.
+The `VyOS CI`_ system is based on Jenkins. It builds all required packages
+for VyOS 1.2 to 1.4. In addition to the package build, there is the
+``vyos-build`` job, which builds and tests the VyOS ISO image.
+The image is published after a successful test run.
 
-We differentiate in two independent tests, which are both run in parallel by
-two separate QEmu instances which are launched via ``make test`` and ``make
-testc`` from within the vyos-build_ repository.
+VyOS runs two independent tests in parallel using separate QEMU instances.
+These are launched via ``make test`` and ``make testc`` from within the
+vyos-build_ repository.
 
 Smoketests
 ==========
 
-Smoketests executes predefined VyOS CLI commands and checks if the desired
+Smoketests execute predefined VyOS CLI commands and check if the desired
 daemon/service configuration is rendert - that is how to put it "short".
 
-When and ISO image is assembled by the `VyOS CI`_, the ``BUILD_SMOKETEST``
-parameter is enabled by default, which will extend the ISO configuration line
+When an ISO image is assembled by the `VyOS CI`_, the ``BUILD_SMOKETEST``
+parameter is enabled by default. This extends the ISO configuration line
 with the following packages:
 
 .. code-block:: python
@@ -42,29 +40,29 @@ with the following packages:
     if (params.BUILD_SMOKETESTS)
       CUSTOM_PACKAGES = '--custom-package vyos-1x-smoketest'
 
-So if you plan to build your own custom ISO image and want to make use of our
+If you plan to build your own custom ISO image and want to use VyOS's
 smoketests, ensure that you have the `vyos-1x-smoketest` package installed.
 
-The ``make test`` command from the vyos-build_ repository will launch a new
-QEmu instance and the ISO image is first installed to the virtual harddisk.
+The ``make test`` command from the vyos-build_ repository launches a new
+QEMU instance, and the ISO image is first installed to the virtual hard disk.
 
-After its first boot into the newly installed system the main Smoketest script
-is executed, it can be found here: `/usr/bin/vyos-smoketest`
+After the first boot into the newly installed system, the main Smoketest script
+is executed. It can be found at `/usr/bin/vyos-smoketest`.
 
 The script only searches for executable "test-cases" under
 ``/usr/libexec/vyos/tests/smoke/cli/`` and executes them one by one.
 
-.. note:: As Smoketests will alter the system configuration and you are logged
-   in remote you may loose your connection to the system.
+.. note:: Smoketests will alter the system configuration. If you are logged
+  in remotely, you may lose your connection to the system.
 
-.. note:: To enable smoketest debugging (print of the CLI set commands used)
-   you can run: ``touch /tmp/vyos.smoketest.debug``.
+.. note:: To enable smoketest debugging (print the CLI set commands used),
+  run: ``touch /tmp/vyos.smoketest.debug``.
 
 Manual Smoketest Run
 --------------------
 
-On the other hand - as each test is contain in its own file - one can always
-execute a single Smoketest by hand by simply running the Python test scripts.
+Each test is contained in its own file, so you can execute a single Smoketest
+manually by running the Python test script.
 
 Example:
 
@@ -93,12 +91,11 @@ Example:
 Interface based tests
 ---------------------
 
-Our smoketests not only test daemons and serives, but also check if what we
-configure for an interface works. Thus there is a common base classed named:
-``base_interfaces_test.py`` which holds all the common code that an interface
-supports and is tested.
+Our smoketests not only test daemons and services, but also check if interface
+configuration works as expected. There is a common base class named
+``base_interfaces_test.py`` that holds all the common code for interface tests.
 
-Those common tests consists out of:
+These common tests consist of:
 
 * Add one or more IP addresses
 * DHCP client and DHCPv6 prefix delegation
@@ -109,12 +106,12 @@ Those common tests consists out of:
 * VLANs (QinQ and regular 802.1q)
 * ...
 
-.. note:: When you are working on interface configuration and you also want to
-   test if the Smoketests pass you would normally loose the remote SSH connection
-   to your :abbr:`DUT (Device Under Test)`. To handle this issue, some of the
-   interface based tests can be called with an environment variable beforehand
-   to limit the number of interfaces used in the test. By default all interface
-   e.g. all Ethernet interfaces are used.
+.. note:: When you are working on interface configuration and want to test
+  if the Smoketests pass, you would normally lose the remote SSH connection
+  to your :abbr:`DUT (Device Under Test)`. To handle this, some interface-based
+  tests can be called with an environment variable beforehand to limit the
+  number of interfaces used in the test. By default, all interfaces (e.g., all
+  Ethernet interfaces) are used.
 
 .. code-block:: none
 
@@ -148,31 +145,32 @@ Those common tests consists out of:
 
   OK
 
-This will limit the `bond` interface test to only make use of `eth1` and `eth2`
+This will limit the `bond` interface test to use only `eth1` and `eth2`
 as member ports.
 
 Config Load Tests
 =================
 
-The other part of our tests are called "config load tests". The config load tests
-will load - one after another - arbitrary configuration files to test if the
-configuration migration scripts work as designed and that a given set of
-functionality still can be loaded with a fresh VyOS ISO image.
+The other part of our tests are called "config load tests." Config load tests
+sequentially load arbitrary configuration files to verify that configuration
+migration scripts work as designed and that a given set of functionality can
+still be loaded with a fresh VyOS ISO image.
 
-The configurations are all derived from production systems and can not only act
-as a testcase but also as reference if one wants to enable a certain feature.
-The configurations can be found here:
+The configurations are all derived from production systems and can act as
+test cases or as references for enabling certain features. The configurations
+can be found here:
 https://github.com/vyos/vyos-1x/tree/current/smoketest/configs
 
-The entire test is controlled by the main wrapper script ``/usr/bin/vyos-configtest``
-which behaves in the same way as the main smoketest script. It scans the folder
-for potential configuration files and issues a ``load`` command one after another.
+The entire test is controlled by the main wrapper script
+``/usr/bin/vyos-configtest``.
+It behaves in the same way as the main smoketest script. It scans the folder
+for potential configuration files and issues a ``load`` command for each file.
 
 Manual config load test
 -----------------------
 
-One is not bound to load all configurations one after another but can also load
-individual test configurations on his own.
+You do not have to load all configurations sequentially; you can also load
+individual test configurations manually.
 
 .. code-block:: none
 
@@ -202,10 +200,10 @@ individual test configurations on his own.
   vyos@vyos# commit
   vyos@vyos#
 
-.. note:: Some of the configurations have preconditions which need to be met.
-   Those most likely include generation of crypographic keys before the config
-   can be applied - you will get a commit error otherwise. If you are interested
-   how those preconditions are fulfilled check the vyos-build_ repository and
-   the ``scripts/check-qemu-install`` file.
+.. note:: Some configurations have preconditions that must be met. These most
+  likely include generation of cryptographic keys before the config can be
+  applied; otherwise, you will get a commit error. If you are interested in
+  how those preconditions are fulfilled, check the vyos-build_ repository and
+  the ``scripts/check-qemu-install`` file.
 
 .. include:: /_include/common-references.txt
