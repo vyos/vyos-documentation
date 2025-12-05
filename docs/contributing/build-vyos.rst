@@ -10,16 +10,19 @@ Build VyOS
 Prerequisites
 *************
 
-There are different ways you can build VyOS. Building using a :ref:`build_docker`
+There are different ways you can build VyOS. Building using a
+:ref:`build_docker`
 container is the easiest way because all dependencies are managed for you.
-Alternatively, you can set up your own build machine and run a :ref:`build_native` build.
+Alternatively, you can set up your own build machine and run a
+:ref:`build_native` build.
 
-.. note:: Starting with VyOS 1.4, only source code and Debian package repositories
-   of the rolling release (the **current** branch) are publicly available.
+.. note:: Starting with VyOS 1.4, only source code and Debian package
+   repositories of the rolling release (the **current** branch) are publicly
+   available.
 
    The source code and pre-built Debian package repositories of LTS releases
-   are only available to subscription holders (customers and active community members
-   with contributors subscriptions).
+   are only available to subscription holders (customers and active community
+   members with contributors subscriptions).
 
    The following includes the build process for VyOS rolling release.
 
@@ -41,8 +44,9 @@ To get started, clone the repository to your local machine:
   $ sudo make clean
   $ sudo ./build-vyos-image --architecture amd64 --build-by "j.randomhacker@vyos.io" generic
 
-For required packages, refer to the ``docker/Dockerfile`` file in the repository_.
-The ``./build-vyos-image`` script will also warn you if any dependencies are missing.
+For required packages, refer to the ``docker/Dockerfile`` file in the
+repository_. The ``./build-vyos-image`` script will also warn you if any
+dependencies are missing.
 
 .. _build_docker:
 
