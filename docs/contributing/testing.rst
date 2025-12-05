@@ -28,7 +28,7 @@ Smoketests
 ==========
 
 Smoketests execute predefined VyOS CLI commands and check if the desired
-daemon/service configuration is rendert - that is how to put it "short".
+daemon or service configuration is rendered.
 
 When an ISO image is assembled by the `VyOS CI`_, the ``BUILD_SMOKETEST``
 parameter is enabled by default. This extends the ISO configuration line
@@ -49,7 +49,7 @@ QEMU instance, and the ISO image is first installed to the virtual hard disk.
 After the first boot into the newly installed system, the main Smoketest script
 is executed. It can be found at `/usr/bin/vyos-smoketest`.
 
-The script only searches for executable "test-cases" under
+The script searches for executable test cases under
 ``/usr/libexec/vyos/tests/smoke/cli/`` and executes them one by one.
 
 .. note:: Smoketests will alter the system configuration. If you are logged
@@ -88,7 +88,7 @@ Example:
 
   OK
 
-Interface based tests
+Interface-based tests
 ---------------------
 
 Our smoketests not only test daemons and services, but also check if interface

@@ -1,3 +1,5 @@
+:lastproofread: 2025-12-05
+
 .. _build:
 
 ##########
@@ -8,11 +10,9 @@ Build VyOS
 Prerequisites
 *************
 
-There are different ways you can build VyOS.
-
-Building using a :ref:`build_docker` container, although not the only way,
-is the easiest way as all dependencies are managed for you. However, you can
-also set up your own build machine and run a :ref:`build_native`.
+There are different ways you can build VyOS. Building using a :ref:`build_docker`
+container is the easiest way because all dependencies are managed for you.
+Alternatively, you can set up your own build machine and run a :ref:`build_native` build.
 
 .. note:: Starting with VyOS 1.4, only source code and Debian package repositories
    of the rolling release (the **current** branch) are publicly available.
@@ -31,24 +31,18 @@ This process has been tested on clean installs of Debian Bookworm.
 Native Build
 ============
 
-To build VyOS natively you need a properly configured build host with the
-following Debian versions installed:
+To build VyOS natively, you need a properly configured build host with
+Debian Bookworm installed.
 
-- Debian Bookworm
-
-To start, clone the repository to your local machine:
+To get started, clone the repository to your local machine:
 
 .. code-block:: none
 
   $ sudo make clean
   $ sudo ./build-vyos-image --architecture amd64 --build-by "j.randomhacker@vyos.io" generic
 
-For the packages required, you can refer to the ``docker/Dockerfile`` file
-in the repository_. The ``./build-vyos-image`` script will also warn you if any
-dependencies are missing.
-
-This will guide you through the process of building a VyOS ISO using Docker. 
-This process has been tested on clean installs of Bookworm (12).
+For required packages, refer to the ``docker/Dockerfile`` file in the repository_.
+The ``./build-vyos-image`` script will also warn you if any dependencies are missing.
 
 .. _build_docker:
 
@@ -57,8 +51,8 @@ Docker
 
 Installing Docker_ and prerequisites:
 
-.. hint:: Due to the updated version of Docker, the following examples may 
-   become invalid.
+.. hint:: Docker versions are updated frequently. The following examples may
+   become outdated.
 
 .. code-block:: none
 
@@ -78,29 +72,27 @@ Installing Docker_ and prerequisites:
   sudo apt-get update
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-To be able to use Docker_ without ``sudo``, the current non-root user must be
-added to the ``docker`` group by calling: ``sudo usermod -aG docker
-yourusername``.
+To use Docker without ``sudo``, add your current non-root user to the ``docker``
+group: ``sudo usermod -aG docker yourusername``.
 
-.. hint:: Doing so grants privileges equivalent to the ``root`` user! It is
-   recommended to remove the non-root user from the ``docker`` group after
-   building the VyOS ISO. See also `Docker as non-root`_.
+.. hint:: Adding a user to the ``docker`` group grants privileges equivalent to
+   ``root``. It is recommended to remove the non-root user from the ``docker``
+   group after building the VyOS ISO. See also `Docker as non-root`_.
 
-.. note:: The build process needs to be built on a local file system, building
-   on SMB or NFS shares will result in the container failing to build properly!
-   VirtualBox Drive Share is also not an option as block device operations
-   are not implemented and the drive is always mounted as "nodev"
+.. note:: The build process must run on a local file system. Building on SMB or
+   NFS shares will cause the container to fail. VirtualBox shared folders are
+   also not supported because block device operations are not implemented.
 
 Build Container
 ---------------
 
 The container can be built by hand or by fetching the pre-built one from
-DockerHub. Using the pre-built containers from the `VyOS DockerHub
-organisation`_ will ensure that the container is always up-to-date. A rebuild
-is triggered once the container changes (please note this will take 2-3 hours
-after pushing to the vyos-build repository).
+DockerHub. It is recommended to use the pre-built containers from the 
+`VyOS DockerHub`organization_
+The container is built from Docker packages automatically after every commit
+to the ``vyos-build`` repository (this process may take 2-3 hours).
 
-.. note: If you are using the pre-built container, it will be automatically
+.. note:: If you use the pre-built container, it will be automatically
    downloaded from DockerHub if it is not found on your local machine when
    you build the ISO.
 
@@ -125,16 +117,15 @@ The container can also be built directly from source:
   $ cd vyos-build
   $ docker build -t vyos/vyos-build:current docker
 
-.. note:: VyOS has switched to Debian (12) Bookworm in its ``current`` branch,
-   Due to software version updates, it is recommended to use the official 
+.. note:: VyOS switched to Debian Bookworm (12) in its ``current`` branch.
+   Due to software version updates, it is recommended to use the official
    Docker Hub image to build VyOS ISO.
    
 Tips and Tricks
 ---------------
 
-You can create yourself some handy Bash aliases to always launch the latest -
-per release train (`current`) - container. Add the following to your
-``.bash_aliases`` file:
+You can create Bash aliases to easily launch the latest container per release
+train (``current``). Add the following to your ``.bash_aliases`` file:
 
 .. code-block:: none
 
@@ -147,8 +138,8 @@ per release train (`current`) - container. Add the following to your
       -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
       vyos/vyos-build:current bash'
 
-Now you are prepared with a new aliase ``vybld`` to spawn
-your development containers in your current working directory.
+Now you have a new alias ``vybld`` that launches development containers in
+your current working directory.
 
 .. note:: Some VyOS packages (namely vyos-1x) come with build-time tests which
    verify some of the internal library calls that they work as expected. Those
@@ -165,16 +156,16 @@ your development containers in your current working directory.
 Build ISO
 *********
 
-Now as you are aware of the prerequisites we can continue and build our own
-ISO from source. For this we have to fetch the latest source code from GitHub.
+Now that you understand the prerequisites, you can build a VyOS ISO from source.
+First, fetch the latest source code from GitHub:
 
 .. code-block:: none
 
   $ git clone -b current --single-branch https://github.com/vyos/vyos-build
 
 
-Now a fresh build of the VyOS ISO can begin. Change directory to the
-``vyos-build`` directory and run:
+Now you can begin a fresh VyOS ISO build. Change to the ``vyos-build``
+directory and run:
 
 .. code-block:: none
 
@@ -188,8 +179,8 @@ Start the build:
   vyos_bld@8153428c7e1f:/vyos$ sudo make clean
   vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --architecture amd64 --build-by "j.randomhacker@vyos.io" generic
 
-When the build is successful, the resulting iso can be found inside the
-``build`` directory as ``live-image-[architecture].hybrid.iso``.
+When the build is successful, find the resulting ISO in the ``build`` directory
+as ``live-image-[architecture].hybrid.iso``.
 
 .. _build source:
 
@@ -199,8 +190,8 @@ When the build is successful, the resulting iso can be found inside the
 Customize
 =========
 
-This ISO can be customized with the following list of configure options.
-The full and current list can be generated with ``./build-vyos-image --help``:
+You can customize the ISO with the following configure options. Generate the
+full and current list with ``./build-vyos-image --help``:
 
 .. code-block:: none
 
@@ -411,11 +402,11 @@ file (example uses kernel 4.19.146):
 
   HEAD is now at 015e94d0e37b Linux 4.19.146
 
-Now we can use the helper script ``build-kernel.sh`` which does all the
-necessary voodoo by applying required patches from the
-`vyos-build/packages/linux-kernel/patches` folder, copying our kernel
-configuration ``x86_64_vyos_defconfig`` to the right location, and finally
-building the Debian packages.
+Now you can use the helper script ``build-kernel.sh``, which completes all
+the necessary steps: applying required patches from the
+``vyos-build/packages/linux-kernel/patches`` folder, copying the kernel
+configuration ``x86_64_vyos_defconfig`` to the correct location, and building
+the Debian packages.
 
 .. note:: Building the kernel will take some time depending on the speed and
    quantity of your CPU/cores and disk speed. Expect 20 minutes
@@ -496,16 +487,16 @@ building the Debian packages.
   dpkg-buildpackage: info: binary-only upload (no source included)
 
 
-In the end you will be presented with the kernel binary packages which you can
-then use in your custom ISO build process, by placing all the `*.deb` files in
-the vyos-build/packages folder where they will be used automatically when
-building VyOS as documented above.
+When complete, you will have kernel binary packages to use in your custom ISO
+build. Place all ``*.deb`` files in the ``vyos-build/packages`` folder, where
+the build process will use them automatically.
 
 Firmware
 ^^^^^^^^
 
 If you upgrade your kernel or include new drivers you may need new firmware.
-Build a new ``vyos-linux-firmware`` package with the included helper scripts.
+This builds a new ``vyos-linux-firmware`` package using the included helper
+scripts.
 
 .. code-block:: none
 
@@ -514,8 +505,8 @@ Build a new ``vyos-linux-firmware`` package with the included helper scripts.
   $ ./build-linux-firmware.sh
   $ cp vyos-linux-firmware_*.deb ../
 
-This tries to automatically detect which blobs are needed based on which drivers
-were built. If it fails to find the correct files you can add them manually to
+The script automatically detects which firmware blobs are needed based on the
+built drivers. If detection fails, you can manually add files to
 ``vyos-build/packages/linux-kernel/build-linux-firmware.sh``:
 
 .. code-block:: bash
@@ -526,24 +517,24 @@ were built. If it fails to find the correct files you can add them manually to
 Building Out-Of-Tree Modules
 ----------------------------
 
-Building the kernel is one part, but now you also need to build the required
-out-of-tree modules so everything is lined up and the ABIs match. To do so,
-you can again take a look at ``vyos-build/packages/linux-kernel/Jenkinsfile``
-to see all of the required modules and their selected versions. We will show
-you how to build all the current required modules.
+Building the kernel is one step. You must also build required out-of-tree
+modules so the ABIs match. 
+Refer to ``vyos-build/packages/linux-kernel/Jenkinsfile``
+for all required modules and their versions. We show you how to build the
+currently required modules.
 
 Accel-PPP
 ^^^^^^^^^
 
-First, clone the source code and check out the appropriate version by running:
+First, clone the source code and check out the appropriate version:
 
 .. code-block:: none
 
   $ cd vyos-build/packages/linux-kernel
   $ git clone https://github.com/accel-ppp/accel-ppp.git
 
-We again make use of a helper script and some patches to make the build work.
-Just run the following command:
+Use the helper script and patches to build the package. Run the following
+command:
 
 .. code-block:: none
 
@@ -576,10 +567,9 @@ to the ``vyos-build/packages`` folder for inclusion during the ISO build.
 Intel NIC
 ^^^^^^^^^
 
-The Intel NIC drivers do not come from a Git repository, instead we just fetch
-the tarballs from our mirror and compile them.
-
-Simply use our wrapper script to build all of the driver modules.
+The Intel NIC drivers do not come from a Git repository. VyOS fetches the
+tarballs from a mirror and compiles them. Use the following wrapper script
+to build all driver modules:
 
 .. code-block:: none
 
@@ -598,17 +588,17 @@ Simply use our wrapper script to build all of the driver modules.
   Created package {:path=>"vyos-intel-iavf_4.0.1-0_amd64.deb"}
   I: Cleanup iavf source
 
-After compiling the packages you will find yourself the newly generated `*.deb`
-binaries in ``vyos-build/packages/linux-kernel`` from which you can copy them
-to the ``vyos-build/packages`` folder for inclusion during the ISO build.
+After compilation, find the generated ``*.deb`` binaries in
+``vyos-build/packages/linux-kernel``. Copy them to the ``vyos-build/packages``
+folder for inclusion in the ISO build.
 
 Intel QAT
 ^^^^^^^^^
-The Intel QAT (Quick Assist Technology) drivers do not come from a Git
-repository, instead we just fetch the tarballs from 01.org, Intel's
-open-source website.
 
-Simply use our wrapper script to build all of the driver modules.
+The Intel QAT (Quick Assist Technology) drivers do not come from a Git
+repository. VyOS fetches the tarballs from ``01.org``, Intel's open-source
+website.
+Use the following wrapper script to build all driver modules:
 
 .. code-block:: none
 
@@ -640,24 +630,23 @@ to the ``vyos-build/packages`` folder for inclusion during the ISO build.
 Packages
 ========
 
-If you are brave enough to build yourself an ISO image containing any modified
-package from our GitHub organisation - this is the place to be.
+If you are brave enough to build your own ISO image with any modified package
+from VyOS's GitHub organisation, this is the place for you.
 
-Any "modified" package may refer to an altered version of e.g. vyos-1x package
-that you would like to test before filing a pull request on GitHub.
+Any modified package may be an altered version (e.g., ``vyos-1x``) that you
+want to test before filing a pull request on GitHub.
 
-Building an ISO with any customized package is in no way different than
-building a regular (customized or not) ISO image. Simply place your modified
-`*.deb` package inside the `packages` folder within `vyos-build`. The build
-process will then pickup your custom package and integrate it into your ISO.
+Building an ISO with a customized package is the same as building a regular
+ISO image. Place your modified ``*.deb`` package inside the ``packages`` folder
+within ``vyos-build``. The build process will automatically use your custom
+package during the ISO build.
 
 Troubleshooting
 ===============
 
-Debian APT is not very verbose when it comes to errors. If your ISO build breaks
-for whatever reason and you suspect it's a problem with APT dependencies or
-installation you can add this small patch which increases the APT verbosity
-during ISO build.
+Debian APT does not provide verbose error messages. If your ISO build fails and
+you suspect an APT dependencies or installation issue, you can apply this patch
+to increase APT verbosity during the ISO build.
 
 .. stop_vyoslinter
 
@@ -686,17 +675,17 @@ during ISO build.
 Packages
 ********
 
-VyOS itself comes with a bunch of packages that are specific to our system and
-thus cannot be found in any Debian mirror. Those packages can be found at the
-`VyOS GitHub project`_ in their source format can easily be compiled into
-a custom Debian (`*.deb`) package.
+VyOS comes with specific packages that cannot be found in any
+Debian mirror. These packages are located in the `VyOS GitHub project`_ in
+source format and can easily be compiled into custom
+Debian (``*.deb``) packages.
 
-The easiest way to compile your package is with the above mentioned
-:ref:`build_docker` container, it includes all required dependencies for
-all VyOS related packages.
+The easiest way to compile your package is with the :ref:`build_docker`
+container mentioned earlier, as it includes all required dependencies for all
+VyOS related packages.
 
-Assume we want to build the vyos-1x package on our own and modify it to our
-needs. We first need to clone the repository from GitHub.
+Assuming you want to build the ``vyos-1x`` package and modify it for your needs,
+first clone the repository from GitHub:
 
 .. code-block:: none
 
@@ -705,7 +694,7 @@ needs. We first need to clone the repository from GitHub.
 Build
 =====
 
-Launch Docker container and build package
+Launch the Docker container and build the package:
 
 .. code-block:: none
 
@@ -718,8 +707,8 @@ Launch Docker container and build package
   # Build DEB
   $ dpkg-buildpackage -uc -us -tc -b
 
-After a minute or two you will find the generated DEB packages next to the
-vyos-1x source directory:
+After a minute or two, the generated DEB packages are located next to the
+``vyos-1x`` source directory:
 
 .. code-block:: none
 
@@ -730,11 +719,10 @@ vyos-1x source directory:
 Install
 =======
 
-To take your newly created package on a test drive you can simply SCP it to a
-running VyOS instance and install the new `*.deb` package over the current
-running one.
+To test your newly created package, you can SCP it to a running VyOS instance
+and install the new ``*.deb`` package to replace the current one.
 
-Just install using the following commands:
+Install the package using the following commands:
 
 .. code-block:: none
 
@@ -745,14 +733,14 @@ Just install using the following commands:
   Setting up vyos-1x (1.3dev0-1847-gb6dcb0a8) ...
   Processing triggers for rsyslog (8.1901.0-1) ...
 
-You can also place the generated `*.deb` into your ISO build environment to
-include it in a custom iso, see :ref:`build_custom_packages` for more
+You can also place the generated ``*.deb`` in your ISO build environment to
+include it in a custom ISO. See :ref:`build_custom_packages` for more
 information.
 
-.. warning:: Any packages in the packages directory will be added to the iso
-   during build, replacing the upstream ones. Make sure you delete them (both
-   the source directories and built deb packages) if you want to build an iso
-   from purely upstream packages.
+.. warning:: Any packages in the ``packages`` directory will be added to the
+   ISO during the build, replacing upstream packages. Delete both the source
+   directories and built DEB packages if you want to build an ISO from purely
+   upstream packages.
 
 
 .. stop_vyoslinter
