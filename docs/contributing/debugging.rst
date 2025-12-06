@@ -1,116 +1,113 @@
+:lastproofread: 2025-12-05
+
 .. _debugging:
 
 #########
 Debugging
 #########
 
-There are two flags available to aid in debugging configuration scripts.
-Since configuration loading issues will manifest during boot, the flags are
-passed as kernel boot parameters.
+Two flags are available to help debug configuration scripts. Configuration
+loading issues manifest during boot, so these flags are passed as kernel boot
+parameters.
 
 ISO image build
 ===============
 
-When having trouble compiling your own ISO image or debugging Jenkins issues
-you can follow the steps at :ref:`iso_build_issues`.
+If you have trouble compiling your own ISO image or debugging Jenkins issues,
+follow the steps at :ref:`iso_build_issues`.
 
 System Startup
 ==============
 
-The system startup can be debugged (like loading in the configuration
-file from ``/config/config.boot``. This can be achieve by extending the
-Kernel command-line in the bootloader.
+Debug system startup by examining the configuration file loading from
+``/config/config.boot``. Extend the kernel command-line in the bootloader to
+enable this.
 
 Kernel
 ------
 
-* ``vyos-debug`` - Adding the parameter to the linux boot line will produce
-  timing results for the execution of scripts during commit. If one is seeing
-  an unexpected delay during manual or boot commit, this may be useful in
-  identifying bottlenecks. The internal flag is ``VYOS_DEBUG``, and is found
-  in vyatta-cfg_. Output is directed to ``/var/log/vyatta/cfg-stdout.log``.
+* ``vyos-debug`` - Add this parameter to the Linux boot line to produce
+  timing results for script execution during commit. If you see an unexpected
+  delay during manual or boot commit, this parameter helps identify bottlenecks.
+  The internal flag is ``VYOS_DEBUG``, found in vyatta-cfg_. Output is directed
+  to ``/var/log/vyatta/cfg-stdout.log``.
 
-* ``vyos-config-debug`` - During development, coding errors can lead to a
-  commit failure on boot, possibly resulting in a failed initialization of the
-  CLI. In this circumstance, the kernel boot parameter ``vyos-config-debug``
-  will ensure access to the system as user ``vyos``, and will log a Python
-  stack trace to the file ``/tmp/boot-config-trace``.
-  File ``boot-config-trace`` will generate only if config loaded with a failure
-  status.
+* ``vyos-config-debug`` - During development, coding errors can cause commit
+  failures on boot, potentially preventing CLI initialization. This kernel boot
+  parameter ensures access to the system as user ``vyos`` and logs a Python
+  stack trace to ``/tmp/boot-config-trace``. The file is created only if the
+  configuration load fails.
 
 Live System
 ===========
 
-A number of flags can be set up to change the behaviour of VyOS at runtime.
-These flags can be toggled using either environment variables or creating
-files.
+Several flags can be set to change VyOS behavior at runtime. Toggle these flags
+using environment variables or by creating files.
 
-For each feature, a file called ``vyos.feature.debug`` can be created to
-toggle the feature on. If a parameter is required it can be placed inside
-the file as its first line.
+For each feature, create a file called ``vyos.feature.debug`` to enable it.
+If a parameter is required, place it as the first line inside the file.
 
-The file can be placed in ``/tmp`` for one time debugging (as the file
-will be removed on reboot) or placed in '/config' to stay permanently.
+Place the file in ``/tmp`` for one-time debugging (the file is removed on
+reboot) or in ``/config`` to persist permanently.
 
 For example, ``/tmp/vyos.ifconfig.debug`` can be created to enable
 interface debugging.
 
-It is also possible to set up the debugging using environment variables.
-In that case, the name will be (in uppercase) VYOS_FEATURE_DEBUG.
+You can also enable debugging using environment variables.
+The environment variable name follows the convention ``VYOS_FEATURE_DEBUG``.
 
-For example running, ``export VYOS_IFCONFIG_DEBUG=""`` on your vbash,
-will have the same effect as ``touch /tmp/vyos.ifconfig.debug``.
+For example, ``export VYOS_IFCONFIG_DEBUG=""`` in your vbash has the same effect
+as ``touch /tmp/vyos.ifconfig.debug``.
 
-* ``ifconfig`` - Once set, all commands used, and their responses received
-  from the OS, will be presented on the screen for inspection.
+* ``ifconfig`` - Display all commands and their responses from the OS on
+  screen for inspection.
 
-* ``command`` - Once set, all commands used, and their responses received
-  from the OS, will be presented on the screen for inspection.
+* ``command`` - Display all commands and their responses from the OS on screen
+  for inspection.
 
-* ``developer`` - Should a command fail, instead of printing a message to the
-  user explaining how to report issues, the python interpreter will start a
-  PBD post-mortem session to allow the developer to debug the issue. As the
-  debugger will wait from input from the developer, it has the capacity to
-  prevent a router to boot and therefore should only be permanently set up
-  on production if you are ready to see the OS fail to boot.
+* ``developer`` - When a command fails, start a PDB post-mortem session instead
+  of showing a standard error message. This allows developers to debug issues
+  interactively. Because the debugger waits for input, it can prevent the router
+  from booting, so only enable this permanently on production systems if you are
+  ready for potential boot failures.
 
-* ``log`` - In some rare cases, it may be useful to see what the OS is doing,
-  including during boot. This option sends all commands used by VyOS to a
-  file. The default file is ``/tmp/full-log`` but it can be changed.
+* ``log`` - Send all commands used by VyOS to a log file for inspection. This
+  is useful in rare cases when you need to see what the OS is doing, including
+  during boot. The default file is ``/tmp/full-log``, but you can change it.
 
-.. note:: In order to retrieve the debug output on the command-line you need to
-  disable ``vyos-configd`` in addition. This can be run either one-time by
-  calling ``sudo systemctl stop vyos-configd`` or make this reboot-safe by
-  calling ``sudo systemctl disable vyos-configd``.
+.. note:: To retrieve debug output on the command line, disable ``vyos-configd``
+  in addition. You can do this one-time with ``sudo systemctl stop vyos-configd``
+  or permanently with ``sudo systemctl disable vyos-configd``.
 
 FRR
 ---
 
-Recent versions use the ``vyos.frr`` framework. The Python class is located
-inside our ``vyos-1x:python/vyos/frr.py``. It comes with an embedded debugging/
-(print style) debugger as vyos.ifconfig does.
+Recent versions use the ``vyos.frr`` framework. The Python class is located in
+``vyos-1x:python/vyos/frr.py``. It includes an embedded debugger similar to the
+one in ``vyos.ifconfig``.
 
-To enable debugging just run: ``$ touch /tmp/vyos.frr.debug``
+Enable debugging by running: ``touch /tmp/vyos.frr.debug``
 
-Debugging Python Code with PDB
+Debug Python code with PDB
 ------------------------------
 
-Sometimes it might be useful to debug Python code interactively on the live
-system rather than a IDE. This can be achieved using pdb.
+Sometimes it is useful to debug Python code interactively on the live system
+rather than in an IDE. You can do this using pdb.
 
-Let us assume you want to debug a Python script that is called by an op-mode
-command. After you found the script by looking up the op-mode-defitions you
-can edit the script in the live system using e.g. vi:
+Assuming you want to debug a Python script called by an op-mode command, find
+the script by looking up the op-mode definitions, then edit it on the live
+system using vi:
 ``vi /usr/libexec/vyos/op_mode/show_xyz.py``
 
 Insert the following statement right before the section where you want to
-investigate a problem (e.g. a statement you see in a backtrace):
+investigate a problem (for example, a statement you see in a backtrace):
 ``import pdb; pdb.set_trace()``
-Optionally you can surrounded this statement by an ``if`` which only triggers
-under the condition you are interested in.
 
-Once you run ``show xyz`` and your condition is triggered you should be dropped
-into the python debugger:
+Optionally, surround this statement with an ``if`` condition that triggers only
+for the conditions you are interested in.
+
+When you run ``show xyz`` and your condition triggers, you enter the Python
+debugger:
 
 
 .. code-block:: none
@@ -122,7 +119,7 @@ into the python debugger:
 You can type ``help`` to get an overview of the available commands, and
 ``help command`` to get more information on each command.
 
-Useful commands are:
+Common useful commands include:
 
 * examine variables using ``pp(var)``
 * continue execution using ``cont``
@@ -131,9 +128,9 @@ Useful commands are:
 Config Migration Scripts
 ------------------------
 
-Starting with VyOS 1.5 a new mechanism is used for config migration whichwill improve
-migration performance. New migrators only exist in the new format with a migration()
-function.
+Starting with VyOS 1.5, a new mechanism is used for config migration that
+improves migration performance. New migrators use only the new format with a
+``migration()`` function.
 
 .. code-block:: python
 
@@ -145,9 +142,8 @@ function.
           return
       # do your stuff here
 
-New style migrations scripts can no longer be executed on their own. The new
-handler of the entire migration subsystem on the other hand comes with a handy
-test kit:
+New-style migration scripts can no longer run on their own. However, the new
+migration subsystem handler includes a test kit:
 
 .. code-block:: none
 
@@ -166,57 +162,56 @@ test kit:
     --force               force run of all migration scripts
 
 
-So in order to test your migrator you can run this as simple as:
+To test your migration, run:
 
 .. code-block:: none
 
   vyos@vyos:~$ /usr/libexec/vyos/run-config-migration.py --test-script /opt/vyatta/etc/config-migrate/migrate/quagga/11-to-12 --output-file /tmp/foo /tmp/static-route-basic
   vyos@vyos:~$ cat /tmp/foo
 
-Where `/tmp/foo` will contain the migrated configuration.
+The file ``/tmp/foo`` contains the migrated configuration.
 
 Configuration Error on System Boot
 ----------------------------------
 
-Being brave and running the latest rolling releases will sometimes trigger
-bugs due to corner cases we missed in our design. Those bugs should be filed
-via Phabricator_ but you can help us to narrow down the issue. Login to your
-VyOS system and change into configuration mode by typing ``configure``. Now
-re-load your boot configuration by simply typing ``load`` followed by return.
+Running the latest rolling releases sometimes exposes bugs due to edge cases
+missed in design. File these bugs via Phabricator_, but you can help narrow
+down the issue by following these steps:
 
-You should now see a Python backtrace which will help us to handle the issue,
-please attach it to the Phabricator_ task.
+1. Log in to your VyOS system.
+2. Enter configuration mode: ``configure``
+3. Reload your boot configuration: ``load``
+
+You should see a Python backtrace that helps identify the issue. Attach it to
+the Phabricator_ task.
 
 Boot Timing
 -----------
 
-During the migration and extensive rewrite of functionality from Perl into
-Python a significant increase in the overall system boottime was noticed. The
-system boot time can be analysed and a graph can be generated in the end which
-shows in detail who called whom during the system startup phase.
+During the migration and rewrite of functionality from Perl to Python, system
+boot time increased significantly. You can analyze and graph boot time to see
+detailed call sequences during startup.
 
-This is done by utilizing the ``systemd-bootchart`` package which is now
-installed by default on the VyOS 1.3 (equuleus) branch. The configuration is
-also versioned so we get comparable results. ``systemd-bootchart`` is configured
-using this file: bootchart.conf_
+This uses the ``systemd-bootchart`` package, which is installed by default on
+VyOS 1.3 (equuleus) and later. Configuration is versioned for comparable results.
+Refer to bootchart.conf_ for the configuration file.
 
-To enable boot time graphing change the Kernel commandline and add the following
-string: ``init=/usr/lib/systemd/systemd-bootchart``
+To enable boot time graphing, add the following to the kernel command line:
+``init=/usr/lib/systemd/systemd-bootchart``
 
-This can also be done permanently by changing ``/boot/grub/grub.cfg``.
+You can also make this permanent by editing ``/boot/grub/grub.cfg``.
 
 Priorities
 ==========
 
-VyOS CLI is all about priorities. Every CLI node has a corresponding
-``node.def`` file and possibly an attached script that is executed when the
-node is present. Nodes can have a priority, and on system bootup - or any
-other ``commit`` to the config all scripts are executed from lowest to highest
-priority. This is good as this gives a deterministic behavior.
+VyOS CLI depends heavily on priorities. Every CLI node has a corresponding
+``node.def`` file and possibly an attached script. Nodes can have priorities,
+and on system bootup or any ``commit`` to the configuration, scripts execute
+from lowest to highest priority. This provides deterministic behavior.
 
-To debug issues in priorities or to see what's going on in the background
-you can use the ``/opt/vyatta/sbin/priority.pl`` script which lists to you
-the execution order of the scripts.
+To debug priority issues or see script execution order, use the
+``/opt/vyatta/sbin/priority.pl`` script, which lists the execution order of
+scripts.
 
 .. stop_vyoslinter
 
