@@ -41,5 +41,5 @@ The process is straightforward and fully automated:
    If your pull request includes commits from multiple contributors, each one
    must sign the CLA before the pull request can be accepted.
 
-Once you sign the CLA, it remains valid for all your past and future contributions
-to VyOS under the same GitHub identity.
+Once you sign the CLA, it remains valid for all your past and future
+contributions to VyOS under the same GitHub identity.
