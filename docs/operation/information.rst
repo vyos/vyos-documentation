@@ -34,7 +34,6 @@ interfaces by the USB root bridge and the bus they connect to.
 This approach is similar to the network interface naming conventions used in
 recent Linux distributions.
 
-For details, see  https://vyos.dev/T2490.
 
 .. opcmd:: show hardware usb
 
