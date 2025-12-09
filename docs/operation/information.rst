@@ -108,8 +108,7 @@ Version
 .. opcmd:: show version
 
   Return the currently running VyOS version and build information. This includes
-  the name of the release train, which is ``crux`` on VyOS 1.2, ``equuleus``
-  on VyOS 1.3, ``sagitta`` on VyOS 1.4, and ``circinus`` on VyOS 1.5.
+  the name of the release train, e.g., ``sagitta`` on VyOS 1.4, and ``circinus`` on VyOS 1.5.
 
   .. code-block:: none
   
