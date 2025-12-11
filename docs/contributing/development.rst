@@ -4,224 +4,196 @@
 Development
 ###########
 
-All VyOS source code is hosted on GitHub under the VyOS organization which can
-be found here: https://github.com/vyos
+Learn how to contribute to VyOS.
 
-Our code is split into several modules. VyOS is composed of multiple individual
-packages, some of them are forks of upstream packages and are periodically
-synced with upstream, so keeping the whole source under a single repository
-would be very inconvenient and slow. There is now an ongoing effort to
-consolidate all VyOS-specific framework/config packages into vyos-1x package,
-but the basic structure is going to stay the same, just with fewer and fewer
-packages while the base code is rewritten from Perl/BASH into Python using and
-XML based interface definition for the CLI.
+.. _architecture_overview:
 
-The repository that contains all the ISO build scripts is:
-https://github.com/vyos/vyos-build
+Architecture Overview
+=====================
+All VyOS source code is hosted on GitHub in the VyOS organization:
+https://github.com/vyos
 
-The README.md file will guide you to use the this top level repository.
+VyOS is composed of multiple modules spread across different
+repositories. Some modules contain forks of upstream
+packages and are periodically synced. 
+VyOS consolidates most packages into the
+`vyos-1x <https://github.com/vyos/vyos-1x>`__
+repository while maintaining a consistent structure. 
+The base code is being rewritten
+from Perl and Bash to Python using an XML-based CLI interface definition.
 
-Submit a Patch
-==============
+VyOS ISO build scripts are hosted in the
+`vyos-build <https://github.com/vyos/vyos-build>`__ repository. See the
+``vyos-build`` repository
+`README.md file <https://github.com/vyos/vyos-build/blob/current/README.md>`__
+for more information on building VyOS ISO images.
+
+Contributing Code
+=================
 
 .. warning::
 
-  Please read and sign the :doc:`Contributor License Agreement<cla>` before
-  submitting any patches.
+  You must sign the :doc:`Contributor License Agreement<cla>`
+  for your contributions to be accepted.
 
-Patches are always more than welcome. To have a clean and easy to maintain
-repository we have some guidelines when working with Git. A clean repository
-eases the automatic generation of a changelog file.
+VyOS is open-source and welcomes patches.
+All submissions must adhere to these guidelines:
 
-A good approach for writing commit messages is actually to have a look at the
-file(s) history by invoking ``git log path/to/file.txt``.
+* Each commit addresses a single issue or feature.
+* Each commit message references a Phabricator_ task ID
+  (for example, ``T1234``).
+* Each commit includes a username and email to identify the author.
+* Only submit bugfixes in packages other than https://github.com/vyos/vyos-1x.
+* Commits follow the `coding guidelines`_ outlined below.
 
-.. _prepare_commit:
 
-Prepare patch/commit
+Determining Package Ownership
+-----------------------------
+
+To determine which VyOS package contains a file you want to modify, use Debian's
+``dpkg -S`` command on your running VyOS installation.
+
+Submitting Your Code
 --------------------
 
-In a big system, such as VyOS, that is comprised of multiple components, it's
-impossible to keep track of all the changes and bugs/feature requests in one's
-head. We use a bugtracker known as Phabricator_ for it ("issue tracker" would
-be a better term, but this one stuck).
+Fork the repository and submit a GitHub pull request. This is the preferred way
+to contribute changes to VyOS.
 
-The information is used in three ways:
+To fork a VyOS repository:
 
-* Keep track of the progress (what we've already done in this branch and what
-  we still need to do).
+1. Append ``/fork`` to the repository URL on GitHub. For example, to fork
+   ``vyos-1x``, use: https://github.com/vyos/vyos-1x/fork
 
-* Prepare release notes for upcoming releases
+2. Clone your fork or add it as a remote to your local repository:
 
-* Help future maintainers of VyOS (it could be you!) to find out why certain
-  things have been changed in the codebase or why certain features have been
-  added
+   - Clone: ``git clone https://github.com/<user>/vyos-1x.git``
+   - Add remote: ``git remote add myfork https://github.com/<user>/vyos-1x.git``
 
-To make this approach work, every change must be associated with a task number
-(prefixed with **T**) and a component. If there is no bug report/feature request
-for the changes you are going to make, you have to create a Phabricator_ task
-first. Once there is an entry in Phabricator_, you should reference its id in
-your commit message, as shown below:
+3. Configure your Git identity:
+
+   .. code-block:: none
+
+     git config --global user.name "J. Random Hacker"
+     git config --global user.email "jrhacker@example.net"
+
+4. Make your changes and add files to the Git index:
+
+   - Single file: ``git add myfile``
+   - Directory: ``git add somedir/*``
+
+5. Commit your changes with a meaningful headline and Phabricator_ reference:
+
+   ``git commit``
+
+6. Push to your fork and create a GitHub pull request:
+
+   ``git push``
+
+Alternatively, you can export commits as patches and send them to
+maintainers@vyos.net or attach them directly to the Phabricator_ task:
+
+* Export last commit: ``git format-patch``
+* Export last two commits: ``git format-patch -2``
+
+Commit Messages
+===============
+
+For guidance on writing commit messages, review the file history
+with ``git log path/to/file.txt``.
+
+Every change must be associated with a task number (prefixed with **T**) and
+a component. If no bug report or feature request exists for your changes,
+create a Phabricator_ task first. Reference the task ID in your commit message:
 
 * ``ddclient: T1030: auto create runtime directories``
 * ``Jenkins: add current Git commit ID to build description``
 
-If there is no Phabricator_ reference in the commits of your pull request, we
-have to ask you to amend the commit message. Otherwise we will have to reject
-it.
+If your pull request lacks a Phabricator_ reference, maintainers will request
+that you amend the commit message.
 
-Writing good commit messages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Writing Good Commit Messages
+-----------------------------
 
-The format should be and is inspired by: https://git-scm.com/book/ch5-2.html
-It is also worth reading https://chris.beams.io/posts/git-commit/
+Follow the format described in `Git documentation <https://git-scm.com/book/ch5-2.html>`__
+and `Chris Beams' guide <https://chris.beams.io/posts/git-commit/>`__.
 
-* A single, short, summary of the commit (recommended 50 characters or less,
-  not exceeding 80 characters) containing a prefix of the changed component
-  and the corresponding Phabricator_ reference e.g. ``snmp: T1111:`` or
-  ``ethernet: T2222:`` - multiple components could be concatenated as in
-  ``snmp: ethernet: T3333``
+Commit message format:
 
-* In some contexts, the first line is treated as the subject of an email and
-  the rest of the text as the body. The blank line separating the summary from
-  the body is critical (unless you omit the body entirely); tools like rebase
-  can get confused if you run the two together.
+1. **Summary line** (50 characters recommended, 80 maximum): Include the
+   component
+   prefix and Phabricator_ reference (for example, ``snmp: T1111:`` or
+   ``ethernet: T2222:``). Concatenate multiple components with colons
+   (for example, ``snmp: ethernet: T3333``).
 
-* Followed by a message which describes all the details like:
+2. **Blank line**: Separate the summary from the body. 
+   This blank line is critical.
 
-  * What/why/how something has been changed, makes everyone's life easier when
-    working with `git bisect`
+4. **Message body** with details:
 
-  * All text of the commit message should be wrapped at 72 characters if
-    possible which makes reading commit logs easier with ``git log`` on a
-    standard terminal (which happens to be 80x25)
+   * Describe what changed, why, and how. This helps with ``git bisect``.
+   * Wrap text at 72 characters for readability with ``git log`` on an 80x25 terminal.
+   * Reference previous commits when applicable: ``After commit abcd12ef ("snmp: this is a headline") a Python import statement is missing, throwing the following exception: ABCDEF``
 
-  * If applicable a reference to a previous commit should be made linking
-    those commits nicely when browsing the history: ``After commit abcd12ef
-    ("snmp: this is a headline") a Python import statement is missing,
-    throwing the following exception: ABCDEF``
+5. **Cherry-pick option**: Always use the ``-x`` option when back-porting or
+   forward-porting commits:
 
-* Always use the ``-x`` option to the ``git cherry-pick`` command when back or
-  forward porting an individual commit. This automatically appends the line:
-  ``(cherry picked from commit <ID>)`` to the original authors commit message
-  making it easier when bisecting problems.
+   ``git cherry-pick -x <commit>``
 
-* Every change set must be consistent (self containing)! Do not fix multiple
-  bugs in a single commit. If you already worked on multiple fixes in the same
-  file use `git add --patch` to only add the parts related to the one issue
-  into your upcoming commit.
+   This appends ``(cherry picked from commit <ID>)`` to the commit message,
+   making bisecting easier.
 
-Limits:
+6. **Single responsibility**: Each commit must be self-contained. Do not fix
+   multiple bugs in a single commit. Use ``git add --patch`` to stage only
+   the parts related to one issue.
 
-* We only accept bugfixes in packages other than https://github.com/vyos/vyos-1x
-  as no new functionality should use the old style templates (``node.def`` and
-  Perl/BASH code. Use the new style XML/Python interface instead.
+Constraints:
 
-Please submit your patches using the well-known GitHub pull-request against our
-repositories found in the VyOS GitHub organisation at https://github.com/vyos
-
-
-Determinine source package
---------------------------
-
-Suppose you want to make a change in a file but yet you do not know
-which of the VyOS packages ship this file. You can determine the VyOS
-package name in question by using Debian's ``dpkg -S`` command of your running
-VyOS installation.
-
-
-Fork Repository and submit Patch
---------------------------------
-
-Forking the repository and submitting a GitHub pull-request is the preferred
-way of submitting your changes to VyOS. You can fork any VyOS repository to your
-very own GitHub account by just appending ``/fork`` to any repository's URL on
-GitHub. To e.g. fork the ``vyos-1x`` repository, open the following URL in your
-favourite browser: https://github.com/vyos/vyos-1x/fork
-
-You then can proceed with cloning your fork or add a new remote to your local
-repository:
-
-* Clone: ``git clone https://github.com/<user>/vyos-1x.git``
-
-* Fork: ``git remote add myfork https://github.com/<user>/vyos-1x.git``
-
-In order to record you as the author of the fix please identify yourself to Git
-by setting up your name and email. This can be done local for this one and only
-repository ``git config`` or globally using ``git config --global``.
-
-.. code-block:: none
-
-  git config --global user.name "J. Random Hacker"
-  git config --global user.email "jrhacker@example.net"
-
-Make your changes and save them. Do the following for all changes files to
-record them in your created Git commit:
-
-* Add file to Git index using ``git add myfile``, or for a whole directory:
-  ``git add somedir/*``
-
-* Commit the changes by calling ``git commit``. Please use a meaningful commit
-  headline (read above) and don't forget to reference the Phabricator_ ID.
-
-* Submit the patch ``git push`` and create the GitHub pull-request.
-
-
-Attach patch to Phorge task
---------------------------------
-
-Follow the above steps on how to "Fork repository to submit a Patch". Instead
-of uploading "pushing" your changes to GitHub you can export the patches/
-commits and send it to maintainers@vyos.net or attach it directly to the bug
-(preferred over email)
-
-* Export last commit to patch file: ``git format-patch`` or export the last two
-  commits into its appropriate patch files: ``git format-patch -2``
-
+* Only bugfixes are accepted for packages other than https://github.com/vyos/vyos-1x.
+  New functionality must use the new XML/Python interface, not old-style templates
+  (``node.def`` files and Perl/Bash code).
 
 Coding Guidelines
 =================
 
-Like any other project we have some small guidelines about our source code, too.
-The rules we have are not there to punish you - the rules are in place to help
-us all. By having a consistent coding style it becomes very easy for new
-and also longtime contributors to navigate through the sources and all the
-implied logic of any one source file..
-
+VyOS maintains consistent coding standards to help contributors navigate the
+codebase and understand its logic.
 
 Formatting
 ----------
 
-* Python: Tabs **shall not** be used. Every indentation level should be 4 spaces
-* XML: Tabs **shall not** be used. Every indentation level should be 2 spaces
+* **Python**: Use 4 spaces per indentation level. Tabs **must not** be used.
+* **XML**: Use 2 spaces per indentation level. Tabs **must not** be used.
 
-.. note:: There are extensions to e.g. VIM (xmllint) which will help you to get
-   your indention levels correct. Add to following to your .vimrc file:
-   ``au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\
-   2>/dev/null`` now you can call the linter using ``gg=G`` in command mode.
+Use tools like VIM extensions (xmllint) to enforce correct indentation. Add this
+to your ``.vimrc`` file:
 
+.. code-block:: none
 
-Text generation
-^^^^^^^^^^^^^^^
+  au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
-Template processor **should** be used for generating config files. Built-in
-string formatting **may** be used for simple line-oriented formats where every
-line is self-contained, such as iptables rules. Template processor **must** be
-used for structured, multi-line formats such as those used by ISC DHCPd.
+Then use ``gg=G`` in command mode to run the linter.
 
-The default template processor for VyOS code is Jinja2_.
+Text Generation
+---------------
 
+Use a template processor for generating config files:
 
-Configuration Script Structure and Behaviour
---------------------------------------------
+* **Jinja2** is the default template processor for VyOS code.
+* Built-in string formatting **may** be used for simple line-oriented formats
+  (for example, iptables rules) where every line is self-contained.
+* Template processors **must** be used for structured, multi-line formats
+  (for example, ISC DHCPd configuration).
 
-Your configuration script or operation mode script which is also written in
-Python3 should have a line break on 80 characters. This seems to be a bit odd
-nowadays but as some people also work remotely or program using vi(m) this is
-a fair good standard which I hope we can rely on.
+Python Code
+-----------
 
-In addition this also helps when browsing the GitHub codebase on a mobile
-device if you happen to be a crazy scientist.
+Configuration scripts and operation mode scripts written in Python3 should
+follow these guidelines:
+
+* Wrap lines at 80 characters. This improves readability when browsing
+  GitHub on mobile devices and reads well in side-by-side diffs.
+
+Structure your scripts with these functions:
 
 .. code-block:: python
 
@@ -280,109 +252,73 @@ device if you happen to be a crazy scientist.
       print(e)
       sys.exit(1)
 
-The ``get_config()`` function must convert the VyOS config to an abstract,
-internal representation. No other function is allowed to call the ``vyos.config.
-Config`` object method directly. The rationale for it is that when config reads
-are mixed with other logic, it's very hard to change the config syntax since
-you need to weed out every occurrence of the old syntax. If syntax-specific
-code is confined to a single function, the rest of the code can be left
-untouched as long as the internal representation remains compatible.
+**``get_config()``**: This function converts VyOS config to an abstract internal
+representation. No other function may call the ``vyos.config.Config`` object
+directly. Limiting config reads to one function makes it easier to modify the
+config syntax in the future. Additionally, this design improves testability since
+you can construct an internal representation by hand rather than mocking the
+entire config subsystem.
 
-Another advantage is testability of the code. Mocking the entire config
-subsystem is hard, while constructing an internal representation by hand is
-way simpler.
+**``verify()``**: This function validates the internal representation. It must
+raise ``ConfigError`` with a descriptive message if the config is invalid. It
+**must not** make any changes to the system. This design enables future features
+like commit dry-run ("commit test" as in JunOS) where the system can abort a
+commit before making changes.
 
-The ``verify()`` function takes your internal representation of the config and
-checks if it's valid, otherwise it must raise ``ConfigError`` with an error
-message that describes the problem and possibly suggests how to fix it. It must
-not make any changes to the system. The rationale for it is again testability
-and, in the future when the config backend is ready and every script is
-rewritten in this fashion, ability to execute commit dry run ("commit test"
-like in JunOS) and abort commit before making any changes to the system if an
-error is found in any component.
+**``generate()``**: This function generates config files for system components.
 
-The ``generate()`` function generates config files for system components.
+**``apply()``**: This function applies the generated configuration to the live
+system. Prefer non-disruptive reload when possible. Disruptive operations like
+daemon restarts are acceptable only when:
 
-The ``apply()`` function applies the generated configuration to the live
-system. It should use non-disruptive reload whenever possible. It may execute
-disruptive operations such as daemon process restart if a particular component
-does not support non-disruptive reload, or when the expected service degradation
-is minimal (for example, in case of auxiliary services such as LLDPd). In case
-of high impact services such as VPN daemon and routing protocols, when non-
-disruptive reload is supported for some but not all types of configuration
-changes, scripts authors should make effort to determine if a configuration
-change can be done in a non-disruptive way and only resort to disruptive restart
-if it cannot be avoided.
+* The component does not support non-disruptive reload, or
+* The expected service degradation is minimal (for example, auxiliary services like LLDPd)
 
-Unless absolutely necessary, configuration scripts should not modify the active
-configuration of system components directly. Whenever at all possible, scripts
-should generate a configuration file or files that can be applied with a single
-command such as reloading a service through systemd init. Inserting statements
-one by one is particularly discouraged, for example, when configuring netfilter
-rules, saving them to a file and loading it with iptables-restore should always
-be preferred to executing iptables directly.
+For high-impact services (VPN daemons, routing protocols), make effort to
+determine if changes can be applied non-disruptively before resorting to restarts.
 
-The ``apply()`` and ``generate()`` functions may ``raise ConfigError`` if, for
-example, the daemon failed to start with the updated config. It shouldn't be a
-substitute for proper config checking in the ``verify()`` function. All
-reasonable effort should be made to verify that generated configuration is
-valid and will be accepted by the daemon, including, when necessary, cross-
-checks with other VyOS configuration subtrees.
+Never modify active configuration directly unless absolutely necessary. Instead,
+generate configuration files and apply them with a single command like service
+reload through systemd. For example, save iptables rules to a file and load them
+with ``iptables-restore`` rather than executing iptables commands one by one.
 
-Exceptions, including ``VyOSError`` (which is raised by ``vyos.config.Config``
-on improper config operations, such as trying to use ``list_nodes()`` on a
-non-tag node) should not be silenced or caught and re-raised as config error.
-Sure this will not look pretty on user's screen, but it will make way better
-bug reports, and help users (and most VyOS users are IT professionals) do their
-own debugging as well.
+The ``apply()`` and ``generate()`` functions may raise ``ConfigError`` if the
+daemon fails to start with the updated config. However, this is not a substitute
+for proper config validation in the ``verify()`` function. Make reasonable effort
+to verify that generated configuration is valid and will be accepted by the daemon,
+including cross-checks with other VyOS configuration subtrees when necessary.
 
-For easy orientation we suggest you take a look on the ``ntp.py`` or
-``interfaces-bonding.py`` (for tag nodes) implementation. Both files can be
-found in the vyos-1x_ repository.
+Exceptions like ``VyOSError`` (raised by ``vyos.config.Config`` on improper
+operations) should not be silenced or caught. While this may produce less polished
+error output for users, it generates better bug reports and helps IT professionals
+debug issues.
 
-Other considerations: vyos-configd
-----------------------------------
+For reference implementations, see ``ntp.py`` or ``interfaces-bonding.py`` (for
+tag nodes) in the vyos-1x_ repository.
 
-All scripts now run under the config daemon and must conform to the
-following:
+XML Definitions
+---------------
 
-1. The signature and initial four lines of ``get_config(...)`` `must` be as
-   above.
+XML interface definitions define the CLI structure. Before VyOS 1.2 (crux), these
+files were created manually. After a redesign process_, new-style templates are
+automatically generated from XML input files.
 
-2. Each of ``get_config``, ``verify``, ``apply``, ``generate`` `must`
-   appear, with signatures as above, even if they are a no-op.
+VyOS interface definitions come with a RelaxNG schema located in the vyos-1x_
+module. This schema is a modified version from VyConf_ (VyOS 2.0). VyOS 1.2.x
+interface definitions are reusable in future VyOS versions with minimal changes.
 
-3. Instantiations of ``Config`` other than that in ``get_config`` `must not`
-   appear.
+Schemas provide two benefits:
 
-4. The legacy function ``my_set`` `must not` appear: modifications of the
-   active config `should not` appear in new code (if absolutely necessary,
-   alternative mechanisms may be used).
+* Complete grammar verification
+* Automatic validation against the schema
 
-XML (used for CLI definitions)
-==============================
+The `scripts/build-command-templates` script converts XML definitions to
+old-style templates and verifies them against the schema. A bad definition
+causes the package build to fail. While the XML format is verbose, no other
+format provides this level of verification. Specialized XML editors can help
+manage verbosity.
 
-The bash (or better vbash) completion in VyOS is defined in *templates*.
-Templates are text files (called ``node.def``) stored in a directory tree. The
-directory names define the command names, and template files define the command
-behaviour. Before VyOS 1.2 (crux) this files were created by hand. After a
-complex redesign process_ the new style template are automatically generated
-from a XML input file.
-
-XML interface definitions for VyOS come with a RelaxNG schema and are located
-in the vyos-1x_ module. This schema is a slightly modified schema from VyConf_
-alias VyOS 2.0 So VyOS 1.2.x interface definitions will be reusable in Nextgen
-VyOS Versions with very minimal changes.
-
-The great thing about schemas is not only that people can know the complete
-grammar for certain, but also that it can be automatically verified. The
-`scripts/build-command-templates` script that converts the XML definitions to
-old style templates also verifies them against the schema, so a bad definition
-will cause the package build to fail. I do agree that the format is verbose, but
-there is no other format now that would allow this. Besides, a specialized XML
-editor can alleviate the issue with verbosity.
-
-Example:
+Example XML interface definition:
 
 .. code-block:: xml
 
@@ -460,35 +396,34 @@ Example:
     </node>
   </interfaceDefinition>
 
-Command definitions are purely declarative, and cannot contain any logic. All
-logic for generating config files for target applications, restarting services
-and so on is implemented in configuration scripts instead.
+XML definitions are purely declarative and contain no logic. All logic for
+generating config files, restarting services, and related tasks is implemented
+in configuration scripts.
 
-GNU Preprocessor
-----------------
+Template Processors
+-------------------
 
-XML interface definition files use the `xml.in` file extension which was
-implemented in :vytask:`T1843`. XML interface definitions tend to have a lot of
-duplicated code in areas such as:
+XML interface definition files use the ``.xml.in`` file extension (implemented
+in :vytask:`T1843`). These files use the GCC preprocessor to reduce code duplication
+in common areas:
 
-* VIF (incl. VIF-S/VIF-C)
-* Address
+* VIF (including VIF-S and VIF-C)
+* Address configuration
 * Description
-* Enabled/Disabled
+* Enabled/Disabled state
 
-Instead of supplying all those XML nodes multiple times there are now include
-files with predefined features. Brief overview:
+Instead of repeating XML nodes, use include files with predefined features:
 
-* `IPv4, IPv6 and DHCP(v6)`_ address assignment
-* `IPv4, IPv6`_ address assignment
+* `IPv4, IPv6, and DHCP(v6)`_ address assignment
+* `IPv4 and IPv6`_ address assignment
 * `VLAN (VIF)`_ definition
 * `MAC address`_ assignment
 
-All interface definition XML input files (.in suffix) will be sent to the GCC
-preprocess and the output is stored in the `build/interface-definitions`
-folder. The previously mentioned `scripts/build-command-templates` script
-operates on the `build/interface-definitions` folder to generate all required
-CLI nodes.
+The ``.in`` files are preprocessed and stored in the `build/interface-definitions`
+folder. The `scripts/build-command-templates` script then operates on this folder
+to generate all required CLI nodes.
+
+Example preprocessor output:
 
 .. code-block:: none
 
@@ -503,63 +438,55 @@ CLI nodes.
   Generating build/interface-definitions/tftp-server.xml from interface-definitions/tftp-server.xml.in
   [...]
 
+Command Definition Guidelines
+------------------------------
 
-Guidelines
-----------
+Use of Numbers
+^^^^^^^^^^^^^^
 
-Use of numbers
-^^^^^^^^^^^^^^^
+Avoid using numbers in command names unless the number is part of a protocol
+name or similar. For example, ``protocols ospfv3`` is appropriate, but ``server-1``
+is questionable.
 
-Use of numbers in command names **should** be avoided unless a number is a
-part of a protocol name or similar. Thus, ``protocols ospfv3`` is perfectly
-fine, but something like ``server-1`` is questionable at best.
+Help Strings
+^^^^^^^^^^^^
 
-Help String
-^^^^^^^^^^^
+Follow these guidelines for consistent, readable help strings:
 
-To ensure uniform look and feel, and improve readability, we should follow a
-set of guidelines consistently.
+**Capitalization and Punctuation**
 
-Capitalization and punctuation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Capitalize the first word of every help string.
+* Do not use a period at the end of help strings.
 
-The first word of every help string **must** be capitalized. There **must not**
-be a period at the end of help strings.
-
-Rationale: this seems to be the unwritten standard in network device CLIs, and
-a good aesthetic compromise.
+This standard mirrors network device CLIs and improves aesthetics.
 
 Examples:
 
 * Good: "Frobnication algorithm"
 * Bad: "frobnication algorithm"
 * Bad: "Frobnication algorithm."
-* Horrible: "frobnication algorithm."
+* Incorrect: "frobnication algorithm."
 
-Use of abbreviations and acronyms
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Abbreviations and Acronyms**
 
-Abbreviations and acronyms **must** be capitalized.
+* Capitalize all abbreviations and acronyms.
 
 Examples:
 
 * Good: "TCP connection timeout"
 * Bad: "tcp connection timeout"
-* Horrible: "Tcp connection timeout"
+* Bad: "Tcp connection timeout"
 
-Acronyms also **must** be capitalized to visually distinguish them from normal
-words:
+* Capitalize acronyms to distinguish them from normal words.
 
 Examples:
 
-* Good: RADIUS (as in remote authentication for dial-in user services)
-* Bad: radius (unless it's about the distance between a center of a circle and
-  any of its points)
+* Good: RADIUS (remote authentication for dial-in user services)
+* Bad: radius (unless referring to circular distance)
 
-Some abbreviations are traditionally written in mixed case. Generally, if it
-contains words "over" or "version", the letter **should** be lowercase. If
-there's an accepted spelling (especially if defined by an RFC or another
-standard), it **must** be followed.
+* Follow accepted spelling conventions for mixed-case abbreviations. If it
+  contains "over" or "version", use lowercase. Follow RFC or standard spellings
+  when they exist.
 
 Examples:
 
@@ -567,48 +494,79 @@ Examples:
 * Bad: PPPOE, IPSEC
 * Bad: pppoe, ipsec
 
-Use of verbs
-~~~~~~~~~~~~
+**Verbs**
 
-Verbs **should** be avoided. If a verb can be omitted, omit it.
+* Avoid verbs. If a verb can be omitted, omit it.
 
 Examples:
 
 * Good: "TCP connection timeout"
 * Bad: "Set TCP connection timeout"
 
-If a verb is essential, keep it. For example, in the help text of ``set system
-ipv6 disable-forwarding``, "Disable IPv6 forwarding on all interfaces" is a
-perfectly justified wording.
+* When a verb is essential, use it. For example: "Disable IPv6 forwarding on all interfaces" for ``set system ipv6 disable-forwarding``.
 
-Prefer infinitives
-~~~~~~~~~~~~~~~~~~
-
-Verbs, when they are necessary, **should** be in their infinitive form.
+* Use infinitive form for necessary verbs.
 
 Examples:
 
 * Good: "Disable IPv6 forwarding"
 * Bad: "Disables IPv6 forwarding"
 
+vyos-configd Considerations
+---------------------------
+
+All scripts now run under the config daemon and must conform to these requirements:
+
+1. The signature and first four lines of ``get_config(...)`` **must** be as specified above.
+
+2. Each of ``get_config``, ``verify``, ``apply``, and ``generate`` **must** appear
+   with the correct signatures, even if they are a no-op.
+
+3. ``Config`` objects other than those in ``get_config`` **must not** appear.
+
+4. The legacy function ``my_set`` **must not** appear. Modifications to active
+   config **should not** appear in new code (alternative mechanisms may be used
+   if absolutely necessary).
+
+Behind the Scenes
+=================
+
+Template System
+---------------
+
+VyOS bash (or vbash) completion is defined in templates. Templates are text files
+(called ``node.def``) stored in a directory tree where:
+
+* Directory names define command names
+* Template files define command behavior
+
+Before VyOS 1.2 (crux), templates were created manually. After a redesign process_,
+new-style templates are automatically generated from XML input files.
+
+GNU Preprocessor
+^^^^^^^^^^^^^^^^
+
+XML interface definition files use the ``.xml.in`` extension. The GCC preprocessor
+processes these files to reduce duplication in common elements like VIF, address,
+description, and enabled/disabled states. Preprocessed files are stored in
+`build/interface-definitions`, where `scripts/build-command-templates` converts
+them to CLI nodes.
 
 C++ Backend Code
 ================
 
-The CLI parser used in VyOS is a mix of bash, bash-completion helper and the
-C++ backend library [vyatta-cfg](https://github.com/vyos/vyatta-cfg). This
-section is a reference of common CLI commands and the respective entry point
-in the C/C++ code.
+The VyOS CLI parser combines bash, bash-completion helpers, and the C++ backend
+library `vyatta-cfg <https://github.com/vyos/vyatta-cfg>`__. This section
+references common CLI commands and their C/C++ entry points:
 
-* ``set``
+**set**:
 
-  - https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L352
-  - https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L2549
+* https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L352
+* https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L2549
 
+**commit**:
 
-* ``commit``
-
-  - https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/commit/commit-algorithm.cpp#L1252
+* https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/commit/commit-algorithm.cpp#L1252
 
 .. include:: /_include/common-references.txt
 
