@@ -14,7 +14,7 @@ Bug Report/Issue
 Issues and bugs occur in every software project, and VyOS is no exception.
 
 Report all issues to the developers so they know what is not working correctly.
-Without this feedback, developers assume everything works properly.
+Without this feedback, developers may assume a broken feature works properly.
 
 I have found a bug, what should I do?
 -------------------------------------
@@ -53,8 +53,8 @@ Report a Bug
 ------------
 
 To open a bug report or feature request, create an account on VyOS Phabricator_.
-On the left side of the specific project (VyOS 1.2 or VyOS 1.3), you will find
-quick links for opening bug reports or feature requests.
+On the left side of the specific project (VyOS 1.2, VyOS 1.3, or VyOS 1.4),
+you will find links for opening bug reports and feature requests.
 
 * Provide as much information as you can.
 * Specify which VyOS version you are using: ``run show version``
@@ -76,17 +76,18 @@ there.
 
 Include at least the following information:
 
-* Provide a detailed description of the feature: what it is, how it works, and how
-  you would use it. Maintainers may not be familiar with every feature of every
-  protocol and tool. Community contributors looking for work also appreciate
-  detailed information that helps them implement and test the feature.
+* Provide a detailed description of the feature: what it is, how it works, and
+  how you would use it. Maintainers may not be familiar with every feature of
+  every protocol and tool. Community contributors looking for work also
+  appreciate detailed information that helps them implement and test the
+  feature.
 * Include proposed CLI syntax if the feature requires new commands. Provide both
   configuration and operational mode commands if both are needed.
 
 Consider including the following information:
 
-* Is the feature already supported by the underlying component (FreeRangeRouting,
-  nftables, Kea, etc.)?
+* Is the feature already supported by the underlying component
+  (FreeRangeRouting, nftables, Kea, etc.)?
 * How would you configure it manually with that component?
 * Are there limitations (hardware support, resource usage)?
 * Are there any adverse or non-obvious interactions with other features? Should
