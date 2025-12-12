@@ -2,18 +2,20 @@
   {{ var5 }} {{ var6 }} address <address | dhcp |
    dhcpv6>
 
-  Configure interface `<interface>` with one or more interface addresses.
+  **Configure the interface with one or more IP addresses.**
 
-  * **address** can be specified multiple times as IPv4 and/or IPv6
-    address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
-  * **dhcp** interface address is received by DHCP from a DHCP server
-    on this segment.
-  * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
-    server on this segment.
+  The following options are available:
 
-  .. note:: When using DHCP to retrieve IPv4 address and if local
-     customizations are needed, they should be possible using the enter and
-     exit hooks provided. The hook dirs are:
+  * **address:** Assign one or more IPv4 or IPv6 addresses to the interface. 
+    For example, use 192.0.2.1/24 for IPv4 or 2001:db8::1/64 for IPv6.
+  * **dhcp:** The interface obtains an IPv4 address from a DHCP server on the 
+    same network segment.
+  * **dhcpv6:** The interface obtains an IPv6 address from a DHCPv6 server on 
+    the same network segment.
+
+  .. note:: If the interface obtains an IPv4 address via DHCP, and specific 
+     adjustments are needed before/after the IP address is obtained, use the 
+     provided hook scripts:
 
      * ``/config/scripts/dhcp-client/pre-hooks.d/``
      * ``/config/scripts/dhcp-client/post-hooks.d/``

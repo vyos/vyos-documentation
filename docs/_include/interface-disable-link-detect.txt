@@ -1,10 +1,10 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} disable-link-detect
 
-  Use this command to direct an interface to not detect any physical state
-  changes on a link, for example, when the cable is unplugged.
+  **Disable physical link-state change detection on the interface, such as 
+  when a cable is unplugged.**
 
-  Default is to detects physical link state changes.
+  By default, the interface detects physical link-state changes.
 
   Example:
 

@@ -1,12 +1,14 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options client-id <description>
 
-  :rfc:`2131` states: The client MAY choose to explicitly provide the identifier
-  through the 'client identifier' option. If the client supplies a 'client
-  identifier', the client MUST use the same 'client identifier' in all
-  subsequent messages, and the server MUST use that identifier to identify the
-  client.
+  **Configure a DHCP client identifier for the interface, as specified in** 
+  :rfc:`2131`.
 
+  The ``client-id`` is an identifier that the DHCP client sends to the DHCP 
+  server to uniquely identify itself for IP address assignment. By default, 
+  the client uses its MAC address. The ``<description>`` is a user-defined 
+  string that will be sent to the DHCP server as the DHCP client identifier.
+  
   Example:
 
   .. code-block:: none
@@ -16,8 +18,10 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options host-name <hostname>
 
-  Instead of sending the real system hostname to the DHCP server, overwrite the
-  host-name with this given-value.
+  **Configure a specific hostname for the interface.**
+
+  Instead of the real hostname, the DHCP client will send the specific hostname 
+  to the DHCP server when requesting an IP address.
 
   Example:
 
@@ -28,13 +32,12 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options vendor-class-id <vendor-id>
 
-  This option is used by some DHCP clients to identify the vendor type and
-  possibly the configuration of a DHCP client. The information is a string of
-  bytes whose contents are specific to the vendor and are not specified in a
-  standard.
+  **Configure the DHCP client to include a vendor-class identifier in its DHCP 
+  requests on this interface.**
 
-  The vendor-class-id option can be used to request a specific class of vendor
-  options from the server.
+  The vendor-class identifier is a vendor-specific byte string that enables 
+  the DHCP server to identify the device and, in some cases, provide 
+  configuration options. 
 
   Example:
 
@@ -45,8 +48,8 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options no-default-route
 
-  Only request an address from the DHCP server but do not request a default
-  gateway.
+  **Configure the DHCP client to obtain an IP address, but ignore any default 
+  gateway provided by the DHCP server on this interface.**
 
   Example:
 
@@ -57,7 +60,8 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options default-route-distance <distance>
 
-  Set the distance for the default gateway sent by the DHCP server.
+  **Configure the distance for the default route obtained from the DHCP server 
+  on this interface.** 
 
   Example:
 
@@ -68,11 +72,13 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options reject <address>
 
-  Reject DHCP leases from a given address or range.
-  This is useful when a modem gives a local IP when first starting.
+  **Configure the DHCP client to reject the specific IP address or IP address 
+  range from the DHCP server on this interface.** 
 
-  * **address** can be specified multiple times,
-    e.g. 192.168.100.1 and/or 192.168.100.0/24
+  This is useful when a modem assigns a local IP address upon start. To reject 
+  multiple addresses, run this command multiple times with different values. 
+  You can reject individual addresses (192.168.100.1) or entire subnets 
+  (192.168.100.0/24).
 
   Example:
 
@@ -83,10 +89,13 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options user-class <string>
 
-  This option is used by some DHCP clients as a way for users to specify
-  identifying information to the client. This can be used in a similar way to
-  the vendor-class-identifier option, but the value of the option is specified
-  by the user, not the vendor.
+  **Configure the DHCP client to send a specific user-class identifier in its 
+  DHCP requests on this interface.** 
+
+  The DHCP server can interpret this identifier and provide specific 
+  configuration options based on it (for example, default routes). 
+  The user-class value typically groups DHCP clients with similar configuration 
+  needs (for example, employees, guests, or printers).
 
   Example:
 

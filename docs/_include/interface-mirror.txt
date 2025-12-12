@@ -1,22 +1,26 @@
-SPAN port mirroring can copy the inbound/outbound traffic of the interface to
-the specified interface, usually the interface can be connected to some special
-equipment, such as a behavior control system, intrusion detection system or
-traffic collector, and can copy all related traffic from this port.
-The benefit of mirroring the traffic is that the application is isolated from 
-the source traffic and so application processing does not affect the traffic 
-or the system performance.
+:abbr:`SPAN (Switched Port Analyser)` port mirroring copies inbound and 
+outbound traffic from one interface to another specified interface.  
 
-VyOS uses the `mirror` option to configure port mirroring. The configuration
-is divided into 2 different directions. Destination ports should be configured
-for different traffic directions.
+The destination interface is usually connected to specialized equipment, 
+such as a behavior control system, an intrusion detection system, or 
+a traffic collector, and copies all related traffic from this port. The 
+benefit of mirroring traffic is that the application is isolated from the 
+source traffic, so application processing does not affect the traffic or 
+system performance.
+
+To configure :abbr:`SPAN (Switched Port Analyser)` port mirroring, VyOS uses 
+the ``mirror`` parameter. You can mirror ingress traffic (traffic entering the 
+router) and egress traffic (traffic leaving the router) separately. Both 
+directions can be mirrored to the same destination interface or split to 
+different ones.
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> mirror
    ingress <monitor-interface>
 
-   Configure port mirroring for `interface` inbound traffic and copy the
-   traffic to `monitor-interface`
-   
-   Example: Mirror the inbound traffic of `{{ var1 }}` port to `{{ var2 }}`
+   **Mirror ingress traffic from a bonding interface to the specified monitoring 
+   interface.**
+  
+   Example: Mirror the ingress traffic from `{{ var1 }}` to `{{ var2 }}`.
    
    .. code-block:: none
    
@@ -25,10 +29,11 @@ for different traffic directions.
 .. cfgcmd:: set interfaces {{ var0 }} <interface> mirror egress
    <monitor-interface>
 
-   Configure port mirroring for `interface` outbound traffic and copy the
-   traffic to `monitor-interface`
+   **Mirror egress traffic from a bonding interface to the specified monitoring 
+   interface.**
+
    
-   Example: Mirror the outbound traffic of `{{ var1 }}` port to `{{ var2 }}`
+   Example: Mirror the egress traffic from `{{ var1 }}` to `{{ var2 }}`.
    
    .. code-block:: none
    

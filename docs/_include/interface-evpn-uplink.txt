@@ -1,10 +1,12 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> evpn uplink
 
-  When all the underlay links go down the PE no longer has access
-  to the VxLAN +overlay. To prevent blackholing of traffic the
-  server/ES links are protodowned on the PE.
+  **Configure this interface as an EVPN-MH uplink interface.**
 
-  A link can be setup for uplink tracking via the following example:
+  If all uplink interfaces on a PE device go down, this PE device loses access 
+  to the VXLAN overlay. To prevent traffic blackholing, the PE device forces a 
+  protocol shutdown (protodown) of its downstream EVPN-MH interfaces.
+
+  The following example configures bond0 as an EVPN-MH uplink interface:
 
   .. code-block:: none
 

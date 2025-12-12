@@ -1,11 +1,23 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcpv6-options duid <duid>
 
-  The DHCP unique identifier (DUID) is used by a client to get an IP address
-  from a DHCPv6 server. It has a 2-byte DUID type field, and a variable-length
-  identifier field up to 128 bytes. Its actual length depends on its type. The
-  server compares the DUID with its database and delivers configuration data
-  (address, lease times, DNS servers, etc.) to the client.
+  **Configure a specific** :abbr:`DUID (DHCP Unique Identifier)` **for the 
+  DHCPv6 client on this interface.**
+
+  The DUID is an identifier used by a DHCPv6 client to get an IPv6 address from 
+  a DHCPv6 server. It consists of a 2-byte type field, followed by a 
+  variable-length identifier field up to 128 bytes. The format of the identifier 
+  part depends on the DUID type:
+
+  * **DUID-LLT:** The most common type, which includes a hardware type, a timestamp, and a MAC address.
+  * **DUID-EN:** Is based on a vendor's enterprise number and a unique identifier assigned by the vendor.
+  * **DUID-LL:** Includes only a MAC address.
+
+  The DHCP server matches the DUID against its database and provides 
+  configuration data (such as address, lease times, DNS servers, etc.) 
+  to the DHCP client.
+
+  Example:
 
   .. code-block:: none
 
@@ -14,8 +26,12 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcpv6-options no-release
 
-  When no-release is specified, dhcp6c will avoid sending a release message on
-  client exit in order to prevent losing an assigned address or prefix.
+  **Configure the DHCP client not to send a release message when it stops 
+  running on this interface.**
+
+  This helps retain the assigned address or prefix. 
+
+  Example:
 
   .. code-block:: none
 
@@ -25,10 +41,13 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcpv6-options parameters-only
 
-  This statement specifies dhcp6c to only exchange informational configuration
-  parameters with servers. A list of DNS server addresses is an example of such
-  parameters. This statement is useful when the client does not need stateful
-  configuration parameters such as IPv6 addresses or prefixes.
+  **Enable a stateless DHCPv6 client mode on this interface.**
+
+  In stateless mode, the DHCPv6 client requests only stateless configuration 
+  parameters from the DHCP server (for example, DNS server addresses). It 
+  doesn’t request a stateful configuration, such as IPv6 addresses or prefixes.
+
+  Example:
 
   .. code-block:: none
 
@@ -37,8 +56,13 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcpv6-options rapid-commit
 
-  When rapid-commit is specified, dhcp6c will include a rapid-commit option in
-  solicit messages and wait for an immediate reply instead of advertisements.
+  **Enable DHCPv6 rapid commit on this interface.**
+
+  When enabled, the DHCP client and server skip the negotiation steps 
+  (Advertise and Request), completing the DHCPv6 configuration process 
+  in just two messages (Solicit and final Reply).
+
+  Example:
 
   .. code-block:: none
 
@@ -47,8 +71,14 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcpv6-options temporary
 
-  Request only a temporary address and not form an IA_NA (Identity Association
-  for Non-temporary Addresses) partnership.
+  **Configure the DHCPv6 client to request a temporary IPv6 address on this 
+  interface.**
+
+  When configured, the DHCP client doesn’t form an Identity Association for 
+  Non-temporary Addresses (IA_NA) partnership. Consequently, it only obtains 
+  a temporary IPv6 address and doesn’t obtain a permanent one.
+
+  Example:
 
   .. code-block:: none
 

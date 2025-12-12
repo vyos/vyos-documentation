@@ -1,20 +1,24 @@
 **DHCPv6 Prefix Delegation (PD)**
 
-VyOS 1.3 (equuleus) supports DHCPv6-PD (:rfc:`3633`). DHCPv6 Prefix Delegation
-is supported by most ISPs who provide native IPv6 for consumers on fixed
-networks.
+VyOS supports DHCPv6 Prefix Delegation (DHCPv6-PD) as described in :rfc:`3633`. 
+DHCPv6-PD is supported by most ISPs that provide native IPv6 for consumers on 
+fixed networks.
+
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcpv6-options pd <id> length <length>
 
-  Some ISPs by default only delegate a /64 prefix. To request for a specific
-  prefix size use this option to request for a bigger delegation for this pd
-  `<id>`. This value is in the range from 32 - 64 so you could request up to a
-  /32 prefix (if your ISP allows this) down to a /64 delegation.
+  **Configure a specific prefix length for DHCPv6-PD requests on this 
+  interface.** 
 
-  The default value corresponds to 64.
+  Some ISPs provide only a /64 prefix by default. Use this command to 
+  request a different prefix length for a specific DHCPv6-PD request, 
+  ranging from /32 (if allowed by your ISP) down to /64. <id> is a 
+  unique identifier for the DHCPv6-PD request.
 
-  To request a /56 prefix from your ISP use:
+  The default value is 64.
+
+  To request a /56 prefix from your ISP, use:
 
   .. code-block:: none
 
@@ -24,18 +28,23 @@ networks.
   {{ var5 }} {{ var6 }} dhcpv6-options pd <id> interface <delegatee>
   address <address>
 
-  Specify the interface address used locally on the interface where the prefix
-  has been delegated to. ID must be a decimal integer.
+  **Configure the IPv6 interface identifier (host portion) for the delegatee 
+  interface.**
 
-  It will be combined with the delegated prefix and the sla-id to form a
-  complete interface address. The default is to use the EUI-64 address of the
-  interface.
+  The value must be a decimal integer. It is appended to the delegated prefix 
+  and the configured :abbr:`SLA ID (Site-Level Aggregation ID)` to form the 
+  final IPv6 address.
 
-  .. stop_vyoslinter
+  By default, the host portion is generated based on the parent interface's 
+  MAC address (EUI-64 format).
 
-  Example: Delegate a /64 prefix to interface eth8 which will use a local
-  address on this router of ``<prefix>::ffff``, as the address 65534 will
-  correspond to ``ffff`` in hexadecimal notation.
+   .. stop_vyoslinter
+
+  **Example:**
+
+  If a /64 prefix is delegated to interface eth8 and you configure the host 
+  portion as 65535, the resulting IPv6 address will end with ::ffff, as 
+  65535 corresponds to ffff in hexadecimal notation.
 
   .. start_vyoslinter
 
@@ -47,16 +56,19 @@ networks.
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcpv6-options pd <id> interface <delegatee> sla-id <id>
 
-  Specify the identifier value of the site-level aggregator (SLA) on the
-  interface. ID must be a decimal number greater then 0 which fits in the
-  length of SLA IDs (see below).
+  **Configure the** :abbr:`SLA ID (Site-Level Aggregation ID)` **for the 
+  delegatee interface.**
 
-  Example: If ID is 1 and the client is delegated an IPv6 prefix
-  2001:db8:ffff::/48, dhcp6c will combine the two values into a single IPv6
-  prefix, 2001:db8:ffff:1::/64, and will configure the prefix on the specified
-  interface.
+  The value must be a decimal integer greater than 0 and fit in the length of 
+  SLA IDs. It is converted to hexadecimal and appended to the delegated prefix 
+  to form the specific subnet prefix for the delegatee interface.
+
+  **Example:** 
+
+  If SLA ID is 1 and the delegated prefix is ``2001:db8:ffff::/48``, the 
+  resulting subnet prefix for the delegatee interface will be 
+  ``2001:db8:ffff:1::/64``.
 
   .. code-block:: none
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 sla-id 1
-

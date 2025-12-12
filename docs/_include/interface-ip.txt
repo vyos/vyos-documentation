@@ -1,28 +1,34 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip adjust-mss <mss | clamp-mss-to-pmtu>
 
-  As Internet wide PMTU discovery rarely works, we sometimes need to clamp our
-  TCP MSS value to a specific value. This is a field in the TCP options part of
-  a SYN packet. By setting the MSS value, you are telling the remote side
-  unequivocally 'do not try to send me packets bigger than this value'.
+  **Configure the** :abbr:`MSS (Maximum Segment Size)` **advertised in outgoing 
+  TCP SYN packets on the specified interface.** 
 
-  .. note:: This command was introduced in VyOS 1.4 - it was previously called:
-    ``set firewall options interface <name> adjust-mss <value>``
+  By clamping the MSS value in TCP SYN packets, you explicitly inform the 
+  remote side not to send packets larger than that size. This prevents 
+  connection issues that occur when Path MTU Discovery (PMTUD) fails.
 
-  .. hint:: MSS value = MTU - 20 (IP header) - 20 (TCP header), resulting in
-    1452 bytes on a 1492 byte MTU.
+  The following options are available:
 
-  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to
-  automatically set the proper value.
+  * **mss:** Sets the MSS to a specific value, in bytes. Use this option if 
+    you need to enforce a specific MSS, for example, to troubleshoot 
+    connectivity issues or accommodate specific network requirements.
+  * **clamp-mss-to-pmtu:** The router automatically calculates the MSS to be 
+    the interface's MTU minus 40 bytes for IPv4 traffic (20 bytes for the IPv4 
+    header and 20 bytes for the TCP header). This option is recommended to 
+    automatically set the proper value.
+
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip arp-cache-timeout
 
-  Once a neighbor has been found, the entry is considered to be valid for at
-  least for this specific time. An entry's validity will be extended if it
-  receives positive feedback from higher level protocols.
+  **Configure how long an ARP entry remains valid after learning an IP-to-MAC 
+  address mapping on this interface.** 
 
-  This defaults to 30 seconds.
+  The default duration is 30 seconds.
+
+  An ARP entry remains valid if it receives positive feedback from 
+  higher-level protocols.
 
   Example:
 
@@ -33,19 +39,17 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip disable-arp-filter
 
-  If set the kernel can respond to arp requests with addresses from other
-  interfaces. This may seem wrong but it usually makes sense, because it
-  increases the chance of successful communication. IP addresses are owned by
-  the complete host on Linux, not by particular interfaces. Only for more
-  complex setups like load-balancing, does this behaviour cause problems.
+  **Configure ARP filtering on this interface.**
 
-  If not set (default) allows you to have multiple network interfaces on the
-  same subnet, and have the ARPs for each interface be answered based on whether
-  or not the kernel would route a packet from the ARP'd IP out that interface
-  (therefore you must use source based routing for this to work).
+  **Default behavior:** The kernel responds to ARP requests on this interface 
+  only if the traffic would be routed back to the ARP sender through that 
+  specific interface. 
 
-  In other words it allows control of which cards (usually 1) will respond to an
-  arp request.
+  **If configured:** The kernel responds to ARP requests on this interface for any 
+  IP address configured on the local host, regardless of which specific interface 
+  that IP address is assigned to, and regardless of the routing table. This 
+  reflects the Linux concept that IP addresses belong to the host, not individual 
+  interfaces.  
 
   Example:
 
@@ -56,8 +60,12 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip disable-forwarding
 
-  Configure interface-specific Host/Router behaviour. If set, the interface will
-  switch to host mode and IPv6 forwarding will be disabled on this interface.
+  **Configure the interface for host or router behavior.**
+
+  If configured, the interface switches to host mode, and IPv4 forwarding is 
+  disabled on it.
+
+  Example:
 
   .. code-block:: none
 
@@ -66,14 +74,15 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip enable-directed-broadcast
 
-  Define different modes for IP directed broadcast forwarding as described in
-  :rfc:`1812` and :rfc:`2644`.
+  **Configure whether to forward IP-directed broadcast packets received on this 
+  interface.** 
+  
+  **Default behavior:** IP-directed broadcast packets are dropped. 
 
-  If configured, incoming IP directed broadcast packets on this interface will
-  be forwarded.
+  **If configured:** IP-directed broadcast packets are forwarded to all hosts 
+  on the destination subnet, as defined in :rfc:`1812` and :rfc:`2644`.  
 
-  If this option is unset (default), incoming IP directed broadcast packets
-  will not be forwarded.
+  Example:
 
   .. code-block:: none
 
@@ -82,14 +91,15 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip enable-arp-accept
 
-  Define behavior for gratuitous ARP frames whose IP is not already present in
-  the ARP table. If configured create new entries in the ARP table.
+  **Configure how to process gratuitous ARPs on this interface.**
 
-  Both replies and requests type gratuitous arp will trigger the ARP table to be
-  updated, if this setting is on.
+  If configured, an IP-to-MAC address mapping is added to the ARP table based 
+  on gratuitous ARP requests or replies.
 
-  If the ARP table already contains the IP address of the gratuitous arp frame,
-  the arp table will be updated regardless if this setting is on or off.
+  .. note:: If the ARP table already contains the IP address from a gratuitous 
+     ARP, its entry is updated regardless of whether this setting is configured.
+
+  Example:
 
   .. code-block:: none
 
@@ -98,18 +108,18 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip enable-arp-announce
 
-  Define different restriction levels for announcing the local source IP address
-  from IP packets in ARP requests sent on interface.
+  **Configure the source IP selection for ARP requests on this interface.**
 
-  Use any local address, configured on any interface if this is not set.
+  **Default behavior:** The kernel can use any IP address the host owns as 
+  the source IP address in ARP requests on this interface.
 
-  If configured, try to avoid local addresses that are not in the target's
-  subnet for this interface. This mode is useful when target hosts reachable via
-  this interface require the source IP address in ARP requests to be part of
-  their logical network configured on the receiving interface. When we generate
-  the request we will check all our subnets that include the target IP and will
-  preserve the source address if it is from such subnet. If there is no such
-  subnet we select source address according to the rules for level 2.
+  **If configured:** The kernel first attempts to select a source IP address 
+  configured on the interface that shares a common subnet with the target 
+  IP address. If there is no such subnet, the kernel selects the IP address 
+  it would normally use (based on the routing table to reach the target 
+  destination).
+
+  Example:
 
   .. code-block:: none
 
@@ -118,14 +128,15 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip enable-arp-ignore
 
-  Define different modes for sending replies in response to received ARP
-  requests that resolve local target IP addresses:
+  **Configure which ARP requests will be ignored on this interface.**
 
-  If configured, reply only if the target IP address is local address configured
-  on the incoming interface.
+  **Default behavior:** The kernel responds to ARP requests for any local 
+  IP addresses, regardless of which interface they are assigned to.
 
-  If this option is unset (default), reply for any local target IP address,
-  configured on any interface.
+  **If configured:** The kernel responds to ARP requests only if the target 
+  IP address is assigned to this specific interface.
+
+  Example:
 
   .. code-block:: none
 
@@ -134,12 +145,13 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip enable-proxy-arp
 
-  Use this command to enable proxy Address Resolution Protocol (ARP) on this
-  interface. Proxy ARP allows an Ethernet interface to respond with its own
-  :abbr:`MAC (Media Access Control)` address to ARP requests for destination IP
-  addresses on subnets attached to other interfaces on the system. Subsequent
-  packets sent to those destination IP addresses are forwarded appropriately by
-  the system.
+  **Configure proxy ARP on this interface.**
+
+  If configured, the router (kernel) intercepts ARP requests for non-local IP 
+  addresses and replies with the :abbr:`MAC (Media Access Control)` address 
+  of the interface that received the request. Subsequent packets destined 
+  to these IP addresses are forwarded to their actual destinations on remote 
+  subnets.
 
   Example:
 
@@ -150,41 +162,53 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip proxy-arp-pvlan
 
-  Private VLAN proxy arp. Basically allow proxy arp replies back to the same
-  interface (from which the ARP request/solicitation was received).
+  **Configure local proxy ARP on the interface.**
 
-  This is done to support (ethernet) switch features, like :rfc:`3069`, where
-  the individual ports are NOT allowed to communicate with each other, but they
-  are allowed to talk to the upstream router. As described in :rfc:`3069`, it is
-  possible to allow these hosts to communicate through the upstream router by
-  proxy_arp'ing.
+  If configured, the router (kernel) responds to ARP requests on this VLAN 
+  interface even if the target IP address resides on the same subnet and 
+  interface.
 
-  .. note:: Does not need to be used together with proxy_arp.
+  This is used to support network isolation requirements (RFC 3069) for private 
+  VLANs (PVLANs). In PVLAN configurations, hosts on isolated ports are NOT 
+  allowed to communicate directly with each other at Layer 2, but they can 
+  communicate with the upstream router. 
 
-  This technology is known by different names:
+  By replying to inter-host ARP requests with its own :abbr:`MAC (Media Access Control)` 
+  address, the router (kernel) directs inter-host traffic through itself instead of 
+  directly between hosts.
 
-  - In :rfc:`3069` it is called VLAN Aggregation
+  .. note:: This command works independently and does not require enabling 
+     the standard proxy ARP on the interface.
 
-  - Cisco and Allied Telesyn call it Private VLAN
+  Local proxy ARP is also known as:
 
-  - Hewlett-Packard call it Source-Port filtering or port-isolation
+  - VLAN aggregation (:rfc:`3069`).
 
-  - Ericsson call it MAC-Forced Forwarding (RFC Draft)
+  - Private VLAN  (Cisco, Allied Telesyn).
+
+  - Source-port filtering or port isolation (Hewlett-Packard).
+
+  - MAC-Forced Forwarding (Ericsson).
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ip source-validation <strict | loose | disable>
 
-  Enable policy for source validation by reversed path, as specified in
-  :rfc:`3704`. Current recommended practice in :rfc:`3704` is to enable strict
-  mode to prevent IP spoofing from DDos attacks. If using asymmetric routing
-  or other complicated routing, then loose mode is recommended.
+  **Configure source IP address validation using** :abbr:`RPF (Reverse Path 
+  Forwarding)` **on this interface, as specified in** :rfc:`3704`. 
 
-  - strict: Each incoming packet is tested against the FIB and if the interface
-    is not the best reverse path the packet check will fail. By default failed
-    packets are discarded.
+  The following options are available:
 
-  - loose: Each incoming packet's source address is also tested against the FIB
-    and if the source address is not reachable via any interface the packet
-    check will fail.
+  - **strict:** Each incoming packet’s source IP address is checked against the 
+    Forwarding Information Base (FIB). If the interface is not the best route 
+    back to that source, validation fails, and the packet is dropped.
 
-  - disable: No source validation
+  - **loose:** Each incoming packet’s source IP address is checked against the 
+    FIB. If the source IP address is unreachable through any interface, validation 
+    fails.
+
+  - **disable:** No source IP address validation is performed. All incoming 
+    packets are accepted.
+
+  RFC 3704 recommends enabling strict mode to prevent IP spoofing, such as 
+  DDoS attacks. For asymmetric or other complex routing scenarios, use loose 
+  mode.

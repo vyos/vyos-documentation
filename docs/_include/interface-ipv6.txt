@@ -1,16 +1,20 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ipv6 address autoconf
 
-  :abbr:`SLAAC (Stateless Address Autoconfiguration)` :rfc:`4862`. IPv6 hosts
-  can configure themselves automatically when connected to an IPv6 network using
-  the Neighbor Discovery Protocol via :abbr:`ICMPv6 (Internet Control Message
-  Protocol version 6)` router discovery messages. When first connected to a
-  network, a host sends a link-local router solicitation multicast request for
-  its configuration parameters; routers respond to such a request with a router
-  advertisement packet that contains Internet Layer configuration parameters.
+  **Configure the interface to automatically obtain an IPv6 address using**
+  :abbr:`SLAAC (Stateless Address Autoconfiguration)`, **as specified in** 
+  :rfc:`4862`. 
 
-  .. note:: This method automatically disables IPv6 traffic forwarding on the
-    interface in question.
+
+  IPv6 hosts can configure themselves automatically when connected to an 
+  IPv6 network using the Neighbor Discovery Protocol via ICMPv6 router 
+  discovery messages. When first connected to a network, a host sends a 
+  link-local router solicitation multicast request for its configuration 
+  parameters. The router responds with a router advertisement packet 
+  containing Internet Layer configuration parameters.
+
+  .. note:: This method automatically disables IPv6 traffic forwarding 
+     on the interface.
 
   Example:
 
@@ -22,8 +26,9 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ipv6 address eui64 <prefix>
 
-  :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in
-  :rfc:`4291` allows a host to assign iteslf a unique 64-Bit IPv6 address.
+  **Configure the interface to assign itself an IPv6 address using the** 
+  :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` **method, as 
+  specified** in :rfc:`4291`.
 
   Example:
 
@@ -34,7 +39,8 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ipv6 address no-default-link-local
 
-  Do not assign a link-local IPv6 address to this interface.
+  **Disable the automatic assignment of a link-local IPv6 address to 
+  this interface.**
 
   Example:
 
@@ -45,8 +51,10 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ipv6 disable-forwarding
 
-  Configure interface-specific Host/Router behaviour. If set, the interface will
-  switch to host mode and IPv6 forwarding will be disabled on this interface.
+  **Configure the interface for host or router behavior.**
+
+  If configured, the interface switches to host mode, and IPv6 forwarding is 
+  disabled on it.
 
   Example:
 
@@ -57,28 +65,36 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ipv6 adjust-mss <mss | clamp-mss-to-pmtu>
 
-  As Internet wide PMTU discovery rarely works, we sometimes need to clamp our
-  TCP MSS value to a specific value. This is a field in the TCP options part of
-  a SYN packet. By setting the MSS value, you are telling the remote side
-  unequivocally 'do not try to send me packets bigger than this value'.
+  **Configure the** :abbr:`MSS (Maximum Segment Size)` **advertised in outgoing 
+  TCP SYN packets on the specified interface.** 
 
-  .. note:: This command was introduced in VyOS 1.4 - it was previously called:
-    ``set firewall options interface <name> adjust-mss6 <value>``
+  By clamping the MSS value in TCP SYN packets, you explicitly inform 
+  the remote side not to send packets larger than that size. This prevents 
+  connection issues when Path MTU Discovery (PMTUD) fails.
 
-  .. hint:: MSS value = MTU - 40 (IPv6 header) - 20 (TCP header), resulting in
-    1432 bytes on a 1492 byte MTU.
+  The following options are available:
 
-  Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to
-  automatically set the proper value.
+  * **mss:** Set the MSS to a specific value, in bytes. Use this option to 
+    enforce a specific MSS, for example, to troubleshoot connectivity issues 
+    or accommodate specific network requirements.
+  * **clamp-mss-to-pmtu:** The router calculates the MSS to be the interface's 
+    MTU minus 60 bytes for IPv6 traffic (40 bytes for the IPv6 header and 20 
+    bytes for the TCP header). This option is recommended to automatically 
+    set the proper value.
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} ipv6 accept-dad <1-3>
+  {{ var5 }} {{ var6 }} ipv6 accept-dad <0 | 1 | 2>
 
-  Whether to accept DAD (Duplicate Address Detection).
+  **Configure IPv6** :abbr:`DAD (Duplicate Address Detection)` **on the 
+  interface.**
 
-  - 0: Disable DAD
-  - 1: Enable DAD (default)
-  - 2: Enable DAD, and disable IPv6 operation if MAC-based duplicate link-local address has been found.
+  The following options are available:
+
+  - **0:** Disables DAD. No duplicate address detection is performed.
+  - **1:** Enables DAD (default). Duplicate addresses are detected. The 
+    interface's IPv6 operation continues for valid IPv6 addresses.
+  - **2:** Enables DAD and, if a MAC-based duplicate link-local address 
+    is found, disables IPv6 operation on this interface.
 
   Example:
 
@@ -89,9 +105,11 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} ipv6 dup-addr-detect-transmits <n>
 
-  The amount of Duplicate Address Detection probes to send.
+  **Configure the number of** :abbr:`DAD (Duplicate Address Detection)`
+  **messages that the router (kernel) sends during IPv6 address assignment 
+  on this interface.**
 
-  Default: 1
+  The default value is 1. 
 
   Example:
 
