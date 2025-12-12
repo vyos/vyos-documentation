@@ -32,12 +32,29 @@ To configure dynamic NAT, you need to define a pool of public IP addresses that 
 
 Static rules are more suitable for scenarios where you need to provide consistent and predictable mappings between private and public IP addresses, also they are the only way to configure DNAT.
 
-How NAT Rules are Applied
--------------------------
+NAT Rule Processing and Traffic Flow
+------------------------------------
 
-1. **Dynamic Rules only**: The router will try to apply those rules to all incoming traffic, and everything else passes normally
-2. **Static + Dynamic Rules**: The router uses static rules first, and uses dynamic ones only when no static rule applies.
-3. **Static Rules only**: Only the traffic you explicitly define in a static rule gets translated. Everything else passes untouched.
+This section explains how different combinations of NAT rules affect traffic handling on a router. There are three possible combinations of NAT rules configurations:
+
+1. **Dynamic NAT Only**
+
+   * **All** traffic received on the "in" interface is processed by dynamic NAT rules without exceptions.
+
+2. **Dynamic + Static NAT**
+
+   * **All** traffic received on the "in" interface is first matched against static NAT rules.
+   * If no match is found, it is then processed by dynamic NAT rules.
+
+3. **Static NAT Only**
+
+   * **All** traffic on the "in" interface is checked against static NAT rules.
+   * If no match is found, the traffic is routed **without NAT**.
+
+.. important::
+
+   * If **dynamic NAT rules** are present, **all** traffic received on "in" interfaces is subject to NAT processing.
+   * If **only static NAT rules** are configured, traffic that does not match any static rule is routed unchanged.
 
 Interfaces Configuration
 ========================
