@@ -1,3 +1,5 @@
+:lastproofread: 2025-12-12
+
 .. _development:
 
 ###########
@@ -8,9 +10,9 @@ Learn how to contribute to VyOS.
 
 .. _architecture_overview:
 
-Architecture Overview
+Architecture overview
 =====================
-All VyOS source code is hosted on GitHub in the VyOS organization:
+VyOS source code is hosted on GitHub in the VyOS organization:
 https://github.com/vyos
 
 VyOS is composed of multiple modules spread across different
@@ -28,7 +30,7 @@ VyOS ISO build scripts are hosted in the
 `README.md file <https://github.com/vyos/vyos-build/blob/current/README.md>`__
 for more information on building VyOS ISO images.
 
-Contributing Code
+Contributing code
 =================
 
 .. warning::
@@ -42,18 +44,19 @@ All submissions must adhere to these guidelines:
 * Each commit addresses a single issue or feature.
 * Each commit message references a Phabricator_ task ID
   (for example, ``T1234``).
-* Each commit includes a username and email to identify the author.
+* Each commit is associated with a username and email address
+  to identify the author (see `Configure your Git identity`_).
 * Only submit bugfixes in packages other than https://github.com/vyos/vyos-1x.
 * Commits follow the `coding guidelines`_ outlined below.
 
 
-Determining Package Ownership
+Determining package ownership
 -----------------------------
 
 To determine which VyOS package contains a file you want to modify, use Debian's
 ``dpkg -S`` command on your running VyOS installation.
 
-Submitting Your Code
+Submitting your code
 --------------------
 
 Fork the repository and submit a GitHub pull request. This is the preferred way
@@ -68,6 +71,8 @@ To fork a VyOS repository:
 
    - Clone: ``git clone https://github.com/<user>/vyos-1x.git``
    - Add remote: ``git remote add myfork https://github.com/<user>/vyos-1x.git``
+
+.. _Configure your Git identity:
 
 3. Configure your Git identity:
 
@@ -95,7 +100,7 @@ maintainers@vyos.net or attach them directly to the Phabricator_ task:
 * Export last commit: ``git format-patch``
 * Export last two commits: ``git format-patch -2``
 
-Commit Messages
+Commit messages
 ===============
 
 For guidance on writing commit messages, review the file history
@@ -111,7 +116,7 @@ create a Phabricator_ task first. Reference the task ID in your commit message:
 If your pull request lacks a Phabricator_ reference, maintainers will request
 that you amend the commit message.
 
-Writing Good Commit Messages
+Writing good commit messages
 -----------------------------
 
 Follow the format described in `Git documentation <https://git-scm.com/book/ch5-2.html>`__
@@ -152,7 +157,7 @@ Constraints:
   New functionality must use the new XML/Python interface, not old-style templates
   (``node.def`` files and Perl/Bash code).
 
-Coding Guidelines
+Coding guidelines
 =================
 
 VyOS maintains consistent coding standards to help contributors navigate the
@@ -173,7 +178,7 @@ to your ``.vimrc`` file:
 
 Then use ``gg=G`` in command mode to run the linter.
 
-Text Generation
+Text generation
 ---------------
 
 Use a template processor for generating config files:
@@ -184,7 +189,7 @@ Use a template processor for generating config files:
 * Template processors **must** be used for structured, multi-line formats
   (for example, ISC DHCPd configuration).
 
-Python Code
+Python code
 -----------
 
 Configuration scripts and operation mode scripts written in Python3 should
@@ -252,22 +257,22 @@ Structure your scripts with these functions:
       print(e)
       sys.exit(1)
 
-**``get_config()``**: This function converts VyOS config to an abstract internal
-representation. No other function may call the ``vyos.config.Config`` object
-directly. Limiting config reads to one function makes it easier to modify the
-config syntax in the future. Additionally, this design improves testability since
-you can construct an internal representation by hand rather than mocking the
-entire config subsystem.
+``get_config()``: This function converts a VyOS config object to an abstract
+internal representation. No other function may call the ``vyos.config.Config``
+object directly. Limiting config reads to one function makes it easier to
+modify the config syntax in the future. Additionally, this design improves
+testability since you can construct an internal representation by hand rather
+than mocking the entire config subsystem.
 
-**``verify()``**: This function validates the internal representation. It must
+``verify()``: This function validates the internal representation. It must
 raise ``ConfigError`` with a descriptive message if the config is invalid. It
 **must not** make any changes to the system. This design enables future features
 like commit dry-run ("commit test" as in JunOS) where the system can abort a
 commit before making changes.
 
-**``generate()``**: This function generates config files for system components.
+``generate()``: This function generates config files for system components.
 
-**``apply()``**: This function applies the generated configuration to the live
+``apply()``: This function applies the generated configuration to the live
 system. Prefer non-disruptive reload when possible. Disruptive operations like
 daemon restarts are acceptable only when:
 
@@ -294,17 +299,36 @@ error output for users, it generates better bug reports and helps IT professiona
 debug issues.
 
 For reference implementations, see ``ntp.py`` or ``interfaces-bonding.py`` (for
-tag nodes) in the vyos-1x_ repository.
+tag nodes) in the `vyos-1x <https://github.com/vyos/vyos-1x>`__ repository.
 
-XML Definitions
----------------
+Other considerations: ``vyos-configd``
+---------------------------
 
-XML interface definitions define the CLI structure. Before VyOS 1.2 (crux), these
-files were created manually. After a redesign process_, new-style templates are
+All scripts now run under the config daemon and must conform to these requirements:
+
+1. The signature and first four lines of ``get_config(...)`` **must** be as specified above.
+
+2. Each of ``get_config``, ``verify``, ``apply``, and ``generate`` **must** appear
+   with the correct signatures, even if they are a no-op.
+
+3. ``Config`` objects other than those in ``get_config`` **must not** appear.
+
+4. The legacy function ``my_set`` **must not** appear. Modifications to active
+   config **should not** appear in new code (alternative mechanisms may be used
+   if absolutely necessary).
+
+XML for CLI definitions
+=======================
+
+XML interface definitions define the VyOS CLI structure. 
+Before VyOS ``1.2`` (crux), these
+files were created manually. After a redesign, new-style templates are
 automatically generated from XML input files.
 
-VyOS interface definitions come with a RelaxNG schema located in the vyos-1x_
-module. This schema is a modified version from VyConf_ (VyOS 2.0). VyOS 1.2.x
+VyOS interface definitions come with a RelaxNG schema located in the
+`vyos-1x <https://github.com/vyos/vyos-1x/tree/current/schema>`__
+repository. This schema is a modified version from ``VyConf`` (VyOS ``2.0``).
+VyOS ``1.2.x``
 interface definitions are reusable in future VyOS versions with minimal changes.
 
 Schemas provide two benefits:
@@ -312,7 +336,8 @@ Schemas provide two benefits:
 * Complete grammar verification
 * Automatic validation against the schema
 
-The `scripts/build-command-templates` script converts XML definitions to
+The `build-command-templates <https://github.com/vyos/vyos-1x/blob/current/scripts/build-command-templates>`__
+script converts XML definitions to
 old-style templates and verifies them against the schema. A bad definition
 causes the package build to fail. While the XML format is verbose, no other
 format provides this level of verification. Specialized XML editors can help
@@ -414,14 +439,18 @@ in common areas:
 
 Instead of repeating XML nodes, use include files with predefined features:
 
-* `IPv4, IPv6, and DHCP(v6)`_ address assignment
-* `IPv4 and IPv6`_ address assignment
-* `VLAN (VIF)`_ definition
-* `MAC address`_ assignment
+* `IPv4, IPv6, and DHCP(v6) <https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6-dhcp.xml.i>`__
+  address assignment.
+* `IPv4 and IPv6 <https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6.xml.i>`__
+  address assignment.
+* `VLAN (VIF) <https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/accel-ppp/vlan.xml.i>`__
+  definition.
+* `MAC address <https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/firewall/mac-address.xml.i>`__
+  assignment.
 
-The ``.in`` files are preprocessed and stored in the `build/interface-definitions`
-folder. The `scripts/build-command-templates` script then operates on this folder
-to generate all required CLI nodes.
+The ``.in`` files are preprocessed and stored in the `interface-definitions <https://github.com/vyos/vyos-1x/tree/current/interface-definitions>`__
+folder. The `scripts/build-command-templates <https://github.com/vyos/vyos-1x/blob/current/scripts/build-command-templates>`__
+script then operates on this folder to generate all required CLI nodes.
 
 Example preprocessor output:
 
@@ -512,45 +541,6 @@ Examples:
 * Good: "Disable IPv6 forwarding"
 * Bad: "Disables IPv6 forwarding"
 
-vyos-configd Considerations
----------------------------
-
-All scripts now run under the config daemon and must conform to these requirements:
-
-1. The signature and first four lines of ``get_config(...)`` **must** be as specified above.
-
-2. Each of ``get_config``, ``verify``, ``apply``, and ``generate`` **must** appear
-   with the correct signatures, even if they are a no-op.
-
-3. ``Config`` objects other than those in ``get_config`` **must not** appear.
-
-4. The legacy function ``my_set`` **must not** appear. Modifications to active
-   config **should not** appear in new code (alternative mechanisms may be used
-   if absolutely necessary).
-
-Behind the Scenes
-=================
-
-Template System
----------------
-
-VyOS bash (or vbash) completion is defined in templates. Templates are text files
-(called ``node.def``) stored in a directory tree where:
-
-* Directory names define command names
-* Template files define command behavior
-
-Before VyOS 1.2 (crux), templates were created manually. After a redesign process_,
-new-style templates are automatically generated from XML input files.
-
-GNU Preprocessor
-^^^^^^^^^^^^^^^^
-
-XML interface definition files use the ``.xml.in`` extension. The GCC preprocessor
-processes these files to reduce duplication in common elements like VIF, address,
-description, and enabled/disabled states. Preprocessed files are stored in
-`build/interface-definitions`, where `scripts/build-command-templates` converts
-them to CLI nodes.
 
 C++ Backend Code
 ================
@@ -559,12 +549,12 @@ The VyOS CLI parser combines bash, bash-completion helpers, and the C++ backend
 library `vyatta-cfg <https://github.com/vyos/vyatta-cfg>`__. This section
 references common CLI commands and their C/C++ entry points:
 
-**set**:
+``set``:
 
 * https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L352
 * https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L2549
 
-**commit**:
+``commit``:
 
 * https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/commit/commit-algorithm.cpp#L1252
 
