@@ -4,171 +4,244 @@
 Syslog
 ######
 
-Per default VyOSs has minimal syslog logging enabled which is stored and
-rotated locally. Errors will be always logged to a local file, which includes
-`local7` error messages, emergency messages will be sent to the console, too.
+Overview
+========
 
-To configure syslog, you need to switch into configuration mode.
+By default, VyOS provides a minimal logging configuration with local storage 
+and log rotation. All errors, including local7 messages, are saved to a local 
+file. Emergency alerts are sent to the console.
 
-Logging
-=======
+To change these settings, enter configuration mode.
 
-Syslog supports logging to multiple targets, those targets could be a plain
-file on your VyOS installation itself, a serial console or a remote syslog
-server which is reached via :abbr:`IP (Internet Protocol)` UDP/TCP.
+Syslog configuration
+====================
 
-Global Settings
+Syslog supports logging to multiple destinations: a local file, a console, or 
+a remote syslog server over UDP or TCP.
+
+The syslog configuration is organized into the following categories:
+
+* Global settings
+* Local logging  
+* Console logging
+* Remote logging
+* TLS-encrypted remote logging
+
+Global settings
 ---------------
+Configure the general behavior of the syslog service.
 
 .. cfgcmd:: set system syslog marker interval <number>
 
-   Interval (in seconds) for sending mark messages to the syslog input to
-   indicate that the logging system is functioning.
+   **Configure the interval, in seconds, for sending syslog mark messages.**
 
-   This defaults to 1200 seconds.
+   Syslog mark messages confirm the logging service is operational.
+
+   Default: 1200 seconds.
 
 .. cfgcmd:: set system syslog marker disable
 
-   Disable periodic injection of mark messages.
+   Disable sending syslog mark messages.
 
 .. cfgcmd:: set system syslog preserve-fqdn
 
-   If set, the domain part of the hostname is always sent, even within the same
-   domain as the receiving system.
+   **Configure how the logging device's hostname appears in log messages sent 
+   to a remote syslog server.**
+
+   If configured, the device includes its :abbr:`FQDN (Fully Qualified Domain 
+   Name)` in log messages, even if the syslog server is in the same domain.
 
 .. cfgcmd:: set system syslog source-address <address>
 
-   Source IP address used to initiate connection when sending log data to a
-   remote host.
+   Configure the source IP address for log transmission to a remote server.
 
-Local Logging
+Local logging
 -------------
 
-Enable logging to a local target (``/var/log/messages``) on the system.
+Configure which log messages to save to a local log file.
 
-.. cfgcmd:: system rsyslog local facility <keyword> level <keyword>
+.. cfgcmd:: set system syslog file <filename> facility <keyword> level <keyword>
 
-   Filter syslog messages based on facility and level.
+   **Configure syslog to save log messages for a specific facility and 
+   severity level to a local log file.** 
+
+   Logs matching the specified facility and severity level are saved to the 
+   local file at ``/var/log/messages``. 
+   
+   Refer to the tables below for valid facility and severity options.
 
 .. _syslog_console:
 
-Console
--------
+Console logging
+---------------
+
+Configure which log messages to send to ``/dev/console``.
 
 .. cfgcmd:: set system syslog console facility <keyword> level <keyword>
 
-   Log syslog messages to ``/dev/console``, for an explanation on
-   :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
-   see tables below.
+   **Configure syslog to send log messages for a specific facility and severity 
+   level to the device's console.**
+
+   Refer to the tables below for valid facility and severity options.
 
 .. _syslog_remote:
 
-Remote Host
------------
+Remote logging
+--------------
 
-Logging to a remote host leaves the local logging configuration intact, it
-can be configured in parallel to a custom file or console logging. You can log
-to multiple hosts at the same time, using either TCP or UDP. The default is
-sending the messages via port 514/UDP.
+Configure **remote logging** to send log messages to a remote syslog server.
+
+Remote logging does not affect either **local** or **console logging** and 
+runs in parallel with them. Remote logging supports sending log messages 
+to multiple hosts. 
 
 .. cfgcmd:: set system syslog remote <address> facility <keyword> level <keyword>
 
-   Log syslog messages to remote host specified by `<address>`. The address
-   can be specified by either FQDN or IP address. For an explanation on
-   :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level`
-   keywords see tables below.
+   **Configure log transmission to the remote syslog server for a specific 
+   facility and severity level.**
 
-.. cfgcmd:: set system syslog remote <address> protocol <udp|tcp>
+   The server’s address can be specified using either a :abbr:`FQDN (Fully 
+   Qualified Domain Name)` or an IP address.
 
-   Configure protocol used for communication to remote syslog host. This can be
-   either UDP or TCP.
+   Refer to the tables below for valid facility and severity options.
+
+.. cfgcmd:: set system syslog remote <address> protocol <udp | tcp>
+
+   **Configure the protocol for log transmission.** 
+
+   The protocol can be either UDP or TCP. By default, log messages are sent 
+   over UDP.
 
 .. cfgcmd:: set system syslog remote <address> port <port>
 
-   Configure the TCP or UDP port to connect to on the remote syslog host.
+   **Configure the port for log transmission.**
+
    By default, the standard port 514 is used.
 
 .. cfgcmd:: set system syslog remote <address> format include-timezone
 
-   Send syslog messages in the :rfc:`5424` format, rather than the
-   default :rfc:`3164` (BSD syslog) format.
+   **Configure log transmission in the RFC 5424 format.**
 
-   .. note::
-      The :rfc:`5424` format utilises an :rfc:`3339` / ISO 8601 formatted
-      timestamp, including the system timezone.
+   The RFC 5424 format includes the timezone in the timestamp. For example: 
 
-      Examples of the two syslog message formats:
+   .. code-block:: none
 
-      :rfc:`3164` format: <34>Oct 11 22:14:15 mymachine su: 'su root' failed for lonvick on /dev/pts/8
+      <34>1 2003-10-11T22:14:15.003-07:00 mymachine.example.com su - ID47 - BOM’su root’ failed for lonvick on /dev/pts/8.
+  
+   By default, log messages are sent in the RFC 3164 format. For example: 
 
-      :rfc:`5424` format: <34>1 2003-10-11T22:14:15.003-07:00 mymachine.example.com su - ID47 - BOM'su root' failed for lonvick on /dev/pts/8
+   .. code-block:: none
+
+      <34>Oct 11 22:14:15 mymachine su: ‘su root’ failed for lonvick on /dev/pts/8
 
 .. cfgcmd:: set system syslog remote <address> format octet-counted
 
-   Allows for the transmission of multi-line messages, without them being split
-   across separate syslog messages. This only applies for the TCP protocol
-   (this setting is ignored for UDP protocol). Ensure the receiving system is
-   compatible before enabling this.
+   **Enable octet-counted framing for log transmission.** 
+
+   When enabled, multi-line log messages are sent without splitting. Ensure 
+   the remote server supports octet-counted framing to avoid parsing errors.
+
+   Octet-counted framing is not available for the UDP protocol.
 
 .. cfgcmd:: set system syslog remote <address> vrf <name>
 
-   Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance
-   used when forwarding logs to remote syslog server.
+   Configure the :abbr:`VRF (Virtual Routing and Forwarding)` instance
+   for log transmission.
 
 .. cfgcmd:: set system syslog remote <address> source-address <address>
 
-   Define IPv4 or IPv6 source address used when forwarding logs to remote
-   syslog server.
+   Configure the source IP address (IPv4 or IPv6) for log transmission.
 
-TLS Options
-^^^^^^^^^^^
+:abbr:`TLS (Transport Layer Security)`-encrypted remote logging
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When ``set system syslog remote <address> protocol tcp`` is selected,
-an additional ``tls`` sub-node can be used to enable encryption and
-configure certificate handling. TLS is not supported over UDP and
-if you attempt to enable TLS while using UDP, the system will issue a warning.
+VyOS supports :abbr:`TLS (Transport Layer Security)`-encrypted remote logging 
+over TCP to ensure secure transmission of syslog data to remote syslog servers.
+
+**Prerequisites**: Before configuring :abbr:`TLS (Transport Layer 
+Security)`-encrypted remote logging, ensure you have: 
+
+* A valid remote syslog server address.
+* Valid :abbr:`CA (Certificate Authority)` and client certificates uploaded 
+  to the local :abbr:`PKI (Public Key Infrastructure)` storage.
+* The **remote syslog transport protocol** is set to **TCP**: 
+
+  .. code-block:: none
+
+     set system syslog remote <address> protocol tcp
+
+
+.. note:: :abbr:`TLS (Transport Layer Security)`-encrypted remote logging is 
+   **not supported** over **UDP**.
 
 .. cfgcmd:: set system syslog remote <address> tls
 
-   Enable TLS for this remote syslog destination.
-
+   Enable TLS-encrypted remote logging.
+ 
 .. cfgcmd:: set system syslog remote <address> tls ca-certificate <ca_name>
 
-   Reference to a :abbr:`CA (Certification Authority)` certificate stored
-   in the :abbr:`PKI (Public Key Infrastructure)` subsystem.
-   Used to validate the certificate chain of the remote syslog server.
-   Required when the authentication mode is anything other than ``anon``.
+   **Configure the** :abbr:`CA (Certificate Authority)` **certificate.**
+
+   The syslog client uses the :abbr:`CA (Certificate Authority)` certificate to 
+   verify the identity of the remote syslog server.
+
+   The :abbr:`CA (Certificate Authority)` certificate is required for **all** 
+   authentication modes except ``anon``.
 
 .. cfgcmd:: set system syslog remote <address> tls certificate <cert_name>
+ 
+   **Configure the client certificate.**
 
-   Reference to a client certificate stored in the PKI subsystem.
-   Required when the server enforces client certificate authentication.
+   The remote syslog server uses the client certificate to verify the identity 
+   of the syslog client.
 
-.. cfgcmd:: set system syslog remote <address> tls auth-mode <anon|fingerprint|certvalid|name>
+   The client certificate is required if the remote syslog server enforces 
+   client certificate verification.
 
-   Defines the peer authentication mode:
+.. cfgcmd:: set system syslog remote <address> tls auth-mode <anon | fingerprint
+   | certvalid | name>
 
-   * **anon** - allow encrypted connection without verifying peer identity
-     (not recommended, vulnerable to :abbr:`MITM (Man-in-the-Middle)`).
-   * **fingerprint** - verify the peer certificate against an explicitly
-     configured fingerprint list (set with ``permitted-peer``).
-   * **certvalid** - validate that the peer presents a certificate signed by
-     a trusted CA, but do not check the certificate subject name
-     (:abbr:`CN (Common Name)`).
-   * **name** - validate that the peer presents a certificate signed by a
-     trusted CA and that the certificate’s CN matches the value configured in
-     ``permitted-peer``. This is the recommended secure mode for production.
+   **Configure the authentication mode.**
 
-   .. note:: The default value for the authentication mode is ``anon``.
+   The authentication mode defines how the syslog client verifies the syslog 
+   server's identity.
+
+   The following authentication modes are available:
+
+   * ``anon`` **(default)**: Allows encrypted connections without verifying the syslog 
+     server's identity. This mode is **not recommended**, as it is vulnerable to 
+     :abbr:`MITM (Man-in-the-Middle)` attacks. 
+   * ``fingerprint``: Verifies the server’s certificate fingerprint against the 
+     value preconfigured with:
+
+     .. code-block:: none
+
+        set system syslog remote <address> tls permitted-peer <peer>
+               
+   * ``certvalid``: Verifies the server certificate is signed by a trusted 
+     :abbr:`CA (Certificate Authority)`, skipping :abbr:`CN (Common Name)` check.
+   * ``name``: Verifies that:
+
+     * The server’s certificate is signed by a trusted :abbr:`CA (Certificate 
+       Authority)`.
+     * The :abbr:`CN (Common Name)` in the certificate matches the value 
+       preconfigured with: 
+
+     .. code-block:: none
+
+        set system syslog remote <address> tls permitted-peer <peer>
+
+     This is a **recommended** secure mode for production environments.
 
 .. cfgcmd:: set system syslog remote <address> tls permitted-peer <peer>
 
-   Allowed peer certificate fingerprint or subject name (CN).
+   **Configure the peer certificate identifiers.**
 
-   * In ``fingerprint`` authentication mode: provide one or more peer
-     certificate fingerprints (SHA1 or SHA256).
-   * In ``name`` authentication mode: explicit list of certificate’s CN to enforce.
-   * Ignored in ``anon`` and ``certvalid``.
+   The certificate identifier format depends on the authentication mode:
+
+   * ``fingerprint``: Enter the expected certificate fingerprints (SHA-1 or 
+     SHA-256).
+   * ``name``: Enter the expected certificate :abbr:`CNs (Common Names)`.
 
 Examples:
 ^^^^^^^^^
@@ -195,7 +268,7 @@ Examples:
    set system syslog remote syslog.example.com protocol tcp
    set system syslog remote syslog.example.com tls ca-certificate my-ca
    set system syslog remote syslog.example.com tls auth-mode fingerprint
-   set system syslog remote syslog.example.com tls permitted-peer 'SHA1:10:C4:26:...'
+   set system syslog remote syslog.example.com tls permitted-peers 'SHA1:10:C4:26:...,SHA256:7B:4B:10:...'
 
    # Example of 'name' authentication mode
    set system syslog remote graylog.example.com facility all level debug
@@ -204,34 +277,33 @@ Examples:
    set system syslog remote graylog.example.com tls ca-certificate my-ca
    set system syslog remote graylog.example.com tls certificate syslog-client
    set system syslog remote graylog.example.com tls auth-mode name
-   set system syslog remote graylog.example.com tls permitted-peer 'graylog.example.com'
+   set system syslog remote graylog.example.com tls permitted-peers 'graylog.example.com'
 
-Security Notes
-^^^^^^^^^^^^^^
+Security recommendations
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Always prefer ``auth-mode name`` for secure deployments, as it ensures
-  both CA trust and server hostname validation.
-* ``anon`` mode should only be used for testing, because it does not
-  authenticate the server.
-* Ensure private keys are stored and managed exclusively in the
-  :doc:`PKI system </configuration/pki/index>`.
+* For secure deployments, always use the ``name`` authentication mode. It 
+  ensures that the server is validated by a trusted :abbr:`CA (Certificate 
+  Authority)` and that the hostname matches the certificate.
+* Use the ``anon`` authentication mode only in testing environments, as it 
+  doesn't provide  server authentication.
+* Ensure private keys are generated, stored, and maintained exclusively within 
+  the :doc:`PKI system </configuration/pki/index>`.
 
 .. _syslog_facilities:
 
-Facilities
-==========
+Syslog facilities
+=================
 
-List of facilities used by syslog. Most facilities names are self explanatory.
-Facilities local0 - local7 common usage is f.e. as network logs facilities for
-nodes and network equipment. Generally it depends on the situation how to
-classify logs and put them to facilities. See facilities more as a tool rather
-than a directive to follow.
-
-Facilities can be adjusted to meet the needs of the user:
+This section lists facilities used by syslog. Most facility names are self-
+explanatory. The local0–local7 facilities are used for custom purposes, such as 
+logging from network nodes and equipment. Facility assignment is flexible and 
+should be tailored to your company's needs. Consider facilities as categorization 
+tools, rather than strict directives.
 
 +----------+----------+----------------------------------------------------+
 | Facility | Keyword  | Description                                        |
-| Code     |          |                                                    |
+| code     |          |                                                    |
 +==========+==========+====================================================+
 |          | all      | All facilities                                     |
 +----------+----------+----------------------------------------------------+
@@ -245,7 +317,7 @@ Facilities can be adjusted to meet the needs of the user:
 +----------+----------+----------------------------------------------------+
 | 4        | auth     | Security/authentication messages                   |
 +----------+----------+----------------------------------------------------+
-| 5        | syslog   | Messages generated internally by syslogd           |
+| 5        | syslog   | Messages generated internally by syslog            |
 +----------+----------+----------------------------------------------------+
 | 6        | lpr      | Line printer subsystem                             |
 +----------+----------+----------------------------------------------------+
@@ -286,33 +358,33 @@ Facilities can be adjusted to meet the needs of the user:
 
 .. _syslog_severity_level:
 
-Severity Level
-==============
+Severity levels
+===============
 
 +-------+---------------+---------+-------------------------------------------+
 | Value | Severity      | Keyword | Description                               |
 +=======+===============+=========+===========================================+
-|       |               | all     | Log everything                            |
+|       |               | all     | Log everything.                           |
 +-------+---------------+---------+-------------------------------------------+
-| 0     | Emergency     | emerg   | System is unusable - a panic condition    |
+| 0     | Emergency     | emerg   | System is unusable - a panic condition.   |
 +-------+---------------+---------+-------------------------------------------+
 | 1     | Alert         | alert   | Action must be taken immediately - A      |
 |       |               |         | condition that should be corrected        |
 |       |               |         | immediately, such as a corrupted system   |
 |       |               |         | database.                                 |
 +-------+---------------+---------+-------------------------------------------+
-| 2     | Critical      | crit    | Critical conditions - e.g. hard drive     |
+| 2     | Critical      | crit    | Critical conditions - e.g., hard drive    |
 |       |               |         | errors.                                   |
 +-------+---------------+---------+-------------------------------------------+
-| 3     | Error         | err     | Error conditions                          |
+| 3     | Error         | err     | Error conditions.                         |
 +-------+---------------+---------+-------------------------------------------+
-| 4     | Warning       | warning | Warning conditions                        |
+| 4     | Warning       | warning | Warning conditions.                       |
 +-------+---------------+---------+-------------------------------------------+
 | 5     | Notice        | notice  | Normal but significant conditions -       |
 |       |               |         | conditions that are not error conditions, |
 |       |               |         | but that may require special handling.    |
 +-------+---------------+---------+-------------------------------------------+
-| 6     | Informational | info    | Informational messages                    |
+| 6     | Informational | info    | Informational messages.                   |
 +-------+---------------+---------+-------------------------------------------+
 | 7     | Debug         | debug   | Debug-level messages - Messages that      |
 |       |               |         | contain information normally of use only  |
@@ -320,44 +392,44 @@ Severity Level
 +-------+---------------+---------+-------------------------------------------+
 
 
-Display Logs
+Display logs
 ============
 
 .. opcmd:: show log [all | authorization | cluster | conntrack-sync | ...]
 
-   Display log files of given category on the console. Use tab completion to get
-   a list of available categories. Those categories could be: all, authorization,
-   cluster, conntrack-sync, dhcp, directory, dns, file, firewall, https, image
-   lldp, nat, openvpn, snmp, tail, vpn, vrrp
+   **Display logs for a specific category on the console.**
 
-If no option is specified, this defaults to `all`.
+   Use tab completion to view a list of available categories. 
+
+   If no category is specified, all logs are shown.
 
 .. opcmd:: show log image <name>
    [all | authorization | directory | file <file name> | tail <lines>]
 
-   Log messages from a specified image can be displayed on the console. Details
-   of allowed parameters:
+   **Display logs for a specific image on the console.**
+
+   Available log categories: 
 
    .. list-table::
       :widths: 25 75
       :header-rows: 0
 
       * - all
-        - Display contents of all master log files of the specified image
+        - Displays the contents of system log files of the specified image.
       * - authorization
-        - Display all authorization attempts of the specified image
+        - Displays authorization attempts of the specified image.
       * - directory
-        - Display list of all user-defined log files of the specified image
+        - Displays user-defined log files of the specified image.
       * - file <file name>
-        - Display contents of a specified user-defined log file of the specified
-          image
+        - Displays the contents of a specified user-defined log file of the specified
+          image.
       * - tail
-        - Display last lines of the system log of the specified image
+        - Displays last lines of the system log of the specified image.
       * - <lines>
-        - Number of lines to be displayed, default 10
+        - Number of lines to be displayed, default 10.
 
-When no options/parameters are used, the contents of the main syslog file are
+If no category is specified, the contents of the main syslog file are
 displayed.
 
-.. hint:: Use ``show log | strip-private`` if you want to hide private data
-   when sharing your logs.
+.. hint:: Use ``show log | strip-private`` to hide private data
+   when displaying your logs.
