@@ -242,6 +242,9 @@ Security)`-encrypted remote logging, ensure you have:
    * ``fingerprint``: Enter the expected certificate fingerprints (SHA-1 or 
      SHA-256).
    * ``name``: Enter the expected certificate :abbr:`CNs (Common Names)`.
+   
+   For ``anon`` and ``certvalid`` authentication modes, certificate identifiers 
+   are not required.
 
 Examples:
 ^^^^^^^^^
