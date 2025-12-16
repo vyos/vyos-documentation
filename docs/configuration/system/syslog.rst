@@ -78,55 +78,99 @@ sending the messages via port 514/UDP.
 
   Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 
-TLS Options
-^^^^^^^^^^^
+:abbr:`TLS (Transport Layer Security)`-encrypted remote logging
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When ``set system syslog host <address> protocol tcp`` is selected,
-an additional ``tls`` sub-node can be used to enable encryption and
-configure certificate handling. TLS is not supported over UDP and
-if you attempt to enable TLS while using UDP, the system will issue a warning.
+VyOS supports :abbr:`TLS (Transport Layer Security)`-encrypted remote logging 
+over TCP to ensure secure transmission of syslog data to remote syslog servers.
 
-.. cfgcmd:: set system syslog host <address> tls
+**Prerequisites**: Before configuring :abbr:`TLS (Transport Layer 
+Security)`-encrypted remote logging, ensure you have: 
 
-   Enable TLS for this remote syslog destination.
+* A valid remote syslog server address.
+* Valid :abbr:`CA (Certificate Authority)` and client certificates uploaded 
+  to the local :abbr:`PKI (Public Key Infrastructure)` storage.
+* The **remote syslog transport protocol** is set to **TCP**: 
 
-.. cfgcmd:: set system syslog host <address> tls ca-certificate <ca_name>
+  .. code-block:: none
 
-   Reference to a :abbr:`CA (Certification Authority)` certificate stored
-   in the :abbr:`PKI (Public Key Infrastructure)` subsystem.
-   Used to validate the certificate chain of the remote syslog server.
-   Required when the authentication mode is anything other than ``anon``.
+     set system syslog remote <address> protocol tcp
 
-.. cfgcmd:: set system syslog host <address> tls certificate <cert_name>
 
-   Reference to a client certificate stored in the PKI subsystem.
-   Required when the server enforces client certificate authentication.
+.. note:: :abbr:`TLS (Transport Layer Security)`-encrypted remote logging is 
+   **not supported** over **UDP**.
 
-.. cfgcmd:: set system syslog host <address> tls auth-mode <anon|fingerprint|certvalid|name>
+.. cfgcmd:: set system syslog remote <address> tls
 
-   Defines the peer authentication mode:
+   Enable TLS-encrypted remote logging.
+ 
+.. cfgcmd:: set system syslog remote <address> tls ca-certificate <ca_name>
 
-   * **anon** - allow encrypted connection without verifying peer identity
-     (not recommended, vulnerable to :abbr:`MITM (Man-in-the-Middle)`).
-   * **fingerprint** - verify the peer certificate against an explicitly
-     configured fingerprint list (set with ``permitted-peer``).
-   * **certvalid** - validate that the peer presents a certificate signed by
-     a trusted CA, but do not check the certificate subject name
-     (:abbr:`CN (Common Name)`).
-   * **name** - validate that the peer presents a certificate signed by a
-     trusted CA and that the certificate’s CN matches the value configured in
-     ``permitted-peer``. This is the recommended secure mode for production.
+   **Configure the** :abbr:`CA (Certificate Authority)` **certificate.**
 
-   .. note:: The default value for the authentication mode is ``anon``.
+   The syslog client uses the :abbr:`CA (Certificate Authority)` certificate to 
+   verify the identity of the remote syslog server.
 
-.. cfgcmd:: set system syslog host <address> tls permitted-peer <peer>
+   The :abbr:`CA (Certificate Authority)` certificate is required for **all** 
+   authentication modes except ``anon``.
 
-   Allowed peer certificate fingerprint or subject name (CN).
+.. cfgcmd:: set system syslog remote <address> tls certificate <cert_name>
+ 
+   **Configure the client certificate.**
 
-   * In ``fingerprint`` authentication mode: provide one or more peer
-     certificate fingerprints (SHA1 or SHA256).
-   * In ``name`` authentication mode: explicit list of certificate’s CN to enforce.
-   * Ignored in ``anon`` and ``certvalid``.
+   The remote syslog server uses the client certificate to verify the identity 
+   of the syslog client.
+
+   The client certificate is required if the remote syslog server enforces 
+   client certificate verification.
+
+.. cfgcmd:: set system syslog remote <address> tls auth-mode <anon | fingerprint
+   | certvalid | name>
+
+   **Configure the authentication mode.**
+
+   The authentication mode defines how the syslog client verifies the syslog 
+   server's identity.
+
+   The following authentication modes are available:
+
+   * ``anon`` **(default)**: Allows encrypted connections without verifying the syslog 
+     server's identity. This mode is **not recommended**, as it is vulnerable to 
+     :abbr:`MITM (Man-in-the-Middle)` attacks. 
+   * ``fingerprint``: Verifies the server’s certificate fingerprint against the 
+     value preconfigured with:
+
+     .. code-block:: none
+
+        set system syslog remote <address> tls permitted-peer <peer>
+               
+   * ``certvalid``: Verifies the server certificate is signed by a trusted 
+     :abbr:`CA (Certificate Authority)`, skipping :abbr:`CN (Common Name)` check.
+   * ``name``: Verifies that:
+
+     * The server’s certificate is signed by a trusted :abbr:`CA (Certificate 
+       Authority)`.
+     * The :abbr:`CN (Common Name)` in the certificate matches the value 
+       preconfigured with: 
+
+     .. code-block:: none
+
+        set system syslog remote <address> tls permitted-peer <peer>
+
+     This is a **recommended** secure mode for production environments.
+
+.. cfgcmd:: set system syslog remote <address> tls permitted-peer <peer>
+
+   **Configure the peer certificate identifiers.**
+
+   The certificate identifier format depends on the authentication mode:
+
+   * ``fingerprint``: Enter the expected certificate fingerprints (SHA-1 or 
+     SHA-256).
+   * ``name``: Enter the expected certificate :abbr:`CNs (Common Names)`.
+
+   For ``anon`` and ``certvalid`` authentication modes, certificate identifiers 
+   are not required.
 
 Examples:
 ^^^^^^^^^
