@@ -96,7 +96,23 @@ Equuleus reached the end of support in 2025.
 Sagitta (1.4)
 -------------
 
-Sagitta (the Arrow), released in 2024, is currently a supported LTS release.
+Sagitta (the Arrow), the current LTS release, became generally available on 
+4 June 2024. Its development began in late 2021 and focused on eliminating 
+remaining legacy components and reworking core subsystems.
+
+The transition to XML-defined command definitions and script refactoring with 
+separate verify, update, and apply stages were completed. The firewall 
+subsystem was rebuilt on nftables, introducing interface-independent rulesets 
+and the reimplemented zone-based firewall model. The PKI subsystem was 
+redesigned to manage cryptographic material directly within the configuration 
+file.
+
+Sagitta introduced rollback without reboot, support for Babel and PIM6 routing 
+protocols, failover routes, segment routing, NAT64, an IKEv2 remote-access VPN 
+server, Zabbix monitoring, HTTP load balancing, and configuration 
+synchronization using the HTTP API.
+
+The underlying base system was upgraded to Debian 12 (Bookworm).
 
 Circinus (1.5)
 --------------
