@@ -13,35 +13,33 @@ Bug Report/Issue
 
 Issues and bugs occur in every software project, and VyOS is no exception.
 
-Report all issues to the developers so they know what is not working correctly.
-Without this feedback, developers may assume a broken feature works properly.
+I found a bug, what should I do?
+--------------------------------
 
-I have found a bug, what should I do?
--------------------------------------
+When you find a potential bug, first: 
 
-When you believe you have found a bug, verify it first to ensure it is genuine.
+* Consult the documentation_ to ensure you configured your system
+  correctly.
+* Check if the VyOS community has identified a workaround for the bug through
+  Slack_ or the VyOS Forum_.
 
-* Consult the documentation_ to ensure that you have configured your system
-  correctly
-* Get community support via Slack_ or our Forum_
-
-Ensure the problem is reproducible
-----------------------------------
+Ensure the bug is reproducible
+------------------------------
 
 Include the following information when reporting a bug:
 
 * A sequence of configuration commands or a complete configuration file needed
-  to recreate the bug. Avoid partial configs: a sequence of commands is easy to
-  paste, a complete config is easy to load, but a partial config is neither.
-  This limitation should improve once we implement a "merge from the CLI" feature.
-* Describe the expected behavior and how it differs from what you observe. Include
-  command outputs or traffic dumps, but explain briefly why they are wrong and
-  what the correct behavior should be.
+  to recreate the bug. Avoid partial configurations: a sequence of commands is
+  easy to paste and a complete configuration is easy to load, but a partial
+  config is hard to reconstruct.
+* Describe the expected behavior and how it differs from what you observe.
+  Include command outputs or traffic dumps. Explain briefly why these outputs
+  are incorrect and what the correct behavior should be.
 * A sequence of actions that trigger the bug. While not always possible, this
   helps developers and community members confirm the issue and verify fixes.
-* If it is a regression, specify a VyOS version where the feature worked correctly.
-  If you can identify the exact version that broke it, that is helpful. Any
-  working version is acceptable.
+* If the bug is a regression, specify the VyOS version where the feature worked
+  correctly (any working version is acceptable). Identify the exact version
+  that the feature stopped working, if possible. 
 
 If you are uncertain whether the behavior is a bug or what the correct behavior
 is, or if you lack a reliable reproducing procedure, post on the forum or ask in
@@ -52,12 +50,13 @@ bug report.
 Report a Bug
 ------------
 
-To open a bug report or feature request, create an account on VyOS Phabricator_.
-On the left side of the specific project (VyOS 1.2, VyOS 1.3, or VyOS 1.4),
-you will find links for opening bug reports and feature requests.
+To open a bug report or feature request, create an account on
+`vyos.dev <https://vyos.dev>`__, the public issue tracker for VyOS.
+
+When creating a new issue, select the appropriate project and:
 
 * Provide as much information as you can.
-* Specify which VyOS version you are using: ``run show version``
+* Specify which VyOS version you are using: ``run show version``.
 * Explain how to reproduce the bug.
 
 .. _feature_request:
@@ -66,21 +65,21 @@ Feature Requests
 ================
 
 Have an idea to improve VyOS or need a feature that would benefit all users?
-Before submitting a feature request, search Phabricator_ to check if a request
-already exists. You can enhance an existing request or create a new one using
-the quick link on the left side of the specific project.
+Before submitting a feature request, search the public issue tracker
+`vyos.dev <https://vyos.dev>`__ to check if a request already exists. You can
+also enhance an existing request by providing additional information.
 
-Create a task before starting work on a feature, even if it is a tiny feature.
-We use the task tracker to generate release notes, so all work must be reflected
-there.
+Create a task before starting work on a feature,
+even if it is a trivial feature.
+The task tracker generates release notes, so all work must be reflected
+in the tracker.
 
 Include at least the following information:
 
 * Provide a detailed description of the feature: what it is, how it works, and
-  how you would use it. Maintainers may not be familiar with every feature of
-  every protocol and tool. Community contributors looking for work also
-  appreciate detailed information that helps them implement and test the
-  feature.
+  how you would use it. Maintainers may not have experience with every feature,
+  protocol, and tool in VyOS. Detailed information helps VyOS contributors and
+  maintainers test new features they are unfamiliar with.
 * Include proposed CLI syntax if the feature requires new commands. Provide both
   configuration and operational mode commands if both are needed.
 
@@ -88,10 +87,12 @@ Consider including the following information:
 
 * Is the feature already supported by the underlying component
   (FreeRangeRouting, nftables, Kea, etc.)?
-* How would you configure it manually with that component?
-* Are there limitations (hardware support, resource usage)?
+* How would you configure the feature manually within that component?
+* Are there any limitations to using the feature
+  (hardware support, resource usage)?
 * Are there any adverse or non-obvious interactions with other features? Should
-  it be mutually exclusive with anything?
+  the feature be mutually exclusive? 
+* Any relevant documentation or references about the feature.
 
 You do not need to provide all this information, but if you can, it simplifies
 developers' work considerably. Research these questions when possible.
@@ -100,21 +101,24 @@ Task auto-closing
 =================
 
 A special task status exists for when all work by maintainers and contributors
-is complete: "Needs reporter action".
+is complete: **Needs reporter action**.
 
-We assign this status to:
+VyOS assigns this status to:
 
-* Feature requests that do not include required information and need clarification.
+* Feature requests that do not include required information and need
+  clarification.
 * Bug reports that lack reproducing procedures.
 * Tasks that are implemented and tested by the implementation author,
-  but require testing in the real-world environment that only the reporter can replicate
-  (e.g., hardware we do not have, specific network conditions...).
+  but require testing in the real-world environment that only the reporter
+  can replicate (for example, hardware VyOS does not support or specific
+  network conditions).
 
-When a task is set to "Needs reporter action", the following happens:
+When a task is set to **Needs reporter action**:
 
-* If no response arrives within two weeks, the task bot adds a comment
+* If the reporter does not respond within two weeks, the task bot adds a comment
   ("Any news?") to remind the reporter.
-* If there is still no response after two more weeks, the task closes automatically.
+* If there is still no response after another two weeks,
+  the task is closed automatically.
 
 We do not auto-close tasks with any other status and do not close tasks due to
 lack of maintainer activity.

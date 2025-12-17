@@ -12,18 +12,6 @@ VyOS uses this framework to detect issues before they cause downstream problems.
 
 This section describes how the automated testing process at VyOS works.
 
-Jenkins CI
-==========
-
-The `VyOS CI`_ system is based on Jenkins. It builds all required packages
-for VyOS 1.2 to 1.4. In addition to the package build, there is the
-``vyos-build`` job, which builds and tests the VyOS ISO image.
-The image is published after a successful test run.
-
-VyOS runs two independent tests in parallel using separate QEMU instances.
-These are launched via ``make test`` and ``make testc`` from within the
-vyos-build_ repository.
-
 Smoketests
 ==========
 
