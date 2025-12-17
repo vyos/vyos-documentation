@@ -76,7 +76,8 @@ as ``touch /tmp/vyos.ifconfig.debug``.
   during boot. The default file is ``/tmp/full-log``, but you can change it.
 
 .. note:: To retrieve debug output on the command line, disable ``vyos-configd``
-  in addition. You can do this one-time with ``sudo systemctl stop vyos-configd``
+  in addition. You can do this one-time with
+  ``sudo systemctl stop vyos-configd``
   or permanently with ``sudo systemctl disable vyos-configd``.
 
 FRR
@@ -193,8 +194,8 @@ boot time increased significantly. You can analyze and graph boot time to see
 detailed call sequences during startup.
 
 This uses the ``systemd-bootchart`` package, which is installed by default on
-VyOS 1.3 (equuleus) and later. Configuration is versioned for comparable results.
-Refer to bootchart.conf_ for the configuration file.
+VyOS 1.3 (equuleus) and later. Configuration is versioned for comparable
+results.  Refer to bootchart.conf_ for the configuration file.
 
 To enable boot time graphing, add the following to the kernel command line:
 ``init=/usr/lib/systemd/systemd-bootchart``

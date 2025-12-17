@@ -119,7 +119,8 @@ that you amend the commit message.
 Writing good commit messages
 -----------------------------
 
-Follow the format described in `Git documentation <https://git-scm.com/book/ch5-2.html>`__
+Follow the format described in
+the `Git documentation <https://git-scm.com/book/ch5-2.html>`__
 and `Chris Beams' guide <https://chris.beams.io/posts/git-commit/>`__.
 
 Commit message format:
@@ -136,8 +137,12 @@ Commit message format:
 4. **Message body** with details:
 
    * Describe what changed, why, and how. This helps with ``git bisect``.
-   * Wrap text at 72 characters for readability with ``git log`` on an 80x25 terminal.
-   * Reference previous commits when applicable: ``After commit abcd12ef ("snmp: this is a headline") a Python import statement is missing, throwing the following exception: ABCDEF``
+   * Wrap text at 72 characters for readability with ``git log`` on an 80x25
+     terminal.
+   * Reference previous commits when applicable:
+     ``After commit abcd12ef ("snmp: this is a headline")
+     a Python import statement is missing, throwing the following exception:
+     ABCDEF``
 
 5. **Cherry-pick option**: Always use the ``-x`` option when back-porting or
    forward-porting commits:
@@ -153,9 +158,10 @@ Commit message format:
 
 Constraints:
 
-* Only bugfixes are accepted for packages other than https://github.com/vyos/vyos-1x.
-  New functionality must use the new XML/Python interface, not old-style templates
-  (``node.def`` files and Perl/Bash code).
+* Bugfixes are only accepted for packages other than
+  https://github.com/vyos/vyos-1x.
+  New functionality must use the new XML/Python interface, not old-style
+  templates (``node.def`` files and Perl/Bash code).
 
 Coding guidelines
 =================
@@ -277,10 +283,12 @@ system. Prefer non-disruptive reload when possible. Disruptive operations like
 daemon restarts are acceptable only when:
 
 * The component does not support non-disruptive reload, or
-* The expected service degradation is minimal (for example, auxiliary services like LLDPd)
+* The expected service degradation is minimal (for example, auxiliary services
+  like LLDPd)
 
 For high-impact services (VPN daemons, routing protocols), make effort to
-determine if changes can be applied non-disruptively before resorting to restarts.
+determine if changes can be applied non-disruptively before resorting to
+restarts.
 
 Never modify active configuration directly unless absolutely necessary. Instead,
 generate configuration files and apply them with a single command like service
@@ -289,26 +297,30 @@ with ``iptables-restore`` rather than executing iptables commands one by one.
 
 The ``apply()`` and ``generate()`` functions may raise ``ConfigError`` if the
 daemon fails to start with the updated config. However, this is not a substitute
-for proper config validation in the ``verify()`` function. Make reasonable effort
-to verify that generated configuration is valid and will be accepted by the daemon,
-including cross-checks with other VyOS configuration subtrees when necessary.
+for proper config validation in the ``verify()`` function. Make reasonable
+effort to verify that generated configuration is valid and will be accepted by
+the daemon, including cross-checks with other VyOS configuration subtrees when
+necessary.
 
 Exceptions like ``VyOSError`` (raised by ``vyos.config.Config`` on improper
-operations) should not be silenced or caught. While this may produce less polished
-error output for users, it generates better bug reports and helps IT professionals
-debug issues.
+operations) should not be silenced or caught. While this may produce less
+polished error output for users, it generates better bug reports and helps
+maintainers debug issues.
 
 For reference implementations, see ``ntp.py`` or ``interfaces-bonding.py`` (for
 tag nodes) in the `vyos-1x <https://github.com/vyos/vyos-1x>`__ repository.
 
 Other considerations: ``vyos-configd``
----------------------------
+--------------------------------------
 
-All scripts now run under the config daemon and must conform to these requirements:
+All scripts now run under the config daemon and must conform to these
+requirements:
 
-1. The signature and first four lines of ``get_config(...)`` **must** be as specified above.
+1. The signature and first four lines of ``get_config(...)`` **must** be as
+   specified above.
 
-2. Each of ``get_config``, ``verify``, ``apply``, and ``generate`` **must** appear
+2. Each of ``get_config``, ``verify``, ``apply``, and ``generate`` **must**
+   appear
    with the correct signatures, even if they are a no-op.
 
 3. ``Config`` objects other than those in ``get_config`` **must not** appear.
@@ -429,8 +441,8 @@ Template Processors
 -------------------
 
 XML interface definition files use the ``.xml.in`` file extension (implemented
-in :vytask:`T1843`). These files use the GCC preprocessor to reduce code duplication
-in common areas:
+in :vytask:`T1843`). These files use the GCC preprocessor to reduce code
+duplication in common areas:
 
 * VIF (including VIF-S and VIF-C)
 * Address configuration
@@ -438,6 +450,8 @@ in common areas:
 * Enabled/Disabled state
 
 Instead of repeating XML nodes, use include files with predefined features:
+
+.. stop_vyoslinter
 
 * `IPv4, IPv6, and DHCP(v6) <https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6-dhcp.xml.i>`__
   address assignment.
@@ -448,9 +462,12 @@ Instead of repeating XML nodes, use include files with predefined features:
 * `MAC address <https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/firewall/mac-address.xml.i>`__
   assignment.
 
+
 The ``.in`` files are preprocessed and stored in the `interface-definitions <https://github.com/vyos/vyos-1x/tree/current/interface-definitions>`__
 folder. The `scripts/build-command-templates <https://github.com/vyos/vyos-1x/blob/current/scripts/build-command-templates>`__
 script then operates on this folder to generate all required CLI nodes.
+
+.. start_vyoslinter
 
 Example preprocessor output:
 
@@ -482,7 +499,8 @@ Help Strings
 
 Follow these guidelines for consistent, readable help strings:
 
-**Capitalization and Punctuation**
+Capitalization and Punctuation
+""""""""""""""""""""""""""""""
 
 * Capitalize the first word of every help string.
 * Do not use a period at the end of help strings.
@@ -496,7 +514,8 @@ Examples:
 * Bad: "Frobnication algorithm."
 * Incorrect: "frobnication algorithm."
 
-**Abbreviations and Acronyms**
+Abbreviations and Acronyms
+""""""""""""""""""""""""""
 
 * Capitalize all abbreviations and acronyms.
 
@@ -523,7 +542,8 @@ Examples:
 * Bad: PPPOE, IPSEC
 * Bad: pppoe, ipsec
 
-**Verbs**
+Verbs
+"""""
 
 * Avoid verbs. If a verb can be omitted, omit it.
 
@@ -532,7 +552,8 @@ Examples:
 * Good: "TCP connection timeout"
 * Bad: "Set TCP connection timeout"
 
-* When a verb is essential, use it. For example: "Disable IPv6 forwarding on all interfaces" for ``set system ipv6 disable-forwarding``.
+* When a verb is essential, use it. For example: "Disable IPv6 forwarding on
+  all interfaces" for ``set system ipv6 disable-forwarding``.
 
 * Use infinitive form for necessary verbs.
 
@@ -550,6 +571,8 @@ library `vyatta-cfg <https://github.com/vyos/vyatta-cfg>`__. This section
 references common CLI commands and their C/C++ entry points:
 
 ``set``:
+
+.. stop_vyoslinter
 
 * https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L352
 * https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L2549
