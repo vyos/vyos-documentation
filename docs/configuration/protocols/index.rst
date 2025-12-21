@@ -16,6 +16,7 @@ Protocols
    mpls
    multicast
    segment-routing
+   traffic-engineering
    openfabric
    ospf
    pim
