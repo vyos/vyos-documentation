@@ -71,6 +71,111 @@ Ethernet options
   The supported values for a specific interface can be obtained
   with: `ethtool -g <interface>`
 
+Interrupt Coalescing
+----------
+
+Interrupt coalescing is a mechanism that reduces CPU interrupt load by bundling
+multiple packets into a single interrupt event instead of interrupting
+the CPU for every packet arrival or transmission.
+
+.. note:: Not all network drivers or virtual interfaces support all
+  coalescing parameters. Use ``ethtool --show-coalesce <interface>``
+  to verify which settings are supported by your hardware and driver.
+
+**Basic adaptive coalescing**
+
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing adaptive-rx
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing adaptive-tx
+
+  Enable adaptive interrupt coalescing. The NIC automatically tunes RX/TX
+  interrupt pacing based on traffic patterns to reduce CPU utilization
+  during high throughput while preserving latency at low packet rates.
+
+**Basic interrupt delay**
+
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing rx-usecs <0-16384>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-usecs <0-16384>
+
+  Set the delay in microseconds before generating an RX/TX interrupt after
+  receiving or transmitting a packet. Lower values reduce latency; higher
+  values reduce CPU load.
+
+**Interrupt frame thresholds**
+
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing rx-frames <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-frames <number>
+
+  Generate an RX/TX interrupt only after the specified number of packets
+  have been received or transmitted.
+
+**IRQ-specific coalescing**
+
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing rx-usecs-irq <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing rx-frames-irq <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-usecs-irq <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-frames-irq <number>
+
+  Control interrupt coalescing parameters while the driver is already
+  servicing an interrupt (IRQ context). These settings allow finer tuning
+  of interrupt behavior under sustained load.
+
+**Adaptive rate thresholds**
+
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing pkt-rate-low <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing pkt-rate-high <number>
+
+  Define packet-rate thresholds (packets per second) used by adaptive
+  coalescing to switch between low-rate and high-rate interrupt coalescing
+  profiles.
+
+**Low-rate adaptive parameters**
+
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing rx-usecs-low <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing rx-frame-low <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-usecs-low <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-frame-low <number>
+
+  Interrupt coalescing parameters applied when the packet rate is below
+  ``pkt-rate-low``. Typically optimized for lower latency.
+
+**High-rate adaptive parameters**
+
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing rx-usecs-high <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing rx-frame-high <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-usecs-high <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-frame-high <number>
+
+  Interrupt coalescing parameters applied when the packet rate exceeds
+  ``pkt-rate-high``. Typically optimized for maximum throughput and
+  reduced CPU utilization.
+
+**Statistics and sampling**
+
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing stats-block-usecs <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing sample-interval <number>
+
+  Control how frequently coalescing statistics are updated and how often
+  the NIC samples traffic rates for adaptive coalescing decisions.
+
+**Completion queue (CQE) mode**
+
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing cqe-mode-rx
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing cqe-mode-tx
+
+  Enable RX/TX Completion Queue Entry (CQE) mode, if supported by the
+  driver. CQE mode can improve performance on high-speed NICs by
+  optimizing completion handling.
+
+**Transmit aggregation**
+
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-aggr-max-bytes <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-aggr-max-frames <number>
+.. cfgcmd:: set interfaces ethernet <interface> interrupt-coalescing tx-aggr-time-usecs <number>
+
+  Control transmit packet aggregation. Packets may be buffered and sent
+  together until one of the configured limits (bytes, frames, or time)
+  is reached, reducing interrupt and DMA overhead.
+
 
 Offloading
 ----------
