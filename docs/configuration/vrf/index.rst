@@ -47,8 +47,8 @@ can be used to filter which routes zebra will install in the kernel.
 
    Apply a route-map filter to routes for the specified protocol.
 
-   The following protocols can be used: any, babel, bgp, connected, eigrp,
-   isis, kernel, ospf, rip, static, table
+   The following protocols can be used: any, babel, bgp, eigrp,
+   isis, ospf, rip, static
 
    .. note:: If you choose any as the option that will cause all protocols that
       are sending routes to zebra.
@@ -57,8 +57,8 @@ can be used to filter which routes zebra will install in the kernel.
 
    Apply a route-map filter to routes for the specified protocol.
 
-   The following protocols can be used: any, babel, bgp, connected, isis,
-   kernel, ospfv3, ripng, static, table
+   The following protocols can be used: any, babel, bgp, isis,
+   ospfv3, ripng, static
 
    .. note:: If you choose any as the option that will cause all protocols that
       are sending routes to zebra.
