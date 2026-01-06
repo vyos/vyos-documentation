@@ -700,8 +700,8 @@ To delegate /64's from a bigger /56
 
 .. code-block:: none
 
-  set service dhcpv6-server shared-network-name MYNET subnet 2001:0db8:0:1::/64 prefix-delegation start 2001:0db8:1:: prefix-length '64'
-  set service dhcpv6-server shared-network-name MYNET subnet 2001:0db8:0:1::/64 prefix-delegation start 2001:0db8:1:: stop '2001:0db8:1:ff::'
+  set service dhcpv6-server shared-network-name MYNET subnet 2001:db8:0:1::/64 prefix-delegation start 2001:0db8:1:: prefix-length '64'
+  set service dhcpv6-server shared-network-name MYNET subnet 2001:db8:0:1::/64 prefix-delegation start 2001:0db8:1:: stop '2001:0db8:1:ff::'
 
 Address pools
 -------------
