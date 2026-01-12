@@ -95,8 +95,44 @@ Creating the Amazon Cloudwatch Agent Configuration in Amazon :abbr:`SSM (Systems
 
 3. When prompted, answer "yes" to the question "Do you want to store the config in the SSM parameter store?".
 
+AWS Gateway Load Balancer
+--------------------------
+
+VyOS supports the AWS Gateway Load Balancer (GWLB) tunnel handler (``gwlbtun``),
+which enables VyOS to act as an inspection or processing target for GWLB. GWLB
+uses Geneve encapsulation with custom metadata to deliver traffic to VyOS for
+packet filtering, shaping, deep packet inspection, NAT, or other traffic
+manipulation functions. The tunnel handler automatically creates Linux tunnel
+interfaces (``gwi-*`` for ingress and ``gwo-*`` for egress) per endpoint,
+allowing you to use standard Linux utilities like iptables, tc, and netfilter
+to implement your inspection or processing logic. This enables VyOS to serve as
+a centralized appliance for traffic inspection in your AWS infrastructure,
+supporting both single-endpoint (1-arm) and multi-endpoint (2-arm) deployment
+modes.
+
+For more information about integrating with AWS Gateway Load Balancer, see
+the following article from AWS:
+`How to integrate Linux instances with AWS Gateway Load Balancer <https://aws.amazon.com/blogs/networking-and-content-delivery/how-to-integrate-linux-instances-with-aws-gateway-load-balancer/>`__.
+
+Configuration Example
+^^^^^^^^^^^^^^^^^^^^^
+
+Configure the AWS GWLB service with the following commands:
+
+.. code-block:: none
+
+  set service aws glb script on-create '/config/scripts/glb-create.sh'
+  set service aws glb script on-destroy '/config/scripts/glb-destroy.sh'
+  set service aws glb status format 'simple'
+  set service aws glb status port '8282'
+  set service aws glb threads tunnel '4'
+  set service aws glb threads tunnel-affinity '1-2'
+  set service aws glb threads udp '4'
+  set service aws glb threads udp-affinity '0-3'
+
 References
 ----------
 - https://console.aws.amazon.com/
 - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
 - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-EC2-Instance-fleet.html
+- https://aws.amazon.com/blogs/networking-and-content-delivery/how-to-integrate-linux-instances-with-aws-gateway-load-balancer/
