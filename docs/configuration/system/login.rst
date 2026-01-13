@@ -311,7 +311,7 @@ Example:
 Once :abbr:`OTP (One-time password)`-based :abbr:`MFA (Multi-factor 
 Authentication)` is configured for a user account, this user must enter their 
 standard password followed by the current 6-digit OTP code at login. For 
-example, if the user's password is vyosrocks and the OTP is ``817454``, they 
+example, if the user's password is ``vyosrocks`` and the OTP is ``817454``, they 
 should enter ``vyosrocks817454``.
 
 
