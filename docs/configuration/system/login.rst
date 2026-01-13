@@ -502,7 +502,7 @@ Login banners
 =============
 
 VyOS allows you to configure **pre-login** and **post-login** banners. 
-Pre-login banners are typically used for legal disclaimers or security warnings 
+Pre-login banners are typically used for system identification, legal disclaimers, or security warnings 
 displayed before authentication, while post-login banners provide system 
 information or operational notices to users after login.
 
