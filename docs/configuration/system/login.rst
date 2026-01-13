@@ -171,7 +171,7 @@ standard authentication.
    **Configure** :abbr:`OTP (One-time password)`**-based** :abbr:`MFA 
    (Multi-factor Authentication)` **for a user.**
 
-   ``<key>``: A BASE32-encoded secret key. This key must be added to the user's 
+   ``<key>``: A Base32-encoded secret key. This key must be added to the user's 
    authenticator app to generate valid :abbr:`OTPs (One-time passwords)`.
 
    **When configured**, the user is required to enter their password followed by 
