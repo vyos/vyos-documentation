@@ -163,7 +163,6 @@ system:
 
 .. code-block:: none
 
-   set system watchdog
    set system watchdog module iTCO_wdt
    set system watchdog timeout 30
    set system watchdog shutdown-timeout 300
