@@ -146,7 +146,6 @@ This example configures a basic software watchdog with default timeouts:
 
 .. code-block:: none
 
-   set system watchdog
    set system watchdog module softdog
 
 This will:
