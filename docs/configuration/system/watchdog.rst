@@ -27,7 +27,8 @@ tree. The presence of the ``system watchdog`` node enables the watchdog feature.
    The watchdog is enabled only when a watchdog device is available as
    ``/dev/watchdog0``.
 
-   .. note:: If multiple watchdog devices are present, only the first watchdog device is supported (VyOS uses ``/dev/watchdog0`` only).
+   .. note:: If multiple watchdog devices are present, only the first watchdog
+      device is supported (VyOS uses ``/dev/watchdog0`` only).
 
    If ``/dev/watchdog0`` does not exist and no module is configured, commit will
    fail. If a module is configured but ``/dev/watchdog0`` still cannot be
