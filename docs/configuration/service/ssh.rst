@@ -65,9 +65,15 @@ Configuration
   Require FIDO2 keys to attest that a user has been verified (e.g. via a PIN).
 
 .. cfgcmd:: set service ssh fido touch-required
-
   Require FIDO2 keys to attest that a user is physically present.
-
+  Example:
+  .. code-block:: none
+    # Generate a FIDO2 SSH key on the client system
+    # Copy the public key to the VyOS instance
+    $set system login user vyos authentication public-keys fido key '<public-key>'
+    $set system login user vyos authentication public-keys fido type 'sk-ecdsa-sha2-nistp256@openssh.com'
+    $set service ssh fido touch-required
+  You can now log into the system using: ``ssh -i ~/.ssh/id_fido_key vyos@192.0.2.1``
 .. cfgcmd:: set service ssh disable-host-validation
 
   Disable the host validation through reverse DNS lookups - can speedup login
