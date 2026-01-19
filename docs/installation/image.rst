@@ -4,10 +4,10 @@
 Image Management
 ################
 
-The VyOS image-based installation is implemented by creating a directory for
-each image on the storage device selected during the install process.
+VyOS uses an image-based installation that creates a directory for each image
+on the storage device you select during installation.
 
-The directory structure of the boot device:
+The boot device has the following directory structure:
 
 .. code-block:: none
 
@@ -16,17 +16,15 @@ The directory structure of the boot device:
   /boot/grub
   /boot/2025.07.16-0020-rolling.squashfs
 
-The image directory contains the system kernel, a compressed image of the root
-filesystem for the OS, and a directory for persistent storage, such as
-configuration. On boot, the system will extract the OS image into memory and
-mount the appropriate live-rw sub-directories to provide persistent storage
-system configuration.
+The image directory contains the system kernel, a compressed root filesystem
+image, and a directory for persistent storage (such as configuration). During
+boot, the system extracts the OS image into memory and mounts the appropriate
+live-rw subdirectories to provide persistent storage for system configuration.
 
-This process allows for a system to always boot to a known working state, as
-the OS image is fixed and non-persistent. It also allows for multiple releases
-of VyOS to be installed on the same storage device. The image can be selected
-manually at boot if needed, but the system will otherwise boot the image
-configured to be the default.
+This process ensures that the system always boots to a known working state,
+since the OS image is fixed and non-persistent. You can also install multiple
+VyOS releases on the same storage device. You can manually select the image at
+boot if needed, but the system boots the default image by default.
 
 .. opcmd:: show system image
 
@@ -44,9 +42,8 @@ configured to be the default.
 
 .. opcmd:: delete system image [image-name]
 
-   Delete no longer needed images from the system. You can specify an optional
-   image name to delete, the image name can be retrieved via a list of available
-   images can be shown using the :opcmd:`show system image`.
+   Delete unused images from the system. You can specify an optional image name
+   to delete. Use the :opcmd:`show system image` command to list available images.
 
    .. code-block:: none
 
@@ -93,9 +90,9 @@ configured to be the default.
 System rollback
 ===============
 
-If you need to rollback to a previous image, you can easily do so. First
-check the available images through the :opcmd:`show system image`
-command and then select your image with the following command:
+To roll back to a previous image, first view the available images by using the
+:opcmd:`show system image` command, then select your image with the following
+command:
 
 .. opcmd:: set system image default-boot [image-name]
 
@@ -104,9 +101,9 @@ command and then select your image with the following command:
 
 Then reboot the system.
 
-.. note:: VyOS automatically associates the configuration to the image,
-   so you don't need to worry about that. Each image has a unique copy
-   of its configuration.
+.. note:: VyOS automatically associates the configuration with each image,
+   so you don't need to manage this separately. Each image has its own unique
+   configuration copy.
 
-If you have access to the console, there is a another way to select
-your booting image: reboot and use the GRUB menu at startup.
+If you have console access, you can also select the boot image by restarting
+the system and using the GRUB menu at startup.

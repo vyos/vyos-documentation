@@ -3,43 +3,40 @@
 Update VyOS
 ===========
 
-New system images can be added using the :opcmd:`add system image`
-command. The command will extract the chosen image and will prompt you
-to use the current system configuration and SSH security keys, allowing
-for the new image to boot using the current configuration.
+New system images can be added using the :opcmd:`add system image` command.
+This command extracts the image and prompts you to use the current system
+configuration and SSH security keys, allowing the new image to boot with your
+current configuration.
 
 .. note:: Only LTS releases are PGP-signed.
 
 .. opcmd:: add system image <url | path> | [latest] [vrf name]
    [username user [password pass]]
 
-   Use this command to install a new system image. You can reach the
-   image from the web (``http://``, ``https://``) or from your local system,
-   e.g.  /tmp/vyos-1.2.3-amd64.iso.
+   Use this command to install a new system image. You can retrieve the
+   image from the web (``http://``, ``https://``) or from your local system.
+   For example: /tmp/vyos-1.2.3-amd64.iso.
 
-   The `add system image` command also supports installing new versions
-   of VyOS through an optional given VRF. Also if URL in question requires
-   authentication, you can specify an optional username and password via
-   the commandline which will be passed as "Basic-Auth" to the server.
+   The ``add system image`` command also supports installing new VyOS versions
+   through an optional VRF. If the URL requires authentication, you can specify
+   an optional username and password on the command line, which will be passed
+   as "Basic-Auth" to the server.
 
-If there is not enough **free disk space available**, the installation
-will be canceled. To delete images use the :opcmd:`delete system image`
-command.
+If there isn't enough free disk space, the installation will be canceled.
+To delete images, use the :opcmd:`delete system image` command.
 
-VyOS configuration is associated to each image, and **each image has a
-unique copy of its configuration**. This is different than a traditional
-network router where the configuration is shared across all images.
+VyOS associates configuration with each image, and each image has its own
+unique configuration copy. This differs from traditional network routers where
+the configuration is shared across all images.
 
-.. note:: If you have any personal files, like some scripts you created,
-   and you don't want them to be lost during the upgrade, make sure
-   those files are stored in ``/config`` as this directory is always copied
-   to newer installed images.
+.. note:: If you have personal files such as scripts that you want to preserve
+   during the upgrade, store them in ``/config`` since this directory is always
+   copied to newly installed images.
 
 You can access files from a previous installation and copy them to your
-current image if they were located in the ``/config`` directory. This
-can be done using the :opcmd:`copy` command. So, for instance, in order
-to copy ``/config/config.boot`` from VyOS 1.2.1 image, you would use the
-following command:
+current image if they were stored in the ``/config`` directory. Use the
+:opcmd:`copy` command to do this. For example, to copy ``/config/config.boot``
+from the VyOS ``1.2.1`` image, run:
 
 .. code::
 
@@ -78,17 +75,17 @@ You can use ``latest`` option. It loads the latest available Rolling release.
 
      vyos@vyos:~$ add system image latest
 
-.. note:: To use the `latest` option the "system update-check url" must be configured 
-   appropriately for the installed release. 
+.. note:: To use the ``latest`` option, "system update-check url" must be
+   configured appropriately for your installed release.
 
    For updates to the Rolling Release for AMD64, the following URL may be used:
 
    https://raw.githubusercontent.com/vyos/vyos-nightly-build/refs/heads/current/version.json
 
-.. hint:: The most up-do-date Rolling Release for AMD64 can be accessed using
-   the following URL from a web browser:
-   
+.. hint:: You can access the latest Rolling Release for AMD64 from a web
+   browser at:
+
    https://vyos.net/get/nightly-builds/
 
-After reboot you might want to verify the version you are running with
-the :opcmd:`show version` command.
+After rebooting, verify the version you're running using the
+:opcmd:`show version` command.
