@@ -115,14 +115,14 @@ Offloading
    multiple offloading features for a single interface.
 
 
-   * ``lro`` **(Large Receive Offload):** Instructs the NIC to merge multiple 
-     incoming packets into one larger packet before sending it to the CPU.
+    * ``lro`` **(Large Receive Offload):** Instructs the NIC to merge multiple 
+      incoming packets into one larger packet before sending it to the CPU.
 
-     .. note:: :abbr:`LRO (Large Receive Offload)` hardware support is often limited 
+      .. note:: :abbr:`LRO (Large Receive Offload)` hardware support is often limited 
         to TCP/IPv4 packets. For details on LRO limitations, see 
         https://lwn.net/Articles/358910/
 
-     .. warning:: :abbr:`LRO (Large Receive Offload)` irreversibly alters packet 
+      .. warning:: :abbr:`LRO (Large Receive Offload)` irreversibly alters packet 
         headers during merging. This prevents the merged packet from being correctly 
         split back into the original packets, causing packet drops and forwarding 
         failures on routers and bridges. Use :abbr:`LRO (Large Receive Offload)` only 
