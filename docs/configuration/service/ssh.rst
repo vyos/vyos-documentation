@@ -62,8 +62,7 @@ Configuration
 
 .. cfgcmd:: set service ssh fido pin-required
 
-  Require FIDO2 keys to attest that a user has been verified
-  (for example, via a PIN).
+  Require FIDO2 keys to attest that a user has been verified (e.g. via a PIN).
 
 .. cfgcmd:: set service ssh fido touch-required
 
