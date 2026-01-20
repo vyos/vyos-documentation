@@ -6,7 +6,7 @@
   to the VXLAN overlay. To prevent traffic blackholing, the PE device forces a 
   protocol shutdown (protodown) of its downstream EVPN-MH interfaces.
 
-  The following example configures bond0 as an EVPN-MH uplink interface:
+  The following example configures {{ var1 }} as an EVPN-MH uplink interface:
 
   .. code-block:: none
 

@@ -1,4 +1,4 @@
-:lastproofread: 2023-01-20
+:lastproofread: 2026-01-19
 
 .. _ethernet-interface:
 
@@ -6,8 +6,12 @@
 Ethernet
 ########
 
-This will be the most widely used interface on a router carrying traffic to the
-real world.
+Ethernet interfaces (e.g., ``eth0``, ``eth1``) represent the host's physical 
+or virtual network ports.
+
+They are the most common interface type, serving as the base layer upon which 
+IP addresses, VLANs, and tunnels are configured to carry traffic across both 
+LANs and WANs.
 
 *************
 Configuration
@@ -20,15 +24,16 @@ Common interface configuration
    :var0: ethernet
    :var1: eth0
 
-.. cfgcmd:: set interface ethernet <interface> switchdev
+.. cfgcmd:: set interfaces ethernet <interface> switchdev
 
-  Switches this interface to `switchdev` mode that allows network interfaces to offload
-  certain networking functions directly to hardware, like a network switch or a SmartNIC.
-  This enables higher performance and lower latency for network processing by
-  bypassing the kernel's network stack for supported operations.
+  **Enable** ``switchdev`` **mode for the interface.**
+  
+  In ``switchdev`` mode, the interface offloads traffic switching between ports 
+  to the hardware, bypassing the host CPU. This increases the interface’s 
+  traffic-handling capacity and reduces its forwarding delay. 
 
-.. note:: This is only supported on certain physical network interfaces
-   and depends on specific models and drivers.
+.. note:: ``switchdev`` mode is available only on certain physical network 
+  interfaces and requires a switchdev-compatible driver.
 
 
 Ethernet options
@@ -36,102 +41,143 @@ Ethernet options
 
 .. cfgcmd:: set interfaces ethernet <interface> duplex <auto | full | half>
 
-   Configure physical interface duplex setting.
+   **Configure duplex mode for the interface.** 
 
-   * auto - interface duplex setting is auto-negotiated
-   * full - always use full-duplex
-   * half - always use half-duplex
+   The following duplex modes are available: 
 
-   VyOS default will be `auto`.
+   * ``auto``: The interface negotiates the duplex mode with the connected device. 
+   * ``full``: The interface sends and receives data simultaneously. The 
+     connected device must also be set to full-duplex to avoid a duplex mismatch.
+   * ``half``: The interface either sends or receives data, but not both at the 
+     same time. 
 
+   The default duplex mode is ``auto``. 
+   
 .. cfgcmd:: set interfaces ethernet <interface> speed <auto | 10 | 100 | 1000 |
   2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000>
 
-   Configure physical interface speed setting.
+   **Configure the interface's speed, in Mbit/s.**
 
-   * auto - interface speed is auto-negotiated
-   * 10 - 10 MBit/s
-   * 100 - 100 MBit/s
-   * 1000 - 1 GBit/s
-   * 2500 - 2.5 GBit/s
-   * 5000 - 5 GBit/s
-   * 10000 - 10 GBit/s
-   * 25000 - 25 GBit/s
-   * 40000 - 40 GBit/s
-   * 50000 - 50 GBit/s
-   * 100000 - 100 GBit/s
+   The following options are available:
 
-   VyOS default will be `auto`.
+   * ``auto``:  The interface negotiates the speed with the connected device.
+   * ``10, 100, 1000 ...``: The interface operates at the selected speed. The 
+     connected device must be set to the same speed to establish a connection. 
 
-.. cfgcmd:: set interface ethernet <interface> ring-buffer rx <value>
-.. cfgcmd:: set interface ethernet <interface> ring-buffer tx <value>
+   The default option is ``auto``.
 
-  Configures the ring buffer size of the interface.
+.. cfgcmd:: set interfaces ethernet <interface> ring-buffer rx <value>
 
-  The supported values for a specific interface can be obtained
-  with: `ethtool -g <interface>`
+   **Configure the receive (RX) ring buffer size for the interface.**
+
+   The RX ring buffer size defines the number of incoming packets the interface 
+   can queue in hardware before the CPU processes them.
+
+   Higher values reduce the risk of drops when the NIC receives network traffic 
+   faster than the CPU can process it, though latency may increase. Lower values 
+   reduce latency but increase the risk of packet drops during incoming traffic 
+   bursts.
+
+   To view supported values for a specific interface, use: 
+
+.. code-block:: none
+   
+   ethtool -g <interface>
+
+.. cfgcmd:: set interfaces ethernet <interface> ring-buffer tx <value>
+
+   **Configure the transmit (TX) ring buffer size.**
+
+   The TX ring buffer size defines the number of outgoing packets the interface 
+   can queue in hardware before they are transmitted onto the network.
+
+   Higher values reduce the risk of drops when the CPU generates traffic faster 
+   than the NIC can handle, though latency may increase. Lower values reduce 
+   latency but increase the risk of packet drops during outgoing traffic bursts.
+
+   To view supported values for a specific interface, use: 
+
+.. code-block:: none
+   
+   ethtool -g <interface>
 
 
 Offloading
 ----------
 
-.. cfgcmd:: set interfaces ethernet <interface> offload <gro | gso | lro | rps |
-  sg | tso>
+.. cfgcmd:: set interfaces ethernet <interface> offload <lro | tso | gso |  
+   gro |  rps | sg >
+  
+   **Configure the offloading features for the interface.** 
 
-  Enable different types of hardware offloading on the given NIC.
+   The interface offloading features define whether specific packet-processing tasks 
+   are performed by hardware (the NIC) or by software (the kernel). You can enable 
+   multiple offloading features for a single interface.
 
-  :abbr:`LRO (Large Receive Offload)` is a technique designed to boost the
-  efficiency of how your computer's network interface card (NIC) processes
-  incoming network traffic. Typically, network data arrives in smaller chunks
-  called packets. Processing each packet individually consumes CPU (central
-  processing unit) resources. Lots of small packets can lead to a performance
-  bottleneck. Instead of handing the CPU each packet as it comes in, LRO
-  instructs the NIC to combine multiple incoming packets into a single, larger
-  packet. This larger packet is then passed to the CPU for processing.
 
-  .. note:: Under some circumstances, LRO is known to modify the packet headers
-     of forwarded traffic, which breaks the end-to-end principle of computer
-     networking. LRO is also only able to offload TCP segments encapsulated in
-     IPv4 packets. Due to these limitations, it is recommended to use GRO
-     (Generic Receive Offload) where possible. More information on the
-     limitations of LRO can be found here: https://lwn.net/Articles/358910/
+   * ``lro`` **(Large Receive Offload):** Instructs the NIC to merge multiple 
+     incoming packets into one larger packet before sending it to the CPU.
 
-  :abbr:`GSO (Generic Segmentation Offload)` is a pure software offload that is
-  meant to deal with cases where device drivers cannot perform the offloads
-  described above. What occurs in GSO is that a given skbuff will have its data
-  broken out over multiple skbuffs that have been resized to match the MSS
-  provided via skb_shinfo()->gso_size.
+     .. note:: :abbr:`LRO (Large Receive Offload)` hardware support is often limited 
+        to TCP/IPv4 packets. For details on LRO limitations, see 
+        https://lwn.net/Articles/358910/
 
-  Before enabling any hardware segmentation offload a corresponding software
-  offload is required in GSO. Otherwise it becomes possible for a frame to be
-  re-routed between devices and end up being unable to be transmitted.
+     .. warning:: :abbr:`LRO (Large Receive Offload)` irreversibly alters packet 
+        headers during merging. This prevents the merged packet from being correctly 
+        split back into the original packets, causing packet drops and forwarding 
+        failures on routers and bridges. Use :abbr:`LRO (Large Receive Offload)` only 
+        for end-hosts that do not forward traffic.
 
-  :abbr:`GRO (Generic receive offload)` is the complement to GSO. Ideally any
-  frame assembled by GRO should be segmented to create an identical sequence of
-  frames using GSO, and any sequence of frames segmented by GSO should be able
-  to be reassembled back to the original by GRO. The only exception to this is
-  IPv4 ID in the case that the DF bit is set for a given IP header. If the
-  value of the IPv4 ID is not sequentially incrementing it will be altered so
-  that it is when a frame assembled via GRO is segmented via GSO.
+    * ``tso`` **(TCP Segmentation Offload):** Instructs the NIC to split large TCP 
+      packets into smaller ones before transmitting them to the network. 
 
-  :abbr:`RPS (Receive Packet Steering)` is logically a software implementation
-  of :abbr:`RSS (Receive Side Scaling)`. Being in software, it is necessarily
-  called later in the datapath. Whereas RSS selects the queue and hence CPU that
-  will run the hardware interrupt handler, RPS selects the CPU to perform
-  protocol processing above the interrupt handler. This is accomplished by
-  placing the packet on the desired CPU's backlog queue and waking up the CPU
-  for processing. RPS has some advantages over RSS:
+      **Important:** :abbr:`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled 
+      for :abbr:`TSO (TCP Segmentation Offload)` to work. Additionally, :abbr:`GSO 
+      (Generic Segmentation Offload)` should be enabled as a safety fallback; it 
+      ensures that if traffic is rerouted to hardware without :abbr:`TSO (TCP 
+      Segmentation Offload)` support, the kernel can still segment the packets, 
+      preventing transmission failures.
 
-  - it can be used with any NIC
-  - software filters can easily be added to hash over new protocols
-  - it does not increase hardware device interrupt rate, although it does
-    introduce inter-processor interrupts (IPIs)
+    * ``gso`` **(Generic Segmentation Offload):** Instructs the kernel to split 
+      large packets into smaller ones before sending them to the NIC.
 
-  .. note:: In order to use TSO/LRO with VMXNET3 adapters, the SG offloading
-     option must also be enabled.
+      :abbr:`GSO (Generic Segmentation Offload)` serves as a software fallback for 
+      hardware that does not support :abbr:`TSO (TCP Segmentation Offload)` or for 
+      protocols (like UDP) that hardware cannot offload.
 
-Authentication (EAPoL)
-----------------------
+      **Important:** :abbr:`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled 
+      for :abbr:`GSO (Generic Segmentation Offload)` to work.  
+
+    * ``gro`` **(Generic Receive Offload):** Instructs the kernel to merge multiple 
+      incoming packets into one larger packet before passing it to upper protocol 
+      layers.
+
+      Unlike LRO, GRO preserves the necessary packet metadata so the merged packet 
+      can be correctly split back into the original packets. This makes GRO safe for 
+      use on routers and bridges.
+
+    .. note:: The exception is for IPv4 IDs. If the "Don't Fragment" (DF) bit is 
+       set and IDs are not sequential, :abbr:`GSO (Generic Segmentation Offload)` 
+       alters them to maintain a consistent sequence for :abbr:`GSO (Generic 
+       Segmentation Offload)` compatibility.
+
+    * ``rps`` **(Receive Packet Steering):** Instructs the kernel to distribute 
+      the processing of incoming packets across multiple CPU cores.
+
+      The kernel calculates a hash from packet headers (IP addresses and ports) to 
+      ensure packets from the same flow are processed by the same CPU core.
+
+    .. note:: :abbr:`RPS (Receive Packet Steering)` is a software version of 
+       :abbr:`RSS (Receive Side Scaling)` and is useful for NICs without hardware 
+       multi-queue support.
+
+    * ``sg`` **(Scatter-Gather/Scatter-Gather DMA):** Instructs the NIC to fetch 
+      data fragments from various RAM locations and transmit them as a single packet 
+      to the network, eliminating the need for the kernel to copy them into a 
+      contiguous block first.
+
+802.1X (EAPOL) authentication
+-----------------------------
 
 .. cmdinclude:: /_include/interface-eapol.txt
    :var0: ethernet
@@ -140,7 +186,7 @@ Authentication (EAPoL)
 EVPN Multihoming
 ----------------
 
-Uplink/Core tracking.
+Uplink/core tracking.
 
 .. cmdinclude:: /_include/interface-evpn-uplink.txt
    :var0: ethernet
@@ -156,15 +202,15 @@ Regular VLANs (802.1q)
    :var0: ethernet
    :var1: eth0
 
-QinQ (802.1ad)
+802.1ad (QinQ)
 --------------
 
 .. cmdinclude:: /_include/interface-vlan-8021ad.txt
    :var0: ethernet
    :var1: eth0
 
-Port Mirror (SPAN)
-==================
+SPAN port mirroring
+===================
 .. cmdinclude:: ../../_include/interface-mirror.txt
    :var0: ethernet
    :var1: eth1
@@ -190,7 +236,7 @@ Operation
 
 .. opcmd:: show interfaces ethernet <interface>
 
-   Show detailed information on given `<interface>`
+   Show detailed interface information.
 
    .. code-block:: none
 
@@ -209,7 +255,7 @@ Operation
 
 .. opcmd:: show interfaces ethernet <interface> physical
 
-   Show information about physical `<interface>`
+   Show interface hardware-level and driver details.
 
    .. code-block:: none
 
@@ -250,7 +296,7 @@ Operation
 
 .. opcmd:: show interfaces ethernet <interface> physical offload
 
-   Show available offloading functions on given `<interface>`
+   Show the status of the interface offloading features.
 
    .. code-block:: none
 
@@ -282,7 +328,8 @@ Operation
 
 .. opcmd:: show interfaces ethernet <interface> transceiver
 
-   Show transceiver information from plugin modules, e.g SFP+, QSFP
+   Show information about the transceiver module plugged into the interface 
+   (e.g., SFP+, QSFP).
 
    .. code-block:: none
 

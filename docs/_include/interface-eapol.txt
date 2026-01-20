@@ -1,41 +1,83 @@
-:abbr:`EAP (Extensible Authentication Protocol)` over LAN (EAPoL) is a network
-port authentication protocol used in IEEE 802.1X (Port Based Network Access
-Control) developed to give a generic network sign-on to access network
-resources.
+**Overview**
 
-EAPoL comes with an identify option. We automatically use the interface MAC
-address as identity parameter.
+IEEE 802.1X is a security standard that enforces access control at the physical 
+port level. It blocks all traffic on a port until the connecting device proves 
+its identity. The :abbr:`EAPOL (Extensible Authentication Protocol over LAN)` 
+protocol transports credentials between the client (supplicant) and the network 
+switch (authenticator). The switch forwards these credentials to a backend 
+authentication server, typically RADIUS, which verifies them and authorizes 
+the connection.
+
+The VyOS router acts as the supplicant, authenticating with upstream network 
+equipment such as ISP gateways or enterprise switches. Authentication uses 
+X.509 certificates to validate the identities of both the router and the 
+authentication server.
+
+The :abbr:`EAPOL (Extensible Authentication Protocol over LAN)` protocol 
+requires the supplicant (the router) to provide an identity string to the 
+authentication server during the initial handshake. If no identity is 
+configured, VyOS uses the Ethernet interface's MAC address as the identity 
+string.
+
+**Configuration**
+
+Prerequisites: Before configuring 802.1X (:abbr:`EAPOL (Extensible 
+Authentication Protocol over LAN)`) authentication, upload the required 
+:abbr:`CA (Certificate Authority)` certificate, client certificate, and 
+private key to the router and import them into the PKI system.
+
+.. note:: The client certificate and private key must share the **same** PKI 
+   name.
+
+.. seealso:: For more information about managing certificates and keys, see 
+   the :ref:`PKI <pki>` section.
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} eapol ca-certificate <name>
 
-  Set the name of the SSL :abbr:`CA (Certificate Authority)` PKI entry used for
-  authentication of the remote side. If an intermediate CA certificate is
-  specified, then all parent CA certificates that exist in the PKI, such as the
-  root CA or additional intermediate CAs, will automatically be used during
-  certificate validation to ensure that the full chain of trust is available.
+  **Configure the trusted** :abbr:`CA (Certificate Authority)` **certificate for 
+  the interface.**
+  
+  The router uses this certificate to validate the authentication server’s 
+  identity.
+
+  ``<name>`` is the :abbr:`CA (Certificate Authority)` certificate name as 
+  defined in the PKI system.
+
+  .. note:: If you specify an intermediate :abbr:`CA (Certificate Authority)` 
+     certificate, ensure the full certificate chain, including the root and all 
+     higher-level intermediate :abbr:`CA (Certificate Authority)` certificates, is 
+     available to the system.
 
   Example:
 
   .. code-block:: none
 
-    set pki ca eapol-server-intermediate-ca <Server intermediate CA contents>
-    set pki ca eapol-server-root-ca <Server root CA contents>
+    set pki ca eapol-server-intermediate-ca <server intermediate CA contents>
+    set pki ca eapol-server-root-ca <server root CA contents>
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} eapol ca-certificate eapol-server-intermediate-ca
 
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} eapol certificate <name>
 
-  Set the name of the x509 client keypair used to authenticate against the
-  802.1x system. All parent CA certificates of the client certificate, such as
-  intermediate and root CAs, will be sent as part of the EAP-TLS handshake.
+  **Configure the client certificate for the interface.** 
+
+  The router uses this certificate to prove its identity to the authentication 
+  server.
+
+  ``<name>`` is the client certificate name as defined in the PKI system.
+
+  During authentication, all parent :abbr:`CA (Certificate Authority)` 
+  certificates of the client certificate, such as intermediate and root :abbr:`CA 
+  (Certificate Authority)` certificates, are automatically sent as part of the 
+  EAP-TLS handshake.
 
   Example:
 
   .. code-block:: none
 
-    set pki ca eapol-client-intermediate-ca <Client intermediate CA contents>
-    set pki ca eapol-client-root-ca <Client root CA contents>
-    set pki certificate eapol-client certificate <Client certificate contents>
-    set pki certificate eapol-client private key <Client private key contents>
+    set pki ca eapol-client-intermediate-ca <client intermediate CA contents>
+    set pki ca eapol-client-root-ca <client root CA contents>
+    set pki certificate eapol-client certificate <client certificate contents>
+    set pki certificate eapol-client private key <client private key contents>
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} eapol certificate eapol-client
