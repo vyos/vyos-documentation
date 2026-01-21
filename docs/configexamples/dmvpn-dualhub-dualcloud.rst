@@ -82,7 +82,7 @@ __________________
 
 The next step is to configure the NHRP protocol. In a Dual cloud network, every HUB has to be configured with one GRE
 multipoint tunnel interface and every spoke has to be configured with two tunnel interfaces, one tunnel to each hub.
-In this example tunnel networks are 10.100.100.0/32 for the first cloud and 10.100.100.0/32 for the second cloud.
+In this example tunnel networks are 10.100.100.0/24 for the first cloud and 10.100.101.0/24 for the second cloud.
 But VyOS uses FRR for NHRP, that is why the tunnel address mask must be /32.
 
 HUB-1
