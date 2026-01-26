@@ -153,7 +153,11 @@ In addition to Secure Boot support, VyOS uses ephemeral key signing of Linux
 Kernel modules for an extra security layer in both Secure and non-Secure boot
 images.
 
+.. stop_vyoslinter
+
 https://patchwork.kernel.org/project/linux-integrity/patch/20210218220011.67625-5-nayna@linux.ibm.com/
+
+.. start_vyoslinter
 
 When the CI system builds a Kernel package and required third-party modules,
 it generates a temporary (ephemeral) key pair for signing the modules. The
@@ -165,7 +169,8 @@ also includes the option ``CONFIG_MODULE_SIG_FORCE=y``, which enforces signature
 verification for all modules. If you try to load an unsigned module, you'll
 get this error:
 
-``insmod: ERROR: could not insert module malicious.ko: Key was rejected by service``
+``insmod: ERROR: could not insert module malicious.ko: Key was rejected by
+service``
 
 This prevents loading any malicious code after the image is assembled into the
 Kernel as a module. You can disable this behavior on custom builds if needed.

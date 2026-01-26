@@ -45,7 +45,8 @@ boot if needed, but the system boots the default image by default.
 .. opcmd:: delete system image [image-name]
 
    Delete unused images from the system. You can specify an optional image name
-   to delete. Use the :opcmd:`show system image` command to list available images.
+   to delete. Use the :opcmd:`show system image` command to list available
+   images.
 
    .. code-block:: none
 

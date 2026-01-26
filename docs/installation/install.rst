@@ -10,34 +10,65 @@ VyOS installation requires a VyOS .iso file. This file is a live installation
 image that you can use to boot a live VyOS system. From there, you can proceed
 with a permanent installation on a hard drive or other storage device.
 
-.. table:: Comparison of VyOS image releases
+.. list-table:: Comparison of VyOS image releases
+   :header-rows: 1
+   :widths: 15 35 15 25 15 15
 
-  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
-  | Release Type | Description                                       | Release Cycle     | Intended Use                          | Access to Images      | Access to Source |
-  +==============+===================================================+===================+=======================================+=======================+==================+
-  | **Nightly    | Automatically built from the current branch.      | Every night       | Developing VyOS, testing new          | Everyone              | Everyone         |
-  | (Current)**  | Always up to date with cutting edge development   |                   | features, experimenting.              |                       |                  |
-  |              | but guaranteed to contain bugs.                   |                   |                                       |                       |                  |
-  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
-  | **Stream**   | VyOS Stream serves as a technology preview and    | Every quarter     | Non-critical production environments, | Everyone              | Everyone         |
-  |              | a quality gate for the upcoming LTS release.      |                   | preparing for the LTS release.        |                       |                  |
-  |              | Allows everyone to try new features and check if  |                   |                                       |                       |                  |
-  |              | they work well or need improvements.              |                   |                                       |                       |                  |
-  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
-  | **Release    | Rather stable. All development focuses on testing | Irregularly until | Labs, small offices and non-critical  | Everyone              | Everyone         |
-  | Candidate**  | and hunting down remaining bugs following the     | EPA comes out     | production systems backed by a        |                       |                  |
-  |              | feature freeze.                                   |                   | high-availability setup.              |                       |                  |
-  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
-  | **Early      | Highly stable with no known bugs. Needs to be     | Irregularly until | Non-critical production environments, | Everyone              | Everyone         |
-  | Production   | tested repeatedly under different conditions      | LTS comes out     | preparing for the LTS release.        |                       |                  |
-  | Access**     | before it can become the final release.           |                   |                                       |                       |                  |
-  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
-  | **Long-Term  | Guaranteed to be stable and carefully maintained  | Every major       | Large-scale enterprise networks,      | Subscribers,          | Subscribers,     |
-  | Support**    | for several years after the release. No features  | version           | internet service providers,           | contributors,         | contributors    |
-  |              | are introduced but security updates are released  |                   | critical production environments      | non-profits,          |                  |
-  |              | in a timely manner.                               |                   | that call for minimum downtime.       | emergency services,   |                  |
-  |              |                                                   |                   |                                       | academic institutions |                  |
-  +--------------+---------------------------------------------------+-------------------+---------------------------------------+-----------------------+------------------+
+   * - Release Type
+     - Description
+     - Release Cycle
+     - Intended Use
+     - Access to Images
+     - Access to Source
+
+   * - Nightly (Current)
+     - Automatically built from the current branch. Always up to date
+       with cutting edge development but guaranteed to contain bugs.
+     - Every night
+     - Developing VyOS, testing new features, experimenting.
+     - Everyone
+     - Everyone
+
+   * - Stream
+     - VyOS Stream serves as a technology preview and a quality gate
+       for the upcoming LTS release. Allows everyone to try new features
+       and check if they work well or need improvements.
+     - Every quarter
+     - Non-critical production environments, preparing for the LTS
+       release.
+     - Everyone
+     - Everyone
+
+   * - Release Candidate
+     - Rather stable. All development focuses on testing and hunting
+       down remaining bugs following the feature freeze.
+     - Irregularly until EPA comes out
+     - Labs, small offices and non-critical production systems backed
+       by a high-availability setup.
+     - Everyone
+     - Everyone
+
+   * - Early Production Access
+     - Highly stable with no known bugs. Needs to be tested repeatedly
+       under different conditions before it can become the final
+       release.
+     - Irregularly until LTS comes out
+     - Non-critical production environments, preparing for the LTS
+       release.
+     - Everyone
+     - Everyone
+
+   * - Long-Term Support
+     - Guaranteed to be stable and carefully maintained for several
+       years after the release. No features are introduced but security
+       updates are released in a timely manner.
+     - Every major version
+     - Large-scale enterprise networks, internet service providers,
+       critical production environments that call for minimum downtime.
+     - Subscribers, contributors, non-profits, emergency services,
+       academic institutions
+     - Subscribers, contributors, non-profits, emergency services,
+       academic institutions
 
 Hardware requirements
 =====================
@@ -76,7 +107,8 @@ Everyone can download bleeding-edge VyOS rolling images from:
 https://downloads.vyos.io/
 
 .. note:: Rolling releases contain the latest enhancements and fixes.
-   This means there may be new bugs. If you encounter a bug, follow the guide at :ref:`bug_report`. We depend on your feedback to improve VyOS.
+   This means there may be new bugs. If you encounter a bug, follow the
+   guide at :ref:`bug_report`. We depend on your feedback to improve VyOS.
 
 The following link contains the most recent VyOS builds for AMD64
 systems from the ``current`` branch: https://vyos.net/get/nightly-builds/
@@ -85,14 +117,17 @@ systems from the ``current`` branch: https://vyos.net/get/nightly-builds/
 Download Verification
 ---------------------
 
-LTS images are signed with the VyOS lead package maintainer's private key. You can verify the authenticity of the package using the official public key and Minisign.
+LTS images are signed with the VyOS lead package maintainer's private key.
+You can verify the authenticity of the package using the official public key
+and Minisign.
 
 .. _minisign-verification:
 
 Minisign verification
 ^^^^^^^^^^^^^^^^^^^^^
 
-VyOS uses `Minisign <https://github.com/jedisct1/minisign>`__ for release signing. Minisign is a tool for signing files and verifying signatures.
+VyOS uses `Minisign <https://github.com/jedisct1/minisign>`__ for release
+signing. Minisign is a tool for signing files and verifying signatures.
 
 OpenBSD introduced signify in 2015. Minisign is an alternative
 implementation of the same protocol, available for Windows, macOS, and
@@ -118,7 +153,10 @@ During an image upgrade, VyOS runs the following command:
   Signature and comment signature verified
   Trusted comment: timestamp:1629997936   file:vyos-1.3.0-rc6-amd64.iso
 
-.. note:: Starting with version ``1.4.3``, VyOS uses Minisign exclusively. Minisign signature verification has been available in all releases for years. If you see an unexpected verification error, update your system to version ``1.4.2`` first. Support for GnuPG signatures has been removed (:vytask:`T7301`).
+.. note:: Starting with version ``1.4.3``, VyOS uses Minisign exclusively.
+   If you see an unexpected verification error, update your system to version
+   ``1.4.2`` first. Support for GnuPG signatures has been
+   removed (:vytask:`T7301`).
 
 .. _live_installation:
 
@@ -135,19 +173,23 @@ into a fully functional VyOS system**. After testing it, you can start a
 and remove the USB drive.
 
 
-If you have a GNU/Linux system, you can create a bootable VyOS USB drive using the ``dd`` command:
+If you have a GNU/Linux system, you can create a bootable VyOS USB drive using
+the ``dd`` command:
 
  1. Open your terminal emulator.
 
  2. Find the device name of your USB drive (use the ``lsblk`` command).
 
- 3. Unmount the USB drive. Replace ``X`` with your device letter and keep the asterisk (wildcard) to unmount all partitions.
+ 3. Unmount the USB drive. Replace ``X`` with your device letter and keep the
+    asterisk (*) to unmount all partitions.
 
  .. code-block:: none
 
   $ umount /dev/sdX*
 
- 4. Write the image (your VyOS .iso file) to the USB drive. Use the device name (for example, ``/dev/sdb``), not the partition name (for example, ``/dev/sdb1``).
+ 1. Write the image (your VyOS .iso file) to the USB drive. Use the device
+    name (for example, ``/dev/sdb``), not the partition name
+    (for example, ``/dev/sdb1``).
 
   **Warning**: This will destroy all data on the USB drive!
 
@@ -155,14 +197,17 @@ If you have a GNU/Linux system, you can create a bootable VyOS USB drive using t
 
    # dd if=/path/to/vyos.iso of=/dev/sdX bs=8M; sync
 
- 5. Wait for the operation to complete (bytes copied). On some systems, this may take more than one minute.
+ 1. Wait for the operation to complete (bytes copied). On some systems, this
+    may take more than one minute.
 
- 6. Once ``dd`` has finished, pull the USB drive out and plug it into
+ 2. Once ``dd`` has finished, pull the USB drive out and plug it into
     the powered-off computer where you want to install (or test) VyOS.
 
- 7. Power on the computer and ensure it boots from the USB drive (you may need to select the boot device or change boot settings).
+ 3. Power on the computer and ensure it boots from the USB drive
+    (you may need to select the boot device or change boot settings).
 
- 8. When VyOS finishes loading, sign in using the default credentials (login: ``vyos``, password: ``vyos``).
+ 4. When VyOS finishes loading, sign in using the default credentials 
+    (login: ``vyos``, password: ``vyos``).
 
 
 If you encounter issues with this method, prefer a different operating
@@ -250,7 +295,8 @@ In order to proceed with a permanent installation:
 PXE Boot
 ========
 
-You can also install VyOS using PXE, a more complex installation method that allows you to deploy VyOS over the network.
+You can also install VyOS using PXE, a more complex installation method that
+allows you to deploy VyOS over the network.
 
 **Requirements**
 
@@ -259,7 +305,8 @@ You can also install VyOS using PXE, a more complex installation method that all
 * :ref:`tftp-server`
 * Webserver (HTTP). Optional, but speeds up installation.
 * VyOS ISO image (do not use images prior to VyOS ``1.2.3``).
-* Files *pxelinux.0* and *ldlinux.c32* from the `Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_.
+* Files *pxelinux.0* and *ldlinux.c32* from the
+  `Syslinux distribution <https://kernel.org/pub/linux/utils/boot/syslinux/>`_.
 
 Configuration
 -------------
@@ -270,7 +317,8 @@ Step 1: DHCP
 Configure a DHCP server to provide the client with:
 
 * An IP address
-* The TFTP server address (DHCP option 66), sometimes referred to as the *boot server*
+* The TFTP server address (DHCP option 66), sometimes referred to as the
+  *boot server*
 * The *bootfile name* (DHCP option 67): *pxelinux.0*
 
 In this example we configured an existent VyOS as the DHCP server:
@@ -352,24 +400,34 @@ Example of simple (no menu) configuration file:
 Step 3: HTTP
 ^^^^^^^^^^^^
 
-You also need to provide the *filesystem.squashfs* file. Because this is a large file and TFTP is slow, you can send it through HTTP to speed up the transfer. In our example, we do this—see the configuration file above.
+You also need to provide the *filesystem.squashfs* file. Because this is a
+large file and TFTP is slow, you can send it through HTTP to speed up the
+transfer. In our example, we do this—see the configuration file above.
 
-1. Start a web server. You can use a simple one like `Python's SimpleHTTPServer`_ to serve the `filesystem.squashfs` file. The file is in the `/live` directory of the extracted ISO file.
+1. Start a web server. You can use one like
+   `Python's SimpleHTTPServer`_ to serve the `filesystem.squashfs` file.
+   The file is in the `/live` directory of the extracted ISO file.
 
-2. Edit the :ref:`install_from_tftp` configuration file to show the correct URL: ``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``.
+2. Edit the :ref:`install_from_tftp` configuration file to show the correct
+   URL: ``fetch=http://<address_of_your_HTTP_server>/filesystem.squashfs``.
 
-.. note:: Do not rename the *filesystem.squashfs* file. If you're working with different versions, create different directories instead.
+.. note:: Do not rename the *filesystem.squashfs* file. If you're working with
+   different versions, create different directories instead.
 
-3. restart the TFTP service. If you're using VyOS as your TFTP server, restart the service with ``sudo service tftpd-hpa restart``.
+3. restart the TFTP service. If you're using VyOS as your TFTP server, restart
+   the service with ``sudo service tftpd-hpa restart``.
 
-.. note:: Ensure the directories and files on both the TFTP and HTTP servers have the correct permissions for the booting clients to access them.
+.. note:: Ensure the directories and files on both the TFTP and HTTP servers
+   have the correct permissions for the booting clients to access them.
 
 
 
 Client Boot
 -----------
 
-Finally, power on your PXE-enabled clients. They will automatically receive an IP address from the DHCP server and boot into VyOS live using files from the TFTP and HTTP servers.
+Finally, power on your PXE-enabled clients. They will automatically receive an
+IP address from the DHCP server and boot into VyOS live using files from the 
+TFTP and HTTP servers.
 
 Once finished you will be able to proceed with the ``install image``
 command as in a regular VyOS installation.

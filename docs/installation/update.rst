@@ -77,12 +77,15 @@ You can use ``latest`` option. It loads the latest available Rolling release.
 
      vyos@vyos:~$ add system image latest
 
+.. stop_vyoslinter
 .. note:: To use the ``latest`` option, "system update-check url" must be
    configured appropriately for your installed release.
 
    For updates to the Rolling Release for AMD64, the following URL may be used:
 
    https://raw.githubusercontent.com/vyos/vyos-nightly-build/refs/heads/current/version.json
+
+.. start_vyoslinter
 
 .. hint:: You can access the latest Rolling Release for AMD64 from a web
    browser at:
