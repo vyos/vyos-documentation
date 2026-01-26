@@ -1,3 +1,5 @@
+:lastproofread: 2026-01-26
+
 #################################
 Installation and Image Management
 #################################
