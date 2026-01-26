@@ -1,8 +1,8 @@
-# Copyright Notice
+# Copyright notice
 
-Copyright (C) 2018-2024 VyOS maintainers and contributors
+Copyright (C) 2018-2026, VyOS maintainers and contributors.
 
-Permission is granted to make and distribute verbatim copies of this manual
+Permission is granted to make and distribute verbatim copies of this user guide,
 provided the copyright notice and this permission notice are preserved on all
 copies.
 
@@ -15,3 +15,4 @@ Permission is granted to copy and distribute translations of this manual into
 another language, under the above conditions for modified versions, except that
 this permission notice may be stated in a translation approved by the VyOS
 maintainers.
+
