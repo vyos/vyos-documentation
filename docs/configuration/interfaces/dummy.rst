@@ -1,4 +1,4 @@
-:lastproofread: 2023-01-20
+:lastproofread: 2026-01-23
 
 .. _dummy-interface:
 
@@ -6,22 +6,25 @@
 Dummy
 #####
 
-The dummy interface is really a little exotic, but rather useful nevertheless.
-Dummy interfaces are much like the :ref:`loopback-interface` interface, except
-you can have as many as you want.
+A dummy interface is a virtual network interface that operates like the 
+loopback interface, accepting traffic and routing it back to the local host. 
+Unlike the loopback interface, which is limited to one per system and reserved 
+for internal system use, multiple dummy interfaces can be created, removed, and 
+managed without impacting core operations.
 
-.. note:: Dummy interfaces can be used as interfaces that always stay up (in
-   the same fashion to loopbacks in Cisco IOS), or for testing purposes.
+As a software-based interface, the dummy interface does not depend on physical 
+link state and remains active as long as the operating system is running.
 
-.. hint:: On systems with multiple redundant uplinks and routes,
-   it's a good idea to use a dedicated address for management and dynamic routing protocols.
-   However, assigning that address to a physical link is risky:
-   if that link goes down, that address will become inaccessible.
-   A common solution is to assign the management address to a loopback or a dummy interface
-   and advertise that address via all physical links, so that it's reachable
-   through any of them. Since in Linux-based systems, there can be only one loopback interface,
-   it's better to use a dummy interface for that purpose, since they can be added, removed,
-   and taken up and down independently.
+Dummy interfaces are commonly used in environments with multiple redundant 
+uplinks (e.g., a server connected to two different switches), where assigning a 
+management IP address to a specific physical interface is risky. If that 
+interface fails, the management IP address becomes unreachable.
+
+Assigning the management IP address to a dummy interface and advertising it 
+over all available physical links ensures the address remains reachable as long 
+as at least one physical path is active.
+
+Dummy interfaces are also used for testing and simulation purposes.
 
 *************
 Configuration
@@ -64,7 +67,7 @@ Operation
 
 .. opcmd:: show interfaces dummy <interface>
 
-   Show detailed information on given `<interface>`
+   Show detailed interface information.
 
    .. code-block:: none
 

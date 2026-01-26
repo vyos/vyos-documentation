@@ -1,10 +1,9 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> address <address>
 
-  Configure interface `<interface>` with one or more interface
-  addresses.
+  **Configure one or more interface IP addresses.**
 
-  * **address** can be specified multiple times as IPv4 and/or IPv6
-    address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
+  ``<address>`` supports IPv4 and IPv6 in CIDR notation. For example, use 
+  ``192.0.2.1/24`` for IPv4 or ``2001:db8::1/64`` for IPv6.
 
   Example:
 

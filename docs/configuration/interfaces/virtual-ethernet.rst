@@ -1,4 +1,4 @@
-:lastproofread: 2022-11-25
+:lastproofread: 2026-01-26
 
 .. _virtual-ethernet:
 
@@ -6,11 +6,16 @@
 Virtual Ethernet
 ################
 
-The veth devices are virtual Ethernet devices. They can act as tunnels between
-network namespaces to create a bridge to a physical network device in another
-namespace or VRF, but can also be used as standalone network devices.
+Virtual Ethernet (veth) interfaces are software-based interfaces that operate 
+in pairs, creating a tunnel between each other. Traffic transmitted into one 
+interface of the pair (e.g., ``veth0``) is delivered directly to its peer 
+interface (e.g., ``veth1``). 
 
-.. note:: veth interfaces need to be created in pairs - it's called the peer name
+Veth interfaces are commonly used to connect network namespaces or VRFs, but 
+they can also function as standalone virtual network interfaces.
+
+.. note:: Veth interfaces must be created in pairs, where each interface acts 
+   as the peer of the other. 
 
 *************
 Configuration
@@ -26,6 +31,7 @@ Common interface configuration
 .. cmdinclude:: /_include/interface-description.txt
    :var0: virtual-ethernet
    :var1: veth0
+
 VLAN
 ====
 
@@ -35,7 +41,7 @@ Regular VLANs (802.1q)
    :var0: virtual-ethernet
    :var1: veth0
 
-QinQ (802.1ad)
+802.1ad (QinQ)
 --------------
 
 .. cmdinclude:: /_include/interface-vlan-8021ad.txt
@@ -69,7 +75,7 @@ Operation
 
 .. opcmd:: show interfaces virtual-ethernet <interface>
 
-   Show detailed information on given `<interface>`
+   Show detailed interface information.
 
    .. code-block:: none
 
@@ -91,7 +97,8 @@ Operation
 Example
 *******
 
-Interconnect the global VRF with vrf "red" using the veth10 <-> veth 11 pair
+The following example shows how to connect the global VRF to VRF ‘red ‘ using 
+the ``veth10`` and ``veth11`` veth pair.
 
 .. code-block:: none
 

@@ -1,4 +1,4 @@
-:lastproofread: 2023-01-20
+:lastproofread: 2026-01-23
 
 .. _loopback-interface:
 
@@ -6,20 +6,20 @@
 Loopback
 ########
 
-The loopback networking interface is a virtual network device implemented
-entirely in software. All traffic sent to it "loops back" and just targets
-services on your local machine.
+The loopback interface is a virtual, software-based network interface. All 
+traffic sent to it loops back and only targets services on the local host.
 
-.. note:: There can only be one loopback ``lo`` interface on the system. If
-   you need multiple interfaces, please use the :ref:`dummy-interface`
+.. note:: Only one loopback ``lo`` interface is allowed per operating system. 
+   If you require multiple virtual interfaces, use the :ref:`dummy-interface`
    interface type.
 
-.. hint:: A loopback interface is always up, thus it could be used for
-   management traffic or as source/destination for and :abbr:`IGP (Interior
-   Gateway Protocol)` like :ref:`routing-bgp` so your internal BGP link is not
-   dependent on physical link states and multiple routes can be chosen to the
-   destination. A :ref:`dummy-interface` Interface should always be preferred
-   over a :ref:`loopback-interface` interface.
+.. hint:: The loopback interface is always operational, making it suitable for 
+   management traffic or as a stable source/destination for routing protocols such 
+   as BGP. This ensures internal routing sessions remain independent of physical 
+   link states. 
+
+   However, in most cases, the dummy interface is preferred over the loopback 
+   interface.
 
 *************
 Configuration
@@ -55,7 +55,7 @@ Operation
 
 .. opcmd:: show interfaces loopback lo
 
-   Show detailed information on the given loopback interface `lo`.
+   Show detailed interface information.
 
    .. code-block:: none
 
