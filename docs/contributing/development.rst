@@ -348,12 +348,14 @@ Schemas provide two benefits:
 * Complete grammar verification
 * Automatic validation against the schema
 
+.. stop_vyoslinter
 The `build-command-templates <https://github.com/vyos/vyos-1x/blob/current/scripts/build-command-templates>`__
 script converts XML definitions to
 old-style templates and verifies them against the schema. A bad definition
 causes the package build to fail. While the XML format is verbose, no other
 format provides this level of verification. Specialized XML editors can help
 manage verbosity.
+.. start_vyoslinter
 
 Example XML interface definition:
 
@@ -491,8 +493,8 @@ Use of Numbers
 ^^^^^^^^^^^^^^
 
 Avoid using numbers in command names unless the number is part of a protocol
-name or similar. For example, ``protocols ospfv3`` is appropriate, but ``server-1``
-is questionable.
+name or similar. For example, ``protocols ospfv3`` is appropriate,
+but ``server-1`` is questionable.
 
 Help Strings
 ^^^^^^^^^^^^
