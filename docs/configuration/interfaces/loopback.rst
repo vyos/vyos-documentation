@@ -13,14 +13,6 @@ traffic sent to it loops back and only targets services on the local host.
    If you require multiple virtual interfaces, use the :ref:`dummy-interface`
    interface type.
 
-.. hint:: The loopback interface is always operational, making it suitable for 
-   management traffic or as a stable source/destination for routing protocols such 
-   as BGP. This ensures internal routing sessions remain independent of physical 
-   link states. 
-
-   However, in most cases, the dummy interface is preferred over the loopback 
-   interface.
-
 *************
 Configuration
 *************
