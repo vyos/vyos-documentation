@@ -72,22 +72,30 @@ Configuration
   Two FIDO2 key types are supported by OpenSSH: ``ed25519-sk``, ``ecdsa-sk``
 
   Generic FIDO2-backed SSH key generation example:
+
   .. code-block:: none
+
     ssh-keygen -t ecdsa-sk -O verify-required -C "fido2-ssh-key"
+    
   During key generation, OpenSSH will:
-   * Request user presence (for example, a physical touch or confirmation)
-   * Optionally request user verification (PIN), if supported by the authenticator
-   * Create a local key handle file and a corresponding public key (``.pub``)
-   The private key material never leaves the authenticator device.
+    * Request user presence (for example, a physical touch or confirmation)
+    * Optionally request user verification (PIN), if supported by the authenticator
+    * Create a local key handle file and a corresponding public key (``.pub``)
+
+  The private key material never leaves the authenticator device.
 
   VyOS configuration example:
+
   .. code-block:: none
+
     # Generate a FIDO2 SSH key on the client system
     # Copy the public key to the VyOS instance
     set system login user vyos authentication public-keys fido key '<public-key>'
     set system login user vyos authentication public-keys fido type 'sk-ecdsa-sha2-nistp256@openssh.com'
     set service ssh fido touch-required
+
   You can now log into the system using: ``ssh -i ~/.ssh/id_fido_key vyos@192.0.2.1``
+
 .. cfgcmd:: set service ssh disable-host-validation
 
   Disable the host validation through reverse DNS lookups - can speedup login
