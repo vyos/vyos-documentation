@@ -1,4 +1,4 @@
-:lastproofread: 2025-11-30
+:lastproofread: 2026-01-30
 
 .. _upstream_packages:
 
@@ -70,6 +70,7 @@ parameters. The key configuration fields are:
    The Git URL of the upstream source repository
    (e.g., ``https://github.com/FRRouting/frr.git``)
 
+.. stop_vyoslinter
 **build_cmd**
    The command to execute for building the package. This replaces what was 
    previously defined in the Jenkins ``Jenkinsfile``.
@@ -81,6 +82,7 @@ parameters. The key configuration fields are:
    .. code-block:: toml
 
       build_cmd = "sudo dpkg -i ../*.deb; dpkg-buildpackage -us -uc -tc -b -Ppkg.frr.rtrlib,pkg.frr.lua"
+.. start_vyoslinter
 
 **pre_build_hook** (Optional)
    A shell command or script that executes after the repository is checked out 
@@ -116,22 +118,22 @@ parameters. The key configuration fields are:
 
 **apply_patches** (Optional)
    Boolean flag to control whether patches should be applied. Defaults to
-   ``true``.
+   ``True``.
 
    .. code-block:: toml
 
       apply_patches = false
 
 **prepare_package** (Optional)
-   Boolean flag to enable package preparation. When set to ``true``, the 
+   Boolean flag to enable package preparation. When set to ``True``, the 
    ``install_data`` configuration is used.
 
 **install_data** (Optional)
    Data used for package preparation when ``prepare_package`` is enabled.
 
 
-Example ``package.toml``
-====================
+Example package.toml file
+===========================
 
 Here's an example configuration for the FRRouting (FRR) package:
 
