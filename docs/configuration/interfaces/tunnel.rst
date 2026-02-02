@@ -1,19 +1,22 @@
-:lastproofread: 2023-01-26
+:lastproofread: 2026-01-23
 
 .. _tunnel-interface:
 
 Tunnel
 ======
 
-This article touches on 'classic' IP tunneling protocols.
+Tunnel interfaces are virtual interfaces that transmit encapsulated traffic 
+between private networks or hosts across public infrastructure, such as the 
+Internet. They operate using encapsulation protocols, such as :abbr:`GRE 
+(Generic Routing Encapsulation)` or IPIP, which define how the original traffic 
+is encapsulated for transport.
 
-GRE is often seen as a one size fits all solution when it comes to classic IP
-tunneling protocols, and for a good reason. However, there are more specialized
-options, and many of them are supported by VyOS. There are also rather obscure
-GRE options that can be useful.
+While :abbr:`GRE (Generic Routing Encapsulation)` is often the preferred 
+one-size-fits-all solution due to its versatility, VyOS also supports other 
+tunnel interface types that may be better suited for specific use cases. 
 
-All those protocols are grouped under ``interfaces tunnel`` in VyOS. Let's take
-a closer look at the protocols and options currently supported by VyOS.
+The supported tunnel interfaces and their configuration options are described 
+below.
 
 Common interface configuration
 ------------------------------
@@ -29,11 +32,14 @@ Common interface configuration
 IPIP
 ----
 
-This is one of the simplest types of tunnels, as defined by :rfc:`2003`.
-It takes an IPv4 packet and sends it as a payload of another IPv4 packet. For
-this reason, there are no other configuration options for this kind of tunnel.
+IPIP is a straightforward encapsulation protocol defined in RFC 2003. It 
+encapsulates one IPv4 packet inside another IPv4 packet. 
 
-An example:
+IPIP tunnel interfaces have very few configuration options and require minimal 
+CPU and memory to operate. They are typically used for simple point-to-point 
+tunnels where encryption or advanced features are not required.
+
+Example:
 
 .. code-block:: none
 
@@ -45,13 +51,13 @@ An example:
 IP6IP6
 ------
 
-This is the IPv6 counterpart of IPIP. I'm not aware of an RFC that defines this
-encapsulation specifically, but it's a natural specific case of IPv6
-encapsulation mechanisms described in :rfc:2473`.
+IP6IP6 is the IPv6 counterpart to IPIP. It encapsulates one IPv6 packet inside 
+another IPv6 packet.
 
-It's not likely that anyone will need it any time soon, but it does exist.
+Similar to their IPIP counterparts, IP6IP6 tunnel interfaces have very few 
+configuration options and require minimal CPU and memory to operate. 
 
-An example:
+Example:
 
 .. code-block:: none
 
@@ -63,12 +69,13 @@ An example:
 IPIP6
 -----
 
-In the future this is expected to be a very useful protocol (though there are
-`other proposals`_).
+IPIP6 is an encapsulation protocol that wraps IPv4 packets inside IPv6 packets.
 
-As the name implies, it's IPv4 encapsulated in IPv6, as simple as that.
+Similar to those of IPIP and IP6IP6, IPIP6 tunnel interfaces are easy to 
+configure and require minimal CPU and memory. They are ideal for unencrypted 
+point-to-point connections.
 
-An example:
+Example:
 
 .. code-block:: none
 
@@ -80,17 +87,21 @@ An example:
 6in4 (SIT)
 ----------
 
-6in4 uses tunneling to encapsulate IPv6 traffic over IPv4 links as defined in
-:rfc:`4213`. The 6in4 traffic is sent over IPv4 inside IPv4 packets whose IP
-headers have the IP protocol number set to 41. This protocol number is
-specifically designated for IPv6 encapsulation, the IPv4 packet header is
-immediately followed by the IPv6 packet being carried. The encapsulation
-overhead is the size of the IPv4 header of 20 bytes, therefore with an MTU of
-1500 bytes, IPv6 packets of 1480 bytes can be sent without fragmentation. This
-tunneling technique is frequently used by IPv6 tunnel brokers like `Hurricane
-Electric`_.
+6in4, also known as :abbr:`SIT (Simple Internet Transition)`, is an 
+encapsulation protocol defined in :rfc:`4213` that wraps IPv6 packets 
+inside IPv4 packets. The encapsulating IPv4 headers use IP protocol number 41, 
+which is reserved exclusively for IPv6 encapsulation.
 
-An example:
+The encapsulation process adds a 20-byte IPv4 header to each IPv6 packet. 
+Consequently, 6in4 tunnel interfaces can transmit IPv6 packets up to 1480 bytes 
+over an underlying network with a standard MTU of 1500 bytes without 
+fragmentation. 
+
+6in4 tunnel interfaces are frequently used by IPv6 tunnel brokers (such as 
+`Hurricane Electric`_) to connect isolated IPv6 networks or individual hosts to 
+the IPv6 internet. 
+
+Example:
 
 .. code-block:: none
 
@@ -99,33 +110,44 @@ An example:
   set interfaces tunnel tun0 remote 192.0.2.20
   set interfaces tunnel tun0 address 2001:db8:bb::1/64
 
-A full example of a Tunnelbroker.net config can be found at
-:ref:`here <examples-tunnelbroker-ipv6>`.
+.. seealso:: For a practical configuration example, see the 
+   :ref:`Tunnelbroker.net (IPv6) <examples-tunnelbroker-ipv6>` section.
 
 Generic Routing Encapsulation (GRE)
 -----------------------------------
 
-A GRE tunnel operates at layer 3 of the OSI model and is represented by IP
-protocol 47. The main benefit of a GRE tunnel is that you are able to carry
-multiple protocols inside the same tunnel. GRE also supports multicast traffic
-and supports routing protocols that leverage multicast to form neighbor
-adjacencies.
+:abbr:`GRE (Generic Routing Encapsulation)` is a versatile encapsulation 
+protocol defined in RFC 2784. Unlike simpler protocols such as IPIP, it allows 
+IPv4, IPv6, multicast, and other traffic types to be transported through the 
+same tunnel.
 
-A VyOS GRE tunnel can carry both IPv4 and IPv6 traffic and can also be created
-over either IPv4 (gre) or IPv6 (ip6gre).
+:abbr:`GRE (Generic Routing Encapsulation)` encapsulates original data packets 
+by adding a :abbr:`GRE (Generic Routing Encapsulation)` header, followed by an 
+IP header (the delivery header). The delivery header uses IP protocol number 47 
+to identify :abbr:`GRE (Generic Routing Encapsulation)`-encapsulated traffic.
+
+In VyOS, :abbr:`GRE (Generic Routing Encapsulation)` tunnels can be established 
+over both IPv4 (encapsulation ``gre``) and IPv6 (encapsulation ``ip6gre``) 
+transport networks.
 
 
 Configuration
 ^^^^^^^^^^^^^
 
-A basic configuration requires a tunnel source (source-address), a tunnel
-destination (remote), an encapsulation type (gre), and an address (ipv4/ipv6).
-Below is a basic IPv4 only configuration example taken from a VyOS router and
-a Cisco IOS router. The main difference between these two configurations is
-that VyOS requires you explicitly configure the encapsulation type. The Cisco
-router defaults to GRE IP otherwise it would have to be configured as well.
+To configure a :abbr:`GRE (Generic Routing Encapsulation)` tunnel, you need to 
+define a tunnel source IP address, a tunnel destination IP address, an 
+encapsulation type (:abbr:`GRE (Generic Routing Encapsulation)`), and a tunnel 
+interface IP address.
 
-**VyOS Router:**
+Example:
+
+The following example shows how to configure an IPv4-over-IPv4 :abbr:`GRE 
+(Generic Routing Encapsulation)` tunnel between a VyOS router and a Cisco IOS 
+router. The primary difference between the two platforms is that VyOS requires 
+the encapsulation type to be explicitly defined, while Cisco IOS uses 
+:abbr:`GRE (Generic Routing Encapsulation)` over IP by default.
+
+**VyOS router:**
 
 .. code-block:: none
 
@@ -134,7 +156,7 @@ router defaults to GRE IP otherwise it would have to be configured as well.
   set interfaces tunnel tun100 source-address '198.51.100.2'
   set interfaces tunnel tun100 remote '203.0.113.10'
 
-**Cisco IOS Router:**
+**Cisco IOS router:**
 
 .. code-block:: none
 
@@ -143,10 +165,13 @@ router defaults to GRE IP otherwise it would have to be configured as well.
   tunnel source 203.0.113.10
   tunnel destination 198.51.100.2
 
-Here is a second example of a dual-stack tunnel over IPv6 between a VyOS router
-and a Linux host using systemd-networkd.
+Example: 
 
-**VyOS Router:**
+The following example shows how to configure an IPv4/IPv6-over-IPv6 :abbr:`GRE 
+(Generic Routing Encapsulation)` tunnel between a VyOS router and a Linux host 
+running ``systemd-networkd``.
+
+**VyOS router:**
 
 .. code-block:: none
 
@@ -156,10 +181,11 @@ and a Linux host using systemd-networkd.
   set interfaces tunnel tun101 source-address '2001:db8:babe:face::3afe:3'
   set interfaces tunnel tun101 remote '2001:db8:9bb:3ce::5'
 
-**Linux systemd-networkd:**
+**Linux** ``systemd-networkd``:
 
-This requires two files, one to create the device (XXX.netdev) and one
-to configure the network on the device (XXX.network)
+The ``systemd-networkd`` setup requires two configuration files: ``xxx.netdev`` 
+to create the :abbr:`GRE (Generic Routing Encapsulation)` tunnel interface, and 
+``xxx.network`` to assign IP addresses to it.
 
 .. code-block:: none
 
@@ -183,15 +209,18 @@ to configure the network on the device (XXX.network)
   [Address]
   Address=192.168.5.2/30
 
-Tunnel keys
-^^^^^^^^^^^
+GRE keys
+^^^^^^^^
 
-GRE is also the only classic protocol that allows creating multiple tunnels
-with the same source and destination due to its support for tunnel keys.
-Despite its name, this feature has nothing to do with security: it's simply
-an identifier that allows routers to tell one tunnel from another.
+A GRE key is an optional 32-bit field in the GRE header that allows multiple 
+GRE tunnels to operate between the same source and destination endpoints. When 
+a packet arrives, the receiver checks the GRE key to determine which tunnel 
+interface should process it.
 
-An example:
+Although it may sound security-related, the GRE key is only an identifier and 
+provides no encryption or data protection.
+
+Example:
 
 .. code-block:: none
 
@@ -202,17 +231,24 @@ An example:
 
 .. code-block:: none
 
-   set interfaces tunnel tun0 source-address 192.0.2.10
-   set interfaces tunnel tun0 remote 192.0.2.20
-   set interfaces tunnel tun0 address 172.16.17.18/24
-   set interfaces tunnel tun0 parameters ip key 20
+   set interfaces tunnel tun1 source-address 192.0.2.10
+   set interfaces tunnel tun1 remote 192.0.2.20
+   set interfaces tunnel tun1 address 172.16.17.18/24
+   set interfaces tunnel tun1 parameters ip key 20
 
 GRETAP
 ^^^^^^^
 
-While normal GRE is for layer 3, GRETAP is for layer 2. GRETAP can encapsulate
-Ethernet frames, thus it can be bridged with other interfaces to create
-datalink layer segments that span multiple remote sites.
+Unlike GRE, which encapsulates only Layer 3 (IP) traffic, GRETAP encapsulates 
+Layer 2 (Ethernet) frames.
+
+Because it preserves MAC addresses, GRETAP tunnel interfaces are often added to 
+a network bridge. This allows two geographically distant sites to connect as if 
+they were on the same LAN.
+
+GRETAP tunnels can be established over both IPv4 and IPv6 transport networks.
+
+Example:
 
 .. code-block:: none
 
@@ -226,13 +262,22 @@ datalink layer segments that span multiple remote sites.
 Troubleshooting
 ^^^^^^^^^^^^^^^
 
-GRE is a well defined standard that is common in most networks. While not
-inherently difficult to configure there are a couple of things to keep in mind
-to make sure the configuration performs as expected. A common cause for GRE
-tunnels to fail to come up correctly include ACL or Firewall configurations
-that are discarding IP protocol 47 or blocking your source/destination traffic.
+GRE is a standardized tunneling protocol used in many network environments.
 
-**1. Confirm IP connectivity between tunnel source-address and remote:**
+Although the GRE tunnel setup is straightforward, its successful deployment 
+requires proper alignment with the underlying network security policies.
+
+Administrators must ensure that these policies permit encapsulated traffic. 
+Common causes of GRE tunnel failures are ACLs or firewall rules that block IP 
+protocol 47 or prevent direct communication between tunnel endpoints.
+
+If your GRE tunnel fails to establish, perform these diagnostic steps:
+
+1. Verify that the remote peer is reachable from the configured 
+``source-address``. 
+
+This ensures that the underlying physical path between the two endpoints is 
+functional.
 
 .. code-block:: none
 
@@ -247,7 +292,8 @@ that are discarding IP protocol 47 or blocking your source/destination traffic.
   4 packets transmitted, 4 received, 0% packet loss, time 3007ms
   rtt min/avg/max/mdev = 0.624/1.087/1.509/0.381 ms
 
-**2. Confirm the link type has been set to GRE:**
+2. Verify that the tunnel interface is correctly configured (with the link type 
+set to GRE) and is actively processing traffic.
 
 .. code-block:: none
 
@@ -264,7 +310,8 @@ that are discarding IP protocol 47 or blocking your source/destination traffic.
     TX:  bytes    packets     errors    dropped    carrier collisions
            836          9          0          0          0          0
 
-**3. Confirm IP connectivity across the tunnel:**
+3. Test the connection through the tunnel using the private IP addresses 
+assigned to each tunnel endpoint.
 
 .. code-block:: none
 
@@ -278,9 +325,6 @@ that are discarding IP protocol 47 or blocking your source/destination traffic.
   --- 10.0.0.2 ping statistics ---
   4 packets transmitted, 4 received, 0% packet loss, time 3008ms
   rtt min/avg/max/mdev = 1.055/1.729/1.989/0.395 ms
-
-.. note:: There is also a GRE over IPv6 encapsulation available, it is
-  called: ``ip6gre``.
 
 .. _`other proposals`: https://www.isc.org/othersoftware/
 .. _`Hurricane Electric`: https://tunnelbroker.net/
