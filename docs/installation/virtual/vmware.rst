@@ -1,3 +1,5 @@
+:lastproofread: 2026-02-02
+
 .. _vyosonvmware:
 
 Running on VMware ESXi
@@ -6,34 +8,27 @@ Running on VMware ESXi
 ESXi 5.5 or later
 *****************
 
-.ova files are available for supporting users, and a VyOS can also be stood up
-using a generic Linux instance, and attaching the bootable ISO file and
-installing from the ISO using the normal process around `install image`.
+``.ova`` files are available for supporting users. You can also set up VyOS
+using a generic Linux instance by attaching the bootable ISO file and
+installing using the ``install image`` command.
 
-.. NOTE:: There have been previous documented issues with GRE/IPSEC tunneling
-   using the E1000 adapter on the VyOS guest, and use of the VMXNET3 has been
-   advised.
+.. NOTE:: Previous issues have been documented with GRE/IPSEC tunneling
+   using the E1000 adapter on VyOS guests. Use the VMXNET3 adapter instead.
 
 Memory Contention Considerations
 --------------------------------
-When the underlying ESXi host is approaching ~92% memory utilisation it will
-start the balloon process in a 'soft' state to start reclaiming memory from
-guest operating systems. This causes an artificial pressure using the vmmemctl
-driver on memory usage on the virtual guest. As VyOS by default does not have
-a swap file, this vmmemctl pressure is unable to force processes to move in
-memory data to the paging file, and blindly consumes memory forcing the
-virtual guest into a low memory state with no way to escape. The balloon
-can expand to 65% of guest allocated memory, so a VyOS guest running >35% of
-memory usage, can encounter an out of memory situation, and trigger the kernel
-oom_kill process. At this point a weighted lottery favouring memory hungry
-processes will be run with the unlucky winner being terminated by the kernel.
+When the underlying ESXi host reaches approximately 92% memory utilization,
+it begins the balloon process to reclaim memory from guest operating systems.
+This creates artificial memory pressure through the ``vmmemctl`` driver. Because
+VyOS does not have a swap file by default, this pressure cannot move memory
+data to a paging file. Instead, it consumes memory and forces the guest into
+a low memory state with no recovery option. The balloon can expand to 65% of
+guest allocated memory, so a VyOS guest using more than 35% of memory can
+encounter an out-of-memory situation and trigger the kernel ``oom_kill`` 
+process.  The ``oom_kill`` process then terminates memory-hungry processes.
 
-It is advised that VyOS routers are configured in a resource group with
-adequate memory reservations so that ballooning is not inflicted on
-virtual VyOS guests.
-
-
-
+To prevent ballooning, configure VyOS routers in a resource group with
+adequate memory reservations.
 
 
 References

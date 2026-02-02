@@ -1,12 +1,14 @@
+:lastproofread: 2026-02-02
+
 .. _vyos-on-gns3:
 
 ###############
-Running on GNS3
+Run VyOS on GNS3
 ###############
 
-Sometimes you may want to test VyOS in a lab environment.
-`GNS3 <http://www.gns3.com>`__ is a network emulation software you
-might use for it.
+You may want to test VyOS in a lab environment.
+`GNS3 <http://www.gns3.com>`__ is a network emulation software that you
+can use for this purpose.
 
 This guide will provide the necessary steps for installing
 and setting up VyOS on GNS3.
@@ -30,16 +32,16 @@ VM setup
 First, a virtual machine (VM) for the VyOS installation must be created
 in GNS3.
 
-Go to the GNS3 **File** menu, click **New template** and choose select
+Go to the GNS3 **File** menu, click **New template**, and select
 **Manually create a new Template**.
 
 .. figure:: /_static/images/gns3-01.png
 
-Select **Quemu VMs** and then click on the ``New`` button.
+Select **Qemu VMs** and then click the ``New`` button.
 
 .. figure:: /_static/images/gns3-02.png
 
-Write a name for your VM, for instance "VyOS", and click ``Next``.
+Write a name for your VM, such as "VyOS", and click ``Next``.
 
 .. figure:: /_static/images/gns3-03.png
 
@@ -75,10 +77,10 @@ Click ``Finish`` to end the **New QEMU VM template** wizard.
 
 .. figure:: /_static/images/gns3-10.png
 
-Now the VM settings have to be edited.
+Now you need to edit the VM settings.
 
-Being again at the **Preferences** window, having **Qemu VMs**
-selected and having our new VM selected, click the ``Edit`` button.
+In the **Preferences** window, with **Qemu VMs** selected and your new VM
+selected, click the ``Edit`` button.
 
 .. figure:: /_static/images/gns3-11.png
 
@@ -105,8 +107,8 @@ you want to install.
 .. note:: You probably will want to accept to copy the .iso file to your
    default image directory when you are asked.
 
-In the **Network** tab,  set **0** as the number of adapters, set the
-**Name format** to **eth{0}** and the **Type** to **Paravirtualized
+In the **Network** tab, set the number of adapters to **0**, set the
+**Name format** to **eth{0}**, and set the **Type** to **Paravirtualized
 Network I/O (virtio-net-pci)**.
 
 .. figure:: /_static/images/gns3-15.png
@@ -131,12 +133,12 @@ VyOS installation
 * Drag the newly created VyOS VM into it.
 * Start the VM.
 * Open a console.
-  The console should show the system booting. It will ask for the login
-  credentials, you are at the VyOS live system.
+  The console displays the system booting. It prompts for login
+  credentials. You're now at the VyOS live system.
 * :ref:`Install VyOS <installation>`
   as normal (that is, using the ``install image`` command).
 
-* After a successful installation, shutdown the VM with the ``poweroff``
+* After successful installation, shut down the VM with the ``poweroff``
   command.
 
 * **Delete the VM** from the GNS3 project.
@@ -157,17 +159,17 @@ necessary as outlined below:
 
 .. figure:: /_static/images/gns3-20.png
   
-**CD/DVD** tab: Unmount the installation image file by clearing the
-**Image** entry field.
+**CD/DVD** tab: Clear the **Image** entry field to unmount the installation
+image.
 
 .. figure:: /_static/images/gns3-21.png
 
-Set the number of required network adapters, for example **4**.
+Set the number of required network adapters. For example, set it to **4**.
 
 .. figure:: /_static/images/gns3-215.png
 
-**Advanced** settings tab: Mark the checkbox **Use as a linked
-base VM** and click ``OK`` to save the changes.
+**Advanced** settings tab: Check the **Use as a linked
+base VM** checkbox and click ``OK`` to save the changes.
 
 .. figure:: /_static/images/gns3-22.png
 

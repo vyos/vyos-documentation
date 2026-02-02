@@ -1,13 +1,15 @@
+:lastproofread: 2026-02-02
+
 .. _libvirt:
 
-***************************
-Running on Libvirt Qemu/KVM
-***************************
+****************************
+Run VyOS on Libvirt QEMU/KVM
+****************************
 
-Libvirt is an open-source API, daemon and management tool for managing platform
-virtualization. There are several ways to deploy VyOS on libvirt kvm.
-Use Virt-manager and native CLI. In an example we will be use use 4 gigabytes
-of memory, 2 cores CPU and default network virbr0.
+Libvirt is an open-source API, daemon, and management tool for managing platform
+virtualization. You can deploy VyOS on libvirt KVM in several ways:
+using Virt-Manager or the native CLI. This example uses 4 gigabytes
+of memory, 2 CPU cores, and the default network ``virbr0``.
 
 CLI
 ===
@@ -33,7 +35,7 @@ the virtual network (type Virtio) created by the hypervisor with NAT.
     --disk path=/var/lib/libvirt/images/vyos_r1.qcow2,bus=virtio,size=8 \
     --noautoconsole
 
-Connect to VM  with command ``virsh console vyos_r1``
+Connect to the VM with the command ``virsh console vyos_r1``
 
 .. code-block:: none
 
@@ -47,14 +49,14 @@ Connect to VM  with command ``virsh console vyos_r1``
 
   vyos@vyos:~$ install image
 
-After installation - exit from the console using the key combination
+After installation, exit the console using the key combination
 ``Ctrl + ]`` and reboot the system.
 
 Deploy from qcow2
 -----------------
-The convenience of using :abbr:`KVM (Kernel-based Virtual Machine)`
-images is that they don't need to be installed.
-Download predefined VyOS.qcow2 image for ``KVM``
+The benefit of using :abbr:`KVM (Kernel-based Virtual Machine)`
+images is that they don't require installation.
+Download the predefined VyOS ``.qcow2`` image.
 
 .. code-block:: none
 
@@ -76,7 +78,7 @@ Create VM with ``import`` qcow2 disk option.
      --import \
      --noautoconsole
 
-Connect to VM  with command ``virsh console vyos_r2``
+Connect to the VM with the command ``virsh console vyos_r2``
 
 .. code-block:: none
 
@@ -90,35 +92,25 @@ Connect to VM  with command ``virsh console vyos_r2``
 
   vyos@vyos:~$
 
-If you can not go to this screen
+If you cannot access the login screen, the KVM console may be set as the
+default boot option.
 
-.. code-block:: none
-
-  vyos login: vyos
-  Password:
-
-Stayed in this stage. This is because the KVM console is chosen as the default boot option.
-
-.. code-block:: none
-
-  Connected to domain vyos_r2
-  Escape character is ^]
-
-Open a secondary/parallel session and use this command to reboot the VM:
+Open a secondary session and run this command to reboot the VM:
 
 .. code-block:: none
 
   $ virsh reboot vyos_r2
 
 Then go to the first session where you opened the console.
-Select ``VyOS 1.4.x for QEMU (Serial console)`` and press ``Enter``
+Select ``VyOS 1.4.x for QEMU (Serial console)`` and press ``Enter``.
 
 The system is fully operational.
 
-Virt-manager
+Virt-Manager
 ============
-The virt-manager application is a desktop user interface for managing virtual
-machines through libvirt. On the linux open
+
+The Virt-Manager application is a desktop user interface for managing virtual
+machines through libvirt. On Linux, open the
 :abbr:`VMM (Virtual Machine Manager)`.
 
 .. _libvirt:virt-manager_iso:
@@ -126,14 +118,15 @@ machines through libvirt. On the linux open
 Deploy from ISO
 ---------------
 
-1. Open :abbr:`VMM (Virtual Machine Manager)` and Create a new
+1. Open :abbr:`VMM (Virtual Machine Manager)` and create a new
    :abbr:`VM (Virtual Machine)`
 
 2. Choose ``Local install media`` (ISO)
 
 .. figure:: /_static/images/virt-libvirt-01.png
 
-3. Choose path to iso vyos.iso. Operating System can be any Debian based.
+3. Choose the path to the VyOS ISO image. Select any Debian-based operating
+   system.
 
 .. figure:: /_static/images/virt-libvirt-02.png
 
@@ -149,7 +142,7 @@ Deploy from ISO
 
 .. figure:: /_static/images/virt-libvirt-05.png
 
-7. Then you will be taken to the console.
+7. Then the system will be taken to the console.
 
 .. figure:: /_static/images/virt-libvirt-06.png
 
@@ -158,22 +151,22 @@ Deploy from ISO
 Deploy from qcow2
 -----------------
 
-Download predefined VyOS.qcow2 image for ``KVM``
+Download the predefined VyOS ``.qcow2`` image.
 
 .. code-block:: none
 
   curl --url link_to_vyos_kvm.qcow2 --output /var/lib/libvirt/images/vyos_kvm.qcow2
 
 
-1. Open :abbr:`VMM (Virtual Machine Manager)` and Create a new
+1. Open :abbr:`VMM (Virtual Machine Manager)` and create a new
    :abbr:`VM (Virtual Machine)`
 
 2. Choose ``Import existing disk`` image
 
 .. figure:: /_static/images/virt-libvirt-qc-01.png
 
-3. Choose the path to the image ``vyos_kvm.qcow2`` that was previously
-   downloaded . Operation System can be any Debian based.
+3. Choose the path to the ``vyos_kvm.qcow2`` image that you downloaded.
+   Select any Debian-based operating system.
 
 .. figure:: /_static/images/virt-libvirt-qc-02.png
 
@@ -185,7 +178,7 @@ Download predefined VyOS.qcow2 image for ``KVM``
 
 .. figure:: /_static/images/virt-libvirt-05.png
 
-6. Then you will be taken to the console.
+6. Then the system will be taken to the console.
 
 .. figure:: /_static/images/virt-libvirt-qc-03.png
 

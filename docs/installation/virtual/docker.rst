@@ -1,34 +1,36 @@
+:lastproofread: 2026-02-02
+
 .. _docker:
 
-***************************
-Running in Docker Container
-***************************
+******************************
+Run VyOS in a Docker Container
+******************************
 
 Docker is an open-source project for deploying applications as standardized
 units called containers. Deploying VyOS in a container provides a simple and
 lightweight mechanism for both testing and packet routing for container
 workloads.
 
-IPv6 Support for docker
+IPv6 support for Docker
 =======================
 
-VyOS requires an IPv6-enabled docker network. Currently linux distributions
-do not enable docker IPv6 support by default. You can enable IPv6 support in
+VyOS requires an IPv6-enabled Docker network. Currently Linux distributions
+do not enable Docker IPv6 support by default. You can enable IPv6 support in
 two ways.
 
 Method 1: Create a docker network with IPv6 support 
 ---------------------------------------------------
 
-Here is a example using the macvlan driver.
+Here's an example using the ``macvlan`` driver.
 
 .. code-block:: none
 
   docker network create --ipv6 -d macvlan -o parent=eth0 --subnet 2001:db8::/64 --subnet 192.0.2.0/24 mynet
 
-Method 2: Add IPv6 support to the docker daemon 
+Method 2: Add IPv6 support to the Docker daemon 
 -----------------------------------------------
 
-Edit /etc/docker/daemon.json to set the ``ipv6`` key to ``true`` and to specify
+Edit /etc/docker/daemon.json to set the ``ipv6`` key to ``true`` and specify
 the ``fixed-cidr-v6`` to your desired IPv6 subnet.
 
 .. code-block:: none
@@ -38,7 +40,7 @@ the ``fixed-cidr-v6`` to your desired IPv6 subnet.
     "fixed-cidr-v6": "2001:db8::/64"
   }
 
-Reload the docker configuration.
+Reload the Docker configuration.
 
 .. code-block:: none
 
@@ -48,11 +50,10 @@ Reload the docker configuration.
 Deploy container from ISO
 =========================
 
-Download the ISO on which you want to base the container. In this example, 
-the name of the ISO is ``vyos-1.4-rolling-202308240020-amd64.iso``. If you
-created a custom IPv6-enabled network, the ``docker run`` command below
-will require that this network be included as the ``--net`` parameter to
-``docker run``.
+Download the ISO you want to base the container on. In this example,
+the ISO is ``vyos-1.4-rolling-202308240020-amd64.iso``. If you
+created a custom IPv6-enabled network, include it as the ``--net`` parameter
+to ``docker run``.
 
 .. code-block:: none
 
@@ -71,4 +72,4 @@ will require that this network be included as the ``--net`` parameter to
   > vyos:1.4-rolling-202111281249 /sbin/init
   $ docker exec -ti vyos su - vyos
 
-You can execute ``docker stop vyos`` when you are finished with the container.
+To stop the container, run ``docker stop vyos``.
