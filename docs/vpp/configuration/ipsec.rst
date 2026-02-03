@@ -50,13 +50,13 @@ Supported Encryption and Integrity Algorithms
 VPP **supports** only the following **encryption algorithms**:
 
 * AES-CBC
+* AES-GCM with ICV
 
 VPP **does not** support the following **encryption algorithms**:
 
 * Null encryption
 * AES-CTR
 * AES-CCM with ICV
-* AES-GCM with ICV
 * Null encryption with AES-GMAC
 * 3DES-EDE-CBC
 * Blowfish-CBC
