@@ -1,32 +1,32 @@
-:lastproofread: 2023-01-20
+:lastproofread: 2026-02-02
 
 .. _geneve-interface:
 
 ######
-GENEVE
+Geneve
 ######
 
-:abbr:`GENEVE (Generic Network Virtualization Encapsulation)` interfaces 
+:abbr:`Geneve (Generic Network Virtualization Encapsulation)` interfaces 
 operate as virtual network ports. Administrators can apply standard network 
 configurations on them, such as IP addressing, bridging, or firewall rules, 
 just as they would on physical Ethernet ports.
 
-To transport  data across the network, they utilize the GENEVE encapsulation protocol. This 
+To transport data across the network, they utilize the Geneve encapsulation protocol. This 
 protocol encapsulates Layer 2 Ethernet frames originating from endpoints such 
 as virtual machines, containers, or physical servers inside UDP packets. It 
 unifies the features of earlier encapsulation protocols, including VXLAN, 
 NVGRE, and STT, and addresses their limitations, such as fixed header 
-structures and a lack of metadata support. Because of its extensibility, GENEVE 
+structures and a lack of metadata support. Because of its extensibility, Geneve 
 may eventually replace those older protocols.
 
-GENEVE tunnels are used to connect virtual switches residing within 
+Geneve tunnels are used to connect virtual switches residing within 
 hypervisors, physical switches, middleboxes, and other network appliances.
 
-GENEVE tunnels operate over any standard IP network. In larger deployments, 
+Geneve tunnels operate over any standard IP network. In larger deployments, 
 the underlying network (underlay) is often built using a **Clos** topology, 
 also known as a *leaf-and-spine* or *fat-tree* topology.
 
-GENEVE header:
+Geneve header:
 
 .. code-block:: none
 
@@ -73,16 +73,16 @@ Common interface configuration
   :var0: geneve
   :var1: gnv0
 
-GENEVE options
+Geneve options
 ==============
 
 .. cfgcmd:: set interfaces geneve gnv0 remote <address>
 
-   Configure the remote endpoint IP address for the GENEVE tunnel.
+   Configure the remote endpoint IP address for the Geneve tunnel.
 
 .. cfgcmd:: set interfaces geneve gnv0 vni <vni>
 
-   **Configure** :abbr:`VNI (Virtual Network Identifier)` **for the GENEVE 
+   **Configure** :abbr:`VNI (Virtual Network Identifier)` **for the Geneve 
    interface.**
 
    The VNI is a virtual network identifier. It allows multiple virtual networks to 
@@ -94,7 +94,7 @@ GENEVE options
 
 .. cfgcmd:: set interfaces gnv0 <interface> port <port>
 
-   **Configure the destination UDP port for the remote GENEVE tunnel endpoint.**
+   **Configure the destination UDP port for the remote Geneve tunnel endpoint.**
 
    Ensure the remote peer is configured to listen on this specific port.
 
