@@ -11,8 +11,7 @@ operate as virtual network ports. Administrators can apply standard network
 configurations on them, such as IP addressing, bridging, or firewall rules, 
 just as they would on physical Ethernet ports.
 
-GENEVE interfaces are also used for configuring GENEVE tunnels. To transport 
-data across the network, they utilize the GENEVE encapsulation protocol. This 
+To transport  data across the network, they utilize the GENEVE encapsulation protocol. This 
 protocol encapsulates Layer 2 Ethernet frames originating from endpoints such 
 as virtual machines, containers, or physical servers inside UDP packets. It 
 unifies the features of earlier encapsulation protocols, including VXLAN, 
@@ -87,7 +86,7 @@ GENEVE options
    interface.**
 
    The VNI is a virtual network identifier. It allows multiple virtual networks to 
-   share the same physical infrastructure while remaining isolated.
+   share the same physical infrastructure and remain isolated.
 
    The VNI is also used to distribute traffic after it leaves the tunnel, for 
    example, to map packets with overlapping IP addresses to specific routing 
