@@ -18,7 +18,7 @@ as virtual machines, containers, or physical servers inside UDP packets. It
 unifies the features of earlier encapsulation protocols, including VXLAN, 
 NVGRE, and STT, and addresses their limitations, such as fixed header 
 structures and a lack of metadata support. Because of its extensibility, GENEVE 
-is considered the successor to these legacy protocols.
+may eventually replace those older protocols.
 
 GENEVE tunnels are used to connect virtual switches residing within 
 hypervisors, physical switches, middleboxes, and other network appliances.
