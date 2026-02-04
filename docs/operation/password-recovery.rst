@@ -1,4 +1,4 @@
-:lastproofread: 2025-11-19
+:lastproofread: 2026-02-04
 
 .. _password-recovery:
 
@@ -6,22 +6,39 @@
 Password Recovery
 #################
 
-Using the console, restart the VyOS router. The GRUB menu appears.
-Select the relevant option from the GRUB menu, then press **Enter**.
-The option must begin with *Lost password change.*
+Restart VyOS from the console. The GRUB menu appears.
+Select **Boot options**.
 
-.. figure:: /_static/images/password-recovery-01.png
+.. figure:: /_static/images/reset-password-step-1.jpg
    :width: 600
 
-The stand-alone user-password recovery tool runs and prompts you to reset the
-local system user password.
+
+Next, select **Select boot mode**.
+
+.. figure:: /_static/images/reset-password-step-2.jpg
+   :width: 600
+
+Select **Password reset**.
+
+.. figure:: /_static/images/reset-password-step-3.jpg
+   :width: 600
+
+Boot the desired VyOS version.
+
+.. figure:: /_static/images/reset-password-step-4.jpg
+   :width: 600
+
+The standalone user password recovery tool runs and prompts you to reset the
+local system user password. VyOS automatically reboots after you reset your
+password.
+
 
 .. code-block:: console
 
-   Do you wish to reset the admin password? (y or n) 
+   Do you wish to reset the admin password? (y or n)
    y
    Which admin account do you want to reset?[vyos]
    my_username
-   Enter my_username password: 
-   Retype my_username password: 
+   Enter my_username password:
+   Retype my_username password:
    System will reboot in 10 seconds...
