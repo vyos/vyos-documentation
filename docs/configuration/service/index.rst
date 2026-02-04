@@ -15,6 +15,7 @@ Service
    dhcp-server
    dns
    eventhandler
+   gpsd
    https
    ipoe-server
    lldp
