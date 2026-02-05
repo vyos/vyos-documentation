@@ -10,8 +10,8 @@ Supermicro A2SDi (Atom C3000)
 I opted to get one of the new Intel Atom C3000 CPUs to spawn VyOS on it.
 Running VyOS on an UEFI only device is supported as of VyOS release 1.2.
 
-Shopping Cart
--------------
+Supermicro Shopping Cart
+------------------------
 
 * 1x Supermicro CSE-505-203B (19" 1U chassis, inkl. 200W PSU)
 * 1x Supermicro MCP-260-00085-0B (I/O Shield for A2SDi-2C-HLN4F)
@@ -95,8 +95,8 @@ The board can be powered via 12V from the front or via a 5V onboard connector.
 
 .. _vyos-on-baremetal:apu4_shopping:
 
-Shopping Cart
--------------
+APU4 Shopping Cart
+------------------
 
 * 1x apu4c4 = 4 i211AT LAN / AMD GX-412TC CPU / 4 GB DRAM / dual SIM
 * 1x Kingston SUV500MS/120G
@@ -131,7 +131,7 @@ have been tested successfully on this Hardware platform using VyOS 1.3
 * Sierra Wireless AirPrime MC7710 miniPCIe card (LTE)
 * Huawei ME909u-521 miniPCIe card (LTE)
 
-VyOS 1.2 (crux)
+VyOS 1.4 (sagitta)
 ---------------
 
 Depending on the VyOS versions you intend to install there is a difference in
@@ -162,7 +162,6 @@ Set terminal emulator to 115200 8N1.
 
 .. start_vyoslinter
 
-
 Now boot from the ``USB MSC Drive Generic Flash Disk 8.07`` media by pressing
 ``2``, the VyOS boot menu will appear, just wait 10 seconds or press ``Enter``
 to continue.
@@ -172,8 +171,9 @@ to continue.
   lqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqk
   x                      VyOS - Boot Menu                      x
   tqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqu
-  x Live (amd64-vyos)                                          x
-  x Live (amd64-vyos failsafe)                                 x
+  x Live system (amd64-vyos)                                   x
+  x Live system (amd64-vyos fail-safe mode)                    x
+  x Live system (amd64-vyos) - Serial console                  x
   x                                                            x
   mqqqqqqPress ENAutomatic boot in 10 seconds...nu entryqqqqqqqj
 
@@ -183,49 +183,12 @@ The image will be loaded and the last lines you will get will be:
 
   Loading /live/vmlinuz... ok
   Loading /live/initrd.img...
-
-The Kernel will now spin up using a different console setting. Set terminal
-emulator to 9600 8N1 and after a while your console will show:
-
-.. code-block:: none
-
-  Loading /live/vmlinuz... ok
-  Loading /live/initrd.img...
+  ...
   Welcome to VyOS - vyos ttyS0
 
   vyos login:
 
 You can now proceed with a regular image installation as described in
-:ref:`installation`.
-
-As the APU board itself still used a serial setting of 115200 8N1 it is
-strongly recommended that you change the VyOS serial interface settings after
-your first successful boot.
-
-Use the following command to adjust the :ref:`serial-console` settings:
-
-.. code-block:: none
-
-  set system console device ttyS0 speed 115200
-
-.. note:: Once you ``commit`` the above changes access to the serial interface
-   is lost until you set your terminal emulator to 115200 8N1 again.
-
-.. code-block:: none
-
-  vyos@vyos# show system console
-   device ttyS0 {
-     speed 115200
-   }
-
-VyOS 1.2 (rolling)
-------------------
-
-Installing the rolling release on an APU2 board does not require any change
-on the serial console from your host side as :vytask:`T1327` was successfully
-implemented.
-
-Simply proceed with a regular image installation as described in
 :ref:`installation`.
 
 .. _vyos-on-baremetal:apu4_pictures:
@@ -406,19 +369,7 @@ Reboot into BIOS, Chipset > South Bridge > USB Configuration:
 * Disable XHCI
 * Enable USB 2.0 (EHCI) Support
 
-Install VyOS:
--------------
-
-Create a VyOS bootable USB key. I used the 64-bit ISO (VyOS 1.1.7) and
-`LinuxLive USB Creator <http://www.linuxliveusb.com/>`_.
-
-I'm not sure if it helps the process but I changed default option to live-serial
-(line “default xxxx”) on the USB key under syslinux/syslinux.cfg.
-
-I connected the key to one black USB port on the back and powered on. The first
-VyOS screen has some readability issues. Press :kbd:`Enter` to continue.
-
-Then VyOS should boot and you can perform the ``install image``
+Perform Image installation using `install image` CLI command.
 
 .. _gowin_gw-fn-1ur1-10g:
 
@@ -436,8 +387,8 @@ In addition there is a Mellanox ConnectX-3 2* 10GbE SFP+ NIC available.
 **NOTE:** This is the entry level platform. Other derivates exists with
 i3-N305 CPU and 2x 25GbE!
 
-Shopping Cart
--------------
+Gowin Shopping Cart
+-------------------
 
 * 1x Gowin GW-FN-1UR1-10G
 * 2x 128GB M.2 NVMe SSDs
@@ -445,7 +396,8 @@ Shopping Cart
 Optional (WiFi + WWAN)
 ----------------------
 
-* 1x MediaTek 7921E M.2 NGFF WIFI module (not tested as this currently leads to a Kernel crash)
+* 1x MediaTek 7921E M.2 NGFF WIFI module (not tested as this currently leads to
+  a Kernel crash)
 * 1x HP LT4120 Snapdragon X5 LTE WWAN module
 
 Pictures
@@ -506,11 +458,13 @@ See interface description for more detailed mapping.
 VyOS 1.4 (sagitta)
 ^^^^^^^^^^^^^^^^^^
 
-Connect serial port to a PC through a USB <-> RJ45 console cable. Set terminal emulator
-to 115200 8N1. You can also perform the installation using VGA or HDMI ports.
+Connect serial port to a PC through a USB <-> RJ45 console cable. Set terminal
+emulator to 115200 8N1. You can also perform the installation using VGA or HDMI
+ports.
 
-In this example I choose to install VyOS as RAID-1 on both NVMe drives. However, a previous
-installation on the 128GB eMMC storage worked without any issues, too.
+In this example I choose to install VyOS as RAID-1 on both NVMe drives. However,
+a previous installation on the 128GB eMMC storage worked without any issues,
+too.
 
 .. code-block:: none
 
@@ -518,8 +472,8 @@ installation on the 128GB eMMC storage worked without any issues, too.
 
   vyos login:
 
-Perform Image installation using `install image` CLI command. This installation uses two 128GB NVMe
-disks setup as RAID1.
+Perform Image installation using `install image` CLI command. This installation
+uses two 128GB NVMe disks setup as RAID1.
 
 .. code-block:: none
 
