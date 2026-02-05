@@ -153,8 +153,8 @@ On the VPP host:
     set vpn ipsec site-to-site peer peerB vti bind 'vti1'
     set vpn ipsec site-to-site peer peerB vti traffic-selector remote prefix '192.168.200.0/24'
 
-    set vpp settings interface eth1 driver 'dpdk'
-    set vpp settings interface eth2 driver 'dpdk'
+    set vpp settings interface eth1
+    set vpp settings interface eth2
     set vpp settings ipsec netlink rx-buffer-size '32000'
     set vpp settings lcp ignore-kernel-routes
 
