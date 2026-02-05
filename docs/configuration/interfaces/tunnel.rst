@@ -118,7 +118,7 @@ Generic Routing Encapsulation (GRE)
 
 :abbr:`GRE (Generic Routing Encapsulation)` is a versatile encapsulation 
 protocol defined in RFC 2784. Unlike simpler protocols such as IPIP, it allows 
-IPv4, IPv6, multicast, and other traffic types to be transported through the 
+both IPv4 and IPv6 to be transported through the 
 same tunnel.
 
 :abbr:`GRE (Generic Routing Encapsulation)` encapsulates original data packets 
@@ -242,8 +242,7 @@ GRETAP
 Unlike GRE, which encapsulates only Layer 3 (IP) traffic, GRETAP encapsulates 
 Layer 2 (Ethernet) frames.
 
-Because it preserves MAC addresses, GRETAP tunnel interfaces are often added to 
-a network bridge. This allows two geographically distant sites to connect as if 
+That means that GRETAP tunnel interfaces can be members of a bridge interface. This allows two geographically distant sites to connect as if 
 they were on the same LAN.
 
 GRETAP tunnels can be established over both IPv4 and IPv6 transport networks.
