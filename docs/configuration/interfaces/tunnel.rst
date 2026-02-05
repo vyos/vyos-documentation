@@ -5,18 +5,25 @@
 Tunnel
 ======
 
-Tunnel interfaces are virtual interfaces that transmit encapsulated traffic 
-between private networks or hosts across public infrastructure, such as the 
-Internet. They operate using encapsulation protocols, such as :abbr:`GRE 
-(Generic Routing Encapsulation)` or IPIP, which define how the original traffic 
-is encapsulated for transport.
+Tunnel interfaces are virtual links that transmit encapsulated traffic between 
+private networks or hosts across public infrastructure, such as the Internet. 
+They operate using encapsulation protocols to wrap original traffic for 
+transport. The supported protocols include :abbr:`GRE (Generic Routing 
+Encapsulation)`, IPIP, IPIP6, IP6IP6, and 6in4 (SIT). 
 
 While :abbr:`GRE (Generic Routing Encapsulation)` is often the preferred 
-one-size-fits-all solution due to its versatility, VyOS also supports other 
-tunnel interface types that may be better suited for specific use cases. 
+one-size-fits-all solution due to its versatility, other encapsulation 
+protocols may be better suited for specific use cases. 
 
-The supported tunnel interfaces and their configuration options are described 
-below.
+VyOS uses a single tunnel interface type for all of these protocols. There are 
+no separate :abbr:`GRE (Generic Routing Encapsulation)`, IPIP, or IP6IP6 
+interface types; instead, the desired encapsulation protocol is selected within 
+the ``set interfaces tunnel`` configuration.
+
+Configuration options for each protocol are described below.
+
+.. warning:: Do not change the encapsulation type for already configured tunnel 
+   interfaces, as this may break their dependent configurations.
 
 Common interface configuration
 ------------------------------
@@ -35,9 +42,9 @@ IPIP
 IPIP is a straightforward encapsulation protocol defined in RFC 2003. It 
 encapsulates one IPv4 packet inside another IPv4 packet. 
 
-IPIP tunnel interfaces have very few configuration options and require minimal 
-CPU and memory to operate. They are typically used for simple point-to-point 
-tunnels where encryption or advanced features are not required.
+Tunnels with IPIP encapsulation do not have protocol-specific configuration 
+options except for explicitly defining the encapsulation type as IPIP (see 
+the example below).
 
 Example:
 
@@ -54,8 +61,9 @@ IP6IP6
 IP6IP6 is the IPv6 counterpart to IPIP. It encapsulates one IPv6 packet inside 
 another IPv6 packet.
 
-Similar to their IPIP counterparts, IP6IP6 tunnel interfaces have very few 
-configuration options and require minimal CPU and memory to operate. 
+Similar to their IPIP counterparts, tunnels with IP6IP6 encapsulation do not 
+have protocol-specific configuration options except for explicitly defining 
+the encapsulation type as IP6IP6. 
 
 Example:
 
@@ -71,9 +79,8 @@ IPIP6
 
 IPIP6 is an encapsulation protocol that wraps IPv4 packets inside IPv6 packets.
 
-Similar to those of IPIP and IP6IP6, IPIP6 tunnel interfaces are easy to 
-configure and require minimal CPU and memory. They are ideal for unencrypted 
-point-to-point connections.
+Similar to IPIP and IP6IP6, protocol-specific configuration for tunnels with 
+IPIP6 encapsulation only requires defining the encapsulation type as IP6IP6.
 
 Example:
 
@@ -118,8 +125,7 @@ Generic Routing Encapsulation (GRE)
 
 :abbr:`GRE (Generic Routing Encapsulation)` is a versatile encapsulation 
 protocol defined in RFC 2784. Unlike simpler protocols such as IPIP, it allows 
-both IPv4 and IPv6 to be transported through the 
-same tunnel.
+both IPv4 and IPv6 to be transported through the same tunnel.
 
 :abbr:`GRE (Generic Routing Encapsulation)` encapsulates original data packets 
 by adding a :abbr:`GRE (Generic Routing Encapsulation)` header, followed by an 
@@ -138,32 +144,6 @@ To configure a :abbr:`GRE (Generic Routing Encapsulation)` tunnel, you need to
 define a tunnel source IP address, a tunnel destination IP address, an 
 encapsulation type (:abbr:`GRE (Generic Routing Encapsulation)`), and a tunnel 
 interface IP address.
-
-Example:
-
-The following example shows how to configure an IPv4-over-IPv4 :abbr:`GRE 
-(Generic Routing Encapsulation)` tunnel between a VyOS router and a Cisco IOS 
-router. The primary difference between the two platforms is that VyOS requires 
-the encapsulation type to be explicitly defined, while Cisco IOS uses 
-:abbr:`GRE (Generic Routing Encapsulation)` over IP by default.
-
-**VyOS router:**
-
-.. code-block:: none
-
-  set interfaces tunnel tun100 address '10.0.0.1/30'
-  set interfaces tunnel tun100 encapsulation 'gre'
-  set interfaces tunnel tun100 source-address '198.51.100.2'
-  set interfaces tunnel tun100 remote '203.0.113.10'
-
-**Cisco IOS router:**
-
-.. code-block:: none
-
-  interface Tunnel100
-  ip address 10.0.0.2 255.255.255.252
-  tunnel source 203.0.113.10
-  tunnel destination 198.51.100.2
 
 Example: 
 
@@ -242,8 +222,9 @@ GRETAP
 Unlike GRE, which encapsulates only Layer 3 (IP) traffic, GRETAP encapsulates 
 Layer 2 (Ethernet) frames.
 
-That means that GRETAP tunnel interfaces can be members of a bridge interface. This allows two geographically distant sites to connect as if 
-they were on the same LAN.
+That means that GRETAP tunnel interfaces can be members of a bridge interface. 
+This allows two geographically distant sites to connect as if they were on the 
+same LAN.
 
 GRETAP tunnels can be established over both IPv4 and IPv6 transport networks.
 
@@ -263,12 +244,9 @@ Troubleshooting
 
 GRE is a standardized tunneling protocol used in many network environments.
 
-Although the GRE tunnel setup is straightforward, its successful deployment 
-requires proper alignment with the underlying network security policies.
-
-Administrators must ensure that these policies permit encapsulated traffic. 
-Common causes of GRE tunnel failures are ACLs or firewall rules that block IP 
-protocol 47 or prevent direct communication between tunnel endpoints.
+Although the GRE tunnel setup is straightforward, connectivity failures 
+frequently occur because ACLs or firewall rules block IP protocol 47 or 
+prevent direct communication between the tunnel endpoints.
 
 If your GRE tunnel fails to establish, perform these diagnostic steps:
 
