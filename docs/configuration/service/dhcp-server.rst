@@ -381,6 +381,8 @@ statements on both servers:
 
    Define the name of the peer server to establish and identify the HA (High Availability) connection.
 
+   .. note:: Make sure the specified value does not conflict with the system host-name.
+
 .. cfgcmd:: set service dhcp-server high-availability status <primary
    | secondary>
 
