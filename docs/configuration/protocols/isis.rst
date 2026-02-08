@@ -349,6 +349,69 @@ Loop Free Alternate (LFA)
   This command will limit LFA backup computation up to the specified
   prefix priority. 
 
+Segment Routing over IPv6 (SRv6)
+-------------------------
+
+.. cfgcmd:: set protocols isis segment-routing srv6 interface <interface>
+
+  The :ref:`dummy interface<configuration/interfaces/dummy:dummy>` used
+  to install SRv6 SIDs into the Linux data plane. The interface must exist and
+  must be present when configuring IS-IS with
+  SRv6.
+
+.. cfgcmd:: set protocols isis segment-routing srv6 locator <locator>
+  
+  Specifies the SRv6 locator to use for IS-IS. IS-IS automatically allocates
+  prefix and adjacency SIDs, creates local SID entries and advertises them
+  into the IGP domain.
+
+.. cfgcmd:: set protocols isis segment-routing srv6 node-msd max-end-d <0-255>
+
+  The Maximum End D MSD Type specifies the maximum number of SIDs present in an
+  SRH when performing decapsulation. As specified in :rfc:`8986`, the permitted
+  SID types include, but are not limited to, End.DX6, End.DT4, End.DT46, End
+  with USD, and End.X with USD.
+
+  If the advertised value is zero or no value is advertised, then the router
+  cannot apply any behavior that results in decapsulation and forwarding of the
+  inner packet if the outer IPv6 header contains an SRH.
+
+  Reference: :rfc:`9352`
+
+.. cfgcmd:: set protocols isis segment-routing srv6 node-msd max-end-pop <0-255>
+
+  The Maximum End Pop MSD Type signals the maximum number of SIDs in the SRH to
+  which the router can apply "Penultimate Segment Pop (PSP) of the SRH" or
+  "Ultimate Segment Pop (USP) of the SRH" behavior, as defined in "Flavors"
+  (Section 4.16 of :rfc:`8986`).
+
+  If the advertised value is zero or no value is advertised, then the router
+  cannot apply PSP or USP flavors.
+
+  Reference: :rfc:`9352`
+
+.. cfgcmd:: set protocols isis segment-routing srv6 node-msd max-h-encaps <0-255>
+
+  The Maximum H.Encaps MSD Type signals the maximum number of SIDs that can be
+  added to the segment list of an SRH as part of the "H.Encaps" behavior, as
+  defined in :rfc:`8986`.
+
+  If the advertised value is zero or no value is advertised, then the headend
+  can apply an SR Policy that only contains one segment without inserting any
+  SRH header. A non-zero SRH Max H.encaps MSD indicates that the headend can
+  insert an SRH up to the advertised number of SIDs.
+
+  Reference: :rfc:`9352`
+
+.. cfgcmd:: set protocols isis segment-routing srv6 node-msd max-segs-left <0-255>
+
+  The Maximum Segments Left MSD Type signals the maximum value of the
+  "Segments Left" field (:rfc:`8754`) in the SRH of a received packet before
+  applying the Endpoint behavior associated with a SID.
+
+  If no value is advertised, the supported value is 0.
+
+  Reference: :rfc:`9352`
 
 ********
 Examples
@@ -592,3 +655,87 @@ Here is the routing tables showing the MPLS segment routing label operations:
 
   I   192.0.2.0/24 [115/20] via 192.0.2.1, eth1 inactive, weight 1, 00:07:46
   I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, label IPv4 Explicit Null, weight 1, 00:03:43
+
+Enable IS-IS with Segment Routing over IPv6 (Experimental)
+==========================================================
+
+**Node 1:**
+
+.. code-block:: none
+
+  set interfaces dummy dum6 description "SRv6 IS-IS"
+  set interfaces ethernet eth1 address '192.0.2.1/24'
+  set interfaces loopback lo address '192.168.255.255/32'
+
+  set protocols segment-routing srv6 locator MAIN prefix 2001:db8:1::/64
+  set protocols segment-routing interface eth1
+
+  set protocols isis interface eth1
+  set protocols isis interface lo
+  set protocols isis net '49.0001.1921.6825.5255.00'
+  set protocols isis segment-routing srv6 locator MAIN
+  set protocols isis segment-routing srv6 interface dum6
+
+**Node 2:**
+
+.. code-block:: none
+
+  set interfaces dummy dum6 description "SRv6 IS-IS"
+  set interfaces ethernet eth1 address '192.0.2.2/24'
+  set interfaces loopback lo address '192.168.255.254/32'
+
+  set protocols segment-routing srv6 locator MAIN prefix 2001:db8:2::/64
+  set protocols segment-routing interface eth1
+
+  set protocols isis interface eth1
+  set protocols isis interface lo
+  set protocols isis net '49.0001.1921.6825.5254.00'
+  set protocols isis segment-routing srv6 locator MAIN
+  set protocols isis segment-routing srv6 interface dum6
+
+Enable IS-IS with Segment Routing over IPv6 (uSID) (Experimental)
+=================================================================
+
+**Node 1:**
+
+.. code-block:: none
+
+  set interfaces dummy dum6 description "SRv6 IS-IS"
+  set interfaces ethernet eth1 address '192.0.2.1/24'
+  set interfaces loopback lo address '192.168.255.255/32'
+
+  set protocols segment-routing interface eth1
+  set protocols segment-routing srv6 locator MAIN prefix 2001:db8:1::/48
+  set protocols segment-routing srv6 locator MAIN behavior-usid
+  set protocols segment-routing srv6 locator MAIN block-len 32
+  set protocols segment-routing srv6 locator MAIN format usid-f3216
+  set protocols segment-routing srv6 locator MAIN func-bits 16
+  set protocols segment-routing srv6 locator MAIN node-len 16
+
+  set protocols isis interface eth1
+  set protocols isis interface lo
+  set protocols isis net '49.0001.1921.6825.5255.00'
+  set protocols isis segment-routing srv6 interface dum6
+  set protocols isis segment-routing srv6 locator MAIN
+
+**Node 2:**
+
+.. code-block:: none
+
+  set interfaces dummy dum6 description "SRv6 IS-IS"
+  set interfaces ethernet eth1 address '192.0.2.2/24'
+  set interfaces loopback lo address '192.168.255.254/32'
+
+  set protocols segment-routing interface eth1
+  set protocols segment-routing srv6 locator MAIN prefix 2001:db8:2::/48
+  set protocols segment-routing srv6 locator MAIN behavior-usid
+  set protocols segment-routing srv6 locator MAIN block-len 32
+  set protocols segment-routing srv6 locator MAIN format usid-f3216
+  set protocols segment-routing srv6 locator MAIN func-bits 16
+  set protocols segment-routing srv6 locator MAIN node-len 16
+
+  set protocols isis interface eth1
+  set protocols isis interface lo
+  set protocols isis net '49.0001.1921.6825.5254.00'
+  set protocols isis segment-routing srv6 interface dum6
+  set protocols isis segment-routing srv6 locator MAIN
