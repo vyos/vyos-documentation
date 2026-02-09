@@ -1,30 +1,31 @@
-:lastproofread: 2023-01-20
-
-.. include:: /_include/need_improvement.txt
+:lastproofread: 2026-02-05
 
 .. _l2tpv3-interface:
 
 ######
 L2TPv3
-######
+######    
 
-Layer 2 Tunnelling Protocol Version 3 is an IETF standard related to L2TP that
-can be used as an alternative protocol to :ref:`mpls` for encapsulation of
-multiprotocol Layer 2 communications traffic over IP networks. Like L2TP,
-L2TPv3 provides a pseudo-wire service but is scaled to fit carrier requirements.
+:abbr:`L2TPv3 (Layer 2 Tunneling Protocol version 3)` interfaces let you 
+establish L2TPv3 tunnels to transport Layer 2 traffic over IP networks. To 
+encapsulate data for transmission, they leverage the L2TPv3 protocol. As 
+defined in :rfc:`3931`, this protocol wraps Layer 2 frames (e.g., Ethernet, 
+Frame Relay, and HDLC) within IP packets, allowing them to traverse the 
+underlying IP infrastructure.
 
-L2TPv3 can be regarded as being to MPLS what IP is to ATM: a simplified version
-of the same concept, with much of the same benefit achieved at a fraction of the
-effort, at the cost of losing some technical features considered less important
-in the market.
+Unlike L2TPv2, which strictly requires UDP encapsulation, the L2TPv3 protocol 
+is more flexible and supports two encapsulation types:
 
-In the case of L2TPv3, the features lost are teletraffic engineering features
-considered important in MPLS. However, there is no reason these features could
-not be re-engineered in or on top of L2TPv3 in later products.
+ * **Direct IP:** Tunnel data is encapsulated directly inside IP packets 
+   (Protocol 115) for lower overhead.
+ * **UDP:** Tunnel data is encapsulated inside a UDP header before being placed 
+   in the IP packet. This allows the tunnel to traverse NAT devices.
 
-The protocol overhead of L2TPv3 is also significantly bigger than MPLS.
+L2TPv3 tunnels connect geographically separated sites, serving as a simpler 
+alternative to :ref:`mpls` by operating over basic IP connectivity rather than 
+requiring a full MPLS infrastructure.
 
-L2TPv3 is described in :rfc:`3931`.
+L2TPv3 tunnels can be established over both IPv4 and IPv6 underlying networks.
 
 *************
 Configuration
@@ -40,53 +41,83 @@ Common interface configuration
 L2TPv3 options
 ==============
 
+Use the following commands to configure the L2TPv3 tunnel's specific parameters.
+
 .. cfgcmd:: set interfaces l2tpv3 <interface> encapsulation <udp | ip>
 
-  Set the encapsulation type of the tunnel. Valid values for encapsulation are:
-  udp, ip.
+  **Configure the encapsulation type for the L2TPv3 tunnel.**
 
-  This defaults to UDP
+  Valid values are ``udp`` and ``ip``.
+
+  The default encapsulation type is ``udp``.
+
+.. note:: The encapsulation type must match on both the local and remote peers 
+   for the tunnel to establish. 
 
 .. cfgcmd:: set interfaces l2tpv3 <interface> source-address <address>
 
-  Set the IP address of the local interface to be used for the tunnel.
+  **Configure the L2TPv3 tunnel source IP address.**
 
-  This address must be the address of a local interface. It may be specified as
-  an IPv4 address or an IPv6 address.
+  The specified address must be a local interface IP address and can be either 
+  IPv4 or IPv6.
 
 .. cfgcmd:: set interfaces l2tpv3 <interface> remote <address>
 
-  Set the IP address of the remote peer. It may be specified as
-  an IPv4 address or an IPv6 address.
+  **Configure the L2TPv3 tunnel destination IP address.** 
+
+  The specified address must be a remote peer’s interface IP address and can be 
+  either IPv4 or IPv6.
 
 .. cfgcmd:: set interfaces l2tpv3 <interface> session-id <id>
 
-  Set the session id, which is a 32-bit integer value. Uniquely identifies the
-  session being created. The value used must match the peer_session_id value
-  being used at the peer.
+  **Configure the local session ID within the L2TPv3 tunnel.**
+
+  The ``session-id`` is a 32-bit value that identifies an incoming tunnel session
+  on the local peer.
+
+  The ``peer-session-id`` that identifies this session on the remote peer must be 
+  set to the same value.
 
 .. cfgcmd:: set interfaces l2tpv3 <interface> peer-session-id <id>
 
-  Set the peer-session-id, which is a 32-bit integer value assigned to the
-  session by the peer. The value used must match the session_id value being
-  used at the peer.
+  **Configure the peer session ID within the L2TPv3 tunnel.** 
+
+  The ``peer-session-id`` is a 32-bit value that identifies an outgoing tunnel 
+  session from the local peer. 
+
+  The ``peer-session-id`` must match the ``session-id`` configured for this 
+  session on the remote peer.
 
 .. cfgcmd:: set interfaces l2tpv3 <interface> tunnel-id <id>
 
-  Set the tunnel id, which is a 32-bit integer value. Uniquely identifies the
-  tunnel into which the session will be created.
+  **Configure the local identifier for the L2TPv3 tunnel.**
+
+  The ``tunnel-id`` is a 32-bit value that identifies the L2TPv3 tunnel on the 
+  local peer.
+
+  The ``peer-tunnel-id`` that identifies this tunnel on the remote peer must be 
+  set to the same value.
 
 .. cfgcmd:: set interfaces l2tpv3 <interface> peer-tunnel-id <id>
 
-  Set the tunnel id, which is a 32-bit integer value. Uniquely identifies the
-  tunnel into which the session will be created.
+  **Configure the peer identifier for the L2TPv3 tunnel.** 
+
+  The ``peer-tunnel-id`` is a 32-bit value that identifies the L2TPv3 tunnel on 
+  the remote peer and must correspond to the ``tunnel-id`` configured for that 
+  tunnel on that peer.
+  
+  The ``peer-tunnel-id`` must match the ``tunnel-id`` that identifies this tunnel 
+  on the remote peer.
 
 *******
 Example
 *******
 
-Over IP
-=======
+L2TPv3 tunnel with IP encapsulation
+===================================
+
+The following example shows the configuration of an L2TPv3 tunnel using direct 
+IP encapsulation:
 
 .. code-block:: none
 
@@ -102,15 +133,22 @@ Over IP
       tunnel-id 200
   }
 
-The inverse configuration has to be applied to the remote side.
+The inverse configuration must be applied to the remote peer.
 
-Over UDP
-========
+L2TPv3 tunnel with UDP encapsulation 
+====================================
 
-UDP mode works better with NAT:
+The following example shows the configuration of an L2TPv3 tunnel using UDP 
+encapsulation. 
 
-* Set source-address to your local IP (LAN).
-* Add a forwarding rule matching UDP port on your internet router.
+This setup is recommended when the tunnel traverses NAT devices.
+
+Configuration notes:
+
+* Use a local LAN IP address as the ``source-address``.
+* Configure a forwarding rule to allow tunnel traffic on the specified UDP port 
+  on the upstream NAT device.
+* Use a distinct UDP port for each individual tunnel.
 
 .. code-block:: none
 
@@ -127,65 +165,3 @@ UDP mode works better with NAT:
       source-port 9000
       tunnel-id 200
   }
-
-To create more than one tunnel, use distinct UDP ports.
-
-
-Over IPSec, L2 VPN (bridge)
-===========================
-
-This is the LAN extension use case. The eth0 port of the distant VPN peers
-will be directly connected like if there was a switch between them.
-
-IPSec:
-
-.. code-block:: none
-
-  set vpn ipsec authentication psk <pre-shared-name> id '%any'
-  set vpn ipsec authentication psk <pre-shared-name> secret <pre-shared-key>
-  set vpn ipsec interface <VPN-interface>
-  set vpn ipsec esp-group test-ESP-1 lifetime '3600'
-  set vpn ipsec esp-group test-ESP-1 mode 'transport'
-  set vpn ipsec esp-group test-ESP-1 pfs 'enable'
-  set vpn ipsec esp-group test-ESP-1 proposal 1 encryption 'aes128'
-  set vpn ipsec esp-group test-ESP-1 proposal 1 hash 'sha1'
-  set vpn ipsec ike-group test-IKE-1 key-exchange 'ikev1'
-  set vpn ipsec ike-group test-IKE-1 lifetime '3600'
-  set vpn ipsec ike-group test-IKE-1 proposal 1 dh-group '5'
-  set vpn ipsec ike-group test-IKE-1 proposal 1 encryption 'aes128'
-  set vpn ipsec ike-group test-IKE-1 proposal 1 hash 'sha1'
-  set vpn ipsec site-to-site peer <connection-name> authentication mode 'pre-shared-secret'
-  set vpn ipsec site-to-site peer <connection-name> connection-type 'initiate'
-  set vpn ipsec site-to-site peer <connection-name> ike-group 'test-IKE-1'
-  set vpn ipsec site-to-site peer <connection-name> ikev2-reauth 'inherit'
-  set vpn ipsec site-to-site peer <connection-name> local-address <local-ip>
-  set vpn ipsec site-to-site peer <connection-name> tunnel 1 esp-group 'test-ESP-1'
-  set vpn ipsec site-to-site peer <connection-name> tunnel 1 protocol 'l2tp'
-
-Bridge:
-
-.. code-block:: none
-
-  set interfaces bridge br0 description 'L2 VPN Bridge'
-  # remote side in this example:
-  # set interfaces bridge br0 address '172.16.30.18/30'
-  set interfaces bridge br0 address '172.16.30.17/30'
-  set interfaces bridge br0 member interface eth0
-  set interfaces ethernet eth0 description 'L2 VPN Physical port'
-
-L2TPv3:
-
-.. code-block:: none
-
-  set interfaces bridge br0 member interface 'l2tpeth0'
-  set interfaces l2tpv3 l2tpeth0 description 'L2 VPN Tunnel'
-  set interfaces l2tpv3 l2tpeth0 destination-port '5000'
-  set interfaces l2tpv3 l2tpeth0 encapsulation 'ip'
-  set interfaces l2tpv3 l2tpeth0 source-address <local-ip>
-  set interfaces l2tpv3 l2tpeth0 mtu '1500'
-  set interfaces l2tpv3 l2tpeth0 peer-session-id '110'
-  set interfaces l2tpv3 l2tpeth0 peer-tunnel-id '10'
-  set interfaces l2tpv3 l2tpeth0 remote <peer-ip>
-  set interfaces l2tpv3 l2tpeth0 session-id '110'
-  set interfaces l2tpv3 l2tpeth0 source-port '5000'
-  set interfaces l2tpv3 l2tpeth0 tunnel-id '10'
