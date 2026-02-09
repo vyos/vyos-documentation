@@ -1316,7 +1316,7 @@ msgstr "Або з наступного блоку:"
 msgid "Or it can be accessed via a web browser:"
 msgstr "Або доступ до нього можна отримати через веб-браузер:"
 
-#: ../../installation/cloud/oracel.rst:3
+#: ../../installation/cloud/oracle.rst:3
 msgid "Oracle"
 msgstr "Оракул"
 
@@ -1421,7 +1421,7 @@ msgstr "Зверніться до :ref:`wwan-interface` для отриманн�
 #: ../../installation/cloud/aws.rst:99
 #: ../../installation/cloud/azure.rst:71
 #: ../../installation/cloud/gcp.rst:57
-#: ../../installation/cloud/oracel.rst:7
+#: ../../installation/cloud/oracle.rst:7
 #: ../../installation/virtual/eve-ng.rst:6
 #: ../../installation/virtual/vmware.rst:40
 msgid "References"
@@ -2216,7 +2216,7 @@ msgstr "https://vyos.net/get/nightly-builds/"
 msgid "https://www.eve-ng.net/"
 msgstr "https://www.eve-ng.net/"
 
-#: ../../installation/cloud/oracel.rst:8
+#: ../../installation/cloud/oracle.rst:8
 msgid "https://www.oracle.com/cloud/"
 msgstr "https://www.oracle.com/cloud/"
 

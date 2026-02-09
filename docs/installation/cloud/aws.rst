@@ -1,3 +1,5 @@
+:lastproofread: 2026-02-06
+
 ##########
 Amazon AWS
 ##########
@@ -5,44 +7,44 @@ Amazon AWS
 Deploy VM
 ---------
 
-Deploy VyOS on Amazon :abbr:`AWS (Amazon Web Services)`
+Deploy VyOS on Amazon :abbr:`AWS (Amazon Web Services)`.
 
-1. Click to ``Instances`` and ``Launch Instance``
+1. Click **Instances** and then click **Launch Instance**.
 
 .. figure:: /_static/images/cloud-aws-01.png
 
-2. On the marketplace search "VyOS"
+2. Search for "VyOS" in the Marketplace.
 
 .. figure:: /_static/images/cloud-aws-02.png
 
-3. Choose the instance type. Minimum recommendation start from ``m3.medium``
+3. Choose the instance type. The recommended minimum is ``m3.medium``.
 
 .. figure:: /_static/images/cloud-aws-03.png
 
-4. Configure instance for your requirements. Select number of
-   instances / network / subnet
+4. Configure the instance for your requirements. Select the number of
+   instances, network, and subnet.
 
 .. figure:: /_static/images/cloud-aws-04.png
 
-5. Additional storage. You can remove additional storage ``/dev/sdb``. First
-   root device will be ``/dev/xvda``. You can skip this step.
+5. Configure additional storage. You can remove the additional storage
+   ``/dev/sdb``. The root device will be ``/dev/xvda``. You can skip this step.
 
 .. figure:: /_static/images/cloud-aws-05.png
 
-6. Configure Security Group. It's recommended that you configure SSH access
-   only from certain address sources. Or permit any (by default).
+6. Configure the security group. We recommend configuring SSH access
+   only from specific sources, or you can permit any IP address (the default).
 
 .. figure:: /_static/images/cloud-aws-06.png
 
-7. Select SSH key pair and click ``Launch Instances``
+7. Select the SSH key pair and click **Launch Instances**.
 
 .. figure:: /_static/images/cloud-aws-07.png
 
-8. Find out your public IP address.
+8. Note your public IP address.
 
 .. figure:: /_static/images/cloud-aws-08.png
 
-9. Connect to the instance by SSH key.
+9. Connect to the instance using your SSH key.
 
   .. code-block:: none
 
@@ -52,8 +54,7 @@ Deploy VyOS on Amazon :abbr:`AWS (Amazon Web Services)`
 Amazon CloudWatch Agent Usage
 -----------------------------
 
-To use Amazon CloudWatch Agent, configure it within the Amazon SSM Parameter
-Store. If you don't have a configuration yet, do
+To use the Amazon CloudWatch agent, configure it in the Amazon Systems Manager Parameter Store. For instructions on creating a configuration, see
 :ref:`configuration_creation`.
 
 1. Create an :abbr:`IAM (Identity and Access Management)` role for the
@@ -65,7 +66,7 @@ Store. If you don't have a configuration yet, do
 2. Attach the created role to your VyOS :abbr:`EC2 (Elastic Compute Cloud)`
    instance.
 
-3. Ensure that amazon-cloudwatch-agent package is installed. 
+3. Ensure the amazon-cloudwatch-agent package is installed. 
 
   .. code-block:: none
 
@@ -97,22 +98,21 @@ Creating the Amazon Cloudwatch Agent Configuration in Amazon
 
 1. Create an :abbr:`IAM (Identity and Access Management)` role for your
    :abbr:`EC2 (Elastic Compute Cloud)` instance to access the CloudWatch
-   service. Name it CloudWatchAgentAdminRole. The role should contain at two
-   default policies: ``CloudWatchAgentAdminPolicy`` and
+   service. Name it CloudWatchAgentAdminRole. The role must contain at least two
+   policies: ``CloudWatchAgentAdminPolicy`` and
    ``AmazonSSMManagedInstanceCore``.
 
-  .. note:: CloudWatchAgentServerRole is too permissive and should be used for
-     single configuration creation and deployment. That's why after completion
-     of step #3 highly recommended to replace instance
-     CloudWatchAgentAdminRole role with CloudWatchAgentServerRole.
+  .. note:: CloudWatchAgentServerRole is too permissive and should be used only for
+     creating and deploying a single configuration. After step 3, we recommend
+     replacing the CloudWatchAgentAdminRole with the CloudWatchAgentServerRole.
 
-2. Run Cloudwatch configuration wizard.
+2. Run the CloudWatch configuration wizard.
 
   .. code-block:: none
 
     $ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
 
-3. When prompted, answer "yes" to the question "Do you want to store the
+3. When prompted, enter "yes" to the question "Do you want to store the
    config in the SSM parameter store?".
 
 AWS Gateway Load Balancer

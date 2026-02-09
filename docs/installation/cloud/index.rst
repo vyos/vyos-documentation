@@ -8,4 +8,4 @@ Cloud Environments
    aws
    azure
    gcp
-   oracel
+   oracle

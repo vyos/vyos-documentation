@@ -1,3 +1,5 @@
+:lastproofread: 2026-02-09
+
 #####################
 Google Cloud Platform
 #####################
@@ -5,48 +7,47 @@ Google Cloud Platform
 Deploy VM
 ---------
 
-To deploy VyOS on GCP (Google Cloud Platform)
+To deploy VyOS on Google Cloud Platform (GCP):
 
-1. Generate SSH key pair type **ssh-rsa** from the host that will connect to
-   VyOS.
+1. Generate an SSH key pair of type **ssh-rsa** on the host that will connect
+   to VyOS.
 
-  Example:
+   Example:
 
-  .. code-block:: none
+   .. code-block:: none
 
-    ssh-keygen -t rsa -f ~/.ssh/vyos_gcp -C "vyos@mypc"
+     ssh-keygen -t rsa -f ~/.ssh/vyos_gcp -C "vyos@mypc"
+
+.. note:: The SSH key comment must begin with ``vyos@`` because that's the
+   default VyOS user. GCP uses this value to set the username on the instance.
 
 
-.. note:: In name "vyos@mypc" The first value must be "**vyos**". Because
-   default user is vyos and google api uses this option.
-
-
-2. Open GCP console and navigate to the menu **Metadata**. Choose
-   **SSH Keys** and click ``edit``.
+2. Open the GCP Console and navigate to **Metadata**. Select **SSH Keys** and 
+   click **Edit**.
 
 .. figure:: /_static/images/cloud-gcp-01.png
 
 
-Click **Add item** and paste your public ssh key. Click ``Save``.
+   Click **Add item**, paste your public SSH key, and click **Save**.
 
 .. figure:: /_static/images/cloud-gcp-02.png
 
 
-2. On marketplace search "VyOS"
+3. Search for "VyOS" in the Marketplace.
 
-3. Change Deployment name/Zone/Machine type and click ``Deploy``
+4. Configure the deployment name, zone, and machine type, then click **Deploy**.
 
 .. figure:: /_static/images/cloud-gcp-03.png
 
-4. After few seconds click to ``instance``
+5. After a few seconds, select your **instance**.
 
 .. figure:: /_static/images/cloud-gcp-04.png
 
-5. Find out your external IP address
+6. Note your external IP address.
 
 .. figure:: /_static/images/cloud-gcp-05.png
 
-6. Connect to the instance. SSH key was generated in the first step.
+7. Connect to the instance using the SSH key you generated in step 1.
 
   .. code-block:: none
 
