@@ -54,7 +54,8 @@ Deploy VyOS on Amazon :abbr:`AWS (Amazon Web Services)`.
 Amazon CloudWatch Agent Usage
 -----------------------------
 
-To use the Amazon CloudWatch agent, configure it in the Amazon Systems Manager Parameter Store. For instructions on creating a configuration, see
+To use the Amazon CloudWatch agent, configure it in the Amazon Systems Manager
+Parameter Store. For instructions on creating a configuration, see
 :ref:`configuration_creation`.
 
 1. Create an :abbr:`IAM (Identity and Access Management)` role for the
@@ -98,13 +99,15 @@ Creating the Amazon Cloudwatch Agent Configuration in Amazon
 
 1. Create an :abbr:`IAM (Identity and Access Management)` role for your
    :abbr:`EC2 (Elastic Compute Cloud)` instance to access the CloudWatch
-   service. Name it CloudWatchAgentAdminRole. The role must contain at least two
-   policies: ``CloudWatchAgentAdminPolicy`` and
+   service. Name it ``CloudWatchAgentAdminRole``. The role must contain at
+    least two policies: ``CloudWatchAgentAdminPolicy`` and
    ``AmazonSSMManagedInstanceCore``.
 
-  .. note:: CloudWatchAgentServerRole is too permissive and should be used only for
+  .. note:: CloudWatchAgentServerRole is too permissive and should be used only
+     for
      creating and deploying a single configuration. After step 3, we recommend
-     replacing the CloudWatchAgentAdminRole with the CloudWatchAgentServerRole.
+     replacing the ``CloudWatchAgentAdminRole`` with the 
+     ``CloudWatchAgentServerRole``.
 
 2. Run the CloudWatch configuration wizard.
 
