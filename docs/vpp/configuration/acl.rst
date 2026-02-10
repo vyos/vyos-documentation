@@ -13,7 +13,7 @@ VPP ACLs (Access Control Lists) provide a way to filter traffic passing through 
 VyOS VPP ACL implementation supports two main types of access control lists:
 
 * **IP ACLs** - Layer 3 filtering based on IPv4/IPv6 addresses, ports, and protocols (can be applied to both input and output directions)
-* **MACIP ACLs** - Layer 2 filtering based on MAC addresses and IP prefixes (can only be applied to input direction)
+* **MAC ACLs** - Layer 2 filtering based on MAC addresses and IP prefixes (can only be applied to input direction)
 
 Structure and Components
 ========================
@@ -37,7 +37,7 @@ ACL tags are applied to interfaces to control traffic flow:
 - **Output direction**: Filters traffic leaving the interface
 
 .. note::
-   **Important Limitation**: MACIP ACLs can only be applied to the input direction of interfaces. They cannot filter outbound traffic. Use IP ACLs if you need to filter traffic in both directions.
+   **Important Limitation**: MAC ACLs can only be applied to the input direction of interfaces. They cannot filter outbound traffic. Use IP ACLs if you need to filter traffic in both directions.
 
 Rule Processing
 ---------------
@@ -256,33 +256,33 @@ L2/MAC ACLs
 MAC ACLs provide Layer 2 filtering capabilities based on MAC addresses and IP prefixes. They are particularly useful for controlling access at the data link layer.
 
 .. important::
-   **Direction Limitation**: MACIP ACLs can **only** be applied to the **input direction** of interfaces. They cannot filter outbound/output traffic. If you need bidirectional filtering, use IP ACLs instead.
+   **Direction Limitation**: MAC ACLs can **only** be applied to the **input direction** of interfaces. They cannot filter outbound/output traffic. If you need bidirectional filtering, use IP ACLs instead.
 
-Creating MACIP ACL Tags
+Creating MAC ACL Tags
 -----------------------
 
-MACIP ACL tags are created under the ``vpp acl macip`` configuration node:
+MAC ACL tags are created under the ``vpp acl mac`` configuration node:
 
 .. code-block:: none
 
-   set vpp acl macip tag-name <tag-name>
-   set vpp acl macip tag-name <tag-name> description '<description>'
+   set vpp acl mac tag-name <tag-name>
+   set vpp acl mac tag-name <tag-name> description '<description>'
 
 Example:
 
 .. code-block:: none
 
-   set vpp acl macip tag-name 'MAC-FILTER'
-   set vpp acl macip tag-name 'MAC-FILTER' description 'Layer 2 MAC address filtering'
+   set vpp acl mac tag-name 'MAC-FILTER'
+   set vpp acl mac tag-name 'MAC-FILTER' description 'Layer 2 MAC address filtering'
 
-Adding Rules to MACIP ACL Tags
+Adding Rules to MAC ACL Tags
 ------------------------------
 
-Rules are added to MACIP ACL tags with specific rule numbers:
+Rules are added to MAC ACL tags with specific rule numbers:
 
 .. code-block:: none
 
-   set vpp acl macip tag-name <tag-name> rule <rule-number>
+   set vpp acl mac tag-name <tag-name> rule <rule-number>
 
 Basic MAC ACL Rule Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -291,15 +291,15 @@ Each rule requires an action and matching criteria:
 
 .. code-block:: none
 
-   set vpp acl macip tag-name <tag-name> rule <rule-number> action <permit|deny>
-   set vpp acl macip tag-name <tag-name> rule <rule-number> description '<description>'
+   set vpp acl mac tag-name <tag-name> rule <rule-number> action <permit|deny>
+   set vpp acl mac tag-name <tag-name> rule <rule-number> description '<description>'
 
 **Actions:**
 
 - ``permit`` - Allow matching traffic
 - ``deny`` - Block matching traffic
 
-Note: MACIP ACLs do not support the ``permit-reflect`` action available in IP ACLs.
+Note: MAC ACLs do not support the ``permit-reflect`` action available in IP ACLs.
 
 MAC Address Matching
 ^^^^^^^^^^^^^^^^^^^^
@@ -308,8 +308,8 @@ Configure MAC address matching criteria:
 
 .. code-block:: none
 
-   set vpp acl macip tag-name <tag-name> rule <rule-number> mac-address <mac-address>
-   set vpp acl macip tag-name <tag-name> rule <rule-number> mac-mask <mac-mask>
+   set vpp acl mac tag-name <tag-name> rule <rule-number> mac-address <mac-address>
+   set vpp acl mac tag-name <tag-name> rule <rule-number> mac-mask <mac-mask>
 
 **MAC Address Specification:**
 
@@ -327,14 +327,14 @@ Configure IP prefix matching for the source:
 
 .. code-block:: none
 
-   set vpp acl macip tag-name <tag-name> rule <rule-number> prefix <ip-prefix>
+   set vpp acl mac tag-name <tag-name> rule <rule-number> prefix <ip-prefix>
 
 **Prefix Specification:**
 
 - Supports both IPv4 and IPv6 prefixes in CIDR notation
 - Examples: ``192.168.1.0/24``, ``10.0.0.0/8``, ``2001:db8::/32``
 
-MACIP ACL Configuration Examples
+MAC ACL Configuration Examples
 --------------------------------
 
 Example 1: Device Whitelist
@@ -342,93 +342,93 @@ Example 1: Device Whitelist
 
 .. code-block:: none
 
-   # Create MACIP ACL for device whitelisting
-   set vpp acl macip tag-name 'DEVICE-WHITELIST'
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' description 'Allow only approved devices'
+   # Create MAC ACL for device whitelisting
+   set vpp acl mac tag-name 'DEVICE-WHITELIST'
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' description 'Allow only approved devices'
    
    # Allow specific workstation
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 10 action permit
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 10 mac-address '00:1b:21:12:34:56'
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 10 prefix '192.168.1.100/32'
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 10 description 'Admin workstation'
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 10 action permit
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 10 mac-address '00:1b:21:12:34:56'
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 10 prefix '192.168.1.100/32'
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 10 description 'Admin workstation'
    
    # Allow specific server
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 20 action permit
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 20 mac-address '00:1b:21:78:90:ab'
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 20 prefix '192.168.1.10/32'
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 20 description 'Web server'
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 20 action permit
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 20 mac-address '00:1b:21:78:90:ab'
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 20 prefix '192.168.1.10/32'
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 20 description 'Web server'
    
    # Deny everything else
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 999 action deny
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 999 mac-address '00:00:00:00:00:00'
-   set vpp acl macip tag-name 'DEVICE-WHITELIST' rule 999 mac-mask '00:00:00:00:00:00'
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 action deny
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 mac-address '00:00:00:00:00:00'
+   set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 mac-mask '00:00:00:00:00:00'
 
 Example 2: Vendor-Based Filtering
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
-   # Create MACIP ACL for vendor-based filtering
-   set vpp acl macip tag-name 'VENDOR-FILTER'
-   set vpp acl macip tag-name 'VENDOR-FILTER' description 'Filter by MAC vendor OUI'
+   # Create MAC ACL for vendor-based filtering
+   set vpp acl mac tag-name 'VENDOR-FILTER'
+   set vpp acl mac tag-name 'VENDOR-FILTER' description 'Filter by MAC vendor OUI'
    
    # Deny Realtek devices (OUI: 00:e0:4c)
-   set vpp acl macip tag-name 'VENDOR-FILTER' rule 10 action deny
-   set vpp acl macip tag-name 'VENDOR-FILTER' rule 10 mac-address '00:e0:4c:00:00:00'
-   set vpp acl macip tag-name 'VENDOR-FILTER' rule 10 mac-mask 'ff:ff:ff:00:00:00'
-   set vpp acl macip tag-name 'VENDOR-FILTER' rule 10 description 'Block Realtek devices'
+   set vpp acl mac tag-name 'VENDOR-FILTER' rule 10 action deny
+   set vpp acl mac tag-name 'VENDOR-FILTER' rule 10 mac-address '00:e0:4c:00:00:00'
+   set vpp acl mac tag-name 'VENDOR-FILTER' rule 10 mac-mask 'ff:ff:ff:00:00:00'
+   set vpp acl mac tag-name 'VENDOR-FILTER' rule 10 description 'Block Realtek devices'
    
    # Allow all other devices
-   set vpp acl macip tag-name 'VENDOR-FILTER' rule 100 action permit
-   set vpp acl macip tag-name 'VENDOR-FILTER' rule 100 mac-address '00:00:00:00:00:00'
-   set vpp acl macip tag-name 'VENDOR-FILTER' rule 100 mac-mask '00:00:00:00:00:00'
-   set vpp acl macip tag-name 'VENDOR-FILTER' rule 100 description 'Allow all other vendors'
+   set vpp acl mac tag-name 'VENDOR-FILTER' rule 100 action permit
+   set vpp acl mac tag-name 'VENDOR-FILTER' rule 100 mac-address '00:00:00:00:00:00'
+   set vpp acl mac tag-name 'VENDOR-FILTER' rule 100 mac-mask '00:00:00:00:00:00'
+   set vpp acl mac tag-name 'VENDOR-FILTER' rule 100 description 'Allow all other vendors'
 
 Example 3: Network Segmentation by MAC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
-   # Create MACIP ACL for network segmentation
-   set vpp acl macip tag-name 'SEGMENT-FILTER'
-   set vpp acl macip tag-name 'SEGMENT-FILTER' description 'Segment networks by MAC/IP binding'
+   # Create MAC ACL for network segmentation
+   set vpp acl mac tag-name 'SEGMENT-FILTER'
+   set vpp acl mac tag-name 'SEGMENT-FILTER' description 'Segment networks by MAC/IP binding'
    
    # Allow management VLAN devices
-   set vpp acl macip tag-name 'SEGMENT-FILTER' rule 10 action permit
-   set vpp acl macip tag-name 'SEGMENT-FILTER' rule 10 mac-address '02:01:00:00:00:00'
-   set vpp acl macip tag-name 'SEGMENT-FILTER' rule 10 mac-mask 'ff:ff:00:00:00:00'
-   set vpp acl macip tag-name 'SEGMENT-FILTER' rule 10 prefix '10.1.0.0/16'
-   set vpp acl macip tag-name 'SEGMENT-FILTER' rule 10 description 'Management VLAN'
+   set vpp acl mac tag-name 'SEGMENT-FILTER' rule 10 action permit
+   set vpp acl mac tag-name 'SEGMENT-FILTER' rule 10 mac-address '02:01:00:00:00:00'
+   set vpp acl mac tag-name 'SEGMENT-FILTER' rule 10 mac-mask 'ff:ff:00:00:00:00'
+   set vpp acl mac tag-name 'SEGMENT-FILTER' rule 10 prefix '10.1.0.0/16'
+   set vpp acl mac tag-name 'SEGMENT-FILTER' rule 10 description 'Management VLAN'
    
    # Allow user VLAN devices
-   set vpp acl macip tag-name 'SEGMENT-FILTER' rule 20 action permit
-   set vpp acl macip tag-name 'SEGMENT-FILTER' rule 20 mac-address '02:02:00:00:00:00'
-   set vpp acl macip tag-name 'SEGMENT-FILTER' rule 20 mac-mask 'ff:ff:00:00:00:00'
-   set vpp acl macip tag-name 'SEGMENT-FILTER' rule 20 prefix '10.2.0.0/16'
-   set vpp acl macip tag-name 'SEGMENT-FILTER' rule 20 description 'User VLAN'
+   set vpp acl mac tag-name 'SEGMENT-FILTER' rule 20 action permit
+   set vpp acl mac tag-name 'SEGMENT-FILTER' rule 20 mac-address '02:02:00:00:00:00'
+   set vpp acl mac tag-name 'SEGMENT-FILTER' rule 20 mac-mask 'ff:ff:00:00:00:00'
+   set vpp acl mac tag-name 'SEGMENT-FILTER' rule 20 prefix '10.2.0.0/16'
+   set vpp acl mac tag-name 'SEGMENT-FILTER' rule 20 description 'User VLAN'
 
-Applying MACIP ACL Tags to Interfaces
+Applying MAC ACL Tags to Interfaces
 -------------------------------------
 
-MACIP ACL tags can only be applied to the input direction of interfaces:
+MAC ACL tags can only be applied to the input direction of interfaces:
 
 .. code-block:: none
 
-   set vpp acl macip interface <interface> tag-name <tag-name>
+   set vpp acl mac interface <interface> tag-name <tag-name>
 
 .. note::
-   **Syntax Difference**: Unlike IP ACLs, MACIP ACL interface application does not use the ``acl-tag <number>`` structure since only single MACIP ACLs can be applied.
+   **Syntax Difference**: Unlike IP ACLs, MAC ACL interface application does not use the ``acl-tag <number>`` structure since only single MAC ACLs can be applied.
 
 .. warning::
-   Unlike IP ACLs, MACIP ACLs do **not** support output direction filtering. There is no ``output`` option available for MACIP ACL interface application.
+   Unlike IP ACLs, MAC ACLs do **not** support output direction filtering. There is no ``output`` option available for MAC ACL interface application.
 
 Example:
 
 .. code-block:: none
 
    # Apply MAC filtering to interface input
-   set vpp acl macip interface eth0 tag-name 'MAC-FILTER'
-   set vpp acl macip interface eth1 tag-name 'DEVICE-WHITELIST'
+   set vpp acl mac interface eth0 tag-name 'MAC-FILTER'
+   set vpp acl mac interface eth1 tag-name 'DEVICE-WHITELIST'
 
 Configuration Best Practices
 ============================
@@ -445,8 +445,8 @@ Performance Considerations
 --------------------------
 
 - **Minimize rule count**: Fewer rules generally mean better performance
-- **Use appropriate ACL type**: Use MACIP ACLs for Layer 2/3 filtering, IP ACLs for Layer 3/4 filtering
-- **Consider direction limitations**: Remember that MACIP ACLs only work on input traffic; use IP ACLs for filtering in both directions
+- **Use appropriate ACL type**: Use MAC ACLs for Layer 2/3 filtering, IP ACLs for Layer 3/4 filtering
+- **Consider direction limitations**: Remember that MAC ACLs only work on input traffic; use IP ACLs for filtering in both directions
 - **Combine related rules**: Group similar filtering requirements into single ACL tags
 - **Apply strategically**: Apply ACLs at ingress points where possible to minimize processing
 
@@ -498,11 +498,11 @@ VyOS provides several operational commands to monitor and troubleshoot VPP ACL c
 Viewing All ACLs
 ----------------
 
-Display all configured ACLs (both IP and MACIP):
+Display all configured ACLs (both IP and MAC):
 
 .. opcmd:: show vpp acl
 
-This command shows a summary of all configured ACL tags with their rules, displaying both IP ACLs and MACIP ACLs in a tabular format.
+This command shows a summary of all configured ACL tags with their rules, displaying both IP ACLs and MAC ACLs in a tabular format.
 
 Example output:
 
@@ -565,16 +565,16 @@ Example:
         20  permit    0.0.0.0/0     0-65535     0.0.0.0/0     443               6
        999  deny      0.0.0.0/0     0-65535     0.0.0.0/0     0-65535           0
 
-MACIP ACL Commands
+MAC ACL Commands
 ------------------
 
-View all MACIP ACLs:
+View all MAC ACLs:
 
-.. opcmd:: show vpp acl macip
+.. opcmd:: show vpp acl mac
 
-View MACIP ACL interface assignments:
+View MAC ACL interface assignments:
 
-.. opcmd:: show vpp acl macip interface
+.. opcmd:: show vpp acl mac interface
 
 Example output:
 
@@ -584,15 +584,15 @@ Example output:
    -----------  -----
    eth0         VENDOR-FILTER
 
-View specific MACIP ACL by tag name:
+View specific MAC ACL by tag name:
 
-.. opcmd:: show vpp acl macip tag-name <tag-name>
+.. opcmd:: show vpp acl mac tag-name <tag-name>
 
 Example:
 
 .. code-block:: none
 
-    vyos@vyos:~$ show vpp acl macip tag-name VENDOR-FILTER 
+    vyos@vyos:~$ show vpp acl mac tag-name VENDOR-FILTER
 
     ---------------------------------
     MACIP ACL "tag-name VENDOR-FILTER" acl_index 0
@@ -617,7 +617,7 @@ Understanding Command Output
 - **TCP flags set**: Required TCP flags (for TCP protocol)
 - **TCP flags not set**: Prohibited TCP flags (for TCP protocol)
 
-**MACIP ACL Output Fields:**
+**MAC ACL Output Fields:**
 
 - **Rule**: Rule number within the ACL
 - **Action**: permit or deny
@@ -630,4 +630,4 @@ Understanding Command Output
 - Shows which interfaces have ACLs applied
 - **Input ACLs**: ACL tags applied to incoming traffic
 - **Output ACLs**: ACL tags applied to outgoing traffic (IP ACLs only)
-- **ACL**: MACIP ACL tag applied to interface (input only)
+- **ACL**: MAC ACL tag applied to interface (input only)
