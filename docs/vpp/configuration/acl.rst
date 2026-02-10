@@ -136,16 +136,10 @@ For TCP protocol rules, you can match specific TCP flags:
 .. code-block:: none
 
    # Match packets with specific flags set
-   set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags ack
-   set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags fin
-   set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags psh
-   set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags rst
-   set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags syn
-   set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags urg
+   set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags is-set <ack|cwr|ecn|fin|psh|rst|syn|urg>
 
    # Match packets without specific flags set
-   set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags not ack
-   set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags not syn
+   set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags is-not-set <ack|cwr|ecn|fin|psh|rst|syn|urg>
 
 IP ACL Configuration Examples
 -----------------------------
