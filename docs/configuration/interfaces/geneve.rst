@@ -11,11 +11,10 @@ operate as virtual network ports. Administrators can apply standard network
 configurations on them, such as IP addressing, bridging, or firewall rules, 
 just as they would on physical Ethernet ports.
 
-This 
-protocol encapsulates Layer 2 Ethernet frames originating from endpoints such 
-as virtual machines, containers, or physical servers inside UDP packets. It 
-unifies the features of earlier encapsulation protocols, including VXLAN, 
-NVGRE, and STT, and addresses their limitations, such as fixed header 
+The Geneve protocol encapsulates Layer 2 Ethernet frames originating from 
+endpoints such as virtual machines, containers, or physical servers inside UDP 
+packets. It unifies the features of earlier encapsulation protocols, including 
+VXLAN, NVGRE, and STT, and addresses their limitations, such as fixed header 
 structures and a lack of metadata support. Because of its extensibility, Geneve 
 may eventually replace those older protocols.
 
