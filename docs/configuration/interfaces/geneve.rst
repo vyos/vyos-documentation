@@ -11,7 +11,7 @@ operate as virtual network ports. Administrators can apply standard network
 configurations on them, such as IP addressing, bridging, or firewall rules, 
 just as they would on physical Ethernet ports.
 
-To transport data across the network, they utilize the Geneve encapsulation protocol. This 
+This 
 protocol encapsulates Layer 2 Ethernet frames originating from endpoints such 
 as virtual machines, containers, or physical servers inside UDP packets. It 
 unifies the features of earlier encapsulation protocols, including VXLAN, 
@@ -90,7 +90,7 @@ Geneve options
 
    The VNI is also used to distribute traffic after it leaves the tunnel, for 
    example, to map packets with overlapping IP addresses to specific routing 
-   tables or to distribute traffic across multiple CPU cores.
+   tables.
 
 .. cfgcmd:: set interfaces gnv0 <interface> port <port>
 
