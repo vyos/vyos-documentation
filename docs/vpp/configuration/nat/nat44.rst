@@ -68,7 +68,7 @@ Inside interfaces connect to private networks where hosts need source NAT to acc
 
 .. cfgcmd::
 
-   set vpp nat44 interface inside <inside-interface>
+   set vpp nat nat44 interface inside <inside-interface>
 
 Traffic flowing **from** inside interfaces gets source NAT applied, translating private source addresses to public addresses from the translation pool.
 
@@ -79,7 +79,7 @@ Outside interfaces connect to public networks where external hosts may need to a
 
 .. cfgcmd::
 
-   set vpp nat44 interface outside <outside-interface>
+   set vpp nat nat44 interface outside <outside-interface>
 
 Traffic flowing **to** outside interfaces can trigger destination NAT based on static rules, allowing external access to internal services.
 
@@ -110,12 +110,12 @@ You can configure multiple interfaces as inside or outside to support complex ne
 .. code-block:: none
 
    # Multiple inside interfaces (different private networks)
-   set vpp nat44 interface inside eth0
-   set vpp nat44 interface inside eth2
+   set vpp nat nat44 interface inside eth0
+   set vpp nat nat44 interface inside eth2
    
    # Multiple outside interfaces (redundancy or load balancing)  
-   set vpp nat44 interface outside eth1
-   set vpp nat44 interface outside eth3
+   set vpp nat nat44 interface outside eth1
+   set vpp nat nat44 interface outside eth3
 
 Address Pool Configuration
 ==========================
@@ -129,24 +129,24 @@ Translation pools are used for dynamic source NAT (SNAT). They provide a range o
 
 .. cfgcmd::
 
-   set vpp nat44 address-pool translation address <ip-address | ip-address-range>
+   set vpp nat nat44 address-pool translation address <ip-address | ip-address-range>
 
 .. cfgcmd::
 
-   set vpp nat44 address-pool translation interface <interface-name>
+   set vpp nat nat44 address-pool translation interface <interface-name>
 
 **Examples:**
 
 .. code-block:: none
 
    # Single address pool
-   set vpp nat44 address-pool translation address 203.0.113.10
+   set vpp nat nat44 address-pool translation address 203.0.113.10
 
    # Address range pool  
-   set vpp nat44 address-pool translation address 203.0.113.10-203.0.113.20
+   set vpp nat nat44 address-pool translation address 203.0.113.10-203.0.113.20
 
    # Interface-based pool (use a first IP assigned to the interface)
-   set vpp nat44 address-pool translation interface eth1
+   set vpp nat nat44 address-pool translation interface eth1
 
 Twice-NAT Pools
 ---------------
@@ -159,21 +159,21 @@ Twice-NAT pools are used when performing both source and destination NAT on the 
 
 .. cfgcmd::
 
-   set vpp nat44 address-pool twice-nat address <ip-address | ip-address-range>
+   set vpp nat nat44 address-pool twice-nat address <ip-address | ip-address-range>
 
 .. cfgcmd::
 
-   set vpp nat44 address-pool twice-nat interface <interface-name>
+   set vpp nat nat44 address-pool twice-nat interface <interface-name>
 
 **Examples:**
 
 .. code-block:: none
 
    # Twice-NAT pool for advanced scenarios
-   set vpp nat44 address-pool twice-nat address 192.168.100.1-192.168.100.10
+   set vpp nat nat44 address-pool twice-nat address 192.168.100.1-192.168.100.10
 
    # Interface-based twice-nat pool
-   set vpp nat44 address-pool twice-nat interface eth2
+   set vpp nat nat44 address-pool twice-nat interface eth2
 
 Pool Requirements
 -----------------
@@ -215,11 +215,11 @@ To create a static NAT rule, you need to define the local (internal) and externa
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> local address <internal-ip>
+   set vpp nat nat44 static rule <rule-number> local address <internal-ip>
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> external address <external-ip>
+   set vpp nat nat44 static rule <rule-number> external address <external-ip>
 
 Where:
 
@@ -236,23 +236,23 @@ For more granular control, you can create port-specific static rules. This is us
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> local address <internal-ip>
+   set vpp nat nat44 static rule <rule-number> local address <internal-ip>
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> local port <internal-port>
+   set vpp nat nat44 static rule <rule-number> local port <internal-port>
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> external address <external-ip>
+   set vpp nat nat44 static rule <rule-number> external address <external-ip>
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> external port <external-port>
+   set vpp nat nat44 static rule <rule-number> external port <external-port>
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> protocol <protocol>
+   set vpp nat nat44 static rule <rule-number> protocol <protocol>
 
 Where:
 
@@ -281,7 +281,7 @@ The twice-NAT option can be enabled with the following command:
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> options twice-nat
+   set vpp nat nat44 static rule <rule-number> options twice-nat
 
 Self Twice-NAT
 ^^^^^^^^^^^^^^
@@ -290,7 +290,7 @@ Self Twice-NAT is used when a local host needs to access itself via the external
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> options self-twice-nat
+   set vpp nat nat44 static rule <rule-number> options self-twice-nat
 
 This option rewrites source IP addresses on packets sent only from a local address to an external address configured in a rule.
 
@@ -306,7 +306,7 @@ Restricts the rule to only apply to traffic from outside to inside interfaces:
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> options out-to-in-only
+   set vpp nat nat44 static rule <rule-number> options out-to-in-only
 
 This prevents the creation of sessions from the inside interface, making it purely a DNAT rule.
 
@@ -317,7 +317,7 @@ When using twice-nat, you can force the use of a specific IP address from the tw
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> options twice-nat-address <ip-address>
+   set vpp nat nat44 static rule <rule-number> options twice-nat-address <ip-address>
 
 Rule Description
 ^^^^^^^^^^^^^^^^
@@ -326,7 +326,7 @@ To document your rules, you can add a description:
 
 .. cfgcmd::
 
-   set vpp nat44 static rule <rule-number> description <description>
+   set vpp nat nat44 static rule <rule-number> description <description>
 
 Static Rules Configuration Examples
 -----------------------------------
@@ -335,38 +335,38 @@ Static Rules Configuration Examples
 
 .. code-block:: none
 
-   set vpp nat44 static rule 100 local address 192.168.1.10
-   set vpp nat44 static rule 100 external address 203.0.113.10
-   set vpp nat44 static rule 100 description "One-to-one mapping"
+   set vpp nat nat44 static rule 100 local address 192.168.1.10
+   set vpp nat nat44 static rule 100 external address 203.0.113.10
+   set vpp nat nat44 static rule 100 description "One-to-one mapping"
 
 **Port-specific SSH access:**
 
 .. code-block:: none
 
-   set vpp nat44 static rule 200 local address 192.168.1.20
-   set vpp nat44 static rule 200 local port 22
-   set vpp nat44 static rule 200 external address 203.0.113.10
-   set vpp nat44 static rule 200 external port 2222
-   set vpp nat44 static rule 200 protocol tcp
-   set vpp nat44 static rule 200 description "SSH access to server"
+   set vpp nat nat44 static rule 200 local address 192.168.1.20
+   set vpp nat nat44 static rule 200 local port 22
+   set vpp nat nat44 static rule 200 external address 203.0.113.10
+   set vpp nat nat44 static rule 200 external port 2222
+   set vpp nat nat44 static rule 200 protocol tcp
+   set vpp nat nat44 static rule 200 description "SSH access to server"
 
 **Twice-NAT for local service access:**
 
 .. code-block:: none
 
-   set vpp nat44 static rule 300 local address 192.168.1.30
-   set vpp nat44 static rule 300 local port 80
-   set vpp nat44 static rule 300 external address 203.0.113.10
-   set vpp nat44 static rule 300 external port 80
-   set vpp nat44 static rule 300 protocol tcp
-   set vpp nat44 static rule 300 options twice-nat
-   set vpp nat44 static rule 300 description "Web service with twice-nat"
+   set vpp nat nat44 static rule 300 local address 192.168.1.30
+   set vpp nat nat44 static rule 300 local port 80
+   set vpp nat nat44 static rule 300 external address 203.0.113.10
+   set vpp nat nat44 static rule 300 external port 80
+   set vpp nat nat44 static rule 300 protocol tcp
+   set vpp nat nat44 static rule 300 options twice-nat
+   set vpp nat nat44 static rule 300 description "Web service with twice-nat"
 
 .. note::
 
    When using twice-nat or self-twice-nat options, ensure you have configured a twice-nat address pool using:
    
-   ``set vpp nat44 address-pool twice-nat address <twice-nat-ip-range>``
+   ``set vpp nat nat44 address-pool twice-nat address <twice-nat-ip-range>``
 
 Exclude Rules Configuration
 ===========================
@@ -388,13 +388,13 @@ To create an exclude rule, you need to specify the traffic characteristics that 
 
 .. cfgcmd::
 
-   set vpp nat44 exclude rule <rule-number> local-address <internal-ip>
+   set vpp nat nat44 exclude rule <rule-number> local-address <internal-ip>
 
 **Option 2: Using external interface**
 
 .. cfgcmd::
 
-   set vpp nat44 exclude rule <rule-number> external-interface <interface-name>
+   set vpp nat nat44 exclude rule <rule-number> external-interface <interface-name>
 
 Where:
 
@@ -415,29 +415,29 @@ For more granular control, you can exclude only specific ports and protocols. Yo
 
 .. cfgcmd::
 
-   set vpp nat44 exclude rule <rule-number> local-address <internal-ip>
+   set vpp nat nat44 exclude rule <rule-number> local-address <internal-ip>
 
 .. cfgcmd::
 
-   set vpp nat44 exclude rule <rule-number> local-port <port-number>
+   set vpp nat nat44 exclude rule <rule-number> local-port <port-number>
 
 .. cfgcmd::
 
-   set vpp nat44 exclude rule <rule-number> protocol <protocol>
+   set vpp nat nat44 exclude rule <rule-number> protocol <protocol>
 
 **With external interface:**
 
 .. cfgcmd::
 
-   set vpp nat44 exclude rule <rule-number> external-interface <interface-name>
+   set vpp nat nat44 exclude rule <rule-number> external-interface <interface-name>
 
 .. cfgcmd::
 
-   set vpp nat44 exclude rule <rule-number> local-port <port-number>
+   set vpp nat nat44 exclude rule <rule-number> local-port <port-number>
 
 .. cfgcmd::
 
-   set vpp nat44 exclude rule <rule-number> protocol <protocol>
+   set vpp nat nat44 exclude rule <rule-number> protocol <protocol>
 
 Where:
 
@@ -451,7 +451,7 @@ Add descriptions to your exclude rules for better management:
 
 .. cfgcmd::
 
-   set vpp nat44 exclude rule <rule-number> description <description>
+   set vpp nat nat44 exclude rule <rule-number> description <description>
 
 Exclude Rules Configuration Examples
 ------------------------------------
@@ -461,46 +461,46 @@ Exclude Rules Configuration Examples
 .. code-block:: none
 
    # Allow external SSH access to router without NAT
-   set vpp nat44 exclude rule 10 local-address 192.168.1.1
-   set vpp nat44 exclude rule 10 local-port 22
-   set vpp nat44 exclude rule 10 protocol tcp
-   set vpp nat44 exclude rule 10 description "SSH access to router"
+   set vpp nat nat44 exclude rule 10 local-address 192.168.1.1
+   set vpp nat nat44 exclude rule 10 local-port 22
+   set vpp nat nat44 exclude rule 10 protocol tcp
+   set vpp nat nat44 exclude rule 10 description "SSH access to router"
 
 **Exclude SNMP monitoring:**
 
 .. code-block:: none
 
    # Allow SNMP monitoring without NAT translation
-   set vpp nat44 exclude rule 20 local-port 161
-   set vpp nat44 exclude rule 20 protocol udp
-   set vpp nat44 exclude rule 20 external-interface eth1
-   set vpp nat44 exclude rule 20 description "SNMP monitoring"
+   set vpp nat nat44 exclude rule 20 local-port 161
+   set vpp nat nat44 exclude rule 20 protocol udp
+   set vpp nat nat44 exclude rule 20 external-interface eth1
+   set vpp nat nat44 exclude rule 20 description "SNMP monitoring"
 
 **Exclude all traffic to router management interface:**
 
 .. code-block:: none
 
    # Exclude all traffic to router's management IP
-   set vpp nat44 exclude rule 30 local-address 192.168.100.1
-   set vpp nat44 exclude rule 30 description "Management interface bypass"
+   set vpp nat nat44 exclude rule 30 local-address 192.168.100.1
+   set vpp nat nat44 exclude rule 30 description "Management interface bypass"
 
 **Exclude all traffic from external interface:**
 
 .. code-block:: none
 
    # Exclude all traffic from external interface (alternative approach)
-   set vpp nat44 exclude rule 31 external-interface eth1
-   set vpp nat44 exclude rule 31 description "External interface bypass"
+   set vpp nat nat44 exclude rule 31 external-interface eth1
+   set vpp nat nat44 exclude rule 31 description "External interface bypass"
 
 **Exclude forwarded traffic for specific service:**
 
 .. code-block:: none
 
    # Allow external access to internal server without NAT translation
-   set vpp nat44 exclude rule 40 local-address 192.168.1.50
-   set vpp nat44 exclude rule 40 local-port 8080
-   set vpp nat44 exclude rule 40 protocol tcp
-   set vpp nat44 exclude rule 40 description "Direct access to internal service"
+   set vpp nat nat44 exclude rule 40 local-address 192.168.1.50
+   set vpp nat nat44 exclude rule 40 local-port 8080
+   set vpp nat nat44 exclude rule 40 protocol tcp
+   set vpp nat nat44 exclude rule 40 description "Direct access to internal service"
 
 Common Use Cases
 ----------------
@@ -528,26 +528,26 @@ Exclude rules also work for forwarded traffic between networks. Without exclude 
 Advanced NAT44 Settings
 =======================
 
-VyOS provides additional NAT44 settings for fine-tuning performance and behavior. These settings are configured under the VPP settings hierarchy.
+VyOS provides additional NAT44 settings for fine-tuning performance and behavior.
 
 Session Timeouts
 ----------------
 
 NAT44 maintains translation sessions with configurable timeout values for different protocols:
 
-.. cfgcmd:: set vpp settings nat44 timeout icmp <seconds>
+.. cfgcmd:: set vpp nat nat44 timeout icmp <seconds>
 
    Set the timeout for ICMP sessions. Default: 60 seconds.
 
-.. cfgcmd:: set vpp settings nat44 timeout tcp-established <seconds>
+.. cfgcmd:: set vpp nat nat44 timeout tcp-established <seconds>
 
    Set the timeout for established TCP connections. Default: 7440 seconds (2 hours 4 minutes).
 
-.. cfgcmd:: set vpp settings nat44 timeout tcp-transitory <seconds>
+.. cfgcmd:: set vpp nat nat44 timeout tcp-transitory <seconds>
 
    Set the timeout for transitory TCP connections (connection setup/teardown). Default: 240 seconds (4 minutes).
 
-.. cfgcmd:: set vpp settings nat44 timeout udp <seconds>
+.. cfgcmd:: set vpp nat nat44 timeout udp <seconds>
 
    Set the timeout for UDP sessions. Default: 300 seconds (5 minutes).
 
@@ -556,16 +556,16 @@ NAT44 maintains translation sessions with configurable timeout values for differ
 .. code-block:: none
 
    # Customize timeouts for high-traffic environment
-   set vpp settings nat44 timeout tcp-established 3600
-   set vpp settings nat44 timeout udp 600
-   set vpp settings nat44 timeout icmp 30
+   set vpp nat nat44 timeout tcp-established 3600
+   set vpp nat nat44 timeout udp 600
+   set vpp nat nat44 timeout icmp 30
 
 Session Limits
 --------------
 
 Control the maximum number of concurrent NAT sessions:
 
-.. cfgcmd:: set vpp settings nat44 session-limit <number>
+.. cfgcmd:: set vpp nat nat44 session-limit <number>
 
    Set the maximum number of NAT sessions per worker thread. Default: 64512.
 
@@ -576,30 +576,7 @@ This setting helps prevent memory exhaustion and ensures predictable performance
 .. code-block:: none
 
    # Increase session limit for high-capacity deployment
-   set vpp settings nat44 session-limit 100000
-
-Worker Assignment
------------------
-
-For advanced performance tuning, you can assign NAT44 processing to specific worker threads:
-
-.. cfgcmd:: set vpp settings nat44 workers <worker-id>
-
-.. cfgcmd:: set vpp settings nat44 workers <worker-range>
-
-   Assign NAT44 processing to specific VPP worker threads. You can specify individual worker IDs or ranges using the format ``<start>-<end>``.
-
-**Examples:**
-
-.. code-block:: none
-
-   # Assign NAT44 to specific workers
-   set vpp settings nat44 workers 0
-   set vpp settings nat44 workers 2-4
-
-.. note::
-
-   Worker assignment is an advanced feature typically used in high-performance deployments where you want to dedicate specific CPU cores to NAT processing. Most deployments don't require this configuration.
+   set vpp nat nat44 session-limit 100000
 
 Complete Configuration Example
 ==============================
@@ -628,56 +605,56 @@ Here's a complete example showing how to configure VyOS NAT44 for a typical netw
 .. code-block:: none
 
    # Configure interfaces
-   set vpp nat44 interface inside eth0
-   set vpp nat44 interface outside eth1
+   set vpp nat nat44 interface inside eth0
+   set vpp nat nat44 interface outside eth1
 
    # Configure address pools
-   set vpp nat44 address-pool translation address 203.0.113.10-203.0.113.50
-   set vpp nat44 address-pool twice-nat address 203.0.113.100-203.0.113.110
+   set vpp nat nat44 address-pool translation address 203.0.113.10-203.0.113.50
+   set vpp nat nat44 address-pool twice-nat address 203.0.113.100-203.0.113.110
 
    # Exclude rules for router management
-   set vpp nat44 exclude rule 10 local-address 203.0.113.1
-   set vpp nat44 exclude rule 10 local-port 22
-   set vpp nat44 exclude rule 10 protocol tcp
-   set vpp nat44 exclude rule 10 description "SSH access to router"
+   set vpp nat nat44 exclude rule 10 local-address 203.0.113.1
+   set vpp nat nat44 exclude rule 10 local-port 22
+   set vpp nat nat44 exclude rule 10 protocol tcp
+   set vpp nat nat44 exclude rule 10 description "SSH access to router"
 
-   set vpp nat44 exclude rule 11 local-address 203.0.113.1
-   set vpp nat44 exclude rule 11 local-port 443
-   set vpp nat44 exclude rule 11 protocol tcp
-   set vpp nat44 exclude rule 11 description "HTTPS access to router web interface"
+   set vpp nat nat44 exclude rule 11 local-address 203.0.113.1
+   set vpp nat nat44 exclude rule 11 local-port 443
+   set vpp nat nat44 exclude rule 11 protocol tcp
+   set vpp nat nat44 exclude rule 11 description "HTTPS access to router web interface"
 
    # Static rule for web server (HTTP)
-   set vpp nat44 static rule 100 local address 192.168.1.10
-   set vpp nat44 static rule 100 local port 80
-   set vpp nat44 static rule 100 external address 203.0.113.10
-   set vpp nat44 static rule 100 external port 80
-   set vpp nat44 static rule 100 protocol tcp
-   set vpp nat44 static rule 100 description "Public web server"
+   set vpp nat nat44 static rule 100 local address 192.168.1.10
+   set vpp nat nat44 static rule 100 local port 80
+   set vpp nat nat44 static rule 100 external address 203.0.113.10
+   set vpp nat nat44 static rule 100 external port 80
+   set vpp nat nat44 static rule 100 protocol tcp
+   set vpp nat nat44 static rule 100 description "Public web server"
 
    # Static rule for web server (HTTPS)
-   set vpp nat44 static rule 101 local address 192.168.1.10
-   set vpp nat44 static rule 101 local port 443
-   set vpp nat44 static rule 101 external address 203.0.113.10
-   set vpp nat44 static rule 101 external port 443
-   set vpp nat44 static rule 101 protocol tcp
-   set vpp nat44 static rule 101 description "Public web server HTTPS"
+   set vpp nat nat44 static rule 101 local address 192.168.1.10
+   set vpp nat nat44 static rule 101 local port 443
+   set vpp nat nat44 static rule 101 external address 203.0.113.10
+   set vpp nat nat44 static rule 101 external port 443
+   set vpp nat nat44 static rule 101 protocol tcp
+   set vpp nat nat44 static rule 101 description "Public web server HTTPS"
 
    # Static rule for SSH server with custom port
-   set vpp nat44 static rule 200 local address 192.168.1.20
-   set vpp nat44 static rule 200 local port 22
-   set vpp nat44 static rule 200 external address 203.0.113.11
-   set vpp nat44 static rule 200 external port 2222
-   set vpp nat44 static rule 200 protocol tcp
-   set vpp nat44 static rule 200 description "SSH access"
+   set vpp nat nat44 static rule 200 local address 192.168.1.20
+   set vpp nat nat44 static rule 200 local port 22
+   set vpp nat nat44 static rule 200 external address 203.0.113.11
+   set vpp nat nat44 static rule 200 external port 2222
+   set vpp nat nat44 static rule 200 protocol tcp
+   set vpp nat nat44 static rule 200 description "SSH access"
 
    # Static rule for API service (out-to-in only for security)
-   set vpp nat44 static rule 300 local address 192.168.1.30
-   set vpp nat44 static rule 300 local port 8080
-   set vpp nat44 static rule 300 external address 203.0.113.12
-   set vpp nat44 static rule 300 external port 8080
-   set vpp nat44 static rule 300 protocol tcp
-   set vpp nat44 static rule 300 options out-to-in-only
-   set vpp nat44 static rule 300 description "API service (No Internet access for it)"
+   set vpp nat nat44 static rule 300 local address 192.168.1.30
+   set vpp nat nat44 static rule 300 local port 8080
+   set vpp nat nat44 static rule 300 external address 203.0.113.12
+   set vpp nat nat44 static rule 300 external port 8080
+   set vpp nat nat44 static rule 300 protocol tcp
+   set vpp nat nat44 static rule 300 options out-to-in-only
+   set vpp nat nat44 static rule 300 description "API service (No Internet access for it)"
 
 Best Practices and Troubleshooting
 ==================================
@@ -724,22 +701,22 @@ Operational Commands
 
 Monitor NAT44 status and active connections using VyOS operational commands:
 
-.. opcmd:: show vpp nat44 addresses
+.. opcmd:: show vpp nat nat44 addresses
 
    Display configured NAT44 address pools.
 
-.. opcmd:: show vpp nat44 interfaces
+.. opcmd:: show vpp nat nat44 interfaces
 
    Show which interfaces are configured as inside/outside for NAT44.
 
-.. opcmd:: show vpp nat44 sessions
+.. opcmd:: show vpp nat nat44 sessions
 
    Display active NAT44 translation sessions.
 
-.. opcmd:: show vpp nat44 static
+.. opcmd:: show vpp nat nat44 static
 
    Show all configured static NAT mappings.
 
-.. opcmd:: show vpp nat44 summary
+.. opcmd:: show vpp nat nat44 summary
 
    Display a summary of NAT44 and statistics.
