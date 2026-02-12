@@ -7,18 +7,19 @@ L2TPv3
 ######    
 
 :abbr:`L2TPv3 (Layer 2 Tunneling Protocol version 3)` interfaces let you 
-establish L2TPv3 tunnels to transport Layer 2 traffic over IP networks. To 
-encapsulate data for transmission, they leverage the L2TPv3 protocol. As 
-establish L2TPv3 tunnels to transport Layer 2 traffic over IP networks. As 
-Frame Relay, and HDLC) within IP packets, allowing them to traverse the 
-underlying IP infrastructure.
+establish L2TPv3 tunnels to transport Layer 2 traffic over IP networks.
+
+The L2TPv3 protocol (defined in RFC 3931) wraps Layer 2 frames (e.g., Ethernet, 
+Frame Relay, HDLC) within IP packets, allowing them to traverse the underlying 
+IP infrastructure.
 
 Unlike L2TPv2, which strictly requires UDP encapsulation, the L2TPv3 protocol 
 is more flexible and supports two encapsulation types:
 
  * **Direct IP:** Tunnel data is encapsulated directly inside IP packets 
    (Protocol 115) for lower overhead.
- * **UDP:** Tunnel data is encapsulated inside a UDP datagram. This allows the tunnel to traverse NAT more easily.
+ * **UDP:** Tunnel data is encapsulated inside a UDP datagram. This allows the 
+   tunnel to traverse NAT more easily.
 
 L2TPv3 tunnels connect geographically separated sites, serving as a simpler 
 alternative to :ref:`mpls` by operating over basic IP connectivity rather than 
