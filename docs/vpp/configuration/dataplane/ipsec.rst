@@ -15,36 +15,35 @@ IPSec does not require any specific configuration on VPP side. If both source an
 IPSec Configuration Parameters
 ==============================
 
-interface-type
-^^^^^^^^^^^^^^
+enable IPsec acceleration
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When VPP is used for offloading IPsec, it creates a virtual interface of a specific type to connect to a peer. The type of the interface can be configured using the following command:
+When VPP is used for offloading IPsec, it creates a virtual interface to connect to peers. The interface type is always 'ipsec', which is used for IPsec tunnels.
 
-.. cfgcmd:: set vpp settings ipsec interface-type <interface-type>
+.. cfgcmd:: set vpp settings ipsec-acceleration
 
-The available interface types are:
-
-- ``ipsec``: This is the default interface type used for IPsec tunnels.
-- ``ipip``: This interface type encapsulates IPsec traffic within IP-in-IP packets.
-
-Select the interface type based on peers settings. In most cases, you need to use the ``ipsec`` type.
+Enabling this option allows VPP to handle IPsec traffic more efficiently by offloading processing from the kernel.
 
 netlink
 ^^^^^^^
 
 VPP uses netlink to receive IPSec event messages from the kernel. Proper settings of the following parameters are crucial for ensuring that VPP can process all such messages:
 
-.. cfgcmd:: set vpp settings ipsec netlink batch-delay-ms <milliseconds>
+.. cfgcmd:: set vpp settings lcp netlink batch-delay-ms <milliseconds>
 
 This parameter specifies the delay in milliseconds between processing batch netlink messages.
 
-.. cfgcmd:: set vpp settings ipsec netlink batch-size <number>
+.. cfgcmd:: set vpp settings lcp netlink batch-size <number>
 
 This parameter specifies the maximum number of netlink messages to process in a single batch.
 
-.. cfgcmd:: set vpp settings ipsec netlink rx-buffer-size <number>
+.. cfgcmd:: set vpp settings lcp netlink rx-buffer-size <number>
 
 This parameter specifies the size of the receive buffer for netlink socket. If you expect to offload a lot of IPsec tunnels or get frequent and intensive rekeying, you may need to increase this value.
+
+.. note::
+
+    IPsec uses the same netlink parameters as LCP, so tuning them affects both LCP and IPsec processing.
 
 Potential Issues and Troubleshooting
 ====================================
