@@ -186,9 +186,9 @@ Defining Peers
 ^^^^^^^^^^^^^^
 
 .. cfgcmd:: set protocols bgp neighbor <address|interface> remote-as
-   <nasn>
+   <asn>
 
-   This command creates a new neighbor whose remote-as is <nasn>. The neighbor
+   This command creates a new neighbor whose remote-as is <asn>. The neighbor
    address can be an IPv4 address or an IPv6 address or an interface to use
    for the connection. The command is applicable for peer and peer group.
 
@@ -205,6 +205,12 @@ Defining Peers
    Create a peer as you would when you specify an ASN, except that if the
    peers ASN is the same as mine as specified under the :cfgcmd:`protocols
    bgp <asn>` command the connection will be denied.
+
+.. cfgcmd:: set protocols bgp neighbor <address|interface> remote-as
+   auto
+
+   Create a peer as you would when you specify an ASN, except that the peers
+   remote ASN is detected automatically from the OPEN message.
 
 .. cfgcmd:: set protocols bgp neighbor <address|interface> local-role
    <role> [strict]
