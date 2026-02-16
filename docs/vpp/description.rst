@@ -16,7 +16,7 @@ VyOS supports two packet forwarding dataplanes:
 - **Linux kernel dataplane** (traditional)
 - **Vector Packet Processor (VPP) dataplane** (optional)
 
-VPP is a high-performance userspace packet processor that improves throughput for demanding network workloads.
+VPP is a high-performance user space packet processor that improves throughput for demanding network workloads.
 
 Key Benefits
 ============

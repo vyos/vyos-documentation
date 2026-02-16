@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-04
+:lastproofread: 2026-02-17
 
 .. _vpp_limitations:
 
@@ -9,25 +9,25 @@ VPP Dataplane Limitations
 #########################
 
 
-While VPP Dataplane offers significant performance advantages, there are some limitations and considerations to be aware of.
+VPP Dataplane provides significant performance advantages, but has some limitations you should consider.
 
 * **Feature Parity**
 
-  Not all features available in the Linux kernel dataplane are supported in VPP. Some networking features, specific protocols, or services may not be available.
+  VPP does not support all features available in the Linux kernel dataplane. Some networking features, specific protocols, or services may not be available.
 
-  VPP supports various interface types that have parity with kernel, but their capabilities may differ.
+  While VPP supports various interface types similar to the kernel, their capabilities may differ.
 
-* **NIC and Drivers Compatibility**
+* **NIC and Driver Compatibility**
 
-  VyOS currently supports only DPDK drivers for network interfaces. Not all NICs are compatible with DPDK drivers.
+  VyOS currently supports only DPDK drivers for network interfaces. Not all network interface cards are compatible with DPDK drivers.
 
 * **Data Path Limitations**
 
-  If a feature exists only in kernel dataplane, traffic using that feature will not be able to traverse VPP interfaces. Examples of such features are:
+  If a feature exists only in the kernel dataplane, traffic that uses that feature cannot traverse VPP interfaces. Examples include:
 
   - Firewall
   - QoS
 
-  When traffic uses pure VPP path, it simply never reaches the kernel where such features are implemented. Therefore, you need to carefully plan how traffic flows through VyOS router to ensure that it can reach expected features.
+  When traffic uses the pure VPP path, it does not reach the kernel, where such features are implemented. Plan how traffic flows through your VyOS instance to ensure it reaches the necessary features.
 
-  VPP has native replacements for some of these features, for example VPP native ACLs can satisfy basic firewalling needs. 
+  VPP provides native alternatives for some features. For example, VPP native ACLs provide basic firewall functionality.
