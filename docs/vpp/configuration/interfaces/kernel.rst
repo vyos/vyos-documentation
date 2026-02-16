@@ -117,30 +117,6 @@ MTU Configuration
 
    Ensure the MTU setting matches or is smaller than the MTU supported by the associated VPP interface to avoid issues.
 
-Receive Processing Mode
------------------------
-
-.. cfgcmd:: set vpp kernel-interfaces <interface-name> rx-mode <mode>
-
-   Configure how the interface processes received packets:
-
-   * **polling**: Constantly check for new data (highest performance, higher CPU usage)
-   * **interrupt**: Interrupt-driven processing (balanced performance and CPU usage)
-   * **adaptive**: Automatically switch between polling and interrupt based on traffic load
-
-**Examples:**
-
-.. code-block:: none
-
-   # High-performance mode (default)
-   set vpp kernel-interfaces vpptap1 rx-mode polling
-   
-   # Balanced mode
-   set vpp kernel-interfaces vpptap1 rx-mode interrupt
-   
-   # Adaptive mode
-   set vpp kernel-interfaces vpptap1 rx-mode adaptive
-
 VLAN Configuration
 ------------------
 
@@ -198,7 +174,7 @@ Basic Kernel Interface
    set vpp kernel-interfaces vpptap1 description "VPP-Kernel bridge"
    set vpp kernel-interfaces vpptap1 address 192.168.1.10/24
    set vpp kernel-interfaces vpptap1 mtu 1500
-   set vpp kernel-interfaces vpptap1 rx-mode adaptive
+   set vpp settings interface-rx-mode adaptive
 
 High-Performance Interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -210,7 +186,7 @@ High-Performance Interface
    set vpp kernel-interfaces vpptap2 description "High-performance bridge"
    set vpp kernel-interfaces vpptap2 address 10.0.0.10/8
    set vpp kernel-interfaces vpptap2 mtu 9000
-   set vpp kernel-interfaces vpptap2 rx-mode polling
+   set vpp settings interface-rx-mode polling
 
 Multi-VLAN Setup
 ^^^^^^^^^^^^^^^^
