@@ -1,7 +1,6 @@
 **Overview**
 
-IEEE 802.1X is a security standard that enforces access control at the physical 
-port level. It blocks all traffic on a port until the connecting device proves 
+IEEE 802.1X is a security standard that enforces access control at the data link layer. It blocks all traffic on a port until the connecting device proves 
 its identity. The :abbr:`EAPOL (Extensible Authentication Protocol over LAN)` 
 protocol transports credentials between the client (supplicant) and the network 
 switch (authenticator). The switch forwards these credentials to a backend 
