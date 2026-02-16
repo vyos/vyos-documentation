@@ -9,10 +9,6 @@ frame, QinQ allows two VLAN headers per Ethernet frame, for the inner and the ou
 Most often the inner VLAN tag comes from a customer while the outer tag is used by the service
 provider to differentiate between traffic of different customers.
 
-In the evolution of Ethernet, QinQ serves as a bridge: it extends 802.1q_ and 
-forms the basis for later Metro Ethernet technologies. Its support for multiple 
-VLAN headers is essential for Metro Ethernet, allowing service providers to 
-encapsulate and segregate customer traffic on shared infrastructure.
 
 **Frame structure and ethertypes**
 
