@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-04
+:lastproofread: 2026-02-16
 
 .. _vpp_requirements:
 
@@ -8,7 +8,8 @@
 VPP Dataplane Requirements
 ##########################
 
-VPP Dataplane usage in VyOS has very strict hardware requirements. Please ensure your system meets the following prerequisites before enabling VPP:
+VPP Dataplane requires specific hardware. Ensure your system meets these
+prerequisites before enabling VPP:
 
 * **Deployment Platform**
 
@@ -16,42 +17,38 @@ VPP Dataplane usage in VyOS has very strict hardware requirements. Please ensure
 
 * **CPU Requirements**
 
-  Regardless of the platform, VPP Dataplane requires a CPU with the following features:
+  Regardless of the platform, VPP Dataplane requires a CPU with:
 
-  - SSE4.2 support (most modern Intel and AMD CPUs)
-  - At least 4 **physical** CPU cores for the minimum configuration. More cores are recommended for higher throughput.
+  - SSE4.2 support (available on most modern Intel and AMD CPUs).
+  - At least 4 physical CPU cores for a minimum configuration (more cores recommended for higher throughput).
 
   .. important:: **Physical Cores vs Logical Cores**
 
-     VPP Dataplane requires 4 **physical** CPU cores, not logical cores. Many systems use Simultaneous Multithreading (SMT) or Hyper-Threading (HT), which presents each physical core as 2 logical cores.
+     VPP Dataplane requires 4 *physical* CPU cores, not logical cores. Systems with Simultaneous Multithreading (SMT) or Hyper-Threading (HT) present each physical core as 2 logical cores.
 
-     **Cloud Provider Considerations:**
+     Cloud providers often display logical cores as "cores" or "vCPUs". For example, a cloud instance showing "4 cores" may have only 2 physical cores with SMT/HT enabled. Always verify the actual physical core count in your cloud provider's documentation.
 
-     Some cloud providers display logical cores in their UI as "cores" or "vCPUs", which can be misleading. For example:
-
-     - A cloud instance showing "4 cores" may actually have only 2 physical cores with SMT/HT enabled
-     - Always verify the actual physical core count, not the logical core count
-     - Check your cloud provider's documentation to understand their core counting methodology
-
-  **Note:** If you are using VyOS in a virtualized environment, ensure that CPU features are properly passed through to the VM and that you have allocated sufficient physical cores.
+  For virtualized environments, ensure CPU features are passed through to the VM and that sufficient physical cores are allocated.
 
 * **Memory Requirements**
 
-  Memory is one of the biggest factors affecting VPP stability, therefore it is critical to ensure that your system has sufficient RAM.
+  Memory significantly affects VPP stability. Insufficient RAM can cause initialization failures or prevent the dataplane from starting.
 
-  - Minimum: 8 GB RAM
-  - Recommended: 16 GB or more, if you have high throughput requirements, many interfaces, or big routing tables.
-
-  VyOS contains safeguards that prevent VPP from starting if there is insufficient memory for the initial configuration, but it does not protect from memory exhaustion during operation.
+  - Minimum: 8 GB RAM. VyOS will not start the VPP Dataplane if less than 8 GB
+    is available.
+  - Recommended: 16 GB or more (especially for high throughput, many interfaces,
+    or large routing tables).
 
 * **Network Interface Cards (NICs)**
 
-  .. warning:: VyOS allows using VPP Dataplane only with NICs that are known to be compatible. Using unsupported NICs may lead to inability to activate the dataplane, initialize a NIC, crashes during operations, and degraded performance.
+  .. warning:: 
 
-  Validated NICs include:
+     VyOS supports only specific NICs for VPP Dataplane. Unsupported NICs may cause activation failures, initialization errors, crashes, or degraded performance.
+
+  Supported NICs:
 
   - Intel® Ethernet Network Adapter E810-2CQDA2
   - NVIDIA/Mellanox ConnectX-5
   - VirtIO
 
-  Other NICs may work, but are not officially supported.
+  Other NICs may work but are not officially supported.

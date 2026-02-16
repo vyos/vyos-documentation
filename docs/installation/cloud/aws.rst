@@ -100,7 +100,7 @@ Creating the Amazon Cloudwatch Agent Configuration in Amazon
 1. Create an :abbr:`IAM (Identity and Access Management)` role for your
    :abbr:`EC2 (Elastic Compute Cloud)` instance to access the CloudWatch
    service. Name it ``CloudWatchAgentAdminRole``. The role must contain at
-    least two policies: ``CloudWatchAgentAdminPolicy`` and
+   least two policies: ``CloudWatchAgentAdminPolicy`` and
    ``AmazonSSMManagedInstanceCore``.
 
   .. note:: CloudWatchAgentServerRole is too permissive and should be used only
