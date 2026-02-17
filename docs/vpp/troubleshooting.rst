@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-23
+:lastproofread: 2026-02-18
 
 .. _vpp_troubleshooting:
 
@@ -8,16 +8,16 @@
 VPP Dataplane Troubleshooting
 #############################
 
-This page provides essential troubleshooting information for VPP dataplane issues. It covers data collection techniques that are useful both for self-assistance and for providing comprehensive information to support teams when seeking help.
+This page shows you how to collect diagnostic information to troubleshoot VPP dataplane issues. These techniques help you resolve problems yourself and provide support teams with the information they need.
 
-When experiencing VPP issues, collecting the right diagnostic information is crucial for effective troubleshooting. The following sections describe the most important data collection methods.
+Collecting the right diagnostic data is crucial for effective troubleshooting.
 
 Packet Capture (PCAP)
 =====================
 
-Packet capture is one of the most valuable debugging tools for analyzing network traffic and identifying issues with packet processing, routing, or filtering.
+Packet capture is a valuable debugging tool for analyzing network traffic and identifying issues with packet processing, routing, and filtering.
 
-VPP's pcap trace functionality captures packets at various points: received (rx), transmitted (tx), and dropped (drop) packets.
+``pcap trace`` in VPP captures packets at different states: received (rx), transmitted (tx), and dropped (drop).
 
 Starting Packet Capture
 -----------------------
@@ -33,9 +33,9 @@ Starting Packet Capture
 - ``rx`` - Capture received packets
 - ``tx`` - Capture transmitted packets  
 - ``drop`` - Capture dropped packets
-- ``max <n>`` - Depth of local buffer. Once ``n`` packets are received, buffer is flushed to file. Once next ``n`` packets are received the file is overwritten with new data. (default: 100)
-- ``intfc <interface-name|any>`` - Specify interface or use ``any`` for all interfaces (default: any)
-- ``file <name>`` - Output filename. The PCAP file with this name is stored in ``/tmp/`` directory.
+- ``max <n>`` - Depth of the local buffer. After ``n`` packets arrive, the buffer flushes to file. When the next ``n`` packets arrive, the file overwrites with new data. (default: 100)
+- ``intfc <interface-name|any>`` - Specify an interface or use ``any`` for all interfaces (default: any)
+- ``file <name>`` - Output filename. The PCAP file is stored in the ``/tmp/`` directory.
 - ``max-bytes-per-pkt <n>`` - Maximum bytes to capture per packet (must be >= 32, <= 9000)
 
 **Examples:**
@@ -51,17 +51,17 @@ Starting Packet Capture
 Monitoring Capture Status
 -------------------------
 
-To check the current capture status:
+To check the capture status:
 
 .. opcmd::
 
    sudo vppctl pcap trace status
 
-This command shows:
+This command displays:
 
 - Whether capture is active
 - Capture parameters
-- Number of packets captured so far
+- Number of packets captured
 - Output file location
 
 Stopping Packet Capture
@@ -69,7 +69,7 @@ Stopping Packet Capture
 
 .. warning::
 
-    VPP does not automatically stop packet captures. If left running, captures will continue indefinitely, consuming resources. Always remember to stop captures when they are no longer needed.
+    VPP does not automatically stop packet captures. If left running, captures consume resources indefinitely. Always stop captures when you're done with them.
 
 To stop the active packet capture:
 
@@ -83,22 +83,22 @@ Example output when stopping:
 
    Write 35 packets to /tmp/vpp_eth1.pcap, and stop capture...
 
-**Important notes:**
+**Notes:**
 
-- PCAP files are stored in ``/tmp/`` directory  
-- Files will be overwritten if they already exist
-- If no filename is provided, default names are used: ``/tmp/rx.pcap``, ``/tmp/tx.pcap``, ``/tmp/rxandtx.pcap``
-- Large captures can consume significant disk space - monitor available space
-- Stop captures promptly to avoid filling up storage
+- PCAP files are stored in the ``/tmp/`` directory.
+- Existing files are overwritten.
+- If you don't specify a filename, default names are used: ``/tmp/rx.pcap``, ``/tmp/tx.pcap``, and  ``/tmp/rxandtx.pcap``.
+- Large captures consume significant disk space—monitor available space.
+- Stop captures promptly to avoid filling storage.
 
 Packet Tracing
 ==============
 
-VPP packet tracing provides detailed information about how packets flow through the VPP processing graph, showing exactly which nodes process each packet and any transformations applied. Packet tracing is essential for understanding VPP's internal packet processing flow.
+VPP packet tracing shows how packets flow through the VPP processing graph, including which nodes process each packet and what transformations occur.
 
 .. warning::
 
-   Tracing can generate a large amount of data, especially on high-traffic systems. Use it judiciously and limit the number of packets traced to avoid overwhelming the system.
+   Tracing generates large amounts of data, especially on high-traffic systems. Limit the number of traced packets to avoid overwhelming the system.
 
 Basic Packet Tracing Commands
 -----------------------------
@@ -112,9 +112,9 @@ To start tracing packets at a specific graph node:
 
    sudo vppctl trace add <input-graph-node> <pkts> [verbose]
 
-- ``<input-graph-node>`` - Name of the graph node to start tracing from (e.g., ``dpdk-input``, ``ethernet-input``, ``ip4-input``)
-- ``<pkts>`` - Number of packets to trace (e.g., 100)
-- ``[verbose]`` - Optional flag to include detailed buffer information in the trace output
+- ``<input-graph-node>`` - Graph node name where tracing starts (for example, ``dpdk-input``, ``ethernet-input``, or ``ip4-input``).
+- ``<pkts>`` - Number of packets to trace (for example, 100).
+- ``[verbose]`` - Optional flag to include detailed buffer information in the trace output.
 
 **Common node names for tracing:**
 
@@ -128,7 +128,7 @@ To start tracing packets at a specific graph node:
 View traces
 ^^^^^^^^^^^
 
-When packets have been traced, view the results with:
+After packets are traced, view the results:
 
 .. opcmd::
 
@@ -162,7 +162,7 @@ Example Workflow
 Understanding Trace Output
 --------------------------
 
-Trace output shows the packet's journey through VPP processing nodes:
+Trace output shows how packets flow through VPP processing nodes:
 
 .. code-block:: none
 
@@ -231,23 +231,23 @@ Trace output shows the packet's journey through VPP processing nodes:
       ICMP echo_request checksum 0x64e id 3024
 
 
-In this case, the trace shows:
+In this example, the trace shows:
 
-- The packet was received on ``eth2`` interface (``dpdk-input`` node)
-- It was processed by the ``ethernet-input`` and ``ip4-input`` nodes
-- NAT translation occurred at the ``nat44-ed-in2out`` node, changing the source IP
-- The packet was routed via ``ip4-lookup`` and ``ip4-rewrite`` nodes
-- Finally, it was transmitted out of ``eth1`` interface (``eth1-tx`` node)
+- The packet is received on ``eth2`` interface at the ``dpdk-input`` node.
+- It flows through ``ethernet-input`` and ``ip4-input`` nodes.
+- NAT translation occurs at the ``nat44-ed-in2out`` node, changing the source IP.
+- The packet is routed through ``ip4-lookup`` and ``ip4-rewrite`` nodes.
+- It transmits out of ``eth1`` interface at the ``eth1-tx`` node.
 
 Additional Diagnostic Information
 =================================
 
-When reporting issues to support teams or performing advanced troubleshooting, you may need to collect additional diagnostic information.
+When reporting issues to support teams or performing advanced troubleshooting, collect additional diagnostic information.
 
 Before/After Traffic Analysis
 -----------------------------
 
-Before sending traffic:
+Before you send traffic:
 
 .. code-block:: none
 
@@ -256,7 +256,7 @@ Before sending traffic:
    sudo vppctl clear error
    sudo vppctl clear runtime
 
-After sending traffic:
+After you send traffic:
 
 .. code-block:: none
 
@@ -291,28 +291,28 @@ Core System Information
 Protocol-Specific Information
 -----------------------------
 
-**Layer 2 information (if configured):**
+**Layer 2 data (if configured):**
 
 .. code-block:: none
 
    sudo vppctl show l2fib
    sudo vppctl show bridge-domain
 
-**IPv4 information (if configured):**
+**IPv4 data (if configured):**
 
 .. code-block:: none
 
    sudo vppctl show ip fib
    sudo vppctl show ip neighbors
 
-**IPv6 information (if configured):**
+**IPv6 data (if configured):**
 
 .. code-block:: none
 
    sudo vppctl show ip6 fib
    sudo vppctl show ip6 neighbors
 
-**MPLS information (if configured):**
+**MPLS data (if configured):**
 
 .. code-block:: none
 
@@ -322,7 +322,7 @@ Protocol-Specific Information
 Creating Support Packages
 =========================
 
-When contacting support or reporting issues, use the automated diagnostic collection script to create a comprehensive package. This ensures all relevant VPP troubleshooting information is collected systematically.
+Use the automated diagnostic collection script to gather comprehensive VPP troubleshooting information when contacting support or reporting issues.
 
 VPP Diagnostic Collection Script
 --------------------------------
@@ -451,7 +451,7 @@ Installation and Usage
 
 **2. Run VPP diagnostic collection**
 
-The script will automatically collect all VPP diagnostics and store it in your home directory.
+The script automatically collects all diagnostics and stores them in your home directory.
 
 .. opcmd::
 
@@ -459,7 +459,7 @@ The script will automatically collect all VPP diagnostics and store it in your h
 
 **3. Generate VyOS tech-support archive separately**
 
-Additionally, you can generate a VyOS tech-support archive that includes system-wide diagnostics:
+You can also generate a tech-support archive with system-wide diagnostics:
 
 .. opcmd::
 
@@ -468,13 +468,13 @@ Additionally, you can generate a VyOS tech-support archive that includes system-
 What the Script Collects
 ------------------------
 
-- **System Information**: Version details, build information, command line parameters
-- **Interface Data**: Hardware interfaces, interface addresses, interface statistics and configurations
-- **Performance Metrics**: Runtime statistics, error counters, node counters, CPU and thread information
-- **Memory Analysis**: Memory usage (API segment, stats segment, NUMA heaps, main heap), buffer information, physical memory details
-- **Layer 2 Data**: L2 forwarding table (L2FIB), bridge domain configurations
-- **IPv4 Information**: IPv4 forwarding table (FIB), IPv4 neighbor table
-- **IPv6 Information**: IPv6 forwarding table (FIB), IPv6 neighbor table
-- **MPLS Data**: MPLS forwarding table (FIB), MPLS tunnel information
-- **Packet Traces**: Captured packet traces VPP (if available)
-- **Packet Dumps**: PCAP files from ``/tmp`` directory (if available)
+- **System information**: Version details, build information, command-line parameters.
+- **Interface data**: Hardware interfaces, interface addresses, statistics, and configurations.
+- **Performance metrics**: Runtime statistics, error counters, node counters, CPU, and thread information.
+- **Memory analysis**: Memory usage (API segment, stats segment, NUMA heaps, main heap), buffers, and physical memory.
+- **Layer 2 data**: L2 forwarding table (L2FIB) and bridge domain configurations.
+- **IPv4 data**: IPv4 forwarding table (FIB) and IPv4 neighbor table.
+- **IPv6 data**: IPv6 forwarding table (FIB) and IPv6 neighbor table.
+- **MPLS data**: MPLS forwarding table (FIB) and MPLS tunnel information.
+- **Packet traces**: Captured packet traces (if available).
+- **Packet captures**: PCAP files from the ``/tmp`` directory (if available).
