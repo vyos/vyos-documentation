@@ -10,61 +10,43 @@ VPP Dataplane CPU Configuration
 
 VPP can utilize multiple CPU cores to enhance packet processing performance. Proper CPU configuration is crucial for achieving optimal throughput and low latency.
 
-There are several parameters that can be configured to optimize CPU usage for VPP.
+CPU assignment for VPP handled automatically. You only specify how many CPU cores VPP may use, and the system distributes them between the main thread and worker threads.
 
 .. important::
 
    Please read carefully the system configuration settings page before making any changes to CPU settings: :doc:`system`.
 
-If CPU settings are not configured, VPP will start a single main thread on core 1 (``main-core``), without any additional worker threads.
+If CPU settings are not configured, VPP uses a single CPU core for its main thread and does not create worker threads.
 
 CPU Configuration Parameters
 ============================
 
-Mandatory settings
-------------------
-
-``main-core``
+``cpu-cores``
 ^^^^^^^^^^^^^
 
-The main core is responsible for handling control plane operations, managing worker threads, and processing packets. It should be set to a core that is not heavily utilized by other processes. The option should be always set if you apply any other CPU settings.
+This parameter defines the total number of CPU cores allocated to VPP.
 
-.. cfgcmd:: set vpp settings cpu main-core <core-number>
+.. cfgcmd:: set vpp settings resource-allocation cpu-cores <core-number>
 
-Manual cores selection
-----------------------
+The system automatically assigns cores using the following rules:
 
-``corelist-workers``
-^^^^^^^^^^^^^^^^^^^^
+   * The first two CPU cores are always reserved for the operating system and other services.
 
-This parameter specifies the list of CPU cores that will be used as worker threads for packet processing.
+   * The main VPP thread is assigned to the first available core after the reserved ones.
 
-.. cfgcmd:: set vpp settings cpu corelist-workers <core-list>
+   * The remaining allocated cores are used for worker threads.
 
-The core list can be specified in various formats, such as a comma-separated list (e.g., 2,3,4) or a range (e.g., 2-4). It is advisable to select cores that are on the same NUMA node as the network interfaces to minimize latency.
+For example:
 
-Automatic cores selection
--------------------------
+   * If cpu-cores is set to 1, VPP runs only a main thread.
 
-There is a possibility to let VPP select CPU cores automatically. This can be done by configuring the following two parameters:
+   * If cpu-cores is set to 4, VPP uses:
 
-``skip-cores``
-^^^^^^^^^^^^^^
+       * 1 core for the main thread
 
-This parameter allows you to specify number of first CPU cores that should be excluded from being used for main or worker threads. The main thread will be assigned to the first available core after the skipped ones, and worker threads will be assigned to subsequent cores.
+       * 3 cores for worker threads
 
-.. cfgcmd:: set vpp settings cpu skip-cores <cores>
-
-Exclude cores that are reserved for other critical system processes to ensure that VPP does not interfere with their operation.
-
-``workers``
-^^^^^^^^^^^
-
-This parameter allows you to specify the number of worker threads that should be created. Each worker thread will be assigned to a separate CPU core after the skipped and main ones.
-
-.. cfgcmd:: set vpp settings cpu workers <number>
-
-The number of worker threads should be chosen based on the available CPU resources and the expected network load. A common approach is to set the number of workers to the number of available CPU cores minus the skipped and main cores.
+Choose a value based on available hardware resources and expected traffic load. Allocating too few cores may limit performance, while allocating too many can negatively impact other system services.
 
 Potential Issues and Troubleshooting
 ====================================

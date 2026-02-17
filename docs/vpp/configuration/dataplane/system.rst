@@ -161,6 +161,5 @@ For a system with 4 CPU cores (0-3) where cores 2-3 are dedicated to VPP:
    set system option kernel disable-power-saving
    set system option kernel disable-softlockup
    
-   # VPP CPU assignment (matches isolated cores)
-   set vpp settings cpu main-core '2'
-   set vpp settings cpu corelist-workers '3'
+   # VPP CPU assignment
+   set vpp settings resource-allocation cpu-cores '2'
