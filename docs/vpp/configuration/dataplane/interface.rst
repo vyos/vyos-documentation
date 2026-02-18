@@ -20,23 +20,28 @@ Interfaces connected to the VPP dataplane use the DPDK driver by default, provid
 
 Some network interface cards (NICs) may not be compatible with the DPDK driver.
 
-dpdk-options
-------------
+DPDK interface options
+----------------------
 
-The dpdk-options section allows for the configuration of various DPDK-specific settings for the interface.
+This section allows for the configuration of various DPDK-specific settings for an interface.
 
-.. cfgcmd:: set vpp settings interface <interface-name> dpdk-options <option> <value>
+.. cfgcmd:: set vpp settings interface <interface-name> num-rx-queues <value>
 
-DPDK options you can configure are:
+Specifies the number of receive queues for the interface. More queues can improve performance on multi-core systems by allowing parallel processing of incoming packets. Each queue will be assigned to a separate CPU core.
 
-- ``num-rx-queues``: Specifies the number of receive queues for the interface. More queues can improve performance on multi-core systems by allowing parallel processing of incoming packets. Each queue will be assigned to a separate CPU core.
-- ``num-tx-queues``: Specifies the number of transmit queues for the interface. Similar to receive queues, more transmit queues can enhance performance by enabling parallel processing of outgoing packets. By default, the VPP Dataplane has one TX queue per enabled CPU worker, or a single queue if no workers are configured.
+.. cfgcmd:: set vpp settings interface <interface-name> num-tx-queues <value>
+
+Specifies the number of transmit queues for the interface. Similar to receive queues, more transmit queues can enhance performance by enabling parallel processing of outgoing packets. By default, the VPP Dataplane has one TX queue per enabled CPU worker, or a single queue if no workers are configured.
 
 .. seealso:: :doc:`cpu`
 
-- ``num-rx-desc``: Defines the size of each receive queue. Larger queue sizes can help accommodate bursts of incoming traffic, reducing the likelihood of packet drops during high traffic periods.
-- ``num-tx-desc``: Defines the size of each transmit queue. Larger sizes can help manage bursts of outgoing traffic more effectively.
-- ``promisc``: Enables or disables promiscuous mode on the interface. When promiscuous mode is enabled, the interface will receive all packets on the network, regardless of type and destination of the packets. Some NICs need this feature to be enabled to avoid filtering out packets (for example to pass VLAN tagged packets).
+.. cfgcmd:: set vpp settings interface <interface-name> num-rx-desc <value>
+
+Defines the size of each receive queue. Larger queue sizes can help accommodate bursts of incoming traffic, reducing the likelihood of packet drops during high traffic periods.
+
+.. cfgcmd:: set vpp settings interface <interface-name> num-tx-desc <value>
+
+Defines the size of each transmit queue. Larger sizes can help manage bursts of outgoing traffic more effectively.
 
 Global Interface Parameters
 ===========================
