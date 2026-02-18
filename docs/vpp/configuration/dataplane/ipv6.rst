@@ -12,11 +12,11 @@ VPP allows to configure resources allocated for IPv6 traffic processing independ
 
 There are two main resources that can be configured for IPv6 traffic processing:
 
-.. cfgcmd:: set vpp settings ipv6 hash-buckets <value>
+.. cfgcmd:: set vpp settings resource-allocation ipv6 hash-buckets <value>
 
 This parameter configures the number of hash buckets used for IPv6 routing table. If you have a big IPv6 routing table, you may need to increase this value to ensure that the routing table is efficient and lookups are fast.
 
-.. cfgcmd:: set vpp settings ipv6 heap-size <value>
+.. cfgcmd:: set vpp settings resource-allocation ipv6 heap-size <value>
 
 This parameter configures the size of the heap used for IPv6 forwarding table. If you have a big IPv6 routing table, you may need to increase this value to ensure that the routing table can accommodate all routes.
 

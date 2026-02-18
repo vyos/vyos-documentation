@@ -14,7 +14,7 @@ Buffers are used to temporarily store packets during processing, therefore their
 
 .. important::
 
-   VPP buffers are allocated from the physical memory pool (physmem). The total amount of memory available for buffer allocation is controlled by the ``physmem max-size`` setting, while the buffer configuration parameters below control how that memory is used for buffer allocation.
+   VPP buffers are allocated from the physical memory pool (physmem). The total amount of memory available for buffer allocation is controlled by the ``physmem-max-size`` setting, while the buffer configuration parameters below control how that memory is used for buffer allocation.
 
    See :ref:`VPP Physical Memory Configuration <vpp_config_dataplane_physmem>` for details on configuring physmem.
 
@@ -36,7 +36,7 @@ Usually it needs to be tuned if:
 
 The value should be set responsibly.
 
-.. cfgcmd:: set vpp settings buffers buffers-per-numa <value>
+.. cfgcmd:: set vpp settings resource-allocation buffers buffers-per-numa <value>
 
 The common approach for the calculation is to use the formula:
 
@@ -54,7 +54,7 @@ data-size
 This value sets how much payload data can be stored in a single buffer allocated by VPP.
 Making it larger can reduce buffer chains for big packets, while a smaller value can save memory for environments handling mostly small packets.
 
-.. cfgcmd:: set vpp settings buffers data-size <value>
+.. cfgcmd:: set vpp settings resource-allocation buffers data-size <value>
 
 Optimal size depends on the typical packet size in your network. If you are not sure, use the value of biggest MTU in your network plus some overhead (e.g., 128 bytes).
 
@@ -65,7 +65,7 @@ A memory pages type used for buffer allocation. Common values are 4K, 2M, or 1G.
 
 Use pages that are configured in system settings.
 
-.. cfgcmd:: set vpp settings buffers page-size <value>
+.. cfgcmd:: set vpp settings resource-allocation buffers page-size <value>
 
 Potential Issues and Troubleshooting
 ====================================
