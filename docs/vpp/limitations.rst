@@ -35,7 +35,8 @@ limitations you should consider.
   - QoS
 
   When traffic uses the pure VPP path, it does not reach the kernel, where
-  such features are implemented. Plan how traffic flows through your VyOS instance to ensure it reaches the necessary features.
+  such features are implemented. Plan how traffic flows through your VyOS
+  instance to ensure it reaches the necessary features.
 
   VPP provides native alternatives for some features. For example, VPP
   native ACLs provide basic firewall functionality.
