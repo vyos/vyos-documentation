@@ -24,7 +24,8 @@ Key Benefits
 
 **Performance Improvement**
 
-VPP uses vector-based packet processing instead of one-by-one handling, delivering:
+VPP uses vector-based packet processing instead of one-by-one handling,
+delivering:
 
 - **Higher throughput** compared to kernel forwarding.
 - **Lower and more consistent latency** for time-sensitive applications.

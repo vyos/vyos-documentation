@@ -8,16 +8,20 @@
 VPP Dataplane Troubleshooting
 #############################
 
-This page shows you how to collect diagnostic information to troubleshoot VPP dataplane issues. These techniques help you resolve problems yourself and provide support teams with the information they need.
+This page shows you how to collect diagnostic information to troubleshoot VPP
+dataplane issues. These techniques help you resolve problems yourself and
+provide support teams with the information they need.
 
 Collecting the right diagnostic data is crucial for effective troubleshooting.
 
 Packet Capture (PCAP)
 =====================
 
-Packet capture is a valuable debugging tool for analyzing network traffic and identifying issues with packet processing, routing, and filtering.
+Packet capture is a valuable debugging tool for analyzing network traffic and
+identifying issues with packet processing, routing, and filtering.
 
-``pcap trace`` in VPP captures packets at different states: received (rx), transmitted (tx), and dropped (drop).
+``pcap trace`` in VPP captures packets at different states: received (rx),
+transmitted (tx), and dropped (drop).
 
 Starting Packet Capture
 -----------------------
@@ -33,10 +37,15 @@ Starting Packet Capture
 - ``rx`` - Capture received packets
 - ``tx`` - Capture transmitted packets  
 - ``drop`` - Capture dropped packets
-- ``max <n>`` - Depth of the local buffer. After ``n`` packets arrive, the buffer flushes to file. When the next ``n`` packets arrive, the file overwrites with new data. (default: 100)
-- ``intfc <interface-name|any>`` - Specify an interface or use ``any`` for all interfaces (default: any)
-- ``file <name>`` - Output filename. The PCAP file is stored in the ``/tmp/`` directory.
-- ``max-bytes-per-pkt <n>`` - Maximum bytes to capture per packet (must be >= 32, <= 9000)
+- ``max <n>`` - Depth of the local buffer. After ``n`` packets arrive, the
+  buffer flushes to file. When the next ``n`` packets arrive, the file
+  overwrites with new data. (default: 100)
+- ``intfc <interface-name|any>`` - Specify an interface or use ``any`` for
+  all interfaces (default: any)
+- ``file <name>`` - Output filename. The PCAP file is stored in the ``/tmp/``
+  directory.
+- ``max-bytes-per-pkt <n>`` - Maximum bytes to capture per packet
+  (must be >= 32, <= 9000)
 
 **Examples:**
 
@@ -69,7 +78,9 @@ Stopping Packet Capture
 
 .. warning::
 
-    VPP does not automatically stop packet captures. If left running, captures consume resources indefinitely. Always stop captures when you're done with them.
+    VPP does not automatically stop packet captures. If left running, captures
+    consume resources indefinitely. Always stop captures when you're done
+    with them.
 
 To stop the active packet capture:
 
@@ -87,18 +98,21 @@ Example output when stopping:
 
 - PCAP files are stored in the ``/tmp/`` directory.
 - Existing files are overwritten.
-- If you don't specify a filename, default names are used: ``/tmp/rx.pcap``, ``/tmp/tx.pcap``, and  ``/tmp/rxandtx.pcap``.
+- If you don't specify a filename, default names are used: ``/tmp/rx.pcap``,
+  ``/tmp/tx.pcap``, and  ``/tmp/rxandtx.pcap``.
 - Large captures consume significant disk space—monitor available space.
 - Stop captures promptly to avoid filling storage.
 
 Packet Tracing
 ==============
 
-VPP packet tracing shows how packets flow through the VPP processing graph, including which nodes process each packet and what transformations occur.
+VPP packet tracing shows how packets flow through the VPP processing graph,
+including which nodes process each packet and what transformations occur.
 
 .. warning::
 
-   Tracing generates large amounts of data, especially on high-traffic systems. Limit the number of traced packets to avoid overwhelming the system.
+   Tracing generates large amounts of data, especially on high-traffic
+   systems. Limit the number of traced packets to avoid overwhelming the system.
 
 Basic Packet Tracing Commands
 -----------------------------
@@ -112,9 +126,11 @@ To start tracing packets at a specific graph node:
 
    sudo vppctl trace add <input-graph-node> <pkts> [verbose]
 
-- ``<input-graph-node>`` - Graph node name where tracing starts (for example, ``dpdk-input``, ``ethernet-input``, or ``ip4-input``).
+- ``<input-graph-node>`` - Graph node name where tracing starts
+  (for example, ``dpdk-input``, ``ethernet-input``, or ``ip4-input``).
 - ``<pkts>`` - Number of packets to trace (for example, 100).
-- ``[verbose]`` - Optional flag to include detailed buffer information in the trace output.
+- ``[verbose]`` - Optional flag to include detailed buffer information in the
+  trace output.
 
 **Common node names for tracing:**
 
@@ -134,7 +150,8 @@ After packets are traced, view the results:
 
    sudo vppctl show trace [max COUNT]
 
-- ``[max COUNT]`` - Optional limit on number of packets to display (default: all)
+- ``[max COUNT]`` - Optional limit on number of packets to display
+  (default: all)
 
 Clear traces
 ^^^^^^^^^^^^
@@ -235,14 +252,16 @@ In this example, the trace shows:
 
 - The packet is received on ``eth2`` interface at the ``dpdk-input`` node.
 - It flows through ``ethernet-input`` and ``ip4-input`` nodes.
-- NAT translation occurs at the ``nat44-ed-in2out`` node, changing the source IP.
+- NAT translation occurs at the ``nat44-ed-in2out`` node, changing the source
+  IP.
 - The packet is routed through ``ip4-lookup`` and ``ip4-rewrite`` nodes.
 - It transmits out of ``eth1`` interface at the ``eth1-tx`` node.
 
 Additional Diagnostic Information
 =================================
 
-When reporting issues to support teams or performing advanced troubleshooting, collect additional diagnostic information.
+When reporting issues to support teams or performing advanced troubleshooting,
+collect additional diagnostic information.
 
 Before/After Traffic Analysis
 -----------------------------
@@ -322,7 +341,8 @@ Protocol-Specific Information
 Creating Support Packages
 =========================
 
-Use the automated diagnostic collection script to gather comprehensive VPP troubleshooting information when contacting support or reporting issues.
+Use the automated diagnostic collection script to gather comprehensive VPP
+troubleshooting information when contacting support or reporting issues.
 
 VPP Diagnostic Collection Script
 --------------------------------
@@ -451,7 +471,8 @@ Installation and Usage
 
 **2. Run VPP diagnostic collection**
 
-The script automatically collects all diagnostics and stores them in your home directory.
+The script automatically collects all diagnostics and stores them in your home
+directory.
 
 .. opcmd::
 
@@ -468,11 +489,16 @@ You can also generate a tech-support archive with system-wide diagnostics:
 What the Script Collects
 ------------------------
 
-- **System information**: Version details, build information, command-line parameters.
-- **Interface data**: Hardware interfaces, interface addresses, statistics, and configurations.
-- **Performance metrics**: Runtime statistics, error counters, node counters, CPU, and thread information.
-- **Memory analysis**: Memory usage (API segment, stats segment, NUMA heaps, main heap), buffers, and physical memory.
-- **Layer 2 data**: L2 forwarding table (L2FIB) and bridge domain configurations.
+- **System information**: Version details, build information, command-line
+  parameters.
+- **Interface data**: Hardware interfaces, interface addresses, statistics,
+  and configurations.
+- **Performance metrics**: Runtime statistics, error counters, node counters,
+  CPU, and thread information.
+- **Memory analysis**: Memory usage (API segment, stats segment, NUMA heaps,
+  main heap), buffers, and physical memory.
+- **Layer 2 data**: L2 forwarding table (L2FIB) and bridge domain
+  configurations.
 - **IPv4 data**: IPv4 forwarding table (FIB) and IPv4 neighbor table.
 - **IPv6 data**: IPv6 forwarding table (FIB) and IPv6 neighbor table.
 - **MPLS data**: MPLS forwarding table (FIB) and MPLS tunnel information.
