@@ -16,7 +16,8 @@ VyOS supports two packet forwarding dataplanes:
 - **Linux kernel dataplane** (traditional)
 - **Vector Packet Processor (VPP) dataplane** (optional)
 
-VPP is a high-performance user space packet processor that improves throughput for demanding network workloads.
+VPP is a high-performance user space packet processor that improves
+throughput for demanding network workloads.
 
 Key Benefits
 ============
@@ -33,9 +34,12 @@ VPP uses vector-based packet processing instead of one-by-one handling, deliveri
 
 VyOS supports both dataplanes simultaneously, providing:
 
-- **Cross-dataplane forwarding**: Traffic can flow between VPP and kernel interfaces seamlessly
-- **Transparent configuration**: Same CLI commands and most services work regardless of dataplane
-- **Gradual migration**: Enable VPP on high-traffic interfaces while keeping others on kernel
+- **Cross-dataplane forwarding**: Traffic can flow between the VPP dataplane
+  and kernel interfaces seamlessly.
+- **Transparent configuration**: Same CLI commands and most services work
+  regardless of dataplane.
+- **Gradual migration**: Enable VPP on high-traffic interfaces while keeping
+  others on kernel.
 
 When to Use VPP
 ===============
@@ -54,7 +58,9 @@ When to Use VPP
 Packet Processing Integration
 =============================
 
-VPP Dataplane integration minimizes configuration changes. Features in the kernel dataplane continue to operate there. VPP Dataplane only handles packet forwarding for interfaces explicitly assigned to it.
+VPP Dataplane integration minimizes configuration changes. Features in the
+kernel dataplane continue to operate there. VPP Dataplane only handles packet
+forwarding for interfaces explicitly assigned to it.
 
 Traffic flow examples between VPP and kernel dataplane interfaces:
 
@@ -64,22 +70,27 @@ Traffic flow examples between VPP and kernel dataplane interfaces:
 Green path
 """"""""""
 
-Traffic between two VPP interfaces stays within VPP for maximum performance and can use only VPP dataplane features.
+Traffic between two VPP interfaces stays within VPP for maximum performance
+and can use only VPP dataplane features.
 
 Blue path
 """""""""
 
-Traffic between a VPP interface and a kernel interface is processed by both dataplanes and can use features from both.
+Traffic between a VPP interface and a kernel interface is processed by both
+dataplanes and can use features from both.
 
-**Note:** This path has slower performance than pure VPP or pure kernel forwarding because packets traverse both dataplanes.
+**Note:** This path has slower performance than pure VPP or pure kernel
+forwarding because packets traverse both dataplanes.
 
 Red path
 """"""""
 
-Traffic between two kernel interfaces stays within the kernel dataplane without VPP acceleration. This is the traditional VyOS dataplane operation.
+Traffic between two kernel interfaces stays within the kernel dataplane without
+VPP acceleration. This is the traditional VyOS dataplane operation.
 
 
 CLI Integration
 ===============
 
-VyOS CLI commands work with both dataplanes. Use the same commands to configure interfaces, routing, and other features regardless of the dataplane.
+VyOS CLI commands work with both dataplanes. Use the same commands to
+configure interfaces, routing, and other features regardless of the dataplane.
