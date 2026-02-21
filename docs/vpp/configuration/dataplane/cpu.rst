@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-05
+:lastproofread: 2026-02-23
 
 .. _vpp_config_dataplane_cpu:
 
@@ -8,15 +8,21 @@
 VPP Dataplane CPU Configuration
 ###############################
 
-VPP can utilize multiple CPU cores to enhance packet processing performance. Proper CPU configuration is crucial for achieving optimal throughput and low latency.
+VPP can utilize multiple CPU cores for better packet processing
+performance. Proper CPU configuration is essential for optimal
+throughput and low latency.
 
-CPU assignment for VPP handled automatically. You only specify how many CPU cores VPP may use, and the system distributes them between the main thread and worker threads.
+VPP CPU assignment is handled automatically. You specify how many CPU
+cores VPP may use, and the system distributes them between the main
+thread and worker threads.
 
 .. important::
 
-   Please read carefully the system configuration settings page before making any changes to CPU settings: :doc:`system`.
+   Review the system configuration settings page before changing CPU
+   settings: :doc:`system`.
 
-If CPU settings are not configured, VPP uses a single CPU core for its main thread and does not create worker threads.
+If you don't configure CPU settings, VPP uses a single core for the
+main thread and doesn't create worker threads.
 
 CPU Configuration Parameters
 ============================
@@ -30,9 +36,11 @@ This parameter defines the total number of CPU cores allocated to VPP.
 
 The system automatically assigns cores using the following rules:
 
-   * The first two CPU cores are always reserved for the operating system and other services.
+   * The first two CPU cores are always reserved for the operating system and
+     other services.
 
-   * The main VPP thread is assigned to the first available core after the reserved ones.
+   * The main VPP thread is assigned to the first available core after the
+     reserved ones.
 
    * The remaining allocated cores are used for worker threads.
 
@@ -46,17 +54,21 @@ For example:
 
        * 3 cores for worker threads
 
-Choose a value based on available hardware resources and expected traffic load. Allocating too few cores may limit performance, while allocating too many can negatively impact other system services.
+Choose a value based on available hardware resources and expected
+traffic load. Too few cores may limit performance, while too many can
+negatively impact other system services.
 
 Potential Issues and Troubleshooting
 ====================================
 
-Improper CPU configuration can lead to various issues, including:
+Improper CPU configuration can lead to issues such as:
 
-- Underperformance for both VPP (not enough cores were assigned) and kernel (too many cores were assigned to VPP)
-- Resource conflicts with other processes and services
+- VPP underperformance when not enough cores are assigned, or kernel
+  underperformance when too many cores are assigned to VPP.
+- Resource conflicts with other processes and services.
 
 Indicators of such issues are:
 
 - VPP or kernel forwarding performance is lower than expected
-- Slower work of system components or services, including DNS, DHCP, dynamic routing, etc.
+- Degraded performance of system components or services, such as DNS,
+  DHCP, and dynamic routing
