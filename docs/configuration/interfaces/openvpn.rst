@@ -249,7 +249,7 @@ enabled to avoid compatibility issues with existing clients.
 
    **Configure the protocol for OpenVPN communication with a remote host:**
 
-   * ``udp``: Uses the UDP protocol.
+   * ``udp`` **(default)**: Uses the UDP protocol.
    * ``tcp-passive``: Uses the TCP protocol and accepts connections passively.
    * ``tcp-active``: Uses the TCP protocol and initiates connections actively.
 
