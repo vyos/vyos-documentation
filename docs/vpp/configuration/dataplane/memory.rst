@@ -24,11 +24,11 @@ Efficient memory management is crucial for VPP's performance, and the main heap 
 
 It can be configured using the following command:
 
-.. cfgcmd:: set vpp settings memory main-heap-page-size <size>
+.. cfgcmd:: set vpp settings resource-allocation memory main-heap-page-size <size>
 
 Sets the main heap page size for VPP. 
 
-.. cfgcmd:: set vpp settings memory main-heap-size <size>
+.. cfgcmd:: set vpp settings resource-allocation memory main-heap-size <size>
 
 Sets the main heap size for VPP.
 
@@ -39,7 +39,7 @@ Physical Memory Configuration
 
 VPP uses physical memory for packet buffers and interface operations. The ``physmem`` setting controls how much memory VPP can allocate for these operations.
 
-.. cfgcmd:: set vpp settings physmem max-size <size>
+.. cfgcmd:: set vpp settings resource-allocation memory physmem-max-size <size>
 
 Sets the maximum amount of physical memory VPP can use for packet processing and interface buffers.
 
@@ -65,6 +65,26 @@ Common configurations
    # Increase for high-throughput environments
    set vpp settings physmem max-size 32G
 
+Stats Memory Configuration
+==========================
+
+VPP uses a dedicated statistics memory segment to store runtime counters and telemetry data. This segment is used by the VPP CLI and monitoring tools to access performance and status information.
+
+The statistics segment is allocated from hugepage memory and can be configured independently from the main heap and physmem settings.
+
+You can configure statistics memory using the following commands:
+
+.. cfgcmd:: set vpp settings resource-allocation memory stats page-size <size>
+
+Sets the hugepage page size used for the statistics memory segment.
+
+.. cfgcmd:: set vpp settings resource-allocation memory stats size <size>
+
+Sets the total size of the statistics memory segment.
+
+Increasing this value may be required in large deployments with many interfaces or enabled features that generate a high number of counters.
+
+Statistics memory is used only for telemetry and monitoring. It does not affect packet buffer allocation or routing table memory.
 
 Potential Issues and Troubleshooting
 ====================================

@@ -34,45 +34,14 @@ behavior using the following command:
 
 .. _vpp_config_dataplane_lcp_ignore-kernel-routes:
 
-.. cfgcmd:: set vpp settings lcp ignore-kernel-routes
+.. cfgcmd:: set vpp settings resource-allocation ignore-kernel-routes
 
-Note that disabling this option results in loss of connectivity
-to destinations without direct routes in the VPP routing table.
-
-Another crucial configuration section for VPP and kernel integration is
-netlink settings. This lets you configure how VPP management listens to
-netlink events and processes them.
-
-.. cfgcmd:: set vpp settings lcp netlink batch-delay-ms <value>
-
-This parameter specifies the delay in milliseconds between processing
-batches of netlink messages. If you expect frequent and intensive netlink
-events, you may need to decrease this value to ensure VPP processes
-netlink events promptly.
-
-.. cfgcmd:: set vpp settings lcp netlink batch-size <value>
-
-This parameter specifies the maximum number of netlink messages to process
-in a single batch. If you have high netlink event volume, increasing this
-value can improve throughput by processing more messages at once. However,
-setting it too high may increase latency for individual messages.
-
-.. cfgcmd:: set vpp settings lcp netlink rx-buffer-size <value>
-
-This parameter specifies the receive buffer size for netlink messages.
-Increasing this value helps accommodate netlink message bursts, but
-setting it too high may increase memory usage.
+Pay attention that disabling this option leads to loss of connectivity to destinations if there are no direct routes in VPP routing table.
 
 Potential Issues and Troubleshooting
 ====================================
 
-Improper LCP configuration can lead to various issues, including:
+Disabling kernel route import can result in:
 
-- Loss of connectivity to certain destinations if kernel routes are
-  ignored
-- Delays in synchronization between kernel and VPP routing tables
-- Desynchronization between kernel and VPP routing tables if netlink
-  settings are not optimal
-
-Consider adjusting LCP settings if you experience routing or connectivity
-issues, especially in scenarios with dynamic route changes or many routes.
+- Loss of connectivity to certain destinations if kernel routes are ignored
+- Incomplete route synchronization between the kernel and VPP

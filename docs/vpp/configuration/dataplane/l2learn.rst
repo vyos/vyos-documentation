@@ -14,7 +14,7 @@ learn is limited.
 
 You can configure the limit using the following command:
 
-.. cfgcmd:: set vpp settings l2learn limit <value>
+.. cfgcmd:: set vpp settings resource-allocation mac-limit <value>
 
 This parameter sets the maximum number of MAC addresses that can be
 learned in the L2 domain. If you have many devices, you may need to
