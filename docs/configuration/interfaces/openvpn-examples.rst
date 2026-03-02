@@ -48,7 +48,7 @@ certificates using certificate fingerprints.
 Generate a self-signed certificate on each router, preferably using the 
 Elliptic Curve (EC) type. In configuration mode, run the following command: 
 ``run generate pki certificate self-signed install <name>``. This adds the 
-certificate to the configuration session's pki subtree. Review and commit 
+certificate to the configuration session's ``pki`` subtree. Review and commit 
 the changes.
 
 .. code-block:: none
