@@ -43,7 +43,8 @@ Typically, you need to tune this value if:
 
 Set this value carefully to balance memory usage and performance.
 
-.. cfgcmd:: set vpp settings resource-allocation buffers buffers-per-numa <value>
+.. cfgcmd:: set vpp settings resource-allocation buffers buffers-per-numa
+  <value>
 
 The common approach for the calculation is to use the formula:
 

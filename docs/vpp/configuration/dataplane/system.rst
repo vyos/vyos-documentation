@@ -27,18 +27,23 @@ Hugepages can be configured in VyOS using the following commands:
 
 To enable hugepages:
 
-.. cfgcmd:: set system option kernel memory hugepage-size <size> hugepage-count '<count>'
+.. cfgcmd:: set system option kernel memory hugepage-size <size> hugepage-count
+   '<count>'
 
-Enables hugepages with the specified size and count. The size can be either 2MB or 1GB, and the count specifies the number of hugepages to allocate.
+Enables hugepages with the specified size and count. The size can be either
+2MB or 1GB, and the count specifies the number of hugepages to allocate.
 
-If your system has multiple NUMA nodes, the total amount of hugepages will be divided equally among them.
+If your system has multiple NUMA nodes, the total amount of hugepages will be
+divided equally among them.
 
 Resources Limits
 ================
 
 .. note::
 
-   By default, system will calculate and set the recommended values for resource limits. Avoid tuning these values if you are not sure what you are doing.
+   By default, system will calculate and set the recommended values for
+   resource limits. Avoid tuning these values if you are not sure what you
+   are doing.
 
 During operations VPP utilizes a significant amount of system resources,
 especially memory. There are two main settings that may need to be
@@ -67,7 +72,8 @@ or other system processes.
 
    Kernel tuning changes require a system reboot to take effect.
 
-   Improper CPU isolation can lead to system instability if essential system processes are starved of CPU resources.
+   Improper CPU isolation can lead to system instability if essential system
+   processes are starved of CPU resources.
 
 CPU Isolation and Optimization
 -------------------------------

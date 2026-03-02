@@ -17,7 +17,8 @@ packets.
 Interface Configuration Parameters
 ==================================
 
-Interfaces connected to the VPP dataplane use the DPDK driver by default, providing high performance and low latency.
+Interfaces connected to the VPP dataplane use the DPDK driver by default,
+providing high performance and low latency.
 
 .. cfgcmd:: set vpp settings interface <interface-name>
 

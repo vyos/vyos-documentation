@@ -22,7 +22,8 @@ Before configuring memory in VPP dataplane settings, you need to
 ensure that hugepages are enabled and properly configured on your
 system.
 
-.. seealso:: :ref:`Hugepages in VyOS Configuration for VPP <vpp_config_hugepages>`
+.. seealso:: :ref:`Hugepages in VyOS Configuration for VPP
+   <vpp_config_hugepages>`
 
 To configure memory settings for VPP, you can use the following
 commands in the VPP CLI:
@@ -35,7 +36,8 @@ main heap plays a significant role in this.
 
 It can be configured using the following command:
 
-.. cfgcmd:: set vpp settings resource-allocation memory main-heap-page-size <size>
+.. cfgcmd:: set vpp settings resource-allocation memory main-heap-page-size
+   <size>
 
 Sets the main heap page size for VPP. 
 
@@ -69,7 +71,8 @@ buffers, main heap is for routing tables.
 .. seealso::
 
    - :ref:`Hugepages in VyOS Configuration for VPP <vpp_config_hugepages>`
-   - :ref:`VPP Buffer Configuration <vpp_config_dataplane_buffers>` - for controlling buffer allocation within physmem
+   - :ref:`VPP Buffer Configuration <vpp_config_dataplane_buffers>` - for
+     controlling buffer allocation within physmem
 
 Common configurations
 ---------------------

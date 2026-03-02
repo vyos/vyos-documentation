@@ -36,7 +36,8 @@ behavior using the following command:
 
 .. cfgcmd:: set vpp settings resource-allocation ignore-kernel-routes
 
-Pay attention that disabling this option leads to loss of connectivity to destinations if there are no direct routes in VPP routing table.
+Pay attention that disabling this option leads to loss of connectivity to
+destinations if there are no direct routes in VPP routing table.
 
 Potential Issues and Troubleshooting
 ====================================

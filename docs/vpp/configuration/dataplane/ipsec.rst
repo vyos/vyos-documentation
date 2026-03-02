@@ -24,11 +24,14 @@ IPsec Configuration Parameters
 enable IPsec acceleration
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When VPP is used for offloading IPsec, it creates a virtual interface to connect to peers. The interface type is always 'ipsec', which is used for IPsec tunnels.
+When VPP is used for offloading IPsec, it creates a virtual interface to
+connect to peers. The interface type is always 'ipsec', which is used for
+IPsec tunnels.
 
 .. cfgcmd:: set vpp settings ipsec-acceleration
 
-Enabling this option allows VPP to handle IPsec traffic more efficiently by offloading processing from the kernel.
+Enabling this option allows VPP to handle IPsec traffic more efficiently by
+offloading processing from the kernel.
 
 netlink
 ^^^^^^^
