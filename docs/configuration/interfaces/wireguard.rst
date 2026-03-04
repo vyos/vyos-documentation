@@ -22,7 +22,7 @@ The following diagram illustrates a site-to-site VPN setup.
 Keypairs
 ********
 
-WireGuard requires the generation of a keypair, which includes a **private** key 
+WireGuard requires a keypair, which includes a **private** key 
 to decrypt incoming traffic, and a **public** key for peer(s) to encrypt 
 outgoing traffic.
 
@@ -52,13 +52,13 @@ Generate keypair
 
      vyos@vyos:~$ generate pki wireguard key-pair install interface wg10
      "generate" CLI command executed from operational level.
-     Generated private-key is not stored to CLI, use configure mode commands to install key:
+     Generated private key is not automatically added to the VyOS configuration, use the following configuration mode commands to install key:
 
      set interfaces wireguard wg10 private-key '4Krkv8h6NkAYMMaBWI957yYDJDMvj9URTHstdlOcDU0='
 
      Corresponding public-key to use on peer system is: 'UxDsYT6EnpTIOKUzvMlw2p0sNOKQvFxEdSVrnNrX1Ro='
 
-   .. note:: If you invoke this command from configuration mode with the run 
+   .. note:: If you invoke this command from configuration mode with the ``run`` 
       prefix, the generated private key is automatically assigned to the specified 
       interface. 
 
@@ -133,7 +133,7 @@ networks you want to tunnel (``allowed-ips``).
 If your system only initiates connections, specifying the listen port is 
 optional. If your system accepts incoming connections, you must define a port 
 for peers to connect to. Otherwise, WireGuard selects a random port at each 
-reboot, which may block peer connections due to firewall rules.
+reboot, and that may break your peers' ability to connect if that port is not enabled in your firewall rules.
 
 To configure a WireGuard tunnel, you also need your peer's public key.
 

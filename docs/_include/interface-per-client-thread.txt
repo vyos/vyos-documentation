@@ -3,7 +3,7 @@
 
   **Enable threaded mode for all NAPI instances of the specified network device.**
 
-  Enabling threaded mode doesn’t require a device restart.
+  Enabling threaded mode doesn't affect device operation and can be done while the device is up. 
 
   This mode is disabled by default.
 
