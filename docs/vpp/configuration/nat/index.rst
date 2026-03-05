@@ -37,3 +37,6 @@ combination of IP address and port number to distinguish between them.
 ISPs often use this NAT type to provide internet access to customers.
 
 It supports only source NAT.
+
+CGNAT also supports exclude rules (identity mappings) to bypass translation
+for selected local addresses or protocol/port tuples.

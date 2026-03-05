@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-04
+:lastproofread: 2026-02-23
 
 .. _vpp_config_dataplane_buffers:
 
@@ -8,15 +8,21 @@
 VPP Dataplane Buffers Configuration
 ###################################
 
-Buffers are essential for handling network packets efficiently, and proper configuration can enhance performance, reliability and is mandatory for VPP work.
-
-Buffers are used to temporarily store packets during processing, therefore their configuration should be in sync with NIC configuration, CPU threads, and overall system resources.
+Buffers are essential for handling network packets efficiently. Proper
+configuration enhances performance and reliability, and is mandatory for
+VPP to work. Buffers temporarily store packets during processing. Therefore,
+their configuration must be in sync with NIC configuration, CPU threads, and
+overall system resources.
 
 .. important::
 
-   VPP buffers are allocated from the physical memory pool (physmem). The total amount of memory available for buffer allocation is controlled by the ``physmem-max-size`` setting, while the buffer configuration parameters below control how that memory is used for buffer allocation.
+   VPP buffers are allocated from the physical memory pool (``physmem``). The 
+   total amount of memory available for buffer allocation is controlled by the
+   ``physmem-max-size`` setting, while the buffer configuration parameters
+   below control how that memory is used for buffer allocation.
 
-   See :ref:`VPP Physical Memory Configuration <vpp_config_dataplane_physmem>` for details on configuring physmem.
+   See :ref:`VPP Physical Memory Configuration <vpp_config_dataplane_physmem>`
+   for details on configuring ``physmem``.
 
 Buffer Configuration Parameters
 ===============================
@@ -26,17 +32,19 @@ The following parameters can be configured for VPP buffers:
 buffers-per-numa
 ----------------
 
-Number of buffers allocated per NUMA node. This setting helps in optimizing memory access patterns for multi-CPU systems.
+Number of buffers allocated per NUMA node. This setting optimizes
+memory access patterns for multi-CPU systems.
 
-Usually it needs to be tuned if:
+Typically, you need to tune this value if:
 
-- there are a lot of interfaces in the system
-- there are a lot of queues in NICs
-- there are big descriptors size configured for NICs
+- The system has many interfaces
+- NICs have many queues
+- NICs have large descriptor sizes
 
-The value should be set responsibly.
+Set this value carefully to balance memory usage and performance.
 
-.. cfgcmd:: set vpp settings resource-allocation buffers buffers-per-numa <value>
+.. cfgcmd:: set vpp settings resource-allocation buffers buffers-per-numa
+  <value>
 
 The common approach for the calculation is to use the formula:
 
@@ -44,37 +52,43 @@ The common approach for the calculation is to use the formula:
 
     buffers-per-numa = (num-rx-queues * num-rx-desc) + (num-tx-queues * num-tx-desc)
 
-This should be done for each NIC, and then sum the results for all NICs in the system needs to be multiplied by 2.5 and the result will be the minimum value for `buffers-per-numa`.
+Calculate this formula for each NIC and sum the results. Multiply the
+total by 2.5 to get the minimum recommended value for
+``buffers-per-numa``.
 
-Try to avoid setting this value too low to avoid packet drops.
+Avoid setting this value too low to prevent packet drops.
 
 data-size
 ---------
 
-This value sets how much payload data can be stored in a single buffer allocated by VPP.
-Making it larger can reduce buffer chains for big packets, while a smaller value can save memory for environments handling mostly small packets.
+This value sets how much payload data can be stored in a single buffer
+allocated by VPP. Larger values reduce buffer chains for large packets,
+while smaller values conserve memory for environments handling mostly
+small packets.
 
 .. cfgcmd:: set vpp settings resource-allocation buffers data-size <value>
 
-Optimal size depends on the typical packet size in your network. If you are not sure, use the value of biggest MTU in your network plus some overhead (e.g., 128 bytes).
+Optimal size depends on the typical packet size in your network. If
+unsure, use the largest MTU in your network plus overhead (for example,
+128 bytes).
 
 page-size
 ---------
 
 A memory pages type used for buffer allocation. Common values are 4K, 2M, or 1G.
 
-Use pages that are configured in system settings.
+Use page sizes configured in your system settings.
 
 .. cfgcmd:: set vpp settings resource-allocation buffers page-size <value>
 
 Potential Issues and Troubleshooting
 ====================================
 
-Improper buffer configuration can lead to various issues, including:
+Improper buffer configuration can lead to issues such as:
 
 - Increased latency and packet loss
 - Inefficient CPU utilization
-- Interfaces initialization failures
+- Interface initialization failures
 
 Indicators of such issues are:
 
@@ -83,5 +97,7 @@ Indicators of such issues are:
 
 To troubleshoot buffer-related issues, consider the following steps:
 
-- Review VPP logs for any errors related to buffer allocation (often the message may contains error `-5`).
-- Tune available buffers by adjusting the `buffers-per-numa` and `data-size` parameters.
+- Review VPP logs for errors related to buffer allocation. Look for
+  error ``-5`` messages.
+- Tune available buffers by adjusting the ``buffers-per-numa`` and
+  ``data-size`` parameters.

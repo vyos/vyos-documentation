@@ -18,20 +18,21 @@ Creating a Bonding Interface
 
 To create a VPP bonding interface:
 
-.. cfgcmd:: set vpp interfaces bonding <bondN>
+.. cfgcmd:: set interfaces vpp bonding <vppbondN>
 
-   Create a bonding interface where ``<bondN>`` follows the naming convention bond0, bond1, etc.
+   Create a bonding interface where ``<vppbondN>`` follows the naming convention vppbond0, vppbond1, etc.
+   LCP kernel pair interface bound to the VPP bonding interface is created automatically. This allows standard Linux networking tools and services to interact with the VPP bond.
 
 **Example:**
 
 .. code-block:: none
 
-   set vpp interfaces bonding bond0
+   set interfaces vpp bonding vppbond0
 
 Interface Description
 ^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set vpp interfaces bonding <bondN> description <description>
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> description <description>
 
    Set a descriptive name for the bonding interface.
 
@@ -39,12 +40,12 @@ Interface Description
 
 .. code-block:: none
 
-   set vpp interfaces bonding bond0 description "Primary uplink bond"
+   set interfaces vpp bonding vppbond0 description "Primary uplink bond"
 
 Administrative Control
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set vpp interfaces bonding <bondN> disable
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> disable
 
    Administratively disable the bonding interface. By default, interfaces are enabled.
 
@@ -54,7 +55,7 @@ Member Interface Configuration
 Adding Member Interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set vpp interfaces bonding <bondN> member interface <interface-name>
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> member interface <interface-name>
 
    Add physical interfaces as members of the bond. Multiple interfaces can be added to the same bond.
 
@@ -62,8 +63,8 @@ Adding Member Interfaces
 
 .. code-block:: none
 
-   set vpp interfaces bonding bond0 member interface eth0
-   set vpp interfaces bonding bond0 member interface eth1
+   set interfaces vpp bonding vppbond0 member interface eth0
+   set interfaces vpp bonding vppbond0 member interface eth1
 
 .. note::
 
@@ -72,7 +73,7 @@ Adding Member Interfaces
 Bonding Modes
 -------------
 
-.. cfgcmd:: set vpp interfaces bonding <bondN> mode <mode>
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> mode <mode>
 
    Configure the bonding mode. Available modes:
 
@@ -87,17 +88,17 @@ Bonding Modes
 .. code-block:: none
 
    # Use LACP (recommended for switch environments)
-   set vpp interfaces bonding bond0 mode 802.3ad
+   set interfaces vpp bonding vppbond0 mode 802.3ad
    
    # Use active-backup for simple failover
-   set vpp interfaces bonding bond0 mode active-backup
+   set interfaces vpp bonding vppbond0 mode active-backup
 
 Hash Policies
 -------------
 
 For load balancing modes, configure how traffic is distributed across member interfaces:
 
-.. cfgcmd:: set vpp interfaces bonding <bondN> hash-policy <policy>
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> hash-policy <policy>
 
    Set the transmit hash policy:
 
@@ -110,15 +111,15 @@ For load balancing modes, configure how traffic is distributed across member int
 .. code-block:: none
 
    # Layer 2 hashing (default)
-   set vpp interfaces bonding bond0 hash-policy layer2
+   set interfaces vpp bonding vppbond0 hash-policy layer2
    
    # Layer 3+4 for better distribution with multiple flows
-   set vpp interfaces bonding bond0 hash-policy layer3+4
+   set interfaces vpp bonding vppbond0 hash-policy layer3+4
 
 MAC Address Configuration
 -------------------------
 
-.. cfgcmd:: set vpp interfaces bonding <bondN> mac <mac-address>
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> mac <mac-address>
 
    Set a specific MAC address for the bonding interface.
 
@@ -126,28 +127,90 @@ MAC Address Configuration
 
 .. code-block:: none
 
-   set vpp interfaces bonding bond0 mac 00:11:22:33:44:55
+   set interfaces vpp bonding vppbond0 mac 00:11:22:33:44:55
 
-Kernel Interface Integration
-----------------------------
+IP Address Configuration
+------------------------
 
-.. cfgcmd:: set vpp interfaces bonding <bondN> kernel-interface <interface-name>
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> address <ip-address/prefix>
 
-   Create a kernel interface bound to the VPP bonding interface. This allows standard Linux networking tools and services to interact with the VPP bond.
+   Configure IPv4 or IPv6 addresses on the kernel interface. Multiple addresses can be assigned.
 
-For detailed information about kernel interface integration, see :doc:`kernel`.
+**Examples:**
+
+.. code-block:: none
+
+   # IPv4 address
+   set interfaces vpp bonding vppbond0 address 192.168.1.10/24
+
+   # IPv6 address
+   set interfaces vpp bonding vppbond0 address 2001:db8::10/64
+
+   # Multiple addresses
+   set interfaces vpp bonding vppbond0 address 192.168.1.10/24
+   set interfaces vpp bonding vppbond0 address 10.0.0.10/8
+
+MTU Configuration
+-----------------
+
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> mtu <size>
+
+   Set the Maximum Transmission Unit (MTU) for the kernel interface. The MTU must be compatible with the connected VPP interface.
 
 **Example:**
 
 .. code-block:: none
 
-   set vpp interfaces bonding bond0 kernel-interface vpptun0
+   set interfaces vpp bonding vppbond0 mtu 9000
 
-.. important::
+.. note::
 
-   When using kernel interface binding, you can configure IP addresses and other network settings on the kernel interface.
+   Ensure the MTU setting matches or is smaller than the MTU supported by the associated VPP interface to avoid issues.
 
-   A kernel-interface must be created beforehand.
+VLAN Configuration
+------------------
+
+VPP kernel interfaces support VLAN (Virtual LAN) sub-interfaces for network segmentation.
+
+Creating VLAN Sub-interfaces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> vif <vlan-id>
+
+   Create a VLAN sub-interface with the specified VLAN ID (0-4094).
+
+**Example:**
+
+.. code-block:: none
+
+   set interfaces vpp bonding vppbond0 vif 100
+
+VLAN Sub-interface Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+VLAN sub-interfaces support the same configuration options as the parent interface:
+
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> vif <vlan-id> address <ip-address/prefix>
+
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> vif <vlan-id> description <description>
+
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> vif <vlan-id> disable
+
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> vif <vlan-id> mtu <size>
+
+**Examples:**
+
+.. code-block:: none
+
+   # Configure VLAN 100
+   set interfaces vpp bonding vppbond0 vif 100 address 192.168.100.1/24
+   set interfaces vpp bonding vppbond0 vif 100 description "Management VLAN"
+   set interfaces vpp bonding vppbond0 vif 100 mtu 1500
+
+   # Configure VLAN 200
+   set interfaces vpp bonding vppbond0 vif 200 address 192.168.200.1/24
+   set interfaces vpp bonding vppbond0 vif 200 description "Guest VLAN"
+
 
 Complete Configuration Example
 ------------------------------
@@ -157,22 +220,19 @@ Here's a complete example configuring a bonding interface with LACP:
 .. code-block:: none
 
    # Create bonding interface
-   set vpp interfaces bonding bond0
-   set vpp interfaces bonding bond0 description "Server uplink bond"
+   set interfaces vpp bonding vppbond0
+   set interfaces vpp bonding vppbond0 description "Server uplink bond"
    
    # Configure bonding parameters
-   set vpp interfaces bonding bond0 mode 802.3ad
-   set vpp interfaces bonding bond0 hash-policy layer3+4
+   set interfaces vpp bonding vppbond0 mode 802.3ad
+   set interfaces vpp bonding vppbond0 hash-policy layer3+4
    
    # Add member interfaces
-   set vpp interfaces bonding bond0 member interface eth0
-   set vpp interfaces bonding bond0 member interface eth1
-   
-   # Create kernel interface for OS integration
-   set vpp interfaces bonding bond0 kernel-interface vpptun0
-   
+   set interfaces vpp bonding vppbond0 member interface eth0
+   set interfaces vpp bonding vppbond0 member interface eth1
+
    # Configure IP on kernel interface
-   set vpp kernel-interfaces vpptun0 address 192.168.1.10/24
+   set interfaces vpp bonding vppbond0 address 192.168.1.10/24
 
 Best Practices
 --------------

@@ -108,6 +108,47 @@ In IKEv2, DPD sends messages every configured interval. If one request
 is not responded, Strongswan execute its retransmission algorithm with
 its timers.  `IKEv2 Retransmission`_
 
+*********************************
+Post-Quantum Preshared Keys (PPK)
+*********************************
+
+Post-Quantum Preshared Keys help provide some quantum resistance to IPSec
+tunnels when a post-quantum key exchange algorithm such as ML-KEM is not
+available. The use of PPKs in IKEv2 is described in :rfc:`8784`.
+
+.. cfgmod:: edit vpn authentication ppk <name>
+
+PPKs can be configued within VyOS under the `vpn ipsec authentication ppk`
+config.
+
+.. cfgmod:: set vpn authentication ppk <name> secret-type <plaintext|hex|base64>
+
+PPKs need an id and a secret value. The ID and the secret must match if PPKs are
+required for a successful IPsec connection. The secret can be plain text, a
+hex value, or a Base64 value. The default is plain text. If using another
+type of value, you must define the secret type.
+
+.. cfgmod:: set vpn ipsec site-to-site <name> ppk id <id>
+
+To use a PPK within a site-to-site or remote access connection, define the PPK
+id under the connection.
+
+.. cfgmod:: set vpn ipsec site-to-site <name> ppk required
+
+Optionally, you can require the use of PPK to have a successful connection.
+
+.. cfgmod:: show vpn ipsec connections
+
+You can view the PPK column for information on if PPK is configured, and
+if it is in use. The output is in the format of ``<configured> / <in use>``. 
+The options for configured are none if not conifugred, opt if configured 
+but optional, and req is configured and required. The in use will show yes 
+Possible values of the ``configured`` field are ``none`` if not conifgured, ``opt`` if configured 
+but optional, and ``req`` is configured and required. The in use will show yes 
+
+
+
+
 *****************
 Configuration IKE
 *****************
