@@ -125,7 +125,7 @@ config.
 
 PPKs need an id and a secret value. The ID and the secret must match if PPKs are
 required for a successful IPsec connection. The secret can be plain text, a
-hex value, or a base64 value. The default is plain text. If using another
+hex value, or a Base64 value. The default is plain text. If using another
 type of value, you must define the secret type.
 
 .. cfgmod:: set vpn ipsec site-to-site <name> ppk id <id>
