@@ -143,7 +143,8 @@ You can view the PPK column for information on if PPK is configured, and
 if it is in use. The output is in the format of ``<configured> / <in use>``. 
 The options for configured are none if not conifugred, opt if configured 
 but optional, and req is configured and required. The in use will show yes 
-or no depending on if a PPK was used in the establishment of that tunnel.
+Possible values of the ``configured`` field are ``none`` if not conifgured, ``opt`` if configured 
+but optional, and ``req`` is configured and required. The in use will show yes 
 
 
 
