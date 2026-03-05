@@ -123,7 +123,7 @@ config.
 
 .. cfgmod:: set vpn authentication ppk <name> secret-type <plaintext|hex|base64>
 
-PPKs need an id and a secret value. The ID and secret must match if PPKs are
+PPKs need an id and a secret value. The ID and the secret must match if PPKs are
 required for a successful IPSEC connection. The secret can be plain text, a
 hex value, or a base64 value. The default is plain text. If using another
 type of value, you must define the secret-type.
