@@ -130,7 +130,7 @@ type of value, you must define the secret type.
 
 .. cfgmod:: set vpn ipsec site-to-site <name> ppk id <id>
 
-To use a PPK within a site-to-site or remote-access connection, define the PPK
+To use a PPK within a site-to-site or remote access connection, define the PPK
 id under the connection.
 
 .. cfgmod:: set vpn ipsec site-to-site <name> ppk required
