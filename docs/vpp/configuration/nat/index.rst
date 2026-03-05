@@ -32,3 +32,5 @@ CGNAT is a special type of NAT44, which is highly useful for use cases where you
 This type of NAT is often used by ISPs to provide internet access to their customers.
 
 It supports only source NAT.
+
+CGNAT also supports exclude rules (identity mappings) to bypass translation for selected local addresses or protocol/port tuples.
