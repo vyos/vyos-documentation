@@ -22,15 +22,23 @@ NAT44
 =====
 
 This type is a classical NAT implementation where you can configure static and
-dynamic NAT rules. It supports both source and destination NAT - while the configuration may looks a bit unusual in comparison to traditional NAT implementations.
+dynamic NAT rules. It supports both source and destination NAT - while the
+configuration may looks a bit unusual in comparison to traditional NAT
+implementations.
 
 CGNAT
 =====
 
-CGNAT is a special type of NAT44, which is highly useful for use cases where you have multiple local customers with a limited number of public IP addresses, and want to share public IP address space fairly between them. It uses a combination of IP address and port number to distinguish between different customers.
+CGNAT is a special type of NAT44, which is highly useful for use cases where
+you have multiple local customers with a limited number of public IP
+addresses, and want to share public IP address space fairly between them. It
+uses a combination of IP address and port number to distinguish between
+different customers.
 
-This type of NAT is often used by ISPs to provide internet access to their customers.
+This type of NAT is often used by ISPs to provide internet access to their
+customers.
 
 It supports only source NAT.
 
-CGNAT also supports exclude rules (identity mappings) to bypass translation for selected local addresses or protocol/port tuples.
+CGNAT also supports exclude rules (identity mappings) to bypass translation
+for selected local addresses or protocol/port tuples.
