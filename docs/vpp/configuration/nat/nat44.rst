@@ -608,11 +608,11 @@ processing with invisible 1-to-1 mappings.
 
 .. important::
 
-Exclude rules affect both traffic destined for the router itself and
-forwarded traffic flowing through the router. For forwarded traffic, exclude
-rules create transparent 1-to-1 mappings that allow packets to pass without
-NAT modifications, while from the outside perspective, the traffic appears to
-bypass NAT entirely.
+   Exclude rules affect both traffic destined for the router itself and
+   forwarded traffic flowing through the router. For forwarded traffic, exclude
+   rules create transparent 1-to-1 mappings that allow packets to pass without
+   NAT modifications, while from the outside perspective, the traffic appears to
+   bypass NAT entirely.
 
 Advanced NAT44 Settings
 =======================
