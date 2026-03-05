@@ -113,7 +113,7 @@ Post-Quantum Preshared Keys (PPK)
 *********************************
 
 Post-Quantum Preshared Keys help provide some quantum resistance to IPSec
-tunnels when a Post-Quantum key exchange algorithm such as ML-KEM is not
+tunnels when a post-quantum key exchange algorithm such as ML-KEM is not
 available. The use of PPKs in IKEv2 is described in :rfc:`8784`.
 
 .. cfgmod:: edit vpn authentication ppk <name>
