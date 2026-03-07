@@ -26,7 +26,8 @@ Configuring NAT44 involves a few steps:
 Dynamic and Static Operations
 =============================
 
-NAT44 configuration can be done in one of two ways or in both ways simultaneously:
+NAT44 configuration can be done in one of two ways or in both ways
+simultaneously:
 
 1. Dynamically performing NAT using a pool of public IP addresses.
 2. Statically mapping private IP addresses to public IP addresses.
@@ -162,7 +163,8 @@ hosts when they access external networks.
 
 .. cfgcmd::
 
-   set vpp nat nat44 address-pool translation address <ip-address | ip-address-range>
+   set vpp nat nat44 address-pool translation address
+   <ip-address | ip-address-range>
 
 .. cfgcmd::
 
@@ -194,7 +196,8 @@ need to:
 
 .. cfgcmd::
 
-   set vpp nat nat44 address-pool twice-nat address <ip-address | ip-address-range>
+   set vpp nat nat44 address-pool twice-nat address
+   <ip-address | ip-address-range>
 
 .. cfgcmd::
 
@@ -237,7 +240,8 @@ priority:
 
 .. note::
 
-    As soon as you have configured interfaces and pool, the NAT44 is operational.
+    As soon as you have configured interfaces and pool, the NAT44 is
+    operational.
 
 Static Rules Configuration
 ==========================
@@ -381,7 +385,8 @@ the twice-nat address pool:
 
 .. cfgcmd::
 
-   set vpp nat nat44 static rule <rule-number> options twice-nat-address <ip-address>
+   set vpp nat nat44 static rule <rule-number> options twice-nat-address
+   <ip-address>
 
 Rule Description
 ^^^^^^^^^^^^^^^^
@@ -466,7 +471,8 @@ that should bypass NAT. You can configure exclude rules in two ways:
 
 .. cfgcmd::
 
-   set vpp nat nat44 exclude rule <rule-number> external-interface <interface-name>
+   set vpp nat nat44 exclude rule <rule-number> external-interface
+   <interface-name>
 
 Where:
 
@@ -507,7 +513,8 @@ external-interface:
 
 .. cfgcmd::
 
-   set vpp nat nat44 exclude rule <rule-number> external-interface <interface-name>
+   set vpp nat nat44 exclude rule <rule-number> external-interface
+   <interface-name>
 
 .. cfgcmd::
 

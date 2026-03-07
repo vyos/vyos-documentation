@@ -28,7 +28,8 @@ addresses to public IP addresses.
    **disables normal routing** on these interfaces and **blocks management
    access** to the VyOS router itself.
    
-   Ensure you have an alternative management path to the router before applying CGNAT configuration!
+   Ensure you have an alternative management path to the router before applying
+   your CGNAT configuration.
 
 Interface Configuration
 -----------------------
@@ -109,9 +110,9 @@ Matches a specific local port (or ICMP identifier in case of ICMP protocol).
    Exclude-rule validation rules:
 
    * ``local-address`` must be specified.
-    * ``protocol`` and ``local-port`` must either both be specified or both be
+   * ``protocol`` and ``local-port`` must either both be specified or both be
        omitted.
-    * Duplicate identity mappings are not allowed (same local-address,
+   * Duplicate identity mappings are not allowed (same local-address,
        protocol, local-port tuple).
 
 .. note::
