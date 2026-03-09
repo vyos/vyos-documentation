@@ -50,16 +50,76 @@ prerequisites before enabling VPP:
 
 * **Network Interface Cards (NICs)**
 
-  .. warning:: 
+  .. warning::
 
-     VyOS supports only specific NICs for VPP Dataplane. Unsupported NICs may
-     cause activation failures, initialization errors, crashes, or
-     degraded performance.
+     VyOS supports only specific NICs for the VPP dataplane. Using unsupported
+     hardware may cause activation failures, initialization errors, crashes,
+     or degraded performance.
+
+  When enabling VPP, VyOS checks detected network interfaces against a list
+  of validated NICs. Validation is based on the **PCI ID** of the device or
+  the **kernel driver** used by the interface.
 
   Supported NICs:
 
-  - Intel® Ethernet Network Adapter E810-2CQDA2
-  - NVIDIA/Mellanox ConnectX-5
-  - VirtIO
+  .. list-table::
+     :widths: 15 18 40 35
+     :header-rows: 1
 
-  Other NICs may work but are not officially supported.
+     * - **Filter Type**
+       - **Filter Value**
+       - **NIC Name/Description**
+       - **Platform Where NIC Can Be Found**
+     * - PCI ID
+       - 15b3:1019
+       - Mellanox Technologies MT28800 Family
+         [ConnectX-5 Ex]
+       - Bare-metal
+     * - PCI ID
+       - 15b3:101d
+       - Mellanox Technologies MT2892 Family
+         [ConnectX-6 Dx]
+       - Bare-metal
+     * - PCI ID
+       - 15b3:101e
+       - Mellanox Technologies ConnectX Family
+         mlx5Gen Virtual Function
+       - Oracle Cloud
+     * - PCI ID
+       - 8086:1592
+       - Intel Corporation Ethernet Controller
+         E810-C for QSFP
+       - Bare-metal
+     * - PCI ID
+       - 1ae0:0042
+       - Google, Inc. Compute Engine Virtual
+         Ethernet [gVNIC]
+       - Google Cloud
+     * - PCI ID
+       - 1af4:1000
+       - Red Hat, Inc. Virtio network device
+       - KVM-based hypervisors, including with
+         Open vSwitch; Google Cloud
+     * - PCI ID
+       - 1d0f:ec20
+       - Amazon.com, Inc. Elastic Network
+         Adapter (ENA)
+       - AWS
+     * - Kernel Driver
+       - hv_netvsc
+       - Microsoft Hyper-V network interface
+         card
+       - Microsoft Azure
+
+  If no supported NIC is detected, VPP activation will be rejected.
+
+  In testing or advanced deployments, unsupported hardware can be explicitly
+  allowed in the configuration:
+
+  .. cfgcmd:: set vpp settings allow-unsupported-nics
+
+  .. note::
+
+     This option bypass the hardware validation checks for the specified
+     devices. Stability and performance are not guaranteed when using
+     unsupported NICs or drivers.
