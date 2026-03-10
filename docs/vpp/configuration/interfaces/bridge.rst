@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-04
+:lastproofread: 2026-03-10
 
 .. _vpp_config_interfaces_bridge:
 
@@ -8,9 +8,14 @@
 VPP Bridge Configuration
 ########################
 
-VPP bridge interfaces provide Layer 2 switching functionality, allowing multiple interfaces to be connected at the data link layer.
+VPP bridge interfaces provide Layer 2 switching functionality, allowing
+multiple interfaces to be connected at the data link layer.
 
-VPP bridges operate as learning bridges, automatically discovering MAC addresses and building forwarding tables to efficiently switch traffic between member interfaces. This provides transparent connectivity between different network segments while maintaining the performance benefits of VPP's optimized data plane.
+VPP bridges operate as learning bridges, automatically discovering MAC
+addresses and building forwarding tables to efficiently switch traffic
+between member interfaces. This provides transparent connectivity between
+different network segments while maintaining the performance benefits of
+VPP's optimized data plane.
 
 **Supported Member Interface Types:**
 
@@ -22,7 +27,8 @@ VPP bridges support various interface types as members:
 * :doc:`loopback` - Loopback interfaces (required for BVI)
 * :doc:`vxlan` - VXLAN tunnel interfaces
 
-This flexibility allows you to create complex Layer 2 topologies combining different networking technologies.
+This flexibility allows you to create complex Layer 2 topologies
+combining different networking technologies.
 
 Basic Configuration
 -------------------
@@ -32,11 +38,14 @@ Creating a Bridge Interface
 
 .. cfgcmd:: set interfaces vpp bridge <vppbrN>
 
-   Create a bridge interface where ``<vppbrN>`` follows the naming convention vppbr1, vppbr2, etc.
+   Create a bridge interface where ``<vppbrN>`` follows the naming
+   convention ``vppbr1``, ``vppbr2``, etc.
 
 .. note::
 
-   Bridge domain vppbr0 is reserved by VPP and cannot be configured through VyOS. Start with vppbr1 for your bridge configurations.
+   Bridge domain ``vppbr0`` is reserved by VPP and cannot be
+   configured through VyOS. Start with ``vppbr1`` for your bridge
+   configurations.
 
 **Example:**
 
@@ -64,7 +73,8 @@ Member Interface Configuration
 Adding Member Interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set interfaces vpp bridge <vppbrN> member interface <interface-name>
+.. cfgcmd:: set interfaces vpp bridge <vppbrN> member interface
+            <interface-name>
 
    Add an interface as a member of the bridge.
 
@@ -93,14 +103,18 @@ Adding Member Interfaces
 Bridge Virtual Interface (BVI)
 ------------------------------
 
-A Bridge Virtual Interface (BVI) provides Layer 3 connectivity to a bridge domain, allowing the bridge to have an IP address and participate in routing.
+A Bridge Virtual Interface (BVI) provides Layer 3 connectivity to a
+bridge domain, allowing the bridge to have an IP address and participate
+in routing.
 
 Configuring BVI
 ^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set interfaces vpp bridge <vppbrN> member interface <loopback-interface> bvi
+.. cfgcmd:: set interfaces vpp bridge <vppbrN> member interface
+            <loopback-interface> bvi
 
-   Designate a loopback interface as the Bridge Virtual Interface for the bridge domain.
+   Designate a loopback interface as the Bridge Virtual Interface for
+   the bridge domain.
 
 **Example:**
 
@@ -169,7 +183,10 @@ Multi-Technology Bridge
 Integration with Kernel Interfaces
 ----------------------------------
 
-Bridge interfaces can be integrated with kernel interfaces for management and compatibility with standard Linux networking services. This is accomplished by binding a kernel interface to the Bridge Virtual Interface (BVI).
+Bridge interfaces can be integrated with kernel interfaces for
+management and compatibility with standard Linux networking services.
+This is accomplished by binding a kernel interface to the Bridge
+Virtual Interface (BVI).
 
 **Example Integration:**
 
@@ -187,4 +204,7 @@ Bridge interfaces can be integrated with kernel interfaces for management and co
    # Bind LCP kernel interface to the BVI loopback
    set interfaces vpp loopback vpplo1 address '192.0.2.1/24'
 
-This configuration creates a kernel interface bound to the BVI, allowing standard Linux applications and routing daemons to interact with the VPP bridge. The kernel interface provides Layer 3 access to the bridge domain.
+This configuration creates a kernel interface bound to the BVI,
+allowing standard Linux applications and routing daemons to interact
+with the VPP bridge. The kernel interface provides Layer 3 access to
+the bridge domain.
