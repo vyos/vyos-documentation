@@ -25,7 +25,8 @@ Creating an IPIP Interface
 
 .. cfgcmd:: set interfaces vpp ipip <vppipipN> remote <address>
 
-   Set the tunnel remote endpoint address. Supports both IPv4 and IPv6 addresses.
+   Set the tunnel remote endpoint address. Supports both IPv4 and IPv6
+   addresses.
 
 .. cfgcmd:: set interfaces vpp ipip <vppipipN> source-address <address>
 

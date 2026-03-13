@@ -22,11 +22,13 @@ Creating a GRE Interface
 
 .. cfgcmd:: set interfaces vpp gre <vppgreN>
 
-   Create a GRE interface where ``<vppgreN>`` follows the naming convention ``vppgre1``, ``vppgre2``, etc.
+   Create a GRE interface where ``<vppgreN>`` follows the naming convention
+   ``vppgre1``, ``vppgre2``, etc.
 
 .. cfgcmd:: set interfaces vpp gre <vppgreN> remote <address>
 
-   Set the tunnel remote endpoint address. Supports both IPv4 and IPv6 addresses.
+   Set the tunnel remote endpoint address. Supports both IPv4 and IPv6
+   addresses.
 
 .. cfgcmd:: set interfaces vpp gre <vppgreN> source-address <address>
 
@@ -64,7 +66,8 @@ Tunnel Type
 
    * ``l3`` - Generic Routing Encapsulation for network layer traffic (default).
    * ``teb`` - Transparent Ethernet Bridge for Layer 2 frame transport.
-   * ``erspan`` - Encapsulated Remote Switched Port Analyzer for traffic mirroring.
+   * ``erspan`` - Encapsulated Remote Switched Port Analyzer for traffic
+     mirroring.
 
 Kernel Interface Integration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
