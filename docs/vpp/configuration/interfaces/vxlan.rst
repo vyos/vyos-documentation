@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-04
+:lastproofread: 2026-03-13
 
 .. _vpp_config_interfaces_vxlan:
 
@@ -8,7 +8,10 @@
 VPP VXLAN Configuration
 #######################
 
-VPP VXLAN interfaces provide Virtual eXtensible Local Area Network tunneling with high-performance packet processing. VXLAN extends Layer 2 domains across Layer 3 networks using UDP encapsulation, enabling scalable multi-tenant networking while leveraging VPP's optimized data plane.
+VPP VXLAN interfaces provide virtual extensible local area network (VXLAN)
+tunneling with high-performance packet processing. VXLAN extends Layer 2
+domains across Layer 3 networks using UDP encapsulation, enabling scalable
+multi-tenant networking while leveraging VPP's optimized data plane.
 
 Basic Configuration
 -------------------
@@ -18,19 +21,23 @@ Creating a VXLAN Interface
 
 .. cfgcmd:: set interfaces vpp vxlan <vppvxlanN>
 
-   Create a VXLAN interface where ``<vppvxlanN>`` follows the naming convention vppvxlan1, vppvxlan2, etc.
+   Create a VXLAN interface where ``<vppvxlanN>`` follows the naming
+   convention ``vppvxlan1``, ``vppvxlan2``, etc.
 
 .. cfgcmd:: set interfaces vpp vxlan <vppvxlanN> vni <vni>
 
-   Set the Virtual Network Identifier (VNI) for the VXLAN tunnel. Valid range is 0-16777214.
+   Set the Virtual Network Identifier (VNI) for the VXLAN tunnel. Valid range
+   is 0-16777214.
 
 .. cfgcmd:: set interfaces vpp vxlan <vppvxlanN> remote <address>
 
-   Set the tunnel remote endpoint address. Supports both IPv4 and IPv6 addresses.
+   Set the tunnel remote endpoint address. Supports both IPv4 and IPv6
+   addresses.
 
 .. cfgcmd:: set interfaces vpp vxlan <vppvxlanN> source-address <address>
 
-   Set the tunnel source address. Must match an address configured on the local system.
+   Set the tunnel source address. Must match an address configured on the
+   local system.
 
 **Basic Example:**
 
@@ -58,14 +65,16 @@ Description and Administrative Control
 Kernel Interface Integration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Kernel interface is bounded to the VXLAN tunnel for management and application compatibility.
+The kernel interface is bound to the VXLAN tunnel for management and
+application compatibility.
 
 IP Address Configuration
 ------------------------
 
 .. cfgcmd:: set interfaces vpp vxlan <vppvxlanN> address <ip-address/prefix>
 
-   Configure IPv4 or IPv6 addresses on the kernel interface. Multiple addresses can be assigned.
+   Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
+   addresses can be assigned.
 
 **Examples:**
 
@@ -79,7 +88,8 @@ MTU Configuration
 
 .. cfgcmd:: set interfaces vpp vxlan <vppvxlanN> mtu <size>
 
-   Set the Maximum Transmission Unit (MTU) for the kernel interface. The MTU must be compatible with the connected VPP interface.
+   Set the Maximum Transmission Unit (MTU) for the kernel interface. The MTU
+   must be compatible with the connected VPP interface.
 
 Configuration Examples
 ----------------------
@@ -122,7 +132,8 @@ VXLAN with Kernel Interface
 Bridge Integration
 ------------------
 
-VXLAN interfaces are commonly used as members in VPP bridges for Layer 2 extension. See :doc:`bridge` for detailed bridge configuration.
+VXLAN interfaces are commonly used as members in VPP bridges for Layer 2
+extension. See :doc:`bridge` for more information.
 
 .. code-block:: none
 
