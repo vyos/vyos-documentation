@@ -10,9 +10,6 @@ MACVLAN, or pseudo-Ethernet interfaces, operate as logical subinterfaces of
 standard Ethernet interfaces. Each subinterface has a unique MAC address but 
 shares a single physical Ethernet port.
 
-Pseudo-Ethernet interfaces reduce system overhead compared to traditional 
-bridging. They also help bypass the 4096 VLAN limit per physical Ethernet port, 
-since this restriction applies to a single MAC address.
 
 Pseudo-Ethernet interfaces behave like physical Ethernet interfaces. They 
 support IPv4 and IPv6 addressing, can obtain IP addresses through DHCP or 
