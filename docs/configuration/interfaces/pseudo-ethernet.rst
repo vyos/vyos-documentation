@@ -15,8 +15,7 @@ Pseudo-Ethernet interfaces behave like physical Ethernet interfaces. They
 support IPv4 and IPv6 addressing, can obtain IP addresses through DHCP or 
 DHCPv6, and are mapped to a physical Ethernet port. They inherit 
 characteristics such as speed and duplex from their parent interface and can 
-be referenced like standard Ethernet interfaces once created. These features 
-make them useful for testing.
+be referenced like standard Ethernet interfaces once created. 
 
 
 Pseudo-Ethernet interfaces may not work in environments that require a 
