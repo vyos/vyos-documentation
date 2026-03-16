@@ -20,7 +20,7 @@ make them useful for testing.
 
 Keep the following limitations in mind when using pseudo-Ethernet interfaces:
 
-* Pseudo-Ethernet interfaces may not work in environments that require a 
+Pseudo-Ethernet interfaces may not work in environments that require a 
   :abbr:`NIC (Network Interface Card)` to have only one MAC address. 
   This includes:
 
