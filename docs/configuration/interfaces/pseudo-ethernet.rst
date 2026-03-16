@@ -23,9 +23,6 @@ make them useful for testing.
 
 Keep the following limitations in mind when using pseudo-Ethernet interfaces:
 
-* Pseudo-Ethernet interfaces are not accessible from the internal host. 
-  Attempts to ping a pseudo-Ethernet interface from the host system where it is 
-  defined will fail.
 * While loopbacks occur at the IP level as they do for other interfaces, 
   Ethernet frames are not forwarded between pseudo-Ethernet interfaces.
 * Pseudo-Ethernet interfaces may not work in environments that require a 
