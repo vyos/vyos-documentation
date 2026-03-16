@@ -1,4 +1,4 @@
-:lastproofread: 2024-07-04
+:lastproofread: 2026-03-16
 
 .. _vxlan-interface:
 
@@ -6,34 +6,32 @@
 VXLAN
 #####
 
-:abbr:`VXLAN (Virtual Extensible LAN)` is a network virtualization technology
-that attempts to address the scalability problems associated with large cloud
-computing deployments. It uses a VLAN-like encapsulation technique to
-encapsulate OSI layer 2 Ethernet frames within layer 4 UDP datagrams, using
-4789 as the default IANA-assigned destination UDP port number. VXLAN
-endpoints, which terminate VXLAN tunnels and may be either virtual or physical
-switch ports, are known as :abbr:`VTEPs (VXLAN tunnel endpoints)`.
+:abbr:`VXLAN (Virtual Extensible LAN)` is a network virtualization technology 
+that addresses scalability challenges in large cloud computing environments. 
+It encapsulates Ethernet frames (Layer 2) within UDP datagrams (Layer 4), which 
+are then transmitted via UDP port 4789, as assigned by IANA. VXLAN endpoints, 
+called :abbr:`VTEPs (VXLAN tunnel endpoints)`, terminate VXLAN tunnels and can 
+be either virtual or physical switch ports.
 
-VXLAN is an evolution of efforts to standardize an overlay encapsulation
-protocol. It increases the scalability up to 16 million logical networks and
-allows for layer 2 adjacency across IP networks. Multicast or unicast with
-head-end replication (HER) is used to flood broadcast, unknown unicast,
-and multicast (BUM) traffic.
+VXLAN supports up to 16 million logical networks and enables Layer 2 adjacency 
+across Layer 3 IP networks. It uses multicast or unicast with head-end 
+replication (HER) to flood broadcast, unknown unicast, and multicast (BUM) 
+traffic.
 
-The VXLAN specification was originally created by VMware, Arista Networks
-and Cisco. Other backers of the VXLAN technology include Huawei, Broadcom,
-Citrix, Pica8, Big Switch Networks, Cumulus Networks, Dell EMC, Ericsson,
-Mellanox, FreeBSD, OpenBSD, Red Hat, Joyent, and Juniper Networks.
+The VXLAN specification was initially developed by VMware, Arista Networks, and 
+Cisco. Other supporters include Huawei, Broadcom, Citrix, Pica8, Big Switch 
+Networks, Cumulus Networks, Dell EMC, Ericsson, Mellanox, FreeBSD, OpenBSD, Red 
+Hat, Joyent, and Juniper Networks.
 
-VXLAN was officially documented by the IETF in :rfc:`7348`.
+VXLAN is officially documented by the IETF in :rfc:`7348`.
 
-If configuring VXLAN in a VyOS virtual machine, ensure that MAC spoofing
-(Hyper-V) or Forged Transmits (ESX) are permitted, otherwise forwarded frames
-may be blocked by the hypervisor.
+When configuring VXLAN in a VyOS virtual machine, ensure that MAC spoofing 
+(Hyper-V) or Forged Transmits (ESX) are permitted. Otherwise, the hypervisor 
+may block forwarded frames.
 
-.. note:: As VyOS is based on Linux and there was no official IANA port assigned
-   for VXLAN, VyOS uses a default port of 8472. You can change the port on a
-   per VXLAN interface basis to get it working across multiple vendors.
+.. note:: Although the IANA-assigned VXLAN port is **4789**, VyOS uses the 
+   Linux default UDP port **8472** for VXLAN interfaces. To ensure compatibility 
+   with other vendors, set the port to the IANA standard **4789**.
 
 Configuration
 =============
@@ -45,133 +43,138 @@ Common interface configuration
   :var0: vxlan
   :var1: vxlan0
 
-VXLAN specific options
+VXLAN-specific options
 -----------------------
 
 .. cfgcmd:: set interfaces vxlan <interface> vni <number>
 
-  Each VXLAN segment is identified through a 24-bit segment ID, termed the
-  :abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))`, This allows
-  up to 16M VXLAN segments to coexist within the same administrative domain.
+  **Configure a** :abbr:`VNI (VXLAN Network Identifier)` **for the VXLAN 
+  interface.**
+
+  Each VXLAN segment is identified by this 24-bit VNI, allowing up to 16 million 
+  segments to coexist within the same administrative domain.
 
 .. cfgcmd:: set interfaces vxlan <interface> port <port>
 
-  Configure port number of remote VXLAN endpoint.
+  Configure the UDP port of the remote VXLAN endpoint.
 
-  .. note:: As VyOS is Linux based the default port used is not using 4789
-     as the default IANA-assigned destination UDP port number. Instead VyOS
-     uses the Linux default port of 8472.
+  .. note:: Although the IANA-assigned VXLAN port is **4789**, VyOS uses the 
+     Linux default UDP port **8472** for VXLAN interfaces.
 
-.. cfgcmd:: set interfaces vxlan <interface> source-address <interface>
+.. cfgcmd:: set interfaces vxlan <interface> source-address <address>
 
-  Source IP address used for VXLAN underlay. This is mandatory when using VXLAN
-  via L2VPN/EVPN.
+  Configure the source IP address for the VXLAN underlay. 
+
+  .. warning:: This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
 
 .. cfgcmd:: set interfaces vxlan <interface> gpe
 
-  Enables the Generic Protocol extension (VXLAN-GPE). Currently, this is only
-  supported together with the external keyword.
+   **Enable the** :abbr:`GPE (Generic Protocol Extension)` **for the VXLAN 
+   interface.**
+
+   To use this feature, you must configure the interface with the ``external`` 
+   parameter.
 
 .. cfgcmd:: set interfaces vxlan <interface> parameters external
 
-  Specifies whether an external control plane (e.g. BGP L2VPN/EVPN) or the
-  internal FDB should be used.
+   **Configure the VXLAN interface to use an external control plane, such as BGP 
+   L2VPN/EVPN, for remote endpoint discovery.**
+
+   If not configured, the internal :abbr:`FDB (Forwarding Database)` is used.
 
 .. cfgcmd:: set interfaces vxlan <interface> parameters neighbor-suppress
 
-  In order to minimize the flooding of ARP and ND messages in the VXLAN network,
-  EVPN includes provisions :rfc:`7432#section-10` that allow participating VTEPs
-  to suppress such messages in case they know the MAC-IP binding and can reply
-  on behalf of the remote host.
+   **Enable ARP and ND suppression on the VXLAN interface.**
+
+   This reduces ARP and ND message flooding across the VXLAN network. As defined 
+   in :rfc:`7432#section-10`, participating VTEPs use known MAC-to-IP bindings 
+   to reply to local requests on behalf of remote hosts.  
 
 .. cfgcmd:: set interfaces vxlan <interface> parameters nolearning
 
-   Specifies if unknown source link layer addresses and IP addresses are entered
-   into the VXLAN device forwarding database.
+   Disable :abbr:`SLLA (Source Link-Layer Address)` and IP address learning on 
+   the VXLAN interface. 
 
 .. cfgcmd:: set interfaces vxlan <interface> parameters vni-filter
 
-   Specifies whether the VXLAN device is capable of vni filtering.
+   **Enable** :abbr:`VNI (VXLAN Network Identifier)` **filtering on the VXLAN 
+   interface.** 
 
-   Only works with a VXLAN device with external flag set.
+   When enabled, the interface only receives packets with VNIs configured in its 
+   VNI filtering table.
 
-   .. note::  The device can only receive packets with VNIs configured in
-      the VNI filtering table.
+   .. note:: VNI filtering works only if the interface is configured with the 
+      ``external`` parameter.
 
 Unicast
 ^^^^^^^
 
 .. cfgcmd:: set interfaces vxlan <interface> remote <address>
 
-  IPv4/IPv6 remote address of the VXLAN tunnel. An alternative to multicast,
-  the remote IPv4/IPv6 address can be set directly.
+   **Configure the IPv4 or IPv6 address of the remote VTEP.**
+
+   Unlike multicast setups, this command allows you to directly configure the 
+   remote IPv4 or IPv6 address.
 
 Multicast
 ^^^^^^^^^
 
 .. cfgcmd:: set interfaces vxlan <interface> source-interface <interface>
 
-  Interface used for VXLAN underlay. This is mandatory when using VXLAN via
-  a multicast network. VXLAN traffic will always enter and exit this interface.
+  **Configure the source interface for the VXLAN underlay.**
 
+  All VXLAN traffic is sent and received through the specified interface. 
 
+  This setting is mandatory when deploying VXLAN over a multicast network.
+  
 .. cfgcmd:: set interfaces vxlan <interface> group <address>
 
-  Multicast group address for the VXLAN interface. VXLAN tunnels can be built
-  either via Multicast or via Unicast.
+  **Configure the IPv4 or IPv6 multicast group address for the VXLAN interface.**
 
-  Both IPv4 and IPv6 multicast is possible.
+  VXLAN tunnels can be built using either multicast group or unicast IP addresses.
 
 Multicast VXLAN
 ===============
 
 Topology: PC4 - Leaf2 - Spine1 - Leaf3 - PC5
 
-PC4 has IP 10.0.0.4/24 and PC5 has IP 10.0.0.5/24, so they believe they are in
-the same broadcast domain.
+PC4 uses the IP address ``10.0.0.4/24``, and PC5 uses the IP address 
+``10.0.0.5/24``. Both devices assume they reside within the same broadcast 
+domain.
 
-Let's assume PC4 on Leaf2 wants to ping PC5 on Leaf3. Instead of setting Leaf3
-as our remote end manually, Leaf2 encapsulates the packet into a UDP-packet and
-sends it to its' designated multicast-address via Spine1. When Spine1 receives
-this packet it forwards it to all other leaves who has joined the same
-multicast-group, in this case Leaf3. When Leaf3 receives the packet it forwards
-it, while at the same time learning that PC4 is reachable behind Leaf2, because
-the encapsulated packet had Leaf2's IP address set as source IP.
+Assume PC4 on Leaf2 pings PC5 on Leaf3. Rather than manually specifying Leaf3 
+as the remote endpoint, Leaf2 encapsulates the packet into a UDP datagram and 
+sends it to the designated multicast address via Spine1. Spine1 forwards the 
+packet to all leaves in the same multicast group, including Leaf3. Upon 
+receiving the datagram, Leaf3 forwards it to PC5 and learns that PC4 is 
+reachable through Leaf2 by inspecting the source IP in the encapsulated 
+datagram.
 
-PC5 receives the ping echo, responds with an echo reply that Leaf3 receives and
-this time forwards to Leaf2's unicast address directly because it learned the
-location of PC4 above. When Leaf2 receives the echo reply from PC5 it sees that
-it came from Leaf3 and so remembers that PC5 is reachable via Leaf3.
+PC5 receives the ping and responds with an echo reply. Leaf3, now aware of 
+PC4's location, forwards the reply directly to Leaf2's unicast address. Upon 
+receiving the echo reply, Leaf2 learns that PC5 is reachable through Leaf3.
 
-Thanks to this discovery, any subsequent traffic between PC4 and PC5 will not
-be using the multicast-address between the leaves as they both know behind which
-Leaf the PCs are connected. This saves traffic as less multicast packets sent
-reduces the load on the network, which improves scalability when more leaves are
-added.
-
-For optimal scalability, Multicast shouldn't be used at all, but instead use BGP
-to signal all connected devices between leaves. Unfortunately, VyOS does not yet
-support this.
+After this discovery, subsequent traffic between PC4 and PC5 will not use the 
+multicast address between the leaves, as both leaves have learned the PCs' 
+locations. This reduces multicast traffic and network load, improving 
+scalability as more leaves are added.
 
 Single VXLAN device (SVD)
 =========================
 
-FRR supports a new way of configuring VLAN-to-VNI mappings for EVPN-VXLAN, when
-working with the Linux kernel. In this new way, the mapping of a VLAN to a
-:abbr:`VNI (VXLAN Network Identifier (or VXLAN Segment ID))` is configured
-against a container VXLAN interface which is referred to as a
-:abbr:`SVD (Single VXLAN device)`.
-
-Multiple VLAN to VNI mappings can be configured against the same SVD. This
-allows for a significant scaling of the number of VNIs since a separate VXLAN
-interface is no longer required for each VNI.
+In VyOS, you can configure multiple **VLAN-to-VNI mappings** for EVPN-VXLAN on 
+a single container interface, known as a single VXLAN device (SVD). This 
+enables significant VNI scaling because a separate VXLAN interface is not 
+required for each VNI.
 
 .. cfgcmd:: set interfaces vxlan <interface> vlan-to-vni <vlan> vni <vni>
 
-   Maps the VNI to the specified VLAN id. The VLAN can then be consumed by
-   a bridge.
+   **Map a VLAN ID to a VNI on the specified VXLAN interface.**
 
-   Sample configuration of SVD with VLAN to VNI mappings is shown below.
+   The VXLAN interface can be added to a bridge.
+
+   The following example shows an SVD configuration with multiple VLAN-to-VNI 
+   mappings.
 
    .. code-block:: none
 
@@ -186,14 +189,14 @@ interface is no longer required for each VNI.
 Example
 -------
 
-The setup is this: Leaf2 - Spine1 - Leaf3
+The following example demonstrates a multicast VXLAN deployment.
 
-Spine1 is a Cisco IOS router running version 15.4, Leaf2 and Leaf3 are each
-VyOS routers running 1.2.
+The setup includes three routers: Spine1, a Cisco IOS router, and Leaf2 and 
+Leaf3, which are VyOS routers.
 
-This topology was built using GNS3.
+**Topology:**  Leaf2 - Spine1 - Leaf3.
 
-Topology:
+The topology is built using GNS3.
 
 .. code-block:: none
 
@@ -203,13 +206,13 @@ Topology:
 
   Leaf2:
   Eth0 towards Spine1, IP-address: 10.1.2.2/24
-  Eth1 towards a vlan-aware switch
+  Eth1 towards a VLAN-aware switch
 
   Leaf3:
   Eth0 towards Spine1, IP-address 10.1.3.3/24
-  Eth1 towards a vlan-aware switch
+  Eth1 towards a VLAN-aware switch
 
-**Spine1 Configuration:**
+**Spine1 configuration:**
 
 .. code-block:: none
 
@@ -227,10 +230,9 @@ Topology:
   router ospf 1
    network 10.0.0.0 0.255.255.255 area 0
 
-Multicast-routing is required for the leaves to forward traffic between each
-other in a more scalable way. This also requires PIM to be enabled towards the
-leaves so that the Spine can learn what multicast groups each Leaf expects
-traffic from.
+Multicast routing is required for scalable traffic forwarding between leaves. 
+:abbr:`PIM (Protocol Independent Multicast)` must be enabled towards the leaves 
+so the spine can learn from which multicast groups each leaf expects traffic.
 
 **Leaf2 configuration:**
 
@@ -239,7 +241,7 @@ traffic from.
   set interfaces ethernet eth0 address '10.1.2.2/24'
   set protocols ospf area 0 network '10.0.0.0/8'
 
-  ! Our first vxlan interface
+  ! First VXLAN interface
   set interfaces bridge br241 address '172.16.241.1/24'
   set interfaces bridge br241 member interface 'eth1.241'
   set interfaces bridge br241 member interface 'vxlan241'
@@ -248,7 +250,7 @@ traffic from.
   set interfaces vxlan vxlan241 source-interface 'eth0'
   set interfaces vxlan vxlan241 vni '241'
 
-  ! Our seconds vxlan interface
+  ! Second VXLAN interface
   set interfaces bridge br242 address '172.16.242.1/24'
   set interfaces bridge br242 member interface 'eth1.242'
   set interfaces bridge br242 member interface 'vxlan242'
@@ -264,7 +266,7 @@ traffic from.
   set interfaces ethernet eth0 address '10.1.3.3/24'
   set protocols ospf area 0 network '10.0.0.0/8'
 
-  ! Our first vxlan interface
+  ! First VXLAN interface
   set interfaces bridge br241 address '172.16.241.1/24'
   set interfaces bridge br241 member interface 'eth1.241'
   set interfaces bridge br241 member interface 'vxlan241'
@@ -273,7 +275,7 @@ traffic from.
   set interfaces vxlan vxlan241 source-interface 'eth0'
   set interfaces vxlan vxlan241 vni '241'
 
-  ! Our seconds vxlan interface
+  ! Second VXLAN interface
   set interfaces bridge br242 address '172.16.242.1/24'
   set interfaces bridge br242 member interface 'eth1.242'
   set interfaces bridge br242 member interface 'vxlan242'
@@ -282,65 +284,62 @@ traffic from.
   set interfaces vxlan vxlan242 source-interface 'eth0'
   set interfaces vxlan vxlan242 vni '242'
 
-As you can see, the Leaf2 and Leaf3 configurations are almost identical. There
-are lots of commands above, I'll try to go into more detail below. Command
-descriptions are placed under the command boxes:
+The configurations for Leaf2 and Leaf3 are nearly identical. Detailed 
+explanations for each command are provided below.
 
 .. code-block:: none
 
   set interfaces bridge br241 address '172.16.241.1/24'
 
-This commands creates a bridge that is used to bind traffic on eth1 vlan 241
-with the vxlan241-interface. The IP address is not required. It may however be
-used as a default gateway for each Leaf which allows devices on the vlan to
-reach other subnets. This requires that the subnets are redistributed by OSPF
-so that the Spine will learn how to reach it. To do this you need to change the
-OSPF network from '10.0.0.0/8' to '0.0.0.0/0' to allow 172.16/12-networks to be
-advertised.
+This command creates a bridge to bind traffic on ``eth1`` VLAN 241 with the 
+``vxlan241`` interface. The IP address is optional. If configured, it can serve 
+as the default gateway for each leaf, allowing devices on the VLAN to reach 
+other subnets. Subnets must be redistributed by :abbr:`OSPF (Open Shortest Path 
+First)` so the spine can learn how to reach them. To advertise ``172.16/12`` 
+networks, change the :abbr:`OSPF (Open Shortest Path First)` network from 
+``10.0.0.0/8`` to ``0.0.0.0/0``.
 
 .. code-block:: none
 
   set interfaces bridge br241 member interface 'eth1.241'
   set interfaces bridge br241 member interface 'vxlan241'
 
-Binds eth1.241 and vxlan241 to each other by making them both member
-interfaces of the same bridge.
+These commands bind ``eth1.241`` and ``vxlan241`` as member interfaces of the 
+same bridge.
 
 .. code-block:: none
 
   set interfaces vxlan vxlan241 group '239.0.0.241'
 
-The multicast-group used by all leaves for this vlan extension. Has to be the
-same on all leaves that has this interface.
+This command configures the multicast group used by all leaves for this VLAN 
+extension. It must be the same on all leaves that have this interface.
 
 .. code-block:: none
 
   set interfaces vxlan vxlan241 source-interface 'eth0'
 
-Sets the interface to listen for multicast packets on. Could be a loopback, not
-yet tested.
+This command configures the interface that listens for multicast packets. It 
+can also be a loopback interface.
 
 .. code-block:: none
 
   set interfaces vxlan vxlan241 vni '241'
 
-Sets the unique id for this vxlan-interface. Not sure how it correlates with
-multicast-address.
+This command configures the unique ID for the VXLAN interface. 
 
 .. code-block:: none
 
   set interfaces vxlan vxlan241 port 12345
 
-The destination port used for creating a VXLAN interface in Linux defaults to
-its pre-standard value of 8472 to preserve backward compatibility. A
-configuration directive to support a user-specified destination port to override
-that behavior is available using the above command.
+VyOS uses the Linux default UDP port **8472** for VXLAN interfaces. This 
+command allows you to configure a different UDP port.
 
 Unicast VXLAN
 =============
 
-Alternatively to multicast, the remote IPv4 address of the VXLAN tunnel can be
-set directly. Let's change the Multicast example from above:
+As an alternative to multicast, you can configure the VXLAN tunnel by 
+specifying the remote IPv4 address directly. The following updates the previous 
+multicast example:
 
 .. code-block:: none
 
@@ -349,10 +348,11 @@ set directly. Let's change the Multicast example from above:
   delete interfaces vxlan vxlan241 source-interface 'eth0'
 
   # leaf2
-  set interface vxlan vxlan241 remote 10.1.3.3
+  set interfaces vxlan vxlan241 remote 10.1.3.3
 
   # leaf3
-  set interface vxlan vxlan241 remote 10.1.2.2
+  set interfaces vxlan vxlan241 remote 10.1.2.2
 
-The default port udp is set to 8472.
-It can be changed with ``set interface vxlan <vxlanN> port <port>``
+The default UDP port is 8472. To configure a different port, use ``set 
+interfaces vxlan <vxlanN> port <port>``.
+
