@@ -18,7 +18,6 @@ characteristics such as speed and duplex from their parent interface and can
 be referenced like standard Ethernet interfaces once created. These features 
 make them useful for testing.
 
-Keep the following limitations in mind when using pseudo-Ethernet interfaces:
 
 Pseudo-Ethernet interfaces may not work in environments that require a 
   :abbr:`NIC (Network Interface Card)` to have only one MAC address. 
