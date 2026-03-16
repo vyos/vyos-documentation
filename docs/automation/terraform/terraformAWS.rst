@@ -1,12 +1,13 @@
-:lastproofread: 2024-01-11
+:lastproofread: 2026-03-16
 
 .. _terraformAWS:
 
-Deploying VyOS in the AWS cloud
-===============================
+Deploy VyOS on AWS with Terraform
+=================================
 
-With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the AWS cloud. If necessary, the infrastructure can be removed using terraform.
-Also we will make provisioning using Ansible.
+You can use Terraform to quickly deploy VyOS-based infrastructure
+on AWS and remove infrastructure when it's no longer needed.
+Additionally, you can use Ansible for provisioning.
 
 
 .. image:: /_static/images/aws.png
@@ -14,28 +15,33 @@ Also we will make provisioning using Ansible.
    :align: center
    :alt: Network Topology Diagram
 
-In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the AWS cloud and make provisioning using Ansible.
+On this page you'll learn how to:
+
+* Create the necessary files for Terraform and Ansible.
+* Use Terraform to create a single instance on AWS and use Ansible for
+  provisioning.
 
 
-Preparation steps for deploying VyOS on AWS 
--------------------------------------------
+Prepare to deploy VyOS with Terraform on AWS
+--------------------------------------------
 
-How to create a single instance and install your configuration using Terraform+Ansible+AWS 
-Step by step:
+To create a single instance and install your configuration using
+Terraform, Ansible, and AWS, follow these steps:
 
 AWS
+^^^
 
 
-1 Create an account with AWS and get your "access_key", "secret key"
+1. Create an account with AWS and get your ``access_key`` and ``secret_key``.
 
-2 Create a key pair_ and download your .pem key
+2. Create a key pair_ and download your ``.pem`` key.
 
 .. image:: /_static/images/keypairs.png
    :width: 50%
    :align: center
    :alt: Network Topology Diagram
 
-3 Create a security group_ for the new VyOS instance and open all traffic
+3. Create a security group_ for the new VyOS instance and open all traffic.
 
 .. image:: /_static/images/sg.png
    :width: 50%
@@ -49,57 +55,62 @@ AWS
    :alt: Network Topology Diagram
 
 Terraform
+^^^^^^^^^
 
+  1. Create an UNIX or Windows instance.
 
-  1 Create an UNIX or Windows instance
+  2. Download and install `Terraform <https://developer.hashicorp.com/terraform/install>`__.
 
-  2 Download and install Terraform
+  3. Create a folder, for example ``/root/awsterraform``:
 
-  3 Create the folder for example /root/awsterraform
+  .. code-block:: none
+
+    mkdir /root/awsterraform
+
+  4. Copy all files into your Terraform project
+     (``vyos.tf``, ``var.tf``, ``terraform.tfvars``, ``version.tf``).
+     See `Structure of files in Terraform for AWS <#structure-of-files-in-terraform-for-aws>`__ for more details.
+
+  5. Type the following commands:
 
 .. code-block:: none
 
- mkdir /root/awsterraform
-
-  4 Copy all files into your Terraform project "/root/awsterraform" (vyos.tf, var.tf, terraform.tfvars,version.tf), more detailed see `Structure of files Terrafom for AWS`_
-
-  5 Type the commands :
-
-.. code-block:: none
-
-   cd /<your folder> 
+   cd /<your folder>
    terraform init
 
 
 Ansible
+^^^^^^^
 
 
-  1 Create an UNIX instance whenever you want (local, cloud, and so on)
+1. Create a UNIX instance whenever you need.
 
-  2 Download and install Ansible
+2. Download and install Ansible
 
-  3 Create the folder for example /root/aws/
+3. Create a folder, for example ``/root/aws/``.
 
-  4 Copy all files into your Ansible project "/root/aws/" (ansible.cfg, instance.yml, mykey.pem and "all"), more detailed see `Structure of files Ansible for AWS`_
-
-mykey.pem you have to get using step 1.2
+4. Copy all files into your Ansible project (``ansible.cfg``, ``instance.yml``,
+   ``mykey.pem``, and ``all``).
+   See `Structure of files in Ansible for AWS <#structure-of-files-in-ansible-for-aws>`__ for more details.
+   You can obtain ``mykey.pem`` by creating a key pair_ in AWS and downloading your ``.pem`` key.
 
 
 Start 
+^^^^^
 
 
-Type the commands on your Terrafom instance:
+Type the following commands in terminal on your Terraform instance:
    
 .. code-block:: none
 
    cd /<your folder>
-   terraform plan  
-   terraform apply  
+   terraform plan
+   terraform apply
    yes
 
 
-Start creating an AWS instance and check the result 
----------------------------------------------------
+Create an AWS instance and check its configuration
+--------------------------------------------------
 
 .. code-block:: none
 
@@ -252,8 +263,9 @@ Start creating an AWS instance and check the result
   
 
 
-After executing all the commands you will have your VyOS instance on the AWS cloud with your configuration, it's a very convenient desition.
-If you need to delete the instance please type the command:
+After running all the commands, your VyOS instance is deployed on
+AWS with your specified configuration.
+To delete the instance, type the following command:
 
 .. code-block:: none
 
@@ -263,26 +275,29 @@ If you need to delete the instance please type the command:
 Troubleshooting
 ---------------
 
-1 Ansible doesn't connect via SSH to your AWS instance: you have to check that your SSH key has copied into the path /root/aws/.
-Also, increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location).
-Make sure that you have opened access to the instance in the security group.
+1. If Ansible doesn't connect via SSH to your AWS instance, verify that
+   your SSH key is in the path ``/root/aws/``. You might need to
+   increase the timeout in ``instance.yml`` from 300 seconds to 500
+   seconds or more, depending on your location. Make sure that the
+   security group allows access to the instance.
 
-  2 Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file VyOS. tf
+2. If Terraform doesn't connect via SSH to your Ansible instance,
+   verify the correct login and password in the ``VyOS.tf`` file.
 
-.. code-block:: none
+  .. code-block:: none
 
-  connection {
-   type     = "ssh"  
-   user     = "root"              # open root access using login and password on your Ansible
-   password = var.password        # check password in the file terraform.tfvars isn't empty
-       host = var.host            # check the correct IP address of your Ansible host
-  }
+    connection {
+    type     = "ssh"
+    user     = "root"              # open root access using login and password on your Ansible
+    password = var.password        # check password in the file terraform.tfvars isn't empty
+        host = var.host            # check the correct IP address of your Ansible host
+    }
 
 
-Make sure that Ansible is pinging from Terrafom.
+Make sure Ansible can ping from Terraform.
 
-Structure of files Terrafom for AWS
------------------------------------
+Structure of files in Terraform for AWS
+---------------------------------------
 
 .. code-block:: none
 
@@ -293,20 +308,20 @@ Structure of files Terrafom for AWS
  └── terraform.tfvars		# The value of all variables (passwords, login, ip adresses and so on)
  
 
- 
-File contents of Terrafom for AWS
----------------------------------
+File contents of Terraform for AWS
+----------------------------------
 
-vyos.tf
+``vyos.tf``
 
 .. code-block:: none
 
 
   ##############################################################################
-  # Build an VyOS VM from the Marketplace
-  # To finde nessesery AMI image_ in AWS
+  # Build a VyOS VM from the Marketplace.
+  # Find the necessary AMI image_ in AWS.
   #
-  # In the script vyos.tf we'll use default values (you can chang it as you need)
+  # The vyos.tf script uses default values (you can change them as
+  # needed)
   # AWS Region = "us-east-1"
   # AMI        = "standard AMI of VyOS from AWS Marketplace"
   # Size of VM = "t2.micro"
@@ -349,9 +364,9 @@ vyos.tf
   }
 
   ##############################################################################
-  # specific variable (to getting type "terraform plan"):
+  # Specific variable (to getting type "terraform plan"):
   # aws_instance.myVyOSec2.public_ip - the information about public IP address
-  # of our instance, needs for provisioning and ssh connection from Ansible
+  # of our instance, needs for provisioning and SSH connection from Ansible
   ##############################################################################
   
   output "my_IP"{
@@ -359,11 +374,9 @@ vyos.tf
   }
   
   ##############################################################################
-  # 
-  # IP of aws instance copied to a file ip.txt in local system Terraform
-  # ip.txt looks like: 
-  # cat ./ip.txt
-  # ххх.ххх.ххх.ххх
+  # The IP address of the AWS instance is copied to the ip.txt file
+  # on the local Terraform system. The ip.txt file contains the public
+  # IP address in the format: xxx.xxx.xxx.xxx
   ##############################################################################
   
   resource "local_file" "ip" {
@@ -374,7 +387,8 @@ vyos.tf
   #connecting to the Ansible control node using SSH connection
 
   ##############################################################################
-  # Steps "SSHconnection1" and "SSHconnection2" need to get file ip.txt from the terraform node and start remotely the playbook of Ansible.
+  # The "SSHconnection1" and "SSHconnection2" steps retrieve ip.txt
+  # from the Terraform node and run the Ansible playbook remotely.
   ##############################################################################
   
   resource "null_resource" "SSHconnection1" {
@@ -386,8 +400,8 @@ vyos.tf
        host = var.host
   }
   
-  #copying the ip.txt file to the Ansible control node from local system 
-
+  # Copy the ip.txt file to the Ansible control node from the local
+  # system
    provisioner "file" {
       source      = "ip.txt"
       destination = "/root/aws/ip.txt"                             # The folder of your Ansible project
@@ -402,7 +416,7 @@ vyos.tf
   	password = var.password
       	host = var.host
   }
-  #command to run Ansible playbook on remote Linux OS
+  # Run Ansible playbook on remote Linux OS
   provisioner "remote-exec" {
       inline = [
   	"cd /root/aws/",
@@ -412,7 +426,7 @@ vyos.tf
   }
 
 
-var.tf
+``var.tf``
 
 .. code-block:: none
 
@@ -436,7 +450,7 @@ var.tf
      sensitive = true
   }
   
-versions.tf
+``versions.tf``
 
 .. code-block:: none
 
@@ -449,7 +463,7 @@ versions.tf
     }
   }
 
-terraform.tfvars
+``terraform.tfvars``
 
 .. code-block:: none
 
@@ -459,8 +473,8 @@ terraform.tfvars
   secret    = ""   # secret_key for AWS
 
 
-Structure of files Ansible for AWS
-----------------------------------
+Structure of files in Ansible for AWS
+-------------------------------------
 
 .. code-block:: none
 
@@ -475,7 +489,7 @@ Structure of files Ansible for AWS
 File contents of Ansible for AWS
 --------------------------------
 
-ansible.cfg
+``ansible.cfg``
 
 .. code-block:: none
 
@@ -485,14 +499,14 @@ ansible.cfg
   private_key_file = /root/aws/awsterraform.pem         # check the name
   remote_user=vyos
 
-mykey.pem
+``mykey.pem``
 
 .. code-block:: none
 
   Copy your key.pem from AWS
 
 
-instance.yml
+``instance.yml``
 
 
 
@@ -500,9 +514,11 @@ instance.yml
 
   ##############################################################################
   # About tasks:
-  # "Wait 300 seconds, but only start checking after 60 seconds" - try to make ssh connection every 60 seconds until 300 seconds
-  # "Configure general settings for the VyOS hosts group" - make provisioning into AWS VyOS node
-  # You have to add all necessary cammans of VyOS under the block "lines:"
+  # "Wait 300 seconds, but only start checking after 60 seconds" -
+  # attempts SSH connection every 60 seconds until 300 seconds
+  # "Configure general settings for the VyOS hosts group" -
+  # provisions the AWS VyOS node
+  # Add all necessary VyOS commands under the "lines:" block
   ##############################################################################
 
 
@@ -525,7 +541,7 @@ instance.yml
             true
 
 
-group_vars/all
+``group_vars/all``
 
 .. code-block:: none
 
@@ -533,15 +549,14 @@ group_vars/all
   ansible_network_os: vyos.vyos.vyos
   ansible_user: vyos
 
-Sourse files for AWS from GIT
------------------------------
+Source files for AWS on GitHub
+------------------------------
 
-All files about the article can be found here_
-
+Find all files referred to on this page in the vyos-automation_ repository.
 
 .. _link: https://developer.hashicorp.com/terraform/intro
 .. _install: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 .. _pair: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html
 .. _group: https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-sg.html
 .. _image: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html
-.. _here: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/AWS_terraform_ansible_single_vyos_instance-main
+.. _vyos-automation: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/AWS_terraform_ansible_single_vyos_instance-main
