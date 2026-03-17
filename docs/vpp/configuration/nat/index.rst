@@ -21,7 +21,7 @@ VPP Dataplane in VyOS supports two types of NAT:
 NAT44
 =====
 
-This type is a classical NAT implementation where you can configure static
+This type is a classic NAT implementation where you can configure static
 and dynamic NAT rules. It supports both source and destination NAT. While the
 configuration may look a bit unusual compared to traditional NAT
 implementations, it provides flexibility in network configurations.
