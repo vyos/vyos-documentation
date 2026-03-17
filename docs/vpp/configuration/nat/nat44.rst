@@ -492,8 +492,8 @@ Port-specific Exclude Rules
 ---------------------------
 
 For more granular control, you can exclude only specific ports and protocols.
-You can combine port and protocol specifications with either local-address or
-external-interface:
+You can combine port and protocol specifications with either ``local-address`` or
+``external-interface``:
 
 **With local address:**
 
