@@ -259,5 +259,5 @@ Best Practices
   and standards compliance.
 * Configure **layer3+4 hash policy** for environments with multiple
   traffic flows.
-* Ensure member interfaces have identical capabilities (speed, duplex,
+* Ensure member interfaces have identical settings (speed, duplex,
   MTU).
