@@ -252,7 +252,7 @@ and public IP addresses. They are essential for:
 * **Destination NAT (DNAT)**: Allowing external hosts to access services in
   the private network.
 * **Server publishing**: Making internal services available from the
-  internet.
+  Internet.
 * **Consistent mappings**: Ensuring the same private IP always maps to the
   same public IP.
 
