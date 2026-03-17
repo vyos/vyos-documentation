@@ -358,7 +358,7 @@ address to an external address configured in a rule.
 
 .. important::
 
-   * Using self-twice-nat option requires you to set the interface
+   * Using ``self-twice-nat`` option requires you to set the interface
      connected to the local network as both inside and outside, because
      both source and destination NAT need to be applied.
    * External IP address used in static rules must belong to one of the
