@@ -95,8 +95,8 @@ Ansible
    You can obtain ``mykey.pem`` by creating a key pair_ in AWS and downloading your ``.pem`` key.
 
 
-Start 
-^^^^^
+Deploy with Terraform
+^^^^^^^^^^^^^^^^^^^^^
 
 
 Type the following commands in terminal on your Terraform instance:

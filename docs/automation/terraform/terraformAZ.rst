@@ -1,69 +1,82 @@
-:lastproofread: 2024-03-03
+:lastproofread: 2026-03-19
 
 .. _terraformAZ:
 
-Deploying VyOS in the Azure cloud
-=================================
+Deploy VyOS on Microsoft Azure
+==============================
 
-With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the Azure cloud. If necessary, the infrastructure can be removed using terraform.
-Also we will make provisioning using Ansible.
+You can use Terraform to quickly deploy VyOS-based infrastructure
+on Microsoft Azure (hereafter referred to as "Azure") and remove infrastructure when it's no longer needed.
+Additionally, you can use Ansible for provisioning.
 
-In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the Azure cloud and make provisioning using Ansible.
+On this page you'll learn how to:
 
-Preparation steps for deploying VyOS on Azure 
----------------------------------------------
+* Create the necessary files for Terraform and Ansible.
+* Use Terraform to create a single instance on Azure and use Ansible for
+  provisioning.
 
-How to create a single instance and install your configuration using Terraform+Ansible+Azure 
-Step by step:
+Prepare to deploy VyOS with Terraform on Azure
+----------------------------------------------
+
+To create a single instance and install your configuration using
+Terraform, Ansible, and Azure, follow these steps:
 
 Azure
+^^^^^
 
-  1 Create an account with Azure
+1. Create an `Azure account <https://azure.microsoft.com/>`__.
 
 Terraform
+^^^^^^^^^
 
 
-  1 Create an UNIX or Windows instance
+1. Create an UNIX or Windows instance.
 
-  2 Download and install Terraform
+2. Download and install Terraform.
 
-  3 Create the folder for example /root/azvyos/
-
-.. code-block:: none
-
- mkdir /root/azvyos
-
-  4 Copy all files into your Terraform project "/root/azvyos" (vyos.tf, var.tf, terraform.tfvars), more detailed see `Structure of files Terrafom for Azure`_
-
-  5 Login with Azure  using the command 
+3. Create the folder for example ``/root/azvyos/``.
 
 .. code-block:: none
 
-   az login
+  mkdir /root/azvyos
 
-2.6 Type the commands :
+4. Copy all files into your Terraform project "/root/azvyos"
+   (``vyos.tf``, ``var.tf``, ``terraform.tfvars``). For more details, see
+   `Structure of files Terraform for Azure <#structure-of-files-in-terraform-for-azure>`_.
 
-.. code-block:: none
+5. Log in to Azure using the command: 
 
-   cd /<your folder> 
-   terraform init
+  .. code-block:: none
+
+    az login
+
+6. Type the following commands to initialize Terraform:
+
+  .. code-block:: none
+
+    cd /<your folder> 
+    terraform init
 
 Ansible
+^^^^^^^
 
 
-  1 Create an UNIX instance whenever you want (local, cloud, and so on)
+1. Create an UNIX instance either locally or in the cloud.
 
-  2 Download and install Ansible
+2. Download and install Ansible
 
-  3 Create the folder for example /root/az/
+3. Create a folder, for example ``/root/az/``.
 
-  4 Copy all files into your Ansible project "/root/az/" (ansible.cfg, instance.yml,"all"), more detailed see `Structure of files Ansible for Azure`_
+4. Copy all files into your Ansible project ``/root/az/`` (``ansible.cfg``,
+   ``instance.yml``, ``all``). For more details, see
+   `Structure of files Ansible for Azure`_
 
 
-Start 
+Deploy with Terraform
+^^^^^^^^^^^^^^^^^^^^^
 
 
-Type the commands on your Terrafom instance:
+Type the following commands on your Terraform instance:
    
 .. code-block:: none
 
@@ -72,27 +85,29 @@ Type the commands on your Terrafom instance:
    terraform apply  
    yes
 
-After executing all the commands you will have your VyOS instance on the Azure cloud with your configuration, it's a very convenient desition.
-If you need to delete the instance please type the command:
+After executing all the commands, your VyOS instance is deployed to 
+Azure with your configuration.
+If you need to delete the instance, type the command:
 
 .. code-block:: none
 
    terraform destroy
    
-Structure of files Terrafom for Azure
--------------------------------------
+Structure of files in Terraform for Azure
+-----------------------------------------
 
 .. code-block:: none
 
  .
  ├── vyos.tf				# The main script
- ├── var.tf					# File for the changing version of Terraform.
- └── terraform.tfvars		# The value of all variables (passwords, login, ip adresses and so on)
+ ├── var.tf				# File for the Terraform version.
+ └── terraform.tfvars		# Values for all variables (passwords,
+                        # login, IP addresses, etc.)
 
-File contents of Terrafom for Azure
------------------------------------
+File contents of Terraform for Azure
+------------------------------------
 
-vyos.tf
+``vyos.tf``
 
 .. code-block:: none
 
@@ -101,18 +116,18 @@ vyos.tf
   # HashiCorp Guide to Using Terraform on Azure
   # This Terraform configuration will create the following:
   # Resource group with a virtual network and subnet
-  # An VyOS server without ssh key (only login+password)
+  # A VyOS server without SSH key (only login+password)
   ##############################################################################
   
-  # Chouse a provider
+  # Choose a provider
   
   provider "azurerm" {
     features {}
   }
   
-  # Create a resource group. In Azure every resource belongs to a 
-  # resource group. 
-  
+  # Create a resource group. In Azure, every resource belongs to a
+  # resource group.
+
   resource "azurerm_resource_group" "azure_vyos" {
     name     = "${var.resource_group}"
     location = "${var.location}"
@@ -126,8 +141,8 @@ vyos.tf
     address_space       = ["${var.address_space}"]
     resource_group_name = "${var.resource_group}"
   }
-  
-  # Build a subnet to run our VMs in.
+
+  # Build a subnet to run your VMs.
   
   resource "azurerm_subnet" "subnet" {
     name                 = "${var.prefix}subnet"
@@ -137,20 +152,21 @@ vyos.tf
   }
   
   ##############################################################################
-  # Build an VyOS VM from the Marketplace
-  # To finde nessesery image use the command:
+  # Build a VyOS VM from the Marketplace.
+  # To find the necessary image, use the command:
   #
   # az vm image list --offer vyos --all
   #
-  # Now that we have a network, we'll deploy an VyOS server.
-  # An Azure Virtual Machine has several components. In this example we'll build
-  # a security group, a network interface, a public ip address, a storage 
-  # account and finally the VM itself. Terraform handles all the dependencies 
-  # automatically, and each resource is named with user-defined variables.
+  # Now that you have a network, you can deploy a VyOS server.
+  # An Azure Virtual Machine has several components. In this example,
+  # you build a security group, a network interface, a public IP
+  # address, a storage account, and finally the VM itself. Terraform
+  # handles all the dependencies automatically, and each resource is
+  # named with user-defined variables.
   ##############################################################################
   
   
-  # Security group to allow inbound access on port 22 (ssh)
+  # Security group to allow inbound access on port 22 (SSH)
   
   resource "azurerm_network_security_group" "vyos-sg" {
     name                = "${var.prefix}-sg"
@@ -194,8 +210,9 @@ vyos.tf
     allocation_method            = "Dynamic"
   }
   
-  # Build a virtual machine. This is a standard VyOS instance from Marketplace.
-  
+  # Build a virtual machine. This is a standard VyOS instance from
+  # Marketplace.
+
   resource "azurerm_virtual_machine" "vyos" {
     name                = "${var.hostname}-vyos"
     location            = "${var.location}"
@@ -204,8 +221,8 @@ vyos.tf
   
     network_interface_ids         = ["${azurerm_network_interface.vyos-nic.id}"]
     delete_os_disk_on_termination = "true"
-  
-  # To finde an information about the plan use the command:
+
+  # To find information about the plan, use the command:
   # az vm image list --offer vyos --all
   
     plan {
@@ -247,27 +264,28 @@ vyos.tf
   output "public_ip_address" {
     value = data.azurerm_public_ip.example.ip_address
   }
-  
-  # IP of AZ instance copied to a file ip.txt in local system
-  
+
+  # IP of AZ instance copied to a file ip.txt in the local system.
+
   resource "local_file" "ip" {
       content  = data.azurerm_public_ip.example.ip_address
       filename = "ip.txt"
   }
-  
-  #Connecting to the Ansible control node using SSH connection
-  
+
+  # Connect to the Ansible control node via SSH
+
   resource "null_resource" "nullremote1" {
-  depends_on = ["azurerm_virtual_machine.vyos"] 
+  depends_on = ["azurerm_virtual_machine.vyos"]
   connection {
    type     = "ssh"
    user     = "root"
    password = var.password
        host = var.host
   }
-  
-  # Copying the ip.txt file to the Ansible control node from local system 
-  
+
+  # Copy the ip.txt file to the Ansible control node from the local
+  # system
+
    provisioner "file" {
       source      = "ip.txt"
       destination = "/root/az/ip.txt"
@@ -282,9 +300,9 @@ vyos.tf
   	password = var.password
       	host = var.host
   }
-  
-  # Command to run ansible playbook on remote Linux OS
-  
+
+  # Run the Ansible playbook on the remote Linux OS
+
   provisioner "remote-exec" {
       
       inline = [
@@ -295,15 +313,14 @@ vyos.tf
   }
 
 
-var.tf
+``var.tf``
 
 .. code-block:: none
 
   ##############################################################################
   # Variables File
   # 
-  # Here is where we store the default values for all the variables used in our
-  # Terraform code.
+  # Default values for all variables used in Terraform code.
   ##############################################################################
   
   variable "resource_group" {
@@ -402,7 +419,7 @@ var.tf
      description = "IP of my Ansible"
   }
 
-terraform.tfvars
+``terraform.tfvars``
 
 .. code-block:: none
 
@@ -425,7 +442,7 @@ Structure of files Ansible for Azure
 File contents of Ansible for Azure
 ----------------------------------
 
-ansible.cfg
+``ansible.cfg``
 
 .. code-block:: none
 
@@ -435,16 +452,18 @@ ansible.cfg
   remote_user=vyos
 
 
-instance.yml
+``instance.yml``
 
 
 .. code-block:: none
 
   ##############################################################################
   # About tasks:
-  # "Wait 300 seconds, but only start checking after 60 seconds" - try to make ssh connection every 60 seconds until 300 seconds
-  # "Configure general settings for the VyOS hosts group" - make provisioning into Azure VyOS node
-  # You have to add all necessary cammans of VyOS under the block "lines:"
+  # "Wait 300 seconds, but only start checking after 60 seconds" - Tries
+  # to make SSH connection every 60 seconds until 300 seconds.
+  # "Configure general settings for the VyOS hosts group" - Provision
+  # the Azure VyOS node.
+  # Add all necessary commands for VyOS under the block "lines:"
   ##############################################################################
 
 
@@ -467,7 +486,7 @@ instance.yml
             true
 
 
-group_vars/all
+``group_vars/all``
 
 .. code-block:: none
 
@@ -478,11 +497,12 @@ group_vars/all
   ansible_user: vyos
   ansible_ssh_pass: Vyos0!
 
-Sourse files for Azure from GIT
+Source files for Azure from Git
 -------------------------------
 
-All files about the article can be found here_
+All files related to this topic can be found in the
+vyos-automation_ repository. 
 
-.. _here: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Azure_terraform_ansible_single_vyos_instance-main
+.. _vyos-automation: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Azure_terraform_ansible_single_vyos_instance-main
 
 
