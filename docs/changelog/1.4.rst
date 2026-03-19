@@ -24,7 +24,7 @@
 
 * :vytask:`T5878`  ``Make the list of SSH server ciphers configurable``
 * :vytask:`T5949`  ``Disable USB autosuspend``
-* :vytask:`T6320`  ``WiFi: Enable support for 6GHz AccesPoints``
+* :vytask:`T6320`  ``WiFi: Enable support for 6GHz AccessPoints``
 * :vytask:`T6423`  ``Require command definition nodes that have an owner to also have a priority``
 * :vytask:`T6424`  ``ipsec: op-mode command to generate client profiles should honor common name of the CA node that signed the server certificate``
 * :vytask:`T6454`  ``Explicitly set the default reverse proxy mode to HTTP``
@@ -60,7 +60,7 @@
 * :vytask:`T6484`  ``Smoketest fails: fastnetmon killed due to OOM``
 * :vytask:`T6503`  ``Command 'restart ssh' not working``
 * :vytask:`T6519`  ``interfaces: 20-to-21 -> migration fails if new system has less ethernet interfaces``
-* :vytask:`T6523`  ``Error: "nft table ip vyos_filter not found" when commiting prometheus-client``
+* :vytask:`T6523`  ``Error: "nft table ip vyos_filter not found" when committing prometheus-client``
 * :vytask:`T6559`  ``vyos-configd should return commit error on config dependency error``
 * :vytask:`T6584`  ``Revert addition of Linux Kernel MT7921 driver``
 * :vytask:`T6593`  ``Release DHCP interface does not work``
@@ -83,7 +83,7 @@
 * :vytask:`T6524`  ``Rewrite "release dhcp interface <interface>" to Python to drop remaining Perl dependencies``
 * :vytask:`T6592`  ``Changing VRF on interface fails``
 * :vytask:`T6594`  ``IPoE-server extended-scripts do not work``
-* :vytask:`T6597`  ``wireless: hostapd occationly gets deactivated via systemd and causes loss in connectivity``
+* :vytask:`T6597`  ``wireless: hostapd occasionally gets deactivated via systemd and causes loss in connectivity``
 * :vytask:`T6598`  ``Unexpected podman version 4.3.1``
 
 1.4.0 (4th June 2024)
@@ -98,7 +98,7 @@
 * :vytask:`T3202`  ``Enable wireguard debug messages by default``
 * :vytask:`T4022`  ``Add package nat-rtsp-dkms``
 * :vytask:`T4393`  ``sstp: add support for configuring host-name (SNI)``
-* :vytask:`T5386`  ``Execute VRRP transition script when `set high-availability disable` is commited``
+* :vytask:`T5386`  ``Execute VRRP transition script when `set high-availability disable` is committed``
 * :vytask:`T5752`  ``Check compatibility of new image tools with XCP-NG images``
 * :vytask:`T6293`  ``add Mediatek MT7921 to defconfig``
 * :vytask:`T6339`  ``Display the flavor name and build comment in "show version"``
@@ -318,7 +318,7 @@
 * :vytask:`T6073`  ``Conntrack/NAT not being disabled when VRFs are defined``
 * :vytask:`T6074`  ``container: do not allow deleting images which have a container running``
 * :vytask:`T6079`  ``dhcp: migration fails for duplicate static-mapping``
-* :vytask:`T6081`  ``QoS policy shaper target and interval wrong calcuations``
+* :vytask:`T6081`  ``QoS policy shaper target and interval wrong calculations``
 * :vytask:`T6084`  ``OpenNHRP DMVPN configuration file clean after reboot if we have any IPSec configuration``
 * :vytask:`T6086`  ``NAT does not work with network-groups``
 * :vytask:`T6093`  ``Incorrect dhcp-options vendor-class-id regex``

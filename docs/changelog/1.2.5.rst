@@ -29,7 +29,7 @@ Resolved issues
 * :vytask:`T1837` PPPoE unrecognized option 'replacedefaultroute'
 * :vytask:`T1851` wireguard - changing the pubkey on an existing peer seems to
   destroy the running config.
-* :vytask:`T1858` l2tp: Delete depricated outside-nexthop and add gateway-address
+* :vytask:`T1858` l2tp: Delete deprecated outside-nexthop and add gateway-address
 * :vytask:`T1864` Lower IPSec DPD timeout lower limit from 10s -> 2s
 * :vytask:`T1879` Extend Dynamic DNS XML definition value help strings and
   validators
@@ -61,7 +61,7 @@ Resolved issues
 * :vytask:`T2077` ISO build from crux branch is failing
 * :vytask:`T2079` Update Linux Kernel to v4.19.106
 * :vytask:`T2087` Add maxfail 0 option to pppoe configuration.
-* :vytask:`T2100` BGP route adverisement wih checks rib
+* :vytask:`T2100` BGP route adverisement with checks rib
 * :vytask:`T2120` "reset vpn ipsec-peer" doesn't work with named peers
 * :vytask:`T2197` Cant add vif-s interface into a bridge
 * :vytask:`T2228` WireGuard does not allow ports < 1024 to be used

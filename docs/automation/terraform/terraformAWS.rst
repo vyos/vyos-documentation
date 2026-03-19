@@ -290,7 +290,7 @@ Structure of files Terrafom for AWS
  ├── vyos.tf				# The main script
  ├── var.tf					# The file of all variables in "vyos.tf"
  ├── versions.tf			# File for the changing version of Terraform.
- └── terraform.tfvars		# The value of all variables (passwords, login, ip adresses and so on)
+ └── terraform.tfvars		# The value of all variables (passwords, login, ip addresses and so on)
  
 
  
@@ -304,7 +304,7 @@ vyos.tf
 
   ##############################################################################
   # Build an VyOS VM from the Marketplace
-  # To finde nessesery AMI image_ in AWS
+  # To find necessary AMI image_ in AWS
   #
   # In the script vyos.tf we'll use default values (you can chang it as you need)
   # AWS Region = "us-east-1"
@@ -533,7 +533,7 @@ group_vars/all
   ansible_network_os: vyos.vyos.vyos
   ansible_user: vyos
 
-Sourse files for AWS from GIT
+Source files for AWS from GIT
 -----------------------------
 
 All files about the article can be found here_

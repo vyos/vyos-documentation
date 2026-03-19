@@ -974,7 +974,7 @@ Packet Modifications
 ====================
 
 Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
-packets before they are sent out. This feaure provides more flexibility in
+packets before they are sent out. This feature provides more flexibility in
 packet handling.
 
 .. cfgcmd:: set firewall ipv6 prerouting raw rule <1-999999>
@@ -1178,7 +1178,7 @@ Rule-set overview
       SUPPORT                  address_group       VyOS_MANAGEMENT-20       192.168.1.2
                                                    WAN_IN-20
       PHONE_VPN_SERVERS        address_group       WAN_IN-160               10.6.32.2
-      PINGABLE_ADRESSES        address_group       WAN_IN-170               192.168.5.2
+      PINGABLE_ADDRESSES        address_group       WAN_IN-170               192.168.5.2
                                                    WAN_IN-171
       PBX                      ipv6_address_group  IPV6-WAN_IN-100          2001:db8::1
       SERVERS                  ipv6_address_group  IPV6-WAN_IN-110          2001:db8::2

@@ -38,7 +38,7 @@ Google Cloud
    :align: center
    :alt: Network Topology Diagram
 
-The .JSON file download automaticly after creating and will look like:
+The .JSON file download automatically after creating and will look like:
 
 .. image:: /_static/images/json.png
    :width: 50%
@@ -699,7 +699,7 @@ group_vars/all
   ansible_user: vyos
   ansible_ssh_pass: vyos
 
-Sourse files for Google Cloud from GIT
+Source files for Google Cloud from GIT
 --------------------------------------
 
 All files about the article can be found here_

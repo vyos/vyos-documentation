@@ -40,7 +40,7 @@ In an **address group** a single IP address or IP address range is defined.
 Remote Groups
 ==============
 
-A **remote-group** takes an argument of a URL hosting a linebreak-deliminated
+A **remote-group** takes an argument of a URL hosting a linebreak-delimited
 list of IPv4 and/or IPv6 addresses, CIDRs and ranges. VyOS will pull this list periodicity
 according to the frequency defined in the firewall **resolver-interval** and load
 matching entries into the group for use in rules. The list will be cached in

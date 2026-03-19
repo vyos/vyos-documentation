@@ -89,7 +89,7 @@ Structure of files Terrafom for vSphere
  ├── vyos.tf				# The main script
  ├── versions.tf			# File for the changing version of Terraform.
  ├── var.tf					# File for the changing version of Terraform.
- └── terraform.tfvars		# The value of all variables (passwords, login, ip adresses and so on)
+ └── terraform.tfvars		# The value of all variables (passwords, login, ip addresses and so on)
 
 
 File contents of Terrafom for vSphere
@@ -280,7 +280,7 @@ var.tf
   }
   
   variable "host" {
-    description = "name if yor host"
+    description = "name of your host"
     type        = string
   }
   
@@ -290,7 +290,7 @@ var.tf
   }
   
   variable "url_ova" {
-    description = "the URL to .OVA file or cloude store"
+    description = "the URL to .OVA file or cloud store"
     type        = string
   }
   
@@ -391,7 +391,7 @@ group_vars/all
   ansible_ssh_pass: 12345678
 
 
-Sourse files for vSphere from GIT
+Source files for vSphere from GIT
 ---------------------------------
 
 All files about the article can be found here_

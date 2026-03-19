@@ -229,7 +229,7 @@
 * :vytask:`T2051`  ``Throughput anomalies``
 * :vytask:`T2250`  ``vyos-build "make iso" error if configure was ran outside of the docker container``
 * :vytask:`T3020`  ``The "scp" example is wrong in the bash-completion for "set system config-management commit-archive location"``
-* :vytask:`T3045`  ``Changes to Conntrack-Sync don't apply correctly (Mutlicast->UDP)``
+* :vytask:`T3045`  ``Changes to Conntrack-Sync don't apply correctly (Multicast->UDP)``
 * :vytask:`T3940`  ``DHCP client does not remove IP address when stopped by the 02-vyos-stopdhclient hook``
 * :vytask:`T4146`  ``Nginx should not listen on port 80``
 * :vytask:`T4328`  ``Large MTU on 1.3.1-S1``
@@ -382,7 +382,7 @@
 * :vytask:`T2189`  ``Adding a large port-range will take ~ 20 minutes to commit``
 * :vytask:`T2516`  ``vyos-container: cannot configure ethernet interface``
 * :vytask:`T2838`  ``Ethernet device names changing, multiple hw-id being added``
-* :vytask:`T3852`  ``DHCP client issue - interface has two dhclient processes when link is unpluged and then plug again``
+* :vytask:`T3852`  ``DHCP client issue - interface has two dhclient processes when link is unplugged and then plug again``
 * :vytask:`T4117`  ``Does not possible to configure PoD/CoA for L2TP vpn``
 * :vytask:`T4153`  ``Monitor bandwidth-test initiate not working``
 * :vytask:`T4177`  ``Strip-private doesn't work for service monitoring``
@@ -590,7 +590,7 @@
 * :vytask:`T4093`  ``SNMPv3 snmpd.conf generation bug``
 * :vytask:`T4101`  ``commit-archive: Use of uninitialized value $source_address in concatenation``
 * :vytask:`T4104`  ``RAID1: "add raid md0 member sda1" does not restore boot sector``
-* :vytask:`T4110`  ``[IPV6-SSH/DNS}  enable IPv6 link local adresses as listen-address %eth0``
+* :vytask:`T4110`  ``[IPV6-SSH/DNS}  enable IPv6 link local addresses as listen-address %eth0``
 * :vytask:`T4141`  ``Set high-availability vrrp sync-group without members error``
 * :vytask:`T4142`  ``Input ifbX interfaces not displayed in op-mode``
 * :vytask:`T4152`  ``NHRP shortcut-target holding-time does not work``
@@ -608,7 +608,7 @@
 * :vytask:`T4234`  ``Show firewall partly broken in 1.3.x``
 * :vytask:`T4237`  ``Conntrack-sync error - error adding listen-address command``
 * :vytask:`T4240`  ``Cannot add wlan0 to bridge via configure``
-* :vytask:`T4241`  ``ocserv openconnect looks broken in recent bulds of 1.3 Equuleus``
+* :vytask:`T4241`  ``ocserv openconnect looks broken in recent builds of 1.3 Equuleus``
 * :vytask:`T4242`  ``ethernet speed/duplex can never be switched back to auto/auto``
 * :vytask:`T4258`  ``[DHCP-SERVER]  error parameter on Failover``
 * :vytask:`T4259`  ``The conntrackd daemon can be started wrongly``
@@ -646,7 +646,7 @@
 **New features and improvements**
 
 
-* :vytask:`T3704`  ``Add ability to interact with Areca RAID adapers``
+* :vytask:`T3704`  ``Add ability to interact with Areca RAID adapters``
 * :vytask:`T3745`  ``op-mode IPSec show vpn ipse sa sorting``
 * :vytask:`T3912`  ``Use a more informative default post-login banner``
 * :vytask:`T3945`  ``Add route-map for bgp aggregate-address``
@@ -899,7 +899,7 @@
 * :vytask:`T3786`  ``GRE tunnel source address 0.0.0.0 error``
 * :vytask:`T3788`  ``Keys are not allowed with ipip and sit tunnels``
 * :vytask:`T3790`  ``Does not possible to configure PPTP static ip-address to users``
-* :vytask:`T3792`  ``login: A hypen present in a username from "system login user" is replaced by an underscore``
+* :vytask:`T3792`  ``login: A hyphen present in a username from "system login user" is replaced by an underscore``
 * :vytask:`T3797`  ``show interface errors with vrrp configuration``
 * :vytask:`T3802`  ``Commit fails if ethernet interface doesn't support flow control``
 * :vytask:`T3805`  ``OpenVPN insufficient privileges for rtnetlink when closing TUN/TAP interface``

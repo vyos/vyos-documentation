@@ -554,7 +554,7 @@ Commit-confirm
 **************
 
 For the previous two endpoints discussed, a ``commit`` command is implicit
-following a succesful request operation (``set | delete | load | merge``, or
+following a successful request operation (``set | delete | load | merge``, or
 a list of ``set`` and ``delete`` operations).  One can instead request a
 ``commit-confirm`` command by including the field ``confirm_time`` of type
 int > 0. An example follows, in the alternative JSON format, for brevity,

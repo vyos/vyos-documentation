@@ -73,7 +73,7 @@
 
 * :vytask:`T6168` ``(bug): add system image does not set default boot to current console type in compatibility mode``
 * :vytask:`T6243` ``(bug): Update vyos-http-api-tools for package idna security advisory``
-* :vytask:`T6154` ``(enhancment): Installer should ask for password twice``
+* :vytask:`T6154` ``(enhancement): Installer should ask for password twice``
 * :vytask:`T5966` ``(default): Adjust dynamic dns configuration address subpath to be more intuitive and other op-mode adjustments``
 * :vytask:`T5723` ``(default): mdns repeater: Always reload systemd daemon before applying changes``
 * :vytask:`T5722` ``(bug): Failing to add route in failover if gateway not in the same interface network``
@@ -166,7 +166,7 @@
 2024-04-06
 ==========
 
-* :vytask:`T6203` ``(enhancment): Remove obsoleted xml lib``
+* :vytask:`T6203` ``(enhancement): Remove obsoleted xml lib``
 * :vytask:`T6202` ``(bug): Multi-Protocol BGP is broken by 6PE patch in upstream FRR 9.1``
 
 
@@ -366,7 +366,7 @@
 2024-03-02
 ==========
 
-* :vytask:`T6081` ``(bug): QoS policy shaper target and interval wrong calcuations``
+* :vytask:`T6081` ``(bug): QoS policy shaper target and interval wrong calculations``
 
 
 2024-02-29
@@ -554,7 +554,7 @@
 
 * :vytask:`T5995` ``(bug): Kernel NIC-drivers for Huawei NICs are not properly enabled``
 * :vytask:`T5978` ``(bug): ethernet: hw-tc-offload does not actually get enabled on the NIC``
-* :vytask:`T5979` ``(enhancment): Add configurable kernel boot parameters``
+* :vytask:`T5979` ``(enhancement): Add configurable kernel boot parameters``
 * :vytask:`T5973` ``(bug): vrf: RTNETLINK answers: File exists``
 * :vytask:`T5967` ``(bug): Multi-hop BFD connections can't be established; please add minimum-ttl option.``
 * :vytask:`T5619` ``(default): Update the Intel ixgbe driver due to issues with Intel X533``
@@ -611,7 +611,7 @@
 * :vytask:`T5799` ``(bug): vyos unbootable after 1.4-rolling-202308240020 to 1.5-rolling-202312010026 upgrade``
 * :vytask:`T5787` ``(bug): dhcp-server allows duplicate static-mapping for the same IP address``
 * :vytask:`T5912` ``(bug): DHCP Static mapping don't work on every first lease``
-* :vytask:`T5692` ``(enhancment): NTP leap smear``
+* :vytask:`T5692` ``(enhancement): NTP leap smear``
 * :vytask:`T5954` ``(feature): Enable nvme_hwmon and drivetemp in KERNEL``
 
 
@@ -838,7 +838,7 @@
 ==========
 
 * :vytask:`T5823` ``(feature): Protocol BGP add default values for config dictionary``
-* :vytask:`T5798` ``(enhancment): reverse-proxy load-balancing service should support multiple certificates for frontend``
+* :vytask:`T5798` ``(enhancement): reverse-proxy load-balancing service should support multiple certificates for frontend``
 
 
 2023-12-19
@@ -889,7 +889,7 @@
 2023-12-12
 ==========
 
-* :vytask:`T5815` ``(enhancment): Add load_config module``
+* :vytask:`T5815` ``(enhancement): Add load_config module``
 
 
 2023-12-11
@@ -916,8 +916,8 @@
 2023-12-08
 ==========
 
-* :vytask:`T5782` ``(enhancment): Use a single config mode script for https and http-api``
-* :vytask:`T5768` ``(enhancment): Remove auxiliary http-api.conf for simplification of http-api config mode script``
+* :vytask:`T5782` ``(enhancement): Use a single config mode script for https and http-api``
+* :vytask:`T5768` ``(enhancement): Remove auxiliary http-api.conf for simplification of http-api config mode script``
 
 
 2023-12-04
@@ -950,7 +950,7 @@
 2023-11-25
 ==========
 
-* :vytask:`T5655` ``(bug): commit-archive: Ctrl+C should not eror out with stack trace, signal should be cought``
+* :vytask:`T5655` ``(bug): commit-archive: Ctrl+C should not error out with stack trace, signal should be cought``
 
 
 2023-11-24
@@ -1007,7 +1007,7 @@
 * :vytask:`T5677` ``(bug): show lldp neighbors generates TypeError when neighbor has no `descr```
 * :vytask:`T5728` ``(bug): Improve compatibility between OpenVPN on VyOS 1.5 and OpenVPN Connect Client``
 * :vytask:`T5732` ``(bug): generate firewall rule-resequence drops geoip country-code from output``
-* :vytask:`T5661` ``(enhancment): Add show show ssh dynamic-protection attacker and show log ssh dynamic-protection``
+* :vytask:`T5661` ``(enhancement): Add show show ssh dynamic-protection attacker and show log ssh dynamic-protection``
 
 
 2023-11-13
@@ -1225,8 +1225,8 @@
 ==========
 
 * :vytask:`T5602` ``(feature): For reverse-proxy type of load-balancing feature, support "backup" option in backends configuration``
-* :vytask:`T5609` ``(enhancment): Add util to get drive device name from id``
-* :vytask:`T5608` ``(enhancment): Rewrite add/delete raid member to Python and remove from vyatta-op``
+* :vytask:`T5609` ``(enhancement): Add util to get drive device name from id``
+* :vytask:`T5608` ``(enhancement): Rewrite add/delete raid member to Python and remove from vyatta-op``
 * :vytask:`T5607` ``(bug): Adjust RAID smoketest for non-deterministic SCSI device probing``
 
 
@@ -1253,7 +1253,7 @@
 2023-09-15
 ==========
 
-* :vytask:`T5587` ``(bug): Firwall can not pass the smoketest``
+* :vytask:`T5587` ``(bug): Firewall can not pass the smoketest``
 * :vytask:`T5581` ``(feature): Add "show ip nht" op-mode command (IPv4 nexthop tracking table)``
 
 

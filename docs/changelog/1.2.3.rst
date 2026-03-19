@@ -10,7 +10,7 @@ New features
 * :vytask:`T1524` "set service dns forwarding allow-from <IPv4 net|IPv6 net>"
   option for limiting queries to specific client networks
 * :vytask:`T1503` Functions for checking if a commit is in progress
-* :vytask:`T1543` "set system contig-mangement commit-archive source-address"
+* :vytask:`T1543` "set system contig-management commit-archive source-address"
   option
 * :vytask:`T1554` Intel NIC drivers now support receive side scaling and
   multiqueue

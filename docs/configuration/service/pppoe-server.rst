@@ -113,7 +113,7 @@ to a single source IP e.g. the loopback interface.
 .. cfgcmd:: set service pppoe-server authentication radius
    source-address <address>
 
-  Source IPv4 address used in all RADIUS server queires.
+  Source IPv4 address used in all RADIUS server queries.
 
 .. note:: The ``source-address`` must be configured on one of VyOS interface.
    Best practice would be a loopback or dummy interface.
@@ -182,7 +182,7 @@ RADIUS advanced options
 .. cfgcmd:: set service pppoe-server authentication radius
    source-address <address>
 
-  Source IPv4 address used in all RADIUS server queires.
+  Source IPv4 address used in all RADIUS server queries.
 
 .. cfgcmd:: set service pppoe-server authentication radius
    rate-limit attribute <attribute>
@@ -222,7 +222,7 @@ IPv6 address will be allocated from a predefined IPv6 pool ``prefix``
 whose name equals the attribute value.
 
 If the RADIUS server sends the attribute ``Delegated-IPv6-Prefix-Pool``,
-IPv6 delegation pefix will be allocated from a predefined IPv6 pool ``delegate``
+IPv6 delegation prefix will be allocated from a predefined IPv6 pool ``delegate``
 whose name equals the attribute value.
 
 .. note:: ``Stateful-IPv6-Address-Pool`` and ``Delegated-IPv6-Prefix-Pool``
@@ -373,7 +373,7 @@ IPv6
 .. cfgcmd:: set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME>
    prefix <address> mask <number-of-bits>
 
-  Use this comand to set the IPv6 address pool from which an PPPoE client
+  Use this command to set the IPv6 address pool from which an PPPoE client
   will get an IPv6 prefix of your defined length (mask) to terminate the
   PPPoE endpoint at their side. The mask length can be set from 48 to 128
   bit long, the default value is 64.

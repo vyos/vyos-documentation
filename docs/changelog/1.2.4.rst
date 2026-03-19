@@ -15,7 +15,7 @@ Resolved issues
 * :vytask:`T1351` accel-pppoe adding CIDR based IP pool option
 * :vytask:`T1391` In route-map set community additive
 * :vytask:`T1394` syslog systemd and host_name.py race condition
-* :vytask:`T1401` Copying files with the FTP protocol fails if the passwor
+* :vytask:`T1401` Copying files with the FTP protocol fails if the password
   contains special characters
 * :vytask:`T1421` OpenVPN client push-route stopped working, needs added quotes
   to fix
@@ -63,7 +63,7 @@ Resolved issues
 * :vytask:`T1809` Wireless: SSID scan does not work in AP mode
 * :vytask:`T1811` Upgrade from 1.1.8: Config file migratio
   failed: module=l2tp
-* :vytask:`T1812` DHCP: hostnames of clients not resolving afte
+* :vytask:`T1812` DHCP: hostnames of clients not resolving after
   update v1.2.3 -> 1.2-rolling
 * :vytask:`T1819` Reboot kills SNMPv3 configuration
 * :vytask:`T1822` Priority inversion wireless interface dhcpv6
@@ -71,7 +71,7 @@ Resolved issues
 * :vytask:`T1836` import-conf-mode-commands in vyos-1x/scripts fails
   to create an xml
 * :vytask:`T1839` LLDP shows "VyOS unknown" instead of "VyOS"
-* :vytask:`T1841` PPP ipv6-up.d direcotry missing
+* :vytask:`T1841` PPP ipv6-up.d directory missing
 * :vytask:`T1893` igmp-proxy: Do not allow adding unknown interface
 * :vytask:`T1903` Implementation udev predefined interface naming
 * :vytask:`T1904` update eth1 and eth2 link files for the vep4600

@@ -6,7 +6,7 @@
 Resolved issues
 ---------------
 
-VyOS 1.2.6 release was found to be suspectible to CVE-2020-10995. It's a low-
+VyOS 1.2.6 release was found to be susceptible to CVE-2020-10995. It's a low-
 impact vulnerability in the PowerDNS recursor that allows an attacker to cause
 performance degradation via a specially crafted authoritative DNS server reply.
 
@@ -83,7 +83,7 @@ Resolved issues
 * :vytask:`T2482` Update PowerDNS recursor to 4.3.1 for CVE-2020-10995
 * :vytask:`T2517` vyos-container: link_filter: No such file or directory
 * :vytask:`T2526` Wake-On-Lan CLI implementation
-* :vytask:`T2528` "update dns dynamic" throws FileNotFoundError excepton
+* :vytask:`T2528` "update dns dynamic" throws FileNotFoundError exception
 * :vytask:`T2536` "show log dns forwarding" still refers to dnsmasq
 * :vytask:`T2538` Update Intel NIC drivers to recent release (preparation for
   Kernel >=5.4)

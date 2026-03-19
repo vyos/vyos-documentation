@@ -87,7 +87,7 @@ Structure of files Terrafom for Azure
  .
  ├── vyos.tf				# The main script
  ├── var.tf					# File for the changing version of Terraform.
- └── terraform.tfvars		# The value of all variables (passwords, login, ip adresses and so on)
+ └── terraform.tfvars		# The value of all variables (passwords, login, ip addresses and so on)
 
 File contents of Terrafom for Azure
 -----------------------------------
@@ -138,7 +138,7 @@ vyos.tf
   
   ##############################################################################
   # Build an VyOS VM from the Marketplace
-  # To finde nessesery image use the command:
+  # To find necessary image use the command:
   #
   # az vm image list --offer vyos --all
   #
@@ -205,7 +205,7 @@ vyos.tf
     network_interface_ids         = ["${azurerm_network_interface.vyos-nic.id}"]
     delete_os_disk_on_termination = "true"
   
-  # To finde an information about the plan use the command:
+  # To find an information about the plan use the command:
   # az vm image list --offer vyos --all
   
     plan {
@@ -478,7 +478,7 @@ group_vars/all
   ansible_user: vyos
   ansible_ssh_pass: Vyos0!
 
-Sourse files for Azure from GIT
+Source files for Azure from GIT
 -------------------------------
 
 All files about the article can be found here_

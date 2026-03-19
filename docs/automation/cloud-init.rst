@@ -328,9 +328,9 @@ vyos-commands. For example:
      - set interfaces ethernet eth0 address '198.51.100.2/30'
      - set interfaces ethernet eth0 description 'WAN - ISP01'
      - set interfaces ethernet eth1 address '192.168.25.1/24'
-     - set interfaces ethernet eth1 description 'Comming through VLAN 25'
+     - set interfaces ethernet eth1 description 'Coming through VLAN 25'
      - set interfaces ethernet eth2 address '192.168.26.1/24'
-     - set interfaces ethernet eth2 description 'Comming through VLAN 26'
+     - set interfaces ethernet eth2 description 'Coming through VLAN 26'
      - set protocols static route 0.0.0.0/0 next-hop '198.51.100.1'
 
 **network-config** file only has configuration that disables the automatic
@@ -403,7 +403,7 @@ On proxmox server:
    ## Import seed.iso for cloud init
    qm set 555 --ide2 media=cdrom,file=local:iso/seed.iso
    
-   ## Since this server has 1 nic, lets add network intefaces (vlan 25 and 26)
+   ## Since this server has 1 nic, lets add network interfaces (vlan 25 and 26)
    qm set 555 --net1 virtio,bridge=vmbr0,firewall=1,tag=25
    qm set 555 --net2 virtio,bridge=vmbr0,firewall=1,tag=26
    

@@ -28,7 +28,7 @@ Let's assume we have two DHCP WAN interfaces and one LAN (eth2):
 
 .. note::
 
-    WAN Load Balacing should not be used when dynamic routing protocol is
+    WAN Load Balancing should not be used when dynamic routing protocol is
     used/needed. This feature creates customized routing tables and firewall
     rules, that makes it incompatible to use with routing protocols.
 
