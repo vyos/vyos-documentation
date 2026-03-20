@@ -271,7 +271,5 @@ IPv6 Blackhole Routes
 Alternate Routing Tables
 ************************
 
-TBD
-
 Alternate routing tables are used with policy based routing by utilizing
 :ref:`vrf`.
