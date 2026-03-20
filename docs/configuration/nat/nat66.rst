@@ -4,6 +4,9 @@
 NAT66(NPTv6)
 ############
 
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 :abbr:`NPTv6 (IPv6-to-IPv6 Network Prefix Translation)` is an address 
 translation technology based on IPv6 networks, used to convert an IPv6 
 address prefix in an IPv6 message into another IPv6 address prefix. 

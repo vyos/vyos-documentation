@@ -2,6 +2,9 @@
 Site-to-site
 ============
 
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 OpenVPN is popular for client-server setups, but its site-to-site mode is less 
 common and often not supported by router appliances. Despite limited support, 
 it is effective for quickly establishing tunnels between routers.

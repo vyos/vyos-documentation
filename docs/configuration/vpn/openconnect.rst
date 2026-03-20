@@ -4,6 +4,9 @@
 OpenConnect
 ###########
 
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 OpenConnect-compatible server feature has been available since Equuleus (1.3).
 Openconnect VPN supports SSL connection and offers full network access. SSL VPN
 network extension connects the end-user system to the corporate network with

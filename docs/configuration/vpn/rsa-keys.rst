@@ -2,6 +2,10 @@
 ########
 RSA-Keys
 ########
+
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 RSA can be used for services such as key exchanges and for encryption purposes.
 To make IPSec work with dynamic address on one/both sides, we will have to use
 RSA keys for authentication. They are very fast and easy to setup.
