@@ -21,14 +21,14 @@ to clear interface counters
   # clear specific interface
   vyos@vyos:~$ clear interface ethernet eth0 counters
 
-The command follow the same logic as the ``set`` command in configuration mode.
+The command follows the same logic as the ``set`` command in configuration mode.
 
 .. code-block:: none
 
-  # clear all counters of a interface type
+  # clear all counters of an interface type
   vyos@vyos:~$ clear interface <interface_type> counters
-  # clear counter of a interface in interface_type
-  vyos@vyos:~$ clear interface <interface_type> <interace_name> counters
+  # clear counter of an interface in interface_type
+  vyos@vyos:~$ clear interface <interface_type> <interface_name> counters
 
 
 to clear counters on firewall rulesets or single rules

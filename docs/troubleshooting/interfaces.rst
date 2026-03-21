@@ -24,7 +24,7 @@ your MAC addresses have changed.
 
   .. code-block:: none
 
-     set interfaces eth0 hw-id 00:0c:29:da:a4:fe
+     set interfaces ethernet eth0 hw-id 00:0c:29:da:a4:fe
 
   If it is a VM, go into the settings of the host and set the MAC address to
   the settings found in the config.boot file. You can also set the MAC to

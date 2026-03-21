@@ -34,8 +34,7 @@ These are the boot steps for VyOS 1.2
      ``/config/scripts/post-upgrade.d``
   6. Starts ``rl-system`` and ``firewall``
   7. Mounts the ``/boot`` partition
-  8. The boot configuration file is then applied by ``/opt/vyatta/sbin/
-     vyatta-boot-config-loader/opt/vyatta/etc/config/config.boot``
+  8. The boot configuration file is then applied by ``/opt/vyatta/sbin/vyatta-boot-config-loader/opt/vyatta/etc/config/config.boot``
 
     1. The config loader script writes log entries to
        ``/var/log/vyatta-config-loader.log``

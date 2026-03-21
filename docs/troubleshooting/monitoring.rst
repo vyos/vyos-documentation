@@ -58,7 +58,7 @@ command, replacing `<name>` with your chosen interface.
   0 packets dropped by kernel
   vyos@vyos:~$
 
-To quit monitoring, press `Ctrl-c` and you'll be returned to the VyOS command
+To quit monitoring, press :kbd:`Ctrl-C` and you'll be returned to the VyOS command
 prompt.
 
 Traffic can be filtered and saved.
@@ -76,14 +76,13 @@ Traffic can be filtered and saved.
 Interface Bandwidth Usage
 *************************
 
-to take a quick view on the used bandwidth of an interface use the ``monitor
-bandwidth`` command
+To quickly view the bandwidth usage of an interface, use the ``monitor bandwidth`` command:
 
 .. code-block:: none
 
   vyos@vyos:~$ monitor bandwidth interface eth0
 
-show the following:
+This shows the following:
 
 .. code-block:: none
 

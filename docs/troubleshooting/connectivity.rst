@@ -14,7 +14,7 @@ section and are omitted from the output here):
 .. opcmd:: ping <destination>
 
    Send ICMP echo requests to destination host. There are multiple options to
-   ping, inkl. VRF support.
+   ping, including VRF support.
 
    .. code-block:: none
 
