@@ -19,7 +19,7 @@
 **Files:** All under `docs/` prefix.
 - Modify: `automation/command-scripting.rst`, `automation/terraform/terraformAWS.rst`, `automation/terraform/terraformAZ.rst`, `automation/terraform/terraformGoogle.rst`, `automation/terraform/terraformvSphere.rst`, `automation/terraform/terraformvyos.rst`, `automation/vyos-ansible.rst`, `automation/vyos-govyos.rst`, `automation/vyos-napalm.rst`, `automation/vyos-netmiko.rst`, `automation/vyos-pyvyos.rst`, `automation/vyos-salt.rst`, `configexamples/firewall.rst`, `configexamples/index.rst`, `configexamples/wan-load-balancing.rst`, `configuration/highavailability/index.rst`, `configuration/interfaces/openvpn-examples.rst`, `configuration/interfaces/tunnel.rst`, `configuration/loadbalancing/wan.rst`, `configuration/service/mdns.rst`, `configuration/vpn/ipsec/remoteaccess_ipsec.rst`, `installation/update.rst`, `vpp/configuration/ipfix.rst`
 
-These files use `====` underline-only for their first heading. The fix is to add a `####` overline above the title and replace the `====` underline with `####`, matching the title length.
+These files use `====` underline-only for their first heading. The fix is to add an overline of `#` characters repeated to match the title length and replace the `====` underline with `#` characters repeated to that same length.
 
 **Pattern — before:**
 ```rst
@@ -37,7 +37,6 @@ Command Scripting
 - [ ] **Step 1: Create feature branch**
 
 ```bash
-cd /Users/syncer/GitHub/vyos-documentation
 git checkout -b fix/docs-mechanical-cleanup current
 ```
 
@@ -48,7 +47,7 @@ For each file: read the first heading, add a `#` overline of the same length as 
 - [ ] **Step 3: Verify no RST syntax errors**
 
 ```bash
-cd /Users/syncer/GitHub/vyos-documentation/docs
+cd docs
 python3 -c "
 import subprocess, sys
 result = subprocess.run(['python3', '-m', 'sphinx', '-b', 'html', '-W', '--keep-going', '.', '_build/verify'], capture_output=True, text=True, timeout=300)
@@ -147,7 +146,7 @@ For each file, read it, identify tab characters, and replace with appropriate sp
 - [ ] **Step 2: Verify no tabs remain**
 
 ```bash
-grep -rP '\t' /Users/syncer/GitHub/vyos-documentation/docs/ --include='*.rst' -l
+grep -r $'\t' docs/ --include='*.rst' -l
 ```
 
 Expected: no output (no files with tabs).

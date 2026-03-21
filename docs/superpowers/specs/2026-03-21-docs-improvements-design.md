@@ -10,7 +10,7 @@
 
 ### Heading Hierarchy (35 files)
 
-Every RST file must start with `#####` (overline + underline) as its first heading. Fix 35 files that use `=`, `*`, or `-` instead.
+Every RST file must use `#` as the adornment character for its first heading, with both an overline and an underline of `#` characters that are at least as long as the heading text. Fix 35 files that currently use `=`, `*`, or `-` as the first heading adornment instead.
 
 **Affected files:**
 
