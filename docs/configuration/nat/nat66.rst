@@ -154,8 +154,9 @@ R2:
   set service router-advert interface br1 prefix ::/0
 
 
-Use the following topology to translate internal user local addresses (``fc::/7``)
-to DHCPv6-PD provided prefixes from an ISP connected to a VyOS HA pair.
+Use the following topology to translate internal user local addresses
+(``fc::/7``) to DHCPv6-PD provided prefixes from an ISP connected to
+a VyOS HA pair.
 
 .. figure:: /_static/images/vyos_1_5_nat66_dhcpv6_wdummy.png
    :alt: VyOS NAT66 DHCPv6 using a dummy interface

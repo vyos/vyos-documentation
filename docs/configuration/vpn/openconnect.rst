@@ -90,7 +90,9 @@ You can configure users to be authenticated by certificate by setting the authen
 
 .. start_vyoslinter
 
-The user's certificate must be signed by the certificate authority defined in the configuration for it to be validated for authentication.
+The user's certificate must be signed by the certificate authority
+defined in the configuration for it to be validated for
+authentication.
 
 .. code-block:: none
 

@@ -9,7 +9,8 @@ Ansible example
 Setting up Ansible on a server running the Debian operating system.
 ===================================================================
 
-In this example, we will set up a simple use of Ansible to configure multiple VyoS routers.
+In this example, we will set up a simple use of Ansible to configure
+multiple VyoS routers.
 We have four pre-configured routers with this configuration:
 
 Using the general schema for example:
@@ -213,4 +214,5 @@ The simple way without configuration of the hostname (one task for all routers):
     vyos9                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     
 
-In the next chapter of the example, we'll use Ansible with jinja2 templates and variables.
+In the next chapter of the example, we'll use Ansible with jinja2
+templates and variables.
