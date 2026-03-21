@@ -97,10 +97,10 @@ Structure of files Terrafom for vSphere
 .. code-block:: none
 
  .
- ├── vyos.tf				# The main script
- ├── versions.tf			# File for the changing version of Terraform.
- ├── var.tf					# File for the changing version of Terraform.
- └── terraform.tfvars		# The value of all variables (passwords, login, ip adresses and so on)
+ ├── vyos.tf           # The main script
+ ├── versions.tf       # File for the changing version of Terraform.
+ ├── var.tf            # File for the changing version of Terraform.
+ └── terraform.tfvars  # The value of all variables
 
 
 File contents of Terrafom for vSphere

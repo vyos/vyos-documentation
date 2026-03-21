@@ -646,7 +646,8 @@ below:
        }
    }
 
-For a detailed example, refer to :doc:`OpenVPN with LDAP</configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
+For a detailed example, refer to :doc:`OpenVPN with LDAP
+</configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
 
 Multi-factor authentication
 ===========================
