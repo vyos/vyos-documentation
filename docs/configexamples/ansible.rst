@@ -10,7 +10,7 @@ Setting up Ansible on a server running the Debian operating system.
 ===================================================================
 
 In this example, we will set up a simple use of Ansible to configure
-multiple VyoS routers.
+multiple VyOS routers.
 We have four pre-configured routers with this configuration:
 
 Using the general schema for example:
@@ -102,22 +102,21 @@ Add a simple playbook with the tasks for each router:
 .. code-block:: none
 
     # nano /root/main.yml
-    
+
     ---
     - hosts: vyos_hosts
-    gather_facts: 'no'
-    tasks:
+      gather_facts: 'no'
+      tasks:
         - name: Configure general settings for the vyos hosts group
-        vyos_config:
+          vyos_config:
             lines:
-            - set system name-server 192.0.2.1
-            - set interfaces ethernet eth0 description '#WAN#'
-            - set interfaces ethernet eth1 description '#LAN#'
-            - set interfaces ethernet eth2 disable
-            - set interfaces ethernet eth3 disable
-            - set system host-name {{ inventory_hostname }}
-            save:
-            true
+              - set system name-server 192.0.2.1
+              - set interfaces ethernet eth0 description '#WAN#'
+              - set interfaces ethernet eth1 description '#LAN#'
+              - set interfaces ethernet eth2 disable
+              - set interfaces ethernet eth3 disable
+              - set system host-name {{ inventory_hostname }}
+            save: true
     
 Start the playbook:
 ===================
@@ -179,21 +178,18 @@ The simple way without configuration of the hostname (one task for all routers):
     # nano /root/main_v2.yml
     ---
     - hosts: vyos_hosts_group
-    
-    connection: network_cli
-    gather_facts: 'no'
-    
-    tasks:
+      connection: network_cli
+      gather_facts: 'no'
+      tasks:
         - name: Configure remote vyos_hosts_group
-        vyos_config:
+          vyos_config:
             lines:
-            - set system name-server 192.0.2.1
-            - set interfaces ethernet eth0 description WAN
-            - set interfaces ethernet eth1 description LAN
-            - set interfaces ethernet eth2 disable
-            - set interfaces ethernet eth3 disable
-            save:
-            true
+              - set system name-server 192.0.2.1
+              - set interfaces ethernet eth0 description WAN
+              - set interfaces ethernet eth1 description LAN
+              - set interfaces ethernet eth2 disable
+              - set interfaces ethernet eth3 disable
+            save: true
           
 .. code-block:: none
           
