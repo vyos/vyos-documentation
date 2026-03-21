@@ -87,13 +87,7 @@ VyOS User Guide
    :hidden:
    :caption: Development
 
-   contributing/build-vyos
-   contributing/development
-   contributing/cla
-   contributing/issues-features
-   contributing/upstream-packages
-   contributing/debugging
-   contributing/testing
+   contributing/index
 
 
 .. toctree::
