@@ -21,7 +21,7 @@ VyOS User Guide
 
       Read about how to install VyOS on
       :ref:`Bare Metal<installation/install:installation>`
-      or in a :ref:`Virtual Environment <installation/virtual/index:Virtual Environments>`
+      or in a :ref:`VM <installation/virtual/index:Virtual Environments>`
       and how to use an image with the usual
       :ref:`cloud<installation/cloud/index:Cloud Environments>`
       providers
@@ -48,7 +48,7 @@ VyOS User Guide
    .. grid-item-card::  Examples
 
       Get some inspiration from the
-      :ref:`Configuration Blueprints <configexamples/index:Configuration Blueprints>`
+      :ref:`Blueprints <configexamples/index:Configuration Blueprints>`
       to build your infrastructure.
 
 
