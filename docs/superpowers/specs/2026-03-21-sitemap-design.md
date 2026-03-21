@@ -22,7 +22,7 @@ Add the `sphinx-sitemap` extension to the Sphinx build. Each version build produ
 
 **File:** `requirements.txt`
 
-Add `sphinx-sitemap` to the existing dependencies list.
+Add `sphinx-sitemap==2.6.0` to the existing dependencies list (pinned for consistency with other dependencies; compatible with Sphinx 7.2.6).
 
 ### 2. Configure Sphinx
 
@@ -38,19 +38,15 @@ Add configuration variables:
 html_baseurl = 'https://docs.vyos.io/'
 sitemap_url_scheme = '{lang}{version}{link}'
 sitemap_locales = [None]
-sitemap_excludes = [
-    'search.html',
-    'genindex.html',
-    '404.html',
-]
 ```
 
 **Configuration rationale:**
 
-- `html_baseurl` — Required by sphinx-sitemap for absolute URLs. RTD overrides this per-version automatically during builds.
-- `sitemap_url_scheme = '{lang}{version}{link}'` — Matches RTD's URL structure (`/en/latest/page.html`, `/en/1.4/page.html`). The `{lang}` placeholder is future-proofed for i18n.
+- `html_baseurl` — Required by sphinx-sitemap for absolute URLs. RTD overrides this per-version automatically during builds. Note: local builds will use this URL (pages won't resolve locally, but this is expected).
+- `sitemap_url_scheme = '{lang}{version}{link}'` — Set explicitly for clarity, though this is the default when used with RTD. Matches RTD's URL structure (`/en/latest/page.html`, `/en/1.4/page.html`). The `{lang}` placeholder is future-proofed for i18n.
 - `sitemap_locales = [None]` — Suppresses language variants until translations are configured. English-only for now.
-- `sitemap_excludes` — Keeps utility/generated pages out of the sitemap (search, genindex, custom 404).
+
+**Page exclusions:** sphinx-sitemap does not support a `sitemap_excludes` list. Utility pages like `search.html` and `genindex.html` will appear in the sitemap, which is acceptable — search engines handle these gracefully and including them has no negative SEO impact.
 
 ### 3. No changes needed
 
@@ -92,5 +88,5 @@ After merging and RTD rebuilds all versions:
 
 1. Fetch `https://docs.vyos.io/sitemap.xml` — should be a `sitemapindex` referencing per-version sitemaps
 2. Fetch `https://docs.vyos.io/en/latest/sitemap.xml` — should contain ~250 `<url>` entries with absolute URLs
-3. Verify excluded pages (`search.html`, `genindex.html`, `404.html`) are not present
+3. Verify individual page URLs are present (e.g., `configuration/firewall/index.html`)
 4. Submit updated sitemap to Google Search Console (if configured)
