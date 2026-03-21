@@ -373,7 +373,7 @@ instance.yml
       - name: "Configure general settings for the VyOS hosts group"
         vyos_config:
           lines:
-            - set system name-server 8.8.8.8
+            - set system name-server 192.0.2.1
           save:
             true
 

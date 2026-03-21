@@ -16,10 +16,10 @@ First prepare our VyOS router for connection to NMP. We have to set up the SNMP 
 
 .. code-block:: none
 
-	set interfaces ethernet eth0 address 'dhcp'
-	set system name-server '8.8.8.8'
-	set service snmp community router authorization 'test'
-	set service snmp community router network '0.0.0.0/0'
+    set interfaces ethernet eth0 address 'dhcp'
+    set system name-server '192.0.2.1'
+    set service snmp community router authorization 'test'
+    set service snmp community router network '0.0.0.0/0'
 
 
 Configuration 'NMP'
