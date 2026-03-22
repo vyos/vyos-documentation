@@ -99,6 +99,8 @@ Add general variables:
 Add a simple playbook with the tasks for each router:
 =====================================================
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
     # nano /root/main.yml
@@ -110,14 +112,16 @@ Add a simple playbook with the tasks for each router:
         - name: Configure general settings for the vyos hosts group
           vyos_config:
             lines:
-              - set system name-server 192.0.2.1
+              - set system name-server 8.8.8.8
               - set interfaces ethernet eth0 description '#WAN#'
               - set interfaces ethernet eth1 description '#LAN#'
               - set interfaces ethernet eth2 disable
               - set interfaces ethernet eth3 disable
               - set system host-name {{ inventory_hostname }}
             save: true
-    
+
+.. start_vyoslinter
+
 Start the playbook:
 ===================
 
@@ -141,6 +145,8 @@ Start the playbook:
 Check the result on the vyos10 router:
 ======================================
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
     vyos@vyos10:~$ show interfaces
@@ -153,12 +159,16 @@ Check the result on the vyos10 router:
     eth3             -                                 A/D
     lo               127.0.0.1/8                       u/u
                     ::1/128
-    
-    vyos@vyos10:~$ sh configuration commands | grep 192.0.2.1
-    set system name-server '192.0.2.1'
+
+    vyos@vyos10:~$ sh configuration commands | grep 8.8.8.8
+    set system name-server '8.8.8.8'
+
+.. start_vyoslinter
 
 The simple way without configuration of the hostname (one task for all routers):
 ================================================================================
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -184,13 +194,15 @@ The simple way without configuration of the hostname (one task for all routers):
         - name: Configure remote vyos_hosts_group
           vyos_config:
             lines:
-              - set system name-server 192.0.2.1
+              - set system name-server 8.8.8.8
               - set interfaces ethernet eth0 description WAN
               - set interfaces ethernet eth1 description LAN
               - set interfaces ethernet eth2 disable
               - set interfaces ethernet eth3 disable
             save: true
-          
+
+.. start_vyoslinter
+
 .. code-block:: none
           
     # ansible-playbook -i hosts_v2 main_v2.yml
