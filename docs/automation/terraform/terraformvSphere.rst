@@ -26,9 +26,13 @@ vSphere
 ^^^^^^^
 
 
-1. Add all necessary data to the ``terraform.tfvars`` `file <https://github.com/vyos/vyos-automation/blob/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main/terraform.tfvars>`__  and create
-   resources.
+.. stop_vyoslinter
 
+1. Add all necessary data to the ``terraform.tfvars``
+   `file <https://github.com/vyos/vyos-automation/blob/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main/terraform.tfvars>`__
+   and create resources.
+
+.. start_vyoslinter
 
 Terraform
 ^^^^^^^^^
@@ -47,7 +51,8 @@ Terraform
  
 
 4. Copy all files into your Terraform project ``/root/vsphereterraform``
-   (``vyos.tf``, ``var.tf``, ``terraform.tfvars``, ``version.tf``). For more details,
+   (``vyos.tf``, ``var.tf``, ``terraform.tfvars``, ``version.tf``).
+   For more details,
    see `Structure of files in Terraform for vSphere`_
 
 5. Run the following commands:
@@ -413,5 +418,8 @@ Source files on GitHub
 All files related to deploying VyOS on vSpherewith Terraform and Ansible
 can be found in the vyos-automation_ repository.
 
+
+.. stop_vyoslinter
 .. _vyos-automation: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main
 
+.. start_vyoslinter

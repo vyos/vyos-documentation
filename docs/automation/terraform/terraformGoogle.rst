@@ -67,10 +67,14 @@ Terraform
 .. code-block:: none
 
    mkdir /root/google
-
+ 
+.. stop_vyoslinter
 4. Copy all files into your Terraform project ``/root/google``
-   (``vyos.tf``, ``var.tf``, ``terraform.tfvars``, ``mykey.json``). For more details,
+   (``vyos.tf``, ``var.tf``, ``terraform.tfvars``, ``mykey.json``).
+   For more details,
    see `Structure of files Terraform for Google Cloud <#structure-of-files-in-terraform-for-google-cloud>`_
+
+.. start_vyoslinter
 
 5. Run the following commands:
 
@@ -94,7 +98,8 @@ Ansible
    (``ansible.cfg``, ``instance.yml``, ``mykey.json``, and ``all``). For more
    details, see `Structure of files in Ansible for Google Cloud`_
 
-You obtain ``mykey.json`` when you create a service account in GCP and download the key (a JSON file).
+You obtain ``mykey.json`` when you create a service account in GCP
+and download the key (a JSON file).
 
 
 Deploy with Terraform

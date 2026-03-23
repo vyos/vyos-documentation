@@ -508,7 +508,7 @@ Source files on GitHub
 
 All files related to deploying VyOS on Azure with Terraform and Ansible
 can be found in the vyos-automation_ repository.
-
+ 
+.. stop_vyoslinter
 .. _vyos-automation: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Azure_terraform_ansible_single_vyos_instance-main
-
-
+.. start_vyoslinter
