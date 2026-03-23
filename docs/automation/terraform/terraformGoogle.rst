@@ -6,25 +6,25 @@ Deploy VyOS on Google Cloud with Terraform and Ansible
 ======================================================
 
 Using Terraform, you can quickly deploy VyOS-based infrastructure in
-the Google Cloud. If necessary, you can remove the infrastructure using
+the Google Cloud Platform (GCP). If necessary, you can remove the infrastructure using
 Terraform. Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:
 * Create the necessary files for Terraform and Ansible.
-* Use Terraform to create a single instance on Google Cloud and use Ansible for
+* Use Terraform to create a single instance on GCP and use Ansible for
 provisioning.
 
-Prepare to deploy VyOS with Terraform on Google Cloud
------------------------------------------------------
+Prepare to deploy VyOS with Terraform on GCP
+--------------------------------------------
 
 To create a single instance and install your configuration using
-Terraform, Ansible, and Google Cloud, follow these steps:
+Terraform, Ansible, and GCP, follow these steps:
 
-Google Cloud
-^^^^^^^^^^^^
+GCP
+^^^
 
 
-1. Create an account with Google Cloud and a new project.
+1. Create an account with GCP and a new project.
 
 .. image:: /_static/images/project.png
    :width: 50%
@@ -92,7 +92,7 @@ Ansible
    (``ansible.cfg``, ``instance.yml``, ``mykey.json``, and ``all``). For more
    details, see `Structure of files in Ansible for Google Cloud`_
 
-You obtain ``mykey.json`` when you create a service account in Google Cloud and download the key (a JSON file).
+You obtain ``mykey.json`` when you create a service account in GCP and download the key (a JSON file).
 
 
 Deploy with Terraform
@@ -109,8 +109,8 @@ Run the following commands on your Terraform instance:
    yes
 
 
-Create a Google Cloud instance and check its configuration 
-----------------------------------------------------------
+Create a GCP instance and check its configuration
+-------------------------------------------------
 
 .. code-block:: none
 
@@ -343,7 +343,7 @@ Create a Google Cloud instance and check its configuration
 
 
 After running all the commands, your VyOS instance is deployed on
-Google Cloud with your specified configuration.
+GCP with your specified configuration.
 To delete the instance, type the following command:
 
 .. code-block:: none
@@ -380,7 +380,7 @@ Structure of files in Terraform for Google Cloud
 
  .
  ├── vyos.tf				# The main script
- ├── ***.JSON               # The credential file from Google Cloud
+ ├── ***.JSON               # The credential file from GCP
  ├── var.tf					# The file of all variables in "vyos.tf"
  └── terraform.tfvars		# The value of all variables (passwords, login, IP addresses and so on)
  
@@ -717,8 +717,9 @@ File contents of Ansible for Google Cloud
 Source files on GitHub
 ----------------------
 
-All files related to deploying VyOS on Google Cloud with Terraform and Ansible
-can be found in the vyos-automation_ repository.
+All files related to deploying VyOS on Google Cloud Platform with
+Terraform and Ansible can be found in the vyos-automation_ repository.
 
-
+.. stop_vyoslinter
 .. _vyos-automation: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Google_terraform_ansible_single_vyos_instance-main
+.. start_vyoslinter

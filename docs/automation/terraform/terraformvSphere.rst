@@ -27,7 +27,7 @@ vSphere
 
 
 1. Add all necessary data to the ``terraform.tfvars`` `file <https://github.com/vyos/vyos-automation/blob/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main/terraform.tfvars>`__  and create
-   resources. For example, "terraform".
+   resources.
 
 
 Terraform
