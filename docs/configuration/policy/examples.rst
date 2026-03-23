@@ -167,9 +167,9 @@ provider, and the second through another.
 .. code-block:: none
 
   set policy local-route rule 101 set table '10'
-  set policy local-route rule 101 source '203.0.113.254'
+  set policy local-route rule 101 source address '203.0.113.254'
   set policy local-route rule 102 set table '11'
-  set policy local-route rule 102 source '192.0.2.254'
+  set policy local-route rule 102 source address '192.0.2.254'
   set protocols static table 10 route 0.0.0.0/0 next-hop '203.0.113.1'
   set protocols static table 11 route 0.0.0.0/0 next-hop '192.0.2.2'
 
@@ -178,9 +178,9 @@ Add multiple source IP in one rule with same priority
 .. code-block:: none
 
   set policy local-route rule 101 set table '10'
-  set policy local-route rule 101 source '203.0.113.254'
-  set policy local-route rule 101 source '203.0.113.253'
-  set policy local-route rule 101 source '198.51.100.0/24'
+  set policy local-route rule 101 source address '203.0.113.254'
+  set policy local-route rule 101 source address '203.0.113.253'
+  set policy local-route rule 101 source address '198.51.100.0/24'
 
 ###########################
 Clamp MSS for a specific IP
