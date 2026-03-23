@@ -36,7 +36,8 @@ Terraform
 
 1. Create an UNIX or Windows instance.
 
-2. Download and install Terraform.
+2. Download and install
+   `Terraform <https://developer.hashicorp.com/terraform/install>`__.
 
 3. Create the folder for example ``/root/vsphereterraform``.
 
@@ -388,7 +389,7 @@ File contents of Ansible for vSphere
       - name: "Configure general settings for the VyOS hosts group"
         vyos_config:
           lines:
-            - set system name-server 8.8.8.8
+            - set system name-server 192.0.2.1
           save:
             true
 

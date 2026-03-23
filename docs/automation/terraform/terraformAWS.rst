@@ -57,27 +57,31 @@ AWS
 Terraform
 ^^^^^^^^^
 
-  1. Create an UNIX or Windows instance.
+1. Create an UNIX or Windows instance.
 
-  2. Download and install `Terraform <https://developer.hashicorp.com/terraform/install>`__.
+2. Download and install
+   `Terraform <https://developer.hashicorp.com/terraform/install>`__.
 
-  3. Create a folder, for example ``/root/awsterraform``:
+3. Create a folder, for example ``/root/awsterraform``:
 
   .. code-block:: none
 
     mkdir /root/awsterraform
 
-  4. Copy all files into your Terraform project
-     (``vyos.tf``, ``var.tf``, ``terraform.tfvars``, ``version.tf``).
-     See `Structure of files in Terraform for AWS <#structure-of-files-in-terraform-for-aws>`__ for more details.
+.. stop_vyoslinter
 
-  5. Run the following commands:
+4. Copy all files into your Terraform project
+   (``vyos.tf``, ``var.tf``, ``terraform.tfvars``, ``version.tf``).
+   See `Structure of files in Terraform for AWS <#structure-of-files-in-terraform-for-aws>`__ for more details.
+
+.. start_vyoslinter
+
+5. Run the following commands:
 
 .. code-block:: none
 
    cd /<your folder>
    terraform init
-
 
 Ansible
 ^^^^^^^
@@ -89,11 +93,16 @@ Ansible
 
 3. Create a folder, for example ``/root/aws/``.
 
-4. Copy all files into your Ansible project (``ansible.cfg``, ``instance.yml``,
+.. stop_vyoslinter
+
+4. Copy all files into your Ansible project
+   (``ansible.cfg``, ``instance.yml``,
    ``mykey.pem``, and ``all``).
    See `Structure of files in Ansible for AWS <#structure-of-files-in-ansible-for-aws>`__ for more details.
-   You can obtain ``mykey.pem`` by creating a key pair_ in AWS and downloading your ``.pem`` key.
+   You can obtain ``mykey.pem`` by creating a key pair_ in AWS and
+   downloading your ``.pem`` key.
 
+.. start_vyoslinter
 
 Deploy with Terraform
 ^^^^^^^^^^^^^^^^^^^^^
@@ -555,9 +564,13 @@ Source files on GitHub
 All files related to deploying VyOS on AWS with Terraform and Ansible
 can be found in the vyos-automation_ repository.
 
+
+.. stop_vyoslinter
 .. _link: https://developer.hashicorp.com/terraform/intro
 .. _install: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 .. _pair: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html
 .. _group: https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-sg.html
 .. _image: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html
 .. _vyos-automation: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/AWS_terraform_ansible_single_vyos_instance-main
+
+.. start_vyoslinter

@@ -5,9 +5,10 @@
 Deploy VyOS on Google Cloud with Terraform and Ansible
 ======================================================
 
-Using Terraform, you can quickly deploy VyOS-based infrastructure in
-the Google Cloud Platform (GCP). If necessary, you can remove the infrastructure using
-Terraform. Additionally, you can use Ansible for provisioning.
+Using Terraform, you can quickly deploy VyOS-based infrastructure on
+Google Cloud Platform (GCP) and remove the
+infrastructure when it's no longer needed.
+Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:
 * Create the necessary files for Terraform and Ansible.
@@ -58,7 +59,8 @@ Terraform
 
 1. Create an UNIX or Windows instance.
 
-2. Download and install Terraform.
+2. Download and install
+   `Terraform <https://developer.hashicorp.com/terraform/install>`__.
 
 3. Create the folder. For example, ``/root/google``.
 

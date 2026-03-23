@@ -6,7 +6,8 @@ Deploy VyOS on Microsoft Azure with Terraform and Ansible
 =========================================================
 
 You can use Terraform to quickly deploy VyOS-based infrastructure
-on Microsoft Azure (hereafter referred to as *Azure*) and remove infrastructure when it's no longer needed.
+on Microsoft Azure (hereafter referred to as *Azure*) and remove
+infrastructure when it's no longer needed.
 Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:
@@ -32,7 +33,8 @@ Terraform
 
 1. Create an UNIX or Windows instance.
 
-2. Download and install Terraform.
+2. Download and install
+   `Terraform <https://developer.hashicorp.com/terraform/install>`__.
 
 3. Create the folder for example ``/root/azvyos/``.
 
@@ -40,9 +42,13 @@ Terraform
 
   mkdir /root/azvyos
 
+.. stop_vyoslinter
+
 4. Copy all files into your Terraform project "/root/azvyos"
    (``vyos.tf``, ``var.tf``, ``terraform.tfvars``). For more details, see
    `Structure of files in Terraform for Azure <#structure-of-files-in-terraform-for-azure>`_.
+
+.. start_vyoslinter
 
 5. Log in to Azure using the command: 
 
