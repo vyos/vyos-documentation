@@ -2,12 +2,12 @@
 
 .. _terraformgoogle:
 
-Deploy VyOS on the Google Cloud with Terraform and Ansible
-==========================================================
+Deploy VyOS on Google Cloud with Terraform and Ansible
+======================================================
 
 Using Terraform, you can quickly deploy VyOS-based infrastructure in
 the Google Cloud. If necessary, you can remove the infrastructure using
-Terraform. You can also provision the infrastructure using Ansible.
+Terraform. Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:
 * Create the necessary files for Terraform and Ansible.
@@ -82,7 +82,7 @@ Terraform
 Ansible
 ^^^^^^^
 
-1. Create an UNIX instance whenever you want (local, cloud, and so on)
+1. Create an UNIX instance either locally or in the cloud.
 
 2. Download and install Ansible
 

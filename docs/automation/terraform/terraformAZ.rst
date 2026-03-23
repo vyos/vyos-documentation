@@ -6,7 +6,7 @@ Deploy VyOS on Microsoft Azure with Terraform and Ansible
 =========================================================
 
 You can use Terraform to quickly deploy VyOS-based infrastructure
-on Microsoft Azure (hereafter referred to as "Azure") and remove infrastructure when it's no longer needed.
+on Microsoft Azure (hereafter referred to as *Azure*) and remove infrastructure when it's no longer needed.
 Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:
@@ -87,7 +87,7 @@ Run the following commands on your Terraform instance:
 
 After executing all the commands, your VyOS instance is deployed to 
 Azure with your configuration.
-If you need to delete the instance, type the command:
+If you need to delete the instance, run the following command:
 
 .. code-block:: none
 
@@ -368,7 +368,7 @@ File contents of Terraform for Azure
     default     = "LRS"
   }
   
-  # The most chippers size
+  # The most cost-effective size
   
   variable "vm_size" {
     description = "Specifies the size of the virtual machine."
