@@ -2,8 +2,8 @@
 
 .. _terraformAZ:
 
-Deploy VyOS on Microsoft Azure
-==============================
+Deploy VyOS on Microsoft Azure with Terraform and Ansible
+=========================================================
 
 You can use Terraform to quickly deploy VyOS-based infrastructure
 on Microsoft Azure (hereafter referred to as "Azure") and remove infrastructure when it's no longer needed.
@@ -42,7 +42,7 @@ Terraform
 
 4. Copy all files into your Terraform project "/root/azvyos"
    (``vyos.tf``, ``var.tf``, ``terraform.tfvars``). For more details, see
-   `Structure of files Terraform for Azure <#structure-of-files-in-terraform-for-azure>`_.
+   `Structure of files in Terraform for Azure <#structure-of-files-in-terraform-for-azure>`_.
 
 5. Log in to Azure using the command: 
 
@@ -50,7 +50,7 @@ Terraform
 
     az login
 
-6. Type the following commands to initialize Terraform:
+6. Run the following commands to initialize Terraform:
 
   .. code-block:: none
 
@@ -69,14 +69,14 @@ Ansible
 
 4. Copy all files into your Ansible project ``/root/az/`` (``ansible.cfg``,
    ``instance.yml``, ``all``). For more details, see
-   `Structure of files Ansible for Azure`_
+   `Structure of files in Ansible for Azure`_
 
 
 Deploy with Terraform
 ^^^^^^^^^^^^^^^^^^^^^
 
 
-Type the following commands on your Terraform instance:
+Run the following commands on your Terraform instance:
    
 .. code-block:: none
 
@@ -427,8 +427,8 @@ File contents of Terraform for Azure
   host      = ""   # IP of my Ansible
 
 
-Structure of files Ansible for Azure
-------------------------------------
+Structure of files in Ansible for Azure
+---------------------------------------
 
 .. code-block:: none
 
@@ -497,11 +497,11 @@ File contents of Ansible for Azure
   ansible_user: vyos
   ansible_ssh_pass: Vyos0!
 
-Source files for Azure from Git
--------------------------------
+Source files on GitHub
+----------------------
 
-All files related to this topic can be found in the
-vyos-automation_ repository. 
+All files related to deploying VyOS on Azure with Terraform and Ansible
+can be found in the vyos-automation_ repository.
 
 .. _vyos-automation: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Azure_terraform_ansible_single_vyos_instance-main
 

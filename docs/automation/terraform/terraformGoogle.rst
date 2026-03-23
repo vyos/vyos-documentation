@@ -1,32 +1,37 @@
-:lastproofread: 2024-03-25
+:lastproofread: 2026-03-23
 
 .. _terraformgoogle:
 
-Deploying VyOS in the Google Cloud
-==================================
+Deploy VyOS on the Google Cloud with Terraform and Ansible
+==========================================================
 
-With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the Google Cloud. If necessary, the infrastructure can be removed using terraform.
-Also we will make provisioning using Ansible.
+Using Terraform, you can quickly deploy VyOS-based infrastructure in
+the Google Cloud. If necessary, you can remove the infrastructure using
+Terraform. You can also provision the infrastructure using Ansible.
 
-In this case, we'll create the necessary files for Terraform and Ansible. Next, using Terraform, we'll create a single instance on the Google Cloud and make provisioning using Ansible.
+On this page you'll learn how to:
+* Create the necessary files for Terraform and Ansible.
+* Use Terraform to create a single instance on Google Cloud and use Ansible for
+provisioning.
 
-Preparation steps for deploying VyOS on Google 
-----------------------------------------------
+Prepare to deploy VyOS with Terraform on Google Cloud
+-----------------------------------------------------
 
-How to create a single instance and install your configuration using Terraform+Ansible+Google 
-Step by step:
+To create a single instance and install your configuration using
+Terraform, Ansible, and Google Cloud, follow these steps:
 
 Google Cloud
+^^^^^^^^^^^^
 
 
-1 Create an account with Google Cloud and a new project
+1. Create an account with Google Cloud and a new project.
 
 .. image:: /_static/images/project.png
    :width: 50%
    :align: center
    :alt: Network Topology Diagram
 
-2 Create a service aacount and download your key (.JSON)
+2. Create a service account and download your key (a JSON file).
 
 .. image:: /_static/images/service.png
    :width: 50%
@@ -38,7 +43,8 @@ Google Cloud
    :align: center
    :alt: Network Topology Diagram
 
-The .JSON file download automaticly after creating and will look like:
+The .JSON file downloads automatically after you create it and looks
+like the following:
 
 .. image:: /_static/images/json.png
    :width: 50%
@@ -47,21 +53,24 @@ The .JSON file download automaticly after creating and will look like:
 
 
 Terraform
+^^^^^^^^^
 
 
-1 Create an UNIX or Windows instance
+1. Create an UNIX or Windows instance.
 
-2 Download and install Terraform
+2. Download and install Terraform.
 
-3 Create the folder for example /root/google
+3. Create the folder. For example, ``/root/google``.
 
 .. code-block:: none
 
    mkdir /root/google
 
-4 Copy all files into your Terraform project "/root/google" (vyos.tf, var.tf, terraform.tfvars, .JSON), more detailed see `Structure of files Terrafom for google cloud`_
+4. Copy all files into your Terraform project ``/root/google``
+   (``vyos.tf``, ``var.tf``, ``terraform.tfvars``, ``mykey.json``). For more details,
+   see `Structure of files Terraform for Google Cloud <#structure-of-files-in-terraform-for-google-cloud>`_
 
-5 Type the commands :
+5. Run the following commands:
 
 
 .. code-block:: none
@@ -71,23 +80,26 @@ Terraform
 
 
 Ansible
+^^^^^^^
+
+1. Create an UNIX instance whenever you want (local, cloud, and so on)
+
+2. Download and install Ansible
+
+3. Create the folder for example /root/google/
+
+4. Copy all files into your Ansible project ``/root/google/``
+   (``ansible.cfg``, ``instance.yml``, ``mykey.json``, and ``all``). For more
+   details, see `Structure of files in Ansible for Google Cloud`_
+
+You obtain ``mykey.json`` when you create a service account in Google Cloud and download the key (a JSON file).
 
 
-1 Create an UNIX instance whenever you want (local, cloud, and so on)
-
-2 Download and install Ansible
-
-3 Create the folder for example /root/google/
-
-4 Copy all files into your Ansible project "/root/google/" (ansible.cfg, instance.yml, mykey.json and "all"), more detailed see `Structure of files Ansible for Google Cloud`_
-
-mykey.json you have to get using step 2 of the Google Cloud
+Deploy with Terraform
+^^^^^^^^^^^^^^^^^^^^^
 
 
-Start 
-
-
-Type the commands on your Terraform instance:
+Run the following commands on your Terraform instance:
    
 .. code-block:: none
 
@@ -97,8 +109,8 @@ Type the commands on your Terraform instance:
    yes
 
 
-Start creating a Google Cloud instance and check the result. 
------------------------------------------------------------
+Create a Google Cloud instance and check its configuration 
+----------------------------------------------------------
 
 .. code-block:: none
 
@@ -330,8 +342,9 @@ Start creating a Google Cloud instance and check the result.
 
 
 
-After executing all the commands, you will have your VyOS instance on the Google Cloud with your configuration; it's a very convenient decision.
-If you need to delete the instance, please type the command:
+After running all the commands, your VyOS instance is deployed on
+Google Cloud with your specified configuration.
+To delete the instance, type the following command:
 
 .. code-block:: none
 
@@ -341,10 +354,12 @@ If you need to delete the instance, please type the command:
 Troubleshooting
 ---------------
 
-1 Increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location).
-Make sure that you have opened access to the instance in the security group.
+1. Increase the timeout value in ``instance.yml`` from 300 seconds to
+   500 seconds or more (depends on your location). Ensure that the
+   security group allows access to the instance.
 
-2 Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file VyOS.tf
+2. If Terraform doesn't connect via SSH to your Ansible instance:
+   Check the correct login and password in the ``VyOS.tf`` file.
 
 .. code-block:: none
 
@@ -356,10 +371,10 @@ Make sure that you have opened access to the instance in the security group.
   }
 
 
-Make sure that Ansible is pinging from Terrafom.
+Verify that Ansible can ping from Terraform.
 
-Structure of files Terrafom for Google Cloud
---------------------------------------------
+Structure of files in Terraform for Google Cloud
+------------------------------------------------
 
 .. code-block:: none
 
@@ -371,10 +386,10 @@ Structure of files Terrafom for Google Cloud
  
 
  
-File contents of Terrafom for Google Cloud
-------------------------------------------
+File contents of Terraform for Google Cloud
+-------------------------------------------
 
-vyos.tf
+``vyos.tf``
 
 .. code-block:: none
 
@@ -535,7 +550,7 @@ vyos.tf
   }
 
 
-var.tf
+``var.tf``
 
 .. code-block:: none
 
@@ -553,7 +568,7 @@ var.tf
   }
   
   ##############################################################################
-  # You can choose more chipper type than n2-highcpu-4
+  # You can choose a lower cost machine type than n2-highcpu-4
   ##############################################################################
   
   variable "machine_type" {
@@ -620,7 +635,7 @@ var.tf
   }
   
   
-terraform.tfvars
+``terraform.tfvars``
 
 .. code-block:: none
 
@@ -635,8 +650,8 @@ terraform.tfvars
   host          = ""                     # IP of my Ansible
 
 
-Structure of files Ansible for Google Cloud
--------------------------------------------
+Structure of files in Ansible for Google Cloud
+----------------------------------------------
 
 .. code-block:: none
 
@@ -650,7 +665,7 @@ Structure of files Ansible for Google Cloud
 File contents of Ansible for Google Cloud
 -----------------------------------------
 
-ansible.cfg
+``ansible.cfg``
 
 .. code-block:: none
 
@@ -659,7 +674,7 @@ ansible.cfg
   host_key_checking= False
   remote_user=vyos
 
-instance.yml
+``instance.yml``
 
 .. code-block:: none
 
@@ -667,7 +682,7 @@ instance.yml
   # About tasks:
   # "Wait 300 seconds, but only start checking after 60 seconds" - try to make ssh connection every 60 seconds until 300 seconds
   # "Configure general settings for the VyOS hosts group" - make provisioning into Google Cloud VyOS node
-  # You have to add all necessary cammans of VyOS under the block "lines:"
+  # Add all necessary VyOS commands under the "lines:" block
   ##############################################################################
 
 
@@ -690,7 +705,7 @@ instance.yml
             true
 
 
-group_vars/all
+``group_vars/all``
 
 .. code-block:: none
 
@@ -699,10 +714,11 @@ group_vars/all
   ansible_user: vyos
   ansible_ssh_pass: vyos
 
-Sourse files for Google Cloud from GIT
---------------------------------------
+Source files on GitHub
+----------------------
 
-All files about the article can be found here_
+All files related to deploying VyOS on Google Cloud with Terraform and Ansible
+can be found in the vyos-automation_ repository.
 
 
-.. _here: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Google_terraform_ansible_single_vyos_instance-main
+.. _vyos-automation: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Google_terraform_ansible_single_vyos_instance-main

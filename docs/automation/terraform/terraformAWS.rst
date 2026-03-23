@@ -2,8 +2,8 @@
 
 .. _terraformAWS:
 
-Deploy VyOS on AWS with Terraform
-=================================
+Deploy VyOS on AWS with Terraform and Ansible
+=============================================
 
 You can use Terraform to quickly deploy VyOS-based infrastructure
 on AWS and remove infrastructure when it's no longer needed.
@@ -71,7 +71,7 @@ Terraform
      (``vyos.tf``, ``var.tf``, ``terraform.tfvars``, ``version.tf``).
      See `Structure of files in Terraform for AWS <#structure-of-files-in-terraform-for-aws>`__ for more details.
 
-  5. Type the following commands:
+  5. Run the following commands:
 
 .. code-block:: none
 
@@ -99,7 +99,7 @@ Deploy with Terraform
 ^^^^^^^^^^^^^^^^^^^^^
 
 
-Type the following commands in terminal on your Terraform instance:
+Run the following commands on your Terraform instance:
    
 .. code-block:: none
 
@@ -549,10 +549,11 @@ File contents of Ansible for AWS
   ansible_network_os: vyos.vyos.vyos
   ansible_user: vyos
 
-Source files for AWS on GitHub
-------------------------------
+Source files on GitHub
+----------------------
 
-Find all files referred to on this page in the vyos-automation_ repository.
+All files related to deploying VyOS on AWS with Terraform and Ansible
+can be found in the vyos-automation_ repository.
 
 .. _link: https://developer.hashicorp.com/terraform/intro
 .. _install: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
