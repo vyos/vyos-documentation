@@ -58,6 +58,51 @@ Configuration
         vpn
         vrf
 
+Operational Commands
+--------------------
+
+.. opcmd:: show configuration secondary sync [commands] [running | candidate | saved] [<config-node-path>]
+
+   Display configuration differences between the local node and
+   a config-sync secondary node.
+
+   This command allows operators to compare configurations across nodes
+   participating in configuration synchronization (e.g., primary and
+   secondary routers). It helps detect configuration drift and validate
+   intended changes before synchronization.
+
+   **Parameters:**
+
+   .. list-table::
+      :widths: 30 70
+      :header-rows: 0
+
+      * - ``commands`` (optional)
+        - Show output as a list of configuration commands instead of raw diff.
+      * - ``running|candidate|saved`` (optional, mutually exclusive)
+        - Select which configuration to compare:
+          ``running`` (current active configuration, default),
+          ``candidate`` (uncommitted changes), or
+          ``saved`` (last saved configuration). Only one of these may be
+          specified at a time; if omitted, ``running`` is used.
+
+   **Examples:**
+
+   .. code-block:: none
+
+      # compare full running configuration with a secondary node
+      show configuration secondary sync
+
+      # compare only interface configuration
+      show configuration secondary sync running interfaces dummy
+
+      # compare candidate configuration and display as a list of commands
+      show configuration secondary sync commands candidate
+
+Without a built-in cross-node diff, operators may unintentionally push
+changes that conflict with the remote configuration (e.g., mismatched
+interfaces, firewall policies, or protocol settings).
+
 Example
 -------
 * Synchronize the time-zone and OSPF configuration from Router A to Router B
