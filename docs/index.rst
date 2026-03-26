@@ -56,7 +56,6 @@ VyOS User Guide
 
    introducing/about
    introducing/history
-   changelog/index
 
 
 .. toctree::
