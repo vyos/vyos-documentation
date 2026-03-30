@@ -1,4 +1,4 @@
-:lastproofread: 2024-08-05
+:lastproofread: 2026-03-28
 
 .. _firewall-configuration:
 
@@ -10,11 +10,12 @@ Bridge Firewall Configuration
 Overview
 ********
 
-In this section there's useful information on all firewall configuration that
-can be done regarding bridges, and appropriate op-mode commands.
-Configuration commands covered in this section:
+Learn more about bridge firewall configuration
+and related op-mode commands.
 
-.. cfgcmd:: set firewall bridge ...
+The following commands are covered in this section:
+
+.. cfgcmd:: set firewall bridge <options>
 
 From the main structure defined in :doc:`Firewall Overview</configuration/firewall/index>`
 in this section you can find detailed information only for the next part
@@ -35,7 +36,7 @@ of the general structure:
             - name
                + custom_name
 
-Traffic which is received by the router on an interface which is member of a
+Traffic that is received by the router on an interface that is a member of a
 bridge is processed on the **Bridge Layer**. Before the bridge decision is
 made, all packets are analyzed at **Prerouting**. First filters can be applied
 here, and also rules for ignoring connection tracking system can be configured.
@@ -43,15 +44,16 @@ The relevant configuration that acts in **prerouting** is:
 
   * ``set firewall bridge prerouting filter ...``.
 
-For traffic that needs to be switched internally by the bridge, base chain is
-**forward**, and it's base command for filtering is ``set firewall bridge
-forward filter ...``, which happens in stage 4, highlighted with red color.
+For traffic that needs to be switched internally by the bridge, the base
+chain is **forward**, and its base command for filtering is ``set firewall
+bridge forward filter ...``, which happens in stage 4, highlighted with red
+color.
 
 .. figure:: /_static/images/firewall-bridge-forward.png
 
-For traffic destined to the router itself, or that needs to be routed (assuming
-a layer3 bridge is configured), the base chain is **input**, the base command
-is ``set firewall bridge input filter ...`` and the path is:
+For traffic destined to the router itself or that needs to be routed
+(assuming a layer3 bridge is configured), the base chain is **input**, and the
+base command is ``set firewall bridge input filter ...`` and the path is:
 
 .. figure:: /_static/images/firewall-bridge-input.png
 
@@ -60,15 +62,15 @@ processed by the **IP Layer** firewall: IPv4 or IPv6 ruleset. Check once again
 the :doc:`general packet flow diagram</configuration/firewall/index>` if
 needed.
 
-And for traffic that originates from the bridge itself, the base chain is
-**output**, base command is ``set firewall bridge output filter ...``, and
-the path is:
+For traffic that originates from the bridge itself, the base chain is
+**output**, and the base command is ``set firewall bridge output filter
+...``, and the path is:
 
 .. figure:: /_static/images/firewall-bridge-output.png
 
-Custom bridge firewall chains can be created with the command ``set firewall bridge
-name <name> ...``. In order to use such custom chain, a rule with action jump,
-and the appropriate target should be defined in a base chain.
+Custom bridge firewall chains can be created with the command ``set firewall
+bridge name <name> ...``. To use such a custom chain, a rule with action jump
+and the appropriate target must be defined in a base chain.
 
 ************
 Bridge Rules
@@ -83,8 +85,8 @@ rule will be executed.
 Actions
 =======
 
-If a rule is defined, then an action must be defined for it. This tells the
-firewall what to do if all matching criterea in the rule are met.
+If a rule is defined, an action must also be defined for it. This tells the
+firewall what to do if all matching criteria in the rule are met.
 
 In firewall bridge rules, the action can be:
 
@@ -169,7 +171,7 @@ In firewall bridge rules, the action can be:
    queue-options fanout
 
 Also, **default-action** is an action that takes place whenever a packet does
-not match any rule in its' chain. For base chains, possible options for
+not match any rule in its chain. For base chains, possible options for
 **default-action** are **accept** or **drop**.
 
 .. cfgcmd:: set firewall bridge forward filter default-action
@@ -202,8 +204,8 @@ not match any rule in its' chain. For base chains, possible options for
 Firewall Logs
 =============
 
-Logging can be enable for every single firewall rule. If enabled, other
-log options can be defined.
+You can enable logging for every firewall rule. If enabled, other log options
+can be configured.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999> log
 .. cfgcmd:: set firewall bridge input filter rule <1-999999> log
@@ -287,7 +289,7 @@ log options can be defined.
 Firewall Description
 ====================
 
-For reference, a description can be defined for every defined custom chain.
+You can define a description for reference for every custom chain.
 
 .. cfgcmd:: set firewall bridge name <name> description <text>
 
@@ -309,8 +311,8 @@ For reference, a description can be defined for every defined custom chain.
 Rule Status
 ===========
 
-When defining a rule, it is enabled by default. In some cases, it is useful to
-just disable the rule, rather than removing it.
+By default, when you define a rule, it is enabled. In some cases, it is
+useful to disable the rule instead of removing it.
 
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999> disable
 .. cfgcmd:: set firewall bridge input filter rule <1-999999> disable
@@ -323,11 +325,11 @@ just disable the rule, rather than removing it.
 Matching criteria
 =================
 
-There are a lot of matching criteria against which the packet can be tested.
-Please refer to :doc:`IPv4</configuration/firewall/ipv4>` and
+There are many matching criteria against which a packet can be tested. Refer
+to :doc:`IPv4</configuration/firewall/ipv4>` and
 :doc:`IPv6</configuration/firewall/ipv6>` matching criteria for more details.
 
-Since bridges operats at layer 2, both matchers for IPv4 and IPv6 are
+Since bridges operate at layer 2, both matchers for IPv4 and IPv6 are
 supported in bridge firewall configuration. Same applies to firewall groups.
 
 Same specific matching criteria that can be used in bridge firewall are
@@ -434,15 +436,15 @@ are:
 
 .. cfgcmd:: set firewall global-options apply-to-bridged-traffic ipv4
 
-   This command enables the IPv4 firewall for bridged traffic. If this
-   options is used, then packet will also be parsed by rules defined in ``set
-   firewall ipv4 ...`` 
+   This command enables the IPv4 firewall for bridged traffic. If this option
+   is used, packets are also parsed by rules defined in ``set firewall ipv4
+   ...`` 
 
 .. cfgcmd:: set firewall global-options apply-to-bridged-traffic ipv6
 
-   This command enables the IPv6 firewall for bridged traffic. If this
-   options is used, then packet will also be parsed by rules defined in ``set
-   firewall ipv6 ...`` 
+   This command enables the IPv6 firewall for bridged traffic. If this option
+   is used, packets are also parsed by rules defined in ``set firewall ipv6
+   ...`` 
 
 ***********************
 Operation-mode Firewall

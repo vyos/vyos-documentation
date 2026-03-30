@@ -1,128 +1,125 @@
-:lastproofread: 2024-08-05
+:lastproofread: 2026-03-30
 
 ########
 Firewall
 ########
 
-.. warning:: Due to a race condition that can lead to a failure during boot
-   process, all interfaces are initialized before firewall is configured. This
-   leads to a situation where the system is open to all traffic, and can be
-   considered as a security risk.
+.. warning:: Due to a boot-time race condition, all interfaces initialize
+   before the firewall. This temporarily leaves the system open to all traffic
+   and poses a security risk.
 
-As VyOS is based on Linux it leverages its firewall. The Netfilter project
-created iptables and its successor nftables for the Linux kernel to
-work directly on packet data flows. This now extends the concept of 
-zone-based security to allow for manipulating the data at multiple stages once 
-accepted by the network interface and the driver before being handed off to 
-the destination (e.g., a web server OR another device).
+VyOS uses Netfilter. The Netfilter
+project developed ``iptables`` and its successor ``nftables`` for the Linux
+kernel to process packet data flows directly. This extends the concept of
+zone-based security to let you manipulate data at multiple stages after the
+network interface and driver accept it, and before sending it to its
+destination (for example, a web server or another device).
 
-A simplified traffic flow diagram, based on Netfilter packet flow, is shown 
-next, in order to have a full view and understanding of how packets are 
-processed, and what possible paths traffic can take.
+The following is a simplified traffic flow diagram based on Netfilter
+packet flow.
+This diagram provides an overview of how packets are processed and the
+possible paths traffic can take.
 
 .. figure:: /_static/images/firewall-gral-packet-flow.png
 
-The main points regarding this packet flow and terminology used in VyOS 
-firewall are covered below:
+The main points regarding packet flow and terminology in VyOS firewall
+are:
 
-   * **Bridge Port?**: choose appropriate path based on whether interface 
-     where the packet was received is part of a bridge, or not.
+   * **Bridge Port?**: Choose the appropriate path based on whether the
+     interface where the packet was received is part of a bridge.
 
-If the interface where the packet was received isn't part of a bridge, then 
+If the interface where the packet was received is not part of a bridge, the
 packet is processed at the **IP Layer**:
 
-   * **Prerouting**: All packets that are received by the router
-     are processed in this stage, regardless of the destination of the packet.
-     Starting from vyos-1.5-rolling-202406120020, a new section was added to 
-     the firewall configuration. There are several actions that can be done in
-     this stage, and currently these actions are also defined in different
-     parts of the VyOS configuration. Order is important, and the relevant 
-     configuration that acts in this stage are:
+   * **Prerouting**: The router processes all packets in this stage,
+     regardless of the destination. Starting from
+     ``vyos-1.5-rolling-202406120020``, VyOS added a new firewall
+     configuration section. You can perform several actions in this stage,
+     and these actions are also defined in different parts of the VyOS
+     configuration. Order is important. The relevant configuration that applies
+     in this stage includes:
 
-      * **Firewall prerouting**: rules defined under ``set firewall [ipv4 |
-        ipv6] prerouting raw...``. All rules defined in this section are
-        processed before connection tracking subsystem.
+      * **Firewall prerouting**: Rules you define under ``set firewall
+        [ipv4 | ipv6] prerouting raw...``. The system processes all rules in
+        this section before the connection tracking subsystem.
 
-      * **Conntrack Ignore**: rules defined under ``set system conntrack ignore
-        [ipv4 | ipv6] ...``. Starting from vyos-1.5-rolling-202406120020,
-        configuration done in this section can be done in ``firewall [ipv4 |
-        ipv6] prerouting ...``. For compatibility reasons, this feature is
-        still present, but it will be removed in the future.
+      * **Conntrack Ignore**: Rules you define under ``set system conntrack
+        ignore [ipv4 | ipv6] ...``. Starting from
+        ``vyos-1.5-rolling-202406120020``, you can configure this section in
+        ``firewall [ipv4 | ipv6] prerouting ...``. For compatibility reasons,
+        this feature is supported, but will be deprecated in the future.
 
-      * **Policy Route**: rules defined under ``set policy [route | route6]
-        ...``.
+      * **Policy Route**: Rules you define under ``set policy [route |
+        route6] ...``.
 
-      * **Destination NAT**: rules defined under ``set [nat | nat66]
+      * **Destination NAT**: Rules you define under ``set [nat | nat66]
         destination...``.
 
-   * **Destination is the router?**: choose an appropriate path based on
-     destination IP address. Transit forward continues to **forward**,
-     while traffic where the destination IP address is configured on the router
-     continues to **input**.
+   * **Destination is the router?**: Choose the appropriate path based on the
+     destination IP address. Transit traffic continues to **forward**, while
+     traffic destined for the router continues to **input**.
 
-   * **Input**: stage where traffic destined for the router itself can be
-     filtered and controlled. This is where all rules for securing the router
-     should take place. This includes ipv4 and ipv6 filtering rules, defined
-     in:
+   * **Input**: The stage where you filter and control traffic destined for
+     the router itself. This is where you enforce all rules for securing the
+     router. This includes IPv4 and IPv6 filtering rules, defined in:
 
      * ``set firewall ipv4 input filter ...``.
 
      * ``set firewall ipv6 input filter ...``.
 
-   * **Forward**: stage where transit traffic can be filtered and controlled.
-     This includes ipv4 and ipv6 filtering rules, defined in:
+   * **Forward**: The stage where you filter and control transit traffic.
+     This includes IPv4 and IPv6 filtering rules, defined in:
 
      * ``set firewall ipv4 forward filter ...``.
 
      * ``set firewall ipv6 forward filter ...``.
 
-   * **Output**: stage where traffic that originates from the router itself
-     can be filtered and controlled. Bear in mind that this traffic can be a
-     new connection originated by a internal process running on the VyOS router
-     such as NTP, or a response to traffic received externally through
-     **input** (for example response to an ssh login attempt to the router).
-     This includes ipv4 and ipv6 rules, and two different sections are present:
+   * **Output**: The stage where you filter and control traffic that the
+     router originates. Note that this traffic comes from either a new
+     connection that an internal process on the VyOS router (such as NTP)
+     originates or a response to traffic the router receives externally through
+     **input** (for example, a response to an SSH login attempt). This includes
+     IPv4 and IPv6 rules, and two different sections apply:
 
-     * **Output Prerouting**: ``set firewall [ipv4 | ipv6] output filter ...``.
-       As described in **Prerouting**, rules defined in this section are
-       processed before connection tracking subsystem.
+     * **Output Prerouting**: ``set firewall [ipv4 | ipv6] output
+       filter ...``. As described in **Prerouting**, the system processes
+       rules in this section before the connection tracking subsystem.
 
      * **Output Filter**: ``set firewall [ipv4 | ipv6] output filter ...``.
 
-   * **Postrouting**: as in **Prerouting**, several actions defined in
-     different parts of VyOS configuration are performed in this
-     stage. This includes:
+   * **Postrouting**: As in **Prerouting**, you can perform several actions
+     defined in different parts of VyOS configuration in this stage. This
+     includes:
 
-     * **Source NAT**: rules defined under ``set [nat | nat66]
+     * **Source NAT**: Rules you define under ``set [nat | nat66]
        destination...``.
 
-If the interface where the packet was received is part of a bridge, then 
-the packet is processed at the **Bridge Layer**:
+If the interface where the packet was received is part of a bridge, the
+packet is processed at the **Bridge Layer**:
 
-   * **Prerouting (Bridge)**: all packets that are received by the bridge are
-     processed in this stage, regardless of the destination of the packet.
-     First filters can be applied here, and/or also configure rules for
-     ignoring connection tracking system. The relevant configuration that
-     acts in:
+   * **Prerouting (Bridge)**: The bridge processes all packets it receives in
+     this stage, regardless of the destination. First, you can apply filters
+     here, or you can configure rules that ignore the connection tracking
+     system. The relevant configuration that applies:
 
      * ``set firewall bridge prerouting filter ...``.
 
-   * **Forward (Bridge)**: stage where traffic that is trespassing through the
-     bridge is filtered and controlled:
+   * **Forward (Bridge)**: The stage where you filter and control traffic
+     that passes through the bridge:
 
      * ``set firewall bridge forward filter ...``.
 
-   * **Input (Bridge)**: stage where traffic destined for the bridge itself can
-     be filtered and controlled:
+   * **Input (Bridge)**: The stage where you filter and control traffic
+     destined for the bridge itself:
 
      * ``set firewall bridge input filter ...``.
 
-   * **Output (Bridge)**: stage where traffic that originates from the bridge
-     itself can be filtered and controlled:
+   * **Output (Bridge)**: The stage where you filter and control traffic that
+     the bridge originates:
 
      * ``set firewall bridge output filter ...``.
 
-The main structure of the VyOS firewall CLI is shown next:
+The following is the main structure of the VyOS firewall CLI:
 
 .. code-block:: none
 
@@ -182,8 +179,7 @@ The main structure of the VyOS firewall CLI is shown next:
             - custom_zone_name
                + ...
 
-Please, refer to appropriate section for more information about firewall
-configuration:
+For more information on firewall configuration, see the following pages:
 
 .. toctree::
    :maxdepth: 1
@@ -196,31 +192,32 @@ configuration:
    ipv6
    flowtables
 
-.. note:: **For more information**
-   of Netfilter hooks and Linux networking packet flows can be
-   found in `Netfilter-Hooks
+.. note::
+   For more information on Netfilter hooks and Linux networking packet flows,
+   see the `Netfilter-Hooks
    <https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>`_
+   documentation.
 
 
-Zone-based firewall
+Zone-Based firewall
 ^^^^^^^^^^^^^^^^^^^
+
 .. toctree::
    :maxdepth: 1
    :includehidden:
 
    zone
 
-With zone-based firewalls a new concept was implemented, in addition to the
-standard in and out traffic flows, a local flow was added. This local flow was
-for traffic originating and destined to the router itself. Which means that 
-additional rules were required to secure the firewall itself from the network,
-in addition to the existing inbound and outbound rules from the traditional
-concept above.
+With zone-based firewalls, a new concept applies. In addition to the standard
+in and out traffic flows, a local flow enables traffic originating from and
+destined to the router itself. This means you must configure additional rules to
+secure the firewall from the network, in addition to the existing inbound and
+outbound rules.
 
-To configure VyOS with the
-:doc:`zone-based firewall configuration </configuration/firewall/zone>`
+To configure VyOS with zone-based firewall, see
+:doc:`Zone-Based Firewall Configuration </configuration/firewall/zone>`.
 
-As the example image below shows, the device now needs rules to allow/block
+As the following example image shows, you must configure rules to allow or block
 traffic to or from the services running on the device that have open
 connections on that interface.
 

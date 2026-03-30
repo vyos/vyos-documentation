@@ -1,4 +1,4 @@
-:lastproofread: 2024-07-03
+:lastproofread: 2026-03-30
 
 .. _firewall-groups-configuration:
 
@@ -11,20 +11,20 @@ Configuration
 *************
 
 Firewall groups represent collections of IP addresses, networks, ports,
-mac addresses, domains or interfaces. Once created, a group can be referenced
-by firewall, nat and policy route rules as either a source or destination
-matcher, and/or as inbound/outbound in the case of interface group.
+MAC addresses, domains, or interfaces. You can reference a group in firewall,
+NAT, and policy route rules as either a source or destination matcher, and/or
+as inbound or outbound in the case of interface groups.
 
 Address Groups
 ==============
 
-In an **address group** a single IP address or IP address range is defined.
+An **address group** contains a single IP address or IP address range.
 
 .. cfgcmd:: set firewall group address-group <name> address [address |
    address range]
 .. cfgcmd:: set firewall group ipv6-address-group <name> address <address>
 
-   Define a IPv4 or a IPv6 address group
+   Define an IPv4 or IPv6 address group.
 
    .. code-block:: none
 
@@ -35,30 +35,31 @@ In an **address group** a single IP address or IP address range is defined.
 .. cfgcmd:: set firewall group address-group <name> description <text>
 .. cfgcmd:: set firewall group ipv6-address-group <name> description <text>
 
-   Provide a IPv4 or IPv6 address group description
+   Provide an IPv4 or IPv6 address group description.
 
 Remote Groups
 ==============
 
-A **remote-group** takes an argument of a URL hosting a linebreak-deliminated
-list of IPv4 and/or IPv6 addresses, CIDRs and ranges. VyOS will pull this list periodicity
-according to the frequency defined in the firewall **resolver-interval** and load
-matching entries into the group for use in rules. The list will be cached in
-persistent storage, so in cases of update failure rules will still function.
+A **remote-group** uses a URL that hosts a newline-delimited list of IPv4
+and/or IPv6 addresses, CIDRs, and ranges. VyOS pulls this list periodically
+according to the frequency you define in the firewall **resolver-interval**
+and loads matching entries into the group for use in rules. The list is cached
+in persistent storage, so rules continue to function if updates fail.
 
 .. cfgcmd:: set firewall group remote-group <name> url <http(s) url>
 
-   Define remote list of IPv4 and/or IPv6 addresses/ranges/CIDRs to fetch
+   Specify a remote list of IPv4 and/or IPv6 addresses, ranges, and CIDRs
+   to fetch.
 
 .. cfgcmd:: set firewall group remote-group <name> description <text>
 
-   Set a description for a remote group
+   Set a description for a remote group.
 
-The format of the remote list is very flexible. VyOS will attempt to parse the
-first word of each line as an entry, and will skip if it cannot find a valid
-match. Lines that begin with an alphanumeric character but do not match valid IPv4
-or IPv6 addresses, ranges, or CIDRs will be logged to the system log. Below is a
-list of acceptable matches that would be parsed correctly:
+The remote list format is flexible. VyOS attempts to parse the first word of
+each line as an entry and skips lines it cannot match. Lines that begin with
+an alphanumeric character but do not match valid IPv4 or IPv6 addresses,
+ranges, or CIDRs are logged to the system log. The following examples show
+acceptable formats that VyOS parses correctly:
 
 .. code-block:: none
 
@@ -72,15 +73,14 @@ list of acceptable matches that would be parsed correctly:
 Network Groups
 ==============
 
-While **network groups** accept IP networks in CIDR notation, specific
-IP addresses can be added as a 32-bit prefix. If you foresee the need
-to add a mix of addresses and networks, then a network group is
-recommended.
+**Network groups** accept IP networks in CIDR notation. You can add specific
+IP addresses as a 32-bit prefix. If you need to add a mix of addresses and
+networks, use a network group.
 
 .. cfgcmd:: set firewall group network-group <name> network <CIDR>
 .. cfgcmd:: set firewall group ipv6-network-group <name> network <CIDR>
 
-   Define a IPv4 or IPv6 Network group.
+   Define an IPv4 or IPv6 network group.
 
    .. code-block:: none
 
@@ -100,7 +100,7 @@ An **interface group** represents a collection of interfaces.
 
 .. cfgcmd:: set firewall group interface-group <name> interface <text>
 
-   Define an interface group. Wildcard are accepted too.
+   Define an interface group. Wildcards are accepted.
 
 .. code-block:: none
 
@@ -109,22 +109,21 @@ An **interface group** represents a collection of interfaces.
 
 .. cfgcmd:: set firewall group interface-group <name> description <text>
 
-   Provide an interface group description
+   Provide an interface group description.
 
 Port Groups
 ===========
 
-A **port group** represents only port numbers, not the protocol. Port
-groups can be referenced for either TCP or UDP. It is recommended that
-TCP and UDP groups are created separately to avoid accidentally
-filtering unnecessary ports. Ranges of ports can be specified by using
-`-`.
+A **port group** represents only port numbers, not the protocol. You can
+reference port groups for either TCP or UDP. Create TCP and UDP groups
+separately to avoid accidentally filtering unnecessary ports. Specify port
+ranges by using `-`.
 
 .. cfgcmd:: set firewall group port-group <name> port
    [portname | portnumber | startport-endport]
 
    Define a port group. A port name can be any name defined in
-   /etc/services. e.g.: http
+   /etc/services. For example, ``http``.
 
    .. code-block:: none
 
@@ -152,7 +151,7 @@ A **mac group** represents a collection of mac addresses.
 
 .. cfgcmd:: set firewall group mac-group <name> description <text>
 
-   Provide a mac group description.
+      Provide a MAC group description.
 
 Domain Groups
 =============
@@ -169,24 +168,21 @@ A **domain group** represents a collection of domains.
 
 .. cfgcmd:: set firewall group domain-group <name> description <text>
 
-   Provide a domain group description.
+      Provide a domain group description.
 
 Dynamic Groups
 ==============
 
-Firewall dynamic groups are different from all the groups defined previously
-because, not only they can be used as source/destination in firewall rules,
-but members of these groups are not defined statically using vyos
-configuration.
-
-Instead, members of these groups are added dynamically using firewall
-rules.
+Firewall dynamic groups differ from other groups because you can use them as
+source/destination in firewall rules, and members are not defined statically
+in VyOS configuration. Instead, firewall rules dynamically add members to
+these groups.
 
 Defining Dynamic Address Groups
 -------------------------------
 
-Dynamic address group is supported by both IPv4 and IPv6 families.
-Commands used to define dynamic IPv4|IPv6 address groups are:
+Dynamic address groups support both IPv4 and IPv6 families. Use these
+commands to define dynamic IPv4 and IPv6 address groups:
 
 .. cfgcmd:: set firewall group dynamic-group address-group <name>
 .. cfgcmd:: set firewall group dynamic-group ipv6-address-group <name>
@@ -201,8 +197,8 @@ Add description to firewall groups:
 Adding elements to Dynamic Firewall Groups
 ------------------------------------------
 
-Once dynamic firewall groups are defined, they should be used in firewall
-rules in order to dynamically add elements to it.
+After you define dynamic firewall groups, use them in firewall rules to
+dynamically add elements to them.
 
 Commands used for this task are:
 
@@ -228,11 +224,11 @@ Commands used for this task are:
 .. cfgcmd:: set firewall ipv6 name <name> rule <1-999999> add-address-to-group
    source-address address-group <name>
 
-Also, specific timeouts can be defined per rule. In case rule gets a hit,
-a source or destinatination address will be added to the group, and this
-element will remain in the group until the timeout expires. If no timeout
-is defined, then the element will remain in the group until next reboot,
-or until a new commit that changes firewall configuration is done.
+You can define specific timeouts per rule. When a rule matches, the source or
+destination address is added to the group, and the element remains in the group
+until the timeout expires. If you do not define a timeout, the element remains
+in the group until the next reboot or until you commit firewall configuration
+changes.
 
 .. cfgcmd:: set firewall ipv4 [forward | input | output] filter rule
    <1-999999> add-address-to-group [destination-address | source-address]
@@ -259,7 +255,7 @@ Timeout can be defined using seconds, minutes, hours or days:
 Using Dynamic Firewall Groups
 -----------------------------
 
-As any other firewall group, dynamic firewall groups can be used in firewall
+Like other firewall groups, you can use dynamic firewall groups in firewall
 rules as matching options. For example:
 
 .. code-block:: none
@@ -274,10 +270,9 @@ Examples
 General example
 ===============
 
-As said before, once firewall groups are created, they can be referenced
-either in firewall, nat, nat66 and/or policy-route rules.
-
-Here is an example were multiple groups are created:
+After you create firewall groups, you can reference them in firewall, NAT,
+NAT66, and/or policy-route rules. The following example creates multiple
+groups:
 
    .. code-block:: none
 
@@ -314,10 +309,9 @@ And next, some configuration example where groups are used:
 Port knocking example
 =====================
 
-Using dynamic firewall groups, we can secure access to the router, or any other
-device if needed, by using the technique of port knocking.
-
-A 4 step port knocking example is shown next:
+You can use dynamic firewall groups with port knocking to secure access to
+the router or any other device. The following example shows a 4-step port
+knocking configuration:
 
    .. code-block:: none
 
@@ -371,11 +365,10 @@ Before testing, we can check the members of firewall groups:
       [edit]
       vyos@vyos#
 
-With this configuration, in order to get ssh access to the router, the user
-needs to:
+With this configuration, to gain SSH access to the router, the user must:
 
-1. Generate a new TCP connection with destination port 9990. As shown next,
-a new entry was added to dynamic firewall group **PN_01**
+1. Create a new TCP connection to destination port 9990. A new entry is added
+   to dynamic firewall group ``PN_01``.
 
    .. code-block:: none
 
@@ -390,8 +383,8 @@ a new entry was added to dynamic firewall group **PN_01**
       [edit]
       vyos@vyos#
 
-2. Generate a new TCP connection with destination port 9991. As shown next,
-a new entry was added to dynamic firewall group **PN_02**
+2. Create a new TCP connection to destination port 9991. A new entry is added
+   to dynamic firewall group ``PN_02``.
 
    .. code-block:: none
 
@@ -406,8 +399,8 @@ a new entry was added to dynamic firewall group **PN_02**
       [edit]
       vyos@vyos#
 
-3. Generate a new TCP connection with destination port 9992. As shown next,
-a new entry was added to dynamic firewall group **ALLOWED**
+3. Create a new TCP connection to destination port 9992. A new entry is added
+   to dynamic firewall group ``ALLOWED``.
 
    .. code-block:: none
 
@@ -422,7 +415,8 @@ a new entry was added to dynamic firewall group **ALLOWED**
       [edit]
       vyos@vyos#
 
-4. Now the user can connect through ssh to the router (assuming ssh is configured).
+4. Now you can connect via SSH to the router (assuming SSH is
+   configured).
 
 **************
 Operation-mode
@@ -431,9 +425,9 @@ Operation-mode
 .. opcmd:: show firewall group
 .. opcmd:: show firewall group <name>
 
-   Overview of defined groups. You see the firewall group name, type,
-   references (where the group is used), members, timeout and expiration (last
-   two only present in dynamic firewall groups).
+   Display an overview of defined groups, including the firewall group name,
+   type, references (where the group is used), members, timeout, and
+   expiration (the last two only apply to dynamic firewall groups).
 
 Here is an example of such command:
 

@@ -1,4 +1,4 @@
-:lastproofread: 2024-07-02
+:lastproofread: 2026-03-30
 
 .. _firewall-flowtables-configuration:
 
@@ -6,21 +6,18 @@
 Flowtables Firewall Configuration
 #################################
 
-.. note:: **Documentation under development**
+.. include:: /_include/need_improvement.txt
 
 ********
 Overview
 ********
 
-In this section there's useful information on all firewall configuration that
-can be done regarding flowtables.
+This section provides information on firewall configuration for flowtables.
 
 .. cfgcmd:: set firewall flowtables ...
 
-From the main structure defined in
-:doc:`Firewall Overview</configuration/firewall/index>`
-in this section you can find detailed information only for the next part
-of the general structure:
+To learn about the general traffic flow in VyOS firewalls,
+see :doc:`Firewall </configuration/firewall/index>`.
 
 .. code-block:: none
 
@@ -30,24 +27,23 @@ of the general structure:
                + ...
 
 
-Flowtables allow you to define a fastpath through the flowtable datapath.
-The flowtable supports for the layer 3 IPv4 and IPv6 and the layer 4 TCP
-and UDP protocols.
+Flowtables let you define a fastpath through the flowtable datapath.
+Flowtables support layer 3 (IPv4 and IPv6) and layer 4 (TCP and UDP)
+protocols.
 
 .. figure:: /_static/images/firewall-flowtable-packet-flow.png
 
-Once the first packet of the flow successfully goes through the IP forwarding
-path (black circles path), from the second packet on, you might decide to
-offload the flow to the flowtable through your ruleset. The flowtable
-infrastructure provides a rule action that allows you to specify when to add
-a flow to the flowtable (On forward filtering, red circle number 6)
+After the first packet successfully traverses the IP forwarding path (black
+circles path), you can offload subsequent packets to the flowtable through your
+ruleset. You specify when to add a flow to the flowtable during forward
+filtering (red circle number 6).
 
-A packet that finds a matching entry in the flowtable (flowtable hit) is
-transmitted to the output netdevice, hence, packets bypass the classic IP
-forwarding path and uses the **Fast Path** (orange circles path). The visible
-effect is that you do not see these packets from any of the Netfilter
-hooks coming after ingress. In case that there is no matching entry in the
-flowtable (flowtable miss), the packet follows the classic IP forwarding path.
+When a packet finds a matching entry in the flowtable (flowtable hit), the
+system transmits it to the output netdevice. This means packets bypass the
+classic IP forwarding path and use the **Fast Path** (orange circles path).
+As a result, you do not see these packets from any Netfilter hooks after
+ingress. If no matching entry exists in the flowtable (flowtable miss), the
+packet traverses the classic IP forwarding path.
 
 .. note:: **Flowtable Reference:**
    https://docs.kernel.org/networking/nf_flowtable.html
@@ -57,64 +53,68 @@ flowtable (flowtable miss), the packet follows the classic IP forwarding path.
 Flowtable Configuration
 ***********************
 
-In order to use flowtables, the minimal configuration needed includes:
+To use flowtables, you need to configure the following:
 
-   * Create flowtable: create flowtable, which includes the interfaces
+   * Create a flowtable that includes the interfaces
      that are going to be used by the flowtable.
 
-   * Create firewall rule: create a firewall rule, setting action to
-     ``offload`` and using desired flowtable for ``offload-target``.
+   * Create a firewall rule. Set the action to
+     ``offload`` and use your desired flowtable for ``offload-target``.
 
 Creating a flow table:
 
 .. cfgcmd:: set firewall flowtable <flow_table_name> interface <iface>
 
-   Define interfaces to be used in the flowtable.
+   Specify interfaces to use in the flowtable.
 
 .. cfgcmd:: set firewall flowtable <flow_table_name> description <text>
 
-Provide a description to the flow table.
+Provide a description for the flow table.
 
 .. cfgcmd:: set firewall flowtable <flow_table_name> offload
    <hardware | software>
 
-   Define type of offload to be used by the flowtable: ``hardware`` or
-   ``software``. By default, ``software`` offload is used.
+   Specify the offload type the flowtable uses: ``hardware`` or
+   ``software``. The default is ``software`` offload.
 
-.. note:: **Hardware offload:** should be supported by the NICs used.
+.. note:: **Hardware offload**: Make sure your network interface controller
+   (NIC) supports hardware offloading and that you have the necessary drivers
+    installed before enabling this option.
 
 Creating rules for using flow tables:
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    action offload
 
-   Create firewall rule in forward chain, and set action to ``offload``.
+   Create a firewall rule in the forward chain with the action set to
+   ``offload``.
 
 .. cfgcmd:: set firewall [ipv4 | ipv6] forward filter rule <1-999999>
    offload-target <flowtable>
 
-   Create firewall rule in forward chain, and define which flowtbale
-   should be used. Only applicable if action is ``offload``.
+   Create a firewall rule in the forward chain and specify which flowtable
+   to use. Only applicable if the action is ``offload``.
 
 *********************
 Configuration Example
 *********************
 
-Things to be considered in this setup:
+Consider the following in this setup:
 
-   * Two interfaces are going to be used in the flowtables: eth0 and eth1
+   * This example uses two interfaces in the flowtables: ``eth0`` and ``eth1``.
 
-   * Minimum firewall ruleset is provided, which includes some filtering rules,
-     and appropriate rules for using flowtable offload capabilities.
+   * The example provides a minimal firewall ruleset with filtering rules
+     and rules for using flowtable offload capabilities.
 
-As described, the first packet will be evaluated by the firewall path, so a
-desired connection should be explicitly accepted. Same thing should be taken
-into account for traffic in reverse order. In most cases state policies are
-used in order to accept a connection in the reverse path.
+The first packet is evaluated by the firewall path, so a
+desired connection should be explicitly accepted.
+The same should occur for traffic in reverse order.
+In most cases, state policies are
+used to accept a connection in the reverse path.
 
-We will only accept traffic coming from interface eth0, protocol tcp and
-destination port 1122. All other traffic trespassing the router should be
-blocked.
+In the following example only traffic coming from interface ``eth0``,
+TCP protocol, and destination port 1122 is accepted.
+All other traffic to the router is dropped.
 
 Commands
 --------
@@ -140,33 +140,32 @@ Commands
 Explanation
 -----------
 
-Analysis on what happens for desired connection:
+Here's what happens for a desired connection:
 
-   1. Firstly, a packet is received on eth0, with destination address 192.0.2.100,
-   protocol tcp and destination port 1122. Assume such destination address is
-   reachable through interface eth1.
+   1. A packet arrives on ``eth0`` with destination address ``192.0.2.100``, TCP
+      protocol, and destination port 1122. Assume this address is reachable
+      through interface ``eth1``.
 
-   2. Since this is the first packet, connection status of this connection,
-   so far is **new**. So neither rule 10 nor 20 are valid.
+   2. For this first packet, the connection state is **new**. Neither rule 10
+      nor rule 20 applies.
 
-   3. Rule 110 is hit, so connection is accepted.
+   3. Rule 110 matches, so the connection is accepted.
 
-   4. Once an answer from server 192.0.2.100 is seen in opposite direction,
-   connection state will be triggered to **established**, so this reply is
-   accepted in rule 20.
+   4. When the server 192.0.2.100 replies, the connection state becomes
+      **established**, and rule 20 accepts the reply.
 
-   5. The second packet for this connection is received by the router. Since
-   connection state is **established**, then rule 10 is hit, and a new entry
-   in the flowtable FT01 is added for this connection.
+   5. The router receives the second packet for this connection. Because the
+      connection state is **established**, rule 10 matches and adds a new
+      entry in the flowtable FT01 for this connection.
 
-   6. All the following packets will skip the traditional path, will be
-   offloaded and use the **Fast Path**.
+   6. Subsequent packets skip the traditional path and use the **Fast Path**
+      for offloading.
 
 Checks
 ------
 
-It's time to check the conntrack table, to see if any connections were accepted,
-and if it was properly offloaded
+Check the conntrack table to verify that the system accepted and properly
+offloaded connections.
 
 .. code-block:: none
 
