@@ -969,8 +969,6 @@ Intel AX200
 ===========
 
 The Intel AX200 card does not operate out of the box in ``access-point`` mode. 
-For more information, see 
-https://unix.stackexchange.com/questions/598275/intel-ax200-ap-mode. 
 
 You can still enable :abbr:`AP (Access Point)` functionality on this hardware 
 by applying the following configuration:
