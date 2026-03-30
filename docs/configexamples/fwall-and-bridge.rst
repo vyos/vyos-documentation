@@ -353,12 +353,16 @@ For example, while a host tries to get an IP address from a DHCP server in
 br1 all DHCP discover are dropped, and in br2, we can see that DHCP offers from
 untrusted servers are dropped:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
-  vyos@bridge:~$ show log firewall bridge 
-  Sep 17 14:22:35 kernel: [bri-NAM-br2-fwd-22-D]IN=eth7 OUT=eth5 MAC=50:00:00:09:00:00:50:00:00:04:00:00:08:00 SRC=10.2.2.199 DST=10.2.2.92 LEN=322 TOS=0x10 PREC=0x00 TTL=128 ID=0 DF PROTO=UDP SPT=67 DPT=68 LEN=302 
-  Sep 17 14:28:18 kernel: [bri-NAM-br1-pre-10-D]IN=eth3 OUT= MAC=ff:ff:ff:ff:ff:ff:00:50:79:66:68:0c:08:00 SRC=0.0.0.0 DST=255.255.255.255 LEN=392 TOS=0x10 PREC=0x00 TTL=16 ID=0 PROTO=UDP SPT=68 DPT=67 LEN=372 
-  Sep 17 14:28:19 kernel: [bri-NAM-br1-pre-10-D]IN=eth3 OUT= MAC=ff:ff:ff:ff:ff:ff:00:50:79:66:68:0c:08:00 SRC=0.0.0.0 DST=255.255.255.255 LEN=392 TOS=0x10 PREC=0x00 TTL=16 ID=0 PROTO=UDP SPT=68 DPT=67 LEN=372 
+  vyos@bridge:~$ show log firewall bridge
+  Sep 17 14:22:35 kernel: [bri-NAM-br2-fwd-22-D]IN=eth7 OUT=eth5 MAC=50:00:00:09:00:00:50:00:00:04:00:00:08:00 SRC=10.2.2.199 DST=10.2.2.92 LEN=322 TOS=0x10 PREC=0x00 TTL=128 ID=0 DF PROTO=UDP SPT=67 DPT=68 LEN=302
+  Sep 17 14:28:18 kernel: [bri-NAM-br1-pre-10-D]IN=eth3 OUT= MAC=ff:ff:ff:ff:ff:ff:00:50:79:66:68:0c:08:00 SRC=0.0.0.0 DST=255.255.255.255 LEN=392 TOS=0x10 PREC=0x00 TTL=16 ID=0 PROTO=UDP SPT=68 DPT=67 LEN=372
+  Sep 17 14:28:19 kernel: [bri-NAM-br1-pre-10-D]IN=eth3 OUT= MAC=ff:ff:ff:ff:ff:ff:00:50:79:66:68:0c:08:00 SRC=0.0.0.0 DST=255.255.255.255 LEN=392 TOS=0x10 PREC=0x00 TTL=16 ID=0 PROTO=UDP SPT=68 DPT=67 LEN=372
+
+.. start_vyoslinter
 
 
 And with operational mode commands, we can check rules matchers, actions, and

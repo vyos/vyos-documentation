@@ -4,6 +4,9 @@
 VTI - Virtual Tunnel Interface
 ##############################
 
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 Set Virtual Tunnel Interface
 
 .. code-block:: none
