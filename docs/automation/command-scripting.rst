@@ -1,15 +1,16 @@
-:lastproofread: 2023-01-16
+:lastproofread: 2026-03-16
 
 .. _command-scripting:
 
-Command Scripting
+Command scripting
 =================
 
 VyOS supports executing configuration and operational commands non-interactively
 from shell scripts.
 
-To include VyOS specific functions and aliases you need to ``source
-/opt/vyatta/etc/functions/script-template`` files at the top of your script.
+To include VyOS-specific functions and aliases, source the 
+``/opt/vyatta/etc/functions/script-template`` file at the beginning of your 
+script.
 
 .. code-block:: none
 
@@ -33,8 +34,11 @@ following command:
 Run configuration commands
 --------------------------
 
-Configuration commands are executed just like from a normal config session. For
-example, if you want to disable a BGP peer on VRRP transition to backup:
+In scripts, present configuration commands as in a standard configuration 
+session. 
+
+For example, to disable a BGP peer during a VRRP transition to the backup 
+state, use the following syntax:
 
 .. code-block:: none
 
@@ -49,8 +53,7 @@ example, if you want to disable a BGP peer on VRRP transition to backup:
 Run operational commands
 ------------------------
 
-Unlike a normal configuration session, all operational commands must be
-prepended with ``run``, even if you haven't created a session with configure.
+In scripts, **always** prefix operational commands with ``run``.
 
 .. code-block:: none
 
@@ -62,8 +65,8 @@ prepended with ``run``, even if you haven't created a session with configure.
 Run commands remotely
 ---------------------
 
-Sometimes you simply want to execute a bunch of op-mode commands via SSH on
-a remote VyOS system.
+You can execute multiple **operational commands** on a remote VyOS system by 
+passing a script block over SSH.
 
 .. code-block:: none
 
@@ -73,7 +76,7 @@ a remote VyOS system.
   exit
   EOF
 
-Will return:
+Example output:
 
 .. code-block:: none
 
@@ -89,10 +92,10 @@ Will return:
 Other script languages
 ----------------------
 
-If you want to script the configs in a language other than bash you can have
-your script output commands and then source them in a bash script.
+If you use a scripting language other than bash, configure your script to 
+output the relevant commands, and then source that output into a bash script.
 
-Here is a simple example:
+The following example demonstrates this two-step process:
 
 .. code-block:: python
 
@@ -111,16 +114,14 @@ Here is a simple example:
   commit
 
 
-Executing Configuration Scripts
+Execute configuration scripts
 -------------------------------
 
-There is a pitfall when working with configuration scripts. It is tempting to
-call configuration scripts with "sudo" (i.e., temporary root permissions),
-because that's the common way on most Linux platforms to call system commands.
+In Linux, it is common practice to prefix system commands with ``sudo``.
 
-On VyOS this will cause the following problem: After modifying the configuration
-via script like this once, it is not possible to manually modify the config
-anymore:
+In VyOS, if you prefix a script that modifies the configuration with ``sudo`` 
+(see the code snippet below), subsequent manual configuration changes fail with 
+the ``Set failed`` error. Recovery requires a system reboot.
 
 .. code-block:: none
 
@@ -128,18 +129,15 @@ anymore:
   configure
   set ... # Any configuration parameter
 
-This will result in the following error message: ``Set failed`` If this happens,
-a reboot is required to be able to edit the config manually again.
-
-To avoid these problems, the proper way is to call a script with the
-``vyattacfg`` group, e.g., by using the ``sg`` (switch group) command:
+To avoid this issue, run scripts under the ``vyattacfg`` group using the ``sg`` 
+command:
 
 .. code-block:: none
 
   sg vyattacfg -c ./myscript.sh
 
-To make sure that a script is not accidentally called without the ``vyattacfg``
-group, the script can be safeguarded like this:
+To ensure the script is executed under the ``vyattacfg`` group, safeguard it as 
+follows:
 
 .. code-block:: none
 
@@ -147,12 +145,12 @@ group, the script can be safeguarded like this:
       exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
   fi
 
-Executing pre-hooks/post-hooks Scripts
+Executing pre-hooks/post-hooks scripts
 --------------------------------------
 
-VyOS has the ability to run custom  scripts before and after each commit
+VyOS allows you to run custom scripts **before** and **after** each commit.
 
-The default directories where your custom Scripts should be located are:
+Place your custom scripts in the following default directories:
 
 .. code-block:: none
 
@@ -162,15 +160,15 @@ The default directories where your custom Scripts should be located are:
   /config/scripts/commit/post-hooks.d  - Directory with scripts that run after
                                          each commit.
 
-Scripts are run in alphabetical order. Their names must consist entirely of
-ASCII upper- and lower-case letters,ASCII digits, ASCII underscores, and
-ASCII minus-hyphens.No other characters are allowed.
+Scripts run in alphabetical order. Filenames must consist only of ASCII letters 
+(upper and lowercase), digits (0-9), underscores (_), and hyphens (-). No other 
+characters are allowed.
 
-.. note:: Custom scripts are not executed with root privileges
-   (Use sudo inside if this is necessary).
+.. note:: Custom scripts are executed **without** root privileges. Prefix 
+   specific commands with ``sudo`` in your script when required.
 
-A simple example is shown below, where the ops command executed in
-the post-hook script is "show interfaces".
+The following example shows the output after executing a post-hook script 
+that runs the ``show interfaces`` command:
 
 .. code-block:: none
 
@@ -185,16 +183,16 @@ the post-hook script is "show interfaces".
   eth3             -                                 u/u
   lo               203.0.113.5/24                    u/u
 
-Preconfig on boot
------------------
+Preconfig script on boot
+------------------------
 
-The ``/config/scripts/vyos-preconfig-bootup.script`` script is called on boot
-before the VyOS configuration during boot process.
+VyOS runs ``/config/scripts/vyos-preconfig-bootup.script`` at boot, **before** 
+the system configuration is applied. 
 
-Any modifications were done to work around unfixed bugs and implement
-enhancements that are not complete in the VyOS system can be placed here.
+Use this script to apply **pre-configuration** workarounds for unresolved bugs 
+or enhancements not yet available in VyOS.
 
-The default file looks like this:
+The default script contains the following:
 
 .. code-block:: none
 
@@ -204,16 +202,16 @@ The default file looks like this:
   # services not available through the VyOS CLI system can be placed here.
 
 
-Postconfig on boot
-------------------
+Postconfig script on boot
+-------------------------
 
-The ``/config/scripts/vyos-postconfig-bootup.script`` script is called on boot
-after the VyOS configuration is fully applied.
+VyOS runs ``/config/scripts/vyos-postconfig-bootup.script`` at boot, **after** 
+the system configuration is applied.
 
-Any modifications were done to work around unfixed bugs and implement
-enhancements that are not complete in the VyOS system can be placed here.
+Use this script to apply **post-configuration** workarounds for unresolved bugs 
+or enhancements not yet available in VyOS.
 
-The default file looks like this:
+The default script contains the following:
 
 .. code-block:: none
 
@@ -222,6 +220,5 @@ The default file looks like this:
   # applied. Any modifications required to work around unfixed bugs or use
   # services not available through the VyOS CLI system can be placed here.
 
-.. hint:: For configuration/upgrade management issues, modification of this
-   script should be the last option. Always try to find solutions based on CLI
-   commands first.
+.. warning:: For configuration or upgrade management issues, modify this script 
+   only as a last resort. Always try CLI-based solutions first.
