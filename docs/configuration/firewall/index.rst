@@ -4,6 +4,9 @@
 Firewall
 ########
 
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 .. warning:: Due to a boot-time race condition, all interfaces initialize
    before the firewall. This temporarily leaves the system open to all traffic
    and poses a security risk.

@@ -4,6 +4,9 @@
 Troubleshooting Site-to-Site VPN IPsec
 ######################################
 
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 ************
 Introduction
 ************
@@ -286,8 +289,8 @@ The reason of this problem is showed on the responder side.
  Jun 23 08:16:12 charon-systemd[2440]: no acceptable proposal found
  Jun 23 08:16:12 charon[2440]: 01[IKE] <PEER|5> failed to establish CHILD_SA, keeping IKE_SA
 
-Encryption **AES_CBC_128** is configured in IKE policy on the responder but **AES_CBC_256**
-is configured on the initiator side.
+Encryption **AES_CBC_128** is configured in IKE policy on the
+responder but **AES_CBC_256** is configured on the initiator side.
 
 Prefixes in Policies Mismatch
 =============================
