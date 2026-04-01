@@ -17,7 +17,8 @@ The following commands are covered in this section:
 
 .. cfgcmd:: set firewall bridge <options>
 
-From the main structure defined in :doc:`Firewall Overview</configuration/firewall/index>`
+From the main structure defined in
+:doc:`Firewall Overview</configuration/firewall/index>`
 in this section you can find detailed information only for the next part
 of the general structure:
 
