@@ -14,7 +14,7 @@ Overview
 
 This section provides information on firewall configuration for flowtables.
 
-.. cfgcmd:: set firewall flowtables ...
+.. cfgcmd:: set firewall flowtable ...
 
 To learn about the general traffic flow in VyOS firewalls,
 see :doc:`Firewall </configuration/firewall/index>`.
