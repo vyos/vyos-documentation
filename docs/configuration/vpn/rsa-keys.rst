@@ -2,6 +2,10 @@
 ########
 RSA-Keys
 ########
+
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 RSA can be used for services such as key exchanges and for encryption purposes.
 To make IPSec work with dynamic address on one/both sides, we will have to use
 RSA keys for authentication. They are very fast and easy to setup.
@@ -51,10 +55,14 @@ On the RIGHT:
 
 Now you are ready to setup IPsec. The key points:
 
-1. Since both routers do not know their effective public addresses, we set the local-address of the peer to "any".
-2. On the initiator, we set the peer address to its public address, but on the responder we only set the id.
-3. On the initiator, we need to set the remote-id option so that it can identify IKE traffic from the responder correctly.
-4. On the responder, we need to set the local id so that initiator can know who's talking to it for the point #3 to work.
+1. Since both routers do not know their effective public addresses,
+   we set the local-address of the peer to "any".
+2. On the initiator, we set the peer address to its public address,
+   but on the responder we only set the id.
+3. On the initiator, we need to set the remote-id option so that it
+   can identify IKE traffic from the responder correctly.
+4. On the responder, we need to set the local id so that initiator
+   can know who's talking to it for the point #3 to work.
 
 On the LEFT (static address):
 

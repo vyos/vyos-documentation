@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-04
+:lastproofread: 2026-03-05
 
 .. _vpp_config_nat_index:
 
@@ -21,22 +21,20 @@ VPP Dataplane in VyOS supports two types of NAT:
 NAT44
 =====
 
-This type is a classical NAT implementation where you can configure static and
-dynamic NAT rules. It supports both source and destination NAT - while the
-configuration may looks a bit unusual in comparison to traditional NAT
-implementations.
+This type is a classic NAT implementation where you can configure static
+and dynamic NAT rules. It supports both source and destination NAT. While the
+configuration may look a bit unusual compared to traditional NAT
+implementations, it provides flexibility in network configurations.
 
 CGNAT
 =====
 
-CGNAT is a special type of NAT44, which is highly useful for use cases where
-you have multiple local customers with a limited number of public IP
-addresses, and want to share public IP address space fairly between them. It
-uses a combination of IP address and port number to distinguish between
-different customers.
+CGNAT is a special type of NAT44, which is highly useful when you have
+multiple local customers and a limited number of public IP addresses. It
+shares the public IP address space fairly between customers by using a
+combination of IP address and port number to distinguish between them.
 
-This type of NAT is often used by ISPs to provide internet access to their
-customers.
+ISPs often use this NAT type to provide internet access to customers.
 
 It supports only source NAT.
 

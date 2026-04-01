@@ -395,6 +395,7 @@ File contents of Ansible for vSphere
         vyos_config:
           lines:
             - set system name-server 192.0.2.1
+            - set system name-server 192.0.2.1
           save:
             true
 

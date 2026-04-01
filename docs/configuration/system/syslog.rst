@@ -51,22 +51,16 @@ Configure the general behavior of the syslog service.
    If configured, the device includes its :abbr:`FQDN (Fully Qualified Domain 
    Name)` in log messages, even if the syslog server is in the same domain.
 
-.. cfgcmd:: set system syslog source-address <address>
-
-   Configure the source IP address for log transmission to a remote server.
 
 Local logging
 -------------
 
 Configure which log messages to save to a local log file.
 
-.. cfgcmd:: set system syslog file <filename> facility <keyword> level <keyword>
+.. cfgcmd:: set system syslog local <filename> facility <keyword> level <keyword>
 
    **Configure syslog to save log messages for a specific facility and 
-   severity level to a local log file.** 
-
-   Logs matching the specified facility and severity level are saved to the 
-   local file at ``/var/log/messages``. 
+   severity level to ``/var/log/messages``.**
    
    Refer to the tables below for valid facility and severity options.
 

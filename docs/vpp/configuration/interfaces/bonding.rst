@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-04
+:lastproofread: 2026-03-09
 
 .. _vpp_config_interfaces_bonding:
 
@@ -8,7 +8,10 @@
 VPP Bonding Configuration
 #########################
 
-VPP bonding interfaces provide link aggregation capabilities, combining multiple physical interfaces into a single logical interface for increased bandwidth and redundancy. VPP bonding offers high-performance packet processing compared to traditional Linux bonding.
+VPP bonding interfaces provide link aggregation capabilities by combining
+multiple physical interfaces into a single logical interface for increased
+bandwidth and redundancy. VPP bonding offers high-performance packet
+processing compared to traditional Linux bonding.
 
 Basic Configuration
 -------------------
@@ -20,8 +23,11 @@ To create a VPP bonding interface:
 
 .. cfgcmd:: set interfaces vpp bonding <vppbondN>
 
-   Create a bonding interface where ``<vppbondN>`` follows the naming convention vppbond0, vppbond1, etc.
-   LCP kernel pair interface bound to the VPP bonding interface is created automatically. This allows standard Linux networking tools and services to interact with the VPP bond.
+   Create a bonding interface where ``<vppbondN>`` follows the naming
+   convention ``vppbond0``, ``vppbond1``, and so on. A kernel pair interface is
+   automatically created for the VPP bonding interface. This allows
+   standard Linux networking tools and services to interact with the VPP
+   bond.
 
 **Example:**
 
@@ -47,7 +53,8 @@ Administrative Control
 
 .. cfgcmd:: set interfaces vpp bonding <vppbondN> disable
 
-   Administratively disable the bonding interface. By default, interfaces are enabled.
+   Administratively disable the bonding interface. By default, interfaces
+   are enabled.
 
 Member Interface Configuration
 ------------------------------
@@ -55,9 +62,11 @@ Member Interface Configuration
 Adding Member Interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set interfaces vpp bonding <vppbondN> member interface <interface-name>
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> member interface
+   <interface-name>
 
-   Add physical interfaces as members of the bond. Multiple interfaces can be added to the same bond.
+   Add physical interfaces as members of the bond. You can add multiple
+   interfaces to the same bond.
 
 **Example:**
 
@@ -68,7 +77,8 @@ Adding Member Interfaces
 
 .. note::
 
-   Member interfaces should be of the same speed and duplex for optimal performance and already be attached to VPP.
+   Member interfaces must have the same speed and duplex for optimal
+   performance. They must already be attached to VPP.
 
 Bonding Modes
 -------------
@@ -96,7 +106,8 @@ Bonding Modes
 Hash Policies
 -------------
 
-For load balancing modes, configure how traffic is distributed across member interfaces:
+For load balancing modes, configure how the system distributes traffic
+across member interfaces:
 
 .. cfgcmd:: set interfaces vpp bonding <vppbondN> hash-policy <policy>
 
@@ -134,7 +145,8 @@ IP Address Configuration
 
 .. cfgcmd:: set interfaces vpp bonding <vppbondN> address <ip-address/prefix>
 
-   Configure IPv4 or IPv6 addresses on the kernel interface. Multiple addresses can be assigned.
+   Configure IPv4 or IPv6 addresses on the kernel interface. You can
+   assign multiple addresses.
 
 **Examples:**
 
@@ -155,7 +167,8 @@ MTU Configuration
 
 .. cfgcmd:: set interfaces vpp bonding <vppbondN> mtu <size>
 
-   Set the Maximum Transmission Unit (MTU) for the kernel interface. The MTU must be compatible with the connected VPP interface.
+   Set the Maximum Transmission Unit (MTU) for the kernel interface. The
+   MTU must be compatible with the connected VPP interface.
 
 **Example:**
 
@@ -165,12 +178,14 @@ MTU Configuration
 
 .. note::
 
-   Ensure the MTU setting matches or is smaller than the MTU supported by the associated VPP interface to avoid issues.
+   The MTU setting must match or be smaller than the MTU supported by the
+   associated VPP interface.
 
 VLAN Configuration
 ------------------
 
-VPP kernel interfaces support VLAN (Virtual LAN) sub-interfaces for network segmentation.
+VPP kernel interfaces support VLAN (Virtual LAN) sub-interfaces for
+network segmentation.
 
 Creating VLAN Sub-interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -188,11 +203,14 @@ Creating VLAN Sub-interfaces
 VLAN Sub-interface Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-VLAN sub-interfaces support the same configuration options as the parent interface:
+VLAN sub-interfaces support the same configuration options as the parent
+interface:
 
-.. cfgcmd:: set interfaces vpp bonding <vppbondN> vif <vlan-id> address <ip-address/prefix>
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> vif <vlan-id> address
+   <ip-address/prefix>
 
-.. cfgcmd:: set interfaces vpp bonding <vppbondN> vif <vlan-id> description <description>
+.. cfgcmd:: set interfaces vpp bonding <vppbondN> vif <vlan-id> description
+   <description>
 
 .. cfgcmd:: set interfaces vpp bonding <vppbondN> vif <vlan-id> disable
 
@@ -237,6 +255,9 @@ Here's a complete example configuring a bonding interface with LACP:
 Best Practices
 --------------
 
-* Use **802.3ad mode** with LACP-capable switches for best performance and standards compliance
-* Configure **layer3+4 hash policy** for environments with multiple traffic flows
-* Ensure member interfaces have identical capabilities (speed, duplex, MTU)
+* Use **802.3ad mode** with LACP-capable switches for best performance
+  and standards compliance.
+* Configure **layer3+4 hash policy** for environments with multiple
+  traffic flows.
+* Ensure member interfaces have identical settings (speed, duplex,
+  MTU).

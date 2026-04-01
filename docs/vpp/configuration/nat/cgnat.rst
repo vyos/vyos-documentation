@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-04
+:lastproofread: 2026-03-03
 
 .. _vpp_config_nat_cgnat:
 
@@ -8,37 +8,35 @@
 VPP CGNAT Configuration
 #######################
 
-The Carrier-grade NAT (CGNAT) is a special type of NAT mainly targeted for
-usage by Internet Service Providers (ISPs) to manage the limited pool of
-public IP addresses. It solves two main problems:
+Carrier-grade NAT (CGNAT) is a NAT type designed for Internet Service
+Providers (ISPs) to manage limited pools of public IP addresses. It
+solves two main problems:
 
-* allows to fairly share a limited number of public IP addresses between
-   multiple customers, ensuring they all have access to the internet and cannot
-   interfere with each other.
-* allows to track and log the usage of public IP addresses by different
-   customers, which is often a regulatory requirement.
+* Enables fair sharing of a limited number of public IP addresses among
+  multiple customers, ensuring all have internet access without interfering
+  with each other.
+* Enables tracking and logging of public IP address usage by different
+  customers, which is often a regulatory requirement.
 
-The CGNAT configuration is a straightforward process. It involves defining the
-inside and outside interfaces and creating the necessary rules to manage the
-translation of private IP addresses to public IP addresses.
+CGNAT configuration is straightforward. Define the inside and outside
+interfaces, then create rules to manage the translation of private IP
+addresses to public IP addresses.
 
 .. warning::
 
-   **Enabling CGNAT** on an interface (both inside and outside) **disables
-   normal routing** on these interfaces, **also as an management access** to
-   VyOS router itself.
-
+   **Enabling CGNAT** on an interface (both inside and outside)
+   **disables normal routing** on these interfaces and **blocks management
+   access** to the VyOS router itself.
+   
    Ensure you have an alternative management path to the router before applying
-   CGNAT configuration! If router-local traffic (for example SSH or DNS) must
-   remain reachable on a CGNAT interface, configure appropriate CGNAT exclude
-   rules.
+   your CGNAT configuration.
 
 Interface Configuration
 -----------------------
 
-First, you need to define the inside and outside interfaces. The inside
-interface is connected to the private network, while the outside interface is
-connected to the public network.
+Define the inside and outside interfaces. The inside interface connects
+to the private network, while the outside interface connects to the public
+network.
 
 .. cfgcmd::
 
@@ -60,19 +58,19 @@ Next, you need to create the NAT rules.
 
    set vpp nat cgnat rule <rule-number> description <description>
 
-Allows you to describe the rule for easier identification.
+Add a description to the rule for easier identification.
 
 .. cfgcmd::
 
    set vpp nat cgnat rule <rule-number> inside-prefix <inside-prefix>
 
-Sets the inside prefix (private IP range) that will be translated.
+Specify the inside prefix (private IP range) to translate.
 
 .. cfgcmd::
 
    set vpp nat cgnat rule <rule-number> outside-prefix <outside-prefix>
 
-Sets the outside prefix (public IP range) that will be used for translation.
+Specify the outside prefix (public IP range) to use for translation.
 
 Exclude Rules Configuration
 ---------------------------
@@ -112,9 +110,9 @@ Matches a specific local port (or ICMP identifier in case of ICMP protocol).
    Exclude-rule validation rules:
 
    * ``local-address`` must be specified.
-    * ``protocol`` and ``local-port`` must either both be specified or both be
+   * ``protocol`` and ``local-port`` must either both be specified or both be
        omitted.
-    * Duplicate identity mappings are not allowed (same local-address,
+   * Duplicate identity mappings are not allowed (same local-address,
        protocol, local-port tuple).
 
 .. note::
@@ -129,12 +127,12 @@ Matches a specific local port (or ICMP identifier in case of ICMP protocol).
    
    CGNAT memory usage scales with the number of internal customers.
 
-   **Each 256 customers** (equivalent to a /24 subnet) requires approximately
-   **4 MB of main heap memory**. This memory is used for maintaining
+   **Each 256 customers** (equivalent to a /24 subnet) requires
+   approximately **4 MB of main heap memory**. This memory maintains
    customer-to-port mappings and session state information.
 
-   Ensure your VPP main heap size is configured appropriately based on your
-   expected customer count. See :ref:`VPP Memory Configuration
+   Configure your VPP main heap size appropriately based on your expected
+   customer count. See :ref:`VPP Memory Configuration
    <vpp_config_dataplane_memory>` for details on adjusting main heap size.
 
 Session Limitations
@@ -142,18 +140,18 @@ Session Limitations
 
 CGNAT has built-in session limitations to ensure fair resource allocation:
 
-**Each customer (internal IP address) is limited to a maximum of 1000
-simultaneous sessions**, even if more than 1000 ports are allocated to that
-customer. This limitation applies to all types of sessions (TCP, UDP, ICMP).
+Each customer (internal IP address) is limited to a maximum of 1000
+simultaneous sessions, even if more than 1000 ports are allocated to that
+customer. This limitation applies to all session types (TCP, UDP, ICMP).
 
 Timeouts Configuration
 ----------------------
 
-In some cases, you might want to adjust the timers for the NAT sessions. This
-can help to optimize the address space usage by controlling how long a session
-remains active, and how long it occupies an IP address and port combination.
+You can adjust NAT session timers to optimize address space usage by
+controlling how long sessions remain active and how long they occupy IP
+address and port combinations.
 
-This setting can be adjusted for different protocols individually:
+Adjust these settings for different protocols individually:
 
 .. code-block::
 
@@ -165,7 +163,7 @@ This setting can be adjusted for different protocols individually:
 Example Configuration
 ---------------------
 
-Here is an example configuration for a CGNAT setup, assuming:
+Here is an example CGNAT configuration with these assumptions:
 
 * Inside interface: ``eth2``
 * Outside interface: ``eth1``
@@ -209,14 +207,14 @@ Displays the configured inside and outside interfaces.
 
     show vpp nat cgnat sessions
 
-Displays the active NAT sessions. Be aware that this command can produce a
-large amount of output if there are many active sessions.
+Display active NAT sessions. This command may produce extensive output if
+many sessions are active.
 
 .. opcmd::
 
    show vpp nat cgnat mappings
 
-Displays the current NAT mappings, including inside and outside address
+Display current NAT mappings, including inside and outside address
 prefixes.
 
 .. code-block::
@@ -244,7 +242,7 @@ Displays configured CGNAT exclude rules (identity mappings).
 Potential Issues and Troubleshooting
 ====================================
 
-Configuration is failed to apply with error similar to:
+Configuration fails to apply with an error similar to:
 
 .. code-block::
     

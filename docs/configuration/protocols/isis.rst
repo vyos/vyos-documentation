@@ -118,12 +118,12 @@ IS-IS Global Configuration
   This command sets overload bit to avoid any transit traffic through this
   router. It is described in :rfc:`3787`.
 
-.. cfgcmd:: set protocols isis name default-information originate <ipv4|ipv6>
+.. cfgcmd:: set protocols isis default-information originate <ipv4|ipv6>
   level-1
 
   This command will generate a default-route in L1 database.
 
-.. cfgcmd:: set protocols isis name default-information originate <ipv4|ipv6>
+.. cfgcmd:: set protocols isis default-information originate <ipv4|ipv6>
   level-2
 
   This command will generate a default-route in L2 database.
@@ -244,8 +244,9 @@ Interface Configuration
 .. cfgcmd:: set protocols isis interface <interface> fast-reroute ti-lfa [level-1|level-2] [node-protection [link-fallback]]
   
   This command enables per-prefix TI-LFA fast reroute link or node protection.
-  When node protection is used, option link-fallback enables the computation and
-  use of link-protecting LFAs for destinations unprotected by node protection.
+  When node protection is used, option link-fallback enables the computation 
+  and use of link-protecting LFAs for destinations unprotected by node 
+  protection.
 
 Route Redistribution
 --------------------

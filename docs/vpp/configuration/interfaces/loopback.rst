@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-04
+:lastproofread: 2026-03-13
 
 .. _vpp_config_interfaces_loopback:
 
@@ -8,7 +8,11 @@
 VPP Loopback Interface Configuration
 ####################################
 
-VPP loopback interfaces provide virtual interfaces that remain administratively up and are commonly used for stable addressing, routing protocols, and as Bridge Virtual Interfaces (BVI). Loopback interfaces in VPP offer high-performance virtual connectivity with optimized packet processing.
+VPP loopback interfaces provide virtual interfaces that remain
+administratively up and are commonly used for stable addressing,
+routing protocols, and as Bridge Virtual Interfaces (BVI). Loopback
+interfaces in VPP offer high-performance virtual connectivity with optimized
+packet processing.
 
 Basic Configuration
 -------------------
@@ -18,7 +22,8 @@ Creating a Loopback Interface
 
 .. cfgcmd:: set interfaces vpp loopback <vpploN>
 
-   Create a loopback interface where ``<vpploN>`` follows the naming convention vpplo1, vpplo2, etc.
+   Create a loopback interface where ``<vpploN>`` follows the naming
+   convention ``vpplo1``, ``vpplo2``, etc.
 
 **Basic Example:**
 
@@ -43,14 +48,16 @@ Description and Administrative Control
 Kernel Interface Integration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Kernel interface is bounded to the VPP loopback interface for management and application compatibility.
+Kernel interface is bounded to the VPP loopback interface for management
+and application compatibility.
 
 IP Address Configuration
 ------------------------
 
 .. cfgcmd:: set interfaces vpp loopback <vpploN> address <ip-address/prefix>
 
-   Configure IPv4 or IPv6 addresses on the kernel interface. Multiple addresses can be assigned.
+   Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
+   addresses can be assigned.
 
 **Examples:**
 
@@ -67,12 +74,14 @@ MTU Configuration
 
 .. cfgcmd:: set interfaces vpp loopback <vpploN> mtu <size>
 
-   Set the Maximum Transmission Unit (MTU) for the kernel interface. The MTU must be compatible with the connected VPP interface.
+   Set the Maximum Transmission Unit (MTU) for the kernel interface.
+   The MTU must be compatible with the connected VPP interface.
 
 VLAN Configuration
 ------------------
 
-VPP kernel interfaces support VLAN (Virtual LAN) sub-interfaces for network segmentation.
+VPP kernel interfaces support VLAN (Virtual LAN) sub-interfaces for network
+segmentation.
 
 Creating VLAN Sub-interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,11 +93,14 @@ Creating VLAN Sub-interfaces
 VLAN Sub-interface Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-VLAN sub-interfaces support the same configuration options as the parent interface:
+VLAN sub-interfaces support the same configuration options as the parent
+interface:
 
-.. cfgcmd:: set interfaces vpp loopback <vpploN> vif <vlan-id> address <ip-address/prefix>
+.. cfgcmd:: set interfaces vpp loopback <vpploN> vif <vlan-id> address
+   <ip-address/prefix>
 
-.. cfgcmd:: set interfaces vpp loopback <vpploN> vif <vlan-id> description <description>
+.. cfgcmd:: set interfaces vpp loopback <vpploN> vif <vlan-id> description
+   <description>
 
 .. cfgcmd:: set interfaces vpp loopback <vpploN> vif <vlan-id> disable
 

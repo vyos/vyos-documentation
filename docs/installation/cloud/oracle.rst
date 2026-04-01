@@ -4,6 +4,12 @@
 Oracle
 ######
 
+.. note:: This page is a stub and needs expansion.
+   Contributions welcome via the
+   VyOS `documentation repository`_.
+
+.. _documentation repository: https://github.com/vyos/vyos-documentation
+
 .. stop_vyoslinter
 References
 ----------

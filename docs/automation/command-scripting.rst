@@ -17,6 +17,19 @@ To include VyOS specific functions and aliases you need to ``source
   source /opt/vyatta/etc/functions/script-template
   exit
 
+Script execute permissions
+--------------------------
+
+Simply placing script files in ``/config/scripts/`` does not mean the system 
+can execute them.
+
+To make your scripts executable, grant them **execute permissions**. Use the 
+following command:
+
+.. code-block:: none
+
+  chmod +x /config/scripts/script-name.sh
+
 Run configuration commands
 --------------------------
 

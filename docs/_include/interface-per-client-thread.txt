@@ -1,11 +1,11 @@
 .. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} per-client-thread
 
-  Provides a per-device control to enable/disable the threaded mode for
-  all the NAPI instances of the given network device, without the need for
-  a device up/down.
+  **Enable threaded mode for all NAPI instances of the specified network device.**
 
-  If CLI option is not specified, this feature is disabled.
+  Enabling threaded mode doesn't affect device operation and can be done while the device is up. 
+
+  This mode is disabled by default.
 
   Example:
 

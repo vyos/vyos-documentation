@@ -308,6 +308,14 @@ execute custom checks in addition to the master router reachability. Transition
 scripts are executed when VRRP state changes from master to backup or fault and
 vice versa and can be used to enable or disable certain services, for example.
 
+.. note:: Simply placing script files in ``/config/scripts/`` does not mean the 
+   system can execute them. To make custom scripts executable, grant them 
+   **execute permissions**. Use the following command:
+
+   .. code-block:: none
+
+     chmod +x /config/scripts/script-name.sh
+
 .. warning:: It is not recommended to change VRRP configuration inside health-check
    and transition scripts.
 

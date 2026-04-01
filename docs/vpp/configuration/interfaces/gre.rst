@@ -1,4 +1,4 @@
-:lastproofread: 2025-09-04
+:lastproofread: 2026-03-13
 
 .. _vpp_config_interfaces_gre:
 
@@ -8,7 +8,11 @@
 VPP GRE Configuration
 #####################
 
-VPP GRE interfaces provide Generic Routing Encapsulation tunneling with high-performance packet processing. GRE tunnels encapsulate various protocols within IP packets, enabling connectivity across Layer 3 networks while maintaining the performance benefits of VPP's optimized data plane.
+VPP GRE interfaces provide Generic Routing Encapsulation tunneling with
+high-performance packet processing. GRE tunnels encapsulate various
+protocols within IP packets, enabling connectivity across Layer 3
+networks while maintaining the performance benefits of VPP's optimized
+data plane.
 
 Basic Configuration
 -------------------
@@ -18,15 +22,18 @@ Creating a GRE Interface
 
 .. cfgcmd:: set interfaces vpp gre <vppgreN>
 
-   Create a GRE interface where ``<vppgreN>`` follows the naming convention vppgre1, vppgre2, etc.
+   Create a GRE interface where ``<vppgreN>`` follows the naming convention
+   ``vppgre1``, ``vppgre2``, etc.
 
 .. cfgcmd:: set interfaces vpp gre <vppgreN> remote <address>
 
-   Set the tunnel remote endpoint address. Supports both IPv4 and IPv6 addresses.
+   Set the tunnel remote endpoint address. Supports both IPv4 and IPv6
+   addresses.
 
 .. cfgcmd:: set interfaces vpp gre <vppgreN> source-address <address>
 
-   Set the tunnel source address. Must match an address configured on the local system.
+   Set the tunnel source address. Must match an address configured on
+   the local system.
 
 **Basic Example:**
 
@@ -57,21 +64,25 @@ Tunnel Type
 
    Set the GRE tunnel encapsulation type:
 
-   * ``l3`` - Generic Routing Encapsulation for network layer traffic (default)
-   * ``teb`` - Transparent Ethernet Bridge for Layer 2 frame transport
-   * ``erspan`` - Encapsulated Remote Switched Port Analyzer for traffic mirroring
+   * ``l3`` - Generic Routing Encapsulation for network layer traffic (default).
+   * ``teb`` - Transparent Ethernet Bridge for Layer 2 frame transport.
+   * ``erspan`` - Encapsulated Remote Switched Port Analyzer for traffic
+     mirroring.
 
 Kernel Interface Integration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LCP kernel pair interface bound to the VPP GRE interface is created automatically. This allows standard Linux networking tools and services to interact with the VPP GRE.
+LCP kernel pair interface bound to the VPP GRE interface is created
+automatically. This allows standard Linux networking tools and
+services to interact with the VPP GRE.
 
 IP Address Configuration
 ------------------------
 
 .. cfgcmd:: set interfaces vpp gre <vppgreN> address <ip-address/prefix>
 
-   Configure IPv4 or IPv6 addresses on the kernel interface. Multiple addresses can be assigned.
+   Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
+   addresses can be assigned.
 
 **Examples:**
 
@@ -88,7 +99,8 @@ MTU Configuration
 
 .. cfgcmd:: set interfaces vpp gre <vppgreN> mtu <size>
 
-   Set the Maximum Transmission Unit (MTU) for the kernel interface. The MTU must be compatible with the connected VPP interface.
+   Set the Maximum Transmission Unit (MTU) for the kernel interface.
+   The MTU must be compatible with the connected VPP interface.
 
 **Example:**
 
@@ -98,7 +110,8 @@ MTU Configuration
 
 .. note::
 
-   Ensure the MTU setting matches or is smaller than the MTU supported by the associated VPP interface to avoid issues.
+   The MTU size must not exceed the MTU size
+   supported by the associated VPP interface.
 
 
 Configuration Examples
@@ -152,7 +165,8 @@ GRE with Kernel Interface
 Bridge Integration
 ------------------
 
-GRE interfaces can be added as members to VPP bridges for Layer 2 switching. See :doc:`bridge` for detailed bridge configuration.
+GRE interfaces can be added as members to VPP bridges for Layer 2
+switching. See :doc:`bridge` for detailed bridge configuration.
 
 .. code-block:: none
 

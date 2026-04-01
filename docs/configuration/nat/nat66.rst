@@ -4,6 +4,9 @@
 NAT66(NPTv6)
 ############
 
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 :abbr:`NPTv6 (IPv6-to-IPv6 Network Prefix Translation)` is an address 
 translation technology based on IPv6 networks, used to convert an IPv6 
 address prefix in an IPv6 message into another IPv6 address prefix. 
@@ -151,8 +154,9 @@ R2:
   set service router-advert interface br1 prefix ::/0
 
 
-Use the following topology to translate internal user local addresses (``fc::/7``)
-to DHCPv6-PD provided prefixes from an ISP connected to a VyOS HA pair.
+Use the following topology to translate internal user local addresses
+(``fc::/7``) to DHCPv6-PD provided prefixes from an ISP connected to
+a VyOS HA pair.
 
 .. figure:: /_static/images/vyos_1_5_nat66_dhcpv6_wdummy.png
    :alt: VyOS NAT66 DHCPv6 using a dummy interface

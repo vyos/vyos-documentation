@@ -28,7 +28,7 @@ VyOS
   set interfaces tunnel tun1 ip adjust-mss '1336'
   set interfaces tunnel tun1 mtu '1376'
   set interfaces tunnel tun1 remote '10.1.1.6'
-  set interfaces tunnel tun1 source-address '88.2.2.1'
+  set interfaces tunnel tun1 source-address '198.51.100.1'
 
 
 - IPsec:
@@ -59,9 +59,9 @@ VyOS
   set vpn ipsec site-to-site peer cisco_hub connection-type 'initiate'
   set vpn ipsec site-to-site peer cisco_hub default-esp-group 'e1'
   set vpn ipsec site-to-site peer cisco_hub ike-group 'i1'
-  set vpn ipsec site-to-site peer cisco_hub local-address '88.2.2.1'
+  set vpn ipsec site-to-site peer cisco_hub local-address '198.51.100.1'
   set vpn ipsec site-to-site peer cisco_hub remote-address '10.1.1.6'
-  set vpn ipsec site-to-site peer cisco_hub tunnel 1 local prefix '88.2.2.1/32'
+  set vpn ipsec site-to-site peer cisco_hub tunnel 1 local prefix '198.51.100.1/32'
   set vpn ipsec site-to-site peer cisco_hub tunnel 1 protocol 'gre'
   set vpn ipsec site-to-site peer cisco_hub tunnel 1 remote prefix '10.1.1.6/32'
   set vpn ipsec site-to-site peer cisco_hub virtual-address '0.0.0.0'
@@ -141,7 +141,7 @@ Verification
   ---------        ----------                        ---  -----------
   eth0             -                                 u/u
   eth1             -                                 u/u
-  eth2             88.2.2.1/24                       u/u
+  eth2             198.51.100.1/24                       u/u
   eth3             172.16.1.2/24                     u/u
   lo               127.0.0.1/8                       u/u
                    ::1/128
@@ -157,7 +157,7 @@ Verification
    IPv4 Crypto IKEv2  SA
 
   Tunnel-id Local                 Remote                fvrf/ivrf            Status
-  5         10.1.1.6/4500         88.2.2.1/4500         none/none               READY
+  5         10.1.1.6/4500         198.51.100.1/4500         none/none               READY
         Encr: AES-CBC, keysize: 256, PRF: SHA256, Hash: SHA256, DH Grp:5, Auth sign: PSK, Auth verify: PSK
         Life/Active Time: 86400/2694 sec
         CE id: 0, Session-id: 2
