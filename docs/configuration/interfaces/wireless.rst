@@ -22,7 +22,7 @@ There are three modes of operation for a wireless interface:
 * Monitor mode lets the system passively monitor wireless traffic
 
 If the system detects an unconfigured wireless device, it will be automatically
-added the configuration tree, specifying any detected settings (for example,
+added to the configuration tree, specifying any detected settings (for example,
 its MAC address) and configured to run in monitor mode.
 
 *************
@@ -50,14 +50,6 @@ System Wide configuration
 Wireless options
 ================
 
-.. cfgcmd:: set system wireless country-code <cc>
-
-  Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
-  to indicate country in which the box is operating. This can limit available
-  channels and transmit power.
-
-  .. note:: This option is mandatory in Access-Point mode.
-
 .. cfgcmd:: set interfaces wireless <interface> channel <number>
 
   Channel number (IEEE 802.11), for 2.4Ghz (802.11 b/g/n/ax) channels range from
@@ -84,7 +76,7 @@ Wireless options
 
   By default, this bridging is allowed.
 
-.. cfgcmd:: set interfaces wireless <interface> max-stations
+.. cfgcmd:: set interfaces wireless <interface> max-stations <count>
 
   Maximum number of stations allowed in station table. New stations will be
   rejected after the station table is full. IEEE 802.11 has a limit of 2007
@@ -251,7 +243,11 @@ HT (High Throughput) capabilities (802.11n)
 VHT (Very High Throughput) capabilities (802.11ac)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. cfgcmd:: set interfaces wireless <interface> capabilities vht antenna-count
+.. stop_vyoslinter
+
+.. cfgcmd:: set interfaces wireless <interface> capabilities vht antenna-count <count>
+
+.. start_vyoslinter
 
   Number of antennas on this card
 
@@ -418,7 +414,7 @@ default physical device (``phy0``) is used.
   set system wireless country-code de
   set interfaces wireless wlan0 type station
   set interfaces wireless wlan0 address dhcp
-  set interfaces wireless wlan0 ssid Test
+  set interfaces wireless wlan0 ssid 'TEST'
   set interfaces wireless wlan0 security wpa passphrase '12345678'
 
 Resulting in
@@ -473,7 +469,7 @@ The WAP in this example has the following characteristics:
   set interfaces wireless wlan0 type access-point
   set interfaces wireless wlan0 channel 1
   set interfaces wireless wlan0 mode n
-  set interfaces wireless wlan0 ssid 'TEST'
+  set interfaces wireless wlan0 ssid 'Enterprise-TEST'
   set interfaces wireless wlan0 security wpa mode wpa2
   set interfaces wireless wlan0 security wpa cipher CCMP
   set interfaces wireless wlan0 security wpa radius server 192.168.3.10 key 'VyOSPassword'
@@ -848,7 +844,7 @@ with the AP being in the same room and in line-of-sight.
   set interfaces wireless wlan0 capabilities he beamform single-user-beamformer
   set interfaces wireless wlan0 capabilities he bss-color 13
   set interfaces wireless wlan0 capabilities he channel-set-width 134
-  set interfaces wireless wlan0 capabilities he capabilities he center-channel-freq freq-1 15
+  set interfaces wireless wlan0 capabilities he center-channel-freq freq-1 15
   set interfaces wireless wlan0 channel 5
   set interfaces wireless wlan0 description "802.11ax 6GHz"
   set interfaces wireless wlan0 mode ax

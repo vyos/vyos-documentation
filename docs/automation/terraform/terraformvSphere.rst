@@ -45,7 +45,7 @@ Terraform
 
   4 Copy all files into your Terraform project
   "/root/vsphereterraform" (vyos.tf, var.tf, terraform.tfvars,
-  version.tf), more detailed see `Structure of files Terrafom for vSphere`_
+  version.tf), more detailed see `Structure of files Terraform for vSphere`_
 
   5 Type the commands :
 
@@ -72,7 +72,7 @@ Ansible
 Start 
 
 
-Type the commands on your Terrafom instance:
+Type the commands on your Terraform instance:
    
 .. code-block:: none
 
@@ -83,7 +83,7 @@ Type the commands on your Terrafom instance:
 
 
 After executing all the commands you will have your VyOS instance on
-the vSphere with your configuration, it's a very convenient desition.
+the vSphere with your configuration, it's a very convenient decision.
 If you need to delete the instance please type the command:
 
 .. code-block:: none
@@ -91,7 +91,7 @@ If you need to delete the instance please type the command:
    terraform destroy
 
    
-Structure of files Terrafom for vSphere
+Structure of files Terraform for vSphere
 ---------------------------------------
 
 .. stop_vyoslinter
@@ -106,7 +106,7 @@ Structure of files Terrafom for vSphere
 
 .. start_vyoslinter
 
-File contents of Terrafom for vSphere
+File contents of Terraform for vSphere
 -------------------------------------
 
 vyos.tf

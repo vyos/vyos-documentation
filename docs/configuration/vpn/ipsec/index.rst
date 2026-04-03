@@ -12,10 +12,4 @@ IPsec
    remoteaccess_ipsec
    troubleshooting_ipsec
 
-pages to sort
-
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
-
 

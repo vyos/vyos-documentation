@@ -13,12 +13,4 @@ VPN
    pptp
    rsa-keys
    sstp
-
-
-pages to sort
-
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
-
    dmvpn

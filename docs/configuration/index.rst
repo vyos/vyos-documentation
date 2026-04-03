@@ -2,7 +2,7 @@
 Configuration Guide
 ###################
 
-The following structure represent the cli structure.
+The following structure represents the CLI structure.
 
 .. toctree::
    :maxdepth: 1

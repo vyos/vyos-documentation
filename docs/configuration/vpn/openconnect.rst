@@ -94,7 +94,7 @@ User Certificate Authentication
 
 .. stop_vyoslinter
 
-You can configure users to be authenticated by certificate by setting the authentication mode to certificate, and defining what field (by OID) in the certificate will be used to identify the username. Two pre-defined shortcuts for Common Name (OID 2.5.4.3) and User ID (OID 0.9.2342.19200300.100.1.1) have been provide as cn or uid. Otherwise a specific OID value must be provided.
+You can configure users to be authenticated by certificate by setting the authentication mode to certificate, and defining what field (by OID) in the certificate will be used to identify the username. Two pre-defined shortcuts for Common Name (OID 2.5.4.3) and User ID (OID 0.9.2342.19200300.100.1.1) have been provided as cn or uid. Otherwise a specific OID value must be provided.
 
 .. start_vyoslinter
 
