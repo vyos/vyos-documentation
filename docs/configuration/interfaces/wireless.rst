@@ -164,7 +164,8 @@ PPDU
 HT (High Throughput) capabilities (802.11n)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  Configuring HT mode options is required when using 802.11n or 802.11ax at 2.4GHz.
+  Configuring HT mode options is required when using 802.11n or
+  802.11ax at 2.4GHz.
 
 .. cfgcmd:: set interfaces wireless <interface> capabilities ht 40mhz-incapable
 
@@ -738,6 +739,8 @@ Example Configuration: WiFi-6 at 2.4GHz
 
 You may expect real throughputs around 10MBytes/s or higher in crowded areas.
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set system wireless country-code de
@@ -767,6 +770,8 @@ You may expect real throughputs around 10MBytes/s or higher in crowded areas.
   set interfaces wireless wlan0 ssid test.ax
   set interfaces wireless wlan0 type access-point
   commit
+
+.. start_vyoslinter
 
 Resulting in
 
@@ -827,10 +832,12 @@ Resulting in
 Example Configuration: WiFi-6e at 6GHz
 --------------------------------------
 
-You may expect real throughputs around 50MBytes/s to 150MBytes/s, 
+You may expect real throughputs around 50MBytes/s to 150MBytes/s,
 depending on obstructions by walls, water, metal or other materials
-with high electro-magnetic dampening at 6GHz. Best results are achieved 
+with high electro-magnetic dampening at 6GHz. Best results are achieved
 with the AP being in the same room and in line-of-sight.
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -857,6 +864,8 @@ with the AP being in the same room and in line-of-sight.
   set interfaces wireless wlan0 type access-point
   set interfaces wireless wlan0 stationary-ap
   commit
+
+.. start_vyoslinter
 
 Resulting in
 

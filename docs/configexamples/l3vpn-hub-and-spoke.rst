@@ -46,7 +46,8 @@ The following software was used in the creation of this document:
 **NOTE:** VyOS Router (tested with VyOS 1.4-rolling-202110310317) 
 –  The configurations below are specifically for VyOS 1.4.x.
 
-General information can be found in the :ref:`configuration/vrf/index:L3VPN VRFs` chapter.
+General information can be found in the
+:ref:`configuration/vrf/index:L3VPN VRFs` chapter.
 
 
 
@@ -64,8 +65,9 @@ Topology
 How does it work?
 *****************
 
-As we know the main assumption of L3VPN “Hub and Spoke” is, that the traffic 
-between spokes have to pass via hub, in our scenario VyOS-PE2 is the Hub PE 
+As we know the main assumption of L3VPN “Hub and Spoke” is, that the
+traffic between spokes have to pass via hub, in our scenario VyOS-PE2
+is the Hub PE
 and the VyOS-CE1-HUB is the central customer office device that is responsible 
 for controlling access between all spokes and announcing its network prefixes 
 (10.0.0.100/32). VyOS-PE2 has the main VRF (its name is BLUE_HUB), its 
@@ -325,10 +327,12 @@ At this step we are going to enable iBGP protocol on MPLS nodes and
 Route Reflectors (two routers for redundancy) that will deliver IPv4 
 VPN (L3VPN) routes between them:
 
+.. stop_vyoslinter
+
 - VyOS-RR1:
 
 .. code-block:: none
-   
+
    set protocols bgp system-as '65001'
    set protocols bgp neighbor 10.0.0.7 address-family ipv4-vpn route-reflector-client
    set protocols bgp neighbor 10.0.0.7 peer-group 'RR_VPNv4'
@@ -1117,4 +1121,7 @@ Finally, let’s check the reachability between CEs:
     3  * * *
     4  10.0.0.100 (10.0.0.100)  7.504 ms  7.480 ms  7.488 ms
 
-**Note:** At the moment, trace mpls doesn’t show labels/paths. So we’ll see * * *  for the transit routers of the mpls backbone.
+.. start_vyoslinter
+
+**Note:** At the moment, trace mpls doesn’t show labels/paths. So we’ll
+see ``* * *`` for the transit routers of the mpls backbone.

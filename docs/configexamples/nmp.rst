@@ -7,12 +7,14 @@ NMP example
 ###########
 
 Consider how to quickly set up NMP and VyOS for monitoring.
-NMP is multi-vendor network monitoring from 'SolarWinds' built to scale and expand with the needs of your network. 
+NMP is multi-vendor network monitoring from 'SolarWinds' built to
+scale and expand with the needs of your network.
 
 Configuration 'VyOS'
 ====================
 
-First prepare our VyOS router for connection to NMP. We have to set up the SNMP protocol and connectivity between the router and NMP.
+First prepare our VyOS router for connection to NMP. We have to set
+up the SNMP protocol and connectivity between the router and NMP.
 
 .. code-block:: none
 

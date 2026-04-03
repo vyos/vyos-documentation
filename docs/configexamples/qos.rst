@@ -9,8 +9,11 @@ QoS example
 Configuration 'dcsp' and shaper using QoS
 =========================================
 
-In this case, we'll try to make a simple lab using QoS and the general ability of the VyOS system.
-We recommend you to go through the main article about `QoS <https://docs.vyos.io/en/latest/configuration/trafficpolicy/index.html>`_ first.
+In this case, we'll try to make a simple lab using QoS and the
+general ability of the VyOS system.
+We recommend you to go through the main article about
+`QoS <https://docs.vyos.io/en/latest/configuration/trafficpolicy/index.html>`_
+first.
 
 
 Using the general schema for example:
@@ -20,8 +23,11 @@ Using the general schema for example:
    :align: center
    :alt: Network Topology Diagram
 
-We have four hosts on the local network 172.17.1.0/24. All hosts are labeled CS0 by default. We need to replace labels on all hosts except vpc8.
-We will replace the labels on the nearest router “VyOS3” using the IP addresses of the sources.
+We have four hosts on the local network 172.17.1.0/24. All hosts are
+labeled CS0 by default. We need to replace labels on all hosts except
+vpc8.
+We will replace the labels on the nearest router “VyOS3” using the IP
+addresses of the sources.
 
 * 172.17.1.2 CS0 -> CS4
 * 172.17.1.3 CS0 -> CS5
@@ -32,13 +38,18 @@ Next, we will replace only all CS4 labels on the “VyOS2” router.
 
 * CS4 -> CS5
 
-In the end, we will configure the traffic shaper using QoS mechanisms on the “VYOS2” router.
+In the end, we will configure the traffic shaper using QoS mechanisms
+on the “VYOS2” router.
 
 Configuration:
 ==============
 
-Set IP addresses on all VPCs and a default gateway 172.17.1.1. We'll use in this case only static routes. 
-On the VyOS3 router, we need to change the 'dscp' labels for the VPCs. To do this, we use this configuration.
+Set IP addresses on all VPCs and a default gateway 172.17.1.1. We'll
+use in this case only static routes.
+On the VyOS3 router, we need to change the 'dscp' labels for the
+VPCs. To do this, we use this configuration.
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -56,6 +67,8 @@ On the VyOS3 router, we need to change the 'dscp' labels for the VPCs. To do thi
     set qos policy shaper vyos3 default priority '7'
     set qos policy shaper vyos3 default queue-type 'fair-queue'
         set qos interface eth0 egress 'vyos3'
+
+.. start_vyoslinter
 
 Main rules:
 
@@ -85,7 +98,8 @@ After the interface eth0 on router VyOS3
    :align: center
    :alt: Network Topology Diagram
 
-On the router, VyOS4 set all traffic as CS4. We have to configure the default class and class for changing all labels from CS0 to CS4
+On the router, VyOS4 set all traffic as CS4. We have to configure the
+default class and class for changing all labels from CS0 to CS4
 
 .. code-block:: none
 
@@ -103,7 +117,8 @@ On the router, VyOS4 set all traffic as CS4. We have to configure the default cl
     set qos policy shaper vyos4 default queue-type 'fair-queue'
         set qos interface eth0 egress 'vyos4'
 
-Next on the router VyOS2 we will change labels on all incoming traffic only from CS4-> CS6
+Next on the router VyOS2 we will change labels on all incoming
+traffic only from CS4-> CS6
 
 .. image:: /_static/images/qos5.png
    :width: 80%
@@ -154,7 +169,10 @@ Next on the router VyOS2 we will change labels on all incoming traffic only from
    :align: center
    :alt: Network Topology Diagram
 
-In the end, on the router “VyOS2” we will set outgoing bandwidth limits between the “VyOS3” and “VyOS1” routers. Let's set a limit for IP 10.1.1.100 = 5 Mbps(Tx). We will check the result of the work with the help of the “iPerf” utility.
+In the end, on the router “VyOS2” we will set outgoing bandwidth
+limits between the “VyOS3” and “VyOS1” routers. Let's set a limit for
+IP 10.1.1.100 = 5 Mbps(Tx). We will check the result of the work
+with the help of the “iPerf” utility.
 
 Set up bandwidth limits on the eth2 interface of the router “VyOS2”.
 

@@ -40,9 +40,13 @@ client that fetches a certificate from Let's Encrypt an open certificate
 authority launched by the EFF, Mozilla, and others and deploys it to a web 
 server.
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   sudo certbot certonly --standalone --preferred-challenges http -d <domain name>
+
+.. start_vyoslinter
 
 Server Configuration
 ====================
@@ -66,6 +70,8 @@ authentication + OTP key can be used. Alternatively, OTP authentication only,
 without a password, can be used.
 To do this, an OTP configuration must be added to the configuration above:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set vpn openconnect authentication mode local <password-otp|otp>
@@ -73,6 +79,8 @@ To do this, an OTP configuration must be added to the configuration above:
   set vpn openconnect authentication local-users username <user> interval <interval (optional)>
   set vpn openconnect authentication local-users username <user> otp-length <otp-length (optional)>
   set vpn openconnect authentication local-users username <user> token-type <token-type (optional)>
+
+.. start_vyoslinter
 
 For generating an OTP key in VyOS, you can use the CLI command 
 (operational mode):
@@ -90,7 +98,8 @@ You can configure users to be authenticated by certificate by setting the authen
 
 .. start_vyoslinter
 
-The user's certificate must be signed by the certificate authority defined in the configuration for it to be validated for authentication.
+The user's certificate must be signed by the certificate authority
+defined in the configuration for it to be validated for authentication.
 
 .. code-block:: none
 
@@ -102,13 +111,16 @@ The user's certificate must be signed by the certificate authority defined in th
 Verification
 ************
 
-.. code-block:: none
+.. stop_vyoslinter
 
+.. code-block:: none
 
   vyos@vyos:~$ sh openconnect-server sessions
   interface    username    ip             remote IP    RX       TX         state      uptime
   -----------  ----------  -------------  -----------  -------  ---------  ---------  --------
   sslvpn0      tst         172.20.20.198  192.168.6.1  0 bytes  152 bytes  connected  3s
+
+.. start_vyoslinter
 
 .. note:: It is compatible with Cisco (R) AnyConnect (R) clients.
 
@@ -120,6 +132,8 @@ SSL Certificates generation
 ===========================
 
 Follow the instructions to generate CA cert (in configuration mode):
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -158,6 +172,8 @@ Follow the instructions to generate server cert (in configuration mode):
   2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
   [edit]
 
+.. start_vyoslinter
+
 Each of the install command should be applied to the configuration and commited
 before using under the openconnect configuration:
 
@@ -175,6 +191,8 @@ Openconnect Configuration
 
 Simple setup with one user added and password authentication:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set vpn openconnect authentication local-users username tst password 'OC_bad_Secret'
@@ -184,6 +202,8 @@ Simple setup with one user added and password authentication:
   set vpn openconnect network-settings name-server '10.1.1.2'
   set vpn openconnect ssl ca-certificate 'ca-ocserv'
   set vpn openconnect ssl certificate 'srv-ocserv'
+
+.. start_vyoslinter
 
 To enable the HTTP security headers in the configuration file, use the command:
 
@@ -197,6 +217,8 @@ Adding a 2FA with an OTP-key
 
 First the OTP keys must be generated and sent to the user and to the 
 configuration:
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -229,12 +251,18 @@ configuration:
   # To add this OTP key to configuration, run the following commands:
   set vpn openconnect authentication local-users username tst otp key 'ebc1c91b13848ce0bb67d9212934546e41803cfa'
 
+.. start_vyoslinter
+
 Next it is necessary to configure 2FA for OpenConnect:
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
   set vpn openconnect authentication mode local password-otp
   set vpn openconnect authentication local-users username tst otp key 'ebc1c91b13848ce0bb67d9212934546e41803cfa'
+
+.. start_vyoslinter
 
 Now when connecting the user will first be asked for the password 
 and then the OTP key.
@@ -261,6 +289,8 @@ outlines the set of configuration options that are allowed. This can be
 leveraged to apply different sets of configs to different users or groups of
 users.
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   sudo mkdir -p /config/auth/ocserv/config-per-user
@@ -269,6 +299,8 @@ users.
   set vpn openconnect authentication identity-based-config mode user
   set vpn openconnect authentication identity-based-config directory /config/auth/ocserv/config-per-user
   set vpn openconnect authentication identity-based-config default-config /config/auth/ocserv/default-user.conf
+
+.. start_vyoslinter
 
 .. warning:: The above directory and default-config must be a child directory
   of /config/auth, since files outside this directory are not persisted after an
@@ -304,6 +336,8 @@ connect/disconnect, data transferred, and so on.
 
 Configure an accounting server and enable accounting with:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set vpn openconnect accounting mode radius
@@ -311,11 +345,15 @@ Configure an accounting server and enable accounting with:
   set vpn openconnect accounting radius server 172.20.20.10 port 1813
   set vpn openconnect accounting radius server 172.20.20.10 key your_radius_secret
 
+.. start_vyoslinter
+
 .. warning:: The RADIUS accounting feature must be used with the OpenConnect
   authentication mode RADIUS. It cannot be used with local authentication.
   You must configure the OpenConnect authentication mode to "radius".
 
 An example of the data captured by a FREERADIUS server with sql accounting:
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -325,3 +363,5 @@ An example of the data captured by a FREERADIUS server with sql accounting:
   +----------+---------------+---------------------+---------------------+-----------------+------------------+-------------------+-----------------+-----------------------------------+
   | test     | 198.51.100.15 | 2023-01-13 00:59:15 | 2023-01-13 00:59:21 |           10606 |              152 | 192.168.6.1       | 172.20.20.198   | Open AnyConnect VPN Agent v8.05-1 |
   +----------+---------------+---------------------+---------------------+-----------------+------------------+-------------------+-----------------+-----------------------------------+
+
+.. start_vyoslinter

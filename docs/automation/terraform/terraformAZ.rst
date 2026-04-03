@@ -6,15 +6,20 @@
 Deploying VyOS in the Azure cloud
 #################################
 
-With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the Azure cloud. If necessary, the infrastructure can be removed using terraform.
+With the help of Terraform, you can quickly deploy VyOS-based
+infrastructure in the Azure cloud. If necessary, the infrastructure
+can be removed using terraform.
 Also we will make provisioning using Ansible.
 
-In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the Azure cloud and make provisioning using Ansible.
+In this case, we'll create the necessary files for Terraform and
+Ansible next using Terraform we'll create a single instance on the
+Azure cloud and make provisioning using Ansible.
 
-Preparation steps for deploying VyOS on Azure 
+Preparation steps for deploying VyOS on Azure
 ---------------------------------------------
 
-How to create a single instance and install your configuration using Terraform+Ansible+Azure 
+How to create a single instance and install your configuration using
+Terraform+Ansible+Azure
 Step by step:
 
 Azure
@@ -34,7 +39,9 @@ Terraform
 
  mkdir /root/azvyos
 
-  4 Copy all files into your Terraform project "/root/azvyos" (vyos.tf, var.tf, terraform.tfvars), more detailed see `Structure of files Terrafom for Azure`_
+  4 Copy all files into your Terraform project "/root/azvyos"
+  (vyos.tf, var.tf, terraform.tfvars), more detailed see
+  `Structure of files Terrafom for Azure`_
 
   5 Login with Azure  using the command 
 
@@ -58,7 +65,9 @@ Ansible
 
   3 Create the folder for example /root/az/
 
-  4 Copy all files into your Ansible project "/root/az/" (ansible.cfg, instance.yml,"all"), more detailed see `Structure of files Ansible for Azure`_
+  4 Copy all files into your Ansible project "/root/az/"
+  (ansible.cfg, instance.yml,"all"), more detailed see
+  `Structure of files Ansible for Azure`_
 
 
 Start 
@@ -73,7 +82,9 @@ Type the commands on your Terrafom instance:
    terraform apply  
    yes
 
-After executing all the commands you will have your VyOS instance on the Azure cloud with your configuration, it's a very convenient desition.
+After executing all the commands you will have your VyOS instance on
+the Azure cloud with your configuration, it's a very convenient
+desition.
 If you need to delete the instance please type the command:
 
 .. code-block:: none
@@ -83,6 +94,8 @@ If you need to delete the instance please type the command:
 Structure of files Terrafom for Azure
 -------------------------------------
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
  .
@@ -90,10 +103,14 @@ Structure of files Terrafom for Azure
  ├── var.tf                 # File for the changing version of Terraform.
  └── terraform.tfvars       # The value of all variables (passwords, login, ip adresses and so on)
 
+.. start_vyoslinter
+
 File contents of Terrafom for Azure
 -----------------------------------
 
 vyos.tf
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -295,8 +312,12 @@ vyos.tf
   }
   }
 
+.. start_vyoslinter
+
 
 var.tf
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -403,6 +424,8 @@ var.tf
      description = "IP of my Ansible"
   }
 
+.. start_vyoslinter
+
 terraform.tfvars
 
 .. code-block:: none
@@ -438,6 +461,7 @@ ansible.cfg
 
 instance.yml
 
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -474,16 +498,22 @@ group_vars/all
 
   ansible_connection: ansible.netcommon.network_cli
   ansible_network_os: vyos.vyos.vyos
-  
+
   # user and password gets from terraform variables "admin_username" and "admin_password" in the file /root/azvyos/var.tf
   ansible_user: vyos
   ansible_ssh_pass: Vyos0!
+
+.. start_vyoslinter
 
 Sourse files for Azure from GIT
 -------------------------------
 
 All files about the article can be found here_
 
+.. stop_vyoslinter
+
 .. _here: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Azure_terraform_ansible_single_vyos_instance-main
+
+.. start_vyoslinter
 
 

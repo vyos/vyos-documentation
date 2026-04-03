@@ -173,6 +173,8 @@ Examples
 
 Example of op-mode:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   / # salt r11-proxy netmiko.send_command 'show interfaces ethernet eth0 brief' host=192.0.2.14 device_type=vyos username=vyos password=vyos
@@ -181,9 +183,13 @@ Example of op-mode:
       Interface        IP Address                        S/L  Description
       ---------        ----------                        ---  -----------
       eth0             192.0.2.14/24                     u/u  Upstream
-  / # 
+  / #
+
+.. start_vyoslinter
 
 Example of configuration:
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -197,7 +203,12 @@ Example of configuration:
       vyos@r14#
   / #
 
-Example of configuration commands from the file "/srv/salt/states/commands.txt"
+.. start_vyoslinter
+
+Example of configuration commands from the file
+"/srv/salt/states/commands.txt"
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -213,5 +224,9 @@ Example of configuration commands from the file "/srv/salt/states/commands.txt"
       vyos@r1#
   / #
 
+.. start_vyoslinter
+
 .. _salt: https://docs.saltproject.io/en/latest/contents.html
+.. stop_vyoslinter
 .. _netmiko: https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.netmiko_mod.html#module-salt.modules.netmiko_mod
+.. start_vyoslinter

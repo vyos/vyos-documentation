@@ -9,7 +9,8 @@ Ansible example
 Setting up Ansible on a server running the Debian operating system.
 ===================================================================
 
-In this example, we will set up a simple use of Ansible to configure multiple VyoS routers.
+In this example, we will set up a simple use of Ansible to configure
+multiple VyoS routers.
 We have four pre-configured routers with this configuration:
 
 Using the general schema for example:
@@ -50,6 +51,8 @@ Install Paramiko:
 Check the version:
 ==================
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
     # ansible --version
@@ -59,6 +62,8 @@ Check the version:
     ansible python module location = /usr/lib/python3/dist-packages/ansible
     executable location = /usr/bin/ansible
     python version = 3.9.2 (default, Feb 28 2021, 17:03:44) [GCC 10.2.1 20210110]
+
+.. start_vyoslinter
 
 Basic configuration of ansible.cfg:
 =======================================
@@ -121,11 +126,13 @@ Add a simple playbook with the tasks for each router:
 Start the playbook:
 ===================
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
     ansible-playbook -i hosts main.yml
     PLAY [vyos_hosts] **************************************************************
-    
+
     TASK [Configure general settings for the vyos hosts group] *********************
     ok: [vyos9]
     ok: [vyos10]
@@ -137,6 +144,8 @@ Start the playbook:
     vyos7                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     vyos8                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     vyos9                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+.. start_vyoslinter
 
 Check the result on the vyos10 router:
 ======================================
@@ -193,13 +202,16 @@ The simple way without configuration of the hostname (one task for all routers):
             - set interfaces ethernet eth3 disable
             save:
             true
-          
+
+
+.. stop_vyoslinter
+
 .. code-block:: none
-          
+
     # ansible-playbook -i hosts_v2 main_v2.yml
-    
+
     PLAY [vyos_hosts_group] ********************************************************
-    
+
     TASK [Configure remote vyos_hosts_group] ***************************************
     ok: [vyos8]
     ok: [vyos7]
@@ -211,6 +223,8 @@ The simple way without configuration of the hostname (one task for all routers):
     vyos7                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     vyos8                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     vyos9                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-    
 
-In the next chapter of the example, we'll use Ansible with jinja2 templates and variables.
+.. start_vyoslinter
+
+In the next chapter of the example, we'll use Ansible with jinja2
+templates and variables.

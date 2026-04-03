@@ -6,7 +6,9 @@
 Deploying VyOS in the AWS cloud
 ##############################
 
-With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the AWS cloud. If necessary, the infrastructure can be removed using terraform.
+With the help of Terraform, you can quickly deploy VyOS-based
+infrastructure in the AWS cloud. If necessary, the infrastructure can
+be removed using terraform.
 Also we will make provisioning using Ansible.
 
 
@@ -15,13 +17,16 @@ Also we will make provisioning using Ansible.
    :align: center
    :alt: Network Topology Diagram
 
-In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the AWS cloud and make provisioning using Ansible.
+In this case, we'll create the necessary files for Terraform and
+Ansible next using Terraform we'll create a single instance on the
+AWS cloud and make provisioning using Ansible.
 
 
 Preparation steps for deploying VyOS on AWS 
 -------------------------------------------
 
-How to create a single instance and install your configuration using Terraform+Ansible+AWS 
+How to create a single instance and install your configuration using
+Terraform+Ansible+AWS
 Step by step:
 
 AWS
@@ -62,7 +67,9 @@ Terraform
 
  mkdir /root/awsterraform
 
-  4 Copy all files into your Terraform project "/root/awsterraform" (vyos.tf, var.tf, terraform.tfvars,version.tf), more detailed see `Structure of files Terrafom for AWS`_
+  4 Copy all files into your Terraform project "/root/awsterraform"
+  (vyos.tf, var.tf, terraform.tfvars,version.tf), more detailed see
+  `Structure of files Terrafom for AWS`_
 
   5 Type the commands :
 
@@ -81,7 +88,9 @@ Ansible
 
   3 Create the folder for example /root/aws/
 
-  4 Copy all files into your Ansible project "/root/aws/" (ansible.cfg, instance.yml, mykey.pem and "all"), more detailed see `Structure of files Ansible for AWS`_
+  4 Copy all files into your Ansible project "/root/aws/"
+  (ansible.cfg, instance.yml, mykey.pem and "all"), more detailed see
+  `Structure of files Ansible for AWS`_
 
 mykey.pem you have to get using step 1.2
 
@@ -99,8 +108,10 @@ Type the commands on your Terrafom instance:
    yes
 
 
-Start creating an AWS instance and check the result 
+Start creating an AWS instance and check the result
 ---------------------------------------------------
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -250,10 +261,14 @@ Start creating an AWS instance and check the result
   Outputs:
   
   my_IP = "54.xxx.xxx.xxx"
-  
 
 
-After executing all the commands you will have your VyOS instance on the AWS cloud with your configuration, it's a very convenient desition.
+.. start_vyoslinter
+
+
+After executing all the commands you will have your VyOS instance on
+the AWS cloud with your configuration, it's a very convenient
+desition.
 If you need to delete the instance please type the command:
 
 .. code-block:: none
@@ -264,26 +279,35 @@ If you need to delete the instance please type the command:
 Troubleshooting
 ---------------
 
-1 Ansible doesn't connect via SSH to your AWS instance: you have to check that your SSH key has copied into the path /root/aws/.
-Also, increase the time in the file instance.yml from 300 sec to 500 sec or more. (It depends on your location).
+1 Ansible doesn't connect via SSH to your AWS instance: you have to
+check that your SSH key has copied into the path /root/aws/.
+Also, increase the time in the file instance.yml from 300 sec to
+500 sec or more. (It depends on your location).
 Make sure that you have opened access to the instance in the security group.
 
-  2 Terraform doesn't connect via SSH to your Ansible instance: you have to check the correct login and password in the part of the file VyOS. tf
+  2 Terraform doesn't connect via SSH to your Ansible instance: you
+  have to check the correct login and password in the part of the
+  file VyOS. tf
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
   connection {
-   type     = "ssh"  
+   type     = "ssh"
    user     = "root"              # open root access using login and password on your Ansible
    password = var.password        # check password in the file terraform.tfvars isn't empty
        host = var.host            # check the correct IP address of your Ansible host
   }
 
+.. start_vyoslinter
 
 Make sure that Ansible is pinging from Terrafom.
 
 Structure of files Terrafom for AWS
 -----------------------------------
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -292,13 +316,16 @@ Structure of files Terrafom for AWS
  ├── var.tf                 # The file of all variables in "vyos.tf"
  ├── versions.tf            # File for the changing version of Terraform.
  └── terraform.tfvars       # The value of all variables (passwords, login, ip adresses and so on)
- 
 
- 
+.. start_vyoslinter
+
+
 File contents of Terrafom for AWS
 ---------------------------------
 
 vyos.tf
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -412,6 +439,8 @@ vyos.tf
   }
   }
 
+.. start_vyoslinter
+
 
 var.tf
 
@@ -495,7 +524,7 @@ mykey.pem
 
 instance.yml
 
-
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -525,6 +554,7 @@ instance.yml
           save:
             true
 
+.. start_vyoslinter
 
 group_vars/all
 
@@ -540,9 +570,13 @@ Sourse files for AWS from GIT
 All files about the article can be found here_
 
 
+.. stop_vyoslinter
+
 .. _link: https://developer.hashicorp.com/terraform/intro
 .. _install: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 .. _pair: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html
 .. _group: https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-sg.html
 .. _image: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html
 .. _here: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/AWS_terraform_ansible_single_vyos_instance-main
+
+.. start_vyoslinter
