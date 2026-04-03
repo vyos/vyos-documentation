@@ -25,7 +25,7 @@ Structure of files in the standard Terraform project:
  ├── version.tf          # File for the changing version of Terraform.
  ├── variables.tf        # The file of all variables in "main.tf"
  └── terraform.tfvars    # The value of all variables (passwords,
-                      # login, ip adresses and so on)
+                      # login, IP addresses and so on)
 
 
 General commands that we will use for running Terraform scripts

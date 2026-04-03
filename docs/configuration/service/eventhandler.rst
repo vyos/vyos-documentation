@@ -74,7 +74,7 @@ Event Handler Configuration Steps
 
 .. stop_vyoslinter
 
-    .. cfgcmd:: set service event-handler event <event-handler name> filter syslog-identifier <sylogid name>
+    .. cfgcmd:: set service event-handler event <event-handler name> filter syslog-identifier <syslogid name>
 
 .. start_vyoslinter
 
@@ -102,8 +102,8 @@ Event Handler Configuration Steps
     This is an optional command. Adds arguments to the script.
     Arguments must be separated by spaces.
 
-    .. note:: We don't recomend to use arguments. Using environments
-       is more preffereble.
+    .. note:: We don't recommend to use arguments. Using environments
+       is more preferable.
     
 
 *******

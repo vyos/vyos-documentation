@@ -349,7 +349,7 @@ HE (High Efficiency) capabilities (802.11ax)
     single user beamformer
   * ``single-user-beamformee`` - Support for operation as 
     single user beamformee
-  * ``multi-user-beamformer`` - Support for operation as single 
+  * ``multi-user-beamformer`` - Support for operation as multi
     user beamformer
 
 .. cfgcmd:: set interfaces wireless <interface> 
@@ -391,7 +391,7 @@ HE (High Efficiency) capabilities (802.11ax)
 .. cfgcmd:: set interfaces wireless <interface> 
   capabilities he coding-scheme <number>
 
-  This setting configures Spacial Stream and Modulation Coding Scheme 
+  This setting configures Spatial Stream and Modulation Coding Scheme 
   settings for HE mode (HE-MCS). It is usually not needed to set this 
   explicitly, but it might help with some WiFi adapters.
 

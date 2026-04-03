@@ -41,7 +41,7 @@ Terraform
 
   4 Copy all files into your Terraform project "/root/azvyos"
   (vyos.tf, var.tf, terraform.tfvars), more detailed see
-  `Structure of files Terrafom for Azure`_
+  `Structure of files Terraform for Azure`_
 
   5 Login with Azure  using the command 
 
@@ -73,7 +73,7 @@ Ansible
 Start 
 
 
-Type the commands on your Terrafom instance:
+Type the commands on your Terraform instance:
    
 .. code-block:: none
 
@@ -84,14 +84,14 @@ Type the commands on your Terrafom instance:
 
 After executing all the commands you will have your VyOS instance on
 the Azure cloud with your configuration, it's a very convenient
-desition.
+decision.
 If you need to delete the instance please type the command:
 
 .. code-block:: none
 
    terraform destroy
    
-Structure of files Terrafom for Azure
+Structure of files Terraform for Azure
 -------------------------------------
 
 .. stop_vyoslinter
@@ -105,7 +105,7 @@ Structure of files Terrafom for Azure
 
 .. start_vyoslinter
 
-File contents of Terrafom for Azure
+File contents of Terraform for Azure
 -----------------------------------
 
 vyos.tf

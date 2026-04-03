@@ -69,7 +69,7 @@ Terraform
 
   4 Copy all files into your Terraform project "/root/awsterraform"
   (vyos.tf, var.tf, terraform.tfvars,version.tf), more detailed see
-  `Structure of files Terrafom for AWS`_
+  `Structure of files Terraform for AWS`_
 
   5 Type the commands :
 
@@ -98,7 +98,7 @@ mykey.pem you have to get using step 1.2
 Start 
 
 
-Type the commands on your Terrafom instance:
+Type the commands on your Terraform instance:
    
 .. code-block:: none
 
@@ -268,7 +268,7 @@ Start creating an AWS instance and check the result
 
 After executing all the commands you will have your VyOS instance on
 the AWS cloud with your configuration, it's a very convenient
-desition.
+decision.
 If you need to delete the instance please type the command:
 
 .. code-block:: none
@@ -302,9 +302,9 @@ Make sure that you have opened access to the instance in the security group.
 
 .. start_vyoslinter
 
-Make sure that Ansible is pinging from Terrafom.
+Make sure that Ansible is pinging from Terraform.
 
-Structure of files Terrafom for AWS
+Structure of files Terraform for AWS
 -----------------------------------
 
 .. stop_vyoslinter
@@ -320,7 +320,7 @@ Structure of files Terrafom for AWS
 .. start_vyoslinter
 
 
-File contents of Terrafom for AWS
+File contents of Terraform for AWS
 ---------------------------------
 
 vyos.tf

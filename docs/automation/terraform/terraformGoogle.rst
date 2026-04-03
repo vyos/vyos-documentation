@@ -67,7 +67,7 @@ Terraform
 
 4 Copy all files into your Terraform project "/root/google"
 (vyos.tf, var.tf, terraform.tfvars, .JSON), more detailed see
-`Structure of files Terrafom for google cloud`_
+`Structure of files Terraform for google cloud`_
 
 5 Type the commands :
 
@@ -378,9 +378,9 @@ VyOS.tf
 
 .. start_vyoslinter
 
-Make sure that Ansible is pinging from Terrafom.
+Make sure that Ansible is pinging from Terraform.
 
-Structure of files Terrafom for Google Cloud
+Structure of files Terraform for Google Cloud
 --------------------------------------------
 
 .. stop_vyoslinter
@@ -396,7 +396,7 @@ Structure of files Terrafom for Google Cloud
 .. start_vyoslinter
 
 
-File contents of Terrafom for Google Cloud
+File contents of Terraform for Google Cloud
 ------------------------------------------
 
 vyos.tf
