@@ -1,15 +1,15 @@
-:lastproofread: 2024-07-04
+:lastproofread: 2026-03-30
 
 .. _wwan-interface:
 
-#################################
-WWAN - Wireless Wide-Area-Network
-#################################
+####
+WWAN
+####
 
-The Wireless Wide-Area-Network interface provides access (through a wireless
-modem/wwan) to wireless networks provided by various cellular providers.
+:abbr:`WWAN (Wireless Wide Area Network)` interfaces provide access to cellular 
+networks via a cellular modem or card. 
 
-VyOS uses the `interfaces wwan` subsystem for configuration.
+Configure these interfaces under the ``interfaces wwan`` node.
 
 *************
 Configuration
@@ -64,14 +64,18 @@ Common interface configuration
    :var0: wwan
    :var1: wwan0
 
-WirelessModem (WWAN) options
-============================
+WWAN options
+============
 
 .. cfgcmd:: set interfaces wwan <interface> apn <apn>
 
-  Every WWAN connection requires an :abbr:`APN (Access Point Name)` which is
-  used by the client to dial into the ISPs network. This is a mandatory
-  parameter. Contact your Service Provider for correct APN.
+  **Configure the** :abbr:`APN (Access Point Name)` **for the WWAN connection.** 
+
+  Every WWAN connection requires an :abbr:`APN (Access Point Name)` to connect to 
+  the cellular network.
+
+  This parameter is mandatory. Contact your service provider for the correct 
+  :abbr:`APN (Access Point Name)`.
 
 
 *********
@@ -80,7 +84,8 @@ Operation
 
 .. opcmd:: show interfaces wwan <interface>
 
-  Show detailed information on given `<interface>`
+  Show the operational status and traffic statistics for the specified WWAN 
+  interface. 
 
   .. code-block:: none
 
@@ -99,7 +104,7 @@ Operation
 
 .. opcmd:: show interfaces wwan <interface> summary
 
-  Show detailed information summary on given `<interface>`
+  Show WWAN module hardware characteristics and connection information.
 
   .. code-block:: none
 
@@ -166,7 +171,7 @@ Operation
 
 .. opcmd:: show interfaces wwan <interface> capabilities
 
-  Show WWAN module hardware capabilities.
+  Show WWAN module radio capabilities.
 
   .. code-block:: none
 
@@ -181,7 +186,7 @@ Operation
 
 .. opcmd:: show interfaces wwan <interface> firmware
 
-  Show WWAN module firmware.
+  Show WWAN module firmware information.
 
   .. code-block:: none
 
@@ -208,7 +213,7 @@ Operation
 
 .. opcmd:: show interfaces wwan <interface> imsi
 
-  Show WWAN module IMSI.
+  Show the IMSI of the associated SIM card.
 
   .. code-block:: none
 
@@ -226,7 +231,7 @@ Operation
 
 .. opcmd:: show interfaces wwan <interface> msisdn
 
-  Show WWAN module MSISDN.
+  Show the MSISDN of the associated SIM card.
 
   .. code-block:: none
 
@@ -244,7 +249,7 @@ Operation
 
 .. opcmd:: show interfaces wwan <interface> signal
 
-  Show WWAN module signal strength.
+  Show signal information for the cellular connection.
 
   .. code-block:: none
 
@@ -293,20 +298,20 @@ Operation
 Example
 *******
 
-The following example is based on a Sierra Wireless MC7710 miniPCIe card (only
-the form factor in reality it runs UBS) and Deutsche Telekom as ISP. The card
-is assembled into a :ref:`pc-engines-apu4`.
+The following example shows how to configure a cellular connection using a 
+Sierra Wireless MC7710 miniPCIe card that operates over USB despite its form 
+factor. The card is installed in a :ref:`pc-engines-apu4`.
 
 .. code-block:: none
 
   set interfaces wwan wwan0 apn 'internet.telekom'
   set interfaces wwan wwan0 address 'dhcp'
 
-*****************
-Supported Modules
-*****************
+******************
+Supported hardware
+******************
 
-The following hardware modules have been tested successfully in an
+The following WWAN modules have been successfully tested with a 
 :ref:`pc-engines-apu4` board:
 
 * Sierra Wireless AirPrime MC7304 miniPCIe card (LTE)
@@ -318,19 +323,18 @@ The following hardware modules have been tested successfully in an
 * HP LT4120 Snapdragon X5 LTE
 
 ***************
-Firmware Update
+Firmware update
 ***************
 
-All available WWAN cards have a built-in, reprogrammable firmware. Most vendors
-provide regular updates to firmware used in the baseband chip.
+WWAN modules include reprogrammable firmware, and most vendors regularly 
+provide updates for it.
 
-As VyOS makes use of the QMI interface to connect to the WWAN modem cards, the
-firmware can be reprogrammed.
+Since VyOS communicates with these devices via the QMI interface, you can 
+update firmware directly within the system using the ``qmi-firmware-update`` 
+utility.
 
-To update the firmware, VyOS also ships the `qmi-firmware-update` binary. To
-upgrade the firmware of an e.g. Sierra Wireless MC7710 module to the firmware
-provided in the file ``9999999_9999999_9200_03.05.14.00_00_generic_000.000_001_SPKG_MC.cwe``
-use the following command:
+The following example shows how to update the firmware for a Sierra Wireless 
+MC7710 module using the provided .cwe file.
 
 .. code-block:: bash
 
