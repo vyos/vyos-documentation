@@ -2,8 +2,9 @@
 
 .. _terraformvyos:
 
+##################
 Terraform for VyOS
-==================
+##################
 
 VyOS supports development infrastructure via Terraform and provisioning via Ansible.
 Terraform allows you to automate the process of deploying instances on many cloud and virtual platforms. 

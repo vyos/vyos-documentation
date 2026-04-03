@@ -2,8 +2,9 @@
 
 .. _terraformgoogle:
 
+##################################
 Deploying VyOS in the Google Cloud
-==================================
+##################################
 
 With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the Google Cloud. If necessary, the infrastructure can be removed using terraform.
 Also we will make provisioning using Ansible.
@@ -364,10 +365,10 @@ Structure of files Terrafom for Google Cloud
 .. code-block:: none
 
  .
- ├── vyos.tf				# The main script
+ ├── vyos.tf                # The main script
  ├── ***.JSON               # The credential file from Google Cloud
- ├── var.tf					# The file of all variables in "vyos.tf"
- └── terraform.tfvars		# The value of all variables (passwords, login, IP addresses and so on)
+ ├── var.tf                 # The file of all variables in "vyos.tf"
+ └── terraform.tfvars       # The value of all variables (passwords, login, IP addresses and so on)
  
 
  

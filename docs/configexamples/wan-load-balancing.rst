@@ -4,8 +4,9 @@
 
 .. stop_vyoslinter # pictures and text have to change
 
+##########################
 WAN Load Balancer examples
-==========================
+##########################
 
 
 Example 1: Distributing load evenly

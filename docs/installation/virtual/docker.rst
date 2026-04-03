@@ -2,9 +2,9 @@
 
 .. _docker:
 
-******************************
+##############################
 Run VyOS in a Docker Container
-******************************
+##############################
 
 Docker is an open-source project for deploying applications as standardized
 units called containers. Deploying VyOS in a container provides a simple and

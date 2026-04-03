@@ -84,22 +84,13 @@ For generating an OTP key in VyOS, you can use the CLI command
 User Certificate Authentication
 ===============================
 
-You can configure users to be authenticated by certificate by setting
-the authentication mode to certificate, and defining what field (by OID)
-in the certificate will be used to identify the username. Two pre-defined
-
 .. stop_vyoslinter
 
-shortcuts for Common Name (OID 2.5.4.3) and User ID
-(OID 0.9.2342.19200300.100.1.1) have been provided as cn or uid.
+You can configure users to be authenticated by certificate by setting the authentication mode to certificate, and defining what field (by OID) in the certificate will be used to identify the username. Two pre-defined shortcuts for Common Name (OID 2.5.4.3) and User ID (OID 0.9.2342.19200300.100.1.1) have been provide as cn or uid. Otherwise a specific OID value must be provided.
 
 .. start_vyoslinter
 
-Otherwise a specific OID value must be provided.
-
-The user's certificate must be signed by the certificate authority
-defined in the configuration for it to be validated for
-authentication.
+The user's certificate must be signed by the certificate authority defined in the configuration for it to be validated for authentication.
 
 .. code-block:: none
 

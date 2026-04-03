@@ -84,9 +84,7 @@ CLI command. You may disable using the local in-memory table with the command:
 
 .. cfgcmd:: set system flow-accounting syslog-facility <facility>
 
-   Configure the syslog facility used for flow-accounting log messages.
-   Available facilities follow standard syslog conventions (e.g.,
-   ``daemon``, ``local0`` through ``local7``).
+   TBD
 
 Flow Export
 -----------

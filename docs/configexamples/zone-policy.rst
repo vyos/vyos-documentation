@@ -2,8 +2,9 @@
 
 .. _examples-zone-policy:
 
+###################
 Zone-Policy example
--------------------
+###################
 
 .. note:: In :vytask:`T2199` the syntax of the zone configuration was changed.
    The zone configuration moved from ``zone-policy zone <name>`` to ``firewall

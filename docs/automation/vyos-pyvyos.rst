@@ -2,8 +2,9 @@
 
 .. _vyos-pyvyos:
 
+######
 pyvyos
-======
+######
 
 pyvyos is a Python library designed for interacting with VyOS devices through
 their API. This documentation is intended to guide you in using pyvyos for

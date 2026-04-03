@@ -2,8 +2,9 @@
 
 .. _terraformAZ:
 
+#################################
 Deploying VyOS in the Azure cloud
-=================================
+#################################
 
 With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the Azure cloud. If necessary, the infrastructure can be removed using terraform.
 Also we will make provisioning using Ansible.
@@ -85,9 +86,9 @@ Structure of files Terrafom for Azure
 .. code-block:: none
 
  .
- ├── vyos.tf				# The main script
- ├── var.tf					# File for the changing version of Terraform.
- └── terraform.tfvars		# The value of all variables (passwords, login, ip adresses and so on)
+ ├── vyos.tf                # The main script
+ ├── var.tf                 # File for the changing version of Terraform.
+ └── terraform.tfvars       # The value of all variables (passwords, login, ip adresses and so on)
 
 File contents of Terrafom for Azure
 -----------------------------------
@@ -277,10 +278,10 @@ vyos.tf
   resource "null_resource" "nullremote2" {
   depends_on = ["azurerm_virtual_machine.vyos"]  
   connection {
-  	type     = "ssh"
-  	user     = "root"
-  	password = var.password
-      	host = var.host
+    type     = "ssh"
+    user     = "root"
+    password = var.password
+        host = var.host
   }
   
   # Command to run ansible playbook on remote Linux OS
@@ -288,8 +289,8 @@ vyos.tf
   provisioner "remote-exec" {
       
       inline = [
-  	"cd /root/az/",
-  	"ansible-playbook instance.yml"
+    "cd /root/az/",
+    "ansible-playbook instance.yml"
   ]
   }
   }

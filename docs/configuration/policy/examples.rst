@@ -2,9 +2,6 @@
 BGP Example
 ###########
 
-.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
-   directives for command coverage tracking.
-
 **Policy definition:**
 
 .. code-block:: none

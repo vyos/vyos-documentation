@@ -1,6 +1,7 @@
 
+############
 Site-to-site
-============
+############
 
 .. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
    directives for command coverage tracking.
@@ -32,9 +33,9 @@ In both cases, we will use the following settings:
 * The ``persistent-tunnel`` directive allows us to configure tunnel-related 
   attributes, such as firewall policy, as we would on any standard network 
   interface.
-* If known, the remote router's IP address can be configured using
-  the ``remote-host`` directive. If unknown, it can be omitted.
-  We assume the remote router has a dynamic IP address.
+* If known, the remote router's IP address can be configured using the 
+  ``remote-host`` directive. If unknown, it can be omitted. We assume the remote 
+  router has a dynamic IP address.
 
 
 .. figure:: /_static/images/openvpn_site2site_diagram.jpg
@@ -646,11 +647,7 @@ below:
        }
    }
 
-.. stop_vyoslinter
-
-For a detailed example, refer to :doc:`OpenVPN with LDAP </configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
-
-.. start_vyoslinter
+For a detailed example, refer to :doc:`OpenVPN with LDAP</configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
 
 Multi-factor authentication
 ===========================

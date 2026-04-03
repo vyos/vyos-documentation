@@ -2,8 +2,9 @@
 
 .. _vyos-napalm:
 
+######
 Napalm
-======
+######
 
 VyOS supports some napalm_ functions for configuration and op-mode.
 It requires more tests.

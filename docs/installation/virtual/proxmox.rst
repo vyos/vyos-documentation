@@ -2,9 +2,9 @@
 
 .. _proxmox:
 
-******************
+##################
 Running on Proxmox
-******************
+##################
 
 Proxmox is an open-source platform for virtualization. Visit
 https://vyos.io to download a ``.qcow2`` image that you can import into

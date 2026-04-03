@@ -1,5 +1,6 @@
+#############
 mDNS Repeater
--------------
+#############
 
 Starting with VyOS 1.2 a :abbr:`mDNS (Multicast DNS)` repeater functionality is
 provided. Additional information can be obtained from

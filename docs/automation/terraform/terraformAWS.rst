@@ -2,8 +2,9 @@
 
 .. _terraformAWS:
 
+##############################
 Deploying VyOS in the AWS cloud
-===============================
+##############################
 
 With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the AWS cloud. If necessary, the infrastructure can be removed using terraform.
 Also we will make provisioning using Ansible.
@@ -287,10 +288,10 @@ Structure of files Terrafom for AWS
 .. code-block:: none
 
  .
- ├── vyos.tf				# The main script
- ├── var.tf					# The file of all variables in "vyos.tf"
- ├── versions.tf			# File for the changing version of Terraform.
- └── terraform.tfvars		# The value of all variables (passwords, login, ip adresses and so on)
+ ├── vyos.tf                # The main script
+ ├── var.tf                 # The file of all variables in "vyos.tf"
+ ├── versions.tf            # File for the changing version of Terraform.
+ └── terraform.tfvars       # The value of all variables (passwords, login, ip adresses and so on)
  
 
  
@@ -397,16 +398,16 @@ vyos.tf
   resource "null_resource" "SSHconnection2" {
   depends_on = [aws_instance.myVyOSec2]  
   connection {
-  	type     = "ssh"
-  	user     = "root"
-  	password = var.password
-      	host = var.host
+    type     = "ssh"
+    user     = "root"
+    password = var.password
+        host = var.host
   }
   #command to run Ansible playbook on remote Linux OS
   provisioner "remote-exec" {
       inline = [
-  	"cd /root/aws/",
-  	"ansible-playbook instance.yml"                               # more detailed in "File contents of Ansible for AWS"
+    "cd /root/aws/",
+    "ansible-playbook instance.yml"                               # more detailed in "File contents of Ansible for AWS"
   ]
   }
   }
@@ -423,7 +424,7 @@ var.tf
   }
   variable "host"{
      description = "The IP of my Ansible"
-	 type = string
+     type = string
   }
   variable "access" {
      description = "my access_key for AWS"

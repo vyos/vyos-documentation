@@ -2,8 +2,9 @@
 
 .. _examples-azure-vpn-bgp:
 
+############################################################
 Route-Based Site-to-Site VPN to Azure (BGP over IKEv2/IPsec)
-------------------------------------------------------------
+############################################################
 
 This guide shows an example of a route-based IKEv2 site-to-site VPN to
 Azure using VTI and BGP for dynamic routing updates.

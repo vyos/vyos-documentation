@@ -4,8 +4,9 @@
 
 .. include:: /_include/need_improvement.txt
 
+####
 Salt
-====
+####
 
 VyOS supports op-mode and configuration via salt_.
 

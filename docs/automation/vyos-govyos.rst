@@ -2,8 +2,9 @@
 
 .. _vyos-govyos:
 
+#######
 go-vyos
-=======
+#######
 
 go-vyos is a Go library designed for interacting with VyOS devices through
 their REST API. This documentation is intended to guide you in using go-vyos for

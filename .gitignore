@@ -27,9 +27,5 @@ __pycache__
 .env
 .envrc
 
-# superpowers generated files
-.superpowers/
-docs/superpowers/
-
 # os specific
 .DS_Store

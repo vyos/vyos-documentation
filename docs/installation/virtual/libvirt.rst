@@ -2,9 +2,9 @@
 
 .. _libvirt:
 
-****************************
+############################
 Run VyOS on Libvirt QEMU/KVM
-****************************
+############################
 
 Libvirt is an open-source API, daemon, and management tool for managing platform
 virtualization. You can deploy VyOS on libvirt KVM in several ways:

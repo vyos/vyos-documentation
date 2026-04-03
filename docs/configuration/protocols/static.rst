@@ -70,12 +70,10 @@ IPv4 BFD
    Configure a static route for `<subnet>` using gateway `<address>` and use the
    gateway address as BFD peer destination address.
 
-.. cfgcmd:: set protocols static route <subnet> next-hop <address>
-   bfd profile <profile>
+.. cfgcmd:: set protocols static route <subnet> next-hop <address> bfd profile <profile>
 
-   Configure a static route for `<subnet>` using gateway `<address>`
-   and use the gateway address as BFD peer destination address with
-   BFD profile `<profile>`.
+   Configure a static route for `<subnet>` using gateway `<address>` and use the
+   gateway address as BFD peer destination address with BFD profile `<profile>`.
 
 .. cfgcmd:: set protocols static route <subnet> next-hop <address> bfd multi-hop
    source-address <source-address>
@@ -155,12 +153,10 @@ IPv6 Unicast Routes
    .. note:: Routes with a distance of 255 are effectively disabled and not
       installed into the kernel.
 
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address>
-   segments <segments>
+.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> segments <segments>
 
-   It is possible to specify a static route for ipv6 prefixes using
-   an SRv6 segments instruction. The `/` separator can be used to
-   specify multiple segment instructions.
+   It is possible to specify a static route for ipv6 prefixes using an SRv6 segments
+   instruction. The `/` separator can be used to specify multiple segment instructions.
 
    Example:
 
@@ -206,9 +202,8 @@ IPv6 Interface Routes
 .. cfgcmd:: set protocols static route6 <subnet> interface
    <interface> segments <segments>
 
-   It is possible to specify a static route for ipv6 prefixes using
-   an SRv6 segments instruction. The `/` separator can be used to
-   specify multiple segment instructions.
+   It is possible to specify a static route for ipv6 prefixes using an SRv6 segments
+   instruction. The `/` separator can be used to specify multiple segment instructions.
 
    Example:
 
@@ -224,15 +219,13 @@ IPv6 BFD
    Configure a static route for `<subnet>` using gateway `<address>` and use the
    gateway address as BFD peer destination address.
 
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address>
-   bfd profile <profile>
+.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> bfd profile <profile>
 
-   Configure a static route for `<subnet>` using gateway `<address>`
-   and use the gateway address as BFD peer destination address with
-   BFD profile `<profile>`.
+   Configure a static route for `<subnet>` using gateway `<address>` and use the
+   gateway address as BFD peer destination address with BFD profile `<profile>`.
 
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address>
-   bfd multi-hop source-address <source>
+.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> bfd multi-hop
+   source-address <source>
 
    Configure a static route for `<subnet>` using gateway `<address>` and use the
    gateway address as BFD peer destination address with source address

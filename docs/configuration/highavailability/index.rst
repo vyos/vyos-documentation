@@ -2,8 +2,9 @@
 
 .. _high-availability:
 
+#################
 High availability
-=================
+#################
 
 VRRP (Virtual Router Redundancy Protocol) provides active/backup redundancy for
 routers. Every VRRP router has a physical IP/IPv6 address, and a virtual

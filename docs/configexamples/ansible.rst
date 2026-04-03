@@ -9,8 +9,7 @@ Ansible example
 Setting up Ansible on a server running the Debian operating system.
 ===================================================================
 
-In this example, we will set up a simple use of Ansible to configure
-multiple VyOS routers.
+In this example, we will set up a simple use of Ansible to configure multiple VyoS routers.
 We have four pre-configured routers with this configuration:
 
 Using the general schema for example:
@@ -99,29 +98,26 @@ Add general variables:
 Add a simple playbook with the tasks for each router:
 =====================================================
 
-.. stop_vyoslinter
-
 .. code-block:: none
 
     # nano /root/main.yml
-
+    
     ---
     - hosts: vyos_hosts
-      gather_facts: 'no'
-      tasks:
+    gather_facts: 'no'
+    tasks:
         - name: Configure general settings for the vyos hosts group
-          vyos_config:
+        vyos_config:
             lines:
-              - set system name-server 8.8.8.8
-              - set interfaces ethernet eth0 description '#WAN#'
-              - set interfaces ethernet eth1 description '#LAN#'
-              - set interfaces ethernet eth2 disable
-              - set interfaces ethernet eth3 disable
-              - set system host-name {{ inventory_hostname }}
-            save: true
-
-.. start_vyoslinter
-
+            - set system name-server 192.0.2.1
+            - set interfaces ethernet eth0 description '#WAN#'
+            - set interfaces ethernet eth1 description '#LAN#'
+            - set interfaces ethernet eth2 disable
+            - set interfaces ethernet eth3 disable
+            - set system host-name {{ inventory_hostname }}
+            save:
+            true
+    
 Start the playbook:
 ===================
 
@@ -145,8 +141,6 @@ Start the playbook:
 Check the result on the vyos10 router:
 ======================================
 
-.. stop_vyoslinter
-
 .. code-block:: none
 
     vyos@vyos10:~$ show interfaces
@@ -159,16 +153,12 @@ Check the result on the vyos10 router:
     eth3             -                                 A/D
     lo               127.0.0.1/8                       u/u
                     ::1/128
-
-    vyos@vyos10:~$ sh configuration commands | grep 8.8.8.8
-    set system name-server '8.8.8.8'
-
-.. start_vyoslinter
+    
+    vyos@vyos10:~$ sh configuration commands | grep 192.0.2.1
+    set system name-server '192.0.2.1'
 
 The simple way without configuration of the hostname (one task for all routers):
 ================================================================================
-
-.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -188,21 +178,22 @@ The simple way without configuration of the hostname (one task for all routers):
     # nano /root/main_v2.yml
     ---
     - hosts: vyos_hosts_group
-      connection: network_cli
-      gather_facts: 'no'
-      tasks:
+    
+    connection: network_cli
+    gather_facts: 'no'
+    
+    tasks:
         - name: Configure remote vyos_hosts_group
-          vyos_config:
+        vyos_config:
             lines:
-              - set system name-server 8.8.8.8
-              - set interfaces ethernet eth0 description WAN
-              - set interfaces ethernet eth1 description LAN
-              - set interfaces ethernet eth2 disable
-              - set interfaces ethernet eth3 disable
-            save: true
-
-.. start_vyoslinter
-
+            - set system name-server 192.0.2.1
+            - set interfaces ethernet eth0 description WAN
+            - set interfaces ethernet eth1 description LAN
+            - set interfaces ethernet eth2 disable
+            - set interfaces ethernet eth3 disable
+            save:
+            true
+          
 .. code-block:: none
           
     # ansible-playbook -i hosts_v2 main_v2.yml
@@ -222,5 +213,4 @@ The simple way without configuration of the hostname (one task for all routers):
     vyos9                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     
 
-In the next chapter of the example, we'll use Ansible with jinja2
-templates and variables.
+In the next chapter of the example, we'll use Ansible with jinja2 templates and variables.

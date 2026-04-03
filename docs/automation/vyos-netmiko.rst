@@ -2,8 +2,9 @@
 
 .. _vyos-netmiko:
 
+#######
 Netmiko
-=======
+#######
 
 VyOS supports configuration via netmiko_.
 It requires to install ``python3-netmiko`` module.

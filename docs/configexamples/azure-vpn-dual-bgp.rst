@@ -2,8 +2,9 @@
 
 .. _examples-azure-vpn-dual-bgp:
 
+######################################################################
 Route-Based Redundant Site-to-Site VPN to Azure (BGP over IKEv2/IPsec)
-----------------------------------------------------------------------
+######################################################################
 
 This guide shows an example of a redundant (active-active) route-based IKEv2
 site-to-site VPN to Azure using VTI
