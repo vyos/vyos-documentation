@@ -4,6 +4,9 @@
 NAT64
 #####
 
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 :abbr:`NAT64 (IPv6-to-IPv4 Prefix Translation)` is a critical component in
 modern networking, facilitating communication between IPv6 and IPv4 networks.
 This documentation outlines the setup, configuration, and usage of the NAT64
@@ -69,6 +72,8 @@ NAT64 client configuration:
 
 Test from the IPv6 only client:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   vyos@r1:~$ ping 64:ff9b::192.0.2.1 count 2
@@ -79,3 +84,5 @@ Test from the IPv6 only client:
   --- 64:ff9b::192.0.2.1 ping statistics ---
   2 packets transmitted, 2 received, 0% packet loss, time 1023ms
   rtt min/avg/max/mdev = 0.351/0.362/0.373/0.011 ms
+
+.. start_vyoslinter

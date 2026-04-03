@@ -2,6 +2,9 @@
 Site-to-site
 ============
 
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
+
 OpenVPN is popular for client-server setups, but its site-to-site mode is less 
 common and often not supported by router appliances. Despite limited support, 
 it is effective for quickly establishing tunnels between routers.
@@ -29,9 +32,9 @@ In both cases, we will use the following settings:
 * The ``persistent-tunnel`` directive allows us to configure tunnel-related 
   attributes, such as firewall policy, as we would on any standard network 
   interface.
-* If known, the remote router's IP address can be configured using the 
-  ``remote-host`` directive. If unknown, it can be omitted. We assume the remote 
-  router has a dynamic IP address.
+* If known, the remote router's IP address can be configured using
+  the ``remote-host`` directive. If unknown, it can be omitted.
+  We assume the remote router has a dynamic IP address.
 
 
 .. figure:: /_static/images/openvpn_site2site_diagram.jpg
@@ -87,10 +90,14 @@ You do **not** need to copy the certificate to the other router. Instead,
 retrieve its SHA-256 fingerprint. Since OpenVPN currently supports only SHA-256 
 fingerprints, use the following command:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   vyos@vyos# run show pki certificate openvpn-local fingerprint sha256
   5C:B8:09:64:8B:59:51:DC:F4:DF:2C:12:5C:B7:03:D1:68:94:D7:5B:62:C2:E1:83:79:F1:F0:68:B2:81:26:79
+
+.. start_vyoslinter
 
 .. note:: Certificate names are arbitrary. While ``openvpn-local`` and 
    ``openvpn-remote`` are used here, you may choose any names.
@@ -456,7 +463,7 @@ Check the tunnel status:
 
   Client CN    Remote Host         Tunnel IP    Local Host        TX bytes    RX bytes    Connected Since
   -----------  ------------------  -----------  ----------------  ----------  ----------  -------------------
-  client1      172.110.12.54:33166  10.23.1.10   172.18.201.10:1194  3.4 KB      3.4 KB      2024-06-11 12:07:25
+  client1      172.16.12.54:33166  10.23.1.10   172.18.201.10:1194  3.4 KB      3.4 KB      2024-06-11 12:07:25
 
 
 
@@ -639,7 +646,11 @@ below:
        }
    }
 
-For a detailed example, refer to :doc:`OpenVPN with LDAP</configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
+.. stop_vyoslinter
+
+For a detailed example, refer to :doc:`OpenVPN with LDAP </configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
+
+.. start_vyoslinter
 
 Multi-factor authentication
 ===========================
