@@ -52,8 +52,9 @@ Wireless options
 
 .. cfgcmd:: set interfaces wireless <interface> channel <number>
 
-  Channel number (IEEE 802.11), for 2.4Ghz (802.11 b/g/n/ax) channels range from
-  1-14. On 5Ghz (802.11 a/h/j/n/ac) channels available are 0, 34 to 177. 
+  Channel number (IEEE 802.11), for 2.4 GHz (802.11 b/g/n/ax) channels
+  range from 1-14. On 5 GHz (802.11 a/h/j/n/ac) channels available are
+  0, 34 to 177. 
   On 6GHz (802.11 ax) channels range from 1 to 233.
 
 .. cfgcmd:: set interfaces wireless <interface> disable-broadcast-ssid
