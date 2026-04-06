@@ -57,8 +57,9 @@ Service
   <facility> level <level>
 
   Specify facility and level for logging.
-  For an explanation on :ref:`syslog_facilities` and :ref:`syslog_severity_level`
-  see tables in syslog configuration section.
+  For an explanation on :ref:`syslog_facilities` and
+  :ref:`syslog_severity_level`,
+  see tables in the syslog configuration section.
 
 .. cfgcmd:: set load-balancing haproxy service <name> timeout client
   <seconds>
@@ -242,7 +243,8 @@ Global configuration parameters:
   facility <facility> level <level>
 
   Specify facility and level for logging.
-  For an explanation on :ref:`syslog_facilities` and :ref:`syslog_severity_level`
+  For an explanation on :ref:`syslog_facilities` and
+  :ref:`syslog_severity_level`
   see tables in syslog configuration section.
 
 .. cfgcmd:: set load-balancing haproxy timeout check <seconds>
