@@ -1,22 +1,21 @@
-:lastproofread: 2023-01-27
+:lastproofread: 2026-04-06
 
 WAN load balancing
 ==================
 
-Outbound traffic can be balanced between two or more outbound interfaces.
-If a path fails, traffic is balanced across the remaining healthy paths,
-a recovered path is automatically added back to the routing table and used by 
-the load balancer. The load balancer automatically adds routes for each path to
-the routing table and balances traffic across the configured interfaces,
-determined by interface health and weight.
+The load balancer distributes outbound traffic across two or more
+interfaces. If a path fails, the load balancer balances traffic across the
+remaining healthy paths. When a path recovers, it is automatically added back
+to the routing table. The load balancer adds routes for each path and
+distributes traffic based on interface health and weight.
 
 
 In a minimal configuration, the following must be provided:
 
- * an interface with a nexthop
- * one rule with a LAN (inbound-interface) and the WAN (interface).
+ * An interface with a ``nexthop``.
+ * One rule with a LAN (inbound-interface) and the WAN (interface).
 
-Let's assume we have two DHCP WAN interfaces and one LAN (eth2):
+The following examples uses two DHCP WAN interfaces and one LAN (``eth2``):
 
 .. code-block:: none
 
@@ -28,18 +27,18 @@ Let's assume we have two DHCP WAN interfaces and one LAN (eth2):
 
 .. note::
 
-    WAN Load Balacing should not be used when dynamic routing protocol is
-    used/needed. This feature creates customized routing tables and firewall
-    rules, that makes it incompatible to use with routing protocols.
+    Do not use WAN load balancing with dynamic routing protocols. This
+    feature creates customized routing tables and firewall rules that are
+    incompatible with routing protocols.
 
-Balancing Rules
----------------
+Load balancing rules
+--------------------
 
-Interfaces, their weight and the type of traffic to be balanced are defined in
-numbered balancing rule sets. The rule sets are executed in numerical order
-against outgoing packets. In case of a match the packet is sent through an
-interface specified in the matching rule. If a packet doesn't match any rule
-it is sent by using the system routing table. Rule numbers can't be changed.
+You define interfaces, their weight, and the traffic type to balance in
+numbered rule sets. The load balancer executes rules in numerical order
+against outgoing packets. When a packet matches a rule, it is sent through the
+specified interface. Packets that do not match any rule use the system routing
+table. You cannot change rule numbers.
 
 Create a load balancing rule, it can be a number between 1 and 9999:
 
@@ -61,23 +60,25 @@ Create a load balancing rule, it can be a number between 1 and 9999:
 Interface weight
 ****************
 
-Let's expand the example from above and add weight to the interfaces.
-The bandwidth from eth0 is larger than eth1. Per default, outbound traffic is
-distributed randomly across available interfaces. Weights can be assigned to
-interfaces to influence the balancing.
+By default, the load balancer distributes outbound
+traffic randomly across available interfaces. You can assign weights to
+interfaces to influence the distribution. If ``eth0`` has more bandwidth
+than ``eth1``, you can assign a higher weight to ``eth0`` to send more
+traffic through it:
 
 .. code-block:: none
 
     set load-balancing wan rule 1 interface eth0 weight 2
     set load-balancing wan rule 1 interface eth1 weight 1
 
-66% of traffic is routed to eth0, eth1 gets 33% of traffic.
+In this example,``eth0`` receives 66% of traffic, and ``eth1`` receives
+33% of traffic.
 
 Rate limit
 **********
 
-A packet rate limit can be set for a rule to apply the rule to traffic above or
-below a specified threshold. To configure the rate limiting use:
+Set a packet rate limit for a rule to apply it to traffic above or below a
+specified threshold. To configure rate limiting, use:
 
 .. code-block:: none
 
@@ -88,22 +89,20 @@ below a specified threshold. To configure the rate limiting use:
 * ``period``: Time window for rate calculation. Possible values:
   ``second`` (one second), ``minute`` (one minute), ``hour`` (one hour).
   Default is ``second``.
-* ``rate``: Number of packets. Default 5.
+* ``rate``: Number of packets. Default: ``5``.
 * ``threshold``: ``below`` or ``above`` the specified rate limit.
 
 Flow and packet-based balancing
 *******************************
 
-Outgoing traffic is balanced in a flow-based manner.
-A connection tracking table is used to track flows by their source address,
-destination address and port. Each flow is assigned to an interface according
-to the defined balancing rules and subsequent packets are sent through the
-same interface. This has the advantage that packets always arrive in order if
-links with different speeds are in use.
+The load balancer balances outgoing traffic by flow. A connection tracking
+table tracks flows by source address, destination address, and port. Each
+flow is assigned to an interface based on the balancing rules, and subsequent
+packets use the same interface. This ensures packets arrive in order when links
+have different speeds.
 
-Packet-based balancing can lead to a better balance across interfaces when out
-of order packets are no issue. Per-packet-based balancing can be set for a
-balancing rule with:
+Packet-based balancing can improve balance across interfaces when packet
+order is not critical. Enable per-packet balancing for a rule with:
 
 .. code-block:: none
 
@@ -112,8 +111,8 @@ balancing rule with:
 Exclude traffic
 ***************
 
-To exclude traffic from load balancing, traffic matching an exclude rule is not
-balanced but routed through the system routing table instead:
+To exclude traffic from load balancing, traffic matching an exclude rule
+bypasses load balancing and uses the system routing table instead:
 
 .. code-block:: none
 
@@ -123,10 +122,10 @@ balanced but routed through the system routing table instead:
 Health checks
 -------------
 
-The health of interfaces and paths assigned to the load balancer is
-periodically checked by sending ICMP packets (ping) to remote destinations,
-a TTL test or the execution of a user defined script. If an interface fails the
-health check it is removed from the load balancer's pool of interfaces.
+The load balancer periodically checks the health of interfaces and paths by
+sending ICMP packets (ping) to remote destinations, performing TTL tests, or
+executing a user-defined script. If an interface fails the health check, the
+load balancer removes it from its interface pool.
 To enable health checking for an interface:
 
 .. code-block:: none
@@ -138,26 +137,26 @@ To enable health checking for an interface:
     success-count    Success count
     +> test          Rule number
 
-Specify nexthop on the path to the destination, ``ipv4-address`` can be set to
-``dhcp``
+Specify the nexthop on the path to the destination. You can set
+``ipv4-address`` to ``dhcp``.
 
 .. code-block:: none
 
     set load-balancing wan interface-health <interface> nexthop <ipv4-address>
 
-Set the number of health check failures before an interface is marked as
-unavailable, range for number is 1 to 10, default 1. Or set the number of
-successful health checks before an interface is added back to the interface
-pool, range for number is 1 to 10, default 1.
+Set the number of health check failures before the load balancer marks an
+interface as unavailable (range 1-10, default 1). Or set the number of
+successful health checks before adding an interface back to the pool
+(range 1-10, default 1).
 
 .. code-block:: none
 
     set load-balancing wan interface-health <interface> failure-count <number>
     set load-balancing wan interface-health <interface> success-count <number>
 
-Each health check is configured in its own test, tests are numbered and
-processed in numeric order. For multi target health checking multiple tests
-can be defined:
+Configure each health check in its own test. Tests are numbered and processed
+in numeric order. You can define multiple tests for multi-target health
+checking:
 
 .. code-block:: none
 
@@ -169,46 +168,45 @@ can be defined:
     ttl-limit    Ttl limit (hop count)
     type         WLB test type
 
-* ``resp-time``: the maximum response time for ping in seconds.
-  Range 1...30, default 5
-* ``target``: the target to be sent ICMP packets to, address can be an IPv4
-  address or hostname
-* ``test-script``: A user defined script must return 0 to be considered
-  successful and non-zero to fail. Scripts are located in /config/scripts,
-  for different locations the full path needs to be provided
-* ``ttl-limit``: For the UDP TTL limit test the hop count limit must be
-  specified. The limit must be shorter than the path length, an ICMP time
-  expired message is needed to be returned for a successful test. default 1
-* ``type``: Specify the type of test. type can be ping, ttl or a user defined
-  script
+* ``resp-time``: The maximum response time for ping in seconds. Range
+  1-30, default ``5``.
+* ``target``: The target to receive ICMP packets. The address can be an IPv4
+  address or hostname.
+* ``test-script``: A user-defined script must return 0 to succeed and
+  non-zero to fail. Scripts reside in ``/config/scripts``. For other locations,
+  provide the full path.
+* ``ttl-limit``: For the UDP TTL limit test, specify the hop count limit.
+  The limit must be shorter than the path length. The test succeeds when an
+  ICMP time-expired message is returned. Default ``1``.
+* ``type``: Specify the test type: ``ping``, ``ttl``, or a user-defined
+  script.
 
 Source NAT rules
 ----------------
 
-Per default, interfaces used in a load balancing pool replace the source IP
-of each outgoing packet with its own address to ensure that replies arrive on
-the same interface. This works through automatically generated source NAT (SNAT)
-rules, these rules are only applied to balanced traffic. In cases where this
-behaviour is not desired, the automatic generation of SNAT rules can be
-disabled:
+By default, interfaces in a load balancing pool replace the source IP of
+each outgoing packet with their own address to ensure replies arrive on the
+same interface. The load balancer handles this through automatically generated
+Source NAT (SNAT) rules applied only to balanced traffic. To disable the
+automatic generation of SNAT rules when this behavior is not desired, use:
 
 .. code-block:: none
 
     set load-balancing wan disable-source-nat
 
-Sticky Connections
+Sticky connections
 ------------------
-Inbound connections to a WAN interface can be improperly handled when the reply
-is sent back to the client.
+Inbound connections to a WAN interface can be improperly handled when
+replies are sent back to the client.
 
 .. image:: /_static/images/sticky-connections.jpg
    :width: 80%
    :align: center
 
 
-Upon reception of an incoming packet, when a response is sent, it might be
-desired to ensure that it leaves from the same interface as the inbound one.
-This can be achieved by enabling sticky connections in the load balancing:
+When responding to an incoming packet, you may want to ensure the response
+leaves from the same interface as the incoming packet. Enable sticky
+connections in the load balancer to do this:
 
 .. code-block:: none
 
@@ -217,23 +215,21 @@ This can be achieved by enabling sticky connections in the load balancing:
 Failover
 --------
 
-In failover mode, one interface is set to be the primary interface and other
-interfaces are secondary or spare. Instead of balancing traffic across all
-healthy interfaces, only the primary interface is used and in case of failure,
-a secondary interface selected from the pool of available interfaces takes over.
-The primary interface is selected based on its weight and health, others become
-secondary interfaces. Secondary interfaces to take over a failed primary
-interface are chosen from the load balancer's interface pool, depending
-on their weight and health. Interface roles can also be selected based on rule
-order by including interfaces in balancing rules and ordering those rules
-accordingly. To put the load balancer in failover mode, create a failover rule:
+In failover mode, one interface is primary and other interfaces are
+secondary or spare. The load balancer uses only the primary interface. If it
+fails, a secondary interface from the available pool takes over. The load
+balancer selects the primary interface based on its weight and health. Other
+interfaces become secondary. Secondary interfaces are chosen based on their
+weight and health. You can also select interface roles based on rule order by
+including interfaces in balancing rules and ordering those rules accordingly.
+To enable failover mode, create a failover rule:
 
 .. code-block:: none
 
     set load-balancing wan rule <number> failover
 
-Because existing sessions do not automatically fail over to a new path,
-the session table can be flushed on each connection state change:
+Existing sessions do not automatically fail over to a new path. Flush the
+session table on each connection state change to enable failover:
 
 .. code-block:: none
 
@@ -241,14 +237,15 @@ the session table can be flushed on each connection state change:
 
 .. warning::
 
-    Flushing the session table will cause other connections to fall back from
+    Flushing the session table causes other connections to revert from
     flow-based to packet-based balancing until each flow is reestablished.
 
 Script execution
 ----------------
 
-A script can be run when an interface state change occurs. Scripts are run
-from /config/scripts, for a different location specify the full path:
+Run a script when an interface state changes. Scripts run from the
+``/config/scripts`` directory. To use a script in another location,
+specify the full path:
 
 .. code-block:: none
 
@@ -261,19 +258,20 @@ Two environment variables are available:
 
 .. warning::
 
-    Blocking call with no timeout. System will become unresponsive if script
-    does not return!
+    Blocking call with no timeout: VyOS becomes unresponsive if the
+    script does not return. 
 
 Handling and monitoring
 -----------------------
 
 
-Show WAN load balancer information including test types and targets.
-A character at the start of each line depicts the state of the test
+The following command shows WAN load balancer information including test
+types and targets. The character at the start of each line indicates the test
+state:
 
-* ``+`` successful
-* ``-`` failed
-* a blank indicates that no test has been carried out
+* ``+`` successful.
+* ``-`` failed.
+* A blank indicates that no test has been carried out.
 
 .. code-block:: none
 

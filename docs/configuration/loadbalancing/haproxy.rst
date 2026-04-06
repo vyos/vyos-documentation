@@ -1,21 +1,22 @@
+:lastproofread: 2026-04-06
 
 #############
-Haproxy
+HAproxy
 #############
 
 .. include:: /_include/need_improvement.txt
 
-Haproxy is a balancer and proxy server that provides
-high-availability, load balancing and proxying for TCP (level 4)
-and HTTP-based (level 7) applications.
+HAProxy is a load balancer and proxy server that provides
+high-availability, load balancing, and proxying for TCP (level 4) and
+HTTP-based (level 7) applications.
 
 Configuration
 =============
 
 
-Service configuration is responsible for binding to a specific port,
-while the backend configuration determines the type of load balancing
-to be applied and specifies the real servers to be utilized.
+Service configuration specifies the port to bind to. Backend
+configuration defines the load balancing method and specifies the backend
+servers.
 
 Service
 -------
@@ -23,7 +24,8 @@ Service
 .. cfgcmd:: set load-balancing haproxy service <name> listen-address
    <address>
 
-  Set service to bind on IP address, by default listen on any IPv4 and IPv6
+  Set the IP address for the service to bind to. By default, the service
+  listens on all IPv4 and IPv6 addresses.
 
 .. cfgcmd:: set load-balancing haproxy service <name> port
    <port>
@@ -43,12 +45,13 @@ Service
 .. cfgcmd:: set load-balancing haproxy service <name> ssl
    certificate <name>
 
-  Set SSL certificate <name> for service <name>. Multiple certificates could be defined.
+  Set the SSL certificate <name> for service <name>. You can define
+  multiple certificates.
 
 .. cfgcmd:: set load-balancing haproxy service <name>
   http-response-headers <header-name> value <header-value>
 
-  Set custom HTTP headers to be included in all responses
+  Set custom HTTP headers to include in all responses.
 
 .. cfgcmd:: set load-balancing haproxy service <name> logging facility
   <facility> level <level>
@@ -76,9 +79,9 @@ Service
 
 Rules
 ^^^^^
-Rules allow to control and route incoming traffic to specific backend based
-on predefined conditions. Rules allow to define matching criteria and
-perform action accordingly.
+Rules control and route incoming traffic to specific backends based on
+predefined conditions. Rules define matching criteria and specify actions
+to perform.
 
 .. cfgcmd:: set load-balancing haproxy service <name> rule <rule>
    domain-name <name>
@@ -98,15 +101,13 @@ perform action accordingly.
 .. cfgcmd:: set load-balancing haproxy service <name> rule <rule>
    url-path <match> <url>
 
-  Allows to define URL path matching rules for a specific service.
-
-  With this command, you can specify how the URL path should be matched 
-  against incoming requests.
+  Define URL path matching rules for a specific service. Use this command
+  to specify how to match the URL path against incoming requests.
 
   The available options for <match> are:
    * ``begin`` Matches the beginning of the URL path
    * ``end`` Matches the end of the URL path.
-   * ``exact`` Requires an exactly match of the URL path
+   * ``exact`` Matches the URL path exactly.
 
 .. cfgcmd:: set load-balancing haproxy service <name> rule <rule>
    set backend <name>
@@ -116,7 +117,7 @@ perform action accordingly.
 .. cfgcmd:: set load-balancing haproxy service <name> rule <rule>
    redirect-location <url>
 
-  Redirect URL to a new location
+  Redirect URL to a new location.
 
 
 Backend
@@ -125,37 +126,36 @@ Backend
 .. cfgcmd:: set load-balancing haproxy backend <name> balance
    <balance>
 
-  Load-balancing algorithms to be used for distributed requests among the
-  available servers
+  Specify the load balancing algorithm for distributing requests among
+  available servers.
 
   Balance algorithms:
    * ``source-address`` Distributes requests based on the source IP address
-     of the client
+     of the client.
    * ``round-robin`` Distributes requests in a circular manner,
-     sequentially sending each request to the next server in line
+     sequentially sending each request to the next server in line.
    * ``least-connection`` Distributes requests to the server with the fewest
-     active connections
+     active connections.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> mode
    <mode>
 
-  Configure backend `<name>` mode TCP or HTTP
+  Configure backend `<name>` mode TCP or HTTP.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> server
    <name> address <x.x.x.x>
 
-  Set the address of the backend server to which the incoming traffic will
-  be forwarded
+  Set the address of the backend server that receives incoming traffic.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> server
    <name> port <port>
 
-  Set the address of the backend port
+  Set the address of the backend port.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> server
    <name> check
 
-  Active health check backend server
+  Active health check backend server.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> server
    <name> check port <port>
@@ -166,35 +166,36 @@ Backend
 .. cfgcmd:: set load-balancing haproxy backend <name> server
    <name> send-proxy
 
-  Send a Proxy Protocol version 1 header (text format)
+  Send a Proxy Protocol version 1 header (text format).
 
 .. cfgcmd:: set load-balancing haproxy backend <name> server
    <name> send-proxy-v2
 
-  Send a Proxy Protocol version 2 header (binary format)
+  Send a Proxy Protocol version 2 header (binary format).
 
 .. cfgcmd:: set load-balancing haproxy backend <name> ssl
    ca-certificate <ca-certificate>
 
-  Configure requests to the backend server to use SSL encryption and
-  authenticate backend against <ca-certificate>
+  Use SSL encryption for backend requests and authenticate the backend
+  against ``<ca-certificate>``.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> ssl no-verify
 
-  Configure requests to the backend server to use SSL encryption without
-  validating server certificate
+  Use SSL encryption for backend requests without validating the server
+  certificate.
 
 .. cfgcmd:: set load-balancing haproxy backend <name>
   http-response-headers <header-name> value <header-value>
 
-  Set custom HTTP headers to be included in all responses using the backend
+  Set custom HTTP headers to include in all responses from the backend.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> logging facility
   <facility> level <level>
 
   Specify facility and level for logging.
-  For an explanation on :ref:`syslog_facilities` and :ref:`syslog_severity_level`
-  see tables in syslog configuration section.
+  For an explanation on :ref:`syslog_facilities` and
+  :ref:`syslog_severity_level`,
+  see tables in the :ref:`syslog` configuration section.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> timeout check
   <seconds>
@@ -220,7 +221,7 @@ Backend
 Global
 -------
 
-Global parameters
+Global configuration parameters:
 
 .. cfgcmd:: set load-balancing haproxy global-parameters max-connections
    <num>
@@ -230,7 +231,7 @@ Global parameters
 .. cfgcmd:: set load-balancing haproxy global-parameters ssl-bind-ciphers
    <ciphers>
 
-  Limit allowed cipher algorithms used during SSL/TLS handshake
+  Limit the cipher algorithms allowed during SSL/TLS handshake.
 
 .. cfgcmd:: set load-balancing haproxy global-parameters tls-version-min
    <version>
@@ -271,8 +272,8 @@ Health checks
 HTTP checks
 -----------
 
-For web application providing information about their state HTTP health
-checks can be used to determine their availability.
+Use HTTP health checks to monitor web applications that provide health status
+information and determine their availability.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> http-check
 
@@ -282,17 +283,17 @@ checks can be used to determine their availability.
 .. cfgcmd:: set load-balancing haproxy backend <name> http-check
    method <method>
 
-  Sets the HTTP method to be used, can be either: option, get, post, put
+  Set the HTTP method: ``OPTION``, ``GET``, ``POST``, or ``PUT``.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> http-check
    uri <path>
 
-  Sets the endpoint to be used for health checks
+  Set the endpoint to use for health checks.
 
 .. cfgcmd:: set load-balancing haproxy backend <name> http-check
    expect <condition>
 
-  Sets the expected result condition for considering a server healthy.
+  Set the expected result condition for a server to be considered healthy.
 
   Some possible examples are:
    * ``status 200`` Expecting a 200 response code
@@ -303,8 +304,8 @@ checks can be used to determine their availability.
 TCP checks
 ----------
 
-Health checks can also be configured for TCP mode backends. You can configure
-protocol aware checks for a range of Layer 7 protocols:
+Configure health checks for TCP mode backends. You can configure protocol-aware
+checks for a range of Layer 7 protocols:
 
 .. cfgcmd:: set load-balancing haproxy backend <name> health-check <protocol>
 
@@ -315,25 +316,23 @@ protocol aware checks for a range of Layer 7 protocols:
    * ``pgsql`` PostgreSQL protocol check.
    * ``smtp`` SMTP protocol check.
 
-.. note:: If you specify a server to be checked but do not configure a
-   protocol, a basic TCP health check will be attempted. A server shall be
-   deemed online if it responses to a connection attempt with a valid
-   ``SYN/ACK`` packet.
+.. note:: If you specify a server to check but do not configure a
+   protocol, HAProxy performs a basic TCP health check. A server is online if
+   it responds to a connection attempt with a valid ``SYN/ACK`` packet.
 
 
 Redirect HTTP to HTTPS
 ======================
-Configure the load-balancing haproxy service for HTTP.
 
-This configuration listen on port 80 and redirect incoming
-requests to HTTPS:
+Configure a HAProxy service for HTTP that listens on port 80 and redirects
+incoming requests to HTTPS:
 
 .. code-block:: none
 
     set load-balancing haproxy service http port '80'
     set load-balancing haproxy service http redirect-http-to-https
 
-The name of the service can be different, in this example it is only for 
+You can use a different service name; in this example, ``http`` is just for
 convenience.
 
 
@@ -343,9 +342,10 @@ Examples
 Level 4 balancing
 -----------------
 
-This configuration enables the TCP reverse proxy for the "my-tcp-api" service.
-Incoming TCP connections on port 8888 will be load balanced across the backend
-servers (srv01 and srv02) using the round-robin load-balancing algorithm.
+This configuration enables the TCP reverse proxy for the ``my-tcp-api``
+service. Incoming TCP connections on port 8888 are load balanced across the
+backend servers (srv01 and srv02) using the round-robin load balancing
+algorithm.
 
 .. code-block:: none
 
@@ -365,15 +365,15 @@ servers (srv01 and srv02) using the round-robin load-balancing algorithm.
 Balancing based on domain name
 ------------------------------
 The following configuration demonstrates how to use VyOS
-to achieve load balancing based on the domain name.
+to achieve load balancing based on the domain name:
 
-The HTTP service listen on TCP port 80.
+The HTTP service listens on TCP port 80.
 
-Rule 10 matches requests with the domain name ``node1.example.com`` forwards
-to the backend ``bk-api-01``
+Rule 10 matches requests with the domain name ``node1.example.com`` and
+forwards them to the backend ``bk-api-01``.
 
-Rule 20 matches requests with the domain name ``node2.example.com`` forwards
-to the backend ``bk-api-02``
+Rule 20 matches requests with the domain name ``node2.example.com`` and
+forwards them to the backend ``bk-api-02``.
 
 .. code-block:: none
 
@@ -398,23 +398,25 @@ to the backend ``bk-api-02``
 
 Terminate SSL
 -------------
+
 The following configuration terminates SSL on the router.
 
-The ``http`` service is listens on port 80 and force redirects from HTTP to
+The ``http`` service listens on port 80 and redirects HTTP requests to
 HTTPS.
 
-The ``https`` service listens on port 443 with backend ``bk-default`` to
-handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination.
-HSTS header is set with a 1-year expiry, to tell browsers to always use SSL for site.
+The ``https`` service listens on port 443 with the ``bk-default`` backend
+and handles HTTPS traffic using the ``cert`` certificate for SSL termination.
+The HSTS header is set with a 1-year expiry to tell browsers to always use
+SSL for the site.
 
-Rule 10 matches requests with the exact URL path ``/.well-known/xxx``
-and redirects to location ``/certs/``.
+Rule 10 matches requests with the exact URL path ``/.well-known/xxx`` and
+redirects them to ``/certs/``.
 
-Rule 20 matches requests with URL paths ending in ``/mail`` or exact
-path ``/email/bar`` redirect to location ``/postfix/``.
+Rule 20 matches requests with URL paths ending in ``/mail`` or the exact
+path ``/email/bar`` and redirects them to ``/postfix/``.
 
-Additional global parameters are set, including the maximum number
-connection limit of 4000 and a minimum TLS version of 1.3.
+Global parameters include a maximum connection limit of 4000 and a minimum
+TLS version of 1.3.
 
 
 .. code-block:: none
@@ -447,9 +449,10 @@ connection limit of 4000 and a minimum TLS version of 1.3.
 
 SSL Bridging
 -------------
+
 The following configuration terminates incoming HTTPS traffic on the router,
-then re-encrypts the traffic and sends to the backend server via HTTPS.
-This is useful if encryption is required for both legs, but you do not want to
+then re-encrypts the traffic and sends it to the backend server via HTTPS.
+Use this when encryption is required for both paths but you do not want to
 install publicly trusted certificates on each backend server.
 
 Backend service certificates are checked against the certificate authority
@@ -458,7 +461,7 @@ specified in the configuration, which could be an internal CA.
 The ``https`` service listens on port 443 with backend ``bk-bridge-ssl`` to
 handle HTTPS traffic. It uses certificate named ``cert`` for SSL termination.
 
-The ``bk-bridge-ssl`` backend connects to sr01 server on port 443 via HTTPS
+The ``bk-bridge-ssl`` backend connects to ``sr01`` server on port 443 via HTTPS
 and checks backend server has a valid certificate trusted by CA ``cacert``
 
 
@@ -480,7 +483,7 @@ and checks backend server has a valid certificate trusted by CA ``cacert``
 Balancing with HTTP health checks
 ---------------------------------
 
-This configuration enables HTTP health checks on backend servers.
+This configuration enables HTTP health checks for backend servers.
 
 .. code-block:: none
 
