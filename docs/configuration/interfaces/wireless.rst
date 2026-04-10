@@ -42,7 +42,7 @@ System-wide configuration
   to indicate country in which device is operating. This can limit available
   channels and transmit power.
 
-  .. note:: This option is mandatory in Access-Point mode.
+  .. note:: This option is mandatory in ``access-point`` mode.
 
 Wireless options
 ================
@@ -137,9 +137,9 @@ Wireless options
 
   Wireless device type for this interface
 
-  * ``access-point`` - Access-point forwards packets between other nodes
-  * ``station`` - Connects to another access point
-  * ``monitor`` - Passively monitor all packets on the frequency/channel
+  * ``access-point``: Forwards packets between other nodes.
+  * ``station``: Connects to another :abbr:`AP (Access Point)`.
+  * ``monitor``: Passively monitors all packets on the frequency/channel.
 
 .. cmdinclude:: /_include/interface-per-client-thread.txt
    :var0: wireless
@@ -179,12 +179,9 @@ HT (High Throughput) capabilities (802.11n)
   * ``ht40+`` - Both 20 MHz and 40 MHz with secondary channel above the primary
     channel
 
-  .. note:: There are limits on which channels can be used with HT40- and HT40+.
-    Following table shows the channels that may be available for HT40- and HT40+
-    use per IEEE 802.11n Annex J:
-
-    Depending on the location, not all of these channels may be available for
-    use!
+  .. note:: Channel availability for HT40- and HT40+ is limited. The following
+     table lists channels permitted for HT40- and HT40+ according to IEEE
+     802.11n Annex J. Channel availability may vary by location.
 
     .. code-block:: none
 
