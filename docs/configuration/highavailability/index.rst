@@ -2,8 +2,9 @@
 
 .. _high-availability:
 
+#################
 High availability
-=================
+#################
 
 VRRP (Virtual Router Redundancy Protocol) provides active/backup redundancy for
 routers. Every VRRP router has a physical IP/IPv6 address, and a virtual
@@ -252,7 +253,11 @@ need to configure it. But if necessary, Gratuitous ARP can be configured in
 
    0 if not defined.
 
+.. stop_vyoslinter
+
 .. cfgcmd:: set high-availability vrrp global-parameters garp master-delay <1-255>
+
+.. start_vyoslinter
 
 .. cfgcmd:: set high-availability vrrp group <name> garp master-delay <1-255>
 
@@ -316,20 +321,23 @@ vice versa and can be used to enable or disable certain services, for example.
 
      chmod +x /config/scripts/script-name.sh
 
-.. warning:: It is not recommended to change VRRP configuration inside health-check
-   and transition scripts.
+.. warning:: It is not recommended to change VRRP configuration
+   inside health-check and transition scripts.
 
 Health check scripts
 ^^^^^^^^^^^^^^^^^^^^
 
-There is the ability to run an arbitrary script at regular intervals according to health-check
-parameters. If a script returns 0, it indicates success. If a script returns anything
-else, it will indicate that the VRRP instance should enter the FAULT state.
+There is the ability to run an arbitrary script at regular intervals
+according to health-check parameters. If a script returns 0, it
+indicates success. If a script returns anything else, it will indicate
+that the VRRP instance should enter the FAULT state.
 
 This setup will make the VRRP process execute the
 ``/config/scripts/vrrp-check.sh script`` every 60 seconds, and transition the
 group to the fault state if it fails (i.e. exits with non-zero status) three
 times:
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -337,15 +345,21 @@ times:
   set high-availability vrrp group Foo health-check interval 60
   set high-availability vrrp group Foo health-check failure-count 3
 
+.. start_vyoslinter
+
 When the vrrp group is a member of the sync group will use only
 the sync group health check script.
 This example shows how to configure it for the sync group:
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
   set high-availability vrrp sync-group Bar health-check script /config/scripts/vrrp-check.sh
   set high-availability vrrp sync-group Bar health-check interval 60
   set high-availability vrrp sync-group Bar health-check failure-count 3
+
+.. start_vyoslinter
 
 Transition scripts
 ^^^^^^^^^^^^^^^^^^
@@ -356,11 +370,15 @@ This setup will make the VRRP process execute the
 ``/config/scripts/vrrp-fail.sh`` with argument ``Foo`` when VRRP fails,
 and the ``/config/scripts/vrrp-master.sh`` when the router becomes the master:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set high-availability vrrp group Foo transition-script backup "/config/scripts/vrrp-fail.sh Foo"
   set high-availability vrrp group Foo transition-script fault "/config/scripts/vrrp-fail.sh Foo"
   set high-availability vrrp group Foo transition-script master "/config/scripts/vrrp-master.sh Foo"
+
+.. start_vyoslinter
 
 To know more about scripting, check the :ref:`command-scripting` section.
 
@@ -401,9 +419,13 @@ Health-check
 ^^^^^^^^^^^^
 Custom health-check script allows checking real-server availability
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 health-check script <path-to-script>
+
+.. start_vyoslinter
 
 Fwmark
 ^^^^^^
@@ -417,9 +439,13 @@ Real server
 ^^^^^^^^^^^
 Real server IP address and port
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80'
+
+.. start_vyoslinter
 
 
 Example
@@ -431,6 +457,8 @@ protocol TCP is balanced between 2 real servers ``192.0.2.11`` and
 ``192.0.2.12`` to port ``80``
 
 Real server is auto-excluded if port check with this server fail.
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -451,6 +479,7 @@ Real server is auto-excluded if port check with this server fail.
   set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80'
   set high-availability virtual-server 203.0.113.1 real-server 192.0.2.12 port '80'
 
+.. start_vyoslinter
 
 A firewall mark ``fwmark`` allows using multiple ports for high-availability
 virtual-server.
@@ -459,6 +488,8 @@ It uses fwmark value.
 In this example all traffic destined to ports "80, 2222, 8888" protocol TCP
 marks to fwmark "111" and balanced between 2 real servers.
 Port "0" is required if multiple ports are used.
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -482,6 +513,8 @@ Port "0" is required if multiple ports are used.
   set nat source rule 100 outbound-interface name 'eth0'
   set nat source rule 100 source address '192.0.2.0/24'
   set nat source rule 100 translation address 'masquerade'
+
+.. start_vyoslinter
 
 Op-mode check virtual-server status
 

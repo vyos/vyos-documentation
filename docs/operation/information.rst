@@ -2,9 +2,9 @@
 
 .. _information:
 
-******************
+##################
 System Information
-******************
+##################
 
 VyOS features a rich set of operational level commands to retrieve arbitrary
 information about your running system. For more information on the VyOS command
@@ -42,6 +42,8 @@ recent Linux distributions.
   .. note:: If a device is unplugged and plugged in again, it is assigned a new
     ``Port``, ``Dev``, and ``If``.
 
+.. stop_vyoslinter
+
   .. code-block:: none
 
     vyos@vyos:~$ show hardware usb
@@ -70,12 +72,16 @@ recent Linux distributions.
                 |__ Port 4: Dev 7, If 2, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
                 |__ Port 4: Dev 7, If 0, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
 
+.. start_vyoslinter
+
 
 .. opcmd:: show hardware usb serial
 
   Retrieve a list and description of all connected USB serial devices. The
   device name displayed, (for example ``usb0b2.4p1.0``), can be used
   directly when accessing the serial console as console-server device.
+
+.. stop_vyoslinter
 
   .. code-block:: none
 
@@ -99,6 +105,8 @@ recent Linux distributions.
     usb0b2.4p1.2     Quad_RS232-HS       Future Technology Devices International, Ltd
     usb0b2.4p1.3     Quad_RS232-HS       Future Technology Devices International, Ltd
 
+.. start_vyoslinter
+
 .. _information_version:
 
 ########
@@ -107,8 +115,9 @@ Version
 
 .. opcmd:: show version
 
-  Return the currently running VyOS version and build information. This includes
-  the name of the release train, e.g., ``sagitta`` on VyOS 1.4, and ``circinus`` on VyOS 1.5.
+  Return the currently running VyOS version and build information. This
+  includes the name of the release train, e.g., ``sagitta`` on VyOS 1.4,
+  and ``circinus`` on VyOS 1.5.
 
   .. code-block:: none
   

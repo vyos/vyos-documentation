@@ -1,7 +1,11 @@
 :lastproofread: 2026-04-06
 
+##################
 WAN load balancing
-==================
+##################
+
+.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
+   directives for command coverage tracking.
 
 The load balancer distributes outbound traffic across two or more
 interfaces. If a path fails, the load balancer balances traffic across the

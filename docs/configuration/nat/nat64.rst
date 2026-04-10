@@ -4,9 +4,6 @@
 NAT64
 #####
 
-.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
-   directives for command coverage tracking.
-
 :abbr:`NAT64 (IPv6-to-IPv4 Prefix Translation)` is a critical component in
 modern networking, facilitating communication between IPv6 and IPv4 networks.
 This documentation outlines the setup, configuration, and usage of the NAT64

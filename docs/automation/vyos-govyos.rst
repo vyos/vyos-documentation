@@ -2,17 +2,21 @@
 
 .. _vyos-govyos:
 
+#######
 go-vyos
-=======
+#######
 
 go-vyos is a Go library designed for interacting with VyOS devices through
 their REST API. This documentation is intended to guide you in using go-vyos for
 programmatic management of your VyOS devices.
 
-- `go-vyos Documentation & Source Code on GitHub <https://github.com/ganawaj/go-vyos>`_
+- `go-vyos Documentation & Source Code on GitHub
+  <https://github.com/ganawaj/go-vyos>`_
   allows you to access and contribute to the library's code.
-- `go-vyos on pkg.go.dev <https://pkg.go.dev/github.com/ganawaj/go-vyos@v0.1.0/vyos>`_ for detailed instructions
-  on the installation, configuration, and operation of the go-vyos library.
+- `go-vyos on pkg.go.dev
+  <https://pkg.go.dev/github.com/ganawaj/go-vyos@v0.1.0/vyos>`_
+  for detailed instructions on the installation, configuration, and
+  operation of the go-vyos library.
 
 
 Installation
@@ -30,10 +34,14 @@ Getting Started
 Importing and Disabling TLS Verification
 -------------------------------------------------
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
     import "github.com/ganawaj/go-vyos/vyos"
     client := vyos.NewClient(nil).WithToken("AUTH_KEY").WithURL("https://192.168.0.1").Insecure()
+
+.. start_vyoslinter
 
 Initializing a VyDevice Object
 ------------------------------
@@ -64,6 +72,8 @@ Using go-vyos
 Configure, then Set
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
     out, resp, err := c.Conf.Set(ctx, "interfaces ethernet eth0 address 192.168.1.1/24")
@@ -72,6 +82,8 @@ Configure, then Set
     }
 
     fmt.Println(out.Success)
+
+.. start_vyoslinter
 
 Show a Single Object Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

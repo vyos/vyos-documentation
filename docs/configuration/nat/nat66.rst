@@ -163,6 +163,8 @@ a VyOS HA pair.
 
 Configure both routers (a and b) for DHCPv6-PD via dummy interface:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set interfaces dummy dum1 description 'DHCPv6-PD NPT dummy'
@@ -172,6 +174,8 @@ Configure both routers (a and b) for DHCPv6-PD via dummy interface:
   set interfaces bonding bond0 vif 20 dhcpv6-options pd 3 interface dum1 address '0'
   set interfaces bonding bond0 vif 20 dhcpv6-options rapid-commit
   commit
+
+.. start_vyoslinter
 
 Get the DHCPv6-PD prefixes from both routers:
 

@@ -29,6 +29,8 @@ Checking IKE SA Status
 
 The next command shows IKE SAs' statuses.
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
  vyos@vyos:~$ show vpn ike sa
@@ -289,8 +291,8 @@ The reason of this problem is showed on the responder side.
  Jun 23 08:16:12 charon-systemd[2440]: no acceptable proposal found
  Jun 23 08:16:12 charon[2440]: 01[IKE] <PEER|5> failed to establish CHILD_SA, keeping IKE_SA
 
-Encryption **AES_CBC_128** is configured in IKE policy on the
-responder but **AES_CBC_256** is configured on the initiator side.
+Encryption **AES_CBC_128** is configured in IKE policy on the responder but **AES_CBC_256**
+is configured on the initiator side.
 
 Prefixes in Policies Mismatch
 =============================
@@ -319,6 +321,8 @@ The reason of this problem is showed on the responder side.
  Jun 23 14:13:19 charon-systemd[2440]: failed to establish CHILD_SA, keeping IKE_SA
  Jun 23 14:13:19 charon[2440]: 01[ENC] <PEER|7> generating IKE_AUTH response 1 [ IDr AUTH N(MOBIKE_SUP) N(NO_ADD_ADDR) N(TS_UNACCEPT) ]
  Jun 23 14:13:19 charon-systemd[2440]: generating IKE_AUTH response 1 [ IDr AUTH N(MOBIKE_SUP) N(NO_ADD_ADDR) N(TS_UNACCEPT) ]
+
+.. start_vyoslinter
 
 Traffic selectors **10.0.2.0/24 === 10.0.0.0/24** are unacceptable on the
 responder side.

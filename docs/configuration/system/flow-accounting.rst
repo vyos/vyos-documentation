@@ -84,9 +84,9 @@ CLI command. You may disable using the local in-memory table with the command:
 
 .. cfgcmd:: set system flow-accounting syslog-facility <facility>
 
-   Configure the syslog facility used for flow-accounting log messages.
-   Available facilities follow standard syslog conventions (e.g.,
-   ``daemon``, ``local0`` through ``local7``).
+   Set the syslog facility for flow-accounting log messages. Supported values
+   include ``daemon``, ``local0`` through ``local7``, and other standard syslog
+   facilities.
 
 Flow Export
 -----------
@@ -167,6 +167,8 @@ display captured network traffic information for all configured interfaces.
 
    Show flow accounting information for given `<interface>`.
 
+   .. stop_vyoslinter
+
    .. code-block:: none
 
      vyos@vyos:~$ show flow-accounting interface eth0
@@ -180,10 +182,14 @@ display captured network traffic information for all configured interfaces.
      eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40006          22  tcp            16        146        1     9444
      eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14                0           0  icmp          192         27        1     4455
 
+   .. start_vyoslinter
+
 .. opcmd:: show flow-accounting interface <interface> host <address>
 
    Show flow accounting information for given `<interface>` for a specific host
    only.
+
+   .. stop_vyoslinter
 
    .. code-block:: none
 
@@ -193,3 +199,5 @@ display captured network traffic information for all configured interfaces.
      eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40006          22  tcp            16        197        2    12940
      eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40152          22  tcp            16         94        1     4924
      eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14           0           0  icmp          192         36        1     5877
+
+   .. start_vyoslinter

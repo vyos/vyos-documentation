@@ -13,6 +13,8 @@ RSA keys for authentication. They are very fast and easy to setup.
 First, on both routers run the operational command "generate pki key-pair 
 install <key-pair nam>>". You may choose different length than 2048 of course.
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   vyos@left# run generate pki key-pair install ipsec-LEFT
@@ -26,6 +28,8 @@ install <key-pair nam>>". You may choose different length than 2048 of course.
   Do you want to install the private key? [Y/n] Y
   set pki key-pair ipsec-LEFT private key 'MIIEvgIBADAN...'
   [edit]
+
+.. start_vyoslinter
 
 Configuration commands will display.
 Note the command with the public key 
@@ -65,6 +69,8 @@ Now you are ready to setup IPsec. The key points:
    can know who's talking to it for the point #3 to work.
 
 On the LEFT (static address):
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -113,3 +119,5 @@ On the RIGHT (dynamic address):
   set vpn ipsec site-to-site peer 192.0.2.10 local-address any
   set vpn ipsec site-to-site peer 192.0.2.10 tunnel 1 local prefix 192.168.99.2/32  # Additional loopback address on the local
   set vpn ipsec site-to-site peer 192.0.2.10 tunnel 1 remote prefix 192.168.99.1/32 # Additional loopback address on the remote
+
+.. start_vyoslinter

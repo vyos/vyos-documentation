@@ -1,5 +1,6 @@
+#######################
 VPP IPFIX Configuration
-=======================
+#######################
 
 VPP IPFIX in VyOS allows monitoring and exporting network traffic flows
 for analytics, security, and accounting. IPFIX works with the VPP
@@ -18,7 +19,8 @@ Key IPFIX Concepts
 - **Active timeout**: Maximum time a flow is kept active before export.
 - **Inactive timeout**: Maximum time an idle flow is kept before export.
 - **Collector**: The remote host and port to which flow records are sent.
-- **Flow layers**: Determines which layer information is included (`l2`, `l3`, `l4`).
+- **Flow layers**: Determines which layer information is included
+  (``l2``, ``l3``, ``l4``).
 - **Interfaces**: Physical or virtual interfaces to monitor.
 - **Direction**: Which traffic to monitor (`rx`, `tx`, `both`).
 - **Flow variant**: Optional filter for IPv4 or IPv6 flows.
@@ -26,12 +28,16 @@ Key IPFIX Concepts
 Configuration Options
 ---------------------
 
-- **active-timeout**: Duration (in seconds) after which active flows are exported.
-- **inactive-timeout**: Duration (in seconds) after which idle flows are exported.
+- **active-timeout**: Duration (in seconds) after which active flows
+  are exported.
+- **inactive-timeout**: Duration (in seconds) after which idle flows
+  are exported.
 - **collector `<ip>` port `<port>`**: IP and UDP port of the IPFIX collector.
 - **collector `<ip>` source-address `<ip>`**: Source address for flow export.
 - **flowprobe-record `<l2|l3|l4>`**: Layers to include in flow records.
-- **interface `<interface>` [direction `<rx|tx|both>`] [flow-variant `<ipv4|ipv6>`]**: Interfaces to monitor, direction of traffic, and optional flow variant filter.
+- **interface** ``<interface>`` **[direction** ``<rx|tx|both>``\ **]**
+  **[flow-variant** ``<ipv4|ipv6>``\ **]**: Interfaces to monitor,
+  direction of traffic, and optional flow variant filter.
 
 Example Configuration
 ---------------------

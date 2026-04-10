@@ -70,12 +70,14 @@ IPv4 BFD
    Configure a static route for `<subnet>` using gateway `<address>` and use the
    gateway address as BFD peer destination address.
 
-.. cfgcmd:: set protocols static route <subnet> next-hop <address>
-   bfd profile <profile>
+.. stop_vyoslinter
 
-   Configure a static route for `<subnet>` using gateway `<address>`
-   and use the gateway address as BFD peer destination address with
-   BFD profile `<profile>`.
+.. cfgcmd:: set protocols static route <subnet> next-hop <address> bfd profile <profile>
+
+.. start_vyoslinter
+
+   Configure a static route for `<subnet>` using gateway `<address>` and use the
+   gateway address as BFD peer destination address with BFD profile `<profile>`.
 
 .. cfgcmd:: set protocols static route <subnet> next-hop <address> bfd multi-hop
    source-address <source-address>
@@ -155,14 +157,19 @@ IPv6 Unicast Routes
    .. note:: Routes with a distance of 255 are effectively disabled and not
       installed into the kernel.
 
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address>
-   segments <segments>
+.. stop_vyoslinter
 
-   It is possible to specify a static route for ipv6 prefixes using
-   an SRv6 segments instruction. The `/` separator can be used to
-   specify multiple segment instructions.
+.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> segments <segments>
+
+.. start_vyoslinter
+
+   It is possible to specify a static route for ipv6 prefixes using an
+   SRv6 segments instruction. The ``/`` separator can be used to specify
+   multiple segment instructions.
 
    Example:
+
+.. stop_vyoslinter
 
    .. code-block:: none
 
@@ -179,6 +186,8 @@ IPv6 Unicast Routes
            t - trapped, o - offload failure
      C>* 2001:db8:201::/64 is directly connected, eth0.201, 00:00:46
      S>* 2001:db8:1000::/36 [1/0] via 2001:db8:201::ffff, eth0.201, seg6 2001:db8:aaaa::7,2002::4,2002::3,2002::2, weight 1, 00:00:08
+
+.. start_vyoslinter
 
 IPv6 Interface Routes
 =====================
@@ -206,15 +215,19 @@ IPv6 Interface Routes
 .. cfgcmd:: set protocols static route6 <subnet> interface
    <interface> segments <segments>
 
-   It is possible to specify a static route for ipv6 prefixes using
-   an SRv6 segments instruction. The `/` separator can be used to
-   specify multiple segment instructions.
+   It is possible to specify a static route for ipv6 prefixes using an
+   SRv6 segments instruction. The ``/`` separator can be used to specify
+   multiple segment instructions.
 
    Example:
+
+.. stop_vyoslinter
 
    .. code-block:: none
 
      set protocols static route6 2001:db8:1000::/36 interface eth0 segments '2001:db8:aaaa::7/2002::4/2002::3/2002::2'
+
+.. start_vyoslinter
 
 IPv6 BFD
 ========
@@ -224,15 +237,21 @@ IPv6 BFD
    Configure a static route for `<subnet>` using gateway `<address>` and use the
    gateway address as BFD peer destination address.
 
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address>
-   bfd profile <profile>
+.. stop_vyoslinter
 
-   Configure a static route for `<subnet>` using gateway `<address>`
-   and use the gateway address as BFD peer destination address with
-   BFD profile `<profile>`.
+.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> bfd profile <profile>
 
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address>
-   bfd multi-hop source-address <source>
+.. start_vyoslinter
+
+   Configure a static route for `<subnet>` using gateway `<address>` and use the
+   gateway address as BFD peer destination address with BFD profile `<profile>`.
+
+.. stop_vyoslinter
+
+.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> bfd multi-hop
+   source-address <source>
+
+.. start_vyoslinter
 
    Configure a static route for `<subnet>` using gateway `<address>` and use the
    gateway address as BFD peer destination address with source address
