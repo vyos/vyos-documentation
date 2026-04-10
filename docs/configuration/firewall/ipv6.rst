@@ -973,9 +973,8 @@ updated.
 Packet Modifications
 ====================
 
-Starting with ``VyOS-1.5-rolling-202410060007``, the firewall can modify
-packets before sending them. This feature provides more flexibility for packet
-handling.
+The firewall can modify packets before sending them.
+This feature provides more flexibility for packet handling.
 
 .. cfgcmd:: set firewall ipv6 prerouting raw rule <1-999999>
    set dscp <0-63>

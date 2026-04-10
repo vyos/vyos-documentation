@@ -10,7 +10,7 @@ Global Options Firewall Configuration
 Overview
 ********
 
-Some firewall settings are global and affect entire systems. This section
+Some firewall settings are global and affect the entire system. This section
 provides information about these global options that you can configure using
 the VyOS CLI.
 
@@ -67,8 +67,8 @@ Configuration
 .. cfgcmd:: set firewall global-options ip-src-route [enable | disable]
 .. cfgcmd:: set firewall global-options ipv6-src-route [enable | disable]
 
-   Set whether VyOS accepts packets with a source route option. The system
-   alters the following parameters:
+   Set whether VyOS accepts packets with a source route option.
+   The following sysctl parameters will be changed:
 
    * ``net.ipv4.conf.all.accept_source_route``
    * ``net.ipv6.conf.all.accept_source_route``
@@ -77,46 +77,46 @@ Configuration
 .. cfgcmd:: set firewall global-options ipv6-receive-redirects
    [enable | disable]
 
-   Enable or disable VyOS to accept ICMPv4 or ICMPv6 redirect messages.
-   The system alters the following parameters:
+   Allow VyOS to accept ICMPv4 and ICMPv6 redirect messages.
+   The following sysctl parameters will be changed:
 
    * ``net.ipv4.conf.all.accept_redirects``
    * ``net.ipv6.conf.all.accept_redirects``
 
 .. cfgcmd:: set firewall global-options send-redirects [enable | disable]
 
-   Enable or disable VyOS to send ICMPv4 redirect messages. The system alters
-   the following parameter:
+   Allow VyOS to send ICMPv4 redirect messages.
+   The following sysctl parameter will be changed:
 
    * ``net.ipv4.conf.all.send_redirects``
 
 .. cfgcmd:: set firewall global-options log-martians [enable | disable]
 
-   Enable or disable logging of martian IPv4 packets. The system alters the
-   following parameter:
+   Allow VyOS to log martian IPv4 packets.
+   The following sysctl parameter will be changed:
 
    * ``net.ipv4.conf.all.log_martians``
 
 .. cfgcmd:: set firewall global-options source-validation
    [strict | loose | disable]
 
-   Set the IPv4 source validation mode. The system alters the following
-   parameter:
+   Set the IPv4 source validation mode.
+   The following sysctl parameter will be changed:
 
    * ``net.ipv4.conf.all.rp_filter``
 
 .. cfgcmd:: set firewall global-options syn-cookies [enable | disable]
 
-   Enable or disable the use of IPv4 TCP SYN Cookies on VyOS. The system
-   alters the following parameter:
+   Allow VyOS to use IPv4 TCP SYN Cookies.
+   The following sysctl parameter will be changed:
 
    * ``net.ipv4.tcp_syncookies``
 
 .. cfgcmd:: set firewall global-options twa-hazards-protection
    [enable | disable]
 
-   Enable or disable VyOS :rfc:`1337` conformance. The system alters
-   the following parameter:
+   Enable or disable VyOS :rfc:`1337` conformance.
+   The following sysctl parameter will be changed:
 
    * ``net.ipv4.tcp_rfc1337``
 

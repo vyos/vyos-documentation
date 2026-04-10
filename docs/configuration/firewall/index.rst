@@ -32,20 +32,17 @@ If the interface where the packet was received is not part of a bridge, the
 packet is processed at the **IP Layer**:
 
    * **Prerouting**: The router processes all packets in this stage,
-     regardless of the destination. Starting from
-     ``vyos-1.5-rolling-202406120020``, VyOS added a new firewall
-     configuration section. You can perform several actions in this stage,
-     and these actions are also defined in different parts of the VyOS
-     configuration. Order is important. The relevant configuration that applies
-     in this stage includes:
+     regardless of the destination. You can perform several actions in
+     this stage, and these actions are also defined in different parts of the
+     VyOS configuration. Order is important. The relevant configuration that
+     applies in this stage includes:
 
       * **Firewall prerouting**: Rules you define under ``set firewall
         [ipv4 | ipv6] prerouting raw...``. The system processes all rules in
         this section before the connection tracking subsystem.
 
       * **Conntrack Ignore**: Rules you define under ``set system conntrack
-        ignore [ipv4 | ipv6] ...``. Starting from
-        ``vyos-1.5-rolling-202406120020``, you can configure this section in
+        ignore [ipv4 | ipv6] ...``. You can configure this section with
         ``firewall [ipv4 | ipv6] prerouting ...``. For compatibility reasons,
         this feature is supported, but will be deprecated in the future.
 

@@ -100,7 +100,9 @@ An **interface group** represents a collection of interfaces.
 
 .. cfgcmd:: set firewall group interface-group <name> interface <text>
 
-   Define an interface group. Wildcards are accepted.
+   Define an interface group.
+   Wildcard ``*`` is supported. For example: ``eth3*``.
+   Prepend the character ``!`` to invert the criteria. For example: ``!eth2``.
 
 .. code-block:: none
 
