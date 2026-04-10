@@ -6,12 +6,9 @@
 Wireless LAN / Wi-Fi
 ####################
 
-The :abbr:`WLAN (Wireless LAN)` interface provides 802.11 (a/b/g/n/ac) wireless
-support (commonly referred to as Wi-Fi) by means of compatible hardware. If
-your hardware supports it, VyOS supports multiple logical wireless interfaces
-per physical device.
-
-There are three modes of operation for a wireless interface:
+:abbr:`WLAN (Wireless LAN)` interfaces provide 802.11 (a/b/g/n/ac) wireless
+connectivity, referred to as Wi-Fi, and operate in one of the following
+modes:
 
 * :abbr:`WAP (Wireless Access-Point)` mode provides network access to connecting
   stations if the physical hardware supports acting as a WAP
@@ -421,7 +418,7 @@ default physical device (``phy0``) is used.
   set interfaces wireless wlan0 ssid 'TEST'
   set interfaces wireless wlan0 security wpa passphrase '12345678'
 
-Resulting in
+Resulting configuration:
 
 .. code-block:: none
 
@@ -689,7 +686,7 @@ The WAP in this example has the following characteristics:
   set interfaces wireless wlan0 security wpa cipher CCMP
   set interfaces wireless wlan0 security wpa passphrase '12345678'
 
-Resulting in
+Resulting configuration:
 
 .. code-block:: none
 
@@ -716,26 +713,25 @@ Resulting in
       }
   }
 
-To get it to work as an access point with this configuration you will need
-to set up a DHCP server to work with that network. You can - of course - also
-bridge the Wireless interface with any configured bridge
-(:ref:`bridge-interface`) on the system.
+To enable access point functionality, configure a DHCP server for this
+interface's network, or add the interface to an existing local bridge
+(see :ref:`bridge-interface` for details).
 
-WiFi-6(e) - 802.11ax
-====================
+Wi-Fi 6/6E (802.11ax)
+=====================
 
-The following examples will show valid configurations for WiFi-6 (2.4GHz) 
-and WiFi-6e (6GHz) Access-Points with the following characteristics:
+The following examples configure Wi-Fi 6 (2.4 GHz) and Wi-Fi 6E (6 GHz)
+:abbr:`APs (Access Points)` with the following parameters:
 
-* Network ID (SSID) ``test.ax``
-* WPA passphrase ``super-dooper-secure-passphrase``
-* Use 802.11ax protocol
-* Wireless channel ``11`` for 2.4GHz
-* Wireless channel ``5`` for 6GHz 
+* Network ID (SSID): ``test.ax``
+* WPA passphrase: ``super-dooper-secure-passphrase``
+* Protocol: 802.11ax
+* Wireless channel for 2.4 GHz: ``11``
+* Wireless channel for 6 GHz: ``5``
 
 
-Example Configuration: WiFi-6 at 2.4GHz
----------------------------------------
+Example configuration: Wi-Fi 6 at 2.4 GHz
+------------------------------------------
 
 You may expect real throughput around 10 MB/s or higher in crowded areas.
 
@@ -773,7 +769,7 @@ You may expect real throughput around 10 MB/s or higher in crowded areas.
 
 .. start_vyoslinter
 
-Resulting in
+Resulting configuration:
 
 .. code-block:: none
 
@@ -829,8 +825,8 @@ Resulting in
       }
   }
 
-Example Configuration: WiFi-6e at 6GHz
---------------------------------------
+Example configuration: Wi-Fi 6E at 6 GHz
+-----------------------------------------
 
 You may expect real throughput between 50 MB/s and 150 MB/s, depending on
 obstructions from walls, water, metal, or other materials
@@ -867,7 +863,7 @@ with the AP being in the same room and in line-of-sight.
 
 .. start_vyoslinter
 
-Resulting in
+Resulting configuration:
 
 .. code-block:: none
 
