@@ -1,7 +1,8 @@
 :lastproofread: 2024-09-11
 
+###########################
 Bridge and firewall example
----------------------------
+###########################
 
 Scenario and requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^

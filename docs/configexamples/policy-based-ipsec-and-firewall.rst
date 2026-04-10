@@ -1,8 +1,9 @@
 .. _examples-policy-based-ipsec-and-firewall:
 
 
+########################################################
 Policy-Based Site-to-Site VPN and Firewall Configuration
---------------------------------------------------------
+########################################################
 
 This guide shows an example policy-based IKEv2 site-to-site VPN between two
 VyOS routers, and firewall configuration.

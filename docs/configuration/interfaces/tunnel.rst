@@ -2,8 +2,9 @@
 
 .. _tunnel-interface:
 
+######
 Tunnel
-======
+######
 
 Tunnel interfaces are virtual links that transmit encapsulated traffic between 
 private networks or hosts across public infrastructure, such as the Internet. 

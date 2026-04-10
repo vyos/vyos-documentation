@@ -1,7 +1,8 @@
 .. _examples-site-2-site-cisco:
 
+#############################################
 Site-to-Site IPSec VPN to Cisco using FlexVPN
----------------------------------------------
+#############################################
 
 This guide shows a sample configuration for FlexVPN site-to-site Internet 
 Protocol Security (IPsec)/Generic Routing Encapsulation (GRE) tunnel.

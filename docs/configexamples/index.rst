@@ -1,7 +1,8 @@
 .. _examples:
 
+########################
 Configuration Blueprints
-========================
+########################
 
 This chapter contains various configuration examples:
 

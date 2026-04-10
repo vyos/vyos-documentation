@@ -2,8 +2,9 @@
 
 .. _update_vyos:
 
+###########
 Update VyOS
-===========
+###########
 
 New system images can be added using the :opcmd:`add system image` command.
 This command extracts the image and prompts you to use the current system

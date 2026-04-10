@@ -1,8 +1,8 @@
 .. _system-display:
 
-********************
+####################
 System Display (LCD)
-********************
+####################
 
 The system LCD :abbr:`LCD (Liquid-crystal display)` option is for users running
 VyOS on hardware that features an LCD display. This is typically a small display
