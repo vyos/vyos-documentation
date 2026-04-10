@@ -53,27 +53,27 @@ They can be **decimal** prefixes.
 
    .. code-block:: none
 
-	kbit  (10^3)    kilobit per second
-	mbit  (10^6)    megabit per second
-	gbit  (10^9)    gigabit per second
- 	tbit  (10^12)   terabit per second
-	
-	kbps  (8*10^3)  kilobyte per second
-	mbps  (8*10^6)  megabyte per second
-	gbps  (8*10^9)  gigabyte per second
-	tbps  (8*10^12) terabyte per second
+    kbit  (10^3)    kilobit per second
+    mbit  (10^6)    megabit per second
+    gbit  (10^9)    gigabit per second
+    tbit  (10^12)   terabit per second
+    
+    kbps  (8*10^3)  kilobyte per second
+    mbps  (8*10^6)  megabyte per second
+    gbps  (8*10^9)  gigabyte per second
+    tbps  (8*10^12) terabyte per second
 
 Or **binary** prefixes.
 
    .. code-block:: none
 
-	kibit (2^10 = 1024)    kibibit per second
-	mibit (2^20 = 1024^2)  mebibit per second
-	gibit (2^30 = 1024^3)  gibibit per second
+    kibit (2^10 = 1024)    kibibit per second
+    mibit (2^20 = 1024^2)  mebibit per second
+    gibit (2^30 = 1024^3)  gibibit per second
         tbit  (2^40 = 1024^4)  tebibit per second
 
-	kibps (1024*8)	       kibibyte (KiB) per second
-	mibps (1024^2*8)       mebibyte (MiB) per second
+    kibps (1024*8)         kibibyte (KiB) per second
+    mibps (1024^2*8)       mebibyte (MiB) per second
         gibps (1024^3*8)       gibibyte (GiB) per second
         tibps (1024^4*8)       tebibyte (TiB) per second
 
@@ -88,7 +88,7 @@ A *bit* is written as **bit**,
         kbit (kilobits per second)
         mbit (megabits per second)
         gbit (gigabits per second)
-	tbit (terabits per second)
+    tbit (terabits per second)
 
 while a *byte* is written as a single **b**.
 
@@ -134,10 +134,13 @@ configuring it.
    identify it, it also defines its priority.
 
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set qos policy <policy> <policy-name> class <class-ID> match <class-matching-rule-name>
 
+.. start_vyoslinter
 
 In the command above, we set the type of policy we are going to
 work with and the name we choose for it; a class (so that we can
@@ -199,9 +202,13 @@ is based on marks done by the firewall,
 
 You can also write a description for a filter:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set qos policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER description "My filter description"
+
+.. start_vyoslinter
 
 
 
@@ -281,9 +288,11 @@ you want to do with the traffic of that class, what specific
 Traffic-Control treatment you want to give it. You will have different
 possibilities depending on the Traffic Policy you are configuring.
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
-   vyos@vyos# set qos policy shaper MY-SHAPER class 30 
+   vyos@vyos# set qos policy shaper MY-SHAPER class 30
    Possible completions:
       bandwidth    Available bandwidth for this policy (default: auto)
       burst        Burst size for this class (default: 15k)
@@ -299,7 +308,8 @@ possibilities depending on the Traffic Policy you are configuring.
       queue-type   Queue type for default traffic (default: fq-codel)
       set-dscp     Change the Differentiated Services (DiffServ) field in the IP header
       target       Acceptable minimum standing/persistent queue delay (default: 5)
-   
+
+.. start_vyoslinter
 
 For instance, with :code:`set qos policy shaper MY-SHAPER
 class 30 set-dscp EF` you would be modifying the DSCP field value of packets in
@@ -1140,9 +1150,11 @@ parameters.
                    Random Early Detection (RED)
 
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
-   vyos@vyos# set qos policy shaper HTB class 10 
+   vyos@vyos# set qos policy shaper HTB class 10
    Possible completions:
       bandwidth    Available bandwidth for this policy (default: auto)
       burst        Burst size for this class (default: 15k)
@@ -1159,6 +1171,8 @@ parameters.
       set-dscp     Change the Differentiated Services (DiffServ) field in the IP header
       target       Acceptable minimum standing/persistent queue delay (default: 5)
 
+.. start_vyoslinter
+
 
 
 .. note:: If you configure a class for **VoIP traffic**, don't give it any
@@ -1173,6 +1187,8 @@ Example
 
 A simple example of Shaper using priorities.
 
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -1194,6 +1210,8 @@ A simple example of Shaper using priorities.
    set qos policy shaper MY-HTB default ceiling '100%'
    set qos policy shaper MY-HTB default priority '7'
    set qos policy shaper MY-HTB default queue-type 'fair-queue'
+
+.. start_vyoslinter
 
 .. _CAKE:
 
@@ -1255,8 +1273,8 @@ edge.
 
 .. cfgcmd:: set qos policy cake <text> flow-isolation triple-isolate
 
-   **(Default)** Flows are defined by the 5-tuple, fairness is applied over source and
-   destination addresses and also over individual flows.
+   **(Default)** Flows are defined by the 5-tuple, fairness is applied
+   over source and destination addresses and also over individual flows.
 
 .. cfgcmd:: set qos policy cake <text> rtt
 

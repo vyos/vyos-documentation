@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git fetch:*)",
+      "Bash(git rebase:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(git branch:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(git apply:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh run:*)",
+      "Bash(awk 'length > 80 {print NR \": \" length \"c\"}' /Users/syncer/GitHub/vyos-documentation/docs/configexamples/l3vpn-hub-and-spoke.rst)",
+      "Bash(awk length > 80 {print NR}:*)",
+      "Bash(awk 'length > 80 {print NR}' /Users/syncer/GitHub/vyos-documentation/docs/configuration/interfaces/openvpn-examples.rst)",
+      "Bash(awk 'length > 80 {print NR \": \" length \"c\"}' /Users/syncer/GitHub/vyos-documentation/docs/configuration/interfaces/openvpn-examples.rst)",
+      "Bash(python3:*)",
+      "Bash(gh api:*)",
+      "Bash(GIT_EDITOR=true git rebase:*)",
+      "Bash(sed -n '120,130p' docs/configuration/service/eventhandler.rst)",
+      "Bash(sed -n '130,160p' docs/configuration/service/eventhandler.rst)",
+      "Bash(sed -n '95,105p' docs/configuration/vpn/openconnect.rst)",
+      "Bash(sed -n '5,10p' docs/configuration/interfaces/wireless.rst)",
+      "Bash(sed -n '55,65p' docs/configuration/interfaces/wireless.rst)"
+    ]
+  }
+}

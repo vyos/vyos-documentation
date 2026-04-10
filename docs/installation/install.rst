@@ -147,7 +147,7 @@ To verify a VyOS image starting with VyOS ``1.3.0-rc6``, run:
   $ minisign -V -P RWSIhkR/dkM2DSaBRniv/bbbAf8hmDqdbOEmgXkf1RxRoxzodgKcDyGq -m vyos-1.5-rolling-202409250007-generic-amd64.iso vyos-1.5-rolling-202409250007-generic-amd64.iso.minisig
   
   Signature and comment signature verified
-  Trusted comment: timestamp:1727223408	file:vyos-1.5-rolling-202409250007-generic-amd64.iso	hashed
+  Trusted comment: timestamp:1727223408 file:vyos-1.5-rolling-202409250007-generic-amd64.iso    hashed
 
 During an image upgrade, VyOS runs the following command:
 

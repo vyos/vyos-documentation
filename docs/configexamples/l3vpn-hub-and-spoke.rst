@@ -46,7 +46,8 @@ The following software was used in the creation of this document:
 **NOTE:** VyOS Router (tested with VyOS 1.4-rolling-202110310317) 
 –  The configurations below are specifically for VyOS 1.4.x.
 
-General information can be found in the :ref:`configuration/vrf/index:L3VPN VRFs` chapter.
+General information can be found in the
+:ref:`configuration/vrf/index:L3VPN VRFs` chapter.
 
 
 
@@ -64,8 +65,9 @@ Topology
 How does it work?
 *****************
 
-As we know the main assumption of L3VPN “Hub and Spoke” is, that the traffic 
-between spokes have to pass via hub, in our scenario VyOS-PE2 is the Hub PE 
+As we know the main assumption of L3VPN “Hub and Spoke” is, that the
+traffic between spokes have to pass via hub, in our scenario VyOS-PE2
+is the Hub PE
 and the VyOS-CE1-HUB is the central customer office device that is responsible 
 for controlling access between all spokes and announcing its network prefixes 
 (10.0.0.100/32). VyOS-PE2 has the main VRF (its name is BLUE_HUB), its 
@@ -325,10 +327,12 @@ At this step we are going to enable iBGP protocol on MPLS nodes and
 Route Reflectors (two routers for redundancy) that will deliver IPv4 
 VPN (L3VPN) routes between them:
 
+.. stop_vyoslinter
+
 - VyOS-RR1:
 
 .. code-block:: none
-   
+
    set protocols bgp system-as '65001'
    set protocols bgp neighbor 10.0.0.7 address-family ipv4-vpn route-reflector-client
    set protocols bgp neighbor 10.0.0.7 peer-group 'RR_VPNv4'
@@ -554,81 +558,81 @@ Let’s check IPv4 routing and MPLS information on provider nodes
    
    vyos@VyOS-P1:~$  show ip ospf neighbor
    
-   Neighbor ID 	Pri State       	Dead Time Address     	Interface            RXmtL RqstL DBsmL
-   10.0.0.4       	1 Full/Backup   	34.718s   172.16.30.2 	eth0:172.16.30.1       0 	  0 	  0
-   10.0.0.5       	1 Full/Backup   	35.132s   172.16.40.2 	eth1:172.16.40.1       0 	  0 	  0
-   10.0.0.7       	1 Full/Backup   	34.764s   172.16.90.2 	eth2:172.16.90.1       0 	  0 	  0
-   10.0.0.1       	1 Full/Backup   	35.642s   172.16.10.2 	eth3:172.16.10.1       0 	  0 	  0
-   10.0.0.8       	1 Full/Backup   	35.484s   172.16.100.2	eth5:172.16.100.1      0 	  0     0
+   Neighbor ID  Pri State           Dead Time Address       Interface            RXmtL RqstL DBsmL
+   10.0.0.4         1 Full/Backup       34.718s   172.16.30.2   eth0:172.16.30.1       0      0       0
+   10.0.0.5         1 Full/Backup       35.132s   172.16.40.2   eth1:172.16.40.1       0      0       0
+   10.0.0.7         1 Full/Backup       34.764s   172.16.90.2   eth2:172.16.90.1       0      0       0
+   10.0.0.1         1 Full/Backup       35.642s   172.16.10.2   eth3:172.16.10.1       0      0       0
+   10.0.0.8         1 Full/Backup       35.484s   172.16.100.2  eth5:172.16.100.1      0      0     0
 
 - “show mpls ldp neighbor “ for checking ldp neighbors
 
 .. code-block:: none
    
    vyos@VyOS-P1:~$ show mpls ldp neighbor
-   AF   ID          	State   	   Remote Address	Uptime
-   ipv4 10.0.0.1     	OPERATIONAL 10.0.0.1     	07w5d06h
-   ipv4 10.0.0.4     	OPERATIONAL 10.0.0.4     	09w3d00h
-   ipv4 10.0.0.5     	OPERATIONAL 10.0.0.5     	09w2d23h
-   ipv4 10.0.0.7     	OPERATIONAL 10.0.0.7     	03w0d01h
-   ipv4 10.0.0.8     	OPERATIONAL 10.0.0.8     	01w3d02h
+   AF   ID              State          Remote Address   Uptime
+   ipv4 10.0.0.1        OPERATIONAL 10.0.0.1        07w5d06h
+   ipv4 10.0.0.4        OPERATIONAL 10.0.0.4        09w3d00h
+   ipv4 10.0.0.5        OPERATIONAL 10.0.0.5        09w2d23h
+   ipv4 10.0.0.7        OPERATIONAL 10.0.0.7        03w0d01h
+   ipv4 10.0.0.8        OPERATIONAL 10.0.0.8        01w3d02h
 
 - “show mpls ldp binding” for checking mpls label assignment
 
 .. code-block:: none
    
    vyos@VyOS-P1:~$ show mpls ldp discovery
-   AF   Destination      	Nexthop     	Local    Label Remote Label  In Use
-   ipv4 10.0.0.1/32       	10.0.0.1     	23      	      imp-null     	yes
-   ipv4 10.0.0.1/32       	10.0.0.4     	23      	      20            	no
-   ipv4 10.0.0.1/32       	10.0.0.5     	23      	      17            	no
-   ipv4 10.0.0.1/32       	10.0.0.7     	23      	      16            	no
-   ipv4 10.0.0.1/32       	10.0.0.8     	23      	      16            	no
-   ipv4 10.0.0.2/32       	10.0.0.1     	20      	      16            	no
-   ipv4 10.0.0.2/32       	10.0.0.4     	20      	      22            	no
-   ipv4 10.0.0.2/32       	10.0.0.5     	20      	      24           	yes
-   ipv4 10.0.0.2/32       	10.0.0.7     	20      	      17            	no
-   ipv4 10.0.0.2/32       	10.0.0.8     	20      	      17            	no
-   ipv4 10.0.0.3/32       	10.0.0.1     	imp-null	      17            	no
-   ipv4 10.0.0.3/32       	10.0.0.4     	imp-null	      16            	no
-   ipv4 10.0.0.3/32       	10.0.0.5     	imp-null	      18            	no
-   ipv4 10.0.0.3/32       	10.0.0.7     	imp-null	      18            	no
-   ipv4 10.0.0.3/32       	10.0.0.8     	imp-null	      18            	no
-   ipv4 10.0.0.4/32       	10.0.0.1     	16      	      18            	no
-   ipv4 10.0.0.4/32       	10.0.0.4     	16      	      imp-null     	yes
-   ipv4 10.0.0.4/32       	10.0.0.5     	16      	      19            	no
-   ipv4 10.0.0.4/32       	10.0.0.7     	16      	      19            	no
-   ipv4 10.0.0.4/32       	10.0.0.8     	16      	      19            	no
-   ipv4 10.0.0.5/32       	10.0.0.1     	21      	      19            	no
-   ipv4 10.0.0.5/32       	10.0.0.4     	21      	      17            	no
-   ipv4 10.0.0.5/32       	10.0.0.5     	21      	      imp-null     	yes
-   ipv4 10.0.0.5/32       	10.0.0.7     	21      	      20            	no
-   ipv4 10.0.0.5/32       	10.0.0.8     	21      	      20            	no
-   ipv4 10.0.0.6/32       	10.0.0.1     	17      	      20            	no
-   ipv4 10.0.0.6/32       	10.0.0.4     	17      	      23           	yes
-   ipv4 10.0.0.6/32       	10.0.0.5     	17      	      21           	yes
-   ipv4 10.0.0.6/32       	10.0.0.7     	17      	      21            	no
-   ipv4 10.0.0.6/32       	10.0.0.8     	17      	      21            	no
-   ipv4 10.0.0.7/32       	10.0.0.1     	22      	      21            	no
-   ipv4 10.0.0.7/32       	10.0.0.4     	22      	      18            	no
-   ipv4 10.0.0.7/32       	10.0.0.5     	22      	      20            	no
-   ipv4 10.0.0.7/32       	10.0.0.7     	22      	      imp-null     	yes
-   ipv4 10.0.0.7/32       	10.0.0.8     	22      	      22            	no
-   ipv4 10.0.0.8/32       	10.0.0.1     	24      	      22            	no
-   ipv4 10.0.0.8/32       	10.0.0.4     	24      	      19            	no
-   ipv4 10.0.0.8/32       	10.0.0.5     	24      	      16            	no
-   ipv4 10.0.0.8/32       	10.0.0.7     	24      	      22            	no
-   ipv4 10.0.0.8/32       	10.0.0.8     	24      	      imp-null     	yes
-   ipv4 10.0.0.9/32       	10.0.0.1     	18      	      23            	no
-   ipv4 10.0.0.9/32       	10.0.0.4     	18      	      21           	yes
-   ipv4 10.0.0.9/32       	10.0.0.5     	18      	      22            	no
-   ipv4 10.0.0.9/32       	10.0.0.7     	18      	      23            	no
-   ipv4 10.0.0.9/32       	10.0.0.8     	18      	      23            	no
-   ipv4 10.0.0.10/32   	10.0.0.1     	19      	      24            	no
-   ipv4 10.0.0.10/32   	10.0.0.4     	19      	      24           	yes
-   ipv4 10.0.0.10/32   	10.0.0.5     	19      	      23           	yes
-   ipv4 10.0.0.10/32   	10.0.0.7     	19      	      24            	no
-   ipv4 10.0.0.10/32   	10.0.0.8     	19      	      24            	no
+   AF   Destination         Nexthop         Local    Label Remote Label  In Use
+   ipv4 10.0.0.1/32         10.0.0.1        23                imp-null      yes
+   ipv4 10.0.0.1/32         10.0.0.4        23                20                no
+   ipv4 10.0.0.1/32         10.0.0.5        23                17                no
+   ipv4 10.0.0.1/32         10.0.0.7        23                16                no
+   ipv4 10.0.0.1/32         10.0.0.8        23                16                no
+   ipv4 10.0.0.2/32         10.0.0.1        20                16                no
+   ipv4 10.0.0.2/32         10.0.0.4        20                22                no
+   ipv4 10.0.0.2/32         10.0.0.5        20                24            yes
+   ipv4 10.0.0.2/32         10.0.0.7        20                17                no
+   ipv4 10.0.0.2/32         10.0.0.8        20                17                no
+   ipv4 10.0.0.3/32         10.0.0.1        imp-null          17                no
+   ipv4 10.0.0.3/32         10.0.0.4        imp-null          16                no
+   ipv4 10.0.0.3/32         10.0.0.5        imp-null          18                no
+   ipv4 10.0.0.3/32         10.0.0.7        imp-null          18                no
+   ipv4 10.0.0.3/32         10.0.0.8        imp-null          18                no
+   ipv4 10.0.0.4/32         10.0.0.1        16                18                no
+   ipv4 10.0.0.4/32         10.0.0.4        16                imp-null      yes
+   ipv4 10.0.0.4/32         10.0.0.5        16                19                no
+   ipv4 10.0.0.4/32         10.0.0.7        16                19                no
+   ipv4 10.0.0.4/32         10.0.0.8        16                19                no
+   ipv4 10.0.0.5/32         10.0.0.1        21                19                no
+   ipv4 10.0.0.5/32         10.0.0.4        21                17                no
+   ipv4 10.0.0.5/32         10.0.0.5        21                imp-null      yes
+   ipv4 10.0.0.5/32         10.0.0.7        21                20                no
+   ipv4 10.0.0.5/32         10.0.0.8        21                20                no
+   ipv4 10.0.0.6/32         10.0.0.1        17                20                no
+   ipv4 10.0.0.6/32         10.0.0.4        17                23            yes
+   ipv4 10.0.0.6/32         10.0.0.5        17                21            yes
+   ipv4 10.0.0.6/32         10.0.0.7        17                21                no
+   ipv4 10.0.0.6/32         10.0.0.8        17                21                no
+   ipv4 10.0.0.7/32         10.0.0.1        22                21                no
+   ipv4 10.0.0.7/32         10.0.0.4        22                18                no
+   ipv4 10.0.0.7/32         10.0.0.5        22                20                no
+   ipv4 10.0.0.7/32         10.0.0.7        22                imp-null      yes
+   ipv4 10.0.0.7/32         10.0.0.8        22                22                no
+   ipv4 10.0.0.8/32         10.0.0.1        24                22                no
+   ipv4 10.0.0.8/32         10.0.0.4        24                19                no
+   ipv4 10.0.0.8/32         10.0.0.5        24                16                no
+   ipv4 10.0.0.8/32         10.0.0.7        24                22                no
+   ipv4 10.0.0.8/32         10.0.0.8        24                imp-null      yes
+   ipv4 10.0.0.9/32         10.0.0.1        18                23                no
+   ipv4 10.0.0.9/32         10.0.0.4        18                21            yes
+   ipv4 10.0.0.9/32         10.0.0.5        18                22                no
+   ipv4 10.0.0.9/32         10.0.0.7        18                23                no
+   ipv4 10.0.0.9/32         10.0.0.8        18                23                no
+   ipv4 10.0.0.10/32    10.0.0.1        19                24                no
+   ipv4 10.0.0.10/32    10.0.0.4        19                24            yes
+   ipv4 10.0.0.10/32    10.0.0.5        19                23            yes
+   ipv4 10.0.0.10/32    10.0.0.7        19                24                no
+   ipv4 10.0.0.10/32    10.0.0.8        19                24                no
    
 Now we’re checking iBGP status and routes from route-reflector 
 nodes to other devices:
@@ -644,11 +648,11 @@ nodes to other devices:
    Peers 4, using 85 KiB of memory
    Peer groups 1, using 64 bytes of memory
    
-   Neighbor    	V     	AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
-   10.0.0.7     	4  	65001  	7719  	7733    	      0	   0	0   5d07h56m        	2   	10
-   10.0.0.8     	4  	65001  	7715  	7724    	      0	   0	0   5d08h28m        	4   	10
-   10.0.0.9     	4  	65001  	7713  	7724    	      0	   0	0   5d08h28m        	2   	10
-   10.0.0.10 	4  	65001  	7713  	7724    	      0	   0	0   5d08h28m        	2   	10
+   Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+   10.0.0.7         4   65001   7719    7733              0    0    0   5d07h56m            2       10
+   10.0.0.8         4   65001   7715    7724              0    0    0   5d08h28m            4       10
+   10.0.0.9         4   65001   7713    7724              0    0    0   5d08h28m            2       10
+   10.0.0.10    4   65001   7713    7724              0    0    0   5d08h28m            2       10
    
    Total number of neighbors 4
 
@@ -660,37 +664,37 @@ nodes to other devices:
    BGP table version is 2, local router ID is 10.0.0.1, vrf id 0
    Default local pref 100, local AS 65001
    Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
-              	i internal, r RIB-failure, S Stale, R Removed
+                i internal, r RIB-failure, S Stale, R Removed
    Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
    Origin codes:  i - IGP, e - EGP, ? - incomplete
    
-      Network      	Next Hop        	Metric LocPrf Weight Path
+      Network       Next Hop            Metric LocPrf Weight Path
    Route Distinguisher: 10.50.50.1:1011
-   *>i10.50.50.0/24	10.0.0.7              	0	100  	0 i
-   	UN=10.0.0.7 EC{65035:1011} label=80 type=bgp, subtype=0
-   *>i80.80.80.80/32   10.0.0.7              	0	100  	0 65035 i
-   	UN=10.0.0.7 EC{65035:1011} label=80 type=bgp, subtype=0
+   *>i10.50.50.0/24 10.0.0.7                0   100     0 i
+    UN=10.0.0.7 EC{65035:1011} label=80 type=bgp, subtype=0
+   *>i80.80.80.80/32   10.0.0.7                 0   100     0 65035 i
+    UN=10.0.0.7 EC{65035:1011} label=80 type=bgp, subtype=0
    Route Distinguisher: 10.60.60.1:1011
-   *>i10.60.60.0/24	10.0.0.10          	0	100  	0 i
-   	UN=10.0.0.10 EC{65035:1011} label=80 type=bgp, subtype=0
-   *>i90.90.90.90/32   10.0.0.10          	0	100  	0 65035 i
-   	UN=10.0.0.10 EC{65035:1011} label=80 type=bgp, subtype=0
+   *>i10.60.60.0/24 10.0.0.10           0   100     0 i
+    UN=10.0.0.10 EC{65035:1011} label=80 type=bgp, subtype=0
+   *>i90.90.90.90/32   10.0.0.10            0   100     0 65035 i
+    UN=10.0.0.10 EC{65035:1011} label=80 type=bgp, subtype=0
    Route Distinguisher: 10.80.80.1:1011
-   *>i10.80.80.0/24	10.0.0.8              	0	100  	0 i
-   	UN=10.0.0.8 EC{65035:1030} label=80 type=bgp, subtype=0
+   *>i10.80.80.0/24 10.0.0.8                0   100     0 i
+    UN=10.0.0.8 EC{65035:1030} label=80 type=bgp, subtype=0
    *>i100.100.100.100/32
-                   	10.0.0.8              	0	100  	0 65035 i
-   	UN=10.0.0.8 EC{65035:1030} label=80 type=bgp, subtype=0
+                    10.0.0.8                0   100     0 65035 i
+    UN=10.0.0.8 EC{65035:1030} label=80 type=bgp, subtype=0
    Route Distinguisher: 172.16.80.1:2011
-   *>i10.110.110.0/24  10.0.0.8              	0	100  	0 65050 i
-   	UN=10.0.0.8 EC{65050:2011} label=81 type=bgp, subtype=0
-   *>i172.16.80.0/24   10.0.0.8              	0	100  	0 i
-   	UN=10.0.0.8 EC{65050:2011} label=81 type=bgp, subtype=0
+   *>i10.110.110.0/24  10.0.0.8                 0   100     0 65050 i
+    UN=10.0.0.8 EC{65050:2011} label=81 type=bgp, subtype=0
+   *>i172.16.80.0/24   10.0.0.8                 0   100     0 i
+    UN=10.0.0.8 EC{65050:2011} label=81 type=bgp, subtype=0
    Route Distinguisher: 172.16.100.1:2011
-   *>i10.210.210.0/24  10.0.0.9              	0	100  	0 65050 i
-   	UN=10.0.0.9 EC{65050:2011} label=80 type=bgp, subtype=0
-   *>i172.16.100.0/24  10.0.0.9              	0	100  	0 i
-   	UN=10.0.0.9 EC{65050:2011} label=80 type=bgp, subtype=0
+   *>i10.210.210.0/24  10.0.0.9                 0   100     0 65050 i
+    UN=10.0.0.9 EC{65050:2011} label=80 type=bgp, subtype=0
+   *>i172.16.100.0/24  10.0.0.9                 0   100     0 i
+    UN=10.0.0.9 EC{65050:2011} label=80 type=bgp, subtype=0
 
 - “show bgp ipv4 vpn x.x.x.x/x” for checking best path selected 
   for specific VPNv4 destination
@@ -704,11 +708,11 @@ nodes to other devices:
      Advertised to non peer-group peers:
      10.0.0.7 10.0.0.8 10.0.0.9 10.0.0.10
      65035, (Received from a RR-client)
-   	10.0.0.8 from 10.0.0.8 (10.0.0.8)
-     	Origin incomplete, metric 0, localpref 100, valid, internal, best (First path received)
-     	Extended Community: RT:65035:1030
-     	Remote label: 80
-     	Last update: Tue Oct 19 13:45:32 202
+    10.0.0.8 from 10.0.0.8 (10.0.0.8)
+        Origin incomplete, metric 0, localpref 100, valid, internal, best (First path received)
+        Extended Community: RT:65035:1030
+        Remote label: 80
+        Last update: Tue Oct 19 13:45:32 202
    
 Also we can verify how PE devices receives VPNv4 networks from the RRs 
 and installing them to the specific customer VRFs:
@@ -725,9 +729,9 @@ and installing them to the specific customer VRFs:
    Peers 2, using 43 KiB of memory
    Peer groups 1, using 64 bytes of memory
    
-   Neighbor    	V     	AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
-   10.0.0.1     	4  	65001  	8812  	8794    	   0	   0	   0   01:18:42        	8    	2
-   10.0.0.2     	4  	65001  	8800  	8792    	   0	   0	   0   6d02h27m        	8    	2
+   Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+   10.0.0.1         4   65001   8812    8794           0       0       0   01:18:42         8       2
+   10.0.0.2         4   65001   8800    8792           0       0       0   6d02h27m         8       2
 
 - “show bgp vrf all” for checking all the prefix learning on BGP 
    within VRFs:
@@ -743,19 +747,19 @@ and installing them to the specific customer VRFs:
    BGP table version is 8, local router ID is 10.50.50.1, vrf id 6
    Default local pref 100, local AS 65001
    Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
-              	i internal, r RIB-failure, S Stale, R Removed
+                i internal, r RIB-failure, S Stale, R Removed
    Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
    Origin codes:  i - IGP, e - EGP, ? - incomplete
    
-      Network      	Next Hop        	Metric LocPrf Weight Path
-   *  10.50.50.0/24	0.0.0.0              	0     	32768 ?
-   *>              	0.0.0.0              	0     	32768 i
-   *> 10.80.80.0/24	10.0.0.8@0<           	0	100  	0 i
-   *               	10.0.0.8@0<           	0	100  	0 i
-   *> 10.0.0.80/32   10.50.50.2           	0         	0 65035 i
+      Network       Next Hop            Metric LocPrf Weight Path
+   *  10.50.50.0/24 0.0.0.0                 0       32768 ?
+   *>               0.0.0.0                 0       32768 i
+   *> 10.80.80.0/24 10.0.0.8@0<             0   100     0 i
+   *                10.0.0.8@0<             0   100     0 i
+   *> 10.0.0.80/32   10.50.50.2             0           0 65035 i
    *> 10.0.0.100/32
-                   	10.0.0.8@0<           	0	100  	0 65035 ?
-   *               	10.0.0.8@0<           	0	100  	0 65035 ?
+                    10.0.0.8@0<             0   100     0 65035 ?
+   *                10.0.0.8@0<             0   100     0 65035 ?
 
 - “show bgp vrf BLUE_SPOKE summary” for checking EBGP neighbor 
    information between PE and CE:
@@ -771,8 +775,8 @@ and installing them to the specific customer VRFs:
    RIB entries 7, using 1344 bytes of memory
    Peers 1, using 21 KiB of memory
    
-   Neighbor    	V     	AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
-   10.50.50.2  	4  	65035  	9019  	9023    	      0	0	   0   6d06h12m        	1    	4
+   Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+   10.50.50.2   4   65035   9019    9023              0 0      0   6d06h12m         1       4
    
    Total number of neighbors 1
 
@@ -785,19 +789,19 @@ and installing them to the specific customer VRFs:
    vyos@VyOS-PE1:~$ show ip route vrf BLUE_SPOKE
 
    Codes: K - kernel route, C - connected, S - static, R - RIP,
-      	O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-      	T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-      	F - PBR, f - OpenFabric,
-      	> - selected route, * - FIB route, q - queued, r - rejected, b - backup
+        O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+        T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+        F - PBR, f - OpenFabric,
+        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
    
    VRF BLUE_SPOKE:
    K>* 0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 03w0d23h
    C>* 10.50.50.0/24 is directly connected, eth3, 03w0d23h
    B>  10.80.80.0/24 [200/0] via 10.0.0.8 (vrf default) (recursive), label 80, weight 1, 04:22:00
-     *                     	via 172.16.90.1, eth0 (vrf default), label 24/80, weight 1, 04:22:00
+     *                      via 172.16.90.1, eth0 (vrf default), label 24/80, weight 1, 04:22:00
    B>* 10.0.0.80/32 [20/0] via 10.50.50.2, eth3, weight 1, 6d05h30m
    B>  10.0.0.100/32 [200/0] via 10.0.0.8 (vrf default) (recursive), label 80, weight 1, 04:22:00
-     *                          	via 172.16.90.1, eth0 (vrf default), label 24/80, weight 1, 04:22:00
+     *                              via 172.16.90.1, eth0 (vrf default), label 24/80, weight 1, 04:22:00
 
 - “show bgp ipv4 vpn x.x.x.x/32” for checking the best-path to the 
    specific VPNv4 destination including extended community and 
@@ -811,19 +815,19 @@ and installing them to the specific customer VRFs:
    Paths: (2 available, best #1)
      Not advertised to any peer
      65035
-   	10.0.0.8 from 10.0.0.1 (10.0.0.8)
-     	Origin incomplete, metric 0, localpref 100, valid, internal, best (Neighbor IP)
-     	Extended Community: RT:65035:1030
-     	Originator: 10.0.0.8, Cluster list: 10.0.0.1
-     	Remote label: 80
-     	Last update: Tue Oct 19 13:45:26 2021
+    10.0.0.8 from 10.0.0.1 (10.0.0.8)
+        Origin incomplete, metric 0, localpref 100, valid, internal, best (Neighbor IP)
+        Extended Community: RT:65035:1030
+        Originator: 10.0.0.8, Cluster list: 10.0.0.1
+        Remote label: 80
+        Last update: Tue Oct 19 13:45:26 2021
      65035
-   	10.0.0.8 from 10.0.0.2 (10.0.0.8)
-     	Origin incomplete, metric 0, localpref 100, valid, internal
-     	Extended Community: RT:65035:1030
-     	Originator: 10.0.0.8, Cluster list: 10.0.0.1
-     	Remote label: 80
-     	Last update: Wed Oct 13 12:39:34 202
+    10.0.0.8 from 10.0.0.2 (10.0.0.8)
+        Origin incomplete, metric 0, localpref 100, valid, internal
+        Extended Community: RT:65035:1030
+        Originator: 10.0.0.8, Cluster list: 10.0.0.1
+        Remote label: 80
+        Last update: Wed Oct 13 12:39:34 202
 
 Now, let’s check routing information on out Hub PE:
 
@@ -839,9 +843,9 @@ Now, let’s check routing information on out Hub PE:
    Peers 2, using 43 KiB of memory
    Peer groups 1, using 64 bytes of memory
    
-   Neighbor    	V     	AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
-   10.0.0.1     	4  	65001 	15982 	15949    	0	0	0 05:41:28        	6    	4
-   10.0.0.2     	4  	65001  	9060  	9054    	0	0	0 6d06h47m        	6    	4
+   Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+   10.0.0.1         4   65001   15982   15949       0   0   0 05:41:28          6       4
+   10.0.0.2         4   65001   9060    9054        0   0   0 6d06h47m          6       4
    
    Total number of neighbors
 
@@ -858,31 +862,31 @@ Now, let’s check routing information on out Hub PE:
    BGP table version is 50, local router ID is 10.80.80.1, vrf id 8
    Default local pref 100, local AS 65001
    Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
-              	i internal, r RIB-failure, S Stale, R Removed
+                i internal, r RIB-failure, S Stale, R Removed
    Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
    Origin codes:  i - IGP, e - EGP, ? - incomplete
    
-      Network      	Next Hop        	Metric LocPrf Weight Path
-   *> 10.50.50.0/24	10.0.0.7@0<           	0	100  	0 i
-   *               	10.0.0.7@0<           	0	100  	0 i
-   *> 10.60.60.0/24	10.0.0.10@0<       	0	100  	0 i
-   *               	10.0.0.10@0<       	0	100  	0 i
-   *  10.80.80.0/24	10.80.80.2           	0         	0 65035 ?
-   *               	0.0.0.0              	0     	32768 i
-   *>              	0.0.0.0              	0     	32768 ?
-   *> 10.110.110.0/24  172.16.80.2@9<       	0         	0 65050 i
-   *> 10.210.210.0/24  10.0.0.9@0<           	0	100  	0 65050 i
-   *               	10.0.0.9@0<           	0	100  	0 65050 i
-   *> 10.0.0.80/32   10.0.0.7@0<           	0	100  	0 65035 i
-   *               	10.0.0.7@0<           	0	100  	0 65035 i
-   *> 10.0.0.90/32   10.0.0.10@0<       	0	100  	0 65035 i
-   *               	10.0.0.10@0<       	0	100  	0 65035 i
+      Network       Next Hop            Metric LocPrf Weight Path
+   *> 10.50.50.0/24 10.0.0.7@0<             0   100     0 i
+   *                10.0.0.7@0<             0   100     0 i
+   *> 10.60.60.0/24 10.0.0.10@0<        0   100     0 i
+   *                10.0.0.10@0<        0   100     0 i
+   *  10.80.80.0/24 10.80.80.2              0           0 65035 ?
+   *                0.0.0.0                 0       32768 i
+   *>               0.0.0.0                 0       32768 ?
+   *> 10.110.110.0/24  172.16.80.2@9<           0           0 65050 i
+   *> 10.210.210.0/24  10.0.0.9@0<              0   100     0 65050 i
+   *                10.0.0.9@0<             0   100     0 65050 i
+   *> 10.0.0.80/32   10.0.0.7@0<            0   100     0 65035 i
+   *                10.0.0.7@0<             0   100     0 65035 i
+   *> 10.0.0.90/32   10.0.0.10@0<           0   100     0 65035 i
+   *                10.0.0.10@0<        0   100     0 65035 i
    *> 10.0.0.100/32
-                   	10.80.80.2           	0         	0 65035 ?
-   *> 172.16.80.0/24   0.0.0.0@9<           	0     	32768 ?
-                   	0.0.0.0@9<           	0     	32768 i
-   *> 172.16.100.0/24  10.0.0.9@0<           	0	100  	0 i
-   *               	10.0.0.9@0<           	0	100  	0 i
+                    10.80.80.2              0           0 65035 ?
+   *> 172.16.80.0/24   0.0.0.0@9<               0       32768 ?
+                    0.0.0.0@9<              0       32768 i
+   *> 172.16.100.0/24  10.0.0.9@0<              0   100     0 i
+   *                10.0.0.9@0<             0   100     0 i
 
 - “show bgp vrf BLUE_HUB summary” for checking EBGP neighbor 
    CE Hub device
@@ -897,8 +901,8 @@ Now, let’s check routing information on out Hub PE:
    RIB entries 19, using 3648 bytes of memory
    Peers 1, using 21 KiB of memory
    
-   Neighbor    	V     	AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
-   10.80.80.2  	4  	65035 	15954 	15972    	   0	0	   0   01w4d01h        	2   	10
+   Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+   10.80.80.2   4   65035   15954   15972          0    0      0   01w4d01h         2       10
    
 - “show ip route vrf BLUE_HUB” to view the RIB in our Hub PE. 
    With this command we are able to check the transport and 
@@ -909,30 +913,30 @@ Now, let’s check routing information on out Hub PE:
    
    vyos@VyOS-PE2:~$ show ip route vrf BLUE_HUB
    Codes: K - kernel route, C - connected, S - static, R - RIP,
-      	O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-      	T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-      	F - PBR, f - OpenFabric,
-      	> - selected route, * - FIB route, q - queued, r - rejected, b - backup
+        O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+        T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+        F - PBR, f - OpenFabric,
+        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
    VRF BLUE_HUB:
    K>* 0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 01w4d01h
    B>  10.50.50.0/24 [200/0] via 10.0.0.7 (vrf default) (recursive), label 144, weight 1, 05:53:15
-     *                     	via 172.16.100.1, eth1 (vrf default), label 22/144, weight 1, 05:53:15
+     *                      via 172.16.100.1, eth1 (vrf default), label 22/144, weight 1, 05:53:15
    B>  10.60.60.0/24 [200/0] via 10.0.0.10 (vrf default) (recursive), label 144, weight 1, 05:53:15
-     *                     	via 172.16.110.1, eth0 (vrf default), label 23/144, weight 1, 05:53:15
+     *                      via 172.16.110.1, eth0 (vrf default), label 23/144, weight 1, 05:53:15
    C>* 10.80.80.0/24 is directly connected, eth3, 01w4d01h
    B>* 10.110.110.0/24 [200/0] via 172.16.80.2, eth2 (vrf GREEN), weight 1, 01w4d01h
    B>  10.210.210.0/24 [200/0] via 10.0.0.9 (vrf default) (recursive), label 144, weight 1, 05:53:15
-     *                       	via 172.16.100.1, eth1 (vrf default), label 18/144, weight 1, 05:53:15
-     *                       	via 172.16.110.1, eth0 (vrf default), label 22/144, weight 1, 05:53:15
+     *                          via 172.16.100.1, eth1 (vrf default), label 18/144, weight 1, 05:53:15
+     *                          via 172.16.110.1, eth0 (vrf default), label 22/144, weight 1, 05:53:15
    B>  10.0.0.80/32 [200/0] via 10.0.0.7 (vrf default) (recursive), label 144, weight 1, 05:53:15
-     *                      	via 172.16.100.1, eth1 (vrf default), label 22/144, weight 1, 05:53:15
+     *                          via 172.16.100.1, eth1 (vrf default), label 22/144, weight 1, 05:53:15
    B>  10.0.0.90/32 [200/0] via 10.0.0.10 (vrf default) (recursive), label 144, weight 1, 05:53:15
-     *                      	via 172.16.110.1, eth0 (vrf default), label 23/144, weight 1, 05:53:15
+     *                          via 172.16.110.1, eth0 (vrf default), label 23/144, weight 1, 05:53:15
    B>* 10.0.0.100/32 [20/0] via 10.80.80.2, eth3, weight 1, 01w4d01h
    B>* 172.16.80.0/24 [200/0] is directly connected, eth2 (vrf GREEN), weight 1, 01w4d01h
    B>  172.16.100.0/24 [200/0] via 10.0.0.9 (vrf default) (recursive), label 144, weight 1, 05:53:15
-     *                       	via 172.16.100.1, eth1 (vrf default), label 18/144, weight 1, 05:53:15
-     *                       	via 172.16.110.1, eth0 (vrf default), label 22/144, weight 1, 05:53:15
+     *                          via 172.16.100.1, eth1 (vrf default), label 18/144, weight 1, 05:53:15
+     *                          via 172.16.110.1, eth0 (vrf default), label 22/144, weight 1, 05:53:15
 
 - “show bgp ipv4 vpn x.x.x.x/32” for checking best-path, 
    extended community and remote label of specific destination
@@ -945,19 +949,19 @@ Now, let’s check routing information on out Hub PE:
    Paths: (2 available, best #1)
      Not advertised to any peer
      65035
-   	10.0.0.7 from 10.0.0.1 (10.0.0.7)
-     	Origin IGP, metric 0, localpref 100, valid, internal, best (Neighbor IP)
-     	Extended Community: RT:65035:1011
-     	Originator: 10.0.0.7, Cluster list: 10.0.0.1
-     	Remote label: 144
-     	Last update: Tue Oct 19 13:45:30 2021
+    10.0.0.7 from 10.0.0.1 (10.0.0.7)
+        Origin IGP, metric 0, localpref 100, valid, internal, best (Neighbor IP)
+        Extended Community: RT:65035:1011
+        Originator: 10.0.0.7, Cluster list: 10.0.0.1
+        Remote label: 144
+        Last update: Tue Oct 19 13:45:30 2021
      65035
-   	10.0.0.7 from 10.0.0.2 (10.0.0.7)
-     	Origin IGP, metric 0, localpref 100, valid, internal
-     	Extended Community: RT:65035:1011
-     	Originator: 10.0.0.7, Cluster list: 10.0.0.1
-     	Remote label: 144
-     	Last update: Wed Oct 13 12:39:37 2021
+    10.0.0.7 from 10.0.0.2 (10.0.0.7)
+        Origin IGP, metric 0, localpref 100, valid, internal
+        Extended Community: RT:65035:1011
+        Originator: 10.0.0.7, Cluster list: 10.0.0.1
+        Remote label: 144
+        Last update: Wed Oct 13 12:39:37 2021
    
    vyos@VyOS-PE2:~$ show bgp ipv4 vpn 10.0.0.90/32
    BGP routing table entry for 10.60.60.1:1011:10.0.0.90/32
@@ -965,19 +969,19 @@ Now, let’s check routing information on out Hub PE:
    Paths: (2 available, best #1)
      Not advertised to any peer
      65035
-   	10.0.0.10 from 10.0.0.1 (10.0.0.10)
-     	Origin IGP, metric 0, localpref 100, valid, internal, best (Neighbor IP)
-     	Extended Community: RT:65035:1011
-     	Originator: 10.0.0.10, Cluster list: 10.0.0.1
-     	Remote label: 144
-    	Last update: Tue Oct 19 13:45:30 2021
+    10.0.0.10 from 10.0.0.1 (10.0.0.10)
+        Origin IGP, metric 0, localpref 100, valid, internal, best (Neighbor IP)
+        Extended Community: RT:65035:1011
+        Originator: 10.0.0.10, Cluster list: 10.0.0.1
+        Remote label: 144
+        Last update: Tue Oct 19 13:45:30 2021
      65035
-   	10.0.0.10 from 10.0.0.2 (10.0.0.10)
-     	Origin IGP, metric 0, localpref 100, valid, internal
-     	Extended Community: RT:65035:1011
-     	Originator: 10.0.0.10, Cluster list: 10.0.0.1
-     	Remote label: 144
-     	Last update: Wed Oct 13 12:45:44 2021
+    10.0.0.10 from 10.0.0.2 (10.0.0.10)
+        Origin IGP, metric 0, localpref 100, valid, internal
+        Extended Community: RT:65035:1011
+        Originator: 10.0.0.10, Cluster list: 10.0.0.1
+        Remote label: 144
+        Last update: Wed Oct 13 12:45:44 2021
 
 Finally, let’s check the reachability between CEs:
 
@@ -989,10 +993,10 @@ Finally, let’s check the reachability between CEs:
    # check rib 
    vyos@VyOS-CE1-SPOKE:~$ show ip route
    Codes: K - kernel route, C - connected, S - static, R - RIP,
-      	O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-      	T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-      	F - PBR, f - OpenFabric,
-      	> - selected route, * - FIB route, q - queued, r - rejected, b - backup
+        O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+        T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+        F - PBR, f - OpenFabric,
+        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
    
    B   10.50.50.0/24 [20/0] via 10.50.50.1 inactive, weight 1, 6d07h53m
    C>* 10.50.50.0/24 is directly connected, eth0, 09w0d00h
@@ -1027,10 +1031,10 @@ Finally, let’s check the reachability between CEs:
    # check rib
    vyos@VyOS-CE-HUB:~$ show ip route
    Codes: K - kernel route, C - connected, S - static, R - RIP,
-      	O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-      	T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-      	F - PBR, f - OpenFabric,
-      	> - selected route, * - FIB route, q - queued, r - rejected, b - backup
+        O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+        T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+        F - PBR, f - OpenFabric,
+        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
    
    B>* 10.50.50.0/24 [20/0] via 10.80.80.1, eth0, weight 1, 6d08h04m
    B>* 10.60.60.0/24 [20/0] via 10.80.80.1, eth0, weight 1, 6d08h35m
@@ -1086,10 +1090,10 @@ Finally, let’s check the reachability between CEs:
    # check rib
    vyos@rt-ce2-SPOKE:~$ show ip route
    Codes: K - kernel route, C - connected, S - static, R - RIP,
-      	O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-      	T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-      	F - PBR, f - OpenFabric,
-      	> - selected route, * - FIB route, q - queued, r - rejected, b - backup
+        O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+        T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+        F - PBR, f - OpenFabric,
+        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
    
    B   10.60.60.0/24 [20/0] via 10.60.60.1 inactive, weight 1, 02w6d00h
    C>* 10.60.60.0/24 is directly connected, eth0, 02w6d00h
@@ -1117,4 +1121,7 @@ Finally, let’s check the reachability between CEs:
     3  * * *
     4  10.0.0.100 (10.0.0.100)  7.504 ms  7.480 ms  7.488 ms
 
-**Note:** At the moment, trace mpls doesn’t show labels/paths. So we’ll see * * *  for the transit routers of the mpls backbone.
+.. start_vyoslinter
+
+**Note:** At the moment, trace mpls doesn’t show labels/paths. So we’ll
+see ``* * *`` for the transit routers of the mpls backbone.
