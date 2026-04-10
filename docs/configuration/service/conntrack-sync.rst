@@ -98,6 +98,20 @@ Configuration
    This diable the external cache and directly injects the flow-states into the
    in-kernel Connection Tracking System of the backup firewall.
 
+.. cfgcmd:: set service conntrack-sync purge-timeout <timeout>
+
+   Timeout (in seconds) for purging synchronized entries on handover events.
+
+   On handover, ``conntrackd -t`` is invoked, which schedules a conntrack table
+   flush after ``<timeout>`` seconds to purge stale (“zombie”) entries and
+   reduce clashes when multiple handovers occur in a short period.
+   The default is 60 seconds.
+
+.. note:: In VRRP stateful firewall deployments, align VRRP timing with this
+   behavior: because synchronized conntrack state is purged after the purge
+   timeout, set **VRRP preempt-delay** to ≥ **purge-timeout** so mastership
+   can be restored before conntrack state is purged.
+
 .. cfgcmd:: set service conntrack-sync disable-syslog
 
    Disable connection logging via Syslog.
