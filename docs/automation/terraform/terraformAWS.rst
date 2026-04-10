@@ -446,7 +446,7 @@ File contents of Terraform for AWS
   }
   variable "host"{
      description = "The IP of my Ansible"
-	 type = string
+     type = string
   }
   variable "access" {
      description = "my access_key for AWS"

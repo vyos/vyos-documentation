@@ -1,6 +1,7 @@
 
+############
 Site-to-site
-============
+############
 
 .. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
    directives for command coverage tracking.
@@ -32,9 +33,9 @@ In both cases, we will use the following settings:
 * The ``persistent-tunnel`` directive allows us to configure tunnel-related 
   attributes, such as firewall policy, as we would on any standard network 
   interface.
-* If known, the remote router's IP address can be configured using
-  the ``remote-host`` directive. If unknown, it can be omitted.
-  We assume the remote router has a dynamic IP address.
+* If known, the remote router's IP address can be configured using the
+  ``remote-host`` directive. If unknown, it can be omitted. We assume
+  the remote router has a dynamic IP address.
 
 
 .. figure:: /_static/images/openvpn_site2site_diagram.jpg
@@ -53,6 +54,8 @@ Elliptic Curve (EC) type. In configuration mode, run the following command:
 ``run generate pki certificate self-signed install <name>``. This adds the 
 certificate to the configuration session's ``pki`` subtree. Review and commit 
 the changes.
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -85,6 +88,7 @@ the changes.
 
   vyos@vyos# commit
 
+.. start_vyoslinter
 
 You do **not** need to copy the certificate to the other router. Instead, 
 retrieve its SHA-256 fingerprint. Since OpenVPN currently supports only SHA-256 
@@ -108,6 +112,8 @@ Set up site-to-site OpenVPN
 ---------------------------
 
 Local configuration:
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -141,6 +147,8 @@ Remote configuration:
   set interfaces openvpn vtun1 tls peer-fingerprint <local cert fingerprint>       # The output of 'run show pki certificate <name> fingerprint sha256 on the local router
   set interfaces openvpn vtun1 tls role passive
 
+.. start_vyoslinter
+
 Set up pre-shared keys
 ----------------------
 
@@ -152,6 +160,8 @@ with older OpenVPN, you still need to use pre-shared keys.
 First, generate a key by running ``run generate pki openvpn shared-secret 
 install <name>`` in configuration mode. You can use any name; in this example, 
 we use ``s2s``.
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -169,6 +179,8 @@ we use ``s2s``.
 
   vyos@local# commit
   [edit]
+
+.. start_vyoslinter
 
 Next, install the key on the remote router:
 
@@ -188,6 +200,8 @@ Set up firewall exceptions
 To allow OpenVPN traffic to pass through the WAN interface, create a firewall 
 exception:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
    set firewall ipv4 name OUTSIDE_LOCAL rule 10 action 'accept'
@@ -199,6 +213,8 @@ exception:
    set firewall ipv4 name OUTSIDE_LOCAL rule 20 destination port '1195'
    set firewall ipv4 name OUTSIDE_LOCAL rule 20 log
    set firewall ipv4 name OUTSIDE_LOCAL rule 20 protocol 'udp'
+
+.. start_vyoslinter
 
 Apply the OUTSIDE_LOCAL firewall group to the WAN interface and to the input 
 filter for traffic destined for the router itself:
@@ -236,6 +252,8 @@ unique ports to each tunnel.
 
 Verify OpenVPN status using the show openvpn operational commands.
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   vyos@vyos:~$ show openvpn site-to-site
@@ -246,6 +264,7 @@ Verify OpenVPN status using the show openvpn operational commands.
   -----------  -----------------  -----------  ------------  ----------  ----------  -----------------
   N/A          10.110.12.54:1195  N/A          N/A           504.0 B     656.0 B     N/A
 
+.. start_vyoslinter
 
 Server-client
 =============
@@ -268,6 +287,8 @@ configuration mode. The certificates will be added to the configuration
 session's PKI subtree.
 
 Certificate Authority (CA):
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -370,6 +391,8 @@ Client certificate:
   set pki certificate client1 certificate 'MIIDrjCCApagAwIBAgIUPvtffeYTdoOiHxu++wdrjHwwVX4wDQYJKoZIhvcNAQELBQAwVDELMAkGA1UEBhMCR0IxEzARBgNVBAgMClNvbWUtU3RhdGUxEjAQBgNVBAcMCVNvbWUtQ2l0eTENMAsGA1UECgwEVnlPUzENMAsGA1UEAwwEY2EtMTAeFw0yNTA2MTExMTQxMDlaFw0yNjA2MTExMTQxMDlaMFcxCzAJBgNVBAYTAkdCMRMwEQYDVQQIDApTb21lLVN0YXRlMRIwEAYDVQQHDAlTb21lLUNpdHkxDTALBgNVBAoMBFZ5T1MxEDAOBgNVBAMMB2NsaWVudDEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC9H6E6gm0PfXO1n/WoA9xlg89/bnScLmfztVDn1uyNn8epE6zAi2GWBhtj4ixLllIwLdkJ7L2mF3yUZtA1Q0oYbGIqTbnaZ37JydCygVGnlLT7UX9zfRfS3KebCIvIte7OyCmnUfVfFzdIsp+4LI3S2wX/9Vyn4UBAR8QQNbezRB3XPMk9gzULnuLhmEDP6GVcPq7RzGXoXUMqsCxfEOJBjej0y4ANKH07HGVVrfVRiY+zlGkM4TFjVuZKnEA0BO6dhOA0E+7gsIXsC06UzzatkjsyWHpb2/DOECIifBoYej9DITu8VxyyZmgaINHEn2gGb0LRHO7rvQapc+XZ2z9DAgMBAAGjdTBzMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMCMB0GA1UdDgQWBBQnUyqEzG+AqZzsdSud5MDqsOxiXTAfBgNVHSMEGDAWgBQAb2W+vsDMn/Li9j9eVbFeu77qbTANBgkqhkiG9w0BAQsFAAOCAQEAplItvZpoX/joG3QREu9tHVKwDTmXB2lwUM5G8iKPgd6D6oOILZMe2KuvWt12dcdEzUCGfJwJJ8M8R2WD0OmcLdFqvM/8UM1hYzUP2BCnFCLtElVD+b4wMlQNpdHqNbdckw8J4MLQlhUgu9rZAZ0XjWCprr+U50bX++vYRw7Un3Ds6ETEvjflm5WAPb2e0V1hhISPl8K+VXO7RAwxy0DHcDuR+YaD+hnNgMsJV3/QwA17Iy8x86RpOgqmesbt0U7e9Rmo81aVgiy/V4OCV7u6bPX03fmZNS8UwwJuRUlxkjO+epHNYB2cnOcjSkUxaIJ9Hv3tMWHQEtbVZsNYSOZozw=='
   set pki certificate client1 private key 'MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC9H6E6gm0PfXO1n/WoA9xlg89/bnScLmfztVDn1uyNn8epE6zAi2GWBhtj4ixLllIwLdkJ7L2mF3yUZtA1Q0oYbGIqTbnaZ37JydCygVGnlLT7UX9zfRfS3KebCIvIte7OyCmnUfVfFzdIsp+4LI3S2wX/9Vyn4UBAR8QQNbezRB3XPMk9gzULnuLhmEDP6GVcPq7RzGXoXUMqsCxfEOJBjej0y4ANKH07HGVVrfVRiY+zlGkM4TFjVuZKnEA0BO6dhOA0E+7gsIXsC06UzzatkjsyWHpb2/DOECIifBoYej9DITu8VxyyZmgaINHEn2gGb0LRHO7rvQapc+XZ2z9DAgMBAAECggEAPS/Fhtt5k2BgFivZW3FcVc+OS0keGwV8hkFsGoXTZIKEIzSFWIn/mX0CUY90C0Rn9MRwiqB4PwssOAsHY6QQjdRK8irRbVK8l2ZeydHC7DfVUdXtKR0YnxTaePML3nTV/TqPF14Rx6EINtHrkLeBbu2DhGsKfhoHIoTVbvUiKLHa2TkGJOkhvjsyMSPKzUXa1AzLmu+UBIhRYpEPHj0SQUUJJnKgIb7mTR2fhJScHcKwsrPq6S8OpChvsYZ6zatgrTFz9tuhD4IjL7NBiYP45BwGaLIaQjph8yAJwwHWoOP+TTj5WYflkW6Uu8F9gC0ve6dPGPNEi2TUdirvAe4LYQKBgQD0UfAPm6tQg8pdkvfMBvYc21fk8zqmgcA4OtvDi60aXuv5jI5+faISvOG2JLuFhKIDOb5ZerzGvkN+LvWgzr9H7YdGZNNtwKgpS/MGqcuuHncTxWBAwYgKhf26a/tqFZRNurJ6GowxDiAcQEc1mWnmdngRa+dvvCwNbXvGVqfVEQKBgQDGKi447TqD76QfvRPn/fRSjM+QE1duk+XorEJ0HHIha5HV9kCrZdV/olGRjDLwPJO6JW7iE2FUsS9SsIrccFE/9P2ZUqfYP2wL5vNO5kAmoLLUl0gwqg1WnBTPJfXeKReTj2uGmOdEuuMPXpL/49hDuPViiE2Q4MGe2Z+oEYN/EwKBgHfQMuTEl2e9qaDn8OM6SrluC5V4fjunh6dLnfgwaCx1fk1702lOnQuJWzsiml9o4raoO6PP4AGqzphz2PsKSJ2ya1NnIJRDFXRjDYQoAn2Z7RViBsja36chfINObxXgDUFtHBdrK3LnFXIlR4aOfHOLh2grvWx7IDNZjIiAeH+xAoGAJlmFZnjqiRv4bDgAQTZRcSRVCvHjSsAOj0++8I+MutEBgSHN9B2aCsBT/tHeDcX7ZNvXsKLFhElh+iO2S+DkqHb2GRT47I2hkFAaqBtBMPiKgz/ftaNDP46nLEuRYHQdXu4zhfHTV+a/CHtqAWGLuddyjaYJNM96SQ6eqjzxcMcCgYAzdxOF2e27hIgo2ttjsROMGqW0/0r/HsKGKPnao7xHQNCAswTnBT+QGugPCe0NXjuxbySP7V1GeWMWF+WV5khtteWerT1/ELAC48NSDpaMxVa4GP8Q/0w6+ZyJty3UGbCYQzZZue81dU+42LUIaVJ4NAc2tYj3jD780udasawS6w=='
 
+.. start_vyoslinter
+
 Manually copy the CA, client certificate, and Diffie-Hellman key to the client 
 device, then commit them before configuring the OpenVPN interface. 
 
@@ -415,7 +438,8 @@ connection resets or daemon reloads. Clients are identified by the CN attribute
 in their SSL certificates.
 
 To grant clients access to a specific network behind the router, use the 
-push-route option to automatically install the appropriate route on each client. 
+push-route option to automatically install the appropriate route on
+each client.
 
 .. code-block:: none
 
@@ -455,6 +479,8 @@ Verification
 
 Check the tunnel status:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   vyos@vyos:~$ show openvpn server
@@ -465,7 +491,7 @@ Check the tunnel status:
   -----------  ------------------  -----------  ----------------  ----------  ----------  -------------------
   client1      172.16.12.54:33166  10.23.1.10   172.18.201.10:1194  3.4 KB      3.4 KB      2024-06-11 12:07:25
 
-
+.. start_vyoslinter
 
 Server bridge
 =============
@@ -532,9 +558,13 @@ configuration file.
 **Best practice:** Store the configuration file in the ``/config`` directory 
 to ensure it is preserved after image updates.
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set interfaces openvpn vtun0 openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
+
+.. start_vyoslinter
 
 A sample configuration file is shown below:
 
@@ -564,6 +594,8 @@ Active Directory
 ^^^^^^^^^^^^^^^^
 
 A sample configuration file is shown below:
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -596,8 +628,11 @@ A sample configuration file is shown below:
     </Group>
   </Authorization>
 
-If you only want to check that the user account is enabled and can authenticate 
-(against the primary group), the following snippet is sufficient:
+.. start_vyoslinter
+
+If you only want to check that the user account is enabled and can
+authenticate (against the primary group), the following snippet is
+sufficient:
 
 .. code-block:: none
 
@@ -616,8 +651,10 @@ If you only want to check that the user account is enabled and can authenticate
     RequireGroup    false
   </Authorization>
 
-A complete example of an LDAP authentication configuration for OpenVPN is shown 
-below:
+A complete example of an LDAP authentication configuration for OpenVPN
+is shown below:
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -646,9 +683,12 @@ below:
        }
    }
 
+.. start_vyoslinter
+
 .. stop_vyoslinter
 
-For a detailed example, refer to :doc:`OpenVPN with LDAP </configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
+For a detailed example, refer to
+:doc:`OpenVPN with LDAP</configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
 
 .. start_vyoslinter
 
@@ -682,6 +722,8 @@ To display authentication information, use the following command:
 
 Example:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
    vyos@vyos:~$ sh interfaces openvpn vtun20 user user1 mfa qrcode
@@ -705,6 +747,8 @@ Example:
    █████████████████████████████████████
    █████████████████████████████████████
 
+.. start_vyoslinter
+
 Scan the QR code to add the user account to Google Authenticator. On the client 
 side, use the generated OTP as the password.
 
@@ -725,6 +769,8 @@ username and password.
 Server configuration
 --------------------
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   set interfaces openvpn vtun10 local-port '1194'
@@ -740,6 +786,8 @@ Server configuration
   set interfaces openvpn vtun10 tls ca-certificate 'ca-1'
   set interfaces openvpn vtun10 tls certificate 'srv-1'
   set interfaces openvpn vtun10 tls dh-params 'dh-1'
+
+.. start_vyoslinter
 
 The /config/auth/check_user.sh example includes two test users:
 
@@ -764,9 +812,13 @@ Client configuration
 Storing the client certificate locally lets you generate the OpenVPN client 
 configuration file. Use the following command:
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
   vyos@vyos:~$ generate openvpn client-config interface vtun10 ca ca-1 certificate client1
+
+.. start_vyoslinter
 
 Copy the output and save it as a .ovpn file. Add the ``auth-user-pass`` 
 directive to the file. This instructs the OpenVPN client to prompt the user 

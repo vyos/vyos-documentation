@@ -51,6 +51,8 @@ Install Paramiko:
 Check the version:
 ==================
 
+.. stop_vyoslinter
+
 .. code-block:: none
 
     # ansible --version
@@ -60,6 +62,8 @@ Check the version:
     ansible python module location = /usr/lib/python3/dist-packages/ansible
     executable location = /usr/bin/ansible
     python version = 3.9.2 (default, Feb 28 2021, 17:03:44) [GCC 10.2.1 20210110]
+
+.. start_vyoslinter
 
 Basic configuration of ansible.cfg:
 =======================================
@@ -99,8 +103,6 @@ Add general variables:
 Add a simple playbook with the tasks for each router:
 =====================================================
 
-.. stop_vyoslinter
-
 .. code-block:: none
 
     # nano /root/main.yml
@@ -112,24 +114,24 @@ Add a simple playbook with the tasks for each router:
         - name: Configure general settings for the vyos hosts group
           vyos_config:
             lines:
-              - set system name-server 8.8.8.8
-              - set interfaces ethernet eth0 description '#WAN#'
-              - set interfaces ethernet eth1 description '#LAN#'
-              - set interfaces ethernet eth2 disable
-              - set interfaces ethernet eth3 disable
-              - set system host-name {{ inventory_hostname }}
+            - set system name-server 192.0.2.1
+            - set interfaces ethernet eth0 description '#WAN#'
+            - set interfaces ethernet eth1 description '#LAN#'
+            - set interfaces ethernet eth2 disable
+            - set interfaces ethernet eth3 disable
+            - set system host-name {{ inventory_hostname }}
             save: true
-
-.. start_vyoslinter
-
+    
 Start the playbook:
 ===================
+
+.. stop_vyoslinter
 
 .. code-block:: none
 
     ansible-playbook -i hosts main.yml
     PLAY [vyos_hosts] **************************************************************
-    
+
     TASK [Configure general settings for the vyos hosts group] *********************
     ok: [vyos9]
     ok: [vyos10]
@@ -142,10 +144,10 @@ Start the playbook:
     vyos8                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     vyos9                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
+.. start_vyoslinter
+
 Check the result on the vyos10 router:
 ======================================
-
-.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -159,16 +161,12 @@ Check the result on the vyos10 router:
     eth3             -                                 A/D
     lo               127.0.0.1/8                       u/u
                     ::1/128
-
-    vyos@vyos10:~$ sh configuration commands | grep 8.8.8.8
-    set system name-server '8.8.8.8'
-
-.. start_vyoslinter
+    
+    vyos@vyos10:~$ sh configuration commands | grep 192.0.2.1
+    set system name-server '192.0.2.1'
 
 The simple way without configuration of the hostname (one task for all routers):
 ================================================================================
-
-.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -194,21 +192,22 @@ The simple way without configuration of the hostname (one task for all routers):
         - name: Configure remote vyos_hosts_group
           vyos_config:
             lines:
-              - set system name-server 8.8.8.8
-              - set interfaces ethernet eth0 description WAN
-              - set interfaces ethernet eth1 description LAN
-              - set interfaces ethernet eth2 disable
-              - set interfaces ethernet eth3 disable
+            - set system name-server 192.0.2.1
+            - set interfaces ethernet eth0 description WAN
+            - set interfaces ethernet eth1 description LAN
+            - set interfaces ethernet eth2 disable
+            - set interfaces ethernet eth3 disable
             save: true
 
-.. start_vyoslinter
+
+.. stop_vyoslinter
 
 .. code-block:: none
-          
+
     # ansible-playbook -i hosts_v2 main_v2.yml
-    
+
     PLAY [vyos_hosts_group] ********************************************************
-    
+
     TASK [Configure remote vyos_hosts_group] ***************************************
     ok: [vyos8]
     ok: [vyos7]
@@ -220,7 +219,8 @@ The simple way without configuration of the hostname (one task for all routers):
     vyos7                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     vyos8                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     vyos9                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-    
+
+.. start_vyoslinter
 
 In the next chapter of the example, we'll use Ansible with jinja2
 templates and variables.
