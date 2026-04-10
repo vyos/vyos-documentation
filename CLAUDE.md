@@ -6,12 +6,14 @@ RST documentation for VyOS, built with Sphinx and hosted on Read the Docs.
 
 ```bash
 # Docker (recommended)
-docker build -t vyos-docs .
-docker run --rm -v "$(pwd)":/docs vyos-docs make html
+docker build -t vyos/vyos-documentation docker
+docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs \
+  -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
+  vyos/vyos-documentation make html
 
-# Local
+# Local (run from docs/ directory)
 pip install -r requirements.txt
-make html
+cd docs && make html
 ```
 
 Output goes to `docs/_build/html/`.
@@ -50,10 +52,12 @@ Every RST file must start with a `#` overline+underline title.
 - American English
 - Indent with 2 spaces
 - Leave a blank line before and after headers
-- Use double backticks for inline code: `` ``command`` ``
+- Use double backticks for inline code (RST syntax: ````command````)
 - Use `.. code-block:: none` for command/output blocks
 
-### Address Space (RFC 5737 / RFC 3849)
+### Address Space
+
+See `docs/documentation.rst` for canonical rules. Per RFC 5737, RFC 3849, RFC 5389, and RFC 7042:
 
 The linter enforces documentation-reserved addresses. Use only:
 

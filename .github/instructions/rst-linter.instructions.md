@@ -39,7 +39,7 @@ The linter rejects public IP addresses that are not reserved for documentation.
 
 ### Line Length Rules
 
-Maximum 80 characters per line. Lines inside `.. code-block::` are still checked by the linter unless suppressed.
+Maximum 80 characters per line. Lines inside `.. code-block::` directives are **exempt** from the line length limit (they render with `<pre>` tags and preserve source formatting).
 
 ### Suppression Syntax
 
@@ -66,6 +66,5 @@ When real public IPs or long lines are unavoidable, wrap the block:
 ### Common Mistakes
 
 - Removing `stop/start_vyoslinter` markers without fixing the underlying issue (exposes the line to the linter and fails CI)
-- Using `0.0.0.0/0` in examples — this is allowed (non-public)
 - Using real public IPs when documentation addresses would work just as well
-- Adding suppression markers around content that only has private (RFC 1918) addresses — unnecessary
+- Adding suppression markers around content that only has private (RFC 1918) addresses or `0.0.0.0/0` — these are allowed and don't need suppression
