@@ -11,7 +11,7 @@ docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs \
   -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
   vyos/vyos-documentation make html
 
-# Local (run from docs/ directory)
+# Local
 pip install -r requirements.txt
 cd docs && make html
 ```
@@ -44,7 +44,7 @@ Paragraphs
 """"""""""
 ```
 
-Every RST file must start with a `#` overline+underline title.
+The first heading in every RST file must use `#` overline+underline. Files may have field lists (e.g., `:lastproofread:`) or labels before the heading.
 
 ### Formatting Rules
 

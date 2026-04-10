@@ -66,3 +66,15 @@ Ansible playbook examples in `.. code-block::` use RST indentation (typically 4 
 ### Page Structure
 
 Configuration pages follow this order: Theory, Configuration (cfgcmd), Examples, Known Issues, Debugging.
+
+### Known False Positives
+
+Do **not** flag the following — they have been verified as correct or intentional:
+
+- **Markdown tables rendering with `||`**: Diff views may show table pipes as double-pipes. Check the raw source file before flagging.
+- **`stop/start_vyoslinter` at column 0 inside directives**: This is one of two accepted patterns. The other is indented markers matching the directive. Both are valid.
+- **RFC 1918 addresses without linter suppression**: Private IPs (`10.x`, `172.16.x`, `192.168.x`) are allowed. Do not suggest adding `stop/start_vyoslinter` around them.
+- **Long lines inside `.. code-block::`**: Code blocks are exempt from the 80-character line limit.
+- **Pre-existing typos or grammar issues in unchanged lines**: Only flag issues introduced by the current PR's diff. If a typo exists on an unchanged line, it is out of scope.
+- **Ansible YAML indentation in RST code blocks**: YAML inside `.. code-block::` is indented relative to the directive, not column 0. Verify from the code-block's indentation base before flagging as invalid.
+- **Adding `.. TODO::` while removing others**: Tracking TODOs on pages needing `cfgcmd` conversion is intentional. Removing stale TODOs on completed pages is also intentional. Both can happen in the same PR.
