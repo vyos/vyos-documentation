@@ -919,8 +919,7 @@ Resulting in
 Intel AX200
 ===========
 
-The Intel AX200 card does not work out of the box in AP mode, see
-https://unix.stackexchange.com/questions/598275/intel-ax200-ap-mode. You can
+The Intel AX200 card does not work out of the box in AP mode. You can
 still put this card into AP mode using the following configuration:
 
 .. stop_vyoslinter
