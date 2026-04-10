@@ -8,7 +8,7 @@ Deploying VyOS in the AWS cloud
 
 With the help of Terraform, you can quickly deploy VyOS-based
 infrastructure in the AWS cloud. If necessary, the infrastructure can
-be removed using terraform.
+be removed using Terraform.
 Also we will make provisioning using Ansible.
 
 
