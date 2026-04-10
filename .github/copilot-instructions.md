@@ -27,8 +27,9 @@ Maximum 80 characters per line. Exception: content inside `.. code-block::` dire
 
 `.. stop_vyoslinter` and `.. start_vyoslinter` are RST comments used to suppress CI linter checks. Key conventions:
 
-- **Always placed at column 0**, even when inside indented directives (`.. opcmd::`, `.. cfgcmd::`, numbered lists). This is the established repo convention. Do not flag column-0 placement as incorrect.
-- They are RST comments and do not break directive structure or nesting.
+- When used **inside an indented directive** (`.. cfgcmd::`, `.. opcmd::`, list items), markers should match the surrounding indentation to stay within the block.
+- When used **at top level** (outside any directive), markers are placed at column 0.
+- Both patterns exist in this repo. Do not flag either placement as incorrect.
 - They must always appear in pairs (stop then start). A missing `start_vyoslinter` is a real issue.
 - A `stop_vyoslinter` that covers a large section is acceptable when the content requires it (e.g., files full of real debug output with production IPs).
 

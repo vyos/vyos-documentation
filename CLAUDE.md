@@ -52,7 +52,7 @@ Every RST file must start with a `#` overline+underline title.
 - American English
 - Indent with 2 spaces
 - Leave a blank line before and after headers
-- Use double backticks for inline code (RST syntax: ````command````)
+- Use double backticks for inline code: ``` ``command`` ```
 - Use `.. code-block:: none` for command/output blocks
 
 ### Address Space
