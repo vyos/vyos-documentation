@@ -1000,6 +1000,11 @@ be ``config.boot-hostname.YYYYMMDD_HHMMSS``.
 
     vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
 
+.. cfgcmd:: set system config-management commit-archive vrf <name>
+
+  Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance
+  used to upload the configuration to the remote system.
+
 Saving and loading manually
 ---------------------------
 
