@@ -1,10 +1,10 @@
-:lastproofread: 2024-07-04
+:lastproofread: 2026-03-23
 
 .. _wireless-interface:
 
-########################
-WLAN/WIFI - Wireless LAN
-########################
+####################
+Wireless LAN / Wi-Fi
+####################
 
 The :abbr:`WLAN (Wireless LAN)` interface provides 802.11 (a/b/g/n/ac) wireless
 support (commonly referred to as Wi-Fi) by means of compatible hardware. If
@@ -36,7 +36,7 @@ Common interface configuration
    :var0: wireless
    :var1: wlan0
 
-System Wide configuration
+System-wide configuration
 =========================
 
 .. cfgcmd:: set system wireless country-code <cc>
@@ -52,10 +52,13 @@ Wireless options
 
 .. cfgcmd:: set interfaces wireless <interface> channel <number>
 
-  Channel number (IEEE 802.11), for 2.4 GHz (802.11 b/g/n/ax) channels
-  range from 1-14. On 5 GHz (802.11 a/h/j/n/ac) channels available are
-  0, 34 to 177. 
-  On 6GHz (802.11 ax) channels range from 1 to 233.
+  Configure the IEEE 802.11 wireless radio channel for the interface.
+  Channel allocation depends on the frequency band:
+
+  * **2.4 GHz** (802.11b/g/n/ax): Channels range from 1 to 14.
+  * **5 GHz** (802.11a/h/j/n/ac/ax): Channels range from 34 to 177.
+  * **6 GHz** (802.11ax): Channels range from 1 to 233.
+  * **Automatic channel selection:** 0.
 
 .. cfgcmd:: set interfaces wireless <interface> disable-broadcast-ssid
 
@@ -193,7 +196,7 @@ HT (High Throughput) capabilities (802.11n)
       5 GHz		40,48,56,64	36,44,52,60
 
   .. note:: 40 MHz channels may switch their primary and secondary channels if
-    needed or creation of 40 MHz channel maybe rejected based on overlapping
+    needed or creation of 40 MHz channel may be rejected based on overlapping
     BSSes. These changes are done automatically when hostapd is setting up the
     40 MHz channel.
 
@@ -443,7 +446,7 @@ Security
 ========
 
 :abbr:`WPA (Wi-Fi Protected Access)`, WPA2 Enterprise and WPA3 Enterprise in 
-combination with 802.1x based authentication can be used to authenticate 
+combination with 802.1X based authentication can be used to authenticate 
 users or computers in a domain.
 
 The wireless client (supplicant) authenticates against the RADIUS server
@@ -544,7 +547,7 @@ about all wireless interfaces.
 
 .. opcmd:: show interfaces wireless detail
 
-Use this command to view operational status and details wireless-specific
+Show the operational status and detailed wireless-specific
 information about all wireless interfaces.
 
 .. stop_vyoslinter
@@ -734,7 +737,7 @@ and WiFi-6e (6GHz) Access-Points with the following characteristics:
 Example Configuration: WiFi-6 at 2.4GHz
 ---------------------------------------
 
-You may expect real throughputs around 10MBytes/s or higher in crowded areas.
+You may expect real throughput around 10 MB/s or higher in crowded areas.
 
 .. stop_vyoslinter
 
@@ -829,9 +832,9 @@ Resulting in
 Example Configuration: WiFi-6e at 6GHz
 --------------------------------------
 
-You may expect real throughputs around 50MBytes/s to 150MBytes/s,
-depending on obstructions by walls, water, metal or other materials
-with high electro-magnetic dampening at 6GHz. Best results are achieved
+You may expect real throughput between 50 MB/s and 150 MB/s, depending on
+obstructions from walls, water, metal, or other materials
+with high electromagnetic damping at 6 GHz. Best results are achieved
 with the AP being in the same room and in line-of-sight.
 
 .. stop_vyoslinter
