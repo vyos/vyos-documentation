@@ -19,7 +19,7 @@ up the SNMP protocol and connectivity between the router and NMP.
 .. code-block:: none
 
     set interfaces ethernet eth0 address 'dhcp'
-    set system name-server '192.0.2.1'
+    set system name-server '8.8.8.8'
     set service snmp community router authorization 'test'
     set service snmp community router network '0.0.0.0/0'
 
