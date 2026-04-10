@@ -478,7 +478,7 @@ The WAP in this example has the following characteristics:
 
 .. start_vyoslinter
 
-Resulting in
+Resulting configuration:
 
 .. code-block:: none
 
