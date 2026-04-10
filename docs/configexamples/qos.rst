@@ -66,7 +66,7 @@ VPCs. To do this, we use this configuration.
     set qos policy shaper vyos3 default ceiling '100%'
     set qos policy shaper vyos3 default priority '7'
     set qos policy shaper vyos3 default queue-type 'fair-queue'
-        set qos interface eth0 egress 'vyos3'
+    set qos interface eth0 egress 'vyos3'
 
 .. start_vyoslinter
 

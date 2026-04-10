@@ -70,12 +70,12 @@ Or **binary** prefixes.
     kibit (2^10 = 1024)    kibibit per second
     mibit (2^20 = 1024^2)  mebibit per second
     gibit (2^30 = 1024^3)  gibibit per second
-        tbit  (2^40 = 1024^4)  tebibit per second
+    tbit  (2^40 = 1024^4)  tebibit per second
 
     kibps (1024*8)         kibibyte (KiB) per second
     mibps (1024^2*8)       mebibyte (MiB) per second
-        gibps (1024^3*8)       gibibyte (GiB) per second
-        tibps (1024^4*8)       tebibyte (TiB) per second
+    gibps (1024^3*8)       gibibyte (GiB) per second
+    tibps (1024^4*8)       tebibyte (TiB) per second
 
 
 Suffixes
@@ -88,7 +88,7 @@ A *bit* is written as **bit**,
         kbit (kilobits per second)
         mbit (megabits per second)
         gbit (gigabits per second)
-    tbit (terabits per second)
+        tbit (terabits per second)
 
 while a *byte* is written as a single **b**.
 
