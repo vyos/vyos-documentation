@@ -1,0 +1,166 @@
+# AI Documentation Validation
+#
+# Install this workflow into vyos/vyos-documentation at:
+#   .github/workflows/ai-validation.yml
+#
+# Required secrets in vyos/vyos-documentation:
+#   ANTHROPIC_API_KEY      — Anthropic API key for Claude
+#   VYOS_APP_ID            — GitHub App ID (created by scripts/create-github-app.sh)
+#   VYOS_APP_PRIVATE_KEY   — GitHub App private key (PEM)
+#
+# The GitHub App must be installed on BOTH orgs:
+#   - VyOS-Networks: access to vyos-1x, vyos-docs-opus-reviewer
+#   - vyos: access to vyos-documentation (for PR context)
+#
+# Required: reference DB must be pre-built in VyOS-Networks/vyos-docs-opus-reviewer
+# (runs automatically every Sunday, or trigger manually via rebuild-reference.yml)
+
+name: AI Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.VYOS_APP_ID }}
+          private-key: ${{ secrets.VYOS_APP_PRIVATE_KEY }}
+          owner: VyOS-Networks
+          repositories: vyos-1x,vyos-docs-opus-reviewer
+
+      - name: Determine target branch
+        id: branch
+        run: |
+          TARGET="${{ github.event.pull_request.base.ref }}"
+          echo "target=$TARGET" >> "$GITHUB_OUTPUT"
+          echo "Validating against vyos-1x branch: $TARGET"
+
+      - name: Checkout PR
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Checkout vyos-1x (matching branch, private)
+        uses: actions/checkout@v6
+        with:
+          repository: vyos-networks/vyos-1x
+          ref: ${{ steps.branch.outputs.target }}
+          path: .vyos-1x
+          fetch-depth: 1
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Download reference DB (matching branch)
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: VyOS-Networks/vyos-docs-opus-reviewer
+          latest: true
+          fileName: "reference-db-${{ steps.branch.outputs.target }}.tar.gz"
+          out-file-path: .reference-db
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Extract reference DB
+        run: |
+          mkdir -p .reference-db/extracted
+          tar -xzf .reference-db/reference-db-${{ steps.branch.outputs.target }}.tar.gz -C .reference-db/extracted
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install reviewer
+        run: |
+          pip install "git+https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/VyOS-Networks/vyos-docs-opus-reviewer.git"
+
+      - name: Save PR diff
+        run: gh pr diff ${{ github.event.pull_request.number }} > pr-diff.txt
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Pass 1 — deterministic checks
+        run: |
+          vyos-doc-review pass1 \
+            --pr-diff pr-diff.txt \
+            --reference-db .reference-db/extracted \
+            --output pass1-findings.json
+
+      - name: Pass 2 — Claude review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          model: claude-opus-4-6
+          track_progress: true
+          prompt: |
+            You are a VyOS documentation reviewer. Your job is to verify documentation
+            accuracy against the VyOS codebase.
+
+            ## Context
+
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+            TARGET BRANCH: ${{ steps.branch.outputs.target }}
+
+            The PR branch is checked out in the current directory (vyos-documentation).
+            The vyos-1x source tree is at `.vyos-1x/` (branch: ${{ steps.branch.outputs.target }}).
+            The pre-built reference database is at `.reference-db/extracted/`.
+
+            IMPORTANT: This PR targets the **${{ steps.branch.outputs.target }}** branch.
+            The vyos-1x checkout and reference DB match this branch. Features may differ
+            between branches (e.g., a command exists in `current` but not in `sagitta`).
+            Only flag issues relevant to this specific branch.
+
+            ## Pass 1 Findings
+
+            An automated deterministic check has already run. Its findings are in
+            `pass1-findings.json`. Each finding has a confidence level.
+
+            ## Your Tasks
+
+            1. Read `pass1-findings.json`.
+            2. For HIGH confidence findings: post inline comments on the PR.
+            3. For MEDIUM/LOW confidence findings: read the actual source files in
+               `.vyos-1x/` to verify. Classify each as:
+               - CONFIRMED ISSUE — post inline comment with evidence
+               - FALSE POSITIVE — skip
+               - NEEDS HUMAN — include in summary with explanation
+            4. Review the changed RST sections for behavioral claims. Cross-reference
+               against the conf_mode/op_mode Python scripts in `.vyos-1x/src/`.
+            5. Post a summary comment with two sections:
+               - **Issues**: confirmed problems with severity (ERROR/WARNING/INFO)
+               - **Needs Verification**: ambiguous findings requiring human review
+               - **Stats**: files reviewed, commands checked, branch reviewed
+
+            ## Finding Format
+
+            For inline comments, use this structure:
+            ```
+            {SEVERITY} — {short description}
+
+            Doc says: {what the doc claims}
+            Source ({file}:{line}): {what the source says}
+            Branch: ${{ steps.branch.outputs.target }}
+
+            {suggestion for fix}
+            ```
+
+            ## Review Criteria
+
+            - CLI paths must exist in XML interface definitions
+            - Default values must match XML `<defaultValue>` or Python `default_value()` calls
+            - Parameter options must match `<completionHelp>` and `<constraint>` definitions
+            - Behavioral descriptions must match conf_mode script logic
+            - Referenced features must not be removed or renamed
+            - Severity: ERROR (factually wrong), WARNING (misleading/incomplete), INFO (improvement)
+
+          claude_args: |
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,Glob,Grep"
