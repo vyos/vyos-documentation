@@ -32,9 +32,11 @@ jobs:
       - name: Check secrets availability
         id: secrets-check
         run: |
-          if [ -z "${{ secrets.VYOS_APP_ID }}" ] || [ -z "${{ secrets.VYOS_APP_PRIVATE_KEY }}" ]; then
+          if [ -z "${{ secrets.VYOS_APP_ID }}" ] || \
+             [ -z "${{ secrets.VYOS_APP_PRIVATE_KEY }}" ] || \
+             [ -z "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "::notice::Skipping AI validation — secrets not available (fork PR)"
+            echo "::notice::Skipping AI validation — required secrets not available"
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
@@ -142,24 +144,27 @@ jobs:
 
             The PR branch is checked out in the current directory (vyos-documentation).
             The vyos-1x source tree is at `.vyos-1x/` (branch: ${{ steps.branch.outputs.target }}).
-            The pre-built reference database is at `.reference-db/extracted/`.
+            If `.reference-db/extracted/` exists, it contains the pre-built reference
+            database. If that directory is missing, the reference DB was unavailable for
+            this branch and Pass 1 was skipped.
 
             IMPORTANT: This PR targets the **${{ steps.branch.outputs.target }}** branch.
-            The vyos-1x checkout and reference DB match this branch. Features may differ
-            between branches (e.g., a command exists in `current` but not in `sagitta`).
-            Only flag issues relevant to this specific branch.
+            The vyos-1x checkout matches this branch. Features may differ between branches
+            (e.g., a command exists in `current` but not in `sagitta`). Only flag issues
+            relevant to this specific branch.
 
             ## Pass 1 Findings
 
-            An automated deterministic check has already run. Its findings are in
-            `pass1-findings.json`. Each finding has a confidence level.
+            `pass1-findings.json` contains deterministic check results. If the reference
+            DB was unavailable, this file may be empty or contain no findings — in that
+            case, rely on direct source inspection in `.vyos-1x/` instead.
 
             ## Your Tasks
 
-            1. Read `pass1-findings.json`.
+            1. Read `pass1-findings.json` if it contains findings.
             2. For HIGH confidence findings: post inline comments on the PR.
-            3. For MEDIUM/LOW confidence findings: read the actual source files in
-               `.vyos-1x/` to verify. Classify each as:
+            3. For MEDIUM/LOW confidence findings, or if Pass 1 was skipped: read the
+               actual source files in `.vyos-1x/` to verify. Classify each as:
                - CONFIRMED ISSUE — post inline comment with evidence
                - FALSE POSITIVE — skip
                - NEEDS HUMAN — include in summary with explanation
