@@ -27,9 +27,19 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-      id-token: write
     steps:
+      - name: Check secrets availability
+        id: secrets-check
+        run: |
+          if [ -z "${{ secrets.VYOS_APP_ID }}" ] || [ -z "${{ secrets.VYOS_APP_PRIVATE_KEY }}" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping AI validation — secrets not available (fork PR)"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Generate GitHub App token
+        if: steps.secrets-check.outputs.skip != 'true'
         id: app-token
         uses: actions/create-github-app-token@v1
         with:
@@ -39,6 +49,7 @@ jobs:
           repositories: vyos-1x,vyos-docs-opus-reviewer
 
       - name: Determine target branch
+        if: steps.secrets-check.outputs.skip != 'true'
         id: branch
         run: |
           TARGET="${{ github.event.pull_request.base.ref }}"
@@ -46,11 +57,13 @@ jobs:
           echo "Validating against vyos-1x branch: $TARGET"
 
       - name: Checkout PR
+        if: steps.secrets-check.outputs.skip != 'true'
         uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
       - name: Checkout vyos-1x (matching branch, private)
+        if: steps.secrets-check.outputs.skip != 'true'
         uses: actions/checkout@v6
         with:
           repository: vyos-networks/vyos-1x
@@ -60,6 +73,9 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
 
       - name: Download reference DB (matching branch)
+        if: steps.secrets-check.outputs.skip != 'true'
+        id: download-db
+        continue-on-error: true
         uses: robinraju/release-downloader@v1
         with:
           repository: VyOS-Networks/vyos-docs-opus-reviewer
@@ -69,25 +85,37 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
 
       - name: Extract reference DB
+        if: steps.secrets-check.outputs.skip != 'true' && steps.download-db.outcome == 'success'
+        id: extract-db
         run: |
           mkdir -p .reference-db/extracted
           tar -xzf .reference-db/reference-db-${{ steps.branch.outputs.target }}.tar.gz -C .reference-db/extracted
 
+      - name: Skip notice (no reference DB)
+        if: steps.secrets-check.outputs.skip != 'true' && steps.download-db.outcome != 'success'
+        run: |
+          echo "::warning::Reference DB not found for branch '${{ steps.branch.outputs.target }}'. Skipping Pass 1 deterministic checks."
+          echo '[]' > pass1-findings.json
+
       - name: Setup Python
+        if: steps.secrets-check.outputs.skip != 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
       - name: Install reviewer
+        if: steps.secrets-check.outputs.skip != 'true'
         run: |
           pip install "git+https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/VyOS-Networks/vyos-docs-opus-reviewer.git"
 
       - name: Save PR diff
+        if: steps.secrets-check.outputs.skip != 'true'
         run: gh pr diff ${{ github.event.pull_request.number }} > pr-diff.txt
         env:
           GH_TOKEN: ${{ github.token }}
 
       - name: Pass 1 — deterministic checks
+        if: steps.secrets-check.outputs.skip != 'true' && steps.download-db.outcome == 'success'
         run: |
           vyos-doc-review pass1 \
             --pr-diff pr-diff.txt \
@@ -95,6 +123,7 @@ jobs:
             --output pass1-findings.json
 
       - name: Pass 2 — Claude review
+        if: steps.secrets-check.outputs.skip != 'true'
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
