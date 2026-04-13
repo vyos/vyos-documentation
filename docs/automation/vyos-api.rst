@@ -1,4 +1,4 @@
-:lastproofread: 2023-01-16
+:lastproofread: 2026-04-13
 
 .. _vyosapi:
 
@@ -6,18 +6,18 @@
 VyOS API
 ########
 
-For configuration and enabling the API see :ref:`http-api`
+For instructions on configuring and enabling the API, see :ref:`http-api`.
 
 **************
 Authentication
 **************
 
-All endpoints except one listen on HTTP POST requests and the API KEY must set
-as ``key`` in the formdata. The only public endpoint listens to HTTP GET request
-and takes optional query parameters.
+All endpoints, except one, accept HTTP POST requests. The API key must be 
+provided as the ``key`` field in the form data. The only public endpoint 
+accepts HTTP GET requests and supports optional query parameters.
 
-Below see one example for curl and one for python.
-The rest of the documentation is reduced to curl.
+Below are examples of API requests in cURL and Python. All other code examples 
+in this documentation use cURL.
 
 .. code-block:: none
 
@@ -38,17 +38,16 @@ The rest of the documentation is reduced to curl.
 
 
 *************
-API Endpoints
+API endpoints
 *************
 /info
 =========
 
-This is the only endpoint provided by the API service that does not require
-authentication and can be queried by anonymous users. Requesting the ``info``
-endpoint you obtain general information about the system, namely the VyOS
-version, the system host name and a welcome banner for anonymous users.
+This is the only API endpoint that does not require authentication and can be 
+accessed by anonymous users. The info endpoint returns general system 
+information, including the VyOS version, system hostname, and a welcome banner.
 
-This endpoint responds **only** to HTTP GET requests.
+This endpoint accepts **only** HTTP GET requests.
 
 .. code-block:: none
 
@@ -59,19 +58,19 @@ This endpoint responds **only** to HTTP GET requests.
         "success": true,
         "data": {
             "version": "1.5-rolling",
-            "hostname: "vyos"
+            "hostname": "vyos",
             "banner": "Welcome to VyOS"
         },
         "error": null
     }
 
-This endpoint can take two optional query parameters - ``version`` and
-``hostname``. These parameters accept all values that can be converted to
-Boolean - e.g. ``yes/no``, ``1/0``, ``true/false`` etc, and they dictate whether
-to include the respective values into the response.
+**Query parameters**
 
-If request is sent without any query parameters, the endpoints treats them as
-if they are set to ``true`` by default:
+This endpoint accepts two optional query parameters, version and hostname. Each 
+parameter accepts values convertible to Boolean (e.g., ``yes/no``, ``1/0``, or 
+``true/false``) to control the inclusion of related fields in the response.
+
+If no query parameters are provided, both parameters default to ``true``.
 
 .. code-block:: none
 
@@ -87,8 +86,8 @@ if they are set to ``true`` by default:
         "error": null
     }
 
-If any of the parameters is set to a value that corresponds to ``false``, the
-response object will have an empty string instead of the respective value:
+If either parameter is set to a value corresponding to false, its field is 
+returned as an empty string in the response:
 
 .. code-block:: none
 
@@ -104,8 +103,8 @@ response object will have an empty string instead of the respective value:
         "error": null
     }
 
-Please note, that there is no need to specify both parameters if you want to
-hide just one of the fields - a missing query parameter is treated as ``true``:
+You do not need to specify both parameters if you want to hide only one. Any 
+missing query parameter defaults to true.
 
 .. code-block:: none
 
@@ -121,12 +120,13 @@ hide just one of the fields - a missing query parameter is treated as ``true``:
         "error": null
     }
 
-Please note, that while you can disable output for both ``hostname`` and
-``version``, the ``banner`` is included into the response in any case.
+Note that while you can disable output for both ``hostname`` and ``version``, 
+the ``banner`` is always included in the response.
 
-**Important:** The endpoint accepts **ONLY** ``hostname`` and ``version`` query
-parameters. Including any other besides them, or instead of them, will respond
-with HTTP 400 Bad Request:
+.. Important::
+   
+   The endpoint accepts **ONLY** ``hostname`` and ``version`` query
+   parameters. Including any other parameters results in an HTTP 400 Bad Request.
 
 .. code-block:: none
 
@@ -139,12 +139,12 @@ with HTTP 400 Bad Request:
         "data": null
     }
 
-As well as the values passed to the query string are validated to ensure they
-are strictly Boolean and won't accept any other data type:
+Values passed to the query string are validated to ensure they are strictly 
+Boolean. Other data types are not accepted.
 
 .. code-block:: none
 
-    curl --location --request GET 'https://vyos/info?hostname=1; eval"sudo rm -rf /"
+    curl --location --request GET 'https://vyos/info?hostname=1; eval"sudo rm -rf /"'
 
     response
     {
@@ -156,9 +156,10 @@ are strictly Boolean and won't accept any other data type:
 /retrieve
 =========
 
-With the ``retrieve`` endpoint you get parts or the whole configuration.
+The ``/retrieve`` endpoint returns either specific parts or the entire 
+configuration.
 
-To get the whole configuration, pass an empty list to the ``path`` field 
+To retrieve the entire configuration, pass an empty list to the ``path`` field.
 
 .. code-block:: none
 
@@ -167,7 +168,7 @@ To get the whole configuration, pass an empty list to the ``path`` field
    --form key='MY-HTTPS-API-PLAINTEXT-KEY'
 
 
-   response (shorted)
+   response (shortened)
    {
       "success": true,
       "data": {
@@ -189,7 +190,8 @@ To get the whole configuration, pass an empty list to the ``path`` field
    }
 
 
-To only get a part of the configuration, for example ``system syslog``.
+To retrieve a specific configuration part, such as ``system syslog``, specify 
+the desired path.
 
 .. code-block:: none
 
@@ -216,10 +218,10 @@ To only get a part of the configuration, for example ``system syslog``.
       "error": null
    }
 
-if you just want the Value of a multi-valued node, use the ``returnValues``
+If you only need the value of a multi-valued node, use the ``returnValues``
 operation.
 
-For example, get the addresses of a ``dum0`` interface.
+For example, to get the addresses of a ``dum0`` interface:
 
 .. code-block:: none
 
@@ -227,7 +229,7 @@ For example, get the addresses of a ``dum0`` interface.
    --form data='{"op": "returnValues", "path": ["interfaces","dummy","dum0","address"]}' \
    --form key='MY-HTTPS-API-PLAINTEXT-KEY'
 
-   respone:
+   response:
    {
       "success": true,
       "data": [
@@ -238,9 +240,8 @@ For example, get the addresses of a ``dum0`` interface.
       "error": null
    }
 
-To check existence of a configuration path, use the ``exists`` operation.
-
-For example, check an existing path:
+To check whether a configuration path exists, use the ``exists`` operation. It 
+returns ``true`` for an existing path:
 
 .. code-block:: none
 
@@ -255,7 +256,7 @@ For example, check an existing path:
       "error": null
    }
 
-versus a non-existent path:
+It returns ``false`` for a non-existing path:
 
 .. code-block:: none
 
@@ -273,7 +274,7 @@ versus a non-existent path:
 /reset
 ======
 
-The ``reset`` endpoint run a ``reset`` command.
+The ``/reset`` endpoint runs the ``reset`` command.
 
 .. code-block:: none
 
@@ -281,7 +282,7 @@ The ``reset`` endpoint run a ``reset`` command.
    --form data='{"op": "reset", "path": ["ip", "bgp", "192.0.2.11"]}' \
    --form key='MY-HTTPS-API-PLAINTEXT-KEY'
 
-   respone:
+   response:
    {
      "success": true,
      "data": "",
@@ -291,7 +292,7 @@ The ``reset`` endpoint run a ``reset`` command.
 /reboot
 =======
 
-To initiate a reboot use the ``reboot`` endpoint.
+To initiate a reboot, use the ``/reboot`` endpoint.
 
 .. code-block:: none
 
@@ -299,7 +300,7 @@ To initiate a reboot use the ``reboot`` endpoint.
    --form data='{"op": "reboot", "path": ["now"]}' \
    --form key='MY-HTTPS-API-PLAINTEXT-KEY'
 
-   respone:
+   response:
    {
      "success": true,
      "data": "",
@@ -309,7 +310,7 @@ To initiate a reboot use the ``reboot`` endpoint.
 /poweroff
 =========
 
-To power off the system use the ``poweroff`` endpoint.
+To power off the system, use the ``/poweroff`` endpoint.
 
 .. code-block:: none
 
@@ -317,7 +318,7 @@ To power off the system use the ``poweroff`` endpoint.
    --form data='{"op": "poweroff", "path": ["now"]}' \
    --form key='MY-HTTPS-API-PLAINTEXT-KEY'
 
-   respone:
+   response:
    {
      "success": true,
      "data": "",
@@ -330,7 +331,7 @@ To power off the system use the ``poweroff`` endpoint.
 
 To add or delete an image, use the ``/image`` endpoint.
 
-add an image
+To add an image:
 
 .. code-block:: none
 
@@ -338,7 +339,7 @@ add an image
    --form data='{"op": "add", "url": "https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso"}' \
    --form key='MY-HTTPS-API-PLAINTEXT-KEY'
 
-   respone (shorted):
+   response (shortened):
    {
       "success": true,
       "data": "Trying to fetch ISO file from https://downloads.vyos.io/rolling-latest.iso\n
@@ -347,7 +348,7 @@ add an image
       "error": null
    }
 
-delete an image, for example ``1.3-rolling-202006070117``
+To delete an image, for example ``1.3-rolling-202006070117``:
 
 .. code-block:: none
 
@@ -366,9 +367,10 @@ delete an image, for example ``1.3-rolling-202006070117``
 /show
 =====
 
-The ``/show`` endpoint is to show everything in the operational mode.
+The ``/show`` endpoint runs operational mode commands and returns the resulting 
+output.
 
-For example, show which images are installed.
+For example, to show the installed images:
 
 .. code-block:: none
 
@@ -390,7 +392,7 @@ For example, show which images are installed.
 /generate
 =========
 
-The ``generate`` endpoint run a ``generate`` command.
+The ``/generate`` endpoint runs a ``generate`` command.
 
 .. code-block:: none
 
@@ -410,10 +412,9 @@ The ``generate`` endpoint run a ``generate`` command.
 /configure
 ==========
 
-You can pass a ``set``, ``delete`` or ``comment`` command to the
-``/configure`` endpoint.
+The ``/configure`` endpoint accepts ``set``, ``delete``, and ``comment`` commands.
 
-``set`` a single command
+To apply a ``set`` command:
 
 .. code-block:: none
 
@@ -429,7 +430,7 @@ You can pass a ``set``, ``delete`` or ``comment`` command to the
    }
 
 
-``delete`` a single command
+To apply a ``delete`` command:
 
 .. code-block:: none
 
@@ -444,10 +445,11 @@ You can pass a ``set``, ``delete`` or ``comment`` command to the
       "error": null
    }
 
-The API pushes every request to a session and commit it.
-But some of VyOS components like DHCP and PPPoE Servers, IPSec, VXLAN, and
-other tunnels require full configuration for commit. 
-The endpoint will process multiple commands when you pass them as a list to
+The API processes each request in a session and commits it. For components such 
+as DHCP and PPPoE servers, IPsec, VXLAN, and other tunnels, VyOS requires the 
+entire configuration block for a commit.  
+
+The endpoint can process multiple commands if you pass them as a list to
 the ``data`` field.
 
 .. code-block:: none
@@ -467,11 +469,11 @@ the ``data`` field.
 /config-file
 ============
 
-The endpoint ``/config-file`` is to save or load a configuration.
+The ``/config-file`` endpoint allows you to save, load, or merge a 
+configuration. 
 
-Save a running configuration to the startup configuration.
-When you don't specify the file when saving, it saves to
-``/config/config.boot``.
+If you do not specify a file during the ``save`` operation, the configuration 
+is automatically saved to ``/config/config.boot``.
 
 .. code-block:: none
 
@@ -487,7 +489,7 @@ When you don't specify the file when saving, it saves to
    }
 
 
-Save a running configuration to a file.
+To save a running configuration to a file:
 
 .. code-block:: none
 
@@ -503,7 +505,7 @@ Save a running configuration to a file.
    }
 
 
-To Load a configuration file.
+To load a configuration file:
 
 .. code-block:: none
 
@@ -518,7 +520,7 @@ To Load a configuration file.
       "error": null
    }
 
-To Merge a configuration file.
+To merge a configuration file:
 
 .. code-block:: none
 
@@ -533,8 +535,8 @@ To Merge a configuration file.
       "error": null
    }
 
-In either of the last two cases, one can pass a string in the body of the
-request, for example:
+For both ``load`` and ``merge`` operations, you can pass a string in the 
+request body. For example:
 
 .. code-block:: none
 
@@ -553,12 +555,16 @@ request, for example:
 Commit-confirm
 **************
 
-For the previous two endpoints discussed, a ``commit`` command is implicit
-following a succesful request operation (``set | delete | load | merge``, or
-a list of ``set`` and ``delete`` operations).  One can instead request a
-``commit-confirm`` command by including the field ``confirm_time`` of type
-int > 0. An example follows, in the alternative JSON format, for brevity,
-although the standard form-data format is fine:
+For the previous two endpoints, a ``commit`` command is executed automatically 
+after a successful request operation (``set``, ``delete``, ``load``, ``merge``, 
+or a list of ``set`` and ``delete`` operations). 
+
+Alternatively, you can initiate a ``commit-confirm``. Include the 
+``confirm_time`` field in your request and set it to an integer greater than 
+``0``.
+
+The following example uses the JSON format for brevity, though the standard 
+form data format is equally valid:
 
 .. code-block:: none
 
@@ -571,8 +577,8 @@ although the standard form-data format is fine:
       "error": null
    }
 
-The committed changes will be reverted at the timeout unless confirmed.
-To confirm and keep the changes:
+If not confirmed within the specified time, the committed changes will be 
+reverted. To confirm and keep the changes:
 
 .. code-block:: none
 
@@ -585,8 +591,7 @@ To confirm and keep the changes:
       "error": null
    }
 
-If allowed to revert to the previous configuration, the manner in which
-changes are reverted is governed by:
+If the commit is not confirmed, the revert behavior is controlled by:
 
 .. code-block:: none
 
