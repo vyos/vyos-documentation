@@ -1,15 +1,19 @@
-:lastproofread: 2023-01-16
+:lastproofread: 2026-04-13
 
 .. _vyos-napalm:
 
-######
-Napalm
-######
+##################
+NAPALM VyOS driver
+##################
 
-VyOS supports some napalm_ functions for configuration and op-mode.
-It requires more tests.
+VyOS can be configured using the `NAPALM VyOS driver`_, which enables you to 
+retrieve device data and apply configurations via SSH.
 
-Install ``napalm-vyos`` module
+.. note::
+
+   The ``napalm-vyos`` module is currently in testing.
+
+To use the NAPALM VyOS driver, install the following packages:
 
 .. code-block:: none
 
@@ -18,8 +22,11 @@ Install ``napalm-vyos`` module
   pip3 install napalm-vyos
 
 
-Op-mode
--------
+Retrieve device data 
+--------------------
+
+The following script connects to a VyOS device, retrieves device facts and 
+the ARP table, and prints the output in JSON format.
 
 .. code-block:: none
 
@@ -46,7 +53,7 @@ Op-mode
 
   vyos_router.close()
 
-Output op-mode
+Output:
 
 .. code-block:: none
 
@@ -82,12 +89,14 @@ Output op-mode
       }
   ]
 
-Configuration
--------------
+Apply a configuration
+---------------------
 
-We need 2 files, commands.conf and script itself.
+To apply a configuration using NAPALM VyOS driver, you will need a file with 
+configuration commands (``commands.conf``) and a script that executes and 
+commits them (``vyos-napalm.py``).
 
-Content of commands.conf
+* ``commands.conf``
 
 .. code-block:: none
 
@@ -97,7 +106,7 @@ Content of commands.conf
   set system name-server '203.0.113.8'
   set interfaces ethernet eth1 description 'FOO'
 
-Script vyos-napalm.py
+* ``vyos-napalm.py``
 
 .. code-block:: none
 
@@ -127,7 +136,7 @@ Script vyos-napalm.py
 
   vyos_router.close()
 
-Output
+Output:
 
 .. code-block:: none
 
@@ -143,3 +152,4 @@ Output
   [edit]
 
 .. _napalm: https://napalm.readthedocs.io/en/latest/base.html
+.. _NAPALM VyOS driver: https://github.com/napalm-automation-community/napalm-vyos

@@ -1,4 +1,4 @@
-:lastproofread: 2023-01-16
+:lastproofread: 2026-04-13
 
 .. _vyos-ansible:
 
@@ -6,10 +6,13 @@
 Ansible
 #######
 
-VyOS supports configuration via ansible.
-Need to install ``ansible`` and ``python3-paramiko`` module
+VyOS can be configured using Ansible. To use it, install the ``ansible`` 
+package and the ``python3-paramiko`` module.
 
-Structure of files
+Directory structure
+-------------------
+
+Arrange your Ansible project directory as follows:
 
 .. code-block:: none
 
@@ -24,7 +27,7 @@ Structure of files
 File contents
 -------------
 
-ansible.cfg
+* ``ansible.cfg``
 
 .. code-block:: none
 
@@ -33,14 +36,19 @@ ansible.cfg
   retry_files_enabled = False
   ANSIBLE_INVENTORY_UNPARSED_FAILED = true
 
-id_rsa_docker.pub. Needs to declare only public key exactly.
+* ``id_rsa_docker.pub`` 
+
+Contains only the SSH public key.
 
 .. code-block:: none
 
   AAAAB3NzaC1yc2EAAAADAQABAAABAQCoDgfhQJuJRFWJijHn7ZinZ3NWp4hWVrt7HFcvn0kgtP/5PeCtMt
 
 
-hosts
+* ``hosts``
+
+Defines the target VyOS devices and the connection parameters required to reach 
+them.
 
 .. code-block:: none
 
@@ -54,7 +62,9 @@ hosts
   ansible_network_os=vyos
   ansible_connection=network_cli
 
-main.yml
+* ``main.yml``
+
+Defines the configuration tasks to be applied to the target VyOS devices.
 
 .. code-block:: none
 
@@ -77,18 +87,19 @@ main.yml
             - set system time-zone America/Los_Angeles
             - set interfaces ethernet eth0 description WAN
 
-Run ansible
+Run Ansible
 -----------
+
+To apply the configuration, use the following command:
 
 .. code-block:: none
 
   $ ansible-playbook -i hosts main.yml 
 
-  PLAY [r11] ******************************************************************************************************************************************************************************************************
+  PLAY [r11] **************************************************************************************************************
 
-  TASK [Configure remote r11] *************************************************************************************************************************************************************************************
-  changed: [r11]
+  TASK [Configure remote r11] *********************************************************************************************
 
-  PLAY RECAP *****************************************************************************************************************************************************************************************************
+  PLAY RECAP **************************************************************************************************************
   r11                         : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
