@@ -1,4 +1,4 @@
-:lastproofread: 2024-07-03
+:lastproofread: 2026-04-13
 
 .. _cloud-init:
 
@@ -6,94 +6,80 @@
 VyOS cloud-init
 ###############
 
-Cloud and virtualized instances of VyOS are initialized using the
-industry-standard cloud-init. Via cloud-init, the system performs tasks such as
-injecting SSH keys and configuring the network. In addition, the user can 
-supply a custom configuration at the time of instance launch.
+VyOS instances in cloud and virtualized environments are initialized using the 
+industry-standard ``cloud-init``. Through ``cloud-init``, VyOS injects SSH 
+keys, configures network settings, and applies custom configurations during the 
+initial instance boot.
 
-**************
-Config Sources
-**************
+*********************
+Configuration sources
+*********************
 
-VyOS support three types of config sources.
+VyOS ``cloud-init`` obtains configuration data from the following sources:
 
-* Metadata - Metadata is sourced by the cloud platform or hypervisor.
-  In some clouds, there is implemented as an HTTP endpoint at
-  ``http://169.254.169.254``.
-
-* Network configuration - This config source informs the system about the
-  network settings like IP addresses, routes, DNS. Available only in several
-  cloud and virtualization platforms.
-
-* User-data - User-data is specified by the user. This config source offers
-  the ability to insert any CLI configuration commands into the configuration 
-  before   the first boot.
+* ``meta-data``: Instance-specific details provided by the cloud platform or 
+  hypervisor. In some cloud environments, this data is available via an HTTP 
+  endpoint at ``http://169.254.169.254``.
+* ``network configuration``: Network settings such as IP addresses, routes, and 
+  DNS (only available on certain cloud and virtualization platforms). 
+* ``user-data``: User-supplied CLI configuration commands. 
 
 *********
 User-data
 *********
 
-Major cloud providers offer a means of providing user-data at the time of
-instance launch. It can be provided as plain text or as base64-encoded text,
-depending on cloud provider. Also, it can be compressed using gzip, which makes
-sense with a long configuration commands list, because of the hard limit to
-~16384 bytes for the whole user-data.
+Major cloud providers support injecting ``user-data`` as plain text or base64 
+encoding text during initial instance boot. As ``user-data`` has a strict size 
+limit of ~16384 bytes, long configuration command lists can be compressed using 
+``gzip``.
 
-The easiest way to configure the system via user-data is the Cloud-config
-syntax described below.
+The recommended method for configuring VyOS instances via ``user-data`` is to 
+use the ``cloud-config`` syntax described below.
 
 ********************
 Cloud-config modules
 ********************
 
-In VyOS, by default, enables only two modules:
+By default, VyOS enables only two ``cloud-config`` modules:
 
-* ``write_files`` - this module allows to insert any files into the filesystem
-  before the first boot, for example, pre-generated encryption keys,
-  certificates, or even a whole ``config.boot`` file. The format is described 
-  in the cloudinit documentation `Cloud-init-write_files`_.
+* ``write_files``: Inserts user-provided files such as encryption keys, 
+  certificates, or ``config.boot`` into the filesystem during the initial 
+  instance boot. See `Cloud-init-write_files`_ for file syntax and file format 
+  requirements.
+* ``vyos_userdata``: Executes user-provided CLI configuration commands during 
+  the initial instance boot.
 
-* ``vyos_userdata`` - the module accepts a list of CLI configuration commands
-  in a ``vyos_config_commands`` section, which gives an easy way to configure 
-  the system during deployment.
-
-************************
-cloud-config file format
-************************
-
-A cloud-config document is written in YAML. The file must begin
-with ``#cloud-config`` line. The only supported top-level keys are
-``vyos_config_commands`` and ``write_files``. The use of these keys is 
-described in the following two sections.
-
+The files to insert and the CLI commands to execute must be provided in a 
+``cloud-config`` YAML file.
 
 ************************
-Initial Configuration
+Cloud-config file format
 ************************
 
+``cloud-config`` files are written in YAML and must begin with the 
+``#cloud-config`` line. Only ``vyos_config_commands`` and ``write_files`` are 
+supported as top-level keys. The use of these keys is described in the 
+following two sections.
 
-The key used to designate a VyOS configuration is ``vyos_config_commands``.
-What follows is VyOS configuration using the "set-style" syntax. Both "set"
-and "delete" commands are supported.
+************************
+Vyos_config_commands key
+************************
 
-Commands requirements:
+Use the ``vyos_config_commands`` key to define configuration commands for 
+initializing your VyOS instance. Commands must follow the set-style syntax 
+and can include both ``set`` and ``delete`` statements.
 
-* One command per line.
-* If command ends in a value, it must be inside single quotes.
-* A single-quote symbol is not allowed inside command or value.
+Syntax requirements:
 
-The commands list produced by the ``show configuration commands`` command 
-on a VyOS router should comply with all the requirements, so it is easy 
-to get a proper commands list by copying it from another router.
+* Place one command per line.
+* Enclose values in single quotes.
+* Avoid single quotes within commands or values.
 
-The configuration specified in the cloud-config document overwrites default
-configuration values and values configured via Metadata.
+Applying commands from ``cloud-config`` overrides both settings configured via 
+``meta-data`` and default VyOS settings. After commands are applied, 
+``cloud-init`` automatically performs ``commit`` and ``save``.
 
-After the ``vyos_config_commands`` are executed, cloud-init will 
-automatically  perform a ``commit`` and ``save`` operation. 
-
-Here is an example cloud-config that appends configuration at the time of
-first boot.
+The following is an example of a ``cloud-config`` file: 
 
 .. code-block:: yaml
 
@@ -106,39 +92,47 @@ first boot.
      - set interfaces ethernet eth1 address '192.0.2.247/24'
      - set protocols static route 198.51.100.0/24 next-hop '192.0.2.1'
 
--------------------------
-System Defaults/Fallbacks
--------------------------
+---------------------------
+Instance defaults/fallbacks
+---------------------------
 
-These are the VyOS defaults and fallbacks.
+If no external configuration data is provided, VyOS applies the following 
+defaults:
 
-* SSH is configured on port 22.
-* ``vyos``/``vyos`` credentials if no others specified by data source.
-* DHCP on first Ethernet interface if no network configuration is provided.
+* **SSH:** port 22.
+* **Credentials:** ``vyos``/``vyos``.
+* **Networking:** DHCP is enabled on the first Ethernet interface.
 
-All of these can be overridden using the configuration in user-data.
+All defaults can be overridden via ``user-data`` configurations.
 
 
-*********************************
-Command Execution at Initial Boot
-*********************************
+***************
+Write_files key
+***************
 
-VyOS supports the execution of operational commands and linux commands at
-initial boot. This is accomplished using ``write_files`` to certain
-files in the /opt/vyatta/etc/config/scripts directory. Commands specified
-in opt/vyatta/etc/config/scripts/vyos-preconfig-bootup.script are executed
-prior to configuration. The 
-/opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script file contains
-commands to be executed after configuration. In both cases, commands are
-executed as the root user.
+VyOS allows you to run custom scripts during the initial instance boot to 
+execute operational, configuration, and standard Linux commands. 
 
-Note that the /opt/vyatta/etc/config is used instead of the /config/scripts
-directory referenced in the :ref:`command-scripting` section of the 
-documentation because the /config/script directory isn't mounted when the 
-``write_files`` module executes.
+Use the ``write_files`` key to insert these scripts into the 
+``/opt/vyatta/etc/config/scripts/`` directory.
 
-The following example shows how to execute commands after the initial 
-configuration.
+Depending on when your commands need to run, use one of the following paths:
+
+* ``/opt/vyatta/etc/config/scripts/vyos-preconfig-bootup.script``: Commands 
+  defined here are executed before the system configuration is applied.
+* ``/opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script``: Commands 
+  defined here are executed after the system configuration is applied.
+
+In both cases, commands are executed with ``root`` privileges.
+
+.. note::
+   
+   Use the ``/opt/vyatta/etc/config/`` path instead of ``/config/scripts/`` as 
+   referenced in the :ref:`command-scripting` section. The ``/config/scripts/`` 
+   directory is not mounted when the ``write_files`` module runs.
+
+The following example shows how to use ``write_files`` to execute an 
+operational command **after** the initial configuration is complete:
 
 .. code-block:: yaml
 
@@ -153,12 +147,11 @@ configuration.
          filename=/tmp/bgp_status_`date +"%Y_%m_%d_%I_%M_%p"`.log
          run show ip bgp summary >> $filename
 
+You can combine standard Linux commands to fetch data and VyOS configuration 
+commands (like ``set`` and ``commit``) in the same script.
 
-If you need to gather information from linux commands to configure VyOS, you
-can execute commands and then configure VyOS in the same script.
-
-The following example sets the hostname based on the instance identifier
-obtained from the EC2 metadata service.
+The following example sets the ``hostname`` based on the instance identifier 
+obtained from the EC2 Instance Metadata Service (IMDS).
 
 .. code-block:: yaml
 
@@ -181,25 +174,25 @@ obtained from the EC2 metadata service.
 NoCloud
 *******
 
-Injecting configuration data is not limited to cloud platforms. Users can
-employ the NoCloud data source to inject user-data and meta-data on
-virtualization platforms such as VMware, Hyper-V and KVM.
+Injecting configuration data is not limited to cloud platforms. The NoCloud 
+data source allows you to inject ``user-data`` and ``meta-data`` on 
+virtualization platforms such as VMware, Hyper-V, and KVM.
 
-While other methods exist, the most straightforward method for using the
-NoCloud data source is creating a seed ISO and attaching it to the virtual
-machine as a CD drive. The volume must be formatted as a vfat or ISO 9660
-file system with the label "cidata" or "CIDATA".
+The simplest way to use the NoCloud data source is to create a ``seed.iso`` 
+file and attach it to the virtual machine as a CD drive. The volume must be 
+formatted as a VFAT or ISO 9660 file system with the label ``cidata`` or 
+``CIDATA``.
 
-Create text files named user-data and meta-data. On linux-based systems, 
-the mkisofs utility can be used to create the seed ISO. The following
-syntax will add these files to the ISO 9660 file system.
+Create text files named ``user-data`` and ``meta-data``. On Linux-based 
+systems, use the ``mkisofs`` utility to create the ``seed.iso`` file. The 
+following syntax adds these files to the ISO 9660 file system:
 
 .. code-block:: none
 
   mkisofs -joliet -rock -volid "cidata" -output seed.iso meta-data user-data
 
-The seed.iso file can be attached to the virtual machine. As an example,
-the method with KVM to attach the ISO as a CD drive follows.
+Once generated, attach the ``seed.iso`` file to your virtual machine. The 
+following example shows how to attach the file as a CD drive using KVM:
 
 .. code-block:: none
 
@@ -217,21 +210,22 @@ the method with KVM to attach the ISO as a CD drive follows.
      --import \
      --noautoconsole
 
-
-For more information on the NoCloud data source, visit its 
-page `nocloud`_ in the cloud-init documentation. 
+For more information on the NoCloud data source, visit the `NoCloud`_ page in 
+the ``cloud-init`` documentation.
 
 ***************
 Troubleshooting
 ***************
 
-If you encounter problems, verify that the cloud-config document contains
-valid YAML. Online resources such as https://www.yamllint.com/ provide
-a simple tool for validating YAML.
+If your configuration does not apply as expected, follow these troubleshooting 
+steps:
 
-cloud-init logs to /var/log/cloud-init.log. This file can be helpful in
-determining why the configuration varies from what you expect. You can fetch
-the most important data filtering output for ``vyos`` keyword:
+1. **Validate your YAML**: Ensure your ``cloud-config`` file follows proper 
+   YAML syntax. Online resources such as `YAML Lint <https://www.yamllint.com/>`_ 
+   provide simple validation tools.
+2. **Check the logs**: ``cloud-init`` writes logs to ``/var/log/cloud-init.log``. 
+   Filter for VyOS-specific entries using:
+
 
 .. code-block:: none
 
@@ -241,162 +235,152 @@ the most important data filtering output for ``vyos`` keyword:
 Cloud-init on Proxmox
 *********************
 
-Before starting, please refer to cloud-init `network-config-docs`_ in order to
-know how to import user and network configurations.
+Before you begin, review the ``cloud-init`` `network-config-docs`_ to 
+understand how to import user and network configuration data.
 
-Most important keys that needs to be considered:
+Key considerations:
 
-* VyOS configuration commands are defined in user-data file.
+* Define VyOS configuration commands in the ``user-data`` file.
+* Avoid including network configuration data in the ``user-data`` file.
+* If no network configuration data is provided, the DHCP client is enabled on 
+  the first interface. This happens at the OS level and is not reflected in the 
+  VyOS CLI.
 
-* Networking configurations shouldn't be passed in user-data file.
+The following example shows how to disable the DHCP client on ``eth0`` to 
+address this behavior.  
 
-* If no networking configuration is provided, then dhcp client is going to be
-  enabled on first interface. Bear in mind that this configuration will be
-  injected at an OS level, so don't expect to find dhcp client configuration
-  on vyos cli. Because of this behavior, in next example lab we will disable
-  dhcp-client configuration on eth0.
+In this example:
 
-  Also, this lab considers:
-  
-* Proxmox IP address: **192.168.0.253/24**
+* **Proxmox IP address**: ``192.168.0.253/24``.
+* **Storage**: The ``local`` volume is mounted at ``/var/lib/vz`` and contains 
+  all content types, including snippets.
 
-* Storaged used: volume local, which is mounted on directory **/var/lib/vz**,
-  and contains all type of content, including snippets.
+The goal is to remove the default DHCP client from the first interface and 
+apply a custom configuration during the initial instance boot using 
+``cloud-init``.
 
-* Remove default dhcp client on first interface, and load other
-  configuration during first boot, using cloud-init.
+---------------------
+Generate .qcow2 image
+---------------------
 
--------------------
-Generate qcow image
--------------------
+First, generate a VyOS ``.qcow2`` image with ``cloud-init`` support from the 
+`vyos-vm-images`_ repository:
 
-A VyOS qcow image with cloud-init options is needed. This can be obtained
-using `vyos-vm-images`_ repo. After cloning the repo, edit the file
-**qemu.yml** and comment the **download-iso** role.
-
-In this lab, we are using 1.3.0 VyOS version and setting a disk of 10G.
-Download VyOS .iso file and save it as ``/tmp/vyos.iso``. Command used for
-generating qcow image:
+#. Clone the ``vyos-vm-images`` repository and comment out the ``download-iso`` 
+   role in ``qemu.yml``.
+#. Download your preferred VyOS ``.iso`` file and save it as ``/tmp/vyos.iso``.
+#. Generate the ``.qcow2`` image (using a 10G disk size for this example):
 
 .. code-block:: sh
 
   sudo ansible-playbook qemu.yml -e disk_size=10 \
-   -e iso_local=/tmp/vyos.iso -e grub_console=serial -e vyos_version=1.3.0 \
+   -e iso_local=/tmp/vyos.iso -e grub_console=serial -e vyos_version=1.5.0 \
    -e cloud_init=true -e cloud_init_ds=NoCloud
 
-File generated with previous command:
-``/tmp/vyos-1.3.0-cloud-init-10G-qemu.qcow2``
+This generates your new image at ``/tmp/vyos-1.5.0-cloud-init-10G-qemu.qcow2``.
 
-Now, that file needs to be copied to proxmox server:
+#. Copy the resulting image to the Proxmox server:
 
 .. code-block:: sh
   
-  sudo scp /tmp/vyos-1.3.0-cloud-init-10G-qemu.qcow2 root@192.168.0.253:/tmp/
+  sudo scp /tmp/vyos-1.5.0-cloud-init-10G-qemu.qcow2 root@192.168.0.253:/tmp/
 
 
 ------------------------
 Prepare cloud-init files
 ------------------------
 
-In Proxmox server three files are going to be used for this setup:
+Create the following files on your Proxmox server to proceed with this setup:
 
-* **network-config**: file that will indicate to avoid dhcp client on first
-  interface.
+* ``user-data``: Contains VyOS configuration commands.
+* ``network-config``: Disables the DHCP client on the first interface.
+* ``meta-data``: An empty file (required by ``cloud-init``).
 
-* **user-data**: includes vyos-commands.
+All files must be placed in the ``/tmp/`` directory.
 
-* **meta-data**: empty file (required).
+Follow these steps to create the required files:
 
-In this lab, all files are located in ``/tmp/``. So, before going on, lets
-move to that directory:
+1. Navigate to the ``/tmp/`` directory:
 
-.. code-block:: sh
+   .. code-block:: sh
   
-  cd /tmp/
+     cd /tmp/
 
-**user-data** file must start with ``#cloud-config`` and contains
-vyos-commands. For example:
+2. Create the ``user-data`` file. Begin the file with ``#cloud-config`` and 
+   include VyOS configuration commands.
 
-.. code-block:: none
+   .. code-block:: none
 
-   #cloud-config
-   vyos_config_commands:
-     - set system host-name 'vyos-BRAS'
-     - set service ntp server 1.pool.ntp.org
-     - set service ntp server 2.pool.ntp.org
-     - delete interfaces ethernet eth0 address 'dhcp'
-     - set interfaces ethernet eth0 address '198.51.100.2/30'
-     - set interfaces ethernet eth0 description 'WAN - ISP01'
-     - set interfaces ethernet eth1 address '192.168.25.1/24'
-     - set interfaces ethernet eth1 description 'Comming through VLAN 25'
-     - set interfaces ethernet eth2 address '192.168.26.1/24'
-     - set interfaces ethernet eth2 description 'Comming through VLAN 26'
-     - set protocols static route 0.0.0.0/0 next-hop '198.51.100.1'
+      #cloud-config
+      vyos_config_commands:
+        - set system host-name 'vyos-BRAS'
+        - set service ntp server '1.pool.ntp.org'
+        - set service ntp server '2.pool.ntp.org'
+        - delete interfaces ethernet eth0 address 'dhcp'
+        - set interfaces ethernet eth0 address '198.51.100.2/30'
+        - set interfaces ethernet eth0 description 'WAN - ISP01'
+        - set interfaces ethernet eth1 address '192.168.25.1/24'
+        - set interfaces ethernet eth1 description 'Coming through VLAN 25'
+        - set interfaces ethernet eth2 address '192.168.26.1/24'
+        - set interfaces ethernet eth2 description 'Coming through VLAN 26'
+        - set protocols static route 0.0.0.0/0 next-hop '198.51.100.1'
 
-**network-config** file only has configuration that disables the automatic
-dhcp client on first interface.
+3. Create the ``network-config`` file. Include the following:
 
+   .. code-block:: none
 
-Content of network-config file:
+      version: 2
+      ethernets:
+        eth0:
+          dhcp4: false
+          dhcp6: false
 
-.. code-block:: none
-
-   version: 2
-   ethernets:
-     eth0:
-       dhcp4: false
-       dhcp6: false
-
-Finally, file **meta-data** has no content, but it's required.
+4. Create the required empty ``meta-data`` file.
+   
 
 ---------------
 Create seed.iso
 ---------------
 
-Once the three files were created, it's time to generate the ``seed.iso``
-image, which needs to be mounted to the new VM as a cd.
-
-Command for generating ``seed.iso``
+Once you have created the necessary files, generate the ``seed.iso`` image and 
+mount it as a CD drive to the new VM.
 
 .. code-block:: sh
   
   mkisofs -joliet -rock -volid "cidata" -output seed.iso meta-data \
   user-data network-config
 
-**NOTE**: be careful while copying and pasting previous commands. Double
-quotes may need to be corrected. 
+.. note::
 
----------------
-Creating the VM
----------------
+   Be careful while copying and pasting the above commands. Double quotes may need 
+   to be corrected.
 
-Notes for this particular example, that may need to be modified in other
-setups:
+-------------
+Create the VM
+-------------
 
-* VM ID: in this example, VM ID used is 555.
+Note that the following settings apply to this particular example and may 
+require adjustment for other setups:
 
-* VM Storage: ``local`` volume is used. 
+* **VM ID**: ``555``.
+* **VM and .iso file storage**: The local volume (``directory`` type, 
+  mounted at ``/var/lib/vz``).
+* **VM resources**: Can be modified as needed.
 
-* ISO files storage: ``local`` volume is used for ``.iso`` file storage. In
-  this scenario ``local`` volume type is set to **directory**, abd attached to
-  ``/var/lib/vz``.
-
-* VM Resources: these parameters can be modified as needed.
-
-``seed.iso`` was previously created in directory ``/tmp/``. It's necessary to
-move it to ``/var/lib/vz/template/iso``
+The ``seed.iso`` file was previously created in the ``/tmp/`` directory. Move 
+it to ``/var/lib/vz/template/iso``:
 
 .. code-block:: sh
 
   mv /tmp/seed.iso /var/lib/vz/template/iso/
 
-On proxmox server:
+On the Proxmox server:
 
 .. code-block:: none
 
    ## Create VM, import disk and define boot order
-   qm create 555 --name vyos-1.3.0-cloudinit --memory 1024 --net0 virtio,bridge=vmbr0
-   qm importdisk 555 vyos-1.3.0-cloud-init-10G-qemu.qcow2 local
+   qm create 555 --name vyos-1.5.0-cloudinit --memory 1024 --net0 virtio,bridge=vmbr0
+   qm importdisk 555 vyos-1.5.0-cloud-init-10G-qemu.qcow2 local
    qm set 555 --virtio0 local:555/vm-555-disk-0.raw
    qm set 555 --boot order=virtio0
    
@@ -407,18 +391,15 @@ On proxmox server:
    qm set 555 --net1 virtio,bridge=vmbr0,firewall=1,tag=25
    qm set 555 --net2 virtio,bridge=vmbr0,firewall=1,tag=26
    
------------------------------
-Power on VM and verifications
------------------------------
+--------------------------
+Power on and verify the VM
+--------------------------
 
-From cli or GUI, power on VM, and after it boots, verify configuration
-
+Power on the VM using the CLI or GUI. After it boots, verify the configuration.
 
 ----------
 References
 ----------
-
-* VyOS `cloud-init-docs`_.
 
 * Cloud-init `network-config-docs`_.
 
