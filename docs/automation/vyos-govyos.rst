@@ -1,38 +1,35 @@
-:lastproofread: 2024-03-10
+:lastproofread: 2026-04-14
 
 .. _vyos-govyos:
 
 #######
-go-vyos
+Go-VyOS
 #######
 
-go-vyos is a Go library designed for interacting with VyOS devices through
-their REST API. This documentation is intended to guide you in using go-vyos for
-programmatic management of your VyOS devices.
+Go-VyOS is a Go library for configuring and managing VyOS devices through 
+their API.
 
-- `go-vyos Documentation & Source Code on GitHub
-  <https://github.com/ganawaj/go-vyos>`_
-  allows you to access and contribute to the library's code.
-- `go-vyos on pkg.go.dev
-  <https://pkg.go.dev/github.com/ganawaj/go-vyos@v0.1.0/vyos>`_
-  for detailed instructions on the installation, configuration, and
-  operation of the go-vyos library.
+- `GitHub repository <https://github.com/ganawaj/go-vyos>`_: Hosts the source 
+  code.
+- `Documentation <https://pkg.go.dev/github.com/ganawaj/go-vyos@v0.1.0/vyos>`_: 
+  Provides the complete API reference, including available types, functions, and 
+  methods.
 
 
 Installation
 ------------
 
-You can install go-vyos:
+To install Go-VyOS, run:
 
 .. code-block:: bash
 
     go install "github.com/ganawaj/go-vyos/vyos"
 
-Getting Started
+Getting started
 ---------------
 
-Importing and Disabling TLS Verification
--------------------------------------------------
+Import and disable TLS verification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. stop_vyoslinter
 
@@ -43,8 +40,8 @@ Importing and Disabling TLS Verification
 
 .. start_vyoslinter
 
-Initializing a VyDevice Object
-------------------------------
+Initialize a VyDevice object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -66,11 +63,11 @@ Initializing a VyDevice Object
       client = client.Insecure()
     }
 
-Using go-vyos
-----------------
+Use Go-VyOS
+-----------
 
-Configure, then Set
-^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then set
+^^^^^^^^^^^^^^^^^^^
 
 .. stop_vyoslinter
 
@@ -85,8 +82,8 @@ Configure, then Set
 
 .. start_vyoslinter
 
-Show a Single Object Value
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Show a single object value
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -98,8 +95,8 @@ Show a Single Object Value
     fmt.Println(out.Success)
     fmt.Printf("Data: %v\n", out.Data)
 
-Configure, then Show Object
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then show object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -111,8 +108,8 @@ Configure, then Show Object
     fmt.Println(out.Success)
     fmt.Printf("Data: %v\n", out.Data)
 
-Configure, then Show Multivalue Object
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then show multivalue object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -128,8 +125,8 @@ Configure, then Show Multivalue Object
     fmt.Println(out.Success)
 
 
-Configure, then Delete Object
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then delete object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -140,8 +137,8 @@ Configure, then Delete Object
 
     fmt.Println(out.Success)
 
-Configure, then Save
-^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then save
+^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -153,8 +150,8 @@ Configure, then Save
 
     fmt.Println(out.Success)
 
-Configure, then Save File
--------------------------
+Configure, then save file
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -166,8 +163,8 @@ Configure, then Save File
 
     fmt.Println(out.Success)
 
-Show Object
-^^^^^^^^^^^^^^
+Show object
+^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -179,8 +176,8 @@ Show Object
     fmt.Println(out.Success)
     fmt.Printf("Data: %v\n", out.Data)
 
-Generate Object
-^^^^^^^^^^^^^^^^
+Generate object
+^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -192,8 +189,8 @@ Generate Object
     fmt.Println(out.Success)
     fmt.Printf("Data: %v\n", out.Data)
 
-Reset Object
-^^^^^^^^^^^^^^
+Reset object
+^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -205,8 +202,8 @@ Reset Object
     fmt.Println(out.Success)
     fmt.Printf("Data: %v\n", out.Data)
 
-Configure, then Load File
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then load file
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 

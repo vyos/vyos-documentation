@@ -1,47 +1,46 @@
-:lastproofread: 2024-03-10
+:lastproofread: 2026-04-14
 
 .. _vyos-pyvyos:
 
 ######
-pyvyos
+PyVyOS
 ######
 
-pyvyos is a Python library designed for interacting with VyOS devices through
-their API. This documentation is intended to guide you in using pyvyos for
-programmatic management of your VyOS devices. 
+PyVyOS is a Python library for configuring and managing VyOS devices through 
+their API.
 
-- `pyvyos Documentation on Read the Docs 
-  <https://pyvyos.readthedocs.io/en/latest/>`_ provides detailed instructions
-  on the installation, configuration, and operation of the pyvyos library.
-- `pyvyos Source Code on GitHub <https://github.com/robertoberto/pyvyos>`_ 
-  allows you to access and contribute to the library's code.
-- `pyvyos on PyPI <https://pypi.org/project/pyvyos/>`_ for easy installation
-  via pip, the Python package installer. Execute `pip install pyvyos` in your
-  terminal to install.
+**Key resources:**
+
+- `Documentation <https://pyvyos.readthedocs.io/en/latest/>`_: Provides 
+  installation, configuration, and usage instructions.
+- `GitHub repository <https://github.com/robertoberto/pyvyos>`_: Hosts the 
+  source code.
+- `PyPI <https://pypi.org/project/pyvyos/>`_: Hosts distribution packages for 
+  installation via the Python package installer (``pip``).
 
 
 Installation
 ------------
 
-You can install pyvyos using pip:
+To install PyVyOS via ``pip``, run:
 
 .. code-block:: bash
 
     pip install pyvyos
 
-Getting Started
+Getting started
 ---------------
 
-Importing and Disabling Warnings for verify=False
--------------------------------------------------
+Import and disable warnings for verify=false
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
     import urllib3
     urllib3.disable_warnings()
 
-Using API Response Class
-------------------------
+Use API response class
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -52,8 +51,8 @@ Using API Response Class
         result: dict
         error: str
 
-Initializing a VyDevice Object
-------------------------------
+Initialize a VyDevice object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -70,11 +69,11 @@ Initializing a VyDevice Object
 
     device = VyDevice(hostname=hostname, apikey=apikey, port=port, protocol=protocol, verify=verify)
 
-Using pyvyos
-------------
+Use PyVyOS
+----------
 
-Configure, then Set
-^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then set
+^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -82,16 +81,16 @@ Configure, then Set
     if not response.error:
         print(response.result)
 
-Configure, then Show a Single Object Value
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then show a single object value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
     response = device.retrieve_return_values(path=["interfaces", "dummy", "dum1", "address"])
     print(response.result)
 
-Configure, then Show Object
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then show object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -99,37 +98,37 @@ Configure, then Show Object
     if not response.error:
         print(response.result)
 
-Configure, then Delete Object
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then delete object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
     response = device.configure_delete(path=["interfaces", "dummy", "dum1"])
 
-Configure, then Save
-^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then save
+^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
     response = device.config_file_save()
 
-Configure, then Save File
--------------------------
+Configure, then save file
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
     response = device.config_file_save(file="/config/test300.config")
 
-Show Object
-^^^^^^^^^^^^^^
+Show object
+^^^^^^^^^^^
 
 .. code-block:: none
 
     response = device.show(path=["system", "image"])
     print(response.result)
 
-Generate Object
-^^^^^^^^^^^^^^^^
+Generate object
+^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -137,8 +136,8 @@ Generate Object
     keyrand =  f'/tmp/key_{randstring}'
     response = device.generate(path=["ssh", "client-key", keyrand])
 
-Reset Object
-^^^^^^^^^^^^^^
+Reset object
+^^^^^^^^^^^^
 
 .. code-block:: none
 
@@ -146,8 +145,8 @@ Reset Object
     if not response.error:
         print(response.result)
 
-Configure, then Load File
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure, then load file
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: none
 
