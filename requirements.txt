@@ -6,3 +6,5 @@ sphinx-notfound-page==1.0.0
 lxml==5.1.0
 myst-parser==2.0.0
 sphinx_design==0.5.0
+sphinx-llms-txt==0.7.1
+sphinx-sitemap==2.9.0

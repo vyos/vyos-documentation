@@ -1,7 +1,36 @@
-User-agent: atlassian-bot
-Disallow: 
-
 User-agent: *
-Disallow: # Allow everything
+Allow: /
+
+# AI Training Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# AI Search/Retrieval
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
 
 Sitemap: https://docs.vyos.io/sitemap.xml

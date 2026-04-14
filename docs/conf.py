@@ -48,7 +48,9 @@ extensions = ['sphinx.ext.intersphinx',
               'autosectionlabel',
               'myst_parser',
               'sphinx_design',
-              'vyos'
+              'vyos',
+              'sphinx_llms_txt',
+              'sphinx_sitemap',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -110,6 +112,15 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
 
 html_extra_path = ['_html_extra']
+
+html_baseurl = 'https://docs.vyos.io/en/latest/'
+
+# sphinx-sitemap: baseurl already includes /en/latest/, so skip lang+version
+sitemap_url_scheme = '{link}'
+
+# sphinx-llms-txt: disable auto-generated llms.txt, keep curated one from
+# _html_extra; llms-full.txt is still auto-generated
+llms_txt_file = False
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
