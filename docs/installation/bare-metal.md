@@ -147,8 +147,11 @@ coreboot build 20171130
 BIOS version v4.6.4
 4080 MB ECC DRAM
 SeaBIOS (version rel-1.11.0.1-0-g90da88d)
+
 Press F10 key now for boot menu:
+
 Select boot device:
+
 1. ata0-0: KINGSTON SUV500MS120G ATA-11 Hard-Disk (111 GiBytes)
 2. USB MSC Drive Generic Flash Disk 8.07
 3. Payload [memtest]

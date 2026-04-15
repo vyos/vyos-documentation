@@ -140,7 +140,6 @@ The following example sets the hostname based on the instance identifier
 obtained from the EC2 metadata service.
 
 ```yaml
-
 #cloud-config
 write_files:
   - path: /opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script
@@ -149,11 +148,8 @@ write_files:
     content: |
       #!/bin/vbash
       source /opt/vyatta/etc/functions/script-template
-      hostname=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
-      configure
-      set system host-name $hostname
-      commit
-      exit
+      filename=/tmp/bgp_status_`date +"%Y_%m_%d_%I_%M_%p"`.log
+      run show ip bgp summary >> $filename
 ```
 
 ## NoCloud

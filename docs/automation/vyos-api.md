@@ -158,28 +158,6 @@ To get the whole configuration, pass an empty list to the `path` field
 curl --location --request POST 'https://vyos/retrieve' \
 --form data='{"op": "showConfig", "path": []}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
-
-response (shorted)
-{
-   "success": true,
-   "data": {
-      "interfaces": {
-            "ethernet": {
-               "eth0": {
-                  "address": "dhcp",
-                  "duplex": "auto",
-                  "hw-id": "50:00:00:01:00:00",
-                  "speed": "auto"
-               },
-               "eth1": {
-                  "duplex": "auto",
-                  "hw-id": "50:00:00:01:00:01",
-                  "speed": "auto"
-   ...
-   },
-   "error": null
-}
 ```
 
 To only get a part of the configuration, for example `system syslog`.
