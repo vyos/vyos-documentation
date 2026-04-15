@@ -123,14 +123,6 @@ html_extra_path = ['_html_extra']
 
 html_baseurl = 'https://docs.vyos.io/en/latest/'
 
-html_context = {
-    "display_github": True,
-    "github_user": "vyos",
-    "github_repo": "vyos-documentation",
-    "github_version": "current",
-    "conf_py_path": "/docs/",
-}
-
 # sphinx-sitemap: baseurl already includes /en/latest/, so skip lang+version
 sitemap_url_scheme = '{link}'
 
