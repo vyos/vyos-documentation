@@ -6,7 +6,7 @@ This chapter describe the possibilities of advanced system behavior.
 
 ## General
 
-```{cfgcmd} set system option ctrl-alt-delete <ignore | reboot | poweroff>
+```{cfgcmd} set system option ctrl-alt-delete \<ignore | reboot | poweroff\>
 
 Action which will be run once the ctrl-alt-del keystroke is received.
 ```
@@ -14,7 +14,7 @@ Action which will be run once the ctrl-alt-del keystroke is received.
 
 Automatically reboot system on kernel panic after 60 seconds.
 ```
-```{cfgcmd} set system option reboot-on-upgrade-failure <timeout>
+```{cfgcmd} set system option reboot-on-upgrade-failure \<timeout\>
 
 Automatically reboot after `timeout` minutes into the previous running
 image, that was used to perform the image upgrade.
@@ -63,7 +63,7 @@ Setting will only become active with the next reboot!
 
 :::
 ```
-```{cfgcmd} set system option kernel amd-pstate-driver <mode>
+```{cfgcmd} set system option kernel amd-pstate-driver \<mode\>
 
 Enables and configures p-state driver for modern AMD Ryzen and Epyc CPUs.
 
@@ -100,12 +100,12 @@ embedded serial console interfaces to speed up the boot process.
 ```
 ## HTTP client
 
-```{cfgcmd} set system option http-client source-address <address>
+```{cfgcmd} set system option http-client source-address \<address\>
 
 Several commands utilize cURL to initiate transfers. Configure the local
 source IPv4/IPv6 address used for all cURL operations.
 ```
-```{cfgcmd} set system option http-client source-interface <interface>
+```{cfgcmd} set system option http-client source-interface \<interface\>
 
 Several commands utilize curl to initiate transfers. Configure the local
 source interface used for all CURL operations.
@@ -115,12 +115,12 @@ source interface used for all CURL operations.
 time.
 :::
 ## SSH client
-```{cfgcmd} set system option ssh-client source-address <address>
+```{cfgcmd} set system option ssh-client source-address \<address\>
 
 Use the specified address on the local machine as the source address of the
 connection. Only useful on systems with more than one address.
 ```
-```{cfgcmd} set system option ssh-client source-interface <interface>
+```{cfgcmd} set system option ssh-client source-interface \<interface\>
 
 Use the address of the specified interface on the local machine as the
 source address of the connection.
@@ -129,7 +129,7 @@ source address of the connection.
 When starting a VyOS live system (the installation CD) the configured keyboard
 layout defaults to US. As this might not suite everyone's use case you can adjust
 the used keyboard layout on the system console.
-```{cfgcmd} set system option keyboard-layout <us | fr | de | fi | no | dk>
+```{cfgcmd} set system option keyboard-layout \<us | fr | de | fi | no | dk\>
 
 Change system keyboard layout to given language.
 
@@ -155,7 +155,7 @@ We now utilize `tuned` for dynamic resource balancing based on profiles.
 <https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v2.1.pdf>
 :::
 % start_vyoslinter
-```{cfgcmd} set system option performance < throughput | latency >
+```{cfgcmd} set system option performance \< throughput | latency \>
 
 Configure one of the predefined system performance profiles.
 

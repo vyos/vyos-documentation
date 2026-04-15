@@ -7,7 +7,7 @@ commands. The options for each are shown (the options for each command were
 displayed using the built-in help as described in the {ref}`cli`
 section and are omitted from the output here):
 
-```{opcmd} ping <destination>
+```{opcmd} ping \<destination\>
 
 Send ICMP echo requests to destination host. There are multiple options to
 
@@ -67,7 +67,7 @@ ping, including VRF support.
 
   vrf
 ```
-```{opcmd} traceroute <destination>
+```{opcmd} traceroute \<destination\>
 
 Trace path to target.
 
@@ -91,7 +91,7 @@ Trace path to target.
 ```
 ## Advanced Connectivity Tests
 
-```{opcmd} monitor traceroute <destination>
+```{opcmd} monitor traceroute \<destination\>
 
 However, another helper is available which combines ping and traceroute
 into a single tool. An example of its output is shown:
@@ -121,7 +121,7 @@ returned to the VyOS command prompt.
 ## IPv6 Topology Discovery
 IPv6 uses different techniques to discover its Neighbors/topology.
 ### Router Discovery
-```{opcmd} force ipv6-rd interface <interface> [address <ipv6-address>]
+```{opcmd} force ipv6-rd interface \<interface\> [address \<ipv6-address\>]
 
 Discover routers via eth0.
 
@@ -158,7 +158,7 @@ Example:
 ```
 ### Neighbor Discovery
 
-```{opcmd} force ipv6-nd interface <interface> address <ipv6-address>
+```{opcmd} force ipv6-nd interface \<interface\> address \<ipv6-address\>
 
 Example:
 

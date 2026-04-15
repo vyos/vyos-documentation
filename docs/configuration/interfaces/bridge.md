@@ -31,7 +31,7 @@ and must be explicitly enabled if required. See {ref}`stp` for details.
 :var1: br0
 ```
 ### Member interfaces
-```{cfgcmd} set interfaces bridge <interface> member interface <member>
+```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 
 **Configure an interface as a bridge member.**
 
@@ -46,7 +46,7 @@ Valid interface types are: :ref:`ethernet-interface`, :ref:`bond-interface`,
 Use tab completion to list interfaces that can be bridged.
 ```
 
-```{cfgcmd} set interfaces bridge <interface> member interface <member>
+```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 
 priority <priority>
 
@@ -70,7 +70,7 @@ A **lower** priority value means **higher** precedence in path selection.
 
 :abbr:`STP (Spanning Tree Protocol)` considers the port priority only if
 ```
-```{cfgcmd} set interfaces bridge <interface> member interface <member>
+```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 
    cost <cost>
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **path cost for a
@@ -86,7 +86,7 @@ path selection.
 ### Bridge options
 Configure how bridge interfaces maintain their {abbr}`FDB (Forwarding Database)`
 , react to topology changes, and optimize multicast data streams.
-```{cfgcmd} set interfaces bridge <interface> aging <time>
+```{cfgcmd} set interfaces bridge \<interface\> aging \<time\>
 
 **Configure the MAC address aging time for the bridge.**
 
@@ -96,7 +96,7 @@ address.
 
 The default value is 300 seconds.
 ```
-```{cfgcmd} set interfaces bridge <interface> max-age <time>
+```{cfgcmd} set interfaces bridge \<interface\> max-age \<time\>
 
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **max age timer for
 the bridge.**
@@ -108,7 +108,7 @@ If the bridge does not receive a :abbr:`BPDU (Bridge Protocol Data Unit)`
 within this period, it recalculates the path to the root bridge or initiates
 a new root bridge election.
 ```
-```{cfgcmd} set interfaces bridge <interface> igmp querier
+```{cfgcmd} set interfaces bridge \<interface\> igmp querier
 
 **Configure the bridge interface to act as the** :abbr:`IGMP (Internet Group
 Management Protocol)`/:abbr:`MLD (Multicast Listener Discovery)` **Querier.**
@@ -118,7 +118,7 @@ Management Protocol)` (IPv4) and :abbr:`MLD (Multicast Listener Discovery)`
 (IPv6) general queries to all connected hosts to identify active multicast
 listeners.
 ```
-```{cfgcmd} set interfaces bridge <interface> igmp snooping
+```{cfgcmd} set interfaces bridge \<interface\> igmp snooping
 
 **Configure the bridge interface to perform** :abbr:`IGMP (Internet Group
 Management Protocol)`/:abbr:`MLD (Multicast Listener Discovery)`
@@ -138,11 +138,11 @@ can crash the network.
 By default, {abbr}`STP (Spanning Tree Protocol)` is disabled on bridge interfaces.
 To activate loop prevention, you must explicitly enable the protocol and
 configure its parameters.
-```{cfgcmd} set interfaces bridge <interface> stp
+```{cfgcmd} set interfaces bridge \<interface\> stp
 
 Enable :abbr:`STP (Spanning Tree Protocol)` on the bridge interface.
 ```
-```{cfgcmd} set interfaces bridge <interface> forwarding-delay <delay>
+```{cfgcmd} set interfaces bridge \<interface\> forwarding-delay \<delay\>
 
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **delay, in seconds,
 for the bridge interface.**
@@ -155,7 +155,7 @@ the MAC addresses of connected devices (in the learning state).
 The default value is 15 seconds. The total time before forwarding begins is
 twice this value.
 ```
-```{cfgcmd} set interfaces bridge <interface> hello-time <interval>
+```{cfgcmd} set interfaces bridge \<interface\> hello-time \<interval\>
 
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **Hello advertisement
 interval, in seconds.**
@@ -170,7 +170,7 @@ The default value is 2 seconds.
 ```
 ### VLAN
 #### VLAN-aware bridges
-```{cfgcmd} set interfaces bridge <interface> enable-vlan
+```{cfgcmd} set interfaces bridge \<interface\> enable-vlan
 
 **Enable VLAN filtering (also known as VLAN awareness) on the bridge interface.**
 
@@ -185,7 +185,7 @@ Do not configure **vif 1** on a VLAN-aware bridge. The main bridge
    interface acts as VLAN 1 (the default native VLAN) and automatically
    handles all untagged traffic.
 ```
-```{cfgcmd} set interfaces bridge <interface> protocol <802.1ad | 802.1q>
+```{cfgcmd} set interfaces bridge \<interface\> protocol \<802.1ad | 802.1q\>
 
 **Configure the VLAN protocol (EtherType) for the bridge interface.**
 
@@ -200,7 +200,7 @@ The following options are available:
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: bridge
 ```
-```{cfgcmd} set interfaces bridge <interface> member interface <member>
+```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 
    native-vlan <vlan-id>
 **Configure the native VLAN ID for a specific member interface within a
@@ -218,7 +218,7 @@ Set the native VLAN ID to 2 for the member interface ``eth0``:
 
   set interfaces bridge br1 member interface eth0 native-vlan 2
 ```
-```{cfgcmd} set interfaces bridge <interface> member interface <member>
+```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 
    allowed-vlan <vlan-id>
 **Configure allowed VLAN IDs for a specific member interface within a
@@ -327,7 +327,7 @@ Show the status of member interfaces for all configured bridges.
   4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding
   priority 32 cost 100
 ```
-```{opcmd} show bridge <name> fdb
+```{opcmd} show bridge \<name\> fdb
 
 Show the :abbr:`FDB (Forwarding Database)` for the specified bridge.
 
@@ -354,7 +354,7 @@ Show the :abbr:`FDB (Forwarding Database)` for the specified bridge.
   01:00:5e:00:00:01 dev br0 self permanent
   33:33:ff:00:00:00 dev br0 self permanent
 ```
-```{opcmd} show bridge <name> mdb
+```{opcmd} show bridge \<name\> mdb
 
 Show the :abbr:`MDB (Multicast group Database)` for the specified bridge.
 
@@ -371,7 +371,7 @@ bridge.
   dev br0 port br0 grp ff02::1:ff08:1 temp vid 1
   dev br0 port br0 grp ff02::6a temp vid 1
 ```
-```{opcmd} show bridge <name> macs
+```{opcmd} show bridge \<name\> macs
 
 Show the learned :abbr:`MAC (Media Access Control)` address table for the
 specified bridge.

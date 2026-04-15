@@ -29,40 +29,40 @@ your CGNAT configuration.
 Define the inside and outside interfaces. The inside interface connects
 to the private network, while the outside interface connects to the public
 network.
-```{cfgcmd} set vpp nat cgnat interface inside <inside-interface>
+```{cfgcmd} set vpp nat cgnat interface inside \<inside-interface\>
 ```
 
-```{cfgcmd} set vpp nat cgnat interface outside <outside-interface>
+```{cfgcmd} set vpp nat cgnat interface outside \<outside-interface\>
 ```
 This is a mandatory step, as the CGNAT needs to know on which interfaces it
 needs to apply rules and operate.
 ## NAT Rules Configuration
 Next, you need to create the NAT rules.
-```{cfgcmd} set vpp nat cgnat rule <rule-number> description <description>
+```{cfgcmd} set vpp nat cgnat rule \<rule-number\> description \<description\>
 ```
 Add a description to the rule for easier identification.
-```{cfgcmd} set vpp nat cgnat rule <rule-number> inside-prefix <inside-prefix>
+```{cfgcmd} set vpp nat cgnat rule \<rule-number\> inside-prefix \<inside-prefix\>
 ```
 Specify the inside prefix (private IP range) to translate.
-```{cfgcmd} set vpp nat cgnat rule <rule-number> outside-prefix <outside-prefix>
+```{cfgcmd} set vpp nat cgnat rule \<rule-number\> outside-prefix \<outside-prefix\>
 ```
 Specify the outside prefix (public IP range) to use for translation.
 ## Exclude Rules Configuration
 CGNAT exclude rules are implemented as DET44 identity mappings. Matching
 traffic is excluded from CGNAT translation and keeps its original
 address/port tuple.
-```{cfgcmd} set vpp nat cgnat exclude rule <rule-number> description <description>
+```{cfgcmd} set vpp nat cgnat exclude rule \<rule-number\> description \<description\>
 ```
 Adds a description (stored as VPP identity-mapping tag) for easier
 identification.
-```{cfgcmd} set vpp nat cgnat exclude rule <rule-number> local-address <local-address>
+```{cfgcmd} set vpp nat cgnat exclude rule \<rule-number\> local-address \<local-address\>
 ```
 Sets the local IPv4 address that should be excluded from translation. This
 option is mandatory for each exclude rule.
-```{cfgcmd} set vpp nat cgnat exclude rule <rule-number> protocol <tcp|udp|icmp|all>
+```{cfgcmd} set vpp nat cgnat exclude rule \<rule-number\> protocol \<tcp|udp|icmp|all\>
 ```
 Matches a specific protocol. Default is `all`.
-```{cfgcmd} set vpp nat cgnat exclude rule <rule-number> local-port <1-65535>
+```{cfgcmd} set vpp nat cgnat exclude rule \<rule-number\> local-port \<1-65535\>
 ```
 Matches a specific local port (or ICMP identifier in case of ICMP protocol).
 :::{important}

@@ -76,12 +76,12 @@ Geneve header:
 :var1: gnv0
 ```
 ### Geneve options
-```{cfgcmd} set interfaces geneve gnv0 remote <address>
+```{cfgcmd} set interfaces geneve gnv0 remote \<address\>
 
 Configure the remote endpoint IP address for the Geneve tunnel.
 ```
 
-```{cfgcmd} set interfaces geneve gnv0 vni <vni>
+```{cfgcmd} set interfaces geneve gnv0 vni \<vni\>
 
 **Configure** :abbr:`VNI (Virtual Network Identifier)` **for the Geneve
 
@@ -98,7 +98,7 @@ example, to map packets with overlapping IP addresses to specific routing
 tables.
 ```
 
-```{cfgcmd} set interfaces gnv0 <interface> port <port>
+```{cfgcmd} set interfaces gnv0 \<interface\> port \<port\>
 
 **Configure the destination UDP port for the remote Geneve tunnel endpoint.**
 ```

@@ -1,4 +1,4 @@
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip adjust-mss <mss | clamp-mss-to-pmtu>
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip adjust-mss \<mss | clamp-mss-to-pmtu\>
 
 **Configure the** :abbr:`MSS (Maximum Segment Size)` **advertised in outgoing 
 TCP SYN packets on the specified interface.** 
@@ -19,7 +19,7 @@ The following options are available:
 
 
 ::::
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip arp-cache-timeout
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip arp-cache-timeout
 
 **Configure how long an ARP entry remains valid after learning an IP-to-MAC 
 address mapping on this interface.** 
@@ -36,7 +36,7 @@ set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }}
 
 ```
 ::::
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip disable-arp-filter
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip disable-arp-filter
 
 **Configure ARP filtering on this interface.**
 
@@ -57,7 +57,7 @@ set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }}
 
 ```
 ::::
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip disable-forwarding
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip disable-forwarding
 
 **Configure the interface for host or router behavior.**
 
@@ -71,7 +71,7 @@ set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }}
 
 ```
 ::::
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip enable-directed-broadcast
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip enable-directed-broadcast
 
 **Configure whether to forward IP-directed broadcast packets received on this 
 interface.** 
@@ -88,7 +88,7 @@ set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }}
 
 ```
 ::::
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip enable-arp-accept
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip enable-arp-accept
 
 **Configure how to process gratuitous ARPs on this interface.**
 
@@ -107,7 +107,7 @@ set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }}
 
 ```
 ::::
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip enable-arp-announce
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip enable-arp-announce
 
 **Configure the source IP selection for ARP requests on this interface.**
 
@@ -127,7 +127,7 @@ set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }}
 
 ```
 ::::
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip enable-arp-ignore
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip enable-arp-ignore
 
 **Configure which ARP requests will be ignored on this interface.**
 
@@ -144,7 +144,7 @@ set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }}
 
 ```
 ::::
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip enable-proxy-arp
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip enable-proxy-arp
 
 **Configure proxy ARP on this interface.**
 
@@ -161,7 +161,7 @@ set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }}
 
 ```
 ::::
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip proxy-arp-pvlan
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip proxy-arp-pvlan
 
 **Configure local proxy ARP on the interface.**
 
@@ -194,7 +194,7 @@ Local proxy ARP is also known as:
 - MAC-Forced Forwarding (Ericsson).
 
 ::::
-::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip source-validation <strict | loose | disable>
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip source-validation \<strict | loose | disable\>
 
 **Configure source IP address validation using** :abbr:`RPF (Reverse Path 
 Forwarding)` **on this interface, as specified in** :rfc:`3704`. 

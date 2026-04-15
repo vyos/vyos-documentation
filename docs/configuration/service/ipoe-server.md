@@ -47,7 +47,7 @@ set service ipoe-server interface eth1 network 'vlan'
 set service ipoe-server interface eth1 vlan '100-200'
 ```
 
-```{cfgcmd} set service ipoe-server authentication interface <interface> mac <MAC>
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\>
 
     Creates local IPoE user with username=**<interface>** and
 
@@ -56,7 +56,7 @@ set service ipoe-server interface eth1 vlan '100-200'
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication mode <local | radius>
+```{cfgcmd} set service ipoe-server authentication mode \<local | radius\>
 
 Set authentication backend. The configured authentication backend is used
 
@@ -73,7 +73,7 @@ for all queries.
 ```
 
 
-```{cfgcmd} set service ipoe-server client-ip-pool <POOL-NAME> range <x.x.x.x-x.x.x.x | x.x.x.x/x>
+```{cfgcmd} set service ipoe-server client-ip-pool \<POOL-NAME\> range \<x.x.x.x-x.x.x.x | x.x.x.x/x\>
 
 Use this command to define the first IP address of a pool of
 
@@ -85,13 +85,13 @@ used there is possibility to set host/netmask.
 ```
 
 
-```{cfgcmd} set service ipoe-server default-pool <POOL-NAME>
+```{cfgcmd} set service ipoe-server default-pool \<POOL-NAME\>
 
 Use this command to define default address pool name.
 ```
 
 
-```{cfgcmd} set service ipoe-server gateway-address <x.x.x.x/x>
+```{cfgcmd} set service ipoe-server gateway-address \<x.x.x.x/x\>
 
 Specifies address to be used as server ip address if radius can assign
 
@@ -103,7 +103,7 @@ multiple such options.
 ```
 
 
-```{cfgcmd} set service ipoe-server interface <interface> mode <l2 | l3>
+```{cfgcmd} set service ipoe-server interface \<interface\> mode \<l2 | l3\>
 
  Specifies the client connectivity mode.
 
@@ -116,7 +116,7 @@ multiple such options.
 ```
 
 
-```{cfgcmd} set service ipoe-server interface <interface> network <shared | vlan>
+```{cfgcmd} set service ipoe-server interface \<interface\> network \<shared | vlan\>
 
 Specify where interface is shared by multiple users or it is vlan-per-user.
 
@@ -156,7 +156,7 @@ set service ipoe-server authentication mode radius
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius server <server> key <secret>
+```{cfgcmd} set service ipoe-server authentication radius server \<server\> key \<secret\>
 
 Configure RADIUS `<server>` and its required shared `<secret>` for
 
@@ -184,7 +184,7 @@ queries, make sure to add your VyOS router to the allowed client list.
 If you are using OSPF as IGP, always the closest interface connected to the
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
-```{cfgcmd} set service ipoe-server authentication radius source-address <address>
+```{cfgcmd} set service ipoe-server authentication radius source-address \<address\>
 
 Source IPv4 address used in all RADIUS server queires.
 ```
@@ -195,31 +195,31 @@ Best practice would be a loopback or dummy interface.
 
 
 ### RADIUS advanced options
-```{cfgcmd} set service ipoe-server authentication radius server <server> port <port>
+```{cfgcmd} set service ipoe-server authentication radius server \<server\> port \<port\>
 
 Configure RADIUS `<server>` and its required port for authentication requests.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius server <server> fail-time <time>
+```{cfgcmd} set service ipoe-server authentication radius server \<server\> fail-time \<time\>
 
 Mark RADIUS server as offline for this given `<time>` in seconds.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius server <server> disable
+```{cfgcmd} set service ipoe-server authentication radius server \<server\> disable
 
 Temporary disable this RADIUS server.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius acct-timeout <timeout>
+```{cfgcmd} set service ipoe-server authentication radius acct-timeout \<timeout\>
 
 Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius dynamic-author server <address>
+```{cfgcmd} set service ipoe-server authentication radius dynamic-author server \<address\>
 
 Specifies IP address for Dynamic Authorization Extension server (DM/CoA).
 
@@ -227,31 +227,31 @@ This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius dynamic-author port <port>
+```{cfgcmd} set service ipoe-server authentication radius dynamic-author port \<port\>
 
 UDP port for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius dynamic-author key <secret>
+```{cfgcmd} set service ipoe-server authentication radius dynamic-author key \<secret\>
 
 Secret for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius max-try <number>
+```{cfgcmd} set service ipoe-server authentication radius max-try \<number\>
 
 Maximum number of tries to send Access-Request/Accounting-Request queries
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius timeout <timeout>
+```{cfgcmd} set service ipoe-server authentication radius timeout \<timeout\>
 
 Timeout to wait response from server (seconds)
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius nas-identifier <identifier>
+```{cfgcmd} set service ipoe-server authentication radius nas-identifier \<identifier\>
 
 Value to send to RADIUS server in NAS-Identifier attribute and to be matched
 
@@ -259,7 +259,7 @@ in DM/CoA requests.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius nas-ip-address <address>
+```{cfgcmd} set service ipoe-server authentication radius nas-ip-address \<address\>
 
 Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
 
@@ -267,13 +267,13 @@ in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius source-address <address>
+```{cfgcmd} set service ipoe-server authentication radius source-address \<address\>
 
 Source IPv4 address used in all RADIUS server queires.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication radius rate-limit attribute <attribute>
+```{cfgcmd} set service ipoe-server authentication radius rate-limit attribute \<attribute\>
 
 Specifies which RADIUS server attribute contains the rate limit information.
 
@@ -332,7 +332,7 @@ Define it in your RADIUS server.
 
 
 ## IPv6
-```{cfgcmd} set service ipoe-server client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
+```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\>
 
  mask <number-of-bits>
 
@@ -347,7 +347,7 @@ bit long, the default value is 64.
 ```
 
 
-```{cfgcmd} set service ipoe-server client-ipv6-pool <IPv6-POOL-NAME> delegate <address>
+```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\>
 
  delegation-prefix <number-of-bits>
 
@@ -364,7 +364,7 @@ delegation prefix can be set from 32 to 64 bit long.
 ```
 
 
-```{cfgcmd} set service ipoe-server default-ipv6-pool <IPv6-POOL-NAME>
+```{cfgcmd} set service ipoe-server default-ipv6-pool \<IPv6-POOL-NAME\>
 
 Use this command to define default IPv6 address pool name.
 ```
@@ -380,25 +380,25 @@ set service ipoe-server default-ipv6-pool IPv6-POOL
 
 ```
 ## Scripting
-```{cfgcmd} set service ipoe-server extended-scripts on-change <path_to_script>
+```{cfgcmd} set service ipoe-server extended-scripts on-change \<path_to_script\>
 
 Script to run when session interface changed by RADIUS CoA handling
 ```
 
 
-```{cfgcmd} set service ipoe-server extended-scripts on-down <path_to_script>
+```{cfgcmd} set service ipoe-server extended-scripts on-down \<path_to_script\>
 
 Script to run when session interface going to terminate
 ```
 
 
-```{cfgcmd} set service ipoe-server extended-scripts on-pre-up <path_to_script>
+```{cfgcmd} set service ipoe-server extended-scripts on-pre-up \<path_to_script\>
 
 Script to run before session interface comes up
 ```
 
 
-```{cfgcmd} set service ipoe-server extended-scripts on-up <path_to_script>
+```{cfgcmd} set service ipoe-server extended-scripts on-up \<path_to_script\>
 
 Script to run when session interface is completely configured and started
 ```
@@ -406,7 +406,7 @@ Script to run when session interface is completely configured and started
 
 
 ### Authentication Advanced Options
-```{cfgcmd} set service ipoe-server authentication interface <interface> mac <MAC> vlan
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> vlan
 
  <vlan-id>
 
@@ -415,7 +415,7 @@ VLAN monitor for automatic creation of VLAN interfaces for specific user on spec
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication interface <interface> mac <MAC> rate-limit
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit
 
  download <bandwidth>
 
@@ -424,7 +424,7 @@ Download bandwidth limit in kbit/s for user on interface `<interface>`.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication interface <interface> mac <MAC> rate-limit
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit
 
  upload <bandwidth>
 
@@ -432,12 +432,12 @@ Download bandwidth limit in kbit/s for user on interface `<interface>`.
 Upload bandwidth limit in kbit/s for for user on interface `<interface>`.
 ```
 ### Client IP Pool Advanced Options
-```{cfgcmd} set service ipoe-server client-ip-pool <POOL-NAME> next-pool <NEXT-POOL-NAME>
+```{cfgcmd} set service ipoe-server client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
 
 Use this command to define the next address pool name.
 ```
 ### Advanced Interface Options
-```{cfgcmd} set service ipoe-server interface <interface> client-subnet <x.x.x.x/x>
+```{cfgcmd} set service ipoe-server interface \<interface\> client-subnet \<x.x.x.x/x\>
 
 Specify local range of ip address to give to dhcp clients. First IP in range is router IP.
 
@@ -445,31 +445,31 @@ If you need more customization use `client-ip-pool`
 ```
 
 
-```{cfgcmd} set service ipoe-server interface <interface> external-dhcp dhcp-relay <x.x.x.x>
+```{cfgcmd} set service ipoe-server interface \<interface\> external-dhcp dhcp-relay \<x.x.x.x\>
 
 Specify DHCPv4 relay IP address to pass requests to. If specified giaddr is also needed.
 ```
 
 
-```{cfgcmd} set service ipoe-server interface <interface> external-dhcp giaddr <x.x.x.x>
+```{cfgcmd} set service ipoe-server interface \<interface\> external-dhcp giaddr \<x.x.x.x\>
 
 Specifies relay agent IP addre
 ```
 ### Global Advanced options
 
-```{cfgcmd} set service ipoe-server description <description>
+```{cfgcmd} set service ipoe-server description \<description\>
 
 Set description.
 ```
-```{cfgcmd} set service ipoe-server limits burst <value>
+```{cfgcmd} set service ipoe-server limits burst \<value\>
 
 Burst count
 ```
-```{cfgcmd} set service ipoe-server limits connection-limit <value>
+```{cfgcmd} set service ipoe-server limits connection-limit \<value\>
 
 Acceptable rate of connections (e.g. 1/min, 60/sec)
 ```
-```{cfgcmd} set service ipoe-server limits timeout <value>
+```{cfgcmd} set service ipoe-server limits timeout \<value\>
 
 Timeout in seconds
 ```
@@ -477,13 +477,13 @@ Timeout in seconds
 
 Maximum number of concurrent session start attempts
 ```
-```{cfgcmd} set service ipoe-server name-server <address>
+```{cfgcmd} set service ipoe-server name-server \<address\>
 
 Connected client should use `<address>` as their DNS server. This
 command accepts both IPv4 and IPv6 addresses. Up to two nameservers
 can be configured for IPv4, up to three for IPv6.
 ```
-```{cfgcmd} set service ipoe-server shaper fwmark <1-2147483647>
+```{cfgcmd} set service ipoe-server shaper fwmark \<1-2147483647\>
 
 Match firewall mark value
 ```

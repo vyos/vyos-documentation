@@ -27,7 +27,7 @@ set service pppoe-server gateway-address 192.168.255.1
 set service pppoe-server interface eth0
 ```
 
-```{cfgcmd} set service pppoe-server access-concentrator <name>
+```{cfgcmd} set service pppoe-server access-concentrator \<name\>
 
    Use this command to set a name for this PPPoE-server access
 
@@ -36,7 +36,7 @@ set service pppoe-server interface eth0
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication mode <local | radius>
+```{cfgcmd} set service pppoe-server authentication mode \<local | radius\>
 
 Set authentication backend. The configured authentication backend is used
 
@@ -64,7 +64,7 @@ will be set to `<pass>`.
 ```
 
 
-```{cfgcmd} set service pppoe-server client-ip-pool <POOL-NAME>
+```{cfgcmd} set service pppoe-server client-ip-pool \<POOL-NAME\>
 
 range <x.x.x.x-x.x.x.x | x.x.x.x/x>
 
@@ -79,13 +79,13 @@ used there is possibility to set host/netmask.
 ```
 
 
-```{cfgcmd} set service pppoe-server default-pool <POOL-NAME>
+```{cfgcmd} set service pppoe-server default-pool \<POOL-NAME\>
 
 Use this command to define default address pool name.
 ```
 
 
-```{cfgcmd} set service pppoe-server interface <interface>
+```{cfgcmd} set service pppoe-server interface \<interface\>
 
 Use this command to define the interface the PPPoE server will use to
 
@@ -93,7 +93,7 @@ listen for PPPoE clients.
 ```
 
 
-```{cfgcmd} set service pppoe-server gateway-address <address>
+```{cfgcmd} set service pppoe-server gateway-address \<address\>
 
 Specifies single `<gateway>` IP address to be used as local address of PPP
 
@@ -351,7 +351,7 @@ characters, otherwise the interface won't be renamed.
 
 
 ## Automatic VLAN Creation
-```{cfgcmd} set service pppoe-server interface <interface> vlan <id | range>
+```{cfgcmd} set service pppoe-server interface \<interface\> vlan \<id | range\>
 
 VLAN's can be created by Accel-ppp on the fly via the use of a Kernel module
 
@@ -445,7 +445,7 @@ dictionaries in */usr/share/accel-ppp/radius*.
 
 
 ## Load Balancing
-```{cfgcmd} set service pppoe-server pado-delay <number-of-ms>
+```{cfgcmd} set service pppoe-server pado-delay \<number-of-ms\>
 
 sessions <number-of-sessions>
 
@@ -493,7 +493,7 @@ Specifies IPv6 negotiation preference.
 ```
 
 
-```{cfgcmd} set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME>
+```{cfgcmd} set service pppoe-server client-ipv6-pool \<IPv6-POOL-NAME\>
 
  prefix <address> mask <number-of-bits>
 
@@ -508,7 +508,7 @@ bit long, the default value is 64.
 ```
 
 
-```{cfgcmd} set service pppoe-server client-ipv6-pool <IPv6-POOL-NAME>
+```{cfgcmd} set service pppoe-server client-ipv6-pool \<IPv6-POOL-NAME\>
 
  delegate <address> delegation-prefix <number-of-bits>
 
@@ -525,7 +525,7 @@ delegation prefix can be set from 32 to 64 bit long.
 ```
 
 
-```{cfgcmd} set service pppoe-server default-ipv6-pool <IPv6-POOL-NAME>
+```{cfgcmd} set service pppoe-server default-ipv6-pool \<IPv6-POOL-NAME\>
 
 Use this command to define default IPv6 address pool name.
 ```
@@ -582,25 +582,25 @@ Specifies peer interface identifier for IPv6. By default is fixed.
 * **calling-sid** - Calculate interface identifier from calling-station-id.
 ```
 ## Scripting
-```{cfgcmd} set service pppoe-server extended-scripts on-change <path_to_script>
+```{cfgcmd} set service pppoe-server extended-scripts on-change \<path_to_script\>
 
 Script to run when session interface changed by RADIUS CoA handling
 ```
 
 
-```{cfgcmd} set service pppoe-server extended-scripts on-down <path_to_script>
+```{cfgcmd} set service pppoe-server extended-scripts on-down \<path_to_script\>
 
 Script to run when session interface going to terminate
 ```
 
 
-```{cfgcmd} set service pppoe-server extended-scripts on-pre-up <path_to_script>
+```{cfgcmd} set service pppoe-server extended-scripts on-pre-up \<path_to_script\>
 
 Script to run before session interface comes up
 ```
 
 
-```{cfgcmd} set service pppoe-server extended-scripts on-up <path_to_script>
+```{cfgcmd} set service pppoe-server extended-scripts on-up \<path_to_script\>
 
 Script to run when session interface is completely configured and started
 ```
@@ -636,7 +636,7 @@ Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```
 ### Client IP Pool Advanced Options
-```{cfgcmd} set service pppoe-server client-ip-pool <POOL-NAME>
+```{cfgcmd} set service pppoe-server client-ip-pool \<POOL-NAME\>
 
 next-pool <NEXT-POOL-NAME>
 
@@ -652,7 +652,7 @@ CCP is enabled by default.
 ```
 
 
-```{cfgcmd} set service pppoe-server ppp-options interface-cache <number>
+```{cfgcmd} set service pppoe-server ppp-options interface-cache \<number\>
 
 Specifies number of interfaces to keep in cache. It means that don’t
 
@@ -684,7 +684,7 @@ Specifies IPv4 negotiation preference.
 ```
 
 
-```{cfgcmd} set service pppoe-server ppp-options lcp-echo-failure <number>
+```{cfgcmd} set service pppoe-server ppp-options lcp-echo-failure \<number\>
 
 Defines the maximum `<number>` of unanswered echo requests. Upon reaching the
 
@@ -692,7 +692,7 @@ value `<number>`, the session will be reset. Default value is **3**.
 ```
 
 
-```{cfgcmd} set service pppoe-server ppp-options lcp-echo-interval <interval>
+```{cfgcmd} set service pppoe-server ppp-options lcp-echo-interval \<interval\>
 
 If this option is specified and is greater than 0, then the PPP module will
 
@@ -712,7 +712,7 @@ is not used. Default value is **0**.
 ```
 
 
-```{cfgcmd} set service pppoe-server ppp-options min-mtu <number>
+```{cfgcmd} set service pppoe-server ppp-options min-mtu \<number\>
 
 Defines minimum acceptable MTU. If client will try to negotiate less then
 
@@ -722,7 +722,7 @@ Default value is **100**.
 ```
 
 
-```{cfgcmd} set service pppoe-server ppp-options mppe <require | prefer | deny>
+```{cfgcmd} set service pppoe-server ppp-options mppe \<require | prefer | deny\>
 
 Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotiation
 
@@ -744,30 +744,30 @@ attribute.
 ```
 
 
-```{cfgcmd} set service pppoe-server ppp-options mru <number>
+```{cfgcmd} set service pppoe-server ppp-options mru \<number\>
 
 Defines preferred MRU. By default is not defined.
 ```
 ### Global Advanced options
-```{cfgcmd} set service pppoe-server description <description>
+```{cfgcmd} set service pppoe-server description \<description\>
 
 Set description.
 ```
 
 
-```{cfgcmd} set service pppoe-server limits burst <value>
+```{cfgcmd} set service pppoe-server limits burst \<value\>
 
 Burst count
 ```
 
 
-```{cfgcmd} set service pppoe-server limits connection-limit <value>
+```{cfgcmd} set service pppoe-server limits connection-limit \<value\>
 
 Acceptable rate of connections (e.g. 1/min, 60/sec)
 ```
 
 
-```{cfgcmd} set service pppoe-server limits timeout <value>
+```{cfgcmd} set service pppoe-server limits timeout \<value\>
 
 Timeout in seconds
 ```
@@ -785,7 +785,7 @@ Maximum number of concurrent session start attempts
 ```
 
 
-```{cfgcmd} set service pppoe-server name-server <address>
+```{cfgcmd} set service pppoe-server name-server \<address\>
 
 Connected client should use `<address>` as their DNS server. This
 
@@ -795,7 +795,7 @@ can be configured for IPv4, up to three for IPv6.
 ```
 
 
-```{cfgcmd} set service pppoe-server service-name <names>
+```{cfgcmd} set service pppoe-server service-name \<names\>
 
 Specifies Service-Name to respond. If absent any Service-Name is
 
@@ -819,7 +819,7 @@ its first session and can then authentication again.
 ```
 
 
-```{cfgcmd} set service pppoe-server shaper fwmark <1-2147483647>
+```{cfgcmd} set service pppoe-server shaper fwmark \<1-2147483647\>
 
 Match firewall mark value
 ```
@@ -831,7 +831,7 @@ Enable SNMP
 ```
 
 
-```{cfgcmd} set service pppoe-server wins-server <address>
+```{cfgcmd} set service pppoe-server wins-server \<address\>
 
 Windows Internet Name Service (WINS) servers propagated to client
 ```

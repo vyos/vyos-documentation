@@ -102,7 +102,7 @@ unsets both.
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing maximum-label-depth <1-16>
+```{cfgcmd} set protocols isis segment-routing maximum-label-depth \<1-16\>
 
 Set the Maximum Stack Depth supported by the router. The value depend of
 
@@ -110,7 +110,7 @@ the MPLS dataplane.
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing prefix <address> index value
+```{cfgcmd} set protocols isis segment-routing prefix \<address\> index value
 
 <0-65535>
 
@@ -123,7 +123,7 @@ indentify it
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing prefix <address> index
+```{cfgcmd} set protocols isis segment-routing prefix \<address\> index
 
 <no-php-flag | explicit-null| n-flag-clear>
 
@@ -199,19 +199,19 @@ store label in the MPLS FIB for Prefix SID. Note that the block size may
 not exceed 65535.Segment Routing Local Block, The negative command always
 unsets both.
 ```
-```{cfgcmd} set protocols ospf segment-routing maximum-label-depth <1-16>
+```{cfgcmd} set protocols ospf segment-routing maximum-label-depth \<1-16\>
 
 Set the Maximum Stack Depth supported by the router. The value depend of
 the MPLS dataplane.
 ```
-```{cfgcmd} set protocols ospf segment-routing prefix <address> index value
+```{cfgcmd} set protocols ospf segment-routing prefix \<address\> index value
 
   <0-65535>
 A segment ID that contains an IP address prefix calculated by an IGP in the
 service provider core network. Prefix SIDs are globally unique, this value
 indentify it
 ```
-```{cfgcmd} set protocols ospf segment-routing prefix <address> index
+```{cfgcmd} set protocols ospf segment-routing prefix \<address\> index
 
    <no-php-flag | explicit-null| n-flag-clear>
 this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO

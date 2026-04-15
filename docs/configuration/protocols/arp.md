@@ -16,7 +16,7 @@ implemented.
 
 ## Configure
 
-```{cfgcmd} set protocols static arp interface <interface> address <host>
+```{cfgcmd} set protocols static arp interface \<interface\> address \<host\>
 
    mac <mac>
 

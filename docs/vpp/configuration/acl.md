@@ -384,7 +384,7 @@ Interface    Input ACLs    Output ACLs
 eth1         WEB-SERVER
 ```
 View specific IP ACL by tag name:
-```{opcmd} show vpp acl ip tag-name <tag-name>
+```{opcmd} show vpp acl ip tag-name \<tag-name\>
 ```
 Example:
 
@@ -416,7 +416,7 @@ Interface    ACL
 eth0         VENDOR-FILTER
 ```
 View specific MAC ACL by tag name:
-```{opcmd} show vpp acl mac tag-name <tag-name>
+```{opcmd} show vpp acl mac tag-name \<tag-name\>
 ```
 Example:
 

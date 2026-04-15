@@ -61,7 +61,7 @@ The following steps are required to create a zone-based firewall:
 3. Apply the rule-set to the zones
 ### Define a Zone
 To define a zone, set up either one with interfaces or as the local zone.
-```{cfgcmd} set firewall zone <name> interface <interface>
+```{cfgcmd} set firewall zone \<name\> interface \<interface\>
 
 Assign interfaces as a member of a zone.
 
@@ -74,7 +74,7 @@ Assign interfaces as a member of a zone.
      interfaces in the same zone follows the intra-zone-filtering
      policy (allowed by default).
 ```
-```{cfgcmd} set firewall zone <name> local-zone
+```{cfgcmd} set firewall zone \<name\> local-zone
 
 Define the zone as the local zone for traffic that originates from or is
 destined to the router itself.
@@ -86,17 +86,17 @@ destined to the router itself.
 :::
    * You cannot have multiple local zones
 ```
-```{cfgcmd} set firewall zone <name> default-action [drop | reject]
+```{cfgcmd} set firewall zone \<name\> default-action [drop | reject]
 
 Modify the zone default-action, which applies to traffic destined to this
 zone that does not match any of the source zone rulesets applied.
 ```
-```{cfgcmd} set firewall zone <name> default-log
+```{cfgcmd} set firewall zone \<name\> default-log
 
 Enable logging of packets that match this zone's default-action (disabled
 by default).
 ```
-```{cfgcmd} set firewall zone <name> description
+```{cfgcmd} set firewall zone \<name\> description
 
 Add a meaningful description.
 ```
@@ -116,11 +116,11 @@ identifiable.
 After you define a rule-set, apply it to the source and destination zones.
 The configuration syntax anchors to the destination zone, with each of the
 source zone rule-sets listed against the destination.
-```{cfgcmd} set firewall zone <Destination Zone> from <Source Zone>
+```{cfgcmd} set firewall zone \<Destination Zone\> from \<Source Zone\>
 
    firewall name <ipv4-rule-set-name>
 ```
-```{cfgcmd} set firewall zone <Destination Zone> from <Source Zone>
+```{cfgcmd} set firewall zone \<Destination Zone\> from \<Source Zone\>
 
    firewall ipv6-name <ipv6-rule-set-name>
 ```
@@ -136,11 +136,11 @@ or when you require a complex set of default policies, you can apply an
 optional default rule-set. The default rule-set applies to all zones that do
 not have a rule-set configured as defined in
 {ref}`IPv4<configuration/firewall/zone:Applying a Rule-Set to a Zone>`
-```{cfgcmd} set firewall zone <Destination Zone> default-firewall name
+```{cfgcmd} set firewall zone \<Destination Zone\> default-firewall name
 
    <ipv4-rule-set-name>
 ```
-```{cfgcmd} set firewall zone <Destination Zone> default-firewall ipv6-name
+```{cfgcmd} set firewall zone \<Destination Zone\> default-firewall ipv6-name
 
    <ipv6-rule-set-name>
 ```
@@ -162,7 +162,7 @@ Display a basic summary of the zone configuration.
   WAN     eth3          LAN          LAN-WAN-v4
   eth0          LOCAL        LOCAL-WAN-v4
 ```
-```{opcmd} show firewall zone-policy zone <zone>
+```{opcmd} show firewall zone-policy zone \<zone\>
 
 Display a basic summary of a particular zone.
 

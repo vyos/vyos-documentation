@@ -14,7 +14,7 @@ This section describes configuring DNS on the system, namely:
 
 ## DNS name servers
 
-```{cfgcmd} set system name-server <address>
+```{cfgcmd} set system name-server \<address\>
 
 Use this command to specify a DNS server for the system to be used
 
@@ -37,7 +37,7 @@ set system name-server 2a00:f826:8:2::195
 ## Domain search order
 In order for the system to use and complete unqualified host names, a
 list can be defined which will be used for domain searches.
-```{cfgcmd} set system domain-search <domain>
+```{cfgcmd} set system domain-search \<domain\>
 
 Use this command to define domains, one at a time, so that the system
 

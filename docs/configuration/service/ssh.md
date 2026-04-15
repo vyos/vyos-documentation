@@ -36,7 +36,7 @@ SSH {ref}`ssh_key_based_authentication`
 
 ## Configuration
 
-```{cfgcmd} set service ssh port <port>
+```{cfgcmd} set service ssh port \<port\>
 
   Enabling SSH only requires you to specify the port ``<port>`` you want SSH to
 
@@ -45,7 +45,7 @@ SSH {ref}`ssh_key_based_authentication`
 ```
 
 
-```{cfgcmd} set service ssh listen-address <address>
+```{cfgcmd} set service ssh listen-address \<address\>
 
 Specify IPv4/IPv6 listen address of SSH server. Multiple addresses can be
 
@@ -53,7 +53,7 @@ defined.
 ```
 
 
-```{cfgcmd} set service ssh cipher <cipher>
+```{cfgcmd} set service ssh cipher \<cipher\>
 
 Define allowed ciphers used for the SSH connection. A number of allowed
 
@@ -140,7 +140,7 @@ time when reverse lookup is not possible.
 ```
 
 
-```{cfgcmd} set service ssh mac <mac>
+```{cfgcmd} set service ssh mac \<mac\>
 
 Specifies the available :abbr:`MAC (Message Authentication Code)` algorithms.
 
@@ -169,7 +169,7 @@ List of supported MACs: ``hmac-md5``, ``hmac-md5-96``, ``hmac-ripemd160``,
 ```
 
 
-```{cfgcmd} set service ssh access-control <allow | deny> <group | user> <name>
+```{cfgcmd} set service ssh access-control \<allow | deny\> \<group | user\> \<name\>
 
 Add access-control directive to allow or deny users and groups. Directives
 
@@ -179,13 +179,13 @@ are processed in the following order of precedence: ``deny-users``,
 ```
 
 
-```{cfgcmd} set service ssh client-keepalive-interval <interval>
+```{cfgcmd} set service ssh client-keepalive-interval \<interval\>
 
 Specify timeout interval for keepalive message in seconds.
 ```
 
 
-```{cfgcmd} set service ssh key-exchange <kex>
+```{cfgcmd} set service ssh key-exchange \<kex\>
 
 Specify allowed :abbr:`KEX (Key Exchange)` algorithms.
 
@@ -206,19 +206,19 @@ List of supported algorithms: ``diffie-hellman-group1-sha1``,
 ```
 
 
-```{cfgcmd} set service ssh loglevel <quiet | fatal | error | info | verbose>
+```{cfgcmd} set service ssh loglevel \<quiet | fatal | error | info | verbose\>
 
 Set the ``sshd`` log level. The default is ``info``.
 ```
 
 
-```{cfgcmd} set service ssh vrf <name>
+```{cfgcmd} set service ssh vrf \<name\>
 
 Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 ```
 
 
-```{cfgcmd} set service ssh pubkey-accepted-algorithm <name>
+```{cfgcmd} set service ssh pubkey-accepted-algorithm \<name\>
 
 Specifies the signature algorithms that will be accepted for public key
 
@@ -253,7 +253,7 @@ List of supported algorithms: ``ssh-ed25519``,
 ```
 
 
-```{cfgcmd} set service ssh trusted-user-ca <name>
+```{cfgcmd} set service ssh trusted-user-ca \<name\>
 
 Specify the name of the OpenSSH key-pair that acts as certificate authority
 
@@ -304,21 +304,21 @@ offending IP is blocked. Offenders are unblocked after a set interval.
 
 Allow ``ssh`` dynamic-protection.
 ```
-```{cfgcmd} set service ssh dynamic-protection allow-from <address | prefix>
+```{cfgcmd} set service ssh dynamic-protection allow-from \<address | prefix\>
 
 Whitelist of addresses and networks. Always allow inbound connections from
 these systems.
 ```
-```{cfgcmd} set service ssh dynamic-protection block-time <sec>
+```{cfgcmd} set service ssh dynamic-protection block-time \<sec\>
 
 Block source IP in seconds. Subsequent blocks increase by a factor of 1.5
 The default is 120.
 ```
-```{cfgcmd} set service ssh dynamic-protection detect-time <sec>
+```{cfgcmd} set service ssh dynamic-protection detect-time \<sec\>
 
 Remember source IP in seconds before reset their score. The default is 1800.
 ```
-```{cfgcmd} set service ssh dynamic-protection threshold <sec>
+```{cfgcmd} set service ssh dynamic-protection threshold \<sec\>
 
 Block source IP when their cumulative attack score exceeds threshold. The
 default is 30.
@@ -373,7 +373,7 @@ Two new files ``/config/auth/id_rsa_rpki`` and
 ``/config/auth/id_rsa_rpki.pub``
 will be created.
 ```
-```{opcmd} generate public-key-command user <username> path <location>
+```{opcmd} generate public-key-command user \<username\> path \<location\>
 
  Generate the configuration mode commands to add a public key for
  :ref:`ssh_key_based_authentication`.

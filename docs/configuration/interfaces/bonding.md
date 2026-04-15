@@ -24,7 +24,7 @@ monitoring.
 :var1: bond0
 ```
 ### Member interfaces
-```{cfgcmd} set interfaces bonding <interface> member interface <member>
+```{cfgcmd} set interfaces bonding \<interface\> member interface \<member\>
 
 **Add an interface to the bonding group.**
 
@@ -43,7 +43,7 @@ set interfaces bonding bond0 member interface eth1
 
 ```
 ### Bond modes
-```{cfgcmd} set interfaces bonding <interface> mode <802.3ad | active-backup |
+```{cfgcmd} set interfaces bonding \<interface\> mode <802.3ad | active-backup |
 
 broadcast | round-robin | transmit-load-balance | adaptive-load-balance |
 
@@ -236,7 +236,7 @@ Distributes traffic and handles failover identically to ``802.3ad``, but operate
 without the :abbr:`LACP (Link Aggregation Control Protocol)`.
 ```
 
-```{cfgcmd} set interfaces bonding <interface> min-links <0-16>
+```{cfgcmd} set interfaces bonding \<interface\> min-links \<0-16\>
 
 **Configure how many member interfaces must be active (in the link-up state) to
 
@@ -271,7 +271,7 @@ member interface. Therefore, setting min-links to 0 or 1 has the same result:
 the bonding interface is marked UP (carrier asserted).
 ```
 
-```{cfgcmd} set interfaces bonding <interface> lacp-rate <slow|fast>
+```{cfgcmd} set interfaces bonding \<interface\> lacp-rate \<slow|fast\>
 
 **Configure the rate at which the bonding interface requests its link
 
@@ -287,7 +287,7 @@ The following options are available:
 
 * **slow (default):** Requests the link partner to transmit LACPDUs every 30 seconds.
 ```
-```{cfgcmd} set interfaces bonding <interface> system-mac <mac address>
+```{cfgcmd} set interfaces bonding \<interface\> system-mac \<mac address\>
 
 **Configure a specific MAC address for the bonding interface.**
 
@@ -301,7 +301,7 @@ You can assign a fixed MAC address or generate a random one for these
 :abbr:`LACPDU (Link Aggregation Control Protocol Data Unit)` exchanges.
 
 ```
-```{cfgcmd} set interfaces bonding <interface> hash-policy <policy>
+```{cfgcmd} set interfaces bonding \<interface\> hash-policy \<policy\>
 
    **Configure which transmit hash policy to use for distributing traffic across
 
@@ -447,7 +447,7 @@ You can assign a fixed MAC address or generate a random one for these
 ```
 
 
-```{cfgcmd} set interfaces bonding <interface> primary <interface>
+```{cfgcmd} set interfaces bonding \<interface\> primary \<interface\>
 
 **Configure the primary member interface in the bond.**
 
@@ -468,7 +468,7 @@ This command applies only to ``active-backup``, ``transmit-load-balance``, and
 ```
 
 
-```{cfgcmd} set interfaces bonding <interface> arp-monitor interval <time>
+```{cfgcmd} set interfaces bonding \<interface\> arp-monitor interval \<time\>
 
 **Configure the ARP monitoring interval, in seconds, for the bonding interface.**
 
@@ -500,7 +500,7 @@ The default value is 0.
 ```
 
 
-```{cfgcmd} set interfaces bonding <interface> arp-monitor target <address>
+```{cfgcmd} set interfaces bonding \<interface\> arp-monitor target \<address\>
 
 **Configure the IP addresses for ARP monitoring requests.**
 
@@ -560,11 +560,11 @@ discriminator, or an Ethernet Segment Identifier Name (ESINAME).
 
 The following two commands generate a 10-byte Type-3 ESI by combining the
 system MAC and local discriminator:
-```{cfgcmd} set interfaces bonding <interface> evpn es-id <1-16777215|10-byte ID>
+```{cfgcmd} set interfaces bonding \<interface\> evpn es-id \<1-16777215|10-byte ID\>
 ```
 
 
-```{cfgcmd} set interfaces bonding <interface> evpn es-sys-mac <xx:xx:xx:xx:xx:xx>
+```{cfgcmd} set interfaces bonding \<interface\> evpn es-sys-mac \<xx:xx:xx:xx:xx:xx\>
 
 Alternatively, assign an ESINAME directly as a 10-byte Type-0 ESI using the
 
@@ -589,7 +589,7 @@ synchronization:
 ```
 
 
-```{cfgcmd} set interfaces bonding <interface> evpn es-df-pref <1-65535>
+```{cfgcmd} set interfaces bonding \<interface\> evpn es-df-pref \<1-65535\>
 
 **Configure the** :abbr:`DF (Designated Forwarder)` **preference (1-65535) for
 
@@ -1007,7 +1007,7 @@ Show brief interface information.
 
   bond0.100        10.10.10.1/24                     u/u  management-net
 ```
-```{opcmd} show interfaces bonding <interface>
+```{opcmd} show interfaces bonding \<interface\>
 
 Show detailed interface information.
 
@@ -1024,7 +1024,7 @@ Show detailed interface information.
   TX:  bytes  packets  errors  dropped  carrier  collisions
   0        0       0        0        0           0
 ```
-```{opcmd} show interfaces bonding <interface> detail
+```{opcmd} show interfaces bonding \<interface\> detail
 
 Show detailed information about the underlying physical links on the given
 bonding interface.

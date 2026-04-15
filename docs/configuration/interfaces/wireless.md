@@ -29,7 +29,7 @@ its MAC address) and configured to run in monitor mode.
 ```
 ### System-wide configuration
 
-```{cfgcmd} set system wireless country-code <cc>
+```{cfgcmd} set system wireless country-code \<cc\>
 
 Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
 to indicate country in which device is operating. This can limit available
@@ -43,7 +43,7 @@ This option is mandatory in ``access-point`` mode.
 ```
 ### Wireless options
 
-```{cfgcmd} set interfaces wireless <interface> channel <number>
+```{cfgcmd} set interfaces wireless \<interface\> channel \<number\>
 
 Configure the IEEE 802.11 wireless radio channel for the interface.
 Channel allocation depends on the frequency band:
@@ -53,12 +53,12 @@ Channel allocation depends on the frequency band:
 * **6 GHz** (802.11ax): Channels range from 1 to 233.
 * **Automatic channel selection:** 0.
 ```
-```{cfgcmd} set interfaces wireless <interface> disable-broadcast-ssid
+```{cfgcmd} set interfaces wireless \<interface\> disable-broadcast-ssid
 
 Send empty SSID in beacons and ignore probe request frames that do not specify
 full SSID, i.e., require stations to know the SSID.
 ```
-```{cfgcmd} set interfaces wireless <interface> expunge-failing-stations
+```{cfgcmd} set interfaces wireless \<interface\> expunge-failing-stations
 
 Disassociate stations based on excessive transmission failures or other
 indications of connection loss.
@@ -66,14 +66,14 @@ indications of connection loss.
 This depends on the driver capabilities and may not be available with all
 drivers.
 ```
-```{cfgcmd} set interfaces wireless <interface> isolate-stations
+```{cfgcmd} set interfaces wireless \<interface\> isolate-stations
 
 Client isolation can be used to prevent low-level bridging of frames between
 associated stations in the BSS.
 
 By default, this bridging is allowed.
 ```
-```{cfgcmd} set interfaces wireless <interface> max-stations <count>
+```{cfgcmd} set interfaces wireless \<interface\> max-stations \<count\>
 
 Maximum number of stations allowed in station table. New stations will be
 rejected after the station table is full. IEEE 802.11 has a limit of 2007
@@ -81,7 +81,7 @@ different association IDs, so this number should not be larger than that.
 
 This defaults to 2007.
 ```
-```{cfgcmd} set interfaces wireless <interface> mgmt-frame-protection
+```{cfgcmd} set interfaces wireless \<interface\> mgmt-frame-protection
 
 Management Frame Protection (MFP) according to IEEE 802.11w
 
@@ -91,7 +91,7 @@ Management Frame Protection (MFP) according to IEEE 802.11w
 
 :::
 ```
-```{cfgcmd} set interfaces wireless <interface> enable-bf-protection
+```{cfgcmd} set interfaces wireless \<interface\> enable-bf-protection
 
 Beacon Protection: management frame protection for Beacon frames.
 
@@ -102,7 +102,7 @@ This option requires :abbr:`MFP (Management Frame Protection)`
 :::
   to be enabled.
 ```
-```{cfgcmd} set interfaces wireless <interface> mode <a | b | g | n | ac | ax>
+```{cfgcmd} set interfaces wireless \<interface\> mode \<a | b | g | n | ac | ax\>
 
 Operation mode of wireless radio.
 
@@ -119,13 +119,13 @@ In VyOS, 802.11ax is only implemented for 2.4GHz and 6GHz.
 
 :::
 ```
-```{cfgcmd} set interfaces wireless <interface> physical-device <device>
+```{cfgcmd} set interfaces wireless \<interface\> physical-device \<device\>
 
 Wireless hardware device used as underlay radio.
 
 This defaults to phy0.
 ```
-```{cfgcmd} set interfaces wireless <interface> reduce-transmit-power <number>
+```{cfgcmd} set interfaces wireless \<interface\> reduce-transmit-power \<number\>
 
 Adds the Power Constraint information element to Beacon and Probe Response
 frames.
@@ -136,11 +136,11 @@ element is required by Transmit Power Control.
 
 Valid values are 0..255.
 ```
-```{cfgcmd} set interfaces wireless <interface> ssid <ssid>
+```{cfgcmd} set interfaces wireless \<interface\> ssid \<ssid\>
 
 SSID to be used in IEEE 802.11 management frames
 ```
-```{cfgcmd} set interfaces wireless <interface> type
+```{cfgcmd} set interfaces wireless \<interface\> type
 
    <access-point | station | monitor>
 Wireless device type for this interface
@@ -154,24 +154,24 @@ Wireless device type for this interface
 ```
 #### PPDU
 
-```{cfgcmd} set interfaces wireless <interface> capabilities require-ht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities require-ht
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities require-vht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities require-vht
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities require-he
+```{cfgcmd} set interfaces wireless \<interface\> capabilities require-he
 ```
 ##### HT (High Throughput) capabilities (802.11n)
 > Configuring HT mode options is required when using 802.11n or
 > 802.11ax at 2.4GHz.
-```{cfgcmd} set interfaces wireless <interface> capabilities ht 40mhz-incapable
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht 40mhz-incapable
 
 Device is incapable of 40 MHz, do not advertise. This sets ``[40-INTOLERANT]``
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht auto-powersave
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht auto-powersave
 
 WMM-PS Unscheduled Automatic Power Save Delivery [U-APSD]
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht
 
    channel-set-width <ht20 | ht40+ | ht40->
 Supported channel width set.
@@ -202,63 +202,63 @@ Channel availability for HT40- and HT40+ is limited. The following
   BSSes. These changes are done automatically when hostapd is setting up the
   40 MHz channel.
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht
 
    delayed-block-ack
 Enable HT-delayed Block Ack ``[DELAYED-BA]``
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht dsss-cck-40
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht dsss-cck-40
 
 DSSS/CCK Mode in 40 MHz, this sets ``[DSSS_CCK-40]``
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht greenfield
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht greenfield
 
 This enables the greenfield option which sets the ``[GF]`` option
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht ldpc
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht ldpc
 
 Enable LDPC coding capability
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht lsig-protection
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht lsig-protection
 
 Enable L-SIG TXOP protection capability
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht max-amsdu
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht max-amsdu
 
    <3839 | 7935>
 Maximum A-MSDU length 3839 (default) or 7935 octets
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht
 
    short-gi <20 | 40>
 Short GI capabilities for 20 and 40 MHz
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht
 
    smps <static | dynamic>
 Spatial Multiplexing Power Save (SMPS) settings
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht stbc rx <num>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht stbc rx \<num\>
 
 Enable receiving PPDU using STBC (Space Time Block Coding)
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities ht stbc tx
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht stbc tx
 
 Enable sending PPDU using STBC (Space Time Block Coding)
 ```
 ##### VHT (Very High Throughput) capabilities (802.11ac)
 % stop_vyoslinter
-```{cfgcmd} set interfaces wireless <interface> capabilities vht antenna-count <count>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht antenna-count \<count\>
 ```
 % start_vyoslinter
 %
 % Number of antennas on this card
-```{cfgcmd} set interfaces wireless <interface> capabilities vht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
 
    antenna-pattern-fixed
 Set if antenna pattern does not change during the lifetime of an association
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht beamform
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht beamform
 
   <single-user-beamformer | single-user-beamformee | multi-user-beamformer |
   multi-user-beamformee>
@@ -273,7 +273,7 @@ Beamforming capabilities:
 * ``multi-user-beamformee`` - Support for operation as
   multi user beamformee
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
 
    center-channel-freq <freq-1 | freq-2> <number>
 VHT operating channel center frequency - center freq 1
@@ -284,7 +284,7 @@ VHT operating channel center frequency - center freq 2
 
 <number> must be from 34 - 173. For 80 MHz channels it should be channel + 6.
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
 
    channel-set-width <0 | 1 | 2 | 3>
 * ``0`` - 20 or 40 MHz channel width (default)
@@ -292,56 +292,56 @@ VHT operating channel center frequency - center freq 2
 * ``2`` - 160 MHz channel width
 * ``3`` - 80+80 MHz channel width
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht ldpc
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht ldpc
 
 Enable LDPC (Low Density Parity Check) coding capability
 ```
-```{cfgcmd} set interfaces wireless <interface>
+```{cfgcmd} set interfaces wireless \<interface\>
 
   capabilities vht link-adaptation
 VHT link adaptation capabilities
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
 
    max-mpdu <value>
 Increase Maximum MPDU length to 7991 or 11454 octets (default 3895 octets)
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
 
    max-mpdu-exp <value>
 Set the maximum length of A-MPDU pre-EOF padding that the station can
 receive
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
 
    short-gi <80 | 160>
 Short GI capabilities
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht stbc rx <num>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht stbc rx \<num\>
 
 Enable receiving PPDU using STBC (Space Time Block Coding)
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht stbc tx
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht stbc tx
 
 Enable sending PPDU using STBC (Space Time Block Coding)
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht tx-powersave
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht tx-powersave
 
 Enable VHT TXOP Power Save Mode
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities vht vht-cf
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht vht-cf
 
 Station supports receiving VHT variant HT Control field
 ```
 ##### HE (High Efficiency) capabilities (802.11ax)
 
-```{cfgcmd} set interfaces wireless <interface>
+```{cfgcmd} set interfaces wireless \<interface\>
 
   capabilities he antenna-pattern-fixed
 Tell the AP that antenna positions are fixed and will not change
 during the lifetime of an association.
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities he beamform
+```{cfgcmd} set interfaces wireless \<interface\> capabilities he beamform
 
   <single-user-beamformer | single-user-beamformee | multi-user-beamformer>
 Beamforming capabilities:
@@ -353,7 +353,7 @@ Beamforming capabilities:
 * ``multi-user-beamformer`` - Support for operation as multi
   user beamformer
 ```
-```{cfgcmd} set interfaces wireless <interface>
+```{cfgcmd} set interfaces wireless \<interface\>
 
   capabilities he bss-color <number>
 BSS coloring helps to prevent channel jamming when multiple APs use
@@ -361,7 +361,7 @@ the same channels.
 
 Valid values are 1..63
 ```
-```{cfgcmd} set interfaces wireless <interface> capabilities he
+```{cfgcmd} set interfaces wireless \<interface\> capabilities he
 
   center-channel-freq <freq-1 | freq-2> <number>
 HE operating channel center frequency - center freq 1
@@ -373,7 +373,7 @@ HE operating channel center frequency - center freq 2
 <number> must be within 1..233. For 80 MHz channels it should be
 channel + 6 and for 160 MHz channels, it should be channel + 14.
 ```
-```{cfgcmd} set interfaces wireless <interface>
+```{cfgcmd} set interfaces wireless \<interface\>
 
   capabilities he channel-set-width <number>
 <number> must be one of:
@@ -389,7 +389,7 @@ channel + 6 and for 160 MHz channels, it should be channel + 14.
 * ``134`` - 160 MHz channel width (6GHz)
 * ``135`` - 80+80 MHz channel width (6GHz)
 ```
-```{cfgcmd} set interfaces wireless <interface>
+```{cfgcmd} set interfaces wireless \<interface\>
 
   capabilities he coding-scheme <number>
 This setting configures Spatial Stream and Modulation Coding Scheme
@@ -548,7 +548,7 @@ wlan1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group d
          183413      5430          0          0          0          0
 ```
 % start_vyoslinter
-```{opcmd} show interfaces wireless <wlanX>
+```{opcmd} show interfaces wireless \<wlanX\>
 ```
 This command shows both status and statistics on the specified wireless
 interface. The wireless interface identifier can range from wlan0 to wlan999.
@@ -568,7 +568,7 @@ wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group d
          83413        430          0          0          0          0
 ```
 % start_vyoslinter
-```{opcmd} show interfaces wireless <wlanX> brief
+```{opcmd} show interfaces wireless \<wlanX\> brief
 ```
 This command gives a brief status overview of a specified wireless interface.
 The wireless interface identifier can range from wlan0 to wlan999.
@@ -580,7 +580,7 @@ Interface        IP Address                        S/L  Description
 wlan0            192.168.2.254/24                    u/u
 ```
 
-```{opcmd} show interfaces wireless <wlanX> queue
+```{opcmd} show interfaces wireless \<wlanX\> queue
 ```
 Use this command to view wireless interface queue information.
 The wireless interface identifier can range from wlan0 to wlan999.
@@ -591,7 +591,7 @@ qdisc pfifo_fast 0: root bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
  rate 0bit 0pps backlog 0b 0p requeues 0
 ```
 
-```{opcmd} show interfaces wireless <wlanX> scan
+```{opcmd} show interfaces wireless \<wlanX\> scan
 ```
 This command is used to retrieve information about WAP within the range of your
 wireless interface. This command is useful on wireless interfaces configured

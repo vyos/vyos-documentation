@@ -223,7 +223,7 @@ On most scenarios, there's no need to change specific parameters, and using
 default configuration is enough. But there are cases were extra configuration
 is needed.
 
-```{cfgcmd} set high-availability vrrp global-parameters startup_delay <1-600>
+```{cfgcmd} set high-availability vrrp global-parameters startup_delay \<1-600\>
 
 This option specifies a delay in seconds before vrrp instances start up
 after keepalived starts.
@@ -236,7 +236,7 @@ need to configure it. But if necessary, Gratuitous ARP can be configured in
 
    <0.000-1000>
 ```
-```{cfgcmd} set high-availability vrrp group <name> garp interval <0.000-1000>
+```{cfgcmd} set high-availability vrrp group \<name\> garp interval \<0.000-1000\>
 
 Set delay between gratuitous ARP messages sent on an interface.
 
@@ -244,11 +244,11 @@ Set delay between gratuitous ARP messages sent on an interface.
 ```
 % stop_vyoslinter
 
-```{cfgcmd} set high-availability vrrp global-parameters garp master-delay <1-255>
+```{cfgcmd} set high-availability vrrp global-parameters garp master-delay \<1-255\>
 ```
 % start_vyoslinter
 
-```{cfgcmd} set high-availability vrrp group <name> garp master-delay <1-255>
+```{cfgcmd} set high-availability vrrp group \<name\> garp master-delay \<1-255\>
 
 Set delay for second set of gratuitous ARPs after transition to MASTER.
 
@@ -258,7 +258,7 @@ Set delay for second set of gratuitous ARPs after transition to MASTER.
 
    <1-600>
 ```
-```{cfgcmd} set high-availability vrrp group <name> garp master-refresh
+```{cfgcmd} set high-availability vrrp group \<name\> garp master-refresh
 
    <1-600>
 Set minimum time interval for refreshing gratuitous ARPs while MASTER.
@@ -269,7 +269,7 @@ Set minimum time interval for refreshing gratuitous ARPs while MASTER.
 
    master-refresh-repeat <1-600>
 ```
-```{cfgcmd} set high-availability vrrp group <name> garp
+```{cfgcmd} set high-availability vrrp group \<name\> garp
 
    master-refresh-repeat <1-600>
 Set number of gratuitous ARP messages to send at a time while MASTER.
@@ -280,7 +280,7 @@ Set number of gratuitous ARP messages to send at a time while MASTER.
 
    <1-600>
 ```
-```{cfgcmd} set high-availability vrrp group <name> garp master-repeat
+```{cfgcmd} set high-availability vrrp group \<name\> garp master-repeat
 
    <1-600>
 Set number of gratuitous ARP messages to send at a time after transition to

@@ -144,5 +144,5 @@ Improper IPsec configuration can lead to various issues, including:
   If you have configured ESP profiles with algorithms not supported by VPP and the traffic for such peers flows through VPP interfaces, such traffic will be dropped. You can check system logs for messages from VPP with `linux-cp/ipsec: Invalid/Unsupported crypto algo` or `linux-cp/ipsec: Invalid/Unsupported integ algo` line to identify such cases.
 - **Connection is established but no traffic flows**
   Even if you use compatible algorithms, there can be other reasons why traffic is not flowing. One of most frequent is blocking traffic between peers - that is especially common in public clouds. Make sure that TCP/UDP ports 500 and 4500 and ESP protocol are allowed between the peers. Alternatively, consider enforcing UDP encapsulation on both sides of the tunnel:
-```{cfgcmd} set vpn ipsec site-to-site peer <peer-name> force-udp-encapsulation
+```{cfgcmd} set vpn ipsec site-to-site peer \<peer-name\> force-udp-encapsulation
   ```

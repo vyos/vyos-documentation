@@ -23,7 +23,7 @@ Supported interface types:
 
 ## Configuration
 
-```{cfgcmd} set service router-advert interface <interface> ...
+```{cfgcmd} set service router-advert interface \<interface\> ...
 ```
 % stop_vyoslinter
 
@@ -47,7 +47,7 @@ Supported interface types:
 ```
 % start_vyoslinter
 ### Advertising a Prefix
-```{cfgcmd} set service router-advert interface <interface> prefix <prefix/mask>
+```{cfgcmd} set service router-advert interface \<interface\> prefix \<prefix/mask\>
 
 :::{note}
 
@@ -72,7 +72,7 @@ You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
 ```
 % start_vyoslinter
 ### Advertising a NAT64 Prefix
-```{cfgcmd} set service router-advert interface <interface> nat64prefix <prefix/mask>
+```{cfgcmd} set service router-advert interface \<interface\> nat64prefix \<prefix/mask\>
 
 Enable PREF64 option as outlined in :rfc:`8781`.
 
@@ -95,12 +95,12 @@ The well known NAT64 prefix is ``64:ff9b::/96``
 % start_vyoslinter
 ### Disabling Advertisements
 To disable advertisements without deleting the configuration:
-```{cfgcmd} set service router-advert interface <interface> no-send-advert
+```{cfgcmd} set service router-advert interface \<interface\> no-send-advert
 
 If set, the router will no longer send periodic router advertisements and
 will not respond to router solicitations.
 ```
-```{cfgcmd} set service router-advert interface <interface> no-send-interval
+```{cfgcmd} set service router-advert interface \<interface\> no-send-interval
 
 Advertisement Interval Option (specified by Mobile IPv6) is always included in
 Router Advertisements unless this option is set.

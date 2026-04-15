@@ -36,7 +36,7 @@ Pseudo-Ethernet interfaces may not work in environments that require a
 ```
 ### MACVLAN (pseudo-Ethernet) options
 
-```{cfgcmd} set interfaces pseudo-ethernet <interface> source-interface <ethX>
+```{cfgcmd} set interfaces pseudo-ethernet \<interface\> source-interface \<ethX\>
 
 Assign a physical Ethernet interface to the specified pseudo-Ethernet interface.
 ```

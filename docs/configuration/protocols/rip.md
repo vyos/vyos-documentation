@@ -21,7 +21,7 @@ Supported versions of RIP are:
 
 ## General Configuration
 
-```{cfgcmd} set protocols rip network <A.B.C.D/M>
+```{cfgcmd} set protocols rip network \<A.B.C.D/M\>
 
   This command enables RIP and sets the RIP enable interface by NETWORK.
 
@@ -30,7 +30,7 @@ Supported versions of RIP are:
 ```
 
 
-```{cfgcmd} set protocols rip interface <interface>
+```{cfgcmd} set protocols rip interface \<interface\>
 
 This command specifies a RIP enabled interface by interface name. Both
 
@@ -40,7 +40,7 @@ specified in this command.
 ```
 
 
-```{cfgcmd} set protocols rip neighbor <A.B.C.D>
+```{cfgcmd} set protocols rip neighbor \<A.B.C.D\>
 
 This command specifies a RIP neighbor. When a neighbor doesn’t understand
 
@@ -56,7 +56,7 @@ link between routers.
 ```
 
 
-```{cfgcmd} set protocols rip passive-interface interface <interface>
+```{cfgcmd} set protocols rip passive-interface interface \<interface\>
 
 This command sets the specified interface to passive mode. On passive mode
 
@@ -74,7 +74,7 @@ This command specifies all interfaces to passive mode.
 ```
 ## Optional Configuration
 
-```{cfgcmd} set protocols rip default-distance <distance>
+```{cfgcmd} set protocols rip default-distance \<distance\>
 
   This command change the distance value of RIP. The distance range is 1 to 255.
 
@@ -92,7 +92,7 @@ This command specifies all interfaces to passive mode.
 ```
 
 
-```{cfgcmd} set protocols rip network-distance <A.B.C.D/M> distance <distance>
+```{cfgcmd} set protocols rip network-distance \<A.B.C.D/M\> distance \<distance\>
 
 This command sets default RIP distance to a specified value when the routes
 
@@ -100,7 +100,7 @@ source IP address matches the specified prefix.
 ```
 
 
-```{cfgcmd} set protocols rip network-distance <A.B.C.D/M> access-list <name>
+```{cfgcmd} set protocols rip network-distance \<A.B.C.D/M\> access-list \<name\>
 
 This command can be used with previous command to sets default RIP distance
 
@@ -116,7 +116,7 @@ This command generate a default route into the RIP.
 ```
 
 
-```{cfgcmd} set protocols rip distribute-list access-list <in|out> <number>
+```{cfgcmd} set protocols rip distribute-list access-list \<in|out\> \<number\>
 
 This command can be used to filter the RIP path using access lists.
 
@@ -126,7 +126,7 @@ lists are applied.
 ```
 
 
-```{cfgcmd} set protocols rip distribute-list interface <interface> access-list <in|out> <number>
+```{cfgcmd} set protocols rip distribute-list interface \<interface\> access-list \<in|out\> \<number\>
 
 This command allows you apply access lists to a chosen interface to
 
@@ -134,7 +134,7 @@ filter the RIP path.
 ```
 
 
-```{cfgcmd} set protocols rip distribute-list prefix-list <in|out> <name>
+```{cfgcmd} set protocols rip distribute-list prefix-list \<in|out\> \<name\>
 
 This command can be used to filter the RIP path using prefix lists.
 
@@ -144,7 +144,7 @@ lists are applied.
 ```
 
 
-```{cfgcmd} set protocols rip distribute-list interface <interface> prefix-list <in|out> <name>
+```{cfgcmd} set protocols rip distribute-list interface \<interface\> prefix-list \<in|out\> \<name\>
 
 This command allows you apply prefix lists to a chosen interface to
 
@@ -152,7 +152,7 @@ filter the RIP path.
 ```
 
 
-```{cfgcmd} set protocols rip route <A.B.C.D/M>
+```{cfgcmd} set protocols rip route \<A.B.C.D/M\>
 
 This command is specific to FRR and VyOS. The route command makes a static
 
@@ -166,7 +166,7 @@ using :cfgcmd:`redistribute static`.
 ```
 
 
-```{cfgcmd} set protocols rip timers update <seconds>
+```{cfgcmd} set protocols rip timers update \<seconds\>
 
 This command specifies the update timer. Every update timer seconds, the
 
@@ -178,7 +178,7 @@ is 5 to 2147483647. The default value is 30 seconds.
 ```
 
 
-```{cfgcmd} set protocols rip timers timeout <seconds>
+```{cfgcmd} set protocols rip timers timeout \<seconds\>
 
 This command specifies the timeout timer. Upon expiration of the timeout,
 
@@ -192,7 +192,7 @@ seconds.
 ```
 
 
-```{cfgcmd} set protocols rip timers garbage-collection <seconds>
+```{cfgcmd} set protocols rip timers garbage-collection \<seconds\>
 
 This command specifies the garbage-collection timer. Upon expiration of
 
@@ -204,7 +204,7 @@ seconds.
 ```
 ## Redistribution Configuration
 
-```{cfgcmd} set protocols rip redistribute <route source>
+```{cfgcmd} set protocols rip redistribute \<route source\>
 
   This command redistributes routing information from the given route source
 
@@ -215,7 +215,7 @@ seconds.
 ```
 
 
-```{cfgcmd} set protocols rip redistribute <route source> metric <metric>
+```{cfgcmd} set protocols rip redistribute \<route source\> metric \<metric\>
 
 This command specifies metric for redistributed routes from the given route
 
@@ -225,7 +225,7 @@ kernel, ospf, static. The metric range is 1 to 16.
 ```
 
 
-```{cfgcmd} set protocols rip redistribute <route source> route-map <name>
+```{cfgcmd} set protocols rip redistribute \<route source\> route-map \<name\>
 
 This command allows to use route map to filter redistributed routes from
 
@@ -235,7 +235,7 @@ bgp, connected, kernel, ospf, static.
 ```
 
 
-```{cfgcmd} set protocols rip default-metric <metric>
+```{cfgcmd} set protocols rip default-metric \<metric\>
 
 This command modifies the default metric (hop count) value for redistributed
 
@@ -249,7 +249,7 @@ value, please use :cfgcmd:`redistribute connected metric`.
 ```
 ## Interfaces Configuration
 
-```{cfgcmd} set interfaces <inttype> <intname> ip rip authentication plaintext-password <text>
+```{cfgcmd} set interfaces \<inttype\> \<intname\> ip rip authentication plaintext-password \<text\>
 
   This command sets the interface with RIP simple password authentication.
 
@@ -260,7 +260,7 @@ value, please use :cfgcmd:`redistribute connected metric`.
 ```
 
 
-```{cfgcmd} set interfaces <inttype> <intname> ip rip authentication md5 <id> password <text>
+```{cfgcmd} set interfaces \<inttype\> \<intname\> ip rip authentication md5 \<id\> password \<text\>
 
 This command sets the interface with RIP MD5 authentication. This command
 
@@ -268,7 +268,7 @@ also sets MD5 Key. The key must be shorter than 16 characters.
 ```
 
 
-```{cfgcmd} set interfaces <inttype> <intname> ip rip split-horizon disable
+```{cfgcmd} set interfaces \<inttype\> \<intname\> ip rip split-horizon disable
 
 This command disables split-horizon on the interface. By default, VyOS does
 
@@ -278,7 +278,7 @@ not advertise RIP routes out the interface over which they were learned
 ```
 
 
-```{cfgcmd} set interfaces <inttype> <intname> ip rip split-horizon poison-reverse
+```{cfgcmd} set interfaces \<inttype\> \<intname\> ip rip split-horizon poison-reverse
 
 This command enables poison-reverse on the interface. If both poison reverse
 

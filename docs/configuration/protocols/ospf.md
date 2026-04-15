@@ -21,7 +21,7 @@ OSPF is a widely used IGP in large enterprise networks.
 VyOS does not have a special command to start the OSPF process. The OSPF process
 starts when the first ospf enabled interface is configured.
 
-```{cfgcmd} set protocols ospf area <number> network <A.B.C.D/M>
+```{cfgcmd} set protocols ospf area \<number\> network \<A.B.C.D/M\>
 
    This command specifies the OSPF enabled interface(s). If the interface has
 
@@ -57,7 +57,7 @@ starts when the first ospf enabled interface is configured.
 ```
 
 
-```{cfgcmd} set protocols ospf auto-cost reference-bandwidth <number>
+```{cfgcmd} set protocols ospf auto-cost reference-bandwidth \<number\>
 
 This command sets the reference bandwidth for cost calculations, where
 
@@ -71,7 +71,7 @@ reference to this cost).
 ```
 
 
-```{cfgcmd} set protocols ospf parameters router-id <rid>
+```{cfgcmd} set protocols ospf parameters router-id \<rid\>
 
 This command sets the router-ID of the OSPF process. The router-ID may be an
 
@@ -104,7 +104,7 @@ with the same router-ID!
 ```
 
 
-```{cfgcmd} set protocols ospf distance global <distance>
+```{cfgcmd} set protocols ospf distance global \<distance\>
 
 This command change distance value of OSPF globally.
 
@@ -112,7 +112,7 @@ The distance range is 1 to 255.
 ```
 
 
-```{cfgcmd} set protocols ospf distance ospf <external|inter-area|intra-area>
+```{cfgcmd} set protocols ospf distance ospf \<external|inter-area|intra-area\>
 
 <distance>
 
@@ -234,7 +234,7 @@ This command should NOT be set normally.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> passive [disable]
+```{cfgcmd} set protocols ospf interface \<interface\> passive [disable]
 
 This command specifies interface as passive. Passive interface advertises
 
@@ -263,7 +263,7 @@ with the :cfgcmd:`passive-interface-exclude` command.
 ```
 
 
-```{cfgcmd} set protocols ospf maximum-paths <1-64>
+```{cfgcmd} set protocols ospf maximum-paths \<1-64\>
 
 Use this command to control the maximum number of equal cost paths to reach
 
@@ -273,7 +273,7 @@ of MULTIPATH_NUM during compilation. The default is MULTIPATH_NUM (64).
 ```
 
 
-```{cfgcmd} set protocols ospf refresh timers <seconds>
+```{cfgcmd} set protocols ospf refresh timers \<seconds\>
 
 The router automatically updates link-state information with its neighbors.
 
@@ -324,7 +324,7 @@ Loopbacks are exempt.
 ```
 
 
-```{cfgcmd} set protocols ospf ldp-sync holddown <seconds>
+```{cfgcmd} set protocols ospf ldp-sync holddown \<seconds\>
 
 This command will change the hold down value globally for IGP-LDP
 
@@ -357,7 +357,7 @@ FRR offers only partial support for some of the routing
    support a complete RSVP-TE solution.
 ```
 #### Area Configuration
-```{cfgcmd} set protocols ospf area <number> area-type stub
+```{cfgcmd} set protocols ospf area \<number\> area-type stub
 
 This command specifies the area to be a Stub Area. That is, an area where
 
@@ -373,7 +373,7 @@ area, along with a default-route summary.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> area-type stub no-summary
+```{cfgcmd} set protocols ospf area \<number\> area-type stub no-summary
 
 This command specifies the area to be a Totally Stub Area. In addition to
 
@@ -385,7 +385,7 @@ summary route is allowed.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> area-type stub default-cost
+```{cfgcmd} set protocols ospf area \<number\> area-type stub default-cost
 
 <number>
 
@@ -396,7 +396,7 @@ areas. The cost range is 0 to 16777215.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> area-type nssa
+```{cfgcmd} set protocols ospf area \<number\> area-type nssa
 
 This command specifies the area to be a Not So Stubby Area. External
 
@@ -412,7 +412,7 @@ by the NSSA ABR.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> area-type nssa no-summary
+```{cfgcmd} set protocols ospf area \<number\> area-type nssa no-summary
 
 This command specifies the area to be a NSSA Totally Stub Area. ABRs for
 
@@ -426,7 +426,7 @@ ABR are allowed.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> area-type nssa default-cost
+```{cfgcmd} set protocols ospf area \<number\> area-type nssa default-cost
 
 <number>
 
@@ -437,7 +437,7 @@ The cost range is 0 to 16777215.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> area-type nssa translate
+```{cfgcmd} set protocols ospf area \<number\> area-type nssa translate
 
 <always|candidate|never>
 
@@ -458,7 +458,7 @@ into Type-5 LSAs.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> authentication plaintext-password
+```{cfgcmd} set protocols ospf area \<number\> authentication plaintext-password
 
 This command specifies that simple password authentication should be used
 
@@ -468,7 +468,7 @@ basis.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> authentication md5
+```{cfgcmd} set protocols ospf area \<number\> authentication md5
 
 This command specify that OSPF packets must be authenticated with MD5 HMACs
 
@@ -478,7 +478,7 @@ per-interface basis.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> range <A.B.C.D/M> [cost <number>]
+```{cfgcmd} set protocols ospf area \<number\> range \<A.B.C.D/M\> [cost \<number\>]
 
 This command summarizes intra area paths from specified area into one
 
@@ -496,7 +496,7 @@ to 16777215.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> range <A.B.C.D/M> not-advertise
+```{cfgcmd} set protocols ospf area \<number\> range \<A.B.C.D/M\> not-advertise
 
 This command instead of summarizing intra area paths filter them - i.e.
 
@@ -506,7 +506,7 @@ This command makes sense in ABR only.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> export-list <acl_number>
+```{cfgcmd} set protocols ospf area \<number\> export-list \<acl_number\>
 
 Filter Type-3 summary-LSAs announced to other areas originated from
 
@@ -516,7 +516,7 @@ This command makes sense in ABR only.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> import-list <acl_number>
+```{cfgcmd} set protocols ospf area \<number\> import-list \<acl_number\>
 
 Same as export-list, but it applies to paths announced into specified
 
@@ -526,7 +526,7 @@ This command makes sense in ABR only.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> range <A.B.C.D/M> substitute
+```{cfgcmd} set protocols ospf area \<number\> range \<A.B.C.D/M\> substitute
 
 <E.F.G.H/M>
 
@@ -541,7 +541,7 @@ This command makes sense in ABR only.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> shortcut <default|disable|enable>
+```{cfgcmd} set protocols ospf area \<number\> shortcut \<default|disable|enable\>
 
 This parameter allows to "shortcut" routes (non-backbone) for inter-area
 
@@ -560,7 +560,7 @@ that goes through it is cheaper.
 ```
 
 
-```{cfgcmd} set protocols ospf area <number> virtual-link <A.B.C.D>
+```{cfgcmd} set protocols ospf area \<number\> virtual-link \<A.B.C.D\>
 
 Provides a backbone area coherence by virtual link establishment.
 
@@ -593,7 +593,7 @@ This pseudo-network is considered to belong to a backbone area.
 ```
 #### Interface Configuration
 
-```{cfgcmd} set protocols ospf interface <interface> area <x.x.x.x | x>
+```{cfgcmd} set protocols ospf interface \<interface\> area \<x.x.x.x | x\>
 
    Enable ospf on an interface and set associated area.
 
@@ -605,7 +605,7 @@ This pseudo-network is considered to belong to a backbone area.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> authentication
+```{cfgcmd} set protocols ospf interface \<interface\> authentication
 
 plaintext-password <text>
 
@@ -621,7 +621,7 @@ MD5 HMAC authentication.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> authentication md5
+```{cfgcmd} set protocols ospf interface \<interface\> authentication md5
 
 key-id <id> md5-key <text>
 
@@ -640,7 +640,7 @@ and is associated with the given key-id.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> bandwidth <number>
+```{cfgcmd} set protocols ospf interface \<interface\> bandwidth \<number\>
 
 This command sets the interface bandwidth for cost calculations, where
 
@@ -648,7 +648,7 @@ bandwidth can be in range from 1 to 100000, specified in Mbits/s.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> cost <number>
+```{cfgcmd} set protocols ospf interface \<interface\> cost \<number\>
 
 This command sets link cost for the specified interface. The cost value is
 
@@ -658,7 +658,7 @@ range is 1 to 65535.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> dead-interval <number>
+```{cfgcmd} set protocols ospf interface \<interface\> dead-interval \<number\>
 
 Set number of seconds for router Dead Interval timer value used for Wait
 
@@ -670,7 +670,7 @@ interval range is 1 to 65535.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> hello-multiplier <number>
+```{cfgcmd} set protocols ospf interface \<interface\> hello-multiplier \<number\>
 
 The hello-multiplier specifies how many Hellos to send per second, from 1
 
@@ -686,7 +686,7 @@ multiple routers on a common link.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> hello-interval <number>
+```{cfgcmd} set protocols ospf interface \<interface\> hello-interval \<number\>
 
 Set number of seconds for Hello Interval timer value. Setting this value,
 
@@ -700,7 +700,7 @@ to 65535.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> bfd
+```{cfgcmd} set protocols ospf interface \<interface\> bfd
 
 This command enables :abbr:`BFD (Bidirectional Forwarding Detection)` on
 
@@ -708,7 +708,7 @@ this OSPF link interface.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> mtu-ignore
+```{cfgcmd} set protocols ospf interface \<interface\> mtu-ignore
 
 This command disables check of the MTU value in the OSPF DBD packets. Thus,
 
@@ -718,7 +718,7 @@ though there is an interface MTU mismatch between two OSPF routers.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> network <type>
+```{cfgcmd} set protocols ospf interface \<interface\> network \<type\>
 
 This command allows to specify the distribution type for the network
 
@@ -737,7 +737,7 @@ networks.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> priority <number>
+```{cfgcmd} set protocols ospf interface \<interface\> priority \<number\>
 
 This command sets Router Priority integer value. The router with the
 
@@ -749,7 +749,7 @@ Designated Router. The default value is 1. The interval range is 0 to 255.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> retransmit-interval
+```{cfgcmd} set protocols ospf interface \<interface\> retransmit-interval
 
 <number>
 
@@ -764,7 +764,7 @@ seconds. The interval range is 3 to 65535.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> transmit-delay <number>
+```{cfgcmd} set protocols ospf interface \<interface\> transmit-delay \<number\>
 
 This command sets number of seconds for InfTransDelay value. It allows to
 
@@ -776,13 +776,13 @@ default value is 1 seconds. The interval range is 3 to 65535.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> ldp-sync disable
+```{cfgcmd} set protocols ospf interface \<interface\> ldp-sync disable
 
 This command disables IGP-LDP sync for this specific interface.
 ```
 
 
-```{cfgcmd} set protocols ospf interface <interface> ldp-sync holddown
+```{cfgcmd} set protocols ospf interface \<interface\> ldp-sync holddown
 
  <seconds>
 
@@ -796,7 +796,7 @@ during convergence/interface flap events, but for this interface only.
 
 This feature summarises originated external LSAs (Type-5 and Type-7). Summary
 Route will be originated on-behalf of all matched external LSAs.
-```{cfgcmd} set protocols ospf aggregation timer <seconds>
+```{cfgcmd} set protocols ospf aggregation timer \<seconds\>
 
 Configure aggregation delay timer interval.
 
@@ -887,13 +887,13 @@ listening to the broadcast or multicast hello packets on the network.
 Because an NBMA network does not support broadcast (or multicast), the
 device cannot discover its neighbors dynamically, so you must configure all
 the neighbors statically.
-```{cfgcmd} set protocols ospf neighbor <A.B.C.D>
+```{cfgcmd} set protocols ospf neighbor \<A.B.C.D\>
 
 This command specifies the IP address of the neighboring device.
 ```
 
 
-```{cfgcmd} set protocols ospf neighbor <A.B.C.D> poll-interval <seconds>
+```{cfgcmd} set protocols ospf neighbor \<A.B.C.D\> poll-interval \<seconds\>
 
 This command specifies the length of time, in seconds, before the routing
 
@@ -905,7 +905,7 @@ value is 60 seconds.
 ```
 
 
-```{cfgcmd} set protocols ospf neighbor <A.B.C.D> priority <number>
+```{cfgcmd} set protocols ospf neighbor \<A.B.C.D\> priority \<number\>
 
 This command specifies the router priority value of the nonbroadcast
 
@@ -915,7 +915,7 @@ This keyword does not apply to point-to-multipoint interfaces.
 ```
 #### Redistribution Configuration
 
-```{cfgcmd} set protocols ospf redistribute <route source>
+```{cfgcmd} set protocols ospf redistribute \<route source\>
 
    This command redistributes routing information from the given route source
 
@@ -926,7 +926,7 @@ This keyword does not apply to point-to-multipoint interfaces.
 ```
 
 
-```{cfgcmd} set protocols ospf default-metric <number>
+```{cfgcmd} set protocols ospf default-metric \<number\>
 
 This command specifies the default metric value of redistributed routes.
 
@@ -934,7 +934,7 @@ The metric range is 0 to 16777214.
 ```
 
 
-```{cfgcmd} set protocols ospf redistribute <route source> metric <number>
+```{cfgcmd} set protocols ospf redistribute \<route source\> metric \<number\>
 
 This command specifies metric for redistributed routes from the given
 
@@ -944,7 +944,7 @@ connected, kernel, rip, static. The metric range is 1 to 16777214.
 ```
 
 
-```{cfgcmd} set protocols ospf redistribute <route source> metric-type <1|2>
+```{cfgcmd} set protocols ospf redistribute \<route source\> metric-type \<1|2\>
 
 This command specifies metric type for redistributed routes. Difference
 
@@ -978,7 +978,7 @@ will consider these external links to have a default metric type 2.
 ```
 
 
-```{cfgcmd} set protocols ospf redistribute <route source> route-map <name>
+```{cfgcmd} set protocols ospf redistribute \<route source\> route-map \<name\>
 
 This command allows to use route map to filter redistributed routes from
 
@@ -1080,7 +1080,7 @@ Neighbor 10.0.23.2, interface address 10.0.23.2
 ```
 
 
-```{opcmd} show ip ospf neighbor <A.B.C.D>
+```{opcmd} show ip ospf neighbor \<A.B.C.D\>
 
 This command displays the neighbors information in a detailed form for a
 
@@ -1088,7 +1088,7 @@ neighbor whose IP address is specified.
 ```
 
 
-```{opcmd} show ip ospf neighbor <interface>
+```{opcmd} show ip ospf neighbor \<interface\>
 
 This command displays the neighbors status for a neighbor on the specified
 
@@ -1096,7 +1096,7 @@ interface.
 ```
 
 
-```{opcmd} show ip ospf interface [<interface>]
+```{opcmd} show ip ospf interface [\<interface\>]
 
 This command displays state and configuration of OSPF the specified
 
@@ -1281,7 +1281,7 @@ Link ID         ADV Router      Age  Seq#       CkSum  Route
 ```
 
 
-```{opcmd} show ip ospf database <type> [A.B.C.D]
+```{opcmd} show ip ospf database \<type\> [A.B.C.D]
 
 [adv-router <A.B.C.D>|self-originate]
 
@@ -1558,7 +1558,7 @@ O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:51
 #### General
 VyOS does not have a special command to start the OSPFv3 process. The OSPFv3
 process starts when the first ospf enabled interface is configured.
-```{cfgcmd} set protocols ospfv3 interface <interface> area <number>
+```{cfgcmd} set protocols ospfv3 interface \<interface\> area \<number\>
 
    This command specifies the OSPFv3 enabled interface. This command is also
 
@@ -1571,7 +1571,7 @@ process starts when the first ospf enabled interface is configured.
 ```
 
 
-```{cfgcmd} set protocols ospfv3 parameters router-id <rid>
+```{cfgcmd} set protocols ospfv3 parameters router-id \<rid\>
 
 This command sets the router-ID of the OSPFv3 process. The router-ID may be
 
@@ -1585,7 +1585,7 @@ configured with the same router-ID!
 ```
 (ospf-v3-optional)=
 #### Optional
-```{cfgcmd} set protocols ospfv3 distance global <distance>
+```{cfgcmd} set protocols ospfv3 distance global \<distance\>
 
 This command change distance value of OSPFv3 globally.
 The distance range is 1 to 255.
@@ -1599,13 +1599,13 @@ routes respectively. The distance range is 1 to 255.
 ```
 (ospf-v3-area-configuration)=
 #### Area Configuration
-```{cfgcmd} set protocols ospfv3 area <number> range <prefix>
+```{cfgcmd} set protocols ospfv3 area \<number\> range \<prefix\>
 
 This command summarizes intra area paths from specified area into one
 Type-3 Inter-Area Prefix LSA announced to other areas. This command can be
 used only in ABR.
 ```
-```{cfgcmd} set protocols ospfv3 area <number> range <prefix> not-advertise
+```{cfgcmd} set protocols ospfv3 area \<number\> range \<prefix\> not-advertise
 
 This command instead of summarizing intra area paths filter them - i.e.
 intra area paths from this range are not advertised into other areas. This
@@ -1613,20 +1613,20 @@ command makes sense in ABR only.
 ```
 (ospf-v3-interface-config)=
 #### Interface Configuration
-```{cfgcmd} set protocols ospfv3 interface <interface> ipv6 cost <number>
+```{cfgcmd} set protocols ospfv3 interface \<interface\> ipv6 cost \<number\>
 
 This command sets link cost for the specified interface. The cost value is
 set to router-LSA’s metric field and used for SPF calculation. The cost
 range is 1 to 65535.
 ```
-```{cfgcmd} set protocols ospfv3 interface <interface> dead-interval <number>
+```{cfgcmd} set protocols ospfv3 interface \<interface\> dead-interval \<number\>
 
 Set number of seconds for router Dead Interval timer value used for Wait
 Timer and Inactivity Timer. This value must be the same for all routers
 attached to a common network. The default value is 40 seconds. The
 interval range is 1 to 65535.
 ```
-```{cfgcmd} set protocols ospfv3 interface <interface> hello-interval
+```{cfgcmd} set protocols ospfv3 interface \<interface\> hello-interval
 
    <number>
 Set number of seconds for Hello Interval timer value. Setting this value,
@@ -1635,14 +1635,14 @@ interface. This value must be the same for all routers attached to a
 common network. The default value is 10 seconds. The interval range is 1
 to 65535.
 ```
-```{cfgcmd} set protocols ospfv3 interface <interface> mtu-ignore
+```{cfgcmd} set protocols ospfv3 interface \<interface\> mtu-ignore
 
 This command disables check of the MTU value in the OSPF DBD packets.
 Thus, use of this command allows the OSPF adjacency to reach the FULL
 state even though there is an interface MTU mismatch between two OSPF
 routers.
 ```
-```{cfgcmd} set protocols ospfv3 interface <interface> network <type>
+```{cfgcmd} set protocols ospfv3 interface \<interface\> network \<type\>
 
 This command allows to specify the distribution type for the network
 connected to this interface:
@@ -1650,20 +1650,20 @@ connected to this interface:
 **broadcast** – broadcast IP addresses distribution.
 **point-to-point** – address distribution in point-to-point networks.
 ```
-```{cfgcmd} set protocols ospfv3 interface <interface> priority <number>
+```{cfgcmd} set protocols ospfv3 interface \<interface\> priority \<number\>
 
 This command sets Router Priority integer value. The router with the
 highest priority will be more eligible to become Designated Router.
 Setting the value to 0, makes the router ineligible to become Designated
 Router. The default value is 1. The interval range is 0 to 255.
 ```
-```{cfgcmd} set protocols ospfv3 interface <interface> passive
+```{cfgcmd} set protocols ospfv3 interface \<interface\> passive
 
 This command specifies interface as passive. Passive interface advertises
 its address, but does not run the OSPF protocol (adjacencies are not formed
 and hello packets are not generated).
 ```
-```{cfgcmd} set protocols ospfv3 interface <interface> retransmit-interval
+```{cfgcmd} set protocols ospfv3 interface \<interface\> retransmit-interval
 
    <number>
 This command sets number of seconds for RxmtInterval timer value. This
@@ -1671,7 +1671,7 @@ value is used when retransmitting Database Description and Link State
 Request packets if acknowledge was not received. The default value is 5
 seconds. The interval range is 3 to 65535.
 ```
-```{cfgcmd} set protocols ospfv3 interface <interface> transmit-delay
+```{cfgcmd} set protocols ospfv3 interface \<interface\> transmit-delay
 
    <number>
 This command sets number of seconds for InfTransDelay value. It allows to
@@ -1719,13 +1719,13 @@ By default, it supports both planned and unplanned outages.
 ```
 (ospf-v3-redistribution-config)=
 #### Redistribution Configuration
-```{cfgcmd} set protocols ospfv3 redistribute <route source>
+```{cfgcmd} set protocols ospfv3 redistribute \<route source\>
 
 This command redistributes routing information from the given route source
 to the OSPFv3 process. There are five modes available for route source:
 bgp, connected, kernel, ripng, static.
 ```
-```{cfgcmd} set protocols ospf redistribute <route source> route-map <name>
+```{cfgcmd} set protocols ospf redistribute \<route source\> route-map \<name\>
 
 This command allows to use route map to filter redistributed routes from
 given route source. There are five modes available for route source: bgp,
@@ -1746,7 +1746,7 @@ just a summary table.
 
 This command displays the neighbor DR choice information.
 ```
-```{opcmd} show ipv6 ospfv3 interface [prefix]|[<interface> [prefix]]
+```{opcmd} show ipv6 ospfv3 interface [prefix]|[\<interface\> [prefix]]
 
 This command displays state and configuration of OSPF the specified
 interface, or all interfaces if no interface is given. Whith the argument
@@ -1766,7 +1766,7 @@ system boundary routers.
 
 This command displays a summary table with a database contents (LSA).
 ```
-```{opcmd} show ipv6 ospfv3 database <type> [A.B.C.D]
+```{opcmd} show ipv6 ospfv3 database \<type\> [A.B.C.D]
 
    [adv-router <A.B.C.D>|self-originate]
 This command displays a database contents for a specific link

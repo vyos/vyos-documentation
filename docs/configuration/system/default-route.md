@@ -8,7 +8,7 @@ and existing configurations are migrated to the new CLI command.
 
 ## Configuration
 
-```{cfgcmd} set protocols static route 0.0.0.0/0 next-hop <address>
+```{cfgcmd} set protocols static route 0.0.0.0/0 next-hop \<address\>
 
 Specify static route into the routing table sending all non local traffic
 

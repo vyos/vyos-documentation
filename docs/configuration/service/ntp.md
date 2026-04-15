@@ -38,7 +38,7 @@ the `allow-client` directive.
 
 ## Configuration
 
-```{cfgcmd} set service ntp server <address>
+```{cfgcmd} set service ntp server \<address\>
 
    Configure one or more servers for synchronisation. Server name can be either
 
@@ -57,7 +57,7 @@ the `allow-client` directive.
 ```
 
 
-```{cfgcmd} set service ntp server <address> <noselect | nts | pool | prefer | ptp | interleave>
+```{cfgcmd} set service ntp server \<address\> \<noselect | nts | pool | prefer | ptp | interleave\>
 
 Configure one or more attributes to the given NTP server.
 
@@ -95,7 +95,7 @@ Configure one or more attributes to the given NTP server.
 ```
 
 
-```{cfgcmd} set service ntp listen-address <address>
+```{cfgcmd} set service ntp listen-address \<address\>
 
 NTP process will only listen on the specified IP address. You must specify
 
@@ -107,7 +107,7 @@ IPv6 address can be configured, using separate commands for each.
 ```
 
 
-```{cfgcmd} set service ntp allow-client address <address>
+```{cfgcmd} set service ntp allow-client address \<address\>
 
 List of networks or client addresses permitted to contact this NTP server.
 
@@ -116,7 +116,7 @@ Multiple networks/client IP addresses can be configured.
 ```
 
 
-```{cfgcmd} set service ntp vrf <name>
+```{cfgcmd} set service ntp vrf \<name\>
 
 Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 ```
@@ -192,7 +192,7 @@ not supported, chrony will attempt to set it to timestamp all packets. If
 neither option is supported (e.g. the NIC can only timestamp received PTP
 packets), chrony will leverage timestamping on transmitted packets only, which
 still provides some benefit.
-```{cfgcmd} set service ntp timestamp interface <interface>
+```{cfgcmd} set service ntp timestamp interface \<interface\>
 
 Configures hardware timestamping on the interface <interface>. The special
 
@@ -238,7 +238,7 @@ Enables the NTP daemon PTP transport. The NTP daemon will listen on the
 configured PTP port. Note that one or more servers must be individually
 enabled for PTP before the daemon will synchronize over the transport.
 ```
-```{cfgcmd} set service ntp ptp port <port>
+```{cfgcmd} set service ntp ptp port \<port\>
 
 Configures the PTP port. By default, the standard port 319 is used.
 ```

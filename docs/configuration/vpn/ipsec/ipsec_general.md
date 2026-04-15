@@ -104,21 +104,21 @@ Post-Quantum Preshared Keys help provide some quantum resistance to IPSec
 tunnels when a post-quantum key exchange algorithm such as ML-KEM is not
 available. The use of PPKs in IKEv2 is described in {rfc}`8784`.
 
-```{cfgcmd} edit vpn authentication ppk <name>
+```{cfgcmd} edit vpn authentication ppk \<name\>
 ```
 PPKs can be configued within VyOS under the `vpn ipsec authentication ppk`
 config.
-```{cfgcmd} set vpn authentication ppk <name> secret-type <plaintext|hex|base64>
+```{cfgcmd} set vpn authentication ppk \<name\> secret-type \<plaintext|hex|base64\>
 ```
 PPKs need an id and a secret value. The ID and the secret must match if PPKs are
 required for a successful IPsec connection. The secret can be plain text, a
 hex value, or a Base64 value. The default is plain text. If using another
 type of value, you must define the secret type.
-```{cfgcmd} set vpn ipsec site-to-site <name> ppk id <id>
+```{cfgcmd} set vpn ipsec site-to-site \<name\> ppk id \<id\>
 ```
 To use a PPK within a site-to-site or remote access connection, define the PPK
 id under the connection.
-```{cfgcmd} set vpn ipsec site-to-site <name> ppk required
+```{cfgcmd} set vpn ipsec site-to-site \<name\> ppk required
 ```
 Optionally, you can require the use of PPK to have a successful connection.
 ```{opcmd} show vpn ipsec connections
@@ -132,7 +132,7 @@ but optional, and `req` is configured and required. The in use will show yes
 ## Configuration IKE
 ### IKE (Internet Key Exchange) Attributes
 VyOS IKE group has the next options:
-```{cfgcmd} set vpn ipsec ike-group <name> close-action <action>
+```{cfgcmd} set vpn ipsec ike-group \<name\> close-action \<action\>
 
  Defines the action to take if the remote peer unexpectedly
  closes a CHILD_SA:
@@ -145,7 +145,7 @@ VyOS IKE group has the next options:
 * **start** - Tries to immediately re-create the CHILD_SA.
 ```
 
-```{cfgcmd} set vpn ipsec ike-group <name> ikev2-reauth
+```{cfgcmd} set vpn ipsec ike-group \<name\> ikev2-reauth
 
 Whether rekeying of an IKE_SA should also reauthenticate
 the peer. In IKEv1, reauthentication is always done.
@@ -153,7 +153,7 @@ Setting this parameter enables remote host re-authentication
 during an IKE rekey.
 ```
 
-```{cfgcmd} set vpn ipsec ike-group <name> key-exchange
+```{cfgcmd} set vpn ipsec ike-group \<name\> key-exchange
 
  Which protocol should be used to initialize the connection
  If not set both protocols are handled and connections will
@@ -164,12 +164,12 @@ during an IKE rekey.
 * **ikev2** - Use IKEv2 for Key Exchange.
 ```
 
-```{cfgcmd} set vpn ipsec ike-group <name> lifetime
+```{cfgcmd} set vpn ipsec ike-group \<name\> lifetime
 
 IKE lifetime in seconds <0-86400> (default 28800).
 ```
 
-```{cfgcmd} set vpn ipsec ike-group <name> mode
+```{cfgcmd} set vpn ipsec ike-group \<name\> mode
 
  IKEv1 Phase 1 Mode Selection:
 
@@ -179,27 +179,27 @@ IKE lifetime in seconds <0-86400> (default 28800).
   protocol aggressive mode is much more insecure compared to Main mode.
 ```
 
-```{cfgcmd} set vpn ipsec ike-group <name> proposal <number> dh-group <dh-group number>
+```{cfgcmd} set vpn ipsec ike-group \<name\> proposal \<number\> dh-group \<dh-group number\>
 
 Dh-group. Default value is **2**.
 ```
 
-```{cfgcmd} set vpn ipsec ike-group <name> proposal <number> encryption <encryption>
+```{cfgcmd} set vpn ipsec ike-group \<name\> proposal \<number\> encryption \<encryption\>
 
 Encryption algorithm. Default value is **aes128**.
 ```
 
-```{cfgcmd} set vpn ipsec ike-group <name> proposal <number> hash <hash>
+```{cfgcmd} set vpn ipsec ike-group \<name\> proposal \<number\> hash \<hash\>
 
 Hash algorithm. Default value is **sha1**.
 ```
 
-```{cfgcmd} set vpn ipsec ike-group <name> proposal <number> prf <prf>
+```{cfgcmd} set vpn ipsec ike-group \<name\> proposal \<number\> prf \<prf\>
 
 Pseudo-random function.
 ```
 ### DPD (Dead Peer Detection) Configuration
-```{cfgcmd} set vpn ipsec ike-group <name> dead-peer-detection action <action>
+```{cfgcmd} set vpn ipsec ike-group \<name\> dead-peer-detection action \<action\>
 
   Action to perform for this CHILD_SA on DPD timeout.
 
@@ -221,13 +221,13 @@ Pseudo-random function.
 ```
 
 
-```{cfgcmd} set vpn ipsec ike-group <name> dead-peer-detection interval <interval>
+```{cfgcmd} set vpn ipsec ike-group \<name\> dead-peer-detection interval \<interval\>
 
 Keep-alive interval in seconds <2-86400> (default 30).
 ```
 
 
-```{cfgcmd} set vpn ipsec ike-group <name> dead-peer-detection timeout <timeout>
+```{cfgcmd} set vpn ipsec ike-group \<name\> dead-peer-detection timeout \<timeout\>
 
 Keep-alive timeout in seconds <2-86400> (default 120) **IKEv1 only**
 ```
@@ -239,7 +239,7 @@ Multiple proposals can be specified in a single group.
 
 
 VyOS ESP group has the next options:
-```{cfgcmd} set vpn ipsec esp-group <name> compression
+```{cfgcmd} set vpn ipsec esp-group \<name\> compression
 
 Enables the  IPComp(IP Payload Compression) protocol which allows
 
@@ -247,7 +247,7 @@ compressing the content of IP packets.
 ```
 
 
-```{cfgcmd} set vpn ipsec esp-group <name> disable-rekey
+```{cfgcmd} set vpn ipsec esp-group \<name\> disable-rekey
 
 Do not locally initiate a re-key of the SA, remote peer must
 
@@ -255,7 +255,7 @@ re-key before expiration.
 ```
 
 
-```{cfgcmd} set vpn ipsec esp-group <name> life-bytes <bytes>
+```{cfgcmd} set vpn ipsec esp-group \<name\> life-bytes \<bytes\>
 
 ESP life in bytes <1024-26843545600000>. Number of bytes
 
@@ -263,7 +263,7 @@ transmitted over an IPsec SA before it expires.
 ```
 
 
-```{cfgcmd} set vpn ipsec esp-group <name> life-packets <packets>
+```{cfgcmd} set vpn ipsec esp-group \<name\> life-packets \<packets\>
 
 ESP life in packets <1000-26843545600000>.
 
@@ -271,7 +271,7 @@ Number of packets transmitted over an IPsec SA before it expires.
 ```
 
 
-```{cfgcmd} set vpn ipsec esp-group <name> lifetime <timeout>
+```{cfgcmd} set vpn ipsec esp-group \<name\> lifetime \<timeout\>
 
 ESP lifetime in seconds <30-86400> (default 3600).
 
@@ -283,7 +283,7 @@ from successful negotiation to expiry.
 ```
 
 
-```{cfgcmd} set vpn ipsec esp-group <name> mode <mode>
+```{cfgcmd} set vpn ipsec esp-group \<name\> mode \<mode\>
 
 The type of the connection:
 
@@ -294,7 +294,7 @@ The type of the connection:
 ```
 
 
-```{cfgcmd} set vpn ipsec esp-group <name> pfs < dh-group>
+```{cfgcmd} set vpn ipsec esp-group \<name\> pfs \< dh-group\>
 
  Whether Perfect Forward Secrecy of keys is desired on the
 
@@ -311,18 +311,18 @@ The type of the connection:
 ```
 
 
-```{cfgcmd} set vpn ipsec esp-group <name> proposal <number> encryption <encryption>
+```{cfgcmd} set vpn ipsec esp-group \<name\> proposal \<number\> encryption \<encryption\>
 
 Encryption algorithm. Default value is **aes128**.
 ```
 
 
-```{cfgcmd} set vpn ipsec esp-group <name> proposal <number> hash <hash>
+```{cfgcmd} set vpn ipsec esp-group \<name\> proposal \<number\> hash \<hash\>
 
 Hash algorithm. Default value is **sha1**.
 ```
 ### Global IPsec Settings
-```{cfgcmd} set vpn ipsec interface <name>
+```{cfgcmd} set vpn ipsec interface \<name\>
 
 Interface name to restrict outbound IPsec policies. There is a possibility
 
@@ -330,11 +330,11 @@ to specify multiple interfaces. If an interfaces are not specified, IPsec
 
 policies apply to all interfaces.
 ```
-```{cfgcmd} set vpn ipsec log level <number>
+```{cfgcmd} set vpn ipsec log level \<number\>
 
 Level of logging. Default value is **0**.
 ```
-```{cfgcmd} set vpn ipsec log subsystem <name>
+```{cfgcmd} set vpn ipsec log subsystem \<name\>
 
 Subsystem of the daemon.
 ```
@@ -357,7 +357,7 @@ selector and allows it to e.g. negotiate a TS of 0.0.0.0/0 == 0.0.0.0/0
 instead. This has been tested with a "tunnel mode ipsec ipv4" Cisco
 template but should also work for GRE encapsulation.
 ```
-```{cfgcmd} set vpn ipsec options interface <name>
+```{cfgcmd} set vpn ipsec options interface \<name\>
 
 Interface Name to use. The name of the interface on which
 virtual IP addresses should be installed. If not specified the addresses

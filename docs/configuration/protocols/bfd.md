@@ -13,48 +13,48 @@ The idea behind BFD is to detect very quickly when a peer is down and take actio
 BFD sends lots of small UDP packets very quickly to ensures that the peer is still alive.
 This allows avoiding the timers defined in BGP and OSPF protocol to expires.
 ## Configure BFD
-```{cfgcmd} set protocols bfd peer <address>
+```{cfgcmd} set protocols bfd peer \<address\>
 
 Set BFD peer IPv4 address or IPv6 address
 ```
 
-```{cfgcmd} set protocols bfd peer <address> echo-mode
+```{cfgcmd} set protocols bfd peer \<address\> echo-mode
 
 Enables the echo transmission mode
 ```
 
-```{cfgcmd} set protocols bfd peer <address> multihop
+```{cfgcmd} set protocols bfd peer \<address\> multihop
 
 Allow this BFD peer to not be directly connected
 ```
 
-```{cfgcmd} set protocols bfd peer <address> source [address <address> | interface <interface>]
+```{cfgcmd} set protocols bfd peer \<address\> source [address \<address\> | interface \<interface\>]
 
 Bind listener to specific interface/address, mandatory for IPv6
 ```
 
-```{cfgcmd} set protocols bfd peer <address> interval echo-interval <10-60000>
+```{cfgcmd} set protocols bfd peer \<address\> interval echo-interval \<10-60000\>
 
 The minimal echo receive transmission interval that this system is
 capable of handling
 ```
 
-```{cfgcmd} set protocols bfd peer <address> interval multiplier <2-255>
+```{cfgcmd} set protocols bfd peer \<address\> interval multiplier \<2-255\>
 
 Remote transmission interval will be multiplied by this value
 ```
 
-```{cfgcmd} set protocols bfd peer <address> interval [receive | transmit] <10-60000>
+```{cfgcmd} set protocols bfd peer \<address\> interval [receive | transmit] \<10-60000\>
 
 Interval in milliseconds
 ```
 
-```{cfgcmd} set protocols bfd peer <address> shutdown
+```{cfgcmd} set protocols bfd peer \<address\> shutdown
 
 Disable a BFD peer
 ```
 
-```{cfgcmd} set protocols bfd peer <address> minimum-ttl <1-254>
+```{cfgcmd} set protocols bfd peer \<address\> minimum-ttl \<1-254\>
 
 For multi hop sessions only. Configure the minimum expected TTL for an
 incoming BFD control packet.
@@ -63,31 +63,31 @@ This feature serves the purpose of thightening the packet validation
 requirements to avoid receiving BFD control packets from other sessions.
 ```
 ### Enable BFD in BGP
-```{cfgcmd} set protocols bgp neighbor <neighbor> bfd
+```{cfgcmd} set protocols bgp neighbor \<neighbor\> bfd
 
 Enable BFD on a single BGP neighbor
 ```
 
-```{cfgcmd} set protocols bgp peer-group <neighbor> bfd
+```{cfgcmd} set protocols bgp peer-group \<neighbor\> bfd
 
 Enable BFD on a BGP peer group
 ```
 ### Enable BFD in OSPF
 
-```{cfgcmd} set protocols ospf interface <interface> bfd
+```{cfgcmd} set protocols ospf interface \<interface\> bfd
 
    Enable BFD for OSPF on an interface
 
 ```
 
 
-```{cfgcmd} set protocols ospfv3 interface <interface> bfd
+```{cfgcmd} set protocols ospfv3 interface \<interface\> bfd
 
 Enable BFD for OSPFv3 on an interface
 ```
 ### Enable BFD in ISIS
 
-```{cfgcmd} set protocols isis <name> interface <interface> bfd
+```{cfgcmd} set protocols isis \<name\> interface \<interface\> bfd
 
 Enable BFD for ISIS on an interface
 
@@ -174,7 +174,7 @@ but when the BFD session is down it is removed from the RIB.
 
 
 ### Configuration
-```{cfgcmd} set protocols static route <subnet> next-hop <address>
+```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\>
 
 bfd profile <profile>
 
@@ -185,7 +185,7 @@ and use the gateway address as BFD peer destination address.
 ```
 
 
-```{cfgcmd} set protocols static route <subnet> next-hop <address>
+```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\>
 
 bfd multi-hop source <address> profile <profile>
 
@@ -198,7 +198,7 @@ and the gateway address as BFD peer destination address.
 ```
 
 
-```{cfgcmd} set protocols static route6 <subnet> next-hop <address>
+```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\>
 
 bfd profile <profile>
 
@@ -209,7 +209,7 @@ and use the gateway address as BFD peer destination address.
 ```
 
 
-```{cfgcmd} set protocols static route6 <subnet> next-hop <address>
+```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\>
 
 bfd multi-hop source <address> profile <profile>
 

@@ -19,7 +19,7 @@ transmitted (tx), and dropped (drop).
 ### Starting Packet Capture
 **Command syntax:**
 % stop_vyoslinter
-```{opcmd} sudo vppctl pcap trace [rx] [tx] [drop] [max <n>] [intfc <interface-name|any>] [file <name>] [max-bytes-per-pkt <n>]
+```{opcmd} sudo vppctl pcap trace [rx] [tx] [drop] [max \<n\>] [intfc \<interface-name|any\>] [file \<name\>] [max-bytes-per-pkt \<n\>]
 ```
 % start_vyoslinter
 **Parameters:**
@@ -83,7 +83,7 @@ systems. Limit the number of traced packets to avoid overwhelming the system.
 ### Basic Packet Tracing Commands
 #### Start tracing
 To start tracing packets at a specific graph node:
-```{opcmd} sudo vppctl trace add <input-graph-node> <pkts> [verbose]
+```{opcmd} sudo vppctl trace add \<input-graph-node\> \<pkts\> [verbose]
 ```
 - `<input-graph-node>` - Graph node name where tracing starts
   (for example, `dpdk-input`, `ethernet-input`, or `ip4-input`).

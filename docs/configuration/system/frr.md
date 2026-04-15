@@ -10,7 +10,7 @@ but requires either a restart of the routing daemon, or a reboot of the system.
 
 Enable :abbr:`BMP (BGP Monitoring Protocol)` support.
 ```
-```{cfgcmd} set system frr descriptors <numer>
+```{cfgcmd} set system frr descriptors \<numer\>
 
 This allows the operator to control the number of open file descriptors
 each daemon is allowed to start with. If the operator plans to run bgp with
@@ -21,12 +21,12 @@ this to happen.
 
 Enable ICMP Router Discovery Protocol support.
 ```
-```{cfgcmd} set system frr profile <traditional | datacenter>
+```{cfgcmd} set system frr profile \<traditional | datacenter\>
 
 Select an FRR profile to adapt its default settings. If unset, the
 traditional profile is applied.
 ```
-```{cfgcmd} set system frr snmp <daemon>
+```{cfgcmd} set system frr snmp \<daemon\>
 
 Enable SNMP support for an individual routing daemon.
 

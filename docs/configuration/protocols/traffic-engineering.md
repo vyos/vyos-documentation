@@ -9,7 +9,7 @@ alternative path.
 
 Traffic Engineering parameters are used for both IS-IS and OSPF (not supported yet).
 
-```{cfgcmd} set protocols traffic-engineering admin-group <admin-group-name> bit-position <bit-position-value>
+```{cfgcmd} set protocols traffic-engineering admin-group \<admin-group-name\> bit-position \<bit-position-value\>
 
   Create Administrative group and assosiate bit position with it. These groups can be
 
@@ -21,19 +21,19 @@ Traffic Engineering parameters are used for both IS-IS and OSPF (not supported y
 ```
 
 
-```{cfgcmd} set protocols traffic-engineering interface <ifname> admin-group <admin-group-name>
+```{cfgcmd} set protocols traffic-engineering interface \<ifname\> admin-group \<admin-group-name\>
 
 Set administrative group for interface <ifname>. Multiple values can be provided.
 ```
 
 
-```{cfgcmd} set protocols traffic-engineering interface <ifname> max-bandwidth <max-bandwidth-value-mbps>
+```{cfgcmd} set protocols traffic-engineering interface \<ifname\> max-bandwidth \<max-bandwidth-value-mbps\>
 
 Set maximum bandwidth for interface <ifname>. Value given in Mbits per second.
 ```
 
 
-```{cfgcmd} set protocols traffic-engineering interface <ifname> max-reservable-bandwidth <max-reservable-bandwidth-value-mbps>
+```{cfgcmd} set protocols traffic-engineering interface \<ifname\> max-reservable-bandwidth \<max-reservable-bandwidth-value-mbps\>
 
 Set maximum reservable bandwidth for interface <ifname>. Value given in Mbits per second.
 ```
@@ -48,7 +48,7 @@ Enable Traffic Engineering for IS-IS.
 
 Export Traffic Engineering data to neighbors.
 ```
-```{cfgcmd} set protocols isis traffic-engineering address <ipv4-address>
+```{cfgcmd} set protocols isis traffic-engineering address \<ipv4-address\>
 
 Configure IPv4 address for MPLS-TE.
 ```

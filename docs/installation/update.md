@@ -15,7 +15,7 @@ current configuration.
 Only LTS releases are PGP-signed.
 :::
 
-```{opcmd} add system image <url | path> | [latest] [vrf name]
+```{opcmd} add system image \<url | path\> | [latest] [vrf name]
 
    [username user [password pass]]
 

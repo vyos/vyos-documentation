@@ -25,7 +25,7 @@ This flexibility allows you to create complex Layer 2 topologies
 combining different networking technologies.
 ## Basic Configuration
 ### Creating a Bridge Interface
-```{cfgcmd} set interfaces vpp bridge <vppbrN>
+```{cfgcmd} set interfaces vpp bridge \<vppbrN\>
 
 Create a bridge interface where ``<vppbrN>`` follows the naming
 convention ``vppbr1``, ``vppbr2``, etc.
@@ -40,7 +40,7 @@ configurations.
 set interfaces vpp bridge vppbr1
 ```
 ### Interface Description
-```{cfgcmd} set interfaces vpp bridge <vppbrN> description <description>
+```{cfgcmd} set interfaces vpp bridge \<vppbrN\> description \<description\>
 
 Set a descriptive name for the bridge interface.
 ```
@@ -51,7 +51,7 @@ set interfaces vpp bridge vppbr1 description "Main campus bridge"
 ```
 ## Member Interface Configuration
 ### Adding Member Interfaces
-```{cfgcmd} set interfaces vpp bridge <vppbrN> member interface
+```{cfgcmd} set interfaces vpp bridge \<vppbrN\> member interface
 
             <interface-name>
 Add an interface as a member of the bridge.
@@ -80,7 +80,7 @@ A Bridge Virtual Interface (BVI) provides Layer 3 connectivity to a
 bridge domain, allowing the bridge to have an IP address and participate
 in routing.
 ### Configuring BVI
-```{cfgcmd} set interfaces vpp bridge <vppbrN> member interface
+```{cfgcmd} set interfaces vpp bridge \<vppbrN\> member interface
 
             <loopback-interface> bvi
 Designate a loopback interface as the Bridge Virtual Interface for

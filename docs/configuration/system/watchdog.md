@@ -35,7 +35,7 @@ If ``/dev/watchdog0`` does not exist and no module is configured, commit will
 fail. If a module is configured but ``/dev/watchdog0`` still cannot be
 created, VyOS will emit a warning and will not enable the systemd watchdog.
 ```
-```{cfgcmd} set system watchdog module <module-name>
+```{cfgcmd} set system watchdog module \<module-name\>
 
 Specify the kernel watchdog driver module to load for ``/dev/watchdog0``.
 
@@ -83,7 +83,7 @@ Example:
 
   set system watchdog module softdog
 ```
-```{cfgcmd} set system watchdog timeout <seconds>
+```{cfgcmd} set system watchdog timeout \<seconds\>
    :defaultvalue:
 Set the watchdog timeout for normal runtime operation in seconds.
 
@@ -107,7 +107,7 @@ Example:
 
   set system watchdog timeout 30
 ```
-```{cfgcmd} set system watchdog shutdown-timeout <seconds>
+```{cfgcmd} set system watchdog shutdown-timeout \<seconds\>
    :defaultvalue:
 Set the watchdog timeout during system shutdown in seconds.
 
@@ -131,7 +131,7 @@ Example:
 
   set system watchdog shutdown-timeout 180
 ```
-```{cfgcmd} set system watchdog reboot-timeout <seconds>
+```{cfgcmd} set system watchdog reboot-timeout \<seconds\>
    :defaultvalue:
 Set the watchdog timeout during system reboot in seconds.
 

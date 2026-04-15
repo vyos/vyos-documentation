@@ -7,25 +7,25 @@ manipulation: **large-community-list** is one of them.
 
 ### policy large-community-list
 
-```{cfgcmd} set policy large-community-list <text>
+```{cfgcmd} set policy large-community-list \<text\>
 
 Create large-community-list policy identified by name <text>.
 ```
-```{cfgcmd} set policy large-community-list <text> description <text>
+```{cfgcmd} set policy large-community-list \<text\> description \<text\>
 
 Set description for large-community-list policy.
 ```
-```{cfgcmd} set policy large-community-list <text> rule <1-65535> action
+```{cfgcmd} set policy large-community-list \<text\> rule \<1-65535\> action
 
    <permit|deny>
 Set action to take on entries matching this rule.
 ```
-```{cfgcmd} set policy large-community-list <text> rule <1-65535> description
+```{cfgcmd} set policy large-community-list \<text\> rule \<1-65535\> description
 
    <text>
 Set description for rule.
 ```
-```{cfgcmd} set policy large-community-list <text> rule <1-65535> regex
+```{cfgcmd} set policy large-community-list \<text\> rule \<1-65535\> regex
 
    <aa:nn:nn>
 Regular expression to match against a large community list.

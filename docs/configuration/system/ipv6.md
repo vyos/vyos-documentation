@@ -9,7 +9,7 @@
 ```
 
 
-```{cfgcmd} set system ipv6 neighbor table-size <number>
+```{cfgcmd} set system ipv6 neighbor table-size \<number\>
 
 Use this command to define the maximum number of entries to keep in
 
@@ -35,7 +35,7 @@ Use this command to user Layer 4 information for ECMP hashing.
 Zebra supports prefix-lists and Route Maps to match routes received from
 other FRR components. The permit/deny facilities provided by these commands
 can be used to filter which routes zebra will install in the kernel.
-```{cfgcmd} set system ipv6 protocol <protocol> route-map <route-map>
+```{cfgcmd} set system ipv6 protocol \<protocol\> route-map \<route-map\>
 
 Apply a route-map filter to routes for the specified protocol. The following
 
@@ -230,14 +230,14 @@ Use this command to show the status of the RIPNG protocol
 ```
 ### Reset commands
 
-```{opcmd} reset bgp ipv6 <address>
+```{opcmd} reset bgp ipv6 \<address\>
 
 Use this command to clear Border Gateway Protocol statistics or
 
 status.
 
 ```
-```{opcmd} reset ipv6 neighbors <address | interface>
+```{opcmd} reset ipv6 neighbors \<address | interface\>
 
 Use this command to reset IPv6 Neighbor Discovery Protocol cache for
 an address or interface.

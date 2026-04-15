@@ -7,7 +7,7 @@ until the target becomes available.
 
 ## Failover Routes
 
-```{cfgcmd} set protocols failover route <subnet> next-hop <address> check
+```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check
 
    target <target-address>
 
@@ -20,7 +20,7 @@ until the target becomes available.
 ```
 
 
-```{cfgcmd} set protocols failover route <subnet> next-hop <address> check
+```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check
 
 timeout <timeout>
 
@@ -32,7 +32,7 @@ Range is 1 to 300, default is 10.
 ```
 
 
-```{cfgcmd} set protocols failover route <subnet> next-hop <address> check
+```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check
 
 type <protocol>
 
@@ -51,7 +51,7 @@ Defines protocols for checking ARP, ICMP, TCP.
 
 
   > Default is `icmp`.
-```{cfgcmd} set protocols failover route <subnet> next-hop <address> check
+```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check
 
 policy <policy>
 
@@ -67,7 +67,7 @@ Policy for checking targets
 
 
   > Default is `any-available`.
-```{cfgcmd} set protocols failover route <subnet> next-hop <address>
+```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\>
 
 interface <interface>
 
@@ -76,7 +76,7 @@ Next-hop interface for the route
 ```
 
 
-```{cfgcmd} set protocols failover route <subnet> next-hop <address>
+```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\>
 
 metric <metric>
 

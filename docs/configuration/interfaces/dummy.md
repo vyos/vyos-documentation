@@ -67,7 +67,7 @@ Interface        IP Address                        S/L  Description
 dum0             172.18.254.201/32                 u/u
 ```
 
-```{opcmd} show interfaces dummy <interface>
+```{opcmd} show interfaces dummy \<interface\>
 
 Show detailed interface information.
 

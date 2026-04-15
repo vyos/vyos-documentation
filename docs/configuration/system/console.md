@@ -13,7 +13,7 @@ of remote computers is usually done using {ref}`ssh`, but there are times when
 access to the console is the only way to diagnose and correct software failures.
 Major upgrades to the installed distribution may also require console access.
 
-```{cfgcmd} set system console device <device>
+```{cfgcmd} set system console device \<device\>
 
 Defines the specified device as a system console. Available console devices
 can be (see completion helper):
@@ -22,7 +22,7 @@ can be (see completion helper):
 * ``ttyUSBX`` - USB Serial device name
 * ``hvc0`` - Xen console
 ```
-```{cfgcmd} set system console device <device> speed <speed>
+```{cfgcmd} set system console device \<device\> speed \<speed\>
 
 The speed (baudrate) of the console device. Supported values are:
 

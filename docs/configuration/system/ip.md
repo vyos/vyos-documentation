@@ -15,7 +15,7 @@ If set, IPv4 directed broadcast forwarding will be completely disabled
 regardless of whether per-interface directed broadcast forwarding is
 enabled or not.
 ```
-```{cfgcmd} set system ip arp table-size <number>
+```{cfgcmd} set system ip arp table-size \<number\>
 
 Use this command to define the maximum number of entries to keep in
 the ARP cache (1024, 2048, 4096, 8192, 16384, 32768).
@@ -24,16 +24,16 @@ the ARP cache (1024, 2048, 4096, 8192, 16384, 32768).
 
 Use this command to use Layer 4 information for IPv4 ECMP hashing.
 ```
-```{cfgcmd} set system ip import-table <table-id>
+```{cfgcmd} set system ip import-table \<table-id\>
 
 Use this command to immport the table, by given table id, into the main RIB.
 ```
-```{cfgcmd} set system ip import-table <table-id> distance <distance>
+```{cfgcmd} set system ip import-table \<table-id\> distance \<distance\>
 
 Use this command to override the default distance when importing routers
 from the alternate table.
 ```
-```{cfgcmd} set system ip import-table <table-id> route-map <route-map>
+```{cfgcmd} set system ip import-table \<table-id\> route-map \<route-map\>
 
 Use this command to filter routes that are imported into the main table
 from alternate table using route-map.
@@ -42,7 +42,7 @@ from alternate table using route-map.
 Zebra supports prefix-lists and Route Maps to match routes received from
 other FRR components. The permit/deny facilities provided by these commands
 can be used to filter which routes zebra will install in the kernel.
-```{cfgcmd} set system ip protocol <protocol> route-map <route-map>
+```{cfgcmd} set system ip protocol \<protocol\> route-map \<route-map\>
 
 Apply a route-map filter to routes for the specified protocol. The following
 protocols can be used: any, babel, bgp, eigrp, isis, ospf, rip, static

@@ -70,7 +70,7 @@ Configure these interfaces under the `interfaces wwan` node.
 :var1: wwan0
 ```
 ### WWAN options
-```{cfgcmd} set interfaces wwan <interface> apn <apn>
+```{cfgcmd} set interfaces wwan \<interface\> apn \<apn\>
 
 **Configure the** :abbr:`APN (Access Point Name)` **for the WWAN connection.**
 
@@ -82,7 +82,7 @@ This parameter is mandatory. Contact your service provider for the correct
 ```
 ## Operation
 
-```{opcmd} show interfaces wwan <interface>
+```{opcmd} show interfaces wwan \<interface\>
 
   Show the operational status and traffic statistics for the specified WWAN
 
@@ -117,7 +117,7 @@ This parameter is mandatory. Contact your service provider for the correct
 ```
 
 
-```{opcmd} show interfaces wwan <interface> summary
+```{opcmd} show interfaces wwan \<interface\> summary
 
 Show WWAN module hardware characteristics and connection information.
 
@@ -243,7 +243,7 @@ Show WWAN module hardware characteristics and connection information.
 
   Bearer   |            dbus path: /org/freedesktop/ModemManager1/Bearer/0
 ```
-```{opcmd} show interfaces wwan <interface> capabilities
+```{opcmd} show interfaces wwan \<interface\> capabilities
 
   Show WWAN module radio capabilities.
 
@@ -269,7 +269,7 @@ Show WWAN module hardware characteristics and connection information.
 ```
 
 
-```{opcmd} show interfaces wwan <interface> firmware
+```{opcmd} show interfaces wwan \<interface\> firmware
 
 Show WWAN module firmware information.
 
@@ -293,7 +293,7 @@ Show WWAN module firmware information.
 
   Config version: unknown
 ```
-```{opcmd} show interfaces wwan <interface> imei
+```{opcmd} show interfaces wwan \<interface\> imei
 
 Show WWAN module IMEI.
 
@@ -304,7 +304,7 @@ Show WWAN module IMEI.
   IMEI: '358xxxxxxxxxxxx'
   MEID: 'unknown'
 ```
-```{opcmd} show interfaces wwan <interface> imsi
+```{opcmd} show interfaces wwan \<interface\> imsi
 
 Show the IMSI of the associated SIM card.
 
@@ -313,7 +313,7 @@ Show the IMSI of the associated SIM card.
   vyos@vyos:~$ show interfaces wwan wwan0 imsi
   IMSI: '262xxxxxxxxxxxx'
 ```
-```{opcmd} show interfaces wwan <interface> model
+```{opcmd} show interfaces wwan \<interface\> model
 
 Show WWAN module model.
 
@@ -322,7 +322,7 @@ Show WWAN module model.
   vyos@vyos:~$ show interfaces wwan wwan0 model
   Model: 'MC7710'
 ```
-```{opcmd} show interfaces wwan <interface> msisdn
+```{opcmd} show interfaces wwan \<interface\> msisdn
 
 Show the MSISDN of the associated SIM card.
 
@@ -331,7 +331,7 @@ Show the MSISDN of the associated SIM card.
   vyos@vyos:~$ show interfaces wwan wwan0 msisdn
   MSISDN: '4917xxxxxxxx'
 ```
-```{opcmd} show interfaces wwan <interface> revision
+```{opcmd} show interfaces wwan \<interface\> revision
 
 Show WWAN module hardware revision.
 
@@ -340,7 +340,7 @@ Show WWAN module hardware revision.
   vyos@vyos:~$ show interfaces wwan wwan0 revision
   Revision: 'SWI9200X_03.05.29.03ap r6485 CNSHZ-ED-XP0031 2014/12/02 17:53:15'
 ```
-```{opcmd} show interfaces wwan <interface> signal
+```{opcmd} show interfaces wwan \<interface\> signal
 
 Show signal information for the cellular connection.
 
@@ -356,7 +356,7 @@ Show signal information for the cellular connection.
   Active Band Class: 'eutran-3'
   Active Channel:    '1300'
 ```
-```{opcmd} show interfaces wwan <interface> sim
+```{opcmd} show interfaces wwan \<interface\> sim
 
 Show WWAN module SIM card information.
 

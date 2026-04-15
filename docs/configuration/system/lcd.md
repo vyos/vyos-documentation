@@ -13,7 +13,7 @@ connectivity of the display to your system. This can be any serial port
 
 ## Configuration
 
-```{cfgcmd} set system lcd device <device>
+```{cfgcmd} set system lcd device \<device\>
 
 This is the name of the physical interface used to connect to your LCD
 display. Tab completion is supported and it will list you all available
@@ -21,7 +21,7 @@ serial interface.
 
 For serial via USB port information please refor to: :ref:`hardware_usb`.
 ```
-```{cfgcmd} set system lcd model <model>
+```{cfgcmd} set system lcd model \<model\>
 
 This is the LCD model used in your system.
 

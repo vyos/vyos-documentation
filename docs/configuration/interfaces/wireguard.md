@@ -52,7 +52,7 @@ outgoing traffic.
 ```
 
 
-```{opcmd} generate pki wireguard key-pair install interface <interface>
+```{opcmd} generate pki wireguard key-pair install interface \<interface\>
 
 Generate a keypair and output the private key assignment command for the
 
@@ -109,7 +109,7 @@ If you invoke this command from configuration mode with the ``run``
 ```
 
 
-```{opcmd} show interfaces wireguard <interface> public-key
+```{opcmd} show interfaces wireguard \<interface\> public-key
 
 Show the public key assigned to the interface.
 
@@ -140,7 +140,7 @@ cryptography on top of the asymmetric cryptography.
 
   Pre-shared key: OHH2EwZfMNK+1L6BXbYw3bKCtMrfjpR4mCAEeBlFnRs=
 ```
-```{opcmd} generate pki wireguard preshared-key install interface <interface> peer <peer>
+```{opcmd} generate pki wireguard preshared-key install interface \<interface\> peer \<peer\>
 
 Generate a pre-shared key and output the key assignment command for the
 
@@ -208,7 +208,7 @@ You cannot assign the same `allowed-ips` to multiple WireGuard
 peers. This is a strict design restriction. For more information, check the
 [WireGuard mailing list].
 :::
-```{cfgcmd} set interfaces wireguard <interface> private-key <private-key>
+```{cfgcmd} set interfaces wireguard \<interface\> private-key \<private-key\>
 
   Assign a private key to the specified WireGuard interface.
 
@@ -493,7 +493,7 @@ Show a list of all WireGuard interfaces.
 
   wg01             10.0.0.1/24                       u/u
 ```
-```{opcmd} show interfaces wireguard <interface>
+```{opcmd} show interfaces wireguard \<interface\>
 
 Show general information about a specific WireGuard interface.
 
@@ -519,7 +519,7 @@ From a security perspective, it is not recommended to let a third
 party create and share the private key for a secure connection. You should
 create the private portion yourself and hand out only the public key.
 :::
-```{opcmd} generate wireguard client-config <name> interface <interface> server
+```{opcmd} generate wireguard client-config \<name\> interface \<interface\> server
 
    <ip|fqdn> address <client-ip>
 **Generate a client configuration file that establishes a connection to the

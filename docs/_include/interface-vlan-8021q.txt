@@ -17,7 +17,7 @@ which incorporated IEEE 802.1aq (Shortest Path Bridging) and much of the IEEE
 In VyOS, 802.1q VLAN interfaces are represented as virtual subinterfaces, 
 referred to as  ``vif``.
 
-::::{cfgcmd} set interfaces {{ var0 }} <interface> vif <vlan-id>
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> vif \<vlan-id\>
 
 **Configure a VLAN interface with a unique VLAN ID.** 
 

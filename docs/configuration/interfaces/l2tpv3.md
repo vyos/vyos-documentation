@@ -36,7 +36,7 @@ L2TPv3 tunnels can be established over both IPv4 and IPv6 underlying networks.
 ```
 ### L2TPv3 options
 Use the following commands to configure the L2TPv3 tunnel's specific parameters.
-```{cfgcmd} set interfaces l2tpv3 <interface> encapsulation <udp | ip>
+```{cfgcmd} set interfaces l2tpv3 \<interface\> encapsulation \<udp | ip\>
 
 **Configure the encapsulation type for the L2TPv3 tunnel.**
 
@@ -48,21 +48,21 @@ The default encapsulation type is ``udp``.
 The encapsulation type must match on both the local and remote peers
 for the tunnel to establish.
 :::
-```{cfgcmd} set interfaces l2tpv3 <interface> source-address <address>
+```{cfgcmd} set interfaces l2tpv3 \<interface\> source-address \<address\>
 
 **Configure the L2TPv3 tunnel source IP address.**
 
 The specified address must be a local interface IP address and can be either
 IPv4 or IPv6.
 ```
-```{cfgcmd} set interfaces l2tpv3 <interface> remote <address>
+```{cfgcmd} set interfaces l2tpv3 \<interface\> remote \<address\>
 
 **Configure the L2TPv3 tunnel destination IP address.**
 
 The specified address must be a remote peer’s interface IP address and can be
 either IPv4 or IPv6.
 ```
-```{cfgcmd} set interfaces l2tpv3 <interface> session-id <id>
+```{cfgcmd} set interfaces l2tpv3 \<interface\> session-id \<id\>
 
 **Configure the local session ID within the L2TPv3 tunnel.**
 
@@ -72,7 +72,7 @@ on the local peer.
 The ``peer-session-id`` that identifies this session on the remote peer must be
 set to the same value.
 ```
-```{cfgcmd} set interfaces l2tpv3 <interface> peer-session-id <id>
+```{cfgcmd} set interfaces l2tpv3 \<interface\> peer-session-id \<id\>
 
 **Configure the peer session ID within the L2TPv3 tunnel.**
 
@@ -82,7 +82,7 @@ session from the local peer.
 The ``peer-session-id`` must match the ``session-id`` configured for this
 session on the remote peer.
 ```
-```{cfgcmd} set interfaces l2tpv3 <interface> tunnel-id <id>
+```{cfgcmd} set interfaces l2tpv3 \<interface\> tunnel-id \<id\>
 
 **Configure the local identifier for the L2TPv3 tunnel.**
 
@@ -92,7 +92,7 @@ local peer.
 The ``peer-tunnel-id`` that identifies this tunnel on the remote peer must be
 set to the same value.
 ```
-```{cfgcmd} set interfaces l2tpv3 <interface> peer-tunnel-id <id>
+```{cfgcmd} set interfaces l2tpv3 \<interface\> peer-tunnel-id \<id\>
 
 **Configure the peer identifier for the L2TPv3 tunnel.**
 

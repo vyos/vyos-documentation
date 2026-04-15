@@ -22,7 +22,7 @@ introduces a trade-off between CPU usage and latency, as longer delays
 can lead to increased latency in processing events.
 You can configure the polling delay using the following command in the
 VyOS CLI:
-```{cfgcmd} set vpp settings poll-sleep-usec <delay>
+```{cfgcmd} set vpp settings poll-sleep-usec \<delay\>
 ```
 Sets the polling delay in microseconds. A value of 0 means no delay
 (default), while higher values introduce a delay between polling cycles.

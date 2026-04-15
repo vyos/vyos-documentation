@@ -36,17 +36,17 @@ database. Information that may be retrieved include:
 
 Enable LLDP service
 ```
-```{cfgcmd} set service lldp management-address <address>
+```{cfgcmd} set service lldp management-address \<address\>
 
 Define IPv4/IPv6 management address transmitted via LLDP. Multiple addresses
 can be defined. Only addresses connected to the system will be transmitted.
 ```
-```{cfgcmd} set service lldp interface <interface>
+```{cfgcmd} set service lldp interface \<interface\>
 
 Enable transmission of LLDP information on given `<interface>`. You can also
 say ``all`` here so LLDP is turned on on every interface.
 ```
-```{cfgcmd} set service lldp interface <interface> mode [disable|rx-tx|rx|tx]
+```{cfgcmd} set service lldp interface \<interface\> mode [disable|rx-tx|rx|tx]
 
 Configure the administrative status of the given port.
 
@@ -61,7 +61,7 @@ will be discarded.
 
 Enable SNMP queries of the LLDP database
 ```
-```{cfgcmd} set service lldp legacy-protocols <cdp|edp|fdp|sonmp>
+```{cfgcmd} set service lldp legacy-protocols \<cdp|edp|fdp|sonmp\>
 
 Enable given legacy protocol on this LLDP instance. Legacy protocols include:
 
@@ -135,7 +135,7 @@ Get detailed information about LLDP neighbors.
   Asset ID:     No Asset Tag
   -------------------------------------------------------------------------------
 ```
-```{opcmd} show lldp neighbors interface <interface>
+```{opcmd} show lldp neighbors interface \<interface\>
 
 Show LLDP neighbors connected via interface `<interface>`.
 ```

@@ -25,7 +25,7 @@ address.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> option domain-name <domain-name>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> option domain-name \<domain-name\>
 
 The domain-name parameter should be the domain name that will be appended to
 
@@ -40,7 +40,7 @@ All subnets will inherit this configuration item if not specified locally.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> option domain-search <domain-name>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> option domain-search \<domain-name\>
 
 The domain-name parameter should be the domain name used when completing DNS
 
@@ -55,7 +55,7 @@ All subnets will inherit this configuration item if not specified locally.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> option name-server <address>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> option name-server \<address\>
 
 Inform client that the DNS server can be found at `<address>`.
 
@@ -68,7 +68,7 @@ Multiple DNS servers can be defined.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> option
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> option
 
 vendor-option <option-name>
 
@@ -94,7 +94,7 @@ ubiquiti '172.16.100.1'
 ```
 
 
-```{cfgcmd} set service dhcp-server listen-address <address>
+```{cfgcmd} set service dhcp-server listen-address \<address\>
 
 This configuration parameter lets the DHCP server to listen for DHCP
 
@@ -105,7 +105,7 @@ a server whose only clients are reached via unicasts, such as via DHCP relay
 agents.
 ```
 #### Individual Client Subnet
-```{cfgcmd} set service dhcp-server shared-network-name <name> authoritative
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> authoritative
 
 This says that this device is the only DHCP server for this network. If other
 
@@ -117,7 +117,7 @@ network.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
 
 subnet-id <id>
 
@@ -128,7 +128,7 @@ It is required to map subnets to lease file entries.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
 
 option default-router <address>
 
@@ -141,7 +141,7 @@ the response, tell the client that the default gateway can be reached at
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
 
 option name-server <address>
 
@@ -155,7 +155,7 @@ Multiple DNS servers can be defined.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
 
 lease <time>
 
@@ -167,7 +167,7 @@ The default value is 86400 seconds which corresponds to one day.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
 
 range <n> start <address>
 
@@ -178,7 +178,7 @@ from this pool. The pool starts at address `<address>`.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
 
 range <n> stop <address>
 
@@ -189,7 +189,7 @@ from this pool. The pool stops with address `<address>`.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
 
 exclude <address>
 
@@ -203,7 +203,7 @@ This option can be specified multiple times.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
 
 option domain-name <domain-name>
 
@@ -216,7 +216,7 @@ Option 015).
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
 
 option domain-search <domain-name>
 
@@ -229,7 +229,7 @@ if you need multiple search domains (DHCP Option 119).
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
 
 option vendor-option <option-name>
 
@@ -369,19 +369,19 @@ client's IP address string.
 ```
 
 
-```{cfgcmd} set service dhcp-server dynamic-dns-update generated-prefix <prefix>
+```{cfgcmd} set service dhcp-server dynamic-dns-update generated-prefix \<prefix\>
 
 Prefix used in client name generation.
 ```
 
 
-```{cfgcmd} set service dhcp-server dynamic-dns-update qualifying-suffix <suffix>
+```{cfgcmd} set service dhcp-server dynamic-dns-update qualifying-suffix \<suffix\>
 
 DNS suffix used in client name generation.
 ```
 
 
-```{cfgcmd} set service dhcp-server dynamic-dns-update ttl-percent <0-100>
+```{cfgcmd} set service dhcp-server dynamic-dns-update ttl-percent \<0-100\>
 
 TTL of the DNS record as a percentage of the DHCP lease time.
 ```
@@ -410,7 +410,7 @@ Replacement string for the invalid characters defined by ``hostname-char-set``.
 
 This is the global list of TSIG keys for DDNS updates. They need to be specified by
 the name in the DNS domain definitions.
-```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key <key-name>
+```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key \<key-name\>
 
 algorithm <algorithm>
 
@@ -421,7 +421,7 @@ Sets the algorithm for the TSIG key. Supported algorithms are ``hmac-md5``,
 ```
 
 
-```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key <key-name>
+```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key \<key-name\>
 
 secret <key-secret>
 
@@ -547,13 +547,13 @@ is not specified is `active-active`
 ```
 
 
-```{cfgcmd} set service dhcp-server high-availability source-address <address>
+```{cfgcmd} set service dhcp-server high-availability source-address \<address\>
 
 Local IP `<address>` used when communicating to the HA peer.
 ```
 
 
-```{cfgcmd} set service dhcp-server high-availability remote <address>
+```{cfgcmd} set service dhcp-server high-availability remote \<address\>
 
 Remote peer IP `<address>` of the second DHCP server in this HA
 
@@ -561,7 +561,7 @@ cluster.
 ```
 
 
-```{cfgcmd} set service dhcp-server high-availability name <name>
+```{cfgcmd} set service dhcp-server high-availability name \<name\>
 
 Define the name of the peer server to establish and identify the HA (High Availability) connection.
 
@@ -625,7 +625,7 @@ The dialogue between HA partners is neither encrypted nor
 You can specify a static DHCP assignment on a per host basis. You will need the
 MAC address of the station and your desired IP address. The address must be
 inside the subnet definition but can be outside of the range statement.
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet
 
 <subnet> static-mapping <description> mac <address>
 
@@ -636,7 +636,7 @@ the host identified by its MAC `<address>`.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet
 
 <subnet> static-mapping <description> duid <identifier>
 
@@ -647,7 +647,7 @@ the host identified by its DHCP unique identifier (DUID) `<identifier>`.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet
 
 <subnet> static-mapping <description> ip-address <address>
 
@@ -733,7 +733,7 @@ how you want the server to behave.
 
 
 **Client Class definition**
-```{cfgcmd} set service dhcp-server client-class <name> relay-agent-information circuit-id
+```{cfgcmd} set service dhcp-server client-class \<name\> relay-agent-information circuit-id
 
 <value>
 
@@ -750,7 +750,7 @@ otherwise. e.g. ``e1-5`` and ``0x65312d35`` are the same
 ```
 
 
-```{cfgcmd} set service dhcp-server client-class <name> relay-agent-information remote-id
+```{cfgcmd} set service dhcp-server client-class \<name\> relay-agent-information remote-id
 
 <value>
 
@@ -768,7 +768,7 @@ otherwise. e.g. ``10.100.0.41`` and ``0x31302e3130302e302e3431`` are the
 same
 ```
 **Client Class application**
-```{cfgcmd} set service dhcp-server shared-network-name <subnet-name> subnet
+```{cfgcmd} set service dhcp-server shared-network-name \<subnet-name\> subnet
 
 <CIDR> client-class <class-name>
 
@@ -781,7 +781,7 @@ routed to this subnet definition first.
 ```
 
 
-```{cfgcmd} set service dhcp-server shared-network-name <subnet-name> subnet
+```{cfgcmd} set service dhcp-server shared-network-name \<subnet-name\> subnet
 
 <CIDR> range <range-name> client-class <class-name>
 
@@ -1092,7 +1092,7 @@ Show logs from all DHCP client processes.
 ```
 
 
-```{opcmd} show log dhcp client interface <interface>
+```{opcmd} show log dhcp client interface \<interface\>
 
 Show logs from specific `interface` DHCP client process.
 ```
@@ -1123,7 +1123,7 @@ dhcpexample      99         2           97  2%
 ```
 
 
-```{opcmd} show dhcp server statistics pool <pool>
+```{opcmd} show dhcp server statistics pool \<pool\>
 
 Show the DHCP server statistics for the specified pool.
 ```
@@ -1181,7 +1181,7 @@ vyos@vyos:~$
 ```
 
 
-```{opcmd} show dhcp server leases pool <pool>
+```{opcmd} show dhcp server leases pool \<pool\>
 
 Show only leases in the specified pool.
 ```
@@ -1204,7 +1204,7 @@ vyos@vyos:~$
 ```
 
 
-```{opcmd} show dhcp server leases sort <key>
+```{opcmd} show dhcp server leases sort \<key\>
 
 Sort the output by the specified key. Possible keys: ip, hardware_address,
 
@@ -1212,7 +1212,7 @@ state, start, end, remaining, pool, hostname (default = ip)
 ```
 
 
-```{opcmd} show dhcp server leases state <state>
+```{opcmd} show dhcp server leases state \<state\>
 
 Show only leases with the specified state. Possible states: all, active,
 
@@ -1223,7 +1223,7 @@ VyOS also provides DHCPv6 server functionality which is described in this
 section.
 (dhcp-server-v6-config)=
 ### Configuration
-```{cfgcmd} set service dhcpv6-server preference <preference value>
+```{cfgcmd} set service dhcpv6-server preference \<preference value\>
 
    Clients receiving advertise messages from multiple servers choose the server
 
@@ -1232,7 +1232,7 @@ section.
 ```
 
 
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet <subnet>
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet \<subnet\>
 
 subnet-id <id>
 
@@ -1243,7 +1243,7 @@ It is required to map subnets to lease file entries.
 ```
 
 
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
 <prefix> lease-time {default | maximum | minimum}
 
@@ -1256,7 +1256,7 @@ values need to be supplied in seconds.
 ```
 
 
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
 <prefix> option nis-domain <domain-name>
 
@@ -1267,7 +1267,7 @@ DHCPv6 clients.
 ```
 
 
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
 <prefix> option nisplus-domain <domain-name>
 
@@ -1278,7 +1278,7 @@ domain is similar to the NIS domain one:
 ```
 
 
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
 <prefix> option nis-server <address>
 
@@ -1287,7 +1287,7 @@ Specify a NIS server address for DHCPv6 clients.
 ```
 
 
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
 <prefix> option nisplus-server <address>
 
@@ -1296,7 +1296,7 @@ Specify a NIS+ server address for DHCPv6 clients.
 ```
 
 
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
 <prefix> option sip-server <address | fqdn>
 
@@ -1307,7 +1307,7 @@ address of Fully Qualified Domain Name for all DHCPv6 clients.
 ```
 
 
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
 <prefix> option sntp-server-address <address>
 
@@ -1319,7 +1319,7 @@ A SNTP server address can be specified for DHCPv6 clients.
 
 To hand out individual prefixes to your clients the following configuration is
 used:
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
 <prefix> prefix-delegation prefix <pd-prefix> prefix-length <lenght>
 
@@ -1330,7 +1330,7 @@ is defined by `<lenght>` in bits, 32 to 64.
 ```
 
 
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
 <prefix> prefix-delegation prefix <pd-prefix> delegated-length <lenght>
 
@@ -1341,14 +1341,14 @@ in subnet `<prefix>` when the request for prefix delegation.
 ```
 
 
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
 <prefix> prefix-delegation prefix <pd-prefix> excluded-prefix <exclude-prefix>
 
 
 Exclude `<exclude-prefix>` from `<pd-prefix>`.
 ```
-```{cfgcmd} set service dhcpv6-server shared-network-name <name> subnet
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
 
    <prefix> prefix-delegation prefix <pd-prefix> excluded-prefix-length <length>
 Define lenght of exclude prefix in `<pd-prefix>`.
@@ -1441,7 +1441,7 @@ Show DHCPv6 server daemon log file
 
 Show logs from all DHCPv6 client processes.
 ```
-```{opcmd} show log dhcpv6 client interface <interface>
+```{opcmd} show log dhcpv6 client interface \<interface\>
 
 Show logs from specific `interface` DHCPv6 client process.
 ```
@@ -1465,16 +1465,16 @@ IPv6 address      State    Last communication    Lease expiration     Remaining 
 Static mappings aren't shown. To show all states, use `show dhcp
 server leases state all`.
 :::
-```{opcmd} show dhcpv6 server leases pool <pool>
+```{opcmd} show dhcpv6 server leases pool \<pool\>
 
 Show only leases in the specified pool.
 ```
-```{opcmd} show dhcpv6 server leases sort <key>
+```{opcmd} show dhcpv6 server leases sort \<key\>
 
 Sort the output by the specified key. Possible keys: expires, iaid_duid, ip,
 last_comm, pool, remaining, state, type (default = ip)
 ```
-```{opcmd} show dhcpv6 server leases state <state>
+```{opcmd} show dhcpv6 server leases state \<state\>
 
 Show only leases with the specified state. Possible states: abandoned,
 active, all, backup, expired, free, released, reset (default = active)

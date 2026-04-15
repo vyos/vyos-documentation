@@ -9,7 +9,7 @@ a deamonless container engine.
 
 ## Configuration
 
-```{cfgcmd} set container name <name> image
+```{cfgcmd} set container name \<name\> image
 
     Sets the image name in the hub registry
 
@@ -34,31 +34,31 @@ a deamonless container engine.
 ```
 
 
-```{cfgcmd} set container name <name> entrypoint <entrypoint>
+```{cfgcmd} set container name \<name\> entrypoint \<entrypoint\>
 
 Override the default entrypoint from the image for a container.
 ```
 
 
-```{cfgcmd} set container name <name> command <command>
+```{cfgcmd} set container name \<name\> command \<command\>
 
 Override the default command from the image for a container.
 ```
 
 
-```{cfgcmd} set container name <name> arguments <arguments>
+```{cfgcmd} set container name \<name\> arguments \<arguments\>
 
 Set the command arguments for a container.
 ```
 
 
-```{cfgcmd} set container name <name> host-name <hostname>
+```{cfgcmd} set container name \<name\> host-name \<hostname\>
 
 Set the host name for a container.
 ```
 
 
-```{cfgcmd} set container name <name> allow-host-pid
+```{cfgcmd} set container name \<name\> allow-host-pid
 
 The container and the host share the same process namespace.
 
@@ -71,7 +71,7 @@ The command translates to "--pid host" when the container is created.
 ```
 
 
-```{cfgcmd} set container name <name> allow-host-networks
+```{cfgcmd} set container name \<name\> allow-host-networks
 
 Allow host networking in a container. The network stack of the container is
 
@@ -91,7 +91,7 @@ The command translates to "--net host" when the container is created.
 ```
 
 
-```{cfgcmd} set container name <name> network <networkname>
+```{cfgcmd} set container name \<name\> network \<networkname\>
 
 Attaches user-defined network to a container.
 
@@ -99,7 +99,7 @@ Only one network must be specified and must already exist.
 ```
 
 
-```{cfgcmd} set container name <name> network <networkname> address <address>
+```{cfgcmd} set container name \<name\> network \<networkname\> address \<address\>
 
 Optionally set a specific static IPv4 or IPv6 address for the container.
 
@@ -118,7 +118,7 @@ The first IP in the container network is reserved by the
 ```
 
 
-```{cfgcmd} set container name <name> name-server <address>
+```{cfgcmd} set container name \<name\> name-server \<address\>
 
 Optionally set a custom name server.
 
@@ -128,13 +128,13 @@ this setting will not have any effect.
 ```
 
 
-```{cfgcmd} set container name <name> description <text>
+```{cfgcmd} set container name \<name\> description \<text\>
 
 Set a container description
 ```
 
 
-```{cfgcmd} set container name <name> environment <key> value <value>
+```{cfgcmd} set container name \<name\> environment \<key\> value \<value\>
 
 Add custom environment variables.
 
@@ -158,15 +158,15 @@ is created.
 ```
 
 
-```{cfgcmd} set container name <name> port <portname> source <portnumber>
+```{cfgcmd} set container name \<name\> port \<portname\> source \<portnumber\>
 ```
 
 
-```{cfgcmd} set container name <name> port <portname> destination <portnumber>
+```{cfgcmd} set container name \<name\> port \<portname\> destination \<portnumber\>
 ```
 
 
-```{cfgcmd} set container name <name> port <portname> protocol <tcp | udp>
+```{cfgcmd} set container name \<name\> port \<portname\> protocol \<tcp | udp\>
 
 Publish a port for the container.
 
@@ -184,11 +184,11 @@ Publish a port for the container.
 Port publishing cannot be used with **network**. For this purpose, a workaround
 using destination NAT and static IP assignment for the container is available.
 :::
-```{cfgcmd} set container name <name> volume <volumename> source <path>
+```{cfgcmd} set container name \<name\> volume \<volumename\> source \<path\>
 ```
 
 
-```{cfgcmd} set container name <name> volume <volumename> destination <path>
+```{cfgcmd} set container name \<name\> volume \<volumename\> destination \<path\>
 
 Mount a volume into the container
 
@@ -202,19 +202,19 @@ Mount a volume into the container
 ```
 
 
-```{cfgcmd} set container name <name> volume <volumename> mode <ro | rw>
+```{cfgcmd} set container name \<name\> volume \<volumename\> mode \<ro | rw\>
 
 Volume is either mounted as rw (read-write - default) or ro (read-only)
 ```
 
 
-```{cfgcmd} set container name <name> tmpfs <tmpfsname> destination <path>
+```{cfgcmd} set container name \<name\> tmpfs \<tmpfsname\> destination \<path\>
 
 Mount a tmpfs *(ramdisk)* filesystem to the given path within the container.
 ```
 
 
-```{cfgcmd} set container name <name> tmpfs <tmpfsname> size <MB>
+```{cfgcmd} set container name \<name\> tmpfs \<tmpfsname\> size \<MB\>
 
 Size in MB for tmpfs filesystem, maximum size is 64GB or 50% of the
 
@@ -222,17 +222,17 @@ systems total available memory.
 ```
 
 
-```{cfgcmd} set container name <name> uid <number>
+```{cfgcmd} set container name \<name\> uid \<number\>
 ```
 
 
-```{cfgcmd} set container name <name> gid <number>
+```{cfgcmd} set container name \<name\> gid \<number\>
 
 Set the User ID or Group ID of the container
 ```
 
 
-```{cfgcmd} set container name <name> restart [no | on-failure | always]
+```{cfgcmd} set container name \<name\> restart [no | on-failure | always]
 
 Set the restart behavior of the container.
 
@@ -249,7 +249,7 @@ Set the restart behavior of the container.
 ```
 
 
-```{cfgcmd} set container name <name> cpu-quota <num>
+```{cfgcmd} set container name \<name\> cpu-quota \<num\>
 
 This specifies the number of CPU resources the container can use.
 
@@ -267,7 +267,7 @@ The command translates to "--cpus=<num>" when the container is created.
 ```
 
 
-```{cfgcmd} set container name <name> memory <MB>
+```{cfgcmd} set container name \<name\> memory \<MB\>
 
 Constrain the memory available to the container.
 
@@ -276,17 +276,17 @@ Default is 512 MB. Use 0 MB for unlimited memory.
 ```
 
 
-```{cfgcmd} set container name <name> device <devicename> source <path>
+```{cfgcmd} set container name \<name\> device \<devicename\> source \<path\>
 ```
 
 
-```{cfgcmd} set container name <name> device <devicename> destination <path>
+```{cfgcmd} set container name \<name\> device \<devicename\> destination \<path\>
 
 Add a host device to the container.
 ```
 
 
-```{cfgcmd} set container name <name> capability <text>
+```{cfgcmd} set container name \<name\> capability \<text\>
 
 Set container capabilities or permissions.
 
@@ -309,7 +309,7 @@ Set container capabilities or permissions.
 ```
 
 
-```{cfgcmd} set container name <name> sysctl parameter <parameter> value <value>
+```{cfgcmd} set container name \<name\> sysctl parameter \<parameter\> value \<value\>
 
 Set container sysctl values.
 
@@ -327,13 +327,13 @@ The subset of possible parameters are:
 ```
 
 
-```{cfgcmd} set container name <name> label <label> value <value>
+```{cfgcmd} set container name \<name\> label \<label\> value \<value\>
 
 Add metadata label for this container.
 ```
 
 
-```{cfgcmd} set container name <name> disable
+```{cfgcmd} set container name \<name\> disable
 
 Disable a container.
 ```
@@ -341,48 +341,48 @@ Disable a container.
 
 
 By default, no health checks are run, even when defined by the image.
-```{cfgcmd} set container name <name> health-check
+```{cfgcmd} set container name \<name\> health-check
 
 Default health check is run for the container if defined by the image.
 ```
 
 
-```{cfgcmd} set container name <name> health-check command <command>
+```{cfgcmd} set container name \<name\> health-check command \<command\>
 
 Override the default health check command from the image for a container.
 ```
 
 
-```{cfgcmd} set container name <name> health check interval <interval>
+```{cfgcmd} set container name \<name\> health check interval \<interval\>
 
 Override the default health-check interval. For example: `60`
 ```
 
 
-```{cfgcmd} set container name <name> health check timeout <timeout>
+```{cfgcmd} set container name \<name\> health check timeout \<timeout\>
 
 Override the default health-check timeout. For example: `10`
 ```
 
 
-```{cfgcmd} set container name <name> health check retries <retries>
+```{cfgcmd} set container name \<name\> health check retries \<retries\>
 
 Number of health check retries before container is considered unhealthy. For example: `1`
 ```
 ### Container Networks
-```{cfgcmd} set container network <name>
+```{cfgcmd} set container network \<name\>
 
 Creates a named container network
 ```
 
 
-```{cfgcmd} set container network <name> description
+```{cfgcmd} set container network \<name\> description
 
 A brief description what this network is all about.
 ```
 
 
-```{cfgcmd} set container network <name> prefix <ipv4|ipv6>
+```{cfgcmd} set container network \<name\> prefix \<ipv4|ipv6\>
 
 Define IPv4 and/or IPv6 prefix for a given network name.
 
@@ -390,7 +390,7 @@ Both IPv4 and IPv6 can be used in parallel.
 ```
 
 
-```{cfgcmd} set container network <name> mtu <number>
+```{cfgcmd} set container network \<name\> mtu \<number\>
 
 Configure :abbr:`MTU (Maximum Transmission Unit)` for a given network. It
 
@@ -398,18 +398,18 @@ is the size (in bytes) of the largest ethernet frame sent on this link.
 ```
 
 
-```{cfgcmd} set container network <name> no-name-server
+```{cfgcmd} set container network \<name\> no-name-server
 
 Disable Domain Name System (DNS) plugin for this network.
 ```
 
 
-```{cfgcmd} set container network <name> vrf <nme>
+```{cfgcmd} set container network \<name\> vrf \<nme\>
 
 Bind container network to a given VRF instance.
 ```
 ### Container Registry
-```{cfgcmd} set container registry <name>
+```{cfgcmd} set container registry \<name\>
 
 Adds registry to list of unqualified-search-registries. By default, for any
 
@@ -419,17 +419,17 @@ docker.io and quay.io as the container registry.
 ```
 
 
-```{cfgcmd} set container registry <name> disable
+```{cfgcmd} set container registry \<name\> disable
 
 Disable a given container registry
 ```
 
 
-```{cfgcmd} set container registry <name> authentication username
+```{cfgcmd} set container registry \<name\> authentication username
 ```
 
 
-```{cfgcmd} set container registry <name> authentication password
+```{cfgcmd} set container registry \<name\> authentication password
 
 Some container registries require credentials to be used.
 
@@ -440,7 +440,7 @@ container image to the system.
 ```
 
 
-```{cfgcmd} set container registry <name> insecure
+```{cfgcmd} set container registry \<name\> insecure
 
 Allow registry access over unencrypted HTTP or TLS connections with
 
@@ -448,19 +448,19 @@ untrusted certificates.
 ```
 
 
-```{cfgcmd} set container registry <name> mirror address <address>
+```{cfgcmd} set container registry \<name\> mirror address \<address\>
 ```
 
 
-```{cfgcmd} set container registry <name> mirror host-name <host-name>
+```{cfgcmd} set container registry \<name\> mirror host-name \<host-name\>
 ```
 
 
-```{cfgcmd} set container registry <name> mirror port <port>
+```{cfgcmd} set container registry \<name\> mirror port \<port\>
 ```
 
 
-```{cfgcmd} set container registry <name> mirror path <path>
+```{cfgcmd} set container registry \<name\> mirror path \<path\>
 
 Registry mirror, use ``(host-name|address)[:port][/path]``.
 
@@ -486,7 +486,7 @@ If http://192.168.1.1:8080 is your own registry, you can use ``192.168.1.1:8080/
 ```
 ### Log Configuration
 
-```{cfgcmd} set container name <name> log-driver [k8s-file | journald | none]
+```{cfgcmd} set container name \<name\> log-driver [k8s-file | journald | none]
 
 Set the default log driver for containers.
 
@@ -503,7 +503,7 @@ Current default is journald.
 ```
 ## Operation Commands
 
-```{opcmd} add container image <containername>
+```{opcmd} add container image \<containername\>
 
 Pull a new image for container
 ```
@@ -515,7 +515,7 @@ Show the list of all active containers.
 
 Show the local container images.
 ```
-```{opcmd} show container log <containername>
+```{opcmd} show container log \<containername\>
 
 Show logs from a given container
 ```
@@ -523,15 +523,15 @@ Show logs from a given container
 
 Show a list available container networks
 ```
-```{opcmd} restart container <containername>
+```{opcmd} restart container \<containername\>
 
 Restart a given container
 ```
-```{opcmd} update container image <containername>
+```{opcmd} update container image \<containername\>
 
 Update container image
 ```
-```{opcmd} delete container image <image id|all> [force]
+```{opcmd} delete container image \<image id|all\> [force]
 
 Delete a particular container image based on it's image ID.
 You can also delete all container images at once.

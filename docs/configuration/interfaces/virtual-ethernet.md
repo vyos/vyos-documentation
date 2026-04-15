@@ -60,7 +60,7 @@ Show brief interface information.
   veth10           100.64.0.0/31                     u/u
   veth11           100.64.0.1/31                     u/u
 ```
-```{opcmd} show interfaces virtual-ethernet <interface>
+```{opcmd} show interfaces virtual-ethernet \<interface\>
 
 Show detailed interface information.
 

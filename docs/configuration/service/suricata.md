@@ -31,7 +31,7 @@ from operational mode, waiting for Suricata to update all its rules, which are u
 
 ## Configuration
 
-```{cfgcmd} set service suricata address-group <text> <address | group>
+```{cfgcmd} set service suricata address-group \<text\> \<address | group\>
 
    Address groups are useful when you need to create rules that apply to specific IP addresses.
 
@@ -50,7 +50,7 @@ from operational mode, waiting for Suricata to update all its rules, which are u
 ```
 
 
-```{cfgcmd} set service suricata port-group <text> <address | group>
+```{cfgcmd} set service suricata port-group \<text\> \<address | group\>
 
 Port groups are useful when you need to create rules that apply to specific ports.
 
@@ -68,11 +68,11 @@ the configuration more flexible.
 ```
 
 
-```{cfgcmd} set service suricata interface <text>
+```{cfgcmd} set service suricata interface \<text\>
 
 The interface that will be monitored by the Suricata service.
 ```
-```{cfgcmd} set service suricata log eve <filename | filetype | type>
+```{cfgcmd} set service suricata log eve \<filename | filetype | type\>
 
    Configuration of the logging file.
 

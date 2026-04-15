@@ -14,17 +14,17 @@ networks while maintaining the performance benefits of VPP's optimized
 data plane.
 ## Basic Configuration
 ### Creating a GRE Interface
-```{cfgcmd} set interfaces vpp gre <vppgreN>
+```{cfgcmd} set interfaces vpp gre \<vppgreN\>
 
 Create a GRE interface where ``<vppgreN>`` follows the naming convention
 ``vppgre1``, ``vppgre2``, etc.
 ```
-```{cfgcmd} set interfaces vpp gre <vppgreN> remote <address>
+```{cfgcmd} set interfaces vpp gre \<vppgreN\> remote \<address\>
 
 Set the tunnel remote endpoint address. Supports both IPv4 and IPv6
 addresses.
 ```
-```{cfgcmd} set interfaces vpp gre <vppgreN> source-address <address>
+```{cfgcmd} set interfaces vpp gre \<vppgreN\> source-address \<address\>
 
 Set the tunnel source address. Must match an address configured on
 the local system.
@@ -38,17 +38,17 @@ set interfaces vpp gre vppgre1 source-address 192.168.1.1
 ```
 ## Interface Configuration
 ### Description and Administrative Control
-```{cfgcmd} set interfaces vpp gre <vppgreN> description <description>
+```{cfgcmd} set interfaces vpp gre \<vppgreN\> description \<description\>
 
 Set a descriptive name for the GRE interface.
 ```
-```{cfgcmd} set interfaces vpp gre <vppgreN> disable
+```{cfgcmd} set interfaces vpp gre \<vppgreN\> disable
 
 Administratively disable the GRE interface.
 ```
 ### Tunnel Type
 
-```{cfgcmd} set interfaces vpp gre <vppgreN> tunnel-type <type>
+```{cfgcmd} set interfaces vpp gre \<vppgreN\> tunnel-type \<type\>
 
 Set the GRE tunnel encapsulation type:
 
@@ -62,7 +62,7 @@ LCP kernel pair interface bound to the VPP GRE interface is created
 automatically. This allows standard Linux networking tools and
 services to interact with the VPP GRE.
 ## IP Address Configuration
-```{cfgcmd} set interfaces vpp gre <vppgreN> address <ip-address/prefix>
+```{cfgcmd} set interfaces vpp gre \<vppgreN\> address \<ip-address/prefix\>
 
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
 addresses can be assigned.
@@ -77,7 +77,7 @@ set interfaces vpp gre vppgre0 address 192.168.1.10/24
 set interfaces vpp gre vppgre0 address 2001:db8::10/64
 ```
 ## MTU Configuration
-```{cfgcmd} set interfaces vpp gre <vppgreN> mtu <size>
+```{cfgcmd} set interfaces vpp gre \<vppgreN\> mtu \<size\>
 
 Set the Maximum Transmission Unit (MTU) for the kernel interface.
 The MTU must be compatible with the connected VPP interface.

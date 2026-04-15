@@ -20,7 +20,7 @@ in Connectionless Network Service (CLNS). This Router ID is called the
 {abbr}`NET (Network Entity Title)`. The system identifier must be unique within
 the network
 
-```{cfgcmd} set protocols openfabric net <network-entity-title>
+```{cfgcmd} set protocols openfabric net \<network-entity-title\>
 
   This command sets network entity title (NET) provided in ISO format.
 
@@ -65,7 +65,7 @@ the network
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> interface <interface>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
 
  address-family <ipv4|ipv6>
 
@@ -75,7 +75,7 @@ This command enables OpenFabric instance with <NAME> on this interface, and
 allows for adjacency to occur for address family (IPv4 or IPv6 or both).
 ```
 #### OpenFabric Global Configuration
-```{cfgcmd} set protocols openfabric domain-password <plaintext-password|md5>
+```{cfgcmd} set protocols openfabric domain-password \<plaintext-password|md5\>
 
 <password>
 
@@ -86,13 +86,13 @@ as clear text or md5 one.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> purge-originator
+```{cfgcmd} set protocols openfabric domain \<name\> purge-originator
 
 This command enables :rfc:`6232` purge originator identification.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> set-overload-bit
+```{cfgcmd} set protocols openfabric domain \<name\> set-overload-bit
 
 This command sets overload bit to avoid any transit traffic through this
 
@@ -100,13 +100,13 @@ router.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> log-adjacency-changes
+```{cfgcmd} set protocols openfabric domain \<name\> log-adjacency-changes
 
 Log changes in adjacency state.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> fabric-tier <number>
+```{cfgcmd} set protocols openfabric domain \<name\> fabric-tier \<number\>
 
 This command sets a static tier number to advertise as location
 
@@ -114,7 +114,7 @@ in the fabric.
 ```
 #### Interface Configuration
 
-```{cfgcmd} set protocols openfabric interface <interface> hello-interval
+```{cfgcmd} set protocols openfabric interface \<interface\> hello-interval
 
   <seconds>
 
@@ -127,7 +127,7 @@ in the fabric.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> interface <interface>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
 
  hello-multiplier <number>
 
@@ -138,7 +138,7 @@ interface. The range is 2 to 100.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> interface <interface>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
 
  metric <metric>
 
@@ -149,13 +149,13 @@ The metric range is 1 to 16777215.
 ```
 
 
-```{cfgcmd} set protocols openfabric interface <interface> passive
+```{cfgcmd} set protocols openfabric interface \<interface\> passive
 
 This command enables the passive mode for this interface.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> interface <interface>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
 
  password plaintext-password <text>
 
@@ -164,7 +164,7 @@ This command sets the authentication password for the interface.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> interface <interface>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
 
  csnp-interval <seconds>
 
@@ -175,7 +175,7 @@ The interval range is 1 to 600.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> interface <interface>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
 
  psnp-interval <number>
 
@@ -185,7 +185,7 @@ This command sets Partial Sequence Number Packets (PSNP) interval in seconds.
 The interval range is 1 to 120.
 ```
 #### Timers
-```{cfgcmd} set protocols openfabric domain <name> lsp-gen-interval <seconds>
+```{cfgcmd} set protocols openfabric domain \<name\> lsp-gen-interval \<seconds\>
 
 This command sets minimum interval at which link-state packets (LSPs) are
 
@@ -193,7 +193,7 @@ generated. The interval range is 1 to 120.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> lsp-refresh-interval <seconds>
+```{cfgcmd} set protocols openfabric domain \<name\> lsp-refresh-interval \<seconds\>
 
 This command sets LSP refresh interval in seconds. The interval range
 
@@ -201,7 +201,7 @@ is 1 to 65235.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> max-lsp-lifetime <seconds>
+```{cfgcmd} set protocols openfabric domain \<name\> max-lsp-lifetime \<seconds\>
 
 This command sets LSP maximum LSP lifetime in seconds. The interval range
 
@@ -217,7 +217,7 @@ they are refreshed.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain <name> spf-interval <seconds>
+```{cfgcmd} set protocols openfabric domain \<name\> spf-interval \<seconds\>
 
 This command sets minimum interval between consecutive shortest path first
 

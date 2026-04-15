@@ -156,40 +156,40 @@ Set the global setting for related connections.
 VyOS supports setting timeouts for connections by connection type. You can
 set timeout values for generic connections, ICMP connections, UDP
 connections, or TCP connections in various states.
-```{cfgcmd} set firewall global-options timeout icmp <1-21474836>
+```{cfgcmd} set firewall global-options timeout icmp \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout other <1-21474836>
+```{cfgcmd} set firewall global-options timeout other \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout tcp close <1-21474836>
+```{cfgcmd} set firewall global-options timeout tcp close \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout tcp close-wait <1-21474836>
+```{cfgcmd} set firewall global-options timeout tcp close-wait \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout tcp established <1-21474836>
+```{cfgcmd} set firewall global-options timeout tcp established \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout tcp fin-wait <1-21474836>
+```{cfgcmd} set firewall global-options timeout tcp fin-wait \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout tcp last-ack <1-21474836>
+```{cfgcmd} set firewall global-options timeout tcp last-ack \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout tcp syn-recv <1-21474836>
+```{cfgcmd} set firewall global-options timeout tcp syn-recv \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout tcp syn-sent <1-21474836>
+```{cfgcmd} set firewall global-options timeout tcp syn-sent \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout tcp time-wait <1-21474836>
+```{cfgcmd} set firewall global-options timeout tcp time-wait \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout udp other <1-21474836>
+```{cfgcmd} set firewall global-options timeout udp other \<1-21474836\>
     :defaultvalue:
 ```
-```{cfgcmd} set firewall global-options timeout udp stream <1-21474836>
+```{cfgcmd} set firewall global-options timeout udp stream \<1-21474836\>
     :defaultvalue:
 Set the timeout in seconds for a protocol or state.
 ```

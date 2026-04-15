@@ -18,7 +18,7 @@ Changes to hugepage settings require a system reboot to take effect.
 Hugepages must be enabled before VPP configuration is applied.
 :::
 To enable hugepages:
-```{cfgcmd} set system option kernel memory hugepage-size <size> hugepage-count
+```{cfgcmd} set system option kernel memory hugepage-size \<size\> hugepage-count
 
    '<count>'
 ```
@@ -36,11 +36,11 @@ During operations VPP utilizes a significant amount of system resources,
 especially memory. There are two main settings that may need to be
 adjusted to ensure VPP runs smoothly:
 Maximum number of memory map areas a process may have:
-```{cfgcmd} set system option resource-limits max-map-count <value>
+```{cfgcmd} set system option resource-limits max-map-count \<value\>
 ```
 Maximum shared memory segment size:
 
-```{cfgcmd} set system option resource-limits shmmax <value>
+```{cfgcmd} set system option resource-limits shmmax \<value\>
 ```
 Both settings are automatically calculated based on configured hugepages.
 ## Kernel Tuning
@@ -70,7 +70,7 @@ prevents unnecessary interrupts on VPP worker cores.
 ```
 **CPU Core Isolation**
 
-```{cfgcmd} set system option kernel cpu isolate-cpus <cpu-range>
+```{cfgcmd} set system option kernel cpu isolate-cpus \<cpu-range\>
 
 Isolates specified CPUs from the kernel scheduler. Isolated cores will
 not run regular system processes and are dedicated to applications like
@@ -96,7 +96,7 @@ Always reserve at least 2 cores for the operating system to ensure
 ```
 **Adaptive-Tick Mode**
 
-```{cfgcmd} set system option kernel cpu nohz-full <cpu-range>
+```{cfgcmd} set system option kernel cpu nohz-full \<cpu-range\>
 
 Enables adaptive-tick mode (NO_HZ_FULL) for specified CPUs. This
 causes the kernel to avoid sending scheduling-clock interrupts to CPUs
@@ -107,7 +107,7 @@ Use the same CPU range as configured for ``isolate-cpus``.
 ```
 **RCU Callback Offloading**
 
-```{cfgcmd} set system option kernel cpu rcu-no-cbs <cpu-range>
+```{cfgcmd} set system option kernel cpu rcu-no-cbs \<cpu-range\>
 
 Offloads Read-Copy-Update (RCU) callback processing from specified
 CPUs. This ensures that RCU callbacks do not prevent the specified CPUs

@@ -12,7 +12,7 @@ upstream interface, and one or more downstream interfaces.
 
 ## Configuration
 
-```{cfgcmd} set protocols igmp-proxy interface <interface> role
+```{cfgcmd} set protocols igmp-proxy interface \<interface\> role
 
    <upstream | downstream>
 * **upstream:** The upstream network interface is the outgoing interface
@@ -24,7 +24,7 @@ upstream interface, and one or more downstream interfaces.
   groups and receive multicast data. One or more downstream interfaces must
   be configured.
 ```
-```{cfgcmd} set protocols igmp-proxy interface <interface> alt-subnet <network>
+```{cfgcmd} set protocols igmp-proxy interface \<interface\> alt-subnet \<network\>
 
 Defines alternate sources for multicasting and IGMP data. The network address
 must be on the following format 'a.b.c.d/n'. By default, the router will

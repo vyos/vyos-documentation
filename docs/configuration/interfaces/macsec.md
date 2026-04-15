@@ -23,14 +23,14 @@ addresses distinct use cases.
 :var1: macsec0
 ```
 ### MACsec options
-```{cfgcmd} set interfaces macsec <interface> security cipher <gcm-aes-128|gcm-aes-256>
+```{cfgcmd} set interfaces macsec \<interface\> security cipher \<gcm-aes-128|gcm-aes-256\>
 
 **Configure the cipher suite for the MACsec interface.**
 
 This configuration parameter is mandatory.
 ```
 
-```{cfgcmd} set interfaces macsec <interface> security encrypt
+```{cfgcmd} set interfaces macsec \<interface\> security encrypt
 
 **Enable encryption on the MACsec interface.**
 
@@ -41,7 +41,7 @@ optional.
 When enabled, outgoing packets are encrypted using the configured cipher suite.
 ```
 
-```{cfgcmd} set interfaces macsec <interface> source-interface <physical-source>
+```{cfgcmd} set interfaces macsec \<interface\> source-interface \<physical-source\>
 
 **Configure a physical source interface for the MACsec interface.**
 
@@ -54,7 +54,7 @@ encrypted.
 In static SAK mode, administrators must manually configure and update SAKs on
 each MACsec peer. {abbr}`MKA (MACsec Key Agreement protocol)` cannot be used in
 this mode.
-```{cfgcmd} set interfaces macsec <interface> security static key <key>
+```{cfgcmd} set interfaces macsec \<interface\> security static key \<key\>
 
 **Configure the Transmit (TX) SAK for the MACsec interface.**
 
@@ -63,12 +63,12 @@ The key must be a 16-byte (GCM-AES-128) or 64-byte (GCM-AES-256) hexadecimal
 string.
 ```
 
-```{cfgcmd} set interfaces macsec <interface> security static peer <peer> mac <mac address>
+```{cfgcmd} set interfaces macsec \<interface\> security static peer \<peer\> mac \<mac address\>
 
 **Configure the MAC address associated with the MACsec peer.**
 ```
 
-```{cfgcmd} set interfaces macsec <interface> security static peer <peer> key <key>
+```{cfgcmd} set interfaces macsec \<interface\> security static peer \<peer\> key \<key\>
 
 **Configure the RX SAK for traffic from the MACsec peer.**
 
@@ -77,13 +77,13 @@ The key must be a 16-byte (GCM-AES-128) or 64-byte (GCM-AES-256) hexadecimal
 string.
 ```
 
-```{cfgcmd} set interfaces macsec <interface> security static peer <peer> disable
+```{cfgcmd} set interfaces macsec \<interface\> security static peer \<peer\> disable
 ```
 **Dynamic** {abbr}`MKA (MACsec Key Agreement protocol)` **mode**
 In this mode, the {abbr}`MKA (MACsec Key Agreement protocol)` protocol is used
 to generate, distribute, and update {abbr}`CAKs (MACsec Connectivity
 Association Keys)`, and to authenticate MACsec peers.
-```{cfgcmd} set interfaces macsec <interface> security mka cak <key>
+```{cfgcmd} set interfaces macsec \<interface\> security mka cak \<key\>
 
 **Configure the** :abbr:`CAK (MACsec Connectivity Association Key)` **for the
 MACsec interface.**
@@ -92,12 +92,12 @@ The :abbr:`CAK (MACsec Connectivity Association Key)` and its :abbr:`CKN
 (MACsec Connectivity Association Key Name)` form the pre-shared master key pair
 used to authenticate MACsec peers.
 ```
-```{cfgcmd} set interfaces macsec <interface> security mka ckn <key>
+```{cfgcmd} set interfaces macsec \<interface\> security mka ckn \<key\>
 
 Configure the :abbr:`CKN (MACsec Connectivity Association Key Name)` for the
 MACsec interface.
 ```
-```{cfgcmd} set interfaces macsec <interface> security mka priority <priority>
+```{cfgcmd} set interfaces macsec \<interface\> security mka priority \<priority\>
 
 Configure the MKA key server priority for the MACsec interface.
 
@@ -105,7 +105,7 @@ The peer with the lowest priority is elected as the key server.
 ```
 #### Replay protection
 
-```{cfgcmd} set interfaces macsec <interface> security replay-window <window>
+```{cfgcmd} set interfaces macsec \<interface\> security replay-window \<window\>
 
 The replay protection window defines how many out-of-order frames can be
 received before they are dropped as a potential replay attack.
@@ -117,7 +117,7 @@ The following values are valid:
 ```
 ## Operation
 
-```{opcmd} run generate macsec mka cak <gcm-aes-128|gcm-aes-256>
+```{opcmd} run generate macsec mka cak \<gcm-aes-128|gcm-aes-256\>
 
 Generate a 128-bit (GCM-AES-128) or 256-bit (GCM-AES-256) :abbr:`MKA (MACsec
 Key Agreement protocol)` :abbr:`CAK (MACsec Connectivity Association Key)`.
@@ -151,7 +151,7 @@ Show all MACsec interfaces.
   cipher suite: GCM-AES-128, using ICV length 16
   TXSC: 005056bfefaa0001 on SA 0
 ```
-```{opcmd} show interfaces macsec <interface>
+```{opcmd} show interfaces macsec \<interface\>
 
 Show information for a specific MACsec interface.
 

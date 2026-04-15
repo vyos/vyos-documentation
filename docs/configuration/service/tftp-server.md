@@ -10,7 +10,7 @@ is very simple to implement.
 
 ## Configuration
 
-```{cfgcmd} set service tftp-server directory <directory>
+```{cfgcmd} set service tftp-server directory \<directory\>
 
 Enable TFTP service by specifying the `<directory>` which will be used to serve
 files.
@@ -20,13 +20,13 @@ Choose your `directory` location carefully or you will loose the
 content on image upgrades. Any directory under `/config` is save at this
 will be migrated.
 :::
-```{cfgcmd} set service tftp-server listen-address <address>
+```{cfgcmd} set service tftp-server listen-address \<address\>
 
 Configure the IPv4 or IPv6 listen address of the TFTP server. Multiple IPv4 and
 IPv6 addresses can be given. There will be one TFTP server instances listening
 on each IP address.
 ```
-```{cfgcmd} set service tftp-server listen-address <address> vrf <name>
+```{cfgcmd} set service tftp-server listen-address \<address\> vrf \<name\>
 ```
 % stop_vyoslinter
 Additional option to run TFTP server in the {abbr}`VRF (Virtual Routing and Forwarding)` context

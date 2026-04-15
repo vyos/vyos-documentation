@@ -64,7 +64,7 @@ When implementing CGNAT, ensuring that there are enough ports allocated per subs
 
 ## Configuration
 
-```{cfgcmd} set nat cgnat pool external <pool-name> external-port-range <port-range>
+```{cfgcmd} set nat cgnat pool external \<pool-name\> external-port-range \<port-range\>
 
     Set an external port-range for the external pool, the default range is
 
@@ -73,7 +73,7 @@ When implementing CGNAT, ensuring that there are enough ports allocated per subs
 ```
 
 
-```{cfgcmd} set nat cgnat pool external <pool-name> per-user-limit port <num>
+```{cfgcmd} set nat cgnat pool external \<pool-name\> per-user-limit port \<num\>
 
 Set external source port limits that will be allocated to each subscriber
 
@@ -81,7 +81,7 @@ individually. The default value is 2000.
 ```
 
 
-```{cfgcmd} set nat cgnat pool external <pool-name> range [address | address range | network] [seq]
+```{cfgcmd} set nat cgnat pool external \<pool-name\> range [address | address range | network] [seq]
 
 Set the range of external IP addresses for the CGNAT pool.
 
@@ -89,19 +89,19 @@ The sequence is optional; if set, a lower value means higher priority.
 ```
 
 
-```{cfgcmd} set nat cgnat pool internal <pool-name> range [address range | network]
+```{cfgcmd} set nat cgnat pool internal \<pool-name\> range [address range | network]
 
 Set the range of internal IP addresses for the CGNAT pool.
 ```
 
 
-```{cfgcmd} set nat cgnat rule <num> source pool <internal-pool-name>
+```{cfgcmd} set nat cgnat rule \<num\> source pool \<internal-pool-name\>
 
 Set the rule for the source pool.
 ```
 
 
-```{cfgcmd} set nat cgnat rule <num> translation pool <external-pool-name>
+```{cfgcmd} set nat cgnat rule \<num\> translation pool \<external-pool-name\>
 
 Set the rule for the translation pool.
 ```
@@ -148,11 +148,11 @@ set nat cgnat rule 10 translation pool 'ext-01'
 
 Show address and port allocations
 ```
-```{opcmd} show nat cgnat allocation external-address <address>
+```{opcmd} show nat cgnat allocation external-address \<address\>
 
 Show all allocations for an external IP address
 ```
-```{opcmd} show nat cgnat allocation internal-address <address>
+```{opcmd} show nat cgnat allocation internal-address \<address\>
 
 Show all allocations for an internal IP address
 ```

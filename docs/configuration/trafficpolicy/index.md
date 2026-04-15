@@ -392,7 +392,7 @@ This is the policy that requires the lowest resources for the same
 amount of traffic. But **very likely you do not need it as you cannot
 get much from it. Sometimes it is used just to enable logging.**
 
-```{cfgcmd} set qos policy drop-tail <policy-name> queue-limit
+```{cfgcmd} set qos policy drop-tail \<policy-name\> queue-limit
 
    <number-of-packets>
 
@@ -413,7 +413,7 @@ transmission of packets based on flows, that is, it balances traffic
 distributing it through different sub-queues in order to ensure
 fairness so that each flow is able to send data in turn, preventing any
 single one from drowning out the rest.
-```{cfgcmd} set qos policy fair-queue <policy-name>
+```{cfgcmd} set qos policy fair-queue \<policy-name\>
 
    Use this command to create a Fair-Queue policy and give it a name.
 
@@ -434,7 +434,7 @@ packet reordering to occur. An advisable value could be 10 seconds.
 
 One of the uses of Fair Queue might be the mitigation of Denial of
 Service attacks.
-```{cfgcmd} set qos policy fair-queue <policy-name> hash-interval <seconds>
+```{cfgcmd} set qos policy fair-queue \<policy-name\> hash-interval \<seconds\>
 
 Use this command to define a Fair-Queue policy, based on the
 
@@ -444,7 +444,7 @@ a new queue algorithm perturbation will occur (maximum 4294967295).
 ```
 When dequeuing, each hash-bucket with data is queried in a round robin
 fashion. You can configure the length of the queue.
-```{cfgcmd} set qos policy fair-queue <policy-name> queue-limit <limit>
+```{cfgcmd} set qos policy fair-queue \<policy-name\> queue-limit \<limit\>
 
 Use this command to define a Fair-Queue policy, based on the
 
@@ -536,7 +536,7 @@ something like 300 bytes.
 At very low rates (below 3Mbit), besides tuning `quantum` (300 keeps
 being ok) you may also want to increase `target` to something like 15ms
 and increase `interval` to something around 150 ms.
-```{cfgcmd} set qos policy fq-codel <policy name> codel-quantum <bytes>
+```{cfgcmd} set qos policy fq-codel \<policy name\> codel-quantum \<bytes\>
 
 Use this command to configure an fq-codel policy, set its name and
 
@@ -546,7 +546,7 @@ queue at once.
 ```
 
 
-```{cfgcmd} set qos policy fq-codel <policy name> flows <number-of-flows>
+```{cfgcmd} set qos policy fq-codel \<policy name\> flows \<number-of-flows\>
 
 Use this command to configure an fq-codel policy, set its name and
 
@@ -556,7 +556,7 @@ classified.
 ```
 
 
-```{cfgcmd} set qos policy fq-codel <policy name> interval <milliseconds>
+```{cfgcmd} set qos policy fq-codel \<policy name\> interval \<milliseconds\>
 
 Use this command to configure an fq-codel policy, set its name and
 
@@ -568,7 +568,7 @@ delay does not become too stale (default: 100ms).
 ```
 
 
-```{cfgcmd} set qos policy fq-codel <policy-name> queue-limit
+```{cfgcmd} set qos policy fq-codel \<policy-name\> queue-limit
 
 <number-of-packets>
 
@@ -581,7 +581,7 @@ reached, new packets are dropped (default: 10240 packets).
 ```
 
 
-```{cfgcmd} set qos policy fq-codel <policy-name> target <milliseconds>
+```{cfgcmd} set qos policy fq-codel \<policy-name\> target \<milliseconds\>
 
 Use this command to configure an fq-codel policy, set its name, and
 
@@ -618,7 +618,7 @@ the configured classes.
 In the case you want to apply some kind of **shaping** to your
 **inbound** traffic, check the [ingress-shaping] section.
 :::
-```{cfgcmd} set qos policy limiter <policy-name> class <class ID> match
+```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> match
 
    <match-name> description <description>
 
@@ -631,7 +631,7 @@ description.
 ```
 Once the matching rules are set for a class, you can start configuring
 how you want matching traffic to behave.
-```{cfgcmd} set qos policy limiter <policy-name> class <class-ID> bandwidth
+```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> bandwidth
 
    <rate>
 
@@ -642,7 +642,7 @@ a class identifier (1-4090) and the maximum allowed bandwidth for
 this class.
 
 ```
-```{cfgcmd} set qos policy limiter <policy-name> class <class-ID> burst
+```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> burst
 
    <burst-size>
 
@@ -653,21 +653,21 @@ a class identifier (1-4090) and the burst size in bytes for this
 class (default: 15).
 
 ```
-```{cfgcmd} set qos policy limiter <policy-name> default bandwidth <rate>
+```{cfgcmd} set qos policy limiter \<policy-name\> default bandwidth \<rate\>
 
 Use this command to configure an Ingress Policer, defining its name
 
 and the maximum allowed bandwidth for its default policy.
 
 ```
-```{cfgcmd} set qos policy limiter <policy-name> default burst <burst-size>
+```{cfgcmd} set qos policy limiter \<policy-name\> default burst \<burst-size\>
 
 Use this command to configure an Ingress Policer, defining its name
 
 and the burst size in bytes (default: 15) for its default policy.
 
 ```
-```{cfgcmd} set qos policy limiter <policy-name> class <class ID> priority
+```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> priority
 
    <value>
 
@@ -690,7 +690,7 @@ real network. You will be able to configure things like rate, burst,
 delay, packet loss, packet corruption or packet reordering.
 This could be helpful if you want to test how an application behaves
 under certain network conditions.
-```{cfgcmd} set qos policy network-emulator <policy-name> bandwidth <rate>
+```{cfgcmd} set qos policy network-emulator \<policy-name\> bandwidth \<rate\>
 
    Use this command to configure the maximum rate at which traffic will
 
@@ -701,7 +701,7 @@ under certain network conditions.
 ```
 
 
-```{cfgcmd} set qos policy network-emulator <policy-name> burst <burst-size>
+```{cfgcmd} set qos policy network-emulator \<policy-name\> burst \<burst-size\>
 
 Use this command to configure the burst size of the traffic in a
 
@@ -715,7 +715,7 @@ you have configured its bandwidth too.
 ```
 
 
-```{cfgcmd} set qos policy network-emulator <policy-name> delay
+```{cfgcmd} set qos policy network-emulator \<policy-name\> delay
 
 <delay>
 
@@ -734,7 +734,7 @@ configured its bandwidth too. You can use secs, ms and us. Default:
 ```
 
 
-```{cfgcmd} set qos policy network-emulator <policy-name> corruption
+```{cfgcmd} set qos policy network-emulator \<policy-name\> corruption
 
 <percent>
 
@@ -749,7 +749,7 @@ percent of packets.
 ```
 
 
-```{cfgcmd} set qos policy network-emulator <policy-name> loss
+```{cfgcmd} set qos policy network-emulator \<policy-name\> loss
 
 <percent>
 
@@ -762,7 +762,7 @@ packets your traffic will suffer.
 ```
 
 
-```{cfgcmd} set traffic-policy network-emulator <policy-name> reordering
+```{cfgcmd} set traffic-policy network-emulator \<policy-name\> reordering
 
 <percent>
 
@@ -775,7 +775,7 @@ packets your traffic will suffer.
 ```
 
 
-```{cfgcmd} set traffic-policy network-emulator <policy-name> queue-limit
+```{cfgcmd} set traffic-policy network-emulator \<policy-name\> queue-limit
 
 <limit>
 
@@ -840,7 +840,7 @@ Possible completions:
                 Random Early Detection (RED)
 ```
 
-```{cfgcmd} set qos policy priority-queue <policy-name> class <class-ID>
+```{cfgcmd} set qos policy priority-queue \<policy-name\> class \<class-ID\>
 
    queue-limit <limit>
 
@@ -885,7 +885,7 @@ IP precedence as defined in {rfc}`791`:
 Random-Detect could be useful for heavy traffic. One use of this
 algorithm might be to prevent a backbone overload. But only for TCP
 (because dropped packets could be retransmitted), not for UDP.
-```{cfgcmd} set qos policy random-detect <policy-name> bandwidth <bandwidth>
+```{cfgcmd} set qos policy random-detect \<policy-name\> bandwidth \<bandwidth\>
 
    Use this command to configure a Random-Detect policy, set its name
 
@@ -900,7 +900,7 @@ algorithm might be to prevent a backbone overload. But only for TCP
 ```
 
 
-```{cfgcmd} set qos policy random-detect <policy-name> precedence
+```{cfgcmd} set qos policy random-detect \<policy-name\> precedence
 
 <IP-precedence-value> average-packet <bytes>
 
@@ -917,7 +917,7 @@ configuring and what the size of its average-packet should be
 When configuring a Random-Detect policy: **the higher the
 precedence number, the higher the priority**.
 :::
-```{cfgcmd} set qos policy random-detect <policy-name> precedence
+```{cfgcmd} set qos policy random-detect \<policy-name\> precedence
 
 <IP-precedence-value> mark-probability <value>
 
@@ -930,7 +930,7 @@ configuring and what its mark (drop) probability will be. Set the
 
 probability by giving the N value of the fraction 1/N (default: 10).
 ```
-```{cfgcmd} set qos policy random-detect <policy-name> precedence
+```{cfgcmd} set qos policy random-detect \<policy-name\> precedence
 
    <IP-precedence-value> maximum-threshold <packets>
 
@@ -947,7 +947,7 @@ probability by giving the N value of the fraction 1/N (default: 10).
 ```
 
 
-```{cfgcmd} set qos policy random-detect <policy-name> precedence
+```{cfgcmd} set qos policy random-detect \<policy-name\> precedence
 
 <IP-precedence-value> minimum-threshold <packets>
 
@@ -973,7 +973,7 @@ The default values for the minimum-threshold depend on IP precedence:
 > | 2          | 11                    |
 > | 1          | 10                    |
 > | 0          | 9                     |
-```{cfgcmd} set qos policy random-detect <policy-name> precedence
+```{cfgcmd} set qos policy random-detect \<policy-name\> precedence
 
    <IP-precedence-value> queue-limit <packets>
 
@@ -1013,7 +1013,7 @@ Short bursts can be allowed to exceed the limit. On creation, the
 Rate-Control traffic is stocked with tokens which correspond to the
 amount of traffic that can be burst in one go. Tokens arrive at a steady
 rate, until the bucket is full.
-```{cfgcmd} set qos policy rate-control <policy-name> bandwidth <rate>
+```{cfgcmd} set qos policy rate-control \<policy-name\> bandwidth \<rate\>
 
    Use this command to configure a Rate-Control policy, set its name
 
@@ -1022,7 +1022,7 @@ rate, until the bucket is full.
 ```
 
 
-```{cfgcmd} set qos policy rate-control <policy-name> burst <burst-size>
+```{cfgcmd} set qos policy rate-control \<policy-name\> burst \<burst-size\>
 
 Use this command to configure a Rate-Control policy, set its name
 
@@ -1033,7 +1033,7 @@ burst.
 As a reference: for 10mbit/s on Intel, you might need at least 10kbyte
 buffer if you want to reach your configured rate.
 A very small buffer will soon start dropping packets.
-```{cfgcmd} set qos policy rate-control <policy-name> latency
+```{cfgcmd} set qos policy rate-control \<policy-name\> latency
 
 Use this command to configure a Rate-Control policy, set its name
 
@@ -1067,7 +1067,7 @@ will move to the next queue. If the queue is empty, the value of the
 deficit counter is reset to 0.
 At every round, the deficit counter adds the quantum so that even large
 packets will have their opportunity to be dequeued.
-```{cfgcmd} set qos policy round-robin <policy name> class
+```{cfgcmd} set qos policy round-robin \<policy name\> class
 
    <class-ID> quantum <packets>
 
@@ -1080,7 +1080,7 @@ packets will have their opportunity to be dequeued.
 ```
 
 
-```{cfgcmd} set qos policy round-robin <policy name> class
+```{cfgcmd} set qos policy round-robin \<policy name\> class
 
 <class ID> queue-limit <packets>
 
@@ -1145,13 +1145,13 @@ several classes willing to use their ceilings, the priority parameter
 will establish the order in which that additional traffic will be
 allocated. Priority can be any number from 0 to 7. The lower the number,
 the higher the priority.
-```{cfgcmd} set qos policy shaper <policy-name> bandwidth <rate>
+```{cfgcmd} set qos policy shaper \<policy-name\> bandwidth \<rate\>
 
 Use this command to configure a Shaper policy, set its name
 
 and the maximum bandwidth for all combined traffic.
 ```
-```{cfgcmd} set qos policy shaper <policy-name> class <class-ID> bandwidth
+```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> bandwidth
 
    <rate>
 
@@ -1164,7 +1164,7 @@ and the maximum bandwidth for all combined traffic.
 ```
 
 
-```{cfgcmd} set qos policy shaper <policy-name> class <class-ID> burst
+```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> burst
 
 <bytes>
 
@@ -1177,7 +1177,7 @@ be available to be sent at ceiling speed (default: 15Kb).
 ```
 
 
-```{cfgcmd} set qos policy shaper <policy-name> class <class-ID> ceiling
+```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> ceiling
 
 <bandwidth>
 
@@ -1190,7 +1190,7 @@ default ceiling value is the bandwidth value.
 ```
 
 
-```{cfgcmd} set qos policy shaper <policy-name> class <class-ID> priority
+```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> priority
 
 <0-7>
 
@@ -1278,7 +1278,7 @@ system, implemented as a queue discipline (qdisc) for the Linux kernel. It is
 designed to replace and improve upon the complex hierarchy of simple qdiscs
 presently required to effectively tackle the bufferbloat problem at the network
 edge.
-```{cfgcmd} set qos policy cake <text> bandwidth <value>
+```{cfgcmd} set qos policy cake \<text\> bandwidth \<value\>
 
    Set the shaper bandwidth, either as an explicit bitrate or a percentage
 
@@ -1287,25 +1287,25 @@ edge.
 ```
 
 
-```{cfgcmd} set qos policy cake <text> description
+```{cfgcmd} set qos policy cake \<text\> description
 
 Set a description for the shaper.
 ```
 
 
-```{cfgcmd} set qos policy cake <text> flow-isolation blind
+```{cfgcmd} set qos policy cake \<text\> flow-isolation blind
 
 Disables flow isolation, all traffic passes through a single queue.
 ```
 
 
-```{cfgcmd} set qos policy cake <text> flow-isolation dst-host
+```{cfgcmd} set qos policy cake \<text\> flow-isolation dst-host
 
 Flows are defined only by destination address.
 ```
 
 
-```{cfgcmd} set qos policy cake <text> flow-isolation dual-dst-host
+```{cfgcmd} set qos policy cake \<text\> flow-isolation dual-dst-host
 
 Flows are defined by the 5-tuple. Fairness is applied first over destination
 
@@ -1313,7 +1313,7 @@ addresses, then over individual flows.
 ```
 
 
-```{cfgcmd} set qos policy cake <text> flow-isolation dual-src-host
+```{cfgcmd} set qos policy cake \<text\> flow-isolation dual-src-host
 
 Flows are defined by the 5-tuple. Fairness is applied first over source
 
@@ -1321,7 +1321,7 @@ addresses, then over individual flows.
 ```
 
 
-```{cfgcmd} set qos policy cake <text> flow-isolation flow
+```{cfgcmd} set qos policy cake \<text\> flow-isolation flow
 
 Flows are defined by the entire 5-tuple (source IP address, source port,
 
@@ -1329,25 +1329,25 @@ destination IP address, destination port, transport protocol).
 ```
 
 
-```{cfgcmd} set qos policy cake <text> flow-isolation host
+```{cfgcmd} set qos policy cake \<text\> flow-isolation host
 
 Flows are defined by source-destination host pairs.
 ```
 
 
-```{cfgcmd} set qos policy cake <text> flow-isolation nat
+```{cfgcmd} set qos policy cake \<text\> flow-isolation nat
 
 Perform NAT lookup before applying flow-isolation rules.
 ```
 
 
-```{cfgcmd} set qos policy cake <text> flow-isolation src-host
+```{cfgcmd} set qos policy cake \<text\> flow-isolation src-host
 
 Flows are defined only by source address.
 ```
 
 
-```{cfgcmd} set qos policy cake <text> flow-isolation triple-isolate
+```{cfgcmd} set qos policy cake \<text\> flow-isolation triple-isolate
 
 **(Default)** Flows are defined by the 5-tuple, fairness is applied
 
@@ -1355,7 +1355,7 @@ over source and destination addresses and also over individual flows.
 ```
 
 
-```{cfgcmd} set qos policy cake <text> rtt
+```{cfgcmd} set qos policy cake \<text\> rtt
 
 Defines the round-trip time used for active queue management (AQM) in
 

@@ -46,15 +46,15 @@ To use flowtables, you need to configure the following:
 > - Create a firewall rule. Set the action to
 >   `offload` and use your desired flowtable for `offload-target`.
 Creating a flow table:
-```{cfgcmd} set firewall flowtable <flow_table_name> interface <iface>
+```{cfgcmd} set firewall flowtable \<flow_table_name\> interface \<iface\>
 
 Specify interfaces to use in the flowtable.
 ```
-```{cfgcmd} set firewall flowtable <flow_table_name> description <text>
+```{cfgcmd} set firewall flowtable \<flow_table_name\> description \<text\>
 ```
 Provide a description for the flow table.
 
-```{cfgcmd} set firewall flowtable <flow_table_name> offload
+```{cfgcmd} set firewall flowtable \<flow_table_name\> offload
 
    <hardware | software>
 Specify the offload type the flowtable uses: ``hardware`` or
@@ -66,13 +66,13 @@ Specify the offload type the flowtable uses: ``hardware`` or
 > installed before enabling this option.
 :::
 Creating rules for using flow tables:
-```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule <1-999999>
+```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule \<1-999999\>
 
    action offload
 Create a firewall rule in the forward chain with the action set to
 ``offload``.
 ```
-```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule <1-999999>
+```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule \<1-999999\>
 
    offload-target <flowtable>
 Create a firewall rule in the forward chain and specify which flowtable

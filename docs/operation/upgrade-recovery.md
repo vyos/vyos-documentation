@@ -25,7 +25,7 @@ Upgrade recovery is disabled by default. To use it,
 
 To enable upgrade recovery, run the following command:
 
-```{cfgcmd} set system option reboot-on-upgrade-failure [timeout <min>]
+```{cfgcmd} set system option reboot-on-upgrade-failure [timeout \<min\>]
 ```
 - `timeout <min>:` The time in minutes (5 - 30) to cancel upgrade
   recovery before VyOS reboots.

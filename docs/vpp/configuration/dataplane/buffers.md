@@ -48,7 +48,7 @@ This value sets how much payload data can be stored in a single buffer
 allocated by VPP. Larger values reduce buffer chains for large packets,
 while smaller values conserve memory for environments handling mostly
 small packets.
-```{cfgcmd} set vpp settings resource-allocation buffers data-size <value>
+```{cfgcmd} set vpp settings resource-allocation buffers data-size \<value\>
 ```
 Optimal size depends on the typical packet size in your network. If
 unsure, use the largest MTU in your network plus overhead (for example,
@@ -56,7 +56,7 @@ unsure, use the largest MTU in your network plus overhead (for example,
 ### page-size
 A memory pages type used for buffer allocation. Common values are 4K, 2M, or 1G.
 Use page sizes configured in your system settings.
-```{cfgcmd} set vpp settings resource-allocation buffers page-size <value>
+```{cfgcmd} set vpp settings resource-allocation buffers page-size \<value\>
 ```
 ## Potential Issues and Troubleshooting
 

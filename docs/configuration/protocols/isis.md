@@ -23,7 +23,7 @@ CLNS. This Router ID is called the {abbr}`NET (Network Entity Title)`. This
 must be unique for each and every router that is operating in IS-IS. It also
 must not be duplicated otherwise the same issues that occur within OSPF will
 occur within IS-IS when it comes to said duplication.
-```{cfgcmd} set protocols isis net <network-entity-title>
+```{cfgcmd} set protocols isis net \<network-entity-title\>
 
   This command sets network entity title (NET) provided in ISO format.
 
@@ -68,7 +68,7 @@ occur within IS-IS when it comes to said duplication.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface>
+```{cfgcmd} set protocols isis interface \<interface\>
 
 This command enables IS-IS on this interface, and allows for
 
@@ -87,7 +87,7 @@ Exchange Mechanism for IS-IS.
 ```
 
 
-```{cfgcmd} set protocols isis level <level-1|level-1-2|level-2>
+```{cfgcmd} set protocols isis level \<level-1|level-1-2|level-2\>
 
 This command defines the IS-IS router behavior:
 
@@ -100,7 +100,7 @@ This command defines the IS-IS router behavior:
 ```
 
 
-```{cfgcmd} set protocols isis lsp-mtu <size>
+```{cfgcmd} set protocols isis lsp-mtu \<size\>
 
 This command configures the maximum size of generated
 
@@ -108,7 +108,7 @@ This command configures the maximum size of generated
 ```
 
 
-```{cfgcmd} set protocols isis metric-style <narrow|transition|wide>
+```{cfgcmd} set protocols isis metric-style \<narrow|transition|wide\>
 
 This command sets old-style (ISO 10589) or new style packet formats:
 
@@ -149,7 +149,7 @@ router. It is described in :rfc:`3787`.
 ```
 
 
-```{cfgcmd} set protocols isis default-information originate <ipv4|ipv6>
+```{cfgcmd} set protocols isis default-information originate \<ipv4|ipv6\>
 
 level-1
 
@@ -158,7 +158,7 @@ This command will generate a default-route in L1 database.
 ```
 
 
-```{cfgcmd} set protocols isis default-information originate <ipv4|ipv6>
+```{cfgcmd} set protocols isis default-information originate \<ipv4|ipv6\>
 
 level-2
 
@@ -178,7 +178,7 @@ This command will generate a default-route in L2 database.
 ```
 
 
-```{cfgcmd} set protocols isis ldp-sync holddown <seconds>
+```{cfgcmd} set protocols isis ldp-sync holddown \<seconds\>
 
 This command will change the hold down value globally for IGP-LDP
 
@@ -186,7 +186,7 @@ synchronization during convergence/interface flap events.
 ```
 #### Interface Configuration
 
-```{cfgcmd} set protocols isis interface <interface> circuit-type
+```{cfgcmd} set protocols isis interface \<interface\> circuit-type
 
   <level-1|level-1-2|level-2-only>
 
@@ -202,7 +202,7 @@ synchronization during convergence/interface flap events.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> hello-interval
+```{cfgcmd} set protocols isis interface \<interface\> hello-interval
 
 <seconds>
 
@@ -213,7 +213,7 @@ The range is 1 to 600.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> hello-multiplier
+```{cfgcmd} set protocols isis interface \<interface\> hello-multiplier
 
 <seconds>
 
@@ -224,7 +224,7 @@ interface. The range is 2 to 100.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> hello-padding
+```{cfgcmd} set protocols isis interface \<interface\> hello-padding
 
 This command configures padding on hello packets to accommodate asymmetrical
 
@@ -236,7 +236,7 @@ routing devices MTU does not meet the requirements to establish the adjacency.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> metric <metric>
+```{cfgcmd} set protocols isis interface \<interface\> metric \<metric\>
 
 This command set default metric for circuit.
 
@@ -247,7 +247,7 @@ or wide value).
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> network
+```{cfgcmd} set protocols isis interface \<interface\> network
 
 point-to-point
 
@@ -258,13 +258,13 @@ network type is broadcast.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> passive
+```{cfgcmd} set protocols isis interface \<interface\> passive
 
 This command configures the passive mode for this interface.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> password
+```{cfgcmd} set protocols isis interface \<interface\> password
 
 plaintext-password <text>
 
@@ -273,7 +273,7 @@ This command configures the authentication password for the interface.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> priority <number>
+```{cfgcmd} set protocols isis interface \<interface\> priority \<number\>
 
 This command sets priority for the interface for
 
@@ -283,7 +283,7 @@ range is 0 to 127.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> psnp-interval
+```{cfgcmd} set protocols isis interface \<interface\> psnp-interval
 
 <number>
 
@@ -294,7 +294,7 @@ to 127.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface>
+```{cfgcmd} set protocols isis interface \<interface\>
 
 no-three-way-handshake
 
@@ -305,13 +305,13 @@ described in :rfc:`5303`. Three-Way Handshake is enabled by default.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> ldp-sync disable
+```{cfgcmd} set protocols isis interface \<interface\> ldp-sync disable
 
 This command disables IGP-LDP sync for this specific interface.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> ldp-sync holddown
+```{cfgcmd} set protocols isis interface \<interface\> ldp-sync holddown
 
  <seconds>
 
@@ -322,19 +322,19 @@ during convergence/interface flap events, but for this interface only.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> fast-reroute lfa [level-1 | level-2] enable
+```{cfgcmd} set protocols isis interface \<interface\> fast-reroute lfa [level-1 | level-2] enable
 
 This command enables per-prefix local LFA fast reroute link protection.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> fast-reroute lfa [level-1 | level-2] exclude
+```{cfgcmd} set protocols isis interface \<interface\> fast-reroute lfa [level-1 | level-2] exclude
 
 This command excludes an interface from the local LFA backup nexthop computation.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> fast-reroute remote-lfa [level-1 | level-2] tunnel mpls-ldp
+```{cfgcmd} set protocols isis interface \<interface\> fast-reroute remote-lfa [level-1 | level-2] tunnel mpls-ldp
 
 This command enables per-prefix Remote LFA fast reroute link protection.
 
@@ -344,13 +344,13 @@ targeted hello messages in order for RLFA to work.
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> fast-reroute remote-lfa [level-1 | level-2] maximum-metric <metric>
+```{cfgcmd} set protocols isis interface \<interface\> fast-reroute remote-lfa [level-1 | level-2] maximum-metric \<metric\>
 
 This command limits Remote LFA PQ node selection within the specified metric. Metric value range (1-16777215).
 ```
 
 
-```{cfgcmd} set protocols isis interface <interface> fast-reroute ti-lfa [level-1|level-2] [node-protection [link-fallback]]
+```{cfgcmd} set protocols isis interface \<interface\> fast-reroute ti-lfa [level-1|level-2] [node-protection [link-fallback]]
 
 This command enables per-prefix TI-LFA fast reroute link or node protection.
 
@@ -361,7 +361,7 @@ and use of link-protecting LFAs for destinations unprotected by node
 protection.
 ```
 #### Route Redistribution
-```{cfgcmd} set protocols isis redistribute ipv4 <route source> level-1
+```{cfgcmd} set protocols isis redistribute ipv4 \<route source\> level-1
 
 This command redistributes routing information from the given route source
 
@@ -371,7 +371,7 @@ source: bgp, connected, kernel, ospf, rip, static.
 ```
 
 
-```{cfgcmd} set protocols isis redistribute ipv4 <route source> level-2
+```{cfgcmd} set protocols isis redistribute ipv4 \<route source\> level-2
 
 This command redistributes routing information from the given route source
 
@@ -381,7 +381,7 @@ source: bgp, connected, kernel, ospf, rip, static.
 ```
 
 
-```{cfgcmd} set protocols isis redistribute ipv4 <route source>
+```{cfgcmd} set protocols isis redistribute ipv4 \<route source\>
 
 <level-1|level-2> metric <number>
 
@@ -394,7 +394,7 @@ kernel, ospf, rip, static. The metric range is 1 to 16777215.
 ```
 
 
-```{cfgcmd} set protocols isis redistribute ipv4 <route source>
+```{cfgcmd} set protocols isis redistribute ipv4 \<route source\>
 
 <level-1|level-2> route-map <name>
 
@@ -407,12 +407,12 @@ bgp, connected, kernel, ospf, rip, static.
 ```
 #### Timers
 
-```{cfgcmd} set protocols isis lsp-gen-interval <seconds>
+```{cfgcmd} set protocols isis lsp-gen-interval \<seconds\>
 
 This command sets minimum interval in seconds between regenerating same
 LSP. The interval range is 1 to 120.
 ```
-```{cfgcmd} set protocols isis lsp-refresh-interval <seconds>
+```{cfgcmd} set protocols isis lsp-refresh-interval \<seconds\>
 
 This command sets LSP refresh interval in seconds. IS-IS generates LSPs
 when the state of a link changes. However, to ensure that routing
@@ -421,7 +421,7 @@ generated on a regular basis even though there has been no change to
 the state of the links. The interval range is 1 to 65235. The default
 value is 900 seconds.
 ```
-```{cfgcmd} set protocols isis max-lsp-lifetime <seconds>
+```{cfgcmd} set protocols isis max-lsp-lifetime \<seconds\>
 
 This command sets LSP maximum LSP lifetime in seconds. The interval range
 is 350 to 65535. LSPs remain in a database for 1200 seconds by default.
@@ -430,12 +430,12 @@ the LSP refresh interval or the LSP lifetime. The LSP refresh interval
 should be less than the LSP lifetime or else LSPs will time out before
 they are refreshed.
 ```
-```{cfgcmd} set protocols isis spf-interval <seconds>
+```{cfgcmd} set protocols isis spf-interval \<seconds\>
 
 This command sets minimum interval between consecutive SPF calculations in
 seconds.The interval range is 1 to 120.
 ```
-```{cfgcmd} set protocols isis spf-delay-ietf holddown <milliseconds>
+```{cfgcmd} set protocols isis spf-delay-ietf holddown \<milliseconds\>
 ```
 ```{cfgcmd} set protocols isis spf-delay-ietf init-delay
 
@@ -458,7 +458,7 @@ to IGP events. The process described in :rfc:`8405`.
 ```
 #### Loop Free Alternate (LFA)
 
-```{cfgcmd} set protocols isis fast-reroute lfa remote prefix-list <name>
+```{cfgcmd} set protocols isis fast-reroute lfa remote prefix-list \<name\>
 
   <level-1|level-2>
 This command enables IP fast re-routing that is part of :rfc:`5286`.
@@ -485,20 +485,20 @@ prefix priority.
 ```
 #### Segment Routing over IPv6 (SRv6)
 
-```{cfgcmd} set protocols isis segment-routing srv6 interface <interface>
+```{cfgcmd} set protocols isis segment-routing srv6 interface \<interface\>
 
 The :ref:`dummy interface<configuration/interfaces/dummy:dummy>` used
 to install SRv6 SIDs into the Linux data plane. The interface must exist and
 must be present when configuring IS-IS with
 SRv6.
 ```
-```{cfgcmd} set protocols isis segment-routing srv6 locator <locator>
+```{cfgcmd} set protocols isis segment-routing srv6 locator \<locator\>
 
 Specifies the SRv6 locator to use for IS-IS. IS-IS automatically allocates
 prefix and adjacency SIDs, creates local SID entries and advertises them
 into the IGP domain.
 ```
-```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-end-d <0-255>
+```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-end-d \<0-255\>
 
 The Maximum End D MSD Type specifies the maximum number of SIDs present in an
 SRH when performing decapsulation. As specified in :rfc:`8986`, the permitted
@@ -511,7 +511,7 @@ inner packet if the outer IPv6 header contains an SRH.
 
 Reference: :rfc:`9352`
 ```
-```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-end-pop <0-255>
+```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-end-pop \<0-255\>
 
 The Maximum End Pop MSD Type signals the maximum number of SIDs in the SRH to
 which the router can apply "Penultimate Segment Pop (PSP) of the SRH" or
@@ -523,7 +523,7 @@ cannot apply PSP or USP flavors.
 
 Reference: :rfc:`9352`
 ```
-```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-h-encaps <0-255>
+```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-h-encaps \<0-255\>
 
 The Maximum H.Encaps MSD Type signals the maximum number of SIDs that can be
 added to the segment list of an SRH as part of the "H.Encaps" behavior, as
@@ -536,7 +536,7 @@ insert an SRH up to the advertised number of SIDs.
 
 Reference: :rfc:`9352`
 ```
-```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-segs-left <0-255>
+```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-segs-left \<0-255\>
 
 The Maximum Segments Left MSD Type signals the maximum value of the
 "Segments Left" field (:rfc:`8754`) in the SRH of a received packet before

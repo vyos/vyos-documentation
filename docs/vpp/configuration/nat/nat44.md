@@ -56,7 +56,7 @@ designations to determine the direction of translation.
 ### Inside Interfaces
 Inside interfaces connect to private networks where hosts need source NAT
 to access external networks.
-```{cfgcmd} set vpp nat nat44 interface inside <inside-interface>
+```{cfgcmd} set vpp nat nat44 interface inside \<inside-interface\>
 ```
 Traffic flowing **from** inside interfaces gets source NAT applied,
 translating private source addresses to public addresses from the
@@ -64,7 +64,7 @@ translation pool.
 ### Outside Interfaces
 Outside interfaces connect to public networks where external hosts may
 need to access internal services.
-```{cfgcmd} set vpp nat nat44 interface outside <outside-interface>
+```{cfgcmd} set vpp nat nat44 interface outside \<outside-interface\>
 ```
 Traffic flowing **to** outside interfaces can trigger destination NAT
 based on static rules, allowing external access to internal services.
@@ -111,7 +111,7 @@ hosts when they access external networks.
 
    <ip-address | ip-address-range>
 ```
-```{cfgcmd} set vpp nat nat44 address-pool translation interface <interface-name>
+```{cfgcmd} set vpp nat nat44 address-pool translation interface \<interface-name\>
 ```
 **Examples:**
 
@@ -136,7 +136,7 @@ need to:
 
    <ip-address | ip-address-range>
 ```
-```{cfgcmd} set vpp nat nat44 address-pool twice-nat interface <interface-name>
+```{cfgcmd} set vpp nat nat44 address-pool twice-nat interface \<interface-name\>
 ```
 **Examples:**
 
@@ -183,9 +183,9 @@ one-to-one mappings that persist until explicitly removed.
 ### Basic Static Rule Configuration
 To create a static NAT rule, you need to define the local (internal) and
 external (public) address mappings:
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> local address <internal-ip>
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> local address \<internal-ip\>
 ```
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> external address <external-ip>
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> external address \<external-ip\>
 ```
 Where:
 - `<rule-number>` is a unique identifier for the rule
@@ -197,15 +197,15 @@ versa.
 ### Port-based Static Rules
 For more granular control, you can create port-specific static rules. This
 is useful when you want to publish specific services:
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> local address <internal-ip>
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> local address \<internal-ip\>
 ```
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> local port <internal-port>
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> local port \<internal-port\>
 ```
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> external address <external-ip>
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> external address \<external-ip\>
 ```
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> external port <external-port>
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> external port \<external-port\>
 ```
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> protocol <protocol>
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> protocol \<protocol\>
 ```
 Where:
 - `<internal-port>` and `<external-port>` are the port numbers used by
@@ -225,12 +225,12 @@ translated to an address from the twice-NAT address pool.
 This is practical in scenarios where internal services cannot connect to
 public networks, so they see such traffic as internal.
 The twice-NAT option can be enabled with the following command:
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> options twice-nat
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options twice-nat
 ```
 #### Self Twice-NAT
 Self Twice-NAT is used when a local host needs to access itself via the
 external address:
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> options self-twice-nat
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options self-twice-nat
 ```
 This option rewrites source IP addresses on packets sent only from a local
 address to an external address configured in a rule.
@@ -244,20 +244,20 @@ address to an external address configured in a rule.
 #### Out-to-In Only
 Restricts the rule to only apply to traffic from outside to inside
 interfaces:
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> options out-to-in-only
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options out-to-in-only
 ```
 This prevents the creation of sessions from the inside interface, making it
 a purely DNAT rule.
 #### Force Twice-NAT Address
 When using twice-nat, you can force the use of a specific IP address from
 the twice-nat address pool:
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> options twice-nat-address
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options twice-nat-address
 
    <ip-address>
 ```
 #### Rule Description
 To document your rules, you can add a description:
-```{cfgcmd} set vpp nat nat44 static rule <rule-number> description <description>
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> description \<description\>
 ```
 ### Static Rules Configuration Examples
 **Full one-to-one NAT mapping:**
@@ -306,11 +306,11 @@ to pass through without NAT modifications.
 To create an exclude rule, you need to specify the traffic characteristics
 that should bypass NAT. You can configure exclude rules in two ways:
 **Option 1: Using local address**
-```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> local-address <internal-ip>
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> local-address \<internal-ip\>
 ```
 **Option 2: Using external interface**
 
-```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> external-interface
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> external-interface
 
    <interface-name>
 ```
@@ -330,28 +330,28 @@ For more granular control, you can exclude only specific ports and protocols.
 You can combine port and protocol specifications with either `local-address` or
 `external-interface`:
 **With local address:**
-```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> local-address <internal-ip>
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> local-address \<internal-ip\>
 ```
-```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> local-port <port-number>
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> local-port \<port-number\>
 ```
-```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> protocol <protocol>
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> protocol \<protocol\>
 ```
 **With external interface:**
 
-```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> external-interface
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> external-interface
 
    <interface-name>
 ```
-```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> local-port <port-number>
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> local-port \<port-number\>
 ```
-```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> protocol <protocol>
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> protocol \<protocol\>
 ```
 Where:
 - `<port-number>` is the specific port to exclude (1-65535)
 - `<protocol>` can be `tcp`, `udp`, `icmp`, or `all` (default)
 ### Rule Documentation
 Add descriptions to your exclude rules for better management:
-```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> description <description>
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> description \<description\>
 ```
 ### Exclude Rules Configuration Examples
 **Exclude SSH access to router:**
@@ -419,21 +419,21 @@ behavior.
 ### Session Timeouts
 NAT44 maintains translation sessions with configurable timeout values for
 different protocols:
-```{cfgcmd} set vpp nat nat44 timeout icmp <seconds>
+```{cfgcmd} set vpp nat nat44 timeout icmp \<seconds\>
 
 Set the timeout for ICMP sessions (Default: 60 seconds).
 ```
-```{cfgcmd} set vpp nat nat44 timeout tcp-established <seconds>
+```{cfgcmd} set vpp nat nat44 timeout tcp-established \<seconds\>
 
 Set the timeout for established TCP connections (Default: 7440 seconds
 or 2 hours 4 minutes).
 ```
-```{cfgcmd} set vpp nat nat44 timeout tcp-transitory <seconds>
+```{cfgcmd} set vpp nat nat44 timeout tcp-transitory \<seconds\>
 
 Set the timeout for transitory TCP connections (setup/teardown) (Default:
 240 seconds or 4 minutes).
 ```
-```{cfgcmd} set vpp nat nat44 timeout udp <seconds>
+```{cfgcmd} set vpp nat nat44 timeout udp \<seconds\>
 
 Set the timeout for UDP sessions (Default: 300 seconds or 5 minutes).
 ```
@@ -447,7 +447,7 @@ set vpp nat nat44 timeout icmp 30
 ```
 ### Session Limits
 Control the maximum number of concurrent NAT sessions:
-```{cfgcmd} set vpp nat nat44 session-limit <number>
+```{cfgcmd} set vpp nat nat44 session-limit \<number\>
 
 Set the maximum number of NAT sessions per worker thread (Default:
 64512).

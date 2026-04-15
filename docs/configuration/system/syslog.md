@@ -27,7 +27,7 @@ The syslog configuration is organized into the following categories:
 
 Configure the general behavior of the syslog service.
 
-```{cfgcmd} set system syslog marker interval <number>
+```{cfgcmd} set system syslog marker interval \<number\>
 
    **Configure the interval, in seconds, for sending syslog mark messages.**
 
@@ -59,7 +59,7 @@ Name)` in log messages, even if the syslog server is in the same domain.
 ```
 ### Local logging
 Configure which log messages to save to a local log file.
-```{cfgcmd} set system syslog local <filename> facility <keyword> level <keyword>
+```{cfgcmd} set system syslog local \<filename\> facility \<keyword\> level \<keyword\>
 
 **Configure syslog to save log messages for a specific facility and
 severity level to ``/var/log/messages``.**
@@ -69,7 +69,7 @@ Refer to the tables below for valid facility and severity options.
 (syslog-console)=
 ### Console logging
 Configure which log messages to send to `/dev/console`.
-```{cfgcmd} set system syslog console facility <keyword> level <keyword>
+```{cfgcmd} set system syslog console facility \<keyword\> level \<keyword\>
 
 **Configure syslog to send log messages for a specific facility and severity
 level to the device's console.**
@@ -82,7 +82,7 @@ Configure **remote logging** to send log messages to a remote syslog server.
 Remote logging does not affect either **local** or **console logging** and
 runs in parallel with them. Remote logging supports sending log messages
 to multiple hosts.
-```{cfgcmd} set system syslog remote <address> facility <keyword> level <keyword>
+```{cfgcmd} set system syslog remote \<address\> facility \<keyword\> level \<keyword\>
 
 **Configure log transmission to the remote syslog server for a specific
 facility and severity level.**
@@ -92,20 +92,20 @@ Qualified Domain Name)` or an IP address.
 
 Refer to the tables below for valid facility and severity options.
 ```
-```{cfgcmd} set system syslog remote <address> protocol <udp | tcp>
+```{cfgcmd} set system syslog remote \<address\> protocol \<udp | tcp\>
 
 **Configure the protocol for log transmission.**
 
 The protocol can be either UDP or TCP. By default, log messages are sent
 over UDP.
 ```
-```{cfgcmd} set system syslog remote <address> port <port>
+```{cfgcmd} set system syslog remote \<address\> port \<port\>
 
 **Configure the port for log transmission.**
 
 By default, the standard port 514 is used.
 ```
-```{cfgcmd} set system syslog remote <address> format include-timezone
+```{cfgcmd} set system syslog remote \<address\> format include-timezone
 
 **Configure log transmission in the RFC 5424 format.**
 
@@ -120,7 +120,7 @@ By default, log messages are sent in the RFC 3164 format. For example:
 
   <34>Oct 11 22:14:15 mymachine su: ‘su root’ failed for lonvick on /dev/pts/8
 ```
-```{cfgcmd} set system syslog remote <address> format octet-counted
+```{cfgcmd} set system syslog remote \<address\> format octet-counted
 
 **Enable octet-counted framing for log transmission.**
 
@@ -129,12 +129,12 @@ the remote server supports octet-counted framing to avoid parsing errors.
 
 Octet-counted framing is not available for the UDP protocol.
 ```
-```{cfgcmd} set system syslog remote <address> vrf <name>
+```{cfgcmd} set system syslog remote \<address\> vrf \<name\>
 
 Configure the :abbr:`VRF (Virtual Routing and Forwarding)` instance
 for log transmission.
 ```
-```{cfgcmd} set system syslog remote <address> source-address <address>
+```{cfgcmd} set system syslog remote \<address\> source-address \<address\>
 
 Configure the source IP address (IPv4 or IPv6) for log transmission.
 ```
@@ -154,11 +154,11 @@ Security)`-encrypted remote logging, ensure you have:
 {abbr}`TLS (Transport Layer Security)`-encrypted remote logging is
 **not supported** over **UDP**.
 :::
-```{cfgcmd} set system syslog remote <address> tls
+```{cfgcmd} set system syslog remote \<address\> tls
 
 Enable TLS-encrypted remote logging.
 ```
-```{cfgcmd} set system syslog remote <address> tls ca-certificate <ca_name>
+```{cfgcmd} set system syslog remote \<address\> tls ca-certificate \<ca_name\>
 
 **Configure the** :abbr:`CA (Certificate Authority)` **certificate.**
 
@@ -168,7 +168,7 @@ verify the identity of the remote syslog server.
 The :abbr:`CA (Certificate Authority)` certificate is required for **all**
 authentication modes except ``anon``.
 ```
-```{cfgcmd} set system syslog remote <address> tls certificate <cert_name>
+```{cfgcmd} set system syslog remote \<address\> tls certificate \<cert_name\>
 
 **Configure the client certificate.**
 
@@ -178,7 +178,7 @@ of the syslog client.
 The client certificate is required if the remote syslog server enforces
 client certificate verification.
 ```
-```{cfgcmd} set system syslog remote <address> tls auth-mode <anon | fingerprint
+```{cfgcmd} set system syslog remote \<address\> tls auth-mode <anon | fingerprint
 
    | certvalid | name>
 **Configure the authentication mode.**
@@ -211,7 +211,7 @@ The following authentication modes are available:
     set system syslog remote <address> tls permitted-peer <peer>
   This is a **recommended** secure mode for production environments.
 ```
-```{cfgcmd} set system syslog remote <address> tls permitted-peer <peer>
+```{cfgcmd} set system syslog remote \<address\> tls permitted-peer \<peer\>
 
 **Configure the peer certificate identifiers.**
 
@@ -322,7 +322,7 @@ Use tab completion to view a list of available categories.
 
 If no category is specified, all logs are shown.
 ```
-```{opcmd} show log image <name>
+```{opcmd} show log image \<name\>
 
    [all | authorization | directory | file <file name> | tail <lines>]
 **Display logs for a specific image on the console.**

@@ -31,7 +31,7 @@ keypairs from an easy to access operational level command.
 Create a new :abbr:`CA (Certificate Authority)` and output the CAs public and
 private key on the console.
 ```
-```{opcmd} generate pki ca install <name>
+```{opcmd} generate pki ca install \<name\>
 
 Create a new :abbr:`CA (Certificate Authority)` and output the CAs public and
 private key on the console.
@@ -39,12 +39,12 @@ private key on the console.
 ```{include} pki_cli_import_help.txt
 ```
 ```
-```{opcmd} generate pki ca sign <ca-name>
+```{opcmd} generate pki ca sign \<ca-name\>
 
 Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it using
 the private key referenced by `ca-name`.
 ```
-```{opcmd} generate pki ca sign <ca-name> install <name>
+```{opcmd} generate pki ca sign \<ca-name\> install \<name\>
 
 Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it using
 the private key referenced by `name`.
@@ -58,7 +58,7 @@ the private key referenced by `name`.
 
 Create a new public/private keypair and output the certificate on the console.
 ```
-```{opcmd} generate pki certificate install <name>
+```{opcmd} generate pki certificate install \<name\>
 
 Create a new public/private keypair and output the certificate on the console.
 
@@ -70,7 +70,7 @@ Create a new public/private keypair and output the certificate on the console.
 Create a new self-signed certificate. The public/private is then shown on the
 console.
 ```
-```{opcmd} generate pki certificate self-signed install <name>
+```{opcmd} generate pki certificate self-signed install \<name\>
 
 Create a new self-signed certificate. The public/private is then shown on the
 console.
@@ -78,12 +78,12 @@ console.
 ```{include} pki_cli_import_help.txt
 ```
 ```
-```{opcmd} generate pki certificate sign <ca-name>
+```{opcmd} generate pki certificate sign \<ca-name\>
 
 Create a new public/private keypair which is signed by the CA referenced by
 `ca-name`. The signed certificate is then output to the console.
 ```
-```{opcmd} generate pki certificate sign <ca-name> install <name>
+```{opcmd} generate pki certificate sign \<ca-name\> install \<name\>
 
 Create a new public/private keypair which is signed by the CA referenced by
 `ca-name`. The signed certificate is then output to the console.
@@ -100,7 +100,7 @@ is requested by the CLI and defaults to 2048 bit.
 
 The generated parameters are then output to the console.
 ```
-```{opcmd} generate pki dh install <name>
+```{opcmd} generate pki dh install \<name\>
 
 Generate a new set of :abbr:`DH (Diffie-Hellman)` parameters. The key size
 is requested by the CLI and defaults to 2048 bit.
@@ -115,7 +115,7 @@ is requested by the CLI and defaults to 2048 bit.
 Generate a new OpenVPN shared secret. The generated secret is the output to
 the console.
 ```
-```{opcmd} generate pki openvpn shared-secret install <name>
+```{opcmd} generate pki openvpn shared-secret install \<name\>
 
 Generate a new OpenVPN shared secret. The generated secret is the output to
 the console.
@@ -130,7 +130,7 @@ the console.
 Generate a new WireGuard public/private key portion and output the result to
 the console.
 ```
-```{opcmd} generate pki wireguard key-pair install <interface>
+```{opcmd} generate pki wireguard key-pair install \<interface\>
 
 Generate a new WireGuard public/private key portion and output the result to
 the console.
@@ -150,7 +150,7 @@ In addition to the command above, the output is in a format which can
 
 Generate a WireGuard pre-shared secret used for peers to communicate.
 ```
-```{opcmd} generate pki wireguard preshared-key install <peer>
+```{opcmd} generate pki wireguard preshared-key install \<peer\>
 
 Generate a WireGuard pre-shared secret used for peers to communicate.
 
@@ -167,7 +167,7 @@ In addition to the command above, the output is in a format which can
 ```
 ## Key usage (CLI)
 ### CA (Certificate Authority)
-```{cfgcmd} set pki ca <name> certificate
+```{cfgcmd} set pki ca \<name\> certificate
 
 Add the public CA certificate for the CA named `name` to the VyOS CLI.
 
@@ -182,15 +182,15 @@ When loading the certificate you need to manually strip the
 
   ``$ tail -n +2 ca.pem | head -n -1 | tr -d '\n'``
 ```
-```{cfgcmd} set pki ca <name> crl
+```{cfgcmd} set pki ca \<name\> crl
 
 Certificate revocation list in PEM format.
 ```
-```{cfgcmd} set pki ca <name> description
+```{cfgcmd} set pki ca \<name\> description
 
 A human readable description what this CA is about.
 ```
-```{cfgcmd} set pki ca <name> private key
+```{cfgcmd} set pki ca \<name\> private key
 
 Add the CAs private key to the VyOS CLI. This should never leave the system,
 and is only required if you use VyOS as your certificate generator as
@@ -207,7 +207,7 @@ When loading the certificate you need to manually strip the
 
   ``$ tail -n +2 ca.key | head -n -1 | tr -d '\n'``
 ```
-```{cfgcmd} set pki ca <name> private password-protected
+```{cfgcmd} set pki ca \<name\> private password-protected
 
 Mark the CAs private key as password protected. User is asked for the password
 when the key is referenced.
@@ -215,7 +215,7 @@ when the key is referenced.
 ### Server Certificate
 After we have imported the CA certificate(s) we can now import and add
 certificates used by services on this router.
-```{cfgcmd} set pki certificate <name> certificate
+```{cfgcmd} set pki certificate \<name\> certificate
 
 Add public key portion for the certificate named `name` to the VyOS CLI.
 
@@ -230,11 +230,11 @@ When loading the certificate you need to manually strip the
 
   ``$ tail -n +2 cert.pem | head -n -1 | tr -d '\n'``
 ```
-```{cfgcmd} set pki certificate <name> description
+```{cfgcmd} set pki certificate \<name\> description
 
 A human readable description what this certificate is about.
 ```
-```{cfgcmd} set pki certificate <name> private key
+```{cfgcmd} set pki certificate \<name\> private key
 
 Add the private key portion of this certificate to the CLI. This should never
 leave the system as it is used to decrypt the data.
@@ -250,12 +250,12 @@ When loading the certificate you need to manually strip the
 
   ``$ tail -n +2 cert.key | head -n -1 | tr -d '\n'``
 ```
-```{cfgcmd} set pki certificate <name> private password-protected
+```{cfgcmd} set pki certificate \<name\> private password-protected
 
 Mark the private key as password protected. User is asked for the password
 when the key is referenced.
 ```
-```{cfgcmd} set pki certificate <name> revoke
+```{cfgcmd} set pki certificate \<name\> revoke
 
 If CA is present, this certificate will be included in generated CRLs
 ```
@@ -263,55 +263,55 @@ If CA is present, this certificate will be included in generated CRLs
 VyOS provides this utility to import existing certificates/key files directly
 into PKI from op-mode. Previous to VyOS 1.4, certificates were stored under the
 /config folder permanently and will be retained post upgrade.
-```{opcmd} import pki ca <name> file <Path to CA certificate file>
+```{opcmd} import pki ca \<name\> file \<Path to CA certificate file\>
 
 Import the public CA certificate from the defined file to VyOS CLI.
 ```
-```{opcmd} import pki ca <name> key-file <Path to private key file>
+```{opcmd} import pki ca \<name\> key-file \<Path to private key file\>
 
 Import the CAs private key portion to the CLI. This should never leave the
 system as it is used to decrypt the data. The key is required if you use
 VyOS as your certificate generator.
 ```
-```{opcmd} import pki certificate <name> file <path to certificate>
+```{opcmd} import pki certificate \<name\> file \<path to certificate\>
 
 Import the certificate from the file to VyOS CLI.
 ```
-```{opcmd} import pki certificate <name> key-file <path to private key>
+```{opcmd} import pki certificate \<name\> key-file \<path to private key\>
 
 Import the private key of the certificate to the VyOS CLI. This should never
 leave the system as it is used to decrypt the data.
 ```
-```{opcmd} import pki openvpn shared-secret <name> file <path to OpenVPN secret key>
+```{opcmd} import pki openvpn shared-secret \<name\> file \<path to OpenVPN secret key\>
 
 Import the OpenVPN shared secret stored in file to the VyOS CLI.
 ```
 #### ACME
 The VyOS PKI subsystem can also be used to automatically retrieve Certificates
 using the {abbr}`ACME (Automatic Certificate Management Environment)` protocol.
-```{cfgcmd} set pki certificate <name> acme domain-name <name>
+```{cfgcmd} set pki certificate \<name\> acme domain-name \<name\>
 
 Domain names to apply, multiple domain-names can be specified.
 
 This is a mandatory option
 ```
-```{cfgcmd} set pki certificate <name> acme email <address>
+```{cfgcmd} set pki certificate \<name\> acme email \<address\>
 
 Email used for registration and recovery contact.
 
 This is a mandatory option
 ```
-```{cfgcmd} set pki certificate <name> acme listen-address <address>
+```{cfgcmd} set pki certificate \<name\> acme listen-address \<address\>
 
 The address the server listens to during http-01 challenge
 ```
-```{cfgcmd} set pki certificate <name> acme rsa-key-size <2048 | 3072 | 4096>
+```{cfgcmd} set pki certificate \<name\> acme rsa-key-size \<2048 | 3072 | 4096\>
 
 Size of the RSA key.
 
 This options defaults to 2048
 ```
-```{cfgcmd} set pki certificate <name> acme url <url>
+```{cfgcmd} set pki certificate \<name\> acme url \<url\>
 
 ACME Directory Resource URI.
 
@@ -342,7 +342,7 @@ Show a list of installed :abbr:`CA (Certificate Authority)` certificates.
   R3              CN=R3,O=Let's Encrypt,C=US                               CN=ISRG Root X1    2020-09-04 00:00:00  2025-09-15 16:00:00  No             DST_Root_CA_X3
   vyos_rw         CN=VyOS RW CA,O=VyOS,L=Some-City,ST=Some-State,C=GB      CN=VyOS RW CA      2021-07-05 13:46:03  2026-07-04 13:46:03  Yes            N/A
 ```
-```{opcmd} show pki ca <name>
+```{opcmd} show pki ca \<name\>
 
 Show only information for specified Certificate Authority.
 ```
@@ -359,7 +359,7 @@ Show a list of installed certificates
   ac2        Server  CN=ac2.vyos.net        CN=R3          2021-07-05 07:29:59  2021-10-03 07:29:58  No         Yes            Yes (R3)
   rw_server  Server  CN=VyOS RW             CN=VyOS RW CA  2021-07-05 13:48:02  2022-07-05 13:48:02  No         Yes            Yes (vyos_rw)
 ```
-```{opcmd} show pki certificate <name>
+```{opcmd} show pki certificate \<name\>
 
 Show only information for specified certificate.
 ```

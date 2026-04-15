@@ -18,32 +18,32 @@ The following Telegraf plugins are configurable to export metrics and logs:
 
 Telegraf output plugin [azure-data-explorer].
 
-```{cfgcmd} set service monitoring telegraf azure-data-explorer authentication client-id <client-id>
+```{cfgcmd} set service monitoring telegraf azure-data-explorer authentication client-id \<client-id\>
 
    Authentication application client-id.
 
 ```
 
 
-```{cfgcmd} set service monitoring telegraf azure-data-explorer authentication client-secret <client-secret>
+```{cfgcmd} set service monitoring telegraf azure-data-explorer authentication client-secret \<client-secret\>
 
 Authentication application client-secret.
 ```
 
 
-```{cfgcmd} set service monitoring telegraf azure-data-explorer authentication tenant-id <tenant-id>
+```{cfgcmd} set service monitoring telegraf azure-data-explorer authentication tenant-id \<tenant-id\>
 
 Authentication application tenant-id
 ```
 
 
-```{cfgcmd} set service monitoring telegraf azure-data-explorer database <name>
+```{cfgcmd} set service monitoring telegraf azure-data-explorer database \<name\>
 
 Remote database name.
 ```
 
 
-```{cfgcmd} set service monitoring telegraf azure-data-explorer group-metrics <single-table | table-per-metric>
+```{cfgcmd} set service monitoring telegraf azure-data-explorer group-metrics \<single-table | table-per-metric\>
 
 Type of metrics grouping when push to Azure Data Explorer. The default is
 
@@ -51,13 +51,13 @@ Type of metrics grouping when push to Azure Data Explorer. The default is
 ```
 
 
-```{cfgcmd} set service monitoring telegraf azure-data-explorer table <name>
+```{cfgcmd} set service monitoring telegraf azure-data-explorer table \<name\>
 
 Name of the single table Only if set group-metrics single-table.
 ```
 
 
-```{cfgcmd} set service monitoring telegraf azure-data-explorer url <url>
+```{cfgcmd} set service monitoring telegraf azure-data-explorer url \<url\>
 
 Remote URL.
 ```
@@ -72,37 +72,37 @@ for Prometheus native metrics through exporters see section below.
 ```
 
 
-```{cfgcmd} set service monitoring telegraf prometheus-client allow-from <prefix>
+```{cfgcmd} set service monitoring telegraf prometheus-client allow-from \<prefix\>
 
 Networks allowed to query this server
 ```
 
 
-```{cfgcmd} set service monitoring telegraf prometheus-client authentication username <username>
+```{cfgcmd} set service monitoring telegraf prometheus-client authentication username \<username\>
 
 HTTP basic authentication username
 ```
 
 
-```{cfgcmd} set service monitoring telegraf prometheus-client authentication password <password>
+```{cfgcmd} set service monitoring telegraf prometheus-client authentication password \<password\>
 
 HTTP basic authentication username
 ```
 
 
-```{cfgcmd} set service monitoring telegraf prometheus-client listen-address <address>
+```{cfgcmd} set service monitoring telegraf prometheus-client listen-address \<address\>
 
 Local IP addresses to listen on
 ```
 
 
-```{cfgcmd} set service monitoring telegraf prometheus-client metric-version <1 | 2>
+```{cfgcmd} set service monitoring telegraf prometheus-client metric-version \<1 | 2\>
 
 Metris version, the default is ``2``
 ```
 
 
-```{cfgcmd} set service monitoring telegraf prometheus-client port <port>
+```{cfgcmd} set service monitoring telegraf prometheus-client port \<port\>
 
 Port number used by connection, default is ``9273``
 ```
@@ -135,13 +135,13 @@ Use TLS but skip host validation
 ```
 
 
-```{cfgcmd} set service monitoring telegraf splunk authentication token <token>
+```{cfgcmd} set service monitoring telegraf splunk authentication token \<token\>
 
 Authorization token
 ```
 
 
-```{cfgcmd} set service monitoring telegraf splunk authentication url <url>
+```{cfgcmd} set service monitoring telegraf splunk authentication url \<url\>
 
 Remote URL to Splunk collector
 ```
@@ -159,31 +159,31 @@ set service monitoring telegraf splunk url 'https://192.0.2.10:8088/services/col
 
 
 Telegraf output plugin [influxdb] to write metrics to `InfluxDB` via HTTP.
-```{cfgcmd} set service monitoring telegraf influxdb authentication organization <organization>
+```{cfgcmd} set service monitoring telegraf influxdb authentication organization \<organization\>
 
 Authentication organization name
 ```
 
 
-```{cfgcmd} set service monitoring telegraf influxdb authentication token <token>
+```{cfgcmd} set service monitoring telegraf influxdb authentication token \<token\>
 
 Authentication token
 ```
 
 
-```{cfgcmd} set service monitoring telegraf bucket <bucket>
+```{cfgcmd} set service monitoring telegraf bucket \<bucket\>
 
 Remote ``InfluxDB`` bucket name
 ```
 
 
-```{cfgcmd} set service monitoring telegraf influxdb port <port>
+```{cfgcmd} set service monitoring telegraf influxdb port \<port\>
 
 Remote port
 ```
 
 
-```{cfgcmd} set service monitoring telegraf influxdb url <url>
+```{cfgcmd} set service monitoring telegraf influxdb url \<url\>
 
 Remote URL
 ```
@@ -198,7 +198,7 @@ set service monitoring telegraf influxdb url 'http://r1.influxdb2.local'
 ```
 ### Loki
 Telegraf can be used to send logs to [loki] using tags as labels.
-```{cfgcmd} set service monitoring telegraf loki port <port>
+```{cfgcmd} set service monitoring telegraf loki port \<port\>
 
    Remote Loki port
 
@@ -208,17 +208,17 @@ Telegraf can be used to send logs to [loki] using tags as labels.
 ```
 
 
-```{cfgcmd} set service monitoring telegraf loki url <url>
+```{cfgcmd} set service monitoring telegraf loki url \<url\>
 
 Remote Loki url
 ```
 
 
-```{cfgcmd} set service monitoring telegraf loki authentication username <username>
+```{cfgcmd} set service monitoring telegraf loki authentication username \<username\>
 ```
 
 
-```{cfgcmd} set service monitoring telegraf loki authentication password <password>
+```{cfgcmd} set service monitoring telegraf loki authentication password \<password\>
 
 HTTP basic authentication.
 
@@ -227,7 +227,7 @@ If either is set both must be set.
 ```
 
 
-```{cfgcmd} set service monitoring telegraf loki metric-name-label <label>
+```{cfgcmd} set service monitoring telegraf loki metric-name-label \<label\>
 
 Label to use for the metric name when sending metrics.
 
@@ -250,19 +250,19 @@ The following Prometheus exporters are configurable to export metrics:
 
 
 Prometheus [node_exporter] which provides a wide range of hardware and OS metrics.
-```{cfgcmd} set service monitoring prometheus node-exporter listen-address <address>
+```{cfgcmd} set service monitoring prometheus node-exporter listen-address \<address\>
 
 Configure the address node_exporter is listening on.
 ```
 
 
-```{cfgcmd} set service monitoring prometheus node-exporter port <port>
+```{cfgcmd} set service monitoring prometheus node-exporter port \<port\>
 
 Configure the port number node_exporter is listening on.
 ```
 
 
-```{cfgcmd} set service monitoring prometheus node-exporter vrf <name>
+```{cfgcmd} set service monitoring prometheus node-exporter vrf \<name\>
 
 Configure name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 ```
@@ -276,35 +276,35 @@ Configure textfile collector to export custom metrics read from
 ```
 ### FRR Exporter
 Prometheus [frr_exporter] which provides free range routing metrics.
-```{cfgcmd} set service monitoring prometheus frr-exporter listen-address <address>
+```{cfgcmd} set service monitoring prometheus frr-exporter listen-address \<address\>
 
   Configure the address frr_exporter is listening on.
 
 ```
 
 
-```{cfgcmd} set service monitoring prometheus frr-exporter port <port>
+```{cfgcmd} set service monitoring prometheus frr-exporter port \<port\>
 
 Configure the port number frr_exporter is listening on.
 ```
 
 
-```{cfgcmd} set service monitoring prometheus frr-exporter vrf <name>
+```{cfgcmd} set service monitoring prometheus frr-exporter vrf \<name\>
 
 Configure name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 ```
 ### Blackbox Exporter
 Prometheus [blackbox_exporter] which allows probing of endpoints over
 HTTP, HTTPS, DNS, TCP, ICMP and gRPC .
-```{cfgcmd} set service monitoring prometheus blackbox-exporter listen-address <address>
+```{cfgcmd} set service monitoring prometheus blackbox-exporter listen-address \<address\>
 
 Configure the address blackbox_exporter is listening on.
 ```
-```{cfgcmd} set service monitoring prometheus blackbox-exporter port <port>
+```{cfgcmd} set service monitoring prometheus blackbox-exporter port \<port\>
 
 Configure the port number blackbox_exporter is listening on.
 ```
-```{cfgcmd} set service monitoring prometheus blackbox-exporter vrf <name>
+```{cfgcmd} set service monitoring prometheus blackbox-exporter vrf \<name\>
 
 Configure name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 ```

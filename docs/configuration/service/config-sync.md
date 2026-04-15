@@ -27,13 +27,13 @@ Specify the address, API key, timeout and port of the secondary router.
 You need to enable and configure the HTTP API service on the secondary
 router for config sync to operate.
 ```
-```{cfgcmd} set service config-sync section <section>
+```{cfgcmd} set service config-sync section \<section\>
 
 Specify the section of the configuration to synchronize. If more than one
 section is to be synchronized, repeat the command to add additional
 sections as required.
 ```
-```{cfgcmd} set service config-sync mode <load|set>
+```{cfgcmd} set service config-sync mode \<load|set\>
 
 Two options are available for `mode`: either `load` and replace or `set`
 the configuration section.

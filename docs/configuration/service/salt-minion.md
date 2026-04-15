@@ -16,32 +16,32 @@ in the [Salt Project Documentation](https://docs.saltproject.io/en/latest/conten
 
 ## Configuration
 
-```{cfgcmd} set service salt-minion hash <type>
+```{cfgcmd} set service salt-minion hash \<type\>
 
    The hash type used when discovering file on master server (default: sha256)
 
 ```
 
 
-```{cfgcmd} set service salt-minion id <id>
+```{cfgcmd} set service salt-minion id \<id\>
 
 Explicitly declare ID for this minion to use (default: hostname)
 ```
 
 
-```{cfgcmd} set service salt-minion interval <1-1440>
+```{cfgcmd} set service salt-minion interval \<1-1440\>
 
 Interval in minutes between updates (default: 60)
 ```
 
 
-```{cfgcmd} set service salt-minion master <hostname | IP>
+```{cfgcmd} set service salt-minion master \<hostname | IP\>
 
 The hostname or IP address of the master
 ```
 
 
-```{cfgcmd} set service salt-minion master-key <key>
+```{cfgcmd} set service salt-minion master-key \<key\>
 
 URL with signature of master for auth reply verification
 ```

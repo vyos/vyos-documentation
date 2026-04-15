@@ -75,20 +75,20 @@ prefix basis when direct tunnel is not established.
 
 ### NHRP protocol configuration
 
-```{cfgcmd} set protocols nhrp tunnel <tunnel> authentication <secret>
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> authentication \<secret\>
 
 Enables Cisco style authentication on NHRP packets. This embeds the
 plaintext password to the outgoing NHRP packets. Maximum length of
 the password is 8 characters.
 ```
-```{cfgcmd} set protocols nhrp tunnel <tunnel> holdtime <timeout>
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> holdtime \<timeout\>
 
 Holdtime is the number of seconds that have to pass before stopping to
 advertise an NHRP NBMA address as valid. It also controls how often NHRP
 registration requests are sent. By default registrations are sent every
 one third of the holdtime
 ```
-```{cfgcmd} set protocols nhrp tunnel <tunnel> map tunnel-ip <tunnel-ip>
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> map tunnel-ip \<tunnel-ip\>
 
   nbma <nbma-ip>
 * **tunnel-ip** - Tunnel ip address in format **x.x.x.x**.
@@ -96,18 +96,18 @@ one third of the holdtime
 
 Map an IP address of a station to the station’s NBMA address.
 ```
-```{cfgcmd} set protocols nhrp tunnel <tunnel> mtu <mtu>
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> mtu \<mtu\>
 
 Configure NHRP advertised MTU.
 ```
-```{cfgcmd} set protocols nhrp tunnel <tunnel> multicast <nbma-ip>
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> multicast \<nbma-ip\>
 
 * **nbma-ip** - NBMA ip address in format **x.x.x.x** or **dynamic**
 
 Sends multicast packets to the specified NBMA address. If dynamic is specified
 then destination NBMA address (or addresses) are learnt dynamically.
 ```
-```{cfgcmd} set protocols nhrp tunnel <tunnel> network-id <network-id>
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> network-id \<network-id\>
 
 * **network-id** - NHRP network id <1-4294967295>
 
@@ -118,7 +118,7 @@ same logical NBMA network. The ID is a local only parameter and is not sent to o
 NHRP nodes and so IDs on different nodes do not need to match. When NHRP packets are
 received on an interface they are assigned to the local NHRP domain for that interface.
 ```
-```{cfgcmd} set protocols nhrp tunnel <tunnel> nhs tunnel-ip <tunnel-ip> nbma <nbma-ip>
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> nhs tunnel-ip \<tunnel-ip\> nbma \<nbma-ip\>
 
 * **tunnel-ip** - Tunnel ip address in format **x.x.x.x** or **dynamic**
 * **nbma-ip** - NBMA ip address in format **x.x.x.x**
@@ -126,18 +126,18 @@ received on an interface they are assigned to the local NHRP domain for that int
 Configure the Next Hop Server address and its NBMA address. If dynamic is specified
 then Next Hop Server can have dynamic address which maps to its NBMA address.
 ```
-```{cfgcmd} set protocols nhrp tunnel <tunnel> redirect
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> redirect
 
 This enable redirect replies on the NHS similar to ICMP redirects except this is
 managed by the nhrp protocol. This setting allows spokes to communicate with each
 others directly.
 ```
-```{cfgcmd} set protocols nhrp tunnel <tunnel> registration-no-unique
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> registration-no-unique
 
 Allow the client to not set the unique flag in the NHRP packets. This is useful when
 a station has a dynamic IP address that could change over time.
 ```
-```{cfgcmd} set protocols nhrp tunnel <tunnel> shortcut
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> shortcut
 
 Enable shortcut (spoke-to-spoke) tunnels to allow NHC to talk to each others directly
 after establishing a connection without going through the hub.
@@ -150,23 +150,23 @@ NHRP daemon based on FRR nhrpd. It controls IPSEC. That's why 'close-action'
 parameter in IKE configuration always is set to 'close' and 'dead-peer-detection action'
 always is set to 'clear'.
 :::
-```{cfgcmd} set vpn ipsec profile <profile-name> authentication mode pre-shared-secret
+```{cfgcmd} set vpn ipsec profile \<profile-name\> authentication mode pre-shared-secret
 
 Set preshared secret mode authentication
 ```
-```{cfgcmd} set vpn ipsec profile <profile-name> authentication pre-shared-secret <secret>
+```{cfgcmd} set vpn ipsec profile \<profile-name\> authentication pre-shared-secret \<secret\>
 
 Set preshared secret
 ```
-```{cfgcmd} set vpn ipsec profile <profile-name> bind tunnel <tunnel name>
+```{cfgcmd} set vpn ipsec profile \<profile-name\> bind tunnel \<tunnel name\>
 
 Bind IPSEC profile to the specific tunnel interface.
 ```
-```{cfgcmd} set vpn ipsec profile <profile-name> esp-group 'ESP-HUB'
+```{cfgcmd} set vpn ipsec profile \<profile-name\> esp-group 'ESP-HUB'
 
 Map ESP group to IPSEC profile
 ```
-```{cfgcmd} set vpn ipsec profile <profile-name> ike-group 'IKE-HUB'
+```{cfgcmd} set vpn ipsec profile \<profile-name\> ike-group 'IKE-HUB'
 
 Map IKE group to IPSEC profile
 ```

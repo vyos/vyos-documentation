@@ -14,39 +14,39 @@ Service configuration specifies the port to bind to. Backend
 configuration defines the load balancing method and specifies the backend
 servers.
 ### Service
-```{cfgcmd} set load-balancing haproxy service <name> listen-address <address>
+```{cfgcmd} set load-balancing haproxy service \<name\> listen-address \<address\>
 
 Set the IP address for the service to bind to. By default, the service
 listens on all IPv4 and IPv6 addresses.
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> port <port>
+```{cfgcmd} set load-balancing haproxy service \<name\> port \<port\>
 
 Create service `<name>` to listen on <port>
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> mode <tcp|http>
+```{cfgcmd} set load-balancing haproxy service \<name\> mode \<tcp|http\>
 
 Configure service `<name>` mode TCP or HTTP
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> backend <name>
+```{cfgcmd} set load-balancing haproxy service \<name\> backend \<name\>
 
 Configure service `<name>` to use the backend <name>
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> ssl certificate <name>
+```{cfgcmd} set load-balancing haproxy service \<name\> ssl certificate \<name\>
 
 Set the SSL certificate <name> for service <name>. You can define
 multiple certificates.
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> http-response-headers <header-name> value <header-value>
+```{cfgcmd} set load-balancing haproxy service \<name\> http-response-headers \<header-name\> value \<header-value\>
 
 Set custom HTTP headers to include in all responses.
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> logging facility <facility> level <level>
+```{cfgcmd} set load-balancing haproxy service \<name\> logging facility \<facility\> level \<level\>
 
 Specify facility and level for logging.
 For an explanation on :ref:`syslog_facilities` and
@@ -54,18 +54,18 @@ For an explanation on :ref:`syslog_facilities` and
 see tables in the syslog configuration section.
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> timeout client <seconds>
+```{cfgcmd} set load-balancing haproxy service \<name\> timeout client \<seconds\>
 
 Set the maximum inactivity time on the client side for this service.
 Value range 1-3600 seconds.
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> http-compression algorithm <gzip | deflate | identity | raw-deflate>
+```{cfgcmd} set load-balancing haproxy service \<name\> http-compression algorithm \<gzip | deflate | identity | raw-deflate\>
 
 Set the compression algorithm to be used when compressing HTTP responses.
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> http-compression mime-type <mime-type>
+```{cfgcmd} set load-balancing haproxy service \<name\> http-compression mime-type \<mime-type\>
 
 Set the list of HTTP response MIME types which haproxy will attempt to
 compress, if received uncompressed from backend server.
@@ -74,12 +74,12 @@ compress, if received uncompressed from backend server.
 Rules control and route incoming traffic to specific backends based on
 predefined conditions. Rules define matching criteria and specify actions
 to perform.
-```{cfgcmd} set load-balancing haproxy service <name> rule <rule> domain-name <name>
+```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> domain-name \<name\>
 
 Match domain name
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> rule <rule> ssl <sni>
+```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> ssl \<sni\>
 
 SSL match Server Name Indication (SNI) option:
  * ``req-ssl-sni`` SSL Server Name Indication (SNI) request match
@@ -89,7 +89,7 @@ SSL match Server Name Indication (SNI) option:
     Indication
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> rule <rule> url-path <match> <url>
+```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> url-path \<match\> \<url\>
 
 Define URL path matching rules for a specific service. Use this command
 to specify how to match the URL path against incoming requests.
@@ -100,18 +100,18 @@ The available options for <match> are:
  * ``exact`` Matches the URL path exactly.
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> rule <rule> set backend <name>
+```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> set backend \<name\>
 
 Assign a specific backend to a rule
 ```
 
-```{cfgcmd} set load-balancing haproxy service <name> rule <rule> redirect-location <url>
+```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> redirect-location \<url\>
 
 Redirect URL to a new location.
 ```
 ### Backend
 
-```{cfgcmd} set load-balancing haproxy backend <name> balance
+```{cfgcmd} set load-balancing haproxy backend \<name\> balance
 
    <balance>
 
@@ -137,7 +137,7 @@ Redirect URL to a new location.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> mode
+```{cfgcmd} set load-balancing haproxy backend \<name\> mode
 
  <mode>
 
@@ -146,7 +146,7 @@ Configure backend `<name>` mode TCP or HTTP.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> server
+```{cfgcmd} set load-balancing haproxy backend \<name\> server
 
  <name> address <x.x.x.x>
 
@@ -155,7 +155,7 @@ Set the address of the backend server that receives incoming traffic.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> server
+```{cfgcmd} set load-balancing haproxy backend \<name\> server
 
  <name> port <port>
 
@@ -164,7 +164,7 @@ Set the address of the backend port.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> server
+```{cfgcmd} set load-balancing haproxy backend \<name\> server
 
  <name> check
 
@@ -173,7 +173,7 @@ Active health check backend server.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> server
+```{cfgcmd} set load-balancing haproxy backend \<name\> server
 
  <name> check port <port>
 
@@ -184,7 +184,7 @@ Overrides the default server port used for TCP/HTTP checks.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> server
+```{cfgcmd} set load-balancing haproxy backend \<name\> server
 
  <name> send-proxy
 
@@ -193,7 +193,7 @@ Send a Proxy Protocol version 1 header (text format).
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> server
+```{cfgcmd} set load-balancing haproxy backend \<name\> server
 
  <name> send-proxy-v2
 
@@ -202,7 +202,7 @@ Send a Proxy Protocol version 2 header (binary format).
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> ssl
+```{cfgcmd} set load-balancing haproxy backend \<name\> ssl
 
  ca-certificate <ca-certificate>
 
@@ -213,7 +213,7 @@ against ``<ca-certificate>``.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> ssl no-verify
+```{cfgcmd} set load-balancing haproxy backend \<name\> ssl no-verify
 
 Use SSL encryption for backend requests without validating the server
 
@@ -221,7 +221,7 @@ certificate.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name>
+```{cfgcmd} set load-balancing haproxy backend \<name\>
 
 http-response-headers <header-name> value <header-value>
 
@@ -230,7 +230,7 @@ Set custom HTTP headers to include in all responses from the backend.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> logging facility
+```{cfgcmd} set load-balancing haproxy backend \<name\> logging facility
 
 <facility> level <level>
 
@@ -245,7 +245,7 @@ see tables in the :ref:`syslog` configuration section.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> timeout check
+```{cfgcmd} set load-balancing haproxy backend \<name\> timeout check
 
 <seconds>
 
@@ -254,7 +254,7 @@ Set the timeout in seconds for established connections.
 
 Value range 1-3600 seconds.
 ```
-```{cfgcmd} set load-balancing haproxy backend <name> timeout connect
+```{cfgcmd} set load-balancing haproxy backend \<name\> timeout connect
 
   <seconds>
 
@@ -265,7 +265,7 @@ Value range 1-3600 seconds.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> timeout server
+```{cfgcmd} set load-balancing haproxy backend \<name\> timeout server
 
 <seconds>
 
@@ -318,7 +318,7 @@ see tables in syslog configuration section.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy timeout check <seconds>
+```{cfgcmd} set load-balancing haproxy timeout check \<seconds\>
 
 Set the timeout in seconds for established connections.
 
@@ -326,7 +326,7 @@ Value range 1-3600 seconds. Default is 5 seconds.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy timeout client <seconds>
+```{cfgcmd} set load-balancing haproxy timeout client \<seconds\>
 
 Set the maximum inactivity time on the client side.
 
@@ -334,7 +334,7 @@ Value range 1-3600 seconds. Default is 50 seconds.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy timeout connect <seconds>
+```{cfgcmd} set load-balancing haproxy timeout connect \<seconds\>
 
 Set the maximum time to wait for a connection attempt to a server to succeed.
 
@@ -342,7 +342,7 @@ Value range 1-3600 seconds. Default is 10 seconds.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy timeout server <seconds>
+```{cfgcmd} set load-balancing haproxy timeout server \<seconds\>
 
 Set the maximum inactivity time on the server side.
 
@@ -356,7 +356,7 @@ Value range 1-3600 seconds. Default is 50 seconds.
 
 Use HTTP health checks to monitor web applications that provide health status
 information and determine their availability.
-```{cfgcmd} set load-balancing haproxy backend <name> http-check
+```{cfgcmd} set load-balancing haproxy backend \<name\> http-check
 
 Enables HTTP health checks using OPTION HTTP requests against '/' and
 
@@ -364,7 +364,7 @@ expecting a successful response code in the 200-399 range.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> http-check
+```{cfgcmd} set load-balancing haproxy backend \<name\> http-check
 
  method <method>
 
@@ -373,7 +373,7 @@ Set the HTTP method: ``OPTION``, ``GET``, ``POST``, or ``PUT``.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> http-check
+```{cfgcmd} set load-balancing haproxy backend \<name\> http-check
 
  uri <path>
 
@@ -382,7 +382,7 @@ Set the endpoint to use for health checks.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend <name> http-check
+```{cfgcmd} set load-balancing haproxy backend \<name\> http-check
 
  expect <condition>
 
@@ -401,7 +401,7 @@ Some possible examples are:
 ### TCP checks
 Configure health checks for TCP mode backends. You can configure protocol-aware
 checks for a range of Layer 7 protocols:
-```{cfgcmd} set load-balancing haproxy backend <name> health-check <protocol>
+```{cfgcmd} set load-balancing haproxy backend \<name\> health-check \<protocol\>
 
 Available health check protocols:
  * ``ldap`` LDAP protocol check.

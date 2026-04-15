@@ -66,20 +66,20 @@ change to work.
 
 ## Configuration Options
 
-```{cfgcmd} set protocols mpls interface <interface>
+```{cfgcmd} set protocols mpls interface \<interface\>
 
   Use this command to enable MPLS processing on the interface you define.
 
 ```
 
 
-```{cfgcmd} set protocols mpls ldp interface <interface>
+```{cfgcmd} set protocols mpls ldp interface \<interface\>
 
 Use this command to enable LDP on the interface you define.
 ```
 
 
-```{cfgcmd} set protocols mpls ldp router-id <address>
+```{cfgcmd} set protocols mpls ldp router-id \<address\>
 
 Use this command to configure the IP address used as the LDP router-id of the
 
@@ -87,17 +87,17 @@ local device.
 ```
 
 
-```{cfgcmd} set protocols mpls ldp discovery transport-ipv4-address <address>
+```{cfgcmd} set protocols mpls ldp discovery transport-ipv4-address \<address\>
 ```
 
 
-```{cfgcmd} set protocols mpls ldp discovery transport-ipv6-address <address>
+```{cfgcmd} set protocols mpls ldp discovery transport-ipv6-address \<address\>
 
 Use this command to set the IPv4 or IPv6 transport-address used by LDP.
 ```
 
 
-```{cfgcmd} set protocols mpls ldp neighbor <address> password <password>
+```{cfgcmd} set protocols mpls ldp neighbor \<address\> password \<password\>
 
 Use this command to configure authentication for LDP peers. Set the
 
@@ -107,7 +107,7 @@ order to become neighbors.
 ```
 
 
-```{cfgcmd} set protocols mpls ldp neighbor <address> session-holdtime <seconds>
+```{cfgcmd} set protocols mpls ldp neighbor \<address\> session-holdtime \<seconds\>
 
 Use this command to configure a specific session hold time for LDP peers.
 
@@ -117,7 +117,7 @@ configured for it. You may have to reset the neighbor for this to work.
 ```
 
 
-```{cfgcmd} set protocols mpls ldp neighbor <address> ttl-security
+```{cfgcmd} set protocols mpls ldp neighbor \<address\> ttl-security
 
 <disable | hop count>
 
@@ -128,19 +128,19 @@ for LDP peers. By default the value is set to 255 (or max TTL).
 ```
 
 
-```{cfgcmd} set protocols mpls ldp discovery hello-ipv4-interval <seconds>
+```{cfgcmd} set protocols mpls ldp discovery hello-ipv4-interval \<seconds\>
 ```
 
 
-```{cfgcmd} set protocols mpls ldp discovery hello-ipv4-holdtime <seconds>
+```{cfgcmd} set protocols mpls ldp discovery hello-ipv4-holdtime \<seconds\>
 ```
 
 
-```{cfgcmd} set protocols mpls ldp discovery hello-ipv6-interval <seconds>
+```{cfgcmd} set protocols mpls ldp discovery hello-ipv6-interval \<seconds\>
 ```
 
 
-```{cfgcmd} set protocols mpls ldp discovery hello-ipv6-holdtime <seconds>
+```{cfgcmd} set protocols mpls ldp discovery hello-ipv6-holdtime \<seconds\>
 
 Use these commands if you would like to set the discovery hello and hold time
 
@@ -148,11 +148,11 @@ parameters.
 ```
 
 
-```{cfgcmd} set protocols mpls ldp discovery session-ipv4-holdtime <seconds>
+```{cfgcmd} set protocols mpls ldp discovery session-ipv4-holdtime \<seconds\>
 ```
 
 
-```{cfgcmd} set protocols mpls ldp discovery session-ipv6-holdtime <seconds>
+```{cfgcmd} set protocols mpls ldp discovery session-ipv6-holdtime \<seconds\>
 
 Use this command if you would like to set the TCP session hold time intervals.
 ```
@@ -275,11 +275,11 @@ are not a link local type of TCP connection.
 ```
 
 
-```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 address <address>
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 address \<address\>
 ```
 
 
-```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 address <address>
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 address \<address\>
 
 Use this command to enable the local router to try and connect with a targeted
 
@@ -363,7 +363,7 @@ Use this command to see LDP neighbor information
 Use this command to see detailed LDP neighbor information
 ```
 ### Reset
-```{opcmd} reset mpls ldp neighbor <IPv4 or IPv6 address>
+```{opcmd} reset mpls ldp neighbor \<IPv4 or IPv6 address\>
 
 Use this command to reset an LDP neighbor/TCP session that is established
 ```

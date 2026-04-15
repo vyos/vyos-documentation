@@ -26,12 +26,12 @@ with maximum performance and transparency. Use bridges when you need
 multi-port switching with MAC learning and broadcast handling.
 ## Basic Configuration
 ### Creating an XConnect Interface
-```{cfgcmd} set interfaces vpp xconnect <vppxconN>
+```{cfgcmd} set interfaces vpp xconnect \<vppxconN\>
 
 Create an XConnect interface where ``<vppxconN>`` follows the naming
 convention ``vppxcon1``, ``vppxcon2``, etc.
 ```
-```{cfgcmd} set interfaces vpp xconnect <vppxconN> member interface
+```{cfgcmd} set interfaces vpp xconnect \<vppxconN\> member interface
 
    <interface-name>
 Add an interface as a member of the XConnect. Exactly two member
@@ -48,7 +48,7 @@ This configuration creates transparent forwarding between `eth0` and `eth1`,
 where any packet received on either interface is immediately forwarded to
 the other without any processing.
 ## Interface Configuration
-```{cfgcmd} set interfaces vpp xconnect <vppxconN> description <description>
+```{cfgcmd} set interfaces vpp xconnect \<vppxconN\> description \<description\>
 
 Set a descriptive name for the XConnect interface.
 ```
