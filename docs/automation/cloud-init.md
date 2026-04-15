@@ -140,6 +140,7 @@ The following example sets the hostname based on the instance identifier
 obtained from the EC2 metadata service.
 
 ```yaml
+
 #cloud-config
 write_files:
   - path: /opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script
@@ -354,8 +355,10 @@ qm create 555 --name vyos-1.3.0-cloudinit --memory 1024 --net0 virtio,bridge=vmb
 qm importdisk 555 vyos-1.3.0-cloud-init-10G-qemu.qcow2 local
 qm set 555 --virtio0 local:555/vm-555-disk-0.raw
 qm set 555 --boot order=virtio0
+
 ## Import seed.iso for cloud init
 qm set 555 --ide2 media=cdrom,file=local:iso/seed.iso
+
 ## Since this server has 1 nic, lets add network intefaces (vlan 25 and 26)
 qm set 555 --net1 virtio,bridge=vmbr0,firewall=1,tag=25
 qm set 555 --net2 virtio,bridge=vmbr0,firewall=1,tag=26

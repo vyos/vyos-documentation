@@ -168,16 +168,24 @@ top of the headline.
 ```none
 Section A
 ==========
+
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+
 Example
 -------
+
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+
 Section B
 ==========
+
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+
 .. _section B example:
+
 Example
 -------
+
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr
 ```
 

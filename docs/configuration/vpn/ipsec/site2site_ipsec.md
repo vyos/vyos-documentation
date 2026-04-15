@@ -135,6 +135,7 @@ set vpn ipsec site-to-site peer PEER1 default-esp-group 'ESP'
 set vpn ipsec site-to-site peer PEER1 ike-group 'IKE'
 set vpn ipsec site-to-site peer PEER1 local-address '192.168.0.2'
 set vpn ipsec site-to-site peer PEER1 remote-address '192.168.5.2'
+
 Peer selects the key from step 4 according to local-id/remote-id pair.
 ```
 

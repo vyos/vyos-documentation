@@ -120,6 +120,7 @@ Inbound Label  Type        Nexthop               Outbound Label
 16002          SR (IS-IS)  192.0.2.6             16002
 16003          SR (IS-IS)  192.0.2.6             implicit-null
 16011          SR (IS-IS)  192.0.2.22            implicit-null
+
 vyos@P2-VyOS:~$ show mpls table
 Inbound Label  Type        Nexthop     Outbound Label
 -------------------------------------------------------
@@ -127,6 +128,7 @@ Inbound Label  Type        Nexthop     Outbound Label
 16001          SR (IS-IS)  192.0.2.18  16001
 16003          SR (IS-IS)  192.0.2.18  implicit-null
 16011          SR (IS-IS)  192.0.2.18  16011
+
 RP/0/0/CPU0:P3-VyOS#show mpls forwarding
 Tue Mar 28 17:47:18.928 UTC
 Local  Outgoing    Prefix             Outgoing     Next Hop        Bytes
@@ -147,17 +149,22 @@ VyOS is able to check MSD per devices:
 vyos@P1-VyOS:~$ show isis segment-routing node
 Area VyOS:
 IS-IS L1 SR-Nodes:
+
 IS-IS L2 SR-Nodes:
+
 System ID       SRGB           SRLB            Algorithm  MSD
 ---------------------------------------------------------------
 0000.0000.0001  16000 - 23999  15000 - 15999   SPF        8
 0000.0000.0002  16000 - 23999  15000 - 15999   SPF        8
 0000.0000.0003  16000 - 23999  0 - 4294967295  SPF        10
 0000.0000.0011  16000 - 23999  15000 - 15999   SPF        8
+
 vyos@P2-VyOS:~$ show isis segment-routing node
 Area VyOS:
  IS-IS L1 SR-Nodes:
+
  IS-IS L2 SR-Nodes:
+
  System ID       SRGB           SRLB            Algorithm  MSD
  ---------------------------------------------------------------
  0000.0000.0001  16000 - 23999  15000 - 15999   SPF        8
@@ -176,6 +183,7 @@ Codes: K - kernel route, C - connected, S - static, R - RIP,
        f - OpenFabric,
        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
        t - trapped, o - offload failure
+
 I>* 192.0.2.2/32 [115/30] via 192.0.2.6, eth1, label 16002, weight 1, 1d03h18m
 I>* 192.0.2.3/32 [115/10] via 192.0.2.6, eth1, label implicit-null, weight 1, 1d03h18m
 I   192.0.2.4/30 [115/20] via 192.0.2.6, eth1 inactive, weight 1, 1d03h18m
@@ -192,14 +200,17 @@ Codes: K - kernel route, C - connected, S - static, R - RIP,
        f - OpenFabric,
        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
        t - trapped, o - offload failure
+
 I>* 192.0.2.1/32 [115/30] via 192.0.2.18, eth2, label 16001, weight 1, 1d03h17m
 I>* 192.0.2.3/32 [115/10] via 192.0.2.18, eth2, label implicit-null, weight 1, 1d03h17m
 I>* 192.0.2.4/30 [115/20] via 192.0.2.18, eth2, weight 1, 1d03h17m
 I>* 192.0.2.11/32 [115/40] via 192.0.2.18, eth2, label 16011, weight 1, 1d02h47m
 I   192.0.2.16/30 [115/20] via 192.0.2.18, eth2 inactive, weight 1, 1d03h17m
 I>* 192.0.2.20/30 [115/30] via 192.0.2.18, eth2, weight 1, 1d03h17m
+
 RP/0/0/CPU0:P3-VyOS#show route isis
 Tue Mar 28 18:19:16.417 UTC
+
 i L2 192.0.2.1/32 [115/20] via 192.0.2.5, 1d03h, GigabitEthernet0/0/0/1
 i L2 192.0.2.2/32 [115/20] via 192.0.2.17, 1d03h, GigabitEthernet0/0/0/2
 i L2 192.0.2.11/32 [115/30] via 192.0.2.5, 1d02h, GigabitEthernet0/0/0/1
@@ -213,6 +224,7 @@ Information about prefix-sid and label-operation from VyOS
 vyos@P1-VyOS:~$ show isis route prefix-sid
 Area VyOS:
 IS-IS L2 IPv4 routing table:
+
  Prefix         Metric  Interface  Nexthop    SID  Label Op.
  ----------------------------------------------------------------------
  192.0.2.1/32   0       -          -          -    -
@@ -222,9 +234,11 @@ IS-IS L2 IPv4 routing table:
  192.0.2.16/30  20      eth1       192.0.2.6  -    -
  192.0.2.20/30  0       -          -          -    -
  192.0.2.24/30  30      eth1       192.0.2.6  -    -
+
  vyos@P2-VyOS:~$ show isis route prefix-sid
  Area VyOS:
  IS-IS L2 IPv4 routing table:
+
   Prefix         Metric  Interface  Nexthop     SID  Label Op.
   -----------------------------------------------------------------------
   192.0.2.1/32   30      eth2       192.0.2.18  1    Swap(16001, 16001)
@@ -249,6 +263,7 @@ PING 192.0.2.2 (192.0.2.2) from 192.0.2.1 : 56(84) bytes of data.
 --- 192.0.2.2 ping statistics ---
 4 packets transmitted, 4 received, 0% packet loss, time 3004ms
 rtt min/avg/max/mdev = 2.064/3.326/3.903/0.748 ms
+
 vyos@P2-VyOS:~$ ping 192.0.2.1 source-address 192.0.2.2
 PING 192.0.2.1 (192.0.2.1) from 192.0.2.2 : 56(84) bytes of data.
 64 bytes from 192.0.2.1: icmp_seq=1 ttl=63 time=2.91 ms
