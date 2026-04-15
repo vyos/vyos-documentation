@@ -319,7 +319,7 @@ set pki certificate client1 private key 'MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggS
 
 Manually copy the CA, client certificate, and Diffie-Hellman key to the client device, then commit them before configuring the OpenVPN interface.
 
-For more options, refer to `configuration/pki/index:pki`{.interpreted-text role="ref"}.
+For more options, refer to {ref}`configuration/pki/index:pki`.
 
 ## Set up server-client OpenVPN
 
@@ -557,7 +557,7 @@ vyos@vyos# show interfaces openvpn
  }
 ```
 
-For a detailed example, refer to `OpenVPN with LDAP</configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`{.interpreted-text role="doc"}.
+For a detailed example, refer to {doc}`OpenVPN with LDAP</configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
 
 ### Multi-factor authentication
 
