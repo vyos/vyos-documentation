@@ -62,6 +62,7 @@ Name)` in log messages, even if the syslog server is in the same domain.
 Configure which log messages to save to a local log file.
 
 ```{cfgcmd} set system syslog local <filename> facility <keyword> level <keyword>
+
 **Configure syslog to save log messages for a specific facility and
 severity level to ``/var/log/messages``.**
 
@@ -74,6 +75,7 @@ Refer to the tables below for valid facility and severity options.
 Configure which log messages to send to `/dev/console`.
 
 ```{cfgcmd} set system syslog console facility <keyword> level <keyword>
+
 **Configure syslog to send log messages for a specific facility and severity
 level to the device's console.**
 
@@ -90,6 +92,7 @@ runs in parallel with them. Remote logging supports sending log messages
 to multiple hosts.
 
 ```{cfgcmd} set system syslog remote <address> facility <keyword> level <keyword>
+
 **Configure log transmission to the remote syslog server for a specific
 facility and severity level.**
 
@@ -99,17 +102,20 @@ Qualified Domain Name)` or an IP address.
 Refer to the tables below for valid facility and severity options.
 ```
 ```{cfgcmd} set system syslog remote <address> protocol <udp | tcp>
+
 **Configure the protocol for log transmission.**
 
 The protocol can be either UDP or TCP. By default, log messages are sent
 over UDP.
 ```
 ```{cfgcmd} set system syslog remote <address> port <port>
+
 **Configure the port for log transmission.**
 
 By default, the standard port 514 is used.
 ```
 ```{cfgcmd} set system syslog remote <address> format include-timezone
+
 **Configure log transmission in the RFC 5424 format.**
 
 The RFC 5424 format includes the timezone in the timestamp. For example:
@@ -125,6 +131,7 @@ By default, log messages are sent in the RFC 3164 format. For example:
    <34>Oct 11 22:14:15 mymachine su: ‘su root’ failed for lonvick on /dev/pts/8
 ```
 ```{cfgcmd} set system syslog remote <address> format octet-counted
+
 **Enable octet-counted framing for log transmission.**
 
 When enabled, multi-line log messages are sent without splitting. Ensure
@@ -133,10 +140,12 @@ the remote server supports octet-counted framing to avoid parsing errors.
 Octet-counted framing is not available for the UDP protocol.
 ```
 ```{cfgcmd} set system syslog remote <address> vrf <name>
+
 Configure the :abbr:`VRF (Virtual Routing and Forwarding)` instance
 for log transmission.
 ```
 ```{cfgcmd} set system syslog remote <address> source-address <address>
+
 Configure the source IP address (IPv4 or IPv6) for log transmission.
 ```
 #### {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
@@ -164,9 +173,11 @@ Security)`-encrypted remote logging, ensure you have:
 :::
 
 ```{cfgcmd} set system syslog remote <address> tls
+
 Enable TLS-encrypted remote logging.
 ```
 ```{cfgcmd} set system syslog remote <address> tls ca-certificate <ca_name>
+
 **Configure the** :abbr:`CA (Certificate Authority)` **certificate.**
 
 The syslog client uses the :abbr:`CA (Certificate Authority)` certificate to
@@ -176,6 +187,7 @@ The :abbr:`CA (Certificate Authority)` certificate is required for **all**
 authentication modes except ``anon``.
 ```
 ```{cfgcmd} set system syslog remote <address> tls certificate <cert_name>
+
 **Configure the client certificate.**
 
 The remote syslog server uses the client certificate to verify the identity
@@ -185,6 +197,7 @@ The client certificate is required if the remote syslog server enforces
 client certificate verification.
 ```
 ```{cfgcmd} set system syslog remote <address> tls auth-mode <anon | fingerprint
+
    | certvalid | name>
 **Configure the authentication mode.**
 
@@ -219,6 +232,7 @@ The following authentication modes are available:
   This is a **recommended** secure mode for production environments.
 ```
 ```{cfgcmd} set system syslog remote <address> tls permitted-peer <peer>
+
 **Configure the peer certificate identifiers.**
 
 The certificate identifier format depends on the authentication mode:
@@ -332,6 +346,7 @@ tools, rather than strict directives.
 ## Display logs
 
 ```{opcmd} show log [all | authorization | cluster | conntrack-sync | ...]
+
 **Display logs for a specific category on the console.**
 
 Use tab completion to view a list of available categories.
@@ -339,6 +354,7 @@ Use tab completion to view a list of available categories.
 If no category is specified, all logs are shown.
 ```
 ```{opcmd} show log image <name>
+
    [all | authorization | directory | file <file name> | tail <lines>]
 **Display logs for a specific image on the console.**
 

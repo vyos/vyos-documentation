@@ -18,6 +18,7 @@ The watchdog feature is configured under the `system watchdog` configuration
 tree. The presence of the `system watchdog` node enables the watchdog feature.
 
 ```{cfgcmd} set system watchdog
+
 Enable watchdog support.
 
 The watchdog is enabled only when a watchdog device is available as
@@ -31,6 +32,7 @@ fail. If a module is configured but ``/dev/watchdog0`` still cannot be
 created, VyOS will emit a warning and will not enable the systemd watchdog.
 ```
 ```{cfgcmd} set system watchdog module <module-name>
+
 Specify the kernel watchdog driver module to load for ``/dev/watchdog0``.
 
 The configured module must be a watchdog driver module, not an arbitrary

@@ -328,12 +328,15 @@ Prometheus [blackbox_exporter] which allows probing of endpoints over
 HTTP, HTTPS, DNS, TCP, ICMP and gRPC .
 
 ```{cfgcmd} set service monitoring prometheus blackbox-exporter listen-address <address>
+
 Configure the address blackbox_exporter is listening on.
 ```
 ```{cfgcmd} set service monitoring prometheus blackbox-exporter port <port>
+
 Configure the port number blackbox_exporter is listening on.
 ```
 ```{cfgcmd} set service monitoring prometheus blackbox-exporter vrf <name>
+
 Configure name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 ```
 #### Configuring modules

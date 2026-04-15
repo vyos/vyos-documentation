@@ -17,6 +17,7 @@ implemented.
 ## Configure
 
 ```{cfgcmd} set protocols static arp interface <interface> address <host>
+
    mac <mac>
 
 This will configure a static ARP entry always resolving `<address>` to
@@ -36,6 +37,7 @@ Example:
 ## Operation
 
 ```{opcmd} show protocols static arp
+
 Display all known ARP table entries spanning across all interfaces
 ```
 ```none
@@ -46,6 +48,7 @@ Address                  HWtype  HWaddress           Flags Mask     Iface
 ```
 
 ```{opcmd} show protocols static arp interface eth1
+
 Display all known ARP table entries on a given interface only (`eth1`):
 ```
 ```none

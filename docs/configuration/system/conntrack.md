@@ -37,6 +37,7 @@ searching the connection tracking table faster. The hash table uses
 ```{cfgcmd} set system conntrack modules sqlnet
 ```
 ```{cfgcmd} set system conntrack modules tftp
+
 Configure the connection tracking protocol helper modules.
 All modules are enable by default.
 
@@ -62,13 +63,16 @@ connections, based on a packet and flow selector. To do this, you need to
 create a rule defining the packet and flow selector.
 
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    description <test>
 Set a rule description.
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    destination address <ip-address>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    source address <ip-address>
 Set a destination and/or source address. Accepted input for ipv4:
 
@@ -95,9 +99,11 @@ Set a destination and/or source address. Accepted input for ipv4:
                             Match everything except the specified range
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    destination port <value>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    source port <value>
 Set a destination and/or source port. Accepted input:
 
@@ -112,33 +118,43 @@ The whole list can also be "negated" using '!'. For example:
 `!22,telnet,http,123,1001-1005``
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    protocol tcp close <1-21474836>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    protocol tcp close-wait <1-21474836>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    protocol tcp established <1-21474836>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    protocol tcp fin-wait <1-21474836>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    protocol tcp last-ack <1-21474836>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    protocol tcp syn-recv <1-21474836>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    protocol tcp syn-sent <1-21474836>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    protocol tcp time-wait <1-21474836>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    protocol udp replied <1-21474836>
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
+
    protocol udp unreplied <1-21474836>
 Set the timeout in seconds for a protocol or state in a custom rule.
 ```
@@ -154,27 +170,35 @@ the future the conntrack ignore rules will be removed.
 :::
 
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+
    description <text>
 ```
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+
    destination address <ip-address>
 ```
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+
    destination port <port>
 ```
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+
    inbound-interface <interface>
 ```
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+
    protocol <protocol>
 ```
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+
    source address <ip-address>
 ```
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+
    source port <port>
 ```
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
+
    tcp flags [not] <text>
 Allowed values fpr TCP flags: ``ack``, ``cwr``, ``ecn``, ``fin``, ``psh``,
 ``rst``, ``syn`` and ``urg``. Multiple values are supported, and for
@@ -187,6 +211,7 @@ inverted selection use ``not``, as shown in the example.
 ```{cfgcmd} set system conntrack log event new
 ```
 ```{cfgcmd} set system conntrack log event update
+
 Log the connection tracking events per type.
 ```
 ```{cfgcmd} set system conntrack log event destroy icmp
@@ -212,14 +237,18 @@ Log the connection tracking events per type.
 ```{cfgcmd} set system conntrack log event update tcp
 ```
 ```{cfgcmd} set system conntrack log event update udp
+
 Log the connection tracking events per protocol.
 ```
 ```{cfgcmd} set system conntrack log timestamp
+
 Turn on flow-based timestamp extension.
 ```
 ```{cfgcmd} set system conntrack log queue-size <100-999999>
+
 Manage internal queue size, default size is 4096 events.
 ```
 ```{cfgcmd} set system conntrack log log-level <info | debug>
+
 Manage log level
 ```

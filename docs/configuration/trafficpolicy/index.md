@@ -393,6 +393,7 @@ amount of traffic. But **very likely you do not need it as you cannot
 get much from it. Sometimes it is used just to enable logging.**
 
 ```{cfgcmd} set qos policy drop-tail <policy-name> queue-limit
+
    <number-of-packets>
 
 Use this command to configure a drop-tail policy (PFIFO). Choose a
@@ -630,6 +631,7 @@ delay does not become too stale (default: 100ms).
 
 
 ```{cfgcmd} set qos policy fq-codel <policy-name> queue-limit
+
 <number-of-packets>
 
 
@@ -691,6 +693,7 @@ In the case you want to apply some kind of **shaping** to your
 :::
 
 ```{cfgcmd} set qos policy limiter <policy-name> class <class ID> match
+
    <match-name> description <description>
 
 Use this command to configure an Ingress Policer, defining its name,
@@ -704,6 +707,7 @@ Once the matching rules are set for a class, you can start configuring
 how you want matching traffic to behave.
 
 ```{cfgcmd} set qos policy limiter <policy-name> class <class-ID> bandwidth
+
    <rate>
 
 Use this command to configure an Ingress Policer, defining its name,
@@ -714,6 +718,7 @@ this class.
 
 ```
 ```{cfgcmd} set qos policy limiter <policy-name> class <class-ID> burst
+
    <burst-size>
 
 Use this command to configure an Ingress Policer, defining its name,
@@ -738,6 +743,7 @@ and the burst size in bytes (default: 15) for its default policy.
 
 ```
 ```{cfgcmd} set qos policy limiter <policy-name> class <class ID> priority
+
    <value>
 
 Use this command to configure an Ingress Policer, defining its name,
@@ -792,6 +798,7 @@ you have configured its bandwidth too.
 
 
 ```{cfgcmd} set qos policy network-emulator <policy-name> delay
+
 <delay>
 
 
@@ -810,6 +817,7 @@ configured its bandwidth too. You can use secs, ms and us. Default:
 
 
 ```{cfgcmd} set qos policy network-emulator <policy-name> corruption
+
 <percent>
 
 
@@ -824,6 +832,7 @@ percent of packets.
 
 
 ```{cfgcmd} set qos policy network-emulator <policy-name> loss
+
 <percent>
 
 
@@ -836,6 +845,7 @@ packets your traffic will suffer.
 
 
 ```{cfgcmd} set traffic-policy network-emulator <policy-name> reordering
+
 <percent>
 
 
@@ -848,6 +858,7 @@ packets your traffic will suffer.
 
 
 ```{cfgcmd} set traffic-policy network-emulator <policy-name> queue-limit
+
 <limit>
 
 
@@ -924,6 +935,7 @@ Possible completions:
 ```
 
 ```{cfgcmd} set qos policy priority-queue <policy-name> class <class-ID>
+
    queue-limit <limit>
 
 Use this command to configure a Priority Queue policy, set its name,
@@ -995,6 +1007,7 @@ algorithm might be to prevent a backbone overload. But only for TCP
 
 
 ```{cfgcmd} set qos policy random-detect <policy-name> precedence
+
 <IP-precedence-value> average-packet <bytes>
 
 
@@ -1018,6 +1031,7 @@ precedence number, the higher the priority**.
 
 
 ```{cfgcmd} set qos policy random-detect <policy-name> precedence
+
 <IP-precedence-value> mark-probability <value>
 
 
@@ -1030,6 +1044,7 @@ configuring and what its mark (drop) probability will be. Set the
 probability by giving the N value of the fraction 1/N (default: 10).
 ```
 ```{cfgcmd} set qos policy random-detect <policy-name> precedence
+
    <IP-precedence-value> maximum-threshold <packets>
 
    Use this command to configure a Random-Detect policy and set its
@@ -1046,6 +1061,7 @@ probability by giving the N value of the fraction 1/N (default: 10).
 
 
 ```{cfgcmd} set qos policy random-detect <policy-name> precedence
+
 <IP-precedence-value> minimum-threshold <packets>
 
 
@@ -1073,6 +1089,7 @@ The default values for the minimum-threshold depend on IP precedence:
 > | 0          | 9                     |
 
 ```{cfgcmd} set qos policy random-detect <policy-name> precedence
+
    <IP-precedence-value> queue-limit <packets>
 
 Use this command to configure a Random-Detect policy and set its
@@ -1190,6 +1207,7 @@ At every round, the deficit counter adds the quantum so that even large
 packets will have their opportunity to be dequeued.
 
 ```{cfgcmd} set qos policy round-robin <policy name> class
+
    <class-ID> quantum <packets>
 
    Use this command to configure a Round-Robin policy, set its name, set
@@ -1202,6 +1220,7 @@ packets will have their opportunity to be dequeued.
 
 
 ```{cfgcmd} set qos policy round-robin <policy name> class
+
 <class ID> queue-limit <packets>
 
 
@@ -1291,6 +1310,7 @@ Use this command to configure a Shaper policy, set its name
 and the maximum bandwidth for all combined traffic.
 ```
 ```{cfgcmd} set qos policy shaper <policy-name> class <class-ID> bandwidth
+
    <rate>
 
    Use this command to configure a Shaper policy, set its name, define
@@ -1303,6 +1323,7 @@ and the maximum bandwidth for all combined traffic.
 
 
 ```{cfgcmd} set qos policy shaper <policy-name> class <class-ID> burst
+
 <bytes>
 
 
@@ -1315,6 +1336,7 @@ be available to be sent at ceiling speed (default: 15Kb).
 
 
 ```{cfgcmd} set qos policy shaper <policy-name> class <class-ID> ceiling
+
 <bandwidth>
 
 
@@ -1327,6 +1349,7 @@ default ceiling value is the bandwidth value.
 
 
 ```{cfgcmd} set qos policy shaper <policy-name> class <class-ID> priority
+
 <0-7>
 
 

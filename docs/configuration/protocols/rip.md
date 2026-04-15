@@ -283,6 +283,7 @@ as unreachable over the interface on which the route was learned.
 ## Operational Mode Commands
 
 ```{opcmd} show ip rip
+
 This command displays RIP routes.
 ```
 ```none
@@ -298,6 +299,7 @@ R(n) 10.0.23.0/24       10.0.12.2             2 10.0.12.2         0 02:53
 ```
 
 ```{opcmd} show ip rip status
+
 The command displays current RIP status. It includes RIP timer, filtering,
 version, RIP enabled interface and RIP peer information.
 ```

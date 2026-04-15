@@ -498,6 +498,7 @@ View all IP ACLs:
 View IP ACL interface assignments:
 
 ```{opcmd} show vpp acl ip interface
+
 show vpp acl ip interface
 ```
 Example output:

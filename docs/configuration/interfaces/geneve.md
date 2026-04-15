@@ -79,10 +79,12 @@ Geneve header:
 ### Geneve options
 
 ```{cfgcmd} set interfaces geneve gnv0 remote <address>
+
 Configure the remote endpoint IP address for the Geneve tunnel.
 ```
 
 ```{cfgcmd} set interfaces geneve gnv0 vni <vni>
+
 **Configure** :abbr:`VNI (Virtual Network Identifier)` **for the Geneve
 
 interface.**
@@ -99,5 +101,6 @@ tables.
 ```
 
 ```{cfgcmd} set interfaces gnv0 <interface> port <port>
+
 **Configure the destination UDP port for the remote Geneve tunnel endpoint.**
 ```

@@ -516,27 +516,35 @@ Current default is journald.
 ## Operation Commands
 
 ```{opcmd} add container image <containername>
+
 Pull a new image for container
 ```
 ```{opcmd} show container
+
 Show the list of all active containers.
 ```
 ```{opcmd} show container image
+
 Show the local container images.
 ```
 ```{opcmd} show container log <containername>
+
 Show logs from a given container
 ```
 ```{opcmd} show container network
+
 Show a list available container networks
 ```
 ```{opcmd} restart container <containername>
+
 Restart a given container
 ```
 ```{opcmd} update container image <containername>
+
 Update container image
 ```
 ```{opcmd} delete container image <image id|all> [force]
+
 Delete a particular container image based on it's image ID.
 You can also delete all container images at once.
 

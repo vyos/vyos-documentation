@@ -61,6 +61,7 @@ left unconfigured.
 
 
 ```{cfgcmd} set service console-server device <device> speed
+
  [ 300 | 1200 | 2400 | 4800 | 9600 | 19200 | 38400 | 57600 | 115200 ]
 
 
@@ -127,6 +128,7 @@ Show currently connected users.
    usb0b2.4p1.0               up   vyos@localhost
 ```
 ```{opcmd} connect console <device>
+
 Locally connect to serial port identified by `<device>`.
 
 .. code-block:: none
@@ -147,5 +149,6 @@ Locally connect to serial port identified by `<device>`.
    connecting.
 ```
 ```{opcmd} show log console-server
+
 Show the console server log.
 ```

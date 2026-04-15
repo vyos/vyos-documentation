@@ -197,21 +197,25 @@ The action can be:
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999> action
+
 [accept | continue | drop | jump | queue | reject | return | synproxy]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999> action
+
 [accept | continue | drop | jump | queue | reject | return | synproxy]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999> action
+
 [accept | continue | drop | jump | queue | reject | return]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999> action
+
 [accept | continue | drop | jump | queue | reject | return]
 
 
@@ -222,21 +226,25 @@ the action to jump, you must also specify a jump-target.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 jump-target <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 jump-target <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 jump-target <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 jump-target <text>
 
 
@@ -247,21 +255,25 @@ jump target.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 queue <0-65535>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 queue <0-65535>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 queue <0-65535>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 queue <0-65535>
 
 
@@ -272,21 +284,25 @@ queue target to use. Queue range is also supported.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 queue-options bypass
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 queue-options bypass
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 queue-options bypass
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 queue-options bypass
 
 
@@ -299,21 +315,25 @@ queue.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 queue-options fanout
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 queue-options fanout
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 queue-options fanout
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 queue-options fanout
 
 
@@ -331,21 +351,25 @@ match any rule in its chain. For base chains, possible options for
 
 
 ```{cfgcmd} set firewall ipv4 forward filter default-action
+
 [accept | drop]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter default-action
+
 [accept | drop]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter default-action
+
 [accept | drop]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> default-action
+
 [accept | drop | jump | queue | reject | return]
 
 
@@ -433,6 +457,7 @@ chain.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 log-options level [emerg | alert | crit | err | warn | notice
 
 | info | debug]
@@ -440,6 +465,7 @@ log-options level [emerg | alert | crit | err | warn | notice
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 log-options level [emerg | alert | crit | err | warn | notice
 
 | info | debug]
@@ -447,6 +473,7 @@ log-options level [emerg | alert | crit | err | warn | notice
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 log-options level [emerg | alert | crit | err | warn | notice
 
 | info | debug]
@@ -454,6 +481,7 @@ log-options level [emerg | alert | crit | err | warn | notice
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 log-options level [emerg | alert | crit | err | warn | notice
 
 | info | debug]
@@ -464,21 +492,25 @@ Define the log level. Only applicable if you enable rule logging.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 log-options group <0-65535>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 log-options group <0-65535>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 log-options group <0-65535>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 log-options group <0-65535>
 
 
@@ -489,21 +521,25 @@ logging.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 log-options snapshot-length <0-9000>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 log-options snapshot-length <0-9000>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 log-options snapshot-length <0-9000>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 log-options snapshot-length <0-9000>
 
 
@@ -514,21 +550,25 @@ applicable if you enable rule logging and define the log group.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 log-options queue-threshold <0-65535>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 log-options queue-threshold <0-65535>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 log-options queue-threshold <0-65535>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 log-options queue-threshold <0-65535>
 
 
@@ -555,16 +595,19 @@ Provide a rule-set description for a custom firewall chain.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 description <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 description <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 description <text>
 ```
 
@@ -608,21 +651,25 @@ There are a lot of matching criteria against which the packet can be tested.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 connection-status nat [destination | source]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 connection-status nat [destination | source]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 connection-status nat [destination | source]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 connection-status nat [destination | source]
 
 
@@ -631,21 +678,25 @@ Match based on nat connection status.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 connection-mark <1-2147483647>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 connection-mark <1-2147483647>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 connection-mark <1-2147483647>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 connection-mark <1-2147483647>
 
 
@@ -654,21 +705,25 @@ Match based on connection mark.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 conntrack-helper <module>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 conntrack-helper <module>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 conntrack-helper <module>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 conntrack-helper <module>
 
 
@@ -699,41 +754,49 @@ that helper module. See below for possible completions `<module>`.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source address [address | addressrange | CIDR]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source address [address | addressrange | CIDR]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source address [address | addressrange | CIDR]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source address [address | addressrange | CIDR]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination address [address | addressrange | CIDR]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination address [address | addressrange | CIDR]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination address [address | addressrange | CIDR]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination address [address | addressrange | CIDR]
 
 
@@ -756,41 +819,49 @@ addresses.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source address-mask [address]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source address-mask [address]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source address-mask [address]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source address-mask [address]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination address-mask [address]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination address-mask [address]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination address-mask [address]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination address-mask [address]
 
 
@@ -814,41 +885,49 @@ This functions for both individual addresses and address groups.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source fqdn <fqdn>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source fqdn <fqdn>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source fqdn <fqdn>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source fqdn <fqdn>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination fqdn <fqdn>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination fqdn <fqdn>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination fqdn <fqdn>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination fqdn <fqdn>
 
 
@@ -859,81 +938,97 @@ that the router is able to resolve this dns query.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source geoip country-code <country>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source geoip country-code <country>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source geoip country-code <country>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source geoip country-code <country>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination geoip country-code <country>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination geoip country-code <country>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination geoip country-code <country>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination geoip country-code <country>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source geoip inverse-match
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source geoip inverse-match
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source geoip inverse-match
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source geoip inverse-match
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination geoip inverse-match
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination geoip inverse-match
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination geoip inverse-match
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination geoip inverse-match
 
 
@@ -955,21 +1050,25 @@ geoip) to keep database and rules updated.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source mac-address <mac-address>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source mac-address <mac-address>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source mac-address <mac-address>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source mac-address <mac-address>
 
 
@@ -986,41 +1085,49 @@ You can only specify a source mac-address to match.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source port [1-65535 | portname | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source port [1-65535 | portname | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source port [1-65535 | portname | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source port [1-65535 | portname | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination port [1-65535 | portname | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination port [1-65535 | portname | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination port [1-65535 | portname | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination port [1-65535 | portname | start-end]
 
 
@@ -1044,41 +1151,49 @@ The whole list can also be "negated" using ``!``. For example:
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source group address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source group address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source group address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source group address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination group address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination group address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination group address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination group address-group <name | !name>
 
 
@@ -1089,41 +1204,49 @@ criteria to match is also supported.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source group dynamic-address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source group dynamic-address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source group dynamic-address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source group dynamic-address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination group dynamic-address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination group dynamic-address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination group dynamic-address-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination group dynamic-address-group <name | !name>
 
 
@@ -1134,41 +1257,49 @@ invert the criteria to match is also supported.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source group network-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source group network-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source group network-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source group network-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination group network-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination group network-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination group network-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination group network-group <name | !name>
 
 
@@ -1179,41 +1310,49 @@ criteria to match is also supported.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source group port-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source group port-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source group port-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source group port-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination group port-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination group port-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination group port-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination group port-group <name | !name>
 
 
@@ -1224,41 +1363,49 @@ criteria to match is also supported.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source group domain-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source group domain-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source group domain-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source group domain-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination group domain-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination group domain-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination group domain-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination group domain-group <name | !name>
 
 
@@ -1269,41 +1416,49 @@ criteria to match is also supported.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 source group mac-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 source group mac-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 source group mac-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 source group mac-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 destination group mac-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 destination group mac-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 destination group mac-group <name | !name>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 destination group mac-group <name | !name>
 
 
@@ -1314,41 +1469,49 @@ criteria to match is also supported.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 dscp [0-63 | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 dscp [0-63 | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 dscp [0-63 | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 dscp [0-63 | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 dscp-exclude [0-63 | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 dscp-exclude [0-63 | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 dscp-exclude [0-63 | start-end]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 dscp-exclude [0-63 | start-end]
 
 
@@ -1357,21 +1520,25 @@ Match based on dscp value.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 fragment [match-frag | match-non-frag]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 fragment [match-frag | match-non-frag]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 fragment [match-frag | match-non-frag]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 fragment [match-frag | match-non-frag]
 
 
@@ -1380,21 +1547,25 @@ Match based on fragmentation.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 icmp [code | type] <0-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 icmp [code | type] <0-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 icmp [code | type] <0-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 icmp [code | type] <0-255>
 
 
@@ -1403,21 +1574,25 @@ Match based on icmp code and type.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 icmp type-name <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 icmp type-name <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 icmp type-name <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 icmp type-name <text>
 
 
@@ -1428,16 +1603,19 @@ about what **type-name** criteria are supported.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 inbound-interface name <iface>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 inbound-interface name <iface>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 inbound-interface name <iface>
 
 
@@ -1461,16 +1639,19 @@ ipv4 forward filter rule 10 inbound-interface name MGMT`
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 inbound-interface group <iface_group>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 inbound-interface group <iface_group>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 inbound-interface group <iface_group>
 
 
@@ -1481,16 +1662,19 @@ invert the criteria. For example, ``!IFACE_GROUP``
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 outbound-interface name <iface>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 outbound-interface name <iface>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 outbound-interface name <iface>
 
 
@@ -1514,16 +1698,19 @@ If an interface is attached to a non-default vrf, when using
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 outbound-interface group <iface_group>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 outbound-interface group <iface_group>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 outbound-interface group <iface_group>
 
 
@@ -1534,21 +1721,25 @@ invert the criteria. For example: ``!IFACE_GROUP``
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 ipsec [match-ipsec-in | match-ipsec-out | match-none-in | match-none-out]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 ipsec [match-ipsec-in | match-none-in]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 ipsec [match-ipsec-out | match-none-out]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 ipsec [match-ipsec-in | match-ipsec-out | match-none-in | match-none-out]
 
 
@@ -1557,21 +1748,25 @@ Match based on ipsec.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 limit burst <0-4294967295>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 limit burst <0-4294967295>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 limit burst <0-4294967295>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 limit burst <0-4294967295>
 
 
@@ -1580,21 +1775,25 @@ Match based on the maximum number of packets to allow in excess of rate.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 limit rate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 limit rate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 limit rate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 limit rate <text>
 
 
@@ -1605,41 +1804,49 @@ Specify the maximum average rate as **integer/unit**. For example:
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 packet-length <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 packet-length <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 packet-length <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 packet-length <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 packet-length-exclude <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 packet-length-exclude <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 packet-length-exclude <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 packet-length-exclude <text>
 
 
@@ -1650,21 +1857,25 @@ ranges.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 packet-type [broadcast | host | multicast | other]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 packet-type [broadcast | host | multicast | other]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 packet-type [broadcast | host | multicast | other]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 packet-type [broadcast | host | multicast | other]
 
 
@@ -1673,21 +1884,25 @@ Match based on the packet type.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 protocol [<text> | <0-255> | all | tcp_udp]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 protocol [<text> | <0-255> | all | tcp_udp]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 protocol [<text> | <0-255> | all | tcp_udp]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 protocol [<text> | <0-255> | all | tcp_udp]
 
 
@@ -1708,41 +1923,49 @@ based packets. The ``!`` character negates the selected protocol.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 recent count <1-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 recent count <1-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 recent count <1-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 recent count <1-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 recent time [second | minute | hour]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 recent time [second | minute | hour]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 recent time [second | minute | hour]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 recent time [second | minute | hour]
 
 
@@ -1751,21 +1974,25 @@ Match based on recently seen sources.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 tcp flags [not] <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 tcp flags [not] <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 tcp flags [not] <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 tcp flags [not] <text>
 
 
@@ -1788,21 +2015,25 @@ Specify TCP flags. Allowed values are ``ack``, ``cwr``, ``ecn``, ``fin``,
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 state [established | invalid | new | related]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 state [established | invalid | new | related]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 state [established | invalid | new | related]
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 state [established | invalid | new | related]
 
 
@@ -1811,101 +2042,121 @@ Match against the state of a packet.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 time startdate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 time startdate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 time startdate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 time startdate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 time starttime <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 time starttime <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 time starttime <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 time starttime <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 time stopdate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 time stopdate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 time stopdate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 time stopdate <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 time stoptime <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 time stoptime <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 time stoptime <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 time stoptime <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 time weekdays <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 time weekdays <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 time weekdays <text>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 time weekdays <text>
 
 
@@ -1914,21 +2165,25 @@ Time to match the defined rule.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 ttl <eq | gt | lt> <0-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 ttl <eq | gt | lt> <0-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 ttl <eq | gt | lt> <0-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 ttl <eq | gt | lt> <0-255>
 
 
@@ -1939,41 +2194,49 @@ Match the time to live parameter, where 'eq' means 'equal', 'gt' means
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 recent count <1-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 recent count <1-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 recent count <1-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 recent count <1-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 recent time <second | minute | hour>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 input filter rule <1-999999>
+
 recent time <second | minute | hour>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output filter rule <1-999999>
+
 recent time <second | minute | hour>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999>
+
 recent time <second | minute | hour>
 
 
@@ -1994,16 +2257,19 @@ packet handling.
 
 
 ```{cfgcmd} set firewall ipv4 prerouting raw rule <1-999999>
+
 set dscp <0-63>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 set dscp <0-63>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output [filter | raw] rule <1-999999>
+
 set dscp <0-63>
 
 
@@ -2012,16 +2278,19 @@ Set a specific value of Differentiated Services Codepoint (DSCP).
 
 
 ```{cfgcmd} set firewall ipv4 prerouting raw rule <1-999999>
+
 set mark <1-2147483647>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 set mark <1-2147483647>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output [filter | raw] rule <1-999999>
+
 set mark <1-2147483647>
 
 
@@ -2030,16 +2299,19 @@ Set a specific packet mark value.
 
 
 ```{cfgcmd} set firewall ipv4 prerouting raw rule <1-999999>
+
 set tcp-mss <500-1460>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 set tcp-mss <500-1460>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output [filter | raw] rule <1-999999>
+
 set tcp-mss <500-1460>
 
 
@@ -2048,16 +2320,19 @@ Set the TCP-MSS (TCP maximum segment size) for the connection.
 
 
 ```{cfgcmd} set firewall ipv4 prerouting raw rule <1-999999>
+
 set ttl <0-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 set ttl <0-255>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output [filter | raw] rule <1-999999>
+
 set ttl <0-255>
 
 
@@ -2066,11 +2341,13 @@ Set the TTL (Time to Live) value.
 
 
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
+
 set connection-mark <0-2147483647>
 ```
 
 
 ```{cfgcmd} set firewall ipv4 output [filter | raw] rule <1-999999>
+
 set connection-mark <0-2147483647>
 
 
@@ -2085,16 +2362,19 @@ Synproxy connections
 
 
 ```{cfgcmd} set firewall ipv4 [input | forward] filter rule <1-999999>
+
 action synproxy
 ```
 
 
 ```{cfgcmd} set firewall ipv4 [input | forward] filter rule <1-999999>
+
 protocol tcp
 ```
 
 
 ```{cfgcmd} set firewall ipv4 [input | forward] filter rule <1-999999>
+
 synproxy tcp mss <501-65535>
 
 
@@ -2103,6 +2383,7 @@ synproxy tcp mss <501-65535>
 
 
 ```{cfgcmd} set firewall ipv4 [input | forward] filter rule <1-999999>
+
 synproxy tcp window-scale <1-14>
 
 
@@ -2356,6 +2637,7 @@ This shows you a summary of rule-sets and groups.
 ```{opcmd} show firewall ipv4 [forward | input | output] filter
 ```
 ```{opcmd} show firewall ipv4 name <name>
+
 This command will give an overview of a single rule-set.
 
 .. code-block:: none
@@ -2372,9 +2654,11 @@ This command will give an overview of a single rule-set.
    default  accept    all
 ```
 ```{opcmd} show firewall ipv4 [forward | input | output]
+
    filter rule <1-999999>
 ```
 ```{opcmd} show firewall ipv4 name <name> rule <1-999999>
+
 This command gives an overview of a rule in a single rule-set, plus
 information for default action.
 ```
@@ -2394,6 +2678,7 @@ vyos@vyos:~$
 ```
 
 ```{opcmd} show firewall statistics
+
 This will show you statistics of all rule-sets since the last boot.
 ```
 ### Show Firewall log
@@ -2411,6 +2696,7 @@ This will show you statistics of all rule-sets since the last boot.
 ```{opcmd} show log firewall ipv4 [forward | input | output] filter rule <rule>
 ```
 ```{opcmd} show log firewall ipv4 name <name> rule <rule>
+
 Show the logs of all firewall; show all IPv4 firewall logs; show all logs
 for particular hook; show all logs for particular hook and priority;
 show all logs for particular custom chain; show logs for specific rule-set.
@@ -2462,5 +2748,6 @@ firewall {
 ### Update geoip database
 
 ```{opcmd} update geoip
+
 Command to update GeoIP database and firewall sets.
 ```

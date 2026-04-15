@@ -94,6 +94,7 @@ Trace path to target.
 ## Advanced Connectivity Tests
 
 ```{opcmd} monitor traceroute <destination>
+
 However, another helper is available which combines ping and traceroute
 into a single tool. An example of its output is shown:
 
@@ -125,6 +126,7 @@ IPv6 uses different techniques to discover its Neighbors/topology.
 ### Router Discovery
 
 ```{opcmd} force ipv6-rd interface <interface> [address <ipv6-address>]
+
 Discover routers via eth0.
 
 Example:

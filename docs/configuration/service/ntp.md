@@ -255,11 +255,13 @@ for timestamping PTP packets while retaining the configuration flexibility and
 fault tolerance of NTP.
 
 ```{cfgcmd} set service ntp ptp
+
 Enables the NTP daemon PTP transport. The NTP daemon will listen on the
 configured PTP port. Note that one or more servers must be individually
 enabled for PTP before the daemon will synchronize over the transport.
 ```
 ```{cfgcmd} set service ntp ptp port <port>
+
 Configures the PTP port. By default, the standard port 319 is used.
 ```
 [draft-ntp-interleaved-modes]: https://datatracker.ietf.org/doc/draft-ietf-ntp-interleaved-modes/07/

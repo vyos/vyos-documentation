@@ -97,29 +97,34 @@ In a nutshell, the current implementation provides the following features:
 ## Configuration
 
 ```{cfgcmd} set protocols rpki polling-period <1-86400>
+
 Define the time interval to update the local cache
 
 The default value is 300 seconds.
 ```
 ```{cfgcmd} set protocols rpki expire-interval <600-172800>
+
 Set the number of seconds the router waits until the router
 expires the cache.
 
 The default value is 7200 seconds.
 ```
 ```{cfgcmd} set protocols rpki retry-interval <1-7200>
+
 Set the number of seconds the router waits until retrying to connect
 to the cache server.
 
 The default value is 600 seconds.
 ```
 ```{cfgcmd} set protocols rpki cache <address> port <port>
+
 Defined the IPv4, IPv6 or FQDN and port number of the caching RPKI caching
 instance which is used.
 
 This is a mandatory setting.
 ```
 ```{cfgcmd} set protocols rpki cache <address> preference <preference>
+
 Multiple RPKI caching instances can be supplied and they need a preference in
 which their result sets are used.
 
@@ -136,12 +141,15 @@ an SSH client keypair using `generate ssh client-key
 connection.
 
 ```{cfgcmd} set protocols rpki cache <address> ssh username <user>
+
 SSH username to establish an SSH connection to the cache server.
 ```
 ```{cfgcmd} set protocols rpki cache <address> ssh private-key-file <filepath>
+
 Local path that includes the private key file of the router.
 ```
 ```{cfgcmd} set protocols rpki cache <address> ssh public-key-file <filepath>
+
 Local path that includes the public key file of the router.
 ```
 :::{note}

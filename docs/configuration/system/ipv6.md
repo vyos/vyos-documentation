@@ -250,10 +250,12 @@ status.
 
 ```
 ```{opcmd} reset ipv6 neighbors <address | interface>
+
 Use this command to reset IPv6 Neighbor Discovery Protocol cache for
 an address or interface.
 ```
 ```{opcmd} reset ipv6 route cache
+
 Use this command to flush the kernel IPv6 route cache.
 An address can be added to flush it only for that route.
 ```

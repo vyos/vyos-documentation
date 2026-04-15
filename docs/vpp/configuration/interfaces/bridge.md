@@ -35,6 +35,7 @@ combining different networking technologies.
 ### Creating a Bridge Interface
 
 ```{cfgcmd} set interfaces vpp bridge <vppbrN>
+
 Create a bridge interface where ``<vppbrN>`` follows the naming
 convention ``vppbr1``, ``vppbr2``, etc.
 ```
@@ -53,6 +54,7 @@ set interfaces vpp bridge vppbr1
 ### Interface Description
 
 ```{cfgcmd} set interfaces vpp bridge <vppbrN> description <description>
+
 Set a descriptive name for the bridge interface.
 ```
 **Example:**
@@ -66,6 +68,7 @@ set interfaces vpp bridge vppbr1 description "Main campus bridge"
 ### Adding Member Interfaces
 
 ```{cfgcmd} set interfaces vpp bridge <vppbrN> member interface
+
             <interface-name>
 Add an interface as a member of the bridge.
 ```
@@ -100,6 +103,7 @@ in routing.
 ### Configuring BVI
 
 ```{cfgcmd} set interfaces vpp bridge <vppbrN> member interface
+
             <loopback-interface> bvi
 Designate a loopback interface as the Bridge Virtual Interface for
 the bridge domain.

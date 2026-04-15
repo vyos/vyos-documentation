@@ -129,6 +129,7 @@ itself needs to be assigned to an interface.
 
 
 ```{cfgcmd} set interfaces <dummy | ethernet | bonding | bridge | pppoe>
+
 <interface> vrf <name>
 
 
@@ -778,6 +779,7 @@ address-family.
 
 
 ```{cfgcmd} set vrf name <name> protocols bgp address-family
+
          <ipv4-unicast|ipv6-unicast> rd vpn export <asn:nn|address:nn>
 
 
@@ -788,6 +790,7 @@ current unicast VRF to VPN.
 
 
 ```{cfgcmd} set vrf name <name> protocols bgp address-family
+
          <ipv4-unicast|ipv6-unicast> route-target vpn <import|export|both>
 
          [RTLIST]
@@ -806,6 +809,7 @@ described in Extended Communities Attribute.
 
 
 ```{cfgcmd} set vrf name <name> protocols bgp address-family
+
          <ipv4-unicast|ipv6-unicast> label vpn export <0-1048575|auto>
 
 
@@ -818,6 +822,7 @@ automatically assigned from a pool maintained.
 
 
 ```{cfgcmd} set vrf name <name> protocols bgp address-family
+
          <ipv4-unicast|ipv6-unicast> label vpn allocation-mode per-nexthop
 
 
@@ -832,6 +837,7 @@ the same nexthop.
 
 
 ```{cfgcmd} set vrf name <name> protocols bgp address-family
+
          <ipv4-unicast|ipv6-unicast> route-map vpn <import|export>
 
          [route-map <name>]
@@ -844,6 +850,7 @@ exported between the current unicast VRF and VPN.
 
 
 ```{cfgcmd} set vrf name <name> protocols bgp address-family
+
          <ipv4-unicast|ipv6-unicast> <import|export> vpn
 
 
@@ -852,6 +859,7 @@ Enables import or export of routes between the current unicast VRF and VPN.
 
 
 ```{cfgcmd} set vrf name <name> protocols bgp address-family
+
          <ipv4-unicast|ipv6-unicast> import vrf <name>
 
 
@@ -866,6 +874,7 @@ destination VRF’s.
 
 
 ```{cfgcmd} set vrf name <name> protocols bgp address-family
+
          <ipv4-unicast|ipv6-unicast> route-map vrf import
 
          [route-map <name>]
@@ -876,6 +885,7 @@ Specifies an optional route-map to be applied to routes imported from VRFs.
 
 
 ```{cfgcmd} set vrf name <name> protocols bgp interface <interface> mpls
+
          forwarding
 
 

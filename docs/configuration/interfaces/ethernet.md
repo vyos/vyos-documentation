@@ -23,6 +23,7 @@ LANs and WANs.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> switchdev
+
 **Enable** ``switchdev`` **mode for the interface.**
 
 In ``switchdev`` mode, the interface offloads traffic switching between ports
@@ -43,6 +44,7 @@ interfaces and requires a switchdev-compatible driver.
 ### Ethernet options
 
 ```{cfgcmd} set interfaces ethernet <interface> duplex <auto | full | half>
+
 **Configure duplex mode for the interface.**
 
 The following duplex modes are available:
@@ -61,6 +63,7 @@ The default duplex mode is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> speed <auto | 10 | 100 | 1000 |
+
 2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000>
 
 **Configure the interface's speed, in Mbit/s.**
@@ -77,6 +80,7 @@ The default option is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> ring-buffer rx <value>
+
 **Configure the receive (RX) ring buffer size for the interface.**
 
 The RX ring buffer size defines the number of incoming packets the interface
@@ -101,6 +105,7 @@ ethtool -g <interface>
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> ring-buffer tx <value>
+
 **Configure the transmit (TX) ring buffer size.**
 
 The TX ring buffer size defines the number of outgoing packets the interface
@@ -146,6 +151,7 @@ to verify which settings are supported by your hardware and driver.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing adaptive-tx
+
 Enable adaptive interrupt coalescing. The NIC automatically tunes RX/TX
 
 interrupt pacing based on traffic patterns to reduce CPU utilization
@@ -159,6 +165,7 @@ during high throughput while preserving latency at low packet rates.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing tx-usecs <0-16384>
+
 Set the delay in microseconds before generating an RX/TX interrupt after
 
 receiving or transmitting a packet. Lower values reduce latency; higher
@@ -172,6 +179,7 @@ values reduce CPU load.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing tx-frames <number>
+
 Generate an RX/TX interrupt only after the specified number of packets
 
 have been received or transmitted.
@@ -189,6 +197,7 @@ have been received or transmitted.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing tx-frames-irq <number>
+
 Control interrupt coalescing parameters while the driver is already
 
 servicing an interrupt (IRQ context). These settings allow finer tuning
@@ -202,6 +211,7 @@ of interrupt behavior under sustained load.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing pkt-rate-high <number>
+
 Define packet-rate thresholds (packets per second) used by adaptive
 
 coalescing to switch between low-rate and high-rate interrupt coalescing
@@ -221,6 +231,7 @@ profiles.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing tx-frame-low <number>
+
 Interrupt coalescing parameters applied when the packet rate is below
 
 ``pkt-rate-low``. Typically optimized for lower latency.
@@ -238,6 +249,7 @@ Interrupt coalescing parameters applied when the packet rate is below
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing tx-frame-high <number>
+
 Interrupt coalescing parameters applied when the packet rate exceeds
 
 ``pkt-rate-high``. Typically optimized for maximum throughput and
@@ -251,6 +263,7 @@ reduced CPU utilization.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing sample-interval <number>
+
 Control how frequently coalescing statistics are updated and how often
 
 the NIC samples traffic rates for adaptive coalescing decisions.
@@ -262,6 +275,7 @@ the NIC samples traffic rates for adaptive coalescing decisions.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing cqe-mode-tx
+
 Enable RX/TX Completion Queue Entry (CQE) mode, if supported by the
 
 driver. CQE mode can improve performance on high-speed NICs by
@@ -278,6 +292,7 @@ optimizing completion handling.
 ```
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing tx-aggr-time-usecs <number>
+
 Control transmit packet aggregation. Packets may be buffered and sent
 
 together until one of the configured limits (bytes, frames, or time)
@@ -285,6 +300,7 @@ together until one of the configured limits (bytes, frames, or time)
 #### Offloading
 
 ```{cfgcmd} set interfaces ethernet <interface> offload <lro | tso | gso |
+
    gro |  rps | sg >
 **Configure the offloading features for the interface.**
 
@@ -387,6 +403,7 @@ Uplink/core tracking.
 ## Operation
 
 ```{opcmd} show interfaces ethernet
+
 Show brief interface information.
 
 .. code-block:: none
@@ -400,6 +417,7 @@ Show brief interface information.
   eth2             -                                 u/D
 ```
 ```{opcmd} show interfaces ethernet <interface>
+
 Show detailed interface information.
 
 .. code-block:: none
@@ -418,6 +436,7 @@ Show detailed interface information.
 % stop_vyoslinter
 
 ```{opcmd} show interfaces ethernet <interface> physical
+
 Show interface hardware-level and driver details.
 
 .. code-block:: none
@@ -458,6 +477,7 @@ Show interface hardware-level and driver details.
 % start_vyoslinter
 
 ```{opcmd} show interfaces ethernet <interface> physical offload
+
 Show the status of the interface offloading features.
 
 .. code-block:: none
@@ -489,6 +509,7 @@ Show the status of the interface offloading features.
   rx-all                        off
 ```
 ```{opcmd} show interfaces ethernet <interface> transceiver
+
 Show information about the transceiver module plugged into the interface
 (e.g., SFP+, QSFP).
 

@@ -43,11 +43,14 @@ Traffic Engineering (TE) can be enabled and exported for IS-IS
 using the following commands:
 
 ```{cfgcmd} set protocols isis traffic-engineering enable
+
 Enable Traffic Engineering for IS-IS.
 ```
 ```{cfgcmd} set protocols isis traffic-engineering export
+
 Export Traffic Engineering data to neighbors.
 ```
 ```{cfgcmd} set protocols isis traffic-engineering address <ipv4-address>
+
 Configure IPv4 address for MPLS-TE.
 ```

@@ -98,6 +98,7 @@ Checks for the existence of the Suricata configuration file, updates the service
 and then restarts it. If the configuration file is not found, a message indicates that Suricata is not configured.
 ```
 ```{cfgcmd} restart suricata
+
 Restarts the service. It checks if the Suricata service is active before attempting to restart it.
 If it is not active, a message indicates that the service is not configured. This command is used when adding new rules manually.
 ```

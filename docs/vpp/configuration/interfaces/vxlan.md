@@ -18,18 +18,22 @@ multi-tenant networking while leveraging VPP's optimized data plane.
 ### Creating a VXLAN Interface
 
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN>
+
 Create a VXLAN interface where ``<vppvxlanN>`` follows the naming
 convention ``vppvxlan1``, ``vppvxlan2``, etc.
 ```
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> vni <vni>
+
 Set the Virtual Network Identifier (VNI) for the VXLAN tunnel. Valid range
 is 0-16777214.
 ```
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> remote <address>
+
 Set the tunnel remote endpoint address. Supports both IPv4 and IPv6
 addresses.
 ```
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> source-address <address>
+
 Set the tunnel source address. Must match an address configured on the
 local system.
 ```
@@ -47,9 +51,11 @@ set interfaces vpp vxlan vppvxlan1 source-address 192.168.1.1
 ### Description and Administrative Control
 
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> description <description>
+
 Set a descriptive name for the VXLAN interface.
 ```
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> disable
+
 Administratively disable the VXLAN interface.
 ```
 ### Kernel Interface Integration
@@ -60,6 +66,7 @@ application compatibility.
 ## IP Address Configuration
 
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> address <ip-address/prefix>
+
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
 addresses can be assigned.
 ```
@@ -73,6 +80,7 @@ set interfaces vpp vxlan vppvxlan1 address 2001:db8::10/64
 ## MTU Configuration
 
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> mtu <size>
+
 Set the Maximum Transmission Unit (MTU) for the kernel interface. The MTU
 must be compatible with the connected VPP interface.
 ```

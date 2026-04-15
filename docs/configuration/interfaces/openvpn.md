@@ -602,9 +602,11 @@ topology.
   only if no clients run Windows operating systems.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> shared-secret-key <key>
+
 Configure the static secret key for a site-to-site OpenVPN connection.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> tls auth-key <key>
+
 **Configure the TLS secret key for tls-auth.**
 
 This adds an HMAC signature to all SSL/TLS handshake packets to verify
@@ -614,60 +616,77 @@ Use ``run generate pki openvpn shared-secret install <name>`` to generate
 the key.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> tls ca-certificate <name>
+
 Configure the Certificate Authority chain in the PKI configuration.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> tls certificate <name>
+
 Configure the certificate name in the PKI configuration.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> tls crypt-key
+
 Configure a shared secret key to provide an additional level of security,
 a variant similar to tls-auth.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> tls dh-params
+
 Configure Diffie-Hellman parameters for server mode.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> tls peer-fingerprint <text>
+
 Configure the peer certificate SHA256 fingerprint for site-to-site mode.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> tls role <active | passive>
+
 **Configure the TLS negotiation role, preferably used in site-to-site mode:**
 
 * ``active``: Initiates TLS negotiation actively.
 * ``passive``: Waits for incoming TLS connections.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> tls tls-version-min <1.0 | 1.1 | 1.2 | 1.3 >
+
 Configure the minimum TLS version to be accepted from the peer.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> use-lzo-compression
+
 Configure fast LZO compression on this TUN/TAP interface.
 ```
 ```{cfgcmd} set interfaces openvpn <interface> vrf <name>
+
 Assign the interface to a specific VRF instance.
 ```
 ## Operation mode
 
 ```{opcmd} show openvpn site-to-site
+
 Show tunnel status for OpenVPN site-to-site interfaces.
 ```
 ```{opcmd} show openvpn server
+
 Show tunnel status for OpenVPN server interfaces.
 ```
 ```{opcmd} show openvpn client
+
 Show tunnel status for OpenVPN client interfaces.
 ```
 ```{opcmd} show log openvpn
+
 Show logs for all OpenVPN interfaces.
 ```
 ```{opcmd} show log openvpn interface <interface>
+
 Show logs for the specific OpenVPN interface.
 ```
 ```{opcmd} reset openvpn client <text>
+
 Reset the specified OpenVPN client.
 ```
 ```{opcmd} reset openvpn interface <interface>
+
 Reset the OpenVPN process on the specified interface.
 ```
 ```{opcmd} generate openvpn client-config interface <interface> ca <name> certificate <name>
+
 Generate an OpenVPN client configuration file in the .ovpn format for client machines.
 ```
 ## Examples

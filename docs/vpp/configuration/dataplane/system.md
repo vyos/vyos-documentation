@@ -27,6 +27,7 @@ Hugepages must be enabled before VPP configuration is applied.
 To enable hugepages:
 
 ```{cfgcmd} set system option kernel memory hugepage-size <size> hugepage-count
+
    '<count>'
 ```
 Enables hugepages with the specified size and count. The size can be either
@@ -86,12 +87,14 @@ performance by generating interrupts on isolated cores and is not
 compatible with nohz-full mode:
 
 ```{cfgcmd} set system option kernel cpu disable-nmi-watchdog
+
 Disables the NMI watchdog for detecting hard CPU lockups. This
 prevents unnecessary interrupts on VPP worker cores.
 ```
 **CPU Core Isolation**
 
 ```{cfgcmd} set system option kernel cpu isolate-cpus <cpu-range>
+
 Isolates specified CPUs from the kernel scheduler. Isolated cores will
 not run regular system processes and are dedicated to applications like
 VPP.
@@ -115,6 +118,7 @@ The ``<cpu-range>`` can be:
 **Adaptive-Tick Mode**
 
 ```{cfgcmd} set system option kernel cpu nohz-full <cpu-range>
+
 Enables adaptive-tick mode (NO_HZ_FULL) for specified CPUs. This
 causes the kernel to avoid sending scheduling-clock interrupts to CPUs
 that have only one runnable task, significantly reducing interrupt
@@ -125,6 +129,7 @@ Use the same CPU range as configured for ``isolate-cpus``.
 **RCU Callback Offloading**
 
 ```{cfgcmd} set system option kernel cpu rcu-no-cbs <cpu-range>
+
 Offloads Read-Copy-Update (RCU) callback processing from specified
 CPUs. This ensures that RCU callbacks do not prevent the specified CPUs
 from entering dyntick-idle or adaptive-tick mode, which is essential
@@ -140,12 +145,14 @@ disabling unnecessary features and reducing system overhead.
 **Disable High Precision Event Timer**
 
 ```{cfgcmd} set system option kernel disable-hpet
+
 Disables the High Precision Event Timer (HPET). HPET can cause
 additional interrupts and overhead that may impact VPP performance.
 ```
 **Disable Machine Check Exceptions**
 
 ```{cfgcmd} set system option kernel disable-mce
+
 Disables Machine Check Exception (MCE) reporting and handling. While
 MCE provides hardware error detection, it can introduce latency in
 high-performance scenarios.
@@ -153,6 +160,7 @@ high-performance scenarios.
 **Disable CPU Power Saving**
 
 ```{cfgcmd} set system option kernel disable-power-saving
+
 Disables CPU power saving mechanisms (C-states). This keeps CPU cores
 at maximum performance levels, eliminating latency from power state
 transitions.
@@ -160,12 +168,14 @@ transitions.
 **Disable Soft Lockup Detection**
 
 ```{cfgcmd} set system option kernel disable-softlockup
+
 Disables the soft lockup detector for kernel threads. This prevents
 false positives when VPP worker threads are busy processing packets.
 ```
 **Disable CPU Mitigations**
 
 ```{cfgcmd} set system option kernel disable-mitigations
+
 Disables all optional CPU mitigations for security vulnerabilities
 (for example, Spectre, Meltdown). This may improve performance on some
 platforms.

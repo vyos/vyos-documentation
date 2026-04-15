@@ -19,14 +19,17 @@ data plane.
 ### Creating a GRE Interface
 
 ```{cfgcmd} set interfaces vpp gre <vppgreN>
+
 Create a GRE interface where ``<vppgreN>`` follows the naming convention
 ``vppgre1``, ``vppgre2``, etc.
 ```
 ```{cfgcmd} set interfaces vpp gre <vppgreN> remote <address>
+
 Set the tunnel remote endpoint address. Supports both IPv4 and IPv6
 addresses.
 ```
 ```{cfgcmd} set interfaces vpp gre <vppgreN> source-address <address>
+
 Set the tunnel source address. Must match an address configured on
 the local system.
 ```
@@ -43,14 +46,17 @@ set interfaces vpp gre vppgre1 source-address 192.168.1.1
 ### Description and Administrative Control
 
 ```{cfgcmd} set interfaces vpp gre <vppgreN> description <description>
+
 Set a descriptive name for the GRE interface.
 ```
 ```{cfgcmd} set interfaces vpp gre <vppgreN> disable
+
 Administratively disable the GRE interface.
 ```
 ### Tunnel Type
 
 ```{cfgcmd} set interfaces vpp gre <vppgreN> tunnel-type <type>
+
 Set the GRE tunnel encapsulation type:
 
 * ``l3`` - Generic Routing Encapsulation for network layer traffic (default).
@@ -67,6 +73,7 @@ services to interact with the VPP GRE.
 ## IP Address Configuration
 
 ```{cfgcmd} set interfaces vpp gre <vppgreN> address <ip-address/prefix>
+
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
 addresses can be assigned.
 ```
@@ -83,6 +90,7 @@ set interfaces vpp gre vppgre0 address 2001:db8::10/64
 ## MTU Configuration
 
 ```{cfgcmd} set interfaces vpp gre <vppgreN> mtu <size>
+
 Set the Maximum Transmission Unit (MTU) for the kernel interface.
 The MTU must be compatible with the connected VPP interface.
 ```

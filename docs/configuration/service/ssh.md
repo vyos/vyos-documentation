@@ -309,20 +309,25 @@ attack, such as several login failures within a few seconds, is detected, the
 offending IP is blocked. Offenders are unblocked after a set interval.
 
 ```{cfgcmd} set service ssh dynamic-protection
+
 Allow ``ssh`` dynamic-protection.
 ```
 ```{cfgcmd} set service ssh dynamic-protection allow-from <address | prefix>
+
 Whitelist of addresses and networks. Always allow inbound connections from
 these systems.
 ```
 ```{cfgcmd} set service ssh dynamic-protection block-time <sec>
+
 Block source IP in seconds. Subsequent blocks increase by a factor of 1.5
 The default is 120.
 ```
 ```{cfgcmd} set service ssh dynamic-protection detect-time <sec>
+
 Remember source IP in seconds before reset their score. The default is 1800.
 ```
 ```{cfgcmd} set service ssh dynamic-protection threshold <sec>
+
 Block source IP when their cumulative attack score exceeds threshold. The
 default is 30.
 ```
@@ -331,10 +336,12 @@ default is 30.
 ## Operation
 
 ```{opcmd} restart ssh
+
 Restart the SSH daemon process, the current session is not affected, only the
 background daemon is restarted.
 ```
 ```{opcmd} generate ssh server-key
+
 Re-generated the public/private keyportion which SSH uses to secure
 connections.
 
@@ -342,6 +349,7 @@ connections.
    public key will change.
 ```
 ```{opcmd} generate ssh client-key /path/to/private_key
+
 Re-generated a known pub/private keyfile which can be used to connect to
 other services (e.g. RPKI cache).
 
@@ -373,6 +381,7 @@ Two new files ``/config/auth/id_rsa_rpki`` and
 will be created.
 ```
 ```{opcmd} generate public-key-command user <username> path <location>
+
  Generate the configuration mode commands to add a public key for
  :ref:`ssh_key_based_authentication`.
  ``<location>`` can be a local path or a URL pointing at a remote file.
@@ -402,23 +411,30 @@ Example:
   exit
 ```
 ```{opcmd} show log ssh
+
 Show SSH server log.
 ```
 ```{opcmd} monitor log ssh
+
 Follow the SSH server log.
 ```
 ```{opcmd} show log ssh dynamic-protection
+
 Show SSH dynamic-protection log.
 ```
 ```{opcmd} monitor log ssh dynamic-protection
+
 Follow the SSH dynamic-protection log.
 ```
 ```{opcmd} show ssh dynamic-protection
+
 Show list of IPs currently blocked by SSH dynamic-protection.
 ```
 ```{opcmd} show ssh fingerprints
+
 Show SSH server public key fingerprints.
 ```
 ```{opcmd} show ssh fingerprints ascii
+
 Show SSH server public key fingerprints, including a visual ASCII art representation.
 ```

@@ -13,26 +13,31 @@ from 1 - 999999, at the first match the action of the rule will be executed.
 ```{cfgcmd} set policy route <name> description <text>
 ```
 ```{cfgcmd} set policy route6 <name> description <text>
+
 Provide a rule-set description.
 ```
 ```{cfgcmd} set policy route <name> default-log
 ```
 ```{cfgcmd} set policy route6 <name> default-log
+
 Option to log packets hitting default-action.
 ```
 ```{cfgcmd} set policy route <name> interface <interface>
 ```
 ```{cfgcmd} set policy route6 <name> interface <interface>
+
 Apply routing policy to interface
 ```
 ```{cfgcmd} set policy route <name> rule <n> description <text>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> description <text>
+
 Provide a description for each rule.
 ```
 ```{cfgcmd} set policy route <name> rule <n> log <enable|disable>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> log <enable|disable>
+
 Option to enable or disable log matching rule.
 ```
 ### Matching criteria
@@ -44,11 +49,13 @@ in this section.
 ```{cfgcmd} set policy route <name> rule <n> connection-mark <1-2147483647>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> connection-mark <1-2147483647>
+
 Set match criteria based on connection mark.
 ```
 ```{cfgcmd} set policy route <name> rule <n> mark <match_criteria>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> mark <match_criteria>
+
 Match based on the firewall mark (fwmark), where <match_criteria> can be:
 
  * <0-2147483647> a single fwmark
@@ -61,15 +68,19 @@ Match based on the firewall mark (fwmark), where <match_criteria> can be:
     is set to 0x7FFFFFFF - the id of the table/VRF.
 ```
 ```{cfgcmd} set policy route <name> rule <n> source address
+
    <match_criteria>
 ```
 ```{cfgcmd} set policy route <name> rule <n> destination address
+
    <match_criteria>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> source address
+
    <match_criteria>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> destination address
+
    <match_criteria>
 Set match criteria based on source or destination ipv4|ipv6 address, where
 <match_criteria> could be:
@@ -92,15 +103,19 @@ And for ipv6:
     specified range.
 
 ```{cfgcmd} set policy route <name> rule <n> source group
+
    <address-group|domain-group|mac-group|network-group|port-group> <text>
 ```
 ```{cfgcmd} set policy route <name> rule <n> destination group
+
    <address-group|domain-group|mac-group|network-group|port-group> <text>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> source group
+
    <address-group|domain-group|mac-group|network-group|port-group> <text>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> destination group
+
    <address-group|domain-group|mac-group|network-group|port-group> <text>
 Set match criteria based on source or destination groups, where <text>
 would be the group name/identifier. Prepend character '!' for inverted
@@ -109,6 +124,7 @@ matching criteria.
 ```{cfgcmd} set policy route <name> rule <n> destination port <match_criteria>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> destination port <match_criteria>
+
 Set match criteria based on destination port, where <match_criteria> could
 be:
 
@@ -123,6 +139,7 @@ whole list can also be "negated" using '!'. For example:
 ```{cfgcmd} set policy route <name> rule <n> disable
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> disable
+
 Option to disable rule.
 ```
 ```{cfgcmd} set policy route <name> rule <n> dscp <text>
@@ -132,13 +149,16 @@ Option to disable rule.
 ```{cfgcmd} set policy route <name> rule <n> dscp-exclude <text>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> dscp-exclude <text>
+
 Match based on dscp value criteria. Multiple values from 0 to 63
 and ranges are supported.
 ```
 ```{cfgcmd} set policy route <name> rule <n> fragment
+
    <match-grag|match-non-frag>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> fragment
+
    <match-grag|match-non-frag>
 Set IP fragment match, where:
 
@@ -148,18 +168,22 @@ Set IP fragment match, where:
 ```{cfgcmd} set policy route <name> rule <n> icmp <code | type>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> icmpv6 <code | type>
+
 Match based on icmp|icmpv6 code and type.
 ```
 ```{cfgcmd} set policy route <name> rule <n> icmp type-name <text>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> icmpv6 type-name <text>
+
 Match based on icmp|icmpv6 type-name criteria. Use tab for information
 about what type-name criteria are supported.
 ```
 ```{cfgcmd} set policy route <name> rule <n> ipsec
+
    <match-ipsec|match-none>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> ipsec
+
    <match-ipsec|match-none>
 Set IPSec inbound match criterias, where:
 
@@ -169,19 +193,23 @@ Set IPSec inbound match criterias, where:
 ```{cfgcmd} set policy route <name> rule <n> limit burst <0-4294967295>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> limit burst <0-4294967295>
+
 Set maximum number of packets to alow in excess of rate.
 ```
 ```{cfgcmd} set policy route <name> rule <n> limit rate <text>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> limit rate <text>
+
 Set maximum average matching rate. Format for rate: integer/time_unit, where
 time_unit could be any one of second, minute, hour or day.For example
 1/second implies rule to be matched at an average of once per second.
 ```
 ```{cfgcmd} set policy route <name> rule <n> protocol
+
    <text | 0-255 | tcp_udp | all >
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> protocol
+
    <text | 0-255 | tcp_udp | all >
 Match a protocol criteria. A protocol number or a name which is defined in:
 ``/etc/protocols``. Special names are ``all`` for all protocols and
@@ -195,13 +223,16 @@ protocol.
 ```{cfgcmd} set policy route <name> rule <n> packet-length-exclude <text>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> packet-length-exclude <text>
+
 Match based on packet length criteria. Multiple values from 1 to 65535
 and ranges are supported.
 ```
 ```{cfgcmd} set policy route <name> rule <n> packet-type [broadcast | host
+
    | multicast | other]
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> packet-type [broadcast | host
+
    | multicast | other]
 Match based on packet type criteria.
 ```
@@ -212,20 +243,24 @@ Match based on packet type criteria.
 ```{cfgcmd} set policy route <name> rule <n> recent time <1-4294967295>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> recent time <1-4294967295>
+
 Set parameters for matching recently seen sources. This match could be used
 by seeting count (source address seen more than <1-255> times) and/or time
 (source address seen in the last <0-4294967295> seconds).
 ```
 ```{cfgcmd} set policy route <name> rule <n> state
+
    <established | invalid | new | related>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> state
+
    <established | invalid | new | related>
 Set match criteria based on session state.
 ```
 ```{cfgcmd} set policy route <name> rule <n> tcp flags <text>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> tcp flags <text>
+
 Set match criteria based on tcp flags. Allowed values for TCP flags: SYN ACK
 FIN RST URG PSH ALL. When specifying more than one flag, flags should be
 comma-separated. For example : value of 'SYN,!ACK,!FIN,!RST' will only match
@@ -258,13 +293,16 @@ packets with the SYN flag set, and the ACK, FIN and RST flags unset.
 ```{cfgcmd} set policy route <name> rule <n> time utc
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> time utc
+
 Time to match the defined rule.
 ```
 ```{cfgcmd} set policy route rule <n> ttl <eq | gt | lt> <0-255>
+
 Match time to live parameter, where 'eq' stands for 'equal'; 'gt' stands for
 'greater than', and 'lt' stands for 'less than'.
 ```
 ```{cfgcmd} set policy route6 rule <n> hop-limit <eq | gt | lt> <0-255>
+
 Match hop-limit parameter, where 'eq' stands for 'equal'; 'gt' stands for
 'greater than', and 'lt' stands for 'less than'.
 ```
@@ -277,28 +315,34 @@ setting a different routing table.
 ```{cfgcmd} set policy route <name> rule <n> action drop
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> action drop
+
 Set rule action to drop.
 ```
 ```{cfgcmd} set policy route <name> rule <n> set connection-mark
+
    <1-2147483647>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> set connection-mark
+
    <1-2147483647>
 Set a specific connection mark.
 ```
 ```{cfgcmd} set policy route <name> rule <n> set dscp <0-63>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> set dscp <0-63>
+
 Set packet modifications: Packet Differentiated Services Codepoint (DSCP)
 ```
 ```{cfgcmd} set policy route <name> rule <n> set mark <1-2147483647>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> set mark <1-2147483647>
+
 Set a specific packet mark.
 ```
 ```{cfgcmd} set policy route <name> rule <n> set table <main | 1-200>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> set table <main | 1-200>
+
 Set the routing table to forward packet with.
 
 .. note:: When using the ``set table`` or ``set vrf`` commands matching
@@ -308,11 +352,13 @@ Set the routing table to forward packet with.
 ```{cfgcmd} set policy route <name> rule <n> set tcp-mss <500-1460>
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> set tcp-mss <500-1460>
+
 Set packet modifications: Explicitly set TCP Maximum segment size value.
 ```
 ```{cfgcmd} set policy route <name> rule <n> set vrf <default | text >
 ```
 ```{cfgcmd} set policy route6 <name> rule <n> set vrf <default | text >
+
 Set the VRF to forward packet with.
 
 .. note:: When using the ``set table`` or ``set vrf`` commands matching

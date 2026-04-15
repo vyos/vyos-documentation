@@ -32,6 +32,7 @@ This approach is similar to the network interface naming conventions used in
 recent Linux distributions.
 
 ```{opcmd} show hardware usb
+
 Retrieve a tree-like representation of all connected USB devices.
 
 .. note:: If a device is unplugged and plugged in again, it is assigned a new
@@ -70,6 +71,7 @@ Retrieve a tree-like representation of all connected USB devices.
 % start_vyoslinter
 
 ```{opcmd} show hardware usb serial
+
 Retrieve a list and description of all connected USB serial devices. The
 device name displayed, (for example ``usb0b2.4p1.0``), can be used
 directly when accessing the serial console as console-server device.
@@ -105,6 +107,7 @@ directly when accessing the serial console as console-server device.
 # Version
 
 ```{opcmd} show version
+
 Return the currently running VyOS version and build information. This
 includes the name of the release train, e.g., ``sagitta`` on VyOS 1.4,
 and ``circinus`` on VyOS 1.5.
@@ -133,6 +136,7 @@ and ``circinus`` on VyOS 1.5.
   Copyright:        VyOS maintainers and contributors
 ```
 ```{opcmd} show version kernel
+
 Return the version number of the currently running Linux kernel.
 
 .. code-block:: none
@@ -141,6 +145,7 @@ Return the version number of the currently running Linux kernel.
   5.10.46-amd64-vyos
 ```
 ```{opcmd} show version frr
+
 Return the version number of FRR (Free Range Routing - https://frrouting.org/)
 used in this release. This is the routing control plane and a successor to GNU
 Zebra and Quagga.

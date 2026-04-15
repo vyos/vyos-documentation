@@ -35,10 +35,12 @@ multi-port switching with MAC learning and broadcast handling.
 ### Creating an XConnect Interface
 
 ```{cfgcmd} set interfaces vpp xconnect <vppxconN>
+
 Create an XConnect interface where ``<vppxconN>`` follows the naming
 convention ``vppxcon1``, ``vppxcon2``, etc.
 ```
 ```{cfgcmd} set interfaces vpp xconnect <vppxconN> member interface
+
    <interface-name>
 Add an interface as a member of the XConnect. Exactly two member
 interfaces must be configured to create bidirectional forwarding.
@@ -58,6 +60,7 @@ the other without any processing.
 ## Interface Configuration
 
 ```{cfgcmd} set interfaces vpp xconnect <vppxconN> description <description>
+
 Set a descriptive name for the XConnect interface.
 ```
 ## Configuration Examples

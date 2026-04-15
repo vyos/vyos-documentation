@@ -22,39 +22,48 @@ This allows avoiding the timers defined in BGP and OSPF protocol to expires.
 ## Configure BFD
 
 ```{cfgcmd} set protocols bfd peer <address>
+
 Set BFD peer IPv4 address or IPv6 address
 ```
 
 ```{cfgcmd} set protocols bfd peer <address> echo-mode
+
 Enables the echo transmission mode
 ```
 
 ```{cfgcmd} set protocols bfd peer <address> multihop
+
 Allow this BFD peer to not be directly connected
 ```
 
 ```{cfgcmd} set protocols bfd peer <address> source [address <address> | interface <interface>]
+
 Bind listener to specific interface/address, mandatory for IPv6
 ```
 
 ```{cfgcmd} set protocols bfd peer <address> interval echo-interval <10-60000>
+
 The minimal echo receive transmission interval that this system is
 capable of handling
 ```
 
 ```{cfgcmd} set protocols bfd peer <address> interval multiplier <2-255>
+
 Remote transmission interval will be multiplied by this value
 ```
 
 ```{cfgcmd} set protocols bfd peer <address> interval [receive | transmit] <10-60000>
+
 Interval in milliseconds
 ```
 
 ```{cfgcmd} set protocols bfd peer <address> shutdown
+
 Disable a BFD peer
 ```
 
 ```{cfgcmd} set protocols bfd peer <address> minimum-ttl <1-254>
+
 For multi hop sessions only. Configure the minimum expected TTL for an
 incoming BFD control packet.
 
@@ -65,10 +74,12 @@ requirements to avoid receiving BFD control packets from other sessions.
 ### Enable BFD in BGP
 
 ```{cfgcmd} set protocols bgp neighbor <neighbor> bfd
+
 Enable BFD on a single BGP neighbor
 ```
 
 ```{cfgcmd} set protocols bgp peer-group <neighbor> bfd
+
 Enable BFD on a BGP peer group
 ```
 ### Enable BFD in OSPF
@@ -181,6 +192,7 @@ but when the BFD session is down it is removed from the RIB.
 
 
 ```{cfgcmd} set protocols static route <subnet> next-hop <address>
+
 bfd profile <profile>
 
 
@@ -191,6 +203,7 @@ and use the gateway address as BFD peer destination address.
 
 
 ```{cfgcmd} set protocols static route <subnet> next-hop <address>
+
 bfd multi-hop source <address> profile <profile>
 
 
@@ -203,6 +216,7 @@ and the gateway address as BFD peer destination address.
 
 
 ```{cfgcmd} set protocols static route6 <subnet> next-hop <address>
+
 bfd profile <profile>
 
 
@@ -213,6 +227,7 @@ and use the gateway address as BFD peer destination address.
 
 
 ```{cfgcmd} set protocols static route6 <subnet> next-hop <address>
+
 bfd multi-hop source <address> profile <profile>
 
 
@@ -227,6 +242,7 @@ and the gateway address as BFD peer destination address.
 ## Operational Commands
 
 ```{opcmd} show bfd static routes
+
 Showing BFD monitored static routes
 
 .. code-block:: none

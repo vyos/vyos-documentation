@@ -386,6 +386,7 @@ Define it in your RADIUS server.
 
 
 ```{cfgcmd} set service ipoe-server client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
+
  mask <number-of-bits>
 
 
@@ -400,6 +401,7 @@ bit long, the default value is 64.
 
 
 ```{cfgcmd} set service ipoe-server client-ipv6-pool <IPv6-POOL-NAME> delegate <address>
+
  delegation-prefix <number-of-bits>
 
 
@@ -466,6 +468,7 @@ Script to run when session interface is completely configured and started
 
 
 ```{cfgcmd} set service ipoe-server authentication interface <interface> mac <MAC> vlan
+
  <vlan-id>
 
 
@@ -474,6 +477,7 @@ VLAN monitor for automatic creation of VLAN interfaces for specific user on spec
 
 
 ```{cfgcmd} set service ipoe-server authentication interface <interface> mac <MAC> rate-limit
+
  download <bandwidth>
 
 
@@ -482,6 +486,7 @@ Download bandwidth limit in kbit/s for user on interface `<interface>`.
 
 
 ```{cfgcmd} set service ipoe-server authentication interface <interface> mac <MAC> rate-limit
+
  upload <bandwidth>
 
 
@@ -522,34 +527,43 @@ Specifies relay agent IP addre
 ### Global Advanced options
 
 ```{cfgcmd} set service ipoe-server description <description>
+
 Set description.
 ```
 ```{cfgcmd} set service ipoe-server limits burst <value>
+
 Burst count
 ```
 ```{cfgcmd} set service ipoe-server limits connection-limit <value>
+
 Acceptable rate of connections (e.g. 1/min, 60/sec)
 ```
 ```{cfgcmd} set service ipoe-server limits timeout <value>
+
 Timeout in seconds
 ```
 ```{cfgcmd} set service ipoe-server max-concurrent-sessions
+
 Maximum number of concurrent session start attempts
 ```
 ```{cfgcmd} set service ipoe-server name-server <address>
+
 Connected client should use `<address>` as their DNS server. This
 command accepts both IPv4 and IPv6 addresses. Up to two nameservers
 can be configured for IPv4, up to three for IPv6.
 ```
 ```{cfgcmd} set service ipoe-server shaper fwmark <1-2147483647>
+
 Match firewall mark value
 ```
 ```{cfgcmd} set service ipoe-server snmp master-agent
+
 Enable SNMP
 ```
 ## Monitoring
 
 ```{opcmd} show ipoe-server sessions
+
 Use this command to locally check the active sessions in the IPoE
 server.
 ```

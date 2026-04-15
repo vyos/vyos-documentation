@@ -460,6 +460,7 @@ LDAP protocol version. Defaults to 3 if not specified.
 ```{include} /_include/need_improvement.txt
 ```
 ```{cfgcmd} set service webproxy url-filtering disable
+
 Disables web filtering without discarding configuration.
 
 .. code-block:: none
@@ -478,6 +479,7 @@ If you want to use existing blacklists you have to create/download a database
 first. Otherwise you will not be able to commit the config changes.
 
 ```{opcmd} update webproxy blacklists
+
 Download/Update complete blacklist
 
 .. code-block:: none
@@ -508,6 +510,7 @@ Download/Update complete blacklist
   vyos@vyos:~$
 ```
 ```{opcmd} update webproxy blacklists category <category>
+
 Download/Update partial blacklist.
 
 Use tab completion to get a list of categories.

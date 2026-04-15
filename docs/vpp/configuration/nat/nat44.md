@@ -149,6 +149,7 @@ range of public IP addresses that can be dynamically assigned to private
 hosts when they access external networks.
 
 ```{cfgcmd} set vpp nat nat44 address-pool translation address
+
    <ip-address | ip-address-range>
 ```
 ```{cfgcmd} set vpp nat nat44 address-pool translation interface <interface-name>
@@ -177,6 +178,7 @@ need to:
 - Implement advanced NAT scenarios like self-twice-nat
 
 ```{cfgcmd} set vpp nat nat44 address-pool twice-nat address
+
    <ip-address | ip-address-range>
 ```
 ```{cfgcmd} set vpp nat nat44 address-pool twice-nat interface <interface-name>
@@ -332,6 +334,7 @@ When using twice-nat, you can force the use of a specific IP address from
 the twice-nat address pool:
 
 ```{cfgcmd} set vpp nat nat44 static rule <rule-number> options twice-nat-address
+
    <ip-address>
 ```
 #### Rule Description
@@ -408,6 +411,7 @@ that should bypass NAT. You can configure exclude rules in two ways:
 **Option 2: Using external interface**
 
 ```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> external-interface
+
    <interface-name>
 ```
 Where:
@@ -441,6 +445,7 @@ You can combine port and protocol specifications with either `local-address` or
 **With external interface:**
 
 ```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> external-interface
+
    <interface-name>
 ```
 ```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> local-port <port-number>
@@ -550,17 +555,21 @@ NAT44 maintains translation sessions with configurable timeout values for
 different protocols:
 
 ```{cfgcmd} set vpp nat nat44 timeout icmp <seconds>
+
 Set the timeout for ICMP sessions (Default: 60 seconds).
 ```
 ```{cfgcmd} set vpp nat nat44 timeout tcp-established <seconds>
+
 Set the timeout for established TCP connections (Default: 7440 seconds
 or 2 hours 4 minutes).
 ```
 ```{cfgcmd} set vpp nat nat44 timeout tcp-transitory <seconds>
+
 Set the timeout for transitory TCP connections (setup/teardown) (Default:
 240 seconds or 4 minutes).
 ```
 ```{cfgcmd} set vpp nat nat44 timeout udp <seconds>
+
 Set the timeout for UDP sessions (Default: 300 seconds or 5 minutes).
 ```
 **Example:**
@@ -577,6 +586,7 @@ set vpp nat nat44 timeout icmp 30
 Control the maximum number of concurrent NAT sessions:
 
 ```{cfgcmd} set vpp nat nat44 session-limit <number>
+
 Set the maximum number of NAT sessions per worker thread (Default:
 64512).
 ```
@@ -715,17 +725,22 @@ Monitor NAT44 status and active connections using VyOS operational
 commands:
 
 ```{opcmd} show vpp nat nat44 addresses
+
 Display configured NAT44 address pools.
 ```
 ```{opcmd} show vpp nat nat44 interfaces
+
 Show which interfaces are configured as inside or outside for NAT44.
 ```
 ```{opcmd} show vpp nat nat44 sessions
+
 Display active NAT44 translation sessions.
 ```
 ```{opcmd} show vpp nat nat44 static
+
 Show all configured static NAT mappings.
 ```
 ```{opcmd} show vpp nat nat44 summary
+
 Display a summary of NAT44 and statistics.
 ```

@@ -243,41 +243,51 @@ Mode for authentication between VyOS and remote peer:
 * **x509** - Use certificates infrastructure for authentication.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> authentication local-id <id>
+
 ID for the local VyOS router. If defined, during the authentication
 it will be send to remote peer.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> authentication remote-id <id>
+
 ID for remote peer, instead of using peer name or
 address. Useful in case if the remote peer is behind NAT
 or if ``mode x509`` is used.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> authentication rsa local-key <key>
+
 Name of PKI key-pair with local private key.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> authentication rsa remote-key <key>
+
 Name of PKI key-pair with remote public key.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> authentication rsa passphrase <passphrase>
+
 Local private key passphrase.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> authentication use-x509-id <id>
+
 Use local ID from x509 certificate. Cannot be used when
 ``id`` is defined.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> authentication x509 ca-certificate <name>
+
 Name of CA certificate in PKI configuration. Using for authenticating
 remote peer in x509 mode.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> authentication x509 certificate <name>
+
 Name of certificate in PKI configuration, which will be used
 for authenticating local router on remote peer.
 ```
 ```{cfgcmd} set vpn ipsec authentication x509 passphrase <passphrase>
+
 Private key passphrase, if needed.
 ```
 ##### Global Peer Configuration Commands
 
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> connection-type <type>
+
 Operational mode defines how to handle this connection process.
 
 * **initiate** - does initial connection to remote peer immediately
@@ -311,31 +321,38 @@ Operational mode defines how to handle this connection process.
    Otherwise, the tunnel will not reconnect automatically if it goes down.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> default-esp-group <name>
+
 Name of ESP group to use by default for traffic encryption.
 Might be overwritten by individual settings for tunnel or VTI
 interface binding.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> description <description>
+
 Description for this peer.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> dhcp-interface <interface>
+
 Specify the interface which IP address, received from DHCP for IPSec
 connection with this peer, will be used as ``local-address``.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> force-udp-encapsulation
+
 Force encapsulation of ESP into UDP datagrams. Useful in case if
 between local and remote side is firewall or NAT, which not
 allows passing plain ESP packets between them.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> ike-group <name>
+
 Name of IKE group to use for key exchanges.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> local-address <address>
+
 Local IP address for IPsec connection with this peer.
 If defined ``any``, then an IP address which configured on interface with
 default route will be used.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> remote-address <address>
+
 Remote IP address or hostname for IPsec connection. IPv4 or IPv6
 address is used when a peer has a public static IP address. Hostname
 is a DNS name which could be used when a peer has a public IP
@@ -343,10 +360,12 @@ address and DNS name, but an IP address could be changed from time
 to time.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> replay-window <size>
+
 IPsec replay window to configure for CHILD_SAs
 (default: 32), a value of 0 disables IPsec replay protection.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> virtual-address <address>
+
 Defines a virtual IP address which is requested by the initiator and
 one or several IPv4 and/or IPv6 addresses are assigned from multiple
 pools by the responder. The wildcard addresses 0.0.0.0 and ::
@@ -359,30 +378,38 @@ request an arbitrary address, specific addresses may be defined.
 Every configured tunnel under peer configuration is a new CHILD SA.
 
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> tunnel <number> disable
+
 Disable this tunnel.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> tunnel <number> esp-group <name>
+
 Specify ESP group for this CHILD SA.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> tunnel <number> priority <number>
+
 Priority for policy-based IPsec VPN tunnels (lowest value more
 preferable).
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> tunnel <number> protocol <name>
+
 Define the protocol for match traffic, which should be encrypted and
 send to this peer.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> tunnel <number> local prefix <network>
+
 IP network at the local side.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> tunnel <number> local port <number>
+
 Local port number. Have effect only when used together with
 ``prefix``.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> tunnel <number> remote prefix <network>
+
 IP network at the remote side.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> tunnel <number> remote port <number>
+
 Remote port number. Have effect only when used together with
 ``prefix``.
 ```
@@ -406,66 +433,84 @@ set vpn ipsec options disable-route-autoinstall
 ```
 
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> vti bind <interface>
+
 VTI interface to bind to this peer.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> vti esp-group <name>
+
 ESP group for encrypt traffic, passed this VTI interface.
 ```
 Traffic-selectors parameters for traffic that should pass via vti
 interface.
 
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> vti traffic-selector local prefix <network>
+
 Local prefix for interesting traffic.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> vti traffic-selector remote prefix <network>
+
 Remote prefix for interesting traffic.
 ```
 ### IPsec Op-mode Commands
 
 ```{opcmd} show vpn ike sa
+
 Shows active IKE SAs information.
 ```
 ```{opcmd} show vpn ike secrets
+
 Shows configured authentication keys.
 ```
 ```{opcmd} show vpn ike status
+
 Shows Strongswan daemon status.
 ```
 ```{opcmd} show vpn ipsec connections
+
 Shows summary status of all configured IKE and IPsec SAs.
 ```
 ```{opcmd} show vpn ipsec sa [detail]
+
 Shows active IPsec SAs information.
 ```
 ```{opcmd} show vpn ipsec status
+
 Shows status of IPsec process.
 ```
 ```{opcmd} show vpn ipsec policy
+
 Shows the in-kernel crypto policies.
 ```
 ```{opcmd} show vpn ipsec state
+
 Shows the in-kernel crypto state.
 ```
 ```{opcmd} show log ipsec
+
 Shows IPsec logs.
 ```
 ```{opcmd} reset vpn ipsec site-to-site all
+
 Clear all ipsec connection and reinitiate them if VyOS is configured
 as initiator.
 ```
 ```{opcmd} reset vpn ipsec site-to-site peer <name>
+
 Clear all peer IKE SAs with IPsec SAs and reinitiate them if VyOS is
 configured as initiator.
 ```
 ```{opcmd} reset vpn ipsec site-to-site peer <name> tunnel <number>
+
 Clear scpecific IPsec SA and reinitiate it if VyOS is configured as
 initiator.
 ```
 ```{opcmd} reset vpn ipsec site-to-site peer <name> vti <number>
+
 Clear IPsec SA which is map to vti interface of this peer and
 reinitiate it if VyOS is configured as initiator.
 ```
 ```{opcmd} restart ipsec
+
 Restart Strongswan daemon.
 ```
 ## Examples:

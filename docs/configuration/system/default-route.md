@@ -16,11 +16,13 @@ to the nexthop address `<address>`.
 
 ```
 ```{cfgcmd} delete protocols static route 0.0.0.0/0
+
 Delete default route from the system.
 ```
 ## Operation
 
 ```{opcmd} show ip route 0.0.0.0
+
 Show routing table entry for the default route.
 
 .. code-block:: none

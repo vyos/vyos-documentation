@@ -39,6 +39,7 @@ main heap plays a significant role in this.
 It can be configured using the following command:
 
 ```{cfgcmd} set vpp settings resource-allocation memory main-heap-page-size
+
    <size>
 ```
 Sets the main heap page size for VPP.

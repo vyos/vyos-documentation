@@ -133,6 +133,7 @@ To roll back to a previous image, first view the available images by using the
 command:
 
 ```{opcmd} set system image default-boot [image-name]
+
 Select the default boot image which will be started on the next boot
 of the system.
 ```

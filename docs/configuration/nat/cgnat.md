@@ -155,12 +155,15 @@ set nat cgnat rule 10 translation pool 'ext-01'
 ## Operation commands
 
 ```{opcmd} show nat cgnat allocation
+
 Show address and port allocations
 ```
 ```{opcmd} show nat cgnat allocation external-address <address>
+
 Show all allocations for an external IP address
 ```
 ```{opcmd} show nat cgnat allocation internal-address <address>
+
 Show all allocations for an internal IP address
 ```
 ### Show CGNAT allocations

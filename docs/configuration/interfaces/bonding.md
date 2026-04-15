@@ -27,6 +27,7 @@ monitoring.
 ### Member interfaces
 
 ```{cfgcmd} set interfaces bonding <interface> member interface <member>
+
 **Add an interface to the bonding group.**
 
 **Example:**
@@ -47,6 +48,7 @@ set interfaces bonding bond0 member interface eth1
 ### Bond modes
 
 ```{cfgcmd} set interfaces bonding <interface> mode <802.3ad | active-backup |
+
 broadcast | round-robin | transmit-load-balance | adaptive-load-balance |
 
 xor-hash>
@@ -235,6 +237,7 @@ without the :abbr:`LACP (Link Aggregation Control Protocol)`.
 ```
 
 ```{cfgcmd} set interfaces bonding <interface> min-links <0-16>
+
 **Configure how many member interfaces must be active (in the link-up state) to
 
 mark the bonding interface UP (carrier asserted).**
@@ -265,6 +268,7 @@ the bonding interface is marked UP (carrier asserted).
 ```
 
 ```{cfgcmd} set interfaces bonding <interface> lacp-rate <slow|fast>
+
 **Configure the rate at which the bonding interface requests its link
 
 partner to send** :abbr:`LACPDUs (Link Aggregation Control Protocol Data
@@ -1066,6 +1070,7 @@ Show brief interface information.
   bond0.100        10.10.10.1/24                     u/u  management-net
 ```
 ```{opcmd} show interfaces bonding <interface>
+
 Show detailed interface information.
 
 .. code-block:: none
@@ -1082,6 +1087,7 @@ Show detailed interface information.
                0        0       0        0        0           0
 ```
 ```{opcmd} show interfaces bonding <interface> detail
+
 Show detailed information about the underlying physical links on the given
 bonding interface.
 

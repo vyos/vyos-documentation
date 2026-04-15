@@ -19,6 +19,7 @@ packet processing.
 ### Creating a Loopback Interface
 
 ```{cfgcmd} set interfaces vpp loopback <vpploN>
+
 Create a loopback interface where ``<vpploN>`` follows the naming
 convention ``vpplo1``, ``vpplo2``, etc.
 ```
@@ -33,9 +34,11 @@ set interfaces vpp loopback vpplo1
 ### Description and Administrative Control
 
 ```{cfgcmd} set interfaces vpp loopback <vpploN> description <description>
+
 Set a descriptive name for the loopback interface.
 ```
 ```{cfgcmd} set interfaces vpp loopback <vpploN> disable
+
 Administratively disable the loopback interface.
 ```
 ### Kernel Interface Integration
@@ -46,6 +49,7 @@ and application compatibility.
 ## IP Address Configuration
 
 ```{cfgcmd} set interfaces vpp loopback <vpploN> address <ip-address/prefix>
+
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
 addresses can be assigned.
 ```
@@ -62,6 +66,7 @@ set interfaces vpp loopback vpplo1 address 2001:db8::10/64
 ## MTU Configuration
 
 ```{cfgcmd} set interfaces vpp loopback <vpploN> mtu <size>
+
 Set the Maximum Transmission Unit (MTU) for the kernel interface.
 The MTU must be compatible with the connected VPP interface.
 ```
@@ -73,6 +78,7 @@ segmentation.
 ### Creating VLAN Sub-interfaces
 
 ```{cfgcmd} set interfaces vpp loopback <vpploN> vif <vlan-id>
+
 Create a VLAN sub-interface with the specified VLAN ID (0-4094).
 ```
 ### VLAN Sub-interface Configuration
@@ -81,9 +87,11 @@ VLAN sub-interfaces support the same configuration options as the parent
 interface:
 
 ```{cfgcmd} set interfaces vpp loopback <vpploN> vif <vlan-id> address
+
    <ip-address/prefix>
 ```
 ```{cfgcmd} set interfaces vpp loopback <vpploN> vif <vlan-id> description
+
    <description>
 ```
 ```{cfgcmd} set interfaces vpp loopback <vpploN> vif <vlan-id> disable

@@ -190,17 +190,20 @@ This command specifies the maximum RTT, in milliseconds, above which
 we don't increase the cost to a neighbour. The default is 120 ms.
 ```
 ```{cfgcmd} set protocols babel interface <interface> max-rtt-penalty <milliseconds>
+
 This command specifies the maximum cost added to a neighbour because of RTT,
 i.e. when the RTT is higher or equal than rtt-max.
 The default is 150.
 Setting it to 0 effectively disables the use of a RTT-based cost.
 ```
 ```{cfgcmd} set protocols babel interface <interface> enable-timestamps
+
 This command enables sending timestamps with each Hello and IHU message
 in order to compute RTT values.
 It is recommended to enable timestamps on tunnel interfaces.
 ```
 ```{cfgcmd} set protocols babel interface <interface> channel <1-254|interfering|noninterfering>
+
 This command set the channel number that diversity routing uses for this
 interface (see diversity option above).
 
@@ -214,6 +217,7 @@ with themselves.
 ## Redistribution Configuration
 
 ```{cfgcmd} set protocols babel redistribute <ipv4|ipv6> <route source>
+
 This command redistributes routing information from the given route source
 to the Babel process.
 
@@ -222,20 +226,24 @@ IPv4 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospf, rip, static.
 IPv6 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospfv3, ripng, static.
 ```
 ```{cfgcmd} set protocols babel distribute-list <ipv4|ipv6> access-list <in|out> <number>
+
 This command can be used to filter the Babel routes using access lists.
 :cfgcmd:`in` and :cfgcmd:`out` this is the direction in which the access
 lists are applied.
 ```
 ```{cfgcmd} set protocols babel distribute-list <ipv4|ipv6> interface <interface> access-list <in|out> <number>
+
 This command allows you apply access lists to a chosen interface to
 filter the Babel routes.
 ```
 ```{cfgcmd} set protocols babel distribute-list <ipv4|ipv6> prefix-list <in|out> <name>
+
 This command can be used to filter the Babel routes using prefix lists.
 :cfgcmd:`in` and :cfgcmd:`out` this is the direction in which the prefix
 lists are applied.
 ```
 ```{cfgcmd} set protocols babel distribute-list <ipv4|ipv6> interface <interface> prefix-list <in|out> <name>
+
 This command allows you apply prefix lists to a chosen interface to
 filter the Babel routes.
 ```

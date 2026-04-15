@@ -33,17 +33,21 @@ database. Information that may be retrieved include:
 ## Configuration
 
 ```{cfgcmd} set service lldp
+
 Enable LLDP service
 ```
 ```{cfgcmd} set service lldp management-address <address>
+
 Define IPv4/IPv6 management address transmitted via LLDP. Multiple addresses
 can be defined. Only addresses connected to the system will be transmitted.
 ```
 ```{cfgcmd} set service lldp interface <interface>
+
 Enable transmission of LLDP information on given `<interface>`. You can also
 say ``all`` here so LLDP is turned on on every interface.
 ```
 ```{cfgcmd} set service lldp interface <interface> mode [disable|rx-tx|rx|tx]
+
 Configure the administrative status of the given port.
 
 By default, all ports are configured to be in rx-tx mode. This means they
@@ -54,9 +58,11 @@ any frames. In disabled mode, no frame will be sent and any incoming frame
 will be discarded.
 ```
 ```{cfgcmd} set service lldp snmp
+
 Enable SNMP queries of the LLDP database
 ```
 ```{cfgcmd} set service lldp legacy-protocols <cdp|edp|fdp|sonmp>
+
 Enable given legacy protocol on this LLDP instance. Legacy protocols include:
 
 * ``cdp`` - Listen for CDP for Cisco routers/switches
@@ -67,6 +73,7 @@ Enable given legacy protocol on this LLDP instance. Legacy protocols include:
 ## Operation
 
 ```{opcmd} show lldp neighbors
+
 Displays information about all neighbors discovered via LLDP.
 
 .. code-block:: none
@@ -82,6 +89,7 @@ Displays information about all neighbors discovered via LLDP.
   SW1.vyos.net              eth0      LLDP   B     Cisco IOS Software   GigabitEthernet0/6
 ```
 ```{opcmd} show lldp neighbors detail
+
 Get detailed information about LLDP neighbors.
 
 .. code-block:: none
@@ -128,8 +136,10 @@ Get detailed information about LLDP neighbors.
   -------------------------------------------------------------------------------
 ```
 ```{opcmd} show lldp neighbors interface <interface>
+
 Show LLDP neighbors connected via interface `<interface>`.
 ```
 ```{opcmd} show log lldp
+
 Used for troubleshooting.
 ```

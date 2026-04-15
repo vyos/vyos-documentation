@@ -163,6 +163,7 @@ router. It is described in :rfc:`3787`.
 
 
 ```{cfgcmd} set protocols isis default-information originate <ipv4|ipv6>
+
 level-1
 
 
@@ -171,6 +172,7 @@ This command will generate a default-route in L1 database.
 
 
 ```{cfgcmd} set protocols isis default-information originate <ipv4|ipv6>
+
 level-2
 
 
@@ -198,6 +200,7 @@ synchronization during convergence/interface flap events.
 #### Interface Configuration
 
 ```{cfgcmd} set protocols isis interface <interface> circuit-type
+
   <level-1|level-1-2|level-2-only>
 
   This command specifies circuit type for interface:
@@ -213,6 +216,7 @@ synchronization during convergence/interface flap events.
 
 
 ```{cfgcmd} set protocols isis interface <interface> hello-interval
+
 <seconds>
 
 
@@ -223,6 +227,7 @@ The range is 1 to 600.
 
 
 ```{cfgcmd} set protocols isis interface <interface> hello-multiplier
+
 <seconds>
 
 
@@ -256,6 +261,7 @@ or wide value).
 
 
 ```{cfgcmd} set protocols isis interface <interface> network
+
 point-to-point
 
 
@@ -272,6 +278,7 @@ This command configures the passive mode for this interface.
 
 
 ```{cfgcmd} set protocols isis interface <interface> password
+
 plaintext-password <text>
 
 
@@ -290,6 +297,7 @@ range is 0 to 127.
 
 
 ```{cfgcmd} set protocols isis interface <interface> psnp-interval
+
 <number>
 
 
@@ -300,6 +308,7 @@ to 127.
 
 
 ```{cfgcmd} set protocols isis interface <interface>
+
 no-three-way-handshake
 
 
@@ -316,6 +325,7 @@ This command disables IGP-LDP sync for this specific interface.
 
 
 ```{cfgcmd} set protocols isis interface <interface> ldp-sync holddown
+
  <seconds>
 
 
@@ -389,6 +399,7 @@ source: bgp, connected, kernel, ospf, rip, static.
 
 
 ```{cfgcmd} set protocols isis redistribute ipv4 <route source>
+
 <level-1|level-2> metric <number>
 
 
@@ -401,6 +412,7 @@ kernel, ospf, rip, static. The metric range is 1 to 16777215.
 
 
 ```{cfgcmd} set protocols isis redistribute ipv4 <route source>
+
 <level-1|level-2> route-map <name>
 
 
@@ -413,10 +425,12 @@ bgp, connected, kernel, ospf, rip, static.
 #### Timers
 
 ```{cfgcmd} set protocols isis lsp-gen-interval <seconds>
+
 This command sets minimum interval in seconds between regenerating same
 LSP. The interval range is 1 to 120.
 ```
 ```{cfgcmd} set protocols isis lsp-refresh-interval <seconds>
+
 This command sets LSP refresh interval in seconds. IS-IS generates LSPs
 when the state of a link changes. However, to ensure that routing
 databases on all routers remain converged, LSPs in stable networks are
@@ -425,6 +439,7 @@ the state of the links. The interval range is 1 to 65235. The default
 value is 900 seconds.
 ```
 ```{cfgcmd} set protocols isis max-lsp-lifetime <seconds>
+
 This command sets LSP maximum LSP lifetime in seconds. The interval range
 is 350 to 65535. LSPs remain in a database for 1200 seconds by default.
 If they are not refreshed by that time, they are deleted. You can change
@@ -433,21 +448,26 @@ should be less than the LSP lifetime or else LSPs will time out before
 they are refreshed.
 ```
 ```{cfgcmd} set protocols isis spf-interval <seconds>
+
 This command sets minimum interval between consecutive SPF calculations in
 seconds.The interval range is 1 to 120.
 ```
 ```{cfgcmd} set protocols isis spf-delay-ietf holddown <milliseconds>
 ```
 ```{cfgcmd} set protocols isis spf-delay-ietf init-delay
+
   <milliseconds>
 ```
 ```{cfgcmd} set protocols isis spf-delay-ietf long-delay
+
   <milliseconds>
 ```
 ```{cfgcmd} set protocols isis spf-delay-ietf short-delay
+
   <milliseconds>
 ```
 ```{cfgcmd} set protocols isis spf-delay-ietf time-to-learn
+
   <milliseconds>
 This commands specifies the Finite State Machine (FSM) intended to
 control the timing of the execution of SPF calculations in response
@@ -456,22 +476,26 @@ to IGP events. The process described in :rfc:`8405`.
 #### Loop Free Alternate (LFA)
 
 ```{cfgcmd} set protocols isis fast-reroute lfa remote prefix-list <name>
+
   <level-1|level-2>
 This command enables IP fast re-routing that is part of :rfc:`5286`.
 Specifically this is a prefix list which references a prefix in which
 will select eligible PQ nodes for remote LFA backups.
 ```
 ```{cfgcmd} set protocols isis fast-reroute lfa local load-sharing disable
+
   <level-1|level-2>
 This command disables the load sharing across multiple LFA backups.
 ```
 ```{cfgcmd} set protocols isis fast-reroute lfa local tiebreaker
+
   <downstream|lowest-backup-metric|node-protecting> index <number>
   <level-1|level-2>
 This command will configure a tie-breaker for multiple local LFA backups.
 The lower index numbers will be processed first.
 ```
 ```{cfgcmd} set protocols isis fast-reroute lfa local priority-limit
+
   <medium|high|critical> <level-1|level-2>
 This command will limit LFA backup computation up to the specified
 prefix priority.
@@ -479,17 +503,20 @@ prefix priority.
 #### Segment Routing over IPv6 (SRv6)
 
 ```{cfgcmd} set protocols isis segment-routing srv6 interface <interface>
+
 The :ref:`dummy interface<configuration/interfaces/dummy:dummy>` used
 to install SRv6 SIDs into the Linux data plane. The interface must exist and
 must be present when configuring IS-IS with
 SRv6.
 ```
 ```{cfgcmd} set protocols isis segment-routing srv6 locator <locator>
+
 Specifies the SRv6 locator to use for IS-IS. IS-IS automatically allocates
 prefix and adjacency SIDs, creates local SID entries and advertises them
 into the IGP domain.
 ```
 ```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-end-d <0-255>
+
 The Maximum End D MSD Type specifies the maximum number of SIDs present in an
 SRH when performing decapsulation. As specified in :rfc:`8986`, the permitted
 SID types include, but are not limited to, End.DX6, End.DT4, End.DT46, End
@@ -502,6 +529,7 @@ inner packet if the outer IPv6 header contains an SRH.
 Reference: :rfc:`9352`
 ```
 ```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-end-pop <0-255>
+
 The Maximum End Pop MSD Type signals the maximum number of SIDs in the SRH to
 which the router can apply "Penultimate Segment Pop (PSP) of the SRH" or
 "Ultimate Segment Pop (USP) of the SRH" behavior, as defined in "Flavors"
@@ -513,6 +541,7 @@ cannot apply PSP or USP flavors.
 Reference: :rfc:`9352`
 ```
 ```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-h-encaps <0-255>
+
 The Maximum H.Encaps MSD Type signals the maximum number of SIDs that can be
 added to the segment list of an SRH as part of the "H.Encaps" behavior, as
 defined in :rfc:`8986`.
@@ -525,6 +554,7 @@ insert an SRH up to the advertised number of SIDs.
 Reference: :rfc:`9352`
 ```
 ```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-segs-left <0-255>
+
 The Maximum Segments Left MSD Type signals the maximum value of the
 "Segments Left" field (:rfc:`8754`) in the SRH of a received packet before
 applying the Endpoint behavior associated with a SID.

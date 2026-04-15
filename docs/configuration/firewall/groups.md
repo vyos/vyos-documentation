@@ -18,9 +18,11 @@ as inbound or outbound in the case of interface groups.
 An **address group** contains a single IP address or IP address range.
 
 ```{cfgcmd} set firewall group address-group <name> address [address |
+
    address range]
 ```
 ```{cfgcmd} set firewall group ipv6-address-group <name> address <address>
+
 Define an IPv4 or IPv6 address group.
 
 .. code-block:: none
@@ -32,6 +34,7 @@ Define an IPv4 or IPv6 address group.
 ```{cfgcmd} set firewall group address-group <name> description <text>
 ```
 ```{cfgcmd} set firewall group ipv6-address-group <name> description <text>
+
 Provide an IPv4 or IPv6 address group description.
 ```
 ### Remote Groups
@@ -43,10 +46,12 @@ and loads matching entries into the group for use in rules. The list is cached
 in persistent storage, so rules continue to function if updates fail.
 
 ```{cfgcmd} set firewall group remote-group <name> url <http(s) url>
+
 Specify a remote list of IPv4 and/or IPv6 addresses, ranges, and CIDRs
 to fetch.
 ```
 ```{cfgcmd} set firewall group remote-group <name> description <text>
+
 Set a description for a remote group.
 ```
 The remote list format is flexible. VyOS attempts to parse the first word of
@@ -73,6 +78,7 @@ networks, use a network group.
 ```{cfgcmd} set firewall group network-group <name> network <CIDR>
 ```
 ```{cfgcmd} set firewall group ipv6-network-group <name> network <CIDR>
+
 Define an IPv4 or IPv6 network group.
 
 .. code-block:: none
@@ -84,6 +90,7 @@ Define an IPv4 or IPv6 network group.
 ```{cfgcmd} set firewall group network-group <name> description <text>
 ```
 ```{cfgcmd} set firewall group ipv6-network-group <name> description <text>
+
 Provide an IPv4 or IPv6 network group description.
 ```
 ### Interface Groups
@@ -91,6 +98,7 @@ Provide an IPv4 or IPv6 network group description.
 An **interface group** represents a collection of interfaces.
 
 ```{cfgcmd} set firewall group interface-group <name> interface <text>
+
 Define an interface group.
 Wildcard ``*`` is supported. For example: ``eth3*``.
 Prepend the character ``!`` to invert the criteria. For example: ``!eth2``.
@@ -101,6 +109,7 @@ set firewall group interface-group LAN interface eth3*
 ```
 
 ```{cfgcmd} set firewall group interface-group <name> description <text>
+
 Provide an interface group description.
 ```
 ### Port Groups
@@ -111,6 +120,7 @@ separately to avoid accidentally filtering unnecessary ports. Specify port
 ranges by using `-`.
 
 ```{cfgcmd} set firewall group port-group <name> port
+
    [portname | portnumber | startport-endport]
 Define a port group. A port name can be any name defined in
 /etc/services. For example, ``http``.
@@ -122,6 +132,7 @@ Define a port group. A port name can be any name defined in
    set firewall group port-group PORT-TCP-SERVER1 port 5000-5010
 ```
 ```{cfgcmd} set firewall group port-group <name> description <text>
+
 Provide a port group description.
 ```
 ### MAC Groups
@@ -129,6 +140,7 @@ Provide a port group description.
 A **mac group** represents a collection of mac addresses.
 
 ```{cfgcmd} set firewall group mac-group <name> mac-address <mac-address>
+
 Define a mac group.
 ```
 ```none
@@ -137,6 +149,7 @@ set firewall group mac-group MAC-G01 mac-address 4c:d5:77:c0:19:81
 ```
 
 ```{cfgcmd} set firewall group mac-group <name> description <text>
+
 Provide a MAC group description.
 ```
 ### Domain Groups
@@ -144,6 +157,7 @@ Provide a MAC group description.
 A **domain group** represents a collection of domains.
 
 ```{cfgcmd} set firewall group domain-group <name> address <domain>
+
 Define a domain group.
 ```
 ```none
@@ -151,6 +165,7 @@ set firewall group domain-group DOM address example.com
 ```
 
 ```{cfgcmd} set firewall group domain-group <name> description <text>
+
 Provide a domain group description.
 ```
 ### Dynamic Groups
@@ -172,9 +187,11 @@ commands to define dynamic IPv4 and IPv6 address groups:
 Add description to firewall groups:
 
 ```{cfgcmd} set firewall group dynamic-group address-group <name>
+
    description <text>
 ```
 ```{cfgcmd} set firewall group dynamic-group ipv6-address-group <name>
+
    description <text>
 ```
 #### Adding elements to Dynamic Firewall Groups
@@ -187,29 +204,37 @@ Commands used for this task are:
 - Add destination IP address of the connection to a dynamic address group:
 
 ```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule
+
    <1-999999> add-address-to-group destination-address address-group <name>
 ```
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999> add-address-to-group
+
    destination-address address-group <name>
 ```
 ```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule
+
    <1-999999> add-address-to-group destination-address address-group <name>
 ```
 ```{cfgcmd} set firewall ipv6 name <name> rule <1-999999> add-address-to-group
+
    destination-address address-group <name>
 ```
 - Add source IP address of the connection to a dynamic address group:
 
 ```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule
+
    <1-999999> add-address-to-group source-address address-group <name>
 ```
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999> add-address-to-group
+
    source-address address-group <name>
 ```
 ```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule
+
    <1-999999> add-address-to-group source-address address-group <name>
 ```
 ```{cfgcmd} set firewall ipv6 name <name> rule <1-999999> add-address-to-group
+
    source-address address-group <name>
 ```
 You can define specific timeouts per rule. When a rule matches, the source or
@@ -219,17 +244,21 @@ in the group until the next reboot or until you commit firewall configuration
 changes.
 
 ```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule
+
    <1-999999> add-address-to-group [destination-address | source-address]
    timeout <timeout>
 ```
 ```{cfgcmd} set firewall ipv4 name <name> rule <1-999999> add-address-to-group
+
    [destination-address | source-address] timeout <timeout>
 ```
 ```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule
+
    <1-999999> add-address-to-group [destination-address | source-address]
    timeout <timeout>
 ```
 ```{cfgcmd} set firewall ipv6 name <name> rule <1-999999> add-address-to-group
+
    [destination-address | source-address] timeout <timeout>
 ```
 Timeout can be defined using seconds, minutes, hours or days:
@@ -409,6 +438,7 @@ With this configuration, to gain SSH access to the router, the user must:
 ```{opcmd} show firewall group
 ```
 ```{opcmd} show firewall group <name>
+
 Display an overview of defined groups, including the firewall group name,
 type, references (where the group is used), members, timeout, and
 expiration (the last two only apply to dynamic firewall groups).

@@ -15,27 +15,33 @@ support 99 IDs!
 ## Configuration
 
 ```{cfgcmd} set service broadcast-relay id <n> description <description>
+
 A description can be added for each and every unique relay ID. This is
 useful to distinguish between multiple different ports/applications.
 ```
 ```{cfgcmd} set service broadcast-relay id <n> interface <interface>
+
 The interface used to receive and relay individual broadcast packets. If you
 want to receive/relay packets on both `eth1` and `eth2` both interfaces need
 to be added.
 ```
 ```{cfgcmd} set service broadcast-relay id <n> address <ipv4-address>
+
 Set the source IP of forwarded packets, otherwise original senders address
 is used.
 ```
 ```{cfgcmd} set service broadcast-relay id <n> port <port>
+
 The UDP port number used by your application. It is mandatory for this kind
 of operation.
 ```
 ```{cfgcmd} set service broadcast-relay id <n> disable
+
 Each broadcast relay instance can be individually disabled without deleting
 the configured node by using the following command:
 ```
 ```{cfgcmd} set service broadcast-relay disable
+
 In addition you can also disable the whole service without the need to remove
 it from the current configuration.
 ```

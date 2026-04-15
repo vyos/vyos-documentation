@@ -14,6 +14,7 @@ access to the console is the only way to diagnose and correct software failures.
 Major upgrades to the installed distribution may also require console access.
 
 ```{cfgcmd} set system console device <device>
+
 Defines the specified device as a system console. Available console devices
 can be (see completion helper):
 
@@ -22,6 +23,7 @@ can be (see completion helper):
 * ``hvc0`` - Xen console
 ```
 ```{cfgcmd} set system console device <device> speed <speed>
+
 The speed (baudrate) of the console device. Supported values are:
 
 * ``1200`` - 1200 bps

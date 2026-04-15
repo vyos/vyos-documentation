@@ -7,12 +7,15 @@ This chapter describe the possibilities of advanced system behavior.
 ## General
 
 ```{cfgcmd} set system option ctrl-alt-delete <ignore | reboot | poweroff>
+
 Action which will be run once the ctrl-alt-del keystroke is received.
 ```
 ```{cfgcmd} set system option reboot-on-panic
+
 Automatically reboot system on kernel panic after 60 seconds.
 ```
 ```{cfgcmd} set system option reboot-on-upgrade-failure <timeout>
+
 Automatically reboot after `timeout` minutes into the previous running
 image, that was used to perform the image upgrade.
 
@@ -22,15 +25,18 @@ to log into the system and perform some analysis before automatic rebooting.
 Automatic reboot can be cancelled after login using: :opcmd:`reboot cancel`
 ```
 ```{cfgcmd} set system option startup-beep
+
 Play an audible beep to the system speaker when system is ready.
 ```
 ```{cfgcmd} set system option root-partition-auto-resize
+
 Enables the root partition auto-extension and resizes to the maximum
 available space on system boot.
 ```
 ### Kernel
 
 ```{cfgcmd} set system option kernel disable-mitigations
+
 Disable all optional CPU mitigations. This improves system performance,
 but it may also expose users to several CPU vulnerabilities.
 
@@ -41,6 +47,7 @@ This will add the following option to the Kernel commandline:
 .. note:: Setting will only become active with the next reboot!
 ```
 ```{cfgcmd} set system option kernel disable-power-saving
+
 This will add the following two options to the Kernel commandline:
 
 * ``intel_idle.max_cstate=0`` Disable intel_idle and fall back on acpi_idle
@@ -49,6 +56,7 @@ This will add the following two options to the Kernel commandline:
 .. note:: Setting will only become active with the next reboot!
 ```
 ```{cfgcmd} set system option kernel amd-pstate-driver <mode>
+
 Enables and configures p-state driver for modern AMD Ryzen and Epyc CPUs.
 
 The available modes are:
@@ -70,16 +78,19 @@ This will add the following two options to the Kernel commandline:
 .. seealso:: https://docs.kernel.org/admin-guide/pm/amd-pstate.html
 ```
 ```{cfgcmd} set system option kernel quiet
+
 Suppress most kernel messages during boot. This is useful for systems with
 embedded serial console interfaces to speed up the boot process.
 ```
 ## HTTP client
 
 ```{cfgcmd} set system option http-client source-address <address>
+
 Several commands utilize cURL to initiate transfers. Configure the local
 source IPv4/IPv6 address used for all cURL operations.
 ```
 ```{cfgcmd} set system option http-client source-interface <interface>
+
 Several commands utilize curl to initiate transfers. Configure the local
 source interface used for all CURL operations.
 ```
@@ -91,10 +102,12 @@ time.
 ## SSH client
 
 ```{cfgcmd} set system option ssh-client source-address <address>
+
 Use the specified address on the local machine as the source address of the
 connection. Only useful on systems with more than one address.
 ```
 ```{cfgcmd} set system option ssh-client source-interface <interface>
+
 Use the address of the specified interface on the local machine as the
 source address of the connection.
 ```
@@ -105,6 +118,7 @@ layout defaults to US. As this might not suite everyone's use case you can adjus
 the used keyboard layout on the system console.
 
 ```{cfgcmd} set system option keyboard-layout <us | fr | de | fi | no | dk>
+
 Change system keyboard layout to given language.
 
 Defaults to ``us``.
@@ -133,6 +147,7 @@ We now utilize `tuned` for dynamic resource balancing based on profiles.
 % start_vyoslinter
 
 ```{cfgcmd} set system option performance < throughput | latency >
+
 Configure one of the predefined system performance profiles.
 
 * ``throughput``: A server profile focused on improving network throughput.

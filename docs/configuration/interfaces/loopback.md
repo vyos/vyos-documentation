@@ -28,6 +28,7 @@ interface type.
 ## Operation
 
 ```{opcmd} show interfaces loopback
+
 Show brief interface information.
 
 .. code-block:: none
@@ -40,6 +41,7 @@ Show brief interface information.
                    ::1/128
 ```
 ```{opcmd} show interfaces loopback lo
+
 Show detailed interface information.
 
 .. code-block:: none

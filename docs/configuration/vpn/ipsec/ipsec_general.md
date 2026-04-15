@@ -146,6 +146,7 @@ but optional, and `req` is configured and required. The in use will show yes
 VyOS IKE group has the next options:
 
 ```{cfgcmd} set vpn ipsec ike-group <name> close-action <action>
+
  Defines the action to take if the remote peer unexpectedly
  closes a CHILD_SA:
 
@@ -158,6 +159,7 @@ VyOS IKE group has the next options:
 ```
 
 ```{cfgcmd} set vpn ipsec ike-group <name> ikev2-reauth
+
 Whether rekeying of an IKE_SA should also reauthenticate
 the peer. In IKEv1, reauthentication is always done.
 Setting this parameter enables remote host re-authentication
@@ -165,6 +167,7 @@ during an IKE rekey.
 ```
 
 ```{cfgcmd} set vpn ipsec ike-group <name> key-exchange
+
  Which protocol should be used to initialize the connection
  If not set both protocols are handled and connections will
  use IKEv2 when initiating, but accept any protocol version
@@ -175,10 +178,12 @@ during an IKE rekey.
 ```
 
 ```{cfgcmd} set vpn ipsec ike-group <name> lifetime
+
 IKE lifetime in seconds <0-86400> (default 28800).
 ```
 
 ```{cfgcmd} set vpn ipsec ike-group <name> mode
+
  IKEv1 Phase 1 Mode Selection:
 
 * **main** - Use Main mode for Key Exchanges in the IKEv1 Protocol
@@ -188,18 +193,22 @@ IKE lifetime in seconds <0-86400> (default 28800).
 ```
 
 ```{cfgcmd} set vpn ipsec ike-group <name> proposal <number> dh-group <dh-group number>
+
 Dh-group. Default value is **2**.
 ```
 
 ```{cfgcmd} set vpn ipsec ike-group <name> proposal <number> encryption <encryption>
+
 Encryption algorithm. Default value is **aes128**.
 ```
 
 ```{cfgcmd} set vpn ipsec ike-group <name> proposal <number> hash <hash>
+
 Hash algorithm. Default value is **sha1**.
 ```
 
 ```{cfgcmd} set vpn ipsec ike-group <name> proposal <number> prf <prf>
+
 Pseudo-random function.
 ```
 
@@ -346,18 +355,22 @@ to specify multiple interfaces. If an interfaces are not specified, IPsec
 policies apply to all interfaces.
 ```
 ```{cfgcmd} set vpn ipsec log level <number>
+
 Level of logging. Default value is **0**.
 ```
 ```{cfgcmd} set vpn ipsec log subsystem <name>
+
 Subsystem of the daemon.
 ```
 ### Options
 
 ```{cfgcmd} set vpn ipsec options disable-route-autoinstall
+
 Do not automatically install routes to remote
 networks.
 ```
 ```{cfgcmd} set vpn ipsec options flexvpn
+
 Allows FlexVPN vendor ID payload (IKEv2 only). Send the Cisco
 FlexVPN vendor ID payload (IKEv2 only), which is required in order to make
 Cisco brand devices allow negotiating a local traffic selector (from
@@ -369,11 +382,13 @@ instead. This has been tested with a "tunnel mode ipsec ipv4" Cisco
 template but should also work for GRE encapsulation.
 ```
 ```{cfgcmd} set vpn ipsec options interface <name>
+
 Interface Name to use. The name of the interface on which
 virtual IP addresses should be installed. If not specified the addresses
 will be installed on the outbound interface.
 ```
 ```{cfgcmd} set vpn ipsec options virtual-ip
+
 Allows the installation of virtual-ip addresses.
 ```
 ### IKEv2 Retransmission
@@ -387,13 +402,16 @@ relative timeout = timeout * base ^ (attempts-1)
 ```
 
 ```{cfgcmd} set vpn ipsec options retransmission attempts
+
 Number of attempts before the peer is considered to be in the down state.
 Default value is **5**.
 ```
 ```{cfgcmd} set vpn ipsec options retransmission base
+
 Base number of exponential backoff. Default value is **1.8**.
 ```
 ```{cfgcmd} set vpn ipsec options retransmission timeout
+
 Timeout in seconds before the first retransmission. Default value is **4**.
 ```
 Using the default values, packets are retransmitted as follows:

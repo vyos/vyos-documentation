@@ -51,6 +51,7 @@ BGP as-path list to match.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match community
+
 community-list <text>
 
 
@@ -59,6 +60,7 @@ BGP community-list to match.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match community
+
 exact-match
 
 
@@ -67,6 +69,7 @@ Set BGP community-list to exactly match.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match extcommunity
+
 <text>
 
 
@@ -81,6 +84,7 @@ First hop interface of a route to match.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ip address
+
 access-list <1-2699>
 
 
@@ -89,6 +93,7 @@ IP address of route to match, based on access-list.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ip address
+
 prefix-list <text>
 
 
@@ -97,6 +102,7 @@ IP address of route to match, based on prefix-list.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ip address
+
 prefix-len <0-32>
 
 
@@ -111,6 +117,7 @@ RIP, OSFP), as this can lead to unexpected results..
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ip nexthop
+
 access-list <1-2699>
 
 
@@ -119,6 +126,7 @@ IP next-hop of route to match, based on access-list.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ip nexthop
+
 address <x.x.x.x>
 
 
@@ -127,6 +135,7 @@ IP next-hop of route to match, based on ip address.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ip nexthop
+
 prefix-len <0-32>
 
 
@@ -135,6 +144,7 @@ IP next-hop of route to match, based on prefix length.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ip nexthop
+
 prefix-list <text>
 
 
@@ -143,6 +153,7 @@ IP next-hop of route to match, based on prefix-list.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ip nexthop
+
 type <blackhole>
 
 
@@ -151,6 +162,7 @@ IP next-hop of route to match, based on type.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ip route-source
+
 access-list <1-2699>
 
 
@@ -159,6 +171,7 @@ IP route source of route to match, based on access-list.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ip route-source
+
 prefix-list <text>
 
 
@@ -167,6 +180,7 @@ IP route source of route to match, based on prefix-list.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ipv6 address
+
 access-list <text>
 
 
@@ -175,6 +189,7 @@ IPv6 address of route to match, based on IPv6 access-list.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ipv6 address
+
 prefix-list <text>
 
 
@@ -183,6 +198,7 @@ IPv6 address of route to match, based on IPv6 prefix-list.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ipv6 address
+
 prefix-len <0-128>
 
 
@@ -197,6 +213,7 @@ RIP, OSFP), as this can lead to unexpected results..
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match ipv6 nexthop
+
 <h:h:h:h:h:h:h:h>
 
 
@@ -205,6 +222,7 @@ Nexthop IPv6 address to match.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match large-community
+
 large-community-list <text>
 
 
@@ -213,6 +231,7 @@ Match BGP large communities.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match local-preference
+
 <0-4294967295>
 
 
@@ -227,6 +246,7 @@ Match route metric.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match origin
+
 <egp|igp|incomplete>
 
 
@@ -271,6 +291,7 @@ Source protocol to match.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> match rpki
+
 <invalid|notfound|valid>
 
 
@@ -303,6 +324,7 @@ Exit policy on match: go to next sequence number.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set aggregator <as|ip>
+
 <1-4294967295|x.x.x.x>
 
 
@@ -311,6 +333,7 @@ BGP aggregator attribute: AS number or IP address of an aggregation.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set as-path exclude
+
 <1-4294967295 | all>
 
 
@@ -324,6 +347,7 @@ path's NLRI.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set as-path prepend
+
 <1-4294967295>
 
 
@@ -332,6 +356,7 @@ Prepend the given string of AS numbers to the AS_PATH of the BGP path's NLRI.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set as-path
+
 prepend-last-as <n>
 
 
@@ -346,6 +371,7 @@ BGP atomic aggregate attribute.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set community
+
 <add|replace> <community>
 
 
@@ -362,6 +388,7 @@ Delete all BGP communities
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set community delete
+
 <text>
 
 
@@ -370,6 +397,7 @@ Delete BGP communities matching the community-list.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set large-community
+
 <add|replace> <GA:LDP1:LDP2>
 
 
@@ -386,6 +414,7 @@ Delete all BGP large-communities
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set large-community delete
+
 <text>
 
 
@@ -394,6 +423,7 @@ Delete BGP communities matching the large-community-list.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set extcommunity bandwidth
+
 <1-25600|cumulative|num-multipaths>
 
 
@@ -408,6 +438,7 @@ The link bandwidth extended community is encoded as non-transitive
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set extcommunity rt
+
 <text>
 
 
@@ -416,6 +447,7 @@ Set route target value in format ``<0-65535:0-4294967295>`` or ``<IP:0-65535>``.
 
 
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set extcommunity soo
+
 <text>
 
 
@@ -434,15 +466,18 @@ Clear all BGP extcommunities.
 Locally significant administrative distance.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set ip-next-hop
+
    <x.x.x.x>
 Nexthop IP address.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set ip-next-hop
+
    unchanged
 Set the next-hop as unchanged. Pass through the route-map without
 changing its value
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set ip-next-hop
+
    peer-address
 Set the BGP nexthop address to the address of the peer. For an incoming
 route-map this means the ip address of our peer is used. For an
@@ -450,10 +485,12 @@ outgoing route-map this means the ip address of our self is used to
 establish the peering with our neighbor.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set ipv6-next-hop
+
    <global|local> <h:h:h:h:h:h:h:h>
 Nexthop IPv6 address.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set ipv6-next-hop
+
    peer-address
 Set the BGP nexthop address to the address of the peer. For an incoming
 route-map this means the ip address of our peer is used. For an
@@ -461,16 +498,19 @@ outgoing route-map this means the ip address of our self is used to
 establish the peering with our neighbor.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set ipv6-next-hop
+
    prefer-global
 For Incoming and Import Route-maps if we receive a v6 global and v6 LL
 address for the route, then prefer to use the global address as the
 nexthop.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set local-preference
+
    <0-4294967295>
 Set BGP local preference attribute.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set metric
+
    <+/-metric|0-4294967295|rtt|+rtt|-rtt>
 Set the route metric. When used with BGP, set the BGP attribute MED
 to a specific value. Use ``+/-`` to add or subtract the specified value
@@ -478,28 +518,35 @@ to/from the existing/MED. Use ``rtt`` to set the MED to the round trip
 time or ``+rtt/-rtt`` to add/subtract the round trip time to/from the MED.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set metric-type
+
    <type-1|type-2>
 Set OSPF external metric-type.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set origin
+
    <igp|egp|incomplete>
 Set BGP origin code.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set originator-id
+
    <x.x.x.x>
 Set BGP originator ID attribute.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set src
+
    <x.x.x.x|h:h:h:h:h:h:h:h>
 Set source IP/IPv6 address for route.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set table <1-200>
+
 Set prefixes to table.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set tag <1-65535>
+
 Set tag value for routing protocol.
 ```
 ```{cfgcmd} set policy route-map <text> rule <1-65535> set weight
+
    <0-4294967295>
 Set BGP weight attribute
 ```

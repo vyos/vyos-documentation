@@ -20,6 +20,7 @@ processing compared to traditional Linux bonding.
 To create a VPP bonding interface:
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN>
+
 Create a bonding interface where ``<vppbondN>`` follows the naming
 convention ``vppbond0``, ``vppbond1``, and so on. A kernel pair interface is
 automatically created for the VPP bonding interface. This allows
@@ -35,6 +36,7 @@ set interfaces vpp bonding vppbond0
 ### Interface Description
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> description <description>
+
 Set a descriptive name for the bonding interface.
 ```
 **Example:**
@@ -46,6 +48,7 @@ set interfaces vpp bonding vppbond0 description "Primary uplink bond"
 ### Administrative Control
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> disable
+
 Administratively disable the bonding interface. By default, interfaces
 are enabled.
 ```
@@ -54,6 +57,7 @@ are enabled.
 ### Adding Member Interfaces
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> member interface
+
    <interface-name>
 Add physical interfaces as members of the bond. You can add multiple
 interfaces to the same bond.
@@ -73,6 +77,7 @@ performance. They must already be attached to VPP.
 ## Bonding Modes
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> mode <mode>
+
 Configure the bonding mode. Available modes:
 
 * **802.3ad**: IEEE 802.3ad Dynamic Link Aggregation (LACP) - Default
@@ -97,6 +102,7 @@ For load balancing modes, configure how the system distributes traffic
 across member interfaces:
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> hash-policy <policy>
+
 Set the transmit hash policy:
 
 * **layer2**: Use MAC addresses to generate hash (default)
@@ -116,6 +122,7 @@ set interfaces vpp bonding vppbond0 hash-policy layer3+4
 ## MAC Address Configuration
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> mac <mac-address>
+
 Set a specific MAC address for the bonding interface.
 ```
 **Example:**
@@ -127,6 +134,7 @@ set interfaces vpp bonding vppbond0 mac 00:11:22:33:44:55
 ## IP Address Configuration
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> address <ip-address/prefix>
+
 Configure IPv4 or IPv6 addresses on the kernel interface. You can
 assign multiple addresses.
 ```
@@ -147,6 +155,7 @@ set interfaces vpp bonding vppbond0 address 10.0.0.10/8
 ## MTU Configuration
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> mtu <size>
+
 Set the Maximum Transmission Unit (MTU) for the kernel interface. The
 MTU must be compatible with the connected VPP interface.
 ```
@@ -169,6 +178,7 @@ network segmentation.
 ### Creating VLAN Sub-interfaces
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> vif <vlan-id>
+
 Create a VLAN sub-interface with the specified VLAN ID (0-4094).
 ```
 **Example:**
@@ -183,9 +193,11 @@ VLAN sub-interfaces support the same configuration options as the parent
 interface:
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> vif <vlan-id> address
+
    <ip-address/prefix>
 ```
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> vif <vlan-id> description
+
    <description>
 ```
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> vif <vlan-id> disable

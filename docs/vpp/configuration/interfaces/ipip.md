@@ -17,14 +17,17 @@ packets, creating point-to-point connections across Layer 3 networks.
 ### Creating an IPIP Interface
 
 ```{cfgcmd} set interfaces vpp ipip <vppipipN>
+
 Create an IPIP interface where ``<vppipipN>`` follows the naming
 convention ``vppipip1``, ``vppipip2``, etc.
 ```
 ```{cfgcmd} set interfaces vpp ipip <vppipipN> remote <address>
+
 Set the tunnel remote endpoint address. Supports both IPv4 and IPv6
 addresses.
 ```
 ```{cfgcmd} set interfaces vpp ipip <vppipipN> source-address <address>
+
 Set the tunnel source address. The source address must match an address
 configured on the local system.
 ```
@@ -41,9 +44,11 @@ set interfaces vpp ipip vppipip1 source-address 192.168.1.1
 ### Description and Administrative Control
 
 ```{cfgcmd} set interfaces vpp ipip <vppipipN> description <description>
+
 Set a descriptive name for the IPIP interface.
 ```
 ```{cfgcmd} set interfaces vpp ipip <vppipipN> disable
+
 Administratively disable the IPIP interface.
 ```
 ### Kernel Interface Integration
@@ -54,6 +59,7 @@ application compatibility.
 ## IP Address Configuration
 
 ```{cfgcmd} set interfaces vpp ipip <vppipipN> address <ip-address/prefix>
+
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
 addresses can be assigned.
 ```
@@ -70,6 +76,7 @@ set interfaces vpp ipip vppipip0 address 2001:db8::10/64
 ## MTU Configuration
 
 ```{cfgcmd} set interfaces vpp ipip <vppipipN> mtu <size>
+
 Set the Maximum Transmission Unit (MTU) for the kernel interface.
 The MTU must be compatible with the connected VPP interface.
 ```

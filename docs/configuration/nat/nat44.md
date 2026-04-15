@@ -303,11 +303,13 @@ be equal to 100. In oder words, the weight defined for the backend is the
 percentage of the connections that will receive such backend.
 
 ```{cfgcmd} set nat [source | destination] rule <rule> load-balance hash
+
    [source-address | destination-address | source-port | destination-port
    | random]
 ```
 
 ```{cfgcmd} set nat [source | destination] rule <rule> load-balance backend
+
 <x.x.x.x> weight <1-100>
 ```
 ## Configuration Examples

@@ -17,6 +17,7 @@ VyOS supports both local authentication and remote authentication via
 ## Local authentication
 
 ```{cfgcmd} set system login user <name> full-name "<string>"
+
 **Configure the real name or description for a system user.**
 
 If the description includes spaces, enclose ``<string>`` in double quotes.
@@ -25,6 +26,7 @@ If the user ``<name>`` already exists, the command updates the current
 description. If not, it creates a new user with the specified description.
 ```
 ```{cfgcmd} set system login user <name> authentication plaintext-password
+
    <password>
 **Configure a password for a system user.**
 
@@ -35,6 +37,7 @@ If the user ``<name>`` already exists, the command updates the current password.
 If not, it creates a new user with the specified plaintext password.
 ```
 ```{cfgcmd} set system login user <name> authentication encrypted-password
+
    <password>
 **Configure a pre-encrypted password for a system user.**
 
@@ -45,6 +48,7 @@ If the user ``<name>`` already exists, the command updates the current password.
 If not, it creates a new user with the specified pre-encrypted password.
 ```
 ```{cfgcmd} set system login user <name> authentication principal <principal>
+
 **Configure an SSH certificate principal for a system user.**
 
 Enter the principal (a string included in the user's signed SSH certificate).
@@ -57,6 +61,7 @@ it creates a new user linked to the specified principal.
 **If not configured**, the principal defaults to ``<name>``.
 ```
 ```{cfgcmd} set system login user <name> disable
+
 **Disable a system user account.**
 
 VyOS locks the account, preventing the user from logging in.
@@ -107,6 +112,7 @@ To configure SSH public key authentication for a user account, run the
 following two commands using the same `<identifier>`:
 
 ```{cfgcmd} set system login user <username> authentication public-keys
+
    <identifier> key <key>
 **Configure the SSH public key for the user account.**
 
@@ -115,6 +121,7 @@ following two commands using the same `<identifier>`:
 * ``<key>``: The actual string of characters from your public key.
 ```
 ```{cfgcmd} set system login user <username> authentication public-keys
+
    <identifier> type <type>
 **Configure the SSH key's encryption type.**
 
@@ -131,6 +138,7 @@ The following encryption algorithm types are available:
    commands above with a unique identifier for each key.
 ```
 ```{cfgcmd} set system login user <username> authentication public-keys
+
    <identifier> options <options>
 **Configure specific restrictions or behaviors for an SSH public key.**
 
@@ -156,6 +164,7 @@ password)` along with their password at login. Users without {abbr}`OTP
 standard authentication.
 
 ```{cfgcmd} set system login user <username> authentication otp key <key>
+
 **Configure** :abbr:`OTP (One-time password)`**-based** :abbr:`MFA
 (Multi-factor Authentication)` **for a user.**
 
@@ -168,6 +177,7 @@ a valid OTP for all subsequent logins.
 ### OTP settings
 
 ```{cfgcmd} set system login user <username> authentication otp rate-limit <limit>
+
 **Configure the number of** :abbr:`OTP (One-time password)` **authentication
 attempts allowed within a specified time period.**
 
@@ -176,12 +186,14 @@ If this limit is exceeded, the user is temporarily blocked.
 The default value is 3 attempts. The valid range is 1 to 10 attempts.
 ```
 ```{cfgcmd} set system login user <username> authentication otp rate-time <seconds>
+
 **Configure the time period, in seconds, for tracking** :abbr:`OTP (One-time
 password)` **authentication attempts.**
 
 The default value is 30 seconds. The valid range is 1 to 600 seconds.
 ```
 ```{cfgcmd} set system login user <username> authentication otp window-size <size>
+
 **Configure the** :abbr:`OTP (One-time password)` **window size for a user.**
 
 The :abbr:`OTP (One-time password)` window size defines the number of
@@ -204,6 +216,7 @@ The valid range is 1 to 21.
 Use the following command to generate an OTP key:
 
 ```{cfgcmd} generate system login username <username> otp-key hotp-time
+
    rate-limit <1-10> rate-time <15-600> window-size <1-21>
 ```
 Key generation example:
@@ -250,6 +263,7 @@ Use the following command to display the {abbr}`OTP (One-time password)`
 key for a user:
 
 ```{cfgcmd} sh system login authentication user <username> otp
+
    <full | key-b32 | qrcode | uri>
 ```
 Example:
@@ -306,6 +320,7 @@ account management on a single backend server.
 ### Configuration
 
 ```{cfgcmd} set system login radius server <address> key <secret>
+
 **Configure the** :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
 **server's IP address and shared secret.**
 
@@ -316,12 +331,14 @@ You can configure multiple :abbr:`RADIUS (Remote Authentication Dial-In User
 Service)` servers.
 ```
 ```{cfgcmd} set system login radius server <address> port <port>
+
 **Configure the UDP port for communication with the** :abbr:`RADIUS (Remote
 Authentication Dial-In User Service)` **server.**
 
 The default port is 1812.
 ```
 ```{cfgcmd} set system login radius server <address> disable
+
 **Disable a** :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
 **server from the authentication process.**
 
@@ -330,6 +347,7 @@ Service)` server doesn’t remove its configuration settings (the server's IP
 address and shared secret).
 ```
 ```{cfgcmd} set system login radius server <address> timeout <timeout>
+
 Configure the duration, in seconds, that the VyOS router waits for a
 response from the :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
 server after sending an authentication request.
@@ -338,6 +356,7 @@ If the server does not respond within this timeframe, the VyOS router tries to
 connect to another configured server or falls back to local authentication.
 ```
 ```{cfgcmd} set system login radius source-address <address>
+
 **Configure the source IP address the router uses for** :abbr:`RADIUS (Remote
 Authentication Dial-In User Service)` **authentication requests.**
 
@@ -349,6 +368,7 @@ address, which may change (e.g., due to a link outage), causing authentication
 failures.
 ```
 ```{cfgcmd} set system login radius vrf <name>
+
 **Configure the router to send all** :abbr:`RADIUS (Remote Authentication
 Dial-In User Service)` **authentication requests via a specific VRF.**
 
@@ -396,6 +416,7 @@ in {rfc}`8907`.
 ### Configuration
 
 ```{cfgcmd} set system login tacacs server <address> key <secret>
+
 **Configure the** :abbr:`TACACS+ (Terminal Access Controller Access Control
 System)` **server IP address and shared secret.**
 
@@ -407,12 +428,14 @@ You can configure multiple :abbr:`TACACS+ (Terminal Access Controller Access
 Control System)` servers.
 ```
 ```{cfgcmd} set system login tacacs server <address> port <port>
+
 **Configure the TCP port for communication with the** :abbr:`TACACS+ (Terminal
 Access Controller Access Control System)` **server.**
 
 The default port is 49.
 ```
 ```{cfgcmd} set system login tacacs server <address> disable
+
 **Disable a** :abbr:`TACACS+ (Terminal Access Controller Access Control
 System)` **server from the authentication process.**
 
@@ -421,6 +444,7 @@ System)` server doesn’t remove its configuration settings (the server's IP
 address and shared secret).
 ```
 ```{cfgcmd} set system login tacacs server <address> timeout <timeout>
+
 Configure the duration, in seconds, that the VyOS router waits for a
 response from the :abbr:`TACACS+ (Terminal Access Controller Access
 Control System)` server after sending an authentication request.
@@ -429,6 +453,7 @@ If the server does not respond within this timeframe, the VyOS router tries
 to connect to another configured server or falls back to local authentication.
 ```
 ```{cfgcmd} set system login tacacs source-address <address>
+
 **Configure the source IP address the router uses for**
 :abbr:`TACACS+ (Terminal Access Controller Access Control System)`
 **authentication requests.**
@@ -441,6 +466,7 @@ If not explicitly defined, the router uses the current egress interface address,
 which may change (e.g., due to a link outage), causing authentication failures.
 ```
 ```{cfgcmd} set system login tacacs vrf <name>
+
 Configure the router to send all :abbr:`TACACS+ (Terminal Access Controller
 Access Control System)` authentication requests via a specific VRF.
 
@@ -469,10 +495,12 @@ displayed before authentication, while post-login banners provide system
 information or operational notices to users after login.
 
 ```{cfgcmd} set system login banner pre-login <message>
+
 Configure a message to be shown to users before the ``username`` and ``password``
 prompts appear.
 ```
 ```{cfgcmd} set system login banner post-login <message>
+
 Configure a message to be shown to users after successful authentication.
 ```
 :::{note}
@@ -482,6 +510,7 @@ Use `\\n` to insert line breaks in multi-line banner messages.
 ## Login session limits
 
 ```{cfgcmd} set system login max-login-session <number>
+
 **Configure the maximum number of concurrent login sessions.**
 ```
 :::{note}
@@ -491,6 +520,7 @@ login attempts.
 :::
 
 ```{cfgcmd} set system login timeout <timeout>
+
 **Configure the login session timeout, in seconds.**
 
 Idle login sessions are terminated after this period.

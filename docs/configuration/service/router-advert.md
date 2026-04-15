@@ -51,6 +51,7 @@ Supported interface types:
 ### Advertising a Prefix
 
 ```{cfgcmd} set service router-advert interface <interface> prefix <prefix/mask>
+
 .. note:: You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
  Advertisements)`. This is a special wildcard prefix that will emit :abbr:`RAs (Router Advertisements)` for every prefix assigned to the interface.
  This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
@@ -74,6 +75,7 @@ Supported interface types:
 ### Advertising a NAT64 Prefix
 
 ```{cfgcmd} set service router-advert interface <interface> nat64prefix <prefix/mask>
+
 Enable PREF64 option as outlined in :rfc:`8781`.
 
 NAT64 prefix mask must be one of: /32, /40, /48, /56, /64 or 96.
@@ -96,10 +98,12 @@ NAT64 prefix mask must be one of: /32, /40, /48, /56, /64 or 96.
 To disable advertisements without deleting the configuration:
 
 ```{cfgcmd} set service router-advert interface <interface> no-send-advert
+
 If set, the router will no longer send periodic router advertisements and
 will not respond to router solicitations.
 ```
 ```{cfgcmd} set service router-advert interface <interface> no-send-interval
+
 Advertisement Interval Option (specified by Mobile IPv6) is always included in
 Router Advertisements unless this option is set.
 ```

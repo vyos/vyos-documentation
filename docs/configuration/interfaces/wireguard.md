@@ -560,6 +560,7 @@ Show a list of all WireGuard interfaces.
   wg01             10.0.0.1/24                       u/u
 ```
 ```{opcmd} show interfaces wireguard <interface>
+
 Show general information about a specific WireGuard interface.
 
 .. code-block:: none
@@ -588,6 +589,7 @@ create the private portion yourself and hand out only the public key.
 :::
 
 ```{opcmd} generate wireguard client-config <name> interface <interface> server
+
    <ip|fqdn> address <client-ip>
 **Generate a client configuration file that establishes a connection to the
 specified interface.**
