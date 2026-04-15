@@ -15,7 +15,6 @@ as `key` in the formdata. The only public endpoint listens to HTTP GET request
 and takes optional query parameters.
 
 Below see one example for curl and one for python.
-
 The rest of the documentation is reduced to curl.
 
 ```none

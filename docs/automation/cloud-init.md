@@ -58,7 +58,6 @@ described in the following two sections.
 ## Initial Configuration
 
 The key used to designate a VyOS configuration is `vyos_config_commands`.
-
 What follows is VyOS configuration using the "set-style" syntax. Both "set"
 and "delete" commands are supported.
 

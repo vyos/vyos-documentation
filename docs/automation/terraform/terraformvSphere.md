@@ -9,7 +9,6 @@ lastproofread: '2026-03-23'
 You can use Terraform to quickly deploy VyOS-based infrastructure
 on VMware vSphere (hereafter referred to as *vSphere*) and remove
 infrastructure when it's no longer needed.
-
 Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:
@@ -40,9 +39,9 @@ Terraform, Ansible, and vSphere, follow these steps:
    [Terraform](https://developer.hashicorp.com/terraform/install).
 3. Create the folder for example `/root/vsphereterraform`.
 
-```none
-mkdir /root/vsphereterraform
-```
+   ```none
+   mkdir /root/vsphereterraform
+   ```
 
 4. Copy all files into your Terraform project `/root/vsphereterraform`
    (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
@@ -50,10 +49,10 @@ mkdir /root/vsphereterraform
    see [Structure of files in Terraform for vSphere]
 5. Run the following commands:
 
-```none
-cd /<your folder> 
-terraform init
-```
+   ```none
+   cd /<your folder>
+   terraform init
+   ```
 
 ### Ansible
 
@@ -81,9 +80,8 @@ vSphere with your configuration.
 If you need to delete the instance, run the following command:
 
 ```none
+terraform destroy
 ```
-
-> terraform destroy
 
 ## Structure of files in Terraform for vSphere
 

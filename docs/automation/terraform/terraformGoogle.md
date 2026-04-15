@@ -9,7 +9,6 @@ lastproofread: '2026-03-23'
 Using Terraform, you can quickly deploy VyOS-based infrastructure on
 Google Cloud Platform (GCP) and remove the
 infrastructure when it's no longer needed.
-
 Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:

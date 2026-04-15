@@ -8,7 +8,6 @@ lastproofread: '2026-03-16'
 
 You can use Terraform to quickly deploy VyOS-based infrastructure
 on AWS and remove infrastructure when it's no longer needed.
-
 Additionally, you can use Ansible for provisioning.
 
 ```{image} /_static/images/aws.png
@@ -55,44 +54,51 @@ Terraform, Ansible, and AWS, follow these steps:
 2. Download and install
    [Terraform](https://developer.hashicorp.com/terraform/install).
 3. Create a folder, for example `/root/awsterraform`:
-> 
 
-```none
-> mkdir /root/awsterraform
-> ```
+   ```none
+   mkdir /root/awsterraform
+   ```
+
 % stop_vyoslinter
+
 4. Copy all files into your Terraform project
    (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
    See [Structure of files in Terraform for AWS](#structure-of-files-in-terraform-for-aws) for more details.
+
 % start_vyoslinter
+
 5. Run the following commands:
-```none
 
-cd /<your folder>
-terraform init
-
-```
+   ```none
+   cd /<your folder>
+   terraform init
+   ```
 ### Ansible
+
 1. Create a UNIX instance whenever you need.
 2. Download and install Ansible
 3. Create a folder, for example `/root/aws/`.
+
 % stop_vyoslinter
+
 4. Copy all files into your Ansible project
    (`ansible.cfg`, `instance.yml`,
    `mykey.pem`, and `all`).
    See [Structure of files in Ansible for AWS](#structure-of-files-in-ansible-for-aws) for more details.
    You can obtain `mykey.pem` by creating a key [pair] in AWS and
    downloading your `.pem` key.
-% start_vyoslinter
-### Deploy with Terraform
-Run the following commands on your Terraform instance:
-```none
 
+% start_vyoslinter
+
+### Deploy with Terraform
+
+Run the following commands on your Terraform instance:
+
+```none
 cd /<your folder>
 terraform plan
 terraform apply
 yes
-
 ```
 ## Create an AWS instance and check its configuration
 ```none
