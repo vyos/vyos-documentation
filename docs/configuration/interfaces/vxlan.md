@@ -8,7 +8,6 @@ lastproofread: '2026-03-16'
 
 {abbr}`VXLAN (Virtual Extensible LAN)` is a network virtualization technology
 that addresses scalability challenges in large cloud computing environments.
-
 It encapsulates Ethernet frames (Layer 2) within UDP datagrams (Layer 4), which
 are then transmitted via UDP port 4789, as assigned by IANA. VXLAN endpoints,
 called {abbr}`VTEPs (VXLAN tunnel endpoints)`, terminate VXLAN tunnels and can

@@ -40,9 +40,7 @@ DHCP-Relay
 ```
 
 After this, we need the DHCP-Server and Relay configuration.
-
 To get a testable result, we just have one IP in the DHCP range.
-
 Expand it as you need it.
 
 DHCP-Server

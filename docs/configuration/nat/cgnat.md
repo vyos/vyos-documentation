@@ -7,7 +7,6 @@ Large-Scale NAT (LSN), is a type of network address translation used by
 Internet Service Providers (ISPs) to enable multiple private IP addresses to
 share a single public IP address. This technique helps to conserve the limited
 IPv4 address space.
-
 The 100.64.0.0/10 address block is reserved for use in carrier-grade NAT
 
 ## Overview
@@ -114,7 +113,6 @@ Enable logging of IP address and ports allocations.
 
 ### Single external address
 Example of setting up a basic CGNAT configuration:
-
 In the following example, we define an external pool named `ext-1` with one external IP address
 Each subscriber will be allocated a maximum of 2000 ports from the external pool.
 

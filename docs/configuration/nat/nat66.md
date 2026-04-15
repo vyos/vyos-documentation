@@ -10,7 +10,6 @@ directives for command coverage tracking.
 {abbr}`NPTv6 (IPv6-to-IPv6 Network Prefix Translation)` is an address
 translation technology based on IPv6 networks, used to convert an IPv6
 address prefix in an IPv6 message into another IPv6 address prefix.
-
 We call this address translation method NAT66. Devices that support the NAT66
 function are called NAT66 devices, which can provide NAT66 source
 and destination address translation functions.
@@ -51,7 +50,6 @@ The {abbr}`DNPTv6 (Destination IPv6-to-IPv6 Network Prefix Translation)`
 destination address translation function is used in scenarios where the
 server in the internal network provides services to the external network,
 such as providing Web services or FTP services to the external network.
-
 By configuring the mapping relationship between the internal server
 address and the external network address on the external network
 side interface of the NAT66 device, external network users can

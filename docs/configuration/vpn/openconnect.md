@@ -8,7 +8,6 @@ directives for command coverage tracking.
 ```
 
 OpenConnect-compatible server feature has been available since Equuleus (1.3).
-
 Openconnect VPN supports SSL connection and offers full network access. SSL VPN
 network extension connects the end-user system to the corporate network with
 access controls based only on network layer information, such as destination IP
@@ -61,7 +60,6 @@ set vpn openconnect ssl passphrase <pki-password>
 Instead of password only authentication, 2FA password
 authentication + OTP key can be used. Alternatively, OTP authentication only,
 without a password, can be used.
-
 To do this, an OTP configuration must be added to the configuration above:
 % stop_vyoslinter
 

@@ -51,7 +51,6 @@ to build your infrastructure.
 :::::{grid-item-card} Contribute and Community
 
 There are many ways to contribute to the project.
-
 Add missing parts or improve the
 {ref}`Documentation<documentation:Write Documentation>`.
 

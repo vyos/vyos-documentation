@@ -14,7 +14,6 @@ with the underlying operating system, including operations scheduling.
 VPP relies on the polling mechanism to efficiently manage I/O operations
 and system events. By default VPP continuously polls for events, which
 leads to permanent 100% CPU usage by all cores assigned to VPP dataplane.
-
 This is optimal for performance, but may not be desirable in all
 environments, especially where power consumption is a concern or where VPP
 is running inside a hypervisor, especially if the VM has burstable
@@ -38,7 +37,6 @@ Sets the polling delay in microseconds. A value of 0 means no delay
 
 Setting the polling delay too high can lead to increased latency and
 reduced performance, as VPP may not respond to events as quickly.
-
 Conversely, setting it too low may result in high CPU usage, which can be
 problematic in resource-constrained environments.
 

@@ -7,7 +7,6 @@ VyOS facilitates IPv6 Multicast by supporting **PIMv6** and **MLD**.
 PIMv6 (Protocol Independent Multicast for IPv6) must be configured in every
 interface of every participating router. Every router must also have the
 location of the Rendevouz Point manually configured.
-
 Then, unidirectional shared trees rooted at the Rendevouz Point will
 automatically be built for multicast distribution.
 

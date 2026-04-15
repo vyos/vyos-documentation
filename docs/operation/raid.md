@@ -8,20 +8,16 @@ lastproofread: '2025-11-20'
 
 A Redundant Array of Independent Disks (RAID) uses two or more hard disk drives
 to improve disk speed, store more data, and/or provide fault tolerance.
-
 There are several storage schemes possible in a RAID array, each offering a
 different combination of storage, reliability, and performance.
-
 VyOS supports **RAID 1** deployments. RAID 1 uses two or more
 disks that mirror one another to provide system fault tolerance. In a RAID 1
 configuration, every sector on one disk is duplicated on every sector of all
 disks in the array. Provided even one disk in the RAID 1 set is operational,
 the system continues to run, even through disk replacement (provided that the
 hardware supports in-service replacement of drives).
-
 RAID 1 can be implemented using special hardware or it can be implemented in
 software. VyOS supports software RAID 1 on two disks.
-
 The VyOS implementation of RAID 1 features the following:
 
 - Detection and reporting of disk failure.

@@ -28,7 +28,6 @@ Let’s say we have a requirement to have multiple networks.
 Both LANs have to be able to route between each other, both will have managed
 devices through a dedicated management network and both will need Internet
 access yet the LAN2 will need access to some set of outside networks, not all.
-
 The management network will need access to both LANs but cannot have access
 to/from the outside.
 
@@ -37,7 +36,6 @@ filtering in multiple interfaces.
 
 A simple solution could be using different routing tables, or VRFs
 for all the networks so we can keep the routing restrictions.
-
 But for us to route between the different VRFs we would need a cable or a
 logical connection between each other:
 
@@ -116,7 +114,6 @@ set procotols static route 0.0.0.0/0 next-hop <CORE IP ADDRESS>
 #### Step 1: VRF and Configurations to remote networks
 - Configuration
 Set the VRF name and Table ID, set interface address and bind it to the VRF.
-
 Last add the static route to the remote network.
 
 ```none

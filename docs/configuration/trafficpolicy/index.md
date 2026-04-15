@@ -13,7 +13,6 @@ prioritize some type of traffic over another.
 [tc] is a powerful tool for Traffic Control found at the Linux kernel.
 
 However, its configuration is often considered a cumbersome task.
-
 Fortunately, VyOS eases the job through its CLI, while using `tc` as
 backend.
 
@@ -373,7 +372,6 @@ likely you are looking for a** [Shaper] **policy and you want to**
 **Queueing discipline:**
 
  PFIFO (Packet First In First Out).
-
 **Applies to:**
 
  Outbound traffic.
@@ -428,7 +426,6 @@ single one from drowning out the rest.
 In order to separate traffic, Fair Queue uses a classifier based on
 source address, destination address and source port. The algorithm
 enqueues packets to hash buckets based on those tree parameters.
-
 Each of these buckets should represent a unique flow. Because multiple
 flows may get hashed to the same bucket, the hashing algorithm is
 perturbed at configurable intervals so that the unfairness lasts only
@@ -476,7 +473,6 @@ the queue.
 
 
  Fair/Flow Queue CoDel.
-
 
 **Applies to:**
 
@@ -1032,7 +1028,6 @@ new policy into each of those classes (default included).
 
 Each class is assigned a deficit counter (the number of bytes that a
 flow is allowed to transmit when it is its turn) initialized to quantum.
-
 Quantum is a parameter you configure which acts like a credit of fix
 bytes the counter receives on each round. Then the Round-Robin policy
 starts moving its Round Robin pointer through the queues. If the deficit
@@ -1090,7 +1085,6 @@ Possible completions:
 
 
  Hierarchical Token Bucket.
-
 
 **Applies to:**
 

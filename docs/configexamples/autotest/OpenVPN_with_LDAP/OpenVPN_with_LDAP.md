@@ -18,7 +18,6 @@ Topology consists of:
 
 ## Active Directory on Windows server
 The lab assumes a full running Active Directory on the Windows Server.
-
 Here are some PowerShell commands to quickly add a Test Active Directory.
 
 ```powershell

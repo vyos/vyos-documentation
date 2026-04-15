@@ -40,7 +40,6 @@ Several flags can be set to change VyOS behavior at runtime. Toggle these flags
 using environment variables or by creating files.
 
 For each feature, create a file called `vyos.feature.debug` to enable it.
-
 If a parameter is required, place it as the first line inside the file.
 
 Place the file in `/tmp` for one-time debugging (the file is removed on
@@ -50,7 +49,6 @@ For example, `/tmp/vyos.ifconfig.debug` can be created to enable
 interface debugging.
 
 You can also enable debugging using environment variables.
-
 The environment variable name follows the convention `VYOS_FEATURE_DEBUG`.
 
 For example, `export VYOS_IFCONFIG_DEBUG=""` in your vbash has the same effect

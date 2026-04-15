@@ -167,7 +167,6 @@ set interfaces vpp bridge vppbr3 member interface vpplo2 bvi
 ## Integration with Kernel Interfaces
 Bridge interfaces can be integrated with kernel interfaces for
 management and compatibility with standard Linux networking services.
-
 This is accomplished by binding a kernel interface to the Bridge
 Virtual Interface (BVI).
 **Example Integration:**

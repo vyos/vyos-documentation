@@ -33,7 +33,6 @@ Branch
 ```
 
 Next thing to do, is to create a wireguard keypair on each side.
-
 After this, the public key can be displayed, to save for later.
 
 ```none
@@ -59,7 +58,6 @@ Branch
 ```
 
 To reach the network, a route must be set on each VyOS host.
-
 In this structure, a static interface route will fit the requirements.
 
 Central

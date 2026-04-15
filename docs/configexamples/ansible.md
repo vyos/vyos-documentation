@@ -10,7 +10,6 @@ lastproofread: '2024-04-09'
 
 In this example, we will set up a simple use of Ansible to configure
 multiple VyOS routers.
-
 We have four pre-configured routers with this configuration:
 
 Using the general schema for example:

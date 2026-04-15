@@ -23,7 +23,6 @@ VRF (Virtual Routing and Forwarding) documentation scenarios.
 A brief excursion into VRFs: This has been one of the longest-standing feature
 requests of VyOS (dating back to 2016) which can be described as
 "a VLAN for layer 2 is what a VRF is for layer 3".
-
 With VRFs, a router/system can hold multiple, isolated routing tables on the
 same system. If you wonder what's the difference between multiple tables that
 people used for policy-based routing since forever, it's that a VRF also
@@ -52,7 +51,6 @@ We use the following network topology in this example:
 
 ## Core network
 I chose to run OSPF as the IGP (Interior Gateway Protocol).
-
 All required BGP sessions are established via a dummy interfaces
 (similar to the loopback, but in Linux you can have only one loopback,
 while there can be many dummy interfaces) on the PE routers. In case of a link

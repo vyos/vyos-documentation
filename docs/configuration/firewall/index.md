@@ -19,7 +19,6 @@ destination (for example, a web server or another device).
 
 The following is a simplified traffic flow diagram based on Netfilter
 packet flow.
-
 This diagram provides an overview of how packets are processed and the
 possible paths traffic can take.
 

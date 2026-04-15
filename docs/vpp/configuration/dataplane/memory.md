@@ -52,7 +52,6 @@ Sets the main heap size for VPP.
 
 ## Physical Memory Configuration
 VPP uses physical memory for packet buffers and interface operations.
-
 The `physmem` setting controls how much memory VPP can allocate for
 these operations.
 

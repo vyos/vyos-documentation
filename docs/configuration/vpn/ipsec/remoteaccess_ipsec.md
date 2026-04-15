@@ -10,7 +10,6 @@ directives for command coverage tracking.
 Internet Key Exchange version 2 (IKEv2) is a tunneling protocol, based on IPsec,
 that establishes a secure VPN communication between VPN devices, and defines
 negotiation and authentication processes for IPsec security associations (SAs).
-
 It is often known as IKEv2/IPSec or IPSec IKEv2 remote-access — or road-warriors
 as others call it.
 
@@ -18,7 +17,6 @@ Key exchange and payload encryption is done using IKE and ESP proposals as known
 from IKEv1 but the connections are faster to establish, more reliable, and also
 support roaming from IP to IP (called MOBIKE which makes sure your connection
 does not drop when changing networks from e.g. WIFI to LTE and back).
-
 Authentication can be achieved with X.509 certificates.
 
 ## Setting up certificates:
@@ -99,7 +97,6 @@ set vpn ipsec ike-group IKE-RW proposal 10 hash 'sha256'
 
 Every connection/remote-access pool we configure also needs a pool where we
 can draw our client IP addresses from. We provide one IPv4 and IPv6 pool.
-
 Authorized clients will receive an IPv4 address from the configured IPv4 prefix
 and an IPv6 address from the IPv6 prefix. We can also send some DNS nameservers
 down to our clients used on their connection.
@@ -127,7 +124,6 @@ set vpn ipsec remote-access connection rw pool 'ra-rw-ipv6'
 ```
 
 VyOS also supports two different modes of authentication, local and RADIUS.
-
 To create a new local user named "vyos" with a password of "vyos" use the
 following commands.
 
@@ -148,7 +144,6 @@ set vpn ipsec remote-access connection rw authentication always-send-cert
 Most operating systems include native client support for IPsec IKEv2 VPN
 connections, and others typically have an app or add-on package which adds the
 capability.
-
 This section covers IPsec IKEv2 client configuration for Windows 10.
 
 VyOS provides a command to generate a connection profile used by Windows clients
@@ -173,7 +168,6 @@ GCMAES128 -EncryptionMethod GCMAES128 -IntegrityCheckMethod SHA256128 -PfsGroup 
 ```
 
 Add the commands from Snippet in the Windows side via PowerShell.
-
 Also import the root CA cert to the Windows “Trusted Root Certification
 Authorities” and establish the connection.
 

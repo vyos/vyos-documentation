@@ -10,7 +10,6 @@ VRRP (Virtual Router Redundancy Protocol) provides active/backup redundancy for
 routers. Every VRRP router has a physical IP/IPv6 address, and a virtual
 address. On startup, routers elect the master, and the router with the highest
 priority becomes the master and assigns the virtual address to its interface.
-
 All routers with lower priorities become backup routers. The master then starts
 sending keepalive packets to notify other routers that it's available. If the
 master fails and stops sending keepalive packets, the router with the next
@@ -53,7 +52,6 @@ Foo         eth1             10  MASTER   2s
 The `address` parameter can be either an IPv4 or IPv6 address, but you can
 not mix IPv4 and IPv6 in the same group, and will need to create groups with
 different VRIDs specially for IPv4 and IPv6.
-
 If you want to use IPv4 + IPv6 address you can use option `excluded-address`
 
 ## Address
@@ -193,7 +191,6 @@ set high-availability vrrp group Foo hello-source-address 192.0.2.15
 ## rfc3768-compatibility
 
 RFC 3768 defines a virtual MAC address to each VRRP virtual router.
-
 This virtual router MAC address will be used as the source in all periodic VRRP
 messages sent by the active node. When the rfc3768-compatibility option is set,
 a new VRRP interface is created, to which the MAC address and the virtual IP
@@ -348,7 +345,6 @@ set high-availability vrrp group Foo health-check failure-count 3
 % start_vyoslinter
 When the vrrp group is a member of the sync group will use only
 the sync group health check script.
-
 This example shows how to configure it for the sync group:
 % stop_vyoslinter
 
@@ -363,7 +359,6 @@ set high-availability vrrp sync-group Bar health-check failure-count 3
 ### Transition scripts
 Transition scripts can help you implement various fixups, such as starting and
 stopping services, or even modifying the VyOS config on VRRP transition.
-
 This setup will make the VRRP process execute the
 `/config/scripts/vrrp-fail.sh` with argument `Foo` when VRRP fails,
 and the `/config/scripts/vrrp-master.sh` when the router becomes the master:
@@ -467,12 +462,10 @@ set high-availability virtual-server 203.0.113.1 real-server 192.0.2.12 port '80
 % start_vyoslinter
 A firewall mark `fwmark` allows using multiple ports for high-availability
 virtual-server.
-
 It uses fwmark value.
 
 In this example all traffic destined to ports "80, 2222, 8888" protocol TCP
 marks to fwmark "111" and balanced between 2 real servers.
-
 Port "0" is required if multiple ports are used.
 % stop_vyoslinter
 

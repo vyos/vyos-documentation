@@ -10,7 +10,6 @@ lastproofread: '2023-02-18'
 
 In this case, we'll try to make a simple lab using QoS and the
 general ability of the VyOS system.
-
 We recommend you to go through the main article about
 [QoS](https://docs.vyos.io/en/latest/configuration/trafficpolicy/index.html)
 first.
@@ -41,7 +40,6 @@ on the “VYOS2” router.
 ## Configuration:
 Set IP addresses on all VPCs and a default gateway 172.17.1.1. We'll
 use in this case only static routes.
-
 On the VyOS3 router, we need to change the 'dscp' labels for the
 VPCs. To do this, we use this configuration.
 % stop_vyoslinter

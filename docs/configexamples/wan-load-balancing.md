@@ -146,7 +146,6 @@ of one like in the previous examples:
 Based on the previous example, another rule for traffic from the second
 interface eth3 can be added to the load balancer. However, traffic meant
 to flow between the LAN subnets will be sent to eth0 and eth1 as well.
-
 To prevent this, another rule is required. This rule excludes traffic
 between the local subnets from the load balancer. It also excludes
 locally-sources packets (required for web caching with load balancing).

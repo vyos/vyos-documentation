@@ -28,7 +28,6 @@ documentation.
 VyOS documentation is written in reStructuredText and generated to Read the Docs
 pages with Sphinx, as per the Python tradition. We welcome all sorts of
 contributions to the documentation.
-
 Not just new additions but also corrections to existing documentation.
 
 The documentation source is kept in the Git repository at
@@ -87,7 +86,6 @@ In the configuration part of the page, all possible configuration options
 should be documented. Use `.. cfgcmd::` described above.
 
 Related operation command must be documented in the next part of the article.
-
 Use `::opcmd..` for these commands.
 
 Each page must contain the following parts:
@@ -158,7 +156,6 @@ Paragraphs
 #### Cross-References
 
 A plugin will be used to generate a reference label for each headline.
-
 To reference a page or a section in the documentation use the
 `:ref:` command.
 
@@ -246,7 +243,6 @@ render the documentation.
 When documenting CLI commands, use the `.. cfgcmd::` directive
 for all configuration mode commands. An explanation of the described command
 should be added below this statement.
-
 Replace all variable contents with \<value> or something similar.
 
 With those custom commands, it will be possible to render them in a more
@@ -268,9 +264,7 @@ For an inline configuration level command, use `:cfgcmd:`
 
 To extract a defaultvalue from the XML definitions add a `:defaultvalue:`
 to `.. cfgcmd::` directive.
-
 To have this feature locally, the vyos-1x submodule must be initialized before.
-
 Please be aware to not update the submodule in your PR.
 
 ```none
@@ -285,7 +279,6 @@ Please be aware to not update the submodule in your PR.
 ##### opcmd
 
 When documenting operational level commands, use the `.. opcmd::` directive.
-
 An explanation of the described command should be added below this statement.
 
 With those custom commands, it is possible to render them in a more

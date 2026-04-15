@@ -241,7 +241,6 @@ using [vyos-vm-images] repo. After cloning the repo, edit the file
 **qemu.yml** and comment the **download-iso** role.
 
 In this lab, we are using 1.3.0 VyOS version and setting a disk of 10G.
-
 Download VyOS .iso file and save it as `/tmp/vyos.iso`. Command used for
 generating qcow image:
 

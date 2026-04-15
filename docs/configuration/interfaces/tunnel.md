@@ -8,7 +8,6 @@ lastproofread: '2026-01-23'
 
 Tunnel interfaces are virtual links that transmit encapsulated traffic between
 private networks or hosts across public infrastructure, such as the Internet.
-
 They operate using encapsulation protocols to wrap original traffic for
 transport. The supported protocols include {abbr}`GRE (Generic Routing
 Encapsulation)`, IPIP, IPIP6, IP6IP6, and 6in4 (SIT).
@@ -95,7 +94,6 @@ inside IPv4 packets. The encapsulating IPv4 headers use IP protocol number 41,
 which is reserved exclusively for IPv6 encapsulation.
 
 The encapsulation process adds a 20-byte IPv4 header to each IPv6 packet.
-
 Consequently, 6in4 tunnel interfaces can transmit IPv6 packets up to 1480 bytes
 over an underlying network with a standard MTU of 1500 bytes without
 fragmentation.
@@ -209,7 +207,6 @@ Unlike GRE, which encapsulates only Layer 3 (IP) traffic, GRETAP encapsulates
 Layer 2 (Ethernet) frames.
 
 That means that GRETAP tunnel interfaces can be members of a bridge interface.
-
 This allows two geographically distant sites to connect as if they were on the
 same LAN.
 

@@ -76,7 +76,6 @@ yes
 
 After executing these commands, your VyOS instance is deployed to
 vSphere with your configuration.
-
 If you need to delete the instance, run the following command:
 
 ```none

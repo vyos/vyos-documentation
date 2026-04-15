@@ -160,9 +160,7 @@ Jun 23 07:36:32 charon-systemd[2444]: received NO_PROPOSAL_CHOSEN notify error
 ```
 
 The notification **NO_PROPOSAL_CHOSEN** means that the proposal mismatch.
-
 On the Responder side there is concrete information where is mismatch.
-
 Encryption **AES_CBC_128** is configured in IKE policy on the responder
 but **AES_CBC_256** is configured on the initiator side.
 
@@ -275,7 +273,6 @@ is configured on the initiator side.
 
 ### Prefixes in Policies Mismatch
 As in previous situation, IKE SA is in up state but IPsec SA is not up.
-
 According to logs we can see **TS_UNACCEPTABLE** notification. It means
 that prefixes (traffic selectors) mismatch on both sides
 Initiator:

@@ -32,7 +32,6 @@ Optionally, you can specify the number of bytes from each packet that should be 
 This defines the size of the packet header (in bytes) captured for each sFlow sample.
 
 The sampling rate is configured globally under the `system sflow` section and automatically applied to VPP sFlow.
-
 This ensures consistent sampling behavior between the system and VPP, and prevents configuration conflicts.
 
 Finally, you need to enable integration between VPP and the kernel sFlow agent using the following command:

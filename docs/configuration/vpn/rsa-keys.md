@@ -6,7 +6,6 @@ directives for command coverage tracking.
 ```
 
 RSA can be used for services such as key exchanges and for encryption purposes.
-
 To make IPSec work with dynamic address on one/both sides, we will have to use
 RSA keys for authentication. They are very fast and easy to setup.
 
@@ -30,10 +29,8 @@ set pki key-pair ipsec-LEFT private key 'MIIEvgIBADAN...'
 
 % start_vyoslinter
 Configuration commands will display.
-
 Note the command with the public key
 (set pki key-pair ipsec-LEFT public key 'MIIBIjANBgkqh...').
-
 Then do the same on the opposite router:
 
 ```none

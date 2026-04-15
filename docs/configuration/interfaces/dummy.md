@@ -8,7 +8,6 @@ lastproofread: '2026-01-23'
 
 A dummy interface is a virtual network interface that operates like the
 loopback interface, accepting traffic and routing it back to the local host.
-
 Unlike the loopback interface, which is limited to one per system and reserved
 for internal system use, multiple dummy interfaces can be created, removed, and
 managed without impacting core operations.

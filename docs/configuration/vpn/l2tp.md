@@ -142,7 +142,6 @@ communicating with the RADIUS server.
 
 Since the RADIUS server would be a single point of failure, multiple RADIUS
 servers can be setup and will be used subsequentially.
-
 For example:
 
 ```none

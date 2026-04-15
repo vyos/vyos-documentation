@@ -80,7 +80,6 @@ yes
 
 After executing all the commands, your VyOS instance is deployed to
 Azure with your configuration.
-
 If you need to delete the instance, run the following command:
 
 ```none

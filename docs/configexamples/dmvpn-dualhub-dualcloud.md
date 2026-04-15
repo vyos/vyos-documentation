@@ -7,7 +7,6 @@ lastproofread: '2024-02-21'
 # DMVPN Dual HUB Dual Cloud
 
 This document is to describe a basic setup to build DVMPN network with two Hubs and two clouds using DMVPN Phase3.
-
 OSPF is used as routing protocol inside DMVPN.
 
 In this example we use VyOS 1.5 as HUBs and Spokes (HUB-1, HUB-2, SPOKE-2, SPOKE-3) and Cisco IOSv 15.5(3)M (SPOKE-1)
@@ -78,9 +77,7 @@ set protocols static route 0.0.0.0/0 next-hop 10.0.13.1
 ### NHRP configuration
 The next step is to configure the NHRP protocol. In a Dual cloud network, every HUB has to be configured with one GRE
 multipoint tunnel interface and every spoke has to be configured with two tunnel interfaces, one tunnel to each hub.
-
 In this example tunnel networks are 10.100.100.0/24 for the first cloud and 10.100.101.0/24 for the second cloud.
-
 But VyOS uses FRR for NHRP, that is why the tunnel address mask must be /32.
 
 HUB-1
@@ -207,7 +204,6 @@ set protocols nhrp tunnel tun101 shortcut
 
 ### Overlay configuration
 The last step is to configure the routing protocol. In this scenario, OSPF was chosen as the dynamic routing protocol.
-
 But you can use iBGP or eBGP. To form fast convergence it is possible to use BFD protocol.
 
 HUB-1

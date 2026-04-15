@@ -37,7 +37,6 @@ having an Invalid state?"
 
 First you will need to deploy an RPKI validator for your routers to use. NLnet
 Labs provides a collection of [software] you can compare and settle on one.
-
 Once your server is running you can start validating announcements.
 
 Imported prefixes during the validation may have values:
@@ -134,7 +133,6 @@ This is a mandatory setting.
 ### SSH
 Connections to the RPKI caching server can not only be established by TCP using
 the RTR protocol but you can also rely on a secure SSH session to the server.
-
 This provides transport integrity and confidentiality and it is a good idea if
 your validation software supports it. To enable SSH, first you need to create
 an SSH client keypair using `generate ssh client-key

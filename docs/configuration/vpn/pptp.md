@@ -72,7 +72,6 @@ communicating with the RADIUS server.
 
 Since the RADIUS server would be a single point of failure, multiple RADIUS
 servers can be setup and will be used subsequentially.
-
 For example:
 
 ```none
@@ -211,7 +210,6 @@ RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
 :::
 User interface can be put to VRF context via RADIUS Access-Accept packet, or change
 it via RADIUS CoA. `Accel-VRF-Name` is used from these purposes. It is custom [ACCEL-PPP attribute].
-
 Define it in your RADIUS server.
 
 ### Renaming clients interfaces by RADIUS

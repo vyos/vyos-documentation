@@ -4,7 +4,6 @@
 
 Babel is a modern routing protocol designed to be robust and efficient
 both in ordinary wired networks and in wireless mesh networks.
-
 By default, it uses hop-count on wired networks and a variant of ETX
 on wireless links, It can be configured to take radio diversity into account
 and to automatically compute a link's latency and include it in the metric.
@@ -12,13 +11,11 @@ and to automatically compute a link's latency and include it in the metric.
 It is defined in {rfc}`8966`.
 
 Babel a dual stack protocol.
-
 A single Babel instance is able to perform routing for both IPv4 and IPv6.
 
 ## General Configuration
 
 VyOS does not have a special command to start the Babel process.
-
 The Babel process starts when the first Babel enabled interface is configured.
 
 ```{cfgcmd} set protocols babel interface \<interface\>

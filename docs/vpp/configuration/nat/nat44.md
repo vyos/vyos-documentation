@@ -493,7 +493,6 @@ networks. Without exclude rules, NAT would attempt to translate the router's
 own traffic, potentially breaking management connections.
 **Service Monitoring:**
 Network monitoring systems often need direct access to router services.
-
 Exclude rules ensure that monitoring traffic bypasses NAT translation.
 **Routing Protocols:**
 Some routing protocols or network services may require direct communication

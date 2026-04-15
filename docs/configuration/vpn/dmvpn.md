@@ -31,7 +31,6 @@ particularly well suited for use with DMVPN.
 :::{figure} /_static/images/vpn_dmvpn_topology01.png
 :alt: Baseline DMVPN topology
 :scale: 40 %
-
 Baseline DMVPN topology
 :::
 
@@ -45,7 +44,6 @@ establishes ‘shortcut routes’ that optimizes the routing protocol to avoid g
 through extra nodes in NBMA GRE mesh.
 
 NHRP does route NHRP domain addresses individually using per-host prefixes.
-
 This is similar to Cisco FlexVPN, but in contrast to opennhrp which uses
 a generic subnet route.
 

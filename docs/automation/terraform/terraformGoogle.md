@@ -329,7 +329,6 @@ public_ip_address = "104.***.***.158"
 
 After running all the commands, your VyOS instance is deployed on
 GCP with your specified configuration.
-
 To delete the instance, type the following command:
 
 ```none

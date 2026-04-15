@@ -15,7 +15,6 @@ VyOS provides several kernel command-line options to modify the normal boot
 process.
 
 To add an option, select the desired image in the GRUB menu at load time.
-
 Type **e** to edit the first line, then type **Ctrl+X** to boot.
 
 ```{image} /_static/images/boot-options.png
@@ -29,7 +28,6 @@ file.
 
 If the specified file doesn't exist or isn't readable, the system uses the
 default configuration file.
-
 No additional verification is performed, so specify a valid configuration file.
 
 ```none

@@ -12,7 +12,6 @@ Chromecast, various IP based home-automation devices etc) across multiple VLANs.
 
 Since the mDNS protocol sends the {abbr}`AA(Authoritative Answer)` records in
 the packet itself, the repeater does not need to forge the source address.
-
 Instead, the source address is of the interface that repeats the packet.
 
 :::{note}

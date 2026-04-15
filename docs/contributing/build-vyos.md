@@ -11,7 +11,6 @@ lastproofread: '2025-12-05'
 There are different ways you can build VyOS. Building using a
 {ref}`build_docker`
 container is the easiest way because all dependencies are managed for you.
-
 Alternatively, you can set up your own build machine and run a
 {ref}`build_native` build.
 
@@ -28,7 +27,6 @@ The following includes the build process for VyOS rolling release.
 :::
 
 This will guide you through the process of building a VyOS ISO using [Docker].
-
 This process has been tested on clean installs of Debian Bookworm.
 
 (build-native)=
@@ -269,17 +267,11 @@ more or less similar looking error message:
 The following packages have unmet dependencies:
  vyos-1x : Depends: accel-ppp but it is not installable
 E: Unable to correct problems, you have held broken packages.
-
 P: Begin unmounting filesystems...
-
 P: Saving caches...
-
 Reading package lists...
-
 Building dependency tree...
-
 Reading state information...
-
 Del frr-pythontools 7.5-20210215-00-g8a5d3b7cd-0 [38.9 kB]
 Del accel-ppp 1.12.0-95-g59f8e1b [475 kB]
 Del frr 7.5-20210215-00-g8a5d3b7cd-0 [2671 kB]
@@ -339,7 +331,6 @@ Some packages could not be installed. This may mean that you have
 requested an impossible situation or if you are using the unstable
 distribution that some required packages have not yet been created
 or been moved out of Incoming.
-
 The following information may help to resolve the situation:
 
 The following packages have unmet dependencies:
@@ -378,7 +369,6 @@ lucky enough to receive an ISO build error which sounds like:
 ```none
 
 I: Create initramfs if it does not exist.
-
 Extra argument '6.1.52-amd64-vyos'
 Usage: update-initramfs {-c|-d|-u} [-k version] [-v] [-b directory]
 Options:
@@ -389,7 +379,6 @@ Options:
  -b directory   Set alternate boot directory
  -v             Be verbose
 See update-initramfs(8) for further details.
-
 E: config/hooks/live/17-gen_initramfs.chroot failed (exit non-zero). You should check for errors.
 
 ```
@@ -425,7 +414,6 @@ file (example uses kernel 4.19.146):
 $ cd vyos-build/packages/linux-kernel/linux
 $ git checkout v4.19.146
 Checking out files: 100% (61536/61536), done.
-
 Note: checking out 'v4.19.146'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
@@ -470,9 +458,7 @@ patching file fs/notify/inotify/Kconfig
 patching file fs/notify/inotify/inotify_user.c
 patching file fs/overlayfs/super.c
 Hunk #2 succeeded at 1713 (offset 9 lines).
-
 Hunk #3 succeeded at 1739 (offset 9 lines).
-
 Hunk #4 succeeded at 1762 (offset 9 lines).
 patching file include/linux/inotify.h
 I: Apply Kernel patch: /vyos/vyos-build/packages/linux-kernel/patches/kernel/0003-RFC-builddeb-add-linux-tools-package-with-perf.patch
@@ -623,9 +609,7 @@ I: Compile Kernel module for Intel ixgbe driver
 
 I: Building Debian package vyos-intel-iavf
 Doing `require 'backports'` is deprecated and will not load any backport in the next major release.
-
 Require just the needed backports instead, or 'backports/latest'.
-
 Debian packaging tools generally labels all files in /etc as config files, as mandated by policy, so fpm defaults to this behavior for deb packages. You can disable this default behavior with --deb-no-default-config-files flag {:level=>:warn}
 Created package {:path=>"vyos-intel-iavf_4.0.1-0_amd64.deb"}
 I: Cleanup iavf source
@@ -659,9 +643,7 @@ checking whether make sets $(MAKE)... yes
 
 I: Building Debian package vyos-intel-qat
 Doing `require 'backports'` is deprecated and will not load any backport in the next major release.
-
 Require just the needed backports instead, or 'backports/latest'.
-
 Debian packaging tools generally labels all files in /etc as config files, as mandated by policy, so fpm defaults to this behavior for deb packages. You can disable this default behavior with --deb-no-default-config-files flag {:level=>:warn}
 Created package {:path=>"vyos-intel-qat_1.7.l.4.9.0-00008-0_amd64.deb"}
 I: Cleanup qat source
@@ -776,11 +758,8 @@ Install the package using the following commands:
 vyos@vyos:~$ dpkg --install /tmp/vyos-1x_1.3dev0-1847-gb6dcb0a8_all.deb
 (Reading database ... 58209 files and directories currently installed.)
 Preparing to unpack .../vyos-1x_1.3dev0-1847-gb6dcb0a8_all.deb ...
-
 Unpacking vyos-1x (1.3dev0-1847-gb6dcb0a8) over (1.3dev0-1847-gb6dcb0a8) ...
-
 Setting up vyos-1x (1.3dev0-1847-gb6dcb0a8) ...
-
 Processing triggers for rsyslog (8.1901.0-1) ...
 
 ```

@@ -26,7 +26,6 @@ see {doc}`Firewall </configuration/firewall/index>`.
 ```
 
 Flowtables let you define a fastpath through the flowtable datapath.
-
 Flowtables support layer 3 (IPv4 and IPv6) and layer 4 (TCP and UDP)
 protocols.
 
@@ -40,7 +39,6 @@ filtering (red circle number 6).
 When a packet finds a matching entry in the flowtable (flowtable hit), the
 system transmits it to the output netdevice. This means packets bypass the
 classic IP forwarding path and use the **Fast Path** (orange circles path).
-
 As a result, you do not see these packets from any Netfilter hooks after
 ingress. If no matching entry exists in the flowtable (flowtable miss), the
 packet traverses the classic IP forwarding path.
@@ -103,15 +101,12 @@ Consider the following in this setup:
 >   and rules for using flowtable offload capabilities.
 The first packet is evaluated by the firewall path, so a
 desired connection should be explicitly accepted.
-
 The same should occur for traffic in reverse order.
-
 In most cases, state policies are
 used to accept a connection in the reverse path.
 
 In the following example only traffic coming from interface `eth0`,
 TCP protocol, and destination port 1122 is accepted.
-
 All other traffic to the router is dropped.
 
 ### Commands

@@ -160,7 +160,6 @@ I setup the zone-policies.
 Zones do not allow for a default action of accept; either drop or
 reject. It is important to remember this because if you apply an
 interface to a zone and commit, any active connections will be dropped.
-
 Specifically, if you are SSH’d into VyOS and add local or the interface
 you are connecting through to a zone and do not have rulesets in place
 to allow SSH and established sessions, you will not be able to connect.

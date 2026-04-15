@@ -34,7 +34,6 @@ In zone-based policy, you assign interfaces to zones and apply inspection
 policy to traffic moving between zones. The firewall acts on traffic
 according to rules. A zone is a group of interfaces that have similar
 functions or features. It establishes the security borders of a network.
-
 A zone defines a boundary where the system subjects traffic to policy
 restrictions as it crosses to another region of a network.
 
@@ -125,7 +124,6 @@ identifiable.
 
 ### Applying a Rule-Set to a Zone
 After you define a rule-set, apply it to the source and destination zones.
-
 The configuration syntax anchors to the destination zone, with each of the
 source zone rule-sets listed against the destination.
 

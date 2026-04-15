@@ -5,10 +5,8 @@
 ## Information about IPsec
 
 IPsec is the framework used to secure data.
-
 IPsec accomplishes these goals by providing authentication,
 encryption of IP network packets, key exchange, and key management.
-
 VyOS uses Strongswan package to implement IPsec.
 
 **Authentication Header (AH)** is defined in {rfc}`4302`. It creates
@@ -17,7 +15,6 @@ packet. This hash is used to validate that the data has not been
 changed during transfer over the network.
 
 **Encapsulating Security Payload (ESP)** is defined in {rfc}`4303`.
-
 It provides encryption and authentication of the data.
 
 There are two IPsec modes:
@@ -92,14 +89,11 @@ VyOS supports 3 authentication methods.
 ## DPD (Dead Peer Detection)
 
 This is a mechanism used to detect when a VPN peer is no longer active.
-
 This mechanism has different algorithms in IKEv1 and IKEv2 in VyOS.
-
 DPD Requests are sent as ISAKMP R-U-THERE messages and DPD Responses
 are sent as ISAKMP R-U-THERE-ACK messages. In IKEv1, DPD sends messages
 every configured interval. The remote peer is considered unreachable
 if no response to these packets is received within the DPD timeout.
-
 In IKEv2, DPD sends messages every configured interval. If one request
 is not responded, Strongswan execute its retransmission algorithm with
 its timers. [IKEv2 Retransmission]
@@ -140,7 +134,6 @@ Optionally, you can require the use of PPK to have a successful connection.
 
 You can view the PPK column for information on if PPK is configured, and
 if it is in use. The output is in the format of `<configured> / <in use>`.
-
 The options for configured are none if not conifugred, opt if configured
 but optional, and req is configured and required. The in use will show yes
 Possible values of the `configured` field are `none` if not conifgured, `opt` if configured
@@ -248,7 +241,6 @@ Keep-alive timeout in seconds <2-86400> (default 120) **IKEv1 only**
 
 
 In VyOS, ESP attributes are specified through ESP groups.
-
 Multiple proposals can be specified in a single group.
 
 

@@ -16,7 +16,6 @@ by hand.
 {vytask}`T3642` describes a new CLI subsystem that serves as a "certstore" to
 all services requiring any kind of encryption key(s). In short, public and
 private certificates are now stored in PKCS#8 format in the regular VyOS CLI.
-
 Keys can now be added, edited, and deleted using the regular set/edit/delete
 CLI commands.
 

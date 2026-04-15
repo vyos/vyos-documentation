@@ -6,7 +6,6 @@ policies can then be associated to interfaces.
 ## Rule-Sets
 
 A rule-set is a named collection of rules that can be applied to an interface.
-
 Each rule is numbered, has an action to apply if the rule is matched, and the
 ability to specify the criteria to match. Data packets go through the rules
 from 1 - 999999, at the first match the action of the rule will be executed.

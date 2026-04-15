@@ -74,7 +74,6 @@ academic institutions
 ## Hardware requirements
 
 The minimum system requirements for VyOS are 4 GB RAM and 10 GB storage.
-
 Depending on your use case, you might need additional RAM and CPU resources.
 
 ## Download
@@ -122,7 +121,6 @@ systems from the `current` branch: <https://vyos.net/get/nightly-builds/>
 ### Download Verification
 
 LTS images are signed with the VyOS lead package maintainer's private key.
-
 You can verify the authenticity of the package using the official public key
 and Minisign.
 

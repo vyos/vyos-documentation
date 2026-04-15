@@ -71,7 +71,6 @@ rtt min/avg/max/mdev = 33.802/40.920/43.924/4.139 ms
 ```
 
 Assuming the pings are successful, you need to add some DNS servers.
-
 Some options:
 
 ```{literalinclude} _include/vyos-wan_tun0.conf
@@ -148,7 +147,6 @@ rtt min/avg/max/mdev = 32.128/40.688/47.107/5.403 ms
 
 ## Multiple LAN/DMZ Setup
 That's how you can expand the example above.
-
 Use the `Routed /48` information. This allows you to assign a
 different /64 to every interface, LAN, or even device. Or you could break your
 network into smaller chunks like /56 or /60.

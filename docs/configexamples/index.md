@@ -34,7 +34,6 @@ site-2-site-cisco
 The next pages contains automatic full tested configuration examples.
 
 Each lab will build an test from an external script.
-
 The page content will generate, so changes will not take an effect.
 
 A host `vyos-oobm` will use as a ssh proxy. This host is just

@@ -116,7 +116,6 @@ The load balancer periodically checks the health of interfaces and paths by
 sending ICMP packets (ping) to remote destinations, performing TTL tests, or
 executing a user-defined script. If an interface fails the health check, the
 load balancer removes it from its interface pool.
-
 To enable health checking for an interface:
 
 ```none
@@ -208,7 +207,6 @@ balancer selects the primary interface based on its weight and health. Other
 interfaces become secondary. Secondary interfaces are chosen based on their
 weight and health. You can also select interface roles based on rule order by
 including interfaces in balancing rules and ordering those rules accordingly.
-
 To enable failover mode, create a failover rule:
 
 ```none

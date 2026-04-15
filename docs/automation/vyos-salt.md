@@ -89,7 +89,6 @@ r14:
 
 ## Netmiko-proxy
 It is possible to configure VyOS via [netmiko] proxy module.
-
 It requires a minion with installed packet `python3-netmiko` module
 who has a connection to VyOS nodes. Salt-minion have to communicate
 with salt master

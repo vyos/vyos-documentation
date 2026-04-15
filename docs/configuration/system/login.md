@@ -68,7 +68,6 @@ Key-based authentication is the recommended method for securing SSH access in
 VyOS. It uses a **public/private key pair** to verify user identity without
 requiring a password. To authorize access, you assign **SSH public keys** to
 user accounts on the router, while SSH private keys remain on local devices.
-
 VyOS allows assigning multiple SSH public keys to a single user account, which
 is useful for accessing a router from different devices.
 
@@ -363,7 +362,6 @@ set system login radius source-address '192.168.0.1'
 
 If communication with the {abbr}`RADIUS (Remote Authentication Dial-In User
 Service)` server fails, the router falls back to local user authentication.
-
 During this process, users may experience a login delay while the system waits
 for the {abbr}`RADIUS (Remote Authentication Dial-In User Service)` request to
 time out. This delay depends on the configured `timeout` value.
@@ -462,7 +460,6 @@ authentication.
 
 ## Login banners
 VyOS allows you to configure **pre-login** and **post-login** banners.
-
 Pre-login banners are typically used for system identification, legal disclaimers, or security warnings
 displayed before authentication, while post-login banners provide system
 information or operational notices to users after login.

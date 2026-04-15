@@ -162,7 +162,6 @@ set firewall bridge name br2-pre default-action 'accept'
 
 Now, in the `forward` chain, we are going to define state policies, and
 custom rulesets for each bridge that would be used in the `forward` chain.
-
 These rulesets are `br0-fwd`, `br1-fwd`, and `br2-fwd`:
 
 ```none
@@ -253,7 +252,6 @@ set firewall bridge name br2-fwd default-action 'drop'
 
 Since some of the requirements listed above exceed the capabilities of the
 bridge firewall, we need to use the IP firewall to implement them.
-
 For bridge br1 and br2, we need to control the traffic that is going to the
 router itself, to other local networks, and to the Internet.
 

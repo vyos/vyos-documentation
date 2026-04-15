@@ -614,7 +614,6 @@ wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group d
 ```
 
 This command gives a brief status overview of a specified wireless interface.
-
 The wireless interface identifier can range from wlan0 to wlan999.
 
 ```none
@@ -629,7 +628,6 @@ wlan0            192.168.2.254/24                    u/u
 ```
 
 Use this command to view wireless interface queue information.
-
 The wireless interface identifier can range from wlan0 to wlan999.
 
 ```none

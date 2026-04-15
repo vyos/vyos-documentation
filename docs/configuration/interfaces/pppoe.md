@@ -8,7 +8,6 @@ lastproofread: '2026-03-03'
 
 {abbr}`PPPoE (Point-to-Point Protocol over Ethernet)` is a network protocol
 that encapsulates PPP frames within Ethernet frames.
-
 It's often used for connecting ISP clients to a broadband access server.
 
 ## Configuration

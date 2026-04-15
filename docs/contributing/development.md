@@ -18,11 +18,9 @@ VyOS source code is hosted on GitHub in the VyOS organization:
 VyOS is composed of multiple modules spread across different
 repositories. Some modules contain forks of upstream
 packages and are periodically synced.
-
 VyOS consolidates most packages into the
 [vyos-1x](https://github.com/vyos/vyos-1x)
 repository while maintaining a consistent structure.
-
 The base code is being rewritten
 from Perl and Bash to Python using an XML-based CLI interface definition.
 
@@ -40,7 +38,6 @@ for your contributions to be accepted.
 :::
 
 VyOS is open-source and welcomes patches.
-
 All submissions must adhere to these guidelines:
 
 - Each commit addresses a single issue or feature.
@@ -320,7 +317,6 @@ requirements:
 ## XML for CLI definitions
 
 XML interface definitions define the VyOS CLI structure.
-
 Before VyOS `1.2` (crux), these
 files were created manually. After a redesign, new-style templates are
 automatically generated from XML input files.
@@ -328,7 +324,6 @@ automatically generated from XML input files.
 VyOS interface definitions come with a RelaxNG schema located in the
 [vyos-1x](https://github.com/vyos/vyos-1x/tree/current/schema)
 repository. This schema is a modified version from `VyConf` (VyOS `2.0`).
-
 VyOS `1.2.x`
 interface definitions are reusable in future VyOS versions with minimal changes.
 
