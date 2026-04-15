@@ -1437,7 +1437,6 @@ Neighbor ID     Pri State           Up Time         Dead Time Address         In
 10.1.1.2          1 Full/DR         3m43s             36.094s 192.168.0.2     eth0:192.168.0.1                     0     0     0
 
 
-
 Node-2@vyos:~$ show ip ospf neighbor
 
 Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL

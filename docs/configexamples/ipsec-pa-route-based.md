@@ -27,7 +27,6 @@ include firewall configuration.
 
 | WAN IP  | 10.0.1.2/30    |
 | ------- | -------------- |
-| ------- | -------------- |
 | LAN1 IP | 192.168.0.1/24 |
 | LAN2 IP | 192.168.1.1/24 |
 
@@ -35,14 +34,12 @@ include firewall configuration.
 
 | WAN IP  | 10.0.2.2/30     |
 | ------- | --------------- |
-| ------- | --------------- |
 | LAN1 IP | 192.168.10.1/24 |
 | LAN2 IP | 192.168.11.1/24 |
 
 **IKE parameters:**
 
 | Encryption        | AES-128 |
-| ----------------- | ------- |
 | ----------------- | ------- |
 | HASH              | SHA-1   |
 | Diff-Helman Group | 14      |
@@ -53,7 +50,6 @@ include firewall configuration.
 
 | Encryption | AES-256 |
 | ---------- | ------- |
-| ---------- | ------- |
 | HASH       | SHA-256 |
 | Life-Time  | 3600    |
 | PFS        | disable |
@@ -61,7 +57,6 @@ include firewall configuration.
 **Hosts configuration**
 
 | PC1 IP | 192.168.0.2  |
-| ------ | ------------ |
 | ------ | ------------ |
 | PC2 IP | 192.168.1.2  |
 | PC3 IP | 192.168.10.2 |

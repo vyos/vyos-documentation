@@ -26,7 +26,6 @@ and BGP for dynamic routing updates.
 
 | WAN Interface                  | eth0                |
 | ------------------------------ | ------------------- |
-| ------------------------------ | ------------------- |
 | On-premises address space      | 10.10.0.0/16        |
 | Azure address space            | 10.0.0.0/16         |
 | Vyos public IP                 | 198.51.100.3        |

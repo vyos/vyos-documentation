@@ -25,7 +25,6 @@ initiator role on VyOS side.
 
 | WAN IP  | 10.0.1.2/30    |
 | ------- | -------------- |
-| ------- | -------------- |
 | LAN1 IP | 192.168.0.1/24 |
 | LAN2 IP | 192.168.1.1/24 |
 
@@ -33,14 +32,12 @@ initiator role on VyOS side.
 
 | WAN IP  | 10.0.2.2/30     |
 | ------- | --------------- |
-| ------- | --------------- |
 | LAN1 IP | 192.168.10.1/24 |
 | LAN2 IP | 192.168.11.1/24 |
 
 **IKE parameters:**
 
 | Encryption        | AES-256 |
-| ----------------- | ------- |
 | ----------------- | ------- |
 | HASH              | SHA-1   |
 | Diff-Helman Group | 14      |
@@ -50,7 +47,6 @@ initiator role on VyOS side.
 **IPsec parameters:**
 
 | Encryption | AES-256 |
-| ---------- | ------- |
 | ---------- | ------- |
 | HASH       | SHA-256 |
 | Life-Time  | 3600    |
@@ -65,7 +61,6 @@ initiator role on VyOS side.
 **Hosts configuration**
 
 | PC1 IP | 192.168.0.2  |
-| ------ | ------------ |
 | ------ | ------------ |
 | PC2 IP | 192.168.1.2  |
 | PC3 IP | 192.168.10.2 |

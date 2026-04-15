@@ -3,7 +3,6 @@
 # OpenVPN with LDAP
 
 Testdate: 2023-05-11
-
 Version: 1.4-rolling-202305100734
 
 This LAB shows how to use OpenVPN with a Active Directory authentication method.
